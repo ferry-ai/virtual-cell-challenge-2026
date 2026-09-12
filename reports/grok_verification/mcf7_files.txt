@@ -1,0 +1,459 @@
+{
+  "accno" : "E-MTAB-14567",
+  "attributes" : [ {
+    "name" : "Title",
+    "value" : "Perturb-Seq scRNA-seq for Alternative Promote Usage Sites"
+  }, {
+    "name" : "ReleaseDate",
+    "value" : "2025-11-19"
+  }, {
+    "name" : "RootPath",
+    "value" : "E-MTAB-14567"
+  }, {
+    "name" : "AttachTo",
+    "value" : "ArrayExpress"
+  } ],
+  "section" : {
+    "accno" : "s-E-MTAB-14567",
+    "type" : "Study",
+    "attributes" : [ {
+      "name" : "Title",
+      "value" : "Perturb-Seq scRNA-seq for Alternative Promote Usage Sites"
+    }, {
+      "name" : "Study type",
+      "value" : "RNA-seq of coding RNA from single cells",
+      "valqual" : [ {
+        "name" : "Ontology",
+        "value" : "EFO"
+      }, {
+        "name" : "TermId",
+        "value" : "EFO_0005684"
+      } ]
+    }, {
+      "name" : "Organism",
+      "value" : "Homo sapiens"
+    }, {
+      "name" : "Description",
+      "value" : "Using the Direct Capture Perturb-seq technology (Replogle, J.M. et al. Nat Biotechnol 38, 954–961 (2020)), we created a pooled of guides that target sites of promoter usage within 50 gene candidates on a stable MCF-7 KRAB dCas9 cell line. Single-cell sequencing 10x5' with CRISPR library and transcriptome. Sequenced on a Nova-Seq."
+    } ],
+    "links" : [ {
+      "url" : "ERP165596",
+      "attributes" : [ {
+        "name" : "Type",
+        "value" : "ENA"
+      } ]
+    } ],
+    "subsections" : [ {
+      "type" : "author",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "Helen King"
+      }, {
+        "name" : "Email",
+        "value" : "h.king@garvan.org.au"
+      }, {
+        "name" : "Role",
+        "value" : "data coder;submitter"
+      }, {
+        "name" : "affiliation",
+        "value" : "o1",
+        "reference" : true
+      } ]
+    }, {
+      "type" : "author",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "Robert Weatheritt"
+      }, {
+        "name" : "Email",
+        "value" : "r.weatheritt@garvan.org.au"
+      }, {
+        "name" : "Role",
+        "value" : "investigator"
+      }, {
+        "name" : "affiliation",
+        "value" : "o1",
+        "reference" : true
+      } ]
+    }, {
+      "type" : "author",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "Helaine Graziele Vieira"
+      }, {
+        "name" : "Email",
+        "value" : "h.vieira@garvan.org.au"
+      }, {
+        "name" : "Role",
+        "value" : "experiment performer"
+      }, {
+        "name" : "affiliation",
+        "value" : "o1",
+        "reference" : true
+      } ]
+    }, {
+      "accno" : "o1",
+      "type" : "organisation",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "the Garvan Institute"
+      }, {
+        "name" : "Address",
+        "value" : "384 Victoria St, Darlinghurst NSW 2010"
+      } ]
+    }, [ {
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-148496"
+      }, {
+        "name" : "Type",
+        "value" : "sample collection protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0005518"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "Gene expression (GEX) and sgRNA libraries were prepared following 10X Genomics Chromium Single Cell 5' Kit User Guide v2 (Dual Index) with Feature Barcode technology for CRISPR Screening (CG000510 Rev B)."
+      }, {
+        "name" : "Hardware",
+        "value" : "NA"
+      } ]
+    }, {
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-148497"
+      }, {
+        "name" : "Type",
+        "value" : "nucleic acid extraction protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0002944"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "After 6 days, the cells were harvested for total RNA extraction using the RNeasy Mini Plus Kit (74134 - Qiagen) according to the manufacturer’s instructions. cDNA was synthesized using RevertAid RT Reverse Transcription kit (K1691 - Thermo Fisher Scientific) following the manufacturer's protocol."
+      }, {
+        "name" : "Hardware",
+        "value" : "NA"
+      } ]
+    }, {
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-148498"
+      }, {
+        "name" : "Type",
+        "value" : "nucleic acid library construction protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0004184"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "By the 8th day post-transduction, more than 70% of the MCF-7 KRAB dCas9 population expressed the library (BFP+), and a final cell sorting (Aria II Cell Sorter - BD Biosciences) was conducted prior single-cell direct capture Perturb-Seq. PromCRISPRi cells with more than 90% viability were prepared as single-cell suspension and loaded into droplet emulsions to two lanes of Chromium Single Cell Chip K, aiming to recover ~20,000 cells per GEM group = 40,000 in total."
+      }, {
+        "name" : "Hardware",
+        "value" : "NA"
+      } ]
+    }, {
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-148499"
+      }, {
+        "name" : "Type",
+        "value" : "nucleic acid sequencing protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0004170"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "Sequencing was performed on a NovaSeq 6000 (Illumina) according to the 10x Genomics User Guide."
+      }, {
+        "name" : "Hardware",
+        "value" : "Illumina NovaSeq 6000"
+      } ]
+    }, {
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-148500"
+      }, {
+        "name" : "Type",
+        "value" : "growth protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0003789"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "Media was replaced 24 hours after transfection, and 48 hours later, supernatants containing viruses were collected by centrifugation and filtration through a 0.45-μm PVDF filter (Millex Millipore - 0890). The viruses were either used immediately or stored in aliquots at −80 °C."
+      }, {
+        "name" : "Hardware",
+        "value" : "NA"
+      } ]
+    }, {
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-148501"
+      }, {
+        "name" : "Type",
+        "value" : "high throughput sequence alignment protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0004917"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "Using Cell Ranger v8.8.0, the transcriptomic library was aligned to reference GRCh38 v77 using “count”, and the feature library was aligned to the supplied list of guides."
+      }, {
+        "name" : "Hardware",
+        "value" : "NA"
+      }, {
+        "name" : "Software",
+        "value" : "Cell Ranger v8.8.0"
+      } ]
+    }, {
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-148502"
+      }, {
+        "name" : "Type",
+        "value" : "normalization data transformation protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0003816"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "Count matrices were filtered for genes with a minimum of 20 cells and genes with a minimum of 1000 reads—highly variable genes assigned to top 2000 with Seurat_v3 then normalized with log-scaled transformation."
+      } ]
+    } ], {
+      "accno" : "s-samples-factors-E-MTAB-14567",
+      "type" : "Samples",
+      "attributes" : [ {
+        "name" : "Sample count",
+        "value" : "6"
+      }, {
+        "name" : "Experimental Factors",
+        "value" : "genotype",
+        "valqual" : [ {
+          "name" : "TermName",
+          "value" : "genotype"
+        } ]
+      }, {
+        "name" : "Experimental Designs",
+        "value" : "genetic modification design",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO:0001758"
+        } ]
+      } ],
+      "subsections" : [ {
+        "accno" : "exp_factor-E-MTAB-14567",
+        "type" : "Experimental Factors",
+        "attributes" : [ {
+          "name" : "Genotype",
+          "value" : "sgRNA"
+        }, {
+          "name" : "Genotype",
+          "value" : "cDNA"
+        } ],
+        "subsections" : [ [ {
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "genotype",
+            "value" : "sgRNA"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "2",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS21375900,ERS21375902"
+            } ]
+          } ]
+        }, {
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "genotype",
+            "value" : "cDNA"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "4",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS21375901,ERS21375903,ERS21375904,ERS21375905"
+            } ]
+          } ]
+        } ] ]
+      }, {
+        "accno" : "source_chars-E-MTAB-14567",
+        "type" : "Source Characteristics",
+        "attributes" : [ {
+          "name" : "Organism",
+          "value" : "Homo sapiens"
+        }, {
+          "name" : "Cell line",
+          "value" : "MCF-7"
+        }, {
+          "name" : "Genotype",
+          "value" : "sgRNA"
+        }, {
+          "name" : "Genotype",
+          "value" : "cDNA"
+        } ],
+        "subsections" : [ [ {
+          "type" : "Characteristics Table",
+          "attributes" : [ {
+            "name" : "genotype",
+            "value" : "sgRNA"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "2",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS21375900,ERS21375902"
+            } ]
+          } ]
+        }, {
+          "type" : "Characteristics Table",
+          "attributes" : [ {
+            "name" : "genotype",
+            "value" : "cDNA"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "4",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS21375901,ERS21375903,ERS21375904,ERS21375905"
+            } ]
+          } ]
+        } ] ]
+      } ]
+    }, {
+      "accno" : "s-assays-data-E-MTAB-14567",
+      "type" : "Assays and Data",
+      "attributes" : [ {
+        "name" : "Assay count",
+        "value" : "20"
+      }, {
+        "name" : "Technology",
+        "value" : "Sequencing assay"
+      }, {
+        "name" : "Assay by Molecule",
+        "value" : "RNA assay"
+      } ],
+      "subsections" : [ {
+        "accno" : "processed-data",
+        "type" : "Processed Data",
+        "files" : [ {
+          "path" : "filtered_feature_bc_matrix.h5",
+          "size" : 29971316,
+          "attributes" : [ {
+            "name" : "Description",
+            "value" : "Processed Data"
+          } ],
+          "type" : "file"
+        }, {
+          "path" : "filtered_feature_bc_matrix_rerun.h5",
+          "size" : 145197886,
+          "attributes" : [ {
+            "name" : "Description",
+            "value" : "Processed Data"
+          } ],
+          "type" : "file"
+        }, {
+          "path" : "molecule_info.h5",
+          "size" : 825136136,
+          "attributes" : [ {
+            "name" : "Description",
+            "value" : "Processed Data"
+          } ],
+          "type" : "file"
+        } ]
+      }, {
+        "accno" : "mt-E-MTAB-14567",
+        "type" : "MAGE-TAB Files",
+        "files" : [ {
+          "path" : "E-MTAB-14567.idf.txt",
+          "size" : 7751,
+          "attributes" : [ {
+            "name" : "Type",
+            "value" : "IDF File"
+          }, {
+            "name" : "Format",
+            "value" : "tab-delimited text"
+          }, {
+            "name" : "Description",
+            "value" : "Investigation Design Format (IDF)"
+          } ],
+          "type" : "file"
+        }, {
+          "path" : "E-MTAB-14567.sdrf.txt",
+          "size" : 65328,
+          "attributes" : [ {
+            "name" : "Type",
+            "value" : "SDRF File"
+          }, {
+            "name" : "Format",
+            "value" : "tab-delimited text"
+          }, {
+            "name" : "Description",
+            "value" : "Sample and Data Relationship Format (SDRF)"
+          } ],
+          "type" : "file"
+        } ]
+      } ]
+    }, {
+      "accno" : "score-E-MTAB-14567",
+      "type" : "MINSEQE Score",
+      "attributes" : [ {
+        "name" : "Exp. Design",
+        "value" : "*"
+      }, {
+        "name" : "Protocols",
+        "value" : "*"
+      }, {
+        "name" : "Variables",
+        "value" : "*"
+      }, {
+        "name" : "Processed",
+        "value" : "*"
+      }, {
+        "name" : "Raw",
+        "value" : "*"
+      } ]
+    } ]
+  },
+  "type" : "submission"
+}

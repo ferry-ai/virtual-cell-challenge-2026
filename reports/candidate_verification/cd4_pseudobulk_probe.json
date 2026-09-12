@@ -1,0 +1,184 @@
+{
+  "roots": [
+    "X",
+    "layers",
+    "obs",
+    "obsm",
+    "obsp",
+    "uns",
+    "var",
+    "varm",
+    "varp"
+  ],
+  "X": {
+    "data": {
+      "kind": "dataset",
+      "shape": [
+        2782896823
+      ],
+      "dtype": "float64"
+    },
+    "indices": {
+      "kind": "dataset",
+      "shape": [
+        2782896823
+      ],
+      "dtype": "int64"
+    },
+    "indptr": {
+      "kind": "dataset",
+      "shape": [
+        278685
+      ],
+      "dtype": "int64"
+    }
+  },
+  "obs": {
+    "10xrun_id": {
+      "kind": "group",
+      "keys": [
+        "categories",
+        "codes"
+      ]
+    },
+    "_index": {
+      "kind": "dataset",
+      "shape": [
+        278684
+      ],
+      "dtype": "object"
+    },
+    "culture_condition": {
+      "kind": "group",
+      "keys": [
+        "categories",
+        "codes"
+      ]
+    },
+    "donor_id": {
+      "kind": "group",
+      "keys": [
+        "categories",
+        "codes"
+      ]
+    },
+    "guide_id": {
+      "kind": "group",
+      "keys": [
+        "categories",
+        "codes"
+      ]
+    },
+    "guide_type": {
+      "kind": "group",
+      "keys": [
+        "categories",
+        "codes"
+      ]
+    },
+    "keep_effective_guides": {
+      "kind": "dataset",
+      "shape": [
+        278684
+      ],
+      "dtype": "bool"
+    },
+    "keep_for_DE": {
+      "kind": "dataset",
+      "shape": [
+        278684
+      ],
+      "dtype": "bool"
+    },
+    "keep_min_cells": {
+      "kind": "dataset",
+      "shape": [
+        278684
+      ],
+      "dtype": "bool"
+    },
+    "keep_test_genes": {
+      "kind": "dataset",
+      "shape": [
+        278684
+      ],
+      "dtype": "bool"
+    },
+    "keep_total_counts": {
+      "kind": "dataset",
+      "shape": [
+        278684
+      ],
+      "dtype": "bool"
+    },
+    "log10_n_cells": {
+      "kind": "dataset",
+      "shape": [
+        278684
+      ],
+      "dtype": "float64"
+    },
+    "n_cells": {
+      "kind": "dataset",
+      "shape": [
+        278684
+      ],
+      "dtype": "float64"
+    },
+    "perturbed_gene_id": {
+      "kind": "group",
+      "keys": [
+        "categories",
+        "codes"
+      ]
+    },
+    "perturbed_gene_name": {
+      "kind": "group",
+      "keys": [
+        "categories",
+        "codes"
+      ]
+    },
+    "total_counts": {
+      "kind": "dataset",
+      "shape": [
+        278684
+      ],
+      "dtype": "float64"
+    }
+  },
+  "var": {
+    "_index": {
+      "kind": "dataset",
+      "shape": [
+        18129
+      ],
+      "dtype": "object"
+    },
+    "gene_ids": {
+      "kind": "dataset",
+      "shape": [
+        18129
+      ],
+      "dtype": "object"
+    },
+    "gene_name": {
+      "kind": "dataset",
+      "shape": [
+        18129
+      ],
+      "dtype": "object"
+    }
+  },
+  "layers": {},
+  "sample": {
+    "min": 1.0,
+    "max": 3579.0,
+    "n": 10000,
+    "finite": true,
+    "integer": true
+  },
+  "url": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/GWCD4i.pseudobulk_merged.h5ad",
+  "bytes_transferred": 2439284,
+  "remote_size": 44566657140
+}

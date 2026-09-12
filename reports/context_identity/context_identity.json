@@ -1,0 +1,60 @@
+{
+  "n_shared_genes_for_comparison": 6714,
+  "contrast_test": {
+    "A": {
+      "spearman_vs_RPE1_minus_K562": -0.2391982822642711,
+      "pearson_vs_RPE1_minus_K562": -0.2514274306153537
+    },
+    "B": {
+      "spearman_vs_RPE1_minus_K562": 0.1539747633947419,
+      "pearson_vs_RPE1_minus_K562": 0.19855151772060392
+    },
+    "C": {
+      "spearman_vs_RPE1_minus_K562": 0.13017229101317615,
+      "pearson_vs_RPE1_minus_K562": 0.10060404314675242
+    }
+  },
+  "contrast_reading": "positive = closer to RPE1 than to K562; negative = the reverse",
+  "spearman_log1p_shared_space": {
+    "A": {
+      "A": 1.0,
+      "B": 0.6557507491,
+      "C": 0.4904117866,
+      "K562": 0.4323746537,
+      "RPE1": 0.335477303
+    },
+    "B": {
+      "A": 0.6557507491,
+      "B": 1.0,
+      "C": 0.6821808368,
+      "K562": 0.2902638174,
+      "RPE1": 0.3582702239
+    },
+    "C": {
+      "A": 0.4904117866,
+      "B": 0.6821808368,
+      "C": 1.0,
+      "K562": 0.3387727671,
+      "RPE1": 0.4013018583
+    },
+    "K562": {
+      "A": 0.4323746537,
+      "B": 0.2902638174,
+      "C": 0.3387727671,
+      "K562": 1.0,
+      "RPE1": 0.7045857455
+    },
+    "RPE1": {
+      "A": 0.335477303,
+      "B": 0.3582702239,
+      "C": 0.4013018583,
+      "K562": 0.7045857455,
+      "RPE1": 1.0
+    }
+  },
+  "caveats": [
+    "Marker expression places a lineage; it does not name a cell line.",
+    "Replogle var['mean'] comes from a different pipeline: only contrasts are comparable.",
+    "Absence of a marker can be a capture artifact for low-abundance transcripts."
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "run_id": "n003",
+  "stage": "42_null_calibration",
+  "started_utc": "2026-09-12T14:54:20.148056+00:00",
+  "finished_utc": "2026-09-12T14:54:21.073276+00:00",
+  "seed": 2026,
+  "config": {
+    "run_id": "n003",
+    "out": null,
+    "context": "A",
+    "n_pseudo": 6,
+    "cells_per_pseudo": 300,
+    "n_control_cells": 3000,
+    "seed": 2026,
+    "overdispersion": null,
+    "allow_overwrite": false
+  },
+  "inputs": {
+    "controls": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_A.h5ad",
+      "exists": true,
+      "bytes": 224973316,
+      "mtime_utc": "2026-09-11T17:27:06.844066+00:00",
+      "sha256": "daf888bd6894da5488c8dac3098a3618ff766d03fdf1250ec7f607124bb97834",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "outputs": {
+    "real_bundle": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\n003\\real_A.h5ad",
+      "exists": true,
+      "bytes": 57964088,
+      "mtime_utc": "2026-09-12T14:48:24.015537+00:00",
+      "sha256": "60966d86f46febf8cd59f29a3be75adf97fc58a792c45642b035051069cc19ab",
+      "sha256_mode": "full"
+    },
+    "pred_bundle": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\n003\\pred_A.h5ad",
+      "exists": true,
+      "bytes": 58887079,
+      "mtime_utc": "2026-09-12T14:48:52.004740+00:00",
+      "sha256": "0d4ccbe808fe36c32b7bb4ab8af122c2f57ad64bb18a1410dce48e15c0cac1e7",
+      "sha256_mode": "full"
+    },
+    "null_calibration": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\n003\\null_calibration_A.json",
+      "exists": true,
+      "bytes": 5306,
+      "mtime_utc": "2026-09-12T14:54:20.145401+00:00",
+      "sha256": "dbd360b5c5a2e3b4c10f53027dec61fcea5ee4f5868ef7c9d44989966da35231",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "aggregate": {},
+    "per_metric": {
+      "expr_mse_unbiased": {
+        "n_perturbations": 6,
+        "n_finite": 6,
+        "mean": 9.865944567573409e-05,
+        "median": 0.00011900300073920548,
+        "min": 3.1368323607203327e-06,
+        "max": 0.00014924553759314556
+      },
+      "expr_distance_unbiased": {
+        "n_perturbations": 6,
+        "n_finite": 6,
+        "mean": -1.9378154665738672e-06,
+        "median": 2.7155601597654526e-06,
+        "min": -5.1589007916431234e-05,
+        "max": 4.158913200220245e-05
+      },
+      "de_wilcoxon_direction_fidelity_yield_raw": {
+        "n_perturbations": 6,
+        "n_finite": 6,
+        "mean": 0.39613206564010905,
+        "median": 0.36917293233082704,
+        "min": 0.32014388489208634,
+        "max": 0.5169811320754717
+      },
+      "expr_real_mass_ratio": {
+        "n_perturbations": 6,
+        "n_finite": 6,
+        "mean": 1.0,
+        "median": 1.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "expr_mse_unbiased_capped": {
+        "n_perturbations": 6,
+        "n_finite": 6,
+        "mean": 0.00023137294463573582,
+        "median": 0.0002537512011731266,
+        "min": 0.00013603621520635504,
+        "max": 0.0002815310272396698
+      },
+      "de_wilcoxon_sig_jaccard": {
+        "n_perturbations": 6,
+        "n_finite": 6,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "de_wilcoxon_direction_reach_raw": {
+        "n_perturbations": 6,
+        "n_finite": 1,
+        "mean": 1.0,
+        "median": 1.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "pds_cosine": {
+        "n_perturbations": 6,
+        "n_finite": 6,
+        "mean": 0.5,
+        "median": 0.5,
+        "min": 0.0,
+        "max": 1.0
+      }
+    }
+  },
+  "notes": [
+    "Truth is zero by construction; this is a false-positive floor, not a response-prediction benchmark.",
+    "Raw metrics only: the competition's (u-b)/(r-b) rescaling needs a published baseline and a replicate anchor we do not have."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}

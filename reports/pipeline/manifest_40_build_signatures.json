@@ -1,0 +1,178 @@
+{
+  "run_id": "e001",
+  "stage": "40_build_signatures",
+  "started_utc": "2026-09-12T13:59:11.080950+00:00",
+  "finished_utc": "2026-09-12T14:03:21.922007+00:00",
+  "seed": null,
+  "config": {
+    "run_id": "e001",
+    "out": null,
+    "sources": null,
+    "min_cells": 10,
+    "control": "non-targeting",
+    "targets": "panel+shared",
+    "allow_overwrite": false,
+    "registry_version": "1",
+    "target_selection": {
+      "mode": "panel+shared",
+      "per_source_targets": {
+        "k562_gwps": 9866,
+        "k562_essential": 2057,
+        "rpe1_essential": 2393
+      },
+      "n_panel": 300,
+      "n_shared_across_sources": 2394,
+      "n_selected": 2694,
+      "rationale": "Targets measured in two or more sources are the only ones on which cross-context transfer can be measured; the panel is what must ultimately be predicted."
+    }
+  },
+  "inputs": {
+    "gene_axis": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\gene_names.csv",
+      "exists": true,
+      "bytes": 119295,
+      "mtime_utc": "2026-09-11T17:27:09.608150+00:00",
+      "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "sha256_mode": "full"
+    },
+    "panel": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+      "exists": true,
+      "bytes": 1906,
+      "mtime_utc": "2026-09-11T17:27:09.610157+00:00",
+      "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+      "sha256_mode": "full"
+    },
+    "source:k562_gwps": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external\\K562_gwps_raw_bulk_01.h5ad",
+      "exists": true,
+      "bytes": 374587922,
+      "mtime_utc": "2026-09-11T18:01:45.082500+00:00",
+      "sha256": "4dd44cb90ace499efe1620cfe7762219ef573ac23b4090d212221ed3ba4eade7",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "source:k562_essential": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external\\K562_essential_raw_bulk_01.h5ad",
+      "exists": true,
+      "bytes": 79766954,
+      "mtime_utc": "2026-09-11T18:02:11.291236+00:00",
+      "sha256": "010369c50735d0651c90c3125d72cd95afe5046a837544b6674bda145e2e8967",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "source:rpe1_essential": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external\\rpe1_raw_bulk_01.h5ad",
+      "exists": true,
+      "bytes": 95350546,
+      "mtime_utc": "2026-09-11T18:01:58.558742+00:00",
+      "sha256": "044bc81225c05085d4fd75a625940eef6af81a689931990c33ac51640610a6ef",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "outputs": {
+    "signatures:k562_gwps": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures\\k562_gwps.npz",
+      "exists": true,
+      "bytes": 197397287,
+      "mtime_utc": "2026-09-12T14:00:39.636641+00:00",
+      "sha256": "ba536d463363ae3c72272b75d3640ebf0eb21291f4a68a5a364fef88ff854d1a",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "signatures:k562_essential": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures\\k562_essential.npz",
+      "exists": true,
+      "bytes": 157151906,
+      "mtime_utc": "2026-09-12T14:01:58.009079+00:00",
+      "sha256": "b0e423aee0cb12ecc6865c5f4de86251f600e1c0848a79743f8cbb761b28a6ed",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "signatures:rpe1_essential": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures\\rpe1_essential.npz",
+      "exists": true,
+      "bytes": 186572059,
+      "mtime_utc": "2026-09-12T14:03:21.545767+00:00",
+      "sha256": "78a0c30d1f56d1b38be2190bfd9c819de13527b3783e8f0d4d85383712b95457",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "signature_qc": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signature_qc.json",
+      "exists": true,
+      "bytes": 6558,
+      "mtime_utc": "2026-09-12T14:03:21.896735+00:00",
+      "sha256": "12e0f5f73678370d6292ca30e18e6c7d5e66cff16c73c72accebf1fffe9a19aa",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "k562_gwps": {
+      "n_signatures": 2816,
+      "n_targets": 2659,
+      "n_panel_targets": 272,
+      "n_signatures_on_panel": 280,
+      "observed_genes_per_signature": 7681.0,
+      "median_abs_delta": 0.13920125365257263,
+      "median_se": 0.17511320114135742,
+      "median_abs_delta_over_se": 0.7949215173721313,
+      "median_genes_with_abs_z_gt_2": 851.0,
+      "median_genes_with_abs_z_gt_2_panel": 532.5,
+      "frac_signatures_with_no_strong_gene": 0.0,
+      "median_n_cells": 166.0,
+      "interpretation": "median_abs_delta_over_se below 1 means the typical gene-level effect in this source is smaller than its own sampling error. That bounds what any transfer from it can achieve, and it is a property of the SOURCE's power, not a measurement of how large the true effects in A/B/C are."
+    },
+    "k562_essential": {
+      "n_signatures": 2167,
+      "n_targets": 2048,
+      "n_panel_targets": 0,
+      "n_signatures_on_panel": 0,
+      "observed_genes_per_signature": 7940.0,
+      "median_abs_delta": 0.1589888632297516,
+      "median_se": 0.1903081238269806,
+      "median_abs_delta_over_se": 0.8354286551475525,
+      "median_genes_with_abs_z_gt_2": 813.0,
+      "median_genes_with_abs_z_gt_2_panel": null,
+      "frac_signatures_with_no_strong_gene": 0.0,
+      "median_n_cells": 117.0,
+      "interpretation": "median_abs_delta_over_se below 1 means the typical gene-level effect in this source is smaller than its own sampling error. That bounds what any transfer from it can achieve, and it is a property of the SOURCE's power, not a measurement of how large the true effects in A/B/C are."
+    },
+    "rpe1_essential": {
+      "n_signatures": 2509,
+      "n_targets": 2354,
+      "n_panel_targets": 0,
+      "n_signatures_on_panel": 0,
+      "observed_genes_per_signature": 8260.0,
+      "median_abs_delta": 0.23552143573760986,
+      "median_se": 0.24922269582748413,
+      "median_abs_delta_over_se": 0.9450240135192871,
+      "median_genes_with_abs_z_gt_2": 1557.0,
+      "median_genes_with_abs_z_gt_2_panel": null,
+      "frac_signatures_with_no_strong_gene": 0.0,
+      "median_n_cells": 71.0,
+      "interpretation": "median_abs_delta_over_se below 1 means the typical gene-level effect in this source is smaller than its own sampling error. That bounds what any transfer from it can achieve, and it is a property of the SOURCE's power, not a measurement of how large the true effects in A/B/C are."
+    }
+  },
+  "notes": [
+    "Signatures are pseudobulk contrasts. They estimate a mean response and cannot produce a VCC score, which needs single-cell counts.",
+    "min_cells filters what counts as a measurement; it is not applied to the evaluation set, where weak and null targets must remain (D-011)."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}

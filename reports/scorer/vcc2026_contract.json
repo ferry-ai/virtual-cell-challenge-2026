@@ -1,0 +1,167 @@
+{
+  "cell_eval2_version": "0.16.0",
+  "vcc_cli_version": "0.2.0",
+  "config_path": "C:\\Users\\ferra\\vcc2026-data\\.venv\\Lib\\site-packages\\cell_eval2\\configs\\vcc2026.yaml",
+  "official_config": {
+    "metrics": "vcc2026",
+    "cache_strict": true,
+    "pert_col": "target",
+    "control": "non-targeting",
+    "version": "v2",
+    "control_source": "real",
+    "input_type": "counts",
+    "max_counts_per_cell": 1000000.0,
+    "target_sum": 1000000.0,
+    "allow_discrete": false,
+    "allow_fractional_counts": false,
+    "autodetect_input_type": false,
+    "validate_input": true,
+    "filter": {
+      "filter_gene_min_cpm_cell": 5.0
+    },
+    "num_threads": -1,
+    "device": "auto",
+    "pert_chunk": 512,
+    "outdir": null,
+    "cache_real": null,
+    "cache_pred": null,
+    "discrimination": {
+      "distance": "cosine",
+      "rank_denominator": "n-1",
+      "exclude_target_gene": true,
+      "exclusion_scope": "panel",
+      "embed_key": null,
+      "tie_policy": "midrank"
+    },
+    "de": {
+      "p_adj_threshold": 0.05,
+      "min_abs_log2fc": 0.0,
+      "sort_by": "abs_log2_fold_change",
+      "method": "wilcoxon",
+      "nan_lfc_policy": "mask",
+      "backend": "auto",
+      "replicate_col": null,
+      "mean_calc": "arithmetic",
+      "epsilon": 1e-09,
+      "clip_value": null,
+      "fdr_scope": "per_pert",
+      "auc_pval_floor": "min_nonzero",
+      "auc_pval_floor_value": 1e-10
+    },
+    "gather_threads": -1,
+    "target_gene_map": null,
+    "bulk_target_sum": 50000.0
+  },
+  "scored_metrics": [
+    "pds_cosine",
+    "expr_mse_unbiased_capped_norm",
+    "de_wilcoxon_lfc_nmae",
+    "de_wilcoxon_direction_fidelity_yield_raw",
+    "de_wilcoxon_direction_reach_raw",
+    "de_wilcoxon_sig_jaccard"
+  ],
+  "metrics": {
+    "pds_cosine": {
+      "scored": true,
+      "direction": "higher",
+      "anchor": 1.0,
+      "clamp_low": null,
+      "clamp_high": null,
+      "metric_min": 0.0,
+      "penalty": "none",
+      "aggregation": "mean"
+    },
+    "expr_mse_unbiased": {
+      "scored": false,
+      "direction": null,
+      "anchor": null,
+      "clamp_low": 0.0,
+      "clamp_high": null,
+      "metric_min": null,
+      "penalty": "none",
+      "aggregation": "mean"
+    },
+    "expr_mse_unbiased_capped": {
+      "scored": false,
+      "direction": null,
+      "anchor": null,
+      "clamp_low": 0.0,
+      "clamp_high": null,
+      "metric_min": null,
+      "penalty": "none",
+      "aggregation": "mean"
+    },
+    "expr_distance_unbiased": {
+      "scored": false,
+      "direction": null,
+      "anchor": null,
+      "clamp_low": 0.0,
+      "clamp_high": null,
+      "metric_min": null,
+      "penalty": "none",
+      "aggregation": "mean"
+    },
+    "expr_real_mass_ratio": {
+      "scored": false,
+      "direction": null,
+      "anchor": null,
+      "clamp_low": 0.0,
+      "clamp_high": null,
+      "metric_min": null,
+      "penalty": "none",
+      "aggregation": "mean"
+    },
+    "expr_mse_unbiased_capped_norm": {
+      "scored": true,
+      "direction": "lower",
+      "anchor": 0.0,
+      "clamp_low": 0.0,
+      "clamp_high": 1.0,
+      "metric_min": null,
+      "penalty": "boxcox",
+      "aggregation": "ratio_of_sums"
+    },
+    "de_wilcoxon_lfc_nmae": {
+      "scored": true,
+      "direction": "lower",
+      "anchor": 0.0,
+      "clamp_low": -6.0,
+      "clamp_high": null,
+      "metric_min": null,
+      "penalty": "none",
+      "aggregation": "mean"
+    },
+    "de_wilcoxon_direction_fidelity_yield_raw": {
+      "scored": true,
+      "direction": "higher",
+      "anchor": 1.0,
+      "clamp_low": null,
+      "clamp_high": null,
+      "metric_min": 0.0,
+      "penalty": "none",
+      "aggregation": "mean"
+    },
+    "de_wilcoxon_direction_reach_raw": {
+      "scored": true,
+      "direction": "higher",
+      "anchor": 1.0,
+      "clamp_low": null,
+      "clamp_high": null,
+      "metric_min": 0.0,
+      "penalty": "none",
+      "aggregation": "mean"
+    },
+    "de_wilcoxon_sig_jaccard": {
+      "scored": true,
+      "direction": "higher",
+      "anchor": 1.0,
+      "clamp_low": null,
+      "clamp_high": null,
+      "metric_min": 0.0,
+      "penalty": "none",
+      "aggregation": "mean"
+    }
+  },
+  "score_formula": "(u - b) / (r - b); b = published baseline, r = split-half replicate",
+  "floor_note": "A metric with clamp_low=None and metric_min=0.0 is UNFLOORED: its worst reachable score is (0 - b) / (r - b), i.e. it depends on that context's baseline and replicate. clamp_low=-6.0 on de_wilcoxon_lfc_nmae is a hard floor; clamp_low=0.0 on expr_mse_unbiased_capped_norm makes that metric downside-free."
+}

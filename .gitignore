@@ -1,0 +1,29 @@
+# Heavy data and artifacts (they live in data_root, outside the repo)
+*.h5ad
+*.vcc
+*.zip
+*.npz
+*.pt
+*.ckpt
+data/
+predictions/
+models/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+.runtime-deps/
+
+# Secrets — the VCC token must never be committed
+.env
+*.token
+secrets/
+
+# OS
+Thumbs.db
+desktop.ini

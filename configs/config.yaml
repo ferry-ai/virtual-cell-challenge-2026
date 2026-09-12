@@ -1,0 +1,35 @@
+# Virtual Cell Challenge 2026 — project configuration
+#
+# Data lives outside the repo: the Desktop sits inside OneDrive and the
+# datasets run to tens of GB. data_root points outside OneDrive.
+# Override at runtime with the VCC2026_DATA_ROOT environment variable.
+
+data_root: "C:/Users/ferra/vcc2026-data"
+
+# --- Official challenge spec (from virtualcellchallenge.org) ---
+challenge:
+  n_genes: 18533
+  n_perturbations: 300
+  cells_per_pert: 400
+  n_control_cells_per_context: 18400
+  n_ntc_guides: 46
+  contexts_validation: ["A", "B", "C"]
+  contexts_test: ["D", "E", "F"]
+  # Format limits that `vcc prep` checks locally
+  max_stored_entries: 4750000000   # ~13,200 per cell at 360,000 cells
+  max_counts_per_cell: 1000000
+  pert_col: "target_gene"
+  context_col: "context"
+  ntc_label: "non-targeting"
+
+# --- Metrics (cell-eval2, vcc2026 profile) ---
+# Each is reference-scaled: 0 = cell context mean, 1 = a real replicate.
+# The overall score is an unweighted mean over 6 metrics x 3 contexts.
+metrics: ["pds", "mse", "nmae", "fid", "reach", "jac"]
+
+# --- Deadlines ---
+timeline:
+  submissions_open: "2026-08-20"
+  final_test_released: "2026-10-22"
+  submissions_close: "2026-11-05"
+  submissions_per_day: 2

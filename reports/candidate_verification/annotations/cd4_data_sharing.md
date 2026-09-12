@@ -1,0 +1,615 @@
+# Data artifacts
+
+## Cell-level data
+
+Filenames: `D*_*.assigned_guide.h5ad`
+
+Each AnnData object contains cell expression profiles for cells from one donor (D1, D2, D3, D4) and culture condition (Rest, Stim8hr, Stim48hr). Cells from different 10X lanes are concatenated. Each observation represents a cell. Each variable is a measured gene in the transcriptome.
+
+### Observation Metadata (`.obs`)
+Annotations for each single cell:
+
+- **`lane_id`**: 10X lane identifier (corresponds to one cellranger output)
+- **`n_genes_by_counts`**: Number of genes with non-zero counts detected in the cell
+- **`total_counts`**: Total UMI counts in the cell
+- **`pct_counts_mt`**: Percentage of counts mapping to mitochondrial genes
+- **`top_guide_UMI_counts`**: UMI counts for the most abundant guide RNA in the cell
+- **`guide_id`**: Unique identifier for the guide RNA detected in the cell (if more than one guide was detected, we annotate as "multi-guide")
+- **`perturbed_gene_name`**: Name of the gene perturbed by the detected guide (before target curation)
+- **`perturbed_gene_id`**: Ensembl gene ID of the perturbed gene (before target curation)
+- **`guide_type`**: Type of guide (e.g., targeting, non-targeting)
+- **`PuroR`**: Puromycin resistance marker expression level
+- **`guide_group`**: Group classification for the guide 
+- **`low_quality`**: Boolean flag indicating low-quality cells to be filtered
+
+### Variable Metadata (`.var`)
+Annotations for each measured gene:
+
+- **`gene_ids`**: Ensembl gene identifiers
+- **`feature_types`**: Type of feature (e.g., Gene Expression)
+- **`genome`**: Reference genome used for alignment
+- **`gene_name`**: Gene symbols
+- **`mt`**: Boolean flag indicating mitochondrial genes
+
+### Expression Matrix (`.X`)
+Single-cell gene expression data: UMI counts for each gene in each cell in sparse matrix format.
+
+## Pseudobulk-level data
+
+Filename: `GWCD4i.pseudobulk_merged.h5ad`
+
+This AnnData object contains pseudobulk expression profiles. Each observation represents a pseudobulk (aggregated by guide, donor and culture condition). Each variable is a measured gene in the transcriptome (`n_vars = 18,129`).
+
+### Observation Metadata (`.obs`)
+Annotations for each pseudobulk sample:
+
+- **`10xrun_id`**: processing batch identifier (R1 or R2)
+- **`donor_id`**: Donor identifier
+- **`culture_condition`**: Culture condition (Rest, Stim8hr, Stim48hr)
+- **`guide_id`**: Unique guide identifier
+- **`perturbed_gene_name`**: Name of the gene perturbed by the guide (note that the annotated gene in the guide identifier doesn't always match because we did some post-hoc curation of the target gene)
+- **`perturbed_gene_id`**: Ensembl gene ID of the perturbed gene
+- **`guide_type`**: Type of guide (e.g., targeting, non-targeting)
+- **`n_cells`**: Number of cells aggregated in this pseudobulk sample
+- **`total_counts`**: Total UMI counts across all cells in this pseudobulk
+- **`log10_n_cells`**: Log10-transformed number of cells
+- **`keep_min_cells`**: Boolean flag indicating sample passes minimum cell count threshold to be used for DE analysis
+- **`keep_effective_guides`**: Boolean flag indicating guide was considered effective (t-test significant) to be used for DE analysis
+- **`keep_total_counts`**: Boolean flag indicating sample passes total counts threshold to be used for DE analysis
+- **`keep_for_DE`**: Boolean flag indicating sample is suitable for differential expression analysis
+- **`keep_test_genes`**: Boolean flag indicating whether the perturbed gene passes criteria for differential expression analysis
+
+### Variable Metadata (`.var`)
+Annotations for each measured gene:
+
+- **`gene_ids`**: Ensembl gene identifiers
+- **`gene_name`**: Gene symbols
+
+### Expression Matrix (`.X`)
+Sum of UMI counts across cells for each gene in each pseudobulk sample
+
+## Differential Expression Results 
+
+Filename: `GWCD4i.DE_stats.h5ad`
+
+This AnnData object contains genome-wide differential expression results from a perturb-seq experiment in CD4+ T cells. Each observation represents a single perturbation (perturbed gene) tested in a specific culture condition (`n_obs = 33,983`). Each variable is a measured gene in the transcriptome (`n_vars = 10,282`).
+
+### Observation Metadata (`.obs`)
+Annotations for each perturbation-condition pair:
+
+- **`target_contrast_gene_name`**: Name of the perturbed gene  
+- **`culture_condition`**: culture condition (Rest, Stim8hr, Stim48hr)  
+- **`target_contrast`**: Unique identifier (Ensembl gene ID) of the perturbed gene  
+- **`chunk`**: differential expression processing group identifier  
+- **`n_cells_target`**: Number of cells with targeting guide for the perturbed gene  
+- **`n_up_genes`**: Count of significantly upregulated genes (10% FDR)  
+- **`n_down_genes`**: Count of significantly downregulated genes (10% FDR)  
+- **`n_total_de_genes`**: Total number of significantly differentially expressed genes (10% FDR)  
+- **`ontarget_effect_size`**: Effect size of the perturbation on its intended target gene  
+- **`ontarget_significant`**: Boolean indicating whether on-target knockdown was significant (10% FDR)  
+- **`target_baseMean`**: Mean baseline expression of the target gene  
+- **`neighboring_gene_KD`**: Boolean flag indicating that a gene adjacent to the target locus is also significantly knocked down (potential cis off-target).  
+- **`distal_offtarget_flag`**: Boolean flag indicating potential distal off-target effects (TSS within 10 kb of a predicted guide alignment site, with significant down-regulation).  
+- **`low_target_gex`**: Boolean flag indicating that the target gene has low baseline expression (on-target knockdown estimate may be unreliable).  
+- **`n_guides`**: Number of guides aggregated to produce the per-target DE estimate.  
+- **`single_guide_estimate`**: Boolean flag indicating that the DE estimate was produced from a single guide only.  
+- **`n_total_genes_category`**: Category based on number of trans-effects.  
+- **`n_downstream`**: Number of genes significantly affected by this perturbation, excluding the on-target effect (incoming trans-effects).  
+- **`guide_correlation_signif`**: Pearson correlation between the per-gene DE z-scores of the two guides targeting this gene, restricted to significant DE genes. NaN if the perturbation was not tested with two guides.  
+- **`guide_correlation_signif_pval`**: P-value for `guide_correlation_signif`.  
+- **`guide_correlation_all`**: Pearson correlation between the per-gene DE z-scores of the two guides, across all measured genes. NaN if the perturbation was not tested with two guides.  
+- **`guide_correlation_all_pval`**: P-value for `guide_correlation_all`.  
+- **`guide_n_signif_ontarget`**: Number of guides for this target with significant on-target knockdown.  
+- **`donor_correlation_all_mean`**: Mean across disjoint donor-pair comparisons of the Pearson correlation of per-gene DE log-fold-changes (all measured genes). NaN if the perturbation was not tested across donors.  
+- **`donor_correlation_all_min`**: Minimum across disjoint donor-pair comparisons of the same correlation. NaN if not tested across donors.  
+- **`donor_correlation_hits_mean`**: Mean cross-donor correlation restricted to per-target hit genes.  
+- **`donor_correlation_hits_min`**: Minimum cross-donor correlation on per-target hit genes.
+
+### Variable Metadata (`.var`)
+Annotations for each measured gene:
+
+- **`gene_ids`**: Gene identifiers (e.g., Ensembl IDs)
+- **`gene_name`**: Gene symbols
+
+### Variable Matrices (`.varm`)
+Summary statistics for measured genes across conditions:
+
+- **`measured_genes_stats_Stim8hr`**: Gene-level statistics for 8-hour stimulation condition
+- **`measured_genes_stats_Stim48hr`**: Gene-level statistics for 48-hour stimulation condition
+- **`measured_genes_stats_Rest`**: Gene-level statistics for resting/unstimulated condition
+
+### Data Layers (`.layers`)
+Differential expression statistics for each perturbation-gene pair (from DESeq2):
+
+- **`log_fc`**: Log2 fold change
+- **`p_value`**: Raw p-values from differential expression testing
+- **`adj_p_value`**: FDR-adjusted p-values
+- **`baseMean`**: Mean normalized expression of the gene across cells
+- **`lfcSE`**: Standard error of log fold change
+- **`zscore`**: Z-scores for differential expression (logFC / lfcSE)
+
+
+## Guide-level differential expression results
+
+Filename: `GWCD4i.DE_stats.by_guide.h5mu`
+
+MuData object containing genome-wide differential expression results computed independently for each individual sgRNA guide (rather than aggregating across guides). Two modalities, named by the alphanumeric rank of the guide ID within each (perturbed gene, culture condition) pair:
+
+- `guide_1` — DE results from the first guide of each (perturbed gene, culture condition) pair (sgRNA IDs sorted alphanumerically; lowest = `guide_1`).  
+- `guide_2` — DE results from the second guide. Targets tested with only a single passing guide are present in `guide_1` and missing from `guide_2`.
+
+Each modality is an AnnData with the same `.obs`, `.var`, and `.layers` schema as `GWCD4i.DE_stats.h5ad` (see "Differential Expression Results" above for column descriptions). The observation key is `{target_contrast}_{culture_condition}`.
+
+
+## Donor-pair differential expression results
+
+Filename: `GWCD4i.DE_stats.by_donors.h5mu`
+
+MuData object containing genome-wide differential expression results computed independently within each pair of donors (using cells from two of the four donors per fit). One modality per donor pair, named by the underscore-joined donor IDs (e.g. `CE0006864_CE0008162`).
+
+Each modality is an AnnData with the same `.obs`, `.var`, and `.layers` schema as `GWCD4i.DE_stats.h5ad` (see "Differential Expression Results" above for column descriptions). The observation key is `{target_contrast}_{culture_condition}`. A target is missing from a given donor-pair modality if it did not pass DE-eligibility filters within the cells from those two donors.
+
+
+## Supplementary tables
+
+### Sample metadata
+
+Filename: `sample_metadata.suppl_table.csv`
+
+This supplementary table contains experimental metadata for all samples in the perturb-seq screen. Each row represents a unique biological sample with information about the experimental setup, library preparation, sequencing details, and donor demographics.
+
+- **`cell_sample_id`**: Unique identifier for the biological sample
+- **`10xrun_id`**: Unique identifier for run/batch (R1 or R2)
+- **`donor_id`**: Donor identifier
+- **`culture_condition`**: Culture condition applied to the cells (Rest, Stim8hr, Stim48hr)
+- **`library_id`**: Unique identifier for the sequencing library (matches cellranger outputs)
+- **`library_prep_kit`**: Library preparation kit used for sample processing (e.g., GEMX_flex_v1)
+- **`probe_hyb_loading`**: Probe hybridization loading information (cell count and probe details)
+- **`GEM_loading`**: GEM loading information for 10x Genomics workflow
+- **`sequencing_platform`**: Sequencing platform used (e.g., Ultima)
+- **`age`**: Donor age in years
+- **`sex`**: Donor sex (Male/Female)
+- **`ethnicity`**: Donor ethnicity
+- **`weight_kg`**: Donor weight in kilograms
+- **`height_cm`**: Donor height in centimeters
+- **`smoker`**: Smoking status (Yes/No)
+- **`blood_type`**: Donor blood type
+- **`anticoagulant`**: Anticoagulant used for blood collection
+- **`harvest_date`**: Date of blood sample collection
+
+### Sample- and lane-level summary of QC metrics
+
+Filename: `QC_summaries_per_sample_lane.csv`
+
+Summary of quality control metrics per sample and 10x lane, with columns:
+- **`library_id`**: Library identifier (sample)
+- **`lane_id`**: 10x lane identifier
+- **`mean_total_counts`**: Mean total mRNA UMI counts per cell
+- **`mean_n_genes`**: Mean number of measured genes per cell
+- **`mean_pct_counts_mt`**: Mean percentage of mitochondrial counts per cell
+- **`mean_guide_UMI_counts`**: Mean raw guide UMI counts per cell (output from cellranger, before guide assignment)
+- **`mean_top_guide_UMI_counts`**: Mean guide UMI counts for the top-assigned guide per cell
+- **`n_cells`**: Number of cells
+- **`n_low_quality_cells`**: Number of low-quality cells removed
+- **`NTC single sgRNA`**: Number of cells assigned a single non-targeting control sgRNA
+- **`multi sgRNA`**: Number of cells assigned multiple sgRNAs
+- **`no sgRNA (>= 3 UMIs)`**: Number of cells with no sgRNA assignment (with >= 3 UMIs)
+- **`targeting single sgRNA`**: Number of cells assigned a single targeting sgRNA
+- **`n_unique_guides`**: Number of unique guides detected across all cells
+- **`n_unique_perturbed_genes`**: Number of unique perturbed genes detected across all cells
+- **`mean_cells_x_guide`**: Mean number of cells per guide
+- **`mean_cells_x_perturbed_gene`**: Mean number of cells per perturbed gene
+- **`experiment`**: Experiment identifier
+
+### Differential expression statistics for each perturbation-condition pair
+
+Filename: `DE_stats.suppl_table.csv`
+
+Tabular form of `.obs` from "Differential Expression Results" (`GWCD4i.DE_stats.h5ad`). All 27 columns are described in that section; the CSV additionally carries the observation key as a leading `index` column (`{target_contrast}_{culture_condition}`).
+
+### Guide library metadata
+
+Filename: `sgrna_library_metadata.suppl_table.csv`
+
+Contains metadata for the sgRNA guide library used in the genome-wide CRISPR perturbation screen. Each row represents a single guide RNA with its genomic targeting information, design details, and potential off-target considerations.
+
+- **`sgRNA`**: Unique identifier for the guide RNA
+- **`chromosome`**: Chromosome of the target site
+- **`pos`**: Genomic position of the guide target site
+- **`strand`**: DNA strand orientation of the target site (+ or -)
+- **`seq`**: Full guide RNA sequence
+- **`seq_last19bp`**: Last 19 base pairs of the guide sequence
+- **`PAM`**: boolean flag for presence of Protospacer Adjacent Motif sequence
+- **`note`**: Additional notes about the guide design
+- **`flag`**: Quality control or classification flag
+- **`target_gene_name_from_sgRNA`**: Target gene name derived from the sgRNA identifier
+- **`designed_target_gene_id`**: Ensembl gene ID of the intended target gene (as designed)
+- **`designed_target_gene_name`**: Gene name of the intended target gene (as designed)
+- **`target_gene_id`**: Ensembl gene ID of the actual/validated target gene
+- **`target_gene_name`**: Gene name of the actual/validated target gene
+- **`distance_to_closest_target_tss`**: Distance (in base pairs) from guide to the closest transcription start site (TSS) of the target gene
+- **`nearby_gene_within_2kb`**: Boolean or count indicating genes within 2 kb of the guide target site
+- **`nearby_gene_within_10kb`**: Boolean or count indicating genes within 10 kb of the guide target site
+- **`nearby_gene_within_20kb`**: Boolean or count indicating genes within 20 kb of the guide target site
+- **`nearby_gene_within_30kb`**: Boolean or count indicating genes within 30 kb of the guide target site
+- **`nearest_within2kb_gene_id`**: Ensembl gene ID of the nearest gene within 2 kb
+- **`nearest_within2kb_gene_name`**: Gene name of the nearest gene within 2 kb
+- **`nearest_within2kb_gene_dist`**: Distance to the nearest gene within 2 kb
+- **`nearest_within2kb_nontarget_gene_id`**: Ensembl gene ID of the nearest non-target gene within 2 kb
+- **`nearest_within2kb_nontarget_gene_name`**: Gene name of the nearest non-target gene within 2 kb
+- **`nearest_within2kb_nontarget_gene_dist`**: Distance to the nearest non-target gene within 2 kb
+- **`putative_bidirectional_promoter`**: Flag indicating potential bidirectional promoter region (may affect multiple genes)
+- **`other_alignment_chromosome`**: Chromosome with potential off-target alignment
+- **`other_alignment_pos`**: Genomic position of potential off-target alignment
+- **`nearest_nontarget_gene_id`**: Ensembl gene ID of the nearest non-target gene (regardless of distance)
+- **`nearest_nontarget_gene_name`**: Gene name of the nearest non-target gene (regardless of distance)
+- **`nearest_nontarget_gene_dist`**: Distance to the nearest non-target gene (regardless of distance)
+
+### Guide knockdown efficiency
+
+Filename: `guide_kd_efficiency.suppl_table.csv`
+
+Summary statistics on knockdown efficiency of each sgRNA guide across three culture conditions.
+
+- **(unnamed first column)**: sgRNA ID
+- **`guide_mean_expr`**: Mean log-normalized expression of the target gene in cells carrying this guide
+- **`guide_std_expr`**: Standard deviation of log-normalized target gene expression in cells carrying this guide (set to 0.01 for guides with zero variance, 100 for guides with only one cell)
+- **`guide_n`**: Number of cells carrying this guide
+- **`ntc_mean_expr`**: Mean log-normalized expression of the target gene in non-targeting control cells
+- **`ntc_std_expr`**: Standard deviation of log-normalized target gene expression in non-targeting control cells
+- **`ntc_n`**: Total number of non-targeting control cells across all samples
+- **`t_statistic`**: Welch's t-test statistic comparing guide expression vs NTC expression (negative values indicate knockdown)
+- **`p_value`**: Nominal p-value from Welch's t-test
+- **`adj_p_value`**: Benjamini-Hochberg FDR-adjusted p-value (minimum value capped at 1e-16)
+- **`signif_knockdown`**: Boolean indicating significant knockdown (adj_p_value < 0.1 AND t_statistic < 0)
+- **`perturbed_gene_id`**: Ensembl gene ID of the target gene
+- **`rank`**: Rank of the target gene based on mean expression in NTC cells (1 = lowest expressed)
+- **`high_confidence_no_effect_guides`**: Boolean indicating guides with high confidence of having no knockdown effect (criteria: non-significant knockdown, >10 cells with guide, target expression in NTCs >0.001)
+- **`culture_condition`**: Culture condition for this measurement (Rest, Stim8hr, or Stim48hr)
+
+### Guide off-target analysis results
+
+Filename: `guide_offtarget_analysis_results.csv`
+
+Candidate distal off-target effects analysis, identified from significantly downregulated genes with a seed match in their promoter and validated by correlation of the guide-level DE profile against the candidate off-target's target-level DE profile.
+
+- **`target`**: Name of the intended perturbed gene derived from the gRNA identifier
+- **`target_corrected`**: Name of the intended perturbed gene after HGNC symbol correction
+- **`culture_condition`**: Culture condition (Rest, Stim8hr, Stim48hr)
+- **`guide_id`**: gRNA ID
+- **`downreg_gene`**: Name of the candidate off-target gene (significantly downregulated in the guide-level DE and with a seed match in its promoter)
+- **`seed_match_len`**: Length (bp) of the longest 3'-end seed match between the sgRNA spacer and the candidate off-target gene's promoter
+- **`hamming_dist`**: Hamming distance between the full spacer and the matched genomic site (number of mismatched positions)
+- **`log_fc`**: Log fold-change of the candidate off-target gene in the guide-level differential expression (negative values indicate downregulation)
+- **`adj_pval`**: Adjusted p-value for the candidate off-target gene in the guide-level differential expression
+- **`corr_de_all`**: Pearson correlation between the guide's DE z-score profile and the candidate off-target gene's target-level DE z-score profile, computed across all genes (excluding the on-target gene and the focal off-target gene)
+- **`pval_de_all`**: P-value for `corr_de_all`
+- **`corr_de_signif`**: Pearson correlation between the guide's DE z-score profile and the candidate off-target gene's target-level DE z-score profile, restricted to genes significant (10% FDR) in either profile
+- **`pval_de_signif`**: P-value for `corr_de_signif`
+- **`n_de_signif`**: Number of genes used to compute `corr_de_signif` (union of significant genes in either profile, excluding on-target and focal off-target genes)
+- **`pval_signif_min`**: Equal to `pval_de_signif` when `corr_de_signif > 0`; NA otherwise
+- **`distal_offtarget`**: Boolean indicating whether this candidate was flagged as a putative distal off-target (TRUE when `corr_de_all > 0.1`, `corr_de_signif > 0.5`, `pval_de_signif < 0.01`, and `n_de_signif > 10`)
+
+### CD4+ T cell aging signature differential expression results
+
+Filename: `CD4T_aging_signature_DE_results_full.suppl_table.csv`
+
+Full differential expression results for DE analysis of age-associated changes in CD4+ T cells across all cohorts.
+
+- **`variable`**: Ensembl gene ID of the measured gene
+- **`gene_name`**: Gene symbol
+- **`baseMean`**: Mean baseline expression of the gene
+- **`log_fc`**: Log2 fold change
+- **`lfcSE`**: Standard error of log fold change
+- **`stat`**: Test statistic
+- **`p_value`**: Raw p-value from differential expression testing
+- **`adj_p_value`**: FDR-adjusted p-value
+- **`contrast`**: comparison cohort
+- **`zscore`**: Z-score for differential expression (log_fc / lfcSE)
+
+### Th2/Th1 polarization signature differential expression results
+
+Filename: `Th2_Th1_polarization_signature_DE_results_full.suppl_table.csv`
+
+
+Full differential expression results for DE analysis of Th2 vs Th1 changes in CD4+ T cells across all cohorts.
+
+
+- **`variable`**: Gene symbol
+- **`baseMean`**: Mean baseline expression of the gene
+- **`log_fc`**: Log2 fold change
+- **`lfcSE`**: Standard error of log fold change
+- **`stat`**: Test statistic
+- **`p_value`**: Raw p-value from differential expression testing
+- **`adj_p_value`**: FDR-adjusted p-value
+- **`contrast`**: comparison cohort
+- **`zscore`**: Z-score for differential expression (log_fc / lfcSE)
+
+### Cluster autoimmune disease enrichment results
+
+Filename: `cluster_autoimmune_enrichment_results.suppl_table.csv`
+
+Enrichment analysis results for autoimmune disease-associated genes within perturbation effect clusters.
+
+- **`cluster`**: Cluster identifier
+- **`disease`**: Disease category (autoimmune disease)
+- **`gene_set`**: Gene set being tested (downstream effects by condition)
+- **`odds_ratio`**: Odds ratio from Fisher's exact test
+- **`ci_low`**: Lower bound of 95% confidence interval for odds ratio
+- **`ci_high`**: Upper bound of 95% confidence interval for odds ratio
+- **`p_value`**: Raw p-value from Fisher's exact test
+- **`p_adj_fdr`**: FDR-adjusted p-value
+- **`cluster_size`**: Number of genes in the cluster
+- **`in_cluster_in_disease`**: Count of genes both in cluster and associated with disease
+- **`in_cluster_not_disease`**: Count of genes in cluster but not associated with disease
+- **`not_cluster_in_disease`**: Count of disease-associated genes not in cluster
+- **`not_cluster_not_disease`**: Count of genes neither in cluster nor associated with disease
+- **`intersecting_genes`**: List of genes that overlap between cluster and disease association
+- **`negative_control_disease`**: Boolean flag indicating if this is a negative control disease category
+
+### Aging prediction regulator coefficients
+
+Filename: `aging_prediction_condition_comparison_regulator_coefficients.csv`
+
+Model coefficients from linear models predicting the CD4+ T cell aging signature across different datasets (perturb-seq in CD4+ T cells vs K562 cells).
+
+- **`coef_mean`**: Mean coefficient value for the regulator across model fits
+- **`coef_sem`**: Standard error of the mean for the coefficient
+- **`coef_rank`**: Rank of the regulator coefficient (0-1 scale, higher = stronger effect)
+- **`regulator`**: Gene symbol of the regulator
+- **`known_regulators`**: Boolean indicating if this is a known regulator of aging
+- **`dataset_key`**: Dataset identifier for model comparison (e.g., CD4T_K562)
+- **`regulator_type`**: Type/category of regulator
+- **`celltype`**: Cell type or condition context (K562, Rest, Stim8hr, Stim48hr)
+- **`signature`**: Signature being predicted (CD4T)
+
+### Polarization prediction regulator coefficients
+
+Filename: `polarization_prediction_condition_comparison_regulator_coefficients.csv`
+
+Model coefficients from linear models predicting T cell activation and polarization signatures across different culture conditions.
+
+- **`coef_mean`**: Mean coefficient value for the regulator across model fits
+- **`coef_sem`**: Standard error of the mean for the coefficient
+- **`coef_rank`**: Rank of the regulator coefficient (0-1 scale, higher = stronger effect)
+- **`regulator`**: Gene symbol of the regulator
+- **`known_regulators`**: Boolean indicating if this is a known regulator of the signature
+- **`dataset_key`**: Dataset identifier for model comparison (e.g., activation_Rest, polarization_Stim8hr)
+- **`regulator_type`**: Type/category of regulator
+- **`celltype`**: Culture condition context (Rest, Stim8hr, Stim48hr)
+- **`signature`**: Signature being predicted (activation or polarization)
+
+### K562 vs CD4+ T cell comparison results
+
+Filename: `K562_comparison.suppl_table.csv`
+
+Cross-cell-type comparison of perturbation effects between K562 cells and CD4+ T cells. Each row represents a gene perturbed in both cell types, with correlation analysis of differential expression profiles.
+
+- **`target_contrast_gene_name`**: Name of the perturbed gene being compared between cell types
+- **`logfc_pearson_r`**: Pearson correlation coefficient comparing log fold change profiles between K562 and CD4+ T cells
+- **`logfc_pearson_pval`**: P-value for the Pearson correlation
+- **`random_r1`**: Pearson correlation with first random perturbation (negative control)
+- **`random_r2`**: Pearson correlation with second random perturbation (negative control)
+- **`random_r3`**: Pearson correlation with third random perturbation (negative control)
+- **`comparison`**: Comparison identifier (e.g., "K562 vs CD4+T (Rest)")
+- **`condition`**: Culture condition for the CD4+ T cell dataset (Rest, Stim8hr, or Stim48hr)
+- **`donor_correlation_mean`**: Mean correlation of log fold change profiles across donors (measure of reproducibility)
+- **`n_degs_MASH_K562`**: Number of differentially expressed genes (DEGs) identified by MASH in K562 cells
+- **`n_degs_MASH_Rest`**: Number of DEGs identified by MASH in CD4+ T cells (Rest condition)
+- **`n_degs_MASH_Stim48hr`**: Number of DEGs identified by MASH in CD4+ T cells (48-hour stimulation condition)
+- **`n_degs_MASH_Stim8hr`**: Number of DEGs identified by MASH in CD4+ T cells (8-hour stimulation condition)
+
+### Clustering of downstream genes
+
+Filename: `clustering_downstream_genes.csv.gz`
+
+Downstream genes of regulator clusters.
+
+- **hdbscan\_cluster:** Unique numeric identifier for the cluster from HDBSCAN.  
+- **downstream\_gene:** Name of the downstream target gene identified as differentially expressed (fdr \< 0.1) for at least one cluster member regulator.  
+- **downstream\_gene\_ids:** Unique gene identifier corresponding to the downstream gene name.  
+- **num\_of\_upstream:** Count of cluster member regulators that significantly (fdr \< 0.1) perturb the downstream gene.  
+- **sign\_coherence:** Measure of the consistency of regulation direction among significant upstream regulators (where \+1 indicates consistent upregulation and \-1 indicates consistent downregulation).  
+- **zscore\_rank\_negative\_regulation:** Rank-based ranking of the downstream gene based on summation of ranks of z-scores across cluster members, prioritizing strong downregulation.  
+- **zscore\_rank\_positive\_regulation:** Rank-based ranking of the downstream gene based on summation of inverted ranks of z-scores across cluster members, prioritizing strong upregulation.  
+- **condition:** Experimental condition under which the downstream effects were observed (Rest, Stim8hr, or Stim48hr).
+
+### Perturbation clustering results and annotations
+
+Filename: `clustering_results_and_annotations.csv`
+
+Clustering results and annotations for HDBSCAN clusters of perturbation effects, including manual annotations and pathway/complex enrichment results (CORUM, STRING, KEGG, Reactome).
+
+- **`cluster`**: Unique numeric identifier for the cluster from HDBSCAN.
+- **`manual_annotation`**: Manual annotation for the cluster based on database enrichment, gene ontology analysis, LLM lookup, and manual literature search.
+- **`intracluster_corr`**: Mean intraclass correlation of perturbation effects within the cluster.
+- **`cluster_size`**: Total count of perturbations in the cluster.
+- **`cluster_gene_size`**: Count of unique genes in the cluster.
+- **`cluster_member`**: Unique genes in the cluster.
+- **`rest_count`**: Count of perturbations in `Rest` condition.
+- **`stim8hr_count`**: Count of perturbations in `Stim8hr` condition.
+- **`stim48hr_count`**: Count of perturbations in `Stim48hr` condition.
+- **`cluster_member_with_condition`**: List of specific Gene_Condition pairs.
+- **`complex_corum`**: Top enriched CORUM complex name.
+- **`overlap_genes_corum`**: Genes overlapping with the CORUM complex.
+- **`overlap_fraction_corum`**: Fraction of cluster genes in the CORUM complex.
+- **`raw_p_value_corum`**: Hypergeometric p-value for CORUM enrichment.
+- **`complex_size_corum`**: Size of the CORUM complex.
+- **`overlap_size_corum`**: Count of overlapping genes (CORUM).
+- **`fdr_corum`**: Benjamini-Hochberg FDR for CORUM enrichment.
+- **`cluster_size_corum`**: Number of unique cluster genes used as the cluster-side size in the CORUM hypergeometric test (equal to `cluster_gene_size`).
+- **`complex_stringdb`**: Top enriched STRING cluster ID.
+- **`best_described_by`**: Functional description of the STRING cluster.
+- **`overlap_genes_stringdb`**: Genes overlapping with the STRING cluster.
+- **`overlap_fraction_stringdb`**: Fraction of cluster genes in the STRING cluster.
+- **`raw_p_value_stringdb`**: Hypergeometric p-value for STRING enrichment.
+- **`complex_size_stringdb`**: Size of the STRING cluster.
+- **`overlap_size_stringdb`**: Count of overlapping genes (STRING).
+- **`fdr_stringdb`**: Benjamini-Hochberg FDR for STRING enrichment.
+- **`cluster_size_stringdb`**: Number of unique cluster genes used as the cluster-side size in the STRING hypergeometric test (equal to `cluster_gene_size`).
+- **`complex_kegg`**: Top enriched KEGG pathway name.
+- **`overlap_genes_kegg`**: Genes overlapping with the KEGG pathway.
+- **`overlap_fraction_kegg`**: Fraction of cluster genes in the KEGG pathway.
+- **`raw_p_value_kegg`**: Hypergeometric p-value for KEGG enrichment.
+- **`complex_size_kegg`**: Size of the KEGG pathway.
+- **`overlap_size_kegg`**: Count of overlapping genes (KEGG).
+- **`fdr_kegg`**: Benjamini-Hochberg FDR for KEGG enrichment.
+- **`cluster_size_kegg`**: Number of unique cluster genes used as the cluster-side size in the KEGG hypergeometric test (equal to `cluster_gene_size`).
+- **`complex_reactome`**: Top enriched Reactome pathway name.
+- **`overlap_genes_reactome`**: Genes overlapping with the Reactome pathway.
+- **`overlap_fraction_reactome`**: Fraction of cluster genes in the Reactome pathway.
+- **`raw_p_value_reactome`**: Hypergeometric p-value for Reactome enrichment.
+- **`complex_size_reactome`**: Size of the Reactome pathway.
+- **`overlap_size_reactome`**: Count of overlapping genes (Reactome).
+- **`fdr_reactome`**: Benjamini-Hochberg FDR for Reactome enrichment.
+- **`cluster_size_reactome`**: Number of unique cluster genes used as the cluster-side size in the Reactome hypergeometric test (equal to `cluster_gene_size`).
+- **`corr_rest`**: Mean correlation of regulator perturbation effects in Rest condition.
+- **`corr_stim8hr`**: Mean correlation of regulator perturbation effects in Stim8hr condition.
+- **`corr_stim48hr`**: Mean correlation of regulator perturbation effects in Stim48hr condition.
+- **`corr_shared`**: Mean correlation of regulator perturbation effects for all pairwise perturbations that are not between the same condition.
+- **`condition_specificity`**: Condition specificity of regulator clusters.
+
+### TCR-signalling cluster arrayed validation bulk RNA-seq differential expression results
+
+Filename: `clusterTCR_deseq2_results.csv.gz`
+
+Full DESeq2 differential expression results from bulk RNA-seq of arrayed CRISPRi validation experiments for regulators clustering with the core TCR-signalling machinery. A separate model was fit within each culture condition (design `~ donor + PC1 + target_gene`, restricted to protein-coding genes), where `PC1` is the first principal component computed within that condition's samples and used as a sequencing-depth covariate, and the replicate batch is folded into the donor label so it is absorbed by the donor term. Each contrast compares one perturbed target against the pooled non-targeting controls. Each row is a (perturbed gene, culture condition, measured gene) result.
+
+- **`variable`**: Ensembl gene ID of the measured gene
+- **`baseMean`**: Mean baseline expression of the measured gene
+- **`log_fc`**: Log2 fold change
+- **`lfcSE`**: Standard error of log fold change
+- **`stat`**: DESeq2 test statistic
+- **`p_value`**: Raw p-value from differential expression testing
+- **`adj_p_value`**: FDR-adjusted p-value
+- **`contrast`**: Perturbed gene (CRISPRi target) tested against non-targeting controls. Candidate regulators are `ATP2A2`, `ATP2A3`, `HEXD` (early), `GPI`, `MEN1`, `SIK3` (late); `CD3G`, `LAT` and `VAV1` are core TCR-signalling reference perturbations.
+- **`condition`**: Culture condition in which the model was fit (`Stim8hr` or `Stim48hr`)
+- **`gene_name`**: Gene symbol of the measured gene
+- **`gene_biotype`**: Gene biotype of the measured gene (`protein_coding` for all rows)
+
+### Th1/Th2 arrayed validation summary
+
+Filename: `Th1Th2_validation_summary.suppl_table.csv`
+
+Combined summary of arrayed CRISPRi validation experiments for predicted Th1/Th2 regulators.
+
+- **target_name**: Perturbed gene name (CRISPRi target). `NTC` for non-targeting controls.
+- **condition**: Polarization conditions (`Non-polarized`, `Th1-polarized`, or `Th2-polarized`).
+- **pseq_crossguide_corr_signif**: Pearson correlation between the per-gene DE z-scores of the two CRISPRi guides targeting this gene, restricted to significant DE genes (perturb-seq, Stim8hr). NaN for single-guide targets.
+- **pseq_crossguide_n_signif_ontarget**: Number of guides for this target with significant on-target knockdown (in Stim8hr condition).
+- **pseq_crossdonor_corr_hits_mean**: Mean pairwise cross-donor Pearson correlation of per-gene DE z-scores on hit genes (in Stim8hr condition)
+- **pseq_n_total_de_genes**: Total number of significantly differentially expressed genes (10% FDR) for this target in the perturb-seq screen (Stim8hr condition), from `DE_stats.suppl_table.csv`. NaN for non-targeting controls.
+- **bulkRNA_batch**: Comma-separated list of bulk RNA-seq batches (`Diff081`, `Diff084`, `Diff089`) that contributed samples to this `(target, condition)` contrast.
+- **bulkRNA_n_donors**: Number of distinct donors in the bulk RNA-seq DE input.
+- **bulkRNA_Th1_mean_zscore**: Mean per-gene DE z-score across the Th1-signature genes.
+- **bulkRNA_Th1_sem_zscore**: Standard error of the mean for the Th1-signature z-scores.
+- **bulkRNA_Th1_pvalue**: Two-sided one-sample t-test of the Th1-signature z-scores against 0.
+- **bulkRNA_Th1_adj_pvalue**: Benjamini–Hochberg-adjusted p-value
+- **bulkRNA_Th2_mean_zscore**: Mean per-gene DE z-score across the Th2-direction signature genes.
+- **bulkRNA_Th2_sem_zscore**: Standard error of the mean of the Th2-direction signature z-scores.
+- **bulkRNA_Th2_pvalue**: Two-sided one-sample t-test of the Th2-signature z-scores against 0.
+- **bulkRNA_Th2_adj_pvalue**: Benjamini–Hochberg-adjusted p-value
+- **flow_batch**: Flow cytometry batch
+- **flow_{protein}_log2FC**: Mean across donors of `log2(protein % / NTC mean)`, with the NTC mean computed within `(batch, donor, condition)`.
+- **flow_{protein}_pval**: Welch's two-sample t-test of the perturbation's per-donor log2FCs for that protein vs the same-batch NTC log2FCs. `{protein}` is one of `IFNG`, `IL5`, `Tbet`, `GATA3`.
+- **flow_{protein}_fdr**: BH-adjusted p-value
+
+### IL10/IL21 arrayed validation flow cytometry results
+
+Filename: `IL10_IL21_arrayed_validation_combined.csv`
+
+Flow cytometry measurements from arrayed CRISPRi validation experiments for predicted IL10/IL21 regulators, pooled across differentiation batches. Each row is one sample (one batch × one donor × one guide).
+
+- **`Sample`**: Sample identifier (FCS filename)
+- **`IL10_perc`**: Percentage of IL10+ cells measured by flow cytometry
+- **`IL21_perc`**: Percentage of IL21+ cells measured by flow cytometry
+- **`Donor`**: Donor identifier (matches `donor_name` in `validation_donor_metadata.csv`)
+- **`Perturbation`**: CRISPRi guide identifier, formatted `{target gene}-{guide number}` (e.g. `MEN1-1`). Non-targeting controls are `NTC`, `NTC1`, `NTC2` and `NTC3`.
+- **`Batch`**: Differentiation batch (`Diff067`, `Diff068`, `Diff070`, `Diff087`, `Diff092`)
+
+### IL10/IL21 arrayed validation proliferation
+
+Filename: `proliferation_stats_IL10IL21.csv`
+
+Cell proliferation measurements from the same arrayed CRISPRi validation experiments. Each row is one well (one batch × one donor × one guide).
+
+- **`Batch`**: Differentiation batch (`Diff067`, `Diff068`, `Diff070`, `Diff087`, `Diff092`)
+- **`Donor`**: Donor identifier (matches `donor_name` in `validation_donor_metadata.csv`)
+- **`Perturbation`**: CRISPRi guide identifier, formatted `{target gene}-{guide number}` (e.g. `MEN1-1`). Non-targeting controls are `NTC`, `NTC1`, `NTC2` and `NTC3`.
+- **`fold_expansion`**: Fold change in cell number from seeding to harvest for the corresponding (Batch, Donor, Perturbation) well
+
+### IL10/IL21 arrayed validation bulk RNA-seq differential expression results
+
+Two files, differing in whether guides targeting the same gene are collapsed. Both were fit with PyDESeq2 on protein-coding genes, using donor as a blocking factor and the first principal component of the log-CPM matrix as a sequencing-depth covariate, and both contrast each perturbation against the pooled non-targeting controls.
+
+#### By guide
+
+Filename: `IL10IL21bulkRNAseq_DESeq2_results_byguide.csv`
+
+Results computed independently for each individual guide (design `~ donor + PC1 + guide_label`, 18 guides). Each row is a (guide, measured gene) result.
+
+- **(unnamed first column)**: Row index
+- **`variable`**: Ensembl gene ID of the measured gene
+- **`baseMean`**: Mean baseline expression of the measured gene
+- **`log_fc`**: Log2 fold change
+- **`lfcSE`**: Standard error of log fold change
+- **`stat`**: DESeq2 test statistic
+- **`p_value`**: Raw p-value from differential expression testing
+- **`adj_p_value`**: FDR-adjusted p-value
+- **`contrast`**: CRISPRi guide identifier tested against non-targeting controls, formatted `{target gene}-{guide number}`
+
+#### By gene
+
+Filename: `IL10IL21bulkRNAseq_DESeq2_results_bygene.csv`
+
+Results with guides collapsed to their parent target gene, so that (guide × donor) combinations act as replicates of the same perturbation (design `~ donor + PC1 + target_gene`, 9 genes). Each row is a (perturbed gene, measured gene) result. Columns are as for the by-guide table, except:
+
+- **`contrast`**: Perturbed gene (CRISPRi target) tested against non-targeting controls: `ATP2A2`, `CYB5R4`, `ELOB`, `GATA3`, `KDM1A`, `MED24`, `MEN1`, `NFKB2`, `SGF29`
+
+### Plasmid constructs used in validation experiments
+
+Filename: `stabl_constructs.csv`
+
+Plasmid constructs (sequences) used in the perturb-seq screen and/or the arrayed validation experiments.
+
+- **`sequence_name`**: Construct identifier (plasmid backbone or protospacer name)
+- **`sequence`**: Full nucleotide sequence of the construct
+- **`usage`**: Context in which the construct was used
+
+### Th1/Th2 arrayed validation bulk RNA-seq differential expression results
+
+Filename: `Th1Th2bulkRNAseq_DESeq2_results.csv.gz`
+
+Full DESeq2 differential expression results from bulk RNA-seq of arrayed CRISPRi validation experiments for predicted Th1/Th2 regulators. Each row is a (perturbed gene, polarization condition, measured gene) result.
+
+- **`variable`**: Ensembl gene ID of the measured gene
+- **`gene_name`**: Gene symbol of the measured gene
+- **`contrast`**: Perturbed gene contrast (target vs NTC)
+- **`target_contrast_gene_name`**: Name of the perturbed gene (CRISPRi target)
+- **`condition`**: Polarization condition (`Th0`, `Th1`, `Th2`)
+- **`batch`**: Comma-separated list of bulk RNA-seq batches contributing to this contrast (`Diff081`, `Diff084`, `Diff089`)
+- **`baseMean`**: Mean baseline expression of the measured gene
+- **`log_fc`**: Log2 fold change
+- **`lfcSE`**: Standard error of log fold change
+- **`stat`**: DESeq2 test statistic
+- **`zscore`**: Z-score for differential expression (log_fc / lfcSE)
+- **`p_value`**: Raw p-value from differential expression testing
+- **`adj_p_value`**: FDR-adjusted p-value
+
+### Follow-up validation donor metadata
+
+Filename: `validation_donor_metadata.csv`
+
+Donor demographics for the donors used in the arrayed CRISPRi validation experiments (IL10/IL21 and Th1/Th2 flow cytometry, proliferation, and bulk RNA-seq). Each row is one donor. Note that this table covers the follow-up validation donors only; donors in the genome-wide perturb-seq screen are described in `sample_metadata.suppl_table.csv`.
+
+- **`donor_name`**: Donor label used in the validation result tables (e.g. `Donor5`, `DonorA`)
+- **`donor_id`**: Internal donor identifier
+- **`age`**: Donor age in years
+- **`sex`**: Donor sex (Male/Female)
+- **`ethnicity`**: Donor ethnicity
+- **`weight_kg`**: Donor weight in kilograms
+- **`height_cm`**: Donor height in centimeters
+- **`smoker`**: Smoking status (Yes/No)
+- **`blood_type`**: Donor blood type
+- **`anticoagulant`**: Anticoagulant used for blood collection
+- **`harvest_date`**: Date of blood sample collection

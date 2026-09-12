@@ -1,0 +1,1890 @@
+{
+  "accno" : "E-MTAB-13324",
+  "attributes" : [ {
+    "name" : "Title",
+    "value" : "Mapping the functional impact of non-coding regulatory elements in primary T cells through single-cell CRISPR screens"
+  }, {
+    "name" : "ReleaseDate",
+    "value" : "2024-01-08"
+  }, {
+    "name" : "RootPath",
+    "value" : "E-MTAB-13324"
+  }, {
+    "name" : "AttachTo",
+    "value" : "ArrayExpress"
+  } ],
+  "section" : {
+    "accno" : "s-E-MTAB-13324",
+    "type" : "Study",
+    "attributes" : [ {
+      "name" : "Title",
+      "value" : "Mapping the functional impact of non-coding regulatory elements in primary T cells through single-cell CRISPR screens"
+    }, {
+      "name" : "Study type",
+      "value" : "RNA-seq of coding RNA from single cells",
+      "valqual" : [ {
+        "name" : "Ontology",
+        "value" : "EFO"
+      }, {
+        "name" : "TermId",
+        "value" : "EFO_0005684"
+      } ]
+    }, {
+      "name" : "Organism",
+      "value" : "Homo sapiens"
+    }, {
+      "name" : "Description",
+      "value" : "The vast majority of complex disease associations cannot be cleanly mapped to a gene, as they often lie within the non-cding fraction of the genome. Immune disease-associated variants are enriched within regulatory elements, such as distal enhancers, found in T cell-specific open chromatin regions. To identify the genes modulated by these regulatory elements, we developed a CRISPRi-based single-cell functional screening approach in primary human CD4+ T cells. We performed a proof-of-concept screen targeting 45 non-coding regulatory elements and 35 transcription start sites, each targeted by 4 different gRNAs. We profiled approximately 250,000 CD4+ T cell single-cell transcriptomes using 3' 10X Genomics."
+    } ],
+    "links" : [ [ {
+      "url" : "ERP150952",
+      "attributes" : [ {
+        "name" : "Type",
+        "value" : "ENA"
+      } ]
+    } ] ],
+    "subsections" : [ [ {
+      "accno" : "P-MTAB-136203",
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-136203"
+      }, {
+        "name" : "Type",
+        "value" : "sample collection protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0005518"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "The human biological samples in this study were sourced ethically and their research use was in accord with the terms of the informed consent under an IRB/EC approved protocol. Briefly, mononuclear cells from circulating blood were removed by apheresis. From these leukopaks, primary human CD4+ T cells were enriched using CliniMACS Prodigy setup and human CD4 MicroBeads (Miltenyi, 130-045-101). Following positive selection, cells were aliquoted and cryopreserved. The screen dataset contains two different scRNAseq runs: the first one (8 channels of a 10X Genomics chip B) was performed with fresh cells at the end of the CRISPRi experiment, 10 days post gRNA library transduction; the second one (32 channels across four 10XGenomics chips B) was performed using cells from the same experiment that were cryopreserved 10 days after gRNA transduction and thawed in puromycin-containing media (2 ug/ml) three days before the 10X Genomics run. To remove dead cells and debris, the cell suspension was treated with Lymphoprep (Axis-Shield, 12HHS09) the day before loading the cells into the 10X Chromium Controller."
+      }, {
+        "name" : "Hardware"
+      }, {
+        "name" : "Software"
+      } ]
+    }, {
+      "accno" : "P-MTAB-136204",
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-136204"
+      }, {
+        "name" : "Type",
+        "value" : "nucleic acid extraction protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0002944"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "10x Genomics Chromium Single Cell 3' Reagent Kit (v3 chemistry)"
+      }, {
+        "name" : "Hardware"
+      }, {
+        "name" : "Software"
+      } ]
+    }, {
+      "accno" : "P-MTAB-136205",
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-136205"
+      }, {
+        "name" : "Type",
+        "value" : "nucleic acid library construction protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0004184"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "3’ gene expression libraries (v3) were prepared following manufacturer’s instructions (10X Genomics, PN-1000075). gRNA amplicon libraries were generated from amplified cDNA following the protocol described in (Alda-Catalinas et al. 2021)."
+      }, {
+        "name" : "Hardware"
+      }, {
+        "name" : "Software"
+      } ]
+    }, {
+      "accno" : "P-MTAB-136206",
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-136206"
+      }, {
+        "name" : "Type",
+        "value" : "nucleic acid sequencing protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0004170"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "Multiplexed gene expression libraries were pooled at a 5:1 ratio with multiplexed gRNA libraries. The pool of gene expression and gRNA libraries were sequenced across two S4 and one S2 flow cells of a Novaseq 6000 with 28 cycles for read 1, 91 cycles for read 2 and 8 cycles for i7 index."
+      }, {
+        "name" : "Hardware",
+        "value" : "Illumina NovaSeq 6000"
+      }, {
+        "name" : "Software"
+      } ]
+    }, {
+      "accno" : "P-MTAB-136207",
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-136207"
+      }, {
+        "name" : "Type",
+        "value" : "growth protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0003789"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "Primary CD4+ T cell vials were thawed at the time of the experiments and cells cultured in RPMI 1640 (Gibco, 11340892) supplemented with 10% heat-inactivated FBS, 1x Glutamax (Thermo Fisher Scientific, 35050061), 1mM Sodium Pyruvate (Thermo Fisher Scientific, 11360088), 5mM HEPES (Thermo Fisher Scientific, 15630080), 1x non-essential aminoacids (Thermo Fisher Scientific, 11140035), 1x Penicillin/streptomycin (Thermo Fisher Scientific, 15070063), 55 µM 2-mercaptoethanol (Thermo Fisher Scientific, 21985023), and 15 ng/mL of recombinant human interleukin 2 (IL-2) (Peprotech, 200-02). Cells were kept in a humidified 5% CO2 atmosphere at 37°C."
+      }, {
+        "name" : "Hardware"
+      }, {
+        "name" : "Software"
+      } ]
+    }, {
+      "accno" : "P-MTAB-136208",
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-136208"
+      }, {
+        "name" : "Type",
+        "value" : "treatment protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0003969"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "Primary human CD4+ T cells expressing CBh-ZIM3-dCas9-Bsd were activated with Dynabeads Human T-Activator CD3/CD28 (Thermo Fisher Scientific, 11131D) at 1:1 cell:bead ratio and, 16-20h later, two million cells were transduced with the pooled CRISPRi CROPseq gRNA library at a <0.3 MOI. The transduction was performed in growth media supplemented with 5mM of HEPES (Thermo Fisher Scientific, 15630080) and spinoculation was carried out at 800 x g for 1h at 37˚C. 48h later, cells were selected with 2 ug/mL puromycin for 4 days, and selection was verified by ZsGreen expression in >95% of the cells by flow cytometry (Cytoflex S, Beckman Coulter). Cells were cultured in growth media for an additional 6 days before processing them for scRNA-seq."
+      }, {
+        "name" : "Hardware"
+      }, {
+        "name" : "Software"
+      } ]
+    }, {
+      "accno" : "P-MTAB-136209",
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-136209"
+      }, {
+        "name" : "Type",
+        "value" : "normalization data transformation protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0003816"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "Gene expression counts were normalised using the deconvolution method implemented in scran (Lun et al. 2016)."
+      }, {
+        "name" : "Hardware"
+      }, {
+        "name" : "Software",
+        "value" : "scran"
+      } ]
+    }, {
+      "accno" : "P-MTAB-136210",
+      "type" : "Protocols",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "P-MTAB-136210"
+      }, {
+        "name" : "Type",
+        "value" : "high throughput sequence alignment protocol",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO_0004917"
+        } ]
+      }, {
+        "name" : "Description",
+        "value" : "Sequencing data were processed using cellranger count v4.0, with default parameters. We used the human reference genome provided by 10X Genomics (hg38, Ensembl annotation version 98; https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz). Additionally, a feature reference file containing all gRNA sequences present in the library was supplied to quantify UMI counts for each gRNA in the gRNA libraries."
+      }, {
+        "name" : "Hardware"
+      }, {
+        "name" : "Software",
+        "value" : "cellranger v4"
+      } ]
+    } ], {
+      "type" : "Author",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "Ximena Ibarra-Soria"
+      }, {
+        "name" : "Email",
+        "value" : "ximena.x.ibarra-soria@gsk.com"
+      }, {
+        "name" : "Role",
+        "value" : "data analyst;investigator;submitter"
+      }, {
+        "name" : "affiliation",
+        "value" : "o1",
+        "reference" : true
+      } ]
+    }, {
+      "type" : "Author",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "Celia Alda Catalinas"
+      }, {
+        "name" : "Email",
+        "value" : "celia.x.aldacatalinas@gsk.com"
+      }, {
+        "name" : "Role",
+        "value" : "experiment performer;investigator"
+      }, {
+        "name" : "affiliation",
+        "value" : "o2",
+        "reference" : true
+      } ]
+    }, {
+      "accno" : "o1",
+      "type" : "Organization",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "GSK"
+      }, {
+        "name" : "Address",
+        "value" : "Gunnels Wood Rd, Stevenage SG1 2NY, United Kingdom"
+      } ]
+    }, {
+      "accno" : "o2",
+      "type" : "Organization",
+      "attributes" : [ {
+        "name" : "Name",
+        "value" : "GSK"
+      }, {
+        "name" : "Address",
+        "value" : "Gunnels Wood Rd, Stevenage SG1 2NY, United Kingdom"
+      } ]
+    }, {
+      "accno" : "s-samples-factors-E-MTAB-13324",
+      "type" : "Samples",
+      "attributes" : [ {
+        "name" : "Sample count",
+        "value" : "80"
+      }, {
+        "name" : "Experimental Designs",
+        "value" : "genetic modification design",
+        "valqual" : [ {
+          "name" : "Ontology",
+          "value" : "EFO"
+        }, {
+          "name" : "TermId",
+          "value" : "EFO:0001758"
+        } ]
+      }, {
+        "name" : "Experimental Factors",
+        "value" : "replicate",
+        "valqual" : [ {
+          "name" : "TermName",
+          "value" : "replicate"
+        } ]
+      }, {
+        "name" : "Experimental Factors",
+        "value" : "protocol",
+        "valqual" : [ {
+          "name" : "TermName",
+          "value" : "protocol"
+        } ]
+      } ],
+      "subsections" : [ {
+        "accno" : "exp_factor-E-MTAB-13324",
+        "type" : "Experimental Factors",
+        "attributes" : [ {
+          "name" : "Replicate",
+          "value" : "4"
+        }, {
+          "name" : "Replicate",
+          "value" : "38"
+        }, {
+          "name" : "Replicate",
+          "value" : "37"
+        }, {
+          "name" : "Replicate",
+          "value" : "6"
+        }, {
+          "name" : "Replicate",
+          "value" : "29"
+        }, {
+          "name" : "Replicate",
+          "value" : "15"
+        }, {
+          "name" : "Replicate",
+          "value" : "3"
+        }, {
+          "name" : "Replicate",
+          "value" : "22"
+        }, {
+          "name" : "Replicate",
+          "value" : "27"
+        }, {
+          "name" : "Replicate",
+          "value" : "17"
+        }, {
+          "name" : "Replicate",
+          "value" : "33"
+        }, {
+          "name" : "Replicate",
+          "value" : "32"
+        }, {
+          "name" : "Replicate",
+          "value" : "39"
+        }, {
+          "name" : "Replicate",
+          "value" : "5"
+        }, {
+          "name" : "Replicate",
+          "value" : "19"
+        }, {
+          "name" : "Replicate",
+          "value" : "... 25 other values"
+        }, {
+          "name" : "Protocol",
+          "value" : "10x gene expression profiling"
+        }, {
+          "name" : "Protocol",
+          "value" : "10x feature barcode (CRISPR screening)"
+        } ],
+        "subsections" : [ [ {
+          "accno" : "factors_0",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "9"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316541"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_1",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "10"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316542"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_2",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "11"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316543"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_3",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "12"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316544"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_4",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "13"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316545"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_5",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "14"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316546"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_6",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "15"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316547"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_7",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "16"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316548"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_8",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "17"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316549"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_9",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "18"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316550"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_10",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "19"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316551"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_11",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "20"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316552"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_12",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "21"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316553"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_13",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "22"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316554"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_14",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "23"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316555"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_15",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "24"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316556"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_16",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "25"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316557"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_17",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "26"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316558"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_18",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "27"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316559"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_19",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "28"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316560"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_20",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "29"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316561"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_21",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "30"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316562"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_22",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "31"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316563"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_23",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "32"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316564"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_24",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "33"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316565"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_25",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "34"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316566"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_26",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "35"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316567"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_27",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "36"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316568"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_28",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "37"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316569"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_29",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "38"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316570"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_30",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "39"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316571"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_31",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "40"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316572"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_32",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "1"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316573"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_33",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "2"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316574"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_34",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "3"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316575"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_35",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "4"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316576"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_36",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "5"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316577"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_37",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "6"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316578"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_38",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "7"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316579"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_39",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "8"
+          }, {
+            "name" : "protocol",
+            "value" : "10x feature barcode (CRISPR screening)"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316580"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_40",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "18"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316581"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_41",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "19"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316582"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_42",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "20"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316583"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_43",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "21"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316584"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_44",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "22"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316585"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_45",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "23"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316586"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_46",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "24"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316587"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_47",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "25"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316588"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_48",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "26"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316589"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_49",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "27"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316590"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_50",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "9"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316591"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_51",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "28"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316592"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_52",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "29"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316593"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_53",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "10"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316594"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_54",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "11"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316595"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_55",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "12"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316596"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_56",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "13"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316597"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_57",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "14"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316598"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_58",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "15"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316599"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_59",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "16"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316600"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_60",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "17"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316601"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_61",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "39"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316602"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_62",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "40"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316603"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_63",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "30"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316604"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_64",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "31"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316605"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_65",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "32"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316606"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_66",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "33"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316607"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_67",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "34"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316608"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_68",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "35"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316609"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_69",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "36"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316610"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_70",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "37"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316611"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_71",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "38"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316612"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_72",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "1"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316613"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_73",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "2"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316614"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_74",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "3"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316615"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_75",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "4"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316616"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_76",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "5"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316617"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_77",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "6"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316618"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_78",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "7"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316619"
+            } ]
+          } ]
+        }, {
+          "accno" : "factors_79",
+          "type" : "Factors Table",
+          "attributes" : [ {
+            "name" : "replicate",
+            "value" : "8"
+          }, {
+            "name" : "protocol",
+            "value" : "10x gene expression profiling"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "1",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316620"
+            } ]
+          } ]
+        } ] ]
+      }, {
+        "accno" : "source_chars-E-MTAB-13324",
+        "type" : "Source Characteristics",
+        "attributes" : [ {
+          "name" : "Organism",
+          "value" : "Homo sapiens"
+        }, {
+          "name" : "Age",
+          "value" : "54"
+        }, {
+          "name" : "Developmental stage",
+          "value" : "adult"
+        }, {
+          "name" : "Sex",
+          "value" : "male"
+        }, {
+          "name" : "Disease",
+          "value" : "normal"
+        }, {
+          "name" : "Organism part",
+          "value" : "blood"
+        }, {
+          "name" : "Individual",
+          "value" : "donor1"
+        }, {
+          "name" : "Cell type",
+          "value" : "T cell"
+        }, {
+          "name" : "Genotype",
+          "value" : "CRISPR RNAi pool with 4 gRNAs"
+        }, {
+          "name" : "Experiment",
+          "value" : "experiment2"
+        }, {
+          "name" : "Experiment",
+          "value" : "experiment1"
+        } ],
+        "subsections" : [ [ {
+          "accno" : "source_0",
+          "type" : "Characteristics Table",
+          "attributes" : [ {
+            "name" : "experiment",
+            "value" : "experiment2"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "64",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316541,ERS16316542,ERS16316543,ERS16316544,ERS16316545,ERS16316546,ERS16316547,ERS16316548,ERS16316549,ERS16316550,ERS16316551,ERS16316552,ERS16316553,ERS16316554,ERS16316555,ERS16316556,ERS16316557,ERS16316558,ERS16316559,ERS16316560,ERS16316561,ERS16316562,ERS16316563,ERS16316564,ERS16316565,ERS16316566,ERS16316567,ERS16316568,ERS16316569,ERS16316570,ERS16316571,ERS16316572,ERS16316581,ERS16316582,ERS16316583,ERS16316584,ERS16316585,ERS16316586,ERS16316587,ERS16316588,ERS16316589,ERS16316590,ERS16316591,ERS16316592,ERS16316593,ERS16316594,ERS16316595,ERS16316596,ERS16316597,ERS16316598,ERS16316599,ERS16316600,ERS16316601,ERS16316602,ERS16316603,ERS16316604,ERS16316605,ERS16316606,ERS16316607,ERS16316608,ERS16316609,ERS16316610,ERS16316611,ERS16316612"
+            } ]
+          } ]
+        }, {
+          "accno" : "source_1",
+          "type" : "Characteristics Table",
+          "attributes" : [ {
+            "name" : "experiment",
+            "value" : "experiment1"
+          }, {
+            "name" : "No. of Samples",
+            "value" : "16",
+            "valqual" : [ {
+              "name" : "url",
+              "value" : "https://www.ebi.ac.uk/ena/browser/view/ERS16316573,ERS16316574,ERS16316575,ERS16316576,ERS16316577,ERS16316578,ERS16316579,ERS16316580,ERS16316613,ERS16316614,ERS16316615,ERS16316616,ERS16316617,ERS16316618,ERS16316619,ERS16316620"
+            } ]
+          } ]
+        } ] ]
+      } ]
+    }, {
+      "accno" : "s-assays-data-E-MTAB-13324",
+      "type" : "Assays and Data",
+      "attributes" : [ {
+        "name" : "Assay count",
+        "value" : "288"
+      }, {
+        "name" : "Technology",
+        "value" : "Sequencing assay"
+      }, {
+        "name" : "Assay by Molecule",
+        "value" : "RNA assay"
+      } ],
+      "subsections" : [ {
+        "accno" : "processed-data",
+        "type" : "Processed Data",
+        "files" : [ [ {
+          "path" : "feature_reference.csv",
+          "size" : 33830,
+          "attributes" : [ {
+            "name" : "Description",
+            "value" : "Processed Data"
+          } ],
+          "type" : "file"
+        } ] ]
+      }, {
+        "accno" : "mt-E-MTAB-13324",
+        "type" : "MAGE-TAB Files",
+        "files" : [ [ {
+          "path" : "E-MTAB-13324.idf.txt",
+          "size" : 23568,
+          "attributes" : [ {
+            "name" : "Type",
+            "value" : "IDF File"
+          }, {
+            "name" : "Format",
+            "value" : "tab-delimited text"
+          }, {
+            "name" : "Description",
+            "value" : "Investigation Design Format (IDF)"
+          } ],
+          "type" : "file"
+        }, {
+          "path" : "E-MTAB-13324.sdrf.txt",
+          "size" : 597409,
+          "attributes" : [ {
+            "name" : "Type",
+            "value" : "SDRF File"
+          }, {
+            "name" : "Format",
+            "value" : "tab-delimited text"
+          }, {
+            "name" : "Description",
+            "value" : "Sample and Data Relationship Format (SDRF)"
+          } ],
+          "type" : "file"
+        } ] ]
+      } ]
+    }, {
+      "accno" : "score-E-MTAB-13324",
+      "type" : "MINSEQE Score",
+      "attributes" : [ {
+        "name" : "Exp. Design",
+        "value" : "*"
+      }, {
+        "name" : "Protocols",
+        "value" : "*"
+      }, {
+        "name" : "Variables",
+        "value" : "*"
+      }, {
+        "name" : "Processed",
+        "value" : "*"
+      }, {
+        "name" : "Raw",
+        "value" : "*"
+      } ]
+    } ]
+  },
+  "type" : "submission"
+}

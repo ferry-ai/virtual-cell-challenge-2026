@@ -1,0 +1,65 @@
+{
+  "review_date": "2026-09-12",
+  "data_root": "C:/Users/ferra/vcc2026-data",
+  "panel_csv": "C:/Users/ferra/vcc2026-data/raw/controls/pert_counts.csv",
+  "gene_axis_csv": "C:/Users/ferra/vcc2026-data/raw/controls/gene_names.csv",
+  "resource_policy": {
+    "metadata_request_max_mib": 4,
+    "remote_probe_max_mib": 64,
+    "pilot_max_mib": 128,
+    "suggested_working_rss_mib": 512,
+    "minimum_free_disk_gib": 10,
+    "full_atlas_download": false,
+    "cloud_billing_authorized": false
+  },
+  "sources": {
+    "cd4": {
+      "priority": 1,
+      "geo": "GSE314342",
+      "root": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/",
+      "primary_training_representation": "guide-donor-condition count pseudobulk",
+      "single_cell_ntc": "guide_type == non-targeting AND low_quality == False",
+      "single_cell_target_filter": "guide_type == targeting AND low_quality == False AND guide_id in curated sgrna_id",
+      "curated_map": "reports/candidate_verification/annotations/cd4_design.csv",
+      "do_not_pool": ["donor_id", "culture_condition", "lane_id", "guide_id"],
+      "do_not_filter_evaluation_by": ["keep_effective_guides", "keep_for_DE"]
+    },
+    "orion": {
+      "priority": 2,
+      "hf": "Xaira-Therapeutics/X-Atlas-Orion",
+      "split": "HCT116",
+      "ntc": "gene_target == Non-Targeting AND pass_guide_filter == True",
+      "counts": "paired gene_token_id and gene_expression lists",
+      "metadata_projection_columns": ["gene_target", "sample", "guide_target", "pass_guide_filter"],
+      "library_coverage": 300,
+      "license": "CC-BY-NC-SA-4.0",
+      "warning": "One row group can force reading most of a shard; batch_size is not an I/O cap."
+    },
+    "nadig_jurkat_hepg2": {
+      "priority": 3,
+      "geo": "GSE264667",
+      "purpose": "held-out context/target transfer benchmark; no direct panel coverage",
+      "ntc": "obs.gene == non-targeting"
+    },
+    "rpe1": {
+      "priority": 3,
+      "processed_figshare_article": 20029387,
+      "raw_singlecell_file_id": 35775606,
+      "purpose": "benchmark; existing local pseudobulk retained",
+      "ntc": "obs.gene == non-targeting"
+    },
+    "pisces": {
+      "status": "metadata_only_coming_soon",
+      "training_enabled": false,
+      "hf": "Xaira-Therapeutics/X-Atlas-Pisces"
+    }
+  },
+  "model_plan": {
+    "baselines": ["NTC resampling", "shrunk K562 delta", "CD4 delta", "Orion delta", "source-weighted delta"],
+    "shrinkage_grid": [0, 0.1, 0.25, 0.5, 1.0],
+    "low_rank_grid": [16, 32, 64],
+    "validation": ["hold out perturbation target", "hold out donor or study", "hold out context"],
+    "missing_genes": "mask source loss; never interpret missing as zero effect",
+    "evaluation": "all six VCC 2026 metrics in cell-eval2 0.16.0; null targets retained"
+  }
+}

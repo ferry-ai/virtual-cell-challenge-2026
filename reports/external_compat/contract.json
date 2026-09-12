@@ -1,0 +1,478 @@
+{
+  "source": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls",
+  "gene_axis": {
+    "n_genes": 18533,
+    "n_unique": 18533,
+    "n_duplicated": 0,
+    "order": "Ensembl gene ID (verified previously); the file carries symbols only",
+    "carries_ensembl_ids": false,
+    "first": [
+      "TSPAN6",
+      "TNMD",
+      "DPM1"
+    ],
+    "last": [
+      "SLC39A4",
+      "TKT",
+      "PRH1"
+    ]
+  },
+  "targets": {
+    "n": 300,
+    "n_on_gene_axis": 300
+  },
+  "manifest": {
+    "season": "2026",
+    "partition": "val",
+    "panel_id": "vcc2026-val-1",
+    "contexts": [
+      "A",
+      "B",
+      "C"
+    ],
+    "pert_col": "target_gene",
+    "context_col": "context",
+    "control_label": "non-targeting",
+    "n_genes": 18533,
+    "n_constructs": 300,
+    "per_context": {
+      "A": {
+        "n_perturbations": 300,
+        "control_cells": 18400,
+        "ground_truth_cells": 138400,
+        "n_ntc_ids": 46
+      },
+      "B": {
+        "n_perturbations": 300,
+        "control_cells": 18400,
+        "ground_truth_cells": 138400,
+        "n_ntc_ids": 46
+      },
+      "C": {
+        "n_perturbations": 300,
+        "control_cells": 18400,
+        "ground_truth_cells": 138400,
+        "n_ntc_ids": 46
+      }
+    },
+    "cells_per_pert": 400
+  },
+  "contexts": {
+    "A": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_A.h5ad",
+      "n_cells": 18400,
+      "n_genes": 18533,
+      "matrix_encoding": "csr",
+      "nnz": 109910478,
+      "library_size": {
+        "n": 18400,
+        "mean": 21133.53581521739,
+        "p1": 4469.95,
+        "p5": 6845.9,
+        "p25": 13986.0,
+        "p50": 20109.0,
+        "p75": 27234.5,
+        "p95": 38877.45,
+        "p99": 47490.14999999998
+      },
+      "genes_detected_per_cell": {
+        "n": 18400,
+        "mean": 5973.395543478261,
+        "p1": 2772.9700000000003,
+        "p5": 3634.0,
+        "p25": 5296.0,
+        "p50": 6147.0,
+        "p75": 6842.0,
+        "p95": 7619.0,
+        "p99": 8003.009999999998
+      },
+      "value_min": 1.0,
+      "value_max": 977.0,
+      "fraction_noninteger": 0.0,
+      "de_gate_genes_cpm_gt_5": 9929,
+      "obs_columns": [
+        "target_gene",
+        "context",
+        "ntc_id"
+      ],
+      "target_gene_levels": [
+        "non-targeting"
+      ],
+      "ntc_levels": [
+        "non-targeting-11",
+        "non-targeting-12",
+        "non-targeting-13",
+        "non-targeting-15",
+        "non-targeting-17",
+        "non-targeting-20",
+        "non-targeting-21",
+        "non-targeting-22",
+        "non-targeting-24",
+        "non-targeting-25",
+        "non-targeting-28",
+        "non-targeting-29",
+        "non-targeting-3",
+        "non-targeting-30",
+        "non-targeting-36",
+        "non-targeting-37",
+        "non-targeting-39",
+        "non-targeting-40",
+        "non-targeting-44",
+        "non-targeting-45",
+        "non-targeting-52",
+        "non-targeting-53",
+        "non-targeting-55",
+        "non-targeting-58",
+        "non-targeting-59",
+        "non-targeting-61",
+        "non-targeting-65",
+        "non-targeting-68",
+        "non-targeting-7",
+        "non-targeting-70",
+        "non-targeting-71",
+        "non-targeting-72",
+        "non-targeting-73",
+        "non-targeting-74",
+        "non-targeting-77",
+        "non-targeting-8",
+        "non-targeting-80",
+        "non-targeting-82",
+        "non-targeting-83",
+        "non-targeting-85",
+        "non-targeting-88",
+        "non-targeting-89",
+        "non-targeting-91",
+        "non-targeting-93",
+        "non-targeting-98",
+        "non-targeting-99"
+      ]
+    },
+    "B": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_B.h5ad",
+      "n_cells": 18400,
+      "n_genes": 18533,
+      "matrix_encoding": "csr",
+      "nnz": 101546777,
+      "library_size": {
+        "n": 18400,
+        "mean": 19989.939891304348,
+        "p1": 1006.99,
+        "p5": 5328.9,
+        "p25": 15721.5,
+        "p50": 19946.0,
+        "p75": 24708.75,
+        "p95": 32951.2,
+        "p99": 38812.03
+      },
+      "genes_detected_per_cell": {
+        "n": 18400,
+        "mean": 5518.846576086957,
+        "p1": 822.99,
+        "p5": 2920.0,
+        "p25": 5197.0,
+        "p50": 5756.0,
+        "p75": 6241.0,
+        "p95": 6839.0,
+        "p99": 7178.0
+      },
+      "value_min": 1.0,
+      "value_max": 1753.0,
+      "fraction_noninteger": 0.0,
+      "de_gate_genes_cpm_gt_5": 9626,
+      "obs_columns": [
+        "target_gene",
+        "context",
+        "ntc_id"
+      ],
+      "target_gene_levels": [
+        "non-targeting"
+      ],
+      "ntc_levels": [
+        "non-targeting-11",
+        "non-targeting-12",
+        "non-targeting-13",
+        "non-targeting-15",
+        "non-targeting-17",
+        "non-targeting-20",
+        "non-targeting-21",
+        "non-targeting-22",
+        "non-targeting-24",
+        "non-targeting-25",
+        "non-targeting-28",
+        "non-targeting-29",
+        "non-targeting-3",
+        "non-targeting-30",
+        "non-targeting-36",
+        "non-targeting-37",
+        "non-targeting-39",
+        "non-targeting-40",
+        "non-targeting-44",
+        "non-targeting-45",
+        "non-targeting-52",
+        "non-targeting-53",
+        "non-targeting-55",
+        "non-targeting-58",
+        "non-targeting-59",
+        "non-targeting-61",
+        "non-targeting-65",
+        "non-targeting-68",
+        "non-targeting-7",
+        "non-targeting-70",
+        "non-targeting-71",
+        "non-targeting-72",
+        "non-targeting-73",
+        "non-targeting-74",
+        "non-targeting-77",
+        "non-targeting-8",
+        "non-targeting-80",
+        "non-targeting-82",
+        "non-targeting-83",
+        "non-targeting-85",
+        "non-targeting-88",
+        "non-targeting-89",
+        "non-targeting-91",
+        "non-targeting-93",
+        "non-targeting-98",
+        "non-targeting-99"
+      ]
+    },
+    "C": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_C.h5ad",
+      "n_cells": 18400,
+      "n_genes": 18533,
+      "matrix_encoding": "csr",
+      "nnz": 108213983,
+      "library_size": {
+        "n": 18400,
+        "mean": 21156.536304347825,
+        "p1": 4684.99,
+        "p5": 7614.9,
+        "p25": 14414.0,
+        "p50": 20034.0,
+        "p75": 26741.5,
+        "p95": 38596.54999999999,
+        "p99": 46623.08999999998
+      },
+      "genes_detected_per_cell": {
+        "n": 18400,
+        "mean": 5881.19472826087,
+        "p1": 2778.98,
+        "p5": 3718.0,
+        "p25": 5182.0,
+        "p50": 6006.0,
+        "p75": 6720.0,
+        "p95": 7549.049999999999,
+        "p99": 7944.0
+      },
+      "value_min": 1.0,
+      "value_max": 2462.0,
+      "fraction_noninteger": 0.0,
+      "de_gate_genes_cpm_gt_5": 10124,
+      "obs_columns": [
+        "target_gene",
+        "context",
+        "ntc_id"
+      ],
+      "target_gene_levels": [
+        "non-targeting"
+      ],
+      "ntc_levels": [
+        "non-targeting-11",
+        "non-targeting-12",
+        "non-targeting-13",
+        "non-targeting-15",
+        "non-targeting-17",
+        "non-targeting-20",
+        "non-targeting-21",
+        "non-targeting-22",
+        "non-targeting-24",
+        "non-targeting-25",
+        "non-targeting-28",
+        "non-targeting-29",
+        "non-targeting-3",
+        "non-targeting-30",
+        "non-targeting-36",
+        "non-targeting-37",
+        "non-targeting-39",
+        "non-targeting-40",
+        "non-targeting-44",
+        "non-targeting-45",
+        "non-targeting-52",
+        "non-targeting-53",
+        "non-targeting-55",
+        "non-targeting-58",
+        "non-targeting-59",
+        "non-targeting-61",
+        "non-targeting-65",
+        "non-targeting-68",
+        "non-targeting-7",
+        "non-targeting-70",
+        "non-targeting-71",
+        "non-targeting-72",
+        "non-targeting-73",
+        "non-targeting-74",
+        "non-targeting-77",
+        "non-targeting-8",
+        "non-targeting-80",
+        "non-targeting-82",
+        "non-targeting-83",
+        "non-targeting-85",
+        "non-targeting-88",
+        "non-targeting-89",
+        "non-targeting-91",
+        "non-targeting-93",
+        "non-targeting-98",
+        "non-targeting-99"
+      ]
+    }
+  },
+  "ntc_guides": {
+    "A": {
+      "n_guides": 46,
+      "cells_per_guide": {
+        "n": 46,
+        "mean": 400.0,
+        "p1": 400.0,
+        "p5": 400.0,
+        "p25": 400.0,
+        "p50": 400.0,
+        "p75": 400.0,
+        "p95": 400.0,
+        "p99": 400.0
+      },
+      "cells_per_guide_min": 400,
+      "cells_per_guide_max": 400,
+      "median_library_per_guide": {
+        "n": 46,
+        "mean": 21133.535815217394,
+        "p1": 20070.879125,
+        "p5": 20439.19,
+        "p25": 20783.411874999998,
+        "p50": 21139.50375,
+        "p75": 21409.778125,
+        "p95": 21911.538125,
+        "p99": 22006.812625
+      },
+      "gate_genes_used": 9929,
+      "n_permutations": 8,
+      "guide_rms_log1p_shift": {
+        "observed_mean": 0.07433736041657171,
+        "observed_max": 0.11418122532029244,
+        "permuted_mean": 0.07191261675830198,
+        "permuted_max": 0.07676243677832101,
+        "inflation_observed_over_permuted": 1.0337179172108184,
+        "n_guides_above_permuted_max": 3
+      },
+      "genes_exceeding_permutation_envelope": 1986,
+      "genes_expected_by_chance": 1103.2222222222222,
+      "levels_preview": [
+        "non-targeting-11",
+        "non-targeting-12",
+        "non-targeting-13",
+        "non-targeting-15",
+        "non-targeting-17"
+      ]
+    },
+    "B": {
+      "n_guides": 46,
+      "cells_per_guide": {
+        "n": 46,
+        "mean": 400.0,
+        "p1": 400.0,
+        "p5": 400.0,
+        "p25": 400.0,
+        "p50": 400.0,
+        "p75": 400.0,
+        "p95": 400.0,
+        "p99": 400.0
+      },
+      "cells_per_guide_min": 400,
+      "cells_per_guide_max": 400,
+      "median_library_per_guide": {
+        "n": 46,
+        "mean": 19989.939891304348,
+        "p1": 19255.276375,
+        "p5": 19370.26625,
+        "p25": 19692.7025,
+        "p50": 20052.21125,
+        "p75": 20300.024375,
+        "p95": 20500.364375,
+        "p99": 20686.439125
+      },
+      "gate_genes_used": 9626,
+      "n_permutations": 8,
+      "guide_rms_log1p_shift": {
+        "observed_mean": 0.08956245759522022,
+        "observed_max": 0.09873791605738884,
+        "permuted_mean": 0.08907421911014682,
+        "permuted_max": 0.10249716967604532,
+        "inflation_observed_over_permuted": 1.005481254732861,
+        "n_guides_above_permuted_max": 0
+      },
+      "genes_exceeding_permutation_envelope": 1240,
+      "genes_expected_by_chance": 1069.5555555555557,
+      "levels_preview": [
+        "non-targeting-11",
+        "non-targeting-12",
+        "non-targeting-13",
+        "non-targeting-15",
+        "non-targeting-17"
+      ]
+    },
+    "C": {
+      "n_guides": 46,
+      "cells_per_guide": {
+        "n": 46,
+        "mean": 400.0,
+        "p1": 400.0,
+        "p5": 400.0,
+        "p25": 400.0,
+        "p50": 400.0,
+        "p75": 400.0,
+        "p95": 400.0,
+        "p99": 400.0
+      },
+      "cells_per_guide_min": 400,
+      "cells_per_guide_max": 400,
+      "median_library_per_guide": {
+        "n": 46,
+        "mean": 21156.53630434782,
+        "p1": 20229.372875,
+        "p5": 20397.659375,
+        "p25": 20999.4025,
+        "p50": 21147.057500000003,
+        "p75": 21454.758125,
+        "p95": 21914.031875,
+        "p99": 22065.8075
+      },
+      "gate_genes_used": 10124,
+      "n_permutations": 8,
+      "guide_rms_log1p_shift": {
+        "observed_mean": 0.07591023090340142,
+        "observed_max": 0.08025922410654118,
+        "permuted_mean": 0.07539196987535006,
+        "permuted_max": 0.08215060221984392,
+        "inflation_observed_over_permuted": 1.0068742205424295,
+        "n_guides_above_permuted_max": 0
+      },
+      "genes_exceeding_permutation_envelope": 1265,
+      "genes_expected_by_chance": 1124.888888888889,
+      "levels_preview": [
+        "non-targeting-11",
+        "non-targeting-12",
+        "non-targeting-13",
+        "non-targeting-15",
+        "non-targeting-17"
+      ]
+    },
+    "levels_shared_across_contexts": 46,
+    "levels_union_across_contexts": 46
+  },
+  "acceptance": {
+    "gene_names_csv": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\gene_names.csv",
+    "pert_counts_csv": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+    "reference_median_library_size": 20034.0,
+    "reference_median_genes_detected": 6006.0,
+    "cells_per_perturbation_required": 400
+  }
+}

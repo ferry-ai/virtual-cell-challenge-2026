@@ -1,0 +1,135 @@
+{
+  "sources": {
+    "k562_gwps": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external\\K562_gwps_raw_bulk_01.h5ad",
+      "shape": [
+        11258,
+        8248
+      ],
+      "targets_hit": 272,
+      "genes_hit": 7681,
+      "duplicate_gene_symbols": 2,
+      "unparsed_obs_count": 586,
+      "sample_min": 0.0,
+      "sample_max": 395.4545593261719,
+      "sample_fraction_noninteger": 0.9963186226964112,
+      "median_cells_filtered_per_row": 166.0,
+      "core_control_rows": 514
+    },
+    "k562_essential": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external\\K562_essential_raw_bulk_01.h5ad",
+      "shape": [
+        2285,
+        8563
+      ],
+      "targets_hit": 0,
+      "genes_hit": 7940,
+      "duplicate_gene_symbols": 2,
+      "unparsed_obs_count": 109,
+      "sample_min": 0.0,
+      "sample_max": 504.66351318359375,
+      "sample_fraction_noninteger": 0.9945341585892794,
+      "median_cells_filtered_per_row": 116.0,
+      "core_control_rows": 97
+    },
+    "rpe1": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external\\rpe1_raw_bulk_01.h5ad",
+      "shape": [
+        2679,
+        8749
+      ],
+      "targets_hit": 0,
+      "genes_hit": 8260,
+      "duplicate_gene_symbols": 1,
+      "unparsed_obs_count": 130,
+      "sample_min": 0.0,
+      "sample_max": 495.6000061035156,
+      "sample_fraction_noninteger": 0.9850844667962053,
+      "median_cells_filtered_per_row": 71.0,
+      "core_control_rows": 113
+    }
+  },
+  "contexts": {
+    "A": {
+      "n_cells": 18400,
+      "median_umi": 20109.0,
+      "de_gate_genes": 9929,
+      "k562_gwps": {
+        "de_gate_covered": 7094,
+        "de_gate_coverage_fraction": 0.7144727565716588,
+        "basal_umi_mass_coverage": 0.8643681970551549
+      },
+      "k562_essential": {
+        "de_gate_covered": 7324,
+        "de_gate_coverage_fraction": 0.7376372242924766,
+        "basal_umi_mass_coverage": 0.8725621771469501
+      },
+      "rpe1": {
+        "de_gate_covered": 7312,
+        "de_gate_coverage_fraction": 0.7364286433679121,
+        "basal_umi_mass_coverage": 0.8621404427172814
+      },
+      "any_source": {
+        "de_gate_covered": 8134,
+        "de_gate_coverage_fraction": 0.8192164367005741,
+        "basal_umi_mass_coverage": 0.9179572512273719
+      }
+    },
+    "B": {
+      "n_cells": 18400,
+      "median_umi": 19946.0,
+      "de_gate_genes": 9626,
+      "k562_gwps": {
+        "de_gate_covered": 6881,
+        "de_gate_coverage_fraction": 0.7148348223561188,
+        "basal_umi_mass_coverage": 0.8191518911140123
+      },
+      "k562_essential": {
+        "de_gate_covered": 7084,
+        "de_gate_coverage_fraction": 0.7359235404113859,
+        "basal_umi_mass_coverage": 0.8301316041867516
+      },
+      "rpe1": {
+        "de_gate_covered": 7521,
+        "de_gate_coverage_fraction": 0.7813214211510492,
+        "basal_umi_mass_coverage": 0.9042757251695196
+      },
+      "any_source": {
+        "de_gate_covered": 8196,
+        "de_gate_coverage_fraction": 0.8514440058175774,
+        "basal_umi_mass_coverage": 0.9400814394427431
+      }
+    },
+    "C": {
+      "n_cells": 18400,
+      "median_umi": 20034.0,
+      "de_gate_genes": 10124,
+      "k562_gwps": {
+        "de_gate_covered": 7058,
+        "de_gate_coverage_fraction": 0.6971552745950217,
+        "basal_umi_mass_coverage": 0.7980446468455473
+      },
+      "k562_essential": {
+        "de_gate_covered": 7271,
+        "de_gate_coverage_fraction": 0.7181943895693402,
+        "basal_umi_mass_coverage": 0.8072043302230772
+      },
+      "rpe1": {
+        "de_gate_covered": 7584,
+        "de_gate_coverage_fraction": 0.7491110233109443,
+        "basal_umi_mass_coverage": 0.8706029456391557
+      },
+      "any_source": {
+        "de_gate_covered": 8306,
+        "de_gate_coverage_fraction": 0.8204267088107468,
+        "basal_umi_mass_coverage": 0.9042593214614207
+      }
+    }
+  },
+  "caveats": [
+    "Symbol-exact matching; alias/Ensembl reconciliation still required.",
+    "CPM >5 reproduces the control-expression gate, before own-target exclusion.",
+    "core_control is an author annotation, not proof of a non-targeting guide.",
+    "Existing source checksums are not recomputed by this audit."
+  ]
+}

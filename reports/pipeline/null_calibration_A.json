@@ -1,0 +1,166 @@
+{
+  "scorer": {
+    "expected_cell_eval2": "0.16.0",
+    "cell_eval2": "0.16.0",
+    "vcc_cli": "0.2.0",
+    "matches_decision_D008": true,
+    "de_backends_available": {
+      "pdex": null,
+      "gpudge": null,
+      "cuda_available": false
+    },
+    "de_backend_resolved": "scanpy",
+    "de_backend_note": "de.backend='auto' picks gpudge (CUDA) > pdex > scanpy. The engines do not agree exactly, so a DE-based metric is only comparable across runs that resolved the same backend. Record it beside every number."
+  },
+  "profile": "vcc2026",
+  "pred": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\n003\\pred_A.h5ad",
+  "real": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\n003\\real_A.h5ad",
+  "normalized": false,
+  "raw_aggregate": {},
+  "aggregate_error": "ValueError: expr_mse_unbiased_capped_norm: the sum of expr_distance_unbiased over 6 perturbation(s) is -1.1626892799443204e-05, which is not positive, so the ratio of sums is undefined or sign-flipped. That means this reference panel carries no measurable aggregate effect at this cell depth -- a property of the REFERENCE, not of the submission. Individual negative values are normal and expected; only the SUM going non-positive is a failure. Fix or replace the reference panel.",
+  "per_metric_over_perturbations": {
+    "expr_mse_unbiased": {
+      "n_perturbations": 6,
+      "n_finite": 6,
+      "mean": 9.865944567573409e-05,
+      "median": 0.00011900300073920548,
+      "min": 3.1368323607203327e-06,
+      "max": 0.00014924553759314556
+    },
+    "expr_distance_unbiased": {
+      "n_perturbations": 6,
+      "n_finite": 6,
+      "mean": -1.9378154665738672e-06,
+      "median": 2.7155601597654526e-06,
+      "min": -5.1589007916431234e-05,
+      "max": 4.158913200220245e-05
+    },
+    "de_wilcoxon_direction_fidelity_yield_raw": {
+      "n_perturbations": 6,
+      "n_finite": 6,
+      "mean": 0.39613206564010905,
+      "median": 0.36917293233082704,
+      "min": 0.32014388489208634,
+      "max": 0.5169811320754717
+    },
+    "expr_real_mass_ratio": {
+      "n_perturbations": 6,
+      "n_finite": 6,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "expr_mse_unbiased_capped": {
+      "n_perturbations": 6,
+      "n_finite": 6,
+      "mean": 0.00023137294463573582,
+      "median": 0.0002537512011731266,
+      "min": 0.00013603621520635504,
+      "max": 0.0002815310272396698
+    },
+    "de_wilcoxon_sig_jaccard": {
+      "n_perturbations": 6,
+      "n_finite": 6,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    },
+    "de_wilcoxon_direction_reach_raw": {
+      "n_perturbations": 6,
+      "n_finite": 1,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "pds_cosine": {
+      "n_perturbations": 6,
+      "n_finite": 6,
+      "mean": 0.5,
+      "median": 0.5,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "note": "Raw aggregate metrics. Competition scores rescale each metric as (u - b) / (r - b) using a published baseline and a split-half replicate anchor, neither of which is available to this project. These numbers compare our own runs with each other and nothing else.",
+  "missing_scored_metrics": [
+    "expr_mse_unbiased_capped_norm",
+    "de_wilcoxon_lfc_nmae"
+  ],
+  "all_six_present": false,
+  "all_six_aggregated": false,
+  "design": {
+    "context": "A",
+    "n_pseudo_perturbations": 6,
+    "cells_per_pseudo": 300,
+    "n_control_cells": 3000,
+    "guide_groups": [
+      [
+        "non-targeting-29",
+        "non-targeting-3"
+      ],
+      [
+        "non-targeting-74",
+        "non-targeting-93"
+      ],
+      [
+        "non-targeting-25",
+        "non-targeting-83"
+      ],
+      [
+        "non-targeting-45",
+        "non-targeting-20"
+      ],
+      [
+        "non-targeting-77",
+        "non-targeting-70"
+      ],
+      [
+        "non-targeting-39",
+        "non-targeting-15"
+      ]
+    ],
+    "control_guides": [
+      "non-targeting-61",
+      "non-targeting-80",
+      "non-targeting-24",
+      "non-targeting-21",
+      "non-targeting-8",
+      "non-targeting-28",
+      "non-targeting-73",
+      "non-targeting-13",
+      "non-targeting-98",
+      "non-targeting-53",
+      "non-targeting-88",
+      "non-targeting-12",
+      "non-targeting-11",
+      "non-targeting-68",
+      "non-targeting-59",
+      "non-targeting-52",
+      "non-targeting-71",
+      "non-targeting-44",
+      "non-targeting-40",
+      "non-targeting-55",
+      "non-targeting-30",
+      "non-targeting-37",
+      "non-targeting-36",
+      "non-targeting-58",
+      "non-targeting-89",
+      "non-targeting-7",
+      "non-targeting-22",
+      "non-targeting-65",
+      "non-targeting-72",
+      "non-targeting-82",
+      "non-targeting-99",
+      "non-targeting-85",
+      "non-targeting-17",
+      "non-targeting-91"
+    ],
+    "seed": 2026,
+    "overdispersion": null,
+    "true_effect": "zero by construction: all cells are non-targeting controls"
+  },
+  "interpretation": "Any non-trivial DE here is a false positive. These numbers are the noise floor of the real data under the real scorer, NOT evidence that a perturbation can be predicted."
+}

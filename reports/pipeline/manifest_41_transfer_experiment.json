@@ -1,0 +1,113 @@
+{
+  "run_id": "e002",
+  "stage": "41_transfer_experiment",
+  "started_utc": "2026-09-12T14:32:04.147970+00:00",
+  "finished_utc": "2026-09-12T14:32:04.525159+00:00",
+  "seed": 2026,
+  "config": {
+    "run_id": "e002",
+    "out": null,
+    "signatures": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures",
+    "n_folds": 5,
+    "n_boot": 500,
+    "seed": 2026,
+    "allow_overwrite": false
+  },
+  "inputs": {
+    "signatures:k562_essential": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures\\k562_essential.npz",
+      "exists": true,
+      "bytes": 157151906,
+      "mtime_utc": "2026-09-12T14:01:58.009079+00:00",
+      "sha256": "b0e423aee0cb12ecc6865c5f4de86251f600e1c0848a79743f8cbb761b28a6ed",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "signatures:k562_gwps": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures\\k562_gwps.npz",
+      "exists": true,
+      "bytes": 197397287,
+      "mtime_utc": "2026-09-12T14:00:39.636641+00:00",
+      "sha256": "ba536d463363ae3c72272b75d3640ebf0eb21291f4a68a5a364fef88ff854d1a",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "signatures:rpe1_essential": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures\\rpe1_essential.npz",
+      "exists": true,
+      "bytes": 186572059,
+      "mtime_utc": "2026-09-12T14:03:21.545767+00:00",
+      "sha256": "78a0c30d1f56d1b38be2190bfd9c819de13527b3783e8f0d4d85383712b95457",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "outputs": {
+    "transfer_experiment": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e002\\transfer_experiment.json",
+      "exists": true,
+      "bytes": 33830,
+      "mtime_utc": "2026-09-12T14:32:04.147971+00:00",
+      "sha256": "51ac84441fbd30bba17e80854abf8a607bb991c0d19cd87a2fa7970832cae1a8",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "CROSS-LINEAGE: K562 genome-wide -> RPE1": {
+      "tuned_pearson_median": 0.09465770061681103,
+      "untuned_pearson_median": 0.09259321446081197,
+      "tuned_mse_vs_null": 0.9902952588900769,
+      "untuned_mse_vs_null": 1.162168027122425,
+      "tuned_sign_agreement_strong": 0.5554578564236594,
+      "untuned_sign_agreement_strong": 0.5554578564236594,
+      "tuned_sign_agreement_all": 0.528686327077748,
+      "tuned_cosine_median": 0.08829684089880711,
+      "tuned_frac_pearson_gt0": 0.9323404255319149
+    },
+    "CROSS-LINEAGE: K562 essential -> RPE1": {
+      "tuned_pearson_median": 0.07922889893667714,
+      "untuned_pearson_median": 0.07783980723823163,
+      "tuned_mse_vs_null": 0.9839515163132884,
+      "untuned_mse_vs_null": 1.1509403493341388,
+      "tuned_sign_agreement_strong": 0.5550464945442998,
+      "untuned_sign_agreement_strong": 0.5550464945442998,
+      "tuned_sign_agreement_all": 0.5257272328606929,
+      "tuned_cosine_median": 0.07986471109352196,
+      "tuned_frac_pearson_gt0": 0.9211692012873745
+    },
+    "SAME-LINE REFERENCE: K562 ess -> K562 gw": {
+      "tuned_pearson_median": 0.16930956944325481,
+      "untuned_pearson_median": 0.1630932995073206,
+      "tuned_mse_vs_null": 0.9221012742558665,
+      "untuned_mse_vs_null": 1.5351091432081638,
+      "tuned_sign_agreement_strong": 0.6495806245912019,
+      "untuned_sign_agreement_strong": 0.6495806245912019,
+      "tuned_sign_agreement_all": 0.5628485403848671,
+      "tuned_cosine_median": 0.1793538497586592,
+      "tuned_frac_pearson_gt0": 0.9603408600604055
+    }
+  },
+  "notes": [
+    "Amplitude alpha is selected on held-out targets by pooled MSE relative to the null, not by correlation, which is scale-invariant.",
+    "Not a VCC score. Pseudobulk cannot produce one."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}
