@@ -21,9 +21,26 @@ import pandas as pd
 import scipy.sparse as sp
 from anndata.io import write_elem
 
-__all__ = ["SubmissionWriter"]
+__all__ = ["SubmissionWriter", "indptr_dtype"]
 
 _CHUNK = 1 << 20  # ~1M values per HDF5 chunk: few enough to resize cheaply
+
+_INT32_MAX = int(np.iinfo(np.int32).max)
+
+
+def indptr_dtype(nnz: int):
+    """Integer width that can hold CSR row offsets for `nnz` stored values.
+
+    CSR offsets run up to `nnz` itself, and a full 2026 submission lands close
+    to int32's ceiling: at the realistic ~5,800 stored values per cell,
+    360,000 cells give about 2.09e9 offsets against a limit of 2,147,483,647 --
+    inside it by under 3%. A slightly denser prediction crosses it, and
+    `astype(np.int32)` past the limit **wraps silently to negative offsets**.
+    The result is a file that still opens as a valid h5ad and whose matrix is
+    garbage, which is the single worst failure this writer could produce. So the
+    width is chosen from the count rather than assumed.
+    """
+    return np.int32 if int(nnz) <= _INT32_MAX else np.int64
 
 
 class SubmissionWriter:
@@ -117,7 +134,7 @@ class SubmissionWriter:
                 [self._n_obs, self.n_genes], dtype=np.int64
             )
             self._file["X"].create_dataset(
-                "indptr", data=indptr.astype(np.int32), chunks=True
+                "indptr", data=indptr.astype(indptr_dtype(self._nnz)), chunks=True
             )
 
             perts = np.concatenate(self._perts) if self._perts else np.array([], dtype=object)
