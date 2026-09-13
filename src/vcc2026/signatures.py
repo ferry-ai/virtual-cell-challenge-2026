@@ -271,17 +271,37 @@ class SignatureSet:
         return path
 
     @classmethod
-    def read_npz(cls, path: Path) -> SignatureSet:
+    def read_npz(cls, path: Path, targets=None) -> SignatureSet:
+        """Load a persisted set, optionally only the rows of given targets.
+
+        `targets` matters on a memory-bound machine: the full k562_gwps set is
+        2,816 x 18,533 in three arrays, about 890 MB resident, while the 300
+        panel targets are about 90 MB. Each member is still decompressed whole
+        -- that is how npz works -- but it is sliced and released one at a time
+        instead of all three being held at full size.
+        """
         path = Path(path)
         rows = json.loads(path.with_suffix(".rows.json").read_text(encoding="utf-8"))
+        keep = None
+        if targets is not None:
+            wanted = set(targets)
+            keep = np.array(
+                [i for i, r in enumerate(rows) if r["target"] in wanted], dtype=np.int64
+            )
+            rows = [rows[int(i)] for i in keep]
+
         # Materialise each array ONCE. Indexing an NpzFile decompresses the whole
         # member on every access, so `arrays["delta"][i]` inside the loop would
         # decompress an (n x 18,533) matrix per signature -- minutes of CPU and a
         # transient allocation per row that exhausts an 8 GB machine.
+        arrays = {}
         with np.load(path) as handle:
-            delta = handle["delta"]
-            se = handle["se"]
-            observed = handle["observed"]
+            for name in ("delta", "se", "observed"):
+                full = handle[name]
+                arrays[name] = full if keep is None else full[keep]
+                del full
+        delta, se, observed = arrays["delta"], arrays["se"], arrays["observed"]
+
         out = cls()
         for i, row in enumerate(rows):
             out.add(
