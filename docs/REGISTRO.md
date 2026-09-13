@@ -87,6 +87,19 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/scorer_2026-09-12/vcc2026_contract.json` | attuale | — | Riestrazione del contratto dallo stesso `cell-eval2` 0.16.0, con il `floor_note` corretto. Sostituisce funzionalmente `reports/scorer/vcc2026_contract.json`, che resta come evidenza storica | [R-002](#r-002--reportsscorervcc2026_contractjson) |
 | `src/vcc2026/` (genes, signatures, pseudobulk, models, splits, evaluation, registry, manifest) | attuale | — | Moduli aggiunti il 2026-09-12, coperti da 42 test nuovi. I moduli preesistenti non sono stati toccati; `config.py` è stato solo esteso | — |
 | `scripts/40_build_signatures.py`, `41_transfer_experiment.py`, `42_null_calibration.py` | attuale | — | I tre stadi della pipeline. Eseguiti il 2026-09-12; i loro manifesti sono in `reports/pipeline/` | — |
+| `docs/SOTTOMISSIONE.md` | attuale | — | Contratto di sottomissione verificato il 2026-09-12 sulle fonti ufficiali e sulla CLI installata, comandi esatti per rigenerare, convalidare, inviare e leggere i punteggi, e la distinzione fra punteggi normalizzati e metriche locali. La sezione 4 è **compilata** dalla prima sottomissione del 2026-09-13 | — |
+| `reports/trial_2026-09-12/` | attuale | — | Artefatti leggeri del primo trial locale: calibrazione annidata, confronto fuori campione, misure di risorse, convalide e log di `vcc prep`. Introdotti da [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md). Le previsioni pesanti restano in `artifact_root` | [R-011](#r-011--reportstrial_2026-09-12) |
+| `reports/trial_2026-09-12/calibration_c001_peak_memory_unrecorded.json` | superato | `reports/trial_2026-09-12/calibration_c002.json` | Stessa esecuzione e numeri identici; il solo campo `peak_rss_bytes` è `null` perché il lettore di memoria di picco su Windows non era ancora corretto. Conservato perché una riesecuzione non sovrascrive un'evidenza | [R-011](#r-011--reportstrial_2026-09-12) |
+| `configs/trials.yaml` | attuale | — | Definizione dei due trial: regola di previsione, dati leggibili, seed, e ciò che il trial **non** è. `src/vcc2026/trials.py` lo legge per freeze, generazione e packaging, così un run non può contraddire il trial che dichiara | — |
+| `src/vcc2026/inference.py`, `resources.py`, `trials.py` | attuale | — | Moduli aggiunti il 2026-09-12: trasformazione da log2FC a conteggi con vincolo compositivo (D-015), misura di RAM/disco e memoria di picco, definizione dei trial. Coperti da 42 test in `tests/test_trial_inference.py` | — |
+| `scripts/43_freeze_trial.py`, `44_calibrate_transfer.py`, `45_generate_prediction.py`, `46_validate_package.py`, `47_resource_report.py` | attuale | — | Gli stadi del trial: congelamento dello stato, calibrazione annidata, generazione, convalida e packaging, consolidamento delle risorse. Eseguiti il 2026-09-12; i risultati leggeri sono in `reports/trial_2026-09-12/` | — |
+| `tests/test_trial_inference.py` | attuale | — | 42 test su prevenzione delle fughe di informazione nella selezione, conservazione dell'identità dei contesti, generazione dei conteggi e ampiezza degli offset CSR | — |
+| `reports/trial_2026-09-13/` | attuale | — | Artefatti del packaging a memoria limitata di trial-01: report della corsa, manifesto, e `source_snapshot.tar.gz` — **il codice, non i suoi hash**: 66 file, 180 KB, verificato che ricostruisca i moduli byte per byte. Il `.vcc` (3,91 GiB) resta in `artifact_root`. Introdotti da [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) | [R-012](#r-012--reportstrial_2026-09-13) |
+| `reports/trial_2026-09-13/submit_PNn227rxP3bVByS37W41.json`, `status_PNn227rxP3bVByS37W41.json`, `submission_PNn227rxP3bVByS37W41.md` | attuale | — | La prima sottomissione valutata: output verbatim di `vcc submit` e `vcc status`, più la loro lettura ordinata. **Punteggio 0,045929, rango 446/920.** Non sovrascrivere: sono l'unica prova di che cosa il server ha risposto quel giorno | [R-012](#r-012--reportstrial_2026-09-13) |
+| `src/vcc2026/packaging.py` | attuale | — | Convalida e packaging `.vcc` senza materializzare la matrice. Le convalide sui metadati **sono** quelle ufficiali, importate e chiamate; quelle sulla matrice sono equivalenti a blocchi. Rifiuta esplicitamente i layout che non sa preservare | — |
+| `scripts/48_package_prediction.py` | attuale | — | Lo stadio che convalida, impacchetta e verifica. Esce con codice diverso da zero se qualcosa fallisce, e non scrive nulla se la convalida non è pulita | — |
+| `tests/test_packaging_parity.py` | attuale | — | 41 test di parità contro `vcc prep` 0.2.0 su fixture a forma ufficiale completa: stessa accettazione, stesso rifiuto, stesse codifiche HDF5. Circa 98 s | — |
+| `notebooks/kaggle_package_trial01.ipynb` | attuale | — | Percorso remoto per la stessa implementazione su Kaggle CPU. **Non eseguito**: il run locale è riuscito. Resta pronto per il set finale D/E/F | — |
 | `tests/test_pipeline_contracts.py` | attuale | — | 42 test sui contratti che fallirebbero in silenzio: maschere contro zeri, fuga di bersagli negli split, sovrascrittura di manifesti, livelli di verifica del registry | — |
 
 ## Dati
@@ -136,10 +149,23 @@ dipendenza di runtime, ricreabile).
   4. La tabella "Plan" dà la fase 1 come "next" senza dire che è bloccata dall'assenza
      di un bundle di valutazione reale e dall'RNA di H1 2025 non scaricato.
   5. Il layout elenca `notebooks/`, che è vuota.
+  6. *Aggiunta il 2026-09-12 (CP-0004).* La tabella "Plan" dà la fase 0 come **done**
+     con la formula «streaming submission writer verified against official `prep`».
+     **Non esiste alcun log di `vcc prep` anteriore al 2026-09-12**, e l'unico
+     artefatto candidato, `smoke.h5ad`, contiene 3 perturbazioni su 300. Misurato il
+     2026-09-12: `vcc prep` con le opzioni predefinite **rifiuta** un file che non
+     predice esattamente le 300 perturbazioni ufficiali per contesto. Resta possibile
+     che sia stato eseguito con `--no-verify-targets`, nel qual caso avrebbe
+     verificato asse genico, contesti, conteggi per perturbazione e conteggi grezzi
+     ma **non** la lista delle perturbazioni. L'affermazione va letta come «il writer
+     produce un h5ad strutturalmente valido», che è sostenuta da
+     `scripts/02_smoke_test_submission.py`, non come «la CLI ufficiale ha validato una
+     sottomissione», che non lo è.
 - **Evidenza contraria:** `docs/candidate_adversarial_review_2026-09-12.md` §§2–3;
   `reports/candidate_verification/scorer_clamp_check.json`;
   `reports/context_identity/markers.csv`; elenco di
-  `C:/Users/ferra/vcc2026-data/external/vcc2025/`.
+  `C:/Users/ferra/vcc2026-data/external/vcc2025/`; per la 6, il log
+  `prep_dry_run.log` del pilot in `reports/trial_2026-09-12/`.
 - **Cosa resta valido:** descrizione del compito, formato di sottomissione, tabella
   delle sei metriche, layout dei dati, setup, wrapper `.cmd`, autenticazione,
   scadenze. È la parte più consultata ed è corretta.
@@ -449,6 +475,82 @@ dipendenza di runtime, ricreabile).
   veri, le metriche proxy scendono al rango di diagnostiche di supporto, e l'ampiezza
   si ricalibra su ciò che assegna davvero i punti.
 
+### R-011 — `reports/trial_2026-09-12/`
+
+- **Perché è segnalato:** contiene i primi artefatti a forma di sottomissione del
+  progetto — due previsioni complete per A/B/C e la loro convalida — ed è quindi il
+  materiale che più facilmente verrebbe letto come "abbiamo partecipato". Non è così:
+  nulla è stato caricato, nessuna quota è stata consumata, e non esiste alcun
+  punteggio di leaderboard. La scheda esiste per tenere questa cautela attaccata ai
+  file. Copre anche `calibration_c001_peak_memory_unrecorded.json`, marcato `superato`.
+- **Affermazioni contestate:** che una convalida di formato superata dica qualcosa
+  sulla qualità predittiva; che `trial-00-controls` sia "il baseline a punteggio zero"
+  della gara; che l'α di 0,197 misurato su K562 → RPE1 valga per A, B o C; e che le
+  metriche proxy pseudobulk si convertano in un punteggio VCC. Nessuna delle quattro
+  segue.
+- **Evidenza contraria:** `held_out_comparison.md` §3, che separa misura,
+  interpretazione e ipotesi riga per riga; `q00prep_prep_dry_run.log` e
+  `q01prep_prep_dry_run.log`, che registrano il fallimento della convalida ufficiale
+  per esaurimento di memoria; `configs/trials.yaml` campo `not_this` di
+  `trial-00-controls`; e il campo `uploaded: false` di ogni `validation.json`.
+  `resources.json` copre i quattro run di generazione (due pilot e due completi); i due
+  tentativi di packaging hanno i propri `q00prep_validation.json` e
+  `q01prep_validation.json`.
+- **Cosa resta valido:** tutte le misure, con il loro protocollo. La calibrazione è
+  annidata e il bootstrap ricampiona solo previsioni fuori campione; la verifica del
+  contratto è ricavata dal file scritto, non dal writer che l'ha prodotto; la
+  provenienza dei contesti è verificata contro i profili basali, che è la cosa che
+  `vcc prep` non può fare.
+- **È ancora usato o citato:** sì, da `docs/PROGETTO.md` §3, da `docs/SOTTOMISSIONE.md`,
+  da D-015, D-016 e D-017, e dall'aggiornamento 2026-09-12 di D-006 e D-012.
+- **Disposizione proposta:** tenere tutto. Citare l'α di 0,197 come proprietà della
+  coppia K562 → RPE1, mai come costante del progetto; citare la riduzione dell'1,01% di
+  MSE come metrica proxy pseudobulk, mai come punteggio; e non descrivere i pacchetti
+  come "validati dalla CLI ufficiale" finché `vcc prep` non è stato eseguito su di essi
+  con esito positivo.
+- **Cosa chiuderebbe la revisione:** un'esecuzione di `vcc prep` completata su una
+  macchina con RAM sufficiente, il cui log entri qui accanto; e, per la parte
+  predittiva, il bundle di valutazione a singola cellula di R-1 della
+  [roadmap](ROADMAP.md).
+
+### R-012 — `reports/trial_2026-09-13/`
+
+- **Perché è segnalato:** documenta un `.vcc` valido, ed è il materiale che più
+  facilmente verrebbe letto come "siamo pronti a vincere" o, peggio, come "il server
+  ha accettato". Nessuna delle due cose. La scheda esiste per tenere attaccata ai
+  file la distinzione fra tre affermazioni diverse: convalida di formato, parità con
+  lo strumento ufficiale, accettazione del server.
+- **Affermazioni contestate:** che un `.vcc` valido dica qualcosa sulla qualità
+  predittiva; che la parità con `vcc prep` implichi l'accettazione da parte del
+  servizio di scoring; che i test di parità coprano anche la densità; e che il
+  picco di 0,52 GiB sia garantito su qualunque previsione.
+- **Evidenza contraria:** `k01pack_packaging.json`, campi `uploaded: false` e `note`;
+  [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §4, che elenca il
+  confine della parità e dichiara che i fixture sono a densità sintetica.
+- **Cosa resta valido:** tutte le misure. L'archivio è verificato con il validatore
+  ufficiale del contenitore, e il suo payload è stato confrontato **con l'input**
+  array per array: `X/data`, `X/indices` e `X/indptr` identici bit a bit, asse genico
+  e etichette identici, con la sola trasformazione dell'indice di `obs` documentata e
+  verificata positivamente.
+- **È ancora usato o citato:** sì, da `docs/PROGETTO.md`, `docs/SOTTOMISSIONE.md`,
+  `docs/ESECUZIONE_REMOTA.md`, e da D-018 e D-019.
+- **Disposizione proposta:** tenere tutto. Non descrivere mai il `.vcc` come
+  "accettato" finché una sottomissione non è stata valutata; citare il picco di
+  0,52 GiB come misurato su questa previsione, non come proprietà generale.
+- **Chiusa il 2026-09-13, per la parte sull'accettazione del server.** La
+  sottomissione `PNn227rxP3bVByS37W41` è arrivata a `published` con
+  `md5_verified: true` ed `error_info: null`: il servizio di scoring ha letto e
+  valutato il `.vcc` prodotto da questo percorso
+  ([CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md) §3.1). Restano
+  contestate le altre affermazioni della scheda: un `.vcc` valido continua a non dire
+  nulla sulla qualità predittiva — misurata ora, e bassa: 0,046 — e i fixture di
+  parità continuano a non esercitare la densità.
+- **Cosa chiuderebbe la revisione:** per l'accettazione del server, è già chiusa (vedi
+  sopra). Per il resto, niente che riguardi il packaging: la qualità predittiva si
+  affronta con R-1 e R-3 della [roadmap](ROADMAP.md), non con questo materiale, e la
+  densità dei fixture si chiuderebbe solo con un fixture a densità reale, che costerebbe
+  minuti invece di secondi per ogni test.
+
 ## Revisione periodica e pulizia
 
 **Nessuna cancellazione fa parte di questo processo.** Serve a decidere cosa merita
@@ -467,7 +569,7 @@ il suo consenso esplicito:
 | Candidato | Perché | Condizione per agire |
 |---|---|---|
 | `.runtime-deps/` | Dipendenza di runtime installata per la sola sonda Orion; ignorata da git e reinstallabile | Quando le sonde Orion non servono più |
-| `C:/Users/ferra/vcc2026-data/predictions/smoke.h5ad` (43 MB) | Prova di formato del writer, già superata dal fatto che `vcc prep` ha validato | Quando serve spazio su disco, di cui restano circa 28 GB |
+| `C:/Users/ferra/vcc2026-data/predictions/smoke.h5ad` (43 MB) | Prova di formato del writer, già superata dal fatto che `vcc prep` ha validato — **quest'ultima giustificazione non è sostenuta da nessun artefatto**: non esiste un log di `vcc prep` prima del 2026-09-12, e misurato il 2026-09-12 `vcc prep` **rifiuta** un file con meno delle 300 perturbazioni ufficiali (`reports/trial_2026-09-12/`, log del pilot), quindi non può aver validato un file da 3 perturbazioni senza `--no-verify-targets`. Vedi [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §7. Il file resta un candidato alla pulizia per il motivo originale — è una prova di formato — non per quello smentito | Quando serve spazio su disco. Misurato il 2026-09-12: circa 26 GB liberi, non 28 |
 | Sonde remote in `reports/candidate_verification/*.json` | Alcune sono grandi e sono fotografie datate di endpoint pubblici | Mai cancellare quelle citate nei documenti: sono l'unica prova di cosa si vedeva a quella data |
 
 Controllo automatico della coerenza del registro:

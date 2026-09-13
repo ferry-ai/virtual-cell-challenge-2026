@@ -1,0 +1,308 @@
+diff --git a/docs/DECISIONI.md b/docs/DECISIONI.md
+index 1476472..ce25a37 100644
+--- a/docs/DECISIONI.md
++++ b/docs/DECISIONI.md
+@@ -28,6 +28,9 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
+ | D-012 | L'ampiezza si calibra su bersagli tenuti fuori, non si sceglie | attiva | 2026-09-12 | `reports/pipeline/transfer_experiment.json` |
+ | D-013 | Lo stato di una sorgente lo dichiara il registry versionato | attiva | 2026-09-12 | `configs/sources.yaml`, `src/vcc2026/registry.py` |
+ | D-014 | Il backend DE si registra accanto a ogni metrica | attiva | 2026-09-12 | `reports/pipeline/null_calibration_A.json` |
++| D-015 | Il vincolo compositivo si assorbe sui geni supportati, non su quelli mascherati | attiva | 2026-09-12 | `src/vcc2026/inference.py`, [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.3 |
++| D-016 | Non si riduce la densità della previsione per far entrare `vcc prep` nella RAM locale | attiva | 2026-09-12 | [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.5, `reports/trial_2026-09-12/resources.json` |
++| D-017 | `trial-00-controls` non si invia finché la conformità alle regole non è chiarita | attiva | 2026-09-12 | `docs/SOTTOMISSIONE.md` §2 |
+ 
+ ---
+ 
+@@ -130,6 +133,13 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
+   pseudobulk log2FC. Non sono punteggi VCC e non sono stati verificati sui contesti
+   A/B/C, dove nessuna perturbazione è osservabile. Ciò che si trasferisce è il metodo
+   (D-012), non il valore.
++- **Aggiornamento 2026-09-12 (CP-0004).** Rimisurato con selezione continua invece che
++  su griglia: α = 0,1974, non 0,25. Il valore 0,25 era il punto di griglia più vicino.
++  La differenza è praticamente irrilevante (0,98964 contro 0,98929 di MSE/nullo sul
++  primo fold) ma il numero da citare è 0,197. Misurato anche che lo **shrinkage per
++  gene è quasi inattivo**: `prior_sd` = 4 batte «nessuno shrinkage» di 0,00003 in MSE
++  cross-validata. La compressione utile è tutta nell'ampiezza globale.
++  Evidenza: `reports/trial_2026-09-12/calibration_c002.json`.
+ - **Riaprire se:** esiste un bundle di valutazione a singola cellula che permetta di
+   rifare la stessa scelta su tutte e sei le metriche VCC, oppure se una sorgente di
+   lignaggio vicino (CD4) dà un α molto diverso.
+@@ -214,6 +224,13 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
+ - **Alternative scartate:** fissare α a 1 (misurato peggiore del nullo); fissarlo a 0
+   (equivale al nullo e butta via l'1,0–7,8% di riduzione dell'errore); sceglierlo sulla
+   correlazione (non identificabile).
++- **Aggiornamento 2026-09-12 (CP-0004).** Il protocollo è stato rafforzato in
++  `scripts/44_calibrate_transfer.py`: validazione incrociata **annidata**, ciclo
++  interno per selezionare e ciclo esterno per riportare, e il bootstrap ricampiona
++  solo previsioni fuori campione. Lo stadio 41 calcolava l'intervallo su **tutti** i
++  bersagli con i parametri già scelti, che descrive i dati di training. I numeri
++  coincidono nella sostanza; è l'intervallo a essere onesto solo nella versione nuova.
++  α selezionato su cinque fold indipendenti varia fra 0,1947 e 0,2006.
+ - **Riaprire se:** un bundle a singola cellula permette di calibrare direttamente sulle
+   sei metriche VCC, che è la cosa che alla fine conta.
+ 
+@@ -251,3 +268,74 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
+ - **Riaprire se:** una versione futura di `cell-eval2` fissa il backend, o se si
+   misura che le differenze fra engine sono trascurabili rispetto alla variabilità che
+   ci interessa.
++
++### D-015 — Il vincolo compositivo si assorbe sui geni supportati, non su quelli mascherati
++
++- **Perché:** i conteggi di una cellula sono una composizione, quindi non possono
++  salire tutti. Riscalare `basale × 2^Δ` a una dimensione di libreria divide via un
++  fattore globale, e quel fattore cade su **ogni** gene — compresi i 10.852 che la
++  sorgente non misura e che per D-009 non dovrebbero portare alcuna previsione. Senza
++  correzione, una sorgente che copre 7.681 geni su 18.533 farebbe scivolare gli altri
++  in una direzione sistematica, su tutte e 300 le perturbazioni, con un'ampiezza pari
++  al fattore di riscalatura.
++- **Come è fatta:** `compositional_shift` risolve in forma chiusa lo scalare `c` che
++  conserva la massa totale, `c = log2(Σ_oss b / Σ_oss b·2^Δ)`, e lo applica **solo**
++  ai geni osservati. Dopo la riscalatura un gene non osservato conserva esattamente la
++  sua quota di composizione, cioè un log2FC realizzato di 0. Lo scalare è registrato
++  per bersaglio nelle diagnostiche, perché è una modifica reale della previsione, non
++  un dettaglio numerico.
++- **Alternative scartate:** lasciare che la riscalatura sposti tutti i geni (inventa
++  evidenza sui geni mascherati, esattamente ciò che D-009 vieta); applicare uno
++  scalare globale a tutti i geni (matematicamente identico al caso precedente: uno
++  scalare uniforme si cancella nella composizione e non risolve nulla); normalizzare a
++  somma fissa senza dichiararlo (l'errore silenzioso).
++- **Misurato:** lo spostamento è piccolo — mediana 0,0021 log2, massimo 0,0097 sui
++  blocchi del pilot — ma la sua direzione era sistematica e la correzione è esatta.
++- **Riaprire se:** si adotta un modello che prevede anche la dimensione di libreria,
++  invece della sola composizione. In quel caso il vincolo cambia forma.
++
++### D-016 — Non si riduce la densità della previsione per far entrare `vcc prep` nella RAM locale
++
++- **Perché:** `vcc prep` carica l'intera matrice in memoria prima di validare
++  (`vcc/prep.py`, `adata = read_h5ad(input_path)`), e il suo stesso modello di
++  dimensionamento — `vcc/sizing.py`, tarato su 254 esecuzioni di produzione del
++  servizio di scoring — dà un picco di 22,2 GiB per una previsione da 2,09·10⁹ valori
++  memorizzati e 33,5 GiB per una da 2,17·10⁹. Questa macchina ha 7,81 GiB **totali**.
++  Per farci stare il packaging servirebbe scendere a circa 1.150 valori per cellula
++  contro i circa 5.800 dei dati reali: cellule quattro volte più sparse del vero, che
++  cambierebbero le quattro metriche DE su sei in un modo che non abbiamo misurato.
++- **Come è fatta:** la previsione si genera alla densità che il modello produce, il
++  contratto si verifica localmente con un lettore a blocchi
++  (`scripts/46_validate_package.py`), e il packaging ufficiale si rimanda a una
++  macchina con RAM sufficiente. Il collo di bottiglia si dichiara come misura, non si
++  aggira.
++- **Alternative scartate:** ridurre la densità (falsa il modello per far entrare uno
++  strumento); passare `--max-nnz -1` o `--no-check-cell-counts` (non è questo il
++  limite che morde, e aggirare la convalida sposta l'errore sulla quota giornaliera);
++  costruire il `.vcc` a mano — è un tar con `pred.h5ad.zst` e un `meta.json`, quindi
++  sarebbe tecnicamente possibile, ma salterebbe il validatore ufficiale, che è
++  l'unica autorità sul formato.
++- **Riaprire se:** arriva una macchina con almeno 48 GiB di RAM (vedi
++  `docs/ESECUZIONE_REMOTA.md`), oppure `vcc prep` acquisisce un percorso a blocchi che
++  non richiede la matrice residente.
++
++### D-017 — `trial-00-controls` non si invia finché la conformità alle regole non è chiarita
++
++- **Perché:** il trial ricampiona le cellule di controllo reali e le etichetta con le
++  perturbazioni richieste. `vcc prep` lo accetterebbe — non contiene righe
++  `non-targeting` — ma due frasi delle regole ufficiali lo riguardano: «The control
++  cells you downloaded are model inputs only — do not copy them into your prediction»
++  (pagina Evaluation) e «your predictions must be generated solely by one or more
++  machine learning models you use» (Rules, §Machine Learning Predictions Only). Un
++  ricampionamento non è la previsione di un modello.
++- **Come è fatta:** il trial si genera, si verifica e si conserva come controllo
++  operativo e come riferimento di dispersione — le sue cellule sono reali, quindi la
++  variabilità fra cellule è giusta per costruzione e rende visibili gli artefatti del
++  generatore. Non si carica. La riserva è scritta in `configs/trials.yaml`, campo
++  `not_this`, e in `docs/SOTTOMISSIONE.md` §2.
++- **Alternative scartate:** inviarlo comunque perché il validatore lo accetta (il
++  validatore controlla il formato, non le regole); scartare il trial (perderebbe
++  l'unico riferimento di dispersione reale che abbiamo).
++- **Riaprire se:** help@virtualcellchallenge.org chiarisce che un baseline di questo
++  tipo è ammesso, oppure il proprietario del progetto decide diversamente in modo
++  esplicito.
+diff --git a/docs/REGISTRO.md b/docs/REGISTRO.md
+index 3b8633b..bad2e79 100644
+--- a/docs/REGISTRO.md
++++ b/docs/REGISTRO.md
+@@ -87,6 +87,13 @@ manifest. Materiale di natura diversa merita una voce propria.
+ | `reports/scorer_2026-09-12/vcc2026_contract.json` | attuale | — | Riestrazione del contratto dallo stesso `cell-eval2` 0.16.0, con il `floor_note` corretto. Sostituisce funzionalmente `reports/scorer/vcc2026_contract.json`, che resta come evidenza storica | [R-002](#r-002--reportsscorervcc2026_contractjson) |
+ | `src/vcc2026/` (genes, signatures, pseudobulk, models, splits, evaluation, registry, manifest) | attuale | — | Moduli aggiunti il 2026-09-12, coperti da 42 test nuovi. I moduli preesistenti non sono stati toccati; `config.py` è stato solo esteso | — |
+ | `scripts/40_build_signatures.py`, `41_transfer_experiment.py`, `42_null_calibration.py` | attuale | — | I tre stadi della pipeline. Eseguiti il 2026-09-12; i loro manifesti sono in `reports/pipeline/` | — |
++| `docs/SOTTOMISSIONE.md` | attuale | — | Contratto di sottomissione verificato il 2026-09-12 sulle fonti ufficiali e sulla CLI installata, comandi esatti per rigenerare, convalidare, inviare e leggere i punteggi, e la distinzione fra punteggi normalizzati e metriche locali. **Nessuna sottomissione è stata inviata** | — |
++| `reports/trial_2026-09-12/` | attuale | — | Artefatti leggeri del primo trial locale: calibrazione annidata, confronto fuori campione, misure di risorse, convalide e log di `vcc prep`. Introdotti da [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md). Le previsioni pesanti restano in `artifact_root` | [R-011](#r-011--reportstrial_2026-09-12) |
++| `reports/trial_2026-09-12/calibration_c001_peak_memory_unrecorded.json` | superato | `reports/trial_2026-09-12/calibration_c002.json` | Stessa esecuzione e numeri identici; il solo campo `peak_rss_bytes` è `null` perché il lettore di memoria di picco su Windows non era ancora corretto. Conservato perché una riesecuzione non sovrascrive un'evidenza | [R-011](#r-011--reportstrial_2026-09-12) |
++| `configs/trials.yaml` | attuale | — | Definizione dei due trial: regola di previsione, dati leggibili, seed, e ciò che il trial **non** è. `src/vcc2026/trials.py` lo legge per freeze, generazione e packaging, così un run non può contraddire il trial che dichiara | — |
++| `src/vcc2026/inference.py`, `resources.py`, `trials.py` | attuale | — | Moduli aggiunti il 2026-09-12: trasformazione da log2FC a conteggi con vincolo compositivo (D-015), misura di RAM/disco e memoria di picco, definizione dei trial. Coperti da 42 test in `tests/test_trial_inference.py` | — |
++| `scripts/43_freeze_trial.py`, `44_calibrate_transfer.py`, `45_generate_prediction.py`, `46_validate_package.py`, `47_resource_report.py` | attuale | — | Gli stadi del trial: congelamento dello stato, calibrazione annidata, generazione, convalida e packaging, consolidamento delle risorse. Eseguiti il 2026-09-12; i risultati leggeri sono in `reports/trial_2026-09-12/` | — |
++| `tests/test_trial_inference.py` | attuale | — | 42 test su prevenzione delle fughe di informazione nella selezione, conservazione dell'identità dei contesti, generazione dei conteggi e ampiezza degli offset CSR | — |
+ | `tests/test_pipeline_contracts.py` | attuale | — | 42 test sui contratti che fallirebbero in silenzio: maschere contro zeri, fuga di bersagli negli split, sovrascrittura di manifesti, livelli di verifica del registry | — |
+ 
+ ## Dati
+@@ -136,10 +143,23 @@ dipendenza di runtime, ricreabile).
+   4. La tabella "Plan" dà la fase 1 come "next" senza dire che è bloccata dall'assenza
+      di un bundle di valutazione reale e dall'RNA di H1 2025 non scaricato.
+   5. Il layout elenca `notebooks/`, che è vuota.
++  6. *Aggiunta il 2026-09-12 (CP-0004).* La tabella "Plan" dà la fase 0 come **done**
++     con la formula «streaming submission writer verified against official `prep`».
++     **Non esiste alcun log di `vcc prep` anteriore al 2026-09-12**, e l'unico
++     artefatto candidato, `smoke.h5ad`, contiene 3 perturbazioni su 300. Misurato il
++     2026-09-12: `vcc prep` con le opzioni predefinite **rifiuta** un file che non
++     predice esattamente le 300 perturbazioni ufficiali per contesto. Resta possibile
++     che sia stato eseguito con `--no-verify-targets`, nel qual caso avrebbe
++     verificato asse genico, contesti, conteggi per perturbazione e conteggi grezzi
++     ma **non** la lista delle perturbazioni. L'affermazione va letta come «il writer
++     produce un h5ad strutturalmente valido», che è sostenuta da
++     `scripts/02_smoke_test_submission.py`, non come «la CLI ufficiale ha validato una
++     sottomissione», che non lo è.
+ - **Evidenza contraria:** `docs/candidate_adversarial_review_2026-09-12.md` §§2–3;
+   `reports/candidate_verification/scorer_clamp_check.json`;
+   `reports/context_identity/markers.csv`; elenco di
+-  `C:/Users/ferra/vcc2026-data/external/vcc2025/`.
++  `C:/Users/ferra/vcc2026-data/external/vcc2025/`; per la 6, il log
++  `prep_dry_run.log` del pilot in `reports/trial_2026-09-12/`.
+ - **Cosa resta valido:** descrizione del compito, formato di sottomissione, tabella
+   delle sei metriche, layout dei dati, setup, wrapper `.cmd`, autenticazione,
+   scadenze. È la parte più consultata ed è corretta.
+@@ -449,6 +469,41 @@ dipendenza di runtime, ricreabile).
+   veri, le metriche proxy scendono al rango di diagnostiche di supporto, e l'ampiezza
+   si ricalibra su ciò che assegna davvero i punti.
+ 
++### R-011 — `reports/trial_2026-09-12/`
++
++- **Perché è segnalato:** contiene i primi artefatti a forma di sottomissione del
++  progetto — due previsioni complete per A/B/C e la loro convalida — ed è quindi il
++  materiale che più facilmente verrebbe letto come "abbiamo partecipato". Non è così:
++  nulla è stato caricato, nessuna quota è stata consumata, e non esiste alcun
++  punteggio di leaderboard. La scheda esiste per tenere questa cautela attaccata ai
++  file. Copre anche `calibration_c001_peak_memory_unrecorded.json`, marcato `superato`.
++- **Affermazioni contestate:** che una convalida di formato superata dica qualcosa
++  sulla qualità predittiva; che `trial-00-controls` sia "il baseline a punteggio zero"
++  della gara; che l'α di 0,197 misurato su K562 → RPE1 valga per A, B o C; e che le
++  metriche proxy pseudobulk si convertano in un punteggio VCC. Nessuna delle quattro
++  segue.
++- **Evidenza contraria:** `held_out_comparison.md` §3, che separa misura,
++  interpretazione e ipotesi riga per riga; `resources.json`, che registra che il
++  packaging ufficiale non è stato completato su questa macchina; `configs/trials.yaml`
++  campo `not_this` di `trial-00-controls`; e il campo `uploaded: false` di ogni
++  `validation.json`.
++- **Cosa resta valido:** tutte le misure, con il loro protocollo. La calibrazione è
++  annidata e il bootstrap ricampiona solo previsioni fuori campione; la verifica del
++  contratto è ricavata dal file scritto, non dal writer che l'ha prodotto; la
++  provenienza dei contesti è verificata contro i profili basali, che è la cosa che
++  `vcc prep` non può fare.
++- **È ancora usato o citato:** sì, da `docs/PROGETTO.md` §3, da `docs/SOTTOMISSIONE.md`,
++  da D-015, D-016 e D-017, e dall'aggiornamento 2026-09-12 di D-006 e D-012.
++- **Disposizione proposta:** tenere tutto. Citare l'α di 0,197 come proprietà della
++  coppia K562 → RPE1, mai come costante del progetto; citare la riduzione dell'1,01% di
++  MSE come metrica proxy pseudobulk, mai come punteggio; e non descrivere i pacchetti
++  come "validati dalla CLI ufficiale" finché `vcc prep` non è stato eseguito su di essi
++  con esito positivo.
++- **Cosa chiuderebbe la revisione:** un'esecuzione di `vcc prep` completata su una
++  macchina con RAM sufficiente, il cui log entri qui accanto; e, per la parte
++  predittiva, il bundle di valutazione a singola cellula di R-1 della
++  [roadmap](ROADMAP.md).
++
+ ## Revisione periodica e pulizia
+ 
+ **Nessuna cancellazione fa parte di questo processo.** Serve a decidere cosa merita
+@@ -467,7 +522,7 @@ il suo consenso esplicito:
+ | Candidato | Perché | Condizione per agire |
+ |---|---|---|
+ | `.runtime-deps/` | Dipendenza di runtime installata per la sola sonda Orion; ignorata da git e reinstallabile | Quando le sonde Orion non servono più |
+-| `C:/Users/ferra/vcc2026-data/predictions/smoke.h5ad` (43 MB) | Prova di formato del writer, già superata dal fatto che `vcc prep` ha validato | Quando serve spazio su disco, di cui restano circa 28 GB |
++| `C:/Users/ferra/vcc2026-data/predictions/smoke.h5ad` (43 MB) | Prova di formato del writer, già superata dal fatto che `vcc prep` ha validato — **quest'ultima giustificazione non è sostenuta da nessun artefatto**: non esiste un log di `vcc prep` prima del 2026-09-12, e misurato il 2026-09-12 `vcc prep` **rifiuta** un file con meno delle 300 perturbazioni ufficiali (`reports/trial_2026-09-12/`, log del pilot), quindi non può aver validato un file da 3 perturbazioni senza `--no-verify-targets`. Vedi [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §7. Il file resta un candidato alla pulizia per il motivo originale — è una prova di formato — non per quello smentito | Quando serve spazio su disco. Misurato il 2026-09-12: circa 26 GB liberi, non 28 |
+ | Sonde remote in `reports/candidate_verification/*.json` | Alcune sono grandi e sono fotografie datate di endpoint pubblici | Mai cancellare quelle citate nei documenti: sono l'unica prova di cosa si vedeva a quella data |
+ 
+ Controllo automatico della coerenza del registro:
+diff --git a/docs/checkpoints/INDICE.md b/docs/checkpoints/INDICE.md
+index f32ca49..974db83 100644
+--- a/docs/checkpoints/INDICE.md
++++ b/docs/checkpoints/INDICE.md
+@@ -25,3 +25,4 @@ aggiunge da sé la riga qui sotto.
+ | [0001](0001-ricostruzione-stato-2026-09-12.md) | 2026-09-12 | Ricostruzione dello stato al 12 settembre 2026 | ricostruzione-retrospettiva | [0002](0002-correzioni-dopo-revisione-umana.md), §§3, 4 e 5 |
+ | [0002](0002-correzioni-dopo-revisione-umana.md) | 2026-09-12 | Correzioni dopo la prima revisione umana | correzione | — |
+ | [0003](0003-prima-pipeline-e-calibrazione-ampiezza.md) | 2026-09-12 | Prima pipeline verticale e calibrazione dell'ampiezza di trasferimento | osservazione | — |
++| [0004](0004-primo-trial-locale-e-pacchetti.md) | 2026-09-12 | Primo trial locale: calibrazione annidata, inferenza A/B/C e limite di packaging | osservazione | — |
+diff --git a/src/vcc2026/signatures.py b/src/vcc2026/signatures.py
+index 90ae711..f886743 100644
+--- a/src/vcc2026/signatures.py
++++ b/src/vcc2026/signatures.py
+@@ -271,17 +271,37 @@ class SignatureSet:
+         return path
+ 
+     @classmethod
+-    def read_npz(cls, path: Path) -> SignatureSet:
++    def read_npz(cls, path: Path, targets=None) -> SignatureSet:
++        """Load a persisted set, optionally only the rows of given targets.
++
++        `targets` matters on a memory-bound machine: the full k562_gwps set is
++        2,816 x 18,533 in three arrays, about 890 MB resident, while the 300
++        panel targets are about 90 MB. Each member is still decompressed whole
++        -- that is how npz works -- but it is sliced and released one at a time
++        instead of all three being held at full size.
++        """
+         path = Path(path)
+         rows = json.loads(path.with_suffix(".rows.json").read_text(encoding="utf-8"))
++        keep = None
++        if targets is not None:
++            wanted = set(targets)
++            keep = np.array(
++                [i for i, r in enumerate(rows) if r["target"] in wanted], dtype=np.int64
++            )
++            rows = [rows[int(i)] for i in keep]
++
+         # Materialise each array ONCE. Indexing an NpzFile decompresses the whole
+         # member on every access, so `arrays["delta"][i]` inside the loop would
+         # decompress an (n x 18,533) matrix per signature -- minutes of CPU and a
+         # transient allocation per row that exhausts an 8 GB machine.
++        arrays = {}
+         with np.load(path) as handle:
+-            delta = handle["delta"]
+-            se = handle["se"]
+-            observed = handle["observed"]
++            for name in ("delta", "se", "observed"):
++                full = handle[name]
++                arrays[name] = full if keep is None else full[keep]
++                del full
++        delta, se, observed = arrays["delta"], arrays["se"], arrays["observed"]
++
+         out = cls()
+         for i, row in enumerate(rows):
+             out.add(
+diff --git a/src/vcc2026/submission.py b/src/vcc2026/submission.py
+index ac8eb07..3dca692 100644
+--- a/src/vcc2026/submission.py
++++ b/src/vcc2026/submission.py
+@@ -21,10 +21,27 @@ import pandas as pd
+ import scipy.sparse as sp
+ from anndata.io import write_elem
+ 
+-__all__ = ["SubmissionWriter"]
++__all__ = ["SubmissionWriter", "indptr_dtype"]
+ 
+ _CHUNK = 1 << 20  # ~1M values per HDF5 chunk: few enough to resize cheaply
+ 
++_INT32_MAX = int(np.iinfo(np.int32).max)
++
++
++def indptr_dtype(nnz: int):
++    """Integer width that can hold CSR row offsets for `nnz` stored values.
++
++    CSR offsets run up to `nnz` itself, and a full 2026 submission lands close
++    to int32's ceiling: at the realistic ~5,800 stored values per cell,
++    360,000 cells give about 2.09e9 offsets against a limit of 2,147,483,647 --
++    inside it by under 3%. A slightly denser prediction crosses it, and
++    `astype(np.int32)` past the limit **wraps silently to negative offsets**.
++    The result is a file that still opens as a valid h5ad and whose matrix is
++    garbage, which is the single worst failure this writer could produce. So the
++    width is chosen from the count rather than assumed.
++    """
++    return np.int32 if int(nnz) <= _INT32_MAX else np.int64
++
+ 
+ class SubmissionWriter:
+     """Append perturbation blocks to an .h5ad one at a time.
+@@ -117,7 +134,7 @@ class SubmissionWriter:
+                 [self._n_obs, self.n_genes], dtype=np.int64
+             )
+             self._file["X"].create_dataset(
+-                "indptr", data=indptr.astype(np.int32), chunks=True
++                "indptr", data=indptr.astype(indptr_dtype(self._nnz)), chunks=True
+             )
+ 
+             perts = np.concatenate(self._perts) if self._perts else np.array([], dtype=object)

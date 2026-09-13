@@ -30,14 +30,39 @@ La classifica finale dipende solo dal set finale, su tre contesti diversi (D, E,
 | Pipeline verticale: registry → firme con incertezza → baseline → valutazione | fatto, su scala ridotta |
 | Baseline di trasferimento calibrate e valutate fuori campione | fatto (spazio pseudobulk) |
 | Scorer ufficiale eseguito end-to-end su un bundle a singola cellula | fatto, su un **nullo** |
+| Contratto di sottomissione verificato sulle fonti ufficiali e sulla CLI | fatto ([SOTTOMISSIONE.md](SOTTOMISSIONE.md)) |
+| Calibrazione annidata dell'ampiezza, selezione separata dal riporto | fatto ([CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.2) |
+| Inferenza per A/B/C e due previsioni complete 300 × 400 × 3 | fatto, verificate sul file scritto |
+| Packaging `.vcc` di trial-01 | fatto in locale, 0,52 GiB di picco ([CP-0005](checkpoints/0005-packaging-streaming-trial01.md)) |
 | **Banco di prova predittivo (punteggio VCC su effetti veri)** | **bloccato: manca un dataset perturbato reale** |
-| Modello, ensemble, sottomissione | non iniziato |
+| Prima sottomissione valutata | fatto: 0,045929, rango 446/920 ([CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md)) |
+| Ensemble, miglioramento del punteggio | non iniziato |
 
-**Nessuna sottomissione è stata inviata e non esiste alcun punteggio di leaderboard.**
+**Il 13 settembre 2026 è stata inviata la prima sottomissione, ed è stata valutata:
+punteggio 0,045929, posizione 446 su 920 squadre**
+([CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md)). È il primo numero del
+progetto sulla scala della gara. Fino a quel momento la riga qui sopra diceva «nessuna
+sottomissione è stata inviata e non esiste alcun punteggio di leaderboard»: era vera
+fino alle 01:12Z del 13 settembre.
 Dal 12 settembre esistono però baseline misurate: trasferimento con ampiezza calibrata
-su bersagli tenuti fuori ([CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md)).
+su bersagli tenuti fuori ([CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md),
+raffinata da [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md)).
 Sono in spazio pseudobulk log2FC, **non** sono punteggi VCC, e la distinzione va tenuta:
 lo scorer vuole conteggi a singola cellula contro controlli reali.
+
+Esistono anche, dal 12 settembre, **due previsioni complete a forma di sottomissione**
+per i contesti A/B/C — un ricampionamento dei controlli senza modello e il
+trasferimento calibrato — generate in locale e verificate contro il contratto leggendo
+il file scritto. Dal 13 settembre **`trial-01-transfer` è impacchettato**: un `.vcc` da
+3,91 GiB, prodotto con un percorso che convalida e scrive senza materializzare la
+matrice (0,52 GiB di picco contro i 33,5 del modello della CLI ufficiale), con tutte e
+24 le convalide attive e il payload verificato bit a bit contro l'input
+([CP-0005](checkpoints/0005-packaging-streaming-trial01.md)).
+
+**Il server lo ha accettato**, il 13 settembre: la sottomissione è arrivata a
+`published`, con l'md5 verificato e nessun errore. Resta vero che una convalida di
+formato non dice nulla sulla qualità predittiva — ora misurata, e bassa.
+`trial-00-controls` non è impacchettato e non va inviato (D-017).
 
 ## 3. Cosa sappiamo, e cosa lo sostiene
 
@@ -70,21 +95,38 @@ stata ancora messa alla prova.
 | In tutte e tre le fonti locali l'effetto mediano è **più piccolo del proprio errore standard** (\|Δ\|/SE fra 0,795 e 0,945) | misura | `reports/pipeline/signature_qc.json` |
 | I file `*_raw_bulk_01.h5ad` contengono **medie per cellula**, non somme: `X × num_cells_filtered` torna intera. Leggerli come conteggi gonfia l'errore di Poisson di ~13× | misura | [CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md) §3.1 |
 | Su dati reali NTC-contro-NTC lo scorer non produce quasi falsi positivi: 5 perturbazioni su 6 escluse per "empty gate", Jaccard 0,000, PDS esattamente 0,500 | misura, scorer ufficiale | `reports/pipeline/null_calibration_A.json` |
+| **Codice e pesi non si consegnano.** Solo i finalisti devono pubblicare una descrizione di alto livello del metodo. Le sottomissioni sono **due** al giorno, una sola in volo per squadra | misura (regolamento ufficiale, letto il 2026-09-12) | [SOTTOMISSIONE.md](SOTTOMISSIONE.md) §1 |
+| L'α di trasferimento K562 → RPE1 è 0,1974, non 0,25: il valore precedente era il punto di griglia più vicino. MSE fuori campione 0,98991 del nullo, IC95 [0,98866, 0,99114]; a piena ampiezza 1,16228 | misura (CV annidata, 2.350 bersagli) | `reports/trial_2026-09-12/calibration_c002.json` |
+| Lo **shrinkage per gene è quasi inattivo**: `prior_sd` = 4 batte «nessuno shrinkage» di 0,00003 in MSE cross-validata. La compressione utile è tutta nell'ampiezza globale | misura | come sopra |
+| Una previsione completa a densità realistica pesa 2,08·10⁹ valori memorizzati, 5.789 per cellula: il **44% del tetto**, non il 90% che darebbe submettere il profilo medio | misura | `reports/trial_2026-09-12/resources.json` |
+| `vcc prep` carica l'intera matrice in memoria: 8,60 byte per valore memorizzato misurati, 22,19 GiB di picco per trial-00 secondo il modello della CLI stessa, contro 7,81 GiB totali di macchina. **`prep_memory_warning` non scatta su Windows** perché dimensiona contro `os.sysconf` | misura | [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.5 |
+| Quel limite è di `vcc prep`, non del problema: convalidando e scrivendo a blocchi, trial-01 si impacchetta con **0,519 GiB di picco** contro i 33,49 del modello, sulla stessa macchina, con le stesse 24 convalide | misura | [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.1 |
+| Il payload del `.vcc` porta `X/data`, `X/indices` e `X/indptr` **identici bit a bit** all'input; l'unica trasformazione è l'indice di `obs`, sostituito con `'0'..'n-1'`, che è ciò che fa anche `vcc prep` | misura | come sopra, §3.3 |
+| La regola ufficiale «nessuna perturbazione tutta a zero» è **globale, non per contesto**: `vcc prep` accetta un bersaglio azzerato in un solo contesto | misura, sul comportamento di `prep` | come sopra, §3.5 |
+| Gli offset CSR di una sottomissione completa arrivano al 97% del tetto di int32: `SubmissionWriter` li scriveva in int32 e avrebbe avvolto in silenzio su una previsione un filo più densa | misura, difetto corretto | [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.6 |
+| Il generatore produce il 4–6% di geni rilevati in più dei controlli reali **anche a effetto previsto zero**, mentre i CV di libreria e di rilevazione coincidono. Il log2FC efficace mediano dopo calibrazione è 0,0246 (1,7%), il massimo su un gene 0,776 (1,71×) | misura | `reports/trial_2026-09-12/q01pilot_generation_diagnostics.json` |
+| Un contesto scambiato è rilevabile: somiglianza col proprio basale 0,999999 contro 0,888–0,928 fra basali diversi. La convalida di formato non se ne accorgerebbe | misura | `reports/trial_2026-09-12/q00full_validation.json` |
 
 ## 4. Cosa non sappiamo
 
 Queste sono le incertezze che contano. Nessuna è stata risolta.
 
-1. **Quanto vale un punto.** Le ancore di replicato `r` per nmae, mse e jaccard sono
-   ignote: si ottengono solo costruendo un bundle di valutazione con dati perturbati
-   reali. Senza, un punteggio locale non è confrontabile con quello della gara.
+1. **Quanto vale un punto.** Le ancore di replicato `r` restano ignote a noi, ma dal
+   13 settembre c'è una strada che non richiede un bundle di valutazione: la classifica
+   pubblica mostra, per ogni squadra e metrica, **il grezzo e lo scalato**, e due righe
+   con grezzi diversi determinano `b` e `r` di `(u − b) / (r − b)`. Derivazione
+   preliminare su due righe per `mse`: `b ≈ 0,996`, `r ≈ 0,022`, che riproduce il nostro
+   1,231 → 0. **Non è ancora una misura**: va rifatta su molte righe e per tutte e sei
+   le metriche ([CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md) §3.5).
 2. ~~**Se comprimere l'ampiezza convenga davvero**~~ — **parzialmente risolta il
    2026-09-12.** Misurato: a piena ampiezza il trasferimento è peggio del nullo, e
    l'ottimo sta intorno a un quarto dell'ampiezza fuori lignaggio
    ([CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md) §3.4,
    D-006, D-012). **Resta aperto** il pezzo che conta davvero: la misura è in spazio
    pseudobulk log2FC su K562 e RPE1, non sulle sei metriche VCC e non sui contesti
-   A/B/C. Trasferibile è il metodo di calibrazione, non il valore 0,25.
+   A/B/C. Trasferibile è il metodo di calibrazione, non il valore, che rimisurato
+   con selezione continua e validazione annidata è **0,1974** e non 0,25
+   ([CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.2).
 3. **Quanto sono grandi gli effetti da prevedere.** Non lo sappiamo. Che i 300
    bersagli non compaiano in due pannelli *essential* è una misura; dedurne che siano
    non essenziali nei contesti della gara è un passaggio non verificato, e dedurne che
@@ -116,6 +158,23 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
 11. **Se l'α calibrato su K562/RPE1 valga per CD4.** L'α misurato è una proprietà della
     coppia sorgente-destinazione; una sorgente di lignaggio vicino potrebbe darne uno
     molto diverso, ed è il primo controllo da fare quando CD4 sarà ingerito.
+12. **Se l'artefatto del generatore superi il segnale che iniettiamo.** Misurato: le
+    cellule generate rilevano il 4–6% di geni in più dei controlli reali anche a
+    effetto previsto zero, e il log2FC efficace mediano dopo calibrazione è 1,7%.
+    Sono quantità diverse e dello stesso ordine; quale domini le quattro metriche DE
+    dipende da come lo scorer aggrega, e non è stato misurato. È la ragione principale
+    per cui il punteggio di `trial-01-transfer` non è prevedibile da ciò che sappiamo
+    ([CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.8).
+13. **Se un ricampionamento dei controlli sia ammesso dalle regole.** Le regole dicono
+    che i controlli scaricati sono soltanto input del modello e che le previsioni
+    devono essere generate soltanto da modelli di machine learning. `trial-00-controls`
+    passa la convalida di formato ma non è la previsione di un modello. Registrata in
+    D-017, **non risolta**: serve un chiarimento da help@virtualcellchallenge.org o una
+    decisione esplicita del proprietario.
+14. **Quanto costi davvero `vcc prep` su una macchina adeguata.** Il picco di 22–33 GiB
+    viene dal modello di dimensionamento della CLI, non da un'esecuzione nostra: la
+    misura che abbiamo è il costo di lettura di anndata, 8,60 byte per valore
+    memorizzato. Il numero va confermato la prima volta che `prep` gira per davvero.
 
 ## 5. Il prossimo passo
 
@@ -151,6 +210,23 @@ sottoinsiemi limitati di Jurkat, HepG2 o RPE1, che non hanno copertura del panne
 hanno cellule e NTC identificati. Va decisa e registrata in
 [DECISIONI.md](DECISIONI.md).
 
+### Il passo operativo, che è diverso e indipendente
+
+Il collo di bottiglia del packaging, aperto il 12 settembre, è **chiuso dal 13**:
+`trial-01-transfer` è un `.vcc` da 3,91 GiB, prodotto qui con 0,52 GiB di picco
+([CP-0005](checkpoints/0005-packaging-streaming-trial01.md)). Non serviva una macchina
+più grande; serviva non caricare la matrice.
+
+Restano due cose, e nessuna delle due è tecnica:
+
+1. Il chiarimento sulle regole per `trial-00-controls` (D-017): un ricampionamento dei
+   controlli reali non è la previsione di un modello, e le regole dicono che i
+   controlli sono soltanto input. Fino ad allora quel trial non si impacchetta e non
+   si invia.
+2. L'autorizzazione a consumare quota. `docs/SOTTOMISSIONE.md` §3 ha i comandi esatti,
+   §6 la lista di controllo; nessuno dei due è stato eseguito, e **nessun server ha
+   accettato niente**: solo una sottomissione valutata lo dimostrerebbe.
+
 Il piano ordinato, con ipotesi, criteri di successo e costi stimati, sta in
 [ROADMAP.md](ROADMAP.md). L'architettura della pipeline è in [PIPELINE.md](PIPELINE.md);
 come eseguirla su una macchina remota, con le stime di risorse, in
@@ -163,6 +239,11 @@ Per capire il progetto, nell'ordine:
 1. Questa pagina.
 2. [CP-0001](checkpoints/0001-ricostruzione-stato-2026-09-12.md) — stato al
    12 settembre e tutte le correzioni avvenute finora.
+2-bis. [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) — il primo trial
+   locale: contratto di sottomissione verificato, calibrazione annidata, due previsioni
+   complete, e il limite di memoria che blocca il packaging. Se devi capire *dove si è
+   fermato il lavoro operativo*, è questo. I comandi stanno in
+   [SOTTOMISSIONE.md](SOTTOMISSIONE.md).
 3. `README.md` — compito, formato, metriche, setup. Leggi prima la sua scheda
    [R-001](REGISTRO.md#r-001--readmemd): alcune sue parti sono rimaste indietro.
 4. `docs/candidate_adversarial_review_2026-09-12.md` — l'analisi più dettagliata sulle

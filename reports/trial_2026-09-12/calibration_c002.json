@@ -1,0 +1,579 @@
+{
+  "run_id": "c002",
+  "stage": "44_calibrate_transfer",
+  "development_experiment": {
+    "source": "k562_gwps",
+    "destination": "rpe1_essential",
+    "n_shared_targets": 2350,
+    "n_shared_genes": 6714,
+    "median_guides_per_target": 1.0,
+    "coverage_audit": {
+      "source": {
+        "n_signatures_after_collapse": 2350,
+        "coverage_constant_across_targets": true,
+        "n_genes_observed": 7681
+      },
+      "destination": {
+        "n_signatures_after_collapse": 2350,
+        "coverage_constant_across_targets": true,
+        "n_genes_observed": 8260
+      },
+      "n_genes_intersection": 6714,
+      "leakage_note": "Per-target coverage is constant within each source, so the shared gene mask is a property of the two datasets and carries no information about which targets were held out.",
+      "coverage_constant_both_sides": true
+    }
+  },
+  "protocol": {
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "seed": 20260912,
+    "prior_sd_grid": [
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0,
+      4.0,
+      1000000.0
+    ],
+    "alpha_selection": "closed-form MSE minimiser on the selection rows, clipped to [0, 2.0]",
+    "description": "Outer folds report; inner folds select. prior_sd is scored by cross-validated error within the outer-training targets, alpha is refitted on all outer-training targets, and the pair is applied blind to the outer-test targets. Guides of a target are collapsed before splitting, so a target never straddles a fold."
+  },
+  "per_outer_fold": [
+    {
+      "fold": 0,
+      "n_train_targets": 1880,
+      "n_test_targets": 470,
+      "selected": {
+        "alpha": 0.19468798650554223,
+        "prior_sd": 4.0
+      },
+      "inner_selection": {
+        "alpha": 0.19468798650554223,
+        "prior_sd": 4.0,
+        "inner_n_folds": 4,
+        "inner_selection_table": [
+          {
+            "prior_sd": 0.05,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9985236393940197,
+            "cv_mse_vs_null_sd": 0.00020926328541768
+          },
+          {
+            "prior_sd": 0.1,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9958496830972755,
+            "cv_mse_vs_null_sd": 0.0006047880445980114
+          },
+          {
+            "prior_sd": 0.25,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9922079517997113,
+            "cv_mse_vs_null_sd": 0.0008832549958208576
+          },
+          {
+            "prior_sd": 0.5,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9908800942104768,
+            "cv_mse_vs_null_sd": 0.0009526355293555518
+          },
+          {
+            "prior_sd": 1.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.990275183418287,
+            "cv_mse_vs_null_sd": 0.0009422259348714925
+          },
+          {
+            "prior_sd": 4.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9901302532954791,
+            "cv_mse_vs_null_sd": 0.0008863749135654839
+          },
+          {
+            "prior_sd": 1000000.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9901572171468135,
+            "cv_mse_vs_null_sd": 0.0008789627645785426
+          }
+        ],
+        "inner_cv_mse_vs_null_at_choice": 0.9901302532954791,
+        "n_selection_targets": 1880
+      },
+      "held_out": {
+        "pooled_mse": 0.312109272857701,
+        "pooled_mse_null": 0.31548852568230784,
+        "mse_vs_null_selected": 0.9892888249507695,
+        "mse_vs_null_zero_response": 1.0,
+        "mse_vs_null_full_amplitude": 1.1504596528650275,
+        "median_pearson": 0.08640303968375382
+      },
+      "mse_vs_null_by_alpha_on_held_out": [
+        {
+          "alpha": 0.0,
+          "mse_vs_null": 1.0
+        },
+        {
+          "alpha": 0.1,
+          "mse_vs_null": 0.9921730155948358
+        },
+        {
+          "alpha": 0.25,
+          "mse_vs_null": 0.9896414857360807
+        },
+        {
+          "alpha": 0.5,
+          "mse_vs_null": 1.0099794606354653
+        },
+        {
+          "alpha": 0.75,
+          "mse_vs_null": 1.061013924698154
+        },
+        {
+          "alpha": 1.0,
+          "mse_vs_null": 1.1427448779241467
+        }
+      ]
+    },
+    {
+      "fold": 1,
+      "n_train_targets": 1880,
+      "n_test_targets": 470,
+      "selected": {
+        "alpha": 0.2005829097484605,
+        "prior_sd": 4.0
+      },
+      "inner_selection": {
+        "alpha": 0.2005829097484605,
+        "prior_sd": 4.0,
+        "inner_n_folds": 4,
+        "inner_selection_table": [
+          {
+            "prior_sd": 0.05,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9984542102489077,
+            "cv_mse_vs_null_sd": 0.00033539283967802
+          },
+          {
+            "prior_sd": 0.1,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9957329843089597,
+            "cv_mse_vs_null_sd": 0.0007953573056814883
+          },
+          {
+            "prior_sd": 0.25,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9918429593853155,
+            "cv_mse_vs_null_sd": 0.0009141458883855779
+          },
+          {
+            "prior_sd": 0.5,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9903960860343363,
+            "cv_mse_vs_null_sd": 0.0009600056926138326
+          },
+          {
+            "prior_sd": 1.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9897234599781405,
+            "cv_mse_vs_null_sd": 0.000962176823151528
+          },
+          {
+            "prior_sd": 4.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9895512283961069,
+            "cv_mse_vs_null_sd": 0.0008662226952694304
+          },
+          {
+            "prior_sd": 1000000.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9896084990573898,
+            "cv_mse_vs_null_sd": 0.0007980395754066172
+          }
+        ],
+        "inner_cv_mse_vs_null_at_choice": 0.9895512283961069,
+        "n_selection_targets": 1880
+      },
+      "held_out": {
+        "pooled_mse": 0.3318597024276394,
+        "pooled_mse_null": 0.3347556312857776,
+        "mse_vs_null_selected": 0.9913491257876227,
+        "mse_vs_null_zero_response": 1.0,
+        "mse_vs_null_full_amplitude": 1.166164269973681,
+        "median_pearson": 0.09326757800891222
+      },
+      "mse_vs_null_by_alpha_on_held_out": [
+        {
+          "alpha": 0.0,
+          "mse_vs_null": 1.0
+        },
+        {
+          "alpha": 0.1,
+          "mse_vs_null": 0.9931116137247175
+        },
+        {
+          "alpha": 0.25,
+          "mse_vs_null": 0.992381259120995
+        },
+        {
+          "alpha": 0.5,
+          "mse_vs_null": 1.0167699342726615
+        },
+        {
+          "alpha": 0.75,
+          "mse_vs_null": 1.0731660254549995
+        },
+        {
+          "alpha": 1.0,
+          "mse_vs_null": 1.1615695326680089
+        }
+      ]
+    },
+    {
+      "fold": 2,
+      "n_train_targets": 1880,
+      "n_test_targets": 470,
+      "selected": {
+        "alpha": 0.197074807419901,
+        "prior_sd": 4.0
+      },
+      "inner_selection": {
+        "alpha": 0.197074807419901,
+        "prior_sd": 4.0,
+        "inner_n_folds": 4,
+        "inner_selection_table": [
+          {
+            "prior_sd": 0.05,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9984813782393547,
+            "cv_mse_vs_null_sd": 0.0003435625368398195
+          },
+          {
+            "prior_sd": 0.1,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9957351936200926,
+            "cv_mse_vs_null_sd": 0.0010567256416624182
+          },
+          {
+            "prior_sd": 0.25,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9921695339015488,
+            "cv_mse_vs_null_sd": 0.0016642858280815926
+          },
+          {
+            "prior_sd": 0.5,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9908341696586344,
+            "cv_mse_vs_null_sd": 0.0018350043690651561
+          },
+          {
+            "prior_sd": 1.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9901951238969623,
+            "cv_mse_vs_null_sd": 0.0018653639665438231
+          },
+          {
+            "prior_sd": 4.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9900470189034563,
+            "cv_mse_vs_null_sd": 0.0017872232944748838
+          },
+          {
+            "prior_sd": 1000000.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9901049877201852,
+            "cv_mse_vs_null_sd": 0.0017453907085811405
+          }
+        ],
+        "inner_cv_mse_vs_null_at_choice": 0.9900470189034563,
+        "n_selection_targets": 1880
+      },
+      "held_out": {
+        "pooled_mse": 0.3258932567179676,
+        "pooled_mse_null": 0.32936266545842735,
+        "mse_vs_null_selected": 0.9894662962615061,
+        "mse_vs_null_zero_response": 1.0,
+        "mse_vs_null_full_amplitude": 1.1656035791667043,
+        "median_pearson": 0.09660860174982044
+      },
+      "mse_vs_null_by_alpha_on_held_out": [
+        {
+          "alpha": 0.0,
+          "mse_vs_null": 1.0
+        },
+        {
+          "alpha": 0.1,
+          "mse_vs_null": 0.992057618388145
+        },
+        {
+          "alpha": 0.25,
+          "mse_vs_null": 0.9901776232817513
+        },
+        {
+          "alpha": 0.5,
+          "mse_vs_null": 1.0138005042681317
+        },
+        {
+          "alpha": 0.75,
+          "mse_vs_null": 1.0708686429591412
+        },
+        {
+          "alpha": 1.0,
+          "mse_vs_null": 1.16138203935478
+        }
+      ]
+    },
+    {
+      "fold": 3,
+      "n_train_targets": 1880,
+      "n_test_targets": 470,
+      "selected": {
+        "alpha": 0.19699962806646532,
+        "prior_sd": 4.0
+      },
+      "inner_selection": {
+        "alpha": 0.19699962806646532,
+        "prior_sd": 4.0,
+        "inner_n_folds": 4,
+        "inner_selection_table": [
+          {
+            "prior_sd": 0.05,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9985425653608178,
+            "cv_mse_vs_null_sd": 0.00026598075217372594
+          },
+          {
+            "prior_sd": 0.1,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9960196520503759,
+            "cv_mse_vs_null_sd": 0.0009471365605671196
+          },
+          {
+            "prior_sd": 0.25,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9923001750607106,
+            "cv_mse_vs_null_sd": 0.0009412517290852631
+          },
+          {
+            "prior_sd": 0.5,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9908881476556853,
+            "cv_mse_vs_null_sd": 0.0008584571020433194
+          },
+          {
+            "prior_sd": 1.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9902168332684653,
+            "cv_mse_vs_null_sd": 0.0008287454068600915
+          },
+          {
+            "prior_sd": 4.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9900203626809553,
+            "cv_mse_vs_null_sd": 0.0007798728588750941
+          },
+          {
+            "prior_sd": 1000000.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.990068089144776,
+            "cv_mse_vs_null_sd": 0.0007564472550164223
+          }
+        ],
+        "inner_cv_mse_vs_null_at_choice": 0.9900203626809553,
+        "n_selection_targets": 1880
+      },
+      "held_out": {
+        "pooled_mse": 0.3220608269649952,
+        "pooled_mse_null": 0.32544875938658235,
+        "mse_vs_null_selected": 0.9895899667032905,
+        "mse_vs_null_zero_response": 1.0,
+        "mse_vs_null_full_amplitude": 1.1636099329202267,
+        "median_pearson": 0.09987802667506109
+      },
+      "mse_vs_null_by_alpha_on_held_out": [
+        {
+          "alpha": 0.0,
+          "mse_vs_null": 1.0
+        },
+        {
+          "alpha": 0.1,
+          "mse_vs_null": 0.9921594141035947
+        },
+        {
+          "alpha": 0.25,
+          "mse_vs_null": 0.9902811571414574
+        },
+        {
+          "alpha": 0.5,
+          "mse_vs_null": 1.0135043872244844
+        },
+        {
+          "alpha": 0.75,
+          "mse_vs_null": 1.0696696902490812
+        },
+        {
+          "alpha": 1.0,
+          "mse_vs_null": 1.1587770662152475
+        }
+      ]
+    },
+    {
+      "fold": 4,
+      "n_train_targets": 1880,
+      "n_test_targets": 470,
+      "selected": {
+        "alpha": 0.19748330369908,
+        "prior_sd": 4.0
+      },
+      "inner_selection": {
+        "alpha": 0.19748330369908,
+        "prior_sd": 4.0,
+        "inner_n_folds": 4,
+        "inner_selection_table": [
+          {
+            "prior_sd": 0.05,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9983712244801676,
+            "cv_mse_vs_null_sd": 0.00010851851478060011
+          },
+          {
+            "prior_sd": 0.1,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9955708010722691,
+            "cv_mse_vs_null_sd": 0.00025969637776466966
+          },
+          {
+            "prior_sd": 0.25,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9918771456048099,
+            "cv_mse_vs_null_sd": 0.00023551059809637896
+          },
+          {
+            "prior_sd": 0.5,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9906035657168026,
+            "cv_mse_vs_null_sd": 0.0003236573630293862
+          },
+          {
+            "prior_sd": 1.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.9900487123586085,
+            "cv_mse_vs_null_sd": 0.0004454113436567017
+          },
+          {
+            "prior_sd": 4.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.989939961112912,
+            "cv_mse_vs_null_sd": 0.0005573360231471616
+          },
+          {
+            "prior_sd": 1000000.0,
+            "inner_folds": 4,
+            "cv_mse_vs_null": 0.989996854978716,
+            "cv_mse_vs_null_sd": 0.0006197120147936319
+          }
+        ],
+        "inner_cv_mse_vs_null_at_choice": 0.989939961112912,
+        "n_selection_targets": 1880
+      },
+      "held_out": {
+        "pooled_mse": 0.33714214218779226,
+        "pooled_mse_null": 0.34061159945505987,
+        "mse_vs_null_selected": 0.9898140366540119,
+        "mse_vs_null_zero_response": 1.0,
+        "mse_vs_null_full_amplitude": 1.1649034594010632,
+        "median_pearson": 0.09697908562814357
+      },
+      "mse_vs_null_by_alpha_on_held_out": [
+        {
+          "alpha": 0.0,
+          "mse_vs_null": 1.0
+        },
+        {
+          "alpha": 0.1,
+          "mse_vs_null": 0.9922799187068789
+        },
+        {
+          "alpha": 0.25,
+          "mse_vs_null": 0.9905560825178373
+        },
+        {
+          "alpha": 0.5,
+          "mse_vs_null": 1.013966450871142
+        },
+        {
+          "alpha": 0.75,
+          "mse_vs_null": 1.0702311050599134
+        },
+        {
+          "alpha": 1.0,
+          "mse_vs_null": 1.159350045084152
+        }
+      ]
+    }
+  ],
+  "out_of_fold": {
+    "n_targets": 2350,
+    "pooled_mse": 0.325813040231218,
+    "pooled_mse_null_zero_response": 0.329133436253631,
+    "mse_vs_null": 0.9899117024991216,
+    "median_pearson": 0.09310426171649686,
+    "median_spearman": 0.07976521368999909,
+    "median_cosine": 0.09051267509987557,
+    "median_sign_agreement_strong": 0.5558248096701419,
+    "median_n_strong_genes": 1375.0,
+    "alpha_used": {
+      "min": 0.19468798650554223,
+      "max": 0.2005829097484605,
+      "median": 0.197074807419901
+    },
+    "prior_sd_used": [
+      4.0
+    ]
+  },
+  "comparators_out_of_fold": {
+    "zero_predicted_response": {
+      "mse_vs_null": 1.0,
+      "note": "By definition the null: MSE equals mean(truth^2)."
+    },
+    "full_amplitude_transfer": {
+      "mse_vs_null": 1.1622752396032647,
+      "note": "alpha=1, no shrinkage. Not fold-dependent: it has no fitted parameter, so its in-sample and held-out values coincide."
+    }
+  },
+  "bootstrap": {
+    "unit": "target (out-of-fold predictions only)",
+    "n_targets": 2350,
+    "n_boot": 1000,
+    "median_pearson": {
+      "point": 0.09310426171649686,
+      "ci95": [
+        0.08792063731397479,
+        0.09915243964264567
+      ]
+    },
+    "pooled_mse_vs_null": {
+      "point": 0.9899117024991217,
+      "ci95": [
+        0.9886560323152712,
+        0.9911413776205198
+      ]
+    },
+    "frac_pearson_gt0": 0.9331914893617022
+  },
+  "runtime_seconds": 27.582003700001223,
+  "peak_rss_bytes": 1790300160,
+  "resources_after": {
+    "ram_total_bytes": 8384401408,
+    "ram_available_bytes": 1679335424,
+    "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\c002",
+    "disk_total_bytes": 510342983680,
+    "disk_free_bytes": 29794586624,
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 7.808582305908203,
+    "ram_available_gib": 1.5640029907226562,
+    "disk_free_gib": 27.748371124267578
+  },
+  "caveat": "PROXY METRICS, NOT VCC SCORES. Everything here is pseudobulk log2 fold change space on K562 and RPE1. The competition scores single-cell counts against real held-out control cells in contexts A/B/C, where no perturbation is observable. What transfers from this experiment is the calibration method (D-012), not the numbers."
+}

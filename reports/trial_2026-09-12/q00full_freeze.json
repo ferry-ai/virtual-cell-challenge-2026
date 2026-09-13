@@ -1,0 +1,261 @@
+{
+  "run_id": "q00full",
+  "trial": {
+    "contexts": [
+      "A",
+      "B",
+      "C"
+    ],
+    "cells_per_pert": 400,
+    "seed": 20260912,
+    "overdispersion": null,
+    "id": "trial-00-controls",
+    "title": "No-effect control resampling, per context",
+    "kind": "control_resampling",
+    "trains": false,
+    "description": "For each official context, resample that context's own real non-targeting control cells and label the resulting cells with the requested perturbations. No model, no training, no predicted effect. It exists to exercise the generation, validation and packaging path end to end on real counts, and to give every later trial a reference whose dispersion is exactly right because it is real data.",
+    "source_data": [
+      "raw/controls/context_A.h5ad",
+      "raw/controls/context_B.h5ad",
+      "raw/controls/context_C.h5ad"
+    ],
+    "rules": [
+      "Resampling is WITHIN context: a cell labelled context A comes from context A.",
+      "Cells are drawn without replacement within a perturbation (400 distinct cells out of 18,400) and with replacement across perturbations.",
+      "Source-cell provenance is written to a diagnostics sidecar, never into the submitted matrix."
+    ],
+    "not_this": [
+      "This is NOT the official score-zero baseline. The official 0 point is the cell-context mean computed by the scorer against held-out data; this is a resample of the released control cells and its score is unknown.",
+      "Rules risk, unresolved: the challenge states control cells are model inputs only and that predictions must be generated solely by machine learning models. Do not upload this trial without resolving that."
+    ],
+    "_trials_version": "1"
+  },
+  "seed": 20260912,
+  "code": {
+    "commit": "e7212c309300835035fd7bfe69326bbc189098f2",
+    "branch": "main",
+    "commit_date": "2026-09-12T17:38:24+02:00",
+    "describe": "e7212c3-dirty",
+    "dirty": true,
+    "status_porcelain": [
+      "M src/vcc2026/signatures.py",
+      "?? configs/trials.yaml",
+      "?? scripts/43_freeze_trial.py",
+      "?? scripts/44_calibrate_transfer.py",
+      "?? scripts/45_generate_prediction.py",
+      "?? scripts/46_validate_package.py",
+      "?? src/vcc2026/inference.py",
+      "?? src/vcc2026/resources.py",
+      "?? src/vcc2026/trials.py"
+    ],
+    "uncommitted_patch": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q00full\\uncommitted.patch",
+    "uncommitted_patch_bytes": 2102,
+    "untracked_files": [
+      "configs/trials.yaml",
+      "scripts/43_freeze_trial.py",
+      "scripts/44_calibrate_transfer.py",
+      "scripts/45_generate_prediction.py",
+      "scripts/46_validate_package.py",
+      "src/vcc2026/inference.py",
+      "src/vcc2026/resources.py",
+      "src/vcc2026/trials.py"
+    ],
+    "untracked_code_fingerprints": {
+      "configs/trials.yaml": {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\configs\\trials.yaml",
+        "exists": true,
+        "bytes": 3879,
+        "mtime_utc": "2026-09-12T20:16:55.476523+00:00",
+        "sha256": "9b71959e17e1d983585d8ff75cc69da32ec9060cb30754b2865d3cf2b0281863",
+        "sha256_mode": "full"
+      },
+      "scripts/43_freeze_trial.py": {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\scripts\\43_freeze_trial.py",
+        "exists": true,
+        "bytes": 7662,
+        "mtime_utc": "2026-09-12T20:23:25.072783+00:00",
+        "sha256": "a2ceedcbb2f165f1b36fb00bbe23463673a3d7516447146e483074492db404c3",
+        "sha256_mode": "full"
+      },
+      "scripts/44_calibrate_transfer.py": {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\scripts\\44_calibrate_transfer.py",
+        "exists": true,
+        "bytes": 24811,
+        "mtime_utc": "2026-09-12T20:24:26.597627+00:00",
+        "sha256": "80ae4a1befe56be632518800dc2743e3dc6a57a39b62c93814a1218d433db41d",
+        "sha256_mode": "full"
+      },
+      "scripts/45_generate_prediction.py": {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\scripts\\45_generate_prediction.py",
+        "exists": true,
+        "bytes": 23365,
+        "mtime_utc": "2026-09-12T20:22:54.939793+00:00",
+        "sha256": "7a613d9dc2e0f5c433d8d5c8f8b93f553ab653e53d856d77639015826af582e2",
+        "sha256_mode": "full"
+      },
+      "scripts/46_validate_package.py": {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\scripts\\46_validate_package.py",
+        "exists": true,
+        "bytes": 18450,
+        "mtime_utc": "2026-09-12T20:31:57.921365+00:00",
+        "sha256": "7653124953aba77a36fbc6f1660fe0f23e38e9dc6ddbd98acbefab321e6bd01f",
+        "sha256_mode": "full"
+      },
+      "src/vcc2026/inference.py": {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\src\\vcc2026\\inference.py",
+        "exists": true,
+        "bytes": 16397,
+        "mtime_utc": "2026-09-12T20:16:33.440652+00:00",
+        "sha256": "e824b9ab7466d0c18e7bfaee9829531f823f770857d3a088c824ce7cba9575ee",
+        "sha256_mode": "full"
+      },
+      "src/vcc2026/resources.py": {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\src\\vcc2026\\resources.py",
+        "exists": true,
+        "bytes": 7895,
+        "mtime_utc": "2026-09-12T20:27:04.886936+00:00",
+        "sha256": "6e94a402c7cca445e85f8b9a1f1885ab86cea6ba929b9ce65e903c750dea94d0",
+        "sha256_mode": "full"
+      },
+      "src/vcc2026/trials.py": {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\src\\vcc2026\\trials.py",
+        "exists": true,
+        "bytes": 1549,
+        "mtime_utc": "2026-09-12T20:22:41.950654+00:00",
+        "sha256": "f2f3c757bc69779eb582e70a52e2a46e502c556d8b9d5e760362f54f77b01b6f",
+        "sha256_mode": "full"
+      }
+    },
+    "note": "The tree was NOT clean. The diff against HEAD is stored beside this freeze; untracked files under src/, scripts/, configs/ and tests/ are fingerprinted because a patch cannot contain them."
+  },
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  },
+  "requirements_lock": {
+    "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\requirements.lock.txt",
+    "exists": true,
+    "bytes": 1604,
+    "mtime_utc": "2026-09-11T18:09:41.635556+00:00",
+    "sha256": "c9b28ed005a546c41ee06767cc4278284c0d9840885041dce0fab4f33019437e",
+    "sha256_mode": "full"
+  },
+  "configs": {
+    "config.yaml": {
+      "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\configs\\config.yaml",
+      "exists": true,
+      "bytes": 1214,
+      "mtime_utc": "2026-09-11T17:23:08.637644+00:00",
+      "sha256": "747b13bb34da67e118b8284f1ed5ee460a1732bc18c8cff5b22000db031e4bd6",
+      "sha256_mode": "full"
+    },
+    "sources.yaml": {
+      "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\configs\\sources.yaml",
+      "exists": true,
+      "bytes": 19089,
+      "mtime_utc": "2026-09-12T13:53:56.912962+00:00",
+      "sha256": "561065f15d8feb2075a0b2e1b8cb07bf0e8711e2cf6f2a1f1ecd065bb577d062",
+      "sha256_mode": "full"
+    },
+    "trials.yaml": {
+      "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\configs\\trials.yaml",
+      "exists": true,
+      "bytes": 3879,
+      "mtime_utc": "2026-09-12T20:16:55.476523+00:00",
+      "sha256": "9b71959e17e1d983585d8ff75cc69da32ec9060cb30754b2865d3cf2b0281863",
+      "sha256_mode": "full"
+    }
+  },
+  "data_identifiers": {
+    "raw/controls/context_A.h5ad": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_A.h5ad",
+      "exists": true,
+      "bytes": 224973316,
+      "mtime_utc": "2026-09-11T17:27:06.844066+00:00",
+      "sha256": "daf888bd6894da5488c8dac3098a3618ff766d03fdf1250ec7f607124bb97834",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "raw/controls/context_B.h5ad": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_B.h5ad",
+      "exists": true,
+      "bytes": 210966111,
+      "mtime_utc": "2026-09-11T17:27:08.236761+00:00",
+      "sha256": "8764c13cb61dd48e51c817335dd4ecc85a740406c5af144c4884d79d3cd3293d",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "raw/controls/context_C.h5ad": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_C.h5ad",
+      "exists": true,
+      "bytes": 226056691,
+      "mtime_utc": "2026-09-11T17:27:09.601099+00:00",
+      "sha256": "486a299ad022ec5fd6a3c5f56ec77efeb7b8b85e5de0e41250d064c6f9b236f6",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "raw/controls/gene_names.csv": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\gene_names.csv",
+      "exists": true,
+      "bytes": 119295,
+      "mtime_utc": "2026-09-11T17:27:09.608150+00:00",
+      "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "sha256_mode": "full"
+    },
+    "raw/controls/pert_counts.csv": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+      "exists": true,
+      "bytes": 1906,
+      "mtime_utc": "2026-09-11T17:27:09.610157+00:00",
+      "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+      "sha256_mode": "full"
+    },
+    "raw/controls/manifest.json": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\manifest.json",
+      "exists": true,
+      "bytes": 715,
+      "mtime_utc": "2026-09-11T17:27:09.612153+00:00",
+      "sha256": "2c2b5d425df817ca35e9edf08282d12494ce42913ba824375bf0f98a1cc676f5",
+      "sha256_mode": "full"
+    }
+  },
+  "signatures": {},
+  "resources_before_run": {
+    "ram_total_bytes": 8384401408,
+    "ram_available_bytes": 1550970880,
+    "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts",
+    "disk_total_bytes": 510342983680,
+    "disk_free_bytes": 29620998144,
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 7.808582305908203,
+    "ram_available_gib": 1.4444541931152344,
+    "disk_free_gib": 27.58670425415039
+  },
+  "roots": {
+    "data_root": "C:\\Users\\ferra\\vcc2026-data",
+    "artifact_root": "C:\\Users\\ferra\\vcc2026-data\\artifacts",
+    "run_dir": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q00full"
+  },
+  "declared": {
+    "uploaded": false,
+    "leaderboard_score": null,
+    "note": "Local training, inference and packaging only. No submission has been uploaded and no submission quota has been consumed."
+  }
+}

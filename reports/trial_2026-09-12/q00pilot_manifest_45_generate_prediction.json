@@ -1,0 +1,141 @@
+{
+  "run_id": "q00pilot",
+  "stage": "45_generate_prediction",
+  "started_utc": "2026-09-12T20:28:17.018112+00:00",
+  "finished_utc": "2026-09-12T20:28:17.248351+00:00",
+  "seed": 20260912,
+  "config": {
+    "run_id": "q00pilot",
+    "trial": "trial-00-controls",
+    "out": null,
+    "fitted_state": null,
+    "signatures": null,
+    "n_perts": 6,
+    "contexts": null,
+    "cells_per_pert": null,
+    "seed": null,
+    "overdispersion": null,
+    "reserve_gib": 10.0,
+    "skip_resource_check": false,
+    "allow_overwrite": true
+  },
+  "inputs": {
+    "controls:A": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_A.h5ad",
+      "exists": true,
+      "bytes": 224973316,
+      "mtime_utc": "2026-09-11T17:27:06.844066+00:00",
+      "sha256": "daf888bd6894da5488c8dac3098a3618ff766d03fdf1250ec7f607124bb97834",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "controls:B": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_B.h5ad",
+      "exists": true,
+      "bytes": 210966111,
+      "mtime_utc": "2026-09-11T17:27:08.236761+00:00",
+      "sha256": "8764c13cb61dd48e51c817335dd4ecc85a740406c5af144c4884d79d3cd3293d",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "controls:C": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_C.h5ad",
+      "exists": true,
+      "bytes": 226056691,
+      "mtime_utc": "2026-09-11T17:27:09.601099+00:00",
+      "sha256": "486a299ad022ec5fd6a3c5f56ec77efeb7b8b85e5de0e41250d064c6f9b236f6",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "outputs": {
+    "prediction": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q00pilot\\prediction.h5ad",
+      "exists": true,
+      "bytes": 85236634,
+      "mtime_utc": "2026-09-12T20:28:17.011884+00:00",
+      "sha256": "2416b98e197f36d4ec1a0867b0425e50c5f57ebdd1d0ca08708f1be0dfcf9b5d",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "diagnostics": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q00pilot\\generation_diagnostics.json",
+      "exists": true,
+      "bytes": 23767,
+      "mtime_utc": "2026-09-12T20:28:17.018113+00:00",
+      "sha256": "5a38497fc3daf77270b6439f6ace5a2f3351de12609c0b9b728881f692f34bb5",
+      "sha256_mode": "full"
+    },
+    "provenance:A": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q00pilot\\provenance_A.npz",
+      "exists": true,
+      "bytes": 6985,
+      "mtime_utc": "2026-09-12T20:27:57.129221+00:00",
+      "sha256": "015d2e9f4c6ef375be2fc063f10622c49bc6f5eabd3dd00fdf8bc451ad0c2d19",
+      "sha256_mode": "full"
+    },
+    "provenance:B": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q00pilot\\provenance_B.npz",
+      "exists": true,
+      "bytes": 7002,
+      "mtime_utc": "2026-09-12T20:28:07.859980+00:00",
+      "sha256": "9b1beac80a389e5ca369a2b3cf43c622d91c0e5586e3b4a03f04b35d3c812ac7",
+      "sha256_mode": "full"
+    },
+    "provenance:C": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q00pilot\\provenance_C.npz",
+      "exists": true,
+      "bytes": 6987,
+      "mtime_utc": "2026-09-12T20:28:16.281016+00:00",
+      "sha256": "b6bc5a45a7114e24a34b16bacf5f52caeec25b2cf00088e9ddf80201b0a15872",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "storage": {
+      "stored_entries": 41755736,
+      "stored_entries_per_cell": 5799.4077777777775,
+      "per_cell_budget": 13194,
+      "global_cap": 4750000000,
+      "fraction_of_global_cap_at_this_size": 0.008790681263157895,
+      "projected_entries_at_full_shape": 2087786800.0,
+      "projected_fraction_of_cap": 0.4395340631578947,
+      "file_bytes": 85236634,
+      "bytes_per_cell": 11838.421388888888,
+      "projected_file_bytes_at_full_shape": 4261831700.0
+    },
+    "runtime": {
+      "basal_profiles_seconds": 29.552078699998674,
+      "generation_seconds": 30.875171900006535,
+      "total_seconds": 60.54547989999992,
+      "seconds_per_block": 1.7152873277781409,
+      "projected_generation_seconds_at_full_shape": 1543.7585950003267
+    },
+    "memory": {
+      "peak_rss_bytes": 434003968
+    },
+    "context_provenance_ok": true
+  },
+  "notes": [
+    "No VCC score here. Generation only; nothing uploaded.",
+    "PILOT: not a submittable artifact. Coverage is deliberately incomplete and vcc prep will reject it."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}

@@ -1,7 +1,22 @@
 # Roadmap — ordinata per valore informativo diviso costo
 
-Aggiornata il 2026-09-12, dopo
-[CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md).
+Aggiornata il 2026-09-13, dopo
+[CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md),
+[CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) e
+[CP-0005](checkpoints/0005-packaging-streaming-trial01.md).
+
+> **R-0 — chiuso il 13 settembre.** Era: impacchettare le previsioni già generate,
+> bloccato perché `vcc prep` chiede 33,5 GiB contro i 7,81 della macchina. Risolto
+> senza una macchina più grande: `trial-01-transfer` è un `.vcc` da 3,91 GiB, prodotto
+> qui con 0,52 GiB di picco e tutte le convalide attive
+> ([CP-0005](checkpoints/0005-packaging-streaming-trial01.md), D-018).
+>
+> Chiuso anche il resto, il 13 settembre: la sottomissione è stata autorizzata,
+> inviata e valutata. **Primo punteggio ufficiale del progetto: 0,045929, rango 446 su
+> 920** ([CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md)). Solo `pds`
+> batte la media del contesto; `fid` è negativa. Il collo di bottiglia torna a essere
+> quello di sempre — il **segnale**, non la meccanica — che è ciò di cui si occupano
+> R-1 e R-3. `trial-00-controls` resta non inviabile (D-017).
 
 L'ordine non è per dimensione del dataset né per eleganza del modello. È per quanto
 ciascun passo **riduce l'incertezza che blocca una decisione**, diviso per quanto costa.
@@ -27,7 +42,7 @@ un giga.
   dataset perturbato completo con NTC espliciti: 145.473 × 9.624, 4.976 NTC) oppure
   RPE1 (1,237 GB, 247.914 × 8.749, 11.485 NTC).
 - **Implementazione:** estendere `pseudobulk.py` con un lettore a singola cellula
-  *backed*; nuovo `43_build_eval_bundle.py` che seleziona bersagli e NTC appaiati per
+  *backed*; nuovo `48_build_eval_bundle.py` che seleziona bersagli e NTC appaiati per
   batch, scrive il bundle reale con `SubmissionWriter` e riusa `score_bundle`.
 - **Dipendenze:** nessuna oltre a quanto esiste. Lo stadio 3 dimostra già che il
   percorso scorer funziona end-to-end.

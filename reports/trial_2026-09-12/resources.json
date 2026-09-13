@@ -1,0 +1,296 @@
+{
+  "generated_utc": "2026-09-12T21:18:17.519244+00:00",
+  "machine": {
+    "ram_total_bytes": 8384401408,
+    "ram_available_bytes": 1331302400,
+    "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts",
+    "disk_total_bytes": 510342983680,
+    "disk_free_bytes": 21170094080,
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 7.808582305908203,
+    "ram_available_gib": 1.2398719787597656,
+    "disk_free_gib": 19.7161865234375
+  },
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  },
+  "official_full_shape": {
+    "n_perturbations": 300,
+    "cells_per_pert": 400,
+    "n_contexts": 3,
+    "n_cells": 360000,
+    "n_genes": 18533,
+    "max_stored_entries": 4750000000,
+    "per_cell_budget": 13194,
+    "max_counts_per_cell": 1000000
+  },
+  "runs": [
+    {
+      "run_id": "q00pilot",
+      "run_dir": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q00pilot",
+      "generation": {
+        "trial": "trial-00-controls",
+        "kind": "control_resampling",
+        "is_pilot": true,
+        "n_cells": 7200,
+        "n_perturbations": 6,
+        "contexts": [
+          "A",
+          "B",
+          "C"
+        ],
+        "stored_entries": 41755736,
+        "stored_entries_per_cell": 5799.4077777777775,
+        "projected_entries_at_full_shape": 2087786800.0,
+        "fraction_of_global_cap_at_this_size": 0.008790681263157895,
+        "projected_fraction_of_cap": 0.4395340631578947,
+        "file_gib": 0.07938280142843723,
+        "projected_file_gib_at_full_shape": 3.9691400714218616,
+        "basal_seconds": 29.552078699998674,
+        "generation_seconds": 30.875171900006535,
+        "total_seconds": 60.54547989999992,
+        "seconds_per_block": 1.7152873277781409,
+        "projected_generation_seconds_at_full_shape": 1543.7585950003267,
+        "peak_rss_gib": 0.40419769287109375,
+        "disk_free_gib_before": 27.746845245361328,
+        "disk_free_gib_after": 27.66730499267578,
+        "ram_available_gib_before": 1.1865425109863281,
+        "context_provenance_ok": true
+      },
+      "sizing_model_for_this_file": {
+        "available": true,
+        "source": "vcc.sizing (installed vcc-cli)",
+        "scipy_bytes_per_nnz": 8,
+        "crosses_int32_index_limit": false,
+        "prep_peak_gib_no_cast_in_order": 2.404435819387436,
+        "prep_peak_gib_worst_case": 2.995534324645996,
+        "scoring_container_peak_gib": 26.3484370136261,
+        "fraction_of_hard_cap": 0.008790681263157895
+      },
+      "sizing_model_projected_full_shape": {
+        "available": true,
+        "source": "vcc.sizing (installed vcc-cli)",
+        "scipy_bytes_per_nnz": 8,
+        "crosses_int32_index_limit": false,
+        "prep_peak_gib_no_cast_in_order": 22.221790969371796,
+        "prep_peak_gib_worst_case": 51.776716232299805,
+        "scoring_container_peak_gib": 43.42185068130493,
+        "fraction_of_hard_cap": 0.4395340631578947
+      }
+    },
+    {
+      "run_id": "q01pilot",
+      "run_dir": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01pilot",
+      "generation": {
+        "trial": "trial-01-transfer",
+        "kind": "shrunk_transfer",
+        "is_pilot": true,
+        "n_cells": 7200,
+        "n_perturbations": 6,
+        "contexts": [
+          "A",
+          "B",
+          "C"
+        ],
+        "stored_entries": 43318618,
+        "stored_entries_per_cell": 6016.474722222222,
+        "projected_entries_at_full_shape": 2165930900.0,
+        "fraction_of_global_cap_at_this_size": 0.00911970905263158,
+        "projected_fraction_of_cap": 0.45598545263157897,
+        "file_gib": 0.07999563403427601,
+        "projected_file_gib_at_full_shape": 3.9997817017138004,
+        "basal_seconds": 15.526302700003725,
+        "generation_seconds": 21.951858700005687,
+        "total_seconds": 40.287769800001115,
+        "seconds_per_block": 1.2195477055558714,
+        "projected_generation_seconds_at_full_shape": 1097.5929350002843,
+        "peak_rss_gib": 0.4046745300292969,
+        "disk_free_gib_before": 27.667076110839844,
+        "disk_free_gib_after": 27.587074279785156,
+        "ram_available_gib_before": 1.3310050964355469,
+        "context_provenance_ok": true
+      },
+      "sizing_model_for_this_file": {
+        "available": true,
+        "source": "vcc.sizing (installed vcc-cli)",
+        "scipy_bytes_per_nnz": 8,
+        "crosses_int32_index_limit": false,
+        "prep_peak_gib_no_cast_in_order": 2.4195735111832617,
+        "prep_peak_gib_worst_case": 3.032796335220337,
+        "scoring_container_peak_gib": 26.361478717327117,
+        "fraction_of_hard_cap": 0.00911970905263158
+      },
+      "sizing_model_projected_full_shape": {
+        "available": true,
+        "source": "vcc.sizing (installed vcc-cli)",
+        "scipy_bytes_per_nnz": 12,
+        "crosses_int32_index_limit": true,
+        "prep_peak_gib_no_cast_in_order": 33.46801333874464,
+        "prep_peak_gib_worst_case": 79.45972514152527,
+        "scoring_container_peak_gib": 53.110903799533844,
+        "fraction_of_hard_cap": 0.45598545263157897
+      },
+      "validation": {
+        "contract_all_checks_pass": false,
+        "failed_checks": [
+          "every_context_predicts_the_full_panel"
+        ],
+        "contract_recheck_seconds": 1.3252152999993996,
+        "context_provenance_ok": true,
+        "context_provenance_seconds": 23.137206999999762,
+        "prep_dry_run_exit": 1,
+        "prep_dry_run_timed_out": null,
+        "prep_dry_run_seconds": 5.880587577819824,
+        "prep_package_exit": null,
+        "prep_package_timed_out": null,
+        "prep_package_seconds": null,
+        "vcc_bytes": null,
+        "vcc_sha256": null,
+        "prediction_sha256": "ac95dcca5bb60225841e07915ddeacb4f32f066265f05c6cdc8bfae3b148fe52",
+        "prediction_bytes": 85894658
+      }
+    },
+    {
+      "run_id": "q00full",
+      "run_dir": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q00full",
+      "generation": {
+        "trial": "trial-00-controls",
+        "kind": "control_resampling",
+        "is_pilot": false,
+        "n_cells": 360000,
+        "n_perturbations": 300,
+        "contexts": [
+          "A",
+          "B",
+          "C"
+        ],
+        "stored_entries": 2084061983,
+        "stored_entries_per_cell": 5789.061063888889,
+        "projected_entries_at_full_shape": 2084061983.0,
+        "fraction_of_global_cap_at_this_size": 0.43874989115789476,
+        "projected_fraction_of_cap": 0.43874989115789476,
+        "file_gib": 3.926171125844121,
+        "projected_file_gib_at_full_shape": 3.926171125844121,
+        "basal_seconds": 27.66147120000096,
+        "generation_seconds": 1221.5013175999993,
+        "total_seconds": 1249.2809734999973,
+        "seconds_per_block": 1.3572236862222216,
+        "projected_generation_seconds_at_full_shape": 1221.5013175999993,
+        "peak_rss_gib": 0.4054679870605469,
+        "disk_free_gib_before": 27.586620330810547,
+        "disk_free_gib_after": 23.650970458984375,
+        "ram_available_gib_before": 1.3870964050292969,
+        "context_provenance_ok": true
+      },
+      "sizing_model_for_this_file": {
+        "available": true,
+        "source": "vcc.sizing (installed vcc-cli)",
+        "scipy_bytes_per_nnz": 8,
+        "crosses_int32_index_limit": false,
+        "prep_peak_gib_no_cast_in_order": 22.185713305324317,
+        "prep_peak_gib_worst_case": 51.68790967464447,
+        "scoring_container_peak_gib": 43.390768386125565,
+        "fraction_of_hard_cap": 0.43874989115789476
+      },
+      "validation": {
+        "contract_all_checks_pass": true,
+        "failed_checks": [],
+        "contract_recheck_seconds": 58.23890630000096,
+        "context_provenance_ok": true,
+        "context_provenance_seconds": 131.85181109999394,
+        "prep_dry_run_exit": null,
+        "prep_dry_run_timed_out": null,
+        "prep_dry_run_seconds": null,
+        "prep_package_exit": null,
+        "prep_package_timed_out": null,
+        "prep_package_seconds": null,
+        "vcc_bytes": null,
+        "vcc_sha256": null,
+        "prediction_sha256": "1888caf2a35d28b2201ded9e363f1aeb6be9d94ad5fc19364d85204d7894f9cd",
+        "prediction_bytes": 4215694146
+      }
+    },
+    {
+      "run_id": "q01full",
+      "run_dir": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01full",
+      "generation": {
+        "trial": "trial-01-transfer",
+        "kind": "shrunk_transfer",
+        "is_pilot": false,
+        "n_cells": 360000,
+        "n_perturbations": 300,
+        "contexts": [
+          "A",
+          "B",
+          "C"
+        ],
+        "stored_entries": 2167562410,
+        "stored_entries_per_cell": 6021.006694444444,
+        "projected_entries_at_full_shape": 2167562410.0,
+        "fraction_of_global_cap_at_this_size": 0.4563289284210526,
+        "projected_fraction_of_cap": 0.4563289284210526,
+        "file_gib": 3.966495854780078,
+        "projected_file_gib_at_full_shape": 3.966495854780078,
+        "basal_seconds": 17.97483210000064,
+        "generation_seconds": 1131.176341499995,
+        "total_seconds": 1152.5644166999991,
+        "seconds_per_block": 1.256862601666661,
+        "projected_generation_seconds_at_full_shape": 1131.176341499995,
+        "peak_rss_gib": 0.47777557373046875,
+        "disk_free_gib_before": 23.68213653564453,
+        "disk_free_gib_after": 19.717613220214844,
+        "ram_available_gib_before": 1.2616729736328125,
+        "context_provenance_ok": true
+      },
+      "sizing_model_for_this_file": {
+        "available": true,
+        "source": "vcc.sizing (installed vcc-cli)",
+        "scipy_bytes_per_nnz": 12,
+        "crosses_int32_index_limit": true,
+        "prep_peak_gib_no_cast_in_order": 33.49171694740653,
+        "prep_peak_gib_worst_case": 79.51807248592377,
+        "scoring_container_peak_gib": 53.13132537007332,
+        "fraction_of_hard_cap": 0.4563289284210526
+      },
+      "validation": {
+        "contract_all_checks_pass": true,
+        "failed_checks": [],
+        "contract_recheck_seconds": 61.15012239999487,
+        "context_provenance_ok": true,
+        "context_provenance_seconds": 114.28655090000393,
+        "prep_dry_run_exit": null,
+        "prep_dry_run_timed_out": null,
+        "prep_dry_run_seconds": null,
+        "prep_package_exit": null,
+        "prep_package_timed_out": null,
+        "prep_package_seconds": null,
+        "vcc_bytes": null,
+        "vcc_sha256": null,
+        "prediction_sha256": "1b7e15f49104bdb9360eb22bd69574caf3dbf8ff9de3f27991e207850dc091e2",
+        "prediction_bytes": 4258992494
+      }
+    }
+  ],
+  "note": "Every value is copied from a run's own diagnostics or validation JSON. Nothing here is a VCC score and nothing has been uploaded."
+}

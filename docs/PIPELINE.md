@@ -1,7 +1,9 @@
 # La pipeline — architettura e come si esegue
 
-Aggiornato il 2026-09-12. Introdotta da
-[CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md).
+Aggiornato il 2026-09-13. Introdotta da
+[CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md), estesa con gli
+stadi 43–47 da [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) e con lo
+stadio 48 da [CP-0005](checkpoints/0005-packaging-streaming-trial01.md).
 
 Questo documento descrive **codice che esiste e che è stato eseguito**. I numeri che
 produce stanno in `reports/pipeline/`; i comandi qui sotto li rigenerano.
@@ -17,8 +19,33 @@ configs/sources.yaml                      registry versionato delle fonti
         ├──▶ 41_transfer_experiment.py    split → baseline → calibrazione → report
         │    reports/pipeline/transfer_experiment.json
         │
-        └──▶ 42_null_calibration.py       bundle a singola cellula → scorer ufficiale
-             reports/pipeline/null_calibration_A.json
+        ├──▶ 42_null_calibration.py       bundle a singola cellula → scorer ufficiale
+        │    reports/pipeline/null_calibration_A.json
+        │
+        └──▶ 44_calibrate_transfer.py     CV annidata → (alpha, prior_sd) + stato
+             <run>/calibration.json, <run>/fitted_state.json
+                     │
+configs/trials.yaml  │                    definizione dei due trial
+        │            │
+        ▼            ▼
+   43_freeze_trial.py                     commit, patch, dipendenze, hash, seed
+        │
+        ▼  45_generate_prediction.py       basale A/B/C → log2FC → conteggi → h5ad
+<artifact_root>/<run>/prediction.h5ad     360.000 × 18.533, scritta a blocchi
+        │            <run>/generation_diagnostics.json
+        │            <run>/provenance_<contesto>.npz  (solo trial-00)
+        │
+        ▼  46_validate_package.py          contratto dal file + provenienza + vcc prep
+<artifact_root>/<run>/validation.json     <run>/prediction.vcc, prep_*.log
+        │
+        ▼  47_resource_report.py           consolida il costo misurato dei run
+reports/trial_2026-09-12/resources.json
+
+<artifact_root>/<run>/prediction.h5ad
+        │
+        ▼  48_package_prediction.py        convalida a blocchi → payload → zstd → tar
+<artifact_root>/<run>/prediction.vcc      + verifica contro l'input, array per array
+             <run>/packaging.json
 ```
 
 Ogni stadio scrive un manifesto (`manifest_<stadio>.json`) con percorsi, dimensioni,
@@ -39,10 +66,18 @@ un `--run-id` nuovo. Lo stesso vale per ogni output.
 | `evaluation.py` | metriche proxy su Δ; scorer `cell-eval2` | proxy e punteggio VCC non si confondono; il backend DE è registrato |
 | `registry.py` | livelli di verifica, copertura in tre campi | una fonte non può essere abilitata sotto `sample_verified` |
 | `manifest.py` | impronta di input, output, ambiente | un risultato senza manifesto non è riproducibile |
+| `inference.py` | profilo basale a blocchi, log2FC → conteggi, maschere di supporto, provenienza dei contesti | **D-015**: il vincolo compositivo si assorbe sui geni supportati, così un gene senza evidenza realizza esattamente zero |
+| `resources.py` | RAM, disco, memoria di picco, `require()` | un job che non finirebbe si rifiuta prima, invece di lasciare un file troncato |
+| `trials.py` | definizione dei trial da `configs/trials.yaml` | freeze, generazione e packaging leggono lo stesso oggetto: un run non può contraddire il trial che dichiara |
+| `submission.py` | scrittura a blocchi, larghezza degli offset CSR | gli offset di una sottomissione completa arrivano al 97% del tetto di int32: la larghezza si sceglie dal conteggio, non si assume |
+| `packaging.py` | convalida e `.vcc` senza materializzare la matrice | **D-018**: le convalide sui metadati sono quelle ufficiali, importate; un layout che il packager non sa preservare viene rifiutato, non approssimato |
 
-I moduli preesistenti (`external.py`, `sampling.py`, `submission.py`,
-`remote_ranges.py`) non sono stati toccati; `config.py` è stato solo esteso. Gli script
-da 01 a 31 continuano a funzionare come prima.
+I moduli preesistenti `external.py`, `sampling.py` e `remote_ranges.py` non sono stati
+toccati; `config.py` è stato solo esteso; `signatures.py` ha acquisito un filtro per
+bersagli in `read_npz`, retrocompatibile. `submission.py` è stato **corretto** il
+12 settembre: scriveva gli offset CSR in int32 e una sottomissione completa arriva al
+97% di quel tetto ([CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.6).
+Gli script da 01 a 31 continuano a funzionare come prima.
 
 ## 3. Eseguire
 
@@ -59,6 +94,17 @@ pseudobulk Replogle in `data_root/external/`.
 
 # Stadio 3 — scorer ufficiale su un bundle nullo (circa 6 min)
 .\scripts\py.cmd scripts/42_null_calibration.py --run-id n003 --context A --n-pseudo 6
+
+# Stadio 4 — calibrazione annidata, sostituisce lo stadio 2 per questo scopo (28 s)
+.\scripts\py.cmd scripts/44_calibrate_transfer.py --run-id c002 `
+    --signatures <artifact_root>\e001\signatures --outer-folds 5 --inner-folds 4
+
+# Stadi 43, 45, 46, 47, 48 — un trial completo, dal freeze al .vcc. I comandi
+# esatti, con i percorsi di questa macchina, stanno in docs/SOTTOMISSIONE.md
+# sezioni 3 e 7.
+
+# Parità del packaging con vcc prep (41 test su fixture a forma ufficiale, 98 s)
+.\scripts\py.cmd -m unittest tests.test_packaging_parity
 
 # Contratti
 .\scripts\py.cmd -m unittest discover -s tests
@@ -110,4 +156,17 @@ uno split a livello di cellula sottostimerebbe il pavimento di falsi positivi.
   `sample_verified`, `enabled: false`. Lo stadio 1 legge solo fonti `usable` con un
   percorso locale.
 - **Non allena un modello generativo di conteggi.** Deliberatamente: prima una stima
-  di risposta calibrata e onestamente validata.
+  di risposta calibrata e onestamente validata. Il generatore di conteggi è un
+  campionatore Poisson dal profilo previsto, e il suo artefatto è misurato, non
+  assunto: 4–6% di geni rilevati in più dei controlli reali anche a effetto previsto
+  zero ([CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.8).
+- **Impacchetta**, dallo stadio 48, senza materializzare la matrice: 0,519 GiB di
+  picco contro i 33,49 che il modello della CLI attribuisce a `vcc prep`
+  ([CP-0005](checkpoints/0005-packaging-streaming-trial01.md)). Le convalide non sono
+  indebolite — quelle sui metadati sono le funzioni ufficiali, chiamate direttamente —
+  e i layout che non sa preservare li rifiuta invece di approssimarli (D-018).
+- **Non dimostra che il server accetti l'archivio.** Il validatore ufficiale del
+  contenitore passa e il payload è verificato contro l'input, ma l'accettazione la
+  stabilisce solo una sottomissione valutata.
+- **Non invia niente.** Nessuno stadio parla con la rete della gara. `vcc submit` è
+  scritto solo come comando in `docs/SOTTOMISSIONE.md`, mai eseguito.

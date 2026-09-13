@@ -1,0 +1,117 @@
+{
+  "run_id": "c002",
+  "stage": "44_calibrate_transfer",
+  "started_utc": "2026-09-12T20:26:11.111903+00:00",
+  "finished_utc": "2026-09-12T20:26:11.239334+00:00",
+  "seed": 20260912,
+  "config": {
+    "run_id": "c002",
+    "out": null,
+    "signatures": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures",
+    "source": "k562_gwps",
+    "target": "rpe1_essential",
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "n_boot": 1000,
+    "seed": 20260912,
+    "allow_overwrite": false
+  },
+  "inputs": {
+    "signatures:source": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures\\k562_gwps.npz",
+      "exists": true,
+      "bytes": 197397287,
+      "mtime_utc": "2026-09-12T14:00:39.636641+00:00",
+      "sha256": "ba536d463363ae3c72272b75d3640ebf0eb21291f4a68a5a364fef88ff854d1a",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "signatures:destination": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures\\rpe1_essential.npz",
+      "exists": true,
+      "bytes": 186572059,
+      "mtime_utc": "2026-09-12T14:03:21.545767+00:00",
+      "sha256": "78a0c30d1f56d1b38be2190bfd9c819de13527b3783e8f0d4d85383712b95457",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "outputs": {
+    "calibration": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\c002\\calibration.json",
+      "exists": true,
+      "bytes": 17746,
+      "mtime_utc": "2026-09-12T20:26:11.049416+00:00",
+      "sha256": "9e5c7dde44e9a42d824e1c4c34f76abd6f5c1a1648ab988e319abd459d3f8216",
+      "sha256_mode": "full"
+    },
+    "fitted_state": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\c002\\fitted_state.json",
+      "exists": true,
+      "bytes": 1551,
+      "mtime_utc": "2026-09-12T20:26:11.111904+00:00",
+      "sha256": "9b8a0a29a6e3b3413912ed0acbc467220a727d539112dd347a5cfdd3ef5bbb82",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "out_of_fold": {
+      "n_targets": 2350,
+      "pooled_mse": 0.325813040231218,
+      "pooled_mse_null_zero_response": 0.329133436253631,
+      "mse_vs_null": 0.9899117024991216,
+      "median_pearson": 0.09310426171649686,
+      "median_spearman": 0.07976521368999909,
+      "median_cosine": 0.09051267509987557,
+      "median_sign_agreement_strong": 0.5558248096701419,
+      "median_n_strong_genes": 1375.0,
+      "alpha_used": {
+        "min": 0.19468798650554223,
+        "max": 0.2005829097484605,
+        "median": 0.197074807419901
+      },
+      "prior_sd_used": [
+        4.0
+      ]
+    },
+    "comparators": {
+      "zero_predicted_response": {
+        "mse_vs_null": 1.0,
+        "note": "By definition the null: MSE equals mean(truth^2)."
+      },
+      "full_amplitude_transfer": {
+        "mse_vs_null": 1.1622752396032647,
+        "note": "alpha=1, no shrinkage. Not fold-dependent: it has no fitted parameter, so its in-sample and held-out values coincide."
+      }
+    },
+    "production_parameters": {
+      "alpha": 0.19735295241594938,
+      "prior_sd": 4.0,
+      "collapse_guides": true
+    }
+  },
+  "notes": [
+    "Nested CV: inner folds select, outer folds report. The bootstrap resamples out-of-fold targets only.",
+    "Proxy metrics in pseudobulk log2FC space. Not a VCC score."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}

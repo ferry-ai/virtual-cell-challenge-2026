@@ -1,0 +1,36 @@
+{
+  "model": "shrunk_transfer",
+  "parameters": {
+    "alpha": 0.19735295241594938,
+    "prior_sd": 4.0,
+    "collapse_guides": true
+  },
+  "source_signatures": {
+    "source_id": "k562_gwps",
+    "npz": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures\\k562_gwps.npz",
+      "exists": true,
+      "bytes": 197397287,
+      "mtime_utc": "2026-09-12T14:00:39.636641+00:00",
+      "sha256": "ba536d463363ae3c72272b75d3640ebf0eb21291f4a68a5a364fef88ff854d1a",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "rows_json": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures\\k562_gwps.rows.json",
+      "exists": true,
+      "bytes": 735444,
+      "mtime_utc": "2026-09-12T14:00:39.796096+00:00",
+      "sha256": "5b7d51bcbd67d30f6c982dc7c2c0879e01d79bea4df764c6551aa692ad88cc52",
+      "sha256_mode": "full"
+    }
+  },
+  "selected_by": {
+    "run_id": "c002",
+    "development_experiment": "k562_gwps -> rpe1_essential",
+    "protocol": "inner cross-validated prior_sd, closed-form alpha",
+    "calibration_report": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\c002\\calibration.json"
+  },
+  "reconstruct": "ShrunkTransfer(alpha=..., prior_sd=..., source=source_id, collapse_guides=True).fit(SignatureSet.read_npz(npz))",
+  "transferability_warning": "alpha and prior_sd were measured on a K562 -> RPE1 pair. Applying them to contexts A/B/C is a HYPOTHESIS, not a measurement: no perturbation is observable in those contexts.",
+  "seed": 20260912
+}

@@ -1,0 +1,178 @@
+{
+  "run_id": "q01pilot",
+  "stage": "46_validate_package",
+  "prediction": {
+    "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01pilot\\prediction.h5ad",
+    "exists": true,
+    "bytes": 85894658,
+    "mtime_utc": "2026-09-12T20:29:17.824865+00:00",
+    "sha256": "ac95dcca5bb60225841e07915ddeacb4f32f066265f05c6cdc8bfae3b148fe52",
+    "sha256_mode": "full"
+  },
+  "official_lists": {
+    "genes": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\gene_names.csv",
+      "exists": true,
+      "bytes": 119295,
+      "mtime_utc": "2026-09-11T17:27:09.608150+00:00",
+      "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "sha256_mode": "full"
+    },
+    "perturbations": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+      "exists": true,
+      "bytes": 1906,
+      "mtime_utc": "2026-09-11T17:27:09.610157+00:00",
+      "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+      "sha256_mode": "full"
+    }
+  },
+  "contract_recheck": {
+    "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01pilot\\prediction.h5ad",
+    "n_obs": 7200,
+    "n_genes": 18533,
+    "stored_entries": 43318618,
+    "stored_entries_per_cell": 6016.474722222222,
+    "max_stored_in_one_cell": 8484,
+    "max_counts_in_one_cell": 52638.0,
+    "stored_zeros": 0,
+    "min_stored_value": 1.0,
+    "obs_columns": [
+      "context",
+      "target_gene"
+    ],
+    "contexts": [
+      "A",
+      "B",
+      "C"
+    ],
+    "n_targets_per_context": {
+      "A": 6,
+      "B": 6,
+      "C": 6
+    },
+    "cells_per_perturbation_observed": [
+      400
+    ],
+    "checks": {
+      "gene_dim_is_18533": true,
+      "gene_order_matches_official_axis": true,
+      "obs_has_required_columns": true,
+      "counts_are_whole_numbers": true,
+      "counts_are_finite": true,
+      "counts_non_negative": true,
+      "no_explicitly_stored_zeros": true,
+      "no_non_targeting_rows": true,
+      "under_global_storage_cap": true,
+      "under_max_counts_per_cell": true,
+      "cells_per_perturbation_uniform": true,
+      "cells_per_perturbation_is_official": true,
+      "contexts_are_official": true,
+      "every_context_predicts_the_full_panel": false,
+      "no_extra_perturbations": true
+    },
+    "all_checks_pass": false,
+    "seconds": 1.3252152999993996
+  },
+  "context_provenance": {
+    "per_context": {
+      "A": {
+        "nearest_basal_context": "A",
+        "similarity_to_each_basal": {
+          "A": 0.9999465871491627,
+          "B": 0.8988316062453824,
+          "C": 0.8882437651669101
+        },
+        "label_matches_nearest_basal": true,
+        "margin_over_runner_up": 0.10111498090378035
+      },
+      "B": {
+        "nearest_basal_context": "B",
+        "similarity_to_each_basal": {
+          "A": 0.8987225282027088,
+          "B": 0.9999346052478935,
+          "C": 0.9278953389021535
+        },
+        "label_matches_nearest_basal": true,
+        "margin_over_runner_up": 0.07203926634573998
+      },
+      "C": {
+        "nearest_basal_context": "C",
+        "similarity_to_each_basal": {
+          "A": 0.8881131997152589,
+          "B": 0.9277875616893083,
+          "C": 0.9999378594476124
+        },
+        "label_matches_nearest_basal": true,
+        "margin_over_runner_up": 0.07215029775830406
+      }
+    },
+    "all_labels_match_nearest_basal": true,
+    "method": "cosine similarity of log1p CPM profiles, aggregated over every predicted cell of a context, against each context's basal control profile; re-read from the written file",
+    "why": "vcc prep validates the format and cannot see swapped A/B/C data. Every block is generated from one context's own controls, so a swap shows up here as a label whose nearest basal profile is a different context.",
+    "seconds": 23.137206999999762
+  },
+  "vcc_prep_dry_run": {
+    "command": [
+      "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\scripts\\vcc.cmd",
+      "prep",
+      "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01pilot\\prediction.h5ad",
+      "-g",
+      "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\gene_names.csv",
+      "--perts",
+      "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+      "--dry-run"
+    ],
+    "exit_code": 1,
+    "elapsed_seconds": 5.880587577819824,
+    "stderr": "vcc prep: Context A: perturbation labels do not match the official list.\n  294 expected perturbation(s) not predicted: AKT2, ALG12, ANKRD52, ANKZF1, ANP32B, AP2A2, API5, ARL14EP, ASCC2, BCKDK, \u00e2\u20ac\u00a6 (+284 more)\n  Each context must predict exactly the perturbations listed for it.\n",
+    "log": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01pilot\\prep_dry_run.log",
+    "stdout_tail": ""
+  },
+  "vcc_prep_package": null,
+  "vcc_artifact": null,
+  "contract_source": {
+    "authority": "virtualcellchallenge.org/evaluation + vcc prep --help",
+    "n_genes": 18533,
+    "n_perturbations": 300,
+    "cells_per_pert": 400,
+    "contexts": [
+      "A",
+      "B",
+      "C"
+    ],
+    "pert_col": "target_gene",
+    "context_col": "context",
+    "max_stored_entries": 4750000000,
+    "max_counts_per_cell": 1000000
+  },
+  "uploaded": false,
+  "note": "Local validation and packaging only. Nothing was uploaded and no submission quota was consumed. A passing prep is a statement about FORMAT; it says nothing about predictive quality.",
+  "resources_before": {
+    "ram_total_bytes": 8384401408,
+    "ram_available_bytes": 1203351552,
+    "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01pilot",
+    "disk_total_bytes": 510342983680,
+    "disk_free_bytes": 29621059584,
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 7.808582305908203,
+    "ram_available_gib": 1.1207084655761719,
+    "disk_free_gib": 27.586761474609375
+  },
+  "resources_after": {
+    "ram_total_bytes": 8384401408,
+    "ram_available_bytes": 1447116800,
+    "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01pilot",
+    "disk_total_bytes": 510342983680,
+    "disk_free_bytes": 29621026816,
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 7.808582305908203,
+    "ram_available_gib": 1.3477325439453125,
+    "disk_free_gib": 27.58673095703125
+  },
+  "peak_rss_bytes": 824078336
+}

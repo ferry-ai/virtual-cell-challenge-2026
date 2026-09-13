@@ -8,8 +8,10 @@ Submissions close **5 November 2026**. Final test set drops **22 October 2026**.
 > **Start from [`docs/PROGETTO.md`](docs/PROGETTO.md)** — the project map: where we
 > are, what has actually been measured, what is still uncertain, and what comes next.
 > This README covers the task, the scoring and the setup. Parts of it are older than
-> the analyses in `docs/`, and three of its claims are flagged: see its entry in
-> [`docs/REGISTRO.md`](docs/REGISTRO.md), sheet R-001.
+> the analyses in `docs/`, and six of its claims are flagged: see its entry in
+> [`docs/REGISTRO.md`](docs/REGISTRO.md), sheet R-001. For the submission contract as
+> verified on 12 September 2026, and the exact commands to regenerate, validate and
+> submit, see [`docs/SOTTOMISSIONE.md`](docs/SOTTOMISSIONE.md).
 
 ## The task
 
@@ -127,7 +129,7 @@ The token is stored in the Windows credential manager, not in a project file.
 
 | Phase | Goal | Status |
 |---|---|---|
-| 0 | Environment, CLI, control data in hand, streaming submission writer verified against official `prep` | **done** |
+| 0 | Environment, CLI, control data in hand, streaming submission writer verified against official `prep` | **done**, with a caveat — see below |
 | 1 | Local scorer with `cell-eval2` on leave-one-cell-line-out splits from public data, to iterate without burning the 2 submissions/day | next |
 | 2 | Baselines: control resampling, estimated mean response, log2FC transfer from public Perturb-seq conditioned on basal expression | |
 | 3 | Learned model: maps (basal state, perturbation identity) -> response. Trained on Colab/Kaggle | |
@@ -140,6 +142,31 @@ at most 2 ideas a day.
 > rather than merely next: it needs perturbed counts plus NTCs in some context, and
 > the local H1 2025 directory holds four metadata CSVs and no RNA matrix. See
 > [`docs/DECISIONI.md`](docs/DECISIONI.md), D-003.
+
+> **Correction to phase 0, 12 September 2026 (evening).** "Verified against official
+> `prep`" is not supported by any artifact: no `vcc prep` log predates today, and the
+> only candidate file holds 3 of the 300 required perturbations, which `prep` rejects
+> by default. What is supported is that the writer produces a structurally valid
+> `.h5ad` (`scripts/02_smoke_test_submission.py`). Sheet R-001, claim 6.
+>
+> **Phase 2 has since run.** Two complete submission-shaped predictions for contexts
+> A/B/C — control resampling and calibrated log2FC transfer — were generated locally
+> and pass all 18 contract checks re-derived from the written file. As of 13 September
+> `trial-01-transfer` is also **packaged**: a 3.91 GiB `.vcc`, produced by a path that
+> validates and writes without materialising the matrix (0.52 GiB peak, against the
+> 33.5 GiB the CLI's own model attributes to `vcc prep`), with all 24 checks enabled
+> and the payload verified bit-for-bit against the input. See
+> [CP-0004](docs/checkpoints/0004-primo-trial-locale-e-pacchetti.md),
+> [CP-0005](docs/checkpoints/0005-packaging-streaming-trial01.md) and
+> [`docs/SOTTOMISSIONE.md`](docs/SOTTOMISSIONE.md).
+>
+> **First submission: 13 September 2026.** Entry `PNn227rxP3bVByS37W41` was accepted
+> and scored — overall **0.045929**, rank **446 of 920 teams**. The server read and
+> scored the archive produced by the streaming packager, which settles that path
+> end-to-end. The score itself is low and expected to be: only `pds` (0.413) beats the
+> cell-context mean, and `fid` is negative. See
+> [CP-0006](docs/checkpoints/0006-prima-sottomissione-e-punteggio.md).
+> `trial-00-controls` was **not** submitted and must not be (D-017).
 
 ## Data strategy audit (11 September 2026)
 

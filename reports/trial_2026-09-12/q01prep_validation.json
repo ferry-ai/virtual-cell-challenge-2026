@@ -1,0 +1,214 @@
+{
+  "run_id": "q01prep",
+  "stage": "46_validate_package",
+  "prediction": {
+    "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01full\\prediction.h5ad",
+    "exists": true,
+    "bytes": 4258992494,
+    "mtime_utc": "2026-09-12T21:14:07.035401+00:00",
+    "sha256": "1b7e15f49104bdb9360eb22bd69574caf3dbf8ff9de3f27991e207850dc091e2",
+    "sha256_mode": "full"
+  },
+  "official_lists": {
+    "genes": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\gene_names.csv",
+      "exists": true,
+      "bytes": 119295,
+      "mtime_utc": "2026-09-11T17:27:09.608150+00:00",
+      "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "sha256_mode": "full"
+    },
+    "perturbations": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+      "exists": true,
+      "bytes": 1906,
+      "mtime_utc": "2026-09-11T17:27:09.610157+00:00",
+      "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+      "sha256_mode": "full"
+    }
+  },
+  "contract_recheck": {
+    "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01full\\prediction.h5ad",
+    "n_obs": 360000,
+    "n_genes": 18533,
+    "stored_entries": 2167562410,
+    "stored_entries_per_cell": 6021.006694444444,
+    "csr_indptr_dtype": "int64",
+    "csr_indices_dtype": "int32",
+    "max_stored_in_one_cell": 8555,
+    "max_counts_in_one_cell": 52823.0,
+    "stored_zeros": 0,
+    "min_stored_value": 1.0,
+    "obs_columns": [
+      "context",
+      "target_gene"
+    ],
+    "contexts": [
+      "A",
+      "B",
+      "C"
+    ],
+    "n_targets_per_context": {
+      "A": 300,
+      "B": 300,
+      "C": 300
+    },
+    "cells_per_perturbation_observed": [
+      400
+    ],
+    "checks": {
+      "csr_offsets_monotonic": true,
+      "csr_offsets_non_negative": true,
+      "csr_offsets_match_stored_values": true,
+      "gene_dim_is_18533": true,
+      "gene_order_matches_official_axis": true,
+      "obs_has_required_columns": true,
+      "counts_are_whole_numbers": true,
+      "counts_are_finite": true,
+      "counts_non_negative": true,
+      "no_explicitly_stored_zeros": true,
+      "no_non_targeting_rows": true,
+      "under_global_storage_cap": true,
+      "under_max_counts_per_cell": true,
+      "cells_per_perturbation_uniform": true,
+      "cells_per_perturbation_is_official": true,
+      "contexts_are_official": true,
+      "every_context_predicts_the_full_panel": true,
+      "no_extra_perturbations": true
+    },
+    "all_checks_pass": true,
+    "seconds": 69.10540960000071
+  },
+  "context_provenance": {
+    "per_context": {
+      "A": {
+        "nearest_basal_context": "A",
+        "similarity_to_each_basal": {
+          "A": 0.999998858536826,
+          "B": 0.8988290360605674,
+          "C": 0.8882298094021615
+        },
+        "label_matches_nearest_basal": true,
+        "margin_over_runner_up": 0.10116982247625861
+      },
+      "B": {
+        "nearest_basal_context": "B",
+        "similarity_to_each_basal": {
+          "A": 0.8988299086823512,
+          "B": 0.9999986536584102,
+          "C": 0.9278972232159204
+        },
+        "label_matches_nearest_basal": true,
+        "margin_over_runner_up": 0.07210143044248984
+      },
+      "C": {
+        "nearest_basal_context": "C",
+        "similarity_to_each_basal": {
+          "A": 0.8882032596100451,
+          "B": 0.9278773527605023,
+          "C": 0.9999987056511485
+        },
+        "label_matches_nearest_basal": true,
+        "margin_over_runner_up": 0.07212135289064614
+      }
+    },
+    "all_labels_match_nearest_basal": true,
+    "method": "cosine similarity of log1p CPM profiles, aggregated over every predicted cell of a context, against each context's basal control profile; re-read from the written file",
+    "why": "vcc prep validates the format and cannot see swapped A/B/C data. Every block is generated from one context's own controls, so a swap shows up here as a label whose nearest basal profile is a different context.",
+    "seconds": 138.89709559999756
+  },
+  "vcc_prep_dry_run": {
+    "command": [
+      "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\scripts\\vcc.cmd",
+      "prep",
+      "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01full\\prediction.h5ad",
+      "-g",
+      "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\gene_names.csv",
+      "--perts",
+      "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+      "--dry-run"
+    ],
+    "exit_code": 1,
+    "timed_out": false,
+    "timeout_seconds": 900.0,
+    "elapsed_seconds": 67.76810336112976,
+    "stderr": "vcc prep: Failed to read 'C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01full\\prediction.h5ad' as an .h5ad AnnData file: Unable to allocate 8.07 GiB for an array with shape (2167562410,) and data type int32\n",
+    "log": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01prep\\prep_dry_run.log",
+    "machine_state_after": {
+      "ram_total_bytes": 8384401408,
+      "ram_available_bytes": 3059490816,
+      "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01prep",
+      "disk_total_bytes": 510342983680,
+      "disk_free_bytes": 22833467392,
+      "cpu_count": 8,
+      "platform": "Windows-11-10.0.26200-SP0",
+      "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+      "ram_total_gib": 7.808582305908203,
+      "ram_available_gib": 2.8493728637695312,
+      "disk_free_gib": 21.265323638916016
+    },
+    "stdout_tail": ""
+  },
+  "vcc_prep_package": null,
+  "vcc_artifact": null,
+  "cli_sizing_model": {
+    "available": true,
+    "source": "vcc.sizing (installed vcc-cli)",
+    "nnz": 2167562410,
+    "scipy_bytes_per_nnz": 12,
+    "crosses_int32_index_limit": true,
+    "int32_index_limit": 2147483648,
+    "prep_peak_gib_no_cast_in_order": 33.49171694740653,
+    "prep_peak_gib_worst_case": 79.51807248592377,
+    "scoring_container_peak_gib": 53.13132537007332,
+    "hard_cap_nnz": 4750000000,
+    "fraction_of_hard_cap": 0.4563289284210526,
+    "exceeds_hard_cap": false,
+    "prep_memory_warning": null,
+    "prep_memory_warning_note": "None on Windows: the CLI sizes the warning against os.sysconf, which Windows does not provide, so it cannot fire here even when packaging would exceed the machine. Do not read its absence as a pass."
+  },
+  "contract_source": {
+    "authority": "virtualcellchallenge.org/evaluation + vcc prep --help",
+    "n_genes": 18533,
+    "n_perturbations": 300,
+    "cells_per_pert": 400,
+    "contexts": [
+      "A",
+      "B",
+      "C"
+    ],
+    "pert_col": "target_gene",
+    "context_col": "context",
+    "max_stored_entries": 4750000000,
+    "max_counts_per_cell": 1000000
+  },
+  "uploaded": false,
+  "note": "Local validation and packaging only. Nothing was uploaded and no submission quota was consumed. A passing prep is a statement about FORMAT; it says nothing about predictive quality.",
+  "resources_before": {
+    "ram_total_bytes": 8384401408,
+    "ram_available_bytes": 3552583680,
+    "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01prep",
+    "disk_total_bytes": 510342983680,
+    "disk_free_bytes": 25260900352,
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 7.808582305908203,
+    "ram_available_gib": 3.3086013793945312,
+    "disk_free_gib": 23.526046752929688
+  },
+  "resources_after": {
+    "ram_total_bytes": 8384401408,
+    "ram_available_bytes": 3493937152,
+    "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01prep",
+    "disk_total_bytes": 510342983680,
+    "disk_free_bytes": 23934398464,
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 7.808582305908203,
+    "ram_available_gib": 3.2539825439453125,
+    "disk_free_gib": 22.290645599365234
+  },
+  "peak_rss_bytes": 704004096
+}

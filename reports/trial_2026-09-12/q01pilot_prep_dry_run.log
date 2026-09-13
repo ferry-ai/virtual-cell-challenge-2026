@@ -1,0 +1,10 @@
+$ 'C:\Users\ferra\OneDrive\Desktop\vcc2026\scripts\vcc.cmd' prep 'C:\Users\ferra\vcc2026-data\artifacts\q01pilot\prediction.h5ad' -g 'C:\Users\ferra\vcc2026-data\raw\controls\gene_names.csv' --perts 'C:\Users\ferra\vcc2026-data\raw\controls\pert_counts.csv' --dry-run
+exit_code: 1
+elapsed_seconds: 5.9
+--- stdout ---
+
+--- stderr ---
+vcc prep: Context A: perturbation labels do not match the official list.
+  294 expected perturbation(s) not predicted: AKT2, ALG12, ANKRD52, ANKZF1, ANP32B, AP2A2, API5, ARL14EP, ASCC2, BCKDK, â€¦ (+284 more)
+  Each context must predict exactly the perturbations listed for it.
+

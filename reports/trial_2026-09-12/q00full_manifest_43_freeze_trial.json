@@ -1,0 +1,97 @@
+{
+  "run_id": "q00full",
+  "stage": "43_freeze_trial",
+  "started_utc": "2026-09-12T20:32:49.703510+00:00",
+  "finished_utc": "2026-09-12T20:32:50.010845+00:00",
+  "seed": 20260912,
+  "config": {
+    "trial": "trial-00-controls",
+    "seed": 20260912
+  },
+  "inputs": {
+    "raw/controls/context_A.h5ad": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_A.h5ad",
+      "exists": true,
+      "bytes": 224973316,
+      "mtime_utc": "2026-09-11T17:27:06.844066+00:00",
+      "sha256": "daf888bd6894da5488c8dac3098a3618ff766d03fdf1250ec7f607124bb97834",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "raw/controls/context_B.h5ad": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_B.h5ad",
+      "exists": true,
+      "bytes": 210966111,
+      "mtime_utc": "2026-09-11T17:27:08.236761+00:00",
+      "sha256": "8764c13cb61dd48e51c817335dd4ecc85a740406c5af144c4884d79d3cd3293d",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "raw/controls/context_C.h5ad": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_C.h5ad",
+      "exists": true,
+      "bytes": 226056691,
+      "mtime_utc": "2026-09-11T17:27:09.601099+00:00",
+      "sha256": "486a299ad022ec5fd6a3c5f56ec77efeb7b8b85e5de0e41250d064c6f9b236f6",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "raw/controls/gene_names.csv": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\gene_names.csv",
+      "exists": true,
+      "bytes": 119295,
+      "mtime_utc": "2026-09-11T17:27:09.608150+00:00",
+      "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "sha256_mode": "full"
+    },
+    "raw/controls/pert_counts.csv": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+      "exists": true,
+      "bytes": 1906,
+      "mtime_utc": "2026-09-11T17:27:09.610157+00:00",
+      "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+      "sha256_mode": "full"
+    },
+    "raw/controls/manifest.json": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\manifest.json",
+      "exists": true,
+      "bytes": 715,
+      "mtime_utc": "2026-09-11T17:27:09.612153+00:00",
+      "sha256": "2c2b5d425df817ca35e9edf08282d12494ce42913ba824375bf0f98a1cc676f5",
+      "sha256_mode": "full"
+    }
+  },
+  "outputs": {
+    "freeze": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q00full\\freeze.json",
+      "exists": true,
+      "bytes": 11065,
+      "mtime_utc": "2026-09-12T20:32:49.703510+00:00",
+      "sha256": "cc564608c1767145ed993d037091ec9069f14e81b040fed23c743906df9191b8",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {},
+  "notes": [
+    "Freeze written before any compute; a dirty tree is captured as a patch."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}

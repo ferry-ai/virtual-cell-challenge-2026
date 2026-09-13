@@ -28,6 +28,11 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-012 | L'ampiezza si calibra su bersagli tenuti fuori, non si sceglie | attiva | 2026-09-12 | `reports/pipeline/transfer_experiment.json` |
 | D-013 | Lo stato di una sorgente lo dichiara il registry versionato | attiva | 2026-09-12 | `configs/sources.yaml`, `src/vcc2026/registry.py` |
 | D-014 | Il backend DE si registra accanto a ogni metrica | attiva | 2026-09-12 | `reports/pipeline/null_calibration_A.json` |
+| D-015 | Il vincolo compositivo si assorbe sui geni supportati, non su quelli mascherati | attiva | 2026-09-12 | `src/vcc2026/inference.py`, [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.3 |
+| D-016 | Non si riduce la densità della previsione per far entrare `vcc prep` nella RAM locale — **sostituita da D-018** | superata | 2026-09-12 | [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.5, [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.1 |
+| D-017 | `trial-00-controls` non si invia finché la conformità alle regole non è chiarita | attiva | 2026-09-12 | `docs/SOTTOMISSIONE.md` §2 |
+| D-018 | Il packaging si fa a memoria limitata, non su una macchina più grande | attiva | 2026-09-13 | `src/vcc2026/packaging.py`, [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.1 |
+| D-019 | La parità con `vcc prep` si dimostra con fixture a forma ufficiale e rifiuti bilaterali | attiva | 2026-09-13 | `tests/test_packaging_parity.py`, [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.5 |
 
 ---
 
@@ -130,6 +135,13 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   pseudobulk log2FC. Non sono punteggi VCC e non sono stati verificati sui contesti
   A/B/C, dove nessuna perturbazione è osservabile. Ciò che si trasferisce è il metodo
   (D-012), non il valore.
+- **Aggiornamento 2026-09-12 (CP-0004).** Rimisurato con selezione continua invece che
+  su griglia: α = 0,1974, non 0,25. Il valore 0,25 era il punto di griglia più vicino.
+  La differenza è praticamente irrilevante (0,98964 contro 0,98929 di MSE/nullo sul
+  primo fold) ma il numero da citare è 0,197. Misurato anche che lo **shrinkage per
+  gene è quasi inattivo**: `prior_sd` = 4 batte «nessuno shrinkage» di 0,00003 in MSE
+  cross-validata. La compressione utile è tutta nell'ampiezza globale.
+  Evidenza: `reports/trial_2026-09-12/calibration_c002.json`.
 - **Riaprire se:** esiste un bundle di valutazione a singola cellula che permetta di
   rifare la stessa scelta su tutte e sei le metriche VCC, oppure se una sorgente di
   lignaggio vicino (CD4) dà un α molto diverso.
@@ -214,6 +226,13 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Alternative scartate:** fissare α a 1 (misurato peggiore del nullo); fissarlo a 0
   (equivale al nullo e butta via l'1,0–7,8% di riduzione dell'errore); sceglierlo sulla
   correlazione (non identificabile).
+- **Aggiornamento 2026-09-12 (CP-0004).** Il protocollo è stato rafforzato in
+  `scripts/44_calibrate_transfer.py`: validazione incrociata **annidata**, ciclo
+  interno per selezionare e ciclo esterno per riportare, e il bootstrap ricampiona
+  solo previsioni fuori campione. Lo stadio 41 calcolava l'intervallo su **tutti** i
+  bersagli con i parametri già scelti, che descrive i dati di training. I numeri
+  coincidono nella sostanza; è l'intervallo a essere onesto solo nella versione nuova.
+  α selezionato su cinque fold indipendenti varia fra 0,1947 e 0,2006.
 - **Riaprire se:** un bundle a singola cellula permette di calibrare direttamente sulle
   sei metriche VCC, che è la cosa che alla fine conta.
 
@@ -251,3 +270,133 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Riaprire se:** una versione futura di `cell-eval2` fissa il backend, o se si
   misura che le differenze fra engine sono trascurabili rispetto alla variabilità che
   ci interessa.
+
+### D-015 — Il vincolo compositivo si assorbe sui geni supportati, non su quelli mascherati
+
+- **Perché:** i conteggi di una cellula sono una composizione, quindi non possono
+  salire tutti. Riscalare `basale × 2^Δ` a una dimensione di libreria divide via un
+  fattore globale, e quel fattore cade su **ogni** gene — compresi i 10.852 che la
+  sorgente non misura e che per D-009 non dovrebbero portare alcuna previsione. Senza
+  correzione, una sorgente che copre 7.681 geni su 18.533 farebbe scivolare gli altri
+  in una direzione sistematica, su tutte e 300 le perturbazioni, con un'ampiezza pari
+  al fattore di riscalatura.
+- **Come è fatta:** `compositional_shift` risolve in forma chiusa lo scalare `c` che
+  conserva la massa totale, `c = log2(Σ_oss b / Σ_oss b·2^Δ)`, e lo applica **solo**
+  ai geni osservati. Dopo la riscalatura un gene non osservato conserva esattamente la
+  sua quota di composizione, cioè un log2FC realizzato di 0. Lo scalare è registrato
+  per bersaglio nelle diagnostiche, perché è una modifica reale della previsione, non
+  un dettaglio numerico.
+- **Alternative scartate:** lasciare che la riscalatura sposti tutti i geni (inventa
+  evidenza sui geni mascherati, esattamente ciò che D-009 vieta); applicare uno
+  scalare globale a tutti i geni (matematicamente identico al caso precedente: uno
+  scalare uniforme si cancella nella composizione e non risolve nulla); normalizzare a
+  somma fissa senza dichiararlo (l'errore silenzioso).
+- **Misurato:** lo spostamento è piccolo — mediana 0,0021 log2, massimo 0,0097 sui
+  blocchi del pilot — ma la sua direzione era sistematica e la correzione è esatta.
+- **Riaprire se:** si adotta un modello che prevede anche la dimensione di libreria,
+  invece della sola composizione. In quel caso il vincolo cambia forma.
+
+### D-016 — Non si riduce la densità della previsione per far entrare `vcc prep` nella RAM locale
+
+> **Sostituita il 2026-09-13 da [D-018](#d-018--il-packaging-si-fa-a-memoria-limitata-non-su-una-macchina-più-grande).**
+> La parte da non fare resta valida e vale ancora: non si riduce la densità. La parte
+> sulla macchina più grande è caduta — il packaging gira qui, con 0,52 GiB di picco
+> ([CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.1). La scheda resta
+> leggibile perché il ragionamento che la sostiene è ancora quello giusto.
+
+- **Perché:** `vcc prep` carica l'intera matrice in memoria prima di validare
+  (`vcc/prep.py`, `adata = read_h5ad(input_path)`), e il suo stesso modello di
+  dimensionamento — `vcc/sizing.py`, tarato su 254 esecuzioni di produzione del
+  servizio di scoring — dà un picco di 22,2 GiB per una previsione da 2,09·10⁹ valori
+  memorizzati e 33,5 GiB per una da 2,17·10⁹. Questa macchina ha 7,81 GiB **totali**.
+  Per farci stare il packaging servirebbe scendere a circa 1.150 valori per cellula
+  contro i circa 5.800 dei dati reali: cellule quattro volte più sparse del vero, che
+  cambierebbero le quattro metriche DE su sei in un modo che non abbiamo misurato.
+- **Come è fatta:** la previsione si genera alla densità che il modello produce, il
+  contratto si verifica localmente con un lettore a blocchi
+  (`scripts/46_validate_package.py`), e il packaging ufficiale si rimanda a una
+  macchina con RAM sufficiente. Il collo di bottiglia si dichiara come misura, non si
+  aggira.
+- **Alternative scartate:** ridurre la densità (falsa il modello per far entrare uno
+  strumento); passare `--max-nnz -1` o `--no-check-cell-counts` (non è questo il
+  limite che morde, e aggirare la convalida sposta l'errore sulla quota giornaliera);
+  costruire il `.vcc` a mano — è un tar con `pred.h5ad.zst` e un `meta.json`, quindi
+  sarebbe tecnicamente possibile, ma salterebbe il validatore ufficiale, che è
+  l'unica autorità sul formato.
+- **Riaprire se:** arriva una macchina con almeno 48 GiB di RAM (vedi
+  `docs/ESECUZIONE_REMOTA.md`), oppure `vcc prep` acquisisce un percorso a blocchi che
+  non richiede la matrice residente.
+
+### D-017 — `trial-00-controls` non si invia finché la conformità alle regole non è chiarita
+
+- **Perché:** il trial ricampiona le cellule di controllo reali e le etichetta con le
+  perturbazioni richieste. `vcc prep` lo accetterebbe — non contiene righe
+  `non-targeting` — ma due frasi delle regole ufficiali lo riguardano: «The control
+  cells you downloaded are model inputs only — do not copy them into your prediction»
+  (pagina Evaluation) e «your predictions must be generated solely by one or more
+  machine learning models you use» (Rules, §Machine Learning Predictions Only). Un
+  ricampionamento non è la previsione di un modello.
+- **Come è fatta:** il trial si genera, si verifica e si conserva come controllo
+  operativo e come riferimento di dispersione — le sue cellule sono reali, quindi la
+  variabilità fra cellule è giusta per costruzione e rende visibili gli artefatti del
+  generatore. Non si carica. La riserva è scritta in `configs/trials.yaml`, campo
+  `not_this`, e in `docs/SOTTOMISSIONE.md` §2.
+- **Alternative scartate:** inviarlo comunque perché il validatore lo accetta (il
+  validatore controlla il formato, non le regole); scartare il trial (perderebbe
+  l'unico riferimento di dispersione reale che abbiamo).
+- **Riaprire se:** help@virtualcellchallenge.org chiarisce che un baseline di questo
+  tipo è ammesso, oppure il proprietario del progetto decide diversamente in modo
+  esplicito.
+
+### D-018 — Il packaging si fa a memoria limitata, non su una macchina più grande
+
+- **Sostituisce D-016**, di cui conserva la metà che regge: la densità della
+  previsione non si tocca. Cade l'altra metà, «serve una macchina da 32–48 GiB».
+- **Perché:** `vcc prep` chiede circa 33,5 GiB per trial-01 perché carica l'intera
+  matrice prima di validare (`vcc/prep.py` riga 1104), non perché il problema lo
+  richieda. Le convalide si fanno a blocchi di righe e gli array CSR si copiano da
+  dataset a dataset. **Misurato: 0,519 GiB di picco**, sulla stessa macchina da 7,81
+  GiB, sullo stesso file, con tutte e 24 le convalide attive
+  ([CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.1).
+- **Come è fatta:** `src/vcc2026/packaging.py` e `scripts/48_package_prediction.py`.
+  Le convalide sui metadati **sono** le funzioni ufficiali, importate e chiamate su
+  un oggetto che espone il solo `.obs` che leggono; quelle sulla matrice sono
+  equivalenti a blocchi, negli stessi ordini e con le stesse soglie; otto controlli
+  di integrità CSR in più, che servono perché questo percorso copia gli array invece
+  di ricostruirli.
+- **Confine dichiarato:** vale per gli input che il packager accetta. Matrice densa,
+  CSC, dtype diverso da float32, geni fuori ordine, percorso log-normalizzato,
+  colonna di tipo cellulare: **rifiutati esplicitamente**, con `vcc prep` indicato
+  come lo strumento che li gestisce. Approssimarli in silenzio sarebbe peggio che
+  fermarsi.
+- **Alternative scartate:** ridurre la densità (falsa il modello per far entrare uno
+  strumento — era già la conclusione di D-016); noleggiare una macchina da 48 GiB
+  (spesa e attivazione per un lavoro che gira qui); costruire il `.vcc` a mano
+  saltando le convalide (sposterebbe l'errore sulla quota giornaliera).
+- **Riaprire se:** una previsione futura arriva in un layout che il packager rifiuta,
+  o una versione nuova di `vcc-cli` cambia le convalide. In entrambi i casi la strada
+  è rifare la parità, non allentare i controlli.
+
+### D-019 — La parità con `vcc prep` si dimostra con fixture a forma ufficiale e rifiuti bilaterali
+
+- **Perché:** un packager alternativo che sia *quasi* d'accordo con lo strumento
+  ufficiale è un packager che spedisce una sottomissione che il server rifiuta. E
+  l'ispezione del codice non basta: il primo payload scritto qui codificava le
+  etichette come `nullable-string-array` invece di `categorical`, differenza
+  invisibile a qualunque confronto sui valori, causata da un passaggio — il
+  costruttore di `AnnData` — che nel codice di `prep` non si vede
+  ([CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.4).
+- **Come è fatta:** `tests/test_packaging_parity.py`. I fixture hanno la **forma
+  ufficiale completa** — 300 × 400 × 3, 18.533 geni, le liste vere, ogni limite
+  attivo — e densità sintetica per costare secondi. Per ogni regola un fixture che la
+  viola, con l'asserzione che **entrambe** le implementazioni lo rifiutino: un
+  rifiuto solo nostro blocca una sottomissione valida, uno solo di `prep` ne
+  spedisce una invalida. Più i confronti di codifica e dtype HDF5 elemento per
+  elemento, e due test che verificano che la verifica stessa **fallisca** su un
+  valore o un'etichetta alterati.
+- **Che cosa i fixture non coprono:** la densità. Un valore memorizzato per cellula
+  contro i circa 6.000 reali; la densità è esercitata dal controllo sul tetto e dal
+  run reale, e va detto invece di lasciarlo intendere.
+- **Riaprire se:** cambia la versione di `vcc-cli`. I test importano `vcc.prep` e
+  falliranno da soli se una convalida cambia; è il segnale che serve rifare il
+  lavoro, non silenziare i test.

@@ -1,0 +1,720 @@
+{
+  "run_id": "q01pilot",
+  "stage": "45_generate_prediction",
+  "trial": {
+    "id": "trial-01-transfer",
+    "kind": "shrunk_transfer",
+    "title": "ShrunkTransfer from K562 genome-wide, amplitude calibrated locally",
+    "trains": true
+  },
+  "seed": 20260912,
+  "is_pilot": true,
+  "shape": {
+    "n_perturbations": 6,
+    "cells_per_pert": 400,
+    "contexts": [
+      "A",
+      "B",
+      "C"
+    ],
+    "n_cells": 7200,
+    "n_genes": 18533,
+    "official_full_shape": {
+      "n_perturbations": 300,
+      "cells_per_pert": 400,
+      "n_contexts": 3,
+      "n_cells": 360000,
+      "n_genes": 18533
+    }
+  },
+  "storage": {
+    "stored_entries": 43318618,
+    "stored_entries_per_cell": 6016.474722222222,
+    "per_cell_budget": 13194,
+    "global_cap": 4750000000,
+    "fraction_of_global_cap_at_this_size": 0.00911970905263158,
+    "projected_entries_at_full_shape": 2165930900.0,
+    "projected_fraction_of_cap": 0.45598545263157897,
+    "file_bytes": 85894658,
+    "bytes_per_cell": 11929.81361111111,
+    "projected_file_bytes_at_full_shape": 4294732900.0
+  },
+  "runtime": {
+    "basal_profiles_seconds": 15.526302700003725,
+    "generation_seconds": 21.951858700005687,
+    "total_seconds": 40.287769800001115,
+    "seconds_per_block": 1.2195477055558714,
+    "projected_generation_seconds_at_full_shape": 1097.5929350002843
+  },
+  "memory": {
+    "peak_rss_bytes": 434515968,
+    "peak_rss_gib": 0.4046745300292969,
+    "resources_before": {
+      "ram_total_bytes": 8384401408,
+      "ram_available_bytes": 1429155840,
+      "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01pilot",
+      "disk_total_bytes": 510342983680,
+      "disk_free_bytes": 29707296768,
+      "cpu_count": 8,
+      "platform": "Windows-11-10.0.26200-SP0",
+      "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+      "ram_total_gib": 7.808582305908203,
+      "ram_available_gib": 1.3310050964355469,
+      "disk_free_gib": 27.667076110839844
+    },
+    "resources_after": {
+      "ram_total_bytes": 8384401408,
+      "ram_available_bytes": 1353863168,
+      "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01pilot",
+      "disk_total_bytes": 510342983680,
+      "disk_free_bytes": 29621395456,
+      "cpu_count": 8,
+      "platform": "Windows-11-10.0.26200-SP0",
+      "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+      "ram_total_gib": 7.808582305908203,
+      "ram_available_gib": 1.2608833312988281,
+      "disk_free_gib": 27.587074279785156
+    }
+  },
+  "support": {
+    "kind": "shrunk_transfer",
+    "model": "shrunk_transfer",
+    "parameters": {
+      "alpha": 0.19735295241594938,
+      "prior_sd": 4.0,
+      "collapse_guides": true
+    },
+    "source_id": "k562_gwps",
+    "requested_targets": 6,
+    "covered_targets": 5,
+    "uncovered_targets": [
+      "ABCD1"
+    ],
+    "n_genes_observed_by_source": 7681,
+    "n_genes_unobserved_by_source": 10852,
+    "fallback_semantics": "An uncovered target and a gene outside the source's feature universe both receive a no-effect prediction because no evidence exists for them. That is a FALLBACK, not a measured null effect (D-009)."
+  },
+  "compositional_shift": {
+    "n_targets_with_a_shift": 18,
+    "median_abs_log2": 0.0020982131676508665,
+    "max_abs_log2": 0.009734067051766989,
+    "why": "Counts are a composition, so renormalising basal*2**delta to a library size removes a global factor. The shift is absorbed by the genes that carry a prediction, so unobserved genes realise exactly zero change instead of an unintended uniform drift."
+  },
+  "context_provenance": {
+    "per_context": {
+      "A": {
+        "nearest_basal_context": "A",
+        "similarity_to_each_basal": {
+          "A": 0.9999465871491627,
+          "B": 0.8988316062453824,
+          "C": 0.8882437651669101
+        },
+        "label_matches_nearest_basal": true
+      },
+      "B": {
+        "nearest_basal_context": "B",
+        "similarity_to_each_basal": {
+          "A": 0.8987225282027088,
+          "B": 0.9999346052478935,
+          "C": 0.9278953389021535
+        },
+        "label_matches_nearest_basal": true
+      },
+      "C": {
+        "nearest_basal_context": "C",
+        "similarity_to_each_basal": {
+          "A": 0.8881131997152589,
+          "B": 0.9277875616893083,
+          "C": 0.9999378594476124
+        },
+        "label_matches_nearest_basal": true
+      }
+    },
+    "all_labels_match_nearest_basal": true,
+    "basal_cross_similarity": {
+      "A_vs_B": 0.8988352376012735,
+      "A_vs_C": 0.888225955756944,
+      "B_vs_C": 0.9278926544025213
+    },
+    "why": "Format validation cannot detect swapped A/B/C data. Every block here is built from one context's own controls, so each context's aggregate profile must be nearest to that context's basal profile. The cross-similarities show the three basal states are distinguishable, which is what makes the test informative."
+  },
+  "count_generation": {
+    "sampled_blocks": [
+      {
+        "n_cells_generated": 400,
+        "median_nnz_generated": 6522.5,
+        "median_nnz_real_controls": 6147.0,
+        "nnz_ratio_generated_over_real": 1.0610867089637221,
+        "median_library_generated": 20819.0,
+        "median_library_real_controls": 20109.0,
+        "cv_library_generated": 0.44586340225543714,
+        "cv_library_real_controls": 0.45920955039119504,
+        "cv_nnz_generated": 0.19469349368421385,
+        "cv_nnz_real_controls": 0.19846545035969484,
+        "interpretation": "A generated/real nnz ratio above 1 is the expected artefact of sampling from a pooled mean: the mean profile is less sparse than any single cell. It is present at zero predicted effect and is a property of the generator, not of the prediction.",
+        "context": "A",
+        "target": "ABCD1",
+        "nearest_basal_context": "A",
+        "similarity_to_each_basal": {
+          "A": 0.9997076648907668,
+          "B": 0.8984677053611263,
+          "C": 0.8878194475536266
+        },
+        "label_matches_nearest_basal": true,
+        "detail": {
+          "compositional_shift_log2": 0.0,
+          "n_genes_clipped": 0,
+          "clip_log2": 6.0,
+          "mass_ratio_pred_over_basal": 1.0,
+          "realised_log2fc_on_unobserved": 0.0,
+          "median_abs_effective_log2fc_observed": 0.0,
+          "max_abs_effective_log2fc_observed": 0.0
+        }
+      },
+      {
+        "n_cells_generated": 400,
+        "median_nnz_generated": 6531.0,
+        "median_nnz_real_controls": 6147.0,
+        "nnz_ratio_generated_over_real": 1.0624694973157638,
+        "median_library_generated": 20939.0,
+        "median_library_real_controls": 20109.0,
+        "cv_library_generated": 0.43282411542484417,
+        "cv_library_real_controls": 0.45920955039119504,
+        "cv_nnz_generated": 0.18699971892968034,
+        "cv_nnz_real_controls": 0.19846545035969484,
+        "interpretation": "A generated/real nnz ratio above 1 is the expected artefact of sampling from a pooled mean: the mean profile is less sparse than any single cell. It is present at zero predicted effect and is a property of the generator, not of the prediction.",
+        "context": "A",
+        "target": "ACLY",
+        "nearest_basal_context": "A",
+        "similarity_to_each_basal": {
+          "A": 0.9996755774138213,
+          "B": 0.8985353222736546,
+          "C": 0.8878660669198931
+        },
+        "label_matches_nearest_basal": true,
+        "detail": {
+          "compositional_shift_log2": 0.006050483277130596,
+          "n_genes_clipped": 0,
+          "clip_log2": 6.0,
+          "mass_ratio_pred_over_basal": 1.0,
+          "realised_log2fc_on_unobserved": 0.0,
+          "median_abs_effective_log2fc_observed": 0.03355396704268704,
+          "max_abs_effective_log2fc_observed": 0.7707540286301167
+        }
+      },
+      {
+        "n_cells_generated": 400,
+        "median_nnz_generated": 6457.5,
+        "median_nnz_real_controls": 6147.0,
+        "nnz_ratio_generated_over_real": 1.0505124450951684,
+        "median_library_generated": 20387.5,
+        "median_library_real_controls": 20109.0,
+        "cv_library_generated": 0.4606907115895748,
+        "cv_library_real_controls": 0.45920955039119504,
+        "cv_nnz_generated": 0.19582521998850538,
+        "cv_nnz_real_controls": 0.19846545035969484,
+        "interpretation": "A generated/real nnz ratio above 1 is the expected artefact of sampling from a pooled mean: the mean profile is less sparse than any single cell. It is present at zero predicted effect and is a property of the generator, not of the prediction.",
+        "context": "A",
+        "target": "AGO1",
+        "nearest_basal_context": "A",
+        "similarity_to_each_basal": {
+          "A": 0.9996763131190189,
+          "B": 0.8985506126494521,
+          "C": 0.887843425654605
+        },
+        "label_matches_nearest_basal": true,
+        "detail": {
+          "compositional_shift_log2": 0.00021247233914591917,
+          "n_genes_clipped": 0,
+          "clip_log2": 6.0,
+          "mass_ratio_pred_over_basal": 1.0,
+          "realised_log2fc_on_unobserved": 0.0,
+          "median_abs_effective_log2fc_observed": 0.024577122976550656,
+          "max_abs_effective_log2fc_observed": 0.3552633225578829
+        }
+      },
+      {
+        "n_cells_generated": 400,
+        "median_nnz_generated": 6529.0,
+        "median_nnz_real_controls": 6147.0,
+        "nnz_ratio_generated_over_real": 1.0621441353505776,
+        "median_library_generated": 20756.0,
+        "median_library_real_controls": 20109.0,
+        "cv_library_generated": 0.45145430480035337,
+        "cv_library_real_controls": 0.45920955039119504,
+        "cv_nnz_generated": 0.19476472464206515,
+        "cv_nnz_real_controls": 0.19846545035969484,
+        "interpretation": "A generated/real nnz ratio above 1 is the expected artefact of sampling from a pooled mean: the mean profile is less sparse than any single cell. It is present at zero predicted effect and is a property of the generator, not of the prediction.",
+        "context": "A",
+        "target": "AKAP1",
+        "nearest_basal_context": "A",
+        "similarity_to_each_basal": {
+          "A": 0.9996888117350052,
+          "B": 0.8986899976417437,
+          "C": 0.8880684837436147
+        },
+        "label_matches_nearest_basal": true,
+        "detail": {
+          "compositional_shift_log2": 0.001734085410859641,
+          "n_genes_clipped": 0,
+          "clip_log2": 6.0,
+          "mass_ratio_pred_over_basal": 1.0,
+          "realised_log2fc_on_unobserved": 0.0,
+          "median_abs_effective_log2fc_observed": 0.024463209238433033,
+          "max_abs_effective_log2fc_observed": 0.3511432864058409
+        }
+      },
+      {
+        "n_cells_generated": 400,
+        "median_nnz_generated": 5917.5,
+        "median_nnz_real_controls": 5756.0,
+        "nnz_ratio_generated_over_real": 1.0280576789437108,
+        "median_library_generated": 19575.0,
+        "median_library_real_controls": 19946.0,
+        "cv_library_generated": 0.40112659351580254,
+        "cv_library_real_controls": 0.38524604502810667,
+        "cv_nnz_generated": 0.22248422818464578,
+        "cv_nnz_real_controls": 0.2155120578503052,
+        "interpretation": "A generated/real nnz ratio above 1 is the expected artefact of sampling from a pooled mean: the mean profile is less sparse than any single cell. It is present at zero predicted effect and is a property of the generator, not of the prediction.",
+        "context": "B",
+        "target": "ABCD1",
+        "nearest_basal_context": "B",
+        "similarity_to_each_basal": {
+          "A": 0.8981746112795591,
+          "B": 0.9996222739702129,
+          "C": 0.9273913744324216
+        },
+        "label_matches_nearest_basal": true,
+        "detail": {
+          "compositional_shift_log2": 0.0,
+          "n_genes_clipped": 0,
+          "clip_log2": 6.0,
+          "mass_ratio_pred_over_basal": 1.0,
+          "realised_log2fc_on_unobserved": 0.0,
+          "median_abs_effective_log2fc_observed": 0.0,
+          "max_abs_effective_log2fc_observed": 0.0
+        }
+      },
+      {
+        "n_cells_generated": 400,
+        "median_nnz_generated": 5988.5,
+        "median_nnz_real_controls": 5756.0,
+        "nnz_ratio_generated_over_real": 1.0403926337734537,
+        "median_library_generated": 20209.5,
+        "median_library_real_controls": 19946.0,
+        "cv_library_generated": 0.3683699504980549,
+        "cv_library_real_controls": 0.38524604502810667,
+        "cv_nnz_generated": 0.21071058598377485,
+        "cv_nnz_real_controls": 0.2155120578503052,
+        "interpretation": "A generated/real nnz ratio above 1 is the expected artefact of sampling from a pooled mean: the mean profile is less sparse than any single cell. It is present at zero predicted effect and is a property of the generator, not of the prediction.",
+        "context": "B",
+        "target": "ACLY",
+        "nearest_basal_context": "B",
+        "similarity_to_each_basal": {
+          "A": 0.898234534833466,
+          "B": 0.999603148738277,
+          "C": 0.9274970711878142
+        },
+        "label_matches_nearest_basal": true,
+        "detail": {
+          "compositional_shift_log2": 0.004700089134323161,
+          "n_genes_clipped": 0,
+          "clip_log2": 6.0,
+          "mass_ratio_pred_over_basal": 1.0,
+          "realised_log2fc_on_unobserved": 0.0,
+          "median_abs_effective_log2fc_observed": 0.033520719745598095,
+          "max_abs_effective_log2fc_observed": 0.7721044227729241
+        }
+      },
+      {
+        "n_cells_generated": 400,
+        "median_nnz_generated": 5969.0,
+        "median_nnz_real_controls": 5756.0,
+        "nnz_ratio_generated_over_real": 1.0370048644892287,
+        "median_library_generated": 19912.0,
+        "median_library_real_controls": 19946.0,
+        "cv_library_generated": 0.4280224429794276,
+        "cv_library_real_controls": 0.38524604502810667,
+        "cv_nnz_generated": 0.25338001945510064,
+        "cv_nnz_real_controls": 0.2155120578503052,
+        "interpretation": "A generated/real nnz ratio above 1 is the expected artefact of sampling from a pooled mean: the mean profile is less sparse than any single cell. It is present at zero predicted effect and is a property of the generator, not of the prediction.",
+        "context": "B",
+        "target": "AGO1",
+        "nearest_basal_context": "B",
+        "similarity_to_each_basal": {
+          "A": 0.8981550527913907,
+          "B": 0.999602687053975,
+          "C": 0.9273520581018391
+        },
+        "label_matches_nearest_basal": true,
+        "detail": {
+          "compositional_shift_log2": -0.002462340924442092,
+          "n_genes_clipped": 0,
+          "clip_log2": 6.0,
+          "mass_ratio_pred_over_basal": 1.0,
+          "realised_log2fc_on_unobserved": 0.0,
+          "median_abs_effective_log2fc_observed": 0.024394552910044453,
+          "max_abs_effective_log2fc_observed": 0.3579381358214709
+        }
+      },
+      {
+        "n_cells_generated": 400,
+        "median_nnz_generated": 6007.0,
+        "median_nnz_real_controls": 5756.0,
+        "nnz_ratio_generated_over_real": 1.0436066712995136,
+        "median_library_generated": 20294.5,
+        "median_library_real_controls": 19946.0,
+        "cv_library_generated": 0.3942839152967533,
+        "cv_library_real_controls": 0.38524604502810667,
+        "cv_nnz_generated": 0.21250005246380035,
+        "cv_nnz_real_controls": 0.2155120578503052,
+        "interpretation": "A generated/real nnz ratio above 1 is the expected artefact of sampling from a pooled mean: the mean profile is less sparse than any single cell. It is present at zero predicted effect and is a property of the generator, not of the prediction.",
+        "context": "B",
+        "target": "AKAP1",
+        "nearest_basal_context": "B",
+        "similarity_to_each_basal": {
+          "A": 0.8984597976457769,
+          "B": 0.9996304512452563,
+          "C": 0.9273981149285782
+        },
+        "label_matches_nearest_basal": true,
+        "detail": {
+          "compositional_shift_log2": 0.0009956068772633097,
+          "n_genes_clipped": 0,
+          "clip_log2": 6.0,
+          "mass_ratio_pred_over_basal": 1.0,
+          "realised_log2fc_on_unobserved": 0.0,
+          "median_abs_effective_log2fc_observed": 0.024392424159874602,
+          "max_abs_effective_log2fc_observed": 0.35188176493943724
+        }
+      },
+      {
+        "n_cells_generated": 400,
+        "median_nnz_generated": 6190.0,
+        "median_nnz_real_controls": 6006.0,
+        "nnz_ratio_generated_over_real": 1.0306360306360307,
+        "median_library_generated": 19493.5,
+        "median_library_real_controls": 20034.0,
+        "cv_library_generated": 0.4404127216238956,
+        "cv_library_real_controls": 0.4375096986784481,
+        "cv_nnz_generated": 0.19873011345886607,
+        "cv_nnz_real_controls": 0.1945775203280995,
+        "interpretation": "A generated/real nnz ratio above 1 is the expected artefact of sampling from a pooled mean: the mean profile is less sparse than any single cell. It is present at zero predicted effect and is a property of the generator, not of the prediction.",
+        "context": "C",
+        "target": "ABCD1",
+        "nearest_basal_context": "C",
+        "similarity_to_each_basal": {
+          "A": 0.8879800990951175,
+          "B": 0.9275646082536175,
+          "C": 0.9996360849432346
+        },
+        "label_matches_nearest_basal": true,
+        "detail": {
+          "compositional_shift_log2": 0.0,
+          "n_genes_clipped": 0,
+          "clip_log2": 6.0,
+          "mass_ratio_pred_over_basal": 1.0,
+          "realised_log2fc_on_unobserved": 0.0,
+          "median_abs_effective_log2fc_observed": 0.0,
+          "max_abs_effective_log2fc_observed": 0.0
+        }
+      },
+      {
+        "n_cells_generated": 400,
+        "median_nnz_generated": 6254.0,
+        "median_nnz_real_controls": 6006.0,
+        "nnz_ratio_generated_over_real": 1.0412920412920412,
+        "median_library_generated": 19993.0,
+        "median_library_real_controls": 20034.0,
+        "cv_library_generated": 0.4554959756833788,
+        "cv_library_real_controls": 0.4375096986784481,
+        "cv_nnz_generated": 0.1999072387438006,
+        "cv_nnz_real_controls": 0.1945775203280995,
+        "interpretation": "A generated/real nnz ratio above 1 is the expected artefact of sampling from a pooled mean: the mean profile is less sparse than any single cell. It is present at zero predicted effect and is a property of the generator, not of the prediction.",
+        "context": "C",
+        "target": "ACLY",
+        "nearest_basal_context": "C",
+        "similarity_to_each_basal": {
+          "A": 0.8876964453558508,
+          "B": 0.9275415569499421,
+          "C": 0.9996238266660731
+        },
+        "label_matches_nearest_basal": true,
+        "detail": {
+          "compositional_shift_log2": 0.000991899224520775,
+          "n_genes_clipped": 0,
+          "clip_log2": 6.0,
+          "mass_ratio_pred_over_basal": 1.0000000000000002,
+          "realised_log2fc_on_unobserved": 0.0,
+          "median_abs_effective_log2fc_observed": 0.03329996532839465,
+          "max_abs_effective_log2fc_observed": 0.7758126126827265
+        }
+      },
+      {
+        "n_cells_generated": 400,
+        "median_nnz_generated": 6131.5,
+        "median_nnz_real_controls": 6006.0,
+        "nnz_ratio_generated_over_real": 1.0208957708957709,
+        "median_library_generated": 18929.5,
+        "median_library_real_controls": 20034.0,
+        "cv_library_generated": 0.45530845510363954,
+        "cv_library_real_controls": 0.4375096986784481,
+        "cv_nnz_generated": 0.20016580768192227,
+        "cv_nnz_real_controls": 0.1945775203280995,
+        "interpretation": "A generated/real nnz ratio above 1 is the expected artefact of sampling from a pooled mean: the mean profile is less sparse than any single cell. It is present at zero predicted effect and is a property of the generator, not of the prediction.",
+        "context": "C",
+        "target": "AGO1",
+        "nearest_basal_context": "C",
+        "similarity_to_each_basal": {
+          "A": 0.8874997723187705,
+          "B": 0.9273295982118741,
+          "C": 0.9996246689568701
+        },
+        "label_matches_nearest_basal": true,
+        "detail": {
+          "compositional_shift_log2": -0.0032327008812971275,
+          "n_genes_clipped": 0,
+          "clip_log2": 6.0,
+          "mass_ratio_pred_over_basal": 1.0,
+          "realised_log2fc_on_unobserved": 0.0,
+          "median_abs_effective_log2fc_observed": 0.024313412152192033,
+          "max_abs_effective_log2fc_observed": 0.3587084957783259
+        }
+      },
+      {
+        "n_cells_generated": 400,
+        "median_nnz_generated": 6246.5,
+        "median_nnz_real_controls": 6006.0,
+        "nnz_ratio_generated_over_real": 1.04004329004329,
+        "median_library_generated": 19923.0,
+        "median_library_real_controls": 20034.0,
+        "cv_library_generated": 0.45410589686534986,
+        "cv_library_real_controls": 0.4375096986784481,
+        "cv_nnz_generated": 0.19544076442888916,
+        "cv_nnz_real_controls": 0.1945775203280995,
+        "interpretation": "A generated/real nnz ratio above 1 is the expected artefact of sampling from a pooled mean: the mean profile is less sparse than any single cell. It is present at zero predicted effect and is a property of the generator, not of the prediction.",
+        "context": "C",
+        "target": "AKIRIN1",
+        "nearest_basal_context": "C",
+        "similarity_to_each_basal": {
+          "A": 0.8876214736091305,
+          "B": 0.9273728034149462,
+          "C": 0.999632285710723
+        },
+        "label_matches_nearest_basal": true,
+        "detail": {
+          "compositional_shift_log2": 0.001203339260591658,
+          "n_genes_clipped": 0,
+          "clip_log2": 6.0,
+          "mass_ratio_pred_over_basal": 1.0,
+          "realised_log2fc_on_unobserved": 0.0,
+          "median_abs_effective_log2fc_observed": 0.02687998333876454,
+          "max_abs_effective_log2fc_observed": 0.6327248734731357
+        }
+      }
+    ],
+    "zero_effect_artefact_note": "For the control trial the cells ARE real, so any difference from the controls is resampling only. For the sampled trial the generated/real nnz ratio is above 1 even at zero predicted effect, because a pooled mean profile is less sparse than any single cell: an artefact of the generator, present before any prediction is made."
+  },
+  "per_block": [
+    {
+      "context": "A",
+      "target": "ABCD1",
+      "n_cells": 400,
+      "nnz": 2519522,
+      "nnz_per_cell": 6298.805,
+      "max_counts_in_a_cell": 50536.0,
+      "compositional_shift_log2": 0.0
+    },
+    {
+      "context": "A",
+      "target": "ACLY",
+      "n_cells": 400,
+      "nnz": 2536185,
+      "nnz_per_cell": 6340.4625,
+      "max_counts_in_a_cell": 51207.0,
+      "compositional_shift_log2": 0.006050483277130596
+    },
+    {
+      "context": "A",
+      "target": "ADNP",
+      "n_cells": 400,
+      "nnz": 2454013,
+      "nnz_per_cell": 6135.0325,
+      "max_counts_in_a_cell": 49710.0,
+      "compositional_shift_log2": 0.009734067051766989
+    },
+    {
+      "context": "A",
+      "target": "AGO1",
+      "n_cells": 400,
+      "nnz": 2499224,
+      "nnz_per_cell": 6248.06,
+      "max_counts_in_a_cell": 51324.0,
+      "compositional_shift_log2": 0.00021247233914591917
+    },
+    {
+      "context": "A",
+      "target": "AKAP1",
+      "n_cells": 400,
+      "nnz": 2507175,
+      "nnz_per_cell": 6267.9375,
+      "max_counts_in_a_cell": 52638.0,
+      "compositional_shift_log2": 0.001734085410859641
+    },
+    {
+      "context": "A",
+      "target": "AKIRIN1",
+      "n_cells": 400,
+      "nnz": 2502208,
+      "nnz_per_cell": 6255.52,
+      "max_counts_in_a_cell": 49993.0,
+      "compositional_shift_log2": 0.005998033570251562
+    },
+    {
+      "context": "B",
+      "target": "ABCD1",
+      "n_cells": 400,
+      "nnz": 2256911,
+      "nnz_per_cell": 5642.2775,
+      "max_counts_in_a_cell": 42520.0,
+      "compositional_shift_log2": 0.0
+    },
+    {
+      "context": "B",
+      "target": "ACLY",
+      "n_cells": 400,
+      "nnz": 2309325,
+      "nnz_per_cell": 5773.3125,
+      "max_counts_in_a_cell": 40262.0,
+      "compositional_shift_log2": 0.004700089134323161
+    },
+    {
+      "context": "B",
+      "target": "ADNP",
+      "n_cells": 400,
+      "nnz": 2297748,
+      "nnz_per_cell": 5744.37,
+      "max_counts_in_a_cell": 41625.0,
+      "compositional_shift_log2": 0.008280561559247128
+    },
+    {
+      "context": "B",
+      "target": "AGO1",
+      "n_cells": 400,
+      "nnz": 2230256,
+      "nnz_per_cell": 5575.64,
+      "max_counts_in_a_cell": 41597.0,
+      "compositional_shift_log2": -0.002462340924442092
+    },
+    {
+      "context": "B",
+      "target": "AKAP1",
+      "n_cells": 400,
+      "nnz": 2307626,
+      "nnz_per_cell": 5769.065,
+      "max_counts_in_a_cell": 41703.0,
+      "compositional_shift_log2": 0.0009956068772633097
+    },
+    {
+      "context": "B",
+      "target": "AKIRIN1",
+      "n_cells": 400,
+      "nnz": 2296396,
+      "nnz_per_cell": 5740.99,
+      "max_counts_in_a_cell": 41956.0,
+      "compositional_shift_log2": 0.004313743509669378
+    },
+    {
+      "context": "C",
+      "target": "ABCD1",
+      "n_cells": 400,
+      "nnz": 2411969,
+      "nnz_per_cell": 6029.9225,
+      "max_counts_in_a_cell": 48616.0,
+      "compositional_shift_log2": 0.0
+    },
+    {
+      "context": "C",
+      "target": "ACLY",
+      "n_cells": 400,
+      "nnz": 2436637,
+      "nnz_per_cell": 6091.5925,
+      "max_counts_in_a_cell": 49826.0,
+      "compositional_shift_log2": 0.000991899224520775
+    },
+    {
+      "context": "C",
+      "target": "ADNP",
+      "n_cells": 400,
+      "nnz": 2472853,
+      "nnz_per_cell": 6182.1325,
+      "max_counts_in_a_cell": 49019.0,
+      "compositional_shift_log2": 0.007885302436473214
+    },
+    {
+      "context": "C",
+      "target": "AGO1",
+      "n_cells": 400,
+      "nnz": 2401085,
+      "nnz_per_cell": 6002.7125,
+      "max_counts_in_a_cell": 50569.0,
+      "compositional_shift_log2": -0.0032327008812971275
+    },
+    {
+      "context": "C",
+      "target": "AKAP1",
+      "n_cells": 400,
+      "nnz": 2428962,
+      "nnz_per_cell": 6072.405,
+      "max_counts_in_a_cell": 50213.0,
+      "compositional_shift_log2": 0.0011816477378919835
+    },
+    {
+      "context": "C",
+      "target": "AKIRIN1",
+      "n_cells": 400,
+      "nnz": 2450523,
+      "nnz_per_cell": 6126.3075,
+      "max_counts_in_a_cell": 49890.0,
+      "compositional_shift_log2": 0.001203339260591658
+    }
+  ],
+  "fitted_state": {
+    "model": "shrunk_transfer",
+    "parameters": {
+      "alpha": 0.19735295241594938,
+      "prior_sd": 4.0,
+      "collapse_guides": true
+    },
+    "source_signatures": {
+      "source_id": "k562_gwps",
+      "npz": {
+        "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures\\k562_gwps.npz",
+        "exists": true,
+        "bytes": 197397287,
+        "mtime_utc": "2026-09-12T14:00:39.636641+00:00",
+        "sha256": "ba536d463363ae3c72272b75d3640ebf0eb21291f4a68a5a364fef88ff854d1a",
+        "sha256_mode": "head+tail sample (64 MiB blocks)"
+      },
+      "rows_json": {
+        "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures\\k562_gwps.rows.json",
+        "exists": true,
+        "bytes": 735444,
+        "mtime_utc": "2026-09-12T14:00:39.796096+00:00",
+        "sha256": "5b7d51bcbd67d30f6c982dc7c2c0879e01d79bea4df764c6551aa692ad88cc52",
+        "sha256_mode": "full"
+      }
+    },
+    "selected_by": {
+      "run_id": "c002",
+      "development_experiment": "k562_gwps -> rpe1_essential",
+      "protocol": "inner cross-validated prior_sd, closed-form alpha",
+      "calibration_report": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\c002\\calibration.json"
+    },
+    "reconstruct": "ShrunkTransfer(alpha=..., prior_sd=..., source=source_id, collapse_guides=True).fit(SignatureSet.read_npz(npz))",
+    "transferability_warning": "alpha and prior_sd were measured on a K562 -> RPE1 pair. Applying them to contexts A/B/C is a HYPOTHESIS, not a measurement: no perturbation is observable in those contexts.",
+    "seed": 20260912
+  },
+  "provenance_files": {},
+  "not_a_score": "This file contains no VCC score. It records what was generated and what it cost. Nothing here has been uploaded."
+}

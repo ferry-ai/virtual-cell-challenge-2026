@@ -1,0 +1,85 @@
+{
+  "run_id": "q00full",
+  "stage": "46_validate_package",
+  "started_utc": "2026-09-12T20:58:25.259171+00:00",
+  "finished_utc": "2026-09-12T20:58:25.351948+00:00",
+  "seed": null,
+  "config": {
+    "run_id": "q00full",
+    "out": null,
+    "prediction": null,
+    "vcc_name": "prediction.vcc",
+    "skip_package": false,
+    "skip_prep": true,
+    "prep_timeout": 1800,
+    "allow_overwrite": false
+  },
+  "inputs": {
+    "prediction": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q00full\\prediction.h5ad",
+      "exists": true,
+      "bytes": 4215694146,
+      "mtime_utc": "2026-09-12T20:53:50.641861+00:00",
+      "sha256": "64719c892247111e378bc1b0779c79102eb5bd74cc2473fb9e8cba5e2634e3f9",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "genes": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\gene_names.csv",
+      "exists": true,
+      "bytes": 119295,
+      "mtime_utc": "2026-09-11T17:27:09.608150+00:00",
+      "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "sha256_mode": "full"
+    },
+    "perturbations": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+      "exists": true,
+      "bytes": 1906,
+      "mtime_utc": "2026-09-11T17:27:09.610157+00:00",
+      "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+      "sha256_mode": "full"
+    }
+  },
+  "outputs": {
+    "validation": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q00full\\validation.json",
+      "exists": true,
+      "bytes": 7278,
+      "mtime_utc": "2026-09-12T20:58:25.259171+00:00",
+      "sha256": "9c1aecc4f07f6e1c94f88f4536743cf2a7cf856db76a512735fb67147ad3759a",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "contract_all_checks_pass": true,
+    "context_provenance_ok": true,
+    "prep_dry_run_exit": null,
+    "prep_package_exit": null
+  },
+  "notes": [
+    "Format validation cannot detect swapped contexts; provenance is checked separately against each context's basal profile.",
+    "Nothing uploaded."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}

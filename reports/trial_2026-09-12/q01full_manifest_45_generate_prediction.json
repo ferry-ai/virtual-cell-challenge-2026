@@ -1,0 +1,124 @@
+{
+  "run_id": "q01full",
+  "stage": "45_generate_prediction",
+  "started_utc": "2026-09-12T21:14:07.090482+00:00",
+  "finished_utc": "2026-09-12T21:14:07.345122+00:00",
+  "seed": 20260912,
+  "config": {
+    "run_id": "q01full",
+    "trial": "trial-01-transfer",
+    "out": null,
+    "fitted_state": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\c002\\fitted_state.json",
+    "signatures": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures",
+    "n_perts": null,
+    "contexts": null,
+    "cells_per_pert": null,
+    "seed": null,
+    "overdispersion": null,
+    "reserve_gib": 10.0,
+    "skip_resource_check": false,
+    "allow_overwrite": false
+  },
+  "inputs": {
+    "controls:A": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_A.h5ad",
+      "exists": true,
+      "bytes": 224973316,
+      "mtime_utc": "2026-09-11T17:27:06.844066+00:00",
+      "sha256": "daf888bd6894da5488c8dac3098a3618ff766d03fdf1250ec7f607124bb97834",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "controls:B": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_B.h5ad",
+      "exists": true,
+      "bytes": 210966111,
+      "mtime_utc": "2026-09-11T17:27:08.236761+00:00",
+      "sha256": "8764c13cb61dd48e51c817335dd4ecc85a740406c5af144c4884d79d3cd3293d",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "controls:C": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_C.h5ad",
+      "exists": true,
+      "bytes": 226056691,
+      "mtime_utc": "2026-09-11T17:27:09.601099+00:00",
+      "sha256": "486a299ad022ec5fd6a3c5f56ec77efeb7b8b85e5de0e41250d064c6f9b236f6",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "fitted_state": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\c002\\fitted_state.json",
+      "exists": true,
+      "bytes": 1551,
+      "mtime_utc": "2026-09-12T20:26:11.111904+00:00",
+      "sha256": "9b8a0a29a6e3b3413912ed0acbc467220a727d539112dd347a5cfdd3ef5bbb82",
+      "sha256_mode": "full"
+    }
+  },
+  "outputs": {
+    "prediction": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01full\\prediction.h5ad",
+      "exists": true,
+      "bytes": 4258992494,
+      "mtime_utc": "2026-09-12T21:14:07.035401+00:00",
+      "sha256": "a74e71b80cb2eecbd98157cbd51d584c4f0050002f6cc2dba77ff239d7b5e821",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "diagnostics": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\q01full\\generation_diagnostics.json",
+      "exists": true,
+      "bytes": 240267,
+      "mtime_utc": "2026-09-12T21:14:07.089531+00:00",
+      "sha256": "31151b20d6866096f02379e8f99f18ed8f13480e274f94931169357f6e557cbb",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "storage": {
+      "stored_entries": 2167562410,
+      "stored_entries_per_cell": 6021.006694444444,
+      "per_cell_budget": 13194,
+      "global_cap": 4750000000,
+      "fraction_of_global_cap_at_this_size": 0.4563289284210526,
+      "projected_entries_at_full_shape": 2167562410.0,
+      "projected_fraction_of_cap": 0.4563289284210526,
+      "file_bytes": 4258992494,
+      "bytes_per_cell": 11830.534705555556,
+      "projected_file_bytes_at_full_shape": 4258992494.0
+    },
+    "runtime": {
+      "basal_profiles_seconds": 17.97483210000064,
+      "generation_seconds": 1131.176341499995,
+      "total_seconds": 1152.5644166999991,
+      "seconds_per_block": 1.256862601666661,
+      "projected_generation_seconds_at_full_shape": 1131.176341499995
+    },
+    "memory": {
+      "peak_rss_bytes": 513007616
+    },
+    "context_provenance_ok": true
+  },
+  "notes": [
+    "No VCC score here. Generation only; nothing uploaded."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}
