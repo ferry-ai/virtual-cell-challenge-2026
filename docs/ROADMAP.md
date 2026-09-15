@@ -247,13 +247,67 @@ quantificato (1,0% di MSE cross-lineage). La domanda vera è se CD4 + K562 batta
   scelti su dati tenuti fuori. Serve solo a dire che il meccanismo di combinazione
   gira su dati veri e che l'ipotesi merita l'esperimento vero.
 - **Input:** firme CD4 (R-3) e K562; `WeightedTransfer` è già implementato e ha girato
-  su dati reali; `LowRankRidge` è implementato e coperto da test, ma **non è ancora
-  stato misurato** su dati reali.
+  su dati reali; `LowRankRidge` è implementato ma **non è coperto da test, non è
+  importato da nessuno stadio e non è mai stato eseguito**. *Correzione del 2026-09-15:
+  questa riga diceva «implementato e coperto da test». La copertura non esiste —
+  `tests/test_pipeline_contracts.py` importa `NullModel`, `ShrunkTransfer` e
+  `WeightedTransfer`, e in `tests/` non compare nessuna occorrenza di `LowRankRidge`,
+  `ridge` o `low_rank`. Vedi R-11.*
 - **Criterio di successo:** il modello pesato batte la migliore sorgente singola su
   bersagli tenuti fuori, con intervallo bootstrap disgiunto. **Se non lo batte, si
   registra e si tiene la sorgente singola** — è un esito informativo, non un
   fallimento.
 - **Artefatto:** tabella di ablation + aggiornamento di D-007.
+
+## R-11 — Il modello condizionato sul contesto: renderlo eseguibile prima che serva
+
+**Perché esiste questa voce.** È la fase 3 del piano originale di `README.md`
+(«Learned model: maps (basal state, perturbation identity) → response»), ed è
+l'ipotesi di ricerca di `docs/data_strategy_2026-09-11.md` §5: separare un effetto
+condiviso per bersaglio, la sua modulazione da parte dei programmi basali, e un residuo
+dipendente dal contesto, con una decomposizione a basso rango che la renda apprendibile
+con pochi dati. Finora era citata dentro R-4 e non aveva una voce propria, il che la
+rendeva invisibile in una lettura veloce della roadmap.
+
+**Stato reale, misurato il 2026-09-15 leggendo il codice.** `LowRankRidge` in
+`src/vcc2026/models.py` implementa esattamente quell'idea: base di rango k sullo spazio
+delle risposte, e un bersaglio nuovo collocato in quella base a partire da descrittori
+(il profilo basale). Ma:
+
+- nessun test lo tocca (vedi la correzione in R-4);
+- `set_descriptors`, cioè il punto in cui il contesto entrerebbe nel modello, non è
+  chiamato da nessuna parte;
+- `src/vcc2026/models.py` è importato solo da `scripts/45_generate_prediction.py`, che
+  ne usa il solo `ShrunkTransfer`, e dai test;
+- `arc-state` compare come commento che giustifica Python 3.12 in `README.md` e
+  `requirements.txt`, **non** fra i pacchetti di `requirements.txt` né in
+  `requirements.lock.txt`: non è installato e non è mai stato usato.
+
+Quindi oggi non esiste un modello condizionato sul contesto eseguibile: esiste una
+classe che nessuno stadio sa costruire.
+
+**Il vincolo che lo tiene fermo resta D-003**, e va rispettato: è «il primo modello che
+può ingannarsi da solo» (docstring di `models.py`), e sceglierlo su metriche proxy
+nell'origine sbagliata sarebbe il modo più rapido di sovradattare. **Ma il vincolo
+riguarda la *selezione*, non la *preparazione***, e sono due cose separabili.
+
+- **Ipotesi:** che condizionare la risposta sul profilo basale del contesto di
+  destinazione recuperi la direzione per gene, che è dove il punteggio si perde
+  (`fid` −0,182 con `pds` 0,413).
+- **Prima del cancello, e senza dati nuovi:** test per `LowRankRidge` allo stesso
+  livello degli altri tre modelli; una funzione che costruisca i descrittori dai
+  controlli ufficiali; uno stadio che sappia istanziarlo dal `MODEL_REGISTRY`; e la
+  scelta dichiarata di *quali* descrittori (profilo basale del bersaglio, vicinato di
+  co-espressione, o entrambi — è l'incertezza 6 di [PROGETTO.md](PROGETTO.md) §4).
+- **Dopo il cancello (R-1):** selezione di rango e penalità su bersagli tenuti fuori,
+  con ablation contro `ShrunkTransfer` calibrato.
+- **Criterio di successo:** batte il trasferimento calibrato sulle sei metriche VCC del
+  bundle di R-1, su bersagli tenuti fuori, con intervallo bootstrap disgiunto. **Se non
+  lo batte si registra e si tiene il trasferimento**: una decomposizione elegante che
+  non batte una baseline calibrata è un risultato, non un fallimento.
+- **Perché adesso e non a ottobre:** se la preparazione parte solo quando R-1 è chiuso,
+  il modello arriva a ridosso del 22 ottobre. Renderlo eseguibile costa ore e non
+  consuma né dati né quota; selezionarlo costa il bundle, che è R-1.
 
 ## R-5 — Orion HCT116, proiezione dei metadati e acquisizione limitata
 

@@ -36,6 +36,7 @@ La classifica finale dipende solo dal set finale, su tre contesti diversi (D, E,
 | Packaging `.vcc` di trial-01 | fatto in locale, 0,52 GiB di picco ([CP-0005](checkpoints/0005-packaging-streaming-trial01.md)) |
 | **Banco di prova predittivo (punteggio VCC su effetti veri)** | **bloccato: manca un dataset perturbato reale** |
 | Prima sottomissione valutata | fatto: 0,045929, rango 446/920 ([CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md)) |
+| Modello condizionato sul contesto (fase 3 del piano in `README.md`) | **non iniziato**: `LowRankRidge` esiste in `src/vcc2026/models.py`, ma non è testato, non è importato da nessuno stadio e non è mai stato eseguito (R-11) |
 | Ensemble, miglioramento del punteggio | non iniziato |
 
 **Il 13 settembre 2026 è stata inviata la prima sottomissione, ed è stata valutata:
