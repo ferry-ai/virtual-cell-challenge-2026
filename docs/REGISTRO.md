@@ -76,7 +76,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/grok_verification/` | attuale | — | Sonde e campioni prodotti da `scripts/27_verify_grok_leads.py` e `scripts/28_probe_grok_files.py`, spiegati da `docs/revisione_grok_2026-09-12.md`. Contiene `multiome.zip`, che `.gitignore` esclude: è locale, non versionato | [R-008](#r-008--reportsgrok_verification) |
 | `scripts/` (01–28, analisi) | attuale | — | Esistono e sono documentati come eseguiti; l'esistenza di uno script non è prova di esecuzione né di risultato | — |
 | `scripts/30_new_checkpoint.py`, `scripts/31_check_docs.py`, `tests/test_doc_workflow.py` | attuale | — | Utilità di questo sistema: creano checkpoint numerati senza sovrascriverli e verificano la coerenza di registro, indice e riferimenti. Solo libreria standard | — |
-| `notebooks/` | storico | — | Cartella vuota, citata nel layout del README: non contiene esplorazioni | — |
+| `notebooks/` | attuale | — | Conteneva solo il layout del README finché era vuota; dal 2026-09-13 contiene `kaggle_package_trial01.ipynb`, che ha una riga propria qui sotto. *Riga corretta il 2026-09-15: diceva «cartella vuota» mentre il notebook esisteva già* | — |
 | `docs/checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md` | attuale | — | Prima pipeline verticale eseguita e prima calibrazione misurata dell'ampiezza di trasferimento; corregge due letture dei dati mai scritte prima | — |
 | `docs/PIPELINE.md` | attuale | — | Architettura della pipeline, moduli, comandi e scelte di progetto. Descrive codice eseguito, non previsto | — |
 | `docs/ROADMAP.md` | attuale | — | Passi ordinati per valore informativo diviso costo, con ipotesi, criterio di successo e artefatto atteso per ciascuno | — |
@@ -98,7 +98,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/trial_2026-09-13/submit_PNn227rxP3bVByS37W41.json`, `status_PNn227rxP3bVByS37W41.json`, `submission_PNn227rxP3bVByS37W41.md` | attuale | — | La prima sottomissione valutata: output verbatim di `vcc submit` e `vcc status`, più la loro lettura ordinata. **Punteggio 0,045929, rango 446/920.** Non sovrascrivere: sono l'unica prova di che cosa il server ha risposto quel giorno | [R-012](#r-012--reportstrial_2026-09-13) |
 | `src/vcc2026/packaging.py` | attuale | — | Convalida e packaging `.vcc` senza materializzare la matrice. Le convalide sui metadati **sono** quelle ufficiali, importate e chiamate; quelle sulla matrice sono equivalenti a blocchi. Rifiuta esplicitamente i layout che non sa preservare | — |
 | `scripts/48_package_prediction.py` | attuale | — | Lo stadio che convalida, impacchetta e verifica. Esce con codice diverso da zero se qualcosa fallisce, e non scrive nulla se la convalida non è pulita | — |
-| `tests/test_packaging_parity.py` | attuale | — | 41 test di parità contro `vcc prep` 0.2.0 su fixture a forma ufficiale completa: stessa accettazione, stesso rifiuto, stesse codifiche HDF5. Circa 98 s | — |
+| `tests/test_packaging_parity.py` | attuale | — | 46 test di parità contro `vcc prep` 0.2.0 su fixture a forma ufficiale completa: stessa accettazione, stesso rifiuto, stesse codifiche HDF5. Circa 98 s | — |
 | `notebooks/kaggle_package_trial01.ipynb` | attuale | — | Percorso remoto per la stessa implementazione su Kaggle CPU. **Non eseguito**: il run locale è riuscito. Resta pronto per il set finale D/E/F | — |
 | `tests/test_pipeline_contracts.py` | attuale | — | 42 test sui contratti che fallirebbero in silenzio: maschere contro zeri, fuga di bersagli negli split, sovrascrittura di manifesti, livelli di verifica del registry | — |
 
@@ -133,7 +133,7 @@ prodotto il file.
 | `reports/candidate_verification/pilot/cd4_D1_Rest_64.h5ad` | campione | attuale | Provenienza completa: URL, seed, byte trasferiti e sha256 dell'output in `cd4_D1_Rest_64.manifest.json` | `scripts/25_ingest_cd4_pilot.py` con un `--out` nuovo | 64 cellule: prova che l'ingestione funziona, non abbastanza per scegliere un modello |
 | `reports/candidate_verification/*.json` (sonde remote) | derivato | attuale | Sonde remote con budget di byte; manifest con sha256 | Script 20, 21, 23, 24, 26 | Fotografie di endpoint pubblici a una certa data: le sorgenti possono cambiare |
 | `.runtime-deps/pyarrow` | temporaneo | attuale | Installato solo per la sonda Orion; ignorato da git | Reinstallazione | Ricreabile: candidato alla pulizia quando la sonda Orion non serve più |
-| `C:/Users/ferra/vcc2026-data/artifacts/` (e001, e002, n001..n003) | derivato | attuale | Prodotto dagli stadi 40/41/42 il 2026-09-12; ogni run ha il suo manifesto con hash e ambiente | Rilanciando gli stadi con un `--run-id` nuovo | 519 MB di firme piu 3x112 MB di bundle a singola cellula. Fuori dal repository (D-001); i risultati leggeri sono copiati in `reports/pipeline/` |
+| `C:/Users/ferra/vcc2026-data/artifacts/` (e001, e002, n001..n003) | derivato | attuale | Prodotto dagli stadi 40/41/42 il 2026-09-12; ogni run ha il suo manifesto con hash e ambiente | Rilanciando gli stadi con un `--run-id` nuovo | 541,1 MB di firme (516,1 MiB: somma dei tre `.npz` in `manifest_40_build_signatures.json`; la riga diceva 519 MB) piu 3x112 MB di bundle a singola cellula. Fuori dal repository (D-001); i risultati leggeri sono copiati in `reports/pipeline/` |
 
 ## Schede di revisione
 

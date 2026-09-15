@@ -100,12 +100,12 @@ stata ancora messa alla prova.
 | L'α di trasferimento K562 → RPE1 è 0,1974, non 0,25: il valore precedente era il punto di griglia più vicino. MSE fuori campione 0,98991 del nullo, IC95 [0,98866, 0,99114]; a piena ampiezza 1,16228 | misura (CV annidata, 2.350 bersagli) | `reports/trial_2026-09-12/calibration_c002.json` |
 | Lo **shrinkage per gene è quasi inattivo**: `prior_sd` = 4 batte «nessuno shrinkage» di 0,00003 in MSE cross-validata. La compressione utile è tutta nell'ampiezza globale | misura | come sopra |
 | Una previsione completa a densità realistica pesa 2,08·10⁹ valori memorizzati, 5.789 per cellula: il **44% del tetto**, non il 90% che darebbe submettere il profilo medio | misura | `reports/trial_2026-09-12/resources.json` |
-| `vcc prep` carica l'intera matrice in memoria: 8,60 byte per valore memorizzato misurati, 22,19 GiB di picco per trial-00 secondo il modello della CLI stessa, contro 7,81 GiB totali di macchina. **`prep_memory_warning` non scatta su Windows** perché dimensiona contro `os.sysconf` | misura | [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.5 |
+| `vcc prep` carica l'intera matrice in memoria: 22,19 GiB di picco per trial-00 secondo il modello della CLI stessa, contro 7,81 GiB totali di macchina. **`prep_memory_warning` non scatta su Windows** perché dimensiona contro `os.sysconf` | misura | [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.5 |
 | Quel limite è di `vcc prep`, non del problema: convalidando e scrivendo a blocchi, trial-01 si impacchetta con **0,519 GiB di picco** contro i 33,49 del modello, sulla stessa macchina, con le stesse 24 convalide | misura | [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.1 |
 | Il payload del `.vcc` porta `X/data`, `X/indices` e `X/indptr` **identici bit a bit** all'input; l'unica trasformazione è l'indice di `obs`, sostituito con `'0'..'n-1'`, che è ciò che fa anche `vcc prep` | misura | come sopra, §3.3 |
 | La regola ufficiale «nessuna perturbazione tutta a zero» è **globale, non per contesto**: `vcc prep` accetta un bersaglio azzerato in un solo contesto | misura, sul comportamento di `prep` | come sopra, §3.5 |
 | Gli offset CSR di una sottomissione completa arrivano al 97% del tetto di int32: `SubmissionWriter` li scriveva in int32 e avrebbe avvolto in silenzio su una previsione un filo più densa | misura, difetto corretto | [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.6 |
-| Il generatore produce il 4–6% di geni rilevati in più dei controlli reali **anche a effetto previsto zero**, mentre i CV di libreria e di rilevazione coincidono. Il log2FC efficace mediano dopo calibrazione è 0,0246 (1,7%), il massimo su un gene 0,776 (1,71×) | misura | `reports/trial_2026-09-12/q01pilot_generation_diagnostics.json` |
+| Il generatore produce fra il **2,1% e il 6,3%** di geni rilevati in più dei controlli reali **anche a effetto previsto zero**, con mediana 4,1% (pilot) e 3,7% (full) sui 12+12 blocchi campionati — *corretto il 2026-09-15: qui e altrove si leggeva «4–6%», che è la metà alta del range e non il range*, mentre i CV di libreria e di rilevazione coincidono. Il log2FC efficace mediano dopo calibrazione è 0,0246 (1,7%), il massimo su un gene 0,776 (1,71×) | misura | `reports/trial_2026-09-12/q01pilot_generation_diagnostics.json` |
 | Un contesto scambiato è rilevabile: somiglianza col proprio basale 0,999999 contro 0,888–0,928 fra basali diversi. La convalida di formato non se ne accorgerebbe | misura | `reports/trial_2026-09-12/q00full_validation.json` |
 
 ## 4. Cosa non sappiamo
@@ -160,7 +160,7 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
     coppia sorgente-destinazione; una sorgente di lignaggio vicino potrebbe darne uno
     molto diverso, ed è il primo controllo da fare quando CD4 sarà ingerito.
 12. **Se l'artefatto del generatore superi il segnale che iniettiamo.** Misurato: le
-    cellule generate rilevano il 4–6% di geni in più dei controlli reali anche a
+    cellule generate rilevano il 2,1–6,3% di geni in più dei controlli reali anche a
     effetto previsto zero, e il log2FC efficace mediano dopo calibrazione è 1,7%.
     Sono quantità diverse e dello stesso ordine; quale domini le quattro metriche DE
     dipende da come lo scorer aggrega, e non è stato misurato. È la ragione principale
@@ -174,8 +174,13 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
     decisione esplicita del proprietario.
 14. **Quanto costi davvero `vcc prep` su una macchina adeguata.** Il picco di 22–33 GiB
     viene dal modello di dimensionamento della CLI, non da un'esecuzione nostra: la
-    misura che abbiamo è il costo di lettura di anndata, 8,60 byte per valore
-    memorizzato. Il numero va confermato la prima volta che `prep` gira per davvero.
+    misura che abbiamo dovrebbe essere il costo di lettura di anndata, 8,60 byte
+    per valore memorizzato — ma *verificato il 2026-09-15: quel numero non compare in
+    nessun file di `reports/`*. L'unico valore registrato è `scipy_bytes_per_nnz: 8`
+    in `reports/trial_2026-09-12/q00prep_validation.json`, che è la costante assunta
+    dal modello della CLI, non una nostra misura. Il valore 8,60 resta leggibile in
+    [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.5, che non si
+    riscrive: va trattato come non tracciabile finché non lo si rimisura. Il numero va confermato la prima volta che `prep` gira per davvero.
 15. **Contro quale origine ci misura lo scorer.** `README.md` riporta dalla specifica
     ufficiale che lo zero di ogni metrica è la **media dei costrutti perturbati**, non
     la media dei controlli. Se è così, tutte le nostre calibrazioni hanno ottimizzato

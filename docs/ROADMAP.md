@@ -88,7 +88,7 @@ battano l'ampiezza unica a parità di tutto il resto.
 ## R-9 — Il nullo generato: quanto del punteggio è artefatto del generatore
 
 **Perché.** [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.8 ha
-misurato che le cellule generate rilevano il 4–6% di geni in più dei controlli reali
+misurato che le cellule generate rilevano il 2,1–6,3% di geni in più dei controlli reali
 **a effetto previsto zero**, e il log2FC efficace mediano dopo calibrazione è 0,0246.
 Sono quantità dello stesso ordine, e `fid` guarda proprio i geni che la previsione
 chiama significativi: se quelle chiamate nascono dal campionamento e non dal segnale,
@@ -242,7 +242,10 @@ quantificato (1,0% di MSE cross-lineage). La domanda vera è se CD4 + K562 batta
   2.013 bersagli comuni a K562 genome-wide, K562 essential e RPE1 dà una Pearson
   mediana di 0,1102 combinando le due sorgenti K562 a peso uguale, contro 0,0919 e
   0,0788 prese singolarmente; l'MSE aggregato resta praticamente invariato (0,3361
-  contro 0,3359 e 0,3363, con nullo a 0,3614). **Non è un esperimento calibrato**: α
+  contro 0,3359 e 0,3363, con nullo a 0,3614). *Verificato il 2026-09-15: nessuno di questi numeri compare in un file di
+  `reports/` né in un checkpoint, quindi non è ripetibile e non va citato altrove
+  finché l'esperimento non viene rifatto e salvato.* **Non è un esperimento
+  calibrato**: α
   era fissato a 0,25, non c'è stato alcuno split per bersaglio e i pesi non sono stati
   scelti su dati tenuti fuori. Serve solo a dire che il meccanismo di combinazione
   gira su dati veri e che l'ipotesi merita l'esperimento vero.

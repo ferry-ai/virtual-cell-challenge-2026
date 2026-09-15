@@ -27,15 +27,22 @@ divario dichiarato, invece di lasciare un file troncato che somiglia a un artefa
 | Stadio | Lavoro | Tempo | Collo di bottiglia |
 |---|---|---:|---|
 | 40 build_signatures | 3 sorgenti, 2.694 bersagli, 7.492 firme | 254 s | allineamento e I/O HDF5 |
-| 41 transfer_experiment | 3 coppie, 5 fold, 500 bootstrap | 288 s | metriche per bersaglio |
-| 42 null_calibration | 4.800 cellule reali + 4.800 previste, 6 perturbazioni | 392 s | **DE con scanpy** |
+| 41 transfer_experiment | 3 coppie, 5 fold, 500 bootstrap | 288 s † | metriche per bersaglio |
+| 42 null_calibration | 4.800 cellule reali + 4.800 previste, 6 perturbazioni | 392 s † | **DE con scanpy** |
 | 44 calibrate_transfer | 1 coppia, 5 fold esterni × 4 interni, 1.000 bootstrap | 27,6 s | nessuno: tre prodotti scalari per bersaglio |
 | 45 generate_prediction, controllo | 360.000 cellule reali ricampionate | 1.249 s | letture CSR sparse per riga |
 | 45 generate_prediction, trasferimento | 360.000 cellule campionate Poisson | 1.153 s | campionamento e conversione CSR |
 | 46 validate_package, verifica locale | 2,08·10⁹ valori riletti dal file | 58 s + 132 s | decompressione gzip |
 | profilo basale di un contesto | 18.400 cellule, a blocchi | ~9 s | — |
-| test suite | 103 test | 2,4 s | — |
+| test suite | 166 test (103 il 2026-09-12, quando questa riga è stata scritta) | 2,4 s | — |
 | censimento bersagli | 3 file, solo `obs` | 0,13 s | — |
+
+† *Verificato il 2026-09-15: nessun artefatto registra la durata di questi due stadi.*
+`manifest_41_transfer_experiment.json` e `manifest_42_null_calibration_A.json` hanno
+`started_utc` e `finished_utc` a 0,38 s e 0,93 s di distanza, cioè misurano la scrittura
+del manifesto, non l'esecuzione. I due numeri restano plausibili — sono osservazioni di
+console — ma non sono ripetibili da un file, e vanno rimisurati registrando la durata.
+Lo stadio 40 fa eccezione: il suo manifesto copre 250,84 s contro i 254 s riportati qui.
 
 Lo stadio 44 sostituisce lo 41 per la calibrazione dell'ampiezza e costa un decimo del
 tempo: precalcola tre prodotti scalari per bersaglio invece di ricostruire la matrice
@@ -69,7 +76,9 @@ Il vincolo che morde non è il disco, è la RAM. Regole che hanno già evitato u
 esaurimento di memoria:
 
 - **Selezionare i bersagli prima di ingerire.** Una firma è densa su 18.533 geni:
-  9.866 bersagli sarebbero circa 4,7 GB fra Δ e SE. Il censimento che decide costa
+  9.866 bersagli sarebbero circa 2,93 GB fra Δ e SE in float64, 3,11 GB con la
+  maschera (ricalcolato il 2026-09-15: 9.866 × 18.533 × 8 byte × 2; il «4,7 GB» che
+  si leggeva qui non è derivabile da quelle quantità). Il censimento che decide costa
   0,13 s e legge solo `obs`.
 - **Non caricare mai una matrice densa intera.** HepG2 densa è circa 5,6 GB, RPE1 circa
   8,7 GB, entrambe oltre la RAM libera. Lettura a blocchi o *backed*.
@@ -177,7 +186,7 @@ fallito puntando alle firme già calcolate.
 
 **Che cosa spedire avanti e indietro.** Verso il remoto: il repository (piccolo) e i
 percorsi delle fonti; le fonti si scaricano lì, non da qui. Verso casa: la cartella
-`reports/pipeline/` e i manifesti — 116 KB oggi. Le firme (519 MB per il run e001)
+`reports/pipeline/` e i manifesti — 116 KB oggi. Le firme (541,1 MB per il run e001)
 restano dove sono calcolate a meno che non servano localmente.
 
 **Che cosa non deve mai lasciare la macchina.** Credenziali, token VCC, e il contenuto

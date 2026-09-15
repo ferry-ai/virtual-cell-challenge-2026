@@ -25,7 +25,7 @@ Era `trial-01-transfer`; **`trial-00-controls` non è stato inviato** e non va i
 > `vcc prep` continua a non girare qui, ed è documentato in
 > [`q01prep_prep_dry_run.log`](../reports/trial_2026-09-12/q01prep_prep_dry_run.log).
 > Non serve più: le sue convalide sui metadati sono importate e chiamate dal nostro
-> percorso, e la parità sui rifiuti è dimostrata da 41 test su fixture a forma
+> percorso, e la parità sui rifiuti è dimostrata da 46 test su fixture a forma
 > ufficiale completa (D-019).
 >
 > **Il server ha accettato**, il 2026-09-13: la sottomissione è arrivata a `published`

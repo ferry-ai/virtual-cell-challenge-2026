@@ -105,7 +105,7 @@ pseudobulk Replogle in `data_root/external/`.
 # esatti, con i percorsi di questa macchina, stanno in docs/SOTTOMISSIONE.md
 # sezioni 3 e 7.
 
-# Parità del packaging con vcc prep (41 test su fixture a forma ufficiale, 98 s)
+# Parità del packaging con vcc prep (46 test su fixture a forma ufficiale, 98 s)
 .\scripts\py.cmd -m unittest tests.test_packaging_parity
 
 # Contratti
@@ -121,7 +121,8 @@ calcolare le firme una volta e rispedire una sola cartella.
 
 **Perché la selezione dei bersagli viene prima dell'ingestione.** Una firma è densa
 sull'asse ufficiale, quindi la memoria cresce linearmente col numero di bersagli:
-tutte le 9.866 righe di K562 sarebbero circa 4,7 GB fra Δ e SE, su una macchina da
+tutte le 9.866 righe di K562 sarebbero circa 2,93 GB fra Δ e SE in float64 (3,11 GB
+con la maschera), su una macchina da
 7,8 GB. `select_targets` usa un censimento che legge solo `obs` (0,13 s) per decidere
 che cosa materializzare. Il default `panel+shared` tiene il pannello più ogni bersaglio
 misurato da almeno due fonti — cioè esattamente l'insieme su cui il trasferimento si
@@ -160,7 +161,7 @@ uno split a livello di cellula sottostimerebbe il pavimento di falsi positivi.
 - **Non allena un modello generativo di conteggi.** Deliberatamente: prima una stima
   di risposta calibrata e onestamente validata. Il generatore di conteggi è un
   campionatore Poisson dal profilo previsto, e il suo artefatto è misurato, non
-  assunto: 4–6% di geni rilevati in più dei controlli reali anche a effetto previsto
+  assunto: 2,1–6,3% di geni rilevati in più dei controlli reali anche a effetto previsto
   zero ([CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.8).
 - **Impacchetta**, dallo stadio 48, senza materializzare la matrice: 0,519 GiB di
   picco contro i 33,49 che il modello della CLI attribuisce a `vcc prep`
