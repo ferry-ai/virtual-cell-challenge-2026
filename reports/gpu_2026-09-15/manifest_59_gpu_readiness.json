@@ -1,0 +1,59 @@
+{
+  "run_id": "gpu_2026-09-15",
+  "stage": "59_gpu_readiness",
+  "started_utc": "2026-09-14T22:48:37.935011+00:00",
+  "finished_utc": "2026-09-14T22:48:37.986884+00:00",
+  "seed": 2026,
+  "config": {
+    "out": "reports\\gpu_2026-09-15",
+    "n_rows": "320",
+    "n_genes": "6477",
+    "n_features": "199",
+    "rank": "16",
+    "seed": "2026",
+    "allow_overwrite": "True"
+  },
+  "inputs": {},
+  "outputs": {
+    "report": {
+      "path": "reports\\gpu_2026-09-15\\gpu_readiness.json",
+      "exists": true,
+      "bytes": 6101,
+      "mtime_utc": "2026-09-14T22:48:37.934011+00:00",
+      "sha256": "20e1ee06c6e7428f89b37415f8d52a1168afeddac5eb13a477faa111f0678ab3",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "cuda_available": false,
+    "torch_installed": false,
+    "gpudge_installed": false,
+    "pdex_installed": false,
+    "seconds_of_fit_per_arm_pair": 1.3078185500053223
+  },
+  "notes": [
+    "Owning a GPU is not the same as using one."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:/Users/ferra/vcc2026-data"
+    }
+  }
+}

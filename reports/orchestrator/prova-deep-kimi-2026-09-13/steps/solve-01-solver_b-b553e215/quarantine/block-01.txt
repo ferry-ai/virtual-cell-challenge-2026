@@ -1,0 +1,19 @@
+import numpy as np
+
+def summarize_paired(loss_a, loss_b):
+    a = np.asarray(loss_a, dtype=float)
+    b = np.asarray(loss_b, dtype=float)
+    if a.shape != b.shape:
+        raise ValueError("loss_a e loss_b devono avere la stessa forma e lo stesso ordinamento dei case_id")
+    mask = np.isfinite(a) & np.isfinite(b)
+    av, bv = a[mask], b[mask]
+    d = av - bv  # <0 significa A migliore, dato che loss più bassa è migliore
+    return {
+        "n_used": int(mask.sum()),
+        "n_dropped": int((~mask).sum()),
+        "mean_a": float(av.mean()) if mask.any() else float("nan"),
+        "mean_b": float(bv.mean()) if mask.any() else float("nan"),
+        "delta_a_minus_b": float(d.mean()) if mask.any() else float("nan"),
+        "winner": ("A" if d.mean() < 0 else "B" if d.mean() > 0 else "tie") if mask.any() else "undefined",
+        "paired_deltas": d.tolist(),
+    }

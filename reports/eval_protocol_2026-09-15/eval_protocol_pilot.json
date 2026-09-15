@@ -1,0 +1,364 @@
+{
+  "protocol": {
+    "version": "1",
+    "updated": "2026-09-15",
+    "frozen": true,
+    "run_id_prefix": "p001",
+    "primary_metric_space": "six VCC metrics, raw, when a single-cell bundle with real NTC exists; otherwise pseudobulk log2FC proxy, labelled not_a_vcc_score",
+    "do_not_average_raw_metrics": true,
+    "forbidden_trial_alpha": 0.1974,
+    "protocols": [
+      "new_context_seen_target",
+      "new_context_unseen_target"
+    ],
+    "unseen_target": {
+      "query_ntc_allowed": true,
+      "query_perturbed_responses_forbidden": true,
+      "guides_of_a_target_stay_together": true,
+      "donors_and_batches_preserved": true,
+      "deduplicate_before_split": true
+    },
+    "development": {
+      "seeds": [
+        2026,
+        2027
+      ],
+      "note": "Already used for model and source choices. Includes the three-context folds of 2026-09-14 and the HepG2 generator\u00d7predictor experiment.",
+      "previous_runs": [
+        "m001",
+        "m002",
+        "m003",
+        "m004",
+        "g001",
+        "g002",
+        "s001",
+        "s002",
+        "r001"
+      ]
+    },
+    "confirmation": {
+      "seed": 4242,
+      "reserved": true,
+      "note": "Not yet used. Do not open this seed until the candidate is frozen. Three cell lines still do not support a claim about all tissues."
+    },
+    "amplitude": {
+      "calibrate_on": "training_and_inner_validation_only",
+      "allowed": [
+        "closed_form_least_squares_within_training",
+        "predetermined_heuristic"
+      ],
+      "forbidden": [
+        0.1974
+      ],
+      "never_reuse_trial_alpha_as_universal_constant": true
+    },
+    "comparators": {
+      "diagnostic_null": true,
+      "mean_train_response": true,
+      "shrunk_transfer": true,
+      "one_simple_candidate": true,
+      "official_mean_perturbation_is_anchor_not_predictor": true
+    },
+    "generator_x_predictor": {
+      "predictors": [
+        null,
+        "shrunk_transfer"
+      ],
+      "generators": [
+        "current",
+        "ntc_anchored"
+      ],
+      "paired_targets_and_sampling_seed": true,
+      "null_checks_spurious_de_and_basal_shift": true
+    },
+    "anchors": {
+      "local": true,
+      "cells_disjoint_between_replicate_halves": true,
+      "ntc_of_each_half_are_that_halfs_controls": true,
+      "no_tuning_on_test_anchors": true,
+      "if_denominator_unstable": "report_raw_metrics_and_uncertainty"
+    },
+    "bootstrap": {
+      "unit": "target",
+      "paired": true,
+      "separate_per_context": true,
+      "n_boot": 200,
+      "seeds_are_not_biological_replicates": true,
+      "three_lines_do_not_support_a_tissue_general_claim": true
+    },
+    "promotion": {
+      "requires_confirmation_not_used_for_selection": true,
+      "paired_ci95_of_candidate_minus_baseline_entirely_favourable": true,
+      "harm_beyond_tolerance_blocks_promotion": true,
+      "missing_stable_anchors_or_independent_confirmation": "exploratory",
+      "no_invented_leaderboard_target": true
+    },
+    "scorer": {
+      "package": "cell-eval2",
+      "expected_version": "0.16.0",
+      "record_backend_beside_every_number": true,
+      "metrics": [
+        "pds_cosine",
+        "expr_mse_unbiased_capped_norm",
+        "de_wilcoxon_lfc_nmae",
+        "de_wilcoxon_direction_fidelity_yield_raw",
+        "de_wilcoxon_direction_reach_raw",
+        "de_wilcoxon_sig_jaccard"
+      ]
+    }
+  },
+  "split_audit": {
+    "directory": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\benchmark_3ctx_2026-09-14\\splits",
+    "n": 12,
+    "n_fail": 0,
+    "n_development": 12,
+    "n_confirmation": 0,
+    "rows": [
+      {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\benchmark_3ctx_2026-09-14\\splits\\new_context_seen_target_k562_hepg2_to_rpe1_seed2026.json",
+        "protocol": "new_context_seen_target",
+        "direction_id": "k562_hepg2_to_rpe1",
+        "seed": 2026,
+        "n_train_targets": 160,
+        "n_test_targets": 160,
+        "n_inner_val_targets": 32,
+        "findings": [],
+        "ok": true,
+        "not_a_vcc_score": true,
+        "role": "development"
+      },
+      {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\benchmark_3ctx_2026-09-14\\splits\\new_context_seen_target_k562_hepg2_to_rpe1_seed2027.json",
+        "protocol": "new_context_seen_target",
+        "direction_id": "k562_hepg2_to_rpe1",
+        "seed": 2027,
+        "n_train_targets": 160,
+        "n_test_targets": 160,
+        "n_inner_val_targets": 32,
+        "findings": [],
+        "ok": true,
+        "not_a_vcc_score": true,
+        "role": "development"
+      },
+      {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\benchmark_3ctx_2026-09-14\\splits\\new_context_seen_target_k562_rpe1_to_hepg2_seed2026.json",
+        "protocol": "new_context_seen_target",
+        "direction_id": "k562_rpe1_to_hepg2",
+        "seed": 2026,
+        "n_train_targets": 160,
+        "n_test_targets": 160,
+        "n_inner_val_targets": 32,
+        "findings": [],
+        "ok": true,
+        "not_a_vcc_score": true,
+        "role": "development"
+      },
+      {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\benchmark_3ctx_2026-09-14\\splits\\new_context_seen_target_k562_rpe1_to_hepg2_seed2027.json",
+        "protocol": "new_context_seen_target",
+        "direction_id": "k562_rpe1_to_hepg2",
+        "seed": 2027,
+        "n_train_targets": 160,
+        "n_test_targets": 160,
+        "n_inner_val_targets": 32,
+        "findings": [],
+        "ok": true,
+        "not_a_vcc_score": true,
+        "role": "development"
+      },
+      {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\benchmark_3ctx_2026-09-14\\splits\\new_context_seen_target_rpe1_hepg2_to_k562_seed2026.json",
+        "protocol": "new_context_seen_target",
+        "direction_id": "rpe1_hepg2_to_k562",
+        "seed": 2026,
+        "n_train_targets": 160,
+        "n_test_targets": 160,
+        "n_inner_val_targets": 32,
+        "findings": [],
+        "ok": true,
+        "not_a_vcc_score": true,
+        "role": "development"
+      },
+      {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\benchmark_3ctx_2026-09-14\\splits\\new_context_seen_target_rpe1_hepg2_to_k562_seed2027.json",
+        "protocol": "new_context_seen_target",
+        "direction_id": "rpe1_hepg2_to_k562",
+        "seed": 2027,
+        "n_train_targets": 160,
+        "n_test_targets": 160,
+        "n_inner_val_targets": 32,
+        "findings": [],
+        "ok": true,
+        "not_a_vcc_score": true,
+        "role": "development"
+      },
+      {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\benchmark_3ctx_2026-09-14\\splits\\new_context_unseen_target_k562_hepg2_to_rpe1_seed2026.json",
+        "protocol": "new_context_unseen_target",
+        "direction_id": "k562_hepg2_to_rpe1",
+        "seed": 2026,
+        "n_train_targets": 112,
+        "n_test_targets": 48,
+        "n_inner_val_targets": 22,
+        "findings": [],
+        "ok": true,
+        "not_a_vcc_score": true,
+        "role": "development"
+      },
+      {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\benchmark_3ctx_2026-09-14\\splits\\new_context_unseen_target_k562_hepg2_to_rpe1_seed2027.json",
+        "protocol": "new_context_unseen_target",
+        "direction_id": "k562_hepg2_to_rpe1",
+        "seed": 2027,
+        "n_train_targets": 112,
+        "n_test_targets": 48,
+        "n_inner_val_targets": 22,
+        "findings": [],
+        "ok": true,
+        "not_a_vcc_score": true,
+        "role": "development"
+      },
+      {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\benchmark_3ctx_2026-09-14\\splits\\new_context_unseen_target_k562_rpe1_to_hepg2_seed2026.json",
+        "protocol": "new_context_unseen_target",
+        "direction_id": "k562_rpe1_to_hepg2",
+        "seed": 2026,
+        "n_train_targets": 112,
+        "n_test_targets": 48,
+        "n_inner_val_targets": 22,
+        "findings": [],
+        "ok": true,
+        "not_a_vcc_score": true,
+        "role": "development"
+      },
+      {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\benchmark_3ctx_2026-09-14\\splits\\new_context_unseen_target_k562_rpe1_to_hepg2_seed2027.json",
+        "protocol": "new_context_unseen_target",
+        "direction_id": "k562_rpe1_to_hepg2",
+        "seed": 2027,
+        "n_train_targets": 112,
+        "n_test_targets": 48,
+        "n_inner_val_targets": 22,
+        "findings": [],
+        "ok": true,
+        "not_a_vcc_score": true,
+        "role": "development"
+      },
+      {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\benchmark_3ctx_2026-09-14\\splits\\new_context_unseen_target_rpe1_hepg2_to_k562_seed2026.json",
+        "protocol": "new_context_unseen_target",
+        "direction_id": "rpe1_hepg2_to_k562",
+        "seed": 2026,
+        "n_train_targets": 112,
+        "n_test_targets": 48,
+        "n_inner_val_targets": 22,
+        "findings": [],
+        "ok": true,
+        "not_a_vcc_score": true,
+        "role": "development"
+      },
+      {
+        "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\benchmark_3ctx_2026-09-14\\splits\\new_context_unseen_target_rpe1_hepg2_to_k562_seed2027.json",
+        "protocol": "new_context_unseen_target",
+        "direction_id": "rpe1_hepg2_to_k562",
+        "seed": 2027,
+        "n_train_targets": 112,
+        "n_test_targets": 48,
+        "n_inner_val_targets": 22,
+        "findings": [],
+        "ok": true,
+        "not_a_vcc_score": true,
+        "role": "development"
+      }
+    ],
+    "previous_runs_are_development": [
+      "m001",
+      "m002",
+      "m003",
+      "m004",
+      "g001",
+      "g002",
+      "s001",
+      "s002",
+      "r001",
+      "e001",
+      "e002",
+      "e003",
+      "c001",
+      "c002",
+      "trial-01"
+    ],
+    "claim": "measured"
+  },
+  "anchors": {
+    "n_targets": 1,
+    "n_genes": 9624,
+    "metric_space": "pseudobulk_log2FC_proxy",
+    "not_a_vcc_score": true,
+    "anchor_uses_query_ground_truth": true,
+    "not_a_deployable_predictor": true,
+    "replicate": {
+      "n_targets": 1,
+      "n_genes": 9624,
+      "pooled_mse": 0.18228438697894317,
+      "pooled_mse_null": 0.05549390763870738,
+      "pooled_mse_vs_null": 3.2847639450028305,
+      "metric_space": "pseudobulk_log2FC_proxy",
+      "not_a_vcc_score": true,
+      "pearson_median": 0.07663530889945988,
+      "pearson_mean": 0.07663530889945988,
+      "spearman_median": 0.06310848954747054,
+      "spearman_mean": 0.06310848954747054,
+      "cosine_median": 0.28704922280486916,
+      "cosine_mean": 0.28704922280486916,
+      "mse_median": 0.18228438697894317,
+      "mse_mean": 0.18228438697894317,
+      "sign_agreement_median": 0.6090937467485174,
+      "sign_agreement_mean": 0.6090937467485174,
+      "sign_agreement_strong_median": 0.7934131736526946,
+      "sign_agreement_strong_mean": 0.7934131736526946,
+      "mse_vs_null_median": 3.28476394500283,
+      "mse_vs_null_mean": 3.28476394500283
+    },
+    "mean_perturbation_baseline": {
+      "n_targets": 1,
+      "n_genes": 9624,
+      "pooled_mse": NaN,
+      "pooled_mse_null": 0.05549390763870738,
+      "pooled_mse_vs_null": NaN,
+      "metric_space": "pseudobulk_log2FC_proxy",
+      "not_a_vcc_score": true,
+      "pearson_median": null,
+      "pearson_mean": null,
+      "spearman_median": null,
+      "spearman_mean": null,
+      "cosine_median": null,
+      "cosine_mean": null,
+      "mse_median": null,
+      "mse_mean": null,
+      "sign_agreement_median": null,
+      "sign_agreement_mean": null,
+      "sign_agreement_strong_median": null,
+      "sign_agreement_strong_mean": null,
+      "mse_vs_null_median": null,
+      "mse_vs_null_mean": null
+    },
+    "replicate_minus_baseline_pooled": {
+      "n": 0,
+      "skipped": "too few paired targets",
+      "key": "pooled_mse_vs_null",
+      "aggregation": "paired_pooled_ratio_difference"
+    },
+    "targets": [
+      "TFAM"
+    ],
+    "claim": "measured",
+    "h5ad": "C:\\Users\\ferra\\vcc2026-data\\raw\\nadig_hepg2\\NadigOConner2024_hepg2.h5ad",
+    "n_cells_read": 91,
+    "min_cells_per_half": 10
+  },
+  "anchors_error": null,
+  "development_note": "These HepG2 cells and the 2026/2027 splits are development. Confirmation seed 4242 has not been opened.",
+  "not_a_vcc_score": true,
+  "claim": "measured"
+}

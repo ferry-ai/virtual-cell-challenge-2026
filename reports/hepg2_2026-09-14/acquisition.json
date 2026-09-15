@@ -1,0 +1,57 @@
+{
+  "source_id": "nadig_hepg2",
+  "acquired_utc": "2026-09-14T20:14:00Z",
+  "acquired_by": "scripts run in this working session; curl -L -C - (resumable)",
+  "endpoint": {
+    "url": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_hepg2.h5ad/content",
+    "found_in": "reports/grok_verification/scperturb_zenodo.txt (Zenodo record cached 2026-09-12)",
+    "reverified_live_utc": "2026-09-14T20:05:00Z",
+    "live_check": "GET https://zenodo.org/api/records/13350497 returned HTTP 200; the file entry matched the cached record byte for byte",
+    "range_request_status": 206,
+    "resumable": true
+  },
+  "record": {
+    "zenodo_record": 13350497,
+    "doi": "10.5281/zenodo.13350497",
+    "concept_doi": "10.5281/zenodo.7041848",
+    "title": "scPerturb Single-Cell Perturbation Data: RNA and protein h5ad files",
+    "license_id": "cc-by-4.0",
+    "license_scope": "declared on the Zenodo record for the collection; compatibility with competition rules is recorded, not verified",
+    "file_key": "NadigOConner2024_hepg2.h5ad"
+  },
+  "bytes": {
+    "declared_by_publisher": 850590740,
+    "received": 850590740,
+    "match": true
+  },
+  "digests": {
+    "md5_declared_by_publisher": "af2be47f7477cf32fa6e4bec1c6a4868",
+    "md5_computed": "af2be47f7477cf32fa6e4bec1c6a4868",
+    "md5_match": true,
+    "sha256_computed": "see reports/hepg2_2026-09-14/nadig_hepg2_audit.json -> verified.digests.sha256"
+  },
+  "destination": {
+    "path": "C:/Users/ferra/vcc2026-data/raw/nadig_hepg2/NadigOConner2024_hepg2.h5ad",
+    "outside_onedrive": true,
+    "reason": "D-001: the repository lives inside OneDrive; data never does",
+    "overwrote_nothing": true
+  },
+  "disk": {
+    "free_before_bytes_approx": 15032385536,
+    "free_after_bytes_approx": 14200000000,
+    "note": "df reported 14 GiB free before and after at 1 GiB resolution; the download is 0.85 GB and D-005 asks for >= 10 GiB free, which holds"
+  },
+  "provenance": {
+    "upstream_experiment": "Nadig, O'Conner et al. 2024/2025, CRISPRi Perturb-seq in HepG2",
+    "primary_archive": "GEO GSE264667, file GSE264667_hepg2_raw_singlecell_01.h5ad (5.2 GB, uncompressed h5ad)",
+    "why_the_mirror": "the scPerturb mirror is the same experiment, gzip-compressed to 0.85 GB. Taking the GEO copy would have left 8.8 GiB free, under the 10 GiB floor of D-005",
+    "mirror_is_not_independent": "a mirror is a copy of an experiment, not a second experiment; the two must never be summed or treated as replication",
+    "schema_may_differ_from_probe": "confirmed: the 2026-09-12 probe of the GEO file recorded obs.gene == 'non-targeting' for controls, while this harmonised mirror labels them obs.perturbation == 'control'. The probe's shape (145,473 x 9,624) and NTC count (4,976) do match."
+  },
+  "not_downloaded": [
+    "GSE264667_RAW.tar (15 GB)",
+    "GSE264667_jurkat_raw_singlecell_01.h5ad / NadigOConner2024_jurkat.h5ad (1.29 GB mirror)",
+    "rpe1_singlecell (figshare, 1.24 GB)"
+  ],
+  "paid_services_used": "none"
+}

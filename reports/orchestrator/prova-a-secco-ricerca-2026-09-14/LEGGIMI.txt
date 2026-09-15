@@ -1,0 +1,65 @@
+Prova a secco della modalita' scientific_research dell'orchestratore.
+Eseguita il 2026-09-14. NESSUN SERVIZIO ESTERNO E' STATO CONTATTATO.
+
+Che cos'e'
+----------
+Una campagna di ricerca a tre fasi (ricerca indipendente, confronto e piste,
+approfondimento e sintesi) fatta girare per intero con risposte scritte a mano, che
+stanno in configs/orchestrator/rehearsal/ricerca-collaudo/. Serve a dimostrare il motore,
+il contratto, la scelta delle piste, il dossier e il rapporto -- NON gli adattatori verso
+DeepSeek e Kimi, che in questa prova non sono stati toccati.
+
+Comando riproducibile:
+
+  set VCC2026_ORCH_ROOT=%TEMP%\orch-ricerca-prova
+  .\scripts\orch.cmd --config configs/orchestrator/offline-ricerca.yaml ^
+      start --brief configs/orchestrator/briefs/ricerca-collaudo.yaml
+
+I CONTENUTI DELLE RISPOSTE SONO INVENTATI. I DOI hanno prefisso 10.0000/finta- e le
+accessioni GEO non esistono. Il rapporto `ricerca.md` non e' un esito di ricerca su
+Perturb-seq: e' la forma che avra' un esito di ricerca.
+
+Che cosa e' stato misurato
+--------------------------
+run 20260914T022455Z-ricerca-collaudo-v1-1485b2, esito `unresolved_disagreement`.
+
+  6 risposte principali (3 fasi x 2 worker), 1 riparazione di formato,
+  7 invii totali, 0 doppi invii su una seconda esecuzione dello stesso run.
+  4 documenti distinti dai 6 record di fonte presenti nelle risposte, 13 ricerche
+  registrate di cui 5 dichiarate eseguite e 4 mai eseguite, 3 contraddizioni aperte
+  (2 dichiarate, 1 derivata), 9 lacune, 2 piste selezionate su 5 proposte.
+  Tutti questi numeri si rileggono da dossier.json.
+
+Gli otto scenari e dove si vedono nel rapporto
+----------------------------------------------
+  1. stesso paper trovato da entrambi     -> sezione 2, F-b558b4be5b, "trovata da
+                                             solver_a, solver_b", DOI scritto nei due modi
+  2. fonte non accessibile                -> sezione 2, F-7a0575bb0e, "non accessibile"
+  3. query proposta e non eseguita        -> sezione 2 e sezione 6, provenienza "proposta"
+  4. contraddizione che resta aperta      -> sezione 5, tutte con stato aperto, ed e' il
+                                             motivo dell'esito
+  5. ipotesi nuova data per risultato     -> sezione 3, "Attribuzioni da guardare",
+                                             C-0a77cddf88
+  6. richiesta di superare il budget      -> sezione 8, richiesta registrata, piu' i
+                                             campi max_rounds e budget scartati
+  7. fase senza evidenze nuove            -> appendice A, solver_b fase 3, con la
+                                             dichiarazione di saturazione in sezione 5
+  8. errore di formato e ripresa          -> appendice B, il passo unparsed accanto alla
+                                             sua riparazione; events.jsonl conta 7 invii
+
+Due difetti trovati da questa prova, e corretti
+-----------------------------------------------
+  - Una risposta riparata non veniva riconosciuta alla ripresa: il motore trovava il
+    primo tentativo illeggibile, smetteva di cercare, e proseguiva come se quel modello
+    non avesse mai risposto. Riguardava anche il ciclo di debug.
+  - Due piste con ipotesi corte si fondevano per somiglianza testuale ("pista di A" e
+    "pista di B" danno 0,90), dimezzando in silenzio la fase 3. Ora sotto i 60 caratteri
+    si fondono solo per uguaglianza esatta.
+
+Che cosa questa prova NON dimostra
+----------------------------------
+  - che DeepSeek o Kimi rispondano a un prompt di ricerca;
+  - che l'interruttore di ricerca si accenda davvero su un'interfaccia reale:
+    l'adattatore scriptato non impone e non verifica nessuna modalita';
+  - che le distinzioni di provenienza reggano su risposte vere, che nessuno ha ancora
+    visto. Reggono su risposte costruite per metterle alla prova, il che e' meno.

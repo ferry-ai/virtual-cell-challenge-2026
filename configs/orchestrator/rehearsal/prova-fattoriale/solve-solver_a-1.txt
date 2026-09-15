@@ -1,0 +1,29 @@
+Conto quanti fattori 5 stanno in 100!, perche' gli zeri finali sono il minimo fra il
+numero di fattori 2 e il numero di fattori 5, e i 2 abbondano sempre.
+
+Regola di Legendre: v_5(n!) = somma su k>=1 di floor(n / 5^k).
+
+Per n = 100:
+  100 / 5   = 20   (i multipli di 5)
+  100 / 25  = 4    (i multipli di 25 portano un secondo fattore 5)
+  100 / 125 = 0    (si ferma qui)
+Totale 20 + 4 = 24.
+
+RISULTATO: 24
+
+ORCH-RESULT-V1
+```json
+{
+  "summary": "100! finisce con 24 zeri, per la regola di Legendre sui fattori 5.",
+  "proposal": "Gli zeri finali di n! sono v_5(n!) = somma_k floor(n/5^k), perche' i fattori 2 sono sempre piu' dei fattori 5.\nPer n = 100: 100 / 5 = 20, 100 / 25 = 4, 100 / 125 = 0.\nTotale 20 + 4 = 24.\n\nRISULTATO: 24",
+  "evidence": [
+    {"claim": "v_5(100!) = 20 + 4 = 24", "support": "regola di Legendre applicata a mano", "type": "derived"},
+    {"claim": "i fattori 2 in 100! sono 97, quindi non sono il vincolo", "support": "97 = 50+25+12+6+3+1", "type": "derived"}
+  ],
+  "objections": [],
+  "resolved_objections": [],
+  "checks_suggested": [{"criterion": "C1", "how": "contare a mano i multipli di 5 e di 25 fino a 100"}],
+  "open_questions": [],
+  "confidence": "high"
+}
+```

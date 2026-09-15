@@ -1,0 +1,489 @@
+{
+  "built_utc": "2026-09-14T21:30:08.253860+00:00",
+  "context": "HepG2",
+  "design": "2 generators x predictors (arms found + a null floor)",
+  "real_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle_v2\\real_hepg2.h5ad",
+  "n_targets": 25,
+  "targets": [
+    "CCND1",
+    "CDC73",
+    "DBR1",
+    "DDX54",
+    "DYNC1I2",
+    "GRB2",
+    "HAMP",
+    "HIPK1",
+    "IK",
+    "MCM10",
+    "MDN1",
+    "MED11",
+    "MED14",
+    "MYBL2",
+    "NOMO3",
+    "POLR2I",
+    "PRPF18",
+    "QRSL1",
+    "RBM28",
+    "RFC3",
+    "RPL29",
+    "SYMPK",
+    "THRAP3",
+    "TWF1",
+    "WDR33"
+  ],
+  "cells_per_target": 40,
+  "n_ntc_cells": 400,
+  "target_selection": "the held-out fold's own test targets, filtered only by having enough cells to sample, then a seeded random subset. Never filtered by effect size.",
+  "gene_axis": {
+    "axis_used": "the source's own 9,624 genes, shared by prediction and truth",
+    "n_genes": 9624,
+    "n_on_official_axis": 9023,
+    "note": "this is a local comparison; the official 18,533-gene axis is not reconstructed and no leaderboard score is produced"
+  },
+  "prediction_coverage_mean": 0.937551953449709,
+  "scorer": {
+    "expected_cell_eval2": "0.16.0",
+    "cell_eval2": "0.16.0",
+    "vcc_cli": "0.2.0",
+    "matches_decision_D008": true,
+    "de_backends_available": {
+      "pdex": null,
+      "gpudge": null,
+      "cuda_available": false
+    },
+    "de_backend_resolved": "scanpy",
+    "de_backend_note": "de.backend='auto' picks gpudge (CUDA) > pdex > scanpy. The engines do not agree exactly, so a DE-based metric is only comparable across runs that resolved the same backend. Record it beside every number."
+  },
+  "normalisation": {
+    "anchors_used": false,
+    "why": "there are no published baseline/reference anchors for an external dataset; raw aggregates only, explicitly distinct from a VCC score"
+  },
+  "results": [
+    {
+      "predictor": "modular_frozen",
+      "generator": "current_poisson_pooled",
+      "metrics_raw": {
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.43932146617016704,
+        "de_wilcoxon_direction_reach_raw": 0.24283082676509746,
+        "de_wilcoxon_lfc_nmae": 0.879367547666518,
+        "de_wilcoxon_sig_jaccard": 0.023205930505784282,
+        "expr_distance_unbiased": 0.013916356839341733,
+        "expr_mse_unbiased": 0.015589740870114348,
+        "expr_mse_unbiased_capped": 0.01635039129332535,
+        "expr_mse_unbiased_capped_norm": 1.174904573235904,
+        "expr_real_mass_ratio": 1.0,
+        "pds_cosine": 0.49833333333333335
+      },
+      "by_metric": {
+        "expr_real_mass_ratio": {
+          "mean": 1.0,
+          "median": 1.0,
+          "n_finite": 25
+        },
+        "expr_distance_unbiased": {
+          "mean": 0.013916356839341733,
+          "median": 0.00899263971940766,
+          "n_finite": 25
+        },
+        "de_wilcoxon_sig_jaccard": {
+          "mean": 0.023205930505784286,
+          "median": 0.01824817518248175,
+          "n_finite": 25
+        },
+        "de_wilcoxon_direction_reach_raw": {
+          "mean": 0.24283082676509746,
+          "median": 0.21624442758463375,
+          "n_finite": 22
+        },
+        "de_wilcoxon_direction_fidelity_yield_raw": {
+          "mean": 0.43932146617016715,
+          "median": 0.49473684210526314,
+          "n_finite": 25
+        },
+        "expr_mse_unbiased": {
+          "mean": 0.015589740870114346,
+          "median": 0.011205499494663816,
+          "n_finite": 25
+        },
+        "de_wilcoxon_lfc_nmae": {
+          "mean": 0.879367547666518,
+          "median": 0.8824777358232638,
+          "n_finite": 13
+        },
+        "pds_cosine": {
+          "mean": 0.4983333333333333,
+          "median": 0.5,
+          "n_finite": 25
+        },
+        "expr_mse_unbiased_capped": {
+          "mean": 0.01635039129332535,
+          "median": 0.012085782115060867,
+          "n_finite": 25
+        }
+      },
+      "all_six_present": true,
+      "all_six_aggregated": true,
+      "aggregate_error": null,
+      "normalized": false,
+      "prediction_source": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\m003\\models\\new_context_seen_target_k562_rpe1_to_hepg2_seed2026\\modular_frozen.predictions.npz",
+      "median_compositional_shift_log2": 0.052928508222083843,
+      "pred_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle_v2\\pred_modular_frozen_current_poisson_pooled.h5ad"
+    },
+    {
+      "predictor": "modular_frozen",
+      "generator": "ntc_anchored",
+      "metrics_raw": {
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.37316868220863136,
+        "de_wilcoxon_direction_reach_raw": 0.18836284504424802,
+        "de_wilcoxon_lfc_nmae": 0.8729587230435144,
+        "de_wilcoxon_sig_jaccard": 0.013790212438526931,
+        "expr_distance_unbiased": 0.013916356839341733,
+        "expr_mse_unbiased": 0.014395236309106815,
+        "expr_mse_unbiased_capped": 0.01590907947426391,
+        "expr_mse_unbiased_capped_norm": 1.1431928383216445,
+        "expr_real_mass_ratio": 1.0,
+        "pds_cosine": 0.5183333333333333
+      },
+      "by_metric": {
+        "expr_mse_unbiased": {
+          "mean": 0.014395236309106815,
+          "median": 0.010438593348070943,
+          "n_finite": 25
+        },
+        "pds_cosine": {
+          "mean": 0.5183333333333333,
+          "median": 0.45833333333333337,
+          "n_finite": 25
+        },
+        "de_wilcoxon_lfc_nmae": {
+          "mean": 0.8729587230435146,
+          "median": 0.877071157353381,
+          "n_finite": 13
+        },
+        "expr_distance_unbiased": {
+          "mean": 0.013916356839341733,
+          "median": 0.00899263971940766,
+          "n_finite": 25
+        },
+        "de_wilcoxon_direction_fidelity_yield_raw": {
+          "mean": 0.37316868220863136,
+          "median": 0.26881720430107525,
+          "n_finite": 25
+        },
+        "expr_real_mass_ratio": {
+          "mean": 1.0,
+          "median": 1.0,
+          "n_finite": 25
+        },
+        "de_wilcoxon_direction_reach_raw": {
+          "mean": 0.18836284504424802,
+          "median": 0.16269841269841268,
+          "n_finite": 22
+        },
+        "expr_mse_unbiased_capped": {
+          "mean": 0.015909079474263906,
+          "median": 0.013211148634887229,
+          "n_finite": 25
+        },
+        "de_wilcoxon_sig_jaccard": {
+          "mean": 0.01379021243852693,
+          "median": 0.006042296072507553,
+          "n_finite": 25
+        }
+      },
+      "all_six_present": true,
+      "all_six_aggregated": true,
+      "aggregate_error": null,
+      "normalized": false,
+      "prediction_source": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\m003\\models\\new_context_seen_target_k562_rpe1_to_hepg2_seed2026\\modular_frozen.predictions.npz",
+      "median_compositional_shift_log2": 0.052928508222083843,
+      "pred_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle_v2\\pred_modular_frozen_ntc_anchored.h5ad"
+    },
+    {
+      "predictor": "null_no_change",
+      "generator": "current_poisson_pooled",
+      "metrics_raw": {
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.2431677689129345,
+        "de_wilcoxon_direction_reach_raw": 0.10679720368512734,
+        "de_wilcoxon_lfc_nmae": 1.036418801205981,
+        "de_wilcoxon_sig_jaccard": 0.003185827667741027,
+        "expr_distance_unbiased": 0.013916356839341733,
+        "expr_mse_unbiased": 0.01525026503608816,
+        "expr_mse_unbiased_capped": 0.016054116490269818,
+        "expr_mse_unbiased_capped_norm": 1.1536148918576596,
+        "expr_real_mass_ratio": 1.0,
+        "pds_cosine": 0.425
+      },
+      "by_metric": {
+        "de_wilcoxon_lfc_nmae": {
+          "mean": 1.0364188012059807,
+          "median": 1.027466325195367,
+          "n_finite": 13
+        },
+        "expr_mse_unbiased_capped": {
+          "mean": 0.016054116490269818,
+          "median": 0.011221720242602585,
+          "n_finite": 25
+        },
+        "de_wilcoxon_sig_jaccard": {
+          "mean": 0.003185827667741027,
+          "median": 0.0,
+          "n_finite": 25
+        },
+        "expr_real_mass_ratio": {
+          "mean": 1.0,
+          "median": 1.0,
+          "n_finite": 25
+        },
+        "de_wilcoxon_direction_reach_raw": {
+          "mean": 0.10679720368512734,
+          "median": 0.0,
+          "n_finite": 22
+        },
+        "pds_cosine": {
+          "mean": 0.425,
+          "median": 0.41666666666666663,
+          "n_finite": 25
+        },
+        "de_wilcoxon_direction_fidelity_yield_raw": {
+          "mean": 0.24316776891293454,
+          "median": 0.10714285714285714,
+          "n_finite": 25
+        },
+        "expr_mse_unbiased": {
+          "mean": 0.01525026503608816,
+          "median": 0.010393057117646261,
+          "n_finite": 25
+        },
+        "expr_distance_unbiased": {
+          "mean": 0.013916356839341733,
+          "median": 0.00899263971940766,
+          "n_finite": 25
+        }
+      },
+      "all_six_present": true,
+      "all_six_aggregated": true,
+      "aggregate_error": null,
+      "normalized": false,
+      "prediction_source": "constructed here: delta = 0 for every target",
+      "median_compositional_shift_log2": 0.0,
+      "pred_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle_v2\\pred_null_no_change_current_poisson_pooled.h5ad"
+    },
+    {
+      "predictor": "null_no_change",
+      "generator": "ntc_anchored",
+      "metrics_raw": {
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.0,
+        "de_wilcoxon_direction_reach_raw": 0.09520085601755988,
+        "de_wilcoxon_lfc_nmae": 1.034746580834283,
+        "de_wilcoxon_sig_jaccard": 0.12,
+        "expr_distance_unbiased": 0.013916356839341733,
+        "expr_mse_unbiased": 0.01483781195437043,
+        "expr_mse_unbiased_capped": 0.015801574739807894,
+        "expr_mse_unbiased_capped_norm": 1.1354677752396107,
+        "expr_real_mass_ratio": 1.0,
+        "pds_cosine": 0.49166666666666664
+      },
+      "by_metric": {
+        "de_wilcoxon_direction_fidelity_yield_raw": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n_finite": 22
+        },
+        "de_wilcoxon_lfc_nmae": {
+          "mean": 1.034746580834283,
+          "median": 1.0135353749609177,
+          "n_finite": 13
+        },
+        "expr_distance_unbiased": {
+          "mean": 0.013916356839341733,
+          "median": 0.00899263971940766,
+          "n_finite": 25
+        },
+        "expr_mse_unbiased": {
+          "mean": 0.01483781195437043,
+          "median": 0.00722461722377365,
+          "n_finite": 25
+        },
+        "de_wilcoxon_sig_jaccard": {
+          "mean": 0.12,
+          "median": 0.0,
+          "n_finite": 25
+        },
+        "de_wilcoxon_direction_reach_raw": {
+          "mean": 0.09520085601755988,
+          "median": 0.0011592112961936964,
+          "n_finite": 22
+        },
+        "expr_mse_unbiased_capped": {
+          "mean": 0.015801574739807894,
+          "median": 0.008184948806720847,
+          "n_finite": 25
+        },
+        "pds_cosine": {
+          "mean": 0.49166666666666664,
+          "median": 0.5,
+          "n_finite": 25
+        },
+        "expr_real_mass_ratio": {
+          "mean": 1.0,
+          "median": 1.0,
+          "n_finite": 25
+        }
+      },
+      "all_six_present": true,
+      "all_six_aggregated": true,
+      "aggregate_error": null,
+      "normalized": false,
+      "prediction_source": "constructed here: delta = 0 for every target",
+      "median_compositional_shift_log2": 0.0,
+      "pred_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle_v2\\pred_null_no_change_ntc_anchored.h5ad"
+    },
+    {
+      "predictor": "shrunk_transfer",
+      "generator": "current_poisson_pooled",
+      "metrics_raw": {
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.24427962957754595,
+        "de_wilcoxon_direction_reach_raw": 0.2391556505094732,
+        "de_wilcoxon_lfc_nmae": 0.983236265114176,
+        "de_wilcoxon_sig_jaccard": 0.007955787331802343,
+        "expr_distance_unbiased": 0.013916356839341733,
+        "expr_mse_unbiased": 0.01335426112139787,
+        "expr_mse_unbiased_capped": 0.013832543217533562,
+        "expr_mse_unbiased_capped_norm": 0.993977330218263,
+        "expr_real_mass_ratio": 1.0,
+        "pds_cosine": 0.7383333333333333
+      },
+      "by_metric": {
+        "de_wilcoxon_direction_fidelity_yield_raw": {
+          "mean": 0.2442796295775459,
+          "median": 0.10317460317460317,
+          "n_finite": 25
+        },
+        "de_wilcoxon_direction_reach_raw": {
+          "mean": 0.2391556505094732,
+          "median": 0.022486772486772486,
+          "n_finite": 22
+        },
+        "de_wilcoxon_lfc_nmae": {
+          "mean": 0.983236265114176,
+          "median": 0.9807443255480512,
+          "n_finite": 13
+        },
+        "expr_mse_unbiased_capped": {
+          "mean": 0.013832543217533563,
+          "median": 0.008170359501684751,
+          "n_finite": 25
+        },
+        "pds_cosine": {
+          "mean": 0.7383333333333334,
+          "median": 0.875,
+          "n_finite": 25
+        },
+        "expr_real_mass_ratio": {
+          "mean": 1.0,
+          "median": 1.0,
+          "n_finite": 25
+        },
+        "de_wilcoxon_sig_jaccard": {
+          "mean": 0.007955787331802343,
+          "median": 0.002828054298642534,
+          "n_finite": 25
+        },
+        "expr_distance_unbiased": {
+          "mean": 0.013916356839341733,
+          "median": 0.00899263971940766,
+          "n_finite": 25
+        },
+        "expr_mse_unbiased": {
+          "mean": 0.013354261121397868,
+          "median": 0.007683748923867588,
+          "n_finite": 25
+        }
+      },
+      "all_six_present": true,
+      "all_six_aggregated": true,
+      "aggregate_error": null,
+      "normalized": false,
+      "prediction_source": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\m003\\models\\new_context_seen_target_k562_rpe1_to_hepg2_seed2026\\shrunk_transfer.predictions.npz",
+      "median_compositional_shift_log2": 0.003548769927378162,
+      "pred_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle_v2\\pred_shrunk_transfer_current_poisson_pooled.h5ad"
+    },
+    {
+      "predictor": "shrunk_transfer",
+      "generator": "ntc_anchored",
+      "metrics_raw": {
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.007816257816257817,
+        "de_wilcoxon_direction_reach_raw": 0.19378135934514143,
+        "de_wilcoxon_lfc_nmae": 0.9830633302858943,
+        "de_wilcoxon_sig_jaccard": 0.12687830687830687,
+        "expr_distance_unbiased": 0.013916356839341733,
+        "expr_mse_unbiased": 0.013287357987773115,
+        "expr_mse_unbiased_capped": 0.014236784888680727,
+        "expr_mse_unbiased_capped_norm": 1.023025282625201,
+        "expr_real_mass_ratio": 1.0,
+        "pds_cosine": 0.5816666666666667
+      },
+      "by_metric": {
+        "de_wilcoxon_direction_reach_raw": {
+          "mean": 0.19378135934514146,
+          "median": 0.03225806451612903,
+          "n_finite": 22
+        },
+        "pds_cosine": {
+          "mean": 0.5816666666666667,
+          "median": 0.5833333333333333,
+          "n_finite": 25
+        },
+        "de_wilcoxon_sig_jaccard": {
+          "mean": 0.12687830687830687,
+          "median": 0.0,
+          "n_finite": 25
+        },
+        "expr_distance_unbiased": {
+          "mean": 0.013916356839341733,
+          "median": 0.00899263971940766,
+          "n_finite": 25
+        },
+        "de_wilcoxon_lfc_nmae": {
+          "mean": 0.9830633302858943,
+          "median": 0.9578771676043603,
+          "n_finite": 13
+        },
+        "expr_real_mass_ratio": {
+          "mean": 1.0,
+          "median": 1.0,
+          "n_finite": 25
+        },
+        "de_wilcoxon_direction_fidelity_yield_raw": {
+          "mean": 0.007816257816257817,
+          "median": 0.0,
+          "n_finite": 22
+        },
+        "expr_mse_unbiased_capped": {
+          "mean": 0.014236784888680727,
+          "median": 0.008489274093773915,
+          "n_finite": 25
+        },
+        "expr_mse_unbiased": {
+          "mean": 0.013287357987773116,
+          "median": 0.006511932460886407,
+          "n_finite": 25
+        }
+      },
+      "all_six_present": true,
+      "all_six_aggregated": true,
+      "aggregate_error": null,
+      "normalized": false,
+      "prediction_source": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\m003\\models\\new_context_seen_target_k562_rpe1_to_hepg2_seed2026\\shrunk_transfer.predictions.npz",
+      "median_compositional_shift_log2": 0.003548769927378162,
+      "pred_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle_v2\\pred_shrunk_transfer_ntc_anchored.h5ad"
+    }
+  ],
+  "limits": [
+    "Raw metrics on one external context. Not a VCC score, not a submission.",
+    "A better generator says nothing about whether the predictor is adequate.",
+    "The NTC-anchored generator cannot lift a gene that is zero in the drawn control cell: that is its own bias, reported rather than hidden.",
+    "Control cells are real and identical in every bundle, as the contract asks."
+  ]
+}

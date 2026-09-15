@@ -1,0 +1,35 @@
+{
+  "che_cosa": "Primo invio reale del ciclo deep_kimi. Interrotto da un difetto: il processo e' morto aprendo il secondo adattatore. Conservato perche' e' la prima prova che il canale web funziona davvero.",
+  "run": "20260913T192532Z-prova-split-e-pairing-v1-c27cec",
+  "quando_utc": "2026-09-13T19:25Z",
+  "avvio": "dall'operatore, da terminale esterno, senza turno di Claude attivo",
+  "cosa_ha_funzionato_su_deepseek": {
+    "modalita_applicate": {
+      "pensiero_profondo": true
+    },
+    "attesa_della_risposta_secondi": 47.5,
+    "caratteri_ricevuti": 7241,
+    "sembrava_troncata": false,
+    "proposta_analizzata": "4429 caratteri, 4 evidenze dichiarate, 1 modifica dichiarata",
+    "conclusione": "invio, rilevamento della fine, lettura e conformita' al contratto sono dimostrati su DeepSeek. Anche l'apertura di una conversazione nuova dall'indirizzo base ha funzionato."
+  },
+  "cosa_e_fallito": {
+    "sintomo": "il processo e' terminato aprendo Kimi; nessun prompt e' arrivato",
+    "causa": "l'API sincrona di Playwright tiene un solo runtime per processo, e ogni adattatore chiamava sync_playwright().start() per conto proprio",
+    "difetti_secondari_emersi": [
+      "il passo di Kimi risultava 'dispatched' pur non essendo mai partito: lo stato veniva scritto prima dell'invio",
+      "l'eccezione non era un TransportError, quindi e' sfuggita a tutti i gestori: il run e' rimasto 'running', senza evento finale e senza rapporto"
+    ]
+  },
+  "correzioni": [
+    "runtime Playwright unico e contato per riferimenti, con un contesto e un profilo separati per servizio (adapters/web.py: acquire_runtime / release_runtime)",
+    "il passo diventa 'dispatched' solo quando l'adattatore dichiara la partenza (Request.sent), non prima di aprire il browser",
+    "qualunque eccezione non prevista porta a stato finale 'failed' con traccia su file, evento registrato e rapporto scritto",
+    "un tentativo chiuso (abbandonato o fallito) non viene sovrascritto: il nuovo prende una cartella propria"
+  ],
+  "test_aggiunti": [
+    "SharedRuntimeTests: conteggio dei riferimenti, il secondo adattatore non riavvia il runtime, lo stop avviene solo all'ultimo rilascio",
+    "TwoRealBrowsersTests: due adattatori con due browser veri nello stesso processo, profili separati (si salta dove Playwright non e' installato)",
+    "HangingServiceTests: ripresa dopo riconciliazione senza sovrascrivere l'evidenza"
+  ]
+}

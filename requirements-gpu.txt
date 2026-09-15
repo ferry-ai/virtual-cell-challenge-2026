@@ -1,0 +1,26 @@
+# Aggiunte per una macchina con CUDA. Deliberatamente NON contiene torch per i
+# modelli: i quattro decoder di src/vcc2026/benchmark/models.py sono numpy scritto
+# a mano, e installare torch non li accelera di un secondo. Vedi docs/CONSEGNA_GPU.md
+# e le misure in reports/gpu_2026-09-15/gpu_readiness.json.
+#
+# Quello che c'e' qui accelera una cosa sola, ed e' quella lenta: il backend di
+# differential expression dello scorer, che decide la meta' del tempo
+# dell'esperimento sulle sei metriche.
+#
+# Ordine di preferenza che cell-eval2 applica da solo: gpudge (CUDA) > pdex > scanpy.
+# Se dopo l'installazione `scripts/59_gpu_readiness.py` riporta ancora
+# de_backend_resolved = "scanpy", la GPU non sta entrando e il resto e' rumore.
+
+# Backend DE su GPU. Richiede CUDA; su una macchina senza scheda non si installa
+# e non deve essere forzato.
+gpudge
+
+# Backend DE su CPU multi-core. Utile comunque: e' il ripiego quando gpudge non
+# parte, ed e' molto piu' veloce di scanpy. Installarlo anche sulla macchina GPU.
+pdex
+
+# torch NON e' richiesto dal progetto. Serve soltanto se un giorno si porta un
+# modello su GPU, ed e' una decisione che va presa DOPO aver sostituito la SVD
+# completa con una randomizzata di rango 16: misurata, vale 12-42x su CPU sui
+# dati veri, piu' di quanto darebbe una GPU su queste forme.
+# torch

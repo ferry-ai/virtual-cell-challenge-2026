@@ -1,0 +1,97 @@
+{
+  "run_id": "s001",
+  "stage": "51_run_modular_pilot",
+  "started_utc": "2026-09-14T23:38:57.762376+00:00",
+  "finished_utc": "2026-09-14T23:38:57.944984+00:00",
+  "seed": 2026,
+  "config": {
+    "run_id": "s001",
+    "config": "configs\\benchmark_svd_exact.yaml",
+    "out": null,
+    "signatures": [
+      "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures",
+      "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e003\\signatures"
+    ],
+    "allow_overwrite": false,
+    "benchmark_yaml": "configs\\benchmark_svd_exact.yaml"
+  },
+  "inputs": {
+    "config": {
+      "path": "configs\\benchmark_svd_exact.yaml",
+      "exists": true,
+      "bytes": 5409,
+      "mtime_utc": "2026-09-14T23:29:07.663904+00:00",
+      "sha256": "a97f998c55d10118363db154cbd5cfa894d41ecba6528b1aa0b9e6f6a35bf39a",
+      "sha256_mode": "full"
+    }
+  },
+  "outputs": {
+    "inventory": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\inventory.json",
+      "exists": true,
+      "bytes": 295044,
+      "mtime_utc": "2026-09-14T23:33:31.511308+00:00",
+      "sha256": "5372d4ee0d50f5d31d5edf9dd7f6f73fc5c5c9bb34e16596305a5a2bc57200e0",
+      "sha256_mode": "full"
+    },
+    "results": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\results.json",
+      "exists": true,
+      "bytes": 1230798,
+      "mtime_utc": "2026-09-14T23:38:57.718140+00:00",
+      "sha256": "5551ce8081ff8fd3dc345397eabaa5188061f95159b5ec645223a909b1eb5d15",
+      "sha256_mode": "full"
+    },
+    "table": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\comparison_table.md",
+      "exists": true,
+      "bytes": 10865,
+      "mtime_utc": "2026-09-14T23:38:57.373930+00:00",
+      "sha256": "673b6d4f6301f1f0e2d642bfa79a0c1e16f6d9e8d72b3baf91c403e3dfb4be6b",
+      "sha256_mode": "full"
+    },
+    "summary": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\summary.json",
+      "exists": true,
+      "bytes": 67134,
+      "mtime_utc": "2026-09-14T23:38:57.734310+00:00",
+      "sha256": "58d8c0d8c4b36eef7aa74d0e1a4d92b772654290b367c044e99f36e811b1c686",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "n_rows": 48,
+    "n_targets_used": 160,
+    "n_shared_available": 2315,
+    "peak_rss_bytes": 478150656,
+    "ram_available_gib_at_start": 0.9923858642578125,
+    "not_a_vcc_score": true,
+    "winner_declared": false
+  },
+  "notes": [
+    "Primary metric is pooled_mse_vs_null in pseudobulk log2FC. Not a VCC score. No architecture was selected on the external test.",
+    "With two perturbed contexts, holding one out leaves a single training context: transfer feasibility, not general context-dependence learning."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}

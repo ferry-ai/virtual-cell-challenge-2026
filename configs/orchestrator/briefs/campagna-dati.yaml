@@ -1,0 +1,51 @@
+id: campagna-dati
+version: 1
+mode: scientific_research
+route: scientific_research
+title: "Ricerca e verifica di ulteriori dataset per VCC2026"
+question: >
+  Quali dataset pubblici (CRISPRi, Perturb-seq, a singola cellula) aggiungono valore al training attuale di VCC2026? 
+  Cerchiamo perturbazioni dei bersagli del pannello VCC2026 o nuovi contesti con bersagli condivisi.
+  Per ogni candidato, verifica accessibilità, matrice RNA, metadati e controlli NTC.
+context: >
+  Stiamo cercando di espandere i dati di training. Non duplicare il lavoro su HepG2 né sui descrittori degli encoder.
+  Piste prioritarie: CD4 e fonti con copertura del pannello, contesti T/epiteliali, CRISPRi, dataset con perturbazioni condivise.
+  Mantieni separati CRISPRi, knockout, CRISPRa e farmacologiche. 
+expected_result: >
+  Un dossier con tabella dei candidati, livelli di verifica, sovrapposizioni misurate (con pannello e training), duplicati scartati e massimo tre candidati prioritari con raccomandazione di acquisizione e vantaggio concreto.
+research:
+  scope: >
+    Dataset Perturb-seq/CRISPRi a singola cellula con matrice RNA disponibile.
+  out_of_scope: >
+    Dataset già in inventario (es. HepG2 Nadig, K562 Replogle, RPE1). Matrici di soli conteggi guide senza RNA.
+  relevance_criteria:
+    - id: C1
+      text: "Perturbazione dei bersagli del pannello VCC2026 o contesti con bersagli condivisi."
+    - id: C2
+      text: "Conteggi RNA a singola cellula (non solo guide) con controlli NTC identificabili."
+    - id: C3
+      text: "Indipendente da esperimenti già censiti (no mirror duplicati)."
+  hypotheses:
+    - id: H1
+      statement: "Esistono dataset CD4 o contesti T/epiteliali pubblici con matrice RNA e copertura del pannello VCC2026."
+      initial_evidence: ["Nessuna evidenza a priori, da verificare."]
+      alternatives: ["I dataset esistono ma non espongono la matrice RNA o sono CRISPRa/KO."]
+  perspectives:
+    solver_a: >
+      Ricerca: trovare fonti primarie, accessioni e file. Concentrati su CD4 e contesti T/epiteliali. 
+      Nelle fasi successive, inverti il ruolo e verifica i risultati di solver_b.
+    solver_b: >
+      Verifica: controllare indipendentemente contenuto, accessibilità, sovrapposizioni e limiti dei candidati.
+      Nelle fasi successive, inverti il ruolo e cerca nuovi candidati.
+  lead_assignment: both
+  budget:
+    max_phases: 3
+    max_main_responses: 6
+    max_repairs_per_response: 1
+    max_leads: 2
+    max_total_interactions: 12
+    max_wall_clock_minutes: 90
+  search:
+    required: true
+    on_unavailable: plan_only
+    note: "Poche query mirate,nessuno scaricamento massivo."

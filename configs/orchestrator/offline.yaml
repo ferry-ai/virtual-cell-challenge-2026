@@ -1,0 +1,40 @@
+# Configurazione per la prova a secco: nessuna rete, nessun servizio esterno.
+# Le risposte arrivano da file preparati a mano, cosi' il motore si puo' collaudare
+# (round, obiezioni, convergenza, arresto, rapporto) senza inviare niente a nessuno.
+version: 1
+state_root: null
+
+services:
+  scripted:
+    adapter: scripted
+    script_dir: "rehearsal/prova-fattoriale"   # relativo a questo file
+
+roles:
+  solver_a: scripted
+  solver_b: scripted
+  reviewer_a: scripted
+
+routes:
+  offline:
+    solve: [solver_a, solver_b]
+    review: [reviewer_a]
+default_route: offline
+
+limits:
+  max_rounds: 4
+  stagnation_rounds: 2
+  convergence_rounds: 2
+  convergence_similarity: 0.92
+  disagreement_rounds: 3
+  max_wall_clock_minutes: 20
+  transport_retries: 0
+
+planning:
+  approval: auto
+  checkpoint_every: 0
+
+outbound:
+  allowed_roots: []
+
+execution:
+  model_code: quarantine

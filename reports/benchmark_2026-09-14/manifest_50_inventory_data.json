@@ -1,0 +1,64 @@
+{
+  "run_id": "benchmark_2026-09-14",
+  "stage": "50_inventory_data",
+  "started_utc": "2026-09-14T13:51:32.691014+00:00",
+  "finished_utc": "2026-09-14T13:51:32.726514+00:00",
+  "seed": null,
+  "config": {
+    "out": "reports\\benchmark_2026-09-14"
+  },
+  "inputs": {},
+  "outputs": {
+    "inventory": {
+      "path": "reports\\benchmark_2026-09-14\\inventory.json",
+      "exists": true,
+      "bytes": 292215,
+      "mtime_utc": "2026-09-14T13:51:32.684454+00:00",
+      "sha256": "1d44a07d5bf849279dfc221ba5dc067e2db63d7310f14f288ac438632bb91930",
+      "sha256_mode": "full"
+    },
+    "missing_generator_bundle": {
+      "path": "reports\\benchmark_2026-09-14\\missing_generator_bundle.json",
+      "exists": true,
+      "bytes": 4246,
+      "mtime_utc": "2026-09-14T13:51:32.691015+00:00",
+      "sha256": "41e054bc444e6b520d836ec3789649ef696e421f9dfcbc8c083e1895c74ea4b9",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "n_sources": 16,
+    "n_executable_experiments": 3,
+    "n_blocked_experiments": 1,
+    "perturbed_contexts_local": [
+      "K562",
+      "RPE1"
+    ]
+  },
+  "notes": [
+    "Unmeasured genes are not unchanged (D-009).",
+    "No download was performed."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}

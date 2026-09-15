@@ -1,0 +1,1661 @@
+{
+  "primary_metric": "pooled_mse_vs_null",
+  "primary_metric_space": "pseudobulk log2FC proxy; not a VCC score",
+  "non_inferiority_margin": null,
+  "non_inferiority_note": "Not set. The substitution rule below is a pre-specified compatibility band for the algorithm swap, not a non-inferiority claim on any architecture.",
+  "winner_declared": false,
+  "winner_reason": "No winner. Architecture was not selected on the external test. Every fold trains on more than one context, so a context descriptor can vary in training and a with/without comparison is at least identifiable in principle; two contexts still confound biology with the experiment each came from. If seed intervals overlap, the result is inconclusive.",
+  "verdict": "inconclusive_pending_numbers",
+  "n_shared_targets_available": 2315,
+  "n_targets_used": 160,
+  "subsample": {
+    "max_targets": 160,
+    "n_shared_available": 2315,
+    "n_used": 160,
+    "rule": "uniform_random_not_filtered_by_effect",
+    "seed": 2026
+  },
+  "gene_universe": {
+    "new_context_seen_target_k562_rpe1_to_hepg2_seed2026": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "k562_gwps": 7681,
+        "rpe1_essential": 8260,
+        "nadig_hepg2": 9023
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_seen_target_k562_rpe1_to_hepg2_seed2027": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "k562_gwps": 7681,
+        "rpe1_essential": 8260,
+        "nadig_hepg2": 9023
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_seen_target_k562_hepg2_to_rpe1_seed2026": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "k562_gwps": 7681,
+        "nadig_hepg2": 9023,
+        "rpe1_essential": 8260
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_seen_target_k562_hepg2_to_rpe1_seed2027": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "k562_gwps": 7681,
+        "nadig_hepg2": 9023,
+        "rpe1_essential": 8260
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_seen_target_rpe1_hepg2_to_k562_seed2026": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "rpe1_essential": 8260,
+        "nadig_hepg2": 9023,
+        "k562_gwps": 7681
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_seen_target_rpe1_hepg2_to_k562_seed2027": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "rpe1_essential": 8260,
+        "nadig_hepg2": 9023,
+        "k562_gwps": 7681
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_unseen_target_k562_rpe1_to_hepg2_seed2026": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "k562_gwps": 7681,
+        "rpe1_essential": 8260,
+        "nadig_hepg2": 9023
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_unseen_target_k562_rpe1_to_hepg2_seed2027": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "k562_gwps": 7681,
+        "rpe1_essential": 8260,
+        "nadig_hepg2": 9023
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_unseen_target_k562_hepg2_to_rpe1_seed2026": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "k562_gwps": 7681,
+        "nadig_hepg2": 9023,
+        "rpe1_essential": 8260
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_unseen_target_k562_hepg2_to_rpe1_seed2027": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "k562_gwps": 7681,
+        "nadig_hepg2": 9023,
+        "rpe1_essential": 8260
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_unseen_target_rpe1_hepg2_to_k562_seed2026": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "rpe1_essential": 8260,
+        "nadig_hepg2": 9023,
+        "k562_gwps": 7681
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_unseen_target_rpe1_hepg2_to_k562_seed2027": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "rpe1_essential": 8260,
+        "nadig_hepg2": 9023,
+        "k562_gwps": 7681
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    }
+  },
+  "preprocess": {
+    "phase": "preprocess",
+    "seconds": 1.9445273000164889,
+    "rss_bytes_at_start": 78880768,
+    "peak_rss_bytes_after": 141262848,
+    "rss_delta_bytes": 62382080,
+    "vram_bytes": null,
+    "vram_note": "no CUDA device in this environment; VRAM not measured"
+  },
+  "machine": {
+    "ram_total_bytes": 8384401408,
+    "ram_available_bytes": 902578176,
+    "disk_path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026",
+    "disk_total_bytes": 510342983680,
+    "disk_free_bytes": 21617496064,
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 7.808582305908203,
+    "ram_available_gib": 0.8405914306640625,
+    "disk_free_gib": 20.132862091064453,
+    "peak_rss_bytes_now": 478150656
+  },
+  "n_result_rows": 48,
+  "splits": [
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\splits\\new_context_seen_target_k562_rpe1_to_hepg2_seed2026.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\splits\\new_context_seen_target_k562_rpe1_to_hepg2_seed2027.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\splits\\new_context_seen_target_k562_hepg2_to_rpe1_seed2026.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\splits\\new_context_seen_target_k562_hepg2_to_rpe1_seed2027.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\splits\\new_context_seen_target_rpe1_hepg2_to_k562_seed2026.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\splits\\new_context_seen_target_rpe1_hepg2_to_k562_seed2027.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\splits\\new_context_unseen_target_k562_rpe1_to_hepg2_seed2026.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\splits\\new_context_unseen_target_k562_rpe1_to_hepg2_seed2027.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\splits\\new_context_unseen_target_k562_hepg2_to_rpe1_seed2026.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\splits\\new_context_unseen_target_k562_hepg2_to_rpe1_seed2027.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\splits\\new_context_unseen_target_rpe1_hepg2_to_k562_seed2026.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\s001\\splits\\new_context_unseen_target_rpe1_hepg2_to_k562_seed2027.json"
+  ],
+  "generator_x_predictor": {
+    "built_utc": "2026-09-14T23:33:31.511307+00:00",
+    "status": "missing",
+    "execute_six_metrics": false,
+    "n_local_perturbed_single_cell_sources": 1,
+    "local_perturbed_single_cell_ids": [
+      "nadig_hepg2"
+    ],
+    "required_fields": {
+      "matrix": {
+        "X": "non-negative integer (or integer-valued) counts, CSR or dense float that is integral",
+        "input_type": "counts",
+        "gene_axis": "source symbols aligned to the official 18,533 with an observed mask; unmeasured genes stay masked"
+      },
+      "obs": {
+        "target_gene": "perturbed gene symbol or the NTC label",
+        "context": "biological context, one value for the bundle",
+        "guide_id": "if present, kept; same-target guides stay together",
+        "donor": "if present, never pooled across donors",
+        "batch": "if present, NTCs must be matchable per batch",
+        "n_cells_min_per_target": "enough to run DE; the competition asks 400 predicted cells, the bundle can be smaller if declared"
+      },
+      "controls": {
+        "real_NTC_required": true,
+        "control_source": "real",
+        "do_not_replace_with_synthetic_cells": true,
+        "matched_to": "same context, preferably same batch/donor"
+      },
+      "scoring": {
+        "metrics": [
+          "pds_cosine",
+          "expr_mse_unbiased_capped_norm",
+          "de_wilcoxon_lfc_nmae",
+          "de_wilcoxon_direction_fidelity_yield_raw",
+          "de_wilcoxon_direction_reach_raw",
+          "de_wilcoxon_sig_jaccard"
+        ],
+        "backend_must_be_recorded": true,
+        "anchors": "without published b and r, report raw aggregates and a local normalisation explicitly distinct from the leaderboard"
+      }
+    },
+    "candidates_not_acquired": [
+      {
+        "id": "nadig_hepg2",
+        "why_smallest": "Roadmap R-1: 0.851 GB compressed, 145,473 \u00d7 9,624, 4,976 NTC. Smallest complete perturbed object with explicit NTCs.",
+        "accession": "GSE264667",
+        "context": "HepG2",
+        "n_cells_declared": 145473,
+        "n_genes_declared": 9624,
+        "n_ntc_declared": 4976,
+        "bytes_declared": 5614460941,
+        "bytes_compressed_estimate": 851000000,
+        "panel_targets_observed": 0,
+        "on_disk": false,
+        "role_if_acquired": "methodological evaluation bundle: generator \u00d7 predictor on real perturbed cells. NOT a benchmark of the 300-target panel.",
+        "read_mode": "chunked; do not materialise the dense matrix (~5.6 GB)",
+        "license_note": "public GEO; confirm before any submission use"
+      },
+      {
+        "id": "rpe1_singlecell",
+        "why": "Roadmap R-1 alternative: 1.237 GB compressed, 247,914 \u00d7 8,749, 11,485 NTC. Same experiment as the local RPE1 pseudobulk.",
+        "accession": "figshare 20029387 / file 35775606",
+        "context": "RPE1",
+        "n_cells_declared": 247914,
+        "n_genes_declared": 8749,
+        "n_ntc_declared": 11485,
+        "bytes_declared": 8700873216,
+        "bytes_compressed_estimate": 1237000000,
+        "panel_targets_observed": 0,
+        "on_disk": false,
+        "role_if_acquired": "pairs with local RPE1 pseudobulk: same biological context, real single-cell counts for the six VCC metrics.",
+        "read_mode": "chunked; dense is ~8.7 GB",
+        "do_not_use": "file 35775554 is the NORMALIZED twin"
+      }
+    ],
+    "acquisition": {
+      "do_not_download_atlases": true,
+      "select_one_candidate": true,
+      "byte_budget": "the smaller of the two candidates is ~0.85 GB compressed; keep \u226510 GiB free (D-005)",
+      "after_download": "chunked subset of perturbed cells + paired NTCs, written as an evaluation bundle with a new --out, never overwriting existing reports"
+    },
+    "what_this_does_not_show": [
+      "A better generator is not evidence that the predictor is adequate.",
+      "A better generator is not evidence that modularity is useless.",
+      "Zero panel overlap: this bundle would not score the 300 VCC targets."
+    ],
+    "estimated_bundle_pilot": {
+      "n_targets": 30,
+      "cells_per_target": 80,
+      "n_ntc": 400,
+      "n_genes_if_rpe1": 8749,
+      "dense_float32_bytes_estimate": 97988800,
+      "note": "30 \u00d7 80 + 400 NTC at 8,749 genes, float32 dense \u2248 98 MB. CSR of integer counts would be smaller. This is a planning figure, not a measurement."
+    }
+  },
+  "arm_plan": [
+    {
+      "arm": "lowrank_linear__with_ctx",
+      "uses_context": true,
+      "variant": "with_ctx"
+    },
+    {
+      "arm": "lowrank_linear__no_ctx",
+      "uses_context": false,
+      "variant": "no_ctx"
+    },
+    {
+      "arm": "modular_frozen__with_ctx",
+      "uses_context": true,
+      "variant": "with_ctx"
+    },
+    {
+      "arm": "modular_frozen__no_ctx",
+      "uses_context": false,
+      "variant": "no_ctx"
+    }
+  ],
+  "descriptor_variants": {
+    "with_ctx": {
+      "include_context": true,
+      "include_go_slim": false,
+      "note": "basal + context; GO slim stays off (D-028)"
+    },
+    "no_ctx": {
+      "include_context": false,
+      "include_go_slim": false,
+      "note": "basal only"
+    }
+  },
+  "forbidden_trial_alpha": 0.1974,
+  "not_a_vcc_score": true,
+  "factorization": {
+    "method": "exact",
+    "n_oversamples": 10,
+    "n_iter": 2,
+    "seed": null
+  },
+  "paired_differences": [
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2026,
+      "a": "lowrank_linear__with_ctx",
+      "b": "lowrank_linear__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": 0.2129337537584271,
+        "median_a_minus_b": 0.14127280122457198,
+        "ci95": [
+          0.16834760097432563,
+          0.2587648162445757
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 1.4869308704452868,
+        "point_b": 1.3327704413623558,
+        "mean_a_minus_b": 0.15416042908293104,
+        "ci95": [
+          0.11544950225930269,
+          0.195691748074556
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2026,
+      "a": "modular_frozen__with_ctx",
+      "b": "modular_frozen__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": -0.004253545438286543,
+        "median_a_minus_b": 0.06869605005379065,
+        "ci95": [
+          -0.12337776203120089,
+          0.1133889655685188
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 1.0825336734231121,
+        "point_b": 1.2110918177269365,
+        "mean_a_minus_b": -0.1285581443038244,
+        "ci95": [
+          -0.25306208170868044,
+          -0.02887170546407807
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2026,
+      "a": "modular_frozen__with_ctx",
+      "b": "lowrank_linear__with_ctx",
+      "comparison": "frozen_vs_lowrank",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": -0.2553333671200657,
+        "median_a_minus_b": -0.023563989738614288,
+        "ci95": [
+          -0.46782628454109554,
+          -0.042098087952944306
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 1.0825336734231121,
+        "point_b": 1.4869308704452868,
+        "mean_a_minus_b": -0.4043971970221747,
+        "ci95": [
+          -0.6287994777993072,
+          -0.24490681970221242
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2027,
+      "a": "lowrank_linear__with_ctx",
+      "b": "lowrank_linear__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": 0.2129337537584271,
+        "median_a_minus_b": 0.14127280122457198,
+        "ci95": [
+          0.16393274330319263,
+          0.25753700253043393
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 1.4869308704452868,
+        "point_b": 1.3327704413623558,
+        "mean_a_minus_b": 0.15416042908293104,
+        "ci95": [
+          0.11950341598061058,
+          0.19239673198424737
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2027,
+      "a": "modular_frozen__with_ctx",
+      "b": "modular_frozen__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": 0.11178517742838467,
+        "median_a_minus_b": 0.07907779208049887,
+        "ci95": [
+          -0.03685334808224625,
+          0.3117848840710772
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 1.1020556641416426,
+        "point_b": 1.1927900622524266,
+        "mean_a_minus_b": -0.09073439811078399,
+        "ci95": [
+          -0.18575578559577482,
+          0.0020251177369919994
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2027,
+      "a": "modular_frozen__with_ctx",
+      "b": "lowrank_linear__with_ctx",
+      "comparison": "frozen_vs_lowrank",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": -0.20661779875205527,
+        "median_a_minus_b": -0.01578441058206631,
+        "ci95": [
+          -0.4242423093700454,
+          0.0463594452102825
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 1.1020556641416426,
+        "point_b": 1.4869308704452868,
+        "mean_a_minus_b": -0.38487520630364425,
+        "ci95": [
+          -0.5812685043587867,
+          -0.2015261564312547
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2026,
+      "a": "lowrank_linear__with_ctx",
+      "b": "lowrank_linear__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": -0.016213742172964646,
+        "median_a_minus_b": -0.01572744576309726,
+        "ci95": [
+          -0.023935001758693574,
+          -0.007992136759707709
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 0.8740561376121537,
+        "point_b": 0.895917441678175,
+        "mean_a_minus_b": -0.02186130406602127,
+        "ci95": [
+          -0.025315468948931143,
+          -0.01846864840196429
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2026,
+      "a": "modular_frozen__with_ctx",
+      "b": "modular_frozen__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": 0.07568351992314604,
+        "median_a_minus_b": 0.02028280111348535,
+        "ci95": [
+          0.031194527052674424,
+          0.11482563332861694
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 0.8865044221171959,
+        "point_b": 0.8791066300199113,
+        "mean_a_minus_b": 0.007397792097284639,
+        "ci95": [
+          -0.013132691963312825,
+          0.025962440474636864
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2026,
+      "a": "modular_frozen__with_ctx",
+      "b": "lowrank_linear__with_ctx",
+      "comparison": "frozen_vs_lowrank",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": 0.07129401897732156,
+        "median_a_minus_b": 0.029933765315848404,
+        "ci95": [
+          0.020000664946801913,
+          0.12781024045352407
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 0.8865044221171959,
+        "point_b": 0.8740561376121537,
+        "mean_a_minus_b": 0.012448284505042206,
+        "ci95": [
+          -0.011934351473244158,
+          0.0319143253744194
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2027,
+      "a": "lowrank_linear__with_ctx",
+      "b": "lowrank_linear__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": -0.016213742172964646,
+        "median_a_minus_b": -0.01572744576309726,
+        "ci95": [
+          -0.025179440738635255,
+          -0.0075913616691499364
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 0.8740561376121537,
+        "point_b": 0.895917441678175,
+        "mean_a_minus_b": -0.02186130406602127,
+        "ci95": [
+          -0.025301072344373905,
+          -0.018447754266033067
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2027,
+      "a": "modular_frozen__with_ctx",
+      "b": "modular_frozen__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": 0.07845461593113617,
+        "median_a_minus_b": 0.02096629426806257,
+        "ci95": [
+          0.023662400926599103,
+          0.1506150721781704
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 0.8776353738585372,
+        "point_b": 0.8730019714004486,
+        "mean_a_minus_b": 0.004633402458088631,
+        "ci95": [
+          -0.014494069350508756,
+          0.022961258629032286
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2027,
+      "a": "modular_frozen__with_ctx",
+      "b": "lowrank_linear__with_ctx",
+      "comparison": "frozen_vs_lowrank",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": 0.07483850393148664,
+        "median_a_minus_b": 0.02674533155847575,
+        "ci95": [
+          0.020233066938546717,
+          0.144538961335367
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 0.8776353738585372,
+        "point_b": 0.8740561376121537,
+        "mean_a_minus_b": 0.003579236246383455,
+        "ci95": [
+          -0.016092362477088562,
+          0.027127747661491734
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2026,
+      "a": "lowrank_linear__with_ctx",
+      "b": "lowrank_linear__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": -0.14468061953559683,
+        "median_a_minus_b": -0.04713160206112382,
+        "ci95": [
+          -0.1941377764709815,
+          -0.10384006815139403
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 1.1643895412553071,
+        "point_b": 1.279397254045609,
+        "mean_a_minus_b": -0.11500771279030175,
+        "ci95": [
+          -0.15312851500702487,
+          -0.08760577696070794
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2026,
+      "a": "modular_frozen__with_ctx",
+      "b": "modular_frozen__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": -0.09885147009692423,
+        "median_a_minus_b": -0.03463500794112606,
+        "ci95": [
+          -0.13390483946768525,
+          -0.06868018720339296
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 1.124189933955636,
+        "point_b": 1.2004394548585435,
+        "mean_a_minus_b": -0.07624952090290749,
+        "ci95": [
+          -0.10317021779650697,
+          -0.05668895111302783
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2026,
+      "a": "modular_frozen__with_ctx",
+      "b": "lowrank_linear__with_ctx",
+      "comparison": "frozen_vs_lowrank",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": 0.09461066039513297,
+        "median_a_minus_b": 0.09931115394793794,
+        "ci95": [
+          -0.0013950478863054847,
+          0.18544666641716
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 1.124189933955636,
+        "point_b": 1.1643895412553071,
+        "mean_a_minus_b": -0.04019960729967109,
+        "ci95": [
+          -0.1023811892724577,
+          0.009796862683543675
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2027,
+      "a": "lowrank_linear__with_ctx",
+      "b": "lowrank_linear__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": -0.14468061953559683,
+        "median_a_minus_b": -0.04713160206112382,
+        "ci95": [
+          -0.19565056095899866,
+          -0.10233407768697762
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 1.1643895412553071,
+        "point_b": 1.279397254045609,
+        "mean_a_minus_b": -0.11500771279030175,
+        "ci95": [
+          -0.14876065917493445,
+          -0.08666702499919864
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2027,
+      "a": "modular_frozen__with_ctx",
+      "b": "modular_frozen__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": -0.17930147541943198,
+        "median_a_minus_b": -0.01653662387372634,
+        "ci95": [
+          -0.29184833375676555,
+          -0.07910823740662806
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 1.0850449250725043,
+        "point_b": 1.288095178792418,
+        "mean_a_minus_b": -0.2030502537199137,
+        "ci95": [
+          -0.29571386668657523,
+          -0.1316352086178112
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_seen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2027,
+      "a": "modular_frozen__with_ctx",
+      "b": "lowrank_linear__with_ctx",
+      "comparison": "frozen_vs_lowrank",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 160,
+        "mean_a_minus_b": -0.0014530106790746774,
+        "median_a_minus_b": 0.057842134980288895,
+        "ci95": [
+          -0.09584956881824723,
+          0.07863082525516688
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 160,
+        "point_a": 1.0850449250725043,
+        "point_b": 1.1643895412553071,
+        "mean_a_minus_b": -0.07934461618280286,
+        "ci95": [
+          -0.13341186680747597,
+          -0.027026471900874913
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2026,
+      "a": "lowrank_linear__with_ctx",
+      "b": "lowrank_linear__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.3715133992879143,
+        "median_a_minus_b": 0.25399206929385154,
+        "ci95": [
+          0.2479599504441285,
+          0.506946622843901
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 1.3198033847037627,
+        "point_b": 1.1072923237841787,
+        "mean_a_minus_b": 0.21251106091958394,
+        "ci95": [
+          0.14627624885023638,
+          0.28759113160407007
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2026,
+      "a": "modular_frozen__with_ctx",
+      "b": "modular_frozen__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.03624389632284236,
+        "median_a_minus_b": 0.021881413968885988,
+        "ci95": [
+          0.025575784953798628,
+          0.04869548428940734
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 1.1012097108835661,
+        "point_b": 1.0744488049079306,
+        "mean_a_minus_b": 0.02676090597563552,
+        "ci95": [
+          0.01775469843482888,
+          0.037329262052616025
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2026,
+      "a": "modular_frozen__with_ctx",
+      "b": "lowrank_linear__with_ctx",
+      "comparison": "frozen_vs_lowrank",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.38415776759347436,
+        "median_a_minus_b": -0.2728592239668558,
+        "ci95": [
+          -0.5035639746706947,
+          -0.2739506929668916
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 1.1012097108835661,
+        "point_b": 1.3198033847037627,
+        "mean_a_minus_b": -0.21859367382019657,
+        "ci95": [
+          -0.2947277493148181,
+          -0.1586860649594358
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2027,
+      "a": "lowrank_linear__with_ctx",
+      "b": "lowrank_linear__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.6178609202902527,
+        "median_a_minus_b": 0.2980415363990597,
+        "ci95": [
+          0.3458358076047763,
+          1.012683894908032
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 1.303741054385413,
+        "point_b": 1.063694702676119,
+        "mean_a_minus_b": 0.24004635170929411,
+        "ci95": [
+          0.17626208255698006,
+          0.3274977666715305
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2027,
+      "a": "modular_frozen__with_ctx",
+      "b": "modular_frozen__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.014468572997883707,
+        "median_a_minus_b": -0.01709175106298122,
+        "ci95": [
+          -0.04280792216288205,
+          0.01596649561377494
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 1.0523984617504412,
+        "point_b": 1.0562993365159488,
+        "mean_a_minus_b": -0.0039008747655076004,
+        "ci95": [
+          -0.02468856904650475,
+          0.012021199942118326
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2027,
+      "a": "modular_frozen__with_ctx",
+      "b": "lowrank_linear__with_ctx",
+      "comparison": "frozen_vs_lowrank",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.6711472817605323,
+        "median_a_minus_b": -0.3459425839992164,
+        "ci95": [
+          -1.0981243992658285,
+          -0.37367575276357873
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 1.0523984617504412,
+        "point_b": 1.303741054385413,
+        "mean_a_minus_b": -0.25134259263497194,
+        "ci95": [
+          -0.35105289178722315,
+          -0.17262046216802815
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2026,
+      "a": "lowrank_linear__with_ctx",
+      "b": "lowrank_linear__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.021327914400486248,
+        "median_a_minus_b": -0.007650446034264735,
+        "ci95": [
+          -0.03814457774796395,
+          -0.004966785721100917
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 0.882473428423612,
+        "point_b": 0.8931402503772891,
+        "mean_a_minus_b": -0.010666821953677075,
+        "ci95": [
+          -0.021366461214020742,
+          -0.004644559267588646
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2026,
+      "a": "modular_frozen__with_ctx",
+      "b": "modular_frozen__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.03545588385393658,
+        "median_a_minus_b": -0.005533988349159247,
+        "ci95": [
+          -0.06218119401214763,
+          -0.01289450972429862
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 0.8824588027298768,
+        "point_b": 0.8916533629386996,
+        "mean_a_minus_b": -0.00919456020882281,
+        "ci95": [
+          -0.017216719061835604,
+          -0.003284605862346035
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2026,
+      "a": "modular_frozen__with_ctx",
+      "b": "lowrank_linear__with_ctx",
+      "comparison": "frozen_vs_lowrank",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.002600851640800169,
+        "median_a_minus_b": 0.0030602402432471365,
+        "ci95": [
+          -0.009666941984461344,
+          0.013285843733286676
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 0.8824588027298768,
+        "point_b": 0.882473428423612,
+        "mean_a_minus_b": -1.4625693735226264e-05,
+        "ci95": [
+          -0.0075031417072128626,
+          0.006975368050505726
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2027,
+      "a": "lowrank_linear__with_ctx",
+      "b": "lowrank_linear__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.041278342890615875,
+        "median_a_minus_b": -0.00801687042064847,
+        "ci95": [
+          -0.07618726342882796,
+          -0.013128041162102824
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 0.8784656321136981,
+        "point_b": 0.8876278376603357,
+        "mean_a_minus_b": -0.009162205546637603,
+        "ci95": [
+          -0.015376240295595017,
+          -0.004513981377439106
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2027,
+      "a": "modular_frozen__with_ctx",
+      "b": "modular_frozen__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.06802180340212811,
+        "median_a_minus_b": 0.004459135719100504,
+        "ci95": [
+          0.020474019130415935,
+          0.11479015805732597
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 0.8819892206252733,
+        "point_b": 0.8901025589541708,
+        "mean_a_minus_b": -0.00811333832889749,
+        "ci95": [
+          -0.01782744301863526,
+          0.007847385553912779
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2027,
+      "a": "modular_frozen__with_ctx",
+      "b": "lowrank_linear__with_ctx",
+      "comparison": "frozen_vs_lowrank",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.06453497400417339,
+        "median_a_minus_b": 0.012213547504178968,
+        "ci95": [
+          0.02610425600941579,
+          0.10552613750927978
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 0.8819892206252733,
+        "point_b": 0.8784656321136981,
+        "mean_a_minus_b": 0.003523588511575193,
+        "ci95": [
+          -0.005433967970609199,
+          0.01801813677145731
+        ],
+        "ci95_excludes_zero": false,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2026,
+      "a": "lowrank_linear__with_ctx",
+      "b": "lowrank_linear__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.24634722411645307,
+        "median_a_minus_b": -0.1492031979434859,
+        "ci95": [
+          -0.3068979570342254,
+          -0.1857690373090596
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 1.0773410997498036,
+        "point_b": 1.2110671088007214,
+        "mean_a_minus_b": -0.1337260090509178,
+        "ci95": [
+          -0.16292830980396797,
+          -0.10583433003429676
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2026,
+      "a": "modular_frozen__with_ctx",
+      "b": "modular_frozen__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.0818965852699406,
+        "median_a_minus_b": -0.036537522923678734,
+        "ci95": [
+          -0.11852074928433626,
+          -0.04263062230364519
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 1.1828443607174344,
+        "point_b": 1.2221006402962673,
+        "mean_a_minus_b": -0.03925627957883293,
+        "ci95": [
+          -0.06213809092495994,
+          -0.019250128044542247
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2026,
+      "a": "modular_frozen__with_ctx",
+      "b": "lowrank_linear__with_ctx",
+      "comparison": "frozen_vs_lowrank",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.19490633515814162,
+        "median_a_minus_b": 0.13503669504144172,
+        "ci95": [
+          0.14595236398287612,
+          0.24805395434449087
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 1.1828443607174344,
+        "point_b": 1.0773410997498036,
+        "mean_a_minus_b": 0.10550326096763074,
+        "ci95": [
+          0.0850547787845534,
+          0.1355935169878806
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2027,
+      "a": "lowrank_linear__with_ctx",
+      "b": "lowrank_linear__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.17479942171239127,
+        "median_a_minus_b": -0.1053319244365517,
+        "ci95": [
+          -0.23449671212078005,
+          -0.13418688580214494
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 1.047881890505581,
+        "point_b": 1.140387320704826,
+        "mean_a_minus_b": -0.09250543019924518,
+        "ci95": [
+          -0.12729988448988322,
+          -0.06949055639935689
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2027,
+      "a": "modular_frozen__with_ctx",
+      "b": "modular_frozen__no_ctx",
+      "comparison": "context_descriptor_vs_none",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.11707437587341392,
+        "median_a_minus_b": -0.0674422146828959,
+        "ci95": [
+          -0.1574857076772228,
+          -0.08804270971554803
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 1.0752092312657464,
+        "point_b": 1.1375579043121649,
+        "mean_a_minus_b": -0.062348673046418446,
+        "ci95": [
+          -0.084831906163875,
+          -0.04730043820565194
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2027,
+      "a": "modular_frozen__with_ctx",
+      "b": "lowrank_linear__with_ctx",
+      "comparison": "frozen_vs_lowrank",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.05177208034010067,
+        "median_a_minus_b": 0.03210843067481006,
+        "ci95": [
+          0.03504144185291241,
+          0.068871808370914
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "mean_of_per_target_differences",
+        "not_the_same_as": "paired_pooled_difference (primary metric)"
+      },
+      "diff_paired_pooled": {
+        "key": "pooled_mse_vs_null",
+        "n": 48,
+        "point_a": 1.0752092312657464,
+        "point_b": 1.047881890505581,
+        "mean_a_minus_b": 0.02732734076016552,
+        "ci95": [
+          0.01745015181557006,
+          0.039626014502193115
+        ],
+        "ci95_excludes_zero": true,
+        "aggregation": "paired_pooled_ratio_difference",
+        "not_the_same_as": "paired_difference on mse_vs_null, which averages per-target ratios"
+      },
+      "aggregation_note": "diff averages per-target MSE/null ratios; diff_paired_pooled recomputes pooled_mse_vs_null (ratio of sums) on the same resampled targets. Opposite signs are not a mathematical contradiction."
+    }
+  ]
+}

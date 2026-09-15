@@ -1,0 +1,736 @@
+{
+  "source_id": "nadig_hepg2",
+  "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\nadig_hepg2\\NadigOConner2024_hepg2.h5ad",
+  "url": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_hepg2.h5ad/content",
+  "declared": {
+    "bytes_on_disk": 850590740,
+    "root_keys": [
+      "X",
+      "layers",
+      "obs",
+      "obsm",
+      "obsp",
+      "uns",
+      "var",
+      "varm",
+      "varp"
+    ],
+    "X": {
+      "storage": "dense",
+      "shape": [
+        145473,
+        9624
+      ],
+      "dtype": "float32",
+      "chunks": [
+        569,
+        76
+      ],
+      "compression": "gzip",
+      "nbytes_dense_estimate": 5600128608
+    },
+    "layers": {},
+    "has_raw": false,
+    "obsm_keys": [],
+    "uns_keys": [],
+    "obs_columns": [
+      {
+        "name": "UMI_count",
+        "readable": true,
+        "dtype": "float32",
+        "n_unique": 38700,
+        "example_levels": [
+          "11234.0",
+          "11068.0",
+          "16743.0",
+          "21488.0",
+          "19293.0",
+          "45146.0",
+          "20190.0",
+          "23912.0"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "batch",
+        "readable": true,
+        "dtype": "int64",
+        "n_unique": 56,
+        "example_levels": [
+          "3",
+          "12",
+          "53",
+          "39",
+          "24",
+          "55",
+          "43",
+          "14"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "cancer",
+        "readable": true,
+        "dtype": "bool",
+        "n_unique": 1,
+        "example_levels": [
+          "True"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "cell_barcode",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 145473,
+        "example_levels": [
+          "AAACCCAAGAATAGTC-3",
+          "AAACCCAAGACAGCTG-12",
+          "AAACCCAAGACCCTTA-53",
+          "AAACCCAAGACGCCCT-39",
+          "AAACCCAAGAGGCCAT-24",
+          "AAACCCAAGAGGTATT-55",
+          "AAACCCAAGAGTGACC-39",
+          "AAACCCAAGATGGCAC-43"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "cell_line",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 1,
+        "example_levels": [
+          "Hep-G2"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "disease",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 1,
+        "example_levels": [
+          "hepatoblastoma"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "gene",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 2394,
+        "example_levels": [
+          "KIAA1143",
+          "FEN1",
+          "RNPS1",
+          "PHF10",
+          "HSF1",
+          "SEPHS2",
+          "POLR2H",
+          "TFAM"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "gene_id",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 2392,
+        "example_levels": [
+          "ENSG00000163807",
+          "ENSG00000168496",
+          "ENSG00000205937",
+          "ENSG00000130024",
+          "ENSG00000185122",
+          "ENSG00000179918",
+          "ENSG00000163882",
+          "ENSG00000108064"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "gene_transcript",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 2679,
+        "example_levels": [
+          "4360_KIAA1143_P1P2_ENSG00000163807",
+          "3057_FEN1_P1P2_ENSG00000168496",
+          "7407_RNPS1_P1P2_ENSG00000205937",
+          "6279_PHF10_P1P2_ENSG00000130024",
+          "3959_HSF1_P1P2_ENSG00000185122",
+          "7779_SEPHS2_P1P2_ENSG00000179918",
+          "6549_POLR2H_P1P2_ENSG00000163882",
+          "8832_TFAM_P1P2_ENSG00000108064"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "guide_id",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 2679,
+        "example_levels": [
+          "KIAA1143_+_44803075.23-P1P2|KIAA1143_+_44803082.23-P1P2",
+          "FEN1_-_61560380.23-P1P2|FEN1_+_61560617.23-P1P2",
+          "RNPS1_+_2318108.23-P1P2|RNPS1_+_2318045.23-P1P2",
+          "PHF10_-_170124315.23-P1P2|PHF10_+_170124573.23-P1P2",
+          "HSF1_+_145515304.23-P1P2|HSF1_-_145515300.23-P1P2",
+          "SEPHS2_-_30457178.23-P1P2|SEPHS2_+_30457164.23-P1P2",
+          "POLR2H_+_184081227.23-P1P2|POLR2H_-_184081237.23-P1P2",
+          "TFAM_+_60145205.23-P1P2|TFAM_-_60145223.23-P1P2"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "ncounts",
+        "readable": true,
+        "dtype": "float32",
+        "n_unique": 38403,
+        "example_levels": [
+          "11140.0",
+          "10964.0",
+          "16559.0",
+          "21246.0",
+          "19127.0",
+          "44699.0",
+          "19938.0",
+          "23700.0"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "ngenes",
+        "readable": true,
+        "dtype": "int64",
+        "n_unique": 6576,
+        "example_levels": [
+          "3144",
+          "3363",
+          "4471",
+          "4427",
+          "4396",
+          "6472",
+          "4431",
+          "5072"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "nperts",
+        "readable": true,
+        "dtype": "int64",
+        "n_unique": 2,
+        "example_levels": [
+          "1",
+          "0"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "organism",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 1,
+        "example_levels": [
+          "human"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "percent_mito",
+        "readable": true,
+        "dtype": "float32",
+        "n_unique": 142677,
+        "example_levels": [
+          "0.11402884",
+          "0.09522949",
+          "0.08660336",
+          "0.08400037",
+          "0.098999634",
+          "0.16524166",
+          "0.16220902",
+          "0.071595855"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "percent_ribo",
+        "readable": true,
+        "dtype": "float32",
+        "n_unique": 142794,
+        "example_levels": [
+          "0.23473968",
+          "0.21224006",
+          "0.17621838",
+          "0.17716277",
+          "0.2160297",
+          "0.17248708",
+          "0.15011536",
+          "0.1913502"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "perturbation",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 2394,
+        "example_levels": [
+          "KIAA1143",
+          "FEN1",
+          "RNPS1",
+          "PHF10",
+          "HSF1",
+          "SEPHS2",
+          "POLR2H",
+          "TFAM"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "perturbation_type",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 1,
+        "example_levels": [
+          "CRISPR"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "tissue_type",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 1,
+        "example_levels": [
+          "cell_line"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "transcript",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 62,
+        "example_levels": [
+          "P1P2",
+          "P2",
+          "non-targeting",
+          "P1",
+          "ENST00000443236.1",
+          "ENST00000380743.4",
+          "ENST00000502662.1",
+          "ENST00000603053.1"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "z_gemgroup_UMI",
+        "readable": true,
+        "dtype": "float32",
+        "n_unique": 136061,
+        "example_levels": [
+          "-0.6110911",
+          "-0.07017054",
+          "0.20855156",
+          "0.09110092",
+          "0.041390125",
+          "0.20883274",
+          "-0.025113862",
+          "2.079665"
+        ],
+        "n_missing": 0
+      }
+    ],
+    "var_columns": [
+      {
+        "name": "chr",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 27,
+        "example_levels": [
+          "chr1",
+          "chr2",
+          "chr3",
+          "chr4",
+          "chr5",
+          "chr6",
+          "chr7",
+          "chr8"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "class",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 26,
+        "example_levels": [
+          "gene_version9",
+          "gene_version11",
+          "gene_version10",
+          "gene_version15",
+          "gene_version17",
+          "gene_version7",
+          "gene_version20",
+          "gene_version19"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "cv",
+        "readable": true,
+        "dtype": "float32",
+        "n_unique": 9622,
+        "example_levels": [
+          "2.4675095",
+          "1.1290288",
+          "2.7078555",
+          "1.366139",
+          "2.7559109",
+          "1.5145274",
+          "3.0988526",
+          "0.9247694"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "end",
+        "readable": true,
+        "dtype": "int64",
+        "n_unique": 9621,
+        "example_levels": [
+          "868202",
+          "959309",
+          "975865",
+          "1000172",
+          "1014540",
+          "1056118",
+          "1116361",
+          "1232067"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "ensembl_id",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 9624,
+        "example_levels": [
+          "ENSG00000228794",
+          "ENSG00000188976",
+          "ENSG00000187583",
+          "ENSG00000188290",
+          "ENSG00000187608",
+          "ENSG00000188157",
+          "ENSG00000131591",
+          "ENSG00000078808"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "fano",
+        "readable": true,
+        "dtype": "float32",
+        "n_unique": 9622,
+        "example_levels": [
+          "1.1408138",
+          "2.221775",
+          "1.2045392",
+          "4.068017",
+          "12.923033",
+          "1.5951899",
+          "1.1021979",
+          "2.8818426"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "gene_name",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 9624,
+        "example_levels": [
+          "LINC01128",
+          "NOC2L",
+          "PLEKHN1",
+          "HES4",
+          "ISG15",
+          "AGRN",
+          "C1orf159",
+          "SDF4"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "in_matrix",
+        "readable": true,
+        "dtype": "bool",
+        "n_unique": 1,
+        "example_levels": [
+          "True"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "length",
+        "readable": true,
+        "dtype": "int64",
+        "n_unique": 9186,
+        "example_levels": [
+          "43064",
+          "15106",
+          "9383",
+          "1210",
+          "13402",
+          "35998",
+          "34543",
+          "15159"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "mean",
+        "readable": true,
+        "dtype": "float32",
+        "n_unique": 9396,
+        "example_levels": [
+          "0.18736875",
+          "1.7429705",
+          "0.16427442",
+          "2.179681",
+          "1.7015084",
+          "0.6954375",
+          "0.11477776",
+          "3.3697941"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "ncells",
+        "readable": true,
+        "dtype": "int64",
+        "n_unique": 9160,
+        "example_levels": [
+          "25354",
+          "108918",
+          "21799",
+          "105994",
+          "100618",
+          "66234",
+          "16244",
+          "133173"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "ncounts",
+        "readable": true,
+        "dtype": "float32",
+        "n_unique": 9376,
+        "example_levels": [
+          "29499.0",
+          "275250.0",
+          "25717.0",
+          "345333.0",
+          "270154.0",
+          "107479.0",
+          "18016.0",
+          "533905.0"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "start",
+        "readable": true,
+        "dtype": "int64",
+        "n_unique": 9621,
+        "example_levels": [
+          "825138",
+          "944203",
+          "966482",
+          "998962",
+          "1001138",
+          "1020120",
+          "1081818",
+          "1216908"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "std",
+        "readable": true,
+        "dtype": "float32",
+        "n_unique": 9620,
+        "example_levels": [
+          "0.46233416",
+          "1.9678639",
+          "0.4448314",
+          "2.9777474",
+          "4.6892056",
+          "1.0532591",
+          "0.35567936",
+          "3.1162825"
+        ],
+        "n_missing": 0
+      },
+      {
+        "name": "strand",
+        "readable": true,
+        "dtype": "object",
+        "n_unique": 2,
+        "example_levels": [
+          "+",
+          "-"
+        ],
+        "n_missing": 0
+      }
+    ]
+  },
+  "verified": {
+    "digests": {
+      "md5": "af2be47f7477cf32fa6e4bec1c6a4868",
+      "sha256": "1af2f7b3e692ad3d077e6027d68a1f800619e29aa3f7a0efa70146fb7223a4bf"
+    },
+    "md5_matches_publisher": true,
+    "genes": {
+      "n_features": 9624,
+      "symbol_source": "var/gene_name",
+      "n_unique_symbols": 9624,
+      "n_duplicate_symbols": 0,
+      "duplicate_examples": {},
+      "n_on_official_axis": 9023,
+      "n_official_axis": 18533
+    },
+    "perturbation_column_candidates": [
+      "perturbation",
+      "gene"
+    ],
+    "perturbation_column_used": "perturbation",
+    "ntc": {
+      "levels_matched": [
+        "control"
+      ],
+      "n_cells_matched": 4976
+    },
+    "targets": {
+      "n_targeting_levels": 2393,
+      "n_cells_targeting": 140497,
+      "n_cells_ntc": 4976,
+      "cells_per_target": {
+        "min": 2,
+        "median": 45.0,
+        "max": 1213
+      },
+      "n_targets_ge_10_cells": 2346,
+      "n_targets_ge_30_cells": 1818,
+      "n_targets_ge_50_cells": 1061
+    },
+    "batch_like_columns": {
+      "batch": 56
+    },
+    "guide_like_columns": {
+      "guide_id": 2679
+    },
+    "ntc_available_per_batch": {
+      "1": 105,
+      "10": 71,
+      "11": 96,
+      "12": 91,
+      "13": 96,
+      "14": 103,
+      "15": 92,
+      "16": 107,
+      "17": 87,
+      "18": 115,
+      "19": 82,
+      "2": 80,
+      "20": 109,
+      "21": 5,
+      "22": 99,
+      "23": 102,
+      "24": 75,
+      "25": 91,
+      "26": 80,
+      "27": 79,
+      "28": 72,
+      "29": 94,
+      "3": 116,
+      "30": 101,
+      "31": 85,
+      "32": 81,
+      "33": 85,
+      "34": 104,
+      "35": 79,
+      "36": 7,
+      "37": 88,
+      "38": 115,
+      "39": 91,
+      "4": 103,
+      "40": 106,
+      "41": 91,
+      "42": 100,
+      "43": 104,
+      "44": 108,
+      "45": 73,
+      "46": 72,
+      "47": 88,
+      "48": 102,
+      "49": 106,
+      "5": 98,
+      "50": 82,
+      "51": 63,
+      "52": 94,
+      "53": 92,
+      "54": 82,
+      "55": 123,
+      "56": 23,
+      "6": 84,
+      "7": 112,
+      "8": 109,
+      "9": 78
+    },
+    "batch_column_used_for_pairing": "batch",
+    "counts_sampled": {
+      "n_cells_sampled": 3072,
+      "min": 0.0,
+      "max": 6761.0,
+      "any_negative": false,
+      "all_integral": true,
+      "fraction_zero_mean": 0.5649876096434262,
+      "library_size": {
+        "min": 2988.0,
+        "median": 15778.0,
+        "max": 127713.0,
+        "n_zero_library_cells": 0
+      }
+    },
+    "declared_library_column": {
+      "name": "ncounts",
+      "median": 15487.0,
+      "min": 2881.0,
+      "max": 143237.0
+    },
+    "overlaps": {
+      "signature_dir": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures",
+      "targets_shared_with_k562_essential": 2047,
+      "targets_shared_with_k562_gwps": 2386,
+      "targets_shared_with_rpe1_essential": 2354,
+      "axis_genes_shared_with_k562_essential": 7156,
+      "axis_genes_shared_with_k562_gwps": 7004,
+      "axis_genes_shared_with_rpe1_essential": 7342,
+      "targets_shared_with_all_local_sources": 2013,
+      "axis_genes_shared_with_all_local_sources": 6467,
+      "panel_targets_total": 300,
+      "panel_targets_observed_here": 0
+    },
+    "counts_look_like_raw_rna_counts": true
+  },
+  "uncertain": [
+    "Integrality and non-negativity were checked on sampled blocks, not on all 145473 cells.",
+    "Whether the object is the same processing as the GEO original is not established here: a mirror is a copy of an experiment, not an independent one, and its obs schema may be harmonised.",
+    "Panel coverage of 0/300 would mean this bundle tests transfer between contexts, not coverage of the VCC targets."
+  ]
+}

@@ -1,0 +1,21 @@
+Nessuna nuova evidenza rispetto al round precedente: rileggo la proposta e la confermo cosi' com'e'.
+
+RACCOMANDAZIONE: JSONL con compressione per blocchi.
+
+ORCH-RESULT-V1
+```json
+{
+  "summary": "Nessuna nuova evidenza: confermo la proposta del round precedente.",
+  "proposal": "Criteri di scelta e compromessi.\n1) Evoluzione dello schema: JSONL assorbe campi nuovi senza riscrivere il passato; CSV obbliga a gestire file con intestazioni diverse. Compromesso: JSONL costa spazio.\n2) Fedelta' dei campi annidati: JSONL li rappresenta direttamente; CSV li appiattisce in una stringa e la struttura si perde.\n3) Costo per byte: JSONL ripete le chiavi su ogni riga; con compressione per blocchi il divario si riduce molto, perche' le chiavi ripetute comprimono bene.\n4) Letture per intervallo di date: si risolve con la partizione giornaliera dei file, uguale per i due formati.\nRaccomandazione: JSONL, un file al giorno, compresso per blocchi.\nCondizioni in cui cambierebbe: schema stabile e nessun campo annidato, oppure un consumatore che legge solo tabelle senza codice.\nStima, non misura: il divario di spazio prima della compressione lo stimo fra il 20% e il 50%; dopo la compressione lo stimo sotto il 10%. Nessuna misura su questo carico.\nNota: se il volume crescesse di dieci volte riaprirei il confronto con un formato colonnare.",
+  "changes": [
+    "nessuna modifica: non ho nuove evidenze da aggiungere"
+  ],
+  "evidence": [],
+  "objections": [],
+  "resolved_objections": [],
+  "open_questions": [
+    "Non sappiamo la frequenza reale dei cambi di schema."
+  ],
+  "confidence": "medium"
+}
+```

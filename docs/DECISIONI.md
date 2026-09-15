@@ -17,7 +17,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-001 | I dati pesanti stanno fuori dal repository | attiva | 2026-09-11 | `configs/config.yaml`, `src/vcc2026/config.py` |
 | D-002 | Servono dati perturbazionali esterni: la previsione è zero-shot | attiva | 2026-09-11 | `docs/data_strategy_2026-09-11.md` |
 | D-003 | Prima un banco di prova locale, poi modelli più complessi | attiva | 2026-09-11 | `docs/data_strategy_2026-09-11.md` §6, `docs/revisione_analisi_2026-09-11.md` §6 |
-| D-004 | Ordine di acquisizione: CD4, poi Orion HCT116, poi i benchmark | attiva | 2026-09-12 | `docs/candidate_adversarial_review_2026-09-12.md` §5 |
+| D-004 | Ordine di acquisizione: CD4, poi Orion HCT116, poi i benchmark — **sostituita da D-031 per l'ordine operativo** | superata | 2026-09-12 | `docs/candidate_adversarial_review_2026-09-12.md` §5, [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md) |
 | D-005 | Nessun atlante completo e nessun servizio a pagamento su questa macchina | attiva | 2026-09-12 | `reports/candidate_verification/hardware.json` |
 | D-006 | Postura di sottomissione: decidere sulla direzione, comprimere l'ampiezza | attiva | 2026-09-11, misurata 2026-09-12 | `reports/pipeline/transfer_experiment.json`, [CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md) §3.4 |
 | D-007 | K562 resta come ablazione: non è scartata | attiva | 2026-09-12 | `docs/candidate_adversarial_review_2026-09-12.md` §3 |
@@ -33,6 +33,19 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-017 | `trial-00-controls` non si invia finché la conformità alle regole non è chiarita | attiva | 2026-09-12 | `docs/SOTTOMISSIONE.md` §2 |
 | D-018 | Il packaging si fa a memoria limitata, non su una macchina più grande | attiva | 2026-09-13 | `src/vcc2026/packaging.py`, [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.1 |
 | D-019 | La parità con `vcc prep` si dimostra con fixture a forma ufficiale e rifiuti bilaterali | attiva | 2026-09-13 | `tests/test_packaging_parity.py`, [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.5 |
+| D-020 | L'oracolo numerico è autonomo: ricalcola, non giudica biologia, e il candidato non è fidato | attiva | 2026-09-13 | `docs/oracle/CONTRATTO.md`, [CP-0007](checkpoints/0007-oracle-pairwise-loss.md), [CP-0009](checkpoints/0009-oracle-json-number-csv-error.md) |
+| D-021 | Le consultazioni multi-modello passano da un orchestratore locale che avvii tu | attiva | 2026-09-13 | `docs/ORCHESTRATORE.md`, `reports/orchestrator/prova-a-secco-2026-09-13/` |
+| D-022 | Un posto vuoto si copre con una seconda sessione del servizio ancora attivo, dichiarata prima e marcata dopo | attiva | 2026-09-14 | `docs/ORCHESTRATORE.md` §9-ter-ter, `configs/orchestrator/orchestrator.yaml`, `tests/test_orchestrator.py` (`StandInTests`) |
+| D-023 | La ricerca scientifica è una modalità separata: i livelli di provenienza non si promuovono, le piste le sceglie una regola, le contraddizioni non si chiudono | attiva | 2026-09-14 | `docs/RICERCA_SCIENTIFICA.md`, [CP-0010](checkpoints/0010-modalita-ricerca-scientifica.md), `tests/test_orchestrator_research.py` |
+| D-024 | Nel confronto modulare l'universo genico è l'intersezione dei geni effettivamente misurati, non il riempimento a zero | attiva | 2026-09-14 | [CP-0011](checkpoints/0011-primo-benchmark-modulare.md), `src/vcc2026/benchmark/universe.py`, D-009 |
+| D-025 | Metrica primaria del pilot modulare: `pooled_mse_vs_null` in spazio proxy; non inferiorità non dichiarata; LOCO a due contesti = trasferimento, non apprendimento generale del contesto | attiva | 2026-09-14 | [CP-0011](checkpoints/0011-primo-benchmark-modulare.md), `configs/benchmark.yaml` |
+| D-026 | Tre contesti perturbati: il descrittore di contesto e misurabile, non ancora utile | attiva | 2026-09-14 | [CP-0013](checkpoints/0013-hepg2-terzo-contesto.md), `configs/benchmark_3ctx.yaml` |
+| D-027 | Le metriche della gara non si sommano fra generatore e predittore | attiva | 2026-09-14 | [CP-0013](checkpoints/0013-hepg2-terzo-contesto.md), `reports/hepg2_2026-09-14/generator_x_predictor.json` |
+| D-028 | Il GO slim non entra nei descrittori: il controllo permutato va come quello vero | attiva | 2026-09-15 | [CP-0014](checkpoints/0014-go-slim-e-gpu.md), `reports/go_slim_2026-09-15/` |
+| D-029 | Nessun porting su GPU prima di aver sostituito la SVD completa con una randomizzata | attiva | 2026-09-15 | [CP-0014](checkpoints/0014-go-slim-e-gpu.md), [CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md), `reports/svd_2026-09-15/` |
+| D-030 | La griglia di rango della base resta {8, 16}; 32/64/128 non diventano il default | attiva | 2026-09-15 | [CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md), `reports/rank_2026-09-15/` |
+| D-031 | Ordine operativo: audit Jiang, poi Jurkat come quarto contesto; CD4 rinviato | attiva | 2026-09-15 | [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md), `docs/PIANO_OPERATIVO_2026-09-15.md` |
+| D-032 | Protocollo di valutazione congelato; i fold del 14–15 settembre sono sviluppo | attiva | 2026-09-15 | [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md), `configs/eval_protocol.yaml` |
 
 ---
 
@@ -400,3 +413,373 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Riaprire se:** cambia la versione di `vcc-cli`. I test importano `vcc.prep` e
   falliranno da soli se una convalida cambia; è il segnale che serve rifare il
   lavoro, non silenziare i test.
+
+### D-020 — L'oracolo numerico è autonomo: ricalcola, non giudica biologia, e il candidato non è fidato
+
+- **Perché:** un orchestratore multiagente può far convergere due modelli su un
+  numero sbagliato. Serve un verificatore che rifà i conti dai dati, senza
+  LLM in mezzo, e che non prenda dal candidato le soglie o le formule. Il
+  primo tipo di affermazione è un confronto di loss su casi appaiati, piccolo
+  abbastanza da collaudare il contratto prima di allargarlo.
+- **Come è fatta:** `src/oracle/`, contratto in `docs/oracle/CONTRATTO.md`.
+  Aritmetica razionale esatta (`fractions.Fraction`) dalla versione 0.2.0;
+  le stringhe decimali del report sono solo visualizzazione. Dalla 0.2.1
+  i campi numerici del JSON (candidato e configurazione) sono numeri
+  JSON, non stringhe, e un `csv.Error` del parser è un esito `error`.
+  CLI `python -m oracle`. Il JSON candidato può dichiarare medie,
+  differenza e conclusione; le chiavi di autorità (`abs_tol`,
+  `equivalence_threshold`, `formula`, …) sono ignorate. L'esito `pass`
+  richiede che tutti i controlli richiesti siano stati completati.
+- **Che cosa non è:** non valuta se A generalizza, se è statisticamente
+  superiore, se è biologicamente più corretto, o se il protocollo di
+  valutazione è valido. Non esegue test statistici. Non importa
+  `orchestrator` né `vcc2026`. Non è stato eseguito su loss della gara.
+- **Alternative scartate:** far giudicare l'ipotesi da un modello (circolare);
+  far scrivere al candidato il vincitore "corretto" (il verificatore deve
+  derivarlo); mettere il prototipo dentro `src/orchestrator/` (accoppierebbe
+  due lavori ancora instabili).
+- **Riaprire se:** si vuole un secondo tipo di affermazione, un test
+  statistico, o una chiamata esplicita dall'orchestratore. L'allaccio non
+  deve avvenire con un import silenzioso.
+### D-021 — Le consultazioni multi-modello passano da un orchestratore locale che avvii tu
+
+- **Perché:** più modelli su una stessa domanda producono molto testo e poche prove. Senza
+  un registro di che cosa è stato chiesto, a chi, in che ordine, e perché ci si è fermati,
+  resta una catena di riassunti — cioè il modo esatto in cui questo progetto ha già perso
+  dei caveat (CP-0002). Serviva anche un limite: un ciclo «fino a convergenza» senza tetto
+  consuma quote gratuite senza produrre evidenza.
+- **Come è fatta:** `src/orchestrator/`, avviata solo a mano con `orch start`. Nessuno
+  scheduler. Instradamento, contatori, timeout e condizioni di arresto sono codice
+  deterministico che legge solo la configurazione; una risposta di un modello può riempire
+  campi previsti e non può cambiare una regola. Prompt e risposte si scrivono una volta
+  sola e non si sovrascrivono. L'accordo fra due modelli è registrato come
+  `proposals_converged`, che non è `verified_complete`: quest'ultimo richiede controlli il
+  cui valore atteso stava nell'incarico prima della domanda.
+- **Il codice prodotto dai modelli non si esegue.** Finisce in `steps/*/quarantine/` come
+  artefatto da revisionare; `execution.model_code: run` è rifiutato dal caricatore della
+  configurazione. Eseguire richiede un meccanismo separato, che non esiste.
+- **Alternative scartate:** chiamare le API a pagamento dei quattro servizi (fuori da
+  D-005: nessun servizio a pagamento su questa macchina); estrarre i token di sessione dal
+  browser per interrogare endpoint privati (fragile e fuori dai termini d'uso: una pagina
+  guidata fallisce visibilmente, un endpoint copiato fallisce in silenzio); lasciare il
+  ciclo a un agente che decide da sé quando ripartire.
+- **Che cosa non è ancora dimostrato:** che gli adattatori verso i servizi reali sappiano
+  inviare e leggere. Al 13 settembre 2026 il motore è stato eseguito con risposte preparate
+  a mano, e DeepSeek e Kimi sono stati solo **aperti e osservati** nel browser, da profili
+  non autenticati (`reports/orchestrator/sonde-2026-09-13/`). Nessun messaggio è stato
+  inviato a nessun servizio.
+- **Riaprire se:** un servizio cambia interfaccia al punto da rendere inaffidabile il
+  canale web; oppure se diventa disponibile un accesso programmatico compreso negli
+  abbonamenti, che renderebbe superflua l'automazione del browser.
+
+### D-022 — Un posto vuoto si copre con una seconda sessione del servizio ancora attivo
+
+- **Perché:** la sera del 13 settembre Kimi ha risposto «troppo traffico» a ripetizione. Con
+  la sola politica dell'assenza il ciclo prosegue a una voce e, dopo due round di fila, si
+  ferma: corretto quando il servizio manca davvero, sprecato quando l'altro sta lavorando
+  bene. Una seconda sessione del servizio che risponde tiene due voci nel round.
+- **Perché *quello attivo*:** una seconda Kimi troverebbe lo stesso sovraccarico che ha
+  fermato la prima. La riserva ha senso solo se è del servizio che sta ancora consegnando,
+  quindi — con due risolutori — quella del compagno. Il caricatore rifiuta una riserva
+  della stessa famiglia del titolare, così l'errore non si scopre a run avviato.
+- **Come è fatta:** `stand_in:` nella route, mappa ruolo → servizio, letta prima
+  dell'avvio. Una riserva riusa la mappa di selettori già verificata (`profile`) e ha una
+  cartella di sessione sua (`profile_dir`), perché Chrome non apre due volte lo stesso
+  profilo e serve comunque un accesso separato. Al superamento di `absence_tolerance` il
+  posto passa alla riserva (`seat_reassigned`) invece di far fallire il run; se la riserva
+  non è raggiungibile il round prosegue a una voce, come se non ci fosse.
+- **Il prezzo, e dove è scritto:** due sessioni dello stesso modello non sono due modelli, e
+  un accordo fra loro è un modello che concorda con sé stesso. La convergenza decisa su un
+  round coperto esce con motivo `..._same_model`; la frase a schermo lo dice; il rapporto lo
+  ripete sotto le proposte finali e fra le decisioni che restano all'operatore. Alla riserva
+  viene detto che sta subentrando e che la proposta lasciata nel ruolo non è sua; al
+  compagno viene detto che sta leggendo il proprio stesso modello e che deve valutarlo con
+  più severità.
+- **Alternative scartate:** sostituire in silenzio (contro la regola dell'operatore, e
+  renderebbe il rapporto falso); fermare tutto a ogni assenza (spreca un servizio che
+  funziona); una seconda istanza del servizio caduto (stessa coda, stesso blocco);
+  chiedere all'operatore che fare a ogni assenza, con una domanda bloccante a schermo (un
+  run non presidiato si fermerebbe ad aspettare una persona, che è ciò che il progetto
+  vuole evitare).
+- **Riaprire se:** i round coperti da una riserva diventano la norma invece dell'eccezione
+  — a quel punto il ciclo non è più un confronto fra modelli diversi e va ripensato — oppure
+  se si aggiunge un terzo servizio, che renderebbe la riserva una scelta fra più famiglie
+  invece che l'unica disponibile.
+
+### D-023 — La ricerca scientifica è una modalità separata, e non promuove nulla
+
+- **Perché separata dal ciclo di debug:** quel ciclo porta due modelli a convergere su una
+  proposta, e il suo esito migliore è l'accordo. Una campagna di ricerca che ottimizzasse
+  l'accordo produrrebbe la cosa peggiore possibile: due modelli che si confermano a
+  vicenda una rassegna della letteratura scritta a memoria. Qui il successo è una sintesi
+  **tracciabile** — che cosa è stato cercato, che cosa trovato, che cosa sostiene o
+  contraddice un'ipotesi, che cosa resta da verificare — e l'accordo non ne fa parte.
+- **Come è fatta:** `mode: scientific_research` nell'incarico sceglie
+  `src/orchestrator/research/`, che riusa il motore esistente e cambia la forma della
+  campagna in tre fasi: ricerca indipendente, confronto e piste, ricerca mirata e sintesi.
+  La vista di ogni fase è costruita una volta sola prima di interrogare chiunque, così
+  l'ordine dei contatti non dà nulla al secondo. Gli incarichi senza `mode:` valgono
+  `debug` e si comportano esattamente come prima.
+- **I livelli di provenienza non si promuovono.** Una query è *proposta*, *dichiarata dal
+  worker*, o *osservata negli artefatti del canale*. Il livello lo assegna il programma,
+  mai la risposta; e il terzo **non è raggiungibile da nessun percorso di codice**, perché
+  il browser mostra che l'interruttore di ricerca era acceso e non quali query siano state
+  eseguite. Un test fallisce il giorno in cui qualcuno ne aggiunge uno senza l'artefatto
+  che lo giustifichi. Lo stesso vale per le fonti: *trovata in un elenco*, *abstract*,
+  *testo o sezione*, *non accessibile* sono livelli **dichiarati**, perché non abbiamo
+  guardato nessuno leggere.
+- **Le fonti si deduplicano su un identificatore, mai sulla somiglianza.** DOI normalizzato
+  o URL normalizzato; mancando entrambi, corrispondenza esatta di titolo, autori e anno.
+  Due titoli che si assomigliano sono di regola due articoli, e una fusione sbagliata
+  distrugge il record di chi ha trovato cosa. Lo stesso paper trovato da entrambi è una
+  fonte sola, ma i livelli di consultazione restano separati per worker.
+- **Le piste le sceglie una regola, non un modello:** la prima pista ben formata di ciascun
+  worker — ipotesi, evidenze di partenza, spiegazione alternativa, ricerca che le distingue
+  — ordinate per ruolo, deduplicate, al massimo due. Nessun ripescaggio: se i due propongono
+  la stessa pista, la pista è una sola, e il fatto che coincidano è un'informazione.
+  Nessun modello viene interrogato su come spendere il budget residuo.
+- **Il programma non chiude nessuna contraddizione, e non inventa una sintesi.** Non è in
+  grado di leggere la fonte che deciderebbe un disaccordo; il dossier conserva le due
+  sintesi separate e verbatim. Una sintesi affidata a un LLM resta un'opzione futura
+  esplicita, con un budget proprio. Le dichiarazioni di saturazione dei worker restano
+  dichiarazioni attribuite: «non abbiamo trovato evidenze nelle ricerche registrate» non
+  diventa «non esistono evidenze».
+- **L'oracolo numerico non entra qui.** `src/oracle/` ricalcola confronti di loss da CSV e
+  non è un verificatore della letteratura (D-020): un test verifica che la modalità non lo
+  importi affatto.
+- **Alternative scartate:** un solo ciclo con un prompt diverso (l'esito resterebbe
+  `proposals_converged`, cioè accordo, che qui è il segnale sbagliato); far scegliere le
+  piste a uno dei due worker o a Claude (metterebbe un giudizio nel punto in cui si spende
+  il budget); far scrivere il dossier a un terzo modello (una sintesi consensuale nasconde
+  proprio i disaccordi che la campagna deve consegnare); chiudere una contraddizione quando
+  un worker dichiara di averla risolta (sarebbe una parte in causa che si autoassolve).
+- **Che cosa non è ancora dimostrato:** che DeepSeek o Kimi rispondano a un prompt di
+  ricerca, e che le distinzioni reggano su risposte vere. Al 14 settembre 2026 esiste solo
+  una prova a secco con risposte scritte a mano
+  (`reports/orchestrator/prova-a-secco-ricerca-2026-09-14/`). **Kimi non ha un controllo di
+  ricerca osservato**, quindi una campagna reale gira oggi con un canale che cerca e uno
+  che pianifica, e il rapporto lo dichiara.
+- **Riaprire se:** una campagna reale mostra che i worker riempiono i livelli di
+  consultazione senza riguardo, nel qual caso il contratto va stretto o la modalità va
+  ripensata; oppure se un canale comincia a esporre le query eseguite, che renderebbe
+  raggiungibile `observed_in_channel` e cambierebbe il valore di tutto il registro.
+
+### D-024 — Universo genico = intersezione misurata, non riempimento a zero
+
+- **Perché:** LowRankRidge riempie i geni non osservati a zero prima della SVD.
+  Quello zero è letto come «nessun effetto», che è una previsione plausibile, e
+  inventa evidenza (D-009). Fra K562 e RPE1 i pannelli non coincidono: riusarlo
+  indiscriminatamente mescolerebbe assenze di misura con assenze biologiche.
+- **Come è fatta:** `src/vcc2026/benchmark/universe.py` tiene l'AND delle maschere
+  `observed`. SVD e loss vedono solo quell'universo. Un array ancora largo
+  18.533 viene rifiutato. La copertura persa è scritta in
+  `reports/benchmark_2026-09-14/gene_universe.json` (6700/18533 con k562_essential,
+  6714 senza).
+- **Alternative scartate:** zero-fill (non neutrale); fattorizzazione con loss
+  mascherata (implementabile, non usata in questo pilot: si riapre se serve
+  recuperare i geni esclusi senza inventare zeri).
+- **Riaprire se:** si implementa una fattorizzazione mascherata e si misura che
+  recupera i geni fuori intersezione senza trattarli come invariati.
+
+### D-025 — Metrica primaria proxy, niente non-inferiorità, LOCO a due contesti = trasferimento
+
+- **Perché:** senza metrica fissata prima si sceglie dopo aver visto il test. Senza
+  un margine di non inferiorità misurato sulla ripetibilità della baseline, «non
+  inferiore» è una frase vuota. Con due contesti perturbati, tenere fuori uno
+  lascia un solo contesto di training: il descrittore di contesto non varia, e
+  il test non identifica una dipendenza generale dal contesto.
+- **Come è fatta:** `configs/benchmark.yaml` fissa `pooled_mse_vs_null` in spazio
+  log2FC pseudobulk, `non_inferiority_margin: null`, e
+  `context_dependence_identifiable: false` sulle direzioni. Alpha 0,1974 è
+  rifiutato nel codice. I NTC del contesto di test sono ammessi e condivisi fra
+  i bracci. Nessuna variante è scelta sul test esterno.
+- **Misurato:** [CP-0011](checkpoints/0011-primo-benchmark-modulare.md). Esito del
+  confronto architetturale: inconcludente per l'adozione. Low-rank con e senza
+  contesto: MSE identica a quattro decimali.
+- **Riaprire se:** esiste un terzo contesto perturbato locale con bersagli
+  condivisi, che renderebbe `z_c` variabile in training; oppure un bundle a
+  singola cellula che permetta di fissare la metrica primaria sulle sei metriche
+  VCC e un margine di non inferiorità dalla ripetibilità della baseline.
+
+### D-026 — Tre contesti perturbati: il descrittore di contesto è misurabile, non ancora utile
+
+- **Perché:** D-025 si riapre alla sua stessa condizione — «esiste un terzo
+  contesto perturbato locale con bersagli condivisi». HepG2 Nadig è stato
+  acquisito, verificato e trasformato in firme con la stessa definizione delle
+  altre. Da qui in poi ogni fold esterno addestra su due contesti, quindi il
+  descrittore di contesto varia in training e il confronto con/senza contesto
+  diventa **identificabile**. Identificabile non vuol dire conclusivo: con due
+  valori il modello può distinguere i contesti, non può imparare come la risposta
+  dipenda dal contesto in generale, e ogni contesto viene da un esperimento solo,
+  quindi biologia e provenienza restano confuse.
+- **Come è fatta:** `configs/benchmark_3ctx.yaml` fissa tre fold esterni
+  (K562+RPE1 → HepG2, K562+HepG2 → RPE1, RPE1+HepG2 → K562), lascia fuori
+  `k562_essential` così che i due dataset K562 non possano finire su lati
+  opposti, tiene la metrica primaria e il margine `null` di D-025, e fissa
+  **prima dei run** la regola con cui il trasferimento combina due sorgenti: peso
+  uguale per contesto biologico, diviso fra i dataset di quel contesto
+  (`context_equal_weights`). L'ampiezza si calibra su una coppia interna al
+  training fra due contesti diversi, etichettata `cross_context_within_training`;
+  alpha 0,1974 resta rifiutato nel codice.
+- **Misurato:** [CP-0013](checkpoints/0013-hepg2-terzo-contesto.md). Il
+  descrittore di contesto non aiuta in modo sistematico (media della differenza
+  con − senza: +9,73 sulla MLP unica, +0,02 sul low-rank, −0,05 sulla base
+  congelata); la differenza appaiata favorevole alla base congelata misurata in
+  CP-0011 cambia segno in tutti e tre i fold.
+- **Riaprire se:** esiste un **quarto** contesto perturbato, di lignaggio diverso
+  dai tre, con bersagli condivisi: è la prima configurazione in cui un fold lascia
+  tre contesti in training e «il descrittore non porta informazione» diventa
+  distinguibile da «due valori non bastano a stimarne l'uso». Oppure se compare un
+  modo di separare biologia e batch dentro un contesto solo.
+
+### D-027 — Le metriche della gara non si sommano fra generatore e predittore
+
+- **Perché:** sulle cellule HepG2 reali, cambiare **solo** il generatore porta il
+  Jaccard sui geni significativi da 0,003 a 0,120 su un modello che predice
+  *nessun cambiamento*, e azzera contemporaneamente la direction fidelity. Il
+  predittore invece domina la PDS (0,738 contro 0,425 del nullo). Un guadagno sul
+  punteggio complessivo non dice quale dei due fattori l'ha prodotto, e una
+  metrica che premia il realismo del generatore può essere alzata senza alcuna
+  capacità predittiva.
+- **Come è fatta:** ogni misura sulle sei metriche dichiara **quale generatore** e
+  **quale predittore** l'ha prodotta, e i due non si variano insieme. Il confronto
+  fra generatori usa gli stessi controlli reali in tutti i bundle
+  (`control_source: real`) e le stesse cellule di riferimento. Per un dataset
+  esterno si riportano metriche grezze, senza inventare ancore: nessuna
+  normalizzazione e nessun punteggio di leaderboard
+  (`scripts/57_generator_x_predictor.py`).
+- **Misurato:** [CP-0013](checkpoints/0013-hepg2-terzo-contesto.md) §3, tabella
+  generatore × predittore su 25 bersagli.
+- **Riaprire se:** una misura con più bersagli e con intervalli mostra che le due
+  direzioni non si contraddicono, oppure se la gara pubblica ancore che rendano le
+  sei metriche confrontabili fra loro su un dataset esterno.
+
+### D-028 — Il GO slim non entra nei descrittori, e il controllo permutato dice perché
+
+- **Perché:** la regola era scritta in `docs/ENCODER_INPUTS.md` §6 prima che il run
+  esistesse, e le sue due condizioni di scarto sono scattate entrambe. B1 (basale +
+  contesto + 140 bit GO) non batte B0 (basale + contesto): è peggio in 10 confronti
+  appaiati su 12. E B3, che usa le **stesse** 140 colonne con i valori mescolati fra
+  i geni a seed fisso, va come B1. Il legame gene↔annotazione non porta segnale in
+  questo disegno; le colonne si comportano come 140 colonne qualsiasi della stessa
+  sparsità.
+- **Come è fatta:** il codice resta, spento. `DescriptorBank.include_go_slim` è
+  `false` per impostazione predefinita; la tabella congelata
+  (`<data_root>/artifacts/g001/go_slim_table.npz`) e `scripts/58_build_go_slim_table.py`
+  restano, con gli sha256 delle quattro fonti nel manifesto, perché un esperimento
+  negativo deve poter essere rifatto. `configs/benchmark_go_slim.yaml` è il
+  protocollo eseguito, non una proposta.
+- **Misurato:** [CP-0014](checkpoints/0014-go-slim-e-gpu.md) §3.2, run `g002`,
+  `reports/go_slim_2026-09-15/`.
+- **Non segue da questa decisione:** che l'annotazione funzionale sia inutile in
+  generale, né che convenga passare a un embedding più grande. La riserva (ProtT5,
+  ESM-2, gene2vec) **non** si apre: se l'annotazione curata non batte la propria
+  permutazione, un vettore più grande non risponde a questa domanda.
+- **Riaprire se:** il disegno cambia in modo che l'annotazione possa agire — per
+  esempio con un quarto contesto perturbato, o con un decoder che condivida
+  parametri fra geni della stessa categoria invece di trattare i bit come colonne
+  indipendenti; oppure se un run con tutti i 2.315 bersagli condivisi, invece dei
+  160 del pilot, mostra un effetto che qui era sotto la risoluzione.
+
+### D-029 — Nessun porting su GPU prima di aver tolto la SVD completa
+
+- **Perché:** il codice attuale non può usare una GPU — ogni decoder è numpy scritto
+  a mano, `torch` non è nemmeno una dipendenza, e l'unico `import torch` del
+  progetto serve a chiedere se esiste CUDA per lo scorer. E anche potendo, al
+  formato del pilot l'aritmetica è 1,3 s su 223: non c'è niente da accelerare.
+  Quando il formato crescerà, il passo che esplode è la SVD, e lì la leva è
+  algoritmica: `MaskedLowRank.fit` calcola **tutti** i valori singolari per
+  tenerne 16. Misurato su matrici di risposta reali, una SVD randomizzata di rango
+  16 vale 11,9× a 320 righe e 42,2× a 1.280, con l'1,3–1,6% di errore sui valori
+  singolari — più di quanto una GPU darebbe su queste forme, su CPU, per una
+  funzione.
+- **Come è fatta:** `requirements-gpu.txt` esiste e **non contiene torch**:
+  contiene `gpudge` e `pdex`, cioè i backend di differential expression che
+  accelerano lo scorer, che è l'unico punto con un percorso GPU già scritto.
+  `docs/CONSEGNA_GPU.md` dice che cosa trasferire e quali comandi lanciare, e
+  quale comando usa davvero la scheda (uno solo: l'esperimento sulle sei
+  metriche). `scripts/59_gpu_readiness.py` rimisura tutto sulla macchina di
+  destinazione, e `de_backend_resolved` va letto: se dice ancora `scanpy`, la GPU
+  non sta entrando.
+- **Misurato:** [CP-0014](checkpoints/0014-go-slim-e-gpu.md) §3.4,
+  `reports/gpu_2026-09-15/gpu_readiness.json`.
+- **Aggiornamento 2026-09-15 (CP-0015).** La randomizzata esiste, è
+  configurabile, ed è stata rimisurata **sulle predizioni**, non solo sui
+  valori singolari. La regola di sostituzione scritta prima dei run (banda
+  0,01 sul pooled appaiato, ogni fold) **non** è soddisfatta: 4 fold su 48
+  escono dalla banda, tutti `modular_frozen` con contesto, segni misti.
+  L'1% di errore sui valori singolari convive con un 18% di differenza fra
+  le due ricostruzioni di rango 16. Metodo predefinito: `exact`.
+  `randomized` resta un flag. Il risparmio reale su questo formato è 124 s
+  di orologio su 331 s, non 9,7×, e il picco RSS non si muove. Nessun
+  porting GPU ne segue.
+- **Riaprire se:** la randomizzata viene adottata come default dopo una
+  misura che soddisfa una regola prefissata sulle predizioni, e la SVD non
+  è più il collo di bottiglia; oppure se si decide di addestrare un modello
+  generativo di conteggi, che è l'unico lavoro previsto in cui una GPU
+  sarebbe il primo strumento e non l'ultimo (R-4, `ESECUZIONE_REMOTA.md` §4).
+
+### D-030 — La griglia di rango resta {8, 16}
+
+- **Perché:** allargare a {16, 32, 64, 128} fa scegliere 64 al lowrank su
+  tutti e tre i fold seen, e quel 64 **peggiora** il test esterno di
+  0,14–0,35 di MSE/nullo contro la griglia {8, 16}, IC senza zero. Il frozen
+  "sceglie" 128 su una griglia interna piatta (differenze ~10⁻⁴): non è una
+  selezione. Il rango 16 cattura il 50% della varianza di *questa* matrice
+  di training; il 128 ne cattura l'87% e non è per questo il migliore in
+  trasferimento.
+- **Come è fatta:** `configs/benchmark.yaml` e `configs/benchmark_3ctx.yaml`
+  restano a `rank_grid: [8, 16]`. `configs/benchmark_rank.yaml` è il
+  protocollo eseguito, non una proposta. Nessun yaml storico è stato
+  riscritto.
+- **Misurato:** [CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md) §3.3,
+  `reports/rank_2026-09-15/rank_summary.json`.
+- **Riaprire se:** un run con tutti i 2.315 bersagli condivisi, o un quarto
+  contesto, mostra che un rango >16 scelto internamente **trasferisce** sul
+  test; oppure se la validazione interna diventa un vero fold
+  cross-context con abbastanza bersagli da distinguere 16 da 32 sul frozen.
+
+### D-031 — Ordine operativo: Jiang, poi Jurkat; CD4 rinviato
+
+- **Perché:** il piano approvato il 15 settembre mette in testa la diversità
+  di contesto (sei linee Jiang, Jurkat T) sugli studi già consigliati dal
+  profilo della gara. CD4 resta la migliore copertura del pannello 300
+  (297/300 in libreria) ma i single-cell pesano 1,7 TB: non è il primo
+  download. Orion resta condizionato alla licenza.
+- **Come è fatta:** Jiang è `metadata_verified`, non abilitato, RDS non
+  aperti. Jurkat è candidato quarto contesto sul mirror da 1,29 GB, file
+  non aperto oggi. Entrambi i blocchi grandi vanno su un runtime che abbia
+  misurato disco e persistenza: questa macchina il 15 settembre aveva
+  11,3 GiB liberi e non può tenere il pavimento da 10 GiB se scarica TGFB.
+- **Evidenza:** [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md),
+  `reports/jiang_2026-09-15/jiang_probe.json`,
+  `reports/nadig_reconcile_2026-09-15/nadig_reconciliation.json`,
+  `reports/runtime_2026-09-15/runtime_inventory.json`.
+- **Cosa resta di D-004:** CD4 è ancora la pista di copertura e di lignaggio
+  verso A. Non è scartata; è dopo l'audit dei dataset esplicitamente
+  consigliati. Non contare GEO, Zenodo e S3 come tre fonti distinte.
+- **Riaprire se:** Jiang non ha NTC abbinabili o counts grezzi; Jurkat
+  mirror non è lo stesso esperimento GEO; oppure una sorgente CRISPRi in
+  linea T matura o squamosa diventa scaricabile sotto tetto di byte.
+
+### D-032 — Protocollo di valutazione congelato
+
+- **Perché:** i fold del 14–15 settembre (m001–m004, g001–g002, s001–s002,
+  r001, generatore×predittore HepG2) sono già stati consultati. Un seed
+  nuovo sulle stesse tre linee non è una replica biologica. Senza un
+  protocollo scritto prima, ogni confronto successivo diventa sviluppo
+  camuffato da conferma.
+- **Come è fatta:** `configs/eval_protocol.yaml` è `frozen: true`. Due
+  compiti (`new_context_seen_target`, `new_context_unseen_target`). NTC
+  del contesto query ammessi; risposte perturbate del query vietate.
+  Seed di conferma **4242**, non ancora aperto. Seed 2026 e 2027 =
+  sviluppo. Ancore locali con cellule disgiunte; la media perturbativa
+  ufficiale è un'ancora, non un predittore. Sei metriche grezze, mai
+  mediate. Promozione solo se l'IC95 appaiato su dati di conferma è
+  interamente favorevole e non ci sono danni oltre tolleranza.
+- **Misurato:** 12 split esistenti, 0 fallimenti di leakage algebrico,
+  tutti etichettati sviluppo.
+  `reports/eval_protocol_2026-09-15/split_audit.json`.
+- **Riaprire se:** arriva un quarto contesto con split già congelati, o
+  ancore ufficiali `b`/`r` per un dataset esterno, o si decide una
+  submission diagnostica senza conferma indipendente (resta esplorativa).

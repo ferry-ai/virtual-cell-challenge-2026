@@ -1,0 +1,30 @@
+{
+  "che_cosa": "Individuazione e collaudo delle modalita' del compositore di DeepSeek, e selettore dei messaggi dalla conversazione di prova dell'operatore.",
+  "quando_utc": "2026-09-13T18:19Z / 18:26Z",
+  "messaggi": {
+    "struttura_osservata": {
+      "messaggio_utente": "div.d29f3d7d.ds-message",
+      "messaggio_assistente": "div.ds-message, che include il ragionamento («Riflessione per 1 secondo»)",
+      "ragionamento": "div.ds-markdown",
+      "corpo_della_risposta": "div.ds-markdown.ds-assistant-message-main-content"
+    },
+    "selettore_adottato": "div.ds-assistant-message-main-content",
+    "perche": "e' l'unico che isola la risposta: .ds-message conta anche i messaggi dell'utente, .ds-markdown comprende il blocco di ragionamento"
+  },
+  "modalita": {
+    "trovate": [
+      "Pensiero Profondo",
+      "Ricerca intelligente"
+    ],
+    "elemento": "div.ds-toggle-button, con lo stato in aria-pressed (semantico, non una classe offuscata)",
+    "esperimento": "acceso e rispento il pulsante per capire come si legge lo stato; verificato che al termine l'elemento fosse identico a prima",
+    "stato_misurato_nel_profilo": {
+      "pensiero_profondo": true,
+      "ricerca_intelligente": true
+    },
+    "sorpresa": "«Pensiero Profondo» risultava GIA' attivo: la premessa che fosse disattivato di default non corrisponde a quello che ho misurato in questo profilo",
+    "meccanismo": "l'adattatore impone lo stato dichiarato in configurazione prima del primo messaggio e lo riverifica; se non riesce, non invia nulla",
+    "prova_dal_vivo": "apply_modes su pagina reale: {'pensiero_profondo': True}, zero clic perche' lo stato era gia' quello richiesto"
+  },
+  "da_decidere_dall_operatore": "«Ricerca intelligente» e' accesa. Nel ciclo a due significa che nel ragionamento entra materiale dal web che non passa dal registro del run, e che DeepSeek e Kimi non lavorano nelle stesse condizioni. L'incarico di collaudo dice «niente strumenti esterni». Una riga di configurazione la spegne, ma la scelta non e' mia."
+}

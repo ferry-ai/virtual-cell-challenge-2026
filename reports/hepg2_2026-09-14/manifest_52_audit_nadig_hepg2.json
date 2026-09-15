@@ -1,0 +1,74 @@
+{
+  "run_id": "hepg2_2026-09-14",
+  "stage": "52_audit_hepg2",
+  "started_utc": "2026-09-14T20:14:57.399397+00:00",
+  "finished_utc": "2026-09-14T20:14:57.564269+00:00",
+  "seed": null,
+  "config": {
+    "h5ad": "C:\\Users\\ferra\\vcc2026-data\\raw\\nadig_hepg2\\NadigOConner2024_hepg2.h5ad",
+    "out": "reports\\hepg2_2026-09-14",
+    "source_id": "nadig_hepg2",
+    "url": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_hepg2.h5ad/content",
+    "expect_md5": "af2be47f7477cf32fa6e4bec1c6a4868",
+    "signatures": "None",
+    "blocks": "12",
+    "block_rows": "256",
+    "seed": "2026",
+    "skip_digest": "False",
+    "allow_overwrite": "False"
+  },
+  "inputs": {
+    "h5ad": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\nadig_hepg2\\NadigOConner2024_hepg2.h5ad",
+      "exists": true,
+      "bytes": 850590740,
+      "mtime_utc": "2026-09-14T20:14:15.075712+00:00",
+      "sha256": "5f3b76286e94af3c206c709c044ae1f4822517c0b7e61c91e582ac6c7f1c1c4a",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "outputs": {
+    "audit": {
+      "path": "reports\\hepg2_2026-09-14\\nadig_hepg2_audit.json",
+      "exists": true,
+      "bytes": 17397,
+      "mtime_utc": "2026-09-14T20:14:57.399398+00:00",
+      "sha256": "646e7b843f3fbb2e1eb350987ad5b4357c5ffc199a9da682d7f42b46d5375011",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "n_cells": 145473,
+    "n_features": 9624,
+    "n_targeting_levels": 2393,
+    "n_cells_ntc": 4976,
+    "counts_look_like_raw_rna_counts": true,
+    "panel_targets_observed_here": 0
+  },
+  "notes": [
+    "Sampled blocks, never the dense matrix.",
+    "A file named raw is a declaration; the arithmetic is the check."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:/Users/ferra/vcc2026-data"
+    }
+  }
+}

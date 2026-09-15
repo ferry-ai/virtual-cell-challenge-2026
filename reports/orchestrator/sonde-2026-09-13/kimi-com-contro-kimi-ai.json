@@ -1,0 +1,27 @@
+{
+  "che_cosa": "Confronto fra kimi.com e kimi.ai, da profilo usa-e-getta non autenticato. Sola lettura: nessun accesso, nessun messaggio.",
+  "quando_utc": "2026-09-13T18:04Z",
+  "perche": "la finestra di accesso di kimi.com dice «谷歌登录用户，请访问 kimi.ai» (utenti con accesso Google: usate kimi.ai) e offre solo QR WeChat o telefono +86",
+  "kimi_com": {
+    "lingua": "zh-CN",
+    "accessi_offerti": [
+      "QR WeChat",
+      "telefono +86 con SMS"
+    ]
+  },
+  "kimi_ai": {
+    "url_finale": "https://www.kimi.ai/",
+    "lingua_dichiarata": "it",
+    "titolo": "Kimi AI con K3 | Progettato per l'agentic coding e il knowledge work",
+    "interfaccia": "italiana: 'Nuova chat', 'Accedi', 'Chiedi qualsiasi cosa...', 'Lingua'",
+    "reso_in_secondi": 11.7,
+    "compositore": "div.chat-input-editor[role=textbox], largo 734 — lo stesso selettore gia' registrato osservando kimi.com",
+    "errori_http": [
+      "401 GetSubscriptionStats",
+      "401 GetUserStorageQuota (nessuna sessione)"
+    ],
+    "richieste_fallite": "solo beacon di Google Analytics (ERR_ABORTED): irrilevanti"
+  },
+  "conseguenza": "url del profilo kimi cambiato da www.kimi.com a www.kimi.ai. Il problema della lingua sparisce da solo: kimi.ai serve gia' l'italiano.",
+  "errore_mio": "avevo scelto kimi.com senza verificarlo, e l'avevo scritto nel profilo con il commento «da confermare al primo accesso». La conferma e' arrivata adesso, ed era negativa."
+}

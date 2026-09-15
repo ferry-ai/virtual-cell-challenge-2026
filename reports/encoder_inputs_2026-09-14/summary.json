@@ -1,0 +1,151 @@
+{
+  "retrieved_at": "2026-09-14T20:16:18.089895+00:00",
+  "claim_type": {
+    "local_lists": "measured",
+    "remote_heads": "verified_on_file_or_headers",
+    "downloads": "verified_on_file",
+    "coverage": "verified_on_file"
+  },
+  "vcc_targets": 300,
+  "vcc_on_official_axis": 300,
+  "hgnc": {
+    "n_approved_symbols": 45054,
+    "n_columns": 53,
+    "columns": [
+      "hgnc_id",
+      "symbol",
+      "name",
+      "locus_group",
+      "locus_type",
+      "status",
+      "location",
+      "alias_symbol",
+      "alias_name",
+      "prev_symbol",
+      "prev_name",
+      "gene_group",
+      "gene_group_id",
+      "date_approved_reserved",
+      "date_symbol_changed",
+      "date_name_changed",
+      "date_modified",
+      "entrez_id",
+      "ensembl_gene_id",
+      "vega_id",
+      "ucsc_id",
+      "ena",
+      "refseq_accession",
+      "ccds_id",
+      "uniprot_ids",
+      "pubmed_id",
+      "mgd_id",
+      "rgd_id",
+      "lsdb",
+      "cosmic",
+      "omim_id",
+      "mirbase",
+      "homeodb",
+      "snornabase",
+      "bioparadigms_slc",
+      "orphanet",
+      "pseudogene.org",
+      "horde_id",
+      "merops",
+      "imgt",
+      "iuphar",
+      "kznf_gene_catalog",
+      "mamit-trnadb",
+      "cd",
+      "lncrnadb",
+      "enzyme_id",
+      "intermediate_filament_db",
+      "rna_central_id",
+      "lncipedia",
+      "gtrnadb",
+      "agr",
+      "mane_select",
+      "gencc"
+    ],
+    "vcc300": {
+      "n": 300,
+      "approved": 299,
+      "unique_alias": 1,
+      "ambiguous": 0,
+      "unmapped": 0,
+      "with_ensg": 300,
+      "with_uniprot": 300,
+      "protein_coding": 300,
+      "unmapped_or_ambiguous": []
+    },
+    "k562_gwps_unique_targets": {
+      "n": 2659,
+      "approved": 2582,
+      "unique_alias": 72,
+      "ambiguous": 4,
+      "unmapped": 1,
+      "with_ensg": 2653,
+      "with_uniprot": 2649,
+      "protein_coding": 2646
+    }
+  },
+  "goa_vcc": {
+    "n": 300,
+    "with_any_go": 300,
+    "with_bp": 279,
+    "with_direct_slim": 280,
+    "with_propagated_slim": 295,
+    "iea_only_among_annotated": 0,
+    "experimental_codes_considered": [
+      "EXP",
+      "HDA",
+      "HEP",
+      "HGI",
+      "HMP",
+      "HTP",
+      "IDA",
+      "IEP",
+      "IGI",
+      "IMP",
+      "IPI"
+    ],
+    "missing_examples": [],
+    "n_missing": 0,
+    "n_slim_terms": 140
+  },
+  "string_vcc": {
+    "n_proteins": 19699,
+    "vcc_preferred_name_hits": 300,
+    "vcc_preferred_name_multi_id": 0,
+    "vcc_miss_examples": [],
+    "k562_gwps_preferred_name_hits": 2620
+  },
+  "gene2vec_vcc": null,
+  "skipped_large": {
+    "string_links_full_combined": {
+      "declared_size": "79.3 MB",
+      "why_skip": "above small-probe budget; includes coexpression channel"
+    },
+    "string_sequence_embeddings_prott5": {
+      "declared_size": "36.4 MB",
+      "why_skip": "coverage equals STRING protein.info; download later if GO ablation wins"
+    },
+    "string_network_embeddings": {
+      "declared_size": "18.7 MB",
+      "why_skip": "graph includes coexpression; keep out of mode-B rigorous set"
+    },
+    "esm2_t6_8M": {
+      "declared_size": "29.93 MB (HuggingFace file listing)",
+      "why_skip": "weights exist (MIT); not needed to measure mapping coverage"
+    },
+    "reactome_uniprot2reactome": {
+      "declared_size": "41 MB uncompressed (directory listing 2026-06-19)",
+      "why_skip": "larger than GOA; GO slim is the first functional source"
+    },
+    "corum_human": {
+      "declared_size": "unknown before HEAD",
+      "why_skip": "CC-BY-NC-4.0 on the CORUM site; same NC concern as Orion"
+    }
+  },
+  "cache": "C:\\Users\\ferra\\vcc2026-data\\interim\\encoder_inputs_2026-09-14",
+  "out": "reports\\encoder_inputs_2026-09-14"
+}

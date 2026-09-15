@@ -1,0 +1,67 @@
+{
+  "run_id": "svd_2026-09-15",
+  "stage": "60_compare_factorization",
+  "started_utc": "2026-09-14T23:32:59.806591+00:00",
+  "finished_utc": "2026-09-14T23:32:59.846792+00:00",
+  "seed": 2026,
+  "config": {
+    "matrix": "None",
+    "method": "None",
+    "rank": "16",
+    "seed": "2026",
+    "n_oversamples": "10",
+    "n_iter": "2",
+    "out_factors": "None",
+    "out_json": "None",
+    "out": "reports\\svd_2026-09-15",
+    "config": "None",
+    "signatures": "None",
+    "direction": "k562_rpe1_to_hepg2",
+    "protocol": "new_context_seen_target",
+    "split_seed": "2026",
+    "ranks": "[16, 32, 64, 128]",
+    "factorization_seeds": "[2026, 2027, 2028]",
+    "exact_run": "None",
+    "randomized_run": "None",
+    "band": "0.01",
+    "n_boot": "200",
+    "allow_overwrite": "False"
+  },
+  "inputs": {},
+  "outputs": {
+    "report": {
+      "path": "reports\\svd_2026-09-15\\factorization_comparison.json",
+      "exists": true,
+      "bytes": 23727,
+      "mtime_utc": "2026-09-14T23:32:59.806591+00:00",
+      "sha256": "f70e0841dc74408723e6ccf50d083009f52305d7fb2ab72f3f210bfe5f2f1add",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {},
+  "notes": [
+    "Reconstruction and canonical angles diagnose the subspace. Adoption of randomized SVD as a drop-in uses the pre-specified pooled band on identical splits, not the singular values."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}

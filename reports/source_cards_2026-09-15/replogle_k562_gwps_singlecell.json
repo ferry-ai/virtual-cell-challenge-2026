@@ -1,0 +1,139 @@
+{
+  "source_id": "replogle_k562_gwps_singlecell",
+  "title": "Replogle 2022 K562 genome-wide Perturb-seq, single-cell",
+  "study_id": {
+    "value": "figshare 20029387",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "version": {
+    "value": "processed record DOI 10.25452/figshare.plus.20029387",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "primary_url": {
+    "value": "https://figshare.com/articles/dataset/20029387",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "license": {
+    "value": "CC BY 4.0",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "perturbation_class": {
+    "value": "CRISPRi",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "cell_context": {
+    "value": "K562",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "donor_state_batch": {
+    "value": "gem_group / batch in the raw single-cell object",
+    "claim": "cited",
+    "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+    "note": null
+  },
+  "n_targets": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "genome-wide design; local pseudobulk already covers 272/300"
+  },
+  "id_mapping": {
+    "value": "obs.gene / gene_transcript on the GEO-style objects",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "count_kind": {
+    "value": "raw single-cell counts (not the local per-cell-mean pseudobulk)",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "ntc_field": {
+    "value": "obs.gene == 'non-targeting' on related Nadig/Replogle objects",
+    "claim": "cited",
+    "source": "reports/candidate_verification/",
+    "note": null
+  },
+  "guides": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "cells_per_target": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "n_genes_measured": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "remote_bytes": {
+    "value": {
+      "ReplogleWeissman2022_K562_gwps.h5ad": 8805466154,
+      "profile_declared_sc": [
+        61300000000.0,
+        9900000000.0,
+        8100000000.0
+      ]
+    },
+    "claim": "cited",
+    "source": "https://zenodo.org/records/13350497",
+    "note": "61.3/9.9/8.1 GB are profile declarations, not bytes measured this session"
+  },
+  "temporary_bytes": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "checksum": {
+    "value": "md5:13db594f8f1d2ccb88fec44a13e414dc on the scPerturb K562 gwps mirror",
+    "claim": "cited",
+    "source": "https://zenodo.org/records/13350497",
+    "note": null
+  },
+  "panel_overlap": {
+    "value": {
+      "observed_targets": 272,
+      "list_source": "local k562_gwps pseudobulk, not this file"
+    },
+    "claim": "derived",
+    "source": "reports/candidate_verification/coverage_summary.json",
+    "note": "coverage is of the local PSEUDOBULK, not a proof the single-cell file was opened"
+  },
+  "training_overlap": {
+    "value": {
+      "same_experiment_as": "k562_gwps pseudobulk already local"
+    },
+    "claim": "derived",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "extra_target_sample": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "no extra-target sample retained"
+  },
+  "decision": "defer",
+  "decision_note": "Adds real cells for validation/generator work on a line we already train from as pseudobulk. Not a new biological context. Download only a bounded extract after remote preflight; do not replace the local baseline until an ablation says so.",
+  "recorded_utc": "2026-09-15T12:05:41Z"
+}

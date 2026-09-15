@@ -1,0 +1,31 @@
+{
+  "che_cosa": "Prima esecuzione completa del ciclo DeepSeek-Kimi sui servizi reali, tre round.",
+  "run": "20260913T195836Z-prova-split-e-pairing-v1-322abe",
+  "avvio": "dall'operatore, da terminale esterno. Nessuna chiamata a Claude durante il run: l'unico intervento esterno e' stata una lettura dello stato in sola lettura.",
+  "esito": "disaccordo irrisolto al round 3 (un'obiezione bloccante aperta da tre round). NON e' un completamento verificato, e nemmeno una convergenza.",
+  "tempi": {
+    "round1": {
+      "deepseek_s": 55.0,
+      "kimi_s": 111.1
+    },
+    "round2": {
+      "deepseek_s": 33.7,
+      "kimi_s": 128.6
+    },
+    "round3": {
+      "deepseek_s": 605.0,
+      "kimi_s": 105.2
+    }
+  },
+  "incidente_e_recupero": "il round 3 di DeepSeek ha superato il limite di 600 s. L'adattatore ha ricaricato la pagina una volta e ha riletto: la risposta c'era, 12855 caratteri, non troncata. Nessun reinvio, nessuna domanda ripetuta.",
+  "problemi_di_invio_o_acquisizione": [
+    "un solo incidente: il blocco del round 3 su DeepSeek, risolto dal recupero",
+    "nessuna risposta troncata, nessuna risposta non conforme al contratto in sei invii"
+  ],
+  "asimmetria_da_dichiarare": "DeepSeek ha lavorato con 'Pensiero Profondo' attivo e verificato; per Kimi non e' configurata alcuna modalita' equivalente (modes vuoto). I due non erano nelle stesse condizioni.",
+  "controllo_automatico_C4": {
+    "esito_registrato": "1 fallito su 6 proposte nei round 1-2, 2 falliti nel round 3",
+    "verita": "il controllo era sbagliato: il pattern respingeva -0.100 e -0.10. Riverificato dopo la correzione, TUTTE e sei le proposte contengono il valore atteso -0,1. Quattro fallimenti su sei erano falsi negativi.",
+    "correzione": "incarico portato alla versione 2 con il pattern corretto"
+  }
+}

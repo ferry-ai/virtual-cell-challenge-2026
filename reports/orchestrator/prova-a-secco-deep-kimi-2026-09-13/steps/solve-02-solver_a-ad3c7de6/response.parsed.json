@@ -1,0 +1,34 @@
+{
+  "changes": [
+    "cambiata la raccomandazione da CSV a JSONL: l'argomento sull'evoluzione dello schema pesa piu' dello spazio",
+    "aggiunta la compressione per blocchi, che era il pezzo mancante del mio conto sullo spazio"
+  ],
+  "checks_suggested": [],
+  "confidence": "medium",
+  "dropped_keys": [],
+  "evidence": [
+    {
+      "claim": "le chiavi ripetute di JSONL comprimono bene",
+      "id": "E6d72f04d",
+      "support": "sono testo ricorrente; e' una proprieta' generale della compressione, non una misura su questo carico",
+      "type": "derived"
+    }
+  ],
+  "issues": [],
+  "objections": [
+    {
+      "id": "O9f8750b6",
+      "severity": "minor",
+      "target": "solver_b",
+      "text": "La proposta non dice come si leggono intervalli di date: senza una regola di partizionamento dei file, JSONL obbliga a scorrere tutto, e questo e' il caso d'uso dichiarato."
+    }
+  ],
+  "open_questions": [
+    "Il divario di spazio dopo compressione resta una stima."
+  ],
+  "proposal": "Criteri di scelta e compromessi.\n1) Evoluzione dello schema: JSONL assorbe campi nuovi senza riscrivere il passato; CSV obbliga a gestire file con intestazioni diverse. Compromesso: JSONL costa spazio.\n2) Fedelta' dei campi annidati: JSONL li rappresenta direttamente; CSV li appiattisce in una stringa e la struttura si perde.\n3) Costo per byte: JSONL ripete le chiavi su ogni riga; con compressione per blocchi il divario si riduce molto, perche' le chiavi ripetute comprimono bene.\n4) Letture per intervallo di date: si risolve con la partizione giornaliera dei file, uguale per i due formati.\nRaccomandazione: JSONL, un file al giorno, compresso per blocchi.\nCondizioni in cui cambierebbe: schema stabile e nessun campo annidato, oppure un consumatore che legge solo tabelle senza codice.\nStima, non misura: il divario di spazio prima della compressione lo stimo fra il 20% e il 50%; dopo la compressione lo stimo sotto il 10%. Nessuna misura su questo carico.",
+  "resolved_objections": [],
+  "route_hint": null,
+  "subtasks": [],
+  "summary": "Accetto l'argomento sullo schema: passo a JSONL compresso, con una riserva sul costo di lettura."
+}

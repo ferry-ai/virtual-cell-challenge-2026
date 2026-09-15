@@ -1,0 +1,68 @@
+Ragionamento sintetico ma completo.
+Errore di implementazione principale: summarize() filtra a e b separatamente con np.isfinite, quindi perde l’allineamento per-caso. Nei dati forniti: dopo il filtro separato, A ha validi c1,c3,c4 con media (0.2+0.6+0.4)/3 = 1.2/3 = 0.4; B ha validi c2,c4 con media (0.1+0.5)/2 = 0.6/2 = 0.3; delta = 0.4-0.3 = +0.1 e il codice dichiara vincitore B. Ma i casi validi per entrambi sono solo c1 e c4: media A (0.2+0.4)/2 = 0.3, media B (0.3+0.5)/2 = 0.4, differenza A−B = −0.1; quindi, “loss inferiore è migliore”, A è migliore sui casi effettivamente confrontabili. Il controesempio è nel dataset stesso: filtrare separatamente ribalta il segno rispetto al confronto appaiato.
+Secondo errore di implementazione: la regola del vincitore è fragile/invertita se si passa al confronto appaiato. Con delta = a.mean()-b.mean() e loss più bassa migliore, A vince quando delta < 0, non quando delta > 0. Esempio minimale: a=[0.1], b=[0.2] dà delta=-0.1, ma il codice restituisce winner="B", sbagliato. Anche delta == 0 viene trattato come vittoria di B per default.
+Problema metodologico principale: lo split casuale per record/cell_id non garantisce “linee cellulari mai viste”. Se cell_id ha più record o se cell_line compare in più record, record della stessa linea possono finire sia in train sia in test; allora il test non è su linee mai viste. Controesempio: due record r1,r2 con la stessa cell_line=L; la permutazione può mettere r1 in train e r2 in test, violando l’obiettivo dichiarato. Correzione minima: split per gruppo cell_line, non per record, con seed fisso e controllo di disgiunzione.
+Altro problema metodologico: la media globale su pochissimi casi e con missingness parziale non misura generalizzazione. Qui i casi validi per entrambi sono n=2; c2 ha solo B, c3 ha solo A, quindi non sono confrontabili. Anche con la maschera corretta non si ottiene un intervallo di confidenza, un test, una varianza, né si dimostra che i missing siano missing-completely-at-random. Se i missing dipendono dal modello o dalla linea cellulare, escludere le coppie può introdurre bias.
+Correzione minima proposta, come artefatto non eseguito:
+Python   Copia
+
+ 
+```
+import numpy as np
+
+def summarize_paired(loss_a, loss_b):
+    a = np.asarray(loss_a, dtype=float)
+    b = np.asarray(loss_b, dtype=float)
+    if a.shape != b.shape:
+        raise ValueError("loss_a e loss_b devono avere la stessa forma e lo stesso ordinamento dei case_id")
+    mask = np.isfinite(a) & np.isfinite(b)
+    av, bv = a[mask], b[mask]
+    d = av - bv  # <0 significa A migliore, dato che loss più bassa è migliore
+    return {
+        "n_used": int(mask.sum()),
+        "n_dropped": int((~mask).sum()),
+        "mean_a": float(av.mean()) if mask.any() else float("nan"),
+        "mean_b": float(bv.mean()) if mask.any() else float("nan"),
+        "delta_a_minus_b": float(d.mean()) if mask.any() else float("nan"),
+        "winner": ("A" if d.mean() < 0 else "B" if d.mean() > 0 else "tie") if mask.any() else "undefined",
+        "paired_deltas": d.tolist(),
+    }
+```
+
+ 
+Scelte che spettano all’operatore: definire se i case_id sono davvero una unità statistica indipendente o repliche di linee; scegliere la policy sui missing one-sided (c2, c3): escludere la coppia, imputare, oppure riportare come “non valutabile”; fissare il livello di significatività o accettare un report puramente descrittivo; decidere se usare media, mediana o una statistica appaiata robusta; validare che le due loss siano sulla stessa scala e comparabili.
+Calcolo a mano sui casi validi per entrambi i modelli: maschera congiunta isfinite(a) & isfinite(b) seleziona c1 e c4 soltanto. Per A: (0.2+0.4)/2 = 0.6/2 = 0.30. Per B: (0.3+0.5)/2 = 0.8/2 = 0.40. Differenza A−B = 0.30−0.40 = −0.10. Differenze appaiate: c1: 0.2−0.3=−0.1, c4: 0.4−0.5=−0.1, media −0.1. Quindi sui casi confrontabili A ha loss inferiore di 0.10 in media, ma il campione è n=2.
+Questi dati non permettono di concludere che A generalizzi meglio a linee mai viste: lo split non è dimostrato group-safe, i casi validi sono due, i missing parziali sono non trascurabili (2/4 case non sono appaiabili), non c’è incertezza statistica né controllo di leakage/repliche. La conclusione supportata è solo descrittiva: sui due casi simultaneamente valutabili, A ha loss media più bassa di 0.10.
+ORCH-RESULT-V1
+JSON   Copia
+
+ 
+```
+{
+  "summary": "Lo split casuale per record non garantisce linee mai viste e `summarize()` filtra A e B separatamente, perdendo l'allineamento; sui soli casi validi per entrambi, c1 e c4, A ha loss media 0.30 contro B 0.40, quindi A è migliore di 0.10 ma solo su n=2.",
+  "proposal": "Separo errori di implementazione e problemi metodologici. Implementazione: 1) `summarize()` usa `a[np.isfinite(a)]` e `b[np.isfinite(b)]`, quindi elimina NaN separatamente e rompe la corrispondenza per `case_id`; controesempio concreto: dopo filtro separato A usa c1,c3,c4 con media 0.4 e B usa c2,c4 con media 0.3, producendo delta +0.1 e vincitore B, mentre i casi validi per entrambi sono c1,c4 e danno A media 0.3, B media 0.4, delta A-B=-0.1, cioè A migliore. 2) La regola `winner = 'A' if delta > 0 else 'B'` è incompatibile con la maschera corretta e con la regola 'loss inferiore è migliore': se delta=a-b, A vince quando delta<0; esempio a=[0.1], b=[0.2] dà delta=-0.1 ma il codice assegnerebbe B; inoltre delta=0 diventa B per default. Metodologia: 3) lo split casuale su record/cell_id non garantisce generalizzazione a linee mai viste; se due record condividono `cell_line`, uno può essere in train e l'altro in test, quindi la linea è vista. 4) Il confronto medio non è una misura di generalizzazione: senza split per gruppo, varianza, intervallo di confidenza, test appaiato e audit dei missing, il risultato resta descrittivo. Correzione minima non eseguita: usare maschera congiunta `np.isfinite(a)&np.isfinite(b)`, preservare shape/ordinamento, calcolare differenze appaiate `d=a-b`, dichiarare vincitore con `A if mean(d)<0 else B if mean(d)>0 else tie`, e riportare `n_used`, `n_dropped`, medie e delta. Per lo split usare una partizione per `cell_line` con seed fisso e verifica di disgiunzione delle linee tra train/test. Scelte dell'operatore: policy sui missing one-sided (escludere coppia, imputare, marcare non valutabile), statistica finale (media/mediana/test robusto), soglia di significatività o report descrittivo, definizione dell'unità statistica, controllo leakage/repliche e comparabilità delle scale. Calcolo a mano su casi validi per entrambi: solo c1,c4; A=(0.2+0.4)/2=0.30; B=(0.3+0.5)/2=0.40; delta A-B=-0.10; differenze appaiate -0.10 e -0.10; A migliore di 0.10 su n=2. Non concludibile: superiorità di generalizzazione a linee mai viste, robustezza statistica, assenza di bias da missing, assenza di leakage, validità su scala reale.",
+  "changes": ["Nessuna modifica rispetto a un round precedente: prima iterazione autonoma."],
+  "evidence": [
+    {"claim": "Il filtro separato dei NaN cambia il vincitore sui dati forniti", "support": "Filtro separato: A media (0.2+0.6+0.4)/3=0.4, B media (0.1+0.5)/2=0.3; confronto valido per entrambi: A (0.2+0.4)/2=0.3, B (0.3+0.5)/2=0.4", "type": "derived"},
+    {"claim": "La regola del vincitore è invertita rispetto a 'loss inferiore è migliore' quando si usano differenze appaiate", "support": "Se a=[0.1] e b=[0.2], delta=a-b=-0.1 ma il codice restituisce B", "type": "derived"},
+    {"claim": "Lo split casuale per record non garantisce linee mai viste", "support": "Due record della stessa cell_line possono essere separati dalla permutazione in train e test", "type": "assumed"},
+    {"claim": "Sui casi validi per entrambi A ha loss media inferiore di 0.10", "support": "c1 e c4: A=0.30, B=0.40, differenza appaiata media -0.10", "type": "derived"},
+    {"claim": "La conclusione di generalizzazione non è supportata", "support": "n=2 casi appaiabili, 2/4 case con missing one-sided, nessuna stima di incertezza né prova di assenza di leakage", "type": "derived"}
+  ],
+  "objections": [
+    {"target": "Affermazione dell'autore che eliminare separatamente i missing mantenga il confronto corretto", "severity": "blocking", "text": "È falsa sui dati forniti: il filtro separato produce delta +0.1/vincitore B, mentre la maschera congiunta su c1,c4 produce delta -0.1/vincitore A."},
+    {"target": "Affermazione che lo split casuale garantisca valutazione su linee mai viste", "severity": "blocking", "text": "Una permutazione di record non è uno split per gruppo; record della stessa cell_line possono finire in entrambi i lati."},
+    {"target": "Uso del segno di delta come identificatore del modello migliore", "severity": "major", "text": "Va corretto in coerenza con loss più bassa migliore: con delta=a-b, A vince se delta<0; delta=0 va trattato come pareggio."}
+  ],
+  "resolved_objections": ["Nessuna obiezione esterna da risolvere in questo round."],
+  "checks_suggested": [
+    {"criterion": "C1", "how": "Verificare che la risposta separi voci di tipo 'bug di codice' da voci di tipo 'scelta metodologica' e che non usi lo stesso rimedio per entrambe."},
+    {"criterion": "C2", "how": "Controllare che ogni rilievo abbia un mini-esempio numerico o un controesempio costruito sui dati forniti, non una critica generica."},
+    {"criterion": "C3", "how": "Controllare che sia presente una patch minima non eseguita e una lista esplicita di decisioni riservate all'operatore."},
+    {"criterion": "C4", "how": "Rifare a mano: maschera congiunta c1,c4; A=(0.2+0.4)/2=0.30; B=(0.3+0.5)/2=0.40; delta=-0.10; vincitore A su n=2."},
+    {"criterion": "C5", "how": "Verificare che sia dichiarato almeno un limite non inferibile: generalizzazione a linee mai viste, significatività, bias da missing, leakage e scalabilità."}
+  ],
+  "open_questions": ["I case_id sono unità indipendenti o repliche di linee cellulari?", "I valori mancanti sono MCAR/MAR/MNAR e quale policy è accettabile?", "Le due loss sono strettamente comparabili in scala e costo?", "È richiesto un inferenziale formale o basta un report descrittivo con n piccolo?"],
+  "confidence": "high"
+}
+```

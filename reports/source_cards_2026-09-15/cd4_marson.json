@@ -1,0 +1,138 @@
+{
+  "source_id": "cd4_marson",
+  "title": "Zhu/Dann/Marson primary CD4 Perturb-seq",
+  "study_id": {
+    "value": "GSE314342",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "version": {
+    "value": "GEO public since 2026-02-06",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "primary_url": {
+    "value": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "license": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "perturbation_class": {
+    "value": "CRISPRi",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "cell_context": {
+    "value": "primary human CD4 T cells, multiple donors",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "donor_state_batch": {
+    "value": "Rest vs Stimulated kept separate; donor in object names",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "n_targets": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "library design is not n_targets usable"
+  },
+  "id_mapping": {
+    "value": "guide_id joined to sgRNA_library_curated.csv",
+    "claim": "measured",
+    "source": "reports/candidate_verification/pilot/",
+    "note": null
+  },
+  "count_kind": {
+    "value": "float32 CSR, non-negative integers in the 64-cell pilot",
+    "claim": "measured",
+    "source": "reports/candidate_verification/pilot/cd4_D1_Rest_64.manifest.json",
+    "note": null
+  },
+  "ntc_field": {
+    "value": "guide_type == 'non-targeting' AND low_quality == False",
+    "claim": "measured",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "guides": {
+    "value": "sgrna_id in the curated library",
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "cells_per_target": {
+    "value": {
+      "targets_min_30": 239,
+      "targets_min_100": 147
+    },
+    "claim": "measured",
+    "source": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\candidate_verification\\coverage_summary.json",
+    "note": null
+  },
+  "n_genes_measured": {
+    "value": 17772,
+    "claim": "measured",
+    "source": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\candidate_verification\\coverage_summary.json",
+    "note": null
+  },
+  "remote_bytes": {
+    "value": 1735835115866,
+    "claim": "cited",
+    "source": "configs/sources.yaml",
+    "note": null
+  },
+  "temporary_bytes": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "checksum": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "panel_overlap": {
+    "value": {
+      "library_targets": 297,
+      "observed_targets": 293,
+      "targets_min_30": 239,
+      "list_source": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\candidate_verification\\coverage_summary.json"
+    },
+    "claim": "measured",
+    "source": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\candidate_verification\\coverage_summary.json",
+    "note": null
+  },
+  "training_overlap": {
+    "value": {
+      "pilot_cells": 64,
+      "full_objects_not_local": true
+    },
+    "claim": "measured",
+    "source": "reports/candidate_verification/pilot/cd4_D1_Rest_64.manifest.json",
+    "note": null
+  },
+  "extra_target_sample": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "no extra-target sample retained"
+  },
+  "decision": "defer",
+  "decision_note": "Highest panel coverage among candidates, nearest lineage to context A, but 1.7 TB single-cell. Reopen after Jiang/Jurkat audits. Do not double-count GEO, Zenodo and the S3 mirror as three sources.",
+  "recorded_utc": "2026-09-15T12:05:41Z"
+}

@@ -1,0 +1,24 @@
+{
+  "changes": [],
+  "checks_suggested": [],
+  "confidence": "medium",
+  "dropped_keys": [],
+  "evidence": [
+    {
+      "claim": "JSONL ripete le chiavi su ogni riga",
+      "id": "Eaf56cdb6",
+      "support": "proprieta' del formato",
+      "type": "derived"
+    }
+  ],
+  "issues": [],
+  "objections": [],
+  "open_questions": [
+    "Non so quanto siano davvero annidati i campi: cambia la scelta."
+  ],
+  "proposal": "Criteri di scelta e compromessi:\n1) Eterogeneita' dei campi. CSV impone uno schema; i campi annidati vanno serializzati in una colonna di overflow. Compromesso: si perde la leggibilita' degli extra, si guadagna una tabella regolare.\n2) Costo di lettura per intervalli di date. Con file partizionati per giorno la lettura tocca solo i giorni richiesti, in entrambi i formati.\n3) Strumenti disponibili. CSV entra in qualunque cosa senza codice.\nRaccomandazione: CSV con colonna JSON per gli extra, un file al giorno.\nStima, non misura: l'overhead di JSONL sulle chiavi ripetute lo stimo attorno al 30-40% del volume, senza compressione. Non ho misure su questo carico.",
+  "resolved_objections": [],
+  "route_hint": null,
+  "subtasks": [],
+  "summary": "CSV con una colonna di overflow: compatto e leggibile da qualsiasi strumento."
+}

@@ -1,0 +1,39 @@
+{
+  "brief": {
+    "id": "ricerca-collaudo",
+    "materials": [],
+    "sha256": "2c34027e7438ca71979261126cf608358c3c091532efa9fabd2dc88507f08533",
+    "source": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\configs\\orchestrator\\briefs\\ricerca-collaudo.yaml",
+    "title": "Collaudo - Perturb-seq CRISPRi pubblico in linea T matura o squamosa",
+    "version": 1
+  },
+  "config": {
+    "execution": "quarantine",
+    "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\configs\\orchestrator\\offline-ricerca.yaml",
+    "plan_approval": "auto"
+  },
+  "created_utc": "2026-09-14T02:24:55Z",
+  "limits": {
+    "absence_tolerance": 2,
+    "convergence_rounds": 2,
+    "convergence_similarity": 0.92,
+    "disagreement_rounds": 3,
+    "max_rounds": 3,
+    "max_wall_clock_minutes": 20,
+    "self_similarity_stagnation": 0.97,
+    "stagnation_rounds": 2,
+    "transport_retries": 0
+  },
+  "roles": {
+    "solver_a": "scripted",
+    "solver_b": "scripted"
+  },
+  "route": "scientific_research",
+  "run_id": "20260914T022455Z-ricerca-collaudo-v1-1485b2",
+  "stages": {
+    "solve": [
+      "solver_a",
+      "solver_b"
+    ]
+  }
+}

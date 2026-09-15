@@ -1,0 +1,642 @@
+{
+  "protocol": "new_context_unseen_target",
+  "direction_id": "rpe1_to_k562",
+  "train_context": "RPE1",
+  "test_context": "K562",
+  "train_sources": [
+    "rpe1_essential"
+  ],
+  "test_source": "k562_gwps",
+  "n_train_targets": 112,
+  "n_test_targets": 48,
+  "n_inner_val_targets": 22,
+  "train_targets": [
+    "AARS2",
+    "ACTR6",
+    "ANAPC2",
+    "ANAPC5",
+    "ARIH1",
+    "ARL2",
+    "ASF1B",
+    "BET1",
+    "C1orf109",
+    "C6orf15",
+    "CCDC130",
+    "CCNC",
+    "CCND1",
+    "CDC27",
+    "CDC6",
+    "CENPC",
+    "COG2",
+    "COX17",
+    "COX7B",
+    "CRCP",
+    "CS",
+    "CSNK2B",
+    "CWC25",
+    "DDX6",
+    "DKC1",
+    "DNAJA1",
+    "EEF1G",
+    "EXOSC9",
+    "FASN",
+    "FBXL14",
+    "FIP1L1",
+    "GCOM1",
+    "GINS4",
+    "GPN2",
+    "GPN3",
+    "GTF2E1",
+    "GTF3C2",
+    "HERC1",
+    "HEXIM1",
+    "HMGA1",
+    "ICE1",
+    "INO80C",
+    "IPO7",
+    "KIF14",
+    "LSM12",
+    "MAU2",
+    "MCM4",
+    "MCM7",
+    "MED30",
+    "MED9",
+    "MIS18BP1",
+    "MMGT1",
+    "MMS19",
+    "MPHOSPH6",
+    "MRPL11",
+    "MRPL49",
+    "MRPL50",
+    "NBAS",
+    "NDC1",
+    "NDUFS5",
+    "NELFCD",
+    "NKAPD1",
+    "NOL8",
+    "NSL1",
+    "NUP160",
+    "PARN",
+    "PCBP2",
+    "PDCD11",
+    "PDCD6",
+    "PELP1",
+    "PHF5A",
+    "POLR2A",
+    "POLR2F",
+    "POP4",
+    "PPARGC1B",
+    "PPP1R15B",
+    "PRMT5",
+    "PRPF4",
+    "PWP1",
+    "RBM25",
+    "RBM48",
+    "RFC2",
+    "RNF31",
+    "RPL27A",
+    "RPL30",
+    "RPL37A",
+    "RPP14",
+    "RPS12",
+    "RRM1",
+    "SERBP1",
+    "SERF2",
+    "SF3A1",
+    "SKP2",
+    "SLC25A26",
+    "SLC35A4",
+    "SMN2",
+    "TACC3",
+    "THRAP3",
+    "TRIM49C",
+    "TSEN2",
+    "TUT1",
+    "TWISTNB",
+    "UBE2D3",
+    "UBE2L3",
+    "UBTF",
+    "UTP6",
+    "VPS29",
+    "WDR33",
+    "YBX1",
+    "ZBTB4",
+    "ZNF335",
+    "ZNF674"
+  ],
+  "test_targets": [
+    "ABCE1",
+    "ARRB2",
+    "CWC22",
+    "DAXX",
+    "DDX27",
+    "DDX51",
+    "DUT",
+    "EXOC7",
+    "GRB2",
+    "GYG1",
+    "H2AFX",
+    "HMBOX1",
+    "HSD17B12",
+    "HUWE1",
+    "IARS2",
+    "IK",
+    "LPIN1",
+    "LYRM4",
+    "MARS2",
+    "MBD3",
+    "MCM2",
+    "MCRS1",
+    "MIPEP",
+    "MRPL4",
+    "MTREX",
+    "MZT1",
+    "NAA30",
+    "PALB2",
+    "POLL",
+    "POLR3D",
+    "PPP1R8",
+    "PYURF",
+    "RBBP5",
+    "RPS19BP1",
+    "RRM2",
+    "SLC25A3",
+    "SLC2A8",
+    "SMC4",
+    "SNTB2",
+    "SPATA5",
+    "SYF2",
+    "TARS",
+    "TEX10",
+    "TIMM13",
+    "TOR2A",
+    "VHL",
+    "VMP1",
+    "WDFY3"
+  ],
+  "inner_val_targets": [
+    "ARL2",
+    "C1orf109",
+    "COG2",
+    "COX17",
+    "DDX6",
+    "GCOM1",
+    "GTF2E1",
+    "INO80C",
+    "MAU2",
+    "MMGT1",
+    "MMS19",
+    "NUP160",
+    "PCBP2",
+    "POP4",
+    "RBM25",
+    "RPS12",
+    "SF3A1",
+    "THRAP3",
+    "TRIM49C",
+    "TWISTNB",
+    "ZNF335",
+    "ZNF674"
+  ],
+  "seed": 2027,
+  "n_train_contexts": 1,
+  "context_dependence_identifiable": 0,
+  "uses_query_ntc": 1,
+  "internal_dest_source": null,
+  "note": "Test targets are excluded from every training response, including internal calibration. Descriptors derived from those responses are forbidden. One training context and no internal pair. Amplitude uses the predetermined rule, never the trial alpha 0.1974.",
+  "limitation": "A test that holds out one of two perturbed contexts leaves a single training context. That measures transfer, not general learning of context dependence.",
+  "descriptors": {
+    "with_context": {
+      "train_contexts": [
+        "RPE1"
+      ],
+      "include_context": 1,
+      "include_response_codes": 0,
+      "code_dim": 0,
+      "n_unique_context_vectors_in_training": 1,
+      "context_dependence_identifiable": 0,
+      "n_features": 41,
+      "feature_names": [
+        "ctx_mean",
+        "ctx_std",
+        "ctx_log_library",
+        "ctx_log_n_cells",
+        "ctx_frac_detected",
+        "ctx_high_expr_0",
+        "ctx_high_expr_1",
+        "ctx_high_expr_2",
+        "ctx_high_expr_3",
+        "ctx_high_expr_4",
+        "ctx_high_expr_5",
+        "ctx_high_expr_6",
+        "ctx_high_expr_7",
+        "ctx_high_expr_8",
+        "ctx_high_expr_9",
+        "ctx_high_expr_10",
+        "ctx_high_expr_11",
+        "ctx_high_expr_12",
+        "ctx_high_expr_13",
+        "ctx_high_expr_14",
+        "ctx_high_expr_15",
+        "ctx_high_expr_16",
+        "ctx_high_expr_17",
+        "ctx_high_expr_18",
+        "ctx_high_expr_19",
+        "ctx_high_expr_20",
+        "ctx_high_expr_21",
+        "ctx_high_expr_22",
+        "ctx_high_expr_23",
+        "ctx_high_expr_24",
+        "ctx_high_expr_25",
+        "ctx_high_expr_26",
+        "ctx_high_expr_27",
+        "ctx_high_expr_28",
+        "ctx_high_expr_29",
+        "ctx_high_expr_30",
+        "ctx_high_expr_31",
+        "target_basal_RPE1",
+        "target_basal_RPE1_measured",
+        "target_basal_query",
+        "target_basal_query_measured"
+      ],
+      "feature_provenance": [
+        {
+          "name": "ctx_mean",
+          "provenance": "query_or_train_NTC_stats",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_std",
+          "provenance": "query_or_train_NTC_stats",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_log_library",
+          "provenance": "query_or_train_NTC_stats",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_log_n_cells",
+          "provenance": "query_or_train_NTC_stats",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_frac_detected",
+          "provenance": "query_or_train_NTC_stats",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_0",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_1",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_2",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_3",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_4",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_5",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_6",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_7",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_8",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_9",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_10",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_11",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_12",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_13",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_14",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_15",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_16",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_17",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_18",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_19",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_20",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_21",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_22",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_23",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_24",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_25",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_26",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_27",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_28",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_29",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_30",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "ctx_high_expr_31",
+          "provenance": "train_NTC_high_expression_genes_applied_to_query_NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "target_basal_RPE1",
+          "provenance": "NTC basal of the target gene in RPE1",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 0,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "target_basal_RPE1_measured",
+          "provenance": "indicator that the target gene is measured in that NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 0,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "target_basal_query",
+          "provenance": "NTC basal of the target gene in the query context",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "target_basal_query_measured",
+          "provenance": "indicator that the target gene is measured in the query NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        }
+      ],
+      "ntc_of_query_context": "allowed_declared_shared_across_arms",
+      "high_expr_n": 32,
+      "profiles": {
+        "K562": {
+          "context": "K562",
+          "source_id": "k562_gwps",
+          "n_cells": 75328.0,
+          "library": 883175104.3720987,
+          "n_genes_observed": 7681,
+          "provenance": "NTC rows of k562_gwps (non-targeting), cell-weighted mean, log1p CPM on the official axis. Query-context NTCs are allowed inputs under the VCC task and are given to every arm."
+        },
+        "RPE1": {
+          "context": "RPE1",
+          "source_id": "rpe1_essential",
+          "n_cells": 11485.0,
+          "library": 148365987.09140727,
+          "n_genes_observed": 8260,
+          "provenance": "NTC rows of rpe1_essential (non-targeting), cell-weighted mean, log1p CPM on the official axis. Query-context NTCs are allowed inputs under the VCC task and are given to every arm."
+        }
+      }
+    },
+    "without_context": {
+      "train_contexts": [
+        "RPE1"
+      ],
+      "include_context": 0,
+      "include_response_codes": 0,
+      "code_dim": 0,
+      "n_unique_context_vectors_in_training": 1,
+      "context_dependence_identifiable": 0,
+      "n_features": 4,
+      "feature_names": [
+        "target_basal_RPE1",
+        "target_basal_RPE1_measured",
+        "target_basal_query",
+        "target_basal_query_measured"
+      ],
+      "feature_provenance": [
+        {
+          "name": "target_basal_RPE1",
+          "provenance": "NTC basal of the target gene in RPE1",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 0,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "target_basal_RPE1_measured",
+          "provenance": "indicator that the target gene is measured in that NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 0,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "target_basal_query",
+          "provenance": "NTC basal of the target gene in the query context",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        },
+        {
+          "name": "target_basal_query_measured",
+          "provenance": "indicator that the target gene is measured in the query NTC",
+          "derived_from_perturbative_response": 0,
+          "uses_query_ntc": 1,
+          "allowed_in_unseen_target": 1
+        }
+      ],
+      "ntc_of_query_context": "allowed_declared_shared_across_arms",
+      "high_expr_n": 32,
+      "profiles": {
+        "K562": {
+          "context": "K562",
+          "source_id": "k562_gwps",
+          "n_cells": 75328.0,
+          "library": 883175104.3720987,
+          "n_genes_observed": 7681,
+          "provenance": "NTC rows of k562_gwps (non-targeting), cell-weighted mean, log1p CPM on the official axis. Query-context NTCs are allowed inputs under the VCC task and are given to every arm."
+        },
+        "RPE1": {
+          "context": "RPE1",
+          "source_id": "rpe1_essential",
+          "n_cells": 11485.0,
+          "library": 148365987.09140727,
+          "n_genes_observed": 8260,
+          "provenance": "NTC rows of rpe1_essential (non-targeting), cell-weighted mean, log1p CPM on the official axis. Query-context NTCs are allowed inputs under the VCC task and are given to every arm."
+        }
+      }
+    }
+  },
+  "query_ntc_used": 1,
+  "query_ntc_shared_across_arms": 1
+}

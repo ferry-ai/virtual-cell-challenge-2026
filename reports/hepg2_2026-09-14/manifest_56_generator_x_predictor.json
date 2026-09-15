@@ -1,0 +1,69 @@
+{
+  "run_id": "hepg2_2026-09-14",
+  "stage": "56_generator_x_predictor",
+  "started_utc": "2026-09-14T21:30:08.299704+00:00",
+  "finished_utc": "2026-09-14T21:30:08.464335+00:00",
+  "seed": 2026,
+  "config": {
+    "h5ad": "C:\\Users\\ferra\\vcc2026-data\\raw\\nadig_hepg2\\NadigOConner2024_hepg2.h5ad",
+    "predictions": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\m003\\models\\new_context_seen_target_k562_rpe1_to_hepg2_seed2026",
+    "arms": "['shrunk_transfer', 'modular_frozen']",
+    "n_targets": "25",
+    "cells_per_target": "40",
+    "ntc_cells": "400",
+    "seed": "2026",
+    "out": "reports\\hepg2_2026-09-14",
+    "workdir": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle_v2",
+    "allow_overwrite": "False"
+  },
+  "inputs": {
+    "h5ad": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\nadig_hepg2\\NadigOConner2024_hepg2.h5ad",
+      "exists": true,
+      "bytes": 850590740,
+      "mtime_utc": "2026-09-14T20:14:15.075712+00:00",
+      "sha256": "5f3b76286e94af3c206c709c044ae1f4822517c0b7e61c91e582ac6c7f1c1c4a",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "outputs": {
+    "report": {
+      "path": "reports\\hepg2_2026-09-14\\generator_x_predictor.json",
+      "exists": true,
+      "bytes": 17489,
+      "mtime_utc": "2026-09-14T21:30:08.296010+00:00",
+      "sha256": "9365d2ceba56b8fab706f1714c256971596c84b515c57c4da1fb1de83b561948",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "n_combinations": 6,
+    "n_targets": 25,
+    "cells_per_target": 40
+  },
+  "notes": [
+    "Raw metrics only; no anchors were invented for an external dataset."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:/Users/ferra/vcc2026-data"
+    }
+  }
+}

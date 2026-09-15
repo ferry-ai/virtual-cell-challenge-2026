@@ -1,0 +1,985 @@
+{
+  "primary_metric": "pooled_mse_vs_null",
+  "primary_metric_space": "pseudobulk log2FC proxy; not a VCC score",
+  "non_inferiority_margin": null,
+  "non_inferiority_note": "Not set, as in m001 and m002. The decision rule below is a directional comparison with a paired interval, not a non-inferiority claim.",
+  "winner_declared": false,
+  "winner_reason": "No winner. Architecture was not selected on the external test. Every fold trains on more than one context, so a context descriptor can vary in training and a with/without comparison is at least identifiable in principle; two contexts still confound biology with the experiment each came from. If seed intervals overlap, the result is inconclusive.",
+  "verdict": "inconclusive_pending_numbers",
+  "n_shared_targets_available": 2315,
+  "n_targets_used": 160,
+  "subsample": {
+    "max_targets": 160,
+    "n_shared_available": 2315,
+    "n_used": 160,
+    "rule": "uniform_random_not_filtered_by_effect",
+    "seed": 2026
+  },
+  "gene_universe": {
+    "new_context_unseen_target_k562_rpe1_to_hepg2_seed2026": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "k562_gwps": 7681,
+        "rpe1_essential": 8260,
+        "nadig_hepg2": 9023
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_unseen_target_k562_rpe1_to_hepg2_seed2027": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "k562_gwps": 7681,
+        "rpe1_essential": 8260,
+        "nadig_hepg2": 9023
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_unseen_target_k562_hepg2_to_rpe1_seed2026": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "k562_gwps": 7681,
+        "nadig_hepg2": 9023,
+        "rpe1_essential": 8260
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_unseen_target_k562_hepg2_to_rpe1_seed2027": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "k562_gwps": 7681,
+        "nadig_hepg2": 9023,
+        "rpe1_essential": 8260
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_unseen_target_rpe1_hepg2_to_k562_seed2026": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "rpe1_essential": 8260,
+        "nadig_hepg2": 9023,
+        "k562_gwps": 7681
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    },
+    "new_context_unseen_target_rpe1_hepg2_to_k562_seed2027": {
+      "rule": "intersection_measured",
+      "n_official": 18533,
+      "n_kept": 6477,
+      "n_dropped": 12056,
+      "coverage_kept": 0.3494847029622835,
+      "per_source_n_measured": {
+        "rpe1_essential": 8260,
+        "nadig_hepg2": 9023,
+        "k562_gwps": 7681
+      },
+      "zero_fill_missing": false,
+      "note": "Kept genes are those every compared source actually measured. Dropped genes are unmeasured, not unchanged. Models train and are scored on the kept set only."
+    }
+  },
+  "preprocess": {
+    "phase": "preprocess",
+    "seconds": 1.0205208999977913,
+    "rss_bytes_at_start": 79790080,
+    "peak_rss_bytes_after": 143470592,
+    "rss_delta_bytes": 63680512,
+    "vram_bytes": null,
+    "vram_note": "no CUDA device in this environment; VRAM not measured"
+  },
+  "machine": {
+    "ram_total_bytes": 8384401408,
+    "ram_available_bytes": 491122688,
+    "disk_path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026",
+    "disk_total_bytes": 510342983680,
+    "disk_free_bytes": 11178504192,
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 7.808582305908203,
+    "ram_available_gib": 0.4573936462402344,
+    "disk_free_gib": 10.41079330444336,
+    "peak_rss_bytes_now": 361832448
+  },
+  "n_result_rows": 48,
+  "splits": [
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\g002\\splits\\new_context_unseen_target_k562_rpe1_to_hepg2_seed2026.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\g002\\splits\\new_context_unseen_target_k562_rpe1_to_hepg2_seed2027.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\g002\\splits\\new_context_unseen_target_k562_hepg2_to_rpe1_seed2026.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\g002\\splits\\new_context_unseen_target_k562_hepg2_to_rpe1_seed2027.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\g002\\splits\\new_context_unseen_target_rpe1_hepg2_to_k562_seed2026.json",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\g002\\splits\\new_context_unseen_target_rpe1_hepg2_to_k562_seed2027.json"
+  ],
+  "generator_x_predictor": {
+    "built_utc": "2026-09-14T22:37:02.694845+00:00",
+    "status": "missing",
+    "execute_six_metrics": false,
+    "n_local_perturbed_single_cell_sources": 1,
+    "local_perturbed_single_cell_ids": [
+      "nadig_hepg2"
+    ],
+    "required_fields": {
+      "matrix": {
+        "X": "non-negative integer (or integer-valued) counts, CSR or dense float that is integral",
+        "input_type": "counts",
+        "gene_axis": "source symbols aligned to the official 18,533 with an observed mask; unmeasured genes stay masked"
+      },
+      "obs": {
+        "target_gene": "perturbed gene symbol or the NTC label",
+        "context": "biological context, one value for the bundle",
+        "guide_id": "if present, kept; same-target guides stay together",
+        "donor": "if present, never pooled across donors",
+        "batch": "if present, NTCs must be matchable per batch",
+        "n_cells_min_per_target": "enough to run DE; the competition asks 400 predicted cells, the bundle can be smaller if declared"
+      },
+      "controls": {
+        "real_NTC_required": true,
+        "control_source": "real",
+        "do_not_replace_with_synthetic_cells": true,
+        "matched_to": "same context, preferably same batch/donor"
+      },
+      "scoring": {
+        "metrics": [
+          "pds_cosine",
+          "expr_mse_unbiased_capped_norm",
+          "de_wilcoxon_lfc_nmae",
+          "de_wilcoxon_direction_fidelity_yield_raw",
+          "de_wilcoxon_direction_reach_raw",
+          "de_wilcoxon_sig_jaccard"
+        ],
+        "backend_must_be_recorded": true,
+        "anchors": "without published b and r, report raw aggregates and a local normalisation explicitly distinct from the leaderboard"
+      }
+    },
+    "candidates_not_acquired": [
+      {
+        "id": "nadig_hepg2",
+        "why_smallest": "Roadmap R-1: 0.851 GB compressed, 145,473 \u00d7 9,624, 4,976 NTC. Smallest complete perturbed object with explicit NTCs.",
+        "accession": "GSE264667",
+        "context": "HepG2",
+        "n_cells_declared": 145473,
+        "n_genes_declared": 9624,
+        "n_ntc_declared": 4976,
+        "bytes_declared": 5614460941,
+        "bytes_compressed_estimate": 851000000,
+        "panel_targets_observed": 0,
+        "on_disk": false,
+        "role_if_acquired": "methodological evaluation bundle: generator \u00d7 predictor on real perturbed cells. NOT a benchmark of the 300-target panel.",
+        "read_mode": "chunked; do not materialise the dense matrix (~5.6 GB)",
+        "license_note": "public GEO; confirm before any submission use"
+      },
+      {
+        "id": "rpe1_singlecell",
+        "why": "Roadmap R-1 alternative: 1.237 GB compressed, 247,914 \u00d7 8,749, 11,485 NTC. Same experiment as the local RPE1 pseudobulk.",
+        "accession": "figshare 20029387 / file 35775606",
+        "context": "RPE1",
+        "n_cells_declared": 247914,
+        "n_genes_declared": 8749,
+        "n_ntc_declared": 11485,
+        "bytes_declared": 8700873216,
+        "bytes_compressed_estimate": 1237000000,
+        "panel_targets_observed": 0,
+        "on_disk": false,
+        "role_if_acquired": "pairs with local RPE1 pseudobulk: same biological context, real single-cell counts for the six VCC metrics.",
+        "read_mode": "chunked; dense is ~8.7 GB",
+        "do_not_use": "file 35775554 is the NORMALIZED twin"
+      }
+    ],
+    "acquisition": {
+      "do_not_download_atlases": true,
+      "select_one_candidate": true,
+      "byte_budget": "the smaller of the two candidates is ~0.85 GB compressed; keep \u226510 GiB free (D-005)",
+      "after_download": "chunked subset of perturbed cells + paired NTCs, written as an evaluation bundle with a new --out, never overwriting existing reports"
+    },
+    "what_this_does_not_show": [
+      "A better generator is not evidence that the predictor is adequate.",
+      "A better generator is not evidence that modularity is useless.",
+      "Zero panel overlap: this bundle would not score the 300 VCC targets."
+    ],
+    "estimated_bundle_pilot": {
+      "n_targets": 30,
+      "cells_per_target": 80,
+      "n_ntc": 400,
+      "n_genes_if_rpe1": 8749,
+      "dense_float32_bytes_estimate": 97988800,
+      "note": "30 \u00d7 80 + 400 NTC at 8,749 genes, float32 dense \u2248 98 MB. CSR of integer counts would be smaller. This is a planning figure, not a measurement."
+    }
+  },
+  "arm_plan": [
+    {
+      "arm": "lowrank_linear__B0",
+      "uses_context": true,
+      "variant": "B0"
+    },
+    {
+      "arm": "lowrank_linear__B1",
+      "uses_context": true,
+      "variant": "B1"
+    },
+    {
+      "arm": "lowrank_linear__B2",
+      "uses_context": false,
+      "variant": "B2"
+    },
+    {
+      "arm": "lowrank_linear__B3",
+      "uses_context": true,
+      "variant": "B3"
+    },
+    {
+      "arm": "modular_frozen__B0",
+      "uses_context": true,
+      "variant": "B0"
+    },
+    {
+      "arm": "modular_frozen__B1",
+      "uses_context": true,
+      "variant": "B1"
+    },
+    {
+      "arm": "modular_frozen__B2",
+      "uses_context": false,
+      "variant": "B2"
+    },
+    {
+      "arm": "modular_frozen__B3",
+      "uses_context": true,
+      "variant": "B3"
+    }
+  ],
+  "descriptor_variants": {
+    "B0": {
+      "include_context": true,
+      "include_go_slim": false,
+      "note": "reference: basal + z_c, the current mode-B state"
+    },
+    "B1": {
+      "include_context": true,
+      "include_go_slim": true,
+      "note": "B0 + GO slim: the value of the annotation"
+    },
+    "B2": {
+      "include_context": false,
+      "include_go_slim": true,
+      "note": "B1 without z_c: do the query NTCs earn their place on new targets?"
+    },
+    "B3": {
+      "include_context": true,
+      "include_go_slim": true,
+      "permute_go_slim": true,
+      "permutation_seed": 20260915,
+      "note": "B1 with the slim rows shuffled among symbols, one permutation fixed by the seed and applied identically at fit and at inference. If B3 matches B1, the gene-to-annotation link explains nothing and 140 columns of the same sparsity explain everything."
+    }
+  },
+  "forbidden_trial_alpha": 0.1974,
+  "not_a_vcc_score": true,
+  "paired_differences": [
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2026,
+      "a": "lowrank_linear__B1",
+      "b": "lowrank_linear__B0",
+      "comparison": "go_slim_vs_basal",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.5273467627997614,
+        "median_a_minus_b": 0.09035813026408102,
+        "ci95": [
+          0.20307081863653859,
+          0.8973302011905098
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2026,
+      "a": "lowrank_linear__B3",
+      "b": "lowrank_linear__B1",
+      "comparison": "permuted_go_vs_real_go",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.452882472703559,
+        "median_a_minus_b": -0.06740802956622477,
+        "ci95": [
+          -0.7483654966022447,
+          -0.13651371409546834
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2026,
+      "a": "lowrank_linear__B2",
+      "b": "lowrank_linear__B1",
+      "comparison": "without_context_vs_with",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.3126067011755459,
+        "median_a_minus_b": -0.21036953293970462,
+        "ci95": [
+          -0.45891399177290304,
+          -0.16441756474581914
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2026,
+      "a": "modular_frozen__B1",
+      "b": "modular_frozen__B0",
+      "comparison": "go_slim_vs_basal",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.028017851805458977,
+        "median_a_minus_b": 0.01712232903906319,
+        "ci95": [
+          0.017808880398194313,
+          0.03678772874958634
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2026,
+      "a": "modular_frozen__B3",
+      "b": "modular_frozen__B1",
+      "comparison": "permuted_go_vs_real_go",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.0021803440076679525,
+        "median_a_minus_b": -0.000508401513505341,
+        "ci95": [
+          -0.006593719768598908,
+          0.012151023360942344
+        ],
+        "ci95_excludes_zero": false
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2026,
+      "a": "modular_frozen__B2",
+      "b": "modular_frozen__B1",
+      "comparison": "without_context_vs_with",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.6628071735037865,
+        "median_a_minus_b": 0.11234629859207867,
+        "ci95": [
+          0.31378742972899626,
+          1.0644614188178234
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2027,
+      "a": "lowrank_linear__B1",
+      "b": "lowrank_linear__B0",
+      "comparison": "go_slim_vs_basal",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.13648574354263954,
+        "median_a_minus_b": 0.007773365955203587,
+        "ci95": [
+          -0.5429017863446096,
+          0.16900821003313066
+        ],
+        "ci95_excludes_zero": false
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2027,
+      "a": "lowrank_linear__B3",
+      "b": "lowrank_linear__B1",
+      "comparison": "permuted_go_vs_real_go",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.13743562547846866,
+        "median_a_minus_b": 0.017268125667871614,
+        "ci95": [
+          -0.21743018065456626,
+          0.5631252345064944
+        ],
+        "ci95_excludes_zero": false
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2027,
+      "a": "lowrank_linear__B2",
+      "b": "lowrank_linear__B1",
+      "comparison": "without_context_vs_with",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.3502659273870736,
+        "median_a_minus_b": -0.18491408194290637,
+        "ci95": [
+          -0.5484089411352759,
+          -0.2136101466324565
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2027,
+      "a": "modular_frozen__B1",
+      "b": "modular_frozen__B0",
+      "comparison": "go_slim_vs_basal",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.0014935383683947177,
+        "median_a_minus_b": 0.0020649553069956306,
+        "ci95": [
+          -0.006944557836691203,
+          0.010245244544428222
+        ],
+        "ci95_excludes_zero": false
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2027,
+      "a": "modular_frozen__B3",
+      "b": "modular_frozen__B1",
+      "comparison": "permuted_go_vs_real_go",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.023011087163596542,
+        "median_a_minus_b": 0.013396224944834223,
+        "ci95": [
+          0.010531137683087149,
+          0.03666535382845081
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_rpe1_to_hepg2",
+      "seed": 2027,
+      "a": "modular_frozen__B2",
+      "b": "modular_frozen__B1",
+      "comparison": "without_context_vs_with",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.292243130951733,
+        "median_a_minus_b": 0.04056247591137557,
+        "ci95": [
+          0.10279418285167365,
+          0.5310736448423384
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2026,
+      "a": "lowrank_linear__B1",
+      "b": "lowrank_linear__B0",
+      "comparison": "go_slim_vs_basal",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.183451614066242,
+        "median_a_minus_b": 0.057772883930271135,
+        "ci95": [
+          0.06143744578154918,
+          0.29380793109817804
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2026,
+      "a": "lowrank_linear__B3",
+      "b": "lowrank_linear__B1",
+      "comparison": "permuted_go_vs_real_go",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.027129563310274343,
+        "median_a_minus_b": -0.008509255795521198,
+        "ci95": [
+          -0.1559694645286301,
+          0.11405991179747003
+        ],
+        "ci95_excludes_zero": false
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2026,
+      "a": "lowrank_linear__B2",
+      "b": "lowrank_linear__B1",
+      "comparison": "without_context_vs_with",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.029274877112896013,
+        "median_a_minus_b": 0.011303009047865187,
+        "ci95": [
+          -0.06775135659756307,
+          0.004455082091956478
+        ],
+        "ci95_excludes_zero": false
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2026,
+      "a": "modular_frozen__B1",
+      "b": "modular_frozen__B0",
+      "comparison": "go_slim_vs_basal",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.009867259416852884,
+        "median_a_minus_b": -0.0057041110465684275,
+        "ci95": [
+          0.0007748349751963145,
+          0.019586002381729226
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2026,
+      "a": "modular_frozen__B3",
+      "b": "modular_frozen__B1",
+      "comparison": "permuted_go_vs_real_go",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.006731724313189874,
+        "median_a_minus_b": 0.0016307421414871737,
+        "ci95": [
+          -0.012498599210506656,
+          -0.001649410716849885
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2026,
+      "a": "modular_frozen__B2",
+      "b": "modular_frozen__B1",
+      "comparison": "without_context_vs_with",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.10901598044368871,
+        "median_a_minus_b": 0.03676086671700163,
+        "ci95": [
+          0.029770671292061516,
+          0.18024726221195803
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2027,
+      "a": "lowrank_linear__B1",
+      "b": "lowrank_linear__B0",
+      "comparison": "go_slim_vs_basal",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.19220688934990401,
+        "median_a_minus_b": 0.07192331392484252,
+        "ci95": [
+          0.09785474644570226,
+          0.3192863841557155
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2027,
+      "a": "lowrank_linear__B3",
+      "b": "lowrank_linear__B1",
+      "comparison": "permuted_go_vs_real_go",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.03632416557794028,
+        "median_a_minus_b": 0.01440109085537139,
+        "ci95": [
+          -0.19738330717442215,
+          0.07712317589845846
+        ],
+        "ci95_excludes_zero": false
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2027,
+      "a": "lowrank_linear__B2",
+      "b": "lowrank_linear__B1",
+      "comparison": "without_context_vs_with",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.008239608394456333,
+        "median_a_minus_b": 0.013458890214262276,
+        "ci95": [
+          -0.03921678761040639,
+          0.025068587078833166
+        ],
+        "ci95_excludes_zero": false
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2027,
+      "a": "modular_frozen__B1",
+      "b": "modular_frozen__B0",
+      "comparison": "go_slim_vs_basal",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.01841180786872484,
+        "median_a_minus_b": -0.0026075432772740825,
+        "ci95": [
+          -0.0020681380242515528,
+          0.0483054097561223
+        ],
+        "ci95_excludes_zero": false
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2027,
+      "a": "modular_frozen__B3",
+      "b": "modular_frozen__B1",
+      "comparison": "permuted_go_vs_real_go",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.01837246522340467,
+        "median_a_minus_b": -0.0010498880560878,
+        "ci95": [
+          -0.040696109763949835,
+          -0.0016573190575895347
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "k562_hepg2_to_rpe1",
+      "seed": 2027,
+      "a": "modular_frozen__B2",
+      "b": "modular_frozen__B1",
+      "comparison": "without_context_vs_with",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.032292015156331136,
+        "median_a_minus_b": 0.022627142344789963,
+        "ci95": [
+          -0.02228873943077618,
+          0.10564634966079998
+        ],
+        "ci95_excludes_zero": false
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2026,
+      "a": "lowrank_linear__B1",
+      "b": "lowrank_linear__B0",
+      "comparison": "go_slim_vs_basal",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.17041377976939798,
+        "median_a_minus_b": 0.0788075633796062,
+        "ci95": [
+          0.0865223307655214,
+          0.25782898179468644
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2026,
+      "a": "lowrank_linear__B3",
+      "b": "lowrank_linear__B1",
+      "comparison": "permuted_go_vs_real_go",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.13981725139725548,
+        "median_a_minus_b": -0.04152978894003967,
+        "ci95": [
+          -0.2387534334446688,
+          -0.03599859148728373
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2026,
+      "a": "lowrank_linear__B2",
+      "b": "lowrank_linear__B1",
+      "comparison": "without_context_vs_with",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.3457797259594068,
+        "median_a_minus_b": 0.19377812110983894,
+        "ci95": [
+          0.26765191890381035,
+          0.44824706329445646
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2026,
+      "a": "modular_frozen__B1",
+      "b": "modular_frozen__B0",
+      "comparison": "go_slim_vs_basal",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": -0.004977404209536823,
+        "median_a_minus_b": -0.004779960609517797,
+        "ci95": [
+          -0.010416937626565441,
+          -0.0007076495508637731
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2026,
+      "a": "modular_frozen__B3",
+      "b": "modular_frozen__B1",
+      "comparison": "permuted_go_vs_real_go",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.004511774510962958,
+        "median_a_minus_b": 0.0011126757894585615,
+        "ci95": [
+          -0.0007497001433265494,
+          0.011164389230201533
+        ],
+        "ci95_excludes_zero": false
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2026,
+      "a": "modular_frozen__B2",
+      "b": "modular_frozen__B1",
+      "comparison": "without_context_vs_with",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.2634561857607943,
+        "median_a_minus_b": 0.11074481064114633,
+        "ci95": [
+          0.0868410897364273,
+          0.45539891578776154
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2027,
+      "a": "lowrank_linear__B1",
+      "b": "lowrank_linear__B0",
+      "comparison": "go_slim_vs_basal",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.06823086150729174,
+        "median_a_minus_b": 0.022930293654925604,
+        "ci95": [
+          0.022918441897387554,
+          0.1138081187252789
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2027,
+      "a": "lowrank_linear__B3",
+      "b": "lowrank_linear__B1",
+      "comparison": "permuted_go_vs_real_go",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.0013343636853401554,
+        "median_a_minus_b": -0.026902592416350624,
+        "ci95": [
+          -0.06668498532435292,
+          0.0906446188647573
+        ],
+        "ci95_excludes_zero": false
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2027,
+      "a": "lowrank_linear__B2",
+      "b": "lowrank_linear__B1",
+      "comparison": "without_context_vs_with",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.20673878202496673,
+        "median_a_minus_b": 0.11610103353259427,
+        "ci95": [
+          0.14866999793389982,
+          0.2805244315052836
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2027,
+      "a": "modular_frozen__B1",
+      "b": "modular_frozen__B0",
+      "comparison": "go_slim_vs_basal",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.05206233955347452,
+        "median_a_minus_b": 0.03571232479652142,
+        "ci95": [
+          0.04037649690669726,
+          0.06691755616363315
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2027,
+      "a": "modular_frozen__B3",
+      "b": "modular_frozen__B1",
+      "comparison": "permuted_go_vs_real_go",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.006271798939455828,
+        "median_a_minus_b": 0.002879349791048369,
+        "ci95": [
+          0.0028873109808321765,
+          0.010524783608760151
+        ],
+        "ci95_excludes_zero": true
+      }
+    },
+    {
+      "protocol": "new_context_unseen_target",
+      "direction_id": "rpe1_hepg2_to_k562",
+      "seed": 2027,
+      "a": "modular_frozen__B2",
+      "b": "modular_frozen__B1",
+      "comparison": "without_context_vs_with",
+      "diff": {
+        "key": "mse_vs_null",
+        "n": 48,
+        "mean_a_minus_b": 0.22212798051542168,
+        "median_a_minus_b": 0.05791551832552955,
+        "ci95": [
+          0.10073003194715316,
+          0.36378233598230386
+        ],
+        "ci95_excludes_zero": true
+      }
+    }
+  ]
+}

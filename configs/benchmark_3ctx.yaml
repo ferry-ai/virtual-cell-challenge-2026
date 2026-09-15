@@ -1,0 +1,171 @@
+# Three-context benchmark. Numbers here are the protocol, not results.
+#
+# What changes from configs/benchmark.yaml (m001): a third perturbed biological
+# context exists on disk, so every external fold now trains on TWO contexts and
+# tests on a third. That is the first configuration in this project in which the
+# context descriptor can vary within training at all -- with one training context
+# it was a constant column and a with/without-context comparison could not
+# identify anything.
+#
+# What does NOT change: the primary metric, fixed before any comparison; the
+# refusal to zero-fill unmeasured genes; the ban on the trial alpha; and the
+# absence of a non-inferiority margin, which stays null until baseline
+# repeatability is measured independently of this run.
+#
+# Two contexts in training is still not many. Biological context, batch and
+# dataset provenance remain partly confounded: each context comes from one
+# experiment, so anything the model learns from the context descriptor could be
+# a property of the experiment. That is declared here, not discovered later.
+
+version: "1"
+updated: "2026-09-14"
+run_id: m002
+
+primary_metric: pooled_mse_vs_null
+primary_metric_direction: lower_is_better
+primary_metric_space: "pseudobulk log2FC proxy; not a VCC score"
+non_inferiority_margin: null
+non_inferiority_note: >-
+  Not set, exactly as in m001. Declaring non-inferiority requires a margin fixed
+  from an independent measure of baseline repeatability, before the comparison.
+
+gene_universe: intersection_measured
+zero_fill_missing: false
+zero_fill_note: >-
+  Unmeasured genes are excluded from the universe, not filled with zero (D-009).
+  With HepG2 in the intersection the universe shrinks again, and the coverage
+  lost relative to the official 18,533-gene axis is recorded with it.
+
+signatures:
+  # e001 built the pseudobulk sources; e003 built HepG2 from single cells with
+  # the same log2FC definition and batch-matched controls.
+  dirs: null            # set on the command line: --signatures <e001> <e003>
+  sources: [k562_gwps, rpe1_essential, nadig_hepg2]
+  shared_targets_from: [k562_gwps, rpe1_essential, nadig_hepg2]
+  min_cells_already_applied: 10
+  k562_essential_note: >-
+    k562_essential is deliberately absent from this run. It is the same cell line
+    as k562_gwps, so including it would give K562 two votes where RPE1 and HepG2
+    have one, and the requirement that the two K562 datasets stay on the same
+    side of every split is then satisfied by construction.
+
+directions:
+  - id: k562_rpe1_to_hepg2
+    train_context: "K562+RPE1"
+    test_context: HepG2
+    train_sources: [k562_gwps, rpe1_essential]
+    test_source: nadig_hepg2
+    internal_dest_source: rpe1_essential
+    internal_dest_context: RPE1
+    n_train_contexts: 2
+    context_dependence_identifiable: true
+    note: >-
+      Two training contexts, so the context descriptor varies in training and the
+      amplitude is calibrated K562 -> RPE1 inside training, never on HepG2.
+  - id: k562_hepg2_to_rpe1
+    train_context: "K562+HepG2"
+    test_context: RPE1
+    train_sources: [k562_gwps, nadig_hepg2]
+    test_source: rpe1_essential
+    internal_dest_source: nadig_hepg2
+    internal_dest_context: HepG2
+    n_train_contexts: 2
+    context_dependence_identifiable: true
+    note: >-
+      Amplitude calibrated K562 -> HepG2 inside training. RPE1 responses enter
+      nothing but the test.
+  - id: rpe1_hepg2_to_k562
+    train_context: "RPE1+HepG2"
+    test_context: K562
+    train_sources: [rpe1_essential, nadig_hepg2]
+    test_source: k562_gwps
+    internal_dest_source: nadig_hepg2
+    internal_dest_context: HepG2
+    n_train_contexts: 2
+    context_dependence_identifiable: true
+    note: >-
+      The fold with no K562 anywhere in training, including k562_essential, which
+      this run does not read at all.
+
+protocols:
+  - new_context_seen_target
+  - new_context_unseen_target
+unseen_fraction: 0.3
+inner_val_fraction: 0.2
+
+pilot:
+  max_targets: 160
+  max_targets_note: >-
+    Same cap as m001, so the two runs are comparable, and same rule: a uniform
+    random subset of the shared targets, seed-controlled, never filtered by
+    effect size (D-011). Training rows are now roughly twice m001's, because a
+    target contributes one row per training context.
+  seeds: [2026, 2027]
+  collapse_guides: true
+
+amplitude:
+  predetermined_alpha: 1.0
+  forbidden_trial_alpha: 0.1974
+  with_internal_pair: closed_form_least_squares
+  without_internal_pair: predetermined
+  predetermined_label: predetermined_heuristic
+  never_call_predetermined_cross_context: true
+  cross_context_note: >-
+    In m001 the only internal pair was K562 genome-wide against K562 essential --
+    the same cell line, labelled `internal_same_line_limited`. Here the internal
+    pair is two different biological contexts inside training, labelled
+    `cross_context_within_training`. It is still an approximation: alpha fitted on
+    one context pair is applied to a combination predicting a third context.
+
+descriptors:
+  n_high_expr_genes: 32
+  include_train_response_codes: true
+  ntc_of_query_context: allowed_declared_shared_across_arms
+  response_derived_features_forbidden_for_unseen_targets: true
+  high_expr_selection: mean_of_training_contexts
+  control_profiles:
+    # A single-cell source carries its basal profile precomputed: same quantity,
+    # different file format (scripts/55_control_profile.py).
+    nadig_hepg2: "<data_root>/artifacts/e003/signatures/nadig_hepg2.control_profile.npz"
+
+models:
+  shrunk_transfer:
+    prior_sd_grid: [0.5, 1.0, 4.0, 1000000.0]
+    multi_source_rule: context_equal_weights
+    multi_source_note: >-
+      With two training contexts the transfer arm has to combine them. The rule is
+      fixed here, before any fold runs: equal weight per biological context, split
+      among that context's datasets, mask = union of contributors.
+  lowrank_linear:
+    rank_grid: [8, 16]
+    ridge_grid: [1.0, 10.0]
+  compact_mlp:
+    hidden: 24
+    lr: 0.01
+    l2: 0.0001
+    epochs: 30
+    patience: 6
+    batch: 32
+  modular:
+    rank_grid: [8, 16]
+    hidden: 8
+    lr: 0.01
+    l2: 0.0001
+    epochs: 30
+    patience: 6
+    batch: 32
+    joint_finetune_epochs: 12
+    joint_lr: 0.003
+
+evaluation:
+  n_boot: 200
+  strong_threshold: 0.5
+  score_unobserved_as: zero_delta_with_coverage_reported
+  save_full_predictions: false
+
+generator_x_predictor:
+  execute_six_metrics: false
+  reason: >-
+    Decided separately from this run. HepG2 now gives real perturbed counts with
+    real NTCs, which is what that experiment needs, but the pseudobulk comparison
+    must not depend on it: see docs/BENCHMARK_MODULARE.md section 6.

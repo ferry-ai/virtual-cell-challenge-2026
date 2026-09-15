@@ -1,0 +1,198 @@
+{
+  "changes": [],
+  "checks_suggested": [],
+  "confidence": "low",
+  "dropped_keys": [],
+  "evidence": [],
+  "issues": [],
+  "objections": [],
+  "open_questions": [
+    "Se il file di matrice dell'accessione sia davvero servito senza autenticazione: e' rimasta senza risposta per tre fasi",
+    "Se il lavoro squamoso abbia un deposito da qualche parte che non ho interrogato"
+  ],
+  "proposal": "Sulla pista del deposito squamoso fuori da GEO: ho interrogato ArrayExpress e Zenodo con i termini della fase 1 e non ho trovato nessuna accessione riconducibile a quel lavoro. Questo NON vuol dire che non esista: vuol dire che le due query che ho registrato non l'hanno restituita, e che ho guardato due archivi su molti. Sulla pista della contraddizione: ho ritrovato lo studio del 2024 e ho riletto la Fig. 3b, che continua a dirmi quello che avevo riportato. Il pezzo che deciderebbe -- la tabella supplementare con la popolazione di bersagli usata nella figura e quella usata per la frase dell'abstract -- sta in un file supplementare che l'editore serve solo agli abbonati. Non l'ho aggirato. Quindi la spiegazione alternativa che avevo proposto io stesso, che i due passaggi parlino di sottoinsiemi diversi, resta plausibile e non verificata, e la contraddizione con il collega resta aperta.",
+  "research": {
+    "agreements": [],
+    "claims": [
+      {
+        "about_hypothesis": "H1",
+        "contradicted_by": [],
+        "flags": [],
+        "id": "C-9105997c2c",
+        "limits": "non dice su quale popolazione sia costruita la frase dell'abstract, che e' l'altra meta' della domanda",
+        "locator": "didascalia della Fig. 3b",
+        "nature": "reported_by_authors",
+        "phase": 0,
+        "role": "",
+        "step_id": "",
+        "supported_by": [
+          "F-b558b4be5b"
+        ],
+        "text": "La didascalia della Fig. 3b dichiara che la figura usa i 112 bersagli con almeno 200 cellule, non tutti i bersagli dello studio."
+      },
+      {
+        "about_hypothesis": "H1",
+        "contradicted_by": [],
+        "flags": [],
+        "id": "C-2a9380420e",
+        "limits": "e' la spiegazione alternativa che avevo proposto, e resta non verificata: serve la tabella S4, che non e' accessibile",
+        "locator": "",
+        "nature": "worker_interpretation",
+        "phase": 0,
+        "role": "",
+        "step_id": "",
+        "supported_by": [
+          "F-b558b4be5b"
+        ],
+        "text": "Se l'abstract generalizza su tutti i bersagli e la figura ne mostra 112 selezionati, i due passaggi possono essere entrambi corretti e la contraddizione fra me e il collega sarebbe apparente."
+      },
+      {
+        "about_hypothesis": "H2",
+        "contradicted_by": [],
+        "flags": [],
+        "id": "C-aa95a1feff",
+        "limits": "e' un'assenza in due archivi con due stringhe, non un'assenza nella letteratura",
+        "locator": "",
+        "nature": "worker_interpretation",
+        "phase": 0,
+        "role": "",
+        "step_id": "",
+        "supported_by": [],
+        "text": "Le due query su ArrayExpress e Zenodo non hanno restituito nessun deposito per il lavoro squamoso."
+      }
+    ],
+    "complementary": [],
+    "confidence": "low",
+    "contradictions": [],
+    "dropped_keys": [],
+    "gaps": [
+      {
+        "id": "G-cf3a537569",
+        "missing": "La tabella supplementare S4 dello studio 2024, che direbbe se la contraddizione e' apparente.",
+        "phase": 0,
+        "role": "",
+        "search_that_would_close_it": "Chiedere il supplemento agli autori, oppure cercare una copia depositata dal gruppo su un repository istituzionale",
+        "step_id": ""
+      },
+      {
+        "id": "G-f634e30245",
+        "missing": "Non ho mai provato a chiedere l'intestazione HTTP del file di matrice: la domanda che ha aperto la campagna resta senza risposta.",
+        "phase": 0,
+        "role": "",
+        "search_that_would_close_it": "Una richiesta HEAD sull'URL del file dell'accessione",
+        "step_id": ""
+      }
+    ],
+    "hypotheses": [
+      {
+        "alternatives": [
+          "accesso controllato",
+          "il file e' elencato ma non servito"
+        ],
+        "id": "H1",
+        "initial_evidence": [
+          "l'accessione dichiara la matrice"
+        ],
+        "phase": 0,
+        "proposed_tests": [
+          "richiesta della sola intestazione HTTP sull'URL del file"
+        ],
+        "role": "",
+        "statement": "Esiste almeno un Perturb-seq CRISPRi pubblico in linea T matura con matrice RNA scaricabile.",
+        "status": "undecided",
+        "step_id": ""
+      },
+      {
+        "alternatives": [
+          "i supplementi contengono solo pseudobulk aggregato"
+        ],
+        "id": "H2",
+        "initial_evidence": [],
+        "phase": 0,
+        "proposed_tests": [
+          "aprire il supplemento, quando sara' accessibile"
+        ],
+        "role": "",
+        "statement": "Dove la matrice RNA manca dall'archivio, e' ricostruibile da un supplemento o da un repository secondario.",
+        "status": "undecided",
+        "step_id": ""
+      }
+    ],
+    "issues": [],
+    "leads": [],
+    "open_questions": [
+      "Se il file di matrice dell'accessione sia davvero servito senza autenticazione: e' rimasta senza risposta per tre fasi",
+      "Se il lavoro squamoso abbia un deposito da qualche parte che non ho interrogato"
+    ],
+    "operator_requests": [],
+    "phase": 0,
+    "role": "",
+    "saturation_claim": "",
+    "search_gaps": [],
+    "searches": [
+      {
+        "filters": "single cell; Homo sapiens",
+        "id": "Q-74c15e0765",
+        "note": "6 risultati, nessuno pertinente",
+        "phase": 0,
+        "provenance": "declared_by_worker",
+        "query": "squamous CRISPRi single cell perturbation atlas 2025",
+        "role": "",
+        "service": "ArrayExpress",
+        "status": "executed",
+        "step_id": ""
+      },
+      {
+        "filters": "dataset",
+        "id": "Q-fe4d19140a",
+        "note": "0 risultati",
+        "phase": 0,
+        "provenance": "declared_by_worker",
+        "query": "Bergqvist squamous CRISPRi atlas",
+        "role": "",
+        "service": "Zenodo",
+        "status": "executed",
+        "step_id": ""
+      },
+      {
+        "filters": "nessuno",
+        "id": "Q-67399e044b",
+        "note": "il file supplementare richiede un abbonamento; mi sono fermato",
+        "phase": 0,
+        "provenance": "declared_by_worker",
+        "query": "Aaltonen 2024 primary T cell Perturb-seq supplementary table S4",
+        "role": "",
+        "service": "pagina dell'editore",
+        "status": "blocked",
+        "step_id": ""
+      }
+    ],
+    "sources": [
+      {
+        "access_note": "riletta Fig. 3b e la relativa didascalia; la tabella supplementare S4 resta chiusa",
+        "authors": "Aaltonen, Neri, Okafor",
+        "consulted": "full_text_or_section",
+        "doi": "10.0000/finta-2026-0001",
+        "found_via": "gia' nota dalla fase 1",
+        "id": "F-b558b4be5b",
+        "key": "doi:10.0000/finta-2026-0001",
+        "key_kind": "doi",
+        "local_id": "F1",
+        "phase": 0,
+        "role": "",
+        "step_id": "",
+        "title": "Perturb-seq in primary human T cells reveals lineage-restricted regulators",
+        "url": "",
+        "year": "2024"
+      }
+    ],
+    "step_id": "",
+    "summary": "La ricerca sugli altri archivi non ha prodotto nulla; il supplemento che deciderebbe la contraddizione non e' accessibile.",
+    "synthesis": "Sulla pista del deposito squamoso fuori da GEO: ho interrogato ArrayExpress e Zenodo con i termini della fase 1 e non ho trovato nessuna accessione riconducibile a quel lavoro. Questo NON vuol dire che non esista: vuol dire che le due query che ho registrato non l'hanno restituita, e che ho guardato due archivi su molti. Sulla pista della contraddizione: ho ritrovato lo studio del 2024 e ho riletto la Fig. 3b, che continua a dirmi quello che avevo riportato. Il pezzo che deciderebbe -- la tabella supplementare con la popolazione di bersagli usata nella figura e quella usata per la frase dell'abstract -- sta in un file supplementare che l'editore serve solo agli abbonati. Non l'ho aggirato. Quindi la spiegazione alternativa che avevo proposto io stesso, che i due passaggi parlino di sottoinsiemi diversi, resta plausibile e non verificata, e la contraddizione con il collega resta aperta.",
+    "unsupported_assumptions": []
+  },
+  "resolved_objections": [],
+  "route_hint": null,
+  "subtasks": [],
+  "summary": "La ricerca sugli altri archivi non ha prodotto nulla; il supplemento che deciderebbe la contraddizione non e' accessibile."
+}

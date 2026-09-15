@@ -1,0 +1,23 @@
+{
+  "checks_suggested": [],
+  "confidence": "high",
+  "dropped_keys": [],
+  "evidence": [
+    {
+      "claim": "v_5(100!) = 24",
+      "id": "E79731f16",
+      "support": "20 + 4, con i multipli di 25 contati due volte",
+      "type": "derived"
+    }
+  ],
+  "issues": [],
+  "objections": [],
+  "open_questions": [],
+  "proposal": "Il numero di zeri finali di n! e' v_5(n!) = somma_k floor(n/5^k), perche' i fattori 2 sono in eccesso.\nPer n = 100: 100 / 5 = 20, 100 / 25 = 4, 100 / 125 = 0, totale 24.\nIl mio conto precedente si fermava al primo termine.\n\nRISULTATO: 24",
+  "resolved_objections": [
+    "Il conteggio 100/5 = 20 ignora i multipli di 25, che portano un secondo fattore 5: mancano 4 unita' e il risultato 20 e' sbagliato."
+  ],
+  "route_hint": null,
+  "subtasks": [],
+  "summary": "Correggo: sono 24, non 20. Avevo trascurato il secondo fattore 5 dei multipli di 25."
+}

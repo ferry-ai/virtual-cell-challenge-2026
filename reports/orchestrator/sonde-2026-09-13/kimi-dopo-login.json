@@ -1,0 +1,23 @@
+{
+  "che_cosa": "Sonda su kimi.ai dopo l'accesso dell'operatore, entrando in una conversazione vera. Sola lettura: nessun messaggio inviato dall'orchestratore.",
+  "quando_utc": "2026-09-13T18:09Z",
+  "misurato": {
+    "sessione": "autenticata: i due 401 su GetSubscriptionStats e GetUserStorageQuota sono spariti, e nella barra laterale compare il profilo utente",
+    "lingua": "it",
+    "compositore": "div.chat-input-editor[role=textbox], 734x60",
+    "conversazione_letta": "https://www.kimi.ai/chat/1a09bf30-...",
+    "elementi_markdown_per_un_solo_scambio": 4
+  },
+  "trappola_trovata": {
+    "sintomo": "un solo scambio produce quattro elementi con classe markdown",
+    "causa": "Kimi rende il proprio ragionamento in div.markdown-container.toolcall-content-text, identico per classe al contenitore della risposta",
+    "conseguenza_se_ignorata": "il conteggio dei messaggi raddoppia e l'adattatore rischia di restituire il ragionamento al posto della risposta",
+    "selettore_adottato": "div.markdown-container:not(.toolcall-content-text)",
+    "stato": "osservato su un solo scambio, mai esercitato con un invio: il profilo resta verified: false"
+  },
+  "correzioni_alla_sonda": [
+    "la sonda ora entra nella conversazione piu' recente invece di guardare la home, dove non esiste alcun messaggio",
+    "il primo tentativo seguiva il link a /chat/history, che e' una pagina di link: filtro sull'ultimo segmento del percorso e un secondo salto"
+  ],
+  "deepseek": "ancora nessuna conversazione in quel profilo: il selettore dei messaggi manca, serve un messaggio di prova"
+}

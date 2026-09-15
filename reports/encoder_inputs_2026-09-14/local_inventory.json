@@ -1,0 +1,53 @@
+{
+  "retrieved_at": "2026-09-14T20:14:57.771471+00:00",
+  "official": {
+    "n_axis": 18533,
+    "n_axis_unique": 18533,
+    "n_vcc_targets": 300,
+    "n_vcc_unique": 300,
+    "vcc_on_axis": 300
+  },
+  "basal_from_target_inventory": {
+    "n_inventory_rows": 300,
+    "k562_gwps_true": 272,
+    "missing_all_local": 28,
+    "all_300_have_A_cpm": true,
+    "n_below_1cpm_any_context": 3,
+    "n_below_5cpm_any_context": 12
+  },
+  "signatures": {
+    "k562_gwps": {
+      "n_rows": 2816,
+      "n_unique_targets": 2659,
+      "n_with_ensg": 2659,
+      "n_multi_ensg": 0,
+      "multi_ensg_examples": {}
+    },
+    "k562_essential": {
+      "n_rows": 2167,
+      "n_unique_targets": 2048,
+      "n_with_ensg": 2048,
+      "n_multi_ensg": 0,
+      "multi_ensg_examples": {}
+    },
+    "rpe1_essential": {
+      "n_rows": 2509,
+      "n_unique_targets": 2354,
+      "n_with_ensg": 2354,
+      "n_multi_ensg": 0,
+      "multi_ensg_examples": {}
+    }
+  },
+  "cd4_design": {
+    "n_library_genes": 12784,
+    "vcc_in_library": 297,
+    "vcc_with_ensg_in_library": 297
+  },
+  "existing_descriptor_bank": {
+    "source": "src/vcc2026/benchmark/descriptors.py",
+    "unseen_with_context_n_features_measured": 41,
+    "unseen_without_context_n_features_measured": 4,
+    "evidence": "reports/benchmark_2026-09-14/splits/new_context_unseen_target_k562_to_rpe1_seed2026.json",
+    "response_codes_forbidden_for_unseen": true
+  }
+}

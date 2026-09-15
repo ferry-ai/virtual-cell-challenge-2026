@@ -17,7 +17,7 @@
 # is the specific error this schema exists to prevent.
 
 version: "1"
-updated: "2026-09-12"
+updated: "2026-09-15"
 
 sources:
 
@@ -242,28 +242,55 @@ sources:
       - "0/300 direct panel coverage — calibration, not supervision."
 
   - id: nadig_hepg2
-    title: "Nadig 2025 HepG2 Perturb-seq"
-    verification: sample_verified
-    verified_on: "2026-09-12"
+    title: "Nadig 2025 HepG2 Perturb-seq (scPerturb mirror, acquired)"
+    verification: pilot_ingested
+    verified_on: "2026-09-14"
     evidence:
+      - reports/hepg2_2026-09-14/acquisition.json
+      - reports/hepg2_2026-09-14/nadig_hepg2_audit.json
+      - reports/hepg2_2026-09-14/context_target_table.csv
       - reports/candidate_verification/hepg2_probe.json
-      - reports/candidate_verification/coverage_summary.json
     accession: GSE264667
+    version: "scPerturb mirror, Zenodo record 13350497, DOI 10.5281/zenodo.13350497"
+    license: "CC BY 4.0 (declared on the Zenodo record; competition compatibility recorded, not verified)"
     assay: "CRISPRi Perturb-seq"
     modality: CRISPRi
-    cell_context: "HepG2 — hepatocellular"
-    count_schema: "dense float32, count samples integral; 145,473 x 9,624"
-    ntc_rule: "obs.gene == 'non-targeting' (4,976 cells)"
-    qc: "paper reports median 45 cells per perturbation"
-    bytes_total: 5614460941
+    cell_context: "HepG2"
+    cell_state: perturbed
+    count_schema: >-
+      integer counts, single cell; stored dense float32, gzip-chunked (569 x 76);
+      145,473 x 9,624. Sampled 3,072 cells: non-negative, integral, no
+      zero-library cell, median library 15,778, consistent with obs.ncounts
+      (median 15,487). Dense would be 5.6 GB and is never materialised.
+    guide_ids: "obs.guide_id, 2,679 levels; guides are pooled per target in the signatures"
+    ntc_rule: >-
+      obs.perturbation == 'control' (4,976 cells) in this harmonised mirror. The
+      2026-09-12 probe of the GEO original recorded obs.gene == 'non-targeting'
+      for the same cells: the mirror renames, it does not re-measure.
+    qc: >-
+      2,393 targeting levels; median 45 cells per target; 2,346 with >= 10 cells,
+      1,818 with >= 30, 1,061 with >= 50. 56 batches, every one with NTC cells
+      (min 5, median 92), so each target is compared with the NTC of its own
+      batches.
+    bytes_total: 850590740
     coverage:
       observed_targets: 0
-      output_genes: 9024
-    ingestion_status: not_started
-    enabled: false
-    role: "held-out-context transfer benchmark"
+      targets_min_cells: 0
+      min_cells: 10
+      output_genes: 9023
+    ingestion_status: local
+    enabled: true
+    local_path: "raw/nadig_hepg2/NadigOConner2024_hepg2.h5ad"
+    role: "third perturbed biological context: leave-one-context-out training and test"
     limits:
-      - "0/300 direct panel coverage."
+      - "0/300 direct panel coverage, verified again after acquisition: this source
+         measures transfer between contexts, never coverage of the VCC panel."
+      - "A mirror is a copy of an experiment, not a second experiment. It must never
+         be summed with the GEO original nor treated as replication."
+      - "The matrix is the only one in the file: no layers, no raw, no obsm. There is
+         nothing to fall back to if X were not counts."
+      - "Guides are pooled per target: this source has no guide-level pseudobulk rows,
+         so guide-level splits are not available from it."
 
   - id: rpe1_singlecell
     title: "Replogle 2022 RPE1 raw single-cell (for an evaluation bundle)"
@@ -392,6 +419,56 @@ sources:
     limits:
       - "25/300 overlap: 13 Training, 4 Validation, 8 Test — keep the partitions separate."
       - "No RNA matrix locally: the H1 benchmark is PENDING ACQUISITION, not completed."
+
+  - id: jiang_mixscale
+    title: "Jiang 2025 Mixscale Perturb-seq, six lines x five stimuli"
+    verification: metadata_verified
+    verified_on: "2026-09-15"
+    evidence:
+      - reports/jiang_2026-09-15/jiang_probe.json
+    accession: GSE281048
+    url: "https://zenodo.org/records/14518762"
+    version: "v2.1"
+    license: "CC BY 4.0"
+    assay: "CRISPRi Perturb-seq (Parse Evercode)"
+    modality: CRISPRi
+    cell_context: "A549, MCF7, HT29, HAP1, BxPC3, K562"
+    cell_state: "24 h cytokine (IFNB, IFNG, TGFB, TNFA, INS)"
+    count_schema: "five Seurat RDS objects; RNA counts not opened this session"
+    ntc_rule: null
+    bytes_total: 20141612637
+    coverage:
+      observed_targets: null
+    ingestion_status: not_started
+    enabled: false
+    role: "priority-1 diversity of perturbed contexts; split by entire cell line"
+    limits:
+      - "Six lines x five stimuli are not thirty independent lines."
+      - "K562 here is a new experiment on a line already local, not a new line."
+      - "Panel overlap is missing: no target list was read."
+      - "DE_results_all_pathway.zip must not become unseen-target features."
+      - "TGFB block is 2,642,041,433 bytes; this machine had 11.3 GiB free on 2026-09-15 and cannot keep the 10 GiB floor if it downloads that block (D-005)."
+
+  - id: srivatsan_sciplex3
+    title: "Srivatsan 2020 sci-Plex 3"
+    verification: metadata_verified
+    verified_on: "2026-09-15"
+    evidence:
+      - reports/source_cards_2026-09-15/srivatsan_sciplex3.json
+    accession: "scPerturb SrivatsanTrapnell2020_sciplex3"
+    url: "https://zenodo.org/records/13350497"
+    license: "CC BY 4.0"
+    assay: "sci-Plex combinatorial indexing, small molecules"
+    modality: drug
+    cell_context: "K562, A549, MCF7"
+    bytes_total: 2526631614
+    checksum: "md5:c9e70629505d98c7ca1a837f62b14e89"
+    ingestion_status: not_started
+    enabled: false
+    role: "pharmacological; not knockdown labels"
+    limits:
+      - "188 compounds are not gene targets."
+      - "Vehicle is not an NTC guide."
 
   # ------------------------------------------------------------- not usable
   - id: pisces

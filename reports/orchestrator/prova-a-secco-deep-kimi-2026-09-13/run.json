@@ -1,0 +1,38 @@
+{
+  "brief": {
+    "id": "collaudo-deep-kimi",
+    "materials": [],
+    "sha256": "630d99d2e7b5688551c1f34a3e204e17ee76d4ae2e364a5f259886aa228c29cb",
+    "source": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\configs\\orchestrator\\briefs\\collaudo-deep-kimi.yaml",
+    "title": "Collaudo - CSV o JSONL per un registro eventi da 10 GB",
+    "version": 1
+  },
+  "config": {
+    "execution": "quarantine",
+    "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\configs\\orchestrator\\offline-deep-kimi.yaml",
+    "plan_approval": "auto"
+  },
+  "created_utc": "2026-09-13T17:15:21Z",
+  "limits": {
+    "convergence_rounds": 2,
+    "convergence_similarity": 0.92,
+    "disagreement_rounds": 3,
+    "max_rounds": 3,
+    "max_wall_clock_minutes": 20,
+    "self_similarity_stagnation": 0.97,
+    "stagnation_rounds": 2,
+    "transport_retries": 0
+  },
+  "roles": {
+    "solver_a": "scripted",
+    "solver_b": "scripted"
+  },
+  "route": "deep_kimi",
+  "run_id": "20260913T171521Z-collaudo-deep-kimi-v1-f0b451",
+  "stages": {
+    "solve": [
+      "solver_a",
+      "solver_b"
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "changes": [
+    "Corretto E1 nel controesempio: l'insieme dei valori finiti di B è {c1,c2,c4} = {0.3,0.1,0.5}, media 0.9/3 = 0.3, non {c2,c4} come scritto nei miei round 1-2; la media coincide (0.3) per pura coincidenza numerica con (0.1+0.5)/2, quindi delta=+0.1 e tutte le conclusioni restano invariate. Questo risponde all'obiezione Oda03ca75.",
+    "Confermata come già risolta O6426405c: dal round 2 distinguo l'output del codice (delta=+0.1 -> winner='A') dalla semantica corretta (sugli stessi insiemi diversi indicherebbe B; sui casi comuni c1,c4 il delta corretto è -0.1 e vince A).",
+    "Nessun altro cambiamento sostanziale: la proposta di solver_a-round2, dopo le sue autocorrezioni, è risultata accurata su tutti i punti; nessuna nuova evidenza da aggiungere."
+  ],
+  "checks_suggested": [
+    {
+      "criterion": "C1",
+      "how": "Verificare che la proposta separi E1-E4 (bug di codice) da M1-M4 (metodologia) e non tratti il bug del vincitore come una scelta metodologica."
+    },
+    {
+      "criterion": "C2",
+      "how": "Rifare il calcolo di B: valori finiti 0.3,0.1,0.5 su c1,c2,c4; media 0.9/3=0.3; controllare che la proposta dichiari la coincidenza con (0.1+0.5)/2 come casuale."
+    },
+    {
+      "criterion": "C3",
+      "how": "Controllare che la patch minima (mask congiunta, segno corretto, pareggio, n=0, split per cell_line) sia presente come artefatto non eseguito e che le decisioni riservate all'operatore siano elencate."
+    },
+    {
+      "criterion": "C4",
+      "how": "Rifare a mano: casi comuni c1,c4; A=0.30; B=0.40; delta=-0.10; vincitore A; n_used=2, n_dropped=2."
+    },
+    {
+      "criterion": "C5",
+      "how": "Verificare che siano dichiarati almeno questi limiti: generalizzazione a linee mai viste, significatività, bias da missing non casuale, leakage (richiede numero di cell_line e record per linea), scala reale."
+    }
+  ],
+  "confidence": "high",
+  "dropped_keys": [],
+  "evidence": [
+    {
+      "claim": "I valori finiti di B sono c1,c2,c4 con media 0.3",
+      "id": "E9970c887",
+      "support": "loss_b = [0.3, 0.1, NaN, 0.5]; (0.3+0.1+0.5)/3 = 0.9/3 = 0.3",
+      "type": "derived"
+    },
+    {
+      "claim": "La coincidenza media(B)=0.3 anche su {c2,c4} è numerica, non strutturale",
+      "id": "Ecde936bc",
+      "support": "(0.1+0.5)/2 = 0.6/2 = 0.3 uguale per caso; gli insiemi restano diversi (A esclude c2, B esclude c3)",
+      "type": "derived"
+    },
+    {
+      "claim": "Il codice originale sui dati forniti restituisce delta=+0.1 e winner='A'",
+      "id": "Eda878005",
+      "support": "delta = 0.4-0.3 = +0.1 > 0 scatta il ramo 'A'; la compensazione coi casi comuni (vincitore corretto A) è fortuita",
+      "type": "derived"
+    },
+    {
+      "claim": "La regola winner='A' if delta>0 è invertita",
+      "id": "Ecba28be6",
+      "support": "a=[0.4,0.4], b=[0.2,0.2] -> delta=+0.2, codice dichiara A, corretto B",
+      "type": "derived"
+    },
+    {
+      "claim": "Lo split per record non garantisce linee mai viste",
+      "id": "E2a0959ce",
+      "support": "Due record cell_line='L1', cut=1: qualunque permutazione separa i record tra train e test",
+      "type": "derived"
+    },
+    {
+      "claim": "Sui casi comuni A è migliore di 0.10",
+      "id": "E471e7560",
+      "support": "c1,c4: A=(0.2+0.4)/2=0.30, B=(0.3+0.5)/2=0.40, delta=-0.10, differenze appaiate -0.10 e -0.10",
+      "type": "derived"
+    }
+  ],
+  "issues": [],
+  "objections": [],
+  "open_questions": [
+    "Quante cell_line esistono e quanti record per cell_line? Senza questo il leakage non è quantificabile.",
+    "I missing sono casuali rispetto a modello e linea (MCAR/MAR/MNAR)? La policy (escludere, imputare, marcare non valutabile) spetta all'operatore.",
+    "L'unità di aggregazione corretta è il record o la linea cellulare?",
+    "È richiesto un inferenziale con validazione per gruppi ripetuta, o basta il report descrittivo su n=2?",
+    "Le due loss sono confrontabili in scala e costo funzionale?"
+  ],
+  "proposal": "1) Errori di implementazione. E1 — summarize() filtra a e b separatamente (`a = a[np.isfinite(a)]; b = b[np.isfinite(b)]`), violando la docstring che stabilisce che ogni posizione è lo stesso caso. Verifica corretta sui dati: A valido = {c1,c3,c4} = {0.2,0.6,0.4}, media (0.2+0.6+0.4)/3 = 1.2/3 = 0.4; B valido = {c1,c2,c4} = {0.3,0.1,0.5}, media (0.3+0.1+0.5)/3 = 0.9/3 = 0.3. Le due medie sono calcolate su insiemi di casi diversi (A esclude c2, B esclude c3), quindi delta = 0.4-0.3 = +0.1 non è un confronto per caso. Nota: la media di B vale 0.3 anche restringendola erroneamente a {c2,c4}, ma è una coincidenza numerica, non una giustificazione. Correzione minima: `mask = np.isfinite(a) & np.isfinite(b); a = a[mask]; b = b[mask]`. E2 — la regola del vincitore è invertita rispetto a 'loss inferiore è migliore': con delta = media_a - media_b, delta>0 significa A peggiore, ma il codice assegna 'A'. Controesempio senza missing: a=[0.4,0.4], b=[0.2,0.2] -> delta=+0.2, codice dichiara A, corretto è B. Correzione: A vince se delta<0, B se delta>0. E3 — delta=0 cade nel ramo else e diventa 'B' per default: gestire il pareggio esplicitamente e il caso n=0 (nessun caso comune valido). Nota di coerenza: sui dati forniti i bug E1+E2 si compensano per caso — filtro separato porta delta a +0.1, la regola invertita lo converte in winner='A', che coincide col vincitore corretto sui casi comuni ma per ragionamento doppiamente errato; la compensazione non è garantita su altri dati (nel controesempio di E2 non compensa). E4 — split_cells() permuta record, non cell_line: se più record condividono cell_line, la permutazione può dividerli tra train e test. Controesempio: due record con cell_line='L1', len=2, cut=int(0.8*2)=1; qualunque permutazione mette un record L1 in train e uno in test, quindi la linea è stata vista in training e l'obiettivo dichiarato fallisce. Correzione minima: splittare le cell_line uniche e assegnare tutti i record di una linea allo stesso lato, con seed fisso e verifica di disgiunzione delle linee tra train e test. 2) Problemi metodologici. M1 — anche con E4 corretto, un solo split 80/20 dà una stima puntuale senza incertezza; per la generalizzazione a linee mai viste servirebbe validazione per gruppi (leave-cell-line-out o GroupKFold, scelta dell'operatore). M2 — la media per record può non essere la metrica giusta se l'unità statistica è la linea: 99 record di L1 con loss 0 e 1 record di L2 con loss 1 danno media per record ~0.01 ma media per linea 0.5. M3 — i missing possono non essere casuali: qui A manca su c2 e B su c3, e anche con maschera congiunta il sottoinsieme comune {c1,c4} può non essere rappresentativo; servono conteggio e reporting dei casi esclusi. M4 — n=2 casi comuni non permettono inferenza statistica. 3) Correzione minima (artefatto non eseguito): mask congiunta, differenze appaiate d=a-b, winner con gestione di pareggio e n=0, report di n_used/n_dropped; split per cell_line con assert di disgiunzione. Decisioni dell'operatore: policy sui missing one-sided (esclusione accoppiata, imputazione, 'non valutabile'); unità statistica e aggregazione (media per record vs per linea, mediana); schema di validazione per gruppi e numero di ripetizioni; frazione/seed dello split; soglia di significatività o report descrittivo; comparabilità delle scale delle due loss. 4) Confronto a mano sui casi validi per entrambi: maschera congiunta seleziona c1 e c4 soltanto. A: (0.2+0.4)/2 = 0.30. B: (0.3+0.5)/2 = 0.40. delta = 0.30-0.40 = -0.10. Differenze appaiate: c1 = 0.2-0.3 = -0.10, c4 = 0.4-0.5 = -0.10, media -0.10. Loss inferiore è migliore, quindi A è migliore di B di 0.10 su n=2 casi comuni; n_dropped=2 (c2 manca A, c3 manca B, non confrontabili). 5) Cosa questi dati non permettono di concludere: che A generalizzi meglio a linee mai viste (split non dimostrato a livello di linea, n=2); superiorità statistica o stabilità su altre linee (nessuna incertezza); assenza di bias da missing non casuale; assenza di leakage senza sapere quante cell_line e quanti record per cell_line esistono; validità su scala reale dei modelli.",
+  "resolved_objections": [
+    "Oda03ca75: accettata e corretta in questa proposta — l'insieme di B è {c1,c2,c4}, media 0.3 per coincidenza numerica; delta e conclusioni invariati.",
+    "O6426405c: già risolta nel round 2 e qui confermata — il codice con delta=+0.1 dà winner='A'; distinzione tra output del codice e semantica corretta esplicitata.",
+    "O7c9aab32 e Of1b3ddb6 (filtro separato): risolte con la verifica corretta — medie su insiemi diversi ({c1,c3,c4} vs {c1,c2,c4}), confronto non per caso.",
+    "O804e981e e O54ab03eb (segno di delta): risolte con il controesempio senza missing e con la gestione di pareggio e n=0.",
+    "O19d1ce53 e O37125732 (split casuale): risolte con il controesempio a due record stessa cell_line e cut=1, e con la correzione a split per cell_line.",
+    "O77075c51 (mia obiezione minor a solver_a-round1): risolta dall'altro — solver_a-round2 ha integrato la distinzione output-del-codice vs semantica corretta."
+  ],
+  "route_hint": null,
+  "subtasks": [],
+  "summary": "Accetto la correzione di solver_a: nel controesempio E1 i valori finiti di B sono c1,c2,c4 (media 0.3, identica per pura coincidenza a quella su c2,c4), quindi delta resta +0.1 e le conclusioni non cambiano; sui casi comuni c1,c4 A resta migliore di 0.10 (0.30 vs 0.40, n=2), e non restano obiezioni sostanziali in sospeso."
+}

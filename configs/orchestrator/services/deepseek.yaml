@@ -1,0 +1,91 @@
+# Profilo dell'interfaccia web di DeepSeek.
+#
+# NON VERIFICATO. I selettori qui sotto non sono stati osservati su questa macchina:
+# nessuno puo' conoscere il DOM di un prodotto altrui ragionandoci sopra. Il percorso e':
+#
+#   1. .\scripts\orch.cmd login deepseek      -> accedi a mano nella finestra che si apre
+#   2. .\scripts\orch.cmd probe deepseek      -> scrive i candidati osservati in <stato>/probes/
+#   3. compila `selectors` qui sotto con quello che hai visto
+#   4. metti verified: true e la data, solo dopo una prova riuscita
+#
+# Finche' verified e' false l'adattatore rifiuta di scrivere nella pagina.
+name: deepseek
+url: "https://chat.deepseek.com/"        # da confermare al primo accesso
+verified: true
+verified_on: 2026-09-13
+# Sbloccato da un invio reale riuscito, non da un'ispezione:
+# run 20260913T192120Z-collaudo-canale-v1-876169: invio riuscito, risposta di 1646 caratteri letta intera in 15,8 s, modalita' pensiero_profondo applicata e verificata. Confermato anche dal primo giro reale: 7241 caratteri, 47,5 s.
+
+selectors:
+  editor: "textarea[name='search']"   # OSSERVATO 2026-09-13 da profilo autenticato,
+                                      # 774x60, placeholder "Messaggio a DeepSeek".
+                                      # Scelto name= e non il placeholder: quello cambia
+                                      # con la lingua dell'interfaccia.
+  send: ""            # lasciato vuoto di proposito: si usa Invio da tastiera. I bottoni
+                      # di DeepSeek hanno classi offuscate e nessuna etichetta, quindi
+                      # un selettore inventato sarebbe piu" fragile del tasto Invio.
+  message: "div.ds-assistant-message-main-content"
+                      # OSSERVATO 2026-09-13 su una conversazione vera. Non uso
+                      # `.ds-message`, che conta anche i messaggi dell'utente, ne'
+                      # `.ds-markdown`, che comprende il blocco di ragionamento
+                      # («Riflessione per N secondi»). Questa classe e' la sola che
+                      # individua il corpo della risposta.
+  new_chat: ""        # il bottone "nuova chat": una conversazione per esecuzione
+  streaming: ""       # facoltativo: elemento presente solo mentre la risposta si sta scrivendo
+  logged_out: ""      # facoltativo: elemento presente solo quando la sessione e' scaduta
+
+# In alternativa al bottone: l'indirizzo che apre una conversazione vuota.
+new_chat_url: "https://chat.deepseek.com/"
+# Assunzione, non osservazione: l'indirizzo base apre una conversazione vuota.
+# Da confermare al primo run vero.
+
+logged_out_url_fragments: ["/sign_in", "/login"]
+
+# Candidati da provare con `probe`, non ancora verificati: sono ipotesi, non configurazione.
+# Osservato con `orch probe deepseek` il 2026-09-13: il profilo dedicato e' NON
+# autenticato e la pagina reindirizza a https://chat.deepseek.com/sign_in (titolo
+# "DeepSeek - Verso l'Ignoto", interfaccia in italiano, banner cookie presente).
+# Della chat non si vede nulla: gli unici elementi sono il campo telefono/email e i
+# bottoni di accesso. I selettori del compositore vanno osservati dopo il login.
+# Confermato invece che logged_out_url_fragments intercetta il caso: l'URL e' /sign_in.
+#
+# Aggiornamento del 2026-09-13, dopo il login dell'operatore in questo profilo:
+#   - la pagina non reindirizza piu': resta su https://chat.deepseek.com/
+#   - il compositore e' visibile ed e' una textarea (vedi selectors.editor)
+#   - i messaggi restano invisibili: la chat e' vuota, quindi non c'e' ancora nulla da
+#     cui ricavare il selettore di UNA risposta dell'assistente
+#   - il banner dei cookie e' ancora li': va chiuso a mano, puo' coprire il compositore
+candidates:
+  editor: ["textarea#chat-input", "textarea", "[contenteditable='true']"]
+  message: ["div.ds-markdown", "[class*='markdown']"]
+
+wait:
+  page_load_seconds: 90
+  response_timeout_seconds: 420
+  stable_seconds: 4          # testo immutato per N secondi = risposta finita
+  truncated_grace_seconds: 45   # tempo extra se il blocco e' ancora aperto
+  after_send_seconds: 2
+
+# Modalita' del compositore, misurate il 2026-09-13 accendendo e rispegnendo il pulsante.
+# Lo stato NON e' in una classe offuscata: c'e' aria-pressed, che e' semantico e stabile.
+# Il selettore invece dipende dalla lingua dell'interfaccia (qui italiana): se un giorno
+# cambia, il fallimento e' rumoroso perche' l'adattatore verifica lo stato dopo il clic.
+modes:
+  pensiero_profondo:
+    selector: "div.ds-toggle-button:has-text('Pensiero Profondo')"
+    state_attribute: "aria-pressed"
+    on_value: "true"
+    note: "il ragionamento esteso. Misurato ATTIVO nel profilo il 2026-09-13."
+  ricerca_intelligente:
+    selector: "div.ds-toggle-button:has-text('Ricerca intelligente')"
+    state_attribute: "aria-pressed"
+    on_value: "true"
+    note: "ricerca sul web. Se acceso, nel ciclo entra materiale esterno non tracciato."
+
+# Testi che, se compaiono nella pagina PRIMA di qualunque risposta, significano che il
+# servizio ha rifiutato: si smette di aspettare subito invece di consumare tutto il
+# timeout. Il controllo e' attivo solo finche' non arriva un messaggio, cosi' un modello
+# che scrive "traffico" nella propria risposta non lo fa scattare.
+# Ipotesi non verificate: DeepSeek mostra tipicamente un avviso di server occupato.
+# Da confermare la prima volta che capita.
+service_refusals: ["server occupato", "server is busy", "troppo traffico", "too much traffic"]

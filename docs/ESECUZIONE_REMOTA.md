@@ -193,3 +193,12 @@ regole.
   troppo lunga: profilo **CPU con 32 GB di RAM**, non GPU.
 - Il preventivo si costruisce da byte reali e amplificazione misurata, e l'attivazione
   passa da un'approvazione esplicita.
+# Opzione concordata il 15 settembre 2026
+
+L'utente ha indicato Colab e Kaggle come opzioni per esperimenti sui dataset nei
+prossimi giorni, se le risorse locali non bastano. Considerarli per acquisizione,
+lettura a blocchi, estrazione di sottoinsiemi e analisi di matrici più grandi del
+disco disponibile sul PC. Prima di avviare un esperimento verificare RAM, spazio
+temporaneo, persistenza degli output e durata del runtime effettivamente assegnato.
+Salvare manifesti e risultati intermedi per consentire la ripresa. Questa nota
+registra una possibilità operativa, non un job pianificato né una spesa autorizzata.

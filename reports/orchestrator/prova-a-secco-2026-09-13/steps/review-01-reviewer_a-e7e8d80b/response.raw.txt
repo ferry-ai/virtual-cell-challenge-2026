@@ -1,0 +1,21 @@
+Revisione finale.
+
+I due risolutori sono arrivati allo stesso numero, ma non e' questo a rendermelo
+credibile: la regola citata e' verificabile a mano e i tre controlli dell'incarico erano
+fissati prima di interrogare chiunque.
+
+ORCH-RESULT-V1
+```json
+{
+  "summary": "24 zeri finali; conclusione verificabile a mano, con una correzione avvenuta durante il ciclo.",
+  "proposal": "Esito: 100! termina con 24 zeri.\nRegola: v_5(n!) = somma_k floor(n/5^k); per n = 100 vale 20 + 4 = 24.\nPercorso: al primo round una delle due proposte diceva 20, avendo contato una sola volta i multipli di 25; l'obiezione e' stata specifica e accettata, e la proposta e' stata corretta.\nDivergenze rimaste: nessuna sul numero. Resta non verificato per via automatica che la spiegazione sia comprensibile a un lettore umano.\nAvvertenza: l'accordo finale fra i due risolutori non e' la ragione per cui la risposta e' accettabile; lo e' il fatto che la regola si controlla in trenta secondi con carta e penna.",
+  "evidence": [
+    {"claim": "20 + 4 = 24 e' aritmetica elementare verificabile a mano", "support": "criteri C1, C2, C3 dell'incarico", "type": "derived"}
+  ],
+  "objections": [],
+  "resolved_objections": [],
+  "checks_suggested": [{"criterion": "C1", "how": "moltiplicare 1..100 con un qualsiasi strumento di calcolo esatto e contare gli zeri finali"}],
+  "open_questions": ["Il criterio sulla chiarezza dell'esposizione non ha un controllo automatico."],
+  "confidence": "high"
+}
+```

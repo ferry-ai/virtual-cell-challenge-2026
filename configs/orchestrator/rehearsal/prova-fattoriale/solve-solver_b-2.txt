@@ -1,0 +1,24 @@
+Accetto l'obiezione: avevo contato una sola volta i multipli di 25. Rifaccio il conto.
+
+100 / 5 = 20, e poi 100 / 25 = 4 perche' 25, 50, 75 e 100 hanno un secondo fattore 5.
+100 / 125 = 0. Totale 24.
+
+RISULTATO: 24
+
+ORCH-RESULT-V1
+```json
+{
+  "summary": "Correggo: sono 24, non 20. Avevo trascurato il secondo fattore 5 dei multipli di 25.",
+  "proposal": "Il numero di zeri finali di n! e' v_5(n!) = somma_k floor(n/5^k), perche' i fattori 2 sono in eccesso.\nPer n = 100: 100 / 5 = 20, 100 / 25 = 4, 100 / 125 = 0, totale 24.\nIl mio conto precedente si fermava al primo termine.\n\nRISULTATO: 24",
+  "evidence": [
+    {"claim": "v_5(100!) = 24", "support": "20 + 4, con i multipli di 25 contati due volte", "type": "derived"}
+  ],
+  "objections": [],
+  "resolved_objections": [
+    "Il conteggio 100/5 = 20 ignora i multipli di 25, che portano un secondo fattore 5: mancano 4 unita' e il risultato 20 e' sbagliato."
+  ],
+  "checks_suggested": [],
+  "open_questions": [],
+  "confidence": "high"
+}
+```

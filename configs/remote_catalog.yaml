@@ -1,0 +1,280 @@
+# Remote ingest catalog. Numbers are copied from named evidence.
+# Advertised sizes (e.g. "61.3 GB") are not bytes. A block without url/bytes/md5
+# cannot be fetched. Normalized twins are listed so they are never grabbed by
+# accident.
+#
+# One block at a time. Completing a block does not keep it on disk forever:
+# the orchestrator remasures free space before the next fetch.
+
+version: "1"
+updated: "2026-09-15"
+evidence_note: >-
+  Figshare Replogle files: src/vcc2026/external.py REGISTRY (figshare article
+  20029387). Nadig HepG2: reports/hepg2_2026-09-14/. Jurkat mirror:
+  reports/nadig_reconcile_2026-09-15/. Jiang: reports/jiang_2026-09-15/jiang_probe.json.
+
+# Default order for a Colab session after the HepG2 pilot. HepG2 is first so a
+# matching checksum skips it. Next is the genome-wide K562 single-cell file
+# whose measured size is 65,830,941,948 bytes (the "61.3 GB" profile figure).
+default_order:
+  - nadig_hepg2
+  - k562_gwps_raw_singlecell
+  - rpe1_raw_singlecell
+  - nadig_jurkat_mirror
+  - jiang_tgfb
+  - jiang_ifng
+  - jiang_ifnb
+  - jiang_tnfa
+  - jiang_ins
+
+blocks:
+  - id: nadig_hepg2
+    source_id: nadig_hepg2
+    title: "Nadig HepG2 scPerturb mirror"
+    key: NadigOConner2024_hepg2.h5ad
+    url: "https://zenodo.org/api/records/13350497/files/NadigOConner2024_hepg2.h5ad/content"
+    bytes: 850590740
+    md5: af2be47f7477cf32fa6e4bec1c6a4868
+    format: h5ad
+    provenance: "Zenodo 13350497, same experiment as GEO GSE264667 HepG2"
+    evidence: reports/hepg2_2026-09-14/acquisition.json
+    relpath: raw/nadig_hepg2/NadigOConner2024_hepg2.h5ad
+    ntc_column: perturbation
+    ntc_label: control
+    gene_column: gene_name
+    batch_column: batch
+    derive: h5ad_obs
+    skip_if_checksum_matches: true
+    colab_pilot_complete: true
+    notes:
+      - "Colab 2026-09-15T140308Z: parity ok. Do not re-fetch if md5 matches."
+      - "Mirror is not a second experiment."
+
+  - id: k562_gwps_raw_singlecell
+    source_id: k562_gwps
+    title: "Replogle 2022 K562 genome-wide raw single-cell"
+    key: K562_gwps_raw_singlecell_01.h5ad
+    url: "https://ndownloader.figshare.com/files/35775507"
+    bytes: 65830941948
+    md5: 887e3e6a8c8df6eadf7a3030a53c9546
+    format: h5ad
+    provenance: "figshare article 20029387 / file 35775507"
+    evidence: src/vcc2026/external.py
+    relpath: raw/replogle/K562_gwps_raw_singlecell_01.h5ad
+    advertised_bytes: 61300000000
+    advertised_note: "Profile '61.3 GB' is not this file's byte count. Measured size is 65830941948."
+    ntc_column: gene
+    ntc_label: non-targeting
+    gene_column: gene_name
+    derive: h5ad_obs
+    same_experiment_as: k562_gwps_scperturb_mirror
+    notes:
+      - "Priority next ingest on Colab if disk/RAM allow."
+      - "Do not also fetch the scPerturb mirror of the same experiment."
+      - "Normalized twin file 35774440 must never enter a raw-count likelihood."
+
+  - id: k562_gwps_scperturb_mirror
+    source_id: k562_gwps
+    title: "Replogle K562 GW scPerturb mirror (same experiment, not 61.3 GB)"
+    key: ReplogleWeissman2022_K562_gwps.h5ad
+    url: "https://zenodo.org/api/records/13350497/files/ReplogleWeissman2022_K562_gwps.h5ad/content"
+    bytes: 8805466154
+    md5: 13db594f8f1d2ccb88fec44a13e414dc
+    format: h5ad
+    provenance: "Zenodo 13350497 scPerturb collection"
+    evidence: reports/source_cards_2026-09-15/replogle_k562_gwps_singlecell.json
+    relpath: raw/replogle/ReplogleWeissman2022_K562_gwps.h5ad
+    derive: h5ad_obs
+    default_selected: false
+    same_experiment_as: k562_gwps_raw_singlecell
+    notes:
+      - "Not a substitute for the figshare raw file without an explicit choice."
+      - "Never sum with k562_gwps_raw_singlecell."
+
+  - id: k562_gwps_raw_bulk
+    source_id: k562_gwps
+    title: "Replogle 2022 K562 GW pseudobulk (already local on the laptop)"
+    key: K562_gwps_raw_bulk_01.h5ad
+    url: "https://ndownloader.figshare.com/files/35774443"
+    bytes: 374587922
+    md5: 4570b53c9d62ff6df281e622f0350060
+    format: h5ad
+    provenance: "figshare 20029387 / file 35774443"
+    evidence: src/vcc2026/external.py
+    relpath: external/K562_gwps_raw_bulk_01.h5ad
+    ntc_column: null
+    derive: none
+    default_selected: false
+    notes:
+      - "Per-cell mean, not integer counts. Already on the laptop. Not the 61 GB file."
+
+  - id: k562_essential_raw_bulk
+    source_id: k562_essential
+    title: "Replogle 2022 K562 essential pseudobulk"
+    key: K562_essential_raw_bulk_01.h5ad
+    url: "https://ndownloader.figshare.com/files/35773070"
+    bytes: 79766954
+    md5: 8321d5d3ffc99db2a5c71edca4189735
+    format: h5ad
+    provenance: "figshare 20029387 / file 35773070"
+    evidence: src/vcc2026/external.py
+    relpath: external/K562_essential_raw_bulk_01.h5ad
+    derive: none
+    default_selected: false
+
+  - id: rpe1_raw_bulk
+    source_id: rpe1_essential
+    title: "Replogle 2022 RPE1 essential pseudobulk"
+    key: rpe1_raw_bulk_01.h5ad
+    url: "https://ndownloader.figshare.com/files/35775581"
+    bytes: 95350546
+    md5: 74765fa87635467a869ea972356ae0e7
+    format: h5ad
+    provenance: "figshare 20029387 / file 35775581"
+    evidence: src/vcc2026/external.py
+    relpath: external/rpe1_raw_bulk_01.h5ad
+    derive: none
+    default_selected: false
+
+  - id: rpe1_raw_singlecell
+    source_id: rpe1_singlecell
+    title: "Replogle 2022 RPE1 raw single-cell"
+    key: rpe1_raw_singlecell_01.h5ad
+    url: "https://ndownloader.figshare.com/files/35775606"
+    bytes: 8700873216
+    md5: 6a2a9d0d2bf4ec147f4d1104043b268c
+    format: h5ad
+    provenance: "figshare 20029387 / file 35775606"
+    evidence: src/vcc2026/external.py
+    relpath: raw/replogle/rpe1_raw_singlecell_01.h5ad
+    ntc_column: gene
+    ntc_label: non-targeting
+    gene_column: gene_name
+    derive: h5ad_obs
+    notes:
+      - "File 35775554 is the NORMALIZED twin — excluded from this catalog as fetchable."
+      - "Dense in memory ~8.68 GB; read chunked."
+
+  - id: nadig_jurkat_mirror
+    source_id: nadig_jurkat
+    title: "Nadig Jurkat scPerturb mirror"
+    key: NadigOConner2024_jurkat.h5ad
+    url: "https://zenodo.org/api/records/13350497/files/NadigOConner2024_jurkat.h5ad/content"
+    bytes: 1293665804
+    md5: d8b05d00bfbd686d37ffdd4293bc6c8c
+    format: h5ad
+    provenance: "Zenodo 13350497; same experiment as GEO GSE264667 Jurkat"
+    evidence: reports/nadig_reconcile_2026-09-15/nadig_reconciliation.json
+    relpath: raw/nadig_jurkat/NadigOConner2024_jurkat.h5ad
+    ntc_column: null
+    ntc_label: null
+    ntc_note: "GEO original used obs.gene == 'non-targeting' (12013). Mirror may rename, as HepG2 did. Discover on open."
+    gene_column: gene_name
+    derive: h5ad_obs
+    notes:
+      - "Do not download the GEO original (~9.4 GB) if this mirror is used."
+      - "0/300 panel coverage on the GEO probe."
+
+  - id: jiang_tgfb
+    source_id: jiang_mixscale
+    title: "Jiang Mixscale TGFB Seurat RDS"
+    key: Seurat_object_TGFB_Perturb_seq.rds
+    url: "https://zenodo.org/api/records/14518762/files/Seurat_object_TGFB_Perturb_seq.rds/content"
+    bytes: 2642041433
+    md5: 8e9b4d39a95ec5881a30be6a2df541d1
+    format: seurat_rds
+    provenance: "Zenodo 14518762 v2.1"
+    evidence: reports/jiang_2026-09-15/jiang_probe.json
+    relpath: raw/jiang/Seurat_object_TGFB_Perturb_seq.rds
+    derive: rds_blocked
+    notes:
+      - "Smallest Jiang Seurat block. Conversion needs R/Seurat. RAM for readRDS is unmeasured."
+      - "Hold out an entire cell line, not a stimulus."
+
+  - id: jiang_ifng
+    source_id: jiang_mixscale
+    title: "Jiang Mixscale IFNG Seurat RDS"
+    key: Seurat_object_IFNG_Perturb_seq.rds
+    url: "https://zenodo.org/api/records/14518762/files/Seurat_object_IFNG_Perturb_seq.rds/content"
+    bytes: 2915636149
+    md5: 0fef1f14c36906e9c40e4d1c6aae6926
+    format: seurat_rds
+    provenance: "Zenodo 14518762 v2.1"
+    evidence: reports/jiang_2026-09-15/jiang_probe.json
+    relpath: raw/jiang/Seurat_object_IFNG_Perturb_seq.rds
+    derive: rds_blocked
+    default_selected: false
+
+  - id: jiang_ifnb
+    source_id: jiang_mixscale
+    title: "Jiang Mixscale IFNB Seurat RDS"
+    key: Seurat_object_IFNB_Perturb_seq.rds
+    url: "https://zenodo.org/api/records/14518762/files/Seurat_object_IFNB_Perturb_seq.rds/content"
+    bytes: 4326548669
+    md5: 3eb5e7af1601bf562a5b20dea5de3dc9
+    format: seurat_rds
+    provenance: "Zenodo 14518762 v2.1"
+    evidence: reports/jiang_2026-09-15/jiang_probe.json
+    relpath: raw/jiang/Seurat_object_IFNB_Perturb_seq.rds
+    derive: rds_blocked
+    default_selected: false
+
+  - id: jiang_tnfa
+    source_id: jiang_mixscale
+    title: "Jiang Mixscale TNFA Seurat RDS"
+    key: Seurat_object_TNFA_Perturb_seq.rds
+    url: "https://zenodo.org/api/records/14518762/files/Seurat_object_TNFA_Perturb_seq.rds/content"
+    bytes: 4656209976
+    md5: 60ed8bff6c749b1250f8fde9c5435c2e
+    format: seurat_rds
+    provenance: "Zenodo 14518762 v2.1"
+    evidence: reports/jiang_2026-09-15/jiang_probe.json
+    relpath: raw/jiang/Seurat_object_TNFA_Perturb_seq.rds
+    derive: rds_blocked
+    default_selected: false
+
+  - id: jiang_ins
+    source_id: jiang_mixscale
+    title: "Jiang Mixscale INS Seurat RDS"
+    key: Seurat_object_INS_Perturb_seq.rds
+    url: "https://zenodo.org/api/records/14518762/files/Seurat_object_INS_Perturb_seq.rds/content"
+    bytes: 5601176410
+    md5: c7b830dfcc020545c3f222cad5b13b34
+    format: seurat_rds
+    provenance: "Zenodo 14518762 v2.1"
+    evidence: reports/jiang_2026-09-15/jiang_probe.json
+    relpath: raw/jiang/Seurat_object_INS_Perturb_seq.rds
+    derive: rds_blocked
+    default_selected: false
+
+  # Stubs: known to the project, not fetchable from this catalog (no verified
+  # exact file+bytes+md5 for a Colab GET, or out of scope for this notebook).
+  - id: cd4_marson
+    source_id: cd4_marson
+    title: "Marson CD4 (stub)"
+    key: null
+    url: null
+    bytes: null
+    md5: null
+    format: unknown
+    provenance: "GSE314342 / S3; 1.7 TB objects. Pilot only locally."
+    evidence: configs/sources.yaml
+    derive: none
+    default_selected: false
+    stub: true
+
+  - id: rpe1_normalized_singlecell
+    source_id: rpe1_singlecell
+    title: "Replogle RPE1 NORMALIZED single-cell — do not fetch"
+    key: rpe1_normalized_singlecell_01.h5ad
+    url: "https://ndownloader.figshare.com/files/35775554"
+    bytes: 8700873216
+    md5: 2c36a053960f3fae157adacdbccd4485
+    format: h5ad
+    provenance: "figshare 20029387 / file 35775554"
+    evidence: src/vcc2026/external.py
+    derive: none
+    default_selected: false
+    do_not_fetch: true
+    notes:
+      - "Normalized twin of rpe1_raw_singlecell. Forbidden as raw counts."

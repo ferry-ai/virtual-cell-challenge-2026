@@ -1,0 +1,93 @@
+{
+  "built_utc": "2026-09-14T13:53:04.073557+00:00",
+  "status": "missing",
+  "execute_six_metrics": false,
+  "n_local_perturbed_single_cell_sources": 0,
+  "local_perturbed_single_cell_ids": [],
+  "required_fields": {
+    "matrix": {
+      "X": "non-negative integer (or integer-valued) counts, CSR or dense float that is integral",
+      "input_type": "counts",
+      "gene_axis": "source symbols aligned to the official 18,533 with an observed mask; unmeasured genes stay masked"
+    },
+    "obs": {
+      "target_gene": "perturbed gene symbol or the NTC label",
+      "context": "biological context, one value for the bundle",
+      "guide_id": "if present, kept; same-target guides stay together",
+      "donor": "if present, never pooled across donors",
+      "batch": "if present, NTCs must be matchable per batch",
+      "n_cells_min_per_target": "enough to run DE; the competition asks 400 predicted cells, the bundle can be smaller if declared"
+    },
+    "controls": {
+      "real_NTC_required": true,
+      "control_source": "real",
+      "do_not_replace_with_synthetic_cells": true,
+      "matched_to": "same context, preferably same batch/donor"
+    },
+    "scoring": {
+      "metrics": [
+        "pds_cosine",
+        "expr_mse_unbiased_capped_norm",
+        "de_wilcoxon_lfc_nmae",
+        "de_wilcoxon_direction_fidelity_yield_raw",
+        "de_wilcoxon_direction_reach_raw",
+        "de_wilcoxon_sig_jaccard"
+      ],
+      "backend_must_be_recorded": true,
+      "anchors": "without published b and r, report raw aggregates and a local normalisation explicitly distinct from the leaderboard"
+    }
+  },
+  "candidates_not_acquired": [
+    {
+      "id": "nadig_hepg2",
+      "why_smallest": "Roadmap R-1: 0.851 GB compressed, 145,473 \u00d7 9,624, 4,976 NTC. Smallest complete perturbed object with explicit NTCs.",
+      "accession": "GSE264667",
+      "context": "HepG2",
+      "n_cells_declared": 145473,
+      "n_genes_declared": 9624,
+      "n_ntc_declared": 4976,
+      "bytes_declared": 5614460941,
+      "bytes_compressed_estimate": 851000000,
+      "panel_targets_observed": 0,
+      "on_disk": false,
+      "role_if_acquired": "methodological evaluation bundle: generator \u00d7 predictor on real perturbed cells. NOT a benchmark of the 300-target panel.",
+      "read_mode": "chunked; do not materialise the dense matrix (~5.6 GB)",
+      "license_note": "public GEO; confirm before any submission use"
+    },
+    {
+      "id": "rpe1_singlecell",
+      "why": "Roadmap R-1 alternative: 1.237 GB compressed, 247,914 \u00d7 8,749, 11,485 NTC. Same experiment as the local RPE1 pseudobulk.",
+      "accession": "figshare 20029387 / file 35775606",
+      "context": "RPE1",
+      "n_cells_declared": 247914,
+      "n_genes_declared": 8749,
+      "n_ntc_declared": 11485,
+      "bytes_declared": 8700873216,
+      "bytes_compressed_estimate": 1237000000,
+      "panel_targets_observed": 0,
+      "on_disk": false,
+      "role_if_acquired": "pairs with local RPE1 pseudobulk: same biological context, real single-cell counts for the six VCC metrics.",
+      "read_mode": "chunked; dense is ~8.7 GB",
+      "do_not_use": "file 35775554 is the NORMALIZED twin"
+    }
+  ],
+  "acquisition": {
+    "do_not_download_atlases": true,
+    "select_one_candidate": true,
+    "byte_budget": "the smaller of the two candidates is ~0.85 GB compressed; keep \u226510 GiB free (D-005)",
+    "after_download": "chunked subset of perturbed cells + paired NTCs, written as an evaluation bundle with a new --out, never overwriting existing reports"
+  },
+  "what_this_does_not_show": [
+    "A better generator is not evidence that the predictor is adequate.",
+    "A better generator is not evidence that modularity is useless.",
+    "Zero panel overlap: this bundle would not score the 300 VCC targets."
+  ],
+  "estimated_bundle_pilot": {
+    "n_targets": 30,
+    "cells_per_target": 80,
+    "n_ntc": 400,
+    "n_genes_if_rpe1": 8749,
+    "dense_float32_bytes_estimate": 97988800,
+    "note": "30 \u00d7 80 + 400 NTC at 8,749 genes, float32 dense \u2248 98 MB. CSR of integer counts would be smaller. This is a planning figure, not a measurement."
+  }
+}

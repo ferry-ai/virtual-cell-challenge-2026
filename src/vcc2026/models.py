@@ -246,6 +246,10 @@ class LowRankRidge(_Base):
         k = min(self.rank, min(Y.shape) - 1) if min(Y.shape) > 1 else 1
         k = max(k, 1)
         # Basis over the response space.
+        # WARNING: unobserved genes were filled with 0.0 above. That is not a
+        # statistically neutral missing-data treatment (D-009) and must not be
+        # reused across panels with different gene support. The modular pilot
+        # uses vcc2026.benchmark (intersection universe / masked loss) instead.
         U, S, Vt = np.linalg.svd(Y, full_matrices=False)
         self._basis = Vt[:k]                       # (k, n_genes)
         Z = Y @ self._basis.T                      # (n_train, k) coordinates

@@ -1,0 +1,69 @@
+{
+  "cap": 2,
+  "chosen_utc": "2026-09-14T02:24:55Z",
+  "considered": 5,
+  "merged": [],
+  "rejected": [
+    {
+      "hypothesis": "Il contesto squamoso ha un deposito pubblico che non passa da GEO.",
+      "id": "L-56a85d931c",
+      "reason": "pista incompleta: mancano spiegazione alternativa",
+      "role": "solver_a"
+    },
+    {
+      "hypothesis": "Il contesto squamoso ha un deposito pubblico che non passa da GEO.",
+      "id": "L-56a85d931c",
+      "reason": "non e' la proposta prioritaria di questo worker",
+      "role": "solver_a"
+    },
+    {
+      "hypothesis": "L'efficienza di knockdown e' il vero fattore limitante del trasferimento.",
+      "id": "L-1a4c90a143",
+      "reason": "non e' la proposta prioritaria di questo worker",
+      "role": "solver_a"
+    },
+    {
+      "hypothesis": "L'efficienza di knockdown non e' riportata perche' gli studi non la misurano.",
+      "id": "L-704cd2b3d9",
+      "reason": "non e' la proposta prioritaria di questo worker",
+      "role": "solver_b"
+    }
+  ],
+  "rule": "Una proposta prioritaria per worker -- la prima ben formata nell'ordine in cui l'ha scritta -- ordinate per nome del ruolo, deduplicate sull'ipotesi, troncate a 2. Nessun ripescaggio: se i due propongono la stessa pista, la pista e' una sola, e il fatto che coincidano e' un'informazione, non un posto vuoto da riempire.",
+  "selected": [
+    {
+      "alternative_explanation": "non si contraddicono affatto: parlano di due sottoinsiemi diversi di bersagli, e l'abstract generalizza su tutti mentre la figura mostra solo quelli con almeno 200 cellule",
+      "distinguishing_search": "aprire il testo completo e confrontare la popolazione di bersagli della figura con quella dichiarata nell'abstract; se le numerosita' differiscono, la contraddizione e' apparente",
+      "hypothesis": "La figura 3b e l'abstract dello stesso studio dicono cose opposte sulla conservazione del segno fra lignaggi.",
+      "id": "L-231e74d438",
+      "missing_parts": [],
+      "position": 1,
+      "proposed_by": [
+        "solver_a"
+      ],
+      "rank": 1,
+      "role": "solver_a",
+      "starting_evidence": "io leggo conservazione del segno sui bersagli forti in Fig. 3b; il collega legge il contrario nelle ultime frasi dell'abstract",
+      "step_id": "47d87ebfec6352ea",
+      "strategy_change": "smettere di cercare fonti nuove e leggere per intero quella che abbiamo, compresi i supplementi",
+      "well_formed": true
+    },
+    {
+      "alternative_explanation": "non esiste nessun preprint, e il lavoro e' nato direttamente sulla rivista con i dati sotto accesso controllato: in quel caso l'assenza che vediamo e' reale e non e' un problema di dove abbiamo cercato",
+      "distinguishing_search": "cercare gli stessi autori su bioRxiv e medRxiv per titolo e per nome; se il preprint esiste, leggerne la sezione sui dati; se non esiste dopo aver cercato per entrambi gli autori, l'alternativa e' quella giusta",
+      "hypothesis": "Il candidato squamoso a paywall ha un preprint aperto con i dati depositati altrove.",
+      "id": "L-5097e3a754",
+      "missing_parts": [],
+      "position": 0,
+      "proposed_by": [
+        "solver_b"
+      ],
+      "rank": 2,
+      "role": "solver_b",
+      "starting_evidence": "il lavoro esiste, e' recente, e il paywall riguarda la versione dell'editore; i gruppi che depositano su archivi pubblici di solito lo dicono nel preprint",
+      "step_id": "eb2299dd738041ac",
+      "strategy_change": "cambiare fonte: dai motori bibliografici ai server di preprint, e cercare per autore invece che per argomento",
+      "well_formed": true
+    }
+  ]
+}

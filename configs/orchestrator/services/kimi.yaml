@@ -1,0 +1,99 @@
+# Profilo dell'interfaccia web di DeepSeek.
+#
+# NON VERIFICATO. I selettori qui sotto non sono stati osservati su questa macchina:
+# nessuno puo' conoscere il DOM di un prodotto altrui ragionandoci sopra. Il percorso e':
+#
+#   1. .\scripts\orch.cmd login kimi      -> accedi a mano nella finestra che si apre
+#   2. .\scripts\orch.cmd probe kimi      -> scrive i candidati osservati in <stato>/probes/
+#   3. compila `selectors` qui sotto con quello che hai visto
+#   4. metti verified: true e la data, solo dopo una prova riuscita
+#
+# Finche' verified e' false l'adattatore rifiuta di scrivere nella pagina.
+name: kimi
+url: "https://www.kimi.ai/"         # MISURATO 2026-09-13: e' il dominio giusto per noi
+verified: true
+verified_on: 2026-09-13
+# Sbloccato da un invio reale riuscito, non da un'ispezione:
+# run 20260913T192424Z-collaudo-canale-v1-664ad8: invio riuscito, risposta letta e conforme dopo il prompt di riparazione. Il primo tentativo non era leggibile per un difetto del parser, corretto il 2026-09-13.
+
+# STORIA DI QUESTO CAMPO. Prima era https://www.kimi.com/, scelto da me senza verifica:
+# e' il prodotto cinese, accesso solo con QR di WeChat o numero +86, interfaccia in
+# cinese. Lo dice la sua stessa finestra di accesso: «谷歌登录用户，请访问 kimi.ai»,
+# ovvero «utenti con accesso Google: usate kimi.ai».
+# Misurato su www.kimi.ai il 2026-09-13, da profilo pulito e non autenticato:
+#   lang="it", interfaccia in italiano (Nuova chat, Accedi, «Chiedi qualsiasi cosa...»),
+#   reso in 11,7 s, stesso compositore div.chat-input-editor[role=textbox] largo 734,
+#   stessi due 401 sugli endpoint dell'account perche' non c'e' sessione.
+# Le uniche richieste fallite sono beacon di Google Analytics: irrilevanti.
+#
+# Nota sul vecchio tentativo: kimi.com si presentava in cinese su questo
+# profilo. Con locale l'header Accept-Language parte in italiano; se il servizio
+# sceglie la lingua dall'account o dall'indirizzo IP non cambiera' nulla, e la
+# strada resta il menu Language dentro la barra laterale.
+# MISURATO il 2026-09-13: non funziona. Con locale it-IT la pagina dichiara ancora
+# lang="zh-CN". Lo lascio impostato perche' non fa danno, ma non risolve.
+locale: "it-IT"
+
+selectors:
+  editor: "div.chat-input-editor[role='textbox']"   # OSSERVATO 2026-09-13, 734x60, visibile
+  send: ""            # il bottone di invio; se vuoto si usa Invio da tastiera
+  message: "div.markdown-container:not(.toolcall-content-text)"
+                      # OSSERVATO 2026-09-13 su una conversazione vera. Il :not() non e'
+                      # un dettaglio: Kimi rende il proprio ragionamento in un elemento
+                      # markdown identico, dentro un blocco toolcall. Senza il filtro il
+                      # conteggio dei messaggi raddoppia e si rischia di prendere il
+                      # ragionamento al posto della risposta.
+  new_chat: ""        # il bottone "nuova chat": una conversazione per esecuzione
+  streaming: ""       # facoltativo: elemento presente solo mentre la risposta si sta scrivendo
+  logged_out: "button.next-sidebar-history-list__login"   # OSSERVATO 2026-09-13 (登录 per sincronizzare la cronologia)
+
+# In alternativa al bottone: l'indirizzo che apre una conversazione vuota.
+new_chat_url: "https://www.kimi.ai/"
+# La home apre un compositore vuoto: e' il modo piu' semplice per una chat nuova.
+# Il bottone "Nuovo progetto" della barra laterale crea un progetto, non una chat.
+
+logged_out_url_fragments: ["/sign_in", "/login"]
+
+# Candidati da provare con `probe`, non ancora verificati: sono ipotesi, non configurazione.
+# Osservato con `orch probe kimi` il 2026-09-13, da profilo NON autenticato:
+#   - il compositore c'e' gia' senza login (div.chat-input-editor, role=textbox)
+#   - i messaggi non si vedono: la pagina ha solo i contenitori vuoti
+#     div.message-list-container e div.message-list. Il selettore di UN messaggio
+#     dell'assistente va osservato con una conversazione aperta, dopo il login.
+#   - interfaccia in cinese su questo profilo; c'e' un menu Language.
+candidates:
+  message: ["div.message-list > div", "[class*='segment-assistant']", "[class*='markdown']"]
+  new_chat: ["button.next-sidebar-project-list__create"]   # da confermare: potrebbe creare un progetto, non una chat
+
+wait:
+  page_load_seconds: 90
+  response_timeout_seconds: 420
+  stable_seconds: 4          # testo immutato per N secondi = risposta finita
+  truncated_grace_seconds: 45   # tempo extra se il blocco e' ancora aperto
+  after_send_seconds: 2
+
+# Modalita' del compositore, osservate il 2026-09-13.
+# Kimi non ha un interruttore ma un menu a tendina: div.current-model mostra il modello
+# (span.name, "Immediato") e il livello di sforzo (span.current-effort, "Alto"). Lo stato
+# si legge dal testo senza aprire il menu; impostarlo richiederebbe di attraversare un
+# menu che non e' stato mappato, quindi qui si verifica soltanto.
+# Secondo l'operatore "Alto" e' il massimo effettivamente disponibile: le voci del menu
+# relative a k3 rispondono con un avviso di traffico e un invito a passare a Pro, e non
+# sono mai risultate utilizzabili in settimane di tentativi. Questo e' un resoconto
+# dell'operatore, non una misura fatta da qui.
+modes:
+  sforzo_alto:
+    selector: "span.current-effort"
+    state_text: "Alto"
+    settable: false
+    note: "aprilo dal menu accanto al compositore e scegli Alto"
+
+# Testi che, se compaiono nella pagina PRIMA di qualunque risposta, significano che il
+# servizio ha rifiutato: si smette di aspettare subito invece di consumare tutto il
+# timeout. Il controllo e' attivo solo finche' non arriva un messaggio, cosi' un modello
+# che scrive "traffico" nella propria risposta non lo fa scattare.
+# Frasi riferite dall'operatore (13 settembre): l'interfaccia risponde con un avviso di
+# traffico e un invito a passare a Pro. Non le ho viste io: se la formulazione e' altra,
+# il rifiuto non verra' riconosciuto e si tornera' ad aspettare tutto il timeout.
+service_refusals: ["troppo traffico", "traffico elevato", "too much traffic", "high traffic",
+                    "passa a pro", "upgrade to pro"]

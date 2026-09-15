@@ -1,0 +1,728 @@
+{
+  "recorded_utc": "2026-09-15T14:22:25Z",
+  "paths": {
+    "runtime": "local",
+    "repo": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026",
+    "data": "C:\\Users\\ferra\\vcc2026-data",
+    "persist": "C:\\Users\\ferra\\vcc2026-data\\interim\\remote_job",
+    "scratch": "C:\\Users\\ferra\\vcc2026-data\\interim\\remote_job\\scratch",
+    "remote": false
+  },
+  "persist_kind": {
+    "kind": "local_or_other",
+    "survives_session": true,
+    "note": "Treat as durable only if you control the disk."
+  },
+  "preflight": {
+    "inventory": {
+      "recorded_utc": "2026-09-15T14:22:14Z",
+      "python": {
+        "version": "3.12.3",
+        "executable": "C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\python.exe",
+        "implementation": "CPython"
+      },
+      "platform": {
+        "system": "Windows",
+        "release": "11",
+        "machine": "AMD64",
+        "processor": "Intel64 Family 6 Model 142 Stepping 12, GenuineIntel"
+      },
+      "resources": {
+        "ram_total_bytes": 8384401408,
+        "ram_available_bytes": 1612328960,
+        "disk_path": "C:\\Users\\ferra\\vcc2026-data",
+        "disk_total_bytes": 510342983680,
+        "disk_free_bytes": 20850089984,
+        "cpu_count": 8,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+        "ram_total_gib": 7.808582305908203,
+        "ram_available_gib": 1.5015983581542969,
+        "disk_free_gib": 19.41815948486328
+      },
+      "packages": {
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "pandas": "3.0.5",
+        "h5py": "3.16.0",
+        "anndata": "0.13.3.post0",
+        "scanpy": "1.12.4",
+        "cell-eval2": "0.16.0",
+        "vcc-cli": "0.2.0",
+        "pyyaml": "6.0.3",
+        "httpx": "0.28.1"
+      },
+      "git": {
+        "repo": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026",
+        "available": true,
+        "commit": "d781894412a800272042f470968dff6be08b60b1",
+        "dirty": true,
+        "dirty_paths": [
+          "configs/sources.yaml",
+          "docs/DECISIONI.md",
+          "docs/ESECUZIONE_REMOTA.md",
+          "docs/PROGETTO.md",
+          "docs/REGISTRO.md",
+          "docs/checkpoints/INDICE.md",
+          "src/vcc2026/models.py",
+          "configs/benchmark.yaml",
+          "configs/benchmark_3ctx.yaml",
+          "configs/benchmark_3ctx_hepg2_predictions.yaml",
+          "configs/benchmark_go_slim.yaml",
+          "configs/benchmark_rank.yaml",
+          "configs/benchmark_svd_exact.yaml",
+          "configs/benchmark_svd_randomized.yaml",
+          "configs/eval_protocol.yaml",
+          "configs/orchestrator/",
+          "configs/remote_catalog.yaml",
+          "docs/BENCHMARK_MODULARE.md",
+          "docs/BENCHMARK_TRE_CONTESTI.md",
+          "docs/CONSEGNA_GPU.md",
+          "docs/ENCODER_INPUTS.md",
+          "docs/ORCHESTRATORE.md",
+          "docs/PIANO_OPERATIVO_2026-09-15.md",
+          "docs/PROSPETTO_MODELLO_2026-09-14.md",
+          "docs/REGIA_PARALLELA_2026-09-15.md",
+          "docs/RICERCA_SCIENTIFICA.md",
+          "docs/SVD_E_RANGO.md",
+          "docs/checkpoints/0007-oracle-pairwise-loss.md",
+          "docs/checkpoints/0008-oracle-fraction-regression.md",
+          "docs/checkpoints/0009-oracle-json-number-csv-error.md",
+          "docs/checkpoints/0010-modalita-ricerca-scientifica.md",
+          "docs/checkpoints/0011-primo-benchmark-modulare.md",
+          "docs/checkpoints/0012-encoder-inputs-unseen-target.md",
+          "docs/checkpoints/0013-hepg2-terzo-contesto.md",
+          "docs/checkpoints/0014-go-slim-e-gpu.md",
+          "docs/checkpoints/0015-svd-randomizzata-e-rango.md",
+          "docs/checkpoints/0016-piano-operativo-audit-protocollo.md",
+          "docs/oracle/",
+          "notebooks/remote_ingest_hepg2.ipynb",
+          "reports/benchmark_2026-09-14/",
+          "reports/benchmark_3ctx_2026-09-14/",
+          "reports/encoder_inputs_2026-09-14/",
+          "reports/eval_protocol_2026-09-15/",
+          "reports/go_slim_2026-09-15/",
+          "reports/gpu_2026-09-15/",
+          "reports/hepg2_2026-09-14/",
+          "reports/jiang_2026-09-15/",
+          "reports/nadig_reconcile_2026-09-15/",
+          "reports/oracle/",
+          "reports/orchestrator/"
+        ]
+      },
+      "gpu": {
+        "torch_installed": false,
+        "cuda_available": false,
+        "torch_import_error": "ModuleNotFoundError: No module named 'torch'"
+      },
+      "scorer": {
+        "expected_cell_eval2": "0.16.0",
+        "cell_eval2": "0.16.0",
+        "vcc_cli": "0.2.0",
+        "matches_decision_D008": true,
+        "de_backends_available": {
+          "pdex": null,
+          "gpudge": null,
+          "cuda_available": false
+        },
+        "de_backend_resolved": "scanpy",
+        "de_backend_note": "de.backend='auto' picks gpudge (CUDA) > pdex > scanpy. The engines do not agree exactly, so a DE-based metric is only comparable across runs that resolved the same backend. Record it beside every number."
+      },
+      "data_root": "C:\\Users\\ferra\\vcc2026-data",
+      "persistent_paths": {
+        "path": "C:\\Users\\ferra\\vcc2026-data\\interim\\remote_job",
+        "free_bytes": 20850089984,
+        "free_gib": 19.41815948486328,
+        "note": "A file that remains only on ephemeral scratch is not a delivery. Export and re-read from this path."
+      },
+      "windows_paths_forbidden": false,
+      "claim": "measured"
+    },
+    "disk_free_bytes": 20850089984,
+    "ram_available_bytes": 1919246336,
+    "ram_total_bytes": 8384401408,
+    "persist": {
+      "kind": "local_or_other",
+      "survives_session": true,
+      "note": "Treat as durable only if you control the disk."
+    }
+  },
+  "disk_floor_gib": 10.0,
+  "disk_floor_note": "10 GiB is D-005 on the laptop. 2 GiB is a proposed remote floor, not a Colab quota. Remeasured before every block.",
+  "fetch_ids": [],
+  "plan_only": true,
+  "colab_pilot": {
+    "out": "/content/vcc-persist/remote_ingest_2026-09-15T140308Z",
+    "persist_is_ephemeral": true,
+    "hepg2_parity": "passed (byte, md5, shape, NTC, gene axis)",
+    "resume_probe": "200 bytes then complete",
+    "jiang": "skipped FETCH_JIANG=False",
+    "disk_free_gib_after_pilot": 87.24895858764648,
+    "ram_available_user_report_gib": 11,
+    "ram_must_be_remeasured": true,
+    "does_not_prove_large_ingest_or_training_resume": true
+  },
+  "blocks": [
+    {
+      "plan": {
+        "block_id": "nadig_hepg2",
+        "title": "Nadig HepG2 scPerturb mirror",
+        "bytes": 850590740,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "af2be47f7477cf32fa6e4bec1c6a4868",
+        "url": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_hepg2.h5ad/content",
+        "format": "h5ad",
+        "evidence": "reports/hepg2_2026-09-14/acquisition.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 850590740,
+            "decompressed_bytes": null,
+            "derived_bytes": 20000000,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 875590740,
+          "unknown_components": [
+            "decompressed_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 10737418240,
+        "free_bytes": 20850089984,
+        "ram_available_bytes": 2335514624,
+        "ram_note": null,
+        "decision": "skip_complete",
+        "reason": "checksum matches or checkpoint complete; not re-fetched",
+        "derive": "h5ad_obs",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "complete",
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\nadig_hepg2\\NadigOConner2024_hepg2.h5ad",
+      "file": {
+        "exists": true,
+        "bytes": 850590740,
+        "md5": "af2be47f7477cf32fa6e4bec1c6a4868",
+        "bytes_ok": true,
+        "md5_ok": true,
+        "matches": true
+      },
+      "acquired": null,
+      "qc": {
+        "shape": [
+          145473,
+          9624
+        ],
+        "obs_keys": [
+          "UMI_count",
+          "batch",
+          "cancer",
+          "cell_barcode",
+          "cell_line",
+          "disease",
+          "gene",
+          "gene_id",
+          "gene_transcript",
+          "guide_id",
+          "ncounts",
+          "ngenes",
+          "nperts",
+          "organism",
+          "percent_mito",
+          "percent_ribo",
+          "perturbation",
+          "perturbation_type",
+          "tissue_type",
+          "transcript",
+          "z_gemgroup_UMI"
+        ],
+        "var_keys": [
+          "chr",
+          "class",
+          "cv",
+          "end",
+          "ensembl_id",
+          "fano",
+          "gene_name",
+          "in_matrix",
+          "length",
+          "mean",
+          "ncells",
+          "ncounts",
+          "start",
+          "std",
+          "strand"
+        ],
+        "pert_column_used": "perturbation",
+        "ntc_label_used": "control",
+        "ntc_labels_discovered": [
+          "control"
+        ],
+        "ntc_cells": 4976,
+        "n_genes": 9624,
+        "n_on_official_axis": 9023,
+        "pairing": {
+          "batch_column": "batch",
+          "n_batches": 56,
+          "batches_without_ntc": [],
+          "ntc_per_batch_min": 5
+        },
+        "x_head_rows": 64,
+        "x_min": 0.0,
+        "x_max": 1595.0,
+        "x_nonnegative": true,
+        "x_integral": true,
+        "ntc_note": null,
+        "claim": "measured"
+      },
+      "derived": {
+        "gene_mask": "reports\\remote_catalog_2026-09-15\\derived\\nadig_hepg2\\gene_mask.npz",
+        "ntc_rows": "reports\\remote_catalog_2026-09-15\\derived\\nadig_hepg2\\ntc_rows.npz",
+        "n_observed_on_official_axis": 9023,
+        "n_unmeasured_official_genes": 9510,
+        "unmeasured_are_masked_not_zeroed": true,
+        "ntc_cells": 4976,
+        "pairing": {
+          "batch_column": "batch",
+          "n_batches": 56,
+          "batches_without_ntc": [],
+          "ntc_per_batch_min": 5
+        },
+        "signatures": null,
+        "signatures_note": "obs-level NTC pairing and gene mask only. Full log2FC signatures are scripts/53_build_hepg2_signatures.py (or equivalent) and are not this step.",
+        "claim": "measured"
+      },
+      "checkpoint": "reports\\remote_catalog_2026-09-15\\checkpoints\\nadig_hepg2.json"
+    },
+    {
+      "plan": {
+        "block_id": "k562_gwps_raw_singlecell",
+        "title": "Replogle 2022 K562 genome-wide raw single-cell",
+        "bytes": 65830941948,
+        "advertised_bytes": 61300000000,
+        "advertised_note": "Profile '61.3 GB' is not this file's byte count. Measured size is 65830941948.",
+        "md5": "887e3e6a8c8df6eadf7a3030a53c9546",
+        "url": "https://ndownloader.figshare.com/files/35775507",
+        "format": "h5ad",
+        "evidence": "src/vcc2026/external.py",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 65830941948,
+            "decompressed_bytes": null,
+            "derived_bytes": 20000000,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 65855941948,
+          "unknown_components": [
+            "decompressed_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": false,
+        "floor_bytes": 10737418240,
+        "free_bytes": 20849950720,
+        "ram_available_bytes": 2405584896,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "h5ad_obs",
+        "same_experiment_as": "k562_gwps_scperturb_mirror",
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\replogle\\K562_gwps_raw_singlecell_01.h5ad",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "reports\\remote_catalog_2026-09-15\\checkpoints\\k562_gwps_raw_singlecell.json"
+    },
+    {
+      "plan": {
+        "block_id": "rpe1_raw_singlecell",
+        "title": "Replogle 2022 RPE1 raw single-cell",
+        "bytes": 8700873216,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "6a2a9d0d2bf4ec147f4d1104043b268c",
+        "url": "https://ndownloader.figshare.com/files/35775606",
+        "format": "h5ad",
+        "evidence": "src/vcc2026/external.py",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 8700873216,
+            "decompressed_bytes": null,
+            "derived_bytes": 20000000,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 8725873216,
+          "unknown_components": [
+            "decompressed_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 10737418240,
+        "free_bytes": 20849950720,
+        "ram_available_bytes": 2403622912,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "h5ad_obs",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\replogle\\rpe1_raw_singlecell_01.h5ad",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "reports\\remote_catalog_2026-09-15\\checkpoints\\rpe1_raw_singlecell.json"
+    },
+    {
+      "plan": {
+        "block_id": "nadig_jurkat_mirror",
+        "title": "Nadig Jurkat scPerturb mirror",
+        "bytes": 1293665804,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "d8b05d00bfbd686d37ffdd4293bc6c8c",
+        "url": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_jurkat.h5ad/content",
+        "format": "h5ad",
+        "evidence": "reports/nadig_reconcile_2026-09-15/nadig_reconciliation.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 1293665804,
+            "decompressed_bytes": null,
+            "derived_bytes": 20000000,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 1318665804,
+          "unknown_components": [
+            "decompressed_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 10737418240,
+        "free_bytes": 20849950720,
+        "ram_available_bytes": 2407444480,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "h5ad_obs",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\nadig_jurkat\\NadigOConner2024_jurkat.h5ad",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "reports\\remote_catalog_2026-09-15\\checkpoints\\nadig_jurkat_mirror.json"
+    },
+    {
+      "plan": {
+        "block_id": "jiang_tgfb",
+        "title": "Jiang Mixscale TGFB Seurat RDS",
+        "bytes": 2642041433,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "8e9b4d39a95ec5881a30be6a2df541d1",
+        "url": "https://zenodo.org/api/records/14518762/files/Seurat_object_TGFB_Perturb_seq.rds/content",
+        "format": "seurat_rds",
+        "evidence": "reports/jiang_2026-09-15/jiang_probe.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 2642041433,
+            "decompressed_bytes": null,
+            "derived_bytes": null,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 2647041433,
+          "unknown_components": [
+            "decompressed_bytes",
+            "derived_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 10737418240,
+        "free_bytes": 20849950720,
+        "ram_available_bytes": 2400358400,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "rds_blocked",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\jiang\\Seurat_object_TGFB_Perturb_seq.rds",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "reports\\remote_catalog_2026-09-15\\checkpoints\\jiang_tgfb.json"
+    },
+    {
+      "plan": {
+        "block_id": "jiang_ifng",
+        "title": "Jiang Mixscale IFNG Seurat RDS",
+        "bytes": 2915636149,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "0fef1f14c36906e9c40e4d1c6aae6926",
+        "url": "https://zenodo.org/api/records/14518762/files/Seurat_object_IFNG_Perturb_seq.rds/content",
+        "format": "seurat_rds",
+        "evidence": "reports/jiang_2026-09-15/jiang_probe.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 2915636149,
+            "decompressed_bytes": null,
+            "derived_bytes": null,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 2920636149,
+          "unknown_components": [
+            "decompressed_bytes",
+            "derived_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 10737418240,
+        "free_bytes": 20849950720,
+        "ram_available_bytes": 2413006848,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "rds_blocked",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\jiang\\Seurat_object_IFNG_Perturb_seq.rds",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "reports\\remote_catalog_2026-09-15\\checkpoints\\jiang_ifng.json"
+    },
+    {
+      "plan": {
+        "block_id": "jiang_ifnb",
+        "title": "Jiang Mixscale IFNB Seurat RDS",
+        "bytes": 4326548669,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "3eb5e7af1601bf562a5b20dea5de3dc9",
+        "url": "https://zenodo.org/api/records/14518762/files/Seurat_object_IFNB_Perturb_seq.rds/content",
+        "format": "seurat_rds",
+        "evidence": "reports/jiang_2026-09-15/jiang_probe.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 4326548669,
+            "decompressed_bytes": null,
+            "derived_bytes": null,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 4331548669,
+          "unknown_components": [
+            "decompressed_bytes",
+            "derived_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 10737418240,
+        "free_bytes": 20849954816,
+        "ram_available_bytes": 2411425792,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "rds_blocked",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\jiang\\Seurat_object_IFNB_Perturb_seq.rds",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "reports\\remote_catalog_2026-09-15\\checkpoints\\jiang_ifnb.json"
+    },
+    {
+      "plan": {
+        "block_id": "jiang_tnfa",
+        "title": "Jiang Mixscale TNFA Seurat RDS",
+        "bytes": 4656209976,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "60ed8bff6c749b1250f8fde9c5435c2e",
+        "url": "https://zenodo.org/api/records/14518762/files/Seurat_object_TNFA_Perturb_seq.rds/content",
+        "format": "seurat_rds",
+        "evidence": "reports/jiang_2026-09-15/jiang_probe.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 4656209976,
+            "decompressed_bytes": null,
+            "derived_bytes": null,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 4661209976,
+          "unknown_components": [
+            "decompressed_bytes",
+            "derived_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 10737418240,
+        "free_bytes": 20849954816,
+        "ram_available_bytes": 2405097472,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "rds_blocked",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\jiang\\Seurat_object_TNFA_Perturb_seq.rds",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "reports\\remote_catalog_2026-09-15\\checkpoints\\jiang_tnfa.json"
+    },
+    {
+      "plan": {
+        "block_id": "jiang_ins",
+        "title": "Jiang Mixscale INS Seurat RDS",
+        "bytes": 5601176410,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "c7b830dfcc020545c3f222cad5b13b34",
+        "url": "https://zenodo.org/api/records/14518762/files/Seurat_object_INS_Perturb_seq.rds/content",
+        "format": "seurat_rds",
+        "evidence": "reports/jiang_2026-09-15/jiang_probe.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 5601176410,
+            "decompressed_bytes": null,
+            "derived_bytes": null,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 5606176410,
+          "unknown_components": [
+            "decompressed_bytes",
+            "derived_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 10737418240,
+        "free_bytes": 20849954816,
+        "ram_available_bytes": 2407194624,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "rds_blocked",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\jiang\\Seurat_object_INS_Perturb_seq.rds",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "reports\\remote_catalog_2026-09-15\\checkpoints\\jiang_ins.json"
+    }
+  ],
+  "not_a_cloud_proof": true,
+  "claim": "derived"
+}

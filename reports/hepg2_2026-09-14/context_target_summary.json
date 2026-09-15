@@ -1,0 +1,105 @@
+{
+  "built_utc": "2026-09-14T20:26:28.683645+00:00",
+  "inclusion_criteria": {
+    "row_unit": "one signature row per target (guide rows summed into the target)",
+    "observed": "the source has at least one usable row for that target",
+    "supported": "cells behind the estimate >= threshold; three thresholds are reported because a single one hides the shape of the tail",
+    "min_cells_already_applied": {
+      "e001 pseudobulk sources": 10,
+      "nadig_hepg2": 10
+    },
+    "not_filtered_by_effect_size": true
+  },
+  "per_source": {
+    "k562_essential": {
+      "context": "K562",
+      "signature_dir": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures",
+      "n_rows": 2167,
+      "n_genes_measured": 7940,
+      "constant_across_targets": true
+    },
+    "k562_gwps": {
+      "context": "K562",
+      "signature_dir": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures",
+      "n_rows": 2816,
+      "n_genes_measured": 7681,
+      "constant_across_targets": true
+    },
+    "rpe1_essential": {
+      "context": "RPE1",
+      "signature_dir": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures",
+      "n_rows": 2509,
+      "n_genes_measured": 8260,
+      "constant_across_targets": true
+    },
+    "nadig_hepg2": {
+      "context": "HepG2",
+      "signature_dir": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e003\\signatures",
+      "n_rows": 2346,
+      "n_genes_measured": 9023,
+      "constant_across_targets": true
+    }
+  },
+  "per_context": {
+    "HepG2": {
+      "sources": [
+        "nadig_hepg2"
+      ],
+      "n_targets_observed": 2346,
+      "n_targets_ge_10_cells": 2346,
+      "n_targets_ge_30_cells": 1818,
+      "n_targets_ge_50_cells": 1061,
+      "median_cells_per_target": 46.0,
+      "n_genes_measured_by_source": {
+        "nadig_hepg2": 9023
+      }
+    },
+    "K562": {
+      "sources": [
+        "k562_essential",
+        "k562_gwps"
+      ],
+      "n_targets_observed": 2665,
+      "n_targets_ge_10_cells": 2665,
+      "n_targets_ge_30_cells": 2613,
+      "n_targets_ge_50_cells": 2528,
+      "median_cells_per_target": 147.0,
+      "n_genes_measured_by_source": {
+        "k562_essential": 7940,
+        "k562_gwps": 7681
+      }
+    },
+    "RPE1": {
+      "sources": [
+        "rpe1_essential"
+      ],
+      "n_targets_observed": 2354,
+      "n_targets_ge_10_cells": 2354,
+      "n_targets_ge_30_cells": 2016,
+      "n_targets_ge_50_cells": 1611,
+      "median_cells_per_target": 73.0,
+      "n_genes_measured_by_source": {
+        "rpe1_essential": 8260
+      }
+    }
+  },
+  "targets_shared_pairwise": {
+    "HepG2&K562": 2346,
+    "HepG2&RPE1": 2319,
+    "K562&RPE1": 2354
+  },
+  "targets_shared_all_contexts": 2319,
+  "panel": {
+    "n_panel_targets": 300,
+    "panel_targets_per_context": {
+      "HepG2": 0,
+      "K562": 272,
+      "RPE1": 0
+    },
+    "note": "0 for a context means this experiment tests transfer between contexts, not coverage of the VCC panel"
+  },
+  "genes": {
+    "official_axis": 18533,
+    "note": "a gene absent from a source's var is unmeasured, never unchanged"
+  }
+}

@@ -1,0 +1,1112 @@
+{
+  "agreements": [
+    {
+      "phase": 2,
+      "role": "solver_a",
+      "text": "Esiste almeno un candidato in linea T matura che dichiara una matrice a singola cellula"
+    },
+    {
+      "phase": 2,
+      "role": "solver_a",
+      "text": "Il contesto squamoso resta scoperto: nessuno dei due ha trovato un deposito accessibile"
+    },
+    {
+      "phase": 2,
+      "role": "solver_b",
+      "text": "Esiste un candidato in linea T matura con una matrice dichiarata"
+    },
+    {
+      "phase": 2,
+      "role": "solver_b",
+      "text": "Il contesto squamoso e' scoperto"
+    },
+    {
+      "phase": 2,
+      "role": "solver_b",
+      "text": "La mia attribuzione sulla cromatina non era sostenuta: su questo gli do ragione"
+    }
+  ],
+  "brief": {
+    "budget": {
+      "max_leads": 2,
+      "max_main_responses": 6,
+      "max_phases": 3,
+      "max_repairs_per_response": 1,
+      "max_total_interactions": 12,
+      "max_wall_clock_minutes": 20
+    },
+    "hypotheses": [
+      {
+        "alternatives": [
+          "Esistono dataset del genere ma sono sotto accesso controllato (dbGaP, EGA), quindi pubblicamente citati e non pubblicamente scaricabili"
+        ],
+        "id": "H1",
+        "initial_evidence": [
+          "GSE281860 e' la pista piu' vicina per il contesto squamoso, ma espone conteggi di guide e non la matrice RNA (docs/PROGETTO.md §4, punto 7)"
+        ],
+        "statement": "Esiste almeno un Perturb-seq CRISPRi pubblico in linea T matura con matrice RNA scaricabile.\n",
+        "status": "open"
+      },
+      {
+        "alternatives": [
+          "I supplementi contengono solo pseudobulk aggregato, che non ricostruisce le cellule"
+        ],
+        "id": "H2",
+        "initial_evidence": [],
+        "statement": "Dove la matrice RNA manca dall'archivio, e' comunque ricostruibile da un supplemento o da un repository secondario del gruppo che l'ha prodotta.\n",
+        "status": "open"
+      }
+    ],
+    "id": "ricerca-collaudo",
+    "lead_assignment": "both",
+    "out_of_scope": "Linee eritroidi (K562) e pluripotenti (H1, KOLF2.1J, HIPSCI), gia' inventariate altrove nel progetto. Screening CRISPR a lettura di sola fitness, senza RNA.",
+    "perspectives": {
+      "solver_a": "Metodi e archivi. Come e' stato fatto l'esperimento, che cosa e' stato depositato, in quale formato, con quale copertura del pannello. Guarda le pagine di accessione e i file, non solo gli articoli.\n",
+      "solver_b": "Biologia e limiti. Se la linea e' davvero il contesto che dichiara, se l'efficienza di knockdown e' riportata, e quali limiti gli autori dichiarano sul trasferimento ad altri contesti.\n"
+    },
+    "question": "Esiste un dataset Perturb-seq CRISPRi pubblico, con matrice RNA a singola cellula accessibile, in una linea T matura oppure epiteliale squamosa? Per ciascun candidato: quale linea cellulare, quante perturbazioni, se la matrice RNA e' davvero scaricabile o se l'archivio espone solo conteggi di guide.\n",
+    "relevance_criteria": [
+      {
+        "id": "P1",
+        "text": "La fonte nomina un'accessione di archivio pubblico (GEO, ArrayExpress, Zenodo, figshare) per un esperimento a singola cellula"
+      },
+      {
+        "id": "P2",
+        "text": "La linea cellulare e' T matura o epiteliale squamosa, dichiarata esplicitamente"
+      },
+      {
+        "id": "P3",
+        "text": "La fonte dice che cosa e' depositato: matrice RNA, conteggi di guide, o solo metadati"
+      }
+    ],
+    "scope": "Dataset Perturb-seq o CRISPRi a singola cellula depositati pubblicamente, in linee T mature (Jurkat, CD4 primarie, linee T trasformate) o epiteliali squamose. Conta solo cio' che ha una matrice RNA a singola cellula ottenibile: un archivio che espone i soli conteggi di guide non soddisfa il perimetro.",
+    "search": {
+      "note": "Se un canale non ha una ricerca sul web dichiarata e verificabile, la campagna non parte. Una rassegna della letteratura scritta a memoria arriva identica a una vera, e costa molto piu' di una campagna non avviata.\n",
+      "on_unavailable": "halt",
+      "required": true
+    },
+    "sha256": "2c34027e7438ca71979261126cf608358c3c091532efa9fabd2dc88507f08533",
+    "title": "Collaudo - Perturb-seq CRISPRi pubblico in linea T matura o squamosa",
+    "version": 1
+  },
+  "built_utc": "2026-09-14T02:24:55Z",
+  "claims": [
+    {
+      "about_hypothesis": "H1",
+      "contradicted_by": [],
+      "flags": [],
+      "id": "C-4be086cdc7",
+      "limits": "e' cio' che l'archivio dichiara; non ho scaricato il file e non so se sia completo",
+      "locator": "pagina di accessione, sezione Supplementary file",
+      "nature": "reported_by_authors",
+      "phase": 1,
+      "role": "solver_a",
+      "step_id": "70dbb24edc7f93fd",
+      "supported_by": [
+        "F-a54a3e23a8"
+      ],
+      "text": "L'accessione GSE999001 elenca, oltre ai conteggi di guide, una matrice di espressione a singola cellula in formato mtx."
+    },
+    {
+      "about_hypothesis": "H1",
+      "contradicted_by": [],
+      "flags": [],
+      "id": "C-dfc8afd05b",
+      "limits": "vale sui 112 bersagli con almeno 200 cellule; sugli altri gli autori non si pronunciano",
+      "locator": "Fig. 3b e testo a p. 7",
+      "nature": "reported_by_authors",
+      "phase": 1,
+      "role": "solver_a",
+      "step_id": "70dbb24edc7f93fd",
+      "supported_by": [
+        "F-b558b4be5b"
+      ],
+      "text": "Gli autori riportano che il segno della risposta si conserva fra linee T diverse per i geni a effetto forte."
+    },
+    {
+      "about_hypothesis": "H1",
+      "contradicted_by": [],
+      "flags": [],
+      "id": "C-1c706db2fa",
+      "limits": "e' una conseguenza operativa, non un risultato degli autori",
+      "locator": "",
+      "nature": "worker_interpretation",
+      "phase": 1,
+      "role": "solver_a",
+      "step_id": "70dbb24edc7f93fd",
+      "supported_by": [
+        "F-a54a3e23a8"
+      ],
+      "text": "Se la matrice RNA e' depositata, il collo di bottiglia del progetto si sposta dalla disponibilita' del dato alla sua estrazione mirata."
+    },
+    {
+      "about_hypothesis": "H1",
+      "contradicted_by": [
+        "F-b558b4be5b"
+      ],
+      "flags": [
+        "attribuito agli autori senza indicare una fonte"
+      ],
+      "id": "C-f8bba36f15",
+      "limits": "l'ho letto nell'abstract; il dato che lo sostiene sta in una figura supplementare che non ho potuto aprire",
+      "locator": "abstract, ultime due frasi",
+      "nature": "reported_by_authors",
+      "phase": 1,
+      "role": "solver_b",
+      "step_id": "57c23818333473b3",
+      "supported_by": [],
+      "text": "Gli autori riportano che la direzione della risposta NON si conserva fra lignaggi diversi, nemmeno per i bersagli a effetto forte."
+    },
+    {
+      "about_hypothesis": "H1",
+      "contradicted_by": [],
+      "flags": [
+        "attribuito agli autori di F-d9bd7e407c, che pero' risulta «found»: nessuno ha letto il testo a cui l'affermazione viene attribuita",
+        "attribuito agli autori senza localizzatore nel documento"
+      ],
+      "id": "C-0a77cddf88",
+      "limits": "",
+      "locator": "",
+      "nature": "reported_by_authors",
+      "phase": 1,
+      "role": "solver_b",
+      "step_id": "57c23818333473b3",
+      "supported_by": [
+        "F-d9bd7e407c"
+      ],
+      "text": "Lo stato della cromatina nel contesto bersaglio determina il segno della risposta al knockdown, ed e' per questo che il trasferimento fallisce."
+    },
+    {
+      "about_hypothesis": "H1",
+      "contradicted_by": [],
+      "flags": [],
+      "id": "C-2c63ba79fb",
+      "limits": "non dice nulla sul contenuto di F2, che resta ignoto",
+      "locator": "",
+      "nature": "worker_interpretation",
+      "phase": 1,
+      "role": "solver_b",
+      "step_id": "57c23818333473b3",
+      "supported_by": [
+        "F-7a0575bb0e"
+      ],
+      "text": "Registrare F2 come non accessibile, invece di descriverlo dal titolo, lascia aperta la domanda sul contesto squamoso."
+    },
+    {
+      "about_hypothesis": "H3",
+      "contradicted_by": [],
+      "flags": [],
+      "id": "C-9061290f0b",
+      "limits": "dice che l'attribuzione non e' sostenuta, non che l'affermazione sia falsa",
+      "locator": "",
+      "nature": "worker_interpretation",
+      "phase": 2,
+      "role": "solver_a",
+      "step_id": "47d87ebfec6352ea",
+      "supported_by": [],
+      "text": "L'affermazione del collega sullo stato della cromatina e' attribuita agli autori di una fonte che lui registra come solo trovata in un elenco: nessuno l'ha letta."
+    },
+    {
+      "about_hypothesis": "H3",
+      "contradicted_by": [],
+      "flags": [],
+      "id": "C-8ed86621a5",
+      "limits": "nella fase 1 l'avevo attribuita agli autori di una fonte che non ho aperto; era sbagliato, ed e' un'ipotesi mia",
+      "locator": "",
+      "nature": "new_hypothesis",
+      "phase": 2,
+      "role": "solver_b",
+      "step_id": "eb2299dd738041ac",
+      "supported_by": [],
+      "text": "Lo stato della cromatina nel contesto bersaglio potrebbe determinare il segno della risposta al knockdown."
+    },
+    {
+      "about_hypothesis": "H1",
+      "contradicted_by": [],
+      "flags": [],
+      "id": "C-8cf50c85b9",
+      "limits": "",
+      "locator": "",
+      "nature": "worker_interpretation",
+      "phase": 2,
+      "role": "solver_b",
+      "step_id": "eb2299dd738041ac",
+      "supported_by": [
+        "F1"
+      ],
+      "text": "Una lettura dell'abstract non e' equivalente a una lettura della figura che l'abstract riassume."
+    },
+    {
+      "about_hypothesis": "H1",
+      "contradicted_by": [],
+      "flags": [],
+      "id": "C-e7e4fe9413",
+      "limits": "non dice su quale popolazione sia costruita la frase dell'abstract, che e' l'altra meta' della domanda",
+      "locator": "didascalia della Fig. 3b",
+      "nature": "reported_by_authors",
+      "phase": 3,
+      "role": "solver_a",
+      "step_id": "81dfd0f351948eb7",
+      "supported_by": [
+        "F-b558b4be5b"
+      ],
+      "text": "La didascalia della Fig. 3b dichiara che la figura usa i 112 bersagli con almeno 200 cellule, non tutti i bersagli dello studio."
+    },
+    {
+      "about_hypothesis": "H1",
+      "contradicted_by": [],
+      "flags": [],
+      "id": "C-6cfd47838f",
+      "limits": "e' la spiegazione alternativa che avevo proposto, e resta non verificata: serve la tabella S4, che non e' accessibile",
+      "locator": "",
+      "nature": "worker_interpretation",
+      "phase": 3,
+      "role": "solver_a",
+      "step_id": "81dfd0f351948eb7",
+      "supported_by": [
+        "F-b558b4be5b"
+      ],
+      "text": "Se l'abstract generalizza su tutti i bersagli e la figura ne mostra 112 selezionati, i due passaggi possono essere entrambi corretti e la contraddizione fra me e il collega sarebbe apparente."
+    },
+    {
+      "about_hypothesis": "H2",
+      "contradicted_by": [],
+      "flags": [],
+      "id": "C-4d8d417b2a",
+      "limits": "e' un'assenza in due archivi con due stringhe, non un'assenza nella letteratura",
+      "locator": "",
+      "nature": "worker_interpretation",
+      "phase": 3,
+      "role": "solver_a",
+      "step_id": "81dfd0f351948eb7",
+      "supported_by": [],
+      "text": "Le due query su ArrayExpress e Zenodo non hanno restituito nessun deposito per il lavoro squamoso."
+    }
+  ],
+  "complementary": [
+    {
+      "phase": 2,
+      "role": "solver_a",
+      "text": "Io ho guardato le pagine di accessione, lui i limiti dichiarati dagli autori: le due cose non si sovrappongono e servono entrambe"
+    },
+    {
+      "phase": 2,
+      "role": "solver_a",
+      "text": "Lui ha trovato il candidato squamoso a paywall, che io non avevo intercettato"
+    },
+    {
+      "phase": 2,
+      "role": "solver_b",
+      "text": "Lui sa che cosa e' depositato, io so che cosa gli autori dichiarano di non poter estendere"
+    }
+  ],
+  "contradictions": [
+    {
+      "hypothesis": "",
+      "id": "X-b4f2afc006",
+      "kind": "declared",
+      "phase": 2,
+      "raised_by": [
+        "solver_a"
+      ],
+      "source_id": "",
+      "status": "open",
+      "step_ids": [
+        "47d87ebfec6352ea"
+      ],
+      "text": "Sulla stessa fonte (lo studio 2024 sulle cellule T primarie) io riporto che il segno si conserva fra lignaggi per i bersagli a effetto forte, lui riporta che non si conserva. Io cito la Fig. 3b del testo completo, lui le ultime frasi dell'abstract."
+    },
+    {
+      "hypothesis": "",
+      "id": "X-d7845cf845",
+      "kind": "declared",
+      "phase": 2,
+      "raised_by": [
+        "solver_b"
+      ],
+      "source_id": "",
+      "status": "open",
+      "step_ids": [
+        "eb2299dd738041ac"
+      ],
+      "text": "Sullo studio 2024 delle cellule T primarie: lui legge conservazione del segno fra lignaggi in Fig. 3b, io leggo il contrario nell'abstract. Resta aperta: non ho il testo completo per decidere."
+    },
+    {
+      "hypothesis": "H1",
+      "id": "X-f68e837166",
+      "kind": "derived",
+      "phase": 3,
+      "raised_by": [
+        "solver_a",
+        "solver_b"
+      ],
+      "source_id": "F-b558b4be5b",
+      "status": "open",
+      "step_ids": [
+        "57c23818333473b3",
+        "70dbb24edc7f93fd",
+        "81dfd0f351948eb7"
+      ],
+      "text": "solver_a usa F-b558b4be5b a sostegno di [C-dfc8afd05b] «Gli autori riportano che il segno della risposta si conserva fra linee T diverse per i geni a effetto forte.»; [C-e7e4fe9413] «La didascalia della Fig. 3b dichiara che la figura usa i 112 bersagli con almeno 200 cellule, non tutti i bersagli dello studio.»; [C-6cfd47838f] «Se l'abstract generalizza su tutti i bersagli e la figura ne mostra 112 selezionati, i due passaggi possono essere entrambi corretti e la contraddizione fra me \n[... 31 caratteri non mostrati ...]» — solver_b usa la stessa fonte contro [C-f8bba36f15] «Gli autori riportano che la direzione della risposta NON si conserva fra lignaggi diversi, nemmeno per i bersagli a effetto forte.»; [C-f8bba36f15] «Gli autori riportano che la direzione della risposta NON si conserva fra lignaggi diversi, nemmeno per i bersagli a effetto forte.»; [C-f8bba36f15] «Gli autori riportano che la direzione della risposta NON si conserva fra lignaggi diversi, nemmeno per i bersagli a effetto forte.»"
+    }
+  ],
+  "dropped_keys": [
+    {
+      "keys": [
+        "budget",
+        "max_rounds"
+      ],
+      "phase": 2,
+      "role": "solver_a"
+    }
+  ],
+  "gaps": [
+    {
+      "id": "G-b3f657233c",
+      "missing": "Non so se il file di matrice dichiarato da GSE999001 sia effettivamente servito senza autenticazione.",
+      "phase": 1,
+      "role": "solver_a",
+      "search_that_would_close_it": "Una richiesta della sola intestazione HTTP sull'URL del file, senza scaricarlo",
+      "step_id": "70dbb24edc7f93fd"
+    },
+    {
+      "id": "G-d47ff31742",
+      "missing": "Non ho cercato nulla nel contesto squamoso oltre alla seconda query.",
+      "phase": 1,
+      "role": "solver_a",
+      "search_that_would_close_it": "Ripetere la seconda query su ArrayExpress e su Zenodo, dove finiscono i depositi che non passano da GEO",
+      "step_id": "70dbb24edc7f93fd"
+    },
+    {
+      "id": "G-e4355d764a",
+      "missing": "Il contenuto di F2, l'unico candidato squamoso che ho trovato, resta ignoto.",
+      "phase": 1,
+      "role": "solver_b",
+      "search_that_would_close_it": "Cercare un preprint dello stesso gruppo su bioRxiv, dove la versione aperta di solito esiste",
+      "step_id": "57c23818333473b3"
+    },
+    {
+      "id": "G-be25eb386b",
+      "missing": "Non ho verificato se F3 dica davvero quello che il titolo suggerisce.",
+      "phase": 1,
+      "role": "solver_b",
+      "search_that_would_close_it": "Aprire F3 e leggerne almeno l'abstract",
+      "step_id": "57c23818333473b3"
+    },
+    {
+      "id": "G-53687ace7d",
+      "missing": "Nessuno dei due ha guardato ArrayExpress o Zenodo per il contesto squamoso.",
+      "phase": 2,
+      "role": "solver_a",
+      "search_that_would_close_it": "La seconda query della fase 1, ripetuta su quei due archivi",
+      "step_id": "47d87ebfec6352ea"
+    },
+    {
+      "id": "G-388e2c7242",
+      "missing": "Nessuno di noi due ha letto il supplemento dello studio 2024, dove starebbe il dato che decide la contraddizione.",
+      "phase": 2,
+      "role": "solver_b",
+      "search_that_would_close_it": "Scaricare il supplemento dalla pagina dell'editore, se e' aperto",
+      "step_id": "eb2299dd738041ac"
+    },
+    {
+      "id": "G-18557f6773",
+      "missing": "La tabella supplementare S4 dello studio 2024, che direbbe se la contraddizione e' apparente.",
+      "phase": 3,
+      "role": "solver_a",
+      "search_that_would_close_it": "Chiedere il supplemento agli autori, oppure cercare una copia depositata dal gruppo su un repository istituzionale",
+      "step_id": "81dfd0f351948eb7"
+    },
+    {
+      "id": "G-aa41130a4f",
+      "missing": "Non ho mai provato a chiedere l'intestazione HTTP del file di matrice: la domanda che ha aperto la campagna resta senza risposta.",
+      "phase": 3,
+      "role": "solver_a",
+      "search_that_would_close_it": "Una richiesta HEAD sull'URL del file dell'accessione",
+      "step_id": "81dfd0f351948eb7"
+    },
+    {
+      "id": "G-f1c8732c25",
+      "missing": "I server di preprint non sono stati interrogati: i due tentativi sono falliti per un errore del servizio, non per assenza di risultati.",
+      "phase": 3,
+      "role": "solver_b",
+      "search_that_would_close_it": "Ripetere le stesse due query quando il servizio risponde, piu' la ricerca per autore che non ho tentato",
+      "step_id": "a3764f9de78a6834"
+    }
+  ],
+  "hypotheses": [
+    {
+      "declared": [
+        {
+          "alternatives": [
+            "L'accessione elenca il file ma il deposito e' sotto accesso controllato"
+          ],
+          "phase": 1,
+          "proposed_tests": [
+            "Richiedere l'intestazione HTTP del file dell'accessione per vedere se e' servito senza autenticazione"
+          ],
+          "role": "solver_a",
+          "statement": "Esiste almeno un Perturb-seq CRISPRi pubblico in linea T matura con matrice RNA scaricabile.",
+          "status": "supported_declared",
+          "step_id": "70dbb24edc7f93fd"
+        },
+        {
+          "alternatives": [
+            "Il deposito esiste ma e' su accesso controllato"
+          ],
+          "phase": 1,
+          "proposed_tests": [
+            "Leggere la Data Availability di F1, che dall'abstract non si vede"
+          ],
+          "role": "solver_b",
+          "statement": "Esiste almeno un Perturb-seq CRISPRi pubblico in linea T matura con matrice RNA scaricabile.",
+          "status": "undecided",
+          "step_id": "57c23818333473b3"
+        },
+        {
+          "alternatives": [
+            "il file e' elencato ma servito solo su richiesta"
+          ],
+          "phase": 2,
+          "proposed_tests": [
+            "richiesta della sola intestazione HTTP"
+          ],
+          "role": "solver_a",
+          "statement": "Esiste almeno un Perturb-seq CRISPRi pubblico in linea T matura con matrice RNA scaricabile.",
+          "status": "undecided",
+          "step_id": "47d87ebfec6352ea"
+        },
+        {
+          "alternatives": [
+            "accesso controllato"
+          ],
+          "phase": 2,
+          "proposed_tests": [
+            "leggere la Data Availability nel testo completo"
+          ],
+          "role": "solver_b",
+          "statement": "Esiste almeno un Perturb-seq CRISPRi pubblico in linea T matura con matrice RNA scaricabile.",
+          "status": "undecided",
+          "step_id": "eb2299dd738041ac"
+        },
+        {
+          "alternatives": [
+            "accesso controllato",
+            "il file e' elencato ma non servito"
+          ],
+          "phase": 3,
+          "proposed_tests": [
+            "richiesta della sola intestazione HTTP sull'URL del file"
+          ],
+          "role": "solver_a",
+          "statement": "Esiste almeno un Perturb-seq CRISPRi pubblico in linea T matura con matrice RNA scaricabile.",
+          "status": "undecided",
+          "step_id": "81dfd0f351948eb7"
+        },
+        {
+          "alternatives": [
+            "accesso controllato"
+          ],
+          "phase": 3,
+          "proposed_tests": [
+            "la richiesta HTTP che nessuno dei due ha fatto"
+          ],
+          "role": "solver_b",
+          "statement": "Esiste almeno un Perturb-seq CRISPRi pubblico in linea T matura con matrice RNA scaricabile.",
+          "status": "undecided",
+          "step_id": "a3764f9de78a6834"
+        }
+      ],
+      "id": "H1",
+      "origin": "operatore",
+      "statement": "Esiste almeno un Perturb-seq CRISPRi pubblico in linea T matura con matrice RNA scaricabile.\n"
+    },
+    {
+      "declared": [
+        {
+          "alternatives": [
+            "I supplementi contengono solo pseudobulk aggregato"
+          ],
+          "phase": 1,
+          "proposed_tests": [
+            "Aprire i supplementi del candidato squamoso e guardare la granularita' delle tabelle"
+          ],
+          "role": "solver_a",
+          "statement": "Dove la matrice RNA manca dall'archivio, e' ricostruibile da un supplemento o da un repository secondario.",
+          "status": "open",
+          "step_id": "70dbb24edc7f93fd"
+        },
+        {
+          "alternatives": [
+            "i supplementi contengono solo pseudobulk aggregato"
+          ],
+          "phase": 3,
+          "proposed_tests": [
+            "aprire il supplemento, quando sara' accessibile"
+          ],
+          "role": "solver_a",
+          "statement": "Dove la matrice RNA manca dall'archivio, e' ricostruibile da un supplemento o da un repository secondario.",
+          "status": "undecided",
+          "step_id": "81dfd0f351948eb7"
+        }
+      ],
+      "id": "H2",
+      "origin": "operatore",
+      "statement": "Dove la matrice RNA manca dall'archivio, e' comunque ricostruibile da un supplemento o da un repository secondario del gruppo che l'ha prodotta.\n"
+    },
+    {
+      "declared": [
+        {
+          "alternatives": [
+            "La direzione dipende dalla co-espressione basale, che e' correlata alla cromatina ma non la stessa cosa"
+          ],
+          "phase": 1,
+          "proposed_tests": [
+            "Cercare lavori che misurino entrambe le cose sullo stesso dataset"
+          ],
+          "role": "solver_b",
+          "statement": "La direzione della risposta dipende dallo stato della cromatina nel contesto bersaglio piu' che dall'identita' del gene spento.",
+          "status": "open",
+          "step_id": "57c23818333473b3"
+        },
+        {
+          "alternatives": [
+            "dipende dalla co-espressione basale"
+          ],
+          "phase": 2,
+          "proposed_tests": [
+            "trovare un lavoro che misuri entrambe sullo stesso dataset"
+          ],
+          "role": "solver_a",
+          "statement": "La direzione della risposta dipende dallo stato della cromatina nel contesto bersaglio.",
+          "status": "open",
+          "step_id": "47d87ebfec6352ea"
+        },
+        {
+          "alternatives": [
+            "dipende dalla co-espressione basale"
+          ],
+          "phase": 2,
+          "proposed_tests": [
+            "cercare un lavoro che misuri entrambe sullo stesso dataset"
+          ],
+          "role": "solver_b",
+          "statement": "La direzione della risposta dipende dallo stato della cromatina nel contesto bersaglio.",
+          "status": "open",
+          "step_id": "eb2299dd738041ac"
+        },
+        {
+          "alternatives": [
+            "dipende dalla co-espressione basale"
+          ],
+          "phase": 3,
+          "proposed_tests": [
+            "un lavoro che misuri entrambe sullo stesso dataset"
+          ],
+          "role": "solver_b",
+          "statement": "La direzione della risposta dipende dallo stato della cromatina nel contesto bersaglio.",
+          "status": "open",
+          "step_id": "a3764f9de78a6834"
+        }
+      ],
+      "id": "H3",
+      "origin": "solver_b fase 1",
+      "statement": "La direzione della risposta dipende dallo stato della cromatina nel contesto bersaglio piu' che dall'identita' del gene spento."
+    }
+  ],
+  "leads": {
+    "cap": 2,
+    "considered": 5,
+    "merged": [],
+    "rejected": [
+      {
+        "hypothesis": "Il contesto squamoso ha un deposito pubblico che non passa da GEO.",
+        "id": "L-56a85d931c",
+        "reason": "pista incompleta: mancano spiegazione alternativa",
+        "role": "solver_a"
+      },
+      {
+        "hypothesis": "Il contesto squamoso ha un deposito pubblico che non passa da GEO.",
+        "id": "L-56a85d931c",
+        "reason": "non e' la proposta prioritaria di questo worker",
+        "role": "solver_a"
+      },
+      {
+        "hypothesis": "L'efficienza di knockdown e' il vero fattore limitante del trasferimento.",
+        "id": "L-1a4c90a143",
+        "reason": "non e' la proposta prioritaria di questo worker",
+        "role": "solver_a"
+      },
+      {
+        "hypothesis": "L'efficienza di knockdown non e' riportata perche' gli studi non la misurano.",
+        "id": "L-704cd2b3d9",
+        "reason": "non e' la proposta prioritaria di questo worker",
+        "role": "solver_b"
+      }
+    ],
+    "rule": "Una proposta prioritaria per worker -- la prima ben formata nell'ordine in cui l'ha scritta -- ordinate per nome del ruolo, deduplicate sull'ipotesi, troncate a 2. Nessun ripescaggio: se i due propongono la stessa pista, la pista e' una sola, e il fatto che coincidano e' un'informazione, non un posto vuoto da riempire.",
+    "selected": [
+      {
+        "alternative_explanation": "non si contraddicono affatto: parlano di due sottoinsiemi diversi di bersagli, e l'abstract generalizza su tutti mentre la figura mostra solo quelli con almeno 200 cellule",
+        "distinguishing_search": "aprire il testo completo e confrontare la popolazione di bersagli della figura con quella dichiarata nell'abstract; se le numerosita' differiscono, la contraddizione e' apparente",
+        "hypothesis": "La figura 3b e l'abstract dello stesso studio dicono cose opposte sulla conservazione del segno fra lignaggi.",
+        "id": "L-231e74d438",
+        "missing_parts": [],
+        "position": 1,
+        "proposed_by": [
+          "solver_a"
+        ],
+        "rank": 1,
+        "role": "solver_a",
+        "starting_evidence": "io leggo conservazione del segno sui bersagli forti in Fig. 3b; il collega legge il contrario nelle ultime frasi dell'abstract",
+        "step_id": "47d87ebfec6352ea",
+        "strategy_change": "smettere di cercare fonti nuove e leggere per intero quella che abbiamo, compresi i supplementi",
+        "well_formed": true
+      },
+      {
+        "alternative_explanation": "non esiste nessun preprint, e il lavoro e' nato direttamente sulla rivista con i dati sotto accesso controllato: in quel caso l'assenza che vediamo e' reale e non e' un problema di dove abbiamo cercato",
+        "distinguishing_search": "cercare gli stessi autori su bioRxiv e medRxiv per titolo e per nome; se il preprint esiste, leggerne la sezione sui dati; se non esiste dopo aver cercato per entrambi gli autori, l'alternativa e' quella giusta",
+        "hypothesis": "Il candidato squamoso a paywall ha un preprint aperto con i dati depositati altrove.",
+        "id": "L-5097e3a754",
+        "missing_parts": [],
+        "position": 0,
+        "proposed_by": [
+          "solver_b"
+        ],
+        "rank": 2,
+        "role": "solver_b",
+        "starting_evidence": "il lavoro esiste, e' recente, e il paywall riguarda la versione dell'editore; i gruppi che depositano su archivi pubblici di solito lo dicono nel preprint",
+        "step_id": "eb2299dd738041ac",
+        "strategy_change": "cambiare fonte: dai motori bibliografici ai server di preprint, e cercare per autore invece che per argomento",
+        "well_formed": true
+      }
+    ]
+  },
+  "ledger": {
+    "abandoned": 0,
+    "elapsed_minutes": 0.0,
+    "main_responses": 6,
+    "repairs": 1,
+    "retries": 0,
+    "seats_answered": 6,
+    "seats_planned": 6,
+    "total_interactions": 7,
+    "transport_errors": 0,
+    "unparsed": 1
+  },
+  "note": "Dossier assemblato da codice deterministico. Le sintesi dei due worker sono conservate separate e verbatim: nessuna sintesi consensuale e' stata prodotta, e nessun terzo modello e' stato interrogato. Nessuna contraddizione viene chiusa dal programma.",
+  "open_questions": [
+    {
+      "phase": 1,
+      "role": "solver_a",
+      "text": "Quante perturbazioni del nostro pannello siano coperte da GSE999001: la pagina di accessione non elenca i bersagli"
+    },
+    {
+      "phase": 1,
+      "role": "solver_b",
+      "text": "Se l'efficienza di knockdown sia riportata in F1: dall'abstract non risulta"
+    },
+    {
+      "phase": 1,
+      "role": "solver_b",
+      "text": "Se la contraddizione con il collega sia sui dati o su quale parte del lavoro abbiamo letto"
+    },
+    {
+      "phase": 2,
+      "role": "solver_a",
+      "text": "Se la contraddizione sia nel paper o nella nostra lettura"
+    },
+    {
+      "phase": 2,
+      "role": "solver_b",
+      "text": "Se il disaccordo sia nel paper o nella nostra lettura"
+    },
+    {
+      "phase": 3,
+      "role": "solver_a",
+      "text": "Se il file di matrice dell'accessione sia davvero servito senza autenticazione: e' rimasta senza risposta per tre fasi"
+    },
+    {
+      "phase": 3,
+      "role": "solver_a",
+      "text": "Se il lavoro squamoso abbia un deposito da qualche parte che non ho interrogato"
+    },
+    {
+      "phase": 3,
+      "role": "solver_b",
+      "text": "Se il lavoro squamoso abbia un preprint: la domanda e' esattamente dov'era all'inizio della fase"
+    }
+  ],
+  "operator_requests": [
+    {
+      "phase": 2,
+      "role": "solver_a",
+      "text": "Servono almeno altri due round: con tre fasi non si fa in tempo a leggere il testo completo e a interrogare gli altri archivi. Alzare max_rounds a 6 e le risposte principali a 10."
+    }
+  ],
+  "outcome": "unresolved_disagreement",
+  "outcome_detail": "3 contraddizioni restano aperte; il programma non ne chiude nessuna da solo",
+  "reader_issues": [
+    {
+      "issue": "pista incompleta, non selezionabile: mancano spiegazione alternativa",
+      "phase": 2,
+      "role": "solver_a"
+    },
+    {
+      "issue": "supported_by: il riferimento 'F1' non corrisponde a nessuna fonte elencata nella stessa risposta",
+      "phase": 2,
+      "role": "solver_b"
+    },
+    {
+      "issue": "dichiara una saturazione della letteratura: resta una sua affermazione motivata, non una misura",
+      "phase": 3,
+      "role": "solver_b"
+    }
+  ],
+  "run_id": "20260914T022455Z-ricerca-collaudo-v1-1485b2",
+  "saturation_claims": [
+    {
+      "phase": 3,
+      "role": "solver_b",
+      "text": "Dopo tre fasi ritengo che la letteratura aperta pertinente a questo perimetro sia sottile e che le query rimaste darebbero soprattutto duplicati. E' una mia valutazione: due dei tre archivi che volevo interrogare non hanno risposto, e non so cosa ci sia dietro i paywall che non ho aperto."
+    }
+  ],
+  "search": {
+    "capability": {
+      "scripted": {
+        "detail": "il profilo dichiara 'ricerca_simulata' come interruttore di ricerca sul web; l'adattatore lo imposta e ne rilegge lo stato prima del primo messaggio",
+        "mode": "ricerca_simulata",
+        "service": "scripted",
+        "state": "available"
+      }
+    },
+    "channel_evidence": "Il canale puo' mostrare che l'interruttore di ricerca era acceso, non quali query siano state eseguite. Nessuna ricerca di questa campagna e' quindi 'osservata negli artefatti del canale': tutte quelle eseguite restano dichiarazioni dei worker.",
+    "plan_only": false
+  },
+  "searches": [
+    {
+      "filters": "Expression profiling by high throughput sequencing; 2019-2026",
+      "id": "Q-0114e097af",
+      "note": "41 risultati, ne ho aperti i primi 8",
+      "phase": 1,
+      "provenance": "declared_by_worker",
+      "query": "(Perturb-seq OR CRISPRi) AND (Jurkat OR \"primary T cell\") AND single-cell RNA-seq",
+      "role": "solver_a",
+      "service": "GEO DataSets",
+      "status": "executed",
+      "step_id": "70dbb24edc7f93fd"
+    },
+    {
+      "filters": "OPEN_ACCESS:y; 2020-2026",
+      "id": "Q-6bfa43b93b",
+      "note": "17 risultati, 3 pertinenti",
+      "phase": 1,
+      "provenance": "declared_by_worker",
+      "query": "CRISPRi single-cell squamous carcinoma keratinocyte perturbation atlas",
+      "role": "solver_a",
+      "service": "Europe PMC",
+      "status": "executed",
+      "step_id": "70dbb24edc7f93fd"
+    },
+    {
+      "filters": "nessuno",
+      "id": "Q-5060b27355",
+      "note": "la lascio proposta: cercare i risultati negativi e' il modo piu' rapido di scoprire se l'assenza e' reale o di pubblicazione",
+      "phase": 1,
+      "provenance": "proposed",
+      "query": "\"no detectable transcriptional effect\" CRISPRi T cell negative results",
+      "role": "solver_a",
+      "service": "Europe PMC",
+      "status": "not_executed",
+      "step_id": "70dbb24edc7f93fd"
+    },
+    {
+      "filters": "2021-2026; Journal Article",
+      "id": "Q-ca0fd1f5e5",
+      "note": "23 risultati, 3 aperti",
+      "phase": 1,
+      "provenance": "declared_by_worker",
+      "query": "CRISPRi perturbation single cell \"mature T\" lineage transfer direction of effect",
+      "role": "solver_b",
+      "service": "PubMed",
+      "status": "executed",
+      "step_id": "57c23818333473b3"
+    },
+    {
+      "filters": "2021-2026",
+      "id": "Q-aa356d4710",
+      "note": "la seconda pagina di risultati non si e' caricata; ho fermato la query invece di riprovare a ripetizione",
+      "phase": 1,
+      "provenance": "declared_by_worker",
+      "query": "squamous epithelium CRISPRi atlas single-cell knockdown efficiency",
+      "role": "solver_b",
+      "service": "PubMed",
+      "status": "failed",
+      "step_id": "57c23818333473b3"
+    },
+    {
+      "filters": "nessuno",
+      "id": "Q-67d245c44d",
+      "note": "e' la query della prima pista; la eseguo nella fase 3",
+      "phase": 2,
+      "provenance": "proposed",
+      "query": "Aaltonen 2024 primary T cell Perturb-seq \"data availability\"",
+      "role": "solver_a",
+      "service": "Europe PMC",
+      "status": "not_executed",
+      "step_id": "47d87ebfec6352ea"
+    },
+    {
+      "filters": "nessuno",
+      "id": "Q-f586f310f3",
+      "note": "e' la query della mia pista; la eseguo nella fase 3",
+      "phase": 2,
+      "provenance": "proposed",
+      "query": "Bergqvist Lorenzi squamous CRISPRi atlas preprint",
+      "role": "solver_b",
+      "service": "bioRxiv",
+      "status": "not_executed",
+      "step_id": "eb2299dd738041ac"
+    },
+    {
+      "filters": "single cell; Homo sapiens",
+      "id": "Q-18fecd397f",
+      "note": "6 risultati, nessuno pertinente",
+      "phase": 3,
+      "provenance": "declared_by_worker",
+      "query": "squamous CRISPRi single cell perturbation atlas 2025",
+      "role": "solver_a",
+      "service": "ArrayExpress",
+      "status": "executed",
+      "step_id": "81dfd0f351948eb7"
+    },
+    {
+      "filters": "dataset",
+      "id": "Q-c1bb9a682b",
+      "note": "0 risultati",
+      "phase": 3,
+      "provenance": "declared_by_worker",
+      "query": "Bergqvist squamous CRISPRi atlas",
+      "role": "solver_a",
+      "service": "Zenodo",
+      "status": "executed",
+      "step_id": "81dfd0f351948eb7"
+    },
+    {
+      "filters": "nessuno",
+      "id": "Q-9c39cf54cf",
+      "note": "il file supplementare richiede un abbonamento; mi sono fermato",
+      "phase": 3,
+      "provenance": "declared_by_worker",
+      "query": "Aaltonen 2024 primary T cell Perturb-seq supplementary table S4",
+      "role": "solver_a",
+      "service": "pagina dell'editore",
+      "status": "blocked",
+      "step_id": "81dfd0f351948eb7"
+    },
+    {
+      "filters": "nessuno",
+      "id": "Q-c77aebfca1",
+      "note": "errore di servizio della pagina di ricerca, due tentativi",
+      "phase": 3,
+      "provenance": "declared_by_worker",
+      "query": "Bergqvist Lorenzi squamous CRISPRi atlas",
+      "role": "solver_b",
+      "service": "bioRxiv",
+      "status": "failed",
+      "step_id": "a3764f9de78a6834"
+    },
+    {
+      "filters": "nessuno",
+      "id": "Q-7a0a7560f1",
+      "note": "stesso errore",
+      "phase": 3,
+      "provenance": "declared_by_worker",
+      "query": "squamous epithelial identity CRISPRi single cell",
+      "role": "solver_b",
+      "service": "medRxiv",
+      "status": "failed",
+      "step_id": "a3764f9de78a6834"
+    },
+    {
+      "filters": "ricerca per autore",
+      "id": "Q-ed418aaae4",
+      "note": "non tentata dopo i due errori: la propongo per una campagna successiva",
+      "phase": 3,
+      "provenance": "proposed",
+      "query": "Lorenzi keratinocyte CRISPRi 2025",
+      "role": "solver_b",
+      "service": "bioRxiv",
+      "status": "not_executed",
+      "step_id": "a3764f9de78a6834"
+    }
+  ],
+  "sources": [
+    {
+      "authors": "Aaltonen, Neri, Okafor",
+      "best_declared_consulted": "full_text_or_section",
+      "doi": "10.0000/finta-2026-0001",
+      "found_by": [
+        "solver_a",
+        "solver_b"
+      ],
+      "id": "F-b558b4be5b",
+      "key": "doi:10.0000/finta-2026-0001",
+      "key_kind": "doi",
+      "per_worker": {
+        "solver_a": {
+          "access_note": "open access; lette Methods e Data Availability",
+          "consulted": "full_text_or_section",
+          "found_via": "prima query",
+          "local_id": "F2",
+          "phase": 1,
+          "step_id": "70dbb24edc7f93fd"
+        },
+        "solver_b": {
+          "access_note": "solo abstract: il PDF chiede un accesso istituzionale",
+          "consulted": "abstract",
+          "found_via": "prima query",
+          "local_id": "F1",
+          "phase": 1,
+          "step_id": "57c23818333473b3"
+        }
+      },
+      "title": "Perturb-seq in primary human T cells reveals lineage-restricted regulators",
+      "url": "",
+      "year": "2024"
+    },
+    {
+      "authors": "Bergqvist, Lorenzi",
+      "best_declared_consulted": "not_accessible",
+      "doi": "10.0000/finta-2026-0002",
+      "found_by": [
+        "solver_b"
+      ],
+      "id": "F-7a0575bb0e",
+      "key": "doi:10.0000/finta-2026-0002",
+      "key_kind": "doi",
+      "per_worker": {
+        "solver_b": {
+          "access_note": "paywall dell'editore; non ho letto nemmeno l'abstract completo, solo le prime righe",
+          "consulted": "not_accessible",
+          "found_via": "seconda query, prima del fallimento",
+          "local_id": "F2",
+          "phase": 1,
+          "step_id": "57c23818333473b3"
+        }
+      },
+      "title": "A CRISPRi atlas of squamous epithelial identity",
+      "url": "https://example.invalid/atlas-squamous",
+      "year": "2025"
+    },
+    {
+      "authors": "non riportati nell'elenco",
+      "best_declared_consulted": "found",
+      "doi": "",
+      "found_by": [
+        "solver_b"
+      ],
+      "id": "F-d9bd7e407c",
+      "key": "url:https://example.invalid/chromatin-knockdown",
+      "key_kind": "url",
+      "per_worker": {
+        "solver_b": {
+          "access_note": "visto solo nell'elenco dei risultati, non aperto",
+          "consulted": "found",
+          "found_via": "prima query",
+          "local_id": "F3",
+          "phase": 1,
+          "step_id": "57c23818333473b3"
+        }
+      },
+      "title": "Chromatin state predicts knockdown response across epithelial lineages",
+      "url": "https://example.invalid/chromatin-knockdown",
+      "year": "2023"
+    },
+    {
+      "authors": "deposito di archivio",
+      "best_declared_consulted": "abstract",
+      "doi": "",
+      "found_by": [
+        "solver_a"
+      ],
+      "id": "F-a54a3e23a8",
+      "key": "url:https://ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE999001",
+      "key_kind": "url",
+      "per_worker": {
+        "solver_a": {
+          "access_note": "pagina di accessione letta per intero; i file non sono stati scaricati",
+          "consulted": "abstract",
+          "found_via": "prima query",
+          "local_id": "F1",
+          "phase": 1,
+          "step_id": "70dbb24edc7f93fd"
+        }
+      },
+      "title": "GSE999001: CRISPRi Perturb-seq in Jurkat T cells",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE999001",
+      "year": "2024"
+    }
+  ],
+  "syntheses": [
+    {
+      "phase": 1,
+      "role": "solver_a",
+      "step_id": "70dbb24edc7f93fd",
+      "summary": "Un candidato in linea T matura con matrice RNA dichiarata scaricabile, un secondo candidato squamoso con solo conteggi di guide.",
+      "synthesis": "Ho cercato su GEO e su Europe PMC, con filtri su singola cellula e CRISPRi. Due candidati emergono nel perimetro. Il primo (accessione finta GSE999001, linea Jurkat) dichiara nella pagina di accessione file di matrice a singola cellula, oltre ai conteggi di guide: e' il candidato che soddisfa P1, P2 e P3. Il secondo, nel contesto squamoso, ha la pagina di accessione con i soli conteggi di guide, quindi non soddisfa P3 per come e' scritto il perimetro. Non ho verificato scaricando i file: ho letto la pagina di accessione e la sezione Data Availability dell'articolo collegato. Una terza query, sui risultati negativi, non l'ho eseguita per mancanza di tempo nella fase."
+    },
+    {
+      "phase": 1,
+      "role": "solver_b",
+      "step_id": "57c23818333473b3",
+      "summary": "La linea T matura piu' citata ha un fenotipo discutibile, e l'unico atlante squamoso che ho trovato non e' accessibile.",
+      "synthesis": "Ho cercato su PubMed con filtri sul tipo cellulare e ho aperto tre lavori. Il piu' rilevante e' lo studio sulle cellule T primarie, di cui ho potuto leggere solo l'abstract: la rivista mi ha servito la pagina, non il PDF. Nell'abstract gli autori sono espliciti nel dire che il trasferimento fra lignaggi NON conserva la direzione della risposta, che e' l'opposto di quello che mi aspettavo di trovare. Un secondo lavoro, un atlante CRISPRi su epitelio squamoso, e' dietro paywall: l'ho registrato come non accessibile invece di riportarne il contenuto dal titolo. Un terzo lavoro l'ho visto solo nell'elenco dei risultati."
+    },
+    {
+      "phase": 2,
+      "role": "solver_a",
+      "step_id": "47d87ebfec6352ea",
+      "summary": "Un accordo sui candidati, una contraddizione sul contenuto dello stesso paper, e due piste.",
+      "synthesis": "Concordiamo sull'esistenza di un candidato in linea T matura e sul fatto che il contesto squamoso resti scoperto. Non concordiamo su che cosa dica lo studio sulle cellule T primarie: io ho letto il testo completo e la figura 3b, il collega ha letto l'abstract, e le due letture dicono il contrario l'una dell'altra sulla conservazione del segno fra lignaggi. Questa non e' una divergenza di interpretazione risolvibile discutendo: o la figura e l'abstract dicono cose diverse, oppure uno di noi due ha letto male. Finche' non e' guardata, resta aperta. Segnalo anche che la sua affermazione sullo stato della cromatina si appoggia a una fonte che lui stesso registra come vista solo in un elenco di risultati, quindi non e' un risultato riferito dagli autori di niente."
+    },
+    {
+      "phase": 2,
+      "role": "solver_b",
+      "step_id": "eb2299dd738041ac",
+      "summary": "Il collega ha letto il testo completo e io l'abstract: la contraddizione resta, e non la chiudo a mio favore.",
+      "synthesis": "Il collega ha letto una figura che io non ho potuto aprire, e riporta il contrario di quello che ho letto io nell'abstract. Non ho modo di decidere chi ha ragione senza il testo completo, quindi la lascio aperta: preferisco un disaccordo registrato a una concordanza costruita cedendo a chi ha letto di piu'. Accetto invece la sua obiezione sulla mia affermazione sulla cromatina: l'ho attribuita agli autori di un lavoro che ho solo visto in un elenco di risultati, e questo non e' un risultato riferito dagli autori. La declasso a ipotesi mia. Sul resto siamo complementari: lui ha guardato che cosa e' depositato, io se la linea sia il contesto che dichiara."
+    },
+    {
+      "phase": 3,
+      "role": "solver_a",
+      "step_id": "81dfd0f351948eb7",
+      "summary": "La ricerca sugli altri archivi non ha prodotto nulla; il supplemento che deciderebbe la contraddizione non e' accessibile.",
+      "synthesis": "Sulla pista del deposito squamoso fuori da GEO: ho interrogato ArrayExpress e Zenodo con i termini della fase 1 e non ho trovato nessuna accessione riconducibile a quel lavoro. Questo NON vuol dire che non esista: vuol dire che le due query che ho registrato non l'hanno restituita, e che ho guardato due archivi su molti. Sulla pista della contraddizione: ho ritrovato lo studio del 2024 e ho riletto la Fig. 3b, che continua a dirmi quello che avevo riportato. Il pezzo che deciderebbe -- la tabella supplementare con la popolazione di bersagli usata nella figura e quella usata per la frase dell'abstract -- sta in un file supplementare che l'editore serve solo agli abbonati. Non l'ho aggirato. Quindi la spiegazione alternativa che avevo proposto io stesso, che i due passaggi parlino di sottoinsiemi diversi, resta plausibile e non verificata, e la contraddizione con il collega resta aperta."
+    },
+    {
+      "phase": 3,
+      "role": "solver_b",
+      "step_id": "a3764f9de78a6834",
+      "summary": "Nessuna evidenza nuova in questa fase: la ricerca sui preprint non e' andata a buon fine.",
+      "synthesis": "Questa fase non ha prodotto evidenze nuove, e lo scrivo invece di ripetere la fase precedente con parole diverse. La pista che mi era stata assegnata chiedeva di cercare gli autori del lavoro squamoso sui server di preprint: ho tentato la ricerca per titolo e per autore, e la pagina di ricerca ha risposto con un errore di servizio in entrambi i tentativi. Non ho ripetuto oltre. Nessuna fonte nuova, nessuna affermazione nuova. Sulla contraddizione con il collega: lui ha letto che la figura usa 112 bersagli selezionati, il che rende plausibile che l'abstract e la figura parlino di popolazioni diverse. E' plausibile, non verificato, e la tabella che lo direbbe e' chiusa anche a lui. Non la considero risolta. Aggiungo una valutazione mia, e la presento per quello che e': dopo tre fasi ho l'impressione che la letteratura aperta su questo perimetro sia sottile, e che le poche query rimaste darebbero soprattutto duplicati. E' un'impressione motivata dal fatto che le ultime ricerche hanno restituito zero o gia' noto; non ho modo di sapere che cosa ci sia dietro i paywall che non ho aperto ne' negli archivi che non ho interrogato."
+    }
+  ],
+  "unsupported_assumptions": [
+    {
+      "phase": 2,
+      "role": "solver_a",
+      "text": "Che lo stato della cromatina spieghi il segno della risposta: appoggiato a una fonte mai aperta"
+    },
+    {
+      "phase": 2,
+      "role": "solver_a",
+      "text": "Che il file di matrice dichiarato dall'accessione sia effettivamente scaricabile: nessuno dei due ha provato"
+    },
+    {
+      "phase": 2,
+      "role": "solver_b",
+      "text": "La mia ipotesi sulla cromatina, che nella fase 1 avevo presentato come risultato di un paper"
+    }
+  ]
+}

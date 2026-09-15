@@ -1,0 +1,87 @@
+{
+  "run_id": "g001",
+  "stage": "58_build_go_slim_table",
+  "started_utc": "2026-09-14T22:31:36.004081+00:00",
+  "finished_utc": "2026-09-14T22:31:36.634089+00:00",
+  "seed": null,
+  "config": {
+    "out": "None",
+    "symbols_from": "None",
+    "allow_overwrite": "False"
+  },
+  "inputs": {
+    "hgnc_complete_set": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\interim\\encoder_inputs_2026-09-14\\hgnc_complete_set",
+      "exists": true,
+      "bytes": 16913731,
+      "mtime_utc": "2026-09-14T20:15:10.500690+00:00",
+      "sha256": "9e07bb49393c12aca8bc931a4349010404c24994a8a58745c14676b8c2b74492",
+      "sha256_mode": "full"
+    },
+    "goa_human_gaf": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\interim\\encoder_inputs_2026-09-14\\goa_human_gaf",
+      "exists": true,
+      "bytes": 11020779,
+      "mtime_utc": "2026-09-14T20:15:27.378450+00:00",
+      "sha256": "92504b0208fc37d1b652beaab883298c169b0be342888b91924975a49778cfdb",
+      "sha256_mode": "full"
+    },
+    "goslim_generic": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\interim\\encoder_inputs_2026-09-14\\goslim_generic",
+      "exists": true,
+      "bytes": 125864,
+      "mtime_utc": "2026-09-14T20:15:28.682112+00:00",
+      "sha256": "a28d9dd0364e39a6dc926599bd628c524d3c389017b5398642c8cf2484d9f111",
+      "sha256_mode": "full"
+    },
+    "go_basic_obo": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\interim\\encoder_inputs_2026-09-14\\go_basic_obo",
+      "exists": true,
+      "bytes": 32227785,
+      "mtime_utc": "2026-09-14T20:15:31.334589+00:00",
+      "sha256": "b08d45b268b8c24ccb2513dbbbc7d4df9f6521c099b413f79eb31e06e0fa3bcc",
+      "sha256_mode": "full"
+    }
+  },
+  "outputs": {
+    "table": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\g001\\go_slim_table.npz",
+      "exists": true,
+      "bytes": 32489,
+      "mtime_utc": "2026-09-14T22:31:35.497723+00:00",
+      "sha256": "26b2a06f4969db0b0d7efb139d64068e670ee753210a58593bae8a2d2c9ff879",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "n_symbols": 2693,
+    "n_slim_terms": 140,
+    "n_with_slim": 2647,
+    "n_missing": 46
+  },
+  "notes": [
+    "No perturbation response is read here; the table is legal in mode B."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:/Users/ferra/vcc2026-data"
+    }
+  }
+}

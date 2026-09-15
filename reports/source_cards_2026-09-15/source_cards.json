@@ -1,0 +1,954 @@
+{
+  "n": 7,
+  "cards": [
+    {
+      "source_id": "replogle_k562_gwps_singlecell",
+      "title": "Replogle 2022 K562 genome-wide Perturb-seq, single-cell",
+      "study_id": {
+        "value": "figshare 20029387",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "version": {
+        "value": "processed record DOI 10.25452/figshare.plus.20029387",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "primary_url": {
+        "value": "https://figshare.com/articles/dataset/20029387",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "license": {
+        "value": "CC BY 4.0",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "perturbation_class": {
+        "value": "CRISPRi",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "cell_context": {
+        "value": "K562",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "donor_state_batch": {
+        "value": "gem_group / batch in the raw single-cell object",
+        "claim": "cited",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": null
+      },
+      "n_targets": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "genome-wide design; local pseudobulk already covers 272/300"
+      },
+      "id_mapping": {
+        "value": "obs.gene / gene_transcript on the GEO-style objects",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "count_kind": {
+        "value": "raw single-cell counts (not the local per-cell-mean pseudobulk)",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "ntc_field": {
+        "value": "obs.gene == 'non-targeting' on related Nadig/Replogle objects",
+        "claim": "cited",
+        "source": "reports/candidate_verification/",
+        "note": null
+      },
+      "guides": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "cells_per_target": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "n_genes_measured": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "remote_bytes": {
+        "value": {
+          "ReplogleWeissman2022_K562_gwps.h5ad": 8805466154,
+          "profile_declared_sc": [
+            61300000000.0,
+            9900000000.0,
+            8100000000.0
+          ]
+        },
+        "claim": "cited",
+        "source": "https://zenodo.org/records/13350497",
+        "note": "61.3/9.9/8.1 GB are profile declarations, not bytes measured this session"
+      },
+      "temporary_bytes": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "checksum": {
+        "value": "md5:13db594f8f1d2ccb88fec44a13e414dc on the scPerturb K562 gwps mirror",
+        "claim": "cited",
+        "source": "https://zenodo.org/records/13350497",
+        "note": null
+      },
+      "panel_overlap": {
+        "value": {
+          "observed_targets": 272,
+          "list_source": "local k562_gwps pseudobulk, not this file"
+        },
+        "claim": "derived",
+        "source": "reports/candidate_verification/coverage_summary.json",
+        "note": "coverage is of the local PSEUDOBULK, not a proof the single-cell file was opened"
+      },
+      "training_overlap": {
+        "value": {
+          "same_experiment_as": "k562_gwps pseudobulk already local"
+        },
+        "claim": "derived",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "extra_target_sample": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "no extra-target sample retained"
+      },
+      "decision": "defer",
+      "decision_note": "Adds real cells for validation/generator work on a line we already train from as pseudobulk. Not a new biological context. Download only a bounded extract after remote preflight; do not replace the local baseline until an ablation says so.",
+      "recorded_utc": "2026-09-15T12:05:41Z"
+    },
+    {
+      "source_id": "vcc2025_h1",
+      "title": "VCC 2025 H1 complete (local metadata only)",
+      "study_id": {
+        "value": "VCC2025 H1",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "version": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "primary_url": {
+        "value": "virtualcellchallenge.org / Arc atlas",
+        "claim": "cited",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": null
+      },
+      "license": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "perturbation_class": {
+        "value": "CRISPRi",
+        "claim": "cited",
+        "source": "docs/PROGETTO.md",
+        "note": null
+      },
+      "cell_context": {
+        "value": "H1 hESC",
+        "claim": "cited",
+        "source": "docs/PROGETTO.md",
+        "note": null
+      },
+      "donor_state_batch": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "n_targets": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "id_mapping": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "count_kind": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "local copy has four metadata CSV and no RNA matrix"
+      },
+      "ntc_field": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "guides": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "cells_per_target": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "n_genes_measured": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "remote_bytes": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "temporary_bytes": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "checksum": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "panel_overlap": {
+        "value": {
+          "shared_targets_cited": 25,
+          "list_source": "docs/PROGETTO.md local vcc2025 metadata"
+        },
+        "claim": "cited",
+        "source": "docs/PROGETTO.md",
+        "note": null
+      },
+      "training_overlap": {
+        "value": {
+          "local_rna": false
+        },
+        "claim": "measured",
+        "source": "C:/Users/ferra/vcc2026-data/external/vcc2025/",
+        "note": null
+      },
+      "extra_target_sample": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "no extra-target sample retained"
+      },
+      "decision": "defer",
+      "decision_note": "Need a file manifest and the RNA matrix. Pluripotent lineage matches none of A/B/C. Useful as an extra perturbed context once RNA exists.",
+      "recorded_utc": "2026-09-15T12:05:41Z"
+    },
+    {
+      "source_id": "cd4_marson",
+      "title": "Zhu/Dann/Marson primary CD4 Perturb-seq",
+      "study_id": {
+        "value": "GSE314342",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "version": {
+        "value": "GEO public since 2026-02-06",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "primary_url": {
+        "value": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "license": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "perturbation_class": {
+        "value": "CRISPRi",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "cell_context": {
+        "value": "primary human CD4 T cells, multiple donors",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "donor_state_batch": {
+        "value": "Rest vs Stimulated kept separate; donor in object names",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "n_targets": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "library design is not n_targets usable"
+      },
+      "id_mapping": {
+        "value": "guide_id joined to sgRNA_library_curated.csv",
+        "claim": "measured",
+        "source": "reports/candidate_verification/pilot/",
+        "note": null
+      },
+      "count_kind": {
+        "value": "float32 CSR, non-negative integers in the 64-cell pilot",
+        "claim": "measured",
+        "source": "reports/candidate_verification/pilot/cd4_D1_Rest_64.manifest.json",
+        "note": null
+      },
+      "ntc_field": {
+        "value": "guide_type == 'non-targeting' AND low_quality == False",
+        "claim": "measured",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "guides": {
+        "value": "sgrna_id in the curated library",
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "cells_per_target": {
+        "value": {
+          "targets_min_30": 239,
+          "targets_min_100": 147
+        },
+        "claim": "measured",
+        "source": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\candidate_verification\\coverage_summary.json",
+        "note": null
+      },
+      "n_genes_measured": {
+        "value": 17772,
+        "claim": "measured",
+        "source": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\candidate_verification\\coverage_summary.json",
+        "note": null
+      },
+      "remote_bytes": {
+        "value": 1735835115866,
+        "claim": "cited",
+        "source": "configs/sources.yaml",
+        "note": null
+      },
+      "temporary_bytes": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "checksum": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "panel_overlap": {
+        "value": {
+          "library_targets": 297,
+          "observed_targets": 293,
+          "targets_min_30": 239,
+          "list_source": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\candidate_verification\\coverage_summary.json"
+        },
+        "claim": "measured",
+        "source": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\candidate_verification\\coverage_summary.json",
+        "note": null
+      },
+      "training_overlap": {
+        "value": {
+          "pilot_cells": 64,
+          "full_objects_not_local": true
+        },
+        "claim": "measured",
+        "source": "reports/candidate_verification/pilot/cd4_D1_Rest_64.manifest.json",
+        "note": null
+      },
+      "extra_target_sample": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "no extra-target sample retained"
+      },
+      "decision": "defer",
+      "decision_note": "Highest panel coverage among candidates, nearest lineage to context A, but 1.7 TB single-cell. Reopen after Jiang/Jurkat audits. Do not double-count GEO, Zenodo and the S3 mirror as three sources.",
+      "recorded_utc": "2026-09-15T12:05:41Z"
+    },
+    {
+      "source_id": "srivatsan_sciplex3",
+      "title": "Srivatsan 2020 sci-Plex 3 (188 compounds)",
+      "study_id": {
+        "value": "SrivatsanTrapnell2020_sciplex3",
+        "claim": "cited",
+        "source": "https://zenodo.org/records/13350497",
+        "note": null
+      },
+      "version": {
+        "value": "scPerturb 1.4",
+        "claim": "cited",
+        "source": "https://zenodo.org/records/13350497",
+        "note": null
+      },
+      "primary_url": {
+        "value": "https://zenodo.org/api/records/13350497/files/SrivatsanTrapnell2020_sciplex3.h5ad/content",
+        "claim": "cited",
+        "source": "https://zenodo.org/records/13350497",
+        "note": null
+      },
+      "license": {
+        "value": "cc-by-4.0",
+        "claim": "cited",
+        "source": "https://zenodo.org/records/13350497",
+        "note": null
+      },
+      "perturbation_class": {
+        "value": "drug",
+        "claim": "cited",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": null
+      },
+      "cell_context": {
+        "value": [
+          "K562",
+          "A549",
+          "MCF7"
+        ],
+        "claim": "cited",
+        "source": "arxiv:2604.13986 (PRiMeFlow dataset description)",
+        "note": null
+      },
+      "donor_state_batch": {
+        "value": "dose present; PRiMeFlow kept highest dose only",
+        "claim": "cited",
+        "source": "arxiv:2604.13986",
+        "note": null
+      },
+      "n_targets": {
+        "value": 188,
+        "claim": "cited",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": "compounds, not genes"
+      },
+      "id_mapping": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "count_kind": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "h5ad not opened this session"
+      },
+      "ntc_field": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "vehicle controls must be verified before use"
+      },
+      "guides": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "no CRISPR guides"
+      },
+      "cells_per_target": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "n_genes_measured": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "remote_bytes": {
+        "value": 2526631614,
+        "claim": "cited",
+        "source": "https://zenodo.org/records/13350497",
+        "note": null
+      },
+      "temporary_bytes": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "checksum": {
+        "value": "md5:c9e70629505d98c7ca1a837f62b14e89",
+        "claim": "cited",
+        "source": "https://zenodo.org/records/13350497",
+        "note": null
+      },
+      "panel_overlap": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "drug names are not gene targets; overlap with the 300 is not defined this way"
+      },
+      "training_overlap": {
+        "value": {
+          "pretraining_only": true,
+          "not_knockdown_labels": true
+        },
+        "claim": "derived",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": null
+      },
+      "extra_target_sample": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "no extra-target sample retained"
+      },
+      "decision": "exclude",
+      "decision_note": "Pharmacological. Useful at most as pretraining or a context descriptor. No knockdown labels. Not in the first acquisition wave.",
+      "recorded_utc": "2026-09-15T12:05:41Z"
+    },
+    {
+      "source_id": "mcfaline_sciplex_gxe",
+      "title": "McFaline-Figueroa 2024 sci-Plex-GxE",
+      "study_id": {
+        "value": "McFaline-Figueroa sci-Plex-GxE",
+        "claim": "cited",
+        "source": "https://cole-trapnell-lab.github.io/papers/mcfaline-sci-plex-gxe/",
+        "note": null
+      },
+      "version": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "primary_url": {
+        "value": "https://cole-trapnell-lab.github.io/papers/mcfaline-sci-plex-gxe/",
+        "claim": "cited",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": null
+      },
+      "license": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "perturbation_class": {
+        "value": "combo_genetic_chemical",
+        "claim": "cited",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": null
+      },
+      "cell_context": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "donor_state_batch": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "dose/time/vehicle must be verified before merging"
+      },
+      "n_targets": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "id_mapping": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "count_kind": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "ntc_field": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "vehicle is not an NTC guide"
+      },
+      "guides": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "cells_per_target": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "n_genes_measured": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "remote_bytes": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "temporary_bytes": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "checksum": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "panel_overlap": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "training_overlap": {
+        "value": {
+          "combined_effect_is_not_simple_crispri": true
+        },
+        "claim": "derived",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": null
+      },
+      "extra_target_sample": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "no extra-target sample retained"
+      },
+      "decision": "defer",
+      "decision_note": "Genetic plus chemical. Do not treat the combined arm as CRISPRi. After Jiang/Jurkat: verify mechanism, vehicle controls, separable arms.",
+      "recorded_utc": "2026-09-15T12:05:41Z"
+    },
+    {
+      "source_id": "tahoe_100m",
+      "title": "Tahoe-100M (Virtual Cell Atlas)",
+      "study_id": {
+        "value": "Tahoe-100M",
+        "claim": "cited",
+        "source": "https://arcinstitute.org/tools/virtualcellatlas",
+        "note": null
+      },
+      "version": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "primary_url": {
+        "value": "https://github.com/ArcInstitute/arc-virtual-cell-atlas/",
+        "claim": "cited",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": null
+      },
+      "license": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "perturbation_class": {
+        "value": "drug",
+        "claim": "cited",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": null
+      },
+      "cell_context": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "donor_state_batch": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "n_targets": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "id_mapping": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "count_kind": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "ntc_field": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "guides": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "cells_per_target": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "n_genes_measured": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "remote_bytes": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "atlas scale; not for this machine"
+      },
+      "temporary_bytes": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "checksum": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "panel_overlap": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "training_overlap": {
+        "value": {
+          "no_drug_to_knockdown_equivalence": true
+        },
+        "claim": "derived",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": null
+      },
+      "extra_target_sample": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "no extra-target sample retained"
+      },
+      "decision": "exclude",
+      "decision_note": "Pharmacological atlas. No automatic drug \u2192 knockdown map. D-005.",
+      "recorded_utc": "2026-09-15T12:05:41Z"
+    },
+    {
+      "source_id": "scbasecount",
+      "title": "scBaseCount (Virtual Cell Atlas)",
+      "study_id": {
+        "value": "scBaseCount",
+        "claim": "cited",
+        "source": "https://arcinstitute.org/tools/virtualcellatlas",
+        "note": null
+      },
+      "version": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "primary_url": {
+        "value": "https://github.com/ArcInstitute/arc-virtual-cell-atlas/",
+        "claim": "cited",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": null
+      },
+      "license": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "perturbation_class": {
+        "value": "observational",
+        "claim": "cited",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": null
+      },
+      "cell_context": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "donor_state_batch": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "n_targets": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "id_mapping": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "count_kind": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "ntc_field": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "guides": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "cells_per_target": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "n_genes_measured": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "remote_bytes": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "temporary_bytes": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "checksum": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "panel_overlap": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": null
+      },
+      "training_overlap": {
+        "value": {
+          "observational_is_not_crispri_label": true
+        },
+        "claim": "derived",
+        "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "note": null
+      },
+      "extra_target_sample": {
+        "value": null,
+        "claim": "missing",
+        "source": null,
+        "note": "no extra-target sample retained"
+      },
+      "decision": "exclude",
+      "decision_note": "Observational atlas. May describe basal state; does not label knockdowns.",
+      "recorded_utc": "2026-09-15T12:05:41Z"
+    }
+  ],
+  "errors": {
+    "replogle_k562_gwps_singlecell": [],
+    "vcc2025_h1": [],
+    "cd4_marson": [],
+    "srivatsan_sciplex3": [],
+    "mcfaline_sciplex_gxe": [],
+    "tahoe_100m": [],
+    "scbasecount": []
+  },
+  "decisions": {
+    "replogle_k562_gwps_singlecell": "defer",
+    "vcc2025_h1": "defer",
+    "cd4_marson": "defer",
+    "srivatsan_sciplex3": "exclude",
+    "mcfaline_sciplex_gxe": "defer",
+    "tahoe_100m": "exclude",
+    "scbasecount": "exclude"
+  },
+  "claim": "derived from cited local evidence; no new matrix was opened"
+}

@@ -1,0 +1,20 @@
+# Un solo invio, per verificare che un canale web funzioni davvero: nuova conversazione,
+# modalita' impostate, prompt scritto, invio, risposta letta intera e conforme al contratto.
+# Domanda banale di proposito: qui interessa il canale, non il contenuto.
+id: collaudo-canale
+version: 1
+title: "Collaudo del canale"
+question: >
+  Rispondi con una frase sola: qual e' la differenza fra una media e una mediana?
+context: >
+  Messaggio di prova dell'orchestratore. Non serve approfondire, serve solo che la
+  risposta arrivi intera e nel formato richiesto.
+expected_result: >
+  Una frase in 'proposal', e il blocco di risultato ben formato.
+acceptance_criteria:
+  - id: C1
+    text: "La risposta arriva intera e rispetta il formato"
+    check: {kind: human}
+limits:
+  max_rounds: 1
+  max_wall_clock_minutes: 10

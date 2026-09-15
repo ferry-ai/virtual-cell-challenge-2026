@@ -1,0 +1,116 @@
+Sei solver_b. Round 1 sul sottocompito S1. Prima iterazione: rispondi in modo indipendente. Non hai visto, e non vedrai in questo round, la risposta dell'altro modello.
+
+INCARICO DELL'OPERATORE (prova-split-e-pairing v1)
+Titolo: Revisione critica di uno split e di un confronto fra due loss
+Domanda: 1. Individua errori di implementazione e problemi metodologici, distinguendoli.
+2. Per ogni problema mostra un controesempio o una verifica concreta.
+3. Proponi una correzione minima e dichiara le scelte che richiedono una decisione
+   dell'operatore.
+4. Calcola a mano il confronto sui casi validi per entrambi i modelli.
+5. Indica cio' che questi dati non permettono di concludere.
+6. Nei round successivi valuta le obiezioni dell'altro worker: accetta quelle fondate e
+   motiva eventuali disaccordi. Non modificare una risposta corretta soltanto per
+   raggiungere accordo.
+
+Risultato atteso: Una proposta autonoma che separi gli errori di implementazione dai problemi
+metodologici, sostenga ogni rilievo con un controesempio o una verifica concreta,
+proponga la correzione minima distinguendo cio' che spetta all'operatore, riporti il
+confronto numerico calcolato a mano sui casi validi, e dichiari i limiti di cio' che
+questi dati possono mostrare.
+
+Contesto:
+Stiamo valutando due modelli predittivi. Una loss inferiore e' migliore. L'obiettivo
+dichiarato e' misurare la generalizzazione a linee cellulari mai viste durante il
+training.
+
+Questo e' il codice proposto:
+
+import numpy as np
+
+def split_cells(cells, seed=42):
+    """cells: lista di record con cell_id e cell_line."""
+    rng = np.random.default_rng(seed)
+    indices = rng.permutation(len(cells))
+    cut = int(0.8 * len(indices))
+    train = [cells[i] for i in indices[:cut]]
+    test = [cells[i] for i in indices[cut:]]
+    return train, test
+
+def summarize(loss_a, loss_b):
+    """Ogni posizione rappresenta lo stesso caso nei due array."""
+    a = np.asarray(loss_a, dtype=float)
+    b = np.asarray(loss_b, dtype=float)
+    a = a[np.isfinite(a)]
+    b = b[np.isfinite(b)]
+    delta = a.mean() - b.mean()
+    winner = "A" if delta > 0 else "B"
+    return {"delta": float(delta), "winner": winner}
+
+Dati per il confronto:
+
+case_id:  c1    c2    c3    c4
+loss_a:   0.2   NaN   0.6   0.4
+loss_b:   0.3   0.1   NaN   0.5
+
+L'autore conclude:
+«Lo split casuale garantisce la valutazione su linee mai viste. Eliminare separatamente
+i valori mancanti mantiene il confronto corretto. Il segno di delta identifica il
+modello migliore.»
+
+Vincoli: non eseguire codice e non cercare sul web. Se proponi codice, presentalo come
+artefatto non eseguito.
+Criteri di accettazione:
+  [C1] Distingue esplicitamente gli errori di implementazione dai problemi metodologici
+  [C2] Ogni problema sollevato porta un controesempio o una verifica concreta
+  [C3] Propone una correzione minima e dichiara le scelte che spettano all'operatore
+  [C4] Il confronto sui casi validi per entrambi i modelli e' calcolato a mano ed esplicito
+  [C5] Dichiara cio' che questi dati non permettono di concludere
+
+SOTTOCOMPITO S1: Revisione critica di uno split e di un confronto fra due loss
+1. Individua errori di implementazione e problemi metodologici, distinguendoli.
+2. Per ogni problema mostra un controesempio o una verifica concreta.
+3. Proponi una correzione minima e dichiara le scelte che richiedono una decisione
+   dell'operatore.
+4. Calcola a mano il confronto sui casi validi per entrambi i modelli.
+5. Indica cio' che questi dati non permettono di concludere.
+6. Nei round successivi valuta le obiezioni dell'altro worker: accetta quelle fondate e
+   motiva eventuali disaccordi. Non modificare una risposta corretta soltanto per
+   raggiungere accordo.
+
+
+Criteri che questo sottocompito deve soddisfare:
+  [C1] Distingue esplicitamente gli errori di implementazione dai problemi metodologici
+  [C2] Ogni problema sollevato porta un controesempio o una verifica concreta
+  [C3] Propone una correzione minima e dichiara le scelte che spettano all'operatore
+  [C4] Il confronto sui casi validi per entrambi i modelli e' calcolato a mano ed esplicito
+  [C5] Dichiara cio' che questi dati non permettono di concludere
+
+OBIEZIONI APERTE alla fine del round 0:
+  (nessuna)
+
+COMPITO: produci la tua soluzione del sottocompito, completa e autonoma.
+
+FORMATO DELLA RISPOSTA (obbligatorio)
+Scrivi prima il ragionamento in chiaro, quanto vuoi. Poi chiudi la risposta con questa
+riga da sola:
+
+ORCH-RESULT-V1
+
+e subito dopo un unico blocco ```json``` con questo oggetto:
+
+{
+  "summary": "una frase su cosa hai concluso",
+  "proposal": "la risposta o la soluzione, completa e autonoma",
+  "changes": ["cosa hai cambiato rispetto al tuo round precedente, e perche'"],
+  "evidence": [{"claim": "affermazione", "support": "da dove viene", "type": "measured|cited|derived|assumed"}],
+  "objections": [{"target": "a cosa ti opponi", "severity": "blocking|major|minor", "text": "obiezione specifica"}],
+  "resolved_objections": ["id o testo delle obiezioni che consideri risolte, e perche'"],
+  "checks_suggested": [{"criterion": "id del criterio", "how": "un controllo eseguibile da un umano"}],
+  "open_questions": ["cio' che resta incerto"],
+  "confidence": "low|medium|high"
+}
+
+Regole: usa "measured" solo per numeri che qualcuno ha davvero misurato e di cui citi la
+fonte; "cited" per fonti esterne verificabili; "derived" per deduzioni tue; "assumed" per
+il resto. Non dichiarare risolto un criterio senza dire con quale controllo. Se non sai,
+scrivilo in open_questions invece di riempire il campo.

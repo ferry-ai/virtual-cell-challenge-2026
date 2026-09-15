@@ -1,0 +1,18 @@
+{
+  "che_cosa": "Seconda lettura di DeepSeek, dopo che l'operatore ha effettuato l'accesso nel profilo dedicato. Sola lettura: nessun messaggio inviato.",
+  "quando_utc": "2026-09-13T17:47Z",
+  "esito": "accesso riuscito, e riuscito NEL profilo dell'orchestratore (non altrove)",
+  "prove": {
+    "url_finale": "https://chat.deepseek.com/ , non piu' /sign_in",
+    "compositore": "textarea[name='search'], placeholder 'Messaggio a DeepSeek', 774x60, visibile",
+    "reso_in_secondi": 3.8,
+    "caratteri_corpo": 439
+  },
+  "ancora_mancante": {
+    "selettore_dei_messaggi": "la chat e' vuota: senza almeno una risposta a schermo non esiste un elemento da cui ricavare il selettore di UN messaggio dell'assistente",
+    "bottone_di_invio": "i bottoni hanno classi offuscate e nessuna etichetta; si usa Invio da tastiera, che non richiede un selettore",
+    "bottone_nuova_chat": "non identificato: per ora ensure_conversation ricade sulla navigazione all'indirizzo base, e resta da confermare che apra davvero una conversazione vuota"
+  },
+  "da_fare_a_mano": "chiudere il banner dei cookie, ancora presente: puo' coprire il compositore",
+  "stato_del_profilo": "verified: false, perche' nessun invio e' stato ancora provato"
+}

@@ -1,0 +1,169 @@
+{
+  "built_utc": "2026-09-14T22:48:37Z",
+  "machine": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.3",
+    "processor": "Intel64 Family 6 Model 142 Stepping 12, GenuineIntel"
+  },
+  "question": "does the current implementation use a GPU, and would one help",
+  "verdict": {
+    "current_code_uses_a_gpu": false,
+    "why": "Every model in src/vcc2026/benchmark/models.py is hand-written numpy: the SVD is numpy.linalg.svd, the ridge is numpy.linalg.solve, and the MLP has its own forward, backward and Adam. numpy has no GPU backend, and torch is not even a dependency of this project. The only `import torch` in the source asks whether CUDA exists, to pick the scorer's DE backend -- nothing in training touches it.",
+    "steps_that_would_not_move": [
+      "descriptor construction",
+      "masked SVD basis",
+      "ridge solve",
+      "MLP forward/backward",
+      "shrinkage transfer",
+      "count generation"
+    ],
+    "what_a_gpu_would_change_today": "One thing only: cell-eval2's differential-expression backend. It prefers gpudge (CUDA) over pdex over scanpy. Here it resolved to scanpy, the slowest of the three, because neither gpudge nor pdex is installed and there is no CUDA device. That affects scoring, not training, and scoring is the slow half of the six-metric experiment.",
+    "what_porting_would_cost": "Rewriting MaskedLowRank, CompactMLP, ModularFrozen and ModularJoint against torch: the four classes are ~350 lines, and the save/load round-trip test would have to keep passing bit-for-bit or the comparison with earlier runs breaks. The honest order is to install pdex or gpudge first, which changes a backend and no model code.",
+    "what_the_measurement_says": "At the pilot's shapes the whole fit of both decoders is under a second of arithmetic. The run takes minutes. The time is in loading signatures and in building descriptors in a Python loop -- neither is a GPU problem, and the second is a vectorisation problem."
+  },
+  "gpu_libraries": {
+    "torch": {
+      "installed": false
+    },
+    "cupy": {
+      "installed": false
+    },
+    "jax": {
+      "installed": false
+    },
+    "gpudge": {
+      "installed": false
+    },
+    "pdex": {
+      "installed": false
+    },
+    "cell_eval2": {
+      "installed": true,
+      "importable": true,
+      "version": "0.16.0"
+    },
+    "scanpy": {
+      "installed": true,
+      "importable": true,
+      "version": "1.12.4"
+    }
+  },
+  "cuda": {
+    "available": false,
+    "how": "no library that could answer was importable"
+  },
+  "gpu_mentions_in_src": [
+    {
+      "file": "src\\vcc2026\\evaluation.py",
+      "token": "import torch"
+    },
+    {
+      "file": "src\\vcc2026\\evaluation.py",
+      "token": "cuda"
+    }
+  ],
+  "numpy_backend": {
+    "numpy": "2.5.3",
+    "blas": {
+      "name": "scipy-openblas",
+      "version": "0.3.34.106.0",
+      "detection method": "pkgconfig"
+    },
+    "threading": "msvc",
+    "OMP_NUM_THREADS": null,
+    "OPENBLAS_NUM_THREADS": null,
+    "MKL_NUM_THREADS": null
+  },
+  "steps": [
+    {
+      "step": "descriptor construction",
+      "implemented_in": "vcc2026.benchmark.descriptors.DescriptorBank.transform_rows",
+      "executed_by": "python loop + numpy concatenate",
+      "gpu": "cpu_only"
+    },
+    {
+      "step": "masked SVD basis",
+      "implemented_in": "vcc2026.benchmark.models.MaskedLowRank.fit",
+      "executed_by": "numpy.linalg.svd (LAPACK gesdd)",
+      "gpu": "cpu_only"
+    },
+    {
+      "step": "ridge solve",
+      "implemented_in": "vcc2026.benchmark.models._ridge_fit",
+      "executed_by": "numpy.linalg.solve (LAPACK gesv)",
+      "gpu": "cpu_only"
+    },
+    {
+      "step": "MLP forward/backward",
+      "implemented_in": "vcc2026.benchmark.models._fit_mlp",
+      "executed_by": "hand-written numpy matmul + a hand-written Adam",
+      "gpu": "cpu_only"
+    },
+    {
+      "step": "shrinkage transfer",
+      "implemented_in": "vcc2026.models.ShrunkTransfer / WeightedTransfer",
+      "executed_by": "numpy elementwise",
+      "gpu": "cpu_only"
+    },
+    {
+      "step": "signature loading",
+      "implemented_in": "vcc2026.signatures.SignatureSet.read_npz",
+      "executed_by": "numpy npz decompression + slicing",
+      "gpu": "io_bound"
+    },
+    {
+      "step": "count generation",
+      "implemented_in": "vcc2026.sampling.sample_counts",
+      "executed_by": "numpy Generator.poisson",
+      "gpu": "cpu_only"
+    },
+    {
+      "step": "six-metric scoring",
+      "implemented_in": "cell_eval2.compute_metrics",
+      "executed_by": "cell-eval2; DE backend gpudge (CUDA) > pdex > scanpy",
+      "gpu": "gpu_path_exists"
+    }
+  ],
+  "measured": {
+    "shapes": {
+      "n_rows": 320,
+      "n_genes": 6477,
+      "n_features": 199,
+      "rank": 16
+    },
+    "svd_scaling_by_rows_seconds": {
+      "320x6477": 0.9040900499967393,
+      "1280x6477": 6.515940550001687,
+      "5120x6477": 160.7823163500143
+    },
+    "svd_of_centred_Y": {
+      "best_seconds": 0.757094300002791,
+      "median_seconds": 0.8829186999937519,
+      "repeat": 3
+    },
+    "ridge_solve": {
+      "best_seconds": 0.011649099993519485,
+      "median_seconds": 0.012731100025121123,
+      "repeat": 3
+    },
+    "lowrank_fit_total": {
+      "best_seconds": 0.5971639000053983,
+      "median_seconds": 0.6508595000050263,
+      "repeat": 2
+    },
+    "modular_frozen_fit_total": {
+      "best_seconds": 0.6439473000064027,
+      "median_seconds": 0.656959050000296,
+      "repeat": 2
+    },
+    "descriptor_construction": {
+      "n_rows": 320,
+      "n_features": 43,
+      "best_seconds": 0.0598345999896992,
+      "median_seconds": 0.06355390002136119,
+      "repeat": 3
+    }
+  },
+  "measured_note": "Synthetic arrays at the pilot's real shapes, on this machine. These time the arithmetic only: they exclude signature loading, which the run's own peak RSS shows to be the memory-dominant phase.",
+  "seconds_of_fit_per_arm_pair": 1.3078185500053223
+}

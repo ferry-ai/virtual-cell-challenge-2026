@@ -1,0 +1,173 @@
+{
+  "source_id": "jiang_mixscale",
+  "title": "Jiang 2025 Mixscale Perturb-seq (six lines \u00d7 five stimuli)",
+  "study_id": {
+    "value": "GSE281048",
+    "claim": "cited",
+    "source": "https://doi.org/10.1038/s41556-025-01622-z",
+    "note": null
+  },
+  "version": {
+    "value": "v2.1",
+    "claim": "cited",
+    "source": "https://zenodo.org/api/records/14518762",
+    "note": null
+  },
+  "primary_url": {
+    "value": "https://zenodo.org/records/14518762",
+    "claim": "measured",
+    "source": "https://zenodo.org/api/records/14518762",
+    "note": null
+  },
+  "license": {
+    "value": "cc-by-4.0",
+    "claim": "cited",
+    "source": "https://zenodo.org/api/records/14518762",
+    "note": null
+  },
+  "perturbation_class": {
+    "value": "CRISPRi",
+    "claim": "cited",
+    "source": "https://doi.org/10.1038/s41556-025-01622-z",
+    "note": null
+  },
+  "cell_context": {
+    "value": [
+      "A549",
+      "MCF7",
+      "HT29",
+      "HAP1",
+      "BxPC3",
+      "K562"
+    ],
+    "claim": "cited",
+    "source": "https://doi.org/10.1038/s41556-025-01622-z",
+    "note": null
+  },
+  "donor_state_batch": {
+    "value": {
+      "stimuli": [
+        "IFNB",
+        "IFNG",
+        "TGFB",
+        "TNFA",
+        "INS"
+      ],
+      "stimulation_hours": 24,
+      "note": "Six lines \u00d7 five stimuli are not thirty independent lines. K562 is already a local training context."
+    },
+    "claim": "cited",
+    "source": "https://doi.org/10.1038/s41556-025-01622-z",
+    "note": null
+  },
+  "n_targets": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "paper reports >1500 perturbations; no target list was opened here"
+  },
+  "id_mapping": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "RDS not opened"
+  },
+  "count_kind": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "Seurat default is often log-normalised data; RNA@counts must be verified after conversion"
+  },
+  "ntc_field": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "paper and Mixscale vignette use NT/neg; column name in these RDS is unverified"
+  },
+  "guides": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "cells_per_target": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "n_genes_measured": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "remote_bytes": {
+    "value": {
+      "Seurat_object_IFNG_Perturb_seq.rds": 2915636149,
+      "Seurat_object_INS_Perturb_seq.rds": 5601176410,
+      "Seurat_object_TGFB_Perturb_seq.rds": 2642041433,
+      "Seurat_object_TNFA_Perturb_seq.rds": 4656209976,
+      "Pathway_Exclusive_genelist.rds": 9038,
+      "Pathway_genelist.rds": 20666,
+      "DE_results_all_pathway.zip": 324112587,
+      "HClust_Pathway_celltype_specific_genelist.rds": 69497,
+      "Seurat_object_IFNB_Perturb_seq.rds": 4326548669,
+      "Bulk_RNAseq_Seurat_object_IFNG_and_TGFB_stim.rds": 3369918,
+      "Parse_Guide_Capture_Protocol.pdf": 303899,
+      "A_readme.txt": 1539
+    },
+    "claim": "measured",
+    "source": "https://zenodo.org/api/records/14518762",
+    "note": null
+  },
+  "temporary_bytes": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "RDS deserialisation RAM is unmeasured"
+  },
+  "checksum": {
+    "value": {
+      "Seurat_object_IFNG_Perturb_seq.rds": "md5:0fef1f14c36906e9c40e4d1c6aae6926",
+      "Seurat_object_INS_Perturb_seq.rds": "md5:c7b830dfcc020545c3f222cad5b13b34",
+      "Seurat_object_TGFB_Perturb_seq.rds": "md5:8e9b4d39a95ec5881a30be6a2df541d1",
+      "Seurat_object_TNFA_Perturb_seq.rds": "md5:60ed8bff6c749b1250f8fde9c5435c2e",
+      "Pathway_Exclusive_genelist.rds": "md5:25ac1b6bed69e6488ff993ea08424e79",
+      "Pathway_genelist.rds": "md5:f107354d6d075364a3c94e34f1ff5134",
+      "DE_results_all_pathway.zip": "md5:f077cba680a1affc599f5153d99b0e45",
+      "HClust_Pathway_celltype_specific_genelist.rds": "md5:c5c4204342ac85cce0b7ef77bcbbc36f",
+      "Seurat_object_IFNB_Perturb_seq.rds": "md5:3eb5e7af1601bf562a5b20dea5de3dc9",
+      "Bulk_RNAseq_Seurat_object_IFNG_and_TGFB_stim.rds": "md5:67c84d9189e5b3c0d1593633e6221887",
+      "Parse_Guide_Capture_Protocol.pdf": "md5:2a142118283f5775eedb971ce83622c7",
+      "A_readme.txt": "md5:b05ff3d3117887faa4aaff1414030317"
+    },
+    "claim": "cited",
+    "source": "https://zenodo.org/api/records/14518762",
+    "note": null
+  },
+  "panel_overlap": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "no target list was read; do not infer coverage from 1500 perturbations"
+  },
+  "training_overlap": {
+    "value": {
+      "k562_already_local": true,
+      "same_experiment": false
+    },
+    "claim": "derived",
+    "source": "configs/sources.yaml",
+    "note": "K562 in Jiang is a new experiment on a known line, not a new line"
+  },
+  "extra_target_sample": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "retain extra-panel targets only after a list exists"
+  },
+  "decision": "probe",
+  "decision_note": "Metadata record is live. Do not acquire an RDS until a remote runtime has measured RAM for readRDS and NTC pairing is specified. Small files downloaded: ['reports\\\\jiang_2026-09-15\\\\small_files\\\\Pathway_Exclusive_genelist.rds', 'reports\\\\jiang_2026-09-15\\\\small_files\\\\Pathway_genelist.rds', 'reports\\\\jiang_2026-09-15\\\\small_files\\\\HClust_Pathway_celltype_specific_genelist.rds', 'reports\\\\jiang_2026-09-15\\\\small_files\\\\Parse_Guide_Capture_Protocol.pdf', 'reports\\\\jiang_2026-09-15\\\\small_files\\\\A_readme.txt'].",
+  "recorded_utc": "2026-09-15T12:05:58Z"
+}

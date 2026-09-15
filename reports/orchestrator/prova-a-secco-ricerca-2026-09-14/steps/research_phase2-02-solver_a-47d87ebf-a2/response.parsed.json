@@ -1,0 +1,182 @@
+{
+  "changes": [],
+  "checks_suggested": [],
+  "confidence": "medium",
+  "dropped_keys": [
+    "budget",
+    "max_rounds"
+  ],
+  "evidence": [],
+  "issues": [
+    "pista incompleta, non selezionabile: mancano spiegazione alternativa"
+  ],
+  "objections": [],
+  "open_questions": [
+    "Se la contraddizione sia nel paper o nella nostra lettura"
+  ],
+  "proposal": "Concordiamo sull'esistenza di un candidato in linea T matura e sul fatto che il contesto squamoso resti scoperto. Non concordiamo su che cosa dica lo studio sulle cellule T primarie: io ho letto il testo completo e la figura 3b, il collega ha letto l'abstract, e le due letture dicono il contrario l'una dell'altra sulla conservazione del segno fra lignaggi. Questa non e' una divergenza di interpretazione risolvibile discutendo: o la figura e l'abstract dicono cose diverse, oppure uno di noi due ha letto male. Finche' non e' guardata, resta aperta. Segnalo anche che la sua affermazione sullo stato della cromatina si appoggia a una fonte che lui stesso registra come vista solo in un elenco di risultati, quindi non e' un risultato riferito dagli autori di niente.",
+  "research": {
+    "agreements": [
+      "Esiste almeno un candidato in linea T matura che dichiara una matrice a singola cellula",
+      "Il contesto squamoso resta scoperto: nessuno dei due ha trovato un deposito accessibile"
+    ],
+    "claims": [
+      {
+        "about_hypothesis": "H3",
+        "contradicted_by": [],
+        "flags": [],
+        "id": "C-f04d333e00",
+        "limits": "dice che l'attribuzione non e' sostenuta, non che l'affermazione sia falsa",
+        "locator": "",
+        "nature": "worker_interpretation",
+        "phase": 0,
+        "role": "",
+        "step_id": "",
+        "supported_by": [],
+        "text": "L'affermazione del collega sullo stato della cromatina e' attribuita agli autori di una fonte che lui registra come solo trovata in un elenco: nessuno l'ha letta."
+      }
+    ],
+    "complementary": [
+      "Io ho guardato le pagine di accessione, lui i limiti dichiarati dagli autori: le due cose non si sovrappongono e servono entrambe",
+      "Lui ha trovato il candidato squamoso a paywall, che io non avevo intercettato"
+    ],
+    "confidence": "medium",
+    "contradictions": [
+      "Sulla stessa fonte (lo studio 2024 sulle cellule T primarie) io riporto che il segno si conserva fra lignaggi per i bersagli a effetto forte, lui riporta che non si conserva. Io cito la Fig. 3b del testo completo, lui le ultime frasi dell'abstract."
+    ],
+    "dropped_keys": [
+      "budget",
+      "max_rounds"
+    ],
+    "gaps": [
+      {
+        "id": "G-a9b2e5e50e",
+        "missing": "Nessuno dei due ha guardato ArrayExpress o Zenodo per il contesto squamoso.",
+        "phase": 0,
+        "role": "",
+        "search_that_would_close_it": "La seconda query della fase 1, ripetuta su quei due archivi",
+        "step_id": ""
+      }
+    ],
+    "hypotheses": [
+      {
+        "alternatives": [
+          "il file e' elencato ma servito solo su richiesta"
+        ],
+        "id": "H1",
+        "initial_evidence": [
+          "l'accessione dichiara una matrice a singola cellula"
+        ],
+        "phase": 0,
+        "proposed_tests": [
+          "richiesta della sola intestazione HTTP"
+        ],
+        "role": "",
+        "statement": "Esiste almeno un Perturb-seq CRISPRi pubblico in linea T matura con matrice RNA scaricabile.",
+        "status": "undecided",
+        "step_id": ""
+      },
+      {
+        "alternatives": [
+          "dipende dalla co-espressione basale"
+        ],
+        "id": "H3",
+        "initial_evidence": [],
+        "phase": 0,
+        "proposed_tests": [
+          "trovare un lavoro che misuri entrambe sullo stesso dataset"
+        ],
+        "role": "",
+        "statement": "La direzione della risposta dipende dallo stato della cromatina nel contesto bersaglio.",
+        "status": "open",
+        "step_id": ""
+      }
+    ],
+    "issues": [
+      "pista incompleta, non selezionabile: mancano spiegazione alternativa"
+    ],
+    "leads": [
+      {
+        "alternative_explanation": "",
+        "distinguishing_search": "cercare l'accessione su ArrayExpress e Zenodo",
+        "hypothesis": "Il contesto squamoso ha un deposito pubblico che non passa da GEO.",
+        "id": "L-56a85d931c",
+        "missing_parts": [
+          "spiegazione alternativa"
+        ],
+        "position": 0,
+        "role": "",
+        "starting_evidence": "l'unico candidato squamoso trovato e' dietro paywall e non dice dove siano i dati",
+        "step_id": "",
+        "strategy_change": "cambiare archivio invece di cambiare termini",
+        "well_formed": false
+      },
+      {
+        "alternative_explanation": "non si contraddicono affatto: parlano di due sottoinsiemi diversi di bersagli, e l'abstract generalizza su tutti mentre la figura mostra solo quelli con almeno 200 cellule",
+        "distinguishing_search": "aprire il testo completo e confrontare la popolazione di bersagli della figura con quella dichiarata nell'abstract; se le numerosita' differiscono, la contraddizione e' apparente",
+        "hypothesis": "La figura 3b e l'abstract dello stesso studio dicono cose opposte sulla conservazione del segno fra lignaggi.",
+        "id": "L-231e74d438",
+        "missing_parts": [],
+        "position": 1,
+        "role": "",
+        "starting_evidence": "io leggo conservazione del segno sui bersagli forti in Fig. 3b; il collega legge il contrario nelle ultime frasi dell'abstract",
+        "step_id": "",
+        "strategy_change": "smettere di cercare fonti nuove e leggere per intero quella che abbiamo, compresi i supplementi",
+        "well_formed": true
+      },
+      {
+        "alternative_explanation": "non e' riportata perche' e' uniforme, non perche' sia limitante",
+        "distinguishing_search": "cercare studi che riportino sia l'efficienza sia l'ampiezza della risposta",
+        "hypothesis": "L'efficienza di knockdown e' il vero fattore limitante del trasferimento.",
+        "id": "L-1a4c90a143",
+        "missing_parts": [],
+        "position": 2,
+        "role": "",
+        "starting_evidence": "nessuna delle fonti la riporta",
+        "step_id": "",
+        "strategy_change": "cercare nei supplementi invece che negli articoli",
+        "well_formed": true
+      }
+    ],
+    "open_questions": [
+      "Se la contraddizione sia nel paper o nella nostra lettura"
+    ],
+    "operator_requests": [
+      "Servono almeno altri due round: con tre fasi non si fa in tempo a leggere il testo completo e a interrogare gli altri archivi. Alzare max_rounds a 6 e le risposte principali a 10."
+    ],
+    "phase": 0,
+    "role": "",
+    "saturation_claim": "",
+    "search_gaps": [
+      "Nessun archivio diverso da GEO e' stato interrogato",
+      "Nessuno ha cercato preprint, dove le versioni aperte dei lavori a paywall di solito esistono",
+      "Nessuno ha cercato risultati negativi"
+    ],
+    "searches": [
+      {
+        "filters": "nessuno",
+        "id": "Q-d63ecc9f6e",
+        "note": "e' la query della prima pista; la eseguo nella fase 3",
+        "phase": 0,
+        "provenance": "proposed",
+        "query": "Aaltonen 2024 primary T cell Perturb-seq \"data availability\"",
+        "role": "",
+        "service": "Europe PMC",
+        "status": "not_executed",
+        "step_id": ""
+      }
+    ],
+    "sources": [],
+    "step_id": "",
+    "summary": "Un accordo sui candidati, una contraddizione sul contenuto dello stesso paper, e due piste.",
+    "synthesis": "Concordiamo sull'esistenza di un candidato in linea T matura e sul fatto che il contesto squamoso resti scoperto. Non concordiamo su che cosa dica lo studio sulle cellule T primarie: io ho letto il testo completo e la figura 3b, il collega ha letto l'abstract, e le due letture dicono il contrario l'una dell'altra sulla conservazione del segno fra lignaggi. Questa non e' una divergenza di interpretazione risolvibile discutendo: o la figura e l'abstract dicono cose diverse, oppure uno di noi due ha letto male. Finche' non e' guardata, resta aperta. Segnalo anche che la sua affermazione sullo stato della cromatina si appoggia a una fonte che lui stesso registra come vista solo in un elenco di risultati, quindi non e' un risultato riferito dagli autori di niente.",
+    "unsupported_assumptions": [
+      "Che lo stato della cromatina spieghi il segno della risposta: appoggiato a una fonte mai aperta",
+      "Che il file di matrice dichiarato dall'accessione sia effettivamente scaricabile: nessuno dei due ha provato"
+    ]
+  },
+  "resolved_objections": [],
+  "route_hint": null,
+  "subtasks": [],
+  "summary": "Un accordo sui candidati, una contraddizione sul contenuto dello stesso paper, e due piste."
+}

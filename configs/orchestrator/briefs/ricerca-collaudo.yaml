@@ -1,0 +1,86 @@
+# Incarico di collaudo della modalita' scientific_research, per la prova a secco.
+#
+# Le risposte a questo incarico NON vengono da nessun modello: stanno in
+# configs/orchestrator/rehearsal/ricerca-collaudo/ e sono scritte a mano per far passare
+# il motore attraverso otto situazioni che devono restare distinguibili. I DOI che
+# compaiono in quelle risposte sono finti di proposito (prefisso 10.0000/finta-), cosi'
+# nessuno puo' scambiare l'esito della prova per un risultato di ricerca.
+#
+# La domanda e' una di quelle davvero aperte del progetto (PROGETTO.md §4, punto 7),
+# perche' serviva un incarico della forma giusta per collaudare i prompt. Il contenuto
+# delle risposte resta inventato.
+id: ricerca-collaudo
+version: 1
+mode: scientific_research
+route: scientific_research
+title: "Collaudo - Perturb-seq CRISPRi pubblico in linea T matura o squamosa"
+question: >
+  Esiste un dataset Perturb-seq CRISPRi pubblico, con matrice RNA a singola cellula
+  accessibile, in una linea T matura oppure epiteliale squamosa? Per ciascun candidato:
+  quale linea cellulare, quante perturbazioni, se la matrice RNA e' davvero scaricabile
+  o se l'archivio espone solo conteggi di guide.
+context: >
+  Prova a secco dell'orchestratore in modalita' di ricerca. Interessa la forma della
+  risposta -- ricerche registrate, fonti con il loro livello di consultazione,
+  affermazioni con la loro natura -- non la risposta.
+expected_result: >
+  Un elenco di candidati con, per ciascuno, l'accessione dell'archivio, la linea
+  cellulare, cosa e' effettivamente scaricabile, e il livello a cui la fonte e' stata
+  consultata. Piu' cio' che non e' stato trovato, con le query che lo dicono.
+
+research:
+  scope: >
+    Dataset Perturb-seq o CRISPRi a singola cellula depositati pubblicamente, in linee T
+    mature (Jurkat, CD4 primarie, linee T trasformate) o epiteliali squamose. Conta solo
+    cio' che ha una matrice RNA a singola cellula ottenibile: un archivio che espone i
+    soli conteggi di guide non soddisfa il perimetro.
+  out_of_scope: >
+    Linee eritroidi (K562) e pluripotenti (H1, KOLF2.1J, HIPSCI), gia' inventariate
+    altrove nel progetto. Screening CRISPR a lettura di sola fitness, senza RNA.
+  relevance_criteria:
+    - id: P1
+      text: "La fonte nomina un'accessione di archivio pubblico (GEO, ArrayExpress, Zenodo, figshare) per un esperimento a singola cellula"
+    - id: P2
+      text: "La linea cellulare e' T matura o epiteliale squamosa, dichiarata esplicitamente"
+    - id: P3
+      text: "La fonte dice che cosa e' depositato: matrice RNA, conteggi di guide, o solo metadati"
+  hypotheses:
+    - id: H1
+      statement: >
+        Esiste almeno un Perturb-seq CRISPRi pubblico in linea T matura con matrice RNA
+        scaricabile.
+      initial_evidence:
+        - "GSE281860 e' la pista piu' vicina per il contesto squamoso, ma espone conteggi di guide e non la matrice RNA (docs/PROGETTO.md §4, punto 7)"
+      alternatives:
+        - "Esistono dataset del genere ma sono sotto accesso controllato (dbGaP, EGA), quindi pubblicamente citati e non pubblicamente scaricabili"
+    - id: H2
+      statement: >
+        Dove la matrice RNA manca dall'archivio, e' comunque ricostruibile da un
+        supplemento o da un repository secondario del gruppo che l'ha prodotta.
+      initial_evidence: []
+      alternatives:
+        - "I supplementi contengono solo pseudobulk aggregato, che non ricostruisce le cellule"
+  perspectives:
+    solver_a: >
+      Metodi e archivi. Come e' stato fatto l'esperimento, che cosa e' stato depositato,
+      in quale formato, con quale copertura del pannello. Guarda le pagine di accessione
+      e i file, non solo gli articoli.
+    solver_b: >
+      Biologia e limiti. Se la linea e' davvero il contesto che dichiara, se
+      l'efficienza di knockdown e' riportata, e quali limiti gli autori dichiarano sul
+      trasferimento ad altri contesti.
+  lead_assignment: both
+  budget:
+    max_phases: 3
+    max_main_responses: 6
+    max_repairs_per_response: 1
+    max_leads: 2
+    max_total_interactions: 12
+    max_wall_clock_minutes: 20
+  search:
+    required: true
+    on_unavailable: halt
+    note: >
+      Se un canale non ha una ricerca sul web dichiarata e verificabile, la campagna non
+      parte. Una rassegna della letteratura scritta a memoria arriva identica a una
+      vera, e costa molto piu' di una campagna non avviata.

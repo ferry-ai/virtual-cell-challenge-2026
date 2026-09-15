@@ -1,0 +1,33 @@
+{
+  "checks_suggested": [
+    {
+      "criterion": "C3",
+      "how": "elencare 25, 50, 75, 100 e scomporli"
+    }
+  ],
+  "confidence": "high",
+  "dropped_keys": [],
+  "evidence": [
+    {
+      "claim": "25, 50, 75 e 100 contengono 5^2",
+      "id": "E1dee14c0",
+      "support": "25 = 5*5, 50 = 2*5*5, 75 = 3*5*5, 100 = 4*5*5",
+      "type": "derived"
+    }
+  ],
+  "issues": [],
+  "objections": [
+    {
+      "id": "Oedceec3c",
+      "severity": "blocking",
+      "target": "solver_b",
+      "text": "Il conteggio 100/5 = 20 ignora i multipli di 25, che portano un secondo fattore 5: mancano 4 unita' e il risultato 20 e' sbagliato."
+    }
+  ],
+  "open_questions": [],
+  "proposal": "Gli zeri finali di n! sono v_5(n!) = somma_k floor(n/5^k).\nPer n = 100: 100 / 5 = 20 (multipli di 5), 100 / 25 = 4 (25, 50, 75, 100 portano un secondo fattore 5), 100 / 125 = 0.\nTotale 20 + 4 = 24. Verifica indipendente: i fattori 2 sono 97, quindi il vincolo sono i 5.\n\nRISULTATO: 24",
+  "resolved_objections": [],
+  "route_hint": null,
+  "subtasks": [],
+  "summary": "Confermo 24; l'altra proposta dimentica il secondo fattore 5 dei multipli di 25."
+}

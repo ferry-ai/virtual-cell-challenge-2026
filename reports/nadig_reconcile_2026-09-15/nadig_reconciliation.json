@@ -1,0 +1,278 @@
+{
+  "hepg2_geo_vs_mirror": {
+    "same_experiment": true,
+    "mirror_is_not_replication": true,
+    "shape_geo": [
+      145473,
+      9624
+    ],
+    "shape_mirror": [
+      145473,
+      9624
+    ],
+    "shape_match": true,
+    "ntc_geo_label": "obs.gene == 'non-targeting'",
+    "ntc_geo_count": 4976,
+    "ntc_mirror_label": "obs.perturbation == 'control'",
+    "ntc_mirror_count": 4976,
+    "ntc_count_match": true,
+    "obs_keys_geo": [
+      "UMI_count",
+      "cell_barcode",
+      "gem_group",
+      "gene",
+      "gene_id",
+      "gene_transcript",
+      "mitopercent",
+      "sgID_AB",
+      "transcript",
+      "z_gemgroup_UMI"
+    ],
+    "obs_keys_mirror": [
+      "UMI_count",
+      "batch",
+      "cancer",
+      "cell_barcode",
+      "cell_line",
+      "disease",
+      "gene",
+      "gene_id",
+      "gene_transcript",
+      "guide_id",
+      "ncounts",
+      "ngenes",
+      "nperts",
+      "organism",
+      "percent_mito",
+      "percent_ribo",
+      "perturbation",
+      "perturbation_type",
+      "tissue_type",
+      "transcript",
+      "z_gemgroup_UMI"
+    ],
+    "bytes_geo_declared": {
+      "value": "5.2 GB",
+      "claim": "cited",
+      "source": "reports/hepg2_2026-09-14/acquisition.json provenance.primary_archive"
+    },
+    "bytes_mirror_declared": 850590740,
+    "bytes_mirror_acquired": 850590740,
+    "md5_mirror_match": true,
+    "claim": "measured",
+    "sources": [
+      "reports/candidate_verification/hepg2_probe.json",
+      "reports/hepg2_2026-09-14/nadig_hepg2_audit.json",
+      "reports/hepg2_2026-09-14/acquisition.json"
+    ]
+  },
+  "jurkat": {
+    "geo_shape": [
+      262956,
+      8882
+    ],
+    "geo_dtype": "float32",
+    "geo_obs_keys": [
+      "UMI_count",
+      "cell_barcode",
+      "gem_group",
+      "gene",
+      "gene_id",
+      "gene_transcript",
+      "mitopercent",
+      "sgID_AB",
+      "transcript",
+      "z_gemgroup_UMI"
+    ],
+    "geo_ntc_label": "obs.gene == 'non-targeting'",
+    "geo_ntc_count": 12013,
+    "panel_observed_targets": 0,
+    "output_gene_overlap": 8284,
+    "zenodo_mirror": {
+      "key": "NadigOConner2024_jurkat.h5ad",
+      "size": 1293665804,
+      "checksum": "md5:d8b05d00bfbd686d37ffdd4293bc6c8c",
+      "url": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_jurkat.h5ad/content"
+    },
+    "schema_like_geo_hepg2": true,
+    "on_disk": false,
+    "claim": "measured"
+  },
+  "source_card": {
+    "source_id": "nadig_jurkat",
+    "title": "Nadig 2025 Jurkat Perturb-seq",
+    "study_id": {
+      "value": "GSE264667",
+      "claim": "cited",
+      "source": "reports/candidate_verification/jurkat_probe.json",
+      "note": null
+    },
+    "version": {
+      "value": "GEO original probed 2026-09-12; scPerturb mirror listed on Zenodo 13350497",
+      "claim": "cited",
+      "source": "https://zenodo.org/api/records/13350497",
+      "note": null
+    },
+    "primary_url": {
+      "value": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_jurkat.h5ad/content",
+      "claim": "cited",
+      "source": "https://zenodo.org/api/records/13350497",
+      "note": null
+    },
+    "license": {
+      "value": "cc-by-4.0",
+      "claim": "cited",
+      "source": "https://zenodo.org/api/records/13350497",
+      "note": "declared on the scPerturb collection; competition compatibility not verified"
+    },
+    "perturbation_class": {
+      "value": "CRISPRi",
+      "claim": "cited",
+      "source": "configs/sources.yaml",
+      "note": null
+    },
+    "cell_context": {
+      "value": "Jurkat",
+      "claim": "cited",
+      "source": "configs/sources.yaml",
+      "note": null
+    },
+    "donor_state_batch": {
+      "value": {
+        "gem_group": true,
+        "batch_on_mirror": "unverified_until_opened"
+      },
+      "claim": "derived",
+      "source": "reports/candidate_verification/jurkat_probe.json",
+      "note": null
+    },
+    "n_targets": {
+      "value": null,
+      "claim": "missing",
+      "source": null,
+      "note": "perturbation count not stored as n_unique in the GEO probe"
+    },
+    "id_mapping": {
+      "value": "obs.gene / var.gene_name on the GEO original",
+      "claim": "measured",
+      "source": "reports/candidate_verification/jurkat_probe.json",
+      "note": null
+    },
+    "count_kind": {
+      "value": "dense float32; count samples integral on GEO probe",
+      "claim": "measured",
+      "source": "reports/candidate_verification/jurkat_probe.json",
+      "note": null
+    },
+    "ntc_field": {
+      "value": "obs.gene == 'non-targeting' on GEO original (12,013 cells)",
+      "claim": "measured",
+      "source": "reports/candidate_verification/jurkat_probe.json",
+      "note": "mirror may rename, as HepG2 did"
+    },
+    "guides": {
+      "value": "obs.sgID_AB present on GEO original",
+      "claim": "measured",
+      "source": "reports/candidate_verification/jurkat_probe.json",
+      "note": null
+    },
+    "cells_per_target": {
+      "value": null,
+      "claim": "missing",
+      "source": null,
+      "note": "paper reports median 83; not re-counted here"
+    },
+    "n_genes_measured": {
+      "value": 8882,
+      "claim": "measured",
+      "source": "reports/candidate_verification/jurkat_probe.json",
+      "note": null
+    },
+    "remote_bytes": {
+      "value": 1293665804,
+      "claim": "measured",
+      "source": "https://zenodo.org/api/records/13350497",
+      "note": null
+    },
+    "temporary_bytes": {
+      "value": null,
+      "claim": "missing",
+      "source": null,
+      "note": "dense GEO object is ~9.4 GB; do not materialise"
+    },
+    "checksum": {
+      "value": "md5:d8b05d00bfbd686d37ffdd4293bc6c8c",
+      "claim": "cited",
+      "source": "https://zenodo.org/api/records/13350497",
+      "note": null
+    },
+    "panel_overlap": {
+      "value": {
+        "observed_targets": 0,
+        "output_gene_overlap": 8284,
+        "list_source": "reports/candidate_verification/coverage_summary.json"
+      },
+      "claim": "measured",
+      "source": "reports/candidate_verification/coverage_summary.json",
+      "note": null
+    },
+    "training_overlap": {
+      "value": {
+        "useful_as": "held-out T-lymphoblast context; 0/300 panel coverage"
+      },
+      "claim": "derived",
+      "source": "reports/candidate_verification/coverage_summary.json",
+      "note": null
+    },
+    "extra_target_sample": {
+      "value": null,
+      "claim": "missing",
+      "source": null,
+      "note": "no extra-target sample retained"
+    },
+    "decision": "acquire",
+    "decision_note": "Fourth perturbed context for the existing benchmark, after a remote runtime measures disk. Mirror 1.29 GB vs GEO ~9.4 GB. Expect the same label rename as HepG2. Not a panel-coverage source.",
+    "recorded_utc": "2026-09-15T12:05:55Z"
+  },
+  "disk": {
+    "free_bytes": 12156661760,
+    "jurkat_mirror_bytes": 1293665804,
+    "leaves_10gib_floor": true,
+    "peak_estimate": {
+      "components": {
+        "input_bytes": 1293665804,
+        "decompressed_bytes": null,
+        "derived_bytes": null,
+        "checkpoint_bytes": 0,
+        "export_bytes": null
+      },
+      "accounted_bytes": 1293665804,
+      "unknown_components": [
+        "decompressed_bytes",
+        "derived_bytes",
+        "export_bytes"
+      ],
+      "margin": 0.25,
+      "margin_note": "proposed 25% overhead, not measured",
+      "peak_bytes": null,
+      "peak_complete": false,
+      "claim": "incomplete"
+    }
+  },
+  "decision": {
+    "hepg2_original": "do_not_download \u2014 same experiment as the acquired mirror",
+    "jurkat_mirror": "candidate fourth context; download after runtime preflight",
+    "jurkat_geo_original": "do_not_download if the mirror is used"
+  },
+  "not_done": [
+    "Jurkat file not opened",
+    "mirror obs labels not verified on Jurkat",
+    "barcode/guide equality GEO vs mirror not measured on Jurkat"
+  ],
+  "claim_types_used": [
+    "measured",
+    "cited",
+    "derived",
+    "missing"
+  ]
+}

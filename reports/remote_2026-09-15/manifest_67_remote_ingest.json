@@ -1,0 +1,49 @@
+{
+  "run_id": "remote_2026-09-15",
+  "stage": "67_remote_ingest",
+  "started_utc": "2026-09-15T12:48:19.602187+00:00",
+  "finished_utc": "2026-09-15T12:48:19.626826+00:00",
+  "seed": null,
+  "config": {
+    "skip_hepg2_download": true,
+    "fetch_jiang": false
+  },
+  "inputs": {},
+  "outputs": {
+    "report": {
+      "path": "reports\\remote_2026-09-15\\remote_ingest.json",
+      "exists": true,
+      "bytes": 19702,
+      "mtime_utc": "2026-09-15T12:48:19.597377+00:00",
+      "sha256": "3558f10f5dd822c504caec3422712e4f48477d31bcc6706e2f3a10533a00ddaf",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {},
+  "notes": [
+    "HepG2 parity is against the 2026-09-14 acquisition, not a new biology.",
+    "Jiang TGFB was not converted: R/Seurat is required and disk may refuse."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}

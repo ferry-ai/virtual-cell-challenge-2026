@@ -1,0 +1,56 @@
+{
+  "che_cosa": "Prima esecuzione dell'adattatore web sui servizi reali: solo lettura della pagina (`orch probe`). Nessun messaggio inviato, nessun contenuto del progetto, nessun login effettuato, nessun token letto.",
+  "quando_utc": "2026-09-13T17:18Z / 17:20Z",
+  "come": "scripts/orch.cmd probe <servizio>, Chrome 152 installato, profilo dedicato in C:/Users/ferra/vcc2026-data/orchestrator/profiles/<servizio>, finestra visibile",
+  "deepseek": {
+    "url_richiesto": "https://chat.deepseek.com/",
+    "url_finale": "https://chat.deepseek.com/sign_in",
+    "titolo": "DeepSeek - Verso l'Ignoto",
+    "reso_in_secondi": 3.3,
+    "stato_sessione": "non autenticato",
+    "visto": [
+      "campo 'Numero di telefono / indirizzo email' (input.ds-input__input)",
+      "bottoni Accedi, Registrati, Accedi con Google, Accedi con Apple",
+      "banner cookie con 'Solo cookie necessari' e 'Accetta tutti i cookie'"
+    ],
+    "non_visto": [
+      "compositore della chat",
+      "messaggi",
+      "bottone nuova conversazione"
+    ],
+    "confermato": "il guardiano logged_out_url_fragments ['/sign_in','/login'] intercetta questo caso: l'URL finale e' /sign_in"
+  },
+  "kimi": {
+    "url_richiesto": "https://www.kimi.com/",
+    "url_finale": "https://www.kimi.com/",
+    "titolo": "Kimi AI - K3 (interfaccia in cinese su questo profilo)",
+    "reso_in_secondi": 10.4,
+    "stato_sessione": "non autenticato, ma l'interfaccia di chat e' comunque visibile",
+    "visto": [
+      "compositore div.chat-input-editor[role=textbox], visibile, 734x60",
+      "bottone di accesso 登录 e 'accedi per sincronizzare la cronologia'",
+      "contenitori vuoti div.message-list-container e div.message-list"
+    ],
+    "non_visto": [
+      "il selettore di UN messaggio dell'assistente: senza conversazione aperta non esiste nulla da contare"
+    ]
+  },
+  "difetto_trovato_e_corretto": {
+    "sintomo": "la prima sonda su DeepSeek ha riportato zero elementi e uno screenshot bianco",
+    "causa": "attendeva 'domcontentloaded', che su queste interfacce scatta sul guscio vuoto prima che l'applicazione disegni",
+    "correzione": "WebChatAdapter.settle(): attende networkidle e la comparsa di elementi interattivi, poi registra quanti secondi ha atteso e quanti caratteri ha il corpo della pagina",
+    "prova": "seconda sonda su DeepSeek: 639 caratteri e 8 bottoni invece di zero",
+    "evidenza_del_difetto": "deepseek-20260913T171817Z.json (la sonda cieca), conservata"
+  },
+  "nessun_ostacolo_incontrato": "nessun CAPTCHA, nessuna verifica anti-bot, nessun blocco durante le due aperture",
+  "che_cosa_resta_non_dimostrato": [
+    "che si possa scrivere nel compositore e inviare: richiede il login, che e' tuo",
+    "che si possa leggere una risposta completa: richiede una conversazione con almeno un messaggio",
+    "che il rilevamento di fine risposta in streaming funzioni su questi due servizi",
+    "il passaggio di una risposta da un modello all'altro sui canali reali"
+  ],
+  "profili_aggiornati": {
+    "kimi": "selectors.editor e selectors.logged_out compilati con quanto osservato; verified resta false",
+    "deepseek": "nessun selettore compilabile; annotato quanto visto"
+  }
+}

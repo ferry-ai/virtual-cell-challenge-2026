@@ -1,0 +1,43 @@
+{
+  "brief": {
+    "id": "prova-split-e-pairing",
+    "materials": [],
+    "sha256": "2ababf3b07b5427bcaad0e17c73639e47c3234b6f3b1ba9835bb28d5e452191f",
+    "source": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\configs\\orchestrator\\briefs\\prova-split-e-pairing.yaml",
+    "title": "Revisione critica di uno split e di un confronto fra due loss",
+    "version": 1
+  },
+  "config": {
+    "execution": "quarantine",
+    "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\configs\\orchestrator\\orchestrator.yaml",
+    "plan_approval": "required"
+  },
+  "created_utc": "2026-09-13T19:58:36Z",
+  "limits": {
+    "convergence_rounds": 2,
+    "convergence_similarity": 0.92,
+    "disagreement_rounds": 3,
+    "max_rounds": 6,
+    "max_wall_clock_minutes": 120,
+    "self_similarity_stagnation": 0.97,
+    "stagnation_rounds": 2,
+    "transport_retries": 2
+  },
+  "roles": {
+    "framer_a": "gemini",
+    "framer_b": "grok",
+    "reviewer_a": "gemini",
+    "reviewer_b": "grok",
+    "solver_a": "deepseek",
+    "solver_b": "kimi",
+    "solver_manual": "manual"
+  },
+  "route": "deep_kimi",
+  "run_id": "20260913T195836Z-prova-split-e-pairing-v1-322abe",
+  "stages": {
+    "solve": [
+      "solver_a",
+      "solver_b"
+    ]
+  }
+}

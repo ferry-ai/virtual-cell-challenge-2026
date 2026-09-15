@@ -1,0 +1,115 @@
+{
+  "verifier": {
+    "name": "oracle.pairwise_loss",
+    "version": "0.1.0",
+    "claim_type": "pairwise_loss_comparison"
+  },
+  "verdict": "pass",
+  "checks": [
+    {
+      "id": "operator_config",
+      "status": "pass",
+      "reason": "configurazione operatore accettata"
+    },
+    {
+      "id": "candidate_readable",
+      "status": "pass",
+      "reason": "affermazione candidato leggibile"
+    },
+    {
+      "id": "csv_readable",
+      "status": "pass",
+      "reason": "CSV leggibile, 3 righe, colonne case_id, loss_a, loss_b"
+    },
+    {
+      "id": "identifiers",
+      "status": "pass",
+      "reason": "3 identificativi non vuoti e univoci"
+    },
+    {
+      "id": "finite_values",
+      "status": "pass",
+      "reason": "3 coppie di loss finite"
+    },
+    {
+      "id": "recompute",
+      "status": "pass",
+      "reason": "ricalcolate medie e differenza su 3 casi"
+    },
+    {
+      "id": "declared_values",
+      "status": "pass",
+      "reason": "i tre valori dichiarati coincidono col ricalcolo entro le tolleranze"
+    },
+    {
+      "id": "declared_conclusion",
+      "status": "pass",
+      "reason": "conclusione A_lower coerente col ricalcolo (|delta|=0.05, soglia=0.01)"
+    }
+  ],
+  "n_cases": 3,
+  "declared": {
+    "mean_loss_a": "0.30",
+    "mean_loss_b": "0.35",
+    "mean_difference": "-0.05",
+    "conclusion": "A_lower"
+  },
+  "recomputed": {
+    "mean_loss_a": "0.30",
+    "mean_loss_b": "0.35",
+    "mean_difference": "-0.05",
+    "conclusion": "A_lower"
+  },
+  "value_comparisons": [
+    {
+      "name": "mean_loss_a",
+      "declared": "0.30",
+      "recomputed": "0.30",
+      "abs_error": "0.00",
+      "status": "pass"
+    },
+    {
+      "name": "mean_loss_b",
+      "declared": "0.35",
+      "recomputed": "0.35",
+      "abs_error": "0.00",
+      "status": "pass"
+    },
+    {
+      "name": "mean_difference",
+      "declared": "-0.05",
+      "recomputed": "-0.05",
+      "abs_error": "0.00",
+      "status": "pass"
+    }
+  ],
+  "conclusion_comparison": {
+    "declared": "A_lower",
+    "recomputed": "A_lower",
+    "equivalence_threshold": "0.01",
+    "abs_delta": "0.05",
+    "status": "pass"
+  },
+  "config_used": {
+    "abs_tol": "0.000000000001",
+    "rel_tol": "0.0",
+    "equivalence_threshold": "0.01",
+    "source": "operator"
+  },
+  "ignored_candidate_fields": [],
+  "inputs": {
+    "csv_path": "src\\oracle\\fixtures\\pairwise_loss\\example.csv",
+    "csv_sha256": "b90fb5bfa8e3873c0bea14584dffbda837d87a1ca347568def29564dd0835521",
+    "candidate_path": "src\\oracle\\fixtures\\pairwise_loss\\correct_candidate.json",
+    "candidate_sha256": "f3dd689051c46c1512d300f05a3352f3b9f92697c0e80f445698151d0136d97d",
+    "config_path": "src\\oracle\\fixtures\\pairwise_loss\\config_default.json",
+    "config_sha256": "afccf4877b1076b8c5648b95bd269ed0ca42a36c2fa3889071f11788c84a7775"
+  },
+  "limits": [
+    "Questa verifica riguarda solo la loss media, con pesi uguali, sui casi contenuti nel CSV fornito.",
+    "Una conclusione A_lower significa solo: A ha una loss media inferiore nei casi forniti, oltre la soglia di equivalenza.",
+    "Non significa: A generalizza meglio; A è statisticamente superiore; A è biologicamente più corretto; il protocollo di valutazione è valido.",
+    "Non è stato eseguito alcun test statistico, né alcun controllo di causalità, leakage o qualità dei dati oltre i controlli strutturali elencati.",
+    "Il JSON candidato è un dato non fidato: non può modificare formule, soglie o regole."
+  ]
+}

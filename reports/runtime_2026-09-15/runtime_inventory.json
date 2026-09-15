@@ -1,0 +1,239 @@
+{
+  "inventory": {
+    "recorded_utc": "2026-09-15T12:05:42Z",
+    "python": {
+      "version": "3.12.3",
+      "executable": "C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\python.exe",
+      "implementation": "CPython"
+    },
+    "platform": {
+      "system": "Windows",
+      "release": "11",
+      "machine": "AMD64",
+      "processor": "Intel64 Family 6 Model 142 Stepping 12, GenuineIntel"
+    },
+    "resources": {
+      "ram_total_bytes": 8384401408,
+      "ram_available_bytes": 570601472,
+      "disk_path": "C:\\Users\\ferra\\vcc2026-data",
+      "disk_total_bytes": 510342983680,
+      "disk_free_bytes": 12156698624,
+      "cpu_count": 8,
+      "platform": "Windows-11-10.0.26200-SP0",
+      "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+      "ram_total_gib": 7.808582305908203,
+      "ram_available_gib": 0.5314140319824219,
+      "disk_free_gib": 11.321807861328125
+    },
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "anndata": "0.13.3.post0",
+      "scanpy": "1.12.4",
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "pyyaml": "6.0.3",
+      "httpx": "0.28.1"
+    },
+    "git": {
+      "repo": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026",
+      "available": true,
+      "commit": "d781894412a800272042f470968dff6be08b60b1",
+      "dirty": true,
+      "dirty_paths": [
+        "configs/sources.yaml",
+        "docs/DECISIONI.md",
+        "docs/ESECUZIONE_REMOTA.md",
+        "docs/PROGETTO.md",
+        "docs/REGISTRO.md",
+        "docs/checkpoints/INDICE.md",
+        "src/vcc2026/models.py",
+        "configs/benchmark.yaml",
+        "configs/benchmark_3ctx.yaml",
+        "configs/benchmark_3ctx_hepg2_predictions.yaml",
+        "configs/benchmark_go_slim.yaml",
+        "configs/benchmark_rank.yaml",
+        "configs/benchmark_svd_exact.yaml",
+        "configs/benchmark_svd_randomized.yaml",
+        "configs/eval_protocol.yaml",
+        "configs/orchestrator/",
+        "docs/BENCHMARK_MODULARE.md",
+        "docs/BENCHMARK_TRE_CONTESTI.md",
+        "docs/CONSEGNA_GPU.md",
+        "docs/ENCODER_INPUTS.md",
+        "docs/ORCHESTRATORE.md",
+        "docs/PIANO_OPERATIVO_2026-09-15.md",
+        "docs/PROSPETTO_MODELLO_2026-09-14.md",
+        "docs/REGIA_PARALLELA_2026-09-15.md",
+        "docs/RICERCA_SCIENTIFICA.md",
+        "docs/SVD_E_RANGO.md",
+        "docs/checkpoints/0007-oracle-pairwise-loss.md",
+        "docs/checkpoints/0008-oracle-fraction-regression.md",
+        "docs/checkpoints/0009-oracle-json-number-csv-error.md",
+        "docs/checkpoints/0010-modalita-ricerca-scientifica.md",
+        "docs/checkpoints/0011-primo-benchmark-modulare.md",
+        "docs/checkpoints/0012-encoder-inputs-unseen-target.md",
+        "docs/checkpoints/0013-hepg2-terzo-contesto.md",
+        "docs/checkpoints/0014-go-slim-e-gpu.md",
+        "docs/checkpoints/0015-svd-randomizzata-e-rango.md",
+        "docs/oracle/",
+        "notebooks/remote_ingest_hepg2.ipynb",
+        "reports/benchmark_2026-09-14/",
+        "reports/benchmark_3ctx_2026-09-14/",
+        "reports/encoder_inputs_2026-09-14/",
+        "reports/go_slim_2026-09-15/",
+        "reports/gpu_2026-09-15/",
+        "reports/hepg2_2026-09-14/",
+        "reports/oracle/",
+        "reports/orchestrator/",
+        "reports/primeflow_2026-09-15/",
+        "reports/rank_2026-09-15/",
+        "reports/ricerca_dataset_20260915.md",
+        "reports/source_cards_2026-09-15/",
+        "reports/svd_2026-09-15/"
+      ]
+    },
+    "gpu": {
+      "torch_installed": false,
+      "cuda_available": false,
+      "torch_import_error": "ModuleNotFoundError: No module named 'torch'"
+    },
+    "scorer": {
+      "expected_cell_eval2": "0.16.0",
+      "cell_eval2": "0.16.0",
+      "vcc_cli": "0.2.0",
+      "matches_decision_D008": true,
+      "de_backends_available": {
+        "pdex": null,
+        "gpudge": null,
+        "cuda_available": false
+      },
+      "de_backend_resolved": "scanpy",
+      "de_backend_note": "de.backend='auto' picks gpudge (CUDA) > pdex > scanpy. The engines do not agree exactly, so a DE-based metric is only comparable across runs that resolved the same backend. Record it beside every number."
+    },
+    "data_root": "C:\\Users\\ferra\\vcc2026-data",
+    "persistent_paths": {
+      "path": "C:\\Users\\ferra\\vcc2026-data",
+      "free_bytes": 12156694528,
+      "free_gib": 11.32180404663086,
+      "note": "A file that remains only on ephemeral scratch is not a delivery. Export and re-read from this path."
+    },
+    "windows_paths_forbidden": false,
+    "claim": "measured"
+  },
+  "jobs": {
+    "hepg2_parity": {
+      "input_on_disk": true,
+      "input_bytes": 850590740,
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\nadig_hepg2\\NadigOConner2024_hepg2.h5ad",
+      "peak": {
+        "components": {
+          "input_bytes": 850590740,
+          "decompressed_bytes": 5600128608,
+          "derived_bytes": 50000000,
+          "checkpoint_bytes": 0,
+          "export_bytes": 5000000
+        },
+        "accounted_bytes": 6505719348,
+        "unknown_components": [],
+        "margin": 0.25,
+        "margin_note": "proposed 25% overhead, not measured",
+        "peak_bytes": 8132149185,
+        "peak_complete": true,
+        "claim": "derived"
+      },
+      "note": "Parity job reads the local mirror; it should not re-download.",
+      "leaves_10gib_floor_if_peak_known": false,
+      "input_alone_leaves_10gib": true
+    },
+    "jiang_tgfb_block": {
+      "input_on_disk": false,
+      "input_bytes": 2642041433,
+      "peak": {
+        "components": {
+          "input_bytes": 2642041433,
+          "decompressed_bytes": null,
+          "derived_bytes": null,
+          "checkpoint_bytes": 0,
+          "export_bytes": null
+        },
+        "accounted_bytes": 2642041433,
+        "unknown_components": [
+          "decompressed_bytes",
+          "derived_bytes",
+          "export_bytes"
+        ],
+        "margin": 0.25,
+        "margin_note": "proposed 25% overhead, not measured",
+        "peak_bytes": null,
+        "peak_complete": false,
+        "claim": "incomplete"
+      },
+      "note": "Decompressed Seurat size is unknown. Do not invent RAM.",
+      "leaves_10gib_floor_if_peak_known": null,
+      "input_alone_leaves_10gib": false
+    },
+    "jurkat_mirror": {
+      "input_on_disk": false,
+      "input_bytes": 1293665804,
+      "peak": {
+        "components": {
+          "input_bytes": 1293665804,
+          "decompressed_bytes": 9366490264,
+          "derived_bytes": 80000000,
+          "checkpoint_bytes": 0,
+          "export_bytes": 10000000
+        },
+        "accounted_bytes": 10750156068,
+        "unknown_components": [],
+        "margin": 0.25,
+        "margin_note": "proposed 25% overhead, not measured",
+        "peak_bytes": 13437695085,
+        "peak_complete": true,
+        "claim": "derived"
+      },
+      "note": "Decompressed size is the GEO dense object, a ceiling not a measurement of the mirror.",
+      "leaves_10gib_floor_if_peak_known": false,
+      "input_alone_leaves_10gib": true
+    }
+  },
+  "assignment": {
+    "this_machine": {
+      "do": [
+        "orchestration",
+        "metadata",
+        "tests",
+        "HepG2 chunked reads",
+        "packaging"
+      ],
+      "do_not": [
+        "readRDS of a 2.6 GB Seurat object",
+        "materialise Jurkat GEO dense ~9.4 GB",
+        "two matrix jobs at once"
+      ],
+      "ram_total_gib": 7.808582305908203,
+      "disk_free_gib": 11.321807861328125
+    },
+    "kaggle_or_colab": {
+      "do": [
+        "Jiang TGFB download + conversion, after that runtime measures itself",
+        "Jurkat mirror download + audit, after disk is measured there"
+      ],
+      "not_measured_here": [
+        "GPU quota",
+        "RAM quota",
+        "persistent disk",
+        "network"
+      ],
+      "notebook": "notebooks/remote_ingest_hepg2.ipynb"
+    },
+    "companion_gpu": {
+      "available_from": "2026-09-16 (declared by the user, not verified here)",
+      "accelerates": "cell-eval2 DE backend only, on current code"
+    }
+  },
+  "windows_paths_in_remote_jobs": false,
+  "claim": "measured"
+}

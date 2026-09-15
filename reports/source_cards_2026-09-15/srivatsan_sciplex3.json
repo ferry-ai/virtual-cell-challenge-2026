@@ -1,0 +1,134 @@
+{
+  "source_id": "srivatsan_sciplex3",
+  "title": "Srivatsan 2020 sci-Plex 3 (188 compounds)",
+  "study_id": {
+    "value": "SrivatsanTrapnell2020_sciplex3",
+    "claim": "cited",
+    "source": "https://zenodo.org/records/13350497",
+    "note": null
+  },
+  "version": {
+    "value": "scPerturb 1.4",
+    "claim": "cited",
+    "source": "https://zenodo.org/records/13350497",
+    "note": null
+  },
+  "primary_url": {
+    "value": "https://zenodo.org/api/records/13350497/files/SrivatsanTrapnell2020_sciplex3.h5ad/content",
+    "claim": "cited",
+    "source": "https://zenodo.org/records/13350497",
+    "note": null
+  },
+  "license": {
+    "value": "cc-by-4.0",
+    "claim": "cited",
+    "source": "https://zenodo.org/records/13350497",
+    "note": null
+  },
+  "perturbation_class": {
+    "value": "drug",
+    "claim": "cited",
+    "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+    "note": null
+  },
+  "cell_context": {
+    "value": [
+      "K562",
+      "A549",
+      "MCF7"
+    ],
+    "claim": "cited",
+    "source": "arxiv:2604.13986 (PRiMeFlow dataset description)",
+    "note": null
+  },
+  "donor_state_batch": {
+    "value": "dose present; PRiMeFlow kept highest dose only",
+    "claim": "cited",
+    "source": "arxiv:2604.13986",
+    "note": null
+  },
+  "n_targets": {
+    "value": 188,
+    "claim": "cited",
+    "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+    "note": "compounds, not genes"
+  },
+  "id_mapping": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "count_kind": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "h5ad not opened this session"
+  },
+  "ntc_field": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "vehicle controls must be verified before use"
+  },
+  "guides": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "no CRISPR guides"
+  },
+  "cells_per_target": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "n_genes_measured": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "remote_bytes": {
+    "value": 2526631614,
+    "claim": "cited",
+    "source": "https://zenodo.org/records/13350497",
+    "note": null
+  },
+  "temporary_bytes": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": null
+  },
+  "checksum": {
+    "value": "md5:c9e70629505d98c7ca1a837f62b14e89",
+    "claim": "cited",
+    "source": "https://zenodo.org/records/13350497",
+    "note": null
+  },
+  "panel_overlap": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "drug names are not gene targets; overlap with the 300 is not defined this way"
+  },
+  "training_overlap": {
+    "value": {
+      "pretraining_only": true,
+      "not_knockdown_labels": true
+    },
+    "claim": "derived",
+    "source": "docs/PIANO_OPERATIVO_2026-09-15.md",
+    "note": null
+  },
+  "extra_target_sample": {
+    "value": null,
+    "claim": "missing",
+    "source": null,
+    "note": "no extra-target sample retained"
+  },
+  "decision": "exclude",
+  "decision_note": "Pharmacological. Useful at most as pretraining or a context descriptor. No knockdown labels. Not in the first acquisition wave.",
+  "recorded_utc": "2026-09-15T12:05:41Z"
+}

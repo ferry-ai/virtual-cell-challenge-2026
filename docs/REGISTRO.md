@@ -5,8 +5,9 @@ Un documento non diventa falso tutto insieme: di solito resta valido in gran par
 sbaglia in due punti. Qui si segna lo stato del documento e, quando serve, si apre una
 scheda che elenca le singole affermazioni in discussione.
 
-Aggiornato il 2026-09-12 (compilazione iniziale, vedi
-[CP-0001](checkpoints/0001-ricostruzione-stato-2026-09-12.md)).
+Aggiornato il 2026-09-15 (ultima riga: piano operativo, audit Jiang/Jurkat, protocollo congelato). Compilazione
+iniziale il 2026-09-12, vedi
+[CP-0001](checkpoints/0001-ricostruzione-stato-2026-09-12.md).
 
 ## Stati
 
@@ -50,6 +51,59 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 | Percorso | Stato | Sostituito da | Cosa resta utile / nota | Scheda |
 |---|---|---|---|---|
+| `docs/RL/README.md` | attuale | — | Appunti RL rinviati su richiesta dell'utente: allocazione del calcolo, calibrazione e affinamento generativo; ipotesi e criteri di ripresa, nessuna adozione o esecuzione | — |
+| `docs/checkpoints/0016-piano-operativo-audit-protocollo.md` | attuale | — | Audit Jiang/Jurkat, protocollo congelato, disco sotto soglia per TGFB, campagna orch avviata. Non adotta Jiang né Jurkat | — |
+| `configs/eval_protocol.yaml` | attuale | — | Protocollo di valutazione congelato (D-032). Seed 4242 riservato. Non è un risultato | — |
+| `src/vcc2026/eval_protocol.py`, `src/vcc2026/runtime.py`, `src/vcc2026/remote_job.py`, `src/vcc2026/source_card.py` | attuale | — | Protocollo, inventario runtime, fetch riprendibile, scheda sorgente | — |
+| `scripts/61_probe_jiang.py`, `scripts/62_reconcile_nadig.py`, `scripts/63_runtime_preflight.py`, `scripts/64_source_cards.py`, `scripts/65_eval_protocol_pilot.py`, `scripts/66_primeflow_feasibility.py`, `scripts/67_remote_ingest.py`, `scripts/68_remote_catalog.py` | attuale | — | 67 = contratto HepG2; 68 = piano/catalogo multi-sorgente. 68 eseguito in locale **plan-only** (nessun 65,8 GiB sul portatile) | — |
+| `tests/test_eval_protocol.py`, `tests/test_remote_job.py`, `tests/test_remote_ingest.py`, `tests/test_remote_catalog.py` | attuale | — | Leakage, fetch, gate Jiang, catalogo byte/md5, persistenza Colab, checkpoint immutabile | — |
+| `src/vcc2026/remote_ingest.py` | attuale | — | Job HepG2: parità, resume, gate TGFB | — |
+| `src/vcc2026/remote_catalog.py`, `configs/remote_catalog.yaml` | attuale | — | Catalogo blocchi con byte/md5 da evidenza. 61,3 GB del profilo ≠ 65.830.941.948 byte misurati | — |
+| `notebooks/remote_ingest_hepg2.ipynb` | attuale | — | Un solo notebook: preflight, selezione, fetch, QC, deriva. `FETCH_BLOCKS is None` auto-sceglie dopo il preflight (HepG2 se manca, poi K562 GW se Drive è montato). Vuoto `[]` resta plan-only. HepG2 si salta se size/md5 ok. Il run Colab `catalog_2026-09-15T143641Z` era plan-only per `FETCH_BLOCKS=[]`, non un fallimento del fetcher | — |
+| `reports/remote_catalog_2026-09-15/` | attuale | — | Piano locale. HepG2 complete (file già sul disco). Nessun download nuovo. Non è una prova Colab | — |
+| `reports/remote_2026-09-15/` | attuale | — | Parità HepG2 ok, resume ok, Jiang skip per disco. Istruzioni in `COME_APRIRE.md` | — |
+| `reports/jiang_2026-09-15/` | attuale | — | Record Zenodo, HEAD, file piccoli, scheda, proposta TGFB. Copertura pannello missing | — |
+| `reports/nadig_reconcile_2026-09-15/` | attuale | — | HepG2 GEO=mirror per forma e NTC; Jurkat mirror 1,29 GB, 0/300 | — |
+| `reports/runtime_2026-09-15/` | attuale | — | 7,81 GiB RAM, 11,3 GiB liberi; TGFB non sta sotto il pavimento da 10 GiB | — |
+| `reports/source_cards_2026-09-15/` | attuale | — | Schede Replogle SC, H1, CD4, Srivatsan, McFaline, Tahoe, scBaseCount | — |
+| `reports/eval_protocol_2026-09-15/` | attuale | — | 12 split, 0 fail, tutti sviluppo. Ancore HepG2: solo smoke su finestra, non un risultato | — |
+| `reports/primeflow_2026-09-15/` | attuale | — | Fattibilità da preprint; codice/pesi missing; defer | — |
+| `configs/orchestrator/briefs/vcc2026-jurkat-audit.yaml`, `configs/orchestrator/briefs/vcc2026-pharma-atlas-audit.yaml` | attuale | — | Incarichi preparati, non avviati: l'orchestratore serializza il browser | — |
+| `docs/REGIA_PARALLELA_2026-09-15.md` | attuale | — | Mandato esplicito dell'utente: concentrare oggi tutti i filoni, solo training oltre oggi; otto incarichi, proprietà file, dipendenze e formato delle consegne. Avvio agenti a cura dell'utente | — |
+| `docs/PIANO_OPERATIVO_2026-09-15.md` | attuale | — | Piano approvato: audit, elenco ufficiale, protocollo e incarichi. Jiang/Jurkat prioritari. La riga «nessun run dei worker» è superata da CP-0016 (campagna Jiang avviata). Nessun nuovo training | — |
+| `configs/orchestrator/briefs/vcc2026-jiang-audit.yaml` | attuale | — | Audit Jiang; pannello allegato. Campagna live `20260915T115742Z-vcc2026-jiang-audit-v1-a81104`: DeepSeek 3 fasi, Kimi timeout ×2, fermata `service_unavailable`. Puntatore in `reports/orchestrator/jiang-audit-20260915.md` | — |
+| `configs/orchestrator/briefs/vcc2026-validation-review.yaml`, `configs/orchestrator/briefs/vcc2026-primeflow-audit.yaml` | attuale | — | Incarichi delimitati preparati per review metodologica e ricerca primaria; non avviati | — |
+| `docs/SVD_E_RANGO.md` | attuale | — | SVD randomizzata configurabile e confronto di rango 16/32/64/128. Implementato / eseguito / misurato / ipotizzato tenuti distinti. Non adotta la randomizzata né un rango >16 | — |
+| `reports/ricerca_dataset_20260915.md` | attuale | — | Dossier di una campagna `scientific_research` dell'orchestratore (run `20260914T222203Z-campagna-dati-v1-037cbd`). Non è una misura di questo repository: i livelli di consultazione restano dichiarati (D-023). Non usato da CP-0015 | — |
+| `docs/checkpoints/0015-svd-randomizzata-e-rango.md` | attuale | — | Misura della sostituzione esatta/randomizzata e del rango; regola di banda prefissata non soddisfatta | — |
+| `reports/svd_2026-09-15/` | attuale | — | Fattorizzazione isolata, confronto predittivo s001/s002, tabelle e split. I `results.json` restano in `artifact_root` | — |
+| `reports/rank_2026-09-15/` | attuale | — | Tabella, riepilogo, split e `rank_summary.json` del run r001 | — |
+| `configs/benchmark_svd_exact.yaml`, `configs/benchmark_svd_randomized.yaml`, `configs/benchmark_rank.yaml` | attuale | — | Protocolli eseguiti: sostituzione SVD e confronto di rango. Non sono una proposta di default | — |
+| `scripts/60_compare_factorization.py` | attuale | — | Confronto esatta/randomizzata su una matrice reale e, se dati due run, sulle predizioni | — |
+| `tests/test_factorization.py` | attuale | — | Riproducibilità, forme, centratura, bootstrap pooled, aggregazioni di segno opposto | — |
+| `src/vcc2026/benchmark/factorization.py` | attuale | — | Unico punto di SVD troncata del benchmark; `exact` predefinito | — |
+| `docs/ENCODER_INPUTS.md` | attuale | — | Specifica degli input di contesto e bersaglio per il modo B (gene mai perturbato). Descrittori verificati su file. **La sua unica estensione, il GO slim, è stata eseguita e scartata il 2026-09-15** ([CP-0014](checkpoints/0014-go-slim-e-gpu.md)): il resto della pagina resta valido come specifica e inventario | — |
+| `reports/encoder_inputs_2026-09-14/` | attuale | — | Probe isolato: HEAD, download, mapping HGNC, copertura GO/STRING. Cache pesante in `C:/Users/ferra/vcc2026-data/interim/encoder_inputs_2026-09-14/` | — |
+| `scripts/56_probe_target_descriptors.py` | attuale | — | Probe dei descrittori di modo B. Eseguito il 2026-09-14; non modifica il benchmark. Numerato 56 perché 52–55 sono l'ingestione HepG2 in corso | — |
+| `reports/hepg2_2026-09-14/` | attuale | — | Acquisizione (URL, byte, md5 verificato), audit del contenuto, tabella contesto×bersaglio e confronto generatore×predittore di HepG2 Nadig. Non modificati da CP-0012 | — |
+| `docs/BENCHMARK_TRE_CONTESTI.md` | attuale | — | Benchmark a tre contesti (K562, RPE1, HepG2): implementato / eseguito / misurato / ipotizzato tenuti distinti. Non adotta un'architettura e non dichiara un vincitore | — |
+| `reports/benchmark_3ctx_2026-09-14/` | attuale | — | Tabella comparativa, universi genici, riepilogo e manifesti del run m002 a tre contesti. Pesi e `results.json` restano in `artifact_root` | — |
+| `configs/benchmark_3ctx.yaml` | attuale | — | Protocollo del benchmark a tre contesti: tre fold esterni, alpha vietato, universo per intersezione, regola di combinazione delle sorgenti fissata prima dei run | — |
+| `configs/benchmark_3ctx_hepg2_predictions.yaml` | attuale | — | Derivato dal precedente: stesso protocollo, solo il fold con HepG2 fuori e le predizioni salvate, per l'esperimento generatore×predittore | — |
+| `scripts/52_audit_hepg2.py`, `scripts/53_build_hepg2_signatures.py`, `scripts/54_context_target_table.py`, `scripts/55_control_profile.py` | attuale | — | Acquisizione e ingestione HepG2: audit, firme con controlli appaiati per batch, censimento contesto×bersaglio, profilo basale. Eseguiti il 2026-09-14 | — |
+| `scripts/57_generator_x_predictor.py` | attuale | — | Confronto generatore×predittore sulle sei metriche, cellule HepG2 reali. Numerato 57 perché 56 è la sonda dei descrittori | — |
+| `reports/go_slim_2026-09-15/` | attuale | — | Pilot dei descrittori GO slim (run g002): tabella comparativa, split, riepilogo con i confronti appaiati, e il riassunto della tabella congelata. Esito: estensione **scartata** dalla regola fissata prima ([CP-0014](checkpoints/0014-go-slim-e-gpu.md)) | — |
+| `reports/gpu_2026-09-15/` | attuale | — | Audit di prontezza GPU: che cosa esegue ogni passo numerico, quanto costa alle forme reali, e lo scaling della SVD. Misure su questa macchina a carico scarico | — |
+| `docs/CONSEGNA_GPU.md` | attuale | — | Pacchetto trasferibile per la macchina con GPU del compagno: file da copiare, dipendenze, comandi, e che cosa la GPU accelera davvero (il solo backend DE dello scorer) | — |
+| `configs/benchmark_go_slim.yaml`, `requirements-gpu.txt` | attuale | — | Protocollo del pilot GO slim, con la regola decisionale e il braccio permutato; dipendenze aggiuntive per una macchina CUDA, deliberatamente senza torch | — |
+| `scripts/58_build_go_slim_table.py`, `scripts/59_gpu_readiness.py` | attuale | — | Tabella congelata simbolo→140 bit GO con gli sha256 delle quattro fonti; audit GPU misurato. Eseguiti il 2026-09-15 | — |
+| `docs/PROSPETTO_MODELLO_2026-09-14.md` | attuale | — | Proposta: ricostruzione trial, blocchi modulari, evidenze e protocollo comparativo. Nessun vantaggio misurato né architettura adottata. Il confronto è stato eseguito in [CP-0011](checkpoints/0011-primo-benchmark-modulare.md), esito inconcludente | — |
+| `docs/BENCHMARK_MODULARE.md` | attuale | — | Primo confronto modulare: implementato / eseguito / misurato / ipotizzato tenuti distinti. Non adotta un'architettura | — |
+| `reports/benchmark_2026-09-14/` | attuale | — | Inventario, split riassunti, tabella comparativa, specifica del bundle mancante, manifesti del pilot m001. I pesi e `results.json` restano in `artifact_root` | — |
+| `src/vcc2026/benchmark/` | attuale | — | Protocollo comune, universo genico, modelli A–E, runner. Coperti da `tests/test_modular_benchmark.py` | — |
+| `scripts/50_inventory_data.py`, `scripts/51_run_modular_pilot.py` | attuale | — | Inventario e pilot. Eseguiti il 2026-09-14; i risultati leggeri sono in `reports/benchmark_2026-09-14/` | — |
+| `tests/test_modular_benchmark.py` | attuale | — | Maschere, leakage, alpha 0,1974, salvataggio/caricamento, identità delle predizioni | — |
+| `configs/benchmark.yaml` | attuale | — | Protocollo del pilot: metrica primaria, alpha vietato, universo, seed, budget. Non è un risultato | — |
 | `docs/PROGETTO.md` | attuale | — | Punto di ingresso: mappa dello stato | — |
 | `docs/DECISIONI.md` | attuale | — | Decisioni attive e quando riaprirle | — |
 | `docs/REGISTRO.md` | attuale | — | Questo file | — |
@@ -101,6 +155,21 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `tests/test_packaging_parity.py` | attuale | — | 41 test di parità contro `vcc prep` 0.2.0 su fixture a forma ufficiale completa: stessa accettazione, stesso rifiuto, stesse codifiche HDF5. Circa 98 s | — |
 | `notebooks/kaggle_package_trial01.ipynb` | attuale | — | Percorso remoto per la stessa implementazione su Kaggle CPU. **Non eseguito**: il run locale è riuscito. Resta pronto per il set finale D/E/F | — |
 | `tests/test_pipeline_contracts.py` | attuale | — | 42 test sui contratti che fallirebbero in silenzio: maschere contro zeri, fuga di bersagli negli split, sovrascrittura di manifesti, livelli di verifica del registry | — |
+| `docs/ORCHESTRATORE.md` | attuale | — | Architettura dell'orchestratore locale per le consultazioni multi-modello. Dichiara in testa che cosa e' stato eseguito e che cosa e' solo implementato: gli adattatori verso i servizi reali non sono mai stati usati | — |
+| `src/orchestrator/` | attuale | — | Il codice dell'orchestratore: motore, contratto di risposta, stato persistente, adattatori, rapporto, CLI. Solo libreria standard, tranne PyYAML per le configurazioni YAML e Playwright per gli adattatori web | — |
+| `configs/orchestrator/` | attuale | — | Configurazione operativa, profili dei servizi web, incarichi e risposte preparate a mano per le prove a secco. I profili di DeepSeek e Kimi sono `verified: true` dal 13 settembre, ciascuno citando l'invio reale che lo giustifica. **Solo DeepSeek dichiara un controllo di ricerca sul web** (`ricerca_intelligente`); su Kimi non ne è mai stato osservato uno | — |
+| `scripts/orch.cmd` | attuale | — | Wrapper della console `orch`, come `py.cmd`: UTF-8 e `src/` sul PYTHONPATH. Usa `VCC2026_ORCH_PYTHON` se impostata, per tenere Playwright fuori dall'ambiente di analisi | — |
+| `tests/test_orchestrator.py` | attuale | — | 95 test sui modi in cui l'orchestratore potrebbe sbagliare in silenzio: incarico modificato senza versione, materiale fuori perimetro, risposta che prova a cambiare le regole, doppio invio dopo un crash, accordo scambiato per verifica, servizio morto sostituito | — |
+| `reports/orchestrator/` | attuale | — | Copie di esecuzioni dell'orchestratore tenute come evidenza. Le prove del 13 e del 14 settembre sono **a secco**. Puntatore alla campagna Jiang live del 15 settembre: `reports/orchestrator/jiang-audit-20260915.md` (run in `VCC2026_DATA_ROOT`, fermata `service_unavailable`) | — |
+| `docs/RICERCA_SCIENTIFICA.md` | attuale | — | La modalità `scientific_research`: tre fasi, livelli di provenienza, deduplicazione delle fonti, regola delle piste, dossier. Dichiara in testa riga per riga che cosa è stato provato e che cosa no. Introdotta da [CP-0010](checkpoints/0010-modalita-ricerca-scientifica.md) | — |
+| `src/orchestrator/research/` | attuale | — | Il codice della modalità di ricerca: contratto, prompt delle tre fasi, scelta deterministica delle piste, dossier e rapporto, motore. Non importa `oracle` né alcun client HTTP, e c'è un test per entrambe le cose | — |
+| `tests/test_orchestrator_research.py` | attuale | — | 65 test sulle promozioni che non si annuncerebbero: una ricerca dichiarata che diventa osservata, un riferimento che diventa una fonte, una fonte solo elencata che diventa letta, un'opinione che diventa un risultato riferito dagli autori, due articoli che diventano uno | — |
+| `reports/orchestrator/prova-a-secco-ricerca-2026-09-14/` | attuale | — | La campagna di ricerca di prova, per intero: dossier, piste, rapporto, eventi e cartelle dei passi. **I contenuti delle risposte sono inventati**, con DOI a prefisso `10.0000/finta-`. Dimostra il motore, non gli adattatori reali | — |
+| `docs/oracle/` | attuale | — | Contratto del prototipo di oracolo numerico pairwise sulla loss. Indipendente dall'orchestratore; non valuta ipotesi biologiche | — |
+| `reports/oracle/` | attuale | — | Prima esecuzione della CLI sull'esempio a tre casi. Fixture sintetici, non dati della gara. Introdotti da [CP-0007](checkpoints/0007-oracle-pairwise-loss.md) | — |
+| `src/oracle/` | attuale | — | Verificatore `oracle.pairwise_loss` 0.2.1, sola libreria standard, frazioni esatte. Non importa `orchestrator` né `vcc2026`. Correzioni in [CP-0008](checkpoints/0008-oracle-fraction-regression.md) e [CP-0009](checkpoints/0009-oracle-json-number-csv-error.md) | — |
+| `tests/test_oracle_pairwise_loss.py` | attuale | — | Test su fixture sintetici; i risultati attesi sono calcolati a mano, non generati dal verificatore | — |
+
 
 ## Dati
 
@@ -127,6 +196,17 @@ dipendenza di runtime, ricreabile).
 | `reports/candidate_verification/*.json` (sonde remote) | derivato | attuale | Sonde remote con budget di byte; manifest con sha256 | Script 20, 21, 23, 24, 26 | Fotografie di endpoint pubblici a una certa data: le sorgenti possono cambiare |
 | `.runtime-deps/pyarrow` | temporaneo | attuale | Installato solo per la sonda Orion; ignorato da git | Reinstallazione | Ricreabile: candidato alla pulizia quando la sonda Orion non serve più |
 | `C:/Users/ferra/vcc2026-data/artifacts/` (e001, e002, n001..n003) | derivato | attuale | Prodotto dagli stadi 40/41/42 il 2026-09-12; ogni run ha il suo manifesto con hash e ambiente | Rilanciando gli stadi con un `--run-id` nuovo | 519 MB di firme piu 3x112 MB di bundle a singola cellula. Fuori dal repository (D-001); i risultati leggeri sono copiati in `reports/pipeline/` |
+| `C:/Users/ferra/vcc2026-data/artifacts/m001` | derivato | attuale | Pilot modulare 2026-09-14: split, pesi, `results.json` | `scripts/51_run_modular_pilot.py --run-id` nuovo | Fuori dal repository (D-001). Tabella, inventario, universo e specifica del bundle copiati in `reports/benchmark_2026-09-14/` |
+| `C:/Users/ferra/vcc2026-data/raw/nadig_hepg2/NadigOConner2024_hepg2.h5ad` | grezzo | attuale | Mirror scPerturb di GSE264667, 850.590.740 byte, **md5 verificato** contro Zenodo (`af2be47f…`); URL, data e licenza in `reports/hepg2_2026-09-14/acquisition.json` | Riscaricabile dallo stesso endpoint | 0,85 GB compressi contro 5,2 GB della copia GEO: la scelta del mirror è dettata da D-005 (≥10 GiB liberi). Non modificare in place |
+| `C:/Users/ferra/vcc2026-data/artifacts/e003` | derivato | attuale | Firme HepG2 (2.346 bersagli), profilo basale NTC, QC e censimento. Controlli appaiati per batch | `scripts/53_build_hepg2_signatures.py --run-id` nuovo | Stessa definizione di log2FC delle firme e001, così un modello che legge le due sorgenti legge la stessa quantità |
+| `C:/Users/ferra/vcc2026-data/artifacts/m002`, `m003`, `m004` | derivato | attuale | Benchmark a tre contesti: split, pesi, `results.json`. m003 è il solo fold con HepG2 fuori, con le predizioni salvate; m004 ripete m002 aggiungendo i confronti appaiati con/senza contesto e l etichetta di ampiezza corretta, con le stesse 108 righe numeriche | `scripts/51_run_modular_pilot.py --run-id` nuovo | Fuori dal repository (D-001). I file leggeri sono copiati in `reports/benchmark_3ctx_2026-09-14/` |
+| `C:/Users/ferra/vcc2026-data/artifacts/m002-crashed-row-axis-2026-09-14` | derivato | storico | Primo tentativo del run a tre contesti, fermato dal controllo di coerenza fra righe ed etichette in `TrainArrays` | Non rieseguire: è la prova del guasto | Tenuto perché documenta che il controllo ha funzionato, non perché contenga risultati |
+| `C:/Users/ferra/vcc2026-data/interim/hepg2_bundle/` | derivato | attuale | Bundle a singola cellula (reale e predetti) e output dello scorer per il confronto generatore×predittore | `scripts/57_generator_x_predictor.py` con un `--out` nuovo | Cellule reali di controllo condivise da tutti i bundle, come chiede il contratto |
+| `C:/Users/ferra/vcc2026-data/artifacts/g001`, `g002` | derivato | attuale | Tabella GO slim congelata (140 termini, 2.693 simboli) e run del pilot dei descrittori | `scripts/58_build_go_slim_table.py` e `scripts/51_run_modular_pilot.py` con `--run-id` nuovo | Fuori dal repository (D-001). I file leggeri sono copiati in `reports/go_slim_2026-09-15/` |
+| `C:/Users/ferra/vcc2026-data/artifacts/s001`, `s002`, `r001` | derivato | attuale | s001 SVD esatta, s002 randomizzata, r001 confronto di rango. Stessi 160 bersagli; s001/s002 stessi split | `scripts/51_run_modular_pilot.py` con `--run-id` nuovo | Fuori dal repository (D-001). I file leggeri sono in `reports/svd_2026-09-15/` e `reports/rank_2026-09-15/` |
+| `C:/Users/ferra/vcc2026-data/interim/encoder_inputs_2026-09-14/` | grezzo | attuale | HGNC, GOA GAF/GPI, GO slim, go-basic.obo, STRING info e physical.links; sha256 in `reports/encoder_inputs_2026-09-14/downloads.json` | `scripts/56_probe_target_descriptors.py` | Snapshot pubblico per i descrittori di modo B. Non modificare in place |
+| `reports/jiang_2026-09-15/small_files/` | grezzo | attuale | Readme e liste pathway Jiang (file < 2 MB). Gli RDS non sono stati scaricati | `scripts/61_probe_jiang.py` | Non sono matrici di counts |
+| `C:/Users/ferra/vcc2026-data/interim/remote_bundle_2026-09-15/` | derivato | attuale | Snapshot codice 536 KB + `gene_names.csv` + notebook. Nessuna matrice | `scripts/67_remote_ingest.py --prepare-bundle` | Da caricare su Colab/Kaggle; HepG2 e Jiang si scaricano da Zenodo là |
 
 ## Schede di revisione
 
@@ -577,3 +657,5 @@ Controllo automatico della coerenza del registro:
 ```bash
 python scripts/31_check_docs.py
 ```
+
+

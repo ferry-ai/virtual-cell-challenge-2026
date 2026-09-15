@@ -1,0 +1,214 @@
+{
+  "changes": [],
+  "checks_suggested": [],
+  "confidence": "medium",
+  "dropped_keys": [],
+  "evidence": [],
+  "issues": [],
+  "objections": [],
+  "open_questions": [
+    "Quante perturbazioni del nostro pannello siano coperte da GSE999001: la pagina di accessione non elenca i bersagli"
+  ],
+  "proposal": "Ho cercato su GEO e su Europe PMC, con filtri su singola cellula e CRISPRi. Due candidati emergono nel perimetro. Il primo (accessione finta GSE999001, linea Jurkat) dichiara nella pagina di accessione file di matrice a singola cellula, oltre ai conteggi di guide: e' il candidato che soddisfa P1, P2 e P3. Il secondo, nel contesto squamoso, ha la pagina di accessione con i soli conteggi di guide, quindi non soddisfa P3 per come e' scritto il perimetro. Non ho verificato scaricando i file: ho letto la pagina di accessione e la sezione Data Availability dell'articolo collegato. Una terza query, sui risultati negativi, non l'ho eseguita per mancanza di tempo nella fase.",
+  "research": {
+    "agreements": [],
+    "claims": [
+      {
+        "about_hypothesis": "H1",
+        "contradicted_by": [],
+        "flags": [],
+        "id": "C-6866c31f23",
+        "limits": "e' cio' che l'archivio dichiara; non ho scaricato il file e non so se sia completo",
+        "locator": "pagina di accessione, sezione Supplementary file",
+        "nature": "reported_by_authors",
+        "phase": 0,
+        "role": "",
+        "step_id": "",
+        "supported_by": [
+          "F-a54a3e23a8"
+        ],
+        "text": "L'accessione GSE999001 elenca, oltre ai conteggi di guide, una matrice di espressione a singola cellula in formato mtx."
+      },
+      {
+        "about_hypothesis": "H1",
+        "contradicted_by": [],
+        "flags": [],
+        "id": "C-d4ba0dda31",
+        "limits": "vale sui 112 bersagli con almeno 200 cellule; sugli altri gli autori non si pronunciano",
+        "locator": "Fig. 3b e testo a p. 7",
+        "nature": "reported_by_authors",
+        "phase": 0,
+        "role": "",
+        "step_id": "",
+        "supported_by": [
+          "F-b558b4be5b"
+        ],
+        "text": "Gli autori riportano che il segno della risposta si conserva fra linee T diverse per i geni a effetto forte."
+      },
+      {
+        "about_hypothesis": "H1",
+        "contradicted_by": [],
+        "flags": [],
+        "id": "C-64ee0cbe7e",
+        "limits": "e' una conseguenza operativa, non un risultato degli autori",
+        "locator": "",
+        "nature": "worker_interpretation",
+        "phase": 0,
+        "role": "",
+        "step_id": "",
+        "supported_by": [
+          "F-a54a3e23a8"
+        ],
+        "text": "Se la matrice RNA e' depositata, il collo di bottiglia del progetto si sposta dalla disponibilita' del dato alla sua estrazione mirata."
+      }
+    ],
+    "complementary": [],
+    "confidence": "medium",
+    "contradictions": [],
+    "dropped_keys": [],
+    "gaps": [
+      {
+        "id": "G-313f55f494",
+        "missing": "Non so se il file di matrice dichiarato da GSE999001 sia effettivamente servito senza autenticazione.",
+        "phase": 0,
+        "role": "",
+        "search_that_would_close_it": "Una richiesta della sola intestazione HTTP sull'URL del file, senza scaricarlo",
+        "step_id": ""
+      },
+      {
+        "id": "G-106bf2f58a",
+        "missing": "Non ho cercato nulla nel contesto squamoso oltre alla seconda query.",
+        "phase": 0,
+        "role": "",
+        "search_that_would_close_it": "Ripetere la seconda query su ArrayExpress e su Zenodo, dove finiscono i depositi che non passano da GEO",
+        "step_id": ""
+      }
+    ],
+    "hypotheses": [
+      {
+        "alternatives": [
+          "L'accessione elenca il file ma il deposito e' sotto accesso controllato"
+        ],
+        "id": "H1",
+        "initial_evidence": [
+          "F1 dichiara una matrice a singola cellula"
+        ],
+        "phase": 0,
+        "proposed_tests": [
+          "Richiedere l'intestazione HTTP del file dell'accessione per vedere se e' servito senza autenticazione"
+        ],
+        "role": "",
+        "statement": "Esiste almeno un Perturb-seq CRISPRi pubblico in linea T matura con matrice RNA scaricabile.",
+        "status": "supported_declared",
+        "step_id": ""
+      },
+      {
+        "alternatives": [
+          "I supplementi contengono solo pseudobulk aggregato"
+        ],
+        "id": "H2",
+        "initial_evidence": [],
+        "phase": 0,
+        "proposed_tests": [
+          "Aprire i supplementi del candidato squamoso e guardare la granularita' delle tabelle"
+        ],
+        "role": "",
+        "statement": "Dove la matrice RNA manca dall'archivio, e' ricostruibile da un supplemento o da un repository secondario.",
+        "status": "open",
+        "step_id": ""
+      }
+    ],
+    "issues": [],
+    "leads": [],
+    "open_questions": [
+      "Quante perturbazioni del nostro pannello siano coperte da GSE999001: la pagina di accessione non elenca i bersagli"
+    ],
+    "operator_requests": [],
+    "phase": 0,
+    "role": "",
+    "saturation_claim": "",
+    "search_gaps": [],
+    "searches": [
+      {
+        "filters": "Expression profiling by high throughput sequencing; 2019-2026",
+        "id": "Q-3c922db2d7",
+        "note": "41 risultati, ne ho aperti i primi 8",
+        "phase": 0,
+        "provenance": "declared_by_worker",
+        "query": "(Perturb-seq OR CRISPRi) AND (Jurkat OR \"primary T cell\") AND single-cell RNA-seq",
+        "role": "",
+        "service": "GEO DataSets",
+        "status": "executed",
+        "step_id": ""
+      },
+      {
+        "filters": "OPEN_ACCESS:y; 2020-2026",
+        "id": "Q-b139ed827b",
+        "note": "17 risultati, 3 pertinenti",
+        "phase": 0,
+        "provenance": "declared_by_worker",
+        "query": "CRISPRi single-cell squamous carcinoma keratinocyte perturbation atlas",
+        "role": "",
+        "service": "Europe PMC",
+        "status": "executed",
+        "step_id": ""
+      },
+      {
+        "filters": "nessuno",
+        "id": "Q-b161d6962f",
+        "note": "la lascio proposta: cercare i risultati negativi e' il modo piu' rapido di scoprire se l'assenza e' reale o di pubblicazione",
+        "phase": 0,
+        "provenance": "proposed",
+        "query": "\"no detectable transcriptional effect\" CRISPRi T cell negative results",
+        "role": "",
+        "service": "Europe PMC",
+        "status": "not_executed",
+        "step_id": ""
+      }
+    ],
+    "sources": [
+      {
+        "access_note": "pagina di accessione letta per intero; i file non sono stati scaricati",
+        "authors": "deposito di archivio",
+        "consulted": "abstract",
+        "doi": "",
+        "found_via": "prima query",
+        "id": "F-a54a3e23a8",
+        "key": "url:https://ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE999001",
+        "key_kind": "url",
+        "local_id": "F1",
+        "phase": 0,
+        "role": "",
+        "step_id": "",
+        "title": "GSE999001: CRISPRi Perturb-seq in Jurkat T cells",
+        "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE999001",
+        "year": "2024"
+      },
+      {
+        "access_note": "open access; lette Methods e Data Availability",
+        "authors": "Aaltonen, Neri, Okafor",
+        "consulted": "full_text_or_section",
+        "doi": "10.0000/finta-2026-0001",
+        "found_via": "prima query",
+        "id": "F-b558b4be5b",
+        "key": "doi:10.0000/finta-2026-0001",
+        "key_kind": "doi",
+        "local_id": "F2",
+        "phase": 0,
+        "role": "",
+        "step_id": "",
+        "title": "Perturb-seq in primary human T cells reveals lineage-restricted regulators",
+        "url": "",
+        "year": "2024"
+      }
+    ],
+    "step_id": "",
+    "summary": "Un candidato in linea T matura con matrice RNA dichiarata scaricabile, un secondo candidato squamoso con solo conteggi di guide.",
+    "synthesis": "Ho cercato su GEO e su Europe PMC, con filtri su singola cellula e CRISPRi. Due candidati emergono nel perimetro. Il primo (accessione finta GSE999001, linea Jurkat) dichiara nella pagina di accessione file di matrice a singola cellula, oltre ai conteggi di guide: e' il candidato che soddisfa P1, P2 e P3. Il secondo, nel contesto squamoso, ha la pagina di accessione con i soli conteggi di guide, quindi non soddisfa P3 per come e' scritto il perimetro. Non ho verificato scaricando i file: ho letto la pagina di accessione e la sezione Data Availability dell'articolo collegato. Una terza query, sui risultati negativi, non l'ho eseguita per mancanza di tempo nella fase.",
+    "unsupported_assumptions": []
+  },
+  "resolved_objections": [],
+  "route_hint": null,
+  "subtasks": [],
+  "summary": "Un candidato in linea T matura con matrice RNA dichiarata scaricabile, un secondo candidato squamoso con solo conteggi di guide."
+}

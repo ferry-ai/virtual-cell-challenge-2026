@@ -1,0 +1,31 @@
+{
+  "che_cosa": "Diagnostica di kimi.com dopo che l'operatore ha riferito caricamenti infiniti. Sola lettura, nessun messaggio inviato, nessun tentativo di accesso.",
+  "quando_utc": "2026-09-13T17:57Z",
+  "misure": {
+    "richieste_fallite": 0,
+    "errori_http": [
+      {
+        "stato": 401,
+        "url": "/apiv2/kimi.gateway.storage.v1.StorageService/GetUserStorageQuota"
+      },
+      {
+        "stato": 401,
+        "url": "/apiv2/kimi.gateway.membership.v2.MembershipService/GetSubscriptionStats"
+      }
+    ],
+    "console": "due errori, che sono gli stessi 401; il resto sono avvisi WebGPU innocui",
+    "lingua_dichiarata_dalla_pagina": "zh-CN",
+    "reso_in_secondi": 5.4
+  },
+  "lettura": {
+    "misurato": "la pagina si carica e la rete funziona; le due chiamate che richiedono un account rispondono 401, cioe' la sessione non e' autenticata",
+    "interpretazione": "i caricamenti infiniti descritti dall'operatore sono verosimilmente lo stesso 401 senza un messaggio d'errore in interfaccia. E' un'interpretazione: i 401 li ho visti al caricamento, non premendo i pulsanti",
+    "escluso": "blocco geografico, verifica anti-bot, risorse non raggiungibili: zero richieste fallite"
+  },
+  "tentativo_fallito": {
+    "cosa": "locale it-IT nel profilo, per ottenere l'interfaccia in italiano",
+    "esito": "non ha funzionato: document.documentElement.lang resta zh-CN",
+    "conclusione": "kimi.com non sceglie la lingua dall'header Accept-Language; restano il menu Language dell'applicazione o le impostazioni dell'account"
+  },
+  "causa_della_traduzione_mancante": "Playwright avvia Chrome con --disable-features=...,Translate,...: il traduttore del browser era spento nella finestra aperta dall'orchestratore. Corretto per `orch login`, che ora rimuove quella lista."
+}

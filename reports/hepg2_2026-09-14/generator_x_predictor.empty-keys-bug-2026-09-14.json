@@ -1,0 +1,129 @@
+{
+  "built_utc": "2026-09-14T21:10:45.285267+00:00",
+  "context": "HepG2",
+  "design": "2 generators x predictors (arms found + a null floor)",
+  "real_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle\\real_hepg2.h5ad",
+  "n_targets": 25,
+  "targets": [
+    "CCND1",
+    "CDC73",
+    "DBR1",
+    "DDX54",
+    "DYNC1I2",
+    "GRB2",
+    "HAMP",
+    "HIPK1",
+    "IK",
+    "MCM10",
+    "MDN1",
+    "MED11",
+    "MED14",
+    "MYBL2",
+    "NOMO3",
+    "POLR2I",
+    "PRPF18",
+    "QRSL1",
+    "RBM28",
+    "RFC3",
+    "RPL29",
+    "SYMPK",
+    "THRAP3",
+    "TWF1",
+    "WDR33"
+  ],
+  "cells_per_target": 40,
+  "n_ntc_cells": 400,
+  "target_selection": "the held-out fold's own test targets, filtered only by having enough cells to sample, then a seeded random subset. Never filtered by effect size.",
+  "gene_axis": {
+    "axis_used": "the source's own 9,624 genes, shared by prediction and truth",
+    "n_genes": 9624,
+    "n_on_official_axis": 9023,
+    "note": "this is a local comparison; the official 18,533-gene axis is not reconstructed and no leaderboard score is produced"
+  },
+  "prediction_coverage_mean": 0.937551953449709,
+  "scorer": {
+    "expected_cell_eval2": "0.16.0",
+    "cell_eval2": "0.16.0",
+    "vcc_cli": "0.2.0",
+    "matches_decision_D008": true,
+    "de_backends_available": {
+      "pdex": null,
+      "gpudge": null,
+      "cuda_available": false
+    },
+    "de_backend_resolved": "scanpy",
+    "de_backend_note": "de.backend='auto' picks gpudge (CUDA) > pdex > scanpy. The engines do not agree exactly, so a DE-based metric is only comparable across runs that resolved the same backend. Record it beside every number."
+  },
+  "normalisation": {
+    "anchors_used": false,
+    "why": "there are no published baseline/reference anchors for an external dataset; raw aggregates only, explicitly distinct from a VCC score"
+  },
+  "results": [
+    {
+      "predictor": "modular_frozen",
+      "generator": "current_poisson_pooled",
+      "metrics_raw": {},
+      "by_metric": {},
+      "normalized": false,
+      "prediction_source": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\m003\\models\\new_context_seen_target_k562_rpe1_to_hepg2_seed2026\\modular_frozen.predictions.npz",
+      "median_compositional_shift_log2": 0.052928508222083843,
+      "pred_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle\\pred_modular_frozen_current_poisson_pooled.h5ad"
+    },
+    {
+      "predictor": "modular_frozen",
+      "generator": "ntc_anchored",
+      "metrics_raw": {},
+      "by_metric": {},
+      "normalized": false,
+      "prediction_source": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\m003\\models\\new_context_seen_target_k562_rpe1_to_hepg2_seed2026\\modular_frozen.predictions.npz",
+      "median_compositional_shift_log2": 0.052928508222083843,
+      "pred_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle\\pred_modular_frozen_ntc_anchored.h5ad"
+    },
+    {
+      "predictor": "null_no_change",
+      "generator": "current_poisson_pooled",
+      "metrics_raw": {},
+      "by_metric": {},
+      "normalized": false,
+      "prediction_source": "constructed here: delta = 0 for every target",
+      "median_compositional_shift_log2": 0.0,
+      "pred_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle\\pred_null_no_change_current_poisson_pooled.h5ad"
+    },
+    {
+      "predictor": "null_no_change",
+      "generator": "ntc_anchored",
+      "metrics_raw": {},
+      "by_metric": {},
+      "normalized": false,
+      "prediction_source": "constructed here: delta = 0 for every target",
+      "median_compositional_shift_log2": 0.0,
+      "pred_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle\\pred_null_no_change_ntc_anchored.h5ad"
+    },
+    {
+      "predictor": "shrunk_transfer",
+      "generator": "current_poisson_pooled",
+      "metrics_raw": {},
+      "by_metric": {},
+      "normalized": false,
+      "prediction_source": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\m003\\models\\new_context_seen_target_k562_rpe1_to_hepg2_seed2026\\shrunk_transfer.predictions.npz",
+      "median_compositional_shift_log2": 0.003548769927378162,
+      "pred_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle\\pred_shrunk_transfer_current_poisson_pooled.h5ad"
+    },
+    {
+      "predictor": "shrunk_transfer",
+      "generator": "ntc_anchored",
+      "metrics_raw": {},
+      "by_metric": {},
+      "normalized": false,
+      "prediction_source": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\m003\\models\\new_context_seen_target_k562_rpe1_to_hepg2_seed2026\\shrunk_transfer.predictions.npz",
+      "median_compositional_shift_log2": 0.003548769927378162,
+      "pred_bundle": "C:\\Users\\ferra\\vcc2026-data\\interim\\hepg2_bundle\\pred_shrunk_transfer_ntc_anchored.h5ad"
+    }
+  ],
+  "limits": [
+    "Raw metrics on one external context. Not a VCC score, not a submission.",
+    "A better generator says nothing about whether the predictor is adequate.",
+    "The NTC-anchored generator cannot lift a gene that is zero in the drawn control cell: that is its own bias, reported rather than hidden.",
+    "Control cells are real and identical in every bundle, as the contract asks."
+  ]
+}

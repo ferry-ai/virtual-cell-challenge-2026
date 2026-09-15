@@ -1,0 +1,66 @@
+{
+  "run_id": "hepg2_2026-09-14",
+  "stage": "54_context_target_table",
+  "started_utc": "2026-09-14T20:26:28.732634+00:00",
+  "finished_utc": "2026-09-14T20:26:28.851023+00:00",
+  "seed": null,
+  "config": {
+    "signature_dirs": [
+      "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e001\\signatures",
+      "C:\\Users\\ferra\\vcc2026-data\\artifacts\\e003\\signatures"
+    ]
+  },
+  "inputs": {},
+  "outputs": {
+    "table": {
+      "path": "reports\\hepg2_2026-09-14\\context_target_table.csv",
+      "exists": true,
+      "bytes": 595061,
+      "mtime_utc": "2026-09-14T20:26:28.597726+00:00",
+      "sha256": "7229bc2c845127bebc0b83a9d654d743722e467e9862fdff1772fcc0378c1005",
+      "sha256_mode": "full"
+    },
+    "summary": {
+      "path": "reports\\hepg2_2026-09-14\\context_target_summary.json",
+      "exists": true,
+      "bytes": 3177,
+      "mtime_utc": "2026-09-14T20:26:28.732634+00:00",
+      "sha256": "5dfe6e2638182f9e844a783f912c9aeb2d03d91d8a5cee8f7e4a118562874b14",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "n_contexts": 3,
+    "targets_shared_all_contexts": 2319,
+    "pairwise": {
+      "HepG2&K562": 2346,
+      "HepG2&RPE1": 2319,
+      "K562&RPE1": 2354
+    }
+  },
+  "notes": [
+    "Observed and supported are different columns and stay that way."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:/Users/ferra/vcc2026-data"
+    }
+  }
+}

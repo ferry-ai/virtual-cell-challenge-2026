@@ -1,0 +1,31 @@
+# Incarico di collaudo. Innocuo di proposito: non contiene nulla del progetto VCC.
+# Serve a far girare il ciclo su una domanda la cui risposta e' controllabile senza
+# fidarsi di nessun modello: 24 e' scritto qui dentro prima che qualcuno risponda.
+id: prova-fattoriale
+version: 1
+title: "Prova a secco - zeri finali di 100 fattoriale"
+question: >
+  Quanti zeri finali ha 100! ? Dai il numero e la regola generale per n!, mostrando i
+  passaggi.
+context: >
+  Compito di collaudo dell'orchestratore locale. Non usare strumenti esterni: bastano
+  carta e penna. La risposta serve a verificare che il ciclo funzioni, non a imparare
+  qualcosa di nuovo.
+expected_result: >
+  Una risposta che contenga la riga "RISULTATO: <numero>" e che mostri esplicitamente le
+  divisioni 100/5 e 100/25 della regola di Legendre.
+route: offline
+
+acceptance_criteria:
+  - id: C1
+    text: "Il numero di zeri finali di 100! dichiarato e' 24"
+    check: {kind: numeric, pattern: 'RISULTATO:\s*(\d+)', equals: 24}
+  - id: C2
+    text: "La spiegazione mostra la divisione per 5"
+    check: {kind: regex, pattern: '100\s*[/:]\s*5'}
+  - id: C3
+    text: "La spiegazione mostra anche il contributo dei multipli di 25"
+    check: {kind: regex, pattern: '100\s*[/:]\s*25'}
+
+limits:
+  max_rounds: 4
