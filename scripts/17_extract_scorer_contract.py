@@ -8,7 +8,15 @@ effectively cannot, so the downside of a wrong prediction is not symmetric
 across metrics. This pulls those numbers out of the package so the asymmetry is
 a recorded fact, and so a version bump that moves it fails visibly.
 
-Read-only. Writes reports/scorer/vcc2026_contract.json.
+Read-only with respect to the package; writes one file into `--out`.
+
+An existing contract is never overwritten: it is a dated record of what the
+installed scorer said that day. `reports/scorer/vcc2026_contract.json` is kept
+precisely because it is superseded -- its `floor_note` was wrong, the corrected
+re-extraction is `reports/scorer_2026-09-12/`, and the registry (R-002) relies on
+both still existing. Re-extract into a new dated destination:
+
+    scripts/py.cmd scripts/17_extract_scorer_contract.py --out reports/scorer_<date>
 
     scripts/py.cmd scripts/17_extract_scorer_contract.py
 """
@@ -28,6 +36,13 @@ def main() -> None:
     parser.add_argument("--out", type=Path,
                         default=Path(__file__).resolve().parents[1] / "reports/scorer")
     args = parser.parse_args()
+    out = args.out / "vcc2026_contract.json"
+    if out.exists():
+        raise SystemExit(
+            f"{out} exists; an extracted contract is evidence of what the installed "
+            f"scorer said on one day. Write to a new path, e.g. "
+            f"--out reports/scorer_<date>."
+        )
     args.out.mkdir(parents=True, exist_ok=True)
 
     import cell_eval2
@@ -68,7 +83,6 @@ def main() -> None:
             "underestimation can still lose positive points. It is not a free-shrinkage guarantee."
         ),
     }
-    out = args.out / "vcc2026_contract.json"
     out.write_text(json.dumps(contract, indent=2), encoding="utf-8")
 
     print(f"cell-eval2 {contract['cell_eval2_version']}, vcc-cli {contract['vcc_cli_version']}")
