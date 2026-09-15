@@ -1,9 +1,15 @@
 # Roadmap — ordinata per valore informativo diviso costo
 
-Aggiornata il 2026-09-13, dopo
+Aggiornata il 2026-09-15, dopo
 [CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md),
-[CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) e
-[CP-0005](checkpoints/0005-packaging-streaming-trial01.md).
+[CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md),
+[CP-0005](checkpoints/0005-packaging-streaming-trial01.md) e
+[CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md).
+
+> **L'ordine è cambiato il 15 settembre**, dopo il primo punteggio. La sezione
+> «Priorità dal 15 settembre» qui sotto è quella operativa: R-8, R-9 e R-10 sono
+> **proposte**, non decisioni, e nessuna richiede un'acquisizione o una sottomissione.
+> R-1..R-7 restano validi e non sono stati riscritti.
 
 > **R-0 — chiuso il 13 settembre.** Era: impacchettare le previsioni già generate,
 > bloccato perché `vcc prep` chiede 33,5 GiB contro i 7,81 della macchina. Risolto
@@ -25,6 +31,130 @@ Le incertezze numerate sono quelle di [PROGETTO.md](PROGETTO.md) §4.
 Ogni voce dichiara: ipotesi, input, implementazione, dipendenze, risorse, criterio di
 successo, artefatto atteso. Un passo senza criterio di successo non è un passo, è un
 desiderio.
+
+---
+
+## Priorità dal 15 settembre, dopo il primo punteggio
+
+Il punteggio misurato (0,045929: `pds` 0,413, `mse` 0 al pavimento, `fid` −0,182,
+le altre tre indistinguibili da zero — [CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md) §3.2)
+dice una cosa precisa: **il modello distingue le perturbazioni ma sbaglia ampiezza e
+direzione sui singoli geni**. Le tre voci nuove attaccano quella frase, e nessuna delle
+tre richiede di scaricare dati nuovi o di consumare quota.
+
+| Ordine | Voce | Costo | Che cosa sblocca |
+|---|---|---|---|
+| 1 | R-10 ancore `b` e `r` | ore, nessun dato | converte ogni metrica grezza locale in punti di gara |
+| 2 | R-9 nullo **generato** | ore di DE, solo dati locali | separa l'artefatto del generatore dal segnale trasferito |
+| 3 | R-8 ricentratura sulla baseline | minuti, firme già costruite | spiega perché `mse` e `fid` stanno sotto la baseline |
+| 4 | R-1 bundle di valutazione | ~0,9 GB | le sei metriche VCC su effetti **veri** |
+| 5 | R-2 calibrazione sulle sei metriche | ore di DE | chiude la metà aperta di D-006 |
+| 6 | R-3 CD4, poi R-4 ablation | GB e banda | l'unica copertura del pannello |
+
+## R-8 — Ricentrare la previsione sulla baseline del punteggio
+
+**Perché.** Le nostre calibrazioni misurano l'errore rispetto a «non prevedere nulla»,
+cioè al profilo NTC: `pooled_mse_null_zero_response` in
+[`calibration_c002.json`](../reports/trial_2026-09-12/calibration_c002.json) è
+letteralmente `mean(truth²)`. Lo zero della gara è un'altra cosa — secondo la
+specifica ufficiale citata in `README.md` è la **media dei costrutti perturbati**, non
+la media dei controlli — e la differenza fra le due origini è la risposta *comune* a
+ogni perturbazione. Le nostre firme la contengono (Δ è calcolato contro l'NTC della
+sorgente, quindi Δ = comune + specifico) e α = 0,197 la comprime insieme al resto.
+
+**Ipotesi, non misura.** Che comprimere anche la componente comune sia ciò che porta
+`mse` sotto la baseline (grezzo 1,231 contro `b` ≈ 0,996 stimato) e `fid` a −0,182, e
+che due ampiezze separate — una per la componente comune, una per quella specifica —
+battano l'ampiezza unica a parità di tutto il resto.
+
+- **Dipendenza bloccante, e va fatta prima:** verificare la definizione di `b` sulla
+  specifica ufficiale e nel codice di `cell-eval2` installato. Se `b` non è la media
+  dei costrutti perturbati, questa voce decade. **Oggi è una lettura del README, non
+  una nostra misura.**
+- **Input:** le firme di `e001` già costruite; nessuna acquisizione.
+- **Implementazione:** decomporre per sorgente Δ = c + s con c = media sui bersagli;
+  estendere `ShrunkTransfer` con `alpha_common` e `alpha_specific`; in
+  `44_calibrate_transfer.py` la griglia resta in forma chiusa, perché l'MSE è
+  quadratica in entrambe. Valutare **anche** contro l'origine giusta: l'errore rispetto
+  al predittore «c per tutti», non rispetto a zero.
+- **Risorse:** lo stadio 44 costa 27,6 s. Due parametri invece di uno non cambiano
+  l'ordine di grandezza.
+- **Criterio di successo:** su bersagli tenuti fuori, (α_c, α_s) scelti in CV annidata
+  battono il predittore «c per tutti» con intervallo bootstrap su bersagli disgiunto.
+  **Se non lo battono si registra e si tiene l'ampiezza unica**: vorrà dire che la
+  componente comune non trasferisce, che è un risultato.
+- **Artefatto:** `reports/pipeline/recentering_<run>.json` + checkpoint.
+
+## R-9 — Il nullo generato: quanto del punteggio è artefatto del generatore
+
+**Perché.** [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.8 ha
+misurato che le cellule generate rilevano il 4–6% di geni in più dei controlli reali
+**a effetto previsto zero**, e il log2FC efficace mediano dopo calibrazione è 0,0246.
+Sono quantità dello stesso ordine, e `fid` guarda proprio i geni che la previsione
+chiama significativi: se quelle chiamate nascono dal campionamento e non dal segnale,
+la loro direzione è casuale e `fid` scende sotto la baseline. È l'incertezza 12 di
+[PROGETTO.md](PROGETTO.md) §4, ed è misurabile **senza dati nuovi**.
+
+- **Ipotesi:** che un bundle generato a effetto previsto **zero**, passato allo scorer
+  contro i controlli reali, produca già `fid` e `jac` sotto la baseline. Se sì,
+  l'artefatto è la causa principale e si corregge nel generatore.
+- **Input:** i controlli ufficiali di un contesto; nessuna acquisizione.
+- **Implementazione:** variante di `42_null_calibration.py` che, invece di
+  ricampionare cellule reali, usa `45_generate_prediction.py` con effetto nullo. Poi
+  ripetere con dispersione aumentata e con effetto **sparsificato** (solo i geni con
+  |Δ|/SE sopra soglia si muovono), per vedere quale riduce le chiamate spurie.
+- **Risorse:** il DE domina — 392 s per 6 perturbazioni con `scanpy`. **Installare
+  `pdex` prima** (D-014), è l'intervento con il rapporto beneficio/costo più alto di
+  tutta la roadmap.
+- **Criterio di successo:** il numero di geni chiamati significativi da un bundle
+  generato a effetto zero, misurato, con il confronto contro il nullo reale già in
+  [`null_calibration_A.json`](../reports/pipeline/null_calibration_A.json) (Jaccard
+  0,000, 5 perturbazioni su 6 escluse per «empty gate»). Una differenza netta fra i due
+  è la misura che serve.
+- **Artefatto:** `reports/pipeline/generated_null_<run>.json` + checkpoint.
+
+## R-10 — Ancore `b` e `r` dalla classifica pubblica
+
+**Perché.** Senza `b` e `r` ogni misura locale resta in unità che non si confrontano
+con la gara. [CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md) §3.5 mostra
+che la classifica pubblica espone grezzo **e** scalato per ogni squadra e metrica: due
+righe con grezzi diversi determinano `b` e `r`. La derivazione preliminare su due righe
+per `mse` (`b` ≈ 0,996, `r` ≈ 0,022) riproduce il nostro 1,231 → 0. **Non è una
+misura**: è aritmetica su due righe.
+
+- **Ipotesi:** che la formula sia esattamente `(u − b) / (r − b)` con `b` e `r`
+  costanti per metrica dentro una partizione.
+- **Implementazione:** raccogliere molte righe, stimare (`b`, `r`) per ognuna delle sei
+  metriche ai minimi quadrati, e **validare su righe tenute fuori**.
+- **Criterio di successo:** su righe non usate per la stima, lo scalato previsto cade
+  entro la precisione con cui la pagina mostra i numeri, per tutte e sei le metriche.
+  Se una metrica non torna, si registra come non risolta invece di forzarla.
+- **Artefatto:** `reports/leaderboard_<data>/anchors.json` + riga di registro. Il file
+  **non si sovrascrive**: una classifica è una fotografia datata.
+- **Attenzione:** i valori valgono per la partizione `val` e per questo pannello. Sul
+  set finale le ancore sono altre.
+
+## Calendario proposto fino al 5 novembre
+
+Proposta, non decisione. Le date fisse sono due: **22 ottobre** (rilascio del set
+finale D/E/F) e **5 novembre** (chiusura). La classifica finale dipende **solo** dal
+set finale, quindi ogni sottomissione di validazione va trattata come uno strumento di
+misura, non come un risultato.
+
+| Finestra | Lavoro | Perché lì |
+|---|---|---|
+| 15–19 set | R-10, R-9, R-8 | tutto locale: nessun download, nessuna quota |
+| 20 set – 1 ott | R-1 e R-2, con `pdex` installato per primo | prima misura sulle metriche vere |
+| 2–12 ott | R-3 (CD4), poi R-4 | l'unica copertura del pannello, e l'ablation che la giudica |
+| 13–21 ott | congelamento del candidato e **prova cronometrata** del runbook completo | il set finale non è il momento per scoprire un collo di bottiglia |
+| 22 ott | esecuzione del runbook su D/E/F | il rilascio |
+| 23 ott – 5 nov | iterazioni sul set finale, con budget di quota dichiarato | è l'unica partizione che conta per la classifica |
+
+**Regola di quota, proposta.** Due sottomissioni al giorno, una sola in volo
+([SOTTOMISSIONE.md](SOTTOMISSIONE.md) §1). Nessun invio senza (a) una domanda scritta
+prima, (b) che cosa cambierebbe nel piano ciascun esito possibile, (c) l'autorizzazione
+esplicita del proprietario. La prima sottomissione ha rispettato le tre condizioni;
+vanno mantenute anche quando la quota sembra abbondante.
 
 ---
 

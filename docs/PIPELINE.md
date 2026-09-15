@@ -1,6 +1,8 @@
 # La pipeline — architettura e come si esegue
 
-Aggiornato il 2026-09-13. Introdotta da
+Aggiornato il 2026-09-15 nella sola §5, dopo
+[CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md); il resto è del
+2026-09-13. Introdotta da
 [CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md), estesa con gli
 stadi 43–47 da [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) e con lo
 stadio 48 da [CP-0005](checkpoints/0005-packaging-streaming-trial01.md).
@@ -165,8 +167,10 @@ uno split a livello di cellula sottostimerebbe il pavimento di falsi positivi.
   ([CP-0005](checkpoints/0005-packaging-streaming-trial01.md)). Le convalide non sono
   indebolite — quelle sui metadati sono le funzioni ufficiali, chiamate direttamente —
   e i layout che non sa preservare li rifiuta invece di approssimarli (D-018).
-- **Non dimostra che il server accetti l'archivio.** Il validatore ufficiale del
-  contenitore passa e il payload è verificato contro l'input, ma l'accettazione la
-  stabilisce solo una sottomissione valutata.
-- **Non invia niente.** Nessuno stadio parla con la rete della gara. `vcc submit` è
-  scritto solo come comando in `docs/SOTTOMISSIONE.md`, mai eseguito.
+- **Non invia niente, e non è lo stadio che ha inviato.** Nessuno stadio parla con la
+  rete della gara: la sottomissione del 2026-09-13 è passata da `vcc submit`, a mano,
+  con i comandi di `docs/SOTTOMISSIONE.md` §3. Che il server accetti l'archivio non è
+  più una riserva — l'entry `PNn227rxP3bVByS37W41` è arrivata a `published` e ha un
+  punteggio ([CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md)) — ma
+  resta un'affermazione sul **formato**: la pipeline non produce da sé un punteggio
+  VCC su effetti veri, che è il primo punto di questo elenco.

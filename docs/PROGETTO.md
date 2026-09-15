@@ -1,7 +1,7 @@
 # Mappa del progetto — VCC 2026
 
 **Questo è il punto di ingresso.** Se leggi una cosa sola, leggi questa pagina.
-Aggiornata il 2026-09-12.
+Aggiornata il 2026-09-15.
 
 Le altre pagine del sistema: [checkpoint](checkpoints/INDICE.md) (cosa è successo e
 quando), [decisioni](DECISIONI.md) (cosa abbiamo scelto e quando va riaperto),
@@ -175,8 +175,27 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
     viene dal modello di dimensionamento della CLI, non da un'esecuzione nostra: la
     misura che abbiamo è il costo di lettura di anndata, 8,60 byte per valore
     memorizzato. Il numero va confermato la prima volta che `prep` gira per davvero.
+15. **Contro quale origine ci misura lo scorer.** `README.md` riporta dalla specifica
+    ufficiale che lo zero di ogni metrica è la **media dei costrutti perturbati**, non
+    la media dei controlli. Se è così, tutte le nostre calibrazioni hanno ottimizzato
+    contro l'origine sbagliata — misurano l'errore rispetto al profilo NTC — e la
+    componente di risposta **comune** a ogni perturbazione, che le firme contengono e
+    che α = 0,197 comprime, è esattamente ciò che separa le due origini. È
+    un'**ipotesi** con una conseguenza misurabile su `mse` e `fid`, e la sua premessa è
+    una lettura del README, **non una nostra verifica**: va confermata sulla specifica
+    e sul codice di `cell-eval2` prima di costruirci sopra. Roadmap R-8.
 
 ## 5. Il prossimo passo
+
+**Dal 15 settembre l'ordine di lavoro è quello di
+[ROADMAP.md](ROADMAP.md) «Priorità dal 15 settembre».** Il primo punteggio ha spostato
+la domanda: non più «riusciamo a consegnare», ma «perché quattro metriche su sei stanno
+a zero o sotto». Le prime tre voci — ancore `b` e `r` dalla classifica, nullo
+**generato** contro i controlli reali, ricentratura sulla baseline del punteggio — non
+richiedono né acquisizioni né quota, e sono lì per separare tre cause che oggi non
+sappiamo distinguere: l'artefatto del generatore, l'origine sbagliata della
+calibrazione, e l'assenza di segnale trasferibile. Le acquisizioni qui sotto restano il
+passo che sblocca tutto il resto, e non sono state fatte.
 
 Il punto 1 e il punto 4 dell'elenco sotto sono **stati eseguiti** il 12 settembre
 (CP-0003): le baseline elementari girano, sono calibrate su bersagli tenuti fuori e
@@ -217,15 +236,17 @@ Il collo di bottiglia del packaging, aperto il 12 settembre, è **chiuso dal 13*
 ([CP-0005](checkpoints/0005-packaging-streaming-trial01.md)). Non serviva una macchina
 più grande; serviva non caricare la matrice.
 
-Restano due cose, e nessuna delle due è tecnica:
+Resta una cosa sola, e non è tecnica: il chiarimento sulle regole per
+`trial-00-controls` (D-017). Un ricampionamento dei controlli reali non è la previsione
+di un modello, e le regole dicono che i controlli sono soltanto input. Fino ad allora
+quel trial non si impacchetta e non si invia.
 
-1. Il chiarimento sulle regole per `trial-00-controls` (D-017): un ricampionamento dei
-   controlli reali non è la previsione di un modello, e le regole dicono che i
-   controlli sono soltanto input. Fino ad allora quel trial non si impacchetta e non
-   si invia.
-2. L'autorizzazione a consumare quota. `docs/SOTTOMISSIONE.md` §3 ha i comandi esatti,
-   §6 la lista di controllo; nessuno dei due è stato eseguito, e **nessun server ha
-   accettato niente**: solo una sottomissione valutata lo dimostrerebbe.
+L'altra — l'autorizzazione a consumare quota — è stata data e usata il 13 settembre:
+i comandi di `docs/SOTTOMISSIONE.md` §3 e la lista di §6 sono stati eseguiti, il server
+ha accettato e ha valutato
+([CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md)). Ogni invio successivo
+resta però una decisione del proprietario: la quota è di due sottomissioni al giorno,
+una sola in volo.
 
 Il piano ordinato, con ipotesi, criteri di successo e costi stimati, sta in
 [ROADMAP.md](ROADMAP.md). L'architettura della pipeline è in [PIPELINE.md](PIPELINE.md);
