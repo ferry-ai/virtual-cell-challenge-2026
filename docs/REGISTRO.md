@@ -112,6 +112,13 @@ Tipi: `grezzo` (sorgente scaricata, da non modificare), `derivato` (prodotto da 
 script nostro), `campione` (piccolo estratto di verifica), `temporaneo` (cache o
 dipendenza di runtime, ricreabile).
 
+Alcune righe qui sotto indicano un percorso dentro `reports/` che **un clone non
+contiene**: è un artefatto pesante che `.gitignore` tiene fuori (`*.h5ad`, `*.vcc`, …)
+e di cui viaggia solo il manifesto, con URL, byte e sha256. `scripts/31_check_docs.py`
+accetta il percorso quando il manifesto gli sta accanto, e continua a segnalarlo quando
+non c'è: così il controllo dà lo stesso esito su un clone e sulla macchina che ha
+prodotto il file.
+
 | Identificatore | Tipo | Stato | Provenienza | Riproducibile con | Nota |
 |---|---|---|---|---|---|
 | `C:/Users/ferra/vcc2026-data/raw/vcc_2026_controls.zip` e `raw/controls/` | grezzo | attuale | Bundle ufficiale della gara; `manifest.json` presente nella cartella. Checksum **non** ricalcolato da questo registro | Nuovo download dal sito ufficiale | Sorgente primaria: non modificare mai |

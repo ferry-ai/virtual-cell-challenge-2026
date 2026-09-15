@@ -74,11 +74,38 @@ def table_by_first_column(text: str, name: str, path: Path, errors: list[str]):
     return None, []
 
 
+def data_suffixes() -> set[str]:
+    """Extensions `.gitignore` keeps out of the repository, read from the file itself."""
+    path = REPO_ROOT / ".gitignore"
+    if not path.exists():
+        return set()
+    found = set()
+    for line in path.read_text(encoding="utf-8").splitlines():
+        entry = line.strip()
+        if entry.startswith("*.") and not any(ch in entry[2:] for ch in "*?[]/"):
+            found.add(entry[1:])
+    return found
+
+
+def documented_outside_repo(target: Path) -> bool:
+    """A heavy artifact `.gitignore` excludes, vouched for by the manifest beside it.
+
+    D-001 keeps data out of the repository, so a clone never contains the `.h5ad` a
+    registry row names — only its manifest travels. Accepting the pair keeps the check
+    meaningful, because a path with no manifest beside it is still a broken path, and
+    keeps the result the same on a fresh clone as on the machine that produced it.
+    """
+    if target.suffix not in data_suffixes():
+        return False
+    return (target.parent / f"{target.stem}.manifest.json").exists()
+
+
 def path_exists(raw: str) -> bool:
     """Repo-relative path, glob allowed. Absolute paths are outside our control."""
     if any(ch in raw for ch in "*?["):
         return any(REPO_ROOT.glob(raw))
-    return (REPO_ROOT / raw).exists()
+    target = REPO_ROOT / raw
+    return target.exists() or documented_outside_repo(target)
 
 
 def is_repo_relative(raw: str) -> bool:
