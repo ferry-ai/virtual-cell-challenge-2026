@@ -39,6 +39,11 @@ from .factorization import (
     factorize,
     ranks_compatible_with_shape,
 )
+from .gate import (
+    gate_arms_from_config,
+    run_gate_arm,
+    split_presence_summary,
+)
 from .generator_spec import missing_bundle_spec
 from .inventory import build_inventory, write_inventory
 from .models import (
@@ -203,6 +208,60 @@ def _pick_rank_ridge(
     return best, table
 
 
+def _inner_val_targets(split, targets_train, contexts_train, seed):
+    """The validation targets the transfer selection is given, for one split.
+
+    `_run_arm` derives them inline; the gate arms have to be selected on exactly
+    the same ones, and recomputing them here keeps one definition instead of two
+    that could drift apart.
+    """
+    unique = (
+        sorted(set(targets_train)) if contexts_train is not None else list(targets_train)
+    )
+    _, inner_val = _val_split(unique, split.inner_val_targets, seed)
+    return tuple(inner_val) if inner_val else split.inner_val_targets
+
+
+def _fit_shrunk_transfer(
+    *,
+    cfg: dict,
+    split,
+    train_sigs: SignatureSet,
+    internal_sigs: SignatureSet | None,
+    multi_context: bool,
+    sources_by_context,
+    internal_dest_context,
+    inner_val_targets,
+):
+    """Fit the transfer arm. Extracted so a gate arm can reuse the same base.
+
+    A gate arm is `shrunk_transfer` times a weight, so it must start from the
+    identical model: same prior_sd grid, same internal pair, same amplitude. The
+    run checks afterwards that this base scores exactly like the arm's own row.
+    """
+    models_cfg = cfg["models"]
+    amp_cfg = cfg["amplitude"]
+    if multi_context and sources_by_context and len(sources_by_context) > 1:
+        return select_multi_source_transfer(
+            train_sigs,
+            sources_by_context=sources_by_context,
+            inner_dest_context=internal_dest_context,
+            inner_val_targets=inner_val_targets,
+            prior_sd_grid=models_cfg["shrunk_transfer"]["prior_sd_grid"],
+            predetermined_alpha=amp_cfg["predetermined_alpha"],
+            forbidden_alpha=amp_cfg["forbidden_trial_alpha"],
+        )
+    return select_shrunk_transfer(
+        train_sigs,
+        source=split.train_sources[0],
+        inner_dest=internal_sigs,
+        inner_val_targets=inner_val_targets,
+        prior_sd_grid=models_cfg["shrunk_transfer"]["prior_sd_grid"],
+        predetermined_alpha=amp_cfg["predetermined_alpha"],
+        forbidden_alpha=amp_cfg["forbidden_trial_alpha"],
+    )
+
+
 def _run_arm(
     *,
     arm: str,
@@ -307,27 +366,18 @@ def _run_arm(
     model_obj = None
 
     if arm == "shrunk_transfer":
-        if multi_context and sources_by_context and len(sources_by_context) > 1:
-            model_obj, calib = select_multi_source_transfer(
-                train_sigs,
-                sources_by_context=sources_by_context,
-                inner_dest_context=internal_dest_context,
-                inner_val_targets=tuple(inner_val) if inner_val
-                else split.inner_val_targets,
-                prior_sd_grid=models_cfg["shrunk_transfer"]["prior_sd_grid"],
-                predetermined_alpha=amp_cfg["predetermined_alpha"],
-                forbidden_alpha=amp_cfg["forbidden_trial_alpha"],
-            )
-        else:
-            model_obj, calib = select_shrunk_transfer(
-                train_sigs,
-                source=split.train_sources[0],
-                inner_dest=internal_sigs,
-                inner_val_targets=tuple(inner_val) if inner_val else split.inner_val_targets,
-                prior_sd_grid=models_cfg["shrunk_transfer"]["prior_sd_grid"],
-                predetermined_alpha=amp_cfg["predetermined_alpha"],
-                forbidden_alpha=amp_cfg["forbidden_trial_alpha"],
-            )
+        model_obj, calib = _fit_shrunk_transfer(
+            cfg=cfg,
+            split=split,
+            train_sigs=train_sigs,
+            internal_sigs=internal_sigs,
+            multi_context=bool(multi_context),
+            sources_by_context=sources_by_context,
+            internal_dest_context=internal_dest_context,
+            inner_val_targets=(
+                tuple(inner_val) if inner_val else split.inner_val_targets
+            ),
+        )
         train_time = clock.stop()
         inf = PhaseClock(f"infer:{arm}")
         preds = []
@@ -763,6 +813,33 @@ def run_pilot(
     split_docs = []
     per_target_store = {}
 
+    def record(protocol, direction_id, seed, arm, row, scored) -> None:
+        row["preprocess_seconds"] = preprocess_time["seconds"]
+        per_target_store[(protocol, direction_id, seed, arm)] = scored["per_target"]
+        row["metrics"] = {k: v for k, v in scored.items() if k != "per_target"}
+        table_rows.append({k: row[k] for k in (
+            "model", "uses_context", "protocol", "direction_id", "seed",
+            "pooled_mse_vs_null", "pearson_median", "coverage_targets",
+            "n_total_params", "n_trainable_params", "train_seconds",
+            "infer_seconds", "peak_rss_bytes", "artifact_bytes",
+            "calibration_label", "context_identifiable", "verdict_eligible",
+        )})
+        all_results.append(row)
+        gc.collect()
+
+    # Expression-gate arms, when the config declares them. They are not models:
+    # each one is the base transfer arm times a weight read from a context's
+    # control cells, so they need that arm to have run on the same split.
+    gate_cfg = cfg.get("expression_gate") or None
+    gate_arms = gate_arms_from_config(gate_cfg) if gate_cfg else []
+    if gate_arms:
+        base_arm_name = str(gate_cfg.get("base_arm", "shrunk_transfer"))
+        if base_arm_name not in {a for a, _l, _c, _v in arm_plan}:
+            raise ValueError(
+                f"expression_gate.base_arm is {base_arm_name!r} but that arm is not in "
+                f"the arm plan; the gate could not be checked against its own base"
+            )
+
     seeds = list(cfg["pilot"]["seeds"])
     for protocol in cfg["protocols"]:
         for direction in cfg["directions"]:
@@ -938,6 +1015,14 @@ def run_pilot(
                 }
                 payload["query_ntc_used"] = True
                 payload["query_ntc_shared_across_arms"] = True
+                if gate_arms:
+                    # Where the genes and the targets of this fold sit in CPM,
+                    # before any gate: the gate's room is a measurement, not an
+                    # assumption about it.
+                    payload["expression_presence"] = split_presence_summary(
+                        profiles, universe,
+                        sorted(set(split.train_targets) | set(split.test_targets)),
+                    )
                 split_path.write_text(json.dumps(jsonable(payload), indent=2), encoding="utf-8")
                 split_docs.append(str(split_path))
 
@@ -978,20 +1063,51 @@ def run_pilot(
                         internal_dest_context=internal_dest_context,
                         factorization=fold_spec,
                     )
-                    row["preprocess_seconds"] = preprocess_time["seconds"]
-                    key = (protocol, split.direction_id, int(seed), arm)
-                    per_target_store[key] = scored["per_target"]
-                    slim = {k: v for k, v in scored.items() if k != "per_target"}
-                    row["metrics"] = slim
-                    table_rows.append({k: row[k] for k in (
-                        "model", "uses_context", "protocol", "direction_id", "seed",
-                        "pooled_mse_vs_null", "pearson_median", "coverage_targets",
-                        "n_total_params", "n_trainable_params", "train_seconds",
-                        "infer_seconds", "peak_rss_bytes", "artifact_bytes",
-                        "calibration_label", "context_identifiable", "verdict_eligible",
-                    )})
-                    all_results.append(row)
-                    gc.collect()
+                    record(protocol, split.direction_id, int(seed), arm, row, scored)
+
+                if gate_arms:
+                    base_row = next(
+                        (r for r in all_results
+                         if (r["protocol"], r["direction_id"], r["seed"], r["model"])
+                         == (protocol, split.direction_id, int(seed), base_arm_name)),
+                        None,
+                    )
+                    inner_val_targets = _inner_val_targets(
+                        split, train_row_targets, train_row_contexts, int(seed)
+                    )
+                    base_model, base_calib = _fit_shrunk_transfer(
+                        cfg=cfg,
+                        split=split,
+                        train_sigs=train_sigs,
+                        internal_sigs=internal_sigs,
+                        multi_context=multi_context,
+                        sources_by_context=sources_by_context,
+                        internal_dest_context=internal_dest_context,
+                        inner_val_targets=inner_val_targets,
+                    )
+                    for gate_arm in gate_arms:
+                        row, scored = run_gate_arm(
+                            arm=gate_arm,
+                            cfg=cfg,
+                            split=split,
+                            universe=universe,
+                            train_sigs=train_sigs,
+                            base_model=base_model,
+                            base_calib=base_calib,
+                            sources_by_context=sources_by_context,
+                            internal_dest_context=internal_dest_context,
+                            inner_val_targets=inner_val_targets,
+                            profiles=profiles,
+                            Y_test=Y_test,
+                            targets_test=list(split.test_targets),
+                            seed=int(seed),
+                            out_dir=arm_dir,
+                            base_row=base_row,
+                        )
+                        record(
+                            protocol, split.direction_id, int(seed),
+                            gate_arm.name, row, scored,
+                        )
 
     # Paired differences vs shrunk_transfer and vs compact_mlp, on the same split.
     paired = []
@@ -1106,6 +1222,8 @@ def run_pilot(
             {"arm": a, "uses_context": c, "variant": v} for a, _l, c, v in arm_plan
         ],
         "descriptor_variants": variants_cfg,
+        "expression_gate": gate_cfg,
+        "decision_rule": cfg.get("decision_rule"),
         "forbidden_trial_alpha": FORBIDDEN_TRIAL_ALPHA,
         "not_a_vcc_score": True,
         "factorization": factorization_from_config(

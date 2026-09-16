@@ -38,3 +38,5 @@ aggiunge da sé la riga qui sotto.
 | [0014](0014-go-slim-e-gpu.md) | 2026-09-15 | GO slim scartato dalla sua stessa regola; la GPU non tocca questo codice | esperimento | — |
 | [0015](0015-svd-randomizzata-e-rango.md) | 2026-09-15 | SVD randomizzata misurata; il rango oltre 16 non trasferisce | esperimento | — |
 | [0016](0016-piano-operativo-audit-protocollo.md) | 2026-09-15 | Piano operativo: audit sorgenti e protocollo di valutazione congelato | cambio-di-strategia | — |
+| [0017](0017-gate-espressione-destinazione.md) | 2026-09-16 | Gate di espressione sul contesto di destinazione: misurato, non promosso | esperimento | — |
+| [0018](0018-drive-storage-confermato.md) | 2026-09-16 | Grezzi pesanti già su Google Drive: si collegano, non si scaricano | osservazione | — |

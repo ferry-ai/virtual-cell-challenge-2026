@@ -1,7 +1,27 @@
 # Mappa del progetto — VCC 2026
 
 **Questo è il punto di ingresso.** Se leggi una cosa sola, leggi questa pagina.
-Aggiornata il 2026-09-15.
+Aggiornata il 2026-09-16.
+
+**Pianificazione del 16 settembre:** due workflow paralleli, entrambi proposte da
+approvare. [Implementazione](PIANO_IMPLEMENTATIVO_2026-09-16.md): incarichi, scadenze e
+regole di accettazione per arrivare a un candidato competitivo.
+[Comprensione](PIANO_COMPRENSIONE_2026-09-16.md): stato, esperimenti, criticità e
+studio, per i ricercatori. Si appoggiano sulla fotografia della classifica in
+`reports/leaderboard_2026-09-16/`. Dal 17 settembre i due piani si preparano ogni
+mattina alle 8 con la skill di progetto `piano-mattutino` (`/piano-mattutino`), che
+parte da un'attività pianificata dell'app Claude e produce solo pianificazione. Dal
+piano sigillato parte una catena fissa, una volta al giorno: Codex rivede il piano e
+scrive un foglio-prompt, e Claude implementa il passo scelto su un branch locale
+([CICLO_GIORNALIERO.md](CICLO_GIORNALIERO.md)).
+
+**Dati grezzi pesanti, 16 settembre pomeriggio:** il proprietario dichiara che
+`K562_gwps_raw_singlecell_01.h5ad` e `NadigOConner2024_hepg2.h5ad` sono già sul suo
+Google Drive (5 TB). Da ora quei due file **si collegano dal runtime remoto, non si
+scaricano**, e il portatile resta fuori dal percorso come prima (D-005). Le dimensioni
+dichiarate tornano con il catalogo, ma md5 e percorso delle copie non sono verificati.
+Attenzione: con le impostazioni predefinite il notebook remoto passerebbe a scaricare il
+blocco successivo ([CP-0018](checkpoints/0018-drive-storage-confermato.md)).
 
 **Pianificazione del 15 settembre:** [piano operativo](PIANO_OPERATIVO_2026-09-15.md)
 con priorità giornaliere, incarichi e verifiche per dati, remoto e modello. È una
@@ -56,6 +76,8 @@ La classifica finale dipende solo dal set finale, su tre contesti diversi (D, E,
 | Pilot dei descrittori GO slim per bersagli mai perturbati | fatto: l'estensione e **scartata** dalla regola fissata prima, e il braccio con l'annotazione permutata va come quello vero ([CP-0014](checkpoints/0014-go-slim-e-gpu.md), D-028) |
 | Verifica che il codice possa usare una GPU | fatta e **negativa**: ogni decoder e numpy scritto a mano, `torch` non e una dipendenza, e al formato attuale l'aritmetica e 1,3 s su 223. Il collo di bottiglia e algoritmico, non hardware ([CP-0014](checkpoints/0014-go-slim-e-gpu.md), D-029, [CONSEGNA_GPU.md](CONSEGNA_GPU.md)) |
 | SVD randomizzata contro esatta, e confronto di rango 16/32/64/128 | fatta: la randomizzata **non** supera la banda prefissata sulle predizioni (4 fold su 48); il rango >16 scelto internamente **peggiora** il lowrank sul test. Default invariato: SVD esatta, griglia {8, 16} ([CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md), D-029, D-030, [SVD_E_RANGO.md](SVD_E_RANGO.md)) |
+| Gate di espressione scritto a mano (G1 simmetrico, G2 asimmetrico, G3 sul bersaglio) con i due controlli obbligatori | fatto: **non promosso** dalla regola fissata prima del run. La selezione interna sceglie «non fare niente» in 30 righe su 54, e dove un gate aiuta, quello costruito sulla **sorgente** aiuta quanto o più di quello costruito sulla destinazione ([CP-0017](checkpoints/0017-gate-espressione-destinazione.md), D-033) |
+| Grezzi pesanti (K562 genome-wide a singola cellula, HepG2) sul Google Drive del proprietario | **dichiarato** il 16 settembre, non ancora verificato da un run: si collegano dal runtime remoto, non si scaricano. Dimensioni coerenti con il catalogo; md5 e percorso delle copie da verificare. Nessun dataset è adottato per questo ([CP-0018](checkpoints/0018-drive-storage-confermato.md)) |
 
 **Il 13 settembre 2026 è stata inviata la prima sottomissione, ed è stata valutata:
 punteggio 0,045929, posizione 446 su 920 squadre**
@@ -133,6 +155,14 @@ stata ancora messa alla prova.
 | Sulla matrice di training 320 × 6.477 del fold K562+RPE1 → HepG2, rango 16: randomizzata 9,74× sulla sola SVD, errore rel. sui valori singolari 1,05%, ma le due ricostruzioni di rango 16 differiscono del 18,5% (angolo max 39°); il rango 16 cattura il 50% della varianza di *questa* matrice | misura | `reports/svd_2026-09-15/factorization_comparison.json`, [CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md) |
 | Sostituzione randomizzata vs esatta sulle predizioni (48 righe, stessi split): 4 fold fuori dalla banda prefissata 0,01, tutti frozen con contesto, segni misti. Verdetto: non compatibile come drop-in. Orologio 331 s → 207 s; picco RSS ~456 MiB in entrambi | misura | `reports/svd_2026-09-15/prediction_comparison.json` |
 | Griglia di rango {16,32,64,128}: il lowrank sceglie 64 su tutti i fold seen e perde 0,14–0,35 di MSE/nullo sul test contro {8,16}, IC senza zero nei tre contesti. Il frozen "sceglie" 128 su una griglia interna piatta | misura | `reports/rank_2026-09-15/rank_summary.json` |
+| Il gate di espressione non passa la sua regola: «batte ShrunkTransfer in tutti i fold» vale in **1 split su 6** per tutte e tre le varianti. Il permutato batte il gate vero in 2 split su 6 (G1), e il gate costruito sulla sorgente lo batte in 4 su 6 (G1) | misura | `reports/expression_gate_2026-09-16/decision.json` |
+| La scelta del gate non è stabile fra due seed che differiscono solo per i 32 bersagli di validazione interna: identità scelta in 23 righe su 27 con seed 2026 e in 7 su 27 con seed 2027 | misura | `reports/expression_gate_2026-09-16/gate_rows.json` |
+| Nell'universo del banco (6.477 geni) i geni spenti non ci sono: 0–2 sotto 5 CPM per contesto, minimo 4,3–8,6 CPM. Nei contesti ufficiali è l'opposto: 8.409–8.923 geni su 18.533 sotto 5 CPM e 2.317–2.853 esattamente a zero | misura | `reports/expression_gate_2026-09-16/splits/`, `reports/expression_gate_2026-09-16/context_presence.json` |
+| Un gene a 1 CPM è contato 368–389 volte nei controlli di un contesto ufficiale (3,68–3,89·10⁸ molecole su 18.400 cellule): su quella scala uno zero è quasi sempre biologia, non strumento | misura | `reports/expression_gate_2026-09-16/context_presence.json` |
+| Le 54 righe dei nove bracci originali del run `x001` sono identiche a quelle di `m002`, differenza assoluta massima 0,0: stesso protocollo, stessi split, stessa metrica | misura | `reports/expression_gate_2026-09-16/decision.json`, campo `reproduction` |
+| Il file K562 genome-wide a singola cellula pesa 65.830.941.948 byte, cioè **61,31 GiB** (65,83 GB). Il «61,3 GB» del profilo è la stessa dimensione in GiB, come il 9,9 e l'8,1 degli altri due file Replogle a singola cellula. L'etichetta «65,8 GiB» usata in alcuni documenti è un errore di unità | misura (aritmetica sui byte) | `src/vcc2026/external.py`, [CP-0018](checkpoints/0018-drive-storage-confermato.md) §3.3, [R-013](REGISTRO.md#r-013--dimensione-del-file-k562-a-singola-cellula-gib-contro-gb) |
+| Le copie su Drive mostrano 61,31 GB e 811,2 MB: coerenti con i byte del catalogo letti in unità binarie. Nessun md5 è stato calcolato su di esse | dichiarazione del proprietario (non misurata dal progetto) + misura (aritmetica) | `configs/remote_catalog.yaml`, [CP-0018](checkpoints/0018-drive-storage-confermato.md) §3.2 |
+| Un run remoto vede i file solo sotto `<VCC2026_DATA_ROOT>/raw/`. `skip_complete` ricalcola l'md5 dell'intero file a ogni esecuzione, e con `FETCH_BLOCKS = None` la selezione salta i file presenti e scarica il blocco successivo | interpretazione (codice letto, non eseguito) | `src/vcc2026/remote_catalog.py`, [CP-0018](checkpoints/0018-drive-storage-confermato.md) §3.4–3.6 |
 
 ## 4. Cosa non sappiamo
 
@@ -145,6 +175,9 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
    preliminare su due righe per `mse`: `b ≈ 0,996`, `r ≈ 0,022`, che riproduce il nostro
    1,231 → 0. **Non è ancora una misura**: va rifatta su molte righe e per tutte e sei
    le metriche ([CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md) §3.5).
+   Il 16 settembre la stima è stata estesa alle sei metriche su undici righe
+   (`reports/leaderboard_2026-09-16/snapshot.md`): resta un'interpretazione, con i
+   limiti scritti lì, finché non viene rifatta su più righe e per contesto.
 2. ~~**Se comprimere l'ampiezza convenga davvero**~~ — **parzialmente risolta il
    2026-09-12.** Misurato: a piena ampiezza il trasferimento è peggio del nullo, e
    l'ottimo sta intorno a un quarto dell'ampiezza fuori lignaggio
@@ -218,6 +251,18 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
     sulle predizioni del frozen.** Misurato solo `n_iter=2`. Non adottata.
 18. **Se 2.315 bersagli invece di 160 cambino la selezione di rango.** Il
     disaccordo inner/outer a 160 è già grande; non eseguito.
+19. **Se una regola di presenza aiuti dove i geni spenti esistono davvero.** Nel banco
+    a tre contesti l'universo non ne contiene (0–2 geni sotto 5 CPM per contesto),
+    quindi il gate è stato misurato dove poteva esserlo, non dove servirebbe. Nei
+    contesti ufficiali ce ne sono migliaia, ma lì non esistono risposte perturbate con
+    cui misurare, e lo scorer dichiara comunque un filtro a 5 CPM
+    ([CP-0017](checkpoints/0017-gate-espressione-destinazione.md)).
+20. **Se le copie su Drive siano integre e leggibili in tempi utili.** Il proprietario
+    dichiara che il K562 genome-wide a singola cellula e HepG2 sono su Drive, e le
+    dimensioni tornano. Ma nessun md5 è stato calcolato, il percorso delle copie non è
+    noto, e il tempo per leggere 61,31 GiB attraverso il mount di Colab non è misurato.
+    Lo dirà il primo run che le collega
+    ([CP-0018](checkpoints/0018-drive-storage-confermato.md)).
 
 ## 5. Il prossimo passo
 
@@ -256,6 +301,16 @@ lascerebbe il collo di bottiglia esattamente dov'è.
 
 HepG2 è la sede delle ancore metodologiche. Jurkat è il quarto contesto candidato
 (D-031). CD4 resta la pista di copertura, non il prossimo download.
+
+**Dal 16 settembre il K562 genome-wide a singola cellula e HepG2 non si scaricano
+più.** Stanno sul Google Drive del proprietario, e il runtime remoto li collega montando
+Drive. La procedura è in [CP-0018](checkpoints/0018-drive-storage-confermato.md) §6: le
+copie vanno sotto `<VCC2026_DATA_ROOT>/raw/`, il notebook va lanciato con
+`FETCH_BLOCKS = []`, e il `catalog_run.json` del primo run va conservato, perché è la
+prima misura del loro md5. Avere il K562 a portata di mano non lo adotta: la sua scheda
+resta `defer`, e resta vero che 61,31 GiB si leggono a blocchi, non in memoria.
+Per gli altri blocchi del catalogo (Jurkat, Jiang, RPE1 a singola cellula) nessuna copia
+su Drive è stata dichiarata: per loro vale ancora il download sul runtime remoto.
 
 ### Il passo operativo, che è diverso e indipendente
 

@@ -1,0 +1,82 @@
+{
+  "run_id": "x001",
+  "stage": "69_expression_gate_decision",
+  "started_utc": "2026-09-15T22:46:31.761127+00:00",
+  "finished_utc": "2026-09-15T22:46:31.837085+00:00",
+  "seed": null,
+  "config": {
+    "run_id": "x001",
+    "run_dir": "None",
+    "config": "None",
+    "out": "reports\\expression_gate_2026-09-16",
+    "reference_table": "reports\\benchmark_3ctx_2026-09-14\\comparison_table.csv",
+    "allow_overwrite": "False"
+  },
+  "inputs": {
+    "config": {
+      "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\configs\\benchmark_expression_gate.yaml",
+      "exists": true,
+      "bytes": 16099,
+      "mtime_utc": "2026-09-15T22:25:44.775832+00:00",
+      "sha256": "20dd4cb52c34933529f8b78e089ecc238aa561d6ac93388d4f3c5c943dd4a226",
+      "sha256_mode": "full"
+    },
+    "summary": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\x001\\summary.json",
+      "exists": true,
+      "bytes": 267814,
+      "mtime_utc": "2026-09-15T22:45:57.089910+00:00",
+      "sha256": "cbb34c391244ebc0c3e40a5a370f3dfcf9c3029324e32d9355793d8e76a50dc9",
+      "sha256_mode": "full"
+    }
+  },
+  "outputs": {
+    "decision": {
+      "path": "reports\\expression_gate_2026-09-16\\decision.json",
+      "exists": true,
+      "bytes": 54186,
+      "mtime_utc": "2026-09-15T22:46:31.702541+00:00",
+      "sha256": "c8223cdf1d30ac7d16ffdf96fed72f8c83091ac7e6c51d2cbc39c2dcc9f90c52",
+      "sha256_mode": "full"
+    },
+    "table": {
+      "path": "reports\\expression_gate_2026-09-16\\decision_table.md",
+      "exists": true,
+      "bytes": 13462,
+      "mtime_utc": "2026-09-15T22:46:31.684467+00:00",
+      "sha256": "09409244282d6ee0a6ac1744a91bd8bee2c2367ebddc782d25ab0df6283fa4b3",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "any_promoted_to_candidate": false,
+    "n_identity_chosen": 30,
+    "winner_declared": false,
+    "not_a_vcc_score": true
+  },
+  "notes": [
+    "The rule was fixed in the config before the run. This script applies it; it does not choose a model and does not adopt anything."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}

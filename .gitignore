@@ -24,6 +24,12 @@ venv/
 *.token
 secrets/
 
+# Daily chain: the lock exists only while a run is in progress
+reports/ciclo_giornaliero/*/.lock
+
+# Personal Claude Code permissions; the shared skills in .claude/skills are versioned
+.claude/settings.local.json
+
 # OS
 Thumbs.db
 desktop.ini

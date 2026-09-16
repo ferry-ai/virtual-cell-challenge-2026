@@ -1,0 +1,49 @@
+{
+  "_comment": "Impostazioni del ciclo giornaliero, lette da scripts/32_daily_cycle.py. Contratto: docs/CICLO_GIORNALIERO.md. Le chiavi che iniziano con _ sono commenti.",
+  "seal_deadline": "12:00",
+  "poll_minutes": 10,
+  "lock_stale_hours": 8,
+  "worktree_root": null,
+  "log_root": null,
+  "codex": {
+    "_comment": "exe null = percorso registrato dall'app Codex in ~/.codex/config.toml. La sandbox workspace-write con -C sulla cartella del ciclo lascia scrivere solo lì, senza rete.",
+    "exe": null,
+    "args": ["-s", "workspace-write"],
+    "extra_args": ["-c", "model_reasoning_effort=\"high\""],
+    "timeout_minutes": 45
+  },
+  "claude": {
+    "_comment": "exe null = la versione più recente inclusa nell'app Claude. Con --permission-prompts none tutto ciò che non è ammesso qui viene negato, senza fermare l'esecuzione.",
+    "exe": null,
+    "permission_mode": "acceptEdits",
+    "extra_args": ["--effort", "high"],
+    "allowed_tools": [
+      "Read", "Edit", "Write", "Glob", "Grep",
+      "Bash(python scripts/31_check_docs.py)",
+      "PowerShell(python scripts/31_check_docs.py)",
+      "Bash(scripts/py.cmd *)",
+      "Bash(./scripts/py.cmd *)",
+      "Bash(cmd /c scripts\\py.cmd *)",
+      "PowerShell(.\\scripts\\py.cmd *)",
+      "PowerShell(scripts\\py.cmd *)",
+      "Bash(git status)", "Bash(git status *)",
+      "Bash(git diff)", "Bash(git diff *)",
+      "Bash(git log *)", "Bash(git show *)",
+      "PowerShell(git status)", "PowerShell(git status *)",
+      "PowerShell(git diff)", "PowerShell(git diff *)",
+      "PowerShell(git log *)", "PowerShell(git show *)"
+    ],
+    "disallowed_tools": [
+      "WebFetch", "WebSearch",
+      "Bash(git push *)", "Bash(git commit *)", "Bash(git reset *)",
+      "Bash(git checkout *)", "Bash(git worktree *)",
+      "PowerShell(git push *)", "PowerShell(git commit *)", "PowerShell(git reset *)",
+      "PowerShell(git checkout *)", "PowerShell(git worktree *)"
+    ],
+    "timeout_minutes": 90
+  },
+  "verify": [
+    {"name": "checker", "argv": ["{python}", "scripts/31_check_docs.py"], "timeout_minutes": 5},
+    {"name": "test", "argv": ["cmd", "/c", "scripts\\py.cmd", "-m", "unittest", "discover", "-s", "tests"], "timeout_minutes": 20}
+  ]
+}

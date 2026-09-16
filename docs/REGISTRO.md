@@ -5,7 +5,10 @@ Un documento non diventa falso tutto insieme: di solito resta valido in gran par
 sbaglia in due punti. Qui si segna lo stato del documento e, quando serve, si apre una
 scheda che elenca le singole affermazioni in discussione.
 
-Aggiornato il 2026-09-15 (ultima riga: piano operativo, audit Jiang/Jurkat, protocollo congelato). Compilazione
+Aggiornato il 2026-09-16 (ultime righe: CP-0018, i grezzi pesanti già su Google Drive, e la
+scheda R-013 sull'unità di misura del file K562 a singola cellula; prima i due workflow del
+16 settembre e la fotografia della classifica; prima ancora gate di espressione, non
+promosso, e audit di presenza dei contesti ufficiali). Compilazione
 iniziale il 2026-09-12, vedi
 [CP-0001](checkpoints/0001-ricostruzione-stato-2026-09-12.md).
 
@@ -51,21 +54,35 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 | Percorso | Stato | Sostituito da | Cosa resta utile / nota | Scheda |
 |---|---|---|---|---|
+| `docs/checkpoints/0018-drive-storage-confermato.md` | attuale | — | Dichiarazione del proprietario: `K562_gwps_raw_singlecell_01.h5ad` e `NadigOConner2024_hepg2.h5ad` sono già su Google Drive. Dimensioni coerenti con il catalogo in unità binarie; md5 e percorso delle copie **non verificati**. C8 declassata per l'ingestione, non chiusa. Non adotta nessun dataset | — |
+| `docs/CICLO_GIORNALIERO.md` | attuale | — | Contratto del ciclo giornaliero: piano di Claude, revisione di Codex, implementazione di Claude. Fasi, segnali, controlli deterministici, permessi, comandi e limiti. Provato il 16 settembre con agenti simulati; nessuna esecuzione dal vivo | — |
+| `reports/ciclo_giornaliero/` | storico | — | Registrazioni giornaliere del ciclo, una cartella per giorno: segnali JSON delle tre fasi, revisione di Codex, foglio-prompt ed esito di Claude. Documentano che cosa gli agenti hanno consegnato; non sono risultati scientifici | — |
+| `scripts/32_daily_cycle.py`, `scripts/ciclo.cmd`, `configs/ciclo_giornaliero/`, `tests/test_daily_cycle.py` | attuale | — | Orchestratore del ciclo (solo libreria standard), wrapper per l'Utilità di pianificazione, impostazioni, schemi delle risposte e testi fissi. 22 test con agenti simulati in un repository git temporaneo | — |
+| `docs/PIANO_IMPLEMENTATIVO_2026-09-16.md` | attuale | — | Workflow 1 del 16 settembre: dieci incarichi paralleli con scadenze, regole di accettazione scritte prima dei risultati, cinque decisioni del proprietario (O1–O5), obiettivi di spinta dichiarati come non previsioni. Proposta: non attesta l'avvio di alcun incarico. Aggiornato alle 16:49 con CP-0018: in I-5 e I-6 il K562 a singola cellula si collega da Drive e non si scarica | — |
+| `docs/PIANO_COMPRENSIONE_2026-09-16.md` | attuale | — | Workflow 2 del 16 settembre, per i ricercatori: stato per area da verificare, criticità C1–C12, studio biologico e informatico, domande di comprensione e disallineamenti noti. Proposta: non attesta l'avvio di alcun incarico. Aggiornato alle 16:49 con CP-0018: C8 declassata per l'ingestione, unità del file K562 corretta | — |
+| `reports/leaderboard_2026-09-16/` | storico | — | Fotografia trascritta a mano della classifica pubblica alle 11:31Z: prime dieci righe e la nostra (rango 493), senza nomi di squadra. Contiene una **stima** delle ancore b/r per metrica da un adattamento lineare: interpretazione, non misura ufficiale | — |
+| `docs/checkpoints/0017-gate-espressione-destinazione.md` | attuale | — | Gate di espressione G1/G2/G3 con controlli permutato e sorgente: implementato, eseguito e misurato. **Non promosso** dalla regola fissata prima del run. Non adotta niente | — |
+| `configs/benchmark_expression_gate.yaml` | attuale | — | Protocollo del run `x001` e regola di decisione, scritti prima di qualunque risultato. `owner_confirmed: false`: la regola proposta nel brief non è stata confermata dal proprietario prima del run | — |
+| `src/vcc2026/presence.py` | attuale | — | Presenza per gene dai controlli già letti (`inference.read_basal_profile`, `ControlProfile`) e peso logistico graduale; nessun secondo lettore di controlli. Un gene non misurato ha peso 1 (D-009) | — |
+| `src/vcc2026/benchmark/gate.py` | attuale | — | I bracci gate: G1/G2/G3, i controlli C1 (permutato) e C2 (sorgente), la selezione sulla coppia interna al training e la valutazione meccanica della regola di decisione. Spento se la configurazione non lo dichiara | — |
+| `tests/test_expression_gate.py` | attuale | — | 53 test: presenza non misurata contro misurata a zero, peso graduale e non a scalino, permutazione che conserva i valori, selezione che non legge il contesto di test, base che deve coincidere con `shrunk_transfer`, regola che non promuove su un confronto mancante | — |
+| `scripts/69_expression_gate_decision.py`, `scripts/70_context_presence_audit.py` | attuale | — | 69 applica la regola già scritta e non sceglie nulla; 70 conta quanti geni e quanti bersagli sono poco espressi nei controlli ufficiali A/B/C. Eseguiti il 2026-09-16 | — |
+| `reports/expression_gate_2026-09-16/` | attuale | — | Run `x001`: tabella comparativa, universo, riepilogo con i confronti appaiati, split con la distribuzione dei CPM, decisione applicata, righe dei gate, e l'audit di presenza dei contesti ufficiali. I pesi e `results.json` restano in `artifact_root` | — |
 | `docs/RL/README.md` | attuale | — | Appunti RL rinviati su richiesta dell'utente: allocazione del calcolo, calibrazione e affinamento generativo; ipotesi e criteri di ripresa, nessuna adozione o esecuzione | — |
 | `docs/checkpoints/0016-piano-operativo-audit-protocollo.md` | attuale | — | Audit Jiang/Jurkat, protocollo congelato, disco sotto soglia per TGFB, campagna orch avviata. Non adotta Jiang né Jurkat | — |
 | `configs/eval_protocol.yaml` | attuale | — | Protocollo di valutazione congelato (D-032). Seed 4242 riservato. Non è un risultato | — |
 | `src/vcc2026/eval_protocol.py`, `src/vcc2026/runtime.py`, `src/vcc2026/remote_job.py`, `src/vcc2026/source_card.py` | attuale | — | Protocollo, inventario runtime, fetch riprendibile, scheda sorgente | — |
-| `scripts/61_probe_jiang.py`, `scripts/62_reconcile_nadig.py`, `scripts/63_runtime_preflight.py`, `scripts/64_source_cards.py`, `scripts/65_eval_protocol_pilot.py`, `scripts/66_primeflow_feasibility.py`, `scripts/67_remote_ingest.py`, `scripts/68_remote_catalog.py` | attuale | — | 67 = contratto HepG2; 68 = piano/catalogo multi-sorgente. 68 eseguito in locale **plan-only** (nessun 65,8 GiB sul portatile) | — |
+| `scripts/61_probe_jiang.py`, `scripts/62_reconcile_nadig.py`, `scripts/63_runtime_preflight.py`, `scripts/64_source_cards.py`, `scripts/65_eval_protocol_pilot.py`, `scripts/66_primeflow_feasibility.py`, `scripts/67_remote_ingest.py`, `scripts/68_remote_catalog.py` | attuale | — | 67 = contratto HepG2; 68 = piano/catalogo multi-sorgente. 68 eseguito in locale **plan-only** (nessun file da 61,3 GiB sul portatile; la versione precedente di questa nota diceva «65,8 GiB», un errore di unità: [R-013](#r-013--dimensione-del-file-k562-a-singola-cellula-gib-contro-gb)) | — |
 | `tests/test_eval_protocol.py`, `tests/test_remote_job.py`, `tests/test_remote_ingest.py`, `tests/test_remote_catalog.py` | attuale | — | Leakage, fetch, gate Jiang, catalogo byte/md5, persistenza Colab, checkpoint immutabile | — |
 | `src/vcc2026/remote_ingest.py` | attuale | — | Job HepG2: parità, resume, gate TGFB | — |
-| `src/vcc2026/remote_catalog.py`, `configs/remote_catalog.yaml` | attuale | — | Catalogo blocchi con byte/md5 da evidenza. 61,3 GB del profilo ≠ 65.830.941.948 byte misurati | — |
-| `notebooks/remote_ingest_hepg2.ipynb` | attuale | — | Un solo notebook: preflight, selezione, fetch, QC, deriva. `FETCH_BLOCKS is None` auto-sceglie dopo il preflight (HepG2 se manca, poi K562 GW se Drive è montato). Vuoto `[]` resta plan-only. HepG2 si salta se size/md5 ok. Il run Colab `catalog_2026-09-15T143641Z` era plan-only per `FETCH_BLOCKS=[]`, non un fallimento del fetcher | — |
-| `reports/remote_catalog_2026-09-15/` | attuale | — | Piano locale. HepG2 complete (file già sul disco). Nessun download nuovo. Non è una prova Colab | — |
-| `reports/remote_2026-09-15/` | attuale | — | Parità HepG2 ok, resume ok, Jiang skip per disco. Istruzioni in `COME_APRIRE.md` | — |
+| `src/vcc2026/remote_catalog.py`, `configs/remote_catalog.yaml` | da-verificare | — | Catalogo blocchi con byte/md5 da evidenza: byte, md5, URL e `relpath` sono giusti, e il codice lavora in byte. **Non** è vero che il «61,3 GB» del profilo differisca dai 65.830.941.948 byte misurati: sono 61,31 GiB, la stessa dimensione. Errati `advertised_bytes`, `advertised_note` e l'etichetta «65,8 GiB» nelle docstring | [R-013](#r-013--dimensione-del-file-k562-a-singola-cellula-gib-contro-gb) |
+| `notebooks/remote_ingest_hepg2.ipynb` | da-verificare | — | Un solo notebook: preflight, selezione, fetch, QC, deriva. `FETCH_BLOCKS is None` auto-sceglie dopo il preflight (HepG2 se manca, poi K562 GW se Drive è montato). Vuoto `[]` resta plan-only. HepG2 si salta se size/md5 ok. Il run Colab `catalog_2026-09-15T143641Z` era plan-only per `FETCH_BLOCKS=[]`, non un fallimento del fetcher. **Dal 16 settembre** i due file sono già su Drive (CP-0018): per soltanto collegarli serve `FETCH_BLOCKS = []`, perché con `None` la selezione passa al blocco successivo e lo scarica | [R-013](#r-013--dimensione-del-file-k562-a-singola-cellula-gib-contro-gb) |
+| `reports/remote_catalog_2026-09-15/` | attuale | — | Piano locale. HepG2 complete (file già sul disco). Nessun download nuovo. Non è una prova Colab. Ripete `advertised_bytes` del catalogo, contestato in R-013 | — |
+| `reports/remote_2026-09-15/` | da-verificare | — | Parità HepG2 ok, resume ok, Jiang skip per disco: misure valide. Le istruzioni in `COME_APRIRE.md` usano «65,8 GiB» (sono 61,31 GiB) e consigliano `FETCH_BLOCKS = None`, che con i file già su Drive porta a un download non voluto | [R-013](#r-013--dimensione-del-file-k562-a-singola-cellula-gib-contro-gb) |
 | `reports/jiang_2026-09-15/` | attuale | — | Record Zenodo, HEAD, file piccoli, scheda, proposta TGFB. Copertura pannello missing | — |
 | `reports/nadig_reconcile_2026-09-15/` | attuale | — | HepG2 GEO=mirror per forma e NTC; Jurkat mirror 1,29 GB, 0/300 | — |
 | `reports/runtime_2026-09-15/` | attuale | — | 7,81 GiB RAM, 11,3 GiB liberi; TGFB non sta sotto il pavimento da 10 GiB | — |
-| `reports/source_cards_2026-09-15/` | attuale | — | Schede Replogle SC, H1, CD4, Srivatsan, McFaline, Tahoe, scBaseCount | — |
+| `reports/source_cards_2026-09-15/` | attuale | — | Schede Replogle SC, H1, CD4, Srivatsan, McFaline, Tahoe, scBaseCount. Nella scheda Replogle SC, `profile_declared_sc` converte in byte decimali cifre del profilo che sono GiB; decisioni e altri campi non ne dipendono | [R-013](#r-013--dimensione-del-file-k562-a-singola-cellula-gib-contro-gb) |
 | `reports/eval_protocol_2026-09-15/` | attuale | — | 12 split, 0 fail, tutti sviluppo. Ancore HepG2: solo smoke su finestra, non un risultato | — |
 | `reports/primeflow_2026-09-15/` | attuale | — | Fattibilità da preprint; codice/pesi missing; defer | — |
 | `configs/orchestrator/briefs/vcc2026-jurkat-audit.yaml`, `configs/orchestrator/briefs/vcc2026-pharma-atlas-audit.yaml` | attuale | — | Incarichi preparati, non avviati: l'orchestratore serializza il browser | — |
@@ -175,7 +192,9 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 Nessun file di dati è stato spostato o copiato per compilare questo registro. I dati
 pesanti stanno fuori dal repository, sotto `C:/Users/ferra/vcc2026-data`
-(vedi `configs/config.yaml`).
+(vedi `configs/config.yaml`). Dal 16 settembre due grezzi pesanti stanno anche sul
+Google Drive del proprietario, secondo la sua dichiarazione
+([CP-0018](checkpoints/0018-drive-storage-confermato.md)).
 
 Tipi: `grezzo` (sorgente scaricata, da non modificare), `derivato` (prodotto da uno
 script nostro), `campione` (piccolo estratto di verifica), `temporaneo` (cache o
@@ -204,9 +223,11 @@ dipendenza di runtime, ricreabile).
 | `C:/Users/ferra/vcc2026-data/interim/hepg2_bundle/` | derivato | attuale | Bundle a singola cellula (reale e predetti) e output dello scorer per il confronto generatore×predittore | `scripts/57_generator_x_predictor.py` con un `--out` nuovo | Cellule reali di controllo condivise da tutti i bundle, come chiede il contratto |
 | `C:/Users/ferra/vcc2026-data/artifacts/g001`, `g002` | derivato | attuale | Tabella GO slim congelata (140 termini, 2.693 simboli) e run del pilot dei descrittori | `scripts/58_build_go_slim_table.py` e `scripts/51_run_modular_pilot.py` con `--run-id` nuovo | Fuori dal repository (D-001). I file leggeri sono copiati in `reports/go_slim_2026-09-15/` |
 | `C:/Users/ferra/vcc2026-data/artifacts/s001`, `s002`, `r001` | derivato | attuale | s001 SVD esatta, s002 randomizzata, r001 confronto di rango. Stessi 160 bersagli; s001/s002 stessi split | `scripts/51_run_modular_pilot.py` con `--run-id` nuovo | Fuori dal repository (D-001). I file leggeri sono in `reports/svd_2026-09-15/` e `reports/rank_2026-09-15/` |
+| `C:/Users/ferra/vcc2026-data/artifacts/x001` | derivato | attuale | Run del gate di espressione 2026-09-16: split, pesi dei nove bracci originali, artefatti dei nove bracci gate, `results.json` | `scripts/51_run_modular_pilot.py --config configs/benchmark_expression_gate.yaml` con un `--run-id` nuovo | Fuori dal repository (D-001), 82 MB. Le sue 54 righe dei bracci originali coincidono con quelle di `m002`, differenza assoluta 0,0. I file leggeri sono in `reports/expression_gate_2026-09-16/` |
 | `C:/Users/ferra/vcc2026-data/interim/encoder_inputs_2026-09-14/` | grezzo | attuale | HGNC, GOA GAF/GPI, GO slim, go-basic.obo, STRING info e physical.links; sha256 in `reports/encoder_inputs_2026-09-14/downloads.json` | `scripts/56_probe_target_descriptors.py` | Snapshot pubblico per i descrittori di modo B. Non modificare in place |
 | `reports/jiang_2026-09-15/small_files/` | grezzo | attuale | Readme e liste pathway Jiang (file < 2 MB). Gli RDS non sono stati scaricati | `scripts/61_probe_jiang.py` | Non sono matrici di counts |
-| `C:/Users/ferra/vcc2026-data/interim/remote_bundle_2026-09-15/` | derivato | attuale | Snapshot codice 536 KB + `gene_names.csv` + notebook. Nessuna matrice | `scripts/67_remote_ingest.py --prepare-bundle` | Da caricare su Colab/Kaggle; HepG2 e Jiang si scaricano da Zenodo là |
+| `C:/Users/ferra/vcc2026-data/interim/remote_bundle_2026-09-15/` | derivato | attuale | Snapshot codice 536 KB + `gene_names.csv` + notebook. Nessuna matrice | `scripts/67_remote_ingest.py --prepare-bundle` | Da caricare su Colab/Kaggle; HepG2 e Jiang si scaricano da Zenodo là. Dal 16 settembre HepG2 è già su Drive (CP-0018): va collegato, non riscaricato |
+| Google Drive del proprietario: `K562_gwps_raw_singlecell_01.h5ad`, `NadigOConner2024_hepg2.h5ad` | grezzo | da-verificare | Copie caricate dal proprietario, **dichiarate** il 2026-09-16 con le dimensioni mostrate da Drive (61,31 GB e 811,2 MB), coerenti in unità binarie con i 65.830.941.948 e 850.590.740 byte di `configs/remote_catalog.yaml`. Percorso su Drive non comunicato; md5 **non calcolato** su nessuna delle due copie | Nuovo caricamento dalle sorgenti figshare 35775507 e Zenodo 13350497 | Da collegare, non da scaricare. Un run Colab le vede solo in `<VCC2026_DATA_ROOT>/raw/replogle/` e `<VCC2026_DATA_ROOT>/raw/nadig_hepg2/` (predefinita: `/content/drive/MyDrive/vcc2026/data`). Diventano `attuale` quando un run ne verifica l'md5. [CP-0018](checkpoints/0018-drive-storage-confermato.md), [R-013](#r-013--dimensione-del-file-k562-a-singola-cellula-gib-contro-gb) |
 
 ## Schede di revisione
 
@@ -630,6 +651,59 @@ dipendenza di runtime, ricreabile).
   affronta con R-1 e R-3 della [roadmap](ROADMAP.md), non con questo materiale, e la
   densità dei fixture si chiuderebbe solo con un fixture a densità reale, che costerebbe
   minuti invece di secondi per ogni test.
+
+### R-013 — Dimensione del file K562 a singola cellula: GiB contro GB
+
+- **Perché è segnalato:** il 16 settembre il proprietario ha riferito le dimensioni
+  delle copie su Google Drive. Confrontandole con il catalogo è emerso un errore di
+  unità ripetuto in più materiali
+  ([CP-0018](checkpoints/0018-drive-storage-confermato.md) §3.2–3.3). Lo stesso giorno
+  è cambiato il punto di partenza del notebook remoto: i due file che la selezione
+  automatica scaricherebbe per primi sono già su Drive.
+- **Affermazioni contestate:**
+  1. «65,8 GiB» per `K562_gwps_raw_singlecell_01.h5ad`. I 65.830.941.948 byte sono
+     65,83 GB, cioè 61,31 GiB. L'etichetta compare in
+     `reports/remote_2026-09-15/COME_APRIRE.md` (tre volte), nel markdown e nei
+     messaggi di `notebooks/remote_ingest_hepg2.ipynb`, nelle docstring di
+     `src/vcc2026/remote_ingest.py`, `src/vcc2026/remote_catalog.py` e
+     `scripts/68_remote_catalog.py`, e in un commento di
+     `tests/test_remote_catalog.py`. Compariva anche in
+     `docs/PIANO_COMPRENSIONE_2026-09-16.md` §3, in
+     `docs/PIANO_IMPLEMENTATIVO_2026-09-16.md` (I-5) e nella riga degli script 61–68 di
+     questo registro: corretti il 16 settembre, con un rimando a questa scheda.
+  2. «Il 61,3 GB del profilo non è la dimensione di questo file». È la stessa
+     dimensione espressa in GiB, come il 9,9 e l'8,1 degli altri due file Replogle a
+     singola cellula. L'affermazione compare in `configs/remote_catalog.yaml`
+     (`advertised_bytes: 61300000000` e `advertised_note`, ripetuti in
+     `reports/remote_catalog_2026-09-15/catalog_run.json`) e in
+     `reports/remote_2026-09-15/COME_APRIRE.md`; compariva nella riga del catalogo di
+     questo registro, ora corretta. `reports/source_cards_2026-09-15/` converte le tre
+     cifre del profilo in byte decimali (`profile_declared_sc`).
+  3. Non un errore, ma una circostanza nuova. `COME_APRIRE.md` e il notebook indicano
+     `FETCH_BLOCKS = None` come scelta normale. Con i due file già su Drive nel posto
+     atteso, quella scelta passa al blocco successivo e scarica `rpe1_raw_singlecell`;
+     con i file altrove, riscarica i due file. Per collegare soltanto servono
+     `FETCH_BLOCKS = []` o una `SELECT_BLOCKS` ristretta ai due blocchi.
+- **Evidenza contraria:** i byte in `src/vcc2026/external.py` e
+  `configs/remote_catalog.yaml` divisi per 1.073.741.824 danno 61,31, 9,93 e 8,10 GiB.
+  Le dimensioni che Drive mostra per le due copie, 61,31 GB e 811,2 MB, sono una
+  dichiarazione del proprietario. Per il punto 3: `recommend_fetch_ids` e `run_catalog`
+  in `src/vcc2026/remote_catalog.py`, letti e non eseguiti.
+- **Cosa resta valido:** tutto ciò che guida il codice. Byte, md5, URL e `relpath` del
+  catalogo sono giusti, e la selezione lavora in byte, non in etichette. La parità
+  HepG2, la prova di ripresa e il piano locale restano misure valide. L'ordine dei
+  blocchi e la regola «un solo file grande alla volta» non cambiano.
+- **È ancora usato o citato:** sì. Il notebook e `COME_APRIRE.md` sono le istruzioni per
+  il prossimo run remoto (incarico I-6 del
+  [workflow 1](PIANO_IMPLEMENTATIVO_2026-09-16.md)); il catalogo è letto da
+  `scripts/68_remote_catalog.py` e dal notebook.
+- **Disposizione proposta:** non riscrivere i report: `COME_APRIRE.md` si legge con
+  questa scheda accanto. Correggere etichette e `advertised_bytes` nel codice e nel
+  catalogo con un intervento a parte, insieme alla modalità «solo collegamento»
+  proposta in CP-0018 §6.
+- **Cosa chiuderebbe la revisione:** per i punti 1 e 2, la correzione di catalogo,
+  notebook e docstring. Per il punto 3, un run remoto che colleghi le due copie senza
+  scaricare nulla e ne verifichi l'md5, con il suo `catalog_run.json` conservato.
 
 ## Revisione periodica e pulizia
 

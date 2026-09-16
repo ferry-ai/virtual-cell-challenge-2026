@@ -46,6 +46,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-030 | La griglia di rango della base resta {8, 16}; 32/64/128 non diventano il default | attiva | 2026-09-15 | [CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md), `reports/rank_2026-09-15/` |
 | D-031 | Ordine operativo: audit Jiang, poi Jurkat come quarto contesto; CD4 rinviato | attiva | 2026-09-15 | [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md), `docs/PIANO_OPERATIVO_2026-09-15.md` |
 | D-032 | Protocollo di valutazione congelato; i fold del 14–15 settembre sono sviluppo | attiva | 2026-09-15 | [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md), `configs/eval_protocol.yaml` |
+| D-033 | Il gate di espressione non è adottato: la regola non è soddisfatta e i due controlli indicano un filtro di rumore, non una regola di contesto | attiva | 2026-09-16 | [CP-0017](checkpoints/0017-gate-espressione-destinazione.md), `reports/expression_gate_2026-09-16/decision.json` |
 
 ---
 
@@ -783,3 +784,31 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Riaprire se:** arriva un quarto contesto con split già congelati, o
   ancore ufficiali `b`/`r` per un dataset esterno, o si decide una
   submission diagnostica senza conferma indipendente (resta esplorativa).
+
+### D-033 — Il gate di espressione non è adottato, e i controlli dicono perché
+
+- **Perché:** la regola era scritta in `configs/benchmark_expression_gate.yaml` prima
+  che il run esistesse, e non è soddisfatta. «Batte ShrunkTransfer in tutti e tre i
+  fold» vale in **1 split su 6** per tutte e tre le varianti. Soprattutto: il gate
+  costruito sulla **sorgente** batte quello costruito sulla destinazione in 4 split su 6
+  (G1), e il gate **permutato** batte quello vero in 2 su 6. Quel poco che si guadagna
+  non viene dal legame gene-contesto, ma dal comprimere i geni poco espressi in
+  generale: è un filtro di rumore, e va chiamato così. In più la selezione è instabile —
+  identità in 23 righe su 27 con un seed e in 7 su 27 con l'altro, dove i due seed
+  cambiano solo i 32 bersagli di validazione interna.
+- **Come è fatta:** il codice resta, spento. `src/vcc2026/presence.py` e
+  `src/vcc2026/benchmark/gate.py` girano solo se una configurazione dichiara
+  `expression_gate`; `configs/benchmark_3ctx.yaml` è invariato e i suoi risultati
+  riprodotti riga per riga (54 righe, differenza assoluta 0,0). Un braccio gate è
+  `shrunk_transfer` moltiplicato per un peso, con alpha e prior_sd non ricalibrati, e il
+  run si ferma se la base non coincide con la riga di `shrunk_transfer`.
+- **Misurato:** [CP-0017](checkpoints/0017-gate-espressione-destinazione.md) §3, run
+  `x001`, `reports/expression_gate_2026-09-16/`.
+- **Non segue da questa decisione:** che l'idea sia sbagliata. Nel banco l'universo
+  genico è l'intersezione di tre pannelli e non contiene geni spenti (0–2 sotto 5 CPM
+  per contesto); nei contesti ufficiali ce ne sono 8.409–8.923 su 18.533. La regola è
+  stata misurata dove poteva esserlo, non dove conterebbe.
+- **Riaprire se:** esiste un banco in cui la destinazione porta l'asse genico intero,
+  cioè in cui i geni spenti esistono e hanno una risposta osservata con cui confrontarsi;
+  oppure se si misura il gate con l'ampiezza ricalibrata insieme al peso, che qui è stata
+  tenuta fissa per far variare un fattore solo.

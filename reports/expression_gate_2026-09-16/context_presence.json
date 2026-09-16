@@ -1,0 +1,239 @@
+{
+  "question": "How many genes and how many of the 300 targets are too lowly expressed in each official context for a knockdown to push them further down",
+  "what_this_is_not": "Not a prediction, not a model, not a score. Counts on the control cells the task ships, nothing else.",
+  "reader": "vcc2026.inference.read_basal_profile",
+  "thresholds_cpm": [
+    0.1,
+    1.0,
+    5.0,
+    10.0,
+    30.0,
+    100.0
+  ],
+  "scorer_filter_gene_min_cpm_cell": 5.0,
+  "scorer_filter_source": "reports/scorer_2026-09-12/vcc2026_contract.json",
+  "contexts": {
+    "A": {
+      "context": "A",
+      "n_cells": 18400.0,
+      "total_molecules": 388857059.0,
+      "counts_for_a_gene_at_1_cpm": 388.857059,
+      "n_genes": 18533,
+      "n_genes_exactly_zero": 2398,
+      "genes": {
+        "n_genes": 18533,
+        "n_measured": 18533,
+        "n_unmeasured": 0,
+        "cpm_quantiles": {
+          "0%": 0.0,
+          "1%": 0.0,
+          "5%": 0.0,
+          "25%": 0.020573112445414037,
+          "50%": 9.142176842930862
+        },
+        "n_below_cpm": {
+          "0.1": 5762,
+          "1.0": 7336,
+          "5.0": 8610,
+          "10.0": 9398,
+          "30.0": 11516,
+          "100.0": 15505
+        }
+      },
+      "panel": {
+        "n_targets": 300,
+        "n_on_axis": 300,
+        "n_genes": 300,
+        "n_measured": 300,
+        "n_unmeasured": 0,
+        "cpm_quantiles": {
+          "0%": 0.12086703561680746,
+          "1%": 8.304979748355295,
+          "5%": 13.955899409299395,
+          "25%": 31.22612723355499,
+          "50%": 58.29519993360851
+        },
+        "n_below_cpm": {
+          "0.1": 0,
+          "1.0": 1,
+          "5.0": 1,
+          "10.0": 8,
+          "30.0": 72,
+          "100.0": 193
+        },
+        "targets_below_5_cpm": [
+          {
+            "target": "S100A11",
+            "cpm": 0.12086703561680746
+          }
+        ]
+      },
+      "source_file": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_A.h5ad"
+    },
+    "B": {
+      "context": "B",
+      "n_cells": 18400.0,
+      "total_molecules": 367814894.0,
+      "counts_for_a_gene_at_1_cpm": 367.814894,
+      "n_genes": 18533,
+      "n_genes_exactly_zero": 2853,
+      "genes": {
+        "n_genes": 18533,
+        "n_measured": 18533,
+        "n_unmeasured": 0,
+        "cpm_quantiles": {
+          "0%": 0.0,
+          "1%": 0.0,
+          "5%": 0.0,
+          "25%": 0.013593794274138338,
+          "50%": 6.601146499521577
+        },
+        "n_below_cpm": {
+          "0.1": 5821,
+          "1.0": 7470,
+          "5.0": 8923,
+          "10.0": 9865,
+          "30.0": 12190,
+          "100.0": 15764
+        }
+      },
+      "panel": {
+        "n_targets": 300,
+        "n_on_axis": 300,
+        "n_genes": 300,
+        "n_measured": 300,
+        "n_unmeasured": 0,
+        "cpm_quantiles": {
+          "0%": 0.22293822609586875,
+          "1%": 2.6022600378983025,
+          "5%": 7.21939226310939,
+          "25%": 20.325441198691642,
+          "50%": 43.14670302611509
+        },
+        "n_below_cpm": {
+          "0.1": 0,
+          "1.0": 2,
+          "5.0": 5,
+          "10.0": 31,
+          "30.0": 117,
+          "100.0": 229
+        },
+        "targets_below_5_cpm": [
+          {
+            "target": "KIF21B",
+            "cpm": 0.22293822609586875
+          },
+          {
+            "target": "PSMB9",
+            "cpm": 0.802033862174162
+          },
+          {
+            "target": "ZNF25",
+            "cpm": 1.8351622270086758
+          },
+          {
+            "target": "ZKSCAN3",
+            "cpm": 2.610008500634561
+          },
+          {
+            "target": "PHF11",
+            "cpm": 4.537608528707377
+          }
+        ]
+      },
+      "source_file": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_B.h5ad"
+    },
+    "C": {
+      "context": "C",
+      "n_cells": 18400.0,
+      "total_molecules": 389280268.0,
+      "counts_for_a_gene_at_1_cpm": 389.280268,
+      "n_genes": 18533,
+      "n_genes_exactly_zero": 2317,
+      "genes": {
+        "n_genes": 18533,
+        "n_measured": 18533,
+        "n_unmeasured": 0,
+        "cpm_quantiles": {
+          "0%": 0.0,
+          "1%": 0.0,
+          "5%": 0.0,
+          "25%": 0.04623917901741683,
+          "50%": 9.199027781187203
+        },
+        "n_below_cpm": {
+          "0.1": 5190,
+          "1.0": 6876,
+          "5.0": 8409,
+          "10.0": 9406,
+          "30.0": 11869,
+          "100.0": 15697
+        }
+      },
+      "panel": {
+        "n_targets": 300,
+        "n_on_axis": 300,
+        "n_genes": 300,
+        "n_measured": 300,
+        "n_unmeasured": 0,
+        "cpm_quantiles": {
+          "0%": 2.0011289141426505,
+          "1%": 4.607425927892138,
+          "5%": 7.239642570324166,
+          "25%": 21.332959008341003,
+          "50%": 44.289426968849085
+        },
+        "n_below_cpm": {
+          "0.1": 0,
+          "1.0": 0,
+          "5.0": 6,
+          "10.0": 27,
+          "30.0": 109,
+          "100.0": 222
+        },
+        "targets_below_5_cpm": [
+          {
+            "target": "KIF21B",
+            "cpm": 2.0011289141426505
+          },
+          {
+            "target": "VIM",
+            "cpm": 2.024248503651359
+          },
+          {
+            "target": "DRG2",
+            "cpm": 3.4833514859787345
+          },
+          {
+            "target": "RBM4B",
+            "cpm": 4.618780215184192
+          },
+          {
+            "target": "ZNF324",
+            "cpm": 4.806305774532605
+          },
+          {
+            "target": "PARP3",
+            "cpm": 4.9475921548636
+          }
+        ]
+      },
+      "source_file": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_C.h5ad"
+    }
+  },
+  "context_specific_absence": {
+    "absent_below_cpm": 1.0,
+    "expressed_at_or_above_cpm": 10.0,
+    "n_genes_absent_in_all_contexts": 5190,
+    "n_genes_absent_in_at_least_one": 9148,
+    "n_genes_absent_here_expressed_elsewhere": {
+      "B->A": 729,
+      "C->A": 839,
+      "A->B": 552,
+      "C->B": 480,
+      "A->C": 501,
+      "B->C": 318
+    },
+    "note": "The pair counts are the genes a destination gate would compress and a source gate would not: the only place where destination and source gates can differ."
+  }
+}

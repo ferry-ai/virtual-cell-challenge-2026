@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["data", "esito", "motivo", "piano_verificato", "passo", "critiche_bloccanti", "domande_per_il_lead"],
+  "properties": {
+    "data": {"type": "string", "description": "Data del ciclo, AAAA-MM-GG"},
+    "esito": {
+      "type": "string",
+      "enum": ["prompt_pronto", "nessun_passo", "saltato"],
+      "description": "prompt_pronto: foglio scritto; nessun_passo: nessun passo eseguibile oggi; saltato: precondizioni non soddisfatte"
+    },
+    "motivo": {"type": "string", "description": "Una o due frasi"},
+    "piano_verificato": {"type": "boolean", "description": "true se gli sha256 dei piani coincidono con il sigillo"},
+    "passo": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "titolo", "perche", "metriche"],
+          "properties": {
+            "id": {"type": "string", "description": "ID dell'incarico nel piano, per esempio I-2, o NUOVO"},
+            "titolo": {"type": "string"},
+            "perche": {"type": "string"},
+            "metriche": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        {"type": "null"}
+      ]
+    },
+    "critiche_bloccanti": {"type": "array", "items": {"type": "string"}},
+    "domande_per_il_lead": {"type": "array", "items": {"type": "string"}}
+  }
+}
