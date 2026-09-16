@@ -1,0 +1,16 @@
+Verifiche della catena di cicli, 16 settembre 2026 (CP-0019)
+Trascritte dall'output dei comandi, eseguiti dopo la riscrittura di scripts/32_daily_cycle.py.
+
+$ python -m unittest tests.test_daily_cycle
+Ran 42 tests in 43.345s
+OK
+(il primo giro: 41 su 42, fallito test_the_morning_cycle_runs_end_to_end_once per un file
+__pycache__ finito nel commit del ciclo; corretto con PYTHONDONTWRITEBYTECODE=1)
+
+$ .\scripts\py.cmd -m unittest discover -s tests
+Ran 565 tests in 375.346s
+OK (skipped=1)
+
+$ python scripts/31_check_docs.py
+OK: 19 checkpoint(s), registry, decisions and links are consistent.
+Structure only. This says nothing about whether the claims are true.

@@ -1,0 +1,45 @@
+{
+  "cosa": "Trascrizione della chiamata di prova a Grok Build del 2026-09-16, fatta per leggere il formato della risposta non interattiva. Nessun file del progetto letto o modificato: la cartella di lavoro era la cartella temporanea della sessione.",
+  "tipo": "misura, trascritta dall'output del comando",
+  "comando": [
+    "C:/Users/ferra/.grok/bin/grok.exe", "-p",
+    "Test tecnico: rispondi con ok=true e nota='pronto'. Non usare strumenti.",
+    "--output-format", "json",
+    "--json-schema", "{\"type\": \"object\", \"properties\": {\"ok\": {\"type\": \"boolean\"}, \"nota\": {\"type\": \"string\"}}, \"required\": [\"ok\", \"nota\"], \"additionalProperties\": false}",
+    "--permission-mode", "plan", "--disable-web-search", "--max-turns", "2", "--cwd", "."
+  ],
+  "grok_version": "grok 1.0.30 (04b7ffed98c6) [stable]",
+  "exit_code": 0,
+  "seconds": 12.7,
+  "stderr": "",
+  "stdout_json": {
+    "text": "{\"ok\":true,\"nota\":\"pronto\"}",
+    "stopReason": "end_turn",
+    "sessionId": "01a0ac08-778a-70b0-acda-cc24a515cf79",
+    "requestId": "f6c7edc1-7736-482a-a9fe-d32f1cdc8c54",
+    "usage": {
+      "input_tokens": 12609,
+      "cache_read_input_tokens": 5376,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 120,
+      "reasoning_tokens": 105,
+      "total_tokens": 18105
+    },
+    "num_turns": 1,
+    "total_cost_usd": 0.00973284,
+    "total_cost_usd_ticks": 97328400,
+    "modelUsage": {
+      "grok-4.6-build": {
+        "inputTokens": 12609,
+        "outputTokens": 120,
+        "cacheReadInputTokens": 5376,
+        "cacheCreationInputTokens": 0,
+        "modelCalls": 1,
+        "costUSD": 0.00973284
+      }
+    },
+    "structuredOutput": {"ok": true, "nota": "pronto"}
+  },
+  "omesso": "il campo 'thought' (una riga di ragionamento del modello), che lo script non usa",
+  "note": "total_cost_usd è un costo nominale riportato dal CLI: che venga addebitato con il login dell'abbonamento non è verificato."
+}

@@ -10,9 +10,18 @@ regole di accettazione per arrivare a un candidato competitivo.
 studio, per i ricercatori. Si appoggiano sulla fotografia della classifica in
 `reports/leaderboard_2026-09-16/`. Dal 17 settembre i due piani si preparano ogni
 mattina alle 8 con la skill di progetto `piano-mattutino` (`/piano-mattutino`), che
-parte da un'attività pianificata dell'app Claude e produce solo pianificazione. Dal
-piano sigillato parte una catena fissa, una volta al giorno: Codex rivede il piano e
-scrive un foglio-prompt, e Claude implementa il passo scelto su un branch locale
+parte da un'attività pianificata dell'app Claude e produce solo pianificazione.
+
+**La catena di cicli (dal 16 settembre sera, [CP-0019](checkpoints/0019-catena-cicli-guardiano.md)).**
+Il piano sigillato apre il ciclo 01. In ogni ciclo:
+- Codex scrive il foglio e i test di collaudo;
+- Claude implementa su un branch locale;
+- Grok controlla, e può chiedere fino a tre campagne DeepSeek-Kimi;
+- un resoconto chiude il ciclo.
+
+I cicli successivi li avvia ChatGPT (l'app Codex) alla fine di un dialogo con il
+proprietario, quante volte si vuole; nessuno li avvia a mano. È implementato e provato
+solo con agenti simulati: nessun ciclo è ancora girato dal vivo
 ([CICLO_GIORNALIERO.md](CICLO_GIORNALIERO.md)).
 
 **Dati grezzi pesanti, 16 settembre pomeriggio:** il proprietario dichiara che
@@ -77,6 +86,7 @@ La classifica finale dipende solo dal set finale, su tre contesti diversi (D, E,
 | Verifica che il codice possa usare una GPU | fatta e **negativa**: ogni decoder e numpy scritto a mano, `torch` non e una dipendenza, e al formato attuale l'aritmetica e 1,3 s su 223. Il collo di bottiglia e algoritmico, non hardware ([CP-0014](checkpoints/0014-go-slim-e-gpu.md), D-029, [CONSEGNA_GPU.md](CONSEGNA_GPU.md)) |
 | SVD randomizzata contro esatta, e confronto di rango 16/32/64/128 | fatta: la randomizzata **non** supera la banda prefissata sulle predizioni (4 fold su 48); il rango >16 scelto internamente **peggiora** il lowrank sul test. Default invariato: SVD esatta, griglia {8, 16} ([CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md), D-029, D-030, [SVD_E_RANGO.md](SVD_E_RANGO.md)) |
 | Gate di espressione scritto a mano (G1 simmetrico, G2 asimmetrico, G3 sul bersaglio) con i due controlli obbligatori | fatto: **non promosso** dalla regola fissata prima del run. La selezione interna sceglie «non fare niente» in 30 righe su 54, e dove un gate aiuta, quello costruito sulla **sorgente** aiuta quanto o più di quello costruito sulla destinazione ([CP-0017](checkpoints/0017-gate-espressione-destinazione.md), D-033) |
+| Catena di cicli: guardiano, collaudo scritto da Codex prima di Claude, controllo di Grok con campagne dell'orchestratore | implementata e provata con agenti simulati (42 test); **nessun ciclo dal vivo**. Mancano `claude auth login`, la registrazione del guardiano all'accesso e la fase di integrazione ([CP-0019](checkpoints/0019-catena-cicli-guardiano.md), D-021 aggiornata) |
 | Grezzi pesanti (K562 genome-wide a singola cellula, HepG2) sul Google Drive del proprietario | **dichiarato** il 16 settembre, non ancora verificato da un run: si collegano dal runtime remoto, non si scaricano. Dimensioni coerenti con il catalogo; md5 e percorso delle copie da verificare. Nessun dataset è adottato per questo ([CP-0018](checkpoints/0018-drive-storage-confermato.md)) |
 
 **Il 13 settembre 2026 è stata inviata la prima sottomissione, ed è stata valutata:

@@ -5,8 +5,9 @@ Un documento non diventa falso tutto insieme: di solito resta valido in gran par
 sbaglia in due punti. Qui si segna lo stato del documento e, quando serve, si apre una
 scheda che elenca le singole affermazioni in discussione.
 
-Aggiornato il 2026-09-16 (ultime righe: CP-0018, i grezzi pesanti già su Google Drive, e la
-scheda R-013 sull'unità di misura del file K562 a singola cellula; prima i due workflow del
+Aggiornato il 2026-09-16 (ultime righe: CP-0019 e la catena di cicli con guardiano, collaudo e
+controllo di Grok; prima CP-0018, i grezzi pesanti già su Google Drive, e la
+scheda R-013 sull'unità di misura del file K562 a singola cellula; prima ancora i due workflow del
 16 settembre e la fotografia della classifica; prima ancora gate di espressione, non
 promosso, e audit di presenza dei contesti ufficiali). Compilazione
 iniziale il 2026-09-12, vedi
@@ -54,10 +55,13 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 | Percorso | Stato | Sostituito da | Cosa resta utile / nota | Scheda |
 |---|---|---|---|---|
+| `docs/checkpoints/0019-catena-cicli-guardiano.md` | attuale | — | Cambio di strategia: la catena diventa a cicli ripetibili, con guardiano, test di collaudo scritti da Codex prima di Claude e controllo di Grok con al massimo tre campagne dell'orchestratore. Implementato e provato con agenti simulati; **nessun ciclo eseguito dal vivo** | — |
+| `reports/catena_2026-09-16/` | storico | — | Le uniche prove sui servizi veri per la catena: trascrizione della chiamata di prova a Grok Build (formato della risposta, costo nominale), validazione con `orch brief` di un incarico nel formato generato, esiti delle verifiche del 16 settembre | — |
 | `docs/checkpoints/0018-drive-storage-confermato.md` | attuale | — | Dichiarazione del proprietario: `K562_gwps_raw_singlecell_01.h5ad` e `NadigOConner2024_hepg2.h5ad` sono già su Google Drive. Dimensioni coerenti con il catalogo in unità binarie; md5 e percorso delle copie **non verificati**. C8 declassata per l'ingestione, non chiusa. Non adotta nessun dataset | — |
-| `docs/CICLO_GIORNALIERO.md` | attuale | — | Contratto del ciclo giornaliero: piano di Claude, revisione di Codex, implementazione di Claude. Fasi, segnali, controlli deterministici, permessi, comandi e limiti. Provato il 16 settembre con agenti simulati; nessuna esecuzione dal vivo | — |
-| `reports/ciclo_giornaliero/` | storico | — | Registrazioni giornaliere del ciclo, una cartella per giorno: segnali JSON delle tre fasi, revisione di Codex, foglio-prompt ed esito di Claude. Documentano che cosa gli agenti hanno consegnato; non sono risultati scientifici | — |
-| `scripts/32_daily_cycle.py`, `scripts/ciclo.cmd`, `configs/ciclo_giornaliero/`, `tests/test_daily_cycle.py` | attuale | — | Orchestratore del ciclo (solo libreria standard), wrapper per l'Utilità di pianificazione, impostazioni, schemi delle risposte e testi fissi. 22 test con agenti simulati in un repository git temporaneo | — |
+| `docs/CICLO_GIORNALIERO.md` | attuale | — | Contratto della catena di cicli: piano, revisione, implementazione, controllo; guardiano, casella, collaudo, campagne, permessi, comandi e limiti. Riscritto il 16 settembre (la versione a un giro al giorno è nel commit `4272b3b`). Provato con agenti simulati; nessuna esecuzione dal vivo | — |
+| `reports/ciclo_giornaliero/` | storico | — | Registrazioni della catena, una cartella per giornata con `ciclo-NN/`: segnali JSON delle quattro fasi, revisione o dialogo, foglio, test di collaudo, esito di Claude, analisi e sintesi di Grok, campagne, resoconto. Documentano che cosa gli agenti hanno consegnato; non sono risultati scientifici. La cartella `2026-09-16` ha la forma piatta precedente, e il suo sigillo non corrisponde più ai piani modificati dopo ([CP-0018](checkpoints/0018-drive-storage-confermato.md)) | — |
+| `scripts/32_daily_cycle.py`, `scripts/ciclo.cmd`, `configs/ciclo_giornaliero/`, `tests/test_daily_cycle.py` | attuale | — | La catena (solo libreria standard): guardiano, coda, cicli dal dialogo, collaudo prima e dopo, fase di Grok e campagne con tetto; wrapper per l'Utilità di pianificazione, impostazioni, schemi e testi fissi. 42 test con agenti simulati (Codex, Claude, Grok, orchestratore) in un repository git temporaneo | — |
+| `.agents/skills/avvia-ciclo/`, `.agents/skills/revisione-piano/`, `.claude/skills/piano-mattutino/`, `AGENTS.md` | attuale | — | Istruzioni degli agenti della catena: dialogo e avvio dei cicli in Codex, revisione del ciclo 01 con i test di collaudo, piano del mattino che legge i resoconti dei cicli, regole comuni per Codex e Grok | — |
 | `docs/PIANO_IMPLEMENTATIVO_2026-09-16.md` | attuale | — | Workflow 1 del 16 settembre: dieci incarichi paralleli con scadenze, regole di accettazione scritte prima dei risultati, cinque decisioni del proprietario (O1–O5), obiettivi di spinta dichiarati come non previsioni. Proposta: non attesta l'avvio di alcun incarico. Aggiornato alle 16:49 con CP-0018: in I-5 e I-6 il K562 a singola cellula si collega da Drive e non si scarica | — |
 | `docs/PIANO_COMPRENSIONE_2026-09-16.md` | attuale | — | Workflow 2 del 16 settembre, per i ricercatori: stato per area da verificare, criticità C1–C12, studio biologico e informatico, domande di comprensione e disallineamenti noti. Proposta: non attesta l'avvio di alcun incarico. Aggiornato alle 16:49 con CP-0018: C8 declassata per l'ingestione, unità del file K562 corretta | — |
 | `reports/leaderboard_2026-09-16/` | storico | — | Fotografia trascritta a mano della classifica pubblica alle 11:31Z: prime dieci righe e la nostra (rango 493), senza nomi di squadra. Contiene una **stima** delle ancore b/r per metrica da un adattamento lineare: interpretazione, non misura ufficiale | — |

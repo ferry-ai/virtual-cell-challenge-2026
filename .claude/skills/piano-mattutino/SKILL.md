@@ -58,6 +58,11 @@ italiano semplice nei documenti.
    checkpoint, decisioni, script, `git log --since=<data del piano>`, file
    `reports/trial_*/status_*.json`. Stati ammessi: fatto (con percorso), in corso (con
    prova), non avviato, bloccato (con causa osservata). Senza un percorso non è fatto.
+   Leggi anche i cicli della giornata precedente
+   (`python scripts/32_daily_cycle.py status --date <giornata di ieri>` e i loro
+   `05_resoconto.md`): che cosa hanno fatto, che cosa ha segnalato Grok, e quali branch
+   `ciclo/…` non sono ancora integrati. Il lavoro non integrato non è nella mappa, ma il
+   ciclo 01 di oggi riparte da lì.
 4. `git status`: lavoro non versionato, file spuri.
 5. Risorse, misurate adesso: ora UTC (`date -u`), RAM totale e disponibile
    (`GlobalMemoryStatusEx` via `ctypes`), spazio libero sul disco del data root. Il data
@@ -146,8 +151,8 @@ Scrivi in italiano semplice, con **pochi dettagli**: gli incarichi li avvia il t
    `.\scripts\py.cmd -m unittest discover -s tests` (anche in background), e riporta
    gli esiti come sono.
 5. **Sigillo.** Quando checker e test hanno finito e i due documenti sono definitivi,
-   sigilla il piano. Il sigillo è il segnale che fa partire la revisione di Codex
-   (`docs/CICLO_GIORNALIERO.md`):
+   sigilla il piano. Il sigillo apre il ciclo 01 della giornata e fa partire la
+   revisione di Codex (`docs/CICLO_GIORNALIERO.md`):
 
    ```bash
    python scripts/32_daily_cycle.py seal --plan docs/PIANO_IMPLEMENTATIVO_<AAAA-MM-GG>.md --plan docs/PIANO_COMPRENSIONE_<AAAA-MM-GG>.md --snapshot reports/leaderboard_<AAAA-MM-GG>/ --checker <ok|fallito> --tests <ok|fallito|non_eseguito> --page-url <url-della-pagina>

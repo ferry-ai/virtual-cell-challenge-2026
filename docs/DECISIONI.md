@@ -34,7 +34,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-018 | Il packaging si fa a memoria limitata, non su una macchina più grande | attiva | 2026-09-13 | `src/vcc2026/packaging.py`, [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.1 |
 | D-019 | La parità con `vcc prep` si dimostra con fixture a forma ufficiale e rifiuti bilaterali | attiva | 2026-09-13 | `tests/test_packaging_parity.py`, [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.5 |
 | D-020 | L'oracolo numerico è autonomo: ricalcola, non giudica biologia, e il candidato non è fidato | attiva | 2026-09-13 | `docs/oracle/CONTRATTO.md`, [CP-0007](checkpoints/0007-oracle-pairwise-loss.md), [CP-0009](checkpoints/0009-oracle-json-number-csv-error.md) |
-| D-021 | Le consultazioni multi-modello passano da un orchestratore locale che avvii tu | attiva | 2026-09-13 | `docs/ORCHESTRATORE.md`, `reports/orchestrator/prova-a-secco-2026-09-13/` |
+| D-021 | Le consultazioni multi-modello passano da un orchestratore locale che avvii tu — **dal 2026-09-16 anche la catena di cicli, quando Grok lo chiede, al massimo tre campagne per ciclo** | attiva | 2026-09-13, aggiornata 2026-09-16 | `docs/ORCHESTRATORE.md`, `reports/orchestrator/prova-a-secco-2026-09-13/`, `docs/CICLO_GIORNALIERO.md`, [CP-0019](checkpoints/0019-catena-cicli-guardiano.md) |
 | D-022 | Un posto vuoto si copre con una seconda sessione del servizio ancora attivo, dichiarata prima e marcata dopo | attiva | 2026-09-14 | `docs/ORCHESTRATORE.md` §9-ter-ter, `configs/orchestrator/orchestrator.yaml`, `tests/test_orchestrator.py` (`StandInTests`) |
 | D-023 | La ricerca scientifica è una modalità separata: i livelli di provenienza non si promuovono, le piste le sceglie una regola, le contraddizioni non si chiudono | attiva | 2026-09-14 | `docs/RICERCA_SCIENTIFICA.md`, [CP-0010](checkpoints/0010-modalita-ricerca-scientifica.md), `tests/test_orchestrator_research.py` |
 | D-024 | Nel confronto modulare l'universo genico è l'intersezione dei geni effettivamente misurati, non il riempimento a zero | attiva | 2026-09-14 | [CP-0011](checkpoints/0011-primo-benchmark-modulare.md), `src/vcc2026/benchmark/universe.py`, D-009 |
@@ -472,6 +472,35 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Riaprire se:** un servizio cambia interfaccia al punto da rendere inaffidabile il
   canale web; oppure se diventa disponibile un accesso programmatico compreso negli
   abbonamenti, che renderebbe superflua l'automazione del browser.
+- **Aggiornata il 2026-09-16, per scelta del proprietario.** Il testo sopra resta com'era
+  al 13 settembre. Da oggi valgono due cambiamenti.
+  1. Grok non passa più dal browser. È disponibile Grok Build, un CLI compreso
+     nell'abbonamento SuperGrok, installato qui (`grok 1.0.30`) e usato dalla catena di
+     cicli in sola lettura: è la seconda condizione di riapertura qui sopra. Il profilo
+     web di Grok resta `verified: false` e non viene usato. DeepSeek e Kimi restano sul
+     web.
+  2. L'orchestratore non lo avvia più soltanto il proprietario: nella fase 4 di ogni ciclo
+     **Grok decide se servono campagne e lo script le avvia**, fino a **tre per ciclo**.
+     È l'alternativa che la versione del 13 settembre scartava («un agente che decide da
+     sé quando ripartire»). Il proprietario l'ha scelta con questi paletti:
+     - Grok compila solo i campi di testo di un modello fisso; percorso `deep_kimi`,
+       limiti e regole li mette lo script;
+     - lo script valida l'incarico con `orch brief` prima di avviarlo;
+     - gli allegati vengono solo da estratti preparati dallo script;
+     - dopo ogni campagna Grok legge il rapporto e può chiederne un'altra, entro il
+       tetto;
+     - il codice prodotto dai modelli resta non eseguito.
+
+  `orch start` a mano resta possibile. Contratto: `docs/CICLO_GIORNALIERO.md` §6;
+  registrazione: [CP-0019](checkpoints/0019-catena-cicli-guardiano.md).
+- **Che cosa non è ancora dimostrato, dopo l'aggiornamento:** nessuna campagna è mai
+  partita dalla catena. Le prove usano un orchestratore simulato
+  (`tests/test_daily_cycle.py`); con quello vero è stata fatta solo la validazione di un
+  incarico generato, che non contatta nessun servizio.
+- **Riaprire anche se:** una campagna avviata dalla catena consuma quote senza produrre
+  un rapporto utile, oppure Grok chiede campagne per abitudine. In quel caso si abbassa
+  il tetto o si spegne l'avvio (`orchestratore.abilitato` in
+  `configs/ciclo_giornaliero/ciclo.json`).
 
 ### D-022 — Un posto vuoto si copre con una seconda sessione del servizio ancora attivo
 

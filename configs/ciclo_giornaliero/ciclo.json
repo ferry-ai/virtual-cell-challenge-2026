@@ -1,8 +1,10 @@
 {
-  "_comment": "Impostazioni del ciclo giornaliero, lette da scripts/32_daily_cycle.py. Contratto: docs/CICLO_GIORNALIERO.md. Le chiavi che iniziano con _ sono commenti.",
+  "_comment": "Impostazioni della catena di cicli, lette da scripts/32_daily_cycle.py. Contratto: docs/CICLO_GIORNALIERO.md. Le chiavi che iniziano con _ sono commenti.",
+  "_day_start": "La giornata va da day_start a day_start: un ciclo avviato alle 3 appartiene al giorno prima. Serve solo a nominare le cartelle.",
+  "day_start": "08:00",
   "seal_deadline": "12:00",
   "poll_minutes": 10,
-  "lock_stale_hours": 8,
+  "poll_seconds": 60,
   "worktree_root": null,
   "log_root": null,
   "codex": {
@@ -45,5 +47,30 @@
   "verify": [
     {"name": "checker", "argv": ["{python}", "scripts/31_check_docs.py"], "timeout_minutes": 5},
     {"name": "test", "argv": ["cmd", "/c", "scripts\\py.cmd", "-m", "unittest", "discover", "-s", "tests"], "timeout_minutes": 20}
-  ]
+  ],
+  "collaudo": {
+    "_comment": "I test scritti da Codex prima di Claude. {dir} è una copia fatta dallo script, {venv_python} il Python del progetto; PYTHONPATH punta a src/ del worktree.",
+    "obbligatorio": true,
+    "argv": ["{venv_python}", "-m", "unittest", "discover", "-s", "{dir}", "-t", "{dir}", "-v"],
+    "timeout_minutes": 20,
+    "max_bytes": 200000
+  },
+  "grok": {
+    "_comment": "exe null = ~/.grok/bin/grok.exe (Grok Build, abbonamento SuperGrok). Sola lettura, niente web; la risposta segue grok_output.schema.json.",
+    "exe": null,
+    "args": ["--permission-mode", "plan", "--disable-web-search"],
+    "extra_args": [],
+    "max_turns": 60,
+    "timeout_minutes": 30
+  },
+  "orchestratore": {
+    "_comment": "Campagne DeepSeek-Kimi chieste da Grok e avviate dallo script (D-021, aggiornata il 2026-09-16). exe null = Python di orch-venv con -m orchestrator.cli.",
+    "abilitato": true,
+    "max_campagne": 3,
+    "exe": null,
+    "route": "deep_kimi",
+    "max_rounds": 2,
+    "max_wall_clock_minutes": 30,
+    "timeout_minutes": 45
+  }
 }

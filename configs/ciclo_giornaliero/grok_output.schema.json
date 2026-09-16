@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["esito", "analisi_md", "sintesi_md", "richiesta", "domande_per_l_utente"],
+  "properties": {
+    "esito": {
+      "type": "string",
+      "enum": ["ok", "problemi", "bloccante"],
+      "description": "ok: il ciclo regge; problemi: da correggere nel prossimo ciclo; bloccante: il branch non va integrato così com'è"
+    },
+    "analisi_md": {
+      "type": "string",
+      "description": "Analisi indipendente in Markdown, in italiano. Solo nella prima chiamata; nelle successive stringa vuota"
+    },
+    "sintesi_md": {
+      "type": "string",
+      "description": "Sintesi aggiornata per il proprietario, in Markdown, in italiano"
+    },
+    "richiesta": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["titolo", "domanda", "contesto", "risultato_atteso", "criteri", "materiali"],
+          "properties": {
+            "titolo": {"type": "string", "description": "Al massimo 120 caratteri"},
+            "domanda": {"type": "string", "description": "La domanda per DeepSeek e Kimi"},
+            "contesto": {"type": "string", "description": "Ciò che serve sapere per rispondere"},
+            "risultato_atteso": {"type": "string"},
+            "criteri": {"type": "array", "items": {"type": "string"}, "description": "Da uno a sei criteri di accettazione"},
+            "materiali": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["esito_claude.md", "foglio.md", "diff.patch", "collaudo.md", "analisi_grok.md"]
+              }
+            }
+          }
+        },
+        {"type": "null"}
+      ]
+    },
+    "domande_per_l_utente": {"type": "array", "items": {"type": "string"}}
+  }
+}

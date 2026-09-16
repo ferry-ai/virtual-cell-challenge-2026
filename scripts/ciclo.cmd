@@ -1,6 +1,7 @@
 @echo off
-REM Daily chain, stages 2 and 3: Codex review, then Claude implementation.
-REM Windows Task Scheduler runs "ciclo.cmd run" every morning.
+REM Chain of cycles: plan, review (Codex), implementation (Claude), control (Grok).
+REM Windows Task Scheduler runs "ciclo.cmd guardiano" at logon; "ciclo.cmd run" is the
+REM morning fallback that waits for the plan and drains the queue.
 REM Contract and commands: docs\CICLO_GIORNALIERO.md
 setlocal
 if "%VCC2026_DATA_ROOT%"=="" set "VCC2026_DATA_ROOT=C:\Users\ferra\vcc2026-data"

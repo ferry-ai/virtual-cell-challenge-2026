@@ -40,3 +40,4 @@ aggiunge da sé la riga qui sotto.
 | [0016](0016-piano-operativo-audit-protocollo.md) | 2026-09-15 | Piano operativo: audit sorgenti e protocollo di valutazione congelato | cambio-di-strategia | — |
 | [0017](0017-gate-espressione-destinazione.md) | 2026-09-16 | Gate di espressione sul contesto di destinazione: misurato, non promosso | esperimento | — |
 | [0018](0018-drive-storage-confermato.md) | 2026-09-16 | Grezzi pesanti già su Google Drive: si collegano, non si scaricano | osservazione | — |
+| [0019](0019-catena-cicli-guardiano.md) | 2026-09-16 | Catena di cicli: guardiano, collaudo scritto prima e controllo di Grok | cambio-di-strategia | — |

@@ -1,9 +1,9 @@
 ---
 name: revisione-piano
-description: Fase 2 del ciclo giornaliero VCC 2026. Legge il piano del giorno sigillato da Claude, lo critica dal punto di vista biologico e pratico, sceglie il passo implementativo fondamentale e scrive il foglio-prompt che fa partire Claude. Da usare solo quando il prompt indica la data del ciclo e la sua cartella; non per revisioni generiche.
+description: Fase 2 del ciclo 01 (il ciclo del mattino) della catena VCC 2026. Legge il piano del giorno sigillato da Claude, lo critica dal punto di vista biologico e pratico, sceglie il passo implementativo fondamentale e scrive il foglio-prompt e i test di collaudo che fanno partire Claude. Da usare solo quando il prompt indica la giornata e la cartella del ciclo; non per revisioni generiche.
 ---
 
-# Revisione del piano giornaliero — fase 2
+# Revisione del piano del mattino — fase 2 del ciclo 01
 
 ## Ruolo
 
@@ -21,8 +21,8 @@ risultati inventati, niente sovrascritture. Il contratto della catena è
 ## Che cosa puoi toccare
 
 - **Scrivi solo nella cartella del ciclo** indicata nel prompt
-  (`reports/ciclo_giornaliero/<data>/`), e solo `02_revisione.md` e
-  `03_prompt_claude.md`.
+  (`reports/ciclo_giornaliero/<giornata>/ciclo-01/`), e solo `02_revisione.md`,
+  `03_prompt_claude.md` e i test in `collaudo/`.
 - Non scrivere `02_codex.json`: lo scrive lo script dopo di te.
 - Tutto il resto del repository è in sola lettura: codice, piani, registro, checkpoint.
 - Non aprire il seed di conferma 4242 e non cercare niente sul web.
@@ -58,7 +58,8 @@ risultati inventati, niente sovrascritture. Il contratto della catena è
    - un download sopra i 100 MB;
    - una GPU o un runtime remoto;
    - una decisione O-n ancora aperta;
-   - lavoro non versionato: il worktree parte dall'ultimo commit.
+   - lavoro non versionato: il worktree parte dal branch del ciclo precedente, se non è
+     ancora integrato, altrimenti dall'ultimo commit.
 
    Può essere un incarico del piano, una sua parte o, se la critica lo giustifica con
    evidenza, un passo diverso: spiega perché. Se nessun passo è eseguibile, non scrivere
@@ -87,5 +88,22 @@ risultati inventati, niente sovrascritture. Il contratto della catena è
    Il foglio non deve contenere comandi di invio alla gara, di push o di aggiramento dei
    permessi, **nemmeno per vietarli**: i divieti generali li aggiunge lo script, e un
    foglio che li contiene viene scartato. Al massimo 15 KB.
-7. **Rispondi** con il JSON dello schema: data, esito, motivo, piano verificato, passo,
+7. **Scrivi i test di collaudo** in `collaudo/`, dentro la cartella del ciclo: almeno un
+   file `test_*.py` con `unittest`. Sono la specifica del passo, scritta **prima** che
+   Claude lavori; lo script li esegue prima e dopo il suo lavoro, e Claude non può
+   cambiarli.
+   - Almeno un test deve **fallire oggi** e passare a passo fatto: un collaudo che
+     passa già non conta.
+   - Il foglio fissa l'interfaccia che i test usano (moduli, funzioni, percorsi, campi
+     dell'output), così un nome diverso non li fa fallire per niente.
+   - Il codice del progetto si importa come pacchetto (`from vcc2026 import ...`): lo
+     script mette `src/` del worktree nel percorso.
+   - Niente rete, niente dati pesanti, niente scritture fuori da una cartella
+     temporanea; al massimo 200 KB in tutto; solo file `.py`, `.json`, `.txt`, `.csv`,
+     `.md`.
+   - Per un esperimento il test controlla il procedimento (niente fughe di
+     informazione, file scritti, regola applicata), non un risultato che nessuno
+     conosce ancora.
+   - Valgono gli stessi divieti del foglio, anche nei commenti.
+8. **Rispondi** con il JSON dello schema: data, esito, motivo, piano verificato, passo,
    critiche bloccanti, domande per il lead.

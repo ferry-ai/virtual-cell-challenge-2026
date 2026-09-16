@@ -1,8 +1,9 @@
 $revisione-piano
 
-Ciclo giornaliero VCC 2026, fase 2. Data del ciclo: {{date}}.
+Catena di cicli VCC 2026, fase 2 del ciclo 01 (il ciclo del mattino). Giornata: {{date}}.
 
 - Cartella del ciclo, l'unica in cui puoi scrivere: {{cycle_dir}}
+- Cartella dei test di collaudo, dentro quella del ciclo: {{tests_dir}}
 - Radice del repository, in sola lettura: {{repo_root}}
 - Sigillo della fase 1: {{seal}}
 - Piano implementativo: {{plan_impl}}
