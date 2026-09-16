@@ -184,14 +184,15 @@ python scripts/32_daily_cycle.py run --dry-run
 `guardiano` senza opzioni gira finché non lo si ferma; `--una-volta` si ferma quando non
 c'è niente da fare. `bozza` e `avvia` li usa Codex.
 
-**Utilità di pianificazione.** Dal 16 settembre è registrata «VCC2026 Ciclo
-giornaliero»: `ciclo.cmd run` ogni giorno alle 08:30, solo con l'utente connesso. Il
-guardiano all'accesso **non è ancora registrato**: serve il consenso del proprietario.
-Il comando proposto:
+**Utilità di pianificazione.** Due attività, entrambe solo con l'utente connesso.
 
-```bash
-schtasks /Create /TN "VCC2026 Guardiano" /TR "\"C:\Users\ferra\OneDrive\Desktop\vcc2026\scripts\ciclo.cmd\" guardiano" /SC ONLOGON /F
-```
+| Attività | Quando | Che cosa | Impostazioni |
+|---|---|---|---|
+| «VCC2026 Guardiano» | all'accesso a Windows; registrata e avviata il 16 settembre alle 23:54, su consenso del proprietario | `ciclo.cmd guardiano`, dentro un PowerShell con finestra nascosta | nessun limite di durata, anche a batteria, una sola istanza, fino a tre riavvii a 5 minuti di distanza |
+| «VCC2026 Ciclo giornaliero» | ogni giorno alle 08:30 | `ciclo.cmd run`, la riserva: se il guardiano è attivo esce subito | limite di 6 ore, anche a batteria (dal 16 settembre), avvio appena possibile se l'orario è stato perso |
+
+Per fermare il guardiano: `Stop-ScheduledTask -TaskName 'VCC2026 Guardiano'` in
+PowerShell; per toglierlo del tutto: `Unregister-ScheduledTask`, con lo stesso nome.
 
 ## 11. Prerequisiti e limiti
 
