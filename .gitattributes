@@ -1,0 +1,4 @@
+# Line endings the tools require, not the one the checkout happens to use.
+# Colab runs the job scripts with bash: a CR at the end of a line breaks them.
+*.sh text eol=lf
+*.ps1 text eol=crlf
