@@ -41,7 +41,7 @@ import scipy.sparse as sp
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from vcc2026 import config
-from vcc2026.evaluation import VCC_SCORED_METRICS, score_bundle, scorer_fingerprint
+from vcc2026.evaluation import VCC_SCORED_METRICS, score_bundle
 from vcc2026.genes import official_axis
 from vcc2026.manifest import RunManifest
 from vcc2026.sampling import resample_library_sizes, sample_counts

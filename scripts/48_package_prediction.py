@@ -33,7 +33,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from vcc2026 import config
-from vcc2026.manifest import RunManifest, file_fingerprint
+from vcc2026.manifest import RunManifest
 from vcc2026.packaging import (
     PackagingError,
     assert_payload_matches_input,

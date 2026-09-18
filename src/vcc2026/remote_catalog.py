@@ -12,15 +12,14 @@ import json
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
 
 import yaml
 
 from vcc2026.genes import official_axis
 from vcc2026.manifest import RunManifest
 from vcc2026.pseudobulk import _read_categorical
-from vcc2026.remote_ingest import detect_runtime, resolve_paths
-from vcc2026.remote_job import ResumableFetcher
+from vcc2026.remote_ingest import resolve_paths
+from vcc2026.remote_job import ResumableFetcher, _md5_file
 from vcc2026.resources import GiB, snapshot
 from vcc2026.runtime import collect_inventory, disk_peak_estimate
 
@@ -207,15 +206,6 @@ def write_checkpoint(state_root: Path, payload: dict) -> Path:
         )
     path.write_text(json.dumps(payload, indent=2, default=str) + "\n", encoding="utf-8")
     return path
-
-
-def _md5_file(path: Path, *, block: int = 1 << 20) -> str:
-    import hashlib
-    digest = hashlib.md5()
-    with path.open("rb") as fh:
-        while chunk := fh.read(block):
-            digest.update(chunk)
-    return digest.hexdigest()
 
 
 def dest_for(block: BlockSpec, data_root: Path) -> Path:

@@ -8,7 +8,7 @@ gives n for every row.
 
 Outputs a JSON blob consumed by 20_cells_needed_report.py
 """
-import json, sys, os
+import json, os
 import numpy as np
 import pandas as pd
 import anndata as ad

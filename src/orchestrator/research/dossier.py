@@ -24,7 +24,6 @@ evidence" are different sentences, and only the first one is ours to write.
 
 from __future__ import annotations
 
-import json
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable, Sequence

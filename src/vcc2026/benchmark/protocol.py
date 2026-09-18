@@ -22,7 +22,6 @@ from typing import Protocol
 import numpy as np
 import yaml
 
-from vcc2026.models import Prediction
 from vcc2026.signatures import SignatureSet
 
 __all__ = [

@@ -11,7 +11,6 @@ it is ignored on the laptop so 65.8 GiB cannot start here by accident.
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 from pathlib import Path
 

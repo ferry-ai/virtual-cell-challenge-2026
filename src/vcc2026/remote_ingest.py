@@ -22,7 +22,7 @@ import numpy as np
 from vcc2026.genes import official_axis
 from vcc2026.manifest import RunManifest, snapshot_source
 from vcc2026.pseudobulk import _read_categorical
-from vcc2026.remote_job import ResumableFetcher, export_and_verify, simulate_interrupt
+from vcc2026.remote_job import ResumableFetcher, _md5_file, export_and_verify, simulate_interrupt
 from vcc2026.resources import GiB
 from vcc2026.runtime import collect_inventory, disk_peak_estimate
 
@@ -164,15 +164,6 @@ def resolve_paths(*, repo: Path | None = None) -> JobPaths:
     for path in (data, persist, scratch):
         path.mkdir(parents=True, exist_ok=True)
     return JobPaths(runtime, repo, data, persist, scratch, remote)
-
-
-def _md5_file(path: Path, *, block: int = 1 << 20) -> str:
-    import hashlib
-    digest = hashlib.md5()
-    with path.open("rb") as fh:
-        while chunk := fh.read(block):
-            digest.update(chunk)
-    return digest.hexdigest()
 
 
 def hepg2_parity(path: Path) -> dict:

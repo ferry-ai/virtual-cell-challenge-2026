@@ -47,7 +47,6 @@ Nothing here uploads anything.
 from __future__ import annotations
 
 import json
-import os
 import tarfile
 import tempfile
 import time

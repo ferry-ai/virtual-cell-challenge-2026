@@ -12,7 +12,6 @@ from pathlib import Path
 import numpy as np
 
 from vcc2026 import config
-from vcc2026.manifest import RunManifest
 from vcc2026.pseudobulk import PseudobulkFile
 from vcc2026.registry import load_registry
 from vcc2026.signatures import SignatureSet
@@ -56,7 +55,6 @@ from .models import (
     apply_loaded,
     fit_amplitude,
     load_weights,
-    prediction_on_axis,
     select_multi_source_transfer,
     select_shrunk_transfer,
 )
