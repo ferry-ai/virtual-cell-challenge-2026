@@ -1,0 +1,82 @@
+# Keep or discard the first target- and context-conditioned neural predictor.
+# Written 2026-09-18 around 16:40 (Europe/Rome), BEFORE any training on real data: only a
+# smoke run on a 250-target subsample had run (scratch directory, not kept as evidence).
+# The owner set the mandate in chat the same afternoon: a small network conditioned on target
+# descriptors and on a context representation from control cells only, compared out of
+# sample with simple transfer, a regularised linear model on the same inputs and the best
+# current recipe, same generator, same targets, same selection budget, with a context
+# ablation. The splits, metrics and thresholds below are the agent's.
+# Applied mechanically by scripts/93_pick_amplitudes.py and scripts/94_conditioned_verdict.py.
+version: 1
+owner_confirmed: false
+written_before_results: true
+
+models:
+  net: src/vcc2026/conditioned.py ConditionedNet (gene-wise transfer gate + bilinear target x gene term; ~100k params)
+  ridge: src/vcc2026/conditioned.py ConditionedRidge (the same inputs, linear gate + multi-output ridge)
+  inputs: >-
+    target: own K562 response (mode A only, PCA 32 fitted on training K562 labels), mean K562
+    response of its STRING physical partners (score >= 400) that are training targets, log CPM
+    in query and source controls. Context: per output gene, log CPM in query and source
+    controls and their difference. No learned identifier of a target or a context.
+  selection_budget: "8 configurations per family (net = hidden {64,128} x k {16,32} x l2 {1e-5,1e-4}; ridge = alpha 1e-1..1e6), chosen on validation MSE in effect space"
+  training_data: K562 genome-wide bulk and RPE1 bulk, EB-shrunk ln fold changes, 6.835 genes measured in K562, RPE1 and HepG2
+
+splits:
+  C: {test_context: HepG2, targets: "may be K562-perturbed (mode A)", validation: "20% of RPE1 targets, held out (seen context: no second unseen context exists)"}
+  J: {test_context: HepG2, targets: "removed from every training label, no own response (mode B)", validation: "the same RPE1 targets, also removed from K562 (mode B)"}
+  T: {test_context: K562, targets: "official panel, removed from K562 labels (mode B)", validation: "10% of the other K562 targets"}
+  limits: >-
+    Two perturbed training contexts. C and J validate on a SEEN context, so hyperparameters are
+    not chosen for context transfer. One unseen context (HepG2) cannot show context transfer in
+    general, and no split here is a random split of cells.
+
+benches:
+  hepg2_val: {stage: 75, targets: "the 300 of runs/common_2026-09-18/hepg2_tune", source: "K562 single-cell (as t03)"}
+  hepg2_test: {stage: 75, targets: "the 300 of runs/common_2026-09-18/hepg2_eval, disjoint from hepg2_val"}
+  k562_val: {stage: 73, targets: "runs/common_2026-09-18/k562_tune (official targets)"}
+  k562_test: {stage: 73, targets: "runs/common_2026-09-18/k562_eval (official targets, disjoint)"}
+  generator: ControlModel, identical for every arm; each candidate enters as a ln fold change
+
+families:
+  hepg2: [transfer, Cridge, Cnet, Jridge, Jnet, Jnbr]     # transfer = the K562 single-cell effect (simple transfer)
+  k562: [Tridge, Tnet, Tnbr, Tmean]                        # Tmean = mean K562 response of the training targets
+  amplitudes: [1.0, 2.0, 4.0]
+  fixed_arms: {t03: "transfer_a2.0+cismeas_a1.0+cis_a1.0", nullarm: null_new}
+  ablation: "<family>perm at the family's chosen amplitude: the same targets predicted through RPE1's controls instead of the query context's"
+
+metric:
+  hepg2: >-
+    stage-84 predicted official mean: per member, mean over targets of the raw per-target value,
+    times (t03 official raw / t03-arm bench raw) on the same bench, scaled with
+    reports/anchors_2026-09-17/anchors.json (base and replica far apart: jaccard 0.03 vs 0.40,
+    fidelity 0.51 vs 0.81); mse counted 0 as in stage 84.
+  k562: >-
+    the same official anchors on the raw per-member means, without a calibration ratio (no
+    submitted configuration exists on this bench); mse counted 0.
+  uncertainty: >-
+    paired bootstrap over targets (2.000 resamples, seed 2026) of the difference between two
+    arms, on the targets both arms define for each member. Covers which targets were drawn,
+    not the generator's randomness or the half A / half B split.
+  raw: every member's raw value and sig/t are reported for every arm, next to the scores.
+
+amplitude_selection: >-
+  on the val bench only, per family, the amplitude with the highest metric; ties to the
+  smaller. The test bench then runs each family at that amplitude only, plus t03, null and
+  the ablations.
+
+decision:
+  primary: "hepg2_test, split C (unseen context, targets perturbed in K562 = a submission's case)"
+  keep_if_all:
+    - "Cnet - t03 >= 0.01, bootstrap 95% lower bound > 0"
+    - "Cnet - Cridge >= 0.01, lower bound > 0"
+    - "Cnet - Cnetperm >= 0.01, lower bound > 0 (the network uses the context)"
+    - "guard J (hepg2_test): Jnet - Jridge has upper bound >= 0 (not significantly worse)"
+    - "guard T (k562_test): Tnet - Tridge has upper bound >= 0"
+  otherwise: DISCARD
+  min_gain_note: 0.01 is a rule of thumb, not a measure of uncertainty
+
+report_regardless: >-
+  every arm of both test benches, raw; the effect-space evaluation of stage 92 (per-target
+  Pearson and MSE with bootstrap); the chosen configurations and validation curves; the
+  ablation on J and T too.

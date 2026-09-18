@@ -1,0 +1,152 @@
+{
+  "stage": "82_solve_anchors",
+  "written_utc": "2026-09-17T21:01:09.483643+00:00",
+  "panel_id": "vcc2026-val-1",
+  "anchor_version": "vcc2026-valA-r4+vcc2026-valB-r4+vcc2026-valC-r4",
+  "inputs": [
+    "reports\\trial_2026-09-13\\status_PNn227rxP3bVByS37W41.json",
+    "reports\\trial_2026-09-17\\status_49Gvtu504clN1mIu8T2V.json",
+    "reports\\trial_2026-09-17\\status_0TbVAwhVTj6UYpaU2v9d.json"
+  ],
+  "entries": [
+    {
+      "entry_id": "PNn227rxP3bVByS37W41",
+      "model_name": "trial-01-transfer k01pack a=0.197 sd=4",
+      "submission_date": "2026-09-13T01:12:02.671719Z",
+      "score_avg": 0.045929396372906744
+    },
+    {
+      "entry_id": "49Gvtu504clN1mIu8T2V",
+      "model_name": "trial-02 sc-generator + K562 x1 + cis",
+      "submission_date": "2026-09-17T19:01:10.578422Z",
+      "score_avg": -0.09277438939893641
+    },
+    {
+      "entry_id": "0TbVAwhVTj6UYpaU2v9d",
+      "model_name": "trial-03 sc-generator + K562 x2 + cis",
+      "submission_date": "2026-09-17T20:18:58.824443Z",
+      "score_avg": 0.01969240787042492
+    }
+  ],
+  "anchors": {
+    "pds_cosine": {
+      "baseline": 0.5021055713992504,
+      "replicate": 0.9494896274559461,
+      "better": "higher",
+      "from": [
+        {
+          "entry_id": "PNn227rxP3bVByS37W41",
+          "raw": 0.6870159791898922,
+          "scaled": 0.4133147019598049
+        },
+        {
+          "entry_id": "49Gvtu504clN1mIu8T2V",
+          "raw": 0.6094165737643998,
+          "scaled": 0.23986326940437572
+        }
+      ],
+      "check": {
+        "PNn227rxP3bVByS37W41": 0.41331470195980485,
+        "49Gvtu504clN1mIu8T2V": 0.23986326940437552,
+        "0TbVAwhVTj6UYpaU2v9d": 0.32736977462281464
+      }
+    },
+    "de_wilcoxon_lfc_nmae": {
+      "baseline": 1.0011992318260274,
+      "replicate": 0.393243176368133,
+      "better": "lower",
+      "from": [
+        {
+          "entry_id": "PNn227rxP3bVByS37W41",
+          "raw": 0.9848860246137948,
+          "scaled": 0.026832872319934364
+        },
+        {
+          "entry_id": "49Gvtu504clN1mIu8T2V",
+          "raw": 0.9728199653867255,
+          "scaled": 0.046679798950152174
+        }
+      ],
+      "check": {
+        "PNn227rxP3bVByS37W41": 0.026832872319934364,
+        "49Gvtu504clN1mIu8T2V": 0.04667979895015186,
+        "0TbVAwhVTj6UYpaU2v9d": 0.04456280736820277
+      }
+    },
+    "de_wilcoxon_direction_fidelity_yield_raw": {
+      "baseline": 0.5123177050197699,
+      "replicate": 0.8100861039379061,
+      "better": "higher",
+      "from": [
+        {
+          "entry_id": "PNn227rxP3bVByS37W41",
+          "raw": 0.45798211677488604,
+          "scaled": -0.18247600632672256
+        },
+        {
+          "entry_id": "49Gvtu504clN1mIu8T2V",
+          "raw": 0.25337429690039104,
+          "scaled": -0.8696134615364906
+        }
+      ],
+      "check": {
+        "PNn227rxP3bVByS37W41": -0.1824760063267226,
+        "49Gvtu504clN1mIu8T2V": -0.8696134615364901,
+        "0TbVAwhVTj6UYpaU2v9d": -0.2998934099750175
+      }
+    },
+    "de_wilcoxon_direction_reach_raw": {
+      "baseline": 0.07899044533295284,
+      "replicate": 0.9686927290011744,
+      "better": "higher",
+      "from": [
+        {
+          "entry_id": "PNn227rxP3bVByS37W41",
+          "raw": 0.0979607332892727,
+          "scaled": 0.021322062789482576
+        },
+        {
+          "entry_id": "49Gvtu504clN1mIu8T2V",
+          "raw": 0.13822859392488657,
+          "scaled": 0.06658199004244005
+        }
+      ],
+      "check": {
+        "PNn227rxP3bVByS37W41": 0.021322062789482576,
+        "49Gvtu504clN1mIu8T2V": 0.06658199004244009,
+        "0TbVAwhVTj6UYpaU2v9d": 0.07394726590853058
+      }
+    },
+    "de_wilcoxon_sig_jaccard": {
+      "baseline": 0.03038787274075812,
+      "replicate": 0.39534407203903854,
+      "better": "higher",
+      "from": [
+        {
+          "entry_id": "PNn227rxP3bVByS37W41",
+          "raw": 0.02914072525446933,
+          "scaled": -0.00341725250505881
+        },
+        {
+          "entry_id": "49Gvtu504clN1mIu8T2V",
+          "raw": 0.01573198604866928,
+          "scaled": -0.0401579332540958
+        }
+      ],
+      "check": {
+        "PNn227rxP3bVByS37W41": -0.00341725250505881,
+        "49Gvtu504clN1mIu8T2V": -0.04015793325409583,
+        "0TbVAwhVTj6UYpaU2v9d": -0.023450699835512324
+      }
+    }
+  },
+  "unsolved": {
+    "expr_mse_unbiased_capped_norm": {
+      "reason": "all scaled values equal (clipped); the system is singular",
+      "scaled_value": 0,
+      "baseline_bound": 1.2312604900358375,
+      "bound_meaning": "baseline is at least as good as the best raw seen, i.e. <= 1.2312604900358375"
+    }
+  },
+  "claim_type": "measured: an exact algebraic solution of the challenge's own scaling from two of its own scored outputs, not an estimate. It holds for this panel and anchor version only."
+}

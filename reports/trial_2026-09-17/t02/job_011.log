@@ -1,0 +1,85 @@
+job start 2026-09-17T17:43:31Z host=640f066649c0 cpus=2 code=/content/code_1789667010_39298 ﻿2026-09-17T19:29:46+02:00 head=1479d75 dirty_files=36
+               total        used        free      shared  buff/cache   available
+Mem:              12           1           8           0           3          11
+overlay         108G   27G   81G  25% /
+[17:44:15] transfer covers 269/300 targets; cis bins 0:-0.328 1000:-0.230 2000:-0.129 5000:-0.080 10000:-0.033
+[17:44:37]   fit: 18400 cells, 3000 HVG, PCA var 0.225, state=kde
+[17:45:00]   dispersion: 11831 genes zero-matched, median phi (mean>0.05) 0.12967124979365818
+[17:45:03]   A 1/300 nnz/cell 5915 (48s)
+[17:46:56]   A 51/300 nnz/cell 6009 (161s)
+[17:48:49]   A 101/300 nnz/cell 5924 (274s)
+[17:50:43]   A 151/300 nnz/cell 5889 (388s)
+[17:52:39]   A 201/300 nnz/cell 5899 (503s)
+[17:54:33]   A 251/300 nnz/cell 5954 (618s)
+[17:56:34] A: done in 739s, nnz/cell 5939 (controls 5973)
+[17:56:57]   fit: 18400 cells, 3000 HVG, PCA var 0.251, state=kde
+[17:57:21]   dispersion: 11897 genes zero-matched, median phi (mean>0.05) 0.04835432363564958
+[17:57:23]   B 1/300 nnz/cell 5619 (49s)
+[17:59:04]   B 51/300 nnz/cell 5541 (150s)
+[18:00:46]   B 101/300 nnz/cell 5598 (252s)
+[18:02:27]   B 151/300 nnz/cell 5550 (352s)
+[18:04:08]   B 201/300 nnz/cell 5494 (454s)
+[18:05:50]   B 251/300 nnz/cell 5508 (556s)
+[18:07:33] B: done in 659s, nnz/cell 5545 (controls 5519)
+[18:07:59]   fit: 18400 cells, 3000 HVG, PCA var 0.310, state=kde
+[18:08:21]   dispersion: 12260 genes zero-matched, median phi (mean>0.05) 0.03793930254371829
+[18:08:24]   C 1/300 nnz/cell 5867 (50s)
+[18:10:09]   C 51/300 nnz/cell 5856 (155s)
+[18:11:54]   C 101/300 nnz/cell 5894 (260s)
+[18:13:39]   C 151/300 nnz/cell 5769 (366s)
+[18:15:27]   C 201/300 nnz/cell 5863 (474s)
+[18:17:17]   C 251/300 nnz/cell 5806 (583s)
+[18:18:59] C: done in 686s, nnz/cell 5906 (controls 5881)
+[18:19:01] wrote /content/work/t02/gen/prediction.h5ad (360000 cells, 2086862514 values) in 2126s
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 124.8/124.8 kB 3.6 MB/s eta 0:00:00
+input      : /content/work/t02/gen/prediction.h5ad
+hashing input (streamed) ...
+  sha256   : d3b3fe886411eec8610e39572aa71ac0efacf2e0ce10012c3f023b9680ecdc20  (31s)
+layout     : 360,000 x 18,533, 2,086,862,514 stored entries
+             data float32/gzip, indices int32, indptr int32
+resources  : RAM 12.67 GiB total, 11.52 GiB available; disk 76.78 GiB free
+             official vcc prep would peak at ~22.2 GiB; this stage streams instead
+             estimated transient disk 9.05 GiB
+
+validating and packaging (streamed) ...
+  PASS  var_names_unique
+  PASS  gene_order_matches_list
+  PASS  gene_dim_matches_expected
+  PASS  has_cells
+  PASS  cell_dim_within_cap
+  PASS  pert_column_present
+  PASS  no_control_rows
+  PASS  contexts_complete
+  PASS  targets_match_official_list
+  PASS  density_within_cap
+  PASS  column_indices_in_range
+  PASS  counts_finite
+  PASS  counts_non_negative
+  PASS  counts_are_whole_numbers
+  PASS  max_counts_per_cell_within_cap
+  PASS  no_all_zero_perturbation
+  PASS  csr:indptr_length_is_n_obs_plus_1
+  PASS  csr:indptr_starts_at_zero
+  PASS  csr:indptr_non_negative
+  PASS  csr:indptr_monotonic
+  PASS  csr:indptr_end_matches_data_length
+  PASS  csr:data_and_indices_same_length
+  PASS  csr:nnz_representable_in_indptr_dtype
+  PASS  csr:n_vars_representable_in_indices_dtype
+
+wrote prediction.vcc: 3.88 GiB (870s total)
+  meta       : {"schema": 1, "nnz": 2086862514, "n_obs": 360000, "n_vars": 18533, "cli_version": "0.2.0"}
+  peak RSS   : 0.68 GiB
+  peak disk  : 7.81 GiB
+
+verifying the archive ...
+  PASS  official container validator (vccfile.validate_vcc)
+  meta read back: {"cli_version": "0.2.0", "n_obs": 360000, "n_vars": 18533, "nnz": 2086862514, "schema": 1}
+  PASS  payload X arrays are bit-identical to the input; gene axis and labels match (266s)
+        obs index rewritten by prep's rule: True
+  archive sha256: 861c4ed556f37af2e413998e5e51ef0f827f921d05972978d029f053c93e40b0
+
+total 1197s, peak RSS 0.68 GiB
+-> /content/work/t02/pack/packaging.json
+861c4ed556f37af2e413998e5e51ef0f827f921d05972978d029f053c93e40b0  /content/drive/MyDrive/vcc2026/runs/trials_2026-09-17/t02/prediction.vcc
+job end 2026-09-17T18:40:27Z

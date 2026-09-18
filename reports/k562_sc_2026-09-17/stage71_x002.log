@@ -1,0 +1,54 @@
+job start 2026-09-17T15:24:47Z host=640f066649c0 cpus=2 code=/content/code_1789658686_5775 ﻿2026-09-17T17:23:47+02:00 head=1479d75 dirty_files=31
+               total        used        free      shared  buff/cache   available
+Mem:              12           1           5           0           6          11
+overlay         108G   22G   87G  20% /
+[15:24:48] src /content/drive/MyDrive/vcc2026/data/raw/replogle/K562_gwps_raw_singlecell_01.h5ad bytes=65,830,941,948 expected=65,830,941,948 match=True
+[15:24:48] layout {'path': '/content/drive/MyDrive/vcc2026/data/raw/replogle/K562_gwps_raw_singlecell_01.h5ad', 'n_obs': 1989578, 'n_vars': 8248, 'offset': 2048, 'itemsize': 4, 'file_size': 65830941948, 'row_nbytes': 32992, 'x_end': 65640159424}
+[15:24:52] obs (1989578, 11) columns=['gem_group', 'gene', 'gene_id', 'transcript', 'gene_transcript', 'sgID_AB', 'mitopercent', 'UMI_count', 'z_gemgroup_UMI', 'core_scale_factor', 'core_adjusted_UMI_count']
+[15:24:52] var (8248, 12) columns=['gene_name', 'chr', 'start', 'end', 'class', 'strand', 'length', 'in_matrix', 'mean', 'std', 'cv', 'fano']
+[15:25:01] group column 'gene_transcript': 11,187 groups
+[15:25:01] panel targets found 272/300; ntc cells 75,328 (keep 20,000); other targets 400; selected cells 146,510
+[15:26:03]   row 81,360/1,989,578  2.5 GiB  41 MiB/s
+[15:27:05]   row 154,584/1,989,578  4.7 GiB  39 MiB/s
+[15:28:07]   row 219,672/1,989,578  6.7 GiB  37 MiB/s
+[15:29:06] segment 0-250,000 closed: 18,304 cells -> /content/drive/MyDrive/vcc2026/data/processed/k562_gwps_sc/x002/cells_part000.h5ad
+[15:29:16]   row 260,352/1,989,578  8.0 GiB  32 MiB/s
+[15:30:18]   row 301,032/1,989,578  9.2 GiB  30 MiB/s
+[15:31:21]   row 325,440/1,989,578  10.0 GiB  27 MiB/s
+[15:32:23]   row 349,848/1,989,578  10.7 GiB  25 MiB/s
+[15:33:25]   row 382,392/1,989,578  11.7 GiB  24 MiB/s
+[15:34:36]   row 414,936/1,989,578  12.7 GiB  23 MiB/s
+[15:35:46]   row 447,480/1,989,578  13.7 GiB  22 MiB/s
+[15:36:59]   row 488,160/1,989,578  15.0 GiB  21 MiB/s
+[15:39:51] segment 250,000-500,000 closed: 18,724 cells -> /content/drive/MyDrive/vcc2026/data/processed/k562_gwps_sc/x002/cells_part001.h5ad
+[15:39:52]   row 504,432/1,989,578  15.5 GiB  18 MiB/s
+[15:40:52]   row 545,112/1,989,578  16.7 GiB  18 MiB/s
+[15:42:06]   row 569,520/1,989,578  17.5 GiB  17 MiB/s
+[15:43:12]   row 610,200/1,989,578  18.7 GiB  18 MiB/s
+[15:44:17]   row 659,016/1,989,578  20.2 GiB  18 MiB/s
+[15:45:17]   row 691,560/1,989,578  21.2 GiB  18 MiB/s
+[15:46:30]   row 724,104/1,989,578  22.2 GiB  18 MiB/s
+[15:50:31] segment 500,000-750,000 closed: 18,220 cells -> /content/drive/MyDrive/vcc2026/data/processed/k562_gwps_sc/x002/cells_part002.h5ad
+[15:50:32]   row 756,648/1,989,578  23.2 GiB  16 MiB/s
+[15:51:35]   row 797,328/1,989,578  24.5 GiB  16 MiB/s
+[15:52:52]   row 838,008/1,989,578  25.7 GiB  16 MiB/s
+[15:53:55]   row 870,552/1,989,578  26.7 GiB  16 MiB/s
+[15:54:59]   row 968,184/1,989,578  29.7 GiB  17 MiB/s
+[15:55:44] segment 750,000-1,000,000 closed: 18,393 cells -> /content/drive/MyDrive/vcc2026/data/processed/k562_gwps_sc/x002/cells_part003.h5ad
+[15:56:01]   row 1,033,272/1,989,578  31.7 GiB  17 MiB/s
+[15:57:03]   row 1,139,040/1,989,578  35.0 GiB  19 MiB/s
+[15:58:06]   row 1,236,672/1,989,578  38.0 GiB  20 MiB/s
+[15:58:35] segment 1,000,000-1,250,000 closed: 18,480 cells -> /content/drive/MyDrive/vcc2026/data/processed/k562_gwps_sc/x002/cells_part004.h5ad
+[15:59:07]   row 1,301,760/1,989,578  40.0 GiB  20 MiB/s
+[16:00:12]   row 1,407,528/1,989,578  43.2 GiB  21 MiB/s
+[16:01:14]   row 1,497,024/1,989,578  46.0 GiB  22 MiB/s
+[16:01:51] segment 1,250,000-1,500,000 closed: 18,323 cells -> /content/drive/MyDrive/vcc2026/data/processed/k562_gwps_sc/x002/cells_part005.h5ad
+[16:02:17]   row 1,553,976/1,989,578  47.7 GiB  22 MiB/s
+[16:03:20]   row 1,667,880/1,989,578  51.2 GiB  23 MiB/s
+[16:04:38] segment 1,500,000-1,750,000 closed: 18,393 cells -> /content/drive/MyDrive/vcc2026/data/processed/k562_gwps_sc/x002/cells_part006.h5ad
+[16:04:38]   row 1,757,376/1,989,578  54.0 GiB  23 MiB/s
+[16:05:40]   row 1,838,736/1,989,578  56.5 GiB  24 MiB/s
+[16:06:41]   row 1,936,368/1,989,578  59.5 GiB  24 MiB/s
+[16:07:27] segment 1,750,000-1,989,578 closed: 17,673 cells -> /content/drive/MyDrive/vcc2026/data/processed/k562_gwps_sc/x002/cells_part007.h5ad
+[16:07:41] done in 2572s; md5_match=True
+job end 2026-09-17T16:07:44Z

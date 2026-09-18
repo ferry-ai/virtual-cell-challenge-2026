@@ -1,7 +1,26 @@
 # Mappa del progetto — VCC 2026
 
 **Questo è il punto di ingresso.** Se leggi una cosa sola, leggi questa pagina.
-Aggiornata il 2026-09-16.
+Aggiornata il 2026-09-18 (solo §5, primo paragrafo: RPE1 contro K562 e il controllo d'identità
+del bersaglio, [CP-0023](checkpoints/0023-rpe1-contro-k562-su-hepg2.md) e
+[CP-0024](checkpoints/0024-identita-del-bersaglio-su-hepg2.md)). Il resto è del 17.
+
+**Il 17 settembre, cambio di strategia ([CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md)).**
+Il mandato del proprietario è superare 0,1 lavorando su **cellule singole**, con i grezzi
+già su Drive e il calcolo su Colab. Stato a fine giornata:
+- **Implementato e verificato in locale:** lettura a flusso del K562 genome-wide,
+  generatore appreso dai controlli (`ControlModel`), DE dello scorer in versione veloce e
+  identica, predittore con trasferimento, termine cis e risposta comune, banchi a sei
+  metriche.
+- **Non ancora eseguito in remoto:** la coda Colab (`MyDrive/vcc2026/runs/queue/`)
+  aspetta che il notebook `notebooks/colab_sc_training.ipynb` venga avviato. Non esiste
+  ancora una trial-02, né un nuovo punteggio.
+- **Misurato:**
+  - l'effetto cis della CRISPRi si trasferisce da K562 a HepG2 (entro 1 kb segno
+    concorde al 97,5%);
+  - la co-espressione nei controlli non predice il knockdown;
+  - lo scorer assegna FID 0 a chi non chiama geni, quindi un generatore pulito senza
+    segnale peggiora il punteggio (D-035).
 
 **Pianificazione del 16 settembre:** due workflow paralleli, entrambi proposte da
 approvare. [Implementazione](PIANO_IMPLEMENTATIVO_2026-09-16.md): incarichi, scadenze e
@@ -87,7 +106,9 @@ La classifica finale dipende solo dal set finale, su tre contesti diversi (D, E,
 | SVD randomizzata contro esatta, e confronto di rango 16/32/64/128 | fatta: la randomizzata **non** supera la banda prefissata sulle predizioni (4 fold su 48); il rango >16 scelto internamente **peggiora** il lowrank sul test. Default invariato: SVD esatta, griglia {8, 16} ([CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md), D-029, D-030, [SVD_E_RANGO.md](SVD_E_RANGO.md)) |
 | Gate di espressione scritto a mano (G1 simmetrico, G2 asimmetrico, G3 sul bersaglio) con i due controlli obbligatori | fatto: **non promosso** dalla regola fissata prima del run. La selezione interna sceglie «non fare niente» in 30 righe su 54, e dove un gate aiuta, quello costruito sulla **sorgente** aiuta quanto o più di quello costruito sulla destinazione ([CP-0017](checkpoints/0017-gate-espressione-destinazione.md), D-033) |
 | Catena di cicli: guardiano, collaudo scritto da Codex prima di Claude, controllo di Grok con campagne dell'orchestratore | implementata e provata con agenti simulati (42 test); **nessun ciclo dal vivo**. Guardiano registrato all'accesso e attivo dal 16 settembre, 23:54. Mancano `claude auth login` e la fase di integrazione ([CP-0019](checkpoints/0019-catena-cicli-guardiano.md), D-021 aggiornata) |
-| Grezzi pesanti (K562 genome-wide a singola cellula, HepG2) sul Google Drive del proprietario | **dichiarato** il 16 settembre, non ancora verificato da un run: si collegano dal runtime remoto, non si scaricano. Dimensioni coerenti con il catalogo; md5 e percorso delle copie da verificare. Nessun dataset è adottato per questo ([CP-0018](checkpoints/0018-drive-storage-confermato.md)) |
+| Grezzi pesanti (K562 genome-wide a singola cellula, HepG2) sul Google Drive del proprietario | **md5 verificato al download** dal run Colab del 15 settembre, nei percorsi attesi ([CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) §3.1, che corregge [CP-0018](checkpoints/0018-drive-storage-confermato.md)). Il contenuto del K562 non è ancora stato letto da nessun run |
+| Pipeline a singola cellula (estrazione K562, generatore appreso, DE veloce, predittore con termine cis, banchi a sei metriche) | implementata e provata in locale su dati ridotti; **coda Colab non ancora eseguita**; nessuna trial-02 ([CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md), D-034–D-037) |
+| Effetto cis della CRISPRi (I-4) | misurato: forte entro 1–5 kb e trasferibile K562 → HepG2; 34–37 bersagli del pannello hanno un vicino espresso entro 1 kb (`reports/cis_2026-09-17/`) |
 
 **Il 13 settembre 2026 è stata inviata la prima sottomissione, ed è stata valutata:
 punteggio 0,045929, posizione 446 su 920 squadre**
@@ -214,6 +235,10 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
 6. **Se la co-espressione nei controlli predica la direzione della risposta.** È il
    modello a costo zero più attraente, ed è anche quello contestato: la correlazione
    non è causalità, e il segno può venire da regolatori comuni o dalla normalizzazione.
+   **Prima misura, 17 settembre:** su 243 bersagli HepG2 la correlazione con l'effetto
+   è nulla, 0,0015 di mediana dopo aver tolto 20 PC
+   (`reports/coexpression_2026-09-17/summary.json`). Resta non provata sui bersagli non
+   essenziali.
 7. **Se esista Perturb-seq CRISPRi pubblico in linea T matura o squamosa.** La ricerca
    non è conclusa; la pista più vicina per C, GSE281860, espone conteggi di guide e non
    la matrice RNA. Dal 14 settembre esiste un incarico di ricerca pronto su questa
@@ -267,14 +292,63 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
     contesti ufficiali ce ne sono migliaia, ma lì non esistono risposte perturbate con
     cui misurare, e lo scorer dichiara comunque un filtro a 5 CPM
     ([CP-0017](checkpoints/0017-gate-espressione-destinazione.md)).
-20. **Se le copie su Drive siano integre e leggibili in tempi utili.** Il proprietario
-    dichiara che il K562 genome-wide a singola cellula e HepG2 sono su Drive, e le
-    dimensioni tornano. Ma nessun md5 è stato calcolato, il percorso delle copie non è
-    noto, e il tempo per leggere 61,31 GiB attraverso il mount di Colab non è misurato.
-    Lo dirà il primo run che le collega
-    ([CP-0018](checkpoints/0018-drive-storage-confermato.md)).
+20. **Se le copie su Drive siano leggibili in tempi utili.** Integrità e percorso sono
+    risolti: md5 verificato al download del 15 settembre, nei percorsi attesi
+    ([CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) §3.1). Resta non
+    misurato il tempo per leggere 61,31 GiB attraverso il mount di Colab, che lo script
+    71 registra al primo run.
+21. **Quante chiamate DE servono in `val`.** La FID premia le chiamate con il segno
+    giusto e punisce il silenzio. Le docstring dello scorer indicano che il 12–30% dei
+    bersagli ha meno di 10 geni significativi e che alcuni ne hanno più di 500. Quale
+    ampiezza del predittore dia un numero di chiamate adeguato è da misurare nei banchi
+    73 e 75 (D-035).
 
 ## 5. Il prossimo passo
+
+**18 settembre, nessuna sottomissione, nessun candidato nuovo.** Sul banco HepG2, con regole
+scritte prima dei risultati:
+- RPE1 trasferisce meglio di K562 (`WINS_RPE1`). Il vantaggio si attenua correggendo
+  approssimativamente per il volume delle chiamate (da +0,19…+0,34 a +0,06…+0,10), ma resta.
+  [CP-0023](checkpoints/0023-rpe1-contro-k562-su-hepg2.md);
+- il controllo a bersagli rimescolati mostra che il trasferimento porta informazione
+  specifica del bersaglio (RPE1 a tutte le ampiezze, K562 solo ad ampiezza 2,0). Il vantaggio
+  di RPE1, alla coppia a volume confrontabile, è invece soprattutto una **componente comune**
+  a tutte le sue firme. [CP-0024](checkpoints/0024-identita-del-bersaglio-su-hepg2.md).
+
+RPE1 non ha perturbato **nessuno** dei 300 bersagli ufficiali (K562 genome-wide 272), quindi
+non conferma la strategia «una sorgente per lignaggio». L'unico uso possibile è come
+componente comune accanto alle firme K562, ed è un candidato da misurare. Prima vanno fatte
+le due misure di CP-0024 §6. La prima è se la risposta comune dei knockdown essenziali compare
+anche nei knockdown dei bersagli ufficiali, che essenziali non sono.
+
+**Aggiornato la sera del 17 settembre, dopo due sottomissioni valutate.** La catena
+Colab ha girato per intero (job 005-017) e ha prodotto tre file, di cui due sottomessi:
+`t02` ha preso **−0,092774** (rango 764) e `t03` **+0,019692** (rango 576), contro lo
+**+0,045929** (rango 446) di trial-01 del 13 settembre. Siamo ancora sotto trial-01, e il
+perché è misurato: `pds_cosine` scende da 0,6870 a 0,6486 e `sig_jaccard` da 0,0291 a
+0,0218, il che si mangia il guadagno sulla fedeltà direzionale.
+
+**Il passo successivo non è più avviare la catena, è usare lo strumento che la serata ha
+prodotto.** In ordine:
+
+1. Prevedere prima di spendere. `scripts/84_predict_official.py` converte i grezzi di un
+   braccio del banco nel punteggio ufficiale atteso, usando i punti di calibrazione e le
+   ancore risolte. Sul `t03` ha sbagliato di 0,014 sulla media e dell'1-3% sui due membri
+   che pesano ([CP-0022](checkpoints/0022-previsione-verificata-t03.md)). Ogni previsione
+   va registrata **prima** della sottomissione, e la calibrazione ricalcolata su tutti i
+   punti disponibili, non su uno.
+2. Misurare il banco su ampiezze più alte di 2,0. Fra `t02` e `t03` la fedeltà grezza
+   ufficiale sale da 0,2534 a 0,4230 aumentando le chiamate, e lo stadio 83 misura che sui
+   contesti ufficiali ne dichiariamo poche: mediana 53/17/1 in A/B/C contro una mediana di
+   `n_conf` di 130 sul banco HepG2. Dove si fermi il guadagno è da misurare, non da dedurre.
+3. Il problema vero resta scoperto: **nessuna delle tre sottomissioni raggiunge la base
+   ufficiale sulla fedeltà (0,5123)**, cioè il livello di chi indovina le direzioni quanto
+   il caso. Il trasferimento K562 funziona su HepG2 e non si vede su A/B/C. Qui non serve
+   tarare: serve una sorgente o un metodo che produca direzioni, ed è il lavoro che decide
+   se lo 0,1 è raggiungibile.
+
+L'invio avviene solo con l'autorizzazione del proprietario. Il testo qui sotto descrive i
+passi precedenti e resta valido come storia.
 
 Il punto 1 e il punto 4 dell'elenco sotto sono **stati eseguiti** il 12 settembre
 (CP-0003): le baseline elementari girano, sono calibrate su bersagli tenuti fuori e

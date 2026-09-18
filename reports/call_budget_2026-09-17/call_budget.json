@@ -1,0 +1,178 @@
+{
+  "stage": "80_call_budget",
+  "written_utc": "2026-09-17T15:04:03.758637+00:00",
+  "context": "A",
+  "targets": [
+    "ALG12",
+    "CAND1",
+    "CHD6",
+    "DNTTIP1",
+    "DTNBP1",
+    "IFNAR2",
+    "LMAN1",
+    "LMBRD2",
+    "MAP2K2",
+    "NT5DC1",
+    "RBM4B",
+    "RFK",
+    "SH2D3A",
+    "SNRK",
+    "STT3A",
+    "TMEM147",
+    "TRIM35",
+    "TRPC4AP",
+    "ZBTB48",
+    "ZNF174"
+  ],
+  "source": "C:\\Users\\ferra\\vcc2026-data\\external\\K562_gwps_raw_bulk_01.h5ad",
+  "source_note": "K562 pseudobulk means with quasi-Poisson SE (effects_from_bulk); the single-cell accumulators of stage 71 were not available",
+  "args": {
+    "out": "reports\\call_budget_2026-09-17",
+    "context": "A",
+    "configs": "['null', 'm1+c1', 't0.5+m1+c1', 't1+m1+c1', 't2+m1+c1', 'r0.25+m1+c1', 'r0.5+m1+c1']",
+    "fit_cells": "3000",
+    "ref_cells": "1500",
+    "cells": "400",
+    "n_targets": "20",
+    "seed": "2026"
+  },
+  "results": {
+    "real_cells": {
+      "sig_per_target_mean": 0.0
+    },
+    "null": {
+      "amplitudes": {
+        "a_transfer": 0.0,
+        "a_raw_transfer": 0.0,
+        "a_cis_measured": 0.0,
+        "a_cis": 0.0,
+        "a_shared": 0.0
+      },
+      "sig_per_target_mean": 0.7,
+      "sig_per_target_median": 0.0,
+      "sig_per_target_q10_q90": [
+        0.0,
+        2.1000000000000014
+      ],
+      "targets_below_10_calls": 20,
+      "frac_up": 0.21428571428571427,
+      "genes_moved_10pct_median": 1.0,
+      "seconds": 120.5049045085907
+    },
+    "m1+c1": {
+      "amplitudes": {
+        "a_transfer": 0.0,
+        "a_raw_transfer": 0.0,
+        "a_cis_measured": 1.0,
+        "a_cis": 1.0,
+        "a_shared": 0.0
+      },
+      "sig_per_target_mean": 1.35,
+      "sig_per_target_median": 1.0,
+      "sig_per_target_q10_q90": [
+        0.0,
+        3.1000000000000014
+      ],
+      "targets_below_10_calls": 20,
+      "frac_up": 0.07407407407407407,
+      "genes_moved_10pct_median": 1.0,
+      "seconds": 162.07652401924133
+    },
+    "t0.5+m1+c1": {
+      "amplitudes": {
+        "a_transfer": 0.5,
+        "a_raw_transfer": 0.0,
+        "a_cis_measured": 1.0,
+        "a_cis": 1.0,
+        "a_shared": 0.0
+      },
+      "sig_per_target_mean": 8.85,
+      "sig_per_target_median": 1.0,
+      "sig_per_target_q10_q90": [
+        0.0,
+        13.100000000000016
+      ],
+      "targets_below_10_calls": 17,
+      "frac_up": 0.3446327683615819,
+      "genes_moved_10pct_median": 2.0,
+      "seconds": 159.1167118549347
+    },
+    "t1+m1+c1": {
+      "amplitudes": {
+        "a_transfer": 1.0,
+        "a_raw_transfer": 0.0,
+        "a_cis_measured": 1.0,
+        "a_cis": 1.0,
+        "a_shared": 0.0
+      },
+      "sig_per_target_mean": 78.15,
+      "sig_per_target_median": 9.0,
+      "sig_per_target_q10_q90": [
+        1.0,
+        226.4000000000001
+      ],
+      "targets_below_10_calls": 11,
+      "frac_up": 0.4248240563019834,
+      "genes_moved_10pct_median": 6.5,
+      "seconds": 175.78618931770325
+    },
+    "t2+m1+c1": {
+      "amplitudes": {
+        "a_transfer": 2.0,
+        "a_raw_transfer": 0.0,
+        "a_cis_measured": 1.0,
+        "a_cis": 1.0,
+        "a_shared": 0.0
+      },
+      "sig_per_target_mean": 433.55,
+      "sig_per_target_median": 216.5,
+      "sig_per_target_q10_q90": [
+        9.100000000000001,
+        1421.8
+      ],
+      "targets_below_10_calls": 2,
+      "frac_up": 0.43397532003229156,
+      "genes_moved_10pct_median": 305.0,
+      "seconds": 141.49965357780457
+    },
+    "r0.25+m1+c1": {
+      "amplitudes": {
+        "a_transfer": 0.0,
+        "a_raw_transfer": 0.25,
+        "a_cis_measured": 1.0,
+        "a_cis": 1.0,
+        "a_shared": 0.0
+      },
+      "sig_per_target_mean": 165.95,
+      "sig_per_target_median": 27.0,
+      "sig_per_target_q10_q90": [
+        9.9,
+        427.6000000000005
+      ],
+      "targets_below_10_calls": 2,
+      "frac_up": 0.3431756553178668,
+      "genes_moved_10pct_median": 165.5,
+      "seconds": 114.3294415473938
+    },
+    "r0.5+m1+c1": {
+      "amplitudes": {
+        "a_transfer": 0.0,
+        "a_raw_transfer": 0.5,
+        "a_cis_measured": 1.0,
+        "a_cis": 1.0,
+        "a_shared": 0.0
+      },
+      "sig_per_target_mean": 875.15,
+      "sig_per_target_median": 521.0,
+      "sig_per_target_q10_q90": [
+        293.3,
+        1822.900000000001
+      ],
+      "targets_below_10_calls": 0,
+      "frac_up": 0.4158715648745929,
+      "genes_moved_10pct_median": 1259.0,
+      "seconds": 146.2032072544098
+    }
+  },
+  "claim_type": "count of significant calls a configuration produces; says nothing about their sign"
+}

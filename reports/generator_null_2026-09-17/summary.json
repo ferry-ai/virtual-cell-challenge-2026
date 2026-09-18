@@ -1,0 +1,262 @@
+{
+  "stage": "72_generator_null",
+  "started_utc": "2026-09-17T17:25:47.462990+00:00",
+  "args": {
+    "out": "/content/drive/MyDrive/vcc2026/runs/generator_null_2026-09-17/n003",
+    "controls_dir": "/content/drive/MyDrive/vcc2026/data/raw/controls",
+    "contexts": "['A', 'B', 'C']",
+    "arms": "['real', 'g0', 'kde']",
+    "n_pseudo": "20",
+    "cells": "400",
+    "max_cells": "None",
+    "knn": "30",
+    "n_pcs": "20",
+    "seed": "2026",
+    "backend": "scanpy",
+    "de": "fast"
+  },
+  "contexts": {
+    "A": {
+      "n_h1": 9200,
+      "n_h2": 9200,
+      "n_genes_cpm5": 9923,
+      "real_nnz_per_cell_h2": 5979.949673913044,
+      "arms": {
+        "real": {
+          "n_sig_mean": 0.05,
+          "n_sig_median": 0.0,
+          "n_sig_max": 1.0,
+          "frac_up_of_sig": 0.0,
+          "n_tested_median": 9923.0,
+          "nnz_per_cell": 5956.83825,
+          "lib_median": 19980.5,
+          "lfc_bias_cpm5": {
+            "median": 0.00057704944909836,
+            "mad": 0.01658255406187521,
+            "frac_pos": 0.5100272095132521,
+            "q05_q95": [
+              -0.051169581340554875,
+              0.05647016321180932
+            ]
+          },
+          "pseudobulk_mse_mean": 0.0008131496554257195,
+          "seconds": 49.06837272644043
+        },
+        "g0": {
+          "n_sig_mean": 462.2,
+          "n_sig_median": 460.5,
+          "n_sig_max": 588.0,
+          "frac_up_of_sig": 0.8159887494591086,
+          "n_tested_median": 9923.0,
+          "nnz_per_cell": 6221.500875,
+          "lib_median": 20041.5,
+          "lfc_bias_cpm5": {
+            "median": -0.004459137805268644,
+            "mad": 0.027746249924241746,
+            "frac_pos": 0.45339111155900436,
+            "q05_q95": [
+              -0.08722638227077323,
+              0.07206150552967269
+            ]
+          },
+          "pseudobulk_mse_mean": 0.000663929344889441,
+          "seconds": 62.25025725364685
+        },
+        "kde": {
+          "n_sig_mean": 0.45,
+          "n_sig_median": 0.0,
+          "n_sig_max": 2.0,
+          "frac_up_of_sig": 0.2222222222222222,
+          "n_tested_median": 9923.0,
+          "nnz_per_cell": 5937.934625,
+          "lib_median": 19849.0,
+          "lfc_bias_cpm5": {
+            "median": 0.0009435843482217885,
+            "mad": 0.021736627043799164,
+            "frac_pos": 0.513252040713494,
+            "q05_q95": [
+              -0.06498600205477063,
+              0.06792497807031092
+            ]
+          },
+          "pseudobulk_mse_mean": 0.000889539797368696,
+          "seconds": 78.88584518432617
+        }
+      },
+      "model_kde": {
+        "dispersion": {
+          "n_zero_matched": 11829,
+          "phi_median_expressed": 0.10287885272593664,
+          "mean_fix_q01_q99": [
+            0.6494837403297424,
+            1.9656473398208618
+          ]
+        },
+        "pca_var": 0.22385939955711365
+      },
+      "seconds": 250.2918622493744
+    },
+    "B": {
+      "n_h1": 9200,
+      "n_h2": 9200,
+      "n_genes_cpm5": 9637,
+      "real_nnz_per_cell_h2": 5529.055434782608,
+      "arms": {
+        "real": {
+          "n_sig_mean": 0.0,
+          "n_sig_median": 0.0,
+          "n_sig_max": 0.0,
+          "frac_up_of_sig": 0.0,
+          "n_tested_median": 9637.0,
+          "nnz_per_cell": 5513.258,
+          "lib_median": 19878.0,
+          "lfc_bias_cpm5": {
+            "median": -0.000576032753823966,
+            "mad": 0.019647259923829746,
+            "frac_pos": 0.49112794438103147,
+            "q05_q95": [
+              -0.06978047003563552,
+              0.061405347193157024
+            ]
+          },
+          "pseudobulk_mse_mean": 0.0008454028287163459,
+          "seconds": 76.69219613075256
+        },
+        "g0": {
+          "n_sig_mean": 452.65,
+          "n_sig_median": 429.0,
+          "n_sig_max": 573.0,
+          "frac_up_of_sig": 0.8083508229316249,
+          "n_tested_median": 9637.0,
+          "nnz_per_cell": 5715.49225,
+          "lib_median": 19870.0,
+          "lfc_bias_cpm5": {
+            "median": -0.004932106964943103,
+            "mad": 0.02978427004127817,
+            "frac_pos": 0.45335685379267404,
+            "q05_q95": [
+              -0.1127062422637223,
+              0.08230702622075617
+            ]
+          },
+          "pseudobulk_mse_mean": 0.0006945509342406658,
+          "seconds": 96.98057246208191
+        },
+        "kde": {
+          "n_sig_mean": 0.45,
+          "n_sig_median": 0.0,
+          "n_sig_max": 2.0,
+          "frac_up_of_sig": 0.3333333333333333,
+          "n_tested_median": 9637.0,
+          "nnz_per_cell": 5534.01425,
+          "lib_median": 19895.0,
+          "lfc_bias_cpm5": {
+            "median": -0.000825149272580565,
+            "mad": 0.02400643046993104,
+            "frac_pos": 0.49112794438103147,
+            "q05_q95": [
+              -0.0868975571535918,
+              0.07516030660668756
+            ]
+          },
+          "pseudobulk_mse_mean": 0.0008640884542867239,
+          "seconds": 127.44856429100037
+        }
+      },
+      "model_kde": {
+        "dispersion": {
+          "n_zero_matched": 11893,
+          "phi_median_expressed": 0.024938767891083624,
+          "mean_fix_q01_q99": [
+            0.6657710671424866,
+            1.803267478942871
+          ]
+        },
+        "pca_var": 0.2507752776145935
+      },
+      "seconds": 387.27077531814575
+    },
+    "C": {
+      "n_h1": 9200,
+      "n_h2": 9200,
+      "n_genes_cpm5": 10120,
+      "real_nnz_per_cell_h2": 5874.431739130435,
+      "arms": {
+        "real": {
+          "n_sig_mean": 0.15,
+          "n_sig_median": 0.0,
+          "n_sig_max": 2.0,
+          "frac_up_of_sig": 0.3333333333333333,
+          "n_tested_median": 10120.0,
+          "nnz_per_cell": 5887.9105,
+          "lib_median": 19923.0,
+          "lfc_bias_cpm5": {
+            "median": 0.0011779107780707054,
+            "mad": 0.016996041083717363,
+            "frac_pos": 0.5193675889328063,
+            "q05_q95": [
+              -0.05315232726246754,
+              0.05794520303760504
+            ]
+          },
+          "pseudobulk_mse_mean": 0.0009094037705863151,
+          "seconds": 85.80630946159363
+        },
+        "g0": {
+          "n_sig_mean": 684.4,
+          "n_sig_median": 674.5,
+          "n_sig_max": 830.0,
+          "frac_up_of_sig": 0.8161163062536528,
+          "n_tested_median": 10120.0,
+          "nnz_per_cell": 6093.247625,
+          "lib_median": 19705.5,
+          "lfc_bias_cpm5": {
+            "median": -0.0024009122444553443,
+            "mad": 0.02841034981218043,
+            "frac_pos": 0.47470355731225294,
+            "q05_q95": [
+              -0.07827066742534236,
+              0.09541433082838766
+            ]
+          },
+          "pseudobulk_mse_mean": 0.0007136457685740823,
+          "seconds": 103.59187817573547
+        },
+        "kde": {
+          "n_sig_mean": 1.2,
+          "n_sig_median": 1.0,
+          "n_sig_max": 4.0,
+          "frac_up_of_sig": 0.5,
+          "n_tested_median": 10120.0,
+          "nnz_per_cell": 5865.519875,
+          "lib_median": 19853.0,
+          "lfc_bias_cpm5": {
+            "median": 0.0028284920926070567,
+            "mad": 0.02378497724219568,
+            "frac_pos": 0.5339920948616601,
+            "q05_q95": [
+              -0.06376666105605942,
+              0.07636385852897458
+            ]
+          },
+          "pseudobulk_mse_mean": 0.0009513150707928389,
+          "seconds": 131.0085573196411
+        }
+      },
+      "model_kde": {
+        "dispersion": {
+          "n_zero_matched": 12264,
+          "phi_median_expressed": 0.05707294525928884,
+          "mean_fix_q01_q99": [
+            0.6938990950584412,
+            1.942746639251709
+          ]
+        },
+        "pca_var": 0.3105761706829071
+      },
+      "seconds": 414.10311460494995
+    }
+  },
+  "finished_utc": "2026-09-17T17:43:19.162195+00:00",
+  "backend": "fast_scorer_de (scanpy-identical, D-037)"
+}

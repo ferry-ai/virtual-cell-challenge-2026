@@ -1,0 +1,71 @@
+# How the target-identity control (shuffled_aX) is read on the HepG2 bench. Written
+# 2026-09-18 ~13:50 (Europe/Rome), BEFORE jobs 022 and 023 were queued, i.e. before any
+# output of the benches it reads. Applied mechanically by scripts/89_specificity_reading.py.
+# owner_confirmed: false -- the owner set the question ("target-specific responses or a common
+# response?") on 2026-09-18 for the case RPE1 wins, which reports/source_lineage_2026-09-18/c001
+# measured; the quantities and the decision cells below are the agent's, not reviewed.
+# Version 2, same afternoon, jobs 022/023 queued but no output yet: a synthetic known-answer
+# test of stage 89 (transfer == shuffled by construction, independent noise per arm) gave
+# S = -0.004 with an interval excluding 0 at one amplitude, so version 1 called a null source
+# MIXED. Three intervals over 250+ targets flag negligible effects too often. Version 2 adds
+# practical_floor to every decision cell; nothing else changed.
+version: 2
+owner_confirmed: false
+written_before_results: true
+practical_floor: 0.03   # a rule of thumb, as in source_lineage_rule.yaml, not a measure of uncertainty
+
+question: >-
+  On the HepG2 bench RPE1 transfers with higher raw fidelity than K562, also at matched mean
+  call volume (c001, c002). Is that advantage carried by WHICH target is knocked down, or by a
+  response that any target's signature would bring? RPE1 has perturbed 0 of the 300 official
+  targets, so only the second kind could reach a submission directly.
+
+inputs:
+  k562: MyDrive/vcc2026/runs/bench_hepg2_source_2026-09-18/s_k562_gwps_r3/
+  rpe1: MyDrive/vcc2026/runs/bench_hepg2_source_2026-09-18/s_rpe1_r3/
+  panel: MyDrive/vcc2026/runs/bench_hepg2_source_2026-09-18/panel/shared_targets.txt
+  arms: [null_new, transfer_a0.5, transfer_a1.0, transfer_a2.0, shuffled_a0.5, shuffled_a1.0, shuffled_a2.0]
+
+reproducibility_gate: >-
+  The first four arms, in this order, draw the same random numbers as jobs 020/021, and the
+  anchors do not read the source. `replicate`, `baseline`, `null_new` and transfer_a0.5/1.0/2.0
+  must reproduce the raw values of reports/source_lineage_2026-09-18/{k562_gwps,rpe1}_r2_bench.json
+  to 1e-9. If they do not, the bench changed under us (code, data or RNG order) and nothing
+  below is read.
+
+metric: de_wilcoxon_direction_fidelity_yield_raw   # raw; per target from per_pert_<arm>.csv
+uncertainty: >-
+  Paired bootstrap over targets defined in both arms, 10.000 resamples, seed 2026, 95%
+  percentile interval. It covers which targets were drawn only -- not generator randomness,
+  not the half A / half B split -- and is read as such.
+
+quantities:
+  specificity: >-
+    S_src(a) = fidelity(transfer_a) - fidelity(shuffled_a), per source and amplitude, paired
+    per target. Same source, same amplitude, same effect-size distribution: what is left is
+    target identity. sig/t of both arms is reported next to it, because the shuffle keeps the
+    effect sizes but not necessarily the number of significant genes in HepG2.
+  decomposition: >-
+    At the volume-matched pair used in c002 (RPE1 transfer_a0.5, ~100 calls/target, against
+    K562 transfer_a1.0, ~92): common part = shuffled_RPE1(0.5) - shuffled_K562(1.0); specific
+    part = S_RPE1(0.5) - S_K562(1.0). They add up to the transfer gap by construction.
+
+rule:
+  - >-
+    Per source: SPECIFIC if, at all three amplitudes, S >= practical_floor and its interval
+    lies above 0; NOT_SPECIFIC if, at all three, the interval includes 0 or |S| <
+    practical_floor; MIXED otherwise.
+  - >-
+    A part of the decomposition is PRESENT when its interval excludes 0 and |mean| >=
+    practical_floor; its sign is reported with it. For the RPE1 advantage: MAINLY_COMMON if
+    only the common part is present; MAINLY_SPECIFIC if only the specific part is; BOTH if
+    both are; UNDETERMINED if neither is.
+  - >-
+    report_regardless: every arm's six raw metrics and sig/t, and the per-target components
+    (n_conf, n_pred, k, pooled precision k/n_pred) of every arm, which bench.py now writes.
+
+what_this_cannot_settle: >-
+  "Common" means anything not tied to target identity: a stress or TP53 programme shared by
+  knockdowns, a lineage-wide difference in baseline expression, or error in the source's
+  control mean, which is subtracted from every target alike. MAINLY_COMMON would not say which.
+  And HepG2 is still not A, B or C.

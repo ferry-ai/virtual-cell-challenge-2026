@@ -1,0 +1,79 @@
+{
+  "stage": "84_predict_official",
+  "written_utc": "2026-09-17T20:16:15.105122+00:00",
+  "label": "t03 = trial-03 sc-generator + K562 x2 + cis",
+  "arm": "transfer_a2.0+cismeas_a1.0+cis_a1.0",
+  "calibration": {
+    "arm": "transfer_a1.0+cismeas_a1.0+cis_a1.0",
+    "entry_id": "49Gvtu504clN1mIu8T2V",
+    "official_score_avg": -0.09277438939893641
+  },
+  "inputs": {
+    "bench": "reports\\bench_2026-09-17\\hepg2_h002_bench.json",
+    "status": "reports\\trial_2026-09-17\\status_49Gvtu504clN1mIu8T2V.json",
+    "anchors": "reports\\anchors_2026-09-17\\anchors.json"
+  },
+  "members": {
+    "pds_cosine": {
+      "bench_raw": 0.7623411371237458,
+      "calib_bench_raw": 0.6956410256410257,
+      "calib_official_raw": 0.6094165737643998,
+      "ratio": 0.8760503640549794,
+      "predicted_raw": 0.6678492307113445,
+      "predicted_scaled": 0.3704728791029823,
+      "baseline": 0.5021055713992504,
+      "replicate": 0.9494896274559461
+    },
+    "expr_mse_unbiased_capped_norm": {
+      "bench_raw": 1.5593360937783896,
+      "calib_bench_raw": 1.0238927132690152,
+      "calib_official_raw": 1.3659191056598017,
+      "ratio": 1.3340451474635344,
+      "predicted_raw": 2.0802247491698034,
+      "predicted_scaled": null,
+      "note": "anchors unsolved for this member; the challenge clipped it to 0 in both scored entries, so 0 is the value assumed in the average"
+    },
+    "de_wilcoxon_lfc_nmae": {
+      "bench_raw": 0.9461506772341667,
+      "calib_bench_raw": 0.9557558893545307,
+      "calib_official_raw": 0.9728199653867255,
+      "ratio": 1.0178540108643421,
+      "predicted_raw": 0.9630432617048101,
+      "predicted_scaled": 0.06276106599921824,
+      "baseline": 1.0011992318260274,
+      "replicate": 0.393243176368133
+    },
+    "de_wilcoxon_direction_fidelity_yield_raw": {
+      "bench_raw": 0.4854821441350619,
+      "calib_bench_raw": 0.2878468147801566,
+      "calib_official_raw": 0.25337429690039104,
+      "ratio": 0.880240057872122,
+      "predicted_raw": 0.42734083064932876,
+      "predicted_scaled": -0.2853790888461719,
+      "baseline": 0.5123177050197699,
+      "replicate": 0.8100861039379061
+    },
+    "de_wilcoxon_direction_reach_raw": {
+      "bench_raw": 0.39343443390875477,
+      "calib_bench_raw": 0.3210984022378419,
+      "calib_official_raw": 0.13822859392488657,
+      "ratio": 0.43048670738167916,
+      "predicted_raw": 0.1693682940239547,
+      "predicted_scaled": 0.10158212511085857,
+      "baseline": 0.07899044533295284,
+      "replicate": 0.9686927290011744
+    },
+    "de_wilcoxon_sig_jaccard": {
+      "bench_raw": 0.13194850565670246,
+      "calib_bench_raw": 0.1551924430370868,
+      "calib_official_raw": 0.01573198604866928,
+      "ratio": 0.10137082541390087,
+      "predicted_raw": 0.013375728930550697,
+      "predicted_scaled": -0.04661420697310396,
+      "baseline": 0.03038787274075812,
+      "replicate": 0.39534407203903854
+    }
+  },
+  "predicted_score_avg": 0.033803795732297214,
+  "claim_type": "PREDICTION, registered before the submission it describes. Rests on a one-point per-member calibration from bench raw to official raw, with no error bar."
+}

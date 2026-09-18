@@ -47,6 +47,11 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-031 | Ordine operativo: audit Jiang, poi Jurkat come quarto contesto; CD4 rinviato | attiva | 2026-09-15 | [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md), `docs/PIANO_OPERATIVO_2026-09-15.md` |
 | D-032 | Protocollo di valutazione congelato; i fold del 14–15 settembre sono sviluppo | attiva | 2026-09-15 | [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md), `configs/eval_protocol.yaml` |
 | D-033 | Il gate di espressione non è adottato: la regola non è soddisfatta e i due controlli indicano un filtro di rumore, non una regola di contesto | attiva | 2026-09-16 | [CP-0017](checkpoints/0017-gate-espressione-destinazione.md), `reports/expression_gate_2026-09-16/decision.json` |
+| D-034 | Il generatore delle sottomissioni è `ControlModel`: cellule nuove, apprese dai controlli del contesto, nessuna cellula di controllo copiata — **proposta del lead, da confermare dal proprietario** | da-verificare | 2026-09-17 | [CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) §3.3, `reports/generator_null_smoke_2026-09-17/` |
+| D-035 | Nessun invio con un generatore pulito se il predittore non produce chiamate: la FID vale `k / max(n_pred, N_conf)` e il silenzio vale 0 | attiva | 2026-09-17 | [CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) §3.2 |
+| D-036 | Il predittore contiene il termine cis (vicini misurati dalla sorgente, prior per distanza altrove); la co-espressione nei controlli non entra | attiva | 2026-09-17 | `reports/cis_2026-09-17/cis_effect.json`, `reports/coexpression_2026-09-17/summary.json` |
+| D-037 | Nei banchi il DE è `fast_scorer_de`, verificato identico al percorso scanpy dello scorer | attiva | 2026-09-17 | `reports/fast_de_2026-09-17/parity.json`, `tests/test_sc_pipeline.py` |
+| D-038 | Le misure si confrontano con le ancore ufficiali risolte, e non si sottomette senza sapere in quale regime della fedeltà siamo | attiva | 2026-09-17 | `reports/anchors_2026-09-17/anchors.json`, [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
 
 ---
 
@@ -841,3 +846,86 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   cioè in cui i geni spenti esistono e hanno una risposta osservata con cui confrontarsi;
   oppure se si misura il gate con l'ampiezza ricalibrata insieme al peso, che qui è stata
   tenuta fissa per far variare un fattore solo.
+
+### D-034 — Il generatore delle sottomissioni è `ControlModel` (proposta)
+
+- **Perché:** il generatore di trial-01 disegna ogni cellula dallo stesso profilo medio, e
+  a effetto zero lo scorer vi trova 93 geni significativi per pseudo-bersaglio da 100
+  cellule, l'89% «in su», contro 0,0 delle cellule reali. `ControlModel` (stati KDE) ne
+  trova 0,0 e rileva 5.926 geni per cellula contro 5.925 reali
+  ([CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) §3.3).
+- **Come è fatta:** per ogni contesto, PCA dei geni variabili dei controlli; stato nuovo
+  campionato vicino a uno stato osservato; composizione decodificata come media dei 30
+  controlli più vicini; dispersione per gene adattata agli zeri o alla varianza; conteggi
+  Gamma-Poisson nuovi. Nessuna cellula di controllo entra nella previsione, e il test
+  `test_counts_are_new_integers_on_the_same_axis` lo verifica. È la lettura del progetto
+  della frase «the control cells you downloaded are model inputs only».
+- **Perché è una proposta:** è la stessa zona grigia di D-017 e di O2 del piano del 16. Il
+  proprietario può rovesciarla, e una domanda a help@virtualcellchallenge.org la
+  chiuderebbe.
+- **Riaprire se:** gli organizzatori dicono che un generatore costruito sui controlli non
+  è ammesso; oppure la calibrazione nulla a scala piena (72, run `n001` su Colab) mostra
+  chiamate spurie molto sopra il reale-contro-reale.
+
+### D-035 — Un generatore pulito non si invia senza chiamate informative
+
+- **Perché:** in `cell_eval2` 0.16.0 la FID vale `k / max(n_pred, N_conf)`. Una
+  previsione che non chiama nulla prende 0 su ogni bersaglio con geni significativi nel
+  riferimento, cioè −1,71 in scala con le ancore stimate il 16 settembre, circa −0,29 sul
+  complessivo. Le docstring riportano che in `val` tra il 70% e l'88% dei bersagli ha
+  almeno 10 geni significativi.
+- **Come è fatta:** ogni braccio dei banchi 73 e 75 riporta `sig/t`, il numero di
+  chiamate per bersaglio, accanto alle sei metriche. Un candidato si invia solo se `sig/t`
+  è confrontabile con quello della replica del banco, oppure se la differenza è motivata
+  per iscritto.
+- **Riaprire se:** cambia la definizione della FID, oppure un banco mostra che la FID
+  resta sopra la baseline con poche chiamate.
+
+### D-036 — Termine cis sì, co-espressione no
+
+- **Perché:** entro 1 kb dal TSS del bersaglio, gli effetti K562 e HepG2 degli stessi
+  bersagli correlano 0,57, e il segno coincide nel 97,5% delle 122 coppie con |log2FC K562|
+  > 0,5; tra 1 e 5 kb la correlazione è 0,72
+  (`reports/cis_2026-09-17/cis_effect.json`). La co-espressione con il bersaglio nei
+  controlli non predice l'effetto del knockdown: correlazione mediana 0,0015 dopo aver
+  tolto 20 PC, su 243 bersagli HepG2 (`reports/coexpression_2026-09-17/summary.json`).
+- **Come è fatta:** in `assemble_log_fc`, un vicino entro 5 kb che la sorgente ha
+  misurato prende `a_cis_measured` volte il proprio effetto K562; gli altri vicini prendono
+  `a_cis` volte la mediana per distanza, adattata sui bersagli K562 fuori pannello.
+- **Riaprire se:** i banchi mostrano che il termine peggiora PDS o REACH; oppure una
+  misura su bersagli non essenziali contraddice il trasferimento.
+
+### D-037 — Il DE dei banchi è quello veloce, finché resta identico
+
+- **Perché:** il percorso CPU dello scorer ricalcola i ranghi dei controlli per ogni
+  bersaglio: su 272 bersagli sono ore per braccio. `fast_scorer_de` confronta ogni gruppo
+  con i controlli ordinati una volta sola, con chiavi complesse che conservano l'ordine
+  esatto. Su dati HepG2 reali restituisce le stesse 76.648 righe, differenze 0,0 su
+  p-value e log2FC e le stesse 7.916 chiamate, in 12 s invece di 88
+  (`reports/fast_de_2026-09-17/parity.json`).
+- **Come è fatta:** i banchi passano a `compute_metrics` entrambe le tabelle DE; tutto il
+  resto lo calcola lo scorer. Il backend del server non è noto (D-014).
+- **Riaprire se:** cambia la versione di `cell_eval2` o di scanpy; il controllo da rifare
+  è lo script 79.
+
+### D-038 — Ancore ufficiali come metro, e nessuna sottomissione al buio
+
+- **Perché:** `vcc status --json` pubblica il valore **grezzo** di ogni membro accanto al
+  suo scalato. Due sottomissioni sullo stesso pannello e la stessa `anchor_version` danno
+  due equazioni in base e replica, e il sistema si risolve esattamente (stadio 82,
+  `reports/anchors_2026-09-17/anchors.json`). Finché non le avevamo, i banchi locali
+  confrontavano i bracci con ancore **proprie**, calcolate in un regime diverso da quello
+  ufficiale: è così che `h002` ha dato +0,63 di fedeltà scalata su un file che il server
+  ha valutato −0,87.
+- **Come è fatta:** ogni misura locale riporta la forma grezza dei sei membri; il confronto
+  con base e replica si fa contro `anchors.json`, mai contro le ancore di un banco. Le
+  ancore valgono per `vcc2026-val-1` e per questa `anchor_version`, non oltre.
+- **La seconda metà:** `direction_fidelity_yield_raw = k / max(n_pred, n_conf)` misura due
+  cose diverse a seconda del regime — la precisione delle nostre chiamate quando
+  `n_pred ≥ n_conf`, la copertura quando `n_pred < n_conf` — e le due letture chiedono
+  interventi opposti. `n_pred` si misura con le sole cellule di controllo (stadio 83);
+  `k` e `n_conf` no. Non si sottomette un file costruito per curare un regime prima di
+  aver misurato di trovarsi in quel regime.
+- **Riaprire se:** cambia `panel_id` o `anchor_version` (le ancore vanno ririsolte); oppure
+  una terza sottomissione non riproduce lo scalato che le ancore predicono dal suo grezzo,
+  il che falsificherebbe la soluzione.

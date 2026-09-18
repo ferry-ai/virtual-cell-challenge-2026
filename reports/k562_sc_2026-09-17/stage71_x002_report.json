@@ -1,0 +1,181 @@
+{
+  "stage": "71_extract_k562_sc",
+  "finished_utc": "2026-09-17T16:07:40.551853+00:00",
+  "src": "/content/drive/MyDrive/vcc2026/data/raw/replogle/K562_gwps_raw_singlecell_01.h5ad",
+  "bytes": 65830941948,
+  "bytes_match_catalog": true,
+  "layout": {
+    "path": "/content/drive/MyDrive/vcc2026/data/raw/replogle/K562_gwps_raw_singlecell_01.h5ad",
+    "n_obs": 1989578,
+    "n_vars": 8248,
+    "offset": 2048,
+    "itemsize": 4,
+    "file_size": 65830941948,
+    "row_nbytes": 32992,
+    "x_end": 65640159424
+  },
+  "stream": {
+    "md5": "887e3e6a8c8df6eadf7a3030a53c9546",
+    "bytes_read": 65830941948,
+    "rows": [
+      0,
+      1989578
+    ],
+    "seconds": 2547.636340379715,
+    "mib_per_s": 24.642951415617322
+  },
+  "md5": "887e3e6a8c8df6eadf7a3030a53c9546",
+  "md5_expected": "887e3e6a8c8df6eadf7a3030a53c9546",
+  "md5_match": true,
+  "md5_note": null,
+  "rows_processed": 1989578,
+  "rows_total": 1989578,
+  "group_column": "gene_transcript",
+  "n_groups": 11187,
+  "obs_columns": [
+    "gem_group",
+    "gene",
+    "gene_id",
+    "transcript",
+    "gene_transcript",
+    "sgID_AB",
+    "mitopercent",
+    "UMI_count",
+    "z_gemgroup_UMI",
+    "core_scale_factor",
+    "core_adjusted_UMI_count"
+  ],
+  "var_columns": [
+    "gene_name",
+    "chr",
+    "start",
+    "end",
+    "class",
+    "strand",
+    "length",
+    "in_matrix",
+    "mean",
+    "std",
+    "cv",
+    "fano"
+  ],
+  "n_vars": 8248,
+  "panel_file": "/content/drive/MyDrive/vcc2026/data/raw/controls/pert_counts.csv",
+  "panel_targets_found": 272,
+  "panel_targets_missing": [
+    "ABCD1",
+    "CAPRIN2",
+    "EPHB2",
+    "HEATR6",
+    "KIF21B",
+    "MAPK7",
+    "MLKL",
+    "NICN1",
+    "PARP3",
+    "PBLD",
+    "PDK3",
+    "PHF11",
+    "PSMB9",
+    "RAB11FIP5",
+    "SEMA4F",
+    "SLC44A1",
+    "SNN",
+    "SOCS5",
+    "SPATA20",
+    "TAF4",
+    "TBC1D19",
+    "TDRD7",
+    "TESK2",
+    "TMEM104",
+    "TMEM79",
+    "TTBK2",
+    "TXNDC16",
+    "ZC2HC1A"
+  ],
+  "ntc_cells_total": 75328,
+  "ntc_cells_kept": 20000,
+  "other_targets": 400,
+  "seed": 2026,
+  "selected_cells": 146510,
+  "parts": [
+    {
+      "part": "cells_part000.h5ad",
+      "rows": [
+        0,
+        250000
+      ],
+      "n_cells": 18304
+    },
+    {
+      "part": "cells_part001.h5ad",
+      "rows": [
+        250000,
+        500000
+      ],
+      "n_cells": 18724
+    },
+    {
+      "part": "cells_part002.h5ad",
+      "rows": [
+        500000,
+        750000
+      ],
+      "n_cells": 18220
+    },
+    {
+      "part": "cells_part003.h5ad",
+      "rows": [
+        750000,
+        1000000
+      ],
+      "n_cells": 18393
+    },
+    {
+      "part": "cells_part004.h5ad",
+      "rows": [
+        1000000,
+        1250000
+      ],
+      "n_cells": 18480
+    },
+    {
+      "part": "cells_part005.h5ad",
+      "rows": [
+        1250000,
+        1500000
+      ],
+      "n_cells": 18323
+    },
+    {
+      "part": "cells_part006.h5ad",
+      "rows": [
+        1500000,
+        1750000
+      ],
+      "n_cells": 18393
+    },
+    {
+      "part": "cells_part007.h5ad",
+      "rows": [
+        1750000,
+        1989578
+      ],
+      "n_cells": 17673
+    }
+  ],
+  "cell_counts_match_obs": true,
+  "seconds_total": 2572.3248431682587,
+  "outputs": [
+    "groups.csv",
+    "var.csv",
+    "group_stats.npz",
+    "cells_part000.h5ad",
+    "cells_part001.h5ad",
+    "cells_part002.h5ad",
+    "cells_part003.h5ad",
+    "cells_part004.h5ad",
+    "cells_part005.h5ad",
+    "cells_part006.h5ad",
+    "cells_part007.h5ad"
+  ]
+}

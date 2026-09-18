@@ -39,5 +39,10 @@ aggiunge da sé la riga qui sotto.
 | [0015](0015-svd-randomizzata-e-rango.md) | 2026-09-15 | SVD randomizzata misurata; il rango oltre 16 non trasferisce | esperimento | — |
 | [0016](0016-piano-operativo-audit-protocollo.md) | 2026-09-15 | Piano operativo: audit sorgenti e protocollo di valutazione congelato | cambio-di-strategia | — |
 | [0017](0017-gate-espressione-destinazione.md) | 2026-09-16 | Gate di espressione sul contesto di destinazione: misurato, non promosso | esperimento | — |
-| [0018](0018-drive-storage-confermato.md) | 2026-09-16 | Grezzi pesanti già su Google Drive: si collegano, non si scaricano | osservazione | — |
+| [0018](0018-drive-storage-confermato.md) | 2026-09-16 | Grezzi pesanti già su Google Drive: si collegano, non si scaricano | osservazione | [0020](0020-singola-cellula-cis-generatore.md), §3.1 e §4 (le copie le ha scaricate il run Colab del 15 settembre, con md5 verificato) |
 | [0019](0019-catena-cicli-guardiano.md) | 2026-09-16 | Catena di cicli: guardiano, collaudo scritto prima e controllo di Grok | cambio-di-strategia | — |
+| [0020](0020-singola-cellula-cis-generatore.md) | 2026-09-17 | Pipeline a singola cellula: effetto cis trasferibile, DE esatto e veloce, md5 del K562 gia verificato | cambio-di-strategia | — |
+| [0021](0021-ancore-ufficiali-e-troppe-chiamate.md) | 2026-09-17 | Le ancore ufficiali, e perche' chiamare troppi geni costa il punteggio | osservazione | — |
+| [0022](0022-previsione-verificata-t03.md) | 2026-09-17 | La previsione registrata contro il punteggio reale del t03 | osservazione | — |
+| [0023](0023-rpe1-contro-k562-su-hepg2.md) | 2026-09-18 | RPE1 trasferisce su HepG2 meglio di K562, anche a parita' di chiamate; non copre alcun bersaglio ufficiale | esperimento | — |
+| [0024](0024-identita-del-bersaglio-su-hepg2.md) | 2026-09-18 | Il controllo d'identita' del bersaglio: il trasferimento e' specifico, il vantaggio di RPE1 e' soprattutto comune | esperimento | — |

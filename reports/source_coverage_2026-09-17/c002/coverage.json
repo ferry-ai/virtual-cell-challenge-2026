@@ -1,0 +1,84 @@
+{
+  "stage": "86_source_panel_coverage",
+  "args": {
+    "hepg2": "C:\\Users\\ferra\\vcc2026-data\\raw\\nadig_hepg2\\NadigOConner2024_hepg2.h5ad",
+    "source": "['k562_gwps=C:/Users/ferra/vcc2026-data/external/K562_gwps_raw_bulk_01.h5ad', 'rpe1=C:/Users/ferra/vcc2026-data/external/rpe1_raw_bulk_01.h5ad']",
+    "min_cells": "50",
+    "n_targets": "300",
+    "seed": "2026",
+    "out": "reports\\source_coverage_2026-09-17\\c002"
+  },
+  "finished_utc": "2026-09-17T22:15:07.920415+00:00",
+  "hepg2": {
+    "n_genes": 9624,
+    "n_targets": 2393,
+    "n_eligible": 1061,
+    "min_cells": 50
+  },
+  "sources": {
+    "k562_gwps": {
+      "path": "C:/Users/ferra/vcc2026-data/external/K562_gwps_raw_bulk_01.h5ad",
+      "n_rows": 11258,
+      "n_ntc_rows": 585,
+      "n_targets": 9866,
+      "n_source_genes": 8246,
+      "hepg2_genes_measured": 7425,
+      "hepg2_gene_coverage": 0.7715087281795511,
+      "hepg2_targets_covered": 1059,
+      "hepg2_target_coverage": 0.998114985862394,
+      "cells_per_covered_target": {
+        "median": 184.0,
+        "q10_q90": [
+          64.0,
+          443.0
+        ]
+      }
+    },
+    "rpe1": {
+      "path": "C:/Users/ferra/vcc2026-data/external/rpe1_raw_bulk_01.h5ad",
+      "n_rows": 2679,
+      "n_ntc_rows": 130,
+      "n_targets": 2393,
+      "n_source_genes": 8748,
+      "hepg2_genes_measured": 7733,
+      "hepg2_gene_coverage": 0.8035120532003325,
+      "hepg2_targets_covered": 1061,
+      "hepg2_target_coverage": 1.0,
+      "cells_per_covered_target": {
+        "median": 101.0,
+        "q10_q90": [
+          35.0,
+          250.0
+        ]
+      }
+    }
+  },
+  "shared_panel_size": 1059,
+  "union_panel_size": 1061,
+  "stage75_selection": {
+    "without_targets_file": {
+      "eligible": {
+        "k562_gwps": 1059,
+        "rpe1": 1061
+      },
+      "identical": false,
+      "in_common": 205,
+      "n_drawn": {
+        "k562_gwps": 300,
+        "rpe1": 300
+      }
+    },
+    "with_targets_file": {
+      "eligible": {
+        "k562_gwps": 1059,
+        "rpe1": 1059
+      },
+      "identical": true,
+      "in_common": 300,
+      "n_drawn": {
+        "k562_gwps": 300,
+        "rpe1": 300
+      }
+    }
+  }
+}

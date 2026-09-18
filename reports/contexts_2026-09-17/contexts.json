@@ -1,0 +1,136 @@
+{
+  "stage": "85_identify_contexts",
+  "written_utc": "2026-09-17T21:35:03.604902+00:00",
+  "controls_dir": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls",
+  "contexts": {
+    "A": {
+      "n_cells": 18400,
+      "seconds": 15.647297143936157
+    },
+    "B": {
+      "n_cells": 18400,
+      "seconds": 13.793641090393066
+    },
+    "C": {
+      "n_cells": 18400,
+      "seconds": 16.64692258834839
+    }
+  },
+  "panels": {
+    "pluripotency (iPSC / hESC, e.g. KOLF2.1J, H1)": {
+      "n_found": 10,
+      "n_listed": 10,
+      "median_cpm_A": 0.01414401480622215,
+      "median_det_A": 0.0002717391304347826,
+      "median_cpm_B": 0.002718758854827668,
+      "median_det_B": 5.4347826086956524e-05,
+      "median_cpm_C": 0.17725018623343117,
+      "median_det_C": 0.0037228260869565217
+    },
+    "erythroid / myeloid leukaemia (K562)": {
+      "n_found": 7,
+      "n_listed": 7,
+      "median_cpm_A": 0.010286556222707018,
+      "median_det_A": 0.0002173913043478261,
+      "median_cpm_B": 0.008156276564483003,
+      "median_det_B": 0.00016304347826086958,
+      "median_cpm_C": 0.0,
+      "median_det_C": 0.0
+    },
+    "hepatocyte (HepG2)": {
+      "n_found": 7,
+      "n_listed": 7,
+      "median_cpm_A": 0.0,
+      "median_det_A": 0.0,
+      "median_cpm_B": 0.03806262396758735,
+      "median_det_B": 0.0007608695652173913,
+      "median_cpm_C": 0.11559794754354207,
+      "median_det_C": 0.0024456521739130437
+    },
+    "T lymphocyte (Jurkat)": {
+      "n_found": 6,
+      "n_listed": 6,
+      "median_cpm_A": 409.9231229334582,
+      "median_det_A": 0.9614402173913044,
+      "median_cpm_B": 0.0,
+      "median_det_B": 0.0,
+      "median_cpm_C": 0.016697481311844967,
+      "median_det_C": 0.00032608695652173916
+    },
+    "epithelial (RPE1, HEK293)": {
+      "n_found": 5,
+      "n_listed": 5,
+      "median_cpm_A": 0.0025716390556767546,
+      "median_det_A": 5.4347826086956524e-05,
+      "median_cpm_B": 2.444164210490073,
+      "median_det_B": 0.043097826086956524,
+      "median_cpm_C": 312.2506070613371,
+      "median_det_C": 0.9701630434782609
+    },
+    "neural": {
+      "n_found": 6,
+      "n_listed": 6,
+      "median_cpm_A": 1.1880972437226607,
+      "median_det_A": 0.02326086956521739,
+      "median_cpm_B": 14.393109377457673,
+      "median_det_B": 0.18663043478260868,
+      "median_cpm_C": 0.6396419764075995,
+      "median_det_C": 0.01282608695652174
+    },
+    "fibroblast / mesenchymal": {
+      "n_found": 5,
+      "n_listed": 5,
+      "median_cpm_A": 3.9654674238535557,
+      "median_det_A": 0.06798913043478261,
+      "median_cpm_B": 91.73636127959517,
+      "median_det_B": 0.6794021739130435,
+      "median_cpm_C": 0.06678992524737987,
+      "median_det_C": 0.0014130434782608696
+    },
+    "monocyte / macrophage (THP-1)": {
+      "n_found": 4,
+      "n_listed": 4,
+      "median_cpm_A": 0.10543720128274693,
+      "median_det_A": 0.0021467391304347827,
+      "median_cpm_B": 0.05709393595138103,
+      "median_det_B": 0.0009782608695652175,
+      "median_cpm_C": 0.12587332065852358,
+      "median_det_C": 0.0025815217391304346
+    },
+    "housekeeping (scale check)": {
+      "n_found": 2,
+      "n_listed": 4,
+      "median_cpm_A": 238.097773608888,
+      "median_det_A": 0.7360326086956521,
+      "median_cpm_B": 51.777403010765525,
+      "median_det_B": 0.5610326086956522,
+      "median_cpm_C": 2844.391537461642,
+      "median_det_C": 0.6416032608695652
+    },
+    "proliferation": {
+      "n_found": 3,
+      "n_listed": 3,
+      "median_cpm_A": 431.13271604515216,
+      "median_det_A": 0.9018478260869566,
+      "median_cpm_B": 406.459886314446,
+      "median_det_B": 0.8091304347826087,
+      "median_cpm_C": 334.8487213844602,
+      "median_det_C": 0.7666847826086957
+    }
+  },
+  "between_contexts": {
+    "A-B": {
+      "pearson_log1p_cpm": 0.7801693806966841,
+      "n_genes_2x_apart": 6861
+    },
+    "A-C": {
+      "pearson_log1p_cpm": 0.7492722590093701,
+      "n_genes_2x_apart": 7674
+    },
+    "B-C": {
+      "pearson_log1p_cpm": 0.8416082158058547,
+      "n_genes_2x_apart": 5961
+    }
+  },
+  "claim_type": "measured: pooled CPM and detection fraction of lineage markers in the official contexts' control cells. Evidence about LINEAGE; it does not identify a cell line, and the marker panels are standard practice, not a validated classifier"
+}

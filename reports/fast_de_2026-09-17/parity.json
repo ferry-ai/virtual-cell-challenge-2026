@@ -1,0 +1,42 @@
+{
+  "stage": "79_fast_de_parity",
+  "written_utc": "2026-09-17T14:32:27.938433+00:00",
+  "data": {
+    "source": "C:\\Users\\ferra\\vcc2026-data\\raw\\nadig_hepg2\\NadigOConner2024_hepg2.h5ad",
+    "targets": [
+      "CSNK2B",
+      "GAB2",
+      "NAA25",
+      "NELFB",
+      "RPL35",
+      "SETD1A",
+      "SRP72",
+      "ZNF207"
+    ],
+    "cells_per_target": 80,
+    "control_cells": 1500,
+    "genes": 9624
+  },
+  "scorer": {
+    "cell_eval2_config": "vcc2026",
+    "backend": "scanpy",
+    "p_adj_threshold": 0.05
+  },
+  "rows": {
+    "scanpy": 76648,
+    "fast": 76648,
+    "joined": 76648
+  },
+  "max_abs_dlog10_p": 0.0,
+  "max_abs_dlfc": 0.0,
+  "max_abs_dp_adj": 2.220446049250313e-16,
+  "significant": {
+    "scanpy": 7916,
+    "fast": 7916,
+    "disagree": 0
+  },
+  "seconds": {
+    "scanpy": 88.05386018753052,
+    "fast": 12.269334077835083
+  }
+}

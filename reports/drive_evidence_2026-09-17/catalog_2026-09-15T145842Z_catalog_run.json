@@ -1,0 +1,707 @@
+{
+  "recorded_utc": "2026-09-15T16:03:17Z",
+  "paths": {
+    "runtime": "colab",
+    "repo": "/content/vcc2026-src",
+    "data": "/content/drive/MyDrive/vcc2026/data",
+    "persist": "/content/drive/MyDrive/vcc2026/runs",
+    "scratch": "/tmp/vcc-scratch",
+    "remote": true
+  },
+  "persist_kind": {
+    "kind": "colab_drive",
+    "survives_session": true,
+    "note": "Google Drive mount. Still not a laptop path."
+  },
+  "preflight": {
+    "inventory": {
+      "recorded_utc": "2026-09-15T14:58:42Z",
+      "python": {
+        "version": "3.13.15",
+        "executable": "/usr/bin/python3",
+        "implementation": "CPython"
+      },
+      "platform": {
+        "system": "Linux",
+        "release": "6.6.122+",
+        "machine": "x86_64",
+        "processor": "x86_64"
+      },
+      "resources": {
+        "ram_total_bytes": 13605830656,
+        "ram_available_bytes": 12304330752,
+        "disk_path": "/content/drive/MyDrive/vcc2026/data",
+        "disk_total_bytes": 115658190848,
+        "disk_free_bytes": 88982114304,
+        "cpu_count": 2,
+        "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+        "source": "/proc/meminfo + shutil.disk_usage",
+        "ram_total_gib": 12.671417236328125,
+        "ram_available_gib": 11.459300994873047,
+        "disk_free_gib": 82.87105178833008
+      },
+      "packages": {
+        "numpy": "2.1.3",
+        "scipy": "1.16.3",
+        "pandas": "3.0.5",
+        "h5py": "3.16.0",
+        "anndata": "0.13.3.post0",
+        "scanpy": null,
+        "cell-eval2": null,
+        "vcc-cli": null,
+        "pyyaml": "6.0.3",
+        "httpx": "0.28.1"
+      },
+      "git": {
+        "repo": "/content/vcc2026-src",
+        "available": false,
+        "why": "CalledProcessError: Command '['/usr/bin/git', '-C', '/content/vcc2026-src', 'rev-parse', 'HEAD']' returned non-zero exit status 128."
+      },
+      "gpu": {
+        "torch_installed": true,
+        "cuda_available": false,
+        "torch_version": "2.11.0+cpu"
+      },
+      "scorer": {
+        "expected_cell_eval2": "0.16.0",
+        "cell_eval2": null,
+        "error": "PackageNotFoundError: No package metadata was found for cell-eval2",
+        "vcc_cli": null,
+        "matches_decision_D008": false,
+        "de_backends_available": {
+          "pdex": null,
+          "gpudge": null,
+          "cuda_available": false
+        },
+        "de_backend_resolved": "scanpy",
+        "de_backend_note": "de.backend='auto' picks gpudge (CUDA) > pdex > scanpy. The engines do not agree exactly, so a DE-based metric is only comparable across runs that resolved the same backend. Record it beside every number."
+      },
+      "data_root": "/content/drive/MyDrive/vcc2026/data",
+      "persistent_paths": {
+        "path": "/content/drive/MyDrive/vcc2026/runs",
+        "free_bytes": 88982114304,
+        "free_gib": 82.87105178833008,
+        "note": "A file that remains only on ephemeral scratch is not a delivery. Export and re-read from this path."
+      },
+      "windows_paths_forbidden": true,
+      "claim": "measured"
+    },
+    "disk_free_bytes": 88982114304,
+    "ram_available_bytes": 12240736256,
+    "ram_total_bytes": 13605830656,
+    "persist": {
+      "kind": "colab_drive",
+      "survives_session": true,
+      "note": "Google Drive mount. Still not a laptop path."
+    }
+  },
+  "disk_floor_gib": 2.0,
+  "disk_floor_note": "10 GiB is D-005 on the laptop. 2 GiB is a proposed remote floor, not a Colab quota. Remeasured before every block.",
+  "fetch_ids": [
+    "k562_gwps_raw_singlecell",
+    "nadig_hepg2"
+  ],
+  "plan_only": false,
+  "auto_fetch": false,
+  "allow_ephemeral_large": false,
+  "recommendation": null,
+  "colab_pilot": {
+    "out": "/content/vcc-persist/remote_ingest_2026-09-15T140308Z",
+    "persist_is_ephemeral": true,
+    "hepg2_parity": "passed (byte, md5, shape, NTC, gene axis)",
+    "resume_probe": "200 bytes then complete",
+    "jiang": "skipped FETCH_JIANG=False",
+    "disk_free_gib_after_pilot": 87.24895858764648,
+    "ram_available_user_report_gib": 11,
+    "ram_must_be_remeasured": true,
+    "does_not_prove_large_ingest_or_training_resume": true
+  },
+  "blocks": [
+    {
+      "plan": {
+        "block_id": "nadig_hepg2",
+        "title": "Nadig HepG2 scPerturb mirror",
+        "bytes": 850590740,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "af2be47f7477cf32fa6e4bec1c6a4868",
+        "url": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_hepg2.h5ad/content",
+        "format": "h5ad",
+        "evidence": "reports/hepg2_2026-09-14/acquisition.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 850590740,
+            "decompressed_bytes": null,
+            "derived_bytes": 20000000,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 875590740,
+          "unknown_components": [
+            "decompressed_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 2147483648,
+        "free_bytes": 88982114304,
+        "ram_available_bytes": 12239962112,
+        "ram_note": null,
+        "decision": "fetch",
+        "reason": "operator selected and input leaves the floor",
+        "derive": "h5ad_obs",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "complete",
+      "path": "/content/drive/MyDrive/vcc2026/data/raw/nadig_hepg2/NadigOConner2024_hepg2.h5ad",
+      "file": {
+        "exists": true,
+        "bytes": 850590740,
+        "md5": "af2be47f7477cf32fa6e4bec1c6a4868",
+        "bytes_ok": true,
+        "md5_ok": true,
+        "matches": true
+      },
+      "acquired": {
+        "url": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_hepg2.h5ad/content",
+        "dest": "/content/drive/MyDrive/vcc2026/data/raw/nadig_hepg2/NadigOConner2024_hepg2.h5ad",
+        "expected_bytes": 850590740,
+        "expected_md5": "af2be47f7477cf32fa6e4bec1c6a4868",
+        "max_bytes": 851590740,
+        "received": 850590740,
+        "done": true,
+        "md5": "af2be47f7477cf32fa6e4bec1c6a4868",
+        "sha256": "1af2f7b3e692ad3d077e6027d68a1f800619e29aa3f7a0efa70146fb7223a4bf"
+      },
+      "qc": {
+        "shape": [
+          145473,
+          9624
+        ],
+        "obs_keys": [
+          "UMI_count",
+          "batch",
+          "cancer",
+          "cell_barcode",
+          "cell_line",
+          "disease",
+          "gene",
+          "gene_id",
+          "gene_transcript",
+          "guide_id",
+          "ncounts",
+          "ngenes",
+          "nperts",
+          "organism",
+          "percent_mito",
+          "percent_ribo",
+          "perturbation",
+          "perturbation_type",
+          "tissue_type",
+          "transcript",
+          "z_gemgroup_UMI"
+        ],
+        "var_keys": [
+          "chr",
+          "class",
+          "cv",
+          "end",
+          "ensembl_id",
+          "fano",
+          "gene_name",
+          "in_matrix",
+          "length",
+          "mean",
+          "ncells",
+          "ncounts",
+          "start",
+          "std",
+          "strand"
+        ],
+        "pert_column_used": "perturbation",
+        "ntc_label_used": "control",
+        "ntc_labels_discovered": [
+          "control"
+        ],
+        "ntc_cells": 4976,
+        "n_genes": 9624,
+        "n_on_official_axis": 9023,
+        "pairing": {
+          "batch_column": "batch",
+          "n_batches": 56,
+          "batches_without_ntc": [],
+          "ntc_per_batch_min": 5
+        },
+        "x_head_rows": 64,
+        "x_min": 0.0,
+        "x_max": 1595.0,
+        "x_nonnegative": true,
+        "x_integral": true,
+        "ntc_note": null,
+        "claim": "measured"
+      },
+      "derived": {
+        "gene_mask": "/content/drive/MyDrive/vcc2026/runs/catalog_2026-09-15T145842Z/derived/nadig_hepg2/gene_mask.npz",
+        "ntc_rows": "/content/drive/MyDrive/vcc2026/runs/catalog_2026-09-15T145842Z/derived/nadig_hepg2/ntc_rows.npz",
+        "n_observed_on_official_axis": 9023,
+        "n_unmeasured_official_genes": 9510,
+        "unmeasured_are_masked_not_zeroed": true,
+        "ntc_cells": 4976,
+        "pairing": {
+          "batch_column": "batch",
+          "n_batches": 56,
+          "batches_without_ntc": [],
+          "ntc_per_batch_min": 5
+        },
+        "signatures": null,
+        "signatures_note": "obs-level NTC pairing and gene mask only. Full log2FC signatures are scripts/53_build_hepg2_signatures.py (or equivalent) and are not this step.",
+        "claim": "measured"
+      },
+      "checkpoint": "/content/drive/MyDrive/vcc2026/runs/catalog_2026-09-15T145842Z/checkpoints/nadig_hepg2.json"
+    },
+    {
+      "plan": {
+        "block_id": "k562_gwps_raw_singlecell",
+        "title": "Replogle 2022 K562 genome-wide raw single-cell",
+        "bytes": 65830941948,
+        "advertised_bytes": 61300000000,
+        "advertised_note": "Profile '61.3 GB' is not this file's byte count. Measured size is 65830941948.",
+        "md5": "887e3e6a8c8df6eadf7a3030a53c9546",
+        "url": "https://ndownloader.figshare.com/files/35775507",
+        "format": "h5ad",
+        "evidence": "src/vcc2026/external.py",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 65830941948,
+            "decompressed_bytes": null,
+            "derived_bytes": 20000000,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 65855941948,
+          "unknown_components": [
+            "decompressed_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 2147483648,
+        "free_bytes": 88169807872,
+        "ram_available_bytes": 12123787264,
+        "ram_note": null,
+        "decision": "fetch",
+        "reason": "operator selected and input leaves the floor",
+        "derive": "h5ad_obs",
+        "same_experiment_as": "k562_gwps_scperturb_mirror",
+        "claim": "derived",
+        "error": "TypeError: Argument 'path' must not be None"
+      },
+      "status": "failed",
+      "path": "/content/drive/MyDrive/vcc2026/data/raw/replogle/K562_gwps_raw_singlecell_01.h5ad",
+      "file": {
+        "exists": true,
+        "bytes": 65830941948,
+        "md5": "887e3e6a8c8df6eadf7a3030a53c9546",
+        "bytes_ok": true,
+        "md5_ok": true,
+        "matches": true
+      },
+      "acquired": {
+        "url": "https://ndownloader.figshare.com/files/35775507",
+        "dest": "/content/drive/MyDrive/vcc2026/data/raw/replogle/K562_gwps_raw_singlecell_01.h5ad",
+        "expected_bytes": 65830941948,
+        "expected_md5": "887e3e6a8c8df6eadf7a3030a53c9546",
+        "max_bytes": 65831941948,
+        "received": 65830941948,
+        "done": true,
+        "md5": "887e3e6a8c8df6eadf7a3030a53c9546",
+        "sha256": "b697ef7fedcec2972ec334608f86f2a29cb25e70c81b6725195f4cda60a9de2c"
+      },
+      "qc": null,
+      "derived": null,
+      "checkpoint": "/content/drive/MyDrive/vcc2026/runs/catalog_2026-09-15T145842Z/checkpoints/k562_gwps_raw_singlecell.json"
+    },
+    {
+      "plan": {
+        "block_id": "rpe1_raw_singlecell",
+        "title": "Replogle 2022 RPE1 raw single-cell",
+        "bytes": 8700873216,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "6a2a9d0d2bf4ec147f4d1104043b268c",
+        "url": "https://ndownloader.figshare.com/files/35775606",
+        "format": "h5ad",
+        "evidence": "src/vcc2026/external.py",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 8700873216,
+            "decompressed_bytes": null,
+            "derived_bytes": 20000000,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 8725873216,
+          "unknown_components": [
+            "decompressed_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 2147483648,
+        "free_bytes": 26406699008,
+        "ram_available_bytes": 12286803968,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "h5ad_obs",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "/content/drive/MyDrive/vcc2026/data/raw/replogle/rpe1_raw_singlecell_01.h5ad",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "/content/drive/MyDrive/vcc2026/runs/catalog_2026-09-15T145842Z/checkpoints/rpe1_raw_singlecell.json"
+    },
+    {
+      "plan": {
+        "block_id": "nadig_jurkat_mirror",
+        "title": "Nadig Jurkat scPerturb mirror",
+        "bytes": 1293665804,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "d8b05d00bfbd686d37ffdd4293bc6c8c",
+        "url": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_jurkat.h5ad/content",
+        "format": "h5ad",
+        "evidence": "reports/nadig_reconcile_2026-09-15/nadig_reconciliation.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 1293665804,
+            "decompressed_bytes": null,
+            "derived_bytes": 20000000,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 1318665804,
+          "unknown_components": [
+            "decompressed_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 2147483648,
+        "free_bytes": 26406699008,
+        "ram_available_bytes": 12290826240,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "h5ad_obs",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "/content/drive/MyDrive/vcc2026/data/raw/nadig_jurkat/NadigOConner2024_jurkat.h5ad",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "/content/drive/MyDrive/vcc2026/runs/catalog_2026-09-15T145842Z/checkpoints/nadig_jurkat_mirror.json"
+    },
+    {
+      "plan": {
+        "block_id": "jiang_tgfb",
+        "title": "Jiang Mixscale TGFB Seurat RDS",
+        "bytes": 2642041433,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "8e9b4d39a95ec5881a30be6a2df541d1",
+        "url": "https://zenodo.org/api/records/14518762/files/Seurat_object_TGFB_Perturb_seq.rds/content",
+        "format": "seurat_rds",
+        "evidence": "reports/jiang_2026-09-15/jiang_probe.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 2642041433,
+            "decompressed_bytes": null,
+            "derived_bytes": null,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 2647041433,
+          "unknown_components": [
+            "decompressed_bytes",
+            "derived_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 2147483648,
+        "free_bytes": 26406699008,
+        "ram_available_bytes": 12289794048,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "rds_blocked",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "/content/drive/MyDrive/vcc2026/data/raw/jiang/Seurat_object_TGFB_Perturb_seq.rds",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "/content/drive/MyDrive/vcc2026/runs/catalog_2026-09-15T145842Z/checkpoints/jiang_tgfb.json"
+    },
+    {
+      "plan": {
+        "block_id": "jiang_ifng",
+        "title": "Jiang Mixscale IFNG Seurat RDS",
+        "bytes": 2915636149,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "0fef1f14c36906e9c40e4d1c6aae6926",
+        "url": "https://zenodo.org/api/records/14518762/files/Seurat_object_IFNG_Perturb_seq.rds/content",
+        "format": "seurat_rds",
+        "evidence": "reports/jiang_2026-09-15/jiang_probe.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 2915636149,
+            "decompressed_bytes": null,
+            "derived_bytes": null,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 2920636149,
+          "unknown_components": [
+            "decompressed_bytes",
+            "derived_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 2147483648,
+        "free_bytes": 26406699008,
+        "ram_available_bytes": 12279361536,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "rds_blocked",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "/content/drive/MyDrive/vcc2026/data/raw/jiang/Seurat_object_IFNG_Perturb_seq.rds",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "/content/drive/MyDrive/vcc2026/runs/catalog_2026-09-15T145842Z/checkpoints/jiang_ifng.json"
+    },
+    {
+      "plan": {
+        "block_id": "jiang_ifnb",
+        "title": "Jiang Mixscale IFNB Seurat RDS",
+        "bytes": 4326548669,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "3eb5e7af1601bf562a5b20dea5de3dc9",
+        "url": "https://zenodo.org/api/records/14518762/files/Seurat_object_IFNB_Perturb_seq.rds/content",
+        "format": "seurat_rds",
+        "evidence": "reports/jiang_2026-09-15/jiang_probe.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 4326548669,
+            "decompressed_bytes": null,
+            "derived_bytes": null,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 4331548669,
+          "unknown_components": [
+            "decompressed_bytes",
+            "derived_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 2147483648,
+        "free_bytes": 26406699008,
+        "ram_available_bytes": 12279361536,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "rds_blocked",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "/content/drive/MyDrive/vcc2026/data/raw/jiang/Seurat_object_IFNB_Perturb_seq.rds",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "/content/drive/MyDrive/vcc2026/runs/catalog_2026-09-15T145842Z/checkpoints/jiang_ifnb.json"
+    },
+    {
+      "plan": {
+        "block_id": "jiang_tnfa",
+        "title": "Jiang Mixscale TNFA Seurat RDS",
+        "bytes": 4656209976,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "60ed8bff6c749b1250f8fde9c5435c2e",
+        "url": "https://zenodo.org/api/records/14518762/files/Seurat_object_TNFA_Perturb_seq.rds/content",
+        "format": "seurat_rds",
+        "evidence": "reports/jiang_2026-09-15/jiang_probe.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 4656209976,
+            "decompressed_bytes": null,
+            "derived_bytes": null,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 4661209976,
+          "unknown_components": [
+            "decompressed_bytes",
+            "derived_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 2147483648,
+        "free_bytes": 26406699008,
+        "ram_available_bytes": 12281622528,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "rds_blocked",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "/content/drive/MyDrive/vcc2026/data/raw/jiang/Seurat_object_TNFA_Perturb_seq.rds",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "/content/drive/MyDrive/vcc2026/runs/catalog_2026-09-15T145842Z/checkpoints/jiang_tnfa.json"
+    },
+    {
+      "plan": {
+        "block_id": "jiang_ins",
+        "title": "Jiang Mixscale INS Seurat RDS",
+        "bytes": 5601176410,
+        "advertised_bytes": null,
+        "advertised_note": null,
+        "md5": "c7b830dfcc020545c3f222cad5b13b34",
+        "url": "https://zenodo.org/api/records/14518762/files/Seurat_object_INS_Perturb_seq.rds/content",
+        "format": "seurat_rds",
+        "evidence": "reports/jiang_2026-09-15/jiang_probe.json",
+        "fetchable": true,
+        "peak_estimate": {
+          "components": {
+            "input_bytes": 5601176410,
+            "decompressed_bytes": null,
+            "derived_bytes": null,
+            "checkpoint_bytes": 0,
+            "export_bytes": 5000000
+          },
+          "accounted_bytes": 5606176410,
+          "unknown_components": [
+            "decompressed_bytes",
+            "derived_bytes"
+          ],
+          "margin": 0.25,
+          "margin_note": "proposed 25% overhead, not measured",
+          "peak_bytes": null,
+          "peak_complete": false,
+          "claim": "incomplete"
+        },
+        "input_leaves_floor": true,
+        "floor_bytes": 2147483648,
+        "free_bytes": 26406699008,
+        "ram_available_bytes": 12283707392,
+        "ram_note": null,
+        "decision": "plan_only",
+        "reason": "not in FETCH_BLOCKS; no download",
+        "derive": "rds_blocked",
+        "same_experiment_as": null,
+        "claim": "derived"
+      },
+      "status": "plan_only",
+      "path": "/content/drive/MyDrive/vcc2026/data/raw/jiang/Seurat_object_INS_Perturb_seq.rds",
+      "file": {
+        "exists": false,
+        "matches": false
+      },
+      "acquired": null,
+      "qc": null,
+      "derived": null,
+      "checkpoint": "/content/drive/MyDrive/vcc2026/runs/catalog_2026-09-15T145842Z/checkpoints/jiang_ins.json"
+    }
+  ],
+  "not_a_cloud_proof": false,
+  "claim": "measured"
+}

@@ -1,0 +1,38 @@
+{
+  "stage": "87_compare_source_benches",
+  "finished_utc": "2026-09-18T11:50:48.891740+00:00",
+  "rule": "configs\\source_lineage_rule.yaml",
+  "rule_version": 1,
+  "benches": {
+    "k562": "reports/source_lineage_2026-09-18/k562_gwps_r2_bench.json",
+    "rpe1": "reports/source_lineage_2026-09-18/rpe1_r2_bench.json"
+  },
+  "challenger": "rpe1",
+  "incumbent": "k562",
+  "validity_gate": {
+    "tol": 1e-09,
+    "failures": [],
+    "same_targets": true,
+    "n_targets": [
+      300,
+      300
+    ],
+    "targets_in_common": 300,
+    "passed": true
+  },
+  "primary_metric": "de_wilcoxon_direction_fidelity_yield_raw",
+  "primary_arms": [
+    "transfer_a0.5",
+    "transfer_a1.0",
+    "transfer_a2.0"
+  ],
+  "primary_gains_challenger_minus_incumbent": {
+    "transfer_a0.5": 0.2324824954527075,
+    "transfer_a1.0": 0.3429607966274059,
+    "transfer_a2.0": 0.18770415881605346
+  },
+  "threshold": 0.03,
+  "verdict": "WINS_RPE1",
+  "why": "rpe1 ahead on all 3 primary arms, largest gap 0.3430 >= 0.03",
+  "note": "raw values only; a bench's scaled_local uses its own anchors. HepG2 is not a validation context -- see the rule's what_this_cannot_settle."
+}

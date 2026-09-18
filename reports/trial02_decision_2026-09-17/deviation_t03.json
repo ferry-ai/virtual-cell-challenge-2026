@@ -1,0 +1,14 @@
+{
+  "what": "t03 is generated with the transfer amplitude the rule chose BEFORE its K562 sanity cap (2.0), next to t02 = the rule's mechanical outcome (1.0)",
+  "status": "post-hoc deviation from configs/trial02_rule.yaml (version 2); t02 remains the rule's result",
+  "decided": "2026-09-17 ~19:28 Europe/Rome, after both benches (b002 and h002) had results",
+  "reason_stated_before_h002": "at ~18:47, after b002 and before h002, the lead wrote to the owner that the cap would trigger because of a K562-specific JAC artefact: at half depth the panel targets have a median of 3 reference-significant genes, so the J(empty, empty) = 1 convention dominates the Jaccard term and any arm that calls genes collapses on it (oracle_a2.0 JAC -1.91 scaled). Without JAC, oracle_a2.0 beats oracle_a1.0 on 4 of 5 metrics",
+  "supporting_measurements": {
+    "k562_b002": "reports/bench_2026-09-17/k562_b002_bench.json (real N_conf median 3)",
+    "hepg2_h002": "reports/bench_2026-09-17/hepg2_h002_bench.json (real N_conf median 130; transfer 2.0 + cis avg 0.268 vs 1.0 + cis 0.177)",
+    "call_budget_A_bulk": "reports/call_budget_2026-09-17/call_budget.json (EB transfer x1: median 9 calls/target, 11/20 targets under 10; x2: median 216)",
+    "val_n_conf_from_scorer_docstrings": "12-30% of val targets under 10 significant genes; 73-91% with at least 10 (cell_eval2 0.16.0)"
+  },
+  "design": "t02 and t03 differ only in --a-transfer (1.0 vs 2.0): a one-factor comparison on the val leaderboard (O1 of the 16 Sept plan)",
+  "not_claimed": "that 2.0 is better on A/B/C; only the submissions can say"
+}

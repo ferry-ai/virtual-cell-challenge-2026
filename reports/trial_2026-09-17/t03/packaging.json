@@ -1,0 +1,213 @@
+{
+  "run_id": "t03pack",
+  "stage": "48_package_prediction",
+  "input": {
+    "path": "/content/work/t03/gen/prediction.h5ad",
+    "sha256": "4b0b3f44c6ab43a78188162c74e4c7682823e00d657b5aaaddb8d9cd4208800a",
+    "bytes": 4221598812,
+    "hash_seconds": 30.237463837000178
+  },
+  "layout": {
+    "path": "/content/work/t03/gen/prediction.h5ad",
+    "n_obs": 360000,
+    "n_vars": 18533,
+    "nnz": 2085498621,
+    "data_dtype": "float32",
+    "indices_dtype": "int32",
+    "indptr_dtype": "int32",
+    "data_chunks": [
+      1048576
+    ],
+    "data_compression": "gzip",
+    "data_compression_opts": 4,
+    "indices_chunks": [
+      1048576
+    ],
+    "indices_compression": "gzip",
+    "indices_compression_opts": 4,
+    "obs_columns": [
+      "context",
+      "target_gene"
+    ],
+    "var_index_name": "_index",
+    "droppable_present": [],
+    "file_bytes": 4221598812
+  },
+  "official_cli_version": "0.2.0",
+  "official_prep_peak_gib_model": 22.199628228694202,
+  "transformations": [
+    "obs index replaced with '0'..'n-1' (official prep rebuilds obs with a positional index; the original cell names are not carried into a .vcc)",
+    "obs reduced to the perturbation column and the context column, in that order, written through anndata's own DataFrame writer",
+    "var reduced to the gene index, with no columns",
+    "layers, obsm, varm, obsp, varp, uns and raw dropped (official prep drops them too, and reports them)",
+    "X datasets copied verbatim, preserving dtype and HDF5 filters. Official prep rewrites them contiguous and unfiltered; the decoded arrays are identical either way"
+  ],
+  "resources_before": {
+    "ram_total_bytes": 13605830656,
+    "ram_available_bytes": 12352749568,
+    "disk_path": "/content/work/t03/pack",
+    "disk_total_bytes": 115658190848,
+    "disk_free_bytes": 68383813632,
+    "cpu_count": 2,
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "source": "/proc/meminfo + shutil.disk_usage",
+    "ram_total_gib": 12.671417236328125,
+    "ram_available_gib": 11.50439453125,
+    "disk_free_gib": 63.6873893737793
+  },
+  "uploaded": false,
+  "note": "Local validation, packaging and verification only. Nothing was uploaded, no submission quota was consumed, and no server has accepted this artifact.",
+  "package": {
+    "input_path": "/content/work/t03/gen/prediction.h5ad",
+    "output_path": "/content/work/t03/pack/prediction.vcc",
+    "payload_bytes": 4218649668,
+    "archive_bytes": 4169492480,
+    "nnz": 2085498621,
+    "n_obs": 360000,
+    "n_vars": 18533,
+    "meta": {
+      "schema": 1,
+      "nnz": 2085498621,
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "cli_version": "0.2.0"
+    },
+    "transformations": [
+      "obs index replaced with '0'..'n-1' (official prep rebuilds obs with a positional index; the original cell names are not carried into a .vcc)",
+      "obs reduced to the perturbation column and the context column, in that order, written through anndata's own DataFrame writer",
+      "var reduced to the gene index, with no columns",
+      "layers, obsm, varm, obsp, varp, uns and raw dropped (official prep drops them too, and reports them)",
+      "X datasets copied verbatim, preserving dtype and HDF5 filters. Official prep rewrites them contiguous and unfiltered; the decoded arrays are identical either way"
+    ],
+    "seconds": 897.4160029909999,
+    "peak_rss_bytes": 734470144,
+    "peak_disk_bytes": 8388129669,
+    "validation": {
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "nnz": 2085498621,
+      "min_value": 0.0,
+      "max_value": 2681.0,
+      "all_integer": true,
+      "n_nonfinite": 0,
+      "max_counts_per_cell_observed": 54328.0,
+      "cells_per_context": {
+        "A": 120000,
+        "B": 120000,
+        "C": 120000
+      },
+      "n_targets_per_context": {
+        "A": 300,
+        "B": 300,
+        "C": 300
+      },
+      "empty_perturbations": [],
+      "csr_checks": {
+        "indptr_length_is_n_obs_plus_1": true,
+        "indptr_starts_at_zero": true,
+        "indptr_non_negative": true,
+        "indptr_monotonic": true,
+        "indptr_end_matches_data_length": true,
+        "data_and_indices_same_length": true,
+        "nnz_representable_in_indptr_dtype": true,
+        "n_vars_representable_in_indices_dtype": true
+      },
+      "checks": {
+        "var_names_unique": true,
+        "gene_order_matches_list": true,
+        "gene_dim_matches_expected": true,
+        "has_cells": true,
+        "cell_dim_within_cap": true,
+        "pert_column_present": true,
+        "no_control_rows": true,
+        "contexts_complete": true,
+        "targets_match_official_list": true,
+        "density_within_cap": true,
+        "column_indices_in_range": true,
+        "counts_finite": true,
+        "counts_non_negative": true,
+        "counts_are_whole_numbers": true,
+        "max_counts_per_cell_within_cap": true,
+        "no_all_zero_perturbation": true
+      },
+      "failures": [],
+      "notes": [],
+      "seconds": 140.8312241269996,
+      "peak_rss_bytes": 734470144,
+      "layout": {
+        "path": "/content/work/t03/gen/prediction.h5ad",
+        "n_obs": 360000,
+        "n_vars": 18533,
+        "nnz": 2085498621,
+        "data_dtype": "float32",
+        "indices_dtype": "int32",
+        "indptr_dtype": "int32",
+        "data_chunks": [
+          1048576
+        ],
+        "data_compression": "gzip",
+        "data_compression_opts": 4,
+        "indices_chunks": [
+          1048576
+        ],
+        "indices_compression": "gzip",
+        "indices_compression_opts": 4,
+        "obs_columns": [
+          "context",
+          "target_gene"
+        ],
+        "var_index_name": "_index",
+        "droppable_present": [],
+        "file_bytes": 4221598812
+      },
+      "ok": true
+    }
+  },
+  "verification": {
+    "official_container_validator": "passed",
+    "meta_from_archive": {
+      "cli_version": "0.2.0",
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "nnz": 2085498621,
+      "schema": 1
+    },
+    "nnz_from_archive": 2085498621,
+    "payload_vs_input": {
+      "matches_input": true,
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "nnz": 2085498621,
+      "x_arrays_bit_identical": true,
+      "obs_index_rewritten": true,
+      "compared": [
+        "X.data (bitwise)",
+        "X.indices (bitwise)",
+        "X.indptr (bitwise)",
+        "X dtypes",
+        "var index",
+        "obs['target_gene']",
+        "obs['context']",
+        "obs index is positional"
+      ]
+    },
+    "archive_sha256": "9b97dcf90c4b1668dc6120e60fb26a89b5b8f3c40d4366bb36696d88cd77f378",
+    "archive_bytes": 4169492480
+  },
+  "resources_after": {
+    "ram_total_bytes": 13605830656,
+    "ram_available_bytes": 12207108096,
+    "disk_path": "/content/work/t03/pack",
+    "disk_total_bytes": 115658190848,
+    "disk_free_bytes": 64214016000,
+    "cpu_count": 2,
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "source": "/proc/meminfo + shutil.disk_usage",
+    "ram_total_gib": 12.671417236328125,
+    "ram_available_gib": 11.368755340576172,
+    "disk_free_gib": 59.80396270751953
+  },
+  "peak_rss_bytes": 734470144,
+  "total_seconds": 1213.8977840200005,
+  "exit_code": 0
+}

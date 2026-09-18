@@ -1,0 +1,115 @@
+{
+  "stage": "77_cis_effect_report",
+  "written_utc": "2026-09-17T14:25:58.612766+00:00",
+  "inputs": {
+    "coords": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external\\annotation\\gene_coordinates_gencode_v50.tsv",
+      "exists": true,
+      "bytes": 1718961,
+      "mtime_utc": "2026-09-17T11:48:54.062544+00:00",
+      "sha256": "065906f739094c6ae572d21c0b14e7b8f2d4daa0284cdb68864ed27b9caba34c",
+      "sha256_mode": "full"
+    },
+    "k562_bulk": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external\\K562_gwps_raw_bulk_01.h5ad",
+      "exists": true,
+      "bytes": 374587922,
+      "mtime_utc": "2026-09-11T18:01:45.082500+00:00",
+      "sha256": "4dd44cb90ace499efe1620cfe7762219ef573ac23b4090d212221ed3ba4eade7",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "hepg2": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\nadig_hepg2\\NadigOConner2024_hepg2.h5ad",
+      "exists": true,
+      "bytes": 850590740,
+      "mtime_utc": "2026-09-14T20:14:15.075712+00:00",
+      "sha256": "5f3b76286e94af3c206c709c044ae1f4822517c0b7e61c91e582ac6c7f1c1c4a",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "k562_distance_curve_log2": {
+    "[0, 500)": {
+      "n": 689,
+      "median": -0.4765579572129843,
+      "mean": -0.776059518014456,
+      "frac_below_minus_half": 0.4876632801161103
+    },
+    "[500, 1000)": {
+      "n": 222,
+      "median": -0.5230513487281319,
+      "mean": -0.8951384515270243,
+      "frac_below_minus_half": 0.509009009009009
+    },
+    "[1000, 2000)": {
+      "n": 185,
+      "median": -0.338518541978077,
+      "mean": -0.6911621359691095,
+      "frac_below_minus_half": 0.43243243243243246
+    },
+    "[2000, 5000)": {
+      "n": 201,
+      "median": -0.15856042102158216,
+      "mean": -0.3753586874620649,
+      "frac_below_minus_half": 0.21393034825870647
+    },
+    "[5000, 10000)": {
+      "n": 423,
+      "median": -0.1259514394248628,
+      "mean": -0.24720739932303423,
+      "frac_below_minus_half": 0.15602836879432624
+    },
+    "[10000, 20000)": {
+      "n": 1029,
+      "median": -0.052553563048068436,
+      "mean": -0.10299961831086187,
+      "frac_below_minus_half": 0.06705539358600583
+    },
+    "[20000, 50000)": {
+      "n": 3543,
+      "median": -0.03469394566470379,
+      "mean": -0.05441913899373949,
+      "frac_below_minus_half": 0.038667795653401074
+    }
+  },
+  "k562_to_hepg2": {
+    "le_1kb": {
+      "n_pairs": 250,
+      "median_k562": -0.46238159392013506,
+      "median_hepg2": -0.8205553871583217,
+      "pearson": 0.5670537049912457,
+      "sign_agreement_k562_abs_gt_0.5": 0.9754098360655737,
+      "n_k562_abs_gt_0.5": 122
+    },
+    "1_5kb": {
+      "n_pairs": 73,
+      "median_k562": -0.16827096251985912,
+      "median_hepg2": -0.34838348346288983,
+      "pearson": 0.7201868545690139,
+      "sign_agreement_k562_abs_gt_0.5": 1.0,
+      "n_k562_abs_gt_0.5": 23
+    }
+  },
+  "panel_exposure_cpm10": {
+    "A": {
+      "targets_neighbour_le_1kb": 36,
+      "targets_neighbour_le_5kb": 56,
+      "neighbours_not_measured_in_k562": 12
+    },
+    "B": {
+      "targets_neighbour_le_1kb": 37,
+      "targets_neighbour_le_5kb": 52,
+      "neighbours_not_measured_in_k562": 12
+    },
+    "C": {
+      "targets_neighbour_le_1kb": 34,
+      "targets_neighbour_le_5kb": 49,
+      "neighbours_not_measured_in_k562": 10
+    }
+  },
+  "claim_type": "measurement (K562 pseudobulk means; HepG2 single cells), not a score",
+  "caveats": [
+    "K562 side uses the published per-cell-mean pseudobulk, pooled over guides/transcripts per symbol",
+    "HepG2 targets are essential-screen genes; the panel's are not",
+    "TSS is gene-level (GENCODE v50 basic), not transcript-level"
+  ]
+}

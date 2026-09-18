@@ -1,0 +1,123 @@
+{
+  "stage": "88_matched_volume_reading",
+  "finished_utc": "2026-09-18T11:52:40.599249+00:00",
+  "inputs": {
+    "k562": {
+      "dir": "G:\\Il mio Drive\\vcc2026\\runs\\bench_hepg2_source_2026-09-18\\s_k562_gwps_r2",
+      "bench_md5": "b5d340d251db79624008ac5f7e120c38"
+    },
+    "rpe1": {
+      "dir": "G:\\Il mio Drive\\vcc2026\\runs\\bench_hepg2_source_2026-09-18\\s_rpe1_r2",
+      "bench_md5": "b9ae1f89b5573e92887a17181160b01b"
+    }
+  },
+  "challenger": "rpe1",
+  "incumbent": "k562",
+  "metric": "de_wilcoxon_direction_fidelity_yield_raw",
+  "arms": [
+    "transfer_a0.5",
+    "transfer_a1.0",
+    "transfer_a2.0"
+  ],
+  "curves": {
+    "k562": [
+      {
+        "arm": "transfer_a0.5",
+        "sig_t": 12.003333333333334,
+        "value": 0.07963093897998384
+      },
+      {
+        "arm": "transfer_a1.0",
+        "sig_t": 91.59666666666666,
+        "value": 0.2440489854472509
+      },
+      {
+        "arm": "transfer_a2.0",
+        "sig_t": 410.54,
+        "value": 0.4464184676783051
+      }
+    ],
+    "rpe1": [
+      {
+        "arm": "transfer_a0.5",
+        "sig_t": 99.96666666666667,
+        "value": 0.31211343443269135
+      },
+      {
+        "arm": "transfer_a1.0",
+        "sig_t": 540.5066666666667,
+        "value": 0.5870097820746568
+      },
+      {
+        "arm": "transfer_a2.0",
+        "sig_t": 1557.3533333333332,
+        "value": 0.6341226264943586
+      }
+    ]
+  },
+  "preregistered_matched_mean_volume": {
+    "common_sig_t_range": [
+      99.96666666666667,
+      410.54
+    ],
+    "points": [
+      {
+        "sig_t": 99.96666666666667,
+        "rpe1": 0.31211343443269135,
+        "k562": 0.25584541841614045,
+        "gap": 0.056268016016550904
+      },
+      {
+        "sig_t": 410.54,
+        "rpe1": 0.542210902149714,
+        "k562": 0.4464184676783051,
+        "gap": 0.0957924344714089
+      }
+    ],
+    "gap_min": 0.056268016016550904,
+    "gap_max": 0.0957924344714089,
+    "gap_at_same_amplitude": {
+      "transfer_a0.5": 0.2324824954527075,
+      "transfer_a1.0": 0.3429607966274059,
+      "transfer_a2.0": 0.18770415881605346
+    },
+    "reading": "the advantage attenuates but stays >= 0.03 at matched mean calls"
+  },
+  "exploratory_paired_nearest_volume": {
+    "chosen_after_results": true,
+    "max_ratio": 1.5,
+    "boot": 10000,
+    "seed": 2026,
+    "covers": "target sampling only; not generator randomness, not the half A/B split",
+    "pairs": [
+      {
+        "rpe1_arm": "transfer_a0.5",
+        "k562_arm": "transfer_a1.0",
+        "rpe1_sig_t": 99.96666666666667,
+        "k562_sig_t": 91.59666666666666,
+        "n_targets_both_defined": 256,
+        "mean_diff": 0.07598606017421224,
+        "ci95": [
+          0.035935879319650726,
+          0.1161216896045424
+        ],
+        "frac_targets_challenger_higher": 0.5,
+        "frac_targets_equal": 0.12890625
+      },
+      {
+        "rpe1_arm": "transfer_a1.0",
+        "k562_arm": "transfer_a2.0",
+        "rpe1_sig_t": 540.5066666666667,
+        "k562_sig_t": 410.54,
+        "n_targets_both_defined": 265,
+        "mean_diff": 0.13282185911979502,
+        "ci95": [
+          0.09130644877020072,
+          0.1739956730400341
+        ],
+        "frac_targets_challenger_higher": 0.6415094339622641,
+        "frac_targets_equal": 0.033962264150943396
+      }
+    ]
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "stage": "81_choose_trial02",
+  "written_utc": "2026-09-17T17:28:24.367029+00:00",
+  "rule": "configs/trial02_rule.yaml",
+  "inputs": [
+    "G:\\Il mio Drive\\vcc2026\\runs\\bench_hepg2_2026-09-17\\h002\\bench.json",
+    "G:\\Il mio Drive\\vcc2026\\runs\\bench_k562_2026-09-17\\b002\\bench.json"
+  ],
+  "rule_version": 2,
+  "nmae_floor": -0.41166682200290217,
+  "replicate_sig_per_target_hepg2": 430.22,
+  "trial01_recipe_avg_hepg2": 0.02435055032171281,
+  "candidates": [
+    {
+      "arm": "transfer_a2.0+cismeas_a1.0+cis_a1.0",
+      "avg": 0.26796099282534447,
+      "fid": 0.6324803988314751,
+      "nmae": -0.11789138192754023,
+      "sig_per_target": 523.67,
+      "guard_calls": true,
+      "guard_nmae": true,
+      "amps": {
+        "transfer": 2.0,
+        "cismeas": 1.0,
+        "cis": 1.0
+      }
+    },
+    {
+      "arm": "transfer_a2.0",
+      "avg": 0.2640209630522196,
+      "fid": 0.6580270045577815,
+      "nmae": -0.12307139023899995,
+      "sig_per_target": 520.9866666666667,
+      "guard_calls": true,
+      "guard_nmae": true,
+      "amps": {
+        "transfer": 2.0
+      }
+    },
+    {
+      "arm": "transfer_a1.0+cismeas_a1.0+cis_a1.0+shared_a1.0",
+      "avg": 0.1837979194781768,
+      "fid": 0.4168709384413125,
+      "nmae": -0.07858588885165398,
+      "sig_per_target": 169.91,
+      "guard_calls": true,
+      "guard_nmae": true,
+      "amps": {
+        "transfer": 1.0,
+        "cismeas": 1.0,
+        "cis": 1.0,
+        "shared": 1.0
+      }
+    },
+    {
+      "arm": "transfer_a1.0",
+      "avg": 0.17955910929670657,
+      "fid": 0.2710970974351193,
+      "nmae": -0.13258751577509864,
+      "sig_per_target": 122.88666666666667,
+      "guard_calls": true,
+      "guard_nmae": true,
+      "amps": {
+        "transfer": 1.0
+      }
+    },
+    {
+      "arm": "transfer_a1.0+cismeas_a1.0+cis_a1.0",
+      "avg": 0.17716150877615874,
+      "fid": 0.29171389107851126,
+      "nmae": -0.14260007493674062,
+      "sig_per_target": 126.61,
+      "guard_calls": true,
+      "guard_nmae": true,
+      "amps": {
+        "transfer": 1.0,
+        "cismeas": 1.0,
+        "cis": 1.0
+      }
+    },
+    {
+      "arm": "rawtransfer_a0.5",
+      "avg": 0.14169400825509332,
+      "fid": 0.10256365852160097,
+      "nmae": -0.1518806872019675,
+      "sig_per_target": 45.67,
+      "guard_calls": true,
+      "guard_nmae": true,
+      "amps": {
+        "rawtransfer": 0.5
+      }
+    },
+    {
+      "arm": "transfer_a0.5",
+      "avg": 0.055230067576789284,
+      "fid": -0.043277586039307266,
+      "nmae": -0.24521907767008533,
+      "sig_per_target": 17.946666666666665,
+      "guard_calls": true,
+      "guard_nmae": true,
+      "amps": {
+        "transfer": 0.5
+      }
+    },
+    {
+      "arm": "rawtransfer_a0.25+cismeas_a1.0+cis_a1.0",
+      "avg": 0.02568605324196203,
+      "fid": -0.15600388267255,
+      "nmae": -0.300044418035132,
+      "sig_per_target": 3.5566666666666666,
+      "guard_calls": true,
+      "guard_nmae": true,
+      "amps": {
+        "rawtransfer": 0.25,
+        "cismeas": 1.0,
+        "cis": 1.0
+      }
+    },
+    {
+      "arm": "rawtransfer_a0.25",
+      "avg": 0.020569993767192662,
+      "fid": -0.12271323947291111,
+      "nmae": -0.3152726572959707,
+      "sig_per_target": 3.3066666666666666,
+      "guard_calls": true,
+      "guard_nmae": true,
+      "amps": {
+        "rawtransfer": 0.25
+      }
+    },
+    {
+      "arm": "cismeas_a1.0+cis_a1.0",
+      "avg": -0.0973587657658312,
+      "fid": -0.17116283696995732,
+      "nmae": -0.42621910621356834,
+      "sig_per_target": 0.19333333333333333,
+      "guard_calls": true,
+      "guard_nmae": false,
+      "amps": {
+        "cismeas": 1.0,
+        "cis": 1.0
+      }
+    }
+  ],
+  "chosen_arm": "transfer_a2.0+cismeas_a1.0+cis_a1.0",
+  "chosen_amplitudes": {
+    "transfer": 1.0,
+    "cismeas": 1.0,
+    "cis": 1.0
+  },
+  "stage76_args": "--a-transfer 1.0 --a-cis-measured 1.0 --a-cis 1.0",
+  "cap_note": "K562 oracle peaks at or below 1.0 (0.327 vs 0.173 at 2.0): transfer capped at 1.0"
+}
