@@ -37,7 +37,7 @@ import scipy.sparse as sp
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from vcc2026.bench import Bench, log  # noqa: E402
+from vcc2026.bench import Bench, load_effects, log  # noqa: E402
 from vcc2026.generator import ControlModel  # noqa: E402
 from vcc2026.predictor_sc import (  # noqa: E402
     CisModel,
@@ -68,28 +68,6 @@ def load_cells(k562: Path):
     obs = pd.concat(obs)
     sym = obs["gene"].astype(str) if "gene" in obs else obs[col].astype(str).str.split("_").str[1]
     return sp.vstack(xs).tocsr(), sym.to_numpy(), var
-
-
-def load_effects(specs, genes) -> dict:
-    """``NAME=PATH`` npz files (targets, genes, lfc in ln units) -> {NAME: {target: vector on genes}}.
-
-    How an externally trained predictor (stage 92) enters a bench: the same generator, the same
-    scorer and the same targets as every other arm. Genes the file lacks get 0.
-    """
-    out = {}
-    for spec in specs or []:
-        name, _, path = spec.partition("=")
-        if "_a" in name or "+" in name or ":" in name:
-            raise SystemExit(f"effects name {name!r} must not contain '_a', '+' or ':'")
-        z = np.load(path)
-        pos = pd.Index(z["genes"].astype(str)).get_indexer(np.asarray(genes).astype(str))
-        rows = {}
-        for i, t in enumerate(z["targets"].astype(str)):
-            v = np.zeros(len(genes))
-            v[pos >= 0] = z["lfc"][i, pos[pos >= 0]]
-            rows[t] = v
-        out[name] = rows
-    return out
 
 
 def main() -> None:
