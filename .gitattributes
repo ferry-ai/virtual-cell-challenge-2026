@@ -2,3 +2,7 @@
 # Colab runs the job scripts with bash: a CR at the end of a line breaks them.
 *.sh text eol=lf
 *.ps1 text eol=crlf
+
+# The md5 of a rule file is recorded as provenance in the verdicts (94, 91, 89):
+# it has to be the same on every checkout, not whatever the platform wrote.
+configs/**/*.yaml text eol=lf
