@@ -14,6 +14,8 @@ multiplied by a predicted fold change (`vcc2026.predictor_sc.assemble_log_fc`):
   multiple of their own K562 effect (neighbour effects transfer: r = 0.57 and 98% sign
   agreement K562 -> HepG2 within 1 kb, measured 2026-09-17);
 * ``--a-shared``: the mean K562 effect over the covered panel targets;
+* ``--effects CTX=PATH`` with ``--a-effects``: a trained predictor's ln fold changes for the
+  panel in that context (stage 92's `pred_C_official_<CTX>_<model>.npz`), added as they are;
 * ``--a-common`` with ``--common-bulk``: the response another source's knockdowns share
   (`vcc2026.predictor_sc.common_from_bulk`, panel targets excluded), the same for all;
 * the target gene itself gets ``--kd-default`` when no transfer term covers it.
@@ -92,6 +94,9 @@ def main() -> None:
     p.add_argument("--a-cis-measured", type=float, default=0.0)
     p.add_argument("--use-raw", action="store_true", help="transfer the unshrunk source effect (bench 'rawtransfer')")
     p.add_argument("--a-shared", type=float, default=0.0)
+    p.add_argument("--effects", action="append", default=None, metavar="CTX=PATH",
+                   help="per-context predicted effects (npz: targets, genes, lfc in ln units), e.g. A=pred_A.npz")
+    p.add_argument("--a-effects", type=float, default=1.0)
     p.add_argument("--a-common", type=float, default=0.0)
     p.add_argument("--common-bulk", type=Path, default=None)
     p.add_argument("--kd-default", type=float, default=float(np.log(0.15)))
@@ -169,6 +174,23 @@ def main() -> None:
     shared_axis = np.zeros(axis.size)
     shared_axis[pos[pos >= 0]] = src.shrunk.mean(axis=0)[pos >= 0]
     axis_pos = {g: i for i, g in enumerate(axis)}
+    ext = {}
+    for spec in args.effects or []:
+        ctx, _, path = spec.partition("=")
+        z = np.load(path)
+        gpos = pd.Index(z["genes"].astype(str)).get_indexer(axis)
+        rows = {}
+        for i, t in enumerate(z["targets"].astype(str)):
+            v = np.zeros(axis.size)
+            v[gpos >= 0] = z["lfc"][i, gpos[gpos >= 0]]
+            rows[t] = v
+        missing = [t for t in targets if t not in rows]
+        if missing:
+            raise SystemExit(f"--effects {ctx}: no prediction for {len(missing)} panel targets, e.g. {missing[:3]}")
+        ext[ctx] = rows
+        log(f"effects for context {ctx} from {path}: {int((gpos >= 0).sum())} genes on the official axis")
+    if ext and set(ext) != set(args.contexts):
+        raise SystemExit(f"--effects covers {sorted(ext)} but --contexts is {args.contexts}")
     common_axis, common_info = np.zeros(axis.size), None
     if args.a_common:
         if args.common_bulk is None:
@@ -194,6 +216,8 @@ def main() -> None:
                                       shared=shared_axis, a_shared=args.a_shared)
                 if args.a_common:
                     lfc = np.clip(lfc + args.a_common * common_axis, -3.0, 3.0)
+                if ext:
+                    lfc = np.clip(lfc + args.a_effects * ext[ctx][t], -3.0, 3.0)
                 j = axis_pos.get(t)
                 if j is not None and (t not in covered or args.a_transfer == 0):
                     lfc[j] = args.kd_default
@@ -234,7 +258,7 @@ def main() -> None:
         "cis_bins": {"edges": list(cis_model.edges), "ln_effect": cis_model.by_bin.tolist(),
                      "n": cis_model.n_by_bin.tolist()},
         "k562_source": str(args.k562 or args.k562_bulk), "k562_meta": src.meta,
-        "common_term": common_info,
+        "common_term": common_info, "effects": args.effects, "a_effects": args.a_effects,
         "diagnostics": diag, "seconds_total": time.time() - t0,
         "not_a_score": "a generated file; its quality is measured only by the benches or by a submission",
     }

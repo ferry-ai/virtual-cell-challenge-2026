@@ -46,3 +46,5 @@ aggiunge da sé la riga qui sotto.
 | [0022](0022-previsione-verificata-t03.md) | 2026-09-17 | La previsione registrata contro il punteggio reale del t03 | osservazione | — |
 | [0023](0023-rpe1-contro-k562-su-hepg2.md) | 2026-09-18 | RPE1 trasferisce su HepG2 meglio di K562, anche a parita' di chiamate; non copre alcun bersaglio ufficiale | esperimento | — |
 | [0024](0024-identita-del-bersaglio-su-hepg2.md) | 2026-09-18 | Il controllo d'identita' del bersaglio: il trasferimento e' specifico, il vantaggio di RPE1 e' soprattutto comune | esperimento | — |
+| [0025](0025-componente-comune-scartata.md) | 2026-09-18 | Componente comune RPE1: scartata dalla sua regola | esperimento | — |
+| [0026](0026-predittore-neurale-condizionato.md) | 2026-09-19 | Primo predittore neurale condizionato su bersaglio e contesto: scartato; il modello lineare con gli stessi input lo pareggia o lo batte | esperimento | — |

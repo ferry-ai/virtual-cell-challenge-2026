@@ -1,0 +1,74 @@
+{
+  "stage": "95_centered_effect_space",
+  "finished_utc": "2026-09-19T00:38:10.220607+00:00",
+  "label": "J_hepg2_test",
+  "results": {
+    "net": {
+      "pearson_centered": 0.1871164154045691,
+      "pearson_centered_ci95": [
+        0.14499655211859253,
+        0.22776902057872495
+      ],
+      "match_rate": 0.01,
+      "match_rate_ci95": [
+        0.0,
+        0.023333333333333334
+      ],
+      "mse": 0.030676080381793185,
+      "n_targets": 300,
+      "chance_match": 0.0033333333333333335
+    },
+    "netperm": {
+      "pearson_centered": 0.19005931526522968,
+      "pearson_centered_ci95": [
+        0.14788473013941836,
+        0.23083094337542912
+      ],
+      "match_rate": 0.006666666666666667,
+      "match_rate_ci95": [
+        0.0,
+        0.016666666666666666
+      ],
+      "mse": 0.030673110042437588,
+      "n_targets": 300,
+      "chance_match": 0.0033333333333333335
+    },
+    "ridge": {
+      "pearson_centered": 0.26650584834127633,
+      "pearson_centered_ci95": [
+        0.227586195853831,
+        0.3023832338505334
+      ],
+      "match_rate": 0.02666666666666667,
+      "match_rate_ci95": [
+        0.01,
+        0.04666666666666667
+      ],
+      "mse": 0.031249201134605407,
+      "n_targets": 300,
+      "chance_match": 0.0033333333333333335
+    },
+    "nbr": {
+      "pearson_centered": 0.16934861700722895,
+      "pearson_centered_ci95": [
+        0.14924786897778014,
+        0.18944035706822662
+      ],
+      "match_rate": 0.023333333333333334,
+      "match_rate_ci95": [
+        0.006666666666666667,
+        0.043333333333333335
+      ],
+      "mse": 0.03217321835456128,
+      "n_targets": 300,
+      "chance_match": 0.0033333333333333335
+    },
+    "_truth": {
+      "source": "C:\\Users\\ferra\\vcc2026-data\\raw\\nadig_hepg2\\NadigOConner2024_hepg2.h5ad",
+      "n_targets": 300,
+      "n_genes": 6835,
+      "rms": 0.18108513172595891,
+      "mean_response_share": 0.4760480757486961
+    }
+  }
+}

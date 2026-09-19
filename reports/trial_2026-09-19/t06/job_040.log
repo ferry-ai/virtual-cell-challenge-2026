@@ -1,0 +1,113 @@
+job start 2026-09-18T23:58:55Z host=8d8acb1b5445 cpus=2 code=/content/code_1789775935_11402 ﻿2026-09-19T01:37:41+02:00 head=4cdb618 dirty_files=13
+               total        used        free      shared  buff/cache   available
+Mem:              12           1          10           0           1          11
+overlay         108G   25G   84G  23% /
+23:58:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:00:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:02:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:04:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:06:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:08:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:10:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:12:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:14:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:16:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:18:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:20:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:22:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:24:55 waiting for /content/drive/MyDrive/vcc2026/runs/queue/039_cond_official_train.sh.done
+00:26:55 copying stage-71 statistics to local disk
+00:27:09 local copy ready
+total 1443632
+drwxr-xr-x 2 root root       4096 Sep 19 00:27 .
+drwxr-xr-x 4 root root       4096 Sep 19 00:26 ..
+-rw------- 1 root root     712985 Sep 19 00:26 groups.csv
+-rw------- 1 root root 1476596260 Sep 19 00:27 group_stats.npz
+-rw-r--r-- 1 root root          0 Sep 19 00:27 READY
+-rw------- 1 root root       3461 Sep 19 00:26 report.json
+-rw------- 1 root root     944986 Sep 19 00:26 var.csv
+[00:27:17] transfer covers 269/300 targets; cis bins 0:-0.332 1000:-0.231 2000:-0.109 5000:-0.087 10000:-0.036
+[00:27:50] effects for context A from /content/drive/MyDrive/vcc2026/runs/conditioned_2026-09-18/train_official/pred_C_official_A_net.npz: 6477 genes on the official axis
+[00:28:21] effects for context B from /content/drive/MyDrive/vcc2026/runs/conditioned_2026-09-18/train_official/pred_C_official_B_net.npz: 6477 genes on the official axis
+[00:28:49] effects for context C from /content/drive/MyDrive/vcc2026/runs/conditioned_2026-09-18/train_official/pred_C_official_C_net.npz: 6477 genes on the official axis
+[00:29:27]   fit: 18400 cells, 3000 HVG, PCA var 0.225, state=kde
+[00:30:05]   dispersion: 11831 genes zero-matched, median phi (mean>0.05) 0.12967124979365818
+[00:30:09]   A 1/300 nnz/cell 5915 (80s)
+[00:33:00]   A 51/300 nnz/cell 5978 (251s)
+[00:35:53]   A 101/300 nnz/cell 5910 (424s)
+[00:38:52]   A 151/300 nnz/cell 5910 (603s)
+[00:41:45]   A 201/300 nnz/cell 5858 (776s)
+[00:44:40]   A 251/300 nnz/cell 5972 (951s)
+[00:47:28] A: done in 1119s, nnz/cell 5895 (controls 5973)
+[00:48:02]   fit: 18400 cells, 3000 HVG, PCA var 0.251, state=kde
+[00:48:45]   dispersion: 11897 genes zero-matched, median phi (mean>0.05) 0.04835432363564958
+[00:48:49]   B 1/300 nnz/cell 5623 (81s)
+[00:51:23]   B 51/300 nnz/cell 5597 (235s)
+[00:54:03]   B 101/300 nnz/cell 5541 (395s)
+[00:56:42]   B 151/300 nnz/cell 5563 (554s)
+[00:59:15]   B 201/300 nnz/cell 5538 (707s)
+[01:01:55]   B 251/300 nnz/cell 5508 (867s)
+[01:04:29] B: done in 1021s, nnz/cell 5508 (controls 5519)
+[01:05:04]   fit: 18400 cells, 3000 HVG, PCA var 0.310, state=kde
+[01:05:44]   dispersion: 12260 genes zero-matched, median phi (mean>0.05) 0.03793930254371829
+[01:05:47]   C 1/300 nnz/cell 5861 (78s)
+[01:08:33]   C 51/300 nnz/cell 5821 (244s)
+[01:11:15]   C 101/300 nnz/cell 5784 (405s)
+[01:14:03]   C 151/300 nnz/cell 5914 (573s)
+[01:16:49]   C 201/300 nnz/cell 5855 (740s)
+[01:19:29]   C 251/300 nnz/cell 5796 (899s)
+[01:22:05] C: done in 1055s, nnz/cell 5855 (controls 5881)
+[01:22:08] wrote /content/work/t06/gen/prediction.h5ad (360000 cells, 2071005571 values) in 3294s
+01:22:08 generation done, packaging
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 124.8/124.8 kB 7.3 MB/s eta 0:00:00
+input      : /content/work/t06/gen/prediction.h5ad
+hashing input (streamed) ...
+  sha256   : fba4474698ab02fefe3d3fcfe985c7b73da1162018c28307de27695328281d43  (42s)
+layout     : 360,000 x 18,533, 2,071,005,571 stored entries
+             data float32/gzip, indices int32, indptr int32
+resources  : RAM 12.67 GiB total, 8.70 GiB available; disk 76.72 GiB free
+             official vcc prep would peak at ~22.1 GiB; this stage streams instead
+             estimated transient disk 8.98 GiB
+
+validating and packaging (streamed) ...
+  PASS  var_names_unique
+  PASS  gene_order_matches_list
+  PASS  gene_dim_matches_expected
+  PASS  has_cells
+  PASS  cell_dim_within_cap
+  PASS  pert_column_present
+  PASS  no_control_rows
+  PASS  contexts_complete
+  PASS  targets_match_official_list
+  PASS  density_within_cap
+  PASS  column_indices_in_range
+  PASS  counts_finite
+  PASS  counts_non_negative
+  PASS  counts_are_whole_numbers
+  PASS  max_counts_per_cell_within_cap
+  PASS  no_all_zero_perturbation
+  PASS  csr:indptr_length_is_n_obs_plus_1
+  PASS  csr:indptr_starts_at_zero
+  PASS  csr:indptr_non_negative
+  PASS  csr:indptr_monotonic
+  PASS  csr:indptr_end_matches_data_length
+  PASS  csr:data_and_indices_same_length
+  PASS  csr:nnz_representable_in_indptr_dtype
+  PASS  csr:n_vars_representable_in_indices_dtype
+
+wrote prediction.vcc: 3.86 GiB (1269s total)
+  meta       : {"schema": 1, "nnz": 2071005571, "n_obs": 360000, "n_vars": 18533, "cli_version": "0.2.0"}
+  peak RSS   : 0.70 GiB
+  peak disk  : 7.76 GiB
+
+verifying the archive ...
+  PASS  official container validator (vccfile.validate_vcc)
+  meta read back: {"cli_version": "0.2.0", "n_obs": 360000, "n_vars": 18533, "nnz": 2071005571, "schema": 1}
+  PASS  payload X arrays are bit-identical to the input; gene axis and labels match (364s)
+        obs index rewritten by prep's rule: True
+  archive sha256: c87acaca35533bf4316a23b90b34cc910a53127571c0aec9ba70b063b4add857
+
+total 1720s, peak RSS 0.70 GiB
+-> /content/work/t06/pack/packaging.json
+c87acaca35533bf4316a23b90b34cc910a53127571c0aec9ba70b063b4add857  /content/drive/MyDrive/vcc2026/runs/trials_2026-09-17/t06/prediction.vcc
+job end 2026-09-19T01:52:44Z

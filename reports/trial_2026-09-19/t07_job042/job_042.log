@@ -1,0 +1,56 @@
+job start 2026-09-19T01:20:22Z host=8d8acb1b5445 cpus=2 code=/content/code_1789780822_31092 ﻿2026-09-19T01:37:41+02:00 head=4cdb618 dirty_files=13
+               total        used        free      shared  buff/cache   available
+Mem:              12           2           6           0           4          10
+overlay         108G   31G   77G  29% /
+01:20:22 local copy ready
+total 1443632
+drwxr-xr-x 2 root root       4096 Sep 19 00:27 .
+drwxr-xr-x 5 root root       4096 Sep 19 00:27 ..
+-rw------- 1 root root     712985 Sep 19 00:26 groups.csv
+-rw------- 1 root root 1476596260 Sep 19 00:27 group_stats.npz
+-rw-r--r-- 1 root root          0 Sep 19 00:27 READY
+-rw------- 1 root root       3461 Sep 19 00:26 report.json
+-rw------- 1 root root     944986 Sep 19 00:26 var.csv
+[01:20:31] transfer covers 269/300 targets; cis bins 0:-0.332 1000:-0.231 2000:-0.109 5000:-0.087 10000:-0.036
+[01:21:04] effects for context A from /content/drive/MyDrive/vcc2026/runs/conditioned_2026-09-18/train_official/pred_C_official_A_ridge.npz: 6477 genes on the official axis
+[01:21:37] effects for context B from /content/drive/MyDrive/vcc2026/runs/conditioned_2026-09-18/train_official/pred_C_official_B_ridge.npz: 6477 genes on the official axis
+[01:22:08] effects for context C from /content/drive/MyDrive/vcc2026/runs/conditioned_2026-09-18/train_official/pred_C_official_C_ridge.npz: 6477 genes on the official axis
+[01:22:40]   fit: 18400 cells, 3000 HVG, PCA var 0.225, state=kde
+[01:23:22]   dispersion: 11831 genes zero-matched, median phi (mean>0.05) 0.12967124979365818
+[01:23:25]   A 1/300 nnz/cell 5921 (76s)
+[01:26:15]   A 51/300 nnz/cell 5764 (247s)
+[01:29:06]   A 101/300 nnz/cell 5876 (418s)
+[01:31:57]   A 151/300 nnz/cell 5882 (588s)
+[01:34:49]   A 201/300 nnz/cell 5879 (760s)
+[01:37:40]   A 251/300 nnz/cell 5882 (932s)
+[01:40:26] A: done in 1098s, nnz/cell 5911 (controls 5973)
+[01:41:01]   fit: 18400 cells, 3000 HVG, PCA var 0.251, state=kde
+[01:41:39]   dispersion: 11897 genes zero-matched, median phi (mean>0.05) 0.04835432363564958
+[01:41:43]   B 1/300 nnz/cell 5626 (77s)
+[01:44:31]   B 51/300 nnz/cell 5478 (245s)
+[01:47:09]   B 101/300 nnz/cell 5555 (403s)
+[01:49:42]   B 151/300 nnz/cell 5470 (556s)
+[01:52:31]   B 201/300 nnz/cell 5557 (725s)
+[01:54:27]   B 251/300 nnz/cell 5491 (841s)
+[01:56:05] B: done in 938s, nnz/cell 5516 (controls 5519)
+[01:56:28]   fit: 18400 cells, 3000 HVG, PCA var 0.310, state=kde
+[01:56:53]   dispersion: 12260 genes zero-matched, median phi (mean>0.05) 0.03793930254371829
+[01:56:55]   C 1/300 nnz/cell 5870 (51s)
+[01:58:41]   C 51/300 nnz/cell 5761 (156s)
+[02:00:25]   C 101/300 nnz/cell 5854 (260s)
+[02:02:09]   C 151/300 nnz/cell 5794 (365s)
+[02:03:55]   C 201/300 nnz/cell 5954 (470s)
+[02:05:38]   C 251/300 nnz/cell 5898 (573s)
+[02:07:20] C: done in 675s, nnz/cell 5858 (controls 5881)
+[02:07:21] wrote /content/work/t07/gen/prediction.h5ad (360000 cells, 2074212441 values) in 2816s
+02:07:23 generation done, packaging
+input      : /content/work/t07/gen/prediction.h5ad
+hashing input (streamed) ...
+  sha256   : 154cd0e842f281bb7498e116a10709c86456b255198e319f06fbfc0d04eb35c9  (29s)
+layout     : 360,000 x 18,533, 2,074,212,441 stored entries
+             data float32/gzip, indices int32, indptr int32
+resources  : RAM 12.67 GiB total, 11.53 GiB available; disk 65.10 GiB free
+             official vcc prep would peak at ~22.1 GiB; this stage streams instead
+             estimated transient disk 8.99 GiB
+
+validating and packaging (streamed) ...
