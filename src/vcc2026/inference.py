@@ -47,7 +47,6 @@ __all__ = [
     "read_basal_profile",
     "read_csr_rows",
     "compositional_shift",
-    "predicted_profile",
     "count_generation_diagnostics",
     "profile_similarity",
     "nearest_basal_context",
@@ -258,66 +257,6 @@ def compositional_shift(
     if mass_flat <= 0 or mass_moved <= 0:
         return 0.0
     return float(np.log2(mass_flat / mass_moved))
-
-
-def predicted_profile(
-    basal: np.ndarray,
-    delta: np.ndarray,
-    observed: np.ndarray,
-    *,
-    clip_log2: float = 6.0,
-) -> tuple[np.ndarray, dict]:
-    """Apply a predicted log2 fold change to a basal profile.
-
-    Args:
-        basal: (n_genes,) summed control counts. Not modified.
-        delta: (n_genes,) predicted log2 fold change.
-        observed: (n_genes,) True where the prediction is supported by evidence.
-        clip_log2: symmetric bound on |delta| before exponentiation. 2**6 = 64x
-            is already far outside anything the calibrated transfer produces, so
-            this guards against a numerical accident, not against biology; the
-            count of clipped genes is reported.
-
-    Returns:
-        (profile, detail). `profile` is non-negative and sums to the same total
-        as `basal`, so the composition of the unobserved genes is untouched.
-    """
-    basal = np.asarray(basal, dtype=np.float64)
-    delta = np.asarray(delta, dtype=np.float64)
-    observed = np.asarray(observed, dtype=bool)
-    if not (basal.shape == delta.shape == observed.shape):
-        raise ValueError(
-            f"shape mismatch: {basal.shape} / {delta.shape} / {observed.shape}"
-        )
-    if np.any(basal < 0):
-        raise ValueError("basal profile must be non-negative")
-
-    effective = np.where(observed, delta, 0.0)
-    n_clipped = int(np.sum(np.abs(effective) > clip_log2))
-    effective = np.clip(effective, -clip_log2, clip_log2)
-
-    shift = compositional_shift(basal, effective, observed)
-    shifted = np.where(observed, effective + shift, 0.0)
-    profile = basal * np.exp2(shifted)
-
-    total_basal = float(basal.sum())
-    total_pred = float(profile.sum())
-    detail = {
-        "compositional_shift_log2": shift,
-        "n_genes_clipped": n_clipped,
-        "clip_log2": clip_log2,
-        "mass_ratio_pred_over_basal": (
-            total_pred / total_basal if total_basal > 0 else None
-        ),
-        "realised_log2fc_on_unobserved": 0.0,
-        "median_abs_effective_log2fc_observed": (
-            float(np.median(np.abs(shifted[observed]))) if observed.any() else 0.0
-        ),
-        "max_abs_effective_log2fc_observed": (
-            float(np.max(np.abs(shifted[observed]))) if observed.any() else 0.0
-        ),
-    }
-    return profile, detail
 
 
 def count_generation_diagnostics(

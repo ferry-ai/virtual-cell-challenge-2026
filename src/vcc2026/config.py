@@ -157,10 +157,3 @@ def run_dir(run_id: str, *, create: bool = True) -> Path:
         d.mkdir(parents=True, exist_ok=True)
     return d
 
-
-def reset_caches() -> None:
-    """Forget cached roots. Needed when a test changes the environment."""
-    _load.cache_clear()
-    paths.cache_clear()
-    challenge.cache_clear()
-    artifact_root.cache_clear()

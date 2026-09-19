@@ -216,5 +216,17 @@ Le sonde datate su endpoint pubblici e gli audit dei dati locali di settembre. I
 | `scripts/27_verify_grok_leads.py` | 25 | Verifica con budget dei metadati delle piste nuove dell'inventario di Grok | `git show archivio/pre-pulizia-2026-09-19:scripts/27_verify_grok_leads.py` |
 | `scripts/28_probe_grok_files.py` | 44 | Ispeziona i file pubblici piccoli e campioni di conteggi per le piste di Grok | `git show archivio/pre-pulizia-2026-09-19:scripts/28_probe_grok_files.py` |
 
+### Funzioni tolte da file tenuti — 3 definizioni, 183 righe
+
+Non sono file interi: sono funzioni rimaste senza chiamanti quando il loro unico
+chiamante e' finito nell'archivio. Stesso tag, stesso comando, ma il percorso da cui
+ripescarle e' quello del file che le conteneva.
+
+| Funzione | Righe | Dove stava | Perche' non serve piu' | Recupero |
+|---|---:|---|---|---|
+| `align_to_axis` e `AlignedMatrix` | 115 | `src/vcc2026/genes.py` | Mettevano una matrice sorgente sull'asse ufficiale con la maschera degli osservati: le chiamavano `pseudobulk.py` e gli stadi 40 e 53, tutti archiviati | `git show archivio/pre-pulizia-2026-09-19:src/vcc2026/genes.py` |
+| `predicted_profile` | 60 | `src/vcc2026/inference.py` | Componeva il profilo previsto per lo stadio 45, archiviato con la pipeline di trial-01 | `git show archivio/pre-pulizia-2026-09-19:src/vcc2026/inference.py` |
+| `reset_caches` | 8 | `src/vcc2026/config.py` | Svuotava le cache dei percorsi per i test che cambiavano l'ambiente; nessun test tenuto lo fa | `git show archivio/pre-pulizia-2026-09-19:src/vcc2026/config.py` |
+
 **Totale archiviato: 39.408 righe in 144 file.**
 
