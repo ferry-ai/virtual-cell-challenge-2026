@@ -1,0 +1,73 @@
+job start 2026-09-18T18:51:30Z host=c8c62a62a624 cpus=2 code=/content/code_1789757490_12462 ﻿2026-09-18T16:41:21+02:00 head=1479d75 dirty_files=71
+               total        used        free      shared  buff/cache   available
+Mem:              12           1           8           0           3          11
+overlay         108G   21G   88G  20% /
+[18:53:29] targets restricted to 111 of the 111 symbols in /content/drive/MyDrive/vcc2026/runs/conditioned_2026-09-18/panel/k562_val.txt
+[18:53:34] bench: 111 targets, median half 87 cells, control pool 8000, genes 8246
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. R3HCC1L). The gate is real-side only, so this set is the same for every submission.
+[18:57:00] replicate: PDS=0.9025 MSE=-0.1773 NMAE=0.4442 FID=0.6416 REACH=0.8209 JAC=0.3879 sig/t=5.5 (111s)
+allow_fractional_counts=True was LOAD-BEARING here: the pred side has fractional values under declared input_type='counts', so it passed the input-type check ONLY because of the flag -- without it validation would have refused the run ("declared input_type='counts' but values are fractional"). If this is a BASELINE arm that is expected: a mean profile is fractional in any space. If this is a SUBMISSION and processing continues (later gates, including the scale limit, may still refuse it), these values will be INTERPRETED as counts. Note that config_digest cannot see this flag (baseline.DIGEST_EXEMPT_FIELDS), so `score --baseline-agg` pairing will NOT report a baseline/submission mismatch on it; the --real-bundle path IS protected (anchor._SEMANTIC_FIELDS compares it, via score.expect_from_run_meta).
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. RAB5A). The gate is real-side only, so this set is the same for every submission.
+[18:58:50] baseline: PDS=0.4510 MSE=1.3418 NMAE=1.0001 FID=0.0495 REACH=0.2720 JAC=0.3423
+[18:59:21]   fit: 8000 cells, 3000 HVG, PCA var 0.104, state=kde
+[18:59:45]   dispersion: 8068 genes zero-matched, median phi (mean>0.05) 0.04328587542044267
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. SUPT7L). The gate is real-side only, so this set is the same for every submission.
+[19:02:08] null_new: PDS=0.5433 MSE=2.0155 NMAE=1.0053 FID=0.0611 REACH=0.2012 JAC=0.3333 sig/t=0.2 (114s)
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. USP28). The gate is real-side only, so this set is the same for every submission.
+[19:04:33] Tridge_a1.0: PDS=0.4857 MSE=2.1325 NMAE=0.9922 FID=0.0930 REACH=0.2755 JAC=0.3343 sig/t=1.4 (113s)
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. VIM). The gate is real-side only, so this set is the same for every submission.
+[19:06:44] Tridge_a2.0: PDS=0.4355 MSE=3.1295 NMAE=1.0184 FID=0.2522 REACH=0.3299 JAC=0.2285 sig/t=13.8 (103s)
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. DRG2). The gate is real-side only, so this set is the same for every submission.
+[19:09:00] Tridge_a4.0: PDS=0.4986 MSE=6.1844 NMAE=1.0271 FID=0.4232 REACH=0.3281 JAC=0.1740 sig/t=86.6 (108s)
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. ZNF22). The gate is real-side only, so this set is the same for every submission.
+[19:11:21] Tnet_a1.0: PDS=0.5865 MSE=1.8901 NMAE=1.1928 FID=0.0727 REACH=0.2320 JAC=0.3423 sig/t=0.2 (115s)
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. RNF10). The gate is real-side only, so this set is the same for every submission.
+[19:13:40] Tnet_a2.0: PDS=0.5165 MSE=2.5150 NMAE=1.0315 FID=0.1519 REACH=0.2260 JAC=0.3063 sig/t=3.4 (109s)
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. PRKACA). The gate is real-side only, so this set is the same for every submission.
+[19:16:02] Tnet_a4.0: PDS=0.4663 MSE=3.7333 NMAE=1.0378 FID=0.2318 REACH=0.2191 JAC=0.2444 sig/t=28.6 (113s)
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. POLD4). The gate is real-side only, so this set is the same for every submission.
+[19:18:17] Tnbr_a1.0: PDS=0.5194 MSE=2.6844 NMAE=0.9889 FID=0.1344 REACH=0.2656 JAC=0.2769 sig/t=8.1 (107s)
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. HSP90AB1). The gate is real-side only, so this set is the same for every submission.
+[19:20:35] Tnbr_a2.0: PDS=0.5298 MSE=4.7217 NMAE=1.0213 FID=0.2970 REACH=0.2715 JAC=0.2120 sig/t=44.4 (110s)
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. ZNF444). The gate is real-side only, so this set is the same for every submission.
+[19:22:51] Tnbr_a4.0: PDS=0.5294 MSE=12.9521 NMAE=0.9934 FID=0.3740 REACH=0.3283 JAC=0.1113 sig/t=208.9 (107s)
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. RAB5A). The gate is real-side only, so this set is the same for every submission.
+[19:25:08] Tmean_a1.0: PDS=0.5098 MSE=1.6722 NMAE=1.0173 FID=0.0798 REACH=0.2622 JAC=0.3063 sig/t=0.1 (111s)
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. HSBP1). The gate is real-side only, so this set is the same for every submission.
+[19:27:24] Tmean_a2.0: PDS=0.5042 MSE=1.8122 NMAE=1.0600 FID=0.0742 REACH=0.2380 JAC=0.3423 sig/t=0.2 (107s)
+de_lfc_nmae: omitted 42 perturbation(s) for an empty gate (e.g. AKAP1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 50 perturbation(s) for fewer than 10 gated genes (e.g. MTA1). The gate is real-side only, so this set is the same for every submission.
+[19:29:45] Tmean_a4.0: PDS=0.4977 MSE=2.3385 NMAE=0.9804 FID=0.1424 REACH=0.3656 JAC=0.2793 sig/t=0.4 (109s)
+[19:29:45] 
+               PDS  MSE   NMAE    FID  REACH    JAC    avg    sig/t
+replicate    1.000  1.0  1.000  1.000  1.000  1.000  1.000    5.532
+baseline     0.000 -0.0 -0.000  0.000  0.000  0.000  0.000    0.216
+null_new     0.204  0.0 -0.009  0.020 -0.129 -0.198 -0.019    0.198
+Tridge_a1.0  0.077  0.0  0.014  0.074  0.006 -0.176 -0.001    1.369
+Tridge_a2.0 -0.034  0.0 -0.033  0.342  0.105 -2.500 -0.353   13.775
+Tridge_a4.0  0.105  0.0 -0.048  0.631  0.102 -3.697 -0.484   86.631
+Tnet_a1.0    0.300  0.0 -0.347  0.039 -0.073  0.000 -0.013    0.207
+Tnet_a2.0    0.145  0.0 -0.056  0.173 -0.084 -0.792 -0.102    3.432
+Tnet_a4.0    0.034  0.0 -0.068  0.308 -0.096 -2.152 -0.329   28.568
+Tnbr_a1.0    0.151  0.0  0.020  0.143 -0.012 -1.438 -0.189    8.117
+Tnbr_a2.0    0.174  0.0 -0.038  0.418 -0.001 -2.864 -0.385   44.432
+Tnbr_a4.0    0.174  0.0  0.012  0.548  0.103 -5.076 -0.707  208.874
+Tmean_a1.0   0.130  0.0 -0.031  0.051 -0.018 -0.792 -0.110    0.135
+Tmean_a2.0   0.118  0.0 -0.108  0.042 -0.062  0.000 -0.002    0.198
+Tmean_a4.0   0.103  0.0  0.036  0.157  0.171 -1.385 -0.153    0.432
+[19:29:45] done
+job end 2026-09-18T19:29:47Z

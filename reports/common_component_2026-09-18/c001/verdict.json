@@ -1,0 +1,178 @@
+{
+  "stage": "91_common_component_verdict",
+  "finished_utc": "2026-09-18T15:16:18.323688+00:00",
+  "rule": "configs\\common_component_rule.yaml",
+  "rule_version": 1,
+  "rule_md5": "6b5bad61a4276a80727edc936c41ef11",
+  "run": "G:\\Il mio Drive\\vcc2026\\runs\\common_2026-09-18",
+  "t03_status": "reports\\trial_2026-09-17\\status_0TbVAwhVTj6UYpaU2v9d.json",
+  "min_gain": 0.01,
+  "validity_problems": [],
+  "benches": {
+    "hepg2": {
+      "metric": "stage-84 predicted official mean: per member, bench raw x (t03 official raw / ba...",
+      "tune_scores": {
+        "0": 0.02042262301483636,
+        "0.1": 0.024800148879510778,
+        "0.25": 0.04150333846200962,
+        "0.5": 0.053969499045567554,
+        "1.0": 0.057051479830079584,
+        "2.0": 0.06520433568133442
+      },
+      "w_star": 2.0,
+      "eval_base": 0.02042262301483636,
+      "eval_at_w_star": {
+        "variant": 0.031109582496790716,
+        "control": 0.015049098500768026,
+        "d_base": 0.010686959481954358,
+        "d_perm": 0.01606048399602269,
+        "sig_t_variant": 962.2374581939799,
+        "sig_t_control": 801.6688963210702
+      },
+      "passes": true,
+      "eval_all_w_not_decisive": {
+        "0.1": {
+          "variant": 0.03344465788002721,
+          "control": 0.01671204632028525,
+          "d_base": 0.013022034865190855,
+          "d_perm": 0.016732611559741963,
+          "sig_t_variant": 512.7123745819398,
+          "sig_t_control": 514.3110367892976
+        },
+        "0.25": {
+          "variant": 0.029242208570264275,
+          "control": 0.028267071690857005,
+          "d_base": 0.008819585555427917,
+          "d_perm": 0.0009751368794072707,
+          "sig_t_variant": 538.9264214046823,
+          "sig_t_control": 522.1605351170568
+        },
+        "0.5": {
+          "variant": 0.030970371391788255,
+          "control": 0.03914712366846724,
+          "d_base": 0.010547748376951896,
+          "d_perm": -0.008176752276678984,
+          "sig_t_variant": 561.1839464882943,
+          "sig_t_control": 528.7157190635452
+        },
+        "1.0": {
+          "variant": 0.023515665781967208,
+          "control": 0.01992059701321161,
+          "d_base": 0.003093042767130849,
+          "d_perm": 0.0035950687687555972,
+          "sig_t_variant": 650.2240802675585,
+          "sig_t_control": 577.5652173913044
+        },
+        "2.0": {
+          "variant": 0.031109582496790716,
+          "control": 0.015049098500768026,
+          "d_base": 0.010686959481954358,
+          "d_perm": 0.01606048399602269,
+          "sig_t_variant": 962.2374581939799,
+          "sig_t_control": 801.6688963210702
+        }
+      },
+      "sig_t_base_eval": 520.8896321070234,
+      "targets": {
+        "tune": 300,
+        "eval": 299
+      },
+      "common_term": {
+        "tune": {
+          "source": "/content/drive/MyDrive/vcc2026/data/external/rpe1_raw_bulk_01.h5ad",
+          "n_targets": 2093,
+          "n_excluded": 300,
+          "n_genes_on_axis": 7733,
+          "rms_on_axis": 0.08049859601586343
+        },
+        "eval": {
+          "source": "/content/drive/MyDrive/vcc2026/data/external/rpe1_raw_bulk_01.h5ad",
+          "n_targets": 2094,
+          "n_excluded": 299,
+          "n_genes_on_axis": 7733,
+          "rms_on_axis": 0.0826549641171816
+        }
+      }
+    },
+    "k562_official": {
+      "metric": "the bench's local scaled mean (`scaled_local.avg`: the bench's own baseline and ...",
+      "tune_scores": {
+        "0": -0.01867809863479626,
+        "0.1": -0.14990004916589686,
+        "0.25": -0.1511777304198247,
+        "0.5": -0.9381727466243608,
+        "1.0": -1.0535632631331444,
+        "2.0": -1.1089275303705255
+      },
+      "w_star": 0.0,
+      "eval_base": -0.05836677144006832,
+      "eval_at_w_star": null,
+      "passes": false,
+      "eval_all_w_not_decisive": {
+        "0.1": {
+          "variant": -0.020185726436351397,
+          "control": -0.043527764625847176,
+          "d_base": 0.038181045003716926,
+          "d_perm": 0.02334203818949578,
+          "sig_t_variant": 0.12389380530973451,
+          "sig_t_control": 0.08849557522123894
+        },
+        "0.25": {
+          "variant": -0.028116812992943125,
+          "control": -0.05441182214542703,
+          "d_base": 0.030249958447125195,
+          "d_perm": 0.026295009152483905,
+          "sig_t_variant": 0.5486725663716814,
+          "sig_t_control": 0.415929203539823
+        },
+        "0.5": {
+          "variant": -0.07635896221203031,
+          "control": -0.12831581045162846,
+          "d_base": -0.017992190771961993,
+          "d_perm": 0.05195684823959815,
+          "sig_t_variant": 12.415929203539823,
+          "sig_t_control": 9.398230088495575
+        },
+        "1.0": {
+          "variant": -0.07206599039863722,
+          "control": -0.13730942200961854,
+          "d_base": -0.013699218958568897,
+          "d_perm": 0.06524343161098133,
+          "sig_t_variant": 137.63716814159292,
+          "sig_t_control": 79.73451327433628
+        },
+        "2.0": {
+          "variant": -0.11419857404915901,
+          "control": -0.1061715021176305,
+          "d_base": -0.05583180260909069,
+          "d_perm": -0.008027071931528504,
+          "sig_t_variant": 619.0530973451328,
+          "sig_t_control": 454.20353982300884
+        }
+      },
+      "sig_t_base_eval": 0.1415929203539823,
+      "targets": {
+        "tune": 111,
+        "eval": 113
+      },
+      "common_term": {
+        "tune": {
+          "source": "/content/drive/MyDrive/vcc2026/data/external/rpe1_raw_bulk_01.h5ad",
+          "n_targets": 2393,
+          "n_excluded": 0,
+          "n_genes_on_axis": 7093,
+          "rms_on_axis": 0.08848852474872537
+        },
+        "eval": {
+          "source": "/content/drive/MyDrive/vcc2026/data/external/rpe1_raw_bulk_01.h5ad",
+          "n_targets": 2393,
+          "n_excluded": 0,
+          "n_genes_on_axis": 7093,
+          "rms_on_axis": 0.08848852474872537
+        }
+      }
+    }
+  },
+  "verdict": "DISCARD",
+  "weight_for_submission": null
+}

@@ -1,0 +1,22 @@
+job start 2026-09-18T23:58:34Z host=8d8acb1b5445 cpus=2 code=/content/code_1789775914_11297 ﻿2026-09-19T01:37:41+02:00 head=4cdb618 dirty_files=13
+               total        used        free      shared  buff/cache   available
+Mem:              12           6           5           0           0           6
+overlay         108G   25G   84G  23% /
+23:58:34 waiting for /content/drive/MyDrive/vcc2026/runs/queue/038_cond_k562_test_r2.sh.done
+/content/drive/MyDrive/vcc2026/data/external/K562_gwps_raw_bulk_01.h5ad: OK
+/content/drive/MyDrive/vcc2026/data/external/rpe1_raw_bulk_01.h5ad: OK
+[00:02:02] gene universe 6835 (K562 8246, RPE1 8748, HepG2 9624)
+[00:02:02] estimating effects: K562 9866 targets, RPE1 2393
+[00:02:22] STRING partners for 15809 symbols (score >= 400); 95s
+[00:09:20] C net {'hidden': 64, 'k': 16, 'l2': 1e-05}: val 0.02736 (1800 steps)
+[00:11:44] C net {'hidden': 64, 'k': 16, 'l2': 0.0001}: val 0.02724 (1700 steps)
+[00:14:02] C net {'hidden': 64, 'k': 32, 'l2': 1e-05}: val 0.02744 (1400 steps)
+[00:16:47] C net {'hidden': 64, 'k': 32, 'l2': 0.0001}: val 0.02737 (1700 steps)
+[00:18:38] C net {'hidden': 128, 'k': 16, 'l2': 1e-05}: val 0.02741 (1300 steps)
+[00:20:49] C net {'hidden': 128, 'k': 16, 'l2': 0.0001}: val 0.02736 (1500 steps)
+[00:23:25] C net {'hidden': 128, 'k': 32, 'l2': 1e-05}: val 0.02804 (1600 steps)
+[00:25:32] C net {'hidden': 128, 'k': 32, 'l2': 0.0001}: val 0.02751 (1300 steps)
+[00:25:32] C: val mse null 0.04005 transfer 0.04210 ridge 0.02844 net 0.02724
+[00:25:42] official predictions written for ['A', 'B', 'C']
+[00:25:42] done in 1495s (splits ['C'])
+job end 2026-09-19T00:25:42Z

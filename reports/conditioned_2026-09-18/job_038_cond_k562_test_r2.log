@@ -1,0 +1,49 @@
+job start 2026-09-18T23:33:49Z host=8d8acb1b5445 cpus=2 code=/content/code_1789774429_5221 ﻿2026-09-18T16:41:21+02:00 head=1479d75 dirty_files=71
+               total        used        free      shared  buff/cache   available
+Mem:              12           1           7           0           3          11
+overlay         108G   21G   88G  20% /
+[23:35:17] targets restricted to 113 of the 113 symbols in /content/drive/MyDrive/vcc2026/runs/conditioned_2026-09-18/panel/k562_test.txt
+[23:35:24] bench: 113 targets, median half 88 cells, control pool 8000, genes 8246
+de_lfc_nmae: omitted 31 perturbation(s) for an empty gate (e.g. ALG12). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 63 perturbation(s) for fewer than 10 gated genes (e.g. RFK). The gate is real-side only, so this set is the same for every submission.
+[23:38:54] replicate: PDS=0.8806 MSE=-0.0214 NMAE=0.4567 FID=0.6745 REACH=0.8753 JAC=0.4385 sig/t=6.4 (115s)
+allow_fractional_counts=True was LOAD-BEARING here: the pred side has fractional values under declared input_type='counts', so it passed the input-type check ONLY because of the flag -- without it validation would have refused the run ("declared input_type='counts' but values are fractional"). If this is a BASELINE arm that is expected: a mean profile is fractional in any space. If this is a SUBMISSION and processing continues (later gates, including the scale limit, may still refuse it), these values will be INTERPRETED as counts. Note that config_digest cannot see this flag (baseline.DIGEST_EXEMPT_FIELDS), so `score --baseline-agg` pairing will NOT report a baseline/submission mismatch on it; the --real-bundle path IS protected (anchor._SEMANTIC_FIELDS compares it, via score.expect_from_run_meta).
+de_lfc_nmae: omitted 31 perturbation(s) for an empty gate (e.g. ALG12). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 63 perturbation(s) for fewer than 10 gated genes (e.g. CARM1). The gate is real-side only, so this set is the same for every submission.
+[23:40:49] baseline: PDS=0.5009 MSE=1.2132 NMAE=0.9556 FID=0.0351 REACH=0.3520 JAC=0.2389
+[23:41:26]   fit: 8000 cells, 3000 HVG, PCA var 0.104, state=kde
+[23:41:51]   dispersion: 8068 genes zero-matched, median phi (mean>0.05) 0.04328587542044267
+de_lfc_nmae: omitted 31 perturbation(s) for an empty gate (e.g. ALG12). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 63 perturbation(s) for fewer than 10 gated genes (e.g. MYD88). The gate is real-side only, so this set is the same for every submission.
+[23:44:18] null_new: PDS=0.5258 MSE=1.8118 NMAE=1.0296 FID=0.0395 REACH=0.2084 JAC=0.2389 sig/t=0.1 (114s)
+de_lfc_nmae: omitted 31 perturbation(s) for an empty gate (e.g. ALG12). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 63 perturbation(s) for fewer than 10 gated genes (e.g. TBCK). The gate is real-side only, so this set is the same for every submission.
+[23:46:45] oracle_a2.0: PDS=0.7814 MSE=5.7290 NMAE=0.6840 FID=0.6316 REACH=0.8191 JAC=0.0312 sig/t=76.5 (116s)
+de_lfc_nmae: omitted 31 perturbation(s) for an empty gate (e.g. ALG12). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 63 perturbation(s) for fewer than 10 gated genes (e.g. FUBP3). The gate is real-side only, so this set is the same for every submission.
+[23:49:05] Tridge_a4.0: PDS=0.5484 MSE=3.8993 NMAE=0.9753 FID=0.3421 REACH=0.2906 JAC=0.1653 sig/t=71.7 (109s)
+de_lfc_nmae: omitted 31 perturbation(s) for an empty gate (e.g. ALG12). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 63 perturbation(s) for fewer than 10 gated genes (e.g. ZNF496). The gate is real-side only, so this set is the same for every submission.
+[23:51:28] Tnet_a2.0: PDS=0.4905 MSE=1.9982 NMAE=1.0085 FID=0.1338 REACH=0.2594 JAC=0.2308 sig/t=2.9 (113s)
+de_lfc_nmae: omitted 31 perturbation(s) for an empty gate (e.g. ALG12). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 63 perturbation(s) for fewer than 10 gated genes (e.g. CARM1). The gate is real-side only, so this set is the same for every submission.
+[23:53:52] Tnbr_a4.0: PDS=0.5335 MSE=9.2075 NMAE=0.9958 FID=0.4026 REACH=0.3494 JAC=0.0936 sig/t=210.5 (114s)
+de_lfc_nmae: omitted 31 perturbation(s) for an empty gate (e.g. ALG12). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 63 perturbation(s) for fewer than 10 gated genes (e.g. ZNF397). The gate is real-side only, so this set is the same for every submission.
+[23:56:17] Tmean_a4.0: PDS=0.4978 MSE=2.0306 NMAE=0.9927 FID=0.1152 REACH=0.2629 JAC=0.2039 sig/t=0.7 (111s)
+de_lfc_nmae: omitted 31 perturbation(s) for an empty gate (e.g. ALG12). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 63 perturbation(s) for fewer than 10 gated genes (e.g. ZDHHC4). The gate is real-side only, so this set is the same for every submission.
+[23:58:38] Tnetperm_a2.0: PDS=0.5395 MSE=1.8400 NMAE=1.0275 FID=0.0804 REACH=0.2855 JAC=0.2391 sig/t=2.6 (111s)
+[23:58:38] 
+                 PDS  MSE   NMAE    FID  REACH    JAC    avg    sig/t
+replicate      1.000  1.0  1.000  1.000  1.000  1.000  1.000    6.398
+baseline       0.000 -0.0 -0.000  0.000  0.000  0.000  0.000    0.177
+null_new       0.066  0.0 -0.148  0.007 -0.274  0.000 -0.058    0.142
+oracle_a2.0    0.739  0.0  0.544  0.933  0.893 -1.041  0.345   76.460
+Tridge_a4.0    0.125  0.0 -0.039  0.480 -0.117 -0.369  0.013   71.699
+Tnet_a2.0     -0.027  0.0 -0.106  0.154 -0.177 -0.041 -0.033    2.894
+Tnbr_a4.0      0.086  0.0 -0.080  0.575 -0.005 -0.728 -0.025  210.531
+Tmean_a4.0    -0.008  0.0 -0.074  0.125 -0.170 -0.175 -0.050    0.726
+Tnetperm_a2.0  0.102  0.0 -0.144  0.071 -0.127  0.001 -0.016    2.628
+[23:58:38] done
+job end 2026-09-18T23:58:40Z

@@ -1,0 +1,233 @@
+{
+  "stage": "94_conditioned_verdict",
+  "finished_utc": "2026-09-19T01:21:49.804397+00:00",
+  "rule": "configs\\conditioned_rule.yaml",
+  "rule_md5": "c1bc011f445fb706b7fa38b086e0bd87",
+  "benches": {
+    "hepg2": "G:\\Il mio Drive\\vcc2026\\runs\\conditioned_2026-09-18\\hepg2_test_r3",
+    "k562": "G:\\Il mio Drive\\vcc2026\\runs\\conditioned_2026-09-18\\k562_test_r2"
+  },
+  "picks": {
+    "hepg2": {
+      "transfer": 4.0,
+      "Cridge": 2.0,
+      "Cnet": 2.0,
+      "Jridge": 4.0,
+      "Jnet": 4.0,
+      "Jnbr": 4.0
+    },
+    "k562": {
+      "Tridge": 4.0,
+      "Tnet": 2.0,
+      "Tnbr": 4.0,
+      "Tmean": 4.0
+    }
+  },
+  "calibration": {
+    "pds_cosine": 0.8612293757244576,
+    "de_wilcoxon_lfc_nmae": 1.0146798406520239,
+    "de_wilcoxon_direction_fidelity_yield_raw": 0.7999183168098003,
+    "de_wilcoxon_direction_reach_raw": 0.3457201442252541,
+    "de_wilcoxon_sig_jaccard": 0.17578434762096243
+  },
+  "decisive": {
+    "Cnet_vs_t03": {
+      "a": "Cnet_a2.0",
+      "b": "transfer_a2.0+cismeas_a1.0+cis_a1.0",
+      "diff": -0.0022892637943375408,
+      "ci95": [
+        -0.02752940952000659,
+        0.023861003793794563
+      ],
+      "by_member": {
+        "pds_cosine": -0.056813504747797595,
+        "de_wilcoxon_lfc_nmae": 0.01067852900016777,
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.03831122912413275,
+        "de_wilcoxon_direction_reach_raw": 0.006654440915541368,
+        "de_wilcoxon_sig_jaccard": -0.0011199580863818304
+      },
+      "n_targets": 299
+    },
+    "Cnet_vs_Cridge": {
+      "a": "Cnet_a2.0",
+      "b": "Cridge_a2.0",
+      "diff": 0.0038805155225564254,
+      "ci95": [
+        -0.010378987755691682,
+        0.01950808845570897
+      ],
+      "by_member": {
+        "pds_cosine": 0.0032299222815803303,
+        "de_wilcoxon_lfc_nmae": 0.0022786649759268386,
+        "de_wilcoxon_direction_fidelity_yield_raw": -0.006595436759286176,
+        "de_wilcoxon_direction_reach_raw": 0.00151871161133669,
+        "de_wilcoxon_sig_jaccard": 0.0034486534129987427
+      },
+      "n_targets": 299
+    },
+    "Cnet_vs_Cnetperm": {
+      "a": "Cnet_a2.0",
+      "b": "Cnetperm_a2.0",
+      "diff": -0.0009396885159835334,
+      "ci95": [
+        -0.015874417700520973,
+        0.014557864343146976
+      ],
+      "by_member": {
+        "pds_cosine": -0.0018508138826446915,
+        "de_wilcoxon_lfc_nmae": -0.00016344202153606628,
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.0002535668224854172,
+        "de_wilcoxon_direction_reach_raw": -0.00016482217638135862,
+        "de_wilcoxon_sig_jaccard": 0.0009858227420931657
+      },
+      "n_targets": 299
+    },
+    "Jnet_vs_Jridge": {
+      "a": "Jnet_a4.0",
+      "b": "Jridge_a4.0",
+      "diff": 0.0646704846402415,
+      "ci95": [
+        0.037164560376925844,
+        0.09323730153681291
+      ],
+      "by_member": {
+        "pds_cosine": 0.006776715422446128,
+        "de_wilcoxon_lfc_nmae": 0.0074070904887400075,
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.04913083717301712,
+        "de_wilcoxon_direction_reach_raw": 0.0011719658909976264,
+        "de_wilcoxon_sig_jaccard": 0.00018387566504061672
+      },
+      "n_targets": 299
+    },
+    "Tnet_vs_Tridge": {
+      "a": "Tnet_a2.0",
+      "b": "Tridge_a4.0",
+      "diff": -0.1275988168049932,
+      "ci95": [
+        -0.18662219673175326,
+        -0.06602397315797971
+      ],
+      "by_member": {
+        "pds_cosine": -0.021546804040279942,
+        "de_wilcoxon_lfc_nmae": -0.009111429554364852,
+        "de_wilcoxon_direction_fidelity_yield_raw": -0.1210129550813395,
+        "de_wilcoxon_direction_reach_raw": -0.005855604423937105,
+        "de_wilcoxon_sig_jaccard": 0.029927976294928202
+      },
+      "n_targets": 113
+    }
+  },
+  "conditions": {
+    "Cnet_beats_t03": false,
+    "Cnet_beats_Cridge": false,
+    "Cnet_uses_context": false,
+    "J_guard_not_worse_than_ridge": true,
+    "T_guard_not_worse_than_ridge": false
+  },
+  "verdict": "DISCARD",
+  "reported_not_decisive": {
+    "Jnet_vs_Jnetperm": {
+      "a": "Jnet_a4.0",
+      "b": "Jnetperm_a4.0",
+      "diff": -0.00832112447648245,
+      "ci95": [
+        -0.027121405671661082,
+        0.010518376812328457
+      ],
+      "by_member": {
+        "pds_cosine": -0.005123945826854858,
+        "de_wilcoxon_lfc_nmae": 0.0053265675365536565,
+        "de_wilcoxon_direction_fidelity_yield_raw": -0.008686830377477419,
+        "de_wilcoxon_direction_reach_raw": 0.0023461310771219477,
+        "de_wilcoxon_sig_jaccard": -0.002183046885825776
+      },
+      "n_targets": 299
+    },
+    "Tnet_vs_Tnetperm": {
+      "a": "Tnet_a2.0",
+      "b": "Tnetperm_a2.0",
+      "diff": -0.001328347022251715,
+      "ci95": [
+        -0.0425868747887974,
+        0.04080310842842424
+      ],
+      "by_member": {
+        "pds_cosine": -0.018250025280018536,
+        "de_wilcoxon_lfc_nmae": 0.0052054828246603235,
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.02038658145751997,
+        "de_wilcoxon_direction_reach_raw": -0.004892666424605091,
+        "de_wilcoxon_sig_jaccard": -0.0037777195998083823
+      },
+      "n_targets": 113
+    },
+    "Cnet_vs_transfer": {
+      "a": "Cnet_a2.0",
+      "b": "transfer_a4.0",
+      "diff": 0.022302019741827373,
+      "ci95": [
+        -0.002559975201622783,
+        0.04775196956220351
+      ],
+      "by_member": {
+        "pds_cosine": -0.05521114642527447,
+        "de_wilcoxon_lfc_nmae": 0.055685276022716605,
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.014920766914253494,
+        "de_wilcoxon_direction_reach_raw": 0.004855758766985981,
+        "de_wilcoxon_sig_jaccard": 0.002051364463145765
+      },
+      "n_targets": 299
+    },
+    "Cridge_vs_t03": {
+      "a": "Cridge_a2.0",
+      "b": "transfer_a2.0+cismeas_a1.0+cis_a1.0",
+      "diff": -0.008911998888684129,
+      "ci95": [
+        -0.03569533706854981,
+        0.017442348991077668
+      ],
+      "by_member": {
+        "pds_cosine": -0.06004342702937792,
+        "de_wilcoxon_lfc_nmae": 0.008399864024240927,
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.04216444631162876,
+        "de_wilcoxon_direction_reach_raw": 0.005135729304204678,
+        "de_wilcoxon_sig_jaccard": -0.004568611499380573
+      },
+      "n_targets": 299
+    },
+    "Jnet_vs_Jnbr": {
+      "a": "Jnet_a4.0",
+      "b": "Jnbr_a4.0",
+      "diff": -0.05769972012158974,
+      "ci95": [
+        -0.08459165732938342,
+        -0.02971425865571501
+      ],
+      "by_member": {
+        "pds_cosine": -0.019591981197412008,
+        "de_wilcoxon_lfc_nmae": 0.005990572066657096,
+        "de_wilcoxon_direction_fidelity_yield_raw": -0.048338562682447746,
+        "de_wilcoxon_direction_reach_raw": 0.0013967276703595315,
+        "de_wilcoxon_sig_jaccard": 0.002843524021253382
+      },
+      "n_targets": 299
+    },
+    "Tnet_vs_Tmean": {
+      "a": "Tnet_a2.0",
+      "b": "Tmean_a4.0",
+      "diff": 0.007573228073224561,
+      "ci95": [
+        -0.0488215822671875,
+        0.061729588408289175
+      ],
+      "by_member": {
+        "pds_cosine": -0.00270806826735759,
+        "de_wilcoxon_lfc_nmae": -0.004331552674293329,
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.0030115309304761064,
+        "de_wilcoxon_direction_reach_raw": -0.0006622105958087971,
+        "de_wilcoxon_sig_jaccard": 0.012263528680208172
+      },
+      "n_targets": 113
+    }
+  },
+  "bootstrap_covers": "target sampling only; not generator randomness nor the half A/B split"
+}

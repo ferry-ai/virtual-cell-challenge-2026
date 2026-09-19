@@ -1,0 +1,521 @@
+{
+  "stage": "92_train_conditioned",
+  "args": {
+    "k562_bulk": "/content/drive/MyDrive/vcc2026/data/external/K562_gwps_raw_bulk_01.h5ad",
+    "rpe1_bulk": "/content/drive/MyDrive/vcc2026/data/external/rpe1_raw_bulk_01.h5ad",
+    "hepg2": "/content/work/hepg2/hepg2.h5ad",
+    "string_links": "/content/drive/MyDrive/vcc2026/data/external/annotation/string_physical_links.gz",
+    "string_info": "/content/drive/MyDrive/vcc2026/data/external/annotation/string_protein_info.gz",
+    "panels": "/content/drive/MyDrive/vcc2026/runs/conditioned_2026-09-18/panel",
+    "out": "/content/drive/MyDrive/vcc2026/runs/conditioned_2026-09-18/train",
+    "string_min_score": "400",
+    "val_fraction": "0.2",
+    "steps": "4000",
+    "batch": "256",
+    "seed": "2026",
+    "quick": "False",
+    "max_source_targets": "None"
+  },
+  "gene_universe": 6835,
+  "n_targets": {
+    "K562": 9866,
+    "RPE1": 2393
+  },
+  "string_symbols": 15809,
+  "splits": {
+    "C": {
+      "train_rows": {
+        "K562": 9866,
+        "RPE1": 2035
+      },
+      "val": [
+        "RPE1",
+        358
+      ],
+      "encoder": {
+        "n_source_rows": 9866,
+        "pca_rows": 3000,
+        "var_explained_on_pca_rows": 0.4997091210978822
+      },
+      "ridge": [
+        {
+          "alpha": 0.1,
+          "val_mse": 0.02880547313040899
+        },
+        {
+          "alpha": 1.0,
+          "val_mse": 0.028804877054717105
+        },
+        {
+          "alpha": 10.0,
+          "val_mse": 0.02879899683652944
+        },
+        {
+          "alpha": 100.0,
+          "val_mse": 0.02874608318314186
+        },
+        {
+          "alpha": 1000.0,
+          "val_mse": 0.028437332384114035
+        },
+        {
+          "alpha": 10000.0,
+          "val_mse": 0.028963534943381105
+        },
+        {
+          "alpha": 100000.0,
+          "val_mse": 0.03373160861893164
+        },
+        {
+          "alpha": 1000000.0,
+          "val_mse": 0.03594886793678198
+        }
+      ],
+      "net": [
+        {
+          "hidden": 64,
+          "k": 16,
+          "l2": 1e-05,
+          "val_mse": 0.02735675501243708,
+          "steps_run": 1800
+        },
+        {
+          "hidden": 64,
+          "k": 16,
+          "l2": 0.0001,
+          "val_mse": 0.02726836919579162,
+          "steps_run": 1700
+        },
+        {
+          "hidden": 64,
+          "k": 32,
+          "l2": 1e-05,
+          "val_mse": 0.027438395063718323,
+          "steps_run": 1400
+        },
+        {
+          "hidden": 64,
+          "k": 32,
+          "l2": 0.0001,
+          "val_mse": 0.027370162147360565,
+          "steps_run": 1700
+        },
+        {
+          "hidden": 128,
+          "k": 16,
+          "l2": 1e-05,
+          "val_mse": 0.027410747148328158,
+          "steps_run": 1300
+        },
+        {
+          "hidden": 128,
+          "k": 16,
+          "l2": 0.0001,
+          "val_mse": 0.027358666564357034,
+          "steps_run": 1500
+        },
+        {
+          "hidden": 128,
+          "k": 32,
+          "l2": 1e-05,
+          "val_mse": 0.027449593807231252,
+          "steps_run": 2200
+        },
+        {
+          "hidden": 128,
+          "k": 32,
+          "l2": 0.0001,
+          "val_mse": 0.027128902701779464,
+          "steps_run": 1200
+        }
+      ],
+      "val_mse_null": 0.04004534333944321,
+      "val_mse_plain_transfer": 0.04210136955485171,
+      "chosen": {
+        "ridge_alpha": 1000.0,
+        "net": {
+          "hidden": 128,
+          "k": 32,
+          "gate_hidden": 16,
+          "seed": 2033
+        },
+        "net_params": 231857,
+        "ridge_params": 471619
+      },
+      "seconds": 2609.515454530716,
+      "coverage": {
+        "train": [
+          {
+            "context": "K562",
+            "n": 9866,
+            "with_source": 0,
+            "with_neighbours": 8540
+          },
+          {
+            "context": "RPE1",
+            "n": 2035,
+            "with_source": 2034,
+            "with_neighbours": 1893
+          }
+        ],
+        "val": {
+          "context": "RPE1",
+          "n": 358,
+          "with_source": 356,
+          "with_neighbours": 334
+        },
+        "tests": {
+          "hepg2_val": {
+            "context": "HepG2",
+            "n": 300,
+            "with_source": 300,
+            "with_neighbours": 286
+          },
+          "hepg2_test": {
+            "context": "HepG2",
+            "n": 300,
+            "with_source": 300,
+            "with_neighbours": 278
+          }
+        }
+      }
+    },
+    "J": {
+      "train_rows": {
+        "K562": 8910,
+        "RPE1": 1435
+      },
+      "val": [
+        "RPE1",
+        358
+      ],
+      "encoder": {
+        "n_source_rows": 8910,
+        "pca_rows": 3000,
+        "var_explained_on_pca_rows": 0.5105535646694433
+      },
+      "ridge": [
+        {
+          "alpha": 0.1,
+          "val_mse": 0.03886831151528114
+        },
+        {
+          "alpha": 1.0,
+          "val_mse": 0.0388684969955394
+        },
+        {
+          "alpha": 10.0,
+          "val_mse": 0.03887014026487511
+        },
+        {
+          "alpha": 100.0,
+          "val_mse": 0.038872650942140034
+        },
+        {
+          "alpha": 1000.0,
+          "val_mse": 0.03869826396227515
+        },
+        {
+          "alpha": 10000.0,
+          "val_mse": 0.03786611939308821
+        },
+        {
+          "alpha": 100000.0,
+          "val_mse": 0.03768538068888476
+        },
+        {
+          "alpha": 1000000.0,
+          "val_mse": 0.03784245428740991
+        }
+      ],
+      "net": [
+        {
+          "hidden": 64,
+          "k": 16,
+          "l2": 1e-05,
+          "val_mse": 0.03733953806167793,
+          "steps_run": 1600
+        },
+        {
+          "hidden": 64,
+          "k": 16,
+          "l2": 0.0001,
+          "val_mse": 0.038308359137245555,
+          "steps_run": 700
+        },
+        {
+          "hidden": 64,
+          "k": 32,
+          "l2": 1e-05,
+          "val_mse": 0.03763034792634946,
+          "steps_run": 700
+        },
+        {
+          "hidden": 64,
+          "k": 32,
+          "l2": 0.0001,
+          "val_mse": 0.03704520297669843,
+          "steps_run": 700
+        },
+        {
+          "hidden": 128,
+          "k": 16,
+          "l2": 1e-05,
+          "val_mse": 0.0377036623780368,
+          "steps_run": 800
+        },
+        {
+          "hidden": 128,
+          "k": 16,
+          "l2": 0.0001,
+          "val_mse": 0.03657800802480387,
+          "steps_run": 700
+        },
+        {
+          "hidden": 128,
+          "k": 32,
+          "l2": 1e-05,
+          "val_mse": 0.03822047885714138,
+          "steps_run": 700
+        },
+        {
+          "hidden": 128,
+          "k": 32,
+          "l2": 0.0001,
+          "val_mse": 0.037087693291233154,
+          "steps_run": 700
+        }
+      ],
+      "val_mse_null": 0.04004534333944321,
+      "val_mse_plain_transfer": 0.04004534146578458,
+      "chosen": {
+        "ridge_alpha": 100000.0,
+        "net": {
+          "hidden": 128,
+          "k": 16,
+          "gate_hidden": 16,
+          "seed": 2031
+        },
+        "net_params": 120385,
+        "ridge_params": 471619
+      },
+      "seconds": 879.1117527484894,
+      "coverage": {
+        "train": [
+          {
+            "context": "K562",
+            "n": 8910,
+            "with_source": 0,
+            "with_neighbours": 7557
+          },
+          {
+            "context": "RPE1",
+            "n": 1435,
+            "with_source": 1434,
+            "with_neighbours": 1314
+          }
+        ],
+        "val": {
+          "context": "RPE1",
+          "n": 358,
+          "with_source": 0,
+          "with_neighbours": 331
+        },
+        "tests": {
+          "hepg2_val": {
+            "context": "HepG2",
+            "n": 300,
+            "with_source": 0,
+            "with_neighbours": 285
+          },
+          "hepg2_test": {
+            "context": "HepG2",
+            "n": 300,
+            "with_source": 0,
+            "with_neighbours": 275
+          }
+        }
+      }
+    },
+    "T": {
+      "train_rows": {
+        "K562": 8635,
+        "RPE1": 2393
+      },
+      "val": [
+        "K562",
+        959
+      ],
+      "encoder": {
+        "n_source_rows": 8635,
+        "pca_rows": 3000,
+        "var_explained_on_pca_rows": 0.5251083559893747
+      },
+      "ridge": [
+        {
+          "alpha": 0.1,
+          "val_mse": 0.0023423706995270863
+        },
+        {
+          "alpha": 1.0,
+          "val_mse": 0.0023423752915716937
+        },
+        {
+          "alpha": 10.0,
+          "val_mse": 0.0023424210766572603
+        },
+        {
+          "alpha": 100.0,
+          "val_mse": 0.0023428821625680212
+        },
+        {
+          "alpha": 1000.0,
+          "val_mse": 0.00234992788623477
+        },
+        {
+          "alpha": 10000.0,
+          "val_mse": 0.002447228768255864
+        },
+        {
+          "alpha": 100000.0,
+          "val_mse": 0.0027029968046262706
+        },
+        {
+          "alpha": 1000000.0,
+          "val_mse": 0.0028164240871554887
+        }
+      ],
+      "net": [
+        {
+          "hidden": 64,
+          "k": 16,
+          "l2": 1e-05,
+          "val_mse": 0.002737743245750282,
+          "steps_run": 700
+        },
+        {
+          "hidden": 64,
+          "k": 16,
+          "l2": 0.0001,
+          "val_mse": 0.0025293057334601853,
+          "steps_run": 1500
+        },
+        {
+          "hidden": 64,
+          "k": 32,
+          "l2": 1e-05,
+          "val_mse": 0.0025144384788512745,
+          "steps_run": 1200
+        },
+        {
+          "hidden": 64,
+          "k": 32,
+          "l2": 0.0001,
+          "val_mse": 0.0025070267965838157,
+          "steps_run": 1500
+        },
+        {
+          "hidden": 128,
+          "k": 16,
+          "l2": 1e-05,
+          "val_mse": 0.0025958692414504592,
+          "steps_run": 1500
+        },
+        {
+          "hidden": 128,
+          "k": 16,
+          "l2": 0.0001,
+          "val_mse": 0.0025790276671904446,
+          "steps_run": 1400
+        },
+        {
+          "hidden": 128,
+          "k": 32,
+          "l2": 1e-05,
+          "val_mse": 0.002608215369683092,
+          "steps_run": 1000
+        },
+        {
+          "hidden": 128,
+          "k": 32,
+          "l2": 0.0001,
+          "val_mse": 0.0024503032672266467,
+          "steps_run": 1600
+        }
+      ],
+      "val_mse_null": 0.0024892992805689573,
+      "val_mse_plain_transfer": 0.002489300125322132,
+      "chosen": {
+        "ridge_alpha": 0.1,
+        "net": {
+          "hidden": 128,
+          "k": 32,
+          "gate_hidden": 16,
+          "seed": 2033
+        },
+        "net_params": 231857,
+        "ridge_params": 471619
+      },
+      "seconds": 1256.1190435886383,
+      "coverage": {
+        "train": [
+          {
+            "context": "K562",
+            "n": 8635,
+            "with_source": 0,
+            "with_neighbours": 7354
+          },
+          {
+            "context": "RPE1",
+            "n": 2393,
+            "with_source": 2154,
+            "with_neighbours": 2216
+          }
+        ],
+        "val": {
+          "context": "K562",
+          "n": 959,
+          "with_source": 0,
+          "with_neighbours": 831
+        },
+        "tests": {
+          "k562_val": {
+            "context": "K562",
+            "n": 111,
+            "with_source": 0,
+            "with_neighbours": 100
+          },
+          "k562_test": {
+            "context": "K562",
+            "n": 113,
+            "with_source": 0,
+            "with_neighbours": 99
+          }
+        }
+      }
+    }
+  },
+  "leakage_checks": {
+    "C": {
+      "val_in_train": 0,
+      "hepg2_rows_in_train": 0
+    },
+    "J": {
+      "val_in_train": 0,
+      "test_in_any_train_label": 0
+    },
+    "T": {
+      "val_in_train": 0,
+      "test_in_any_train_label": 0
+    }
+  },
+  "finished_utc": "2026-09-18T16:44:12.605607+00:00",
+  "seconds_total": 7299.36199259758,
+  "panels_sha256": {
+    "hepg2_val": "410a526a6cd6e044c616159fc3f0a0e0a5b0a9de383db540290d1896ab0152ef",
+    "hepg2_test": "c57c24a8370ebc23f694288dc119b7e9af0e9e5b1693b4ec7a4a44d7b0daff77",
+    "k562_val": "07d392a1e544e76ad8c0278bb7f2980fc21063061c5e96dcfd13337f0995fc90",
+    "k562_test": "4ab34da0f6a24e4b89c83cfb9ddaded92f1684665c0db6dbdaf57beb4a5d5dcc",
+    "official": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca"
+  }
+}

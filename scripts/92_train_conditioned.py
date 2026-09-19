@@ -104,6 +104,11 @@ def main() -> None:
     p.add_argument("--batch", type=int, default=256)
     p.add_argument("--seed", type=int, default=2026)
     p.add_argument("--quick", action="store_true", help="tiny grids and few steps: a smoke test only")
+    p.add_argument("--splits", nargs="+", default=["C", "J", "T"],
+                   help="which splits to train; every split is still DEFINED, so seeds and draws match a full run")
+    p.add_argument("--official-controls", type=Path, default=None,
+                   help="dir with context_<X>.h5ad: after split C, also predict the official panel in these contexts")
+    p.add_argument("--official-contexts", nargs="+", default=["A", "B", "C"])
     p.add_argument("--max-source-targets", type=int, default=None,
                    help="smoke tests only: keep the panel targets plus this many random others per source")
     args = p.parse_args()
@@ -133,6 +138,19 @@ def main() -> None:
     basal["HepG2"] = pd.Series(log_cpm(h_frac / h_frac.sum()), index=h_names)
     basal["HepG2"] = basal["HepG2"][~basal["HepG2"].index.duplicated()]
     genes = sorted(set(basal["K562"].index) & set(basal["RPE1"].index) & set(basal["HepG2"].index))
+    official_ctx = {}
+    if args.official_controls is not None:
+        for ctx in args.official_contexts:
+            with h5py.File(args.official_controls / f"context_{ctx}.h5ad", "r") as f:
+                n_genes = int(f["X"].attrs["shape"][1])
+                tot = np.bincount(f["X/indices"][:], weights=f["X/data"][:], minlength=n_genes)
+                idx = f["var/_index"]
+                names = idx["values"][:] if isinstance(idx, h5py.Group) else idx[:]
+                names = np.array([g.decode() if isinstance(g, bytes) else str(g) for g in names])
+            key = f"official_{ctx}"
+            ser = pd.Series(log_cpm(tot / tot.sum()), index=names)
+            basal[key] = ser[~ser.index.duplicated()]
+            official_ctx[ctx] = key
     G = len(genes)
     log(f"gene universe {G} (K562 {len(basal['K562'])}, RPE1 {len(basal['RPE1'])}, HepG2 {len(basal['HepG2'])})")
 
@@ -165,7 +183,7 @@ def main() -> None:
         f"{time.time() - t0:.0f}s")
 
     def phi_of(ctx):
-        q = basal[ctx].reindex(genes).to_numpy()
+        q = basal[ctx].reindex(genes).fillna(0.0).to_numpy()
         s = basal["K562"].reindex(genes).to_numpy()
         return np.stack([q, s, q - s], axis=1)
 
@@ -215,6 +233,8 @@ def main() -> None:
                 "string_symbols": len(partners), "splits": {}, "leakage_checks": {}}
     evaluation = {}
     for name, sp_ in splits.items():
+        if name not in args.splits:
+            continue
         ts = time.time()
         k_lab = {t: K[t] for t in sp_["k562_train"]}
         r_lab = {t: R[t] for t in sp_["rpe1_train"]}
@@ -297,7 +317,24 @@ def main() -> None:
                 truth = np.stack([K[t] for t in tl])
                 evaluation[f"{name}_{tname}"] = effect_space(preds, truth, rng)
         manifest["splits"][name]["coverage"] = cov
+        if name == "C" and official_ctx:
+            manifest["official"] = {}
+            for ctx, key in official_ctx.items():
+                b = block(key, panel["official"], None, k_lab, k_lab, mode_b=sp_["mode_b"])
+                for model, arr in (("ridge", best_r[1].forward(*rows(b)[:4])), ("net", best_n[1].forward(*rows(b)[:4]))):
+                    np.savez_compressed(args.out / f"pred_C_official_{ctx}_{model}.npz", targets=np.array(panel["official"]),
+                                        genes=np.array(genes), lfc=arr.astype(np.float32))
+                manifest["official"][ctx] = coverage(b) | {"genes_missing_in_context": int(basal[key].reindex(genes).isna().sum())}
+            log(f"official predictions written for {list(official_ctx)}")
     # HepG2 effect-space truth for the test panel, from its cells (pooled fractions, EB-shrunk)
+    if not {"C", "J"} <= set(args.splits):
+        (args.out / "effect_space.json").write_text(json.dumps(evaluation, indent=2), encoding="utf-8")
+        manifest["finished_utc"] = datetime.now(timezone.utc).isoformat()
+        manifest["seconds_total"] = time.time() - t0
+        manifest["panels_sha256"] = {n: hashlib.sha256("\n".join(v).encode()).hexdigest() for n, v in panel.items()}
+        (args.out / "manifest.json").write_text(json.dumps(manifest, indent=2, default=str), encoding="utf-8")
+        log(f"done in {time.time() - t0:.0f}s (splits {args.splits})")
+        return
     ht_rows = {t: np.flatnonzero(h_sym == t) for t in ht}
     h_pos = pd.Index(h_names).get_indexer(genes)
     ctrl_stats = fraction_stats(h_ctrl)
