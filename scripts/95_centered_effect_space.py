@@ -32,22 +32,13 @@ from pathlib import Path
 import h5py
 import numpy as np
 import pandas as pd
-import scipy.sparse as sp
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from vcc2026.bench import log  # noqa: E402
 from vcc2026.predictor_sc import effects_from_bulk  # noqa: E402
 from vcc2026.sc_effects import eb_shrink, fraction_stats, log_effect  # noqa: E402
-from vcc2026.sc_stream import read_frame  # noqa: E402
-
-
-def read_rows(x, rows: np.ndarray, block: int = 4096) -> sp.csr_matrix:
-    """`x` is an OPEN h5py dataset: one open file for the whole run, not one per target."""
-    out = []
-    for i in range(0, rows.size, block):
-        out.append(sp.csr_matrix(x[np.sort(rows[i:i + block])]))
-    return sp.vstack(out).tocsr()
+from vcc2026.sc_stream import read_frame, read_rows  # noqa: E402
 
 
 def hepg2_truth(path: Path, targets: list[str], genes: np.ndarray) -> np.ndarray:

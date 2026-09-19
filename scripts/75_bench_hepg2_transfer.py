@@ -61,7 +61,7 @@ from vcc2026.predictor_sc import (  # noqa: E402
     load_coordinates,
 )
 from vcc2026.sampling import resample_library_sizes, sample_counts  # noqa: E402
-from vcc2026.sc_stream import read_frame  # noqa: E402
+from vcc2026.sc_stream import read_frame, read_rows  # noqa: E402
 
 NTC = "non-targeting"
 DEFAULT_ARMS = [
@@ -70,15 +70,6 @@ DEFAULT_ARMS = [
     "transfer_a0.5+cismeas_a1.5+cis_a1.5", "transfer_a0.5+cismeas_a1.0+cis_a1.0+shared_a0.5",
     "g0:transfer_a0.25+cismeas_a1.0+cis_a1.0",
 ]
-
-
-def read_rows(path: Path, rows: np.ndarray, block: int = 4096) -> sp.csr_matrix:
-    out = []
-    with h5py.File(path, "r") as f:
-        x = f["X"]
-        for i in range(0, rows.size, block):
-            out.append(sp.csr_matrix(x[rows[i:i + block]]))
-    return sp.vstack(out).tocsr()
 
 
 def load_effects(specs, genes) -> dict:

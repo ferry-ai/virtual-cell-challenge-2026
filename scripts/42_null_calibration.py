@@ -36,42 +36,16 @@ from pathlib import Path
 import h5py
 import numpy as np
 import pandas as pd
-import scipy.sparse as sp
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from vcc2026 import config
 from vcc2026.evaluation import VCC_SCORED_METRICS, score_bundle
 from vcc2026.genes import official_axis
+from vcc2026.inference import read_csr_rows
 from vcc2026.manifest import RunManifest
 from vcc2026.sampling import resample_library_sizes, sample_counts
 from vcc2026.submission import SubmissionWriter
-
-
-def read_rows(path: Path, rows: np.ndarray, n_genes: int) -> sp.csr_matrix:
-    """Read selected CSR rows from an h5ad without materialising the matrix.
-
-    The control file holds 110M stored values; loading X whole is ~880 MB before
-    anything else happens, which does not fit comfortably beside the scorer on
-    this machine.
-    """
-    rows = np.sort(np.asarray(rows))
-    with h5py.File(path, "r") as f:
-        indptr = f["X/indptr"][:]
-        data_ds, idx_ds = f["X/data"], f["X/indices"]
-        blocks, new_indptr = [], [0]
-        cols = []
-        for r in rows:
-            lo, hi = int(indptr[r]), int(indptr[r + 1])
-            blocks.append(data_ds[lo:hi])
-            cols.append(idx_ds[lo:hi])
-            new_indptr.append(new_indptr[-1] + (hi - lo))
-    return sp.csr_matrix(
-        (np.concatenate(blocks).astype(np.float32),
-         np.concatenate(cols).astype(np.int32),
-         np.array(new_indptr, dtype=np.int64)),
-        shape=(len(rows), n_genes),
-    )
 
 
 def main() -> None:
@@ -140,14 +114,16 @@ def main() -> None:
         if rows.size < args.cells_per_pseudo:
             raise SystemExit(f"group {i} has only {rows.size} cells")
         pick = rng.choice(rows, size=args.cells_per_pseudo, replace=False)
-        real_blocks.append(read_rows(ctrl_path, pick, n_genes))
+        # Row by row out of the CSR datasets: the control file holds 110M stored values,
+        # and loading X whole is ~880 MB before anything else happens.
+        real_blocks.append(read_csr_rows(ctrl_path, np.sort(pick), n_genes))
         real_labels.append((labels[i], args.cells_per_pseudo))
 
     ctrl_rows = np.flatnonzero(np.isin(codes, control_guides))
     pick_ctrl = rng.choice(
         ctrl_rows, size=min(args.n_control_cells, ctrl_rows.size), replace=False
     )
-    control_block = read_rows(ctrl_path, pick_ctrl, n_genes)
+    control_block = read_csr_rows(ctrl_path, np.sort(pick_ctrl), n_genes)
 
     real_path = run / f"real_{args.context}.h5ad"
     pred_path = run / f"pred_{args.context}.h5ad"

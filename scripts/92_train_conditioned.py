@@ -38,7 +38,6 @@ from pathlib import Path
 import h5py
 import numpy as np
 import pandas as pd
-import scipy.sparse as sp
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
@@ -54,7 +53,7 @@ from vcc2026.conditioned import (  # noqa: E402
 )
 from vcc2026.predictor_sc import effects_from_bulk  # noqa: E402
 from vcc2026.sc_effects import eb_shrink, fraction_stats, log_effect  # noqa: E402
-from vcc2026.sc_stream import read_frame  # noqa: E402
+from vcc2026.sc_stream import read_frame, read_rows  # noqa: E402
 
 NET_GRID = [{"hidden": h, "k": k, "l2": l2} for h in (64, 128) for k in (16, 32) for l2 in (1e-5, 1e-4)]
 RIDGE_GRID = [0.1, 1.0, 10.0, 100.0, 1e3, 1e4, 1e5, 1e6]
@@ -77,15 +76,6 @@ def bulk_basal(means, cells, ntc, names) -> pd.Series:
     mu = (means[ntc] * w[:, None]).sum(axis=0) / max(w.sum(), 1.0)
     s = pd.Series(log_cpm(mu / mu.sum()), index=names)
     return s[~s.index.duplicated()]
-
-
-def read_rows(path: Path, rows: np.ndarray, block: int = 4096) -> sp.csr_matrix:
-    out = []
-    with h5py.File(path, "r") as f:
-        x = f["X"]
-        for i in range(0, rows.size, block):
-            out.append(sp.csr_matrix(x[np.sort(rows[i:i + block])]))
-    return sp.vstack(out).tocsr()
 
 
 def main() -> None:

@@ -44,6 +44,7 @@ __all__ = [
     "CsrAppendWriter",
     "dense_layout",
     "read_frame",
+    "read_rows",
     "stream_dense_rows",
 ]
 
@@ -88,6 +89,24 @@ def read_frame(group: h5py.Group) -> pd.DataFrame:
     else:
         index = _decode(index_node[:])
     return pd.DataFrame(cols, index=pd.Index(index, name=None))
+
+
+def read_rows(source, rows: np.ndarray, *, block: int = 4096) -> sp.csr_matrix:
+    """The requested rows of a dense h5ad ``X``, as CSR, at most `block` at a time.
+
+    `source` is a path or an already open dataset: a stage that reads one target after
+    another opens the file once (stage 95), a stage that reads everything in one go
+    passes the path (stages 75 and 92). h5py wants increasing indices, so each block is
+    sorted before the read: the rows come back in file order, not in the order asked
+    for. Every caller here passes a set of cells, not a sequence.
+    """
+    if isinstance(source, (str, Path)):
+        with h5py.File(source, "r") as handle:
+            return read_rows(handle["X"], rows, block=block)
+    out = []
+    for i in range(0, rows.size, block):
+        out.append(sp.csr_matrix(source[np.sort(rows[i:i + block])]))
+    return sp.vstack(out).tocsr()
 
 
 @dataclass(frozen=True)
