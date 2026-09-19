@@ -43,8 +43,9 @@ aggiunge da sé la riga qui sotto.
 | [0019](0019-catena-cicli-guardiano.md) | 2026-09-16 | Catena di cicli: guardiano, collaudo scritto prima e controllo di Grok | cambio-di-strategia | — |
 | [0020](0020-singola-cellula-cis-generatore.md) | 2026-09-17 | Pipeline a singola cellula: effetto cis trasferibile, DE esatto e veloce, md5 del K562 gia verificato | cambio-di-strategia | — |
 | [0021](0021-ancore-ufficiali-e-troppe-chiamate.md) | 2026-09-17 | Le ancore ufficiali, e perche' chiamare troppi geni costa il punteggio | osservazione | — |
-| [0022](0022-previsione-verificata-t03.md) | 2026-09-17 | La previsione registrata contro il punteggio reale del t03 | osservazione | — |
+| [0022](0022-previsione-verificata-t03.md) | 2026-09-17 | La previsione registrata contro il punteggio reale del t03 | osservazione | [0027](0027-t07-punteggio-ufficiale.md), §4: lo strumento vale per la stessa famiglia di modelli, non per una diversa |
 | [0023](0023-rpe1-contro-k562-su-hepg2.md) | 2026-09-18 | RPE1 trasferisce su HepG2 meglio di K562, anche a parita' di chiamate; non copre alcun bersaglio ufficiale | esperimento | — |
 | [0024](0024-identita-del-bersaglio-su-hepg2.md) | 2026-09-18 | Il controllo d'identita' del bersaglio: il trasferimento e' specifico, il vantaggio di RPE1 e' soprattutto comune | esperimento | — |
 | [0025](0025-componente-comune-scartata.md) | 2026-09-18 | Componente comune RPE1: scartata dalla sua regola | esperimento | — |
 | [0026](0026-predittore-neurale-condizionato.md) | 2026-09-19 | Primo predittore neurale condizionato su bersaglio e contesto: scartato; il modello lineare con gli stessi input lo pareggia o lo batte | esperimento | — |
+| [0027](0027-t07-punteggio-ufficiale.md) | 2026-09-19 | Il t07 in classifica: -0,016; la previsione del banco non regge per una famiglia di modelli diversa | esperimento | — |

@@ -1,0 +1,99 @@
+job start 2026-09-19T08:38:50Z host=24910a40bf9b cpus=2 code=/content/code_1789807127_1690 ﻿2026-09-19T01:37:41+02:00 head=4cdb618 dirty_files=13
+               total        used        free      shared  buff/cache   available
+Mem:              12           1           8           0           3          11
+overlay         108G   21G   88G  20% /
+08:38:50 copying stage-71 statistics to local disk
+08:39:08 local copy ready
+total 1443632
+drwxr-xr-x 2 root root       4096 Sep 19 08:39 .
+drwxr-xr-x 3 root root       4096 Sep 19 08:38 ..
+-rw------- 1 root root     712985 Sep 19 08:38 groups.csv
+-rw------- 1 root root 1476596260 Sep 19 08:39 group_stats.npz
+-rw-r--r-- 1 root root          0 Sep 19 08:39 READY
+-rw------- 1 root root       3461 Sep 19 08:38 report.json
+-rw------- 1 root root     944986 Sep 19 08:38 var.csv
+[08:39:16] transfer covers 269/300 targets; cis bins 0:-0.332 1000:-0.231 2000:-0.109 5000:-0.087 10000:-0.036
+[08:39:40] effects for context A from /content/drive/MyDrive/vcc2026/runs/conditioned_2026-09-18/train_official/pred_C_official_A_ridge.npz: 6477 genes on the official axis
+[08:40:03] effects for context B from /content/drive/MyDrive/vcc2026/runs/conditioned_2026-09-18/train_official/pred_C_official_B_ridge.npz: 6477 genes on the official axis
+[08:40:26] effects for context C from /content/drive/MyDrive/vcc2026/runs/conditioned_2026-09-18/train_official/pred_C_official_C_ridge.npz: 6477 genes on the official axis
+[08:40:56]   fit: 18400 cells, 3000 HVG, PCA var 0.225, state=kde
+[08:41:22]   dispersion: 11831 genes zero-matched, median phi (mean>0.05) 0.12967124979365818
+[08:41:24]   A 1/300 nnz/cell 5921 (59s)
+[08:43:23]   A 51/300 nnz/cell 5764 (177s)
+[08:45:21]   A 101/300 nnz/cell 5876 (295s)
+[08:47:19]   A 151/300 nnz/cell 5882 (413s)
+[08:49:18]   A 201/300 nnz/cell 5879 (533s)
+[08:51:17]   A 251/300 nnz/cell 5882 (652s)
+[08:53:15] A: done in 769s, nnz/cell 5911 (controls 5973)
+[08:53:47]   fit: 18400 cells, 3000 HVG, PCA var 0.251, state=kde
+[08:54:13]   dispersion: 11897 genes zero-matched, median phi (mean>0.05) 0.04835432363564958
+[08:54:16]   B 1/300 nnz/cell 5626 (61s)
+[08:56:05]   B 51/300 nnz/cell 5478 (171s)
+[08:57:53]   B 101/300 nnz/cell 5555 (279s)
+[08:59:41]   B 151/300 nnz/cell 5470 (387s)
+[09:01:30]   B 201/300 nnz/cell 5557 (496s)
+[09:03:18]   B 251/300 nnz/cell 5491 (603s)
+[09:05:13] B: done in 718s, nnz/cell 5516 (controls 5519)
+[09:05:44]   fit: 18400 cells, 3000 HVG, PCA var 0.310, state=kde
+[09:06:10]   dispersion: 12260 genes zero-matched, median phi (mean>0.05) 0.03793930254371829
+[09:06:13]   C 1/300 nnz/cell 5870 (60s)
+[09:08:05]   C 51/300 nnz/cell 5761 (172s)
+[09:10:00]   C 101/300 nnz/cell 5854 (287s)
+[09:11:54]   C 151/300 nnz/cell 5794 (401s)
+[09:13:55]   C 201/300 nnz/cell 5954 (522s)
+[09:15:49]   C 251/300 nnz/cell 5898 (636s)
+[09:17:41] C: done in 748s, nnz/cell 5858 (controls 5881)
+[09:17:42] wrote /content/work/t07/gen/prediction.h5ad (360000 cells, 2074212441 values) in 2310s
+09:17:43 generation done, packaging
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 124.8/124.8 kB 4.0 MB/s eta 0:00:00
+input      : /content/work/t07/gen/prediction.h5ad
+hashing input (streamed) ...
+  sha256   : 154cd0e842f281bb7498e116a10709c86456b255198e319f06fbfc0d04eb35c9  (28s)
+layout     : 360,000 x 18,533, 2,074,212,441 stored entries
+             data float32/gzip, indices int32, indptr int32
+resources  : RAM 12.67 GiB total, 11.53 GiB available; disk 79.91 GiB free
+             official vcc prep would peak at ~22.1 GiB; this stage streams instead
+             estimated transient disk 8.99 GiB
+
+validating and packaging (streamed) ...
+  PASS  var_names_unique
+  PASS  gene_order_matches_list
+  PASS  gene_dim_matches_expected
+  PASS  has_cells
+  PASS  cell_dim_within_cap
+  PASS  pert_column_present
+  PASS  no_control_rows
+  PASS  contexts_complete
+  PASS  targets_match_official_list
+  PASS  density_within_cap
+  PASS  column_indices_in_range
+  PASS  counts_finite
+  PASS  counts_non_negative
+  PASS  counts_are_whole_numbers
+  PASS  max_counts_per_cell_within_cap
+  PASS  no_all_zero_perturbation
+  PASS  csr:indptr_length_is_n_obs_plus_1
+  PASS  csr:indptr_starts_at_zero
+  PASS  csr:indptr_non_negative
+  PASS  csr:indptr_monotonic
+  PASS  csr:indptr_end_matches_data_length
+  PASS  csr:data_and_indices_same_length
+  PASS  csr:nnz_representable_in_indptr_dtype
+  PASS  csr:n_vars_representable_in_indices_dtype
+
+wrote prediction.vcc: 3.86 GiB (974s total)
+  meta       : {"schema": 1, "nnz": 2074212441, "n_obs": 360000, "n_vars": 18533, "cli_version": "0.2.0"}
+  peak RSS   : 0.70 GiB
+  peak disk  : 7.77 GiB
+
+verifying the archive ...
+  PASS  official container validator (vccfile.validate_vcc)
+  meta read back: {"cli_version": "0.2.0", "n_obs": 360000, "n_vars": 18533, "nnz": 2074212441, "schema": 1}
+  PASS  payload X arrays are bit-identical to the input; gene axis and labels match (281s)
+        obs index rewritten by prep's rule: True
+  archive sha256: e8854f6fb32f9a97b7e6bc9a224c3484ae5b994f652b66a8146bcd0f42700cf2
+
+total 1319s, peak RSS 0.70 GiB
+-> /content/work/t07/pack/packaging.json
+e8854f6fb32f9a97b7e6bc9a224c3484ae5b994f652b66a8146bcd0f42700cf2  /content/drive/MyDrive/vcc2026/runs/trials_2026-09-17/t07/prediction.vcc
+job end 2026-09-19T09:41:08Z
