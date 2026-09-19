@@ -28,7 +28,6 @@ decodes directly with h5py, together with the newer categorical layout.
 from __future__ import annotations
 
 import hashlib
-import json
 import time
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -396,6 +395,3 @@ class CsrAppendWriter:
         finally:
             self._f.close()
 
-
-def write_json(path: Path, payload: dict) -> None:
-    path.write_text(json.dumps(payload, indent=2, default=str), encoding="utf-8")

@@ -20,7 +20,7 @@ from pathlib import Path
 
 import numpy as np
 
-from vcc2026.models import Prediction, ShrunkTransfer, WeightedTransfer
+from vcc2026.models import ShrunkTransfer, WeightedTransfer
 from vcc2026.signatures import SignatureSet
 
 from .factorization import FactorizationSpec, factorize
@@ -522,18 +522,6 @@ def apply_loaded(model, payload: dict, universe: GeneUniverse) -> None:
         model._b2 = payload["b2"]
         model._x_mean = payload["x_mean"]
         model._x_std = payload["x_std"]
-
-
-def prediction_on_axis(
-    delta_common: np.ndarray, universe: GeneUniverse, *, support: int, detail: dict
-) -> Prediction:
-    delta = universe.embed(np.asarray(delta_common, dtype=np.float64))
-    return Prediction(
-        delta=delta,
-        observed=universe.observed.copy(),
-        support=int(support),
-        detail=detail,
-    )
 
 
 def select_shrunk_transfer(

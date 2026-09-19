@@ -23,7 +23,6 @@ from typing import Any
 
 from ..briefs import Brief, BriefError
 from ..settings import Settings
-from ..util import short_id
 
 ON_SEARCH_UNAVAILABLE = ("halt", "plan_only")
 LEAD_ASSIGNMENT = ("both", "cross", "own")
@@ -163,10 +162,6 @@ class ResearchBrief:
         }
 
 
-def is_research_brief(brief: Brief) -> bool:
-    return str(brief.raw.get("mode", "")).strip() == "scientific_research"
-
-
 def _criteria(raw: Any) -> tuple[RelevanceCriterion, ...]:
     if not isinstance(raw, list) or not raw:
         raise BriefError(
@@ -304,6 +299,3 @@ def search_capability(settings: Settings, service: str, *, wanted: bool = True) 
         f"l'adattatore lo imposta e ne rilegge lo stato prima del primo messaggio "
         f"{profile_modes or ''}".strip())
 
-
-def campaign_id(research: ResearchBrief, route_name: str) -> str:
-    return "RS-" + short_id(research.brief.content_sha256, route_name, length=8)
