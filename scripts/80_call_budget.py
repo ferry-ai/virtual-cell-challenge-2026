@@ -46,6 +46,7 @@ from vcc2026.inference import read_csr_rows  # noqa: E402
 from vcc2026.predictor_sc import (  # noqa: E402
     CisModel,
     assemble_log_fc,
+    bulk_symbols,
     effects_from_bulk,
     effects_from_group_stats,
     load_coordinates,
@@ -99,8 +100,7 @@ def main() -> None:
         bulk = paths.external / "K562_gwps_raw_bulk_01.h5ad"
         with h5py.File(bulk, "r") as f:
             labels = np.array([s.decode() for s in f["obs/gene_transcript"][:]])
-            is_ntc = np.array(["non-targeting" in lab for lab in labels])
-            symbols = np.array(["non-targeting" if nt else lab.split("_")[1] for lab, nt in zip(labels, is_ntc)])
+            is_ntc, symbols = bulk_symbols(labels)
             rows = np.flatnonzero(is_ntc | np.isin(symbols, panel))
             means = f["X"][rows]
             n_cells = f["obs/num_cells_filtered"][:][rows]

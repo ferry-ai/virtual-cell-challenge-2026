@@ -59,6 +59,7 @@ from vcc2026.predictor_sc import (  # noqa: E402
     effects_from_bulk,
     effects_from_group_stats,
     load_coordinates,
+    read_bulk,
 )
 from vcc2026.sampling import resample_library_sizes, sample_counts  # noqa: E402
 from vcc2026.sc_stream import read_frame, read_rows  # noqa: E402
@@ -142,13 +143,7 @@ def main() -> None:
         def k562_effects(which):
             return effects_from_group_stats(stats, groups, k562_names, targets=which)
     else:
-        with h5py.File(args.k562_bulk, "r") as f:
-            labels = np.array([s.decode() for s in f["obs/gene_transcript"][:]])
-            bulk_means = f["X"][:]
-            bulk_cells = f["obs/num_cells_filtered"][:]
-            k562_names = read_frame(f["var"])["gene_name"].astype(str).to_numpy()
-        bulk_ntc = np.array(["non-targeting" in lab for lab in labels])
-        bulk_sym = np.array(["non-targeting" if nt else lab.split("_")[1] for lab, nt in zip(labels, bulk_ntc)])
+        bulk_means, bulk_cells, bulk_sym, bulk_ntc, k562_names = read_bulk(args.k562_bulk)
         k562_targets = set(bulk_sym[~bulk_ntc])
 
         def k562_effects(which):

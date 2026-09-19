@@ -36,7 +36,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from vcc2026.bench import log  # noqa: E402
-from vcc2026.predictor_sc import effects_from_bulk  # noqa: E402
+from vcc2026.predictor_sc import effects_from_bulk, read_bulk  # noqa: E402
 from vcc2026.sc_effects import eb_shrink, fraction_stats, log_effect  # noqa: E402
 from vcc2026.sc_stream import read_frame, read_rows  # noqa: E402
 
@@ -61,12 +61,7 @@ def hepg2_truth(path: Path, targets: list[str], genes: np.ndarray) -> np.ndarray
 
 
 def bulk_truth(path: Path, targets: list[str], genes: np.ndarray) -> np.ndarray:
-    with h5py.File(path, "r") as f:
-        labels = np.array([s.decode() for s in f["obs/gene_transcript"][:]])
-        means, cells = f["X"][:], f["obs/num_cells_filtered"][:]
-        names = read_frame(f["var"])["gene_name"].astype(str).to_numpy()
-    ntc = np.array(["non-targeting" in lab for lab in labels])
-    syms = np.array(["non-targeting" if nt else lab.split("_")[1] for lab, nt in zip(labels, ntc)])
+    means, cells, syms, ntc, names = read_bulk(path)
     eff = effects_from_bulk(means, cells, syms, ntc, names, targets=targets)
     pos = pd.Index(eff.genes).get_indexer(genes)
     idx = eff.index()

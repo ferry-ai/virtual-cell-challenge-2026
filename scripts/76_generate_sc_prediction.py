@@ -53,6 +53,7 @@ from vcc2026.genes import official_axis  # noqa: E402
 from vcc2026.predictor_sc import (  # noqa: E402
     CisModel,
     assemble_log_fc,
+    bulk_symbols,
     common_from_bulk,
     effects_from_bulk,
     effects_from_group_stats,
@@ -146,8 +147,7 @@ def main() -> None:
     else:
         with h5py.File(args.k562_bulk, "r") as f:
             labels = np.array([s.decode() for s in f["obs/gene_transcript"][:]])
-            is_ntc = np.array(["non-targeting" in lab for lab in labels])
-            symbols = np.array(["non-targeting" if nt else lab.split("_")[1] for lab, nt in zip(labels, is_ntc)])
+            is_ntc, symbols = bulk_symbols(labels)
             # With --cis-pairs only the panel's rows and the controls are needed: the whole
             # 11,258 x 8,248 matrix in float64 does not fit next to a context on the laptop.
             rows = np.flatnonzero(is_ntc | np.isin(symbols, targets)) if args.cis_pairs else np.arange(labels.size)

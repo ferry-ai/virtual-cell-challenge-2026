@@ -34,7 +34,8 @@ import pandas as pd
 
 from .sc_effects import FractionStats, eb_shrink, log_effect
 
-__all__ = ["SourceEffects", "CisModel", "effects_from_bulk", "effects_from_group_stats", "assemble_log_fc", "load_coordinates"]
+__all__ = ["SourceEffects", "CisModel", "bulk_symbols", "read_bulk", "effects_from_bulk",
+           "effects_from_group_stats", "assemble_log_fc", "load_coordinates"]
 
 NTC = "non-targeting"
 
@@ -181,17 +182,7 @@ def common_from_bulk(path, axis: np.ndarray, *, exclude=(), block: int = 400) ->
     bound memory. Genes the source did not measure get 0. The same vector serves the benches
     (stages 73, 75) and the submission generator (stage 76).
     """
-    import h5py
-
-    from .sc_stream import read_frame
-
-    with h5py.File(path, "r") as f:
-        labels = np.array([s.decode() for s in f["obs/gene_transcript"][:]])
-        means = f["X"][:]
-        cells = f["obs/num_cells_filtered"][:]
-        names = read_frame(f["var"])["gene_name"].astype(str).to_numpy()
-    ntc = np.array(["non-targeting" in lab for lab in labels])
-    sym = np.array(["non-targeting" if nt else lab.split("_")[1] for lab, nt in zip(labels, ntc)])
+    means, cells, sym, ntc, names = read_bulk(path)
     targets = sorted(set(sym[~ntc]) - set(map(str, exclude)))
     total, n, genes = None, 0, None
     for i in range(0, len(targets), block):
@@ -268,6 +259,39 @@ def assemble_log_fc(target: str, axis: np.ndarray, *, src: SourceEffects | None 
     if shared is not None and a_shared:
         out += a_shared * shared
     return np.clip(out, -clip, clip)
+
+
+def bulk_symbols(labels: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """(is_ntc, target symbol) per row, from the `gene_transcript` labels of a bulk file.
+
+    One rule, shared by every stage that opens one of these files: a row is a control
+    when its label contains "non-targeting", otherwise the symbol is the second
+    underscore-separated field. Reading it twice in two ways is how a control ends up
+    counted as a target.
+    """
+    ntc = np.array([NTC in lab for lab in labels])
+    sym = np.array([NTC if nt else lab.split("_")[1] for lab, nt in zip(labels, ntc)])
+    return ntc, sym
+
+
+def read_bulk(path) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """A Replogle ``*_raw_bulk_01.h5ad``, whole: (means, cells, sym, ntc, names).
+
+    ``X`` holds per-cell *means*, not sums, and `cells` is ``num_cells_filtered``: the
+    two together give back the counts (CP-0003 §3.1), which is why they always travel
+    together. The return order is the argument order of `effects_from_bulk`.
+    """
+    import h5py
+
+    from .sc_stream import read_frame
+
+    with h5py.File(path, "r") as f:
+        labels = np.array([s.decode() for s in f["obs/gene_transcript"][:]])
+        means = f["X"][:]
+        cells = f["obs/num_cells_filtered"][:]
+        names = read_frame(f["var"])["gene_name"].astype(str).to_numpy()
+    ntc, sym = bulk_symbols(labels)
+    return means, cells, sym, ntc, names
 
 
 def effects_from_bulk(means: np.ndarray, n_cells: np.ndarray, symbols: np.ndarray, is_ntc: np.ndarray,

@@ -33,6 +33,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from vcc2026.predictor_sc import bulk_symbols  # noqa: E402
 from vcc2026.sc_stream import read_frame  # noqa: E402
 
 NTC = "non-targeting"
@@ -44,8 +45,7 @@ def bulk_source(path: Path) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         labels = np.array([s.decode() for s in f["obs/gene_transcript"][:]])
         n_cells = f["obs/num_cells_filtered"][:]
         genes = read_frame(f["var"])["gene_name"].astype(str).to_numpy()
-    is_ntc = np.array([NTC in lab for lab in labels])
-    sym = np.array([NTC if nt else lab.split("_")[1] for lab, nt in zip(labels, is_ntc)])
+    is_ntc, sym = bulk_symbols(labels)
     return sym, np.where(np.isfinite(n_cells), n_cells, 0.0), genes
 
 

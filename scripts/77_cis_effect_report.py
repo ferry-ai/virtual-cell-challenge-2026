@@ -35,7 +35,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from vcc2026 import config  # noqa: E402
 from vcc2026.manifest import file_fingerprint  # noqa: E402
-from vcc2026.predictor_sc import load_coordinates  # noqa: E402
+from vcc2026.predictor_sc import bulk_symbols, load_coordinates  # noqa: E402
 from vcc2026.sc_stream import read_frame  # noqa: E402
 
 EDGES = [0, 500, 1000, 2000, 5000, 10000, 20000, 50000]
@@ -76,8 +76,7 @@ def main() -> None:
         klab = np.array([s.decode() for s in f["obs/gene_transcript"][:]])
         kgenes = read_frame(f["var"])["gene_name"].astype(str).to_numpy()
     kfrac /= kfrac.sum(axis=1, keepdims=True)
-    kntc = np.array(["non-targeting" in lab for lab in klab])
-    ksym = np.array(["non-targeting" if nt else lab.split("_")[1] for lab, nt in zip(klab, kntc)])
+    kntc, ksym = bulk_symbols(klab)
     kctrl = kfrac[kntc].mean(axis=0, dtype=np.float64)
     kpos = {g: i for i, g in enumerate(kgenes)}
     rows_by_sym = pd.Series(np.arange(ksym.size)).groupby(ksym).apply(list).to_dict()

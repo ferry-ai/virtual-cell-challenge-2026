@@ -51,23 +51,12 @@ from vcc2026.conditioned import (  # noqa: E402
     neighbour_mean,
     string_partners,
 )
-from vcc2026.predictor_sc import effects_from_bulk  # noqa: E402
+from vcc2026.predictor_sc import effects_from_bulk, read_bulk  # noqa: E402
 from vcc2026.sc_effects import eb_shrink, fraction_stats, log_effect  # noqa: E402
 from vcc2026.sc_stream import read_frame, read_rows  # noqa: E402
 
 NET_GRID = [{"hidden": h, "k": k, "l2": l2} for h in (64, 128) for k in (16, 32) for l2 in (1e-5, 1e-4)]
 RIDGE_GRID = [0.1, 1.0, 10.0, 100.0, 1e3, 1e4, 1e5, 1e6]
-
-
-def read_bulk(path: Path):
-    with h5py.File(path, "r") as f:
-        labels = np.array([s.decode() for s in f["obs/gene_transcript"][:]])
-        means = f["X"][:]
-        cells = f["obs/num_cells_filtered"][:]
-        names = read_frame(f["var"])["gene_name"].astype(str).to_numpy()
-    ntc = np.array(["non-targeting" in lab for lab in labels])
-    sym = np.array(["non-targeting" if nt else lab.split("_")[1] for lab, nt in zip(labels, ntc)])
-    return means, cells, sym, ntc, names
 
 
 def bulk_basal(means, cells, ntc, names) -> pd.Series:
