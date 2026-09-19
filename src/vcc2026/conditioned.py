@@ -174,6 +174,37 @@ def _sigmoid(z):
     return 1.0 / (1.0 + np.exp(-np.clip(z, -30, 30)))
 
 
+class _Adam:
+    """Adam, byte for byte as it was in `benchmark/models.py`.
+
+    It lived there because the four pseudobulk decoders shared it. Those decoders are
+    archived (`docs/ARCHIVIO_CODICE.md`, tag archivio/pre-pulizia-2026-09-19) and this
+    is now its only caller, so the class moved here rather than keep the whole module
+    alive for twenty lines. Copied without a single change: the training of stage 92
+    has to take the same steps it took before.
+    """
+
+    def __init__(self, params, lr, betas=(0.9, 0.999), eps=1e-8):
+        self.params = params
+        self.lr = float(lr)
+        self.b1, self.b2 = betas
+        self.eps = eps
+        self.m = [np.zeros_like(p) for p in params]
+        self.v = [np.zeros_like(p) for p in params]
+        self.t = 0
+
+    def step(self, grads, l2: float = 0.0):
+        self.t += 1
+        for i, g in enumerate(grads):
+            if l2:
+                g = g + l2 * self.params[i]
+            self.m[i] = self.b1 * self.m[i] + (1.0 - self.b1) * g
+            self.v[i] = self.b2 * self.v[i] + (1.0 - self.b2) * (g * g)
+            mhat = self.m[i] / (1.0 - self.b1 ** self.t)
+            vhat = self.v[i] / (1.0 - self.b2 ** self.t)
+            self.params[i] -= self.lr * mhat / (np.sqrt(vhat) + self.eps)
+
+
 class ConditionedNet:
     """pred[t, g] = gate(phi_g) * y_src[t, g] * m_src[t] + u(x_t) . v(g, phi_g).
 
@@ -242,8 +273,6 @@ class ConditionedNet:
     def fit(self, batches, val, *, lr: float = 3e-3, l2: float = 1e-4, steps: int = 3000, check_every: int = 100,
             patience: int = 5, log=None) -> dict:
         """`batches()` yields (x, phi, y_src, m_src, y); `val` is a list of such tuples."""
-        from vcc2026.benchmark.models import _Adam
-
         names = list(self.p)
         opt = _Adam([self.p[n] for n in names], lr)
         best, best_p, bad, hist = np.inf, None, 0, []
