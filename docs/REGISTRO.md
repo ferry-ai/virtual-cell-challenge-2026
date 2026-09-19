@@ -143,6 +143,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `docs/PROGETTO.md` | attuale | — | Punto di ingresso: mappa dello stato | — |
 | `docs/DECISIONI.md` | attuale | — | Decisioni attive e quando riaprirle | — |
 | `docs/REGISTRO.md` | attuale | — | Questo file | — |
+| `docs/ARCHIVIO_CODICE.md` | attuale | — | Che cosa è stato tolto dal codice il 19 settembre e come si riprende: il tag `archivio/pre-pulizia-2026-09-19` (punta a `ec980b4`), e per ogni percorso archiviato le righe, a che cosa serviva e il comando `git show`. Lo legge anche `scripts/31_check_docs.py`, che accetta come esistente un percorso elencato qui: è così che i checkpoint immutabili possono continuare a citare codice archiviato | — |
 | `docs/checkpoints/0001-ricostruzione-stato-2026-09-12.md` | da-verificare | — | Stato e correzioni al 12 settembre; ricostruzione retrospettiva dichiarata. Tre affermazioni corrette da CP-0002: resta leggibile com'era, come tutti i checkpoint | [R-009](#r-009--docscheckpoints0001-ricostruzione-stato-2026-09-12md) |
 | `docs/checkpoints/0002-correzioni-dopo-revisione-umana.md` | attuale | — | Le sei correzioni chieste dalla prima revisione umana, e da dove veniva ciascuna | — |
 | `docs/checkpoints/` | attuale | — | Modello, indice e checkpoint. I checkpoint non si riscrivono: le correzioni stanno in quello successivo e nella colonna "Corretto da" dell'indice | — |

@@ -184,6 +184,37 @@ class CheckerTests(unittest.TestCase):
         self.assertEqual(len(errors), 1, errors)
         self.assertIn('docs/two.md', errors[0])
 
+    def test_an_archived_path_counts_as_existing(self):
+        """A path listed in ARCHIVIO_CODICE.md was moved into a tag, not lost.
+
+        A checkpoint cannot be corrected, so it goes on naming code that is no longer
+        in the working tree. The archive file is what separates that from a path that
+        vanished by accident, which must still be reported.
+        """
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root, True)
+        self.addCleanup(check_docs.archived_paths.cache_clear)
+        (root / 'docs' / 'checkpoints').mkdir(parents=True)
+        (root / 'CLAUDE.md').write_text('ok\n', encoding='utf-8')
+        (root / 'docs' / 'PROGETTO.md').write_text('# Mappa\n', encoding='utf-8')
+        (root / 'docs' / 'REGISTRO.md').write_text('# R\n', encoding='utf-8')
+        (root / 'docs' / 'DECISIONI.md').write_text('# D\n', encoding='utf-8')
+        (root / 'README.md').write_text(
+            'archiviato `src/orchestrator/engine.py`, sparito `scripts/99_gone.py`\n',
+            encoding='utf-8')
+        (root / 'docs' / 'ARCHIVIO_CODICE.md').write_text(
+            '| `src/orchestrator/engine.py` | 1143 | il ciclo | `git show archivio/x:...` |\n',
+            encoding='utf-8')
+        check_docs.archived_paths.cache_clear()
+        errors = []
+        with patch.object(check_docs, 'REPO_ROOT', root):
+            check_docs.check_links(errors)
+            # a directory that holds an archived file counts as existing too
+            self.assertTrue(check_docs.path_exists('src/orchestrator/'))
+            self.assertFalse(check_docs.path_exists('src/orchestrator_other/'))
+        self.assertEqual([e for e in errors if 'engine.py' in e], [])
+        self.assertTrue(any('99_gone.py' in e for e in errors), errors)
+
     def test_this_repository_is_consistent(self):
         done = subprocess.run([sys.executable, str(ROOT / 'scripts' / '31_check_docs.py')],
                               capture_output=True, text=True, cwd=ROOT)

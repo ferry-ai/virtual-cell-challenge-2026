@@ -6,6 +6,9 @@ reading as if it were true. Prose does not fail loudly on its own, so the mechan
 parts of it are checked here — paths, anchors, numbering, required metadata, and the
 rule that a flagged document must carry a review sheet.
 
+A path listed in `docs/ARCHIVIO_CODICE.md` counts as existing: that file says which
+code was moved into an archive tag on purpose, and with which command it comes back.
+
 It checks structure, never claims: no amount of green output means the science is
 right. Standard library only.
 
@@ -15,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import functools
 import re
 from pathlib import Path
 
@@ -74,11 +78,36 @@ def table_by_first_column(text: str, name: str, path: Path, errors: list[str]):
     return None, []
 
 
+@functools.lru_cache(maxsize=None)
+def archived_paths(root: Path) -> frozenset[str]:
+    """Paths that docs/ARCHIVIO_CODICE.md declares archived in a tag.
+
+    Removing code from the branch does not remove it from the project: an annotated
+    tag keeps it, and reports and checkpoints go on naming it. A checkpoint cannot be
+    corrected, so the check has to tell a path archived on purpose from one that
+    vanished by accident -- the first is listed there with the command that brings it
+    back, the second is not listed anywhere and is still an error.
+    """
+    path = root / "docs" / "ARCHIVIO_CODICE.md"
+    if not path.exists():
+        return frozenset()
+    return frozenset(BACKTICK_PATH.findall(path.read_text(encoding="utf-8")))
+
+
+def is_archived(raw: str) -> bool:
+    """True for a listed path, and for a directory that holds one."""
+    archived = archived_paths(REPO_ROOT)
+    if raw in archived:
+        return True
+    prefix = raw if raw.endswith("/") else raw + "/"
+    return any(entry.startswith(prefix) for entry in archived)
+
+
 def path_exists(raw: str) -> bool:
     """Repo-relative path, glob allowed. Absolute paths are outside our control."""
     if any(ch in raw for ch in "*?["):
-        return any(REPO_ROOT.glob(raw))
-    return (REPO_ROOT / raw).exists()
+        return any(REPO_ROOT.glob(raw)) or is_archived(raw)
+    return (REPO_ROOT / raw).exists() or is_archived(raw)
 
 
 def is_repo_relative(raw: str) -> bool:
@@ -318,7 +347,10 @@ def main() -> None:
         for error in errors:
             print(f"  - {error}")
         raise SystemExit(1)
+    archived = archived_paths(REPO_ROOT)
     print(f"OK: {len(numbers)} checkpoint(s), registry, decisions and links are consistent.")
+    if archived:
+        print(f"{len(archived)} path(s) accepted as archived, from docs/ARCHIVIO_CODICE.md.")
     print("Structure only. This says nothing about whether the claims are true.")
 
 
