@@ -1,0 +1,119 @@
+{
+  "run_id": "t08gen",
+  "stage": "45_generate_prediction",
+  "started_utc": "2026-09-22T21:34:00.803802+00:00",
+  "finished_utc": "2026-09-22T21:34:01.122950+00:00",
+  "seed": 20260912,
+  "config": {
+    "run_id": "t08gen",
+    "trial": "trial-ext-profile",
+    "out": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t08gen",
+    "fitted_state": null,
+    "signatures": null,
+    "n_perts": null,
+    "contexts": null,
+    "cells_per_pert": null,
+    "seed": null,
+    "overdispersion": null,
+    "reserve_gib": 2.0,
+    "skip_resource_check": false,
+    "allow_overwrite": false,
+    "effects": [
+      "A=C:/Users/ferra/vcc2026-data/processed/effects_t08_2026-09-22/effects_A.npz",
+      "B=C:/Users/ferra/vcc2026-data/processed/effects_t08_2026-09-22/effects_B.npz",
+      "C=C:/Users/ferra/vcc2026-data/processed/effects_t08_2026-09-22/effects_C.npz"
+    ]
+  },
+  "inputs": {
+    "controls:A": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_A.h5ad",
+      "exists": true,
+      "bytes": 224973316,
+      "mtime_utc": "2026-09-11T17:27:06.844066+00:00",
+      "sha256": "daf888bd6894da5488c8dac3098a3618ff766d03fdf1250ec7f607124bb97834",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "controls:B": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_B.h5ad",
+      "exists": true,
+      "bytes": 210966111,
+      "mtime_utc": "2026-09-11T17:27:08.236761+00:00",
+      "sha256": "8764c13cb61dd48e51c817335dd4ecc85a740406c5af144c4884d79d3cd3293d",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "controls:C": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_C.h5ad",
+      "exists": true,
+      "bytes": 226056691,
+      "mtime_utc": "2026-09-11T17:27:09.601099+00:00",
+      "sha256": "486a299ad022ec5fd6a3c5f56ec77efeb7b8b85e5de0e41250d064c6f9b236f6",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "outputs": {
+    "prediction": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t08gen\\prediction.h5ad",
+      "exists": true,
+      "bytes": 4258994687,
+      "mtime_utc": "2026-09-22T21:34:00.732825+00:00",
+      "sha256": "452cade2d13cec0477611defe7b791f7a3cdf53e842b02abdfcd51b01b1ceda9",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "diagnostics": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t08gen\\generation_diagnostics.json",
+      "exists": true,
+      "bytes": 240398,
+      "mtime_utc": "2026-09-22T21:34:00.795402+00:00",
+      "sha256": "510c87150622c3c3f782fae6caf07b45bcd71e349151eef8cb64190f6885d58d",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "storage": {
+      "stored_entries": 2167512126,
+      "stored_entries_per_cell": 6020.867016666667,
+      "per_cell_budget": 13194,
+      "global_cap": 4750000000,
+      "fraction_of_global_cap_at_this_size": 0.4563183423157895,
+      "projected_entries_at_full_shape": 2167512126.0,
+      "projected_fraction_of_cap": 0.4563183423157895,
+      "file_bytes": 4258994687,
+      "bytes_per_cell": 11830.540797222222,
+      "projected_file_bytes_at_full_shape": 4258994687.0
+    },
+    "runtime": {
+      "basal_profiles_seconds": 16.721737699990626,
+      "generation_seconds": 1255.912532199989,
+      "total_seconds": 1273.4885405000532,
+      "seconds_per_block": 1.3954583691110989,
+      "projected_generation_seconds_at_full_shape": 1255.912532199989
+    },
+    "memory": {
+      "peak_rss_bytes": 562511872
+    },
+    "context_provenance_ok": true
+  },
+  "notes": [
+    "No VCC score here. Generation only; nothing uploaded."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": "25.0.1"
+    },
+    "env_overrides": {}
+  }
+}
