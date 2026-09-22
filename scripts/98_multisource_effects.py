@@ -80,6 +80,9 @@ def main() -> None:
     p.add_argument("--cache", type=Path, required=True)
     p.add_argument("--report-dir", type=Path, required=True)
     p.add_argument("--gammas", type=float, nargs="+", default=[0.0, 0.5, 1.0])
+    p.add_argument("--extra", action="append", default=[], metavar="NAME=PATH",
+                   help="another pseudobulk h5ad with obs target/donor/condition/n_cells (e.g. stage 102's "
+                        "Orion rows, where donor = GEM batch); all its rows form one source NAME")
     args = p.parse_args()
     for path in (args.report_dir / "transfer.json", args.cache):
         if path.exists():
@@ -124,6 +127,16 @@ def main() -> None:
                                   {"from": conds, "how": "reliability-weighted mean of the conditions, gamma 0; "
                                                          "shrunk and raw mixed separately"})
 
+    for spec in args.extra:
+        name, _, path = spec.partition("=")
+        log(f"reading extra source {name} from {path}")
+        extra = ad.read_h5ad(path)
+        eobs = extra.obs[["target", "donor", "condition", "n_cells"]].copy()
+        src = effects_from_pseudobulk(extra.X, eobs, extra.var_names, targets=panel, condition=None)
+        tables[name] = AxisTable.from_source(name, src, axis)
+        log(f"  {name}: {len(src.targets)} targets")
+        del extra
+
     coverage = {}
     for name, tab in tables.items():
         save_table(tab, args.cache)
@@ -142,8 +155,10 @@ def main() -> None:
                 common_corr[f"{a}~{b}"] = float(np.corrcoef(commons[a][ok], commons[b][ok])[0, 1])
 
     shared = {}
-    for a, b in [("k562", "cd4_mix"), ("k562", "cd4_Rest"), ("k562", "cd4_Stim8hr"), ("k562", "cd4_Stim48hr"),
-                 ("cd4_Rest", "cd4_Stim48hr"), ("cd4_halfA", "cd4_halfB")]:
+    shared_pairs = [("k562", "cd4_mix"), ("k562", "cd4_Rest"), ("k562", "cd4_Stim8hr"), ("k562", "cd4_Stim48hr"),
+                    ("cd4_Rest", "cd4_Stim48hr"), ("cd4_halfA", "cd4_halfB")]
+    shared_pairs += [(a, e.partition("=")[0]) for e in args.extra for a in ("k562", "cd4_mix")]
+    for a, b in shared_pairs:
         for g in args.gammas:
             shared[f"{a}~{b}|gamma={g}"] = shared_signal(tables[a], tables[b], panel, exclude_cols=panel_cols, gamma=g)
             s = shared[f"{a}~{b}|gamma={g}"]
