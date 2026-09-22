@@ -1,0 +1,34 @@
+{
+  "written_utc": "2026-09-22T21:19:35.919824+00:00",
+  "label": "t08 = trial-01 generator unchanged + effects K562 (0.433) + CD4 pseudobulk (0.567), raw x 0.197, gamma 1",
+  "claim_type": "prediction registered before submission; not a measurement",
+  "method": "no numeric model: stage 84 is not valid for a new family (CP-0027); a band from the effect-space measurements of CP-0028",
+  "recipe": {
+    "path": "configs\\recipes\\t08.json",
+    "sha256": "57dd70119345b70f7e9d767c4ed9dcb5068198ec79dc5ec0ad4ba56e82f6c365"
+  },
+  "reference": {
+    "trial-01": {
+      "score_avg": 0.045929,
+      "pds_raw": 0.687,
+      "mse_raw": 1.2313,
+      "nmae_raw": 0.9849,
+      "fid_raw": 0.458,
+      "reach_raw": 0.098,
+      "jac_raw": 0.0291
+    }
+  },
+  "expected": {
+    "score_avg_band": [
+      0.03,
+      0.06
+    ],
+    "pds_raw": "about trial-01 (0.687), possibly up to +0.02: 25 more targets covered; the effect-space proxy saturates near 0.69 when sources are mixed",
+    "mse_raw": "about 1.2, clipped to 0 (the generator alone reads ~1.15 at zero effect, CP-0013)",
+    "fid_raw": "about 0.46, dominated by the generator's spurious calls as in trial-01",
+    "reach_raw": "about 0.10",
+    "nmae_raw": "about 0.98-0.99",
+    "jac_raw": "about 0.03"
+  },
+  "falsified_if": "score_avg below 0.03 (the sources hurt at fixed generator) or above 0.06 (more than the covered-target gain can explain)"
+}
