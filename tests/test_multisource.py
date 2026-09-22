@@ -83,6 +83,33 @@ class MixTests(unittest.TestCase):
         self.assertAlmostEqual(float(eff[0, 0]), (0.5 * 1 + 0.75 * 4) / 1.25, places=5)
 
 
+class ShrinkAndShareTests(unittest.TestCase):
+    def test_z_shrink_keeps_strong_effects_and_kills_weak_ones(self):
+        from vcc2026.multisource import z_shrink
+        eff = np.array([-2.46, 0.3, 0.3, 0.0])
+        se = np.array([0.2, 0.3, 0.05, 0.1])
+        out = z_shrink(eff, se, k=4.0)
+        self.assertGreater(abs(out[0]), 0.95 * 2.46)          # z = 12: kept (a single-normal prior crushed it)
+        self.assertAlmostEqual(out[1], 0.3 * 1 / 5, places=6)  # z = 1: one fifth
+        self.assertAlmostEqual(out[2], 0.3 * 36 / 40, places=6)  # z = 6: nine tenths kept
+        self.assertEqual(out[3], 0.0)
+
+    def test_shared_signal_recovers_a_known_split(self):
+        from vcc2026.multisource import shared_signal
+        rng = np.random.default_rng(3)
+        T, G = 60, 500
+        s = rng.normal(0, 1.0, (T, G))
+        a_rows = s + rng.normal(0, 1.0, (T, G))                # V_a = 1
+        b_rows = s + rng.normal(0, 2.0, (T, G))                # V_b = 4
+        tg = [f"T{i}" for i in range(T)]
+        mk = lambda n, r: AxisTable(n, tg, r.astype(np.float32), r.astype(np.float32),
+                                    np.ones_like(r, dtype=np.float32), np.full(T, 1e6))
+        out = shared_signal(mk("a", a_rows), mk("b", b_rows), tg)
+        self.assertAlmostEqual(out["weight_a"], 0.8, delta=0.03)   # V_b / (V_a + V_b)
+        # best amplitude: V_s / (V_s + w^2 V_a + (1-w)^2 V_b) = 1 / (1 + 0.64 + 0.16)
+        self.assertAlmostEqual(out["amplitude"], 1 / 1.8, delta=0.03)
+
+
 class PurityTests(unittest.TestCase):
     def test_depth_is_the_deepest_prefix_at_the_floor(self):
         pred = np.array([1, 1, -1, 1, 1, 1, 1, 1, 1, 1, -1, -1])
