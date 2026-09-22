@@ -30,34 +30,57 @@ import scipy.sparse as sp
 from vcc2026.predictor_sc import SourceEffects
 from vcc2026.sc_effects import eb_shrink
 
-__all__ = ["effects_from_pseudobulk", "AxisTable", "mix", "transfer_report"]
+__all__ = ["effects_from_pseudobulk", "z_shrink", "AxisTable", "mix", "shared_signal", "transfer_report"]
+
+
+def z_shrink(eff: np.ndarray, se: np.ndarray, k: float = 4.0) -> np.ndarray:
+    """Local shrinkage ``eff * z^2 / (z^2 + k)``, with ``z = eff / se``.
+
+    The single-normal prior of `sc_effects.eb_shrink` fits one variance to all genes of a
+    target. A knockdown response is sparse, so that variance is set by the many null genes
+    and the few large effects are crushed: K562 HDAC1's own knockdown goes from ln -2.46 to
+    -0.35 (stage 98, 2026-09-22). Here each gene keeps a share that grows with its own
+    evidence: 0.2 at |z| = 1, 0.5 at |z| = 2, 0.86 at |z| = 5. ``k`` is fixed, not tuned.
+    """
+    eff = np.asarray(eff, dtype=np.float64)
+    z2 = np.divide(eff * eff, np.asarray(se, dtype=np.float64) ** 2,
+                   out=np.zeros_like(eff), where=np.asarray(se) > 0)
+    return eff * z2 / (z2 + k)
 
 
 def effects_from_pseudobulk(X, obs: pd.DataFrame, genes, *, targets, condition: str | None = None,
                             phi: float = 0.2, min_control_frac: float = 1e-6,
-                            min_cells: float = 10.0) -> SourceEffects:
+                            min_cells: float = 10.0, pseudo: float = 0.5) -> SourceEffects:
     """Per-target ln fold changes from summed-count pseudobulk rows.
 
     ``obs`` needs ``target`` ('non-targeting' for controls), ``donor``, ``condition`` and
     ``n_cells``. Within ``condition`` (all conditions pooled when None), each donor's rows
-    for a target are summed and compared with the same donor's control rows; the donor
-    fold changes are averaged with weights equal to the target's cells in that donor, and
-    the standard error combines the donors' quasi-Poisson terms with the same weights.
-    Donors with fewer than ``min_cells`` target cells are skipped.
+    for a target are summed and compared with the same donor's control rows:
+    ``ln((S_t + pseudo) / L_t) - ln((S_c + pseudo) / L_c)``, with ``S`` a gene's summed counts
+    and ``L`` the group's total. The variance is quasi-Poisson on those counts,
+    ``1/(S_t + pseudo) + 1/(S_c + pseudo) + phi/n_t + phi/n_c``. The donor fold changes are
+    averaged with weights equal to the target's cells in that donor. Donors with fewer than
+    ``min_cells`` target cells are skipped. ``shrunk`` is `z_shrink` of the donor mean.
     """
-    X = sp.csr_matrix(X, dtype=np.float64)
+    X = sp.csr_matrix(X)            # keep the stored dtype; sums are taken in float64
     genes = np.asarray(genes).astype(str)
     obs = obs.reset_index(drop=True)
+    target_col = obs["target"].to_numpy().astype(str)
+    donor_col = obs["donor"].to_numpy().astype(str)
+    cells_col = obs["n_cells"].to_numpy().astype(np.float64)
     use = np.ones(len(obs), dtype=bool) if condition is None else (obs["condition"].to_numpy() == condition)
-    is_ntc = obs["target"].to_numpy() == "non-targeting"
-    donors = sorted(set(obs.loc[use, "donor"]))
+    is_ntc = target_col == "non-targeting"
+    donors = sorted(set(donor_col[use]))
+
+    def colsum(mask):
+        return np.asarray(X[mask].sum(axis=0, dtype=np.float64)).ravel()
+
     ctrl = {}
     for d in donors:
-        m = use & is_ntc & (obs["donor"].to_numpy() == d)
+        m = use & is_ntc & (donor_col == d)
         if not m.any():
             continue
-        s = np.asarray(X[m].sum(axis=0)).ravel()
-        ctrl[d] = (s, float(obs.loc[m, "n_cells"].sum()))
+        ctrl[d] = (colsum(m), float(cells_col[m].sum()))
     pooled_ctrl = sum(v[0] for v in ctrl.values())
     ctrl_frac = pooled_ctrl / pooled_ctrl.sum()
     usable = ctrl_frac >= min_control_frac
@@ -69,17 +92,15 @@ def effects_from_pseudobulk(X, obs: pd.DataFrame, genes, *, targets, condition: 
         wsum = 0.0
         used = []
         for d, (cs, cn) in ctrl.items():
-            m = use & (obs["target"].to_numpy() == t) & (obs["donor"].to_numpy() == d)
+            m = use & (target_col == t) & (donor_col == d)
             if not m.any():
                 continue
-            n_t = float(obs.loc[m, "n_cells"].sum())
+            n_t = float(cells_col[m].sum())
             if n_t < min_cells:
                 continue
-            st = np.asarray(X[m].sum(axis=0)).ravel()
-            ft, fc = st / st.sum(), cs / cs.sum()
-            e = np.log(np.maximum(ft, 1e-7)) - np.log(np.maximum(fc, 1e-7))
-            # quasi-Poisson on summed counts: 1/S is 1/(n * mu) of `effects_from_bulk`
-            v = 1.0 / np.maximum(st, 1e-3) + phi / n_t + 1.0 / np.maximum(cs, 1e-3) + phi / cn
+            st = colsum(m)
+            e = np.log((st + pseudo) / st.sum()) - np.log((cs + pseudo) / cs.sum())
+            v = 1.0 / (st + pseudo) + phi / n_t + 1.0 / (cs + pseudo) + phi / cn
             eff_sum += n_t * e
             var_sum += n_t**2 * v
             wsum += n_t
@@ -88,7 +109,7 @@ def effects_from_pseudobulk(X, obs: pd.DataFrame, genes, *, targets, condition: 
             continue
         eff = eff_sum / wsum
         se = np.sqrt(var_sum) / wsum
-        shr, _ = eb_shrink(eff, se, usable)
+        shr = np.where(usable, z_shrink(eff, se), 0.0)
         rows_s.append(shr.astype(np.float32))
         rows_r.append(np.where(usable, eff, 0.0).astype(np.float32))
         rows_se.append(se.astype(np.float32))
@@ -234,7 +255,9 @@ def transfer_report(pred: np.ndarray, pred_weight: np.ndarray, truth: AxisTable,
     genes are those with |raw / se| >= ``z_conf``, the stand-in for reference-significant.
     """
     tidx = truth.index()
-    keep = [i for i, t in enumerate(targets) if t in tidx]
+    # compare only targets both sides carry: one target the predictor lacks would otherwise
+    # empty the shared gene set and pin the discrimination proxy at 0.5
+    keep = [i for i, t in enumerate(targets) if t in tidx and (pred_weight[i] > 0).any()]
     P = pred[keep].astype(np.float64)
     W = pred_weight[keep]
     rows = np.array([tidx[targets[i]] for i in keep])

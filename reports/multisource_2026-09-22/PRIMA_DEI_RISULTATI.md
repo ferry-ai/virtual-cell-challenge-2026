@@ -49,3 +49,27 @@ Se lo stadio 98 mostra che K562 e CD4 **non** condividono segnale (`corr` di `sh
 Il confronto con trial-01 isola l'effetto delle sorgenti a generatore fisso:
 - se il t08 migliora, CD4 serve e si procede con i pesi di lignaggio e con altre sorgenti;
 - se peggiora, la miscela o l'ampiezza sono sbagliate, e il generatore non c'entra.
+
+## Emendamento delle 23:10, prima del secondo run dello stadio 98
+
+Il primo run (`transfer.json`, `coverage.json` in questa cartella, cache
+`processed/multisource_2026-09-22`) ha **due difetti di codice**. Restano come evidenza e non
+si usano per la ricetta.
+
+1. Negli effetti CD4 l'errore standard aveva il pavimento sui conteggi **sommati** (1e-3)
+   invece che per cellula. I geni poco espressi portano varianze enormi, e lo shrinkage a
+   prior normale unico riduce **tutti** gli effetti CD4 a zero: q99 di |shrunk| = 0,000.
+   Da qui `corr` ≈ 0,02 fra K562 e CD4 e ampiezze ottime assurde (0,000 e 14,9).
+2. `transfer_report` confrontava anche bersagli che il predittore non ha. Uno solo di questi
+   svuota l'insieme dei geni in comune, e la proxy di discriminazione resta a 0,500.
+
+Correzioni, decise prima di vedere il secondo run:
+- stima CD4 con pseudoconteggio 0,5 sui conteggi sommati, varianza quasi-Poisson sugli
+  stessi conteggi;
+- **stesso shrinkage locale per tutte le sorgenti**, `z_shrink` con k = 4 fisso. Sostituisce
+  il prior normale unico anche per K562, dove quel prior schiaccia gli effetti forti (il
+  knockdown di HDAC1 passa da −2,46 a −0,35, misurato nel primo run);
+- proxy calcolate solo sui bersagli che entrambe le parti hanno.
+
+La regola di scelta (γ, pesi, ampiezza) resta **identica**. Il secondo run va in
+`reports/multisource_2026-09-22/r2/` e `processed/multisource_2026-09-22_r2`.

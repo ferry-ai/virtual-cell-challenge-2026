@@ -3,6 +3,7 @@
 Sources, all put on the official axis by `vcc2026.multisource.AxisTable`:
 
 * ``k562``: the K562 genome-wide bulk (Replogle 2022), `effects_from_bulk`, as stage 76;
+  its per-gene shrinkage is replaced by `z_shrink`, the one every source gets here;
 * ``cd4_Rest``, ``cd4_Stim8hr``, ``cd4_Stim48hr``: the CD4 pseudobulk rows of stage 97,
   one fold change per donor against that donor's controls, averaged over donors;
 * ``cd4_halfA`` / ``cd4_halfB``: CD4 Stim48hr split by donors (two against two), used only
@@ -38,7 +39,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from vcc2026.bench import log  # noqa: E402
 from vcc2026.genes import official_axis  # noqa: E402
-from vcc2026.multisource import AxisTable, effects_from_pseudobulk, mix, shared_signal, transfer_report  # noqa: E402
+from vcc2026.multisource import (  # noqa: E402
+    AxisTable, effects_from_pseudobulk, mix, shared_signal, transfer_report, z_shrink,
+)
 from vcc2026.predictor_sc import effects_from_bulk  # noqa: E402
 from vcc2026.sc_stream import read_frame  # noqa: E402
 
@@ -55,6 +58,8 @@ def k562_table(path: Path, targets: list[str], axis) -> AxisTable:
         n_cells = f["obs/num_cells_filtered"][:][rows]
         names = read_frame(f["var"])["gene_name"].astype(str).to_numpy()
     src = effects_from_bulk(means, n_cells, symbols[rows], is_ntc[rows], names, targets=targets)
+    # the same local shrinkage as every other source, in place of the single-normal prior
+    src.shrunk = z_shrink(src.raw, src.se).astype(np.float32)
     return AxisTable.from_source("k562", src, axis)
 
 
