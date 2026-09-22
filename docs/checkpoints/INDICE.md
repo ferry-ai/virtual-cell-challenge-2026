@@ -50,3 +50,4 @@ aggiunge da sé la riga qui sotto.
 | [0026](0026-predittore-neurale-condizionato.md) | 2026-09-19 | Primo predittore neurale condizionato su bersaglio e contesto: scartato; il modello lineare con gli stessi input lo pareggia o lo batte | esperimento | — |
 | [0027](0027-t07-punteggio-ufficiale.md) | 2026-09-19 | Il t07 in classifica: -0,016; la previsione del banco non regge per una famiglia di modelli diversa | esperimento | — |
 | [0028](0028-cd4-sorgente-flex-trasferimento.md) | 2026-09-22 | CD4 adottato come sorgente; la gara è 10x Flex; fra contesti il trasferimento per gene è debole e la discriminazione satura | esperimento | — |
+| [0029](0029-t08-punteggio-ufficiale.md) | 2026-09-23 | Il t08 in classifica: +0,060, nuovo migliore; a generatore fisso gli effetti K562 + CD4 migliorano tutti e sei i grezzi | esperimento | — |
