@@ -121,6 +121,9 @@ def main() -> None:
     p.add_argument("--reserve-gib", type=float, default=10.0)
     p.add_argument("--skip-resource-check", action="store_true")
     p.add_argument("--allow-overwrite", action="store_true")
+    p.add_argument("--effects", action="append", default=None, metavar="CTX=PATH",
+                   help="external_effects trials: per-context npz from stage 100 "
+                        "(targets, genes, lfc in ln units, observed)")
     args = p.parse_args()
 
     t_start = time.perf_counter()
@@ -246,6 +249,28 @@ def main() -> None:
         print(f"support        : {len(covered)}/{len(targets)} targets covered, "
               f"{int(gene_observed.sum()):,}/{len(axis):,} genes observed by source")
         del sigs
+    elif trial["kind"] == "external_effects":
+        specs = dict(s.partition("=")[::2] for s in (args.effects or []))
+        if set(specs) != set(contexts):
+            raise SystemExit(f"--effects covers {sorted(specs)} but the contexts are {list(contexts)}")
+        ctx_predictions = {}
+        axis_index = pd.Index(list(axis.symbols))
+        for ctx, path in specs.items():
+            z = np.load(path, allow_pickle=False)
+            gpos = pd.Index(z["genes"].astype(str)).get_indexer(axis_index)
+            if (gpos < 0).any():
+                raise SystemExit(f"{path}: {(gpos < 0).sum()} official genes missing from the file")
+            rows = {t: i for i, t in enumerate(z["targets"].astype(str))}
+            missing = [t for t in targets if t not in rows]
+            if missing:
+                raise SystemExit(f"{path}: no effects for {len(missing)} targets, e.g. {missing[:3]}")
+            lfc, obs_mask = z["lfc"][:, gpos], z["observed"][:, gpos]
+            # stage 100 writes ln fold changes; the trial-01 profile takes log2
+            ctx_predictions[ctx] = {t: (lfc[rows[t]] / np.log(2.0), obs_mask[rows[t]].astype(bool))
+                                    for t in targets}
+            print(f"effects {ctx}      : {path} ({int(obs_mask.any(axis=0).sum()):,} genes observed)")
+        support.update({"model": "external_effects",
+                        "effects": {c: file_fingerprint(Path(p)) for c, p in specs.items()}})
     elif trial["kind"] != "control_resampling":
         raise SystemExit(f"unsupported trial kind {trial['kind']!r}")
 
@@ -286,7 +311,10 @@ def main() -> None:
                     detail = {"compositional_shift_log2": 0.0,
                               "source": "real control cells, resampled"}
                 else:
-                    delta, observed = predictions[target]
+                    if trial["kind"] == "external_effects":
+                        delta, observed = ctx_predictions[ctx][target]
+                    else:
+                        delta, observed = predictions[target]
                     profile, detail = predicted_profile(
                         basal.profile, delta, observed
                     )

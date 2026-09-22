@@ -81,3 +81,19 @@ trials:
       - "Targets absent from the source, and genes outside the source's feature
          universe, get a no-effect fallback with the support mask recorded
          (D-009). Missing evidence is never reported as a measured zero."
+
+  - id: trial-ext-profile
+    title: "trial-01's generator driven by per-context effects from a file"
+    kind: external_effects
+    trains: false
+    description: >-
+      The trial-01 generation path unchanged -- basal profile of each context,
+      compositional shift on the supported genes, Poisson counts at library sizes
+      resampled from that context's controls -- with the effects read from
+      per-context npz files (stage 100: targets, genes, lfc in ln units, observed
+      mask) instead of the K562 ShrunkTransfer. Holding the generator fixed is the
+      point: a score difference against trial-01 is then a difference of effects.
+    rules:
+      - "Effects are passed with --effects CTX=PATH for every generated context."
+      - "A pair the file marks unobserved keeps its exact share of the composition
+         (D-009), exactly as a gene outside the source universe did in trial-01."
