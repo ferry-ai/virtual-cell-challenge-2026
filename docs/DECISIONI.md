@@ -44,7 +44,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-028 | Il GO slim non entra nei descrittori: il controllo permutato va come quello vero | attiva | 2026-09-15 | [CP-0014](checkpoints/0014-go-slim-e-gpu.md), `reports/go_slim_2026-09-15/` |
 | D-029 | Nessun porting su GPU prima di aver sostituito la SVD completa con una randomizzata | attiva | 2026-09-15 | [CP-0014](checkpoints/0014-go-slim-e-gpu.md), [CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md), `reports/svd_2026-09-15/` |
 | D-030 | La griglia di rango della base resta {8, 16}; 32/64/128 non diventano il default | attiva | 2026-09-15 | [CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md), `reports/rank_2026-09-15/` |
-| D-031 | Ordine operativo: audit Jiang, poi Jurkat come quarto contesto; CD4 rinviato | attiva | 2026-09-15 | [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md), `docs/PIANO_OPERATIVO_2026-09-15.md` |
+| D-031 | Ordine operativo: audit Jiang, poi Jurkat come quarto contesto; CD4 rinviato — **la parte su CD4 è superata da D-039** | attiva | 2026-09-15 | [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md), `docs/PIANO_OPERATIVO_2026-09-15.md` |
 | D-032 | Protocollo di valutazione congelato; i fold del 14–15 settembre sono sviluppo | attiva | 2026-09-15 | [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md), `configs/eval_protocol.yaml` |
 | D-033 | Il gate di espressione non è adottato: la regola non è soddisfatta e i due controlli indicano un filtro di rumore, non una regola di contesto | attiva | 2026-09-16 | [CP-0017](checkpoints/0017-gate-espressione-destinazione.md), `reports/expression_gate_2026-09-16/decision.json` |
 | D-034 | Il generatore delle sottomissioni è `ControlModel`: cellule nuove, apprese dai controlli del contesto, nessuna cellula di controllo copiata — **proposta del lead, da confermare dal proprietario** | da-verificare | 2026-09-17 | [CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) §3.3, `reports/generator_null_smoke_2026-09-17/` |
@@ -52,6 +52,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-036 | Il predittore contiene il termine cis (vicini misurati dalla sorgente, prior per distanza altrove); la co-espressione nei controlli non entra | attiva | 2026-09-17 | `reports/cis_2026-09-17/cis_effect.json`, `reports/coexpression_2026-09-17/summary.json` |
 | D-037 | Nei banchi il DE è `fast_scorer_de`, verificato identico al percorso scanpy dello scorer | attiva | 2026-09-17 | `reports/fast_de_2026-09-17/parity.json`, `tests/test_sc_pipeline.py` |
 | D-038 | Le misure si confrontano con le ancore ufficiali risolte, e non si sottomette senza sapere in quale regime della fedeltà siamo | attiva | 2026-09-17 | `reports/anchors_2026-09-17/anchors.json`, [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
+| D-039 | CD4 entra come sorgente per bersaglio dal pseudobulk letto per righe; primo test a un solo fattore contro trial-01 (t08) | attiva | 2026-09-22 | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), `reports/cd4_rows_2026-09-22/manifest.json` |
 
 ---
 
@@ -929,3 +930,32 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Riaprire se:** cambia `panel_id` o `anchor_version` (le ancore vanno ririsolte); oppure
   una terza sottomissione non riproduce lo scalato che le ancore predicono dal suo grezzo,
   il che falsificherebbe la soluzione.
+
+### D-039 — CD4 entra come sorgente per bersaglio, dal pseudobulk letto per righe
+
+- **Perché:** il pseudobulk CD4 copre 297 bersagli su 300, con una mediana di 1.478 cellule
+  per bersaglio; K562 genome-wide ne copre 272, con circa 150 cellule. CD4 porta anche un
+  lignaggio T vicino ad A. La ragione di D-031 per rinviarlo, cioè gli 1,7 TB delle cellule
+  singole, non vale per il pseudobulk: i suoi blocchi non sono compressi e le righe del
+  pannello costano 1,33 GiB.
+- **Come è fatta:**
+  - lo stadio 97 legge le righe per intervalli esatti di byte e verifica ogni riga contro il
+    suo `total_counts`;
+  - lo stadio 98 stima gli effetti per donatore contro i controlli dello stesso donatore e
+    li media;
+  - ogni sorgente riceve lo stesso shrinkage locale (`z_shrink`, k = 4);
+  - la matrice sta sotto la radice dati;
+  - per il pannello finale del 22 ottobre si rilancia lo stadio 97 sulla nuova lista di
+    bersagli.
+- **Evidenza:** [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md),
+  `reports/cd4_rows_2026-09-22/manifest.json`, `reports/multisource_2026-09-22/r3/`.
+- **Che cosa non segue:**
+  - che CD4 migliori il punteggio: nello spazio degli effetti mediare K562 e CD4 non alza la
+    discriminazione, e gene per gene i segni concordano al 55%;
+  - che il lignaggio T aiuti A: non è misurato.
+
+  Il primo test è il t08, a un solo fattore contro trial-01.
+- **Riaprire se:**
+  - il t08 va sotto trial-01;
+  - una sorgente più vicina ai contesti (Orion) domina CD4 sulle stesse proxy;
+  - gli autori cambiano o ritirano il file pubblico.

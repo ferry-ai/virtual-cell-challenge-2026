@@ -1,7 +1,7 @@
 # Mappa del progetto — VCC 2026
 
 **Questo è il punto di ingresso.** Se leggi una cosa sola, leggi questa pagina.
-Aggiornata il 2026-09-19 (solo §5, primi due paragrafi: il predittore neurale condizionato, [CP-0026](checkpoints/0026-predittore-neurale-condizionato.md), e il t07; prima RPE1 contro K562, [CP-0023](checkpoints/0023-rpe1-contro-k562-su-hepg2.md)-[CP-0025](checkpoints/0025-componente-comune-scartata.md)). Il resto è del 17.
+Aggiornata il 2026-09-22 (solo §5, primo paragrafo: CD4 e Flex, [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md)); il 19 i due paragrafi successivi (predittore neurale condizionato, [CP-0026](checkpoints/0026-predittore-neurale-condizionato.md), e t07; prima RPE1 contro K562, [CP-0023](checkpoints/0023-rpe1-contro-k562-su-hepg2.md)-[CP-0025](checkpoints/0025-componente-comune-scartata.md)). Il resto è del 17.
 
 **Il 17 settembre, cambio di strategia ([CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md)).**
 Il mandato del proprietario è superare 0,1 lavorando su **cellule singole**, con i grezzi
@@ -302,6 +302,19 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
     73 e 75 (D-035).
 
 ## 5. Il prossimo passo
+
+**22 settembre: CD4 entra come sorgente, e la gara risulta misurata con 10x Flex**
+([CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), D-039). **Misurato:**
+- l'asse ufficiale è quello di un pannello di sonde Flex: 18.533 geni, nessun RPL/RPS o HLA;
+- A/B/C si somigliano fra loro più che alle fonti pubbliche in 3';
+- il pseudobulk CD4 copre 297 bersagli su 300 (mediana 1.478 cellule) e si legge per righe;
+- fra K562 e CD4 il trasferimento dello stesso bersaglio è debole gene per gene (55% di segni
+  concordi) ma discrimina (~0,68), e mescolare le sorgenti non alza la discriminazione.
+
+Generato il **t08**: generatore di trial-01 invariato, effetti K562 + CD4 con la regola di
+`reports/multisource_2026-09-22/PRIMA_DEI_RISULTATI.md`. È un test a un solo fattore contro
+trial-01. Invio in attesa del proprietario. Prossima sorgente da misurare: Orion, dopo la
+decisione sulla licenza. Il runtime Colab è fermo dal 19 settembre alle 14:18 UTC.
 
 **19 settembre: la rete condizionata è scartata; il t07, inviato, peggiora il punteggio.** Per mandato del proprietario è stato addestrato un predittore neurale condizionato su bersaglio e contesto, confrontato fuori campione con il trasferimento semplice, con un modello lineare con gli stessi input e con la ricetta t03, con lo stesso generatore ([CP-0026](checkpoints/0026-predittore-neurale-condizionato.md)). Verdetto della regola scritta prima: `DISCARD`. La rete non batte né il t03 né il lineare, e non usa il contesto. I modelli appresi colgono un segnale specifico del bersaglio su un contesto nuovo (correlazione centrata 0,36-0,37 su HepG2), ma nel punteggio pareggiano il t03: guadagnano fedeltà, perdono `pds_cosine`. Il proprietario ha autorizzato di notte un invio. Il candidato è diventato il modello lineare (t07), l'unico che si riproduce identico, con previsione registrata di +0,0101 prima dell'invio (`reports/prediction_t07_2026-09-19/`). Il t07 è stato inviato alle 11:42 del 19 e ha preso **−0,016** (rango 671): peggio del t03 e della previsione. Lo stadio 84 non regge per una famiglia di modelli diversa ([CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md)). Il migliore resta trial-01, +0,0459.
 
