@@ -100,6 +100,9 @@ def main() -> None:
     p.add_argument("--a-common", type=float, default=0.0)
     p.add_argument("--common-bulk", type=Path, default=None)
     p.add_argument("--kd-default", type=float, default=float(np.log(0.15)))
+    p.add_argument("--keep-effects-target", action="store_true",
+                   help="with --effects: keep the file's value on the target gene itself instead of "
+                        "--kd-default, so a run differs from a stage-45 run of the same file only in the generator")
     p.add_argument("--state", choices=["gmm", "kde"], default="kde")
     p.add_argument("--knn", type=int, default=30)
     p.add_argument("--cells", type=int, default=None)
@@ -219,7 +222,8 @@ def main() -> None:
                 if ext:
                     lfc = np.clip(lfc + args.a_effects * ext[ctx][t], -3.0, 3.0)
                 j = axis_pos.get(t)
-                if j is not None and (t not in covered or args.a_transfer == 0):
+                keep_file_kd = args.keep_effects_target and ext and ext[ctx][t][j] != 0 if j is not None else False
+                if j is not None and (t not in covered or args.a_transfer == 0) and not keep_file_kd:
                     lfc[j] = args.kd_default
                 if args.max_calls is not None and args.max_calls < lfc.size:
                     order = np.argpartition(-np.abs(lfc), args.max_calls)[:args.max_calls]
