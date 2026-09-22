@@ -55,6 +55,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 | Percorso | Stato | Sostituito da | Cosa resta utile / nota | Scheda |
 |---|---|---|---|---|
+| `reports/direzione_2026-09-19/` | attuale | — | Audit retrospettivo di main e refactor/pulizia, lettura delle sei note fornite dal proprietario e verifica di alcune righe AtlasShift della classifica. Proposta di trasferimento specifico del bersaglio con centratura e calibrazione delle quantità realizzate; nessun nuovo candidato o ciclo avviato. Suite rieseguite: errore comune di import cell_eval2.config; dettagli e limiti in VALUTAZIONE.md e VERIFICHE.md | — |
 | `docs/checkpoints/0020-singola-cellula-cis-generatore.md` | attuale | — | Cambio di strategia verso le cellule singole su Colab. Misure: effetto cis trasferibile K562 → HepG2, co-espressione non predittiva, DE veloce identico allo scorer, generatore di trial-01 con 93 chiamate spurie per bersaglio a effetto zero. Corregge CP-0018 §3.1 e §4 (md5). **Nessun banco remoto e nessun invio eseguiti** | — |
 | `reports/cis_2026-09-17/` | attuale | — | Script 77: curva effetto-distanza sul pseudobulk K562, coppie K562–HepG2 entro 5 kb, esposizione del pannello per contesto. Misura su bersagli HepG2 essenziali, non un punteggio | — |
 | `reports/coexpression_2026-09-17/` | attuale | — | Script 78: la co-espressione nei controlli HepG2 non predice l'effetto del knockdown (correlazione parziale mediana 0,0015 su 243 bersagli). Un contesto, bersagli essenziali | — |
