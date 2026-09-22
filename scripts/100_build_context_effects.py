@@ -2,7 +2,7 @@
 
 A recipe is a JSON file fixed BEFORE generation:
 
-    {"name": "t08", "gamma": 0.5, "reliability_scale": 100,
+    {"name": "t08", "effect": "raw", "gamma": 0.5, "reliability_scale": 100,
      "contexts": {"A": {"amplitude": 1.0, "weights": {"k562": 1, "cd4_Stim48hr": 2}},
                   "B": {"amplitude": 1.0, "weights": {"k562": 1, "cd4_Stim48hr": 1}},
                   "C": {...}},
@@ -39,9 +39,11 @@ from vcc2026.multisource import AxisTable, mix  # noqa: E402
 DATA_ROOT = Path("C:/Users/ferra/vcc2026-data")
 
 
-def load_table(cache: Path, name: str) -> AxisTable:
+def load_table(cache: Path, name: str, effect: str = "shrunk") -> AxisTable:
+    """A stage-98 source; ``effect='raw'`` puts the unshrunk effects where `mix` reads."""
     z = np.load(cache / f"{name}.npz", allow_pickle=False)
-    return AxisTable(name, z["targets"].astype(str).tolist(), z["shrunk"], z["raw"], z["se"], z["n_cells"],
+    main = z["raw"] if effect == "raw" else z["shrunk"]
+    return AxisTable(name, z["targets"].astype(str).tolist(), main, z["raw"], z["se"], z["n_cells"],
                      json.loads(str(z["meta"])))
 
 
@@ -61,7 +63,10 @@ def main() -> None:
     gamma = float(recipe.get("gamma", 0.0))
     scale = float(recipe.get("reliability_scale", 100.0))
     names = sorted({s for c in recipe["contexts"].values() for s in c["weights"]})
-    tables = [load_table(args.cache, n) for n in names]
+    effect = recipe.get("effect", "shrunk")
+    if effect not in ("shrunk", "raw"):
+        raise SystemExit(f"recipe effect must be 'shrunk' or 'raw', got {effect!r}")
+    tables = [load_table(args.cache, n, effect) for n in names]
     summary = {}
     for ctx, spec in recipe["contexts"].items():
         weights = {k: float(v) for k, v in spec["weights"].items()}

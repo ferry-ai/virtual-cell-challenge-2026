@@ -1,0 +1,423 @@
+{
+  "stage": "98_multisource_effects",
+  "written_utc": "2026-09-22T20:58:59.820762+00:00",
+  "sources": {
+    "k562": {
+      "targets": 272,
+      "genes_on_axis": 7681,
+      "median_cells": 171.5,
+      "meta": {
+        "n_control_cells": 75328,
+        "se_model": "quasi-Poisson phi=0.2"
+      }
+    },
+    "cd4_Rest": {
+      "targets": 293,
+      "genes_on_axis": 10531,
+      "median_cells": 504.0,
+      "meta": {
+        "condition": "Rest",
+        "donors": [
+          "CE0006864",
+          "CE0008162",
+          "CE0008678",
+          "CE0010866"
+        ],
+        "phi": 0.2,
+        "n_control_cells": 67411,
+        "se_model": "quasi-Poisson phi=0.2, donor-weighted"
+      }
+    },
+    "cd4_Stim48hr": {
+      "targets": 292,
+      "genes_on_axis": 10775,
+      "median_cells": 487.0,
+      "meta": {
+        "condition": "Stim48hr",
+        "donors": [
+          "CE0006864",
+          "CE0008162",
+          "CE0008678",
+          "CE0010866"
+        ],
+        "phi": 0.2,
+        "n_control_cells": 69535,
+        "se_model": "quasi-Poisson phi=0.2, donor-weighted"
+      }
+    },
+    "cd4_Stim8hr": {
+      "targets": 292,
+      "genes_on_axis": 10430,
+      "median_cells": 485.5,
+      "meta": {
+        "condition": "Stim8hr",
+        "donors": [
+          "CE0006864",
+          "CE0008162",
+          "CE0008678",
+          "CE0010866"
+        ],
+        "phi": 0.2,
+        "n_control_cells": 63739,
+        "se_model": "quasi-Poisson phi=0.2, donor-weighted"
+      }
+    },
+    "cd4_halfA": {
+      "targets": 287,
+      "genes_on_axis": 10732,
+      "median_cells": 243.0,
+      "meta": {
+        "condition": "Stim48hr",
+        "donors": [
+          "CE0006864",
+          "CE0008162"
+        ],
+        "phi": 0.2,
+        "n_control_cells": 32851,
+        "se_model": "quasi-Poisson phi=0.2, donor-weighted"
+      }
+    },
+    "cd4_halfB": {
+      "targets": 287,
+      "genes_on_axis": 10780,
+      "median_cells": 221.0,
+      "meta": {
+        "condition": "Stim48hr",
+        "donors": [
+          "CE0008678",
+          "CE0010866"
+        ],
+        "phi": 0.2,
+        "n_control_cells": 36684,
+        "se_model": "quasi-Poisson phi=0.2, donor-weighted"
+      }
+    },
+    "cd4_mix": {
+      "targets": 293,
+      "genes_on_axis": 11133,
+      "median_cells": 1484.0,
+      "meta": {
+        "from": [
+          "cd4_Rest",
+          "cd4_Stim48hr",
+          "cd4_Stim8hr"
+        ],
+        "how": "reliability-weighted mean of the conditions, gamma 0"
+      }
+    }
+  },
+  "common_response_correlation": {
+    "k562~cd4_Rest": 0.15973675486447328,
+    "k562~cd4_Stim48hr": 0.12639675712900836,
+    "k562~cd4_Stim8hr": 0.18125955615244005,
+    "k562~cd4_halfA": 0.22883144188255009,
+    "k562~cd4_halfB": 0.0356605747293585,
+    "k562~cd4_mix": 0.20586934111964877,
+    "cd4_Rest~cd4_Stim48hr": 0.35305551480458486,
+    "cd4_Rest~cd4_Stim8hr": 0.36173346718115185,
+    "cd4_Rest~cd4_halfA": 0.22717365458172628,
+    "cd4_Rest~cd4_halfB": 0.2721456983140527,
+    "cd4_Rest~cd4_mix": 0.682257024800538,
+    "cd4_Stim48hr~cd4_Stim8hr": 0.34193691510715607,
+    "cd4_Stim48hr~cd4_halfA": 0.5857077256895172,
+    "cd4_Stim48hr~cd4_halfB": 0.833640389861552,
+    "cd4_Stim48hr~cd4_mix": 0.7471114369086156,
+    "cd4_Stim8hr~cd4_halfA": 0.08917233489029376,
+    "cd4_Stim8hr~cd4_halfB": 0.31229055238383785,
+    "cd4_Stim8hr~cd4_mix": 0.8158319800535703,
+    "cd4_halfA~cd4_halfB": 0.184412934742788,
+    "cd4_halfA~cd4_mix": 0.3976635257879398,
+    "cd4_halfB~cd4_mix": 0.6224051864963906
+  },
+  "shared_signal": {
+    "k562~cd4_mix|gamma=0.0": {
+      "targets": 268,
+      "pairs": 1876268,
+      "gamma": 0.0,
+      "E_aa": 0.000847015392409759,
+      "E_bb": 1.6754387946409187e-09,
+      "E_ab": 3.968302375972247e-08,
+      "corr": 0.03331154854425239,
+      "weight_a": 1.1806714026595423e-09,
+      "weight_b": 0.9999999988193286,
+      "amplitude": 0.999974800942443,
+      "single_source_amplitude": {
+        "a": 4.6850416315132426e-05,
+        "b": 23.685152741271796
+      }
+    },
+    "k562~cd4_mix|gamma=0.5": {
+      "targets": 268,
+      "pairs": 1876268,
+      "gamma": 0.5,
+      "E_aa": 0.000839418018998866,
+      "E_bb": 1.6604883341103042e-09,
+      "E_ab": 3.864418928446556e-08,
+      "corr": 0.0327323466956404,
+      "weight_a": 1.191356410247154e-09,
+      "weight_b": 0.9999999988086435,
+      "amplitude": 0.9999741235580074,
+      "single_source_amplitude": {
+        "a": 4.603688318551304e-05,
+        "b": 23.272785776704215
+      }
+    },
+    "k562~cd4_mix|gamma=1.0": {
+      "targets": 268,
+      "pairs": 1876268,
+      "gamma": 1.0,
+      "E_aa": 0.0008369025149248838,
+      "E_bb": 1.655937263489161e-09,
+      "E_ab": 3.826686224672716e-08,
+      "corr": 0.03250599595335407,
+      "weight_a": 1.1949369340607986e-09,
+      "weight_b": 0.9999999988050631,
+      "amplitude": 0.9999738684122891,
+      "single_source_amplitude": {
+        "a": 4.572439628785415e-05,
+        "b": 23.108884068528386
+      }
+    },
+    "k562~cd4_Rest|gamma=0.0": {
+      "targets": 268,
+      "pairs": 1849736,
+      "gamma": 0.0,
+      "E_aa": 0.0008434574146499294,
+      "E_bb": 2.509536511504728e-09,
+      "E_ab": 3.7377853336212664e-08,
+      "corr": 0.025691296191742742,
+      "weight_a": 1.1856488525129978e-09,
+      "weight_b": 0.9999999988143512,
+      "amplitude": 0.9999732469054142,
+      "single_source_amplitude": {
+        "a": 4.431504505977466e-05,
+        "b": 14.89432537237753
+      }
+    },
+    "k562~cd4_Rest|gamma=0.5": {
+      "targets": 268,
+      "pairs": 1849736,
+      "gamma": 0.5,
+      "E_aa": 0.0008359221998793877,
+      "E_bb": 2.492444676921652e-09,
+      "E_ab": 3.647253711707465e-08,
+      "corr": 0.025267965875389133,
+      "weight_a": 1.1963357742489526e-09,
+      "weight_b": 0.9999999988036642,
+      "amplitude": 0.9999725828620462,
+      "single_source_amplitude": {
+        "a": 4.3631497192366884e-05,
+        "b": 14.633238384300208
+      }
+    },
+    "k562~cd4_Rest|gamma=1.0": {
+      "targets": 268,
+      "pairs": 1849736,
+      "gamma": 1.0,
+      "E_aa": 0.0008334265617309946,
+      "E_bb": 2.487194394082101e-09,
+      "E_ab": 3.624074094916105e-08,
+      "corr": 0.025171467428511767,
+      "weight_a": 1.1999179419459884e-09,
+      "weight_b": 0.9999999988000821,
+      "amplitude": 0.9999724075065765,
+      "single_source_amplitude": {
+        "a": 4.348402440389041e-05,
+        "b": 14.570932226041661
+      }
+    },
+    "k562~cd4_Stim8hr|gamma=0.0": {
+      "targets": 268,
+      "pairs": 1853488,
+      "gamma": 0.0,
+      "E_aa": 0.0008438592581228206,
+      "E_bb": 3.411634090951619e-09,
+      "E_ab": 4.2227490660703145e-08,
+      "corr": 0.02488737215362592,
+      "weight_a": 1.1850910357494704e-09,
+      "weight_b": 0.999999998814909,
+      "amplitude": 0.9999763193052091,
+      "single_source_amplitude": {
+        "a": 5.0040916484863744e-05,
+        "b": 12.377496980904093
+      }
+    },
+    "k562~cd4_Stim8hr|gamma=0.5": {
+      "targets": 268,
+      "pairs": 1853488,
+      "gamma": 0.5,
+      "E_aa": 0.0008363130989505343,
+      "E_bb": 3.3815767971727802e-09,
+      "E_ab": 4.107272415545805e-08,
+      "corr": 0.02442358609971172,
+      "weight_a": 1.195783151227298e-09,
+      "weight_b": 0.9999999988042169,
+      "amplitude": 0.9999756535347265,
+      "single_source_amplitude": {
+        "a": 4.911165950527267e-05,
+        "b": 12.146027317728683
+      }
+    },
+    "k562~cd4_Stim8hr|gamma=1.0": {
+      "targets": 268,
+      "pairs": 1853488,
+      "gamma": 1.0,
+      "E_aa": 0.0008338156766498404,
+      "E_bb": 3.3729388941287235e-09,
+      "E_ab": 4.068107748126134e-08,
+      "corr": 0.024257898940457986,
+      "weight_a": 1.1993643418320173e-09,
+      "weight_b": 0.9999999988006356,
+      "amplitude": 0.9999754191511174,
+      "single_source_amplitude": {
+        "a": 4.878905328898642e-05,
+        "b": 12.061018227183098
+      }
+    },
+    "k562~cd4_Stim48hr|gamma=0.0": {
+      "targets": 268,
+      "pairs": 1863940,
+      "gamma": 0.0,
+      "E_aa": 0.000844751196491654,
+      "E_bb": 2.923959091998339e-09,
+      "E_ab": 3.995522655484631e-08,
+      "corr": 0.025422809525817092,
+      "weight_a": 1.1838364993444302e-09,
+      "weight_b": 0.9999999988161635,
+      "amplitude": 0.9999749726116544,
+      "single_source_amplitude": {
+        "a": 4.729821836392162e-05,
+        "b": 13.664769341057868
+      }
+    },
+    "k562~cd4_Stim48hr|gamma=0.5": {
+      "targets": 268,
+      "pairs": 1863940,
+      "gamma": 0.5,
+      "E_aa": 0.0008371996947163865,
+      "E_bb": 2.898043730002886e-09,
+      "E_ab": 3.892639268176021e-08,
+      "corr": 0.024990627521895018,
+      "weight_a": 1.194513690372572e-09,
+      "weight_b": 0.9999999988054863,
+      "amplitude": 0.9999743111487844,
+      "single_source_amplitude": {
+        "a": 4.6495947057108146e-05,
+        "b": 13.431954900736244
+      }
+    },
+    "k562~cd4_Stim48hr|gamma=1.0": {
+      "targets": 268,
+      "pairs": 1863940,
+      "gamma": 1.0,
+      "E_aa": 0.0008347016146069485,
+      "E_bb": 2.8904298599381493e-09,
+      "E_ab": 3.842875285176664e-08,
+      "corr": 0.024740555462359558,
+      "weight_a": 1.1980880620470025e-09,
+      "weight_b": 0.9999999988019119,
+      "amplitude": 0.9999739784951868,
+      "single_source_amplitude": {
+        "a": 4.603891040735832e-05,
+        "b": 13.295168785928938
+      }
+    },
+    "cd4_Rest~cd4_Stim48hr|gamma=0.0": {
+      "targets": 292,
+      "pairs": 2912992,
+      "gamma": 0.0,
+      "E_aa": 3.309488274419554e-09,
+      "E_bb": 4.0424435672451175e-09,
+      "E_ab": 1.376145765030437e-09,
+      "corr": 0.37623745816841847,
+      "weight_a": 0.5796752836277754,
+      "weight_b": 0.42032471637222457,
+      "amplitude": 0.5511512944365302,
+      "single_source_amplitude": {
+        "a": 0.41581829301745965,
+        "b": 0.3404242365140216
+      }
+    },
+    "cd4_Rest~cd4_Stim48hr|gamma=0.5": {
+      "targets": 292,
+      "pairs": 2912992,
+      "gamma": 0.5,
+      "E_aa": 3.284224500136257e-09,
+      "E_bb": 4.004367557980108e-09,
+      "E_ab": 1.3645326957292916e-09,
+      "corr": 0.3762708382417264,
+      "weight_a": 0.5789712518966064,
+      "weight_b": 0.42102874810339364,
+      "amplitude": 0.5511083337213845,
+      "single_source_amplitude": {
+        "a": 0.4154809440318953,
+        "b": 0.3407611004664098
+      }
+    },
+    "cd4_Rest~cd4_Stim48hr|gamma=1.0": {
+      "targets": 292,
+      "pairs": 2912992,
+      "gamma": 1.0,
+      "E_aa": 3.2757323253917545e-09,
+      "E_bb": 3.991675554891772e-09,
+      "E_ab": 1.3606432668069299e-09,
+      "corr": 0.3762811446423994,
+      "weight_a": 0.5787422040575856,
+      "weight_b": 0.4212577959424144,
+      "amplitude": 0.5510939290133037,
+      "single_source_amplitude": {
+        "a": 0.41537071153828375,
+        "b": 0.3408702055304747
+      }
+    },
+    "cd4_halfA~cd4_halfB|gamma=0.0": {
+      "targets": 282,
+      "pairs": 2911086,
+      "gamma": 0.0,
+      "E_aa": 7.053696245986295e-10,
+      "E_bb": 3.2644664485272985e-09,
+      "E_ab": 1.457484170790811e-10,
+      "corr": 0.09604822982958314,
+      "weight_a": 0.8478603600257947,
+      "weight_b": 0.15213963997420532,
+      "amplitude": 0.23499127583822613,
+      "single_source_amplitude": {
+        "a": 0.20662701085550017,
+        "b": 0.04464693369565269
+      }
+    },
+    "cd4_halfA~cd4_halfB|gamma=0.5": {
+      "targets": 282,
+      "pairs": 2911086,
+      "gamma": 0.5,
+      "E_aa": 6.965810297449644e-10,
+      "E_bb": 3.239454230789839e-09,
+      "E_ab": 1.4300636330638476e-10,
+      "corr": 0.0951992697220341,
+      "weight_a": 0.8483366441456593,
+      "weight_b": 0.15166335585434065,
+      "amplitude": 0.23343250412757496,
+      "single_source_amplitude": {
+        "a": 0.20529752778186183,
+        "b": 0.04414520259220244
+      }
+    },
+    "cd4_halfA~cd4_halfB|gamma=1.0": {
+      "targets": 282,
+      "pairs": 2911086,
+      "gamma": 1.0,
+      "E_aa": 6.935748458801653e-10,
+      "E_bb": 3.2307692578329034e-09,
+      "E_ab": 1.4204013328004246e-10,
+      "corr": 0.09488803066575761,
+      "weight_a": 0.848490456386405,
+      "weight_b": 0.15150954361359503,
+      "amplitude": 0.23284806891551446,
+      "single_source_amplitude": {
+        "a": 0.2047942397619534,
+        "b": 0.043964802789821775
+      }
+    }
+  },
+  "cache": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-22"
+}

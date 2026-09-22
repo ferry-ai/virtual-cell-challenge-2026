@@ -1,0 +1,51 @@
+{
+  "stage": "97_extract_cd4_rows",
+  "written_utc": "2026-09-22T20:56:39.636427+00:00",
+  "claim_type": "measurement: rows copied from the public file, verified against their own totals",
+  "remote": {
+    "url": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/GWCD4i.pseudobulk_merged.h5ad",
+    "size": 44566657140,
+    "etag": "\"010c14e0af0dccbc2524529d28ca517e-5313\"",
+    "last_modified": "Thu, 28 May 2026 23:56:40 GMT"
+  },
+  "bytes": {
+    "metadata": 62400860,
+    "rows": 1426602240
+  },
+  "seconds": 880.5,
+  "selection": {
+    "panel_targets": 300,
+    "panel_targets_found": 297,
+    "panel_targets_missing": [
+      "EEF1A2",
+      "EPHB2",
+      "FZD2"
+    ],
+    "panel_rows": 6477,
+    "ntc_rows": 2400,
+    "ntc_per_group": 200,
+    "seed": 2026,
+    "author_flags_applied": false
+  },
+  "per_target_cells": {
+    "median": 1478.0,
+    "q10": 448.0,
+    "min": 8.0,
+    "targets_ge_100_cells": 291
+  },
+  "integrity": {
+    "rows_sum_to_total_counts": true,
+    "integer_counts": true,
+    "stored_dtype": "float32"
+  },
+  "output": {
+    "path": "C:\\Users\\ferra\\vcc2026-data\\external\\cd4\\panel_rows_2026-09-22.h5ad",
+    "bytes": 260135616,
+    "sha256": "76bdc653c0de2239f64181f3fdb48c602c83ba07c85e27ee1ddc82a057ef6cdf",
+    "shape": [
+      8877,
+      18129
+    ],
+    "nnz": 88918908
+  }
+}

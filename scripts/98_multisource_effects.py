@@ -114,9 +114,15 @@ def main() -> None:
     cells = np.array([sum(tables[n].n_cells[tables[n].index()[t]] for n in conds if t in tables[n].index())
                       for t in panel])
     mixed = np.where(w > 0, eff, np.nan).astype(np.float32)[have]
-    tables["cd4_mix"] = AxisTable("cd4_mix", [t for t, h in zip(panel, have) if h], mixed, mixed,
+    # the same weighted mean of the conditions' RAW effects, so recipes can use either scale
+    raw_tabs = [AxisTable(n, tables[n].targets, tables[n].raw, tables[n].raw, tables[n].se, tables[n].n_cells)
+                for n in conds]
+    eff_raw, w_raw = mix(raw_tabs, panel, gamma=0.0)
+    mixed_raw = np.where(w_raw > 0, eff_raw, np.nan).astype(np.float32)[have]
+    tables["cd4_mix"] = AxisTable("cd4_mix", [t for t, h in zip(panel, have) if h], mixed, mixed_raw,
                                   np.full_like(mixed, np.nan), cells[have],
-                                  {"from": conds, "how": "reliability-weighted mean of the conditions, gamma 0"})
+                                  {"from": conds, "how": "reliability-weighted mean of the conditions, gamma 0; "
+                                                         "shrunk and raw mixed separately"})
 
     coverage = {}
     for name, tab in tables.items():

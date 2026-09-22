@@ -1,0 +1,13 @@
+{
+  "name": "t08",
+  "effect": "raw",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "A": {"amplitude": 0.197, "weights": {"k562": 0.433, "cd4_mix": 0.567}},
+    "B": {"amplitude": 0.197, "weights": {"k562": 0.433, "cd4_mix": 0.567}},
+    "C": {"amplitude": 0.197, "weights": {"k562": 0.433, "cd4_mix": 0.567}}
+  },
+  "why": "Rule in reports/multisource_2026-09-22/PRIMA_DEI_RISULTATI.md: gamma and weights from the r2 run (gamma 1 by the pds-proxy tie rule; weights from shared_signal(k562, cd4_mix) at gamma 1). Amplitude and raw effects from trial-01 (alpha 0.197, per-gene shrinkage inactive), per the second amendment, so that the only factor changed against trial-01 is the source set. Generator: stage 45 trial-ext-profile, trial-01's, seed 20260912."
+}

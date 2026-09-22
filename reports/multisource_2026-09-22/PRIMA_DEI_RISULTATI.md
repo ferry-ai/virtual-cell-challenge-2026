@@ -73,3 +73,34 @@ Correzioni, decise prima di vedere il secondo run:
 
 La regola di scelta (γ, pesi, ampiezza) resta **identica**. Il secondo run va in
 `reports/multisource_2026-09-22/r2/` e `processed/multisource_2026-09-22_r2`.
+
+## Secondo emendamento delle 23:25, dopo il secondo run dello stadio 98 e prima di generare
+
+**Applicazione della regola al run r2** (`r2/transfer.json`, `r2/coverage.json`):
+- `pds_proxy_mean` media delle due direzioni: 0,6745 (γ 0); 0,6782 (γ 0,5); 0,6793 (γ 1).
+  Le tre stanno entro 0,005, quindi vince **γ = 1**;
+- pesi da `shared_signal(k562, cd4_mix)` a γ 1: **K562 0,433, CD4 0,567**;
+- ampiezza da `shared_signal`: 0,058.
+
+**L'ampiezza non si usa.** È un difetto di unità della regola, scoperto qui e non dopo un
+punteggio: `shared_signal` lavora su effetti già ristretti, e stima la scala che mappa un
+effetto ristretto sulla parte condivisa ristretta. Misurato su r2: predittore ristretto
+contro verità grezza, l'ampiezza ottima per l'MSE è 0,04–0,07 per sorgente singola e 0,107
+per la miscela. Grezzo contro grezzo è 0,011 (K562 → CD4) e 0,042 (CD4 → K562). Con 0,058 gli
+effetti diventano quasi nulli (q99 di |ln fc| 0,02). Il t08 non misurerebbe più le sorgenti ma
+un generatore quasi a vuoto.
+
+**Correzione**, coerente con lo scopo dichiarato sopra (un solo fattore contro trial-01):
+stimatore e ampiezza di trial-01, cioè effetti **grezzi** × **0,197**. In trial-01
+`prior_sd = 4` rendeva lo shrinkage per gene quasi inattivo (CP-0004 §3.2). Cambia solo
+l'insieme delle sorgenti: K562 → K562 + CD4, con γ e pesi della regola. Generatore identico,
+seme identico.
+
+**Misure che abbassano l'aspettativa** (r2, nello spazio degli effetti):
+- sui geni con |z| > 3 in K562, CD4 ha lo stesso segno nel 55,5% dei casi;
+- la proxy di discriminazione satura intorno a 0,69 anche mediando le sorgenti
+  (metà di donatori CD4 più K562: 0,694 contro 0,699 della sola metà).
+
+La banda attesa per il t08 scende a **+0,03 … +0,06**. Il guadagno atteso viene dai 25
+bersagli che K562 non copre e CD4 sì, più l'eventuale vicinanza di lignaggio T per A, non da
+una discriminazione migliore sui bersagli già coperti.
