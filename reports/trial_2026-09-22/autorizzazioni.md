@@ -22,3 +22,15 @@ Risposte date in chat a quattro domande dell'agente, trascritte senza cambiare i
 - Non cancellati:
   - `q00full`: D-017 lo tiene come unico riferimento di dispersione reale;
   - `q01full`: intermedio di trial-01, il migliore finora. Resta finché lo spazio basta.
+
+## Cancellazioni del 23 settembre, prima del t10
+
+Servono circa 12 GB per generare e impacchettare il t10, e ne restavano 7,1. Cancellati due file
+riproducibili:
+- `artifacts/q01full/prediction.h5ad` (4,0 GB): l'intermedio di trial-01. Il suo `.vcc`
+  resta in `artifacts/k01pack`, verificato bit per bit contro questo file il 13 settembre
+  (CP-0005).
+- `artifacts/t08pack_r2/prediction.vcc` (4,2 GB): il t08 già inviato. Il server ne ha
+  verificato l'md5 all'upload. Si rigenera con lo stadio 45 dagli effetti in
+  `processed/effects_t08_2026-09-22` con il seme 20260912, e si reimpacchetta con lo stadio
+  48. Manifesti e sha256 restano in `reports/trial_2026-09-22/`.

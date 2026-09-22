@@ -1,0 +1,26 @@
+{
+  "written_utc": "2026-09-22T22:52:42.569705+00:00",
+  "label": "t10 = t08 without CD4: K562 only, raw x 0.197, gamma 1, trial-01 generator, seed 20260912",
+  "claim_type": "prediction registered before submission; not a measurement",
+  "recipe": {
+    "path": "configs\\recipes\\t10.json",
+    "sha256": "6b9442f913d8087646ebc189b8f16c4a632e6662b0699935142aa90f4d236617"
+  },
+  "references": {
+    "trial-01": 0.045929,
+    "t08": 0.06037
+  },
+  "expected": {
+    "score_avg_band": [
+      0.04,
+      0.06
+    ],
+    "pds_raw": "between trial-01 (0.687) and t08 (0.710)",
+    "others": "between trial-01 and t08 on every raw member"
+  },
+  "reading_rule_fixed_before_the_result": {
+    "t10 <= 0.050": "CD4 carries at least about two thirds of t08's gain over trial-01",
+    "t10 >= 0.056": "most of t08's gain comes from the estimator and the centring, not from CD4",
+    "otherwise": "the gain is shared; neither reading is supported"
+  }
+}

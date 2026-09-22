@@ -1,0 +1,13 @@
+{
+  "name": "t10",
+  "effect": "raw",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "A": {"amplitude": 0.197, "weights": {"k562": 1.0}},
+    "B": {"amplitude": 0.197, "weights": {"k562": 1.0}},
+    "C": {"amplitude": 0.197, "weights": {"k562": 1.0}}
+  },
+  "why": "Attribution of t08 (CP-0029): identical to configs/recipes/t08.json except that CD4 is removed. Same stage-98 r3 cache, estimator (raw), gamma 1, amplitude 0.197, generator (stage 45 trial-ext-profile) and seed. The 28 targets K562 does not cover get no effect, as in trial-01."
+}
