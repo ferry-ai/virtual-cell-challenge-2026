@@ -50,3 +50,12 @@ riproducibili:
 - `artifacts/t10pack/prediction.vcc` (4,2 GB): il t10 già inviato, con md5 verificato dal
   server. Lo rimuove la catena del t11 solo dopo che l'invio del t10 è terminato. Si rigenera
   dagli effetti in `processed/effects_t10_2026-09-23`, con lo stadio 45 e il seme 20260912.
+
+## Incidente di spazio del 23 settembre, 03:27 locali
+
+L'impacchettamento del t11 si è fermato con `OSError: [Errno 28] No space left on device`.
+Tre lavori pesanti giravano insieme (streaming Orion HEK293T, stadio 83, stadio 48) con 0,5 GB
+di RAM libera, e il file di paging di Windows è salito a 15,9 GB. Nessun dato perso:
+`artifacts/t11gen/prediction.h5ad` è intatto. Rimosso solo il payload temporaneo
+dell'impacchettamento fallito (`artifacts/t11pack/prediction.payload.h5ad`, 4,26 GB, un file
+di lavoro dello stadio 48). Da qui in poi i lavori pesanti girano uno alla volta.
