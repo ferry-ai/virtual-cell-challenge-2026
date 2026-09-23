@@ -44,3 +44,9 @@ riproducibili:
   diagnostica, validazione e manifesti. Motivo: il file di paging di Windows è cresciuto a
   13,2 GB e il disco era sceso a 5,2 GB liberi, contro i circa 12 che servono per generare e
   impacchettare il t11.
+
+## Cancellazione del 23 settembre, dopo l'invio del t10
+
+- `artifacts/t10pack/prediction.vcc` (4,2 GB): il t10 già inviato, con md5 verificato dal
+  server. Lo rimuove la catena del t11 solo dopo che l'invio del t10 è terminato. Si rigenera
+  dagli effetti in `processed/effects_t10_2026-09-23`, con lo stadio 45 e il seme 20260912.
