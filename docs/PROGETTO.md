@@ -50,10 +50,18 @@ Le tabelle per membro stanno nei checkpoint citati.
 - **t14 e t09** = `ControlModel` con gli effetti del t08. Girano sul portatile per scelta del
   proprietario (`reports/dispersion_2026-09-23/T14_IN_LOCALE.md`); i job 044 e 045 sono fuori
   dalla coda Colab.
-  - I piloti del t14 seguono la regola `PRIMA_T14.md`: 20 bersagli, ampiezze 0 / 1 / 2,5 / 5 /
-    10.
-  - Primi numeri: a effetto nullo **0 chiamate mediane** in A, B e C. Ad ampiezza 1, la
-    configurazione del t09, sono 4,5 / 16,5 / 20: sotto le 60 richieste dalla regola.
+  - I piloti del t14 seguono la regola `PRIMA_T14.md`, su 20 bersagli
+    (`reports/dispersion_2026-09-23/t14_pilots/`):
+    - a effetto nullo **0 chiamate mediane** in A, B e C;
+    - ad ampiezza 1, la configurazione del t09, 4,5 / 16,5 / 20;
+    - ad ampiezza 2,5, 140 / 235 / 261, per il 41–50% «in su».
+  - La regola sceglie **2,5**. Alla lettera del suo punto 2 gli effetti restano quelli del t08:
+    il job è partito prima che il t11 fosse valutato.
+  - Previsione registrata prima della generazione completa: banda +0,02…+0,12, da leggere
+    contro il t08 (`reports/prediction_t14_2026-09-23/prediction.json`).
+  - La generazione completa è in corso; l'impacchettamento aspetta spazio su disco.
+  - Il t09 per ora non si genera: con 4,5–20 chiamate pagherebbe il silenzio sulla fedeltà
+    (D-035).
 - **t13** = dispersione per gene nel generatore di trial-01. Si è fermato per la sua regola:
   a effetto nullo fa 5 / 15 / 31 chiamate mediane in A / B / C
   (`reports/dispersion_2026-09-23/RISULTATO_NULLO.md`).
@@ -92,10 +100,9 @@ Le tabelle per membro stanno nei checkpoint citati.
 **Proposta**, da [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md) §6,
 [CP-0031](checkpoints/0031-t11-punteggio-orion.md) §6 e dalle regole già scritte:
 
-1. **Chiudere i piloti del t14.** La regola sceglie l'ampiezza; prima della generazione
-   completa si registra la previsione.
-2. **Generare, una alla volta, t14 e t12**, man mano che il disco lo permette. Poi si inviano,
-   con il via del proprietario e al massimo due al giorno.
+1. **Impacchettare il t14 e generare il t12**, uno alla volta, man mano che il disco lo
+   permette. Poi si inviano, con il via del proprietario e al massimo due al giorno.
+2. **Se il t14 batte il t08:** `ControlModel` sugli effetti del t11, registrato a parte.
 3. **Pulire l'attribuzione del t11** con un'ablazione: il t08 con K562 e CD4 a pesi uguali.
 4. **Preparare il set finale.** Il 22 ottobre bersagli e contesti cambiano, e il percorso di
    [LAVORO.md](LAVORO.md) §1 va rieseguito su di essi:
