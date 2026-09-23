@@ -315,8 +315,9 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
 ([CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md)). Generatore di trial-01 invariato,
 effetti K562 + CD4 con la regola di `reports/multisource_2026-09-22/PRIMA_DEI_RISULTATI.md`.
 Migliorano tutti e sei i grezzi, e la previsione registrata (+0,03…+0,06) regge sul bordo
-superiore. L'attribuzione fra CD4, centratura e stimatore è aperta: il t10 (senza CD4) la
-separa. Il t09 (generatore `ControlModel`) è in coda su Colab, fermo dal 19 settembre alle
+superiore. Il t10 (t08 senza CD4) fa +0,0502 ([CP-0030](checkpoints/0030-t10-attribuzione-cd4.md)):
+CD4 porta circa 0,010 dei 0,014 guadagnati, ed è l'unico fattore che migliora insieme PDS, MSE
+e reach. Per la regola scritta prima l'esito resta non attribuibile (0,0002 sopra la soglia). Il t09 (generatore `ControlModel`) è in coda su Colab, fermo dal 19 settembre alle
 14:18 UTC. Orion è in streaming, ammesso negli invii dal proprietario.
 
 **19 settembre: la rete condizionata è scartata; il t07, inviato, peggiora il punteggio.** Per mandato del proprietario è stato addestrato un predittore neurale condizionato su bersaglio e contesto, confrontato fuori campione con il trasferimento semplice, con un modello lineare con gli stessi input e con la ricetta t03, con lo stesso generatore ([CP-0026](checkpoints/0026-predittore-neurale-condizionato.md)). Verdetto della regola scritta prima: `DISCARD`. La rete non batte né il t03 né il lineare, e non usa il contesto. I modelli appresi colgono un segnale specifico del bersaglio su un contesto nuovo (correlazione centrata 0,36-0,37 su HepG2), ma nel punteggio pareggiano il t03: guadagnano fedeltà, perdono `pds_cosine`. Il proprietario ha autorizzato di notte un invio. Il candidato è diventato il modello lineare (t07), l'unico che si riproduce identico, con previsione registrata di +0,0101 prima dell'invio (`reports/prediction_t07_2026-09-19/`). Il t07 è stato inviato alle 11:42 del 19 e ha preso **−0,016** (rango 671): peggio del t03 e della previsione. Lo stadio 84 non regge per una famiglia di modelli diversa ([CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md)). Il migliore resta trial-01, +0,0459.
