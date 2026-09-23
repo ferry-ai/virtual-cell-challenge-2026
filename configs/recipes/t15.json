@@ -1,0 +1,13 @@
+{
+  "name": "t15",
+  "effect": "raw",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "A": {"amplitude": 0.394, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0}},
+    "B": {"amplitude": 0.394, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0}},
+    "C": {"amplitude": 0.394, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0}}
+  },
+  "why": "One factor against t11 (the best scored): amplitude 0.394 = 2 x 0.197; sources, weights, cache r4, gamma and generator unchanged. 0.197 was calibrated to minimise pseudobulk MSE (CP-0003/0004, D-006), but the official mse member is clipped at 0 in all seven scored submissions, while pds_cosine, the member that carries the score, rose from t02 to t03 (amplitude x1 -> x2, but t03 also took its cis bins from a pairs table), 0.609 -> 0.649: a hint, not a measurement of the amplitude alone."
+}
