@@ -53,6 +53,25 @@ lettura a intervalli di byte (`remote_ranges.py`, usata dagli stadi 97 e 102). Q
 è rifatta da capo sull'albero del 23, con lo stesso meccanismo; del branch si riusa il
 disegno, non l'elenco.
 
+## Verifiche
+
+- **Righe Python tracciate** in `src/`, `scripts/` e `tests/`, contate con `git show` a
+  `fa7df08` (prima) e al commit che chiude la pulizia:
+  - totale da 53.174 a 12.995 (−75,6%);
+  - `src/` da 24.610 a 5.947, `scripts/` da 19.315 a 4.634, `tests/` da 9.249 a 2.414.
+- **File tracciati** da 1.032 a 798: script da 91 a 25, file di `configs/` da 73 a 5,
+  documenti in `docs/` da 24 a 14. `reports/` è invariato.
+- **Dopo ogni commit di rimozione** il controllo documentale è verde. La suite è passata:
+  - da 596 a 331, 326, 207, 176 e 157 test, man mano che uscivano i test del codice
+    archiviato;
+  - per il gruppo dei documenti bastava `tests/test_doc_workflow.py`.
+- **I 22 script vivi partono** con `--help`, codice d'uscita 0, sull'albero pulito.
+- **Lo stadio 100 riproduce il t11.** Rieseguito sulla ricetta del t11 e sulla cache r4, in
+  una cartella temporanea, dà `effects_A/B/C.npz` **identici bit per bit** a quelli del t11
+  (`targets`, `genes`, `lfc`, `observed`).
+- **Nessun modulo vivo è cambiato**, salvo due rimozioni senza effetto:
+  `sc_stream.write_json`, che non aveva chiamanti, e cinque import inutilizzati.
+
 ## Le tabelle
 
 Una riga per file: il percorso come lo citano registro e checkpoint, le righe, e che cosa il
