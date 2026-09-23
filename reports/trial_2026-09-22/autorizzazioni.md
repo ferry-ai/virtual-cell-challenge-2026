@@ -59,3 +59,24 @@ di RAM libera, e il file di paging di Windows è salito a 15,9 GB. Nessun dato p
 `artifacts/t11gen/prediction.h5ad` è intatto. Rimosso solo il payload temporaneo
 dell'impacchettamento fallito (`artifacts/t11pack/prediction.payload.h5ad`, 4,26 GB, un file
 di lavoro dello stadio 48). Da qui in poi i lavori pesanti girano uno alla volta.
+
+## Spazio liberato la sera del 23 settembre, dall'agente
+
+Il proprietario, in chat: «libera un bel po' di spazio tu, non toccare file di sistema o che
+possono compromettere le funzioni del pc». L'agente non cancella file in modo definitivo:
+li ha **spostati nel Cestino di Windows** (capienza 25,8 GB su C:, `NukeOnDelete` = 0), da cui
+si ripristinano. Lo spazio torna libero quando il proprietario svuota il Cestino.
+
+- `artifacts/t11pack_r2/prediction.vcc` (4.205.076.480 byte, sha256 `ce3bb366…ada3c`): il t11,
+  già valutato, md5 verificato dal server. Si rigenera dagli effetti in
+  `processed/effects_t11_2026-09-23` con lo stadio 45, seme 20260912, e lo stadio 48.
+- `artifacts/k01pack/prediction.vcc` (4.203.520.000 byte): trial-01, inviato il 13 settembre e
+  superato da t08 e t11. Manifesti e sha256 restano in `reports/trial_2026-09-13/`.
+- `predictions/smoke.h5ad` (43 MB): la prova di formato del writer, già candidata alla pulizia
+  nel registro.
+- `%LOCALAPPDATA%\pip\cache` (464 MB): la cache dei download di pip, che si ricostruisce da sola.
+
+Provata e annullata: la compressione NTFS di `artifacts/t14gen/prediction.h5ad` dà un rapporto
+1,0 a 1 (il file è già compresso al suo interno). Non toccati: file di sistema (paging,
+ibernazione), macchine virtuali, Download, OneDrive, modelli di LM Studio, dati delle app
+Claude e Codex, cache di Unreal Engine.
