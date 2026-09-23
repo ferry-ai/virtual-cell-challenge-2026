@@ -9,9 +9,9 @@ counts per (batch, target), writes that partial to ``--work``, and deletes the d
 A partial that already exists is skipped, so the stage resumes after an interruption.
 
 ``--finalize`` merges the partials into one h5ad of pseudobulk rows with the columns stage
-98 reads (``target``, ``donor`` = the GEM batch, ``condition`` = the line, ``n_cells``), so
+98 reads (``target``, ``donor`` = a pool of GEM batches, ``condition`` = the line, ``n_cells``), so
 Orion goes through `effects_from_pseudobulk` exactly like CD4: each batch's knockdown
-against the same batch's controls.
+against the controls of the same batches (``--pools``, default 8).
 
 Licence: CC-BY-NC-SA-4.0. Using Orion in a submission needs the owner's decision (D-004 d);
 measuring it does not.
@@ -121,16 +121,32 @@ def finalize(args, groups: list[str], tokens: pd.DataFrame) -> None:
     import scipy.sparse as sp
 
     parts = sorted(args.work.glob("part_*.npz"))
-    rows, obs = [], []
-    for part in parts:
+    # Batches are summed into `--pools` pools, each with its OWN non-targeting cells, so every
+    # knockdown is still compared with controls from the same GEM batches. One row per batch
+    # would hold ~2 cells per target and ~1 GB of rows for a line.
+    n_pools = max(1, min(args.pools, len(parts)))
+    sums = None
+    cells = np.zeros((n_pools, len(groups)))
+    umis = np.zeros((n_pools, len(groups)))
+    members = [[] for _ in range(n_pools)]
+    for i, part in enumerate(parts):
         z = np.load(part, allow_pickle=False)
-        batch = str(z["batch"])
+        k = i % n_pools
+        if sums is None:
+            sums = np.zeros((n_pools,) + z["sums"].shape, dtype=np.float32)
+        sums[k] += z["sums"]
+        cells[k] += z["cells"]
+        umis[k] += z["umis"]
+        members[k].append(str(z["batch"]))
+    rows, obs = [], []
+    for k in range(n_pools):
         for gi, name in enumerate(groups):
-            if z["cells"][gi] > 0:
-                rows.append(sp.csr_matrix(z["sums"][gi:gi + 1]))
-                obs.append({"target": "non-targeting" if name == NTC else name, "donor": batch,
-                            "condition": args.line, "n_cells": float(z["cells"][gi]),
-                            "total_counts": float(z["umis"][gi])})
+            if cells[k, gi] > 0:
+                rows.append(sp.csr_matrix(sums[k, gi:gi + 1]))
+                obs.append({"target": "non-targeting" if name == NTC else name, "donor": f"pool{k}",
+                            "condition": args.line, "n_cells": float(cells[k, gi]),
+                            "total_counts": float(umis[k, gi])})
+    del sums
     X = sp.vstack(rows, format="csr").astype(np.float32)
     names = tokens.set_index("gene_token_id").reindex(range(X.shape[1]))["gene_name"].fillna("").astype(str)
     var = pd.DataFrame({"token": np.arange(X.shape[1])}, index=names.to_numpy())
@@ -150,6 +166,7 @@ def finalize(args, groups: list[str], tokens: pd.DataFrame) -> None:
                                      "min": float(per_target.min())},
                 "ntc_cells": float(out.obs.loc[out.obs.target == "non-targeting", "n_cells"].sum()),
                 "filter": "pass_guide_filter == 1", "licence": "CC-BY-NC-SA-4.0",
+                "pools": {f"pool{k}": m for k, m in enumerate(members)},
                 "output": {"path": str(args.out), "sha256": hashlib.sha256(args.out.read_bytes()).hexdigest()}}
     args.report_dir.mkdir(parents=True, exist_ok=True)
     with open(args.report_dir / f"manifest_{args.line}.json", "x", encoding="utf-8") as fh:
@@ -168,6 +185,7 @@ def main() -> None:
     p.add_argument("--finalize", action="store_true")
     p.add_argument("--out", type=Path, default=None)
     p.add_argument("--report-dir", type=Path, default=None)
+    p.add_argument("--pools", type=int, default=8, help="--finalize: batch pools, each with its own controls")
     args = p.parse_args()
     args.work.mkdir(parents=True, exist_ok=True)
     panel = pd.read_csv(args.targets_csv).iloc[:, 0].astype(str).tolist()
