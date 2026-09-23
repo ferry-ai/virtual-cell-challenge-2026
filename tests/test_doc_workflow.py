@@ -184,6 +184,52 @@ class CheckerTests(unittest.TestCase):
         self.assertEqual(len(errors), 1, errors)
         self.assertIn('docs/two.md', errors[0])
 
+    def test_an_archived_path_counts_as_existing(self):
+        """A path listed in ARCHIVIO.md was moved into a tag, not lost.
+
+        Checkpoints cannot be corrected, so they go on naming what left the tree. The
+        archive list separates that from a path that vanished by accident, which must
+        still be reported: for backtick paths and for markdown links alike.
+        """
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root, True)
+        self.addCleanup(check_docs.archived_paths.cache_clear)
+        (root / 'docs' / 'checkpoints').mkdir(parents=True)
+        (root / 'CLAUDE.md').write_text('ok\n', encoding='utf-8')
+        (root / 'docs' / 'PROGETTO.md').write_text('# Mappa\n', encoding='utf-8')
+        (root / 'docs' / 'REGISTRO.md').write_text('# R\n', encoding='utf-8')
+        (root / 'docs' / 'DECISIONI.md').write_text('# D\n', encoding='utf-8')
+        (root / 'README.md').write_text(
+            'archiviati `src/orchestrator/engine.py` e `configs/orchestrator/briefs/x.yaml`, '
+            'sparito `scripts/99_gone.py`\n', encoding='utf-8')
+        (root / 'docs' / 'checkpoints' / '0001-uno.md').write_text(
+            'vedi [il contratto](../CICLO.md#3-fasi) e [il perso](../PERSO.md)\n',
+            encoding='utf-8')
+        (root / 'docs' / 'ARCHIVIO.md').write_text(
+            'Restano `src/vcc2026/kept.py` e tutto `reports/`.\n\n'
+            '| Percorso | Righe | Nota su `reports/x.json` |\n|---|---|---|\n'
+            '| `src/orchestrator/engine.py` | 1143 | vedi `reports/y.json` |\n'
+            '| `configs/orchestrator/` | 40 | |\n'
+            '| `docs/CICLO.md` | 209 | |\n', encoding='utf-8')
+        check_docs.archived_paths.cache_clear()
+        errors = []
+        with patch.object(check_docs, 'REPO_ROOT', root):
+            check_docs.check_links(errors)
+            # a directory holding a listed file, and a file under a listed directory
+            self.assertTrue(check_docs.path_exists('src/orchestrator/'))
+            self.assertTrue(check_docs.path_exists('configs/orchestrator/briefs/x.yaml'))
+            self.assertFalse(check_docs.path_exists('src/orchestrator_other/'))
+            self.assertFalse(check_docs.path_exists('configs/orchestratore.yaml'))
+            # paths named in the prose or in other cells are not archived by being named
+            for named in ('src/vcc2026/kept.py', 'reports/gone.json', 'reports/x.json',
+                          'reports/y.json'):
+                self.assertFalse(check_docs.path_exists(named), named)
+        reported = ' '.join(errors)
+        for fine in ('engine.py', 'briefs/x.yaml', 'CICLO.md'):
+            self.assertNotIn(fine, reported)
+        self.assertIn('99_gone.py', reported)
+        self.assertIn('PERSO.md', reported)
+
     def test_this_repository_is_consistent(self):
         done = subprocess.run([sys.executable, str(ROOT / 'scripts' / '31_check_docs.py')],
                               capture_output=True, text=True, cwd=ROOT)

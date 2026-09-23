@@ -26,17 +26,17 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-010 | Il progetto si documenta con mappa, checkpoint, decisioni e registro | attiva | 2026-09-12 | `docs/checkpoints/0001-ricostruzione-stato-2026-09-12.md` |
 | D-011 | La validazione non si filtra per efficacia osservata delle guide | attiva | 2026-09-12 | `configs/candidate_ingestion.json` |
 | D-012 | L'ampiezza si calibra su bersagli tenuti fuori, non si sceglie | attiva | 2026-09-12 | `reports/pipeline/transfer_experiment.json` |
-| D-013 | Lo stato di una sorgente lo dichiara il registry versionato | attiva | 2026-09-12 | `configs/sources.yaml`, `src/vcc2026/registry.py` |
+| D-013 | Lo stato di una sorgente lo dichiara il registry versionato — **superata da D-040: codice archiviato** | superata | 2026-09-12 | `configs/sources.yaml`, `src/vcc2026/registry.py` |
 | D-014 | Il backend DE si registra accanto a ogni metrica | attiva | 2026-09-12 | `reports/pipeline/null_calibration_A.json` |
 | D-015 | Il vincolo compositivo si assorbe sui geni supportati, non su quelli mascherati | attiva | 2026-09-12 | `src/vcc2026/inference.py`, [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.3 |
 | D-016 | Non si riduce la densità della previsione per far entrare `vcc prep` nella RAM locale — **sostituita da D-018** | superata | 2026-09-12 | [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.5, [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.1 |
 | D-017 | `trial-00-controls` non si invia finché la conformità alle regole non è chiarita | attiva | 2026-09-12 | `docs/SOTTOMISSIONE.md` §2 |
 | D-018 | Il packaging si fa a memoria limitata, non su una macchina più grande | attiva | 2026-09-13 | `src/vcc2026/packaging.py`, [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.1 |
 | D-019 | La parità con `vcc prep` si dimostra con fixture a forma ufficiale e rifiuti bilaterali | attiva | 2026-09-13 | `tests/test_packaging_parity.py`, [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.5 |
-| D-020 | L'oracolo numerico è autonomo: ricalcola, non giudica biologia, e il candidato non è fidato | attiva | 2026-09-13 | `docs/oracle/CONTRATTO.md`, [CP-0007](checkpoints/0007-oracle-pairwise-loss.md), [CP-0009](checkpoints/0009-oracle-json-number-csv-error.md) |
-| D-021 | Le consultazioni multi-modello passano da un orchestratore locale che avvii tu — **dal 2026-09-16 anche la catena di cicli, quando Grok lo chiede, al massimo tre campagne per ciclo** | attiva | 2026-09-13, aggiornata 2026-09-16 | `docs/ORCHESTRATORE.md`, `reports/orchestrator/prova-a-secco-2026-09-13/`, `docs/CICLO_GIORNALIERO.md`, [CP-0019](checkpoints/0019-catena-cicli-guardiano.md) |
-| D-022 | Un posto vuoto si copre con una seconda sessione del servizio ancora attivo, dichiarata prima e marcata dopo | attiva | 2026-09-14 | `docs/ORCHESTRATORE.md` §9-ter-ter, `configs/orchestrator/orchestrator.yaml`, `tests/test_orchestrator.py` (`StandInTests`) |
-| D-023 | La ricerca scientifica è una modalità separata: i livelli di provenienza non si promuovono, le piste le sceglie una regola, le contraddizioni non si chiudono | attiva | 2026-09-14 | `docs/RICERCA_SCIENTIFICA.md`, [CP-0010](checkpoints/0010-modalita-ricerca-scientifica.md), `tests/test_orchestrator_research.py` |
+| D-020 | L'oracolo numerico è autonomo: ricalcola, non giudica biologia, e il candidato non è fidato — **superata da D-040: codice archiviato** | superata | 2026-09-13 | `docs/oracle/CONTRATTO.md`, [CP-0007](checkpoints/0007-oracle-pairwise-loss.md), [CP-0009](checkpoints/0009-oracle-json-number-csv-error.md) |
+| D-021 | Le consultazioni multi-modello passano da un orchestratore locale che avvii tu — **dal 2026-09-16 anche la catena di cicli, quando Grok lo chiede, al massimo tre campagne per ciclo** — **superata da D-040: codice archiviato** | superata | 2026-09-13, aggiornata 2026-09-16 | `docs/ORCHESTRATORE.md`, `reports/orchestrator/prova-a-secco-2026-09-13/`, `docs/CICLO_GIORNALIERO.md`, [CP-0019](checkpoints/0019-catena-cicli-guardiano.md) |
+| D-022 | Un posto vuoto si copre con una seconda sessione del servizio ancora attivo, dichiarata prima e marcata dopo — **superata da D-040: codice archiviato** | superata | 2026-09-14 | `docs/ORCHESTRATORE.md` §9-ter-ter, `configs/orchestrator/orchestrator.yaml`, `tests/test_orchestrator.py` (`StandInTests`) |
+| D-023 | La ricerca scientifica è una modalità separata: i livelli di provenienza non si promuovono, le piste le sceglie una regola, le contraddizioni non si chiudono — **superata da D-040: codice archiviato** | superata | 2026-09-14 | `docs/RICERCA_SCIENTIFICA.md`, [CP-0010](checkpoints/0010-modalita-ricerca-scientifica.md), `tests/test_orchestrator_research.py` |
 | D-024 | Nel confronto modulare l'universo genico è l'intersezione dei geni effettivamente misurati, non il riempimento a zero | attiva | 2026-09-14 | [CP-0011](checkpoints/0011-primo-benchmark-modulare.md), `src/vcc2026/benchmark/universe.py`, D-009 |
 | D-025 | Metrica primaria del pilot modulare: `pooled_mse_vs_null` in spazio proxy; non inferiorità non dichiarata; LOCO a due contesti = trasferimento, non apprendimento generale del contesto | attiva | 2026-09-14 | [CP-0011](checkpoints/0011-primo-benchmark-modulare.md), `configs/benchmark.yaml` |
 | D-026 | Tre contesti perturbati: il descrittore di contesto e misurabile, non ancora utile | attiva | 2026-09-14 | [CP-0013](checkpoints/0013-hepg2-terzo-contesto.md), `configs/benchmark_3ctx.yaml` |
@@ -53,6 +53,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-037 | Nei banchi il DE è `fast_scorer_de`, verificato identico al percorso scanpy dello scorer | attiva | 2026-09-17 | `reports/fast_de_2026-09-17/parity.json`, `tests/test_sc_pipeline.py` |
 | D-038 | Le misure si confrontano con le ancore ufficiali risolte, e non si sottomette senza sapere in quale regime della fedeltà siamo | attiva | 2026-09-17 | `reports/anchors_2026-09-17/anchors.json`, [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
 | D-039 | CD4 entra come sorgente per bersaglio dal pseudobulk letto per righe; primo test a un solo fattore contro trial-01 (t08) | attiva | 2026-09-22 | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), `reports/cd4_rows_2026-09-22/manifest.json` |
+| D-040 | Nell'albero resta solo il codice che produce o valuta una sottomissione; il resto è nel tag `archivio/pre-pulizia-2026-09-23`, e catena di cicli, orchestratore e oracolo sono ritirati | attiva | 2026-09-23 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 23 settembre |
 
 ---
 
@@ -272,6 +273,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   confuse una volta.
 - **Riaprire se:** il registry diventa più oneroso da mantenere del registro dei
   documenti che già esiste, o se duplica informazione invece di sostituirla.
+- **Superata il 2026-09-23 da [D-040](#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione).** Il codice è nel tag `archivio/pre-pulizia-2026-09-23` ([ARCHIVIO.md](ARCHIVIO.md)). Dal 22 settembre le sorgenti degli invii non passano dal registry: `configs/sources.yaml` è fermo al 15 settembre e dà CD4 `enabled: false`, mentre CD4 è nel t08 (`git log -- configs/sources.yaml`). Le sorgenti in uso stanno nelle ricette `configs/recipes/` e si adottano con una decisione, come CD4 in D-039. Il testo sopra resta com'era.
 
 ### D-014 — Il backend DE si registra accanto a ogni metrica
 
@@ -448,6 +450,8 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Riaprire se:** si vuole un secondo tipo di affermazione, un test
   statistico, o una chiamata esplicita dall'orchestratore. L'allaccio non
   deve avvenire con un import silenzioso.
+- **Superata il 2026-09-23 da [D-040](#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione).** Il codice è nel tag `archivio/pre-pulizia-2026-09-23` ([ARCHIVIO.md](ARCHIVIO.md)). L'oracolo non è usato da nessuno stadio del percorso vivo. Il testo sopra resta com'era.
+
 ### D-021 — Le consultazioni multi-modello passano da un orchestratore locale che avvii tu
 
 - **Perché:** più modelli su una stessa domanda producono molto testo e poche prove. Senza
@@ -507,6 +511,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   un rapporto utile, oppure Grok chiede campagne per abitudine. In quel caso si abbassa
   il tetto o si spegne l'avvio (`orchestratore.abilitato` in
   `configs/ciclo_giornaliero/ciclo.json`).
+- **Superata il 2026-09-23 da [D-040](#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione).** Il codice è nel tag `archivio/pre-pulizia-2026-09-23` ([ARCHIVIO.md](ARCHIVIO.md)). La catena non ha completato nessun ciclo e l'orchestratore non ha più campagne dal 15 settembre (D-040, «Perché»). Il testo sopra resta com'era.
 
 ### D-022 — Un posto vuoto si copre con una seconda sessione del servizio ancora attivo
 
@@ -541,6 +546,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   — a quel punto il ciclo non è più un confronto fra modelli diversi e va ripensato — oppure
   se si aggiunge un terzo servizio, che renderebbe la riserva una scelta fra più famiglie
   invece che l'unica disponibile.
+- **Superata il 2026-09-23 da [D-040](#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione).** Il codice è nel tag `archivio/pre-pulizia-2026-09-23` ([ARCHIVIO.md](ARCHIVIO.md)). Riguarda l'orchestratore, ritirato con D-040. Il testo sopra resta com'era.
 
 ### D-023 — La ricerca scientifica è una modalità separata, e non promuove nulla
 
@@ -599,6 +605,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   consultazione senza riguardo, nel qual caso il contratto va stretto o la modalità va
   ripensata; oppure se un canale comincia a esporre le query eseguite, che renderebbe
   raggiungibile `observed_in_channel` e cambierebbe il valore di tutto il registro.
+- **Superata il 2026-09-23 da [D-040](#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione).** Il codice è nel tag `archivio/pre-pulizia-2026-09-23` ([ARCHIVIO.md](ARCHIVIO.md)). Riguarda la modalità di ricerca dell'orchestratore, ritirata con D-040. Il principio che nessun livello di provenienza si promuove resta nelle regole di `CLAUDE.md`. Il testo sopra resta com'era.
 
 ### D-024 — Universo genico = intersezione misurata, non riempimento a zero
 
@@ -959,3 +966,52 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   - il t08 va sotto trial-01;
   - una sorgente più vicina ai contesti (Orion) domina CD4 sulle stesse proxy;
   - gli autori cambiano o ritirano il file pubblico.
+
+### D-040 — Il codice vivo è solo quello che produce o valuta una sottomissione
+
+- **Chi l'ha decisa:** l'agente, su richiesta esplicita del proprietario del 23 settembre, in
+  chat: «pulizia intensiva della repo e decimazione delle linee di codice eliminando file
+  inutili e dando direzioni per non far perdere gli agenti». **Quali** file siano inutili
+  l'ha scelto l'agente, con il criterio scritto qui sotto; il proprietario può riaprirla.
+- **Perché:**
+  - Al 23 settembre il repository aveva 91 script, 24.743 righe in `src/` e 596 test
+    (466 s). Gli invii dal t08 al t11 usano un percorso molto più stretto: stadi 97, 98 e
+    102 per le sorgenti, 100 per gli effetti, 45 per le cellule, 48 per il pacchetto.
+  - La catena di cicli non ha completato nessun ciclo. In `reports/ciclo_giornaliero/` non
+    c'è nessuna cartella `ciclo-NN/`. Dal 19 al 23 settembre il task giornaliero di Windows
+    è uscito ogni giorno con «nessun piano sigillato»
+    (`C:/Users/ferra/vcc2026-data/ciclo/scheduler.log`). L'attività pianificata del piano
+    mattutino è disabilitata. L'ultima campagna dell'orchestratore è del 15 settembre.
+  - La pulizia del 19 settembre (branch `refactor/pulizia`) si era fermata perché toglieva
+    la catena senza una decisione esplicita (`reports/direzione_2026-09-19/VALUTAZIONE.md`
+    §6). Questa è quella decisione.
+- **Come è fatta:**
+  - resta un file che sta nella chiusura degli import di uno stadio che:
+    - produce effetti, cellule o pacchetti di un invio (45, 48, 76, 97, 98, 100, 102);
+    - li valuta (72, 73, 75, 79, 82, 83, 84);
+    - identifica i contesti (85, 99);
+    - fornisce un input vivo (71, 74, 77);
+  - restano anche gli strumenti della documentazione (30, 31) e i test di ciò che resta;
+  - tutto il resto va nel tag annotato `archivio/pre-pulizia-2026-09-23`, elencato file per file in
+    [ARCHIVIO.md](ARCHIVIO.md). Il controllo documentale accetta i percorsi elencati lì, e
+    solo quelli;
+  - `reports/`, i checkpoint e i dati non si toccano;
+  - `AGENTS.md` si riduce a un rimando a `CLAUDE.md`. I due task di Windows «VCC2026 Ciclo
+    giornaliero» e «VCC2026 Guardiano» li rimuove il proprietario: chiamano un file che non
+    c'è più;
+  - quando un esperimento si chiude con il suo checkpoint, gli script che non entrano nel
+    percorso vivo si aggiungono all'archivio con lo stesso meccanismo, nello stesso giorno.
+- **Evidenza:** [ARCHIVIO.md](ARCHIVIO.md) (file, righe, descrizioni citate dai file stessi).
+  Il controllo documentale e la suite di test sono stati eseguiti prima e dopo ogni
+  rimozione.
+- **Che cosa non segue:**
+  - che gli esperimenti archiviati fossero sbagliati: le loro conclusioni restano nei
+    checkpoint e nei report;
+  - che la catena di cicli non potesse funzionare: non è mai stata eseguita dal vivo;
+  - che il codice rimasto sia corretto: è soltanto quello che il percorso vivo importa.
+- **Riaprire se:**
+  - il proprietario vuole riavviare la catena o una campagna dell'orchestratore. Si
+    riprendono dal tag, e si ripristinano i task di Windows;
+  - un esperimento nuovo ha bisogno di un modulo archiviato. Si riprende con il suo test;
+  - il set finale del 22 ottobre richiede di ricalibrare l'ampiezza in pseudobulk. Servono
+    gli stadi 40 e 44.

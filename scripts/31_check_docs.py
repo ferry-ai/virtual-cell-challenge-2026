@@ -6,6 +6,10 @@ reading as if it were true. Prose does not fail loudly on its own, so the mechan
 parts of it are checked here — paths, anchors, numbering, required metadata, and the
 rule that a flagged document must carry a review sheet.
 
+A path listed in `docs/ARCHIVIO.md` counts as existing: that file says which code and
+documents were moved into an archive tag on purpose, and with which command they come
+back. A path that disappears without being listed there is still an error.
+
 It checks structure, never claims: no amount of green output means the science is
 right. Standard library only.
 
@@ -15,6 +19,8 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import functools
+import os
 import re
 from pathlib import Path
 
@@ -74,11 +80,43 @@ def table_by_first_column(text: str, name: str, path: Path, errors: list[str]):
     return None, []
 
 
+@functools.lru_cache(maxsize=None)
+def archived_paths(root: Path) -> frozenset[str]:
+    """Paths that docs/ARCHIVIO.md declares archived in a tag.
+
+    Checkpoints cannot be corrected, so they go on naming code and documents that
+    left the working tree. The archive list is what tells a path removed on purpose
+    (listed there, with the command that brings it back) from one that vanished by
+    accident (listed nowhere, still an error).
+    """
+    path = root / "docs" / "ARCHIVIO.md"
+    if not path.exists():
+        return frozenset()
+    # Only the first cell of a table row lists an archived path: the prose around the
+    # tables also names paths, including live ones, and those must not count.
+    found: set[str] = set()
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if line.startswith("| `"):
+            found.update(BACKTICK_PATH.findall(line.split("|")[1]))
+    return frozenset(found)
+
+
+def is_archived(raw: str) -> bool:
+    """A listed path, a path under a listed directory, or a directory holding one."""
+    archived = archived_paths(REPO_ROOT)
+    if raw in archived:
+        return True
+    if any(entry.endswith("/") and raw.startswith(entry) for entry in archived):
+        return True
+    prefix = raw if raw.endswith("/") else raw + "/"
+    return any(entry.startswith(prefix) for entry in archived)
+
+
 def path_exists(raw: str) -> bool:
     """Repo-relative path, glob allowed. Absolute paths are outside our control."""
     if any(ch in raw for ch in "*?["):
-        return any(REPO_ROOT.glob(raw))
-    return (REPO_ROOT / raw).exists()
+        return any(REPO_ROOT.glob(raw)) or is_archived(raw)
+    return (REPO_ROOT / raw).exists() or is_archived(raw)
 
 
 def is_repo_relative(raw: str) -> bool:
@@ -293,9 +331,14 @@ def check_links(errors: list[str]) -> None:
             if target.startswith(("http://", "https://", "mailto:")):
                 continue
             file_part, _, anchor = target.partition("#")
-            other = path if not file_part else (path.parent / file_part)
+            other = path if not file_part else Path(os.path.normpath(path.parent / file_part))
             if not other.exists():
-                errors.append(f"{path.name}: link to missing {target}")
+                try:
+                    rel = other.relative_to(REPO_ROOT).as_posix()
+                except ValueError:
+                    rel = None
+                if rel is None or not is_archived(rel):
+                    errors.append(f"{path.name}: link to missing {target}")
                 continue
             if anchor and anchor not in anchors(other.read_text(encoding="utf-8")):
                 errors.append(f"{path.name}: anchor {target} does not resolve")
@@ -318,7 +361,10 @@ def main() -> None:
         for error in errors:
             print(f"  - {error}")
         raise SystemExit(1)
+    archived = archived_paths(REPO_ROOT)
     print(f"OK: {len(numbers)} checkpoint(s), registry, decisions and links are consistent.")
+    if archived:
+        print(f"{len(archived)} path(s) accepted as archived, from docs/ARCHIVIO.md.")
     print("Structure only. This says nothing about whether the claims are true.")
 
 
