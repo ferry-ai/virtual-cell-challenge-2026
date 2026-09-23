@@ -71,6 +71,13 @@ Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
    Controlla con `df -h /c` prima di partire.
 5. **Il portatile non deve andare in sospensione durante l'upload.** Il 23 settembre il
    sonno ha interrotto il secondo tentativo del t11 (`reports/trial_2026-09-23/`).
+   - **Un upload interrotto lascia l'entry sul server** in stato `uploading`. Occupa lo slot
+     della squadra, anche se `vcc whoami` può dire `can_submit: true`.
+   - La CLI tiene l'upload in `~/.config/vcc/state.json`, alla voce `pending_uploads`.
+     `vcc submit --resume <entry>` lo riprende sullo stesso file; controlla prima lo sha256
+     del `.vcc` contro il report dello stadio 48.
+   - `vcc cancel <entry>` abbandona l'entry, e non conta sul limite giornaliero: conta solo
+     un invio valutato (`vcc cancel --help`).
 6. **L'output di `vcc` si salva così com'è**, in `reports/trial_<data>/`
    (`submit_<entry>.json`, `status_<entry>.json`). Un tentativo fallito si registra come
    tale, in un file suo.
