@@ -33,3 +33,22 @@ genome-wide Perturb-seq (Replogle et al. 2022), primary CD4+ T cells (GSE314342 
 donor-matched controls) and HCT116 from X-Atlas/Orion (Xaira, CC-BY-NC-SA-4.0; GEM-batch-matched
 controls) -- each source's mean response removed, scaled by 0.197. No perturbed cell of the
 official contexts is used.
+
+## t12
+
+Scritto il 23 settembre alle 18:05 UTC, prima della generazione, prima di qualunque punteggio
+del t12 e prima del punteggio del t11. Ricetta `configs/recipes/t12.json`; previsione e regola
+di lettura in `reports/prediction_t12_2026-09-23/prediction.json`.
+
+**Model name:** `trial-12 trial-01 generator + K562+CD4+HCT116+HEK293T same-target transfer a=0.197`
+
+**Description:**
+
+Cells are sampled exactly as in trial-01 (Poisson counts at library sizes resampled from each
+context's own control cells, around the context's control profile shifted by the predicted
+effect; no control cell is copied). The predicted effect of a target is an equal-weight,
+reliability-weighted mean of its measured CRISPRi response in four public sources -- K562
+genome-wide Perturb-seq (Replogle et al. 2022), primary CD4+ T cells (GSE314342 pseudobulk,
+donor-matched controls), and HCT116 and HEK293T from X-Atlas/Orion (Xaira, CC-BY-NC-SA-4.0;
+GEM-batch-matched controls) -- each source's mean response removed, scaled by 0.197. No
+perturbed cell of the official contexts is used.

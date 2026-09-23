@@ -1,0 +1,33 @@
+{
+  "written_utc": "2026-09-23T18:03:49.963701+00:00",
+  "label": "t12 = t11 + Orion HEK293T: K562, CD4, HCT116, HEK293T at equal weights, raw x 0.197, gamma 1, trial-01 generator",
+  "claim_type": "prediction registered before generation and submission, and before any t11 score; not a measurement",
+  "recipe": {
+    "path": "configs\recipes\t12.json",
+    "sha256": "32d708c10021abc015082117c94f8c620a8c4d7c9423db56036ed2a4a50a9356"
+  },
+  "references": {
+    "trial-01": 0.045929,
+    "t08": 0.06037,
+    "t10": 0.050191,
+    "t11": "not yet scored when this was written (entry FEBhtilNLpSm2kGiHB71 uploading)"
+  },
+  "evidence_used": "reports/orion_2026-09-23/r5 (effect space): pds proxy HEK293T<->K562 0.775-0.779, HEK293T<->CD4 conditions 0.587-0.621, HEK293T<->HCT116 0.67-0.74; r5 reproduces r4 for the other three sources; CP-0028: averaging sources did not raise the discrimination proxy",
+  "expected": {
+    "score_avg_band": [
+      0.05,
+      0.08
+    ],
+    "t12_minus_t11_band": [
+      -0.005,
+      0.01
+    ],
+    "pds_raw": "0.70-0.73",
+    "fid_raw": "about 0.46 (generator-bound)"
+  },
+  "reading_rule_fixed_before_the_result": {
+    "t12 >= t11 + 0.005": "HEK293T adds information about the official contexts",
+    "t12 <= t11 - 0.005": "at equal weights HEK293T dilutes K562, CD4 and HCT116",
+    "otherwise": "inconclusive; do not attribute"
+  }
+}

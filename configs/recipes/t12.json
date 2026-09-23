@@ -1,0 +1,13 @@
+{
+  "name": "t12",
+  "effect": "raw",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "A": {"amplitude": 0.197, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "B": {"amplitude": 0.197, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "C": {"amplitude": 0.197, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}}
+  },
+  "why": "Rule in reports/orion_2026-09-23/PRIMA_DEI_RISULTATI.md (written before any Orion number): Orion HEK293T was not finalized when HCT116 was, so it enters a separate t12, one factor against t11: orion_hek293t added at equal weight. Cache: stage 98 run r5 (reports/orion_2026-09-23/r5), which reproduces r4 array for array (NaN-aware) for k562, cd4_mix and orion_hct116 and adds orion_hek293t. Stop rule not met: pds proxy HEK293T-K562 0.775-0.779, HEK293T-CD4 conditions 0.587-0.621 (threshold 0.55)."
+}
