@@ -80,3 +80,16 @@ Provata e annullata: la compressione NTFS di `artifacts/t14gen/prediction.h5ad` 
 1,0 a 1 (il file è già compresso al suo interno). Non toccati: file di sistema (paging,
 ibernazione), macchine virtuali, Download, OneDrive, modelli di LM Studio, dati delle app
 Claude e Codex, cache di Unreal Engine.
+
+Più tardi, la stessa sera, il proprietario ha scelto in chat di spostare nel Cestino anche le
+cache di Unreal Engine. Nessun processo di Unreal o di `zenserver` era attivo. Sono state
+spostate:
+- `%LOCALAPPDATA%\UnrealEngine\Common\DerivedDataCache`, 3,57 GB;
+- `%LOCALAPPDATA%\UnrealEngine\Common\Zen`, 6,77 GB.
+
+Si rigenerano da sole, ma la prossima apertura di un progetto Unreal ricompilerà gli shader. Il
+Cestino dell'utente contiene ora 19,04 GB.
+
+Il proprietario ha anche autorizzato in chat l'invio del t14 appena la quota del 24 settembre lo
+permette. Una catena in background prima aspetta che il disco si liberi e impacchetta il t14,
+poi lo invia dopo le 00:05 UTC, tenendo sveglio il portatile.
