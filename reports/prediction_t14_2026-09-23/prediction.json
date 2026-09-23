@@ -1,0 +1,62 @@
+{
+  "written_utc": "2026-09-23T19:00:57.666546+00:00",
+  "label": "t14 = ControlModel (stage 76, defaults, --keep-effects-target) + t08 effects x 2.5 (a-effects chosen by the pilot rule)",
+  "claim_type": "prediction registered after the pilots and before the full generation and any t14 score; not a measurement",
+  "rule": "reports/dispersion_2026-09-23/PRIMA_T14.md (written before any pilot); venue: T14_IN_LOCALE.md",
+  "rule_sha256": "d6a6d49b828fdf53a7673aa514e1b58f45730481991bb6a11169999b24840436",
+  "pilots": {
+    "choice_file": "reports/dispersion_2026-09-23/t14_pilots/choice.json",
+    "choice": "2.5",
+    "null_median_calls": {
+      "A": 0.0,
+      "B": 0.0,
+      "C": 0.0
+    },
+    "median_calls_by_amplitude": {
+      "1": {
+        "A": 4.5,
+        "B": 16.5,
+        "C": 20.0
+      },
+      "2.5": {
+        "A": 139.5,
+        "B": 235.0,
+        "C": 261.0
+      },
+      "5": {
+        "A": 1134.0,
+        "B": 1148.0,
+        "C": 1208.5
+      },
+      "10": {
+        "A": 3514.5,
+        "B": 3274.5,
+        "C": 3464.0
+      }
+    }
+  },
+  "effects_choice": "Rule item 2: effects of the better of t08 and t11, switched to t11 only if t11 beats t08 'before the job starts'. The job started with the t08 effects at 2026-09-23T18:00:35Z (pilots); t11 was published at 18:25Z. By the letter of the rule t14 keeps the t08 effects. ControlModel on the t11 effects is a separate trial, to be registered on its own.",
+  "references": {
+    "t08": 0.06037,
+    "t11": 0.070777,
+    "t03 (ControlModel, other effects)": 0.019692,
+    "t02 (ControlModel, other effects)": -0.092774
+  },
+  "evidence_used": "t14 pilots: ControlModel makes median 0 calls at zero effect, 140/235/261 at a=2.5, 41-50% up; trial-01's generator makes 543-764 in t11, 83-85% up, and 462/453/684 at zero effect. CP-0021: with n_pred >= n_conf fidelity is the precision of the calls. CP-0028: sign agreement K562 vs CD4 on |z|>3 genes 55.5%. ControlModel submissions so far (t02, t03) had lower pds_cosine (0.609, 0.649) with different effects.",
+  "expected": {
+    "score_avg_band": [
+      0.02,
+      0.12
+    ],
+    "fid_raw": "0.48-0.58 if the calls follow the effects; above the official base 0.5123 would make the scaled fidelity positive for the first time",
+    "pds_raw": "0.64-0.73",
+    "frac_up_of_calls": "0.40-0.50",
+    "mse": "raw probably higher than t08; scaled stays 0"
+  },
+  "reading_rule_fixed_before_the_result": {
+    "t14 >= t08 + 0.005": "ControlModel at a call-chosen amplitude beats trial-01's generator on the same effects (generator and amplitude change together)",
+    "t14 <= t08 - 0.005": "on the same effects it loses to trial-01's generator",
+    "otherwise": "inconclusive; do not attribute"
+  },
+  "t09": "Not generated for now: t09 is the a=1 case, where the pilots give 4.5/16.5/20 median calls, below the 30-50 n_conf estimated from the scorer's docstrings; by D-035 silence costs fidelity."
+}
