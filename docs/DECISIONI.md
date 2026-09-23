@@ -54,6 +54,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-038 | Le misure si confrontano con le ancore ufficiali risolte, e non si sottomette senza sapere in quale regime della fedeltà siamo | attiva | 2026-09-17 | `reports/anchors_2026-09-17/anchors.json`, [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
 | D-039 | CD4 entra come sorgente per bersaglio dal pseudobulk letto per righe; primo test a un solo fattore contro trial-01 (t08) | attiva | 2026-09-22 | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), `reports/cd4_rows_2026-09-22/manifest.json` |
 | D-040 | Nell'albero resta solo il codice che produce o valuta una sottomissione; il resto è nel tag `archivio/pre-pulizia-2026-09-23`, e catena di cicli, orchestratore e oracolo sono ritirati | attiva | 2026-09-23 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 23 settembre |
+| D-041 | Orion HCT116 entra come sorgente per bersaglio, a pesi uguali con K562 e CD4 (t11, nuovo migliore) | attiva | 2026-09-23 | [CP-0031](checkpoints/0031-t11-punteggio-orion.md), `reports/prediction_t11_2026-09-23/comparison.json` |
 
 ---
 
@@ -1015,3 +1016,30 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   - un esperimento nuovo ha bisogno di un modulo archiviato. Si riprende con il suo test;
   - il set finale del 22 ottobre richiede di ricalibrare l'ampiezza in pseudobulk. Servono
     gli stadi 40 e 44.
+
+### D-041 — Orion HCT116 entra come sorgente per bersaglio, a pesi uguali con K562 e CD4
+
+- **Perché:**
+  - il t11 (K562, CD4 e Orion HCT116 a pesi uguali) fa +0,070777 contro il +0,060370 del t08;
+  - la regola scritta prima dà «Orion aggiunge informazione sui contesti ufficiali»
+    ([CP-0031](checkpoints/0031-t11-punteggio-orion.md));
+  - il proprietario ha ammesso Orion negli invii, licenza CC-BY-NC-SA-4.0
+    (`reports/trial_2026-09-22/autorizzazioni.md`).
+- **Come è fatta:**
+  - lo stadio 102 somma le cellule per lotto GEM e raggruppa i lotti in otto gruppi, ognuno
+    con i propri controlli;
+  - lo stadio 98 ne stima gli effetti grezzi, con lo stesso shrinkage delle altre sorgenti;
+  - la ricetta dà pesi uguali, con affidabilità n/(n+100).
+
+  Per il pannello finale del 22 ottobre lo stadio 102 va rieseguito sui nuovi bersagli. Legge
+  per intero i 109 file di HCT116, qualunque sia il pannello.
+- **Evidenza:** [CP-0031](checkpoints/0031-t11-punteggio-orion.md), `reports/orion_2026-09-23/`,
+  `reports/prediction_t11_2026-09-23/comparison.json`.
+- **Che cosa non segue:**
+  - che il guadagno venga dal solo HCT116: insieme a lui sono cambiati i pesi di K562 e CD4,
+    da 0,433 : 0,567 a 1 : 1;
+  - che HEK293T aiuti: è la domanda del t12.
+- **Riaprire se:**
+  - il t08 con K562 e CD4 a pesi uguali raggiunge il t11: allora il guadagno veniva dai pesi;
+  - il t12 mostra che una quarta sorgente a pesi uguali diluisce le altre;
+  - la licenza risulta incompatibile con le regole della gara.

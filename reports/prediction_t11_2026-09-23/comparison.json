@@ -1,0 +1,92 @@
+{
+ "written_utc": "2026-09-23T18:26:10.410964+00:00",
+ "entry_id": "FEBhtilNLpSm2kGiHB71",
+ "score_avg": 0.07077739706944018,
+ "rank": 560,
+ "registered_band": [
+  0.055,
+  0.075
+ ],
+ "inside_band": true,
+ "t11_minus_t08": 0.0104071839009472,
+ "reading_rule_outcome": "t11 >= t08 + 0.005: Orion adds information about the official contexts",
+ "members_raw": {
+  "pds_cosine": {
+   "trial01": 0.6870159791898922,
+   "t10": 0.6938275733927908,
+   "t08": 0.7103047194351542,
+   "t11": 0.7392159048680788,
+   "t11_minus_t08": 0.02891118543292459,
+   "t11_scaled_published": 0.5302536443799383
+  },
+  "expr_mse_unbiased_capped_norm": {
+   "trial01": 1.2312604900358375,
+   "t10": 1.2970197825606362,
+   "t08": 1.152371863720626,
+   "t11": 1.1290387149435794,
+   "t11_minus_t08": -0.02333314877704651,
+   "t11_scaled_published": 0
+  },
+  "de_wilcoxon_lfc_nmae": {
+   "trial01": 0.9848860246137948,
+   "t10": 0.9803957989045264,
+   "t08": 0.9774198539089156,
+   "t11": 0.9773746610865206,
+   "t11_minus_t08": -4.5192822395012655e-05,
+   "t11_scaled_published": 0.03928210938137341
+  },
+  "de_wilcoxon_direction_fidelity_yield_raw": {
+   "trial01": 0.45798211677488604,
+   "t10": 0.46101238089078156,
+   "t08": 0.45936456422616895,
+   "t11": 0.4582343072596686,
+   "t11_minus_t08": -0.0011302569665003204,
+   "t11_scaled_published": -0.18171210212601463
+  },
+  "de_wilcoxon_direction_reach_raw": {
+   "trial01": 0.0979607332892727,
+   "t10": 0.0913184683610535,
+   "t08": 0.10986816752450469,
+   "t11": 0.11293434722836904,
+   "t11_minus_t08": 0.003066179703864344,
+   "t11_scaled_published": 0.03837192281342094
+  },
+  "de_wilcoxon_sig_jaccard": {
+   "trial01": 0.02914072525446933,
+   "t10": 0.029295952286287744,
+   "t08": 0.03035768609592577,
+   "t11": 0.0298341913017521,
+   "t11_minus_t08": -0.0005234947941736706,
+   "t11_scaled_published": -0.0015311920320768963
+  }
+ },
+ "anchor_check_on_t11": {
+  "pds_cosine": {
+   "recomputed": 0.5299928110061661,
+   "published": 0.5302536443799383,
+   "abs_diff": 0.0002608333737721402
+  },
+  "expr_mse_unbiased_capped_norm": "anchor not solved (both scaled values clipped at 0)",
+  "de_wilcoxon_lfc_nmae": {
+   "recomputed": 0.03918798164048695,
+   "published": 0.03928210938137341,
+   "abs_diff": 9.412774088645576e-05
+  },
+  "de_wilcoxon_direction_fidelity_yield_raw": {
+   "recomputed": -0.18162907130709371,
+   "published": -0.18171210212601463,
+   "abs_diff": 8.303081892091502e-05
+  },
+  "de_wilcoxon_direction_reach_raw": {
+   "recomputed": 0.038151977935210295,
+   "published": 0.03837192281342094,
+   "abs_diff": 0.0002199448782106428
+  },
+  "de_wilcoxon_sig_jaccard": {
+   "recomputed": -0.001517117506349019,
+   "published": -0.0015311920320768963,
+   "abs_diff": 1.4074525727877235e-05
+  }
+ },
+ "claim_type": "measurement: official scores (verbatim status files) and differences between them; single submissions, no interval"
+}

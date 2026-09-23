@@ -10,10 +10,13 @@ Aggiornata il 2026-09-23 con la pulizia di D-040:
   `archivio/pre-pulizia-2026-09-23`;
 - §1, §3 e §4 sono invariati, salvo le voci 7 e 20 del §4.
 
-## 0. Oggi — 23 settembre 2026
+La sera del 23 il §0 è stato aggiornato con il t11, il t12 e i piloti del t14
+([CP-0031](checkpoints/0031-t11-punteggio-orion.md)).
 
-**Il migliore è il t08: +0,060370, rango 547**
-([CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md)). Il set finale arriva il 22 ottobre:
+## 0. Oggi — 23 settembre 2026, sera
+
+**Il migliore è il t11: +0,070777, rango 560**
+([CP-0031](checkpoints/0031-t11-punteggio-orion.md)). Il set finale arriva il 22 ottobre:
 - tre contesti nuovi (D, E, F) e 300 perturbazioni nuove;
 - le sottomissioni chiudono il 5 novembre (§1).
 
@@ -25,50 +28,57 @@ Aggiornata il 2026-09-23 con la pulizia di D-040:
 | t02 | K562 dalla singola cellula × 1 + termine cis | `ControlModel` | −0,092774 | 764 | [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
 | t03 | come il t02, × 2 | `ControlModel` | +0,019692 | 576 | [CP-0022](checkpoints/0022-previsione-verificata-t03.md) |
 | t07 | modello lineare condizionato su bersaglio e contesto | — | −0,016004 | 671 | [CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md) |
-| **t08** | effetti K562 + CD4, γ = 1, grezzi × 0,197 | trial-01 | **+0,060370** | 547 | [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md) |
+| t08 | effetti K562 + CD4, γ = 1, grezzi × 0,197 | trial-01 | +0,060370 | 547 | [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md) |
 | t10 | il t08 senza CD4 | trial-01 | +0,050191 | 570 | [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md) |
+| **t11** | il t08 + Orion HCT116, le tre sorgenti a pesi uguali | trial-01 | **+0,070777** | 560 | [CP-0031](checkpoints/0031-t11-punteggio-orion.md) |
 
 In tutti gli invii:
 - lo scalato della `mse` vale 0 (tosato);
 - quello della fedeltà direzionale è negativo;
-- il membro che porta il punteggio è `pds_cosine` (+0,466 scalato nel t08).
+- il membro che porta il punteggio è `pds_cosine` (+0,530 scalato nel t11).
 
 Le tabelle per membro stanno nei checkpoint citati.
 
 ### Che cosa è in corso
 
-- **t11** = t08 + Orion HCT116, a pesi uguali.
-  - Registrati prima: ricetta, previsione (+0,055…+0,075) e regola di lettura.
-  - Generato e impacchettato.
-  - Tre tentativi d'invio falliti, **nessuna entry valutata**. Alle 14:29Z `vcc whoami` dava
-    `can_submit: true` (`reports/trial_2026-09-23/`).
-  - Per ritentare serve il via del proprietario in chat.
-- **t12** = t08 + Orion HCT116 e HEK293T. Lo prevede la regola del t11
-  (`reports/orion_2026-09-23/PRIMA_DEI_RISULTATI.md`). HEK293T è estratto, e la cache dello
-  stadio 98 che lo contiene (`reports/orion_2026-09-23/r5/`) esiste ma **non è ancora stata
-  letta**. Nessuna ricetta.
-- **t09 e t14** = `ControlModel` con gli effetti del t08.
-  - Il t14 sceglie l'ampiezza sulle chiamate, con la regola in
-    `reports/dispersion_2026-09-23/PRIMA_T14.md`.
-  - Sono in coda su Colab (job 044 e 045).
-  - Il dispatcher tace dal 19 settembre alle 14:18 UTC: la coda riparte solo quando il
-    proprietario riavvia il notebook.
+- **t12** = t11 + Orion HCT116 e HEK293T.
+  - Ricetta, previsione e testi sono registrati prima della generazione e del punteggio del
+    t11 (`reports/prediction_t12_2026-09-23/prediction.json`). La regola d'arresto non scatta:
+    le proxy di HEK293T sono 0,78 con K562 e 0,59–0,62 con CD4.
+  - Gli effetti per contesto sono pronti.
+  - La generazione aspetta spazio su disco (vedi sotto).
+- **t14 e t09** = `ControlModel` con gli effetti del t08. Girano sul portatile per scelta del
+  proprietario (`reports/dispersion_2026-09-23/T14_IN_LOCALE.md`); i job 044 e 045 sono fuori
+  dalla coda Colab.
+  - I piloti del t14 seguono la regola `PRIMA_T14.md`: 20 bersagli, ampiezze 0 / 1 / 2,5 / 5 /
+    10.
+  - Primi numeri: a effetto nullo **0 chiamate mediane** in A, B e C. Ad ampiezza 1, la
+    configurazione del t09, sono 4,5 / 16,5 / 20: sotto le 60 richieste dalla regola.
 - **t13** = dispersione per gene nel generatore di trial-01. Si è fermato per la sua regola:
   a effetto nullo fa 5 / 15 / 31 chiamate mediane in A / B / C
   (`reports/dispersion_2026-09-23/RISULTATO_NULLO.md`).
+- **Il disco è il vincolo:** 10 GB liberi, contro i circa 12,7 GB del picco di una generazione
+  impacchettata; il file di paging è a 15,7 GB. Il `.vcc` del t11 (4,2 GB), già verificato dal
+  server, si può togliere. Lo fa il proprietario: gli agenti non cancellano file in modo
+  definitivo.
 
 ### Che cosa guida le scelte
 
+- **Misurato.** Il t11 guadagna +0,0104 sul t08, quasi tutto in `pds_cosine` (0,710 → 0,739
+  grezzo). Per la regola scritta prima, Orion aggiunge informazione.
+  - L'attribuzione non è pulita: insieme a HCT116 sono cambiati i pesi di K562 e CD4, da
+    0,433 : 0,567 a 1 : 1 ([CP-0031](checkpoints/0031-t11-punteggio-orion.md)).
 - **Misurato.** CD4 porta +0,0102 dei +0,0144 guadagnati dal t08.
   - È una descrizione, non un verdetto: la regola scritta prima dà «non attribuibile», per
     0,0002.
   - CD4 è l'unico fattore che migliora insieme PDS, MSE e `reach`
     ([CP-0030](checkpoints/0030-t10-attribuzione-cd4.md)).
 - **Misurato.** La fedeltà direzionale non si muove con gli effetti: vale 0,458–0,461 in
-  trial-01, t10 e t08, sotto la base ufficiale di 0,5123.
+  trial-01, t10, t08 e t11, sotto la base ufficiale di 0,5123.
   - Nel t11 il generatore di trial-01 chiama in mediana 543 / 582 / 764 geni per bersaglio
     in A / B / C, per l'83–85% «in su» (`reports/prediction_calls_2026-09-23/`).
-  - A effetto nullo ne chiama 462 / 453 / 684 (`reports/generator_null_2026-09-17/`).
+  - A effetto nullo ne chiama 462 / 453 / 684 (`reports/generator_null_2026-09-17/`);
+    `ControlModel` 0 (piloti del t14).
 - **Interpretazione.** In questa famiglia la fedeltà misura la precisione delle chiamate
   spurie del generatore. Si sposta cambiando il generatore, non gli effetti.
 - **Misurato.** Chi non chiama geni prende fedeltà 0 (D-035). Un generatore pulito serve
@@ -79,19 +89,18 @@ Le tabelle per membro stanno nei checkpoint citati.
 
 ### Il prossimo passo
 
-**Proposta**, da [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md) §6 e dalle regole
-già scritte:
+**Proposta**, da [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md) §6,
+[CP-0031](checkpoints/0031-t11-punteggio-orion.md) §6 e dalle regole già scritte:
 
-1. **Inviare il t11**, con il via del proprietario. Il pacchetto è pronto in
-   `C:/Users/ferra/vcc2026-data/artifacts/t11pack_r2/`. Poi `comparison.json` e un
-   checkpoint.
-2. **Leggere `r5`** con la regola del t11. Se regge, registrare ricetta e previsione del t12
-   prima di generarlo.
-3. **Far ripartire Colab**: prima il t09, poi il t14. Il t09 separa il generatore, il
-   fattore a cui CP-0030 lega la fedeltà.
+1. **Chiudere i piloti del t14.** La regola sceglie l'ampiezza; prima della generazione
+   completa si registra la previsione.
+2. **Generare, una alla volta, t14 e t12**, man mano che il disco lo permette. Poi si inviano,
+   con il via del proprietario e al massimo due al giorno.
+3. **Pulire l'attribuzione del t11** con un'ablazione: il t08 con K562 e CD4 a pesi uguali.
 4. **Preparare il set finale.** Il 22 ottobre bersagli e contesti cambiano, e il percorso di
    [LAVORO.md](LAVORO.md) §1 va rieseguito su di essi:
-   - stadi 97 e 102 sulla nuova lista di bersagli (D-039);
+   - stadi 97 e 102 sulla nuova lista di bersagli (D-039, D-041). Lo stadio 102 legge per
+     intero i file di Orion: alcune ore per linea;
    - identità dei contesti con gli stadi 85 e 99.
 
 Ogni invio consuma quota e passa dall'autorizzazione del proprietario.
@@ -116,10 +125,10 @@ La classifica finale dipende solo dal set finale, su tre contesti diversi (D, E,
 | Impacchettamento in memoria limitata (stadio 48) | fatto: 0,52 GiB di picco contro i 33,5 di `vcc prep` | [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) |
 | Prima sottomissione, trial-01 | +0,045929 | [CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md) |
 | Pipeline a singola cellula su Colab: K562 letto per intero, `ControlModel`, DE veloce identico allo scorer, banchi a sei metriche | fatto | [CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md), [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
-| Ancore ufficiali risolte da due invii valutati | fatto; reggono su cinque invii | [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md), [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md) |
+| Ancore ufficiali risolte da due invii valutati | fatto; reggono su sei invii | [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md), [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md) |
 | Predittore neurale condizionato | scartato dalla sua regola; il lineare inviato (t07) peggiora | [CP-0026](checkpoints/0026-predittore-neurale-condizionato.md), [CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md) |
 | Contesti A/B/C: saggio 10x Flex, impronte genetiche | misurato; le identità di linea restano ipotesi | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md) |
-| Trasferimento dello stesso bersaglio da più sorgenti (K562, CD4, Orion) | t08 migliore; t11 generato, non ancora valutato | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md), [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md) |
+| Trasferimento dello stesso bersaglio da più sorgenti (K562, CD4, Orion) | t11 migliore (+0,070777); t12 registrato prima, da generare | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md), [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md), [CP-0031](checkpoints/0031-t11-punteggio-orion.md) |
 | Generatore, cioè la fedeltà direzionale | aperto: t13 fermato dalla sua regola; t09 e t14 in coda su Colab | `reports/dispersion_2026-09-23/` |
 | Esperimenti in pseudobulk (benchmark modulare, GO slim, SVD, gate) e infrastruttura degli agenti (orchestratore, catena di cicli) | chiusi; codice archiviato | [CP-0011](checkpoints/0011-primo-benchmark-modulare.md)–[CP-0019](checkpoints/0019-catena-cicli-guardiano.md), [ARCHIVIO.md](ARCHIVIO.md) |
 | Set finale D/E/F | esce il 22 ottobre; invii fino al 5 novembre | §1 |
