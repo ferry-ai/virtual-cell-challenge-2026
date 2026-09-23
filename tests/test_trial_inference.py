@@ -3,17 +3,18 @@
 Same rule as `test_pipeline_contracts.py` -- every test here corresponds to a
 way this stage could produce a confident wrong number instead of an error:
 
-* a parameter selected with help from the targets it is reported on;
 * a gene with no evidence drifting away from zero because renormalisation had to
   put the compositional slack somewhere;
 * context A's cells shipped under label B, which the official validator cannot
   see and which the FAQ says looks like a weak model rather than a bug;
 * counts that are not counts.
+
+(The nested-selection leakage tests left with stage 44 on 23 September:
+docs/ARCHIVIO.md.)
 """
 
 from __future__ import annotations
 
-import json
 import sys
 import tempfile
 import unittest
@@ -42,6 +43,7 @@ from vcc2026.sampling import resample_library_sizes, sample_counts  # noqa: E402
 from vcc2026.signatures import Signature, SignatureSet  # noqa: E402
 from vcc2026.submission import SubmissionWriter, indptr_dtype  # noqa: E402
 from vcc2026.trials import load_trial, trial_ids  # noqa: E402
+
 
 def patch_axis(axis: GeneAxis):
     import vcc2026.genes as genes

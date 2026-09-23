@@ -22,7 +22,6 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
 
 from vcc2026.multisource import AxisTable, _purity_depth, effects_from_pseudobulk, mix  # noqa: E402
-from vcc2026.predictor_sc import SourceEffects  # noqa: E402
 
 
 def _rows(rng, base, n_cells, scale=1.0):
