@@ -34,3 +34,13 @@ riproducibili:
   verificato l'md5 all'upload. Si rigenera con lo stadio 45 dagli effetti in
   `processed/effects_t08_2026-09-22` con il seme 20260912, e si reimpacchetta con lo stadio
   48. Manifesti e sha256 restano in `reports/trial_2026-09-22/`.
+
+## Cancellazione del 23 settembre, prima del t11
+
+- `artifacts/q00full/prediction.h5ad` (4,2 GB): trial-00, ricampionamento dei controlli.
+  D-017 lo tiene come riferimento di dispersione. Resta **rigenerabile esattamente**: in
+  `artifacts/q00full/provenance_{A,B,C}.npz` ci sono le righe di controllo scelte per ogni
+  perturbazione, e lo stadio 45 (`trial-00-controls`, seme 20260912) le rilegge. Restano anche
+  diagnostica, validazione e manifesti. Motivo: il file di paging di Windows è cresciuto a
+  13,2 GB e il disco era sceso a 5,2 GB liberi, contro i circa 12 che servono per generare e
+  impacchettare il t11.
