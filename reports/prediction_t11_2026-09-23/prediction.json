@@ -1,0 +1,28 @@
+{
+  "written_utc": "2026-09-23T00:14:22.839331+00:00",
+  "label": "t11 = t08 + Orion HCT116: K562, CD4, HCT116 at equal weights, raw x 0.197, gamma 1, trial-01 generator",
+  "claim_type": "prediction registered before generation and submission; not a measurement",
+  "recipe": {
+    "path": "configs\\recipes\\t11.json",
+    "sha256": "c8da3d44aba1de38e2905acee1169c0e71e39ff79565753828a9b7e3eec6ecfd"
+  },
+  "references": {
+    "trial-01": 0.045929,
+    "t08": 0.06037,
+    "t10": "pending when this was written"
+  },
+  "evidence_used": "reports/orion_2026-09-23/r4 (effect space): pds proxy K562<->HCT116 0.75, CD4<->HCT116 0.60-0.63",
+  "expected": {
+    "score_avg_band": [
+      0.055,
+      0.075
+    ],
+    "pds_raw": "0.70-0.73",
+    "fid_raw": "about 0.46 (generator-bound)"
+  },
+  "reading_rule_fixed_before_the_result": {
+    "t11 >= t08 + 0.005": "Orion adds information about the official contexts",
+    "t11 <= t08 - 0.005": "at equal weights Orion dilutes K562 and CD4",
+    "otherwise": "inconclusive; do not attribute"
+  }
+}
