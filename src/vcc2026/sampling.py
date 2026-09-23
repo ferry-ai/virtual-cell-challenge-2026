@@ -17,7 +17,58 @@ from __future__ import annotations
 import numpy as np
 import scipy.sparse as sp
 
-__all__ = ["resample_library_sizes", "sample_counts"]
+__all__ = ["resample_library_sizes", "sample_counts", "fit_gene_dispersion"]
+
+
+def fit_gene_dispersion(
+    profile: np.ndarray,
+    library_sizes: np.ndarray,
+    zero_fraction: np.ndarray,
+    *,
+    n_cells: int = 2000,
+    max_phi: float = 50.0,
+    iterations: int = 30,
+    block: int = 2048,
+    seed: int = 0,
+) -> np.ndarray:
+    """Per-gene Gamma-Poisson dispersion that reproduces each gene's zero fraction.
+
+    The pooled-profile sampler draws every cell from ONE composition scaled to its library
+    size. Real cells also differ in composition, so a gene carries more zeros across real
+    cells than Poisson around the pooled mean allows. The scorer's Wilcoxon test reads the
+    missing zeros as an upward shift: on the t11 file, trial-01's generator called 543-764
+    genes per target, 83-85% of them up (stage 83, 2026-09-23).
+
+    For each gene, ``phi`` is found by bisection on ``log(phi)`` so that
+    ``mean_c (1 + phi * lam_cg) ** (-1 / phi)`` equals the observed zero fraction, with
+    ``lam_cg = L_c * p_g`` over ``n_cells`` library sizes drawn from the controls. A gene
+    whose Poisson zero fraction already reaches the observed one gets ``phi = 0`` (Poisson).
+    """
+    profile = np.asarray(profile, dtype=np.float64)
+    p = profile / profile.sum()
+    rng = np.random.default_rng(seed)
+    libs = rng.choice(np.asarray(library_sizes, dtype=np.float64), size=n_cells, replace=True)
+    target = np.asarray(zero_fraction, dtype=np.float64)
+    phi = np.zeros(p.size)
+    for start in range(0, p.size, block):
+        cols = np.arange(start, min(start + block, p.size))
+        lam = libs[:, None] * p[None, cols]
+        poisson_zero = np.exp(-lam).mean(axis=0)
+        need = (p[cols] > 0) & (target[cols] > poisson_zero + 1e-6) & (target[cols] < 1.0)
+        if not need.any():
+            continue
+        sub, goal = lam[:, need], target[cols][need]
+        lo = np.full(goal.size, np.log(1e-4))
+        hi = np.full(goal.size, np.log(max_phi))
+        for _ in range(iterations):
+            mid = 0.5 * (lo + hi)
+            ph = np.exp(mid)
+            zero = np.exp(-np.log1p(ph[None, :] * sub) / ph[None, :]).mean(axis=0)
+            too_few = zero < goal
+            lo = np.where(too_few, mid, lo)
+            hi = np.where(too_few, hi, mid)
+        phi[cols[need]] = np.exp(0.5 * (lo + hi))
+    return phi
 
 
 def resample_library_sizes(
@@ -71,7 +122,15 @@ def sample_counts(
     lib_sizes = np.minimum(np.asarray(lib_sizes, dtype=np.int64), max_counts_per_cell)
     lam = lib_sizes[:, None] * p[None, :]
 
-    if overdispersion is not None:
+    if overdispersion is not None and np.ndim(overdispersion) == 1:
+        # per-gene dispersion (`fit_gene_dispersion`); phi = 0 keeps a gene Poisson
+        phi = np.asarray(overdispersion, dtype=np.float64)
+        if phi.shape != p.shape or (phi < 0).any():
+            raise ValueError("per-gene overdispersion must be non-negative, one value per gene")
+        over = np.flatnonzero(phi > 0)
+        if over.size:
+            lam[:, over] = rng.gamma(shape=1.0 / phi[over], scale=lam[:, over] * phi[over])
+    elif overdispersion is not None:
         if overdispersion <= 0:
             raise ValueError("overdispersion must be positive")
         shape = 1.0 / overdispersion

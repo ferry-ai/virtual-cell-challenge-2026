@@ -59,7 +59,7 @@ from vcc2026.genes import official_axis
 from vcc2026.manifest import RunManifest, file_fingerprint
 from vcc2026.models import ShrunkTransfer
 from vcc2026.resources import GiB, peak_rss_bytes, require, snapshot
-from vcc2026.sampling import resample_library_sizes, sample_counts
+from vcc2026.sampling import fit_gene_dispersion, resample_library_sizes, sample_counts
 from vcc2026.signatures import SignatureSet
 from vcc2026.submission import SubmissionWriter
 from vcc2026.trials import load_trial, trial_ids
@@ -121,6 +121,11 @@ def main() -> None:
     p.add_argument("--reserve-gib", type=float, default=10.0)
     p.add_argument("--skip-resource-check", action="store_true")
     p.add_argument("--allow-overwrite", action="store_true")
+    p.add_argument("--gene-dispersion", action="store_true",
+                   help="fit a per-gene Gamma-Poisson dispersion to each context's zero fractions "
+                        "(sampling.fit_gene_dispersion) instead of Poisson around the pooled profile")
+    p.add_argument("--effects-scale", type=float, default=1.0,
+                   help="external_effects: multiply every file's lfc (0 = the null of this generator)")
     p.add_argument("--effects", action="append", default=None, metavar="CTX=PATH",
                    help="external_effects trials: per-context npz from stage 100 "
                         "(targets, genes, lfc in ln units, observed)")
@@ -195,6 +200,19 @@ def main() -> None:
               f"{np.median(prof.nnz_per_cell):,.0f}")
     basal_seconds = time.perf_counter() - t_basal
     basal_profiles = {c: b.profile for c, b in basals.items()}
+    gene_phi = {}
+    if args.gene_dispersion:
+        for ctx, prof in basals.items():
+            with h5py.File(prof.source_path, "r") as f:
+                idx_ds = f["X/indices"]
+                detected = np.zeros(len(axis), dtype=np.int64)
+                for lo in range(0, idx_ds.shape[0], 20_000_000):
+                    detected += np.bincount(idx_ds[lo:lo + 20_000_000], minlength=len(axis))
+            zero_fraction = 1.0 - detected / prof.n_cells
+            gene_phi[ctx] = fit_gene_dispersion(prof.profile, prof.library_sizes, zero_fraction, seed=seed)
+            expressed = prof.profile > 0
+            print(f"  dispersion {ctx}: {int((gene_phi[ctx] > 0).sum()):,} genes overdispersed, "
+                  f"median phi {np.median(gene_phi[ctx][expressed]):.3f}")
 
     # Contexts must be distinguishable for the provenance check to mean
     # anything: if two basal states were identical, a swap would be invisible
@@ -266,13 +284,21 @@ def main() -> None:
                 raise SystemExit(f"{path}: no effects for {len(missing)} targets, e.g. {missing[:3]}")
             lfc, obs_mask = z["lfc"][:, gpos], z["observed"][:, gpos]
             # stage 100 writes ln fold changes; the trial-01 profile takes log2
-            ctx_predictions[ctx] = {t: (lfc[rows[t]] / np.log(2.0), obs_mask[rows[t]].astype(bool))
+            ctx_predictions[ctx] = {t: (args.effects_scale * lfc[rows[t]] / np.log(2.0),
+                                        obs_mask[rows[t]].astype(bool))
                                     for t in targets}
             print(f"effects {ctx}      : {path} ({int(obs_mask.any(axis=0).sum()):,} genes observed)")
-        support.update({"model": "external_effects",
+        support.update({"model": "external_effects", "effects_scale": args.effects_scale,
                         "effects": {c: file_fingerprint(Path(p)) for c, p in specs.items()}})
     elif trial["kind"] != "control_resampling":
         raise SystemExit(f"unsupported trial kind {trial['kind']!r}")
+
+    if gene_phi:
+        support["gene_dispersion"] = {
+            ctx: {"method": "sampling.fit_gene_dispersion: zero-fraction matching, per gene",
+                  "genes_overdispersed": int((phi > 0).sum()),
+                  "phi_quantiles_expressed": [float(q) for q in np.quantile(phi[basals[ctx].profile > 0], [0.1, 0.5, 0.9])]}
+            for ctx, phi in gene_phi.items()}
 
     # --- generate ------------------------------------------------------------
     t_gen = time.perf_counter()
@@ -325,7 +351,7 @@ def main() -> None:
                         profile, libs, rng,
                         max_stored_per_cell=ch.max_stored_per_cell,
                         max_counts_per_cell=ch.max_counts_per_cell,
-                        overdispersion=args.overdispersion,
+                        overdispersion=gene_phi.get(ctx, args.overdispersion),
                     )
                     shift_log.append(detail["compositional_shift_log2"])
 
