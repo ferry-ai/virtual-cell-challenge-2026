@@ -2,20 +2,41 @@
 
 ## Read this first
 
-Start from [`docs/PROGETTO.md`](docs/PROGETTO.md) — the project map — then
-[`docs/checkpoints/0001-ricostruzione-stato-2026-09-12.md`](docs/checkpoints/0001-ricostruzione-stato-2026-09-12.md).
-Do not treat `README.md` or any document in `docs/` as current until you have checked
-its row in [`docs/REGISTRO.md`](docs/REGISTRO.md). Several documents contain
-conclusions that later work corrected; the registry says which.
+Read these, in this order, before anything else:
 
-Four files hold the project's understanding of itself:
+1. [`docs/PROGETTO.md`](docs/PROGETTO.md) §0 — where the project stands today, on one page:
+   best score, what is in flight, what is decided next.
+2. [`docs/LAVORO.md`](docs/LAVORO.md) — the live pipeline: which stages run, in what
+   order, with which commands; the rules for a submission and for Colab.
+3. The last three rows of [`docs/checkpoints/INDICE.md`](docs/checkpoints/INDICE.md).
+
+That is enough to work. Everything else is reference, to open when a task needs it — and
+before you rely on any document, check its row in [`docs/REGISTRO.md`](docs/REGISTRO.md):
+several contain conclusions that later work corrected.
 
 | File | Answers |
 |---|---|
 | `docs/PROGETTO.md` | What are we solving, where are we, what is uncertain |
+| `docs/LAVORO.md` | How the live pipeline is run, and the rules that protect it |
 | `docs/checkpoints/` | What happened, when, on what evidence — immutable |
 | `docs/DECISIONI.md` | What we chose, why, and when to reopen it |
 | `docs/REGISTRO.md` | Which documents and data can still be relied on |
+| `docs/ARCHIVIO.md` | What left the tree, and how to bring it back |
+
+## What is live
+
+Only the code that produces or scores a submission is in the tree (D-040, 23 September
+2026): 22 numbered scripts, listed one per line in `docs/LAVORO.md` §4, the modules they
+import, and their tests. Everything else — the orchestrator, the pairwise oracle, the chain
+of cycles, the pseudobulk modular benchmark, the conditioned predictor, the source probes,
+the remote ingestion, the one-off stages of the trial-01 pipeline, the expired plans — is
+in the tag `archivio/pre-pulizia-2026-09-23`, file by file in `docs/ARCHIVIO.md`.
+
+- There is no chain of cycles, no orchestrator and no morning plan: you work in a session
+  with the owner, and the owner authorises anything that spends quota.
+- If you need archived code, restore it from the tag with its test; do not rewrite it.
+  Reviving a subsystem is a decision: record it in `docs/DECISIONI.md`.
+- Checkpoints still name archived paths. That is expected; the checker accepts them.
 
 ## Evidence discipline
 
@@ -37,16 +58,18 @@ confident prose outrunning what was measured. Hold these lines:
   restating an earlier document's conclusion, check whether it carried a caveat you are
   about to drop. See CP-0002.
 - **Never overwrite a probe output or a report.** A failed request documents what the
-  endpoint looked like that day. New runs go to a new `--out` destination, the way
-  `scripts/27_verify_grok_leads.py` does.
+  endpoint looked like that day. New runs go to a new `--out` or `--report-dir`, the way
+  every stage in `docs/LAVORO.md` refuses to overwrite.
+- **Register the prediction before the submission**, with the rule you will read the
+  result by; the threshold does not move after the number is known (CP-0030).
 - Never invent dates, results, reviewer approvals, or decisions. If you reconstruct
   history from artifacts, say so in the text.
 
 ## When to write a checkpoint
 
-Write one when a dataset is adopted or rejected, a benchmark completes, a hypothesis
-is contradicted, or the modeling or validation strategy changes. Not for a tool call,
-an edit, or an iteration.
+Write one when a dataset is adopted or rejected, a benchmark completes, a submission is
+scored, a hypothesis is contradicted, or the modeling or validation strategy changes. Not
+for a tool call, an edit, or an iteration.
 
 ```bash
 python scripts/30_new_checkpoint.py --slug cd4-benchmark --title "Primo benchmark su CD4"
@@ -56,14 +79,16 @@ python scripts/30_new_checkpoint.py --slug cd4-benchmark --title "Primo benchmar
 "Corretto da" column in `docs/checkpoints/INDICE.md`. Historical disagreement has to
 stay readable.
 
-## When you touch documents or data
+## When you touch documents, code or data
 
 - A document that is contradicted gets a status change and a review sheet listing the
   specific disputed claims — not deletion, and not a rewrite of the whole file.
 - `da-verificare` never becomes `superato` without naming the material that replaced it.
-- Do not delete documents, reports or datasets. Do not move large data files or copy
-  datasets into the repository. Cleanup candidates are listed in the registry and need
-  the owner's explicit consent.
+- Reports, checkpoints and datasets are never deleted. Do not move large data files or
+  copy datasets into the repository.
+- Code and documents that stop being live leave the tree only through the archive: an
+  annotated tag, rows in `docs/ARCHIVIO.md`, then `git rm` (D-040, `docs/LAVORO.md` §5).
+  An untracked file goes to the Recycle Bin, never through a hard delete.
 - New material in `docs/` or `reports/` needs a registry row; the checker enforces it.
 
 ## Conventions

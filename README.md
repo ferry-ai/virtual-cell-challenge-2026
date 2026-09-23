@@ -5,13 +5,15 @@ cell lines never seen during training.
 
 Submissions close **5 November 2026**. Final test set drops **22 October 2026**.
 
-> **Start from [`docs/PROGETTO.md`](docs/PROGETTO.md)** — the project map: where we
-> are, what has actually been measured, what is still uncertain, and what comes next.
+> **Start from [`docs/PROGETTO.md`](docs/PROGETTO.md) §0** — where the project stands
+> today — and [`docs/LAVORO.md`](docs/LAVORO.md), the live pipeline with its exact
+> commands. Agents: the working agreement is [`CLAUDE.md`](CLAUDE.md).
 > This README covers the task, the scoring and the setup. Parts of it are older than
 > the analyses in `docs/`, and six of its claims are flagged: see its entry in
-> [`docs/REGISTRO.md`](docs/REGISTRO.md), sheet R-001. For the submission contract as
-> verified on 12 September 2026, and the exact commands to regenerate, validate and
-> submit, see [`docs/SOTTOMISSIONE.md`](docs/SOTTOMISSIONE.md).
+> [`docs/REGISTRO.md`](docs/REGISTRO.md), sheet R-001. The sections from "Plan" onward
+> are a record of 11–13 September: the scripts they name were archived on 23 September
+> (`docs/ARCHIVIO.md`). The submission contract is in
+> [`docs/SOTTOMISSIONE.md`](docs/SOTTOMISSIONE.md) §1.
 
 ## The task
 
@@ -66,7 +68,7 @@ vcc2026/                     <- this repo (Desktop, synced by OneDrive)
   configs/config.yaml        <- paths + official challenge constants
   src/vcc2026/               <- library
   scripts/                   <- executables and wrappers
-  notebooks/                 <- exploration
+  notebooks/                 <- the Colab dispatcher and its job scripts
   tests/
   docs/
 

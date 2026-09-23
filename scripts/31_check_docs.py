@@ -318,6 +318,10 @@ def check_links(errors: list[str]) -> None:
     files = [REPO_ROOT / "README.md", REPO_ROOT / "CLAUDE.md",
              REPO_ROOT / "docs" / "PROGETTO.md", REPO_ROOT / "docs" / "REGISTRO.md",
              REPO_ROOT / "docs" / "DECISIONI.md"]
+    # The working guide and the archive list are checked when present: an entry point
+    # that names a missing stage misdirects the next agent before anything else can.
+    files += [path for path in (REPO_ROOT / "docs" / "LAVORO.md",
+                                REPO_ROOT / "docs" / "ARCHIVIO.md") if path.exists()]
     files += sorted((REPO_ROOT / "docs" / "checkpoints").glob("*.md"))
     for path in files:
         if not path.exists():
@@ -325,6 +329,8 @@ def check_links(errors: list[str]) -> None:
             continue
         text = path.read_text(encoding="utf-8")
         for raw in BACKTICK_PATH.findall(text):
+            if "<" in raw:
+                continue  # a template such as reports/trial_<data>/ names no file
             if not path_exists(raw):
                 errors.append(f"{path.name}: `{raw}` does not exist")
         for target in MD_LINK.findall(text):

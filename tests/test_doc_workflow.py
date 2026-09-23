@@ -142,7 +142,8 @@ class CheckerTests(unittest.TestCase):
         self.assertTrue(any('anchor' in e and 'PROGETTO' in e for e in errors), errors)
 
         (root / 'README.md').write_text(
-            'see `docs/PROGETTO.md` and [map](docs/PROGETTO.md#presente)\n', encoding='utf-8')
+            'see `docs/PROGETTO.md` and [map](docs/PROGETTO.md#presente); '
+            'a template like `reports/trial_<data>/` names no file\n', encoding='utf-8')
         errors = []
         with patch.object(check_docs, 'REPO_ROOT', root):
             check_docs.check_links(errors)

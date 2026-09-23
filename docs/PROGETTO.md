@@ -1,67 +1,100 @@
 # Mappa del progetto — VCC 2026
 
-**Questo è il punto di ingresso.** Se leggi una cosa sola, leggi questa pagina.
-Aggiornata il 2026-09-22 (solo §5, primo paragrafo: CD4 e Flex, [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md)); il 19 i due paragrafi successivi (predittore neurale condizionato, [CP-0026](checkpoints/0026-predittore-neurale-condizionato.md), e t07; prima RPE1 contro K562, [CP-0023](checkpoints/0023-rpe1-contro-k562-su-hepg2.md)-[CP-0025](checkpoints/0025-componente-comune-scartata.md)). Il resto è del 17.
+**Questo è il punto di ingresso.** Il §0 dice dove siamo oggi, in una pagina; il resto è
+riferimento. Come si esegue il lavoro sta in [LAVORO.md](LAVORO.md).
 
-**Il 17 settembre, cambio di strategia ([CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md)).**
-Il mandato del proprietario è superare 0,1 lavorando su **cellule singole**, con i grezzi
-già su Drive e il calcolo su Colab. Stato a fine giornata:
-- **Implementato e verificato in locale:** lettura a flusso del K562 genome-wide,
-  generatore appreso dai controlli (`ControlModel`), DE dello scorer in versione veloce e
-  identica, predittore con trasferimento, termine cis e risposta comune, banchi a sei
-  metriche.
-- **Non ancora eseguito in remoto:** la coda Colab (`MyDrive/vcc2026/runs/queue/`)
-  aspetta che il notebook `notebooks/colab_sc_training.ipynb` venga avviato. Non esiste
-  ancora una trial-02, né un nuovo punteggio.
-- **Misurato:**
-  - l'effetto cis della CRISPRi si trasferisce da K562 a HepG2 (entro 1 kb segno
-    concorde al 97,5%);
-  - la co-espressione nei controlli non predice il knockdown;
-  - lo scorer assegna FID 0 a chi non chiama geni, quindi un generatore pulito senza
-    segnale peggiora il punteggio (D-035).
+Aggiornata il 2026-09-23 con la pulizia di D-040:
+- §0 è nuovo;
+- §2, §5 e §6 sono riscritti. Gli strati datati dal 15 al 22 settembre stanno nei
+  checkpoint, e la versione precedente di questa pagina è nel tag
+  `archivio/pre-pulizia-2026-09-23`;
+- §1, §3 e §4 sono invariati, salvo le voci 7 e 20 del §4.
 
-**Pianificazione del 16 settembre:** due workflow paralleli, entrambi proposte da
-approvare. [Implementazione](PIANO_IMPLEMENTATIVO_2026-09-16.md): incarichi, scadenze e
-regole di accettazione per arrivare a un candidato competitivo.
-[Comprensione](PIANO_COMPRENSIONE_2026-09-16.md): stato, esperimenti, criticità e
-studio, per i ricercatori. Si appoggiano sulla fotografia della classifica in
-`reports/leaderboard_2026-09-16/`. Dal 17 settembre i due piani si preparano ogni
-mattina alle 8 con la skill di progetto `piano-mattutino` (`/piano-mattutino`), che
-parte da un'attività pianificata dell'app Claude e produce solo pianificazione.
+## 0. Oggi — 23 settembre 2026
 
-**La catena di cicli (dal 16 settembre sera, [CP-0019](checkpoints/0019-catena-cicli-guardiano.md)).**
-Il piano sigillato apre il ciclo 01. In ogni ciclo:
-- Codex scrive il foglio e i test di collaudo;
-- Claude implementa su un branch locale;
-- Grok controlla, e può chiedere fino a tre campagne DeepSeek-Kimi;
-- un resoconto chiude il ciclo.
+**Il migliore è il t08: +0,060370, rango 547**
+([CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md)). Il set finale arriva il 22 ottobre:
+- tre contesti nuovi (D, E, F) e 300 perturbazioni nuove;
+- le sottomissioni chiudono il 5 novembre (§1).
 
-I cicli successivi li avvia ChatGPT (l'app Codex) alla fine di un dialogo con il
-proprietario, quante volte si vuole; nessuno li avvia a mano. È implementato e provato
-solo con agenti simulati: nessun ciclo è ancora girato dal vivo
-([CICLO_GIORNALIERO.md](CICLO_GIORNALIERO.md)).
+### I punteggi ufficiali
 
-**Dati grezzi pesanti, 16 settembre pomeriggio:** il proprietario dichiara che
-`K562_gwps_raw_singlecell_01.h5ad` e `NadigOConner2024_hepg2.h5ad` sono già sul suo
-Google Drive (5 TB). Da ora quei due file **si collegano dal runtime remoto, non si
-scaricano**, e il portatile resta fuori dal percorso come prima (D-005). Le dimensioni
-dichiarate tornano con il catalogo, ma md5 e percorso delle copie non sono verificati.
-Attenzione: con le impostazioni predefinite il notebook remoto passerebbe a scaricare il
-blocco successivo ([CP-0018](checkpoints/0018-drive-storage-confermato.md)).
+| Invio | Che cosa cambia | Generatore | Media | Rango | Evidenza |
+|---|---|---|---|---|---|
+| trial-01 | trasferimento K562 (`ShrunkTransfer`) × 0,197 | trial-01 | +0,045929 | 446 | [CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md) |
+| t02 | K562 dalla singola cellula × 1 + termine cis | `ControlModel` | −0,092774 | 764 | [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
+| t03 | come il t02, × 2 | `ControlModel` | +0,019692 | 576 | [CP-0022](checkpoints/0022-previsione-verificata-t03.md) |
+| t07 | modello lineare condizionato su bersaglio e contesto | — | −0,016004 | 671 | [CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md) |
+| **t08** | effetti K562 + CD4, γ = 1, grezzi × 0,197 | trial-01 | **+0,060370** | 547 | [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md) |
+| t10 | il t08 senza CD4 | trial-01 | +0,050191 | 570 | [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md) |
 
-**Pianificazione del 15 settembre:** [piano operativo](PIANO_OPERATIVO_2026-09-15.md)
-con priorità giornaliere, incarichi e verifiche per dati, remoto e modello. È una
-proposta fondata sugli artefatti esistenti, non un nuovo risultato sperimentale.
-Il suo §8 segnala disallineamenti ancora presenti nei riepiloghi storici.
+In tutti gli invii:
+- lo scalato della `mse` vale 0 (tosato);
+- quello della fedeltà direzionale è negativo;
+- il membro che porta il punteggio è `pds_cosine` (+0,466 scalato nel t08).
 
-**Mandato aggiornato:** l'utente approva il piano e concentra oggi tutte le attività
-possibili, avviando agenti contemporanei e supervisionandoli personalmente. Solo il
-training può continuare oltre oggi. La [regia parallela](REGIA_PARALLELA_2026-09-15.md)
-prevale sulla precedente scansione settimanale e sui limiti di filoni aperti.
+Le tabelle per membro stanno nei checkpoint citati.
 
-Le altre pagine del sistema: [checkpoint](checkpoints/INDICE.md) (cosa è successo e
-quando), [decisioni](DECISIONI.md) (cosa abbiamo scelto e quando va riaperto),
-[registro](REGISTRO.md) (di quali documenti e dati ci si può fidare).
+### Che cosa è in corso
+
+- **t11** = t08 + Orion HCT116, a pesi uguali.
+  - Registrati prima: ricetta, previsione (+0,055…+0,075) e regola di lettura.
+  - Generato e impacchettato.
+  - Tre tentativi d'invio falliti, **nessuna entry valutata**. Alle 14:29Z `vcc whoami` dava
+    `can_submit: true` (`reports/trial_2026-09-23/`).
+  - Per ritentare serve il via del proprietario in chat.
+- **t12** = t08 + Orion HCT116 e HEK293T. Lo prevede la regola del t11
+  (`reports/orion_2026-09-23/PRIMA_DEI_RISULTATI.md`). HEK293T è estratto, e la cache dello
+  stadio 98 che lo contiene (`reports/orion_2026-09-23/r5/`) esiste ma **non è ancora stata
+  letta**. Nessuna ricetta.
+- **t09 e t14** = `ControlModel` con gli effetti del t08.
+  - Il t14 sceglie l'ampiezza sulle chiamate, con la regola in
+    `reports/dispersion_2026-09-23/PRIMA_T14.md`.
+  - Sono in coda su Colab (job 044 e 045).
+  - Il dispatcher tace dal 19 settembre alle 14:18 UTC: la coda riparte solo quando il
+    proprietario riavvia il notebook.
+- **t13** = dispersione per gene nel generatore di trial-01. Si è fermato per la sua regola:
+  a effetto nullo fa 5 / 15 / 31 chiamate mediane in A / B / C
+  (`reports/dispersion_2026-09-23/RISULTATO_NULLO.md`).
+
+### Che cosa guida le scelte
+
+- **Misurato.** CD4 porta +0,0102 dei +0,0144 guadagnati dal t08.
+  - È una descrizione, non un verdetto: la regola scritta prima dà «non attribuibile», per
+    0,0002.
+  - CD4 è l'unico fattore che migliora insieme PDS, MSE e `reach`
+    ([CP-0030](checkpoints/0030-t10-attribuzione-cd4.md)).
+- **Misurato.** La fedeltà direzionale non si muove con gli effetti: vale 0,458–0,461 in
+  trial-01, t10 e t08, sotto la base ufficiale di 0,5123.
+  - Nel t11 il generatore di trial-01 chiama in mediana 543 / 582 / 764 geni per bersaglio
+    in A / B / C, per l'83–85% «in su» (`reports/prediction_calls_2026-09-23/`).
+  - A effetto nullo ne chiama 462 / 453 / 684 (`reports/generator_null_2026-09-17/`).
+- **Interpretazione.** In questa famiglia la fedeltà misura la precisione delle chiamate
+  spurie del generatore. Si sposta cambiando il generatore, non gli effetti.
+- **Misurato.** Chi non chiama geni prende fedeltà 0 (D-035). Un generatore pulito serve
+  solo insieme a effetti che producano chiamate con il segno giusto.
+- **Misurato.** La gara è letta con 10x Flex, a sonde. A, B e C si somigliano fra loro più
+  che alle sorgenti pubbliche in 3' ([CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md)).
+  Le identità di linea sono ipotesi.
+
+### Il prossimo passo
+
+**Proposta**, da [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md) §6 e dalle regole
+già scritte:
+
+1. **Inviare il t11**, con il via del proprietario. Il pacchetto è pronto in
+   `C:/Users/ferra/vcc2026-data/artifacts/t11pack_r2/`. Poi `comparison.json` e un
+   checkpoint.
+2. **Leggere `r5`** con la regola del t11. Se regge, registrare ricetta e previsione del t12
+   prima di generarlo.
+3. **Far ripartire Colab**: prima il t09, poi il t14. Il t09 separa il generatore, il
+   fattore a cui CP-0030 lega la fedeltà.
+4. **Preparare il set finale.** Il 22 ottobre bersagli e contesti cambiano, e il percorso di
+   [LAVORO.md](LAVORO.md) §1 va rieseguito su di essi:
+   - stadi 97 e 102 sulla nuova lista di bersagli (D-039);
+   - identità dei contesti con gli stadi 85 e 99.
+
+Ogni invio consuma quota e passa dall'autorizzazione del proprietario.
 
 ## 1. Il problema
 
@@ -77,64 +110,24 @@ La classifica finale dipende solo dal set finale, su tre contesti diversi (D, E,
 
 ## 2. Dove siamo
 
-| Fase | Stato |
-|---|---|
-| Ambiente, CLI, dati di controllo, writer di sottomissione verificato | fatto |
-| Identificazione dei contesti e del contratto di punteggio | fatto |
-| Audit delle sorgenti esterne candidate | fatto |
-| Registry versionato delle sorgenti, con livelli di verifica | fatto |
-| Pipeline verticale: registry → firme con incertezza → baseline → valutazione | fatto, su scala ridotta |
-| Baseline di trasferimento calibrate e valutate fuori campione | fatto (spazio pseudobulk) |
-| Scorer ufficiale eseguito end-to-end su un bundle a singola cellula | fatto, su un **nullo** |
-| Contratto di sottomissione verificato sulle fonti ufficiali e sulla CLI | fatto ([SOTTOMISSIONE.md](SOTTOMISSIONE.md)) |
-| Calibrazione annidata dell'ampiezza, selezione separata dal riporto | fatto ([CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.2) |
-| Inferenza per A/B/C e due previsioni complete 300 × 400 × 3 | fatto, verificate sul file scritto |
-| Packaging `.vcc` di trial-01 | fatto in locale, 0,52 GiB di picco ([CP-0005](checkpoints/0005-packaging-streaming-trial01.md)) |
-| **Banco di prova predittivo (punteggio VCC su effetti veri)** | **HepG2 Nadig è locale** (metodologico, 0/300 pannello, metriche grezze senza ancore ufficiali). Manca un bundle con ancore stabili e copertura del pannello |
-| Prima sottomissione valutata | fatto: 0,045929, rango 446/920 ([CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md)) |
-| Ensemble, miglioramento del punteggio | non iniziato |
-| Orchestratore locale per consultare più modelli su una domanda | canali DeepSeek/Kimi verificati; campagna Jiang **avviata** il 15 settembre, non conclusa ([ORCHESTRATORE.md](ORCHESTRATORE.md), [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md)) |
-| Modalità di ricerca scientifica a tre fasi nell'orchestratore | implementata, provata solo a secco ([RICERCA_SCIENTIFICA.md](RICERCA_SCIENTIFICA.md), [CP-0010](checkpoints/0010-modalita-ricerca-scientifica.md)) |
-| Primo confronto modulare contro rete unica e ShrunkTransfer | fatto, in spazio **proxy** pseudobulk su K562/RPE1; esito **inconcludente** per l'adozione ([CP-0011](checkpoints/0011-primo-benchmark-modulare.md), [BENCHMARK_MODULARE.md](BENCHMARK_MODULARE.md)) |
-| Specifica degli input degli encoder per bersagli mai perturbati | fatta, descrittori verificati su file; GO slim proposta, non misurata predittivamente ([CP-0012](checkpoints/0012-encoder-inputs-unseen-target.md), [ENCODER_INPUTS.md](ENCODER_INPUTS.md)) |
-| Terzo contesto perturbato acquisito (HepG2 Nadig) e benchmark a tre contesti | fatto: md5 verificato, 2.346 firme, tre fold esterni. Il descrittore di contesto e ora misurabile e **non aiuta in modo sistematico**; il segnale favorevole alla base congelata di CP-0011 **non si ripresenta** ([CP-0013](checkpoints/0013-hepg2-terzo-contesto.md), [BENCHMARK_TRE_CONTESTI.md](BENCHMARK_TRE_CONTESTI.md)) |
-| Generatore contro predittore sulle sei metriche VCC, su cellule reali | fatto su HepG2 tenuto fuori, metriche **grezze senza ancore**: i due fattori muovono metriche diverse e talvolta in direzioni opposte ([CP-0013](checkpoints/0013-hepg2-terzo-contesto.md), D-027) |
-| Pilot dei descrittori GO slim per bersagli mai perturbati | fatto: l'estensione e **scartata** dalla regola fissata prima, e il braccio con l'annotazione permutata va come quello vero ([CP-0014](checkpoints/0014-go-slim-e-gpu.md), D-028) |
-| Verifica che il codice possa usare una GPU | fatta e **negativa**: ogni decoder e numpy scritto a mano, `torch` non e una dipendenza, e al formato attuale l'aritmetica e 1,3 s su 223. Il collo di bottiglia e algoritmico, non hardware ([CP-0014](checkpoints/0014-go-slim-e-gpu.md), D-029, [CONSEGNA_GPU.md](CONSEGNA_GPU.md)) |
-| SVD randomizzata contro esatta, e confronto di rango 16/32/64/128 | fatta: la randomizzata **non** supera la banda prefissata sulle predizioni (4 fold su 48); il rango >16 scelto internamente **peggiora** il lowrank sul test. Default invariato: SVD esatta, griglia {8, 16} ([CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md), D-029, D-030, [SVD_E_RANGO.md](SVD_E_RANGO.md)) |
-| Gate di espressione scritto a mano (G1 simmetrico, G2 asimmetrico, G3 sul bersaglio) con i due controlli obbligatori | fatto: **non promosso** dalla regola fissata prima del run. La selezione interna sceglie «non fare niente» in 30 righe su 54, e dove un gate aiuta, quello costruito sulla **sorgente** aiuta quanto o più di quello costruito sulla destinazione ([CP-0017](checkpoints/0017-gate-espressione-destinazione.md), D-033) |
-| Catena di cicli: guardiano, collaudo scritto da Codex prima di Claude, controllo di Grok con campagne dell'orchestratore | implementata e provata con agenti simulati (42 test); **nessun ciclo dal vivo**. Guardiano registrato all'accesso e attivo dal 16 settembre, 23:54. Mancano `claude auth login` e la fase di integrazione ([CP-0019](checkpoints/0019-catena-cicli-guardiano.md), D-021 aggiornata) |
-| Grezzi pesanti (K562 genome-wide a singola cellula, HepG2) sul Google Drive del proprietario | **md5 verificato al download** dal run Colab del 15 settembre, nei percorsi attesi ([CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) §3.1, che corregge [CP-0018](checkpoints/0018-drive-storage-confermato.md)). Il contenuto del K562 non è ancora stato letto da nessun run |
-| Pipeline a singola cellula (estrazione K562, generatore appreso, DE veloce, predittore con termine cis, banchi a sei metriche) | implementata e provata in locale su dati ridotti; **coda Colab non ancora eseguita**; nessuna trial-02 ([CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md), D-034–D-037) |
-| Effetto cis della CRISPRi (I-4) | misurato: forte entro 1–5 kb e trasferibile K562 → HepG2; 34–37 bersagli del pannello hanno un vicino espresso entro 1 kb (`reports/cis_2026-09-17/`) |
-
-**Il 13 settembre 2026 è stata inviata la prima sottomissione, ed è stata valutata:
-punteggio 0,045929, posizione 446 su 920 squadre**
-([CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md)). È il primo numero del
-progetto sulla scala della gara. Fino a quel momento la riga qui sopra diceva «nessuna
-sottomissione è stata inviata e non esiste alcun punteggio di leaderboard»: era vera
-fino alle 01:12Z del 13 settembre.
-Dal 12 settembre esistono però baseline misurate: trasferimento con ampiezza calibrata
-su bersagli tenuti fuori ([CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md),
-raffinata da [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md)).
-Sono in spazio pseudobulk log2FC, **non** sono punteggi VCC, e la distinzione va tenuta:
-lo scorer vuole conteggi a singola cellula contro controlli reali.
-
-Esistono anche, dal 12 settembre, **due previsioni complete a forma di sottomissione**
-per i contesti A/B/C — un ricampionamento dei controlli senza modello e il
-trasferimento calibrato — generate in locale e verificate contro il contratto leggendo
-il file scritto. Dal 13 settembre **`trial-01-transfer` è impacchettato**: un `.vcc` da
-3,91 GiB, prodotto con un percorso che convalida e scrive senza materializzare la
-matrice (0,52 GiB di picco contro i 33,5 del modello della CLI ufficiale), con tutte e
-24 le convalide attive e il payload verificato bit a bit contro l'input
-([CP-0005](checkpoints/0005-packaging-streaming-trial01.md)).
-
-**Il server lo ha accettato**, il 13 settembre: la sottomissione è arrivata a
-`published`, con l'md5 verificato e nessun errore. Resta vero che una convalida di
-formato non dice nulla sulla qualità predittiva — ora misurata, e bassa.
-`trial-00-controls` non è impacchettato e non va inviato (D-017).
+| Fase | Stato | Evidenza |
+|---|---|---|
+| Ambiente, CLI, dati di controllo, contratto di sottomissione e di punteggio | fatto | [SOTTOMISSIONE.md](SOTTOMISSIONE.md), `reports/scorer/vcc2026_contract.json` |
+| Impacchettamento in memoria limitata (stadio 48) | fatto: 0,52 GiB di picco contro i 33,5 di `vcc prep` | [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) |
+| Prima sottomissione, trial-01 | +0,045929 | [CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md) |
+| Pipeline a singola cellula su Colab: K562 letto per intero, `ControlModel`, DE veloce identico allo scorer, banchi a sei metriche | fatto | [CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md), [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
+| Ancore ufficiali risolte da due invii valutati | fatto; reggono su cinque invii | [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md), [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md) |
+| Predittore neurale condizionato | scartato dalla sua regola; il lineare inviato (t07) peggiora | [CP-0026](checkpoints/0026-predittore-neurale-condizionato.md), [CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md) |
+| Contesti A/B/C: saggio 10x Flex, impronte genetiche | misurato; le identità di linea restano ipotesi | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md) |
+| Trasferimento dello stesso bersaglio da più sorgenti (K562, CD4, Orion) | t08 migliore; t11 generato, non ancora valutato | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md), [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md) |
+| Generatore, cioè la fedeltà direzionale | aperto: t13 fermato dalla sua regola; t09 e t14 in coda su Colab | `reports/dispersion_2026-09-23/` |
+| Esperimenti in pseudobulk (benchmark modulare, GO slim, SVD, gate) e infrastruttura degli agenti (orchestratore, catena di cicli) | chiusi; codice archiviato | [CP-0011](checkpoints/0011-primo-benchmark-modulare.md)–[CP-0019](checkpoints/0019-catena-cicli-guardiano.md), [ARCHIVIO.md](ARCHIVIO.md) |
+| Set finale D/E/F | esce il 22 ottobre; invii fino al 5 novembre | §1 |
 
 ## 3. Cosa sappiamo, e cosa lo sostiene
+
+La tabella raccoglie le misure fino al 17 settembre; quelle successive stanno nel §0 e nei
+checkpoint da [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) in poi.
 
 La colonna "tipo" è la parte importante. Una **misura** è un numero che si può
 ricalcolare. Un'**interpretazione** è una lettura di quel numero. Un'**ipotesi** non è
@@ -239,10 +232,9 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
    essenziali.
 7. **Se esista Perturb-seq CRISPRi pubblico in linea T matura o squamosa.** La ricerca
    non è conclusa; la pista più vicina per C, GSE281860, espone conteggi di guide e non
-   la matrice RNA. Dal 14 settembre esiste un incarico di ricerca pronto su questa
-   domanda, `configs/orchestrator/briefs/ricerca-perturbseq-t-squamoso.yaml`, **non
-   ancora avviato**: serve l'autorizzazione del proprietario
-   ([RICERCA_SCIENTIFICA.md](RICERCA_SCIENTIFICA.md) §11).
+   la matrice RNA. L'incarico preparato il 14 settembre per l'orchestratore,
+   `configs/orchestrator/briefs/ricerca-perturbseq-t-squamoso.yaml`, non è mai stato
+   avviato ed è archiviato con l'orchestratore (D-040): la domanda resta aperta.
 8. **L'efficienza di knockdown nei tre contesti ufficiali**, che non è disponibile.
 9. **Se la licenza CC-BY-NC-SA-4.0 di Orion** sia compatibile con le regole della gara.
    Registrata, non verificata.
@@ -292,9 +284,10 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
     ([CP-0017](checkpoints/0017-gate-espressione-destinazione.md)).
 20. **Se le copie su Drive siano leggibili in tempi utili.** Integrità e percorso sono
     risolti: md5 verificato al download del 15 settembre, nei percorsi attesi
-    ([CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) §3.1). Resta non
-    misurato il tempo per leggere 61,31 GiB attraverso il mount di Colab, che lo script
-    71 registra al primo run.
+    ([CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) §3.1). **Risolta il
+    17 settembre:** lo stadio 71 ha letto l'intero file dal mount di Colab in 2.548 s
+    (24,6 MiB/s), con l'md5 uguale al catalogo
+    (`reports/k562_sc_2026-09-17/stage71_x002_report.json`).
 21. **Quante chiamate DE servono in `val`.** La FID premia le chiamate con il segno
     giusto e punisce il silenzio. Le docstring dello scorer indicano che il 12–30% dei
     bersagli ha meno di 10 geni significativi e che alcuni ne hanno più di 500. Quale
@@ -303,179 +296,45 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
 
 ## 5. Il prossimo passo
 
-**22 settembre: CD4 entra come sorgente, e la gara risulta misurata con 10x Flex**
-([CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), D-039). **Misurato:**
-- l'asse ufficiale è quello di un pannello di sonde Flex: 18.533 geni, nessun RPL/RPS o HLA;
-- A/B/C si somigliano fra loro più che alle fonti pubbliche in 3';
-- il pseudobulk CD4 copre 297 bersagli su 300 (mediana 1.478 cellule) e si legge per righe;
-- fra K562 e CD4 il trasferimento dello stesso bersaglio è debole gene per gene (55% di segni
-  concordi) ma discrimina (~0,68), e mescolare le sorgenti non alza la discriminazione.
-
-**Il t08 è il nuovo migliore: +0,0604, rango 547**
-([CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md)). Generatore di trial-01 invariato,
-effetti K562 + CD4 con la regola di `reports/multisource_2026-09-22/PRIMA_DEI_RISULTATI.md`.
-Migliorano tutti e sei i grezzi, e la previsione registrata (+0,03…+0,06) regge sul bordo
-superiore. Il t10 (t08 senza CD4) fa +0,0502 ([CP-0030](checkpoints/0030-t10-attribuzione-cd4.md)):
-CD4 porta circa 0,010 dei 0,014 guadagnati, ed è l'unico fattore che migliora insieme PDS, MSE
-e reach. Per la regola scritta prima l'esito resta non attribuibile (0,0002 sopra la soglia). Il t09 (generatore `ControlModel`) è in coda su Colab, fermo dal 19 settembre alle
-14:18 UTC. Orion è in streaming, ammesso negli invii dal proprietario.
-
-**19 settembre: la rete condizionata è scartata; il t07, inviato, peggiora il punteggio.** Per mandato del proprietario è stato addestrato un predittore neurale condizionato su bersaglio e contesto, confrontato fuori campione con il trasferimento semplice, con un modello lineare con gli stessi input e con la ricetta t03, con lo stesso generatore ([CP-0026](checkpoints/0026-predittore-neurale-condizionato.md)). Verdetto della regola scritta prima: `DISCARD`. La rete non batte né il t03 né il lineare, e non usa il contesto. I modelli appresi colgono un segnale specifico del bersaglio su un contesto nuovo (correlazione centrata 0,36-0,37 su HepG2), ma nel punteggio pareggiano il t03: guadagnano fedeltà, perdono `pds_cosine`. Il proprietario ha autorizzato di notte un invio. Il candidato è diventato il modello lineare (t07), l'unico che si riproduce identico, con previsione registrata di +0,0101 prima dell'invio (`reports/prediction_t07_2026-09-19/`). Il t07 è stato inviato alle 11:42 del 19 e ha preso **−0,016** (rango 671): peggio del t03 e della previsione. Lo stadio 84 non regge per una famiglia di modelli diversa ([CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md)). Il migliore resta trial-01, +0,0459.
-
-**18 settembre, nessuna sottomissione, nessun candidato nuovo.** Sul banco HepG2, con regole
-scritte prima dei risultati:
-- RPE1 trasferisce meglio di K562 (`WINS_RPE1`). Il vantaggio si attenua correggendo
-  approssimativamente per il volume delle chiamate (da +0,19…+0,34 a +0,06…+0,10), ma resta.
-  [CP-0023](checkpoints/0023-rpe1-contro-k562-su-hepg2.md);
-- il controllo a bersagli rimescolati mostra che il trasferimento porta informazione
-  specifica del bersaglio (RPE1 a tutte le ampiezze, K562 solo ad ampiezza 2,0). Il vantaggio
-  di RPE1, alla coppia a volume confrontabile, è invece soprattutto una **componente comune**
-  a tutte le sue firme. [CP-0024](checkpoints/0024-identita-del-bersaglio-su-hepg2.md).
-
-RPE1 non ha perturbato **nessuno** dei 300 bersagli ufficiali (K562 genome-wide 272), quindi
-non conferma la strategia «una sorgente per lignaggio». L'unico uso possibile è come
-componente comune accanto alle firme K562, ed è un candidato da misurare. Prima vanno fatte
-le due misure di CP-0024 §6. La prima è se la risposta comune dei knockdown essenziali compare
-anche nei knockdown dei bersagli ufficiali, che essenziali non sono.
-
-**Aggiornato la sera del 17 settembre, dopo due sottomissioni valutate.** La catena
-Colab ha girato per intero (job 005-017) e ha prodotto tre file, di cui due sottomessi:
-`t02` ha preso **−0,092774** (rango 764) e `t03` **+0,019692** (rango 576), contro lo
-**+0,045929** (rango 446) di trial-01 del 13 settembre. Siamo ancora sotto trial-01, e il
-perché è misurato: `pds_cosine` scende da 0,6870 a 0,6486 e `sig_jaccard` da 0,0291 a
-0,0218, il che si mangia il guadagno sulla fedeltà direzionale.
-
-**Il passo successivo non è più avviare la catena, è usare lo strumento che la serata ha
-prodotto.** In ordine:
-
-1. Prevedere prima di spendere. `scripts/84_predict_official.py` converte i grezzi di un
-   braccio del banco nel punteggio ufficiale atteso, usando i punti di calibrazione e le
-   ancore risolte. Sul `t03` ha sbagliato di 0,014 sulla media e dell'1-3% sui due membri
-   che pesano ([CP-0022](checkpoints/0022-previsione-verificata-t03.md)). Ogni previsione
-   va registrata **prima** della sottomissione, e la calibrazione ricalcolata su tutti i
-   punti disponibili, non su uno.
-2. Misurare il banco su ampiezze più alte di 2,0. Fra `t02` e `t03` la fedeltà grezza
-   ufficiale sale da 0,2534 a 0,4230 aumentando le chiamate, e lo stadio 83 misura che sui
-   contesti ufficiali ne dichiariamo poche: mediana 53/17/1 in A/B/C contro una mediana di
-   `n_conf` di 130 sul banco HepG2. Dove si fermi il guadagno è da misurare, non da dedurre.
-3. Il problema vero resta scoperto: **nessuna delle tre sottomissioni raggiunge la base
-   ufficiale sulla fedeltà (0,5123)**, cioè il livello di chi indovina le direzioni quanto
-   il caso. Il trasferimento K562 funziona su HepG2 e non si vede su A/B/C. Qui non serve
-   tarare: serve una sorgente o un metodo che produca direzioni, ed è il lavoro che decide
-   se lo 0,1 è raggiungibile.
-
-L'invio avviene solo con l'autorizzazione del proprietario. Il testo qui sotto descrive i
-passi precedenti e resta valido come storia.
-
-Il punto 1 e il punto 4 dell'elenco sotto sono **stati eseguiti** il 12 settembre
-(CP-0003): le baseline elementari girano, sono calibrate su bersagli tenuti fuori e
-hanno prodotto numeri. Restano i punti 2 e 3, che sono acquisizioni.
-
-1. ~~Scegliere i bersagli supportati con `panel_coverage.csv`~~ — fatto; la selezione
-   vive ora in `configs/sources.yaml` e nello stadio 1 della pipeline.
-2. ~~Acquisire da CD4~~ — **ordine aggiornato (D-031):** prima audit Jiang (RDS
-   su runtime remoto: TGFB 2,64 GB non sta sotto il pavimento da 10 GiB di questa
-   macchina) e Jurkat come quarto contesto (mirror 1,29 GB). CD4 resta la pista
-   di copertura, rinviata. [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md).
-3. HepG2 Nadig è già un bundle metodologico a singola cellula. Restano ancore
-   locali stabili sulle sei metriche e, per la copertura del pannello, una
-   sorgente diversa. Il seed di conferma 4242 non è stato aperto (D-032).
-4. ~~Far girare le baseline elementari~~ — fatto: nullo, trasferimento con shrinkage,
-   trasferimento pesato e ridge a basso rango sono implementati in
-   `src/vcc2026/models.py`; i primi due sono misurati in
-   `reports/pipeline/transfer_experiment.json`.
-
-Dal 14 settembre esiste anche un **confronto modulare eseguito** (CP-0011): codice,
-split, test e un pilot su 160 bersagli. Non sblocca i passi 2 e 3, e non adotta
-un'architettura. Il passo che riduce di più l'incertezza resta il bundle a
-singola cellula.
-
-**I passi 2 e 3 non sono lo stesso passo, ed è l'errore da non fare.** Il pseudobulk
-aggrega molte cellule in una riga: serve a stimare l'effetto medio di un bersaglio, ma
-ha perso la distribuzione fra cellule. Ricostruire somme intere di conteggi non
-ricostruisce le cellule che le hanno prodotte. Lo scorer vuole conteggi a singola
-cellula (`input_type: counts`), misura contro le cellule di controllo **reali**, e la
-sua correzione del rumore di campionamento sulla MSE dipende dalla dispersione fra le
-cellule previste. Con il solo pseudobulk si ottengono diagnostiche sulla media — utili,
-ma da non chiamare punteggio VCC. Un'acquisizione riuscita del solo passo 2
-lascerebbe il collo di bottiglia esattamente dov'è.
-
-HepG2 è la sede delle ancore metodologiche. Jurkat è il quarto contesto candidato
-(D-031). CD4 resta la pista di copertura, non il prossimo download.
-
-**Dal 16 settembre il K562 genome-wide a singola cellula e HepG2 non si scaricano
-più.** Stanno sul Google Drive del proprietario, e il runtime remoto li collega montando
-Drive. La procedura è in [CP-0018](checkpoints/0018-drive-storage-confermato.md) §6: le
-copie vanno sotto `<VCC2026_DATA_ROOT>/raw/`, il notebook va lanciato con
-`FETCH_BLOCKS = []`, e il `catalog_run.json` del primo run va conservato, perché è la
-prima misura del loro md5. Avere il K562 a portata di mano non lo adotta: la sua scheda
-resta `defer`, e resta vero che 61,31 GiB si leggono a blocchi, non in memoria.
-Per gli altri blocchi del catalogo (Jurkat, Jiang, RPE1 a singola cellula) nessuna copia
-su Drive è stata dichiarata: per loro vale ancora il download sul runtime remoto.
-
-### Il passo operativo, che è diverso e indipendente
-
-Il collo di bottiglia del packaging, aperto il 12 settembre, è **chiuso dal 13**:
-`trial-01-transfer` è un `.vcc` da 3,91 GiB, prodotto qui con 0,52 GiB di picco
-([CP-0005](checkpoints/0005-packaging-streaming-trial01.md)). Non serviva una macchina
-più grande; serviva non caricare la matrice.
-
-Restano due cose, e nessuna delle due è tecnica:
-
-1. Il chiarimento sulle regole per `trial-00-controls` (D-017): un ricampionamento dei
-   controlli reali non è la previsione di un modello, e le regole dicono che i
-   controlli sono soltanto input. Fino ad allora quel trial non si impacchetta e non
-   si invia.
-2. L'autorizzazione a consumare quota. `docs/SOTTOMISSIONE.md` §3 ha i comandi esatti,
-   §6 la lista di controllo; nessuno dei due è stato eseguito, e **nessun server ha
-   accettato niente**: solo una sottomissione valutata lo dimostrerebbe.
-
-Il piano ordinato, con ipotesi, criteri di successo e costi stimati, sta in
-[ROADMAP.md](ROADMAP.md). L'architettura della pipeline è in [PIPELINE.md](PIPELINE.md);
-come eseguirla su una macchina remota, con le stime di risorse, in
-[ESECUZIONE_REMOTA.md](ESECUZIONE_REMOTA.md).
+Sta nel §0. Fino al 22 settembre qui si accumulavano i passi datati, uno sopra l'altro. La
+loro storia è nei [checkpoint](checkpoints/INDICE.md); il testo com'era si legge con
+`git show archivio/pre-pulizia-2026-09-23:docs/PROGETTO.md`.
 
 ## 6. Percorso di lettura
 
-Per capire il progetto, nell'ordine:
+Per lavorare bastano i primi tre punti. Gli altri servono quando un compito li richiede.
 
-1. Questa pagina.
-2. [CP-0001](checkpoints/0001-ricostruzione-stato-2026-09-12.md) — stato al
-   12 settembre e tutte le correzioni avvenute finora.
-2-bis. [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) — il primo trial
-   locale: contratto di sottomissione verificato, calibrazione annidata, due previsioni
-   complete, e il limite di memoria che blocca il packaging. Se devi capire *dove si è
-   fermato il lavoro operativo*, è questo. I comandi stanno in
-   [SOTTOMISSIONE.md](SOTTOMISSIONE.md).
-3. `README.md` — compito, formato, metriche, setup. Leggi prima la sua scheda
-   [R-001](REGISTRO.md#r-001--readmemd): alcune sue parti sono rimaste indietro.
-4. `docs/candidate_adversarial_review_2026-09-12.md` — l'analisi più dettagliata sulle
-   sorgenti candidate, su cui poggiano le decisioni attive.
-5. `docs/revisione_grok_2026-09-12.md` — verifica di un inventario esterno, con cinque
-   piste nuove. **Le sue conclusioni non sono ancora decisioni**: nessuno le ha ancora
-   confrontate con D-004, e servirà un checkpoint per farlo.
-6. [CP-0011](checkpoints/0011-primo-benchmark-modulare.md) e
-   [BENCHMARK_MODULARE.md](BENCHMARK_MODULARE.md) — il primo confronto modulare, in
-   spazio proxy, esito inconcludente per l'adozione.
-7. [CP-0012](checkpoints/0012-encoder-inputs-unseen-target.md) e
-   [ENCODER_INPUTS.md](ENCODER_INPUTS.md) — descrittori verificati per un gene mai
-   perturbato nel training, e l'unica estensione proposta (GO slim).
-8. [CP-0013](checkpoints/0013-hepg2-terzo-contesto.md) e
-   [BENCHMARK_TRE_CONTESTI.md](BENCHMARK_TRE_CONTESTI.md) — il terzo contesto
-   perturbato, che cosa cambia nel confronto modulare, e la prima misura sulle sei
-   metriche con cellule reali. Correggono un punto di CP-0011.
-9. [CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md) e
-   [SVD_E_RANGO.md](SVD_E_RANGO.md) — la SVD randomizzata esiste e non è un
-   drop-in; alzare il rango oltre 16, se scelto internamente, non trasferisce.
+1. Questa pagina, §0.
+2. [LAVORO.md](LAVORO.md): il percorso vivo, i comandi, le regole dell'invio e di Colab.
+3. [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md),
+   [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md) e
+   [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md): sorgenti per bersaglio, Flex, t08
+   e t10.
+4. [CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) e
+   [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md): la pipeline a singola
+   cellula, le ancore ufficiali, e perché il numero di chiamate decide la fedeltà.
+5. [CP-0026](checkpoints/0026-predittore-neurale-condizionato.md) e
+   [CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md): il predittore condizionato
+   scartato, e il limite dello stadio 84 per una famiglia di modelli nuova.
+6. [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md),
+   [CP-0005](checkpoints/0005-packaging-streaming-trial01.md),
+   [CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md) e
+   [SOTTOMISSIONE.md](SOTTOMISSIONE.md): il contratto, l'impacchettamento, il primo
+   punteggio.
+7. [CP-0001](checkpoints/0001-ricostruzione-stato-2026-09-12.md) e
+   [CP-0002](checkpoints/0002-correzioni-dopo-revisione-umana.md): come il progetto ricostruisce
+   la propria storia e si corregge. Servono per il metodo, non per lo stato.
 
-I due documenti più vecchi, `docs/data_strategy_2026-09-11.md` e
-`docs/revisione_analisi_2026-09-11.md`, si leggono **dopo** e con il
-[registro](REGISTRO.md) accanto: contengono materiale ancora valido e conclusioni già
-corrette, e il registro dice quale è quale.
+I documenti di analisi più vecchi (`docs/data_strategy_2026-09-11.md`,
+`docs/revisione_analisi_2026-09-11.md`, `docs/candidate_adversarial_review_2026-09-12.md`,
+`docs/revisione_grok_2026-09-12.md`, `docs/BENCHMARK_MODULARE.md`,
+`docs/BENCHMARK_TRE_CONTESTI.md`) si leggono con il [registro](REGISTRO.md) accanto:
+contengono materiale valido e conclusioni già corrette.
 
 ## 7. Come si tiene aggiornato questo sistema
 
-Quattro regole, nient'altro.
+Quattro regole, più due file che le servono: [LAVORO.md](LAVORO.md) si aggiorna quando
+cambia il percorso vivo, [ARCHIVIO.md](ARCHIVIO.md) quando un file esce dall'albero (D-040).
 
 1. **Un checkpoint quando succede qualcosa di significativo**, non a ogni modifica.
    Significativo vuol dire: un dataset adottato o scartato, un benchmark completato,
