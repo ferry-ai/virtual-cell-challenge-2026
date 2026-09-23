@@ -43,19 +43,6 @@ from vcc2026.signatures import Signature, SignatureSet  # noqa: E402
 from vcc2026.submission import SubmissionWriter, indptr_dtype  # noqa: E402
 from vcc2026.trials import load_trial, trial_ids  # noqa: E402
 
-CALIBRATE = REPO / "scripts" / "44_calibrate_transfer.py"
-
-
-def load_calibrator():
-    """Import the numbered calibration script as a module."""
-    import importlib.util
-
-    spec = importlib.util.spec_from_file_location("calib44", CALIBRATE)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
-
-
 def patch_axis(axis: GeneAxis):
     import vcc2026.genes as genes
     import vcc2026.models as models
@@ -416,75 +403,6 @@ class TestSignatureSubsetLoading(unittest.TestCase):
             self.assertIsNone(sig.guide_id)
 
 
-class TestNestedSelectionLeakage(unittest.TestCase):
-    """Selection must be a function of the selection rows and nothing else."""
-
-    @classmethod
-    def setUpClass(cls):
-        cls.calib = load_calibrator()
-
-    def _statistics(self, n_targets=60, n_genes=40, seed=2, signal=0.3,
-                    noise=0.5):
-        """A synthetic source/destination pair with a tunable signal-to-noise.
-
-        `signal` is how much of the destination's response the source carries;
-        `noise` is what it carries instead. The measured regime in this project
-        is a weak, noisy source (median |delta|/SE below 1 in all three local
-        sources, `reports/pipeline/signature_qc.json`), so tests about
-        amplitude use a low signal and high noise on purpose.
-        """
-        rng = np.random.default_rng(seed)
-        truth = rng.normal(size=(n_targets, n_genes))
-        sd = signal * truth + rng.normal(scale=noise, size=truth.shape)
-        ss = np.full(truth.shape, 0.2)
-        return self.calib.sufficient_statistics(sd, ss, truth) + (sd, ss, truth)
-
-    def test_selection_ignores_rows_outside_the_selection_set(self):
-        syy, stats, sd, ss, truth = self._statistics()
-        rows = np.arange(30)
-        first = self.calib.select_parameters(syy, stats, rows, n_folds=3, seed=1)
-
-        # Corrupt every held-out row beyond recognition. A leak would move the
-        # choice; an honest protocol cannot see the change at all.
-        truth2 = truth.copy()
-        truth2[30:] *= -25.0
-        syy2, stats2 = self.calib.sufficient_statistics(sd, ss, truth2)
-        second = self.calib.select_parameters(syy2, stats2, rows, n_folds=3, seed=1)
-
-        self.assertEqual(first["prior_sd"], second["prior_sd"])
-        self.assertAlmostEqual(first["alpha"], second["alpha"], places=12)
-
-    def test_alpha_is_the_closed_form_minimiser(self):
-        syy, stats, sd, ss, truth = self._statistics()
-        rows = np.arange(truth.shape[0])
-        prior_sd = 1e6
-        alpha = self.calib._best_alpha(stats[prior_sd], rows)
-        grid = np.linspace(0, 2, 401)
-        errors = [self.calib._sse(stats[prior_sd], syy, rows, a) for a in grid]
-        self.assertAlmostEqual(alpha, float(grid[int(np.argmin(errors))]), places=2)
-
-    def test_full_amplitude_can_be_worse_than_predicting_nothing(self):
-        # The measured claim behind D-006. With a weakly correlated, noisy
-        # source, alpha=1 must lose to alpha=0 on squared error.
-        syy, stats, sd, ss, truth = self._statistics(
-            seed=9, signal=0.1, noise=1.5
-        )
-        rows = np.arange(truth.shape[0])
-        null = syy[rows].sum()
-        full = self.calib._sse(stats[1e6], syy, rows, 1.0)
-        self.assertGreater(full, null)
-        best = self.calib._best_alpha(stats[1e6], rows)
-        self.assertLess(self.calib._sse(stats[1e6], syy, rows, best), null)
-        self.assertLess(best, 1.0)
-
-    def test_fold_assignment_partitions_every_row_once(self):
-        fold_of = self.calib.fold_assignment(97, 5, seed=3)
-        self.assertEqual(fold_of.size, 97)
-        self.assertEqual(sorted(set(fold_of.tolist())), [0, 1, 2, 3, 4])
-        counts = np.bincount(fold_of)
-        self.assertLessEqual(counts.max() - counts.min(), 1)
-
-
 class TestTrialConfig(unittest.TestCase):
     def test_both_trials_are_defined(self):
         self.assertIn("trial-00-controls", trial_ids())
@@ -537,10 +455,6 @@ class TestGeneratedArtifactsDeclareTheyAreNotScores(unittest.TestCase):
     def test_trials_config_separates_local_metrics_from_vcc_scores(self):
         text = (REPO / "configs" / "trials.yaml").read_text(encoding="utf-8")
         self.assertIn("not VCC scores", text)
-
-    def test_calibration_script_labels_its_metrics_as_proxies(self):
-        text = CALIBRATE.read_text(encoding="utf-8")
-        self.assertIn("PROXY METRICS, NOT VCC SCORES", text)
 
 
 if __name__ == "__main__":

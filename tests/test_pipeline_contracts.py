@@ -2,9 +2,10 @@
 
 Every test here corresponds to a way this project could produce a confident
 wrong number rather than an error: an unmeasured gene read as a zero effect, a
-guide of the same target on both sides of a split, a stale manifest overwritten,
-a source marked usable that was only glanced at. Speed and coverage are not the
-point; the point is that these particular mistakes become loud.
+stale manifest overwritten. Speed and coverage are not the point; the point is
+that these particular mistakes become loud. (The split, registry and
+pseudobulk-parsing contracts left with their modules on 23 September:
+docs/ARCHIVIO.md.)
 """
 
 from __future__ import annotations
@@ -29,12 +30,7 @@ from vcc2026.manifest import RunManifest, file_fingerprint  # noqa: E402
 from vcc2026.models import (  # noqa: E402
     NullModel, ShrunkTransfer, WeightedTransfer,
 )
-from vcc2026.pseudobulk import parse_gene_transcript  # noqa: E402
-from vcc2026.registry import (  # noqa: E402
-    Coverage, Source, VerificationLevel, load_registry,
-)
 from vcc2026.signatures import Signature, SignatureSet, delta_from_pseudobulk  # noqa: E402
-from vcc2026.splits import assert_disjoint, held_out_targets  # noqa: E402
 
 
 def tiny_axis(n: int = 8) -> GeneAxis:
@@ -176,48 +172,6 @@ class TestSignatureUncertainty(unittest.TestCase):
                       np.ones(4, dtype=bool), 1, 1)
 
 
-class TestSplits(unittest.TestCase):
-    """A target must never be on both sides. This is the leak that flatters."""
-
-    def setUp(self):
-        self.axis = patch_axis(tiny_axis(4))
-
-    def _set(self, n_targets=20, guides_per_target=3):
-        obs = np.ones(4, dtype=bool)
-        return SignatureSet([
-            Signature("s", "c", f"T{t}", np.zeros(4), np.full(4, 0.1), obs,
-                      10, 10, f"T{t}_g{g}")
-            for t in range(n_targets) for g in range(guides_per_target)
-        ])
-
-    def test_every_guide_of_a_target_moves_together(self):
-        sigs = self._set()
-        for split in held_out_targets(sigs, n_folds=4, seed=1):
-            assert_disjoint(split)
-            self.assertFalse(set(split.train.targets) & set(split.test.targets))
-
-    def test_folds_partition_the_targets_exactly_once(self):
-        sigs = self._set()
-        splits = held_out_targets(sigs, n_folds=4, seed=1)
-        seen: list[str] = []
-        for s in splits:
-            seen.extend(s.test.targets)
-        self.assertEqual(sorted(seen), sorted(sigs.targets))
-
-    def test_assert_disjoint_actually_raises(self):
-        sigs = self._set(n_targets=6, guides_per_target=1)
-        splits = held_out_targets(sigs, n_folds=3, seed=1)
-        bad = splits[0].__class__(
-            train=sigs, test=sigs, kind="broken", fold=0, n_folds=1,
-        )
-        with self.assertRaises(ValueError):
-            assert_disjoint(bad)
-
-    def test_too_few_targets_raises(self):
-        with self.assertRaises(ValueError):
-            held_out_targets(self._set(n_targets=2), n_folds=5)
-
-
 class TestModels(unittest.TestCase):
     def setUp(self):
         self.axis = patch_axis(tiny_axis(4))
@@ -287,47 +241,6 @@ class TestDeltaMetrics(unittest.TestCase):
         self.assertAlmostEqual(m.sign_agreement, 0.5)
 
 
-class TestRegistry(unittest.TestCase):
-    def test_shipped_registry_is_self_consistent(self):
-        reg = load_registry()
-        problems = [p for p in reg.verify(REPO)
-                    if "signature_qc.json" not in p]
-        self.assertEqual(problems, [], "\n".join(problems))
-
-    def test_verification_levels_are_ordered(self):
-        self.assertLess(VerificationLevel.DECLARED, VerificationLevel.METADATA_VERIFIED)
-        self.assertLess(VerificationLevel.SAMPLE_VERIFIED, VerificationLevel.USABLE)
-
-    def test_source_enabled_below_sample_verified_is_a_problem(self):
-        s = Source(id="x", title="x", verification=VerificationLevel.METADATA_VERIFIED,
-                   verified_on="2026-09-12", evidence=("configs/sources.yaml",),
-                   enabled=True)
-        problems = s.verify(REPO)
-        self.assertTrue(any("may not be enabled" in p for p in problems))
-
-    def test_missing_evidence_path_is_a_problem(self):
-        s = Source(id="x", title="x", verification=VerificationLevel.SCHEMA_VERIFIED,
-                   verified_on="2026-09-12", evidence=("reports/does_not_exist.json",))
-        self.assertTrue(any("does not exist" in p for p in s.verify(REPO)))
-
-    def test_coverage_ordering_is_checked(self):
-        s = Source(id="x", title="x", verification=VerificationLevel.DECLARED,
-                   coverage=Coverage(library_targets=10, observed_targets=20))
-        self.assertTrue(any("exceeds" in p for p in s.verify(REPO)))
-
-    def test_min_cells_required_with_targets_min_cells(self):
-        s = Source(id="x", title="x", verification=VerificationLevel.DECLARED,
-                   coverage=Coverage(targets_min_cells=5))
-        self.assertTrue(any("without min_cells" in p for p in s.verify(REPO)))
-
-    def test_every_registry_claim_of_usable_names_a_local_path(self):
-        for s in load_registry():
-            if s.verification >= VerificationLevel.USABLE:
-                self.assertIsNotNone(
-                    s.local_path, f"{s.id} claims usable with no local_path"
-                )
-
-
 class TestManifest(unittest.TestCase):
     def test_manifest_refuses_to_overwrite_evidence(self):
         with tempfile.TemporaryDirectory() as d:
@@ -355,27 +268,6 @@ class TestManifest(unittest.TestCase):
 
     def test_fingerprint_of_missing_file_says_so(self):
         self.assertFalse(file_fingerprint(Path("nope.bin"))["exists"])
-
-
-class TestPseudobulkParsing(unittest.TestCase):
-    def test_parses_row_symbol_tss_ensg(self):
-        sym, tss, ensg = parse_gene_transcript([
-            "0_A1BG_P1_ENSG00000121410",
-            "10748_non-targeting_non-targeting_non-targeting",
-        ])
-        self.assertEqual(list(sym), ["A1BG", "non-targeting"])
-        self.assertEqual(list(tss), ["P1", "non-targeting"])
-        self.assertEqual(list(ensg), ["ENSG00000121410", "non-targeting"])
-
-    def test_symbol_containing_underscore_still_parses(self):
-        sym, tss, ensg = parse_gene_transcript(["7_HLA_DRB1_P1P2_ENSG00000196126"])
-        self.assertEqual(sym[0], "HLA_DRB1")
-        self.assertEqual(tss[0], "P1P2")
-        self.assertEqual(ensg[0], "ENSG00000196126")
-
-    def test_unparseable_label_yields_empty_not_a_guess(self):
-        sym, _, _ = parse_gene_transcript(["garbage"])
-        self.assertEqual(sym[0], "")
 
 
 class TestConfigPortability(unittest.TestCase):
