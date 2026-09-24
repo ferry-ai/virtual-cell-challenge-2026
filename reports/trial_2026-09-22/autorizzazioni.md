@@ -93,3 +93,15 @@ Cestino dell'utente contiene ora 19,04 GB.
 Il proprietario ha anche autorizzato in chat l'invio del t14 appena la quota del 24 settembre lo
 permette. Una catena in background prima aspetta che il disco si liberi e impacchetta il t14,
 poi lo invia dopo le 00:05 UTC, tenendo sveglio il portatile.
+
+## Spazio liberato il 24 settembre, dopo il punteggio del t15
+
+Con lo stesso mandato del 23 sera («libera un bel po' di spazio tu»), l'agente ha spostato nel
+Cestino i file intermedi di due invii già valutati, con l'md5 verificato dal server:
+- `artifacts/t14gen/prediction.h5ad` (4.222.536.680 byte) e `artifacts/t14pack/prediction.vcc`
+  (4.170.444.800 byte): il t14, rigenerabile con lo stadio 76 dagli effetti del t08 × 2,5;
+- `artifacts/t15gen/prediction.h5ad` (4.260.551.478 byte): l'intermedio del t15. Il suo `.vcc`,
+  identico bit per bit e pari al miglior invio, resta in `artifacts/t15pack/`.
+
+Il Cestino contiene 11,8 GB, entro la sua capienza di 25,8 GB. Servono per generare e
+impacchettare t16 e t17.
