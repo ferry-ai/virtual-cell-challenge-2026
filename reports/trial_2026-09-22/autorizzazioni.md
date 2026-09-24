@@ -105,3 +105,10 @@ Cestino i file intermedi di due invii già valutati, con l'md5 verificato dal se
 
 Il Cestino contiene 11,8 GB, entro la sua capienza di 25,8 GB. Servono per generare e
 impacchettare t16 e t17.
+
+## Autorizzazione del 24 settembre per t16 e t17
+
+Il proprietario, in chat, alla domanda se inviare t16 e t17 appena si apre la quota del 25
+settembre: «OK SI HAI IL VIA». Una catena in background aspetta che siano impacchettati e che
+siano passate le 00:05 UTC del 25. Poi li invia uno dopo l'altro, prima il t16 e poi il t17,
+tenendo sveglio il portatile, con i testi di `reports/trial_2026-09-24/submission_texts.md`.
