@@ -58,6 +58,8 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 | Percorso | Stato | Sostituito da | Cosa resta utile / nota | Scheda |
 |---|---|---|---|---|
+| `reports/dld1_ceiling_2026-09-24/` | attuale | — | Esplorativo, completa CP-0035: tetto di riproducibilità dentro DLD-1 (Low1 contro Low2, due metà per corsia) 0,070 di correlazione mediana per bersaglio, contro 0,014–0,027 verso le sorgenti della cache r5, con bootstrap. HCT116 non si distingue da K562 né da CD4. Chiarisce suffissi, righe, colonne e modello delle matrici DLD-1; la base del log resta da verificare. Non è un punteggio VCC | — |
+| `reports/schede_sorgenti_2026-09-24/` | attuale | — | Schede di 17 sorgenti candidate nel formato di GENERALIZZAZIONE §2, scritte da un agente (claude2) sui report della ricerca multi-agente della sera, con la seconda verifica di un agente di un'altra famiglia (grok) e i file pubblici DepMap 24Q4. Ogni fatto porta la sua etichetta verificato/da verificare. Candidati, non sorgenti adottate | — |
 | `docs/GENERALIZZAZIONE.md` | attuale | — | D-044: nessun obbligo di overlap dei bersagli col pannello per selezionare dataset; distinzione bersagli/risposte, regimi C/T/J, controllo di leakage, ruoli delle sorgenti e priorità. Decisioni di ricerca, non risultati di training | — |
 | `docs/checkpoints/0036-generalizzazione-bersagli-contesti.md` | attuale | — | CP-0036: cambio di strategia richiesto dal proprietario; J come prova principale per nuovi predittori, baseline dello stesso bersaglio mantenuta | — |
 | `docs/checkpoints/0035-dld1-mixscale-audit.md` | attuale | — | CP-0035: copertura DLD-1 misurata e primo confronto descrittivo fra sei linee Mixscale. Nessuna sorgente adottata | — |
