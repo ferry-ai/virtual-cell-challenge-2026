@@ -13,7 +13,7 @@ Aggiornata il 2026-09-23 con la pulizia di D-040:
 La sera del 23 il §0 è stato aggiornato con il t11, il t12 e i piloti del t14
 ([CP-0031](checkpoints/0031-t11-punteggio-orion.md)).
 
-## 0. Oggi — 23 settembre 2026, sera
+## 0. Oggi — notte fra il 23 e il 24 settembre 2026
 
 **Il migliore è il t11: +0,070777, rango 560**
 ([CP-0031](checkpoints/0031-t11-punteggio-orion.md)). Il set finale arriva il 22 ottobre:
@@ -31,6 +31,7 @@ La sera del 23 il §0 è stato aggiornato con il t11, il t12 e i piloti del t14
 | t08 | effetti K562 + CD4, γ = 1, grezzi × 0,197 | trial-01 | +0,060370 | 547 | [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md) |
 | t10 | il t08 senza CD4 | trial-01 | +0,050191 | 570 | [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md) |
 | **t11** | il t08 + Orion HCT116, le tre sorgenti a pesi uguali | trial-01 | **+0,070777** | 560 | [CP-0031](checkpoints/0031-t11-punteggio-orion.md) |
+| t14 | effetti del t08 × 2,5 | `ControlModel` | +0,064892 | 564 | [CP-0032](checkpoints/0032-t14-controlmodel-fedelta.md) |
 
 In tutti gli invii:
 - lo scalato della `mse` vale 0 (tosato);
@@ -47,31 +48,22 @@ Le tabelle per membro stanno nei checkpoint citati.
     le proxy di HEK293T sono 0,78 con K562 e 0,59–0,62 con CD4.
   - Gli effetti per contesto sono pronti.
   - La generazione aspetta spazio su disco (vedi sotto).
-- **t14 e t09** = `ControlModel` con gli effetti del t08. Girano sul portatile per scelta del
-  proprietario (`reports/dispersion_2026-09-23/T14_IN_LOCALE.md`); i job 044 e 045 sono fuori
-  dalla coda Colab.
-  - I piloti del t14 seguono la regola `PRIMA_T14.md`, su 20 bersagli
-    (`reports/dispersion_2026-09-23/t14_pilots/`):
-    - a effetto nullo **0 chiamate mediane** in A, B e C;
-    - ad ampiezza 1, la configurazione del t09, 4,5 / 16,5 / 20;
-    - ad ampiezza 2,5, 140 / 235 / 261, per il 41–50% «in su».
-  - La regola sceglie **2,5**. Alla lettera del suo punto 2 gli effetti restano quelli del t08:
-    il job è partito prima che il t11 fosse valutato.
-  - Previsione registrata prima della generazione completa: banda +0,02…+0,12, da leggere
-    contro il t08 (`reports/prediction_t14_2026-09-23/prediction.json`).
-  - La generazione completa è in corso; l'impacchettamento aspetta spazio su disco.
-  - Il t09 per ora non si genera: con 4,5–20 chiamate pagherebbe il silenzio sulla fedeltà
-    (D-035).
+- **t14** = `ControlModel` con gli effetti del t08 × 2,5, l'ampiezza scelta dai piloti.
+  - Valutato: +0,064892, rango 564. Per la regola scritta prima è **non attribuibile**
+    (+0,0045 sul t08).
+  - Perde in `pds_cosine` e in fedeltà, guadagna in `nmae` e in `reach`
+    ([CP-0032](checkpoints/0032-t14-controlmodel-fedelta.md)).
+  - Il t09 (ampiezza 1) non si genera: con 4,5–20 chiamate pagherebbe il silenzio (D-035).
 - **t15** = il t11 con ampiezza 0,394 invece di 0,197. Mette alla prova D-006 sul punteggio
   ufficiale: lo 0,197 minimizzava la MSE in pseudobulk, ma lo scalato della `mse` è tosato a 0 in
-  tutti gli invii. Previsione registrata prima (+0,060…+0,095, contro il t11); effetti pronti.
+  tutti gli invii. Previsione registrata prima (+0,060…+0,095, contro il t11). Generazione e
+  impacchettamento in corso; l'invio aspetta il via del proprietario.
 - **t13** = dispersione per gene nel generatore di trial-01. Si è fermato per la sua regola:
   a effetto nullo fa 5 / 15 / 31 chiamate mediane in A / B / C
   (`reports/dispersion_2026-09-23/RISULTATO_NULLO.md`).
-- **Il disco è il vincolo:** 10 GB liberi, contro i circa 12,7 GB del picco di una generazione
-  impacchettata; il file di paging è a 15,7 GB. Il `.vcc` del t11 (4,2 GB), già verificato dal
-  server, si può togliere. Lo fa il proprietario: gli agenti non cancellano file in modo
-  definitivo.
+- **Disco:** il 23 sera il proprietario ha svuotato il Cestino, dopo che l'agente vi aveva
+  spostato 19 GB rigenerabili (`reports/trial_2026-09-22/autorizzazioni.md`); ora c'è spazio
+  per un candidato alla volta.
 
 ### Che cosa guida le scelte
 
@@ -90,8 +82,12 @@ Le tabelle per membro stanno nei checkpoint citati.
     in A / B / C, per l'83–85% «in su» (`reports/prediction_calls_2026-09-23/`).
   - A effetto nullo ne chiama 462 / 453 / 684 (`reports/generator_null_2026-09-17/`);
     `ControlModel` 0 (piloti del t14).
-- **Interpretazione.** In questa famiglia la fedeltà misura la precisione delle chiamate
-  spurie del generatore. Si sposta cambiando il generatore, non gli effetti.
+- **Contraddetto dal t14.** Si pensava che in questa famiglia la fedeltà misurasse la
+  precisione delle chiamate spurie del generatore, e che si spostasse cambiando il generatore.
+  Con `ControlModel` le chiamate spurie sono quasi zero, ma la fedeltà scende a 0,447
+  ([CP-0032](checkpoints/0032-t14-controlmodel-fedelta.md)). Restano aperte due letture: il
+  segno dei nostri effetti trasferiti sui geni chiamati, o il silenzio sui bersagli con molti
+  geni veri.
 - **Misurato.** Chi non chiama geni prende fedeltà 0 (D-035). Un generatore pulito serve
   solo insieme a effetti che producano chiamate con il segno giusto.
 - **Misurato.** La gara è letta con 10x Flex, a sonde. A, B e C si somigliano fra loro più
@@ -103,11 +99,13 @@ Le tabelle per membro stanno nei checkpoint citati.
 **Proposta**, da [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md) §6,
 [CP-0031](checkpoints/0031-t11-punteggio-orion.md) §6 e dalle regole già scritte:
 
-1. **Impacchettare il t14, poi generare t15 e t12**, uno alla volta, man mano che il disco lo
-   permette. Si inviano con il via del proprietario, al massimo due al giorno: prima t14
-   (generatore, la leva sulla fedeltà) e t15 (ampiezza, la leva su `pds_cosine`), poi t12.
-2. **Se il t14 batte il t08:** `ControlModel` sugli effetti del t11, registrato a parte.
-3. **Pulire l'attribuzione del t11** con un'ablazione: il t08 con K562 e CD4 a pesi uguali.
+1. **Inviare il t15**, con il via del proprietario: dice se l'ampiezza da sola alza `nmae` e
+   `reach` senza perdere `pds_cosine`, come col t14.
+2. **Misurare la direzione degli effetti**, per bersaglio, sui geni che chiamiamo. Il t14 mostra
+   che la fedeltà non dipende solo dal generatore. Si fa nello spazio degli effetti fra
+   sorgenti, e con i banchi su cellule vere.
+3. **Il t12** (+ HEK293T), e l'ablazione che pulisce l'attribuzione del t11: il t08 con K562 e
+   CD4 a pesi uguali.
 4. **Preparare il set finale.** Il 22 ottobre bersagli e contesti cambiano, e il percorso di
    [LAVORO.md](LAVORO.md) §1 va rieseguito su di essi:
    - stadi 97 e 102 sulla nuova lista di bersagli (D-039, D-041). Lo stadio 102 legge per
