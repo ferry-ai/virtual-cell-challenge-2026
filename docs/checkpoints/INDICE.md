@@ -54,3 +54,4 @@ aggiunge da sé la riga qui sotto.
 | [0030](0030-t10-attribuzione-cd4.md) | 2026-09-23 | Il t10 (t08 senza CD4): +0,050; CD4 porta circa 0,010 dei 0,014 guadagnati dal t08, ma la regola scritta prima dà esito non attribuibile | esperimento | — |
 | [0031](0031-t11-punteggio-orion.md) | 2026-09-23 | Il t11 in classifica: +0,071, nuovo migliore; con Orion HCT116 la regola scritta prima dice che Orion aggiunge informazione, ma i pesi di K562 e CD4 sono cambiati insieme | esperimento | — |
 | [0032](0032-t14-controlmodel-fedelta.md) | 2026-09-24 | Il t14 in classifica: +0,065; ControlModel all'ampiezza scelta per le chiamate è non attribuibile per la sua regola, e la fedeltà scende invece di salire | esperimento | — |
+| [0033](0033-t15-ampiezza-doppia.md) | 2026-09-24 | Il t15 in classifica: +0,108, nuovo migliore e sopra 0,1; raddoppiare l'ampiezza migliora tutti i membri che contano, e D-006 si riapre | esperimento | — |

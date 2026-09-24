@@ -1,0 +1,34 @@
+{
+  "written_utc": "2026-09-24T11:08:29.662642+00:00",
+  "label": "t16 = t15 with amplitude 0.788 (2 x 0.394): K562, CD4, HCT116 at equal weights, raw, gamma 1, trial-01 generator",
+  "claim_type": "prediction registered before generation and submission; not a measurement",
+  "recipe": {
+    "path": "configs\\recipes\\t16.json",
+    "sha256": "004bad4a7836d2da9611d043e04590dab7d67c8717b1fb190f53204be863f1ee",
+    "cache": "stage 98 run r4"
+  },
+  "references": {
+    "t15": 0.107533,
+    "t11": 0.070777
+  },
+  "evidence_used": "t11 (0.197) -> t15 (0.394): +0.037, every member but mse (clipped) better (CP-0033); the t14 pilots show call counts rising steeply with amplitude (ControlModel).",
+  "expected": {
+    "score_avg_band": [
+      0.08,
+      0.14
+    ],
+    "t16_minus_t15_band": [
+      -0.03,
+      0.03
+    ],
+    "pds_raw": "0.76-0.80 (t15 0.774)",
+    "fid_raw": "0.47-0.51 (t15 0.477)",
+    "nmae_raw": "0.92-0.98 (t15 0.950); it can turn worse if predicted magnitudes overshoot",
+    "mse": "raw higher again; scaled stays 0"
+  },
+  "reading_rule_fixed_before_the_result": {
+    "t16 >= t15 + 0.005": "the curve still rises: next step doubles again",
+    "t16 <= t15 - 0.005": "the optimum lies between 0.394 and 0.788: next step is the midpoint",
+    "otherwise": "plateau: keep 0.394, the smaller amplitude"
+  }
+}

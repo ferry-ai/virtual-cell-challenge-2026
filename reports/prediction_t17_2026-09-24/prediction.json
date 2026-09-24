@@ -1,0 +1,32 @@
+{
+  "written_utc": "2026-09-24T11:08:29.662642+00:00",
+  "label": "t17 = t15 + Orion HEK293T at equal weight, amplitude 0.4285 so that median q99 |ln fc| equals t15's",
+  "claim_type": "prediction registered before generation and submission; not a measurement",
+  "recipe": {
+    "path": "configs\\recipes\\t17.json",
+    "sha256": "735aa5a45e61850ff70e895f7e61da8305f34aebc46abecafe28e40e9a748eb5",
+    "cache": "stage 98 run r5"
+  },
+  "references": {
+    "t15": 0.107533,
+    "t11": 0.070777
+  },
+  "evidence_used": "stage 98 r5: pds proxy HEK293T-K562 0.78, HEK293T-CD4 0.59-0.62 (CP-0031, t12 registration); stage 103: HEK293T held out gets 0.56 sign agreement from the other three, the highest with HCT116.",
+  "expected": {
+    "score_avg_band": [
+      0.095,
+      0.125
+    ],
+    "t17_minus_t15_band": [
+      -0.01,
+      0.015
+    ],
+    "pds_raw": "0.76-0.79 (t15 0.774)",
+    "fid_raw": "about 0.47-0.49"
+  },
+  "reading_rule_fixed_before_the_result": {
+    "t17 >= t15 + 0.005": "HEK293T adds information about the official contexts at matched magnitude",
+    "t17 <= t15 - 0.005": "at equal weights HEK293T dilutes the other three sources",
+    "otherwise": "inconclusive; do not attribute"
+  }
+}

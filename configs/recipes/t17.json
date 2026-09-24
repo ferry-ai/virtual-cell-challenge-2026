@@ -1,0 +1,13 @@
+{
+  "name": "t17",
+  "effect": "raw",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "A": {"amplitude": 0.4285, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "B": {"amplitude": 0.4285, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "C": {"amplitude": 0.4285, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}}
+  },
+  "why": "One factor against t15: Orion HEK293T added at equal weight (cache r5, which reproduces r4 for the other three sources). Averaging four sources shrinks the extremes (median q99 |ln fc| 0.1053 for the four-source mix at 0.197 against 0.1145 for three), and amplitude alone moved t11 -> t15 by +0.037; so the amplitude is set to 0.197 x 0.229091 / 0.105335 = 0.4285, which gives the same median q99 |ln fc| as t15 (0.2291). Stop rule of PRIMA_DEI_RISULTATI.md not met (CP-0031)."
+}

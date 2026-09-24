@@ -19,7 +19,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-003 | Prima un banco di prova locale, poi modelli più complessi | attiva | 2026-09-11 | `docs/data_strategy_2026-09-11.md` §6, `docs/revisione_analisi_2026-09-11.md` §6 |
 | D-004 | Ordine di acquisizione: CD4, poi Orion HCT116, poi i benchmark — **sostituita da D-031 per l'ordine operativo** | superata | 2026-09-12 | `docs/candidate_adversarial_review_2026-09-12.md` §5, [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md) |
 | D-005 | Nessun atlante completo e nessun servizio a pagamento su questa macchina | attiva | 2026-09-12 | `reports/candidate_verification/hardware.json` |
-| D-006 | Postura di sottomissione: decidere sulla direzione, comprimere l'ampiezza | attiva | 2026-09-11, misurata 2026-09-12 | `reports/pipeline/transfer_experiment.json`, [CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md) §3.4 |
+| D-006 | Postura di sottomissione: decidere sulla direzione, comprimere l'ampiezza — **superata da D-042 per l'ampiezza degli invii** | superata | 2026-09-11, misurata 2026-09-12 | `reports/pipeline/transfer_experiment.json`, [CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md) §3.4 |
 | D-007 | K562 resta come ablazione: non è scartata | attiva | 2026-09-12 | `docs/candidate_adversarial_review_2026-09-12.md` §3 |
 | D-008 | Si valuta con `cell-eval2 0.16.0`, tutte e sei le metriche | attiva | 2026-09-11 | `reports/scorer/vcc2026_contract.json` |
 | D-009 | Un gene non misurato ha una maschera, non uno zero | attiva | 2026-09-11 | `docs/data_strategy_2026-09-11.md` §4 |
@@ -55,6 +55,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-039 | CD4 entra come sorgente per bersaglio dal pseudobulk letto per righe; primo test a un solo fattore contro trial-01 (t08) | attiva | 2026-09-22 | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), `reports/cd4_rows_2026-09-22/manifest.json` |
 | D-040 | Nell'albero resta solo il codice che produce o valuta una sottomissione; il resto è nel tag `archivio/pre-pulizia-2026-09-23`, e catena di cicli, orchestratore e oracolo sono ritirati | attiva | 2026-09-23 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 23 settembre |
 | D-041 | Orion HCT116 entra come sorgente per bersaglio, a pesi uguali con K562 e CD4 (t11, nuovo migliore) | attiva | 2026-09-23 | [CP-0031](checkpoints/0031-t11-punteggio-orion.md), `reports/prediction_t11_2026-09-23/comparison.json` |
+| D-042 | L'ampiezza degli invii si sceglie sul punteggio ufficiale, un fattore alla volta; 0,394 batte 0,197 (t15, +0,108) | attiva | 2026-09-24 | [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md), `reports/prediction_t15_2026-09-23/comparison.json` |
 
 ---
 
@@ -167,6 +168,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Riaprire se:** esiste un bundle di valutazione a singola cellula che permetta di
   rifare la stessa scelta su tutte e sei le metriche VCC, oppure se una sorgente di
   lignaggio vicino (CD4) dà un α molto diverso.
+- **Superata il 2026-09-24 da [D-042](#d-042--lampiezza-degli-invii-si-sceglie-sul-punteggio-ufficiale-non-sulla-mse-in-pseudobulk), per l'ampiezza degli invii.** Il t15, identico al t11 con l'ampiezza raddoppiata, fa +0,1075 contro +0,0708; lo scalato della `mse` era già 0 e resta 0 ([CP-0033](checkpoints/0033-t15-ampiezza-doppia.md)). Le misure in pseudobulk qui sopra restano vere per la MSE. Il testo sopra resta com'era.
 
 ### D-007 — K562 resta come ablazione: non è scartata
 
@@ -1043,3 +1045,28 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   - il t08 con K562 e CD4 a pesi uguali raggiunge il t11: allora il guadagno veniva dai pesi;
   - il t12 mostra che una quarta sorgente a pesi uguali diluisce le altre;
   - la licenza risulta incompatibile con le regole della gara.
+
+### D-042 — L'ampiezza degli invii si sceglie sul punteggio ufficiale, non sulla MSE in pseudobulk
+
+- **Perché:**
+  - il t15, identico al t11 con l'ampiezza 0,394 invece di 0,197, fa +0,107533 contro
+    +0,070777;
+  - migliorano tutti e cinque i membri che contano. La MSE grezza peggiora, ma il suo scalato
+    era 0 in tutti gli invii e resta 0 ([CP-0033](checkpoints/0033-t15-ampiezza-doppia.md));
+  - la regola scritta prima dell'invio diceva di riaprire D-006 in questo caso.
+- **Come è fatta:**
+  - l'ampiezza si cambia da sola, un fattore alla volta rispetto al migliore, con previsione e
+    regola scritte prima;
+  - la curva si esplora verso l'alto finché un passo perde;
+  - le altre scelte (sorgenti, generatore) si riprovano all'ampiezza migliore.
+- **Evidenza:** [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md),
+  `reports/prediction_t15_2026-09-23/comparison.json`.
+- **Che cosa non segue:**
+  - che l'ottimo di validazione valga per D/E/F, che hanno contesti e bersagli nuovi;
+  - che la MSE non conti mai: se un modello scendesse sotto la sua base, il compromesso
+    tornerebbe;
+  - che valga per `ControlModel`: nel t14 alzare l'ampiezza ha abbassato `pds_cosine`.
+- **Riaprire se:**
+  - un passo della curva perde contro il precedente;
+  - il set finale mostra un regime diverso;
+  - la base della `mse` diventa raggiungibile.

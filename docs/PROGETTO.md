@@ -10,13 +10,13 @@ Aggiornata il 2026-09-23 con la pulizia di D-040:
   `archivio/pre-pulizia-2026-09-23`;
 - §1, §3 e §4 sono invariati, salvo le voci 7 e 20 del §4.
 
-La sera del 23 il §0 è stato aggiornato con il t11, il t12 e i piloti del t14
-([CP-0031](checkpoints/0031-t11-punteggio-orion.md)).
+Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 24 settembre, con il t15
+([CP-0033](checkpoints/0033-t15-ampiezza-doppia.md)).
 
-## 0. Oggi — notte fra il 23 e il 24 settembre 2026
+## 0. Oggi — 24 settembre 2026
 
-**Il migliore è il t11: +0,070777, rango 560**
-([CP-0031](checkpoints/0031-t11-punteggio-orion.md)). Il set finale arriva il 22 ottobre:
+**Il migliore è il t15: +0,107533, rango 436**, il primo invio sopra 0,1
+([CP-0033](checkpoints/0033-t15-ampiezza-doppia.md)). Il set finale arriva il 22 ottobre:
 - tre contesti nuovi (D, E, F) e 300 perturbazioni nuove;
 - le sottomissioni chiudono il 5 novembre (§1).
 
@@ -30,87 +30,63 @@ La sera del 23 il §0 è stato aggiornato con il t11, il t12 e i piloti del t14
 | t07 | modello lineare condizionato su bersaglio e contesto | — | −0,016004 | 671 | [CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md) |
 | t08 | effetti K562 + CD4, γ = 1, grezzi × 0,197 | trial-01 | +0,060370 | 547 | [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md) |
 | t10 | il t08 senza CD4 | trial-01 | +0,050191 | 570 | [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md) |
-| **t11** | il t08 + Orion HCT116, le tre sorgenti a pesi uguali | trial-01 | **+0,070777** | 560 | [CP-0031](checkpoints/0031-t11-punteggio-orion.md) |
+| t11 | il t08 + Orion HCT116, le tre sorgenti a pesi uguali | trial-01 | +0,070777 | 560 | [CP-0031](checkpoints/0031-t11-punteggio-orion.md) |
 | t14 | effetti del t08 × 2,5 | `ControlModel` | +0,064892 | 564 | [CP-0032](checkpoints/0032-t14-controlmodel-fedelta.md) |
+| **t15** | il t11 con ampiezza 0,394 invece di 0,197 | trial-01 | **+0,107533** | 436 | [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md) |
 
 In tutti gli invii:
 - lo scalato della `mse` vale 0 (tosato);
 - quello della fedeltà direzionale è negativo;
-- il membro che porta il punteggio è `pds_cosine` (+0,530 scalato nel t11).
+- il membro che porta il punteggio è `pds_cosine` (+0,607 scalato nel t15).
 
 Le tabelle per membro stanno nei checkpoint citati.
 
 ### Che cosa è in corso
 
-- **t12** = t11 + Orion HCT116 e HEK293T.
-  - Ricetta, previsione e testi sono registrati prima della generazione e del punteggio del
-    t11 (`reports/prediction_t12_2026-09-23/prediction.json`). La regola d'arresto non scatta:
-    le proxy di HEK293T sono 0,78 con K562 e 0,59–0,62 con CD4.
-  - Gli effetti per contesto sono pronti.
-  - La generazione aspetta spazio su disco (vedi sotto).
-- **t14** = `ControlModel` con gli effetti del t08 × 2,5, l'ampiezza scelta dai piloti.
-  - Valutato: +0,064892, rango 564. Per la regola scritta prima è **non attribuibile**
-    (+0,0045 sul t08).
-  - Perde in `pds_cosine` e in fedeltà, guadagna in `nmae` e in `reach`
-    ([CP-0032](checkpoints/0032-t14-controlmodel-fedelta.md)).
-  - Il t09 (ampiezza 1) non si genera: con 4,5–20 chiamate pagherebbe il silenzio (D-035).
-- **t15** = il t11 con ampiezza 0,394 invece di 0,197. Mette alla prova D-006 sul punteggio
-  ufficiale: lo 0,197 minimizzava la MSE in pseudobulk, ma lo scalato della `mse` è tosato a 0 in
-  tutti gli invii. Previsione registrata prima (+0,060…+0,095, contro il t11). Generazione e
-  impacchettamento in corso; l'invio aspetta il via del proprietario.
-- **t13** = dispersione per gene nel generatore di trial-01. Si è fermato per la sua regola:
-  a effetto nullo fa 5 / 15 / 31 chiamate mediane in A / B / C
-  (`reports/dispersion_2026-09-23/RISULTATO_NULLO.md`).
-- **Disco:** il 23 sera il proprietario ha svuotato il Cestino, dopo che l'agente vi aveva
-  spostato 19 GB rigenerabili (`reports/trial_2026-09-22/autorizzazioni.md`); ora c'è spazio
-  per un candidato alla volta.
+- **t16** = il t15 con ampiezza 0,788. Continua la curva dell'ampiezza (D-042).
+- **t17** = il t15 + Orion HEK293T. L'ampiezza è 0,4285: con quattro sorgenti la media smussa
+  gli estremi, e 0,4285 riporta il q99 mediano di |ln fc| a quello del t15 (0,229).
+- Per entrambi ricetta, previsione, regola di lettura e testi sono registrati prima della
+  generazione (`reports/prediction_t16_2026-09-24/`, `reports/prediction_t17_2026-09-24/`).
+  Gli effetti sono pronti. La generazione aspetta spazio su disco; l'invio aspetta la quota
+  del 25 e il via del proprietario.
+- **t12** (HEK293T all'ampiezza 0,197) resta registrato ma non si genera: il t17 fa la stessa
+  domanda all'ampiezza buona.
+- **t09 e t13** non si generano: il t09 pagherebbe il silenzio (D-035), il t13 si è fermato
+  per la sua regola.
 
 ### Che cosa guida le scelte
 
-- **Misurato.** Il t11 guadagna +0,0104 sul t08, quasi tutto in `pds_cosine` (0,710 → 0,739
-  grezzo). Per la regola scritta prima, Orion aggiunge informazione.
-  - L'attribuzione non è pulita: insieme a HCT116 sono cambiati i pesi di K562 e CD4, da
-    0,433 : 0,567 a 1 : 1 ([CP-0031](checkpoints/0031-t11-punteggio-orion.md)).
-- **Misurato.** CD4 porta +0,0102 dei +0,0144 guadagnati dal t08.
-  - È una descrizione, non un verdetto: la regola scritta prima dà «non attribuibile», per
-    0,0002.
-  - CD4 è l'unico fattore che migliora insieme PDS, MSE e `reach`
-    ([CP-0030](checkpoints/0030-t10-attribuzione-cd4.md)).
-- **Misurato.** La fedeltà direzionale non si muove con gli effetti: vale 0,458–0,461 in
-  trial-01, t10, t08 e t11, sotto la base ufficiale di 0,5123.
-  - Nel t11 il generatore di trial-01 chiama in mediana 543 / 582 / 764 geni per bersaglio
-    in A / B / C, per l'83–85% «in su» (`reports/prediction_calls_2026-09-23/`).
-  - A effetto nullo ne chiama 462 / 453 / 684 (`reports/generator_null_2026-09-17/`);
-    `ControlModel` 0 (piloti del t14).
-- **Contraddetto dal t14.** Si pensava che in questa famiglia la fedeltà misurasse la
-  precisione delle chiamate spurie del generatore, e che si spostasse cambiando il generatore.
-  Con `ControlModel` le chiamate spurie sono quasi zero, ma la fedeltà scende a 0,447
-  ([CP-0032](checkpoints/0032-t14-controlmodel-fedelta.md)). Restano aperte due letture: il
-  segno dei nostri effetti trasferiti sui geni chiamati, o il silenzio sui bersagli con molti
-  geni veri.
-- **Misurato.** Chi non chiama geni prende fedeltà 0 (D-035). Un generatore pulito serve
-  solo insieme a effetti che producano chiamate con il segno giusto.
+- **Misurato.** Raddoppiare l'ampiezza (t11 → t15) vale +0,037, e migliorano tutti e cinque i
+  membri che contano: `pds_cosine` 0,739 → 0,774, fedeltà 0,458 → 0,477, `reach`, `nmae`,
+  Jaccard. Lo 0,197 minimizzava la MSE in pseudobulk, ma lo scalato della `mse` è tosato a 0
+  comunque. D-006 è superata da D-042 ([CP-0033](checkpoints/0033-t15-ampiezza-doppia.md)).
+- **Misurato.** Aggiungere sorgenti per lo stesso bersaglio alza `pds_cosine`:
+  - CD4 porta +0,0102 dei +0,0144 del t08 ([CP-0030](checkpoints/0030-t10-attribuzione-cd4.md));
+  - Orion HCT116 aggiunge +0,0104 nel t11, ma insieme sono cambiati i pesi
+    ([CP-0031](checkpoints/0031-t11-punteggio-orion.md)).
+- **Misurato, fra sorgenti pubbliche.** Il segno di un effetto trasferito è giusto nel 51–56%
+  dei casi sui geni che chiameremmo, e il consenso fra sorgenti aiuta poco
+  (`reports/direzione_2026-09-24/`). La direzione gene per gene è il segnale più debole.
+- **Contraddetto dal t14.** Si pensava che la fedeltà fosse governata dalle chiamate spurie del
+  generatore di trial-01. Con `ControlModel` le chiamate spurie sono quasi zero, ma la fedeltà
+  scende a 0,447 ([CP-0032](checkpoints/0032-t14-controlmodel-fedelta.md)).
+- **Misurato.** Chi non chiama geni prende fedeltà 0 (D-035).
 - **Misurato.** La gara è letta con 10x Flex, a sonde. A, B e C si somigliano fra loro più
   che alle sorgenti pubbliche in 3' ([CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md)).
   Le identità di linea sono ipotesi.
 
 ### Il prossimo passo
 
-**Proposta**, da [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md) §6,
-[CP-0031](checkpoints/0031-t11-punteggio-orion.md) §6 e dalle regole già scritte:
+**Proposta**, da [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md) §6 e D-042:
 
-1. **Inviare il t15**, con il via del proprietario: dice se l'ampiezza da sola alza `nmae` e
-   `reach` senza perdere `pds_cosine`, come col t14.
-2. **Misurare la direzione degli effetti**, per bersaglio, sui geni che chiamiamo. Il t14 mostra
-   che la fedeltà non dipende solo dal generatore. Si fa nello spazio degli effetti fra
-   sorgenti, e con i banchi su cellule vere.
-3. **Il t12** (+ HEK293T), e l'ablazione che pulisce l'attribuzione del t11: il t08 con K562 e
-   CD4 a pesi uguali.
-4. **Preparare il set finale.** Il 22 ottobre bersagli e contesti cambiano, e il percorso di
-   [LAVORO.md](LAVORO.md) §1 va rieseguito su di essi:
-   - stadi 97 e 102 sulla nuova lista di bersagli (D-039, D-041). Lo stadio 102 legge per
-     intero i file di Orion: alcune ore per linea;
-   - identità dei contesti con gli stadi 85 e 99.
+1. **Generare e inviare t16 e t17**, il 25 settembre, con il via del proprietario. Il t16 dice
+   se la curva dell'ampiezza sale ancora, il t17 se HEK293T aggiunge qualcosa.
+2. **Seguire la curva** secondo la regola del t16: raddoppiare ancora, o provare il punto
+   medio. Poi riprovare le sorgenti all'ampiezza migliore.
+3. **L'ablazione dei pesi del t11** (il t08 con K562 e CD4 a pesi uguali), per l'attribuzione.
+4. **Preparare il set finale** ([LAVORO.md](LAVORO.md) §7). L'ampiezza è un parametro da
+   decidere prima del 22 ottobre, con i dati di validazione.
 
 Ogni invio consuma quota e passa dall'autorizzazione del proprietario.
 
@@ -134,11 +110,11 @@ La classifica finale dipende solo dal set finale, su tre contesti diversi (D, E,
 | Impacchettamento in memoria limitata (stadio 48) | fatto: 0,52 GiB di picco contro i 33,5 di `vcc prep` | [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) |
 | Prima sottomissione, trial-01 | +0,045929 | [CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md) |
 | Pipeline a singola cellula su Colab: K562 letto per intero, `ControlModel`, DE veloce identico allo scorer, banchi a sei metriche | fatto | [CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md), [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
-| Ancore ufficiali risolte da due invii valutati | fatto; reggono su sei invii | [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md), [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md) |
+| Ancore ufficiali risolte da due invii valutati | fatto; reggono su otto invii | [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md), [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md) |
 | Predittore neurale condizionato | scartato dalla sua regola; il lineare inviato (t07) peggiora | [CP-0026](checkpoints/0026-predittore-neurale-condizionato.md), [CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md) |
 | Contesti A/B/C: saggio 10x Flex, impronte genetiche | misurato; le identità di linea restano ipotesi | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md) |
-| Trasferimento dello stesso bersaglio da più sorgenti (K562, CD4, Orion) | t11 migliore (+0,070777); t12 registrato prima, da generare | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md), [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md), [CP-0031](checkpoints/0031-t11-punteggio-orion.md) |
-| Generatore, cioè la fedeltà direzionale | aperto: t13 fermato dalla sua regola; t09 e t14 in coda su Colab | `reports/dispersion_2026-09-23/` |
+| Trasferimento dello stesso bersaglio da più sorgenti (K562, CD4, Orion) | t11 +0,0708 con Orion HCT116; t15 +0,1075 con l'ampiezza raddoppiata (D-042) | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), [CP-0029](checkpoints/0029-t08-punteggio-ufficiale.md), [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md), [CP-0031](checkpoints/0031-t11-punteggio-orion.md) |
+| Generatore, cioè la fedeltà direzionale | t14 (`ControlModel`) non attribuibile; la fedeltà scende invece di salire | `reports/dispersion_2026-09-23/` |
 | Esperimenti in pseudobulk (benchmark modulare, GO slim, SVD, gate) e infrastruttura degli agenti (orchestratore, catena di cicli) | chiusi; codice archiviato | [CP-0011](checkpoints/0011-primo-benchmark-modulare.md)–[CP-0019](checkpoints/0019-catena-cicli-guardiano.md), [ARCHIVIO.md](ARCHIVIO.md) |
 | Set finale D/E/F | esce il 22 ottobre; invii fino al 5 novembre | §1 |
 
