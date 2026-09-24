@@ -119,6 +119,10 @@ stay readable.
   annotated tag, rows in `docs/ARCHIVIO.md`, then `git rm` (D-040, `docs/LAVORO.md` §5).
   An untracked file goes to the Recycle Bin, never through a hard delete.
 - New material in `docs/` or `reports/` needs a registry row; the checker enforces it.
+- There is one branch, `main`, on the laptop and on GitHub, where the repository is
+  **public**: whatever is pushed is published. Push only with the owner's go, and never
+  commit a secret or data that must stay private. Retired branches are tags `archivio/*`
+  (`docs/ARCHIVIO.md`).
 
 ## Conventions
 

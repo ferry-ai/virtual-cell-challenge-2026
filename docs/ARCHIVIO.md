@@ -15,7 +15,7 @@ Le pulizie sono due:
 |---|---|
 | Tag | `archivio/pre-pulizia-2026-09-23` (annotato) |
 | Punta a | `6cf3806`, l'ultimo commit con tutti i file qui elencati |
-| Dove sta | solo in locale: il tag **non è stato inviato** a nessun remoto |
+| Dove sta | in locale e su GitHub (`origin`), dove è stato inviato il 24 settembre con l'unificazione su `main` |
 | Quanto | 244 file, 50.306 righe, di cui 128 file Python per 40.078 righe |
 | Perché | [D-040](DECISIONI.md#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione): nell'albero resta solo ciò che produce o valuta una sottomissione |
 
@@ -347,7 +347,7 @@ Seconda pulizia, decisa in [D-043](DECISIONI.md#d-043--lo-stadio-45-genera-solo-
 |---|---|
 | Tag | `archivio/pre-pulizia-2026-09-24` (annotato) |
 | Punta a | `24c4494`, l'ultimo commit con tutto ciò che è elencato qui |
-| Dove sta | solo in locale: il tag **non è stato inviato** a nessun remoto |
+| Dove sta | in locale e su GitHub (`origin`), dove è stato inviato il 24 settembre con l'unificazione su `main` |
 
 ```bash
 git show archivio/pre-pulizia-2026-09-24:src/vcc2026/models.py                     # un modulo
@@ -420,3 +420,25 @@ Due cose si spostano senza uscire dall'albero:
   - una riga tolta;
   - un import non riportato nella mappa;
   - un modulo senza riga.
+
+## 24 settembre 2026 — un solo branch, `main`
+
+Su richiesta del proprietario («riunire tutto il main in un unico branch»), il lavoro sta
+in un solo branch, `main`, sul portatile e su GitHub:
+- `feat/multi-source-transfer`, il ramo di lavoro dal 19 settembre, è entrato in `main` con
+  un fast-forward. Comprende l'analisi della sessione cloud del 24 settembre e l'audit di
+  ChatGPT (CP-0034);
+- i due branch mai uniti restano come tag, qui sotto, e sono stati tolti;
+- `codex/atlas-transfer-pilot` è già tutto dentro `main`. Il suo worktree appartiene a Codex e
+  resta com'è: contiene un pilota non committato del 19 settembre (stadio 96,
+  `atlas_transfer.py` e i suoi report), su cui decide il proprietario.
+
+| Branch ritirato | Tag | Punta a | Che cosa conteneva | Che cosa è passato in `main` |
+|---|---|---|---|---|
+| `refactor/pulizia` | `archivio/refactor-pulizia-2026-09-19` | `51a9c60` | la pulizia del 19 settembre, mai unita, con il suo `RESOCONTO.md` | niente: D-040 l'ha rifatta il 23 |
+| `claude/sharp-johnson-sj0cek` | `archivio/claude-sharp-johnson-2026-09-15` | `fa0b1c6` | una sessione cloud del 15 settembre: il modello `context.py`, correzioni a documenti poi archiviati, una correzione del controllo documentale, otto correzioni numeriche | la correzione del controllo (`5eb130c`) e le cinque correzioni numeriche ancora valide, riverificate il 24 |
+
+```bash
+git show archivio/refactor-pulizia-2026-09-19:reports/pulizia_2026-09-19/RESOCONTO.md
+git log --oneline archivio/claude-sharp-johnson-2026-09-15 -6
+```
