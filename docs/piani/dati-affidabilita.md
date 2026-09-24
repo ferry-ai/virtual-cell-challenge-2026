@@ -1,8 +1,9 @@
 # R-DATI — sorgenti, controlli e affidabilità
 
-- **Stato:** aperto; priorità iniziale della ricerca.
-- **Aggiornato:** 24 settembre 2026.
-- **Assegnazione:** da verificare con gli agenti già attivi; nessuna presa in carico registrata qui.
+- **Stato:** in corso; priorità iniziale della ricerca.
+- **Aggiornato:** 25 settembre 2026, 00:45 (ora italiana).
+- **Assegnazione:** sottoattività 1–3, audit su fonti pubbliche: Claude (app, sessione
+  `f4f38e58`), con agenti dell'hub, 25/09 00:20–00:45. Nessun download eseguito.
 - **Obiettivo:** rendere fattibili prove indipendenti su bersagli e contesti nuovi.
 - **Ipotesi:** H7 rumore, H8 saggio, H9 tempo/sopravvivenza; input per H1–H6/H10.
 
@@ -45,4 +46,21 @@ Non richiedere che tutte le sorgenti risultino utili per chiudere l'audit.
   [affidabilità DLD-1](../../reports/dld1_ceiling_2026-09-24/RISULTATI.md).
 - Sblocca [R-MODELLI](trasferimento-modelli.md) e [R-SWITCH](switch-distribuzioni.md).
 
-**Passaggio di consegne:** nessuna nuova acquisizione o adozione eseguita con questa scheda.
+## Avanzamento del 25 settembre
+
+Evidenza: [ricerca del 25 settembre](../../reports/ricerca_sorgenti_2026-09-25/RISULTATI.md),
+con i rapporti integrali degli agenti.
+- **1, Mixscale:** i `log2FC` per linea usano le sole cellule della linea (dedotto dal codice
+  del pacchetto, citazioni da rileggere sul testo grezzo); `beta` e `p` vengono da una
+  regressione congiunta e non sono indipendenti fra linee. Metadati degli oggetti Seurat e
+  presenza di cellule non stimolate ancora ignoti.
+- **2, microglia:** file e dimensioni noti; la distinzione soglia/gradualità dell'articolo è
+  circolare. Prossimo: aprire un h5mu per vedere se ha le etichette delle guide.
+- **3, Flex:** VIPerturb-seq è CRISPRi genome-wide in K562 letto con Flex v2 (CC-BY-4.0,
+  3,6 GB di `.rds` filtrato). Prossimo: leggere `genome_wide_manifest.txt` e le feature.
+- **Nuove sorgenti:** catalogo completo nel report, anche dei dataset lontani dai contesti
+  della gara, da conservare per generalizzare e studiare pattern (richiesta del proprietario).
+  I più grandi: KOLF2.1J (CRISPRi, 11.739 geni) e GSE345058 (1.000 knockout in A549).
+
+**Passaggio di consegne:** nessuna acquisizione né adozione. Ogni download chiede il via del
+proprietario; il disco C: ha pochi GB liberi.

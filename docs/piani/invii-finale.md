@@ -1,8 +1,10 @@
 # S-INVII — validazione e set finale
 
 - **Stato:** in attesa dei risultati delle prove preparate e delle dipendenze sotto.
-- **Aggiornato:** 24 settembre 2026; stato ricavato da PROGETTO §0, non interrogato sul server.
-- **Assegnazione:** da verificare con chi segue gli invii; non assumere che lo slot sia libero.
+- **Aggiornato:** 25 settembre 2026, 00:45 (ora italiana). La catena di invio del 24
+  (`submit_chain.py`, processo vivo alle 00:12) invia il t16 dalle 00:05 UTC e poi il t17.
+- **Assegnazione:** lettura di t16/t17 e preparazione del candidato successivo: Claude (app,
+  sessione `f4f38e58`), 25/09. Non assumere che lo slot sia libero.
 - **Scopo:** mantenere visibili le scadenze e le prove operative mentre procede la ricerca.
 
 ## Prossima azione
@@ -18,6 +20,12 @@ Questa scheda non invia, non pianifica automazioni e non cambia le preregistrazi
 | 2 | Curva dell'ampiezza | Esito t16; registrare il prossimo confronto prima di generare |
 | 3 | Attribuzione dei pesi/sorgenti | Ablazione dei pesi t11 e sorgenti ad ampiezza scelta; isolare ciò che il confronto permette |
 | 4 | Set finale | Preparazione secondo LAVORO §7; nuovi controlli, assi e bersagli al rilascio previsto del 22 ottobre; chiusura invii il 5 novembre |
+
+**Candidato dal banco del 25 settembre** ([banco a sorgente esclusa](../../reports/banco_varianti_2026-09-25/RISULTATI.md)):
+effetti ristretti (grezzo × z²/(z² + 64)) al posto dei grezzi, ampiezza con la regola del q99,
+sulla ricetta migliore dopo t16/t17. Nei proxy batte il t15 in tutte e quattro le sorgenti
+escluse, anche con un modello del rumore del generatore; non è un punteggio VCC. Serve
+un'opzione nuova dello stadio 100. Il filtro dei bersagli difficili è stato respinto.
 
 ## Criterio di chiusura per ciascuna prova
 

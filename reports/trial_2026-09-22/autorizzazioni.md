@@ -112,3 +112,21 @@ Il proprietario, in chat, alla domanda se inviare t16 e t17 appena si apre la qu
 settembre: «OK SI HAI IL VIA». Una catena in background aspetta che siano impacchettati e che
 siano passate le 00:05 UTC del 25. Poi li invia uno dopo l'altro, prima il t16 e poi il t17,
 tenendo sveglio il portatile, con i testi di `reports/trial_2026-09-24/submission_texts.md`.
+
+## Spazio liberato il 25 settembre, notte
+
+Il proprietario, in chat verso le 00:40 del 25 settembre: «puoi liberare spazio anche in modo
+più aggressivo». Il disco C: aveva 5,56 GB liberi e il Cestino era vuoto (capienza 26.428 MB,
+NukeOnDelete 0). Le cache comuni del profilo sono piccole (pip, npm, uv, CrashDumps, NVIDIA:
+meno di 1 GB ciascuna); le voci grandi sono i modelli di LM Studio (11,96 GB) e i dati delle
+app in `AppData\Local\Packages` (18,03 GB), esclusi dalla regola del 23 settembre. Spostati nel
+Cestino verso le 00:41, con il metodo `SendToRecycleBin`:
+- `artifacts/t14_pilots/` (1.411.603.105 byte): i cinque piloti del t14, già valutato; le
+  chiamate e la scelta restano in `reports/dispersion_2026-09-23/t14_pilots/`;
+- `artifacts/t15pack/` (4.205.159.113 byte): il `.vcc` del t15, valutato dal server con md5
+  verificato; si rigenera con gli stadi 100, 45 e 48 dalla ricetta `configs/recipes/t15.json`.
+
+Dopo il punteggio del t17 sono candidati anche `t16gen`, `t16pack`, `t17gen` e `t17pack`
+(circa 16 GB), che la catena di invio usa fino ad allora.
+
+Alle 00:45 il Cestino risultava vuoto e C: aveva 10,74 GB liberi (erano 5,56).

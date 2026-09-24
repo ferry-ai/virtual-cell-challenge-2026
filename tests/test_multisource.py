@@ -139,5 +139,46 @@ class TopKSignTests(unittest.TestCase):
         self.assertEqual(topk_sign_agreement(pred, truth, (1,), keep=keep)[1], (1, 1))
 
 
+class Stage100EffectTests(unittest.TestCase):
+    """Stage 100's `load_table`: the effect a recipe names is the one `mix` averages."""
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        import json
+        import tempfile
+        spec = importlib.util.spec_from_file_location("stage100", REPO / "scripts" / "100_build_context_effects.py")
+        cls.stage = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.stage)
+        cls.tmp = tempfile.TemporaryDirectory()
+        cls.cache = Path(cls.tmp.name)
+        cls.raw = np.array([[-2.46, 0.3, 0.3, np.nan]], dtype=np.float32)
+        cls.se = np.array([[0.2, 0.3, 0.05, np.nan]], dtype=np.float32)
+        cls.shrunk = np.array([[-1.0, 0.1, 0.2, np.nan]], dtype=np.float32)   # any array: read as is
+        np.savez_compressed(cls.cache / "src.npz", targets=np.array(["T1"]), shrunk=cls.shrunk, raw=cls.raw,
+                            se=cls.se, n_cells=np.array([100]), meta=json.dumps({}))
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
+    def test_raw_and_shrunk_are_read_as_stored(self):
+        np.testing.assert_array_equal(self.stage.load_table(self.cache, "src", "raw").shrunk, self.raw)
+        np.testing.assert_array_equal(self.stage.load_table(self.cache, "src", "shrunk").shrunk, self.shrunk)
+
+    def test_zshrink_recomputes_from_raw_and_se_and_keeps_unmeasured_nan(self):
+        from vcc2026.multisource import z_shrink
+        got = self.stage.load_table(self.cache, "src", "zshrink", 64.0).shrunk
+        want = z_shrink(self.raw, self.se, k=64.0)
+        np.testing.assert_allclose(got[0, :3], want[0, :3], rtol=1e-6)
+        self.assertAlmostEqual(float(got[0, 1]), 0.3 * 1 / 65, places=6)   # z = 1
+        self.assertTrue(np.isnan(got[0, 3]))                              # never becomes a vote for zero
+
+    def test_zshrink_without_a_positive_k_is_refused(self):
+        for k in (None, 0, -4):
+            with self.assertRaises(ValueError):
+                self.stage.load_table(self.cache, "src", "zshrink", k)
+
+
 if __name__ == "__main__":
     unittest.main()

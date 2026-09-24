@@ -8,6 +8,12 @@ A recipe is a JSON file fixed BEFORE generation:
                   "C": {...}},
      "why": "free text: the evidence the weights come from"}
 
+``effect`` picks what `mix` averages: ``shrunk`` (the stage-98 array, the default), ``raw``,
+or ``zshrink``, which recomputes each source's local shrinkage from its raw effect and SE with
+the recipe's ``shrink_k``: ``raw * z^2 / (z^2 + shrink_k)`` (`multisource.z_shrink`). For the
+pseudobulk sources the stage-98 ``shrunk`` array is not that formula at k = 4 applied to the
+pooled effect, so ``zshrink`` with ``shrink_k`` 4 differs from ``shrunk``.
+
 For each context this writes ``effects_<CTX>.npz`` with ``targets``, ``genes`` (the official
 axis) and ``lfc`` (ln fold change, amplitude applied), the format stage 76 reads through
 ``--effects CTX=PATH``. A (target, gene) pair no source measured stays exactly 0 and is
@@ -40,15 +46,24 @@ from vcc2026 import config  # noqa: E402
 from vcc2026.bench import log  # noqa: E402
 from vcc2026.genes import official_axis  # noqa: E402
 from vcc2026.manifest import text_sha256  # noqa: E402
-from vcc2026.multisource import AxisTable, mix  # noqa: E402
+from vcc2026.multisource import AxisTable, mix, z_shrink  # noqa: E402
 
 DATA_ROOT = config.paths().data_root  # VCC2026_DATA_ROOT, else configs/config.yaml
+EFFECTS = ("shrunk", "raw", "zshrink")
 
 
-def load_table(cache: Path, name: str, effect: str = "shrunk") -> AxisTable:
-    """A stage-98 source; ``effect='raw'`` puts the unshrunk effects where `mix` reads."""
+def load_table(cache: Path, name: str, effect: str = "shrunk", shrink_k: float | None = None) -> AxisTable:
+    """A stage-98 source, with the effect `mix` reads: stage-98 ``shrunk``, ``raw``, or
+    ``zshrink`` recomputed from raw and SE at ``shrink_k``. Unmeasured pairs stay NaN."""
     z = np.load(cache / f"{name}.npz", allow_pickle=False)
-    main = z["raw"] if effect == "raw" else z["shrunk"]
+    if effect == "raw":
+        main = z["raw"]
+    elif effect == "zshrink":
+        if shrink_k is None or not shrink_k > 0:
+            raise ValueError(f"effect 'zshrink' needs a positive shrink_k, got {shrink_k!r}")
+        main = z_shrink(z["raw"], z["se"], k=float(shrink_k)).astype(np.float32)
+    else:
+        main = z["shrunk"]
     return AxisTable(name, z["targets"].astype(str).tolist(), main, z["raw"], z["se"], z["n_cells"],
                      json.loads(str(z["meta"])))
 
@@ -70,9 +85,12 @@ def main() -> None:
     scale = float(recipe.get("reliability_scale", 100.0))
     names = sorted({s for c in recipe["contexts"].values() for s in c["weights"]})
     effect = recipe.get("effect", "shrunk")
-    if effect not in ("shrunk", "raw"):
-        raise SystemExit(f"recipe effect must be 'shrunk' or 'raw', got {effect!r}")
-    tables = [load_table(args.cache, n, effect) for n in names]
+    if effect not in EFFECTS:
+        raise SystemExit(f"recipe effect must be one of {EFFECTS}, got {effect!r}")
+    shrink_k = recipe.get("shrink_k")
+    if effect == "zshrink" and not (isinstance(shrink_k, (int, float)) and shrink_k > 0):
+        raise SystemExit(f"recipe effect 'zshrink' needs a positive number shrink_k, got {shrink_k!r}")
+    tables = [load_table(args.cache, n, effect, shrink_k) for n in names]
     summary = {}
     for ctx, spec in recipe["contexts"].items():
         weights = {k: float(v) for k, v in spec["weights"].items()}

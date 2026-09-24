@@ -28,6 +28,8 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `scorer/`, `scorer_2026-09-12/` (the scorer contract), `leaderboard_2026-09-16/`.
 
 **Sources and transfer** — stages 71, 97, 98 and 100–103:
+`banco_varianti_2026-09-25/` (leave-one-source-out bench of recipe variants: shrinkage, gamma, consensus, gating, generator noise),
+`ricerca_sorgenti_2026-09-25/` (agent search of 25 September: Mixscale provenance, microglia, Flex bridge, full catalogue of new sources),
 `pattern_mixscale_2026-09-24/` (paired reanalysis: target/stimulus heterogeneity and sign specificity),
 `dld1_audit_2026-09-24/` (exploratory DLD-1 audit and Mixscale file inventory),
 `dld1_ceiling_2026-09-24/` (DLD-1 within-context ceiling against cross-context transfer),
