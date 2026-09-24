@@ -14,6 +14,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-044 | La ricerca ammette sorgenti senza bersagli in comune col pannello; i nuovi predittori si valutano soprattutto su bersagli e contesti entrambi nuovi | attiva | 2026-09-24 | Richiesta del proprietario in chat; [CP-0036](checkpoints/0036-generalizzazione-bersagli-contesti.md), [GENERALIZZAZIONE.md](GENERALIZZAZIONE.md) |
 | D-001 | I dati pesanti stanno fuori dal repository | attiva | 2026-09-11 | `configs/config.yaml`, `src/vcc2026/config.py` |
 | D-002 | Servono dati perturbazionali esterni: la previsione è zero-shot | attiva | 2026-09-11 | `docs/data_strategy_2026-09-11.md` |
 | D-003 | Prima un banco di prova locale, poi modelli più complessi | attiva | 2026-09-11 | `docs/data_strategy_2026-09-11.md` §6, `docs/revisione_analisi_2026-09-11.md` §6 |
@@ -59,6 +60,35 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-044 — Generalizzazione senza obbligo di bersagli in comune
+
+- **Mandato:** il proprietario chiede di orientare ricerca e scelte verso la
+  generalizzazione al set finale, rendendo esplicito che i dataset non devono
+  per forza condividere i geni perturbati del pannello attuale.
+- **Decisione:** nessun dataset si esclude solo per overlap nullo o basso dei
+  bersagli; conservare universi completi e contesti lontani come candidati.
+  Qualità, diversità e possibilità di validazione indipendente guidano la priorità.
+  La copertura dei geni di risposta resta distinta e richiede maschere.
+- **Valutazione:** separare C (contesto nuovo), T (bersaglio nuovo) e J (entrambi
+  nuovi). J è la prova principale della nuova ricerca. Nel regime T/J le risposte
+  dei bersagli nascosti non entrano nel training da nessuna sorgente o derivato.
+  Controlli basali del test ammessi come input, come in gara; selezione sul test vietata.
+- **Applicazione:** [GENERALIZZAZIONE.md](GENERALIZZAZIONE.md) specifica ruoli delle
+  sorgenti, controlli di leakage e prossimi lavori. Primo candidato per progettare
+  il banco: tutti i bersagli Mixscale, dopo l'audit delle dipendenze delle stime DE.
+- **Alternative scartate:** selezionare dati solo sui 300 attuali; assumere che più
+  contesti garantiscano miglioramento; chiamare generalizzazione a bersagli nuovi
+  un confronto che usa altrove le risposte degli stessi bersagli.
+- **Ambito:** cambia la strategia di ricerca, non i risultati di CP-0026, la
+  baseline di produzione, le ricette o le regole degli invii. Nessuna nuova rete
+  addestrata o sorgente adottata da questa decisione. D-040 continua a regolare
+  l'eventuale recupero del codice archiviato.
+- **Riaprire se:** un protocollo congelato su bersagli e contesti nuovi mostra
+  quali sorgenti o rappresentazioni aiutano, oppure dati e metadati disponibili
+  rendono impossibile distinguere i fattori previsti. Registrare il limite e
+  restringere la dichiarazione di generalizzazione; non reintrodurre in silenzio
+  l'overlap col pannello come criterio universale.
 
 ### D-001 — I dati pesanti stanno fuori dal repository
 

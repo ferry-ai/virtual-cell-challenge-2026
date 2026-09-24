@@ -58,6 +58,10 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 | Percorso | Stato | Sostituito da | Cosa resta utile / nota | Scheda |
 |---|---|---|---|---|
+| `docs/GENERALIZZAZIONE.md` | attuale | — | D-044: nessun obbligo di overlap dei bersagli col pannello per selezionare dataset; distinzione bersagli/risposte, regimi C/T/J, controllo di leakage, ruoli delle sorgenti e priorità. Decisioni di ricerca, non risultati di training | — |
+| `docs/checkpoints/0036-generalizzazione-bersagli-contesti.md` | attuale | — | CP-0036: cambio di strategia richiesto dal proprietario; J come prova principale per nuovi predittori, baseline dello stesso bersaglio mantenuta | — |
+| `docs/checkpoints/0035-dld1-mixscale-audit.md` | attuale | — | CP-0035: copertura DLD-1 misurata e primo confronto descrittivo fra sei linee Mixscale. Nessuna sorgente adottata | — |
+| `reports/dld1_audit_2026-09-24/` | attuale | — | Audit esplorativo delle matrici Low1 DLD-1 già scaricate: manifest verificato, 67/300 bersagli, 2.587/18.533 geni ufficiali, confronto con K562 su 61 bersagli. Inventario Mixscale e piano per contesti nuovi. `r1/` contiene le misure; `source_inventory/` conserva la copertura DLD-1 prima di un errore di permessi sulla cartella dati, `source_inventory_r2/` il tentativo con accesso autorizzato. Non è una sorgente adottata né un punteggio VCC | — |
 | `reports/analisi_2026-09-24/` | attuale | — | Analisi dello stato chiesta dal proprietario, scritta **prima** dei punteggi di t16 e t17. `ANALISI.md` legge il codice dello scorer 0.16.0 e i report esistenti; `calcoli.json` tiene i conti. **Interpretazioni, non misure nuove**: la MSE dei nostri effetti implica un coseno con la verità intorno a 0,04; l'artefatto del generatore di trial-01 (429–675 chiamate a effetto nullo) ha una precisione di segno stimata di 0,44 contro 0,53 delle chiamate da effetti; le previsioni per il t16 sono al §4. Propone correzioni a §0 della mappa e a D-042, non applicate | — |
 | `reports/audit_stato_2026-09-24/` | attuale | — | Audit esplorativo riproducibile della cache r5: controlli dei segni a bersagli scambiati, confronto fra metà CD4, confronto delle ampiezze t17/t15 e proposte per il set finale. Include script, misure per bersaglio e limiti. Non è un punteggio VCC (CP-0034) | — |
 | `docs/checkpoints/0034-audit-segni-e-ampiezza.md` | attuale | — | CP-0034: distingue specificità dei segni, prevalenza e rumore; precisa due interpretazioni di CP-0033 e la lettura causale del t17. Nessuna ricetta modificata | — |
@@ -881,5 +885,3 @@ Controllo automatico della coerenza del registro:
 ```bash
 python scripts/31_check_docs.py
 ```
-
-

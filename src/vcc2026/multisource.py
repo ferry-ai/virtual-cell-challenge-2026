@@ -1,7 +1,9 @@
 """Same-target effects from several perturbation sources, on the official gene axis.
 
-A zero-shot prediction for target t in a new context can only borrow t's response from
-contexts where t was perturbed. This module puts every source on one footing -- ln fold
+This module implements the same-target transfer baseline: for target t it borrows
+responses from contexts where t was perturbed. This is a constraint of this method,
+not a requirement for research datasets or models of unseen perturbation targets
+(D-044, docs/GENERALIZZAZIONE.md). It puts every source on one footing -- ln fold
 change of pooled fractions against the source's own non-targeting controls, a
 quasi-Poisson standard error and empirical-Bayes shrinkage, as `effects_from_bulk` does
 for the K562 bulk -- and then:

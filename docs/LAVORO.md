@@ -186,6 +186,14 @@ Il 22 ottobre arrivano tre contesti nuovi, D, E ed F, con i soli controlli, e 30
 nuovi. Le sottomissioni chiudono il 5 novembre, e la classifica finale dipende solo da questo
 set. Il percorso è quello del §1, rieseguito su bersagli e contesti nuovi.
 
+Questo è il percorso della **baseline di trasferimento dello stesso bersaglio**.
+La ricerca per il finale segue anche D-044 e
+[GENERALIZZAZIONE.md](GENERALIZZAZIONE.md): non richiede overlap dei bersagli
+dei dataset con il pannello attuale. Un bersaglio nuovo per la gara può essere
+già misurato nelle sorgenti pubbliche oppure essere nuovo anche per il training;
+le due condizioni si valutano e si riportano separatamente. I filtri `--targets-csv`
+degli stadi di produzione non sono criteri generali di acquisizione dei dati.
+
 **Già pronto (verificato il 24 settembre):**
 - lo stadio 45 accetta `--controls-dir` e `--contexts`. Due piloti su A, con e senza
   l'opzione, danno matrici identiche;

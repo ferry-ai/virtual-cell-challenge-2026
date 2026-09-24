@@ -16,6 +16,7 @@ several contain conclusions that later work corrected.
 | Prepare, generate or submit a trial | LAVORO §1–2; `reports/CLAUDE.md`, which lists what a submission leaves, with a complete example; the latest recipe in `configs/recipes/` | the analyses of 11–15 September in `docs/` |
 | Read an official score | LAVORO §2, point 7; `reports/anchors_2026-09-17/`; the latest checkpoint as a model | the benches' local scores, which are not VCC scores |
 | Prepare the final set (D, E, F; 22 October) | LAVORO §7 | |
+| Find data, choose sources or design a generalizing predictor | `docs/GENERALIZZAZIONE.md`; D-044 in `docs/DECISIONI.md` | ranking datasets only by overlap with the current 300 targets |
 | Queue or follow a Colab job | LAVORO §3 | the job's own log: it syncs only when the job ends |
 | Change a stage | `scripts/CLAUDE.md`; the stage's docstring and its test | |
 | Change a library module | `src/vcc2026/CLAUDE.md`, which says which stages import it | |
@@ -68,6 +69,21 @@ the source probes, the remote ingestion, trial-00 and trial-01, the expired plan
 - Checkpoints still name archived paths. That is expected; the checker accepts them.
 
 ## Evidence discipline
+
+### Research scope: new targets and new contexts (D-044)
+
+- **Shared perturbation targets with the current panel are not required for a useful
+  dataset.** Do not reject a source or discard its other targets solely for low or zero
+  overlap with the current 300. Retain distant contexts as research candidates.
+- Distinguish perturbation targets from measured response genes. Missing response
+  measurements keep a mask (D-009); eligibility without target overlap does not imply
+  that incompatible response axes or assays can be concatenated without reconciliation.
+- The production same-target transfer pipeline is a baseline, not the limit of the
+  research objective. Evaluate new-target, new-context and jointly new-target/context
+  regimes separately. A target held out as unseen must have its perturbation outcomes
+  excluded from training across every source and derived feature.
+- More contexts improving generalization is a hypothesis to test, not an assumed result.
+  Read `docs/GENERALIZZAZIONE.md` for source roles, leakage controls and the next work.
 
 This repository was built quickly by agents, and its main failure mode has been
 confident prose outrunning what was measured. Hold these lines:

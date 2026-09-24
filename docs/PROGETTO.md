@@ -80,7 +80,16 @@ Le tabelle per membro stanno nei checkpoint citati.
 
 ### Il prossimo passo
 
-**Proposta**, da [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md) §6 e D-042:
+**Ricerca, decisione del 24 settembre (D-044):** cercare dati e modelli che
+generalizzino a bersagli e contesti nuovi. **Non è richiesto avere geni perturbati
+in comune con i 300 attuali** per considerare utile una sorgente. Conservare anche
+bersagli diversi e contesti lontani; valutare separatamente copertura dei geni di
+risposta, qualità e diversità. La prova principale dei nuovi predittori esclude
+dal training sia i bersagli sia i contesti di test. Scelte, limiti e ordine del
+lavoro in [GENERALIZZAZIONE.md](GENERALIZZAZIONE.md), registrati in
+[CP-0036](checkpoints/0036-generalizzazione-bersagli-contesti.md).
+
+**Pipeline degli invii, proposta**, da [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md) §6 e D-042:
 
 1. **Leggere t16 e t17** con le loro regole, il 25 settembre. Il t16 dice se la curva
    dell'ampiezza sale ancora, il t17 se HEK293T aggiunge qualcosa.
@@ -91,6 +100,8 @@ Le tabelle per membro stanno nei checkpoint citati.
    decidere prima del 22 ottobre, con i dati di validazione.
 
 Ogni invio consuma quota e passa dall'autorizzazione del proprietario.
+Il successo del trasferimento dello stesso bersaglio non dimostra generalizzazione
+a bersagli mai osservati; il suo requisito di overlap non limita la ricerca.
 
 ## 1. Il problema
 
@@ -231,6 +242,10 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
    la matrice RNA. L'incarico preparato il 14 settembre per l'orchestratore,
    `configs/orchestrator/briefs/ricerca-perturbseq-t-squamoso.yaml`, non è mai stato
    avviato ed è archiviato con l'orchestratore (D-040): la domanda resta aperta.
+   **Verifica del 24 settembre:** Jurkat ha la sottoserie pubblica GSE249595,
+   con lettura mirata di 374 geni; non identifica A e non chiude la ricerca sui
+   contesti squamosi. DLD-1 e Mixscale sono stati esaminati come contesti aggiuntivi,
+   con copertura e primi confronti in [CP-0035](checkpoints/0035-dld1-mixscale-audit.md).
 8. **L'efficienza di knockdown nei tre contesti ufficiali**, che non è disponibile.
 9. **Se la licenza CC-BY-NC-SA-4.0 di Orion** sia compatibile con le regole della gara.
    Registrata, non verificata.

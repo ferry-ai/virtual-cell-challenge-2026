@@ -30,6 +30,12 @@ anonymized cell lines, and must simulate what happens when 300 genes are silence
 
 Final ranking depends **only** on the final test set.
 
+Research datasets **do not need perturbation targets in common with the current
+300-target panel**. We also aim to predict unseen targets in unseen contexts;
+the production same-target transfer pipeline is one baseline. Source selection and
+evaluation requirements are in [`docs/GENERALIZZAZIONE.md`](docs/GENERALIZZAZIONE.md)
+(D-044). Target overlap and coverage of measured response genes are separate quantities.
+
 ## How it is scored
 
 Six metrics computed by `cell-eval2` on its `vcc2026` preset. PDS excludes all

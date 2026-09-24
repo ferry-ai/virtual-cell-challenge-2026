@@ -24,6 +24,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `scorer/`, `scorer_2026-09-12/` (the scorer contract), `leaderboard_2026-09-16/`.
 
 **Sources and transfer** — stages 71, 97, 98 and 100–103:
+`dld1_audit_2026-09-24/` (exploratory DLD-1 audit and Mixscale file inventory),
 `k562_sc_2026-09-17/`, `cd4_rows_2026-09-22/`, `orion_2026-09-23/`, `multisource_2026-09-22/`,
 `direzione_2026-09-24/` (stage 103), `cis_2026-09-17/`, `coexpression_2026-09-17/`,
 `source_coverage_2026-09-17/`, `source_lineage_2026-09-18/`, `transfer_ceiling/`,
