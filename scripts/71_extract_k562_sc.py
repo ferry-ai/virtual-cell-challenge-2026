@@ -39,6 +39,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from vcc2026.bench import log  # noqa: E402
 from vcc2026.sc_stream import (  # noqa: E402
     CsrAppendWriter,
     GroupAccumulator,
@@ -50,10 +51,6 @@ from vcc2026.sc_stream import (  # noqa: E402
 CATALOG_MD5 = "887e3e6a8c8df6eadf7a3030a53c9546"
 CATALOG_BYTES = 65830941948
 NTC = "non-targeting"
-
-
-def log(msg: str) -> None:
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
 def target_symbols(obs: pd.DataFrame, group_col: str) -> np.ndarray:

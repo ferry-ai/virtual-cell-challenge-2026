@@ -25,7 +25,7 @@ from typing import Callable, Sequence
 import numpy as np
 
 __all__ = [
-    "ChunkMap", "chunk_map", "row_pieces", "plan_requests", "read_rows",
+    "ChunkMap", "chunk_map", "plan_requests", "read_rows",
     "http_fetcher", "local_fetcher",
 ]
 
@@ -85,11 +85,6 @@ def chunk_map(ds) -> ChunkMap:
     if (offsets < 0).any():
         raise ValueError(f"{ds.name}: {(offsets < 0).sum()} unallocated chunks")
     return ChunkMap(offsets, chunk_len, dtype.itemsize, n, dtype)
-
-
-def row_pieces(indptr: np.ndarray, rows: Sequence[int], cmap: ChunkMap):
-    """Per selected row, the (file_start, file_stop, elem_lo, elem_hi) pieces it needs."""
-    return [cmap.file_span(int(indptr[r]), int(indptr[r + 1])) for r in rows]
 
 
 def plan_requests(pieces: Sequence[tuple[int, int]], max_gap: int, max_request: int):

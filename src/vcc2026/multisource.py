@@ -28,7 +28,6 @@ import pandas as pd
 import scipy.sparse as sp
 
 from vcc2026.predictor_sc import SourceEffects
-from vcc2026.sc_effects import eb_shrink
 
 __all__ = ["effects_from_pseudobulk", "z_shrink", "AxisTable", "mix", "shared_signal", "transfer_report"]
 

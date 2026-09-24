@@ -35,15 +35,7 @@ __all__ = [
     "RunManifest",
     "file_fingerprint",
     "environment_fingerprint",
-    "snapshot_source",
-    "SOURCE_SNAPSHOT_ROOTS",
 ]
-
-# Directories whose contents decide what a run computed. Data is excluded: it is
-# fingerprinted, not copied (D-001).
-SOURCE_SNAPSHOT_ROOTS = ("src", "scripts", "configs", "tests")
-SOURCE_SNAPSHOT_FILES = ("requirements.lock.txt", "requirements.txt", "CLAUDE.md")
-_SOURCE_SUFFIXES = frozenset({".py", ".yaml", ".yml", ".json", ".cmd", ".ps1", ".txt", ".md"})
 
 _SAMPLE_LIMIT = 64 * 1024**2  # hash in full below this; sample above it
 _SAMPLE_BLOCK = 8 * 1024**2
@@ -103,77 +95,6 @@ def environment_fingerprint() -> dict:
             k: os.environ[k] for k in ("VCC2026_DATA_ROOT", "VCC2026_ARTIFACT_ROOT")
             if k in os.environ
         },
-    }
-
-
-def snapshot_source(
-    destination: Path | str,
-    *,
-    repo_root: Path | str | None = None,
-    roots=SOURCE_SNAPSHOT_ROOTS,
-    extra_files=SOURCE_SNAPSHOT_FILES,
-) -> dict:
-    """Copy the code that produced a run into a single archive beside it.
-
-    A fingerprint says a file was there and what was in it; it cannot bring the
-    file back. This project's runs are made partly of untracked files -- a freeze
-    that recorded only their hashes would identify code nobody could recover, and
-    a `git diff` cannot contain a file git has never seen. So the source is
-    archived, not described.
-
-    Small by construction: source only, no data, a few hundred kilobytes.
-
-    Raises:
-        FileExistsError: the destination exists. A snapshot is evidence.
-    """
-    import tarfile
-
-    destination = Path(destination)
-    if destination.exists():
-        raise FileExistsError(
-            f"{destination} exists; a source snapshot is evidence of one run. "
-            f"Write to a new path."
-        )
-    root = Path(repo_root) if repo_root else Path(__file__).resolve().parents[2]
-    destination.parent.mkdir(parents=True, exist_ok=True)
-
-    members: list[str] = []
-    skipped: list[str] = []
-    with tarfile.open(destination, "w:gz") as tar:
-        for name in roots:
-            base = root / name
-            if not base.exists():
-                continue
-            for path in sorted(base.rglob("*")):
-                if not path.is_file():
-                    continue
-                rel = path.relative_to(root).as_posix()
-                if "__pycache__" in rel or path.suffix == ".pyc":
-                    continue
-                if path.suffix.lower() not in _SOURCE_SUFFIXES:
-                    skipped.append(rel)
-                    continue
-                tar.add(path, arcname=rel)
-                members.append(rel)
-        for name in extra_files:
-            path = root / name
-            if path.exists():
-                tar.add(path, arcname=name)
-                members.append(name)
-
-    return {
-        "path": str(destination),
-        "bytes": destination.stat().st_size,
-        "sha256": file_fingerprint(destination, full=True)["sha256"],
-        "n_files": len(members),
-        "files": members,
-        "skipped_non_source": skipped,
-        "roots": list(roots),
-        "repo_root": str(root),
-        "why": (
-            "Hashes identify code; they do not restore it. This archive is what "
-            "makes an untracked-file run reconstructible."
-        ),
     }
 
 

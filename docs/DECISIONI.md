@@ -287,10 +287,20 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   «DE numbers differ between engines». Quattro delle sei metriche dipendono da questa
   scelta, quindi due esecuzioni della stessa versione su macchine diverse possono
   produrre numeri non confrontabili.
-- **Come è fatta:** `scorer_fingerprint()` in `src/vcc2026/evaluation.py` risolve e
-  registra il backend accanto alla versione; finisce nel manifesto di ogni run. Su
-  questa macchina si risolve a `scanpy` (pdex assente, nessuna CUDA):
-  `reports/pipeline/null_calibration_A.json`.
+- **Come è fatta:** fino al 23 settembre `scorer_fingerprint()` in
+  `src/vcc2026/evaluation.py` risolveva e registrava il backend accanto alla versione, nel
+  manifesto di ogni run. Su questa macchina si risolveva a `scanpy` (pdex assente, nessuna
+  CUDA): `reports/pipeline/null_calibration_A.json`. Dopo D-040 nessuno stadio vivo la
+  chiamava più, e il 24 settembre è andata in archivio (D-043).
+
+  Dal 24 settembre il backend è fissato, non risolto (letto nel codice quel giorno):
+  - i banchi 73 e 75 costruiscono `Bench` con `de.backend` a `scanpy`, e `bench.json` lo
+    dichiara nel campo `backend_note`;
+  - gli stadi 72 e 79 scrivono il backend nel loro riepilogo;
+  - il DE veloce resta identico al percorso scanpy dello scorer (D-037);
+  - la versione di `cell-eval2` finisce nel manifesto di ogni run (`RunManifest`).
+
+  Lo stadio 83 non registra il backend: usa `fast_scorer_de`, lo stesso percorso.
 - **Conseguenza per la macchina remota:** installare pdex o usare una GPU cambia i
   numeri DE. Va fatto una volta e dichiarato, non a metà di una serie di confronti.
 - **Riaprire se:** una versione futura di `cell-eval2` fissa il backend, o se si

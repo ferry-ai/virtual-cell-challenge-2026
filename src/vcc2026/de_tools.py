@@ -17,20 +17,42 @@ beside every number because the engines do not agree to the last digit (D-014).
 from __future__ import annotations
 
 from functools import lru_cache
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import scipy.sparse as sp
 
-__all__ = ["ReferencePool", "bh", "scanpy_cpm", "de_frame", "fast_scorer_de", "scorer_config", "scorer_de", "summarize_de"]
+__all__ = ["ReferencePool", "bh", "scanpy_cpm", "de_frame", "fast_scorer_de", "load_eval_config", "scorer_config",
+           "scorer_de", "summarize_de"]
 
 CONTROL = "non-targeting"
 
 
+def load_eval_config(profile: str = "vcc2026"):
+    """The official scorer configuration, taken from the installed package.
+
+    Read from the package's own shipped YAML rather than reconstructed here, so
+    that a change in the competition profile shows up as a changed config rather
+    than as a silent disagreement between our copy and theirs.
+    """
+    from cell_eval2.config import EvalConfig
+
+    if hasattr(EvalConfig, "from_preset"):
+        try:
+            return EvalConfig.from_preset(profile)
+        except Exception:
+            pass
+    import cell_eval2
+
+    path = Path(cell_eval2.__file__).parent / "configs" / f"{profile}.yaml"
+    if not path.exists():
+        raise FileNotFoundError(f"no scorer profile {profile!r} at {path}")
+    return EvalConfig.from_yaml(str(path))
+
+
 @lru_cache(maxsize=1)
 def scorer_config():
-    from vcc2026.evaluation import load_eval_config
-
     return load_eval_config("vcc2026")
 
 

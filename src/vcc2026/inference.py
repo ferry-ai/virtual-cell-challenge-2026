@@ -19,9 +19,9 @@ hidden, because it is a real modification of the prediction.
 
 **The no-effect fallback is not a measured zero (D-009).** A target no source
 covers, and a gene no source measures, get zero predicted change because there
-is nothing to predict from. That is a fallback. `SupportMask` carries the
-distinction into the diagnostics so a report cannot describe missing evidence as
-an observed null.
+is nothing to predict from. That is a fallback, and the `observed` mask that
+`predicted_profile` takes keeps it one: such a gene keeps its exact share of the
+composition instead of absorbing part of the shift.
 
 **Sampling from a pooled mean is not sampling a cell.** The mean profile over
 18,400 control cells is far less sparse than any one of those cells, so Poisson
@@ -34,7 +34,7 @@ instead of assuming it away.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 
 import h5py
@@ -43,7 +43,6 @@ import scipy.sparse as sp
 
 __all__ = [
     "BasalProfile",
-    "SupportMask",
     "read_basal_profile",
     "read_csr_rows",
     "compositional_shift",
@@ -93,41 +92,6 @@ class BasalProfile:
             "median_nnz_per_cell": float(np.median(nnz)),
             "genes_with_any_count": int((self.profile > 0).sum()),
             "source_path": self.source_path,
-        }
-
-
-@dataclass
-class SupportMask:
-    """What the model could and could not speak to, kept out of the matrix.
-
-    `covered_targets` are targets some source measured. `gene_observed` is the
-    per-gene mask of the source's universe. Everything outside either is a
-    no-effect *fallback*, never an observation (D-009).
-    """
-
-    requested_targets: tuple[str, ...]
-    covered_targets: tuple[str, ...]
-    gene_observed: np.ndarray
-    per_target: dict = field(default_factory=dict)
-
-    @property
-    def uncovered_targets(self) -> tuple[str, ...]:
-        covered = set(self.covered_targets)
-        return tuple(t for t in self.requested_targets if t not in covered)
-
-    def summary(self) -> dict:
-        return {
-            "n_requested_targets": len(self.requested_targets),
-            "n_covered_targets": len(self.covered_targets),
-            "n_uncovered_targets": len(self.uncovered_targets),
-            "uncovered_targets": list(self.uncovered_targets),
-            "n_genes_observed_by_source": int(self.gene_observed.sum()),
-            "n_genes_unobserved_by_source": int((~self.gene_observed).sum()),
-            "fallback_semantics": (
-                "An uncovered target and an unobserved gene both receive a "
-                "no-effect prediction because no evidence is available. This is "
-                "a fallback, NOT a measured null effect (D-009)."
-            ),
         }
 
 

@@ -29,7 +29,7 @@ import scipy.sparse as sp
 
 from .de_tools import ReferencePool, fast_scorer_de, scorer_config
 
-__all__ = ["SCORED", "SHORT", "Bench", "log"]
+__all__ = ["SCORED", "SHORT", "Bench", "load_effects", "log"]
 
 SCORED = {
     "pds_cosine": "higher",
@@ -47,6 +47,28 @@ CONTROL = "non-targeting"
 
 def log(msg: str) -> None:
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
+
+
+def load_effects(specs, genes) -> dict:
+    """``NAME=PATH`` npz files (targets, genes, lfc in ln units) -> {NAME: {target: vector on genes}}.
+
+    How effects computed elsewhere (stage 100, or the archived stage 92) enter a bench: the same
+    generator, the same scorer and the same targets as every other arm. Genes the file lacks get 0.
+    """
+    out = {}
+    for spec in specs or []:
+        name, _, path = spec.partition("=")
+        if "_a" in name or "+" in name or ":" in name:
+            raise SystemExit(f"effects name {name!r} must not contain '_a', '+' or ':'")
+        z = np.load(path)
+        pos = pd.Index(z["genes"].astype(str)).get_indexer(np.asarray(genes).astype(str))
+        rows = {}
+        for i, t in enumerate(z["targets"].astype(str)):
+            v = np.zeros(len(genes))
+            v[pos >= 0] = z["lfc"][i, pos[pos >= 0]]
+            rows[t] = v
+        out[name] = rows
+    return out
 
 
 def to_anndata(x, labels, genes):

@@ -43,14 +43,11 @@ import scipy.sparse as sp
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from vcc2026.bench import log  # noqa: E402
 from vcc2026.de_tools import ReferencePool, fast_scorer_de, scorer_de, summarize_de  # noqa: E402
 from vcc2026.generator import ControlModel, bulk_lognorm, per_cell_cpm_mean  # noqa: E402
 from vcc2026.inference import read_csr_rows  # noqa: E402
 from vcc2026.sampling import resample_library_sizes, sample_counts  # noqa: E402
-
-
-def log(msg: str) -> None:
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
 def load_controls(path: Path, max_cells: int | None, rng: np.random.Generator):

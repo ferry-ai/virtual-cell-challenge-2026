@@ -98,7 +98,7 @@ def _load() -> dict:
 @lru_cache(maxsize=1)
 def paths() -> Paths:
     """Project paths. VCC2026_DATA_ROOT takes precedence over the config file."""
-    root = os.environ.get("VCC2026_DATA_ROOT") or _load()["data_root"]
+    root = os.environ.get(DATA_ENV) or _load()["data_root"]
     return Paths(data_root=Path(root))
 
 
