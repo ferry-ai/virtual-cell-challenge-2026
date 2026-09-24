@@ -9,7 +9,8 @@ way this stage could produce a confident wrong number instead of an error:
   see and which the FAQ says looks like a weak model rather than a bug;
 * counts that are not counts.
 
-(The nested-selection leakage tests left with stage 44 on 23 September:
+(The nested-selection leakage tests left with stage 44 on 23 September, the
+signature-loading and trial-00/01 tests with their code on 24 September:
 docs/ARCHIVIO.md.)
 """
 
@@ -27,7 +28,6 @@ import scipy.sparse as sp
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
 
-from vcc2026.genes import GeneAxis  # noqa: E402
 from vcc2026.inference import (  # noqa: E402
     BasalProfile,
     compositional_shift,
@@ -40,22 +40,8 @@ from vcc2026.inference import (  # noqa: E402
 )
 from vcc2026.resources import peak_rss_bytes, require, snapshot  # noqa: E402
 from vcc2026.sampling import resample_library_sizes, sample_counts  # noqa: E402
-from vcc2026.signatures import Signature, SignatureSet  # noqa: E402
 from vcc2026.submission import SubmissionWriter, indptr_dtype  # noqa: E402
 from vcc2026.trials import load_trial, trial_ids  # noqa: E402
-
-
-def patch_axis(axis: GeneAxis):
-    import vcc2026.genes as genes
-    import vcc2026.models as models
-    import vcc2026.signatures as signatures
-
-    if hasattr(genes.official_axis, "cache_clear"):
-        genes.official_axis.cache_clear()
-    stub = lambda path=None: axis  # noqa: E731
-    for mod in (genes, signatures, models):
-        mod.official_axis = stub
-    return axis
 
 
 def write_csr_h5ad(path: Path, matrix: sp.csr_matrix, genes, context: str) -> None:
@@ -359,75 +345,24 @@ class TestBasalReaderAndRowReader(unittest.TestCase):
         self.assertEqual(block.shape, (0, 12))
 
 
-class TestSignatureSubsetLoading(unittest.TestCase):
-    """Loading only the targets needed must not change their values."""
-
-    def setUp(self):
-        self.axis = patch_axis(GeneAxis(symbols=tuple(f"G{i}" for i in range(6))))
-        self.tmp = tempfile.TemporaryDirectory()
-        rng = np.random.default_rng(5)
-        self.set = SignatureSet()
-        for name in ("AAA", "BBB", "CCC"):
-            for guide in ("g1", "g2"):
-                self.set.add(
-                    Signature(
-                        source="src", context="K562", target=name,
-                        delta=rng.normal(size=6), se=np.full(6, 0.2),
-                        observed=np.ones(6, dtype=bool),
-                        n_cells=50, n_control_cells=100, guide_id=guide,
-                    )
-                )
-        self.path = Path(self.tmp.name) / "s.npz"
-        self.set.write_npz(self.path)
-
-    def tearDown(self):
-        self.tmp.cleanup()
-
-    def test_subset_equals_the_matching_rows_of_the_full_load(self):
-        full = SignatureSet.read_npz(self.path)
-        subset = SignatureSet.read_npz(self.path, targets={"BBB"})
-        self.assertEqual(len(subset), 2)
-        self.assertEqual(set(subset.targets), {"BBB"})
-        expected = [s for s in full if s.target == "BBB"]
-        for got, want in zip(subset, expected):
-            np.testing.assert_allclose(got.delta, want.delta)
-            np.testing.assert_allclose(got.se, want.se)
-            self.assertEqual(got.guide_id, want.guide_id)
-
-    def test_unknown_target_yields_an_empty_set_not_an_error(self):
-        self.assertEqual(len(SignatureSet.read_npz(self.path, targets={"ZZZ"})), 0)
-
-    def test_collapse_keeps_every_guide_of_a_target_on_one_row(self):
-        collapsed = SignatureSet.read_npz(self.path).collapse_guides()
-        self.assertEqual(len(collapsed), 3)
-        for sig in collapsed:
-            self.assertEqual(sig.meta["n_guides"], 2)
-            self.assertIsNone(sig.guide_id)
-
-
 class TestTrialConfig(unittest.TestCase):
-    def test_both_trials_are_defined(self):
-        self.assertIn("trial-00-controls", trial_ids())
-        self.assertIn("trial-01-transfer", trial_ids())
+    def test_the_external_effects_trial_is_the_one_defined(self):
+        self.assertEqual(trial_ids(), ["trial-ext-profile"])
 
-    def test_defaults_merge_under_each_trial(self):
-        trial = load_trial("trial-01-transfer")
+    def test_defaults_merge_under_the_trial(self):
+        trial = load_trial("trial-ext-profile")
+        self.assertEqual(trial["kind"], "external_effects")
         self.assertEqual(trial["cells_per_pert"], 400)
         self.assertEqual(trial["contexts"], ["A", "B", "C"])
-        self.assertTrue(trial["trains"])
-
-    def test_control_trial_declares_it_is_not_the_official_zero(self):
-        trial = load_trial("trial-00-controls")
         self.assertFalse(trial["trains"])
-        self.assertTrue(
-            any("score-zero" in s or "official 0" in s for s in trial["not_this"]),
-            "the control trial must say it is not the official baseline",
-        )
+        # Every stage-45 submission drew with this seed (their manifests in
+        # reports/trial_*/): changing it changes every regenerated matrix.
+        self.assertEqual(trial["seed"], 20260912)
 
     def test_unknown_trial_names_the_known_ones(self):
         with self.assertRaises(KeyError) as ctx:
             load_trial("trial-99-nope")
-        self.assertIn("trial-00-controls", str(ctx.exception))
+        self.assertIn("trial-ext-profile", str(ctx.exception))
 
 
 class TestResourceMeasurement(unittest.TestCase):

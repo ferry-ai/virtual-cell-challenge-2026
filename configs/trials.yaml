@@ -1,16 +1,17 @@
-# Trial definitions — VCC 2026, first local training/calibration trial
+# Trial definitions — VCC 2026
 #
-# A trial is one submission-shaped run: a prediction rule, the data it is
-# allowed to read, the seed it draws with, and what it is for. Two trials are
-# defined so the first submission-path exercise separates two questions that
-# would otherwise be entangled: does the machinery work (trial-00), and does
-# the transfer model add anything (trial-01).
+# A trial is one submission-shaped run of stage 45: a prediction rule, the data
+# it is allowed to read, the seed it draws with, and what it is for. One trial is
+# left, trial-ext-profile: the trial-01 generator driven by the per-context
+# effects files of stage 100. trial-00-controls and trial-01-transfer, defined on
+# 12 September, left this file with their code on 24 September 2026 (D-043, tag
+# archivio/pre-pulizia-2026-09-24).
 #
-# Nothing here is a score. Neither trial has been uploaded and neither has a
-# leaderboard number. See docs/PROGETTO.md §2.
+# Nothing here is a score. The diagnostics stage 45 writes are local measures,
+# not VCC scores; the official scores are in the checkpoints.
 
 version: "1"
-updated: "2026-09-12"
+updated: "2026-09-24"
 
 defaults:
   contexts: ["A", "B", "C"]
@@ -22,65 +23,6 @@ defaults:
   overdispersion: null
 
 trials:
-
-  - id: trial-00-controls
-    title: "No-effect control resampling, per context"
-    kind: control_resampling
-    trains: false
-    description: >-
-      For each official context, resample that context's own real non-targeting
-      control cells and label the resulting cells with the requested
-      perturbations. No model, no training, no predicted effect. It exists to
-      exercise the generation, validation and packaging path end to end on real
-      counts, and to give every later trial a reference whose dispersion is
-      exactly right because it is real data.
-    source_data:
-      - "raw/controls/context_A.h5ad"
-      - "raw/controls/context_B.h5ad"
-      - "raw/controls/context_C.h5ad"
-    rules:
-      - "Resampling is WITHIN context: a cell labelled context A comes from context A."
-      - "Cells are drawn without replacement within a perturbation (400 distinct
-         cells out of 18,400) and with replacement across perturbations."
-      - "Source-cell provenance is written to a diagnostics sidecar, never into
-         the submitted matrix."
-    not_this:
-      - "This is NOT the official score-zero baseline. The official 0 point is
-         the cell-context mean computed by the scorer against held-out data; this
-         is a resample of the released control cells and its score is unknown."
-      - "Rules risk, unresolved: the challenge states control cells are model
-         inputs only and that predictions must be generated solely by machine
-         learning models. Do not upload this trial without resolving that."
-
-  - id: trial-01-transfer
-    title: "ShrunkTransfer from K562 genome-wide, amplitude calibrated locally"
-    kind: shrunk_transfer
-    trains: true
-    description: >-
-      The existing ShrunkTransfer baseline (src/vcc2026/models.py) applied to
-      the 300 panel targets in each official context, with (alpha, prior_sd)
-      selected by nested cross-validation on held-out targets in an external
-      development experiment, then applied unchanged to A/B/C.
-    model:
-      name: shrunk_transfer
-      source_signatures: k562_gwps
-      signature_run: e001
-      parameters_from: 44_calibrate_transfer
-    development_experiment:
-      source: k562_gwps
-      target: rpe1_essential
-      why: >-
-        It is the only pair available locally in which the source is the source
-        that will actually be used for A/B/C, and the destination is a different
-        cell line, so the measured amplitude is a cross-lineage one.
-      limits:
-        - "K562 and RPE1 are neither A, B nor C. The transferable object is the
-           calibration METHOD (D-012), not the number it produces."
-        - "Metrics are pseudobulk log2FC proxies, not VCC scores."
-    rules:
-      - "Targets absent from the source, and genes outside the source's feature
-         universe, get a no-effect fallback with the support mask recorded
-         (D-009). Missing evidence is never reported as a measured zero."
 
   - id: trial-ext-profile
     title: "trial-01's generator driven by per-context effects from a file"

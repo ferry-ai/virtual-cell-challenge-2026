@@ -1,14 +1,10 @@
 """Stage 5: generate a submission-shaped prediction for the official contexts.
 
-Two trials, one code path, so that what is measured about the machinery on the
-cheap trial is true of the expensive one:
-
-* ``trial-00-controls`` resamples each context's own real non-targeting control
-  cells and labels them with the requested perturbations. No model. Its cells
-  are real, so its dispersion is right by construction, which makes it the
-  reference against which the generator's artefacts are visible.
-* ``trial-01-transfer`` applies the calibrated ShrunkTransfer response to each
-  context's basal profile and samples counts from it.
+The trial-01 generator, driven by per-context effects files (``--trial trial-ext-profile``,
+``--effects CTX=PATH`` with the npz files of stage 100). For every context and perturbation it
+takes the context's basal profile, applies the effects with the compositional shift on the
+supported genes (D-015), and samples Poisson counts at library sizes resampled from that
+context's own controls.
 
 The prediction is streamed one perturbation at a time through the existing
 `SubmissionWriter`: a full submission is 360,000 x 18,533 at roughly 11,800
@@ -16,20 +12,18 @@ stored values per cell, about 4.2 billion entries, which is ~34 GB as an
 uncompressed CSR and cannot be assembled on a 7.8 GiB machine. Nothing here ever
 holds more than one 400-cell block.
 
-Three things are written beside the matrix rather than into it:
+Two things are written beside the matrix rather than into it:
 
-* the **support mask** -- which targets and genes carry evidence at all, so a
-  no-effect fallback is never read later as a measured null (D-009);
-* **source-cell provenance** for the control trial, because the submission
-  format has no place for it and inventing an obs column would break the
-  contract;
+* the **support** -- which effects files were read and which genes they observe, so a
+  pair without evidence is never read later as a measured null (D-009);
 * **count-generation diagnostics** comparing generated cells with the real
   controls they imitate, including at zero predicted effect.
 
-    scripts/py.cmd scripts/45_generate_prediction.py --run-id p001 \
-        --trial trial-00-controls --n-perts 6            # pilot
-    scripts/py.cmd scripts/45_generate_prediction.py --run-id p003 \
-        --trial trial-01-transfer --fitted-state <run>/fitted_state.json
+The control-resampling trial (trial-00) and the ShrunkTransfer trial (trial-01) left this
+stage on 24 September 2026 (D-043); they are in the tag archivio/pre-pulizia-2026-09-24.
+
+    scripts/py.cmd scripts/45_generate_prediction.py --run-id p001 --trial trial-ext-profile \
+        --n-perts 6 --contexts A --effects A=<stage-100 dir>/effects_A.npz     # pilot
 """
 
 from __future__ import annotations
@@ -53,14 +47,11 @@ from vcc2026.inference import (
     predicted_profile,
     profile_similarity,
     read_basal_profile,
-    read_csr_rows,
 )
 from vcc2026.genes import official_axis
 from vcc2026.manifest import RunManifest, file_fingerprint
-from vcc2026.models import ShrunkTransfer
 from vcc2026.resources import GiB, peak_rss_bytes, require, snapshot
 from vcc2026.sampling import fit_gene_dispersion, resample_library_sizes, sample_counts
-from vcc2026.signatures import SignatureSet
 from vcc2026.submission import SubmissionWriter
 from vcc2026.trials import load_trial, trial_ids
 
@@ -83,35 +74,11 @@ def panel_targets(n: int | None, controls: Path) -> list[str]:
     return perts if n is None else perts[:n]
 
 
-def load_transfer_model(state_path: Path, signatures: Path) -> tuple[ShrunkTransfer, dict]:
-    """Rebuild the calibrated model from its saved state."""
-    state = json.loads(state_path.read_text(encoding="utf-8"))
-    if state.get("model") != "shrunk_transfer":
-        raise SystemExit(f"{state_path}: unsupported model {state.get('model')!r}")
-    params = state["parameters"]
-    source_id = state["source_signatures"]["source_id"]
-    npz = signatures / f"{source_id}.npz"
-    if not npz.exists():
-        raise SystemExit(f"{npz} missing")
-    recorded = state["source_signatures"]["npz"].get("sha256")
-    actual = file_fingerprint(npz).get("sha256")
-    if recorded and actual and recorded != actual:
-        raise SystemExit(
-            f"{npz} does not match the signatures the parameters were selected "
-            f"on (sha256 {actual} vs {recorded}); point --signatures at the run "
-            f"named in the fitted state"
-        )
-    return state, (params, source_id, npz)
-
-
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--run-id", required=True)
     p.add_argument("--trial", required=True)
     p.add_argument("--out", type=Path, default=None)
-    p.add_argument("--fitted-state", type=Path, default=None,
-                   help="fitted_state.json from 44_calibrate_transfer (transfer trial)")
-    p.add_argument("--signatures", type=Path, default=None)
     p.add_argument("--n-perts", type=int, default=None,
                    help="pilot only: use the first N official perturbations")
     p.add_argument("--contexts", default=None, help="default: A,B,C from the contract")
@@ -139,6 +106,8 @@ def main() -> None:
         trial = load_trial(args.trial)
     except KeyError:
         raise SystemExit(f"unknown trial {args.trial!r}; known: {trial_ids()}")
+    if trial["kind"] != "external_effects":
+        raise SystemExit(f"unsupported trial kind {trial['kind']!r}")
     seed = args.seed if args.seed is not None else int(trial["seed"])
     ch = config.challenge()
     cells_per_pert = args.cells_per_pert or int(trial["cells_per_pert"])
@@ -159,9 +128,9 @@ def main() -> None:
             raise SystemExit(f"{pth} exists; use a new --run-id")
 
     n_cells_total = len(targets) * cells_per_pert * len(contexts)
-    # Measured on the pilot and carried forward: the control trial stores the
-    # real ~6,000 values per cell, the sampled trial about 11,800.
-    bytes_per_cell = 6_000 if trial["kind"] == "control_resampling" else 12_500
+    # Measured on the pilot and carried forward: sampled cells store about
+    # 11,800 values each.
+    bytes_per_cell = 12_500
     est_bytes = n_cells_total * bytes_per_cell
     if not args.skip_resource_check:
         snap = require(disk_bytes=int(est_bytes * 1.3), path=run,
@@ -226,76 +195,29 @@ def main() -> None:
         for i, a in enumerate(contexts) for b in contexts[i + 1:]
     }
 
-    # --- the model -----------------------------------------------------------
-    state = None
-    support = {"kind": trial["kind"]}
-    predictions: dict[str, tuple[np.ndarray, np.ndarray]] = {}
-    if trial["kind"] == "shrunk_transfer":
-        if args.fitted_state is None or args.signatures is None:
-            raise SystemExit("--fitted-state and --signatures are required for "
-                             "the transfer trial")
-        state, (params, source_id, npz) = load_transfer_model(
-            args.fitted_state, args.signatures
-        )
-        print(f"\nmodel          : shrunk_transfer alpha={params['alpha']:.4f} "
-              f"prior_sd={params['prior_sd']:g} source={source_id}")
-        sigs = SignatureSet.read_npz(npz, targets=set(targets))
-        model = ShrunkTransfer(
-            alpha=float(params["alpha"]), prior_sd=float(params["prior_sd"]),
-            source=source_id, collapse_guides=bool(params.get("collapse_guides", True)),
-        ).fit(sigs)
-        gene_observed = np.zeros(len(axis), dtype=bool)
-        covered = []
-        for t in targets:
-            pred = model.predict(t)
-            predictions[t] = (pred.delta, pred.observed)
-            if pred.support > 0:
-                covered.append(t)
-                gene_observed |= pred.observed
-        support.update({
-            "model": "shrunk_transfer",
-            "parameters": params,
-            "source_id": source_id,
-            "requested_targets": len(targets),
-            "covered_targets": len(covered),
-            "uncovered_targets": [t for t in targets if t not in set(covered)],
-            "n_genes_observed_by_source": int(gene_observed.sum()),
-            "n_genes_unobserved_by_source": int((~gene_observed).sum()),
-            "fallback_semantics": (
-                "An uncovered target and a gene outside the source's feature "
-                "universe both receive a no-effect prediction because no "
-                "evidence exists for them. That is a FALLBACK, not a measured "
-                "null effect (D-009)."
-            ),
-        })
-        print(f"support        : {len(covered)}/{len(targets)} targets covered, "
-              f"{int(gene_observed.sum()):,}/{len(axis):,} genes observed by source")
-        del sigs
-    elif trial["kind"] == "external_effects":
-        specs = dict(s.partition("=")[::2] for s in (args.effects or []))
-        if set(specs) != set(contexts):
-            raise SystemExit(f"--effects covers {sorted(specs)} but the contexts are {list(contexts)}")
-        ctx_predictions = {}
-        axis_index = pd.Index(list(axis.symbols))
-        for ctx, path in specs.items():
-            z = np.load(path, allow_pickle=False)
-            gpos = pd.Index(z["genes"].astype(str)).get_indexer(axis_index)
-            if (gpos < 0).any():
-                raise SystemExit(f"{path}: {(gpos < 0).sum()} official genes missing from the file")
-            rows = {t: i for i, t in enumerate(z["targets"].astype(str))}
-            missing = [t for t in targets if t not in rows]
-            if missing:
-                raise SystemExit(f"{path}: no effects for {len(missing)} targets, e.g. {missing[:3]}")
-            lfc, obs_mask = z["lfc"][:, gpos], z["observed"][:, gpos]
-            # stage 100 writes ln fold changes; the trial-01 profile takes log2
-            ctx_predictions[ctx] = {t: (args.effects_scale * lfc[rows[t]] / np.log(2.0),
-                                        obs_mask[rows[t]].astype(bool))
-                                    for t in targets}
-            print(f"effects {ctx}      : {path} ({int(obs_mask.any(axis=0).sum()):,} genes observed)")
-        support.update({"model": "external_effects", "effects_scale": args.effects_scale,
-                        "effects": {c: file_fingerprint(Path(p)) for c, p in specs.items()}})
-    elif trial["kind"] != "control_resampling":
-        raise SystemExit(f"unsupported trial kind {trial['kind']!r}")
+    # --- the effects ---------------------------------------------------------
+    specs = dict(s.partition("=")[::2] for s in (args.effects or []))
+    if set(specs) != set(contexts):
+        raise SystemExit(f"--effects covers {sorted(specs)} but the contexts are {list(contexts)}")
+    ctx_predictions = {}
+    axis_index = pd.Index(list(axis.symbols))
+    for ctx, path in specs.items():
+        z = np.load(path, allow_pickle=False)
+        gpos = pd.Index(z["genes"].astype(str)).get_indexer(axis_index)
+        if (gpos < 0).any():
+            raise SystemExit(f"{path}: {(gpos < 0).sum()} official genes missing from the file")
+        rows = {t: i for i, t in enumerate(z["targets"].astype(str))}
+        missing = [t for t in targets if t not in rows]
+        if missing:
+            raise SystemExit(f"{path}: no effects for {len(missing)} targets, e.g. {missing[:3]}")
+        lfc, obs_mask = z["lfc"][:, gpos], z["observed"][:, gpos]
+        # stage 100 writes ln fold changes; the trial-01 profile takes log2
+        ctx_predictions[ctx] = {t: (args.effects_scale * lfc[rows[t]] / np.log(2.0),
+                                    obs_mask[rows[t]].astype(bool))
+                                for t in targets}
+        print(f"effects {ctx}      : {path} ({int(obs_mask.any(axis=0).sum()):,} genes observed)")
+    support = {"kind": trial["kind"], "model": "external_effects", "effects_scale": args.effects_scale,
+               "effects": {c: file_fingerprint(Path(p)) for c, p in specs.items()}}
 
     if gene_phi:
         support["gene_dispersion"] = {
@@ -308,7 +230,6 @@ def main() -> None:
     t_gen = time.perf_counter()
     per_block = []
     diag_blocks = []
-    provenance = {}
     context_totals = {ctx: np.zeros(len(axis), dtype=np.float64) for ctx in contexts}
     diag_pick = set(
         np.linspace(0, len(targets) * len(contexts) - 1,
@@ -322,42 +243,17 @@ def main() -> None:
     ) as writer:
         for ctx in contexts:
             basal = basals[ctx]
-            ctrl_path = Path(basal.source_path)
-            with h5py.File(ctrl_path, "r") as f:
-                indptr = f["X/indptr"][:].astype(np.int64)
-            picks = np.zeros((len(targets), cells_per_pert), dtype=np.int32)
-
             for ti, target in enumerate(targets):
-                if trial["kind"] == "control_resampling":
-                    if basal.n_cells < cells_per_pert:
-                        raise SystemExit(
-                            f"context {ctx} has {basal.n_cells} control cells, "
-                            f"fewer than the {cells_per_pert} required"
-                        )
-                    rows = rng.choice(basal.n_cells, size=cells_per_pert,
-                                      replace=False)
-                    picks[ti] = rows.astype(np.int32)
-                    block = read_csr_rows(ctrl_path, rows, len(axis), indptr=indptr)
-                    detail = {"compositional_shift_log2": 0.0,
-                              "source": "real control cells, resampled"}
-                else:
-                    if trial["kind"] == "external_effects":
-                        delta, observed = ctx_predictions[ctx][target]
-                    else:
-                        delta, observed = predictions[target]
-                    profile, detail = predicted_profile(
-                        basal.profile, delta, observed
-                    )
-                    libs = resample_library_sizes(
-                        basal.library_sizes, cells_per_pert, rng
-                    )
-                    block = sample_counts(
-                        profile, libs, rng,
-                        max_stored_per_cell=ch.max_stored_per_cell,
-                        max_counts_per_cell=ch.max_counts_per_cell,
-                        overdispersion=gene_phi.get(ctx, args.overdispersion),
-                    )
-                    shift_log.append(detail["compositional_shift_log2"])
+                delta, observed = ctx_predictions[ctx][target]
+                profile, detail = predicted_profile(basal.profile, delta, observed)
+                libs = resample_library_sizes(basal.library_sizes, cells_per_pert, rng)
+                block = sample_counts(
+                    profile, libs, rng,
+                    max_stored_per_cell=ch.max_stored_per_cell,
+                    max_counts_per_cell=ch.max_counts_per_cell,
+                    overdispersion=gene_phi.get(ctx, args.overdispersion),
+                )
+                shift_log.append(detail["compositional_shift_log2"])
 
                 writer.add(block, target_gene=target, context=ctx)
                 block_sum = np.asarray(block.sum(axis=0)).ravel().astype(np.float64)
@@ -386,16 +282,6 @@ def main() -> None:
                 if ti % 25 == 0:
                     print(f"    {ctx} {ti + 1}/{len(targets)} "
                           f"({time.perf_counter() - t_gen:.0f}s)")
-
-            if trial["kind"] == "control_resampling":
-                prov = run / f"provenance_{ctx}.npz"
-                np.savez_compressed(
-                    prov, source_row=picks,
-                    target=np.array(targets, dtype=object),
-                    context=np.array([ctx], dtype=object),
-                )
-                provenance[ctx] = str(prov)
-                print(f"    provenance -> {prov.name}")
 
         n_obs, nnz = writer.n_obs, writer.nnz
 
@@ -498,17 +384,13 @@ def main() -> None:
         "count_generation": {
             "sampled_blocks": diag_blocks,
             "zero_effect_artefact_note": (
-                "For the control trial the cells ARE real, so any difference "
-                "from the controls is resampling only. For the sampled trial the "
-                "generated/real nnz ratio is above 1 even at zero predicted "
+                "The generated/real nnz ratio is above 1 even at zero predicted "
                 "effect, because a pooled mean profile is less sparse than any "
                 "single cell: an artefact of the generator, present before any "
                 "prediction is made."
             ),
         },
         "per_block": per_block,
-        "fitted_state": state,
-        "provenance_files": provenance,
         "not_a_score": (
             "This file contains no VCC score. It records what was generated and "
             "what it cost. Nothing here has been uploaded."
@@ -521,12 +403,8 @@ def main() -> None:
                       config=vars(args), seed=seed)
     for ctx in contexts:
         man.add_input(f"controls:{ctx}", basals[ctx].source_path)
-    if args.fitted_state:
-        man.add_input("fitted_state", args.fitted_state)
     man.add_output("prediction", pred_path)
     man.add_output("diagnostics", diag_path)
-    for ctx, prov in provenance.items():
-        man.add_output(f"provenance:{ctx}", prov)
     man.metrics = {
         "storage": diagnostics["storage"],
         "runtime": diagnostics["runtime"],
