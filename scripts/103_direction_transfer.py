@@ -32,11 +32,12 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from vcc2026 import config  # noqa: E402
 from vcc2026.bench import log  # noqa: E402
 from vcc2026.genes import official_axis  # noqa: E402
 from vcc2026.multisource import AxisTable, mix, topk_sign_agreement  # noqa: E402
 
-DATA_ROOT = Path("C:/Users/ferra/vcc2026-data")
+DATA_ROOT = config.paths().data_root  # VCC2026_DATA_ROOT, else configs/config.yaml
 SOURCES = ("k562", "cd4_mix", "orion_hct116", "orion_hek293t")
 KS = (25, 50, 100, 200, 500)
 FIDELITY_BASE = 0.5123

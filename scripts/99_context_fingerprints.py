@@ -36,9 +36,10 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from vcc2026 import config  # noqa: E402
 from vcc2026.bench import log  # noqa: E402
 
-DATA_ROOT = Path("C:/Users/ferra/vcc2026-data")
+DATA_ROOT = config.paths().data_root  # VCC2026_DATA_ROOT, else configs/config.yaml
 # GRCh38 centromere midpoints in Mb (approximate; arm assignment only)
 CEN = {"chr1": 123.4, "chr2": 93.9, "chr3": 90.9, "chr4": 50.0, "chr5": 48.8, "chr6": 59.8, "chr7": 60.1,
        "chr8": 45.2, "chr9": 43.0, "chr10": 39.8, "chr11": 53.4, "chr12": 35.5, "chr13": 17.7, "chr14": 17.2,

@@ -36,12 +36,13 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from vcc2026 import config  # noqa: E402
 from vcc2026.bench import log  # noqa: E402
 from vcc2026.genes import official_axis  # noqa: E402
 from vcc2026.manifest import text_sha256  # noqa: E402
 from vcc2026.multisource import AxisTable, mix  # noqa: E402
 
-DATA_ROOT = Path("C:/Users/ferra/vcc2026-data")
+DATA_ROOT = config.paths().data_root  # VCC2026_DATA_ROOT, else configs/config.yaml
 
 
 def load_table(cache: Path, name: str, effect: str = "shrunk") -> AxisTable:

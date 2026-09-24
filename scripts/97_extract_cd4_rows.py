@@ -38,13 +38,14 @@ import scipy.sparse as sp
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from vcc2026 import config  # noqa: E402
 from vcc2026.bench import log  # noqa: E402
 from vcc2026.remote_csr import chunk_map, http_fetcher, read_rows  # noqa: E402
 from vcc2026.remote_ranges import HTTPRangeReader  # noqa: E402
 
 URL = ("https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/"
        "GWCD4i.pseudobulk_merged.h5ad")
-DATA_ROOT = Path("C:/Users/ferra/vcc2026-data")
+DATA_ROOT = config.paths().data_root  # VCC2026_DATA_ROOT, else configs/config.yaml
 
 
 def categorical(obs, key):

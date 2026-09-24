@@ -7,7 +7,7 @@ disagree, so update the row in the same commit as the import.
 | Module | What it does (from its docstring) | Stages that import it | Modules that import it |
 |---|---|---|---|
 | `bench.py` | Six-metric bench shared by the single-cell benches; also `log` and `load_effects`, used by many stages | 71, 72, 73, 75, 76, 83, 97, 98, 99, 100, 101, 102, 103 | — |
-| `config.py` | Challenge constants and filesystem paths, loaded from `configs/config.yaml` | 45, 48, 71, 72, 74, 76, 77, 79, 83, 85 | `genes`, `trials` |
+| `config.py` | Challenge constants and filesystem paths, loaded from `configs/config.yaml` | 45, 48, 71, 72, 74, 76, 77, 79, 83, 85, 97, 98, 99, 100, 101, 102, 103 | `genes`, `trials` |
 | `de_tools.py` | The scorer's own differential-expression call, usable outside a full scoring run | 72, 79, 83 | `bench` |
 | `generator.py` | A learned generative model of one context's control cells (`ControlModel`) | 72, 73, 75, 76 | — |
 | `genes.py` | The official 18,533-gene output axis | 45, 74, 76, 98, 100, 101, 103 | — |

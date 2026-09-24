@@ -32,6 +32,7 @@ import argparse
 import json
 import sys
 import time
+from dataclasses import dataclass
 from pathlib import Path
 
 import h5py
@@ -74,7 +75,7 @@ def panel_targets(n: int | None, controls: Path) -> list[str]:
     return perts if n is None else perts[:n]
 
 
-def main() -> None:
+def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--run-id", required=True)
     p.add_argument("--trial", required=True)
@@ -99,8 +100,171 @@ def main() -> None:
     p.add_argument("--effects", action="append", default=None, metavar="CTX=PATH",
                    help="external_effects trials: per-context npz from stage 100 "
                         "(targets, genes, lfc in ln units, observed)")
-    args = p.parse_args()
+    return p.parse_args()
 
+
+def read_basals(contexts, controls: Path, axis) -> dict:
+    """Each context's basal profile, refusing a file that breaks the axis or its own label."""
+    basals = {}
+    for ctx in contexts:
+        path = controls / f"context_{ctx}.h5ad"
+        with h5py.File(path, "r") as f:
+            var_names = f["var/_index/values"].asstr()[:]
+        if list(var_names) != list(axis.symbols):
+            raise SystemExit(
+                f"context_{ctx}.h5ad var order does not match gene_names.csv; "
+                f"the submission axis contract is broken"
+            )
+        prof = read_basal_profile(path)
+        if prof.context != ctx:
+            raise SystemExit(
+                f"context_{ctx}.h5ad declares obs.context={prof.context!r}; "
+                f"refusing to relabel data"
+            )
+        basals[ctx] = prof
+        print(f"  basal {ctx}: {prof.n_cells:,} cells, median UMI "
+              f"{np.median(prof.library_sizes):,.0f}, median detected genes "
+              f"{np.median(prof.nnz_per_cell):,.0f}")
+    return basals
+
+
+def fit_dispersions(basals: dict, n_genes: int, seed: int) -> dict:
+    """Per-gene Gamma-Poisson dispersion of each context, matched to its controls' zero fractions."""
+    gene_phi = {}
+    for ctx, prof in basals.items():
+        with h5py.File(prof.source_path, "r") as f:
+            idx_ds = f["X/indices"]
+            detected = np.zeros(n_genes, dtype=np.int64)
+            for lo in range(0, idx_ds.shape[0], 20_000_000):
+                detected += np.bincount(idx_ds[lo:lo + 20_000_000], minlength=n_genes)
+        zero_fraction = 1.0 - detected / prof.n_cells
+        gene_phi[ctx] = fit_gene_dispersion(prof.profile, prof.library_sizes, zero_fraction, seed=seed)
+        expressed = prof.profile > 0
+        print(f"  dispersion {ctx}: {int((gene_phi[ctx] > 0).sum()):,} genes overdispersed, "
+              f"median phi {np.median(gene_phi[ctx][expressed]):.3f}")
+    return gene_phi
+
+
+def read_effects(specs: dict, targets: list[str], axis, scale: float) -> dict:
+    """The stage-100 effects of each context: {ctx: {target: (log2 delta, observed mask)}}."""
+    predictions = {}
+    axis_index = pd.Index(list(axis.symbols))
+    for ctx, path in specs.items():
+        z = np.load(path, allow_pickle=False)
+        gpos = pd.Index(z["genes"].astype(str)).get_indexer(axis_index)
+        if (gpos < 0).any():
+            raise SystemExit(f"{path}: {(gpos < 0).sum()} official genes missing from the file")
+        rows = {t: i for i, t in enumerate(z["targets"].astype(str))}
+        missing = [t for t in targets if t not in rows]
+        if missing:
+            raise SystemExit(f"{path}: no effects for {len(missing)} targets, e.g. {missing[:3]}")
+        lfc, obs_mask = z["lfc"][:, gpos], z["observed"][:, gpos]
+        # stage 100 writes ln fold changes; the trial-01 profile takes log2
+        predictions[ctx] = {t: (scale * lfc[rows[t]] / np.log(2.0), obs_mask[rows[t]].astype(bool))
+                            for t in targets}
+        print(f"effects {ctx}      : {path} ({int(obs_mask.any(axis=0).sum()):,} genes observed)")
+    return predictions
+
+
+@dataclass
+class Generated:
+    """What the generation loop leaves for the diagnostics."""
+
+    per_block: list
+    sampled_blocks: list
+    context_totals: dict
+    shifts: list
+    n_obs: int
+    nnz: int
+    seconds: float
+
+
+def generate(pred_path: Path, axis, ch, contexts, targets, basals: dict, predictions: dict,
+             gene_phi: dict, overdispersion, cells_per_pert: int, rng) -> Generated:
+    """Stream one block of cells per (context, target) to the submission file.
+
+    Blocks go context by context, targets in panel order. The random stream follows that
+    order, so the order is part of the output: two runs with the same seed and inputs write
+    the same bytes.
+    """
+    basal_profiles = {c: b.profile for c, b in basals.items()}
+    t_gen = time.perf_counter()
+    per_block = []
+    sampled_blocks = []
+    context_totals = {ctx: np.zeros(len(axis), dtype=np.float64) for ctx in contexts}
+    diag_pick = set(
+        np.linspace(0, len(targets) * len(contexts) - 1,
+                    min(DIAG_SAMPLE, len(targets) * len(contexts))).astype(int).tolist()
+    )
+    shifts = []
+    block_index = 0
+
+    with SubmissionWriter(
+        pred_path, axis.symbols, pert_col=ch.pert_col, context_col=ch.context_col
+    ) as writer:
+        for ctx in contexts:
+            basal = basals[ctx]
+            for ti, target in enumerate(targets):
+                delta, observed = predictions[ctx][target]
+                profile, detail = predicted_profile(basal.profile, delta, observed)
+                libs = resample_library_sizes(basal.library_sizes, cells_per_pert, rng)
+                block = sample_counts(
+                    profile, libs, rng,
+                    max_stored_per_cell=ch.max_stored_per_cell,
+                    max_counts_per_cell=ch.max_counts_per_cell,
+                    overdispersion=gene_phi.get(ctx, overdispersion),
+                )
+                shifts.append(detail["compositional_shift_log2"])
+
+                writer.add(block, target_gene=target, context=ctx)
+                block_sum = np.asarray(block.sum(axis=0)).ravel().astype(np.float64)
+                context_totals[ctx] += block_sum
+                per_block.append({
+                    "context": ctx,
+                    "target": target,
+                    "n_cells": int(block.shape[0]),
+                    "nnz": int(block.nnz),
+                    "nnz_per_cell": float(block.nnz / block.shape[0]),
+                    "max_counts_in_a_cell": float(np.asarray(block.sum(axis=1)).max()),
+                    "compositional_shift_log2": detail["compositional_shift_log2"],
+                })
+                if block_index in diag_pick:
+                    best, scores = nearest_basal_context(block_sum, basal_profiles)
+                    diag = count_generation_diagnostics(block, basal)
+                    diag.update({
+                        "context": ctx, "target": target,
+                        "nearest_basal_context": best,
+                        "similarity_to_each_basal": scores,
+                        "label_matches_nearest_basal": best == ctx,
+                        "detail": detail,
+                    })
+                    sampled_blocks.append(diag)
+                block_index += 1
+                if ti % 25 == 0:
+                    print(f"    {ctx} {ti + 1}/{len(targets)} "
+                          f"({time.perf_counter() - t_gen:.0f}s)")
+
+        n_obs, nnz = writer.n_obs, writer.nnz
+
+    return Generated(per_block, sampled_blocks, context_totals, shifts, n_obs, nnz,
+                     time.perf_counter() - t_gen)
+
+
+def check_context_provenance(contexts, context_totals: dict, basal_profiles: dict) -> dict:
+    """Each context's generated total must be nearest its own basal profile: a swap shows here."""
+    check = {}
+    for ctx in contexts:
+        best, scores = nearest_basal_context(context_totals[ctx], basal_profiles)
+        check[ctx] = {
+            "nearest_basal_context": best,
+            "similarity_to_each_basal": scores,
+            "label_matches_nearest_basal": best == ctx,
+        }
+    return check
+
+
+def main() -> None:
+    args = parse_args()
     t_start = time.perf_counter()
     try:
         trial = load_trial(args.trial)
@@ -151,41 +315,10 @@ def main() -> None:
 
     # --- basal state of every official context -------------------------------
     t_basal = time.perf_counter()
-    basals = {}
-    for ctx in contexts:
-        path = controls / f"context_{ctx}.h5ad"
-        with h5py.File(path, "r") as f:
-            var_names = f["var/_index/values"].asstr()[:]
-        if list(var_names) != list(axis.symbols):
-            raise SystemExit(
-                f"context_{ctx}.h5ad var order does not match gene_names.csv; "
-                f"the submission axis contract is broken"
-            )
-        prof = read_basal_profile(path)
-        if prof.context != ctx:
-            raise SystemExit(
-                f"context_{ctx}.h5ad declares obs.context={prof.context!r}; "
-                f"refusing to relabel data"
-            )
-        basals[ctx] = prof
-        print(f"  basal {ctx}: {prof.n_cells:,} cells, median UMI "
-              f"{np.median(prof.library_sizes):,.0f}, median detected genes "
-              f"{np.median(prof.nnz_per_cell):,.0f}")
+    basals = read_basals(contexts, controls, axis)
     basal_seconds = time.perf_counter() - t_basal
     basal_profiles = {c: b.profile for c, b in basals.items()}
-    gene_phi = {}
-    if args.gene_dispersion:
-        for ctx, prof in basals.items():
-            with h5py.File(prof.source_path, "r") as f:
-                idx_ds = f["X/indices"]
-                detected = np.zeros(len(axis), dtype=np.int64)
-                for lo in range(0, idx_ds.shape[0], 20_000_000):
-                    detected += np.bincount(idx_ds[lo:lo + 20_000_000], minlength=len(axis))
-            zero_fraction = 1.0 - detected / prof.n_cells
-            gene_phi[ctx] = fit_gene_dispersion(prof.profile, prof.library_sizes, zero_fraction, seed=seed)
-            expressed = prof.profile > 0
-            print(f"  dispersion {ctx}: {int((gene_phi[ctx] > 0).sum()):,} genes overdispersed, "
-                  f"median phi {np.median(gene_phi[ctx][expressed]):.3f}")
+    gene_phi = fit_dispersions(basals, len(axis), seed) if args.gene_dispersion else {}
 
     # Contexts must be distinguishable for the provenance check to mean
     # anything: if two basal states were identical, a swap would be invisible
@@ -199,26 +332,9 @@ def main() -> None:
     specs = dict(s.partition("=")[::2] for s in (args.effects or []))
     if set(specs) != set(contexts):
         raise SystemExit(f"--effects covers {sorted(specs)} but the contexts are {list(contexts)}")
-    ctx_predictions = {}
-    axis_index = pd.Index(list(axis.symbols))
-    for ctx, path in specs.items():
-        z = np.load(path, allow_pickle=False)
-        gpos = pd.Index(z["genes"].astype(str)).get_indexer(axis_index)
-        if (gpos < 0).any():
-            raise SystemExit(f"{path}: {(gpos < 0).sum()} official genes missing from the file")
-        rows = {t: i for i, t in enumerate(z["targets"].astype(str))}
-        missing = [t for t in targets if t not in rows]
-        if missing:
-            raise SystemExit(f"{path}: no effects for {len(missing)} targets, e.g. {missing[:3]}")
-        lfc, obs_mask = z["lfc"][:, gpos], z["observed"][:, gpos]
-        # stage 100 writes ln fold changes; the trial-01 profile takes log2
-        ctx_predictions[ctx] = {t: (args.effects_scale * lfc[rows[t]] / np.log(2.0),
-                                    obs_mask[rows[t]].astype(bool))
-                                for t in targets}
-        print(f"effects {ctx}      : {path} ({int(obs_mask.any(axis=0).sum()):,} genes observed)")
+    predictions = read_effects(specs, targets, axis, args.effects_scale)
     support = {"kind": trial["kind"], "model": "external_effects", "effects_scale": args.effects_scale,
                "effects": {c: file_fingerprint(Path(p)) for c, p in specs.items()}}
-
     if gene_phi:
         support["gene_dispersion"] = {
             ctx: {"method": "sampling.fit_gene_dispersion: zero-fraction matching, per gene",
@@ -226,77 +342,12 @@ def main() -> None:
                   "phi_quantiles_expressed": [float(q) for q in np.quantile(phi[basals[ctx].profile > 0], [0.1, 0.5, 0.9])]}
             for ctx, phi in gene_phi.items()}
 
-    # --- generate ------------------------------------------------------------
-    t_gen = time.perf_counter()
-    per_block = []
-    diag_blocks = []
-    context_totals = {ctx: np.zeros(len(axis), dtype=np.float64) for ctx in contexts}
-    diag_pick = set(
-        np.linspace(0, len(targets) * len(contexts) - 1,
-                    min(DIAG_SAMPLE, len(targets) * len(contexts))).astype(int).tolist()
-    )
-    shift_log = []
-    block_index = 0
-
-    with SubmissionWriter(
-        pred_path, axis.symbols, pert_col=ch.pert_col, context_col=ch.context_col
-    ) as writer:
-        for ctx in contexts:
-            basal = basals[ctx]
-            for ti, target in enumerate(targets):
-                delta, observed = ctx_predictions[ctx][target]
-                profile, detail = predicted_profile(basal.profile, delta, observed)
-                libs = resample_library_sizes(basal.library_sizes, cells_per_pert, rng)
-                block = sample_counts(
-                    profile, libs, rng,
-                    max_stored_per_cell=ch.max_stored_per_cell,
-                    max_counts_per_cell=ch.max_counts_per_cell,
-                    overdispersion=gene_phi.get(ctx, args.overdispersion),
-                )
-                shift_log.append(detail["compositional_shift_log2"])
-
-                writer.add(block, target_gene=target, context=ctx)
-                block_sum = np.asarray(block.sum(axis=0)).ravel().astype(np.float64)
-                context_totals[ctx] += block_sum
-                per_block.append({
-                    "context": ctx,
-                    "target": target,
-                    "n_cells": int(block.shape[0]),
-                    "nnz": int(block.nnz),
-                    "nnz_per_cell": float(block.nnz / block.shape[0]),
-                    "max_counts_in_a_cell": float(np.asarray(block.sum(axis=1)).max()),
-                    "compositional_shift_log2": detail["compositional_shift_log2"],
-                })
-                if block_index in diag_pick:
-                    best, scores = nearest_basal_context(block_sum, basal_profiles)
-                    diag = count_generation_diagnostics(block, basal)
-                    diag.update({
-                        "context": ctx, "target": target,
-                        "nearest_basal_context": best,
-                        "similarity_to_each_basal": scores,
-                        "label_matches_nearest_basal": best == ctx,
-                        "detail": detail,
-                    })
-                    diag_blocks.append(diag)
-                block_index += 1
-                if ti % 25 == 0:
-                    print(f"    {ctx} {ti + 1}/{len(targets)} "
-                          f"({time.perf_counter() - t_gen:.0f}s)")
-
-        n_obs, nnz = writer.n_obs, writer.nnz
-
-    gen_seconds = time.perf_counter() - t_gen
+    # --- generate, then check that each context still looks like itself ----
+    gen = generate(pred_path, axis, ch, contexts, targets, basals, predictions, gene_phi,
+                   args.overdispersion, cells_per_pert, rng)
+    n_obs, nnz, gen_seconds = gen.n_obs, gen.nnz, gen.seconds
     size_bytes = pred_path.stat().st_size
-
-    # --- context provenance, at the level a swap would show up ---------------
-    context_check = {}
-    for ctx in contexts:
-        best, scores = nearest_basal_context(context_totals[ctx], basal_profiles)
-        context_check[ctx] = {
-            "nearest_basal_context": best,
-            "similarity_to_each_basal": scores,
-            "label_matches_nearest_basal": best == ctx,
-        }
+    context_check = check_context_provenance(contexts, gen.context_totals, basal_profiles)
     all_match = all(v["label_matches_nearest_basal"] for v in context_check.values())
 
     peak = peak_rss_bytes()
@@ -346,7 +397,7 @@ def main() -> None:
             "basal_profiles_seconds": basal_seconds,
             "generation_seconds": gen_seconds,
             "total_seconds": total_seconds,
-            "seconds_per_block": gen_seconds / len(per_block) if per_block else None,
+            "seconds_per_block": gen_seconds / len(gen.per_block) if gen.per_block else None,
             "projected_generation_seconds_at_full_shape": (
                 gen_seconds * scale if scale else None
             ),
@@ -359,9 +410,9 @@ def main() -> None:
         },
         "support": support,
         "compositional_shift": {
-            "n_targets_with_a_shift": len(shift_log),
-            "median_abs_log2": float(np.median(np.abs(shift_log))) if shift_log else 0.0,
-            "max_abs_log2": float(np.max(np.abs(shift_log))) if shift_log else 0.0,
+            "n_targets_with_a_shift": len(gen.shifts),
+            "median_abs_log2": float(np.median(np.abs(gen.shifts))) if gen.shifts else 0.0,
+            "max_abs_log2": float(np.max(np.abs(gen.shifts))) if gen.shifts else 0.0,
             "why": (
                 "Counts are a composition, so renormalising basal*2**delta to a "
                 "library size removes a global factor. The shift is absorbed by "
@@ -382,7 +433,7 @@ def main() -> None:
             ),
         },
         "count_generation": {
-            "sampled_blocks": diag_blocks,
+            "sampled_blocks": gen.sampled_blocks,
             "zero_effect_artefact_note": (
                 "The generated/real nnz ratio is above 1 even at zero predicted "
                 "effect, because a pooled mean profile is less sparse than any "
@@ -390,7 +441,7 @@ def main() -> None:
                 "prediction is made."
             ),
         },
-        "per_block": per_block,
+        "per_block": gen.per_block,
         "not_a_score": (
             "This file contains no VCC score. It records what was generated and "
             "what it cost. Nothing here has been uploaded."

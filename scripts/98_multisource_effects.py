@@ -37,6 +37,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from vcc2026 import config  # noqa: E402
 from vcc2026.bench import log  # noqa: E402
 from vcc2026.genes import official_axis  # noqa: E402
 from vcc2026.multisource import (  # noqa: E402
@@ -45,7 +46,7 @@ from vcc2026.multisource import (  # noqa: E402
 from vcc2026.predictor_sc import effects_from_bulk  # noqa: E402
 from vcc2026.sc_stream import read_frame  # noqa: E402
 
-DATA_ROOT = Path("C:/Users/ferra/vcc2026-data")
+DATA_ROOT = config.paths().data_root  # VCC2026_DATA_ROOT, else configs/config.yaml
 
 
 def k562_table(path: Path, targets: list[str], axis) -> AxisTable:
