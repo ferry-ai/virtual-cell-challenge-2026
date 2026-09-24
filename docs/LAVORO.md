@@ -169,6 +169,7 @@ nuova ([CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md)).
 | Controlli ufficiali A/B/C, asse genico, pannello | `C:/Users/ferra/vcc2026-data/raw/controls/` |
 | Cache delle sorgenti (stadio 98) | `C:/Users/ferra/vcc2026-data/processed/multisource_<data>_<run>/` |
 | Effetti per contesto (stadio 100) | `C:/Users/ferra/vcc2026-data/processed/effects_tNN_<data>/` |
+| La ricetta usata da un invio | nel `manifest.json` dello stadio 100, per intero. `recipe_sha256_lf` vale su ogni checkout (esecuzioni dopo il 24 settembre). `recipe_sha256` è l'hash dei byte: LF per t08–t12, CRLF per t15–t17 (D-043) |
 | Previsioni e pacchetti | `C:/Users/ferra/vcc2026-data/artifacts/<run>/` |
 | Codice, coda e log di Colab | `G:\Il mio Drive\vcc2026\` (`code/`, `runs/queue/`, `runs/jobs/`) |
 | Report, uno per esperimento | `reports/<tema>_<data>/`, ciascuno con una riga in [REGISTRO.md](REGISTRO.md) |

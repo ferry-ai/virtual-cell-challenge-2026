@@ -14,6 +14,10 @@ axis) and ``lfc`` (ln fold change, amplitude applied), the format stage 76 reads
 counted as such in the manifest; a target no source covers is refused unless
 ``allow_missing_targets`` is true in the recipe (stage 76 would refuse it anyway).
 
+The manifest records the recipe itself and two hashes of its file: ``recipe_sha256`` of the
+bytes, which depends on the checkout's line endings, and ``recipe_sha256_lf`` with CRLF folded
+to LF, which does not (D-043).
+
     python scripts/100_build_context_effects.py --recipe configs/recipes/t08.json \
         --cache <stage-98 cache> --out <dir>
 """
@@ -34,6 +38,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from vcc2026.bench import log  # noqa: E402
 from vcc2026.genes import official_axis  # noqa: E402
+from vcc2026.manifest import text_sha256  # noqa: E402
 from vcc2026.multisource import AxisTable, mix  # noqa: E402
 
 DATA_ROOT = Path("C:/Users/ferra/vcc2026-data")
@@ -90,6 +95,7 @@ def main() -> None:
             f"median q99 |ln fc| {summary[ctx]['abs_lfc_q99_median']:.3f}")
     manifest = {"stage": "100_build_context_effects", "written_utc": datetime.now(timezone.utc).isoformat(),
                 "recipe": recipe, "recipe_sha256": hashlib.sha256(args.recipe.read_bytes()).hexdigest(),
+                "recipe_sha256_lf": text_sha256(args.recipe),
                 "cache": str(args.cache), "gamma": gamma, "reliability_scale": scale, "contexts": summary,
                 "units": "ln fold change on the official axis; unmeasured pairs are exactly 0"}
     with open(args.out / "manifest.json", "x", encoding="utf-8") as fh:

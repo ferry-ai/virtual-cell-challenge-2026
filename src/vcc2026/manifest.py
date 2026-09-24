@@ -34,6 +34,7 @@ from pathlib import Path
 __all__ = [
     "RunManifest",
     "file_fingerprint",
+    "text_sha256",
     "environment_fingerprint",
 ]
 
@@ -44,6 +45,17 @@ _TRACKED_PACKAGES = (
     "cell-eval2", "vcc-cli", "anndata", "numpy", "scipy", "pandas",
     "h5py", "scanpy", "scikit-learn", "pyarrow",
 )
+
+
+def text_sha256(path: Path | str) -> str:
+    """sha256 of a text file with CRLF folded to LF, so the hash names the content.
+
+    A byte hash of a text file depends on the checkout: with `core.autocrlf` the
+    same committed recipe hashes differently on this laptop and on Linux. The
+    recipe hashes stage 100 recorded before 25 September 2026 are byte hashes, LF
+    for t08-t12 and CRLF for t15-t17 (D-043).
+    """
+    return hashlib.sha256(Path(path).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def file_fingerprint(path: Path | str, *, full: bool | None = None) -> dict:

@@ -23,7 +23,7 @@ import sys
 sys.path.insert(0, str(REPO / "src"))
 
 from vcc2026 import config  # noqa: E402
-from vcc2026.manifest import RunManifest, file_fingerprint  # noqa: E402
+from vcc2026.manifest import RunManifest, file_fingerprint, text_sha256  # noqa: E402
 
 
 class TestManifest(unittest.TestCase):
@@ -53,6 +53,18 @@ class TestManifest(unittest.TestCase):
 
     def test_fingerprint_of_missing_file_says_so(self):
         self.assertFalse(file_fingerprint(Path("nope.bin"))["exists"])
+
+    def test_text_hash_does_not_depend_on_line_endings(self):
+        """A recipe hashes the same on any checkout, and still tells two recipes apart."""
+        with tempfile.TemporaryDirectory() as d:
+            lf, crlf, other = (Path(d) / n for n in ("lf.json", "crlf.json", "other.json"))
+            lf.write_bytes(b'{"name": "t15",\n "amplitude": 0.394}\n')
+            crlf.write_bytes(b'{"name": "t15",\r\n "amplitude": 0.394}\r\n')
+            other.write_bytes(b'{"name": "t15",\n "amplitude": 0.788}\n')
+            self.assertNotEqual(file_fingerprint(lf)["sha256"], file_fingerprint(crlf)["sha256"])
+            self.assertEqual(text_sha256(lf), text_sha256(crlf))
+            self.assertEqual(text_sha256(lf), file_fingerprint(lf)["sha256"])
+            self.assertNotEqual(text_sha256(lf), text_sha256(other))
 
 
 class TestConfigPortability(unittest.TestCase):
