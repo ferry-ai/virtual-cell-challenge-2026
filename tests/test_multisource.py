@@ -5,7 +5,9 @@ Each test pins a way a multi-source transfer could return plausible wrong number
 * a donor's knockdown compared with another donor's controls (donor effects leak in);
 * an unmeasured (target, gene) pair counted as a vote for zero;
 * centring that subtracts one source's common response from another;
-* a sign-purity proxy that reads the truth's ranking instead of the prediction's.
+* a sign-purity proxy that reads the truth's ranking instead of the prediction's;
+* a top-k sign agreement that ranks by the truth, counts undefined genes, or keeps the
+  target gene the scorer drops.
 """
 
 from __future__ import annotations
@@ -21,7 +23,9 @@ import scipy.sparse as sp
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
 
-from vcc2026.multisource import AxisTable, _purity_depth, effects_from_pseudobulk, mix  # noqa: E402
+from vcc2026.multisource import (  # noqa: E402
+    AxisTable, _purity_depth, effects_from_pseudobulk, mix, topk_sign_agreement,
+)
 
 
 def _rows(rng, base, n_cells, scale=1.0):
@@ -115,6 +119,24 @@ class PurityTests(unittest.TestCase):
         obs = np.array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
         self.assertEqual(_purity_depth(pred, obs, 0.9), 10)        # 9/10 at depth 10
         self.assertEqual(_purity_depth(-obs, obs, 0.9), 0)
+
+
+class TopKSignTests(unittest.TestCase):
+    def test_ranks_by_the_prediction_and_skips_what_the_scorer_skips(self):
+        pred = np.array([5.0, -4.0, 3.0, np.nan, 2.0, 0.0, -1.0])
+        truth = np.array([1.0, 1.0, 1.0, 1.0, np.nan, 1.0, -9.0])
+        # gene 0 is the target and is excluded; 3 (pred NaN), 4 (truth NaN) and 5 (pred 0) do not count
+        got = topk_sign_agreement(pred, truth, (1, 2, 10), exclude=[0])
+        # by |pred|: gene 1 (-4 vs +1, wrong), gene 2 (+3 vs +1, right), gene 6 (-1 vs -9, right)
+        self.assertEqual(got[1], (0, 1))
+        self.assertEqual(got[2], (1, 2))
+        self.assertEqual(got[10], (2, 3))
+
+    def test_a_mask_restricts_before_ranking(self):
+        pred = np.array([3.0, 2.0, 1.0])
+        truth = np.array([-1.0, 1.0, 1.0])
+        keep = np.array([False, True, True])
+        self.assertEqual(topk_sign_agreement(pred, truth, (1,), keep=keep)[1], (1, 1))
 
 
 if __name__ == "__main__":

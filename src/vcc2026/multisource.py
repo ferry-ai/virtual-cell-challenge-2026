@@ -205,6 +205,27 @@ def mix(tables, targets, *, weights=None, gamma: float = 0.0, reliability_scale:
     return out, den
 
 
+def topk_sign_agreement(pred: np.ndarray, truth: np.ndarray, ks, *, exclude=(), keep=None) -> dict:
+    """Share of the top-|pred| genes whose predicted sign matches ``truth``, for each k.
+
+    A gene counts only where both values are finite and non-zero, like the scorer's
+    direction members, which judge a called gene only where the real fold change is
+    defined and not null. ``exclude`` drops columns (the target gene itself); ``keep``
+    is an optional boolean mask applied first (for example a consensus of sources).
+    Returns ``{k: (agree, n)}``; n is below k when fewer genes qualify.
+    """
+    pred = np.asarray(pred, dtype=np.float64)
+    truth = np.asarray(truth, dtype=np.float64)
+    ok = np.isfinite(pred) & np.isfinite(truth) & (pred != 0) & (truth != 0)
+    if keep is not None:
+        ok &= np.asarray(keep, dtype=bool)
+    ok[list(exclude)] = False
+    idx = np.flatnonzero(ok)
+    order = idx[np.argsort(-np.abs(pred[idx]), kind="stable")]
+    same = np.sign(pred[order]) == np.sign(truth[order])
+    return {k: (int(same[:k].sum()), int(min(k, same.size))) for k in ks}
+
+
 def shared_signal(a: AxisTable, b: AxisTable, targets, *, exclude_cols=(), gamma: float = 0.0) -> dict:
     """Method-of-moments split of two sources into a shared part and their own parts.
 

@@ -118,7 +118,7 @@ depositati in `G:\Il mio Drive\vcc2026\runs\queue\`.
 
 ## 4. Gli stadi vivi
 
-Ventidue script. Ogni altro numero è nel tag d'archivio. Il prossimo numero libero è **103**.
+Ventitré script. Ogni altro numero è nel tag d'archivio. Il prossimo numero libero è **104**.
 
 | Stadio | Che cosa fa | Dove gira |
 |---|---|---|
@@ -126,6 +126,7 @@ Ventidue script. Ogni altro numero è nel tag d'archivio. Il prossimo numero lib
 | `scripts/102_extract_orion_panel.py` | Pseudobulk Orion (HCT116, HEK293T) per lotto GEM; `--finalize` produce l'h5ad | locale |
 | `scripts/98_multisource_effects.py` | Effetti per sorgente sull'asse ufficiale e proxy di trasferimento fra sorgenti | locale |
 | `scripts/101_transfer_diagnostics.py` | Tre diagnostiche del trasferimento fra sorgenti dello stadio 98 | locale |
+| `scripts/103_direction_transfer.py` | Accordo di segno fra sorgenti sui geni che si chiamerebbero, una sorgente tenuta fuori alla volta | locale |
 | `scripts/100_build_context_effects.py` | Effetti per contesto da una ricetta di `configs/recipes/` | locale |
 | `scripts/45_generate_prediction.py` | Cellule con il generatore di trial-01 (`--trial trial-ext-profile --effects ...`) | locale |
 | `scripts/76_generate_sc_prediction.py` | Cellule con `ControlModel` (e termini cis e di trasferimento) | Colab |
