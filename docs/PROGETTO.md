@@ -48,8 +48,9 @@ Le tabelle per membro stanno nei checkpoint citati.
   gli estremi, e 0,4285 riporta il q99 mediano di |ln fc| a quello del t15 (0,229).
 - Per entrambi ricetta, previsione, regola di lettura e testi sono registrati prima della
   generazione (`reports/prediction_t16_2026-09-24/`, `reports/prediction_t17_2026-09-24/`).
-  Gli effetti sono pronti. La generazione aspetta spazio su disco; l'invio aspetta la quota
-  del 25 e il via del proprietario.
+  La generazione è in corso sul portatile (dal 24 alle 11:23Z). Il proprietario ha dato il via
+  agli invii: partono in sequenza dalle 00:05 UTC del 25, prima il t16 e poi il t17
+  (`reports/trial_2026-09-22/autorizzazioni.md`).
 - **t12** (HEK293T all'ampiezza 0,197) resta registrato ma non si genera: il t17 fa la stessa
   domanda all'ampiezza buona.
 - **t09 e t13** non si generano: il t09 pagherebbe il silenzio (D-035), il t13 si è fermato
@@ -80,8 +81,8 @@ Le tabelle per membro stanno nei checkpoint citati.
 
 **Proposta**, da [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md) §6 e D-042:
 
-1. **Generare e inviare t16 e t17**, il 25 settembre, con il via del proprietario. Il t16 dice
-   se la curva dell'ampiezza sale ancora, il t17 se HEK293T aggiunge qualcosa.
+1. **Leggere t16 e t17** con le loro regole, il 25 settembre. Il t16 dice se la curva
+   dell'ampiezza sale ancora, il t17 se HEK293T aggiunge qualcosa.
 2. **Seguire la curva** secondo la regola del t16: raddoppiare ancora, o provare il punto
    medio. Poi riprovare le sorgenti all'ampiezza migliore.
 3. **L'ablazione dei pesi del t11** (il t08 con K562 e CD4 a pesi uguali), per l'attribuzione.
