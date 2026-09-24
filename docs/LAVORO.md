@@ -21,7 +21,7 @@ riprendilo dal tag: non riscriverlo.
 sorgenti: bulk K562 · 97 CD4 · 102 Orion ──▶ 98  cache degli effetti per sorgente
 ricetta configs/recipes/tNN.json ──────────▶ 100 effetti per contesto (effects_A/B/C.npz)
                                           ──▶ 45  cellule: generatore di trial-01 (trial-ext-profile)
-                                              76  in alternativa ControlModel, su Colab (§3)
+                                              76  in alternativa ControlModel (§3)
                                           ──▶ 48  convalida a flusso + .vcc + verifica bit per bit
 previsione e testi scritti PRIMA ─────────▶ vcc submit ──▶ vcc status ──▶ checkpoint
 ```
@@ -90,8 +90,9 @@ Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
 
 ## 3. Colab: generatore `ControlModel` e banchi
 
-Il portatile ha 7,8 GiB di RAM. Lo stadio 76 (`ControlModel`) e i banchi 73 e 75 girano su
-Colab. Il notebook `notebooks/colab_sc_training.ipynb` fa da dispatcher: esegue i `.sh`
+Il portatile ha 7,8 GiB di RAM. Lo stadio 76 (`ControlModel`) gira anche qui: il 23 settembre
+ha generato il t14 in 35 minuti, con 1–3 GiB di RAM
+(`reports/dispersion_2026-09-23/T14_IN_LOCALE.md`). I banchi 73 e 75 restano su Colab. Il notebook `notebooks/colab_sc_training.ipynb` fa da dispatcher: esegue i `.sh`
 depositati in `G:\Il mio Drive\vcc2026\runs\queue\`.
 
 - **Portare il codice su Drive:** `powershell -File notebooks\colab_jobs\sync_to_drive.ps1`.
@@ -129,7 +130,7 @@ Ventitré script. Ogni altro numero è nel tag d'archivio. Il prossimo numero li
 | `scripts/103_direction_transfer.py` | Accordo di segno fra sorgenti sui geni che si chiamerebbero, una sorgente tenuta fuori alla volta | locale |
 | `scripts/100_build_context_effects.py` | Effetti per contesto da una ricetta di `configs/recipes/` | locale |
 | `scripts/45_generate_prediction.py` | Cellule con il generatore di trial-01 (`--trial trial-ext-profile --effects ...`) | locale |
-| `scripts/76_generate_sc_prediction.py` | Cellule con `ControlModel` (e termini cis e di trasferimento) | Colab |
+| `scripts/76_generate_sc_prediction.py` | Cellule con `ControlModel` (e termini cis e di trasferimento) | locale o Colab |
 | `scripts/48_package_prediction.py` | Convalida a flusso, `.vcc`, verifica del contenitore e del payload | locale o Colab |
 | `scripts/83_prediction_calls.py` | Chiamate DE per bersaglio su una previsione, contro controlli veri | locale o Colab |
 | `scripts/72_generator_null.py` | Chiamate spurie di un generatore a effetto nullo | locale o Colab |
