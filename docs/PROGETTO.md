@@ -48,7 +48,8 @@ Le tabelle per membro stanno nei checkpoint citati.
   gli estremi, e 0,4285 riporta il q99 mediano di |ln fc| a quello del t15 (0,229).
 - Per entrambi ricetta, previsione, regola di lettura e testi sono registrati prima della
   generazione (`reports/prediction_t16_2026-09-24/`, `reports/prediction_t17_2026-09-24/`).
-  La generazione è in corso sul portatile (dal 24 alle 11:23Z). Il proprietario ha dato il via
+  Sono generati e impacchettati: 360.000 cellule ciascuno, convalida a flusso superata
+  (`reports/trial_2026-09-24/t16_packaging.json`, `t17_packaging.json`). Il proprietario ha dato il via
   agli invii: partono in sequenza dalle 00:05 UTC del 25, prima il t16 e poi il t17
   (`reports/trial_2026-09-22/autorizzazioni.md`).
 - **t12** (HEK293T all'ampiezza 0,197) resta registrato ma non si genera: il t17 fa la stessa
