@@ -1,7 +1,8 @@
 # Come si lavora — il percorso vivo
 
 Scritto il 2026-09-23, con la pulizia di [D-040](DECISIONI.md#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione).
-Questo è l'unico documento operativo. Dice:
+Questa è la guida delle procedure. I lavori da scegliere e le assegnazioni stanno
+in [PIANI.md](PIANI.md) e nelle sue schede. Questa pagina dice:
 - che cosa gira e in che ordine;
 - con quali comandi;
 - dove finiscono i risultati.

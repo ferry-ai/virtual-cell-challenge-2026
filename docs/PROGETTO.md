@@ -1,7 +1,8 @@
 # Mappa del progetto — VCC 2026
 
-**Questo è il punto di ingresso.** Il §0 dice dove siamo oggi, in una pagina; il resto è
-riferimento. Come si esegue il lavoro sta in [LAVORO.md](LAVORO.md).
+**Questo è il punto di ingresso per lo stato.** Il §0 dice dove siamo oggi;
+[PIANI.md](PIANI.md) indica i lavori aperti e promettenti, le dipendenze e i piani
+chiusi. Come si esegue il lavoro sta in [LAVORO.md](LAVORO.md).
 
 Aggiornata il 2026-09-23 con la pulizia di D-040:
 - §0 è nuovo;
@@ -80,6 +81,10 @@ Le tabelle per membro stanno nei checkpoint citati.
 
 ### Il prossimo passo
 
+**La coda operativa si mantiene in [PIANI.md](PIANI.md).** Le schede separano
+invii/finale, dati e affidabilità, modelli di trasferimento, switch genes e
+distribuzioni. Prima di prendere un'attività verificare chi la sta seguendo.
+
 **Ricerca, decisione del 24 settembre (D-044):** cercare dati e modelli che
 generalizzino a bersagli e contesti nuovi. **Non è richiesto avere geni perturbati
 in comune con i 300 attuali** per considerare utile una sorgente. Conservare anche
@@ -89,15 +94,9 @@ dal training sia i bersagli sia i contesti di test. Scelte, limiti e ordine del
 lavoro in [GENERALIZZAZIONE.md](GENERALIZZAZIONE.md), registrati in
 [CP-0036](checkpoints/0036-generalizzazione-bersagli-contesti.md).
 
-**Pipeline degli invii, proposta**, da [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md) §6 e D-042:
-
-1. **Leggere t16 e t17** con le loro regole, il 25 settembre. Il t16 dice se la curva
-   dell'ampiezza sale ancora, il t17 se HEK293T aggiunge qualcosa.
-2. **Seguire la curva** secondo la regola del t16: raddoppiare ancora, o provare il punto
-   medio. Poi riprovare le sorgenti all'ampiezza migliore.
-3. **L'ablazione dei pesi del t11** (il t08 con K562 e CD4 a pesi uguali), per l'attribuzione.
-4. **Preparare il set finale** ([LAVORO.md](LAVORO.md) §7). L'ampiezza è un parametro da
-   decidere prima del 22 ottobre, con i dati di validazione.
+**Pipeline degli invii:** lettura t16/t17, curva dell'ampiezza, ablazione dei pesi
+e preparazione del set finale sono mantenute nella [scheda S-INVII](piani/invii-finale.md),
+con le dipendenze da CP-0033, D-042 e dai risultati ufficiali.
 
 Ogni invio consuma quota e passa dall'autorizzazione del proprietario.
 Il successo del trasferimento dello stesso bersaglio non dimostra generalizzazione

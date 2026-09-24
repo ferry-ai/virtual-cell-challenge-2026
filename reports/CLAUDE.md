@@ -4,12 +4,16 @@ A folder here is evidence of what was seen on its date, and it is never edited: 
 writes to a new folder, `reports/<tema>_<data>/`. Every new file or folder needs a row in
 `docs/REGISTRO.md`, and one row can cover a folder of homogeneous files (a path ending in `/`).
 
+Choose current work through `docs/PIANI.md`, not through next steps in a dated report.
+After a run, link its evidence from the relevant plan card; keep the report immutable.
+
 ## Index
 
 Grouped by what the folder is about, not by whether it still holds: a folder's row in
 `docs/REGISTRO.md` says that. `tests/test_live_tree.py` fails if a folder is missing here.
 
 **State and analyses** — read after `docs/PROGETTO.md` §0:
+`ipotesi_trasferimento_2026-09-24/` (research hypotheses, switch genes and targeted data acquisition),
 `analisi_2026-09-24/` (Claude, with calculations), `audit_stato_2026-09-24/` (ChatGPT,
 with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 
@@ -24,6 +28,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `scorer/`, `scorer_2026-09-12/` (the scorer contract), `leaderboard_2026-09-16/`.
 
 **Sources and transfer** — stages 71, 97, 98 and 100–103:
+`pattern_mixscale_2026-09-24/` (paired reanalysis: target/stimulus heterogeneity and sign specificity),
 `dld1_audit_2026-09-24/` (exploratory DLD-1 audit and Mixscale file inventory),
 `dld1_ceiling_2026-09-24/` (DLD-1 within-context ceiling against cross-context transfer),
 `schede_sorgenti_2026-09-24/` (cards of 17 candidate sources, D-044 format),

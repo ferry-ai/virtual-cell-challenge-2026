@@ -4,15 +4,18 @@
 
 1. [`docs/PROGETTO.md`](docs/PROGETTO.md) §0 — where the project stands today, on one page:
    best score, what is in flight, what is decided next.
-2. The last three rows of [`docs/checkpoints/INDICE.md`](docs/checkpoints/INDICE.md).
-3. The row below that matches your task, and only what it names. For anything that runs
-   code, that includes [`docs/LAVORO.md`](docs/LAVORO.md), the one operational guide.
+2. [`docs/PIANI.md`](docs/PIANI.md) — open priorities, dependencies and the relevant plan
+   card. Before taking work, check its assignment and the shared-workspace rules in §3.
+3. The last three rows of [`docs/checkpoints/INDICE.md`](docs/checkpoints/INDICE.md).
+4. The row below that matches your task, and only what it names. For anything that runs
+   code, that includes [`docs/LAVORO.md`](docs/LAVORO.md), the procedural guide.
 
 Before you rely on any other document, check its row in [`docs/REGISTRO.md`](docs/REGISTRO.md):
 several contain conclusions that later work corrected.
 
 | Your task | Read | Leave aside |
 |---|---|---|
+| Choose, resume or hand off an open plan | `docs/PIANI.md`; `docs/piani/CLAUDE.md`; the one relevant plan card | treating old reports' next steps as current assignments |
 | Prepare, generate or submit a trial | LAVORO §1–2; `reports/CLAUDE.md`, which lists what a submission leaves, with a complete example; the latest recipe in `configs/recipes/` | the analyses of 11–15 September in `docs/` |
 | Read an official score | LAVORO §2, point 7; `reports/anchors_2026-09-17/`; the latest checkpoint as a model | the benches' local scores, which are not VCC scores |
 | Prepare the final set (D, E, F; 22 October) | LAVORO §7 | |
@@ -51,6 +54,12 @@ agents read it before editing there. `tests/test_live_tree.py` fails if this map
 those indexes, stops matching the tree.
 
 ## What is live
+
+Open work is indexed in `docs/PIANI.md`, with separate editable cards under `docs/piani/`.
+These manual plans do not start jobs or revive the retired orchestrator. Current status
+lives in PROGETTO, procedures in LAVORO, evidence in reports/checkpoints, and validity in
+REGISTRO. In a shared checkout, preserve other agents' changes and re-read before patching;
+an untracked file or an unassigned plan is not evidence that nobody is working on it.
 
 Only the code that produces or scores a submission is in the tree (D-040, D-043):
 - the stages are the table in `docs/LAVORO.md` §4;

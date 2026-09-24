@@ -108,6 +108,11 @@ richiedono un banco con cellule e controlli. Non chiamare un proxy punteggio VCC
 
 ## 5. Priorità concrete dopo CP-0035
 
+L'ordine aggiornabile dei lavori e le prese in carico stanno in [PIANI.md](PIANI.md):
+R-DATI, R-MODELLI e R-SWITCH. I punti sotto motivano i requisiti iniziali; le nuove
+ipotesi su programmi, switch e distribuzioni sono collegate dalle schede senza
+modificare le regole di valutazione di questo documento.
+
 1. **Mixscale:** conservare tutti i 218 bersagli dell'archivio, non solo i nove
    attuali. È il primo candidato per progettare separazioni fra sei linee. Prima
    verificare se le stime DE e la selezione dei geni condividono informazione fra

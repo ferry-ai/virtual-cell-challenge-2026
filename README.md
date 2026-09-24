@@ -8,6 +8,8 @@ Submissions close **5 November 2026**. Final test set drops **22 October 2026**.
 > **Start from [`docs/PROGETTO.md`](docs/PROGETTO.md) §0** — where the project stands
 > today — and [`docs/LAVORO.md`](docs/LAVORO.md), the live pipeline with its exact
 > commands. Agents: the working agreement is [`CLAUDE.md`](CLAUDE.md).
+> Open priorities, promising research and past outcomes are indexed in
+> [`docs/PIANI.md`](docs/PIANI.md); each plan has its own card for coordination.
 > This README covers the task, the scoring and the setup. Parts of it are older than
 > the analyses in `docs/`, and six of its claims are flagged: see its entry in
 > [`docs/REGISTRO.md`](docs/REGISTRO.md), sheet R-001. The sections from "Plan" onward

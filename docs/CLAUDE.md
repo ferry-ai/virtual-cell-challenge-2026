@@ -8,7 +8,9 @@ in the root `CLAUDE.md`, which is always loaded. This page is the index of the f
 | File | Answers | How it is kept |
 |---|---|---|
 | `docs/PROGETTO.md` | where the project stands (§0), the problem, what is uncertain | §0 is rewritten after every scored submission |
-| `docs/LAVORO.md` | how the live pipeline runs: stages, commands, rules | the only operational document |
+| `docs/PIANI.md` | what to do next; promising open work and closed lines | index of priorities and dependencies; assignments live in the cards |
+| `docs/piani/` | the next action, owner, dependencies and closure evidence for one plan | editable cards; read `docs/piani/CLAUDE.md` and shared-workspace rules before editing |
+| `docs/LAVORO.md` | how the live pipeline runs: stages, commands, rules | the procedural guide; work selection is in PIANI |
 | `docs/GENERALIZZAZIONE.md` | how research selects data and evaluates new targets and contexts | research scope and evaluation requirements under D-044; does not replace submission commands |
 | `docs/SOTTOMISSIONE.md` | the submission contract, §1–2 | `da-verificare`: §3 and §6 name archived stages (sheet R-015) |
 | `docs/DECISIONI.md` | what was decided, why, and when to reopen it | a table row and a `### D-NNN — …` section per decision |
