@@ -1,9 +1,15 @@
-# Archivio — 23 settembre 2026
+# Archivio
 
 Il codice e i documenti tolti dall'albero di lavoro non sono perduti: stanno in un tag, e
 questo file dice che cosa c'è dentro e come si riprende. **Nessun report, checkpoint o dato
 è stato cancellato**, e i checkpoint continuano a citare per nome ciò che è archiviato,
 come devono, perché sono immutabili.
+
+Le pulizie sono due:
+- quella del 23 settembre ([D-040](DECISIONI.md#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione)),
+  descritta da qui fino all'ultima sezione;
+- quella del 24 settembre ([D-043](DECISIONI.md#d-043--lo-stadio-45-genera-solo-da-effetti-esterni-e-il-codice-che-nessuno-stadio-raggiunge-va-in-archivio)),
+  nell'[ultima sezione](#24-settembre-2026--lo-stadio-45-a-un-solo-ramo-e-il-codice-che-nessuno-stadio-raggiungeva).
 
 | | |
 |---|---|
@@ -289,7 +295,7 @@ Sonde e audit delle sorgenti candidate (11-15 settembre) e l'ingestione remota d
 
 ### Pipeline pseudobulk di trial-01, stadi una tantum (lo stadio 45 resta) — 16 file, 5.141 righe
 
-La pipeline verticale del 12-13 settembre: firme pseudobulk e registro delle sorgenti (40, `configs/sources.yaml`), esperimento di trasferimento e calibrazione annidata dell'ampiezza (41, 44), calibrazione nulla (42), congelamento del trial (43), convalida con `vcc prep` (46), bilancio delle risorse (47), HepG2 in pseudobulk (52-55). Restano lo stadio 45, il generatore di trial-01 usato dal t08 al t11 con `--effects`, e lo stadio 48, l'impacchettamento a flusso. Senza `--effects` lo stadio 45 legge ancora le firme `e001` sotto la radice dati; per rigenerarle servono 40 e 44 dal tag.
+La pipeline verticale del 12-13 settembre: firme pseudobulk e registro delle sorgenti (40, `configs/sources.yaml`), esperimento di trasferimento e calibrazione annidata dell'ampiezza (41, 44), calibrazione nulla (42), congelamento del trial (43), convalida con `vcc prep` (46), bilancio delle risorse (47), HepG2 in pseudobulk (52-55). Restano lo stadio 45, il generatore di trial-01 usato dal t08 al t11 con `--effects`, e lo stadio 48, l'impacchettamento a flusso. Senza `--effects` lo stadio 45 legge ancora le firme `e001` sotto la radice dati; per rigenerarle servono 40 e 44 dal tag. Dal 24 settembre lo stadio 45 accetta solo `--effects`: vedi l'ultima sezione.
 
 | Percorso | Righe | Che cosa dice di sé |
 |---|---:|---|
@@ -328,3 +334,47 @@ Piani datati 14-16 settembre, la roadmap e la descrizione della pipeline del 13 
 | `docs/CONSEGNA_GPU.md` | 155 | Consegna alla macchina con GPU del compagno di squadra |
 | `requirements-gpu.txt` | 26 | Aggiunte per una macchina con CUDA. Deliberatamente NON contiene torch per i |
 | `docs/RL/README.md` | 103 | RL — idee da riprendere in futuro |
+
+## 24 settembre 2026 — lo stadio 45 a un solo ramo, e il codice che nessuno stadio raggiungeva
+
+Seconda pulizia, decisa in [D-043](DECISIONI.md#d-043--lo-stadio-45-genera-solo-da-effetti-esterni-e-il-codice-che-nessuno-stadio-raggiunge-va-in-archivio). Toglie:
+- i due rami dello stadio 45 che non generano più invii, e i due moduli che usavano solo loro;
+- le definizioni di `src/` che nessuno stadio vivo raggiunge.
+
+`reports/`, i checkpoint e i dati non si toccano.
+
+| | |
+|---|---|
+| Tag | `archivio/pre-pulizia-2026-09-24` (annotato) |
+| Punta a | `24c4494`, l'ultimo commit con tutto ciò che è elencato qui |
+| Dove sta | solo in locale: il tag **non è stato inviato** a nessun remoto |
+
+```bash
+git show archivio/pre-pulizia-2026-09-24:src/vcc2026/models.py                     # un modulo
+git show archivio/pre-pulizia-2026-09-24:scripts/45_generate_prediction.py > 45.py   # lo stadio 45 con i tre rami
+```
+
+Due cose si spostano senza uscire dall'albero:
+- `load_eval_config` passa da `evaluation.py` a `src/vcc2026/de_tools.py`, il suo unico utente;
+- `load_effects` (stadi 73 e 75) e `log` (stadi 71, 72 e 97) restano in una copia sola, in
+  `src/vcc2026/bench.py`.
+
+### File interi
+
+| Percorso | Righe | Che cosa dice di sé |
+|---|---:|---|
+| `src/vcc2026/models.py` | 283 | Transfer baselines that predict a response delta for an unseen target. |
+| `src/vcc2026/signatures.py` | 373 | Perturbation response signatures carrying uncertainty and numerosity. |
+| `src/vcc2026/evaluation.py` | 340 | Two levels of evaluation, kept apart on purpose. |
+
+### Parti tolte da file che restano
+
+| Che cosa | Dove | Righe | Perché nessuno stadio la raggiungeva |
+|---|---|---:|---|
+| Rami `trial-00-controls` e `trial-01-transfer`, `load_transfer_model`, opzioni `--fitted-state` e `--signatures`, file di provenienza | `scripts/45_generate_prediction.py` | 122 | trial-00 non si invia (D-017); trial-01 vuole lo stato dello stadio 44, archiviato il 23 |
+| Definizioni di `trial-00-controls` e `trial-01-transfer` | `configs/trials.yaml` | 58 | servivano solo ai due rami |
+| `AlignedMatrix`, `align_to_axis` | `src/vcc2026/genes.py` | 110 | usati solo dai propri test e da `signatures.py` |
+| `SupportMask` | `src/vcc2026/inference.py` | 32 | nessun chiamante |
+| `snapshot_source` e le sue tre costanti | `src/vcc2026/manifest.py` | 72 | nessun chiamante |
+| `row_pieces` | `src/vcc2026/remote_csr.py` | 3 | nessun chiamante |
+| I test di ciò che esce | `tests/test_pipeline_contracts.py`, `tests/test_trial_inference.py` | — | escono con il codice che provano |

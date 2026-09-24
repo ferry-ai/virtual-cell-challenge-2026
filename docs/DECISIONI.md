@@ -56,6 +56,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-040 | Nell'albero resta solo il codice che produce o valuta una sottomissione; il resto è nel tag `archivio/pre-pulizia-2026-09-23`, e catena di cicli, orchestratore e oracolo sono ritirati | attiva | 2026-09-23 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 23 settembre |
 | D-041 | Orion HCT116 entra come sorgente per bersaglio, a pesi uguali con K562 e CD4 (t11, nuovo migliore) | attiva | 2026-09-23 | [CP-0031](checkpoints/0031-t11-punteggio-orion.md), `reports/prediction_t11_2026-09-23/comparison.json` |
 | D-042 | L'ampiezza degli invii si sceglie sul punteggio ufficiale, un fattore alla volta; 0,394 batte 0,197 (t15, +0,108) | attiva | 2026-09-24 | [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md), `reports/prediction_t15_2026-09-23/comparison.json` |
+| D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
 
@@ -1070,3 +1071,46 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   - un passo della curva perde contro il precedente;
   - il set finale mostra un regime diverso;
   - la base della `mse` diventa raggiungibile.
+
+### D-043 — Lo stadio 45 genera solo da effetti esterni, e il codice che nessuno stadio raggiunge va in archivio
+
+- **Chi l'ha decisa:** il proprietario, il 24 settembre in chat. Aveva chiesto «una pulizia più
+  intensiva o quantomeno dei binari in .md che instradino meglio gli agenti». Fra le opzioni
+  proposte dall'agente ha scelto l'archiviazione dei rami trial-00/01 e gli hash delle ricette
+  stabili. Il percorso `ControlModel` e la storia di README e `docs/` erano fra le opzioni, e
+  restano nell'albero.
+- **Perché:**
+  - il ramo `trial-00-controls` dello stadio 45 non si invia (D-017). Il ramo
+    `trial-01-transfer` chiede il `fitted_state.json` dello stadio 44, archiviato il 23
+    settembre;
+  - dopo il trial-01, lo stadio 45 ha generato t08, t10, t11, t15, t16 e t17, tutti con
+    `trial-ext-profile` e con il seme 20260912 (i manifest in `reports/trial_2026-09-22/`,
+    `reports/trial_2026-09-23/` e `reports/trial_2026-09-24/`);
+  - i due rami erano gli unici utenti di `models.py` e `signatures.py`, 656 righe;
+  - la chiusura degli import dai 23 stadi vivi, misurata il 24 settembre, lascia fuori circa
+    700 righe di `src/`. Sono funzioni rimaste senza chiamanti quando D-040 ha archiviato i
+    loro stadi, o usate solo dai propri test;
+  - i `recipe_sha256` registrati dallo stadio 100 dipendono dai fine riga del checkout. Per
+    t08, t10, t11 e t12 sono l'hash dei byte LF, per t15, t16 e t17 dei byte CRLF: confronto
+    del 24 settembre fra i manifest in `C:/Users/ferra/vcc2026-data/processed/effects_t*/` e i
+    file in git. Nessuna impostazione di git li riproduce tutti.
+- **Come è fatta:**
+  - come D-040: tag annotato `archivio/pre-pulizia-2026-09-24` su `24c4494`, elenco in
+    [ARCHIVIO.md](ARCHIVIO.md), poi `git rm`;
+  - lo stadio 45 accetta solo `trial-ext-profile`. `configs/trials.yaml` tiene i valori
+    predefiniti, e un test fissa il seme;
+  - `load_eval_config` passa in `de_tools.py`, il suo unico utente, e `evaluation.py` va in
+    archivio. `load_effects` (stadi 73 e 75) e `log` (stadi 71, 72 e 97) restano in una copia
+    sola, in `bench.py`;
+  - lo stadio 100 registra anche `recipe_sha256_lf`, l'hash della ricetta con i fine riga
+    normalizzati.
+- **Evidenza:** [ARCHIVIO.md](ARCHIVIO.md), sezione del 24 settembre: file, righe e verifiche.
+- **Che cosa non segue:**
+  - che il trial-01 non si possa più rigenerare: si riprende dal tag, con gli stadi 40 e 44
+    del tag di D-040;
+  - che il codice archiviato fosse sbagliato: nessuno stadio vivo lo chiamava;
+  - che `ControlModel` sia scartato: lo stadio 76 resta un'alternativa per il set finale
+    ([LAVORO.md](LAVORO.md) §7).
+- **Riaprire se:** serve rigenerare il trial-01, o ricalibrare l'ampiezza in pseudobulk (il
+  caso già previsto da D-040). Dal tag si riprendono `models.py`, `signatures.py` e lo stadio
+  45 com'era, insieme agli stadi 40 e 44.
