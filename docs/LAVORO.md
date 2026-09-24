@@ -119,7 +119,11 @@ depositati in `G:\Il mio Drive\vcc2026\runs\queue\`.
 
 ## 4. Gli stadi vivi
 
-Ventitré script. Ogni altro numero è nel tag d'archivio. Il prossimo numero libero è **104**.
+Gli stadi vivi sono quelli della tabella; ogni altro numero è in un tag d'archivio. Il
+prossimo numero libero è **104**.
+`tests/test_live_tree.py` fallisce se questa tabella e la cartella `scripts/` non coincidono:
+uno stadio nuovo entra qui nello stesso commit. Le regole di uno stadio sono in
+`scripts/CLAUDE.md`, la mappa dei moduli in `src/vcc2026/CLAUDE.md`.
 
 | Stadio | Che cosa fa | Dove gira |
 |---|---|---|
@@ -150,7 +154,9 @@ nuova ([CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md)).
   - continua la numerazione e fa una cosa sola;
   - ha un docstring con l'esempio d'uso;
   - scrive in un `--out` nuovo e non sovrascrive mai un output;
-  - porta un test se sbagliare in silenzio è possibile.
+  - porta un test se sbagliare in silenzio è possibile;
+  - entra nella tabella del §4, e i moduli che importa nella mappa di
+    `src/vcc2026/CLAUDE.md`, nello stesso commit.
 - **Un esperimento chiuso** dal suo checkpoint lascia nel percorso vivo solo gli stadi che
   servono ancora. Gli altri si archiviano lo stesso giorno (D-040):
   1. un tag annotato `archivio/<motivo>-<data>` sul commit che ha ancora i file;
@@ -160,7 +166,7 @@ nuova ([CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md)).
   4. il controllo documentale e i test.
 - **Prima di chiudere una sessione:**
   - `python scripts/31_check_docs.py`;
-  - `.\scripts\py.cmd -m unittest discover -s tests` (157 test, circa 5 minuti).
+  - `.\scripts\py.cmd -m unittest discover -s tests` (circa 2 minuti il 24 settembre).
 
 ## 6. Dove stanno le cose
 

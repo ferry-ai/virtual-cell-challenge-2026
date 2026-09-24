@@ -322,17 +322,23 @@ def check_links(errors: list[str]) -> None:
     # that names a missing stage misdirects the next agent before anything else can.
     files += [path for path in (REPO_ROOT / "docs" / "LAVORO.md",
                                 REPO_ROOT / "docs" / "ARCHIVIO.md") if path.exists()]
+    # So are the folder guides (D-043): the paths they route agents to must exist.
+    files += [path for path in (REPO_ROOT / "AGENTS.md", REPO_ROOT / "src" / "vcc2026" / "CLAUDE.md")
+              if path.exists()]
+    files += sorted(REPO_ROOT.glob("*/CLAUDE.md"))
     files += sorted((REPO_ROOT / "docs" / "checkpoints").glob("*.md"))
     for path in files:
         if not path.exists():
             errors.append(f"{path.relative_to(REPO_ROOT)} missing")
             continue
         text = path.read_text(encoding="utf-8")
+        # Several guides are called CLAUDE.md: name the file by its path.
+        label = path.relative_to(REPO_ROOT).as_posix()
         for raw in BACKTICK_PATH.findall(text):
             if "<" in raw:
                 continue  # a template such as reports/trial_<data>/ names no file
             if not path_exists(raw):
-                errors.append(f"{path.name}: `{raw}` does not exist")
+                errors.append(f"{label}: `{raw}` does not exist")
         for target in MD_LINK.findall(text):
             if target.startswith(("http://", "https://", "mailto:")):
                 continue
@@ -344,10 +350,10 @@ def check_links(errors: list[str]) -> None:
                 except ValueError:
                     rel = None
                 if rel is None or not is_archived(rel):
-                    errors.append(f"{path.name}: link to missing {target}")
+                    errors.append(f"{label}: link to missing {target}")
                 continue
             if anchor and anchor not in anchors(other.read_text(encoding="utf-8")):
-                errors.append(f"{path.name}: anchor {target} does not resolve")
+                errors.append(f"{label}: anchor {target} does not resolve")
 
 
 def main() -> None:

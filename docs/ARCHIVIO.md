@@ -378,3 +378,45 @@ Due cose si spostano senza uscire dall'albero:
 | `snapshot_source` e le sue tre costanti | `src/vcc2026/manifest.py` | 72 | nessun chiamante |
 | `row_pieces` | `src/vcc2026/remote_csr.py` | 3 | nessun chiamante |
 | I test di ciò che esce | `tests/test_pipeline_contracts.py`, `tests/test_trial_inference.py` | — | escono con il codice che provano |
+
+### Verifiche
+
+- **Righe Python tracciate** in `src/`, `scripts/` e `tests/`, contate a `24c4494` e al commit
+  che chiude questa pulizia:
+  - totale da 13.186 a 11.769 (−10,7%);
+  - `src/` da 5.968 a 4.784 righe (−19,8%) e da 22 a 19 file;
+  - `scripts/` da 4.782 a 4.619;
+  - `tests/` da 2.436 a 2.366, compreso il test nuovo delle mappe.
+- **La suite** passa dopo ogni commit: da 159 a 145, 134 e 135 test, poi 142 con i sette di
+  `tests/test_live_tree.py`. Il controllo documentale è verde dopo ogni commit.
+- **Lo stadio 45 genera gli stessi byte.** Due piloti eseguiti prima e dopo la rimozione dei
+  rami, con gli effetti del t15 e lo stesso `--run-id`:
+  - 4 bersagli su A e B;
+  - 3 bersagli su C con `--gene-dispersion` e `--effects-scale 2.0`.
+
+  In entrambi i `prediction.h5ad` hanno lo stesso sha256. Le diagnostiche cambiano solo dove
+  deve: mancano `fitted_state` e `provenance_files`, e la nota sull'artefatto a effetto zero
+  non parla più del trial di controllo. Il comando del primo pilota, da ripetere con il codice
+  nuovo in una seconda cartella:
+
+  ```powershell
+  $E = "C:\Users\ferra\vcc2026-data\processed\effects_t15_2026-09-23"
+  .\scripts\py.cmd scripts\45_generate_prediction.py --run-id pilot45_before --trial trial-ext-profile `
+      --n-perts 4 --contexts A,B --effects "A=$E\effects_A.npz" --effects "B=$E\effects_B.npz" `
+      --out <cartella temporanea>\pilot45_before --reserve-gib 2
+  Get-FileHash <cartella temporanea>\pilot45_*\prediction.h5ad
+  ```
+- **Lo stadio 100 riproduce il t15.** Rieseguito sulla ricetta del t15 e sulla cache r4, in una
+  cartella temporanea:
+  - dà `effects_A/B/C.npz` con `targets`, `genes`, `lfc` e `observed` identici;
+  - incorpora la stessa ricetta, e ne registra lo stesso hash dei byte;
+  - il nuovo `recipe_sha256_lf` coincide con l'hash del file in git.
+- **Tutti i 23 stadi partono** con `--help`, codice d'uscita 0, sull'albero finale.
+- **Il test delle mappe fallisce quando deve.** Su copie dell'albero, sei guasti diversi lo
+  fanno fallire e l'albero intatto lo fa passare:
+  - una funzione senza chiamanti;
+  - un import inutilizzato;
+  - uno stadio nuovo senza riga;
+  - una riga tolta;
+  - un import non riportato nella mappa;
+  - un modulo senza riga.

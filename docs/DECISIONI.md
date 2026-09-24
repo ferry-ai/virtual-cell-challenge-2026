@@ -1113,7 +1113,15 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
     archivio. `load_effects` (stadi 73 e 75) e `log` (stadi 71, 72 e 97) restano in una copia
     sola, in `bench.py`;
   - lo stadio 100 registra anche `recipe_sha256_lf`, l'hash della ricetta con i fine riga
-    normalizzati.
+    normalizzati;
+  - binari per gli agenti, chiesti dal proprietario nello stesso messaggio:
+    - in `CLAUDE.md`, una tabella che dice che cosa leggere per ogni compito;
+    - un `CLAUDE.md` in `src/vcc2026/`, `scripts/`, `reports/` e `docs/`, con le regole della
+      cartella e la mappa dei moduli;
+    - `tests/test_live_tree.py`, che fallisce se le tabelle degli stadi e dei moduli non
+      corrispondono all'albero, se una definizione non ha un chiamante vivo o se un file
+      importa un nome che non usa;
+    - il controllo documentale verifica anche i percorsi citati nelle guide.
 - **Evidenza:** [ARCHIVIO.md](ARCHIVIO.md), sezione del 24 settembre: file, righe e verifiche.
 - **Che cosa non segue:**
   - che il trial-01 non si possa più rigenerare: si riprende dal tag, con gli stadi 40 e 44
@@ -1121,6 +1129,9 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   - che il codice archiviato fosse sbagliato: nessuno stadio vivo lo chiamava;
   - che `ControlModel` sia scartato: lo stadio 76 resta un'alternativa per il set finale
     ([LAVORO.md](LAVORO.md) §7).
-- **Riaprire se:** serve rigenerare il trial-01, o ricalibrare l'ampiezza in pseudobulk (il
-  caso già previsto da D-040). Dal tag si riprendono `models.py`, `signatures.py` e lo stadio
-  45 com'era, insieme agli stadi 40 e 44.
+- **Riaprire se:**
+  - serve rigenerare il trial-01, o ricalibrare l'ampiezza in pseudobulk (il caso già previsto
+    da D-040). Dal tag si riprendono `models.py`, `signatures.py` e lo stadio 45 com'era,
+    insieme agli stadi 40 e 44;
+  - le guide fanno leggere più di quanto risparmiano, o il test delle mappe blocca lavoro
+    legittimo: si semplificano, non si aggirano.

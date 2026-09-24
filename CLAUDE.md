@@ -1,36 +1,44 @@
 # Working agreement for agents
 
-## Read this first
-
-Read these, in this order, before anything else:
+## Start here
 
 1. [`docs/PROGETTO.md`](docs/PROGETTO.md) §0 — where the project stands today, on one page:
    best score, what is in flight, what is decided next.
-2. [`docs/LAVORO.md`](docs/LAVORO.md) — the live pipeline: which stages run, in what
-   order, with which commands; the rules for a submission and for Colab.
-3. The last three rows of [`docs/checkpoints/INDICE.md`](docs/checkpoints/INDICE.md).
+2. The last three rows of [`docs/checkpoints/INDICE.md`](docs/checkpoints/INDICE.md).
+3. The row below that matches your task, and only what it names. For anything that runs
+   code, that includes [`docs/LAVORO.md`](docs/LAVORO.md), the one operational guide.
 
-That is enough to work. Everything else is reference, to open when a task needs it — and
-before you rely on any document, check its row in [`docs/REGISTRO.md`](docs/REGISTRO.md):
+Before you rely on any other document, check its row in [`docs/REGISTRO.md`](docs/REGISTRO.md):
 several contain conclusions that later work corrected.
 
-| File | Answers |
-|---|---|
-| `docs/PROGETTO.md` | What are we solving, where are we, what is uncertain |
-| `docs/LAVORO.md` | How the live pipeline is run, and the rules that protect it |
-| `docs/checkpoints/` | What happened, when, on what evidence — immutable |
-| `docs/DECISIONI.md` | What we chose, why, and when to reopen it |
-| `docs/REGISTRO.md` | Which documents and data can still be relied on |
-| `docs/ARCHIVIO.md` | What left the tree, and how to bring it back |
+| Your task | Read | Leave aside |
+|---|---|---|
+| Prepare, generate or submit a trial | LAVORO §1–2; `reports/CLAUDE.md`, which lists what a submission leaves, with a complete example; the latest recipe in `configs/recipes/` | the analyses of 11–15 September in `docs/` |
+| Read an official score | LAVORO §2, point 7; `reports/anchors_2026-09-17/`; the latest checkpoint as a model | the benches' local scores, which are not VCC scores |
+| Prepare the final set (D, E, F; 22 October) | LAVORO §7 | |
+| Queue or follow a Colab job | LAVORO §3 | the job's own log: it syncs only when the job ends |
+| Change a stage | `scripts/CLAUDE.md`; the stage's docstring and its test | |
+| Change a library module | `src/vcc2026/CLAUDE.md`, which says which stages import it | |
+| Know why something was decided, or when to reopen it | the table at the top of `docs/DECISIONI.md`, then that one section | the other sections |
+| Find the evidence behind a claim | the checkpoint or decision that makes it, then the report it cites | browsing `reports/` |
+| Bring back archived code | `docs/ARCHIVIO.md`: restore from the tag, with its test | rewriting it |
+| Write in `docs/` or `reports/` | `docs/CLAUDE.md` or `reports/CLAUDE.md` | |
+
+`src/vcc2026/`, `scripts/`, `reports/` and `docs/` each have a `CLAUDE.md` with the rules of
+that folder. Claude Code loads it when you read a file there; other agents read it before
+editing there.
 
 ## What is live
 
-Only the code that produces or scores a submission is in the tree (D-040, 23 September
-2026): 22 numbered scripts, listed one per line in `docs/LAVORO.md` §4, the modules they
-import, and their tests. Everything else — the orchestrator, the pairwise oracle, the chain
-of cycles, the pseudobulk modular benchmark, the conditioned predictor, the source probes,
-the remote ingestion, the one-off stages of the trial-01 pipeline, the expired plans — is
-in the tag `archivio/pre-pulizia-2026-09-23`, file by file in `docs/ARCHIVIO.md`.
+Only the code that produces or scores a submission is in the tree (D-040, D-043):
+- the stages are the table in `docs/LAVORO.md` §4;
+- the modules are the table in `src/vcc2026/CLAUDE.md`;
+- `tests/test_live_tree.py` fails if either table disagrees with the tree, or if a definition
+  has no live caller.
+
+Everything else is in the tags listed file by file in `docs/ARCHIVIO.md`: the orchestrator,
+the pairwise oracle, the chain of cycles, the pseudobulk benchmark, the conditioned predictor,
+the source probes, the remote ingestion, trial-00 and trial-01, the expired plans.
 
 - There is no chain of cycles, no orchestrator and no morning plan: you work in a session
   with the owner, and the owner authorises anything that spends quota.
@@ -100,7 +108,11 @@ stay readable.
 - Run project code through the wrappers, which set UTF-8 and `PYTHONPATH`:
   `.\scripts\py.cmd script.py` and `.\scripts\vcc.cmd`. The two documentation scripts
   (30, 31) are standard-library only and run under any Python 3.11+.
-- Scripts are numbered and single-purpose; new ones continue the sequence.
+- Scripts are numbered and single-purpose; new ones continue the sequence
+  (`scripts/CLAUDE.md`).
+- Edit files with the editor tools, or with a script saved to a file. In Git Bash, a
+  heredoc piped into `py` halves backslashes: on 24 September an escaped `\r\n` written that
+  way became a real line break.
 
 ## Before you finish
 
@@ -109,5 +121,6 @@ python scripts/31_check_docs.py
 .\scripts\py.cmd -m unittest discover -s tests
 ```
 
-The checker verifies paths, anchors, checkpoint numbering and required metadata. It
-says nothing about whether a claim is true — that is still your job.
+The checker verifies paths, anchors, checkpoint numbering and required metadata, and the
+suite includes `tests/test_live_tree.py`, which keeps the tables of stages and modules true.
+Neither says whether a claim is true — that is still your job.
