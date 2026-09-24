@@ -1121,7 +1121,15 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
     - `tests/test_live_tree.py`, che fallisce se le tabelle degli stadi e dei moduli non
       corrispondono all'albero, se una definizione non ha un chiamante vivo o se un file
       importa un nome che non usa;
-    - il controllo documentale verifica anche i percorsi citati nelle guide.
+    - il controllo documentale verifica anche i percorsi citati nelle guide;
+  - un secondo passaggio, lo stesso giorno, su richiesta del proprietario di continuare:
+    - l'albero del repository in `CLAUDE.md`, l'indice tematico di `reports/`, la mappa degli
+      stadi per ruolo in `scripts/CLAUDE.md` e una guida per `configs/`, controllati dallo
+      stesso test;
+    - il `main` dello stadio 45 scomposto in funzioni. I due piloti rieseguiti danno
+      `prediction.h5ad` identici byte per byte a quelli del codice di partenza;
+    - gli stadi da 97 a 103 prendono la radice dei dati da `config.paths()`, che sul portatile
+      dà lo stesso percorso.
 - **Evidenza:** [ARCHIVIO.md](ARCHIVIO.md), sezione del 24 settembre: file, righe e verifiche.
 - **Che cosa non segue:**
   - che il trial-01 non si possa più rigenerare: si riprende dal tag, con gli stadi 40 e 44

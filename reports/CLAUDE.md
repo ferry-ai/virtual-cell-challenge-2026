@@ -1,13 +1,56 @@
 # reports — the evidence, one folder per experiment
 
-- **Nothing here is overwritten or deleted**, not even a failed attempt: it records what was
-  seen that day. A new run writes to a new folder, `reports/<tema>_<data>/`.
-- **Every new file or folder needs a row in `docs/REGISTRO.md`**, or
-  `scripts/31_check_docs.py` fails. One row can cover a folder of homogeneous files: a path
-  that ends with `/`.
-- **Do not browse to find evidence.** Many folders are about experiments that are closed and
-  archived. Start from the checkpoint or decision that cites a report, or search
-  `docs/REGISTRO.md` for its path: the row says whether it can still be relied on.
+A folder here is evidence of what was seen on its date, and it is never edited: a new run
+writes to a new folder, `reports/<tema>_<data>/`. Every new file or folder needs a row in
+`docs/REGISTRO.md`, and one row can cover a folder of homogeneous files (a path ending in `/`).
+
+## Index
+
+Grouped by what the folder is about, not by whether it still holds: a folder's row in
+`docs/REGISTRO.md` says that. `tests/test_live_tree.py` fails if a folder is missing here.
+
+**State and analyses** — read after `docs/PROGETTO.md` §0:
+`analisi_2026-09-24/` (Claude, with calculations), `audit_stato_2026-09-24/` (ChatGPT,
+with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
+
+**Submissions and official scores** — one `trial_<data>/` per upload day, one
+`prediction_t<NN>_<data>/` per registered prediction:
+`trial_2026-09-12/`, `trial_2026-09-13/`, `trial_2026-09-17/`, `trial_2026-09-19/`,
+`trial_2026-09-22/`, `trial_2026-09-23/`, `trial_2026-09-24/`, `prediction_t03_2026-09-17/`,
+`prediction_t07_2026-09-19/`, `prediction_t08_2026-09-22/`, `prediction_t10_2026-09-23/`,
+`prediction_t11_2026-09-23/`, `prediction_t12_2026-09-23/`, `prediction_t14_2026-09-23/`,
+`prediction_t15_2026-09-23/`, `prediction_t16_2026-09-24/`, `prediction_t17_2026-09-24/`,
+`trial02_decision_2026-09-17/`, `anchors_2026-09-17/` (the official anchors),
+`scorer/`, `scorer_2026-09-12/` (the scorer contract), `leaderboard_2026-09-16/`.
+
+**Sources and transfer** — stages 71, 97, 98 and 100–103:
+`k562_sc_2026-09-17/`, `cd4_rows_2026-09-22/`, `orion_2026-09-23/`, `multisource_2026-09-22/`,
+`direzione_2026-09-24/` (stage 103), `cis_2026-09-17/`, `coexpression_2026-09-17/`,
+`source_coverage_2026-09-17/`, `source_lineage_2026-09-18/`, `transfer_ceiling/`,
+`external_compat/`.
+
+**Contexts A/B/C** — stages 85 and 99:
+`contexts_2026-09-17/`, `context_identity/`, `context_fingerprints_2026-09-22/`.
+
+**Generator, DE and benches** — stages 72–79 and 83:
+`generator_null_2026-09-17/`, `generator_null_smoke_2026-09-17/`, `fast_de_2026-09-17/`,
+`bench_2026-09-17/`, `prediction_calls_2026-09-17/`, `prediction_calls_2026-09-23/`,
+`dispersion_2026-09-23/`, `call_budget_2026-09-17/`.
+
+**Pseudobulk experiments of 12–19 September** — their code is archived (D-040):
+`pipeline/`, `hepg2_2026-09-14/`, `benchmark_2026-09-14/`, `benchmark_3ctx_2026-09-14/`,
+`encoder_inputs_2026-09-14/`, `svd_2026-09-15/`, `go_slim_2026-09-15/`, `rank_2026-09-15/`,
+`gpu_2026-09-15/`, `runtime_2026-09-15/`, `eval_protocol_2026-09-15/`,
+`expression_gate_2026-09-16/`, `conditioned_2026-09-18/`, `common_component_2026-09-18/`.
+
+**Data acquisition and source probes** — their code is archived (D-040):
+`data_audit/`, `candidate_verification/`, `candidate_pdf_extracted.txt`,
+`ricerca_dataset_20260915.md`, `source_cards_2026-09-15/`, `jiang_2026-09-15/`,
+`nadig_reconcile_2026-09-15/`, `primeflow_2026-09-15/`, `remote_2026-09-15/`,
+`remote_catalog_2026-09-15/`, `drive_evidence_2026-09-17/`.
+
+**Retired agent infrastructure** — D-040:
+`orchestrator/`, `oracle/`, `grok_verification/`, `catena_2026-09-16/`, `ciclo_giornaliero/`.
 
 ## What a submission leaves here
 

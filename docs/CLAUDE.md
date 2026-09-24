@@ -1,5 +1,8 @@
 # docs — the map, the working guide, the decisions, the registry, the archive
 
+The rules for documents (never delete, never edit a checkpoint, states and review sheets) are
+in the root `CLAUDE.md`, which is always loaded. This page is the index of the folder.
+
 ## The documents that run the project
 
 | File | Answers | How it is kept |
@@ -8,9 +11,9 @@
 | `docs/LAVORO.md` | how the live pipeline runs: stages, commands, rules | the only operational document |
 | `docs/SOTTOMISSIONE.md` | the submission contract, §1–2 | `da-verificare`: §3 and §6 name archived stages (sheet R-015) |
 | `docs/DECISIONI.md` | what was decided, why, and when to reopen it | a table row and a `### D-NNN — …` section per decision |
-| `docs/REGISTRO.md` | whether a document, report or dataset can be relied on | a row for every file under `docs/` and `reports/` |
+| `docs/REGISTRO.md` | whether a document, report or dataset can be relied on | a row for every file under `docs/` and `reports/`; search it for a path |
 | `docs/ARCHIVIO.md` | what left the tree, and the command that brings it back | a section per cleanup, a row per file |
-| `docs/checkpoints/` | what happened, when, on what evidence | immutable; `docs/checkpoints/INDICE.md` lists them |
+| `docs/checkpoints/` | what happened, when, on what evidence | immutable; `docs/checkpoints/INDICE.md` lists them, the latest last |
 
 `scripts/31_check_docs.py` enforces the structure of the registry, the decisions and the
 index, and every link between them. It says nothing about whether a claim is true.
@@ -25,14 +28,3 @@ Eight documents analyse experiments and choices from before the single-cell pipe
 Most of the experiments they discuss are closed, and their code is archived
 (`docs/PROGETTO.md` §2). They are not a guide to today's pipeline. Open one when a decision
 or a checkpoint cites it, after reading its row in the registry: their states differ.
-
-## Rules for this folder
-
-- **A checkpoint is never edited.** A new one comes from
-  `python scripts/30_new_checkpoint.py --slug <slug> --title "<title>"`. A correction is a
-  new checkpoint plus the "Corretto da" column of the index.
-- **A document is never deleted or rewritten whole.** One that is contradicted gets a new
-  state in the registry, and a review sheet listing the disputed claims.
-- **`da-verificare` becomes `superato` only by naming the material that replaced it.**
-- **Human-facing prose is plain Italian.** Identifiers and commands stay as they are.
-- Run `python scripts/31_check_docs.py` after any change here.

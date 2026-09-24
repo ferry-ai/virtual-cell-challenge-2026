@@ -7,7 +7,9 @@ Each test is a way an agent gets lost, or the tree grows back what a cleanup rem
 * the module table of `src/vcc2026/CLAUDE.md` lists exactly the modules, with the stages and
   the modules that import each one;
 * every definition in `src/vcc2026` is reachable from a live stage, and no file imports a
-  name it never uses.
+  name it never uses;
+* the repository map of `CLAUDE.md`, the index of `reports/CLAUDE.md` and the map of stages by
+  role in `scripts/CLAUDE.md` name exactly what is there, and no stage hardcodes a data path.
 
 Standard library only: it reads the code, it does not import it.
 """
@@ -15,7 +17,9 @@ Standard library only: it reads the code, it does not import it.
 from __future__ import annotations
 
 import ast
+import fnmatch
 import re
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -203,6 +207,82 @@ class TestNoDeadCode(unittest.TestCase):
                         if bound not in used and bound not in exported:
                             unused.append(f"{path.relative_to(REPO).as_posix()}:{node.lineno} {bound}")
         self.assertEqual(unused, [])
+
+    def test_no_stage_hardcodes_a_data_path(self):
+        """Paths come from config.paths() or from arguments; docstrings may show examples."""
+        offenders = []
+        for path in sorted(SCRIPTS.glob("*.py")):
+            tree = parse(path)
+            docstrings = {id(node.body[0].value) for node in ast.walk(tree)
+                          if isinstance(node, (ast.Module, ast.FunctionDef, ast.ClassDef))
+                          and node.body and isinstance(node.body[0], ast.Expr)
+                          and isinstance(node.body[0].value, ast.Constant)}
+            for node in ast.walk(tree):
+                if (isinstance(node, ast.Constant) and isinstance(node.value, str)
+                        and id(node) not in docstrings
+                        and ("C:/Users" in node.value or "C:\\Users" in node.value)):
+                    offenders.append(f"{path.name}:{node.lineno}")
+        self.assertEqual(offenders, [])
+
+
+def tracked(prefix: str = "") -> list[str]:
+    """Tracked paths, relative to the repository, under an optional prefix."""
+    try:
+        out = subprocess.run(["git", "-C", str(REPO), "ls-files", "--", prefix or "."],
+                             capture_output=True, text=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        raise unittest.SkipTest("git is not available")
+    return out.splitlines()
+
+
+def children(prefix: str) -> set[str]:
+    """Entries directly under a folder: files by name, folders as 'name/'."""
+    names = set()
+    for path in tracked(prefix):
+        rest = path[len(prefix):]
+        head, sep, _ = rest.partition("/")
+        names.add(head + "/" if sep else head)
+    return names
+
+
+def fenced_block_after(text: str, heading: str) -> str:
+    """The first ``` block after a heading."""
+    after = text[text.index(heading):]
+    start = after.index("```") + 3
+    return after[start:after.index("```", start)]
+
+
+class TestFolderMaps(unittest.TestCase):
+    """The map in CLAUDE.md and the folder indexes are how an agent finds its way in."""
+
+    def test_the_repository_map_names_every_top_level_entry(self):
+        block = fenced_block_after((REPO / "CLAUDE.md").read_text(encoding="utf-8"), "## Repository map")
+        drawn = [m.group(1) for m in re.finditer(r"[├└]── (\S+)", block)]
+        patterns = [d.split("/")[0] + ("/" if "/" in d else "") for d in drawn]
+        entries = {e for e in children("") if not e.startswith(".")}
+        missing = sorted(e for e in entries if not any(fnmatch.fnmatch(e, p) for p in patterns))
+        stale = sorted(p for p in patterns if not any(fnmatch.fnmatch(e, p) for e in entries))
+        self.assertEqual(missing, [], "add these to the repository map in CLAUDE.md")
+        self.assertEqual(stale, [], "the repository map in CLAUDE.md names what is not there")
+
+    def test_the_reports_index_names_every_folder_once(self):
+        text = (REPO / "reports" / "CLAUDE.md").read_text(encoding="utf-8")
+        index = section(text, "## Index")
+        listed = [t for t in re.findall(r"`([^`]+)`", index)
+                  if "<" not in t and "/" not in t.rstrip("/")]
+        entries = children("reports/") - {"CLAUDE.md"}
+        self.assertEqual(sorted(t for t in set(listed) if listed.count(t) > 1), [],
+                         "a folder is listed twice in reports/CLAUDE.md")
+        self.assertEqual(sorted(entries - set(listed)), [],
+                         "add these folders to the index in reports/CLAUDE.md")
+        self.assertEqual(sorted(set(listed) - entries), [],
+                         "the index in reports/CLAUDE.md names folders that are not there")
+
+    def test_the_map_of_stages_by_role_names_every_stage_once(self):
+        block = fenced_block_after((SCRIPTS / "CLAUDE.md").read_text(encoding="utf-8"), "# scripts")
+        numbers = [int(n) for n in re.findall(r"(?<![\w.])(\d{2,3})(?![\w.])", block)]
+        self.assertEqual(sorted(n for n in set(numbers) if numbers.count(n) > 1), [])
+        self.assertEqual(sorted(numbers), sorted(stages()))
 
 
 if __name__ == "__main__":

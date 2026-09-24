@@ -22,11 +22,32 @@ several contain conclusions that later work corrected.
 | Know why something was decided, or when to reopen it | the table at the top of `docs/DECISIONI.md`, then that one section | the other sections |
 | Find the evidence behind a claim | the checkpoint or decision that makes it, then the report it cites | browsing `reports/` |
 | Bring back archived code | `docs/ARCHIVIO.md`: restore from the tag, with its test | rewriting it |
+| Write a recipe or change a setting | `configs/CLAUDE.md` | |
 | Write in `docs/` or `reports/` | `docs/CLAUDE.md` or `reports/CLAUDE.md` | |
 
-`src/vcc2026/`, `scripts/`, `reports/` and `docs/` each have a `CLAUDE.md` with the rules of
-that folder. Claude Code loads it when you read a file there; other agents read it before
-editing there.
+## Repository map
+
+```
+vcc2026/
+├── CLAUDE.md            this agreement, for every agent
+├── AGENTS.md            the pointer for Codex
+├── README.md            the task, the scoring and the setup, for people (in English)
+├── REPORT_2026-09-24_stato_e_interpretazioni.md   state and interpretations of 24 September
+├── requirements*.txt    dependencies; the venv lives in the data root
+├── configs/             paths and constants, the stage-45 trial, one recipe per submission
+├── src/vcc2026/         the library of the live stages, one module per concern
+├── scripts/             the numbered stages, and the wrappers py.cmd and vcc.cmd
+├── tests/               unittest suite; test_live_tree keeps these maps true
+├── notebooks/           the Colab dispatcher and its job scripts (docs/LAVORO.md §3)
+├── docs/                map, working guide, decisions, registry, archive, checkpoints
+└── reports/             the evidence, one folder per experiment
+C:/Users/ferra/vcc2026-data/   data, venv and artifacts, outside the repository (D-001)
+```
+
+`configs/`, `src/vcc2026/`, `scripts/`, `docs/` and `reports/` each have a `CLAUDE.md` with the
+index and the rules of that folder. Claude Code loads it when you read a file there; other
+agents read it before editing there. `tests/test_live_tree.py` fails if this map, or one of
+those indexes, stops matching the tree.
 
 ## What is live
 
