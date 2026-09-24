@@ -158,12 +158,12 @@ stata ancora messa alla prova.
 | L'α di trasferimento K562 → RPE1 è 0,1974, non 0,25: il valore precedente era il punto di griglia più vicino. MSE fuori campione 0,98991 del nullo, IC95 [0,98866, 0,99114]; a piena ampiezza 1,16228 | misura (CV annidata, 2.350 bersagli) | `reports/trial_2026-09-12/calibration_c002.json` |
 | Lo **shrinkage per gene è quasi inattivo**: `prior_sd` = 4 batte «nessuno shrinkage» di 0,00003 in MSE cross-validata. La compressione utile è tutta nell'ampiezza globale | misura | come sopra |
 | Una previsione completa a densità realistica pesa 2,08·10⁹ valori memorizzati, 5.789 per cellula: il **44% del tetto**, non il 90% che darebbe submettere il profilo medio | misura | `reports/trial_2026-09-12/resources.json` |
-| `vcc prep` carica l'intera matrice in memoria: 8,60 byte per valore memorizzato misurati, 22,19 GiB di picco per trial-00 secondo il modello della CLI stessa, contro 7,81 GiB totali di macchina. **`prep_memory_warning` non scatta su Windows** perché dimensiona contro `os.sysconf` | misura | [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.5 |
+| `vcc prep` carica l'intera matrice in memoria: 22,19 GiB di picco per trial-00 secondo il modello della CLI stessa, contro 7,81 GiB totali di macchina. **`prep_memory_warning` non scatta su Windows** perché dimensiona contro `os.sysconf` | misura | [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.5 |
 | Quel limite è di `vcc prep`, non del problema: convalidando e scrivendo a blocchi, trial-01 si impacchetta con **0,519 GiB di picco** contro i 33,49 del modello, sulla stessa macchina, con le stesse 24 convalide | misura | [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.1 |
 | Il payload del `.vcc` porta `X/data`, `X/indices` e `X/indptr` **identici bit a bit** all'input; l'unica trasformazione è l'indice di `obs`, sostituito con `'0'..'n-1'`, che è ciò che fa anche `vcc prep` | misura | come sopra, §3.3 |
 | La regola ufficiale «nessuna perturbazione tutta a zero» è **globale, non per contesto**: `vcc prep` accetta un bersaglio azzerato in un solo contesto | misura, sul comportamento di `prep` | come sopra, §3.5 |
 | Gli offset CSR di una sottomissione completa arrivano al 97% del tetto di int32: `SubmissionWriter` li scriveva in int32 e avrebbe avvolto in silenzio su una previsione un filo più densa | misura, difetto corretto | [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.6 |
-| Il generatore produce il 4–6% di geni rilevati in più dei controlli reali **anche a effetto previsto zero**, mentre i CV di libreria e di rilevazione coincidono. Il log2FC efficace mediano dopo calibrazione è 0,0246 (1,7%), il massimo su un gene 0,776 (1,71×) | misura | `reports/trial_2026-09-12/q01pilot_generation_diagnostics.json` |
+| Il generatore produce fra il **2,1% e il 6,3%** di geni rilevati in più dei controlli reali **anche a effetto previsto zero**, con mediana 4,1% (pilota) e 3,7% (run completo) sui 12+12 blocchi campionati — *corretto il 24 settembre: si leggeva «4–6%», la metà alta del range; la correzione del 15 (`fa0b1c6`) non era mai stata unita*, mentre i CV di libreria e di rilevazione coincidono. Il log2FC efficace mediano dopo calibrazione è 0,0246 (1,7%), il massimo su un gene 0,776 (1,71×) | misura | `reports/trial_2026-09-12/q01pilot_generation_diagnostics.json`, `reports/trial_2026-09-12/q01full_generation_diagnostics.json` |
 | Un contesto scambiato è rilevabile: somiglianza col proprio basale 0,999999 contro 0,888–0,928 fra basali diversi. La convalida di formato non se ne accorgerebbe | misura | `reports/trial_2026-09-12/q00full_validation.json` |
 | Su 160 bersagli casuali, K562 → RPE1, MSE/nullo di modular_frozen 0,976 e 0,974 contro 0,994 e 0,996 di ShrunkTransfer (due seed); RPE1 → K562 a α prefissato 1 tutti i bracci sopra 1; universo 6700/18533; picco RSS 0,47 GiB. Non è un punteggio VCC | misura | `reports/benchmark_2026-09-14/comparison_table.md`, [CP-0011](checkpoints/0011-primo-benchmark-modulare.md) |
 | Con tre contesti (K562, RPE1, HepG2) la differenza appaiata modular_frozen − ShrunkTransfer e **positiva in tutti e tre i fold** (+0,441 / +0,082 / +0,295, IC95 senza zero): il segno misurato in CP-0011 su due contesti si inverte. Universo 6477/18533; 2.315 bersagli condivisi dai tre contesti (JSON della singola esecuzione) | misura | `reports/benchmark_3ctx_2026-09-14/summary.json`, [CP-0013](checkpoints/0013-hepg2-terzo-contesto.md) |
@@ -243,7 +243,7 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
     coppia sorgente-destinazione; una sorgente di lignaggio vicino potrebbe darne uno
     molto diverso, ed è il primo controllo da fare quando CD4 sarà ingerito.
 12. **Se l'artefatto del generatore superi il segnale che iniettiamo.** Misurato: le
-    cellule generate rilevano il 4–6% di geni in più dei controlli reali anche a
+    cellule generate rilevano il 2,1–6,3% di geni in più dei controlli reali anche a
     effetto previsto zero, e il log2FC efficace mediano dopo calibrazione è 1,7%.
     Sono quantità diverse e dello stesso ordine; quale domini le quattro metriche DE
     dipende da come lo scorer aggrega, e non è stato misurato. È la ragione principale
@@ -257,8 +257,14 @@ Queste sono le incertezze che contano. Nessuna è stata risolta.
     decisione esplicita del proprietario.
 14. **Quanto costi davvero `vcc prep` su una macchina adeguata.** Il picco di 22–33 GiB
     viene dal modello di dimensionamento della CLI, non da un'esecuzione nostra: la
-    misura che abbiamo è il costo di lettura di anndata, 8,60 byte per valore
-    memorizzato. Il numero va confermato la prima volta che `prep` gira per davvero.
+    misura che abbiamo dovrebbe essere il costo di lettura di anndata, 8,60 byte per
+    valore memorizzato, ma quel numero non compare in nessun file di `reports/`
+    (verificato il 15 settembre e di nuovo il 24). L'unico valore registrato è
+    `scipy_bytes_per_nnz: 8` in `reports/trial_2026-09-12/q00prep_validation.json`: la
+    costante assunta dal modello della CLI, non una nostra misura. L'8,60 resta leggibile in
+    [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.5, che non si riscrive,
+    e va trattato come non tracciabile finché non lo si rimisura. Il numero va confermato la
+    prima volta che `prep` gira per davvero.
 15. **Se la decomposizione modulare convenga.** Misurato un proxy su 160 bersagli
     K562/RPE1 ([CP-0011](checkpoints/0011-primo-benchmark-modulare.md)): nella sola
     direzione K562 → RPE1 la base congelata ha un MSE/nullo un po' più basso di
