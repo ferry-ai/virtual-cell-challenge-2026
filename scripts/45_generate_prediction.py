@@ -70,9 +70,9 @@ from vcc2026.trials import load_trial, trial_ids
 DIAG_SAMPLE = 12
 
 
-def panel_targets(n: int | None) -> list[str]:
+def panel_targets(n: int | None, controls: Path) -> list[str]:
     """The official perturbation list, or its first `n` for a pilot."""
-    frame = pd.read_csv(config.paths().raw / "controls" / "pert_counts.csv")
+    frame = pd.read_csv(controls / "pert_counts.csv")
     perts = [str(g) for g in frame["target_gene"]]
     ch = config.challenge()
     if len(perts) != ch.n_perturbations:
@@ -115,6 +115,9 @@ def main() -> None:
     p.add_argument("--n-perts", type=int, default=None,
                    help="pilot only: use the first N official perturbations")
     p.add_argument("--contexts", default=None, help="default: A,B,C from the contract")
+    p.add_argument("--controls-dir", type=Path, default=None,
+                   help="folder with context_<CTX>.h5ad and pert_counts.csv "
+                        "(default: <data_root>/raw/controls; a new bundle goes in its own folder)")
     p.add_argument("--cells-per-pert", type=int, default=None)
     p.add_argument("--seed", type=int, default=None)
     p.add_argument("--overdispersion", type=float, default=None)
@@ -142,7 +145,8 @@ def main() -> None:
     contexts = tuple(
         args.contexts.split(",") if args.contexts else trial["contexts"]
     )
-    targets = panel_targets(args.n_perts)
+    controls = args.controls_dir or config.paths().raw / "controls"
+    targets = panel_targets(args.n_perts, controls)
     is_pilot = args.n_perts is not None or cells_per_pert != ch.cells_per_pert \
         or set(contexts) != set(ch.contexts_validation)
 
@@ -180,7 +184,7 @@ def main() -> None:
     t_basal = time.perf_counter()
     basals = {}
     for ctx in contexts:
-        path = config.paths().raw / "controls" / f"context_{ctx}.h5ad"
+        path = controls / f"context_{ctx}.h5ad"
         with h5py.File(path, "r") as f:
             var_names = f["var/_index/values"].asstr()[:]
         if list(var_names) != list(axis.symbols):

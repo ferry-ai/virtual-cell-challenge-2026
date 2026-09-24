@@ -80,6 +80,7 @@ def replogle_ntc(path: Path):
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--controls-dir", type=Path, default=DATA_ROOT / "raw/controls")
+    p.add_argument("--contexts", nargs="+", default=["A", "B", "C"])
     p.add_argument("--external", type=Path, default=DATA_ROOT / "external")
     p.add_argument("--coords", type=Path, default=DATA_ROOT / "external/annotation/gene_coordinates_gencode_v50.tsv")
     p.add_argument("--out", type=Path, required=True)
@@ -87,6 +88,8 @@ def main() -> None:
     if (args.out / "fingerprints.json").exists():
         raise FileExistsError(args.out / "fingerprints.json")
     args.out.mkdir(parents=True, exist_ok=True)
+
+    ctxs = tuple(args.contexts)
 
     # 1. assay
     axis = [r[0] for r in csv.reader(open(args.controls_dir / "gene_names.csv"))][1:]
@@ -101,7 +104,7 @@ def main() -> None:
 
     # 2. platform gap
     totals, n_cells = {}, {}
-    for c in "ABC":
+    for c in ctxs:
         g, t, n = context_totals(args.controls_dir / f"context_{c}.h5ad")
         totals[c], n_cells[c] = dict(zip(g, t)), n
         genes_abc, tot_abc = g, None
@@ -120,13 +123,13 @@ def main() -> None:
     log(f"platform: {platform['pearson_log2cpm']}")
 
     # 3. fingerprints
-    cpm = np.vstack([np.array([totals[c][g] for g in genes_abc]) for c in "ABC"])
+    cpm = np.vstack([np.array([totals[c][g] for g in genes_abc]) for c in ctxs])
     cpm = cpm / cpm.sum(1, keepdims=True) * 1e6
     pos = {g: i for i, g in enumerate(genes_abc)}
-    watch = {g: {c: round(float(cpm[i, pos[g]]), 2) for i, c in enumerate("ABC")} for g in WATCH if g in pos}
-    sex = {c: {g: round(float(cpm[i, pos[g]]), 2) for g in Y_GENES if g in pos} for i, c in enumerate("ABC")}
+    watch = {g: {c: round(float(cpm[i, pos[g]]), 2) for i, c in enumerate(ctxs)} for g in WATCH if g in pos}
+    sex = {c: {g: round(float(cpm[i, pos[g]]), 2) for g in Y_GENES if g in pos} for i, c in enumerate(ctxs)}
     zero_elsewhere = {}
-    for i, c in enumerate("ABC"):
+    for i, c in enumerate(ctxs):
         z = (cpm[i] == 0) & (np.delete(cpm, i, axis=0) >= 20).all(axis=0)
         zero_elsewhere[c] = sorted(genes_abc[z].tolist())
     coords = {}
@@ -144,13 +147,13 @@ def main() -> None:
     for a in dict.fromkeys(arm):
         m = arm == a
         if m.sum() >= 15:
-            arms[a] = {"n_genes": int(m.sum()), **{c: round(float(np.median(dev[i, m])), 3) for i, c in enumerate("ABC")}}
+            arms[a] = {"n_genes": int(m.sum()), **{c: round(float(np.median(dev[i, m])), 3) for i, c in enumerate(ctxs)}}
     distal10q = (chrom == "chr10") & (mb > 62)
     fingerprints = {
         "sex_y_linked_cpm": sex, "watch_genes_cpm": watch,
         "zero_here_expressed_elsewhere_ge20cpm": zero_elsewhere,
         "arm_median_log2_shift_vs_median_context": arms,
-        "chr10q_distal_gt62Mb": {c: round(float(np.median(dev[i, distal10q])), 3) for i, c in enumerate("ABC")},
+        "chr10q_distal_gt62Mb": {c: round(float(np.median(dev[i, distal10q])), 3) for i, c in enumerate(ctxs)},
         "genes_used_for_arms": int(keep.sum()),
     }
     payload = {"stage": "99_context_fingerprints", "written_utc": datetime.now(timezone.utc).isoformat(),

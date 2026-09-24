@@ -172,3 +172,41 @@ nuova ([CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md)).
 | Previsioni e pacchetti | `C:/Users/ferra/vcc2026-data/artifacts/<run>/` |
 | Codice, coda e log di Colab | `G:\Il mio Drive\vcc2026\` (`code/`, `runs/queue/`, `runs/jobs/`) |
 | Report, uno per esperimento | `reports/<tema>_<data>/`, ciascuno con una riga in [REGISTRO.md](REGISTRO.md) |
+
+## 7. Il set finale (22 ottobre)
+
+Il 22 ottobre arrivano tre contesti nuovi, D, E ed F, con i soli controlli, e 300 bersagli
+nuovi. Le sottomissioni chiudono il 5 novembre, e la classifica finale dipende solo da questo
+set. Il percorso è quello del §1, rieseguito su bersagli e contesti nuovi.
+
+**Già pronto (verificato il 24 settembre):**
+- lo stadio 45 accetta `--controls-dir` e `--contexts`. Due piloti su A, con e senza
+  l'opzione, danno matrici identiche;
+- lo stadio 99 accetta `--contexts`. Rieseguito su A/B/C riproduce identico
+  `reports/context_fingerprints_2026-09-22/fingerprints.json`, date a parte;
+- gli stadi 76, 83 e 85 accettano `--controls-dir` e `--contexts`;
+- gli stadi 97, 98, 100 e 102 accettano `--targets-csv`;
+- lo stadio 48 accetta `--genes` e `--perts`.
+
+**Il giorno del rilascio, in ordine:**
+1. Il bundle nuovo va in una cartella sua, per esempio `raw/controls_final/`: i controlli di
+   A/B/C non si toccano.
+2. Identità dei contesti: stadi 85 e 99 con `--controls-dir` e `--contexts D E F`.
+3. Sorgenti per i bersagli nuovi, con il `pert_counts.csv` del bundle come `--targets-csv`:
+   - K562 si legge dal bulk locale, che ha tutto il genoma;
+   - lo stadio 97 per CD4 ha letto 1,33 GiB in 880 s per 300 bersagli (CP-0028);
+   - lo stadio 102 per Orion legge per intero tutti i file, 109 per HCT116 e 223 per
+     HEK293T, qualunque sia il pannello: alcune ore per linea, da far girare di notte.
+4. Stadio 98 con le sorgenti nuove, poi stadio 100 con la ricetta scelta.
+5. Cellule con lo stadio 45 o 76 (`--controls-dir`, `--contexts D,E,F`), pacchetto con lo
+   stadio 48 (`--genes`, `--perts` del bundle), invio.
+
+**Da controllare quel giorno, perché oggi non si può sapere:**
+- **I contesti obbligatori.** Lo stadio 48 li prende dalla CLI `vcc` installata
+  (`prep.REQUIRED_CONTEXTS`, oggi A/B/C). Se gli organizzatori rilasciano una CLI nuova, va
+  installata prima di impacchettare.
+- **Il formato del bundle:** nomi dei file e colonne di `pert_counts.csv`.
+- **L'asse genico.** Gli stadi controllano che l'ordine dei geni coincida con
+  `gene_names.csv`, e si fermano se non coincide.
+- **Il disco.** Ogni candidato arriva a circa 13 GB di picco: generazione più
+  impacchettamento, misurati su t11, t14 e t15.
