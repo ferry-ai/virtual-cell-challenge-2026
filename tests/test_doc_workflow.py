@@ -185,6 +185,21 @@ class CheckerTests(unittest.TestCase):
         self.assertEqual(len(errors), 1, errors)
         self.assertIn('docs/two.md', errors[0])
 
+    def test_a_gitignored_artifact_counts_as_present_only_with_its_manifest(self):
+        """D-001 keeps data out of the repo: a clone has the manifest, never the .h5ad."""
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root, True)
+        (root / 'reports' / 'pilot').mkdir(parents=True)
+        (root / '.gitignore').write_text('*.h5ad\n*.py[cod]\n', encoding='utf-8')
+        (root / 'reports' / 'pilot' / 'cd4_64.manifest.json').write_text('{}', encoding='utf-8')
+        with patch.object(check_docs, 'REPO_ROOT', root):
+            # vouched for by the manifest beside it
+            self.assertTrue(check_docs.path_exists('reports/pilot/cd4_64.h5ad'))
+            # no manifest: still the broken path this check exists to catch
+            self.assertFalse(check_docs.path_exists('reports/pilot/other.h5ad'))
+            # a suffix .gitignore does not exclude gets no exemption at all
+            self.assertFalse(check_docs.path_exists('reports/pilot/cd4_64.json'))
+
     def test_an_archived_path_counts_as_existing(self):
         """A path listed in ARCHIVIO.md was moved into a tag, not lost.
 
