@@ -42,7 +42,7 @@ produrre un invio in poche ore.
 | F3 | Motore di valutazione C/T/J e basi di confronto (nullo, risposta comune, trasferimento, modello lineare con embedding dei geni) | codex, run `20260926-001005-v2-f3-ctj`: fermato dopo 3 min per quota ChatGPT esaurita, ha lasciato un `ctj.py` parziale non applicato; il prosieguo lo fa Claude | in corso | patch rivista e test |
 | F4 | Modulo cis e pesi per contesto nel modello d'invio | Claude | cis fatto (t20) | t20 registrato |
 | F5 | Descrittori dei bersagli nuovi: STRING, CORUM, GO, reti TF con segno, embedding di proteine | libero | serve il via ai download | tabelle sull'asse ufficiale |
-| F6 | Contesti: stato dai controlli (p53, IFN, ciclo, linea) e somiglianza con le sorgenti | libero | aperto | pesi per contesto provati sul banco |
+| F6 | Contesti: stato dai controlli (p53, IFN, ciclo, linea) e somiglianza con le sorgenti | Claude (H6 su Mixscale) | somiglianza basale intera: non predice il trasferimento e pesarla peggiora ([report](../../reports/contesti_2026-09-26/RISULTATI.md)); restano aperte somiglianze per programma o per bersaglio | pesi per contesto provati sul banco |
 | F7 | Calcolo in cloud: ambiente, dati, esecuzione di F2 e degli addestramenti | ingegneri | serve l'autorizzazione | ambiente riproducibile |
 | F8 | Prova generale del 22 ottobre: 300 bersagli finti e contesti tenuti fuori, dall'input al .vcc | libero | dopo F1-F3 | tempo e copertura misurati |
 
