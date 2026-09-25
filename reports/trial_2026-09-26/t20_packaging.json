@@ -1,0 +1,213 @@
+{
+  "run_id": "t20pack",
+  "stage": "48_package_prediction",
+  "input": {
+    "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t20gen\\prediction.h5ad",
+    "sha256": "0161c2f801aed651fb42fe9c5c276c4fabd14a8b92785490830b8291b34fcb58",
+    "bytes": 4254151727,
+    "hash_seconds": 30.212614099960774
+  },
+  "layout": {
+    "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t20gen\\prediction.h5ad",
+    "n_obs": 360000,
+    "n_vars": 18533,
+    "nnz": 2164139522,
+    "data_dtype": "float32",
+    "indices_dtype": "int32",
+    "indptr_dtype": "int64",
+    "data_chunks": [
+      1048576
+    ],
+    "data_compression": "gzip",
+    "data_compression_opts": 4,
+    "indices_chunks": [
+      1048576
+    ],
+    "indices_compression": "gzip",
+    "indices_compression_opts": 4,
+    "obs_columns": [
+      "context",
+      "target_gene"
+    ],
+    "var_index_name": "_index",
+    "droppable_present": [],
+    "file_bytes": 4254151727
+  },
+  "official_cli_version": "0.2.0",
+  "official_prep_peak_gib_model": 33.44198706671595,
+  "transformations": [
+    "obs index replaced with '0'..'n-1' (official prep rebuilds obs with a positional index; the original cell names are not carried into a .vcc)",
+    "obs reduced to the perturbation column and the context column, in that order, written through anndata's own DataFrame writer",
+    "var reduced to the gene index, with no columns",
+    "layers, obsm, varm, obsp, varp, uns and raw dropped (official prep drops them too, and reports them)",
+    "X datasets copied verbatim, preserving dtype and HDF5 filters. Official prep rewrites them contiguous and unfiltered; the decoded arrays are identical either way"
+  ],
+  "resources_before": {
+    "ram_total_bytes": 8384401408,
+    "ram_available_bytes": 687046656,
+    "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t20pack",
+    "disk_total_bytes": 510342983680,
+    "disk_free_bytes": 202700263424,
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 7.808582305908203,
+    "ram_available_gib": 0.639862060546875,
+    "disk_free_gib": 188.7793312072754
+  },
+  "uploaded": false,
+  "note": "Local validation, packaging and verification only. Nothing was uploaded, no submission quota was consumed, and no server has accepted this artifact.",
+  "package": {
+    "input_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t20gen\\prediction.h5ad",
+    "output_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t20pack\\prediction.vcc",
+    "payload_bytes": 4251202583,
+    "archive_bytes": 4198850560,
+    "nnz": 2164139522,
+    "n_obs": 360000,
+    "n_vars": 18533,
+    "meta": {
+      "schema": 1,
+      "nnz": 2164139522,
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "cli_version": "0.2.0"
+    },
+    "transformations": [
+      "obs index replaced with '0'..'n-1' (official prep rebuilds obs with a positional index; the original cell names are not carried into a .vcc)",
+      "obs reduced to the perturbation column and the context column, in that order, written through anndata's own DataFrame writer",
+      "var reduced to the gene index, with no columns",
+      "layers, obsm, varm, obsp, varp, uns and raw dropped (official prep drops them too, and reports them)",
+      "X datasets copied verbatim, preserving dtype and HDF5 filters. Official prep rewrites them contiguous and unfiltered; the decoded arrays are identical either way"
+    ],
+    "seconds": 1188.3110665000277,
+    "peak_rss_bytes": 616783872,
+    "peak_disk_bytes": 8450049927,
+    "validation": {
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "nnz": 2164139522,
+      "min_value": 0.0,
+      "max_value": 7699.0,
+      "all_integer": true,
+      "n_nonfinite": 0,
+      "max_counts_per_cell_observed": 53079.0,
+      "cells_per_context": {
+        "A": 120000,
+        "B": 120000,
+        "C": 120000
+      },
+      "n_targets_per_context": {
+        "A": 300,
+        "B": 300,
+        "C": 300
+      },
+      "empty_perturbations": [],
+      "csr_checks": {
+        "indptr_length_is_n_obs_plus_1": true,
+        "indptr_starts_at_zero": true,
+        "indptr_non_negative": true,
+        "indptr_monotonic": true,
+        "indptr_end_matches_data_length": true,
+        "data_and_indices_same_length": true,
+        "nnz_representable_in_indptr_dtype": true,
+        "n_vars_representable_in_indices_dtype": true
+      },
+      "checks": {
+        "var_names_unique": true,
+        "gene_order_matches_list": true,
+        "gene_dim_matches_expected": true,
+        "has_cells": true,
+        "cell_dim_within_cap": true,
+        "pert_column_present": true,
+        "no_control_rows": true,
+        "contexts_complete": true,
+        "targets_match_official_list": true,
+        "density_within_cap": true,
+        "column_indices_in_range": true,
+        "counts_finite": true,
+        "counts_non_negative": true,
+        "counts_are_whole_numbers": true,
+        "max_counts_per_cell_within_cap": true,
+        "no_all_zero_perturbation": true
+      },
+      "failures": [],
+      "notes": [],
+      "seconds": 189.40310300001875,
+      "peak_rss_bytes": 616783872,
+      "layout": {
+        "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t20gen\\prediction.h5ad",
+        "n_obs": 360000,
+        "n_vars": 18533,
+        "nnz": 2164139522,
+        "data_dtype": "float32",
+        "indices_dtype": "int32",
+        "indptr_dtype": "int64",
+        "data_chunks": [
+          1048576
+        ],
+        "data_compression": "gzip",
+        "data_compression_opts": 4,
+        "indices_chunks": [
+          1048576
+        ],
+        "indices_compression": "gzip",
+        "indices_compression_opts": 4,
+        "obs_columns": [
+          "context",
+          "target_gene"
+        ],
+        "var_index_name": "_index",
+        "droppable_present": [],
+        "file_bytes": 4254151727
+      },
+      "ok": true
+    }
+  },
+  "verification": {
+    "official_container_validator": "passed",
+    "meta_from_archive": {
+      "cli_version": "0.2.0",
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "nnz": 2164139522,
+      "schema": 1
+    },
+    "nnz_from_archive": 2164139522,
+    "payload_vs_input": {
+      "matches_input": true,
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "nnz": 2164139522,
+      "x_arrays_bit_identical": true,
+      "obs_index_rewritten": true,
+      "compared": [
+        "X.data (bitwise)",
+        "X.indices (bitwise)",
+        "X.indptr (bitwise)",
+        "X dtypes",
+        "var index",
+        "obs['target_gene']",
+        "obs['context']",
+        "obs index is positional"
+      ]
+    },
+    "archive_sha256": "e80e135af44f8b8ca8a8ea18b9ae624ab8f0cdbe221bbd742716ed67d638a16b",
+    "archive_bytes": 4198850560
+  },
+  "resources_after": {
+    "ram_total_bytes": 8384401408,
+    "ram_available_bytes": 1263652864,
+    "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t20pack",
+    "disk_total_bytes": 510342983680,
+    "disk_free_bytes": 205293645824,
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 7.808582305908203,
+    "ram_available_gib": 1.1768684387207031,
+    "disk_free_gib": 191.19460678100586
+  },
+  "peak_rss_bytes": 616783872,
+  "total_seconds": 1547.8022481000517,
+  "exit_code": 0
+}

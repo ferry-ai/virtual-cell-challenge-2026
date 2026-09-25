@@ -1,7 +1,7 @@
 # R-V2 — il modello per il set finale, costruito adesso
 
 - **Stato:** in corso.
-- **Aggiornato:** 26 settembre 2026, 00:20 (ora italiana).
+- **Aggiornato:** 26 settembre 2026, 00:50 (ora italiana).
 - **Assegnazione:** regia e filoni F1, F2 e F4: Claude (app, sessione `f4f38e58`), dal
   26/09 alle 00:20. Filone F3: codex via agent hub, lancio annotato qui sotto. Gli altri
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.
@@ -37,7 +37,7 @@ produrre un invio in poche ore.
 
 | ID | Filone | Chi | Stato | Consegna |
 |---|---|---|---|---|
-| F1 | Cache "universo": effetti di **tutti** i bersagli di ogni sorgente locale (K562 genome-wide, HepG2), non solo dei 300 | Claude | in corso | cache nuova nella radice dati, report con copertura |
+| F1 | Cache "universo": effetti di **tutti** i bersagli di ogni sorgente, non solo dei 300 | Claude | K562 fatto (9.866 bersagli, [report](../../reports/universo_2026-09-26/RISULTATI.md)); CD4 e Orion aspettano il via ai download | cache nella radice dati, report con copertura |
 | F2 | Banco con lo scorer vero su un contesto pubblico tenuto fuori (HepG2 a cellule singole): i sei membri, non proxy | Claude; job Colab `046_bench_hepg2_v2` in coda su Drive dal 26/09 00:17, parte quando il proprietario avvia le celle 1–2 del notebook | in coda | report con ancore locali: t16/t19/t20 e ampiezze in forma solo-K562 |
 | F3 | Motore di valutazione C/T/J e basi di confronto (nullo, risposta comune, trasferimento, modello lineare con embedding dei geni) | codex, run `20260926-001005-v2-f3-ctj`: fermato dopo 3 min per quota ChatGPT esaurita, ha lasciato un `ctj.py` parziale non applicato; il prosieguo lo fa Claude | in corso | patch rivista e test |
 | F4 | Modulo cis e pesi per contesto nel modello d'invio | Claude | cis fatto (t20) | t20 registrato |
@@ -45,6 +45,17 @@ produrre un invio in poche ore.
 | F6 | Contesti: stato dai controlli (p53, IFN, ciclo, linea) e somiglianza con le sorgenti | libero | aperto | pesi per contesto provati sul banco |
 | F7 | Calcolo in cloud: ambiente, dati, esecuzione di F2 e degli addestramenti | ingegneri | serve l'autorizzazione | ambiente riproducibile |
 | F8 | Prova generale del 22 ottobre: 300 bersagli finti e contesti tenuti fuori, dall'input al .vcc | libero | dopo F1-F3 | tempo e copertura misurati |
+
+## Esiti della notte del 26 settembre
+
+- **Bersagli nuovi** ([report](../../reports/bersagli_nuovi_2026-09-26/RISULTATI.md)): per un
+  bersaglio che nessuna sorgente ha misurato, il modulo cis da solo dà 0,555–0,579 di PDS proxy
+  e 0,1 × STRING + cis fino a +0,035; lo stesso bersaglio misurato in K562 dà 0,711–0,755. Il
+  modello lineare con embedding dei geni non discrimina nemmeno in campione.
+- **Priorità che ne segue:** la copertura. Estrarre tutti i bersagli delle sorgenti genome-scale
+  (CD4: file pseudobulk di 44,6 GB su S3 pubblico; Orion HCT116 e HEK293T: 109 e 223 file in
+  streaming, accumulatori troppo grandi per il portatile) vale più di qualunque modello per
+  bersagli senza misure. Poi cis + associazione per quelli che restano scoperti.
 
 ## Che cosa serve dal proprietario
 
