@@ -1,7 +1,7 @@
 # S-INVII — validazione e set finale
 
-- **Stato:** in attesa del via del proprietario: t18 e t19 registrati, generati e impacchettati.
-- **Aggiornato:** 25 settembre 2026, 05:10 (ora italiana).
+- **Stato:** in corso: invio del t20 autorizzato dal proprietario il 26/09 alle 00:58; t18 e t19 non inviati.
+- **Aggiornato:** 26 settembre 2026, 01:00 (ora italiana).
 - **Assegnazione:** lettura di t16/t17 (fatta), t18 e candidato successivo: Claude (app,
   sessione `f4f38e58`), 25/09. Non assumere che lo slot sia libero.
 - **Scopo:** mantenere visibili le scadenze e le prove operative mentre procede la ricerca.
@@ -16,16 +16,19 @@
   (`reports/prediction_t18_2026-09-25/prediction.json`), impacchettato alle 02:25 UTC.
 - **t19** = t16 con gli effetti ristretti (k 4) a 1,576: registrato alle 01:37 UTC
   (`reports/prediction_t19_2026-09-25/prediction.json`), impacchettato alle 03:05 UTC.
-- Entrambi aspettano il via del proprietario per la quota del 26 (00:05 UTC). Una catena d'invio
-  pronta ma non avviata sta nello scratchpad della sessione `f4f38e58` (`submit_chain2.py`).
+- **t20** = t19 + modulo cis CRISPRi: registrato alle 22:04 UTC del 25
+  (`reports/prediction_t20_2026-09-26/prediction.json`), impacchettato alle 22:55 UTC.
+- Il proprietario ha scelto di inviare **solo il t20** con la quota del 26 (00:05 UTC):
+  [autorizzazioni](../../reports/trial_2026-09-22/autorizzazioni.md). La catena `submit_chain3.py` è partita alle
+  22:58 UTC e aspetta la quota. Senza il t19, la regola registrata legge t20 − t16, che somma
+  restrizione e modulo cis senza separarli.
 
 ## Prossima azione
 
-Chiedere al proprietario il via per l'invio di t18 e t19 con la quota del 26; senza il via
-non parte nulla. Dopo i punteggi, salvare subito lo stato di ciascuno (LAVORO §2, punto 6)
-e leggerli con le regole registrate. [PROGETTO](../PROGETTO.md) §0 conserva lo stato e i punteggi; [LAVORO](../LAVORO.md)
-§2 conserva procedura e autorizzazioni. Questa scheda non invia, non pianifica automazioni e non
-cambia le preregistrazioni.
+Il t20 parte con la quota del 26. Appena il punteggio arriva: salvare subito lo stato (la catena
+lo fa), confrontarlo con la regola registrata (t20 − t16 in assenza del t19), scrivere il
+checkpoint e aggiornare PROGETTO §0. [LAVORO](../LAVORO.md) §2 conserva procedura e
+autorizzazioni. Questa scheda non invia e non cambia le preregistrazioni.
 
 | Ordine | Lavoro aperto | Dipendenza / risultato atteso |
 |---|---|---|

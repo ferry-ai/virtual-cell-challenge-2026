@@ -137,3 +137,12 @@ spostati nel Cestino con lo stesso mandato: `artifacts/t16gen/` (4.256.411.261 b
 (4.201.667.279). Si rigenerano con gli stadi 100, 45 e 48 dalle ricette `configs/recipes/t16.json`
 e `t17.json`. Prima dello spostamento C: aveva già 215,5 GB liberi, per interventi del
 proprietario non registrati qui; il Cestino contiene ora 15,75 GB.
+
+## Invio del 26 settembre
+
+Il proprietario, in chat verso le 00:58 del 26 settembre (ora italiana), dopo la proposta di
+inviare t19 e t20: «direi solo t20». Via all'invio del **solo t20** con la quota del 26
+(apertura alle 00:05 UTC). t18 e t19, registrati e impacchettati il 25, non vengono inviati.
+La catena d'invio (`submit_chain3.py t20=trial_2026-09-26`, nella cartella di lavoro della
+sessione `f4f38e58`) è partita alle 22:58 UTC del 25 e aspetta l'apertura della quota; controlla
+lo sha256 dell'archivio (`e80e135a…a16b`) prima di caricarlo.
