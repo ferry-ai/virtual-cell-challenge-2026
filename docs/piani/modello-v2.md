@@ -61,6 +61,16 @@ produrre un invio in poche ore.
   cis; identico bit per bit sui 300 bersagli di oggi, provato con una ricetta solo-K562 (13 dei
   28 bersagli scoperti hanno partner).
 
+## Domanda strategica aperta
+
+Le squadre in testa hanno PDS 0,82–0,87 con mse 0,6–0,85, molto oltre quello che il trasferimento
+da linee diverse ci ha dato finora. Una spiegazione possibile (**ipotesi**, non verificata) è
+l'uso di dati pubblici della **stessa linea** dei contesti, dopo averla identificata. Per D/E/F
+significherebbe: identificare le tre linee dai controlli (lo stadio 99 fa impronte genetiche),
+cercare Perturb-seq pubblici di quelle linee, trattarli come sorgenti. La regola del proprietario
+ammette dati della stessa linea solo come esperimento dichiarato, con le identità fuori dal
+repository pubblico: serve la sua decisione su se e come farlo.
+
 ## Che cosa serve dal proprietario
 
 - Login di claude2 sull'account 2 e di grok: `hub.py doctor` del 26/09 alle 00:10 dà
