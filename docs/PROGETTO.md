@@ -11,13 +11,13 @@ Aggiornata il 2026-09-23 con la pulizia di D-040:
   `archivio/pre-pulizia-2026-09-23`;
 - §1, §3 e §4 sono invariati, salvo le voci 7 e 20 del §4.
 
-Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 24 settembre, con il t15
-([CP-0033](checkpoints/0033-t15-ampiezza-doppia.md)).
+Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 25 settembre, con t16 e t17
+([CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md), [CP-0038](checkpoints/0038-t17-hek293t-non-attribuibile.md)).
 
-## 0. Oggi — 24 settembre 2026
+## 0. Oggi — 25 settembre 2026
 
-**Il migliore è il t15: +0,107533, rango 436**, il primo invio sopra 0,1
-([CP-0033](checkpoints/0033-t15-ampiezza-doppia.md)). Il set finale arriva il 22 ottobre:
+**Il migliore è il t16: +0,137627, rango 336**: la ricetta del t15 con l'ampiezza raddoppiata
+a 0,788 ([CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md)). Il set finale arriva il 22 ottobre:
 - tre contesti nuovi (D, E, F) e 300 perturbazioni nuove;
 - le sottomissioni chiudono il 5 novembre (§1).
 
@@ -33,37 +33,45 @@ Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 24 settembre, con il
 | t10 | il t08 senza CD4 | trial-01 | +0,050191 | 570 | [CP-0030](checkpoints/0030-t10-attribuzione-cd4.md) |
 | t11 | il t08 + Orion HCT116, le tre sorgenti a pesi uguali | trial-01 | +0,070777 | 560 | [CP-0031](checkpoints/0031-t11-punteggio-orion.md) |
 | t14 | effetti del t08 × 2,5 | `ControlModel` | +0,064892 | 564 | [CP-0032](checkpoints/0032-t14-controlmodel-fedelta.md) |
-| **t15** | il t11 con ampiezza 0,394 invece di 0,197 | trial-01 | **+0,107533** | 436 | [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md) |
+| t15 | il t11 con ampiezza 0,394 invece di 0,197 | trial-01 | +0,107533 | 436 | [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md) |
+| **t16** | il t15 con ampiezza 0,788 | trial-01 | **+0,137627** | 336 | [CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md) |
+| t17 | il t15 + Orion HEK293T, ampiezza 0,4285 (stesso q99 del t15) | trial-01 | +0,108774 | 448 | [CP-0038](checkpoints/0038-t17-hek293t-non-attribuibile.md) |
 
 In tutti gli invii:
 - lo scalato della `mse` vale 0 (tosato);
-- quello della fedeltà direzionale è negativo;
-- il membro che porta il punteggio è `pds_cosine` (+0,607 scalato nel t15).
+- quello della fedeltà direzionale è negativo (−0,032 nel t16, vicino alla linea di base);
+- il membro più grande è `pds_cosine` (+0,617 scalato nel t16), ma dal t15 al t16 il guadagno
+  è venuto quasi tutto dai membri DE.
 
-Le tabelle per membro stanno nei checkpoint citati.
+Le tabelle per membro stanno nei checkpoint citati. I grezzi del t16 sono derivati dagli
+scalati con le ancore: il 25 settembre `vcc status` serviva solo l'ultimo invio (CP-0037).
 
 ### Che cosa è in corso
 
-- **t16** = il t15 con ampiezza 0,788. Continua la curva dell'ampiezza (D-042).
-- **t17** = il t15 + Orion HEK293T. L'ampiezza è 0,4285: con quattro sorgenti la media smussa
-  gli estremi, e 0,4285 riporta il q99 mediano di |ln fc| a quello del t15 (0,229).
-- Per entrambi ricetta, previsione, regola di lettura e testi sono registrati prima della
-  generazione (`reports/prediction_t16_2026-09-24/`, `reports/prediction_t17_2026-09-24/`).
-  Sono generati e impacchettati: 360.000 cellule ciascuno, convalida a flusso superata
-  (`reports/trial_2026-09-24/t16_packaging.json`, `t17_packaging.json`). Il proprietario ha dato il via
-  agli invii: partono in sequenza dalle 00:05 UTC del 25, prima il t16 e poi il t17
-  (`reports/trial_2026-09-22/autorizzazioni.md`).
-- **t12** (HEK293T all'ampiezza 0,197) resta registrato ma non si genera: il t17 fa la stessa
-  domanda all'ampiezza buona.
-- **t09 e t13** non si generano: il t09 pagherebbe il silenzio (D-035), il t13 si è fermato
-  per la sua regola.
+- **t18** = il t16 con ampiezza 1,576: il passo che la regola del t16 prescrive. Ricetta,
+  previsione, regola di lettura e testi registrati il 25 settembre alle 01:30 UTC, prima della
+  generazione (`configs/recipes/t18.json`, `reports/prediction_t18_2026-09-25/`,
+  `reports/trial_2026-09-25/submission_texts.md`). L'invio aspetta il via del proprietario; la
+  quota successiva si apre alle 00:05 UTC del 26.
+- **Candidato per il secondo invio del 26:** effetti ristretti prima della media, da confrontare
+  col t16 a parità di geni rilevabili. Il banco è stato corretto dopo due revisioni
+  indipendenti ([CP-0039](checkpoints/0039-banco-varianti-restrizione.md)); nessuna ricetta registrata.
+- **t12, t09 e t13** non si generano: il t17 ha fatto la domanda del t12 all'ampiezza buona, il
+  t09 pagherebbe il silenzio (D-035), il t13 si è fermato per la sua regola.
 
 ### Che cosa guida le scelte
 
-- **Misurato.** Raddoppiare l'ampiezza (t11 → t15) vale +0,037, e migliorano tutti e cinque i
-  membri che contano: `pds_cosine` 0,739 → 0,774, fedeltà 0,458 → 0,477, `reach`, `nmae`,
-  Jaccard. Lo 0,197 minimizzava la MSE in pseudobulk, ma lo scalato della `mse` è tosato a 0
-  comunque. D-006 è superata da D-042 ([CP-0033](checkpoints/0033-t15-ampiezza-doppia.md)).
+- **Misurato.** Raddoppiare l'ampiezza vale +0,037 da t11 a t15 e +0,030 da t15 a t16. Nel
+  secondo passo `pds_cosine` sale appena (0,774 → 0,778), mentre fedeltà (0,477 → 0,503),
+  `nmae`, `reach` e Jaccard fanno insieme +0,171 scalato
+  ([CP-0033](checkpoints/0033-t15-ampiezza-doppia.md), [CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md)).
+  D-006 è superata da D-042.
+- **Misurato.** HEK293T come quarta sorgente a pesi uguali non si distingue dal t15
+  ([CP-0038](checkpoints/0038-t17-hek293t-non-attribuibile.md)).
+- **Misurato dagli organizzatori**, nelle note dello scorer installato: sul pannello val A ci
+  sono circa 340 geni DE per bersaglio in media, ma il 12–30% dei bersagli ne ha meno di 10; la
+  fedeltà conta il segno giusto anche sui geni che nel vero non sono significativi
+  ([CP-0039](checkpoints/0039-banco-varianti-restrizione.md)).
 - **Misurato.** Aggiungere sorgenti per lo stesso bersaglio alza `pds_cosine`:
   - CD4 porta +0,0102 dei +0,0144 del t08 ([CP-0030](checkpoints/0030-t10-attribuzione-cd4.md));
   - Orion HCT116 aggiunge +0,0104 nel t11, ma insieme sono cambiati i pesi
@@ -94,9 +102,10 @@ dal training sia i bersagli sia i contesti di test. Scelte, limiti e ordine del
 lavoro in [GENERALIZZAZIONE.md](GENERALIZZAZIONE.md), registrati in
 [CP-0036](checkpoints/0036-generalizzazione-bersagli-contesti.md).
 
-**Pipeline degli invii:** lettura t16/t17, curva dell'ampiezza, ablazione dei pesi
-e preparazione del set finale sono mantenute nella [scheda S-INVII](piani/invii-finale.md),
-con le dipendenze da CP-0033, D-042 e dai risultati ufficiali.
+**Pipeline degli invii:** curva dell'ampiezza (t18), candidato con effetti ristretti,
+ablazione dei pesi e preparazione del set finale sono mantenute nella
+[scheda S-INVII](piani/invii-finale.md), con le dipendenze da CP-0037, CP-0039, D-042 e dai
+risultati ufficiali.
 
 Ogni invio consuma quota e passa dall'autorizzazione del proprietario.
 Il successo del trasferimento dello stesso bersaglio non dimostra generalizzazione

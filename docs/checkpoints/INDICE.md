@@ -58,3 +58,6 @@ aggiunge da sé la riga qui sotto.
 | [0034](0034-audit-segni-e-ampiezza.md) | 2026-09-24 | Audit dei segni, del confronto t17 e della preparazione al set finale | osservazione | — |
 | [0035](0035-dld1-mixscale-audit.md) | 2026-09-24 | DLD-1 e Mixscale: copertura misurata e primi confronti fra contesti | osservazione | [0036](0036-generalizzazione-bersagli-contesti.md), §7: la copertura dei bersagli attuali non è un criterio di ammissione alla ricerca; confronto fra linee distinto da generalizzazione a bersagli nuovi |
 | [0036](0036-generalizzazione-bersagli-contesti.md) | 2026-09-24 | La ricerca valuta bersagli e contesti nuovi senza richiedere overlap col pannello | cambio-di-strategia | — |
+| [0037](0037-t16-ampiezza-quadrupla.md) | 2026-09-25 | Il t16 in classifica: +0,138, nuovo migliore; raddoppiare ancora l'ampiezza migliora soprattutto i membri DE | esperimento | — |
+| [0038](0038-t17-hek293t-non-attribuibile.md) | 2026-09-25 | Il t17 in classifica: +0,109, pari al t15; HEK293T a pesi uguali non è attribuibile | esperimento | — |
+| [0039](0039-banco-varianti-restrizione.md) | 2026-09-25 | Banco a sorgente esclusa: gli effetti ristretti aiutano il PDS proxy, ma meno di quanto scritto prima della revisione | osservazione | — |

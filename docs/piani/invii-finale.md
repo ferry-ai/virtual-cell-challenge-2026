@@ -1,31 +1,42 @@
 # S-INVII — validazione e set finale
 
-- **Stato:** in attesa dei risultati delle prove preparate e delle dipendenze sotto.
-- **Aggiornato:** 25 settembre 2026, 00:45 (ora italiana). La catena di invio del 24
-  (`submit_chain.py`, processo vivo alle 00:12) invia il t16 dalle 00:05 UTC e poi il t17.
-- **Assegnazione:** lettura di t16/t17 e preparazione del candidato successivo: Claude (app,
+- **Stato:** in corso: t18 registrato, in generazione; secondo candidato in valutazione.
+- **Aggiornato:** 25 settembre 2026, 03:35 (ora italiana).
+- **Assegnazione:** lettura di t16/t17 (fatta), t18 e candidato successivo: Claude (app,
   sessione `f4f38e58`), 25/09. Non assumere che lo slot sia libero.
+
+## Esiti del 25 settembre
+
+- **t16** +0,137627, rango 336, nuovo migliore; regola: la curva sale, il prossimo passo è
+  l'ampiezza 1,576 ([CP-0037](../checkpoints/0037-t16-ampiezza-quadrupla.md)).
+- **t17** +0,108774: non attribuibile per la sua regola; HEK293T resta fuori dalla ricetta di
+  riferimento ([CP-0038](../checkpoints/0038-t17-hek293t-non-attribuibile.md)).
+- **t18** = t16 × 2 in ampiezza: registrato alle 01:30 UTC
+  (`reports/prediction_t18_2026-09-25/prediction.json`); l'invio aspetta il via del proprietario.
 - **Scopo:** mantenere visibili le scadenze e le prove operative mentre procede la ricerca.
 
 ## Prossima azione
 
-Verificare stato effettivo di t16/t17 con l'agente che li segue, poi leggere i
-risultati con le regole registrate. [PROGETTO](../PROGETTO.md) §0 conserva lo stato
-e i punteggi; [LAVORO](../LAVORO.md) §2 conserva procedura e autorizzazioni.
-Questa scheda non invia, non pianifica automazioni e non cambia le preregistrazioni.
+Generare e impacchettare il t18, poi chiedere al proprietario il via per l'invio del 26;
+registrare il secondo candidato solo se il confronto col t16 a parità di geni rilevabili lo
+giustifica. [PROGETTO](../PROGETTO.md) §0 conserva lo stato e i punteggi; [LAVORO](../LAVORO.md)
+§2 conserva procedura e autorizzazioni. Questa scheda non invia, non pianifica automazioni e non
+cambia le preregistrazioni.
 
 | Ordine | Lavoro aperto | Dipendenza / risultato atteso |
 |---|---|---|
-| 1 | Lettura t16 e t17 | Risultati ufficiali; confronto con le rispettive regole, con il limite causale del t17 |
-| 2 | Curva dell'ampiezza | Esito t16; registrare il prossimo confronto prima di generare |
+| 1 | Lettura t16 e t17 | **Fatta** il 25 settembre: CP-0037 e CP-0038 |
+| 2 | Curva dell'ampiezza | t18 (1,576) registrato; la sua regola decide il passo dopo |
 | 3 | Attribuzione dei pesi/sorgenti | Ablazione dei pesi t11 e sorgenti ad ampiezza scelta; isolare ciò che il confronto permette |
 | 4 | Set finale | Preparazione secondo LAVORO §7; nuovi controlli, assi e bersagli al rilascio previsto del 22 ottobre; chiusura invii il 5 novembre |
 
-**Candidato dal banco del 25 settembre** ([banco a sorgente esclusa](../../reports/banco_varianti_2026-09-25/RISULTATI.md)):
-effetti ristretti (grezzo × z²/(z² + 64)) al posto dei grezzi, ampiezza con la regola del q99,
-sulla ricetta migliore dopo t16/t17. Nei proxy batte il t15 in tutte e quattro le sorgenti
-escluse, anche con un modello del rumore del generatore; non è un punteggio VCC. Serve
-un'opzione nuova dello stadio 100. Il filtro dei bersagli difficili è stato respinto.
+**Candidato dal banco del 25 settembre**, corretto dopo due revisioni indipendenti
+([CP-0039](../checkpoints/0039-banco-varianti-restrizione.md)): effetti ristretti prima della
+media, sulla ricetta del t16. Il guadagno sul PDS proxy è +0,01…+0,04, non i +0,08…+0,12
+scritti prima della revisione, e a parità di ampiezza gli effetti ristretti muovono molti meno
+geni: il confronto va fatto col t16 a parità di geni rilevabili. Lo stadio 100 supporta
+`"effect": "zshrink"` con `"shrink_k"` e ricostruisce `cd4_mix` dalle condizioni. Il filtro
+dei bersagli difficili è stato respinto.
 
 ## Criterio di chiusura per ciascuna prova
 

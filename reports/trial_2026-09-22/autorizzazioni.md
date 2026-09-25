@@ -130,3 +130,10 @@ Dopo il punteggio del t17 sono candidati anche `t16gen`, `t16pack`, `t17gen` e `
 (circa 16 GB), che la catena di invio usa fino ad allora.
 
 Alle 00:45 il Cestino risultava vuoto e C: aveva 10,74 GB liberi (erano 5,56).
+
+Alle 03:24 del 25 settembre, dopo i punteggi di t16 e t17 (md5 verificato dal server per entrambi),
+spostati nel Cestino con lo stesso mandato: `artifacts/t16gen/` (4.256.411.261 byte),
+`artifacts/t16pack/` (4.200.858.319), `artifacts/t17gen/` (4.257.219.764) e `artifacts/t17pack/`
+(4.201.667.279). Si rigenerano con gli stadi 100, 45 e 48 dalle ricette `configs/recipes/t16.json`
+e `t17.json`. Prima dello spostamento C: aveva già 215,5 GB liberi, per interventi del
+proprietario non registrati qui; il Cestino contiene ora 15,75 GB.

@@ -1,0 +1,80 @@
+{
+ "written_utc": "2026-09-25T01:25:40.565677+00:00",
+ "entry_id": "4su3dF6Up12QhdCfnNgE",
+ "score_avg": 0.10877413482007732,
+ "rank": 448,
+ "registered_band": [
+  0.095,
+  0.125
+ ],
+ "inside_band": true,
+ "t17_minus_t15": 0.0012409799666082688,
+ "registered_t17_minus_t15_band": [
+  -0.01,
+  0.015
+ ],
+ "reading_rule_outcome": "otherwise: inconclusive; do not attribute",
+ "member_expectations_registered": {
+  "score_avg_band": [
+   0.095,
+   0.125
+  ],
+  "t17_minus_t15_band": [
+   -0.01,
+   0.015
+  ],
+  "pds_raw": "0.76-0.79 (t15 0.774)",
+  "fid_raw": "about 0.47-0.49"
+ },
+ "raw": {
+  "pds_cosine": {
+   "t15": 0.774314381270903,
+   "t17": 0.7700037160906726,
+   "t17_minus_t15": -0.0043106651802303775
+  },
+  "de_wilcoxon_lfc_nmae": {
+   "t15": 0.950307485901456,
+   "t17": 0.9485113122352102,
+   "t17_minus_t15": -0.0017961736662457373
+  },
+  "de_wilcoxon_direction_fidelity_yield_raw": {
+   "t15": 0.4768832524924183,
+   "t17": 0.4752469241299883,
+   "t17_minus_t15": -0.0016363283624299951
+  },
+  "de_wilcoxon_direction_reach_raw": {
+   "t15": 0.138934620114771,
+   "t17": 0.15700324654759973,
+   "t17_minus_t15": 0.01806862643282872
+  },
+  "de_wilcoxon_sig_jaccard": {
+   "t15": 0.03249368953433629,
+   "t17": 0.03235148891002185,
+   "t17_minus_t15": -0.00014220062431444247
+  },
+  "expr_mse_unbiased_capped_norm": {
+   "t15": 1.5794312874980363,
+   "t17": 1.5021517492639624,
+   "t17_minus_t15": -0.07727953823407385
+  }
+ },
+ "scaled_published": {
+  "t15": {
+   "score_pds": 0.6074958151082303,
+   "score_nmae": 0.08395497753194558,
+   "score_fid": -0.11940194607177719,
+   "score_reach": 0.06742817326570029,
+   "score_jac": 0.005721909286715448,
+   "score_mse": 0
+  },
+  "t17": {
+   "score_pds": 0.5971125693389602,
+   "score_nmae": 0.0869434815777359,
+   "score_fid": -0.12484645396194562,
+   "score_reach": 0.08816140778919267,
+   "score_jac": 0.0052738041765207815,
+   "score_mse": 0
+  }
+ },
+ "caveat": "R-016 in docs/REGISTRO.md: matching the median q99 does not match per-target amplitude."
+}

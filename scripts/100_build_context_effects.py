@@ -46,7 +46,7 @@ from vcc2026 import config  # noqa: E402
 from vcc2026.bench import log  # noqa: E402
 from vcc2026.genes import official_axis  # noqa: E402
 from vcc2026.manifest import text_sha256  # noqa: E402
-from vcc2026.multisource import AxisTable, mix, z_shrink  # noqa: E402
+from vcc2026.multisource import AxisTable, mix, zshrink_mixture, zshrink_table  # noqa: E402
 
 DATA_ROOT = config.paths().data_root  # VCC2026_DATA_ROOT, else configs/config.yaml
 EFFECTS = ("shrunk", "raw", "zshrink")
@@ -54,18 +54,25 @@ EFFECTS = ("shrunk", "raw", "zshrink")
 
 def load_table(cache: Path, name: str, effect: str = "shrunk", shrink_k: float | None = None) -> AxisTable:
     """A stage-98 source, with the effect `mix` reads: stage-98 ``shrunk``, ``raw``, or
-    ``zshrink`` recomputed from raw and SE at ``shrink_k``. Unmeasured pairs stay NaN."""
+    ``zshrink`` recomputed from raw and SE at ``shrink_k``. Unmeasured pairs stay NaN.
+
+    A mixture saved without SE (``cd4_mix``: meta ``from`` lists its parts) is rebuilt from
+    its parts under ``zshrink``, each shrunk with its own SE; any other source lacking a
+    finite SE on a measured pair is refused rather than turned into votes for zero."""
     z = np.load(cache / f"{name}.npz", allow_pickle=False)
+    meta = json.loads(str(z["meta"]))
+    tab = AxisTable(name, z["targets"].astype(str).tolist(), z["shrunk"], z["raw"], z["se"], z["n_cells"], meta)
     if effect == "raw":
-        main = z["raw"]
+        tab.shrunk = tab.raw
     elif effect == "zshrink":
         if shrink_k is None or not shrink_k > 0:
             raise ValueError(f"effect 'zshrink' needs a positive shrink_k, got {shrink_k!r}")
-        main = z_shrink(z["raw"], z["se"], k=float(shrink_k)).astype(np.float32)
-    else:
-        main = z["shrunk"]
-    return AxisTable(name, z["targets"].astype(str).tolist(), main, z["raw"], z["se"], z["n_cells"],
-                     json.loads(str(z["meta"])))
+        measured = np.isfinite(tab.raw)
+        if not np.isfinite(tab.se[measured]).any() and meta.get("from"):
+            parts = [load_table(cache, part, "raw") for part in meta["from"]]
+            return zshrink_mixture(name, parts, tab.targets, float(shrink_k))
+        tab = zshrink_table(tab, float(shrink_k))
+    return tab
 
 
 def main() -> None:

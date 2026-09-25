@@ -20,10 +20,11 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 **Submissions and official scores** — one `trial_<data>/` per upload day, one
 `prediction_t<NN>_<data>/` per registered prediction:
 `trial_2026-09-12/`, `trial_2026-09-13/`, `trial_2026-09-17/`, `trial_2026-09-19/`,
-`trial_2026-09-22/`, `trial_2026-09-23/`, `trial_2026-09-24/`, `prediction_t03_2026-09-17/`,
+`trial_2026-09-22/`, `trial_2026-09-23/`, `trial_2026-09-24/`, `trial_2026-09-25/`, `prediction_t03_2026-09-17/`,
 `prediction_t07_2026-09-19/`, `prediction_t08_2026-09-22/`, `prediction_t10_2026-09-23/`,
 `prediction_t11_2026-09-23/`, `prediction_t12_2026-09-23/`, `prediction_t14_2026-09-23/`,
-`prediction_t15_2026-09-23/`, `prediction_t16_2026-09-24/`, `prediction_t17_2026-09-24/`,
+`prediction_t15_2026-09-23/`, `prediction_t16_2026-09-24/`, `prediction_t17_2026-09-24/`, `prediction_t18_2026-09-25/`,
+`prediction_t19_2026-09-25/`,
 `trial02_decision_2026-09-17/`, `anchors_2026-09-17/` (the official anchors),
 `scorer/`, `scorer_2026-09-12/` (the scorer contract), `leaderboard_2026-09-16/`.
 

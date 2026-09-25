@@ -1,0 +1,37 @@
+{
+  "written_utc": "2026-09-25T01:30:08.220237+00:00",
+  "label": "t18 = t16 with amplitude 1.576 (2 x 0.788): K562, CD4, HCT116 at equal weights, raw, gamma 1, trial-01 generator",
+  "claim_type": "prediction registered before generation and submission; not a measurement",
+  "recipe": {
+    "path": "configs\recipes\t18.json",
+    "sha256": "aa7653c02943bf0fb24815632e421c359c2d339eb316051ca0b4251fd73bd785",
+    "sha256_lf": "aa7653c02943bf0fb24815632e421c359c2d339eb316051ca0b4251fd73bd785",
+    "cache": "stage 98 run r4"
+  },
+  "references": {
+    "t16": 0.137627,
+    "t15": 0.107533,
+    "t11": 0.070777
+  },
+  "evidence_used": "t11 (0.197) -> t15 (0.394): +0.037; t15 -> t16 (0.788): +0.030, of which +0.171 scaled on the DE members and +0.009 on pds_cosine (CP-0037). The generator-noise model of reports/banco_varianti_2026-09-25/ puts the pds proxy on a plateau beyond 0.788 (raw arms, not affected by the CD4 SE defect); it overestimated t16's pds gain (+0.005..+0.026 against +0.0037).",
+  "expected": {
+    "score_avg_band": [
+      0.12,
+      0.17
+    ],
+    "t18_minus_t16_band": [
+      -0.025,
+      0.03
+    ],
+    "pds_raw": "0.765-0.790 (t16 0.778, derived)",
+    "fid_raw": "0.50-0.53 (t16 0.503, derived)",
+    "nmae_raw": "0.90-0.96 (t16 0.927, derived); it can turn worse if predicted magnitudes overshoot",
+    "reach_raw": "0.17-0.23 (t16 0.174, derived)",
+    "mse": "raw higher again; scaled stays 0"
+  },
+  "reading_rule_fixed_before_the_result": {
+    "t18 >= t16 + 0.005": "the curve still rises: the next amplitude step doubles again, 3.152",
+    "t18 <= t16 - 0.005": "the optimum lies between 0.788 and 1.576: the next amplitude step is their geometric midpoint, 1.114",
+    "otherwise": "plateau: keep 0.788, the smaller amplitude, as the reference, and stop walking the curve upward"
+  }
+}

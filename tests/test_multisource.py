@@ -7,7 +7,8 @@ Each test pins a way a multi-source transfer could return plausible wrong number
 * centring that subtracts one source's common response from another;
 * a sign-purity proxy that reads the truth's ranking instead of the prediction's;
 * a top-k sign agreement that ranks by the truth, counts undefined genes, or keeps the
-  target gene the scorer drops.
+  target gene the scorer drops;
+* a shrinkage recomputed from a missing SE, which silently turns a source into zeros.
 """
 
 from __future__ import annotations
@@ -178,6 +179,31 @@ class Stage100EffectTests(unittest.TestCase):
         for k in (None, 0, -4):
             with self.assertRaises(ValueError):
                 self.stage.load_table(self.cache, "src", "zshrink", k)
+
+    def _save(self, name, raw, se, meta, targets=("T1",)):
+        import json
+        np.savez_compressed(self.cache / f"{name}.npz", targets=np.array(list(targets)), shrunk=raw, raw=raw,
+                            se=se, n_cells=np.full(len(targets), 100), meta=json.dumps(meta))
+
+    def test_a_source_without_se_is_refused_not_turned_into_zero_votes(self):
+        # the 24-25 September defect: NaN SE gave z = 0, an effect of 0, and a vote for zero in `mix`
+        self._save("nose", np.array([[1.0, -0.5]], dtype=np.float32), np.full((1, 2), np.nan, np.float32), {})
+        with self.assertRaises(ValueError):
+            self.stage.load_table(self.cache, "nose", "zshrink", 16.0)
+
+    def test_a_mixture_without_se_is_rebuilt_from_its_shrunk_parts(self):
+        from vcc2026.multisource import mix, z_shrink
+        a_raw, a_se = np.array([[2.0, 0.2]], np.float32), np.array([[0.25, 0.2]], np.float32)
+        b_raw, b_se = np.array([[1.0, -0.4]], np.float32), np.array([[0.5, 0.1]], np.float32)
+        self._save("partA", a_raw, a_se, {})
+        self._save("partB", b_raw, b_se, {})
+        self._save("mixAB", (a_raw + b_raw) / 2, np.full((1, 2), np.nan, np.float32), {"from": ["partA", "partB"]})
+        got = self.stage.load_table(self.cache, "mixAB", "zshrink", 4.0)
+        want = (z_shrink(a_raw, a_se, 4.0) + z_shrink(b_raw, b_se, 4.0)) / 2    # equal cells: equal reliability
+        np.testing.assert_allclose(got.shrunk, want, rtol=1e-5)
+        parts = [self.stage.load_table(self.cache, n, "raw") for n in ("partA", "partB")]
+        raw_mix, _ = mix(parts, ["T1"], gamma=0.0)
+        np.testing.assert_allclose(got.raw, raw_mix, rtol=1e-6)
 
 
 if __name__ == "__main__":

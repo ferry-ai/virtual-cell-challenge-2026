@@ -1,0 +1,34 @@
+{
+ "stage": "banco_varianti_2026-09-25/per_target_consistency.py",
+ "claim_type": "effect-space proxy per target, t15 recipe; not VCC scores",
+ "targets_per_source": {
+  "cd4_mix": 292,
+  "k562": 271,
+  "orion_hct116": 265,
+  "orion_hek293t": 278
+ },
+ "spearman_pairs": {
+  "cd4_mix ~ k562": 0.5188411091352035,
+  "cd4_mix ~ orion_hct116": 0.6150496854213625,
+  "cd4_mix ~ orion_hek293t": 0.6947487518046833,
+  "k562 ~ orion_hct116": 0.5796407378361481,
+  "k562 ~ orion_hek293t": 0.5421239330490856,
+  "orion_hct116 ~ orion_hek293t": 0.4561259884620154
+ },
+ "spearman_range": [
+  0.4561259884620154,
+  0.6947487518046833
+ ],
+ "share_above_0.9": {
+  "cd4_mix": 0.3152542372881356,
+  "k562": 0.42033898305084744,
+  "orion_hct116": 0.2983050847457627,
+  "orion_hek293t": 0.3050847457627119
+ },
+ "share_below_0.5": {
+  "cd4_mix": 0.2847457627118644,
+  "k562": 0.2,
+  "orion_hct116": 0.20677966101694914,
+  "orion_hek293t": 0.29491525423728815
+ }
+}

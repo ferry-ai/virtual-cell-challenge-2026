@@ -31,7 +31,8 @@ import scipy.sparse as sp
 
 from vcc2026.predictor_sc import SourceEffects
 
-__all__ = ["effects_from_pseudobulk", "z_shrink", "AxisTable", "mix", "shared_signal", "transfer_report"]
+__all__ = ["effects_from_pseudobulk", "z_shrink", "zshrink_table", "zshrink_mixture", "AxisTable", "mix",
+           "shared_signal", "transfer_report"]
 
 
 def z_shrink(eff: np.ndarray, se: np.ndarray, k: float = 4.0) -> np.ndarray:
@@ -47,6 +48,45 @@ def z_shrink(eff: np.ndarray, se: np.ndarray, k: float = 4.0) -> np.ndarray:
     z2 = np.divide(eff * eff, np.asarray(se, dtype=np.float64) ** 2,
                    out=np.zeros_like(eff), where=np.asarray(se) > 0)
     return eff * z2 / (z2 + k)
+
+
+def zshrink_table(tab: "AxisTable", k: float) -> "AxisTable":
+    """The same source with ``shrunk`` recomputed as ``z_shrink(raw, se, k)``.
+
+    Refuses a source with a measured pair whose SE is not finite and positive: `z_shrink`
+    would set z = 0 there and return 0, which `mix` then counts as a measured vote for zero
+    (D-009). A mixture saved without SE (stage 98's ``cd4_mix``) has to be rebuilt from its
+    parts with `zshrink_mixture` instead.
+    """
+    if not k > 0:
+        raise ValueError(f"shrinkage k must be positive, got {k!r}")
+    measured = np.isfinite(tab.raw)
+    se = np.asarray(tab.se, dtype=np.float64)
+    bad = measured & ~(np.isfinite(se) & (se > 0))
+    if bad.any():
+        raise ValueError(f"{tab.name}: {int(bad.sum())} measured pairs have no finite positive SE")
+    shrunk = np.where(measured, z_shrink(np.nan_to_num(tab.raw), np.where(measured, se, 1.0), k), np.nan)
+    return AxisTable(tab.name, list(tab.targets), shrunk.astype(np.float32), tab.raw, tab.se,
+                     tab.n_cells, dict(tab.meta))
+
+
+def zshrink_mixture(name: str, parts: list["AxisTable"], targets, k: float, *,
+                    reliability_scale: float = 100.0) -> "AxisTable":
+    """A mixture of sources, rebuilt as stage 98 builds ``cd4_mix`` but from shrunk parts.
+
+    Each part is shrunk with `zshrink_table`, then the parts are averaged with `mix` at
+    gamma 0 and equal weights; ``targets`` are the mixture's own targets, in its order.
+    The raw effects are mixed the same way, so ``raw`` matches the stage-98 mixture's.
+    """
+    shrunk_parts = [zshrink_table(p, k) for p in parts]
+    eff, w = mix(shrunk_parts, list(targets), gamma=0.0, reliability_scale=reliability_scale)
+    raw_parts = [AxisTable(p.name, p.targets, p.raw, p.raw, p.se, p.n_cells) for p in parts]
+    eff_raw, w_raw = mix(raw_parts, list(targets), gamma=0.0, reliability_scale=reliability_scale)
+    cells = np.array([sum(p.n_cells[p.index()[t]] for p in parts if t in p.index()) for t in targets])
+    return AxisTable(name, list(targets), np.where(w > 0, eff, np.nan).astype(np.float32),
+                     np.where(w_raw > 0, eff_raw, np.nan).astype(np.float32),
+                     np.full((len(targets), eff.shape[1]), np.nan, dtype=np.float32), cells,
+                     {"from": [p.name for p in parts], "how": f"mean of parts shrunk at k {k}, gamma 0"})
 
 
 def effects_from_pseudobulk(X, obs: pd.DataFrame, genes, *, targets, condition: str | None = None,

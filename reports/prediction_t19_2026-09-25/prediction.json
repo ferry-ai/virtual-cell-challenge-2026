@@ -1,0 +1,36 @@
+{
+  "written_utc": "2026-09-25T01:37:25.820468+00:00",
+  "label": "t19 = t16 with the stage-98 shrunk effects (k 4) instead of raw, amplitude 1.576: K562, CD4, HCT116 at equal weights, gamma 1, trial-01 generator",
+  "claim_type": "prediction registered before generation and submission; not a measurement",
+  "recipe": {
+    "path": "configs\recipes\t19.json",
+    "sha256": "cd45e64433248ed1cfff78b2c672487f83aa66354432673db693b49d03f556c2",
+    "sha256_lf": "cd45e64433248ed1cfff78b2c672487f83aa66354432673db693b49d03f556c2",
+    "cache": "stage 98 run r4"
+  },
+  "references": {
+    "t16": 0.137627,
+    "t18": "registered, not scored"
+  },
+  "evidence_used": "reports/banco_varianti_2026-09-25/CORREZIONE.md and CP-0039: on held-out public sources the shrunk effects raise the pds proxy by +0.011..+0.022 at k 4 (r7, paired bootstrap, every interval above zero); in the generator model (r8) shrunk at 1.576 moves about as many genes as t16 and beats its pds proxy by +0.004..+0.019 and the sign precision of its detectable genes by +0.003..+0.008. The same model overestimated t16's pds gain (CP-0037), and it does not simulate the generator's spurious calls or the Wilcoxon: the DE members are the main uncertainty.",
+  "expected": {
+    "score_avg_band": [
+      0.12,
+      0.165
+    ],
+    "t19_minus_t16_band": [
+      -0.02,
+      0.025
+    ],
+    "pds_raw": "0.775-0.795 (t16 0.778, derived)",
+    "fid_raw": "0.48-0.52 (t16 0.503, derived)",
+    "nmae_raw": "0.91-0.96 (t16 0.927, derived)",
+    "mse": "scaled stays 0"
+  },
+  "reading_rule_fixed_before_the_result": {
+    "t19 >= t16 + 0.005": "shrunk effects at comparable detectability beat the raw reference: adopt them; the next step tries k 16 at matched detectability",
+    "t19 <= t16 - 0.005": "the proxy gain does not reach the official score: keep raw effects",
+    "otherwise": "inconclusive; keep raw effects, the tested reference",
+    "descriptive only": "t19 - t18, both at amplitude 1.576, is reported as the effect of the shape at equal amplitude; it decides nothing on its own"
+  }
+}

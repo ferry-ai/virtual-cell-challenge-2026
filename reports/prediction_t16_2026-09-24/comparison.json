@@ -1,0 +1,105 @@
+{
+ "written_utc": "2026-09-25T01:25:40.565677+00:00",
+ "entry_id": "qUV1D6QZh2tZ5Z9Vx185",
+ "score_avg": 0.13762685268934818,
+ "rank": 336,
+ "registered_band": [
+  0.08,
+  0.14
+ ],
+ "inside_band": true,
+ "t16_minus_t15": 0.030093697835879132,
+ "registered_t16_minus_t15_band": [
+  -0.03,
+  0.03
+ ],
+ "reading_rule_outcome": "t16 >= t15 + 0.005: the curve still rises: next step doubles again",
+ "member_expectations_registered": {
+  "score_avg_band": [
+   0.08,
+   0.14
+  ],
+  "t16_minus_t15_band": [
+   -0.03,
+   0.03
+  ],
+  "pds_raw": "0.76-0.80 (t15 0.774)",
+  "fid_raw": "0.47-0.51 (t15 0.477)",
+  "nmae_raw": "0.92-0.98 (t15 0.950); it can turn worse if predicted magnitudes overshoot",
+  "mse": "raw higher again; scaled stays 0"
+ },
+ "scaled_published": {
+  "t15": {
+   "score_pds": 0.6074958151082303,
+   "score_nmae": 0.08395497753194558,
+   "score_fid": -0.11940194607177719,
+   "score_reach": 0.06742817326570029,
+   "score_jac": 0.005721909286715448,
+   "score_mse": 0
+  },
+  "t16": {
+   "score_pds": 0.6166219768446504,
+   "score_nmae": 0.12171814607750797,
+   "score_fid": -0.031726041953487084,
+   "score_reach": 0.10718882441848486,
+   "score_jac": 0.011958210748933112,
+   "score_mse": 0
+  }
+ },
+ "raw": {
+  "pds_cosine": {
+   "t15_published": 0.774314381270903,
+   "t16_derived": 0.777972412453708,
+   "t16_minus_t15": 0.003658031182804944
+  },
+  "de_wilcoxon_lfc_nmae": {
+   "t15_published": 0.950307485901456,
+   "t16_derived": 0.9271999478590979,
+   "t16_minus_t15": -0.0231075380423581
+  },
+  "de_wilcoxon_direction_fidelity_yield_raw": {
+   "t15_published": 0.4768832524924183,
+   "t16_derived": 0.5028706923032704,
+   "t16_minus_t15": 0.02598743981085211
+  },
+  "de_wilcoxon_direction_reach_raw": {
+   "t15_published": 0.138934620114771,
+   "t16_derived": 0.17435658720179087,
+   "t16_minus_t15": 0.03542196708701986
+  },
+  "de_wilcoxon_sig_jaccard": {
+   "t15_published": 0.03249368953433629,
+   "t16_derived": 0.034752095886096596,
+   "t16_minus_t15": 0.002258406351760306
+  }
+ },
+ "raw_note": "t16's raw members are DERIVED: raw = baseline + scaled * (replicate - baseline) with reports/anchors_2026-09-17/anchors.json. On 25 September `vcc status` answered not_found for t16 and t15 (it served only the latest entry, t17), and the public leaderboard shows only a team's latest entry. The same derivation on t17 reproduces its published raw values within the abs_error below. mse is clipped to 0 and cannot be derived.",
+ "derivation_check_on_t17": {
+  "pds_cosine": {
+   "published_raw": 0.7700037160906726,
+   "derived_raw": 0.7692442145925493,
+   "abs_error": 0.0007595014981233161
+  },
+  "de_wilcoxon_lfc_nmae": {
+   "published_raw": 0.9485113122352102,
+   "derived_raw": 0.948341415718251,
+   "abs_error": 0.00016989651695920038
+  },
+  "de_wilcoxon_direction_fidelity_yield_raw": {
+   "published_raw": 0.4752469241299883,
+   "derived_raw": 0.47514237631291456,
+   "abs_error": 0.00010454781707375238
+  },
+  "de_wilcoxon_direction_reach_raw": {
+   "published_raw": 0.15700324654759973,
+   "derived_raw": 0.1574278511744029,
+   "abs_error": 0.00042460462680316
+  },
+  "de_wilcoxon_sig_jaccard": {
+   "published_raw": 0.03235148891002185,
+   "derived_raw": 0.03231258026886454,
+   "abs_error": 3.8908641157305024e-05
+  }
+ },
+ "status_attempt": "reports/trial_2026-09-24/status_qUV1D6QZh2tZ5Z9Vx185_tentativo1_errore.txt"
+}
