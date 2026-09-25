@@ -81,7 +81,10 @@ Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
      un invio valutato (`vcc cancel --help`).
 6. **L'output di `vcc` si salva così com'è**, in `reports/trial_<data>/`
    (`submit_<entry>.json`, `status_<entry>.json`). Un tentativo fallito si registra come
-   tale, in un file suo.
+   tale, in un file suo. **Lo stato va chiesto appena il punteggio c'è, prima dell'invio
+   successivo:** il 25 settembre `vcc status` rispondeva `not_found` per t15 e t16 e serviva
+   solo l'ultimo invio, e l'output di `submit --wait` porta gli scalati ma non i grezzi
+   ([CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md)).
 7. **Dopo il punteggio:**
    - `comparison.json` accanto alla previsione;
    - un checkpoint (`python scripts/30_new_checkpoint.py`);
