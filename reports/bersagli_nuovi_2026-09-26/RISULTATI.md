@@ -15,6 +15,10 @@ pannello, 7.681 geni.
 - `checks.py` → `r2/`: il modello lineare in campione; STRING pesato più cis, con la risposta
   comune `b` in ogni braccio.
 - `checks_nob.py` → `r3/`: lo stesso confronto **senza** `b` in nessun braccio.
+- `checks_self.py` → `r4/`: r3 rifatto con la funzione di produzione dello stadio 100
+  (`partner_effects`), che toglie dalla media il gene di ciascun partner: in r1–r3 il vettore
+  di associazione conteneva anche il knockdown di ogni partner su sé stesso, che non è una
+  risposta al bersaglio. Tutti i bersagli del pannello esclusi da partner e centratura.
 
 **Attenzione a r1:** il braccio `cis` non contiene `b`, mentre le braccia lineari e STRING sì;
 `b` è uguale per tutti i bersagli e abbassa la discriminazione. I confronti fra `cis` e le altre
@@ -38,6 +42,9 @@ braccia di r1 sono falsati; quelli puliti sono in r3.
 | HEK293T | 0,570 | 0,579 | +0,009 (−0,019…+0,035) |
 
   Con pesi maggiori (0,25–2) il guadagno cala, e per HCT116 e HEK293T diventa una perdita.
+- **La correzione di r4 non cambia il quadro:** 0,1 × STRING + cis contro cis vale +0,035,
+  +0,033, +0,022 e +0,009 (r4) contro +0,035, +0,032, +0,020 e +0,009 (r3); STRING da solo sta
+  fra 0,528 e 0,550, sotto il cis da solo.
 - **Riferimento irraggiungibile per un bersaglio nuovo** (r1): l'effetto dello stesso bersaglio
   misurato in K562 dà 0,711–0,755 in CD4, HCT116 e HEK293T.
 
@@ -47,8 +54,10 @@ braccia di r1 sono falsati; quelli puliti sono in r3.
   la rete (partner fisici, pesati poco); insieme arrivano a circa 0,58–0,61, contro 0,71–0,75 di
   un bersaglio misurato. **La leva più grande per il set finale è la copertura:** estrarre tutti
   i bersagli delle sorgenti genome-scale (CD4, Orion), non solo i 300 di oggi.
-- **Proposta:** per i bersagli del set finale che nessuna sorgente ha misurato, usare cis più
-  0,1 × STRING; il peso va riconfermato sul banco con lo scorer vero (filone F2 di R-V2).
+- **Proposta, implementata:** per i bersagli del set finale che nessuna sorgente ha misurato,
+  cis più 0,1 × STRING: blocco `association` dello stadio 100 (26 settembre), che sui 300
+  bersagli di oggi, tutti coperti, lascia gli effetti identici bit per bit. Il peso va
+  riconfermato sul banco con lo scorer vero (filone F2 di R-V2).
 
 ## Che cosa non si è fatto
 

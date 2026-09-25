@@ -241,6 +241,30 @@ class Stage100CisTests(unittest.TestCase):
         self.assertEqual(eff[0, 4], 0.0)                                   # another chromosome
         np.testing.assert_array_equal(observed[0], [True, True, True, False, False])
 
+    def test_association_is_the_centred_mean_of_scored_partners_never_the_target(self):
+        import gzip
+        import tempfile
+        import pandas as pd
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            eff = np.array([[1.0, 0.0, 2.0], [3.0, 0.0, 0.0], [5.0, 5.0, 5.0], [9.0, 9.0, np.nan]], np.float32)
+            np.savez_compressed(root / "k562_00.npz", targets=np.array(["P1", "P2", "X", "T"]), shrunk=eff,
+                                raw=eff, se=np.ones_like(eff), n_cells=np.full(4, 100), meta="{}")
+            pd.DataFrame({"target": ["P1", "P2", "X", "T"], "chunk": "k562_00.npz"}).to_csv(root / "index.csv", index=False)
+            (root / "info").write_text("#string_protein_id\tpreferred_name\n"
+                                       + "".join(f"9606.E{n}\t{n}\n" for n in ("T", "P1", "P2", "X")), encoding="utf-8")
+            links = ("protein1 protein2 combined_score\n9606.ET 9606.EP1 800\n9606.ET 9606.EP2 900\n"
+                     "9606.ET 9606.EX 500\n9606.ET 9606.ET 999\n")
+            (root / "links").write_bytes(gzip.compress(links.encode()))    # gzip without the extension
+            out, counts = self.stage.partner_effects(["T", "P1"], root, root / "links", root / "info", 700,
+                                                     np.array(["P1", "P2", "G3"]))
+        centre = np.nan_to_num(eff).mean(axis=0)
+        # X is under 700 and T is not its own partner; each partner's own gene is left out of its mean
+        want = np.array([eff[1, 0], eff[0, 1], (eff[0, 2] + eff[1, 2]) / 2]) - centre
+        np.testing.assert_allclose(out["T"], want, rtol=1e-6)
+        self.assertNotIn("P1", out)                         # P1 has no link of its own in this file
+        self.assertEqual(counts["targets_with_partners"], 1)
+
     def test_a_distance_outside_the_model_is_refused(self):
         model = self.stage.cis_prior(self.pairs, ["T1"])
         for d in (0, model.edges[-1] + 1):

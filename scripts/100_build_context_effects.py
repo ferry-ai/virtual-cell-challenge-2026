@@ -28,6 +28,20 @@ lies within ``max_distance_bp`` of the target's (``--coords``) get ``scale`` x t
 to their transferred value, after the amplitude, which calibrates only the transferred part;
 those pairs are marked observed so stage 45 applies them, measured by a source or not.
 
+An optional ``association`` block predicts the targets that no source of the context covers, the
+final set's new targets, from their network partners (reports/bersagli_nuovi_2026-09-26/):
+
+    "association": {"universe": "processed/universe_k562_2026-09-26",
+                    "links": "interim/encoder_inputs_2026-09-14/string_physical_links",
+                    "info": "interim/encoder_inputs_2026-09-14/string_protein_info",
+                    "min_score": 700, "weight": 0.1}
+
+Paths are relative to the data root. For an uncovered target, ``weight`` x the mean effect of its
+STRING physical partners (combined score >= ``min_score``) in the universe cache, centred on the
+mean over all universe targets and never including the target itself, is added before the cis
+head; those genes are marked observed. Covered targets are untouched, so a panel every source
+covers gives the same effects with or without the block.
+
 For each context this writes ``effects_<CTX>.npz`` with ``targets``, ``genes`` (the official
 axis) and ``lfc`` (ln fold change, amplitude applied), the format stage 76 reads through
 ``--effects CTX=PATH``. A (target, gene) pair no source measured stays exactly 0 and is
@@ -115,6 +129,60 @@ def add_cis(eff: np.ndarray, observed: np.ndarray, targets: list[str], axis: np.
     return {"pairs": pairs, "targets_with_a_neighbour": with_pair}
 
 
+def partner_effects(targets: list[str], universe: Path, links: Path, info: Path, min_score: int,
+                    axis: np.ndarray, exclude: frozenset = frozenset()) -> tuple[dict, dict]:
+    """{target: centred mean universe effect of its STRING partners} for ``targets`` that have one.
+
+    ``universe`` holds stage-98-format npz chunks and an ``index.csv``; the effects are the chunks'
+    ``shrunk`` arrays on the official axis (unmeasured genes count as 0), centred on the mean over
+    every universe target. A target is never its own partner, and a partner's own gene is left out
+    of its contribution: its knockdown of itself is not a response to the target. ``exclude`` names
+    targets whose outcomes must not be used at all, as partners or in the centre (a bench's
+    held-out targets); production leaves it empty."""
+    axis_pos = {g: i for i, g in enumerate(np.asarray(axis).astype(str))}
+    n_genes = len(axis_pos)
+    def gz(path: Path):   # the STRING files of 14 September are gzip without the extension
+        with open(path, "rb") as fh:
+            return "gzip" if fh.read(2) == b"\x1f\x8b" else None
+
+    names = pd.read_csv(info, sep="\t", usecols=[0, 1], compression=gz(info))
+    sym = dict(zip(names.iloc[:, 0], names.iloc[:, 1]))
+    edges = pd.read_csv(links, sep=" ", compression=gz(links))
+    edges = edges[edges["combined_score"] >= min_score]
+    pairs = pd.DataFrame({"a": edges["protein1"].map(sym), "b": edges["protein2"].map(sym)}).dropna()
+    pairs = pairs[pairs["a"].isin(set(targets)) & (pairs["a"] != pairs["b"])]
+    index = pd.read_csv(universe / "index.csv")
+    in_universe = set(index["target"].astype(str)) - set(exclude)
+    partners = {t: sorted(set(g) & in_universe) for t, g in pairs.groupby("a")["b"]}
+    partners = {t: g for t, g in partners.items() if g}
+    need = {g for gs in partners.values() for g in gs}
+    rows, total, count = {}, np.zeros(n_genes), 0
+    for chunk in sorted(index["chunk"].unique()):
+        z = np.load(universe / chunk, allow_pickle=False)
+        names_z = z["targets"].astype(str)
+        eff = np.nan_to_num(z["shrunk"]).astype(np.float64)[~np.isin(names_z, list(exclude))]
+        names_z = names_z[~np.isin(names_z, list(exclude))]
+        total += eff.sum(axis=0)
+        count += eff.shape[0]
+        for i, name in enumerate(names_z):
+            if name in need:
+                rows[name] = eff[i]
+    centre = total / max(count, 1)
+    out = {}
+    for t, gs in partners.items():
+        # a partner's own knockdown is not a response to t: its own gene is left out of the mean
+        s, n = np.zeros(n_genes), np.zeros(n_genes)
+        for g in gs:
+            use = np.ones(n_genes, dtype=bool)
+            if g in axis_pos:
+                use[axis_pos[g]] = False
+            s[use] += rows[g][use]
+            n[use] += 1
+        out[t] = (np.divide(s, n, out=np.zeros(n_genes), where=n > 0) - centre).astype(np.float32)
+    return out, {"targets_with_partners": len(out), "universe_targets": count,
+                 "partners_used": int(sum(len(g) for g in partners.values()))}
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--recipe", type=Path, required=True)
@@ -151,6 +219,14 @@ def main() -> None:
                     "pairs_by_bin": cis_model.n_by_bin.tolist()}
         log("cis prior (ln, median by bin, panel targets excluded): "
             + " ".join(f"{e}:{v:+.3f}" for e, v in zip(cis_model.edges, cis_model.by_bin)))
+    assoc_spec, assoc_info, assoc = recipe.get("association"), None, {}
+    if assoc_spec is not None:
+        paths = {k: DATA_ROOT / assoc_spec[k] for k in ("universe", "links", "info")}
+        assoc, counts = partner_effects(panel, paths["universe"], paths["links"], paths["info"],
+                                        int(assoc_spec.get("min_score", 700)), axis)
+        assoc_info = {"spec": assoc_spec, **counts,
+                      "sha256": {k: hashlib.sha256(v.read_bytes()).hexdigest() for k, v in paths.items() if v.is_file()}}
+        log(f"association: {counts['targets_with_partners']} panel targets have partners in the universe")
     summary = {}
     for ctx, spec in recipe["contexts"].items():
         weights = {k: float(v) for k, v in spec["weights"].items()}
@@ -162,6 +238,15 @@ def main() -> None:
         if missing and not recipe.get("allow_missing_targets", False):
             raise SystemExit(f"context {ctx}: no source covers {len(missing)} targets, e.g. {missing[:5]}")
         observed = w > 0
+        assoc_used = []
+        if assoc_spec is not None:
+            weight = float(assoc_spec.get("weight", 0.1))
+            for i, t in enumerate(panel):
+                if not covered[i] and t in assoc:
+                    eff[i] += weight * assoc[t]
+                    observed[i] |= assoc[t] != 0
+                    assoc_used.append(t)
+            log(f"{ctx}: association on {len(assoc_used)} uncovered targets")
         cis_counts = None
         if cis_spec is not None:
             cis_counts = add_cis(eff, observed, panel, axis, cis_model, coords,
@@ -178,6 +263,8 @@ def main() -> None:
                         "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
         if cis_counts is not None:
             summary[ctx]["cis"] = cis_counts
+        if assoc_spec is not None:
+            summary[ctx]["association_targets"] = assoc_used
         log(f"{ctx}: {covered.sum()}/{len(panel)} targets, median {np.median(nz):.0f} genes moved, "
             f"median q99 |ln fc| {summary[ctx]['abs_lfc_q99_median']:.3f}")
     manifest = {"stage": "100_build_context_effects", "written_utc": datetime.now(timezone.utc).isoformat(),
@@ -187,6 +274,8 @@ def main() -> None:
                 "units": "ln fold change on the official axis; unmeasured pairs are exactly 0"}
     if cis_info is not None:
         manifest["cis"] = cis_info
+    if assoc_info is not None:
+        manifest["association"] = assoc_info
     with open(args.out / "manifest.json", "x", encoding="utf-8") as fh:
         json.dump(manifest, fh, indent=2)
     log(f"wrote {args.out}")

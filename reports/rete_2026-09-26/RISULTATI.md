@@ -1,7 +1,9 @@
 # Lisciamento con i partner di rete, per i bersagli misurati: effetto piccolo
 
 26 settembre 2026, notte. **Proxy contro sorgenti pubbliche tenute fuori, non punteggi VCC.**
-Script `network_smoothing.py`, uscita `r1/`.
+Script `network_smoothing.py`, uscita `r1/`; `network_smoothing_self.py`, uscita `r2/`, rifà r1 con la
+media dei partner dello stadio 100, che toglie il gene di ciascun partner (r1 conteneva il knockdown
+di ogni partner su sé stesso).
 
 ## Domanda e metodo
 
@@ -24,6 +26,8 @@ misurato.
 
 - **Misurato:** il guadagno è piccolo, e solo CD4 a λ 0,1 ha l'intervallo sopra zero; il braccio
   vero supera sempre il proprio controllo, di 0,001–0,005.
+- **Misurato (r2, media corretta):** stesso quadro; CD4 a λ 0,1 +0,0023 (+0,0004…+0,0045),
+  HCT116 +0,0008, HEK293T +0,0011, intervalli attraverso lo zero.
 - **Interpretazione:** per un bersaglio misurato il suo effetto trasferito domina; la rete aiuta
   soprattutto dove l'effetto manca ([bersagli nuovi](../bersagli_nuovi_2026-09-26/RISULTATI.md)).
 - **Decisione proposta:** nessun invio su questo braccio da solo; tenerlo come candidato da

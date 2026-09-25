@@ -56,6 +56,10 @@ produrre un invio in poche ore.
   (CD4: file pseudobulk di 44,6 GB su S3 pubblico; Orion HCT116 e HEK293T: 109 e 223 file in
   streaming, accumulatori troppo grandi per il portatile) vale più di qualunque modello per
   bersagli senza misure. Poi cis + associazione per quelli che restano scoperti.
+- **Ripiego per i bersagli scoperti, nello stadio 100:** blocco `association` (0,1 × media dei
+  partner STRING nella cache universo, gene proprio di ogni partner escluso) prima del modulo
+  cis; identico bit per bit sui 300 bersagli di oggi, provato con una ricetta solo-K562 (13 dei
+  28 bersagli scoperti hanno partner).
 
 ## Che cosa serve dal proprietario
 
