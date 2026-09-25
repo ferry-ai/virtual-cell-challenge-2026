@@ -1,0 +1,100 @@
+{
+  "run_id": "t19pack",
+  "stage": "48_package_prediction",
+  "started_utc": "2026-09-25T03:05:07.409936+00:00",
+  "finished_utc": "2026-09-25T03:05:07.584945+00:00",
+  "seed": null,
+  "config": {
+    "run_id": "t19pack",
+    "prediction": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t19gen\\prediction.h5ad",
+    "out": "None",
+    "vcc_name": "prediction.vcc",
+    "workdir": "None",
+    "expect_sha256": "None",
+    "genes": "None",
+    "perts": "None",
+    "values_per_block": "16777216",
+    "zstd_level": "3",
+    "zstd_threads": "None",
+    "reserve_gib": "6.0",
+    "validate_only": "False",
+    "skip_verify": "False",
+    "allow_overwrite": "False"
+  },
+  "inputs": {
+    "prediction": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t19gen\\prediction.h5ad",
+      "exists": true,
+      "bytes": 4252280172,
+      "mtime_utc": "2026-09-25T02:45:28.673014+00:00",
+      "sha256": "957244d035cca87cc55947c9e3b720fa12076f7eb3fa78a2861b85e0542e8949",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "genes": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\gene_names.csv",
+      "exists": true,
+      "bytes": 119295,
+      "mtime_utc": "2026-09-11T17:27:09.608150+00:00",
+      "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "sha256_mode": "full"
+    },
+    "perturbations": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+      "exists": true,
+      "bytes": 1906,
+      "mtime_utc": "2026-09-11T17:27:09.610157+00:00",
+      "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+      "sha256_mode": "full"
+    }
+  },
+  "outputs": {
+    "report": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t19pack\\packaging.json",
+      "exists": true,
+      "bytes": 7555,
+      "mtime_utc": "2026-09-25T03:05:07.407478+00:00",
+      "sha256": "d3d9c0da0a1a6e31292882551084f5c6553bc332c597a3960c4d0b66a822fb7a",
+      "sha256_mode": "full"
+    },
+    "vcc": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t19pack\\prediction.vcc",
+      "exists": true,
+      "bytes": 4196935680,
+      "mtime_utc": "2026-09-25T03:00:33.538795+00:00",
+      "sha256": "34686824b54ee1903ecdbf5ca32794f41716b6705607e05fbd8e3ecaa47b7162",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "metrics": {
+    "exit_code": 0,
+    "nnz": 2162964970,
+    "peak_rss_bytes": 621219840,
+    "total_seconds": 1175.5521320999833
+  },
+  "notes": [
+    "Streaming packager: the official validators on metadata, streamed equivalents on the matrix. Not an official CLI release.",
+    "Nothing uploaded. A passing archive is not server acceptance."
+  ],
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "LAPTOP-DLG1LHV1",
+    "cpu_count": 8,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": "25.0.1"
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\ferra\\vcc2026-data"
+    }
+  }
+}

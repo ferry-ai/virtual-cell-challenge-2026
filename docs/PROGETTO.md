@@ -51,11 +51,14 @@ scalati con le ancore: il 25 settembre `vcc status` serviva solo l'ultimo invio 
 - **t18** = il t16 con ampiezza 1,576: il passo che la regola del t16 prescrive. Ricetta,
   previsione, regola di lettura e testi registrati il 25 settembre alle 01:30 UTC, prima della
   generazione (`configs/recipes/t18.json`, `reports/prediction_t18_2026-09-25/`,
-  `reports/trial_2026-09-25/submission_texts.md`). L'invio aspetta il via del proprietario; la
-  quota successiva si apre alle 00:05 UTC del 26.
-- **Candidato per il secondo invio del 26:** effetti ristretti prima della media, da confrontare
-  col t16 a parità di geni rilevabili. Il banco è stato corretto dopo due revisioni
-  indipendenti ([CP-0039](checkpoints/0039-banco-varianti-restrizione.md)); nessuna ricetta registrata.
+  `reports/trial_2026-09-25/submission_texts.md`). Generato e impacchettato il 25 (convalida
+  superata, `reports/trial_2026-09-25/t18_packaging.json`). L'invio aspetta il via del
+  proprietario; la quota successiva si apre alle 00:05 UTC del 26.
+- **t19** = il t16 con gli effetti ristretti della cache (k 4) a 1,576: nel modello del
+  generatore muove circa quanti geni il t16, e col t18 isola la forma degli effetti. Registrato il
+  25 alle 01:37 UTC, generato e impacchettato (`reports/prediction_t19_2026-09-25/`,
+  `reports/trial_2026-09-25/t19_packaging.json`). Il banco che lo motiva è stato corretto dopo due
+  revisioni indipendenti ([CP-0039](checkpoints/0039-banco-varianti-restrizione.md)).
 - **t12, t09 e t13** non si generano: il t17 ha fatto la domanda del t12 all'ampiezza buona, il
   t09 pagherebbe il silenzio (D-035), il t13 si è fermato per la sua regola.
 
