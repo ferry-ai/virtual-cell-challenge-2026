@@ -33,6 +33,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `programmi_2026-09-26/` (projection of transferred effects on shared programs: loses at every rank),
 `bersagli_nuovi_2026-09-26/` (targets no source measured: linear gene embeddings, STRING partners, cis),
 `universo_2026-09-26/` (K562 genome-wide caches for every target, not only the panel),
+`rete_2026-09-26/` (network smoothing of measured targets with STRING partners: small effect),
 `banco_varianti_2026-09-25/` (leave-one-source-out bench of recipe variants: shrinkage, gamma, consensus, gating, generator noise),
 `ricerca_sorgenti_2026-09-25/` (agent search of 25 September: Mixscale provenance, microglia, Flex bridge, full catalogue of new sources),
 `pattern_mixscale_2026-09-24/` (paired reanalysis: target/stimulus heterogeneity and sign specificity),
