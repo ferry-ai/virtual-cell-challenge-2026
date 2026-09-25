@@ -20,15 +20,19 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 **Submissions and official scores** — one `trial_<data>/` per upload day, one
 `prediction_t<NN>_<data>/` per registered prediction:
 `trial_2026-09-12/`, `trial_2026-09-13/`, `trial_2026-09-17/`, `trial_2026-09-19/`,
-`trial_2026-09-22/`, `trial_2026-09-23/`, `trial_2026-09-24/`, `trial_2026-09-25/`, `prediction_t03_2026-09-17/`,
+`trial_2026-09-22/`, `trial_2026-09-23/`, `trial_2026-09-24/`, `trial_2026-09-25/`, `trial_2026-09-26/`, `prediction_t03_2026-09-17/`,
 `prediction_t07_2026-09-19/`, `prediction_t08_2026-09-22/`, `prediction_t10_2026-09-23/`,
 `prediction_t11_2026-09-23/`, `prediction_t12_2026-09-23/`, `prediction_t14_2026-09-23/`,
 `prediction_t15_2026-09-23/`, `prediction_t16_2026-09-24/`, `prediction_t17_2026-09-24/`, `prediction_t18_2026-09-25/`,
-`prediction_t19_2026-09-25/`,
+`prediction_t19_2026-09-25/`, `prediction_t20_2026-09-26/`,
 `trial02_decision_2026-09-17/`, `anchors_2026-09-17/` (the official anchors),
 `scorer/`, `scorer_2026-09-12/` (the scorer contract), `leaderboard_2026-09-16/`.
 
 **Sources and transfer** — stages 71, 97, 98 and 100–103:
+`modulo_cis_2026-09-26/` (CRISPRi cis head: repression of genes near the target's TSS, added to transfer),
+`programmi_2026-09-26/` (projection of transferred effects on shared programs: loses at every rank),
+`bersagli_nuovi_2026-09-26/` (targets no source measured: linear gene embeddings, STRING partners, cis),
+`universo_2026-09-26/` (K562 genome-wide caches for every target, not only the panel),
 `banco_varianti_2026-09-25/` (leave-one-source-out bench of recipe variants: shrinkage, gamma, consensus, gating, generator noise),
 `ricerca_sorgenti_2026-09-25/` (agent search of 25 September: Mixscale provenance, microglia, Flex bridge, full catalogue of new sources),
 `pattern_mixscale_2026-09-24/` (paired reanalysis: target/stimulus heterogeneity and sign specificity),
@@ -46,7 +50,8 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 **Generator, DE and benches** — stages 72–79 and 83:
 `generator_null_2026-09-17/`, `generator_null_smoke_2026-09-17/`, `fast_de_2026-09-17/`,
 `bench_2026-09-17/`, `prediction_calls_2026-09-17/`, `prediction_calls_2026-09-23/`,
-`dispersion_2026-09-23/`, `call_budget_2026-09-17/`.
+`dispersion_2026-09-23/`, `call_budget_2026-09-17/`,
+`banco_hepg2_v2_2026-09-26/` (inputs of the HepG2 bench with the real metrics, Colab job 046).
 
 **Pseudobulk experiments of 12–19 September** — their code is archived (D-040):
 `pipeline/`, `hepg2_2026-09-14/`, `benchmark_2026-09-14/`, `benchmark_3ctx_2026-09-14/`,

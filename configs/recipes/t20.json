@@ -1,0 +1,14 @@
+{
+  "name": "t20",
+  "effect": "shrunk",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "A": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0}},
+    "B": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0}},
+    "C": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0}}
+  },
+  "cis": {"pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv", "max_distance_bp": 5000, "scale": 2.0},
+  "why": "t19 (shrunk effects of K562, CD4 and HCT116 at equal weights, gamma 1, amplitude 1.576) plus the CRISPRi cis head, a model of the knockdown itself: dCas9-KRAB at a target's TSS also represses the genes whose TSS lies within a few kb, in any context (CP-0020 section 3.5). The prior is the median ln fold change by TSS distance bin over K562 genome-wide targets outside the panel (vcc2026.predictor_sc.CisModel.from_pairs), added twice (about the genome-wide mean) on top of the transferred value within 5 kb and not multiplied by the amplitude, which calibrates only the transferred part. On held-out public sources (reports/modulo_cis_2026-09-26/, r2) the head raises the pds proxy by +0.0024..+0.0061 on the t19 shape and +0.009..+0.025 on targets with a neighbour, every interval above zero, shuffled neighbour sets at zero, squared error unchanged. It is the part of the model that needs no measurement of the target, so it also predicts targets no source covers (the final set's new targets)."
+}

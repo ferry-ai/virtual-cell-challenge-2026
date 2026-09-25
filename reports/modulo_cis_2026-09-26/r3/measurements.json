@@ -1,0 +1,455 @@
+{
+ "stage": "modulo_cis_2026-09-26/cis_generator_check.py",
+ "claim_type": "generator-model proxies against held-out public sources; not VCC scores",
+ "cache": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-23_r5",
+ "cis": {
+  "scale": 2.0,
+  "max_distance_bp": 5000,
+  "prior_ln_by_bin": [
+   -0.3323155970492182,
+   -0.2312014418620707,
+   -0.10858278570905305,
+   -0.08656477168665586,
+   -0.03597850765225018
+  ],
+  "edges_bp": [
+   0,
+   1000,
+   2000,
+   5000,
+   10000,
+   20000
+  ]
+ },
+ "seeds": [
+  1,
+  2,
+  3
+ ],
+ "rows": [
+  {
+   "held_out": "k562",
+   "shape": "t16",
+   "metric": "pds",
+   "targets": 271,
+   "base": 0.7358510622143258,
+   "cis": 0.7407164442014792,
+   "cis_minus_base": 0.004865381987153206,
+   "ci95": [
+    0.00217894401166234,
+    0.008208547826219
+   ],
+   "minus_base_nb_targets": 0.019389978213507637,
+   "targets_with_neighbour": 68
+  },
+  {
+   "held_out": "k562",
+   "shape": "t16",
+   "metric": "prec",
+   "targets": 271,
+   "base": 0.5403833677574648,
+   "cis": 0.5403990611785722,
+   "cis_minus_base": 1.5693421107514683e-05,
+   "ci95": [
+    -0.00023101278008231152,
+    0.00021198395918331923
+   ],
+   "minus_base_nb_targets": 6.254289882553646e-05,
+   "targets_with_neighbour": 68
+  },
+  {
+   "held_out": "k562",
+   "shape": "t16",
+   "metric": "head",
+   "targets": 271,
+   "base": 0.6642066420664207,
+   "cis": 0.6654366543665436,
+   "cis_minus_base": 0.0012300123001230013,
+   "ci95": [
+    0.0,
+    0.0036900369003690036
+   ],
+   "minus_base_nb_targets": 0.004901960784313726,
+   "targets_with_neighbour": 68
+  },
+  {
+   "held_out": "k562",
+   "shape": "t16",
+   "metric": "detectable_median",
+   "targets": 271,
+   "base": 94.33333333333333,
+   "cis": 94.33333333333333
+  },
+  {
+   "held_out": "k562",
+   "shape": "t19",
+   "metric": "pds",
+   "targets": 271,
+   "base": 0.7536892776335171,
+   "cis": 0.756497046451946,
+   "cis_minus_base": 0.002807768818428924,
+   "ci95": [
+    0.0012451217104763649,
+    0.004743975217529953
+   ],
+   "minus_base_nb_targets": 0.011189784555797624,
+   "targets_with_neighbour": 68
+  },
+  {
+   "held_out": "k562",
+   "shape": "t19",
+   "metric": "prec",
+   "targets": 271,
+   "base": 0.544750903509184,
+   "cis": 0.544691055492312,
+   "cis_minus_base": -5.984801687186645e-05,
+   "ci95": [
+    -0.00026916877402731335,
+    7.500545156762385e-05
+   ],
+   "minus_base_nb_targets": -0.0002385119495922913,
+   "targets_with_neighbour": 68
+  },
+  {
+   "held_out": "k562",
+   "shape": "t19",
+   "metric": "head",
+   "targets": 271,
+   "base": 0.7269372693726938,
+   "cis": 0.7281672816728167,
+   "cis_minus_base": 0.0012300123001230013,
+   "ci95": [
+    0.0,
+    0.0036900369003690036
+   ],
+   "minus_base_nb_targets": 0.004901960784313726,
+   "targets_with_neighbour": 68
+  },
+  {
+   "held_out": "k562",
+   "shape": "t19",
+   "metric": "detectable_median",
+   "targets": 271,
+   "base": 106.0,
+   "cis": 106.0
+  },
+  {
+   "held_out": "cd4_mix",
+   "shape": "t16",
+   "metric": "pds",
+   "targets": 292,
+   "base": 0.6599677279312924,
+   "cis": 0.6654754245843075,
+   "cis_minus_base": 0.00550769665301511,
+   "ci95": [
+    0.0033735295809861543,
+    0.00811146286096858
+   ],
+   "minus_base_nb_targets": 0.021443298969072166,
+   "targets_with_neighbour": 75
+  },
+  {
+   "held_out": "cd4_mix",
+   "shape": "t16",
+   "metric": "prec",
+   "targets": 292,
+   "base": 0.5280514234520532,
+   "cis": 0.528157672220943,
+   "cis_minus_base": 0.00010624876888984981,
+   "ci95": [
+    8.531526097931983e-06,
+    0.00020284412503506245
+   ],
+   "minus_base_nb_targets": 0.00041366187354448193,
+   "targets_with_neighbour": 75
+  },
+  {
+   "held_out": "cd4_mix",
+   "shape": "t16",
+   "metric": "head",
+   "targets": 292,
+   "base": 0.5639269406392695,
+   "cis": 0.5970319634703196,
+   "cis_minus_base": 0.03310502283105023,
+   "ci95": [
+    0.017123287671232876,
+    0.05251141552511416
+   ],
+   "minus_base_nb_targets": 0.12888888888888891,
+   "targets_with_neighbour": 75
+  },
+  {
+   "held_out": "cd4_mix",
+   "shape": "t16",
+   "metric": "detectable_median",
+   "targets": 292,
+   "base": 247.16666666666666,
+   "cis": 247.16666666666666
+  },
+  {
+   "held_out": "cd4_mix",
+   "shape": "t19",
+   "metric": "pds",
+   "targets": 292,
+   "base": 0.6668105048983456,
+   "cis": 0.6716552380653497,
+   "cis_minus_base": 0.004844733167004036,
+   "ci95": [
+    0.0026499578946267265,
+    0.007346537683001461
+   ],
+   "minus_base_nb_targets": 0.01886216113020238,
+   "targets_with_neighbour": 75
+  },
+  {
+   "held_out": "cd4_mix",
+   "shape": "t19",
+   "metric": "prec",
+   "targets": 292,
+   "base": 0.5309625997375378,
+   "cis": 0.5311202568999277,
+   "cis_minus_base": 0.0001576571623898141,
+   "ci95": [
+    4.4020266428890264e-05,
+    0.0002774561457789807
+   ],
+   "minus_base_nb_targets": 0.0006138118855710096,
+   "targets_with_neighbour": 75
+  },
+  {
+   "held_out": "cd4_mix",
+   "shape": "t19",
+   "metric": "head",
+   "targets": 292,
+   "base": 0.6073059360730593,
+   "cis": 0.6335616438356164,
+   "cis_minus_base": 0.02625570776255708,
+   "ci95": [
+    0.012557077625570777,
+    0.042237442922374434
+   ],
+   "minus_base_nb_targets": 0.10222222222222224,
+   "targets_with_neighbour": 75
+  },
+  {
+   "held_out": "cd4_mix",
+   "shape": "t19",
+   "metric": "detectable_median",
+   "targets": 292,
+   "base": 214.83333333333334,
+   "cis": 214.83333333333334
+  },
+  {
+   "held_out": "orion_hct116",
+   "shape": "t16",
+   "metric": "pds",
+   "targets": 265,
+   "base": 0.6751111746394765,
+   "cis": 0.6776507210469475,
+   "cis_minus_base": 0.0025395464074709343,
+   "ci95": [
+    0.0011927450606695918,
+    0.0042630312559557805
+   ],
+   "minus_base_nb_targets": 0.010044474596713399,
+   "targets_with_neighbour": 67
+  },
+  {
+   "held_out": "orion_hct116",
+   "shape": "t16",
+   "metric": "prec",
+   "targets": 265,
+   "base": 0.5140361976598874,
+   "cis": 0.5140803884283648,
+   "cis_minus_base": 4.419076847744848e-05,
+   "ci95": [
+    -1.6666144494356427e-05,
+    0.00011548525867372503
+   ],
+   "minus_base_nb_targets": 0.00017478438278393802,
+   "targets_with_neighbour": 67
+  },
+  {
+   "held_out": "orion_hct116",
+   "shape": "t16",
+   "metric": "head",
+   "targets": 265,
+   "base": 0.6062893081761006,
+   "cis": 0.6125786163522012,
+   "cis_minus_base": 0.00628930817610063,
+   "ci95": [
+    0.0,
+    0.01635220125786164
+   ],
+   "minus_base_nb_targets": 0.024875621890547265,
+   "targets_with_neighbour": 67
+  },
+  {
+   "held_out": "orion_hct116",
+   "shape": "t16",
+   "metric": "detectable_median",
+   "targets": 265,
+   "base": 336.0,
+   "cis": 336.0
+  },
+  {
+   "held_out": "orion_hct116",
+   "shape": "t19",
+   "metric": "pds",
+   "targets": 265,
+   "base": 0.6795915126103805,
+   "cis": 0.680955784257671,
+   "cis_minus_base": 0.0013642716472905187,
+   "ci95": [
+    0.0006114208118925119,
+    0.00232041325201703
+   ],
+   "minus_base_nb_targets": 0.005395999798984888,
+   "targets_with_neighbour": 67
+  },
+  {
+   "held_out": "orion_hct116",
+   "shape": "t19",
+   "metric": "prec",
+   "targets": 265,
+   "base": 0.5187067333194756,
+   "cis": 0.5187327511587978,
+   "cis_minus_base": 2.6017839322222396e-05,
+   "ci95": [
+    -3.4255748540870865e-05,
+    8.900985357482017e-05
+   ],
+   "minus_base_nb_targets": 0.00010290637940879008,
+   "targets_with_neighbour": 67
+  },
+  {
+   "held_out": "orion_hct116",
+   "shape": "t19",
+   "metric": "head",
+   "targets": 265,
+   "base": 0.6742138364779874,
+   "cis": 0.6767295597484276,
+   "cis_minus_base": 0.002515723270440252,
+   "ci95": [
+    0.0,
+    0.007547169811320755
+   ],
+   "minus_base_nb_targets": 0.009950248756218907,
+   "targets_with_neighbour": 67
+  },
+  {
+   "held_out": "orion_hct116",
+   "shape": "t19",
+   "metric": "detectable_median",
+   "targets": 265,
+   "base": 351.3333333333333,
+   "cis": 351.3333333333333
+  },
+  {
+   "held_out": "orion_hek293t",
+   "shape": "t16",
+   "metric": "pds",
+   "targets": 278,
+   "base": 0.6508641462281438,
+   "cis": 0.65285244728405,
+   "cis_minus_base": 0.0019883010559061816,
+   "ci95": [
+    0.0007802422322070139,
+    0.0034716991749560665
+   ],
+   "minus_base_nb_targets": 0.007896395622027408,
+   "targets_with_neighbour": 70
+  },
+  {
+   "held_out": "orion_hek293t",
+   "shape": "t16",
+   "metric": "prec",
+   "targets": 278,
+   "base": 0.5199276106522127,
+   "cis": 0.5199671706923334,
+   "cis_minus_base": 3.956004012073391e-05,
+   "ci95": [
+    -1.2470026195302893e-05,
+    9.346410933980265e-05
+   ],
+   "minus_base_nb_targets": 0.00015710987362234323,
+   "targets_with_neighbour": 70
+  },
+  {
+   "held_out": "orion_hek293t",
+   "shape": "t16",
+   "metric": "head",
+   "targets": 278,
+   "base": 0.6546762589928058,
+   "cis": 0.6606714628297361,
+   "cis_minus_base": 0.005995203836930456,
+   "ci95": [
+    0.0,
+    0.014388489208633094
+   ],
+   "minus_base_nb_targets": 0.02380952380952381,
+   "targets_with_neighbour": 70
+  },
+  {
+   "held_out": "orion_hek293t",
+   "shape": "t16",
+   "metric": "detectable_median",
+   "targets": 278,
+   "base": 350.6666666666667,
+   "cis": 350.6666666666667
+  },
+  {
+   "held_out": "orion_hek293t",
+   "shape": "t19",
+   "metric": "pds",
+   "targets": 278,
+   "base": 0.6640492660023607,
+   "cis": 0.6652944792180696,
+   "cis_minus_base": 0.0012452132157090233,
+   "ci95": [
+    0.00037222929237837007,
+    0.0023664101210006767
+   ],
+   "minus_base_nb_targets": 0.004945275342387264,
+   "targets_with_neighbour": 70
+  },
+  {
+   "held_out": "orion_hek293t",
+   "shape": "t19",
+   "metric": "prec",
+   "targets": 278,
+   "base": 0.5212018272220029,
+   "cis": 0.521238016964397,
+   "cis_minus_base": 3.618974239409386e-05,
+   "ci95": [
+    -1.3379005576422425e-05,
+    8.952438168539335e-05
+   ],
+   "minus_base_nb_targets": 0.0001437249769365442,
+   "targets_with_neighbour": 70
+  },
+  {
+   "held_out": "orion_hek293t",
+   "shape": "t19",
+   "metric": "head",
+   "targets": 278,
+   "base": 0.7026378896882494,
+   "cis": 0.7038369304556354,
+   "cis_minus_base": 0.001199040767386091,
+   "ci95": [
+    0.0,
+    0.0035971223021582736
+   ],
+   "minus_base_nb_targets": 0.0047619047619047615,
+   "targets_with_neighbour": 70
+  },
+  {
+   "held_out": "orion_hek293t",
+   "shape": "t19",
+   "metric": "detectable_median",
+   "targets": 278,
+   "base": 365.0,
+   "cis": 365.0
+  }
+ ]
+}

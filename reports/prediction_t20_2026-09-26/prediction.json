@@ -1,0 +1,37 @@
+{
+  "written_utc": "2026-09-25T22:04:47.263606+00:00",
+  "label": "t20 = t19 plus the CRISPRi cis head: 2 x the K562 median repression by TSS distance (panel targets excluded) added within 5 kb, outside the amplitude; shrunk K562, CD4, HCT116 at equal weights, gamma 1, amplitude 1.576, trial-01 generator",
+  "claim_type": "prediction registered before generation and submission; not a measurement",
+  "recipe": {
+    "path": "configs/recipes/t20.json",
+    "sha256": "944385aaa2a311b881b395b9347adbfe077e8143c39f85190c32bdee45529d21",
+    "sha256_lf": "944385aaa2a311b881b395b9347adbfe077e8143c39f85190c32bdee45529d21",
+    "cache": "stage 98 run r4 (as t19)"
+  },
+  "references": {
+    "t16": 0.137627,
+    "t19": "registered, not scored; the reference of this comparison"
+  },
+  "evidence_used": "reports/modulo_cis_2026-09-26/: on held-out public sources the cis head raises the pds proxy on the t19 shape by +0.0024..+0.0061 in effect space (r2) and by +0.0012..+0.0048 through the generator model (r3), every interval above zero, shuffled neighbour sets at zero; the first step of reach (right sign at the head of the held-out significant genes) +0.001..+0.026; sign precision and detectable genes unchanged; squared error ratio +0.000..+0.001. The head touches the about 60-75 targets with a neighbour within 5 kb; the rest of each prediction is t19's. The generator uses one random stream, so every cell after the first changed target is a new draw: t20 - t19 carries generator noise of unknown size.",
+  "expected": {
+    "score_avg_band": [
+      0.115,
+      0.17
+    ],
+    "t20_minus_t19_band": [
+      -0.004,
+      0.006
+    ],
+    "pds_raw": "t19 + 0.001..0.005",
+    "reach_raw": "t19 + 0.000..0.005",
+    "fid_raw": "t19 +/- 0.002",
+    "nmae_raw": "t19 +/- 0.005",
+    "mse": "scaled stays 0"
+  },
+  "reading_rule_fixed_before_the_result": {
+    "t20 >= t19 + 0.005": "the cis head helps beyond the noise: it stays in the reference model and becomes the default for the final set; next, its dose (scale 4) on the bench and then officially",
+    "t20 <= t19 - 0.005": "the head hurts on the official score: it leaves the A/B/C reference, and the members that moved are examined (overshoot of neighbour knockdowns in nmae or the DE members) before it is used for D/E/F",
+    "otherwise": "non-inferior within resolution (the expected case): the head stays in the reference, because it is the only component that predicts targets no source measured, which the final set will have",
+    "if t19 is not scored": "t20 - t16 reads shrinkage and cis head together, with t19's thresholds; it cannot separate them"
+  }
+}

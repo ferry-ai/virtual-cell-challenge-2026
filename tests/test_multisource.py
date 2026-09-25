@@ -206,5 +206,48 @@ class Stage100EffectTests(unittest.TestCase):
         np.testing.assert_allclose(got.raw, raw_mix, rtol=1e-6)
 
 
+class Stage100CisTests(unittest.TestCase):
+    """Stage 100's cis head: a prior no panel target informs, added only near each target."""
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("stage100", REPO / "scripts" / "100_build_context_effects.py")
+        cls.stage = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.stage)
+        import pandas as pd
+        cls.coords = pd.DataFrame({"chrom": ["chr1", "chr1", "chr1", "chr1", "chr2"],
+                                   "tss": [10_000, 10_300, 13_000, 30_000, 10_100]},
+                                  index=pd.Index(["T1", "N1", "N2", "F1", "OTHER"], name="symbol"))
+        cls.axis = np.array(["T1", "N1", "N2", "F1", "OTHER"])
+        cls.pairs = pd.DataFrame({"target": ["T1", "P1", "P2", "P3", "P4"], "gene": ["x", "a", "b", "c", "d"],
+                                  "dist": [100, 200, 400, 1500, 3000], "log2fc": [-10.0, -1.0, -1.0, -0.5, -0.25]})
+
+    def test_the_prior_never_sees_a_panel_target(self):
+        model = self.stage.cis_prior(self.pairs, ["T1"])
+        self.assertAlmostEqual(float(model.by_bin[0]), -np.log(2.0))       # median of -1, -1 log2; not -10
+        self.assertEqual(int(model.n_by_bin[0]), 2)
+
+    def test_only_neighbours_within_the_distance_move_and_become_observed(self):
+        model = self.stage.cis_prior(self.pairs, ["T1"])
+        eff = np.zeros((1, 5))
+        observed = np.array([[True, False, False, False, False]])
+        counts = self.stage.add_cis(eff, observed, ["T1"], self.axis, model, self.coords, 5000, 2.0)
+        self.assertEqual(counts, {"pairs": 2, "targets_with_a_neighbour": 1})
+        self.assertAlmostEqual(eff[0, 1], 2.0 * float(model.prior(np.array([300]))[0]))
+        self.assertAlmostEqual(eff[0, 2], 2.0 * -0.25 * np.log(2.0))       # 3 kb: the 2-5 kb bin
+        self.assertEqual(eff[0, 0], 0.0)                                   # the target's own gene
+        self.assertEqual(eff[0, 3], 0.0)                                   # 20 kb away
+        self.assertEqual(eff[0, 4], 0.0)                                   # another chromosome
+        np.testing.assert_array_equal(observed[0], [True, True, True, False, False])
+
+    def test_a_distance_outside_the_model_is_refused(self):
+        model = self.stage.cis_prior(self.pairs, ["T1"])
+        for d in (0, model.edges[-1] + 1):
+            with self.assertRaises(ValueError):
+                self.stage.add_cis(np.zeros((1, 5)), np.zeros((1, 5), bool), ["T1"], self.axis, model,
+                                   self.coords, d, 1.0)
+
+
 if __name__ == "__main__":
     unittest.main()

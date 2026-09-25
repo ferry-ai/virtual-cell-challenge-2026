@@ -15,7 +15,7 @@ disagree, so update the row in the same commit as the import.
 | `manifest.py` | Run manifests: what went in, what came out, and what it was run with | 45, 48, 77, 100 | — |
 | `multisource.py` | Same-target effects from several perturbation sources, on the official gene axis | 98, 100, 101, 103 | — |
 | `packaging.py` | Validate and package a prediction into a `.vcc` in bounded memory | 48 | — |
-| `predictor_sc.py` | A per-target log fold change, assembled from single-cell evidence | 73, 75, 76, 77, 98 | `multisource` |
+| `predictor_sc.py` | A per-target log fold change, assembled from single-cell evidence | 73, 75, 76, 77, 98, 100 | `multisource` |
 | `remote_csr.py` | Selected rows of a remote CSR matrix, read as exact byte ranges in parallel | 97, 102 | — |
 | `remote_ranges.py` | Budgeted HTTP random access to public files | 97 | — |
 | `resources.py` | Measured machine limits, and the peak memory a run actually used | 45, 48 | `packaging` |

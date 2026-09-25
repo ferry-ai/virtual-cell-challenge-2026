@@ -30,6 +30,7 @@ L'aggiunta all'indice non avvia job, monitor o invii automatici.
 | ID | Priorità e motivo | Scheda | Prima di eseguire |
 |---|---|---|---|
 | S-INVII | Scadenze e lettura delle prove già preparate | [Invii e set finale](piani/invii-finale.md) | Verificare stato effettivo e coordinarsi con chi segue gli invii |
+| R-V2 | Adesso, su richiesta del proprietario: il modello per il set finale, filoni F1–F8 | [Modello v2](piani/modello-v2.md) | Via del proprietario per download, calcolo in cloud e invii |
 | R-DATI | Prima: rendere utilizzabili dati, controlli e repliche | [Dati e affidabilità](piani/dati-affidabilita.md) | Audit locale e dei metadati; stimare costo prima di acquisire |
 | R-MODELLI | Promettente: programmi × stato × ruolo del bersaglio | [Trasferimento e modelli](piani/trasferimento-modelli.md) | R-DATI e protocollo C/T/J congelato prima del training |
 | R-SWITCH | Promettente: soglie, intensità e cellule rispondenti | [Switch e distribuzioni](piani/switch-distribuzioni.md) | Cellule, guide e controlli da R-DATI; score indipendente dalla risposta valutata |

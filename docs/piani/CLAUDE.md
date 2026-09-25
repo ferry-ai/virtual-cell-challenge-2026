@@ -9,6 +9,7 @@ del lavoro scelto. Si applicano CLAUDE alla radice e [docs/CLAUDE.md](../CLAUDE.
 | [trasferimento-modelli.md](trasferimento-modelli.md) | R-MODELLI: programmi, contesto, bersagli nuovi, confronti |
 | [switch-distribuzioni.md](switch-distribuzioni.md) | R-SWITCH: soglie, intensità e quote di cellule rispondenti |
 | [invii-finale.md](invii-finale.md) | S-INVII: prove di validazione e preparazione del set finale |
+| [modello-v2.md](modello-v2.md) | R-V2: il modello per il set finale, costruito adesso |
 
 ## Regole delle schede
 
