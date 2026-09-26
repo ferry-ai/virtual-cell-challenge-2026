@@ -1,0 +1,83 @@
+{
+ "written_utc": "2026-09-26T11:12:27.630118+00:00",
+ "entry_id": "I8FX2yQabjKjPPDTYnaW",
+ "score_avg": 0.13967554777071428,
+ "rank_at_scoring": 346,
+ "registered_band": [
+  0.115,
+  0.17
+ ],
+ "inside_band": true,
+ "reference": {
+  "t16": 0.13762685268934818,
+  "t19": "not submitted (owner's choice, 26/09 00:58)"
+ },
+ "t20_minus_t16": 0.0020486950813660976,
+ "reading_rule_outcome": "inside +/-0.005 of t16: inconclusive by the registered rule (t19 was not scored, so t20 - t16 reads shrinkage and cis head together and cannot separate them); the cis head stays in the reference as non-inferior, the t20 recipe is the new best scored",
+ "member_expectations_registered": {
+  "score_avg_band": [
+   0.115,
+   0.17
+  ],
+  "t20_minus_t19_band": [
+   -0.004,
+   0.006
+  ],
+  "pds_raw": "t19 + 0.001..0.005",
+  "reach_raw": "t19 + 0.000..0.005",
+  "fid_raw": "t19 +/- 0.002",
+  "nmae_raw": "t19 +/- 0.005",
+  "mse": "scaled stays 0"
+ },
+ "scaled_published": {
+  "t16": {
+   "score_pds": 0.6166219768446504,
+   "score_nmae": 0.12171814607750797,
+   "score_fid": -0.031726041953487084,
+   "score_reach": 0.10718882441848486,
+   "score_jac": 0.011958210748933112,
+   "score_mse": 0
+  },
+  "t20": {
+   "score_pds": 0.64163722130329,
+   "score_nmae": 0.08736594019574973,
+   "score_fid": -0.03534684806359105,
+   "score_reach": 0.1304318356679253,
+   "score_jac": 0.01396513752091171,
+   "score_mse": 0
+  }
+ },
+ "raw": {
+  "pds_cosine": {
+   "t20_published": 0.7895280564845782,
+   "t16_derived": 0.777972412453708,
+   "t20_minus_t16": 0.011555644030870282
+  },
+  "de_wilcoxon_lfc_nmae": {
+   "t20_published": 0.9456262655321197,
+   "t16_derived": 0.9271999478590979,
+   "t20_minus_t16": 0.01842631767302183
+  },
+  "de_wilcoxon_direction_fidelity_yield_raw": {
+   "t20_published": 0.5019158727475835,
+   "t16_derived": 0.5028706923032704,
+   "t20_minus_t16": -0.000954819555686881
+  },
+  "de_wilcoxon_direction_reach_raw": {
+   "t20_published": 0.19460640685808175,
+   "t16_derived": 0.17435658720179087,
+   "t20_minus_t16": 0.020249819656290885
+  },
+  "de_wilcoxon_sig_jaccard": {
+   "t20_published": 0.03556479298090027,
+   "t16_derived": 0.034752095886096596,
+   "t20_minus_t16": 0.000812697094803673
+  },
+  "expr_mse_unbiased_capped_norm": {
+   "t20_published": 3.877523999907396,
+   "t16_derived": null,
+   "t20_minus_t16": null
+  }
+ },
+ "claim_type": "official scores (published) against t16's raws derived from its scaled members (CP-0037); not a local proxy"
+}

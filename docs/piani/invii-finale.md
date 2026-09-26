@@ -1,7 +1,7 @@
 # S-INVII — validazione e set finale
 
-- **Stato:** in corso: invio del t20 autorizzato dal proprietario il 26/09 alle 00:58; t18 e t19 non inviati.
-- **Aggiornato:** 26 settembre 2026, 01:00 (ora italiana).
+- **Stato:** in corso: t20 inviato e valutato il 26/09 (+0,139676, nuovo migliore); t18 e t19 non inviati.
+- **Aggiornato:** 26 settembre 2026, 13:20 (ora italiana).
 - **Assegnazione:** lettura di t16/t17 (fatta), t18 e candidato successivo: Claude (app,
   sessione `f4f38e58`), 25/09. Non assumere che lo slot sia libero.
 - **Scopo:** mantenere visibili le scadenze e le prove operative mentre procede la ricerca.
@@ -23,12 +23,18 @@
   22:58 UTC e aspetta la quota. Senza il t19, la regola registrata legge t20 − t16, che somma
   restrizione e modulo cis senza separarli.
 
+## Esito del 26 settembre
+
+**t20** +0,139676, rango 346 all'invio (`reports/trial_2026-09-26/status_I8FX2yQabjKjPPDTYnaW.json`).
+Sul t16 +0,0020: dentro ±0,005, non conclusivo per la regola registrata, che senza il t19 legge
+restrizione e modulo cis insieme ([confronto](../../reports/prediction_t20_2026-09-26/comparison.json)).
+PDS e reach salgono, `nmae` peggiora. La ricetta del t20 è il nuovo riferimento.
+
 ## Prossima azione
 
-Il t20 parte con la quota del 26. Appena il punteggio arriva: salvare subito lo stato (la catena
-lo fa), confrontarlo con la regola registrata (t20 − t16 in assenza del t19), scrivere il
-checkpoint e aggiornare PROGETTO §0. [LAVORO](../LAVORO.md) §2 conserva procedura e
-autorizzazioni. Questa scheda non invia e non cambia le preregistrazioni.
+Il prossimo invio porta il modello di [R-V2](modello-v2.md) quando il suo banco lo giustifica,
+con previsione e regola registrate prima; il t19 resta pronto per separare restrizione e modulo
+cis se serve. [LAVORO](../LAVORO.md) §2 conserva procedura e autorizzazioni.
 
 | Ordine | Lavoro aperto | Dipendenza / risultato atteso |
 |---|---|---|

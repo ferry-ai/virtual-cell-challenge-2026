@@ -11,13 +11,15 @@ Aggiornata il 2026-09-23 con la pulizia di D-040:
   `archivio/pre-pulizia-2026-09-23`;
 - §1, §3 e §4 sono invariati, salvo le voci 7 e 20 del §4.
 
-Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 25 settembre, con t16 e t17
-([CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md), [CP-0038](checkpoints/0038-t17-hek293t-non-attribuibile.md)).
+Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 26 settembre, con il t20
+([confronto](../reports/prediction_t20_2026-09-26/comparison.json)).
 
-## 0. Oggi — 25 settembre 2026
+## 0. Oggi — 26 settembre 2026
 
-**Il migliore è il t16: +0,137627, rango 336**: la ricetta del t15 con l'ampiezza raddoppiata
-a 0,788 ([CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md)). Il set finale arriva il 22 ottobre:
+**Il migliore è il t20: +0,139676, rango 346 all'invio**: il t16 con gli effetti ristretti a
+1,576 più il modulo cis CRISPRi. Sul t16 vale +0,0020, dentro la banda in cui la regola
+registrata non conclude, e non separa restrizione e modulo cis
+([confronto](../reports/prediction_t20_2026-09-26/comparison.json)). Il set finale arriva il 22 ottobre:
 - tre contesti nuovi (D, E, F) e 300 perturbazioni nuove;
 - le sottomissioni chiudono il 5 novembre (§1).
 
@@ -34,8 +36,9 @@ a 0,788 ([CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md)). Il set finale a
 | t11 | il t08 + Orion HCT116, le tre sorgenti a pesi uguali | trial-01 | +0,070777 | 560 | [CP-0031](checkpoints/0031-t11-punteggio-orion.md) |
 | t14 | effetti del t08 × 2,5 | `ControlModel` | +0,064892 | 564 | [CP-0032](checkpoints/0032-t14-controlmodel-fedelta.md) |
 | t15 | il t11 con ampiezza 0,394 invece di 0,197 | trial-01 | +0,107533 | 436 | [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md) |
-| **t16** | il t15 con ampiezza 0,788 | trial-01 | **+0,137627** | 336 | [CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md) |
+| t16 | il t15 con ampiezza 0,788 | trial-01 | +0,137627 | 336 | [CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md) |
 | t17 | il t15 + Orion HEK293T, ampiezza 0,4285 (stesso q99 del t15) | trial-01 | +0,108774 | 448 | [CP-0038](checkpoints/0038-t17-hek293t-non-attribuibile.md) |
+| **t20** | il t16 con effetti ristretti a 1,576 + modulo cis CRISPRi | trial-01 | **+0,139676** | 346 | [confronto](../reports/prediction_t20_2026-09-26/comparison.json) |
 
 In tutti gli invii:
 - lo scalato della `mse` vale 0 (tosato);
@@ -48,17 +51,15 @@ scalati con le ancore: il 25 settembre `vcc status` serviva solo l'ultimo invio 
 
 ### Che cosa è in corso
 
-- **t18** = il t16 con ampiezza 1,576: il passo che la regola del t16 prescrive. Ricetta,
-  previsione, regola di lettura e testi registrati il 25 settembre alle 01:30 UTC, prima della
-  generazione (`configs/recipes/t18.json`, `reports/prediction_t18_2026-09-25/`,
-  `reports/trial_2026-09-25/submission_texts.md`). Generato e impacchettato il 25 (convalida
-  superata, `reports/trial_2026-09-25/t18_packaging.json`). L'invio aspetta il via del
-  proprietario; la quota successiva si apre alle 00:05 UTC del 26.
-- **t19** = il t16 con gli effetti ristretti della cache (k 4) a 1,576: nel modello del
-  generatore muove circa quanti geni il t16, e col t18 isola la forma degli effetti. Registrato il
-  25 alle 01:37 UTC, generato e impacchettato (`reports/prediction_t19_2026-09-25/`,
-  `reports/trial_2026-09-25/t19_packaging.json`). Il banco che lo motiva è stato corretto dopo due
-  revisioni indipendenti ([CP-0039](checkpoints/0039-banco-varianti-restrizione.md)).
+- **t20** inviato il 26 settembre alle 00:06 UTC con il via del proprietario, che ha scelto il
+  solo t20: t18 e t19, impacchettati il 25, non sono stati inviati. Rispetto al t16:
+  `pds_cosine` 0,778 → 0,790, reach 0,174 → 0,195, `nmae` 0,927 → 0,946 (peggiore),
+  fedeltà invariata, `mse` grezza 3,88 (tosata).
+- **R-V2** ([scheda](piani/modello-v2.md)): il modello per il set finale, costruito adesso.
+  Fatti: cache universo K562 (9.866 bersagli); ripiego per i bersagli che nessuna sorgente
+  copre (cis + partner STRING) nello stadio 100; banco con lo scorer vero su HepG2 in coda
+  su Colab. Esiti negativi: proiezione sui programmi, modello lineare con embedding dei
+  geni, pesi per somiglianza fra linee (H6).
 - **t12, t09 e t13** non si generano: il t17 ha fatto la domanda del t12 all'ampiezza buona, il
   t09 pagherebbe il silenzio (D-035), il t13 si è fermato per la sua regola.
 
