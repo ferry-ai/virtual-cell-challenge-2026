@@ -159,3 +159,21 @@ Sui 290 bersagli non essential comuni alle coppie che li coprono l'ordine è lo 
   di un'altra linea; quanto recuperi la media di molte linee diverse non è misurato qui (lo misura il
   banco). È la prova misurata più diretta sulla domanda strategica aperta della scheda R-V2, che resta
   una decisione del proprietario.
+
+## Lo SE delle sorgenti Replogle: controllo sulle guide non mirate (misurato, 26/09 notte)
+
+La correzione per il rumore della sezione precedente falliva perché la somma degli SE² della formula
+quasi-Poisson di `effects_from_bulk` (phi 0,2) superava l'energia osservata. Se lo SE fosse sovrastimato
+in generale, `z_shrink` dello stadio 98 restringerebbe troppo gli effetti K562 in ogni ricetta. Controllo
+(`se_calibrazione/`): ogni guida non mirata (rumore puro, almeno 20 cellule) contro le altre, varianza
+osservata del fold change contro SE² della formula, per fascia di espressione dei controlli (`ntc.txt`).
+- **Misurato:** sulle guide non mirate il rapporto osservato/previsto è 0,96–1,08 nelle fasce basse e medie
+  del K562 genome-wide, 0,88 e 0,68 nelle due fasce più espresse (3–10 e oltre 10 conteggi per cellula:
+  phi 0,2 è troppa sovradispersione lì); K562 essential simile (0,94–1,23, poi 0,77 e 0,71); RPE1 1,09–1,29,
+  0,90 in cima. Sui primi 600 bersagli del K562 (`targets_k562.txt`) la mediana per voce di y²/SE² è 0,48,
+  quella attesa per rumore puro con SE giusto (0,455), mentre la media complessiva è 0,67 volte quella degli
+  SE²: la differenza viene dalla coda di voci con SE grande (pochi conteggi).
+- **Conclusione:** lo SE è grosso modo calibrato per le voci tipiche; l'ipotesi che le ricette restringano
+  troppo il K562 non è sostenuta. Resta una sovrastima per i geni più espressi (fino a 1/0,68 in varianza),
+  che pesa di più con i pesi log1p dello scorer: è la ragione principale per cui la correzione per il rumore
+  fallisce, non un difetto delle ricette.
