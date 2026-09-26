@@ -11,15 +11,15 @@ Aggiornata il 2026-09-23 con la pulizia di D-040:
   `archivio/pre-pulizia-2026-09-23`;
 - §1, §3 e §4 sono invariati, salvo le voci 7 e 20 del §4.
 
-Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 26 settembre, con il t20
-([confronto](../reports/prediction_t20_2026-09-26/comparison.json)).
+Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 27 settembre, con il t22
+([confronto](../reports/prediction_t22_2026-09-26/comparison.json)).
 
-## 0. Oggi — 26 settembre 2026
+## 0. Oggi — 27 settembre 2026
 
-**Il migliore è il t20: +0,139676, rango 346 all'invio**: il t16 con gli effetti ristretti a
-1,576 più il modulo cis CRISPRi. Sul t16 vale +0,0020, dentro la banda in cui la regola
-registrata non conclude, e non separa restrizione e modulo cis
-([confronto](../reports/prediction_t20_2026-09-26/comparison.json)). Il set finale arriva il 22 ottobre:
+**Il migliore è il t22: +0,141250, rango 337 all'invio**: il t20 con Orion HEK293T come
+quarta sorgente genome-scale a peso uguale. Sul t20 vale +0,0016, dentro la banda in cui la
+regola registrata non conclude sull'effetto di HEK293T
+([confronto](../reports/prediction_t22_2026-09-26/comparison.json)). Il set finale arriva il 22 ottobre:
 - tre contesti nuovi (D, E, F) e 300 perturbazioni nuove;
 - le sottomissioni chiudono il 5 novembre (§1).
 
@@ -38,7 +38,8 @@ registrata non conclude, e non separa restrizione e modulo cis
 | t15 | il t11 con ampiezza 0,394 invece di 0,197 | trial-01 | +0,107533 | 436 | [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md) |
 | t16 | il t15 con ampiezza 0,788 | trial-01 | +0,137627 | 336 | [CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md) |
 | t17 | il t15 + Orion HEK293T, ampiezza 0,4285 (stesso q99 del t15) | trial-01 | +0,108774 | 448 | [CP-0038](checkpoints/0038-t17-hek293t-non-attribuibile.md) |
-| **t20** | il t16 con effetti ristretti a 1,576 + modulo cis CRISPRi | trial-01 | **+0,139676** | 346 | [confronto](../reports/prediction_t20_2026-09-26/comparison.json) |
+| t20 | il t16 con effetti ristretti a 1,576 + modulo cis CRISPRi | trial-01 | +0,139676 | 346 | [confronto](../reports/prediction_t20_2026-09-26/comparison.json) |
+| **t22** | il t20 + Orion HEK293T a peso uguale (le quattro sorgenti genome-scale) | trial-01 | **+0,141250** | 337 | [confronto](../reports/prediction_t22_2026-09-26/comparison.json) |
 
 In tutti gli invii:
 - lo scalato della `mse` vale 0 (tosato);
@@ -51,10 +52,19 @@ scalati con le ancore: il 25 settembre `vcc status` serviva solo l'ultimo invio 
 
 ### Che cosa è in corso
 
-- **t20** inviato il 26 settembre alle 00:06 UTC con il via del proprietario, che ha scelto il
-  solo t20: t18 e t19, impacchettati il 25, non sono stati inviati. Rispetto al t16:
-  `pds_cosine` 0,778 → 0,790, reach 0,174 → 0,195, `nmae` 0,927 → 0,946 (peggiore),
-  fedeltà invariata, `mse` grezza 3,88 (tosata).
+- **t22** inviato il 26 settembre alle 23:06 UTC con il via del proprietario, valutato alle
+  23:40 UTC. Rispetto al t20: `nmae` 0,946 → 0,927 (migliore, la direzione misurata dal banco
+  a quattro sorgenti), fedeltà 0,502 → 0,497, `pds_cosine` 0,790 → 0,787, reach e Jaccard
+  fermi, `mse` grezza 3,88 → 3,06 (ancora tosata). Tutti i membri grezzi sono dentro gli
+  intervalli registrati. Il t20 era stato inviato il 26 alle 00:06 UTC.
+- **t23** = il t22 con la parte trasferita pesata gene per gene per la quota di risposta che
+  le linee condividono, stimata sugli universi genome-wide di K562, CD4 e HCT116 fuori dal
+  pannello. Viene dal braccio più vicino dell'atlante multi-sorgente, che non ha passato la
+  sua regola, e ha passato una regola nuova sul pannello
+  ([quota condivisa](../reports/quota_condivisa_2026-09-27/RISULTATI.md)): una prima conferma.
+  Previsione registrata prima della generazione
+  ([previsione](../reports/prediction_t23_2026-09-27/prediction.json)), si legge contro il t22;
+  generazione avviata il 27 settembre alle 01:14; l'invio aspetta il via del proprietario.
 - **R-V2** ([scheda](piani/modello-v2.md)): il modello per il set finale, costruito adesso.
   Fatti: cache universo K562 (9.866 bersagli); ripiego per i bersagli che nessuna sorgente
   copre (cis + partner STRING) nello stadio 100; banco con lo scorer vero su HepG2 in coda
@@ -71,7 +81,8 @@ scalati con le ancore: il 25 settembre `vcc status` serviva solo l'ultimo invio 
   ([CP-0033](checkpoints/0033-t15-ampiezza-doppia.md), [CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md)).
   D-006 è superata da D-042.
 - **Misurato.** HEK293T come quarta sorgente a pesi uguali non si distingue dal t15
-  ([CP-0038](checkpoints/0038-t17-hek293t-non-attribuibile.md)).
+  ([CP-0038](checkpoints/0038-t17-hek293t-non-attribuibile.md)) né, nel t22, dal t20 (+0,0016)
+  ([confronto](../reports/prediction_t22_2026-09-26/comparison.json)).
 - **Misurato dagli organizzatori**, nelle note dello scorer installato: sul pannello val A ci
   sono circa 340 geni DE per bersaglio in media, ma il 12–30% dei bersagli ne ha meno di 10; la
   fedeltà conta il segno giusto anche sui geni che nel vero non sono significativi

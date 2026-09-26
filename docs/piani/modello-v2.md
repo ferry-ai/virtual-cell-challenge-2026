@@ -1,7 +1,7 @@
 # R-V2 — il modello per il set finale, costruito adesso
 
 - **Stato:** in corso.
-- **Aggiornato:** 27 settembre 2026, 00:27 (ora italiana).
+- **Aggiornato:** 27 settembre 2026, 01:44 (ora italiana).
 - **Assegnazione:** regia e filoni F1, F2 e F4: Claude (app, sessione `f4f38e58`), dal
   26/09 alle 00:20. Filone F3: codex via agent hub, lancio annotato qui sotto. Gli altri
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.
@@ -116,8 +116,12 @@ per circa 10.000 bersagli ciascuna, contro i 300 di oggi. Su quella base:
 - **Atlante r1** ([report](../../reports/atlante_2026-09-26/RISULTATI.md)): nessun braccio passa la regola
   su 1.000 bersagli fuori dal pannello per linea tenuta fuori. Programmi di risposta e accordo per bersaglio
   perdono ovunque; il modello gerarchico non separa la deviazione di linea dal rumore (τ² mediano 0); il più
-  vicino è la quota condivisa per gene, provata ora sul pannello con regola nuova
-  ([quota condivisa](../../reports/quota_condivisa_2026-09-27/RISULTATI.md)).
+  vicino è la quota condivisa per gene, che sul pannello passa una regola nuova fissata prima
+  ([quota condivisa](../../reports/quota_condivisa_2026-09-27/RISULTATI.md)): candidato **t23**, registrato
+  il 26/09 alle 23:14 UTC ([previsione](../../reports/prediction_t23_2026-09-27/prediction.json)); l'invio
+  aspetta il via del proprietario.
+- **t22 valutato** il 26/09 alle 23:40 UTC: non conclusivo contro il t20 per la sua regola, punteggio
+  ufficiale più alto finora ([confronto](../../reports/prediction_t22_2026-09-26/comparison.json)).
 - **Linea contro stato (descrittivo, stessi bersagli):** stati diversi delle stesse cellule CD4 0,20–0,25 di
   coseno mediano fra profili, due esperimenti K562 0,16, un'altra linea dello stesso laboratorio circa 0,07,
   un'altra linea e laboratorio 0,02. È la prova misurata più forte sulla domanda strategica qui sotto.

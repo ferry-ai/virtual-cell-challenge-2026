@@ -1,0 +1,102 @@
+{
+ "written_utc": "2026-09-26T23:43:04.371144+00:00",
+ "entry_id": "hOy1AirAxJsFvpQAHH15",
+ "submission_date": "2026-09-26T23:06:09.955742Z",
+ "score_avg": 0.14125049908559736,
+ "rank_at_scoring": 337,
+ "registered_band": [
+  0.125,
+  0.152
+ ],
+ "inside_band": true,
+ "reference": {
+  "t20": 0.13967554777071428
+ },
+ "t22_minus_t20": 0.001574951314883083,
+ "t22_minus_t20_band": [
+  -0.006,
+  0.006
+ ],
+ "inside_difference_band": true,
+ "reading_rule_outcome": "t22 - t20 = +0.0016, inside +/-0.005 of t20: inconclusive within resolution by the registered rule (the case the prediction called expected). By the rule: t20 stays the reference for attribution; the four-source pool stays the plan for the final set's coverage, with its amplitude recalibrated at matched detectable genes before it is used. t22 is the highest official score so far, by a margin inside the generator's single-stream noise, which is of unknown size.",
+ "member_reading": "measured: the mean moved by +0.0016 as the sum of nMAE +0.0055, fidelity -0.0028, PDS -0.0012, reach +0.0001 and Jaccard -0.0000 (scaled members / 6). The nMAE gain is the direction the four-source bench measured on held-out sources (nMAE proxy -0.011 and -0.022); every raw member fell inside its registered range, fidelity at the edge (-0.00500 against +/-0.005).",
+ "scaled_published": {
+  "t20": {
+   "score_pds": 0.64163722130329,
+   "score_mse": 0,
+   "score_nmae": 0.08736594019574973,
+   "score_fid": -0.03534684806359105,
+   "score_reach": 0.1304318356679253,
+   "score_jac": 0.01396513752091171
+  },
+  "t22": {
+   "score_pds": 0.6341779442539317,
+   "score_mse": 0,
+   "score_nmae": 0.12037533232563229,
+   "score_fid": -0.052174993857184764,
+   "score_reach": 0.13130923734723685,
+   "score_jac": 0.013815474443968086
+  },
+  "t22_minus_t20": {
+   "score_pds": -0.007459277049358337,
+   "score_mse": 0,
+   "score_nmae": 0.03300939212988256,
+   "score_fid": -0.016828145793593714,
+   "score_reach": 0.0008774016793115513,
+   "score_jac": -0.00014966307694362462
+  },
+  "t22_minus_t20_contribution_to_mean": {
+   "score_pds": -0.0012432128415597228,
+   "score_mse": 0.0,
+   "score_nmae": 0.005501565354980427,
+   "score_fid": -0.0028046909655989522,
+   "score_reach": 0.00014623361321859188,
+   "score_jac": -2.4943846157270768e-05
+  }
+ },
+ "raw": {
+  "pds_cosine": {
+   "t22_published": 0.786759568933482,
+   "t20_published": 0.7895280564845782,
+   "t22_minus_t20": -0.002768487551096266,
+   "registered": "t20 - 0.006..+0.008",
+   "inside_registered_range": true
+  },
+  "de_wilcoxon_lfc_nmae": {
+   "t22_published": 0.9265039129038812,
+   "t20_published": 0.9456262655321197,
+   "t22_minus_t20": -0.01912235262823847,
+   "registered": "t20 - 0.020..+0.005 (lower is better)",
+   "inside_registered_range": true
+  },
+  "de_wilcoxon_direction_reach_raw": {
+   "t22_published": 0.19539948748812852,
+   "t20_published": 0.19460640685808175,
+   "t22_minus_t20": 0.0007930806300467663,
+   "registered": "t20 - 0.020..+0.010 (fewer detectable genes)",
+   "inside_registered_range": true
+  },
+  "de_wilcoxon_direction_fidelity_yield_raw": {
+   "t22_published": 0.4969192581679741,
+   "t20_published": 0.5019158727475835,
+   "t22_minus_t20": -0.004996614579609426,
+   "registered": "t20 +/- 0.005",
+   "inside_registered_range": true
+  },
+  "de_wilcoxon_sig_jaccard": {
+   "t22_published": 0.03551457408539036,
+   "t20_published": 0.03556479298090027,
+   "t22_minus_t20": -5.021889550990699e-05,
+   "registered": "t20 +/- 0.005",
+   "inside_registered_range": true
+  },
+  "expr_mse_unbiased_capped_norm": {
+   "t22_published": 3.0574372233030487,
+   "t20_published": 3.877523999907396,
+   "t22_minus_t20": -0.8200867766043474,
+   "registered": "scaled stays 0",
+   "inside_registered_range": true
+  }
+ },
+ "claim_type": "official scores (published) of t22 and t20, read with the rule registered before generation; not a local proxy"
+}
