@@ -1,0 +1,56 @@
+{
+  "written_utc": "2026-09-26T13:34:43.617366+00:00",
+  "label": "t22 = t20 plus the fourth genome-scale source, HEK293T from X-Atlas/Orion, at equal weight (K562, CD4, HCT116, HEK293T; shrunk effects, gamma 1, amplitude 1.576, cis head as t20); trial-01 generator",
+  "claim_type": "prediction registered before generation and submission; not a measurement",
+  "recipe": {
+    "path": "configs/recipes/t22.json",
+    "sha256": "3f523fe03e31f746dac96c9e9c7f920bc8b05acbc1708d3ca8676ea9a6b87df2",
+    "sha256_lf": "3f523fe03e31f746dac96c9e9c7f920bc8b05acbc1708d3ca8676ea9a6b87df2",
+    "cache": "stage 98 run r5 (r4 plus orion_hek293t; k562, cd4_* and orion_hct116 byte-identical to r4)",
+    "effects_manifest_sha256": "469ef31fcbe6f3e360b810a3599510a03a068a1bb5356243cf1ab37176909068"
+  },
+  "one_factor": "against t20 only the source set changes (HEK293T added at weight 1); amplitude, shrinkage, gamma and cis head are t20's",
+  "references": {
+    "t20": 0.13967554777071428,
+    "t16": 0.13762685268934818
+  },
+  "evidence_used": "reports/quattro_sorgenti_2026-09-26/ r1, rule fixed at 15:30 before the bench: adding HEK293T at weight 1 to the recipe's other inputs moves 0.36 dPDS_gen - 0.27 dnMAE_gen by +0.011 (+0.006..+0.016) with K562 held out and +0.001 (-0.006..+0.009) with CD4 held out; nMAE proxy -0.011 and -0.022 (intervals below zero), PDS proxy through the generator +0.023 and -0.013. Measured on the built effects: at the same amplitude t22 moves about 30% fewer detectable genes than t20 (A 295 -> 208, B 369 -> 266, C 414 -> 300; 4 / sqrt(400 mu) at >= 5 CPM), energy 0.88x, per-target correlation with t20 median 0.86. The official t17 (t15 plus HEK293T at equal weights, another amplitude) read +0.0012 against t15, inconclusive. The generator uses one random stream: t22 - t20 carries generator noise of unknown size.",
+  "expected": {
+    "score_avg_band": [
+      0.125,
+      0.152
+    ],
+    "t22_minus_t20_band": [
+      -0.006,
+      0.006
+    ],
+    "pds_raw": "t20 - 0.006..+0.008",
+    "nmae_raw": "t20 - 0.020..+0.005 (lower is better)",
+    "reach_raw": "t20 - 0.020..+0.010 (fewer detectable genes)",
+    "fid_raw": "t20 +/- 0.005",
+    "jaccard_raw": "t20 +/- 0.005",
+    "mse": "scaled stays 0"
+  },
+  "reading_rule_fixed_before_the_result": {
+    "t22 >= t20 + 0.005": "HEK293T enters the reference: the four genome-scale sources become the default pool for the final set, and their genome-wide universes are the priority data",
+    "t22 <= t20 - 0.005": "HEK293T leaves the reference; examine reach and Jaccard first (30% fewer detectable genes at the same amplitude) against PDS; the next test is the four-source pool at t20's detectable genes",
+    "otherwise": "inconclusive within resolution (the expected case): t20 stays the reference for attribution; the four-source pool stays the plan for the final set's coverage, with its amplitude recalibrated at matched detectable genes before it is used"
+  },
+  "stage100_contexts": {
+    "A": {
+      "targets_covered": 300,
+      "abs_lfc_q99_median": 0.43760691661582607,
+      "sha256": "7d6a3b15ec02478ed5c8f38a1e35d7f7e1ece2cf19eee83a06bb377079bac282"
+    },
+    "B": {
+      "targets_covered": 300,
+      "abs_lfc_q99_median": 0.43760691661582607,
+      "sha256": "7d6a3b15ec02478ed5c8f38a1e35d7f7e1ece2cf19eee83a06bb377079bac282"
+    },
+    "C": {
+      "targets_covered": 300,
+      "abs_lfc_q99_median": 0.43760691661582607,
+      "sha256": "7d6a3b15ec02478ed5c8f38a1e35d7f7e1ece2cf19eee83a06bb377079bac282"
+    }
+  }
+}

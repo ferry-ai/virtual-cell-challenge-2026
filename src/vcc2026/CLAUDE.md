@@ -13,7 +13,7 @@ disagree, so update the row in the same commit as the import.
 | `genes.py` | The official 18,533-gene output axis | 45, 74, 76, 98, 100, 101, 103, 104 | — |
 | `inference.py` | From a predicted log2 fold change to the raw counts a submission contains | 45, 72, 76, 83 | — |
 | `manifest.py` | Run manifests: what went in, what came out, and what it was run with | 45, 48, 77, 100 | — |
-| `multisource.py` | Same-target effects from several perturbation sources, on the official gene axis | 98, 100, 101, 103, 104 | `transfer_model` |
+| `multisource.py` | Same-target effects from several perturbation sources, on the official gene axis; equal-weight and hierarchical (EB) pooling | 98, 100, 101, 103, 104 | `transfer_model` |
 | `packaging.py` | Validate and package a prediction into a `.vcc` in bounded memory | 48 | — |
 | `predictor_sc.py` | A per-target log fold change, assembled from single-cell evidence | 73, 75, 76, 77, 98, 100, 104 | `multisource`, `priors` |
 | `priors.py` | Target priors that need no measurement of the target: the CRISPRi cis head and network partners | 100, 104 | — |
@@ -25,7 +25,7 @@ disagree, so update the row in the same commit as the import.
 | `sc_stream.py` | Read a dense, contiguous single-cell h5ad in one sequential pass | 71, 75, 76, 77, 79, 83, 98 | `predictor_sc` |
 | `submission.py` | Stream a prediction to .h5ad without ever holding the full matrix in RAM | 45, 76 | — |
 | `trials.py` | Trial definitions, read from `configs/trials.yaml` | 45 | — |
-| `transfer_model.py` | A learned magnitude channel for transferred knockdown effects (stage 104) | 104 | — |
+| `transfer_model.py` | A learned magnitude channel for transferred knockdown effects (stage 104); its detectable-gene scale and mixture SE also serve stage 100's EB pooling | 100, 104 | — |
 
 ## Rules for this folder
 

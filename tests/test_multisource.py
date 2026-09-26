@@ -25,7 +25,7 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
 
 from vcc2026.multisource import (  # noqa: E402
-    AxisTable, _purity_depth, effects_from_pseudobulk, mix, topk_sign_agreement,
+    AxisTable, _purity_depth, eb_components, eb_pool, effects_from_pseudobulk, mix, topk_sign_agreement,
 )
 
 
@@ -138,6 +138,40 @@ class TopKSignTests(unittest.TestCase):
         truth = np.array([-1.0, 1.0, 1.0])
         keep = np.array([False, True, True])
         self.assertEqual(topk_sign_agreement(pred, truth, (1,), keep=keep)[1], (1, 1))
+
+
+class EmpiricalBayesTests(unittest.TestCase):
+    """`eb_components` and `eb_pool`: shared response, line deviation and noise by moments."""
+
+    def test_moments_recover_the_simulated_variances(self):
+        rng = np.random.default_rng(0)
+        T, G, sigma2, tau2, se = 4000, 3, 0.04, 0.01, 0.1
+        theta = rng.normal(0, np.sqrt(sigma2), (T, G))
+        ys = [theta + rng.normal(0, np.sqrt(tau2), (T, G)) + rng.normal(0, se, (T, G)) for _ in range(3)]
+        ses = [np.full((T, G), se) for _ in range(3)]
+        s2, t2 = eb_components(ys, ses, [1.0, 1.0, 1.0], np.arange(G, dtype=float), bin_weight=1e-9, n_bins=1)
+        np.testing.assert_allclose(s2, sigma2, rtol=0.1)
+        np.testing.assert_allclose(t2, tau2, rtol=0.3)
+
+    def test_blending_weight_counts_targets_not_observations(self):
+        ys = [np.array([[1.0], [1.0]]), np.array([[1.0], [1.0]]), np.array([[1.0], [1.0]])]
+        ses = [np.zeros((2, 1))] * 3
+        # two targets, one gene, one bin: the bin median is the gene itself, so the blend is exact whatever n
+        s2, _ = eb_components(ys, ses, [1.0] * 3, np.array([1.0]), bin_weight=2.0, n_bins=1)
+        np.testing.assert_allclose(s2, [1.0])
+
+    def test_posterior_mean_matches_the_formula_and_is_zero_without_shared_variance(self):
+        ys = [np.array([[1.0, 1.0]]), np.array([[3.0, 3.0]])]
+        ses = [np.array([[0.5, 0.5]]), np.array([[1.0, 1.0]])]
+        sigma2, tau2 = np.array([1.0, 0.0]), np.array([0.25, 0.25])
+        got = eb_pool(ys, ses, [1.0, 1.0], sigma2, tau2)
+        p1, p2 = 1 / (0.25 + 0.25), 1 / (0.25 + 1.0)
+        self.assertAlmostEqual(float(got[0, 0]), (p1 * 1 + p2 * 3) / (1 + p1 + p2), places=6)
+        self.assertEqual(float(got[0, 1]), 0.0)
+        # an unmeasured pair contributes nothing; a source's SE factor lowers its weight
+        got2 = eb_pool([np.array([[np.nan, 1.0]]), np.array([[2.0, 1.0]])], ses, [1.0, 4.0], sigma2, tau2)
+        p4 = 1 / (0.25 + 4.0 * 1.0)                                   # tau2 + k SE^2 of the second source
+        self.assertAlmostEqual(float(got2[0, 0]), p4 * 2 / (1 + p4), places=6)
 
 
 class Stage100EffectTests(unittest.TestCase):

@@ -24,7 +24,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `prediction_t07_2026-09-19/`, `prediction_t08_2026-09-22/`, `prediction_t10_2026-09-23/`,
 `prediction_t11_2026-09-23/`, `prediction_t12_2026-09-23/`, `prediction_t14_2026-09-23/`,
 `prediction_t15_2026-09-23/`, `prediction_t16_2026-09-24/`, `prediction_t17_2026-09-24/`, `prediction_t18_2026-09-25/`,
-`prediction_t19_2026-09-25/`, `prediction_t20_2026-09-26/`,
+`prediction_t19_2026-09-25/`, `prediction_t20_2026-09-26/`, `prediction_t22_2026-09-26/`,
 `trial02_decision_2026-09-17/`, `anchors_2026-09-17/` (the official anchors),
 `scorer/`, `scorer_2026-09-12/` (the scorer contract), `leaderboard_2026-09-16/`.
 
@@ -36,7 +36,10 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `rete_2026-09-26/` (network smoothing of measured targets with STRING partners: small effect),
 `contesti_2026-09-26/` (H6 on Mixscale: basal similarity does not predict transfer; weighting by it loses),
 `trasferimento_appreso_2026-09-26/` (learned transfer per target-gene pair; the magnitude channel is not adopted after the isolated bench r5; agent reports),
-`risposta_comune_2026-09-26/` (the response all knockdowns share: 1-14% of the energy, does not transfer between lines),
+`risposta_comune_2026-09-26/` (the response all knockdowns share: 1-14% of the energy, does not transfer between lines; r2: the official mse follows the predicted energy),
+`quattro_sorgenti_2026-09-26/` (t20 plus HEK293T, the fourth genome-scale source: origin of t22),
+`trasferimento_gerarchico_2026-09-26/` (hierarchical empirical-Bayes transfer: does not pass its rule),
+`ricerca_sorgenti_2026-09-26/` (HIPSCI CRISPRi across 34 iPSC lines, and the public pages of the challenge),
 `banco_varianti_2026-09-25/` (leave-one-source-out bench of recipe variants: shrinkage, gamma, consensus, gating, generator noise),
 `ricerca_sorgenti_2026-09-25/` (agent search of 25 September: Mixscale provenance, microglia, Flex bridge, full catalogue of new sources),
 `pattern_mixscale_2026-09-24/` (paired reanalysis: target/stimulus heterogeneity and sign specificity),

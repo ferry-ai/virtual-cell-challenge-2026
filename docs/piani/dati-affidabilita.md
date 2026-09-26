@@ -45,6 +45,7 @@ Non richiedere che tutte le sorgenti risultino utili per chiudere l'audit.
 - [Mixscale e DLD-1](../../reports/dld1_audit_2026-09-24/RISULTATI.md);
   [affidabilità DLD-1](../../reports/dld1_ceiling_2026-09-24/RISULTATI.md).
 - Sblocca [R-MODELLI](trasferimento-modelli.md) e [R-SWITCH](switch-distribuzioni.md).
+- [Ricerca del 26 settembre](../../reports/ricerca_sorgenti_2026-09-26/RISULTATI.md): HIPSCI CRISPRi (34 linee iPSC, 7.226 bersagli; Figshare MIT verificato nei metadati), da acquisire col via del proprietario. Universi genome-wide di CD4 e Orion autorizzati e in corso il 26/09 ([R-V2](modello-v2.md)).
 
 ## Avanzamento del 25 settembre
 

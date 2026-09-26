@@ -1,0 +1,14 @@
+{
+  "name": "t22",
+  "effect": "shrunk",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "A": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "B": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "C": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}}
+  },
+  "cis": {"pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv", "max_distance_bp": 5000, "scale": 2.0},
+  "why": "t20 plus the fourth genome-scale source, HEK293T from X-Atlas/Orion (281 panel targets), at equal weight: every genome-scale CRISPRi Perturb-seq source on the official axis enters the pool, one factor changed against t20. On held-out public sources (reports/quattro_sorgenti_2026-09-26/, r1), adding HEK293T at weight 1 to the recipe's other inputs raises 0.36 dPDS - 0.27 dnMAE through the trial-01 profile model by +0.011 (+0.006..+0.016) with K562 held out and +0.001 (-0.006..+0.009) with CD4 held out: the pooled effect is less noisy (nMAE proxy -0.011 and -0.022), while the PDS proxy moves +0.023 and -0.013. Rule fixed at 15:30 before the bench; passed. Amplitude, shrinkage, gamma and cis head as t20."
+}

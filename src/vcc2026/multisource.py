@@ -32,7 +32,7 @@ import scipy.sparse as sp
 from vcc2026.predictor_sc import SourceEffects
 
 __all__ = ["effects_from_pseudobulk", "z_shrink", "zshrink_table", "zshrink_mixture", "AxisTable", "mix",
-           "shared_signal", "transfer_report"]
+           "eb_components", "eb_pool", "shared_signal", "transfer_report"]
 
 
 def z_shrink(eff: np.ndarray, se: np.ndarray, k: float = 4.0) -> np.ndarray:
@@ -244,6 +244,65 @@ def mix(tables, targets, *, weights=None, gamma: float = 0.0, reliability_scale:
             den[i, ok] += w_s * rel
     out = np.divide(num, den, out=np.zeros_like(num), where=den > 0)
     return out, den
+
+
+def eb_components(ys, ses, ks, expr, *, bin_weight: float = 100.0, n_bins: int = 50):
+    """Per-gene variances of a hierarchical model of transfer, by moments over targets.
+
+    Model, per (target, gene) and source s: ``y_s = theta + delta_s + e_s`` with ``theta`` the
+    response the sources' lines share (variance ``sigma2``), ``delta_s`` the line's own deviation
+    (variance ``tau2``) and ``e_s`` sampling noise of variance ``k_s SE_s^2``. Then
+    ``E[y_s y_s'] = sigma2`` for s != s' and ``E[y_s^2] = sigma2 + tau2 + k_s E[SE_s^2]``. ``ys`` and
+    ``ses`` are lists of (targets x genes) arrays, NaN where unmeasured; ``ks`` inflates a source's
+    SE (e.g. for the donor variance a pooled SE misses). Each estimate is floored at 0 and blended
+    with the median over genes of similar ``expr`` (``n_bins`` quantile bins), with weight
+    n / (n + ``bin_weight``), n the targets with data. Returns (sigma2, tau2), one value per gene.
+    """
+    G = ys[0].shape[1]
+    s_num, s_den = np.zeros(G), np.zeros(G)
+    pair_targets = np.zeros(ys[0].shape, dtype=bool)
+    for i in range(len(ys)):
+        for j in range(i + 1, len(ys)):
+            ok = np.isfinite(ys[i]) & np.isfinite(ys[j])
+            s_num += np.where(ok, ys[i] * ys[j], 0.0).sum(axis=0)
+            s_den += ok.sum(axis=0)
+            pair_targets |= ok
+    sigma2 = np.divide(s_num, s_den, out=np.zeros(G), where=s_den > 0)
+    excess, n_ex = np.zeros(G), np.zeros(G)
+    obs_targets = np.zeros(ys[0].shape, dtype=bool)
+    for y, se, k in zip(ys, ses, ks):
+        ok = np.isfinite(y) & np.isfinite(se)
+        excess += np.where(ok, y * y - k * se * se, 0.0).sum(axis=0)
+        n_ex += ok.sum(axis=0)
+        obs_targets |= ok
+    tau2 = np.divide(excess, n_ex, out=np.zeros(G), where=n_ex > 0) - sigma2
+    sigma2, tau2 = np.maximum(sigma2, 0.0), np.maximum(tau2, 0.0)
+    has = (s_den > 0) & (n_ex > 0) & np.isfinite(expr)
+    edges = np.quantile(expr[has], np.linspace(0, 1, n_bins + 1)[1:-1]) if has.any() else np.array([])
+    b = np.digitize(np.nan_to_num(expr, nan=-1.0), edges)
+    out = []
+    # n = distinct targets with data (a pair for sigma2, one source for tau2): the review of 26/09
+    # (reports/trasferimento_gerarchico_2026-09-26/agenti/revisione_codex.md, point 2) found that
+    # counting observations instead gave sigma2 1.5 times the weight with three sources
+    for v, n in ((sigma2, pair_targets.sum(axis=0)), (tau2, obs_targets.sum(axis=0))):
+        med = np.array([np.median(v[has & (b == k)]) if (has & (b == k)).any() else 0.0 for k in range(n_bins)])
+        out.append(np.where(has, (n * v + bin_weight * med[b]) / (n + bin_weight), 0.0))
+    return out[0], out[1]
+
+
+def eb_pool(ys, ses, ks, sigma2, tau2) -> np.ndarray:
+    """Posterior mean of the shared response under `eb_components`' model:
+    ``sum_s y_s / (tau2 + k_s SE_s^2) / (1 / sigma2 + sum_s 1 / (tau2 + k_s SE_s^2))``; 0 where no
+    source measured the pair or the gene has no shared variance (sigma2 = 0)."""
+    num = np.zeros_like(ys[0], dtype=np.float64)
+    den = np.zeros_like(ys[0], dtype=np.float64)
+    for y, se, k in zip(ys, ses, ks):
+        ok = np.isfinite(y) & np.isfinite(se)
+        prec = np.where(ok, 1.0 / np.maximum(tau2[None, :] + k * np.where(ok, se, 0.0) ** 2, 1e-12), 0.0)
+        num += prec * np.where(ok, y, 0.0)
+        den += prec
+    prior = np.divide(1.0, sigma2, out=np.full_like(sigma2, np.inf), where=sigma2 > 0)
+    return np.where(np.isfinite(prior)[None, :] & (den > 0), num / (prior[None, :] + den), 0.0).astype(np.float32)
 
 
 def topk_sign_agreement(pred: np.ndarray, truth: np.ndarray, ks, *, exclude=(), keep=None) -> dict:

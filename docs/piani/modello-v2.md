@@ -1,7 +1,7 @@
 # R-V2 — il modello per il set finale, costruito adesso
 
 - **Stato:** in corso.
-- **Aggiornato:** 26 settembre 2026, 15:15 (ora italiana).
+- **Aggiornato:** 26 settembre 2026, 15:50 (ora italiana).
 - **Assegnazione:** regia e filoni F1, F2 e F4: Claude (app, sessione `f4f38e58`), dal
   26/09 alle 00:20. Filone F3: codex via agent hub, lancio annotato qui sotto. Gli altri
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.
@@ -82,6 +82,31 @@ produrre un invio in poche ore.
 - **Agenti:** revisione di codex (due perdite trovate e corrette), critica di claude2, letteratura
   di grok, dataset di antigravity: in `reports/trasferimento_appreso_2026-09-26/agenti/`. La sessione
   `76a3a45e` lavora in parallelo sui prior dei bersagli nuovi.
+
+- **Trasferimento gerarchico con Bayes empirico** ([report](../../reports/trasferimento_gerarchico_2026-09-26/RISULTATI.md)):
+  risposta condivisa + deviazione di linea + rumore, CD4 con la varianza fra donatori. Non passa la
+  regola: con tre o quattro linee la parte condivisa, gene per gene, si stima male.
+- **Quattro sorgenti** ([report](../../reports/quattro_sorgenti_2026-09-26/RISULTATI.md)): il t20 con
+  HEK293T a peso uguale passa la regola (errore sulle ampiezze più basso, discriminazione mista):
+  candidato **t22**, registrato alle 13:34 UTC.
+- **Membro `mse`** ([report](../../reports/risposta_comune_2026-09-26/RISULTATI.md), r2): la `mse`
+  ufficiale dei nostri invii è 1 + E/4786, con E l'energia prevista; le previsioni sono quasi ortogonali
+  agli effetti reali. Serve direzione migliore, non un'ampiezza diversa.
+- **Regola D-045** del proprietario: niente stime dei tempi, niente giornate chiuse per un candidato fallito.
+
+## Piano del 26 settembre sera: l'atlante multi-sorgente
+
+Richiesta del proprietario: usare molti dati insieme, non un dataset alla volta. Download autorizzati
+alle 15:25: universo CD4 genome-wide (44,6 GB, in corso) e universi Orion HCT116 e HEK293T (46,6 e 79,7 GB
+in streaming, sottoagente di questa sessione, `reports/universo_2026-09-26/`). Con K562 fanno quattro linee
+per circa 10.000 bersagli ciascuna, contro i 300 di oggi. Su quella base:
+1. **Varianze della risposta stimate su migliaia di bersagli**: il modello gerarchico (già nello stadio 100,
+   blocco `pooling`) con σ² e τ² per gene stimati sull'universo, non sul pannello.
+2. **Coefficienti di trasferimento per gene** fra coppie di linee, appresi su tutti i bersagli condivisi
+   tranne il pannello (regime C pulito per i 300).
+3. **Programmi di risposta** da decine di migliaia di knockdown, per ridurre il rumore dei profili.
+4. **Banco con migliaia di bersagli per linea tenuta fuori**: intervalli molto più stretti di quelli di oggi.
+5. Poi HIPSCI (34 linee iPSC, catalogo in `reports/ricerca_sorgenti_2026-09-26/`), se il proprietario dà il via.
 
 ## Domanda strategica aperta
 

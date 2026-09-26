@@ -29,3 +29,16 @@ quota e aspetta il via del proprietario.
 **Description:**
 
 Trial-20's effects (shrunk same-target transfer from K562 (Replogle et al. 2022), CD4+ T cells (GSE314342) and HCT116 (X-Atlas/Orion, Xaira, CC-BY-NC-SA-4.0), scaled by 1.576, plus a CRISPRi cis head for genes whose TSS lies within 5 kb of the target's) keep their direction and are reweighted gene by gene by a learned magnitude channel: a gradient-boosting regressor, trained only on public perturbation sources (each source held out in turn and predicted from the other source families, labels centred per gene over targets so that it learns the target-specific part), predicts how much each gene moves for each target from features of the sources' measurements (pooled effects, agreement, z-scores), of the gene (responsiveness and common response across ~9,600 K562 knockdowns outside the panel, expression in the context's own control cells and in the sources), of the target (strength, expression) and of the genome (cis distance prior, STRING partners). Effects are multiplied by (predicted magnitude / its mean over genes)^0.25 and rescaled so that each context moves as many detectable genes as trial-20. No perturbed cell of the official contexts is used; the contexts enter only through their control cells. Cells are sampled exactly as in trial-01.
+
+## t22
+
+Scritto il 26 settembre verso le 15:40 (ora italiana), dopo la registrazione del t22 (13:34 UTC) e
+durante la sua generazione. Ricetta `configs/recipes/t22.json`; previsione e regola di lettura in
+`reports/prediction_t22_2026-09-26/prediction.json`. L'invio consuma quota e aspetta il via del
+proprietario.
+
+**Model name:** `trial-22 t20 + HEK293T: all four genome-scale CRISPRi sources (K562, CD4, HCT116, HEK293T) + cis head`
+
+**Description:**
+
+Identical to trial-20 with a fourth source: HEK293T from X-Atlas/Orion (Xaira, CC-BY-NC-SA-4.0) joins K562 (Replogle et al. 2022), primary CD4+ T cells (GSE314342 pseudobulk, donor-matched controls) and HCT116 (X-Atlas/Orion), so every genome-scale CRISPRi Perturb-seq source on the official gene axis enters the pool at equal weight. Each source's effect is locally shrunk (ln fold change times z^2/(z^2+4)), its mean response over targets is removed, and the reliability-weighted mean over sources is scaled by 1.576. A CRISPRi cis head adds, for genes whose TSS lies within 5 kb of the target's TSS (GENCODE v50), twice the median ln fold change of that distance bin from K562 genome-wide Perturb-seq with every panel target removed, outside the amplitude. On held-out public sources, adding HEK293T lowered an nMAE proxy of the pooled effect. Cells are sampled exactly as in trial-01 (Poisson counts at library sizes resampled from each context's own control cells; no control cell is copied). No perturbed cell of the official contexts is used.

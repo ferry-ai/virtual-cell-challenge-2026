@@ -119,6 +119,14 @@ confident prose outrunning what was measured. Hold these lines:
 - Never invent dates, results, reviewer approvals, or decisions. If you reconstruct
   history from artifacts, say so in the text.
 
+## No preset limits (D-045)
+
+- Do not estimate how long work will take, and do not cap what can be done in this session or
+  the next ones: many agents work, some on the teammate's machine, and limits are not predictable.
+- A candidate that fails its registered rule does not close the day. While the day's quota window
+  is open, pivot to other candidates, with parallel sessions and agents, and prepare a submission.
+  Registration before generation and the owner's go for every upload still apply.
+
 ## When to write a checkpoint
 
 Write one when a dataset is adopted or rejected, a benchmark completes, a submission is

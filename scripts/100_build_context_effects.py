@@ -42,6 +42,23 @@ mean over all universe targets and never including the target itself, is added b
 head; those genes are marked observed. Covered targets are untouched, so a panel every source
 covers gives the same effects with or without the block.
 
+An optional ``pooling`` block replaces the equal-weight mean with a hierarchical empirical-Bayes
+pooling (reports/trasferimento_gerarchico_2026-09-26/), and needs ``"effect": "raw"``:
+
+    "pooling": {"method": "eb", "se_factor": {"cd4_mix": 2.0}, "bin_weight": 100, "bins": 50,
+                "basal": "processed/basal_sources_2026-09-26.csv",
+                "match_detectable": "processed/effects_t20_2026-09-26"}
+
+Each selected source's raw effect minus ``gamma`` x its common response is read as a response the
+lines share, plus the line's own deviation, plus sampling noise of variance ``se_factor`` x SE^2
+(`multisource.eb_components`: variances by moments over the panel from the recipe's own sources,
+blended with genes of similar expression in ``basal``); the prediction is the posterior mean of the
+shared response (`multisource.eb_pool`). Weights only select sources. The context's ``amplitude``
+multiplies it, unless ``match_detectable`` names a stage-100 output: then a scale per context makes
+the median count of genes above 4 / sqrt(400 mu) (`transfer_model.detectable_threshold` on the
+context's control CPM in ``basal``) equal the reference's for that context, cis head included on both
+sides. A mixture saved without SE (``cd4_mix``) gets its parts' pooled SE (`transfer_model.mixture_se`).
+
 For each context this writes ``effects_<CTX>.npz`` with ``targets``, ``genes`` (the official
 axis) and ``lfc`` (ln fold change, amplitude applied), the format stage 76 reads through
 ``--effects CTX=PATH``. A (target, gene) pair no source measured stays exactly 0 and is
@@ -74,9 +91,10 @@ from vcc2026 import config  # noqa: E402
 from vcc2026.bench import log  # noqa: E402
 from vcc2026.genes import official_axis  # noqa: E402
 from vcc2026.manifest import text_sha256  # noqa: E402
-from vcc2026.multisource import AxisTable, mix, zshrink_mixture, zshrink_table  # noqa: E402
+from vcc2026.multisource import AxisTable, eb_components, eb_pool, mix, zshrink_mixture, zshrink_table  # noqa: E402
 from vcc2026.predictor_sc import load_coordinates  # noqa: E402
 from vcc2026.priors import add_cis, cis_prior, partner_effects  # noqa: E402
+from vcc2026.transfer_model import detectable_threshold, match_detectable, mixture_se  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[1]
 DATA_ROOT = config.paths().data_root  # VCC2026_DATA_ROOT, else configs/config.yaml
@@ -106,6 +124,41 @@ def load_table(cache: Path, name: str, effect: str = "shrunk", shrink_k: float |
     return tab
 
 
+def table_se(cache: Path, tab: AxisTable, targets: list[str]) -> np.ndarray:
+    """SE rows of a source on ``targets``, NaN where unknown; a mixture saved without SE (meta
+    ``from``) gets its parts' reliability-weighted SE."""
+    measured = np.isfinite(tab.raw)
+    if tab.meta.get("from") and not np.isfinite(tab.se[measured]).any():
+        return mixture_se([load_table(cache, part, "raw") for part in tab.meta["from"]], targets, tab.raw.shape[1])
+    ix = tab.index()
+    out = np.full((len(targets), tab.raw.shape[1]), np.nan, dtype=np.float32)
+    for i, t in enumerate(targets):
+        if t in ix:
+            out[i] = tab.se[ix[t]]
+    return out
+
+
+def eb_effects(cache: Path, tables: list[AxisTable], panel: list[str], gamma: float, spec: dict,
+               basal: pd.DataFrame) -> tuple[np.ndarray, np.ndarray, dict]:
+    """(posterior mean of the shared response, sources measuring each pair, summary) for one context."""
+    factors = spec.get("se_factor", {})
+    ys, ses, ks = [], [], []
+    for tab in tables:
+        ys.append(tab.rows(panel).astype(np.float64) - gamma * tab.common()[None, :])
+        ses.append(table_se(cache, tab, panel).astype(np.float64))
+        ks.append(float(factors.get(tab.name, 1.0)))
+    with np.errstate(all="ignore"):
+        expr = np.log1p(np.nanmean(np.vstack([basal[t.name].to_numpy(dtype=float) for t in tables]), axis=0))
+    sigma2, tau2 = eb_components(ys, ses, ks, expr, bin_weight=float(spec.get("bin_weight", 100.0)),
+                                 n_bins=int(spec.get("bins", 50)))
+    theta = eb_pool(ys, ses, ks, sigma2, tau2)
+    n = np.sum([np.isfinite(y) & np.isfinite(se) for y, se in zip(ys, ses)], axis=0).astype(np.float64)
+    ok = np.isfinite(expr)
+    info = {"se_factor": {t.name: k for t, k in zip(tables, ks)}, "sigma2_median": float(np.median(sigma2[ok])),
+            "tau2_median": float(np.median(tau2[ok])), "share_sigma2_above_tau2": float(np.mean(sigma2[ok] > tau2[ok]))}
+    return theta, n, info
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--recipe", type=Path, required=True)
@@ -130,6 +183,13 @@ def main() -> None:
     shrink_k = recipe.get("shrink_k")
     if effect == "zshrink" and not (isinstance(shrink_k, (int, float)) and shrink_k > 0):
         raise SystemExit(f"recipe effect 'zshrink' needs a positive number shrink_k, got {shrink_k!r}")
+    pool_spec = recipe.get("pooling")
+    if pool_spec is not None:
+        if pool_spec.get("method") != "eb":
+            raise SystemExit(f"recipe pooling method must be 'eb', got {pool_spec.get('method')!r}")
+        if effect != "raw":
+            raise SystemExit("recipe pooling 'eb' shrinks by itself and needs effect 'raw'")
+        pool_basal = pd.read_csv(DATA_ROOT / pool_spec["basal"]).set_index("gene_name").reindex(axis)
     tables = [load_table(args.cache, n, effect, shrink_k) for n in names]
     cis_spec, cis_info = recipe.get("cis"), None
     if cis_spec is not None:
@@ -153,9 +213,27 @@ def main() -> None:
     summary = {}
     for ctx, spec in recipe["contexts"].items():
         weights = {k: float(v) for k, v in spec["weights"].items()}
-        eff, w = mix([t for t in tables if weights.get(t.name, 0) > 0], panel, weights=weights,
-                     gamma=gamma, reliability_scale=scale)
-        eff *= float(spec.get("amplitude", 1.0))
+        pool_info = None
+        if pool_spec is None:
+            eff, w = mix([t for t in tables if weights.get(t.name, 0) > 0], panel, weights=weights,
+                         gamma=gamma, reliability_scale=scale)
+            eff *= float(spec.get("amplitude", 1.0))
+        else:
+            eff, w, pool_info = eb_effects(args.cache, [t for t in tables if weights.get(t.name, 0) > 0], panel,
+                                           gamma, pool_spec, pool_basal)
+            factor = float(spec.get("amplitude", 1.0))
+            if pool_spec.get("match_detectable"):
+                ref = np.load(DATA_ROOT / pool_spec["match_detectable"] / f"effects_{ctx}.npz")
+                if list(ref["targets"].astype(str)) != panel or list(ref["genes"].astype(str)) != list(axis):
+                    raise SystemExit(f"{pool_spec['match_detectable']}: targets or genes differ for context {ctx}")
+                offset = np.zeros(eff.shape, dtype=np.float32)
+                if cis_spec is not None:
+                    add_cis(offset, np.zeros(eff.shape, dtype=bool), panel, axis, cis_model, coords,
+                            int(cis_spec["max_distance_bp"]), float(cis_spec.get("scale", 1.0)))
+                cpm = pool_basal[ctx].to_numpy(dtype=float)
+                _, factor = match_detectable(eff, ref["lfc"], detectable_threshold(cpm), cpm >= 5.0, offset=offset)
+            eff = eff.astype(np.float64) * factor
+            pool_info["scale"] = factor
         covered = (w > 0).any(axis=1)
         missing = [t for t, c in zip(panel, covered) if not c]
         if missing and not recipe.get("allow_missing_targets", False):
@@ -186,6 +264,8 @@ def main() -> None:
                         "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
         if cis_counts is not None:
             summary[ctx]["cis"] = cis_counts
+        if pool_info is not None:
+            summary[ctx]["pooling"] = pool_info
         if assoc_spec is not None:
             summary[ctx]["association_targets"] = assoc_used
         log(f"{ctx}: {covered.sum()}/{len(panel)} targets, median {np.median(nz):.0f} genes moved, "

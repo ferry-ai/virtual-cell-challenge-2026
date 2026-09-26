@@ -49,3 +49,34 @@ calcola, con i pesi `log1p` dei banchi (x = 0,05 × CPM medio di A/B/C, geni del
 - **Limite:** la verità è una sorgente pubblica rumorosa, che spinge ogni rapporto verso 1; il
   membro ufficiale si calcola su cellule generate, con correzioni di campionamento (vedi il rapporto
   di claude2 sul membro `mse`, quando arriva).
+
+## r2: la `mse` ufficiale si predice dall'energia prevista
+
+Su proposta di claude2 ([analisi del membro](agenti/membro_mse_claude2.md), esperimento 1), `mse_energy.py`
+(uscita `r2/`) calcola per ogni file di effetti inviato l'energia prevista nello spazio dello scorer,
+E = Σ bersagli Σ geni (log1p(5·10⁴ · composizione prevista) − log1p(5·10⁴ · composizione dei controlli))²,
+gene del bersaglio escluso, con il passo di profilo del trial-01 (taglio a |log2 FC| 6, composizione
+rinormalizzata), media sui tre contesti; poi la confronta con la `mse` grezza pubblicata dei sei invii
+col generatore del trial-01 che hanno entrambe le cose ([energy.csv](r2/energy.csv)).
+
+| Invio | E | `mse` grezza ufficiale | 1 + E / 4786 |
+|---|---|---|---|
+| t11 | 747 | 1,129 | 1,156 |
+| t08 | 858 | 1,152 | 1,179 |
+| t10 | 1.367 | 1,297 | 1,286 |
+| t17 | 2.631 | 1,502 | 1,550 |
+| t15 | 2.978 | 1,579 | 1,622 |
+| t20 | 13.675 | 3,878 | 3,857 |
+| t22 (non ancora inviato) | 10.029 | — | 3,095 |
+
+- **Misurato:** una retta per l'origine, u − 1 = E / D con D = 4786, riproduce le sei `mse` ufficiali con
+  scarto massimo 0,048; con intercetta (u = 0,969 + 0,000212 E) lo scarto massimo è 0,038.
+- **Interpretazione:** nel modello u ≈ 1 + (‖d̂‖² − 2⟨d̂, d⟩) / D il termine incrociato fra previsione
+  e verità è trascurabile per tutti i nostri invii: le previsioni sono quasi ortogonali agli effetti
+  reali in questo spazio, e la `mse` misura solo quanta energia mettiamo. D ≈ 4.800 è l'energia degli
+  effetti reali dei 300 bersagli per contesto; il t20 ne mette 2,9 volte tanta.
+- **Conseguenza (interpretazione):** con l'attuale qualità di direzione nessuna ampiezza porta la `mse`
+  sotto il suo zero ufficiale (0,986–0,992); per scendere servirebbe un coseno aggregato con la verità di
+  almeno 0,12 (claude2, §3). La formula serve da predittore locale della `mse` di ogni candidato.
+- **Limite:** sei punti, un solo generatore; D è una media sui tre contesti e la combinazione dei tre
+  rapporti per contesto nel numero pubblicato non è verificata.

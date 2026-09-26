@@ -14,6 +14,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-045 | Nessun limite preventivo: gli agenti non stimano i tempi e non chiudono la giornata perché un candidato non passa la sua regola; finché la quota del giorno è aperta si passa ad altri candidati | attiva | 2026-09-26 | Richiesta del proprietario in chat del 26 settembre, pomeriggio |
 | D-044 | La ricerca ammette sorgenti senza bersagli in comune col pannello; i nuovi predittori si valutano soprattutto su bersagli e contesti entrambi nuovi | attiva | 2026-09-24 | Richiesta del proprietario in chat; [CP-0036](checkpoints/0036-generalizzazione-bersagli-contesti.md), [GENERALIZZAZIONE.md](GENERALIZZAZIONE.md) |
 | D-001 | I dati pesanti stanno fuori dal repository | attiva | 2026-09-11 | `configs/config.yaml`, `src/vcc2026/config.py` |
 | D-002 | Servono dati perturbazionali esterni: la previsione è zero-shot | attiva | 2026-09-11 | `docs/data_strategy_2026-09-11.md` |
@@ -60,6 +61,24 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-045 — Nessun limite preventivo su tempi e tentativi
+
+- **Mandato:** il 26 settembre, dopo che un candidato (il t21) non aveva passato la sua regola e
+  la sessione aveva proposto di non inviare nulla, il proprietario ha chiesto in chat di smettere
+  di stimare i tempi e di non porre limiti a ciò che si può fare nelle sessioni successive: molti
+  agenti lavorano, anche sul computer del compagno di squadra, e il limite non è prevedibile.
+  Mancavano più di dieci ore alla chiusura della quota, e si potevano avviare altre sessioni.
+- **Decisione:** nessun agente stima durate o mette un tetto a ciò che si può fare in questa
+  sessione o nelle prossime. Un candidato che non passa la sua regola non chiude la giornata:
+  finché la finestra di quota è aperta si passa ad altri candidati, con sessioni e agenti in
+  parallelo, e si prepara un invio.
+- **Resta invariato:** la previsione si registra prima della generazione e la soglia non si
+  sposta dopo il numero (CP-0030); ogni invio ha il via del proprietario in chat; un fattore alla
+  volta quando si vuole attribuire un effetto; nessun download o spesa di calcolo senza via.
+- **Alternative scartate:** rinunciare all'invio del giorno perché il primo candidato non passa il
+  banco; pianificare sulla base di stime di durata.
+- **Riaprire se:** lo chiede il proprietario.
 
 ### D-044 — Generalizzazione senza obbligo di bersagli in comune
 
