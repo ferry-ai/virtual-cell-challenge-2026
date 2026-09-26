@@ -34,6 +34,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `bersagli_nuovi_2026-09-26/` (targets no source measured: linear gene embeddings, STRING partners, cis),
 `universo_2026-09-26/` (genome-wide caches for every target, not only the panel: K562, CD4, Orion in progress),
 `atlante_2026-09-26/` (transfer tested on thousands of held-out targets per line, with the universes as inputs),
+`quota_condivisa_2026-09-27/` (the atlas's closest arm, the per-gene shared share, tested on the panel),
 `rete_2026-09-26/` (network smoothing of measured targets with STRING partners: small effect),
 `contesti_2026-09-26/` (H6 on Mixscale: basal similarity does not predict transfer; weighting by it loses),
 `trasferimento_appreso_2026-09-26/` (learned transfer per target-gene pair; the magnitude channel is not adopted after the isolated bench r5; agent reports),
