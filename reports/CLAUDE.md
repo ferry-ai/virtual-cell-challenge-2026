@@ -32,7 +32,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `modulo_cis_2026-09-26/` (CRISPRi cis head: repression of genes near the target's TSS, added to transfer),
 `programmi_2026-09-26/` (projection of transferred effects on shared programs: loses at every rank),
 `bersagli_nuovi_2026-09-26/` (targets no source measured: linear gene embeddings, STRING partners, cis),
-`universo_2026-09-26/` (genome-wide caches for every target, not only the panel: K562 and CD4),
+`universo_2026-09-26/` (genome-wide caches for every target, not only the panel: K562, CD4, Orion in progress),
 `atlante_2026-09-26/` (transfer tested on thousands of held-out targets per line, with the universes as inputs),
 `rete_2026-09-26/` (network smoothing of measured targets with STRING partners: small effect),
 `contesti_2026-09-26/` (H6 on Mixscale: basal similarity does not predict transfer; weighting by it loses),
