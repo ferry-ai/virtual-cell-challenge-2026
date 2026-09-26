@@ -63,3 +63,40 @@ mediano) e limitata a [0, 1]. Motivazione biologica (**ipotesi**): il knockdown 
 dà risposte condivise fra linee, quello di un regolatore di lignaggio no; dove gli ingressi non concordano,
 la linea nuova è meno prevedibile. La prima versione senza restringimento azzerava troppi bersagli e
 rompeva la scala a geni rilevabili nella prova su universi ridotti: da qui il restringimento.
+
+## Prima del banco: due controlli descrittivi (misurati, 26/09 sera)
+
+**I bersagli del pannello sono knockdown tipici, non i più forti** (`panel_strength.py`, uscita in
+`forza_pannello/`). L'energia degli effetti ristretti sui geni espressi in A/B/C (pesi log1p, gene
+bersaglio escluso) mette i bersagli del pannello al percentile mediano 0,54 fra gli altri 9.594 del K562
+(quartili 0,34 e 0,71) e 0,59 fra gli altri 11.945 del CD4 (0,32 e 0,76); la coda alta del pannello è
+anzi più sottile (90° percentile 37 contro 58 nel K562). Quindi un campione casuale di bersagli fuori dal
+pannello rappresenta il pannello, almeno per forza dell'effetto nelle linee pubbliche: la regola non
+cambia.
+
+**Che cosa condividono K562 e CD4** (`shared_response.py`, uscita in `condivisione_r1/`), sugli 8.423
+bersagli misurati da entrambi fuori dal pannello:
+- **Per bersaglio, i profili quasi non si somigliano.** Il coseno fra il profilo K562 e quello CD4 (geni
+  espressi, pesi log1p) ha mediana 0,009 (10°–90° percentile −0,022…0,058); solo 340 bersagli superano
+  0,1 e 67 superano 0,2. Anche nel decimo più forte per energia la mediana è 0,016. Il coseno è calcolato
+  su profili grezzi con il loro rumore, quindi sottostima l'accordo delle risposte vere; ma dice che per la
+  grande maggioranza dei knockdown il profilo di un'altra linea porta poca direzione utile.
+- **I bersagli che si trasferiscono** sono regolatori generali della trascrizione e dell'RNA: in testa
+  MED12 (0,46), CASC3, DHX36, ELOF1, SLC30A1, UFM1, SMG5, SUPT20H, INTS10, MED19, GABPB1, OXA1L, DENR, MED14,
+  UPF2; per classe, Mediator (mediana 0,055, 75° percentile 0,156), TFIID (75° percentile 0,134),
+  ribosoma mitocondriale (mediana 0,063). Ribosoma citoplasmatico, proteasoma e chaperonina restano vicini
+  a zero (mediane 0,002, 0,003, 0,000). **Interpretazione:** si trasferisce il knockdown di macchinari che
+  ogni cellula usa allo stesso modo (Mediator, SAGA/TFIID, Integrator, NMD, UFMilazione); quello di
+  complessi essenziali con risposte forti ma dipendenti dal contesto (ribosoma, proteasoma) no, forse
+  perché in una delle due linee le cellule con quel knockdown sono poche o già selezionate.
+- **Per gene**, dei 11.021 geni espressi in A/B/C solo 637 hanno varianza di segnale sopra il rumore in
+  entrambe le linee (2.321 nel K562, 2.066 nel CD4, con la varianza dello SE di CD4 × 2). Su quei 637 la
+  correlazione fra linee delle risposte, corretta per il rumore, ha mediana 0,30; più alta per la risposta
+  a proteine mal ripiegate (0,45), il genoma mitocondriale (0,31) e la sintesi del colesterolo (0,31), bassa
+  per il ciclo cellulare (0,11). I geni con più covarianza condivisa sono PHGDH, TXNIP, i geni MT-ND,
+  DDIT4, TRIB3, EIF4EBP1, FADS1: in buona parte bersagli di ATF4 (risposta integrata allo stress) e
+  trascritti mitocondriali (**interpretazione** sui nomi, non un test di arricchimento).
+
+Conseguenza per il banco (**ipotesi**): la parte trasferibile è piccola e concentrata in pochi programmi e
+pochi bersagli; i bracci che la isolano (varianze per gene, accordo per bersaglio) hanno qualcosa da
+trovare, ma il margine atteso sul PDS è piccolo.

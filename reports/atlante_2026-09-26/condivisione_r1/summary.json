@@ -1,0 +1,610 @@
+{
+ "stage": "atlante_2026-09-26/shared_response.py",
+ "claim_type": "descriptive, effect space, public sources; classes are symbol lists, not enrichment tests",
+ "pairs": [
+  {
+   "pair": [
+    "k562",
+    "cd4_mix"
+   ],
+   "shared_targets": 8423,
+   "cd4_se_factor": 2.0,
+   "genes_expressed_with_signal": 637,
+   "rho_quantiles_expressed": [
+    0.07089205268106932,
+    0.15308300446806697,
+    0.2919887746122681,
+    0.573672906386677,
+    1.0693346175580527
+   ],
+   "rho_by_gene_class": [
+    {
+     "class": "cell cycle",
+     "genes": 13,
+     "rho_median": 0.10698509454087725,
+     "cov_median": 0.0007057323283592512
+    },
+    {
+     "class": "cholesterol synthesis",
+     "genes": 7,
+     "rho_median": 0.30759335530670295,
+     "cov_median": 0.0009977433738858205
+    },
+    {
+     "class": "heat shock",
+     "genes": 6,
+     "rho_median": 0.22280090569811037,
+     "cov_median": 0.0009335556994447831
+    },
+    {
+     "class": "mitochondrial genome",
+     "genes": 12,
+     "rho_median": 0.3048176694092537,
+     "cov_median": 0.003321719074533066
+    },
+    {
+     "class": "other",
+     "genes": 590,
+     "rho_median": 0.2996297948759351,
+     "cov_median": 0.0007241222416990061
+    },
+    {
+     "class": "p53 targets",
+     "genes": 2,
+     "rho_median": 0.22029553491001425,
+     "cov_median": 0.0004991272387226472
+    },
+    {
+     "class": "unfolded protein response",
+     "genes": 7,
+     "rho_median": 0.4467849879154404,
+     "cov_median": 0.0016915872618229282
+    }
+   ],
+   "top_shared_genes_strong_signal": [
+    {
+     "gene": "PHGDH",
+     "class": "other",
+     "rho": 0.3985783612050571,
+     "cov": 0.01518113532679073
+    },
+    {
+     "gene": "TXNIP",
+     "class": "other",
+     "rho": 0.29940708787373305,
+     "cov": 0.008825356488959837
+    },
+    {
+     "gene": "MT-ND2",
+     "class": "mitochondrial genome",
+     "rho": 0.7614919287009618,
+     "cov": 0.005899792849114088
+    },
+    {
+     "gene": "MT-ND3",
+     "class": "mitochondrial genome",
+     "rho": 0.4841727437294618,
+     "cov": 0.005766393659017408
+    },
+    {
+     "gene": "RAB32",
+     "class": "other",
+     "rho": 0.22061271342990188,
+     "cov": 0.005415306409379105
+    },
+    {
+     "gene": "MT-ND4L",
+     "class": "mitochondrial genome",
+     "rho": 0.38145357936278773,
+     "cov": 0.004841918305464189
+    },
+    {
+     "gene": "MT-ATP6",
+     "class": "mitochondrial genome",
+     "rho": 0.31215801218854633,
+     "cov": 0.0046452224335819985
+    },
+    {
+     "gene": "MT-ND1",
+     "class": "mitochondrial genome",
+     "rho": 0.5760724988853034,
+     "cov": 0.003826901670181001
+    },
+    {
+     "gene": "DDIT4",
+     "class": "other",
+     "rho": 0.1881193786860522,
+     "cov": 0.0037407725154083964
+    },
+    {
+     "gene": "TRIB3",
+     "class": "unfolded protein response",
+     "rho": 0.48845849006189784,
+     "cov": 0.0037373588740912396
+    },
+    {
+     "gene": "MT-CYB",
+     "class": "mitochondrial genome",
+     "rho": 0.2678736737192963,
+     "cov": 0.0036139831461997752
+    },
+    {
+     "gene": "FADS1",
+     "class": "other",
+     "rho": 0.23187965543977226,
+     "cov": 0.0035361461730245803
+    },
+    {
+     "gene": "SNHG32",
+     "class": "other",
+     "rho": 0.6617441866208492,
+     "cov": 0.0034747688713820694
+    },
+    {
+     "gene": "SYCP2",
+     "class": "other",
+     "rho": 0.09772838341480493,
+     "cov": 0.0033298501616813568
+    },
+    {
+     "gene": "MT-ND4",
+     "class": "mitochondrial genome",
+     "rho": 0.2974773266299611,
+     "cov": 0.0030294550028663564
+    },
+    {
+     "gene": "NUCB2",
+     "class": "other",
+     "rho": 0.26669796270257656,
+     "cov": 0.0030262583060864613
+    },
+    {
+     "gene": "PCLAF",
+     "class": "other",
+     "rho": 0.263355267474963,
+     "cov": 0.002967458416477973
+    },
+    {
+     "gene": "MT-ND5",
+     "class": "mitochondrial genome",
+     "rho": 0.44855723756167093,
+     "cov": 0.0029643802001850677
+    },
+    {
+     "gene": "PRSS21",
+     "class": "other",
+     "rho": 0.07619265478447983,
+     "cov": 0.002906519921033638
+    },
+    {
+     "gene": "EIF4EBP1",
+     "class": "other",
+     "rho": 0.6753927469491741,
+     "cov": 0.0026428464241558423
+    },
+    {
+     "gene": "SDF2L1",
+     "class": "unfolded protein response",
+     "rho": 0.45981344222866505,
+     "cov": 0.0025617634306352014
+    },
+    {
+     "gene": "RHOBTB3",
+     "class": "other",
+     "rho": 0.215208463713805,
+     "cov": 0.0024878208455202215
+    },
+    {
+     "gene": "DHCR24",
+     "class": "cholesterol synthesis",
+     "rho": 0.3062767261783223,
+     "cov": 0.002336605955245031
+    },
+    {
+     "gene": "HSPB1",
+     "class": "heat shock",
+     "rho": 0.33048121443658607,
+     "cov": 0.0022626420133043178
+    },
+    {
+     "gene": "MT-ND6",
+     "class": "mitochondrial genome",
+     "rho": 0.17734396990940574,
+     "cov": 0.0022591673018302594
+    },
+    {
+     "gene": "TK1",
+     "class": "other",
+     "rho": 0.20891387542509837,
+     "cov": 0.0022567822355319006
+    },
+    {
+     "gene": "SLC25A4",
+     "class": "other",
+     "rho": 0.41726286918997374,
+     "cov": 0.0021902569743071144
+    },
+    {
+     "gene": "CYP51A1",
+     "class": "cholesterol synthesis",
+     "rho": 0.30759335530670295,
+     "cov": 0.0020345928137396924
+    },
+    {
+     "gene": "MT-CO3",
+     "class": "mitochondrial genome",
+     "rho": 0.17585069177713034,
+     "cov": 0.001982296566132001
+    },
+    {
+     "gene": "RHOC",
+     "class": "other",
+     "rho": 0.1798550013934615,
+     "cov": 0.0019574361854286016
+    },
+    {
+     "gene": "TRIP6",
+     "class": "other",
+     "rho": 0.35530711944218446,
+     "cov": 0.0019286178348302528
+    },
+    {
+     "gene": "SCCPDH",
+     "class": "other",
+     "rho": 0.2436952435051699,
+     "cov": 0.0019151218998375381
+    },
+    {
+     "gene": "HMGCS1",
+     "class": "cholesterol synthesis",
+     "rho": 0.15308300446806697,
+     "cov": 0.0018804069550923935
+    },
+    {
+     "gene": "IER3",
+     "class": "other",
+     "rho": 0.04114675686774024,
+     "cov": 0.00187105214607684
+    },
+    {
+     "gene": "TRIM44",
+     "class": "other",
+     "rho": 0.5706022918854982,
+     "cov": 0.0018356419581401372
+    },
+    {
+     "gene": "RRM2",
+     "class": "cell cycle",
+     "rho": 0.118739275051771,
+     "cov": 0.0018304941954744953
+    },
+    {
+     "gene": "IFITM2",
+     "class": "other",
+     "rho": 0.08523260343287882,
+     "cov": 0.0018033485186440235
+    },
+    {
+     "gene": "CAPG",
+     "class": "other",
+     "rho": 0.07105698259108603,
+     "cov": 0.0017784895576993674
+    },
+    {
+     "gene": "CCNB2",
+     "class": "other",
+     "rho": 0.14928630966920003,
+     "cov": 0.0017720614702443442
+    },
+    {
+     "gene": "CCNB1",
+     "class": "cell cycle",
+     "rho": 0.10770542633978689,
+     "cov": 0.00170320169960104
+    }
+   ],
+   "cosine_quantiles": [
+    -0.022451188081006,
+    -0.007382347465867366,
+    0.009172637029787269,
+    0.029094319697816125,
+    0.057876687756765535
+   ],
+   "cosine_by_target_class": [
+    {
+     "class": "RNA pol I/III",
+     "targets": 10,
+     "cosine_median": 0.009341235880426934,
+     "cosine_q75": 0.015503094242873702
+    },
+    {
+     "class": "RNA pol II (POLR2)",
+     "targets": 9,
+     "cosine_median": 0.004678552189275531,
+     "cosine_q75": 0.041172092061332356
+    },
+    {
+     "class": "TFIID (TAF)",
+     "targets": 17,
+     "cosine_median": 0.0022903113602667966,
+     "cosine_q75": 0.13367570194489292
+    },
+    {
+     "class": "chaperonin (CCT)",
+     "targets": 4,
+     "cosine_median": 0.0001684779025273326,
+     "cosine_q75": 0.020766496956260223
+    },
+    {
+     "class": "cohesin/condensin (SMC)",
+     "targets": 5,
+     "cosine_median": -0.01436811435805025,
+     "cosine_q75": 0.011376427029210151
+    },
+    {
+     "class": "exosome (EXOSC)",
+     "targets": 7,
+     "cosine_median": 0.017431338882552355,
+     "cosine_q75": 0.03180702288734787
+    },
+    {
+     "class": "mediator (MED)",
+     "targets": 18,
+     "cosine_median": 0.05493208205600106,
+     "cosine_q75": 0.15585846162238495
+    },
+    {
+     "class": "mito ribosome",
+     "targets": 75,
+     "cosine_median": 0.06310076842806753,
+     "cosine_q75": 0.09019008324837091
+    },
+    {
+     "class": "nucleoporins (NUP)",
+     "targets": 11,
+     "cosine_median": -0.0001238282705415197,
+     "cosine_q75": 0.025737278697368214
+    },
+    {
+     "class": "other",
+     "targets": 8033,
+     "cosine_median": 0.00888956599985595,
+     "cosine_q75": 0.028190812193833854
+    },
+    {
+     "class": "proteasome (PSM)",
+     "targets": 26,
+     "cosine_median": 0.0028415863280336906,
+     "cosine_q75": 0.02107915483766312
+    },
+    {
+     "class": "respiratory chain (NDUF/COX/UQCR/ATP5)",
+     "targets": 96,
+     "cosine_median": 0.014966811636375565,
+     "cosine_q75": 0.05705829391813094
+    },
+    {
+     "class": "ribosome (RPL/RPS)",
+     "targets": 53,
+     "cosine_median": 0.0017019389253580246,
+     "cosine_q75": 0.028761547167860727
+    },
+    {
+     "class": "spliceosome (SF3/SNRP/PRPF)",
+     "targets": 21,
+     "cosine_median": 0.021768853812912728,
+     "cosine_q75": 0.050383725928447066
+    },
+    {
+     "class": "translation initiation (EIF)",
+     "targets": 38,
+     "cosine_median": 0.03778773328564623,
+     "cosine_q75": 0.06285246943907341
+    }
+   ],
+   "top_transferring_targets": [
+    {
+     "target": "MED12",
+     "class": "mediator (MED)",
+     "cosine": 0.4570642228906255
+    },
+    {
+     "target": "CASC3",
+     "class": "other",
+     "cosine": 0.38687019539419293
+    },
+    {
+     "target": "DHX36",
+     "class": "other",
+     "cosine": 0.3762940084843819
+    },
+    {
+     "target": "ELOF1",
+     "class": "other",
+     "cosine": 0.37554531220892556
+    },
+    {
+     "target": "SLC30A1",
+     "class": "other",
+     "cosine": 0.3603505286960625
+    },
+    {
+     "target": "UFM1",
+     "class": "other",
+     "cosine": 0.34655458992359334
+    },
+    {
+     "target": "SMG5",
+     "class": "other",
+     "cosine": 0.3459676855874216
+    },
+    {
+     "target": "SUPT20H",
+     "class": "other",
+     "cosine": 0.3255792926722032
+    },
+    {
+     "target": "INTS10",
+     "class": "other",
+     "cosine": 0.3230363207032291
+    },
+    {
+     "target": "MED19",
+     "class": "mediator (MED)",
+     "cosine": 0.3098810276097444
+    },
+    {
+     "target": "GABPB1",
+     "class": "other",
+     "cosine": 0.3066372305018842
+    },
+    {
+     "target": "OXA1L",
+     "class": "other",
+     "cosine": 0.3019601775347492
+    },
+    {
+     "target": "DENR",
+     "class": "other",
+     "cosine": 0.30038639893292784
+    },
+    {
+     "target": "MED14",
+     "class": "mediator (MED)",
+     "cosine": 0.2975617933841213
+    },
+    {
+     "target": "UPF2",
+     "class": "other",
+     "cosine": 0.29625954446683966
+    },
+    {
+     "target": "WDR82",
+     "class": "other",
+     "cosine": 0.29394826712783034
+    },
+    {
+     "target": "STRAP",
+     "class": "other",
+     "cosine": 0.28682676970787274
+    },
+    {
+     "target": "THAP11",
+     "class": "other",
+     "cosine": 0.2843734175115296
+    },
+    {
+     "target": "RTRAF",
+     "class": "other",
+     "cosine": 0.2833483575808798
+    },
+    {
+     "target": "UFL1",
+     "class": "other",
+     "cosine": 0.2815158075736039
+    },
+    {
+     "target": "LEO1",
+     "class": "other",
+     "cosine": 0.2789830639193178
+    },
+    {
+     "target": "ACTR8",
+     "class": "other",
+     "cosine": 0.2771658912158166
+    },
+    {
+     "target": "INTS14",
+     "class": "other",
+     "cosine": 0.276590631713543
+    },
+    {
+     "target": "SP2",
+     "class": "other",
+     "cosine": 0.276083175337005
+    },
+    {
+     "target": "TADA1",
+     "class": "other",
+     "cosine": 0.27428627829715446
+    },
+    {
+     "target": "NAA20",
+     "class": "other",
+     "cosine": 0.27404361972132385
+    },
+    {
+     "target": "TAF6L",
+     "class": "TFIID (TAF)",
+     "cosine": 0.2737503656283906
+    },
+    {
+     "target": "BRD8",
+     "class": "other",
+     "cosine": 0.2734667476764892
+    },
+    {
+     "target": "TRRAP",
+     "class": "other",
+     "cosine": 0.27195956314089276
+    },
+    {
+     "target": "ZFC3H1",
+     "class": "other",
+     "cosine": 0.27131583297838774
+    },
+    {
+     "target": "NFRKB",
+     "class": "other",
+     "cosine": 0.26557187977317886
+    },
+    {
+     "target": "NELFCD",
+     "class": "other",
+     "cosine": 0.2643922664862298
+    },
+    {
+     "target": "HNRNPA1",
+     "class": "other",
+     "cosine": 0.26265631270610423
+    },
+    {
+     "target": "SMG7",
+     "class": "other",
+     "cosine": 0.2626504279124711
+    },
+    {
+     "target": "RPRD1B",
+     "class": "other",
+     "cosine": 0.254361302087579
+    },
+    {
+     "target": "NAA25",
+     "class": "other",
+     "cosine": 0.2529424826774743
+    },
+    {
+     "target": "TADA2B",
+     "class": "other",
+     "cosine": 0.2516993946482842
+    },
+    {
+     "target": "POGLUT3",
+     "class": "other",
+     "cosine": 0.2466930116844625
+    },
+    {
+     "target": "CMTR1",
+     "class": "other",
+     "cosine": 0.24396041898081686
+    },
+    {
+     "target": "EFR3A",
+     "class": "other",
+     "cosine": 0.24391502755421726
+    }
+   ],
+   "cosine_vs_energy_spearman": 0.10576910099710876
+  }
+ ]
+}
