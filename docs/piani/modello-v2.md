@@ -1,7 +1,7 @@
 # R-V2 — il modello per il set finale, costruito adesso
 
 - **Stato:** in corso.
-- **Aggiornato:** 26 settembre 2026, 23:25 (ora italiana).
+- **Aggiornato:** 27 settembre 2026, 00:27 (ora italiana).
 - **Assegnazione:** regia e filoni F1, F2 e F4: Claude (app, sessione `f4f38e58`), dal
   26/09 alle 00:20. Filone F3: codex via agent hub, lancio annotato qui sotto. Gli altri
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.
@@ -107,6 +107,22 @@ per circa 10.000 bersagli ciascuna, contro i 300 di oggi. Su quella base:
 3. **Programmi di risposta** da decine di migliaia di knockdown, per ridurre il rumore dei profili.
 4. **Banco con migliaia di bersagli per linea tenuta fuori**: intervalli molto più stretti di quelli di oggi.
 5. Poi HIPSCI (34 linee iPSC, catalogo in `reports/ricerca_sorgenti_2026-09-26/`), se il proprietario dà il via.
+
+## Esiti della sera e della notte del 26–27 settembre
+
+- **Universi:** CD4 genome-wide (12.238 bersagli) e Orion HCT116 (16.438) completi, con parità esatta sul
+  pannello; HEK293T in streaming; K562 essential e RPE1 per i confronti
+  ([universo](../../reports/universo_2026-09-26/CD4.md), [ORION](../../reports/universo_2026-09-26/ORION.md)).
+- **Atlante r1** ([report](../../reports/atlante_2026-09-26/RISULTATI.md)): nessun braccio passa la regola
+  su 1.000 bersagli fuori dal pannello per linea tenuta fuori. Programmi di risposta e accordo per bersaglio
+  perdono ovunque; il modello gerarchico non separa la deviazione di linea dal rumore (τ² mediano 0); il più
+  vicino è la quota condivisa per gene, provata ora sul pannello con regola nuova
+  ([quota condivisa](../../reports/quota_condivisa_2026-09-27/RISULTATI.md)).
+- **Linea contro stato (descrittivo, stessi bersagli):** stati diversi delle stesse cellule CD4 0,20–0,25 di
+  coseno mediano fra profili, due esperimenti K562 0,16, un'altra linea dello stesso laboratorio circa 0,07,
+  un'altra linea e laboratorio 0,02. È la prova misurata più forte sulla domanda strategica qui sotto.
+- **SE delle sorgenti Replogle:** calibrato sulle guide non mirate per i geni tipici; le ricette non
+  restringono troppo il K562 (ipotesi chiusa).
 
 ## Domanda strategica aperta
 

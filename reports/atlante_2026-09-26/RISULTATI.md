@@ -72,7 +72,7 @@ il pannello sta a 17,0) e più trasferibile (coseno K562×CD4 mediano 0,022 cont
 0,119 contro 0,047). Fra i bersagli comuni a K562 e CD4 fuori dal pannello sono 1.452 su 8.423. I bersagli
 di stima restano tutti, come li userebbe una ricetta. La regola non cambia.
 
-**Lancio di r1 alle 23:15 del 26/09.** HCT116 è stato finalizzato alle 21:37 (16.438 bersagli con
+**Lancio di r1 alle 23:13 del 26/09** (ora d'avvio del processo). HCT116 è stato finalizzato alle 21:37 (16.438 bersagli con
 effetti su 18.293, parità esatta con la cache r5 sui 268 del pannello, `../universo_2026-09-26/orion_hct116/`);
 HEK293T è ancora in streaming (108 file su 223). r1 gira quindi su K562, CD4 (`cd4_mix`) e HCT116, con i
 parametri di default. Gli universi K562 essential e RPE1, costruiti in serata per i confronti descrittivi,

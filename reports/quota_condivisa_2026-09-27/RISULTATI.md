@@ -27,7 +27,9 @@ una linea Orion fuori lascia K562 e CD4):
 - misure come il banco a [quattro sorgenti](../quattro_sorgenti_2026-09-26/RISULTATI.md), Δ = 0,36 × ΔPDS_gen
   − 0,27 × ΔnMAE_gen, bootstrap appaiato sui bersagli del pannello.
 
-## Regola fissata alle 00:45 del 27/09, prima di eseguire il banco
+## Regola fissata prima di eseguire il banco
+
+Scritta prima del lancio e pubblicata alle 00:25 del 27/09 (commit a434379), prima di qualunque risultato. La prima versione diceva «00:45»: un orario stimato invece che letto, corretto qui con quello del commit; il testo della regola non è cambiato.
 
 - `share` **passa** se Δ è positivo su almeno tre delle quattro sorgenti tenute fuori, con l'intervallo sopra
   zero su almeno due, e nessuna sorgente ha l'intervallo interamente sotto −0,002.
