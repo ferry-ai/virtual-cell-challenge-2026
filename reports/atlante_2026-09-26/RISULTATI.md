@@ -72,6 +72,13 @@ il pannello sta a 17,0) e più trasferibile (coseno K562×CD4 mediano 0,022 cont
 0,119 contro 0,047). Fra i bersagli comuni a K562 e CD4 fuori dal pannello sono 1.452 su 8.423. I bersagli
 di stima restano tutti, come li userebbe una ricetta. La regola non cambia.
 
+**Lancio di r1 alle 23:15 del 26/09.** HCT116 è stato finalizzato alle 21:37 (16.438 bersagli con
+effetti su 18.293, parità esatta con la cache r5 sui 268 del pannello, `../universo_2026-09-26/orion_hct116/`);
+HEK293T è ancora in streaming (108 file su 223). r1 gira quindi su K562, CD4 (`cd4_mix`) e HCT116, con i
+parametri di default. Gli universi K562 essential e RPE1, costruiti in serata per i confronti descrittivi,
+non entrano: non sono sorgenti della ricetta, e i loro bersagli sono tutti "essential", cioè fuori dalla
+popolazione di prova.
+
 ## Prima del banco: due controlli descrittivi (misurati, 26/09 sera)
 
 **I bersagli del pannello sono knockdown tipici, non i più forti** (`panel_strength.py`, uscita in
@@ -108,3 +115,47 @@ bersagli misurati da entrambi fuori dal pannello:
 Conseguenza per il banco (**ipotesi**): la parte trasferibile è piccola e concentrata in pochi programmi e
 pochi bersagli; i bracci che la isolano (varianze per gene, accordo per bersaglio) hanno qualcosa da
 trovare, ma il margine atteso sul PDS è piccolo.
+
+## Linea, laboratorio e stato cellulare: quanto si somigliano i profili (misurato, 26/09 notte)
+
+Due corse in più di `shared_response.py` (`condivisione_r2/`: le tre condizioni di CD4 fra loro e il K562
+contro CD4 a riposo e a 48 ore; `condivisione_r3/`: coppie con gli universi K562 essential e RPE1 di
+Replogle, costruiti in serata) e una tabella che le mette **sugli stessi bersagli** (`pair_table.py`,
+uscita in `confronto_r1/`). Coseno fra i profili delle due sorgenti sui geni espressi in A/B/C (pesi log1p,
+gene bersaglio escluso), **senza correzione per il rumore**; accanto le cellule per bersaglio, perché meno
+cellule vuol dire un profilo più rumoroso e un coseno più basso.
+
+Sui 1.242 bersagli "essential" misurati da tutte le coppie:
+
+| Coppia | Che cosa cambia | Cellule (mediana) | Coseno mediano | 75° percentile | Quota > 0,1 |
+|---|---|---|---|---|---|
+| CD4 Rest × CD4 Stim8hr | stesse cellule e donatori, altro stato | 208 / 213 | 0,254 | 0,357 | 95 % |
+| CD4 Stim8hr × CD4 Stim48hr | stesse cellule e donatori, altro stato | 213 / 188 | 0,214 | 0,312 | 93 % |
+| CD4 Rest × CD4 Stim48hr | stesse cellule e donatori, altro stato | 208 / 188 | 0,201 | 0,285 | 88 % |
+| K562 essential × K562 | stessa linea, altro esperimento (stesso laboratorio) | 122 / 205 | 0,160 | 0,279 | 73 % |
+| RPE1 × K562 | altra linea, stesso laboratorio | 80 / 205 | 0,074 | 0,135 | 39 % |
+| RPE1 × K562 essential | altra linea, stesso laboratorio e disegno | 80 / 122 | 0,070 | 0,131 | 37 % |
+| RPE1 × CD4 | altra linea e laboratorio | 80 / 614 | 0,032 | 0,086 | 21 % |
+| K562 × CD4 (media delle condizioni) | altra linea e laboratorio | 205 / 614 | 0,025 | 0,062 | 14 % |
+| K562 essential × CD4 | altra linea e laboratorio | 122 / 614 | 0,022 | 0,054 | 9 % |
+| K562 × CD4 Rest | altra linea e laboratorio | 205 / 208 | 0,019 | 0,053 | 12 % |
+| K562 × CD4 Stim48hr | altra linea e laboratorio | 205 / 188 | 0,018 | 0,051 | 10 % |
+
+Sui 290 bersagli non essential comuni alle coppie che li coprono l'ordine è lo stesso (stati di CD4
+0,24–0,28; RPE1 × K562 0,088; K562 × CD4 0,036–0,048).
+
+- **Misurato:** a parità di rumore, K562 contro CD4 a riposo (205 e 208 cellule) dà 0,019, le stesse
+  cellule CD4 a riposo contro stimolate 8 ore (208 e 213 cellule) danno 0,254: tredici volte tanto. La
+  stessa linea in due esperimenti diversi del laboratorio (K562 essential contro genome-wide) tiene 0,160
+  con meno cellule; un'altra linea dello stesso laboratorio scende a circa 0,07; un'altra linea di un altro
+  laboratorio a 0,02–0,03.
+- **Limiti:** le condizioni di CD4 condividono donatori e guide, quindi 0,20–0,25 è un tetto per "stessa
+  linea, altro stato"; K562 essential e genome-wide sono dello stesso laboratorio. Il coseno non è
+  corretto per il rumore: la correzione con gli SE fallisce sulle sorgenti Replogle, dove la somma degli
+  SE² della formula quasi-Poisson supera l'energia osservata (1,7 volte nel K562, 2 nel K562 essential,
+  3 nell'RPE1; `condivisione_r3/summary.json`).
+- **Interpretazione:** l'identità della linea (e con essa il laboratorio e il protocollo) pesa molto più
+  dello stato cellulare. Dati della stessa linea dei contesti valgono, per bersaglio, molto più dei dati
+  di un'altra linea; quanto recuperi la media di molte linee diverse non è misurato qui (lo misura il
+  banco). È la prova misurata più diretta sulla domanda strategica aperta della scheda R-V2, che resta
+  una decisione del proprietario.
