@@ -44,6 +44,8 @@ CHUNK = 600
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--bulk", type=Path, default=DATA / "external/K562_gwps_raw_bulk_01.h5ad")
+    ap.add_argument("--name", default="k562", help="chunk prefix; another Replogle-format bulk (RPE1, K562 "
+                                                  "essential) gets its own name")
     ap.add_argument("--panel", type=Path, default=DATA / "raw/controls/pert_counts.csv")
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--report", type=Path, required=True)
@@ -63,7 +65,7 @@ def main() -> None:
     for c, start in enumerate(range(0, len(targets), CHUNK)):
         part = targets[start:start + CHUNK]
         tab = stage98.k562_table(args.bulk, part, axis)
-        path = args.out / f"k562_{c:02d}.npz"
+        path = args.out / f"{args.name}_{c:02d}.npz"
         np.savez_compressed(path, targets=np.array(tab.targets), shrunk=tab.shrunk, raw=tab.raw, se=tab.se,
                             n_cells=tab.n_cells, meta=json.dumps(tab.meta, default=str))
         chunks.append({"file": path.name, "targets": len(tab.targets),
@@ -79,7 +81,7 @@ def main() -> None:
                "median_cells": float(idx["n_cells"].median()), "rows_in_bulk": int(labels.size),
                "control_rows": int(is_ntc.sum()), "seconds": round(time.time() - t0, 1)}
     manifest = {"stage": "universo_2026-09-26/k562_universe.py", "written_utc": datetime.now(timezone.utc).isoformat(),
-                "bulk": str(args.bulk), "out": str(args.out), "chunk_size": CHUNK, "chunks": chunks, "summary": summary,
+                "name": args.name, "bulk": str(args.bulk), "out": str(args.out), "chunk_size": CHUNK, "chunks": chunks, "summary": summary,
                 "claim_type": "effect tables (ln fold change, quasi-Poisson SE, z-shrinkage), as stage 98's k562 source"}
     for where in (args.out / "manifest.json", args.report / "manifest.json"):
         with where.open("x", encoding="utf-8") as fh:

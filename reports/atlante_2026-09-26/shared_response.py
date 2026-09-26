@@ -8,7 +8,12 @@ outside the 300 of the panel, effects centred per source over those targets (as 
   rho = cov / sqrt(signal_i signal_j): how much of a gene's knockdown-to-knockdown variation the two
   lines have in common, sampling noise removed;
 * per target: the cosine of the two lines' profiles on expressed genes (log1p weights of A/B/C, the
-  target's own gene out), each profile's energy and cells;
+  target's own gene out), each profile's energy and cells, and the same correlation with the sampling
+  noise removed (cross-product over the square root of each energy minus its noise energy, the sum of
+  weighted k SE^2); pooled over targets, sum of cross-products over the root of the summed signals, the
+  one number that compares pairs of sources with different noise. k is --cd4-se-factor for CD4 against
+  another family, 1 within a family (two CD4 conditions share their donors; two experiments on one line
+  have independent noise);
 * summaries by simple gene classes (symbol families and a few textbook response sets) and target
   classes (complexes by symbol prefix). The classes are symbol lists, not an enrichment test.
 Descriptive, effect space, public sources only; not VCC scores.
@@ -106,8 +111,9 @@ def main() -> None:
              else [(a, b) for a, b in itertools.combinations(unis, 2) if family(a) != family(b)])
     for a, b in pairs:
         shared = sorted((unis[a].targets & unis[b].targets) - panel)
-        ka = args.cd4_se_factor if family(a) == "cd4" else 1.0
-        kb = args.cd4_se_factor if family(b) == "cd4" else 1.0
+        same = family(a) == family(b)
+        ka = args.cd4_se_factor if family(a) == "cd4" and not same else 1.0
+        kb = args.cd4_se_factor if family(b) == "cd4" and not same else 1.0
         print(f"{a} x {b}: {len(shared)} shared targets outside the panel", flush=True)
 
         def block(part):
@@ -151,8 +157,14 @@ def main() -> None:
                     m[j] = False
                 u, v = ya[i, m] * w[m], yb[i, m] * w[m]
                 nu, nv = np.linalg.norm(u), np.linalg.norm(v)
-                per_target.append({"target": t, "class": target_class(t), "cosine": float(u @ v / max(nu * nv, 1e-12)),
-                                   f"energy_{a}": float(nu ** 2), f"energy_{b}": float(nv ** 2),
+                noise_u = float((w[m] ** 2 * ka * np.nan_to_num(sa[i, m]) ** 2).sum())
+                noise_v = float((w[m] ** 2 * kb * np.nan_to_num(sb[i, m]) ** 2).sum())
+                su, sv = nu ** 2 - noise_u, nv ** 2 - noise_v
+                cross = float(u @ v)
+                per_target.append({"target": t, "class": target_class(t), "cosine": float(cross / max(nu * nv, 1e-12)),
+                                   "corr_corrected": float(cross / np.sqrt(su * sv)) if su > 0 and sv > 0 else np.nan,
+                                   "cross": cross, f"energy_{a}": float(nu ** 2), f"energy_{b}": float(nv ** 2),
+                                   f"noise_{a}": noise_u, f"noise_{b}": noise_v,
                                    f"cells_{a}": float(ta.n_cells[i]), f"cells_{b}": float(tb.n_cells[i])})
         cov = np.divide(acc["ab"], acc["n_ab"], out=np.full(G, np.nan), where=acc["n_ab"] > 0)
         sig_a = np.divide(acc["aa"] - acc["se_a"], acc["n_a"], out=np.full(G, np.nan), where=acc["n_a"] > 0)
@@ -172,8 +184,15 @@ def main() -> None:
         by_target = tdf.groupby("class").agg(targets=("target", "size"), cosine_median=("cosine", "median"),
                                              cosine_q75=("cosine", lambda s: float(np.quantile(s, 0.75)))).reset_index()
         strong = ex[(ex[f"signal_{a}"] > ex[f"signal_{a}"].median()) & (ex[f"signal_{b}"] > ex[f"signal_{b}"].median())]
+        sig_a_t = (tdf[f"energy_{a}"] - tdf[f"noise_{a}"]).sum()
+        sig_b_t = (tdf[f"energy_{b}"] - tdf[f"noise_{b}"]).sum()
+        pooled = float(tdf["cross"].sum() / np.sqrt(sig_a_t * sig_b_t)) if sig_a_t > 0 and sig_b_t > 0 else None
+        cc = tdf["corr_corrected"].dropna()
         pair = {"pair": [a, b], "shared_targets": len(shared), "targets_with_rows_in_both": int(len(tdf)),
-                "cd4_se_factor": args.cd4_se_factor,
+                "se_factors": [ka, kb], "pooled_corrected_correlation": pooled,
+                "signal_share_of_energy": [float(sig_a_t / tdf[f"energy_{a}"].sum()), float(sig_b_t / tdf[f"energy_{b}"].sum())],
+                "targets_with_signal_in_both": int(len(cc)),
+                "corr_corrected_quantiles": [float(q) for q in np.quantile(cc.clip(-1, 1), [0.1, 0.25, 0.5, 0.75, 0.9])] if len(cc) else None,
                 "genes_expressed_with_signal": int(len(ex)),
                 "rho_quantiles_expressed": [float(q) for q in np.quantile(ex["rho"].clip(-2, 2), [0.1, 0.25, 0.5, 0.75, 0.9])],
                 "rho_by_gene_class": by_gene.to_dict(orient="records"),
@@ -185,7 +204,9 @@ def main() -> None:
                     np.sqrt(tdf[f"energy_{a}"] * tdf[f"energy_{b}"]), method="spearman"))}
         summary["pairs"].append(pair)
         print(json.dumps({k: v for k, v in pair.items() if k in ("pair", "shared_targets", "rho_quantiles_expressed",
-                                                                  "cosine_quantiles", "cosine_vs_energy_spearman")}), flush=True)
+                                                                  "cosine_quantiles", "cosine_vs_energy_spearman",
+                                                                  "pooled_corrected_correlation", "signal_share_of_energy",
+                                                                  "corr_corrected_quantiles")}), flush=True)
         print(by_gene.round(3).to_string(index=False), flush=True)
         print(by_target.round(3).to_string(index=False), flush=True)
     with (args.out / "summary.json").open("x", encoding="utf-8") as fh:
