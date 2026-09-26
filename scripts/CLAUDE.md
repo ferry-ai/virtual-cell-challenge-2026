@@ -5,6 +5,7 @@ submission are in §1, the final set in §7. The same stages by role:
 
 ```
 submission path   97 CD4 · 102 Orion ─▶ 98 sources ─▶ 100 effects ─▶ 45 cells (or 76) ─▶ 48 package ─▶ vcc submit
+experimental      104 learned magnitude channel on the effects, before the cells (not adopted, bench r5)
 contexts          85 markers · 99 genetic fingerprints
 checks            83 calls on a prediction · 72 generator null · 79 fast-DE parity · 101 and 103 transfer diagnostics
 benches (Colab)   73 K562 · 75 HepG2

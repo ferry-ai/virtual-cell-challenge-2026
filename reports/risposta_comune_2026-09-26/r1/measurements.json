@@ -1,0 +1,114 @@
+{
+ "stage": "risposta_comune_2026-09-26/common_response.py",
+ "claim_type": "effect-space squared-error and PDS proxies against held-out public sources; cross-fitted scales from the other three sources, oracle fits beside them; not VCC scores",
+ "inputs": {
+  "pred": "C:\\Users\\ferra\\vcc2026-data\\processed\\lct_r5_predictions_2026-09-26",
+  "cache": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-23_r5"
+ },
+ "rows": [
+  {
+   "held_out": "k562",
+   "targets": 271,
+   "common_share": 0.013317222787442518,
+   "common_transfer_r": 0.11126737715937907,
+   "t20_at_submission_scale": 1.0823210029700254,
+   "inputs": "cd4_mix+orion_hct116+orion_hek293t",
+   "t20like_scales_crossfit": [
+    0.035204677921850655
+   ],
+   "t20like_ratio_crossfit": 0.9993659352038728,
+   "t20like_ratio_oracle": 0.9988709105987574,
+   "common_scales_crossfit": [
+    0.07083625804508108
+   ],
+   "common_ratio_crossfit": 0.9996661210692072,
+   "common_ratio_oracle": 0.9989670996668368,
+   "t20like+common_scales_crossfit": [
+    0.03521665613571595,
+    0.0709635724004376
+   ],
+   "t20like+common_ratio_crossfit": 0.9990311457959342,
+   "t20like+common_ratio_oracle": 0.9978347241895743,
+   "pds_t20like": 0.779363126964603,
+   "pds_t20like_plus_common_crossfit": 0.7438157714910483
+  },
+  {
+   "held_out": "cd4_mix",
+   "targets": 292,
+   "common_share": 0.14252604501237143,
+   "common_transfer_r": 0.0461297499047757,
+   "t20_at_submission_scale": 1.261802934808331,
+   "inputs": "k562+orion_hct116+orion_hek293t",
+   "t20like_scales_crossfit": [
+    0.03962131349923223
+   ],
+   "t20like_ratio_crossfit": 0.9992883052984607,
+   "t20like_ratio_oracle": 0.9992529285128221,
+   "common_scales_crossfit": [
+    0.15473507152381846
+   ],
+   "common_ratio_crossfit": 1.0003205886432012,
+   "common_ratio_oracle": 0.9999760676279079,
+   "t20like+common_scales_crossfit": [
+    0.039672968579290535,
+    0.15506559184398547
+   ],
+   "t20like+common_ratio_crossfit": 0.9996116659373092,
+   "t20like+common_ratio_oracle": 0.9992293245871318,
+   "pds_t20like": 0.6922633338040767,
+   "pds_t20like_plus_common_crossfit": 0.610306924633997
+  },
+  {
+   "held_out": "orion_hct116",
+   "targets": 265,
+   "common_share": 0.0780508857771145,
+   "common_transfer_r": 0.056100384928165103,
+   "t20_at_submission_scale": 1.2590576578586825,
+   "inputs": "k562+cd4_mix",
+   "t20like_scales_crossfit": [
+    0.0455028017501453
+   ],
+   "t20like_ratio_crossfit": 0.9996972343359727,
+   "t20like_ratio_oracle": 0.9996647616408383,
+   "common_scales_crossfit": [
+    0.1531624169335987
+   ],
+   "common_ratio_crossfit": 1.0002601289134814,
+   "common_ratio_oracle": 0.9999999092053049,
+   "t20like+common_scales_crossfit": [
+    0.04550059514866934,
+    0.1531500545001267
+   ],
+   "t20like+common_ratio_crossfit": 0.9999549589286866,
+   "t20like+common_ratio_oracle": 0.99966470175713,
+   "pds_t20like": 0.7084048027444254,
+   "pds_t20like_plus_common_crossfit": 0.6482275586049171
+  },
+  {
+   "held_out": "orion_hek293t",
+   "targets": 278,
+   "common_share": 0.0574652488490609,
+   "common_transfer_r": 0.05601544724508661,
+   "t20_at_submission_scale": 1.4555003282192285,
+   "inputs": "k562+cd4_mix",
+   "t20like_scales_crossfit": [
+    0.050643080178550966
+   ],
+   "t20like_ratio_crossfit": 0.9999360433326385,
+   "t20like_ratio_oracle": 0.999658702411922,
+   "common_scales_crossfit": [
+    0.08291488742774962
+   ],
+   "common_ratio_crossfit": 0.9995700565141712,
+   "common_ratio_oracle": 0.9993613794862334,
+   "t20like+common_scales_crossfit": [
+    0.05066430198495929,
+    0.08314802607734893
+   ],
+   "t20like+common_ratio_crossfit": 0.9995054150109487,
+   "t20like+common_ratio_oracle": 0.9990197184619591,
+   "pds_t20like": 0.676583642833026,
+   "pds_t20like_plus_common_crossfit": 0.668688154169805
+  }
+ ]
+}

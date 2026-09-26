@@ -124,7 +124,7 @@ depositati in `G:\Il mio Drive\vcc2026\runs\queue\`.
 ## 4. Gli stadi vivi
 
 Gli stadi vivi sono quelli della tabella; ogni altro numero è in un tag d'archivio. Il
-prossimo numero libero è **104**.
+prossimo numero libero è **105**.
 `tests/test_live_tree.py` fallisce se questa tabella e la cartella `scripts/` non coincidono:
 uno stadio nuovo entra qui nello stesso commit. Le regole di uno stadio sono in
 `scripts/CLAUDE.md`, la mappa dei moduli in `src/vcc2026/CLAUDE.md`.
@@ -137,6 +137,7 @@ uno stadio nuovo entra qui nello stesso commit. Le regole di uno stadio sono in
 | `scripts/101_transfer_diagnostics.py` | Tre diagnostiche del trasferimento fra sorgenti dello stadio 98 | locale |
 | `scripts/103_direction_transfer.py` | Accordo di segno fra sorgenti sui geni che si chiamerebbero, una sorgente tenuta fuori alla volta | locale |
 | `scripts/100_build_context_effects.py` | Effetti per contesto da una ricetta di `configs/recipes/` | locale |
+| `scripts/104_learned_reweighting.py` | Ripesa gli effetti di uno stadio 100 con un canale di magnitudine appreso da sorgenti pubbliche; sperimentale, non adottato (r5 del 26/09) | locale |
 | `scripts/45_generate_prediction.py` | Cellule con il generatore di trial-01 (`--trial trial-ext-profile --effects ...`) | locale |
 | `scripts/76_generate_sc_prediction.py` | Cellule con `ControlModel` (e termini cis e di trasferimento) | locale o Colab |
 | `scripts/48_package_prediction.py` | Convalida a flusso, `.vcc`, verifica del contenitore e del payload | locale o Colab |

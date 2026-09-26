@@ -1,7 +1,7 @@
 # R-V2 — il modello per il set finale, costruito adesso
 
 - **Stato:** in corso.
-- **Aggiornato:** 26 settembre 2026, 00:50 (ora italiana).
+- **Aggiornato:** 26 settembre 2026, 15:15 (ora italiana).
 - **Assegnazione:** regia e filoni F1, F2 e F4: Claude (app, sessione `f4f38e58`), dal
   26/09 alle 00:20. Filone F3: codex via agent hub, lancio annotato qui sotto. Gli altri
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.
@@ -60,6 +60,28 @@ produrre un invio in poche ore.
   partner STRING nella cache universo, gene proprio di ogni partner escluso) prima del modulo
   cis; identico bit per bit sui 300 bersagli di oggi, provato con una ricetta solo-K562 (13 dei
   28 bersagli scoperti hanno partner).
+
+## Esiti del pomeriggio del 26 settembre
+
+- **Architettura a due canali** ([report](../../reports/trasferimento_appreso_2026-09-26/RISULTATI.md)):
+  la direzione specifica del bersaglio viene dal trasferimento (t20); un modello di gradient
+  boosting, addestrato solo su sorgenti pubbliche, impara quali geni si muovono in ogni contesto e
+  ripesa il trasferimento (`src/vcc2026/transfer_model.py`, stadio 104; `src/vcc2026/priors.py`
+  spostato dallo stadio 100, uscita identica bit per bit). r3/r4 davano +0,008…+0,010 di PDS
+  attraverso il generatore, ma l'[audit di codex](../../reports/audit_piani_dati_2026-09-26/RISULTATI.md)
+  ha trovato centri calcolati prima degli split (R-019). **Nel banco isolato (r5) il guadagno sulle
+  linee nuove scende a +0,004…+0,008 (un intervallo su tre sopra zero) e l'nMAE proxy peggiora di
+  +0,017…+0,051: per la regola fissata prima, niente t21.** Lo stadio 104 resta sperimentale,
+  fuori dalla pipeline d'invio; la sua sorte si decide sul banco F2 con lo scorer vero.
+- **Risposta comune** ([report](../../reports/risposta_comune_2026-09-26/RISULTATI.md)): la parte di
+  risposta condivisa da tutti i knockdown vale l'1–14 % dell'energia nelle sorgenti pubbliche e non
+  si trasferisce fra linee (correlazione 0,05–0,11); aggiungerla non abbassa l'errore quadratico.
+  La `mse` ufficiale non si recupera da lì.
+- **Pesi per contesto:** né la somiglianza del profilo basale (H6) né lo stato di p53 letto dai
+  controlli migliorano in modo coerente ([contesti](../../reports/contesti_2026-09-26/RISULTATI.md)).
+- **Agenti:** revisione di codex (due perdite trovate e corrette), critica di claude2, letteratura
+  di grok, dataset di antigravity: in `reports/trasferimento_appreso_2026-09-26/agenti/`. La sessione
+  `76a3a45e` lavora in parallelo sui prior dei bersagli nuovi.
 
 ## Domanda strategica aperta
 
