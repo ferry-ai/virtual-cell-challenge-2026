@@ -1,7 +1,7 @@
 # R-V2 — il modello per il set finale, costruito adesso
 
 - **Stato:** in corso.
-- **Aggiornato:** 26 settembre 2026, 15:50 (ora italiana).
+- **Aggiornato:** 26 settembre 2026, 23:25 (ora italiana).
 - **Assegnazione:** regia e filoni F1, F2 e F4: Claude (app, sessione `f4f38e58`), dal
   26/09 alle 00:20. Filone F3: codex via agent hub, lancio annotato qui sotto. Gli altri
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.
@@ -37,7 +37,7 @@ produrre un invio in poche ore.
 
 | ID | Filone | Chi | Stato | Consegna |
 |---|---|---|---|---|
-| F1 | Cache "universo": effetti di **tutti** i bersagli di ogni sorgente, non solo dei 300 | Claude | K562 fatto (9.866 bersagli, [report](../../reports/universo_2026-09-26/RISULTATI.md)); CD4 fatto il 26/09 sera (12.238 bersagli, parità esatta sul pannello, [CD4](../../reports/universo_2026-09-26/CD4.md)); Orion: pilota con parità esatta, HCT116 e HEK293T in streaming ([ORION](../../reports/universo_2026-09-26/ORION.md)) | cache nella radice dati, report con copertura |
+| F1 | Cache "universo": effetti di **tutti** i bersagli di ogni sorgente, non solo dei 300 | Claude | K562 fatto (9.866 bersagli, [report](../../reports/universo_2026-09-26/RISULTATI.md)); CD4 fatto il 26/09 sera (12.238 bersagli, parità esatta sul pannello, [CD4](../../reports/universo_2026-09-26/CD4.md)); Orion: HCT116 fatto il 26/09 alle 21:37 (16.438 bersagli con effetti, parità esatta sul pannello), HEK293T in streaming ([ORION](../../reports/universo_2026-09-26/ORION.md)); K562 essential e RPE1 di Replogle per i confronti descrittivi dell'[atlante](../../reports/atlante_2026-09-26/RISULTATI.md) | cache nella radice dati, report con copertura |
 | F2 | Banco con lo scorer vero su un contesto pubblico tenuto fuori (HepG2 a cellule singole): i sei membri, non proxy | Claude; job Colab `046_bench_hepg2_v2` in coda su Drive dal 26/09 00:17, parte quando il proprietario avvia le celle 1–2 del notebook | in coda | report con ancore locali: t16/t19/t20 e ampiezze in forma solo-K562 |
 | F3 | Motore di valutazione C/T/J e basi di confronto (nullo, risposta comune, trasferimento, modello lineare con embedding dei geni) | codex, run `20260926-001005-v2-f3-ctj`: fermato dopo 3 min per quota ChatGPT esaurita, ha lasciato un `ctj.py` parziale non applicato; il prosieguo lo fa Claude | in corso | patch rivista e test |
 | F4 | Modulo cis e pesi per contesto nel modello d'invio | Claude | cis fatto (t20) | t20 registrato |
