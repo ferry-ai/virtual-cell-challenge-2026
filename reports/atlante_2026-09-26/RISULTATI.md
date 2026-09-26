@@ -79,6 +79,46 @@ parametri di default. Gli universi K562 essential e RPE1, costruiti in serata pe
 non entrano: non sono sorgenti della ricetta, e i loro bersagli sono tutti "essential", cioè fuori dalla
 popolazione di prova.
 
+## r1: esito (misurato, 27/09 alle 00:21)
+
+Uscite in `r1/` (`summary.csv`, `measurements.json`). Tre linee tenute fuori, 1.000 bersagli di prova
+ciascuna (su 6.199 idonei), 6.000 bersagli di stima. Δ = 0,36 × ΔPDS_gen − 0,27 × ΔnMAE_gen contro
+`t22like`, intervallo bootstrap appaiato al 95 %:
+
+| Braccio | K562 fuori | CD4 fuori | HCT116 fuori |
+|---|---|---|---|
+| `prog_20` | −0,041 (−0,046…−0,035) | −0,028 (−0,033…−0,022) | −0,031 (−0,036…−0,025) |
+| `prog_50` | −0,037 (−0,043…−0,032) | −0,028 (−0,033…−0,022) | −0,031 (−0,036…−0,026) |
+| `prog_150` | −0,037 (−0,042…−0,032) | −0,026 (−0,031…−0,020) | −0,029 (−0,033…−0,025) |
+| `eb_panel` | −0,009 (−0,013…−0,004) | +0,007 (+0,002…+0,013) | −0,003 (−0,008…+0,002) |
+| `eb_atlas` | −0,006 (−0,011…−0,002) | +0,003 (−0,002…+0,009) | +0,000 (−0,005…+0,005) |
+| `share_atlas` | −0,0002 (−0,004…+0,003) | +0,008 (+0,003…+0,012) | +0,009 (+0,005…+0,014) |
+| `agree_target` | −0,020 (−0,025…−0,015) | −0,019 (−0,024…−0,014) | −0,022 (−0,031…−0,015) |
+
+**Lettura con la regola:** nessun braccio passa. Con tre linee la regola chiede Δ positivo su tutte;
+`share_atlas` è il più vicino (positivo con l'intervallo sopra zero su CD4 e HCT116, zero su K562),
+`eb_panel` ha l'intervallo interamente sotto −0,002 su K562, gli altri perdono. La forma del t22 resta
+il riferimento. r2 con HEK293T, quando l'universo è completo, è solo una replica.
+
+Che cosa si vede (**misurato**, `r1/`):
+- **I programmi perdono discriminazione:** PDS −0,06…−0,10 su tutte le linee. Le prime 20/50/150
+  componenti spiegano solo il 19–29 %, 25–38 % e 39–53 % della varianza delle risposte di 3.000 bersagli:
+  proiettare toglie il dettaglio proprio del bersaglio.
+- **Il modello gerarchico non separa la deviazione di linea dal rumore:** τ² mediano 0 su tutte le linee
+  (i momenti y² − k·SE² − σ² vanno sotto zero e vengono troncati), σ² dall'atlante più grande di quello
+  stimato sui soli bersagli di prova (5–11 volte). I bracci EB diventano medie pesate sull'inverso della
+  varianza; a parità di geni rilevabili hanno 0,20–0,30 volte l'energia di `t22like`.
+- **`share_atlas`**, dove τ² è positivo, abbassa i geni con varianza propria della linea (quota condivisa
+  mediana 1 con K562 o HCT116 fuori, 0,69 con CD4 fuori): PDS +0,013 con
+  CD4 fuori e +0,030 con HCT116 fuori, −0,002 con K562 fuori; energia 0,37–0,63 volte quella di `t22like`.
+- **L'accordo per bersaglio** è piccolo quasi ovunque (mediana 0,016–0,021, rapporto complessivo
+  0,016–0,024): ridistribuire l'ampiezza su pochi bersagli triplica l'energia e peggiora l'nMAE.
+
+**Interpretazione:** la media a pesi uguali del t22 non si batte riponderando sorgenti o bersagli con
+quello che le sorgenti dicono di sé; l'unico segnale è una riponderazione per gene (la quota condivisa),
+positiva su due linee su tre. Una prova sul pannello con regola nuova sarebbe un'ipotesi nuova,
+suggerita da questo quasi-passaggio: va registrata come tale e letta con quella cautela.
+
 ## Prima del banco: due controlli descrittivi (misurati, 26/09 sera)
 
 **I bersagli del pannello sono knockdown tipici, non i più forti** (`panel_strength.py`, uscita in
