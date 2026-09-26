@@ -37,3 +37,25 @@ Scritta prima del lancio e pubblicata alle 00:25 del 27/09 (commit a434379), pri
   e la stessa scala a geni rilevabili per contesto; richiede codice nello stadio 100, una previsione registrata
   prima della generazione e il via del proprietario all'invio.
 - Se non passa, la quota per gene è chiusa per il trasferimento e il t22 resta il riferimento.
+
+## r1: esito (misurato, 27/09 alle 00:51)
+
+Uscite in `r1/` (`summary.csv`, `measurements.json`, la quota usata per ogni sorgente tenuta fuori in
+`share_<sorgente>.npy`). Δ = 0,36 × ΔPDS_gen − 0,27 × ΔnMAE_gen di `share` contro `t22like`:
+
+| Tenuta fuori | Bersagli | Δ | Intervallo 95 % | ΔPDS (effetti) | Energia rispetto a `t22like` |
+|---|---|---|---|---|---|
+| K562 | 271 | −0,0015 | −0,0067…+0,0040 | +0,000 | 0,59 |
+| CD4 | 292 | +0,0122 | +0,0053…+0,0189 | +0,038 | 0,35 |
+| HCT116 | 265 | +0,0045 | −0,0033…+0,0122 | +0,020 | 0,42 |
+| HEK293T | 278 | +0,0129 | +0,0049…+0,0212 | +0,051 | 0,42 |
+
+**Lettura con la regola: passa.** Δ positivo su tre sorgenti su quattro, intervallo sopra zero su due (CD4 e
+HEK293T), nessuna sorgente con l'intervallo interamente sotto −0,002 (K562 arriva a +0,004). La quota
+mediana per gene è 1 in ogni prova; i geni sotto 0,5 sono il 24 % (varianze senza K562), 16 % (senza CD4)
+e 9–10 % (senza le Orion). Candidato **t23**, come dice la regola.
+
+- **Misurato:** il guadagno viene dalla discriminazione (PDS nello spazio degli effetti +0,02…+0,05 dove passa),
+  con l'nMAE quasi fermo; a parità di geni rilevabili l'energia scende a 0,35–0,59 di quella di `t22like`.
+- **Cautela:** l'ipotesi è stata scelta dopo aver visto l'atlante r1; il pannello è indipendente dall'atlante,
+  ma il risultato va letto come una prima conferma, non come una misura definitiva. Proxy, non punteggi VCC.
