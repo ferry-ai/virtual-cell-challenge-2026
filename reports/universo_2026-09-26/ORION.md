@@ -176,3 +176,21 @@ if t in idx.index and idx.at[t, "chunk"]:          # chunk vuoto: nessun pool co
   (decisione del proprietario, D-004).
 - L'esecuzione dipende dal portatile: se va in sospensione, i download si fermano finché non si
   risveglia.
+
+## Esito (misurato, 27 settembre; manifest del finalize e log della catena)
+
+La catena è arrivata in fondo: il finalize di HEK293T è uscito con 0 alle 01:44:48 del 27/09 (ora
+locale). Nel log non ci sono errori né ripartenze, e nessuna delle due linee ha ricostruito un pool.
+
+| Linea | File letti | Bersagli con cellule | con effetti | con effetti sull'asse | del pannello con effetti | Cellule nel filtro | Controlli | Blocchi | Finalize (UTC) |
+|---|---|---|---|---|---|---|---|---|---|
+| HCT116 | 109 (46,6 GB) | 18.293 | 16.438 | 15.647 | 268 | 3.409.169 | 165.777 | 28 (2,4 GB) | 26/09 19:37 |
+| HEK293T | 223 (79,7 GB) | 18.311 | 17.270 | 16.427 | 281 | 4.534.299 | 218.838 | 29 (2,7 GB) | 26/09 23:44 |
+
+- **Parità con la cache r5 del pannello:** esatta per entrambe le linee, sui 268 e 281 bersagli del
+  pannello. raw, se e shrunk sono identici (differenza massima 0, nessuna maschera diversa) e n_cells
+  coincide.
+- **Cellule per bersaglio con effetti** (mediana): 164 per HCT116, 211 per HEK293T.
+- **Memoria:** il picco privato dello stream è stato di 2.437 MiB per HCT116, in un solo processo, e di
+  1.872 MiB per HEK293T, in segmenti da 10 file. I finalize sono rimasti sotto 1.040 MiB privati.
+- Copie di indice e manifest in `orion_hct116/` e `orion_hek293t/`.
