@@ -7,7 +7,9 @@ genome-wide universe (reports/universo_2026-09-26/: K562, CD4, Orion HCT116 and 
 line H (its family excluded from everything: an Orion line held out leaves K562 and CD4 as inputs):
 
 * test targets: a seeded sample of targets measured in H and in at least two input sources, none of the
-  300 panel targets;
+  300 panel targets and none of the 2,057 targets of Replogle's K562 essential screen (--essential): the
+  panel has none of them, and they are a stronger, more transferable population
+  (reports/atlante_2026-09-26/RISULTATI.md, amendment made before the first run);
 * estimation targets: every other target measured in at least two input sources, also outside the panel,
   disjoint from the test targets (at most --max-estimation-targets, seeded). The per-gene variances of
   the hierarchical model (the moments of `multisource.eb_components`, CD4's SE variance times
@@ -47,6 +49,7 @@ import sys
 import time
 from pathlib import Path
 
+import h5py
 import numpy as np
 import pandas as pd
 
@@ -164,6 +167,8 @@ def main() -> None:
     ap.add_argument("--panel", type=Path, default=DATA / "raw/controls/pert_counts.csv")
     ap.add_argument("--coords", type=Path, default=DATA / "external/annotation/gene_coordinates_gencode_v50.tsv")
     ap.add_argument("--recipe", type=Path, default=REPO / "configs/recipes/t22.json")
+    ap.add_argument("--essential", type=Path, default=DATA / "external/K562_essential_raw_bulk_01.h5ad",
+                    help="Replogle-format bulk whose targets are kept out of the test targets (the panel has none)")
     ap.add_argument("--save", type=Path, default=None, help="optional folder for the arms and truth per held-out line")
     ap.add_argument("--out", type=Path, required=True)
     args = ap.parse_args()
@@ -176,6 +181,11 @@ def main() -> None:
     G = axis.size
     col = {g: i for i, g in enumerate(axis)}
     panel = set(pd.read_csv(args.panel).iloc[:, 0].astype(str))
+    with h5py.File(args.essential, "r") as fh:
+        labels = [s.decode() for s in fh["obs/gene_transcript"][:]]
+    essential = {lab.split("_")[1] for lab in labels if "non-targeting" not in lab}
+    log(f"{len(essential)} essential-screen targets kept out of the test targets "
+        f"({len(essential & panel)} of them in the panel)")
     basal = pd.read_csv(args.basal).set_index("gene_name").reindex(axis)
     cpm_abc = basal[["A", "B", "C"]].mean(axis=1).to_numpy()
     xa = 0.05 * cpm_abc
@@ -201,7 +211,7 @@ def main() -> None:
         ks = [args.cd4_se_factor if family(n) == "cd4" else 1.0 for n in inputs]
         count = {t: sum(t in unis[n].targets for n in inputs) for t in set().union(*(unis[n].targets for n in inputs))}
         eligible = sorted(t for t, c in count.items() if c >= args.min_inputs and t not in panel)
-        test_pool = [t for t in eligible if t in unis[held].targets]
+        test_pool = [t for t in eligible if t in unis[held].targets and t not in essential]
         test = sorted(rng.choice(test_pool, size=min(args.test_targets, len(test_pool)), replace=False).tolist())
         test_set = set(test)
         est = [t for t in eligible if t not in test_set]
@@ -423,6 +433,7 @@ def main() -> None:
             rows_out.append(row)
         meta.append({"held_out": held, "inputs": inputs, "cd4_se_factor": args.cd4_se_factor, "test_targets": T,
                      "test_pool": len(test_pool), "estimation_targets": len(est),
+                     "essential_in_estimation": int(len(set(est) & essential)),
                      "pair_targets_median_expressed": float(np.median(pair_t[gate])),
                      "sigma2_median_atlas": float(np.median(sigma2[gate])), "tau2_median_atlas": float(np.median(tau2[gate])),
                      "sigma2_median_panel": float(np.median(s2_panel[gate])), "tau2_median_panel": float(np.median(t2_panel[gate])),

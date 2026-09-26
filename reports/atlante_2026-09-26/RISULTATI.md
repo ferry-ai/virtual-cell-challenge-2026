@@ -64,6 +64,14 @@ dà risposte condivise fra linee, quello di un regolatore di lignaggio no; dove 
 la linea nuova è meno prevedibile. La prima versione senza restringimento azzerava troppi bersagli e
 rompeva la scala a geni rilevabili nella prova su universi ridotti: da qui il restringimento.
 
+**Emendamento alle 20:05, prima di qualunque esecuzione vera del banco:** i bersagli di prova escludono
+i 2.057 bersagli dello schermo K562 "essential" di Replogle (`--essential`). Motivo, misurato nei controlli
+qui sotto e in `condivisione_r1/`: il pannello non ne contiene nessuno (0 su 300), e sono un'altra
+popolazione, con energia mediana doppia (29,5 contro 14,5 degli altri bersagli fuori dal pannello nel K562;
+il pannello sta a 17,0) e più trasferibile (coseno K562×CD4 mediano 0,022 contro 0,008; 90° percentile
+0,119 contro 0,047). Fra i bersagli comuni a K562 e CD4 fuori dal pannello sono 1.452 su 8.423. I bersagli
+di stima restano tutti, come li userebbe una ricetta. La regola non cambia.
+
 ## Prima del banco: due controlli descrittivi (misurati, 26/09 sera)
 
 **I bersagli del pannello sono knockdown tipici, non i più forti** (`panel_strength.py`, uscita in

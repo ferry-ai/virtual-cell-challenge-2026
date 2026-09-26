@@ -78,6 +78,9 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--universe", action="append", required=True, metavar="NAME=DIR")
     ap.add_argument("--cd4-se-factor", type=float, default=2.0)
+    ap.add_argument("--pairs", nargs="*", default=None, metavar="A:B",
+                    help="explicit pairs of universe names (also of the same family, e.g. two CD4 conditions); "
+                         "default: every pair of different families")
     ap.add_argument("--basal", type=Path, default=DATA / "processed/basal_sources_2026-09-26.csv")
     ap.add_argument("--panel", type=Path, default=DATA / "raw/controls/pert_counts.csv")
     ap.add_argument("--out", type=Path, required=True)
@@ -99,17 +102,22 @@ def main() -> None:
     summary = {"stage": "atlante_2026-09-26/shared_response.py", "claim_type": "descriptive, effect space, public "
                "sources; classes are symbol lists, not enrichment tests", "pairs": []}
     gcls = np.array([gene_class(g) for g in axis])
-    for a, b in itertools.combinations(unis, 2):
-        if family(a) == family(b):
-            continue
+    pairs = ([tuple(x.split(":")) for x in args.pairs] if args.pairs
+             else [(a, b) for a, b in itertools.combinations(unis, 2) if family(a) != family(b)])
+    for a, b in pairs:
         shared = sorted((unis[a].targets & unis[b].targets) - panel)
         ka = args.cd4_se_factor if family(a) == "cd4" else 1.0
         kb = args.cd4_se_factor if family(b) == "cd4" else 1.0
         print(f"{a} x {b}: {len(shared)} shared targets outside the panel", flush=True)
 
         def block(part):
+            # a target listed in an index can lack a row in one table (a CD4 condition): keep the common ones
             ta, tb = unis[a].table(part), unis[b].table(part)
-            assert ta.targets == part and tb.targets == part
+            common = [t for t in ta.targets if t in set(tb.targets)]
+            if common != ta.targets:
+                ta = unis[a].table(common)
+            if common != tb.targets:
+                tb = unis[b].table(common)
             return ta, tb
 
         tot = {k: np.zeros(G) for k in ("a", "b")}
@@ -124,8 +132,8 @@ def main() -> None:
         acc = {k: np.zeros(G) for k in ("ab", "n_ab", "aa", "se_a", "n_a", "bb", "se_b", "n_b")}
         per_target = []
         for b0 in range(0, len(shared), BLOCK):
-            part = shared[b0:b0 + BLOCK]
-            ta, tb = block(part)
+            ta, tb = block(shared[b0:b0 + BLOCK])
+            part = ta.targets
             ya, yb = ta.raw.astype(np.float64) - ca[None, :], tb.raw.astype(np.float64) - cb[None, :]
             sa, sb = ta.se.astype(np.float64), tb.se.astype(np.float64)
             ok = np.isfinite(ya) & np.isfinite(yb)
@@ -164,7 +172,8 @@ def main() -> None:
         by_target = tdf.groupby("class").agg(targets=("target", "size"), cosine_median=("cosine", "median"),
                                              cosine_q75=("cosine", lambda s: float(np.quantile(s, 0.75)))).reset_index()
         strong = ex[(ex[f"signal_{a}"] > ex[f"signal_{a}"].median()) & (ex[f"signal_{b}"] > ex[f"signal_{b}"].median())]
-        pair = {"pair": [a, b], "shared_targets": len(shared), "cd4_se_factor": args.cd4_se_factor,
+        pair = {"pair": [a, b], "shared_targets": len(shared), "targets_with_rows_in_both": int(len(tdf)),
+                "cd4_se_factor": args.cd4_se_factor,
                 "genes_expressed_with_signal": int(len(ex)),
                 "rho_quantiles_expressed": [float(q) for q in np.quantile(ex["rho"].clip(-2, 2), [0.1, 0.25, 0.5, 0.75, 0.9])],
                 "rho_by_gene_class": by_gene.to_dict(orient="records"),
