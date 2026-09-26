@@ -59,6 +59,20 @@ the median count of genes above 4 / sqrt(400 mu) (`transfer_model.detectable_thr
 context's control CPM in ``basal``) equal the reference's for that context, cis head included on both
 sides. A mixture saved without SE (``cd4_mix``) gets its parts' pooled SE (`transfer_model.mixture_se`).
 
+An optional ``gene_share`` block weights the transferred part gene by gene
+(reports/quota_condivisa_2026-09-27/):
+
+    "gene_share": {"path": "reports/quota_condivisa_2026-09-27/t23/share.csv",
+                   "basal": "processed/basal_sources_2026-09-26.csv",
+                   "match_detectable": "processed/effects_t22_2026-09-26"}
+
+``path`` (in the repository) gives every gene of the official axis a share in [0, 1]: the part of its
+knockdown response that the universes' lines have in common, sigma2 / (sigma2 + tau2), 0 where they
+cannot estimate it. The transferred part (amplitude applied) is multiplied by it; if
+``match_detectable`` names a stage-100 output, a scale per context then makes the median count of
+detectable genes equal the reference's, cis head included on both sides, as in ``pooling``. It acts
+before the association and cis blocks, and cannot be combined with ``pooling``.
+
 For each context this writes ``effects_<CTX>.npz`` with ``targets``, ``genes`` (the official
 axis) and ``lfc`` (ln fold change, amplitude applied), the format stage 76 reads through
 ``--effects CTX=PATH``. A (target, gene) pair no source measured stays exactly 0 and is
@@ -159,6 +173,29 @@ def eb_effects(cache: Path, tables: list[AxisTable], panel: list[str], gamma: fl
     return theta, n, info
 
 
+def load_gene_share(path: Path, axis: np.ndarray) -> np.ndarray:
+    """A share in [0, 1] for every gene of ``axis``, from a CSV with columns ``gene`` and ``share``."""
+    table = pd.read_csv(path)
+    if table["gene"].duplicated().any():
+        raise ValueError(f"{path}: a gene appears twice")
+    share = table.set_index("gene")["share"].reindex(axis)
+    if share.isna().any() or ((share < 0) | (share > 1)).any():
+        raise ValueError(f"{path}: needs a share in [0, 1] for every gene of the official axis")
+    return share.to_numpy(dtype=np.float64)
+
+
+def apply_gene_share(eff: np.ndarray, share: np.ndarray, reference: np.ndarray | None = None,
+                     offset: np.ndarray | None = None, cpm: np.ndarray | None = None) -> tuple[np.ndarray, float]:
+    """``eff`` times the share of each gene; with a ``reference`` (a stage-100 lfc of the same context),
+    scaled so that the median count of detectable genes, ``offset`` (the cis head) added on both sides,
+    equals the reference's (`transfer_model.match_detectable`). Returns (effects, scale)."""
+    out = np.asarray(eff, dtype=np.float64) * share[None, :]
+    if reference is None:
+        return out, 1.0
+    _, scale = match_detectable(out, reference, detectable_threshold(cpm), cpm >= 5.0, offset=offset)
+    return out * scale, scale
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--recipe", type=Path, required=True)
@@ -190,6 +227,18 @@ def main() -> None:
         if effect != "raw":
             raise SystemExit("recipe pooling 'eb' shrinks by itself and needs effect 'raw'")
         pool_basal = pd.read_csv(DATA_ROOT / pool_spec["basal"]).set_index("gene_name").reindex(axis)
+    share_spec, share_vec, share_info = recipe.get("gene_share"), None, None
+    if share_spec is not None:
+        if pool_spec is not None:
+            raise SystemExit("recipe gene_share and pooling cannot be combined")
+        share_path = REPO / share_spec["path"]
+        share_vec = load_gene_share(share_path, axis)
+        share_basal = (pd.read_csv(DATA_ROOT / share_spec["basal"]).set_index("gene_name").reindex(axis)
+                       if share_spec.get("match_detectable") else None)
+        share_info = {"spec": share_spec, "sha256": hashlib.sha256(share_path.read_bytes()).hexdigest(),
+                      "genes_zero": int((share_vec == 0).sum()), "genes_one": int((share_vec == 1).sum()),
+                      "median": float(np.median(share_vec))}
+        log(f"gene share: {share_info['genes_zero']} genes at 0, median {share_info['median']:.3f}")
     tables = [load_table(args.cache, n, effect, shrink_k) for n in names]
     cis_spec, cis_info = recipe.get("cis"), None
     if cis_spec is not None:
@@ -234,6 +283,21 @@ def main() -> None:
                 _, factor = match_detectable(eff, ref["lfc"], detectable_threshold(cpm), cpm >= 5.0, offset=offset)
             eff = eff.astype(np.float64) * factor
             pool_info["scale"] = factor
+        share_scale = None
+        if share_vec is not None:
+            ref_lfc, offset, cpm = None, None, None
+            if share_spec.get("match_detectable"):
+                ref = np.load(DATA_ROOT / share_spec["match_detectable"] / f"effects_{ctx}.npz")
+                if list(ref["targets"].astype(str)) != panel or list(ref["genes"].astype(str)) != list(axis):
+                    raise SystemExit(f"{share_spec['match_detectable']}: targets or genes differ for context {ctx}")
+                ref_lfc = ref["lfc"]
+                offset = np.zeros(eff.shape, dtype=np.float32)
+                if cis_spec is not None:
+                    add_cis(offset, np.zeros(eff.shape, dtype=bool), panel, axis, cis_model, coords,
+                            int(cis_spec["max_distance_bp"]), float(cis_spec.get("scale", 1.0)))
+                cpm = share_basal[ctx].to_numpy(dtype=float)
+            eff, share_scale = apply_gene_share(eff, share_vec, ref_lfc, offset, cpm)
+            log(f"{ctx}: gene share applied, scale {share_scale:.4f}")
         covered = (w > 0).any(axis=1)
         missing = [t for t, c in zip(panel, covered) if not c]
         if missing and not recipe.get("allow_missing_targets", False):
@@ -266,6 +330,8 @@ def main() -> None:
             summary[ctx]["cis"] = cis_counts
         if pool_info is not None:
             summary[ctx]["pooling"] = pool_info
+        if share_scale is not None:
+            summary[ctx]["gene_share_scale"] = share_scale
         if assoc_spec is not None:
             summary[ctx]["association_targets"] = assoc_used
         log(f"{ctx}: {covered.sum()}/{len(panel)} targets, median {np.median(nz):.0f} genes moved, "
@@ -279,6 +345,8 @@ def main() -> None:
         manifest["cis"] = cis_info
     if assoc_info is not None:
         manifest["association"] = assoc_info
+    if share_info is not None:
+        manifest["gene_share"] = share_info
     with open(args.out / "manifest.json", "x", encoding="utf-8") as fh:
         json.dump(manifest, fh, indent=2)
     log(f"wrote {args.out}")

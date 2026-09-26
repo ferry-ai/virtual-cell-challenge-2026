@@ -240,6 +240,57 @@ class Stage100EffectTests(unittest.TestCase):
         np.testing.assert_allclose(got.raw, raw_mix, rtol=1e-6)
 
 
+class Stage100GeneShareTests(unittest.TestCase):
+    """Stage 100's gene_share block: a share per gene of the axis, then the reference's detectable count."""
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("stage100", REPO / "scripts" / "100_build_context_effects.py")
+        cls.stage = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.stage)
+
+    def _csv(self, tmp, rows):
+        import pandas as pd
+        path = Path(tmp) / "share.csv"
+        pd.DataFrame(rows, columns=["gene", "share"]).to_csv(path, index=False)
+        return path
+
+    def test_every_gene_needs_a_share_in_the_unit_interval(self):
+        import tempfile
+        axis = np.array(["G1", "G2", "G3"])
+        with tempfile.TemporaryDirectory() as tmp:
+            ok = self._csv(tmp, [("G3", 0.0), ("G1", 1.0), ("G2", 0.25), ("EXTRA", 0.5)])
+            np.testing.assert_array_equal(self.stage.load_gene_share(ok, axis), [1.0, 0.25, 0.0])
+            for rows in ([("G1", 1.0), ("G2", 0.5)],                     # G3 missing
+                         [("G1", 1.0), ("G2", 1.5), ("G3", 0.0)],        # above 1
+                         [("G1", 1.0), ("G1", 0.5), ("G2", 0.1), ("G3", 0.0)]):   # a gene twice
+                with self.assertRaises(ValueError):
+                    self.stage.load_gene_share(self._csv(tmp, rows), axis)
+
+    def test_without_a_reference_it_only_multiplies(self):
+        eff = np.array([[1.0, -2.0, 0.5], [0.0, 3.0, -1.0]])
+        out, scale = self.stage.apply_gene_share(eff, np.array([1.0, 0.5, 0.0]))
+        np.testing.assert_allclose(out, [[1.0, -1.0, 0.0], [0.0, 1.5, 0.0]])
+        self.assertEqual(scale, 1.0)
+        same, _ = self.stage.apply_gene_share(eff, np.ones(3))
+        np.testing.assert_array_equal(same, eff)
+
+    def test_the_scale_matches_the_reference_detectable_count(self):
+        from vcc2026.transfer_model import detectable_threshold
+        rng = np.random.default_rng(0)
+        cpm = np.full(200, 50.0)
+        thr = detectable_threshold(cpm)
+        eff = rng.normal(0, 0.1, size=(30, 200))
+        reference = rng.normal(0, 0.3, size=(30, 200))
+        share = np.where(np.arange(200) < 100, 1.0, 0.2)
+        out, scale = self.stage.apply_gene_share(eff, share, reference, np.zeros((30, 200)), cpm)
+        count = lambda E: np.median((np.abs(E) > thr[None, :]).sum(axis=1))   # noqa: E731
+        self.assertGreater(scale, 1.0)
+        self.assertLessEqual(abs(count(out) - count(reference)), 1.0)
+        np.testing.assert_allclose(out, eff * share[None, :] * scale)
+
+
 class Stage100CisTests(unittest.TestCase):
     """Stage 100's cis head: a prior no panel target informs, added only near each target."""
 

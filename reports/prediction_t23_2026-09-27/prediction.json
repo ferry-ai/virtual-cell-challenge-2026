@@ -1,0 +1,61 @@
+{
+  "written_utc": "2026-09-26T23:14:10.155746+00:00",
+  "label": "t23 = t22 with the transferred part weighted gene by gene by the share of the knockdown response the lines have in common (sigma2 / (sigma2 + tau2) from the K562, CD4 and HCT116 universes outside the panel), scaled back to t22's detectable genes per context; trial-01 generator",
+  "claim_type": "prediction registered before generation and submission; not a measurement",
+  "recipe": {
+    "path": "configs/recipes/t23.json",
+    "sha256": "f820df6a12a3e2d54a96b9ac66857ca38813d21c4916c0c02d9a1cc246661027",
+    "sha256_lf": "f820df6a12a3e2d54a96b9ac66857ca38813d21c4916c0c02d9a1cc246661027",
+    "cache": "stage 98 run r5, as t22",
+    "share_csv_sha256": "a9470f3842441919b47604dcdf915ba70e89a22cee79c6fac37a08c00fc9c9d1",
+    "effects_manifest_sha256": "18cf3169494c670711d37231179e6069bf046916bfdb0a4a94c733c9b4aeef9a"
+  },
+  "one_factor": "against t22 only the gene_share block is added; sources, weights, amplitude, shrinkage, gamma and cis head are t22's",
+  "references": {
+    "t20": 0.13967554777071428,
+    "t22": "submitted on 26/09 at 23:05 UTC; score not known when this was written"
+  },
+  "evidence_used": "reports/quota_condivisa_2026-09-27/ r1, rule published at 00:25 before the run: with the share estimated without the held-out source, 0.36 dPDS_gen - 0.27 dnMAE_gen moved +0.012 (+0.005..+0.019) with CD4 held out, +0.013 (+0.005..+0.021) with HEK293T, +0.005 (-0.003..+0.012) with HCT116 and -0.0015 (-0.007..+0.004) with K562; effect-space PDS +0.038, +0.051, +0.020, +0.000. The hypothesis was chosen after the atlas bench r1 (no arm passed; this was the closest), so this is a first confirmation. Measured on the built effects: detectable genes equal to t22 by construction (A 207.5, B 266, C 299.5), energy 0.45-0.53x t22, genes moved per target 10,286 against 13,958 (8,247 genes of the axis get share 0), per-target correlation with t22 median 0.475: a large change of direction, not a small one. The generator uses one random stream: t23 - t22 carries generator noise of unknown size.",
+  "expected": {
+    "score_avg_band": [
+      0.12,
+      0.165
+    ],
+    "t23_minus_t22_band": [
+      -0.01,
+      0.015
+    ],
+    "pds_raw": "t22 - 0.005..+0.020",
+    "nmae_raw": "t22 - 0.010..+0.010 (lower is better)",
+    "reach_raw": "t22 - 0.030..+0.010 (fewer genes moved)",
+    "fid_raw": "t22 - 0.010..+0.010",
+    "jaccard_raw": "t22 +/- 0.005",
+    "mse": "scaled stays 0 (lower energy lowers the raw value, still far above the zero point)"
+  },
+  "reading_rule_fixed_before_the_result": {
+    "t23 >= t22 + 0.005": "the gene share enters the reference; the final set uses the share from all four universes (HEK293T when complete)",
+    "t23 <= t22 - 0.005": "the gene share leaves the reference; examine reach and fidelity (fewer genes moved) against PDS",
+    "otherwise": "inconclusive within resolution: t22 stays the reference for attribution; the gene share stays a candidate for the real-scorer bench (F2)",
+    "if t22 has no official score": "read t23 against t20 with the same thresholds; the difference then mixes HEK293T and the gene share"
+  },
+  "stage100_contexts": {
+    "A": {
+      "targets_covered": 300,
+      "abs_lfc_q99_median": 0.2746009894774283,
+      "sha256": "baa5c30540de7ee65721a902283b9781e62887de6cfb25a20b655753b0550119",
+      "gene_share_scale": 1.4061120704999022
+    },
+    "B": {
+      "targets_covered": 300,
+      "abs_lfc_q99_median": 0.2895780232841332,
+      "sha256": "81f22db3e8eb0aed97b1a784482969794f3f928b97f184bb39e7ba23952a0463",
+      "gene_share_scale": 1.4828029376958631
+    },
+    "C": {
+      "targets_covered": 300,
+      "abs_lfc_q99_median": 0.29848301136241473,
+      "sha256": "98161ff880b37da90d6ece6ed64539e154d740736bff4e4f9b6a1baaeecf3117",
+      "gene_share_scale": 1.5284015032667952
+    }
+  }
+}

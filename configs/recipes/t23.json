@@ -1,0 +1,17 @@
+{
+  "name": "t23",
+  "effect": "shrunk",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "A": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "B": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "C": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}}
+  },
+  "cis": {"pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv", "max_distance_bp": 5000, "scale": 2.0},
+  "gene_share": {"path": "reports/quota_condivisa_2026-09-27/t23/share.csv",
+                 "basal": "processed/basal_sources_2026-09-26.csv",
+                 "match_detectable": "processed/effects_t22_2026-09-26"},
+  "why": "t22 with one factor changed: the transferred part is weighted gene by gene by the share of the knockdown response the lines have in common, sigma2 / (sigma2 + tau2), estimated by moments on the genome-wide universes of K562, CD4 and HCT116 over 6,000 targets outside the panel (HEK293T's universe was still streaming); genes the universes cannot estimate get 0. Per context, the result is scaled back to t22's median count of detectable genes, cis head included. On the panel, with the share estimated without the held-out source (reports/quota_condivisa_2026-09-27/, r1), 0.36 dPDS - 0.27 dnMAE through the trial-01 profile model moved +0.012 (+0.005..+0.019) with CD4 held out, +0.013 (+0.005..+0.021) with HEK293T, +0.005 (-0.003..+0.012) with HCT116 and -0.0015 (-0.007..+0.004) with K562: the rule published at 00:25 on 27 September before the run passed. The hypothesis came from the atlas bench's closest arm (reports/atlante_2026-09-26/, r1, which passed no arm), so this is a first confirmation. Amplitude, shrinkage, gamma, sources and cis head as t22."
+}
