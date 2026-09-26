@@ -1,0 +1,610 @@
+{
+ "stage": "trasferimento_appreso_2026-09-26/lct_bench.py",
+ "claim_type": "effect-space proxies against held-out public sources, model trained on other families' tasks only; not VCC scores",
+ "features": [
+  "m_raw",
+  "m_shr",
+  "n_src",
+  "sign_agree",
+  "spread",
+  "max_absz",
+  "mean_z",
+  "cis",
+  "own_gene",
+  "assoc",
+  "expr_ctx",
+  "expr_src",
+  "expr_diff",
+  "target_expr",
+  "gene_resp",
+  "gene_common",
+  "gene_spread",
+  "panel_gene",
+  "target_strength"
+ ],
+ "genes_per_target": 1500,
+ "rows": [
+  {
+   "held_out": "k562",
+   "trained_on": "cd4_mix+orion_hct116+orion_hek293t",
+   "arm": "t16like",
+   "targets": 271,
+   "pds_proxy": 0.7558835588355884,
+   "reach_proxy": 0.09780703948428769,
+   "prec_200": 0.5288560885608856,
+   "mse_ratio": 1.0714582455646984,
+   "pds_minus_t20like": -0.023479568129014625,
+   "pds_ci95": [
+    -0.035097717643843104,
+    -0.012461732950662854
+   ],
+   "reach_minus_t20like": -0.007976502727518405,
+   "reach_ci95": [
+    -0.016335989428890457,
+    0.0003920891719875136
+   ]
+  },
+  {
+   "held_out": "k562",
+   "trained_on": "cd4_mix+orion_hct116+orion_hek293t",
+   "arm": "t20like",
+   "targets": 271,
+   "pds_proxy": 0.779363126964603,
+   "reach_proxy": 0.10578354221180611,
+   "prec_200": 0.5341328413284133,
+   "mse_ratio": 1.0823210030257995
+  },
+  {
+   "held_out": "k562",
+   "trained_on": "cd4_mix+orion_hct116+orion_hek293t",
+   "arm": "lct",
+   "targets": 271,
+   "pds_proxy": 0.5491321579882465,
+   "reach_proxy": 0.25063053437008503,
+   "prec_200": 0.49036900369003683,
+   "mse_ratio": 1.0985697042530949,
+   "pds_minus_t20like": -0.23023096897635642,
+   "pds_ci95": [
+    -0.2734064507311739,
+    -0.1839268142681427
+   ],
+   "reach_minus_t20like": 0.14484699215827895,
+   "reach_ci95": [
+    0.11435869440593195,
+    0.1759877834251699
+   ]
+  },
+  {
+   "held_out": "cd4_mix",
+   "trained_on": "k562+orion_hct116+orion_hek293t",
+   "arm": "t16like",
+   "targets": 292,
+   "pds_proxy": 0.6718683801722921,
+   "reach_proxy": 0.004712062324905056,
+   "prec_200": 0.5160102739726027,
+   "mse_ratio": 1.4273271512159764,
+   "pds_minus_t20like": -0.020394953631784587,
+   "pds_ci95": [
+    -0.03218825024714023,
+    -0.009225391893800316
+   ],
+   "reach_minus_t20like": -0.002623936459037662,
+   "reach_ci95": [
+    -0.004252783403279861,
+    -0.001370842564098051
+   ]
+  },
+  {
+   "held_out": "cd4_mix",
+   "trained_on": "k562+orion_hct116+orion_hek293t",
+   "arm": "t20like",
+   "targets": 292,
+   "pds_proxy": 0.6922633338040767,
+   "reach_proxy": 0.007335998783942718,
+   "prec_200": 0.5225513698630138,
+   "mse_ratio": 1.2618029334648873
+  },
+  {
+   "held_out": "cd4_mix",
+   "trained_on": "k562+orion_hct116+orion_hek293t",
+   "arm": "lct",
+   "targets": 292,
+   "pds_proxy": 0.584333662853646,
+   "reach_proxy": 0.0199713413973821,
+   "prec_200": 0.554777397260274,
+   "mse_ratio": 1.0092038583191651,
+   "pds_minus_t20like": -0.10792967095043075,
+   "pds_ci95": [
+    -0.14814409452525537,
+    -0.06847167302170133
+   ],
+   "reach_minus_t20like": 0.012635342613439382,
+   "reach_ci95": [
+    0.00948025956747212,
+    0.01635940251795011
+   ]
+  },
+  {
+   "held_out": "orion_hct116",
+   "trained_on": "k562+cd4_mix",
+   "arm": "t16like",
+   "targets": 265,
+   "pds_proxy": 0.6948542024013722,
+   "reach_proxy": 0.036792859802304526,
+   "prec_200": 0.5058679245283019,
+   "mse_ratio": 1.2153753432624554,
+   "pds_minus_t20like": -0.013550600343053174,
+   "pds_ci95": [
+    -0.025243353344768436,
+    -0.0020433104631217896
+   ],
+   "reach_minus_t20like": -0.010925785960492993,
+   "reach_ci95": [
+    -0.015466271800320635,
+    -0.0064950718343504835
+   ]
+  },
+  {
+   "held_out": "orion_hct116",
+   "trained_on": "k562+cd4_mix",
+   "arm": "t20like",
+   "targets": 265,
+   "pds_proxy": 0.7084048027444254,
+   "reach_proxy": 0.04771864576279752,
+   "prec_200": 0.5154716981132075,
+   "mse_ratio": 1.2590576586208728
+  },
+  {
+   "held_out": "orion_hct116",
+   "trained_on": "k562+cd4_mix",
+   "arm": "lct",
+   "targets": 265,
+   "pds_proxy": 0.6151943967981705,
+   "reach_proxy": 0.046459493776967654,
+   "prec_200": 0.5071132075471698,
+   "mse_ratio": 1.0048169872845605,
+   "pds_minus_t20like": -0.093210405946255,
+   "pds_ci95": [
+    -0.13853023156089192,
+    -0.04762435677530018
+   ],
+   "reach_minus_t20like": -0.0012591519858298629,
+   "reach_ci95": [
+    -0.013651538887199471,
+    0.010859125549034218
+   ]
+  },
+  {
+   "held_out": "orion_hek293t",
+   "trained_on": "k562+cd4_mix",
+   "arm": "t16like",
+   "targets": 278,
+   "pds_proxy": 0.6589356673505962,
+   "reach_proxy": 0.03731241137905698,
+   "prec_200": 0.5170143884892087,
+   "mse_ratio": 1.3801796202187677,
+   "pds_minus_t20like": -0.017647975482429943,
+   "pds_ci95": [
+    -0.029220450354517823,
+    -0.006229709373295607
+   ],
+   "reach_minus_t20like": -0.004787343145236846,
+   "reach_ci95": [
+    -0.008569021891258745,
+    -0.001114849708663331
+   ]
+  },
+  {
+   "held_out": "orion_hek293t",
+   "trained_on": "k562+cd4_mix",
+   "arm": "t20like",
+   "targets": 278,
+   "pds_proxy": 0.676583642833026,
+   "reach_proxy": 0.042099754524293834,
+   "prec_200": 0.5208453237410071,
+   "mse_ratio": 1.4555003293642523
+  },
+  {
+   "held_out": "orion_hek293t",
+   "trained_on": "k562+cd4_mix",
+   "arm": "lct",
+   "targets": 278,
+   "pds_proxy": 0.6213411941926604,
+   "reach_proxy": 0.09938924753351919,
+   "prec_200": 0.5264208633093524,
+   "mse_ratio": 1.0129462706937742,
+   "pds_minus_t20like": -0.05524244864036569,
+   "pds_ci95": [
+    -0.09757096849596135,
+    -0.013931057320208834
+   ],
+   "reach_minus_t20like": 0.057289493009225353,
+   "reach_ci95": [
+    0.03998590081176033,
+    0.07525564570122233
+   ]
+  }
+ ],
+ "importance": [
+  {
+   "held_out": "k562",
+   "feature": "m_raw",
+   "importance": 0.014545668505937822
+  },
+  {
+   "held_out": "k562",
+   "feature": "m_shr",
+   "importance": 0.005607955116962919
+  },
+  {
+   "held_out": "k562",
+   "feature": "n_src",
+   "importance": 0.00011364754200685982
+  },
+  {
+   "held_out": "k562",
+   "feature": "sign_agree",
+   "importance": 0.00010710409612387413
+  },
+  {
+   "held_out": "k562",
+   "feature": "spread",
+   "importance": 0.004935945415273683
+  },
+  {
+   "held_out": "k562",
+   "feature": "max_absz",
+   "importance": 0.010533018657298499
+  },
+  {
+   "held_out": "k562",
+   "feature": "mean_z",
+   "importance": 0.010434645367856987
+  },
+  {
+   "held_out": "k562",
+   "feature": "cis",
+   "importance": 0.0
+  },
+  {
+   "held_out": "k562",
+   "feature": "own_gene",
+   "importance": 0.0
+  },
+  {
+   "held_out": "k562",
+   "feature": "assoc",
+   "importance": 0.00033654463968250486
+  },
+  {
+   "held_out": "k562",
+   "feature": "expr_ctx",
+   "importance": 0.014623184247753995
+  },
+  {
+   "held_out": "k562",
+   "feature": "expr_src",
+   "importance": 0.015652174212275494
+  },
+  {
+   "held_out": "k562",
+   "feature": "expr_diff",
+   "importance": 0.0102104584944153
+  },
+  {
+   "held_out": "k562",
+   "feature": "target_expr",
+   "importance": 0.0024897661094371117
+  },
+  {
+   "held_out": "k562",
+   "feature": "gene_resp",
+   "importance": -0.0034809720460856988
+  },
+  {
+   "held_out": "k562",
+   "feature": "gene_common",
+   "importance": 0.001411357678806476
+  },
+  {
+   "held_out": "k562",
+   "feature": "gene_spread",
+   "importance": -0.0031169262000054023
+  },
+  {
+   "held_out": "k562",
+   "feature": "panel_gene",
+   "importance": 0.002537179871318518
+  },
+  {
+   "held_out": "k562",
+   "feature": "target_strength",
+   "importance": 0.0016330383243026159
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "m_raw",
+   "importance": -0.010420067712251013
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "m_shr",
+   "importance": -0.003572275021244723
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "n_src",
+   "importance": -0.003003079577516443
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "sign_agree",
+   "importance": -0.00013113438757650364
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "spread",
+   "importance": -0.0027453575507308723
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "max_absz",
+   "importance": -0.010942683422192992
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "mean_z",
+   "importance": -0.014835820453862262
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "cis",
+   "importance": 0.0
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "own_gene",
+   "importance": 0.0
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "assoc",
+   "importance": -0.00032489456118637666
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "expr_ctx",
+   "importance": 0.008333226943559424
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "expr_src",
+   "importance": 0.0004858278507250772
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "expr_diff",
+   "importance": 0.003183875579784168
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "target_expr",
+   "importance": 0.0008726180366015098
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "gene_resp",
+   "importance": -0.0009061078634274485
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "gene_common",
+   "importance": 0.004516365027976772
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "gene_spread",
+   "importance": 0.0031090053077978594
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "panel_gene",
+   "importance": -0.0019019178195009239
+  },
+  {
+   "held_out": "cd4_mix",
+   "feature": "target_strength",
+   "importance": 0.004428667956093942
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "m_raw",
+   "importance": 0.006124459190082532
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "m_shr",
+   "importance": -0.0007898041452325533
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "n_src",
+   "importance": -4.110792580380718e-05
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "sign_agree",
+   "importance": 2.608248348397642e-05
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "spread",
+   "importance": 0.0026217676189872106
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "max_absz",
+   "importance": 0.0014504698658038089
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "mean_z",
+   "importance": 0.0016431745784746636
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "cis",
+   "importance": 0.0
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "own_gene",
+   "importance": 0.0
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "assoc",
+   "importance": 4.424016857455341e-05
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "expr_ctx",
+   "importance": 0.005297947132975822
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "expr_src",
+   "importance": 0.018834137015530755
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "expr_diff",
+   "importance": 0.005231710577819497
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "target_expr",
+   "importance": -0.0002728886249150353
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "gene_resp",
+   "importance": -4.4676423968437184e-05
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "gene_common",
+   "importance": -0.002065919541963853
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "gene_spread",
+   "importance": 0.001381551299964053
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "panel_gene",
+   "importance": 0.0026291552776231595
+  },
+  {
+   "held_out": "orion_hct116",
+   "feature": "target_strength",
+   "importance": 0.00028314871895884774
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "m_raw",
+   "importance": -0.0016492480222280264
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "m_shr",
+   "importance": -0.006758190727548981
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "n_src",
+   "importance": -0.0001206003340927057
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "sign_agree",
+   "importance": -0.00014807582538896766
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "spread",
+   "importance": -0.002528419206468883
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "max_absz",
+   "importance": -0.0022747246954812894
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "mean_z",
+   "importance": -0.002976484741707678
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "cis",
+   "importance": 0.0
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "own_gene",
+   "importance": 0.0
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "assoc",
+   "importance": 0.0005120818387861862
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "expr_ctx",
+   "importance": 0.02093274883120085
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "expr_src",
+   "importance": 0.10195702160142177
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "expr_diff",
+   "importance": 0.0600496670897391
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "target_expr",
+   "importance": -0.001270964419882133
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "gene_resp",
+   "importance": -0.0019384250305769513
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "gene_common",
+   "importance": -0.005298648939046376
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "gene_spread",
+   "importance": 0.0003431155961888995
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "panel_gene",
+   "importance": 0.00020385426908423968
+  },
+  {
+   "held_out": "orion_hek293t",
+   "feature": "target_strength",
+   "importance": 0.00034670315089909326
+  }
+ ]
+}

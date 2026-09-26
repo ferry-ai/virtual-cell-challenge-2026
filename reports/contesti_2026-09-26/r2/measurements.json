@@ -1,0 +1,289 @@
+{
+ "stage": "contesti_2026-09-26/p53_weighting.py",
+ "p53_score": {
+  "k562": 0.44690632730113267,
+  "cd4_mix": 0.7479173935062743,
+  "orion_hct116": 0.7056577929967964,
+  "orion_hek293t": 0.611386280790898,
+  "A": 0.6090033993417149,
+  "B": 0.7400312955268978,
+  "C": 0.6991550207737549
+ },
+ "group": {
+  "k562": "low",
+  "cd4_mix": "high",
+  "orion_hct116": "high",
+  "orion_hek293t": "low",
+  "A": "low",
+  "B": "high",
+  "C": "high"
+ },
+ "cut": 0.6585220368938471,
+ "claim_type": "effect-space proxies; not VCC scores",
+ "rows": [
+  {
+   "held_out": "k562",
+   "group": "low",
+   "same_group_sources": "orion_hek293t",
+   "arm": "equal",
+   "targets": 271,
+   "pds_proxy": 0.779363126964603,
+   "reach_proxy": 0.10578354221180611
+  },
+  {
+   "held_out": "k562",
+   "group": "low",
+   "same_group_sources": "orion_hek293t",
+   "arm": "p53match_2.0",
+   "targets": 271,
+   "pds_proxy": 0.7804291376247096,
+   "reach_proxy": 0.10217054556184378,
+   "pds_minus_equal": 0.0010660106601066014,
+   "pds_ci95": [
+    -0.006985103184365176,
+    0.009594437611042778
+   ],
+   "reach_minus_equal": -0.003612996649962316,
+   "reach_ci95": [
+    -0.01076412662427783,
+    0.0027363424719972222
+   ]
+  },
+  {
+   "held_out": "k562",
+   "group": "low",
+   "same_group_sources": "orion_hek293t",
+   "arm": "p53match_4.0",
+   "targets": 271,
+   "pds_proxy": 0.7730080634139674,
+   "reach_proxy": 0.10259931485680211,
+   "pds_minus_equal": -0.006355063550635507,
+   "pds_ci95": [
+    -0.021129902965696324,
+    0.0095414787481208
+   ],
+   "reach_minus_equal": -0.0031842273550039915,
+   "reach_ci95": [
+    -0.013423074930357676,
+    0.007444181025826785
+   ]
+  },
+  {
+   "held_out": "k562",
+   "group": "low",
+   "same_group_sources": "orion_hek293t",
+   "arm": "p53match_only",
+   "targets": 271,
+   "pds_proxy": 0.7300806341396747,
+   "reach_proxy": 0.08453348949666799,
+   "pds_minus_equal": -0.04928249282492825,
+   "pds_ci95": [
+    -0.08165129151291513,
+    -0.017615142818094853
+   ],
+   "reach_minus_equal": -0.021250052715138103,
+   "reach_ci95": [
+    -0.035957943937632596,
+    -0.006865536183753702
+   ]
+  },
+  {
+   "held_out": "cd4_mix",
+   "group": "high",
+   "same_group_sources": "orion_hct116",
+   "arm": "equal",
+   "targets": 292,
+   "pds_proxy": 0.6922633338040767,
+   "reach_proxy": 0.007029767725631394
+  },
+  {
+   "held_out": "cd4_mix",
+   "group": "high",
+   "same_group_sources": "orion_hct116",
+   "arm": "p53match_2.0",
+   "targets": 292,
+   "pds_proxy": 0.6935343407240033,
+   "reach_proxy": 0.007241012664931117,
+   "pds_minus_equal": 0.0012710069199265634,
+   "pds_ci95": [
+    -0.007226203925999151,
+    0.010287800687285208
+   ],
+   "reach_minus_equal": 0.0002112449392997239,
+   "reach_ci95": [
+    -0.0008001718246709532,
+    0.0012444481899810806
+   ]
+  },
+  {
+   "held_out": "cd4_mix",
+   "group": "high",
+   "same_group_sources": "orion_hct116",
+   "arm": "p53match_4.0",
+   "targets": 292,
+   "pds_proxy": 0.6878030410017418,
+   "reach_proxy": 0.006172738838289933,
+   "pds_minus_equal": -0.004460292802334889,
+   "pds_ci95": [
+    -0.020818916819658244,
+    0.012286988655086371
+   ],
+   "reach_minus_equal": -0.0008570288873414617,
+   "reach_ci95": [
+    -0.0019665141987866663,
+    0.00018901642348051367
+   ]
+  },
+  {
+   "held_out": "cd4_mix",
+   "group": "high",
+   "same_group_sources": "orion_hct116",
+   "arm": "p53match_only",
+   "targets": 292,
+   "pds_proxy": 0.6542213905757189,
+   "reach_proxy": 0.00532852517754244,
+   "pds_minus_equal": -0.03804194322835757,
+   "pds_ci95": [
+    -0.06843063008991196,
+    -0.007860971849550431
+   ],
+   "reach_minus_equal": -0.0017012425480889546,
+   "reach_ci95": [
+    -0.0035302729201665763,
+    -7.713764487135472e-05
+   ]
+  },
+  {
+   "held_out": "orion_hct116",
+   "group": "high",
+   "same_group_sources": "cd4_mix",
+   "arm": "equal",
+   "targets": 265,
+   "pds_proxy": 0.7084048027444254,
+   "reach_proxy": 0.04771864576279752
+  },
+  {
+   "held_out": "orion_hct116",
+   "group": "high",
+   "same_group_sources": "cd4_mix",
+   "arm": "p53match_2.0",
+   "targets": 265,
+   "pds_proxy": 0.6923956546598057,
+   "reach_proxy": 0.043987232862909106,
+   "pds_minus_equal": -0.016009148084619784,
+   "pds_ci95": [
+    -0.022398870783304745,
+    -0.009762721555174391
+   ],
+   "reach_minus_equal": -0.003731412899888413,
+   "reach_ci95": [
+    -0.007199241749718848,
+    -0.00024095589412167316
+   ]
+  },
+  {
+   "held_out": "orion_hct116",
+   "group": "high",
+   "same_group_sources": "cd4_mix",
+   "arm": "p53match_4.0",
+   "targets": 265,
+   "pds_proxy": 0.6770011435105775,
+   "reach_proxy": 0.040311650458653335,
+   "pds_minus_equal": -0.03140365923384791,
+   "pds_ci95": [
+    -0.042395654659805604,
+    -0.020983061749571187
+   ],
+   "reach_minus_equal": -0.007406995304144181,
+   "reach_ci95": [
+    -0.012208583228527881,
+    -0.0030491389353354994
+   ]
+  },
+  {
+   "held_out": "orion_hct116",
+   "group": "high",
+   "same_group_sources": "cd4_mix",
+   "arm": "p53match_only",
+   "targets": 265,
+   "pds_proxy": 0.6519439679817037,
+   "reach_proxy": 0.03827676079692888,
+   "pds_minus_equal": -0.05646083476272156,
+   "pds_ci95": [
+    -0.07484491137793026,
+    -0.03892116923956546
+   ],
+   "reach_minus_equal": -0.009441884965868648,
+   "reach_ci95": [
+    -0.015764314867928647,
+    -0.0032463523082766343
+   ]
+  },
+  {
+   "held_out": "orion_hek293t",
+   "group": "low",
+   "same_group_sources": "k562",
+   "arm": "equal",
+   "targets": 278,
+   "pds_proxy": 0.676583642833026,
+   "reach_proxy": 0.042099754524293834
+  },
+  {
+   "held_out": "orion_hek293t",
+   "group": "low",
+   "same_group_sources": "k562",
+   "arm": "p53match_2.0",
+   "targets": 278,
+   "pds_proxy": 0.6924655221671039,
+   "reach_proxy": 0.04519835713203909,
+   "pds_minus_equal": 0.015881879334077868,
+   "pds_ci95": [
+    0.008985988104822998,
+    0.022647910552424485
+   ],
+   "reach_minus_equal": 0.0030986026077452554,
+   "reach_ci95": [
+    -0.00015444769292426858,
+    0.0069669116178667796
+   ]
+  },
+  {
+   "held_out": "orion_hek293t",
+   "group": "low",
+   "same_group_sources": "k562",
+   "arm": "p53match_4.0",
+   "targets": 278,
+   "pds_proxy": 0.7023608549983119,
+   "reach_proxy": 0.04611719618451229,
+   "pds_minus_equal": 0.025777212165285814,
+   "pds_ci95": [
+    0.01403591927901721,
+    0.037971067189569635
+   ],
+   "reach_minus_equal": 0.0040174416602184555,
+   "reach_ci95": [
+    0.00014037385707240424,
+    0.008219786111786883
+   ]
+  },
+  {
+   "held_out": "orion_hek293t",
+   "group": "low",
+   "same_group_sources": "k562",
+   "arm": "p53match_only",
+   "targets": 278,
+   "pds_proxy": 0.7449419525751241,
+   "reach_proxy": 0.04572537159060667,
+   "pds_minus_equal": 0.06835830974209801,
+   "pds_ci95": [
+    0.030665792275926553,
+    0.10526598576734277
+   ],
+   "reach_minus_equal": 0.0036256170663128452,
+   "reach_ci95": [
+    -0.004381826212246286,
+    0.01127968099006141
+   ]
+  }
+ ]
+}
