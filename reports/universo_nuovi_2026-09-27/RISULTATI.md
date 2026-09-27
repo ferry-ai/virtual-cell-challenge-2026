@@ -61,3 +61,7 @@ scelte forti.
 - **Ipotesi della profondità, messa alla prova:** la normalizzazione per profondità mediana della sorgente non ha
   sostegno ([profondità del silenziamento](../profondita_silenziamento_2026-09-27/RISULTATI.md)). Bersaglio per
   bersaglio la relazione c'è, ma è debole.
+- **Etichetta sbagliata nel manifest di A549 (trovata da claude2, 27/09 sera):** `a549_me1/manifest.json` dice
+  `"line": "KOLF2.1J"`. È la costante `LINE` di `kolf_effects.py`, che con `--name` e senza `--context` restava quella di
+  KOLF. I dati sono di A549 (GSE345058: vedi `input` e `url` nello stesso manifest). Il manifest resta com'è, come
+  prova di quel giorno; `kolf_effects.py` ora usa il nome dato.

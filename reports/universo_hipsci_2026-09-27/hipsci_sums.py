@@ -106,10 +106,18 @@ def run(counts: Path, metadata: Path, out: Path, *, annotation: Path = ANNOTATIO
         raise ValueError(f"unexpected metadata prefixes: {prefixes}")
     prefix = next(iter(prefixes))
     meta.index = meta.Cell_ID.str.slice(3)
+    id_rule = "metadata prefix stripped"
+    if not set(meta.index) & set(cells):
+        # the targeted screen's count header drops the day: metadata PC-P4-D3_I73_<bc> is P4_I73_<bc> there
+        stripped = meta.index.str.replace(r"^(P\d+)-D\d+_", r"\1_", regex=True)
+        if stripped.is_unique and set(stripped) & set(cells):
+            meta.index = stripped
+            id_rule = "metadata prefix and day stripped (P<n>-D<d>_ -> P<n>_)"
     batches = sorted(set(meta.Batch))
     batch_pool = {b: i % pools for i, b in enumerate(batches)}
     absent_meta = sorted(set(cells) - set(meta.index))
     absent_counts = sorted(set(meta.index) - set(cells))
+    absent_counts_ids = meta.loc[absent_counts, "Cell_ID"].tolist()
     aligned = meta.reindex(cells)
     targets_by_call = {}
     for value in meta.Guide_Call.cat.categories:
@@ -149,7 +157,7 @@ def run(counts: Path, metadata: Path, out: Path, *, annotation: Path = ANNOTATIO
         del lines, codes
     out.mkdir(parents=True, exist_ok=False)
     groups.to_csv(out / "groups.csv", index=False)
-    pd.DataFrame({"Cell_ID": [prefix + c for c in absent_counts]}).to_csv(out / "metadata_only.csv", index=False)
+    pd.DataFrame({"Cell_ID": absent_counts_ids}).to_csv(out / "metadata_only.csv", index=False)
     pd.DataFrame({"Cell_ID": absent_meta}).to_csv(out / "counts_only.csv", index=False)
     columns = np.full(len(axis), -1, dtype=np.int64)
     library = np.zeros(len(cells), dtype=np.float64)
@@ -237,7 +245,7 @@ def run(counts: Path, metadata: Path, out: Path, *, annotation: Path = ANNOTATIO
                 "cells": {"read": len(cells), "matched": len(cells) - len(absent_meta),
                           "retained": len(cells) - sum(dropped.values()), "dropped_by_reason": dict(dropped),
                           "counts_only": len(absent_meta), "metadata_only": len(absent_counts)},
-                "metadata_prefix": prefix, "rows": dict(rows), "contexts": context_counts,
+                "metadata_prefix": prefix, "id_rule": id_rule, "rows": dict(rows), "contexts": context_counts,
                 "rows_kept_on_axis": int((columns >= 0).sum()),
                 "rows_dropped_from_axis_by_reason": {k: rows[k] for k in
                     ("non_gene_expression", "unmapped", "duplicate_axis_gene")},

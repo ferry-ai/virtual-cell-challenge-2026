@@ -275,7 +275,7 @@ def run(sums_path: Path, out: Path, *, report: Path | None = None, panel: Path |
         raise ValueError("multiple contexts: select one with --context")
     source = SOURCE if name == NAME and context is None else s.url
     licence = LICENCE if name == NAME and context is None else "not specified in sums archive"
-    line = context if context is not None else LINE
+    line = context if context is not None else (LINE if name == NAME else name)   # A549 got "KOLF2.1J" before 27/09 22:00
     axis = s.genes
     matches = None
     if official:

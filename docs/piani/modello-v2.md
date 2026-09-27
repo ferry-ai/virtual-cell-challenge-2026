@@ -1,7 +1,7 @@
 # R-V2 — il modello per il set finale, costruito adesso
 
 - **Stato:** in corso.
-- **Aggiornato:** 27 settembre 2026, 14:13 (ora italiana).
+- **Aggiornato:** 27 settembre 2026, 19:50 (ora italiana).
 - **Assegnazione:** regia e filoni F1, F2 e F4: Claude (app, sessione `f4f38e58`), dal
   26/09 alle 00:20. Filone F3: codex via agent hub, lancio annotato qui sotto. Gli altri
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.
@@ -43,7 +43,9 @@ produrre un invio in poche ore.
 | F4 | Modulo cis e pesi per contesto nel modello d'invio | Claude | cis fatto (t20) | t20 registrato |
 | F5 | Descrittori dei bersagli nuovi: STRING, CORUM, GO, reti TF con segno, embedding di proteine | libero | serve il via ai download | tabelle sull'asse ufficiale |
 | F6 | Contesti: stato dai controlli (p53, IFN, ciclo, linea) e somiglianza con le sorgenti | Claude (H6 su Mixscale) | somiglianza basale intera: non predice il trasferimento e pesarla peggiora ([report](../../reports/contesti_2026-09-26/RISULTATI.md)); restano aperte somiglianze per programma o per bersaglio | pesi per contesto provati sul banco |
-| F7 | Calcolo in cloud: ambiente, dati, esecuzione di F2 e degli addestramenti | ingegneri | serve l'autorizzazione | ambiente riproducibile |
+| F7 | Calcolo in cloud: ambiente, dati, esecuzione di F2 e degli addestramenti | Claude, con Colab (dispatcher su Drive) e Kaggle (notebook privati via API) | Colab e Kaggle autorizzati dal proprietario il 27/09; RunPod solo chiedendo | job 046, 048, 049 e 050 su Colab; sonda e somme di VIPerturb-seq su Kaggle |
+| F9 | Modello bersaglio × contesto a quattro parametri (precursore della rete): prove E1 ed E2 | Claude; `gated.py` di codex | r1 fatto il 27/09 sera con la regola delle 18:21: E1 non passa, E2 parziale (Orion sì, CD4 no, r ≈ 0,002); lo scambio di contesto vale quanto il contesto giusto | [report](../../reports/modello_contesto_2026-09-27/RISULTATI.md) |
+| F10 | La rete su molti contesti: encoder del bersaglio e del contesto, decoder sui geni, via diretta sul trasferimento | claude2 (disegno e codice, 27/09 dalle 20:42; sessione interrotta dal limite d'uso a lavoro finito, messaggio finale mancante); autoverifica e addestramento su Kaggle/Colab | disegno e codice scritti, nulla eseguito | [DISEGNO](../../reports/rete_contesti_2026-09-27/DISEGNO.md) |
 | F8 | Prova generale del 22 ottobre: 300 bersagli finti e contesti tenuti fuori, dall'input al .vcc | libero | dopo F1-F3 | tempo e copertura misurati |
 
 ## Esiti della notte del 26 settembre
@@ -153,6 +155,44 @@ per circa 10.000 bersagli ciascuna, contro i 300 di oggi. Su quella base:
 - **Istruzione del proprietario:** per ora niente invii al server e niente push; t23, t24 e t25 restano
   impacchettati o in preparazione.
 
+## Sera del 27 settembre: molti contesti in pipeline, e la rete
+
+Direzione del proprietario: usare e analizzare quanti più dati possibile, per reti che imparino davvero.
+
+- **Universi nuovi e corretti (misurato):**
+  - CD4, HCT116 e HEK293T ricostruiti con lo stimatore corretto, con parità esatta sul pannello
+    ([universi corretti](../../reports/universo_corretto_2026-09-27/RISULTATI.md));
+  - **KOLF2.1J** (iPSC) con 10.985 bersagli, letto a intervalli di byte dal file di 189 GB;
+  - **A549** (knockout, un'altra modalità) con 1.000 bersagli
+    ([ingestione](../../reports/universo_nuovi_2026-09-27/RISULTATI.md)).
+- **In corso:**
+  - HIPSCI, 34 linee iPSC, schermo mirato per linea;
+  - Southard, CRISPRa di 1.836 fattori di trascrizione in fibroblasti e RPE-1;
+  - VIPerturb-seq, K562 letto con Flex come i contesti di gara: un ponte di chimica sulle risposte.
+- **Controllo sul bersaglio (misurato):** il gene silenziato scende in ogni universo. La profondità mediana va da
+  −1,81 (K562) a −0,62 (HEK293T) in log naturale.
+- **Profondità e risposta** ([report](../../reports/profondita_silenziamento_2026-09-27/RISULTATI.md)):
+  - bersaglio per bersaglio, un silenziamento più profondo va con una risposta più grande in tutte e dieci le
+    coppie di linee, ma debolmente (misurato);
+  - fra sorgenti la relazione non tiene (misurato);
+  - quindi la profondità entra nella rete come covariata, non come normalizzazione delle sorgenti
+    (interpretazione).
+- **Banco HepG2 con lo scorer vero (F2):** fatto; vedi la riga F2.
+- **Il piano (proposta):**
+  - F9, il modello a cancelli, prova se il contesto letto dai controlli porta segnale (E1, e E2 sulle differenze
+    fra due linee tenute fuori);
+  - F10, la rete, lo generalizza:
+    - encoder del bersaglio dalle sue risposte in tutte le linee, e dai prior per i bersagli mai misurati;
+    - encoder del contesto da caratteristiche dei controlli robuste alla piattaforma, pre-addestrabile su
+      profili basali di molte linee (DepMap 24Q4 è già in locale, 484 MB di espressione);
+    - decoder sui geni, con una via diretta sul profilo trasferito, perché la proiezione su programmi ha
+      perso;
+  - valutazione sul banco C/T/J congelato, con le versioni cieca, scambiata e permutata come controlli.
+- **Nota di disegno (misurato nel passaggio di prova e in r1):** sui bersagli presi a caso la risposta di una
+  linea segue poco quella delle altre (A_fit 0,01–0,03), e molti bersagli non essenziali hanno pochi geni
+  significativi oltre il caso. I prossimi banchi e l'addestramento vanno ponderati sui bersagli con risposta
+  reale, come ha fatto chi ha scelto il pannello.
+
 ## Domanda strategica aperta
 
 Le squadre in testa hanno PDS 0,82–0,87 con mse 0,6–0,85, molto oltre quello che il trasferimento
@@ -165,12 +205,16 @@ repository pubblico: serve la sua decisione su se e come farlo.
 
 ## Che cosa serve dal proprietario
 
-- Login di claude2 sull'account 2 e di grok: `hub.py doctor` del 26/09 alle 00:10 dà
-  claude2 sull'account principale e grok senza login.
-- Autorizzazione del calcolo: connettore RunPod (da autorizzare nelle impostazioni dei
-  connettori) oppure Colab.
-- Via ai download di F5 e delle sorgenti nuove, con dimensioni e licenze prima di scaricare.
-- Via agli invii: nessun filone invia da solo.
+- Fatto il 27/09: claude2 e grok lavorano dalla base di lancio; Colab e Kaggle sono autorizzati. RunPod resta
+  da chiedere, e il suo connettore va autorizzato nelle impostazioni.
+- Via ai download non ancora autorizzati, con dimensioni e licenze prima di scaricare:
+  - DepMap CRISPRGeneEffect (428,7 MB), per sapere quali geni contano in quale linea;
+  - profili basali per l'encoder di contesto: MIX-seq controlli (0,37 GB), Kinker 2020 (dimensione non
+    indicata), DepMap 26Q1 (305 MB);
+  - De Simone 2025, Flex contro 3' sugli stessi PBMC;
+  - il dataset completo della gara 2025 (H1);
+  - vedi [ricerca](../../reports/ricerca_sorgenti_2026-09-27/RISULTATI.md).
+- Via agli invii: nessun filone invia da solo; per ora niente invii né push.
 
 ## Protezioni
 

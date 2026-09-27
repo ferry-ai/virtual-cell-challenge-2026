@@ -131,9 +131,64 @@ gradiente massimo. I numeri di E1 di quella prova non sono stati letti; E2 non e
   sulla curva cis del K562 quando il K562 è tenuto fuori.
 - I bersagli sono estratti a caso fra quelli non del pannello e non essenziali, più lo strato forte.
 
+## r1: esito (misurato; lanciato alle 19:15 del 27/09, finito dopo 8.088 s)
+
+Uscite in `r1/`: `summary.csv`, `e2.csv`, `params.csv`, `measurements.json`. Sei disegni, tutti i fit convergenti
+senza ripartenze. Δ = 0,36 ΔPDS_gen − 0,27 ΔnMAE_gen con intervallo bootstrap appaiato al 95 %, 1.000 bersagli di
+prova per disegno; lo strato forte ha 250–257 bersagli.
+
+**E1, uso del contesto (`gated` − `gated_blind`):**
+
+| Verità tenuta fuori | Tutti i bersagli | Strato forte |
+|---|---|---|
+| K562 | +0,0003 (−0,0014…+0,0019) | +0,0031 (+0,0001…+0,0062) |
+| CD4 (`cd4_mix`) | +0,0004 (−0,0017…+0,0024) | −0,0005 (−0,0049…+0,0035) |
+| HCT116 | +0,0016 (+0,0002…+0,0029) | +0,0010 (−0,0023…+0,0040) |
+| HEK293T | +0,0013 (−0,0007…+0,0030) | +0,0053 (+0,0016…+0,0091) |
+
+**E1, candidato (`gated` − `excl`), tutti i bersagli:** K562 −0,0008 (−0,0024…+0,0006), CD4 +0,0004
+(−0,0018…+0,0024), HCT116 +0,0023 (+0,0009…+0,0038), HEK293T +0,0010 (−0,0006…+0,0026).
+
+**Diagnostica, `gated` − `gated_swap`, tutti i bersagli:** K562 −0,0010, CD4 +0,0009, HCT116 +0,0005, HEK293T −0,0015;
+nessun intervallo sopra zero, e nemmeno nello strato forte.
+
+**E2:**
+
+| Coppia | Tutti i bersagli | Strato forte |
+|---|---|---|
+| HCT116 − HEK293T | r = 0,0020 (0,0009…0,0030); permutazioni q97,5 = 0,0009, p < 0,005 | 0,0032 (0,0009…0,0057); q97,5 = 0,0023 |
+| CD4 a riposo − stimolato 48 h | r = 0,0010 (−0,0005…+0,0024); q97,5 = 0,0015, p = 0,13 | 0,0040 (0,0009…0,0071); q97,5 = 0,0025 |
+
+**Lettura con la regola delle 18:21:**
+- **E1 uso del contesto: non passa.** Δ è positivo su quattro verità su quattro, ma l'intervallo sta sopra zero su
+  una sola (HCT116); la regola ne chiede due. Il contrario non passa.
+- **E1 candidato: non passa.** Positivo su tre verità, intervallo sopra zero su una.
+- **E2: parziale.** Positiva sulla coppia Orion, non sulla coppia CD4. Un'ipotesi da replicare su coppie nuove
+  (KOLF2.1J, HIPSCI), non un'adozione.
+- **Strato forte:** E1 uso del contesto passerebbe (positivo su tre verità, intervalli sopra zero su K562 e HEK293T),
+  ed E2 è positiva su entrambe le coppie. Per la regola è un'ipotesi da provare su un campione nuovo, non
+  un'adozione.
+- **La diagnostica dello scambio conta:** dove `gated` batte il cieco, non batte il contesto sbagliato. Il poco
+  guadagno di E1 viene dalla forma dei cancelli, non dal contesto giusto.
+- **Conclusione per la tabella di lettura:** la forma a quattro parametri non dà un guadagno di livello, e il segnale
+  sulle differenze fra contesti è statisticamente distinguibile dal caso ma minuscolo (r ≈ 0,002–0,004). Esito
+  negativo per l'adozione; la domanda passa alla rete (F10), con più contesti e la stessa E2.
+
+**Misurato in più, sui parametri (sei fit indipendenti):**
+- β1 (espressione del gene di risposta nel contesto rispetto alle sorgenti) è negativo in tutti e sei, da −0,93 a
+  −1,54. I geni più espressi nel contesto nuovo che nelle sorgenti ricevono una risposta prevista più piccola in
+  log-fold-change.
+- α2 (bersaglio sotto la soglia d'espressione) è positivo in cinque fit su sei. α1 e β3 cambiano segno fra i fit.
+- A_fit va da 0,011 a 0,033: su bersagli presi a caso la direzione trasferita spiega pochissimo dell'ampiezza grezza.
+- `excl` batte `transfer` su HCT116 e HEK293T (+0,009 e +0,013, intervalli sopra zero) e non su K562 e CD4: lo stesso
+  quadro dell'ablazione del t23, qui su bersagli fuori dal pannello.
+
+**Interpretazione, non verificata:** β1 negativo e stabile può venire da una compressione dei log-fold-change nei geni
+molto espressi, o da un rumore gonfiato nelle sorgenti dove il gene è poco espresso. Il banco non separa le due cose.
+
 ## Stato
 
 - Prima versione (quattro parametri: espressione del bersaglio e del gene, quota condivisa): `gated.py` (codex),
   autoverifica 5 su 5; banco `gated_bench.py`, rivisto da grok e corretto.
-- Universi corretti: HCT116 e HEK293T fatti; CD4 in ricostruzione. r1 parte quando CD4 è pronto, con la regola
-  qui sopra.
+- r1 fatto il 27/09 sera, esito sopra. La rete (F10) è in
+  [`rete_contesti_2026-09-27/`](../rete_contesti_2026-09-27/DISEGNO.md).
