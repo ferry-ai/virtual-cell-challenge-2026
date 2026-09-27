@@ -14,6 +14,7 @@ Grouped by what the folder is about, not by whether it still holds: a folder's r
 
 **State and analyses** — read after `docs/PROGETTO.md` §0:
 `revisione_codex_2026-09-27/` (codex's review of 27 September, point by point, with the answer and who does what),
+`lezioni_invii_2026-09-28/` (what our 13 scored submissions and the public leaderboard's aggregates teach: saturation of the transfer recipe, the MSE gap),
 `ipotesi_trasferimento_2026-09-24/` (research hypotheses, switch genes and targeted data acquisition),
 `analisi_2026-09-24/` (Claude, with calculations), `audit_stato_2026-09-24/` (ChatGPT,
 with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
