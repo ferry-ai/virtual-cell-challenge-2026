@@ -57,3 +57,18 @@ di letture per i geni dell'asse ufficiale, poi lo stimatore corretto in locale. 
 | Southard (CRISPRa) | quattro h5ad da 8–30 GB, uno alla volta; attivazione, non knockdown | Colab/Kaggle |
 | Jurkat | già in locale; lettura mirata di 374 geni | locale |
 | X-Atlas/Pisces | non ancora pubblicato | — |
+
+## Che cosa pubblicano gli organizzatori (grok, pagine primarie; [rapporto](agenti/organizzatori_grok.md))
+
+- **Dati:** sei linee di tessuti diversi, CRISPRi, 10x Flex, sequenziate su Ultima UG100; delle linee di
+  valutazione si danno solo i controlli non mirati. Le perturbazioni sono state «scelte per dare un insieme forte di
+  perturbazioni e risposte» (notizia di Arc del 20/08/2026). **Interpretazione, non verificata:** i bersagli del
+  pannello sarebbero forti nelle linee della gara, mentre nell'atlante risultano di forza tipica nel K562 e nel CD4
+  (`../atlante_2026-09-26/forza_pannello/`); è coerente con il guadagno di ogni raddoppio d'ampiezza.
+- **Nuova sorgente candidata:** il dataset completo della gara 2025 (H1 hESC, training, validazione e test) è ora
+  pubblico sul Virtual Cell Atlas di Arc, ed è esplicitamente ammesso. In locale ci sono solo i metadati
+  (`vcc2025/`). Non è nell'elenco autorizzato il 27/09: serve il via del proprietario, con dimensione e licenza.
+- **Baseline:** l'unica pubblicata è lo zero del punteggio, la risposta media del contesto assegnata a ogni
+  perturbazione; nessuna baseline di trasferimento fra linee o lineare sui contesti 2026.
+- **2025:** i vincitori hanno usato tutti dati del contesto di valutazione (addestramento o affinamento su H1),
+  che nel 2026 non esistono; il terzo classificato trasferiva da altre linee e poi scalava linearmente.
