@@ -44,7 +44,8 @@ controlli prevedono 0,03 conteggi dà circa −0,06 (prima +2,8).
 
 - **Il default non cambia** (`"constant"`). Con il codice nuovo gli effetti del t22 si ricostruiscono identici
   byte per byte (sha256 `7d6a3b15…` nei tre contesti), e lo stadio 98 in modalità di default riproduce le nove
-  cache di r5 byte per byte (`confronto_r5_parita.json`).
+  cache di r5 byte per byte: `confronto_r5_parita.json` registra l'uguaglianza degli array, `parita_sha256.txt`
+  quella dei byte.
 - **Test** in `tests/test_multisource.py`: gene assente in un donatore, zero dove i controlli prevedono quasi
   nulla, gene perso letto come perso, totali uguali identici nelle due modalità.
 
@@ -63,7 +64,8 @@ Pseudoconteggio di 0,5 nel gruppo più piccolo e la stessa frazione del totale n
 (CD4 da 7–17 a 0 per sorgente, HCT116 da 315 a 0) e lascia pochi geni repressi da oltre il 90 % dei knockdown
 (24 in `cd4_mix`, 1–9 altrove). Muove però molto più dell'artefatto: con i controlli molto più grandi del
 bersaglio sposta anche i geni con pochi conteggi attesi, di `ln(E_t / (E_t + 0,5))`, da −0,05 a −0,4 per 10 e
-1 conteggio atteso, mentre lì il pseudoconteggio costante era quasi senza distorsione. Il 57 % delle voci di
+1 conteggio atteso. In media sul rumore di Poisson il pseudoconteggio costante lì è quasi senza distorsione da
+due conteggi attesi in su, non a uno (tabella nella sezione sulla revisione di grok). Il 57 % delle voci di
 HCT116 cambia di oltre 0,01; la correlazione mediana per bersaglio con r5 scende a 0,72 in HCT116, 0,78 in
 HEK293T, 0,87 in `cd4_mix`. Per un confronto a un fattore serve una correzione che tocchi solo l'artefatto.
 
@@ -88,14 +90,14 @@ senza limite verso lo zero.
 | Sorgente | Voci identiche a r5 | Correlazione per bersaglio con r5 (mediana) | Energia rispetto a r5 | Voci diventate non misurate | Geni indotti da oltre il 90 % (r5 → r9) |
 |---|---|---|---|---|---|
 | `cd4_Rest` | 92 % | 0,86 | 0,87 | 29.590 | 16 → 0 |
-| `cd4_Stim8hr` | 94 % | 0,89 | 0,92 | 16.275 | 14 → 0 |
+| `cd4_Stim8hr` | 94 % | 0,88 | 0,92 | 16.275 | 14 → 0 |
 | `cd4_Stim48hr` | 94 % | 0,97 | 0,98 | 18.862 | 7 → 0 |
 | `cd4_mix` | 86 % | 0,88 | 0,95 | 20.291 | 17 → 0 |
 | `orion_hct116` | 94 % | 0,91 | 0,68 | 169.277 | 315 → 0 |
 | `orion_hek293t` | 95 % | 0,92 | 0,86 | 90.498 | 2 → 0 |
 
-K562 è identico byte per byte. I geni repressi da oltre il 90 % dei knockdown restano pochi (0–14 per
-sorgente, come in r5). Le voci che cambiano sono quelle con pochissimi conteggi attesi: diventano non misurate,
+K562 è identico byte per byte. I geni repressi da oltre il 90 % dei knockdown restano pochi ma crescono un
+po': 0–14 per sorgente contro 0–10 in r5 (in `cd4_mix` da 10 a 14, in `cd4_Rest` da 2 a 5). Le voci che cambiano sono quelle con pochissimi conteggi attesi: diventano non misurate,
 e le altre sorgenti (o lo zero, se nessuna le misura) ne prendono il posto.
 
 ## t25: il t22 sulla cache r9
@@ -108,7 +110,7 @@ solo fattore. Misurato sugli effetti costruiti (`processed/effects_t25_2026-09-2
 - la correlazione per bersaglio con il t22 sui geni espressi ha mediana 0,90, 0,92 e 0,88: cambia più dei soli
   geni Y (B, senza geni Y, è a 0,92), perché cambiano anche i geni con pochi conteggi di CD4 e Orion e con loro
   la risposta media che la ricetta sottrae;
-- i geni mossi per bersaglio passano da 13.958 a 13.728 (mediana).
+- i geni mossi per bersaglio passano da 13.958 a 13.728,5 (mediana).
 
 Previsione e regola registrate alle 11:41:47 UTC del 27/09, prima della generazione
 ([previsione](../prediction_t25_2026-09-27/prediction.json)). Generazione avviata alle 13:42 (ora italiana).
@@ -120,3 +122,37 @@ Previsione e regola registrate alle 11:41:47 UTC del 27/09, prima della generazi
   di Orion permettono di rifare la stima senza riscaricare; CD4 va riletto dal pseudobulk genome-wide.
 - Il **t23** toglie i geni Y perché li mette a quota 0. Un suo eventuale guadagno mescola la rimozione
   dell'artefatto, l'esclusione dei geni non stimabili, la pesatura e la riscalatura: serve un'ablazione.
+
+## Revisione di grok e correzioni (27/09, pomeriggio)
+
+grok (base di lancio, run `20260927-135652-v2-review-pseudo-grok`, sola lettura) ha rivisto la correzione;
+il rapporto integrale è in [agenti/revisione_grok.md](agenti/revisione_grok.md).
+
+- **Confermato:** la derivazione dell'artefatto; la regola di r9 non guarda il conteggio del bersaglio; media ed
+  errore standard sui donatori rimasti; un NaN resta "non misurato" fino allo stadio 45, che lascia il gene al
+  livello basale.
+- **Corretto qui sopra:** tre numeri (la correlazione di `cd4_Stim8hr` è 0,885, quindi 0,88; i geni mossi dal
+  t25 sono 13.728,5; i geni repressi da oltre il 90 % crescono un po' invece di restare come in r5), e la
+  prova dei byte uguali, ora registrata in `parita_sha256.txt`.
+- **Punti aperti, non corretti:**
+  - vicino alla soglia la regola tiene i donatori il cui conteggio nei controlli è salito per caso, e questo
+    abbassa l'effetto: grok stima circa −0,25 a un conteggio atteso in CD4, pochi centesimi in Orion
+    (**inferenza**, non misurata). Una stima di `E_t` dalla frazione dei controlli di tutti i donatori insieme
+    ne sarebbe quasi libera;
+  - il peso di affidabilità di `mix` usa ancora le cellule di tutti i donatori, anche di quelli scartati per
+    quel gene.
+- **Un disaccordo, con il calcolo:** grok legge la distorsione del pseudoconteggio costante al valore atteso
+  (`ln(1 + 0,5/E_t)`, +0,41 a un conteggio atteso). In media sul rumore di Poisson del bersaglio (controlli
+  profondi), calcolata qui esattamente:
+
+| Conteggi attesi `E_t` | costante, al valore atteso | costante, in media | `library`, in media |
+|---|---|---|---|
+| 0,5 | +0,69 | +0,48 | −0,21 |
+| 1 | +0,41 | +0,17 | −0,24 |
+| 2 | +0,22 | +0,03 | −0,20 |
+| 3 | +0,15 | 0,00 | −0,15 |
+| 10 | +0,05 | 0,00 | −0,05 |
+
+  Quindi r9 lascia una distorsione di circa +0,17 a un conteggio atteso e quasi nulla da due in su, e la scelta
+  di non usare r7 regge. Alzare `min_expected` a 2 toglierebbe anche il residuo a uno, al prezzo di più coppie non
+  misurate: resta una prova da fare, non fatta.

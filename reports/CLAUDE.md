@@ -46,6 +46,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `quattro_sorgenti_2026-09-26/` (t20 plus HEK293T, the fourth genome-scale source: origin of t22),
 `trasferimento_gerarchico_2026-09-26/` (hierarchical empirical-Bayes transfer: does not pass its rule),
 `ricerca_sorgenti_2026-09-26/` (HIPSCI CRISPRi across 34 iPSC lines, and the public pages of the challenge),
+`ricerca_sorgenti_2026-09-27/` (multi-cell-type data searched and verified by two agents; the KOLF2.1J file layout; the ingestion plan),
 `banco_varianti_2026-09-25/` (leave-one-source-out bench of recipe variants: shrinkage, gamma, consensus, gating, generator noise),
 `ricerca_sorgenti_2026-09-25/` (agent search of 25 September: Mixscale provenance, microglia, Flex bridge, full catalogue of new sources),
 `pattern_mixscale_2026-09-24/` (paired reanalysis: target/stimulus heterogeneity and sign specificity),
