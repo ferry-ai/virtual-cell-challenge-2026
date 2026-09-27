@@ -22,6 +22,12 @@ from the other training families (leave one family out inside training), with th
 features taken from those same other families; up to --fit-targets targets per family, none a test or panel
 target; the target's own gene out of the loss; the amplitude of the fit is the weighted least-squares slope of
 (y - k) on m. The share rho and the cis head come from training data only, with the test targets excluded.
+A design whose gate fit does not converge is reported and not evaluated. Each design draws its targets and its
+bootstrap and permutation samples from its own seed (SEED, design index), so a run of a subset (--designs)
+repeats the full run's draws. Every E1 contrast and E2 correlation is also reported on the **strong stratum**:
+the test targets in the top quartile of significant genes in the held-out truth (|Z| >= 3 on genes detectable in
+A/B/C, own gene out; for E2 the smaller of the two truths' counts), the kind of target the VCC organisers chose.
+The selection uses the truth only and is the same for every arm.
 Proxies against public sources, not VCC scores.
 
     scripts/py.cmd reports/modello_contesto_2026-09-27/gated_bench.py --out <new dir> \
@@ -134,6 +140,8 @@ def main() -> None:
     ap.add_argument("--lam", type=float, default=1.0)
     ap.add_argument("--l-min", type=float, default=float(np.log1p(5.0)))
     ap.add_argument("--smoke", action="store_true", help="60 test, 120 fit, 400 estimation targets; one design each")
+    ap.add_argument("--designs", default=None,
+                    help="comma-separated subset, e.g. E1:k562,E2:orion_hct116+orion_hek293t (default: all)")
     ap.add_argument("--out", type=Path, required=True)
     args = ap.parse_args()
     if args.smoke:
@@ -165,12 +173,22 @@ def main() -> None:
     thr = detectable_threshold(cpm_abc)
     lvec = {n: np.log1p(basal[n].to_numpy(dtype=np.float32)) for n in unis}
 
-    rng = np.random.default_rng(SEED)
     designs = [("E1", (h,)) for h in E1_TRUTHS] + [("E2", p) for p in E2_PAIRS]
+    labels = [f"{k}:{'+'.join(t)}" for k, t in designs]
     if args.smoke:
-        designs = [("E1", ("orion_hek293t",)), ("E2", E2_PAIRS[0])]
+        chosen = ["E1:orion_hek293t", f"E2:{'+'.join(E2_PAIRS[0])}"]
+    elif args.designs:
+        chosen = [s.strip() for s in args.designs.split(",") if s.strip()]
+        unknown = sorted(set(chosen) - set(labels))
+        if unknown:
+            raise SystemExit(f"unknown designs {unknown}; choose among {labels}")
+    else:
+        chosen = labels
     summary, e2_rows, params_rows = [], [], []
-    for kind, truths in designs:
+    for di, ((kind, truths), label) in enumerate(zip(designs, labels)):
+        if label not in chosen:
+            continue
+        rng = np.random.default_rng([SEED, di])
         if any(t not in unis for t in truths):
             log(f"{kind} {truths}: a truth universe is missing, skipped")
             continue
@@ -246,6 +264,9 @@ def main() -> None:
                             "beta1": p[2], "beta3": p[3], "success": bool(res.success), "message": str(res.message),
                             "objective": float(res.fun)})
         log(f"{kind} {truths}: A_fit {a_fit:.3f}, params {np.round(p, 4).tolist()}, success {res.success}")
+        if not res.success:
+            log(f"{kind} {truths}: the gate fit did not converge; design not evaluated (it does not pass)")
+            continue
 
         # ---- predictions for the held-out truth(s); every arm but `transfer` rescaled to its detectable genes
         m_h = transfer(unis, train, test)
@@ -281,6 +302,10 @@ def main() -> None:
             own = np.zeros(y.shape, dtype=bool)
             own[np.arange(len(test))[tg >= 0], tg[tg >= 0]] = True
             sig = np.isfinite(y) & (np.abs(np.nan_to_num(Zt)) >= 3) & gate_abc[None, :] & ~own
+            strength = sig.sum(axis=1)
+            strong = strength >= np.quantile(strength, 0.75)
+            log(f"E1 {h}: strong stratum {int(strong.sum())} targets (>= {np.quantile(strength, 0.75):.0f} "
+                f"significant genes; median over test targets {np.median(strength):.0f})")
             observed = np.abs(base) > 0
             per = {}
             for name, E in arms.items():
@@ -301,22 +326,35 @@ def main() -> None:
                              "nmae_gen": np.nanmean(nmae_gen, axis=0),
                              "energy": float((np.asarray(E, np.float64) ** 2).sum() / (np.asarray(base, np.float64) ** 2).sum())}
             combo = {k: W_PDS * v["pds_gen"] - W_NMAE * v["nmae_gen"] for k, v in per.items()}
-            brng = np.random.default_rng([SEED, len(summary)])
+            brng = np.random.default_rng([SEED, di, 1])
             contrasts = [(n, "transfer") for n in arms if n != "transfer"] + \
                         [("gated", "excl"), ("gated", "gated_blind"), ("gated", "gated_swap")]
             for a, b in contrasts:
                 d = combo[a] - combo[b]
-                est, ci = boot(d[np.isfinite(d)], brng)
                 dp = np.asarray(per[a]["pds"], float) - np.asarray(per[b]["pds"], float)
-                pest, pci = boot(dp[np.isfinite(dp)], brng)
-                summary.append({"held_out": h, "arm": a, "against": b, "targets": len(test),
-                                "combined_minus": est, "combined_ci95": ci, "pds_minus": pest, "pds_ci95": pci,
-                                "energy_ratio": per[a]["energy"]})
+                for stratum, sel in (("all", np.ones(len(test), dtype=bool)), ("strong", strong)):
+                    est, ci = boot(d[sel & np.isfinite(d)], brng)
+                    pest, pci = boot(dp[sel & np.isfinite(dp)], brng)
+                    summary.append({"held_out": h, "stratum": stratum, "arm": a, "against": b,
+                                    "targets": int((sel & np.isfinite(d)).sum()), "combined_minus": est,
+                                    "combined_ci95": ci, "pds_minus": pest, "pds_ci95": pci,
+                                    "energy_ratio": per[a]["energy"]})
             log(f"E1 {h}: evaluated")
         else:
             h1, h2 = truths
-            y1, _ = rows(unis[h1], test, G)
-            y2, _ = rows(unis[h2], test, G)
+            y1, se1 = rows(unis[h1], test, G)
+            y2, se2 = rows(unis[h2], test, G)
+            own2 = np.zeros(y1.shape, dtype=bool)
+            own2[np.arange(len(test))[tg >= 0], tg[tg >= 0]] = True
+
+            def n_sig(y: np.ndarray, se: np.ndarray) -> np.ndarray:
+                z = y / np.where(np.isfinite(se) & (se > 0), se, np.nan)
+                return (np.isfinite(y) & (np.abs(np.nan_to_num(z)) >= 3) & gate_abc[None, :] & ~own2).sum(axis=1)
+
+            strength = np.minimum(n_sig(y1, se1), n_sig(y2, se2))
+            strong = strength >= np.quantile(strength, 0.75)
+            log(f"E2 {h1}-{h2}: strong stratum {int(strong.sum())} targets (>= {np.quantile(strength, 0.75):.0f} "
+                f"significant genes in both truths)")
             near = near_mask(test, axis, coords)
             xw = 0.05 * np.nanmean(np.vstack([basal[h1].to_numpy(dtype=float), basal[h2].to_numpy(dtype=float)]), axis=0)
             wg = np.nan_to_num(xw / (1.0 + xw)).astype(np.float32)
@@ -324,30 +362,32 @@ def main() -> None:
             preds = {"gated": (gated_signal(ctx_names.index(h1)), gated_signal(ctx_names.index(h2))),
                      "gated_blind": (gated_signal(ctx_names.index(h1), True), gated_signal(ctx_names.index(h2), True)),
                      "excl": (m_excl, m_excl)}
-            prng = np.random.default_rng([SEED, 7, len(e2_rows)])
-            for name, (p1, p2) in preds.items():
+            for ai, (name, (p1, p2)) in enumerate(preds.items()):
                 raw_diff = np.nan_to_num(p1) - np.nan_to_num(p2)
                 zero = bool(np.all(np.abs(raw_diff) < 1e-7))
                 dpred = centred(raw_diff)
                 wt = np.where(near, 0.0, wg[None, :])
                 corr = np.array([weighted_corr(dpred[i], obs[i], wt[i]) for i in range(len(test))])
-                ok = np.isfinite(corr)
-                if ok.any():
-                    est, ci = boot(corr[ok], np.random.default_rng([SEED, len(e2_rows)]))
-                else:
-                    est, ci = float("nan"), [float("nan"), float("nan")]
-                perm = []
-                if not zero:
-                    for _ in range(N_PERM):
-                        j = prng.permutation(len(test))
-                        cp = np.array([weighted_corr(dpred[i], obs[j[i]], wt[i]) for i in range(len(test))])
-                        perm.append(float(np.nanmean(cp)))
-                perm = np.asarray(perm)
-                e2_rows.append({"pair": f"{h1}-{h2}", "arm": name, "targets": int(ok.sum()), "mean_corr": est,
-                                "ci95": ci, "predicted_difference_is_zero": zero,
-                                "perm_mean": float(perm.mean()) if perm.size else None,
-                                "perm_q975": float(np.quantile(perm, 0.975)) if perm.size else None,
-                                "perm_p": float((perm >= est).mean()) if perm.size else None})
+                for si, (stratum, sel) in enumerate((("all", np.ones(len(test), dtype=bool)), ("strong", strong))):
+                    idx = np.flatnonzero(sel)
+                    ok = np.isfinite(corr[idx])
+                    if ok.any():
+                        est, ci = boot(corr[idx][ok], np.random.default_rng([SEED, di, 2, ai, si]))
+                    else:
+                        est, ci = float("nan"), [float("nan"), float("nan")]
+                    perm = []
+                    if not zero:
+                        prng = np.random.default_rng([SEED, di, 3, ai, si])
+                        for _ in range(N_PERM):
+                            j = idx[prng.permutation(idx.size)]         # another target's observed difference
+                            cp = np.array([weighted_corr(dpred[i], obs[jj], wt[i]) for i, jj in zip(idx, j)])
+                            perm.append(float(np.nanmean(cp)))
+                    perm = np.asarray(perm)
+                    e2_rows.append({"pair": f"{h1}-{h2}", "stratum": stratum, "arm": name, "targets": int(ok.sum()),
+                                    "mean_corr": est, "ci95": ci, "predicted_difference_is_zero": zero,
+                                    "perm_mean": float(perm.mean()) if perm.size else None,
+                                    "perm_q975": float(np.quantile(perm, 0.975)) if perm.size else None,
+                                    "perm_p": float((perm >= est).mean()) if perm.size else None})
             log(f"E2 {h1}-{h2}: evaluated")
         # partial copies after every design, so an interruption keeps what was measured
         pd.DataFrame(summary).to_csv(args.out / "summary_partial.csv", index=False)
@@ -362,7 +402,7 @@ def main() -> None:
                    "summary": summary, "e2": e2_rows, "params": params_rows}, fh, indent=1, default=str)
     pd.set_option("display.width", 250)
     if summary:
-        print(pd.DataFrame(summary)[["held_out", "arm", "against", "targets", "combined_minus", "combined_ci95",
+        print(pd.DataFrame(summary)[["held_out", "stratum", "arm", "against", "targets", "combined_minus", "combined_ci95",
                                      "pds_minus", "energy_ratio"]].round(4).to_string(index=False))
     if e2_rows:
         print(pd.DataFrame(e2_rows).to_string(index=False))

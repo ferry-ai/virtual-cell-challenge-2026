@@ -1,0 +1,29 @@
+[      1s] universe k562: 9866 targets
+[      1s] universe cd4_mix: 12238 targets
+[      1s] universe cd4_Rest: 12238 targets
+[      1s] universe cd4_Stim48hr: 12238 targets
+[      2s] universe orion_hct116: 16438 targets
+[      2s] universe orion_hek293t: 17270 targets
+[    422s] E1 ('orion_hek293t',): train ['k562', 'cd4_mix'], 60 test targets of 6538; rho {'inputs': ['k562', 'cd4_mix'], 'estimation_targets': 400, 'share_median': 1.0, 'share_below_0.5': 0.25044945374083805, 'genes_with_moments': 7231}
+[    780s] E1 ('orion_hek293t',): A_fit 0.027, params [-1.0503, 1.9821, -0.4102, 0.0207], success True
+[   1077s] E1 orion_hek293t: evaluated
+[   1552s] E2 ('orion_hct116', 'orion_hek293t'): train ['k562', 'cd4_mix'], 60 test targets of 6077; rho {'inputs': ['k562', 'cd4_mix'], 'estimation_targets': 400, 'share_median': 1.0, 'share_below_0.5': 0.22237588162079933, 'genes_with_moments': 7231}
+[   1839s] E2 ('orion_hct116', 'orion_hek293t'): A_fit 0.022, params [0.2765, 0.3359, -0.8304, 0.0126], success True
+[   2059s] E2 orion_hct116-orion_hek293t: evaluated
+     held_out         arm     against  targets  combined_minus                                  combined_ci95  pds_minus  energy_ratio
+orion_hek293t        excl    transfer       60          0.0072  [-0.005789965265949872, 0.019601498722036086]     0.0076        0.2913
+orion_hek293t       share    transfer       60         -0.0007  [-0.015784869909867938, 0.014602577853625155]     0.0068        0.3624
+orion_hek293t       gated    transfer       60          0.0015   [-0.01422490126201882, 0.016618419090782273]     0.0062        1.8536
+orion_hek293t gated_blind    transfer       60          0.0100  [-0.002693775900816993, 0.022378950326154383]     0.0062        0.3417
+orion_hek293t  gated_swap    transfer       60          0.0038  [-0.012645683456372042, 0.019926227271313872]     0.0073        0.6018
+orion_hek293t       gated        excl       60         -0.0057   [-0.01900152689787201, 0.007381784989729207]    -0.0014        1.8536
+orion_hek293t       gated gated_blind       60         -0.0084 [-0.019585256410357927, 0.0008069002139982406]     0.0000        1.8536
+orion_hek293t       gated  gated_swap       60         -0.0022  [-0.015717200462425352, 0.012047924892389799]    -0.0011        1.8536
+                      pair         arm  targets  mean_corr                                           ci95  predicted_difference_is_zero  perm_mean  perm_q975  perm_p
+orion_hct116-orion_hek293t       gated       60  -0.000699 [-0.0046627848801539615, 0.003224927021343401]                         False   0.000315   0.004068   0.695
+orion_hct116-orion_hek293t gated_blind       60   0.000000                                     [0.0, 0.0]                          True        NaN        NaN     NaN
+orion_hct116-orion_hek293t        excl       60   0.000000                                     [0.0, 0.0]                          True        NaN        NaN     NaN
+design                     truths        train  fit_families  a_fit  alpha1  alpha2   beta1  beta3  success                                              message   objective
+    E1              orion_hek293t k562+cd4_mix             2 0.0271 -1.0503  1.9821 -0.4102 0.0207     True CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH 615369.3063
+    E2 orion_hct116+orion_hek293t k562+cd4_mix             2 0.0219  0.2765  0.3359 -0.8304 0.0126     True CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH 591730.3032
+exit 0
