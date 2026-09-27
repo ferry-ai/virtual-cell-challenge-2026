@@ -68,3 +68,49 @@ il valore corrispondente.
 
 **Modifiche al codice prima di r1:** solo quelle necessarie a farlo girare sui dati veri, dichiarate qui con l'ora,
 senza guardare risultati sui dati veri.
+
+## Sera del 27/09: la corsa di produzione su Colab (misurato; `prod_r1/`)
+
+**Che cosa è girato.** Job Colab 053, GPU (torch 2.11, CUDA 12.8), dataset `rete_contesti_r1`, con tutti i contesti
+CRISPRi visibili e previsione dei 300 bersagli del pannello in A, B e C:
+- fase 1: famiglia di validazione `orion` (HCT116 e HEK293T) tenuta fuori, addestramento su CD4, K562 e KOLF2.1J;
+- fase 2: di nuovo su tutto, per il numero di passi migliore.
+
+Una prova di 40 passi sul portatile misura 3,7 s per passo su CPU; su GPU sono 0,22 s.
+
+**La curva di validazione.** La famiglia `orion` fa da contesto nuovo.
+
+| Passo | Perdita sulle famiglie di training | Perdita su `orion` tenuta fuori |
+|---|---|---|
+| 250 | 0,01077 | **0,009415** (la migliore) |
+| 500 | 0,01067 | 0,009516 |
+| 1.000 | 0,01031 | 0,009609 |
+| 1.500 | 0,00988 | 0,009694 |
+| 2.250 | 0,00970 | 0,009658 (arresto: 8 valutazioni senza miglioramento) |
+
+- L'ampiezza del trasferimento scende da 0,0156 a 0,0140, quella dei partner STRING sale da 0,0207 a 0,0262.
+- La fase 2 riaddestra per 250 passi: la rete finale resta vicina al suo punto di partenza, cioè il trasferimento
+  calibrato più il termine dei partner.
+- Calibrazione della fase 2: A = 0,028, A_q = 0,035. La direzione trasferita spiega pochissimo della scala degli
+  effetti grezzi dei bersagli presi a caso, come nel modello a cancelli (A_fit 0,01–0,03).
+
+**Lettura (interpretazione).** Quello che la rete impara oltre il punto di partenza è specifico delle linee viste: la
+perdita di training scende del 10 %, quella sulla famiglia nuova sale del 2,6 %. È lo stesso messaggio di r1 del
+modello a cancelli e della letteratura. **Non è la regola di r1:** una sola famiglia di validazione, un seme, nessun
+proxy.
+
+**La direzione, prima di imparare (misurato; prova di 5 passi, contesto A, 183 bersagli).** Coseno mediano con gli
+effetti del t25 sui geni che la rete prevede:
+
+| Componente | Coseno con il t25 |
+|---|---|
+| il trasferimento della rete (con KOLF2.1J e le condizioni CD4 pesate a parte) | 0,68 (0,54–0,84) |
+| il termine dei partner (circa il 26 % della norma) | 0,01 |
+| l'uscita della rete | 0,32 |
+
+La rete propone una direzione lontana da quella del t22 per scelte di disegno, prima di aver imparato qualcosa.
+
+**Decisione del proprietario, 27/09 alle 23:30 circa:** niente invio della rete stanotte, lo slot va al t24 (rumore
+fra semi). La notte serve a capire se la rete funziona e a integrare altri dataset. Varianti esplorative su Colab
+(job 056: senza partner, peso sui bersagli forti, solo cancelli, apprendimento lento, sola ampiezza, disegno di
+default con valutazioni ogni 50 passi). Sono descrittive e non sono r1.

@@ -1,0 +1,22 @@
+[     0.3s] dataset: 91860 rows, 12477 stored genes, 8 contexts, 18848 targets; device cuda; torch 2.11.0+cu128
+[     0.4s] design C: truth [], hidden [], visible ['k562', 'cd4_Rest', 'cd4_Stim8hr', 'cd4_Stim48hr', 'orion_hct116', 'orion_hek293t', 'kolf']; 90860 visible rows; 0 test targets, 0 targets hidden everywhere; validation family (orion)
+[   156.4s] phase: 57152 visible rows in 5 contexts, 3 families (cd4, k562, kolf); 9749 of 12477 genes estimated by >= 2 families; profiles 33089 (family, target) rows, partner profiles 28093
+[   166.0s] calibration: A 0.01563 (used 0.01563), A_q 0.02048 (used 0.02048), mean row weight 2.994e+05 on 4000 rows; parameters 450402
+[   227.7s] step step 250, train_loss 0.010773, amplitude 0.01556, amplitude_q 0.020677, val_loss 0.0094149
+[   283.3s] step step 500, train_loss 0.010674, amplitude 0.014668, amplitude_q 0.020831, val_loss 0.0095163
+[   338.7s] step step 750, train_loss 0.010537, amplitude 0.01437, amplitude_q 0.021492, val_loss 0.0096099
+[   393.9s] step step 1000, train_loss 0.010307, amplitude 0.014356, amplitude_q 0.022681, val_loss 0.0096085
+[   449.7s] step step 1250, train_loss 0.010071, amplitude 0.014302, amplitude_q 0.022752, val_loss 0.0096663
+[   505.0s] step step 1500, train_loss 0.0098843, amplitude 0.014174, amplitude_q 0.023105, val_loss 0.0096943
+[   560.3s] step step 1750, train_loss 0.0098023, amplitude 0.014238, amplitude_q 0.024368, val_loss 0.0096766
+[   616.0s] step step 2000, train_loss 0.0097432, amplitude 0.014053, amplitude_q 0.025193, val_loss 0.0096538
+[   672.9s] step step 2250, train_loss 0.0096967, amplitude 0.014028, amplitude_q 0.026206, val_loss 0.0096577
+[   672.9s] early stop at step 2250: no validation gain in 8 evaluations; best step 250
+[   904.2s] phase: 90860 visible rows in 7 contexts, 4 families (cd4, k562, kolf, orion); 11913 of 12477 genes estimated by >= 2 families; profiles 50496 (family, target) rows, partner profiles 38346
+[   904.2s] refit on every visible row for 250 steps
+[   919.5s] calibration: A 0.02814 (used 0.02814), A_q 0.03458 (used 0.03458), mean row weight 3.217e+05 on 4000 rows; parameters 450402
+[  1088.3s] step step 250, train_loss 0.010915, amplitude 0.028242, amplitude_q 0.034859
+[  1095.4s] predicted 300 targets in A
+[  1100.7s] predicted 300 targets in B
+[  1106.6s] predicted 300 targets in C
+[  1106.8s] done: /content/drive/MyDrive/vcc2026/runs/rete_prod_r1
