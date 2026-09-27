@@ -11,8 +11,8 @@ Aggiornata il 2026-09-23 con la pulizia di D-040:
   `archivio/pre-pulizia-2026-09-23`;
 - §1, §3 e §4 sono invariati, salvo le voci 7 e 20 del §4.
 
-Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 28 settembre, con il t24
-([confronto](../reports/prediction_t24_2026-09-27/comparison.json)).
+Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 28 settembre, con il t25
+([confronto](../reports/prediction_t25_2026-09-27/comparison.json)): t25 − t22 = −0,0010, non conclusivo per la regola; la correzione dello stimatore resta nei dati da qui in avanti.
 
 ## 0. Oggi — 28 settembre 2026
 
@@ -43,6 +43,7 @@ regola registrata non conclude sull'effetto di HEK293T
 | t20 | il t16 con effetti ristretti a 1,576 + modulo cis CRISPRi | trial-01 | +0,139676 | 346 | [confronto](../reports/prediction_t20_2026-09-26/comparison.json) |
 | **t22** | il t20 + Orion HEK293T a peso uguale (le quattro sorgenti genome-scale) | trial-01 | **+0,141250** | 337 | [confronto](../reports/prediction_t22_2026-09-26/comparison.json) |
 | t24 | il t22 con un altro seme del generatore (replica: misura il rumore) | trial-01 | +0,142897 | 347 | [confronto](../reports/prediction_t24_2026-09-27/comparison.json) |
+| t25 | il t22 con lo stimatore pseudobulk corretto (`min_expected` 1) | trial-01 | +0,140238 | 361 | [confronto](../reports/prediction_t25_2026-09-27/comparison.json) |
 
 In tutti gli invii:
 - lo scalato della `mse` vale 0 (tosato);

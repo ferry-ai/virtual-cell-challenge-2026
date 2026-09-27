@@ -1,0 +1,109 @@
+{
+ "written_utc": "2026-09-27T22:44:10.494422+00:00",
+ "entry_id": "ekxW6wo83Csum25pkddl",
+ "submission_date": "2026-09-27T22:10:27.115813Z",
+ "owners_go": "in chat, 28/09 just after midnight Italian time: send t25 while the network work goes on",
+ "score_avg": 0.14023806091483554,
+ "rank_at_scoring": 361,
+ "registered_band": [
+  0.133,
+  0.152
+ ],
+ "inside_band": true,
+ "reference": {
+  "t22": 0.14125049908559736,
+  "t22_recipe_mean_of_t22_t24": 0.1420736800178088
+ },
+ "t25_minus_t22": -0.0010124381707618257,
+ "t25_minus_t22_band": [
+  -0.006,
+  0.008
+ ],
+ "inside_difference_band": true,
+ "t25_minus_t22_recipe_reference": -0.0018356191029732516,
+ "reading_rule_outcome": "t25 - t22 = -0.0010, inside +/-0.005: inconclusive within resolution by the rule registered at 11:41 UTC of 27/09. By the rule the correction still enters the caches built from now on, as the correction of a measured estimator artefact, non-inferior within resolution. Against the t22 recipe's reference after t24 (0.142074): -0.0018, about one seed-noise unit (t24 - t22 = 0.0016).",
+ "scaled_published": {
+  "t22": {
+   "score_pds": 0.6341779442539317,
+   "score_mse": 0,
+   "score_nmae": 0.12037533232563229,
+   "score_fid": -0.052174993857184764,
+   "score_reach": 0.13130923734723685,
+   "score_jac": 0.013815474443968086
+  },
+  "t25": {
+   "score_pds": 0.6235621757264928,
+   "score_mse": 0,
+   "score_nmae": 0.11798484120651283,
+   "score_fid": -0.0581287268841437,
+   "score_reach": 0.14405215190643564,
+   "score_jac": 0.013957923533715692
+  },
+  "t25_minus_t22": {
+   "score_pds": -0.010615768527438951,
+   "score_mse": 0,
+   "score_nmae": -0.002390491119119459,
+   "score_fid": -0.005953733026958938,
+   "score_reach": 0.012742914559198792,
+   "score_jac": 0.00014244908974760627
+  },
+  "t25_minus_t22_contribution_to_mean": {
+   "score_pds": -0.0017692947545731585,
+   "score_mse": 0.0,
+   "score_nmae": -0.0003984151865199098,
+   "score_fid": -0.0009922888378264896,
+   "score_reach": 0.002123819093199799,
+   "score_jac": 2.374151495793438e-05
+  }
+ },
+ "raw": {
+  "pds_cosine": {
+   "t25": 0.7820921590486809,
+   "t22": 0.786759568933482,
+   "t25_minus_t22": -0.004667409884801077
+  },
+  "de_wilcoxon_lfc_nmae": {
+   "t25": 0.928018708954095,
+   "t22": 0.9265039129038812,
+   "t25_minus_t22": 0.0015147960502137625
+  },
+  "de_wilcoxon_direction_reach_raw": {
+   "t25": 0.2065724653149838,
+   "t22": 0.19539948748812852,
+   "t25_minus_t22": 0.01117297782685528
+  },
+  "de_wilcoxon_direction_fidelity_yield_raw": {
+   "t25": 0.49521951128742697,
+   "t22": 0.4969192581679741,
+   "t25_minus_t22": -0.0016997468805471372
+  },
+  "de_wilcoxon_sig_jaccard": {
+   "t25": 0.03557112599708424,
+   "t22": 0.03551457408539036,
+   "t25_minus_t22": 5.655191169387508e-05
+  },
+  "expr_mse_unbiased_capped_norm": {
+   "t25": 3.0171714908166867,
+   "t22": 3.0574372233030487,
+   "t25_minus_t22": -0.040265732486362005
+  }
+ },
+ "registered_raw_priors": {
+  "score_avg_band": [
+   0.133,
+   0.152
+  ],
+  "t25_minus_t22_band": [
+   -0.006,
+   0.008
+  ],
+  "pds_raw": "t22 - 0.004..+0.008 (fake Y responses shared by targets of similar depth removed in A and C; per-target correlation with t22 on expressed genes 0.88-0.92, a real change of direction)",
+  "nmae_raw": "t22 +/- 0.008",
+  "reach_raw": "t22 - 0.008..+0.004",
+  "fid_raw": "t22 - 0.003..+0.006",
+  "jaccard_raw": "t22 - 0.002..+0.003",
+  "mse": "scaled stays 0"
+ },
+ "member_reading": "measured: pds_cosine -0.0047 raw, just below its registered prior (-0.004..+0.008) and about five times what the seed alone moved it in t24 (+0.0009): a possible small real loss of discrimination with the correction; reach +0.0112 raw, above its prior (-0.008..+0.004) and about twice the seed's +0.0052; nMAE +0.0015, fidelity -0.0017 and Jaccard +0.00006 raw inside their priors. Neither outlier changes the rule's reading.",
+ "claim_type": "official scores; the seed-noise unit rests on one pair (t24 - t22)"
+}
