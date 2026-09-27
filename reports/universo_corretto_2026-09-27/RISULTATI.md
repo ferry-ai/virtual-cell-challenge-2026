@@ -12,8 +12,8 @@ l'universo nuovo deve coincidere con la cache del pannello r9, costruita dallo s
 |---|---|---|---|---|
 | HCT116 | 16.438 su 18.293 | 28 (2.300 MB) | 268 su 268; raw, SE e shrunk identici (0 valori diversi) | 15:23 |
 | HEK293T | 17.270 su 18.311 | 29 (2.619 MB) | 281 su 281; raw, SE e shrunk identici (0 valori diversi) | 15:54 |
-| CD4 | in corso | | | |
+| CD4 (riposo, stimolato 8 h e 48 h, e `cd4_mix`) | 12.238 per condizione | 5,7 GB in tutto | riposo 293, 8 h 292, 48 h 292: identici; `cd4_mix` 293 con scarto massimo 1,5e-8 (arrotondamento float32; `cd4_mix` non ha SE) | 17:09 |
 
-Uscite: `processed/universe_orion_hct116_2026-09-27_me1` e `processed/universe_orion_hek293t_2026-09-27_me1` nella
+Uscite: `processed/universe_orion_hct116_2026-09-27_me1`, `processed/universe_orion_hek293t_2026-09-27_me1` e `processed/universe_cd4_2026-09-27_me1` nella
 radice dei dati; qui `index.csv`, `manifest.json` e `correzione.json` di ogni sorgente. Il K562 non si ricostruisce:
 passa per `effects_from_bulk`, che non ha l'artefatto.

@@ -84,6 +84,8 @@ def main() -> None:
     ap.add_argument("--pool-col", help="batch-like column; pool = its category code modulo 8")
     ap.add_argument("--var-symbols", default=None,
                     help="var column with gene symbols (default: the var index anndata declares)")
+    ap.add_argument("--keep", action="append", default=[], metavar="COL=VALUE",
+                    help="keep only cells whose obs column equals VALUE (as text; repeatable, all must hold)")
     ap.add_argument("--axis", type=Path, default=None, help="one-column CSV of the official axis (default: vcc2026)")
     ap.add_argument("--rows-per-block", type=int, default=20000)
     ap.add_argument("--out", type=Path)
@@ -110,11 +112,18 @@ def main() -> None:
         pool_codes = obs[args.pool_col]["codes"][:].astype(np.int64) if isinstance(obs[args.pool_col], h5py.Group) \
             else np.unique(column(obs, args.pool_col), return_inverse=True)[1]
         pool = pool_codes % 8
-        keys, group_of_cell = np.unique(np.char.add(target.astype(str), np.char.add("|", pool.astype(str))),
-                                        return_inverse=True)
+        kept = np.ones(target.size, dtype=bool)
+        for spec in args.keep:
+            col_name, _, value = spec.partition("=")
+            kept &= column(obs, col_name).astype(str) == value
+        print(f"cells kept by --keep: {int(kept.sum())} of {kept.size}", flush=True)
+        keys, inverse = np.unique(np.char.add(target[kept].astype(str), np.char.add("|", pool[kept].astype(str))),
+                                  return_inverse=True)
+        group_of_cell = np.full(target.size, -1, dtype=np.int64)       # -1: not kept, in no group
+        group_of_cell[kept] = inverse
         g_target = np.asarray([k.rsplit("|", 1)[0] for k in keys], dtype=str)
         g_pool = np.asarray([int(k.rsplit("|", 1)[1]) for k in keys], dtype=np.int8)
-        n_cells = np.bincount(group_of_cell, minlength=len(keys))
+        n_cells = np.bincount(inverse, minlength=len(keys))
         symbols = column(f["var"], args.var_symbols or index_name(f["var"]))
         lookup = {}
         for i, s in enumerate(symbols):
@@ -137,7 +146,8 @@ def main() -> None:
             data = layer["data"][lo:hi].astype(np.float64)
             idx = layer["indices"][lo:hi].astype(np.int64)
             block = sp.csr_matrix((data, idx, indptr[a:b + 1] - lo), shape=(b - a, n_cols))
-            groups = sp.csr_matrix((np.ones(b - a), (group_of_cell[a:b], np.arange(b - a))), shape=(len(keys), b - a))
+            sel = np.flatnonzero(group_of_cell[a:b] >= 0)
+            groups = sp.csr_matrix((np.ones(sel.size), (group_of_cell[a:b][sel], sel)), shape=(len(keys), b - a))
             totals += np.asarray(groups @ block.sum(axis=1)).ravel()
             acc += (groups @ block[:, take]).toarray()
             print(f"[{time.time() - t0:7.0f}s] rows {b}/{n_rows}", flush=True)
@@ -151,7 +161,8 @@ def main() -> None:
     np.savez(tmp, **table)
     tmp.rename(args.out)
     print(f"groups {len(keys)} (targets {len(set(g_target)) - 1} + NTC); axis genes in the file {mapped.size}; "
-          f"cells {n_rows}; controls {int(ctrl.sum())}; {time.time() - t0:.0f} s", flush=True)
+          f"cells {n_rows}, kept {int(kept.sum())}; controls kept {int((ctrl & kept).sum())}; "
+          f"{time.time() - t0:.0f} s", flush=True)
 
 
 if __name__ == "__main__":

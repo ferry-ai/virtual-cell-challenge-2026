@@ -36,6 +36,10 @@ overwritten.
 --selftest writes a small synthetic sums.npz with kolf_sums.py's own functions (so the archive has the
 real format), runs the pipeline on it in a temporary folder and prints one line per check; exit 1 if one
 fails.
+
+--name changes both the chunk prefix and AxisTable source name (default kolf).
+--context selects only that context's target and NTC groups from a contextual archive.
+Archives with multiple contexts require this selection to avoid counting cells twice.
 """
 from __future__ import annotations
 
@@ -138,6 +142,7 @@ class Sums:
             if lacking:
                 raise ValueError(f"{self.path}: not a kolf_sums.py merge, it lacks {lacking}")
             self.target = z["target"].astype(str)
+            self.context = z["context"].astype(str) if "context" in z.files else None
             self.pool = z["pool"].astype(np.int64)
             self.n_cells = z["n_cells"].astype(np.int64)
             self.total = z["total_counts"].astype(np.float64)
@@ -154,11 +159,14 @@ class Sums:
             raise ValueError(f"{self.path}: the gene axis repeats a symbol")
         if sorted(missing.tolist()) != sorted(self.genes[self.file_columns < 0].tolist()):
             raise ValueError(f"{self.path}: missing_genes disagrees with file_columns")
-        if not np.isin(self.pool, np.arange(N_POOLS)).all():
+        if (self.pool < 0).any() or (self.context is None and (self.pool >= N_POOLS).any()):
             raise ValueError(f"{self.path}: a pool outside 0..{N_POOLS - 1}")
         if (self.n_cells < 1).any() or not (np.isfinite(self.total) & (self.total > 0)).all():
             raise ValueError(f"{self.path}: a group without cells or without counts")
-        if len(set(zip(self.target.tolist(), self.pool.tolist()))) != self.ng:
+        if self.context is not None and self.context.shape != self.target.shape:
+            raise ValueError("context and target arrays differ in shape")
+        contexts = self.context if self.context is not None else np.full(self.ng, "")
+        if len(set(zip(contexts.tolist(), self.target.tolist(), self.pool.tolist()))) != self.ng:
             raise ValueError(f"{self.path}: two groups share a target and a pool")
         self.data_offset, shape, fortran, dtype = npy_member(self.path, "sums.npy")
         if shape != (self.ng, self.na) or not fortran or dtype != np.dtype("<f4"):
@@ -245,7 +253,7 @@ def pseudobulk(s: Sums, rows: np.ndarray, on_axis: np.ndarray, off: np.ndarray, 
 
 def run(sums_path: Path, out: Path, *, report: Path | None = None, panel: Path | None = None,
         chunk: int = CHUNK, min_cells: float = MIN_CELLS, min_expected: float = MIN_EXPECTED,
-        official: bool = True, window: int = WINDOW) -> dict:
+        official: bool = True, window: int = WINDOW, name: str = NAME, context: str | None = None) -> dict:
     """Effects of every target of ``sums_path``: chunk files, index.csv and, last, manifest.json in the new
     folder ``out``. ``official`` checks the sums' genes against the official axis when it is available."""
     t0 = time.monotonic()
@@ -256,6 +264,18 @@ def run(sums_path: Path, out: Path, *, report: Path | None = None, panel: Path |
     if chunk < 1 or window < 1:
         raise ValueError("chunk and window must be positive")
     s = Sums(sums_path)
+    if not name or Path(name).name != name or any(c in name for c in "/\\:"):
+        raise ValueError("name must be a nonempty filename prefix")
+    if context is not None and s.context is None:
+        raise ValueError("--context requires an archive with a context key")
+    selected = np.arange(s.ng) if context is None else np.flatnonzero(s.context == context)
+    if not selected.size:
+        raise ValueError(f"no groups for context {context!r}")
+    if context is None and s.context is not None and len(set(s.context)) > 1:
+        raise ValueError("multiple contexts: select one with --context")
+    source = SOURCE if name == NAME and context is None else s.url
+    licence = LICENCE if name == NAME and context is None else "not specified in sums archive"
+    line = context if context is not None else LINE
     axis = s.genes
     matches = None
     if official:
@@ -268,9 +288,9 @@ def run(sums_path: Path, out: Path, *, report: Path | None = None, panel: Path |
     target, pool, n_cells, total = s.target, s.pool, s.n_cells, s.total
     if (target == CONTROL).any():
         raise ValueError(f"a target is named {CONTROL!r}, the estimator's name for the controls")
-    order = np.argsort(target, kind="stable")
+    order = selected[np.argsort(target[selected], kind="stable")]
     names, first = np.unique(target[order], return_index=True)
-    edges = np.append(first, s.ng)
+    edges = np.append(first, selected.size)
     rows_of = {str(t): order[edges[i]:edges[i + 1]] for i, t in enumerate(names)}
     ctrl = rows_of.pop(NTC, None)
     if ctrl is None or not rows_of:
@@ -291,9 +311,9 @@ def run(sums_path: Path, out: Path, *, report: Path | None = None, panel: Path |
         i = int(np.argmin(off / total))
         raise ValueError(f"{int(short.sum())} groups count more on the axis than their total_counts, e.g. "
                          f"{target[i]} pool {pool[i]}: {on_axis[i]:.0f} > {total[i]:.0f}")
-    clipped = int((off < 0).sum())
+    clipped = int((off[selected] < 0).sum())
     off = np.maximum(off, 0.0)
-    share = on_axis / total
+    share = on_axis[selected] / total[selected]
     scan_s = time.monotonic() - t1
     log(f"scan {scan_s:.0f}s: share of the library on the axis {share.min():.3f}..{share.max():.3f} "
         f"(median {np.median(share):.3f}); whole sums {whole}; sha256 {digest[:16]}")
@@ -309,16 +329,16 @@ def run(sums_path: Path, out: Path, *, report: Path | None = None, panel: Path |
         rows = np.sort(np.concatenate([rows_of[t] for t in part] + [ctrl]))
         X = pseudobulk(s, rows, on_axis, off, window)
         obs = pd.DataFrame({"target": np.where(target[rows] == NTC, CONTROL, target[rows]),
-                            "donor": [f"pool{k}" for k in pool[rows].tolist()], "condition": LINE,
+                            "donor": [f"pool{k}" for k in pool[rows].tolist()], "condition": line,
                             "n_cells": n_cells[rows].astype(np.float64)})
         src = effects_from_pseudobulk(X, obs, genes, targets=part, condition=None, min_cells=min_cells,
                                       min_expected=min_expected)
         del X
-        tab = AxisTable.from_source(NAME, src, axis)
+        tab = AxisTable.from_source(name, src, axis)
         del src
-        path = out / f"{NAME}_{c:02d}.npz"
-        chunk_meta = {**tab.meta, "source": SOURCE, "url": s.url, "groups_sha256": s.groups_sha256,
-                      "min_cells": min_cells, "licence": LICENCE,
+        path = out / f"{name}_{c:02d}.npz"
+        chunk_meta = {**tab.meta, "source": source, "url": s.url, "groups_sha256": s.groups_sha256,
+                      "min_cells": min_cells, "licence": licence,
                       "estimator": "vcc2026.multisource.effects_from_pseudobulk, pools of channels as donors, "
                                    "one off-axis column per row"}
         np.savez_compressed(path, targets=np.asarray(tab.targets, dtype=str), shrunk=tab.shrunk, raw=tab.raw,
@@ -345,14 +365,14 @@ def run(sums_path: Path, out: Path, *, report: Path | None = None, panel: Path |
     idx.to_csv(out / "index.csv", index=False)
     with_fx = idx[idx["chunk"] != ""]
     peak = peak_rss_bytes()
-    summary = {"groups": s.ng, "targets_with_cells": int(len(idx)), "targets_with_effects": int(len(with_fx)),
+    summary = {"groups": int(selected.size), "targets_with_cells": int(len(idx)), "targets_with_effects": int(len(with_fx)),
                "targets_without_effects": int(len(idx) - len(with_fx)),
                "on_official_axis_with_effects": int(with_fx["on_official_axis"].sum()),
                **({"in_panel_with_cells": int(idx["in_panel"].sum()),
                    "in_panel_with_effects": int(with_fx["in_panel"].sum())} if panel_set is not None else {}),
                "median_cells_total": float(idx["cells_total"].median()),
                "median_n_cells_with_effects": float(with_fx["n_cells"].median()) if len(with_fx) else None,
-               "cells": int(n_cells.sum()), "ntc_cells": int(ntc_cells.sum()),
+               "cells": int(n_cells[selected].sum()), "ntc_cells": int(ntc_cells.sum()),
                "ntc_cells_per_pool": ntc_cells.tolist(), "genes_on_axis": s.na,
                "genes_in_file": int(s.present.size), "genes_absent_nan": int(s.na - s.present.size),
                "all_sums_whole": bool(whole),
@@ -362,8 +382,9 @@ def run(sums_path: Path, out: Path, *, report: Path | None = None, panel: Path |
                "seconds": round(time.monotonic() - t0, 1),
                "peak_working_set_mib": round(peak / 2**20) if peak else None,
                "chunk_bytes": int(sum(ch["bytes"] for ch in chunks))}
-    manifest = {"stage": "universo_kolf_2026-09-27/kolf_effects.py", "written_utc": now(), "name": NAME,
-                "line": LINE, "source": {"what": SOURCE, "url": s.url, "licence": LICENCE},
+    manifest = {"stage": "universo_kolf_2026-09-27/kolf_effects.py", "written_utc": now(), "name": name,
+                "context": context,
+                "line": line, "source": {"what": source, "url": s.url, "licence": licence},
                 "input": {"sums": str(sums_path), "bytes": int(sums_path.stat().st_size), "sha256": digest,
                           "groups_sha256": s.groups_sha256,
                           "matrix": {"member": "sums.npy", "data_offset": int(s.data_offset), "shape": [s.ng, s.na],
@@ -381,6 +402,9 @@ def run(sums_path: Path, out: Path, *, report: Path | None = None, panel: Path |
                 "claim_type": "effect tables (ln fold change, quasi-Poisson SE, z-shrinkage) with the corrected "
                               "estimator, for every KOLF2.1J target with a pool of >= min_cells cells; no claim "
                               "on their use as a source"}
+    if context is not None or name != NAME:
+        manifest["estimator"]["donors"] = "archive pool IDs, each against its selected context's NTC cells"
+        manifest["claim_type"] = "effect tables for selected groups; no claim on their use as a source"
     with (out / "manifest.json").open("x", encoding="utf-8") as fh:
         json.dump(manifest, fh, indent=1, default=str)
     if report is not None:
@@ -479,6 +503,7 @@ def _diff(a: dict, b: dict, keys=("raw", "se", "shrunk"), shift: float = 0.0) ->
 
 def selftest() -> int:
     """The pipeline on a synthetic sums.npz written by kolf_sums.py's own functions; one line per check."""
+    from unittest.mock import patch
     results: list[bool] = []
 
     def check(name: str, ok, detail: str) -> None:
@@ -612,6 +637,39 @@ def selftest() -> int:
             refused = True
         check("never overwrite", refused and sha256_file(folder / "manifest.json") == before,
               "a second run into the same --out is refused and leaves it as it was")
+        # Two contexts share group keys but have different control libraries. Selecting
+        # one must reproduce its standalone run, without borrowing the other's controls.
+        doubled = dict(table)
+        for key in ("target", "pool", "n_cells", "total_counts"):
+            doubled[key] = np.tile(table[key], 2)
+        doubled["total_counts"][sums.shape[0]:] *= 2
+        doubled["context"] = np.repeat(["line1", "line2"], sums.shape[0])
+        multi = _publish_sums(tmp / "multi.npz", doubled, np.vstack([sums, sums]))
+        with patch.object(AxisTable, "from_source", wraps=AxisTable.from_source) as from_source:
+            with contextlib.redirect_stdout(io.StringIO()):
+                named = run(multi, tmp / "named", context="line1", name="hipsci", official=False, chunk=3)
+            source_name_ok = bool(from_source.call_args_list) and all(
+                call.args[0] == "hipsci" for call in from_source.call_args_list)
+        selected = {}
+        name_ok = True
+        for part in named["chunks"]:
+            with np.load(tmp / "named" / part["file"]) as z:
+                name_ok &= part["file"].startswith("hipsci_")
+                for i, target in enumerate(z["targets"]):
+                    selected[str(target)] = {k: z[k][i] for k in ("raw", "se", "shrunk", "n_cells")}
+        check("name option", name_ok and source_name_ok and named["name"] == "hipsci",
+              "custom source name and hipsci chunk prefix recorded")
+        check("context isolation", set(selected) == set(got)
+              and all(_diff(selected[t], got[t]) <= 1e-6 for t in got)
+              and named["summary"]["cells"] == int(table["n_cells"].sum())
+              and named["summary"]["groups"] == sums.shape[0],
+              "line1 matches standalone effects and cell totals despite different line2 libraries")
+        try:
+            run(base, tmp / "invalid_context", context="line1", official=False)
+            refused = False
+        except ValueError:
+            refused = True
+        check("context requires key", refused, "legacy archive rejects --context")
     failed = results.count(False)
     print(f"selftest: {len(results) - failed} of {len(results)} checks passed", flush=True)
     return 1 if failed else 0
@@ -626,6 +684,8 @@ def main() -> None:
                     help="panel targets in the first column, for index.csv's in_panel (default: the control "
                          "bundle's pert_counts.csv, when it exists)")
     ap.add_argument("--chunk", type=int, default=CHUNK, help="targets per block and per chunk file")
+    ap.add_argument("--name", default=NAME, help="source name and chunk filename prefix")
+    ap.add_argument("--context", default=None, help="use this context and its own controls")
     ap.add_argument("--min-cells", type=float, default=MIN_CELLS, help="estimator's target cells per pool")
     ap.add_argument("--min-expected", type=float, default=MIN_EXPECTED,
                     help="estimator's expected counts per pool (0: the constant pseudocount alone)")
@@ -640,7 +700,7 @@ def main() -> None:
         ap.error(f"--panel {args.panel} does not exist")
     panel = args.panel or (PANEL_CSV if PANEL_CSV.exists() else None)
     run(args.sums, args.out, report=args.report, panel=panel, chunk=args.chunk, min_cells=args.min_cells,
-        min_expected=args.min_expected)
+        min_expected=args.min_expected, name=args.name, context=args.context)
 
 
 if __name__ == "__main__":

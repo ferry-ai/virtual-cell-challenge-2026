@@ -1,0 +1,226 @@
+{
+ "stage": "universo_kolf_2026-09-27/kolf_effects.py",
+ "written_utc": "2026-09-27T17:20:11.618465+00:00",
+ "name": "kolf",
+ "line": "KOLF2.1J",
+ "source": {
+  "what": "KOLF2.1J CRISPRi screen, Figshare+ 27261219, KOLF_Pan_Genome_QC_Filtered.h5ad",
+  "url": "https://ndownloader.figshare.com/files/64650261",
+  "licence": "CC-BY-4.0"
+ },
+ "input": {
+  "sums": "C:\\Users\\ferra\\vcc2026-data\\interim\\kolf_sums\\sums.npz",
+  "bytes": 6875416408,
+  "sha256": "dda5995fe033df65a17ec54fce9eb5712fdfb500127410dc62ea42d1cfaaa643",
+  "groups_sha256": "4abe6620df7110ac2830c8883d82c0f3b96e4503a610cd9899cf83ffc83514b6",
+  "matrix": {
+   "member": "sums.npy",
+   "data_offset": 8123759,
+   "shape": [
+    92636,
+    18533
+   ],
+   "dtype": "<f4",
+   "order": "F"
+  },
+  "axis_matches_official": true
+ },
+ "out": "C:\\Users\\ferra\\vcc2026-data\\processed\\universe_kolf_2026-09-27_me1",
+ "chunk_size": 600,
+ "window_genes": 256,
+ "estimator": {
+  "function": "vcc2026.multisource.effects_from_pseudobulk",
+  "options": {
+   "condition": null,
+   "phi": 0.2,
+   "min_control_frac": 1e-06,
+   "min_cells": 10.0,
+   "pseudo": 0.5,
+   "pseudo_scale": "constant",
+   "min_expected": 1.0
+  },
+  "donors": "8 pools of channels (channel code mod 8, kolf_sums.py), each against its own NTC cells",
+  "library": "each row's total_counts over all genes of the file: its counts on the axis genes of the file plus one column with the rest",
+  "axis": "AxisTable.from_source, control fraction >= 1e-6; axis genes the file lacks are NaN"
+ },
+ "chunks": [
+  {
+   "file": "kolf_00.npz",
+   "targets_in_block": 600,
+   "targets": 583,
+   "bytes": 80548949,
+   "sha256": "4f92868c7cd30d0d86b866f863d64d37ca9ac8457c0c534ca9c1d3d752a4cac6"
+  },
+  {
+   "file": "kolf_01.npz",
+   "targets_in_block": 600,
+   "targets": 569,
+   "bytes": 78602508,
+   "sha256": "c6a87dbb1133d861cdfc57d2c67178637a244afe76c155af15bc82ca6301eada"
+  },
+  {
+   "file": "kolf_02.npz",
+   "targets_in_block": 600,
+   "targets": 557,
+   "bytes": 76774715,
+   "sha256": "4f0af2941cfa02962589e40f49febbd003137938acb7407fce4f2974715de325"
+  },
+  {
+   "file": "kolf_03.npz",
+   "targets_in_block": 600,
+   "targets": 555,
+   "bytes": 76594660,
+   "sha256": "e0d8be5e9a6d9d6815c172776cad3a23463a6157e83f93a61f9039ec7a38754c"
+  },
+  {
+   "file": "kolf_04.npz",
+   "targets_in_block": 600,
+   "targets": 562,
+   "bytes": 77733287,
+   "sha256": "6bf2760ca69e890c1f257762ef3a92b27631bc52d761d899f7f83f3a19182907"
+  },
+  {
+   "file": "kolf_05.npz",
+   "targets_in_block": 600,
+   "targets": 576,
+   "bytes": 79865752,
+   "sha256": "b50c7ffc91c2676378e03ddb6c71c094d041bdfdd2da56d00e6424dd0626f52d"
+  },
+  {
+   "file": "kolf_06.npz",
+   "targets_in_block": 600,
+   "targets": 572,
+   "bytes": 79251368,
+   "sha256": "31ab3e4fba043b88216b936a7fced81b9205645686945e9be10160e895f9c89c"
+  },
+  {
+   "file": "kolf_07.npz",
+   "targets_in_block": 600,
+   "targets": 573,
+   "bytes": 79638672,
+   "sha256": "73417c644bde760e69d3a9415bf97c3a462140129212e8b49196c1e681dc071c"
+  },
+  {
+   "file": "kolf_08.npz",
+   "targets_in_block": 600,
+   "targets": 571,
+   "bytes": 79073246,
+   "sha256": "9589bb45deb7a69d932251b9e5790766cd2b63e63dee26f3c37c854d0ef619f5"
+  },
+  {
+   "file": "kolf_09.npz",
+   "targets_in_block": 600,
+   "targets": 568,
+   "bytes": 78497396,
+   "sha256": "2a456489f2a1df2b4d358715e4361177db1935b648d5a3b96bc73deafdd30f0f"
+  },
+  {
+   "file": "kolf_10.npz",
+   "targets_in_block": 600,
+   "targets": 553,
+   "bytes": 76350408,
+   "sha256": "89851c30e1b6804f87d2c348960257e491f160be29664b66cc89fd94dd24cdbc"
+  },
+  {
+   "file": "kolf_11.npz",
+   "targets_in_block": 600,
+   "targets": 567,
+   "bytes": 78592697,
+   "sha256": "ec1e3f2c8b6f095249f34b3846343300a15c80e8ea322ec5cbc3b6ba446d6d1e"
+  },
+  {
+   "file": "kolf_12.npz",
+   "targets_in_block": 600,
+   "targets": 531,
+   "bytes": 72742284,
+   "sha256": "bdb8c3975ad2108d6b6c077a0b0d1e4ed60aac1ee561407b654ca802313de5a6"
+  },
+  {
+   "file": "kolf_13.npz",
+   "targets_in_block": 600,
+   "targets": 509,
+   "bytes": 69663337,
+   "sha256": "163ff29caf734d91613f82c7b2d5900cfbce2872d05171061bbd72af510daa27"
+  },
+  {
+   "file": "kolf_14.npz",
+   "targets_in_block": 600,
+   "targets": 580,
+   "bytes": 80182582,
+   "sha256": "2936a889b4ab892b96a1d9d00c21cbeda8922be23996c4f90257a1147f60e334"
+  },
+  {
+   "file": "kolf_15.npz",
+   "targets_in_block": 600,
+   "targets": 563,
+   "bytes": 77218125,
+   "sha256": "36731c234fb7e565605984c750415e5cece751dc3c1b0c7462db58f5ce5cb4e7"
+  },
+  {
+   "file": "kolf_16.npz",
+   "targets_in_block": 600,
+   "targets": 579,
+   "bytes": 80079364,
+   "sha256": "87a590ba79be964270c5b296691af86b70ea3e29c6c5430d85131348ef07cb89"
+  },
+  {
+   "file": "kolf_17.npz",
+   "targets_in_block": 600,
+   "targets": 553,
+   "bytes": 76113313,
+   "sha256": "c39686e17cf397d47af76318634292002e7df879c8a256cde618ab9c01c2b126"
+  },
+  {
+   "file": "kolf_18.npz",
+   "targets_in_block": 600,
+   "targets": 582,
+   "bytes": 81856747,
+   "sha256": "13bf50dcf878fc53ba3441d2567896304ba8367413224f984997e29eff0ec2db"
+  },
+  {
+   "file": "kolf_19.npz",
+   "targets_in_block": 287,
+   "targets": 282,
+   "bytes": 40179962,
+   "sha256": "b403b22a98219fa4150300ce0fc6ea05f72dd7d667af4105127064f5e3ed3ebe"
+  }
+ ],
+ "summary": {
+  "groups": 92636,
+  "targets_with_cells": 11687,
+  "targets_with_effects": 10985,
+  "targets_without_effects": 702,
+  "on_official_axis_with_effects": 10431,
+  "in_panel_with_cells": 282,
+  "in_panel_with_effects": 281,
+  "median_cells_total": 218.0,
+  "median_n_cells_with_effects": 225.0,
+  "cells": 2659209,
+  "ntc_cells": 146747,
+  "ntc_cells_per_pool": [
+   19110,
+   20165,
+   19438,
+   18340,
+   19277,
+   15524,
+   16976,
+   17917
+  ],
+  "genes_on_axis": 18533,
+  "genes_in_file": 17971,
+  "genes_absent_nan": 562,
+  "all_sums_whole": true,
+  "library_share_on_axis": {
+   "min": 0.6318885448916408,
+   "median": 0.741013121476302,
+   "max": 0.8261689291101055
+  },
+  "groups_off_axis_clipped_to_0": 0,
+  "seconds_scan": 175.2,
+  "seconds": 1518.8,
+  "peak_working_set_mib": 936,
+  "chunk_bytes": 1519559372
+ },
+ "claim_type": "effect tables (ln fold change, quasi-Poisson SE, z-shrinkage) with the corrected estimator, for every KOLF2.1J target with a pool of >= min_cells cells; no claim on their use as a source"
+}
