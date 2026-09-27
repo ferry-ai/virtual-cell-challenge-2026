@@ -89,3 +89,19 @@ non riscalare.
 - Il proxy non vede i membri DE del punteggio (portata, fedeltà, Jaccard), e sul punteggio ufficiale alzare
   l'ampiezza ha sempre aiutato (t15 → t16). La preferenza per il non riscalare vale per questo proxy: prima di
   guidare un candidato va messa alla prova ufficiale o su un banco con lo scorer completo.
+
+## r2: replica sulla cache r9 (misurato, 27/09 pomeriggio)
+
+Uscite in `r2/`. Stesse quote (identiche alle salvate), cache del pannello r9 con lo stimatore corretto.
+
+| Confronto | K562 fuori | CD4 fuori | HCT116 fuori | HEK293T fuori |
+|---|---|---|---|---|
+| `excl` − `t22like` | +0,0044 (+0,002…+0,007) | +0,0153 (+0,009…+0,021) | +0,0041 (−0,003…+0,011) | +0,0143 (+0,007…+0,022) |
+| `share` − `excl` | −0,0059 (−0,011…−0,001) | −0,0021 (−0,004…−0,000) | −0,0006 (−0,004…+0,002) | −0,0002 (−0,003…+0,003) |
+| `share` − `share_noscale` | +0,0030 (+0,001…+0,005) | −0,0020 (−0,004…−0,001) | −0,0072 (−0,010…−0,005) | −0,0078 (−0,010…−0,005) |
+| `excl_noscale` − `t22like` | +0,0038 (+0,001…+0,006) | +0,0175 (+0,012…+0,024) | +0,0107 (+0,004…+0,017) | +0,0215 (+0,014…+0,028) |
+
+La replica conferma r1: l'esclusione guadagna sulle quattro sorgenti; la pesatura oltre l'esclusione è negativa sulle
+quattro, e qui con l'intervallo sotto zero per K562 e CD4; riscalare peggiora il proxy con tre sorgenti su quattro.
+**Misurato in più:** il guadagno dell'esclusione resta uguale con le sorgenti del pannello corrette, quindi non viene
+solo dall'artefatto dei geni Y. **Interpretazione:** aiuta togliere i segnali che una sola sorgente misura.

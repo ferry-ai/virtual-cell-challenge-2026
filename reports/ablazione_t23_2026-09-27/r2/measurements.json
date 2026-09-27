@@ -1,0 +1,899 @@
+{
+ "stage": "ablazione_t23_2026-09-27/ablation_bench.py",
+ "cache": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-27_r9",
+ "claim_type": "effect-space and generator-model proxies against held-out public sources on the panel; not VCC scores",
+ "runs": [
+  {
+   "held_out": "k562",
+   "inputs": [
+    "cd4_mix",
+    "orion_hct116",
+    "orion_hek293t"
+   ],
+   "targets": 271,
+   "share_identical_to_saved": true,
+   "genes_share_zero": 8602,
+   "genes_share_one": 7168,
+   "share_inputs": [
+    "cd4_mix",
+    "orion_hct116"
+   ],
+   "share_estimation_targets": 6000,
+   "share_share_median": 1.0,
+   "share_share_below_0.5": 0.23733762964454738,
+   "share_genes_with_moments": 9931
+  },
+  {
+   "held_out": "cd4_mix",
+   "inputs": [
+    "k562",
+    "orion_hct116",
+    "orion_hek293t"
+   ],
+   "targets": 292,
+   "share_identical_to_saved": true,
+   "genes_share_zero": 11219,
+   "genes_share_one": 4650,
+   "share_inputs": [
+    "k562",
+    "orion_hct116"
+   ],
+   "share_estimation_targets": 6000,
+   "share_share_median": 1.0,
+   "share_share_below_0.5": 0.16106097894449,
+   "share_genes_with_moments": 7314
+  },
+  {
+   "held_out": "orion_hct116",
+   "inputs": [
+    "k562",
+    "cd4_mix"
+   ],
+   "targets": 265,
+   "share_identical_to_saved": true,
+   "genes_share_zero": 11302,
+   "genes_share_one": 6187,
+   "share_inputs": [
+    "k562",
+    "cd4_mix"
+   ],
+   "share_estimation_targets": 6000,
+   "share_share_median": 1.0,
+   "share_share_below_0.5": 0.09113538929608629,
+   "share_genes_with_moments": 7231
+  },
+  {
+   "held_out": "orion_hek293t",
+   "inputs": [
+    "k562",
+    "cd4_mix"
+   ],
+   "targets": 278,
+   "share_identical_to_saved": true,
+   "genes_share_zero": 11302,
+   "genes_share_one": 6164,
+   "share_inputs": [
+    "k562",
+    "cd4_mix"
+   ],
+   "share_estimation_targets": 6000,
+   "share_share_median": 1.0,
+   "share_share_below_0.5": 0.0968054211035818,
+   "share_genes_with_moments": 7231
+  }
+ ],
+ "rows": [
+  {
+   "held_out": "k562",
+   "arm": "t22like",
+   "against": "t22like",
+   "targets": 271,
+   "pds_proxy": 0.7808391417247506,
+   "reach_proxy": 0.105817430903361,
+   "prec_200_shared": 0.5342804428044281,
+   "pds_gen": 0.7538229085994563,
+   "nmae_gen": 1.1428532024315259,
+   "energy_ratio": 1.0,
+   "detectable_median": 310.0,
+   "scale": 1.0
+  },
+  {
+   "held_out": "k562",
+   "arm": "excl",
+   "against": "t22like",
+   "targets": 271,
+   "pds_proxy": 0.7817958179581797,
+   "reach_proxy": 0.10901466907684823,
+   "prec_200_shared": 0.534280442804428,
+   "pds_gen": 0.7621581400999196,
+   "nmae_gen": 1.1374938896304747,
+   "energy_ratio": 0.47420609521717044,
+   "detectable_median": 309.0,
+   "scale": 1.2511620822230185,
+   "pds_minus_base": 0.0009566762334290044,
+   "pds_ci95": [
+    -0.007093754270876038,
+    0.010018450184501846
+   ],
+   "reach_minus_base": 0.0031972381734872123,
+   "reach_ci95": [
+    -0.005269585387038188,
+    0.013770154326796737
+   ],
+   "pds_gen_minus_base": 0.008335231500463156,
+   "pds_gen_ci95": [
+    0.0018887142575129538,
+    0.015187045388972408
+   ],
+   "nmae_gen_minus_base": -0.005359312801050905,
+   "nmae_gen_ci95": [
+    -0.011179258481950215,
+    -0.0006524535665338127
+   ],
+   "combined_minus_base": 0.004447697796450481,
+   "combined_ci95": [
+    0.001521269108457142,
+    0.007352238508049046
+   ]
+  },
+  {
+   "held_out": "k562",
+   "arm": "excl_noscale",
+   "against": "t22like",
+   "targets": 271,
+   "pds_proxy": 0.7820828208282083,
+   "reach_proxy": 0.10914645610900427,
+   "prec_200_shared": 0.534280442804428,
+   "pds_gen": 0.7596252258818884,
+   "nmae_gen": 1.1366181039841978,
+   "energy_ratio": 0.30316338253706515,
+   "detectable_median": 199.0,
+   "scale": 1.0,
+   "pds_minus_base": 0.0012436791034577048,
+   "pds_ci95": [
+    -0.007298414650813175,
+    0.009515170151701507
+   ],
+   "reach_minus_base": 0.0033290252056432474,
+   "reach_ci95": [
+    -0.005212071598649417,
+    0.013127259641034216
+   ],
+   "pds_gen_minus_base": 0.005802317282432078,
+   "pds_gen_ci95": [
+    -0.000589418857151543,
+    0.012667835937618629
+   ],
+   "nmae_gen_minus_base": -0.006235098447327849,
+   "nmae_gen_ci95": [
+    -0.011335473997064905,
+    -0.002117102615654475
+   ],
+   "combined_minus_base": 0.003772310802454069,
+   "combined_ci95": [
+    0.0011838906970064705,
+    0.006378165344616259
+   ]
+  },
+  {
+   "held_out": "k562",
+   "arm": "share",
+   "against": "t22like",
+   "targets": 271,
+   "pds_proxy": 0.7827388273882738,
+   "reach_proxy": 0.09679922759857124,
+   "prec_200_shared": 0.5300553505535055,
+   "pds_gen": 0.7547856589677007,
+   "nmae_gen": 1.1494658871736398,
+   "energy_ratio": 0.6682886101265809,
+   "detectable_median": 309.0,
+   "scale": 1.725027578229722,
+   "pds_minus_base": 0.001899685663523302,
+   "pds_ci95": [
+    -0.014049815498154976,
+    0.018315908159081577
+   ],
+   "reach_minus_base": -0.009018203304789781,
+   "reach_ci95": [
+    -0.021730824193636998,
+    0.004373949532525432
+   ],
+   "pds_gen_minus_base": 0.0009627503682444222,
+   "pds_gen_ci95": [
+    -0.012174957860689714,
+    0.015606274581264332
+   ],
+   "nmae_gen_minus_base": 0.006612684742114008,
+   "nmae_gen_ci95": [
+    -0.001208290726232148,
+    0.014070099150217352
+   ],
+   "combined_minus_base": -0.0014388347478027897,
+   "combined_ci95": [
+    -0.007064008464627364,
+    0.004613056544196763
+   ]
+  },
+  {
+   "held_out": "k562",
+   "arm": "share_noscale",
+   "against": "t22like",
+   "targets": 271,
+   "pds_proxy": 0.7842831761650949,
+   "reach_proxy": 0.09679922759857124,
+   "prec_200_shared": 0.5300553505535055,
+   "pds_gen": 0.7435895099691737,
+   "nmae_gen": 1.145766660292227,
+   "energy_ratio": 0.22498965618337888,
+   "detectable_median": 96.0,
+   "scale": 1.0,
+   "pds_minus_base": 0.003444034440344405,
+   "pds_ci95": [
+    -0.014052548858821925,
+    0.020309211425447588
+   ],
+   "reach_minus_base": -0.009018203304789781,
+   "reach_ci95": [
+    -0.022039922659917305,
+    0.003868425549216844
+   ],
+   "pds_gen_minus_base": -0.010233398630282598,
+   "pds_gen_ci95": [
+    -0.024561447466326512,
+    0.0033317009096016917
+   ],
+   "nmae_gen_minus_base": 0.0029134578607014493,
+   "nmae_gen_ci95": [
+    -0.003718525934422502,
+    0.008988523936750174
+   ],
+   "combined_minus_base": -0.0044706571292911276,
+   "combined_ci95": [
+    -0.010002687756705765,
+    0.001023571401582991
+   ]
+  },
+  {
+   "held_out": "k562",
+   "arm": "share",
+   "against": "excl",
+   "targets": 271,
+   "combined_minus_base": -0.00588653254425327,
+   "combined_ci95": [
+    -0.011253575943789314,
+    -0.0006210840633472093
+   ]
+  },
+  {
+   "held_out": "k562",
+   "arm": "share",
+   "against": "share_noscale",
+   "targets": 271,
+   "combined_minus_base": 0.0030318223814883383,
+   "combined_ci95": [
+    0.0006341510971981417,
+    0.005242641668724829
+   ]
+  },
+  {
+   "held_out": "k562",
+   "arm": "excl",
+   "against": "excl_noscale",
+   "targets": 271,
+   "combined_minus_base": 0.0006753869939964118,
+   "combined_ci95": [
+    -0.0001852400549848081,
+    0.0016171988946843455
+   ]
+  },
+  {
+   "held_out": "cd4_mix",
+   "arm": "t22like",
+   "against": "t22like",
+   "targets": 292,
+   "pds_proxy": 0.6841077060678812,
+   "reach_proxy": 0.007162679463619071,
+   "prec_200_shared": 0.5182191780821918,
+   "pds_gen": 0.667307400607782,
+   "nmae_gen": 1.5530900822411855,
+   "energy_ratio": 1.0,
+   "detectable_median": 292.0,
+   "scale": 1.0
+  },
+  {
+   "held_out": "cd4_mix",
+   "arm": "excl",
+   "against": "t22like",
+   "targets": 292,
+   "pds_proxy": 0.7320529115473332,
+   "reach_proxy": 0.010105259336351863,
+   "prec_200_shared": 0.533236301369863,
+   "pds_gen": 0.7060901107292861,
+   "nmae_gen": 1.54826224630952,
+   "energy_ratio": 0.38615828872887126,
+   "detectable_median": 291.5,
+   "scale": 1.324068598845428,
+   "pds_minus_base": 0.04794520547945205,
+   "pds_ci95": [
+    0.025631384456056103,
+    0.07013222002542012
+   ],
+   "reach_minus_base": 0.002942579872732793,
+   "reach_ci95": [
+    0.0011264419655776774,
+    0.0048993974440403034
+   ],
+   "pds_gen_minus_base": 0.038782710121504076,
+   "pds_gen_ci95": [
+    0.021731635780675457,
+    0.055166244305313646
+   ],
+   "nmae_gen_minus_base": -0.004827835931665567,
+   "nmae_gen_ci95": [
+    -0.007458842670126362,
+    -0.0023172338086699545
+   ],
+   "combined_minus_base": 0.01526529134529117,
+   "combined_ci95": [
+    0.008767185201619681,
+    0.021489686226186036
+   ]
+  },
+  {
+   "held_out": "cd4_mix",
+   "arm": "excl_noscale",
+   "against": "t22like",
+   "targets": 292,
+   "pds_proxy": 0.7341124135009179,
+   "reach_proxy": 0.010115492951037534,
+   "prec_200_shared": 0.5332534246575342,
+   "pds_gen": 0.7031244279161241,
+   "nmae_gen": 1.5360507453201355,
+   "energy_ratio": 0.22061949971071715,
+   "detectable_median": 140.0,
+   "scale": 1.0,
+   "pds_minus_base": 0.05000470743303677,
+   "pds_ci95": [
+    0.028312855999623403,
+    0.07250770842159769
+   ],
+   "reach_minus_base": 0.0029528134874184627,
+   "reach_ci95": [
+    0.0011223772676497523,
+    0.004932401624616733
+   ],
+   "pds_gen_minus_base": 0.035817027308342096,
+   "pds_gen_ci95": [
+    0.019432283575766127,
+    0.05237208858342878
+   ],
+   "nmae_gen_minus_base": -0.017039336921050013,
+   "nmae_gen_ci95": [
+    -0.019650401910764215,
+    -0.014343970335412655
+   ],
+   "combined_minus_base": 0.017494750799686657,
+   "combined_ci95": [
+    0.011551649767102797,
+    0.023529119688193788
+   ]
+  },
+  {
+   "held_out": "cd4_mix",
+   "arm": "share",
+   "against": "t22like",
+   "targets": 292,
+   "pds_proxy": 0.7284634938567999,
+   "reach_proxy": 0.00825621374435715,
+   "prec_200_shared": 0.5290068493150684,
+   "pds_gen": 0.7004882654155354,
+   "nmae_gen": 1.5485068414680834,
+   "energy_ratio": 0.40716632501083727,
+   "detectable_median": 291.5,
+   "scale": 1.4696311207245147,
+   "pds_minus_base": 0.0443557877889187,
+   "pds_ci95": [
+    0.02183042649343313,
+    0.06747193193051827
+   ],
+   "reach_minus_base": 0.0010935342807380803,
+   "reach_ci95": [
+    -0.0006308782162909837,
+    0.0027998259717488924
+   ],
+   "pds_gen_minus_base": 0.03318086480775367,
+   "pds_gen_ci95": [
+    0.016438813831484354,
+    0.050813830176737955
+   ],
+   "nmae_gen_minus_base": -0.004583240773102413,
+   "nmae_gen_ci95": [
+    -0.0069758634829013896,
+    -0.002087561006530394
+   ],
+   "combined_minus_base": 0.013182586339528974,
+   "combined_ci95": [
+    0.006470530212146577,
+    0.019782682634797558
+   ]
+  },
+  {
+   "held_out": "cd4_mix",
+   "arm": "share_noscale",
+   "against": "t22like",
+   "targets": 292,
+   "pds_proxy": 0.7322765146165796,
+   "reach_proxy": 0.00827975594953634,
+   "prec_200_shared": 0.5290239726027396,
+   "pds_gen": 0.6953846234315095,
+   "nmae_gen": 1.534210780706145,
+   "energy_ratio": 0.1889431767598033,
+   "detectable_median": 107.5,
+   "scale": 1.0,
+   "pds_minus_base": 0.04816880854869839,
+   "pds_ci95": [
+    0.026178623546580047,
+    0.06978946005743067
+   ],
+   "reach_minus_base": 0.001117076485917268,
+   "reach_ci95": [
+    -0.0006653389351741239,
+    0.002836123233258421
+   ],
+   "pds_gen_minus_base": 0.028077222823727557,
+   "pds_gen_ci95": [
+    0.011629876769864059,
+    0.04552254468138523
+   ],
+   "nmae_gen_minus_base": -0.01887930153504057,
+   "nmae_gen_ci95": [
+    -0.022236828353727672,
+    -0.01599615852725804
+   ],
+   "combined_minus_base": 0.015205211631002873,
+   "combined_ci95": [
+    0.009060247583741065,
+    0.021525384049600922
+   ]
+  },
+  {
+   "held_out": "cd4_mix",
+   "arm": "share",
+   "against": "excl",
+   "targets": 292,
+   "combined_minus_base": -0.0020827050057621974,
+   "combined_ci95": [
+    -0.00421747932558613,
+    -0.00011434309938915821
+   ]
+  },
+  {
+   "held_out": "cd4_mix",
+   "arm": "share",
+   "against": "share_noscale",
+   "targets": 292,
+   "combined_minus_base": -0.0020226252914739,
+   "combined_ci95": [
+    -0.0035035887811019307,
+    -0.0005534084360321028
+   ]
+  },
+  {
+   "held_out": "cd4_mix",
+   "arm": "excl",
+   "against": "excl_noscale",
+   "targets": 292,
+   "combined_minus_base": -0.002229459454395486,
+   "combined_ci95": [
+    -0.0032690654695462346,
+    -0.0011906419912505583
+   ]
+  },
+  {
+   "held_out": "orion_hct116",
+   "arm": "t22like",
+   "against": "t22like",
+   "targets": 265,
+   "pds_proxy": 0.7059462550028587,
+   "reach_proxy": 0.055334379099240695,
+   "prec_200_shared": 0.5143584905660378,
+   "pds_gen": 0.6831125722635157,
+   "nmae_gen": 1.1866786935398892,
+   "energy_ratio": 1.0,
+   "detectable_median": 492.0,
+   "scale": 1.0
+  },
+  {
+   "held_out": "orion_hct116",
+   "arm": "excl",
+   "against": "t22like",
+   "targets": 265,
+   "pds_proxy": 0.7301743853630647,
+   "reach_proxy": 0.06521768891492025,
+   "prec_200_shared": 0.5223396226415095,
+   "pds_gen": 0.6987913728479767,
+   "nmae_gen": 1.192564043438921,
+   "energy_ratio": 0.3792025790013276,
+   "detectable_median": 492.0,
+   "scale": 1.4815680882349835,
+   "pds_minus_base": 0.024228130360205827,
+   "pds_ci95": [
+    0.0006267867352773047,
+    0.04881432246998284
+   ],
+   "reach_minus_base": 0.009883309815679552,
+   "reach_ci95": [
+    0.0009162952776683079,
+    0.019279971711501753
+   ],
+   "pds_gen_minus_base": 0.015678800584460962,
+   "pds_gen_ci95": [
+    -0.0013869433326980463,
+    0.033043366050441524
+   ],
+   "nmae_gen_minus_base": 0.005885349899031883,
+   "nmae_gen_ci95": [
+    0.00015076873518816324,
+    0.012008255585900272
+   ],
+   "combined_minus_base": 0.004055323737667335,
+   "combined_ci95": [
+    -0.0028413554315923632,
+    0.010723879298384933
+   ]
+  },
+  {
+   "held_out": "orion_hct116",
+   "arm": "excl_noscale",
+   "against": "t22like",
+   "targets": 265,
+   "pds_proxy": 0.7311892510005717,
+   "reach_proxy": 0.06521768891492025,
+   "prec_200_shared": 0.5223396226415095,
+   "pds_gen": 0.7009100438345721,
+   "nmae_gen": 1.1706246650923275,
+   "energy_ratio": 0.17306600491924048,
+   "detectable_median": 230.0,
+   "scale": 1.0,
+   "pds_minus_base": 0.025242995997712972,
+   "pds_ci95": [
+    0.0019428959405374516,
+    0.04987206975414523
+   ],
+   "reach_minus_base": 0.009883309815679552,
+   "reach_ci95": [
+    0.0008125575041852859,
+    0.019435133722265248
+   ],
+   "pds_gen_minus_base": 0.01779747157105647,
+   "pds_gen_ci95": [
+    0.0001065688329839214,
+    0.03520805539673465
+   ],
+   "nmae_gen_minus_base": -0.016054028447561514,
+   "nmae_gen_ci95": [
+    -0.021036838072061394,
+    -0.011109431552519386
+   ],
+   "combined_minus_base": 0.010741677446421937,
+   "combined_ci95": [
+    0.004305060905168346,
+    0.01722171983025516
+   ]
+  },
+  {
+   "held_out": "orion_hct116",
+   "arm": "share",
+   "against": "t22like",
+   "targets": 265,
+   "pds_proxy": 0.7275586049170956,
+   "reach_proxy": 0.05995901552303207,
+   "prec_200_shared": 0.5206037735849057,
+   "pds_gen": 0.698915253160536,
+   "nmae_gen": 1.1949265195944232,
+   "energy_ratio": 0.41308984583703817,
+   "detectable_median": 491.0,
+   "scale": 1.693332550731781,
+   "pds_minus_base": 0.021612349914236703,
+   "pds_ci95": [
+    -0.003502358490566046,
+    0.04878752144082331
+   ],
+   "reach_minus_base": 0.004624636423791375,
+   "reach_ci95": [
+    -0.0042608951766039465,
+    0.013041899763330221
+   ],
+   "pds_gen_minus_base": 0.015802680897020516,
+   "pds_gen_ci95": [
+    -0.003814163649069322,
+    0.03543032526523091
+   ],
+   "nmae_gen_minus_base": 0.008247826054533895,
+   "nmae_gen_ci95": [
+    0.0017607752583397869,
+    0.014980277685958943
+   ],
+   "combined_minus_base": 0.0034620520882032335,
+   "combined_ci95": [
+    -0.004352448493441324,
+    0.010719682083545233
+   ]
+  },
+  {
+   "held_out": "orion_hct116",
+   "arm": "share_noscale",
+   "against": "t22like",
+   "targets": 265,
+   "pds_proxy": 0.7291166380789023,
+   "reach_proxy": 0.06003021523823322,
+   "prec_200_shared": 0.5206226415094339,
+   "pds_gen": 0.7002493488342545,
+   "nmae_gen": 1.170215518124713,
+   "energy_ratio": 0.14440850038864625,
+   "detectable_median": 173.0,
+   "scale": 1.0,
+   "pds_minus_base": 0.023170383076043445,
+   "pds_ci95": [
+    -0.0032754431103487777,
+    0.04897119782732991
+   ],
+   "reach_minus_base": 0.0046958361389925155,
+   "reach_ci95": [
+    -0.00440114613333382,
+    0.013864657896883115
+   ],
+   "pds_gen_minus_base": 0.017136776570738834,
+   "pds_gen_ci95": [
+    -0.0014494393621752157,
+    0.03642799853884759
+   ],
+   "nmae_gen_minus_base": -0.016463175415176095,
+   "nmae_gen_ci95": [
+    -0.022244614063731898,
+    -0.011077943710312134
+   ],
+   "combined_minus_base": 0.010614296927563523,
+   "combined_ci95": [
+    0.0033725183507444497,
+    0.01743583337671427
+   ]
+  },
+  {
+   "held_out": "orion_hct116",
+   "arm": "share",
+   "against": "excl",
+   "targets": 265,
+   "combined_minus_base": -0.0005932716494641012,
+   "combined_ci95": [
+    -0.003639457667329329,
+    0.0024716268424989545
+   ]
+  },
+  {
+   "held_out": "orion_hct116",
+   "arm": "share",
+   "against": "share_noscale",
+   "targets": 265,
+   "combined_minus_base": -0.007152244839360292,
+   "combined_ci95": [
+    -0.009810565614967001,
+    -0.0045700622380389164
+   ]
+  },
+  {
+   "held_out": "orion_hct116",
+   "arm": "excl",
+   "against": "excl_noscale",
+   "targets": 265,
+   "combined_minus_base": -0.0066863537087546035,
+   "combined_ci95": [
+    -0.008804456074933638,
+    -0.004648680467557565
+   ]
+  },
+  {
+   "held_out": "orion_hek293t",
+   "arm": "t22like",
+   "against": "t22like",
+   "targets": 278,
+   "pds_proxy": 0.6721554164610549,
+   "reach_proxy": 0.039870052741677764,
+   "prec_200_shared": 0.519226618705036,
+   "pds_gen": 0.6604694583683234,
+   "nmae_gen": 1.4149869058263949,
+   "energy_ratio": 1.0,
+   "detectable_median": 497.0,
+   "scale": 1.0
+  },
+  {
+   "held_out": "orion_hek293t",
+   "arm": "excl",
+   "against": "t22like",
+   "targets": 278,
+   "pds_proxy": 0.7337869776381061,
+   "reach_proxy": 0.053403095311359845,
+   "prec_200_shared": 0.5310791366906474,
+   "pds_gen": 0.6978705843989069,
+   "nmae_gen": 1.4117439880482967,
+   "energy_ratio": 0.3767211858086523,
+   "detectable_median": 497.0,
+   "scale": 1.4776079348049114,
+   "pds_minus_base": 0.061631561177051146,
+   "pds_ci95": [
+    0.037839908578552316,
+    0.08439764433940211
+   ],
+   "reach_minus_base": 0.013533042569682074,
+   "reach_ci95": [
+    0.005153239692765615,
+    0.022077272660349027
+   ],
+   "pds_gen_minus_base": 0.03740112603058348,
+   "pds_gen_ci95": [
+    0.017903980065045434,
+    0.05651305670265231
+   ],
+   "nmae_gen_minus_base": -0.0032429177780983268,
+   "nmae_gen_ci95": [
+    -0.009992187533327871,
+    0.004312304743829705
+   ],
+   "combined_minus_base": 0.0143399931710966,
+   "combined_ci95": [
+    0.007186241716933388,
+    0.021835701585448185
+   ]
+  },
+  {
+   "held_out": "orion_hek293t",
+   "arm": "excl_noscale",
+   "against": "t22like",
+   "targets": 278,
+   "pds_proxy": 0.7350466197439159,
+   "reach_proxy": 0.053403095311359845,
+   "prec_200_shared": 0.5310431654676259,
+   "pds_gen": 0.6961795184790796,
+   "nmae_gen": 1.3830624680363985,
+   "energy_ratio": 0.17285139340968006,
+   "detectable_median": 232.0,
+   "scale": 1.0,
+   "pds_minus_base": 0.06289120328286107,
+   "pds_ci95": [
+    0.03865770199724697,
+    0.08688965794873126
+   ],
+   "reach_minus_base": 0.013533042569682074,
+   "reach_ci95": [
+    0.004964331018818073,
+    0.021959786907082304
+   ],
+   "pds_gen_minus_base": 0.03571006011075616,
+   "pds_gen_ci95": [
+    0.017098631564062834,
+    0.05392631742981065
+   ],
+   "nmae_gen_minus_base": -0.03192443778999634,
+   "nmae_gen_ci95": [
+    -0.03852578013367036,
+    -0.025874370625135992
+   ],
+   "combined_minus_base": 0.021475219843171224,
+   "combined_ci95": [
+    0.014406801881350118,
+    0.028459169107501278
+   ]
+  },
+  {
+   "held_out": "orion_hek293t",
+   "arm": "share",
+   "against": "t22like",
+   "targets": 278,
+   "pds_proxy": 0.7300859673272213,
+   "reach_proxy": 0.045081957101930345,
+   "prec_200_shared": 0.5302517985611511,
+   "pds_gen": 0.697573349262828,
+   "nmae_gen": 1.412256032578945,
+   "energy_ratio": 0.4130497552091211,
+   "detectable_median": 497.0,
+   "scale": 1.7009613551022027,
+   "pds_minus_base": 0.057930550866166275,
+   "pds_ci95": [
+    0.03329448354673662,
+    0.08276660260239459
+   ],
+   "reach_minus_base": 0.005211904360252585,
+   "reach_ci95": [
+    -0.0011782177096107463,
+    0.011589559453261811
+   ],
+   "pds_gen_minus_base": 0.03710389089450462,
+   "pds_gen_ci95": [
+    0.017880893840883972,
+    0.056533437509919855
+   ],
+   "nmae_gen_minus_base": -0.0027308732474499134,
+   "nmae_gen_ci95": [
+    -0.010053168154911047,
+    0.004539020084911012
+   ],
+   "combined_minus_base": 0.014094736498833133,
+   "combined_ci95": [
+    0.006959682077102029,
+    0.021304008710199836
+   ]
+  },
+  {
+   "held_out": "orion_hek293t",
+   "arm": "share_noscale",
+   "against": "t22like",
+   "targets": 278,
+   "pds_proxy": 0.7322156715061164,
+   "reach_proxy": 0.045081957101930345,
+   "prec_200_shared": 0.5302338129496403,
+   "pds_gen": 0.6945692543438173,
+   "nmae_gen": 1.3794944055796088,
+   "energy_ratio": 0.1431070382691842,
+   "detectable_median": 170.5,
+   "scale": 1.0,
+   "pds_minus_base": 0.06006025504506142,
+   "pds_ci95": [
+    0.03668415448146897,
+    0.08391586369893254
+   ],
+   "reach_minus_base": 0.005211904360252585,
+   "reach_ci95": [
+    -0.0011492491784837948,
+    0.01183184443269005
+   ],
+   "pds_gen_minus_base": 0.03409979597549398,
+   "pds_gen_ci95": [
+    0.015575085058307157,
+    0.05334277704190438
+   ],
+   "nmae_gen_minus_base": -0.035492500246786234,
+   "nmae_gen_ci95": [
+    -0.04321598541455421,
+    -0.02866452031040361
+   ],
+   "combined_minus_base": 0.021858901617810116,
+   "combined_ci95": [
+    0.014801619749543762,
+    0.029467879437813732
+   ]
+  },
+  {
+   "held_out": "orion_hek293t",
+   "arm": "share",
+   "against": "excl",
+   "targets": 278,
+   "combined_minus_base": -0.0002452566722634629,
+   "combined_ci95": [
+    -0.003300504079715367,
+    0.002958486845188453
+   ]
+  },
+  {
+   "held_out": "orion_hek293t",
+   "arm": "share",
+   "against": "share_noscale",
+   "targets": 278,
+   "combined_minus_base": -0.007764165118976979,
+   "combined_ci95": [
+    -0.010272488517250936,
+    -0.0053718468879678
+   ]
+  },
+  {
+   "held_out": "orion_hek293t",
+   "arm": "excl",
+   "against": "excl_noscale",
+   "targets": 278,
+   "combined_minus_base": -0.007135226672074626,
+   "combined_ci95": [
+    -0.00914794339200667,
+    -0.005250193776567297
+   ]
+  }
+ ]
+}

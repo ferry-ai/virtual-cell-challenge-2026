@@ -37,6 +37,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `universo_corretto_2026-09-27/` (the universes rebuilt with the corrected estimator: script, run pending),
 `universo_kolf_2026-09-27/` (KOLF2.1J streamed by gene blocks from the remote h5ad),
 `universo_hipsci_2026-09-27/` (HIPSCI CRISPRi records downloaded with md5 checks),
+`universo_nuovi_2026-09-27/` (generic ingestion of downloaded h5ad screens into per-group sums),
 `atlante_2026-09-26/` (transfer tested on thousands of held-out targets per line, with the universes as inputs),
 `quota_condivisa_2026-09-27/` (the atlas's closest arm, the per-gene shared share, tested on the panel),
 `pseudoconteggio_2026-09-27/` (the constant pseudocount's artefact in the pseudobulk sources, and the fix: origin of t25),
