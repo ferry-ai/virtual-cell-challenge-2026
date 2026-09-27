@@ -233,3 +233,47 @@ CD4 e HCT116 i bersagli di prova non sono quelli di r1.
 Come dice la regola, r2 si riporta e non cambia la lettura di r1. Nel frattempo il braccio `share_atlas`
 è diventato il t23 passando per un banco sul pannello con una regola sua
 ([quota condivisa](../quota_condivisa_2026-09-27/RISULTATI.md)); r2 non decide nulla neanche sul t23.
+
+## r2: esito (misurato, 27/09 alle 13:04)
+
+Uscite in `r2/`: `summary.csv`, `measurements.json` e `summary_partial.csv`, la copia che lo script scrive
+dopo ogni linea, qui identica alla finale. Quattro linee tenute fuori, 1.000 bersagli di prova ciascuna,
+6.000 bersagli di stima. Δ = 0,36 × ΔPDS_gen − 0,27 × ΔnMAE_gen contro `t22like`, intervallo bootstrap
+appaiato al 95 %:
+
+| Braccio | K562 fuori | CD4 fuori | HCT116 fuori | HEK293T fuori |
+|---|---|---|---|---|
+| `prog_20` | −0,038 (−0,044…−0,032) | −0,017 (−0,022…−0,012) | −0,035 (−0,040…−0,029) | −0,026 (−0,031…−0,021) |
+| `prog_50` | −0,037 (−0,042…−0,031) | −0,017 (−0,022…−0,012) | −0,031 (−0,036…−0,026) | −0,025 (−0,030…−0,021) |
+| `prog_150` | −0,036 (−0,041…−0,031) | −0,017 (−0,022…−0,012) | −0,029 (−0,034…−0,025) | −0,025 (−0,029…−0,021) |
+| `eb_panel` | −0,006 (−0,010…−0,002) | −0,0025 (−0,007…+0,002) | −0,005 (−0,011…−0,0003) | −0,002 (−0,006…+0,003) |
+| `eb_atlas` | −0,005 (−0,009…−0,0004) | −0,002 (−0,006…+0,003) | −0,001 (−0,006…+0,004) | +0,001 (−0,004…+0,006) |
+| `share_atlas` | −0,0015 (−0,005…+0,002) | −0,0003 (−0,003…+0,003) | +0,0055 (+0,001…+0,009) | +0,009 (+0,005…+0,014) |
+| `agree_target` | −0,010 (−0,014…−0,006) | −0,018 (−0,024…−0,013) | −0,014 (−0,019…−0,010) | −0,022 (−0,033…−0,014) |
+
+**Lettura (replica, non decide):** come in r1, programmi e `agree_target` perdono ovunque, e i bracci EB
+restano sotto zero o attorno. `share_atlas` guadagna, con l'intervallo sopra zero, quando è tenuta fuori una
+linea Orion: +0,0055 e +0,009. Con K562 o CD4 fuori è nullo: −0,0015 e −0,0003, mentre in r1 era −0,0002 e
++0,008. Letta con la regola di r1 per quattro linee, nessun braccio passerebbe neanche qui.
+
+**Che cosa cambia con CD4 fuori (misurato):**
+- la quota mediana per gene sale da 0,687 in r1, stimata su K562 e HCT116, a 0,991 in r2, stimata su K562,
+  HCT116 e HEK293T. La pesatura si attenua molto: energia 0,72 di `t22like` contro 0,37;
+- r2 cambia però anche altre due cose, e non le separa dalla prima: `t22like` ha HEK293T fra gli ingressi,
+  e i bersagli di prova sono estratti da 9.646 idonei invece che da 6.199.
+
+**Interpretazione, non verificata:** HCT116 e HEK293T vengono dallo stesso laboratorio e dallo stesso
+protocollo. La loro covarianza può entrare nella parte "condivisa" σ² e gonfiarla, così quasi ogni gene
+sembra condiviso. Se è così, la quota va stimata con una linea per laboratorio, non con tutti gli universi.
+
+**Per il t23 (nessuna regola cambia):** la quota del t23 è stata stimata su K562, CD4 e HCT116, una linea
+per famiglia come in r1, quindi r2 non la tocca. La regola del t23, se il t23 passa, porta il set finale
+alla quota «da tutti e quattro gli universi»: r2 dice di non farlo senza una prova, perché con HEK293T
+accanto a HCT116 la quota si appiattisce. È un punto aperto, da risolvere prima di quel passo.
+
+Mettendo insieme r1, r2 e il [banco sul pannello](../quota_condivisa_2026-09-27/RISULTATI.md), con la quota
+stimata su una linea per famiglia:
+- con CD4, HCT116 o HEK293T tenuti fuori la pesatura è positiva in ogni prova, da +0,0045 a +0,013, con
+  l'intervallo sopra zero in tutte tranne HCT116 sul pannello;
+- con K562 tenuto fuori non guadagna mai: −0,0002 in r1 e −0,0015 sul pannello. Anche in r2 vale −0,0015, ma
+  lì la stima include due linee Orion.
