@@ -26,3 +26,15 @@ punteggio ufficiale. L'invio consuma quota e aspetta il via del proprietario.
 **Description:**
 
 Identical to trial-22 in every respect except the random seed of the cell generator (20260927 instead of 20260912): the same per-context effects files, recipe and packaging. It is a replicate, submitted to measure how much the official score and each of its members move between two random draws of the same prediction. The model is trial-22's: K562 (Replogle et al. 2022), primary CD4+ T cells (GSE314342 pseudobulk, donor-matched controls) and HCT116 and HEK293T (X-Atlas/Orion, Xaira, CC-BY-NC-SA-4.0) at equal weight, each source's effect locally shrunk (ln fold change times z^2/(z^2+4)) with its mean response over targets removed, the reliability-weighted mean scaled by 1.576, plus a CRISPRi cis head for genes whose TSS lies within 5 kb of the target's TSS. Cells are sampled exactly as in trial-01 (Poisson counts at library sizes resampled from each context's own control cells; no control cell is copied). No perturbed cell of the official contexts is used.
+
+## t25
+
+Scritto il 27 settembre alle 14:58 (ora italiana), dopo la registrazione del t25 (11:41 UTC) e dopo il suo
+impacchettamento. Ricetta `configs/recipes/t25.json` sulla cache r9; previsione e regola in
+`reports/prediction_t25_2026-09-27/prediction.json`. Per istruzione del proprietario, per ora nessun invio.
+
+**Model name:** `trial-25 trial-22 with the pseudobulk estimator corrected for genes without evidence`
+
+**Description:**
+
+Identical to trial-22 (K562 from Replogle et al. 2022, primary CD4+ T cells from GSE314342 and HCT116 and HEK293T from X-Atlas/Orion, Xaira, CC-BY-NC-SA-4.0, at equal weight; locally shrunk effects with each source's mean response removed; the reliability-weighted mean scaled by 1.576; a CRISPRi cis head) with one change in how the pseudobulk sources are estimated. With a constant pseudocount, a gene with no count in either group read as the ratio of the two library sizes: in the CD4 data the Y-chromosome genes of the female donors came out induced by nearly every knockdown, and low-count genes of HCT116 did the same. Here a donor (or an X-Atlas/Orion pool of GEM batches) whose controls predict fewer than one count of a gene in the target group is left out for that gene, whatever the target's own count; a gene no donor informs is treated as unmeasured. Everything else is unchanged. Cells are sampled exactly as in trial-01 (Poisson counts at library sizes resampled from each context's own control cells; no control cell is copied). No perturbed cell of the official contexts is used.

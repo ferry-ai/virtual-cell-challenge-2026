@@ -54,3 +54,38 @@ Che cosa se ne fa:
 
 **r2**, sulla cache r9 corretta e con gli stessi universi (ancora con il pseudoconteggio costante), è una
 replica: dice se lo schema regge senza l'artefatto nelle sorgenti del pannello, e non cambia la lettura di r1.
+
+## r1: esito (misurato, 27/09 alle 14:56)
+
+Uscite in `r1/` (`summary.csv`, `measurements.json`). Replica superata: le quote ricalcolate sono identiche a
+quelle salvate da r1 del banco sul pannello per tutte e quattro le sorgenti tenute fuori, e `share` contro
+`t22like` ridà esattamente i suoi Δ (−0,0015, +0,0122, +0,0045, +0,0129). Δ = 0,36 × ΔPDS_gen − 0,27 ×
+ΔnMAE_gen, intervallo bootstrap appaiato al 95 %:
+
+| Confronto | K562 fuori | CD4 fuori | HCT116 fuori | HEK293T fuori |
+|---|---|---|---|---|
+| `excl` − `t22like` | +0,0042 (+0,001…+0,007) | +0,0138 (+0,007…+0,020) | +0,0053 (−0,002…+0,012) | +0,0131 (+0,006…+0,020) |
+| `share` − `excl` | −0,0058 (−0,011…−0,001) | −0,0016 (−0,004…+0,000) | −0,0008 (−0,004…+0,002) | −0,0002 (−0,003…+0,003) |
+| `share` − `share_noscale` | +0,0037 (+0,001…+0,006) | −0,0018 (−0,003…−0,000) | −0,0075 (−0,011…−0,004) | −0,0078 (−0,010…−0,005) |
+| `excl` − `excl_noscale` | +0,0008 (−0,000…+0,002) | −0,0021 (−0,003…−0,001) | −0,0066 (−0,009…−0,004) | −0,0072 (−0,009…−0,005) |
+| `excl_noscale` − `t22like` | +0,0034 (+0,001…+0,006) | +0,0159 (+0,009…+0,023) | +0,0119 (+0,005…+0,019) | +0,0203 (+0,013…+0,028) |
+
+**Lettura con la regola:**
+- **Esclusione: passa.** Δ positivo su quattro sorgenti su quattro, intervallo sopra zero su tre, nessuno sotto
+  −0,002. Aiuta anche con K562 fuori, dove il t23 intero non aiutava.
+- **Pesatura oltre l'esclusione: non passa**, e non passa nemmeno il suo contrario (negativa su quattro, ma con
+  l'intervallo sotto zero solo per K562).
+- **Riscalatura: passa il contrario**, per entrambi i bracci: riscalare ai geni rilevabili del t22 peggiora il proxy
+  con CD4, HCT116 e HEK293T fuori.
+
+Che cosa ne segue per la regola: i prossimi candidati usano la sola esclusione dei geni non stimabili, e un esito
+ufficiale del t23, se arriva, si legge come esito soprattutto dell'esclusione. Sulla riscalatura la regola dice di
+non riscalare.
+
+**Cautele:**
+- **Interpretazione:** quello che aiuta è togliere gli 8.247 geni che meno di due universi sanno stimare: segnali di
+  una sola sorgente, fra cui i geni Y dell'[artefatto](../pseudoconteggio_2026-09-27/RISULTATI.md). Non la quota
+  condivisa come meccanismo.
+- Il proxy non vede i membri DE del punteggio (portata, fedeltà, Jaccard), e sul punteggio ufficiale alzare
+  l'ampiezza ha sempre aiutato (t15 → t16). La preferenza per il non riscalare vale per questo proxy: prima di
+  guidare un candidato va messa alla prova ufficiale o su un banco con lo scorer completo.
