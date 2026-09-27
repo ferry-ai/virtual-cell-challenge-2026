@@ -117,6 +117,14 @@ training. Universi del 26/09, **non corretti**. Serviva a provare che il banco g
 | non passa | passa | differenze prese ma nessun guadagno di livello: ipotesi per la rete |
 | non passa | non passa | esito negativo per questa forma a quattro parametri; la rete con encoder appresi e più contesti si prova con la stessa E2 |
 
+**Emendamento delle 18:48 del 27/09, prima di r1.** Una prova minima del codice (40 bersagli, universi Orion
+corretti, uscite fuori dalla repo) ha fatto girare E1 e poi E2. Il fit di E2 si è fermato con il messaggio `ABNORMAL`
+di L-BFGS-B: la ricerca lungo la direzione non riesce più ad abbassare un obiettivo sommato da blocchi in float32,
+con `ftol` 1e-12. Quindi, al punto 3 sopra: prima di dichiarare un fit non convergente, il banco riparte fino a due
+volte dal punto raggiunto. Se due ripartenze cambiano l'obiettivo al massimo di 1e-6 del suo valore, il punto è
+stazionario alla precisione numerica e conta come convergente. `params.csv` registra ripartenze, stazionarietà e
+gradiente massimo. I numeri di E1 di quella prova non sono stati letti; E2 non era stato valutato.
+
 **Cautele.**
 - Sono proxy contro sorgenti pubbliche, non punteggi VCC.
 - La testa cis è la stessa in ogni braccio e si annulla nei contrasti. Questo risponde anche alla domanda di grok

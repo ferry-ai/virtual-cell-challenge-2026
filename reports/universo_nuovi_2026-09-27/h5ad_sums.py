@@ -42,19 +42,58 @@ def column(obs: h5py.Group, name: str) -> np.ndarray:
     return strings(node)
 
 
+def index_name(group: h5py.Group) -> str:
+    """The dataframe's index column, as anndata declares it in the group's `_index` attribute."""
+    name = group.attrs.get("_index", "_index")
+    return name.decode() if isinstance(name, bytes) else str(name)
+
+
+def inspect(path: Path) -> None:
+    """Print what a run needs to choose its options: layers, obs and var columns, the index names."""
+    with h5py.File(path, "r") as f:
+        print("top-level:", list(f.keys()))
+        for key in ("X", "layers"):
+            if key in f:
+                node = f[key]
+                items = [key] if not isinstance(node, h5py.Group) or "encoding-type" in node.attrs else \
+                    [f"{key}/{k}" for k in node.keys()]
+                for item in items:
+                    attrs = dict(f[item].attrs)
+                    print(f"  {item}: {attrs.get('encoding-type', type(f[item]).__name__)} shape {attrs.get('shape')}")
+        for frame in ("obs", "var"):
+            g = f[frame]
+            print(f"{frame}: index '{index_name(g)}', columns {list(g.keys())}")
+            for name in g.keys():
+                try:
+                    values = column(g, name)
+                except Exception as err:            # noqa: BLE001 - a report, not a pipeline
+                    print(f"    {name}: unreadable ({err})")
+                    continue
+                uniq = np.unique(values.astype(str))
+                print(f"    {name}: {values.size} values, {uniq.size} distinct, e.g. {uniq[:6].tolist()}")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--h5ad", type=Path, required=True)
+    ap.add_argument("--inspect", action="store_true", help="print layers and obs/var columns, then stop")
     ap.add_argument("--layer", default="layers/raw_counts", help="path of the raw-count CSR group, or X")
-    ap.add_argument("--target-col", required=True)
+    ap.add_argument("--target-col")
     ap.add_argument("--control-col", default=None, help="column marking controls (default: --target-col)")
-    ap.add_argument("--control-value", action="append", required=True, help="value(s) marking a control cell")
-    ap.add_argument("--pool-col", required=True, help="batch-like column; pool = its category code modulo 8")
-    ap.add_argument("--var-symbols", default=None, help="var column with gene symbols (default: var/_index)")
+    ap.add_argument("--control-value", action="append", help="value(s) marking a control cell")
+    ap.add_argument("--pool-col", help="batch-like column; pool = its category code modulo 8")
+    ap.add_argument("--var-symbols", default=None,
+                    help="var column with gene symbols (default: the var index anndata declares)")
     ap.add_argument("--axis", type=Path, default=None, help="one-column CSV of the official axis (default: vcc2026)")
     ap.add_argument("--rows-per-block", type=int, default=20000)
-    ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--out", type=Path)
     args = ap.parse_args()
+    if args.inspect:
+        inspect(args.h5ad)
+        return
+    missing = [n for n in ("target_col", "control_value", "pool_col", "out") if not getattr(args, n)]
+    if missing:
+        raise SystemExit(f"missing options: {missing}")
     if args.out.exists():
         raise SystemExit(f"{args.out} exists")
     t0 = time.time()
@@ -76,7 +115,7 @@ def main() -> None:
         g_target = np.asarray([k.rsplit("|", 1)[0] for k in keys], dtype=str)
         g_pool = np.asarray([int(k.rsplit("|", 1)[1]) for k in keys], dtype=np.int8)
         n_cells = np.bincount(group_of_cell, minlength=len(keys))
-        symbols = column(f["var"], args.var_symbols or "_index")
+        symbols = column(f["var"], args.var_symbols or index_name(f["var"]))
         lookup = {}
         for i, s in enumerate(symbols):
             lookup.setdefault(str(s), i)

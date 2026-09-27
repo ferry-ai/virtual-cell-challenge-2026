@@ -22,7 +22,8 @@ from the other training families (leave one family out inside training), with th
 features taken from those same other families; up to --fit-targets targets per family, none a test or panel
 target; the target's own gene out of the loss; the amplitude of the fit is the weighted least-squares slope of
 (y - k) on m. The share rho and the cis head come from training data only, with the test targets excluded.
-A design whose gate fit does not converge is reported and not evaluated. Each design draws its targets and its
+A design whose gate fit does not converge, after up to two restarts from where L-BFGS-B stopped (a point the
+restarts cannot move by more than 1e-6 of the objective counts as converged), is reported and not evaluated. Each design draws its targets and its
 bootstrap and permutation samples from its own seed (SEED, design index), so a run of a subset (--designs)
 repeats the full run's draws. Every E1 contrast and E2 correlation is also reported on the **strong stratum**:
 the test targets in the top quartile of significant genes in the held-out truth (|Z| >= 3 on genes detectable in
@@ -258,13 +259,28 @@ def main() -> None:
             den += float(np.sum(w * np.where(use, f.m * f.m, 0.0)))
         a_fit = num / den if den > 0 else 1.0
         res = gated.fit(fams, gw, A=a_fit, tau2=args.tau2, lam=args.lam)
+        # L-BFGS-B stops with ABNORMAL when its line search cannot lower an objective summed from float32 blocks
+        # (ftol 1e-12): restart from where it stopped; two restarts that change the objective by at most 1e-6 of
+        # its value mean a stationary point at numerical precision, accepted as converged (amendment before r1)
+        restarts, stationary = 0, False
+        while not res.success and "ABNORMAL" in str(res.message) and restarts < 2:
+            before = float(res.fun)
+            res = gated.fit(fams, gw, A=a_fit, tau2=args.tau2, lam=args.lam, initial=res.x)
+            restarts += 1
+            if not res.success and abs(before - float(res.fun)) <= 1e-6 * abs(before):
+                stationary = True
+                break
+        converged = bool(res.success) or stationary
         p = res.x
         params_rows.append({"design": kind, "truths": "+".join(truths), "train": "+".join(train),
                             "fit_families": len(fams), "a_fit": a_fit, "alpha1": p[0], "alpha2": p[1],
                             "beta1": p[2], "beta3": p[3], "success": bool(res.success), "message": str(res.message),
+                            "restarts": restarts, "stationary": stationary, "converged": converged,
+                            "grad_max": float(np.max(np.abs(res.jac))) if getattr(res, "jac", None) is not None else None,
                             "objective": float(res.fun)})
-        log(f"{kind} {truths}: A_fit {a_fit:.3f}, params {np.round(p, 4).tolist()}, success {res.success}")
-        if not res.success:
+        log(f"{kind} {truths}: A_fit {a_fit:.3f}, params {np.round(p, 4).tolist()}, success {res.success}, "
+            f"restarts {restarts}, stationary {stationary}")
+        if not converged:
             log(f"{kind} {truths}: the gate fit did not converge; design not evaluated (it does not pass)")
             continue
 

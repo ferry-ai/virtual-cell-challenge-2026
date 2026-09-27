@@ -72,3 +72,26 @@ di letture per i geni dell'asse ufficiale, poi lo stimatore corretto in locale. 
   perturbazione; nessuna baseline di trasferimento fra linee o lineare sui contesti 2026.
 - **2025:** i vincitori hanno usato tutti dati del contesto di valutazione (addestramento o affinamento su H1),
   che nel 2026 non esistono; il terzo classificato trasferiva da altre linee e poi scalava linearmente.
+
+## Profili basali per un encoder di contesto, e Flex contro 3' (grok, sera del 27/09; [rapporto](agenti/atlanti_basali_grok.md))
+
+Ricerca in sola lettura, fonti primarie, niente scaricato. Serve alla rete del piano R-V2, che legge il contesto dai
+controlli: un encoder dei profili basali si può pre-addestrare su molte più linee delle ~10 perturbate.
+- **Candidati, nell'ordine proposto da grok:**
+  1. DepMap 26Q1: espressione bulk delle linee, file dei geni codificanti di 305 MB, CC BY 4.0 come dichiarazione del
+     programma;
+  2. Tahoe-100M, solo le cellule col veicolo DMSO: circa 47 linee a cellula singola, CC0, chimica Parse fissata;
+     l'intero dataset pesa 338 GB;
+  3. Kinker 2020 (GSE157220): 198 linee, 10x Chromium, senza trattamento; dimensione non indicata;
+  4. MIX-seq: le sole cartelle DMSO e non trattate, circa 0,37 GB di 2,26; 10x 3', CC BY 4.0;
+  5. HIPSCI: i controlli non mirati, 499.998 cellule su 34 linee iPSC; già in locale. **Misurato qui:** chimica 10x
+     5' v2, non Flex.
+- **Flex contro 3' sulle stesse cellule:** nessuna linea cellulare pubblica profilata con entrambe. Il più vicino è De
+  Simone 2025 (PBMC dello stesso donatore, 10x 3' v3.1, 5' v2 e Flex, su CELLxGENE). Il set di sonde Flex umano
+  v1.0.1 ha 18.532 geni, uno in meno dell'asse di gara (18.533): coincidenza di conteggio, non un'identità verificata.
+- **VIPerturb-seq è Flex (misurato 27/09, sonda Kaggle, `sonde_viperturb/`):**
+  - 326.247 cellule, 19.068 geni, 6.725 bersagli, 18.880 guide, 48 campioni;
+  - barcode Flex e metadati `guide`, `gene`, `sample`;
+  - con i bersagli condivisi col K562 di Replogle (3') è un ponte di chimica sulle risposte, non solo sui profili
+    basali, **se** la linea è il K562 come dice il catalogo del 25/09: da verificare sul file.
+- **Download:** DepMap, Tahoe, Kinker, MIX-seq e De Simone non sono nell'elenco autorizzato il 27/09 (HIPSCI sì, ed è già scaricato): serve il via del proprietario.
