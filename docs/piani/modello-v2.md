@@ -1,7 +1,7 @@
 # R-V2 — il modello per il set finale, costruito adesso
 
 - **Stato:** in corso.
-- **Aggiornato:** 27 settembre 2026, 13:07 (ora italiana).
+- **Aggiornato:** 27 settembre 2026, 14:13 (ora italiana).
 - **Assegnazione:** regia e filoni F1, F2 e F4: Claude (app, sessione `f4f38e58`), dal
   26/09 alle 00:20. Filone F3: codex via agent hub, lancio annotato qui sotto. Gli altri
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.
@@ -131,9 +131,27 @@ per circa 10.000 bersagli ciascuna, contro i 300 di oggi. Su quella base:
   usarla nel set finale va provata la stima con una linea per laboratorio (punto aperto).
 - **Linea contro stato (descrittivo, stessi bersagli):** stati diversi delle stesse cellule CD4 0,20–0,25 di
   coseno mediano fra profili, due esperimenti K562 0,16, un'altra linea dello stesso laboratorio circa 0,07,
-  un'altra linea e laboratorio 0,02. È la prova misurata più forte sulla domanda strategica qui sotto.
+  un'altra linea e laboratorio 0,02. È la prova misurata più forte sulla domanda strategica qui sotto, ma
+  confonde biologia, laboratorio, protocollo e rumore: non dimostra che la parte propria del contesto non si
+  possa imparare ([revisione di codex](../../reports/revisione_codex_2026-09-27/REVISIONE.md), punto 4).
 - **SE delle sorgenti Replogle:** calibrato sulle guide non mirate per i geni tipici; le ricette non
   restringono troppo il K562 (ipotesi chiusa).
+
+## Pomeriggio del 27 settembre
+
+- **Artefatto dello stimatore pseudobulk** ([report](../../reports/pseudoconteggio_2026-09-27/RISULTATI.md)):
+  con il pseudoconteggio costante un gene senza conteggi vale ln(L_c/L_t); i geni Y delle donatrici CD4
+  risultavano indotti da ogni knockdown (5,3–5,5 % dell'energia del t22 sui geni espressi in A e C).
+  Correzione `min_expected` (cache r9); **t25** = t22 su r9, registrato alle 11:41 UTC, in generazione.
+- **Revisione di codex** ([sintesi e risposta](../../reports/revisione_codex_2026-09-27/REVISIONE.md)):
+  accettati i sei punti. Consegne: dati corretti e ablazioni (Claude: [ablazione del
+  t23](../../reports/ablazione_t23_2026-09-27/RISULTATI.md), universi corretti); banco C/T/J congelato (codex);
+  modello bersaglio × contesto (disegno a claude2).
+- **Base di lancio:** modelli fissati in `agent-hub/control/agents.toml` su richiesta del proprietario
+  (claude2 Opus 5.5 con sforzo massimo, codex GPT-6-Astra medio); in corso codex, grok (revisione della
+  correzione), claude2 e antigravity (ricerca di dati multi-contesto).
+- **Istruzione del proprietario:** per ora niente invii al server e niente push; t23, t24 e t25 restano
+  impacchettati o in preparazione.
 
 ## Domanda strategica aperta
 

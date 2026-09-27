@@ -13,6 +13,7 @@ Grouped by what the folder is about, not by whether it still holds: a folder's r
 `docs/REGISTRO.md` says that. `tests/test_live_tree.py` fails if a folder is missing here.
 
 **State and analyses** — read after `docs/PROGETTO.md` §0:
+`revisione_codex_2026-09-27/` (codex's review of 27 September, point by point, with the answer and who does what),
 `ipotesi_trasferimento_2026-09-24/` (research hypotheses, switch genes and targeted data acquisition),
 `analisi_2026-09-24/` (Claude, with calculations), `audit_stato_2026-09-24/` (ChatGPT,
 with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
@@ -33,6 +34,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `programmi_2026-09-26/` (projection of transferred effects on shared programs: loses at every rank),
 `bersagli_nuovi_2026-09-26/` (targets no source measured: linear gene embeddings, STRING partners, cis),
 `universo_2026-09-26/` (genome-wide caches for every target, not only the panel: K562, CD4, Orion HCT116 and HEK293T),
+`universo_corretto_2026-09-27/` (the universes rebuilt with the corrected estimator: script, run pending),
 `atlante_2026-09-26/` (transfer tested on thousands of held-out targets per line, with the universes as inputs),
 `quota_condivisa_2026-09-27/` (the atlas's closest arm, the per-gene shared share, tested on the panel),
 `pseudoconteggio_2026-09-27/` (the constant pseudocount's artefact in the pseudobulk sources, and the fix: origin of t25),
