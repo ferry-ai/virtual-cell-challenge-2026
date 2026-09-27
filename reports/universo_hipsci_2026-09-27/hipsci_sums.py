@@ -75,7 +75,7 @@ def count_batches(path: Path, n_cells: int, batch_size: int):
 
 def run(counts: Path, metadata: Path, out: Path, *, annotation: Path = ANNOTATION,
         pools: int = 8, per_line: bool = False, rows_per_batch: int = 4,
-        axis=None) -> dict:
+        axis=None, unassigned_as_control: bool = False) -> dict:
     """Write a new archive, group table, basal CPM table and completion manifest."""
     if out.exists():
         raise FileExistsError(out)
@@ -124,11 +124,15 @@ def run(counts: Path, metadata: Path, out: Path, *, annotation: Path = ANNOTATIO
         call = GUIDE.fullmatch(value)
         if call is not None:
             targets_by_call[value] = "NTC" if call[1] == "NonTarget" else call[1]
+    if unassigned_as_control:
+        # the authors' own controls (13b_01 and others): control_tag <- c("unassigned", "NonTarget")
+        targets_by_call["unassigned"] = "NTC"
     target = aligned.Guide_Call.astype(object).map(targets_by_call)
     valid = target.notna().to_numpy()
     unmatched = aligned.Cell_ID.isna().to_numpy()
     unassigned = (aligned.Guide_Call == "unassigned").to_numpy()
-    dropped = {"no_metadata": int(unmatched.sum()), "unassigned": int(unassigned.sum()),
+    dropped = {"no_metadata": int(unmatched.sum()),
+               "unassigned": 0 if unassigned_as_control else int(unassigned.sum()),
                "invalid_guide_call": int((~valid & ~unmatched & ~unassigned).sum())}
     cell_rows = np.flatnonzero(valid)
     if not cell_rows.size:
@@ -250,7 +254,9 @@ def run(counts: Path, metadata: Path, out: Path, *, annotation: Path = ANNOTATIO
                 "rows_dropped_from_axis_by_reason": {k: rows[k] for k in
                     ("non_gene_expression", "unmapped", "duplicate_axis_gene")},
                 "targets": sorted(set(groups.target)), "batch_to_pool": batch_pool,
-                "options": {"pools": pools, "per_line": per_line, "rows_per_batch": rows_per_batch},
+                "options": {"pools": pools, "per_line": per_line, "rows_per_batch": rows_per_batch,
+                            "controls": "NonTarget + unassigned (the authors' choice)" if unassigned_as_control
+                            else "NonTarget only"},
                 "library": "All Gene-Expression rows, including unmapped and duplicate rows; other feature types excluded",
                 "duplicate_policy": "First annotation ID and first mapped source row win; symbol fallback",
                 "peak_rss_bytes": peak_rss_bytes()}
@@ -321,6 +327,30 @@ def selftest() -> int:
         except FileExistsError:
             refused = True
         check("never overwrite", refused)
+        with contextlib.redirect_stdout(io.StringIO()):
+            ua = run(counts, metadata, root / "ua", annotation=ann, pools=1, rows_per_batch=2,
+                     axis=["A", "B", "C"], unassigned_as_control=True)
+        with np.load(root / "ua/sums.npz") as z:
+            ntc = list(z["target"]).index("NTC")
+            check("unassigned as controls (added 27/09 night)", int(z["n_cells"][ntc]) == 3
+                  and ua["cells"]["dropped_by_reason"]["unassigned"] == 0
+                  and ua["options"]["controls"].startswith("NonTarget + unassigned"))
+        day_counts = root / "day.csv.gz"
+        day_cells = [f"P1_I1_CELL{i}-1" for i in range(7)]
+        with gzip.open(day_counts, "wt", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow([""] + day_cells)
+            for label, row in zip(["ENSG1:A:Gene-Expression", "ENSG2:B:Gene-Expression"], data[:2]):
+                writer.writerow([label] + row)
+        day_meta = pd.read_csv(metadata, sep="\t")
+        day_meta.Cell_ID = ["PC-P1-D3_I1_" + c.split("_I1_")[1] if "_I1_" in c else "PC-P1-D3_I1_extra"
+                            for c in day_meta.Cell_ID]
+        day_meta.to_csv(root / "day.tsv.gz", sep="\t", index=False)
+        with contextlib.redirect_stdout(io.StringIO()):
+            dm = run(day_counts, root / "day.tsv.gz", root / "day", annotation=ann, pools=1, rows_per_batch=2,
+                     axis=["A", "B", "C"])
+        check("day dropped from the targeted screen's ids (added 27/09 night)",
+              dm["id_rule"].startswith("metadata prefix and day stripped") and dm["cells"]["counts_only"] == 1)
         wide = root / "wide.csv.gz"
         width = 200000
         with gzip.open(wide, "wt", newline="") as f:
@@ -348,6 +378,8 @@ def main():
     ap.add_argument("--pools", type=int, default=8)
     ap.add_argument("--rows-per-batch", type=int, default=4)
     ap.add_argument("--per-line", action="store_true")
+    ap.add_argument("--unassigned-as-control", action="store_true",
+                    help="cells without a guide call join the NonTarget cells as controls, as the authors did")
     ap.add_argument("--selftest", action="store_true")
     args = ap.parse_args()
     if args.selftest:
@@ -355,7 +387,8 @@ def main():
     if any(x is None for x in (args.counts, args.metadata, args.out)):
         ap.error("--counts, --metadata and --out are required")
     run(args.counts, args.metadata, args.out, annotation=args.annotation, pools=args.pools,
-        per_line=args.per_line, rows_per_batch=args.rows_per_batch)
+        per_line=args.per_line, rows_per_batch=args.rows_per_batch,
+        unassigned_as_control=args.unassigned_as_control)
 
 
 if __name__ == "__main__":
