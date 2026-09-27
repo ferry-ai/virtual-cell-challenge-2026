@@ -1,0 +1,105 @@
+{
+ "written_utc": "2026-09-27T22:06:40.563857+00:00",
+ "entry_id": "EZGjM8uKHlF1WokKrY2p",
+ "submission_date": "2026-09-27T21:32:16.412706Z",
+ "owners_go": "in chat, 27/09 at about 23:30 Italian time: send t24, work through the night on the network",
+ "score_avg": 0.14289686095002022,
+ "rank_at_scoring": 347,
+ "registered_band": [
+  0.137,
+  0.146
+ ],
+ "inside_band": true,
+ "reference": {
+  "t22": 0.14125049908559736
+ },
+ "t24_minus_t22": 0.0016463618644228517,
+ "t24_minus_t22_band": [
+  -0.004,
+  0.004
+ ],
+ "inside_difference_band": true,
+ "D": 0.0016463618644228517,
+ "reading_rule_outcome": "D = |t24 - t22| = 0.0016 <= 0.0017: by the rule registered at 00:02 UTC of 27/09, the +/-0.005 threshold of the registered rules is about 2 SD of generator noise or more, and it is kept for the next rules. One pair is a crude estimate and is read as one. t22 - t20 = +0.0016 (read as inconclusive on 26/09) is the size of this seed-to-seed draw. By the rule, t24 enters the table of official scores as a replicate of t22, and the t22 recipe's reference score becomes the mean of the two: 0.142074.",
+ "t22_recipe_reference": 0.1420736800178088,
+ "scaled_published": {
+  "t22": {
+   "score_pds": 0.6341779442539317,
+   "score_mse": 0,
+   "score_nmae": 0.12037533232563229,
+   "score_fid": -0.052174993857184764,
+   "score_reach": 0.13130923734723685,
+   "score_jac": 0.013815474443968086
+  },
+  "t24": {
+   "score_pds": 0.6364853368614924,
+   "score_mse": 0,
+   "score_nmae": 0.12401217138714915,
+   "score_fid": -0.05436815942231713,
+   "score_reach": 0.13730693653230064,
+   "score_jac": 0.013944880341496211
+  },
+  "t24_minus_t22": {
+   "score_pds": 0.002307392607560743,
+   "score_mse": 0,
+   "score_nmae": 0.003636839061516864,
+   "score_fid": -0.0021931655651323684,
+   "score_reach": 0.005997699185063793,
+   "score_jac": 0.00012940589752812558
+  },
+  "t24_minus_t22_contribution_to_mean": {
+   "score_pds": 0.0003845654345934572,
+   "score_mse": 0.0,
+   "score_nmae": 0.000606139843586144,
+   "score_fid": -0.00036552759418872804,
+   "score_reach": 0.0009996165308439654,
+   "score_jac": 2.156764958802093e-05
+  }
+ },
+ "raw": {
+  "pds_cosine": {
+   "t24": 0.7876402824228911,
+   "t22": 0.786759568933482,
+   "t24_minus_t22": 0.0008807134894091018,
+   "registered_prior_half_width": 0.002,
+   "inside_prior": true
+  },
+  "de_wilcoxon_lfc_nmae": {
+   "t24": 0.9244623694094076,
+   "t22": 0.9265039129038812,
+   "t24_minus_t22": -0.0020415434944736077,
+   "registered_prior_half_width": 0.006,
+   "inside_prior": true
+  },
+  "de_wilcoxon_direction_reach_raw": {
+   "t24": 0.20061647370786526,
+   "t22": 0.19539948748812852,
+   "t24_minus_t22": 0.005216986219736736,
+   "registered_prior_half_width": 0.004,
+   "inside_prior": false
+  },
+  "de_wilcoxon_direction_fidelity_yield_raw": {
+   "t24": 0.49628006230012583,
+   "t22": 0.4969192581679741,
+   "t24_minus_t22": -0.0006391958678482745,
+   "registered_prior_half_width": 0.004,
+   "inside_prior": true
+  },
+  "de_wilcoxon_sig_jaccard": {
+   "t24": 0.03555253853763908,
+   "t22": 0.03551457408539036,
+   "t24_minus_t22": 3.796445224871908e-05,
+   "registered_prior_half_width": 0.002,
+   "inside_prior": true
+  },
+  "expr_mse_unbiased_capped_norm": {
+   "t24": 3.054635696237394,
+   "t22": 3.0574372233030487,
+   "t24_minus_t22": -0.0028015270656545077,
+   "registered_prior_half_width": null,
+   "inside_prior": null
+  }
+ },
+ "member_reading": "measured, per the rule's 'per member' clause, as one draw of each member's seed noise: reach +0.0052 raw (+0.0060 scaled), the only member outside its prior of +/-0.004; nMAE -0.0020 raw (+0.0036 scaled); PDS +0.0009 raw (+0.0023 scaled); fidelity -0.0006 raw (-0.0022 scaled); Jaccard +0.00004. The DE-count member reach moves most, as the note of the registration expected; PDS moves least.",
+ "claim_type": "official scores of two submissions; the noise estimate rests on one pair"
+}

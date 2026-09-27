@@ -11,12 +11,14 @@ Aggiornata il 2026-09-23 con la pulizia di D-040:
   `archivio/pre-pulizia-2026-09-23`;
 - §1, §3 e §4 sono invariati, salvo le voci 7 e 20 del §4.
 
-Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 27 settembre, con il t22
-([confronto](../reports/prediction_t22_2026-09-26/comparison.json)).
+Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 28 settembre, con il t24
+([confronto](../reports/prediction_t24_2026-09-27/comparison.json)).
 
-## 0. Oggi — 27 settembre 2026
+## 0. Oggi — 28 settembre 2026
 
-**Il migliore è il t22: +0,141250, rango 337 all'invio**: il t20 con Orion HEK293T come
+**Il t24, replica del t22 con un altro seme del generatore, vale +0,142897 (rango 347).** Per la regola registrata prima, D = |t24 − t22| = 0,0016 ≤ 0,0017: la soglia ±0,005 delle regole resta, circa 3 volte il rumore fra due semi misurato su una coppia. Il riferimento della ricetta del t22 diventa la media dei due, 0,14207; il membro che il seme muove di più è reach (+0,0052 grezzo). ([confronto](../reports/prediction_t24_2026-09-27/comparison.json)).
+
+**La ricetta migliore resta quella del t22: +0,141250, rango 337 all'invio**: il t20 con Orion HEK293T come
 quarta sorgente genome-scale a peso uguale. Sul t20 vale +0,0016, dentro la banda in cui la
 regola registrata non conclude sull'effetto di HEK293T
 ([confronto](../reports/prediction_t22_2026-09-26/comparison.json)). Il set finale arriva il 22 ottobre:
@@ -40,6 +42,7 @@ regola registrata non conclude sull'effetto di HEK293T
 | t17 | il t15 + Orion HEK293T, ampiezza 0,4285 (stesso q99 del t15) | trial-01 | +0,108774 | 448 | [CP-0038](checkpoints/0038-t17-hek293t-non-attribuibile.md) |
 | t20 | il t16 con effetti ristretti a 1,576 + modulo cis CRISPRi | trial-01 | +0,139676 | 346 | [confronto](../reports/prediction_t20_2026-09-26/comparison.json) |
 | **t22** | il t20 + Orion HEK293T a peso uguale (le quattro sorgenti genome-scale) | trial-01 | **+0,141250** | 337 | [confronto](../reports/prediction_t22_2026-09-26/comparison.json) |
+| t24 | il t22 con un altro seme del generatore (replica: misura il rumore) | trial-01 | +0,142897 | 347 | [confronto](../reports/prediction_t24_2026-09-27/comparison.json) |
 
 In tutti gli invii:
 - lo scalato della `mse` vale 0 (tosato);
@@ -70,7 +73,8 @@ scalati con le ancore: il 25 settembre `vcc status` serviva solo l'ultimo invio 
   misura quanto si muove il punteggio ufficiale fra due estrazioni casuali della stessa
   previsione, un rumore finora di entità ignota in ogni lettura
   ([previsione](../reports/prediction_t24_2026-09-27/prediction.json), registrata alle 00:02 UTC
-  del 27). Impacchettato il 27 alle 12:02; l'invio aspetta il via del proprietario.
+  del 27). Inviato col via del proprietario il 27/09 alle 21:32 UTC, valutato alle 22:05 UTC: +0,142897, D = 0,0016, la soglia ±0,005 resta ([confronto](../reports/prediction_t24_2026-09-27/comparison.json)).
+- **La rete su molti contesti (F10 di R-V2)**, notte del 27–28/09: autoverifica 14 su 14 su Kaggle, regola di r1 registrata alle 22:03; la corsa di produzione su Colab si ferma al passo 250, e la perdita su una famiglia tenuta fuori sale appena la rete impara oltre il trasferimento calibrato ([rete](../reports/rete_contesti_2026-09-27/RISULTATI.md)). Varianti ed r1 in corso su Colab; nessun invio della rete prima che passi la sua regola (decisione del proprietario, 27/09 sera).
 - **R-V2** ([scheda](piani/modello-v2.md)): il modello per il set finale, costruito adesso.
   Fatti: cache universo K562 (9.866 bersagli); ripiego per i bersagli che nessuna sorgente
   copre (cis + partner STRING) nello stadio 100; banco con lo scorer vero su HepG2 in coda
