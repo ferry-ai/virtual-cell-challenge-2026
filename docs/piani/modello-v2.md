@@ -1,7 +1,7 @@
 # R-V2 — il modello per il set finale, costruito adesso
 
 - **Stato:** in corso.
-- **Aggiornato:** 27 settembre 2026, 01:44 (ora italiana).
+- **Aggiornato:** 27 settembre 2026, 12:03 (ora italiana).
 - **Assegnazione:** regia e filoni F1, F2 e F4: Claude (app, sessione `f4f38e58`), dal
   26/09 alle 00:20. Filone F3: codex via agent hub, lancio annotato qui sotto. Gli altri
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.
@@ -122,6 +122,9 @@ per circa 10.000 bersagli ciascuna, contro i 300 di oggi. Su quella base:
   aspetta il via del proprietario.
 - **t22 valutato** il 26/09 alle 23:40 UTC: non conclusivo contro il t20 per la sua regola, punteggio
   ufficiale più alto finora ([confronto](../../reports/prediction_t22_2026-09-26/comparison.json)).
+- **t24** registrato il 27/09 alle 00:02 UTC e impacchettato alle 12:02: il t22 con un altro seme del
+  generatore, per misurare il rumore del punteggio ufficiale fra due estrazioni della stessa previsione
+  ([previsione](../../reports/prediction_t24_2026-09-27/prediction.json)). t23 e t24 aspettano il via.
 - **Linea contro stato (descrittivo, stessi bersagli):** stati diversi delle stesse cellule CD4 0,20–0,25 di
   coseno mediano fra profili, due esperimenti K562 0,16, un'altra linea dello stesso laboratorio circa 0,07,
   un'altra linea e laboratorio 0,02. È la prova misurata più forte sulla domanda strategica qui sotto.

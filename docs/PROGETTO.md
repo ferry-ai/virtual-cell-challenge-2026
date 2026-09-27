@@ -63,8 +63,14 @@ scalati con le ancore: il 25 settembre `vcc status` serviva solo l'ultimo invio 
   sua regola, e ha passato una regola nuova sul pannello
   ([quota condivisa](../reports/quota_condivisa_2026-09-27/RISULTATI.md)): una prima conferma.
   Previsione registrata prima della generazione
-  ([previsione](../reports/prediction_t23_2026-09-27/prediction.json)), si legge contro il t22;
-  generazione avviata il 27 settembre alle 01:14; l'invio aspetta il via del proprietario.
+  ([previsione](../reports/prediction_t23_2026-09-27/prediction.json)), si legge contro il t22.
+  Generato e impacchettato il 27 settembre fra le 01:14 e le 02:41; l'invio aspetta il via del
+  proprietario.
+- **t24** = il t22 rigenerato con un altro seme del generatore, senza nessun cambio di modello:
+  misura quanto si muove il punteggio ufficiale fra due estrazioni casuali della stessa
+  previsione, un rumore finora di entità ignota in ogni lettura
+  ([previsione](../reports/prediction_t24_2026-09-27/prediction.json), registrata alle 00:02 UTC
+  del 27). Impacchettato il 27 alle 12:02; l'invio aspetta il via del proprietario.
 - **R-V2** ([scheda](piani/modello-v2.md)): il modello per il set finale, costruito adesso.
   Fatti: cache universo K562 (9.866 bersagli); ripiego per i bersagli che nessuna sorgente
   copre (cis + partner STRING) nello stadio 100; banco con lo scorer vero su HepG2 in coda
