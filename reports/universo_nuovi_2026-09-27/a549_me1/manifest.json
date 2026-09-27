@@ -1,0 +1,101 @@
+{
+ "stage": "universo_kolf_2026-09-27/kolf_effects.py",
+ "written_utc": "2026-09-27T17:30:10.871025+00:00",
+ "name": "a549",
+ "context": null,
+ "line": "KOLF2.1J",
+ "source": {
+  "what": "/content/work/a549/a549.h5ad",
+  "url": "/content/work/a549/a549.h5ad",
+  "licence": "not specified in sums archive"
+ },
+ "input": {
+  "sums": "C:\\Users\\ferra\\vcc2026-data\\interim\\a549_sums_r2\\sums.npz",
+  "bytes": 595100652,
+  "sha256": "1f489e0469df6d1655f9a403aeb09a212c5182f6a3fd1c8b82c6e453616c1ee2",
+  "groups_sha256": "90c21b0ff81f7d6fca80f0413cb372721408d50826d6d2960574914cbdde6c47",
+  "matrix": {
+   "member": "sums.npy",
+   "data_offset": 186,
+   "shape": [
+    8008,
+    18533
+   ],
+   "dtype": "<f4",
+   "order": "F"
+  },
+  "axis_matches_official": true
+ },
+ "out": "C:\\Users\\ferra\\vcc2026-data\\processed\\universe_a549_2026-09-27_me1",
+ "chunk_size": 600,
+ "window_genes": 256,
+ "estimator": {
+  "function": "vcc2026.multisource.effects_from_pseudobulk",
+  "options": {
+   "condition": null,
+   "phi": 0.2,
+   "min_control_frac": 1e-06,
+   "min_cells": 10.0,
+   "pseudo": 0.5,
+   "pseudo_scale": "constant",
+   "min_expected": 1.0
+  },
+  "donors": "archive pool IDs, each against its selected context's NTC cells",
+  "library": "each row's total_counts over all genes of the file: its counts on the axis genes of the file plus one column with the rest",
+  "axis": "AxisTable.from_source, control fraction >= 1e-6; axis genes the file lacks are NaN"
+ },
+ "chunks": [
+  {
+   "file": "a549_00.npz",
+   "targets_in_block": 600,
+   "targets": 600,
+   "bytes": 86056679,
+   "sha256": "3c830a5f331cfa1efd54635a00c89d00696abe08ed31799133b0a288fed1dd21"
+  },
+  {
+   "file": "a549_01.npz",
+   "targets_in_block": 400,
+   "targets": 400,
+   "bytes": 57355931,
+   "sha256": "cfb7c9bceccf9d6090eecd587f471ee330f10d9d712f0ad84d814800f32a521c"
+  }
+ ],
+ "summary": {
+  "groups": 8008,
+  "targets_with_cells": 1000,
+  "targets_with_effects": 1000,
+  "targets_without_effects": 0,
+  "on_official_axis_with_effects": 942,
+  "in_panel_with_cells": 21,
+  "in_panel_with_effects": 21,
+  "median_cells_total": 565.0,
+  "median_n_cells_with_effects": 565.0,
+  "cells": 606075,
+  "ntc_cells": 45320,
+  "ntc_cells_per_pool": [
+   6074,
+   5395,
+   5994,
+   5224,
+   5765,
+   5716,
+   5925,
+   5227
+  ],
+  "genes_on_axis": 18533,
+  "genes_in_file": 17156,
+  "genes_absent_nan": 1377,
+  "all_sums_whole": true,
+  "library_share_on_axis": {
+   "min": 0.6429605855415085,
+   "median": 0.7252736702838756,
+   "max": 0.7764549180327869
+  },
+  "groups_off_axis_clipped_to_0": 0,
+  "seconds_scan": 6.5,
+  "seconds": 72.2,
+  "peak_working_set_mib": 1005,
+  "chunk_bytes": 143412610
+ },
+ "claim_type": "effect tables for selected groups; no claim on their use as a source"
+}

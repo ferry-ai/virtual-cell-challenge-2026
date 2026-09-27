@@ -48,3 +48,16 @@ scelte forti.
 **Cautele:**
 - l'effetto sul proprio gene dipende dallo stimatore (il K562 ne usa un altro) e dall'espressione del gene;
 - i bersagli senza misura (gene poco espresso, nessun donatore con evidenza) sono esclusi dal conteggio.
+
+## Aggiunte della sera del 27/09 (misurato)
+
+- **A549 (knockout Cas9) stimato:** 1.000 bersagli su 1.000 con effetti (`kolf_effects.py --name a549`; indice e
+  manifest in `a549_me1/`). Controllo sul bersaglio (`controlli_bersaglio/a549.json`): gene proprio misurato in 827
+  bersagli, mediana −0,54 (quartili −0,79 e −0,28), z ≤ −3 nell'83 %. Il knockout abbassa l'mRNA meno del CRISPRi, ma
+  i gruppi sono assegnati bene.
+- **`basal_from_sums.py`:** il CPM dei controlli di una sorgente dalle sue somme, con la stessa definizione della
+  tabella del 26/09. Ne esce `processed/basal_sources_2026-09-27.csv`: le colonne del 26/09 più `kolf` (146.747 cellule
+  di controllo) e `a549` (45.320).
+- **Ipotesi della profondità, messa alla prova:** la normalizzazione per profondità mediana della sorgente non ha
+  sostegno ([profondità del silenziamento](../profondita_silenziamento_2026-09-27/RISULTATI.md)). Bersaglio per
+  bersaglio la relazione c'è, ma è debole.

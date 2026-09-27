@@ -1,0 +1,191 @@
+{
+ "stage": "profondita_silenziamento_2026-09-27/depth_energy.py",
+ "args": {
+  "universe": [
+   "k562=C:/Users/ferra/vcc2026-data/processed/universe_k562_2026-09-26",
+   "cd4_Rest=C:/Users/ferra/vcc2026-data/processed/universe_cd4_2026-09-27_me1",
+   "orion_hct116=C:/Users/ferra/vcc2026-data/processed/universe_orion_hct116_2026-09-27_me1",
+   "orion_hek293t=C:/Users/ferra/vcc2026-data/processed/universe_orion_hek293t_2026-09-27_me1",
+   "kolf=C:/Users/ferra/vcc2026-data/processed/universe_kolf_2026-09-27_me1"
+  ],
+  "basal": "C:\\Users\\ferra\\vcc2026-data\\processed\\basal_sources_2026-09-27.csv",
+  "coords": "C:\\Users\\ferra\\vcc2026-data\\external\\annotation\\gene_coordinates_gencode_v50.tsv",
+  "min_cpm": 10.0,
+  "batch": 400,
+  "out": "reports\\profondita_silenziamento_2026-09-27\\r1"
+ },
+ "gstar_genes": 5665,
+ "pairs": [
+  {
+   "a": "k562",
+   "b": "cd4_Rest",
+   "targets": 4398,
+   "slope": 0.11441983548291126,
+   "slope_ci95": [
+    0.07108392151508933,
+    0.155582039353314
+   ],
+   "corr": 0.08290327511439834,
+   "corr_ci95": [
+    0.051231966670284686,
+    0.11206920659778362
+   ],
+   "median_log_depth_ratio": 0.05389481505306622,
+   "median_log_energy_ratio": 0.0815388681700057
+  },
+  {
+   "a": "k562",
+   "b": "orion_hct116",
+   "targets": 4099,
+   "slope": 0.20059847788181978,
+   "slope_ci95": [
+    0.14398637822804294,
+    0.2543529300819627
+   ],
+   "corr": 0.11097330408615626,
+   "corr_ci95": [
+    0.07964867910565636,
+    0.14044947267102217
+   ],
+   "median_log_depth_ratio": 0.4530612985686836,
+   "median_log_energy_ratio": 0.4275518824525525
+  },
+  {
+   "a": "k562",
+   "b": "orion_hek293t",
+   "targets": 4504,
+   "slope": 0.18360912364090223,
+   "slope_ci95": [
+    0.12729439589321398,
+    0.23867638233519187
+   ],
+   "corr": 0.0994823670432007,
+   "corr_ci95": [
+    0.06909096301762424,
+    0.12841016511371872
+   ],
+   "median_log_depth_ratio": 0.9434975873679958,
+   "median_log_energy_ratio": 0.8814785849115256
+  },
+  {
+   "a": "k562",
+   "b": "kolf",
+   "targets": 2793,
+   "slope": 0.2995047343891972,
+   "slope_ci95": [
+    0.2514049963287614,
+    0.3438534664226542
+   ],
+   "corr": 0.22883782179589368,
+   "corr_ci95": [
+    0.19280233743184272,
+    0.26468335107934227
+   ],
+   "median_log_depth_ratio": 0.5556851290079435,
+   "median_log_energy_ratio": -0.7847017183758823
+  },
+  {
+   "a": "cd4_Rest",
+   "b": "orion_hct116",
+   "targets": 4328,
+   "slope": 0.09288070653813707,
+   "slope_ci95": [
+    0.04618903189520364,
+    0.1353313537008589
+   ],
+   "corr": 0.06125566119855849,
+   "corr_ci95": [
+    0.03037305018148361,
+    0.088714723233724
+   ],
+   "median_log_depth_ratio": 0.4664748925678026,
+   "median_log_energy_ratio": 0.3390042857493323
+  },
+  {
+   "a": "cd4_Rest",
+   "b": "orion_hek293t",
+   "targets": 4876,
+   "slope": 0.15188336340076578,
+   "slope_ci95": [
+    0.1087687663233754,
+    0.19983893541163403
+   ],
+   "corr": 0.09482892085466557,
+   "corr_ci95": [
+    0.06719857380262766,
+    0.1243744986404993
+   ],
+   "median_log_depth_ratio": 0.9585869175706859,
+   "median_log_energy_ratio": 0.7809865390126884
+  },
+  {
+   "a": "cd4_Rest",
+   "b": "kolf",
+   "targets": 3000,
+   "slope": 0.17147613421688576,
+   "slope_ci95": [
+    0.11771961552616181,
+    0.22294348954416227
+   ],
+   "corr": 0.12343876941187754,
+   "corr_ci95": [
+    0.08539583556987836,
+    0.1605789022202035
+   ],
+   "median_log_depth_ratio": 0.5281974164497796,
+   "median_log_energy_ratio": -0.9288406251002443
+  },
+  {
+   "a": "orion_hct116",
+   "b": "orion_hek293t",
+   "targets": 5325,
+   "slope": 0.21720774156789974,
+   "slope_ci95": [
+    0.172405165587699,
+    0.2647935256995737
+   ],
+   "corr": 0.13428616410034322,
+   "corr_ci95": [
+    0.10669741103203441,
+    0.16207677201400542
+   ],
+   "median_log_depth_ratio": 0.5037456993125342,
+   "median_log_energy_ratio": 0.5574122891301191
+  },
+  {
+   "a": "orion_hct116",
+   "b": "kolf",
+   "targets": 2651,
+   "slope": 0.4641869458871764,
+   "slope_ci95": [
+    0.4108275541564279,
+    0.5199929360717169
+   ],
+   "corr": 0.3094321527177978,
+   "corr_ci95": [
+    0.27585111722740463,
+    0.3470409437038808
+   ],
+   "median_log_depth_ratio": 0.06167555178412072,
+   "median_log_energy_ratio": -1.1576175361401277
+  },
+  {
+   "a": "orion_hek293t",
+   "b": "kolf",
+   "targets": 2965,
+   "slope": 0.48445362042090107,
+   "slope_ci95": [
+    0.4276224857756656,
+    0.5409187706853619
+   ],
+   "corr": 0.3089722917783687,
+   "corr_ci95": [
+    0.2727513171076724,
+    0.34213031516646203
+   ],
+   "median_log_depth_ratio": -0.44839704414235415,
+   "median_log_energy_ratio": -1.6062114467629236
+  }
+ ],
+ "claim_type": "exploratory association across public sources; not a VCC score"
+}

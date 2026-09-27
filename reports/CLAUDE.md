@@ -42,6 +42,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `quota_condivisa_2026-09-27/` (the atlas's closest arm, the per-gene shared share, tested on the panel),
 `pseudoconteggio_2026-09-27/` (the constant pseudocount's artefact in the pseudobulk sources, and the fix: origin of t25),
 `ablazione_t23_2026-09-27/` (t23 taken apart on the panel: exclusion, weighting and rescaling, each against the others),
+`profondita_silenziamento_2026-09-27/` (does the downstream response grow with the knockdown depth of the target's own gene, across lines?),
 `rete_2026-09-26/` (network smoothing of measured targets with STRING partners: small effect),
 `contesti_2026-09-26/` (H6 on Mixscale: basal similarity does not predict transfer; weighting by it loses),
 `trasferimento_appreso_2026-09-26/` (learned transfer per target-gene pair; the magnitude channel is not adopted after the isolated bench r5; agent reports),
