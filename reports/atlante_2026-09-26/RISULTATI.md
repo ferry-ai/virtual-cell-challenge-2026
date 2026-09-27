@@ -217,3 +217,19 @@ osservata del fold change contro SE² della formula, per fascia di espressione d
   troppo il K562 non è sostenuta. Resta una sovrastima per i geni più espressi (fino a 1/0,68 in varianza),
   che pesa di più con i pesi log1p dello scorer: è la ragione principale per cui la correzione per il rumore
   fallisce, non un difetto delle ricette.
+
+## r2: replica con HEK293T (lancio alle 12:04 del 27/09)
+
+Ora d'avvio del processo: 12:04:54 del 27/09. L'universo HEK293T è completo dalle 01:44 dello stesso giorno:
+17.270 bersagli con effetti, parità esatta con la cache r5 sui 281 del pannello
+(`../universo_2026-09-26/orion_hek293t/`).
+
+r2 è la replica prevista dalla regola delle 19:15. Usa lo stesso script con i parametri di default di r1:
+1.000 bersagli di prova, seme 20260926, bersagli essential fuori dalla prova. Gli universi sono quattro
+(K562, CD4 `cd4_mix`, HCT116 e HEK293T), ognuno tenuto fuori a turno; con una linea Orion fuori esce anche
+l'altra, che è della stessa famiglia. Con quattro universi cambia l'insieme dei bersagli idonei: per K562,
+CD4 e HCT116 i bersagli di prova non sono quelli di r1.
+
+Come dice la regola, r2 si riporta e non cambia la lettura di r1. Nel frattempo il braccio `share_atlas`
+è diventato il t23 passando per un banco sul pannello con una regola sua
+([quota condivisa](../quota_condivisa_2026-09-27/RISULTATI.md)); r2 non decide nulla neanche sul t23.
