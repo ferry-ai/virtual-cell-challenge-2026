@@ -24,7 +24,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `prediction_t07_2026-09-19/`, `prediction_t08_2026-09-22/`, `prediction_t10_2026-09-23/`,
 `prediction_t11_2026-09-23/`, `prediction_t12_2026-09-23/`, `prediction_t14_2026-09-23/`,
 `prediction_t15_2026-09-23/`, `prediction_t16_2026-09-24/`, `prediction_t17_2026-09-24/`, `prediction_t18_2026-09-25/`,
-`prediction_t19_2026-09-25/`, `prediction_t20_2026-09-26/`, `prediction_t22_2026-09-26/`, `prediction_t23_2026-09-27/`,
+`prediction_t19_2026-09-25/`, `prediction_t20_2026-09-26/`, `prediction_t22_2026-09-26/`, `prediction_t23_2026-09-27/`, `prediction_t24_2026-09-27/`,
 `trial02_decision_2026-09-17/`, `anchors_2026-09-17/` (the official anchors),
 `scorer/`, `scorer_2026-09-12/` (the scorer contract), `leaderboard_2026-09-16/`.
 

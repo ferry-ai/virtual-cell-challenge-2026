@@ -1,0 +1,53 @@
+{
+  "written_utc": "2026-09-27T00:02:24.531636+00:00",
+  "label": "t24 = t22 regenerated with another generator seed (20260927 instead of 20260912): same effects files, recipe, trial and packaging; a replicate that measures how much the official score moves between two random draws of the same prediction",
+  "claim_type": "prediction registered before generation and submission; not a measurement",
+  "recipe": {
+    "path": "configs/recipes/t22.json",
+    "sha256": "3f523fe03e31f746dac96c9e9c7f920bc8b05acbc1708d3ca8676ea9a6b87df2",
+    "effects": "C:/Users/ferra/vcc2026-data/processed/effects_t22_2026-09-26/",
+    "effects_manifest_sha256": "469ef31fcbe6f3e360b810a3599510a03a068a1bb5356243cf1ab37176909068",
+    "effects_sha256": {
+      "A": "7d6a3b15ec02478ed5c8f38a1e35d7f7e1ece2cf19eee83a06bb377079bac282",
+      "B": "7d6a3b15ec02478ed5c8f38a1e35d7f7e1ece2cf19eee83a06bb377079bac282",
+      "C": "7d6a3b15ec02478ed5c8f38a1e35d7f7e1ece2cf19eee83a06bb377079bac282"
+    }
+  },
+  "one_factor": "against t22 only the generator seed changes (stage 45 --seed 20260927); nothing about the model changes",
+  "generation": {
+    "stage": "scripts/45_generate_prediction.py",
+    "trial": "trial-ext-profile",
+    "seed": 20260927,
+    "run_id": "t24gen",
+    "package_run_id": "t24pack"
+  },
+  "references": {
+    "t22": 0.14125049908559736,
+    "t20": 0.13967554777071428
+  },
+  "why": "Every rule registered since t17 reads a difference against +/-0.005, and every reading so far has noted that the difference carries generator noise of unknown size: t17 - t15 = +0.0012, t20 - t16 = +0.0020 and t22 - t20 = +0.0016, all inside the band. Stage 45 draws every cell from one random stream (Poisson counts at library sizes resampled from each context's controls), so a second seed of the same effects measures on the official scorer, member by member, how large a difference the generator alone makes.",
+  "expected": {
+    "t24_minus_t22_band": [
+      -0.004,
+      0.004
+    ],
+    "score_avg_band": [
+      0.137,
+      0.146
+    ],
+    "pds_raw": "t22 +/- 0.002 (400 cells per target average out most counting noise)",
+    "nmae_raw": "t22 +/- 0.006",
+    "reach_raw": "t22 +/- 0.004",
+    "fid_raw": "t22 +/- 0.004",
+    "jaccard_raw": "t22 +/- 0.002",
+    "mse": "scaled stays 0",
+    "note": "priors, not measurements: the DE members should move more than pds_cosine because they depend on which genes cross the Wilcoxon threshold"
+  },
+  "reading_rule_fixed_before_the_result": {
+    "measure": "D = |t24 - t22|, one draw of the difference two seeds make. A difference between two single-seed submissions has the same noise, and one draw of a half-normal has median 0.674 of its scale, so a 2-SD threshold is about 3 x D. One pair gives a crude estimate, and it is read as one",
+    "D <= 0.0017": "the +/-0.005 threshold of the registered rules is about 2 SD of generator noise or more: kept for the next rules",
+    "D > 0.0017": "the next rules use +/-max(0.005, 3 x D), rounded up to the next 0.001, or ask for a seed replicate of the candidate; rules already registered (t23) keep their thresholds, and their readings add whether the difference exceeds 3 x D",
+    "per member": "the member differences are recorded as the noise of each member, for the benches' calibration",
+    "reference_for_attribution": "t24 is not a new recipe: the t22 recipe's reference score becomes the mean of t22 and t24, and t24 enters the table of official scores as a replicate of t22"
+  }
+}
