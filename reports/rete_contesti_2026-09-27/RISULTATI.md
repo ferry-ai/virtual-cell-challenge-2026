@@ -114,3 +114,21 @@ La rete propone una direzione lontana da quella del t22 per scelte di disegno, p
 fra semi). La notte serve a capire se la rete funziona e a integrare altri dataset. Varianti esplorative su Colab
 (job 056: senza partner, peso sui bersagli forti, solo cancelli, apprendimento lento, sola ampiezza, disegno di
 default con valutazioni ogni 50 passi). Sono descrittive e non sono r1.
+
+**Quanto la rete di produzione usa il contesto (misurato sulle sue previsioni per A, B e C, 300 bersagli).**
+- La rete si allontana dalla sua versione cieca: coseno mediano fra 0,90 e 0,91; la differenza vale dal 42 al 45 %
+  della norma.
+- Le previsioni per i tre contesti di gara si allontanano fra loro: coseno fra 0,86 e 0,91; le differenze valgono dal
+  42 al 54 % della norma.
+- In 250 passi, quindi, la rete ha imparato a differenziare molto i contesti. La curva della famiglia tenuta fuori
+  non dice se queste differenze aiutano: ha il minimo alla prima valutazione e nessuna misura al passo 0. Lo diranno
+  la variante con valutazioni ogni 50 passi e l'E2 di r1.
+
+**Variante senza partner (job 056, misurato; `runs/rete_abl_r1/nopart` su Drive).** Perdita su `orion` tenuta fuori:
+
+| Passo | 50 | 100 | 250 | 500 | 1.100 |
+|---|---|---|---|---|---|
+| Perdita | 0,009385 | **0,009382** | 0,009418 | 0,009534 | 0,009666 |
+
+Senza partner il punto migliore è un poco più basso di quello del disegno di default (0,009415). Dal passo 100 in poi
+la perdita sulla famiglia nuova sale: anche qui ciò che la rete impara non si porta su una linea nuova.
