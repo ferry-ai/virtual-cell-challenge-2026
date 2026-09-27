@@ -1,0 +1,17 @@
+torch 2.10.0+cpu numpy 2.0.2 pandas 2.3.3
+PASS dataset round trip: 2926 rows x 320 genes, float16 arrays identical after reading back; manifest sizes match (5760043 bytes)
+PASS leakage canary: 604 invisible rows overwritten with noise: centres, gene set, family and partner profiles, priors, blind row, a training batch and test predictions identical (9/9 derived arrays, batch True, predictions True); 2/2 wrong-kind reads refused
+PASS transferred profile: 30 rows (held-out, and training rows of a two-context family and a one-context family): leave-own-family-out reliability-weighted mean matches a plain loop (max abs diff 7.09e-05)
+PASS planted c8: net beats transfer: skill net 0.706 vs transfer 0.604; paired gain +0.102 (+0.088..+0.116) over 264 targets (needs CI above 0 and >= 0.05)
+PASS planted c8: net beats blind: skill net 0.706 vs blind 0.650; paired gain +0.056 (+0.047..+0.066) over 264 targets (needs CI above 0 and >= 0.05)
+PASS planted c9: net beats transfer: skill net 0.771 vs transfer 0.520; paired gain +0.251 (+0.222..+0.282) over 264 targets (needs CI above 0 and >= 0.05)
+PASS planted c9: net beats blind: skill net 0.771 vs blind 0.445; paired gain +0.326 (+0.287..+0.370) over 264 targets (needs CI above 0 and >= 0.05)
+PASS planted E2: predicted difference between two held-out lines: mean correlation 0.6434964897209495 (CI [0.6288104574756621, 0.6582152782769446]), permutation q97.5 0.010455275983122677; blind and transfer predict no difference: True
+PASS blind and swap semantics: blind gives two lines of one family identical predictions; c8's rows with c9's controls equal c9's predictions; the true c8 and c9 predictions differ
+PASS determinism on CPU: two trainings from seed 3, one thread, give bit-identical predictions
+PASS null c8: net does not beat blind beyond noise: paired gain -0.0001 <= 0.0052 (2.5 bootstrap SD + 0.005); skill net 0.686, blind 0.686
+PASS null c8: net not worse than the transfer: skill net 0.686, transfer 0.685 (tolerance 0.05)
+PASS null c9: net does not beat blind beyond noise: paired gain +0.0000 <= 0.0053 (2.5 bootstrap SD + 0.005); skill net 0.681, blind 0.681
+PASS null c9: net not worse than the transfer: skill net 0.681, transfer 0.680 (tolerance 0.05)
+selftest: 14 passed, 0 failed
+selftest exit 0 after 139 s
