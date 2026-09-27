@@ -24,7 +24,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `prediction_t07_2026-09-19/`, `prediction_t08_2026-09-22/`, `prediction_t10_2026-09-23/`,
 `prediction_t11_2026-09-23/`, `prediction_t12_2026-09-23/`, `prediction_t14_2026-09-23/`,
 `prediction_t15_2026-09-23/`, `prediction_t16_2026-09-24/`, `prediction_t17_2026-09-24/`, `prediction_t18_2026-09-25/`,
-`prediction_t19_2026-09-25/`, `prediction_t20_2026-09-26/`, `prediction_t22_2026-09-26/`, `prediction_t23_2026-09-27/`, `prediction_t24_2026-09-27/`,
+`prediction_t19_2026-09-25/`, `prediction_t20_2026-09-26/`, `prediction_t22_2026-09-26/`, `prediction_t23_2026-09-27/`, `prediction_t24_2026-09-27/`, `prediction_t25_2026-09-27/`,
 `trial02_decision_2026-09-17/`, `anchors_2026-09-17/` (the official anchors),
 `scorer/`, `scorer_2026-09-12/` (the scorer contract), `leaderboard_2026-09-16/`.
 
@@ -35,6 +35,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `universo_2026-09-26/` (genome-wide caches for every target, not only the panel: K562, CD4, Orion HCT116 and HEK293T),
 `atlante_2026-09-26/` (transfer tested on thousands of held-out targets per line, with the universes as inputs),
 `quota_condivisa_2026-09-27/` (the atlas's closest arm, the per-gene shared share, tested on the panel),
+`pseudoconteggio_2026-09-27/` (the constant pseudocount's artefact in the pseudobulk sources, and the fix: origin of t25),
 `rete_2026-09-26/` (network smoothing of measured targets with STRING partners: small effect),
 `contesti_2026-09-26/` (H6 on Mixscale: basal similarity does not predict transfer; weighting by it loses),
 `trasferimento_appreso_2026-09-26/` (learned transfer per target-gene pair; the magnitude channel is not adopted after the isolated bench r5; agent reports),

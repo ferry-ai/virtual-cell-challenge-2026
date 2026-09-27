@@ -18,6 +18,13 @@ targets -- the only regime the official panel can be scored in.
 Outputs: one npz per source on the official axis under ``--cache`` (data root, D-001) and
 ``transfer.json`` / ``coverage.json`` in ``--report-dir``. Nothing is overwritten.
 
+``--pseudo-scale`` is passed to `effects_from_pseudobulk` for the CD4 and extra sources. The
+default, "constant", is how every cache up to r5 was built; "library" keeps the pseudocount in the
+smaller group and gives the larger the same fraction of its total, so a gene with no count in
+either group gets 0 instead of the ratio of the totals (reports/pseudoconteggio_2026-09-27/).
+``--min-expected`` instead drops, gene by gene, a donor whose controls predict fewer than that many
+counts in the target group, whatever the target's own count. K562 goes through `effects_from_bulk` either way.
+
     python scripts/98_multisource_effects.py --cd4-rows <stage-97 h5ad> \
         --cache <data_root>/processed/multisource_2026-09-22 --report-dir reports/multisource_2026-09-22
 """
@@ -84,6 +91,10 @@ def main() -> None:
     p.add_argument("--extra", action="append", default=[], metavar="NAME=PATH",
                    help="another pseudobulk h5ad with obs target/donor/condition/n_cells (e.g. stage 102's "
                         "Orion rows, where donor = GEM batch); all its rows form one source NAME")
+    p.add_argument("--pseudo-scale", choices=["constant", "library"], default="constant",
+                   help="pseudocounts of the pseudobulk sources (see the docstring)")
+    p.add_argument("--min-expected", type=float, default=0.0,
+                   help="drop a donor for a gene when its controls predict fewer counts than this in the target group (0: never)")
     args = p.parse_args()
     for path in (args.report_dir / "transfer.json", args.cache):
         if path.exists():
@@ -101,14 +112,16 @@ def main() -> None:
     cd4 = ad.read_h5ad(args.cd4_rows)
     obs = cd4.obs[["target", "donor", "condition", "n_cells"]].copy()
     for cond in sorted(obs["condition"].unique()):
-        src = effects_from_pseudobulk(cd4.X, obs, cd4.var_names, targets=panel, condition=cond)
+        src = effects_from_pseudobulk(cd4.X, obs, cd4.var_names, targets=panel, condition=cond,
+                                      pseudo_scale=args.pseudo_scale, min_expected=args.min_expected)
         tables[f"cd4_{cond}"] = AxisTable.from_source(f"cd4_{cond}", src, axis)
         log(f"  cd4 {cond}: {len(src.targets)} targets")
     donors = sorted(obs["donor"].unique())
     halves = {"cd4_halfA": donors[: len(donors) // 2], "cd4_halfB": donors[len(donors) // 2:]}
     for name, ds in halves.items():
         m = obs["donor"].isin(ds).to_numpy()
-        src = effects_from_pseudobulk(cd4.X[m], obs[m], cd4.var_names, targets=panel, condition="Stim48hr")
+        src = effects_from_pseudobulk(cd4.X[m], obs[m], cd4.var_names, targets=panel, condition="Stim48hr",
+                                      pseudo_scale=args.pseudo_scale, min_expected=args.min_expected)
         tables[name] = AxisTable.from_source(name, src, axis)
     del cd4
     # The three culture conditions as one CD4 source: reliability-weighted mean, gamma 0.
@@ -133,7 +146,8 @@ def main() -> None:
         log(f"reading extra source {name} from {path}")
         extra = ad.read_h5ad(path)
         eobs = extra.obs[["target", "donor", "condition", "n_cells"]].copy()
-        src = effects_from_pseudobulk(extra.X, eobs, extra.var_names, targets=panel, condition=None)
+        src = effects_from_pseudobulk(extra.X, eobs, extra.var_names, targets=panel, condition=None,
+                                      pseudo_scale=args.pseudo_scale, min_expected=args.min_expected)
         tables[name] = AxisTable.from_source(name, src, axis)
         log(f"  {name}: {len(src.targets)} targets")
         del extra
@@ -183,7 +197,8 @@ def main() -> None:
     (args.report_dir / "coverage.json").write_text(json.dumps(
         {"stage": "98_multisource_effects", "written_utc": stamp, "sources": coverage,
          "common_response_correlation": common_corr, "shared_signal": shared,
-         "cache": str(args.cache)}, indent=2, default=str),
+         "cache": str(args.cache), "pseudo_scale": args.pseudo_scale,
+         "min_expected": args.min_expected}, indent=2, default=str),
         encoding="utf-8")
     with open(args.report_dir / "transfer.json", "x", encoding="utf-8") as fh:
         json.dump({"stage": "98_multisource_effects", "written_utc": stamp,

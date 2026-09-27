@@ -91,18 +91,47 @@ def zshrink_mixture(name: str, parts: list["AxisTable"], targets, k: float, *,
 
 def effects_from_pseudobulk(X, obs: pd.DataFrame, genes, *, targets, condition: str | None = None,
                             phi: float = 0.2, min_control_frac: float = 1e-6,
-                            min_cells: float = 10.0, pseudo: float = 0.5) -> SourceEffects:
+                            min_cells: float = 10.0, pseudo: float = 0.5,
+                            pseudo_scale: str = "constant", min_expected: float = 0.0) -> SourceEffects:
     """Per-target ln fold changes from summed-count pseudobulk rows.
 
     ``obs`` needs ``target`` ('non-targeting' for controls), ``donor``, ``condition`` and
     ``n_cells``. Within ``condition`` (all conditions pooled when None), each donor's rows
     for a target are summed and compared with the same donor's control rows:
-    ``ln((S_t + pseudo) / L_t) - ln((S_c + pseudo) / L_c)``, with ``S`` a gene's summed counts
+    ``ln((S_t + p_t) / L_t) - ln((S_c + p_c) / L_c)``, with ``S`` a gene's summed counts
     and ``L`` the group's total. The variance is quasi-Poisson on those counts,
-    ``1/(S_t + pseudo) + 1/(S_c + pseudo) + phi/n_t + phi/n_c``. The donor fold changes are
+    ``1/(S_t + p_t) + 1/(S_c + p_c) + phi/n_t + phi/n_c``. The donor fold changes are
     averaged with weights equal to the target's cells in that donor. Donors with fewer than
     ``min_cells`` target cells are skipped. ``shrunk`` is `z_shrink` of the donor mean.
+
+    ``pseudo_scale`` sets the pseudocounts. "constant", the default and every cache built up to
+    27 September 2026, uses ``p_t = p_c = pseudo``: a gene with no count in either group then
+    gets ``ln(L_c / L_t)``, the ratio of the two totals, not 0. The controls' total is the
+    larger, so such a gene reads as induced, and more so the fewer the target's cells: the
+    Y-chromosome genes of the female CD4 donors did this for every panel knockdown, and so does
+    a gene whose expected count in the target group is well under ``pseudo``
+    (reports/pseudoconteggio_2026-09-27/). "library" keeps ``pseudo`` counts in the smaller
+    group and gives the larger the same fraction of its total, ``p = pseudo * L / min(L_t, L_c)``:
+    with the target the smaller, the fold change is ``ln((S_t + pseudo) / (E_t + pseudo))``, with
+    ``E_t`` the count the controls predict for the target group. The same as "constant" when the
+    totals are equal; exactly 0 for a gene with no count in either group; near 0 for a zero count
+    where the controls predict much less than ``pseudo``. A pseudocount at the geometric mean of
+    the two totals, tried first, read those zero counts as repression instead (the same report).
+    "library" also moves genes with a few expected counts, by ``ln(E_t / (E_t + pseudo))``.
+
+    ``min_expected`` > 0 leaves the pseudocounts alone and drops, gene by gene, a donor whose
+    controls predict fewer than ``min_expected`` counts in the target group (``E_t``), whatever
+    the target's own count: under about one expected count the constant pseudocount reads as
+    induction (+0.5 at ``E_t`` 0.5, unbounded as it goes to 0). The rule looks only at the
+    controls; one that also kept a donor because its target happened to show a count selected
+    on the outcome, and in Orion made more genes look induced, not fewer (the same report). The
+    donor mean is taken over the donors left, and a gene no donor informs is NaN, unmeasured,
+    never a zero. With 0, the default, nothing is dropped.
     """
+    if pseudo_scale not in ("constant", "library"):
+        raise ValueError(f"pseudo_scale must be 'constant' or 'library', got {pseudo_scale!r}")
+    if not min_expected >= 0:
+        raise ValueError(f"min_expected must be >= 0, got {min_expected!r}")
     X = sp.csr_matrix(X)            # keep the stored dtype; sums are taken in float64
     genes = np.asarray(genes).astype(str)
     obs = obs.reset_index(drop=True)
@@ -131,6 +160,7 @@ def effects_from_pseudobulk(X, obs: pd.DataFrame, genes, *, targets, condition: 
         eff_sum = np.zeros(genes.size)
         var_sum = np.zeros(genes.size)
         wsum = 0.0
+        wvec = np.zeros(genes.size) if min_expected > 0 else None   # per-gene weights when donors drop out
         used = []
         for d, (cs, cn) in ctrl.items():
             m = use & (target_col == t) & (donor_col == d)
@@ -140,16 +170,32 @@ def effects_from_pseudobulk(X, obs: pd.DataFrame, genes, *, targets, condition: 
             if n_t < min_cells:
                 continue
             st = colsum(m)
-            e = np.log((st + pseudo) / st.sum()) - np.log((cs + pseudo) / cs.sum())
-            v = 1.0 / (st + pseudo) + phi / n_t + 1.0 / (cs + pseudo) + phi / cn
-            eff_sum += n_t * e
-            var_sum += n_t**2 * v
+            if pseudo_scale == "library":
+                ref = min(st.sum(), cs.sum())
+                pt, pc = pseudo * (st.sum() / ref), pseudo * (cs.sum() / ref)
+            else:
+                pt = pc = pseudo
+            e = np.log((st + pt) / st.sum()) - np.log((cs + pc) / cs.sum())
+            v = 1.0 / (st + pt) + phi / n_t + 1.0 / (cs + pc) + phi / cn
+            if wvec is None:
+                eff_sum += n_t * e
+                var_sum += n_t**2 * v
+            else:
+                evidence = cs * (st.sum() / cs.sum()) >= min_expected     # E_t, from the controls only
+                eff_sum += np.where(evidence, n_t * e, 0.0)
+                var_sum += np.where(evidence, n_t**2 * v, 0.0)
+                wvec += np.where(evidence, n_t, 0.0)
             wsum += n_t
             used.append(d)
         if wsum <= 0:
             continue
-        eff = eff_sum / wsum
-        se = np.sqrt(var_sum) / wsum
+        if wvec is None:
+            eff = eff_sum / wsum
+            se = np.sqrt(var_sum) / wsum
+        else:
+            has = wvec > 0
+            eff = np.where(has, eff_sum / np.where(has, wvec, 1.0), np.nan)
+            se = np.where(has, np.sqrt(var_sum) / np.where(has, wvec, 1.0), np.nan)
         shr = np.where(usable, z_shrink(eff, se), 0.0)
         rows_s.append(shr.astype(np.float32))
         rows_r.append(np.where(usable, eff, 0.0).astype(np.float32))
@@ -160,6 +206,10 @@ def effects_from_pseudobulk(X, obs: pd.DataFrame, genes, *, targets, condition: 
     meta = {"condition": condition, "donors": donors, "phi": phi,
             "n_control_cells": int(sum(v[1] for v in ctrl.values())),
             "se_model": f"quasi-Poisson phi={phi}, donor-weighted"}
+    if pseudo_scale != "constant":            # the default's meta stays as every earlier cache has it
+        meta["pseudo_scale"] = pseudo_scale
+    if min_expected > 0:
+        meta["min_expected"] = min_expected
     if not kept:
         return SourceEffects(genes, [], np.zeros((0, genes.size), np.float32), np.zeros((0, genes.size), np.float32),
                              np.zeros((0, genes.size), np.float32), np.zeros(0, int), ctrl_frac, meta)

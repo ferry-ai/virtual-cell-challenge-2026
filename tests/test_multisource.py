@@ -3,6 +3,10 @@
 Each test pins a way a multi-source transfer could return plausible wrong numbers:
 
 * a donor's knockdown compared with another donor's controls (donor effects leak in);
+* a gene with no count in either group read as the ratio of the two totals (the constant
+  pseudocount), which made the CD4 Y-chromosome genes look induced by every knockdown;
+* a donor dropped for lack of evidence by a rule that looks at the target's own count, which
+  selects on the outcome;
 * an unmeasured (target, gene) pair counted as a vote for zero;
 * centring that subtracts one source's common response from another;
 * a sign-purity proxy that reads the truth's ranking instead of the prediction's;
@@ -58,6 +62,76 @@ class PseudobulkEffectTests(unittest.TestCase):
         self.assertAlmostEqual(float(src.raw[0, 7]), np.log(0.25), delta=0.15)
         others = np.delete(src.raw[0], 7)
         self.assertLess(float(np.median(np.abs(others))), 0.1)   # large donor shifts must cancel
+
+    @staticmethod
+    def _groups(counts):
+        """Rows (target, donor, gene-0 count, total) -> a two-gene pseudobulk; gene 1 takes the rest."""
+        X = np.array([[s, total - s] for _, _, s, total in counts], dtype=float)
+        obs = pd.DataFrame([(t, d, 50.0 if t != "non-targeting" else 500.0) for t, d, _, _ in counts],
+                           columns=["target", "donor", "n_cells"]).assign(condition="Rest")
+        return sp.csr_matrix(X), obs
+
+    def _raw(self, counts, scale="constant", **kw):
+        X, obs = self._groups(counts)
+        src = effects_from_pseudobulk(X, obs, ["g0", "g1"], targets=["T1"], condition="Rest", pseudo_scale=scale, **kw)
+        return float(src.raw[0, 0])
+
+    def test_a_donor_without_evidence_is_dropped_gene_by_gene(self):
+        counts = [("T1", "d1", 20, 20_000), ("non-targeting", "d1", 200, 200_000),
+                  ("T1", "d2", 0, 20_000), ("non-targeting", "d2", 0, 200_000)]
+        self.assertGreater(self._raw(counts), 1.0)
+        self.assertLess(abs(self._raw(counts, min_expected=1.0)), 0.05)     # d1 alone: no change
+        lone = [("T1", "d1", 0, 30_000), ("non-targeting", "d1", 20, 20_000_000)]   # 0.03 counts expected
+        self.assertTrue(np.isnan(self._raw(lone, min_expected=1.0)))         # unmeasured, not a zero
+
+    def test_dropping_looks_at_the_controls_not_at_the_target_count(self):
+        # 0.1 counts expected and 2 seen: keeping it because a count showed up selects on the
+        # outcome, and every such donor reads as induced. It must be dropped like a zero.
+        lucky = [("T1", "d1", 2, 30_000), ("non-targeting", "d1", 67, 20_000_000)]
+        self.assertGreater(self._raw(lucky), 2.0)
+        self.assertTrue(np.isnan(self._raw(lucky, min_expected=1.0)))
+
+    def test_dropping_changes_nothing_where_every_donor_has_evidence(self):
+        counts = [("T1", "d1", 7, 20_000), ("non-targeting", "d1", 300, 200_000),
+                  ("T1", "d2", 2, 25_000), ("non-targeting", "d2", 90, 180_000)]
+        X, obs = self._groups(counts)
+        a = effects_from_pseudobulk(X, obs, ["g0", "g1"], targets=["T1"], condition="Rest")
+        b = effects_from_pseudobulk(X, obs, ["g0", "g1"], targets=["T1"], condition="Rest", min_expected=1.0)
+        np.testing.assert_array_equal(a.raw, b.raw)
+        np.testing.assert_array_equal(a.se, b.se)
+        np.testing.assert_array_equal(a.shrunk, b.shrunk)
+
+    def test_a_gene_absent_in_one_donor_reads_as_induced_unless_the_pseudocount_is_scaled(self):
+        # d1 expresses gene 0 at the same fraction in both groups; d2 (a female donor for a Y gene)
+        # has no count in either. The controls' total is ten times the target's, as in the CD4 rows.
+        counts = [("T1", "d1", 20, 20_000), ("non-targeting", "d1", 200, 200_000),
+                  ("T1", "d2", 0, 20_000), ("non-targeting", "d2", 0, 200_000)]
+        self.assertGreater(self._raw(counts, "constant"), 1.0)            # (ln 10) / 2 from d2 alone
+        self.assertLess(abs(self._raw(counts, "library")), 0.05)
+
+    def test_a_zero_count_the_controls_barely_predict_reads_near_zero(self):
+        # An Orion-like pool: the controls' total is ~700 times the target's, and they predict
+        # 0.03 counts in the target group. A zero is then no evidence either way.
+        counts = [("T1", "d1", 0, 30_000), ("non-targeting", "d1", 20, 20_000_000)]
+        self.assertGreater(self._raw(counts, "constant"), 2.0)            # ln(16): read as induced
+        self.assertLess(abs(self._raw(counts, "library")), 0.1)            # a pseudocount at the geometric
+        #                                                                    mean of the totals gave -2.0
+
+    def test_a_scaled_pseudocount_reads_a_lost_gene_as_lost(self):
+        counts = [("T1", "d1", 0, 20_000), ("non-targeting", "d1", 1, 200_000)]
+        self.assertGreater(self._raw(counts, "constant"), 0.0)            # ln(3.3): no counts, yet induced
+        self.assertLess(self._raw(counts, "library"), 0.0)
+
+    def test_equal_totals_give_the_same_effects_in_both_modes(self):
+        counts = [("T1", "d1", 7, 50_000), ("non-targeting", "d1", 30, 50_000),
+                  ("T1", "d2", 0, 40_000), ("non-targeting", "d2", 3, 40_000)]
+        X, obs = self._groups(counts)
+        a = effects_from_pseudobulk(X, obs, ["g0", "g1"], targets=["T1"], condition="Rest")
+        b = effects_from_pseudobulk(X, obs, ["g0", "g1"], targets=["T1"], condition="Rest", pseudo_scale="library")
+        np.testing.assert_array_equal(a.raw, b.raw)
+        np.testing.assert_array_equal(a.se, b.se)
+        with self.assertRaises(ValueError):
+            effects_from_pseudobulk(X, obs, ["g0", "g1"], targets=["T1"], condition="Rest", pseudo_scale="cpm")
 
 
 class MixTests(unittest.TestCase):

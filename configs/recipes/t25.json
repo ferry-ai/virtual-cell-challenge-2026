@@ -1,0 +1,14 @@
+{
+  "name": "t25",
+  "effect": "shrunk",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "A": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "B": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "C": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}}
+  },
+  "cis": {"pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv", "max_distance_bp": 5000, "scale": 2.0},
+  "why": "t22's recipe unchanged, built on the stage-98 cache r9 (processed/multisource_2026-09-27_r9) instead of r5: one factor, how the pseudobulk estimator treats a donor with no evidence for a gene. With the constant pseudocount a gene with no count in either group read as ln(L_c / L_t), the ratio of the totals: in CD4 the six Y-chromosome genes of the female donors came out induced by 99-100% of the 293 panel knockdowns, the top genes of the source, and in t22 they carry 5.3-5.5% of the log1p-weighted energy on the genes expressed in A and C, tracking each target's cell count (Spearman -0.52); in HCT116, 315 genes near 1 CPM read as induced by over 90% of the knockdowns. r9 drops, gene by gene, a donor or Orion pool whose controls predict under one count in the target group, whatever the target's own count (effects_from_pseudobulk, min_expected 1): below that the constant pseudocount reads as induction. The donor mean is taken over the others, and a gene no donor informs is unmeasured, never a zero. Three other fixes were measured and are not used: a pseudocount at the geometric mean of the totals (r6) and one in the smaller group's units (r7) moved far more than the artefact, and a drop rule that also looked at the target's count (r8) selected on the outcome (reports/pseudoconteggio_2026-09-27/). K562, amplitude, shrinkage, gamma, weights and cis head as t22."
+}

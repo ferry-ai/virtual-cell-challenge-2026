@@ -1,0 +1,426 @@
+{
+ "script": "reports/pseudoconteggio_2026-09-27/compare_r5_r6.py",
+ "written_utc": "2026-09-27T11:21:51.997930+00:00",
+ "r5": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-23_r5",
+ "r6": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-27_r6",
+ "claim_type": "measurement on the stage-98 panel caches (ln fold changes); not VCC scores",
+ "sources": {
+  "k562": {
+   "targets": 272,
+   "identical": true,
+   "r5": {
+    "genes_induced_by_over_90pct": 0,
+    "genes_repressed_by_over_90pct": 0,
+    "first_induced": [],
+    "y_mean_abs_shrunk": {
+     "USP9Y": null,
+     "UTY": null,
+     "KDM5D": null,
+     "ZFY": null,
+     "DDX3Y": null,
+     "EIF1AY": null
+    },
+    "median_gene_mean_abs_shrunk": 0.0341856046937706
+   },
+   "r6": {
+    "genes_induced_by_over_90pct": 0,
+    "genes_repressed_by_over_90pct": 0,
+    "first_induced": [],
+    "y_mean_abs_shrunk": {
+     "USP9Y": null,
+     "UTY": null,
+     "KDM5D": null,
+     "ZFY": null,
+     "DDX3Y": null,
+     "EIF1AY": null
+    },
+    "median_gene_mean_abs_shrunk": 0.0341856046937706
+   }
+  },
+  "cd4_Rest": {
+   "targets": 293,
+   "identical": false,
+   "r5": {
+    "genes_induced_by_over_90pct": 16,
+    "genes_repressed_by_over_90pct": 2,
+    "first_induced": [
+     "KDM5D",
+     "DDX3Y",
+     "ZFY",
+     "ST6GALNAC1",
+     "DDTL",
+     "SFRP1",
+     "USP9Y",
+     "IL6",
+     "XKR3",
+     "UTY",
+     "NPIPB15",
+     "OCLN"
+    ],
+    "y_mean_abs_shrunk": {
+     "USP9Y": 1.8690976079143329,
+     "UTY": 1.7098583288255558,
+     "KDM5D": 1.689419373691916,
+     "ZFY": 1.7456871075066975,
+     "DDX3Y": 1.599417616900473,
+     "EIF1AY": 1.5839409365263288
+    },
+    "median_gene_mean_abs_shrunk": 0.03623022533608219
+   },
+   "r6": {
+    "genes_induced_by_over_90pct": 0,
+    "genes_repressed_by_over_90pct": 46,
+    "first_induced": [],
+    "y_mean_abs_shrunk": {
+     "USP9Y": 0.01473444836474597,
+     "UTY": 0.0161431303390895,
+     "KDM5D": 0.01338507193116006,
+     "ZFY": 0.013790814135046932,
+     "DDX3Y": 0.01840307540155842,
+     "EIF1AY": 0.011302377793259528
+    },
+    "median_gene_mean_abs_shrunk": 0.037423639905702986
+   },
+   "change": {
+    "per_target_corr_shrunk_median": 0.7825411460453499,
+    "per_target_corr_shrunk_q10": 0.6129649317456013,
+    "entries_changed_over_0.01": 0.3154797650881535,
+    "energy_ratio_r6_over_r5": 0.9695136343930281,
+    "mask_mismatches": 0
+   }
+  },
+  "cd4_Stim8hr": {
+   "targets": 292,
+   "identical": false,
+   "r5": {
+    "genes_induced_by_over_90pct": 14,
+    "genes_repressed_by_over_90pct": 5,
+    "first_induced": [
+     "KDM5D",
+     "CDH1",
+     "DDX3Y",
+     "ZFY",
+     "DDTL",
+     "SFRP1",
+     "USP9Y",
+     "NT5C1A",
+     "NBPF3",
+     "UTY",
+     "NPIPB15",
+     "EIF1AY"
+    ],
+    "y_mean_abs_shrunk": {
+     "USP9Y": 1.92603224635121,
+     "UTY": 1.7576226075793846,
+     "KDM5D": 1.6572743939595218,
+     "ZFY": 1.730006946962046,
+     "DDX3Y": 1.6527809619806642,
+     "EIF1AY": 1.5828831901788936
+    },
+    "median_gene_mean_abs_shrunk": 0.03244128859513057
+   },
+   "r6": {
+    "genes_induced_by_over_90pct": 0,
+    "genes_repressed_by_over_90pct": 29,
+    "first_induced": [],
+    "y_mean_abs_shrunk": {
+     "USP9Y": 0.014853523860924523,
+     "UTY": 0.01123387289979252,
+     "KDM5D": 0.014862851522526291,
+     "ZFY": 0.013221531564666534,
+     "DDX3Y": 0.010610313361677719,
+     "EIF1AY": 0.012050853736229614
+    },
+    "median_gene_mean_abs_shrunk": 0.03353701628532093
+   },
+   "change": {
+    "per_target_corr_shrunk_median": 0.827862460331471,
+    "per_target_corr_shrunk_q10": 0.6678336290103407,
+    "entries_changed_over_0.01": 0.2726027397260274,
+    "energy_ratio_r6_over_r5": 1.0082959266191505,
+    "mask_mismatches": 0
+   }
+  },
+  "cd4_Stim48hr": {
+   "targets": 292,
+   "identical": false,
+   "r5": {
+    "genes_induced_by_over_90pct": 7,
+    "genes_repressed_by_over_90pct": 2,
+    "first_induced": [
+     "KDM5D",
+     "ZFY",
+     "DDTL",
+     "SFRP1",
+     "MDGA1",
+     "USP9Y",
+     "UTY"
+    ],
+    "y_mean_abs_shrunk": {
+     "USP9Y": 0.7294970454953851,
+     "UTY": 0.4831547855115394,
+     "KDM5D": 0.3804036752273441,
+     "ZFY": 0.5089601638986326,
+     "DDX3Y": 0.0869626147113058,
+     "EIF1AY": 0.059731370138705824
+    },
+    "median_gene_mean_abs_shrunk": 0.032826018942480384
+   },
+   "r6": {
+    "genes_induced_by_over_90pct": 0,
+    "genes_repressed_by_over_90pct": 30,
+    "first_induced": [],
+    "y_mean_abs_shrunk": {
+     "USP9Y": 0.035329580272532315,
+     "UTY": 0.07080116239074695,
+     "KDM5D": 0.07154392234259688,
+     "ZFY": 0.0668346216445689,
+     "DDX3Y": 0.10299649365198338,
+     "EIF1AY": 0.09065517531787806
+    },
+    "median_gene_mean_abs_shrunk": 0.034109227315942924
+   },
+   "change": {
+    "per_target_corr_shrunk_median": 0.9130244934491212,
+    "per_target_corr_shrunk_q10": 0.7691698847103101,
+    "entries_changed_over_0.01": 0.2800591170581318,
+    "energy_ratio_r6_over_r5": 1.1178293030194417,
+    "mask_mismatches": 0
+   }
+  },
+  "cd4_halfA": {
+   "targets": 287,
+   "identical": false,
+   "r5": {
+    "genes_induced_by_over_90pct": 7,
+    "genes_repressed_by_over_90pct": 2,
+    "first_induced": [
+     "KDM5D",
+     "ZFY",
+     "MDGA1",
+     "USP9Y",
+     "TMSB4Y",
+     "UTY",
+     "ZFP57"
+    ],
+    "y_mean_abs_shrunk": {
+     "USP9Y": 0.3416233488322507,
+     "UTY": 0.22128238508794817,
+     "KDM5D": 0.1863198130549014,
+     "ZFY": 0.3474256754326402,
+     "DDX3Y": 0.06048999642338602,
+     "EIF1AY": 0.062015204419756255
+    },
+    "median_gene_mean_abs_shrunk": 0.0347492466621418
+   },
+   "r6": {
+    "genes_induced_by_over_90pct": 0,
+    "genes_repressed_by_over_90pct": 4,
+    "first_induced": [],
+    "y_mean_abs_shrunk": {
+     "USP9Y": 0.0484028082956647,
+     "UTY": 0.07198479312527215,
+     "KDM5D": 0.08095313280807688,
+     "ZFY": 0.06373434061463153,
+     "DDX3Y": 0.07494678148146335,
+     "EIF1AY": 0.06821733850131415
+    },
+    "median_gene_mean_abs_shrunk": 0.03568075868216108
+   },
+   "change": {
+    "per_target_corr_shrunk_median": 0.9553324387147003,
+    "per_target_corr_shrunk_q10": 0.8862137313678218,
+    "entries_changed_over_0.01": 0.2436008238736346,
+    "energy_ratio_r6_over_r5": 1.067845507387579,
+    "mask_mismatches": 0
+   }
+  },
+  "cd4_halfB": {
+   "targets": 287,
+   "identical": false,
+   "r5": {
+    "genes_induced_by_over_90pct": 1,
+    "genes_repressed_by_over_90pct": 1,
+    "first_induced": [
+     "LIPH"
+    ],
+    "y_mean_abs_shrunk": {
+     "USP9Y": null,
+     "UTY": null,
+     "KDM5D": null,
+     "ZFY": null,
+     "DDX3Y": null,
+     "EIF1AY": 0.1117762697011621
+    },
+    "median_gene_mean_abs_shrunk": 0.04778557573438655
+   },
+   "r6": {
+    "genes_induced_by_over_90pct": 0,
+    "genes_repressed_by_over_90pct": 8,
+    "first_induced": [],
+    "y_mean_abs_shrunk": {
+     "USP9Y": null,
+     "UTY": null,
+     "KDM5D": null,
+     "ZFY": null,
+     "DDX3Y": null,
+     "EIF1AY": 0.14294625000161507
+    },
+    "median_gene_mean_abs_shrunk": 0.04899154925597931
+   },
+   "change": {
+    "per_target_corr_shrunk_median": 0.9506171470504146,
+    "per_target_corr_shrunk_q10": 0.839586525380069,
+    "entries_changed_over_0.01": 0.3039449102415753,
+    "energy_ratio_r6_over_r5": 1.0006205531749954,
+    "mask_mismatches": 0
+   }
+  },
+  "cd4_mix": {
+   "targets": 293,
+   "identical": false,
+   "r5": {
+    "genes_induced_by_over_90pct": 17,
+    "genes_repressed_by_over_90pct": 10,
+    "first_induced": [
+     "KDM5D",
+     "CDH1",
+     "DDX3Y",
+     "ZFY",
+     "ST6GALNAC1",
+     "DDTL",
+     "SFRP1",
+     "USP9Y",
+     "NT5C1A",
+     "NBPF3",
+     "XKR3",
+     "UTY"
+    ],
+    "y_mean_abs_shrunk": {
+     "USP9Y": 1.5050027465555855,
+     "UTY": 1.313338921427625,
+     "KDM5D": 1.2419677761116354,
+     "ZFY": 1.3269047397745093,
+     "DDX3Y": 1.107672705394518,
+     "EIF1AY": 1.0621013131037151
+    },
+    "median_gene_mean_abs_shrunk": 0.02904007061610446
+   },
+   "r6": {
+    "genes_induced_by_over_90pct": 0,
+    "genes_repressed_by_over_90pct": 221,
+    "first_induced": [],
+    "y_mean_abs_shrunk": {
+     "USP9Y": 0.01835359031400239,
+     "UTY": 0.030342195346126942,
+     "KDM5D": 0.030782918750330877,
+     "ZFY": 0.025691379324370378,
+     "DDX3Y": 0.0412676204594756,
+     "EIF1AY": 0.03509433500600046
+    },
+    "median_gene_mean_abs_shrunk": 0.030423717928826137
+   },
+   "change": {
+    "per_target_corr_shrunk_median": 0.8024084630385003,
+    "per_target_corr_shrunk_q10": 0.5723635742504926,
+    "entries_changed_over_0.01": 0.35029145753912394,
+    "energy_ratio_r6_over_r5": 1.071661667328178,
+    "mask_mismatches": 0
+   }
+  },
+  "orion_hct116": {
+   "targets": 268,
+   "identical": false,
+   "r5": {
+    "genes_induced_by_over_90pct": 315,
+    "genes_repressed_by_over_90pct": 0,
+    "first_induced": [
+     "SARM1",
+     "SOX8",
+     "CCL26",
+     "UPP2",
+     "CELSR3",
+     "ETV7",
+     "FUZ",
+     "CD22",
+     "IL20RA",
+     "COL9A2",
+     "PPP1R3F",
+     "TRAF1"
+    ],
+    "y_mean_abs_shrunk": {
+     "USP9Y": null,
+     "UTY": null,
+     "KDM5D": null,
+     "ZFY": null,
+     "DDX3Y": null,
+     "EIF1AY": null
+    },
+    "median_gene_mean_abs_shrunk": 0.03973971801312418
+   },
+   "r6": {
+    "genes_induced_by_over_90pct": 0,
+    "genes_repressed_by_over_90pct": 993,
+    "first_induced": [],
+    "y_mean_abs_shrunk": {
+     "USP9Y": null,
+     "UTY": null,
+     "KDM5D": null,
+     "ZFY": null,
+     "DDX3Y": null,
+     "EIF1AY": null
+    },
+    "median_gene_mean_abs_shrunk": 0.04844804741600313
+   },
+   "change": {
+    "per_target_corr_shrunk_median": 0.426585156621477,
+    "per_target_corr_shrunk_q10": 0.28983624843898603,
+    "entries_changed_over_0.01": 0.5964161472537288,
+    "energy_ratio_r6_over_r5": 1.7473077184232277,
+    "mask_mismatches": 0
+   }
+  },
+  "orion_hek293t": {
+   "targets": 281,
+   "identical": false,
+   "r5": {
+    "genes_induced_by_over_90pct": 2,
+    "genes_repressed_by_over_90pct": 0,
+    "first_induced": [
+     "RPGRIP1",
+     "KCNJ13"
+    ],
+    "y_mean_abs_shrunk": {
+     "USP9Y": null,
+     "UTY": null,
+     "KDM5D": null,
+     "ZFY": null,
+     "DDX3Y": null,
+     "EIF1AY": null
+    },
+    "median_gene_mean_abs_shrunk": 0.03277727842097194
+   },
+   "r6": {
+    "genes_induced_by_over_90pct": 0,
+    "genes_repressed_by_over_90pct": 823,
+    "first_induced": [],
+    "y_mean_abs_shrunk": {
+     "USP9Y": null,
+     "UTY": null,
+     "KDM5D": null,
+     "ZFY": null,
+     "DDX3Y": null,
+     "EIF1AY": null
+    },
+    "median_gene_mean_abs_shrunk": 0.039050201419209535
+   },
+   "change": {
+    "per_target_corr_shrunk_median": 0.5447382477016292,
+    "per_target_corr_shrunk_q10": 0.3920782320646467,
+    "entries_changed_over_0.01": 0.49450199212289675,
+    "energy_ratio_r6_over_r5": 1.9840769710817148,
+    "mask_mismatches": 0
+   }
+  }
+ }
+}

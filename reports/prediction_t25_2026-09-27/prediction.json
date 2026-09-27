@@ -1,0 +1,165 @@
+{
+  "written_utc": "2026-09-27T11:41:47.441907+00:00",
+  "label": "t25 = t22 built on the stage-98 cache r9: in the CD4 and Orion sources a donor or pool whose controls predict under one count of a gene in the target group is dropped for that gene (min_expected 1), which removes the constant-pseudocount artefact; trial-01 generator",
+  "claim_type": "prediction registered before generation and submission; not a measurement",
+  "recipe": {
+    "path": "configs/recipes/t25.json",
+    "sha256": "c74df9a994c3accc1d7bbe53ab16b0739168737cadc21bb6fff92a18499ef50a",
+    "cache": "C:/Users/ferra/vcc2026-data/processed/multisource_2026-09-27_r9 (stage 98, --min-expected 1.0)",
+    "effects_manifest_sha256": "24b97097e5b0c0eff895f4771e12e9799dd36975112d8e49044c86e90ed29b69",
+    "effects_sha256": {
+      "A": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a",
+      "B": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a",
+      "C": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a"
+    }
+  },
+  "one_factor": "against t22 only the stage-98 cache changes, r5 -> r9 (the estimator's min_expected); the recipe is t22's apart from its name and why; K562 is byte-identical in the two caches",
+  "references": {
+    "t22": 0.14125049908559736,
+    "t20": 0.13967554777071428,
+    "t23": "packaged, not submitted when this was written",
+    "t24": "packaged, not submitted when this was written"
+  },
+  "evidence_used": {
+    "artefact": "measured on r5 and t22 (reports/pseudoconteggio_2026-09-27/RISULTATI.md): the constant pseudocount reads a gene absent from both groups as ln(L_c / L_t); the six Y-chromosome genes of CD4's female donors were induced by 99-100% of the 293 panel knockdowns, the top genes of the source, and carried 5.3% (A) and 5.5% (C) of t22's log1p-weighted energy on expressed genes, tracking the target's cell count (Spearman -0.52); HCT116 had 315 genes near 1 CPM induced by over 90% of the knockdowns",
+    "r9_against_r5": {
+      "k562": {
+        "induced_over_90pct": [
+          0,
+          0
+        ],
+        "repressed_over_90pct": [
+          0,
+          0
+        ]
+      },
+      "cd4_mix": {
+        "per_target_corr_shrunk_median": 0.8805558072764993,
+        "per_target_corr_shrunk_q10": 0.7569288557926223,
+        "entries_changed_over_0.01": 0.08065839863057823,
+        "energy_ratio_r9_over_r5": 0.9495280943852817,
+        "mask_mismatches": 20291,
+        "newly_unmeasured": 20291,
+        "entries_identical": 0.8636341758107493,
+        "induced_over_90pct": [
+          17,
+          0
+        ],
+        "repressed_over_90pct": [
+          10,
+          14
+        ]
+      },
+      "orion_hct116": {
+        "per_target_corr_shrunk_median": 0.9135904627786642,
+        "per_target_corr_shrunk_q10": 0.8521169847093345,
+        "entries_changed_over_0.01": 0.03924873388711204,
+        "energy_ratio_r9_over_r5": 0.6751427351022092,
+        "mask_mismatches": 169277,
+        "newly_unmeasured": 169277,
+        "entries_identical": 0.9412036332837539,
+        "induced_over_90pct": [
+          315,
+          0
+        ],
+        "repressed_over_90pct": [
+          0,
+          0
+        ]
+      },
+      "orion_hek293t": {
+        "per_target_corr_shrunk_median": 0.9178799515467457,
+        "per_target_corr_shrunk_q10": 0.8241067857834026,
+        "entries_changed_over_0.01": 0.033171085793993214,
+        "energy_ratio_r9_over_r5": 0.8627190210957429,
+        "mask_mismatches": 90498,
+        "newly_unmeasured": 90498,
+        "entries_identical": 0.9497968803090433,
+        "induced_over_90pct": [
+          2,
+          0
+        ],
+        "repressed_over_90pct": [
+          0,
+          0
+        ]
+      }
+    },
+    "t25_effects_against_t22": {
+      "A": {
+        "weighted_energy_t25_over_t22": 0.9858235891282309,
+        "per_target_corr_on_expressed_median": 0.9015615261544689,
+        "per_target_corr_on_expressed_q10": 0.8010095545915403,
+        "y_share_of_weighted_energy_on_expressed": {
+          "t22": 0.05343550030625405,
+          "t25": 0.0008029667790784531
+        },
+        "genes_moved_median": {
+          "t22": 13958.0,
+          "t25": 13728.5
+        },
+        "observed_pairs": {
+          "t22": 4127492,
+          "t25": 4047746
+        }
+      },
+      "B": {
+        "weighted_energy_t25_over_t22": 1.0191982419794277,
+        "per_target_corr_on_expressed_median": 0.9227473215510819,
+        "per_target_corr_on_expressed_q10": 0.8131361422412814,
+        "y_share_of_weighted_energy_on_expressed": {
+          "t22": 0.0,
+          "t25": 0.0
+        },
+        "genes_moved_median": {
+          "t22": 13958.0,
+          "t25": 13728.5
+        },
+        "observed_pairs": {
+          "t22": 4127492,
+          "t25": 4047746
+        }
+      },
+      "C": {
+        "weighted_energy_t25_over_t22": 0.9648558181299796,
+        "per_target_corr_on_expressed_median": 0.8778679551723645,
+        "per_target_corr_on_expressed_q10": 0.7497957901888216,
+        "y_share_of_weighted_energy_on_expressed": {
+          "t22": 0.05523695754160916,
+          "t25": 0.0008442310028703074
+        },
+        "genes_moved_median": {
+          "t22": 13958.0,
+          "t25": 13728.5
+        },
+        "observed_pairs": {
+          "t22": 4127492,
+          "t25": 4047746
+        }
+      }
+    },
+    "not_used": "r6, r7 and r8 (other fixes, measured in the same report) moved more than the artefact or selected on the outcome",
+    "noise": "the generator uses one random stream: t25 - t22 carries generator noise of unknown size (t24 measures it if submitted)"
+  },
+  "expected": {
+    "score_avg_band": [
+      0.133,
+      0.152
+    ],
+    "t25_minus_t22_band": [
+      -0.006,
+      0.008
+    ],
+    "pds_raw": "t22 - 0.004..+0.008 (fake Y responses shared by targets of similar depth removed in A and C; per-target correlation with t22 on expressed genes 0.88-0.92, a real change of direction)",
+    "nmae_raw": "t22 +/- 0.008",
+    "reach_raw": "t22 - 0.008..+0.004",
+    "fid_raw": "t22 - 0.003..+0.006",
+    "jaccard_raw": "t22 - 0.002..+0.003",
+    "mse": "scaled stays 0"
+  },
+  "reading_rule_fixed_before_the_result": {
+    "t25 >= t22 + 0.005": "the fix enters the reference: every pseudobulk cache and universe (CD4, Orion) is rebuilt with min_expected 1 before the final set, and t23's share is re-estimated on them",
+    "t25 <= t22 - 0.005": "the artefact was helping the official score: the fix does not enter the submissions until the members that moved are understood (the Y genes first, in A and C)",
+    "otherwise": "inconclusive within resolution: the fix still enters the caches built from now on, as the correction of a measured estimator artefact, non-inferior within resolution (the reading the cis head got with t20); t22 stays the reference for attribution"
+  }
+}
