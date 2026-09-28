@@ -57,6 +57,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `encoder_contesto_2026-09-28/` (a context encoder pre-trained on basal profiles and plugged into the network; self-test and the registered rule of its first round),
 `corpus_basale_2026-09-28/` (basal profiles for the encoder: our CRISPRi controls, A/B/C, DepMap, Tahoe DMSO; a decision per source),
 `tahoe_dmso_2026-09-28/` (Tahoe-100M DMSO controls: the full extractor and the every-k-th-shard subset),
+`tahoe_bracci_2026-09-28/` (Tahoe-100M drug arms as many-context perturbations: extraction, effects, drug choice, the T1/T2 bench design),
 `ponte_flex_2026-09-28/` (the same K562 knockdowns read with Flex and with 3': exploratory),
 `banco_varianti_2026-09-25/` (leave-one-source-out bench of recipe variants: shrinkage, gamma, consensus, gating, generator noise),
 `ricerca_sorgenti_2026-09-25/` (agent search of 25 September: Mixscale provenance, microglia, Flex bridge, full catalogue of new sources),
