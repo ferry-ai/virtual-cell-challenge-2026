@@ -91,15 +91,24 @@ derivati dagli scalati con le ancore: il 25 settembre `vcc status` serviva solo 
   pubblico ([scheda R-V2](piani/modello-v2.md), «Domanda strategica aperta»).
 - I download non ancora autorizzati elencati nella scheda R-V2 (DepMap CRISPRGeneEffect, profili
   basali MIX-seq, De Simone 2025, H1 della gara 2025).
-- Il recupero dell'evidenza citata ma mai entrata nel repository (§5, punto 6).
+- Il recupero dell'evidenza citata ma mai entrata nel repository (§5, punto 6): lo fa la
+  sessione locale (azione 1 di R-REV); serve il proprietario per ciò che sta solo nella sessione di
+  un altro agente.
+- Il push in `main` della riorganizzazione e della revisione del 28/09, e le altre voci del §2 della
+  scheda [R-REV](piani/revisione-critica.md).
 
 ### Il prossimo passo
 
-**La coda operativa si mantiene in [PIANI.md](PIANI.md)** e nelle sue schede; prima di prendere
-un'attività verificare chi la sta seguendo. La [revisione critica del 28/09](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md)
-propone un ordine fino al set finale (§6 di quel documento): non spendere invii su
-differenze sotto il rumore, validare il proxy sui punteggi ufficiali già in mano, preparare la
-prova generale del 22 ottobre.
+**Scelto dal proprietario il 28/09 alle 12:30: la scheda [R-REV](piani/revisione-critica.md).**
+Raccoglie in ordine le azioni della [revisione critica del 28/09](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md),
+per una sessione sul portatile, con la radice dati:
+1. recuperare l'evidenza citata ma mai committata;
+2. tarare il proxy dei banchi sulle differenze ufficiali già misurate;
+3. la prova generale del 22 ottobre, senza invio.
+
+Il §0 della scheda dice come portare nel `main` del portatile il branch dove stanno revisione e
+riorganizzazione: è il primo passo. La coda completa resta in [PIANI.md](PIANI.md) e nelle sue
+schede; prima di prendere un'attività verificare chi la sta seguendo.
 
 **Ricerca, decisione del 24 settembre (D-044):** cercare dati e modelli che generalizzino a
 bersagli e contesti nuovi. **Non è richiesto avere geni perturbati in comune con i 300 attuali**

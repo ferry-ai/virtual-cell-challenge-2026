@@ -10,6 +10,7 @@ del lavoro scelto. Si applicano CLAUDE alla radice e [docs/CLAUDE.md](../CLAUDE.
 | [switch-distribuzioni.md](switch-distribuzioni.md) | R-SWITCH: soglie, intensità e quote di cellule rispondenti |
 | [invii-finale.md](invii-finale.md) | S-INVII: prove di validazione e preparazione del set finale |
 | [modello-v2.md](modello-v2.md) | R-V2: il modello per il set finale, costruito adesso |
+| [revisione-critica.md](revisione-critica.md) | R-REV: le azioni della revisione critica del 28/09, in ordine, per la sessione locale |
 
 ## Regole delle schede
 

@@ -3,6 +3,8 @@
 The working agreement for every agent in this repository is `CLAUDE.md`, and it applies
 to Codex in full: read it before anything else. Its table says what to read for each task.
 The project map is `docs/PROGETTO.md`; how the live pipeline is run is `docs/LAVORO.md`.
+Since the afternoon of 28 September the owner wants the next session to act on the critical review
+of that day: its actions, in order, are the plan card `docs/piani/revisione-critica.md` (R-REV).
 
 `configs/`, `src/vcc2026/`, `scripts/`, `reports/` and `docs/` each have a `CLAUDE.md` with the
 index and the rules of that folder. Read it before you edit a file there. The evidence is filed by

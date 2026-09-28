@@ -7,6 +7,10 @@
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.
 - **Origine:** richiesta del proprietario del 25/09 notte: le architetture di lungo periodo
   si applicano adesso, con molti agenti, due ingegneri a tempo pieno e calcolo in cloud.
+- **Dal 28/09, 12:40:** la scheda [R-REV](revisione-critica.md) raccoglie le azioni della revisione
+  critica, su richiesta del proprietario. La prova generale F8 è la sua azione 3 (la presa in carico si
+  annota anche nella riga F8 qui sotto); la misura decisiva della «Proposta per quando si riparte» è la
+  sua azione 6. Questa scheda resta in pausa finché il proprietario non la riprende.
 - **Rapporto con le altre schede:** esegue ciò che [R-MODELLI](trasferimento-modelli.md)
   proponeva; usa i dati di [R-DATI](dati-affidabilita.md); i punteggi ufficiali restano in
   [S-INVII](invii-finale.md).

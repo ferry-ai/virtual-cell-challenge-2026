@@ -21,7 +21,7 @@ README con una riga per cartella: **data, nocciolo, se vale ancora e quanto pesa
 | 6 | [Atlante](trasferimento/atlante_2026-09-26/RISULTATI.md) | Il trasferimento su migliaia di bersagli; linea e laboratorio pesano più dello stato cellulare |
 | 7 | [Modelli su molti contesti](modelli/README.md) | Rete, encoder, modello a cancelli e Tahoe: il contesto letto dai controlli non aiuta ancora; lo scambio vale quanto il contesto giusto |
 | 8 | [Ponte Flex–3'](sorgenti/ponte_flex_2026-09-28/RISULTATI.md) | La gara è in Flex, le sorgenti in 3': il divario non è solo rumore |
-| 9 | [Revisione critica del 28/09](analisi/revisione_criticita_2026-09-28/REVISIONE.md) | Criticità, bias, evidenze citate ma assenti, e la valutazione delle critiche di Alfredo |
+| 9 | [Revisione critica del 28/09](analisi/revisione_criticita_2026-09-28/REVISIONE.md) | Criticità, bias, evidenze citate ma assenti, e la valutazione delle critiche di Alfredo. Le azioni che ne seguono, in ordine, sono la scheda [R-REV](../docs/piani/revisione-critica.md) |
 
 ## Le categorie
 

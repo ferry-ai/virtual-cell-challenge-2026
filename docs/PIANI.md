@@ -29,6 +29,7 @@ L'aggiunta all'indice non avvia job, monitor o invii automatici.
 
 | ID | Priorità e motivo | Scheda | Prima di eseguire |
 |---|---|---|---|
+| R-REV | **Adesso**, su richiesta del proprietario del 28/09 (12:30): le azioni della revisione critica, in ordine; la prima è portare nel `main` del portatile il branch che le contiene | [Revisione critica](piani/revisione-critica.md) | §0 della scheda; via del proprietario per invii, download, calcolo in cloud e push |
 | S-INVII | Scadenze e lettura delle prove già preparate | [Invii e set finale](piani/invii-finale.md) | Verificare stato effettivo e coordinarsi con chi segue gli invii |
 | R-V2 | Adesso, su richiesta del proprietario: il modello per il set finale, filoni F1–F8 | [Modello v2](piani/modello-v2.md) | Via del proprietario per download, calcolo in cloud e invii |
 | R-DATI | Prima: rendere utilizzabili dati, controlli e repliche | [Dati e affidabilità](piani/dati-affidabilita.md) | Audit locale e dei metadati; stimare costo prima di acquisire |
@@ -38,7 +39,8 @@ L'aggiunta all'indice non avvia job, monitor o invii automatici.
 **Stato delle schede al 28 settembre.** R-V2 è la scheda viva (in pausa dalle 10:40 del 28/09 per
 scelta del proprietario); S-INVII, R-DATI, R-MODELLI e R-SWITCH hanno una nota datata che rimanda a
 dove il lavoro è proseguito. Le proposte della [revisione critica del 28/09](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md)
-(§6) non sono assegnate: si prendono solo dopo averle concordate con il proprietario.
+(§6) sono, dalle 12:30 del 28/09 e su richiesta del proprietario, la scheda
+[R-REV](piani/revisione-critica.md), in ordine di esecuzione: è la prima scheda da leggere.
 
 **Le dieci ipotesi della ricerca del 24 settembre:** H1 (programmi, nella forma lineare) e H6 (pesi
 per somiglianza basale fra linee) sono state provate il 26/09 e hanno perso; le altre restano aperte.

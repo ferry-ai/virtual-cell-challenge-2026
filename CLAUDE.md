@@ -2,6 +2,12 @@
 
 ## Start here
 
+**Handoff of 28 September, afternoon.** The owner asked that the next session act on the
+critical review of that day. Its actions, in order, are the plan card
+[`docs/piani/revisione-critica.md`](docs/piani/revisione-critica.md) (R-REV): read it right after
+PROGETTO §0. Its §0 says how to bring that work into the laptop's `main`, if it is not there yet.
+Remove this paragraph when R-REV closes.
+
 1. [`docs/PROGETTO.md`](docs/PROGETTO.md) §0 and §5 — where the project stands today, on one
    page: best score, what is in flight, what waits for the owner, the known weaknesses.
 2. [`docs/PIANI.md`](docs/PIANI.md) — open priorities, dependencies and the relevant plan

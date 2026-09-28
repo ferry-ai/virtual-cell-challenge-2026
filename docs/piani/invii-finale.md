@@ -40,11 +40,14 @@ PDS e reach salgono, `nmae` peggiora. La ricetta del t20 è il nuovo riferimento
   ([lezioni](../../reports/invii/lezioni_invii_2026-09-28/RISULTATI.md)).
 - **t23** è pronto; l'[ablazione](../../reports/trasferimento/ablazione_t23_2026-09-27/RISULTATI.md)
   dice che ne conta l'esclusione dei geni, non la pesatura.
-- **Proposte non assegnate** della [revisione critica](../../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md)
-  §6 che toccano questa scheda: non spendere invii su differenze sotto 0,005; tarare il proxy sulle
-  differenze ufficiali già misurate; prova generale del 22/10 (F8 di R-V2) con la scelta scritta su
-  γ e sulla cache; ampiezza di D/E/F da una regola calcolabile dai controlli, non copiata da A/B/C;
-  una ricetta di riserva senza Orion finché la licenza non è verificata.
+- **Le proposte** della [revisione critica](../../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md)
+  §6 sono, dalle 12:30 del 28/09 e su richiesta del proprietario, la scheda [R-REV](revisione-critica.md).
+  Toccano questa scheda:
+  - la regola per chi propone un invio (sotto 0,005 non si legge);
+  - la taratura del proxy sulle differenze ufficiali (azione 2);
+  - la prova generale del 22/10 con la scelta scritta su γ e sulla cache, e l'ampiezza di D/E/F da
+    una regola dei controlli (azioni 3 e 4);
+  - una ricetta di riserva senza Orion finché la licenza non è verificata (azione 7).
 
 ## Prossima azione
 
