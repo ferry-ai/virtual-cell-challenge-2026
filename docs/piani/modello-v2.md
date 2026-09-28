@@ -193,10 +193,10 @@ Direzione del proprietario: usare e analizzare quanti più dati possibile, per r
   significativi oltre il caso. I prossimi banchi e l'addestramento vanno ponderati sui bersagli con risposta
   reale, come ha fatto chi ha scelto il pannello.
 
-## Notte e mattina del 28 settembre: esiti e consegna a chi riprende
+## Notte e mattina del 28 settembre: esiti e stato al momento della pausa
 
-**Consegna scritta alle 10:40** per chi riprende, anche un agente in cloud che non vede questo portatile. Il
-proprietario chiude il PC e continua con un agente in cloud.
+Stato scritto alle 10:40, quando il proprietario ha messo in pausa questo filone. Le istruzioni agli altri agenti
+le dà il proprietario; la ripresa del filone è con lui, da qui.
 
 ### Misurato stanotte (dettagli nei report citati)
 
@@ -244,7 +244,7 @@ proprietario chiude il PC e continua con un agente in cloud.
     successivo.
 - **I dati farmacologici** (Tahoe) non devono prevalere nei dati di addestramento, almeno all'inizio.
 
-### Proposta per ripartire (da decidere con il proprietario)
+### Proposta per quando si riparte (da decidere con il proprietario)
 
 1. **Misura decisiva, con i dati che ci sono:** chi si muove con chi (la correlazione fra geni delle risposte, su
    molti bersagli) è conservato fra linee più dell'effetto del singolo bersaglio? Se sì, la rete relazionale ha una
