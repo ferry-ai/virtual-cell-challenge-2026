@@ -70,3 +70,33 @@ Lettura:
 - un braccio sta di solito su una sola piastra, quindi l'effetto di piastra non si separa da quello della linea;
 - le 48 linee sono tutte tumorali, di pochi tessuti;
 - i farmaci non sono knockdown: un esito positivo qui non è un esito sul CRISPRi.
+
+## Esito di T1 ridotto (misurato, Kaggle CPU, kernel `vcc-tahoe-t1`, 28/09 mattina)
+
+Estrazione finita:
+- 678 frammenti in 3.458 s;
+- 13.508 gruppi linea × piastra × farmaco × dose;
+- 10.325 bracci con effetti sull'asse ufficiale (18.150 geni).
+
+T1 su 48 linee, 218 farmaci × dose, 10.312 coppie (linea, braccio). Numeri stampati dallo script a fine corsa, in
+`t1_r1/summary_printed.json`:
+
+| Braccio | Skill |
+|---|---|
+| cieco (media di tutte le altre linee) | **0,194** |
+| vicini, k = 5 | 0,057 |
+| scambio, k = 5 | −0,003 |
+| vicini, k = 3 / scambio, k = 3 | −0,060 / −0,134 |
+| vicini, k = 10 / scambio, k = 10 | 0,143 / 0,100 |
+
+**Regola:** vicini − cieco −0,137 [−0,147; −0,128]; vicini − scambio +0,060 [+0,045; +0,075]. **Non passa**: fallisce
+la condizione 1.
+
+**Lettura (interpretazione).**
+- Lo stato basale porta informazione sulla risposta: i vicini giusti battono quelli di un'altra linea a ogni k
+  (+0,07 con k = 3, +0,06 con k = 5, +0,04 con k = 10).
+- Mediare poche linee costa più di quanto quell'informazione rende: la risposta di una singola linea (una piastra) è
+  rumorosa, e più linee si mediano meglio va (k = 3 < 5 < 10 < tutte).
+- Copiare il comportamento delle linee simili, quindi, perde anche con 48 contesti. Un modello deve usare tutte le
+  linee e imparare solo una correzione ristretta verso lo stato del contesto.
+- I sei limiti dichiarati prima restano validi.

@@ -1,7 +1,7 @@
 # R-V2 — il modello per il set finale, costruito adesso
 
 - **Stato:** in corso.
-- **Aggiornato:** 27 settembre 2026, 19:50 (ora italiana).
+- **Aggiornato:** 28 settembre 2026, 10:40 (ora italiana).
 - **Assegnazione:** regia e filoni F1, F2 e F4: Claude (app, sessione `f4f38e58`), dal
   26/09 alle 00:20. Filone F3: codex via agent hub, lancio annotato qui sotto. Gli altri
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.
@@ -192,6 +192,76 @@ Direzione del proprietario: usare e analizzare quanti più dati possibile, per r
   linea segue poco quella delle altre (A_fit 0,01–0,03), e molti bersagli non essenziali hanno pochi geni
   significativi oltre il caso. I prossimi banchi e l'addestramento vanno ponderati sui bersagli con risposta
   reale, come ha fatto chi ha scelto il pannello.
+
+## Notte e mattina del 28 settembre: esiti e consegna a chi riprende
+
+**Consegna scritta alle 10:40** per chi riprende, anche un agente in cloud che non vede questo portatile. Il
+proprietario chiude il PC e continua con un agente in cloud.
+
+### Misurato stanotte (dettagli nei report citati)
+
+- **Encoder di contesto, prima tornata** ([RISULTATI](../../reports/encoder_contesto_2026-09-28/RISULTATI.md)), seme 0,
+  regola registrata alle 03:10. Parte Orion:
+  - nessuna condizione passa;
+  - contro `none` guadagni di un millesimo di skill;
+  - con l'embedding di un'altra linea la rete va meglio che con quello giusto;
+  - E2 non passa.
+
+  La parte K562/CD4 è finita su Kaggle ma non è scaricata né letta.
+- **T1 ridotto sui farmaci di Tahoe** ([RISULTATI](../../reports/tahoe_bracci_2026-09-28/RISULTATI.md)), 48 linee:
+  - non passa;
+  - i vicini giusti battono quelli sbagliati (+0,06);
+  - ma copiarli perde contro la media di tutte le linee (−0,14).
+- **La rete su r1**, varianti descrittive ([r2/varianti_r1](../../reports/rete_contesti_r2_2026-09-28/RISULTATI.md)):
+  la perdita sulla famiglia tenuta fuori è minima entro i primi 100 passi in ogni variante che può imparare.
+- **Il ponte Flex–3'** ([RISULTATI](../../reports/ponte_flex_2026-09-28/RISULTATI.md)): VIPerturb-seq concorda con
+  sé stesso 0,110 (metà contro metà), col 3' 0,030 sugli stessi bersagli.
+- **Dati nuovi:**
+  - corpus basale ([SORGENTI](../../reports/corpus_basale_2026-09-28/SORGENTI.md): una decisione per sorgente);
+  - dataset della rete r2 con 12 contesti CRISPRi;
+  - effetti per 19 linee HIPSCI (`reports/universo_hipsci_2026-09-27/linee_p2/`): il gene silenziato scende in 15;
+    in fiaj_3, tolg_4, pipw_5 e oikd_2 poco o nulla.
+
+### In corso o sospeso
+
+- **r2** (la rete con più contesti, regola delle 04:00): due sessioni GPU su Kaggle partite alle 10:06, kernel
+  `vcc-r2-s0-shard0` e `vcc-r2-s0-shard1`. La lettura A (r2 contro r1) si fa con
+  `reports/rete_contesti_r2_2026-09-28/cross_compare.py`.
+- **Da scaricare e leggere:**
+  - la seconda sessione dell'encoder (`vcc-enc-s0-shard1`: K562 e CD4);
+  - il seme 1 di r1 (`vcc-rete-r1-s1`).
+- **Non lanciato:** il seme 2 di r1 (`vcc-rete-r1-s2`). Senza di lui la regola di r1 non si legge.
+- **L'estrazione completa dei DMSO di Tahoe** (`vcc-tahoe-dmso`) gira ancora su Kaggle.
+- **Dove stanno le cose.** Dati e uscite scaricate sono nella radice dati del portatile (`C:/Users/ferra/vcc2026-data`,
+  fuori dalla repo). Kernel e dataset privati sono sul conto Kaggle del proprietario: servono le sue credenziali, che
+  non vanno mai nella repo.
+
+### Direzione del proprietario (28/09 mattina)
+
+- **Usare tutti i dati**, anche quelli fermi, e non trasferire il comportamento. Una rete che impari **relazioni**:
+  - «spengo x, y si muove perché è legato a x»;
+  - geni che si muovono insieme in molti knockdown formano **gruppi di comportamento** che si ritrovano nel contesto
+    successivo.
+- **I dati farmacologici** (Tahoe) non devono prevalere nei dati di addestramento, almeno all'inizio.
+
+### Proposta per ripartire (da decidere con il proprietario)
+
+1. **Misura decisiva, con i dati che ci sono:** chi si muove con chi (la correlazione fra geni delle risposte, su
+   molti bersagli) è conservato fra linee più dell'effetto del singolo bersaglio? Se sì, la rete relazionale ha una
+   base; se no, non trasferirà nemmeno lei.
+2. **Disegno della rete relazionale:**
+   - carte dei geni imparate da tutti i knockdown;
+   - moduli;
+   - contesto come modulazione dei moduli;
+   - stesse prove (famiglie tenute fuori, cieco, scambio, E2);
+   - i farmaci con peso limitato.
+3. **Ingestione per contesti nuovi**, prima le perturbazioni genetiche:
+   - Mixscale (più linee con citochine);
+   - lo schermo Jurkat;
+   - neuroni iPSC;
+   - microglia.
+
+   Poi, con peso contenuto, Tahoe completo e LINCS L1000.
 
 ## Domanda strategica aperta
 

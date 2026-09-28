@@ -124,3 +124,34 @@ attribuire il merito, anche per `ours` contro `pca` e `ours+tahoe` contro `ours`
   - rete − scambio da +0,0005 a +0,0206;
   - sono i `metrics.json` di `vcc-rete-r1-s0` versione 2, lettura descrittiva, non la regola di r1.
 - L'embedding deve quindi aggiungere qualcosa a un contesto che la rete usa già.
+
+## Esito della prima tornata, parte Orion (misurato, 28/09; tabelle in `r1_shard0/`)
+
+La sessione GPU dei disegni Orion (e1_orion con verità HCT116, e2_orion) è finita. Quella dei disegni K562 e CD4 è
+finita anch'essa su Kaggle, ma alle 10:35 le sue tabelle non erano ancora scaricate.
+
+**Contrasti con `none` sulla verità HCT116 (skill, bootstrap sui 1.000 bersagli):**
+
+| Condizione | e1_orion | e2_orion |
+|---|---|---|
+| `pca` | +0,0012 [+0,0007; +0,0017] | +0,0007 [+0,0002; +0,0012] |
+| `ours` | +0,0003 [−0,0001; +0,0007] | +0,0001 [−0,0003; +0,0004] |
+| `ours+tahoe` | +0,0011 [+0,0007; +0,0015] | +0,0004 [+0,0001; +0,0008] |
+
+Nello stesso disegno E2, su HEK293T l'encoder peggiora: `ours` −0,0022, `pca` −0,0012, `ours+tahoe` −0,0007.
+
+**L'embedding giusto non è ciò che aiuta.** Punto 2 della regola, su HCT116:
+- rete − `emb_blind` è positivo per tutte le condizioni: con l'embedding la rete sta meglio che con l'embedding medio;
+- rete − `emb_swap` è **negativo** per tutte: `ours` −0,0018 [−0,0025; −0,0011], `ours+tahoe` −0,0007, `pca` −0,0003.
+  Con l'embedding di un'altra linea la rete sta meglio che con quello giusto.
+
+**E2 Orion:** nessuna condizione supera il 97,5° percentile delle permutazioni (`ours`: 0,0039 contro 0,0041).
+
+**Lettura per la regola.** Per la parte Orion nessuna condizione passa: il punto 2 fallisce ovunque e l'E2 non
+passa. I disegni K562 e CD4 non possono cambiare l'esito del punto 2 per Orion; la regola completa si legge con
+tutte e tre le verità E1.
+
+**Interpretazione.** I guadagni contro `none` sono di un millesimo di skill e vengono dalla forma dell'embedding,
+non dal contesto giusto. È lo stesso difetto del modello a cancelli di r1 e di CP-0013. Tahoe aggiunge un poco
+rispetto a `ours` su HCT116 (+0,0008 [+0,0005; +0,0011]), ma dentro un disegno in cui il contesto giusto non aiuta:
+non è un merito attribuibile a Tahoe.
