@@ -1,7 +1,7 @@
 # R-V2 — il modello per il set finale, costruito adesso
 
 - **Stato:** in corso.
-- **Aggiornato:** 28 settembre 2026, 10:40 (ora italiana).
+- **Aggiornato:** 28 settembre 2026, 19:25 (ora italiana).
 - **Assegnazione:** regia e filoni F1, F2 e F4: Claude (app, sessione `f4f38e58`), dal
   26/09 alle 00:20. Filone F3: codex via agent hub, lancio annotato qui sotto. Gli altri
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.
@@ -11,6 +11,14 @@
   critica, su richiesta del proprietario. La prova generale F8 è la sua azione 3 (la presa in carico si
   annota anche nella riga F8 qui sotto); la misura decisiva della «Proposta per quando si riparte» è la
   sua azione 6. Questa scheda resta in pausa finché il proprietario non la riprende.
+- **Ripresa il 28/09 alle 19:22** dal proprietario, in chat alla sessione Claude `f2abd9a6` (app desktop, sul
+  portatile), che continua il lavoro della sessione `f4f38e58` fermata dal limite di spesa: «vogliamo sfornare un
+  modello il prima possibile», con la scelta «entrambi in parallelo». Cioè:
+  - la misura decisiva (azione 6 di R-REV) su Kaggle, con la regola scritta prima;
+  - intanto disegno e codice della rete relazionale, pronta da addestrare se la misura dice sì;
+  - sul portatile, la prova generale del 22 ottobre (F8, azione 3 di R-REV) con la ricetta del t22.
+
+  Assegnazione di questi tre filoni: Claude, sessione `f2abd9a6`, dalle 19:22.
 - **Rapporto con le altre schede:** esegue ciò che [R-MODELLI](trasferimento-modelli.md)
   proponeva; usa i dati di [R-DATI](dati-affidabilita.md); i punteggi ufficiali restano in
   [S-INVII](invii-finale.md).
@@ -50,7 +58,7 @@ produrre un invio in poche ore.
 | F7 | Calcolo in cloud: ambiente, dati, esecuzione di F2 e degli addestramenti | Claude, con Colab (dispatcher su Drive) e Kaggle (notebook privati via API) | Colab e Kaggle autorizzati dal proprietario il 27/09; RunPod solo chiedendo | job 046, 048, 049 e 050 su Colab; sonda e somme di VIPerturb-seq su Kaggle |
 | F9 | Modello bersaglio × contesto a quattro parametri (precursore della rete): prove E1 ed E2 | Claude; `gated.py` di codex | r1 fatto il 27/09 sera con la regola delle 18:21: E1 non passa, E2 parziale (Orion sì, CD4 no, r ≈ 0,002); lo scambio di contesto vale quanto il contesto giusto | [report](../../reports/modelli/modello_contesto_2026-09-27/RISULTATI.md) |
 | F10 | La rete su molti contesti: encoder del bersaglio e del contesto, decoder sui geni, via diretta sul trasferimento | claude2 (disegno e codice, 27/09 dalle 20:42; sessione interrotta dal limite d'uso a lavoro finito, messaggio finale mancante); autoverifica e addestramento su Kaggle/Colab | disegno e codice scritti, nulla eseguito | [DISEGNO](../../reports/modelli/rete_contesti_2026-09-27/DISEGNO.md) |
-| F8 | Prova generale del 22 ottobre: 300 bersagli finti e contesti tenuti fuori, dall'input al .vcc | libero | dopo F1-F3 | tempo e copertura misurati |
+| F8 | Prova generale del 22 ottobre: 300 bersagli finti e contesti tenuti fuori, dall'input al .vcc | Claude, sessione `f2abd9a6`, dal 28/09 alle 19:22 (azione 3 di [R-REV](revisione-critica.md)) | in corso: piano e preregistrazione | tempo e copertura misurati |
 
 ## Esiti della notte del 26 settembre
 
@@ -266,6 +274,24 @@ le dà il proprietario; la ripresa del filone è con lui, da qui.
    - microglia.
 
    Poi, con peso contenuto, Tahoe completo e LINCS L1000.
+
+## Pomeriggio del 28 settembre: gli esiti in attesa, letti con le loro regole
+
+Claude, sessione `f4f38e58`, dopo l'unione del branch della revisione (scheda [R-REV](revisione-critica.md), §0).
+
+**Misurato:**
+- **Encoder, prima tornata:** nessuna condizione passa, su tre verità E1
+  ([RISULTATI](../../reports/modelli/encoder_contesto_2026-09-28/RISULTATI.md)).
+- **r2** ([RISULTATI](../../reports/modelli/rete_contesti_r2_2026-09-28/RISULTATI.md)):
+  - l'encoder su r2 crolla;
+  - la rete da sola ha ancora il minimo sulla famiglia tenuta fuori alla prima valutazione;
+  - lettura A su Orion, stessi bersagli: r2 − r1 +0,0018 [+0,0005; +0,0030] su HCT116 e −0,0072 [−0,0096; −0,0050]
+    su HEK293T (disegno E2). K562 e CD4 in corso.
+- **r1, i tre semi:** in tutti e tre i semi la rete batte la sua versione cieca su tutte e cinque le verità E1, nello
+  spazio degli effetti; l'E2 non passa in nessun seme. La lettura con la regola (proxy combinato sulle previsioni
+  mediate) è in corso.
+- **Tahoe:** T1 ridotto non passa ([RISULTATI](../../reports/modelli/tahoe_bracci_2026-09-28/RISULTATI.md));
+  l'estrazione completa dei DMSO è finita su Kaggle.
 
 ## Domanda strategica aperta
 

@@ -156,3 +156,20 @@ la malattia è annotata a livello di studio e può mescolare coorti.
 | Tahoe DMSO | resta come braccio d'ablazione: su HCT116 aggiunge poco, senza che il contesto giusto conti |
 | Tahoe, bracci farmacologici | fuori dall'encoder e senza peso dominante, per decisione del proprietario |
 | scBaseCount | esperimento esplicito, bloccato dall'accesso |
+
+## Aggiornamento del 28/09 pomeriggio (misurato)
+
+- **La prima tornata dell'encoder è completa** e non passa la regola per nessuna condizione
+  ([RISULTATI](../../modelli/encoder_contesto_2026-09-28/RISULTATI.md)):
+  - su CD4, per tutte le condizioni, l'intervallo contro `none` sta sotto −0,002 (`ours` −0,055);
+  - su HCT116 e K562 l'embedding di un'altra linea fa meglio di quello giusto.
+- **Con i contesti di r2 l'encoder crolla**, `ours` − `none` −0,66 su HCT116
+  ([r2](../../modelli/rete_contesti_r2_2026-09-28/RISULTATI.md)).
+- **Tahoe DMSO:** l'estrazione completa di Kaggle è finita (2.205.786 cellule DMSO in 1.850 frammenti su 3.388,
+  [RISULTATI](../tahoe_dmso_2026-09-28/RISULTATI.md)). Resta sul conto Kaggle; il corpus di stanotte usa il
+  sottoinsieme.
+
+**Decisione per sorgente, aggiornata.** Nessuna sorgente del corpus ha mostrato un contributo che passi dall'embedding
+giusto. Il corpus resta utile, ma questo encoder congelato, innestato così, non è la via. La decisione su come usare
+queste sorgenti (per esempio la rete relazionale della scheda R-V2, o l'azione 6 della scheda R-REV) è del
+proprietario.

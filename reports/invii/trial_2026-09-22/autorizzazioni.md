@@ -146,3 +146,18 @@ inviare t19 e t20: «direi solo t20». Via all'invio del **solo t20** con la quo
 La catena d'invio (`submit_chain3.py t20=trial_2026-09-26`, nella cartella di lavoro della
 sessione `f4f38e58`) è partita alle 22:58 UTC del 25 e aspetta l'apertura della quota; controlla
 lo sha256 dell'archivio (`e80e135a…a16b`) prima di caricarlo.
+
+## Spazio liberato il 28 settembre, sera, per la prova generale
+
+Claude, sessione `f2abd9a6`, con il mandato del 23/09 («libera un bel po' di spazio tu») e del 25/09 («anche in modo
+più aggressivo»). Alle 19:53 C: aveva 2,7 GB liberi: il file di paging era cresciuto a 20,3 GB con la memoria sotto
+pressione. La prova generale del 22/10 (azione 3 di R-REV) a forma piena chiede circa 17 GB liberi. Il Cestino era
+vuoto (capienza 26.383 MB, NukeOnDelete 0). Spostati nel Cestino alle 19:54 con `SendToRecycleBin`, solo i file
+grandi; i manifest restano nelle cartelle:
+- `artifacts/t18gen/prediction.h5ad` (4.242.846.152 byte) e `artifacts/t18pack/prediction.vcc` (4.187.504.640);
+- `artifacts/t19gen/prediction.h5ad` (4.252.280.172) e `artifacts/t19pack/prediction.vcc` (4.196.935.680);
+- `artifacts/t20gen/prediction.h5ad` (4.254.151.727) e `artifacts/t20pack/prediction.vcc` (4.198.850.560).
+
+t18 e t19 non sono mai stati inviati e le loro ricette sono superate; il t20 è inviato e valutato. Si rigenerano con
+gli stadi 100, 45 e 48 dalle ricette `configs/recipes/t18.json`, `t19.json` e `t20.json`. Restano t22, t23 (aspetta il
+via), t24 e t25. Lo spazio torna libero quando il proprietario svuota il Cestino (25,3 GB).

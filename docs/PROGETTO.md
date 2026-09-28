@@ -227,9 +227,12 @@ Le incertezze aperte al 28 settembre. Fra parentesi il numero che avevano nel ve
 3. **Quanto rumore ha il punteggio ufficiale.** Una sola coppia di semi (t24 − t22 = 0,0016): da
    una sola osservazione, l'intervallo al 95 % per la deviazione standard della differenza va da
    circa 0,0007 a circa 0,05 (calcolo nella revisione critica, §3).
-4. **Se i proxy dei banchi predicano il punteggio ufficiale.** Δ = 0,36 ΔPDS − 0,27 ΔnMAE non è
-   mai stato confrontato con le differenze ufficiali già misurate, e non vede fedeltà, reach,
-   Jaccard e MSE.
+4. **Se i proxy dei banchi predicano il punteggio ufficiale.** Δ = 0,36 ΔPDS − 0,27 ΔnMAE non vede
+   fedeltà, reach, Jaccard e MSE. **Misurato il 28/09** ([CP-0041](checkpoints/0041-proxy-contro-ufficiale.md)):
+   sulle quattro differenze ufficiali sopra il rumore ne legge due con il segno giusto (una sorgente
+   in più, il primo raddoppio); non legge la via di CD4 né il secondo raddoppio. Per la regola
+   scritta prima, non si sceglie più un candidato sul solo proxy. Resta aperto se un proxy con più
+   membri farebbe meglio.
 5. **Se il contesto letto dai controlli sia utilizzabile** (nuovo). Ogni prova finora dice di no;
    con 4–13 contesti di poche famiglie, e laboratori e piattaforme confusi con le linee, non è
    ancora una risposta.

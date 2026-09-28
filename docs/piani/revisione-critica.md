@@ -1,11 +1,15 @@
 # R-REV — agire sulla revisione critica del 28 settembre
 
 - **Stato:** in corso.
-- **Aggiornato:** 28 settembre 2026, 12:40 (ora italiana), dalla sessione cloud che ha scritto la
-  revisione.
+- **Aggiornato:** 28 settembre 2026, 19:25 (ora italiana), dalla sessione Claude `f2abd9a6`. Scritta alle 12:40
+  dalla sessione cloud che ha fatto la revisione.
 - **Assegnazione:** Claude (app desktop, sessione `f4f38e58`, sul portatile con la radice dati), dal 28/09
   alle 12:42 (ora italiana), su richiesta del proprietario in chat: §0 e le azioni in ordine, una alla volta.
   File di lavoro: questa scheda, il registro (R-020), gli indici dei report; output nelle categorie di D-046.
+  Dal 28/09 alle 19:22 prosegue la sessione Claude `f2abd9a6` (app desktop, stesso portatile), perché la `f4f38e58` si
+  è fermata al limite di spesa. Il proprietario ha chiesto in chat di procedere **in parallelo**: azione 2 (in corso),
+  azione 3 sul portatile e azione 6 su Kaggle insieme, per arrivare prima a un modello (scheda [R-V2](modello-v2.md),
+  ripresa alla stessa ora).
 - **Mandato del proprietario**, in chat alla sessione cloud il 28/09 verso le 12:30: «ok ora devo passare
   ad un'altra sessione in locale, fai in modo che ci siano informazioni in repo in evidenza per farlo
   agire basandosi sulle tue analisi». Vale come via a lavorare su questa scheda. **Non** vale come via a
@@ -156,6 +160,12 @@ sorgente pubblica tenuta fuori) prevede il segno delle differenze ufficiali già
 [taratura_proxy_2026-09-28](../../reports/trasferimento/taratura_proxy_2026-09-28/RISULTATI.md), codice
 `taratura_proxy.py` nella stessa cartella.
 
+**Esito (28/09, 19:28, Claude, sessione `f2abd9a6`): non passa.** Sulla verità HEK293T il proxy legge con il segno
+giusto t11 − t08 e t15 − t11; non legge t10 − t08 (la stima punta dall'altra parte) né t16 − t15. Per la regola:
+nessun candidato si propone più al proprietario sul solo proxy, serve il banco dell'azione 4. Report
+([Esito](../../reports/trasferimento/taratura_proxy_2026-09-28/RISULTATI.md)) e
+[CP-0041](../checkpoints/0041-proxy-contro-ufficiale.md): l'azione 2 è chiusa.
+
 ### Azione 3 — la prova generale del 22 ottobre
 
 È il filone F8 della [scheda R-V2](modello-v2.md), libero: la presa in carico si annota anche lì.
@@ -175,6 +185,10 @@ sorgente pubblica tenuta fuori) prevede il segno delle differenze ufficiali già
   - quanti bersagli hanno effetti in almeno una sorgente;
   - ogni punto in cui la pipeline dipende ancora dal pannello di A/B/C.
 - **Chiusura:** il `.vcc` e l'elenco dei difetti trovati, ciascuno corretto con il suo test; checkpoint.
+
+**Presa in carico (28/09, 19:22, Claude, sessione `f2abd9a6`):** piano e preregistrazione in
+`reports/invii/prova_generale_2026-09-28/`, scritti prima di girare; gli stadi girano sul portatile dopo la lettura di
+r1, che occupa la CPU.
 
 ### Azione 4 — il banco con lo scorer vero sui bersagli del pannello
 
@@ -238,6 +252,9 @@ nuova.
   - metà contro metà come tetto.
 - **Prima di girare:** la regola, cioè quale valore dice «sì, c'è una base».
 - **Chiusura:** report. R-V2 è in pausa per scelta del proprietario: l'esito si porta a lui.
+
+**Presa in carico (28/09, 19:22, Claude, sessione `f2abd9a6`):** R-V2 è ripresa dal proprietario alla stessa ora.
+Protocollo e regola in `reports/modelli/covariazione_2026-09-28/`, scritti prima di girare; il calcolo va su Kaggle.
 
 ### Azione 7 — la stessa linea e la licenza di Orion
 
