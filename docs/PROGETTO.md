@@ -110,6 +110,11 @@ Il §0 della scheda dice come portare nel `main` del portatile il branch dove st
 riorganizzazione: è il primo passo. La coda completa resta in [PIANI.md](PIANI.md) e nelle sue
 schede; prima di prendere un'attività verificare chi la sta seguendo.
 
+**Ricerca esplorativa del 25 settembre:** [CP-0040](checkpoints/0040-biologia-contesti-donatori.md)
+registra pattern con segno e di contesto, limiti della confidenza fra donatori CD4
+e proposte architetturali. Misure riproducibili, nessun nuovo training o score;
+qualifica anche l'estensione del banco MSE al punteggio ufficiale (R-018).
+
 **Ricerca, decisione del 24 settembre (D-044):** cercare dati e modelli che generalizzino a
 bersagli e contesti nuovi. **Non è richiesto avere geni perturbati in comune con i 300 attuali**
 per considerare utile una sorgente. La prova principale dei nuovi predittori esclude dal training

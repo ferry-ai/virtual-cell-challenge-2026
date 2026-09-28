@@ -70,10 +70,14 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `docs/storico/README.md` | attuale | — | Indice di `docs/storico/` (D-046): per ogni documento spostato, data, nocciolo e che cosa vale ancora | — |
 | `docs/storico/PROGETTO_sezioni_3_4_2026-09-28.md` | storico | — | Il §3 (misure del 12–17/09) e il §4 (21 incertezze numerate) di PROGETTO com'erano fino al 28/09, spostati senza cambiare il testo salvo i percorsi. Lo stato di ciascuna incertezza al 28/09 è nel nuovo §4 di PROGETTO | — |
 | `docs/storico/README_2026-09-11_13.md` | storico | — | Le sezioni del README in inglese dell'11–13/09 (piano per fasi, revisioni, audit dei candidati), spostate il 28/09 senza cambiare il testo salvo i link. Contengono le sei affermazioni contestate della scheda R-001 | [R-001](#r-001--readmemd) |
+| `reports/analisi/audit_piani_dati_2026-09-26/` | attuale | — | Audit Codex: riconciliazione di piani e sorgenti, inventario locale e menzioni di accessioni, HIPSCI distinto da KOLF, revisione biologica e controesempio sintetico di contaminazione tramite centratura nel banco appreso r2/r3. Nessun training o score nuovo | — |
+| `reports/analisi/biologia_architetture_2026-09-25/` | attuale | — | Ricerca esplorativa CP-0040: riesecuzione con hash degli input, STAT2 su supporto appaiato, geometria con segno, MCF7/TNF, confidenza e riproducibilità CD4; architetture e dati candidati distinti dalle misure. Riconciliazione del proxy MSE con R-018. Nessun training, acquisizione o punteggio VCC | — |
+| `docs/checkpoints/0040-biologia-contesti-donatori.md` | attuale | — | Pattern di contesto e limiti della confidenza fra donatori; proposte di ricerca, non modelli promossi. Precisa l'inferenza da MSE proxy a score ufficiale senza modificare r10 | — |
 | `docs/PIANI.md` | attuale | — | Indice operativo introdotto il 24 settembre su richiesta del proprietario: piani aperti, dipendenze, coordinamento nella cartella condivisa e rimandi agli esiti passati. Non avvia lavori o automazioni | — |
 | `docs/piani/` | attuale | — | Schede operative modificabili e guida: R-DATI, R-MODELLI, R-SWITCH, S-INVII e, dal 26 settembre, R-V2 (il modello per il set finale, costruito adesso); dal 28 settembre R-REV (le azioni della revisione critica, in ordine). Nessuna chiusa all'introduzione; assegnazioni pregresse da verificare. Le priorità promettenti sono ipotesi, non risultati | — |
 | `reports/analisi/ipotesi_trasferimento_2026-09-24/` | attuale | — | Ipotesi e proposte su programmi, stato cellulare, switch genes, intensità, affidabilità e dati ponte; fonti primarie verificate e confronto STAT2 IFNB/IFNG dalle misure esistenti. Nessun modello addestrato, dataset adottato o protocollo congelato | — |
-| `reports/trasferimento/banco_varianti_2026-09-25/` | attuale | — | Banco a sorgente esclusa sulle varianti della ricetta del t15, con proxy di PDS e della fedeltà ricavati dalle note dello scorer. Le esecuzioni r2, r4, r5 e r6 hanno un difetto sull'SE di `cd4_mix`; `CORREZIONE.md`, r7 e r8 danno i numeri corretti: gli effetti ristretti alzano il PDS proxy di +0,01…+0,04 e, a parità di geni rilevabili, battono il t16 nel modello del generatore; γ e consenso non contano; il filtro dei bersagli difficili è respinto. Revisioni di claude2 e grok in `revisioni/`. `MSE.md` (r10): l'ampiezza ottima per l'errore quadratico è 0,02–0,16 e anche lì il guadagno sul nulla è sotto lo 0,11%, quindi la `mse` resta a zero per la precisione del modello, non per l'ampiezza. Proxy su sorgenti pubbliche, non punteggi VCC (CP-0039) | — |
+| `reports/trasferimento/banco_varianti_2026-09-25/` | attuale | — | Banco a sorgente esclusa sulle varianti della ricetta del t15, con proxy di PDS e della fedeltà ricavati dalle note dello scorer. Le esecuzioni r2, r4, r5 e r6 hanno un difetto sull'SE di `cd4_mix`; `CORREZIONE.md`, r7 e r8 danno i numeri corretti: gli effetti ristretti alzano il PDS proxy di +0,01…+0,04 e, a parità di geni rilevabili, battono il t16 nel modello del generatore; γ e consenso non contano; il filtro dei bersagli difficili è respinto. Revisioni di claude2 e grok in `revisioni/`. r10: ampiezza ottima oracolare sul proxy 0,02–0,16, guadagno sul nulla sotto lo 0,11%; l'estensione alla MSE ufficiale e alla sua causa esclusiva è non dimostrata, vedi R-018 e CP-0040. Proxy su sorgenti pubbliche, non punteggi VCC (CP-0039) | — |
+| `reports/trasferimento/banco_varianti_2026-09-25/MSE.md` | da-verificare | — | Conservare misure r10 e distinzione modello/calibrazione; qualificare estrapolazione allo score ufficiale, ottimo oracolare, norme dei vettori e confronti di ampiezza | [R-018](#r-018--mse-proxy-e-punteggio-ufficiale) |
 | `reports/trasferimento/banco_varianti_2026-09-25/RISULTATI.md` | da-verificare | — | Scritto prima delle revisioni: le colonne ristrette delle tabelle 2 e 4 e la proposta di k 64 vengono da un calcolo difettoso; il resto regge. Leggerlo con `CORREZIONE.md` | [R-017](#r-017--banco-del-25-settembre-effetti-ristretti-ricalcolati-senza-se) |
 | `reports/sorgenti/ricerca_sorgenti_2026-09-25/` | attuale | — | Ricerca multi-agente della notte del 25 settembre: provenienza dei log2FC Mixscale (per linea, dedotta dal codice), audit di microglia GSE335887 e dei dati K562 letti con Flex, catalogo completo delle nuove sorgenti (KOLF2.1J e GSE345058 verificati da Claude sulle API pubbliche). In `agenti/` i rapporti integrali; quello di antigravity contiene errori di metodo segnalati nel testo. Candidati, non adozioni | — |
 | `reports/sorgenti/pattern_mixscale_2026-09-24/` | attuale | — | Rianalisi esplorativa dei 1.626 confronti Mixscale: eterogeneità per bersaglio/stimolo, differenze appaiate dal controllo, bootstrap per bersaglio e sensibilità senza i dieci maggiori vantaggi. Riusa le misure CP-0035, non i conteggi grezzi; nessun test J o punteggio VCC | — |
@@ -139,8 +143,8 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/invii/prediction_t23_2026-09-27/` | attuale | — | Previsione del t23 (t22 con la quota condivisa per gene) registrata **prima** della generazione, il 26 settembre alle 23:14 UTC: banda +0,120…+0,165, t23 − t22 in −0,010…+0,015, regola di lettura a ±0,005 contro il t22 (contro il t20 se il t22 non ha punteggio) | — |
 | `reports/invii/prediction_t24_2026-09-27/` | attuale | — | Previsione del t24 (il t22 rigenerato con un altro seme del generatore, per misurare il rumore del generatore sul punteggio ufficiale) registrata **prima** della generazione, il 27 settembre alle 00:02 UTC: t24 − t22 in −0,004…+0,004; la regola fissa la soglia delle regole successive al massimo fra 0,005 e il triplo della differenza assoluta fra t24 e t22 | — |
 | `reports/invii/prediction_t25_2026-09-27/` | attuale | — | Previsione del t25 (il t22 sulla cache r9, un solo fattore: lo stimatore senza l'artefatto del pseudoconteggio) registrata **prima** della generazione, il 27 settembre alle 11:41 UTC: banda +0,133…+0,152, t25 − t22 in −0,006…+0,008, regola di lettura a ±0,005 | — |
-| `reports/trasferimento/contesti_2026-09-26/` | attuale | — | H6 su Mixscale (sei linee, stessi bersagli): la somiglianza basale DepMap fra linee non predice il trasferimento (Mantel +0,08, p 0,43) e pesare le sorgenti per somiglianza peggiora quattro linee su sei rispetto ai pesi uguali. Knockout e pannelli di vie. r2: pesare le sorgenti per stato di p53 letto dai controlli non aiuta in modo coerente (+0,068 su HEK293T, −0,057 su HCT116). Proxy, non punteggi VCC | — |
-| `reports/trasferimento/trasferimento_appreso_2026-09-26/` | attuale | — | Trasferimento appreso: gradient boosting per coppia bersaglio–gene con variabili biologiche (espressione nel contesto e nelle sorgenti, reattività del gene, cis, rete, forza del bersaglio). r1 **non affidabile** (perdite trovate dalla revisione di codex in `agenti/`); r2 corretto con fold di bersagli disgiunti: perde PDS proxy (−0,11…−0,14) ma ordina meglio i geni che si muovono (reach proxy +0,18 HCT116, +0,11 HEK293T); β per gene +0,040 su CD4. Rapporti degli agenti in `agenti/`. Proxy, non punteggi VCC r3/r4: due canali (direzione del t20, profilo di magnitudine del modello), +0,008…+0,010 di PDS attraverso il modello del generatore. **r5, banco isolato come chiede R-019** (famiglia di prova esclusa da etichette, ingressi e centri; centri entro fold; arresto anticipato su bersagli interi; test di invarianza): sulle linee nuove +0,004…+0,008 con due intervalli su tre attraverso lo zero, nMAE proxy peggiore di +0,017…+0,051; per la regola fissata prima, **niente t21**, stadio 104 sperimentale | [R-020](#r-020--evidenza-citata-ma-assente-dal-repository) |
+| `reports/trasferimento/contesti_2026-09-26/` | da-verificare | — | H6: numeri proxy conservati; somiglianza basale DepMap non predice il trasferimento in questa prova. Correzione: Mixscale è CRISPRi, non knockout; pannello degli interventi distinto dai geni di risposta. r2 p53 non aiuta coerentemente. Vedi audit del 26 settembre | [R-019](#r-019--audit-del-26-settembre) |
+| `reports/trasferimento/trasferimento_appreso_2026-09-26/` | da-verificare | — | Trasferimento appreso: r1 non affidabile; r2/r3 correggono diversi difetti ma lasciano centri calcolati prima degli split e non costituiscono test J. Risultati proxy esplorativi conservati, incluse perdite PDS del modello diretto e vantaggi del reweighting; impatto numerico del leakage non misurato r3/r4: due canali (direzione del t20, profilo di magnitudine del modello), +0,008…+0,010 di PDS attraverso il modello del generatore. **r5, banco isolato come chiede R-019** (famiglia di prova esclusa da etichette, ingressi e centri; centri entro fold; arresto anticipato su bersagli interi; test di invarianza): sulle linee nuove +0,004…+0,008 con due intervalli su tre attraverso lo zero, nMAE proxy peggiore di +0,017…+0,051; per la regola fissata prima, **niente t21**, stadio 104 sperimentale | [R-019](#r-019--audit-del-26-settembre) |
 | `reports/invii/prediction_t16_2026-09-24/` | attuale | — | Previsione del t16 (il t15 con ampiezza 0,788) registrata **prima** della generazione: banda +0,08…+0,14, regola di lettura contro il t15 (sale: si raddoppia ancora; scende: si prova il punto medio; altrimenti si tiene 0,394). `comparison.json`: esito **+0,137627**, rango 336, dentro la banda; per la regola la curva sale e il passo dopo è 1,576. Grezzi del t16 derivati dagli scalati con le ancore (errore ≤ 0,00076 sul t17), CP-0037 | — |
 | `reports/invii/prediction_t17_2026-09-24/` | da-verificare | — | Previsione del t17 (il t15 + Orion HEK293T a pesi uguali, ampiezza 0,4285 perché il q99 mediano dell'effetto assoluto resti quello del t15) registrata **prima** della generazione: banda +0,095…+0,125, regola di lettura contro il t15. Preregistrazione invariata; la lettura causale a parità di ampiezza richiede il limite misurato in CP-0034. `comparison.json`: esito +0,108774, rango 448, dentro la banda; per la regola non conclusivo, CP-0038 | [R-016](#r-016--lettura-causale-del-t17) |
 | `reports/invii/prediction_t15_2026-09-23/` | attuale | — | Previsione del t15 (il t11 con ampiezza 0,394 invece di 0,197, un solo fattore) registrata **prima** della generazione e dei punteggi di t12 e t14: banda +0,060…+0,095, regola di lettura contro il t11. Mette alla prova D-006 sul punteggio ufficiale: lo 0,197 minimizzava la MSE in pseudobulk, e lo scalato della `mse` è tosato a 0 in tutti gli invii. `comparison.json`: esito **+0,107533**, rango 436, **sopra** la banda (ogni membro dentro il suo intervallo); per la regola, D-006 si riapre (+0,0368 sul t11). Ancore riprodotte con scarto massimo 0,00095 (CP-0033) | — |
@@ -985,6 +989,55 @@ correzione `5eb130c` del 15 settembre, portata il 24.
 - **Cosa chiuderebbe la revisione:** nulla da rifare sul banco; la scheda resta per chi legge
   il report originale.
 
+### R-018 — MSE proxy e punteggio ufficiale
+
+- **Perché è segnalato:** `reports/trasferimento/banco_varianti_2026-09-25/MSE.md` passa da
+  misure nello spazio degli effetti a «mse resta a zero a qualunque ampiezza» e
+  attribuisce il limite alla precisione del modello. Il codice dichiara che non
+  calcola il punteggio VCC; anche la sintesi del registro ripeteva l'estrapolazione.
+- **Affermazioni contestate:** universalità della conclusione sulla MSE ufficiale;
+  causa esclusiva; crescita di a* con la sola correlazione; beneficio della
+  restrizione senza precisare il riferimento. Sono inferenze non dimostrate,
+  non numeri ufficiali smentiti da questa analisi.
+- **Evidenza contraria:** alla sufficienza dell'inferenza, non ai numeri r10:
+  `reports/analisi/biologia_architetture_2026-09-25/RISULTATI.md`,
+  §6, CP-0040 e lettura di `mse_tradeoff.py`: pesi dai controlli medi, nessuna
+  cellula generata, esclusione per famiglia di sorgenti, a* stimata sulla verità
+  valutata. a* dipende da coseno e rapporto delle norme. T19 migliora rispetto al
+  grezzo alla stessa ampiezza; rispetto a 0,788 migliora solo CD4 nel proxy r10.
+- **Cosa resta valido:** numeri r10 nel loro modello, tradeoff ampiezza/errore,
+  utilità di separare modello e calibrazione. Nessun output originale modificato.
+- **È ancora usato o citato:** sì, nella nuova ricerca e nella voce del banco.
+- **Disposizione proposta:** leggere MSE.md con questa nota; non usare il proxy
+  come dimostrazione del clipping ufficiale né a* come performance fuori campione
+  di una calibrazione appresa.
+- **Cosa chiuderebbe la revisione:** evidenza su metrica ufficiale comparabile e
+  calibrazione indipendente, oppure una nuova conclusione che ritiri esplicitamente
+  l'estrapolazione. Questa nota conserva la critica senza riscrivere il report.
+
+### R-019 — Audit del 26 settembre
+
+- **Perché è segnalato:** l'audit trova dipendenze residue dalle risposte escluse
+  e una descrizione errata della modalità di perturbazione.
+- **Materiale:** [audit piani e dati](../reports/analisi/audit_piani_dati_2026-09-26/RISULTATI.md),
+  §§4–5, script e output r1 con hash dei file esaminati durante il lavoro concorrente.
+- **Affermazioni contestate:** r2/r3 del trasferimento appreso completamente isolati;
+  assimilazione dello split del regressore a bersagli biologicamente nuovi;
+  descrizione Mixscale come knockout nel report H6.
+- **Evidenza contraria:** le medie delle sorgenti e delle etichette precedono la separazione;
+  un controesempio con il vero `mix` cambia la feature training alterando solo un
+  esito test. I prior K562 restano anche quando quella linea è esterna. GEO
+  GSE281048 documenta CRISPRi dCas9-KRAB-MeCP2.
+- **Cosa resta valido:** numeri come output degli esperimenti descritti, correzioni
+  parziali r2, segnali esplorativi r3/r4 e misure H6. Nessun impatto del leakage
+  sul punteggio è stato quantificato; nessun risultato originale modificato.
+- **È ancora usato o citato:** sì, guida lo sviluppo del trasferimento appreso e
+  la lettura delle prove di contesto nel piano R-V2.
+- **Disposizione proposta:** conservare i risultati e leggerli con questo audit;
+  non promuovere r2/r3 a prova indipendente C/T/J senza risolvere le dipendenze.
+- **Cosa chiuderebbe la revisione:** nuovo banco con trasformazioni entro fold e controlli di invarianza,
+  regime C/T/J o misto esplicito; correzione documentale della modalità Mixscale.
+
 ### R-020 — Evidenza citata ma assente dal repository
 
 - **Perché è segnalato:** file committati citano materiali che non sono mai entrati in nessun commit
@@ -1014,6 +1067,26 @@ correzione `5eb130c` del 15 settembre, portata il 24.
   dei piani e negli indici, dove il link all'audit è stato trovato.
 - **Cosa chiuderebbe la revisione:** i cinque materiali nel repository, oppure una nota del proprietario
   che dica che non esistono più, e le citazioni marcate come tali.
+- **Recupero del 28/09** (azione 1 della scheda [R-REV](piani/revisione-critica.md); Claude, sessione `f4f38e58`, alle
+  12:58 lette con `date`). Quattro materiali su cinque erano sul portatile e sono committati **come trovati**:
+  1. l'audit di codex: non tracciato in `reports/audit_piani_dati_2026-09-26/` (file del 26/09, 14:24–14:35),
+     ora in `reports/analisi/audit_piani_dati_2026-09-26/`;
+  2. R-018 e R-019: nelle modifiche non committate del registro, reinserite com'erano, con i percorsi dei report
+     aggiornati alle categorie;
+  3. CP-0040: in stage, con la sua riga dell'indice (checkpoint del 25/09);
+  4. `biologia_architetture_2026-09-25`: in stage, ora in `reports/analisi/`.
+- **La previsione del t21 non è stata trovata.** Dove si è cercato:
+  - `git log --all`;
+  - i worktree del portatile (repo, `vcc2026-refactor`, `wt8`, codex, agent hub);
+  - la radice dati, che ha solo gli effetti, `processed/effects_t21_2026-09-26/`;
+  - le trascrizioni delle sessioni.
+
+  Le trascrizioni mostrano che lo script che doveva scriverla (`write_t21_prediction.py`, nello scratchpad della
+  sessione `f4f38e58`, 26/09 14:27) è stato scritto ma non risulta eseguito. **Interpretazione:** la previsione
+  probabilmente non è mai stata scritta; il t21 è caduto per la regola del banco r5. Non si ricostruisce.
+
+  La scheda resta aperta per questa sola voce: la citazione in `reports/invii/trial_2026-09-26/submission_texts.md`
+  va marcata come previsione non scritta, oppure il proprietario ne dice la sorte.
 
 ## Revisione periodica e pulizia
 

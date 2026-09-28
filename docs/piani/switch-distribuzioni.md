@@ -45,3 +45,15 @@ Non promuovere un generatore perché riproduce soltanto la media.
 [Ricerca sugli switch e fonti primarie](../../reports/analisi/ipotesi_trasferimento_2026-09-24/IPOTESI.md), §§3–6.
 Le osservazioni di letteratura sono candidati da verificare qui, non risultati locali.
 **Nessun dataset acquisito né esperimento eseguito con questa scheda.**
+
+## Integrazione Codex del 25 settembre
+
+Sottoattività documentale completata da Codex, task
+`01a0d81b-3495-74d0-9537-eb5254b05002`, iniziata alle 21:32 UTC.
+[Proposte e fonti](../../reports/analisi/biologia_architetture_2026-09-25/PROPOSTE.md), §§3–5:
+Jost GSE132080 come candidato con guide attenuate per distinguere dose, quota
+di rispondenti e intensità; microglia e PerturbFate mantengono ruoli complementari.
+Geni disgiunti riducono circolarità diretta, ma non garantiscono indipendenza
+fra programmi correlati. Prossimo passo: audit file/guide/licenza e protocollo
+con guide escluse, senza usare efficacia post-perturbazione come input di test.
+Nessun download o modello adottato; il piano resta aperto.

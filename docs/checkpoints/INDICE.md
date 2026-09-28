@@ -23,10 +23,9 @@ aggiunge da sé la riga qui sotto.
   report sta in `reports/<categoria>/<cartella>/` con lo stesso nome: `ls -d reports/*/<cartella>`
   lo trova, e le analisi citate come `docs/<file>` stanno in `docs/storico/`. I checkpoint non si
   riscrivono per questo.
-- **CP-0040 è riservato.** `reports/trasferimento/trasferimento_gerarchico_2026-09-26/RISULTATI.md`
-  cita un `0040-biologia-contesti-donatori.md` scritto da un'altra sessione e mai committato
-  (registro, scheda R-020): quando arriva, prende quel numero. Lo script salta da sé i numeri
-  che un documento cita già, quindi il prossimo checkpoint nuovo sarà il 0041.
+- **CP-0040 è arrivato il 28/09.** Era scritto da un'altra sessione il 25/09 e mai committato
+  (registro, scheda R-020); è stato recuperato dal portatile e committato com'era, con il suo numero
+  (azione 1 della scheda [R-REV](../piani/revisione-critica.md)). Il prossimo checkpoint nuovo è il 0041.
 
 ## Elenco
 
@@ -71,3 +70,4 @@ aggiunge da sé la riga qui sotto.
 | [0037](0037-t16-ampiezza-quadrupla.md) | 2026-09-25 | Il t16 in classifica: +0,138, nuovo migliore; raddoppiare ancora l'ampiezza migliora soprattutto i membri DE | esperimento | — |
 | [0038](0038-t17-hek293t-non-attribuibile.md) | 2026-09-25 | Il t17 in classifica: +0,109, pari al t15; HEK293T a pesi uguali non è attribuibile | esperimento | — |
 | [0039](0039-banco-varianti-restrizione.md) | 2026-09-25 | Banco a sorgente esclusa: gli effetti ristretti aiutano il PDS proxy, ma meno di quanto scritto prima della revisione | osservazione | — |
+| [0040](0040-biologia-contesti-donatori.md) | 2026-09-25 | Programmi con segno, dipendenze di contesto e instabilita fra donatori: ricerca esplorativa | osservazione | — |

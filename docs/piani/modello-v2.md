@@ -74,7 +74,7 @@ produrre un invio in poche ore.
   boosting, addestrato solo su sorgenti pubbliche, impara quali geni si muovono in ogni contesto e
   ripesa il trasferimento (`src/vcc2026/transfer_model.py`, stadio 104; `src/vcc2026/priors.py`
   spostato dallo stadio 100, uscita identica bit per bit). r3/r4 davano +0,008…+0,010 di PDS
-  attraverso il generatore, ma l'audit di codex (reports/audit_piani_dati_2026-09-26/, **mai committato**: [R-020](../REGISTRO.md#r-020--evidenza-citata-ma-assente-dal-repository))
+  attraverso il generatore, ma l'audit di codex ([audit_piani_dati_2026-09-26](../../reports/analisi/audit_piani_dati_2026-09-26/RISULTATI.md), recuperato e committato il 28/09: [R-020](../REGISTRO.md#r-020--evidenza-citata-ma-assente-dal-repository))
   ha trovato centri calcolati prima degli split (R-019). **Nel banco isolato (r5) il guadagno sulle
   linee nuove scende a +0,004…+0,008 (un intervallo su tre sopra zero) e l'nMAE proxy peggiora di
   +0,017…+0,051: per la regola fissata prima, niente t21.** Lo stadio 104 resta sperimentale,

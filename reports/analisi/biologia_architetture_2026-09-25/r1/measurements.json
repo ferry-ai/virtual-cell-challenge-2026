@@ -1,0 +1,139 @@
+{
+  "written_utc": "2026-09-25T21:35:32.019734+00:00",
+  "claim_type": "post-hoc exploratory reanalysis; no training, no independent J test, no VCC score",
+  "environment": {
+    "python": "3.12.3",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5"
+  },
+  "inputs": [
+    {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external\\mixscale_zenodo14518762\\DE_results_all_pathway.zip",
+      "bytes": 324112587,
+      "sha256": "d2f6d920abaf5e05de6e5343acdfae6a18537d23bf9003e80aa73cce97193c80"
+    },
+    {
+      "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\dld1_audit_2026-09-24\\mixscale_r1\\per_target_context.csv",
+      "bytes": 184041,
+      "sha256": "e86babb88b633ff681cfa5b0aa60305d326cd1dc0598cf1c5c183a5d310c48dd"
+    },
+    {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\gene_names.csv",
+      "bytes": 119295,
+      "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+    },
+    {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+      "bytes": 1906,
+      "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276"
+    },
+    {
+      "path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\biologia_architetture_2026-09-25\\analyze.py",
+      "bytes": 11308,
+      "sha256": "054e26688595ca07ad0031726c1d0b92afbdfee42aae6fd86631ea5844a6370a"
+    },
+    {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-23_r5\\cd4_Rest.npz",
+      "bytes": 39797152,
+      "sha256": "2747f6a346f9ae176e78f169daa8f0a09f41e5478392e6737d5ec82b80c54176"
+    },
+    {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-23_r5\\cd4_Stim8hr.npz",
+      "bytes": 39363299,
+      "sha256": "ab5f268b878ccaa364775f6035fc4869cac5ff2713dcf9565f31c37efac734b4"
+    },
+    {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-23_r5\\cd4_Stim48hr.npz",
+      "bytes": 40386580,
+      "sha256": "579c52f68ed6b919b704e761ae44d2ad8e2779365455769956603b5d597883a9"
+    },
+    {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-23_r5\\cd4_halfA.npz",
+      "bytes": 39521505,
+      "sha256": "e592357a6771ae3676bdf27a2306cdd54c1cd9c19518b47ac981f75a74b8aae5"
+    },
+    {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-23_r5\\cd4_halfB.npz",
+      "bytes": 39601197,
+      "sha256": "50584961876325716193fee177af3687b4a461fefce675266db350f2e552a854"
+    }
+  ],
+  "panel": {
+    "rows": 1626,
+    "targets": 218,
+    "target_stimulus_pairs": 271,
+    "stimuli_per_target_counts": {
+      "1": 181,
+      "2": 26,
+      "3": 6,
+      "4": 5
+    },
+    "ifnb_minus_ifng_mean_dr": 0.012368820166262536,
+    "ifnb_minus_ifng_without_stat2": -0.013829501811297164,
+    "shared_ifnb_ifng_targets": 18,
+    "tnfa_mcf7_gap_mean": -0.01757555638823608,
+    "tnfa_mcf7_gap_without_three": -0.003102051109283747,
+    "tnfa_negative_gaps": 28,
+    "tnfa_targets": 55
+  },
+  "mixscale_raw": {
+    "excluded_targets": 218,
+    "response_axis": "all measured genes, not restricted to official axis",
+    "matched_stat2_genes": 3688,
+    "signed_medians": {
+      "IFNAR1": 0.7767007320992135,
+      "IFNAR2": 0.8266743296155157,
+      "JAK1": 0.6224607341568165,
+      "STAT1": 0.5701623264526317,
+      "TYK2": 0.7955326964672973,
+      "USP18": -0.4843542618439125
+    }
+  },
+  "cd4": {
+    "matched_targets": 282,
+    "median_common_response_genes": 9720.0,
+    "comparisons": [
+      {
+        "left": "Rest",
+        "right": "Stim8hr",
+        "targets": 282,
+        "median_pearson": 0.3027092324446049,
+        "both_z2": 144386,
+        "opposing_z2": 20873,
+        "pooled_opposing_fraction": 0.14456387738423393
+      },
+      {
+        "left": "Rest",
+        "right": "Stim48hr",
+        "targets": 282,
+        "median_pearson": 0.2586971116875271,
+        "both_z2": 137471,
+        "opposing_z2": 26028,
+        "pooled_opposing_fraction": 0.1893344778171396
+      },
+      {
+        "left": "Stim8hr",
+        "right": "Stim48hr",
+        "targets": 282,
+        "median_pearson": 0.3048067402129135,
+        "both_z2": 152747,
+        "opposing_z2": 24365,
+        "pooled_opposing_fraction": 0.15951213444453902
+      },
+      {
+        "left": "halfA",
+        "right": "halfB",
+        "targets": 282,
+        "median_pearson": 0.08443089632157333,
+        "both_z2": 96688,
+        "opposing_z2": 33775,
+        "pooled_opposing_fraction": 0.3493194605328479
+      }
+    ],
+    "pair_support_shrink": {
+      "raw_median": 0.08732142943817736,
+      "shrunk_median": 0.11173042954718213,
+      "median_paired_gain": 0.02610263388605443
+    }
+  }
+}

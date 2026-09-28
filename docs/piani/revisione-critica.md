@@ -1,10 +1,11 @@
 # R-REV — agire sulla revisione critica del 28 settembre
 
-- **Stato:** aperto.
+- **Stato:** in corso.
 - **Aggiornato:** 28 settembre 2026, 12:40 (ora italiana), dalla sessione cloud che ha scritto la
   revisione.
-- **Assegnazione:** nessuna. La prende la prossima sessione locale (il portatile, con la radice dati),
-  annotando qui agente, sessione e ora (PIANI §3).
+- **Assegnazione:** Claude (app desktop, sessione `f4f38e58`, sul portatile con la radice dati), dal 28/09
+  alle 12:42 (ora italiana), su richiesta del proprietario in chat: §0 e le azioni in ordine, una alla volta.
+  File di lavoro: questa scheda, il registro (R-020), gli indici dei report; output nelle categorie di D-046.
 - **Mandato del proprietario**, in chat alla sessione cloud il 28/09 verso le 12:30: «ok ora devo passare
   ad un'altra sessione in locale, fai in modo che ci siano informazioni in repo in evidenza per farlo
   agire basandosi sulle tue analisi». Vale come via a lavorare su questa scheda. **Non** vale come via a
@@ -60,6 +61,21 @@ restano.
 
 6. Il push su GitHub solo con il via del proprietario.
 
+### Esito del §0 (28/09, 12:42–12:59, Claude, sessione `f4f38e58`)
+
+- **Stato locale prima dell'unione:** nessun commit locale oltre `origin/main`. Lavoro non committato di un altro agente
+  (codex): in stage CP-0040, `biologia_architetture_2026-09-25` e righe di PROGETTO, REGISTRO, INDICE e di tre schede;
+  non tracciato `audit_piani_dati_2026-09-26`. Copia di sicurezza fuori dalla repo, poi `git stash push`.
+- **Unione:** avanzamento veloce su `81379a4`, poi `git stash apply`. Conflitti in PROGETTO, REGISTRO, `reports/CLAUDE.md`
+  e nella scheda R-MODELLI, risolti tenendo le due parti: il testo di questo branch, più le righe e le sezioni
+  dell'altro agente con i percorsi spostati nelle categorie. Le sue righe per il vecchio indice di `reports/CLAUDE.md`
+  sono diventate righe di `reports/analisi/README.md`.
+- **Cartelle rimaste fuori dalle categorie:** 124 cartelle. Contenevano 51 file ignorati o non tracciati (`__pycache__`,
+  grandi `.npz` e `.h5ad` dello storico, lo zip di grok), spostati nelle gemelle senza sovrascrivere nulla; poi le
+  cartelle vuote sono state tolte. `ls reports/` mostra solo le otto categorie, `README.md` e `CLAUDE.md`.
+- **Script fuori dalla repo:** quelli dello scratchpad di questa sessione scrivevano in `reports/<cartella>/`; da ora
+  scrivono in `reports/<categoria>/<cartella>/`.
+
 ## 1. Le azioni, in ordine
 
 L'ordine differisce dal §6 della revisione per una ragione sola: la sessione locale legge la radice dati e
@@ -103,6 +119,11 @@ t21, il report `biologia_architetture_2026-09-25`.
   - R-018 e R-019 nel registro;
   - poi le righe nei README delle categorie e nel registro.
 - **Se una voce non si trova,** R-020 dice dove si è cercato. Non si ricostruisce.
+
+**Esito (28/09, Claude, sessione `f4f38e58`):** quattro voci su cinque trovate sul portatile e committate come
+trovate. La previsione del t21 non esiste: lo script che doveva scriverla non risulta eseguito. Dettagli e dove si è
+cercato nella scheda [R-020](../REGISTRO.md#r-020--evidenza-citata-ma-assente-dal-repository), che resta aperta solo
+per quella citazione.
 
 ### Azione 2 — il proxy contro le differenze ufficiali
 

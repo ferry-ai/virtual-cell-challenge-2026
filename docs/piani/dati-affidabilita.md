@@ -68,3 +68,29 @@ con i rapporti integrali degli agenti.
 
 **Passaggio di consegne:** nessuna acquisizione né adozione. Ogni download chiede il via del
 proprietario; il disco C: ha pochi GB liberi.
+
+## Integrazione Codex del 25 settembre
+
+Sottoattività documentale completata da Codex, task
+`01a0d81b-3495-74d0-9537-eb5254b05002`, iniziata alle 21:32 UTC;
+assegnazioni degli audit precedenti invariate. Evidenza:
+[CP-0040](../checkpoints/0040-biologia-contesti-donatori.md) e
+[report](../../reports/analisi/biologia_architetture_2026-09-25/RISULTATI.md), §5.
+Proposta aggiuntiva: contrasti CD4 per donatore e guida, confronti entro/fra
+donatori a uguale numerosità e calibrazione della confidenza su donatori esclusi.
+Le metà CD4 sono gruppi di donatori, non repliche tecniche; lo z entro gruppo
+non misura tutta l'incertezza di trasferimento. Nessuna acquisizione aggiuntiva.
+La nota sul disco sopra è datata: verificare spazio attuale prima di un download.
+
+## Audit trasversale Codex del 26 settembre
+
+Sottoattività disgiunta completata alle 12:28 UTC da Codex, task
+`01a0dda7-acf9-71a2-bb1a-6a35fb6f3164`: inventario e revisione in sola lettura
+di dati/codice, con nuovo output in
+[audit_piani_dati_2026-09-26](../../reports/analisi/audit_piani_dati_2026-09-26/RISULTATI.md).
+Nessuna riassegnazione del lavoro Claude. Da portare nei prossimi passi:
+HIPSCI distinto da KOLF e già censito l'11 settembre; matrici Jurkat locali;
+universi CD4/Orion ancora incompleti; controllo dei filtri basati sull'effetto.
+Il §4 documenta contaminazione tramite medie calcolate prima degli split nel
+banco appreso r2/r3, con controesempio riproducibile. Il §5 corregge la modalità
+Mixscale (CRISPRi). Nessun nuovo dataset adottato o job avviato.

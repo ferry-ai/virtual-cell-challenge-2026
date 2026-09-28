@@ -6,8 +6,18 @@
   modello a cancelli, rete, encoder), tutti con esito negativo finora:
   [reports/trasferimento/README.md](../../reports/trasferimento/README.md) e
   [reports/modelli/README.md](../../reports/modelli/README.md).
+- **Integrazione:** 25 settembre 2026, ricerca esplorativa CP-0040.
 - **Assegnazione:** da verificare con gli agenti già attivi; nessuna presa in carico registrata qui.
 - **Ipotesi:** H1 programmi, H2 stato, H3 ruolo con segno, H6 pesi delle sorgenti, H10 prior aggiuntivi.
+
+### Sottoattività documentale del 25 settembre
+
+Codex, task `01a0d81b-3495-74d0-9537-eb5254b05002`, presa in carico il
+25 settembre 2026 alle 21:32 UTC: consolidamento della ricerca svolta in chat,
+autorizzato dal proprietario. Ambito: nuova cartella
+`reports/analisi/biologia_architetture_2026-09-25/`, output nuovo `r1`, checkpoint,
+registrazione e rimandi nelle tre schede di ricerca. Non prende in carico il
+training né modifica le assegnazioni degli audit dati altrui.
 
 ## Prossima azione
 
@@ -57,3 +67,13 @@ aprire il confronto di distribuzioni in [R-SWITCH](switch-distribuzioni.md).
 Reti causali dinamiche restano candidate quando tempo e interventi le rendono valutabili.
 
 **Passaggio di consegne:** nessun training o protocollo congelato prodotto con questa scheda.
+
+## Consegna documentale del 25 settembre
+
+Sottoattività Codex sopra **completata**: [risultati riproducibili](../../reports/analisi/biologia_architetture_2026-09-25/RISULTATI.md)
+e [architetture e prove](../../reports/analisi/biologia_architetture_2026-09-25/PROPOSTE.md),
+registrati in [CP-0040](../checkpoints/0040-biologia-contesti-donatori.md).
+Prossimo passo proposto: protocollo per programmi con segno e contrasti fra
+contesti, includendo grafo multirelazione e incertezza gerarchica. Non confondere
+scambio del contesto con prova positiva di apprendimento; il pannello poco
+incrociato richiede split e controlli specifici. Formulazione, non training.
