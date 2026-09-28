@@ -152,6 +152,10 @@ sorgente pubblica tenuta fuori) prevede il segno delle differenze ufficiali già
   dell'azione 4. Si fissa, eventualmente diversa, nel protocollo prima di girare.
 - **Chiusura:** report e checkpoint.
 
+**Presa in carico (28/09, 18:45, Claude, sessione `f4f38e58`):** protocollo e regola scritti prima di girare in
+[taratura_proxy_2026-09-28](../../reports/trasferimento/taratura_proxy_2026-09-28/RISULTATI.md), codice
+`taratura_proxy.py` nella stessa cartella.
+
 ### Azione 3 — la prova generale del 22 ottobre
 
 È il filone F8 della [scheda R-V2](modello-v2.md), libero: la presa in carico si annota anche lì.

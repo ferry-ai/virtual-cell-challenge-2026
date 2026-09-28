@@ -103,3 +103,32 @@ valutazione?
   contesti, quindi A misura «il dataset r2», non i contesti da soli;
 - **il K562 in E1:** con la famiglia `k562` tenuta fuori, r2 non vede nessun K562. È la stessa esclusione di r1
   estesa ai due esperimenti nuovi.
+
+## Esito della tornata r2, seme 0 (misurato, 28/09; tabelle in `r2_shard0/` e `r2_shard1/`)
+
+Due sessioni GPU su Kaggle, partite alle 10:06 perché la coda notturna si era fermata con il riavvio della sessione.
+Nel file di sintesi della seconda sessione il percorso del dataset conteneva il nome del conto Kaggle, sostituito con
+`<kaggle-user>` nella copia qui.
+
+**Lettura B, l'encoder su r2: non passa, e peggiora molto.** Contrasto `ours` − `none` (skill):
+
+| Verità | `ours` − `none` |
+|---|---|
+| HCT116 | **−0,661** [−0,691; −0,632] |
+| HEK293T (disegno E2) | −0,324 |
+| K562 | −0,038 [−0,049; −0,028] |
+| CD4 a riposo | −0,021 [−0,023; −0,019] |
+
+- **Il crollo su HCT116 dal log (misurato).** Nella fase 1 la migliore valutazione era al passo 750. Il
+  riaddestramento su tutti i contesti visibili, con la famiglia K562 e i suoi tre embedding in più, ha portato la
+  calibrazione da 0,013 a 0,042; la rete finale ha skill −0,648 su HCT116.
+- **Interpretazione:** la mappa dall'embedding al contesto estrapola male per una linea lontana da quelle viste.
+  Nessun limite ne contiene l'effetto: è un difetto dell'innesto, oltre che un esito negativo.
+
+**Lettura C, la curva.** In r2, come in r1, la perdita sulla famiglia di validazione è minima alla prima valutazione
+(passo 250) in ogni disegno della rete `none`, poi sale. Più contesti CRISPRi (10–12 visibili invece di 5–7) non
+cambiano questo.
+
+**E2 Orion su r2:** rete 0,0027 [−0,0008; +0,0064], non passa, come in r1.
+
+**Lettura A, r2 contro r1 sugli stessi bersagli:** in corso con `cross_compare.py`; si aggiunge qui quando finisce.

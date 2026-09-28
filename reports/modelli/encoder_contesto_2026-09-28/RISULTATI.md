@@ -155,3 +155,38 @@ tutte e tre le verità E1.
 non dal contesto giusto. È lo stesso difetto del modello a cancelli di r1 e di CP-0013. Tahoe aggiunge un poco
 rispetto a `ours` su HCT116 (+0,0008 [+0,0005; +0,0011]), ma dentro un disegno in cui il contesto giusto non aiuta:
 non è un merito attribuibile a Tahoe.
+
+## Esito della prima tornata, parte K562 e CD4, e lettura completa (misurato; tabelle in `r1_shard1/`)
+
+Tabelle scaricate il 28/09 alle 13:05. Contrasti con `none`, skill, bootstrap sui 1.000 bersagli:
+
+| Condizione | K562 | CD4 a riposo |
+|---|---|---|
+| `pca` | −0,0005 [−0,0007; −0,0003] | −0,0078 [−0,0095; −0,0063] |
+| `ours` | +0,0019 [+0,0017; +0,0023] | **−0,0551** [−0,0596; −0,0508] |
+| `ours+tahoe` | +0,0000 [−0,0001; +0,0002] | −0,0046 [−0,0062; −0,0030] |
+
+**Punto 2, l'embedding giusto:**
+- **K562:** rete − `emb_swap` negativo per ogni condizione (`ours` −0,0038, `ours+tahoe` −0,0058, `pca` −0,0057).
+  Anche qui l'embedding di un'altra linea fa meglio di quello giusto.
+- **CD4:** con `ours` la rete sta peggio che con l'embedding medio (rete − `emb_blind` −0,045). Con l'embedding
+  scambiato peggiora di molto (+0,19 a favore di quello giusto).
+
+**Interpretazione.** Per le cellule T, tenute fuori dal corpus in ogni loro forma, la mappa dall'embedding al contesto
+estrapola, e l'uscita diventa instabile.
+
+**Lettura della regola, tre verità E1 (seme 0).** Nessuna condizione passa:
+
+| Condizione | Esito sul punto 1 | Motivo |
+|---|---|---|
+| `pca` | non passa | su CD4 l'intervallo sta tutto sotto −0,002 |
+| `ours` | non passa | positivo solo su K562; CD4 sotto −0,002 |
+| `ours+tahoe` | non passa | positivo con intervallo sopra zero solo su HCT116; CD4 sotto −0,002 |
+
+Il punto 2 fallisce ovunque su HCT116 e K562. L'E2 Orion non passa. I semi 1 e 2 non servono: la regola dice di
+farli girare solo se una condizione passa.
+
+**Per le sorgenti.** Nemmeno il contributo di Tahoe si attribuisce:
+- `ours+tahoe` − `ours` è positivo su HCT116 (+0,0008) e su CD4 (+0,0505, perché `ours` va male);
+- su K562 è negativo (−0,0019);
+- in nessun caso con il contesto giusto come causa.
