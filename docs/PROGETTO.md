@@ -97,7 +97,7 @@ derivati dagli scalati con le ancore: il 25 settembre `vcc status` serviva solo 
 
 **La coda operativa si mantiene in [PIANI.md](PIANI.md)** e nelle sue schede; prima di prendere
 un'attività verificare chi la sta seguendo. La [revisione critica del 28/09](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md)
-propone un ordine per le prossime due settimane (§6 di quel documento): non spendere invii su
+propone un ordine fino al set finale (§6 di quel documento): non spendere invii su
 differenze sotto il rumore, validare il proxy sui punteggi ufficiali già in mano, preparare la
 prova generale del 22 ottobre.
 

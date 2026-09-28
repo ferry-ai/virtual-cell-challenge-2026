@@ -307,15 +307,15 @@ Riorganizzazione (D-046), senza toccare il contenuto di nessuna evidenza:
 - PROGETTO ha un §3 e un §4 nuovi e un §5 con le criticità; stati delle decisioni e delle schede
   corretti; il controllo documentale copre schede, indici e storico.
 
-## 6. Proposte in ordine, per le prossime due settimane
+## 6. Proposte in ordine, fino al set finale
 
 Da decidere con il proprietario; nessuna è avviata.
 
 1. **Non spendere invii su differenze sotto 0,005.** Le quote vanno a cambi grandi o a informazione che
    solo il server dà (per esempio una seconda replica di seme, se il proprietario vuole restringere il
    rumore).
-2. **Tarare il proxy sulle differenze ufficiali già misurate** (§2.1). Costo: un pomeriggio, nessun
-   invio.
+2. **Tarare il proxy sulle differenze ufficiali già misurate** (§2.1). Non spende invii: usa file
+   di effetti già nella radice dati.
 3. **Banco con lo scorer vero su bersagli non essenziali** (§2.5), con più semi del generatore: serve a
    decidere ampiezza, esclusione dei geni e riscalatura sui sei membri.
 4. **Prova generale del 22/10 (F8)**, su A/B/C trattati come nuovi: dal bundle al `.vcc`, con la scelta
