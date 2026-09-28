@@ -132,3 +132,42 @@ cambiano questo.
 **E2 Orion su r2:** rete 0,0027 [−0,0008; +0,0064], non passa, come in r1.
 
 **Lettura A, r2 contro r1 sugli stessi bersagli:** in corso con `cross_compare.py`; si aggiunge qui quando finisce.
+
+## Lettura A, completa (misurato, 28/09 sera; tabelle in `lettura_a_shard0/` e `lettura_a_shard1/`)
+
+Claude, sessione `f2abd9a6`. La lettura della sessione `f4f38e58` copriva solo la sessione Orion (la K562/CD4 non era
+ancora scaricata), e la sua uscita non era stata salvata. Rigirata qui, `cross_compare.py` invariato, una
+volta per sessione di Kaggle:
+
+```bash
+scripts/py.cmd reports/modelli/rete_contesti_r2_2026-09-28/cross_compare.py --r1 <kaggle>/out_r1_s0_v2 \
+    --r2 <kaggle>/out_vcc-r2-s0-shard{0,1}_v1/keep_pred --data-r2 <dati>/processed/rete_contesti_r2 \
+    --out reports/modelli/rete_contesti_r2_2026-09-28/lettura_a_shard{0,1}
+```
+
+I numeri della sessione Orion coincidono con quelli che la sessione `f4f38e58` aveva riportato nella scheda R-V2
+(«Pomeriggio del 28 settembre»).
+
+**`none` su r2 − `none` su r1**, skill nello spazio degli effetti, stessi 1.000 bersagli, stessi geni:
+
+| Verità E1 | r2 − r1 | Geni |
+|---|---|---|
+| K562 | **+0,0036** [+0,0028; +0,0046] | 11.794 |
+| HCT116 (disegno E1 Orion) | **+0,0018** [+0,0005; +0,0030] | 9.749 |
+| CD4 a riposo | −0,0015 [−0,0023; −0,0007] | 10.885 |
+
+Descrittivo: HEK293T nel disegno E2 −0,0072 [−0,0096; −0,0050].
+
+**Per la regola delle 04:00: passa, provvisoria.** Positivo su 2 verità su 3, con l'intervallo sopra zero su entrambe, e
+l'intervallo di CD4 non sta interamente sotto −0,002. Lettura registrata: più contesti CRISPRi aiutano la rete sulle
+linee tenute fuori, **provvisorio con un seme**. Valgono i limiti scritti prima:
+- r2 cambia anche i geni conservati e la calibrazione, non solo il numero di contesti: A misura «il dataset r2»;
+- i guadagni sono di pochi millesimi di skill, e la discriminazione della rete fra i bersagli di prova resta vicina al
+  caso (0,50–0,51, `r2_shard*/arms.csv`).
+
+Serve la conferma con i semi 1 e 2 prima di crederci.
+
+**E2 Orion** (`lettura_a_shard0/e2.csv`): rete di r1 0,0027 [−0,0008; +0,0065], rete `none` di r2 0,0026
+[−0,0010; +0,0061], quantile 97,5 % delle permutazioni 0,0039. Nessuna passa. Il valore scritto sopra per r2
+(0,0027 [−0,0008; +0,0064]) non coincide esattamente né con questo file né con `r2_shard0/e2.csv` (0,0027
+[−0,0006; +0,0061], quantile 0,0046, di `compare.py` su Kaggle). La conclusione non cambia.
