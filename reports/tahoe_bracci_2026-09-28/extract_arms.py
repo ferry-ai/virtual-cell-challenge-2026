@@ -50,10 +50,18 @@ def sample_lookup(frame):
 class RangeFile(io.RawIOBase):
     """Strict HTTP ranges; reject a full-body response before reading its body."""
     def __init__(self, url, session):
+        import time
+        import requests
         self.session, self.pos, self.bytes = session, 0, 0
-        with session.head(url, allow_redirects=True, timeout=60) as r:
-            r.raise_for_status()
-            self.url, self.size = r.url, int(r.headers['Content-Length'])
+        for attempt in range(6):
+            try:
+                with session.head(url, allow_redirects=True, timeout=60) as r:
+                    r.raise_for_status()
+                    self.url, self.size = r.url, int(r.headers['Content-Length'])
+                break
+            except requests.RequestException:
+                if attempt == 5: raise
+                time.sleep(2 ** attempt)
 
     def readable(self): return True
     def seekable(self): return True
@@ -66,17 +74,29 @@ class RangeFile(io.RawIOBase):
         return value
 
     def readinto(self, b):
+        import time
+        import requests
         n = min(len(b), self.size - self.pos)
         if n <= 0: return 0
         end = self.pos + n - 1
-        with self.session.get(self.url, headers={'Range': f'bytes={self.pos}-{end}',
-                              'Accept-Encoding': 'identity'}, stream=True, timeout=120) as r:
-            expected = f'bytes {self.pos}-{end}/{self.size}'
-            if r.status_code != 206 or r.headers.get('Content-Range') != expected:
-                raise IOError(f'Invalid Range response: {r.status_code}, {r.headers.get("Content-Range")}')
-            data = r.raw.read(n + 1)
-            self.bytes += len(data)
-            if len(data) != n: raise IOError('Truncated or oversized range')
+        # Transient server errors (429, 5xx) and dropped connections are retried with backoff (28/09: a 503 on
+        # Kaggle stopped the first run after 22 s); a wrong Content-Range on a 206 still fails at once.
+        for attempt in range(6):
+            try:
+                with self.session.get(self.url, headers={'Range': f'bytes={self.pos}-{end}',
+                                      'Accept-Encoding': 'identity'}, stream=True, timeout=120) as r:
+                    if r.status_code == 429 or r.status_code >= 500:
+                        raise requests.ConnectionError(f'HTTP {r.status_code}')
+                    expected = f'bytes {self.pos}-{end}/{self.size}'
+                    if r.status_code != 206 or r.headers.get('Content-Range') != expected:
+                        raise IOError(f'Invalid Range response: {r.status_code}, {r.headers.get("Content-Range")}')
+                    data = r.raw.read(n + 1)
+                    if len(data) != n: raise requests.ConnectionError('Truncated or oversized range')
+                break
+            except requests.RequestException:
+                if attempt == 5: raise
+                time.sleep(2 ** attempt)
+        self.bytes += len(data)
         b[:n] = data
         self.pos += n
         return n

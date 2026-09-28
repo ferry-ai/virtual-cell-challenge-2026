@@ -1,0 +1,36 @@
+[     0.1s] dataset: 91860 rows, 12477 stored genes, 8 contexts, 18848 targets; device cuda; torch 2.10.0+cu128
+[     0.2s] design C: truth [], hidden [], visible ['k562', 'cd4_Rest', 'cd4_Stim8hr', 'cd4_Stim48hr', 'orion_hct116', 'orion_hek293t', 'kolf']; 90860 visible rows; 0 test targets, 0 targets hidden everywhere; validation family (orion)
+[   129.1s] phase: 57152 visible rows in 5 contexts, 3 families (cd4, k562, kolf); 9749 of 12477 genes estimated by >= 2 families; profiles 33089 (family, target) rows, partner profiles 28093
+[   132.5s] calibration: A 0.01563 (used 0.01563), A_q 0.02048 (used 0.02048), mean row weight 2.994e+05 on 4000 rows; parameters 450402
+[   145.0s] step step 50, train_loss 0.010848, amplitude 0.0157, amplitude_q 0.020485, val_loss 0.0093852
+[   156.0s] step step 100, train_loss 0.010725, amplitude 0.015715, amplitude_q 0.020485, val_loss 0.0093808
+[   167.0s] step step 150, train_loss 0.010769, amplitude 0.015776, amplitude_q 0.020485, val_loss 0.0093831
+[   178.0s] step step 200, train_loss 0.010837, amplitude 0.015813, amplitude_q 0.020485, val_loss 0.0093868
+[   188.9s] step step 250, train_loss 0.010785, amplitude 0.015832, amplitude_q 0.020485, val_loss 0.0093814
+[   199.8s] step step 300, train_loss 0.010802, amplitude 0.01586, amplitude_q 0.020485, val_loss 0.0093859
+[   210.8s] step step 350, train_loss 0.010706, amplitude 0.015873, amplitude_q 0.020485, val_loss 0.0093867
+[   221.8s] step step 400, train_loss 0.01073, amplitude 0.015832, amplitude_q 0.020485, val_loss 0.0094004
+[   232.9s] step step 450, train_loss 0.010768, amplitude 0.015784, amplitude_q 0.020485, val_loss 0.0093983
+[   243.9s] step step 500, train_loss 0.010795, amplitude 0.015766, amplitude_q 0.020485, val_loss 0.0094029
+[   254.8s] step step 550, train_loss 0.010774, amplitude 0.015738, amplitude_q 0.020485, val_loss 0.0093937
+[   265.8s] step step 600, train_loss 0.010679, amplitude 0.015696, amplitude_q 0.020485, val_loss 0.0094045
+[   276.8s] step step 650, train_loss 0.010731, amplitude 0.015662, amplitude_q 0.020485, val_loss 0.0094143
+[   287.7s] step step 700, train_loss 0.010742, amplitude 0.01562, amplitude_q 0.020485, val_loss 0.009418
+[   298.7s] step step 750, train_loss 0.010681, amplitude 0.01555, amplitude_q 0.020485, val_loss 0.0094475
+[   309.6s] step step 800, train_loss 0.010651, amplitude 0.015512, amplitude_q 0.020485, val_loss 0.0094474
+[   320.5s] step step 850, train_loss 0.010714, amplitude 0.01545, amplitude_q 0.020485, val_loss 0.0094392
+[   331.4s] step step 900, train_loss 0.010798, amplitude 0.015411, amplitude_q 0.020485, val_loss 0.0094458
+[   342.4s] step step 950, train_loss 0.010699, amplitude 0.015388, amplitude_q 0.020485, val_loss 0.0094529
+[   353.6s] step step 1000, train_loss 0.010643, amplitude 0.015347, amplitude_q 0.020485, val_loss 0.009483
+[   364.6s] step step 1050, train_loss 0.010747, amplitude 0.015272, amplitude_q 0.020485, val_loss 0.0094885
+[   376.4s] step step 1100, train_loss 0.010628, amplitude 0.015194, amplitude_q 0.020485, val_loss 0.0094718
+[   376.4s] early stop at step 1100: no validation gain in 20 evaluations; best step 100
+[   556.1s] phase: 90860 visible rows in 7 contexts, 4 families (cd4, k562, kolf, orion); 11913 of 12477 genes estimated by >= 2 families; profiles 50496 (family, target) rows, partner profiles 38346
+[   556.1s] refit on every visible row for 100 steps
+[   558.7s] calibration: A 0.02814 (used 0.02814), A_q 0.03458 (used 0.03458), mean row weight 3.217e+05 on 4000 rows; parameters 450402
+[   568.0s] step step 50, train_loss 0.010904, amplitude 0.028264, amplitude_q 0.034579
+[   577.4s] step step 100, train_loss 0.011031, amplitude 0.028389, amplitude_q 0.034579
+[   582.6s] predicted 300 targets in A
+[   587.7s] predicted 300 targets in B
+[   592.8s] predicted 300 targets in C
+[   592.8s] done: /kaggle/working/slow_nopart

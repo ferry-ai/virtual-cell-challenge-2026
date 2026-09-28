@@ -54,6 +54,7 @@ with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
 `ricerca_sorgenti_2026-09-27/` (multi-cell-type data searched and verified by two agents; the KOLF2.1J file layout; the ingestion plan),
 `modello_contesto_2026-09-27/` (a target x context model design, literature checked on primary sources),
 `rete_contesti_2026-09-27/` (the network over many contexts: design, code, self-test, production run and r1),
+`rete_contesti_r2_2026-09-28/` (the network dataset with more contexts, r2, its registered round, and the descriptive variants on r1),
 `encoder_contesto_2026-09-28/` (a context encoder pre-trained on basal profiles and plugged into the network; self-test and the registered rule of its first round),
 `corpus_basale_2026-09-28/` (basal profiles for the encoder: our CRISPRi controls, A/B/C, DepMap, Tahoe DMSO; a decision per source),
 `tahoe_dmso_2026-09-28/` (Tahoe-100M DMSO controls: the full extractor and the every-k-th-shard subset),
