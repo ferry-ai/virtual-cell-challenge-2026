@@ -70,9 +70,10 @@ Only the code that produces or scores a submission is in the tree (D-040, D-043)
   has no live caller.
 
 The research benches are not in that tree: about 22,000 lines of Python live in the report
-folders that used them, untested except `kolf_sums.py`, and several are imported by other
-benches by path. The map of which file serves which is in `reports/README.md`; a changed copy
-goes in a new report folder, never over the old file.
+folders that used them, and several are imported by other benches by path. Only `kolf_sums.py`
+and the bench proxies (`tests/test_proxy_banchi.py`) are tested. The map of which file serves
+which is in `reports/README.md`; a changed copy goes in a new report folder, never over the
+old file.
 
 Everything else is in the tags listed file by file in `docs/ARCHIVIO.md`: the orchestrator,
 the pairwise oracle, the chain of cycles, the pseudobulk benchmark, the conditioned predictor,

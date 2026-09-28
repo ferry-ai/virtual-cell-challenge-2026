@@ -258,7 +258,10 @@ verifica i link anche nelle schede dei piani e negli indici dei report, dove il 
   `src/`. Diversi file sono librerie per altri banchi, importati per percorso: i proxy
   (`modulo_cis/cis_bench.py`, `banco_varianti/noise_sim2.py`), il lettore degli universi
   (`atlante/atlas_bench.py`), lo stimatore degli universi nuovi (`universo_kolf/kolf_effects.py`).
-  Solo `kolf_sums.py` ha un test. La mappa è in [reports/README.md](../../README.md).
+  Fino a questa revisione solo `kolf_sums.py` aveva un test; ora li hanno anche i proxy
+  (`tests/test_proxy_banchi.py`, aggiunto il 28/09), che verifica fra l'altro che il passo di
+  profilo dei proxy (`noise_sim2.realise`) dia gli stessi numeri di `inference.predicted_profile`,
+  quello che lo stadio 45 applica. La mappa è in [reports/README.md](../../README.md).
 - **Interpretazione.** L'affermazione «nell'albero resta solo il codice che produce o valuta una
   sottomissione» (D-040) è vera ma fuorviante: il motore delle decisioni di ricerca sta fuori
   dall'albero e fuori dai test. Un difetto in `noise_sim2.realise` o in `cis_bench.pds_proxy`

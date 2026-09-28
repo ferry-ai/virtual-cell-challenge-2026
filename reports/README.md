@@ -78,7 +78,9 @@ i banchi che lo importano**: una versione nuova va in una cartella nuova.
 | `sorgenti/universo_2026-09-26/orion_universe.py` e simili | costruzione degli universi | universi corretti |
 | gli stadi 98, 100, 102 e 104 di `scripts/`, importati per percorso | stima delle sorgenti, effetti per contesto, canale di magnitudine | universi, banchi del 25–27/09 |
 
-Solo `kolf_sums.py` ha un test. Gli altri non sono coperti dai test del codice vivo. Il
-28 settembre sono cambiate soltanto le righe che calcolano la radice del repository e i
-percorsi fra cartelle (+1 livello). Tutti i 95 script che rispondevano a `--help` prima dello
-spostamento rispondono anche dopo.
+Hanno un test `kolf_sums.py` (`tests/test_kolf_sums.py`) e, dal 28 settembre, i proxy dei banchi
+(`tests/test_proxy_banchi.py`: `pds_proxy`, `rank_pds`, `fidelity_proxy`, `realise`, e la parità di
+`realise` con il passo di profilo che lo stadio 45 applica davvero). Il resto non è coperto. Il
+28 settembre sono cambiate soltanto le righe che calcolano la radice del repository e i percorsi
+fra cartelle (+1 livello): tutti i 95 script che rispondevano a `--help` prima dello spostamento
+rispondono anche dopo.
