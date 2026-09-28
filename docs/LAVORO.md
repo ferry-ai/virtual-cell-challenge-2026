@@ -47,19 +47,19 @@ $D = "C:\Users\ferra\vcc2026-data"
 ```
 
 I manifest di ogni stadio stanno accanto all'output (`manifest.json`); quelli degli invii si
-copiano in `reports/trial_<data>/`, come `t11_manifest_45.json` e `t11_manifest_48.json`.
+copiano in `reports/invii/trial_<data>/`, come `t11_manifest_45.json` e `t11_manifest_48.json`.
 
 ## 2. Le regole dell'invio
 
 Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
 
 1. **Prima di generare**, si registrano la previsione e la regola di lettura in
-   `reports/prediction_tNN_<data>/prediction.json`:
+   `reports/invii/prediction_tNN_<data>/prediction.json`:
    - una banda numerica;
    - che cosa si concluderà in ciascun caso.
 
    Anche i testi della sottomissione si scrivono prima, in
-   `reports/trial_<data>/submission_texts.md`. La soglia non si sposta dopo aver visto il
+   `reports/invii/trial_<data>/submission_texts.md`. La soglia non si sposta dopo aver visto il
    numero ([CP-0030](checkpoints/0030-t10-attribuzione-cd4.md)).
 2. **Un fattore alla volta** rispetto al migliore. È ciò che ha reso leggibili t08, t10 e
    t11.
@@ -79,7 +79,7 @@ Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
      del `.vcc` contro il report dello stadio 48.
    - `vcc cancel <entry>` abbandona l'entry, e non conta sul limite giornaliero: conta solo
      un invio valutato (`vcc cancel --help`).
-6. **L'output di `vcc` si salva così com'è**, in `reports/trial_<data>/`
+6. **L'output di `vcc` si salva così com'è**, in `reports/invii/trial_<data>/`
    (`submit_<entry>.json`, `status_<entry>.json`). Un tentativo fallito si registra come
    tale, in un file suo. **Lo stato va chiesto appena il punteggio c'è, prima dell'invio
    successivo:** il 25 settembre `vcc status` rispondeva `not_found` per t15 e t16 e serviva

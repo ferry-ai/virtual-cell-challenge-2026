@@ -18,7 +18,7 @@ measuring it does not.
 
     python scripts/102_extract_orion_panel.py --line HCT116 --work <data_root>/interim/orion_hct116
     python scripts/102_extract_orion_panel.py --line HCT116 --work <...> --finalize --out <h5ad> \
-        --report-dir reports/orion_2026-09-22
+        --report-dir reports/sorgenti/orion_<data>
 """
 
 from __future__ import annotations
