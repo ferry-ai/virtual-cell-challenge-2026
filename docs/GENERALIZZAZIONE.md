@@ -138,7 +138,7 @@ modificare le regole di valutazione di questo documento.
    utile dal tag con i suoi test, secondo D-040, senza riscriverlo da zero.
 
 Riferimenti interni: [CP-0035](checkpoints/0035-dld1-mixscale-audit.md),
-[report dei dati](../reports/dld1_audit_2026-09-24/RISULTATI.md),
+[report dei dati](../reports/sorgenti/dld1_audit_2026-09-24/RISULTATI.md),
 [CP-0026](checkpoints/0026-predittore-neurale-condizionato.md),
 [ARCHIVIO.md](ARCHIVIO.md). Comandi, risorse e autorizzazioni restano in
 [LAVORO.md](LAVORO.md).

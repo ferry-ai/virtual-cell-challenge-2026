@@ -110,7 +110,7 @@ def effects_from_pseudobulk(X, obs: pd.DataFrame, genes, *, targets, condition: 
     larger, so such a gene reads as induced, and more so the fewer the target's cells: the
     Y-chromosome genes of the female CD4 donors did this for every panel knockdown, and so does
     a gene whose expected count in the target group is well under ``pseudo``
-    (reports/pseudoconteggio_2026-09-27/). "library" keeps ``pseudo`` counts in the smaller
+    (reports/sorgenti/pseudoconteggio_2026-09-27/). "library" keeps ``pseudo`` counts in the smaller
     group and gives the larger the same fraction of its total, ``p = pseudo * L / min(L_t, L_c)``:
     with the target the smaller, the fold change is ``ln((S_t + pseudo) / (E_t + pseudo))``, with
     ``E_t`` the count the controls predict for the target group. The same as "constant" when the
@@ -332,7 +332,7 @@ def eb_components(ys, ses, ks, expr, *, bin_weight: float = 100.0, n_bins: int =
     b = np.digitize(np.nan_to_num(expr, nan=-1.0), edges)
     out = []
     # n = distinct targets with data (a pair for sigma2, one source for tau2): the review of 26/09
-    # (reports/trasferimento_gerarchico_2026-09-26/agenti/revisione_codex.md, point 2) found that
+    # (reports/trasferimento/trasferimento_gerarchico_2026-09-26/agenti/revisione_codex.md, point 2) found that
     # counting observations instead gave sigma2 1.5 times the weight with three sources
     for v, n in ((sigma2, pair_targets.sum(axis=0)), (tau2, obs_targets.sum(axis=0))):
         med = np.array([np.median(v[has & (b == k)]) if (has & (b == k)).any() else 0.0 for k in range(n_bins)])

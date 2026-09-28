@@ -8,7 +8,7 @@ di packaging da [CP-0005](checkpoints/0005-packaging-streaming-trial01.md).
 **Una sottomissione è stata inviata e valutata**, il 2026-09-13: entry
 `PNn227rxP3bVByS37W41`, punteggio **0,045929**, rango **446 su 920 squadre**. Il
 resoconto completo è nella sezione 4 e in
-[`submission_PNn227rxP3bVByS37W41.md`](../reports/trial_2026-09-13/submission_PNn227rxP3bVByS37W41.md);
+[`submission_PNn227rxP3bVByS37W41.md`](../reports/invii/trial_2026-09-13/submission_PNn227rxP3bVByS37W41.md);
 il checkpoint è [CP-0006](checkpoints/0006-prima-sottomissione-e-punteggio.md).
 Era `trial-01-transfer`; **`trial-00-controls` non è stato inviato** e non va inviato
 (D-017).
@@ -19,11 +19,11 @@ Era `trial-01-transfer`; **`trial-00-controls` non è stato inviato** e non va i
 > matrice**: 0,519 GiB di picco contro i 33,5 che il modello della CLI attribuisce a
 > `vcc prep`. Tutte e 24 le convalide attive, payload verificato bit a bit contro
 > l'input. Evidenza:
-> [`k01pack_packaging.json`](../reports/trial_2026-09-13/k01pack_packaging.json),
+> [`k01pack_packaging.json`](../reports/invii/trial_2026-09-13/k01pack_packaging.json),
 > [CP-0005](checkpoints/0005-packaging-streaming-trial01.md).
 >
 > `vcc prep` continua a non girare qui, ed è documentato in
-> [`q01prep_prep_dry_run.log`](../reports/trial_2026-09-12/q01prep_prep_dry_run.log).
+> [`q01prep_prep_dry_run.log`](../reports/invii/trial_2026-09-12/q01prep_prep_dry_run.log).
 > Non serve più: le sue convalide sui metadati sono importate e chiamate dal nostro
 > percorso, e la parità sui rifiuti è dimostrata da 46 test su fixture a forma
 > ufficiale completa (D-019).
@@ -258,7 +258,7 @@ Si continua a salvare il JSON grezzo, verbatim, e a leggere i campi da lì.
 | entry id | `PNn227rxP3bVByS37W41` |
 | model name | `trial-01-transfer k01pack a=0.197 sd=4` |
 | file, byte, sha256 | `k01pack/prediction.vcc`, 4.203.520.000, `681b0aac…a1a2a6` |
-| run e commit | `k01pack`; codice in `reports/trial_2026-09-13/source_snapshot.tar.gz` |
+| run e commit | `k01pack`; codice in `reports/invii/trial_2026-09-13/source_snapshot.tar.gz` |
 | inviata (UTC) | 2026-09-13T01:12:02Z |
 | **complessivo** | **0,045929** |
 | `pds` / `mse` / `nmae` | 0,413315 / 0,000000 / 0,026833 |
@@ -347,7 +347,7 @@ Opzioni che contano:
 | `--validate-only` | convalida senza scrivere |
 
 Misurato su `trial-01-transfer` il 2026-09-13
-([`k01pack_packaging.json`](../reports/trial_2026-09-13/k01pack_packaging.json)):
+([`k01pack_packaging.json`](../reports/invii/trial_2026-09-13/k01pack_packaging.json)):
 
 | | Valore |
 |---|---|

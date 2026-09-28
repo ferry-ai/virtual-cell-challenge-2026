@@ -12,6 +12,11 @@ Three layers guard that, because two agents can run this at the same time:
 3. `31_check_docs.py` still reports duplicate numbers, which is what catches a file
    created by something that bypasses this script entirely.
 
+A number that a document under docs/ or reports/ already cites counts as taken even when its
+file is missing: another session may have written and cited a checkpoint it never committed
+(CP-0040 on 28 September, registry sheet R-020), and taking that number would point every
+citation at the wrong snapshot.
+
 Everything that can fail is checked before the file is created: a malformed index or a
 drifted template must not leave a half-registered checkpoint behind.
 
@@ -32,6 +37,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CHECKPOINTS = REPO_ROOT / "docs" / "checkpoints"
 FILENAME = re.compile(r"^(\d{4})-[a-z0-9][a-z0-9-]*\.md$")
+CITED = re.compile(r"checkpoints/(\d{4})-[a-z0-9][a-z0-9-]*\.md")
 SLUG = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 TYPES = ("osservazione", "esperimento", "correzione",
          "cambio-di-strategia", "ricostruzione-retrospettiva")
@@ -77,6 +83,20 @@ def existing_numbers(directory: Path) -> dict[int, Path]:
     return found
 
 
+def cited_numbers(directory: Path) -> set[int]:
+    """Checkpoint numbers cited by the documents of the project that owns `directory`.
+
+    Only for a checkpoints folder inside docs/: a scratch --dir has no citations to honour.
+    """
+    if directory.parent.name != "docs":
+        return set()
+    root, found = directory.parent.parent, set()
+    for folder in (root / "docs", root / "reports"):
+        for path in folder.rglob("*.md"):
+            found.update(int(n) for n in CITED.findall(path.read_text(encoding="utf-8", errors="replace")))
+    return found
+
+
 def validate_template(template: str) -> None:
     """Refuse to render from a template whose header no longer matches."""
     for pattern, _ in HEADER_FIELDS:
@@ -116,16 +136,17 @@ def append_index_row(index_text: str, number: int, filename: str,
     return "\n".join(lines) + "\n"
 
 
-def claim(directory: Path, slug: str, body) -> tuple[Path, int]:
+def claim(directory: Path, slug: str, body, taken: set[int] = frozenset()) -> tuple[Path, int]:
     """Take the lowest free number and create that file exclusively. Never overwrites.
 
-    `body(number)` renders the text once the number is settled.
+    `body(number)` renders the text once the number is settled; `taken` are numbers other
+    documents cite, which stay free for the checkpoint they name.
     """
     number = max(existing_numbers(directory), default=0) + 1
     for _ in range(MAX_CLAIM_ATTEMPTS):
         # A badly named file still occupies a number, so check the whole prefix, not
-        # just the name we are about to write.
-        if not any(directory.glob(f"{number:04d}-*")):
+        # just the name we are about to write; so does a number that is cited elsewhere.
+        if number not in taken and not any(directory.glob(f"{number:04d}-*")):
             path = directory / f"{number:04d}-{slug}.md"
             # Render before opening: no caller code runs between creating the file and
             # filling it, so the only window left belongs to a process ignoring both
@@ -176,7 +197,8 @@ def main() -> None:
     with file_lock(directory / ".INDICE.lock"):
         out, number = claim(directory, args.slug,
                             lambda n: render(template, n, args.title, args.date,
-                                             args.kind, args.author))
+                                             args.kind, args.author),
+                            taken=cited_numbers(directory))
         if index_path.exists():
             # Re-read inside the lock: a cooperating run may have appended since.
             updated = append_index_row(index_path.read_text(encoding="utf-8"),

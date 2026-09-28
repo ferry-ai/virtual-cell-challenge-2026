@@ -8,8 +8,9 @@ Each test is a way an agent gets lost, or the tree grows back what a cleanup rem
   the modules that import each one;
 * every definition in `src/vcc2026` is reachable from a live stage, and no file imports a
   name it never uses;
-* the repository map of `CLAUDE.md`, the index of `reports/CLAUDE.md` and the map of stages by
-  role in `scripts/CLAUDE.md` name exactly what is there, and no stage hardcodes a data path.
+* the repository map of `CLAUDE.md`, the category indexes of `reports/` (D-046) and the map of
+  stages by role in `scripts/CLAUDE.md` name exactly what is there, and no stage hardcodes a
+  data path.
 
 Standard library only: it reads the code, it does not import it.
 """
@@ -265,18 +266,32 @@ class TestFolderMaps(unittest.TestCase):
         self.assertEqual(missing, [], "add these to the repository map in CLAUDE.md")
         self.assertEqual(stale, [], "the repository map in CLAUDE.md names what is not there")
 
-    def test_the_reports_index_names_every_folder_once(self):
-        text = (REPO / "reports" / "CLAUDE.md").read_text(encoding="utf-8")
-        index = section(text, "## Index")
-        listed = [t for t in re.findall(r"`([^`]+)`", index)
-                  if "<" not in t and "/" not in t.rstrip("/")]
-        entries = children("reports/") - {"CLAUDE.md"}
-        self.assertEqual(sorted(t for t in set(listed) if listed.count(t) > 1), [],
-                         "a folder is listed twice in reports/CLAUDE.md")
-        self.assertEqual(sorted(entries - set(listed)), [],
-                         "add these folders to the index in reports/CLAUDE.md")
-        self.assertEqual(sorted(set(listed) - entries), [],
-                         "the index in reports/CLAUDE.md names folders that are not there")
+    def test_reports_are_filed_by_category_and_each_folder_is_indexed_once(self):
+        """D-046: reports/<categoria>/<tema>_<data>/, and a README per category that lists it."""
+        top = children("reports/") - {"CLAUDE.md", "README.md"}
+        loose = sorted(e for e in top if not e.endswith("/"))
+        self.assertEqual(loose, [], "a report goes in a category folder: reports/<categoria>/<tema>_<data>/")
+        index = (REPO / "reports" / "README.md").read_text(encoding="utf-8")
+        categories = set(re.findall(r"\]\(([a-z_]+/)README\.md\)", index))
+        self.assertEqual(sorted(categories), sorted(top),
+                         "reports/README.md links each category's README.md, and only those")
+        leaves: list[str] = []
+        for category in sorted(top):
+            readme = f"reports/{category}README.md"
+            self.assertTrue((REPO / readme).exists(), f"{readme} is missing")
+            links = re.findall(r"\]\(([^)#\s]+)\)", (REPO / readme).read_text(encoding="utf-8"))
+            listed = [t for t in links if "/" not in t.rstrip("/") and not t.endswith(".md")
+                      or t.endswith(".md") and "/" not in t and t != "README.md"]
+            entries = children(f"reports/{category}") - {"README.md"}
+            with self.subTest(category=category):
+                self.assertEqual(sorted(t for t in set(listed) if listed.count(t) > 1), [],
+                                 f"a folder is listed twice in {readme}")
+                self.assertEqual(sorted(entries - set(listed)), [], f"add these to the table of {readme}")
+                self.assertEqual(sorted(set(listed) - entries), [], f"{readme} names what is not there")
+            leaves += sorted(entries)
+        twice = sorted({leaf for leaf in leaves if leaves.count(leaf) > 1})
+        self.assertEqual(twice, [], "two categories hold a folder of the same name: the old paths "
+                                    "reports/<folder>/ that checkpoints name would become ambiguous")
 
     def test_the_map_of_stages_by_role_names_every_stage_once(self):
         block = fenced_block_after((SCRIPTS / "CLAUDE.md").read_text(encoding="utf-8"), "# scripts")

@@ -23,7 +23,7 @@ A misalignment between labels and effects would leave the direction members at c
 while remaining invisible in the score, so the check belongs here and not in the score.
 
     python scripts/83_prediction_calls.py --prediction <gen/prediction.h5ad> \
-        --out reports/prediction_calls_2026-09-17/p001 --n-targets 20 --ref-cells 9200
+        --out reports/generatore_e_banchi/prediction_calls_2026-09-17/p001 --n-targets 20 --ref-cells 9200
 """
 
 from __future__ import annotations

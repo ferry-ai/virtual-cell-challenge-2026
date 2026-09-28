@@ -17,7 +17,7 @@ sys.path.insert(0, str(REPO / "src"))
 from vcc2026.remote_csr import local_fetcher
 
 SPEC = importlib.util.spec_from_file_location(
-    "kolf_sums", REPO / "reports/universo_kolf_2026-09-27/kolf_sums.py")
+    "kolf_sums", REPO / "reports/sorgenti/universo_kolf_2026-09-27/kolf_sums.py")
 kolf = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(kolf)
 

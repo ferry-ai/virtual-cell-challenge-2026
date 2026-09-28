@@ -5,7 +5,8 @@ to Codex in full: read it before anything else. Its table says what to read for 
 The project map is `docs/PROGETTO.md`; how the live pipeline is run is `docs/LAVORO.md`.
 
 `configs/`, `src/vcc2026/`, `scripts/`, `reports/` and `docs/` each have a `CLAUDE.md` with the
-index and the rules of that folder. Read it before you edit a file there.
+index and the rules of that folder. Read it before you edit a file there. The evidence is filed by
+category since 28 September (D-046): start from `reports/README.md`.
 
 The chain of cycles (Codex → Claude → Grok, with a guardian and a morning plan) and the
 multi-model orchestrator were retired on 23 September 2026 (D-040 in `docs/DECISIONI.md`).

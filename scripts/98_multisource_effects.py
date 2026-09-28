@@ -21,12 +21,12 @@ Outputs: one npz per source on the official axis under ``--cache`` (data root, D
 ``--pseudo-scale`` is passed to `effects_from_pseudobulk` for the CD4 and extra sources. The
 default, "constant", is how every cache up to r5 was built; "library" keeps the pseudocount in the
 smaller group and gives the larger the same fraction of its total, so a gene with no count in
-either group gets 0 instead of the ratio of the totals (reports/pseudoconteggio_2026-09-27/).
+either group gets 0 instead of the ratio of the totals (reports/sorgenti/pseudoconteggio_2026-09-27/).
 ``--min-expected`` instead drops, gene by gene, a donor whose controls predict fewer than that many
 counts in the target group, whatever the target's own count. K562 goes through `effects_from_bulk` either way.
 
     python scripts/98_multisource_effects.py --cd4-rows <stage-97 h5ad> \
-        --cache <data_root>/processed/multisource_2026-09-22 --report-dir reports/multisource_2026-09-22
+        --cache <data_root>/processed/multisource_2026-09-22 --report-dir reports/sorgenti/multisource_2026-09-22
 """
 
 from __future__ import annotations

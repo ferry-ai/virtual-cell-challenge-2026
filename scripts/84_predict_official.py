@@ -2,7 +2,7 @@
 
 Three ingredients, all measured:
 
-1. a bench arm's six RAW members (`reports/bench_2026-09-17/*_bench.json`, field `raw`);
+1. a bench arm's six RAW members (`reports/generatore_e_banchi/bench_2026-09-17/*_bench.json`, field `raw`);
 2. a CALIBRATION pair -- one bench arm whose configuration was also submitted and scored,
    giving a per-member ratio `official_raw / bench_raw`;
 3. the official anchors solved by stage 82, which turn a raw value into the scaled score.
@@ -12,11 +12,11 @@ scored submission gives one ratio per member with no error bar, and the ratios m
 2026-09-17 range from 0.10 (jaccard) to 1.33 (mse). Written BEFORE the submission it
 describes, so that comparing it afterwards means something.
 
-    python scripts/84_predict_official.py --bench reports/bench_2026-09-17/hepg2_h002_bench.json \
+    python scripts/84_predict_official.py --bench reports/generatore_e_banchi/bench_2026-09-17/hepg2_h002_bench.json \
         --arm "transfer_a2.0+cismeas_a1.0+cis_a1.0" \
         --calib-arm "transfer_a1.0+cismeas_a1.0+cis_a1.0" \
-        --calib-status reports/trial_2026-09-17/status_49Gvtu504clN1mIu8T2V.json \
-        --anchors reports/anchors_2026-09-17/anchors.json --out reports/prediction_t03_2026-09-17
+        --calib-status reports/invii/trial_2026-09-17/status_49Gvtu504clN1mIu8T2V.json \
+        --anchors reports/gara/anchors_2026-09-17/anchors.json --out reports/invii/prediction_t03_2026-09-17
 """
 
 from __future__ import annotations

@@ -1,8 +1,8 @@
 """Target priors that need no measurement of the target: the CRISPRi cis head and network partners.
 
 Used by stage 100 (the ``cis`` and ``association`` blocks of a recipe) and stage 104 (features of
-the learned magnitude channel). Evidence: reports/modulo_cis_2026-09-26/ and
-reports/bersagli_nuovi_2026-09-26/.
+the learned magnitude channel). Evidence: reports/trasferimento/modulo_cis_2026-09-26/ and
+reports/trasferimento/bersagli_nuovi_2026-09-26/.
 """
 
 from __future__ import annotations

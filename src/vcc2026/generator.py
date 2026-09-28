@@ -4,9 +4,9 @@ The generator of trial-01 drew Poisson counts from ONE mean profile. Every cell
 was the same cell up to depth, so the scorer's Wilcoxon test -- which compares
 the predicted cells with the real control cells, gene by gene -- found shape
 differences everywhere: 4-6% more detected genes at zero predicted effect
-(`reports/trial_2026-09-12/q01pilot_generation_diagnostics.json`) and, on
+(`reports/invii/trial_2026-09-12/q01pilot_generation_diagnostics.json`) and, on
 HepG2, a no-effect prediction reading 1.154 on the normalized MSE where 1.0 is
-"predicted the control" (`reports/hepg2_2026-09-14/generator_x_predictor.json`).
+"predicted the control" (`reports/storico/hepg2_2026-09-14/generator_x_predictor.json`).
 
 This model keeps the three things that one-profile sampling throws away:
 

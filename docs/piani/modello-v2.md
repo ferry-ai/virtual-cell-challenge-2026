@@ -24,12 +24,12 @@ produrre un invio in poche ore.
 - **trasferimento:** l'effetto dello stesso bersaglio misurato in altre sorgenti, ristretto
   per affidabilità, pesato per somiglianza fra contesti (H6) invece che a pesi uguali;
 - **cis:** la repressione CRISPRi dei geni vicini al TSS, già nel t20
-  ([banco](../../reports/modulo_cis_2026-09-26/RISULTATI.md));
+  ([banco](../../reports/trasferimento/modulo_cis_2026-09-26/RISULTATI.md));
 - **programmi:** per i bersagli che nessuna sorgente ha misurato, coordinate sui programmi
   predette da descrittori del bersaglio (reti, complessi, embedding), modulate dallo stato
   del contesto letto dai controlli. La proiezione lineare dell'effetto trasferito sui
   programmi è già stata provata e perde
-  ([programmi](../../reports/programmi_2026-09-26/RISULTATI.md)): i programmi servono dove
+  ([programmi](../../reports/trasferimento/programmi_2026-09-26/RISULTATI.md)): i programmi servono dove
   manca l'effetto del bersaglio, non al posto del dettaglio misurato;
 - **emissione:** un generatore di cellule calibrato sui controlli del contesto.
 
@@ -37,20 +37,20 @@ produrre un invio in poche ore.
 
 | ID | Filone | Chi | Stato | Consegna |
 |---|---|---|---|---|
-| F1 | Cache "universo": effetti di **tutti** i bersagli di ogni sorgente, non solo dei 300 | Claude | K562 fatto (9.866 bersagli, [report](../../reports/universo_2026-09-26/RISULTATI.md)); CD4 fatto il 26/09 sera (12.238 bersagli, parità esatta sul pannello, [CD4](../../reports/universo_2026-09-26/CD4.md)); Orion: HCT116 fatto il 26/09 alle 21:37 (16.438 bersagli con effetti, parità esatta sul pannello), HEK293T fatto il 27/09 alle 01:44 (17.270 bersagli con effetti, parità esatta sul pannello) ([ORION](../../reports/universo_2026-09-26/ORION.md)); K562 essential e RPE1 di Replogle per i confronti descrittivi dell'[atlante](../../reports/atlante_2026-09-26/RISULTATI.md) | cache nella radice dati, report con copertura |
-| F2 | Banco con lo scorer vero su un contesto pubblico tenuto fuori (HepG2 a cellule singole): i sei membri, non proxy | Claude; job Colab `046_bench_hepg2_v2`, finito il 27/09 alle 16:16 UTC | fatto (r1) | [r1](../../reports/banco_hepg2_v2_2026-09-26/RISULTATI.md): la forma t19 batte la t16 (+0,026); raddoppiare la t19 dà +0,015 con l'intervallo sullo zero; testa cis nulla su HepG2 |
+| F1 | Cache "universo": effetti di **tutti** i bersagli di ogni sorgente, non solo dei 300 | Claude | K562 fatto (9.866 bersagli, [report](../../reports/sorgenti/universo_2026-09-26/RISULTATI.md)); CD4 fatto il 26/09 sera (12.238 bersagli, parità esatta sul pannello, [CD4](../../reports/sorgenti/universo_2026-09-26/CD4.md)); Orion: HCT116 fatto il 26/09 alle 21:37 (16.438 bersagli con effetti, parità esatta sul pannello), HEK293T fatto il 27/09 alle 01:44 (17.270 bersagli con effetti, parità esatta sul pannello) ([ORION](../../reports/sorgenti/universo_2026-09-26/ORION.md)); K562 essential e RPE1 di Replogle per i confronti descrittivi dell'[atlante](../../reports/trasferimento/atlante_2026-09-26/RISULTATI.md) | cache nella radice dati, report con copertura |
+| F2 | Banco con lo scorer vero su un contesto pubblico tenuto fuori (HepG2 a cellule singole): i sei membri, non proxy | Claude; job Colab `046_bench_hepg2_v2`, finito il 27/09 alle 16:16 UTC | fatto (r1) | [r1](../../reports/generatore_e_banchi/banco_hepg2_v2_2026-09-26/RISULTATI.md): la forma t19 batte la t16 (+0,026); raddoppiare la t19 dà +0,015 con l'intervallo sullo zero; testa cis nulla su HepG2 |
 | F3 | Motore di valutazione C/T/J e basi di confronto (nullo, risposta comune, trasferimento, modello lineare con embedding dei geni) | codex, run `20260926-001005-v2-f3-ctj`: fermato dopo 3 min per quota ChatGPT esaurita, ha lasciato un `ctj.py` parziale non applicato; il prosieguo lo fa Claude | in corso | patch rivista e test |
 | F4 | Modulo cis e pesi per contesto nel modello d'invio | Claude | cis fatto (t20) | t20 registrato |
 | F5 | Descrittori dei bersagli nuovi: STRING, CORUM, GO, reti TF con segno, embedding di proteine | libero | serve il via ai download | tabelle sull'asse ufficiale |
-| F6 | Contesti: stato dai controlli (p53, IFN, ciclo, linea) e somiglianza con le sorgenti | Claude (H6 su Mixscale) | somiglianza basale intera: non predice il trasferimento e pesarla peggiora ([report](../../reports/contesti_2026-09-26/RISULTATI.md)); restano aperte somiglianze per programma o per bersaglio | pesi per contesto provati sul banco |
+| F6 | Contesti: stato dai controlli (p53, IFN, ciclo, linea) e somiglianza con le sorgenti | Claude (H6 su Mixscale) | somiglianza basale intera: non predice il trasferimento e pesarla peggiora ([report](../../reports/trasferimento/contesti_2026-09-26/RISULTATI.md)); restano aperte somiglianze per programma o per bersaglio | pesi per contesto provati sul banco |
 | F7 | Calcolo in cloud: ambiente, dati, esecuzione di F2 e degli addestramenti | Claude, con Colab (dispatcher su Drive) e Kaggle (notebook privati via API) | Colab e Kaggle autorizzati dal proprietario il 27/09; RunPod solo chiedendo | job 046, 048, 049 e 050 su Colab; sonda e somme di VIPerturb-seq su Kaggle |
-| F9 | Modello bersaglio × contesto a quattro parametri (precursore della rete): prove E1 ed E2 | Claude; `gated.py` di codex | r1 fatto il 27/09 sera con la regola delle 18:21: E1 non passa, E2 parziale (Orion sì, CD4 no, r ≈ 0,002); lo scambio di contesto vale quanto il contesto giusto | [report](../../reports/modello_contesto_2026-09-27/RISULTATI.md) |
-| F10 | La rete su molti contesti: encoder del bersaglio e del contesto, decoder sui geni, via diretta sul trasferimento | claude2 (disegno e codice, 27/09 dalle 20:42; sessione interrotta dal limite d'uso a lavoro finito, messaggio finale mancante); autoverifica e addestramento su Kaggle/Colab | disegno e codice scritti, nulla eseguito | [DISEGNO](../../reports/rete_contesti_2026-09-27/DISEGNO.md) |
+| F9 | Modello bersaglio × contesto a quattro parametri (precursore della rete): prove E1 ed E2 | Claude; `gated.py` di codex | r1 fatto il 27/09 sera con la regola delle 18:21: E1 non passa, E2 parziale (Orion sì, CD4 no, r ≈ 0,002); lo scambio di contesto vale quanto il contesto giusto | [report](../../reports/modelli/modello_contesto_2026-09-27/RISULTATI.md) |
+| F10 | La rete su molti contesti: encoder del bersaglio e del contesto, decoder sui geni, via diretta sul trasferimento | claude2 (disegno e codice, 27/09 dalle 20:42; sessione interrotta dal limite d'uso a lavoro finito, messaggio finale mancante); autoverifica e addestramento su Kaggle/Colab | disegno e codice scritti, nulla eseguito | [DISEGNO](../../reports/modelli/rete_contesti_2026-09-27/DISEGNO.md) |
 | F8 | Prova generale del 22 ottobre: 300 bersagli finti e contesti tenuti fuori, dall'input al .vcc | libero | dopo F1-F3 | tempo e copertura misurati |
 
 ## Esiti della notte del 26 settembre
 
-- **Bersagli nuovi** ([report](../../reports/bersagli_nuovi_2026-09-26/RISULTATI.md)): per un
+- **Bersagli nuovi** ([report](../../reports/trasferimento/bersagli_nuovi_2026-09-26/RISULTATI.md)): per un
   bersaglio che nessuna sorgente ha misurato, il modulo cis da solo dà 0,555–0,579 di PDS proxy
   e 0,1 × STRING + cis fino a +0,035; lo stesso bersaglio misurato in K562 dà 0,711–0,755. Il
   modello lineare con embedding dei geni non discrimina nemmeno in campione.
@@ -65,33 +65,33 @@ produrre un invio in poche ore.
 
 ## Esiti del pomeriggio del 26 settembre
 
-- **Architettura a due canali** ([report](../../reports/trasferimento_appreso_2026-09-26/RISULTATI.md)):
+- **Architettura a due canali** ([report](../../reports/trasferimento/trasferimento_appreso_2026-09-26/RISULTATI.md)):
   la direzione specifica del bersaglio viene dal trasferimento (t20); un modello di gradient
   boosting, addestrato solo su sorgenti pubbliche, impara quali geni si muovono in ogni contesto e
   ripesa il trasferimento (`src/vcc2026/transfer_model.py`, stadio 104; `src/vcc2026/priors.py`
   spostato dallo stadio 100, uscita identica bit per bit). r3/r4 davano +0,008…+0,010 di PDS
-  attraverso il generatore, ma l'[audit di codex](../../reports/audit_piani_dati_2026-09-26/RISULTATI.md)
+  attraverso il generatore, ma l'audit di codex (reports/audit_piani_dati_2026-09-26/, **mai committato**: [R-020](../REGISTRO.md#r-020--evidenza-citata-ma-assente-dal-repository))
   ha trovato centri calcolati prima degli split (R-019). **Nel banco isolato (r5) il guadagno sulle
   linee nuove scende a +0,004…+0,008 (un intervallo su tre sopra zero) e l'nMAE proxy peggiora di
   +0,017…+0,051: per la regola fissata prima, niente t21.** Lo stadio 104 resta sperimentale,
   fuori dalla pipeline d'invio; la sua sorte si decide sul banco F2 con lo scorer vero.
-- **Risposta comune** ([report](../../reports/risposta_comune_2026-09-26/RISULTATI.md)): la parte di
+- **Risposta comune** ([report](../../reports/trasferimento/risposta_comune_2026-09-26/RISULTATI.md)): la parte di
   risposta condivisa da tutti i knockdown vale l'1–14 % dell'energia nelle sorgenti pubbliche e non
   si trasferisce fra linee (correlazione 0,05–0,11); aggiungerla non abbassa l'errore quadratico.
   La `mse` ufficiale non si recupera da lì.
 - **Pesi per contesto:** né la somiglianza del profilo basale (H6) né lo stato di p53 letto dai
-  controlli migliorano in modo coerente ([contesti](../../reports/contesti_2026-09-26/RISULTATI.md)).
+  controlli migliorano in modo coerente ([contesti](../../reports/trasferimento/contesti_2026-09-26/RISULTATI.md)).
 - **Agenti:** revisione di codex (due perdite trovate e corrette), critica di claude2, letteratura
-  di grok, dataset di antigravity: in `reports/trasferimento_appreso_2026-09-26/agenti/`. La sessione
+  di grok, dataset di antigravity: in `reports/trasferimento/trasferimento_appreso_2026-09-26/agenti/`. La sessione
   `76a3a45e` lavora in parallelo sui prior dei bersagli nuovi.
 
-- **Trasferimento gerarchico con Bayes empirico** ([report](../../reports/trasferimento_gerarchico_2026-09-26/RISULTATI.md)):
+- **Trasferimento gerarchico con Bayes empirico** ([report](../../reports/trasferimento/trasferimento_gerarchico_2026-09-26/RISULTATI.md)):
   risposta condivisa + deviazione di linea + rumore, CD4 con la varianza fra donatori. Non passa la
   regola: con tre o quattro linee la parte condivisa, gene per gene, si stima male.
-- **Quattro sorgenti** ([report](../../reports/quattro_sorgenti_2026-09-26/RISULTATI.md)): il t20 con
+- **Quattro sorgenti** ([report](../../reports/trasferimento/quattro_sorgenti_2026-09-26/RISULTATI.md)): il t20 con
   HEK293T a peso uguale passa la regola (errore sulle ampiezze più basso, discriminazione mista):
   candidato **t22**, registrato alle 13:34 UTC.
-- **Membro `mse`** ([report](../../reports/risposta_comune_2026-09-26/RISULTATI.md), r2): la `mse`
+- **Membro `mse`** ([report](../../reports/trasferimento/risposta_comune_2026-09-26/RISULTATI.md), r2): la `mse`
   ufficiale dei nostri invii è 1 + E/4786, con E l'energia prevista; le previsioni sono quasi ortogonali
   agli effetti reali. Serve direzione migliore, non un'ampiezza diversa.
 - **Regola D-045** del proprietario: niente stime dei tempi, niente giornate chiuse per un candidato fallito.
@@ -100,7 +100,7 @@ produrre un invio in poche ore.
 
 Richiesta del proprietario: usare molti dati insieme, non un dataset alla volta. Download autorizzati
 alle 15:25: universo CD4 genome-wide (44,6 GB, in corso) e universi Orion HCT116 e HEK293T (46,6 e 79,7 GB
-in streaming, sottoagente di questa sessione, `reports/universo_2026-09-26/`). Con K562 fanno quattro linee
+in streaming, sottoagente di questa sessione, `reports/sorgenti/universo_2026-09-26/`). Con K562 fanno quattro linee
 per circa 10.000 bersagli ciascuna, contro i 300 di oggi. Su quella base:
 1. **Varianze della risposta stimate su migliaia di bersagli**: il modello gerarchico (già nello stadio 100,
    blocco `pooling`) con σ² e τ² per gene stimati sull'universo, non sul pannello.
@@ -108,46 +108,46 @@ per circa 10.000 bersagli ciascuna, contro i 300 di oggi. Su quella base:
    tranne il pannello (regime C pulito per i 300).
 3. **Programmi di risposta** da decine di migliaia di knockdown, per ridurre il rumore dei profili.
 4. **Banco con migliaia di bersagli per linea tenuta fuori**: intervalli molto più stretti di quelli di oggi.
-5. Poi HIPSCI (34 linee iPSC, catalogo in `reports/ricerca_sorgenti_2026-09-26/`), se il proprietario dà il via.
+5. Poi HIPSCI (34 linee iPSC, catalogo in `reports/sorgenti/ricerca_sorgenti_2026-09-26/`), se il proprietario dà il via.
 
 ## Esiti della sera e della notte del 26–27 settembre
 
 - **Universi:** CD4 genome-wide (12.238 bersagli) e Orion HCT116 (16.438) completi, con parità esatta sul
   pannello; HEK293T (17.270) completo il 27/09 alle 01:44, con parità esatta; K562 essential e RPE1 per i confronti
-  ([universo](../../reports/universo_2026-09-26/CD4.md), [ORION](../../reports/universo_2026-09-26/ORION.md)).
-- **Atlante r1** ([report](../../reports/atlante_2026-09-26/RISULTATI.md)): nessun braccio passa la regola
+  ([universo](../../reports/sorgenti/universo_2026-09-26/CD4.md), [ORION](../../reports/sorgenti/universo_2026-09-26/ORION.md)).
+- **Atlante r1** ([report](../../reports/trasferimento/atlante_2026-09-26/RISULTATI.md)): nessun braccio passa la regola
   su 1.000 bersagli fuori dal pannello per linea tenuta fuori. Programmi di risposta e accordo per bersaglio
   perdono ovunque; il modello gerarchico non separa la deviazione di linea dal rumore (τ² mediano 0); il più
   vicino è la quota condivisa per gene, che sul pannello passa una regola nuova fissata prima
-  ([quota condivisa](../../reports/quota_condivisa_2026-09-27/RISULTATI.md)): candidato **t23**, registrato
-  il 26/09 alle 23:14 UTC ([previsione](../../reports/prediction_t23_2026-09-27/prediction.json)); l'invio
+  ([quota condivisa](../../reports/trasferimento/quota_condivisa_2026-09-27/RISULTATI.md)): candidato **t23**, registrato
+  il 26/09 alle 23:14 UTC ([previsione](../../reports/invii/prediction_t23_2026-09-27/prediction.json)); l'invio
   aspetta il via del proprietario.
 - **t22 valutato** il 26/09 alle 23:40 UTC: non conclusivo contro il t20 per la sua regola, punteggio
-  ufficiale più alto finora ([confronto](../../reports/prediction_t22_2026-09-26/comparison.json)).
+  ufficiale più alto finora ([confronto](../../reports/invii/prediction_t22_2026-09-26/comparison.json)).
 - **t24** registrato il 27/09 alle 00:02 UTC e impacchettato alle 12:02: il t22 con un altro seme del
   generatore, per misurare il rumore del punteggio ufficiale fra due estrazioni della stessa previsione
-  ([previsione](../../reports/prediction_t24_2026-09-27/prediction.json)). t23 e t24 aspettano il via.
+  ([previsione](../../reports/invii/prediction_t24_2026-09-27/prediction.json)). t23 e t24 aspettano il via.
 - **Atlante r2** (replica con HEK293T, finita alle 13:04 del 27/09,
-  [report](../../reports/atlante_2026-09-26/RISULTATI.md)): la quota condivisa guadagna con le linee Orion
+  [report](../../reports/trasferimento/atlante_2026-09-26/RISULTATI.md)): la quota condivisa guadagna con le linee Orion
   tenute fuori, non con K562 e CD4. Stimata anche su HEK293T accanto a HCT116 si appiattisce: prima di
   usarla nel set finale va provata la stima con una linea per laboratorio (punto aperto).
 - **Linea contro stato (descrittivo, stessi bersagli):** stati diversi delle stesse cellule CD4 0,20–0,25 di
   coseno mediano fra profili, due esperimenti K562 0,16, un'altra linea dello stesso laboratorio circa 0,07,
   un'altra linea e laboratorio 0,02. È la prova misurata più forte sulla domanda strategica qui sotto, ma
   confonde biologia, laboratorio, protocollo e rumore: non dimostra che la parte propria del contesto non si
-  possa imparare ([revisione di codex](../../reports/revisione_codex_2026-09-27/REVISIONE.md), punto 4).
+  possa imparare ([revisione di codex](../../reports/analisi/revisione_codex_2026-09-27/REVISIONE.md), punto 4).
 - **SE delle sorgenti Replogle:** calibrato sulle guide non mirate per i geni tipici; le ricette non
   restringono troppo il K562 (ipotesi chiusa).
 
 ## Pomeriggio del 27 settembre
 
-- **Artefatto dello stimatore pseudobulk** ([report](../../reports/pseudoconteggio_2026-09-27/RISULTATI.md)):
+- **Artefatto dello stimatore pseudobulk** ([report](../../reports/sorgenti/pseudoconteggio_2026-09-27/RISULTATI.md)):
   con il pseudoconteggio costante un gene senza conteggi vale ln(L_c/L_t); i geni Y delle donatrici CD4
   risultavano indotti da ogni knockdown (5,3–5,5 % dell'energia del t22 sui geni espressi in A e C).
   Correzione `min_expected` (cache r9); **t25** = t22 su r9, registrato alle 11:41 UTC, in generazione.
-- **Revisione di codex** ([sintesi e risposta](../../reports/revisione_codex_2026-09-27/REVISIONE.md)):
+- **Revisione di codex** ([sintesi e risposta](../../reports/analisi/revisione_codex_2026-09-27/REVISIONE.md)):
   accettati i sei punti. Consegne: dati corretti e ablazioni (Claude: [ablazione del
-  t23](../../reports/ablazione_t23_2026-09-27/RISULTATI.md), universi corretti); banco C/T/J congelato (codex);
+  t23](../../reports/trasferimento/ablazione_t23_2026-09-27/RISULTATI.md), universi corretti); banco C/T/J congelato (codex);
   modello bersaglio × contesto (disegno a claude2).
 - **Base di lancio:** modelli fissati in `agent-hub/control/agents.toml` su richiesta del proprietario
   (claude2 Opus 5.5 con sforzo massimo, codex GPT-6-Astra medio); in corso codex, grok (revisione della
@@ -161,17 +161,17 @@ Direzione del proprietario: usare e analizzare quanti più dati possibile, per r
 
 - **Universi nuovi e corretti (misurato):**
   - CD4, HCT116 e HEK293T ricostruiti con lo stimatore corretto, con parità esatta sul pannello
-    ([universi corretti](../../reports/universo_corretto_2026-09-27/RISULTATI.md));
+    ([universi corretti](../../reports/sorgenti/universo_corretto_2026-09-27/RISULTATI.md));
   - **KOLF2.1J** (iPSC) con 10.985 bersagli, letto a intervalli di byte dal file di 189 GB;
   - **A549** (knockout, un'altra modalità) con 1.000 bersagli
-    ([ingestione](../../reports/universo_nuovi_2026-09-27/RISULTATI.md)).
+    ([ingestione](../../reports/sorgenti/universo_nuovi_2026-09-27/RISULTATI.md)).
 - **In corso:**
   - HIPSCI, 34 linee iPSC, schermo mirato per linea;
   - Southard, CRISPRa di 1.836 fattori di trascrizione in fibroblasti e RPE-1;
   - VIPerturb-seq, K562 letto con Flex come i contesti di gara: un ponte di chimica sulle risposte.
 - **Controllo sul bersaglio (misurato):** il gene silenziato scende in ogni universo. La profondità mediana va da
   −1,81 (K562) a −0,62 (HEK293T) in log naturale.
-- **Profondità e risposta** ([report](../../reports/profondita_silenziamento_2026-09-27/RISULTATI.md)):
+- **Profondità e risposta** ([report](../../reports/sorgenti/profondita_silenziamento_2026-09-27/RISULTATI.md)):
   - bersaglio per bersaglio, un silenziamento più profondo va con una risposta più grande in tutte e dieci le
     coppie di linee, ma debolmente (misurato);
   - fra sorgenti la relazione non tiene (misurato);
@@ -200,7 +200,7 @@ le dà il proprietario; la ripresa del filone è con lui, da qui.
 
 ### Misurato stanotte (dettagli nei report citati)
 
-- **Encoder di contesto, prima tornata** ([RISULTATI](../../reports/encoder_contesto_2026-09-28/RISULTATI.md)), seme 0,
+- **Encoder di contesto, prima tornata** ([RISULTATI](../../reports/modelli/encoder_contesto_2026-09-28/RISULTATI.md)), seme 0,
   regola registrata alle 03:10. Parte Orion:
   - nessuna condizione passa;
   - contro `none` guadagni di un millesimo di skill;
@@ -208,25 +208,25 @@ le dà il proprietario; la ripresa del filone è con lui, da qui.
   - E2 non passa.
 
   La parte K562/CD4 è finita su Kaggle ma non è scaricata né letta.
-- **T1 ridotto sui farmaci di Tahoe** ([RISULTATI](../../reports/tahoe_bracci_2026-09-28/RISULTATI.md)), 48 linee:
+- **T1 ridotto sui farmaci di Tahoe** ([RISULTATI](../../reports/modelli/tahoe_bracci_2026-09-28/RISULTATI.md)), 48 linee:
   - non passa;
   - i vicini giusti battono quelli sbagliati (+0,06);
   - ma copiarli perde contro la media di tutte le linee (−0,14).
-- **La rete su r1**, varianti descrittive ([r2/varianti_r1](../../reports/rete_contesti_r2_2026-09-28/RISULTATI.md)):
+- **La rete su r1**, varianti descrittive ([r2/varianti_r1](../../reports/modelli/rete_contesti_r2_2026-09-28/RISULTATI.md)):
   la perdita sulla famiglia tenuta fuori è minima entro i primi 100 passi in ogni variante che può imparare.
-- **Il ponte Flex–3'** ([RISULTATI](../../reports/ponte_flex_2026-09-28/RISULTATI.md)): VIPerturb-seq concorda con
+- **Il ponte Flex–3'** ([RISULTATI](../../reports/sorgenti/ponte_flex_2026-09-28/RISULTATI.md)): VIPerturb-seq concorda con
   sé stesso 0,110 (metà contro metà), col 3' 0,030 sugli stessi bersagli.
 - **Dati nuovi:**
-  - corpus basale ([SORGENTI](../../reports/corpus_basale_2026-09-28/SORGENTI.md): una decisione per sorgente);
+  - corpus basale ([SORGENTI](../../reports/sorgenti/corpus_basale_2026-09-28/SORGENTI.md): una decisione per sorgente);
   - dataset della rete r2 con 12 contesti CRISPRi;
-  - effetti per 19 linee HIPSCI (`reports/universo_hipsci_2026-09-27/linee_p2/`): il gene silenziato scende in 15;
+  - effetti per 19 linee HIPSCI (`reports/sorgenti/universo_hipsci_2026-09-27/linee_p2/`): il gene silenziato scende in 15;
     in fiaj_3, tolg_4, pipw_5 e oikd_2 poco o nulla.
 
 ### In corso o sospeso
 
 - **r2** (la rete con più contesti, regola delle 04:00): due sessioni GPU su Kaggle partite alle 10:06, kernel
   `vcc-r2-s0-shard0` e `vcc-r2-s0-shard1`. La lettura A (r2 contro r1) si fa con
-  `reports/rete_contesti_r2_2026-09-28/cross_compare.py`.
+  `reports/modelli/rete_contesti_r2_2026-09-28/cross_compare.py`.
 - **Da scaricare e leggere:**
   - la seconda sessione dell'encoder (`vcc-enc-s0-shard1`: K562 e CD4);
   - il seme 1 di r1 (`vcc-rete-r1-s1`).
@@ -283,7 +283,7 @@ repository pubblico: serve la sua decisione su se e come farlo.
     indicata), DepMap 26Q1 (305 MB);
   - De Simone 2025, Flex contro 3' sugli stessi PBMC;
   - il dataset completo della gara 2025 (H1);
-  - vedi [ricerca](../../reports/ricerca_sorgenti_2026-09-27/RISULTATI.md).
+  - vedi [ricerca](../../reports/sorgenti/ricerca_sorgenti_2026-09-27/RISULTATI.md).
 - Via agli invii: nessun filone invia da solo; per ora niente invii né push.
 
 ## Protezioni

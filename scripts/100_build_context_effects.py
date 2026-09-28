@@ -16,9 +16,9 @@ pooled effect, so ``zshrink`` with ``shrink_k`` 4 differs from ``shrunk``.
 
 An optional ``cis`` block adds the CRISPRi cis head, a model of the knockdown itself rather than
 of its downstream response: dCas9-KRAB bound at a target's TSS also represses genes whose TSS is
-close, in any context (CP-0020 section 3.5; reports/modulo_cis_2026-09-26/):
+close, in any context (CP-0020 section 3.5; reports/trasferimento/modulo_cis_2026-09-26/):
 
-    "cis": {"pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv",
+    "cis": {"pairs": "reports/trasferimento/cis_2026-09-17/k562_neighbour_pairs.csv",
             "max_distance_bp": 5000, "scale": 2.0}
 
 The prior is the live `vcc2026.predictor_sc.CisModel.from_pairs` (median ln fold change by TSS
@@ -29,7 +29,7 @@ to their transferred value, after the amplitude, which calibrates only the trans
 those pairs are marked observed so stage 45 applies them, measured by a source or not.
 
 An optional ``association`` block predicts the targets that no source of the context covers, the
-final set's new targets, from their network partners (reports/bersagli_nuovi_2026-09-26/):
+final set's new targets, from their network partners (reports/trasferimento/bersagli_nuovi_2026-09-26/):
 
     "association": {"universe": "processed/universe_k562_2026-09-26",
                     "links": "interim/encoder_inputs_2026-09-14/string_physical_links",
@@ -43,7 +43,7 @@ head; those genes are marked observed. Covered targets are untouched, so a panel
 covers gives the same effects with or without the block.
 
 An optional ``pooling`` block replaces the equal-weight mean with a hierarchical empirical-Bayes
-pooling (reports/trasferimento_gerarchico_2026-09-26/), and needs ``"effect": "raw"``:
+pooling (reports/trasferimento/trasferimento_gerarchico_2026-09-26/), and needs ``"effect": "raw"``:
 
     "pooling": {"method": "eb", "se_factor": {"cd4_mix": 2.0}, "bin_weight": 100, "bins": 50,
                 "basal": "processed/basal_sources_2026-09-26.csv",
@@ -60,13 +60,14 @@ context's control CPM in ``basal``) equal the reference's for that context, cis 
 sides. A mixture saved without SE (``cd4_mix``) gets its parts' pooled SE (`transfer_model.mixture_se`).
 
 An optional ``gene_share`` block weights the transferred part gene by gene
-(reports/quota_condivisa_2026-09-27/):
+(reports/trasferimento/quota_condivisa_2026-09-27/):
 
-    "gene_share": {"path": "reports/quota_condivisa_2026-09-27/t23/share.csv",
+    "gene_share": {"path": "reports/trasferimento/quota_condivisa_2026-09-27/t23/share.csv",
                    "basal": "processed/basal_sources_2026-09-26.csv",
                    "match_detectable": "processed/effects_t22_2026-09-26"}
 
-``path`` (in the repository) gives every gene of the official axis a share in [0, 1]: the part of its
+``path`` (in the repository; a report path written before 28 September 2026 is followed to its
+category folder by `config.repo_file`, D-046) gives every gene of the official axis a share in [0, 1]: the part of its
 knockdown response that the universes' lines have in common, sigma2 / (sigma2 + tau2), 0 where they
 cannot estimate it. The transferred part (amplitude applied) is multiplied by it; if
 ``match_detectable`` names a stage-100 output, a scale per context then makes the median count of
@@ -110,7 +111,6 @@ from vcc2026.predictor_sc import load_coordinates  # noqa: E402
 from vcc2026.priors import add_cis, cis_prior, partner_effects  # noqa: E402
 from vcc2026.transfer_model import detectable_threshold, match_detectable, mixture_se  # noqa: E402
 
-REPO = Path(__file__).resolve().parents[1]
 DATA_ROOT = config.paths().data_root  # VCC2026_DATA_ROOT, else configs/config.yaml
 EFFECTS = ("shrunk", "raw", "zshrink")
 
@@ -231,7 +231,7 @@ def main() -> None:
     if share_spec is not None:
         if pool_spec is not None:
             raise SystemExit("recipe gene_share and pooling cannot be combined")
-        share_path = REPO / share_spec["path"]
+        share_path = config.repo_file(share_spec["path"])
         share_vec = load_gene_share(share_path, axis)
         share_basal = (pd.read_csv(DATA_ROOT / share_spec["basal"]).set_index("gene_name").reindex(axis)
                        if share_spec.get("match_detectable") else None)
@@ -242,7 +242,7 @@ def main() -> None:
     tables = [load_table(args.cache, n, effect, shrink_k) for n in names]
     cis_spec, cis_info = recipe.get("cis"), None
     if cis_spec is not None:
-        pairs_path = REPO / cis_spec["pairs"]
+        pairs_path = config.repo_file(cis_spec["pairs"])
         cis_model = cis_prior(pd.read_csv(pairs_path), panel)
         coords = load_coordinates(args.coords)
         cis_info = {"spec": cis_spec, "pairs_sha256": hashlib.sha256(pairs_path.read_bytes()).hexdigest(),

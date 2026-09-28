@@ -14,53 +14,91 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-046 | L'evidenza sta in `reports/<categoria>/<tema>_<data>/`, con un indice per categoria che dice data, nocciolo, validità e peso di ogni cartella; i percorsi scritti prima si seguono per nome un livello più giù; le analisi superate stanno in `docs/storico/` | attiva | 2026-09-28 | Richiesta del proprietario in chat del 28 settembre; `reports/README.md`, `reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md` |
 | D-045 | Nessun limite preventivo: gli agenti non stimano i tempi e non chiudono la giornata perché un candidato non passa la sua regola; finché la quota del giorno è aperta si passa ad altri candidati | attiva | 2026-09-26 | Richiesta del proprietario in chat del 26 settembre, pomeriggio |
 | D-044 | La ricerca ammette sorgenti senza bersagli in comune col pannello; i nuovi predittori si valutano soprattutto su bersagli e contesti entrambi nuovi | attiva | 2026-09-24 | Richiesta del proprietario in chat; [CP-0036](checkpoints/0036-generalizzazione-bersagli-contesti.md), [GENERALIZZAZIONE.md](GENERALIZZAZIONE.md) |
 | D-001 | I dati pesanti stanno fuori dal repository | attiva | 2026-09-11 | `configs/config.yaml`, `src/vcc2026/config.py` |
-| D-002 | Servono dati perturbazionali esterni: la previsione è zero-shot | attiva | 2026-09-11 | `docs/data_strategy_2026-09-11.md` |
-| D-003 | Prima un banco di prova locale, poi modelli più complessi | attiva | 2026-09-11 | `docs/data_strategy_2026-09-11.md` §6, `docs/revisione_analisi_2026-09-11.md` §6 |
-| D-004 | Ordine di acquisizione: CD4, poi Orion HCT116, poi i benchmark — **sostituita da D-031 per l'ordine operativo** | superata | 2026-09-12 | `docs/candidate_adversarial_review_2026-09-12.md` §5, [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md) |
-| D-005 | Nessun atlante completo e nessun servizio a pagamento su questa macchina | attiva | 2026-09-12 | `reports/candidate_verification/hardware.json` |
-| D-006 | Postura di sottomissione: decidere sulla direzione, comprimere l'ampiezza — **superata da D-042 per l'ampiezza degli invii** | superata | 2026-09-11, misurata 2026-09-12 | `reports/pipeline/transfer_experiment.json`, [CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md) §3.4 |
-| D-007 | K562 resta come ablazione: non è scartata | attiva | 2026-09-12 | `docs/candidate_adversarial_review_2026-09-12.md` §3 |
-| D-008 | Si valuta con `cell-eval2 0.16.0`, tutte e sei le metriche | attiva | 2026-09-11 | `reports/scorer/vcc2026_contract.json` |
-| D-009 | Un gene non misurato ha una maschera, non uno zero | attiva | 2026-09-11 | `docs/data_strategy_2026-09-11.md` §4 |
+| D-002 | Servono dati perturbazionali esterni: la previsione è zero-shot | attiva | 2026-09-11 | `docs/storico/data_strategy_2026-09-11.md` |
+| D-003 | Prima un banco di prova locale, poi modelli più complessi | attiva | 2026-09-11 | `docs/storico/data_strategy_2026-09-11.md` §6, `docs/storico/revisione_analisi_2026-09-11.md` §6 |
+| D-004 | Ordine di acquisizione: CD4, poi Orion HCT116, poi i benchmark — **sostituita da D-031 per l'ordine operativo** | superata | 2026-09-12 | `docs/storico/candidate_adversarial_review_2026-09-12.md` §5, [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md) |
+| D-005 | Nessun atlante completo e nessun servizio a pagamento su questa macchina | attiva | 2026-09-12 | `reports/storico/candidate_verification/hardware.json` |
+| D-006 | Postura di sottomissione: decidere sulla direzione, comprimere l'ampiezza — **superata da D-042 per l'ampiezza degli invii** | superata | 2026-09-11, misurata 2026-09-12 | `reports/storico/pipeline/transfer_experiment.json`, [CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md) §3.4 |
+| D-007 | K562 resta come ablazione: non è scartata | attiva | 2026-09-12 | `docs/storico/candidate_adversarial_review_2026-09-12.md` §3 |
+| D-008 | Si valuta con `cell-eval2 0.16.0`, tutte e sei le metriche | attiva | 2026-09-11 | `reports/gara/scorer/vcc2026_contract.json` |
+| D-009 | Un gene non misurato ha una maschera, non uno zero | attiva | 2026-09-11 | `docs/storico/data_strategy_2026-09-11.md` §4 |
 | D-010 | Il progetto si documenta con mappa, checkpoint, decisioni e registro | attiva | 2026-09-12 | `docs/checkpoints/0001-ricostruzione-stato-2026-09-12.md` |
 | D-011 | La validazione non si filtra per efficacia osservata delle guide | attiva | 2026-09-12 | `configs/candidate_ingestion.json` |
-| D-012 | L'ampiezza si calibra su bersagli tenuti fuori, non si sceglie | attiva | 2026-09-12 | `reports/pipeline/transfer_experiment.json` |
+| D-012 | L'ampiezza si calibra su bersagli tenuti fuori, non si sceglie — **superata da D-042 per l'ampiezza degli invii** | superata | 2026-09-12 | `reports/storico/pipeline/transfer_experiment.json` |
 | D-013 | Lo stato di una sorgente lo dichiara il registry versionato — **superata da D-040: codice archiviato** | superata | 2026-09-12 | `configs/sources.yaml`, `src/vcc2026/registry.py` |
-| D-014 | Il backend DE si registra accanto a ogni metrica | attiva | 2026-09-12 | `reports/pipeline/null_calibration_A.json` |
+| D-014 | Il backend DE si registra accanto a ogni metrica | attiva | 2026-09-12 | `reports/storico/pipeline/null_calibration_A.json` |
 | D-015 | Il vincolo compositivo si assorbe sui geni supportati, non su quelli mascherati | attiva | 2026-09-12 | `src/vcc2026/inference.py`, [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.3 |
 | D-016 | Non si riduce la densità della previsione per far entrare `vcc prep` nella RAM locale — **sostituita da D-018** | superata | 2026-09-12 | [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §3.5, [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.1 |
 | D-017 | `trial-00-controls` non si invia finché la conformità alle regole non è chiarita | attiva | 2026-09-12 | `docs/SOTTOMISSIONE.md` §2 |
 | D-018 | Il packaging si fa a memoria limitata, non su una macchina più grande | attiva | 2026-09-13 | `src/vcc2026/packaging.py`, [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.1 |
 | D-019 | La parità con `vcc prep` si dimostra con fixture a forma ufficiale e rifiuti bilaterali | attiva | 2026-09-13 | `tests/test_packaging_parity.py`, [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) §3.5 |
 | D-020 | L'oracolo numerico è autonomo: ricalcola, non giudica biologia, e il candidato non è fidato — **superata da D-040: codice archiviato** | superata | 2026-09-13 | `docs/oracle/CONTRATTO.md`, [CP-0007](checkpoints/0007-oracle-pairwise-loss.md), [CP-0009](checkpoints/0009-oracle-json-number-csv-error.md) |
-| D-021 | Le consultazioni multi-modello passano da un orchestratore locale che avvii tu — **dal 2026-09-16 anche la catena di cicli, quando Grok lo chiede, al massimo tre campagne per ciclo** — **superata da D-040: codice archiviato** | superata | 2026-09-13, aggiornata 2026-09-16 | `docs/ORCHESTRATORE.md`, `reports/orchestrator/prova-a-secco-2026-09-13/`, `docs/CICLO_GIORNALIERO.md`, [CP-0019](checkpoints/0019-catena-cicli-guardiano.md) |
+| D-021 | Le consultazioni multi-modello passano da un orchestratore locale che avvii tu — **dal 2026-09-16 anche la catena di cicli, quando Grok lo chiede, al massimo tre campagne per ciclo** — **superata da D-040: codice archiviato** | superata | 2026-09-13, aggiornata 2026-09-16 | `docs/ORCHESTRATORE.md`, `reports/storico/orchestrator/prova-a-secco-2026-09-13/`, `docs/CICLO_GIORNALIERO.md`, [CP-0019](checkpoints/0019-catena-cicli-guardiano.md) |
 | D-022 | Un posto vuoto si copre con una seconda sessione del servizio ancora attivo, dichiarata prima e marcata dopo — **superata da D-040: codice archiviato** | superata | 2026-09-14 | `docs/ORCHESTRATORE.md` §9-ter-ter, `configs/orchestrator/orchestrator.yaml`, `tests/test_orchestrator.py` (`StandInTests`) |
 | D-023 | La ricerca scientifica è una modalità separata: i livelli di provenienza non si promuovono, le piste le sceglie una regola, le contraddizioni non si chiudono — **superata da D-040: codice archiviato** | superata | 2026-09-14 | `docs/RICERCA_SCIENTIFICA.md`, [CP-0010](checkpoints/0010-modalita-ricerca-scientifica.md), `tests/test_orchestrator_research.py` |
 | D-024 | Nel confronto modulare l'universo genico è l'intersezione dei geni effettivamente misurati, non il riempimento a zero | attiva | 2026-09-14 | [CP-0011](checkpoints/0011-primo-benchmark-modulare.md), `src/vcc2026/benchmark/universe.py`, D-009 |
 | D-025 | Metrica primaria del pilot modulare: `pooled_mse_vs_null` in spazio proxy; non inferiorità non dichiarata; LOCO a due contesti = trasferimento, non apprendimento generale del contesto | attiva | 2026-09-14 | [CP-0011](checkpoints/0011-primo-benchmark-modulare.md), `configs/benchmark.yaml` |
 | D-026 | Tre contesti perturbati: il descrittore di contesto e misurabile, non ancora utile | attiva | 2026-09-14 | [CP-0013](checkpoints/0013-hepg2-terzo-contesto.md), `configs/benchmark_3ctx.yaml` |
-| D-027 | Le metriche della gara non si sommano fra generatore e predittore | attiva | 2026-09-14 | [CP-0013](checkpoints/0013-hepg2-terzo-contesto.md), `reports/hepg2_2026-09-14/generator_x_predictor.json` |
-| D-028 | Il GO slim non entra nei descrittori: il controllo permutato va come quello vero | attiva | 2026-09-15 | [CP-0014](checkpoints/0014-go-slim-e-gpu.md), `reports/go_slim_2026-09-15/` |
-| D-029 | Nessun porting su GPU prima di aver sostituito la SVD completa con una randomizzata | attiva | 2026-09-15 | [CP-0014](checkpoints/0014-go-slim-e-gpu.md), [CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md), `reports/svd_2026-09-15/` |
-| D-030 | La griglia di rango della base resta {8, 16}; 32/64/128 non diventano il default | attiva | 2026-09-15 | [CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md), `reports/rank_2026-09-15/` |
-| D-031 | Ordine operativo: audit Jiang, poi Jurkat come quarto contesto; CD4 rinviato — **la parte su CD4 è superata da D-039** | attiva | 2026-09-15 | [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md), `docs/PIANO_OPERATIVO_2026-09-15.md` |
-| D-032 | Protocollo di valutazione congelato; i fold del 14–15 settembre sono sviluppo | attiva | 2026-09-15 | [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md), `configs/eval_protocol.yaml` |
-| D-033 | Il gate di espressione non è adottato: la regola non è soddisfatta e i due controlli indicano un filtro di rumore, non una regola di contesto | attiva | 2026-09-16 | [CP-0017](checkpoints/0017-gate-espressione-destinazione.md), `reports/expression_gate_2026-09-16/decision.json` |
-| D-034 | Il generatore delle sottomissioni è `ControlModel`: cellule nuove, apprese dai controlli del contesto, nessuna cellula di controllo copiata — **proposta del lead, da confermare dal proprietario** | da-verificare | 2026-09-17 | [CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) §3.3, `reports/generator_null_smoke_2026-09-17/` |
+| D-027 | Le metriche della gara non si sommano fra generatore e predittore | attiva | 2026-09-14 | [CP-0013](checkpoints/0013-hepg2-terzo-contesto.md), `reports/storico/hepg2_2026-09-14/generator_x_predictor.json` |
+| D-028 | Il GO slim non entra nei descrittori: il controllo permutato va come quello vero | attiva | 2026-09-15 | [CP-0014](checkpoints/0014-go-slim-e-gpu.md), `reports/storico/go_slim_2026-09-15/` |
+| D-029 | Nessun porting su GPU prima di aver sostituito la SVD completa con una randomizzata | attiva | 2026-09-15 | [CP-0014](checkpoints/0014-go-slim-e-gpu.md), [CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md), `reports/storico/svd_2026-09-15/` |
+| D-030 | La griglia di rango della base resta {8, 16}; 32/64/128 non diventano il default | attiva | 2026-09-15 | [CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md), `reports/storico/rank_2026-09-15/` |
+| D-031 | Ordine operativo: audit Jiang, poi Jurkat come quarto contesto; CD4 rinviato — **superata: Jiang e Jurkat non sono mai stati acquisiti; CD4 e Orion sono entrati (D-039, D-041); la ricerca segue D-044** | superata | 2026-09-15 | [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md), `docs/PIANO_OPERATIVO_2026-09-15.md` |
+| D-032 | Protocollo di valutazione congelato; i fold del 14–15 settembre sono sviluppo — **superata: il protocollo è archiviato (D-040); i protocolli congelati di oggi sono in GENERALIZZAZIONE §3 e nello stadio 105** | superata | 2026-09-15 | [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md), `configs/eval_protocol.yaml` |
+| D-033 | Il gate di espressione non è adottato: la regola non è soddisfatta e i due controlli indicano un filtro di rumore, non una regola di contesto | attiva | 2026-09-16 | [CP-0017](checkpoints/0017-gate-espressione-destinazione.md), `reports/storico/expression_gate_2026-09-16/decision.json` |
+| D-034 | Il generatore delle sottomissioni è `ControlModel`: cellule nuove, apprese dai controlli del contesto, nessuna cellula di controllo copiata — **proposta del lead, da confermare dal proprietario** — **mai confermata: tutti i migliori invii usano il generatore di trial-01; il t14 con `ControlModel` ha abbassato la fedeltà (CP-0032)** | superata | 2026-09-17 | [CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) §3.3, `reports/generatore_e_banchi/generator_null_smoke_2026-09-17/` |
 | D-035 | Nessun invio con un generatore pulito se il predittore non produce chiamate: la FID vale `k / max(n_pred, N_conf)` e il silenzio vale 0 | attiva | 2026-09-17 | [CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) §3.2 |
-| D-036 | Il predittore contiene il termine cis (vicini misurati dalla sorgente, prior per distanza altrove); la co-espressione nei controlli non entra | attiva | 2026-09-17 | `reports/cis_2026-09-17/cis_effect.json`, `reports/coexpression_2026-09-17/summary.json` |
-| D-037 | Nei banchi il DE è `fast_scorer_de`, verificato identico al percorso scanpy dello scorer | attiva | 2026-09-17 | `reports/fast_de_2026-09-17/parity.json`, `tests/test_sc_pipeline.py` |
-| D-038 | Le misure si confrontano con le ancore ufficiali risolte, e non si sottomette senza sapere in quale regime della fedeltà siamo | attiva | 2026-09-17 | `reports/anchors_2026-09-17/anchors.json`, [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
-| D-039 | CD4 entra come sorgente per bersaglio dal pseudobulk letto per righe; primo test a un solo fattore contro trial-01 (t08) | attiva | 2026-09-22 | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), `reports/cd4_rows_2026-09-22/manifest.json` |
+| D-036 | Il predittore contiene il termine cis (vicini misurati dalla sorgente, prior per distanza altrove); la co-espressione nei controlli non entra | attiva | 2026-09-17 | `reports/trasferimento/cis_2026-09-17/cis_effect.json`, `reports/storico/coexpression_2026-09-17/summary.json` |
+| D-037 | Nei banchi il DE è `fast_scorer_de`, verificato identico al percorso scanpy dello scorer | attiva | 2026-09-17 | `reports/generatore_e_banchi/fast_de_2026-09-17/parity.json`, `tests/test_sc_pipeline.py` |
+| D-038 | Le misure si confrontano con le ancore ufficiali risolte, e non si sottomette senza sapere in quale regime della fedeltà siamo | attiva | 2026-09-17 | `reports/gara/anchors_2026-09-17/anchors.json`, [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
+| D-039 | CD4 entra come sorgente per bersaglio dal pseudobulk letto per righe; primo test a un solo fattore contro trial-01 (t08) | attiva | 2026-09-22 | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), `reports/sorgenti/cd4_rows_2026-09-22/manifest.json` |
 | D-040 | Nell'albero resta solo il codice che produce o valuta una sottomissione; il resto è nel tag `archivio/pre-pulizia-2026-09-23`, e catena di cicli, orchestratore e oracolo sono ritirati | attiva | 2026-09-23 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 23 settembre |
-| D-041 | Orion HCT116 entra come sorgente per bersaglio, a pesi uguali con K562 e CD4 (t11, nuovo migliore) | attiva | 2026-09-23 | [CP-0031](checkpoints/0031-t11-punteggio-orion.md), `reports/prediction_t11_2026-09-23/comparison.json` |
-| D-042 | L'ampiezza degli invii si sceglie sul punteggio ufficiale, un fattore alla volta; 0,394 batte 0,197 (t15, +0,108) | attiva | 2026-09-24 | [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md), `reports/prediction_t15_2026-09-23/comparison.json` |
+| D-041 | Orion HCT116 entra come sorgente per bersaglio, a pesi uguali con K562 e CD4 (t11, nuovo migliore) | attiva | 2026-09-23 | [CP-0031](checkpoints/0031-t11-punteggio-orion.md), `reports/invii/prediction_t11_2026-09-23/comparison.json` |
+| D-042 | L'ampiezza degli invii si sceglie sul punteggio ufficiale, un fattore alla volta; 0,394 batte 0,197 (t15, +0,108) | attiva | 2026-09-24 | [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md), `reports/invii/prediction_t15_2026-09-23/comparison.json` |
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-046 — L'evidenza per categoria, con un indice che ne dice lo stato
+
+- **Mandato:** il 28 settembre il proprietario ha chiesto in chat una riformattazione e una
+  semplificazione aggressive di codice e report, ordinati per data e per quanto valgono ancora, con
+  README che ne dicano il nocciolo, perché nessun agente si perda e le informazioni cruciali non
+  restino nascoste; e ha autorizzato la sessione a fare ciò che serve.
+- **Decisione:**
+  - i 126 elementi di `reports/` stanno in otto categorie (`gara`, `invii`, `sorgenti`,
+    `trasferimento`, `modelli`, `generatore_e_banchi`, `analisi`, `storico`), **con il nome invariato**;
+    ogni categoria ha un `README.md` con una riga per cartella: data, nocciolo, se vale ancora, peso;
+    `reports/README.md` dice che cosa leggere per primo e quale codice di ricerca altri banchi importano;
+  - le otto analisi dell'11–15 settembre, le sezioni storiche del README e il vecchio §3–§4 di PROGETTO
+    stanno in `docs/storico/`, con un indice; il report della radice sta in
+    `reports/analisi/sintesi_stato_2026-09-24/`;
+  - **evidenza spostata, mai modificata:** file dei report e checkpoint sono spostati con `git mv`, e i
+    percorsi che contengono restano com'erano. Si seguono con una regola sola: il nome un livello più
+    giù (`reports/<cartella>/` → `reports/<categoria>/<cartella>/`, `docs/<file>` → `docs/storico/<file>`),
+    applicata da `scripts/31_check_docs.py` e, per le ricette, da `config.repo_file` nello stadio 100;
+  - negli script di ricerca dentro i report cambiano solo le righe di percorso (radice del repository un
+    livello più su, cartelle con la categoria); nel codice vivo lo stadio 100 e il 104 leggono i file
+    delle ricette con `config.repo_file`, a parità di byte letti;
+  - i test verificano che ogni report stia in una categoria e compaia una volta nel suo indice, che i
+    nomi non si ripetano fra categorie, e che ogni file nominato da una ricetta si trovi; il controllo
+    documentale copre anche schede dei piani, indici dei report e `docs/storico/`.
+- **Resta invariato:** registrare prima di generare; nessuna evidenza si modifica o si cancella; i
+  checkpoint non si riscrivono; ogni file sotto `docs/` e `reports/` ha una riga di registro.
+- **Alternative scartate:**
+  - lasciare `reports/` piatta con un solo indice: 127 voci restano illeggibili con `ls`;
+  - riscrivere i percorsi dentro checkpoint e report: toccherebbe regole registrate prima dei risultati;
+  - nomi con la data davanti: cambierebbero tutti i percorsi, non solo la cartella padre;
+  - portare adesso il codice di ricerca in `src/`: i banchi non si possono eseguire da questa sessione e
+    altri agenti modificano quei file; resta una proposta della revisione critica (§4.2).
+- **Evidenza:** `reports/README.md`, `reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md` §5.
+- **Riaprire se:** una categoria supera la quarantina di cartelle o due categorie si sovrappongono
+  nell'uso; oppure il proprietario preferisce la struttura piatta: un `git revert` degli spostamenti la
+  ripristina, perché i nomi delle cartelle non sono cambiati.
 
 ### D-045 — Nessun limite preventivo su tempi e tentativi
 
@@ -193,7 +231,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Stato: attiva dal 2026-09-12**, dopo la prima misura. Prima era `da-verificare`, e
   la versione precedente di questa scheda resta leggibile nella cronologia del file.
 - **Che cosa è stato misurato** ([CP-0003](checkpoints/0003-prima-pipeline-e-calibrazione-ampiezza.md) §3.4,
-  `reports/pipeline/transfer_experiment.json`): trasferendo a piena ampiezza (α = 1)
+  `reports/storico/pipeline/transfer_experiment.json`): trasferendo a piena ampiezza (α = 1)
   l'errore quadratico è **peggiore** che non prevedere nulla — 1,162 volte l'MSE nullo
   da K562 genome-wide a RPE1, e 1,535 perfino fra due esperimenti nella stessa linea
   K562. All'ampiezza scelta in validazione incrociata su bersagli tenuti fuori
@@ -214,7 +252,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   primo fold) ma il numero da citare è 0,197. Misurato anche che lo **shrinkage per
   gene è quasi inattivo**: `prior_sd` = 4 batte «nessuno shrinkage» di 0,00003 in MSE
   cross-validata. La compressione utile è tutta nell'ampiezza globale.
-  Evidenza: `reports/trial_2026-09-12/calibration_c002.json`.
+  Evidenza: `reports/invii/trial_2026-09-12/calibration_c002.json`.
 - **Riaprire se:** esiste un bundle di valutazione a singola cellula che permetta di
   rifare la stessa scelta su tutte e sei le metriche VCC, oppure se una sorgente di
   lignaggio vicino (CD4) dà un α molto diverso.
@@ -287,7 +325,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   dedurre leggendo i clamp: è una proprietà della *coppia* sorgente-destinazione, e
   cambia con essa. Misurata, vale circa 0,25 da K562 a RPE1 e circa 0,50 fra due
   esperimenti nella stessa linea K562
-  (`reports/pipeline/transfer_experiment.json`). Una costante scelta a mano sarebbe
+  (`reports/storico/pipeline/transfer_experiment.json`). Una costante scelta a mano sarebbe
   stata giusta al più per una delle due.
 - **Come è fatta:** i bersagli si dividono interi in fold — mai le cellule, e mai le
   guide dello stesso bersaglio su lati opposti; la griglia si cerca solo sui bersagli
@@ -309,6 +347,11 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   α selezionato su cinque fold indipendenti varia fra 0,1947 e 0,2006.
 - **Riaprire se:** un bundle a singola cellula permette di calibrare direttamente sulle
   sei metriche VCC, che è la cosa che alla fine conta.
+
+- **Stato corretto il 28 settembre (D-046):** `superata` per l'ampiezza degli invii. Il t15 e il
+  t16 hanno mostrato che sul punteggio ufficiale l'ampiezza calibrata per la MSE costa punti, e D-042
+  sceglie l'ampiezza sul punteggio ufficiale. Il metodo di calibrazione resta valido per l'errore
+  quadratico nello spazio degli effetti (i banchi lo usano ancora), non per gli invii.
 
 ### D-013 — Lo stato di una sorgente lo dichiara il registry versionato
 
@@ -339,7 +382,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Come è fatta:** fino al 23 settembre `scorer_fingerprint()` in
   `src/vcc2026/evaluation.py` risolveva e registrava il backend accanto alla versione, nel
   manifesto di ogni run. Su questa macchina si risolveva a `scanpy` (pdex assente, nessuna
-  CUDA): `reports/pipeline/null_calibration_A.json`. Dopo D-040 nessuno stadio vivo la
+  CUDA): `reports/storico/pipeline/null_calibration_A.json`. Dopo D-040 nessuno stadio vivo la
   chiamava più, e il 24 settembre è andata in archivio (D-043).
 
   Dal 24 settembre il backend è fissato, non risolto (letto nel codice quel giorno):
@@ -540,7 +583,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Che cosa non è ancora dimostrato:** che gli adattatori verso i servizi reali sappiano
   inviare e leggere. Al 13 settembre 2026 il motore è stato eseguito con risposte preparate
   a mano, e DeepSeek e Kimi sono stati solo **aperti e osservati** nel browser, da profili
-  non autenticati (`reports/orchestrator/sonde-2026-09-13/`). Nessun messaggio è stato
+  non autenticati (`reports/storico/orchestrator/sonde-2026-09-13/`). Nessun messaggio è stato
   inviato a nessun servizio.
 - **Riaprire se:** un servizio cambia interfaccia al punto da rendere inaffidabile il
   canale web; oppure se diventa disponibile un accesso programmatico compreso negli
@@ -661,7 +704,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Che cosa non è ancora dimostrato:** che DeepSeek o Kimi rispondano a un prompt di
   ricerca, e che le distinzioni reggano su risposte vere. Al 14 settembre 2026 esiste solo
   una prova a secco con risposte scritte a mano
-  (`reports/orchestrator/prova-a-secco-ricerca-2026-09-14/`). **Kimi non ha un controllo di
+  (`reports/storico/orchestrator/prova-a-secco-ricerca-2026-09-14/`). **Kimi non ha un controllo di
   ricerca osservato**, quindi una campagna reale gira oggi con un canale che cerca e uno
   che pianifica, e il rapporto lo dichiara.
 - **Riaprire se:** una campagna reale mostra che i worker riempiono i livelli di
@@ -679,7 +722,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Come è fatta:** `src/vcc2026/benchmark/universe.py` tiene l'AND delle maschere
   `observed`. SVD e loss vedono solo quell'universo. Un array ancora largo
   18.533 viene rifiutato. La copertura persa è scritta in
-  `reports/benchmark_2026-09-14/gene_universe.json` (6700/18533 con k562_essential,
+  `reports/storico/benchmark_2026-09-14/gene_universe.json` (6700/18533 con k562_essential,
   6714 senza).
 - **Alternative scartate:** zero-fill (non neutrale); fattorizzazione con loss
   mascherata (implementabile, non usata in questo pilot: si riapre se serve
@@ -762,7 +805,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 ### D-028 — Il GO slim non entra nei descrittori, e il controllo permutato dice perché
 
-- **Perché:** la regola era scritta in `docs/ENCODER_INPUTS.md` §6 prima che il run
+- **Perché:** la regola era scritta in `docs/storico/ENCODER_INPUTS.md` §6 prima che il run
   esistesse, e le sue due condizioni di scarto sono scattate entrambe. B1 (basale +
   contesto + 140 bit GO) non batte B0 (basale + contesto): è peggio in 10 confronti
   appaiati su 12. E B3, che usa le **stesse** 140 colonne con i valori mescolati fra
@@ -776,7 +819,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   negativo deve poter essere rifatto. `configs/benchmark_go_slim.yaml` è il
   protocollo eseguito, non una proposta.
 - **Misurato:** [CP-0014](checkpoints/0014-go-slim-e-gpu.md) §3.2, run `g002`,
-  `reports/go_slim_2026-09-15/`.
+  `reports/storico/go_slim_2026-09-15/`.
 - **Non segue da questa decisione:** che l'annotazione funzionale sia inutile in
   generale, né che convenga passare a un embedding più grande. La riserva (ProtT5,
   ESM-2, gene2vec) **non** si apre: se l'annotazione curata non batte la propria
@@ -808,7 +851,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   destinazione, e `de_backend_resolved` va letto: se dice ancora `scanpy`, la GPU
   non sta entrando.
 - **Misurato:** [CP-0014](checkpoints/0014-go-slim-e-gpu.md) §3.4,
-  `reports/gpu_2026-09-15/gpu_readiness.json`.
+  `reports/storico/gpu_2026-09-15/gpu_readiness.json`.
 - **Aggiornamento 2026-09-15 (CP-0015).** La randomizzata esiste, è
   configurabile, ed è stata rimisurata **sulle predizioni**, non solo sui
   valori singolari. La regola di sostituzione scritta prima dei run (banda
@@ -839,7 +882,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   protocollo eseguito, non una proposta. Nessun yaml storico è stato
   riscritto.
 - **Misurato:** [CP-0015](checkpoints/0015-svd-randomizzata-e-rango.md) §3.3,
-  `reports/rank_2026-09-15/rank_summary.json`.
+  `reports/storico/rank_2026-09-15/rank_summary.json`.
 - **Riaprire se:** un run con tutti i 2.315 bersagli condivisi, o un quarto
   contesto, mostra che un rango >16 scelto internamente **trasferisce** sul
   test; oppure se la validazione interna diventa un vero fold
@@ -858,15 +901,19 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   misurato disco e persistenza: questa macchina il 15 settembre aveva
   11,3 GiB liberi e non può tenere il pavimento da 10 GiB se scarica TGFB.
 - **Evidenza:** [CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md),
-  `reports/jiang_2026-09-15/jiang_probe.json`,
-  `reports/nadig_reconcile_2026-09-15/nadig_reconciliation.json`,
-  `reports/runtime_2026-09-15/runtime_inventory.json`.
+  `reports/storico/jiang_2026-09-15/jiang_probe.json`,
+  `reports/storico/nadig_reconcile_2026-09-15/nadig_reconciliation.json`,
+  `reports/storico/runtime_2026-09-15/runtime_inventory.json`.
 - **Cosa resta di D-004:** CD4 è ancora la pista di copertura e di lignaggio
   verso A. Non è scartata; è dopo l'audit dei dataset esplicitamente
   consigliati. Non contare GEO, Zenodo e S3 come tre fonti distinte.
 - **Riaprire se:** Jiang non ha NTC abbinabili o counts grezzi; Jurkat
   mirror non è lo stesso esperimento GEO; oppure una sorgente CRISPRi in
   linea T matura o squamosa diventa scaricabile sotto tetto di byte.
+
+- **Stato corretto il 28 settembre (D-046):** `superata`. Jiang non è mai stato acquisito e Jurkat
+  non è diventato un contesto; CD4 è entrato come sorgente (D-039) e Orion anche (D-041); dal 24
+  settembre la scelta delle sorgenti segue D-044 e GENERALIZZAZIONE.
 
 ### D-032 — Protocollo di valutazione congelato
 
@@ -885,10 +932,15 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   interamente favorevole e non ci sono danni oltre tolleranza.
 - **Misurato:** 12 split esistenti, 0 fallimenti di leakage algebrico,
   tutti etichettati sviluppo.
-  `reports/eval_protocol_2026-09-15/split_audit.json`.
+  `reports/storico/eval_protocol_2026-09-15/split_audit.json`.
 - **Riaprire se:** arriva un quarto contesto con split già congelati, o
   ancore ufficiali `b`/`r` per un dataset esterno, o si decide una
   submission diagnostica senza conferma indipendente (resta esplorativa).
+
+- **Stato corretto il 28 settembre (D-046):** `superata`. `configs/eval_protocol.yaml` è archiviato con
+  il suo codice (D-040) e nessuna prova l'ha più usato. Il principio resta: i fold già consultati sono
+  sviluppo. I protocolli congelati di oggi sono i requisiti di GENERALIZZAZIONE §3, lo stadio 105
+  (banco C/T/J con lo scambio di contesto) e le regole scritte prima di ogni banco.
 
 ### D-033 — Il gate di espressione non è adottato, e i controlli dicono perché
 
@@ -908,7 +960,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   `shrunk_transfer` moltiplicato per un peso, con alpha e prior_sd non ricalibrati, e il
   run si ferma se la base non coincide con la riga di `shrunk_transfer`.
 - **Misurato:** [CP-0017](checkpoints/0017-gate-espressione-destinazione.md) §3, run
-  `x001`, `reports/expression_gate_2026-09-16/`.
+  `x001`, `reports/storico/expression_gate_2026-09-16/`.
 - **Non segue da questa decisione:** che l'idea sia sbagliata. Nel banco l'universo
   genico è l'intersezione di tre pannelli e non contiene geni spenti (0–2 sotto 5 CPM
   per contesto); nei contesti ufficiali ce ne sono 8.409–8.923 su 18.533. La regola è
@@ -938,6 +990,12 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   è ammesso; oppure la calibrazione nulla a scala piena (72, run `n001` su Colab) mostra
   chiamate spurie molto sopra il reale-contro-reale.
 
+- **Stato corretto il 28 settembre (D-046):** `superata`, senza che nessuno l'abbia confermata. Dal
+  t08 tutti gli invii tranne il t14 usano il generatore di trial-01 (stadio 45), e il t14 con
+  `ControlModel` è risultato non attribuibile, con la fedeltà in calo
+  ([CP-0032](checkpoints/0032-t14-controlmodel-fedelta.md)). Lo stadio 76 resta vivo come
+  alternativa. La domanda di regolamento (generatore costruito sui controlli) resta quella di D-017.
+
 ### D-035 — Un generatore pulito non si invia senza chiamate informative
 
 - **Perché:** in `cell_eval2` 0.16.0 la FID vale `k / max(n_pred, N_conf)`. Una
@@ -957,9 +1015,9 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Perché:** entro 1 kb dal TSS del bersaglio, gli effetti K562 e HepG2 degli stessi
   bersagli correlano 0,57, e il segno coincide nel 97,5% delle 122 coppie con |log2FC K562|
   > 0,5; tra 1 e 5 kb la correlazione è 0,72
-  (`reports/cis_2026-09-17/cis_effect.json`). La co-espressione con il bersaglio nei
+  (`reports/trasferimento/cis_2026-09-17/cis_effect.json`). La co-espressione con il bersaglio nei
   controlli non predice l'effetto del knockdown: correlazione mediana 0,0015 dopo aver
-  tolto 20 PC, su 243 bersagli HepG2 (`reports/coexpression_2026-09-17/summary.json`).
+  tolto 20 PC, su 243 bersagli HepG2 (`reports/storico/coexpression_2026-09-17/summary.json`).
 - **Come è fatta:** in `assemble_log_fc`, un vicino entro 5 kb che la sorgente ha
   misurato prende `a_cis_measured` volte il proprio effetto K562; gli altri vicini prendono
   `a_cis` volte la mediana per distanza, adattata sui bersagli K562 fuori pannello.
@@ -973,7 +1031,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   con i controlli ordinati una volta sola, con chiavi complesse che conservano l'ordine
   esatto. Su dati HepG2 reali restituisce le stesse 76.648 righe, differenze 0,0 su
   p-value e log2FC e le stesse 7.916 chiamate, in 12 s invece di 88
-  (`reports/fast_de_2026-09-17/parity.json`).
+  (`reports/generatore_e_banchi/fast_de_2026-09-17/parity.json`).
 - **Come è fatta:** i banchi passano a `compute_metrics` entrambe le tabelle DE; tutto il
   resto lo calcola lo scorer. Il backend del server non è noto (D-014).
 - **Riaprire se:** cambia la versione di `cell_eval2` o di scanpy; il controllo da rifare
@@ -984,7 +1042,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 - **Perché:** `vcc status --json` pubblica il valore **grezzo** di ogni membro accanto al
   suo scalato. Due sottomissioni sullo stesso pannello e la stessa `anchor_version` danno
   due equazioni in base e replica, e il sistema si risolve esattamente (stadio 82,
-  `reports/anchors_2026-09-17/anchors.json`). Finché non le avevamo, i banchi locali
+  `reports/gara/anchors_2026-09-17/anchors.json`). Finché non le avevamo, i banchi locali
   confrontavano i bracci con ancore **proprie**, calcolate in un regime diverso da quello
   ufficiale: è così che `h002` ha dato +0,63 di fedeltà scalata su un file che il server
   ha valutato −0,87.
@@ -1018,7 +1076,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   - per il pannello finale del 22 ottobre si rilancia lo stadio 97 sulla nuova lista di
     bersagli.
 - **Evidenza:** [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md),
-  `reports/cd4_rows_2026-09-22/manifest.json`, `reports/multisource_2026-09-22/r3/`.
+  `reports/sorgenti/cd4_rows_2026-09-22/manifest.json`, `reports/sorgenti/multisource_2026-09-22/r3/`.
 - **Che cosa non segue:**
   - che CD4 migliori il punteggio: nello spazio degli effetti mediare K562 e CD4 non alza la
     discriminazione, e gene per gene i segni concordano al 55%;
@@ -1040,13 +1098,13 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   - Al 23 settembre il repository aveva 91 script, 24.743 righe in `src/` e 596 test
     (466 s). Gli invii dal t08 al t11 usano un percorso molto più stretto: stadi 97, 98 e
     102 per le sorgenti, 100 per gli effetti, 45 per le cellule, 48 per il pacchetto.
-  - La catena di cicli non ha completato nessun ciclo. In `reports/ciclo_giornaliero/` non
+  - La catena di cicli non ha completato nessun ciclo. In `reports/storico/ciclo_giornaliero/` non
     c'è nessuna cartella `ciclo-NN/`. Dal 19 al 23 settembre il task giornaliero di Windows
     è uscito ogni giorno con «nessun piano sigillato»
     (`C:/Users/ferra/vcc2026-data/ciclo/scheduler.log`). L'attività pianificata del piano
     mattutino è disabilitata. L'ultima campagna dell'orchestratore è del 15 settembre.
   - La pulizia del 19 settembre (branch `refactor/pulizia`) si era fermata perché toglieva
-    la catena senza una decisione esplicita (`reports/direzione_2026-09-19/VALUTAZIONE.md`
+    la catena senza una decisione esplicita (`reports/analisi/direzione_2026-09-19/VALUTAZIONE.md`
     §6). Questa è quella decisione.
 - **Come è fatta:**
   - resta un file che sta nella chiusura degli import di uno stadio che:
@@ -1086,7 +1144,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   - la regola scritta prima dà «Orion aggiunge informazione sui contesti ufficiali»
     ([CP-0031](checkpoints/0031-t11-punteggio-orion.md));
   - il proprietario ha ammesso Orion negli invii, licenza CC-BY-NC-SA-4.0
-    (`reports/trial_2026-09-22/autorizzazioni.md`).
+    (`reports/invii/trial_2026-09-22/autorizzazioni.md`).
 - **Come è fatta:**
   - lo stadio 102 somma le cellule per lotto GEM e raggruppa i lotti in otto gruppi, ognuno
     con i propri controlli;
@@ -1095,8 +1153,8 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
   Per il pannello finale del 22 ottobre lo stadio 102 va rieseguito sui nuovi bersagli. Legge
   per intero i 109 file di HCT116, qualunque sia il pannello.
-- **Evidenza:** [CP-0031](checkpoints/0031-t11-punteggio-orion.md), `reports/orion_2026-09-23/`,
-  `reports/prediction_t11_2026-09-23/comparison.json`.
+- **Evidenza:** [CP-0031](checkpoints/0031-t11-punteggio-orion.md), `reports/sorgenti/orion_2026-09-23/`,
+  `reports/invii/prediction_t11_2026-09-23/comparison.json`.
 - **Che cosa non segue:**
   - che il guadagno venga dal solo HCT116: insieme a lui sono cambiati i pesi di K562 e CD4,
     da 0,433 : 0,567 a 1 : 1;
@@ -1120,7 +1178,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   - la curva si esplora verso l'alto finché un passo perde;
   - le altre scelte (sorgenti, generatore) si riprovano all'ampiezza migliore.
 - **Evidenza:** [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md),
-  `reports/prediction_t15_2026-09-23/comparison.json`.
+  `reports/invii/prediction_t15_2026-09-23/comparison.json`.
 - **Che cosa non segue:**
   - che l'ottimo di validazione valga per D/E/F, che hanno contesti e bersagli nuovi;
   - che la MSE non conti mai: se un modello scendesse sotto la sua base, il compromesso
@@ -1143,8 +1201,8 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
     `trial-01-transfer` chiede il `fitted_state.json` dello stadio 44, archiviato il 23
     settembre;
   - dopo il trial-01, lo stadio 45 ha generato t08, t10, t11, t15, t16 e t17, tutti con
-    `trial-ext-profile` e con il seme 20260912 (i manifest in `reports/trial_2026-09-22/`,
-    `reports/trial_2026-09-23/` e `reports/trial_2026-09-24/`);
+    `trial-ext-profile` e con il seme 20260912 (i manifest in `reports/invii/trial_2026-09-22/`,
+    `reports/invii/trial_2026-09-23/` e `reports/invii/trial_2026-09-24/`);
   - i due rami erano gli unici utenti di `models.py` e `signatures.py`, 656 righe;
   - la chiusura degli import dai 23 stadi vivi, misurata il 24 settembre, lascia fuori circa
     700 righe di `src/`. Sono funzioni rimaste senza chiamanti quando D-040 ha archiviato i

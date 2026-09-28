@@ -15,7 +15,7 @@ markers it "should not" have.
 It also correlates the three contexts with each other in log CPM space, which says
 whether A, B and C are three different cell types or one cell type in three conditions.
 
-    python scripts/85_identify_contexts.py --out reports/contexts_2026-09-17
+    python scripts/85_identify_contexts.py --out reports/gara/contexts_2026-09-17
 """
 
 from __future__ import annotations

@@ -18,7 +18,7 @@ panels cannot give, all from the control bundles alone:
 Everything here is an interpretation aid. Line identities stay hypotheses until matched
 against reference profiles (e.g. CCLE/DepMap copy number and expression).
 
-    python scripts/99_context_fingerprints.py --out reports/context_fingerprints_2026-09-22
+    python scripts/99_context_fingerprints.py --out reports/gara/context_fingerprints_2026-09-22
 """
 
 from __future__ import annotations

@@ -16,7 +16,7 @@ expressed at >= 10 CPM in the context's controls (`interim/basal_cpm_by_context.
 This is a measurement of an effect and of its agreement across two contexts. It is
 not a score, and HepG2 targets are essential-screen genes.
 
-    python scripts/77_cis_effect_report.py --out reports/cis_2026-09-17
+    python scripts/77_cis_effect_report.py --out reports/trasferimento/cis_2026-09-17
 """
 
 from __future__ import annotations

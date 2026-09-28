@@ -20,7 +20,7 @@ This turns every local measurement into a comparable number: a raw metric can be
 against the anchors directly, instead of against a bench's own local anchors, which live
 in a different regime (CP-0021).
 
-    python scripts/82_solve_anchors.py --status a.json b.json --out reports/anchors_2026-09-17
+    python scripts/82_solve_anchors.py --status a.json b.json --out reports/gara/anchors_2026-09-17
 """
 
 from __future__ import annotations

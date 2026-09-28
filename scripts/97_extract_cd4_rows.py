@@ -17,7 +17,7 @@ non-negative integers, or the stage stops. The output h5ad goes under the data r
 (D-001); the manifest goes to ``--report-dir``. Neither is overwritten.
 
     python scripts/97_extract_cd4_rows.py --out <data_root>/external/cd4/panel_rows.h5ad \
-        --report-dir reports/cd4_rows_2026-09-22
+        --report-dir reports/sorgenti/cd4_rows_2026-09-22
 """
 
 from __future__ import annotations

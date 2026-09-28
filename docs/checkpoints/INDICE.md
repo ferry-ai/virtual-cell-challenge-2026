@@ -18,6 +18,16 @@ python scripts/30_new_checkpoint.py --slug benchmark-cd4 --title "Primo benchmar
 Lo script assegna il numero successivo, non sovrascrive mai un file esistente e
 aggiunge da sé la riga qui sotto.
 
+**Due note del 28 settembre (D-046):**
+- **I percorsi dei report citati nei checkpoint sono quelli di allora.** Dal 28 settembre un
+  report sta in `reports/<categoria>/<cartella>/` con lo stesso nome: `ls -d reports/*/<cartella>`
+  lo trova, e le analisi citate come `docs/<file>` stanno in `docs/storico/`. I checkpoint non si
+  riscrivono per questo.
+- **CP-0040 è riservato.** `reports/trasferimento/trasferimento_gerarchico_2026-09-26/RISULTATI.md`
+  cita un `0040-biologia-contesti-donatori.md` scritto da un'altra sessione e mai committato
+  (registro, scheda R-020): quando arriva, prende quel numero. Lo script salta da sé i numeri
+  che un documento cita già, quindi il prossimo checkpoint nuovo sarà il 0041.
+
 ## Elenco
 
 | N | Data | Titolo | Tipo | Corretto da |

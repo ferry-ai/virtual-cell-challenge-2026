@@ -111,6 +111,26 @@ def challenge() -> Challenge:
     return Challenge(**raw)
 
 
+def repo_file(raw: str | Path) -> Path:
+    """A repository path named in a recipe or an older record, followed to where it lives now.
+
+    On 28 September 2026 the report folders moved one level down, into category folders,
+    and eight analyses moved to docs/storico/ (D-046); no name changed. So a path that no
+    longer exists is looked for one level below its first folder: the recipes' cis pairs, named
+    as reports/cis_2026-09-17/<file>, are found in reports/trasferimento/cis_2026-09-17/<file>.
+    Recipes are never edited once used, and this is how they keep working. A path found nowhere
+    is returned as it was, so the caller fails on it as before.
+    """
+    path = REPO_ROOT / raw
+    parts = Path(raw).parts
+    if path.exists() or len(parts) < 2 or parts[0] not in ("reports", "docs"):
+        return path
+    rest = Path(*parts[1:])
+    hits = [folder / rest for folder in sorted((REPO_ROOT / parts[0]).iterdir())
+            if folder.is_dir() and (folder / rest).exists()]
+    return hits[0] if len(hits) == 1 else path
+
+
 def contexts(phase: str = "validation") -> tuple[str, ...]:
     """Context labels for a phase: 'validation' -> A/B/C, 'test' -> D/E/F."""
     c = challenge()

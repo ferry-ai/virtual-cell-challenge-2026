@@ -1,7 +1,9 @@
 # R-SWITCH — soglie, intensità e cellule rispondenti
 
 - **Stato:** aperto; promettente, esperimento in attesa di cellule e guide indipendenti.
-- **Aggiornato:** 24 settembre 2026.
+- **Aggiornato:** 24 settembre 2026. **Nota del 28/09 (D-046):** nessun lavoro registrato su questa
+  scheda dopo il 24; le sorgenti a singola cellula acquisite nel frattempo sono in
+  [reports/sorgenti/README.md](../../reports/sorgenti/README.md).
 - **Assegnazione:** da verificare con gli agenti già attivi; nessuna presa in carico registrata qui.
 - **Ipotesi:** H4 soglie e H5 quota di rispondenti; collegamento con H2 stato e H9 tempo.
 
@@ -40,6 +42,6 @@ Non promuovere un generatore perché riproduce soltanto la media.
 
 ## Evidenze e passaggio di consegne
 
-[Ricerca sugli switch e fonti primarie](../../reports/ipotesi_trasferimento_2026-09-24/IPOTESI.md), §§3–6.
+[Ricerca sugli switch e fonti primarie](../../reports/analisi/ipotesi_trasferimento_2026-09-24/IPOTESI.md), §§3–6.
 Le osservazioni di letteratura sono candidati da verificare qui, non risultati locali.
 **Nessun dataset acquisito né esperimento eseguito con questa scheda.**

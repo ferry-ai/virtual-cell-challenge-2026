@@ -14,7 +14,7 @@ mu the context's expected UMI per cell at 20,000 per cell, at >= 5 CPM) matches 
 that carry their own calibration (the cis head, each target's own gene) can be left out of the
 reweighting and of the scale (``keep``, ``offset``). A bench centres the sources on its training
 targets only (``pair_features(centre_on=...)``) and validates early stopping on whole targets
-(``fit_magnitude_model(groups=...)``). Evidence: reports/trasferimento_appreso_2026-09-26/ (r2-r5).
+(``fit_magnitude_model(groups=...)``). Evidence: reports/trasferimento/trasferimento_appreso_2026-09-26/ (r2-r5).
 """
 
 from __future__ import annotations
@@ -160,7 +160,7 @@ def training_rows(F: dict, y: np.ndarray, w: np.ndarray, genes_per_target: int, 
 
 
 def fit_magnitude_model(X: np.ndarray, y: np.ndarray, w: np.ndarray, seed: int, groups: np.ndarray | None = None):
-    """The regressor of the benches (reports/trasferimento_appreso_2026-09-26/lct_bench3.py).
+    """The regressor of the benches (reports/trasferimento/trasferimento_appreso_2026-09-26/lct_bench3.py).
 
     With ``groups`` (one label per row, e.g. task and target), early stopping is validated on a
     tenth of the groups held out whole, not on random rows: rows of one target are correlated, and

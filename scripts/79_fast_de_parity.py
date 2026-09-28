@@ -7,7 +7,7 @@ usable if it returns the same table. This stage checks that on real HepG2 cells:
 same rows, same log2FC, same p-values, same significance calls, and reports the
 largest differences and the two timings.
 
-    python scripts/79_fast_de_parity.py --out reports/fast_de_2026-09-17
+    python scripts/79_fast_de_parity.py --out reports/generatore_e_banchi/fast_de_2026-09-17
 """
 
 from __future__ import annotations

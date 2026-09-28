@@ -112,6 +112,24 @@ def is_archived(raw: str) -> bool:
     return any(entry.startswith(prefix) for entry in archived)
 
 
+def moved(raw: str) -> list[Path]:
+    """Where a path under reports/ or docs/ lives after the move of 28 September 2026 (D-046).
+
+    The report folders went one level down, into category folders, and eight analyses went
+    into docs/storico/, all with their names unchanged. Checkpoints and reports are never
+    edited, so they go on naming the old places: such a path is looked for one level below its
+    first folder. `src/vcc2026/config.py` (`repo_file`) follows the same rule for recipes.
+    """
+    parts = Path(raw).parts
+    if len(parts) < 2 or parts[0] not in ("reports", "docs") or not (REPO_ROOT / parts[0]).is_dir():
+        return []
+    root, rest = REPO_ROOT / parts[0], Path(*parts[1:]).as_posix()
+    if any(ch in rest for ch in "*?["):
+        return [hit for folder in sorted(root.iterdir()) if folder.is_dir() for hit in folder.glob(rest)]
+    return [folder / rest for folder in sorted(root.iterdir())
+            if folder.is_dir() and ((folder / rest).exists() or documented_outside_repo(folder / rest))]
+
+
 def data_suffixes() -> set[str]:
     """Extensions `.gitignore` keeps out of the repository, read from the file itself."""
     path = REPO_ROOT / ".gitignore"
@@ -141,9 +159,10 @@ def documented_outside_repo(target: Path) -> bool:
 def path_exists(raw: str) -> bool:
     """Repo-relative path, glob allowed. Absolute paths are outside our control."""
     if any(ch in raw for ch in "*?["):
-        return any(REPO_ROOT.glob(raw)) or is_archived(raw)
+        return any(REPO_ROOT.glob(raw)) or is_archived(raw) or bool(moved(raw))
     target = REPO_ROOT / raw
-    return target.exists() or documented_outside_repo(target) or is_archived(raw)
+    return (target.exists() or documented_outside_repo(target) or is_archived(raw)
+            or len(moved(raw)) == 1)
 
 
 def is_repo_relative(raw: str) -> bool:
@@ -354,6 +373,13 @@ def check_links(errors: list[str]) -> None:
               if path.exists()]
     files += sorted(REPO_ROOT.glob("*/CLAUDE.md"))
     files += sorted((REPO_ROOT / "docs" / "checkpoints").glob("*.md"))
+    # The plan index and cards, the research rules and the indexes of reports/ and docs/storico/
+    # route agents too (D-046): a link there to a report that was never committed is caught.
+    files += [path for path in (REPO_ROOT / "docs" / "PIANI.md", REPO_ROOT / "docs" / "GENERALIZZAZIONE.md",
+                                REPO_ROOT / "reports" / "README.md") if path.exists()]
+    files += sorted((REPO_ROOT / "docs" / "piani").glob("*.md"))
+    files += sorted((REPO_ROOT / "docs" / "storico").glob("README.md"))
+    files += sorted((REPO_ROOT / "reports").glob("*/README.md"))
     for path in files:
         if not path.exists():
             errors.append(f"{path.relative_to(REPO_ROOT)} missing")
@@ -376,8 +402,14 @@ def check_links(errors: list[str]) -> None:
                     rel = other.relative_to(REPO_ROOT).as_posix()
                 except ValueError:
                     rel = None
-                if rel is None or not is_archived(rel):
-                    errors.append(f"{label}: link to missing {target}")
+                found = moved(rel) if rel is not None else []
+                if len(found) == 1 and found[0].exists():
+                    other = found[0]
+                else:
+                    if rel is None or not is_archived(rel):
+                        errors.append(f"{label}: link to missing {target}")
+                    continue
+            if other.is_dir():
                 continue
             if anchor and anchor not in anchors(other.read_text(encoding="utf-8")):
                 errors.append(f"{label}: anchor {target} does not resolve")

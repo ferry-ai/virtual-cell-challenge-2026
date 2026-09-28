@@ -6,16 +6,16 @@ cell lines never seen during training.
 Submissions close **5 November 2026**. Final test set drops **22 October 2026**.
 
 > **Start from [`docs/PROGETTO.md`](docs/PROGETTO.md) §0** — where the project stands
-> today — and [`docs/LAVORO.md`](docs/LAVORO.md), the live pipeline with its exact
-> commands. Agents: the working agreement is [`CLAUDE.md`](CLAUDE.md).
-> Open priorities, promising research and past outcomes are indexed in
-> [`docs/PIANI.md`](docs/PIANI.md); each plan has its own card for coordination.
-> This README covers the task, the scoring and the setup. Parts of it are older than
-> the analyses in `docs/`, and six of its claims are flagged: see its entry in
-> [`docs/REGISTRO.md`](docs/REGISTRO.md), sheet R-001. The sections from "Plan" onward
-> are a record of 11–13 September: the scripts they name were archived on 23 September
-> (`docs/ARCHIVIO.md`). The submission contract is in
-> [`docs/SOTTOMISSIONE.md`](docs/SOTTOMISSIONE.md) §1.
+> today (best official score +0.141250, t22 recipe) — and [`docs/LAVORO.md`](docs/LAVORO.md),
+> the live pipeline with its exact commands. Agents: the working agreement is
+> [`CLAUDE.md`](CLAUDE.md). Open work is indexed in [`docs/PIANI.md`](docs/PIANI.md); the
+> evidence, filed by topic with the status of every folder, in
+> [`reports/README.md`](reports/README.md).
+> This README covers the task, the scoring and the setup. Its sections of 11–13 September
+> (the plan by phases and the first reviews) moved on 28 September to
+> [`docs/storico/README_2026-09-11_13.md`](docs/storico/README_2026-09-11_13.md); six of
+> their claims are flagged in [`docs/REGISTRO.md`](docs/REGISTRO.md), sheet R-001. The
+> submission contract is in [`docs/SOTTOMISSIONE.md`](docs/SOTTOMISSIONE.md) §1.
 
 ## The task
 
@@ -78,7 +78,8 @@ vcc2026/                     <- this repo (Desktop, synced by OneDrive)
   scripts/                   <- executables and wrappers
   notebooks/                 <- the Colab dispatcher and its job scripts
   tests/
-  docs/
+  docs/                      <- state, plans, procedures, decisions, registry, checkpoints
+  reports/                   <- the evidence, in eight categories (reports/README.md)
 
 C:/Users/ferra/vcc2026-data/ <- data + venv, OUTSIDE OneDrive
   .venv/                     <- Python 3.12
@@ -134,101 +135,3 @@ chat and never commit it:
 ```
 
 The token is stored in the Windows credential manager, not in a project file.
-
-## Plan
-
-| Phase | Goal | Status |
-|---|---|---|
-| 0 | Environment, CLI, control data in hand, streaming submission writer verified against official `prep` | **done**, with a caveat — see below |
-| 1 | Local scorer with `cell-eval2` on leave-one-cell-line-out splits from public data, to iterate without burning the 2 submissions/day | next |
-| 2 | Baselines: control resampling, estimated mean response, log2FC transfer from public Perturb-seq conditioned on basal expression | |
-| 3 | Learned model: maps (basal state, perturbation identity) -> response. Trained on Colab/Kaggle | |
-| 4 | Ensemble, DE-call calibration, final submission on D/E/F | |
-
-**Phase 1 is the real bottleneck.** Without faithful local evaluation you can test
-at most 2 ideas a day.
-
-> **Status note, 12 September 2026.** Phase 1 has not started, and it is blocked
-> rather than merely next: it needs perturbed counts plus NTCs in some context, and
-> the local H1 2025 directory holds four metadata CSVs and no RNA matrix. See
-> [`docs/DECISIONI.md`](docs/DECISIONI.md), D-003.
-
-> **Correction to phase 0, 12 September 2026 (evening).** "Verified against official
-> `prep`" is not supported by any artifact: no `vcc prep` log predates today, and the
-> only candidate file holds 3 of the 300 required perturbations, which `prep` rejects
-> by default. What is supported is that the writer produces a structurally valid
-> `.h5ad` (`scripts/02_smoke_test_submission.py`). Sheet R-001, claim 6.
->
-> **Phase 2 has since run.** Two complete submission-shaped predictions for contexts
-> A/B/C — control resampling and calibrated log2FC transfer — were generated locally
-> and pass all 18 contract checks re-derived from the written file. As of 13 September
-> `trial-01-transfer` is also **packaged**: a 3.91 GiB `.vcc`, produced by a path that
-> validates and writes without materialising the matrix (0.52 GiB peak, against the
-> 33.5 GiB the CLI's own model attributes to `vcc prep`), with all 24 checks enabled
-> and the payload verified bit-for-bit against the input. See
-> [CP-0004](docs/checkpoints/0004-primo-trial-locale-e-pacchetti.md),
-> [CP-0005](docs/checkpoints/0005-packaging-streaming-trial01.md) and
-> [`docs/SOTTOMISSIONE.md`](docs/SOTTOMISSIONE.md).
->
-> **First submission: 13 September 2026.** Entry `PNn227rxP3bVByS37W41` was accepted
-> and scored — overall **0.045929**, rank **446 of 920 teams**. The server read and
-> scored the archive produced by the streaming packager, which settles that path
-> end-to-end. The score itself is low and expected to be: only `pds` (0.413) beats the
-> cell-context mean, and `fid` is negative. See
-> [CP-0006](docs/checkpoints/0006-prima-sottomissione-e-punteggio.md).
-> `trial-00-controls` was **not** submitted and must not be (D-017).
-
-## Data strategy audit (11 September 2026)
-
-Scientific recommendations and acquisition priorities: `docs/data_strategy_2026-09-11.md`.
-Reproduce local input and gene coverage checks with `scripts/12_audit_data_strategy.py`.
-Public Figshare metadata catalog: `scripts/13_catalog_public_data.py`.
-HIPSCI metadata retrieval and target support: scripts `14` and `15`.
-These scripts put small reports in `reports/data_audit`; expression inputs remain untouched.
-
-> **Superseded as an acquisition order**, twice — by the review below and then by the
-> 12 September review. Its preprocessing contract (§4) and its local measurements (§1)
-> are still current. See [`docs/REGISTRO.md`](docs/REGISTRO.md), sheet R-003.
-
-## Review and reorientation (11 September 2026)
-
-`docs/revisione_analisi_2026-09-11.md` revises the audit above. Three of its conclusions
-change, and the acquisition order changes with them.
-
-The contexts are not anonymous to their transcriptomes: **A** is T-lymphoid (CD3D/E/G,
-ZAP70, DNTT, RAG1, TAL1; male), **B** an epithelial-mesenchymal hybrid carrying eye-field
-transcription factors (CLU, KRT7/8/18 with VIM, PAX6/LHX2/MITF; female), **C** squamous
-epithelium (TP63, KRT5/13/14/15, SOX2; male). None is erythroid and none is pluripotent,
-so K562 is the wrong lineage for all three and the iPSC atlases match none of them.
-Reproduce with `scripts/16_probe_context_identity.py`.
-
-The scorer was already installed. `scripts/17_extract_scorer_contract.py` pulls the six
-decisive metrics and their clamps out of `cell-eval2` itself. The clamps are sharply
-asymmetric: `mse` cannot go below 0, predicting no change costs about -0.04 on `nmae`,
-and `pds` ranks by **cosine distance on the signed delta**, so it is scale-invariant.
-Four of the six metrics score direction or ranking. Commit on direction, shrink magnitude.
-
-> **Two claims in this section are flagged** ([`docs/REGISTRO.md`](docs/REGISTRO.md),
-> sheet R-001). The `mse` floor applies to the *normalized score*, not to the error, so
-> shrinking can still forfeit every positive point on that metric, and the PDS is
-> scale-invariant on the already-transformed delta — not under shrinkage applied in
-> count space. "Commit on direction, shrink magnitude" is therefore a posture under
-> test, not a settled rule: [`docs/DECISIONI.md`](docs/DECISIONI.md), D-006. The
-> eye-field reading of context **B** is a weak hypothesis (PAX6 34, LHX2 38, MITF 27
-> CPM against CLU 7,857): its epithelial-mesenchymal signature is the solid part.
-
-## Adversarial candidate review (12 September 2026)
-
-`docs/candidate_adversarial_review_2026-09-12.md` audits an external PDF's dataset
-claims against live endpoints, remote file bytes and the installed scorer, and reorders
-acquisition again — this time by measured coverage rather than by lineage alone.
-
-CD4 (GSE314342) becomes the first target: 297/300 panel genes in the curated library,
-293 observed in D1 Rest, though only 239 have at least 30 cells. Orion HCT116 is second
-(300/300 in library, 168 observed in Batch1, all under 30 cells). K562 is retained as an
-ablation rather than discarded. Pisces has no downloadable matrices, and several
-accessions in the source PDF were misattributed. With 8.4 GB of RAM and ~28 GB of free
-disk, no full atlas is downloaded on this machine.
-
-Per-target evidence: `reports/candidate_verification/panel_coverage.csv`. Decisions and
-their revisit conditions: [`docs/DECISIONI.md`](docs/DECISIONI.md).

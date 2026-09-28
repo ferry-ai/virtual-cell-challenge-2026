@@ -35,10 +35,15 @@ L'aggiunta all'indice non avvia job, monitor o invii automatici.
 | R-MODELLI | Promettente: programmi × stato × ruolo del bersaglio | [Trasferimento e modelli](piani/trasferimento-modelli.md) | R-DATI e protocollo C/T/J congelato prima del training |
 | R-SWITCH | Promettente: soglie, intensità e cellule rispondenti | [Switch e distribuzioni](piani/switch-distribuzioni.md) | Cellule, guide e controlli da R-DATI; score indipendente dalla risposta valutata |
 
-**Le dieci ipotesi della ricerca del 24 settembre sono tutte mantenute aperte:**
-H1–H3 e H6 in R-MODELLI; H4–H5 in R-SWITCH; H7–H10 distribuite fra R-DATI e
-R-MODELLI. La matrice completa di ipotesi, alternative e prove resta nel
-[report di ricerca](../reports/ipotesi_trasferimento_2026-09-24/IPOTESI.md).
+**Stato delle schede al 28 settembre.** R-V2 è la scheda viva (in pausa dalle 10:40 del 28/09 per
+scelta del proprietario); S-INVII, R-DATI, R-MODELLI e R-SWITCH hanno una nota datata che rimanda a
+dove il lavoro è proseguito. Le proposte della [revisione critica del 28/09](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md)
+(§6) non sono assegnate: si prendono solo dopo averle concordate con il proprietario.
+
+**Le dieci ipotesi della ricerca del 24 settembre:** H1 (programmi, nella forma lineare) e H6 (pesi
+per somiglianza basale fra linee) sono state provate il 26/09 e hanno perso; le altre restano aperte.
+H2–H3 in R-MODELLI; H4–H5 in R-SWITCH; H7–H10 distribuite fra R-DATI e R-MODELLI. La matrice completa di ipotesi, alternative e prove resta nel
+[report di ricerca](../reports/analisi/ipotesi_trasferimento_2026-09-24/IPOTESI.md).
 Le opzioni successive non scompaiono: reti biologiche, embedding, generazione,
 tempo e reti causali hanno condizioni di apertura nelle schede.
 

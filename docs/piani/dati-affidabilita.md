@@ -1,7 +1,10 @@
 # R-DATI — sorgenti, controlli e affidabilità
 
 - **Stato:** in corso; priorità iniziale della ricerca.
-- **Aggiornato:** 25 settembre 2026, 00:45 (ora italiana).
+- **Aggiornato:** 25 settembre 2026, 00:45 (ora italiana). **Nota del 28/09 (D-046):** la scheda
+  non è stata aggiornata dopo il 25; il lavoro sui dati è proseguito nella scheda
+  [R-V2](modello-v2.md) (universi genome-wide, KOLF2.1J, HIPSCI, VIPerturb-seq, Tahoe): gli esiti
+  sono indicizzati in [reports/sorgenti/README.md](../../reports/sorgenti/README.md).
 - **Assegnazione:** sottoattività 1–3, audit su fonti pubbliche: Claude (app, sessione
   `f4f38e58`), con agenti dell'hub, 25/09 00:20–00:45. Nessun download eseguito.
 - **Obiettivo:** rendere fattibili prove indipendenti su bersagli e contesti nuovi.
@@ -40,16 +43,16 @@ Non richiedere che tutte le sorgenti risultino utili per chiudere l'audit.
 
 ## Evidenze e prossimi passaggi
 
-- [Ipotesi e dati prioritari](../../reports/ipotesi_trasferimento_2026-09-24/IPOTESI.md), §§3/6/7.
-- [Schede candidate](../../reports/schede_sorgenti_2026-09-24/SCHEDE.md): leggere anche le correzioni iniziali.
-- [Mixscale e DLD-1](../../reports/dld1_audit_2026-09-24/RISULTATI.md);
-  [affidabilità DLD-1](../../reports/dld1_ceiling_2026-09-24/RISULTATI.md).
+- [Ipotesi e dati prioritari](../../reports/analisi/ipotesi_trasferimento_2026-09-24/IPOTESI.md), §§3/6/7.
+- [Schede candidate](../../reports/sorgenti/schede_sorgenti_2026-09-24/SCHEDE.md): leggere anche le correzioni iniziali.
+- [Mixscale e DLD-1](../../reports/sorgenti/dld1_audit_2026-09-24/RISULTATI.md);
+  [affidabilità DLD-1](../../reports/sorgenti/dld1_ceiling_2026-09-24/RISULTATI.md).
 - Sblocca [R-MODELLI](trasferimento-modelli.md) e [R-SWITCH](switch-distribuzioni.md).
-- [Ricerca del 26 settembre](../../reports/ricerca_sorgenti_2026-09-26/RISULTATI.md): HIPSCI CRISPRi (34 linee iPSC, 7.226 bersagli; Figshare MIT verificato nei metadati), da acquisire col via del proprietario. Universi genome-wide di CD4 e Orion autorizzati e in corso il 26/09 ([R-V2](modello-v2.md)).
+- [Ricerca del 26 settembre](../../reports/sorgenti/ricerca_sorgenti_2026-09-26/RISULTATI.md): HIPSCI CRISPRi (34 linee iPSC, 7.226 bersagli; Figshare MIT verificato nei metadati), da acquisire col via del proprietario. Universi genome-wide di CD4 e Orion autorizzati e in corso il 26/09 ([R-V2](modello-v2.md)).
 
 ## Avanzamento del 25 settembre
 
-Evidenza: [ricerca del 25 settembre](../../reports/ricerca_sorgenti_2026-09-25/RISULTATI.md),
+Evidenza: [ricerca del 25 settembre](../../reports/sorgenti/ricerca_sorgenti_2026-09-25/RISULTATI.md),
 con i rapporti integrali degli agenti.
 - **1, Mixscale:** i `log2FC` per linea usano le sole cellule della linea (dedotto dal codice
   del pacchetto, citazioni da rileggere sul testo grezzo); `beta` e `p` vengono da una

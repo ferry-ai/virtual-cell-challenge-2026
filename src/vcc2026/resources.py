@@ -1,8 +1,8 @@
 """Measured machine limits, and the peak memory a run actually used.
 
 Every resource number this project has ever acted on came from a measurement
-(`reports/candidate_verification/hardware.json`,
-`reports/grok_verification/hardware.json`), and the measurements moved between
+(`reports/storico/candidate_verification/hardware.json`,
+`reports/storico/grok_verification/hardware.json`), and the measurements moved between
 sessions: 8.4 GB RAM / 28.0 GB free disk on 11 September, 7.81 GB / 31.11 GB on
 12 September. So a run that approaches either limit re-measures rather than
 trusting a document, which is what `snapshot()` is for.

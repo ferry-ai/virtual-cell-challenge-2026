@@ -356,7 +356,7 @@ class TestTrialConfig(unittest.TestCase):
         self.assertEqual(trial["contexts"], ["A", "B", "C"])
         self.assertFalse(trial["trains"])
         # Every stage-45 submission drew with this seed (their manifests in
-        # reports/trial_*/): changing it changes every regenerated matrix.
+        # reports/invii/trial_*/): changing it changes every regenerated matrix.
         self.assertEqual(trial["seed"], 20260912)
 
     def test_unknown_trial_names_the_known_ones(self):

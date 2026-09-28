@@ -97,5 +97,40 @@ class TestConfigPortability(unittest.TestCase):
         self.assertEqual(offenders, [], f"hardcoded paths in {offenders}")
 
 
+class TestMovedPaths(unittest.TestCase):
+    """D-046 moved the report folders one level down; a used recipe is never edited."""
+
+    def test_every_repository_file_a_recipe_names_is_found(self):
+        missing = []
+        for recipe in sorted((REPO / "configs" / "recipes").glob("*.json")):
+            spec = json.loads(recipe.read_text(encoding="utf-8"))
+            named = [spec.get("cis", {}).get("pairs"), spec.get("gene_share", {}).get("path")]
+            for raw in filter(None, named):
+                if not config.repo_file(raw).is_file():
+                    missing.append(f"{recipe.name}: {raw}")
+        self.assertEqual(missing, [])
+
+    def test_a_moved_folder_is_followed_and_anything_else_left_alone(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            (root / "reports" / "trasferimento" / "cis_x").mkdir(parents=True)
+            (root / "reports" / "trasferimento" / "cis_x" / "pairs.csv").write_text("a\n", encoding="utf-8")
+            (root / "reports" / "a" / "twin").mkdir(parents=True)
+            (root / "reports" / "b" / "twin").mkdir(parents=True)
+            old = config.REPO_ROOT
+            try:
+                config.REPO_ROOT = root
+                self.assertEqual(config.repo_file("reports/cis_x/pairs.csv"),
+                                 root / "reports" / "trasferimento" / "cis_x" / "pairs.csv")
+                self.assertEqual(config.repo_file("reports/trasferimento/cis_x/pairs.csv"),
+                                 root / "reports" / "trasferimento" / "cis_x" / "pairs.csv")
+                # nowhere, or in two places: returned as named, so the caller fails on it
+                self.assertEqual(config.repo_file("reports/gone/pairs.csv"), root / "reports/gone/pairs.csv")
+                self.assertEqual(config.repo_file("reports/twin"), root / "reports/twin")
+                self.assertEqual(config.repo_file("configs/x.json"), root / "configs/x.json")
+            finally:
+                config.REPO_ROOT = old
+
+
 if __name__ == "__main__":
     unittest.main()

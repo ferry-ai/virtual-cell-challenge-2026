@@ -65,13 +65,13 @@ Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
    t11.
 3. **L'invio consuma quota:** 2 al giorno, uno solo in volo per squadra. Serve
    l'autorizzazione del proprietario, data in chat. Quelle già ricevute sono trascritte in
-   `reports/trial_2026-09-22/autorizzazioni.md`: leggile, ma un agente nuovo le conferma
+   `reports/invii/trial_2026-09-22/autorizzazioni.md`: leggile, ma un agente nuovo le conferma
    in chat prima di usarle.
 4. **Un lavoro pesante alla volta.** Il 23 settembre tre lavori insieme hanno riempito il
    disco durante l'impacchettamento: generare e impacchettare chiede circa 12 GB liberi.
    Controlla con `df -h /c` prima di partire.
 5. **Il portatile non deve andare in sospensione durante l'upload.** Il 23 settembre il
-   sonno ha interrotto il secondo tentativo del t11 (`reports/trial_2026-09-23/`).
+   sonno ha interrotto il secondo tentativo del t11 (`reports/invii/trial_2026-09-23/`).
    - **Un upload interrotto lascia l'entry sul server** in stato `uploading`. Occupa lo slot
      della squadra, anche se `vcc whoami` può dire `can_submit: true`.
    - La CLI tiene l'upload in `~/.config/vcc/state.json`, alla voce `pending_uploads`.
@@ -90,13 +90,13 @@ Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
    - un checkpoint (`python scripts/30_new_checkpoint.py`);
    - la mappa aggiornata.
 
-   I grezzi si convertono negli scalati con le ancore in `reports/anchors_2026-09-17/`.
+   I grezzi si convertono negli scalati con le ancore in `reports/gara/anchors_2026-09-17/`.
 
 ## 3. Colab: generatore `ControlModel` e banchi
 
 Il portatile ha 7,8 GiB di RAM. Lo stadio 76 (`ControlModel`) gira anche qui: il 23 settembre
 ha generato il t14 in 35 minuti, con 1–3 GiB di RAM
-(`reports/dispersion_2026-09-23/T14_IN_LOCALE.md`). I banchi 73 e 75 restano su Colab. Il notebook `notebooks/colab_sc_training.ipynb` fa da dispatcher: esegue i `.sh`
+(`reports/generatore_e_banchi/dispersion_2026-09-23/T14_IN_LOCALE.md`). I banchi 73 e 75 restano su Colab. Il notebook `notebooks/colab_sc_training.ipynb` fa da dispatcher: esegue i `.sh`
 depositati in `G:\Il mio Drive\vcc2026\runs\queue\`.
 
 - **Portare il codice su Drive:** `powershell -File notebooks\colab_jobs\sync_to_drive.ps1`.
@@ -184,7 +184,7 @@ nuova ([CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md)).
 | La ricetta usata da un invio | nel `manifest.json` dello stadio 100, per intero. `recipe_sha256_lf` vale su ogni checkout (esecuzioni dopo il 24 settembre). `recipe_sha256` è l'hash dei byte: LF per t08–t12, CRLF per t15–t17 (D-043) |
 | Previsioni e pacchetti | `C:/Users/ferra/vcc2026-data/artifacts/<run>/` |
 | Codice, coda e log di Colab | `G:\Il mio Drive\vcc2026\` (`code/`, `runs/queue/`, `runs/jobs/`) |
-| Report, uno per esperimento | `reports/<tema>_<data>/`, ciascuno con una riga in [REGISTRO.md](REGISTRO.md) |
+| Report, uno per esperimento | `reports/<categoria>/<tema>_<data>/` (D-046), ciascuno con una riga nel README della categoria e in [REGISTRO.md](REGISTRO.md); la mappa è [reports/README.md](../reports/README.md) |
 
 ## 7. Il set finale (22 ottobre)
 
@@ -204,7 +204,7 @@ degli stadi di produzione non sono criteri generali di acquisizione dei dati.
 - lo stadio 45 accetta `--controls-dir` e `--contexts`. Due piloti su A, con e senza
   l'opzione, danno matrici identiche;
 - lo stadio 99 accetta `--contexts`. Rieseguito su A/B/C riproduce identico
-  `reports/context_fingerprints_2026-09-22/fingerprints.json`, date a parte;
+  `reports/gara/context_fingerprints_2026-09-22/fingerprints.json`, date a parte;
 - gli stadi 76, 83 e 85 accettano `--controls-dir` e `--contexts`;
 - gli stadi 97, 98, 100 e 102 accettano `--targets-csv`;
 - lo stadio 48 accetta `--genes` e `--perts`.

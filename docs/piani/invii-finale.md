@@ -1,7 +1,10 @@
 # S-INVII — validazione e set finale
 
-- **Stato:** in corso: t20 inviato e valutato il 26/09 (+0,139676, nuovo migliore); t18 e t19 non inviati.
-- **Aggiornato:** 26 settembre 2026, 13:20 (ora italiana).
+- **Stato:** in corso. Al 28/09: il migliore è il t22 (+0,141250; con la replica t24 il riferimento
+  della ricetta è 0,14207); t25 −0,0010 sul t22, non conclusivo; t23 impacchettato, aspetta il via.
+  La tabella completa è in [reports/invii/README.md](../../reports/invii/README.md).
+- **Aggiornato:** 28 settembre 2026 (nota della riorganizzazione D-046; il testo sotto «Esiti del
+  25 settembre» e «Esito del 26 settembre» è com'era il 26/09).
 - **Assegnazione:** lettura di t16/t17 (fatta), t18 e candidato successivo: Claude (app,
   sessione `f4f38e58`), 25/09. Non assumere che lo slot sia libero.
 - **Scopo:** mantenere visibili le scadenze e le prove operative mentre procede la ricerca.
@@ -13,22 +16,35 @@
 - **t17** +0,108774: non attribuibile per la sua regola; HEK293T resta fuori dalla ricetta di
   riferimento ([CP-0038](../checkpoints/0038-t17-hek293t-non-attribuibile.md)).
 - **t18** = t16 × 2 in ampiezza: registrato alle 01:30 UTC
-  (`reports/prediction_t18_2026-09-25/prediction.json`), impacchettato alle 02:25 UTC.
+  (`reports/invii/prediction_t18_2026-09-25/prediction.json`), impacchettato alle 02:25 UTC.
 - **t19** = t16 con gli effetti ristretti (k 4) a 1,576: registrato alle 01:37 UTC
-  (`reports/prediction_t19_2026-09-25/prediction.json`), impacchettato alle 03:05 UTC.
+  (`reports/invii/prediction_t19_2026-09-25/prediction.json`), impacchettato alle 03:05 UTC.
 - **t20** = t19 + modulo cis CRISPRi: registrato alle 22:04 UTC del 25
-  (`reports/prediction_t20_2026-09-26/prediction.json`), impacchettato alle 22:55 UTC.
+  (`reports/invii/prediction_t20_2026-09-26/prediction.json`), impacchettato alle 22:55 UTC.
 - Il proprietario ha scelto di inviare **solo il t20** con la quota del 26 (00:05 UTC):
-  [autorizzazioni](../../reports/trial_2026-09-22/autorizzazioni.md). La catena `submit_chain3.py` è partita alle
+  [autorizzazioni](../../reports/invii/trial_2026-09-22/autorizzazioni.md). La catena `submit_chain3.py` è partita alle
   22:58 UTC e aspetta la quota. Senza il t19, la regola registrata legge t20 − t16, che somma
   restrizione e modulo cis senza separarli.
 
 ## Esito del 26 settembre
 
-**t20** +0,139676, rango 346 all'invio (`reports/trial_2026-09-26/status_I8FX2yQabjKjPPDTYnaW.json`).
+**t20** +0,139676, rango 346 all'invio (`reports/invii/trial_2026-09-26/status_I8FX2yQabjKjPPDTYnaW.json`).
 Sul t16 +0,0020: dentro ±0,005, non conclusivo per la regola registrata, che senza il t19 legge
-restrizione e modulo cis insieme ([confronto](../../reports/prediction_t20_2026-09-26/comparison.json)).
+restrizione e modulo cis insieme ([confronto](../../reports/invii/prediction_t20_2026-09-26/comparison.json)).
 PDS e reach salgono, `nmae` peggiora. La ricetta del t20 è il nuovo riferimento.
+
+## Nota del 28 settembre: che cosa è cambiato dal 26
+
+- **t22** (t20 + HEK293T) +0,141250, non conclusivo sul t20; **t24** (seme) +0,142897, D = 0,0016;
+  **t25** (stimatore corretto) +0,140238, −0,0010: dal t16 nessun cambio supera il rumore del seme
+  ([lezioni](../../reports/invii/lezioni_invii_2026-09-28/RISULTATI.md)).
+- **t23** è pronto; l'[ablazione](../../reports/trasferimento/ablazione_t23_2026-09-27/RISULTATI.md)
+  dice che ne conta l'esclusione dei geni, non la pesatura.
+- **Proposte non assegnate** della [revisione critica](../../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md)
+  §6 che toccano questa scheda: non spendere invii su differenze sotto 0,005; tarare il proxy sulle
+  differenze ufficiali già misurate; prova generale del 22/10 (F8 di R-V2) con la scelta scritta su
+  γ e sulla cache; ampiezza di D/E/F da una regola calcolabile dai controlli, non copiata da A/B/C;
+  una ricetta di riserva senza Orion finché la licenza non è verificata.
 
 ## Prossima azione
 
@@ -61,8 +77,8 @@ in [R-MODELLI](trasferimento-modelli.md), non si confonde con same-target transf
 
 ## Riferimenti
 
-- [Preregistrazione t16](../../reports/prediction_t16_2026-09-24/prediction.json).
-- [Preregistrazione t17](../../reports/prediction_t17_2026-09-24/prediction.json),
+- [Preregistrazione t16](../../reports/invii/prediction_t16_2026-09-24/prediction.json).
+- [Preregistrazione t17](../../reports/invii/prediction_t17_2026-09-24/prediction.json),
   con [CP-0034](../checkpoints/0034-audit-segni-e-ampiezza.md) e R-016 nel [registro](../REGISTRO.md).
 - D-042 in [DECISIONI](../DECISIONI.md), [CP-0033](../checkpoints/0033-t15-ampiezza-doppia.md).
 

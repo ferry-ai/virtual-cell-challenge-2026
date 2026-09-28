@@ -1,117 +1,58 @@
-# reports — the evidence, one folder per experiment
+# reports — the evidence, filed by category
 
 A folder here is evidence of what was seen on its date, and it is never edited: a new run
-writes to a new folder, `reports/<tema>_<data>/`. Every new file or folder needs a row in
-`docs/REGISTRO.md`, and one row can cover a folder of homogeneous files (a path ending in `/`).
+writes to a new folder. Since 28 September 2026 (D-046) every folder sits in a category:
+`reports/<categoria>/<tema>_<data>/`. **The map is [README.md](README.md)**: what to read
+first, the eight categories, and the code other folders import. Each category has a
+`README.md` with one row per folder: date, core, whether it still holds, how much it weighs.
 
 Choose current work through `docs/PIANI.md`, not through next steps in a dated report.
 After a run, link its evidence from the relevant plan card; keep the report immutable.
 
-## Index
+## Rules for a new report
 
-Grouped by what the folder is about, not by whether it still holds: a folder's row in
-`docs/REGISTRO.md` says that. `tests/test_live_tree.py` fails if a folder is missing here.
+- **Pick the category** by the question the folder answers:
 
-**State and analyses** — read after `docs/PROGETTO.md` §0:
-`revisione_codex_2026-09-27/` (codex's review of 27 September, point by point, with the answer and who does what),
-`lezioni_invii_2026-09-28/` (what our 13 scored submissions and the public leaderboard's aggregates teach: saturation of the transfer recipe, the MSE gap),
-`ipotesi_trasferimento_2026-09-24/` (research hypotheses, switch genes and targeted data acquisition),
-`analisi_2026-09-24/` (Claude, with calculations), `audit_stato_2026-09-24/` (ChatGPT,
-with CP-0034), `direzione_2026-09-19/` (retrospective audit of the branches).
+  | Category | Question |
+  |---|---|
+  | `gara/` | what the scorer, the anchors, the leaderboard or the A/B/C controls say |
+  | `invii/` | what we submitted and how it scored (`prediction_t<NN>_<data>/`, `trial_<data>/`) |
+  | `sorgenti/` | what a source contains and how its effects are estimated |
+  | `trasferimento/` | whether a variant of the production recipe helps, on held-out sources |
+  | `modelli/` | whether a model learned over many contexts generalises |
+  | `generatore_e_banchi/` | how effects become cells and calls; six-metric benches with the real scorer |
+  | `analisi/` | reviews, state analyses, hypotheses |
+  | `storico/` | nothing new goes here: it holds the closed lines of 11–19 September |
 
-**Submissions and official scores** — one `trial_<data>/` per upload day, one
-`prediction_t<NN>_<data>/` per registered prediction:
-`trial_2026-09-12/`, `trial_2026-09-13/`, `trial_2026-09-17/`, `trial_2026-09-19/`,
-`trial_2026-09-22/`, `trial_2026-09-23/`, `trial_2026-09-24/`, `trial_2026-09-25/`, `trial_2026-09-26/`, `trial_2026-09-27/`, `prediction_t03_2026-09-17/`,
-`prediction_t07_2026-09-19/`, `prediction_t08_2026-09-22/`, `prediction_t10_2026-09-23/`,
-`prediction_t11_2026-09-23/`, `prediction_t12_2026-09-23/`, `prediction_t14_2026-09-23/`,
-`prediction_t15_2026-09-23/`, `prediction_t16_2026-09-24/`, `prediction_t17_2026-09-24/`, `prediction_t18_2026-09-25/`,
-`prediction_t19_2026-09-25/`, `prediction_t20_2026-09-26/`, `prediction_t22_2026-09-26/`, `prediction_t23_2026-09-27/`, `prediction_t24_2026-09-27/`, `prediction_t25_2026-09-27/`,
-`trial02_decision_2026-09-17/`, `anchors_2026-09-17/` (the official anchors),
-`scorer/`, `scorer_2026-09-12/` (the scorer contract), `leaderboard_2026-09-16/`.
-
-**Sources and transfer** — stages 71, 97, 98 and 100–103:
-`modulo_cis_2026-09-26/` (CRISPRi cis head: repression of genes near the target's TSS, added to transfer),
-`programmi_2026-09-26/` (projection of transferred effects on shared programs: loses at every rank),
-`bersagli_nuovi_2026-09-26/` (targets no source measured: linear gene embeddings, STRING partners, cis),
-`universo_2026-09-26/` (genome-wide caches for every target, not only the panel: K562, CD4, Orion HCT116 and HEK293T),
-`universo_corretto_2026-09-27/` (CD4, HCT116 and HEK293T rebuilt with the corrected estimator; exact parity on the panel),
-`universo_kolf_2026-09-27/` (KOLF2.1J streamed by gene blocks from the remote h5ad),
-`universo_hipsci_2026-09-27/` (HIPSCI CRISPRi records downloaded with md5 checks),
-`universo_nuovi_2026-09-27/` (generic ingestion of downloaded h5ad screens into per-group sums),
-`atlante_2026-09-26/` (transfer tested on thousands of held-out targets per line, with the universes as inputs),
-`quota_condivisa_2026-09-27/` (the atlas's closest arm, the per-gene shared share, tested on the panel),
-`pseudoconteggio_2026-09-27/` (the constant pseudocount's artefact in the pseudobulk sources, and the fix: origin of t25),
-`ablazione_t23_2026-09-27/` (t23 taken apart on the panel: exclusion, weighting and rescaling, each against the others),
-`profondita_silenziamento_2026-09-27/` (does the downstream response grow with the knockdown depth of the target's own gene, across lines?),
-`rete_2026-09-26/` (network smoothing of measured targets with STRING partners: small effect),
-`contesti_2026-09-26/` (H6 on Mixscale: basal similarity does not predict transfer; weighting by it loses),
-`trasferimento_appreso_2026-09-26/` (learned transfer per target-gene pair; the magnitude channel is not adopted after the isolated bench r5; agent reports),
-`risposta_comune_2026-09-26/` (the response all knockdowns share: 1-14% of the energy, does not transfer between lines; r2: the official mse follows the predicted energy),
-`quattro_sorgenti_2026-09-26/` (t20 plus HEK293T, the fourth genome-scale source: origin of t22),
-`trasferimento_gerarchico_2026-09-26/` (hierarchical empirical-Bayes transfer: does not pass its rule),
-`ricerca_sorgenti_2026-09-26/` (HIPSCI CRISPRi across 34 iPSC lines, and the public pages of the challenge),
-`ricerca_sorgenti_2026-09-27/` (multi-cell-type data searched and verified by two agents; the KOLF2.1J file layout; the ingestion plan),
-`modello_contesto_2026-09-27/` (a target x context model design, literature checked on primary sources),
-`rete_contesti_2026-09-27/` (the network over many contexts: design, code, self-test, production run and r1),
-`rete_contesti_r2_2026-09-28/` (the network dataset with more contexts, r2, its registered round, and the descriptive variants on r1),
-`encoder_contesto_2026-09-28/` (a context encoder pre-trained on basal profiles and plugged into the network; self-test and the registered rule of its first round),
-`corpus_basale_2026-09-28/` (basal profiles for the encoder: our CRISPRi controls, A/B/C, DepMap, Tahoe DMSO; a decision per source),
-`tahoe_dmso_2026-09-28/` (Tahoe-100M DMSO controls: the full extractor and the every-k-th-shard subset),
-`tahoe_bracci_2026-09-28/` (Tahoe-100M drug arms as many-context perturbations: extraction, effects, drug choice, the T1/T2 bench design),
-`ponte_flex_2026-09-28/` (the same K562 knockdowns read with Flex and with 3': exploratory),
-`banco_varianti_2026-09-25/` (leave-one-source-out bench of recipe variants: shrinkage, gamma, consensus, gating, generator noise),
-`ricerca_sorgenti_2026-09-25/` (agent search of 25 September: Mixscale provenance, microglia, Flex bridge, full catalogue of new sources),
-`pattern_mixscale_2026-09-24/` (paired reanalysis: target/stimulus heterogeneity and sign specificity),
-`dld1_audit_2026-09-24/` (exploratory DLD-1 audit and Mixscale file inventory),
-`dld1_ceiling_2026-09-24/` (DLD-1 within-context ceiling against cross-context transfer),
-`schede_sorgenti_2026-09-24/` (cards of 17 candidate sources, D-044 format),
-`k562_sc_2026-09-17/`, `cd4_rows_2026-09-22/`, `orion_2026-09-23/`, `multisource_2026-09-22/`,
-`direzione_2026-09-24/` (stage 103), `cis_2026-09-17/`, `coexpression_2026-09-17/`,
-`source_coverage_2026-09-17/`, `source_lineage_2026-09-18/`, `transfer_ceiling/`,
-`external_compat/`.
-
-**Contexts A/B/C** — stages 85 and 99:
-`contexts_2026-09-17/`, `context_identity/`, `context_fingerprints_2026-09-22/`.
-
-**Generator, DE and benches** — stages 72–79 and 83:
-`generator_null_2026-09-17/`, `generator_null_smoke_2026-09-17/`, `fast_de_2026-09-17/`,
-`bench_2026-09-17/`, `prediction_calls_2026-09-17/`, `prediction_calls_2026-09-23/`,
-`dispersion_2026-09-23/`, `call_budget_2026-09-17/`,
-`banco_hepg2_v2_2026-09-26/` (inputs of the HepG2 bench with the real metrics, Colab job 046).
-
-**Pseudobulk experiments of 12–19 September** — their code is archived (D-040):
-`pipeline/`, `hepg2_2026-09-14/`, `benchmark_2026-09-14/`, `benchmark_3ctx_2026-09-14/`,
-`encoder_inputs_2026-09-14/`, `svd_2026-09-15/`, `go_slim_2026-09-15/`, `rank_2026-09-15/`,
-`gpu_2026-09-15/`, `runtime_2026-09-15/`, `eval_protocol_2026-09-15/`,
-`expression_gate_2026-09-16/`, `conditioned_2026-09-18/`, `common_component_2026-09-18/`.
-
-**Data acquisition and source probes** — their code is archived (D-040):
-`data_audit/`, `candidate_verification/`, `candidate_pdf_extracted.txt`,
-`ricerca_dataset_20260915.md`, `source_cards_2026-09-15/`, `jiang_2026-09-15/`,
-`nadig_reconcile_2026-09-15/`, `primeflow_2026-09-15/`, `remote_2026-09-15/`,
-`remote_catalog_2026-09-15/`, `drive_evidence_2026-09-17/`.
-
-**Retired agent infrastructure** — D-040:
-`orchestrator/`, `oracle/`, `grok_verification/`, `catena_2026-09-16/`, `ciclo_giornaliero/`.
+- **Name it `<tema>_<data>`, never reusing a folder name** already present in any category:
+  checkpoints and older reports name folders as `reports/<cartella>/`, and that path is
+  resolved one level down by name (`scripts/31_check_docs.py`, `config.repo_file`).
+  `tests/test_live_tree.py` fails on a duplicate name or a folder outside a category.
+- **Add a row to the category's `README.md`** (newest first) and a row to `docs/REGISTRO.md`,
+  in the same commit. One registry row can cover a folder of homogeneous files.
+- **Write down the claim type**: measured, interpretation, hypothesis, proposal. A proxy is not a
+  VCC score: say which members it sees.
+- **Code in a report is a record.** If you need a changed copy of a file other reports import
+  (see the table in README.md), put it in your new folder and import it from there.
+- **A path you cite** goes as `reports/<categoria>/<cartella>/…` from now on.
 
 ## What a submission leaves here
 
 Registered before generating, because the threshold does not move after the score
 (CP-0030):
-- `reports/prediction_t<NN>_<data>/prediction.json`: the expected band, and the rule to read
-  the result by;
-- `reports/trial_<data>/submission_texts.md`: the name and description of the upload.
+- `reports/invii/prediction_t<NN>_<data>/prediction.json`: the expected band, and the rule to
+  read the result by;
+- `reports/invii/trial_<data>/submission_texts.md`: the name and description of the upload.
 
-Written while generating and submitting, in `reports/trial_<data>/`:
+Written while generating and submitting, in `reports/invii/trial_<data>/`:
 - `t<NN>_manifest_45_generate_prediction.json` and `t<NN>_generation_diagnostics.json`;
 - `t<NN>_manifest_48_package_prediction.json` and `t<NN>_packaging.json`;
 - the output of `vcc`, saved as it is: `submit_t<NN>_started.txt`, `submit_t<NN>_raw.json`,
   `submit_<entry>.json`, `status_<entry>.json`.
 
-After the score come `reports/prediction_t<NN>_<data>/comparison.json`, a checkpoint and §0
-of `docs/PROGETTO.md`. The latest complete example is t15: `reports/prediction_t15_2026-09-23/`
-and `reports/trial_2026-09-24/`.
+After the score come `reports/invii/prediction_t<NN>_<data>/comparison.json`, a row in
+`reports/invii/README.md`, a checkpoint and §0 of `docs/PROGETTO.md`. The latest complete
+example is t25: `reports/invii/prediction_t25_2026-09-27/` and `reports/invii/trial_2026-09-27/`.
 
-The owner's authorisations are transcribed in `reports/trial_2026-09-22/autorizzazioni.md`.
+The owner's authorisations are transcribed in `reports/invii/trial_2026-09-22/autorizzazioni.md`.
 Read them, but a new agent confirms in chat before using one.

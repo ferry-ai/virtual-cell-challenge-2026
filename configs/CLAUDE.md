@@ -9,6 +9,10 @@
 - **A recipe is written before its generation**, with the prediction it is judged by
   (`docs/LAVORO.md` §2). Once stage 100 has run on it, it is never edited: its content and
   hash are in that run's manifest. A new idea is a new file.
+- **Repository paths inside a recipe** (the cis pairs, the gene share) are read through
+  `config.repo_file`: recipes written before 28 September name `reports/<folder>/…`, which since
+  D-046 lives in `reports/<categoria>/<folder>/…`. A new recipe names the current path.
+  `tests/test_pipeline_contracts.py` fails if a file a recipe names cannot be found.
 - **The format of a recipe** is in the docstring of `scripts/100_build_context_effects.py`;
   the latest recipe is the best example.
 - **The default seed is pinned by a test** (`tests/test_trial_inference.py`): changing it

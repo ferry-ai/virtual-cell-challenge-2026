@@ -1,7 +1,11 @@
 # R-MODELLI — programmi, stato cellulare e bersagli nuovi
 
 - **Stato:** aperto; promettente, training in attesa dei dati e del protocollo.
-- **Aggiornato:** 24 settembre 2026.
+- **Aggiornato:** 24 settembre 2026. **Nota del 28/09 (D-046):** la scheda non è stata aggiornata;
+  i confronti che proponeva sono stati eseguiti nella scheda [R-V2](modello-v2.md) (programmi, H6,
+  modello a cancelli, rete, encoder), tutti con esito negativo finora:
+  [reports/trasferimento/README.md](../../reports/trasferimento/README.md) e
+  [reports/modelli/README.md](../../reports/modelli/README.md).
 - **Assegnazione:** da verificare con gli agenti già attivi; nessuna presa in carico registrata qui.
 - **Ipotesi:** H1 programmi, H2 stato, H3 ruolo con segno, H6 pesi delle sorgenti, H10 prior aggiuntivi.
 
@@ -46,8 +50,8 @@ checkpoint; risultati negativi restano utili e chiudono il relativo esperimento.
 
 ## Evidenze e alternative
 
-[Pattern misurati](../../reports/pattern_mixscale_2026-09-24/RISULTATI.md);
-[ipotesi e alternative](../../reports/ipotesi_trasferimento_2026-09-24/IPOTESI.md), §§2–5/7/8.
+[Pattern misurati](../../reports/sorgenti/pattern_mixscale_2026-09-24/RISULTATI.md);
+[ipotesi e alternative](../../reports/analisi/ipotesi_trasferimento_2026-09-24/IPOTESI.md), §§2–5/7/8.
 Se le etichette non reggono, tornare a R-DATI; se emerge una quota di rispondenti,
 aprire il confronto di distribuzioni in [R-SWITCH](switch-distribuzioni.md).
 Reti causali dinamiche restano candidate quando tempo e interventi le rendono valutabili.

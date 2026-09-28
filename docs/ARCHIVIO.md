@@ -5,6 +5,10 @@ questo file dice che cosa c'è dentro e come si riprende. **Nessun report, check
 è stato cancellato**, e i checkpoint continuano a citare per nome ciò che è archiviato,
 come devono, perché sono immutabili.
 
+Il 28 settembre (D-046) report e analisi superate sono stati **spostati**, non archiviati: stanno
+ancora nell'albero, in `reports/<categoria>/` e in `docs/storico/`, e non compaiono qui. Un percorso
+scritto prima di quella data si trova un livello più giù, con lo stesso nome.
+
 Le pulizie sono due:
 - quella del 23 settembre ([D-040](DECISIONI.md#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione)),
   descritta da qui fino all'ultima sezione;
@@ -36,7 +40,7 @@ moduli di cui ha bisogno siano ancora nell'albero, e altrimenti riprendi anche q
   ciò che hanno misurato;
 - `docs/checkpoints/`, [DECISIONI.md](DECISIONI.md), [REGISTRO.md](REGISTRO.md) e i documenti
   di analisi (`docs/revisione_*`, `docs/candidate_*`, `docs/data_strategy_*`,
-  `docs/BENCHMARK_*`, `docs/ENCODER_INPUTS.md`, `docs/SVD_E_RANGO.md`,
+  `docs/BENCHMARK_*`, `docs/storico/ENCODER_INPUTS.md`, `docs/storico/SVD_E_RANGO.md`,
   [SOTTOMISSIONE.md](SOTTOMISSIONE.md));
 - i dati fuori dal repository (`C:/Users/ferra/vcc2026-data`), le copie su Drive e la coda Colab.
 
@@ -52,7 +56,7 @@ qui resta un errore: è la differenza fra archiviare e perdere.
 
 Il branch `refactor/pulizia` (worktree `../vcc2026-refactor`, tag
 `archivio/pre-pulizia-2026-09-19`) aveva già fatto una pulizia simile, mai integrata. La
-revisione del 19 (`reports/direzione_2026-09-19/VALUTAZIONE.md` §6) la fermava perché
+revisione del 19 (`reports/analisi/direzione_2026-09-19/VALUTAZIONE.md` §6) la fermava perché
 toglieva la catena di cicli senza una decisione esplicita. Dal 22 settembre, poi, due cose che
 quel branch archiviava sono tornate vive: lo stadio 45 (il generatore del t08, t10, t11) e la
 lettura a intervalli di byte (`remote_ranges.py`, usata dagli stadi 97 e 102). Questa pulizia
@@ -87,7 +91,7 @@ parafrasata; per i file che non ne hanno, una descrizione dai loro campi).
 
 ### Agenti e orchestrazione: orchestratore, oracolo, catena di cicli — 119 file, 21.245 righe
 
-Consultazione multi-modello (orchestratore), oracolo numerico del confronto pairwise, catena di cicli Codex → Claude → Grok con guardiano e piano mattutino. L'ultima campagna vera dell'orchestratore è l'audit Jiang del 15 settembre ([CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md)). La catena non ha completato nessun ciclo: in `reports/ciclo_giornaliero/` non esiste una cartella `ciclo-NN/`, e dal 19 al 23 settembre il task giornaliero di Windows è uscito ogni giorno con «nessun piano sigillato» (`C:/Users/ferra/vcc2026-data/ciclo/scheduler.log`). L'attività pianificata del piano mattutino è disabilitata. Nessuno di questi file è importato dal codice che produce una sottomissione. Ritiro deciso in [D-040](DECISIONI.md#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione).
+Consultazione multi-modello (orchestratore), oracolo numerico del confronto pairwise, catena di cicli Codex → Claude → Grok con guardiano e piano mattutino. L'ultima campagna vera dell'orchestratore è l'audit Jiang del 15 settembre ([CP-0016](checkpoints/0016-piano-operativo-audit-protocollo.md)). La catena non ha completato nessun ciclo: in `reports/storico/ciclo_giornaliero/` non esiste una cartella `ciclo-NN/`, e dal 19 al 23 settembre il task giornaliero di Windows è uscito ogni giorno con «nessun piano sigillato» (`C:/Users/ferra/vcc2026-data/ciclo/scheduler.log`). L'attività pianificata del piano mattutino è disabilitata. Nessuno di questi file è importato dal codice che produce una sottomissione. Ritiro deciso in [D-040](DECISIONI.md#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione).
 
 | Percorso | Righe | Che cosa dice di sé |
 |---|---:|---|

@@ -57,6 +57,23 @@ class CheckpointTests(unittest.TestCase):
         self.assertTrue((self.dir / '0003-benchmark-cd4.md').exists())
         self.assertIn('[0003]', (self.dir / 'INDICE.md').read_text(encoding='utf-8'))
 
+    def test_skips_a_number_another_document_cites(self):
+        """A checkpoint cited but never committed keeps its number (R-020, CP-0040)."""
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root, True)
+        folder = root / 'docs' / 'checkpoints'
+        folder.mkdir(parents=True)
+        for name in ('TEMPLATE.md', 'INDICE.md', '0001-primo.md'):
+            shutil.copy(self.dir / name, folder / name)
+        (root / 'reports' / 'x').mkdir(parents=True)
+        (root / 'reports' / 'x' / 'R.md').write_text(
+            'vedi [CP-0002](../../docs/checkpoints/0002-altra-sessione.md)\n', encoding='utf-8')
+        with patch.object(sys, 'argv', ['30_new_checkpoint.py', '--dir', str(folder),
+                                        '--slug', 'nuovo', '--title', 'Nuovo']):
+            new_checkpoint.main()
+        self.assertFalse((folder / '0002-nuovo.md').exists())
+        self.assertTrue((folder / '0003-nuovo.md').exists())
+
     def test_rejects_bad_slug_and_pipe_in_title(self):
         with self.assertRaises(ValueError):
             self.run_cli('--slug', 'Benchmark CD4', '--title', 'ok')
@@ -245,6 +262,40 @@ class CheckerTests(unittest.TestCase):
             self.assertNotIn(fine, reported)
         self.assertIn('99_gone.py', reported)
         self.assertIn('PERSO.md', reported)
+
+    def test_a_moved_report_path_is_followed_one_level_down(self):
+        """D-046: report folders went into category folders with their names unchanged.
+
+        Checkpoints and reports are never edited, so they go on naming reports/<folder>/;
+        the checker finds the folder one level below, for backtick paths and links alike,
+        and still reports a path that exists nowhere or twice.
+        """
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root, True)
+        (root / 'reports' / 'invii' / 'trial_x').mkdir(parents=True)
+        (root / 'reports' / 'invii' / 'trial_x' / 'status.json').write_text('{}', encoding='utf-8')
+        (root / 'reports' / 'storico' / 'twin').mkdir(parents=True)
+        (root / 'reports' / 'invii' / 'twin').mkdir(parents=True)
+        (root / 'docs' / 'storico').mkdir(parents=True)
+        (root / 'docs' / 'storico' / 'VECCHIO.md').write_text('# V\n\n## Sezione\n', encoding='utf-8')
+        (root / 'docs' / 'checkpoints').mkdir(parents=True)
+        (root / 'docs' / 'checkpoints' / '0001-uno.md').write_text(
+            'vedi `reports/trial_x/status.json`, [x](../../reports/trial_x/status.json), '
+            '[v](../VECCHIO.md#sezione) e [w](../VECCHIO.md#assente)\n', encoding='utf-8')
+        for name in ('CLAUDE.md', 'README.md'):
+            (root / name).write_text('ok\n', encoding='utf-8')
+        for name in ('PROGETTO.md', 'REGISTRO.md', 'DECISIONI.md'):
+            (root / 'docs' / name).write_text('# X\n', encoding='utf-8')
+        errors = []
+        with patch.object(check_docs, 'REPO_ROOT', root):
+            self.assertTrue(check_docs.path_exists('reports/trial_x/status.json'))
+            self.assertTrue(check_docs.path_exists('reports/trial_x/'))
+            self.assertTrue(check_docs.path_exists('docs/VECCHIO.md'))
+            self.assertFalse(check_docs.path_exists('reports/trial_y/status.json'))
+            self.assertFalse(check_docs.path_exists('reports/twin/'))  # two matches: ambiguous
+            check_docs.check_links(errors)
+        self.assertEqual(len(errors), 1, errors)
+        self.assertIn('VECCHIO.md#assente', errors[0])
 
     def test_this_repository_is_consistent(self):
         done = subprocess.run([sys.executable, str(ROOT / 'scripts' / '31_check_docs.py')],

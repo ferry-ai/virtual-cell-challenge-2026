@@ -2,12 +2,14 @@
 
 ## Start here
 
-1. [`docs/PROGETTO.md`](docs/PROGETTO.md) §0 — where the project stands today, on one page:
-   best score, what is in flight, what is decided next.
+1. [`docs/PROGETTO.md`](docs/PROGETTO.md) §0 and §5 — where the project stands today, on one
+   page: best score, what is in flight, what waits for the owner, the known weaknesses.
 2. [`docs/PIANI.md`](docs/PIANI.md) — open priorities, dependencies and the relevant plan
    card. Before taking work, check its assignment and the shared-workspace rules in §3.
-3. The last three rows of [`docs/checkpoints/INDICE.md`](docs/checkpoints/INDICE.md).
-4. The row below that matches your task, and only what it names. For anything that runs
+3. [`reports/README.md`](reports/README.md) — the evidence to read first, and one index per
+   category with the date, core, validity and weight of every report folder.
+4. The last three rows of [`docs/checkpoints/INDICE.md`](docs/checkpoints/INDICE.md).
+5. The row below that matches your task, and only what it names. For anything that runs
    code, that includes [`docs/LAVORO.md`](docs/LAVORO.md), the procedural guide.
 
 Before you rely on any other document, check its row in [`docs/REGISTRO.md`](docs/REGISTRO.md):
@@ -16,15 +18,16 @@ several contain conclusions that later work corrected.
 | Your task | Read | Leave aside |
 |---|---|---|
 | Choose, resume or hand off an open plan | `docs/PIANI.md`; `docs/piani/CLAUDE.md`; the one relevant plan card | treating old reports' next steps as current assignments |
-| Prepare, generate or submit a trial | LAVORO §1–2; `reports/CLAUDE.md`, which lists what a submission leaves, with a complete example; the latest recipe in `configs/recipes/` | the analyses of 11–15 September in `docs/` |
-| Read an official score | LAVORO §2, point 7; `reports/anchors_2026-09-17/`; the latest checkpoint as a model | the benches' local scores, which are not VCC scores |
+| Prepare, generate or submit a trial | LAVORO §1–2; `reports/CLAUDE.md`, which lists what a submission leaves, with a complete example; `reports/invii/README.md`; the latest recipe in `configs/recipes/` | the analyses of 11–15 September in `docs/storico/` |
+| Read an official score | LAVORO §2, point 7; `reports/gara/anchors_2026-09-17/`; the latest checkpoint as a model | the benches' local scores, which are not VCC scores |
 | Prepare the final set (D, E, F; 22 October) | LAVORO §7 | |
 | Find data, choose sources or design a generalizing predictor | `docs/GENERALIZZAZIONE.md`; D-044 in `docs/DECISIONI.md` | ranking datasets only by overlap with the current 300 targets |
 | Queue or follow a Colab job | LAVORO §3 | the job's own log: it syncs only when the job ends |
 | Change a stage | `scripts/CLAUDE.md`; the stage's docstring and its test | |
 | Change a library module | `src/vcc2026/CLAUDE.md`, which says which stages import it | |
 | Know why something was decided, or when to reopen it | the table at the top of `docs/DECISIONI.md`, then that one section | the other sections |
-| Find the evidence behind a claim | the checkpoint or decision that makes it, then the report it cites | browsing `reports/` |
+| Find the evidence behind a claim | the checkpoint or decision that makes it, then the report it cites; a path `reports/<folder>/` written before 28 September is now `reports/<categoria>/<folder>/` (`ls -d reports/*/<folder>`) | browsing `reports/` folder by folder: read the category's `README.md` |
+| Run or change research code in a report | the table «Il codice di ricerca che sta qui» in `reports/README.md`: which files other benches import | editing a file other reports import: copy it into your new folder |
 | Bring back archived code | `docs/ARCHIVIO.md`: restore from the tag, with its test | rewriting it |
 | Write a recipe or change a setting | `configs/CLAUDE.md` | |
 | Write in `docs/` or `reports/` | `docs/CLAUDE.md` or `reports/CLAUDE.md` | |
@@ -36,15 +39,14 @@ vcc2026/
 ├── CLAUDE.md            this agreement, for every agent
 ├── AGENTS.md            the pointer for Codex
 ├── README.md            the task, the scoring and the setup, for people (in English)
-├── REPORT_2026-09-24_stato_e_interpretazioni.md   state and interpretations of 24 September
 ├── requirements*.txt    dependencies; the venv lives in the data root
 ├── configs/             paths and constants, the stage-45 trial, one recipe per submission
 ├── src/vcc2026/         the library of the live stages, one module per concern
 ├── scripts/             the numbered stages, and the wrappers py.cmd and vcc.cmd
 ├── tests/               unittest suite; test_live_tree keeps these maps true
 ├── notebooks/           the Colab dispatcher and its job scripts (docs/LAVORO.md §3)
-├── docs/                map, working guide, decisions, registry, archive, checkpoints
-└── reports/             the evidence, one folder per experiment
+├── docs/                map, working guide, decisions, registry, archive, checkpoints; storico/
+└── reports/             the evidence, reports/<categoria>/<tema>_<data>/, with a README per category
 C:/Users/ferra/vcc2026-data/   data, venv and artifacts, outside the repository (D-001)
 ```
 
@@ -67,6 +69,11 @@ Only the code that produces or scores a submission is in the tree (D-040, D-043)
 - `tests/test_live_tree.py` fails if either table disagrees with the tree, or if a definition
   has no live caller.
 
+The research benches are not in that tree: about 22,000 lines of Python live in the report
+folders that used them, untested except `kolf_sums.py`, and several are imported by other
+benches by path. The map of which file serves which is in `reports/README.md`; a changed copy
+goes in a new report folder, never over the old file.
+
 Everything else is in the tags listed file by file in `docs/ARCHIVIO.md`: the orchestrator,
 the pairwise oracle, the chain of cycles, the pseudobulk benchmark, the conditioned predictor,
 the source probes, the remote ingestion, trial-00 and trial-01, the expired plans.
@@ -75,7 +82,9 @@ the source probes, the remote ingestion, trial-00 and trial-01, the expired plan
   with the owner, and the owner authorises anything that spends quota.
 - If you need archived code, restore it from the tag with its test; do not rewrite it.
   Reviving a subsystem is a decision: record it in `docs/DECISIONI.md`.
-- Checkpoints still name archived paths. That is expected; the checker accepts them.
+- Checkpoints still name archived paths, and report paths as they were before 28 September
+  (`reports/<folder>/`, now `reports/<categoria>/<folder>/`; D-046). That is expected: the
+  checker, and `config.repo_file` for recipes, follow them.
 
 ## Evidence discipline
 

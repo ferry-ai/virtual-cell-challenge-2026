@@ -1,0 +1,25 @@
+# generatore e banchi — dagli effetti alle cellule, e i banchi con lo scorer vero
+
+Un invio non è una tabella di effetti: sono 360.000 cellule generate, su cui lo scorer chiama i
+geni differenziali. Qui stanno le misure del generatore (quante chiamate produce anche a effetto
+nullo), del DE dello scorer, e i banchi a sei metriche su cellule perturbate vere di linee
+pubbliche. Indice generale: [../README.md](../README.md).
+
+**Da sapere:**
+- Il generatore di tutti i migliori invii (stadio 45, trial-01) produce **centinaia di chiamate
+  spurie per bersaglio a effetto nullo** (462 / 453 / 684 in A / B / C, l'82 % «in su»);
+  `ControlModel` (stadio 76) quasi nessuna, ma nel t14 ha abbassato la fedeltà.
+- **Il solo banco con lo scorer vero è HepG2** (un contesto, bersagli essenziali, solo K562 come
+  sorgente, verità su metà delle cellule): è la prova più vicina alla gara, non la gara.
+
+| Data | Cartella | Nocciolo | Vale? | Peso oggi |
+|---|---|---|---|---|
+| 26–27/09 | [banco_hepg2_v2_2026-09-26/](banco_hepg2_v2_2026-09-26/) | Stadio 75, job 046: la forma t19 batte la t16 (+0,026, intervallo sopra zero); raddoppiare la t19 dà +0,015 con l'intervallo sullo zero; la testa cis non si vede; Jaccard negativo in tutti i bracci: la risposta media del contesto porta geni DE che il K562 non ha | sì (ancore locali, descrittivo, nessuna regola) | ★★★ |
+| 23/09 | [dispersion_2026-09-23/](dispersion_2026-09-23/) | Dispersione per gene nel generatore di trial-01 (t13 non costruito: 5 / 15 / 31 chiamate a effetto nullo) e piloti di `ControlModel` per il t14. `--gene-dispersion` **non è mai stato inviato** | sì | ★★ |
+| 23/09 | [prediction_calls_2026-09-23/](prediction_calls_2026-09-23/) | Stadio 83 sui file di t11, t14 e t15: chiamate mediane per bersaglio (543–1.009 con trial-01, l'81–86 % «in su»; 136–218 con `ControlModel`) | sì | ★★ |
+| 17/09 | [generator_null_2026-09-17/](generator_null_2026-09-17/) | Calibrazione a effetto nullo a scala piena (stadio 72): le chiamate spurie del generatore di trial-01, di `ControlModel` e delle cellule vere | sì | ★★ |
+| 17/09 | [generator_null_smoke_2026-09-17/](generator_null_smoke_2026-09-17/) | La stessa prova in versione ridotta | superato da `generator_null_2026-09-17/` | ★ |
+| 17/09 | [bench_2026-09-17/](bench_2026-09-17/) | I primi banchi a sei metriche su Colab: K562 del pannello (`b002`) e trasferimento K562 → HepG2 (`h002`); scala locale | storico | ★ |
+| 17/09 | [prediction_calls_2026-09-17/](prediction_calls_2026-09-17/) | Stadio 83 sul t02: quante chiamate e quanto scende il gene bersaglio (5–9 % invece dell'85 %) | storico | ★ |
+| 17/09 | [call_budget_2026-09-17/](call_budget_2026-09-17/) | Chiamate per bersaglio al variare dell'ampiezza su A, con pochi controlli di riferimento: un limite inferiore | storico | ★ |
+| 17/09 | [fast_de_2026-09-17/](fast_de_2026-09-17/) | Il DE veloce dei banchi (`fast_scorer_de`) è identico al percorso scanpy dello scorer (D-037) | sì | ★ |

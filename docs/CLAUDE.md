@@ -17,17 +17,16 @@ in the root `CLAUDE.md`, which is always loaded. This page is the index of the f
 | `docs/REGISTRO.md` | whether a document, report or dataset can be relied on | a row for every file under `docs/` and `reports/`; search it for a path |
 | `docs/ARCHIVIO.md` | what left the tree, and the command that brings it back | a section per cleanup, a row per file |
 | `docs/checkpoints/` | what happened, when, on what evidence | immutable; `docs/checkpoints/INDICE.md` lists them, the latest last |
+| `docs/storico/` | analyses and texts that no longer guide the work, kept as they were | its `README.md` gives the core and the status of each; moved there on 28 September (D-046) |
 
 `scripts/31_check_docs.py` enforces the structure of the registry, the decisions and the
 index, and every link between them. It says nothing about whether a claim is true.
 
-## The analyses of 11–15 September
+## The analyses of 11–15 September, and other superseded texts
 
-Eight documents analyse experiments and choices from before the single-cell pipeline:
-- `BENCHMARK_TRE_CONTESTI.md`, `BENCHMARK_MODULARE.md`, `ENCODER_INPUTS.md` and `SVD_E_RANGO.md`;
-- `revisione_analisi_2026-09-11.md` and `revisione_grok_2026-09-12.md`;
-- `candidate_adversarial_review_2026-09-12.md` and `data_strategy_2026-09-11.md`.
-
-Most of the experiments they discuss are closed, and their code is archived
-(`docs/PROGETTO.md` §2). They are not a guide to today's pipeline. Open one when a decision
-or a checkpoint cites it, after reading its row in the registry: their states differ.
+They are in `docs/storico/`, with an index: the eight analyses of 11–15 September (benchmarks,
+encoder inputs, SVD, the first reviews and data strategy), the history sections of the root
+README and the old §3–§4 of PROGETTO. Most of the experiments they discuss are closed and their
+code is archived. They are not a guide to today's pipeline. Open one when a decision or a
+checkpoint cites it — a checkpoint names it as `docs/<file>`, and it is found in `docs/storico/`
+— after reading its row in the registry: their states differ.

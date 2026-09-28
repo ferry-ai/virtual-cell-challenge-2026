@@ -14,7 +14,7 @@ of the top-k genes by |prediction| with the same sign as the truth
 every contributing source has the same sign.
 
 Claim type: measurement in effect space between public sources, not a VCC score. The
-official base of the fidelity member (0.5123, `reports/anchors_2026-09-17/anchors.json`)
+official base of the fidelity member (0.5123, `reports/gara/anchors_2026-09-17/anchors.json`)
 is reported beside it only as a reference line.
 
     python scripts/103_direction_transfer.py --cache <stage-98 cache> --out <report dir>

@@ -22,7 +22,7 @@ the (task, target) groups held out whole. No A/B/C measurement is a label; A/B/C
 through their controls (``--basal``). Features of a context use ``--sources``. The cis prior
 and its scale come from the direction run's recipe (manifest ``cis``); STRING partners
 (`vcc2026.priors.partner_effects`) exclude every panel target. Evidence:
-reports/trasferimento_appreso_2026-09-26/RISULTATI.md (r3-r5; r5 is the bench isolated as the
+reports/trasferimento/trasferimento_appreso_2026-09-26/RISULTATI.md (r3-r5; r5 is the bench isolated as the
 audit of 26 September asks).
 
 Writes ``effects_<CTX>.npz`` (targets, genes, lfc, observed: the direction's) and a manifest;
@@ -58,7 +58,6 @@ from vcc2026.transfer_model import (  # noqa: E402
     pair_features, predict_magnitude, reweight, training_rows,
 )
 
-REPO = Path(__file__).resolve().parents[1]
 DATA_ROOT = config.paths().data_root
 
 
@@ -127,7 +126,7 @@ def main() -> None:
     dman = json.loads((args.direction / "manifest.json").read_text(encoding="utf-8"))
     cis_spec = dman["recipe"].get("cis")
     coords = load_coordinates(args.coords)
-    cis_model = cis_prior(pd.read_csv(REPO / cis_spec["pairs"]), panel) if cis_spec else None
+    cis_model = cis_prior(pd.read_csv(config.repo_file(cis_spec["pairs"])), panel) if cis_spec else None
 
     def cis_matrix(targets):
         m = np.zeros((len(targets), G), dtype=np.float32)
