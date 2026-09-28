@@ -31,6 +31,7 @@ Fonte: i `comparison.json` e gli stati salvati. La tabella completa per membro �
 | **t22** | **+0,141250** | 337 | + HEK293T: non conclusivo contro il t20; **ricetta di riferimento** |
 | t24 | +0,142897 | 347 | t22 con un altro seme: D = 0,0016, una sola coppia; il riferimento del t22 diventa 0,14207 |
 | t25 | +0,140238 | 361 | t22 con lo stimatore corretto: −0,0010, non conclusivo; la correzione resta |
+| t23 | +0,141868 | 366 | t22 con la quota condivisa (conta l'esclusione): +0,0006, non conclusivo; PDS su, membri DE giù (CP-0042) |
 
 Non inviati: t04, t06, t12, t18, t19, t23 (pronto, aspetta il via), t09 e t13 (fermati dalle
 loro regole), t21 (la sua previsione è citata ma non è nel repository: vedi la
@@ -44,8 +45,8 @@ loro regole), t21 (la sua previsione è citata ma non è nel repository: vedi la
 | 28/09 | [lezioni_invii_2026-09-28/](lezioni_invii_2026-09-28/) | I nostri invii valutati e la classifica pubblica in soli aggregati: dal t16 nessun cambio supera il rumore del seme; contro la mediana dei primi 100 perdiamo soprattutto sull'MSE (tosato a 0 in tutti i nostri invii) | sì; il rumore viene da una sola coppia di semi | ★★★ |
 | 27/09 | [prediction_t25_2026-09-27/](prediction_t25_2026-09-27/) | t22 sulla cache r9 (stimatore senza l'artefatto del pseudoconteggio): +0,140238, −0,0010, non conclusivo | sì | ★★ |
 | 27/09 | [prediction_t24_2026-09-27/](prediction_t24_2026-09-27/) | t22 con un altro seme del generatore: D = 0,0016 su una coppia; la soglia ±0,005 resta | sì, come stima grezza di una coppia | ★★★ (il solo dato sul rumore ufficiale) |
-| 27/09 | [prediction_t23_2026-09-27/](prediction_t23_2026-09-27/) | t22 con la quota condivisa per gene: registrato, generato, **non inviato** | sì come registrazione; l'ablazione dice che conta l'esclusione dei geni, non la quota | ★★ |
-| 27/09 | [trial_2026-09-27/](trial_2026-09-27/) | Testi, manifesti e pacchetti di t23, t24 e t25; invii di t24 e t25 | sì | ★★ |
+| 27/09 | [prediction_t23_2026-09-27/](prediction_t23_2026-09-27/) | t22 con la quota condivisa per gene; inviato il 28/09 con il via del proprietario: +0,141868, t23 − t22 = +0,0006, non conclusivo; `pds_cosine` +0,0109 grezzo, `nmae`, `reach` e Jaccard giù (CP-0042) | sì come registrazione; l'ablazione dice che conta l'esclusione dei geni, non la quota | ★★ |
+| 27/09 | [trial_2026-09-27/](trial_2026-09-27/) | Testi, manifesti e pacchetti di t23, t24 e t25; invii di t24, t25 e (il 28/09 sera) t23 | sì | ★★ |
 | 26/09 | [prediction_t22_2026-09-26/](prediction_t22_2026-09-26/) | t20 + HEK293T a peso uguale: +0,141250, il migliore; +0,0016 sul t20, non conclusivo | sì | ★★★ (ricetta di riferimento) |
 | 26/09 | [prediction_t20_2026-09-26/](prediction_t20_2026-09-26/) | t19 + modulo cis: +0,139676; contro il t16 non si separano restrizione e cis | sì | ★★ |
 | 26/09 | [trial_2026-09-26/](trial_2026-09-26/) | Testi, manifesti e invii di t20 e t22 | sì | ★★ |

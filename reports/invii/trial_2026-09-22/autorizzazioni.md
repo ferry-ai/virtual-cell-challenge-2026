@@ -161,3 +161,13 @@ grandi; i manifest restano nelle cartelle:
 t18 e t19 non sono mai stati inviati e le loro ricette sono superate; il t20 è inviato e valutato. Si rigenerano con
 gli stadi 100, 45 e 48 dalle ricette `configs/recipes/t18.json`, `t19.json` e `t20.json`. Restano t22, t23 (aspetta il
 via), t24 e t25. Lo spazio torna libero quando il proprietario svuota il Cestino (25,3 GB).
+
+## Invio del t23, notte fra il 28 e il 29 settembre
+
+Il proprietario, in chat alla sessione Claude `f2abd9a6` verso le 23:57 del 28/09 (ora italiana): «continue we must
+submit something in 2 hours»; dopo la domanda su quale candidato e il chiarimento che t24 e t25 erano stati inviati
+ma il t23 no, alle 00:04 del 29/09: «ok invia t23». Via all'invio del **solo t23**, con la quota del 28/09 UTC. È il
+candidato registrato il 26/09 alle 23:14 UTC e impacchettato il 27/09. L'archivio è stato ricontrollato prima
+dell'upload: sha256 `2805aea8…3a07`, uguale a `archive_sha256` di `trial_2026-09-27/t23_packaging.json`. L'invio usa
+`submit_trial2.py`, nella cartella di lavoro della sessione, copiato da quella della sessione `f4f38e58`; gli output
+vanno in `trial_2026-09-27/`, accanto ai testi del t23.

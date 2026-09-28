@@ -1,0 +1,109 @@
+{
+ "written_utc": "2026-09-28T22:38:11.356366+00:00",
+ "entry_id": "JvKSI2yE5zdnw4Agghvy",
+ "submission_date": "2026-09-28T22:05:13.316218Z",
+ "owners_go": "in chat, 29/09 at 00:04 Italian time: 'ok invia t23'",
+ "score_avg": 0.14186753817380468,
+ "rank_at_scoring": 366,
+ "t23_minus_t22": 0.0006170390882073162,
+ "t23_minus_t22_t24_mean": -0.00020614184400410962,
+ "rule_branch": "otherwise",
+ "rule_text": "inconclusive within resolution: t22 stays the reference for attribution; the gene share stays a candidate for the real-scorer bench (F2)",
+ "inside_avg_band": true,
+ "inside_diff_band": true,
+ "registered_band": [
+  0.12,
+  0.165
+ ],
+ "t23_minus_t22_band": [
+  -0.01,
+  0.015
+ ],
+ "reference": {
+  "t22": 0.14125049908559736,
+  "t24": 0.14289686095002022,
+  "t22_recipe_mean_of_t22_t24": 0.1420736800178088
+ },
+ "scaled_published": {
+  "t22": {
+   "score_pds": 0.6341779442539317,
+   "score_mse": 0,
+   "score_nmae": 0.12037533232563229,
+   "score_fid": -0.052174993857184764,
+   "score_reach": 0.13130923734723685,
+   "score_jac": 0.013815474443968086
+  },
+  "t23": {
+   "score_pds": 0.6591261981865432,
+   "score_mse": 0,
+   "score_nmae": 0.10313504264617275,
+   "score_fid": -0.04171067895988494,
+   "score_reach": 0.1215270768415665,
+   "score_jac": 0.009127590328430699
+  },
+  "t23_minus_t22": {
+   "score_pds": 0.024948253932611464,
+   "score_mse": 0,
+   "score_nmae": -0.017240289679459536,
+   "score_fid": 0.01046431489729982,
+   "score_reach": -0.009782160505670351,
+   "score_jac": -0.004687884115537387
+  }
+ },
+ "raw": {
+  "pds_cosine": {
+   "t23": 0.7976960237829803,
+   "t22": 0.786759568933482,
+   "t24": 0.7876402824228911,
+   "t23_minus_t22": 0.010936454849498345
+  },
+  "de_wilcoxon_lfc_nmae": {
+   "t23": 0.9364381325822982,
+   "t22": 0.9265039129038812,
+   "t24": 0.9244623694094076,
+   "t23_minus_t22": 0.009934219678417011
+  },
+  "de_wilcoxon_direction_reach_raw": {
+   "t23": 0.18690510475430697,
+   "t22": 0.19539948748812852,
+   "t24": 0.20061647370786526,
+   "t23_minus_t22": -0.008494382733821554
+  },
+  "de_wilcoxon_direction_fidelity_yield_raw": {
+   "t23": 0.5000191973641598,
+   "t22": 0.4969192581679741,
+   "t24": 0.49628006230012583,
+   "t23_minus_t22": 0.003099939196185675
+  },
+  "de_wilcoxon_sig_jaccard": {
+   "t23": 0.03375760780196407,
+   "t22": 0.03551457408539036,
+   "t24": 0.03555253853763908,
+   "t23_minus_t22": -0.001756966283426295
+  },
+  "expr_mse_unbiased_capped_norm": {
+   "t23": 2.921485038592952,
+   "t22": 3.0574372233030487,
+   "t24": 3.054635696237394,
+   "t23_minus_t22": -0.13595218471009662
+  }
+ },
+ "registered_raw_priors": {
+  "score_avg_band": [
+   0.12,
+   0.165
+  ],
+  "t23_minus_t22_band": [
+   -0.01,
+   0.015
+  ],
+  "pds_raw": "t22 - 0.005..+0.020",
+  "nmae_raw": "t22 - 0.010..+0.010 (lower is better)",
+  "reach_raw": "t22 - 0.030..+0.010 (fewer genes moved)",
+  "fid_raw": "t22 - 0.010..+0.010",
+  "jaccard_raw": "t22 +/- 0.005",
+  "mse": "scaled stays 0 (lower energy lowers the raw value, still far above the zero point)"
+ },
+ "member_reading": "measured: pds_cosine +0.0109 raw (0.7977, the highest of our submissions), about twelve times what the seed alone moved it in t24 (+0.0009), inside its registered prior (-0.005..+0.020); fidelity +0.0031, inside its prior. Against: de_wilcoxon_lfc_nmae +0.0099 raw (worse; at the edge of its prior +/-0.010), reach -0.0085 and Jaccard -0.0018, inside their priors; raw mse -0.136 but still clipped to 0 scaled. Interpretation, not verified: excluding the genes fewer than two universes estimate sharpens discrimination between targets, while the transferred part moves fewer DE genes and misjudges their size; the two cancel in the mean. By the rule the outcome stays inconclusive; the member pattern is a hypothesis for the real-scorer bench, not a result.",
+ "claim_type": "official scores; the seed-noise unit rests on one pair (t24 - t22 = +0.0016)"
+}

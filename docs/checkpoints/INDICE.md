@@ -72,3 +72,4 @@ aggiunge da sé la riga qui sotto.
 | [0039](0039-banco-varianti-restrizione.md) | 2026-09-25 | Banco a sorgente esclusa: gli effetti ristretti aiutano il PDS proxy, ma meno di quanto scritto prima della revisione | osservazione | — |
 | [0040](0040-biologia-contesti-donatori.md) | 2026-09-25 | Programmi con segno, dipendenze di contesto e instabilita fra donatori: ricerca esplorativa | osservazione | — |
 | [0041](0041-proxy-contro-ufficiale.md) | 2026-09-28 | Il proxy dei banchi contro le differenze ufficiali: due coppie su quattro non lette, non si sceglie più sul solo proxy | esperimento | — |
+| [0042](0042-t23-esclusione-pds.md) | 2026-09-29 | Il t23 in classifica: +0,1419, non conclusivo; il PDS sale di dodici volte il rumore del seme, i membri DE scendono | esperimento | — |

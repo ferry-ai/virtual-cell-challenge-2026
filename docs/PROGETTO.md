@@ -13,8 +13,8 @@ Riorganizzata il 2026-09-28 (D-046):
 - §5 è nuovo: le criticità note. La versione del 23 settembre è nel tag
   `archivio/pre-pulizia-2026-09-23`.
 
-Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 28 settembre, con il t25
-([confronto](../reports/invii/prediction_t25_2026-09-27/comparison.json)).
+Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 29 settembre, con il t23
+([confronto](../reports/invii/prediction_t23_2026-09-27/comparison.json)).
 
 ## 0. Oggi — 28 settembre 2026
 
@@ -51,6 +51,7 @@ sottomissioni chiudono il **5 novembre** (§1).
 | **t22** | il t20 + Orion HEK293T a peso uguale (le quattro sorgenti genome-scale) | trial-01 | **+0,141250** | 337 | [confronto](../reports/invii/prediction_t22_2026-09-26/comparison.json) |
 | t24 | il t22 con un altro seme del generatore (replica: misura il rumore) | trial-01 | +0,142897 | 347 | [confronto](../reports/invii/prediction_t24_2026-09-27/comparison.json) |
 | t25 | il t22 con lo stimatore pseudobulk corretto (`min_expected` 1) | trial-01 | +0,140238 | 361 | [confronto](../reports/invii/prediction_t25_2026-09-27/comparison.json) |
+| t23 | il t22 con la parte trasferita pesata per la quota condivisa (conta l'esclusione dei geni); inviato il 28/09 | trial-01 | +0,141868 | 366 | [CP-0042](checkpoints/0042-t23-esclusione-pds.md) |
 
 In tutti gli invii:
 - lo scalato della `mse` vale 0 (tosato): la `mse` grezza segue l'energia che mettiamo, 1 + E/4786
@@ -65,18 +66,21 @@ derivati dagli scalati con le ancore: il 25 settembre `vcc status` serviva solo 
 
 ### Che cosa è in corso o sospeso
 
-- **t23** = il t22 con la parte trasferita pesata gene per gene per la quota condivisa
-  ([previsione](../reports/invii/prediction_t23_2026-09-27/prediction.json)). Generato e
-  impacchettato il 27/09, **aspetta il via del proprietario**. L'ablazione registrata prima dice
-  che del t23 conta l'esclusione degli 8.247 geni che meno di due universi stimano, non la
-  pesatura; un suo esito ufficiale si leggerebbe come esito dell'esclusione
-  ([ablazione](../reports/trasferimento/ablazione_t23_2026-09-27/RISULTATI.md)).
-- **R-V2**, il modello per il set finale ([scheda](piani/modello-v2.md)), è **in pausa dalle
-  10:40 del 28/09** per scelta del proprietario. Esiti della notte: l'encoder di contesto (parte
-  Orion) e il T1 sui farmaci di Tahoe non passano le loro regole; la rete impara cose che non si
-  portano su una linea nuova. Restano su Kaggle, non letti: la tornata r2 della rete, la parte
-  K562/CD4 dell'encoder, il seme 1 di r1; il seme 2 di r1 non è lanciato, quindi la regola di r1
-  non si può ancora leggere ([modelli](../reports/modelli/README.md)).
+- **t23 valutato** il 28/09 alle 22:37 UTC ([CP-0042](checkpoints/0042-t23-esclusione-pds.md)): +0,141868,
+  t23 − t22 = +0,0006, non conclusivo per la sua regola. Nei membri però `pds_cosine` sale di
+  +0,0109 grezzo (circa dodici volte il seme), mentre `nmae`, `reach` e Jaccard scendono: l'esclusione
+  degli 8.247 geni non stimabili affila la discriminazione e perde sui membri DE (interpretazione).
+  Ipotesi per il prossimo candidato: l'esclusione con i membri DE recuperati, da scegliere con lo
+  scorer vero (azione 4 di R-REV), non con il proxy ([CP-0041](checkpoints/0041-proxy-contro-ufficiale.md)).
+- **R-V2**, il modello per il set finale ([scheda](piani/modello-v2.md)), **ripresa dal proprietario
+  il 28/09 alle 19:22**, in parallelo con R-REV. Letti con le loro regole ([modelli](../reports/modelli/README.md)):
+  - l'encoder di contesto non passa su nessuna verità;
+  - la rete di r1 sui tre semi non usa il contesto e perde contro il trasferimento su tre linee;
+    passa solo J, i bersagli nuovi, di un millesimo;
+  - più contesti (r2) aiutano la rete di pochi millesimi, provvisorio con un seme.
+
+  Registrati prima del codice: la misura decisiva per la rete relazionale (azione 6 di R-REV) e la
+  rete relazionale, che parte su Kaggle solo se la misura lo consente.
 - **Direzione del proprietario (28/09 mattina):** usare tutti i dati, anche quelli fermi; una
   rete che impari relazioni fra geni e gruppi di comportamento che si ritrovano da un contesto
   all'altro; i dati farmacologici non devono prevalere, almeno all'inizio.
@@ -85,7 +89,6 @@ derivati dagli scalati con le ancore: il 25 settembre `vcc status` serviva solo 
 
 ### Che cosa aspetta una decisione del proprietario
 
-- Il via all'invio del t23 (o di un candidato con la sola esclusione, che l'ablazione preferisce).
 - Se e come usare dati pubblici della **stessa linea** dei contesti di gara, identificata dai
   controlli: ammesso finora solo come esperimento dichiarato, con le identità fuori dal repository
   pubblico ([scheda R-V2](piani/modello-v2.md), «Domanda strategica aperta»).
