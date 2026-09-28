@@ -1,0 +1,171 @@
+{
+ "stage": "universo_kolf_2026-09-27/kolf_effects.py",
+ "written_utc": "2026-09-27T22:32:59.206584+00:00",
+ "name": "viperturb",
+ "context": null,
+ "line": "viperturb",
+ "source": {
+  "what": "https://zenodo.org/records/18460279/files/genome_wide_filtered.rds?download=1",
+  "url": "https://zenodo.org/records/18460279/files/genome_wide_filtered.rds?download=1",
+  "licence": "not specified in sums archive"
+ },
+ "input": {
+  "sums": "C:\\Users\\ferra\\vcc2026-data\\interim\\viperturb_sums\\sums_p1.npz",
+  "bytes": 500067773,
+  "sha256": "9fe3e010a6a705597d6a5adb68879080c927acc343c3f8061463ab98be2a27a0",
+  "groups_sha256": "dfbb55d4bbfbb871c699e30b404f69e8eaa9fd33c757c2526b538762fa6ffe99",
+  "matrix": {
+   "member": "sums.npy",
+   "data_offset": 1529472,
+   "shape": [
+    6725,
+    18533
+   ],
+   "dtype": "<f4",
+   "order": "F"
+  },
+  "axis_matches_official": true
+ },
+ "out": "C:\\Users\\ferra\\vcc2026-data\\processed\\universe_viperturb_2026-09-27_p1",
+ "chunk_size": 600,
+ "window_genes": 256,
+ "estimator": {
+  "function": "vcc2026.multisource.effects_from_pseudobulk",
+  "options": {
+   "condition": null,
+   "phi": 0.2,
+   "min_control_frac": 1e-06,
+   "min_cells": 10.0,
+   "pseudo": 0.5,
+   "pseudo_scale": "constant",
+   "min_expected": 1.0
+  },
+  "donors": "archive pool IDs, each against its selected context's NTC cells",
+  "library": "each row's total_counts over all genes of the file: its counts on the axis genes of the file plus one column with the rest",
+  "axis": "AxisTable.from_source, control fraction >= 1e-6; axis genes the file lacks are NaN"
+ },
+ "chunks": [
+  {
+   "file": "viperturb_00.npz",
+   "targets_in_block": 600,
+   "targets": 590,
+   "bytes": 76315000,
+   "sha256": "b1bd670475e7cb6670664bdb50bc0f8a09012079f4c9a962ae36fd9479b8eb72"
+  },
+  {
+   "file": "viperturb_01.npz",
+   "targets_in_block": 600,
+   "targets": 594,
+   "bytes": 76974520,
+   "sha256": "1a082308cfac7cf337ca783cf51cd99c49a7f13cbbbdd1f7453cffc9b41ca66c"
+  },
+  {
+   "file": "viperturb_02.npz",
+   "targets_in_block": 600,
+   "targets": 590,
+   "bytes": 76225102,
+   "sha256": "433d48a6683c78476fb01cac6a3dc588fa7c5821cdd8b431e42b3c7c882610b9"
+  },
+  {
+   "file": "viperturb_03.npz",
+   "targets_in_block": 600,
+   "targets": 591,
+   "bytes": 76543352,
+   "sha256": "16fb37195e273981bc257a662c86b63a16edcbdc365cd17574e6743ae470537a"
+  },
+  {
+   "file": "viperturb_04.npz",
+   "targets_in_block": 600,
+   "targets": 593,
+   "bytes": 76796282,
+   "sha256": "1b6948386cff3c12102b8a25c4d2bf8ff732d5538657b493d6b5d33e1d2e2c65"
+  },
+  {
+   "file": "viperturb_05.npz",
+   "targets_in_block": 600,
+   "targets": 591,
+   "bytes": 76485877,
+   "sha256": "21de0cee01db7b18c6e5cf3a8530085b9705bbc1879327d070721696205744f4"
+  },
+  {
+   "file": "viperturb_06.npz",
+   "targets_in_block": 600,
+   "targets": 589,
+   "bytes": 76377242,
+   "sha256": "48b9102e8719679a8f5b34d5dc8ec744aecabb5846f5400debb594e313fd85e4"
+  },
+  {
+   "file": "viperturb_07.npz",
+   "targets_in_block": 600,
+   "targets": 588,
+   "bytes": 75953676,
+   "sha256": "f799a159ca2f3b3c3626786f748a4b9b71068151442e080c52b4f62d05943e34"
+  },
+  {
+   "file": "viperturb_08.npz",
+   "targets_in_block": 600,
+   "targets": 586,
+   "bytes": 75665186,
+   "sha256": "486f7d1ffc0351662bb0b51949b8a1a8ac1dca1ab5cc3aa2c8028e73a80f5e34"
+  },
+  {
+   "file": "viperturb_09.npz",
+   "targets_in_block": 600,
+   "targets": 591,
+   "bytes": 76425460,
+   "sha256": "b481ba76cc312353b5a97d62b3fa6e034519667848675c9614dff67a023cdca7"
+  },
+  {
+   "file": "viperturb_10.npz",
+   "targets_in_block": 600,
+   "targets": 587,
+   "bytes": 76042464,
+   "sha256": "421b048f8f30e7e0e59c75d0097090ed1ff938959e9248221f411246eaa5a893"
+  },
+  {
+   "file": "viperturb_11.npz",
+   "targets_in_block": 124,
+   "targets": 124,
+   "bytes": 16085133,
+   "sha256": "c657121b264f119130ce975c6be61d5b5a9110efb4b7bf460a7fe53bcc2bc2a7"
+  }
+ ],
+ "summary": {
+  "groups": 6725,
+  "targets_with_cells": 6724,
+  "targets_with_effects": 6614,
+  "targets_without_effects": 110,
+  "on_official_axis_with_effects": 6172,
+  "in_panel_with_cells": 124,
+  "in_panel_with_effects": 123,
+  "median_cells_total": 46.0,
+  "median_n_cells_with_effects": 46.0,
+  "cells": 326247,
+  "ntc_cells": 7949,
+  "ntc_cells_per_pool": [
+   7949,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "genes_on_axis": 18533,
+  "genes_in_file": 18111,
+  "genes_absent_nan": 422,
+  "all_sums_whole": true,
+  "library_share_on_axis": {
+   "min": 0.9646201417296625,
+   "median": 0.9742469685652686,
+   "max": 0.9823934677213575
+  },
+  "groups_off_axis_clipped_to_0": 0,
+  "seconds_scan": 4.0,
+  "seconds": 269.3,
+  "peak_working_set_mib": 479,
+  "chunk_bytes": 855889294
+ },
+ "claim_type": "effect tables for selected groups; no claim on their use as a source"
+}

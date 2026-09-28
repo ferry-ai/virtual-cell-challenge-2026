@@ -1,0 +1,150 @@
+{
+ "stage": "universo_kolf_2026-09-27/kolf_effects.py",
+ "written_utc": "2026-09-27T23:46:14.494509+00:00",
+ "name": "hipsci_gwnonfit",
+ "context": "pooled",
+ "line": "pooled",
+ "source": {
+  "what": "file:///C:/Users/ferra/vcc2026-data/external/hipsci/GenomeWideScreen_NonFitnessGenes_RNA-UMI-Counts.csv.gz",
+  "url": "file:///C:/Users/ferra/vcc2026-data/external/hipsci/GenomeWideScreen_NonFitnessGenes_RNA-UMI-Counts.csv.gz",
+  "licence": "not specified in sums archive"
+ },
+ "input": {
+  "sums": "C:\\Users\\ferra\\vcc2026-data\\interim\\hipsci_sums\\gw_nonfitness_ua1\\sums.npz",
+  "bytes": 368728210,
+  "sha256": "59c6f010790c2187521673670207ec11f574f8db5b49816e38bb5af9438a2304",
+  "groups_sha256": "70a8909db819f9edbd7dda3e2a0b2a6a1e738ae5209fd56ad88096a04f498359",
+  "matrix": {
+   "member": "sums.npy",
+   "data_offset": 1403492,
+   "shape": [
+    4955,
+    18533
+   ],
+   "dtype": "<f4",
+   "order": "F"
+  },
+  "axis_matches_official": true
+ },
+ "out": "C:\\Users\\ferra\\vcc2026-data\\processed\\universe_hipsci_gwnonfit_2026-09-27_ua1",
+ "chunk_size": 600,
+ "window_genes": 256,
+ "estimator": {
+  "function": "vcc2026.multisource.effects_from_pseudobulk",
+  "options": {
+   "condition": null,
+   "phi": 0.2,
+   "min_control_frac": 1e-06,
+   "min_cells": 10.0,
+   "pseudo": 0.5,
+   "pseudo_scale": "constant",
+   "min_expected": 1.0
+  },
+  "donors": "archive pool IDs, each against its selected context's NTC cells",
+  "library": "each row's total_counts over all genes of the file: its counts on the axis genes of the file plus one column with the rest",
+  "axis": "AxisTable.from_source, control fraction >= 1e-6; axis genes the file lacks are NaN"
+ },
+ "chunks": [
+  {
+   "file": "hipsci_gwnonfit_00.npz",
+   "targets_in_block": 600,
+   "targets": 550,
+   "bytes": 79603156,
+   "sha256": "c945595beca2649458e2708f1922bb735886431e04f60127ce9f37eb9fee5765"
+  },
+  {
+   "file": "hipsci_gwnonfit_01.npz",
+   "targets_in_block": 600,
+   "targets": 547,
+   "bytes": 79057337,
+   "sha256": "8a0e1838cb939a59b747a2af9966fe4c413b1b4fc575f9f30a1961a9a2684c02"
+  },
+  {
+   "file": "hipsci_gwnonfit_02.npz",
+   "targets_in_block": 600,
+   "targets": 541,
+   "bytes": 78344891,
+   "sha256": "5748e19b874ea36ecc3a377935dc5d5fbf1ab5fe2d2b095e99d1d2a622514f7f"
+  },
+  {
+   "file": "hipsci_gwnonfit_03.npz",
+   "targets_in_block": 600,
+   "targets": 541,
+   "bytes": 78054477,
+   "sha256": "5c59220019f23603eabc98745faa935fbaa9f0716502468cf0d4a07d2d31de8e"
+  },
+  {
+   "file": "hipsci_gwnonfit_04.npz",
+   "targets_in_block": 600,
+   "targets": 551,
+   "bytes": 79849341,
+   "sha256": "0ec40a5813f1e7e5682d762d0682850e56c6cfb74c6497e94d5409a023c81535"
+  },
+  {
+   "file": "hipsci_gwnonfit_05.npz",
+   "targets_in_block": 600,
+   "targets": 544,
+   "bytes": 78529159,
+   "sha256": "41a91c3bc2a6095590d920471e73ea54da4ab1151ba0203806793540db5fcaf0"
+  },
+  {
+   "file": "hipsci_gwnonfit_06.npz",
+   "targets_in_block": 600,
+   "targets": 555,
+   "bytes": 80474199,
+   "sha256": "736b88cc319efa05857ac8252289bead9e43cbd0d66d3f4e5120794859359413"
+  },
+  {
+   "file": "hipsci_gwnonfit_07.npz",
+   "targets_in_block": 600,
+   "targets": 546,
+   "bytes": 78767067,
+   "sha256": "ed7b7631fe7f13e74b7836044c37bbd4b829b1cee0f28b841b5518a15e620c55"
+  },
+  {
+   "file": "hipsci_gwnonfit_08.npz",
+   "targets_in_block": 154,
+   "targets": 140,
+   "bytes": 20048998,
+   "sha256": "b72af6cafc7fa213b22c44e61b0f9c007050a7e16b4462caadd791f685281237"
+  }
+ ],
+ "summary": {
+  "groups": 4955,
+  "targets_with_cells": 4954,
+  "targets_with_effects": 4515,
+  "targets_without_effects": 439,
+  "on_official_axis_with_effects": 4422,
+  "in_panel_with_cells": 166,
+  "in_panel_with_effects": 151,
+  "median_cells_total": 22.0,
+  "median_n_cells_with_effects": 23.0,
+  "cells": 396330,
+  "ntc_cells": 281346,
+  "ntc_cells_per_pool": [
+   281346,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "genes_on_axis": 18533,
+  "genes_in_file": 18511,
+  "genes_absent_nan": 22,
+  "all_sums_whole": true,
+  "library_share_on_axis": {
+   "min": 0.6644190257026346,
+   "median": 0.724095845043476,
+   "max": 0.8551192936314108
+  },
+  "groups_off_axis_clipped_to_0": 0,
+  "seconds_scan": 3.3,
+  "seconds": 134.9,
+  "peak_working_set_mib": 480,
+  "chunk_bytes": 652728625
+ },
+ "claim_type": "effect tables for selected groups; no claim on their use as a source"
+}

@@ -1,0 +1,115 @@
+{
+ "stage": "universo_kolf_2026-09-27/kolf_effects.py",
+ "written_utc": "2026-09-27T21:42:19.454931+00:00",
+ "name": "southard_hs27",
+ "context": null,
+ "line": "southard_hs27",
+ "source": {
+  "what": "/content/work/southard_hs27/fibroblast_CRISPRa_final_pop.h5ad",
+  "url": "/content/work/southard_hs27/fibroblast_CRISPRa_final_pop.h5ad",
+  "licence": "not specified in sums archive"
+ },
+ "input": {
+  "sums": "C:\\Users\\ferra\\vcc2026-data\\interim\\southard_sums\\hs27_sums_p2.npz",
+  "bytes": 273802640,
+  "sha256": "d7917ba3e4a594bdbf2f14c041a35c7ffb135feca5609baeeba5c2c91002b56a",
+  "groups_sha256": "629179968339d404620bba2e40ee98dd60c540a25cf2a4df9e4c4aa3dafa8b97",
+  "matrix": {
+   "member": "sums.npy",
+   "data_offset": 1292807,
+   "shape": [
+    3676,
+    18533
+   ],
+   "dtype": "<f4",
+   "order": "F"
+  },
+  "axis_matches_official": true
+ },
+ "out": "C:\\Users\\ferra\\vcc2026-data\\processed\\universe_southard_hs27_2026-09-27_p2",
+ "chunk_size": 600,
+ "window_genes": 256,
+ "estimator": {
+  "function": "vcc2026.multisource.effects_from_pseudobulk",
+  "options": {
+   "condition": null,
+   "phi": 0.2,
+   "min_control_frac": 1e-06,
+   "min_cells": 10.0,
+   "pseudo": 0.5,
+   "pseudo_scale": "constant",
+   "min_expected": 1.0
+  },
+  "donors": "archive pool IDs, each against its selected context's NTC cells",
+  "library": "each row's total_counts over all genes of the file: its counts on the axis genes of the file plus one column with the rest",
+  "axis": "AxisTable.from_source, control fraction >= 1e-6; axis genes the file lacks are NaN"
+ },
+ "chunks": [
+  {
+   "file": "southard_hs27_00.npz",
+   "targets_in_block": 600,
+   "targets": 600,
+   "bytes": 76804337,
+   "sha256": "8bb69045936821510b513e2cac53844e8e851191b610c4be55c1074ceb13b814"
+  },
+  {
+   "file": "southard_hs27_01.npz",
+   "targets_in_block": 600,
+   "targets": 600,
+   "bytes": 77048393,
+   "sha256": "ec0be227ee205d82ee0ac008890200a3071eb86767ca92e6a3e48ac783ad7cd9"
+  },
+  {
+   "file": "southard_hs27_02.npz",
+   "targets_in_block": 600,
+   "targets": 599,
+   "bytes": 76468687,
+   "sha256": "2eac0ae2b7f490ec27bdc34dd546211ffbfdf7dc93a89f3bd70b4f335f0dc6aa"
+  },
+  {
+   "file": "southard_hs27_03.npz",
+   "targets_in_block": 37,
+   "targets": 37,
+   "bytes": 4707869,
+   "sha256": "3d5a673c962e3fd0a08b5bef894a41a18873566c756dfbb2b1dc68d95fd25284"
+  }
+ ],
+ "summary": {
+  "groups": 3676,
+  "targets_with_cells": 1837,
+  "targets_with_effects": 1836,
+  "targets_without_effects": 1,
+  "on_official_axis_with_effects": 1797,
+  "in_panel_with_cells": 80,
+  "in_panel_with_effects": 80,
+  "median_cells_total": 106.0,
+  "median_n_cells_with_effects": 106.0,
+  "cells": 220403,
+  "ntc_cells": 11834,
+  "ntc_cells_per_pool": [
+   5388,
+   6446,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "genes_on_axis": 18533,
+  "genes_in_file": 17207,
+  "genes_absent_nan": 1326,
+  "all_sums_whole": true,
+  "library_share_on_axis": {
+   "min": 0.6918855696491415,
+   "median": 0.7429678651712074,
+   "max": 0.7959452584161755
+  },
+  "groups_off_axis_clipped_to_0": 0,
+  "seconds_scan": 5.9,
+  "seconds": 112.7,
+  "peak_working_set_mib": 536,
+  "chunk_bytes": 235029286
+ },
+ "claim_type": "effect tables for selected groups; no claim on their use as a source"
+}

@@ -1,0 +1,40 @@
+# Autoverifica su Kaggle CPU, kernel privato vcc-enc-selftest versione 2, completato il 2026-09-28 alle 03:06 (ora locale letta con date)
+# torch 2.10.0+cpu, numpy 2.0.2, pandas 2.3.3; codice copiato con sha256 controllato:
+# code sha256: {'net.py': 'a21df44e79f6', 'pool.py': '10bd001536c0', 'train.py': '772f46bcd23a', 'score_pred.py': '60c8ecb31b2c', 'encoder.py': '52426da1bede', 'corpus.py': '047b197bdbea', 'pretrain.py': 'bc606b46afa3', 'pca_baseline.py': '3e42d3dad533', 'train_emb.py': '8f1e2e41529a', 'selftest_emb.py': '3f6b8bc978eb', 'compare.py': '14a9170b642f', 'make_runs.py': 'be9b1b2fdd0b', 'run_list.py': 'a6dd8274e0d8'}\n
+
+## train_emb.py --selftest (80 s)
+PASS corpus round trip: 312 profiles in 2 corpora (a folder, an .npz with its .csv), 360 genes: counts identical, tables identical
+PASS exclusions: excluded contexts ['c12', 'c13', 'extA_LINE12', 'extB_LINE13'] (want ['c12', 'c13', 'extA_LINE12', 'extB_LINE13']), partly excluded []; missing --require and kept --expect-excluded refused: [True, True]
+PASS encoder leakage canary: 12 excluded profiles overwritten with noise (they differ): genes, statistics, split and weights identical; trained weights identical; embeddings of 300 other profiles identical
+PASS latent state recovered by the encoder: R2 [0.984, 0.984] on 16 validation and excluded contexts (map fitted on 123; needs mean >= 0.5); masked-gene R2 against the mean: validation 0.819, excluded 0.790
+PASS PCA baseline: same contexts, dimension and status as the encoder: True; R2 [0.998, 0.998]; masked-gene R2 against the mean on validation 0.763
+PASS consistency: within-context over between-context spread 0.0006 over 78 contexts with two or more profiles (needs < 0.3)
+PASS default behaviour unchanged: train.py's classes ('Phase', 'PerturbNet') and the patched ones without embeddings ('EmbPhase', 'EmbPerturbNet'): 30 steps from seed 3 give identical predictions
+PASS fail loudly: refused before training: an embedding file without c13 True; an encoder that trained on the held-out lines True
+PASS embedding table: blind row 0 and the weighted mean of the 12 visible contexts: True; new embeddings for the held-out lines change their rows (True), not the constants (True)
+PASS planted c12: net beats blind, swap, emb_blind and emb_swap: skill net 0.897; paired gains blind +0.597 (+0.510..+0.691); swap +0.722 (+0.610..+0.832); emb_blind +0.597 (+0.506..+0.691); emb_swap +0.723 (+0.618..+0.835) over 241 targets (each: interval above 0 and >= 0.02)
+PASS planted c13: net beats blind, swap, emb_blind and emb_swap: skill net 0.587; paired gains blind +0.074 (+0.068..+0.079); swap +6.209 (+5.197..+7.199); emb_blind +0.073 (+0.067..+0.079); emb_swap +6.113 (+5.157..+7.151) over 241 targets (each: interval above 0 and >= 0.02)
+PASS planted E2: mean correlation +0.454 (CI [0.39938208253915813, 0.5082860822908699]), permutation q97.5 +0.033; emb_blind +0.005; blind and transfer predict no difference: True
+PASS blind and swap with embeddings: blind gives the two lines identical predictions; c12's rows with c13's controls and embedding equal c13's predictions; c13's embedding alone changes c12's predictions; true c12 and c13 differ
+PASS null c12: no gain from the context beyond noise, not worse than the transfer: net-blind -0.0004 <= 0.0053; net-emb_blind -0.0004 <= 0.0052 (2.5 bootstrap SD + 0.005); skill net 0.696, transfer 0.695 (tolerance 0.05)
+PASS null c13: no gain from the context beyond noise, not worse than the transfer: net-blind -0.0002 <= 0.0051; net-emb_blind -0.0001 <= 0.0051 (2.5 bootstrap SD + 0.005); skill net 0.687, transfer 0.686 (tolerance 0.05)
+PASS fine-tuning: offsets trained True; pre-trained weights untouched True; finite skills True; blind identical for the two lines True; trainable parameters 48510
+PASS compare.py agrees with train.py: largest difference 0.00e+00 over 8 contrasts of the planted run
+selftest: 17 passed, 0 failed
+
+## train.py --selftest (75 s, rete invariata)
+PASS dataset round trip: 2926 rows x 320 genes, float16 arrays identical after reading back; manifest sizes match (5760043 bytes)
+PASS leakage canary: 604 invisible rows overwritten with noise: centres, gene set, family and partner profiles, priors, blind row, a training batch and test predictions identical (9/9 derived arrays, batch True, predictions True); 2/2 wrong-kind reads refused
+PASS transferred profile: 30 rows (held-out, and training rows of a two-context family and a one-context family): leave-own-family-out reliability-weighted mean matches a plain loop (max abs diff 7.09e-05)
+PASS planted c8: net beats transfer: skill net 0.706 vs transfer 0.604; paired gain +0.102 (+0.088..+0.116) over 264 targets (needs CI above 0 and >= 0.05)
+PASS planted c8: net beats blind: skill net 0.706 vs blind 0.650; paired gain +0.056 (+0.047..+0.066) over 264 targets (needs CI above 0 and >= 0.05)
+PASS planted c9: net beats transfer: skill net 0.771 vs transfer 0.520; paired gain +0.251 (+0.222..+0.282) over 264 targets (needs CI above 0 and >= 0.05)
+PASS planted c9: net beats blind: skill net 0.771 vs blind 0.445; paired gain +0.326 (+0.287..+0.370) over 264 targets (needs CI above 0 and >= 0.05)
+PASS planted E2: predicted difference between two held-out lines: mean correlation 0.6434964912274687 (CI [0.6288104603064102, 0.6582152814927302]), permutation q97.5 0.010455275202113236; blind and transfer predict no difference: True
+PASS blind and swap semantics: blind gives two lines of one family identical predictions; c8's rows with c9's controls equal c9's predictions; the true c8 and c9 predictions differ
+PASS determinism on CPU: two trainings from seed 3, one thread, give bit-identical predictions
+PASS null c8: net does not beat blind beyond noise: paired gain -0.0001 <= 0.0052 (2.5 bootstrap SD + 0.005); skill net 0.686, blind 0.686
+PASS null c8: net not worse than the transfer: skill net 0.686, transfer 0.685 (tolerance 0.05)
+PASS null c9: net does not beat blind beyond noise: paired gain +0.0000 <= 0.0053 (2.5 bootstrap SD + 0.005); skill net 0.681, blind 0.681
+PASS null c9: net not worse than the transfer: skill net 0.681, transfer 0.680 (tolerance 0.05)
+selftest: 14 passed, 0 failed
