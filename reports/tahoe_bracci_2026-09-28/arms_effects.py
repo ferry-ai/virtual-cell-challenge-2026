@@ -20,9 +20,12 @@ from extract_arms import VEHICLE
 
 
 def estimate(pb, axis, min_cells=10, min_control_cells=10, min_expected=1.0):
-    sums = np.asarray(pb['sums'], dtype=np.float64)
+    stored = pb['sums']
+    sums = np.asarray(stored, dtype=np.float64)
     if not np.isfinite(sums).all() or (sums < 0).any(): raise ValueError('Invalid sums')
-    if not np.allclose(sums.sum(axis=1), pb['library'], rtol=1e-10): raise ValueError('Library mismatch')
+    # float32 sums (the axis-only extract of the Kaggle kernel, 28/09) round each row's total at ~1e-7
+    rtol = 1e-6 if stored.dtype == np.float32 else 1e-10
+    if not np.allclose(sums.sum(axis=1), pb['library'], rtol=rtol): raise ValueError('Library mismatch')
     meta = pd.DataFrame({c: pb[k].astype(str) for c, k in
                          [('line','cell_line'),('plate','plate'),('drug','drug'),('dose','dose')]})
     meta['n_cells'] = pb['n_cells']
