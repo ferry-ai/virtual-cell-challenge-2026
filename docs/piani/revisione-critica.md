@@ -38,7 +38,8 @@ restano.
    - Con commit locali, i conflitti possibili sono nei documenti vivi (PROGETTO, PIANI, REGISTRO,
      schede, INDICE): si tengono tutte e due le parti.
    - «CONFLICT (file location)» vuol dire un file aggiunto in locale dentro una cartella che D-046 ha
-     spostato: si accetta la posizione nuova, nella categoria.
+     spostato. Git lo mette già nella posizione nuova, nella categoria: si accetta con `git add` del
+     percorso nuovo.
 3. `ls reports/` deve mostrare solo le otto categorie, `README.md` e `CLAUDE.md`.
    - Una cartella rimasta fuori contiene file non tracciati scritti in una cartella che si è spostata
      (per esempio uscite di Kaggle scaricate dopo le 10:44). I file si spostano nella gemella, che
@@ -48,8 +49,9 @@ restano.
 4. Uno script fuori dalla repo (agent hub, aiuti per scaricare da Kaggle) che scrive in
    `reports/<cartella>/` ora deve scrivere in `reports/<categoria>/<cartella>/`. Gli script dentro la repo
    sono già aggiornati.
-5. Controllo documentale e suite, verdi prima di andare avanti (`test_live_tree` nomina la cartella fuori
-   posto):
+5. Controllo documentale e suite, verdi prima di andare avanti. Un file non tracciato fuori posto lo
+   nomina il controllo documentale, perché nessuna riga del registro lo copre; una cartella tracciata fuori
+   categoria la nomina `test_live_tree`:
 
    ```bash
    python scripts/31_check_docs.py
