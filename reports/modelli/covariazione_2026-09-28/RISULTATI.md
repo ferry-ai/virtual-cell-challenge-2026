@@ -188,3 +188,85 @@ La seconda è quella che una rete sfrutterebbe: «spengo x, y si muove perché �
   grezzi di 0,02–0,03 fra laboratori e di 0,16 nella stessa linea.
 - Dopo [CP-0041](../../../docs/checkpoints/0041-proxy-contro-ufficiale.md) nessun esito di banco basta da solo a
   scegliere un invio: questa misura decide se costruire, non che cosa inviare.
+
+## Esito (misurato, 28–29/09; cartella [`r1/`](r1/))
+
+Claude, sessione `f2abd9a6`. Codice di un sottoagente della stessa sessione, scritto dopo questo protocollo e prima di
+qualunque corsa sui dati veri (`covar.py`, `run_parte_a.py`, `run_parte_b.py`, `combine.py`; autoverifica sintetica
+`selftest_covar.py`, 21 prove).
+
+**Come è girato:**
+- **Calibrazione della parte B,** portatile, 29/09 alle 00:50: κ del pseudobulk 0,664 a k = 3, stimato sulle metà di
+  VIPerturb con soli 34 bersagli rispondenti comuni.
+- **Parte A,** Kaggle CPU, kernel `vcc-covar-a`, dalle 22:51 UTC del 28/09 alle 00:14 UTC del 29/09, nella
+  configurazione registrata.
+- **Resto della parte B,** portatile, 00:52–01:01. Con `--s3 k3`: le coppie HIPSCI di donatori diversi, strato S3 che
+  non decide, solo a k = 3. Per questo `combine.py` segna la parte B come non registrata.
+- **Combinazione:** 29/09 alle 11:22.
+- Nei manifest copiati qui il nome del conto Kaggle è sostituito con `<kaggle-user>`. Le uscite per frammento restano
+  nella radice dati (`interim/covariazione_2026-09-29/`).
+
+### Verdetto per la regola: «inconclusivo»; lettura «uso»: no
+
+**Controlli di validità:**
+- **W1 non passa.** Escono due contesti:
+  - CD4 a riposo: media di √r 0,17 contro 0,20;
+  - VIPerturb: le sue coppie non arrivano ai 200 bersagli rispondenti (W6), quindi il tetto non si calcola.
+
+  Restano k562, orion_hct116 e kolf: 3 contesti su 5, e con meno di 4 la regola dà «inconclusivo».
+- **W3 passa:** κ 0,66.
+- **W5 passa:** la covariazione di K562 batte quella delle guide non mirate (+0,122 con HCT116, +0,022 con KOLF2.1J,
+  intervalli sopra zero).
+- **W2 e W4 non si calcolano.** Tutte le coppie di tetto S0 (metà di VIPerturb: 34 bersagli; coppie HIPSCI dello
+  stesso donatore: 8–30) e la coppia di W4 (143) stanno sotto i 200 bersagli di W6. Non è un'attesa: con questi dati
+  non si calcolano, servono le metà per cellule della fase B.
+
+**Lettura «uso» (M3a): no.** Sui tre contesti che restano:
+- la via delle relazioni ha l'intervallo sullo zero in tutti e tre;
+- il suo tetto nella stessa linea anche.
+
+| Contesto | Bersagli di prova ammessi | Relazioni, fra linee | Relazioni, stessa linea | Effetto dello stesso bersaglio | Combinata − effetto |
+|---|---|---|---|---|---|
+| K562 | 537 | +0,003 [−0,010; +0,016] | −0,004 [−0,019; +0,010] | +0,090 [+0,078; +0,104] | −0,034 [−0,046; −0,023] |
+| HCT116 | 160 | −0,002 [−0,022; +0,018] | −0,010 [−0,044; +0,024] | +0,076 [+0,056; +0,098] | −0,023 [−0,047; +0,001] |
+| KOLF2.1J | 797 | −0,003 [−0,015; +0,009] | −0,007 [−0,042; +0,029] | +0,009 [+0,003; +0,016] | −0,008 [−0,019; +0,003] |
+
+**Lettura «mappa»: inconclusiva.**
+- Sulle tre coppie P9 che restano:
+  - mediana di D +0,086;
+  - positiva con l'intervallo sopra zero su 2 (k562 × kolf +0,086, hct116 × kolf +0,253);
+  - negativa su k562 × hct116 (−0,033);
+  - mediana di ρ_cov 0,31;
+  - togliendo un contesto il segno non regge.
+- Descrittivo, tutte le coppie a k = 3 (`r1/parte_a/pairs.csv`):
+  - la covariazione è più conservata dell'effetto nelle coppie con KOLF2.1J (D fino a +0,30) e fra le due Orion
+    (+0,26);
+  - meno nelle coppie di K562 e RPE1 con CD4 (D fino a −0,40), dove però lo ρ_eff di CD4 è diviso per una quota di
+    segnale sotto il minimo di W1.
+
+### Interpretazione
+
+- Prevedere la risposta a «spengo x» dalla pendenza dei geni su x attraverso gli altri knockdown non ha abilità
+  specifica, nemmeno dentro la stessa linea. Sommata al trasferimento lo peggiora.
+- Quello che si trasferisce è l'effetto dello stesso bersaglio misurato altrove (+0,076…+0,090 su K562 e HCT116).
+- **Limite:** M3a prova la forma lineare più semplice della relazione. Non esclude relazioni che si vedano solo con
+  più dati o con una forma diversa, ma toglie la base su cui la rete relazionale di questa scheda era costruita.
+
+### Che cosa ne segue, per le regole scritte prima
+
+- **La rete relazionale non parte:** la sua regola chiedeva «sì», oppure «mappa sì, uso no».
+- **Il proprietario**, informato del verdetto il 29/09 verso le 11:25, ha scelto di puntare sulla prova generale (azione 3)
+  e sul banco con lo scorer vero (azione 4).
+
+### Deviazioni del codice dal testo, dichiarate dal sottoagente (in breve)
+
+- Centro, deviazione standard e assi tolti si calcolano per coppia sul suo insieme P.
+- I nulli dei replicati jackknife usano l'attesa esatta della permutazione; i punti usano i nulli Monte Carlo
+  registrati. I valori esatti sono in `nulls.csv`.
+- «Decili di geni significativi»: sulla media dei due contesti.
+- Gli strati di M3a per le relazioni incrociano i decili del CPM basale di x e della sua varianza di segnale.
+- Le repliche non girano per M3a.
+- W1 per contesto: la mediana sulle sue coppie P9.
+- **Precedenza:** un fallimento di W1 o W2 rende il verdetto inconclusivo; un fallimento di W5 fa dire «no» alla
+  mappa.
+- Non calcolati, perché non erano nel testo registrato: sovrapposizione di sottospazi, M1 sui bersagli condivisi, M3b.

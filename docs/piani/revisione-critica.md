@@ -1,7 +1,7 @@
 # R-REV — agire sulla revisione critica del 28 settembre
 
 - **Stato:** in corso.
-- **Aggiornato:** 28 settembre 2026, 19:25 (ora italiana), dalla sessione Claude `f2abd9a6`. Scritta alle 12:40
+- **Aggiornato:** 29 settembre 2026, 11:35 (ora italiana), dalla sessione Claude `f2abd9a6`. Scritta alle 12:40
   dalla sessione cloud che ha fatto la revisione.
 - **Assegnazione:** Claude (app desktop, sessione `f4f38e58`, sul portatile con la radice dati), dal 28/09
   alle 12:42 (ora italiana), su richiesta del proprietario in chat: §0 e le azioni in ordine, una alla volta.
@@ -255,6 +255,11 @@ nuova.
 
 **Presa in carico (28/09, 19:22, Claude, sessione `f2abd9a6`):** R-V2 è ripresa dal proprietario alla stessa ora.
 Protocollo e regola in `reports/modelli/covariazione_2026-09-28/`, scritti prima di girare; il calcolo va su Kaggle.
+
+**Esito (29/09, 11:22): inconclusivo per W1; lettura «uso» no** ([CP-0043](../checkpoints/0043-misura-decisiva-relazioni.md)).
+La via delle relazioni non prevede la risposta a un knockdown né fra linee né nella stessa linea; l'effetto dello
+stesso bersaglio sì. Portato al proprietario alle 11:25: la rete relazionale non parte, si punta sulle azioni 3 e 4.
+L'azione 6 è chiusa.
 
 ### Azione 7 — la stessa linea e la licenza di Orion
 

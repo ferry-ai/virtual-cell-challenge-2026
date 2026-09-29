@@ -1,0 +1,119 @@
+{
+ "script": "reports/invii/prova_generale_2026-09-28/estrazione.py",
+ "written_utc": "2026-09-28T18:09:56.967952+00:00",
+ "seed": 20261022,
+ "strata": [
+  {
+   "stratum": "P3",
+   "drawn": 30,
+   "pool": 300,
+   "pool_planned": 300
+  },
+  {
+   "stratum": "P1-4",
+   "drawn": 120,
+   "pool": 7131,
+   "pool_planned": 7131
+  },
+  {
+   "stratum": "P1-3",
+   "drawn": 50,
+   "pool": 4015,
+   "pool_planned": 4015
+  },
+  {
+   "stratum": "P1-2",
+   "drawn": 40,
+   "pool": 5390,
+   "pool_planned": 5390
+  },
+  {
+   "stratum": "P1-1",
+   "drawn": 30,
+   "pool": 723,
+   "pool_planned": 723
+  },
+  {
+   "stratum": "P0",
+   "drawn": 30,
+   "pool": 974,
+   "pool_planned": 974
+  }
+ ],
+ "pools_as_planned": true,
+ "mapping_new_to_old": {
+  "D": "B",
+  "E": "A",
+  "F": "C"
+ },
+ "sources": {
+  "k562": {
+   "universe": "universe_k562_2026-09-26",
+   "targets_with_effects": 9866,
+   "index_sha256": "67a2e7e9a6d9af49f0dcf9300c851e8ab3fadce339b907206ea319bc5fff8fce"
+  },
+  "cd4_mix": {
+   "universe": "universe_cd4_2026-09-27_me1",
+   "targets_with_effects": 12238,
+   "index_sha256": "cf84c98a8507a4ef5a4462392392309b97039585c82ddc31b6cefa2d1bf107fe"
+  },
+  "orion_hct116": {
+   "universe": "universe_orion_hct116_2026-09-27_me1",
+   "targets_with_effects": 16438,
+   "index_sha256": "44119370e24fb2ce61d28869df95ffcc89c4ff9837defe077e87c7f9d01a598b"
+  },
+  "orion_hek293t": {
+   "universe": "universe_orion_hek293t_2026-09-27_me1",
+   "targets_with_effects": 17270,
+   "index_sha256": "0b2b9870d40e7121080c8d8bda75e8f48871c2a88c8095ea9457d6f508278cd2"
+  }
+ },
+ "u26_vs_me1": {
+  "cd4_mix": {
+   "universe_u26": "universe_cd4_2026-09-26",
+   "targets_me1": 12238,
+   "targets_u26": 12238,
+   "only_me1": [],
+   "only_u26": [],
+   "same_targets": true
+  },
+  "orion_hct116": {
+   "universe_u26": "universe_orion_hct116_2026-09-26",
+   "targets_me1": 16438,
+   "targets_u26": 16438,
+   "only_me1": [],
+   "only_u26": [],
+   "same_targets": true
+  },
+  "orion_hek293t": {
+   "universe_u26": "universe_orion_hek293t_2026-09-26",
+   "targets_me1": 17270,
+   "targets_u26": 17270,
+   "only_me1": [],
+   "only_u26": [],
+   "same_targets": true
+  }
+ },
+ "coordinates": {
+  "path": "C:\\Users\\ferra\\vcc2026-data\\external\\annotation\\gene_coordinates_gencode_v50.tsv",
+  "found": true
+ },
+ "info_universes": {
+  "universe_k562ess_2026-09-26": 2057,
+  "universe_rpe1_2026-09-26": 2393,
+  "universe_a549_2026-09-27_me1": 1000,
+  "universe_kolf_2026-09-27_me1": 10985,
+  "universe_southard_hs27_2026-09-27_p2": 1836,
+  "universe_viperturb_2026-09-27_p1": 6614
+ },
+ "drawn_by_n_sources": {
+  "0": 30,
+  "1": 30,
+  "2": 44,
+  "3": 53,
+  "4": 143
+ },
+ "drawn_with_coordinates": 298,
+ "pert_counts_sha256": "a3f021dcc2fa8f455a0d278bd4e2847fa1cb139ecc4cd838414e83f380049057",
+ "pert_counts_n40_sha256": "a3912dc20456625d422f2a6892f2a54ef91acdb2b13c13eed7b386e6bd4df523"
+}

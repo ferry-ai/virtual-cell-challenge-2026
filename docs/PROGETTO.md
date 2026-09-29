@@ -79,8 +79,12 @@ derivati dagli scalati con le ancore: il 25 settembre `vcc status` serviva solo 
     passa solo J, i bersagli nuovi, di un millesimo;
   - più contesti (r2) aiutano la rete di pochi millesimi, provvisorio con un seme.
 
-  Registrati prima del codice: la misura decisiva per la rete relazionale (azione 6 di R-REV) e la
-  rete relazionale, che parte su Kaggle solo se la misura lo consente.
+  - la misura decisiva per la rete relazionale (azione 6 di R-REV) è inconclusiva per W1, con la
+    lettura «uso» a no: le relazioni fra geni non prevedono la risposta a un knockdown, nemmeno nella
+    stessa linea ([CP-0043](checkpoints/0043-misura-decisiva-relazioni.md)). La rete relazionale non parte.
+
+  Scelta del proprietario il 29/09 alle 11:25: prova generale del 22 ottobre e banco con lo scorer vero
+  (azioni 3 e 4 di R-REV).
 - **Direzione del proprietario (28/09 mattina):** usare tutti i dati, anche quelli fermi; una
   rete che impari relazioni fra geni e gruppi di comportamento che si ritrovano da un contesto
   all'altro; i dati farmacologici non devono prevalere, almeno all'inizio.

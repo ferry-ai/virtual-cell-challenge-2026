@@ -90,3 +90,36 @@ laboratorio e dallo stesso disegno.
   complesso.
 - `none` e `rel0` non condividono l'ordine dei batch.
 - La regola non cambia dopo un risultato: una variante nuova è una tornata nuova, con la sua regola.
+
+## Modifiche dichiarate prima di girare sui dati veri (29/09, 00:50)
+
+Emerse dall'autoverifica sintetica del codice (`train_rel.py --selftest`: 12 controlli su 12), senza nessuna corsa sui
+dati veri. Il codice è di un sottoagente della sessione `f2abd9a6`.
+
+1. **Validazione nei disegni J** (`--val-m as-train`, per tutte le condizioni dei due disegni J).
+   - In J `train.py` toglie `m` alle righe di addestramento ma lo lascia a quelle di validazione. L'arresto anticipato
+     sceglie allora sempre il punto di partenza calibrato.
+   - Sul mondo relazionale sintetico: con la validazione di `train.py` il passo migliore è lo 0 e `rel0` ha skill
+     0,004; con la validazione senza `m`, come le righe J che deve imitare, il passo migliore è il 350 e la skill 0,520.
+   - La lettura E si fa con questa impostazione. La rete di r1 in J (lettura di r1) usava quella di `train.py`.
+2. **Penalità dei parametri di contesto e della carta del bersaglio:** θ₀ 1e-5, θ_k 1e-4, w_self 1e-5, W_p 1e-5.
+   - Resta il rapporto 1:10 fra θ₀ e θ_k scritto nel disegno.
+   - I valori della mappa (1e-3 e 1e-2) sul mondo sintetico tenevano il guadagno di modulo vicino a zero: la linea
+     tenuta fuori non batteva lo scambio (−0,0025) nemmeno dove il guadagno era piantato apposta. Con questi valori lo
+     batte (+0,027 e +0,045, intervalli sopra zero) e l'E2 sintetica sale da 0,101 a 0,173.
+   - Nel mondo nullo il guadagno sul cieco resta +0,0001 e 0,0000.
+
+Niente altro cambia. Deviazioni minori dichiarate dal codice:
+- i bracci in più stanno in `predrel_<ctx>.npz`;
+- due mappe d'ampiezza, per `m` e `q`, come nella formula del disegno;
+- SVD a blocchi con generatore fisso (`--rel-card-seed 0`);
+- un passo migliore 0 riceve comunque un passo di riaddestramento, come in `train.py`.
+
+## Esito: la tornata non parte (29/09)
+
+La misura decisiva ([covariazione](../covariazione_2026-09-28/RISULTATI.md), [CP-0043](../../../docs/checkpoints/0043-misura-decisiva-relazioni.md))
+dice «inconclusivo» per W1, con la lettura «uso» a no. La via delle relazioni non prevede la risposta a un knockdown,
+né fra linee né nella stessa linea. Per la regola qui sopra la tornata parte solo con «sì» oppure con «mappa sì, uso
+no»: **non parte**. I kernel sono costruiti e non lanciati. Il proprietario, alle 11:25, ha scelto di puntare sulla
+prova generale e sul banco con lo scorer vero. Il codice (autoverifica 12 su 12) resta qui per chi volesse riaprire la
+linea con una regola nuova.

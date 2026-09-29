@@ -1,7 +1,7 @@
 # R-V2 — il modello per il set finale, costruito adesso
 
 - **Stato:** in corso.
-- **Aggiornato:** 28 settembre 2026, 19:25 (ora italiana).
+- **Aggiornato:** 29 settembre 2026, 11:35 (ora italiana).
 - **Assegnazione:** regia e filoni F1, F2 e F4: Claude (app, sessione `f4f38e58`), dal
   26/09 alle 00:20. Filone F3: codex via agent hub, lancio annotato qui sotto. Gli altri
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.
@@ -292,6 +292,26 @@ Claude, sessione `f4f38e58`, dopo l'unione del branch della revisione (scheda [R
   mediate) è in corso.
 - **Tahoe:** T1 ridotto non passa ([RISULTATI](../../reports/modelli/tahoe_bracci_2026-09-28/RISULTATI.md));
   l'estrazione completa dei DMSO è finita su Kaggle.
+
+## Sera del 28 e mattina del 29 settembre: la misura decisiva, e che cosa resta
+
+Claude, sessione `f2abd9a6`. Letti con le loro regole (misurato):
+- **r1 sui tre semi** ([lettura](../../reports/modelli/rete_r1_lettura_2026-09-28/RISULTATI.md)):
+  - uso del contesto ed E2 non passano;
+  - la rete perde contro il trasferimento `excl` su K562, HCT116 e HEK293T;
+  - passa solo J, di un millesimo.
+- **r2, lettura A** ([r2](../../reports/modelli/rete_contesti_r2_2026-09-28/RISULTATI.md)): passa, provvisoria con un
+  seme. Più contesti CRISPRi aiutano la rete di pochi millesimi.
+- **La misura decisiva** (azione 6 di R-REV, [CP-0043](../checkpoints/0043-misura-decisiva-relazioni.md)):
+  inconclusiva per W1, lettura «uso» no. La via delle relazioni non prevede la risposta a un knockdown nemmeno nella
+  stessa linea. **La rete relazionale non parte**: codice e autoverifica (12 su 12) restano in
+  [rete_relazionale](../../reports/modelli/rete_relazionale_2026-09-28/RISULTATI.md).
+- **t23 inviato** con il via del proprietario ([CP-0042](../checkpoints/0042-t23-esclusione-pds.md)): non conclusivo
+  sulla media, ma il PDS ufficiale sale di +0,011 grezzo e i membri DE scendono.
+
+**Scelta del proprietario (29/09, 11:25):** la prova generale del 22 ottobre (F8, azione 3 di R-REV) e il banco con lo
+scorer vero sui bersagli del pannello (azione 4 di R-REV), che serve a scegliere il prossimo invio senza il proxy
+(CP-0041).
 
 ## Domanda strategica aperta
 

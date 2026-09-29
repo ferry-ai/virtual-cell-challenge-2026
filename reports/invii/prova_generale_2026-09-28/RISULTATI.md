@@ -125,3 +125,42 @@ Ciascuno si corregge con il suo test quando la prova ci arriva.
 
 D, E ed F sono copie di A, B e C: la prova non dice nulla sul punteggio né su contesti davvero nuovi. Il pannello
 finto non è quello degli organizzatori: la copertura vera si misura il 22/10.
+
+## Codice, deviazioni dichiarate e primi passi (28/09 sera – 29/09 mattina)
+
+Codice di un sottoagente della sessione `f2abd9a6`: `estrazione.py`, `bundle_finto.py`, `assembla_cache.py`,
+`cpm_contesti.py`, `diagnostica.py`, `confronta_effetti.py`, `misura.py`, `comune.py`, `ricetta_t22_DEF.json`,
+`comandi.ps1`, `test_prova.py` (25 prove sintetiche). Il difetto D1 è corretto nello stadio 48 (`--contexts`), con
+cinque prove in `tests/test_packaging_parity.py`. Senza l'opzione il `.vcc` è identico bit per bit a quello della
+versione precedente, su un pilota sintetico A/B/C. Il confronto prima/dopo su un pilota di dati veri è in
+`comandi.ps1`, prima del passo 9(b).
+
+**Misurato:**
+- **Passo 1, l'estrazione** (28/09, 18:09 UTC): pool come nel piano; permutazione D = B, E = A, F = C. Gli universi
+  del 26/09 e `_me1` elencano gli stessi bersagli.
+- **Passo 5, parità della cache del pannello di oggi** ricostruita dagli universi del 26/09 contro r5 (21:34–21:36
+  UTC, 265 MiB, uscita di 136 MB). Previsione 3, parte cache:
+  - K562, HCT116 e HEK293T: 0 differenze in raw, SE, shrunk e cellule;
+  - `cd4_mix`: al massimo 1,49e-8, entro 2e-8.
+
+  Passa. Gli sha256 degli npz di Orion e `cd4_mix` differiscono comunque, perché la stringa `meta` è diversa (N2).
+
+**Deviazioni dal protocollo, dichiarate prima dei passi 2–10:**
+1. **CPM dei contesti (passo 4).** `read_basal_profile` somma i conteggi prima di dividere, e non riproduce
+   `interim/basal_cpm_by_context.csv`, che è la media dei CPM delle singole cellule (scarto relativo massimo 0,83 su A).
+   `cpm_contesti.py` scrive la definizione del file. La regola di parità a 1e-9 non cambia.
+2. **Regole d'ampiezza R-B…R-E.** Il conteggio dei geni rilevabili va a gradini, quindi un intervallo di ampiezze
+   raggiunge il bersaglio. Si riportano i due estremi. Il valore della regola è il punto dell'intervallo più vicino a
+   1,576, oppure l'estremo inferiore (`s_cross`) se nessun punto lo raggiunge esattamente.
+3. **Previsione 5, letta in anticipo e vera per costruzione.** Con D/E/F copie permutate di A/B/C la media su tre
+   contesti non dipende dall'ordine. R-B dà 1,576 (estremi 1,57585–1,57672), come doveva. Vale come prova del codice,
+   non come misura.
+4. **Scomposizione di P3:** la parte di γ è l'ampiezza per (miscela G-a − miscela G-b); il resto è il prior cis
+   ristimato più ogni differenza nelle righe delle sorgenti.
+5. Il controllo delle impronte dello stadio 99 (passo 3) resta un confronto a mano, scritto in `comandi.ps1`.
+
+**Difetti nuovi trovati scrivendo il codice:**
+- **N1:** `read_basal_profile` e il CSV dei CPM che lo stadio 100 passa a `match_detectable` usano due definizioni
+  diverse di CPM, e nessun codice vivo scrive la seconda. Conta per la correzione D8.
+- **N2:** le stringhe `meta` delle cache ricostruite differiscono da quelle di r5/r9. Le ricette con `zshrink` o con
+  la stima gerarchica vorrebbero anche le parti di `cd4_mix` nella cache. t22 e t25 non ne sono toccati.

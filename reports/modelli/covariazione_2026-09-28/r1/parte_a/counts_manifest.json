@@ -1,0 +1,298 @@
+{
+ "stage": "covariazione_2026-09-28/run_parte_a.py",
+ "argv": [
+  "/kaggle/working/code/run_parte_a.py",
+  "--data",
+  "/kaggle/input/datasets/<kaggle-user>/vcc-rete-contesti-r2",
+  "--calibration",
+  "/kaggle/working/code/calibration.json",
+  "--out",
+  "/kaggle/working/parte_a",
+  "--counts-only"
+ ],
+ "started_utc": "2026-09-28T22:51:43.254661+00:00",
+ "registered_configuration": true,
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "k_list": [
+  0,
+  1,
+  3,
+  10
+ ],
+ "gene_perm": 100,
+ "target_perm": 200,
+ "boot": 1000,
+ "jack_mode": "subtract",
+ "effect": "raw",
+ "shard": "",
+ "pairs": [
+  [
+   "P9",
+   "k562",
+   "cd4_Rest"
+  ],
+  [
+   "P9",
+   "k562",
+   "orion_hct116"
+  ],
+  [
+   "P9",
+   "k562",
+   "kolf"
+  ],
+  [
+   "P9",
+   "cd4_Rest",
+   "orion_hct116"
+  ],
+  [
+   "P9",
+   "cd4_Rest",
+   "kolf"
+  ],
+  [
+   "P9",
+   "cd4_Rest",
+   "viperturb"
+  ],
+  [
+   "P9",
+   "orion_hct116",
+   "kolf"
+  ],
+  [
+   "P9",
+   "orion_hct116",
+   "viperturb"
+  ],
+  [
+   "P9",
+   "kolf",
+   "viperturb"
+  ],
+  [
+   "REP",
+   "k562",
+   "orion_hek293t"
+  ],
+  [
+   "REP",
+   "cd4_Rest",
+   "orion_hek293t"
+  ],
+  [
+   "REP",
+   "orion_hek293t",
+   "kolf"
+  ],
+  [
+   "REP",
+   "orion_hek293t",
+   "viperturb"
+  ],
+  [
+   "REP",
+   "rpe1",
+   "cd4_Rest"
+  ],
+  [
+   "REP",
+   "rpe1",
+   "orion_hct116"
+  ],
+  [
+   "REP",
+   "rpe1",
+   "kolf"
+  ],
+  [
+   "REP",
+   "k562",
+   "cd4_Stim48hr"
+  ],
+  [
+   "REP",
+   "cd4_Stim48hr",
+   "orion_hct116"
+  ],
+  [
+   "REP",
+   "cd4_Stim48hr",
+   "kolf"
+  ],
+  [
+   "REP",
+   "cd4_Stim48hr",
+   "viperturb"
+  ],
+  [
+   "S1",
+   "k562",
+   "k562ess"
+  ],
+  [
+   "S1b",
+   "viperturb",
+   "k562"
+  ],
+  [
+   "S2",
+   "cd4_Rest",
+   "cd4_Stim8hr"
+  ],
+  [
+   "S2",
+   "cd4_Stim8hr",
+   "cd4_Stim48hr"
+  ],
+  [
+   "S2",
+   "cd4_Rest",
+   "cd4_Stim48hr"
+  ],
+  [
+   "S3",
+   "k562",
+   "rpe1"
+  ],
+  [
+   "S3",
+   "orion_hct116",
+   "orion_hek293t"
+  ],
+  [
+   "S5",
+   "a549",
+   "k562"
+  ],
+  [
+   "S5",
+   "a549",
+   "cd4_Rest"
+  ],
+  [
+   "S5",
+   "a549",
+   "orion_hct116"
+  ],
+  [
+   "S5",
+   "a549",
+   "kolf"
+  ],
+  [
+   "S5",
+   "a549",
+   "viperturb"
+  ]
+ ],
+ "m3a_contexts": [
+  "k562",
+  "cd4_Rest",
+  "orion_hct116",
+  "kolf",
+  "viperturb"
+ ],
+ "gstar_genes_full": 2887,
+ "genes_used": 2887,
+ "max_targets": 0,
+ "max_genes": 0,
+ "calibration": {
+  "path": "/kaggle/working/code/calibration.json",
+  "sha256": "528038028fab025537e5402f3920d4623d8c4305329a85a1557f951f920d4455",
+  "kappa_pseudobulk": 0.6636097421988733
+ },
+ "r2": {
+  "path": "/kaggle/input/datasets/<kaggle-user>/vcc-rete-contesti-r2",
+  "manifest_started_utc": "2026-09-28T01:57:43.288999+00:00",
+  "files": {
+   "axis.csv": {
+    "bytes": 137824,
+    "sha256": "da3090db3d1b27b62ab513f4ecc93a5bf1ef2e6ac9c11e825d5dad2f19c03ccb"
+   },
+   "basal.npy": {
+    "bytes": 1186240,
+    "sha256": "e1e2c33f8e31db2bef295f2d1192597a314776fddd94b6660548627403e0fd9e"
+   },
+   "cis_index.npy": {
+    "bytes": 13492,
+    "sha256": "eeb844a6a7acbe33adcf239efbb2c3d0ab5a62ca9b52a4d6ae8dc30a60fd9b58"
+   },
+   "cis_indptr.npy": {
+    "bytes": 154256,
+    "sha256": "d232935fd8bab0b90ef74e86635926db23363c6234c409ceaa49d902b9b8cccb"
+   },
+   "contexts.csv": {
+    "bytes": 1457,
+    "sha256": "2847d53b3e35308e1e497ba6d700032c0066934733fd2a83873848db78ef4fd6"
+   },
+   "genes.csv": {
+    "bytes": 194675,
+    "sha256": "4009e0632f3d9854c0029b5e56cb21a23b821dba4fb430a1cafc18a348d62225"
+   },
+   "manifest.json": {
+    "bytes": 11508,
+    "sha256": "2e59376b103dc6578b9a52e3c37c655207567ecc0375481bc5e3560e7fb8b32a"
+   },
+   "panel_targets.txt": {
+    "bytes": 2194,
+    "sha256": "dc47a19604b25553c2c0c4f6d2fcf1592671c1658f89be01fce0219138413cd4"
+   },
+   "partner_index.npy": {
+    "bytes": 447852,
+    "sha256": "b8199d79e37bf9549f74043637df6a3d2144597717e5165619505dbd4d2d6813"
+   },
+   "partner_indptr.npy": {
+    "bytes": 154256,
+    "sha256": "d89cd8428990bf066a27c81b6ea47cb26942c8f24ffa49af70f924666beb347e"
+   },
+   "partner_score.npy": {
+    "bytes": 447852,
+    "sha256": "b1855fa650bae179997f72b30c865b118bcbdf73fa083bed42ab05cbbe3d554a"
+   },
+   "raw.npy": {
+    "bytes": 2903590784,
+    "sha256": null
+   },
+   "row_context.npy": {
+    "bytes": 438472,
+    "sha256": "d5a55bc818cde00e1dd4aad216904a7f1a80b43543aef21c834c1a531b5e0fab"
+   },
+   "row_ncells.npy": {
+    "bytes": 438472,
+    "sha256": "eceede9c26fb87be59fc3778a430f3be9fbf913382f42c84df4efcd0fce6a447"
+   },
+   "row_own.npy": {
+    "bytes": 876816,
+    "sha256": "6266cc54604ae895dbfe3edaab7117372e2131cc434cfd94b2a6a4a39ee84dbe"
+   },
+   "row_target.npy": {
+    "bytes": 438472,
+    "sha256": "c9e27f485f22409baa5b287ee6cef45a51cfb10bc1adecb76ec51aaff7fe8698"
+   },
+   "se.npy": {
+    "bytes": 2903590784,
+    "sha256": null
+   },
+   "shrunk.npy": {
+    "bytes": 2903590784,
+    "sha256": null
+   },
+   "targets.csv": {
+    "bytes": 2279047,
+    "sha256": "3da48d5558b230a11b7950d41d3081794f78b12302071fd9de122e7755ba817c"
+   }
+  }
+ },
+ "python": "3.12.13",
+ "numpy": "2.0.2",
+ "pandas": "2.3.3",
+ "calibration_content": {
+  "kappa_pseudobulk": 0.6636097421988733
+ }
+}

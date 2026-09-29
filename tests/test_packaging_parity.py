@@ -25,6 +25,10 @@ own module for that reason.
 
 from __future__ import annotations
 
+import contextlib
+import importlib.util
+import io
+import json
 import shutil
 import sys
 import tempfile
@@ -755,6 +759,113 @@ class TestRowBlocking(unittest.TestCase):
         transformations = pk.payload_transformations()
         self.assertGreaterEqual(len(transformations), 4)
         self.assertTrue(all(isinstance(t, str) and t for t in transformations))
+
+
+def run_stage48(argv: list) -> tuple[int, str, str]:
+    """Stage 48's ``main()`` in this process with ``argv``: (exit code, stdout, stderr)."""
+    spec = importlib.util.spec_from_file_location("stage48", REPO / "scripts" / "48_package_prediction.py")
+    stage = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(stage)
+    out, err, old = io.StringIO(), io.StringIO(), sys.argv
+    sys.argv = ["48_package_prediction.py", *map(str, argv)]
+    try:
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            code = stage.main()
+    finally:
+        sys.argv = old
+    return code, out.getvalue(), err.getvalue()
+
+
+@unittest.skipUnless(HAVE_CLI, "needs an installed vcc-cli")
+class TestStage48Contexts(unittest.TestCase):
+    """Stage 48's ``--contexts``: the test set's D/E/F (defect D1 of the dress rehearsal, 28/09).
+
+    vcc-cli 0.2.0 fixes ``REQUIRED_CONTEXTS`` to A/B/C, so without the option a D/E/F prediction
+    is refused; with it the prediction is validated, packaged and verified. Without the option an
+    A/B/C prediction packages to the same bytes as the call the stage made before the option
+    existed. Tiny fixtures: 20 genes, 2 targets, 4 cells each (an explicit ``n_cells`` column)."""
+
+    GENES = [f"G{i:02d}" for i in range(20)]
+    PANEL = ["G03", "G11"]
+    CELLS = 4
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = Path(tempfile.mkdtemp(prefix="vcc-stage48-contexts-"))
+        cls.genes_csv = cls.tmp / "gene_names.csv"
+        cls.genes_csv.write_text("gene_name\n" + "".join(f"{g}\n" for g in cls.GENES), encoding="utf-8")
+        cls.perts_csv = cls.tmp / "pert_counts.csv"
+        cls.perts_csv.write_text("target_gene,n_cells\n" + "".join(f"{t},{cls.CELLS}\n" for t in cls.PANEL),
+                                 encoding="utf-8")
+        cls.def_h5ad = build_fixture(cls.tmp / "def.h5ad", genes=cls.GENES, panel=cls.PANEL,
+                                     contexts=("D", "E", "F"), cells_per_pert=cls.CELLS)
+        cls.abc_h5ad = build_fixture(cls.tmp / "abc.h5ad", genes=cls.GENES, panel=cls.PANEL,
+                                     contexts=CONTEXTS, cells_per_pert=cls.CELLS)
+
+    @classmethod
+    def tearDownClass(cls):
+        shutil.rmtree(cls.tmp, ignore_errors=True)
+
+    def stage(self, run_id: str, prediction: Path, *extra) -> tuple[int, str, str, dict]:
+        run = self.tmp / run_id
+        code, out, err = run_stage48(["--run-id", run_id, "--prediction", prediction, "--out", run,
+                                      "--genes", self.genes_csv, "--perts", self.perts_csv,
+                                      "--reserve-gib", "0", *extra])
+        report = json.loads((run / "packaging.json").read_text(encoding="utf-8"))
+        return code, out, err, report
+
+    def test_def_is_refused_without_the_option(self):
+        code, _out, err, report = self.stage("def_default", self.def_h5ad)
+        self.assertEqual(code, 1)
+        self.assertIn("unknown context", err.lower())
+        self.assertFalse((self.tmp / "def_default" / "prediction.vcc").exists())
+        self.assertNotIn("required_contexts", report)
+
+    def test_def_is_refused_by_validation_alone_without_the_option(self):
+        code, _out, _err, report = self.stage("def_validate", self.def_h5ad, "--validate-only")
+        self.assertEqual(code, 1)
+        self.assertFalse(report["validation"]["checks"]["contexts_complete"])
+
+    def test_def_packages_and_verifies_with_the_option(self):
+        for run_id, spelling in (("def_comma", ["D,E,F"]), ("def_space", ["D", "E", "F"])):
+            code, out, err, report = self.stage(run_id, self.def_h5ad, "--contexts", *spelling)
+            self.assertEqual(code, 0, err)
+            self.assertEqual(report["required_contexts"], ["D", "E", "F"])
+            self.assertTrue(all(report["package"]["validation"]["checks"].values()))
+            verification = report["verification"]
+            self.assertEqual(verification["official_container_validator"], "passed")
+            self.assertIsInstance(verification["payload_vs_input"], dict)
+            self.assertIn("contexts   : D, E, F", out)
+        self.assertEqual(json.loads((self.tmp / "def_comma" / "packaging.json").read_text())["verification"]
+                         ["archive_sha256"],
+                         json.loads((self.tmp / "def_space" / "packaging.json").read_text())["verification"]
+                         ["archive_sha256"])
+
+    def test_the_option_refuses_repeated_or_empty_labels(self):
+        for spelling in (["D,D,F"], [","]):
+            code, _out, err = run_stage48(["--run-id", "bad", "--prediction", self.def_h5ad,
+                                           "--out", self.tmp / "bad", "--contexts", *spelling])
+            self.assertEqual(code, 2)
+            self.assertIn("--contexts", err)
+        self.assertFalse((self.tmp / "bad").exists())
+
+    def test_abc_without_the_option_is_unchanged(self):
+        code, _out, err, report = self.stage("abc_default", self.abc_h5ad)
+        self.assertEqual(code, 0, err)
+        self.assertNotIn("required_contexts", report)
+        manifest = json.loads((self.tmp / "abc_default" / "manifest_48_package_prediction.json")
+                              .read_text(encoding="utf-8"))
+        self.assertNotIn("contexts", manifest["config"])
+        # The call the stage made before the option existed: no required_contexts at all.
+        before = self.tmp / "abc_before" / "prediction.vcc"
+        before.parent.mkdir()
+        pk.package_prediction(self.abc_h5ad, before, genes_path=self.genes_csv, perts_path=self.perts_csv,
+                              workdir=before.parent, temp_dir=before.parent)
+        after = self.tmp / "abc_default" / "prediction.vcc"
+        self.assertEqual(after.read_bytes(), before.read_bytes())
+        code, _out, err, _report = self.stage("abc_explicit", self.abc_h5ad, "--contexts", "A,B,C")
+        self.assertEqual(code, 0, err)
+        self.assertEqual((self.tmp / "abc_explicit" / "prediction.vcc").read_bytes(), after.read_bytes())
 
 
 if __name__ == "__main__":

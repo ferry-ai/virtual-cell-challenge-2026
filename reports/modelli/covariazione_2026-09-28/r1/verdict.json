@@ -1,0 +1,264 @@
+{
+ "stage": "covariazione_2026-09-28/combine.py",
+ "argv": [
+  "reports/modelli/covariazione_2026-09-28/combine.py",
+  "--parte-a",
+  "C:/Users/ferra/vcc2026-data/interim/covariazione_2026-09-29/kaggle_a/parte_a",
+  "--parte-b",
+  "C:/Users/ferra/vcc2026-data/interim/covariazione_2026-09-29/calibrazione,C:/Users/ferra/vcc2026-data/interim/covariazione_2026-09-29/parte_b",
+  "--out",
+  "reports/modelli/covariazione_2026-09-28/r1"
+ ],
+ "written_utc": "2026-09-29T09:22:27.731657+00:00",
+ "claim_type": "measured, effect space, public sources; no number here is a VCC score",
+ "registered": {
+  "parte_a": true,
+  "parte_b": [
+   true,
+   false
+  ],
+  "calibration": true
+ },
+ "inputs_sha256": {
+  "C:\\Users\\ferra\\vcc2026-data\\interim\\covariazione_2026-09-29\\kaggle_a\\parte_a\\pairs.csv": "c1e14204d20abdbedef0c9d715f10fdac70eb2936b804654538aee403142fe84",
+  "C:\\Users\\ferra\\vcc2026-data\\interim\\covariazione_2026-09-29\\kaggle_a\\parte_a\\ceilings.csv": "5bed1d2377bfdf020b1ced8d3eb6174c4bf61922dd495ccf79b9848dd4bdb88c",
+  "C:\\Users\\ferra\\vcc2026-data\\interim\\covariazione_2026-09-29\\kaggle_a\\parte_a\\m3a.csv": "ce61be0fbf453ab807493acfaae1a9c7cc09467159839760bdde2fef77d61d87",
+  "C:\\Users\\ferra\\vcc2026-data\\interim\\covariazione_2026-09-29\\kaggle_a\\parte_a\\counts.csv": "5b23c2a6f0c8c3e37c207d0df84d6f0fdaf7af9a3bb24768e147872688642373",
+  "C:\\Users\\ferra\\vcc2026-data\\interim\\covariazione_2026-09-29\\kaggle_a\\parte_a\\manifest.json": "c66babcfd9fa4a862be54c19ee9ea5414cdd01bf7e1043e78c7de63b5842c24b",
+  "C:\\Users\\ferra\\vcc2026-data\\interim\\covariazione_2026-09-29\\calibrazione\\calibration.json": "528038028fab025537e5402f3920d4623d8c4305329a85a1557f951f920d4455",
+  "C:\\Users\\ferra\\vcc2026-data\\interim\\covariazione_2026-09-29\\parte_b\\w5.csv": "cbc0aeba371dab48b1c33984e299f29c806961343e955b1b1dea657613a2017d"
+ },
+ "checks": {
+  "W6": {
+   "pairs_below_200": [
+    "cd4_Rest|viperturb",
+    "kolf|viperturb",
+    "orion_hct116|viperturb"
+   ]
+  },
+  "W4": {
+   "state": "pending",
+   "gene_set": "gstar"
+  },
+  "W1": {
+   "per_context": {
+    "k562": {
+     "ceiling_minus_null": 0.4611543333333333,
+     "mean_sqrt_r": 0.42390599999999995,
+     "pass": true
+    },
+    "cd4_Rest": {
+     "ceiling_minus_null": 0.5778690000000001,
+     "mean_sqrt_r": 0.169628,
+     "pass": false
+    },
+    "orion_hct116": {
+     "ceiling_minus_null": 0.42219933333333337,
+     "mean_sqrt_r": 0.628618,
+     "pass": true
+    },
+    "kolf": {
+     "ceiling_minus_null": 0.0553408,
+     "mean_sqrt_r": 0.546781,
+     "pass": true
+    },
+    "viperturb": {
+     "ceiling_minus_null": null,
+     "mean_sqrt_r": null,
+     "pass": false
+    }
+   },
+   "retained": [
+    "k562",
+    "orion_hct116",
+    "kolf"
+   ],
+   "pass": false
+  },
+  "W5": {
+   "per_pair": {
+    "k562|orion_hct116": {
+     "diff": 0.12195033333333333,
+     "lo": 0.10997712894781644
+    },
+    "k562|kolf": {
+     "diff": 0.021818633333333334,
+     "lo": 0.01860119565559207
+    }
+   },
+   "missing": [],
+   "state": "passed"
+  },
+  "W3": {
+   "kappa_pseudobulk": 0.6636097421988733,
+   "state": "passed"
+  },
+  "W2": {
+   "state": "pending"
+  }
+ },
+ "notes": [
+  "ATTENZIONE: almeno una parte non gira nella configurazione registrata (vedi registered)",
+  "controlli in attesa della parte B: W2, W4; verdetto non definitivo"
+ ],
+ "pairs": [
+  {
+   "pair": "k562|kolf",
+   "D": 0.08624263333333333,
+   "se_D": 0.009459443333333333,
+   "rho_cov": 0.21295899999999998,
+   "rho_eff": 0.12671600000000002,
+   "all_seeds_positive": true,
+   "n_seeds": 3,
+   "a": "k562",
+   "b": "kolf",
+   "lo": 0.06770246508620248,
+   "hi": 0.10478280158046419,
+   "positive": true
+  },
+  {
+   "pair": "k562|orion_hct116",
+   "D": -0.03288423333333334,
+   "se_D": 0.010598533333333333,
+   "rho_cov": 0.3647753333333333,
+   "rho_eff": 0.3976596666666667,
+   "all_seeds_positive": false,
+   "n_seeds": 3,
+   "a": "k562",
+   "b": "orion_hct116",
+   "lo": -0.053656976955613916,
+   "hi": -0.012111489711052758,
+   "positive": false
+  },
+  {
+   "pair": "orion_hct116|kolf",
+   "D": 0.2533476666666667,
+   "se_D": 0.016587033333333334,
+   "rho_cov": 0.3082403333333333,
+   "rho_eff": 0.05489259999999999,
+   "all_seeds_positive": true,
+   "n_seeds": 3,
+   "a": "orion_hct116",
+   "b": "kolf",
+   "lo": 0.220837678722968,
+   "hi": 0.2858576546103654,
+   "positive": true
+  }
+ ],
+ "mappa_rule": {
+  "median_D": 0.08624263333333333,
+  "median_rho_cov": 0.3082403333333333,
+  "n_positive": 2,
+  "n_pairs": 3,
+  "pairs_hi_below_-0.05": 0,
+  "leave_one_context_out_median_D": {
+   "k562": 0.2533476666666667,
+   "orion_hct116": 0.08624263333333333,
+   "kolf": -0.03288423333333334
+  },
+  "loco_sign_holds": false,
+  "reading_before_W3_W5": "inconclusiva"
+ },
+ "mappa": "inconclusiva",
+ "uso": "no",
+ "uso_rule": {
+  "per_context": {
+   "relation": {
+    "k562": {
+     "delta": 0.0029171033333333335,
+     "lo": -0.010420113333333333,
+     "hi": 0.016366466666666666
+    },
+    "kolf": {
+     "delta": -0.002899056666666667,
+     "lo": -0.014890500000000001,
+     "hi": 0.009339386666666666
+    },
+    "orion_hct116": {
+     "delta": -0.0017152666666666665,
+     "lo": -0.021952366666666667,
+     "hi": 0.017700633333333333
+    }
+   },
+   "inline": {
+    "k562": {
+     "delta": -0.004043642,
+     "lo": -0.018533766666666666,
+     "hi": 0.009901096666666666
+    },
+    "kolf": {
+     "delta": -0.006912539999999999,
+     "lo": -0.0421446,
+     "hi": 0.02928006666666667
+    },
+    "orion_hct116": {
+     "delta": -0.009933711333333333,
+     "lo": -0.043941,
+     "hi": 0.024247599999999998
+    }
+   },
+   "effect": {
+    "k562": {
+     "delta": 0.09045943333333334,
+     "lo": 0.077658,
+     "hi": 0.1039971
+    },
+    "kolf": {
+     "delta": 0.009366546666666668,
+     "lo": 0.0027478866666666665,
+     "hi": 0.016385266666666665
+    },
+    "orion_hct116": {
+     "delta": 0.07628766666666666,
+     "lo": 0.0555646,
+     "hi": 0.09751476666666666
+    }
+   },
+   "combined": {
+    "k562": {
+     "delta": 0.05607213333333333,
+     "lo": 0.04305676666666666,
+     "hi": 0.0693375
+    },
+    "kolf": {
+     "delta": 0.0016224966666666667,
+     "lo": -0.009878360000000001,
+     "hi": 0.012957866666666666
+    },
+    "orion_hct116": {
+     "delta": 0.0534179,
+     "lo": 0.03002413333333333,
+     "hi": 0.07701999999999999
+    }
+   },
+   "gain_combined_minus_effect": {
+    "k562": {
+     "delta": -0.034387266666666666,
+     "lo": -0.04640386666666666,
+     "hi": -0.022764633333333336
+    },
+    "kolf": {
+     "delta": -0.007744063333333333,
+     "lo": -0.0185566,
+     "hi": 0.00272885
+    },
+    "orion_hct116": {
+     "delta": -0.022869766666666666,
+     "lo": -0.04704716666666667,
+     "hi": 0.0014690966666666668
+    }
+   }
+  },
+  "relation_positive": 0,
+  "inline_positive": 0,
+  "relation_interval_touching_or_below_0": 3,
+  "inline_interval_touching_or_below_0": 3,
+  "combined_beats_effect_in_4_of_5": false
+ },
+ "verdetto": "inconclusivo",
+ "aggiunge_al_trasferimento": null,
+ "pending": [
+  "W2",
+  "W4"
+ ]
+}

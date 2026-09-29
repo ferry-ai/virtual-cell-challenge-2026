@@ -18,6 +18,10 @@ establish different things:
 
 None of the three is server acceptance. Nothing here uploads anything.
 
+The contexts a prediction must cover default to the installed CLI's
+``REQUIRED_CONTEXTS`` (A/B/C in vcc-cli 0.2.0). A bundle with other labels (the
+test set's D/E/F) needs ``--contexts D,E,F``, with its own ``--genes`` and ``--perts``.
+
     scripts/py.cmd scripts/48_package_prediction.py \
         --run-id k01 --prediction <artifacts>/q01full/prediction.h5ad
 """
@@ -77,10 +81,26 @@ def main() -> int:
     p.add_argument("--zstd-threads", type=int, default=None,
                    help="default: the official worker count, capped at 8")
     p.add_argument("--reserve-gib", type=float, default=6.0)
+    p.add_argument("--contexts", nargs="+", default=None,
+                   help="the context labels the prediction must cover, e.g. D,E,F or D E F "
+                        "(default: the installed CLI's REQUIRED_CONTEXTS, A/B/C in vcc-cli "
+                        "0.2.0). Passed to validation as required_contexts; for the test set, "
+                        "use the labels of the bundle's control files")
     p.add_argument("--validate-only", action="store_true")
     p.add_argument("--skip-verify", action="store_true")
     p.add_argument("--allow-overwrite", action="store_true")
     args = p.parse_args()
+
+    # Without --contexts nothing is passed and validation keeps the CLI's own
+    # REQUIRED_CONTEXTS, exactly as before the option existed. With it, the
+    # labels (comma- or space-separated) replace them for every context check.
+    context_kwargs: dict = {}
+    if args.contexts is not None:
+        required = tuple(c.strip() for part in args.contexts for c in part.split(",") if c.strip())
+        if not required or len(set(required)) != len(required):
+            print(f"--contexts needs distinct, non-empty labels, got {args.contexts}", file=sys.stderr)
+            return 2
+        context_kwargs["required_contexts"] = required
 
     t0 = time.perf_counter()
     controls = config.paths().raw / "controls"
@@ -97,6 +117,9 @@ def main() -> int:
     prep, vccfile, sizing, cli_version = official()
 
     print(f"input      : {prediction}")
+    if context_kwargs:
+        print(f"contexts   : {', '.join(context_kwargs['required_contexts'])} (from --contexts; "
+              f"the CLI's own are {', '.join(prep.REQUIRED_CONTEXTS)})")
     if not prediction.exists():
         print(f"missing input: {prediction}", file=sys.stderr)
         return 2
@@ -159,6 +182,7 @@ def main() -> int:
         "official_prep_peak_gib_model": official_peak,
         "transformations": payload_transformations(),
         "resources_before": before.as_dict(),
+        **({"required_contexts": list(context_kwargs["required_contexts"])} if context_kwargs else {}),
         "uploaded": False,
         "note": (
             "Local validation, packaging and verification only. Nothing was "
@@ -176,7 +200,7 @@ def main() -> int:
             print("\nvalidating (streamed) ...")
             report = validate_prediction(
                 prediction, genes_path=genes, perts_path=perts,
-                values_per_block=args.values_per_block,
+                values_per_block=args.values_per_block, **context_kwargs,
             )
             payload["validation"] = report.as_dict()
             for name, ok in report.checks.items():
@@ -202,6 +226,7 @@ def main() -> int:
                 zstd_level=args.zstd_level,
                 zstd_threads=args.zstd_threads,
                 force=args.allow_overwrite,
+                **context_kwargs,
             )
             payload["package"] = result.as_dict()
             report = result.validation
@@ -275,8 +300,11 @@ def main() -> int:
     report_path.write_text(json.dumps(payload, indent=2, default=str),
                            encoding="utf-8")
 
+    # --contexts enters the manifest only when given, so a run without it records
+    # the same config as before the option existed.
     man = RunManifest(run_id=args.run_id, stage="48_package_prediction",
-                      config={k: str(v) for k, v in vars(args).items()})
+                      config={k: str(v) for k, v in vars(args).items()
+                              if not (k == "contexts" and v is None)})
     man.add_input("prediction", prediction)
     man.add_input("genes", genes)
     man.add_input("perturbations", perts)
