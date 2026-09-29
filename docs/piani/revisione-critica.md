@@ -190,6 +190,12 @@ nessun candidato si propone più al proprietario sul solo proxy, serve il banco 
 `reports/invii/prova_generale_2026-09-28/`, scritti prima di girare; gli stadi girano sul portatile dopo la lettura di
 r1, che occupa la CPU.
 
+**Esito (29/09, 09:35–10:19 UTC, forma ridotta; [CP-0044](../checkpoints/0044-prova-generale-22-ottobre.md)):**
+il `.vcc` di D/E/F passa convalida, impacchettamento e verifica; cinque previsioni su sei si avverano, la sesta non è
+isolata. D1 è corretto con il suo test. Restano da correggere, ciascuno con il suo test, D4 (la cache del pannello
+sbagliato passa in silenzio), D9 (il riferimento di γ) e le altre voci della lettura del codice. L'azione resta
+aperta fino a quelle correzioni.
+
 ### Azione 4 — il banco con lo scorer vero sui bersagli del pannello
 
 L'unico banco a sei membri fatto finora (HepG2) usa bersagli dello schermo essenziale, che trasferiscono

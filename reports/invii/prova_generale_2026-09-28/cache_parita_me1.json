@@ -1,0 +1,586 @@
+{
+ "script": "reports/invii/prova_generale_2026-09-28/assembla_cache.py",
+ "written_utc": "2026-09-29T09:46:22.472160+00:00",
+ "out_existed_empty": false,
+ "targets_csv": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+ "targets_csv_sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+ "targets_requested": 300,
+ "preset": "me1",
+ "sources": {
+  "k562": {
+   "universe": "C:\\Users\\ferra\\vcc2026-data\\processed\\universe_k562_2026-09-26",
+   "index_sha256": "67a2e7e9a6d9af49f0dcf9300c851e8ab3fadce339b907206ea319bc5fff8fce",
+   "universe_manifest_sha256": "3c4aeb9eacee0819c32fb4efc98175ba83f33cafe8cf0399cff92af7476d657e",
+   "targets": 272,
+   "missing": [
+    "ABCD1",
+    "CAPRIN2",
+    "EPHB2",
+    "HEATR6",
+    "KIF21B",
+    "MAPK7",
+    "MLKL",
+    "NICN1",
+    "PARP3",
+    "PBLD",
+    "PDK3",
+    "PHF11",
+    "PSMB9",
+    "RAB11FIP5",
+    "SEMA4F",
+    "SLC44A1",
+    "SNN",
+    "SOCS5",
+    "SPATA20",
+    "TAF4",
+    "TBC1D19",
+    "TDRD7",
+    "TESK2",
+    "TMEM104",
+    "TMEM79",
+    "TTBK2",
+    "TXNDC16",
+    "ZC2HC1A"
+   ],
+   "listed_in_index_but_absent_from_chunk": [],
+   "chunks_read": [
+    {
+     "file": "k562_00.npz",
+     "targets_taken": 14
+    },
+    {
+     "file": "k562_01.npz",
+     "targets_taken": 10
+    },
+    {
+     "file": "k562_02.npz",
+     "targets_taken": 9
+    },
+    {
+     "file": "k562_03.npz",
+     "targets_taken": 21
+    },
+    {
+     "file": "k562_04.npz",
+     "targets_taken": 11
+    },
+    {
+     "file": "k562_05.npz",
+     "targets_taken": 15
+    },
+    {
+     "file": "k562_06.npz",
+     "targets_taken": 15
+    },
+    {
+     "file": "k562_07.npz",
+     "targets_taken": 11
+    },
+    {
+     "file": "k562_08.npz",
+     "targets_taken": 16
+    },
+    {
+     "file": "k562_09.npz",
+     "targets_taken": 22
+    },
+    {
+     "file": "k562_10.npz",
+     "targets_taken": 22
+    },
+    {
+     "file": "k562_11.npz",
+     "targets_taken": 11
+    },
+    {
+     "file": "k562_12.npz",
+     "targets_taken": 15
+    },
+    {
+     "file": "k562_13.npz",
+     "targets_taken": 21
+    },
+    {
+     "file": "k562_14.npz",
+     "targets_taken": 13
+    },
+    {
+     "file": "k562_15.npz",
+     "targets_taken": 33
+    },
+    {
+     "file": "k562_16.npz",
+     "targets_taken": 13
+    }
+   ],
+   "meta_variants": 1,
+   "file": "k562.npz",
+   "bytes": 28104995,
+   "sha256": "a37c78ce1f7c13a3fc145e75e64f2ccead555ec8e38a656d671903ed4fd7218f",
+   "parity": {
+    "reference": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-27_r9\\k562.npz",
+    "targets_mine": 272,
+    "targets_ref": 272,
+    "shared": 272,
+    "only_mine": [],
+    "only_ref": [],
+    "same_order": true,
+    "meta_equal": true,
+    "n_cells_differing": 0,
+    "shrunk": {
+     "finite_mask_mismatches": 0,
+     "max_abs_diff": 0.0,
+     "entries_differing": 0,
+     "entries_above_tolerance": 0
+    },
+    "raw": {
+     "finite_mask_mismatches": 0,
+     "max_abs_diff": 0.0,
+     "entries_differing": 0,
+     "entries_above_tolerance": 0
+    },
+    "se": {
+     "finite_mask_mismatches": 0,
+     "max_abs_diff": 0.0,
+     "entries_differing": 0,
+     "entries_above_tolerance": 0
+    },
+    "tolerance": 0.0,
+    "rule_passed": true
+   }
+  },
+  "cd4_mix": {
+   "universe": "C:\\Users\\ferra\\vcc2026-data\\processed\\universe_cd4_2026-09-27_me1",
+   "index_sha256": "cf84c98a8507a4ef5a4462392392309b97039585c82ddc31b6cefa2d1bf107fe",
+   "universe_manifest_sha256": "ca53ba5ce7064bbf4a2ade530d3eb30889f21e6e631493f066b2d334a50a5ead",
+   "targets": 293,
+   "missing": [
+    "ABCD1",
+    "C5orf22",
+    "EEF1A2",
+    "EPHB2",
+    "FZD2",
+    "LENG1",
+    "NICN1"
+   ],
+   "listed_in_index_but_absent_from_chunk": [],
+   "chunks_read": [
+    {
+     "file": "cd4_mix_000.npz",
+     "targets_taken": 293
+    }
+   ],
+   "meta_variants": 1,
+   "file": "cd4_mix.npz",
+   "bytes": 28063360,
+   "sha256": "83b948df1f1163e6cfd37d39f9cbc3e5a242257ce2035e42f25597658a5f9a9c",
+   "parity": {
+    "reference": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-27_r9\\cd4_mix.npz",
+    "targets_mine": 293,
+    "targets_ref": 293,
+    "shared": 293,
+    "only_mine": [],
+    "only_ref": [],
+    "same_order": true,
+    "meta_equal": false,
+    "n_cells_differing": 0,
+    "shrunk": {
+     "finite_mask_mismatches": 0,
+     "max_abs_diff": 1.4901161193847656e-08,
+     "entries_differing": 2,
+     "entries_above_tolerance": 0
+    },
+    "raw": {
+     "finite_mask_mismatches": 0,
+     "max_abs_diff": 1.4901161193847656e-08,
+     "entries_differing": 2,
+     "entries_above_tolerance": 0
+    },
+    "se": {
+     "finite_mask_mismatches": 0,
+     "max_abs_diff": 0.0,
+     "entries_differing": 0,
+     "entries_above_tolerance": 0
+    },
+    "tolerance": 2e-08,
+    "rule_passed": true
+   }
+  },
+  "orion_hct116": {
+   "universe": "C:\\Users\\ferra\\vcc2026-data\\processed\\universe_orion_hct116_2026-09-27_me1",
+   "index_sha256": "44119370e24fb2ce61d28869df95ffcc89c4ff9837defe077e87c7f9d01a598b",
+   "universe_manifest_sha256": "f21dbb54ea0875652b73c7de81b718293fe37fa9b4038bc4962d611f707ea4cc",
+   "targets": 268,
+   "missing": [
+    "ANKRD52",
+    "BRD1",
+    "C5orf22",
+    "CDK8",
+    "DCP2",
+    "ELK1",
+    "GLYR1",
+    "HMGN4",
+    "IL10RB",
+    "KMT2A",
+    "MAN2A1",
+    "MAPK12",
+    "NIPSNAP3A",
+    "PGLS",
+    "PHF11",
+    "PKN3",
+    "R3HCC1L",
+    "RAB5A",
+    "RFK",
+    "SCAF8",
+    "SLIRP",
+    "SPATA20",
+    "STK3",
+    "STT3A",
+    "TAF15",
+    "TBC1D13",
+    "TMEM147",
+    "UNK",
+    "UROS",
+    "VAPB",
+    "ZNF628",
+    "ZRANB3"
+   ],
+   "listed_in_index_but_absent_from_chunk": [],
+   "chunks_read": [
+    {
+     "file": "orion_hct116_00.npz",
+     "targets_taken": 8
+    },
+    {
+     "file": "orion_hct116_01.npz",
+     "targets_taken": 6
+    },
+    {
+     "file": "orion_hct116_02.npz",
+     "targets_taken": 4
+    },
+    {
+     "file": "orion_hct116_03.npz",
+     "targets_taken": 5
+    },
+    {
+     "file": "orion_hct116_04.npz",
+     "targets_taken": 7
+    },
+    {
+     "file": "orion_hct116_05.npz",
+     "targets_taken": 8
+    },
+    {
+     "file": "orion_hct116_06.npz",
+     "targets_taken": 12
+    },
+    {
+     "file": "orion_hct116_07.npz",
+     "targets_taken": 6
+    },
+    {
+     "file": "orion_hct116_08.npz",
+     "targets_taken": 8
+    },
+    {
+     "file": "orion_hct116_09.npz",
+     "targets_taken": 7
+    },
+    {
+     "file": "orion_hct116_10.npz",
+     "targets_taken": 8
+    },
+    {
+     "file": "orion_hct116_11.npz",
+     "targets_taken": 6
+    },
+    {
+     "file": "orion_hct116_12.npz",
+     "targets_taken": 5
+    },
+    {
+     "file": "orion_hct116_13.npz",
+     "targets_taken": 9
+    },
+    {
+     "file": "orion_hct116_14.npz",
+     "targets_taken": 12
+    },
+    {
+     "file": "orion_hct116_15.npz",
+     "targets_taken": 6
+    },
+    {
+     "file": "orion_hct116_16.npz",
+     "targets_taken": 7
+    },
+    {
+     "file": "orion_hct116_17.npz",
+     "targets_taken": 15
+    },
+    {
+     "file": "orion_hct116_18.npz",
+     "targets_taken": 16
+    },
+    {
+     "file": "orion_hct116_19.npz",
+     "targets_taken": 11
+    },
+    {
+     "file": "orion_hct116_20.npz",
+     "targets_taken": 5
+    },
+    {
+     "file": "orion_hct116_21.npz",
+     "targets_taken": 9
+    },
+    {
+     "file": "orion_hct116_22.npz",
+     "targets_taken": 9
+    },
+    {
+     "file": "orion_hct116_23.npz",
+     "targets_taken": 17
+    },
+    {
+     "file": "orion_hct116_24.npz",
+     "targets_taken": 11
+    },
+    {
+     "file": "orion_hct116_25.npz",
+     "targets_taken": 7
+    },
+    {
+     "file": "orion_hct116_26.npz",
+     "targets_taken": 33
+    },
+    {
+     "file": "orion_hct116_27.npz",
+     "targets_taken": 11
+    }
+   ],
+   "meta_variants": 1,
+   "file": "orion_hct116.npz",
+   "bytes": 37380522,
+   "sha256": "6a7d4cc11b2e06490f721c67bf460757f5da172147339c0d029fc54b104fccb1",
+   "parity": {
+    "reference": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-27_r9\\orion_hct116.npz",
+    "targets_mine": 268,
+    "targets_ref": 268,
+    "shared": 268,
+    "only_mine": [],
+    "only_ref": [],
+    "same_order": true,
+    "meta_equal": false,
+    "n_cells_differing": 0,
+    "shrunk": {
+     "finite_mask_mismatches": 0,
+     "max_abs_diff": 0.0,
+     "entries_differing": 0,
+     "entries_above_tolerance": 0
+    },
+    "raw": {
+     "finite_mask_mismatches": 0,
+     "max_abs_diff": 0.0,
+     "entries_differing": 0,
+     "entries_above_tolerance": 0
+    },
+    "se": {
+     "finite_mask_mismatches": 0,
+     "max_abs_diff": 0.0,
+     "entries_differing": 0,
+     "entries_above_tolerance": 0
+    },
+    "tolerance": 0.0,
+    "rule_passed": true
+   }
+  },
+  "orion_hek293t": {
+   "universe": "C:\\Users\\ferra\\vcc2026-data\\processed\\universe_orion_hek293t_2026-09-27_me1",
+   "index_sha256": "0b2b9870d40e7121080c8d8bda75e8f48871c2a88c8095ea9457d6f508278cd2",
+   "universe_manifest_sha256": "ff0a4694c61e5f7a6e20cfe21779403bc5e91f46d551172632a4911939c1fd8d",
+   "targets": 281,
+   "missing": [
+    "AKIRIN1",
+    "ANKRD52",
+    "C5orf22",
+    "CDK8",
+    "E2F4",
+    "GLYR1",
+    "IL10RB",
+    "MAN2A1",
+    "MAPK12",
+    "RFK",
+    "SCAF8",
+    "SPATA20",
+    "STT3A",
+    "TAF15",
+    "TMEM147",
+    "UNK",
+    "VAPB",
+    "ZNF219",
+    "ZRANB3"
+   ],
+   "listed_in_index_but_absent_from_chunk": [],
+   "chunks_read": [
+    {
+     "file": "orion_hek293t_00.npz",
+     "targets_taken": 7
+    },
+    {
+     "file": "orion_hek293t_01.npz",
+     "targets_taken": 6
+    },
+    {
+     "file": "orion_hek293t_02.npz",
+     "targets_taken": 5
+    },
+    {
+     "file": "orion_hek293t_03.npz",
+     "targets_taken": 5
+    },
+    {
+     "file": "orion_hek293t_04.npz",
+     "targets_taken": 4
+    },
+    {
+     "file": "orion_hek293t_05.npz",
+     "targets_taken": 7
+    },
+    {
+     "file": "orion_hek293t_06.npz",
+     "targets_taken": 13
+    },
+    {
+     "file": "orion_hek293t_07.npz",
+     "targets_taken": 9
+    },
+    {
+     "file": "orion_hek293t_08.npz",
+     "targets_taken": 7
+    },
+    {
+     "file": "orion_hek293t_09.npz",
+     "targets_taken": 5
+    },
+    {
+     "file": "orion_hek293t_10.npz",
+     "targets_taken": 10
+    },
+    {
+     "file": "orion_hek293t_11.npz",
+     "targets_taken": 4
+    },
+    {
+     "file": "orion_hek293t_12.npz",
+     "targets_taken": 8
+    },
+    {
+     "file": "orion_hek293t_13.npz",
+     "targets_taken": 6
+    },
+    {
+     "file": "orion_hek293t_14.npz",
+     "targets_taken": 9
+    },
+    {
+     "file": "orion_hek293t_15.npz",
+     "targets_taken": 14
+    },
+    {
+     "file": "orion_hek293t_16.npz",
+     "targets_taken": 2
+    },
+    {
+     "file": "orion_hek293t_17.npz",
+     "targets_taken": 11
+    },
+    {
+     "file": "orion_hek293t_18.npz",
+     "targets_taken": 15
+    },
+    {
+     "file": "orion_hek293t_19.npz",
+     "targets_taken": 17
+    },
+    {
+     "file": "orion_hek293t_20.npz",
+     "targets_taken": 11
+    },
+    {
+     "file": "orion_hek293t_21.npz",
+     "targets_taken": 5
+    },
+    {
+     "file": "orion_hek293t_22.npz",
+     "targets_taken": 9
+    },
+    {
+     "file": "orion_hek293t_23.npz",
+     "targets_taken": 10
+    },
+    {
+     "file": "orion_hek293t_24.npz",
+     "targets_taken": 16
+    },
+    {
+     "file": "orion_hek293t_25.npz",
+     "targets_taken": 11
+    },
+    {
+     "file": "orion_hek293t_26.npz",
+     "targets_taken": 9
+    },
+    {
+     "file": "orion_hek293t_27.npz",
+     "targets_taken": 18
+    },
+    {
+     "file": "orion_hek293t_28.npz",
+     "targets_taken": 28
+    }
+   ],
+   "meta_variants": 1,
+   "file": "orion_hek293t.npz",
+   "bytes": 42539381,
+   "sha256": "4e45d713d786a052c4806db7432e7c629e18456c3aa25a7f243e252ca9529486",
+   "parity": {
+    "reference": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-27_r9\\orion_hek293t.npz",
+    "targets_mine": 281,
+    "targets_ref": 281,
+    "shared": 281,
+    "only_mine": [],
+    "only_ref": [],
+    "same_order": true,
+    "meta_equal": false,
+    "n_cells_differing": 0,
+    "shrunk": {
+     "finite_mask_mismatches": 0,
+     "max_abs_diff": 0.0,
+     "entries_differing": 0,
+     "entries_above_tolerance": 0
+    },
+    "raw": {
+     "finite_mask_mismatches": 0,
+     "max_abs_diff": 0.0,
+     "entries_differing": 0,
+     "entries_above_tolerance": 0
+    },
+    "se": {
+     "finite_mask_mismatches": 0,
+     "max_abs_diff": 0.0,
+     "entries_differing": 0,
+     "entries_above_tolerance": 0
+    },
+    "tolerance": 0.0,
+    "rule_passed": true
+   }
+  }
+ },
+ "free_bytes_before": 5615067136,
+ "seconds": 190.1,
+ "peak_rss_bytes": 272732160,
+ "free_bytes_after": 5465681920,
+ "parity_rule_passed": true
+}

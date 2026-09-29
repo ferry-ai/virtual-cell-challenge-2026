@@ -1,0 +1,184 @@
+{
+ "season": "2026",
+ "partition": "prova",
+ "panel_id": "prova-2026-09-28",
+ "contexts": [
+  "D",
+  "E",
+  "F"
+ ],
+ "pert_col": "target_gene",
+ "context_col": "context",
+ "control_label": "non-targeting",
+ "n_genes": 18533,
+ "n_constructs": 300,
+ "per_context": {
+  "D": {
+   "n_perturbations": 300,
+   "control_cells": 18400,
+   "n_ntc_ids": 46,
+   "ground_truth_cells": null,
+   "copy_of": "B"
+  },
+  "E": {
+   "n_perturbations": 300,
+   "control_cells": 18400,
+   "n_ntc_ids": 46,
+   "ground_truth_cells": null,
+   "copy_of": "A"
+  },
+  "F": {
+   "n_perturbations": 300,
+   "control_cells": 18400,
+   "n_ntc_ids": 46,
+   "ground_truth_cells": null,
+   "copy_of": "C"
+  }
+ },
+ "cells_per_pert": 400,
+ "prova": {
+  "nota": "copia rinominata, non dati nuovi: context_D/E/F sono copie di context_A/B/C con la sola etichetta obs/context riscritta; pert_counts.csv e' il pannello finto della prova",
+  "mapping_new_to_old": {
+   "D": "B",
+   "E": "A",
+   "F": "C"
+  },
+  "script": "reports/invii/prova_generale_2026-09-28/bundle_finto.py",
+  "written_utc": "2026-09-29T09:37:06.384582+00:00",
+  "originals": {
+   "B": {
+    "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_B.h5ad",
+    "bytes": 210966111,
+    "sha256_before": "41557555b3febf6db19fd930b4dd7db88941840077bf985d14dfff959c782380",
+    "fingerprint": "8764c13cb61dd48e51c817335dd4ecc85a740406c5af144c4884d79d3cd3293d",
+    "fingerprint_mode": "head+tail sample (64 MiB blocks)",
+    "fingerprint_t22": "8764c13cb61dd48e51c817335dd4ecc85a740406c5af144c4884d79d3cd3293d",
+    "fingerprint_matches_t22": true,
+    "sha256_after": "41557555b3febf6db19fd930b4dd7db88941840077bf985d14dfff959c782380",
+    "unchanged": true
+   },
+   "A": {
+    "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_A.h5ad",
+    "bytes": 224973316,
+    "sha256_before": "f22e71968487d3da9402769dcd0c73a47851fad4cd7dd25510283c923031fe3e",
+    "fingerprint": "daf888bd6894da5488c8dac3098a3618ff766d03fdf1250ec7f607124bb97834",
+    "fingerprint_mode": "head+tail sample (64 MiB blocks)",
+    "fingerprint_t22": "daf888bd6894da5488c8dac3098a3618ff766d03fdf1250ec7f607124bb97834",
+    "fingerprint_matches_t22": true,
+    "sha256_after": "f22e71968487d3da9402769dcd0c73a47851fad4cd7dd25510283c923031fe3e",
+    "unchanged": true
+   },
+   "C": {
+    "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\context_C.h5ad",
+    "bytes": 226056691,
+    "sha256_before": "e090e7c7cfdd0006f689214ba38ba0cd2669578e89c9bc325b65f0bd940c02e0",
+    "fingerprint": "486a299ad022ec5fd6a3c5f56ec77efeb7b8b85e5de0e41250d064c6f9b236f6",
+    "fingerprint_mode": "head+tail sample (64 MiB blocks)",
+    "fingerprint_t22": "486a299ad022ec5fd6a3c5f56ec77efeb7b8b85e5de0e41250d064c6f9b236f6",
+    "fingerprint_matches_t22": true,
+    "sha256_after": "e090e7c7cfdd0006f689214ba38ba0cd2669578e89c9bc325b65f0bd940c02e0",
+    "unchanged": true
+   }
+  },
+  "copies": {
+   "D": {
+    "from": "B",
+    "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls_prova_2026-09-28\\context_D.h5ad",
+    "bytes": 210966111,
+    "label": {
+     "before": [
+      "B"
+     ],
+     "after": [
+      "D"
+     ]
+    },
+    "comparison": {
+     "equal": true,
+     "differences": [],
+     "named": {
+      "X/data": true,
+      "X/indices": true,
+      "X/indptr": true,
+      "obs/ntc_id/categories": true,
+      "obs/ntc_id/codes": true,
+      "obs/target_gene/categories": true,
+      "obs/target_gene/codes": true,
+      "var/_index/mask": true,
+      "var/_index/values": true
+     }
+    },
+    "sha256": "36264cf1329e117e36f449301d5a794d8e216653e40d6f49572068582c0235fd"
+   },
+   "E": {
+    "from": "A",
+    "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls_prova_2026-09-28\\context_E.h5ad",
+    "bytes": 224973316,
+    "label": {
+     "before": [
+      "A"
+     ],
+     "after": [
+      "E"
+     ]
+    },
+    "comparison": {
+     "equal": true,
+     "differences": [],
+     "named": {
+      "X/data": true,
+      "X/indices": true,
+      "X/indptr": true,
+      "obs/ntc_id/categories": true,
+      "obs/ntc_id/codes": true,
+      "obs/target_gene/categories": true,
+      "obs/target_gene/codes": true,
+      "var/_index/mask": true,
+      "var/_index/values": true
+     }
+    },
+    "sha256": "ec2c89d55630836ab72fabd6dbb45e4b29574dbf5addb739aca94b852e5bb8d7"
+   },
+   "F": {
+    "from": "C",
+    "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls_prova_2026-09-28\\context_F.h5ad",
+    "bytes": 226056691,
+    "label": {
+     "before": [
+      "C"
+     ],
+     "after": [
+      "F"
+     ]
+    },
+    "comparison": {
+     "equal": true,
+     "differences": [],
+     "named": {
+      "X/data": true,
+      "X/indices": true,
+      "X/indptr": true,
+      "obs/ntc_id/categories": true,
+      "obs/ntc_id/codes": true,
+      "obs/target_gene/categories": true,
+      "obs/target_gene/codes": true,
+      "var/_index/mask": true,
+      "var/_index/values": true
+     }
+    },
+    "sha256": "0d1f9f6d9405e8e021ce7268971d0265275260aa49ac355a585ea5a59c5da286"
+   }
+  },
+  "panel_sha256": "a3f021dcc2fa8f455a0d278bd4e2847fa1cb139ecc4cd838414e83f380049057",
+  "gene_names_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+  "checks": {
+   "originals_unchanged": true,
+   "fingerprints_match_t22": true,
+   "copies_differ_only_in_label": true,
+   "named_datasets_identical": true,
+   "labels_rewritten": true
+  },
+  "free_bytes_before": 6406508544,
+  "seconds": 70.3
+ }
+}

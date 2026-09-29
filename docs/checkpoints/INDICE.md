@@ -74,3 +74,4 @@ aggiunge da sé la riga qui sotto.
 | [0041](0041-proxy-contro-ufficiale.md) | 2026-09-28 | Il proxy dei banchi contro le differenze ufficiali: due coppie su quattro non lette, non si sceglie più sul solo proxy | esperimento | — |
 | [0042](0042-t23-esclusione-pds.md) | 2026-09-29 | Il t23 in classifica: +0,1419, non conclusivo; il PDS sale di dodici volte il rumore del seme, i membri DE scendono | esperimento | — |
 | [0043](0043-misura-decisiva-relazioni.md) | 2026-09-29 | La misura decisiva per la rete relazionale: inconclusiva per W1, e la via delle relazioni non prevede nulla nemmeno nella stessa linea | osservazione | — |
+| [0044](0044-prova-generale-22-ottobre.md) | 2026-09-29 | La prova generale del 22 ottobre riesce in forma ridotta: .vcc di D/E/F verificato; restano da correggere la cache che sbaglia in silenzio e il riferimento di gamma | esperimento | — |

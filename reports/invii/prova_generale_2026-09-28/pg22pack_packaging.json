@@ -1,0 +1,218 @@
+{
+  "run_id": "pg22pack",
+  "stage": "48_package_prediction",
+  "input": {
+    "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\pg22gen\\prediction.h5ad",
+    "sha256": "3664c265ddf834fd26df3ca192bbbda2385afac89b65b14d754853b4e2eeaac2",
+    "bytes": 426946126,
+    "hash_seconds": 2.9216477000009036
+  },
+  "layout": {
+    "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\pg22gen\\prediction.h5ad",
+    "n_obs": 36000,
+    "n_vars": 18533,
+    "nnz": 217036833,
+    "data_dtype": "float32",
+    "indices_dtype": "int32",
+    "indptr_dtype": "int32",
+    "data_chunks": [
+      1048576
+    ],
+    "data_compression": "gzip",
+    "data_compression_opts": 4,
+    "indices_chunks": [
+      1048576
+    ],
+    "indices_compression": "gzip",
+    "indices_compression_opts": 4,
+    "obs_columns": [
+      "context",
+      "target_gene"
+    ],
+    "var_index_name": "_index",
+    "droppable_present": [],
+    "file_bytes": 426946126
+  },
+  "official_cli_version": "0.2.0",
+  "official_prep_peak_gib_model": 4.102165541797877,
+  "transformations": [
+    "obs index replaced with '0'..'n-1' (official prep rebuilds obs with a positional index; the original cell names are not carried into a .vcc)",
+    "obs reduced to the perturbation column and the context column, in that order, written through anndata's own DataFrame writer",
+    "var reduced to the gene index, with no columns",
+    "layers, obsm, varm, obsp, varp, uns and raw dropped (official prep drops them too, and reports them)",
+    "X datasets copied verbatim, preserving dtype and HDF5 filters. Official prep rewrites them contiguous and unfiltered; the decoded arrays are identical either way"
+  ],
+  "resources_before": {
+    "ram_total_bytes": 8384401408,
+    "ram_available_bytes": 986779648,
+    "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\pg22pack",
+    "disk_total_bytes": 510342983680,
+    "disk_free_bytes": 4574674944,
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 7.808582305908203,
+    "ram_available_gib": 0.9190101623535156,
+    "disk_free_gib": 4.260498046875
+  },
+  "required_contexts": [
+    "D",
+    "E",
+    "F"
+  ],
+  "uploaded": false,
+  "note": "Local validation, packaging and verification only. Nothing was uploaded, no submission quota was consumed, and no server has accepted this artifact.",
+  "package": {
+    "input_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\pg22gen\\prediction.h5ad",
+    "output_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\pg22pack\\prediction.vcc",
+    "payload_bytes": 426634806,
+    "archive_bytes": 420976640,
+    "nnz": 217036833,
+    "n_obs": 36000,
+    "n_vars": 18533,
+    "meta": {
+      "schema": 1,
+      "nnz": 217036833,
+      "n_obs": 36000,
+      "n_vars": 18533,
+      "cli_version": "0.2.0"
+    },
+    "transformations": [
+      "obs index replaced with '0'..'n-1' (official prep rebuilds obs with a positional index; the original cell names are not carried into a .vcc)",
+      "obs reduced to the perturbation column and the context column, in that order, written through anndata's own DataFrame writer",
+      "var reduced to the gene index, with no columns",
+      "layers, obsm, varm, obsp, varp, uns and raw dropped (official prep drops them too, and reports them)",
+      "X datasets copied verbatim, preserving dtype and HDF5 filters. Official prep rewrites them contiguous and unfiltered; the decoded arrays are identical either way"
+    ],
+    "seconds": 169.46587759999966,
+    "peak_rss_bytes": 530608128,
+    "peak_disk_bytes": 847601352,
+    "validation": {
+      "n_obs": 36000,
+      "n_vars": 18533,
+      "nnz": 217036833,
+      "min_value": 0.0,
+      "max_value": 2810.0,
+      "all_integer": true,
+      "n_nonfinite": 0,
+      "max_counts_per_cell_observed": 53004.0,
+      "cells_per_context": {
+        "D": 12000,
+        "E": 12000,
+        "F": 12000
+      },
+      "n_targets_per_context": {
+        "D": 300,
+        "E": 300,
+        "F": 300
+      },
+      "empty_perturbations": [],
+      "csr_checks": {
+        "indptr_length_is_n_obs_plus_1": true,
+        "indptr_starts_at_zero": true,
+        "indptr_non_negative": true,
+        "indptr_monotonic": true,
+        "indptr_end_matches_data_length": true,
+        "data_and_indices_same_length": true,
+        "nnz_representable_in_indptr_dtype": true,
+        "n_vars_representable_in_indices_dtype": true
+      },
+      "checks": {
+        "var_names_unique": true,
+        "gene_order_matches_list": true,
+        "gene_dim_matches_expected": true,
+        "has_cells": true,
+        "cell_dim_within_cap": true,
+        "pert_column_present": true,
+        "no_control_rows": true,
+        "contexts_complete": true,
+        "targets_match_official_list": true,
+        "density_within_cap": true,
+        "column_indices_in_range": true,
+        "counts_finite": true,
+        "counts_non_negative": true,
+        "counts_are_whole_numbers": true,
+        "max_counts_per_cell_within_cap": true,
+        "no_all_zero_perturbation": true
+      },
+      "failures": [],
+      "notes": [],
+      "seconds": 25.80199900000298,
+      "peak_rss_bytes": 530608128,
+      "layout": {
+        "path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\pg22gen\\prediction.h5ad",
+        "n_obs": 36000,
+        "n_vars": 18533,
+        "nnz": 217036833,
+        "data_dtype": "float32",
+        "indices_dtype": "int32",
+        "indptr_dtype": "int32",
+        "data_chunks": [
+          1048576
+        ],
+        "data_compression": "gzip",
+        "data_compression_opts": 4,
+        "indices_chunks": [
+          1048576
+        ],
+        "indices_compression": "gzip",
+        "indices_compression_opts": 4,
+        "obs_columns": [
+          "context",
+          "target_gene"
+        ],
+        "var_index_name": "_index",
+        "droppable_present": [],
+        "file_bytes": 426946126
+      },
+      "ok": true
+    }
+  },
+  "verification": {
+    "official_container_validator": "passed",
+    "meta_from_archive": {
+      "cli_version": "0.2.0",
+      "n_obs": 36000,
+      "n_vars": 18533,
+      "nnz": 217036833,
+      "schema": 1
+    },
+    "nnz_from_archive": 217036833,
+    "payload_vs_input": {
+      "matches_input": true,
+      "n_obs": 36000,
+      "n_vars": 18533,
+      "nnz": 217036833,
+      "x_arrays_bit_identical": true,
+      "obs_index_rewritten": true,
+      "compared": [
+        "X.data (bitwise)",
+        "X.indices (bitwise)",
+        "X.indptr (bitwise)",
+        "X dtypes",
+        "var index",
+        "obs['target_gene']",
+        "obs['context']",
+        "obs index is positional"
+      ]
+    },
+    "archive_sha256": "b678b25ffc504dc4c86b16d01d247a92985877a1062a46b97e69d8a24d8d858b",
+    "archive_bytes": 420976640
+  },
+  "resources_after": {
+    "ram_total_bytes": 8384401408,
+    "ram_available_bytes": 843890688,
+    "disk_path": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\pg22pack",
+    "disk_total_bytes": 510342983680,
+    "disk_free_bytes": 4158541824,
+    "cpu_count": 8,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 7.808582305908203,
+    "ram_available_gib": 0.7859344482421875,
+    "disk_free_gib": 3.872943878173828
+  },
+  "peak_rss_bytes": 530608128,
+  "total_seconds": 225.62772430000769,
+  "exit_code": 0
+}

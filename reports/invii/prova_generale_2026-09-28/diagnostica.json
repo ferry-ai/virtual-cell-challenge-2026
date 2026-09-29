@@ -1,0 +1,657 @@
+{
+ "script": "reports/invii/prova_generale_2026-09-28/diagnostica.py",
+ "argv": [
+  "--effects",
+  "C:\\Users\\ferra\\vcc2026-data\\processed\\effects_prova_t22_2026-09-28",
+  "--negative-control",
+  "C:\\Users\\ferra\\vcc2026-data\\processed\\effects_prova_controllo_negativo_2026-09-28",
+  "--cache-new",
+  "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_prova_2026-09-28_me1",
+  "--cache-today",
+  "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-27_r9",
+  "--universes",
+  "me1",
+  "--reference-p3",
+  "C:\\Users\\ferra\\vcc2026-data\\processed\\effects_t25_2026-09-27",
+  "--reference-effects",
+  "C:\\Users\\ferra\\vcc2026-data\\processed\\effects_t22_2026-09-26",
+  "--cpm-new",
+  "C:\\Users\\ferra\\vcc2026-data\\interim\\prova_generale_2026-09-28\\basal_cpm_DEF.csv",
+  "--libraries",
+  "C:\\Users\\ferra\\vcc2026-data\\interim\\prova_generale_2026-09-28\\basal_cpm_ABC.json",
+  "C:\\Users\\ferra\\vcc2026-data\\interim\\prova_generale_2026-09-28\\basal_cpm_DEF.json",
+  "--out",
+  "reports\\invii\\prova_generale_2026-09-28\\diagnostica.json"
+ ],
+ "recipe": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\invii\\prova_generale_2026-09-28\\ricetta_t22_DEF.json",
+ "recipe_sha256": "bef81fd1993372739d51d3c1f78f2ecc4d4e2ef7907ae9ad2dc5e2a638a7702f",
+ "mapping_new_to_old": {
+  "D": "B",
+  "E": "A",
+  "F": "C"
+ },
+ "note": "diagnostics only: nothing here changes an effect or a prediction",
+ "peak_rss_bytes_after": {
+  "inputs": 127037440,
+  "coverage": 164880384,
+  "gamma": 321069056,
+  "p3": 321069056,
+  "amplitude": 321069056
+ },
+ "coverage": {
+  "effects": "C:\\Users\\ferra\\vcc2026-data\\processed\\effects_prova_t22_2026-09-28",
+  "per_context": {
+   "D": {
+    "targets": 300,
+    "covered": 270,
+    "covered_as_expected": true,
+    "all_zero_rows": 25,
+    "by_stratum": {
+     "P0": {
+      "targets": 30,
+      "expected_covered": 0,
+      "covered": 0,
+      "all_zero_rows": 25,
+      "uncovered_with_cis_only": 5,
+      "own_gene_zero": 30,
+      "own_gene_on_axis": 30
+     },
+     "P1-1": {
+      "targets": 30,
+      "expected_covered": 30,
+      "covered": 30,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 16,
+      "own_gene_on_axis": 30
+     },
+     "P1-2": {
+      "targets": 40,
+      "expected_covered": 40,
+      "covered": 40,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 18,
+      "own_gene_on_axis": 40
+     },
+     "P1-3": {
+      "targets": 50,
+      "expected_covered": 50,
+      "covered": 50,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 12,
+      "own_gene_on_axis": 50
+     },
+     "P1-4": {
+      "targets": 120,
+      "expected_covered": 120,
+      "covered": 120,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 6,
+      "own_gene_on_axis": 120
+     },
+     "P3": {
+      "targets": 30,
+      "expected_covered": 30,
+      "covered": 30,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 0,
+      "own_gene_on_axis": 30
+     }
+    },
+    "manifest_targets_covered": 270,
+    "manifest_cis": {
+     "pairs": 72,
+     "targets_with_a_neighbour": 70
+    },
+    "prediction_4": {
+     "covered_270": true,
+     "p0_covered_0": true,
+     "p0_own_gene_zero_all": true
+    }
+   },
+   "E": {
+    "targets": 300,
+    "covered": 270,
+    "covered_as_expected": true,
+    "all_zero_rows": 25,
+    "by_stratum": {
+     "P0": {
+      "targets": 30,
+      "expected_covered": 0,
+      "covered": 0,
+      "all_zero_rows": 25,
+      "uncovered_with_cis_only": 5,
+      "own_gene_zero": 30,
+      "own_gene_on_axis": 30
+     },
+     "P1-1": {
+      "targets": 30,
+      "expected_covered": 30,
+      "covered": 30,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 16,
+      "own_gene_on_axis": 30
+     },
+     "P1-2": {
+      "targets": 40,
+      "expected_covered": 40,
+      "covered": 40,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 18,
+      "own_gene_on_axis": 40
+     },
+     "P1-3": {
+      "targets": 50,
+      "expected_covered": 50,
+      "covered": 50,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 12,
+      "own_gene_on_axis": 50
+     },
+     "P1-4": {
+      "targets": 120,
+      "expected_covered": 120,
+      "covered": 120,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 6,
+      "own_gene_on_axis": 120
+     },
+     "P3": {
+      "targets": 30,
+      "expected_covered": 30,
+      "covered": 30,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 0,
+      "own_gene_on_axis": 30
+     }
+    },
+    "manifest_targets_covered": 270,
+    "manifest_cis": {
+     "pairs": 72,
+     "targets_with_a_neighbour": 70
+    },
+    "prediction_4": {
+     "covered_270": true,
+     "p0_covered_0": true,
+     "p0_own_gene_zero_all": true
+    }
+   },
+   "F": {
+    "targets": 300,
+    "covered": 270,
+    "covered_as_expected": true,
+    "all_zero_rows": 25,
+    "by_stratum": {
+     "P0": {
+      "targets": 30,
+      "expected_covered": 0,
+      "covered": 0,
+      "all_zero_rows": 25,
+      "uncovered_with_cis_only": 5,
+      "own_gene_zero": 30,
+      "own_gene_on_axis": 30
+     },
+     "P1-1": {
+      "targets": 30,
+      "expected_covered": 30,
+      "covered": 30,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 16,
+      "own_gene_on_axis": 30
+     },
+     "P1-2": {
+      "targets": 40,
+      "expected_covered": 40,
+      "covered": 40,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 18,
+      "own_gene_on_axis": 40
+     },
+     "P1-3": {
+      "targets": 50,
+      "expected_covered": 50,
+      "covered": 50,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 12,
+      "own_gene_on_axis": 50
+     },
+     "P1-4": {
+      "targets": 120,
+      "expected_covered": 120,
+      "covered": 120,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 6,
+      "own_gene_on_axis": 120
+     },
+     "P3": {
+      "targets": 30,
+      "expected_covered": 30,
+      "covered": 30,
+      "all_zero_rows": 0,
+      "uncovered_with_cis_only": 0,
+      "own_gene_zero": 0,
+      "own_gene_on_axis": 30
+     }
+    },
+    "manifest_targets_covered": 270,
+    "manifest_cis": {
+     "pairs": 72,
+     "targets_with_a_neighbour": 70
+    },
+    "prediction_4": {
+     "covered_270": true,
+     "p0_covered_0": true,
+     "p0_own_gene_zero_all": true
+    }
+   }
+  },
+  "negative_control": {
+   "effects": "C:\\Users\\ferra\\vcc2026-data\\processed\\effects_prova_controllo_negativo_2026-09-28",
+   "cache": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-27_r9",
+   "targets_covered": {
+    "D": 30,
+    "E": 30,
+    "F": 30
+   },
+   "targets_missing": {
+    "D": 270,
+    "E": 270,
+    "F": 270
+   }
+  }
+ },
+ "gamma": {
+  "gamma": 1.0,
+  "amplitude": 1.576,
+  "cache_new": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_prova_2026-09-28_me1",
+  "cache_today": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-27_r9",
+  "universes": {
+   "cd4_mix": {
+    "universe": "C:\\Users\\ferra\\vcc2026-data\\processed\\universe_cd4_2026-09-27_me1",
+    "chunks": 84,
+    "chunks_absent": [],
+    "targets": 12238
+   },
+   "k562": {
+    "universe": "C:\\Users\\ferra\\vcc2026-data\\processed\\universe_k562_2026-09-26",
+    "chunks": 17,
+    "chunks_absent": [],
+    "targets": 9866
+   },
+   "orion_hct116": {
+    "universe": "C:\\Users\\ferra\\vcc2026-data\\processed\\universe_orion_hct116_2026-09-27_me1",
+    "chunks": 28,
+    "chunks_absent": [],
+    "targets": 16438
+   },
+   "orion_hek293t": {
+    "universe": "C:\\Users\\ferra\\vcc2026-data\\processed\\universe_orion_hek293t_2026-09-27_me1",
+    "chunks": 29,
+    "chunks_absent": [],
+    "targets": 17270
+   }
+  },
+  "per_source": {
+   "cd4_mix": {
+    "targets_in_new_table": 198,
+    "G-a vs G-b": {
+     "cosine": 0.9720974878059185,
+     "norm_ratio": 1.0283423786630843,
+     "amp_max_abs_diff": 0.2779712409689872,
+     "amp_median_abs_diff": 0.0013020368181668866,
+     "amp_q99_abs_diff": 0.057343960879654966
+    },
+    "G-a vs G-c": {
+     "cosine": 0.9836050939876517,
+     "norm_ratio": 1.019747355654102,
+     "amp_max_abs_diff": 0.20957726218976885,
+     "amp_median_abs_diff": 0.000995014883869331,
+     "amp_q99_abs_diff": 0.04340780215858841
+    },
+    "G-b vs G-c": {
+     "cosine": 0.9867458106562612,
+     "norm_ratio": 0.9916418663790201,
+     "amp_max_abs_diff": 0.18228482719492142,
+     "amp_median_abs_diff": 0.0009107074454202578,
+     "amp_q99_abs_diff": 0.037605548865174136
+    }
+   },
+   "k562": {
+    "targets_in_new_table": 180,
+    "G-a vs G-b": {
+     "cosine": 0.594452127143975,
+     "norm_ratio": 1.0866886859618792,
+     "amp_max_abs_diff": 0.0937794962821309,
+     "amp_median_abs_diff": 0.0,
+     "amp_q99_abs_diff": 0.027119538900486736
+    },
+    "G-a vs G-c": {
+     "cosine": 0.5886045175958315,
+     "norm_ratio": 1.081229008102857,
+     "amp_max_abs_diff": 0.06830719444139235,
+     "amp_median_abs_diff": 0.0,
+     "amp_q99_abs_diff": 0.027909514355489967
+    },
+    "G-b vs G-c": {
+     "cosine": 0.62943819214151,
+     "norm_ratio": 0.994975858376413,
+     "amp_max_abs_diff": 0.06762543878964324,
+     "amp_median_abs_diff": 0.0,
+     "amp_q99_abs_diff": 0.025175273324824818
+    }
+   },
+   "orion_hct116": {
+    "targets_in_new_table": 226,
+    "G-a vs G-b": {
+     "cosine": 0.8750968769051516,
+     "norm_ratio": 0.9093366437467718,
+     "amp_max_abs_diff": 0.2716873581123967,
+     "amp_median_abs_diff": 0.0024429539901335735,
+     "amp_q99_abs_diff": 0.05416841003561374
+    },
+    "G-a vs G-c": {
+     "cosine": 0.9291440505197393,
+     "norm_ratio": 1.0416890285570561,
+     "amp_max_abs_diff": 0.11481183252961545,
+     "amp_median_abs_diff": 0.0017407552205971721,
+     "amp_q99_abs_diff": 0.036446906368758615
+    },
+    "G-b vs G-c": {
+     "cosine": 0.9337801296431777,
+     "norm_ratio": 1.145548280409055,
+     "amp_max_abs_diff": 0.20860048277999338,
+     "amp_median_abs_diff": 0.0017195296025134435,
+     "amp_q99_abs_diff": 0.04003234775999182
+    }
+   },
+   "orion_hek293t": {
+    "targets_in_new_table": 245,
+    "G-a vs G-b": {
+     "cosine": 0.9065602187006514,
+     "norm_ratio": 0.9481087421702453,
+     "amp_max_abs_diff": 0.1095388747743634,
+     "amp_median_abs_diff": 0.0026790022364873707,
+     "amp_q99_abs_diff": 0.0364851666188398
+    },
+    "G-a vs G-c": {
+     "cosine": 0.9390575520331247,
+     "norm_ratio": 1.0448489255373623,
+     "amp_max_abs_diff": 0.11794509879210434,
+     "amp_median_abs_diff": 0.002084370313145648,
+     "amp_q99_abs_diff": 0.028175824135098993
+    },
+    "G-b vs G-c": {
+     "cosine": 0.9565842941938976,
+     "norm_ratio": 1.1020349028168184,
+     "amp_max_abs_diff": 0.07876374843141701,
+     "amp_median_abs_diff": 0.0017431017653236852,
+     "amp_q99_abs_diff": 0.027250273367421134
+    }
+   }
+  },
+  "cis": {
+   "prior_ln_by_bin": [
+    -0.3303248044155871,
+    -0.2419423934771387,
+    -0.10990570877950752,
+    -0.08582665824850132,
+    -0.03623036695714836
+   ],
+   "pairs": 72,
+   "targets_with_a_neighbour": 70
+  },
+  "flips": {
+   "D": {
+    "reproduces_stage100_max_abs_diff": 0.0,
+    "reproduces_stage100_exactly": true,
+    "genes_at_5_cpm": 9626,
+    "n_det_median": {
+     "G-a": 232.0,
+     "G-b": 233.5,
+     "G-c": 232.0
+    },
+    "flips_G-a_to_G-b": 9319,
+    "flips_G-a_to_G-b_per_target_median": 30.0,
+    "flips_G-a_to_G-c": 7423,
+    "flips_G-a_to_G-c_per_target_median": 23.0
+   },
+   "E": {
+    "reproduces_stage100_max_abs_diff": 0.0,
+    "reproduces_stage100_exactly": true,
+    "genes_at_5_cpm": 9929,
+    "n_det_median": {
+     "G-a": 179.5,
+     "G-b": 185.0,
+     "G-c": 183.5
+    },
+    "flips_G-a_to_G-b": 7996,
+    "flips_G-a_to_G-b_per_target_median": 23.0,
+    "flips_G-a_to_G-c": 6483,
+    "flips_G-a_to_G-c_per_target_median": 18.0
+   },
+   "F": {
+    "reproduces_stage100_max_abs_diff": 0.0,
+    "reproduces_stage100_exactly": true,
+    "genes_at_5_cpm": 10124,
+    "n_det_median": {
+     "G-a": 247.0,
+     "G-b": 251.5,
+     "G-c": 253.5
+    },
+    "flips_G-a_to_G-b": 10032,
+    "flips_G-a_to_G-b_per_target_median": 32.0,
+    "flips_G-a_to_G-c": 7973,
+    "flips_G-a_to_G-c_per_target_median": 25.0
+   }
+  }
+ },
+ "p3": {
+  "reference": "C:\\Users\\ferra\\vcc2026-data\\processed\\effects_t25_2026-09-27",
+  "cis_prior_ln_by_bin": {
+   "fake_run": [
+    -0.3303248044155871,
+    -0.2419423934771387,
+    -0.10990570877950752,
+    -0.08582665824850132,
+    -0.03623036695714836
+   ],
+   "reference": [
+    -0.3323155970492182,
+    -0.2312014418620707,
+    -0.10858278570905305,
+    -0.08656477168665586,
+    -0.03597850765225018
+   ]
+  },
+  "per_context": {
+   "D": {
+    "reference_context": "B",
+    "targets": 30,
+    "max_abs_delta": 0.27797138690948486,
+    "pairs_above_1e-6": 404143,
+    "observed_mismatches": 0,
+    "max_abs_gamma_part": 0.27797124096898734,
+    "max_abs_rest": 0.02148188869186512,
+    "pairs_rest_above_1e-6": 10
+   },
+   "E": {
+    "reference_context": "A",
+    "targets": 30,
+    "max_abs_delta": 0.27797138690948486,
+    "pairs_above_1e-6": 404143,
+    "observed_mismatches": 0,
+    "max_abs_gamma_part": 0.27797124096898734,
+    "max_abs_rest": 0.02148188869186512,
+    "pairs_rest_above_1e-6": 10
+   },
+   "F": {
+    "reference_context": "C",
+    "targets": 30,
+    "max_abs_delta": 0.27797138690948486,
+    "pairs_above_1e-6": 404143,
+    "observed_mismatches": 0,
+    "max_abs_gamma_part": 0.27797124096898734,
+    "max_abs_rest": 0.02148188869186512,
+    "pairs_rest_above_1e-6": 10
+   }
+  }
+ },
+ "amplitude": {
+  "reference_effects": "C:\\Users\\ferra\\vcc2026-data\\processed\\effects_t22_2026-09-26",
+  "reference_contexts": [
+   "A",
+   "B",
+   "C"
+  ],
+  "reference_amplitudes": {
+   "A": 1.576,
+   "B": 1.576,
+   "C": 1.576
+  },
+  "reference_effects_identical_across_contexts": true,
+  "cis_reference": {
+   "prior_ln_by_bin": [
+    -0.3323155970492182,
+    -0.2312014418620707,
+    -0.10858278570905305,
+    -0.08656477168665586,
+    -0.03597850765225018
+   ],
+   "pairs": 78,
+   "targets_with_a_neighbour": 77
+  },
+  "cpm_sources": {
+   "A": "reference: C:\\Users\\ferra\\vcc2026-data\\interim\\basal_cpm_by_context.csv",
+   "B": "reference: C:\\Users\\ferra\\vcc2026-data\\interim\\basal_cpm_by_context.csv",
+   "C": "reference: C:\\Users\\ferra\\vcc2026-data\\interim\\basal_cpm_by_context.csv",
+   "D": "new: C:\\Users\\ferra\\vcc2026-data\\interim\\prova_generale_2026-09-28\\basal_cpm_DEF.csv",
+   "E": "new: C:\\Users\\ferra\\vcc2026-data\\interim\\prova_generale_2026-09-28\\basal_cpm_DEF.csv",
+   "F": "new: C:\\Users\\ferra\\vcc2026-data\\interim\\prova_generale_2026-09-28\\basal_cpm_DEF.csv"
+  },
+  "reference_n_det": {
+   "per_context": {
+    "A": 207.5,
+    "B": 266.0,
+    "C": 299.5
+   },
+   "mean": 257.6666666666667
+  },
+  "R-B": {
+   "s": 1.576,
+   "s_cross": 1.5758515000343325,
+   "s_upper": 1.5767218470573423,
+   "exact_level": true,
+   "f_at_s": 257.6666666666667,
+   "target": 257.6666666666667
+  },
+  "R-D": {
+   "per_context": {
+    "D": {
+     "s": 1.5511474013328552,
+     "s_cross": 1.5511474013328552,
+     "s_upper": 1.551147401332855,
+     "exact_level": false,
+     "f_at_s": 258.0,
+     "target": 257.6666666666667
+    },
+    "E": {
+     "s": 1.7424032092094421,
+     "s_cross": 1.7424032092094421,
+     "s_upper": 1.742403209209442,
+     "exact_level": false,
+     "f_at_s": 258.0,
+     "target": 257.6666666666667
+    },
+    "F": {
+     "s": 1.4457558989524841,
+     "s_cross": 1.4457558989524841,
+     "s_upper": 1.445755898952484,
+     "exact_level": false,
+     "f_at_s": 258.0,
+     "target": 257.6666666666667
+    },
+    "A": {
+     "s": 1.7424032092094421,
+     "s_cross": 1.7424032092094421,
+     "s_upper": 1.742403209209442,
+     "exact_level": false,
+     "f_at_s": 258.0,
+     "target": 257.6666666666667
+    },
+    "B": {
+     "s": 1.5511474013328552,
+     "s_cross": 1.5511474013328552,
+     "s_upper": 1.551147401332855,
+     "exact_level": false,
+     "f_at_s": 258.0,
+     "target": 257.6666666666667
+    },
+    "C": {
+     "s": 1.4457558989524841,
+     "s_cross": 1.4457558989524841,
+     "s_upper": 1.445755898952484,
+     "exact_level": false,
+     "f_at_s": 258.0,
+     "target": 257.6666666666667
+    }
+   }
+  },
+  "prediction_5": {
+   "s": 1.576,
+   "within_0.001": true,
+   "s_cross_within_0.001": true
+  },
+  "R-E": {
+   "median_library_sizes": {
+    "A": 20109.0,
+    "B": 19946.0,
+    "C": 20034.0,
+    "D": 19946.0,
+    "E": 20109.0,
+    "F": 20034.0
+   },
+   "reference_mean": 258.0,
+   "s": 1.576,
+   "s_cross": 1.5759987235069275,
+   "s_upper": 1.5762911438941956,
+   "exact_level": true,
+   "f_at_s": 258.0,
+   "target": 258.0
+  },
+  "R-C": {
+   "cis_new": {
+    "prior_ln_by_bin": [
+     -0.3303248044155871,
+     -0.2419423934771387,
+     -0.10990570877950752,
+     -0.08582665824850132,
+     -0.03623036695714836
+    ],
+    "pairs": 72,
+    "targets_with_a_neighbour": 70
+   },
+   "s": 1.71839040517807,
+   "s_cross": 1.71839040517807,
+   "s_upper": 1.7184068560600279,
+   "exact_level": true,
+   "f_at_s": 257.6666666666667,
+   "target": 257.6666666666667
+  }
+ },
+ "written_utc": "2026-09-29T09:59:02.970410+00:00",
+ "seconds": 248.4,
+ "peak_rss_bytes": 321069056
+}

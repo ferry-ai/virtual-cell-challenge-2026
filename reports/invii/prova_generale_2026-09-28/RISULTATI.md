@@ -164,3 +164,81 @@ versione precedente, su un pilota sintetico A/B/C. Il confronto prima/dopo su un
   diverse di CPM, e nessun codice vivo scrive la seconda. Conta per la correzione D8.
 - **N2:** le stringhe `meta` delle cache ricostruite differiscono da quelle di r5/r9. Le ricette con `zshrink` o con
   la stima gerarchica vorrebbero anche le parti di `cd4_mix` nella cache. t22 e t25 non ne sono toccati.
+
+## Esito (misurato, 29/09, 09:35–10:19 UTC; forma ridotta)
+
+Girata dalla sessione Claude `f2abd9a6` con `comandi.ps1`, un passo alla volta. **Forma ridotta, 40 cellule per
+bersaglio:** all'inizio C: aveva 5,97 GB liberi, sotto i 17 della forma piena, perché il Cestino non era ancora stato
+svuotato. Tempi e memoria per passo in [`tempi.jsonl`](tempi.jsonl); manifest e report di impacchettamento copiati qui
+(`pg22_*`, `pg22val_*`, `pg22pack_*`).
+
+**La prova riesce.** Il `.vcc` di D/E/F sui 300 bersagli finti passa la convalida, l'impacchettamento e la verifica
+dello stadio 48 con `--contexts D,E,F`:
+- validatore ufficiale del contenitore superato;
+- contenuto identico bit per bit all'input;
+- 300 bersagli e 12.000 cellule per contesto;
+- sha256 `b678b25f…`, 420.976.640 byte.
+
+L'h5ad e il `.vcc` sono andati nel Cestino ([sha256 e dimensioni](artefatti_nel_cestino.json)).
+
+| Passo | Durata | Picco di memoria |
+|---|---|---|
+| 2, pacchetto finto | 72 s | 283 MiB |
+| 3, stadi 85 e 99 | 43 s + 37 s | 373 / 186 MiB |
+| 4, CPM di D/E/F e di A/B/C | 116 s + 116 s | 341 MiB |
+| 5, cache dagli universi (parità r9; pannello finto) | 192 s + 208 s | 260 MiB |
+| 6, stadio 100 (quattro corse) | 36–65 s ciascuna | 563 MiB |
+| 7, diagnostica | 252 s | 306 MiB |
+| 8, stadio 45, 40 cellule | 254 s | 429 MiB |
+| 9, stadio 48 senza e con `--contexts` | 40 s + 229 s | 506 MiB |
+
+A forma piena gli stadi 45 e 48 valgono i tempi misurati sul t22 (1.309 s e 1.009 s). La stima dello stadio 45 per la
+forma piena di questa corsa è 36 minuti (`projected_generation_seconds_at_full_shape`).
+
+### Le previsioni registrate, lette come scritte
+
+1. **Si avvera.** Lo stadio 48 senza l'opzione rifiuta: «Unknown context label(s) in 'context': D, E, F»
+   (`pg22val_packaging.json`).
+2. **Si avvera, ma non isolata.** `is_pilot` vale true nella diagnostica dello stadio 45. In questa corsa è vero anche
+   per le 40 cellule; che bastino i contesti D/E/F lo dice il codice (`45:283-284`).
+3. **Si avvera:**
+   - cache ricostruite dagli universi uguali a r5 (26/09) e a r9 (`_me1`): 0 differenze per K562 e Orion, 1,49e-8 per
+     `cd4_mix`;
+   - effetti dello stadio 100 uguali a quelli del t22 e del t25 entro 7,5e-9 e 3,7e-9, con la stessa maschera
+     (`parita_effetti_t22.json`, `parita_effetti_t25.json`).
+4. **Si avvera:** 270 bersagli coperti su 300, 0 su 30 in P0, gene bersaglio a zero in tutti i P0 (`diagnostica.json`).
+   Le righe tutte a zero sono 25: i 5 P0 restanti hanno almeno un vicino cis.
+5. **Si avvera per costruzione** (dichiarato sopra): R-B dà 1,576.
+6. **Si avvera:** il controllo negativo sulla cache r9 finisce con codice 0 e 30 bersagli coperti. Il difetto D4
+   esiste: una cache del pannello sbagliato dà una previsione quasi vuota senza errore.
+
+### Altre misure
+
+- **Impronte (passo 3):** lo stadio 99 sui contesti finti riproduce quelle del 22/09 letti come B, A, C. 319 valori su
+  319 sono identici; cambia solo la data.
+- **CPM (passo 4):** i CPM di D/E/F sono uguali alle colonne permutate di A/B/C entro 1e-13.
+- **γ = 1 con un pannello nuovo** (`diagnostica.json`), coseno fra il vettore tolto con il pannello finto (G-a) e
+  quello con il pannello di oggi (G-b):
+  - K562 0,59;
+  - HCT116 0,88;
+  - HEK293T 0,91;
+  - CD4 0,97.
+
+  **Interpretazione:** il riferimento tolto da γ = 1 cambia molto per K562 al cambio di pannello. Con un pannello nuovo
+  il t22 non è più «lo stesso t22»; resta da decidere se fissarlo (G-b o G-c), difetto D9.
+- **Ampiezza per contesto** (R-D, descrittiva): D 1,551, E 1,742, F 1,446.
+- **Pilota prima/dopo per lo stadio 48:** 4 bersagli × 400 cellule × A/B/C con gli effetti del t22, stadio 48 della
+  versione precedente la correzione (`e4edcd9~1`) contro quello corretto, entrambi senza `--contexts`. Stesso sha256
+  del `.vcc` (`ee786ded…`).
+
+### Difetti
+
+- **Corretto:** D1 (stadio 48, `--contexts`, con test).
+- **Visti in questa corsa, da correggere prima del 22/10:**
+  - D4, la cache sbagliata che passa in silenzio;
+  - D9, il riferimento di γ.
+- **Dalla lettura del codice, non incontrati perché la prova usa file puliti:** D2, D3, D5, D6, D7, D8, D10–D13, N1 e N2.
+
+**Per la chiusura dell'azione 3** (ogni difetto corretto con il suo test) mancano le correzioni di D4 e D9 e delle
+altre voci. Un vincolo pratico per il 22/10: la forma piena chiede circa 17 GB liberi. Oggi ce ne sono 3,9, più 25 GB
+nel Cestino che solo il proprietario può svuotare.
