@@ -13,8 +13,8 @@ Riorganizzata il 2026-09-28 (D-046):
 - §5 è nuovo: le criticità note. La versione del 23 settembre è nel tag
   `archivio/pre-pulizia-2026-09-23`.
 
-Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 29 settembre, con il t23
-([confronto](../reports/invii/prediction_t23_2026-09-27/comparison.json)).
+Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 29 settembre, con il t26
+([confronto](../reports/invii/prediction_t26_2026-09-29/comparison.json)).
 
 ## 0. Oggi — 28 settembre 2026
 
@@ -52,6 +52,7 @@ sottomissioni chiudono il **5 novembre** (§1).
 | t24 | il t22 con un altro seme del generatore (replica: misura il rumore) | trial-01 | +0,142897 | 347 | [confronto](../reports/invii/prediction_t24_2026-09-27/comparison.json) |
 | t25 | il t22 con lo stimatore pseudobulk corretto (`min_expected` 1) | trial-01 | +0,140238 | 361 | [confronto](../reports/invii/prediction_t25_2026-09-27/comparison.json) |
 | t23 | il t22 con la parte trasferita pesata per la quota condivisa (conta l'esclusione dei geni); inviato il 28/09 | trial-01 | +0,141868 | 366 | [CP-0042](checkpoints/0042-t23-esclusione-pds.md) |
+| t26 | il t25 con effetto 0 sui geni sotto 5 CPM nei controlli del contesto (circa il 70 % dell'energia) | trial-01 | +0,138721 | 384 | [CP-0045](checkpoints/0045-t26-soglia-espressione.md) |
 
 In tutti gli invii:
 - lo scalato della `mse` vale 0 (tosato): la `mse` grezza segue l'energia che mettiamo, 1 + E/4786
@@ -72,6 +73,10 @@ derivati dagli scalati con le ancore: il 25 settembre `vcc status` serviva solo 
   degli 8.247 geni non stimabili affila la discriminazione e perde sui membri DE (interpretazione).
   Ipotesi per il prossimo candidato: l'esclusione con i membri DE recuperati, da scegliere con lo
   scorer vero (azione 4 di R-REV), non con il proxy ([CP-0041](checkpoints/0041-proxy-contro-ufficiale.md)).
+- **t26 valutato** il 29/09 alle 15:39 UTC ([CP-0045](checkpoints/0045-t26-soglia-espressione.md)): il t25 senza
+  effetti sui geni sotto 5 CPM nel contesto, +0,138721, −0,0015 dal t25, non conclusivo. Il PDS non sale (−0,0020
+  grezzo): il guadagno del t23 non veniva dai geni poco espressi, ma da quelli espressi (interpretazione). La
+  prossima domanda riguarda l'esclusione e la pesatura sui soli geni espressi.
 - **R-V2**, il modello per il set finale ([scheda](piani/modello-v2.md)), **ripresa dal proprietario
   il 28/09 alle 19:22**, in parallelo con R-REV. Letti con le loro regole ([modelli](../reports/modelli/README.md)):
   - l'encoder di contesto non passa su nessuna verità;

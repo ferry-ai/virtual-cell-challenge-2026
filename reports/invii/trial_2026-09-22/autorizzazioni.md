@@ -171,3 +171,16 @@ candidato registrato il 26/09 alle 23:14 UTC e impacchettato il 27/09. L'archivi
 dell'upload: sha256 `2805aea8…3a07`, uguale a `archive_sha256` di `trial_2026-09-27/t23_packaging.json`. L'invio usa
 `submit_trial2.py`, nella cartella di lavoro della sessione, copiato da quella della sessione `f4f38e58`; gli output
 vanno in `trial_2026-09-27/`, accanto ai testi del t23.
+
+## Invio del t26, 29 settembre
+
+Il proprietario, in chat alla sessione Claude `f2abd9a6`:
+- il 29/09, dopo il commit delle 12:22 (ora italiana; l'ora esatta della risposta non è stata letta), ha scelto
+  «Prepara il t26»;
+- verso le 14:40 ha risposto «Sì, invialo appena pronto» alla domanda se inviarlo subito dopo impacchettamento e
+  verifica.
+
+Via all'invio del **solo t26**, con la quota del 29/09 UTC. È il candidato registrato alle 12:24 UTC
+(`prediction_t26_2026-09-29/`), generato alle 12:37–12:58 UTC e impacchettato alle 13:29–13:47 UTC da una copia del
+codice del commit `586fbc3`. L'archivio ha sha256 `e359a4ba…4736`, uguale a `archive_sha256` di
+`trial_2026-09-29/t26_packaging.json`, e `submit_trial2.py` lo ricontrolla prima dell'upload.

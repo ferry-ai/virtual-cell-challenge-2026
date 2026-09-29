@@ -32,6 +32,7 @@ Fonte: i `comparison.json` e gli stati salvati. La tabella completa per membro �
 | t24 | +0,142897 | 347 | t22 con un altro seme: D = 0,0016, una sola coppia; il riferimento del t22 diventa 0,14207 |
 | t25 | +0,140238 | 361 | t22 con lo stimatore corretto: −0,0010, non conclusivo; la correzione resta |
 | t23 | +0,141868 | 366 | t22 con la quota condivisa (conta l'esclusione): +0,0006, non conclusivo; PDS su, membri DE giù (CP-0042) |
+| t26 | +0,138721 | 384 | t25 senza effetti sui geni sotto 5 CPM: −0,0015, non conclusivo; il PDS non sale, i geni poco espressi pesano poco (CP-0045) |
 
 Non inviati: t04, t06, t12, t18, t19, t23 (pronto, aspetta il via), t09 e t13 (fermati dalle
 loro regole), t21 (la sua previsione è citata ma non è nel repository: vedi la
@@ -41,8 +42,8 @@ loro regole), t21 (la sua previsione è citata ma non è nel repository: vedi la
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
-| 29/09 | [prediction_t26_2026-09-29/](prediction_t26_2026-09-29/) | t25 con effetto 0 sui geni sotto 5 CPM nei controlli del contesto (circa il 70 % dell'energia prevista): registrato alle 12:24 UTC prima di generare; banda +0,134…+0,156, regola a ±0,005 contro il t25 | registrazione; generazione e invio in attesa | ★★ |
-| 29/09 | [trial_2026-09-29/](trial_2026-09-29/) | Testi del t26, scritti prima della generazione | sì | ★ |
+| 29/09 | [prediction_t26_2026-09-29/](prediction_t26_2026-09-29/) | t25 con effetto 0 sui geni sotto 5 CPM nei controlli del contesto (circa il 70 % dell'energia prevista): registrato alle 12:24 UTC prima di generare; banda +0,134…+0,156, regola a ±0,005 contro il t25. **Esito:** +0,138721, t26 − t25 = −0,0015, non conclusivo; `pds_cosine` −0,0020 grezzo: l'ipotesi registrata (il PDS del t23 dai geni poco espressi) non regge (CP-0045) | sì | ★★ |
+| 29/09 | [trial_2026-09-29/](trial_2026-09-29/) | Testi, manifesti e invio del t26: il primo upload fermato dal sistema per memoria, il secondo dal lucchetto della CLI, il terzo ripreso sulla stessa entry e pubblicato | sì | ★★ |
 | 28/09 | [prova_generale_2026-09-28/](prova_generale_2026-09-28/) | La prova generale del 22 ottobre (azione 3 di R-REV): A/B/C trattati come nuovi, 300 bersagli finti, fino al `.vcc` verificato, senza invio. Protocollo, sei previsioni e 13 difetti attesi dalla lettura del codice, fissati alle 20:00 prima di girare. **Esito (29/09, forma ridotta):** `.vcc` di D/E/F verificato; previsioni 1, 3–6 vere; D1 corretto; da correggere D4 (cache sbagliata in silenzio) e D9 (riferimento di γ) (CP-0044) | sì; copie di A/B/C, forma ridotta | ★★★ |
 | 28/09 | [lezioni_invii_2026-09-28/](lezioni_invii_2026-09-28/) | I nostri invii valutati e la classifica pubblica in soli aggregati: dal t16 nessun cambio supera il rumore del seme; contro la mediana dei primi 100 perdiamo soprattutto sull'MSE (tosato a 0 in tutti i nostri invii) | sì; il rumore viene da una sola coppia di semi | ★★★ |
 | 27/09 | [prediction_t25_2026-09-27/](prediction_t25_2026-09-27/) | t22 sulla cache r9 (stimatore senza l'artefatto del pseudoconteggio): +0,140238, −0,0010, non conclusivo | sì | ★★ |

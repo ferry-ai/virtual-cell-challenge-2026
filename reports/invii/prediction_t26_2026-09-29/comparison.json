@@ -1,0 +1,118 @@
+{
+ "written_utc": "2026-09-29T15:40:37.604266+00:00",
+ "entry_id": "RKxWmAu7DfInW7j6haeZ",
+ "submission_date": "2026-09-29T13:48:12.054431Z",
+ "owners_go": "in chat, 29/09 around 14:40 Italian time: send t26 as soon as it is packaged and verified",
+ "score_avg": 0.13872063571797597,
+ "rank_at_scoring": 384,
+ "t26_minus_t25": -0.0015174251968595731,
+ "t26_minus_t22_t24_mean": -0.0033530442998328247,
+ "t26_minus_t23": -0.003146902455828715,
+ "rule_branch": "otherwise",
+ "rule_text": "inconclusive within resolution: t25/t22 stay the reference. Members are read descriptively against t23's pattern: pds up with nmae, reach and Jaccard not down would say the DE losses of t23 came from the expressed genes it zeroed (hypothesis to confirm with a second submission, not adopted on one)",
+ "inside_avg_band": true,
+ "inside_diff_band": true,
+ "registered_band": [
+  0.134,
+  0.156
+ ],
+ "t26_minus_t25_band": [
+  -0.006,
+  0.012
+ ],
+ "reference": {
+  "t25": 0.14023806091483554,
+  "t22": 0.14125049908559736,
+  "t24": 0.14289686095002022,
+  "t22_recipe_mean_of_t22_t24": 0.1420736800178088,
+  "t23": 0.14186753817380468
+ },
+ "scaled_published": {
+  "t25": {
+   "score_pds": 0.6235621757264928,
+   "score_mse": 0,
+   "score_nmae": 0.11798484120651283,
+   "score_fid": -0.0581287268841437,
+   "score_reach": 0.14405215190643564,
+   "score_jac": 0.013957923533715692
+  },
+  "t26": {
+   "score_pds": 0.6193112123296518,
+   "score_mse": 0,
+   "score_nmae": 0.1170069318967681,
+   "score_fid": -0.056377157336512045,
+   "score_reach": 0.1381198561189236,
+   "score_jac": 0.014262971299024452
+  },
+  "t26_minus_t25": {
+   "score_pds": -0.0042509633968409455,
+   "score_mse": 0,
+   "score_nmae": -0.000977909309744729,
+   "score_fid": 0.0017515695476316567,
+   "score_reach": -0.005932295787512032,
+   "score_jac": 0.00030504776530876007
+  }
+ },
+ "raw": {
+  "pds_cosine": {
+   "t26": 0.7800817539947975,
+   "t25": 0.7820921590486809,
+   "t26_minus_t25": -0.0020104050538833906,
+   "t23_minus_t22": 0.010936454849498345,
+   "t24_minus_t22_seed": 0.0008807134894091018
+  },
+  "de_wilcoxon_lfc_nmae": {
+   "t26": 0.9286867007294316,
+   "t25": 0.928018708954095,
+   "t26_minus_t25": 0.0006679917753366071,
+   "t23_minus_t22": 0.009934219678417011,
+   "t24_minus_t22_seed": -0.0020415434944736077
+  },
+  "de_wilcoxon_direction_reach_raw": {
+   "t26": 0.20108045826938198,
+   "t25": 0.2065724653149838,
+   "t26_minus_t25": -0.005492007045601821,
+   "t23_minus_t22": -0.008494382733821554,
+   "t24_minus_t22_seed": 0.005216986219736736
+  },
+  "de_wilcoxon_direction_fidelity_yield_raw": {
+   "t26": 0.4957170124593141,
+   "t25": 0.49521951128742697,
+   "t26_minus_t25": 0.000497501171887127,
+   "t23_minus_t22": 0.003099939196185675,
+   "t24_minus_t22_seed": -0.0006391958678482745
+  },
+  "de_wilcoxon_sig_jaccard": {
+   "t26": 0.03567494927876916,
+   "t25": 0.03557112599708424,
+   "t26_minus_t25": 0.00010382328168492133,
+   "t23_minus_t22": -0.001756966283426295,
+   "t24_minus_t22_seed": 3.796445224871908e-05
+  },
+  "expr_mse_unbiased_capped_norm": {
+   "t26": 2.962016558478774,
+   "t25": 3.0171714908166867,
+   "t26_minus_t25": -0.05515493233791258,
+   "t23_minus_t22": -0.13595218471009662,
+   "t24_minus_t22_seed": -0.0028015270656545077
+  }
+ },
+ "registered_raw_priors": {
+  "score_avg_band": [
+   0.134,
+   0.156
+  ],
+  "t26_minus_t25_band": [
+   -0.006,
+   0.012
+  ],
+  "pds_raw": "t25 +0.000..+0.020 (the part of t23's gain that comes from low-expression genes)",
+  "nmae_raw": "t25 -0.008..+0.008 (lower is better); no systematic loss, since expressed genes are untouched",
+  "reach_raw": "t25 -0.010..+0.008",
+  "fid_raw": "t25 -0.008..+0.008",
+  "jaccard_raw": "t25 +/- 0.004",
+  "mse": "scaled stays 0 (the energy drops by about 70%, lowering the raw value, still above the zero point)"
+ },
+ "member_reading": "measured: pds_cosine -0.0020 raw against t25 (the seed alone moved it +0.0009 in t24), the opposite of t23's +0.0109; reach -0.0055 (about the seed's +0.0052 in size); nmae +0.0007, fidelity +0.0005, Jaccard +0.0001, all near zero; raw mse -0.055, scaled still 0. The hypothesis in the registration (t23's PDS gain came from the weakly expressed genes it zeroed) is not supported: removing about 70% of the predicted squared effect, the part on genes below 5 CPM in the context, leaves the members nearly unchanged and pds slightly lower. Interpretation, not verified: t23's PDS gain came from what it did to the expressed genes (the share weighting and exclusion there, with the x1.4 rescale), not from the weakly expressed ones. Upload: the first attempt was stopped at 13:48 UTC by the session's memory reaper, the second refused by the stale CLI lock; resumed at 15:19 on the same entry, published 15:39 (submit_t26_resume2_*).",
+ "claim_type": "official scores; the seed-noise unit rests on one pair (t24 - t22 = +0.0016)"
+}

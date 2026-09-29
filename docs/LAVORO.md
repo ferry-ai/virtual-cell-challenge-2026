@@ -79,6 +79,11 @@ Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
      del `.vcc` contro il report dello stadio 48.
    - `vcc cancel <entry>` abbandona l'entry, e non conta sul limite giornaliero: conta solo
      un invio valutato (`vcc cancel --help`).
+   - **L'upload gira come processo Windows separato** (`Start-Process`), non come comando in
+     background della sessione dell'agente: il 29/09 il sistema ha fermato per memoria scarsa un
+     upload lanciato così, mentre la sessione era ferma al limite d'uso. Il processo ucciso lascia
+     anche un lucchetto in `~/.config/vcc/locks/`: prima di riprendere si controlla che il suo pid
+     non esista più ([CP-0045](checkpoints/0045-t26-soglia-espressione.md)).
 6. **L'output di `vcc` si salva così com'è**, in `reports/invii/trial_<data>/`
    (`submit_<entry>.json`, `status_<entry>.json`). Un tentativo fallito si registra come
    tale, in un file suo. **Lo stato va chiesto appena il punteggio c'è, prima dell'invio
