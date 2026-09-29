@@ -196,6 +196,12 @@ isolata. D1 è corretto con il suo test. Restano da correggere, ciascuno con il 
 sbagliato passa in silenzio), D9 (il riferimento di γ) e le altre voci della lettura del codice. L'azione resta
 aperta fino a quelle correzioni.
 
+**Correzioni (29/09 pomeriggio):** D1–D5, D9–D11 corretti con i loro test, e D6, D12, D13 in LAVORO §7. Le
+prove prima/dopo sono identiche bit per bit su t22, t25 e t26; lo stadio nuovo 106 costruisce la cache dagli universi
+([RISULTATI](../../reports/invii/prova_generale_2026-09-28/RISULTATI.md), «Correzioni dei difetti»). Restano voci minori,
+elencate lì. Resta anche la forma piena, che richiede 17 GB liberi: il 29/09 il disco li ha, dopo lo svuotamento del
+Cestino.
+
 ### Azione 4 — il banco con lo scorer vero sui bersagli del pannello
 
 L'unico banco a sei membri fatto finora (HepG2) usa bersagli dello schermo essenziale, che trasferiscono

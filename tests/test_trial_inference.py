@@ -386,6 +386,56 @@ class TestResourceMeasurement(unittest.TestCase):
         require(disk_bytes=1024, path=REPO, reserve_bytes=0)
 
 
+class TestStage45PanelAndShape(unittest.TestCase):
+    """Stage 45 on the final set: the bundle's panel read by column name, and D/E/F at full shape not a pilot
+    (defects D2 and D5 of the dress rehearsal, reports/invii/prova_generale_2026-09-28/)."""
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+
+        from vcc2026 import config
+        spec = importlib.util.spec_from_file_location("stage45", REPO / "scripts" / "45_generate_prediction.py")
+        cls.stage = importlib.util.module_from_spec(spec)
+        sys.modules[spec.name] = cls.stage          # its dataclass looks its module up while it is defined
+        spec.loader.exec_module(cls.stage)
+        cls.ch = config.challenge()
+
+    def test_the_final_sets_contexts_at_full_shape_are_not_a_pilot(self):
+        ch, full = self.ch, self.ch.cells_per_pert
+        self.assertEqual(tuple(ch.contexts_test), ("D", "E", "F"))
+        for contexts in (("D", "E", "F"), ("F", "D", "E"), ("A", "B", "C")):
+            with self.subTest(contexts=contexts):
+                self.assertFalse(self.stage.is_pilot(None, full, contexts, ch))
+        for n_perts, cells, contexts in ((4, full, "DEF"), (None, 40, "DEF"), (None, full, "A"), (None, full, "DE"),
+                                         (None, full, "ABF"), (None, full, "ABCDEF")):
+            with self.subTest(n_perts=n_perts, cells=cells, contexts=contexts):
+                self.assertTrue(self.stage.is_pilot(n_perts, cells, tuple(contexts), ch))
+
+    def test_the_panel_is_read_by_column_name_and_must_hold_the_contract_count(self):
+        n = self.ch.n_perturbations
+        names = [f"T{i:03d}" for i in range(n)]
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+
+            def folder(name: str, text: str) -> Path:
+                (root / name).mkdir()
+                (root / name / "pert_counts.csv").write_text(text, encoding="utf-8")
+                return root / name
+
+            bare = folder("bare", "target_gene\n" + "\n".join(names) + "\n")
+            self.assertEqual(self.stage.panel_targets(None, bare), names)
+            self.assertEqual(self.stage.panel_targets(4, bare), names[:4])
+            per_context = folder("per_context", "context,target_gene,n_cells\n"
+                                 + "".join(f"{c},{t},400\n" for c in "DEF" for t in names))
+            self.assertEqual(self.stage.panel_targets(None, per_context), names)
+            for name, text in (("short", "target_gene\n" + "\n".join(names[:-1]) + "\n"),
+                               ("duplicate", "target_gene\n" + "\n".join(names[:-1] + names[:1]) + "\n"),
+                               ("control", "target_gene\n" + "\n".join(names + ["non-targeting"]) + "\n")):
+                with self.subTest(name=name), self.assertRaises(SystemExit):
+                    self.stage.panel_targets(None, folder(name, text))
+
+
 class TestGeneratedArtifactsDeclareTheyAreNotScores(unittest.TestCase):
     """A local artifact must never read as a leaderboard result."""
 

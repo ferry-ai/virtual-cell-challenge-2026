@@ -51,6 +51,7 @@ from vcc2026.inference import (
 )
 from vcc2026.genes import official_axis
 from vcc2026.manifest import RunManifest, file_fingerprint
+from vcc2026.panel import read_panel
 from vcc2026.resources import GiB, peak_rss_bytes, require, snapshot
 from vcc2026.sampling import fit_gene_dispersion, resample_library_sizes, sample_counts
 from vcc2026.submission import SubmissionWriter
@@ -63,9 +64,16 @@ DIAG_SAMPLE = 12
 
 
 def panel_targets(n: int | None, controls: Path) -> list[str]:
-    """The official perturbation list, or its first `n` for a pilot."""
-    frame = pd.read_csv(controls / "pert_counts.csv")
-    perts = [str(g) for g in frame["target_gene"]]
+    """The official perturbation list, or its first `n` for a pilot.
+
+    Read by `vcc2026.panel.read_panel`, as stages 98 and 100 read it: the ``target_gene`` column
+    by name, each target once in first-seen order (a file with a ``context`` column lists them
+    once per context), the control label refused. The list must hold exactly the contract's
+    number of perturbations."""
+    try:
+        perts = read_panel(controls / "pert_counts.csv")
+    except ValueError as err:
+        raise SystemExit(str(err))
     ch = config.challenge()
     if len(perts) != ch.n_perturbations:
         raise SystemExit(
@@ -73,6 +81,14 @@ def panel_targets(n: int | None, controls: Path) -> list[str]:
             f"says {ch.n_perturbations}"
         )
     return perts if n is None else perts[:n]
+
+
+def is_pilot(n_perts: int | None, cells_per_pert: int, contexts, ch) -> bool:
+    """Whether a run is short of a submission's shape: a subset of the panel, another number of
+    cells, or contexts that are not exactly one official set, validation (A/B/C) or test (D/E/F,
+    the final set of 22 October; defect D5 of the dress rehearsal)."""
+    return (n_perts is not None or cells_per_pert != ch.cells_per_pert
+            or set(contexts) not in (set(ch.contexts_validation), set(ch.contexts_test)))
 
 
 def parse_args() -> argparse.Namespace:
@@ -280,8 +296,7 @@ def main() -> None:
     )
     controls = args.controls_dir or config.paths().raw / "controls"
     targets = panel_targets(args.n_perts, controls)
-    is_pilot = args.n_perts is not None or cells_per_pert != ch.cells_per_pert \
-        or set(contexts) != set(ch.contexts_validation)
+    pilot = is_pilot(args.n_perts, cells_per_pert, contexts, ch)
 
     run = args.out or config.run_dir(args.run_id)
     run.mkdir(parents=True, exist_ok=True)
@@ -305,7 +320,7 @@ def main() -> None:
     print(f"trial          : {trial['id']} ({trial['kind']})")
     print(f"shape          : {len(targets)} perturbations x {cells_per_pert} cells "
           f"x {len(contexts)} contexts = {n_cells_total:,} cells")
-    print(f"pilot          : {is_pilot}")
+    print(f"pilot          : {pilot}")
     print(f"disk free      : {snap.disk_free_gib:.2f} GiB "
           f"(estimated need {est_bytes / GiB:.2f} GiB)")
     print(f"seed           : {seed}\n")
@@ -360,7 +375,7 @@ def main() -> None:
         "stage": "45_generate_prediction",
         "trial": {k: trial[k] for k in ("id", "kind", "title", "trains")},
         "seed": seed,
-        "is_pilot": is_pilot,
+        "is_pilot": pilot,
         "shape": {
             "n_perturbations": len(targets),
             "cells_per_pert": cells_per_pert,
@@ -463,7 +478,7 @@ def main() -> None:
         "context_provenance_ok": all_match,
     }
     man.note("No VCC score here. Generation only; nothing uploaded.")
-    if is_pilot:
+    if pilot:
         man.note("PILOT: not a submittable artifact. Coverage is deliberately "
                  "incomplete and vcc prep will reject it.")
     man.write(run / "manifest_45_generate_prediction.json",

@@ -85,6 +85,36 @@ the cis head included. It acts last, and changes nothing else: the ``observed`` 
 gated pair that a source measured is written as an observed 0 (stage 45 keeps the gene at its basal level).
 It needs only the context's controls, so it applies unchanged to new contexts.
 
+An optional ``common`` key says what ``gamma`` subtracts from each source (defect D9 of the dress
+rehearsal, reports/invii/prova_generale_2026-09-28/):
+
+    "common": "panel"                                  (the default)
+    "common": "processed/<frozen common vectors>.npz"  (relative to the data root)
+
+``panel`` is each source's mean response over the targets of its table in the cache
+(`multisource.AxisTable.common`), so it moves with the panel the cache was built for: in the
+rehearsal, K562's vector over a new panel had cosine 0.59 with the one over today's. A path names an
+.npz with one vector per source of the recipe, keyed by source name, on the official axis (an
+optional ``genes`` key must equal the axis), finite, which `mix` (or the EB pooling) subtracts
+instead. The manifest records which, with the file's sha256.
+
+Before any effect is computed, the panel and the cache are checked against each other (defects D2,
+D3, D4, D11):
+
+* ``--targets-csv`` is read by `vcc2026.panel.read_panel`: the ``target_gene`` column by name (a
+  bare one-column list under any header, as used until 29 September 2026), first-seen order,
+  duplicates dropped, the control label refused.
+* ``--contexts D,E,F`` (comma or space separated), when given, refuses a recipe whose context keys
+  differ from it.
+* A cache folder with a ``manifest.json`` that records ``targets_sha256`` (stages 98 and 106 write
+  it since 29 September 2026) must match `vcc2026.panel.panel_sha256` of the panel read: the
+  cache's targets are then verified. A cache without one (r5 and r9 have no manifest) is not
+  verified, and is refused if fewer than half the panel's targets are in any table the recipe
+  reads: the rehearsal's negative control, the D/E/F
+  panel on the A/B/C cache r9, had 30 of 300 and gave a near-empty prediction without an error. A
+  verified cache is refused only if it covers no target. ``"allow_foreign_cache": true`` in the
+  recipe lifts these refusals, and the manifest says so.
+
 For each context this writes ``effects_<CTX>.npz`` with ``targets``, ``genes`` (the official
 axis) and ``lfc`` (ln fold change, amplitude applied), the format stage 76 reads through
 ``--effects CTX=PATH``. A (target, gene) pair no source measured stays exactly 0 and is
@@ -93,10 +123,12 @@ counted as such in the manifest; a target no source covers is refused unless
 
 The manifest records the recipe itself and two hashes of its file: ``recipe_sha256`` of the
 bytes, which depends on the checkout's line endings, and ``recipe_sha256_lf`` with CRLF folded
-to LF, which does not (D-043).
+to LF, which does not (D-043). Since 29 September 2026 it also records the argv, the UTC start
+and end, the peak memory, the targets file (path, byte sha256, panel sha256, count), the result
+of the cache check (verified or not, coverage), the sha256 of every cache npz read, and ``common``.
 
     python scripts/100_build_context_effects.py --recipe configs/recipes/t08.json \
-        --cache <stage-98 cache> --out <dir>
+        --cache <stage-98 cache> --out <dir> [--targets-csv <pert_counts.csv>] [--contexts D,E,F]
 """
 
 from __future__ import annotations
@@ -118,12 +150,16 @@ from vcc2026.bench import log  # noqa: E402
 from vcc2026.genes import official_axis  # noqa: E402
 from vcc2026.manifest import text_sha256  # noqa: E402
 from vcc2026.multisource import AxisTable, eb_components, eb_pool, mix, zshrink_mixture, zshrink_table  # noqa: E402
+from vcc2026.panel import CACHE_MANIFEST, panel_record, panel_sha256, read_panel  # noqa: E402
 from vcc2026.predictor_sc import load_coordinates  # noqa: E402
 from vcc2026.priors import add_cis, cis_prior, partner_effects  # noqa: E402
+from vcc2026.resources import peak_rss_bytes  # noqa: E402
 from vcc2026.transfer_model import detectable_threshold, match_detectable, mixture_se  # noqa: E402
 
 DATA_ROOT = config.paths().data_root  # VCC2026_DATA_ROOT, else configs/config.yaml
 EFFECTS = ("shrunk", "raw", "zshrink")
+COVERAGE_FLOOR = 0.5      # share of the panel an unverified cache must cover (defect D4)
+CACHE_FILES_READ: set[Path] = set()   # every npz `load_table` opens, hashed into the manifest
 
 
 def load_table(cache: Path, name: str, effect: str = "shrunk", shrink_k: float | None = None) -> AxisTable:
@@ -133,6 +169,7 @@ def load_table(cache: Path, name: str, effect: str = "shrunk", shrink_k: float |
     A mixture saved without SE (``cd4_mix``: meta ``from`` lists its parts) is rebuilt from
     its parts under ``zshrink``, each shrunk with its own SE; any other source lacking a
     finite SE on a measured pair is refused rather than turned into votes for zero."""
+    CACHE_FILES_READ.add(cache / f"{name}.npz")
     z = np.load(cache / f"{name}.npz", allow_pickle=False)
     meta = json.loads(str(z["meta"]))
     tab = AxisTable(name, z["targets"].astype(str).tolist(), z["shrunk"], z["raw"], z["se"], z["n_cells"], meta)
@@ -164,12 +201,15 @@ def table_se(cache: Path, tab: AxisTable, targets: list[str]) -> np.ndarray:
 
 
 def eb_effects(cache: Path, tables: list[AxisTable], panel: list[str], gamma: float, spec: dict,
-               basal: pd.DataFrame) -> tuple[np.ndarray, np.ndarray, dict]:
-    """(posterior mean of the shared response, sources measuring each pair, summary) for one context."""
+               basal: pd.DataFrame, common: dict | None = None) -> tuple[np.ndarray, np.ndarray, dict]:
+    """(posterior mean of the shared response, sources measuring each pair, summary) for one context.
+    ``common`` maps a source to the frozen vector ``gamma`` multiplies (`load_common`); by default each
+    table's own mean over its targets."""
     factors = spec.get("se_factor", {})
     ys, ses, ks = [], [], []
     for tab in tables:
-        ys.append(tab.rows(panel).astype(np.float64) - gamma * tab.common()[None, :])
+        m = tab.common() if common is None else common[tab.name]
+        ys.append(tab.rows(panel).astype(np.float64) - gamma * m[None, :])
         ses.append(table_se(cache, tab, panel).astype(np.float64))
         ks.append(float(factors.get(tab.name, 1.0)))
     with np.errstate(all="ignore"):
@@ -223,6 +263,93 @@ def apply_expression_gate(eff: np.ndarray, cpm: np.ndarray, min_cpm: float) -> t
                  "energy_share_gated": gated / energy if energy > 0 else 0.0}
 
 
+def parse_contexts(values: list[str] | None) -> list[str] | None:
+    """``--contexts`` as given, comma or space separated: ``D,E,F`` and ``D E F`` give the same list."""
+    if values is None:
+        return None
+    out = [c for v in values for c in v.replace(",", " ").split()]
+    if not out or len(set(out)) != len(out):
+        raise SystemExit(f"--contexts needs distinct context labels, got {values!r}")
+    return out
+
+
+def check_contexts(recipe_contexts, expected: list[str] | None) -> None:
+    """Refuse a recipe whose context keys are not exactly ``expected`` (when given), in any order."""
+    if expected is not None and sorted(recipe_contexts) != sorted(expected):
+        raise SystemExit(f"recipe contexts {sorted(recipe_contexts)} differ from --contexts {sorted(expected)}")
+
+
+def check_cache_targets(cache: Path, panel: list[str], tables: list[AxisTable], allow_foreign: bool) -> dict:
+    """Whether ``cache`` was built for ``panel``; refuses a cache that looks built for another (defect D4).
+
+    Verified: the cache's ``manifest.json`` records ``targets_sha256`` and it equals
+    `panel_sha256(panel)`; a different value is refused. Not verified (no manifest, or a manifest
+    without that key): refused when fewer than `COVERAGE_FLOOR` of the panel's targets are in any of ``tables``. A
+    verified cache is refused only when it covers no target. ``allow_foreign`` lifts every refusal."""
+    info = {"cache_manifest": False, "targets_sha256_in_cache": None, "targets_verified": False,
+            "allow_foreign_cache": allow_foreign}
+    path = cache / CACHE_MANIFEST       # written by stages 98 and 106 (`vcc2026.panel.write_cache_manifest`)
+    if path.is_file():
+        info["cache_manifest"] = True
+        info["cache_manifest_sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+        info["targets_sha256_in_cache"] = json.loads(path.read_text(encoding="utf-8")).get("targets_sha256")
+    present = set().union(*(t.targets for t in tables))
+    covered = sum(t in present for t in panel)
+    info.update({"targets": len(panel), "targets_covered": covered, "coverage": covered / len(panel),
+                 "targets_covered_by_table": {t.name: len(set(panel) & set(t.targets)) for t in tables}})
+    problems = []
+    if info["targets_sha256_in_cache"] is None:
+        info["why_not_verified"] = ("the cache has no manifest.json" if not info["cache_manifest"]
+                                    else "the cache's manifest.json has no targets_sha256")
+        if info["coverage"] < COVERAGE_FLOOR:
+            problems.append(f"its targets are not verified ({info['why_not_verified']}) and only {covered} of the "
+                            f"{len(panel)} panel targets ({info['coverage']:.0%}) are in any table the recipe reads, "
+                            f"under the floor of {COVERAGE_FLOOR:.0%}")
+    elif info["targets_sha256_in_cache"] == panel_sha256(panel):
+        info["targets_verified"] = True
+        if covered == 0:
+            problems.append("no panel target is in any table the recipe reads")
+    else:
+        info["why_not_verified"] = "targets_sha256 in the cache's manifest.json differs from the panel read"
+        problems.append(f"it was built for other targets: its manifest.json records targets_sha256 "
+                        f"{info['targets_sha256_in_cache']}, the panel read gives {panel_sha256(panel)}")
+    if problems and not allow_foreign:
+        raise SystemExit(f"cache {cache} looks built for another panel: {'; '.join(problems)}. Build a cache for "
+                         "this --targets-csv, or set \"allow_foreign_cache\": true in the recipe.")
+    info["refusals_lifted"] = problems
+    return info
+
+
+def load_common(spec, names: list[str], axis: np.ndarray) -> tuple[dict | None, dict]:
+    """The response ``gamma`` subtracts from each source, from the recipe's ``common`` key (defect D9).
+
+    ``None`` or ``"panel"``: each table's own mean over its targets in the cache, returned as None so
+    `mix` and `eb_effects` compute it as before. A path (relative to the data root): an .npz with one
+    finite vector on the official axis per source in ``names``, keyed by source name, and optionally
+    ``genes``, which must equal the axis. Returns (vectors by source, or None; manifest entry)."""
+    if spec is None or spec == "panel":
+        return None, {"mode": "panel"}
+    if not isinstance(spec, str):
+        raise SystemExit(f"recipe common must be 'panel' or a path relative to the data root, got {spec!r}")
+    path = DATA_ROOT / spec
+    vectors = {}
+    with np.load(path, allow_pickle=False) as z:
+        if "genes" in z.files and z["genes"].astype(str).tolist() != axis.tolist():
+            raise SystemExit(f"common {spec}: its genes are not the official axis")
+        missing = [n for n in names if n not in z.files]
+        if missing:
+            raise SystemExit(f"common {spec}: no vector for sources {missing}")
+        for n in names:
+            v = np.asarray(z[n], dtype=np.float64)
+            if v.shape != (axis.size,) or not np.isfinite(v).all():
+                raise SystemExit(f"common {spec}: {n} needs {axis.size} finite values on the official axis, "
+                                 f"got shape {v.shape}")
+            vectors[n] = v
+        unused = sorted(set(z.files) - set(names) - {"genes"})
+    return vectors, {"mode": "frozen", "path": spec, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                     "norm": {n: float(np.linalg.norm(v)) for n, v in vectors.items()}, "unused_keys": unused}
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--recipe", type=Path, required=True)
@@ -230,14 +357,23 @@ def main() -> None:
     p.add_argument("--targets-csv", type=Path, default=DATA_ROOT / "raw/controls/pert_counts.csv")
     p.add_argument("--coords", type=Path, default=DATA_ROOT / "external/annotation/gene_coordinates_gencode_v50.tsv",
                    help="gene TSS coordinates (stage 74), read only when the recipe has a cis block")
+    p.add_argument("--contexts", nargs="+", default=None,
+                   help="the bundle's contexts, comma or space separated; the recipe's keys must be exactly these")
     p.add_argument("--out", type=Path, required=True)
     args = p.parse_args()
+    started = datetime.now(timezone.utc).isoformat()
+    CACHE_FILES_READ.clear()
     if (args.out / "manifest.json").exists():
         raise FileExistsError(f"{args.out} already holds effects; choose a new --out")
-    args.out.mkdir(parents=True, exist_ok=True)
     recipe = json.loads(args.recipe.read_text(encoding="utf-8"))
+    contexts_checked = parse_contexts(args.contexts)
+    check_contexts(recipe["contexts"], contexts_checked)
+    allow_foreign = recipe.get("allow_foreign_cache", False)
+    if not isinstance(allow_foreign, bool):
+        raise SystemExit(f"recipe allow_foreign_cache must be true or false, got {allow_foreign!r}")
     axis = np.asarray(official_axis().symbols)
-    panel = pd.read_csv(args.targets_csv).iloc[:, 0].astype(str).tolist()
+    panel = read_panel(args.targets_csv)
+    targets_info = panel_record(args.targets_csv, panel)
     gamma = float(recipe.get("gamma", 0.0))
     scale = float(recipe.get("reliability_scale", 100.0))
     names = sorted({s for c in recipe["contexts"].values() for s in c["weights"]})
@@ -274,7 +410,15 @@ def main() -> None:
         if absent:
             raise SystemExit(f"expression_gate basal {gate_spec['basal']} has no CPM column for {absent}")
         gate_info = {"spec": gate_spec, "sha256": hashlib.sha256(gate_path.read_bytes()).hexdigest()}
+    common, common_info = load_common(recipe.get("common"), names, axis)
+    if common is not None:
+        log(f"common: frozen vectors from {common_info['path']}, not the cache tables' own means")
     tables = [load_table(args.cache, n, effect, shrink_k) for n in names]
+    cache_info = check_cache_targets(args.cache, panel, tables, allow_foreign)
+    log(f"cache targets {'verified' if cache_info['targets_verified'] else 'NOT verified'}: "
+        f"{cache_info['targets_covered']}/{len(panel)} panel targets in the recipe's tables"
+        + (f"; allowed by the recipe despite: {cache_info['refusals_lifted']}" if cache_info["refusals_lifted"] else ""))
+    args.out.mkdir(parents=True, exist_ok=True)
     cis_spec, cis_info = recipe.get("cis"), None
     if cis_spec is not None:
         pairs_path = config.repo_file(cis_spec["pairs"])
@@ -300,11 +444,11 @@ def main() -> None:
         pool_info = None
         if pool_spec is None:
             eff, w = mix([t for t in tables if weights.get(t.name, 0) > 0], panel, weights=weights,
-                         gamma=gamma, reliability_scale=scale)
+                         gamma=gamma, reliability_scale=scale, common=common)
             eff *= float(spec.get("amplitude", 1.0))
         else:
             eff, w, pool_info = eb_effects(args.cache, [t for t in tables if weights.get(t.name, 0) > 0], panel,
-                                           gamma, pool_spec, pool_basal)
+                                           gamma, pool_spec, pool_basal, common)
             factor = float(spec.get("amplitude", 1.0))
             if pool_spec.get("match_detectable"):
                 ref = np.load(DATA_ROOT / pool_spec["match_detectable"] / f"effects_{ctx}.npz")
@@ -383,7 +527,10 @@ def main() -> None:
                 "recipe": recipe, "recipe_sha256": hashlib.sha256(args.recipe.read_bytes()).hexdigest(),
                 "recipe_sha256_lf": text_sha256(args.recipe),
                 "cache": str(args.cache), "gamma": gamma, "reliability_scale": scale, "contexts": summary,
-                "units": "ln fold change on the official axis; unmeasured pairs are exactly 0"}
+                "units": "ln fold change on the official axis; unmeasured pairs are exactly 0",
+                "argv": sys.argv, "started_utc": started, "targets": targets_info, "contexts_checked": contexts_checked,
+                "cache_check": cache_info, "common": common_info,
+                "cache_npz_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(CACHE_FILES_READ)}}
     if cis_info is not None:
         manifest["cis"] = cis_info
     if assoc_info is not None:
@@ -392,6 +539,8 @@ def main() -> None:
         manifest["gene_share"] = share_info
     if gate_info is not None:
         manifest["expression_gate"] = gate_info
+    manifest["finished_utc"] = datetime.now(timezone.utc).isoformat()
+    manifest["peak_rss_bytes"] = peak_rss_bytes()
     with open(args.out / "manifest.json", "x", encoding="utf-8") as fh:
         json.dump(manifest, fh, indent=2)
     log(f"wrote {args.out}")

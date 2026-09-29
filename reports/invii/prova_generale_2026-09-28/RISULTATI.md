@@ -242,3 +242,33 @@ forma piena di questa corsa è 36 minuti (`projected_generation_seconds_at_full_
 **Per la chiusura dell'azione 3** (ogni difetto corretto con il suo test) mancano le correzioni di D4 e D9 e delle
 altre voci. Un vincolo pratico per il 22/10: la forma piena chiede circa 17 GB liberi. Oggi ce ne sono 3,9, più 25 GB
 nel Cestino che solo il proprietario può svuotare.
+
+## Correzioni dei difetti (29/09 pomeriggio)
+
+Codice di tre sottoagenti della sessione `f2abd9a6`, in fila: stadio 100, poi cache e stadio 45, poi un revisore
+avversario. Suite: 259 prove, più una aggiunta dal revisore. Prove prima/dopo, nelle cartelle di lavoro della sessione:
+- t22 (cache r5), t25 e t26 (cache r9) ricostruiti con lo stadio 100 nuovo: array identici bit per bit a quelli di
+  `effects_t22_2026-09-26`, `effects_t25_2026-09-27` ed `effects_t26_2026-09-29`, sha256 dei file compresi;
+- stadio 98 su dati sintetici: npz identici;
+- pilota dello stadio 45 (4 bersagli × 40 cellule × A): matrici identiche.
+
+| # | Correzione | Dove |
+|---|---|---|
+| D1 | `--contexts` nello stadio 48 (già nel commit `e4edcd9`) | `scripts/48_package_prediction.py` |
+| D2 | il pannello si legge per nome di colonna, senza doppioni, con il controllo rifiutato | `src/vcc2026/panel.py`; stadi 45, 98, 100 (97 e 102 ancora per posizione) |
+| D3 | `--contexts` nello stadio 100: una ricetta con contesti diversi è rifiutata | stadio 100 |
+| D4 | le cache di 98 e 106 scrivono `manifest.json` con lo sha256 dei bersagli; lo stadio 100 rifiuta una cache di un altro pannello (con il manifest: sha256 diverso; senza: meno di metà dei bersagli coperti). Il controllo negativo della prova ora finisce con codice 1, senza scrivere nulla | stadi 98, 100, 106 |
+| D5 | una corsa D/E/F a forma piena non è più marcata pilota | stadio 45 |
+| D9 | chiave `"common"` della ricetta: `"panel"` (come oggi) o un file con i vettori tolti da γ fissati | stadio 100 |
+| D10 | stadio nuovo 106: la cache del pannello dagli universi. Parità con r9 (0 differenze per K562 e Orion, 1,49e-8 per `cd4_mix`), e lo stadio 100 la verifica: «300/300» | `scripts/106_assemble_panel_cache.py` |
+| D11 | il manifest dello stadio 100 registra argomenti, orari, memoria, file dei bersagli, sha256 della cache | stadio 100 |
+| D6, D12, D13 | LAVORO §7 riscritto sul percorso provato: universi e stadio 106, `--contexts`, uscite di 85/99 nella radice dati, 17 GB liberi | `docs/LAVORO.md` |
+
+**Restano aperti** (nessuno blocca un invio di A/B/C):
+- D2 negli stadi 97, 102 e nei diagnostici 101, 103, 104;
+- D7, il silenziamento del proprio gene per i bersagli che nessuna sorgente copre: proposta, non nel t22;
+- D8, la regola d'ampiezza R-B come chiave di ricetta: la decide il banco dell'azione 4;
+- la prova D3 sulla ricetta D/E/F;
+- un file `common` senza la chiave `genes` passa con il solo controllo di lunghezza;
+- il lettore del pannello accetta un file di una colonna con qualunque intestazione;
+- la copertura dello stadio 100 conta anche le sorgenti a peso 0.

@@ -12,7 +12,11 @@ Each test pins a way a multi-source transfer could return plausible wrong number
 * a sign-purity proxy that reads the truth's ranking instead of the prediction's;
 * a top-k sign agreement that ranks by the truth, counts undefined genes, or keeps the
   target gene the scorer drops;
-* a shrinkage recomputed from a missing SE, which silently turns a source into zeros.
+* a shrinkage recomputed from a missing SE, which silently turns a source into zeros;
+* a panel file read by column position, which takes a context label for a target;
+* a cache built for another panel, which stage 100 turned into a near-empty prediction without an
+  error (dress rehearsal of 22 October, defect D4), and a recipe whose contexts are not the bundle's;
+* a frozen common response that is not the one ``gamma`` subtracts.
 """
 
 from __future__ import annotations
@@ -464,6 +468,265 @@ class Stage100CisTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 self.stage.add_cis(np.zeros((1, 5)), np.zeros((1, 5), bool), ["T1"], self.axis, model,
                                    self.coords, d, 1.0)
+
+
+class PanelFileTests(unittest.TestCase):
+    """`vcc2026.panel`: the panel's targets by column name, and a hash of the list rather than of the file."""
+
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def _file(self, name, text):
+        path = self.root / name
+        path.write_bytes(text.encode("utf-8"))
+        return path
+
+    def test_a_bare_list_a_counts_file_and_a_per_context_file_give_the_same_targets(self):
+        from vcc2026.panel import read_panel
+        want = ["TP53", "ACLY", "MYC"]
+        files = [self._file("bare.csv", "target_gene\nTP53\nACLY\nMYC\n"),
+                 self._file("crlf.csv", "target_gene\r\nTP53\r\nACLY\r\nMYC\r\n"),
+                 self._file("counts.csv", "target_gene,n_cells\nTP53,400\nACLY,400\nMYC,400\n"),
+                 # context first, each target once per context: the column order that position reading got wrong
+                 self._file("ctx.csv", "context,target_gene\nD,TP53\nD,ACLY\nE,TP53\nD,MYC\nE,MYC\nE,ACLY\n")]
+        for path in files:
+            with self.subTest(path=path.name):
+                self.assertEqual(read_panel(path), want)
+
+    def test_a_single_column_under_another_header_is_a_bare_list_and_blanks_are_skipped(self):
+        from vcc2026.panel import read_panel
+        self.assertEqual(read_panel(self._file("g.csv", "gene\nNA\n TP53 \n\"\"\nMYC\n")), ["NA", "TP53", "MYC"])
+
+    def test_a_wrong_column_the_control_label_and_an_empty_panel_are_refused(self):
+        from vcc2026.panel import read_panel
+        for name, text in (("cols.csv", "context,gene\nD,TP53\n"),
+                           ("ntc.csv", "target_gene,n_cells\nTP53,400\nnon-targeting,1000\n"),
+                           ("empty.csv", "target_gene\n")):
+            with self.subTest(name=name), self.assertRaises(ValueError):
+                read_panel(self._file(name, text))
+
+    def test_the_hash_names_the_targets_and_their_order_not_the_file(self):
+        import hashlib
+        from vcc2026.panel import panel_sha256, read_panel
+        a = read_panel(self._file("a.csv", "target_gene\r\nTP53\r\nMYC\r\n"))
+        b = read_panel(self._file("b.csv", "context,target_gene,n_cells\nD,TP53,400\nD,MYC,400\nE,TP53,400\n"))
+        self.assertEqual(panel_sha256(a), panel_sha256(b))
+        self.assertEqual(panel_sha256(a), hashlib.sha256(b"TP53\nMYC").hexdigest())
+        self.assertNotEqual(panel_sha256(a), panel_sha256(["MYC", "TP53"]))
+
+
+class Stage100CacheCheckTests(unittest.TestCase):
+    """Stage 100 run end to end on synthetic caches: the panel, the contexts, the cache's targets, ``common``.
+
+    The official axis is replaced by five genes and the data root by a temporary folder."""
+
+    AXIS = ("G1", "G2", "G3", "G4", "G5")
+    PANEL = ["T1", "T2", "T3", "T4"]
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("stage100", REPO / "scripts" / "100_build_context_effects.py")
+        cls.stage = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.stage)
+
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        self.targets = self.root / "pert_counts.csv"
+        self.targets.write_text("target_gene\n" + "\n".join(self.PANEL) + "\n", encoding="utf-8")
+        rng = np.random.default_rng(7)
+        self.own = self._cache("own", {"s1": ["T1", "T2", "T3"], "s2": ["T2", "T4", "X9"]}, rng)
+        self.foreign = self._cache("foreign", {"s1": ["X1", "X2", "T1"], "s2": ["X3", "X4"]}, rng)
+        self.recipe = {"name": "syn", "effect": "shrunk", "gamma": 1.0, "reliability_scale": 100,
+                       "allow_missing_targets": True,
+                       "contexts": {c: {"amplitude": 1.5, "weights": {"s1": 1.0, "s2": 2.0}} for c in ("A", "B")}}
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def _cache(self, name, tables, rng):
+        import json
+        cache = self.root / name
+        cache.mkdir()
+        for src, targets in tables.items():
+            eff = rng.normal(0, 1, size=(len(targets), len(self.AXIS))).astype(np.float32)
+            eff[0, 4] = np.nan                                   # an unmeasured pair
+            np.savez_compressed(cache / f"{src}.npz", targets=np.array(targets), shrunk=eff, raw=eff,
+                                se=np.ones_like(eff), n_cells=np.arange(50, 50 + 50 * len(targets), 50),
+                                meta=json.dumps({}))
+        return cache
+
+    def _run(self, recipe, cache, out, *extra, targets=None):
+        import contextlib
+        import io
+        import json
+        from types import SimpleNamespace
+        from unittest import mock
+        path = self.root / f"recipe_{out}.json"
+        path.write_text(json.dumps(recipe), encoding="utf-8")
+        argv = ["100", "--recipe", str(path), "--cache", str(cache), "--targets-csv", str(targets or self.targets),
+                "--out", str(self.root / out), *extra]
+        with mock.patch.object(sys, "argv", argv), \
+                mock.patch.object(self.stage, "official_axis", lambda: SimpleNamespace(symbols=self.AXIS)), \
+                mock.patch.object(self.stage, "DATA_ROOT", self.root), contextlib.redirect_stdout(io.StringIO()):
+            self.stage.main()
+        return json.loads((self.root / out / "manifest.json").read_text(encoding="utf-8"))
+
+    def _lfc(self, out, ctx="A"):
+        with np.load(self.root / out / f"effects_{ctx}.npz") as z:
+            return z["targets"].astype(str).tolist(), z["lfc"], z["observed"]
+
+    def _expected(self, cache, common=None):
+        tables = [self.stage.load_table(cache, n) for n in ("s1", "s2")]
+        eff, w = mix(tables, self.PANEL, weights={"s1": 1.0, "s2": 2.0}, gamma=1.0, reliability_scale=100.0,
+                     common=common)
+        return (eff * 1.5).astype(np.float32), w > 0, tables
+
+    def _manifest_of_cache(self, cache, panel):
+        import json
+        from vcc2026.panel import panel_sha256
+        (cache / "manifest.json").write_text(json.dumps({"targets_sha256": panel_sha256(panel)}), encoding="utf-8")
+
+    def test_an_old_cache_without_manifest_still_builds_and_says_it_was_not_verified(self):
+        import hashlib
+        from vcc2026.panel import panel_sha256
+        m = self._run(self.recipe, self.own, "old")
+        targets, lfc, observed = self._lfc("old")
+        want, want_obs, _ = self._expected(self.own)
+        self.assertEqual(targets, self.PANEL)
+        np.testing.assert_array_equal(lfc, want)
+        np.testing.assert_array_equal(observed, want_obs)
+        check = m["cache_check"]
+        self.assertFalse(check["cache_manifest"])
+        self.assertFalse(check["targets_verified"])
+        self.assertEqual(check["why_not_verified"], "the cache has no manifest.json")
+        self.assertEqual((check["targets_covered"], check["coverage"]), (4, 1.0))
+        self.assertEqual(check["targets_covered_by_table"], {"s1": 3, "s2": 2})
+        self.assertEqual(m["targets"], {"path": str(self.targets), "n": 4, "panel_sha256": panel_sha256(self.PANEL),
+                                        "file_sha256": hashlib.sha256(self.targets.read_bytes()).hexdigest()})
+        self.assertEqual(m["cache_npz_sha256"], {f"{n}.npz": hashlib.sha256((self.own / f"{n}.npz").read_bytes()).hexdigest()
+                                                 for n in ("s1", "s2")})
+        self.assertEqual(m["common"], {"mode": "panel"})
+        self.assertIsNone(m["contexts_checked"])
+        for key in ("argv", "started_utc", "finished_utc", "peak_rss_bytes", "cache", "written_utc"):
+            self.assertIn(key, m)
+        self.assertLessEqual(m["started_utc"], m["finished_utc"])
+
+    def test_a_foreign_cache_is_refused_and_writes_nothing(self):
+        with self.assertRaises(SystemExit) as caught:
+            self._run(self.recipe, self.foreign, "refused")
+        self.assertIn("1 of the 4 panel targets", str(caught.exception))
+        self.assertFalse((self.root / "refused").exists())
+
+    def test_allow_foreign_cache_builds_and_records_the_lifted_refusal(self):
+        m = self._run({**self.recipe, "allow_foreign_cache": True}, self.foreign, "allowed")
+        self.assertEqual(m["cache_check"]["coverage"], 0.25)
+        self.assertTrue(m["cache_check"]["allow_foreign_cache"])
+        self.assertEqual(len(m["cache_check"]["refusals_lifted"]), 1)
+        with self.assertRaises(SystemExit):
+            self._run({**self.recipe, "allow_foreign_cache": "yes"}, self.foreign, "not_a_bool")
+
+    def test_a_cache_manifest_with_the_panel_hash_verifies_its_targets(self):
+        self._manifest_of_cache(self.own, self.PANEL)
+        m = self._run(self.recipe, self.own, "verified")
+        self.assertTrue(m["cache_check"]["targets_verified"])
+        self.assertTrue(m["cache_check"]["cache_manifest"])
+        np.testing.assert_array_equal(self._lfc("verified")[1], self._expected(self.own)[0])
+
+    def test_a_cache_manifest_with_another_panel_hash_is_refused_even_with_full_coverage(self):
+        self._manifest_of_cache(self.own, ["T1", "T2", "T3", "T4", "T5"])
+        with self.assertRaises(SystemExit) as caught:
+            self._run(self.recipe, self.own, "mismatch")
+        self.assertIn("built for other targets", str(caught.exception))
+
+    def test_a_verified_cache_is_not_held_to_the_floor_but_must_cover_a_target(self):
+        self._manifest_of_cache(self.foreign, self.PANEL)            # 1 of 4: under the floor, but verified
+        self.assertEqual(self._run(self.recipe, self.foreign, "low")["cache_check"]["targets_covered"], 1)
+        none = self._cache("none", {"s1": ["X1"], "s2": ["X2"]}, np.random.default_rng(1))
+        self._manifest_of_cache(none, self.PANEL)
+        with self.assertRaises(SystemExit):
+            self._run(self.recipe, none, "empty")
+
+    def test_a_cache_manifest_without_the_panel_hash_is_held_to_the_floor_like_no_manifest(self):
+        import json
+        for cache in (self.own, self.foreign):
+            (cache / "manifest.json").write_text(json.dumps({"stage": "older"}), encoding="utf-8")
+        check = self._run(self.recipe, self.own, "no_key")["cache_check"]
+        self.assertTrue(check["cache_manifest"])
+        self.assertFalse(check["targets_verified"])
+        self.assertEqual(check["why_not_verified"], "the cache's manifest.json has no targets_sha256")
+        with self.assertRaises(SystemExit) as caught:
+            self._run(self.recipe, self.foreign, "no_key_foreign")
+        self.assertIn("has no targets_sha256", str(caught.exception))
+        self.assertFalse((self.root / "no_key_foreign").exists())
+
+    def test_the_contexts_must_be_the_recipe_keys(self):
+        self.assertEqual(self._run(self.recipe, self.own, "ab_comma", "--contexts", "B,A")["contexts_checked"], ["B", "A"])
+        self.assertEqual(self._run(self.recipe, self.own, "ab_space", "--contexts", "A", "B")["contexts_checked"],
+                         ["A", "B"])
+        for given in (["D,E,F"], ["A"], ["A,B,C"], ["A,A,B"]):
+            with self.subTest(given=given), self.assertRaises(SystemExit):
+                self._run(self.recipe, self.own, "bad", "--contexts", *given)
+        self.assertFalse((self.root / "bad").exists())
+
+    def test_the_panel_is_read_by_column_name(self):
+        per_context = self.root / "per_context.csv"
+        per_context.write_text("context,target_gene\nA,T1\nA,T2\nB,T1\nA,T3\nB,T4\nA,T4\n", encoding="utf-8")
+        self._run(self.recipe, self.own, "by_name", targets=per_context)
+        targets, lfc, _ = self._lfc("by_name")
+        self.assertEqual(targets, self.PANEL)
+        np.testing.assert_array_equal(lfc, self._expected(self.own)[0])
+
+    def test_common_panel_is_the_default_and_a_frozen_file_is_honoured(self):
+        self._run(self.recipe, self.own, "default")
+        self._run({**self.recipe, "common": "panel"}, self.own, "panel")
+        np.testing.assert_array_equal(self._lfc("panel")[1], self._lfc("default")[1])
+        _, _, tables = self._expected(self.own)
+        own = {t.name: t.common() for t in tables}
+        np.savez(self.root / "own_common.npz", genes=np.array(self.AXIS), **own)
+        m = self._run({**self.recipe, "common": "own_common.npz"}, self.own, "frozen_own")
+        np.testing.assert_array_equal(self._lfc("frozen_own")[1], self._lfc("default")[1])   # same vectors, same bits
+        self.assertEqual(m["common"]["mode"], "frozen")
+        other = {"s1": np.full(5, 0.3), "s2": np.linspace(-1, 1, 5)}
+        np.savez(self.root / "other_common.npz", **other, extra=np.zeros(5))
+        m = self._run({**self.recipe, "common": "other_common.npz"}, self.own, "frozen_other")
+        want = self._expected(self.own, common=other)[0]
+        np.testing.assert_array_equal(self._lfc("frozen_other")[1], want)
+        self.assertFalse(np.array_equal(want, self._lfc("default")[1]))
+        self.assertEqual(m["common"]["unused_keys"], ["extra"])
+        self.assertEqual(m["common"]["path"], "other_common.npz")
+
+    def test_a_frozen_common_file_must_give_every_source_a_finite_vector_on_the_axis(self):
+        good = np.zeros(5)
+        for name, arrays in (("missing", {"s1": good}),
+                             ("short", {"s1": good, "s2": np.zeros(4)}),
+                             ("nan", {"s1": good, "s2": np.array([0, 0, np.nan, 0, 0])}),
+                             ("axis", {"s1": good, "s2": good, "genes": np.array(["G1", "G2", "G3", "G4", "GX"])})):
+            np.savez(self.root / f"{name}.npz", **arrays)
+            with self.subTest(name=name), self.assertRaises(SystemExit):
+                self._run({**self.recipe, "common": f"{name}.npz"}, self.own, f"common_{name}")
+        with self.assertRaises(SystemExit):
+            self._run({**self.recipe, "common": 1.0}, self.own, "common_number")
+
+    def test_the_eb_pooling_subtracts_the_frozen_common_too(self):
+        import pandas as pd
+        _, _, tables = self._expected(self.own)
+        basal = pd.DataFrame({"s1": np.full(5, 50.0), "s2": np.full(5, 80.0)})
+        base, n, _ = self.stage.eb_effects(self.own, tables, self.PANEL, 1.0, {}, basal)
+        same, n2, _ = self.stage.eb_effects(self.own, tables, self.PANEL, 1.0, {}, basal,
+                                            {t.name: t.common() for t in tables})
+        np.testing.assert_array_equal(same, base)
+        np.testing.assert_array_equal(n2, n)
+        moved, _, _ = self.stage.eb_effects(self.own, tables, self.PANEL, 1.0, {}, basal,
+                                            {"s1": np.full(5, 0.5), "s2": np.full(5, -0.5)})
+        self.assertFalse(np.allclose(moved, base))
 
 
 if __name__ == "__main__":

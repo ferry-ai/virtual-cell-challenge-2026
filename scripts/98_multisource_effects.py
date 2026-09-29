@@ -18,6 +18,14 @@ targets -- the only regime the official panel can be scored in.
 Outputs: one npz per source on the official axis under ``--cache`` (data root, D-001) and
 ``transfer.json`` / ``coverage.json`` in ``--report-dir``. Nothing is overwritten.
 
+The panel is ``--targets-csv`` read by `vcc2026.panel.read_panel` (the ``target_gene`` column by
+name; defect D2 of the dress rehearsal, reports/invii/prova_generale_2026-09-28/). Once every npz
+is saved, and before the transfer reports, the cache gets a ``manifest.json``
+(`vcc2026.panel.write_cache_manifest`): ``targets_sha256``, the panel it was built for, which
+stage 100 checks against the panel it reads (defect D4); the targets file; the argv and inputs;
+and per source its targets, the panel targets it lacks, and its npz's size and sha256. The npz
+files are written as before.
+
 ``--pseudo-scale`` is passed to `effects_from_pseudobulk` for the CD4 and extra sources. The
 default, "constant", is how every cache up to r5 was built; "library" keeps the pseudocount in the
 smaller group and gives the larger the same fraction of its total, so a gene with no count in
@@ -40,17 +48,19 @@ from pathlib import Path
 import anndata as ad
 import h5py
 import numpy as np
-import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from vcc2026 import config  # noqa: E402
 from vcc2026.bench import log  # noqa: E402
 from vcc2026.genes import official_axis  # noqa: E402
+from vcc2026.manifest import file_fingerprint  # noqa: E402
 from vcc2026.multisource import (  # noqa: E402
     AxisTable, effects_from_pseudobulk, mix, shared_signal, transfer_report, z_shrink,
 )
+from vcc2026.panel import read_panel, write_cache_manifest  # noqa: E402
 from vcc2026.predictor_sc import effects_from_bulk  # noqa: E402
+from vcc2026.resources import peak_rss_bytes  # noqa: E402
 from vcc2026.sc_stream import read_frame  # noqa: E402
 
 DATA_ROOT = config.paths().data_root  # VCC2026_DATA_ROOT, else configs/config.yaml
@@ -96,13 +106,14 @@ def main() -> None:
     p.add_argument("--min-expected", type=float, default=0.0,
                    help="drop a donor for a gene when its controls predict fewer counts than this in the target group (0: never)")
     args = p.parse_args()
+    started = datetime.now(timezone.utc).isoformat()
     for path in (args.report_dir / "transfer.json", args.cache):
         if path.exists():
             raise FileExistsError(f"{path} exists; new runs go to a new destination")
+    panel = read_panel(args.targets_csv)          # refused here, before anything is written
     args.cache.mkdir(parents=True)
     args.report_dir.mkdir(parents=True, exist_ok=True)
     axis = np.asarray(official_axis().symbols)
-    panel = pd.read_csv(args.targets_csv).iloc[:, 0].astype(str).tolist()
     panel_cols = np.flatnonzero(np.isin(axis, panel))
 
     tables: dict[str, AxisTable] = {}
@@ -159,6 +170,18 @@ def main() -> None:
         coverage[name] = {"targets": len(tab.targets), "genes_on_axis": int(measured.sum()),
                           "median_cells": float(np.median(tab.n_cells)) if len(tab.n_cells) else 0,
                           "meta": tab.meta}
+    # the cache is complete: say which panel it was built for before the reports, which can take hours
+    write_cache_manifest(
+        args.cache, "98_multisource_effects", args.targets_csv, panel,
+        {name: {"targets": c["targets"], "genes_on_axis": c["genes_on_axis"], "median_cells": c["median_cells"],
+                "panel_targets_missing": [t for t in panel if t not in set(tables[name].targets)]}
+         for name, c in coverage.items()},
+        started_utc=started, report_dir=str(args.report_dir), pseudo_scale=args.pseudo_scale,
+        min_expected=args.min_expected,
+        inputs={"k562_bulk": file_fingerprint(args.k562_bulk), "cd4_rows": file_fingerprint(args.cd4_rows),
+                "extra": {e.partition("=")[0]: file_fingerprint(e.partition("=")[2]) for e in args.extra}},
+        peak_rss_bytes_before_reports=peak_rss_bytes())
+    log(f"wrote {args.cache / 'manifest.json'}")
     commons = {n: t.common() for n, t in tables.items()}
     common_corr = {}
     names = list(tables)

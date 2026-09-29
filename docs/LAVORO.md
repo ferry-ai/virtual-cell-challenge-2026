@@ -124,7 +124,7 @@ depositati in `G:\Il mio Drive\vcc2026\runs\queue\`.
 ## 4. Gli stadi vivi
 
 Gli stadi vivi sono quelli della tabella; ogni altro numero è in un tag d'archivio. Il
-prossimo numero libero è **106**.
+prossimo numero libero è **107**.
 `tests/test_live_tree.py` fallisce se questa tabella e la cartella `scripts/` non coincidono:
 uno stadio nuovo entra qui nello stesso commit. Le regole di uno stadio sono in
 `scripts/CLAUDE.md`, la mappa dei moduli in `src/vcc2026/CLAUDE.md`.
@@ -134,6 +134,7 @@ uno stadio nuovo entra qui nello stesso commit. Le regole di uno stadio sono in
 | `scripts/97_extract_cd4_rows.py` | Righe pseudobulk CD4 dei bersagli del pannello, per intervalli di byte da S3 | locale |
 | `scripts/102_extract_orion_panel.py` | Pseudobulk Orion (HCT116, HEK293T) per lotto GEM; `--finalize` produce l'h5ad | locale |
 | `scripts/98_multisource_effects.py` | Effetti per sorgente sull'asse ufficiale e proxy di trasferimento fra sorgenti | locale |
+| `scripts/106_assemble_panel_cache.py` | Cache del pannello nel formato dello stadio 98, ricavata dagli universi (i due formati d'indice), con lo sha256 dei bersagli nel manifest | locale |
 | `scripts/101_transfer_diagnostics.py` | Tre diagnostiche del trasferimento fra sorgenti dello stadio 98 | locale |
 | `scripts/103_direction_transfer.py` | Accordo di segno fra sorgenti sui geni che si chiamerebbero, una sorgente tenuta fuori alla volta | locale |
 | `scripts/100_build_context_effects.py` | Effetti per contesto da una ricetta di `configs/recipes/` | locale |
@@ -206,28 +207,43 @@ degli stadi di produzione non sono criteri generali di acquisizione dei dati.
 - lo stadio 99 accetta `--contexts`. Rieseguito su A/B/C riproduce identico
   `reports/gara/context_fingerprints_2026-09-22/fingerprints.json`, date a parte;
 - gli stadi 76, 83 e 85 accettano `--controls-dir` e `--contexts`;
-- gli stadi 97, 98, 100 e 102 accettano `--targets-csv`;
-- lo stadio 48 accetta `--genes` e `--perts`.
+- gli stadi 97, 98, 100, 102 e 106 accettano `--targets-csv`; 45, 98, 100 e 106 leggono il pannello
+  per nome di colonna (`vcc2026.panel`, dal 29/09), 97 e 102 ancora per posizione;
+- lo stadio 48 accetta `--genes`, `--perts` e, dal 29/09, `--contexts` (difetto D1 della prova generale);
+- lo stadio 100 accetta `--contexts`, verifica che la cache sia del pannello letto e registra nel manifest
+  bersagli, cache e risorse (difetti D3, D4, D11); lo stadio 45 non marca più come pilota una corsa D/E/F
+  a forma piena (D5).
 
-**Il giorno del rilascio, in ordine:**
+**Il giorno del rilascio, in ordine** (provato il 29/09 sulla prova generale,
+[CP-0044](checkpoints/0044-prova-generale-22-ottobre.md); i comandi esatti sono in
+`reports/invii/prova_generale_2026-09-28/comandi.ps1`):
 1. Il bundle nuovo va in una cartella sua, per esempio `raw/controls_final/`: i controlli di
    A/B/C non si toccano.
-2. Identità dei contesti: stadi 85 e 99 con `--controls-dir` e `--contexts D E F`.
-3. Sorgenti per i bersagli nuovi, con il `pert_counts.csv` del bundle come `--targets-csv`:
-   - K562 si legge dal bulk locale, che ha tutto il genoma;
-   - lo stadio 97 per CD4 ha letto 1,33 GiB in 880 s per 300 bersagli (CP-0028);
-   - lo stadio 102 per Orion legge per intero tutti i file, 109 per HCT116 e 223 per
-     HEK293T, qualunque sia il pannello: alcune ore per linea, da far girare di notte.
-4. Stadio 98 con le sorgenti nuove, poi stadio 100 con la ricetta scelta.
-5. Cellule con lo stadio 45 o 76 (`--controls-dir`, `--contexts D,E,F`), pacchetto con lo
-   stadio 48 (`--genes`, `--perts` del bundle), invio.
+2. Identità dei contesti: stadi 85 e 99 con `--controls-dir`, `--contexts D E F` e un `--out`
+   **nella radice dati**, mai sotto `reports/`: le impronte possono rivelare le linee.
+3. CPM dei controlli di D/E/F sull'asse, per le ricette che li leggono (soglia d'espressione,
+   `match_detectable`): `reports/invii/prova_generale_2026-09-28/cpm_contesti.py`, che scrive la
+   stessa definizione di `interim/basal_cpm_by_context.csv` (media dei CPM per cellula).
+4. Cache delle sorgenti per il pannello nuovo **dagli universi**, con lo stadio 106
+   (`--preset me1 --targets-csv <bundle>/pert_counts.csv`): circa 100–200 s e meno di 300 MiB
+   per il pannello di oggi. Scrive `manifest.json` con lo sha256 dei bersagli. Gli stadi 97,
+   102 e 98 servono solo per sorgenti che non hanno un universo.
+5. Stadio 100 con la ricetta scelta, riscritta con le chiavi D, E, F e nient'altro di diverso,
+   con `--targets-csv` del bundle e `--contexts D,E,F`. Rifiuta una cache costruita per un altro
+   pannello e una ricetta con contesti diversi. Il riferimento tolto da γ = 1 cambia con il
+   pannello (per K562, coseno 0,59 fra pannello finto e pannello di oggi): la chiave
+   `"common"` della ricetta lo può fissare, e la scelta va scritta prima.
+6. Cellule con lo stadio 45 (`--controls-dir`, `--contexts D,E,F`) o 76 (`--contexts D E F`,
+   separati da spazi); pacchetto con lo stadio 48 (`--genes`, `--perts` del bundle,
+   `--contexts D,E,F`), invio.
 
 **Da controllare quel giorno, perché oggi non si può sapere:**
 - **I contesti obbligatori.** Lo stadio 48 li prende dalla CLI `vcc` installata
-  (`prep.REQUIRED_CONTEXTS`, oggi A/B/C). Se gli organizzatori rilasciano una CLI nuova, va
-  installata prima di impacchettare.
+  (`prep.REQUIRED_CONTEXTS`, oggi A/B/C) se non gli si passa `--contexts`. Se gli organizzatori
+  rilasciano una CLI nuova, va installata prima di impacchettare.
 - **Il formato del bundle:** nomi dei file e colonne di `pert_counts.csv`.
 - **L'asse genico.** Gli stadi controllano che l'ordine dei geni coincida con
   `gene_names.csv`, e si fermano se non coincide.
-- **Il disco.** Ogni candidato arriva a circa 13 GB di picco: generazione più
-  impacchettamento, misurati su t11, t14 e t15.
+- **Il disco.** Ogni candidato arriva a circa 13 GB di picco (generazione più
+  impacchettamento, misurati su t11, t14 e t15), ma le riserve degli stadi 45 e 48 chiedono
+  circa 17 GB liberi per partire a forma piena.

@@ -4,7 +4,7 @@ What each stage does and where it runs is the table in `docs/LAVORO.md` §4; the
 submission are in §1, the final set in §7. The same stages by role:
 
 ```
-submission path   97 CD4 · 102 Orion ─▶ 98 sources ─▶ 100 effects ─▶ 45 cells (or 76) ─▶ 48 package ─▶ vcc submit
+submission path   97 CD4 · 102 Orion ─▶ 98 sources (or 106 from the universes) ─▶ 100 effects ─▶ 45 cells (or 76) ─▶ 48 package ─▶ vcc submit
 experimental      104 learned magnitude channel on the effects, before the cells (not adopted, bench r5)
 generalisation    105 frozen C/T/J bench with the context-swap control
 contexts          85 markers · 99 genetic fingerprints
