@@ -1,0 +1,28 @@
+{
+  "name": "banco_k562_t23",
+  "effect": "shrunk",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "k562": {
+      "amplitude": 1.576,
+      "weights": {
+        "cd4_mix": 1.0,
+        "orion_hct116": 1.0,
+        "orion_hek293t": 1.0
+      }
+    }
+  },
+  "cis": {
+    "pairs": "reports/trasferimento/cis_2026-09-17/k562_neighbour_pairs.csv",
+    "max_distance_bp": 5000,
+    "scale": 2.0
+  },
+  "gene_share": {
+    "path": "reports/generatore_e_banchi/banco_k562_pannello_2026-09-29/quota/quota_senza_k562.csv",
+    "basal": "processed/basal_sources_2026-09-26.csv",
+    "match_detectable": "processed/banco_k562_pannello_2026-09-29/t22"
+  },
+  "why": "C2, calibration V1: C1 with t23's one change, the transferred part weighted gene by gene by the shared share, here estimated without K562 (reports/trasferimento/quota_condivisa_2026-09-27/r1/share_k562.npy: universes CD4 and HCT116, panel targets excluded), then scaled back to C1's median count of detectable genes on K562's control CPM, cis head included. Cache r5."
+}

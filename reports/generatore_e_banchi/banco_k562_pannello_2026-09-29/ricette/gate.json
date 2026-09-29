@@ -1,0 +1,27 @@
+{
+  "name": "banco_k562_gate",
+  "effect": "shrunk",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "k562": {
+      "amplitude": 1.576,
+      "weights": {
+        "cd4_mix": 1.0,
+        "orion_hct116": 1.0,
+        "orion_hek293t": 1.0
+      }
+    }
+  },
+  "cis": {
+    "pairs": "reports/trasferimento/cis_2026-09-17/k562_neighbour_pairs.csv",
+    "max_distance_bp": 5000,
+    "scale": 2.0
+  },
+  "expression_gate": {
+    "basal": "processed/basal_sources_2026-09-26.csv",
+    "min_cpm": 5.0
+  },
+  "why": "T26, calibration V4: C1 with t26's one change, every effect on a gene below 5 CPM in K562's controls (or not measured there) set to 0, cis head included. Cache r5."
+}

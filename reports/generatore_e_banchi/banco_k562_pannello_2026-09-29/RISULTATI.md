@@ -129,3 +129,38 @@ il banco non la cambia.
 - L'esito si scrive qui sotto, con il tipo di ogni affermazione, più un checkpoint.
 - Nella scheda R-REV va l'esito dell'azione 4; nella prova dell'azione 3, il dato d'ampiezza (R-B contro 1,576).
 - Un candidato va al proprietario con la previsione registrata. Nessun invio senza il suo via.
+
+## Codice e deviazioni dichiarate prima di girare (29/09, 19:45)
+
+Codice di un sottoagente della sessione `f2abd9a6`, rivisto da un secondo sottoagente.
+- **Stadio 73:** prefissi `g0:` (trial-01) e `g0d:` (trial-01 con dispersione per gene), `--gen-seeds`, e
+  `vcc2026.inference.trial01_cells`.
+  - `trial01_cells` è identico bit per bit alla sequenza dello stadio 45, contro HEAD e contro il working tree.
+  - Senza le opzioni nuove, lo stadio 73 dà risultati per bersaglio identici a quello del commit `5652822`.
+- **In questa cartella:** ricette dei bracci (`ricette/`), `build_arms.py`, `job_banco_k562.sh`, `leggi_banco.py`,
+  `test_banco_k562.py` (18 prove). Il test del generatore è `tests/test_bench_generator.py` (11 prove).
+
+**Deviazioni:**
+1. **Il braccio T26 è identico a C1 sui geni del banco (misurato sulla costruzione di prova).** I 7.681 geni che K562
+   misura stanno tutti sopra 8,4 CPM, quindi la soglia a 5 CPM azzera solo geni che il banco non vede. **V4 e P4
+   passano per costruzione:** non si leggono come misure. Il braccio resta, come registrato, e serve da controllo che
+   l'appaiamento per seme sia deterministico. `esito.json` lo segna (`checks.V4.identical_to_C1`).
+2. **R-B sui CPM di K562:** 3,0303 (con gli effetti ufficiali del t22, come registrato), il 3,9 % da 3,152. Quindi il
+   braccio RB non si costruisce e P5 cade nell'intervallo scritto. Accanto si riporta R-C (sugli effetti di C1),
+   2,8632.
+3. **Scale misurate nella costruzione di prova:** s(C2) = 1,6365, quindi C3 = 2,5791; E2 = E1 × 1,1894.
+4. **Letture dove il testo lasciava una scelta**, segnate «READING» in `leggi_banco.py`:
+   - V1 è «contraddice» se l'intervallo di PDS, nMAE o `reach` sta tutto dalla parte opposta;
+   - V4 si giudica sugli intervalli grezzi dei cinque membri contro ±0,005;
+   - lo spareggio confronta i primi due bracci che passano;
+   - MSE conta 0 nella media, e la sua differenza aggregata si riporta per seme.
+5. **Generatore:**
+   - il limite di memorizzazione è il numero di geni del banco (8.246);
+   - la dispersione di `g0d:` è stimata una volta, con il seme 2026, sugli 8.000 controlli;
+   - le cellule previste per bersaglio sono quelle della metà A.
+6. **Coda:** lo slot 059 è occupato da un job di Codex (`059_lead_generator_dev_r1.sh`). Questo job va in coda come
+   060, dopo il `.done` del 059, perché il banco deve girare da solo.
+
+**Interpretazione, scritta prima:** V2 passerà probabilmente senza dire molto. C3 ha una mediana di 217 geni
+rilevabili sui bersagli del banco contro 85,5 di C2, quindi C2 − C3 differirà in `reach` qualunque cosa faccia
+l'esclusione.

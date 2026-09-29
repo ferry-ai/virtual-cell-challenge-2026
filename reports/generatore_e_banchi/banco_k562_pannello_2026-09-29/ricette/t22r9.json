@@ -1,0 +1,23 @@
+{
+  "name": "banco_k562_t22r9",
+  "effect": "shrunk",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "k562": {
+      "amplitude": 1.576,
+      "weights": {
+        "cd4_mix": 1.0,
+        "orion_hct116": 1.0,
+        "orion_hek293t": 1.0
+      }
+    }
+  },
+  "cis": {
+    "pairs": "reports/trasferimento/cis_2026-09-17/k562_neighbour_pairs.csv",
+    "max_distance_bp": 5000,
+    "scale": 2.0
+  },
+  "why": "D1, descriptive: C1's recipe unchanged, run on cache r9 (processed/multisource_2026-09-27_r9, the corrected cache of the submissions from t25 on) instead of r5."
+}

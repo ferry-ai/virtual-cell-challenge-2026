@@ -41,12 +41,15 @@ import h5py
 import numpy as np
 import scipy.sparse as sp
 
+from .sampling import resample_library_sizes, sample_counts
+
 __all__ = [
     "BasalProfile",
     "read_basal_profile",
     "read_csr_rows",
     "compositional_shift",
     "predicted_profile",
+    "trial01_cells",
     "count_generation_diagnostics",
     "profile_similarity",
     "nearest_basal_context",
@@ -282,6 +285,50 @@ def predicted_profile(
         ),
     }
     return profile, detail
+
+
+def trial01_cells(
+    basal: np.ndarray,
+    lfc_ln: np.ndarray,
+    observed: np.ndarray,
+    lib_pool: np.ndarray,
+    n: int,
+    rng: np.random.Generator,
+    *,
+    max_stored_per_cell: int,
+    max_counts_per_cell: int,
+    overdispersion: float | np.ndarray | None = None,
+) -> tuple[sp.csr_matrix, dict]:
+    """One block of `n` cells from the trial-01 generator, in the order stage 45 draws them.
+
+    Stage 45 turns a stage-100 ln fold change into log2 (``lfc / ln 2``, in `read_effects`),
+    then for each (context, target) block calls `predicted_profile` with the ``observed`` mask
+    (the compositional shift, log2 clipped at 6), `sampling.resample_library_sizes` and
+    `sampling.sample_counts`, in that order and on one random stream. This is that sequence for
+    a caller holding one target's effect, such as the single-cell benches. Stage 45 keeps its
+    own inline copy, since the stages that decide uploads change only with a pilot comparison;
+    `tests/test_bench_generator.py` pins the two to the same bits for the same inputs and seed.
+
+    Args:
+        basal: (n_genes,) summed control counts of the context.
+        lfc_ln: (n_genes,) predicted ln fold change (stage 100's unit).
+        observed: (n_genes,) True where the prediction is supported (stage 100's mask).
+        lib_pool: library sizes of the real control cells, resampled with replacement.
+        n: cells to draw.
+        rng: the generator's random stream, advanced exactly as stage 45 advances it.
+        max_stored_per_cell, max_counts_per_cell: the caps of `sampling.sample_counts`.
+        overdispersion: None (Poisson), one value, or one value per gene
+            (`sampling.fit_gene_dispersion`, stage 45's ``--gene-dispersion``).
+
+    Returns:
+        (counts, detail): a float32 CSR of shape (n, n_genes), and `predicted_profile`'s detail.
+    """
+    delta = np.asarray(lfc_ln) / np.log(2.0)
+    profile, detail = predicted_profile(basal, delta, observed)
+    libs = resample_library_sizes(lib_pool, n, rng)
+    block = sample_counts(profile, libs, rng, max_stored_per_cell=max_stored_per_cell,
+                          max_counts_per_cell=max_counts_per_cell, overdispersion=overdispersion)
+    return block, detail
 
 
 def count_generation_diagnostics(

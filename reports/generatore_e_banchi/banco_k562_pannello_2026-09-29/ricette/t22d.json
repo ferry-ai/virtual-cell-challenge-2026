@@ -1,0 +1,23 @@
+{
+  "name": "banco_k562_t22d",
+  "effect": "shrunk",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "k562": {
+      "amplitude": 3.152,
+      "weights": {
+        "cd4_mix": 1.0,
+        "orion_hct116": 1.0,
+        "orion_hek293t": 1.0
+      }
+    }
+  },
+  "cis": {
+    "pairs": "reports/trasferimento/cis_2026-09-17/k562_neighbour_pairs.csv",
+    "max_distance_bp": 5000,
+    "scale": 2.0
+  },
+  "why": "A2, amplitude: C1 at twice t22's amplitude, 3.152. Cache r5."
+}

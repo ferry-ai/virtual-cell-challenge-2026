@@ -1,0 +1,23 @@
+{
+  "name": "banco_k562_t22",
+  "effect": "shrunk",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "k562": {
+      "amplitude": 1.576,
+      "weights": {
+        "cd4_mix": 1.0,
+        "orion_hct116": 1.0,
+        "orion_hek293t": 1.0
+      }
+    }
+  },
+  "cis": {
+    "pairs": "reports/trasferimento/cis_2026-09-17/k562_neighbour_pairs.csv",
+    "max_distance_bp": 5000,
+    "scale": 2.0
+  },
+  "why": "C1 of the K562 panel bench (R-REV action 4, reports/generatore_e_banchi/banco_k562_pannello_2026-09-29/RISULTATI.md), the reference: t22's recipe (configs/recipes/t22.json) without its K562 source, for the one context k562, whose truth is K562 cells: CD4, HCT116 and HEK293T at equal weight, shrunk, gamma 1, reliability 100, t22's cis head, amplitude 1.576, cache r5 as t22."
+}

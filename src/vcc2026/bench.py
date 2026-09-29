@@ -49,24 +49,39 @@ def log(msg: str) -> None:
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
-def load_effects(specs, genes) -> dict:
+def load_effects(specs, genes, with_observed: bool = False) -> dict:
     """``NAME=PATH`` npz files (targets, genes, lfc in ln units) -> {NAME: {target: vector on genes}}.
 
     How effects computed elsewhere (stage 100, or the archived stage 92) enter a bench: the same
     generator, the same scorer and the same targets as every other arm. Genes the file lacks get 0.
+
+    With ``with_observed`` each value is ``(vector, mask)``: the file's ``observed`` mask on
+    ``genes`` (stage 100 writes it; an observed pair can hold 0, and stage 45 keeps it in the
+    compositional shift), False where the file lacks the gene, and ``lfc != 0`` for a file
+    without the key.
     """
     out = {}
     for spec in specs or []:
         name, _, path = spec.partition("=")
         if "_a" in name or "+" in name or ":" in name:
             raise SystemExit(f"effects name {name!r} must not contain '_a', '+' or ':'")
-        z = np.load(path)
-        pos = pd.Index(z["genes"].astype(str)).get_indexer(np.asarray(genes).astype(str))
+        with np.load(path) as z:
+            pos = pd.Index(z["genes"].astype(str)).get_indexer(np.asarray(genes).astype(str))
+            have = pos >= 0
+            targets = z["targets"].astype(str)
+            lfc = z["lfc"][:, pos[have]]          # read once: every z[key] decompresses the array again
+            obs = (z["observed"][:, pos[have]].astype(bool) if "observed" in z.files else lfc != 0) \
+                if with_observed else None
         rows = {}
-        for i, t in enumerate(z["targets"].astype(str)):
+        for i, t in enumerate(targets):
             v = np.zeros(len(genes))
-            v[pos >= 0] = z["lfc"][i, pos[pos >= 0]]
-            rows[t] = v
+            v[have] = lfc[i]
+            if with_observed:
+                m = np.zeros(len(genes), dtype=bool)
+                m[have] = obs[i]
+                rows[t] = (v, m)
+            else:
+                rows[t] = v
         out[name] = rows
     return out
 
