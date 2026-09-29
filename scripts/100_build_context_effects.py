@@ -74,6 +74,17 @@ cannot estimate it. The transferred part (amplitude applied) is multiplied by it
 detectable genes equal the reference's, cis head included on both sides, as in ``pooling``. It acts
 before the association and cis blocks, and cannot be combined with ``pooling``.
 
+An optional ``expression_gate`` block sets to 0 every effect on a gene the context barely expresses
+(reports/invii/prediction_t26_2026-09-29/):
+
+    "expression_gate": {"basal": "processed/basal_sources_2026-09-26.csv", "min_cpm": 5.0}
+
+``basal`` (relative to the data root) has a ``gene_name`` column and one column of control CPM per context
+of the recipe; a gene whose CPM in that context is below ``min_cpm``, or missing, gets lfc 0 for every target,
+the cis head included. It acts last, and changes nothing else: the ``observed`` mask is left as it is, so a
+gated pair that a source measured is written as an observed 0 (stage 45 keeps the gene at its basal level).
+It needs only the context's controls, so it applies unchanged to new contexts.
+
 For each context this writes ``effects_<CTX>.npz`` with ``targets``, ``genes`` (the official
 axis) and ``lfc`` (ln fold change, amplitude applied), the format stage 76 reads through
 ``--effects CTX=PATH``. A (target, gene) pair no source measured stays exactly 0 and is
@@ -196,6 +207,22 @@ def apply_gene_share(eff: np.ndarray, share: np.ndarray, reference: np.ndarray |
     return out * scale, scale
 
 
+def apply_expression_gate(eff: np.ndarray, cpm: np.ndarray, min_cpm: float) -> tuple[np.ndarray, dict]:
+    """``eff`` with every gene whose context CPM is below ``min_cpm`` (or NaN) set to 0 for all targets.
+    Returns (effects, counts); the input is not modified."""
+    cpm = np.asarray(cpm, dtype=np.float64)
+    if cpm.shape != (eff.shape[1],):
+        raise ValueError(f"expression gate: {cpm.shape[0]} CPM values for {eff.shape[1]} genes")
+    low = ~(cpm >= float(min_cpm))
+    out = np.array(eff, copy=True)
+    energy = float(np.sum(np.asarray(eff, dtype=np.float64) ** 2))
+    gated = float(np.sum(np.asarray(eff, dtype=np.float64)[:, low] ** 2))
+    out[:, low] = 0
+    return out, {"min_cpm": float(min_cpm), "genes_gated": int(low.sum()),
+                 "genes_without_cpm": int(np.isnan(cpm).sum()),
+                 "energy_share_gated": gated / energy if energy > 0 else 0.0}
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--recipe", type=Path, required=True)
@@ -239,6 +266,14 @@ def main() -> None:
                       "genes_zero": int((share_vec == 0).sum()), "genes_one": int((share_vec == 1).sum()),
                       "median": float(np.median(share_vec))}
         log(f"gene share: {share_info['genes_zero']} genes at 0, median {share_info['median']:.3f}")
+    gate_spec, gate_basal, gate_info = recipe.get("expression_gate"), None, None
+    if gate_spec is not None:
+        gate_path = DATA_ROOT / gate_spec["basal"]
+        gate_basal = pd.read_csv(gate_path).set_index("gene_name").reindex(axis)
+        absent = [c for c in recipe["contexts"] if c not in gate_basal.columns]
+        if absent:
+            raise SystemExit(f"expression_gate basal {gate_spec['basal']} has no CPM column for {absent}")
+        gate_info = {"spec": gate_spec, "sha256": hashlib.sha256(gate_path.read_bytes()).hexdigest()}
     tables = [load_table(args.cache, n, effect, shrink_k) for n in names]
     cis_spec, cis_info = recipe.get("cis"), None
     if cis_spec is not None:
@@ -317,6 +352,12 @@ def main() -> None:
             cis_counts = add_cis(eff, observed, panel, axis, cis_model, coords,
                                  int(cis_spec["max_distance_bp"]), float(cis_spec.get("scale", 1.0)))
             log(f"{ctx}: cis head on {cis_counts['pairs']} pairs of {cis_counts['targets_with_a_neighbour']} targets")
+        gate_counts = None
+        if gate_spec is not None:
+            eff, gate_counts = apply_expression_gate(eff, gate_basal[ctx].to_numpy(dtype=float),
+                                                     float(gate_spec["min_cpm"]))
+            log(f"{ctx}: expression gate at {gate_counts['min_cpm']:g} CPM, {gate_counts['genes_gated']} genes set to 0, "
+                f"{gate_counts['energy_share_gated']:.1%} of the squared effect")
         path = args.out / f"effects_{ctx}.npz"
         np.savez_compressed(path, targets=np.array(panel), genes=axis, lfc=eff.astype(np.float32),
                             observed=observed)
@@ -334,6 +375,8 @@ def main() -> None:
             summary[ctx]["gene_share_scale"] = share_scale
         if assoc_spec is not None:
             summary[ctx]["association_targets"] = assoc_used
+        if gate_counts is not None:
+            summary[ctx]["expression_gate"] = gate_counts
         log(f"{ctx}: {covered.sum()}/{len(panel)} targets, median {np.median(nz):.0f} genes moved, "
             f"median q99 |ln fc| {summary[ctx]['abs_lfc_q99_median']:.3f}")
     manifest = {"stage": "100_build_context_effects", "written_utc": datetime.now(timezone.utc).isoformat(),
@@ -347,6 +390,8 @@ def main() -> None:
         manifest["association"] = assoc_info
     if share_info is not None:
         manifest["gene_share"] = share_info
+    if gate_info is not None:
+        manifest["expression_gate"] = gate_info
     with open(args.out / "manifest.json", "x", encoding="utf-8") as fh:
         json.dump(manifest, fh, indent=2)
     log(f"wrote {args.out}")

@@ -365,6 +365,40 @@ class Stage100GeneShareTests(unittest.TestCase):
         np.testing.assert_allclose(out, eff * share[None, :] * scale)
 
 
+class Stage100ExpressionGateTests(unittest.TestCase):
+    """Stage 100's expression_gate block: genes the context barely expresses get no effect, the rest is untouched."""
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("stage100", REPO / "scripts" / "100_build_context_effects.py")
+        cls.stage = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.stage)
+
+    def test_genes_below_the_threshold_or_without_cpm_are_zeroed_for_every_target(self):
+        eff = np.array([[1.0, -2.0, 0.5, 3.0], [0.25, 3.0, -1.0, -4.0]], dtype=np.float32)
+        cpm = np.array([10.0, 4.99, np.nan, 5.0])
+        out, info = self.stage.apply_expression_gate(eff, cpm, 5.0)
+        np.testing.assert_array_equal(out, [[1.0, 0.0, 0.0, 3.0], [0.25, 0.0, 0.0, -4.0]])
+        self.assertEqual(out.dtype, eff.dtype)
+        self.assertEqual((info["genes_gated"], info["genes_without_cpm"]), (2, 1))
+        self.assertAlmostEqual(info["energy_share_gated"], (4.0 + 0.25 + 9.0 + 1.0) / float(np.sum(eff.astype(float) ** 2)))
+
+    def test_the_input_is_not_modified_and_nothing_expressed_changes(self):
+        rng = np.random.default_rng(1)
+        eff = rng.normal(size=(5, 50))
+        keep = eff.copy()
+        out, info = self.stage.apply_expression_gate(eff, np.full(50, 100.0), 5.0)
+        np.testing.assert_array_equal(eff, keep)
+        np.testing.assert_array_equal(out, eff)
+        self.assertEqual(info["genes_gated"], 0)
+        self.assertEqual(info["energy_share_gated"], 0.0)
+
+    def test_a_cpm_vector_of_the_wrong_length_is_refused(self):
+        with self.assertRaises(ValueError):
+            self.stage.apply_expression_gate(np.zeros((2, 3)), np.ones(4), 5.0)
+
+
 class Stage100CisTests(unittest.TestCase):
     """Stage 100's cis head: a prior no panel target informs, added only near each target."""
 

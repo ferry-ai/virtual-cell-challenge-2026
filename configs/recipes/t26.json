@@ -1,0 +1,15 @@
+{
+  "name": "t26",
+  "effect": "shrunk",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "A": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "B": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "C": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}}
+  },
+  "cis": {"pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv", "max_distance_bp": 5000, "scale": 2.0},
+  "expression_gate": {"basal": "processed/basal_sources_2026-09-26.csv", "min_cpm": 5.0},
+  "why": "t25 (t22's recipe on the corrected cache r9) with one change: every effect on a gene below 5 CPM in the context's own controls is set to 0, the cis head included. In each of A, B and C about 72% of t22's squared effect sits on the 46-48% of genes below 5 CPM (measured 29/09 on effects_t22 and interim/basal_cpm_by_context). t23 zeroed 8,247 genes that fewer than two universes estimate, most of them weakly expressed, and officially raised pds_cosine by +0.0109 raw (twelve times the seed's +0.0009) while nmae, reach and Jaccard fell (CP-0042); the genes t23 zeroed that the contexts do express are the likely cause of the DE losses (interpretation). The gate keeps every gene at or above 5 CPM untouched, so the detectable-gene count of match_detectable (genes >= 5 CPM) does not move and no rescale is needed. It uses only the context's controls, so it applies unchanged to D/E/F. Sources, weights, amplitude, shrinkage, gamma, cache and cis head as t25."
+}

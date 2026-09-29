@@ -1,0 +1,88 @@
+{
+ "written_utc": "2026-09-29T12:24:37.848929+00:00",
+ "label": "t26 = t25 with every effect on a gene below 5 CPM in the context's own controls set to 0 (stage 100 expression_gate, cis head included); trial-01 generator, default seed",
+ "claim_type": "prediction registered before generation and submission; not a measurement",
+ "recipe": {
+  "path": "configs/recipes/t26.json",
+  "sha256": "428f37b6daeeef6331e6365d9c8e8a5998e1e5277fa2b72a33e7415ecbf293f2",
+  "sha256_lf": "428f37b6daeeef6331e6365d9c8e8a5998e1e5277fa2b72a33e7415ecbf293f2",
+  "cache": "processed/multisource_2026-09-27_r9 (stage 98, min_expected 1), as t25",
+  "effects": "processed/effects_t26_2026-09-29",
+  "effects_manifest_sha256": "0c273bf7464a851cc2468cd8a73760260c821eb447c7042cdd49b45afb16fbde"
+ },
+ "one_factor": "against t25 only the expression_gate block is added; sources, weights, amplitude 1.576, shrinkage, gamma 1, cache r9 and cis head are t25's. With the new stage-100 code and no gate, t25's effects are rebuilt bit-identical (checked 29/09 14:22).",
+ "references": {
+  "t25": 0.14023806091483554,
+  "t22": 0.14125049908559736,
+  "t24": 0.14289686095002022,
+  "t22_t24_mean": 0.1420736800178088,
+  "t23": 0.14186753817380468
+ },
+ "evidence_used": {
+  "energy": "measured 29/09: in A, B and C 71.8%, 70.8% and 67.2% of t25's squared effect sits on the 8,604, 8,907 and 8,409 genes below 5 CPM in the context's controls (processed/basal_sources_2026-09-26.csv columns A/B/C); on t22 72.0%, 72.3%, 66.8%",
+  "t23": "CP-0042: t23 zeroed 8,247 genes fewer than two universes estimate; officially pds_cosine +0.0109 raw (seed alone +0.0009), fidelity +0.0031, nmae +0.0099 worse, reach -0.0085, Jaccard -0.0018, mean +0.0006. The genes it zeroed below 5 CPM in A/B/C carry about 53% of t22's squared effect (read-only measurement of the bench design, 29/09); the ones it zeroed at or above 5 CPM are the likely cause of the DE losses (interpretation)",
+  "detectable": "the gate leaves every gene at or above 5 CPM untouched, so the median count of detectable genes (match_detectable, genes >= 5 CPM) is t25's and no rescale is needed",
+  "bench_blind": "the K562 real-scorer bench scores 7,681 genes and would see about 191 of the genes this gate zeroes (read-only design of R-REV action 4): only the server can say what the gate does to the official members"
+ },
+ "expected": {
+  "score_avg_band": [
+   0.134,
+   0.156
+  ],
+  "t26_minus_t25_band": [
+   -0.006,
+   0.012
+  ],
+  "pds_raw": "t25 +0.000..+0.020 (the part of t23's gain that comes from low-expression genes)",
+  "nmae_raw": "t25 -0.008..+0.008 (lower is better); no systematic loss, since expressed genes are untouched",
+  "reach_raw": "t25 -0.010..+0.008",
+  "fid_raw": "t25 -0.008..+0.008",
+  "jaccard_raw": "t25 +/- 0.004",
+  "mse": "scaled stays 0 (the energy drops by about 70%, lowering the raw value, still above the zero point)"
+ },
+ "reading_rule_fixed_before_the_result": {
+  "t26 >= t25 + 0.005": "the gate enters the reference, and the final-set pipeline applies it to D/E/F with their own control CPM (it needs nothing else)",
+  "t26 <= t25 - 0.005": "the gate leaves: effects on weakly expressed genes help the official score; examine which members fell",
+  "otherwise": "inconclusive within resolution: t25/t22 stay the reference. Members are read descriptively against t23's pattern: pds up with nmae, reach and Jaccard not down would say the DE losses of t23 came from the expressed genes it zeroed (hypothesis to confirm with a second submission, not adopted on one)"
+ },
+ "rrev_rule_note": "R-REV's proposed rule: an expected difference under 0.005 is proposed only for information that only the server gives, and said so. The expected centre here is about +0.004; the information (does removing low-expression effects keep t23's PDS gain without its DE losses) is one the real-scorer bench cannot give (bench_blind).",
+ "generator": "trial-01 (stage 45, trial-ext-profile), default seed 20260912, as t22 and t25; full shape 300 x 400 x 3",
+ "stage100_contexts": {
+  "A": {
+   "targets_covered": 300,
+   "genes_nonzero_median": 9784.0,
+   "abs_lfc_q99_median": 0.21333405089921592,
+   "sha256": "52dac9a872b7e72eafa6710435f75412803d5ab75ba10cf4d2254b70a4c39f64",
+   "expression_gate": {
+    "min_cpm": 5.0,
+    "genes_gated": 8604,
+    "genes_without_cpm": 0,
+    "energy_share_gated": 0.7178645536838312
+   }
+  },
+  "B": {
+   "targets_covered": 300,
+   "genes_nonzero_median": 9457.5,
+   "abs_lfc_q99_median": 0.220868849524676,
+   "sha256": "64da9ae9bcbe2ac594eca31fca3f5928165e01e9d4b1c2f9f9c9be3427419e05",
+   "expression_gate": {
+    "min_cpm": 5.0,
+    "genes_gated": 8907,
+    "genes_without_cpm": 0,
+    "energy_share_gated": 0.7078561812525455
+   }
+  },
+  "C": {
+   "targets_covered": 300,
+   "genes_nonzero_median": 9890.5,
+   "abs_lfc_q99_median": 0.23357310514552254,
+   "sha256": "7eb6d09b5521730aa9d96cc35141073c1384b206f41d20298a2203c2aef3d73b",
+   "expression_gate": {
+    "min_cpm": 5.0,
+    "genes_gated": 8409,
+    "genes_without_cpm": 0,
+    "energy_share_gated": 0.6724216646947002
+   }
+  }
+ }
+}

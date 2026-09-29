@@ -41,6 +41,8 @@ loro regole), t21 (la sua previsione è citata ma non è nel repository: vedi la
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 29/09 | [prediction_t26_2026-09-29/](prediction_t26_2026-09-29/) | t25 con effetto 0 sui geni sotto 5 CPM nei controlli del contesto (circa il 70 % dell'energia prevista): registrato alle 12:24 UTC prima di generare; banda +0,134…+0,156, regola a ±0,005 contro il t25 | registrazione; generazione e invio in attesa | ★★ |
+| 29/09 | [trial_2026-09-29/](trial_2026-09-29/) | Testi del t26, scritti prima della generazione | sì | ★ |
 | 28/09 | [prova_generale_2026-09-28/](prova_generale_2026-09-28/) | La prova generale del 22 ottobre (azione 3 di R-REV): A/B/C trattati come nuovi, 300 bersagli finti, fino al `.vcc` verificato, senza invio. Protocollo, sei previsioni e 13 difetti attesi dalla lettura del codice, fissati alle 20:00 prima di girare. **Esito (29/09, forma ridotta):** `.vcc` di D/E/F verificato; previsioni 1, 3–6 vere; D1 corretto; da correggere D4 (cache sbagliata in silenzio) e D9 (riferimento di γ) (CP-0044) | sì; copie di A/B/C, forma ridotta | ★★★ |
 | 28/09 | [lezioni_invii_2026-09-28/](lezioni_invii_2026-09-28/) | I nostri invii valutati e la classifica pubblica in soli aggregati: dal t16 nessun cambio supera il rumore del seme; contro la mediana dei primi 100 perdiamo soprattutto sull'MSE (tosato a 0 in tutti i nostri invii) | sì; il rumore viene da una sola coppia di semi | ★★★ |
 | 27/09 | [prediction_t25_2026-09-27/](prediction_t25_2026-09-27/) | t22 sulla cache r9 (stimatore senza l'artefatto del pseudoconteggio): +0,140238, −0,0010, non conclusivo | sì | ★★ |
