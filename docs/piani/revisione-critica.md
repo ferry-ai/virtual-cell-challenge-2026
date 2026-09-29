@@ -82,6 +82,13 @@ restano.
 
 ## 1. Le azioni, in ordine
 
+**Presa in carico aggiuntiva (29/09, 18:42 CEST, Codex, chat `01a0ee03-b357-7012-81a9-e8d7de767478`):**
+su nuovo mandato del proprietario, revisione scientifica e ingegneristica mirata a un candidato entro le 02:00.
+Ambito disgiunto dal banco K562 e dal t27 di Claude `f2abd9a6`: audit delle inferenze, del generatore e dei dati;
+nuovi esperimenti in `reports/analisi/lead_scientist_2026-09-29/` e destinazioni nuove nella radice dati.
+Il [protocollo](../../reports/analisi/lead_scientist_2026-09-29/PROTOCOLLO.md) precede le prove nuove.
+Non assegna né libera il lavoro altrui.
+
 L'ordine differisce dal §6 della revisione per una ragione sola: la sessione locale legge la radice dati e
 i worktree, che la sessione cloud non vedeva, e alcune cose rischiano di andare perse.
 
@@ -228,6 +235,11 @@ più di quelli di gara (revisione §2.5).
 - **Colab:** il job lo avvia il proprietario (LAVORO §3).
 - **Chiusura:** report e checkpoint. L'esito decide ampiezza ed esclusione per D/E/F, nella prova
   dell'azione 3.
+
+**Presa in carico (29/09, 18:10, Claude, sessione `f2abd9a6`):** protocollo e regola in
+[banco_k562_pannello_2026-09-29](../../reports/generatore_e_banchi/banco_k562_pannello_2026-09-29/RISULTATI.md),
+registrati prima del codice (`5652822`). Bracci aggiornati dopo t23, t26 e t27, con due controlli di validità contro i
+membri ufficiali. Codice in scrittura; il job su Colab lo avvia il proprietario.
 
 ### Azione 5 — i profili basali sull'asse comune
 

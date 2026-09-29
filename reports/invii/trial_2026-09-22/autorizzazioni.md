@@ -184,3 +184,9 @@ Via all'invio del **solo t26**, con la quota del 29/09 UTC. È il candidato regi
 (`prediction_t26_2026-09-29/`), generato alle 12:37–12:58 UTC e impacchettato alle 13:29–13:47 UTC da una copia del
 codice del commit `586fbc3`. L'archivio ha sha256 `e359a4ba…4736`, uguale a `archive_sha256` di
 `trial_2026-09-29/t26_packaging.json`, e `submit_trial2.py` lo ricontrolla prima dell'upload.
+
+## Il t27, 29 settembre: pronto, senza via
+
+Verso le 17:50 del 29/09 il proprietario ha risposto «No, tienilo pronto» alla domanda se inviare il t27 appena
+impacchettato. Il t27 (`prediction_t27_2026-09-29/`, registrato alle 15:45 UTC) si genera e si impacchetta, ma **non
+si invia** senza un via nuovo.
