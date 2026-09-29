@@ -1,0 +1,15 @@
+{
+  "name": "t27",
+  "effect": "shrunk",
+  "gamma": 1.0,
+  "reliability_scale": 100,
+  "allow_missing_targets": true,
+  "contexts": {
+    "A": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "B": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}},
+    "C": {"amplitude": 1.576, "weights": {"k562": 1.0, "cd4_mix": 1.0, "orion_hct116": 1.0, "orion_hek293t": 1.0}}
+  },
+  "cis": {"pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv", "max_distance_bp": 5000, "scale": 2.0},
+  "gene_share": {"path": "reports/invii/prediction_t27_2026-09-29/esclusione.csv"},
+  "why": "t25 (t22's recipe on the corrected cache r9) with one change: the transferred part of the 8,247 genes whose shared response fewer than two universes can estimate (t23's share = 0, reports/trasferimento/quota_condivisa_2026-09-27/t23/share.csv) is set to 0; every other gene keeps its full value (share 1), with no per-gene weighting and no rescale. This is the arm the pre-registered ablation of t23 preferred on the proxy (excl_noscale: exclusion helps, weighting beyond it does not, rescaling to t22's detectable genes hurts; reports/trasferimento/ablazione_t23_2026-09-27/). Officially t23 raised pds_cosine by +0.0109 raw while its DE members fell (CP-0042), and t26 showed that the weakly expressed genes are not where that gain came from (CP-0045); in A/B/C this exclusion touches 947-1,197 expressed genes (>= 5 CPM) and about 7,200 weakly expressed ones. The list is per gene, estimated from universes outside the panel, so it applies unchanged to D/E/F. Sources, weights, amplitude, shrinkage, gamma, cache and cis head as t25."
+}

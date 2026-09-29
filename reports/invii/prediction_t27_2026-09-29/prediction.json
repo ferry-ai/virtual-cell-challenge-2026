@@ -1,0 +1,80 @@
+{
+ "written_utc": "2026-09-29T15:45:14.639546+00:00",
+ "label": "t27 = t25 with the transferred part of the 8,247 genes fewer than two universes estimate set to 0 (t23's exclusion, no per-gene weighting, no rescale); trial-01 generator, default seed",
+ "claim_type": "prediction registered before generation and submission; not a measurement",
+ "recipe": {
+  "path": "configs/recipes/t27.json",
+  "sha256": "acb8571c39a546bf2d28923476f1b677155d0d9a1975bad3de214eb8656a8930",
+  "sha256_lf": "acb8571c39a546bf2d28923476f1b677155d0d9a1975bad3de214eb8656a8930",
+  "exclusion_csv": {
+   "path": "reports/invii/prediction_t27_2026-09-29/esclusione.csv",
+   "sha256": "4c56c3cfdc565bc343b61932b9deeb2c1949575832d18e78ac8596ed7c692cec",
+   "from": "reports/trasferimento/quota_condivisa_2026-09-27/t23/share.csv (share > 0 -> 1, share 0 -> 0)"
+  },
+  "cache": "processed/multisource_2026-09-27_r9, as t25",
+  "effects": "processed/effects_t27_2026-09-29",
+  "effects_manifest_sha256": "6bbe671e098df1fa4acf7ddbc1460f4cbfb8ef55755e588a6ac41f9d0b266ef9",
+  "stage100_code": "commit 117b2a8 (bit-identical to 586fbc3 on t22/t25/t26)"
+ },
+ "one_factor": "against t25 only the gene_share block with a 0/1 list and no match_detectable is added; sources, weights, amplitude 1.576, shrinkage, gamma 1, cache r9 and cis head are t25's",
+ "references": {
+  "t25": 0.14023806091483554,
+  "t22": 0.14125049908559736,
+  "t24": 0.14289686095002022,
+  "t22_t24_mean": 0.1420736800178088,
+  "t23": 0.14186753817380468,
+  "t26": 0.13872063571797597
+ },
+ "evidence_used": {
+  "t23": "CP-0042: t23 (share weighting + exclusion + rescale x1.41-1.48 to t22's detectable genes) officially: pds_cosine +0.0109 raw, fidelity +0.0031, nmae +0.0099 worse, reach -0.0085, Jaccard -0.0018; mean +0.0006",
+  "t26": "CP-0045: removing effects on genes below 5 CPM (about 70% of the energy) leaves the members nearly unchanged and pds -0.0020: t23's gain did not come from the weakly expressed genes",
+  "ablation": "reports/trasferimento/ablazione_t23_2026-09-27/ (proxy, registered before): exclusion passes, weighting beyond it does not, rescaling to t22's detectable genes passes in reverse; excl_noscale best of the arms. The proxy fails against official differences (CP-0041), so this is a hypothesis for the server",
+  "measured_29_09": "against t25 the exclusion removes 68.2% of the squared effect in each context, 34.7-37.3% of it on genes >= 5 CPM; it touches 947 / 1,034 / 1,197 expressed genes in A / B / C; the median count of detectable genes (>= 5 CPM, 4/sqrt(400 mu)) falls from 210.5 / 273.0 / 297.0 to 134.5 / 187.5 / 206.0"
+ },
+ "expected": {
+  "score_avg_band": [
+   0.128,
+   0.15
+  ],
+  "t27_minus_t25_band": [
+   -0.01,
+   0.008
+  ],
+  "pds_raw": "t25 +0.000..+0.015 (if t23's gain came from excluding poorly estimated expressed genes)",
+  "reach_raw": "t25 -0.020..+0.002 (a third fewer detectable genes, no rescale)",
+  "nmae_raw": "t25 -0.010..+0.010 (lower is better; t23's +0.0099 may have come from its rescale)",
+  "fid_raw": "t25 -0.006..+0.006",
+  "jaccard_raw": "t25 -0.004..+0.002",
+  "mse": "scaled stays 0"
+ },
+ "reading_rule_fixed_before_the_result": {
+  "t27 >= t25 + 0.005": "the exclusion enters the reference; the final-set pipeline applies the same per-gene list to D/E/F",
+  "t27 <= t25 - 0.005": "the exclusion alone costs more in DE members than it gains in PDS: it does not enter; a variant with the detectable count restored is a separate question with its own rule",
+  "otherwise": "inconclusive within resolution: t25/t22 stay the reference. Members read against t23's: pds up by at least +0.005 raw says the exclusion on expressed genes carries t23's PDS gain (to use only with the DE members restored, a new registered candidate); pds not up says t23's gain came from its weighting or rescale"
+ },
+ "rrev_rule_note": "Expected centre near 0, under 0.005: proposed as information only the server gives (which part of t23 moved the official PDS), as R-REV's proposed rule asks; the real-scorer bench sees about 586 of the excluded genes on its axis.",
+ "generator": "trial-01 (stage 45, trial-ext-profile), default seed 20260912, full shape 300 x 400 x 3",
+ "stage100_contexts": {
+  "A": {
+   "targets_covered": 300,
+   "genes_nonzero_median": 10286.0,
+   "abs_lfc_q99_median": 0.23019519880907915,
+   "sha256": "e4851b39c65c5d5af75dea4079cf547fda2839de31ff3d7705342791a652b771",
+   "gene_share_scale": 1.0
+  },
+  "B": {
+   "targets_covered": 300,
+   "genes_nonzero_median": 10286.0,
+   "abs_lfc_q99_median": 0.23019519880907915,
+   "sha256": "e4851b39c65c5d5af75dea4079cf547fda2839de31ff3d7705342791a652b771",
+   "gene_share_scale": 1.0
+  },
+  "C": {
+   "targets_covered": 300,
+   "genes_nonzero_median": 10286.0,
+   "abs_lfc_q99_median": 0.23019519880907915,
+   "sha256": "e4851b39c65c5d5af75dea4079cf547fda2839de31ff3d7705342791a652b771",
+   "gene_share_scale": 1.0
+  }
+ }
+}
