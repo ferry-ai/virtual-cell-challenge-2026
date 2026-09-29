@@ -6,6 +6,19 @@
 export CODE_DIR=/content/code_$(date +%s)_$$
 mkdir -p "$CODE_DIR" && cp -r /content/drive/MyDrive/vcc2026/code/. "$CODE_DIR/"
 source "$CODE_DIR/notebooks/colab_jobs/common.sh"
+# Run alone (added 29/09 before queueing): wait until no other job started in the last 6 hours lacks its .done
+# (older .started files without .done are runtimes lost on 27/09 and never finish).
+SELF="$(basename "${BASH_SOURCE[0]}")"
+while :; do
+  busy=""
+  for s in $(find "$DRIVE/runs/queue" -maxdepth 1 -name '*.sh.started' -mmin -360 2>/dev/null); do
+    job="$(basename "$s" .started)"
+    [ "$job" = "$SELF" ] && continue
+    [ -e "$DRIVE/runs/queue/$job.done" ] || busy="$busy $job"
+  done
+  [ -z "$busy" ] && break
+  echo "$(date -u +%FT%TZ) waiting for:$busy"; sleep 60
+done
 wait_for "$K562SC/report.json"
 IN="$DRIVE/data/processed/banco_k562_pannello_2026-09-29"
 wait_for "$IN/manifest.json"
