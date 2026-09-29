@@ -64,8 +64,6 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 | Percorso | Stato | Sostituito da | Cosa resta utile / nota | Scheda |
 |---|---|---|---|---|
-| `reports/analisi/lead_scientist_2026-09-29/` | attuale | — | Revisione operativa Codex del 29/09 su mandato del proprietario: protocollo, audit di bias scientifici, dati e generatore, esperimenti in destinazioni nuove. In corso; nessun candidato promosso alla registrazione | — |
-| `reports/sorgenti/basali_asse_2026-09-29/` | attuale | — | Azione 5 di R-REV, assegnata a Claude: protocollo del 29/09 per ricalcolare i profili basali sull'asse comune, controllarli dal grezzo e verificare l'impatto sui lettori e sulle quote t23/t27. Registrato durante il lavoro condiviso; non implica che i calcoli siano conclusi | — |
 | `reports/README.md`, `reports/*/README.md` | attuale | — | Gli indici dell'evidenza (D-046): che cosa leggere per primo, le otto categorie, il codice di ricerca che altri banchi importano; per ogni categoria una riga per cartella con data, nocciolo, validità e peso. Riassunti scritti da un agente il 28/09 dalle righe di questo registro e dai report: la fonte resta il report citato | — |
 | `reports/analisi/revisione_criticita_2026-09-28/` | attuale | — | Revisione critica del 28/09 (Claude, sessione cloud, su richiesta del proprietario): bias di valutazione (proxy di due membri su sei, verità rumorose, molteplicità, rumore ufficiale su una coppia), piattaforma e normalizzazione, evidenza mancante, codice di ricerca non testato, proposte in ordine; e `ALFREDO_VCC_MINI.md`, la valutazione punto per punto delle critiche di Alfredo al suo banco. **Revisione, non misura**: i soli calcoli nuovi sono quelli sul rumore dei punteggi ufficiali | [R-020](#r-020--evidenza-citata-ma-assente-dal-repository) |
 | `reports/analisi/sintesi_stato_2026-09-24/` | storico | — | Il report che stava nella radice (`REPORT_2026-09-24_stato_e_interpretazioni.md`), spostato qui il 28/09 senza modifiche: sintesi del 24/09 scritta prima dei punteggi di t16 e t17. Come stato è superato dal §0 di PROGETTO (dice che il migliore è il t15); le interpretazioni dei §3–4 vanno lette con CP-0034 | — |
@@ -141,7 +139,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/modelli/encoder_contesto_2026-09-28/` | attuale | — | Encoder di contesto pre-addestrato a ricostruire geni mascherati da profili basali e innestato nella rete senza modificarne i file (claude2, codice scritto senza eseguirlo); autoverifica su Kaggle 17 su 17 (rete 14 su 14); regola della prima tornata registrata alle 03:10 del 28/09 in `RISULTATI.md`, prima di qualunque corsa sui dati veri | — |
 | `reports/sorgenti/tahoe_dmso_2026-09-28/` | attuale | — | Controlli DMSO di Tahoe-100M: `extract_dmso.py` (codex, tutti i frammenti con piano preliminare, lanciato su Kaggle) e `extract_dmso_subset.py` (un frammento ogni k, letture parallele a intervalli di byte, verificato al bit su un frammento); `LAYOUT.md` con i contratti del dataset | — |
 | `reports/modelli/tahoe_bracci_2026-09-28/` | attuale | — | I bracci farmacologici di Tahoe-100M come perturbazioni in molti contesti (codex, esecuzione `20260928-032819-v2-tahoe-arms`): estrattore per linea × piastra × farmaco × dose con il DMSO della stessa piastra, stima degli effetti con lo stimatore degli universi, selezione di 73 farmaci (bersaglio unico silenziato anche dagli schermi CRISPRi, più controlli positivi) e il disegno dei banchi T1 (differenze fra linee tenute fuori) e T2 (ponte con il knockdown). Autoverifiche sintetiche passate; proposta, nessun risultato | — |
-| `reports/sorgenti/ponte_flex_2026-09-28/` | da-verificare | — | Gli stessi knockdown K562 letti con Flex (VIPerturb-seq) e con 3' (Replogle): coseno per bersaglio fra universi, su tutti i bersagli condivisi e sui forti, e pendenza per gene di Flex su 3'. Esplorativo, senza regola. r2 misura il tetto di rumore interno di VIPerturb-seq: metà dei pool contro l'altra metà 0,110 di coseno mediano, contro 0,030 di ciascuna metà verso il 3' sugli stessi bersagli. Le misure sulla coppia restano valide; è falsa la premessa che tutte le altre sorgenti siano in 3': CD4 è GEM-X Flex v1. Correzione nell'audit del 29/09; nessuna mappa predittiva su bersagli tenuti fuori è stata valutata da questo report | [R-021](#r-021--piattaforma-plateau-e-inferenze-causali-nelle-sintesi) |
+| `reports/sorgenti/ponte_flex_2026-09-28/` | attuale | — | Gli stessi knockdown K562 letti con Flex (VIPerturb-seq) e con 3' (Replogle): coseno per bersaglio fra universi, su tutti i bersagli condivisi e sui forti, e pendenza per gene di Flex su 3'. Esplorativo, senza regola. r2 misura il tetto di rumore interno di VIPerturb-seq: metà dei pool contro l'altra metà 0,110 di coseno mediano, contro 0,030 di ciascuna metà verso il 3' sugli stessi bersagli; il rumore spiega una parte del ponte basso, non tutto (`RISULTATI.md`) | — |
 | `reports/modelli/rete_contesti_r2_2026-09-28/` | attuale | — | La rete su più contesti: il registro r2 (K562 essenziale, VIPerturb-seq, RPE1 e i due schermi HIPSCI in più; famiglie per linea: `k562`, `ipsc`) e la regola della tornata r2 fissata alle 04:00 del 28/09 prima di addestrare (r2 contro r1 sugli stessi bersagli; l'encoder su r2); `varianti_r1/`: le varianti descrittive della rete su r1, tutte con il minimo della famiglia tenuta fuori entro i primi 100 passi | — |
 | `reports/modelli/rete_r1_lettura_2026-09-28/` | attuale | — | `leggi_r1.py`: la lettura della regola di r1 (27/09, 22:03) sui punteggi di `score_pred.py` per le previsioni mediate sui tre semi, più il segno per seme dai `metrics.json`; scritto dalla sessione Claude `f4f38e58` prima della lettura. Esito (29/09): uso del contesto, candidato ed E2 non passano (la rete perde contro `excl` su tre linee); J passa | — |
 | `reports/modelli/covariazione_2026-09-28/` | attuale | — | Azione 6 di R-REV, la misura decisiva per la rete relazionale: la covariazione fra geni è più conservata fra linee dell'effetto del singolo bersaglio, e serve a prevedere una linea nuova? Protocollo e regola fissati alle 19:56 del 28/09, prima di qualunque calcolo sugli effetti; codice e uscite `r1/`. Esito (29/09): inconclusivo per W1, «uso» no (CP-0043) | — |
@@ -1099,31 +1097,6 @@ correzione `5eb130c` del 15 settembre, portata il 24.
 
   La scheda resta aperta per questa sola voce: la citazione in `reports/invii/trial_2026-09-26/submission_texts.md`
   va marcata come previsione non scritta, oppure il proprietario ne dice la sorte.
-
-### R-021 — Piattaforma, plateau e inferenze causali nelle sintesi
-
-- **Perché è segnalato:** l'audit Codex del 29/09 ha trovato una premessa di piattaforma falsa
-  e inferenze più forti delle prove che le sostengono nelle sintesi del 28–29/09.
-- **Affermazioni contestate:** tutte le sorgenti della ricetta in 3'; ricetta satura e nessuna
-  ampiezza promettente; differenza di una sola coppia di semi trattata come rumore noto;
-  t26 come prova che il guadagno di t23 viene necessariamente dai soli geni espressi;
-  assenza di un confronto con DepMap per le ipotesi di identità, invece già svolto e conservato
-  fuori dalla repository pubblica.
-- **Evidenza contraria:** `reports/analisi/lead_scientist_2026-09-29/AUDIT_DATI.md` (metadati
-  originali CD4 GEM-X Flex, hash verificato) e `AUDIT_SCIENTIFICO.md` nella stessa cartella
-  (ricette, ricostruzione di 17 invii e compensazioni tra membri). La critica alle inferenze
-  non contraddice i punteggi storici.
-- **Cosa resta valido:** misure del ponte K562 Flex–3', punteggi ufficiali, confronto t26–t25
-  e soglie operative prefissate. I report originali restano immutati.
-- **È ancora usato o citato:** sì, in PROGETTO, negli indici e nelle schede della revisione.
-- **Disposizione proposta:** le sintesi vive di PROGETTO e dell'indice generale sono corrette;
-  leggere i report storici con i due audit accanto. Le nuove prove separano ampiezza e generatore
-  e non chiamano ±0,005 un intervallo di confidenza.
-  Il 29/09 sono corretti anche l'indice delle sorgenti e i riferimenti al confronto DepMap;
-  il ponte storico conserva le sue misure, con questa scheda come chiave di lettura.
-- **Cosa chiuderebbe la revisione:** propagazione delle qualifiche alle sintesi vive rimanenti;
-  una prova indipendente per localizzare causalmente il guadagno t23. Nessun esperimento nuovo
-  è necessario per riconoscere il saggio CD4, già dichiarato nei metadati originali.
 
 ## Revisione periodica e pulizia
 
