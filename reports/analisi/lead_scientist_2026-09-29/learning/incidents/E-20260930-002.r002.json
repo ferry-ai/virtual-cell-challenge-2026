@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260930-002",
+  "revision": 2,
+  "previous_sha256": "37e2c6538b0e7fb7e38d968beae4a804dd7f773abf9754ef9f328ed614a6ace8",
+  "recorded_utc": "2026-09-30T23:59:16+00:00",
+  "claim_type": "operational_incident",
+  "state": "verified_remotely",
+  "title": "R-LAB: letture a intervalli da Figshare fermate da 403 (URL S3 firmati per 10 secondi)",
+  "symptom": "Job 104 (j07_replogle_ess_rpe1_r3): HTTP 403 alla prima lettura di K562 essenziali, alle 21:01:45 UTC. Job 109 (j07_replogle_ess_rpe1_r5): 18 shard di K562 essenziali scritti (4 riusati dal 106, 14 nuovi), poi HTTPError 403 dentro RangeFile._get e rc=1 alle 22:16:50 UTC. Il job 106 (lettore r5, stessa correzione del 104) aveva scritto 4 shard prima di essere fermato per memoria.",
+  "cause": "Figshare risponde con un redirect a un URL S3 firmato con X-Amz-Expires=10 (letto con curl il 30/09 alle 22:39 UTC). Il lettore del 104 risolveva l'URL con HEAD, firmato per un altro metodo (corretto nel commit 42f00ff). Quello del 109 risolveva di nuovo dopo un 403, ma poi aspettava 5 x tentativo secondi prima di richiedere l'intervallo: dal secondo tentativo in poi la firma nuova era gia scaduta, e al quinto 403 il job si fermava. Causa verificata sul codice e sull'intestazione del redirect; il primo 403 del 109, prima dei tentativi, e la normale scadenza di una firma.",
+  "cause_verified": true,
+  "fix": "Commit 4af65e1: dopo un 400 o 403 RangeFile risolve di nuovo e richiede l'intervallo subito, senza pause (fino a 20 rinnovi per intervallo); pause crescenti solo per gli altri errori; anche la risoluzione e ritentata. rlab_job accetta piu cartelle --reuse. Snapshot r7 (sha256 2cda63e6017f88cfce09348af75db6eac4a08a01192bf167b02e75c02adcb282); job 112 (j07_replogle_ess_rpe1_r6) riusa gli shard del 109 e del 106.",
+  "regression_test": "test_range_reader.SignedUrls: ogni URL firmato serve una sola richiesta e poi risponde 403; il lettore legge tutto il file (10.240 byte in blocchi da 100) senza nessuna pausa. test_reuse: il riuso cerca gli shard nelle cartelle nell'ordine dato e rifiuta una ricevuta che non corrisponde. PASS il 1/10 alle 00:47 CEST.",
+  "next_guard": "Un host che firma URL a scadenza breve si legge rinnovando la firma e usandola subito; una pausa dopo il rinnovo e un errore. Prima di leggere un host nuovo a intervalli, leggere l'intestazione del redirect (X-Amz-Expires) e scriverla nel piano del job.",
+  "scope": "Verificato in remoto: il job 114 (snapshot r8) ha letto da Figshare i 10,7 GB di K562 essenziali e gli 8,7 GB di RPE1 fino in fondo, rinnovando le firme da 10 secondi, parita ok, rc=0 alle 23:56:34 UTC.",
+  "evidence": [
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/104_rlab_j07_replogle_ess_rpe1_r3.log",
+      "sha256": "e2c7fe9dfcae96673ad29de376ae8d66ff9ee2e242fc563b5ed87b9c26023d5d",
+      "bytes": 3514,
+      "supports": "Log del job 104: 403 alla prima lettura"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/109_rlab_j07_replogle_ess_rpe1_r5.log",
+      "sha256": "993de4bcdb3e51e58847bfb14199f4f89fd118508e2626bb7b8cc9740f537ca5",
+      "bytes": 5360,
+      "supports": "Log del job 109: 18 shard, poi 403 dentro RangeFile._get dopo i tentativi"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/figshare_redirect_2026-10-01.txt",
+      "sha256": "d9b0255a12f9671f40f20001053db08e54716a27cfe9fe8787ae8d64fff96114",
+      "bytes": 350,
+      "supports": "Intestazione del redirect di Figshare: X-Amz-Expires=10 (firma e credenziale oscurate)"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/inspect_remote.py",
+      "sha256": "0c31d786f6891232e9673a26121eb0d8d794fc3cb80345c342a3900640de4883",
+      "bytes": 12824,
+      "supports": "Lettore corretto (copia di lavoro al commit 4af65e1)"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/test_range_reader.py",
+      "sha256": "2694d498a6654a230e0a947452998ad0645ce175c2cb4e368dd68ca359a85a37",
+      "bytes": 4798,
+      "supports": "Test di regressione delle firme che scadono; codice, non ricevuta remota"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/114_rlab_j07_replogle_ess_rpe1_r7.log",
+      "sha256": "a16f2776e168f75b3ce7fea3e47eafa22300e5384e40177b476c734709243a09",
+      "bytes": 14034,
+      "supports": "Log del job 114: tutti gli shard di K562 essenziali e RPE1 letti da Figshare senza errori, pubblicazione"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/j07_replogle_ess_rpe1_r7_complete.json",
+      "sha256": "658d4aaffcddef4a5569ed299d3f2905065aecead85823002528abb033519705",
+      "bytes": 511,
+      "supports": "complete.json del job 114 copiato da Drive: parita ok per k562_essential e rpe1"
+    }
+  ],
+  "remote_verification": {
+    "evidence_path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/j07_replogle_ess_rpe1_r7_complete.json",
+    "criterion": "complete.json del job 114 con parita ok per k562_essential e rpe1, tutti gli intervalli letti da Figshare con il lettore r8, rc=0 nel dispatcher",
+    "observed_utc": "2026-09-30T23:56:34+00:00"
+  }
+}

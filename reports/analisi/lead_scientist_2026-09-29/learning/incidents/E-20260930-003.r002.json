@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260930-003",
+  "revision": 2,
+  "previous_sha256": "9c95cf21eeae78c67c5096b2fca4891cbdd716f36667a477035d9075e4971373",
+  "recorded_utc": "2026-09-30T23:59:16+00:00",
+  "claim_type": "operational_incident",
+  "state": "verified_remotely",
+  "title": "R-LAB: shard di Replogle 2022 con i codici delle categorie al posto dei bersagli (nessun controllo riconosciuto)",
+  "symptom": "Gli shard di K562 genome-wide (J06, job 096; 1.989.578 cellule, pubblicati come rlab-k562-gwps) e di K562 essenziali (J07, job 106 e 109) hanno control_kind 'none' per tutte le cellule; target, guides e library contengono numeri ('9866', '6787', ...). Il ciclo r2 del 1/10 su Kaggle ha ammesso 0 cellule di training dallo shard K562 (nessun controllo nella chiave). Le parita dei conteggi di questi job sono corrette.",
+  "cause": "I file a singola cellula di Replogle 2022 su Figshare usano la codifica vecchia di AnnData per le categorie: codici interi in obs/<colonna> e categorie in obs/__categories/<colonna> (gene, gene_id, gene_transcript, sgID_AB, transcript). adapters._h5_column leggeva solo la codifica nuova (gruppo con codes e categories) e restituiva i codici come testo. Verificato sul file vero di K562 essenziali (letto a intervalli) e su uno shard di J06.",
+  "cause_verified": true,
+  "fix": "Commit 404cc38: _h5_column decodifica obs/__categories. I dati gia scritti non si correggono sul posto: J06 e J07 si rileggono dalla sorgente con lo snapshot r8 (job 115 e 114, nessun riuso degli shard vecchi, K562 genome-wide pubblicato con lo slug nuovo rlab-k562-gwps-r2); il job 112, con lo stesso difetto, e fermato dal job 113. Gli shard e il dataset rlab-k562-gwps del 30/09 restano come erano e non entrano in nessun training.",
+  "regression_test": "test_legacy_categories.py: un h5ad scritto a mano nella codifica vecchia (codici int8 in obs/gene, categorie in obs/__categories/gene) letto con adapters.h5rows: bersagli decodificati, 2 NTC riconosciuti, librerie leggibili. PASS il 1/10. Sul file vero di Figshare la lettura corretta trova 2.058 bersagli e 10.691 cellule non-targeting.",
+  "next_guard": "Il manifest di ogni unita riporta control_kind: un'unita di perturbazioni con zero NTC, o con bersagli tutti numerici, si ferma prima della pubblicazione. Un nuovo adattatore si prova su un file nella codifica della sorgente, non solo su file scritti dall'anndata corrente.",
+  "scope": "Verificato in remoto: con lo snapshot r8 i job 114 e 115 trovano i controlli (K562 essenziali 10.691, come la lettura diretta del file; K562 genome-wide 75.328, come la copia scPerturb della stessa sorgente; RPE1 11.485), parita ok, pubblicati come rlab-k562-essential, rlab-rpe1, rlab-k562-gwps-r2.",
+  "evidence": [
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/j06_shard_labels_2026-10-01.txt",
+      "sha256": "d4361779c7bdec46b2774967b145e3cded922132fce45569892c7104ae412c3a",
+      "bytes": 990,
+      "supports": "Etichette di uno shard di J06: bersagli numerici, nessun controllo"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/figshare_k562_essential_obs_2026-10-01.txt",
+      "sha256": "2570177429dbffd1d1746ecd0b9d6837ab25209f909e54f7a1c5d5ac1ef197e0",
+      "bytes": 647,
+      "supports": "obs del file vero di Figshare: obs/__categories, e la lettura corretta con 10.691 non-targeting"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/adapters.py",
+      "sha256": "3f8e2cc16fdc8454ec5f0d5128e2aef07387b1806b24111e4eac4f4f4002c22a",
+      "bytes": 28291,
+      "supports": "Adattatore corretto (copia di lavoro al commit 404cc38)"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/test_legacy_categories.py",
+      "sha256": "913ea73dc6ad0a4bb611121d0ebb813068d845ded92c21f2abc50a0ed529b883",
+      "bytes": 2599,
+      "supports": "Test di regressione sulla codifica vecchia"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/j07_replogle_ess_rpe1_r7_complete.json",
+      "sha256": "658d4aaffcddef4a5569ed299d3f2905065aecead85823002528abb033519705",
+      "bytes": 511,
+      "supports": "complete.json del job 114 copiato da Drive: parita ok per k562_essential e rpe1"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/j06_k562_gwps_r2_complete.json",
+      "sha256": "44f9e378e2edb19ee7774b92f4bbaf1a7c4b4226916d8c60f61f8c6645a10711",
+      "bytes": 508,
+      "supports": "complete.json del job 115 copiato da Drive: parita ok per k562_gwps_a e k562_gwps_b"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/j07_r7_k562_essential_manifest.json",
+      "sha256": "702686e71b78c29db85b2209cadd17bf3b1b48b609fa29490cf40f242ef72887",
+      "bytes": 15720,
+      "supports": "Manifest di K562 essenziali del job 114: 10.691 NTC su 310.385 cellule"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/j06_r2_k562_gwps_a_manifest.json",
+      "sha256": "1d29af30a16b2aa421d951345a58322bf0080dfd8022997240787f73080f9bf4",
+      "bytes": 23633,
+      "supports": "Manifest di K562 genome-wide (prima meta) del job 115: 37.785 NTC su 1.000.000 cellule"
+    }
+  ],
+  "remote_verification": {
+    "evidence_path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/j06_r2_k562_gwps_a_manifest.json",
+    "criterion": "manifest dei job 114 e 115 con NTC riconosciuti (K562 essenziali 10.691, RPE1 11.485, K562 genome-wide 37.785 + 37.543 = 75.328) e parita ok",
+    "observed_utc": "2026-09-30T23:56:34+00:00"
+  }
+}

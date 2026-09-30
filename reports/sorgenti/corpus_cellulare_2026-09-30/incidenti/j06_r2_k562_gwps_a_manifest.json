@@ -1,0 +1,811 @@
+{
+ "unit": "k562_gwps_a",
+ "adapter": "h5rows",
+ "kwargs": {
+  "path": "/content/drive/MyDrive/vcc2026/data/raw/replogle/K562_gwps_raw_singlecell_01.h5ad",
+  "study": "replogle_k562_gwps",
+  "context": "K562",
+  "chemistry": "10x 3' v3",
+  "modality": "CRISPRi",
+  "axis_csv": "/content/work/rlab_j06_k562_gwps_r2/in/gene_names.csv",
+  "block": 20000,
+  "row_range": [
+   0,
+   1000000
+  ],
+  "target_col": "gene",
+  "control_values": [
+   "non-targeting"
+  ],
+  "guides_col": "sgID_AB",
+  "library_col": "gem_group",
+  "published_depth": "UMI_count"
+ },
+ "source": {
+  "id": "replogle_k562_gwps",
+  "release": "Figshare 20029387, Replogle et al. 2022",
+  "license": "CC BY 4.0",
+  "files": [
+   {
+    "role": "raw single-cell h5ad",
+    "locator": "https://ndownloader.figshare.com/files/35775507",
+    "bytes": 65830941948,
+    "md5": "887e3e6a8c8df6eadf7a3030a53c9546",
+    "sha256": "b697ef7fedcec2972ec334608f86f2a29cb25e70c81b6725195f4cda60a9de2c",
+    "copy": "Drive data/raw/replogle/, verified at its fetch"
+   }
+  ]
+ },
+ "shards": [
+  {
+   "shard": "shard_00000",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00000.h5ad",
+   "bytes": 143497284,
+   "sha256": "26936a4ea71f1663636c63a9b82b8b9a5efc5d4676b56f6fc2219742140d1ca5",
+   "cells": 20000,
+   "nnz": 64795412,
+   "sum_after": 246029250,
+   "targets": 7683,
+   "control_kind": {
+    "none": 19282,
+    "NTC": 718
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00001",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00001.h5ad",
+   "bytes": 145859939,
+   "sha256": "f525b8075334b5b1d736482b2b0013316ee9e72c05b7fe2cf765aa3f5aa54d59",
+   "cells": 20000,
+   "nnz": 66104930,
+   "sum_after": 252471046,
+   "targets": 7690,
+   "control_kind": {
+    "none": 19259,
+    "NTC": 741
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00002",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00002.h5ad",
+   "bytes": 144114982,
+   "sha256": "0956a1f907b9246f6cab10509dd27b1eb86328ab2d48478eaad5d7b4b398340b",
+   "cells": 20000,
+   "nnz": 65150359,
+   "sum_after": 246539922,
+   "targets": 7709,
+   "control_kind": {
+    "none": 19290,
+    "NTC": 710
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00003",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00003.h5ad",
+   "bytes": 141951252,
+   "sha256": "1a90b74f16cc02f86ee75883e9ae123b06ebdd4077b8b27c5501d4a543675622",
+   "cells": 20000,
+   "nnz": 64012256,
+   "sum_after": 241441082,
+   "targets": 7652,
+   "control_kind": {
+    "none": 19199,
+    "NTC": 801
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00004",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00004.h5ad",
+   "bytes": 141700039,
+   "sha256": "3f5e371cde5b617ace902289870e830014e64f94678975cab5d9f915ec839eae",
+   "cells": 20000,
+   "nnz": 63879346,
+   "sum_after": 239206914,
+   "targets": 7712,
+   "control_kind": {
+    "none": 19229,
+    "NTC": 771
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00005",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00005.h5ad",
+   "bytes": 144021738,
+   "sha256": "169d44f65039502a1f6d2b12ba9aec5e52ccc389851d8f961e8976e82f9edad0",
+   "cells": 20000,
+   "nnz": 65112459,
+   "sum_after": 245631657,
+   "targets": 7666,
+   "control_kind": {
+    "none": 19249,
+    "NTC": 751
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00006",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00006.h5ad",
+   "bytes": 144784109,
+   "sha256": "e17ff8d6114a473ccaf4683097510327cf018a03dca74cec7c42c6cb46b71662",
+   "cells": 20000,
+   "nnz": 65532878,
+   "sum_after": 248023182,
+   "targets": 7740,
+   "control_kind": {
+    "none": 19287,
+    "NTC": 713
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00007",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00007.h5ad",
+   "bytes": 142575401,
+   "sha256": "1b9f3cd35fd516459ad858b706ca2891d2ea149cdad2f0a0d0a81993f95322f2",
+   "cells": 20000,
+   "nnz": 64343449,
+   "sum_after": 238580098,
+   "targets": 7694,
+   "control_kind": {
+    "none": 19272,
+    "NTC": 728
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00008",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00008.h5ad",
+   "bytes": 140345732,
+   "sha256": "40233caa0eed5cee1bebf029ab34dbdb03669d87c9fcf6bcee2d9c8c95879f81",
+   "cells": 20000,
+   "nnz": 63155536,
+   "sum_after": 234853763,
+   "targets": 7699,
+   "control_kind": {
+    "none": 19201,
+    "NTC": 799
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00009",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00009.h5ad",
+   "bytes": 142433869,
+   "sha256": "8650de6cb3303749b5464f026288a3219034f78e8abe8bb752bf5d6a3c1b06a5",
+   "cells": 20000,
+   "nnz": 64256875,
+   "sum_after": 239572760,
+   "targets": 7685,
+   "control_kind": {
+    "none": 19277,
+    "NTC": 723
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00010",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00010.h5ad",
+   "bytes": 141535738,
+   "sha256": "dbcc4c8f230b6de8cad0ff1ea29e2c95fb62bf3ed4da17e470c2f39f1e1517a5",
+   "cells": 20000,
+   "nnz": 63798030,
+   "sum_after": 236706986,
+   "targets": 7726,
+   "control_kind": {
+    "none": 19238,
+    "NTC": 762
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00011",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00011.h5ad",
+   "bytes": 143020244,
+   "sha256": "abb88ebf0e5812ce16c02c62f1c55f200553e92bdf7c80068ee662748183ea32",
+   "cells": 20000,
+   "nnz": 64564927,
+   "sum_after": 244146280,
+   "targets": 7699,
+   "control_kind": {
+    "none": 19288,
+    "NTC": 712
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00012",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00012.h5ad",
+   "bytes": 139935545,
+   "sha256": "46b4e343a60db1ea98a06efb3f967a6a1bd188886d5c5ef5139b83daa60d8e1c",
+   "cells": 20000,
+   "nnz": 62922268,
+   "sum_after": 233384661,
+   "targets": 7679,
+   "control_kind": {
+    "none": 19210,
+    "NTC": 790
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00013",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00013.h5ad",
+   "bytes": 138293038,
+   "sha256": "7c0ca645e862ac6d84631da32119792bb68b933c9fad075c289c56b5fddcd761",
+   "cells": 20000,
+   "nnz": 62224491,
+   "sum_after": 230973507,
+   "targets": 7666,
+   "control_kind": {
+    "none": 19225,
+    "NTC": 775
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00014",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00014.h5ad",
+   "bytes": 142688717,
+   "sha256": "89a109cf76f35ca953b2fabcf8720017fcc0e6d6c258d0bf15d77b2a7908b66f",
+   "cells": 20000,
+   "nnz": 64368040,
+   "sum_after": 243012626,
+   "targets": 7737,
+   "control_kind": {
+    "none": 19253,
+    "NTC": 747
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00015",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00015.h5ad",
+   "bytes": 139955630,
+   "sha256": "5ce39fcf3fad81609959dcfb0521b3ba8f8b0869aee874ba60c4245212d91db9",
+   "cells": 20000,
+   "nnz": 62913160,
+   "sum_after": 233821532,
+   "targets": 7664,
+   "control_kind": {
+    "none": 19274,
+    "NTC": 726
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00016",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00016.h5ad",
+   "bytes": 140625688,
+   "sha256": "9d84c75a24d1e3140e6273fde6e6c2b66608b5ad04c980b08f31816cb7354c0f",
+   "cells": 20000,
+   "nnz": 63268107,
+   "sum_after": 235965096,
+   "targets": 7668,
+   "control_kind": {
+    "none": 19220,
+    "NTC": 780
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00017",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00017.h5ad",
+   "bytes": 139558598,
+   "sha256": "a900c7f7cf2103ffb72ddc698cb53da19c010d7d519d4a3ce7694023ca71be35",
+   "cells": 20000,
+   "nnz": 62680189,
+   "sum_after": 232829581,
+   "targets": 7749,
+   "control_kind": {
+    "none": 19242,
+    "NTC": 758
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00018",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00018.h5ad",
+   "bytes": 143043906,
+   "sha256": "a51159d984d35bdbb3ec28d0367a27e81cf575caf5c9f4ecde598ff539fa6ff8",
+   "cells": 20000,
+   "nnz": 64598555,
+   "sum_after": 240646511,
+   "targets": 7760,
+   "control_kind": {
+    "none": 19290,
+    "NTC": 710
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00019",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00019.h5ad",
+   "bytes": 141850722,
+   "sha256": "8f6687ee7bc4fbe79d4c1eb91d1f4db098f232e52325095a729cc555de37c0fc",
+   "cells": 20000,
+   "nnz": 63972175,
+   "sum_after": 236024151,
+   "targets": 7730,
+   "control_kind": {
+    "none": 19276,
+    "NTC": 724
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00020",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00020.h5ad",
+   "bytes": 139645076,
+   "sha256": "f3ebf469c74cca80abb868c332d29f263a5cc19b59f09d80357e6446c910454d",
+   "cells": 20000,
+   "nnz": 62763605,
+   "sum_after": 231514394,
+   "targets": 7665,
+   "control_kind": {
+    "none": 19227,
+    "NTC": 773
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00021",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00021.h5ad",
+   "bytes": 140647144,
+   "sha256": "f05862c983d27feced9d0bff06ed0653129e2c05c7ee40118bd54de69f0c367f",
+   "cells": 20000,
+   "nnz": 63329406,
+   "sum_after": 234445424,
+   "targets": 7710,
+   "control_kind": {
+    "none": 19211,
+    "NTC": 789
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00022",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00022.h5ad",
+   "bytes": 142597906,
+   "sha256": "0f0d5c673e2f81c691977a20c93e43a0a9aa5a8c7f0f569308c066b0668da08e",
+   "cells": 20000,
+   "nnz": 64365138,
+   "sum_after": 237690574,
+   "targets": 7651,
+   "control_kind": {
+    "none": 19206,
+    "NTC": 794
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00023",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00023.h5ad",
+   "bytes": 140901757,
+   "sha256": "c682ca80e7f05d4bfad2c223d01219a4173da021d1ab8e4bd36f6c817fb41abc",
+   "cells": 20000,
+   "nnz": 63446873,
+   "sum_after": 232050015,
+   "targets": 7661,
+   "control_kind": {
+    "NTC": 802,
+    "none": 19198
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00024",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00024.h5ad",
+   "bytes": 144760069,
+   "sha256": "6c28f25fafcd1286a56f102e61abceb7ba936b5ee49f2d39ff0e8d42fce0e0ae",
+   "cells": 20000,
+   "nnz": 65509093,
+   "sum_after": 247832454,
+   "targets": 7693,
+   "control_kind": {
+    "none": 19261,
+    "NTC": 739
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00025",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00025.h5ad",
+   "bytes": 144052673,
+   "sha256": "fa207626e7fd54b6385edb9f38b2317a6be576c0f62889aa5a1db7006242528e",
+   "cells": 20000,
+   "nnz": 65111584,
+   "sum_after": 245166017,
+   "targets": 7766,
+   "control_kind": {
+    "none": 19254,
+    "NTC": 746
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00026",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00026.h5ad",
+   "bytes": 142105708,
+   "sha256": "5cb36baaa61c5180dc9c5dcce16c3cee78491ef13587b0d20ecd36b08628c2ee",
+   "cells": 20000,
+   "nnz": 64075789,
+   "sum_after": 237839769,
+   "targets": 7662,
+   "control_kind": {
+    "none": 19219,
+    "NTC": 781
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00027",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00027.h5ad",
+   "bytes": 141855331,
+   "sha256": "892f6b41cee260e72c2c3476506b5a6d86cdd01633ecd65f69c5520504e557b2",
+   "cells": 20000,
+   "nnz": 63984254,
+   "sum_after": 238384913,
+   "targets": 7697,
+   "control_kind": {
+    "none": 19266,
+    "NTC": 734
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00028",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00028.h5ad",
+   "bytes": 141698832,
+   "sha256": "b4bf5773901bfbddedbf6af5185dd48ee1b94eda70cdc284e855181bf23ef12c",
+   "cells": 20000,
+   "nnz": 63872318,
+   "sum_after": 237643121,
+   "targets": 7716,
+   "control_kind": {
+    "none": 19230,
+    "NTC": 770
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00029",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00029.h5ad",
+   "bytes": 143088357,
+   "sha256": "6489f89d6a4ebe4f6568d60361758ac38899a96f47e77f7cef6d52e2ee55e805",
+   "cells": 20000,
+   "nnz": 64633305,
+   "sum_after": 241061766,
+   "targets": 7690,
+   "control_kind": {
+    "NTC": 754,
+    "none": 19246
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00030",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00030.h5ad",
+   "bytes": 142272982,
+   "sha256": "24795eb8cccc042f824183f1808be48208270cc227c92a4e54b1d5b4e1a07b47",
+   "cells": 20000,
+   "nnz": 64171287,
+   "sum_after": 237569202,
+   "targets": 7632,
+   "control_kind": {
+    "none": 19211,
+    "NTC": 789
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00031",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00031.h5ad",
+   "bytes": 142631010,
+   "sha256": "2e525c5de113ccd6a9fc9669e0d596f091f0776b0a0f01132d72894b026bfa84",
+   "cells": 20000,
+   "nnz": 64389515,
+   "sum_after": 238675901,
+   "targets": 7721,
+   "control_kind": {
+    "none": 19288,
+    "NTC": 712
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00032",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00032.h5ad",
+   "bytes": 142866878,
+   "sha256": "ad1be8ad11fdf2f74203c564db3f91fbfc349c34bb1f9588df6b80d4a4eb6eab",
+   "cells": 20000,
+   "nnz": 64504860,
+   "sum_after": 240187862,
+   "targets": 7680,
+   "control_kind": {
+    "none": 19258,
+    "NTC": 742
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00033",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00033.h5ad",
+   "bytes": 140722176,
+   "sha256": "123e3388bb2d2ecfc1b20b80d91d9385f8e4639f9e701a7d4083bddf594c31b8",
+   "cells": 20000,
+   "nnz": 63368841,
+   "sum_after": 232180124,
+   "targets": 7674,
+   "control_kind": {
+    "NTC": 752,
+    "none": 19248
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00034",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00034.h5ad",
+   "bytes": 139142185,
+   "sha256": "8e79f802878313e6c2e01682b030e09b87f71684ca85480fdc03aeae5d55f6f8",
+   "cells": 20000,
+   "nnz": 62534378,
+   "sum_after": 228649992,
+   "targets": 7658,
+   "control_kind": {
+    "none": 19217,
+    "NTC": 783
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00035",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00035.h5ad",
+   "bytes": 142596365,
+   "sha256": "3d0fca95b623884e7c8d679ffa7e1fbe337809199559693d5e2c290b7b403b86",
+   "cells": 20000,
+   "nnz": 64373819,
+   "sum_after": 235022964,
+   "targets": 7686,
+   "control_kind": {
+    "none": 19324,
+    "NTC": 676
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00036",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00036.h5ad",
+   "bytes": 140519553,
+   "sha256": "becef817e47d05c1212ee09392dad2857fd625419dfa830a2c40f2ef60166e52",
+   "cells": 20000,
+   "nnz": 63232316,
+   "sum_after": 233301422,
+   "targets": 7658,
+   "control_kind": {
+    "none": 19229,
+    "NTC": 771
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00037",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00037.h5ad",
+   "bytes": 139305451,
+   "sha256": "7c366924c807eecf12534f8c9602ffbee21f9a943890392774fd38969b2bc9e2",
+   "cells": 20000,
+   "nnz": 62575304,
+   "sum_after": 231139978,
+   "targets": 7679,
+   "control_kind": {
+    "none": 19237,
+    "NTC": 763
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00038",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00038.h5ad",
+   "bytes": 140331624,
+   "sha256": "cb8ad20713e25ddd2c74d2b0b5399e5d259ac7f82f9e285d93df8770555e80ce",
+   "cells": 20000,
+   "nnz": 63093004,
+   "sum_after": 235554862,
+   "targets": 7697,
+   "control_kind": {
+    "none": 19219,
+    "NTC": 781
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00039",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00039.h5ad",
+   "bytes": 136200051,
+   "sha256": "e3806e4de89feaaf23fa018217b60027b82bcfbcf63d2da0df262c3927028130",
+   "cells": 20000,
+   "nnz": 60919605,
+   "sum_after": 221842953,
+   "targets": 7733,
+   "control_kind": {
+    "none": 19243,
+    "NTC": 757
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00040",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00040.h5ad",
+   "bytes": 133625206,
+   "sha256": "1da5195d95f9e7a7e1a940cf26d277d51db2f6d53f9c117b812cd6f0908a30c0",
+   "cells": 20000,
+   "nnz": 59710499,
+   "sum_after": 212934391,
+   "targets": 7721,
+   "control_kind": {
+    "none": 19263,
+    "NTC": 737
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00041",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00041.h5ad",
+   "bytes": 141508316,
+   "sha256": "7efd8320b80b1ee37e4680b8bebb4c077d6276d5895be711b134379481bb053f",
+   "cells": 20000,
+   "nnz": 63793065,
+   "sum_after": 233880812,
+   "targets": 7713,
+   "control_kind": {
+    "none": 19191,
+    "NTC": 809
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00042",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00042.h5ad",
+   "bytes": 140499306,
+   "sha256": "13d5357902fa440df47a9ea1c85f412d87dbaedb4babc9bf76e6fac68a40f7f1",
+   "cells": 20000,
+   "nnz": 63254893,
+   "sum_after": 230576078,
+   "targets": 7669,
+   "control_kind": {
+    "none": 19213,
+    "NTC": 787
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00043",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00043.h5ad",
+   "bytes": 141831490,
+   "sha256": "3500b9fb203141e65ab006d86e9e86a200595e8fe8d50689ca33ec3a886e03b2",
+   "cells": 20000,
+   "nnz": 63990527,
+   "sum_after": 232431642,
+   "targets": 7741,
+   "control_kind": {
+    "none": 19207,
+    "NTC": 793
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00044",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00044.h5ad",
+   "bytes": 138281603,
+   "sha256": "935a13f4bfaf8f15374bb7511ae14486cb9a44fd73908a301ed86c3be055612a",
+   "cells": 20000,
+   "nnz": 62092529,
+   "sum_after": 225657658,
+   "targets": 7709,
+   "control_kind": {
+    "none": 19236,
+    "NTC": 764
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00045",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00045.h5ad",
+   "bytes": 139400321,
+   "sha256": "a2fa656d8d2c8d75212da25d05f857e717449e39f42cc7bc9792324dff8aeb55",
+   "cells": 20000,
+   "nnz": 62624428,
+   "sum_after": 228652125,
+   "targets": 7742,
+   "control_kind": {
+    "none": 19222,
+    "NTC": 778
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00046",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00046.h5ad",
+   "bytes": 137463042,
+   "sha256": "f715337f44849dfced5c84b767c3bba55270a793b3c5517cc1a0a86a2d157396",
+   "cells": 20000,
+   "nnz": 61649253,
+   "sum_after": 221793688,
+   "targets": 7677,
+   "control_kind": {
+    "none": 19284,
+    "NTC": 716
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00047",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00047.h5ad",
+   "bytes": 141745396,
+   "sha256": "fd62eb752e7de1c59288f6b1526510681c1f581bf8faf2909ee48587de75d1d5",
+   "cells": 20000,
+   "nnz": 63886478,
+   "sum_after": 236704359,
+   "targets": 7660,
+   "control_kind": {
+    "none": 19241,
+    "NTC": 759
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00048",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00048.h5ad",
+   "bytes": 142022618,
+   "sha256": "8f190b26330b19f529453a7da4a75567baf122db5ad30dd4f6d90011ed5dae5e",
+   "cells": 20000,
+   "nnz": 63996258,
+   "sum_after": 240799036,
+   "targets": 7701,
+   "control_kind": {
+    "none": 19262,
+    "NTC": 738
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00049",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j06_k562_gwps_r2/k562_gwps_a/shard_00049.h5ad",
+   "bytes": 142995442,
+   "sha256": "05f1cb7e87fbb762e1ab82f338b9a2ce8b1fd5006fb2677bccf2c24210fd87c5",
+   "cells": 20000,
+   "nnz": 64545187,
+   "sum_after": 241703232,
+   "targets": 7677,
+   "control_kind": {
+    "none": 19243,
+    "NTC": 757
+   },
+   "reused_from": null
+  }
+ ],
+ "totals": {
+  "shards": 50,
+  "cells": 1000000,
+  "nnz": 3185450853,
+  "counts": 11822747333,
+  "bytes": 7069106039,
+  "control_kind": {
+   "none": 962215,
+   "NTC": 37785
+  }
+ },
+ "parity": {
+  "per_shard_reread": true,
+  "cells": 1000000,
+  "covers_declared_rows": true,
+  "cells_equal_declared": true,
+  "ok": true
+ },
+ "seconds": 1494.4,
+ "utc": "2026-09-30T23:15:58.726304+00:00"
+}

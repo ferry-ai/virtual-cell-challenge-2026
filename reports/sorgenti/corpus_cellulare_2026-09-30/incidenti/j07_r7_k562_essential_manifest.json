@@ -1,0 +1,535 @@
+{
+ "unit": "k562_essential",
+ "adapter": "h5rows",
+ "kwargs": {
+  "path": "https://ndownloader.figshare.com/files/35773219",
+  "study": "replogle_k562_essential",
+  "context": "K562",
+  "chemistry": "10x 3' v3",
+  "modality": "CRISPRi",
+  "axis_csv": "/content/work/rlab_j07_replogle_ess_rpe1_r7/in/gene_names.csv",
+  "block": 10000,
+  "target_col": "gene",
+  "control_values": [
+   "non-targeting"
+  ],
+  "guides_col": "sgID_AB",
+  "library_col": "gem_group",
+  "published_depth": "UMI_count"
+ },
+ "source": {
+  "id": "replogle_k562_essential",
+  "release": "Figshare 20029387, Replogle et al. 2022",
+  "license": "CC BY 4.0",
+  "files": [
+   {
+    "role": "raw single-cell h5ad",
+    "locator": "https://ndownloader.figshare.com/files/35773219",
+    "bytes": 10661879995,
+    "md5": "4f1122ce1c7f13299a68df6459a266d3"
+   }
+  ]
+ },
+ "shards": [
+  {
+   "shard": "shard_00000",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00000.h5ad",
+   "bytes": 81734786,
+   "sha256": "5f2425341c1bd0093e95e19c5bd099a4fb98302454ac29ef96ad715d1205b121",
+   "cells": 10000,
+   "nnz": 37244440,
+   "sum_after": 147501058,
+   "targets": 1931,
+   "control_kind": {
+    "none": 9655,
+    "NTC": 345
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00001",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00001.h5ad",
+   "bytes": 81159093,
+   "sha256": "7df6e521b01af10009b9bfc92029027878a71631bfeb5a3965f0298304af9a40",
+   "cells": 10000,
+   "nnz": 36954602,
+   "sum_after": 145114048,
+   "targets": 1915,
+   "control_kind": {
+    "none": 9648,
+    "NTC": 352
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00002",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00002.h5ad",
+   "bytes": 80714628,
+   "sha256": "cc614bf7b86c13c5c62ed1bcce95a0ba7aa36b0caf74b452300c758940d6080e",
+   "cells": 10000,
+   "nnz": 36718750,
+   "sum_after": 142806258,
+   "targets": 1887,
+   "control_kind": {
+    "none": 9631,
+    "NTC": 369
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00003",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00003.h5ad",
+   "bytes": 80320053,
+   "sha256": "36f53045a115601066f752e23f01eb25ebd0fc20b76ffa99505c2c4976bbc3ed",
+   "cells": 10000,
+   "nnz": 36512624,
+   "sum_after": 142208465,
+   "targets": 1907,
+   "control_kind": {
+    "none": 9635,
+    "NTC": 365
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00004",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00004.h5ad",
+   "bytes": 79527255,
+   "sha256": "e30432cafbd318407ba9d71632df215d1e5ccadf9332c4a09e764527cff70a6a",
+   "cells": 10000,
+   "nnz": 36082463,
+   "sum_after": 140131882,
+   "targets": 1909,
+   "control_kind": {
+    "none": 9653,
+    "NTC": 347
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00005",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00005.h5ad",
+   "bytes": 80043063,
+   "sha256": "05191c2c0668b18943f2e1d423f8f9f4010984526bfda40ce7641de5a5a868ac",
+   "cells": 10000,
+   "nnz": 36355632,
+   "sum_after": 140952640,
+   "targets": 1905,
+   "control_kind": {
+    "none": 9679,
+    "NTC": 321
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00006",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00006.h5ad",
+   "bytes": 79869628,
+   "sha256": "3dee1c14a1ada3cc7eb713619aeaa5d59bce793bb9a3b116992d81109071b03e",
+   "cells": 10000,
+   "nnz": 36272952,
+   "sum_after": 139410003,
+   "targets": 1923,
+   "control_kind": {
+    "none": 9643,
+    "NTC": 357
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00007",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00007.h5ad",
+   "bytes": 81043054,
+   "sha256": "a896cdc3729830dee127128d203f7d361ed8bce9f71c3e1ebcfb369195ffbedc",
+   "cells": 10000,
+   "nnz": 36895103,
+   "sum_after": 143180700,
+   "targets": 1912,
+   "control_kind": {
+    "none": 9668,
+    "NTC": 332
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00008",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00008.h5ad",
+   "bytes": 80689476,
+   "sha256": "d15443bc03ec7565d783f336dd82536ee08e6012106a1b7a91042a4887959d36",
+   "cells": 10000,
+   "nnz": 36727124,
+   "sum_after": 142629678,
+   "targets": 1913,
+   "control_kind": {
+    "none": 9645,
+    "NTC": 355
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00009",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00009.h5ad",
+   "bytes": 80888467,
+   "sha256": "054469021b2cd773fd0444fad8fad7515e609679cf9e556462f61073b20e9aac",
+   "cells": 10000,
+   "nnz": 36816085,
+   "sum_after": 142794341,
+   "targets": 1923,
+   "control_kind": {
+    "none": 9663,
+    "NTC": 337
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00010",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00010.h5ad",
+   "bytes": 79958373,
+   "sha256": "33c2d61c94f8bb5924f741288001a833731f4e1d14f77accfb90843be8a483d8",
+   "cells": 10000,
+   "nnz": 36327709,
+   "sum_after": 139116982,
+   "targets": 1910,
+   "control_kind": {
+    "none": 9668,
+    "NTC": 332
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00011",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00011.h5ad",
+   "bytes": 79616517,
+   "sha256": "79d4afd9cbc6a4e86f9888b06a38a9b5324d15097377b7810e13697085541a8b",
+   "cells": 10000,
+   "nnz": 36132328,
+   "sum_after": 138643464,
+   "targets": 1914,
+   "control_kind": {
+    "none": 9680,
+    "NTC": 320
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00012",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00012.h5ad",
+   "bytes": 77724844,
+   "sha256": "858ea455efd03df0f512ae3df4b9d3c3193eb010184c48616cf7fbf1faa05ec4",
+   "cells": 10000,
+   "nnz": 35145476,
+   "sum_after": 132890367,
+   "targets": 1912,
+   "control_kind": {
+    "none": 9657,
+    "NTC": 343
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00013",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00013.h5ad",
+   "bytes": 79800768,
+   "sha256": "90f152da068b92b7eab4d76893aa638b68ad395c673380cf7bb9a3e427e03f0c",
+   "cells": 10000,
+   "nnz": 36235319,
+   "sum_after": 137599007,
+   "targets": 1925,
+   "control_kind": {
+    "none": 9680,
+    "NTC": 320
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00014",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00014.h5ad",
+   "bytes": 79359794,
+   "sha256": "50195d1ebc5e8905b2084bbe96f938459c5e273b22eca9f4281792f83130c6a1",
+   "cells": 10000,
+   "nnz": 36008108,
+   "sum_after": 137305517,
+   "targets": 1911,
+   "control_kind": {
+    "none": 9623,
+    "NTC": 377
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00015",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00015.h5ad",
+   "bytes": 80794834,
+   "sha256": "f04894d881b89aebaf322cb58ac40c8b0468fef0665b5e783fcfbe125c0888ee",
+   "cells": 10000,
+   "nnz": 36750574,
+   "sum_after": 143240437,
+   "targets": 1924,
+   "control_kind": {
+    "none": 9663,
+    "NTC": 337
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00016",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00016.h5ad",
+   "bytes": 80216178,
+   "sha256": "fa67875435ccbec229cd56f45fab0c5eca51a45f8717135d562f6d0ed57be742",
+   "cells": 10000,
+   "nnz": 36447961,
+   "sum_after": 141270561,
+   "targets": 1908,
+   "control_kind": {
+    "none": 9642,
+    "NTC": 358
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00017",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00017.h5ad",
+   "bytes": 78873218,
+   "sha256": "f68ac9deeb5208b74cb7095a635e34b1548e7227a4caee64c834997f45bbf2a6",
+   "cells": 10000,
+   "nnz": 35740465,
+   "sum_after": 136738156,
+   "targets": 1895,
+   "control_kind": {
+    "none": 9638,
+    "NTC": 362
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00018",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00018.h5ad",
+   "bytes": 79228343,
+   "sha256": "199e6fc2b8b4bc2937477cee2d99aa53e4394b2ff309e91b09efe6af8443205b",
+   "cells": 10000,
+   "nnz": 35909824,
+   "sum_after": 138248165,
+   "targets": 1898,
+   "control_kind": {
+    "none": 9675,
+    "NTC": 325
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00019",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00019.h5ad",
+   "bytes": 79314501,
+   "sha256": "31e93226bb84100320716abb74171166f59534abf4e943f87163645cb652782a",
+   "cells": 10000,
+   "nnz": 35969364,
+   "sum_after": 138170892,
+   "targets": 1901,
+   "control_kind": {
+    "none": 9670,
+    "NTC": 330
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00020",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00020.h5ad",
+   "bytes": 76257001,
+   "sha256": "130a2c6b448300e6203b7bd3062fb2c51bb7642e139a2bb2b9945d2fbfd2e675",
+   "cells": 10000,
+   "nnz": 34369286,
+   "sum_after": 127618357,
+   "targets": 1929,
+   "control_kind": {
+    "none": 9693,
+    "NTC": 307
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00021",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00021.h5ad",
+   "bytes": 78262414,
+   "sha256": "74a74a6eabbbd1ee3761dd9bb6f9f598749f31f60e03f96a38d370fd4d89117b",
+   "cells": 10000,
+   "nnz": 35407386,
+   "sum_after": 134710063,
+   "targets": 1911,
+   "control_kind": {
+    "none": 9657,
+    "NTC": 343
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00022",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00022.h5ad",
+   "bytes": 80394007,
+   "sha256": "262876cae6ad545ed6879413185f27ef15cfaa2f7d25d803f8ca25890dbec919",
+   "cells": 10000,
+   "nnz": 36549945,
+   "sum_after": 141645031,
+   "targets": 1901,
+   "control_kind": {
+    "none": 9646,
+    "NTC": 354
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00023",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00023.h5ad",
+   "bytes": 79913803,
+   "sha256": "ef2d929d3cbe214c66d008bc6f00d18da946ea51cc594cf9009017e7e189bc83",
+   "cells": 10000,
+   "nnz": 36292918,
+   "sum_after": 139423800,
+   "targets": 1916,
+   "control_kind": {
+    "none": 9624,
+    "NTC": 376
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00024",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00024.h5ad",
+   "bytes": 80403890,
+   "sha256": "0487b31592cebe231e1e8c4e0f6a86bca37b3d5b6009ce217789d883eee24911",
+   "cells": 10000,
+   "nnz": 36563618,
+   "sum_after": 140352617,
+   "targets": 1927,
+   "control_kind": {
+    "none": 9687,
+    "NTC": 313
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00025",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00025.h5ad",
+   "bytes": 78007813,
+   "sha256": "0908ced748b37cd8eaa7e89e43debfffe8226a157d55333020aec9bab12c9b00",
+   "cells": 10000,
+   "nnz": 35299208,
+   "sum_after": 132335584,
+   "targets": 1921,
+   "control_kind": {
+    "none": 9654,
+    "NTC": 346
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00026",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00026.h5ad",
+   "bytes": 78556338,
+   "sha256": "6a47349abaad45b6c0bca0a324f67f3d7ba8ff421bde01a6c2ba2077b66b2406",
+   "cells": 10000,
+   "nnz": 35586556,
+   "sum_after": 135233117,
+   "targets": 1897,
+   "control_kind": {
+    "none": 9654,
+    "NTC": 346
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00027",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00027.h5ad",
+   "bytes": 79346918,
+   "sha256": "ed71d05121baa496afd76e6c9d75c27ebb87101367e726e508191f35454a932b",
+   "cells": 10000,
+   "nnz": 35974213,
+   "sum_after": 138725996,
+   "targets": 1913,
+   "control_kind": {
+    "none": 9634,
+    "NTC": 366
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00028",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00028.h5ad",
+   "bytes": 78363347,
+   "sha256": "ee963867c83462b5fd01c331492ed1f19c779c8d1dfd906955ebb8ba897e35f8",
+   "cells": 10000,
+   "nnz": 35432681,
+   "sum_after": 135931521,
+   "targets": 1933,
+   "control_kind": {
+    "none": 9655,
+    "NTC": 345
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00029",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00029.h5ad",
+   "bytes": 79394988,
+   "sha256": "4cf29a0bd970621106d76dcbf04e99cd2f029906ebe36a7f6f3f0c86f6d03614",
+   "cells": 10000,
+   "nnz": 36043061,
+   "sum_after": 136859217,
+   "targets": 1914,
+   "control_kind": {
+    "none": 9648,
+    "NTC": 352
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00030",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00030.h5ad",
+   "bytes": 78497601,
+   "sha256": "a3e3e38e0eee4cc46944ff7b27bd7e309a1c8150ddc23794ff0761017a90ed13",
+   "cells": 10000,
+   "nnz": 35542294,
+   "sum_after": 134393532,
+   "targets": 1922,
+   "control_kind": {
+    "none": 9661,
+    "NTC": 339
+   },
+   "reused_from": null
+  },
+  {
+   "shard": "shard_00031",
+   "path": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r7/k562_essential/shard_00031.h5ad",
+   "bytes": 4040903,
+   "sha256": "4cdd65efa2f37b4eaafc495939237533b48356caf3218e0e44e193dd4e8e922b",
+   "cells": 385,
+   "nnz": 1373146,
+   "sum_after": 5119275,
+   "targets": 328,
+   "control_kind": {
+    "none": 365,
+    "NTC": 20
+   },
+   "reused_from": null
+  }
+ ],
+ "totals": {
+  "shards": 32,
+  "cells": 310385,
+  "nnz": 1121681215,
+  "counts": 4312300731,
+  "bytes": 2472315896,
+  "control_kind": {
+   "none": 299694,
+   "NTC": 10691
+  }
+ },
+ "parity": {
+  "per_shard_reread": true,
+  "cells": 310385,
+  "covers_declared_rows": true,
+  "cells_equal_declared": true,
+  "ok": true
+ },
+ "seconds": 2094.4,
+ "utc": "2026-09-30T23:25:40.033100+00:00"
+}
