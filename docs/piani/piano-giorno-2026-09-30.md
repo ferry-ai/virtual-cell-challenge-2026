@@ -4,6 +4,25 @@
 - **Aggiornato:** 30 settembre 2026, Europe/Rome.
 - **Mandato:** richiesta del proprietario in chat: rendere evidente un nuovo piano per Claude, usare più dati possibile per generalizzare, preferire singole cellule al pseudobulk e progettare un'ingestione su risorse Colab/Kaggle con controlli su disomogeneità ed estremi.
 - **Assegnazione:** redazione completata da Codex, chat `01a0f312-3075-7741-bb98-e15ab7c4c4b8`; destinatario operativo Claude, presa in carico da registrare con sessione, file e output secondo [PIANI §3](../PIANI.md#3-lavorare-in-una-cartella-condivisa). Nessun incarico altrui viene liberato o sostituito.
+- **Presa in carico (30/09, 19:08 CEST, Claude Code, sessione `a1ec75f0`),** su richiesta del
+  proprietario in chat («Esegui questo piano»): P0 e P1, poi la prima consegna del §10. File di
+  lavoro nuovi: `reports/sorgenti/corpus_cellulare_2026-09-30/` (D) e
+  `reports/modelli/risposta_biologica_2026-09-30/` (M); dati derivati sotto
+  `VCC2026_DATA_ROOT/processed/corpus_cellulare_2026-09-30/`. Misurato alla presa in carico: 1,7 GB
+  liberi su C: e 0,75 GB di RAM libera su 7,8, quindi nessuna ingestione pesante in locale.
+  Download e job in cloud partono solo dall'elenco approvato dal proprietario (§6).
+- **Avanzamento (30/09 sera, Claude `a1ec75f0`):** P0 e P1 fatti; prima consegna del §10 in
+  [corpus_cellulare](../../reports/sorgenti/corpus_cellulare_2026-09-30/README.md):
+  - inventario misurato delle 26 sorgenti: 7 hanno cellule in locale, 1 su Drive, 11 solo in
+    remoto, con i byte;
+  - contratto degli shard e pilota HepG2 di 1.000 cellule in parità;
+  - prime misure QC per cellula;
+  - [piano dei job](../../reports/sorgenti/corpus_cellulare_2026-09-30/PIANO_JOB.md) J01–J12 e R01.
+
+  Ruoli e riserva proposti in [risposta_biologica](../../reports/modelli/risposta_biologica_2026-09-30/PROTOCOLLO.md):
+  fra i dati sul disco nessun grande schermo CRISPRi cellulare è intatto, e la riserva primaria
+  proposta è H1 della gara 2025. **Aspetta il proprietario:** destinazione degli shard, via a J01–J03
+  e ai download, regola sugli account, riserva.
 - **Prossimo passo:** eseguire P0–P1: riconciliare tutti gli archivi e i derivati con gli input dei training, identificare quali conteggi cellulari sono recuperabili e preparare manifest di shard e schede QC. Proseguire con P2 sulle sorgenti già verificabili senza attendere quelle bloccate.
 - **Dipendenze:** [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), [R-COMP](modello-competitivo.md), [ERRORI](../ERRORI.md), [PROCEDURE §3](../PROCEDURE.md#3-job-su-colab-e-kaggle). R-DATI e R-SWITCH contribuiscono ai blocchi qui definiti.
 - **Ambito:** nuova priorità operativa dentro R-COMP. La ricetta iPSC resta un confronto; non è il prerequisito della rete. Nessuna scadenza artificiale o arresto a fine giornata: l'ordine sotto indica dipendenze, non durata promessa.
@@ -94,7 +113,7 @@ Congelare criteri e trasformazioni su training/controlli, per assay e libreria. 
 
 ## 6. Ingestione da laboratorio guidata da Claude
 
-Claude prepara e revisiona un **piano di job indipendenti**, per studio/libreria/shard, con un solo registro autorevole. Nessuna scrittura concorrente sullo stesso H5AD o manifest finale. La disponibilità di diversi account non è assunta come moltiplicatore automatico di quota.
+Claude prepara e revisiona un **piano di job indipendenti**, per studio/libreria/shard, con un solo registro autorevole. Nessuna scrittura concorrente sullo stesso H5AD o manifest finale. La disponibilità di diversi account non è assunta come moltiplicatore automatico di quota. Rimane possibile l'utilizzo di altri account colab e kaggle (i token kaggle sono disponibili in cartella .kaggle e .kaggle-codex indistinamente, anche se non sei codex puoi usare il token)
 
 **Vincoli del servizio verificati il 30/09:** le [FAQ Colab](https://research.google.com/colaboratory/faq.html) vietano l'uso di account multipli per aggirare restrizioni di accesso/risorse e, sui runtime gratuiti senza saldo positivo, i worker di calcolo distribuito. Non basare il progetto su quella modalità. Per risorse compatibili con il piano d'uso si possono predisporre notebook autonomi o calcolo dedicato; per Kaggle verificare [termini](https://www.kaggle.com/terms), account, regole della competizione e disponibilità effettiva prima dei lanci. Non assumere autorizzata una politica multi-account non verificata.
 

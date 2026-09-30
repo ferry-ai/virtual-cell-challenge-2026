@@ -1,0 +1,299 @@
+# R-LAB, P1: every source of the day plan (§3), with what exists locally and at what level.
+# Written by hand from the reports cited in `fonti`; `inventory.py` checks every local path, reads
+# its format cheaply and writes availability.csv. Paths under `locale` are relative to the data
+# root (VCC2026_DATA_ROOT); `drive` paths are relative to "G:/Il mio Drive/vcc2026/data".
+# livello: cellule | aggregati | effetti | de | bulk | annotazioni | metadati | nessuno
+# A remote locator is recorded only when a report or a manifest cites it; otherwise it says so.
+# Identities of the competition contexts A/B/C are never written here.
+
+sorgenti:
+  - id: replogle_k562_gwps
+    studio: Replogle et al. 2022, K562 genome-wide Perturb-seq
+    modalita: CRISPRi
+    contesti: [K562]
+    livello_locale: aggregati
+    cellule_remote: si
+    locale: [external/K562_gwps_raw_bulk_01.h5ad, processed/universe_k562_2026-09-26/]
+    drive: [raw/replogle/K562_gwps_raw_singlecell_01.h5ad]
+    livello_drive: cellule
+    remoto: file a singola cellula già su Drive (65,8 GB); origine Replogle 2022, locatore originale non registrato nei report
+    ostacolo: 65,8 GB non stanno sul portatile (1,7 GB liberi); va letto a blocchi su Colab dal Drive
+    prossimo_passo: adattatore h5ad a blocchi su Colab, primo shard per target del pannello e controlli, parità con lo stadio 71
+    fonti: [reports/analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md]
+  - id: replogle_k562_essential
+    studio: Replogle et al. 2022, K562 essential
+    modalita: CRISPRi
+    contesti: [K562]
+    livello_locale: aggregati
+    cellule_remote: si
+    locale: [external/K562_essential_raw_bulk_01.h5ad, processed/universe_k562ess_2026-09-26/]
+    remoto: file a singola cellula dello stesso rilascio, locatore non registrato nei report
+    ostacolo: nessuna copia cellulare locale o su Drive
+    prossimo_passo: registrare locatore, byte e licenza del file a singola cellula; chiedere il via al download o alla lettura remota
+    fonti: [reports/sorgenti/universo_2026-09-26/RISULTATI.md]
+  - id: replogle_rpe1
+    studio: Replogle et al. 2022, RPE1 essential
+    modalita: CRISPRi
+    contesti: [RPE1]
+    livello_locale: aggregati
+    cellule_remote: si
+    locale: [external/rpe1_raw_bulk_01.h5ad, processed/universe_rpe1_2026-09-26/]
+    remoto: file a singola cellula dello stesso rilascio, locatore non registrato nei report
+    ostacolo: nessuna copia cellulare locale o su Drive
+    prossimo_passo: come K562 essential
+    fonti: [reports/sorgenti/universo_2026-09-26/RISULTATI.md]
+  - id: viperturb_k562_flex
+    studio: VIPerturb-seq, K562 in 10x Flex
+    modalita: CRISPRi
+    contesti: [K562]
+    livello_locale: aggregati
+    cellule_remote: si
+    locale: [interim/viperturb_sums/, processed/universe_viperturb_2026-09-27_p1/, processed/universe_viperturb_2026-09-28_halfa/, processed/universe_viperturb_2026-09-28_halfb/]
+    remoto: https://zenodo.org/records/18460279 (genome_wide_filtered.rds, già filtrato dagli autori)
+    ostacolo: l'originale è un RDS prefiltrato; le cellule non sono su disco
+    prossimo_passo: lettura dell'RDS su Colab con conversione a shard, dichiarando il prefiltro degli autori
+    fonti: [reports/sorgenti/ponte_flex_2026-09-28/RISULTATI.md, reports/analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md]
+  - id: cd4_marson2025
+    studio: Marson lab 2025, CD4 T genome-wide CRISPRi (Rest, Stim8hr, Stim48hr)
+    modalita: CRISPRi
+    contesti: [CD4 Rest, CD4 Stim8hr, CD4 Stim48hr]
+    livello_locale: aggregati
+    cellule_remote: si
+    locale: [external/cd4_gw/GWCD4i.pseudobulk_merged.h5ad, external/cd4/panel_rows_2026-09-22.h5ad, processed/universe_cd4_2026-09-27_me1/]
+    remoto: https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/ (per donatore e condizione, *.assigned_guide.h5ad, circa 143 GB ciascuno per D1_Rest)
+    ostacolo: il file locale da 44,6 GB è pseudobulk; le cellule sono in file remoti enormi
+    prossimo_passo: lettura a intervalli di byte su Colab per i target scelti, conservando donatore, guida, condizione; parità con il pseudobulk
+    fonti: [reports/storico/candidate_verification/pilot/cd4_D1_Rest_64.manifest.json, reports/sorgenti/universo_2026-09-26/CD4.md]
+  - id: orion_hct116
+    studio: Xaira X-Atlas Orion, HCT116
+    modalita: CRISPRi
+    contesti: [HCT116]
+    livello_locale: aggregati
+    cellule_remote: si
+    locale: [interim/orion_universe_hct116/, processed/universe_orion_hct116_2026-09-27_me1/, external/orion/hct116_panel_pools_2026-09-23.h5ad]
+    remoto: https://huggingface.co/datasets/Xaira-Therapeutics/X-Atlas-Orion (109 shard, 46,6 GB letti in streaming)
+    ostacolo: licenza CC-BY-NC-SA-4.0; cellule solo remote
+    prossimo_passo: shard cellulari su Colab dal dataset HF, filtro pass_guide_filter dichiarato, lotti GEM conservati
+    fonti: [reports/sorgenti/universo_2026-09-26/ORION.md, reports/sorgenti/README.md]
+  - id: orion_hek293t
+    studio: Xaira X-Atlas Orion, HEK293T
+    modalita: CRISPRi
+    contesti: [HEK293T]
+    livello_locale: aggregati
+    cellule_remote: si
+    locale: [interim/orion_universe_hek293t/, processed/universe_orion_hek293t_2026-09-27_me1/, external/orion/hek293t_panel_pools_2026-09-23.h5ad]
+    remoto: https://huggingface.co/datasets/Xaira-Therapeutics/X-Atlas-Orion (223 shard, 79,7 GB)
+    ostacolo: come HCT116
+    prossimo_passo: come HCT116
+    fonti: [reports/sorgenti/universo_2026-09-26/ORION.md]
+  - id: kolf21j
+    studio: Nourreddine, Doctor et al. 2026, KOLF2.1J CRISPRi del genoma espresso
+    modalita: CRISPRi
+    contesti: [KOLF2.1J iPSC]
+    livello_locale: aggregati
+    cellule_remote: si
+    locale: [interim/kolf_sums/, processed/universe_kolf_2026-09-27_me1/]
+    remoto: Figshare+ 27261219 (h5ad per cellula, 189 GB; CC BY 4.0)
+    ostacolo: 189 GB; le somme locali non restituiscono le cellule
+    prossimo_passo: lettura a blocchi su Colab o Kaggle, un shard per blocco di target; parità con kolf_sums
+    fonti: [reports/sorgenti/universo_kolf_2026-09-27/RISULTATI.md]
+  - id: hipsci_gw_fitness
+    studio: HIPSCI CRISPRi genome-wide, geni di fitness (giorno 3)
+    modalita: CRISPRi
+    contesti: [iPSC in pool]
+    livello_locale: cellule
+    cellule_remote: si
+    locale: [external/hipsci/GenomeWideScreen_FitnessGenes_RNA-UMI-Counts.csv.gz, interim/hipsci_sums/gw_fitness/, interim/hipsci_sums/gw_fitness_ua1/, processed/universe_hipsci_gwfit_2026-09-27_ua1/]
+    remoto: Figshare 27989294 (conteggi), 26819743 (LFC)
+    ostacolo: 36 NTC nel pool; le versioni ua1 usano come controlli anche le cellule non assegnate
+    prossimo_passo: primo shard cellulare in locale se entra nel disco, altrimenti su Colab; NTC e non assegnate in etichette separate
+    fonti: [reports/sorgenti/universo_hipsci_2026-09-27/RISULTATI.md, reports/sorgenti/ricerca_sorgenti_2026-09-26/RISULTATI.md]
+  - id: hipsci_gw_nonfitness
+    studio: HIPSCI CRISPRi genome-wide, geni non di fitness (giorno 6)
+    modalita: CRISPRi
+    contesti: [iPSC in pool]
+    livello_locale: cellule
+    cellule_remote: si
+    locale: [external/hipsci/GenomeWideScreen_NonFitnessGenes_RNA-UMI-Counts.csv.gz, interim/hipsci_sums/gw_nonfitness/, interim/hipsci_sums/gw_nonfitness_ua1/, processed/universe_hipsci_gwnonfit_2026-09-27_ua1/]
+    remoto: Figshare 27989294, 26819743
+    ostacolo: come fitness
+    prossimo_passo: come fitness
+    fonti: [reports/sorgenti/universo_hipsci_2026-09-27/RISULTATI.md]
+  - id: hipsci_targeted_19
+    studio: HIPSCI CRISPRi mirato, 19 linee iPSC
+    modalita: CRISPRi
+    contesti: [19 linee iPSC]
+    livello_locale: cellule
+    cellule_remote: si
+    locale: [external/hipsci/TargetedScreen_RNA-UMI-Counts.csv.gz, external/hipsci/TargetedScreen_LFC_byGuide-perLine.tsv.gz, interim/hipsci_sums/targeted_p2/]
+    remoto: Figshare 27989294, 26819743
+    ostacolo: 4,5 GB compressi; mai entrato in un training
+    prossimo_passo: priorità d'integrazione; shard per linea con guida, linea e clone; linee a silenziamento debole marcate, non scartate
+    fonti: [reports/analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md, reports/sorgenti/universo_hipsci_2026-09-27/RISULTATI.md]
+  - id: a549_ko
+    studio: Liu, Hillsley et al. 2026, A549 knockout Cas9 di 1.000 geni (GSE345058)
+    modalita: KO
+    contesti: [A549]
+    livello_locale: aggregati
+    cellule_remote: si
+    locale: [interim/a549_sums_r2/, processed/universe_a549_2026-09-27_me1/]
+    remoto: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE345nnn/GSE345058/suppl/ (conteggi per cellula, 606.075 cellule)
+    ostacolo: modalità diversa; testa KO separata
+    prossimo_passo: shard cellulari su Colab; nessuna equivalenza KO = CRISPRi
+    fonti: [reports/sorgenti/ricerca_sorgenti_2026-09-25/RISULTATI.md, reports/sorgenti/universo_nuovi_2026-09-27/RISULTATI.md]
+  - id: southard_hs27
+    studio: Southard et al. 2025, CRISPRa di 1.836 fattori di trascrizione (Hs27 e RPE-1)
+    modalita: CRISPRa
+    contesti: [Hs27, RPE-1]
+    livello_locale: aggregati
+    cellule_remote: si
+    locale: [interim/southard_sums/, processed/universe_southard_hs27_2026-09-27_p2/]
+    remoto: Zenodo 15200179, 15213597, 15213619, 15211972 (h5ad per cellula, CC BY 4.0)
+    ostacolo: modalità diversa; RPE-1 di questo studio non ancora ingerito
+    prossimo_passo: shard cellulari su Colab, testa CRISPRa separata; aggiungere la parte RPE-1
+    fonti: [reports/sorgenti/ricerca_sorgenti_2026-09-25/RISULTATI.md, reports/sorgenti/universo_nuovi_2026-09-27/RISULTATI.md]
+  - id: jurkat_gse249595
+    studio: GSE249595, schermo mirato multi-guida in Jurkat
+    modalita: CRISPRi
+    contesti: [Jurkat]
+    livello_locale: cellule
+    cellule_remote: si
+    locale: [external/jurkat_gse249595/]
+    remoto: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE249595
+    ostacolo: alta MOI e hashing; derivati H5AD precedenti rimossi
+    prossimo_passo: adattatore multi-guida sui canali MTX locali; primo shard da un canale, assegnazione delle guide verificata prima della supervisione
+    fonti: [reports/analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md]
+  - id: mixscale
+    studio: Mixscale, DE su più linee e stimoli (Zenodo 14518762)
+    modalita: CRISPRi
+    contesti: [sei linee, cinque stimoli]
+    livello_locale: de
+    cellule_remote: si
+    locale: [external/mixscale_zenodo14518762/]
+    remoto: https://zenodo.org/records/14518762 (DE; e oggetti Seurat a livello di cellula per IFNG, IFNB, INS, TGFB e TNFA, circa 20 GB, CC BY 4.0, verificati il 30/09 sull'API)
+    ostacolo: in locale nessuna cellula; oggetti Seurat (RDS) da convertire; disegno non interamente incrociato
+    prossimo_passo: conversione degli RDS a shard su un runtime con R; intanto loss DE mascherata
+    fonti: [reports/sorgenti/pattern_mixscale_2026-09-24/RISULTATI.md, reports/sorgenti/ricerca_sorgenti_2026-09-25/RISULTATI.md]
+  - id: dld1_gse337988
+    studio: DLD-1, GSE337988 (sottolibreria 2, Low1 e Low2)
+    modalita: CRISPRi
+    contesti: [DLD-1]
+    livello_locale: effetti
+    cellule_remote: da_verificare
+    locale: [external/dld1_gse337988/]
+    remoto: GEO GSE337988, file per cellula da verificare
+    ostacolo: LFC e SE su un pannello di risposte mirato
+    prossimo_passo: verificare promotori, unità e grezzi; loss sui geni misurati
+    fonti: [reports/sorgenti/dld1_audit_2026-09-24/RISULTATI.md]
+  - id: hepg2_nadig
+    studio: Nadig, O'Conner et al. 2024, HepG2 essential
+    modalita: CRISPRi
+    contesti: [HepG2]
+    livello_locale: cellule
+    cellule_remote: si
+    locale: [raw/nadig_hepg2/NadigOConner2024_hepg2.h5ad]
+    drive: [raw/nadig_hepg2/NadigOConner2024_hepg2.h5ad]
+    livello_drive: cellule
+    remoto: copia su Drive
+    ostacolo: verità dei banchi più volte letta; non è una riserva intatta
+    prossimo_passo: shard locale possibile (0,85 GB); ruolo development, deciso nel registro dei ruoli
+    fonti: [reports/generatore_e_banchi/banco_hepg2_v2_2026-09-26/RISULTATI.md]
+  - id: tahoe100m
+    studio: Tahoe-100M, farmaci su molte linee (48 nei bracci letti il 28/09)
+    modalita: farmaco
+    contesti: [molte linee]
+    livello_locale: cellule
+    cellule_remote: si
+    locale: [external/tahoe100m/, interim/tahoe_dmso_subset_s5/, interim/tahoe_dmso_subset_s5_u/, kaggle/corpus_tahoe_r1/]
+    remoto: 3.388 shard parquet (dataset pubblico); nel corpus locale un solo shard
+    ostacolo: un solo shard di 3.388 in locale
+    prossimo_passo: selezione di shard su Kaggle o Colab per piastra, dose e linea; testa farmacologica separata; DMSO per l'encoder
+    fonti: [reports/sorgenti/tahoe_dmso_2026-09-28/RISULTATI.md, reports/modelli/tahoe_bracci_2026-09-28/RISULTATI.md, reports/sorgenti/corpus_basale_2026-09-28/SORGENTI.md]
+  - id: depmap_24q4
+    studio: DepMap 24Q4
+    modalita: basale
+    contesti: [linee DepMap]
+    livello_locale: bulk
+    cellule_remote: no
+    locale: [external/depmap_24q4/]
+    remoto: https://plus.figshare.com/articles/dataset/DepMap_24Q4_Public/27993248
+    ostacolo: CRISPRGeneEffect non verificato in locale; CNV non disponibile al test
+    prossimo_passo: covariate ausiliarie, non input obbligatori
+    fonti: [reports/sorgenti/corpus_basale_2026-09-28/SORGENTI.md]
+  - id: controlli_gara
+    studio: controlli ufficiali della gara (validazione)
+    modalita: basale
+    contesti: [A, B, C]
+    livello_locale: cellule
+    cellule_remote: si
+    locale: [raw/controls/context_A.h5ad, raw/controls/context_B.h5ad, raw/controls/context_C.h5ad]
+    remoto: bundle ufficiale della gara
+    ostacolo: nessun esito perturbato; solo input dello StateEncoder
+    prossimo_passo: shard di controllo per l'encoder, con le stesse regole di QC fissate sul training
+    fonti: [docs/PROCEDURE.md]
+  - id: annotazioni
+    studio: GENCODE v50 e annotazioni funzionali locali
+    modalita: annotazione
+    contesti: []
+    livello_locale: annotazioni
+    cellule_remote: no
+    locale: [external/annotation/]
+    remoto: rilasci pubblici; GO, HGNC e STRING da verificare file per file
+    ostacolo: copertura e mapping non ancora misurati per il TargetEncoder
+    prossimo_passo: inventario dei file e copertura dei 18.533 geni dell'asse
+    fonti: [reports/analisi/lead_scientist_2026-09-29/neural/AUDIT_BIOLOGICO.md]
+  - id: h1_vcc2025
+    studio: set H1 della gara 2025
+    modalita: CRISPRi
+    contesti: [H1]
+    livello_locale: metadati
+    cellule_remote: si
+    locale: [external/vcc2025/]
+    remoto: rilascio della gara 2025, mai scaricato come matrice RNA
+    ostacolo: i CSV locali sono assi e pannelli, non cellule
+    prossimo_passo: registrare locatore, byte e licenza; chiedere il via al download
+    fonti: [reports/analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md]
+  - id: microglia_gse335887
+    studio: GSE335887, CROP-seq e CITE-seq di 31 regolatori in microglia da iPSC
+    modalita: CRISPRi
+    contesti: [microglia da iPSC]
+    livello_locale: nessuno
+    cellule_remote: si
+    locale: []
+    remoto: GEO GSE335887
+    ostacolo: non acquisito
+    prossimo_passo: file, byte e licenza; valore per quota e intensità (R-SWITCH)
+    fonti: [reports/sorgenti/ricerca_sorgenti_2026-09-25/RISULTATI.md]
+  - id: perturbfate_gse291147
+    studio: PerturbFate, CRISPRi di oltre 140 geni in melanoma, RNA nuovo e vecchio, ATAC
+    modalita: CRISPRi
+    contesti: [melanoma]
+    livello_locale: nessuno
+    cellule_remote: si
+    locale: []
+    remoto: GEO GSE291147
+    ostacolo: non acquisito
+    prossimo_passo: file, byte e licenza; valore per tempo e cromatina
+    fonti: [reports/sorgenti/ricerca_sorgenti_2026-09-25/RISULTATI.md]
+  - id: scbasecount
+    studio: Arc scBaseCount (atlante basale)
+    modalita: basale
+    contesti: [molti]
+    livello_locale: nessuno
+    cellule_remote: si
+    locale: []
+    remoto: gs://arc-institute-virtual-cell-atlas (Marketplace, a carico di chi legge)
+    ostacolo: accesso a pagamento per chi legge; ingestione non dimostrata
+    prossimo_passo: solo per l'encoder, con campionamento per studio; decisione del proprietario sul costo
+    fonti: [reports/sorgenti/corpus_basale_2026-09-28/SORGENTI.md]
+  - id: catalogo_accessioni
+    studio: le 77 accessioni del catalogo del 26/09 non elencate sopra
+    modalita: varie
+    contesti: []
+    livello_locale: nessuno
+    cellule_remote: da_verificare
+    locale: []
+    remoto: elenco in reports/analisi/audit_piani_dati_2026-09-26/
+    ostacolo: una menzione non prova file, qualità o ruolo
+    prossimo_passo: riconciliare accessione per accessione in un passo successivo di P1
+    fonti: [reports/analisi/audit_piani_dati_2026-09-26/RISULTATI.md]

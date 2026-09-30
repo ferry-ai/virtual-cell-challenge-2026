@@ -1,0 +1,32 @@
+{
+ "scritto": "2026-09-30 sera, Claude (sessione a1ec75f0), R-LAB P0-M",
+ "cosa": "Per ogni dataset: dove i suoi esiti perturbati sono già stati letti come verità di un confronto, e il ruolo proposto per R-LAB. Una lettura di esito rende il dataset development, non riserva. Le letture sono trovate nei report citati; 'nessuna accertata' significa che una ricerca per nome nei report non ha trovato letture, non che sia provato che non ci siano state.",
+ "regola_riserva": "Una riserva è un insieme di esiti che nessuno ha letto e che si legge una sola volta, dopo aver congelato modello e regola di lettura, secondo R-COMP. Leggerla per scegliere una variante la trasforma in development.",
+ "stato": "proposta; i ruoli diventano validi quando il proprietario li approva (R-COMP, passo 2)",
+ "dataset": [
+  {"id": "gara_ABC", "letture": ["ogni invio valutato sul pannello di validazione, dal trial-01 al t28: solo punteggi aggregati, reports/invii/README.md"], "ruolo": "validazione ufficiale, osservata solo in aggregato; ogni invio la consuma"},
+  {"id": "gara_DEF", "letture": [], "ruolo": "test finale; nessuna scelta ci si appoggia"},
+  {"id": "hepg2_nadig", "letture": ["banchi del 17/09 (reports/generatore_e_banchi/bench_2026-09-17/)", "banco HepG2 v2, 300 bersagli (reports/generatore_e_banchi/banco_hepg2_v2_2026-09-26/)", "sviluppo e conferma del generatore, 95 dei 96 bersagli già letti (CP-0050)", "Stack, 12 bersagli development e riserva (reports/analisi/lead_scientist_2026-09-29/SCORE_BIAS_DATI.md)"], "ruolo": "development"},
+  {"id": "replogle_k562_gwps", "letture": ["banco K562 del pannello b002, 224 bersagli (bench_2026-09-17)", "sorgente tenuta fuori nei banchi di trasferimento dal 25/09 (reports/trasferimento/README.md)", "famiglia K562 nei fold della rete sulle sorgenti (TRAINING_COPERTURA.md)"], "ruolo": "train e development"},
+  {"id": "cd4_marson2025", "letture": ["sorgente tenuta fuori nei banchi di trasferimento", "famiglia CD4 nei fold della rete sulle sorgenti"], "ruolo": "train e development"},
+  {"id": "orion_hct116", "letture": ["sorgente tenuta fuori nei banchi di trasferimento", "famiglia Orion nei fold"], "ruolo": "train e development"},
+  {"id": "orion_hek293t", "letture": ["come HCT116"], "ruolo": "train e development"},
+  {"id": "replogle_k562_essential", "letture": ["fold della rete sulle sorgenti e rete su molti contesti r2"], "ruolo": "train e development"},
+  {"id": "replogle_rpe1", "letture": ["fold RPE1 della rete sulle sorgenti"], "ruolo": "train e development"},
+  {"id": "viperturb_k562_flex", "letture": ["metà contro metà del ponte Flex (reports/sorgenti/ponte_flex_2026-09-28/)", "tetto S0 della covariazione (reports/modelli/covariazione_2026-09-28/)"], "ruolo": "train e development"},
+  {"id": "kolf21j", "letture": ["famiglia iPSC nei fold", "covariazione, parte A"], "ruolo": "train e development"},
+  {"id": "hipsci_gw_fitness", "letture": ["famiglia iPSC nei fold", "covariazione, parte A"], "ruolo": "train e development"},
+  {"id": "hipsci_gw_nonfitness", "letture": ["come fitness"], "ruolo": "train e development"},
+  {"id": "hipsci_targeted_19", "letture": ["covariazione, parte B (28–29/09): 15 linee su 19, coppie dello stesso donatore e di donatori diversi"], "ruolo": "train, con prove per linea (E2) come development"},
+  {"id": "a549_ko", "letture": ["covariazione, parte A"], "ruolo": "train, testa KO"},
+  {"id": "southard_hs27", "letture": [], "nota": "nessuna lettura di esito accertata; citata nel corpus basale, nell'encoder e nella prova generale", "ruolo": "train, testa CRISPRa; la parte RPE-1, mai ingerita, può fare da riserva di modalità"},
+  {"id": "jurkat_gse249595", "letture": [], "nota": "nessuna lettura di esito accertata; auditata come file e metadati", "ruolo": "da decidere: train con adattatore multi-guida, oppure riserva secondaria"},
+  {"id": "mixscale", "letture": ["H6, somiglianza basale (reports/trasferimento/contesti_2026-09-26/)", "pattern del 24/09 (reports/sorgenti/pattern_mixscale_2026-09-24/)"], "ruolo": "train, loss DE mascherata"},
+  {"id": "dld1_gse337988", "letture": ["audit e tetto del 24/09 (reports/sorgenti/dld1_audit_2026-09-24/)"], "ruolo": "train, loss mascherata"},
+  {"id": "tahoe100m", "letture": ["bracci T1 del 28/09 (reports/modelli/tahoe_bracci_2026-09-28/)"], "ruolo": "train, testa farmacologica; DMSO per l'encoder"},
+  {"id": "h1_vcc2025", "letture": [], "nota": "mai scaricato: in locale solo gene_names e pert_counts; 18.077 geni su 18.080 in comune con l'asse 2026, 25 dei suoi 300 bersagli nel pannello 2026 (misurato il 30/09)", "ruolo": "RISERVA PRIMARIA proposta: una linea nuova, saggio della gara, esiti mai letti. Serve il via al download"},
+  {"id": "microglia_gse335887", "letture": [], "nota": "non acquisita", "ruolo": "riserva secondaria per quota e intensità (R-SWITCH), se acquisita"},
+  {"id": "perturbfate_gse291147", "letture": [], "nota": "non acquisita", "ruolo": "candidata; ruolo da decidere all'acquisizione"}
+ ],
+ "conclusione": "Fra i dati già sul disco nessun grande schermo CRISPRi a livello di cellula è intatto: tutti hanno avuto esiti letti in almeno un banco. Una riserva vera richiede dati non ancora letti; la candidata più forte è H1 della gara 2025."
+}
