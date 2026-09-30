@@ -1,0 +1,61 @@
+{
+ "schema_version": 1,
+ "job_id": "p06_hipsci_a_r1",
+ "incident_ids": [
+  "E-20260929-002",
+  "E-20260929-003",
+  "E-20260929-005",
+  "E-20260929-007"
+ ],
+ "inputs": [
+  {
+   "id": "code_snapshot",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\runs\\rlab_setup_2026-09-30_r6\\code_snapshot.tar.gz",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r6/code_snapshot.tar.gz"
+   },
+   "bytes": 24047,
+   "sha256": "2d76f233acdccb0b44d355f41597569e1e479b289512e028d4ef98c60d31ae54"
+  },
+  {
+   "id": "earlier_complete",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\data\\processed\\corpus_cellulare_2026-09-30\\j02_hipsci_r1\\complete.json",
+    "runtime": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j02_hipsci_r1/complete.json"
+   },
+   "bytes": 724,
+   "sha256": "2d2646c131e6a6960f00110bcc34489f556cb46d204d4a37dc01e8bb4d448b27"
+  }
+ ],
+ "outputs": [
+  {
+   "id": "stage",
+   "paths": {
+    "local": "C:/Users/ferra/vcc2026-data/unused/p06_hipsci_a_r1/stage",
+    "runtime": "/content/work/rlab_p06_hipsci_a_r1/stage"
+   },
+   "must_be_absent": true
+  }
+ ],
+ "target_checks": [],
+ "environment": {
+  "python": {
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\python.exe",
+    "runtime": "/usr/bin/python3"
+   }
+  },
+  "packages": {
+   "h5py": null,
+   "numpy": null,
+   "pandas": null,
+   "scipy": null
+  },
+  "imports": [
+   "h5py",
+   "scipy.sparse"
+  ],
+  "probes": []
+ },
+ "declared_limits": "sources read by HTTP byte ranges are not hashed whole before the run: every range is checked against the ETag of the file, every shard is hashed (plan \u00a76.5); anndata and kaggle are installed on the runtime when absent"
+}

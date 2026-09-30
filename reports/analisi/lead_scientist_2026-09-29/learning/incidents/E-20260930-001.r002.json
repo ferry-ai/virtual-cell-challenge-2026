@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260930-001",
+  "revision": 2,
+  "previous_sha256": "55e321010ac86e4d44ee01bea1ad8455a1d6e6c510ca8c93b00abaa1a76fd748",
+  "recorded_utc": "2026-09-30T22:23:28+00:00",
+  "claim_type": "operational_incident",
+  "state": "verified_remotely",
+  "title": "R-LAB: ingestione via intervalli HTTP uccisa per memoria (rc=137) dopo circa 75-80.000 cellule di H1",
+  "symptom": "Job 100 (j04_h1_trainval_r2, blocchi da 20.000 cellule) ucciso dopo 4 shard alle 21:01:25 UTC; job 105 (j04_h1_trainval_r3, blocchi da 5.000) ucciso dopo 15 shard alle 21:23:26 UTC, entrambi con 'Killed' nel log e rc=137 nel dispatcher della coda 2. Ridurre il blocco non ha spostato il punto del guasto: circa 80.000 e 75.000 cellule. Il job 106 (K562 essenziali, 10,7 GB densi) aveva RSS 2.118.420 kB dopo 539 s e 4 shard, in crescita.",
+  "cause": "Il lettore RangeFile di inspect_remote.py (usato da adapters._h5_open per ogni h5ad remoto) teneva in un dizionario senza limite ogni blocco da 8 MB letto: la memoria cresce con i byte letti, non con il blocco di cellule. Circa 70 KB per cellula nel file di training di H1 (15,48 GB) danno 5-6 GB a 75-80.000 cellule, coerente con i 12 GB del runtime condivisi con un secondo job. Causa verificata sul codice e riprodotta in piccolo (la cache arriva a tutti i blocchi del file); la curva di memoria sul runtime non è stata misurata.",
+  "cause_verified": true,
+  "fix": "Commit 33f2cf5: cache LRU limitata a max_bytes (256 MB, 32 blocchi da 8 MB), blocchi rimossi rilanciati se servono di nuovo; richiesta HTTP separata in RangeFile._get. Snapshot r6 (sha256 2d76f233acdccb0b44d355f41597569e1e479b289512e028d4ef98c60d31ae54). Job 106 fermato dal job 107; H1 rilanciato come job 108 (riusa i 15 shard verificati del 105), K562 essenziali e RPE1 come job 109 (riusa i 4 shard del 106).",
+  "regression_test": "test_range_reader.py: un h5ad di 3.000 cellule x 200 geni, CSR e denso, servito da un RangeFile finto con blocchi da 4 KB e limite di 4 blocchi, letto con adapters.h5rows a blocchi di 400 cellule: matrici uguali alla lettura locale e cache mai oltre 4 blocchi mentre passa tutto il file. Due casi PASS il 30/09 alle 23:31 CEST nel venv del progetto.",
+  "next_guard": "Ogni lettore in streaming ha memoria limitata per costruzione e un test che fa passare un file più grande della sua cache. Un job che fallisce con rc=137 a blocchi diversi nello stesso punto indica un accumulo, non un blocco troppo grande: si guarda la memoria per byte letti prima di ridurre il blocco.",
+  "scope": "Verificato in remoto sul runtime della coda 2: il job 108 (snapshot r6, cache limitata) ha letto via HTTP tutto H1 train (221.273 cellule, 45 shard, i primi 15 riusati dal job 105) e validation (98.927 cellule, 20 shard) oltre il punto dei 75.000 cellule, con parita ok e rc=0; il dispatcher ha letto 3-4 GiB di RAM usata su 12 durante il job, con il job 109 in parallelo. Non verifica la memoria di un singolo processo, solo quella del runtime.",
+  "evidence": [
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/100_rlab_j04_h1_trainval_r2.log",
+      "sha256": "e58f4ee11b56c04ceb9997816313705745f920a248bdb137957f55cda7e28eef",
+      "bytes": 1203,
+      "supports": "Log originale del job 100: quattro shard da 20.000 cellule, poi Killed"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/105_rlab_j04_h1_trainval_r3.log",
+      "sha256": "6bfb8113339a87fa5769d67a8f7c1b98747a8a7d7bc633eb44c88d331fb7ade0",
+      "bytes": 1948,
+      "supports": "Log originale del job 105: quindici shard da 5.000 cellule, poi Killed"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/dispatcher_q2_letto_2026-09-30T2135.log",
+      "sha256": "48bf25d96e6759cc12972f63b468dcb68db10f322962ab1bdbdb82d70b9b353a",
+      "bytes": 2775,
+      "supports": "Copia del log del dispatcher 2 letta alle 23:35 CEST: rc=137 dei job 100 e 105, avvio di 106-109"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/107_rlab_s01_stop_j07_r4.log",
+      "sha256": "e3960ea8408d367675868313e0be641812904a1898aa17d9edbab42efe1e0286",
+      "bytes": 1088,
+      "supports": "RSS del job 106 dopo 539 s e l'arresto con TERM"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/inspect_remote.py",
+      "sha256": "a0d27b29657cf346be12439491475ee6be8fb92876840c07ec6f94fd9e2fea13",
+      "bytes": 12164,
+      "supports": "Lettore corretto (copia di lavoro al commit 33f2cf5)"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/test_range_reader.py",
+      "sha256": "b0cdd1519038e5f47d4e56d35e811f63d9e1d9a5e48193234bb3677788e0b57e",
+      "bytes": 3461,
+      "supports": "Test di regressione della cache limitata; codice, non ricevuta di esecuzione remota"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/108_rlab_j04_h1_trainval_r4.log",
+      "sha256": "e9e90be6a3b7528696ea5d2bc1dc4f24ecbc979a18073225599693e081e632cd",
+      "bytes": 11037,
+      "supports": "Log del job 108: shard 0-14 riusati, tutti gli altri scritti, complete, pubblicazione, fine alle 22:04:13 UTC"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/j04_h1_trainval_r4_complete.json",
+      "sha256": "3aa97607f214f88f9548be6d4e8352b97c6b060d0aec6e64e4bdcd77d7639d76",
+      "bytes": 500,
+      "supports": "complete.json del job 108 copiato da Drive: parita ok per h1_train e h1_val"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/dispatcher_q2_letto_2026-10-01T0026.log",
+      "sha256": "d277ff9be84db6ebaff023e4b252f59a4f6006b04c73cf3680fb722a77f81811",
+      "bytes": 3480,
+      "supports": "Log del dispatcher 2: 108 finito con rc=0 alle 22:04:30 UTC, RAM 3-4/12 GiB nei battiti durante il job"
+    }
+  ],
+  "remote_verification": {
+    "evidence_path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/j04_h1_trainval_r4_complete.json",
+    "criterion": "complete.json del job 108 con parita ok per h1_train e h1_val, e rc=0 nel dispatcher, oltre il punto dei 75.000 cellule",
+    "observed_utc": "2026-09-30T22:04:30+00:00"
+  }
+}
