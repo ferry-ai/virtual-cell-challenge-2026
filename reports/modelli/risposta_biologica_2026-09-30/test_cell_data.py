@@ -66,13 +66,12 @@ class Admission(unittest.TestCase):
         genes = rng.integers(500, 2000, 1000).astype(float)
         mito = rng.uniform(0.0, 0.05, 1000)
         t = D.thresholds_from_controls(lib, genes, mito)
-        test_lib = np.array([10.0, 3000, 3000, 3000])
-        test_genes = np.array([900.0, 1.0, 900, 900])
-        test_mito = np.array([0.01, 0.01, 0.9, 0.01])
+        test_lib = np.array([10.0, 3000, 3000, 3000, 900])      # the last: low counts, but a plausible phenotype
+        test_genes = np.array([900.0, 1.0, 900, 900, 900])
+        test_mito = np.array([0.01, 0.01, 0.9, 0.01, 0.08])
         ok, why = D.admit(test_lib, test_genes, test_mito, t)
-        self.assertEqual(ok.tolist(), [False, False, False, True])
-        self.assertEqual(why.tolist()[:3], ["counts_below_q01_of_controls", "genes_below_q01_of_controls",
-                                            "mito_above_q99_of_controls"])
+        self.assertEqual(ok.tolist(), [False, False, False, True, True])
+        self.assertEqual(why.tolist()[:3], ["counts_below_floor", "genes_below_floor", "mito_above_ceiling"])
 
     def test_no_mito_rule_without_mt_genes(self):
         t = D.thresholds_from_controls(np.array([100.0, 200]), np.array([50.0, 60]), np.array([np.nan, np.nan]))

@@ -75,6 +75,7 @@ class ShardInfo:
     library: np.ndarray             # per cell
     official_index: np.ndarray      # per native feature, -1 when not on the axis
     measured: np.ndarray            # per native feature
+    cell_keys: np.ndarray = None    # per cell: study|library|barcode, unique in the corpus
 
 
 def index_shard(path: Path) -> ShardInfo:
@@ -89,7 +90,8 @@ def index_shard(path: Path) -> ShardInfo:
                          modality=h5_column(obs, "modality").astype(str),
                          library=h5_column(obs, "library").astype(str),
                          official_index=np.asarray(h5_column(var, "official_index"), dtype=np.int64),
-                         measured=np.asarray(h5_column(var, "measured")).astype(bool))
+                         measured=np.asarray(h5_column(var, "measured")).astype(bool),
+                         cell_keys=h5_column(obs, "cell_key").astype(str))
 
 
 def read_counts(info: ShardInfo, gene_of_axis: np.ndarray, n_model_genes: int):

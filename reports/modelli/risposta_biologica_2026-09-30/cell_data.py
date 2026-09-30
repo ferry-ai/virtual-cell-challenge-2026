@@ -10,9 +10,11 @@ long training (review of 30/09, 23:00):
   normalised symbol, so a target hidden under one spelling cannot enter training under another;
 - effective classes: for the held-out context, C is a symbol perturbed in some training context; J is a hidden
   symbol, or one never perturbed in any training context; T is a hidden symbol evaluated in a training context;
-- admission QC: thresholds per (study, context) from its control cells only (counts on the model genes >= q01,
-  genes detected >= q01, mitochondrial fraction <= q99 where MT genes are measured), fixed before training and applied
-  to every cell of the key, held-out ones included; each rejection is counted by rule;
+- admission QC: thresholds per (study, context) from its control cells only, set beyond the controls' 1st and 99th
+  percentiles (half the q01 of counts and genes detected; mitochondrial fraction above max(2 x q99, q99 + 0.05)) so
+  that they catch technical failures and not a knockdown phenotype; fixed before training, applied to every cell of
+  the key, held-out ones included; each rejection is counted by rule, and the rejection rate per perturbation shows
+  whether a rule removes one selectively;
 - sampling without replacement: an epoch visits every admitted training cell exactly once; balance between studies
   comes from loss weights (each study weighs the same in expectation), not from resampling;
 - one estimator for every shift in the evaluation: log of the mean per-cell proportion, perturbed against controls
@@ -77,20 +79,28 @@ def qc_values(x_csr, measured_mask, mt_mask):
     return lib, genes, mito
 
 
-def thresholds_from_controls(lib, genes, mito):
-    t = {"lib_min": float(np.quantile(lib, 0.01)), "genes_min": float(np.quantile(genes, 0.01))}
-    t["mito_max"] = float(np.nanquantile(mito, 0.99)) if np.isfinite(mito).any() else None
-    t["lib_min"] = max(t["lib_min"], 1.0)
+def thresholds_from_controls(lib, genes, mito, slack=0.5):
+    """Technical-failure thresholds from the controls of a key. A knockdown can lower counts and raise the
+    mitochondrial fraction (an essential gene silenced): the thresholds sit beyond the controls' 1st and 99th
+    percentiles by `slack`, so they reject empty or broken droplets, not a perturbation phenotype; the rejection
+    rate per perturbation is reported to check that no rule removes one selectively."""
+    t = {"lib_min": max(1.0, slack * float(np.quantile(lib, 0.01))),
+         "genes_min": max(1.0, slack * float(np.quantile(genes, 0.01)))}
+    if np.isfinite(mito).any():
+        q99 = float(np.nanquantile(mito, 0.99))
+        t["mito_max"] = min(1.0, max(q99 / slack, q99 + 0.05))
+    else:
+        t["mito_max"] = None
     return t
 
 
 def admit(lib, genes, mito, t):
     """Admission mask and the rule each rejected cell failed first."""
     reason = np.full(lib.shape, "", dtype=object)
-    reason[lib < t["lib_min"]] = "counts_below_q01_of_controls"
-    reason[(reason == "") & (genes < t["genes_min"])] = "genes_below_q01_of_controls"
+    reason[lib < t["lib_min"]] = "counts_below_floor"
+    reason[(reason == "") & (genes < t["genes_min"])] = "genes_below_floor"
     if t["mito_max"] is not None:
-        reason[(reason == "") & np.isfinite(mito) & (mito > t["mito_max"])] = "mito_above_q99_of_controls"
+        reason[(reason == "") & np.isfinite(mito) & (mito > t["mito_max"])] = "mito_above_ceiling"
     return reason == "", reason
 
 
