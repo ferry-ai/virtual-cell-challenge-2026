@@ -1,0 +1,57 @@
+{
+  "written": "2026-09-30 17:35, Claude session a1ec75f0, times read with date (CEST)",
+  "purpose": "Stage 1 of the structure cleanup: what left the worktrees, branches and stash of the repository, where it is now, and what stayed. Owner's go in chat, received just before 17:29 (date read at the start of step 1), for steps 1-6 of the proposal in README.md section 1.2, except worktree 16 (atlas-transfer-pilot), which stays; worktree 17 (ipsc-transfer) and the two scheduled tasks stay too.",
+  "archive_root": "C:/Users/ferra/vcc2026-data/archivio_repo/2026-09-30/worktree",
+  "copied_to_data_root": {
+    "why": "the four agent-hub runs whose worktree held drafts never committed to main; the hub keeps the same files in runs/<run>/<agent>/, but that folder can be cleaned (docs/AGENTI.md section 1)",
+    "verified": "sha256sum -c of the source hashes at the destination: 16/16 OK, before any worktree was removed",
+    "files": [
+      {"path": "hub/20260926-001005-v2-f3-ctj/codex/diff.patch", "bytes": 13841, "sha256": "77a949d6f286539d08babfccaee859c0ee3bdfa85065b440e94b3db0ab787baa"},
+      {"path": "hub/20260926-001005-v2-f3-ctj/codex/meta.json", "bytes": 1693, "sha256": "ba975364c7aa66fea0348e7d2b4e0f643a1faed93cd45862058d62ac5f4f3004"},
+      {"path": "hub/20260926-001005-v2-f3-ctj/codex/prompt.md", "bytes": 8747, "sha256": "e17cafd9c7d7e5503591ce5cc1e6a98eab78fad653db68dd8284f27031499496"},
+      {"path": "hub/20260926-001005-v2-f3-ctj/codex/result.md", "bytes": 287, "sha256": "7c9892302b981748a2694b5715b8109396fecfd16d9d2d9cf4c5fb39d1ec69d3"},
+      {"path": "hub/20260927-135336-v2-ctj-frozen/codex/diff.patch", "bytes": 46409, "sha256": "cfd6bb681bdfdec8ad53c391d15ebb93c4b8deb0d99e72a25b79e98a9ba2fefd"},
+      {"path": "hub/20260927-135336-v2-ctj-frozen/codex/meta.json", "bytes": 1218, "sha256": "ad4174acd99cfdabfb16aa6c35b908cbb1e7cebdb5a388838d1b9bbc39184930"},
+      {"path": "hub/20260927-135336-v2-ctj-frozen/codex/prompt.md", "bytes": 10703, "sha256": "4c782ece0576b07ce279380eb86ad74e6bfa265d2a7f7f69745c4aacf0954850"},
+      {"path": "hub/20260927-135336-v2-ctj-frozen/codex/result.md", "bytes": 1300, "sha256": "8e70e963c73eeb91f155b1af8e4c5b61fb1f6fd4e192b07bebc3485d0815ab57"},
+      {"path": "hub/20260927-181528-v2-network-design/claude2/diff.patch", "bytes": 1439, "sha256": "9a8d2506161e5fc0573105478bfdf7844ab3715df3cc04d2ce24e46e03f1febe"},
+      {"path": "hub/20260927-181528-v2-network-design/claude2/meta.json", "bytes": 1155, "sha256": "cb7902302aec6589c3302d20bc31ab755f9c8145a9f77a7b281b22eb75360ac4"},
+      {"path": "hub/20260927-181528-v2-network-design/claude2/prompt.md", "bytes": 9898, "sha256": "ecfbbe2ceae0a94c511edd1e7b3e9807659c1b7d5f8e59db0c5ed011ee1b3936"},
+      {"path": "hub/20260927-181528-v2-network-design/claude2/result.md", "bytes": 62, "sha256": "90a063db0f9382ee0216141966ba5d9f3f1af2c41173c9bb85aa311966c55922"},
+      {"path": "hub/20260928-014223-v2-context-encoder/claude2/diff.patch", "bytes": 234375, "sha256": "aabac6fd59d9199398daee0190319b2aba19ce2a36e60a60e4be289101b3d81a"},
+      {"path": "hub/20260928-014223-v2-context-encoder/claude2/meta.json", "bytes": 1164, "sha256": "906fa89b5c381b2cc5b6738a464c478b4759f3f3eb8ea3d82692425400f1ea91"},
+      {"path": "hub/20260928-014223-v2-context-encoder/claude2/prompt.md", "bytes": 8506, "sha256": "5790695dc249a6bd3d64f2c6b889e3aa319a15df6fa0cc7982f075af28909e13"},
+      {"path": "hub/20260928-014223-v2-context-encoder/claude2/result.md", "bytes": 62, "sha256": "17c925845c1f74da852e1e9c0a6bac6844dbb9bec3e5f5c581d32a04cf84995a"}
+    ],
+    "restore": "a diff.patch applies with `git apply` on the commit named base_head in its meta.json"
+  },
+  "worktrees_removed": [
+    {"how": "py -3 hub.py clean <run>, from C:/Users/ferra/agent-hub/control (git worktree remove --force, then prune); runs/<run>/<agent>/ keeps result.md and diff.patch",
+     "checked_before": "each worktree matched its diff.patch blob by blob, re-checked at 17:29 just before; no run was running",
+     "runs": ["20260926-001005-v2-f3-ctj", "20260927-135336-v2-ctj-frozen", "20260927-142516-v2-kolf-ingest", "20260927-143643-v2-gated-model", "20260927-144723-v2-gated-model-codex", "20260927-145651-v2-gated-bench", "20260927-165427-v2-kolf-effects", "20260927-181506-v2-hipsci-sums", "20260927-181528-v2-network-design", "20260927-183334-v2-hipsci-codex", "20260927-193129-v2-rsums-pack", "20260927-204227-v2-network-design-r2", "20260928-003503-v2-tahoe-dmso", "20260928-014223-v2-context-encoder", "20260928-032819-v2-tahoe-arms"]},
+    {"worktree": "C:/Users/ferra/wt8", "how": "git worktree remove", "held": "nothing: detached at 14015fd, in main, clean"},
+    {"worktree": "C:/Users/ferra/OneDrive/Desktop/vcc2026-refactor", "how": "git worktree remove unregistered it but stopped at a read-only folder (Permission denied) after deleting one tracked file; the rest of the folder was sent to the Recycle Bin",
+     "held": "the tree of tag archivio/refactor-pulizia-2026-09-19 (805 tracked files, compared by name), one ignored .h5ad with the same sha256 as reports/storico/candidate_verification/pilot/cd4_D1_Rest_64.h5ad in the main working tree, and __pycache__"}
+  ],
+  "worktree_metadata_pruned": {
+    "what": "26 folders in .git/worktrees/ with no gitdir file: the 17 just removed and nine left since 26-27/09 (wt_check, wt_check1-3, wt_f19e447, wtc, wtd, wte, wtf); each held only ORIG_HEAD and empty logs/ and refs/",
+    "cause": "every folder under OneDrive carries the Windows read-only attribute, and git for Windows cannot remove a read-only folder; the deny entries seen with icacls belong to Codex sandbox identities, not to this user",
+    "how": "read-only attribute cleared on those 26 folders only, then git worktree prune -v",
+    "checked_before": "each ORIG_HEAD commit is contained in main or in tag archivio/refactor-pulizia-2026-09-19"
+  },
+  "branches_deleted": [
+    {"branch": "refactor/pulizia", "was": "51a9c60fed937a8b0413d2612730f4b02a4dd8f0", "kept_by": "tag archivio/refactor-pulizia-2026-09-19 (same commit, verified)"}
+  ],
+  "tags_created": [
+    {"tag": "archivio/stash-altri-agenti-2026-09-28", "points_to": "8a8bbef42e645d0cdec65ae0a39a3a2bdc5846f9", "then": "git stash drop stash@{0}", "local_only": true}
+  ],
+  "recycle_bin": [
+    {"from": "C:/Users/ferra/OneDrive/Desktop/vcc2026-refactor", "files": 930, "what": "see worktrees_removed; the count includes the .git link file"}
+  ],
+  "stayed": [
+    {"what": "C:/Users/ferra/.codex/worktrees/atlas-transfer-pilot/vcc2026 and branch codex/atlas-transfer-pilot", "why": "owner's choice on 30/09"},
+    {"what": "C:/Users/ferra/.codex/worktrees/ipsc-transfer/vcc2026 (R-IPSC of Codex, 29/09)", "why": "owner's choice on 30/09: whether the Codex chat 01a0ec7c is closed is not known"},
+    {"what": "the scheduled tasks 'VCC2026 Ciclo giornaliero' and 'VCC2026 Guardiano'", "why": "owner's choice on 30/09"},
+    {"what": "origin/alfredo and origin/claude/compassionate-babbage-gpgzyt", "why": "0 commits outside main, but removing them needs a push"}
+  ]
+}

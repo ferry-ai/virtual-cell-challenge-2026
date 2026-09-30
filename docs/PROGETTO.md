@@ -93,10 +93,11 @@ Per il proprietario, e per chi tocca una di queste voci.
   verificati mai trascritti: se spostarli nella cartella dati e se trascriverli
   ([riordino](../reports/analisi/riordino_repo_2026-09-30/RIORDINO.md), §4).
 - Lo spazio su C:, 3,8 GB liberi il 30/09: la prova generale in forma piena ne chiede circa 17.
-- Due attività pianificate di Windows della catena di cicli ritirata il 23/09 sono ancora
-  registrate: una è partita il 30/09 alle 15:02 con esito 1, e il suo script non è più nell'albero.
-  Toglierle, e ripulire i worktree lasciati dagli agenti, spetta al proprietario
-  ([AGENTI](AGENTI.md), §2–3).
+- Il lavoro R-IPSC di Codex del 29/09 (scheda, protocollo, codice, consenso a un upload su Kaggle)
+  sta solo nel suo worktree `ipsc-transfer`, fuori da `main`: se e quando committarlo lo decide il
+  proprietario, a chat Codex chiusa. Per sua scelta del 30/09 restano anche il worktree del
+  pilota atlas di Codex del 19/09 e le due attività pianificate della catena ritirata; gli altri
+  worktree degli agenti sono usciti ([AGENTI](AGENTI.md), §2–3).
 
 ## 1. Il problema
 

@@ -61,7 +61,9 @@ quando un sistema viene ritirato o riattivato (D-049). Scritta il 30/09.
   08:30, ultima esecuzione il 30/09 alle 15:02 con esito 1; «VCC2026 Guardiano», pronta, ultima
   esecuzione il 28/09 con esito 1. Lanciano `scripts/ciclo.cmd`, che non è più nell'albero, e per
   questo oggi falliscono senza effetti. **Rimettere nell'albero `scripts/ciclo.cmd` dal tag
-  riattiverebbe la catena alla prossima esecuzione.** Toglierle spetta al proprietario.
+  riattiverebbe la catena alla prossima esecuzione.** Toglierle spetta al proprietario, che il 30/09
+  sera ha scelto di lasciarle; il comando, con una copia delle definizioni, è nel §1.3 della
+  [pulizia della struttura](../reports/analisi/pulizia_struttura_2026-09-30/README.md).
 - **Non si riattivano.** Riportarne uno in vita è una decisione da scrivere in DECISIONI prima,
   con il codice ripreso dal tag e il suo test.
 
@@ -85,12 +87,19 @@ committare file condivisi o coordinarsi:
   assegnato a un'altra sessione: [PIANI §3](PIANI.md#3-lavorare-in-una-cartella-condivisa).
 - **Un job Colab o Kaggle** di un'altra sessione: come sapere se è vivo è in
   [LAVORO §3](LAVORO.md#3-job-su-colab-e-kaggle).
-- **Worktree e branch lasciati dagli agenti** (misurato il 30/09 con `git worktree list`): oltre a
-  `main`, 15 worktree staccati sotto `agent-hub/runs/`, dalle esecuzioni in modifica isolata del
-  26–28/09; 2 di Codex sotto `~/.codex/worktrees/`, uno sul branch locale
-  `codex/atlas-transfer-pilot`; `vcc2026-refactor` sul branch locale `refactor/pulizia`; `wt8`. Non
-  sono materiale del progetto e non si usano come fonte senza verificarne l'origine; ripulirli spetta
-  al proprietario (per quelli dell'hub c'è il comando di pulizia delle sue esecuzioni).
+- **Worktree e branch lasciati dagli agenti** (misurato il 30/09 sera con `git worktree list`,
+  `git branch` e `git stash list`, dopo la pulizia): oltre a `main` restano due worktree di Codex
+  sotto `~/.codex/worktrees/`, tenuti per scelta del proprietario: `atlas-transfer-pilot`, sul
+  branch locale `codex/atlas-transfer-pilot`, con il pilota non committato del 19/09, e
+  `ipsc-transfer`, con il lavoro R-IPSC del 29/09 mai entrato in `main`. Nessuno stash. Gli altri
+  diciassette worktree sono usciti il 30/09 ([ARCHIVIO](ARCHIVIO.md), ultima sezione). Non sono
+  materiale del progetto e non si usano come fonte senza verificarne l'origine.
+- **Togliere un worktree.** Prima si confronta il suo contenuto con `main`, file per file. Quelli
+  dell'hub si tolgono con `hub.py clean <run>`, che lascia rapporto e `diff.patch`. Sotto OneDrive
+  ogni cartella ha l'attributo di sola lettura di Windows, e git non riesce a rimuoverla: `git
+  worktree remove` e `prune` lasciano cartelle a metà e metadati orfani in `.git/worktrees/`. Si
+  toglie l'attributo alle sole cartelle da rimuovere e si ripete il comando (30/09, pulizia della
+  struttura).
 
 Non sono materiale del progetto neanche la cartella `.claude/` nella radice, configurazione locale
 di Claude Code (permessi, un workflow), non tracciata, e la memoria privata di ciascun agente. Una

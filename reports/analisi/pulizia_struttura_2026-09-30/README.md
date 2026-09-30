@@ -16,7 +16,7 @@ Una riga a fine tappa, con il commit che la chiude.
 
 | Tappa | Stato | Commit | Che cosa |
 |---|---|---|---|
-| 1 | inventario e proposta scritti; aspetta il via | questo | worktree, branch, stash e attività pianificate: §1 |
+| 1 | inventario e proposta (16:25); eseguita dopo il via (17:29–17:35) | `581f264`, poi il commit che aggiunge questa riga | da 19 worktree e uno stash a 2 worktree di Codex tenuti dal proprietario, nessuno stash: §1.4 |
 
 ## 1. Worktree, branch e stash
 
@@ -124,3 +124,48 @@ foreach ($n in 'VCC2026 Ciclo giornaliero', 'VCC2026 Guardiano') {
     Unregister-ScheduledTask -TaskName $n -Confirm:$false
 }
 ```
+
+### 1.4 Esito
+
+**Le scelte del proprietario**, in chat, prima delle 17:29: via ai passi 1–6, **tenendo il
+worktree 16** (atlas) con il suo branch; il worktree 17 (R-IPSC) **resta** com'è; le due attività
+pianificate **restano**. Il passo 1 si è quindi ridotto ai quattro run dell'hub.
+
+**Eseguito** (misurato; hash, conteggi e comandi in
+[archiviato_worktree.json](archiviato_worktree.json)):
+1. Copiati nella radice dati `diff.patch`, `result.md`, `meta.json` e `prompt.md` dei run 12–15,
+   16 file per 375 KB; `sha256sum -c` a destinazione: 16 su 16 corretti. Un `LEGGIMI.txt` accanto.
+2. Alle 17:29, ricontrollati i 15 worktree dell'hub (identici al loro `diff.patch`, nessun run in
+   esecuzione), poi `hub.py clean` per ciascuno: 15 rimossi; rapporti e patch restano in `runs/`.
+3. `wt8` rimosso con `git worktree remove`.
+4. `vcc2026-refactor`: `git worktree remove` lo ha tolto dalla lista, ma si è fermato con
+   «Permission denied» dopo aver cancellato un solo file. Il resto della cartella, cioè l'albero
+   del tag confrontato per nome, il duplicato `.h5ad` e le cache, è andato nel Cestino. Poi
+   `git branch -D refactor/pulizia`: il tag punta allo stesso commit, verificato prima.
+5. Stash: tag annotato `archivio/stash-altri-agenti-2026-09-28` sul commit `8a8bbef`, verificato,
+   poi `git stash drop`.
+6. Registrati: una sezione in [ARCHIVIO](../../../docs/ARCHIVIO.md), l'elenco e la procedura in
+   [AGENTI](../../../docs/AGENTI.md) §3, la scelta sulle attività pianificate in AGENTI §2, e la
+   voce del proprietario in PROGETTO §0.
+
+**Due scostamenti dalla proposta**, entrambi dovuti a una causa che la proposta non conosceva:
+- **La causa del «Permission denied»** non sono i permessi di negazione letti con `icacls`, che
+  riguardano le identità della sandbox di Codex e non questo utente. È l'attributo di sola lettura
+  di Windows, presente su ogni cartella sotto OneDrive (84 in `.git/worktrees/`, 178 in
+  `vcc2026-refactor`), con cui git per Windows non riesce a rimuovere una cartella. Per questo
+  anche i 15 `git worktree remove` dell'hub avevano lasciato 17 cartelle di metadati a metà.
+- **Le nove cartelle orfane dei giorni 26–27/09**, che la proposta lasciava stare, sono state tolte
+  insieme alle 17 nuove. Per le 26 si è prima controllato che ogni `ORIG_HEAD` puntasse a un commit
+  di `main` o del tag del refactor. Poi si è tolto l'attributo solo a quelle cartelle e si è
+  eseguito `git worktree prune -v`.
+
+**Dopo** (misurato fra le 17:29 e le 17:35): `git worktree list` dà `main` e i due worktree di Codex tenuti;
+`git branch` dà `main` e `codex/atlas-transfer-pilot`; `git stash list` è vuoto; in
+`.git/worktrees/` restano solo le due cartelle registrate. Nel Cestino c'è `vcc2026-refactor`, 930
+file, fino a quando il proprietario non lo svuota.
+
+**Resta aperto:**
+- il lavoro R-IPSC di Codex, fuori da `main` finché il proprietario non decide;
+- i due branch remoti, da togliere con un push;
+- le attività pianificate, lasciate per scelta del proprietario: rimettere `scripts/ciclo.cmd`
+  nell'albero riattiverebbe la catena.

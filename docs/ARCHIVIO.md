@@ -15,6 +15,10 @@ Le pulizie sono due:
 - quella del 24 settembre ([D-043](DECISIONI.md#d-043--lo-stadio-45-genera-solo-da-effetti-esterni-e-il-codice-che-nessuno-stadio-raggiunge-va-in-archivio)),
   nell'[ultima sezione](#24-settembre-2026--lo-stadio-45-a-un-solo-ramo-e-il-codice-che-nessuno-stadio-raggiungeva).
 
+Branch, worktree e stash hanno sezioni proprie, in fondo: il
+[24 settembre](#24-settembre-2026--un-solo-branch-main) e il
+[30 settembre](#30-settembre-2026--worktree-branch-e-stash).
+
 | | |
 |---|---|
 | Tag | `archivio/pre-pulizia-2026-09-23` (annotato) |
@@ -446,3 +450,25 @@ in un solo branch, `main`, sul portatile e su GitHub:
 git show archivio/refactor-pulizia-2026-09-19:reports/pulizia_2026-09-19/RESOCONTO.md
 git log --oneline archivio/claude-sharp-johnson-2026-09-15 -6
 ```
+
+## 30 settembre 2026 — worktree, branch e stash
+
+Su richiesta del proprietario («unificare i worktree e i branch», senza perdere lavoro), con il suo
+via in chat su una proposta scritta prima di agire: inventario, classi e scelte sono nel §1 della
+[pulizia della struttura](../reports/analisi/pulizia_struttura_2026-09-30/README.md), hash e
+verifiche nel suo `archiviato_worktree.json`. Report, checkpoint e dati non si toccano; i nuovi tag
+sono solo in locale finché il proprietario non fa il push.
+
+| Che cosa | Dove sta ora | Come si riprende |
+|---|---|---|
+| Lo stash del 28/09 12:44, «local work of other agents before merging the cloud branch»; contenuto già tutto in `main` | tag annotato `archivio/stash-altri-agenti-2026-09-28` (`8a8bbef`) | `git stash apply archivio/stash-altri-agenti-2026-09-28` |
+| Il branch `refactor/pulizia`, ritirato il 24/09 ma rimasto perché il suo worktree lo teneva | tag `archivio/refactor-pulizia-2026-09-19`, stesso commit `51a9c60` | `git branch refactor/pulizia archivio/refactor-pulizia-2026-09-19` |
+| Il worktree `vcc2026-refactor` | l'albero è quello del tag; la cartella, con un `.h5ad` ignorato identico a quello di `reports/storico/candidate_verification/pilot/`, nel Cestino | `git worktree add <cartella> archivio/refactor-pulizia-2026-09-19` |
+| Il worktree `wt8` | niente di unico: il suo commit è in `main` | — |
+| I 15 worktree delle esecuzioni dell'hub dal 26 al 28/09 | le modifiche in `diff.patch` di ogni esecuzione, nella cartella `runs/` dell'hub; per le quattro con bozze mai entrate in `main`, una copia nella radice dati, `archivio_repo/2026-09-30/worktree/hub/` | `git apply` della patch sul commit `base_head` del suo `meta.json` |
+| 26 cartelle orfane di metadati in `.git/worktrees/` | tolte con `git worktree prune`; ognuna aveva solo un `ORIG_HEAD` che punta a `main` o al tag del refactor | — |
+
+Restano, per scelta del proprietario: i worktree di Codex `atlas-transfer-pilot`, con il suo
+branch, e `ipsc-transfer`, che contiene il lavoro R-IPSC del 29/09 mai entrato in `main`. Restano
+anche i branch remoti `origin/alfredo` e `origin/claude/compassionate-babbage-gpgzyt`, senza commit
+fuori da `main`: toglierli richiede un push.
