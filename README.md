@@ -1,7 +1,8 @@
 # Virtual Cell Challenge 2026
 
-> **Next steps: [modello competitivo — piano operativo](docs/piani/modello-competitivo.md).**
-> Data coverage, independent evaluation, biological modelling, training and submission gates.
+> **Today's plan for Claude: [cell-level data, quality and biological modelling](docs/piani/piano-giorno-2026-09-30.md).**
+> Full dataset coverage, resumable ingestion, assay-aware QC and a model trained on individual cells where available.
+> Research programme and promotion criteria: [modello competitivo](docs/piani/modello-competitivo.md).
 
 **Zero-shot** prediction of the transcriptional response to CRISPRi knockdown in
 cell lines never seen during training.

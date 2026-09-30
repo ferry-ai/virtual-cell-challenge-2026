@@ -1,10 +1,15 @@
 # R-COMP — costruire e verificare un modello competitivo
 
+**Attuazione corrente, richiesta del proprietario del 30/09:**
+[R-LAB — piano del giorno per Claude](piano-giorno-2026-09-30.md): corpus esteso di singole cellule,
+ingestione riprendibile, QC per assay e rete biologica. Questa scheda conserva il programma
+generale e i criteri di promozione; R-LAB specifica file, contratti e ordine operativo.
+
 - **Stato:** aperto; esperimenti attuali conclusi, passi successivi proposti e non avviati.
 - **Aggiornato:** 30 settembre 2026, dopo il risultato ufficiale t28.
 - **Mandato:** richiesta del proprietario di rendere visibile il piano e usare sistematicamente dati, biologia e modelli neurali, verificando la credibilità dei punteggi.
 - **Assegnazione:** regia, invio t28 e decisioni sui job: Codex lead, chat `01a0ee03-b357-7012-81a9-e8d7de767478`; questa scheda e audit di calibrazione: sottoagente `audit_generatore`. Dataset: audit già prodotto da `audit_dati`; chiusura Stack: `audit_scientifico`. I nuovi training vanno assegnati per file e output prima del lancio; gli incarichi Claude in [R-REV](revisione-critica.md) e [R-V2](modello-v2.md) restano validi.
-- **Prossimo passo:** riconciliare l'inventario di training e progettare una riserva davvero indipendente (passo 2). T28 è pubblicato: nuovo massimo osservato ma miglioramento non conclusivo secondo la regola congelata, [CP-0052](../checkpoints/0052-t28-punteggio-ufficiale.md). Stack è chiuso senza candidati: [CP-0051](../checkpoints/0051-stack-ab-negativi.md). Nessun nuovo training o invio avviato dal seguito notturno.
+- **Prossimo passo:** P0–P1 di [R-LAB](piano-giorno-2026-09-30.md): inventario cellulare completo, ambiente e riserva indipendente (attuano il passo 2 sotto). T28 e Stack sono conclusi, rispettivamente [CP-0052](../checkpoints/0052-t28-punteggio-ufficiale.md) e [CP-0051](../checkpoints/0051-stack-ab-negativi.md). La nuova scheda non attesta training o invii eseguiti.
 - **Dipendenze:** [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), [preflight dei job](../ERRORI.md), [procedure](../PROCEDURE.md). Riutilizzare le autorizzazioni già date nella sessione; questa scheda non avvia automazioni né implica un push pubblico.
 
 ## Punto di partenza verificato

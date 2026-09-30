@@ -1,8 +1,10 @@
 # Piani aperti — scegliere il prossimo lavoro
 
-**Priorità aggiornata al 30/09:** [R-COMP — modello competitivo](piani/modello-competitivo.md):
-t28 concluso ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)); riconciliare i dataset,
-congelare una riserva indipendente e verificare un nuovo modello. La direzione generale che lega
+**Piano del giorno per Claude, mandato del proprietario del 30/09:**
+[R-LAB — dati cellulari, qualità e rete biologica](piani/piano-giorno-2026-09-30.md).
+Estendere il corpus a tutti i dati utilizzabili, preservando le singole cellule; ingestione
+riprendibile, QC per assay e prove di generalizzazione. È l'esecuzione corrente di
+[R-COMP](piani/modello-competitivo.md), con riserva indipendente e sei metriche. La direzione generale che lega
 i piani è nel §0 di [PROGETTO](PROGETTO.md#direzione-generale); dove sta che cosa, per ambito, in
 [AMBITI](AMBITI.md).
 
@@ -27,7 +29,8 @@ L'aggiunta all'indice non avvia job, monitor o invii automatici.
 
 | ID | Priorità e motivo | Scheda | Prima di eseguire |
 |---|---|---|---|
-| R-COMP | **Adesso**, richiesta del 29/09: copertura reale dei dataset, modello biologico, training C/T/J e sei metriche con riserva indipendente | [Modello competitivo](piani/modello-competitivo.md) | Assegnazioni esistenti preservate; storico degli outcome e manifest prima dei nuovi training |
+| R-LAB | **Prima priorità operativa**, richiesta del 30/09: corpus esteso di singole cellule, ingestione da laboratorio, QC e rete biologica; consegna a Claude | [Piano del giorno](piani/piano-giorno-2026-09-30.md) | Inventario completo e ruoli train/riserva; manifest, QC e risorse verificate prima dell'ingestione; incarichi esistenti preservati |
+| R-COMP | Programma generale dal 29/09: copertura reale, modello biologico, C/T/J e sei metriche; dal 30/09 attuato attraverso R-LAB | [Modello competitivo](piani/modello-competitivo.md) | Storico degli outcome, riserva e criteri di promozione prima dei nuovi training |
 | R-REV | **Adesso**, su richiesta del proprietario del 28/09 (12:30): le azioni della revisione critica, in ordine; la prima, l'unione del loro branch nel `main` del portatile, è fatta dal 28/09 | [Revisione critica](piani/revisione-critica.md) | Via del proprietario per invii, download, calcolo in cloud e push (mandato della scheda) |
 | S-INVII | Scadenze e lettura delle prove già preparate | [Invii e set finale](piani/invii-finale.md) | Verificare stato effettivo e coordinarsi con chi segue gli invii |
 | R-V2 | Adesso, su richiesta del proprietario: il modello per il set finale, filoni F1–F8 | [Modello v2](piani/modello-v2.md) | Via del proprietario per download, calcolo in cloud e invii |
@@ -41,7 +44,8 @@ nominano sessioni che il 30/09 alle 02:07 risultavano chiuse, `f4f38e58` e la le
 `01a0ee03` ([riordino](../reports/analisi/riordino_repo_2026-09-30/RIORDINO.md), §1): vedi §3. Le proposte della [revisione critica del 28/09](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md)
 (§6) sono, dalle 12:30 del 28/09 e su richiesta del proprietario, la scheda
 [R-REV](piani/revisione-critica.md), in ordine di esecuzione. Dal 29/09 la priorità complessiva
-è [R-COMP](piani/modello-competitivo.md); gli incarichi già aperti in R-REV e R-V2 restano assegnati.
+è [R-COMP](piani/modello-competitivo.md), con piano operativo del 30/09 in
+[R-LAB](piani/piano-giorno-2026-09-30.md); gli incarichi già aperti in R-REV e R-V2 restano assegnati.
 
 **Le dieci ipotesi della ricerca del 24 settembre:** H1 (programmi, nella forma lineare) e H6 (pesi
 per somiglianza basale fra linee) sono state provate il 26/09 e hanno perso; le altre restano aperte.
@@ -78,7 +82,7 @@ altrimenti chiedendo al proprietario. Come si committano i file condivisi è nel
 
 ## 4. Piani chiusi e risultati precedenti
 
-Una scheda su sette è chiusa, R-MODELLI; le altre linee chiuse sono precedenti alle schede.
+Una scheda su otto è chiusa, R-MODELLI; le altre linee chiuse sono precedenti alle schede.
 
 | Scheda | Chiusa | Esito e condizione di riapertura |
 |---|---|---|

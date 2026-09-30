@@ -29,17 +29,20 @@ sottomissioni chiudono il **5 novembre** (§1).
 
 ### Direzione generale
 
-**Proposta di sintesi del 30/09 (Claude), dalle prove citate.** Le priorità le fissa il
-proprietario in [PIANI.md](PIANI.md); la mappa per ambito è [AMBITI.md](AMBITI.md).
+**Mandato del proprietario del 30/09:** il [piano del giorno per Claude, R-LAB](piani/piano-giorno-2026-09-30.md)
+mette prima corpus esteso di singole cellule, ingestione riprendibile, QC per assay e una rete
+basata su funzione del bersaglio e stato cellulare. Attua [R-COMP](piani/modello-competitivo.md);
+è un piano, non un risultato predittivo. Priorità in [PIANI.md](PIANI.md), evidenze per ambito in
+[AMBITI.md](AMBITI.md). Restano i seguenti vincoli e risultati:
 
 1. **Il traguardo è il set finale D/E/F**, l'unico che conta per la classifica: tutta la catena
    deve andare dall'input al `.vcc` su contesti e bersagli nuovi. Resta da fare la prova generale
    in forma piena (azione 3 di [R-REV](piani/revisione-critica.md)), che chiede circa 17 GB liberi;
    il 30/09 su C: ce n'erano 3,8.
-2. **La leva misurata è l'emissione.** Il t28 conferma in gara il verso del banco, cioè fedeltà e
+2. **L'emissione resta una leva misurata e un confronto necessario.** Il t28 conferma in gara il verso del banco, cioè fedeltà e
    reach che salgono, con un guadagno netto piccolo pagato in NMAE, Jaccard e MSE grezza
-   ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)). Il passo successivo è separare
-   ampiezza e dispersione e cercare varianti che non perdano NMAE, scegliendo con lo scorer vero su
+   ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)). Separare
+   ampiezza e dispersione e cercare varianti che non perdano NMAE resta un confronto del nuovo piano, con lo scorer vero su
    una riserva mai valutata: il banco K562 dell'azione 4 e il passo 2 di
    [R-COMP](piani/modello-competitivo.md), non il solo banco HepG2.
 3. **Il divario con i primi 100 sta soprattutto nella `mse`**, tosata a zero in tutti i nostri
@@ -47,8 +50,10 @@ proprietario in [PIANI.md](PIANI.md); la mappa per ambito è [AMBITI.md](AMBITI.
    ([audit del 29/09](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md), §2.4),
    e nessun modello appreso ha ancora passato la sua regola: una rete nuova si prova sui sei
    membri, con una riserva nuova.
-4. **I dati già pronti ma non usati**, come le diciannove linee HIPSCI e VIPerturb-seq (Flex, fuori
-   dalla ricetta), entrano con maschere esplicite e con la copertura tracciata
+4. **Tutti i dati utilizzabili hanno un ruolo esplicito nel nuovo corpus**, senza limitarsi ai
+   quattro della ricetta o al nucleo dei contrasti appaiati. Preservare le singole cellule dove
+   disponibili, tenere gli aggregati come viste/supervisioni distinte e tracciare QC e uso effettivo.
+   Le diciannove linee HIPSCI e VIPerturb-seq (Flex, fuori dalla ricetta) sono esempi di integrazione
    ([copertura del training](../reports/analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md)).
 5. **Metodo:** previsione registrata prima di ogni invio, lettura dai sei membri pubblicati, e
    prima di concludere un controllo degli [errori già commessi](ERRORI.md#errori-di-metodo-già-commessi).
@@ -57,8 +62,9 @@ proprietario in [PIANI.md](PIANI.md); la mappa per ambito è [AMBITI.md](AMBITI.
 
 Priorità, stato e assegnazioni stanno in [PIANI](PIANI.md) e nelle schede; qui solo l'orientamento,
 al 30/09:
-- **R-COMP**, priorità dal 29/09: riconciliare i dataset, congelare una riserva indipendente,
-  verificare un nuovo modello sui sei membri ([scheda](piani/modello-competitivo.md)).
+- **R-LAB**, piano operativo del 30/09 per Claude: corpus cellulare esteso, qualità e rete biologica
+  ([scheda](piani/piano-giorno-2026-09-30.md)); attua **R-COMP**, che conserva riserva e criteri di
+  verifica sui sei membri ([programma](piani/modello-competitivo.md)).
 - **R-REV**, le azioni della revisione critica del 28/09 ([scheda](piani/revisione-critica.md)):
   la 2 e la 6 sono chiuse; la 3 aspetta la prova generale in forma piena (la forma ridotta dà un
   `.vcc` valido, [CP-0044](checkpoints/0044-prova-generale-22-ottobre.md)), la 4 il job Colab del

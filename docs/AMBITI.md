@@ -71,7 +71,8 @@ cambiare il codice: `scripts/CLAUDE.md` e `src/vcc2026/CLAUDE.md`.
   gene non misurato resta mascherato, non vale zero (D-009).
 
 Leggi prima: [GENERALIZZAZIONE](GENERALIZZAZIONE.md), [sorgenti](../reports/sorgenti/README.md).
-Piano: [R-COMP](piani/modello-competitivo.md); [R-DATI](piani/dati-affidabilita.md) è ferma al
+Piano operativo: [R-LAB, corpus cellulare e QC](piani/piano-giorno-2026-09-30.md), dentro
+[R-COMP](piani/modello-competitivo.md); [R-DATI](piani/dati-affidabilita.md) è ferma al
 28/09, con il lavoro proseguito in R-V2 e R-COMP.
 
 ### 5. Modelli appresi e generalizzazione
@@ -87,7 +88,8 @@ Piano: [R-COMP](piani/modello-competitivo.md); [R-DATI](piani/dati-affidabilita.
 
 Leggi prima: [GENERALIZZAZIONE](GENERALIZZAZIONE.md), [modelli](../reports/modelli/README.md), la
 sezione «Rete sulle sorgenti» dell'[indice lead](../reports/analisi/lead_scientist_2026-09-29/README.md).
-Piano: [R-COMP](piani/modello-competitivo.md), [R-V2](piani/modello-v2.md).
+Piano operativo: [R-LAB, rete biologica e validazione](piani/piano-giorno-2026-09-30.md), dentro
+[R-COMP](piani/modello-competitivo.md); altri filoni in [R-V2](piani/modello-v2.md).
 
 ### 6. Set finale D, E, F
 
