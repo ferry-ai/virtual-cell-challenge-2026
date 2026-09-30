@@ -1,0 +1,44 @@
+{
+  "recorded_utc": "2026-09-29T22:08:40.2032533Z",
+  "claim_type": "measured_local_test",
+  "provenance": "Structured transcription of the completed exec session 69164 tool output; not an original stdout log file.",
+  "command": ".\\scripts\\py.cmd -m unittest discover -s tests",
+  "exit_code": 1,
+  "tests": 282,
+  "elapsed_seconds_reported_by_unittest": 180.244,
+  "errors": [
+    {
+      "test": "test_bench_generator.TestStage73Smoke.test_g0_arms_are_scored_once_per_generator_seed",
+      "error": "ModuleNotFoundError: No module named 'cell_eval2.config'"
+    },
+    {
+      "test": "test_bench_generator.TestStage73Smoke.test_without_the_new_flags_the_old_stage_is_reproduced",
+      "error": "ModuleNotFoundError: No module named 'cell_eval2.config'"
+    },
+    {
+      "test": "test_sc_pipeline.BenchComponentTests.test_components_reproduce_the_scored_fidelity",
+      "error": "ModuleNotFoundError: No module named 'cell_eval2.config'"
+    }
+  ],
+  "failures": [
+    {
+      "test": "test_live_tree.TestFolderMaps.test_reports_are_filed_by_category_and_each_folder_is_indexed_once",
+      "category": "invii/",
+      "listed_but_not_in_test_inventory": "prediction_t28_2026-09-29/",
+      "physical_path_exists_after_test": true
+    },
+    {
+      "test": "test_live_tree.TestFolderMaps.test_reports_are_filed_by_category_and_each_folder_is_indexed_once",
+      "category": "sorgenti/",
+      "listed_but_not_in_test_inventory": "basali_asse_2026-09-29/",
+      "physical_path_exists_after_test": true
+    }
+  ],
+  "documentation_check": {
+    "command": ".\\scripts\\py.cmd scripts/31_check_docs.py",
+    "exit_code": 0,
+    "checkpoints": 51,
+    "scope": "Structure, registry and links only; not scientific validity."
+  },
+  "follow_up": "No rerun, package installation or unrelated source correction performed. Parent notified. The scientific jobs and their frozen environments are distinct from this local repository suite."
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260929-001",
+  "revision": 1,
+  "previous_sha256": null,
+  "recorded_utc": "2026-09-29T21:07:21.390322+00:00",
+  "claim_type": "operational_incident",
+  "title": "Job 071: dipendenza pooch assente",
+  "symptom": "ModuleNotFoundError: No module named 'pooch'",
+  "cause": "Nel runtime isolato mancava pooch, richiesto dal percorso di import effettivamente eseguito. Non si deduce un difetto di JAX, CUDA o del checkpoint.",
+  "cause_verified": true,
+  "fix": "Installare esclusivamente pooch==1.8.2 con --no-deps; registrare pip freeze prima/dopo e rieseguire l'import reale prima dei pesi.",
+  "regression_test": "learning/test_preflight.py: import assente e roundtrip H5AD; Il retry Colab r2 registra soltanto pooch==1.8.2 aggiunto e nessun pacchetto rimosso, poi 'Stack/scvi imports OK'. Il successivo runtime Kaggle fresco registra installazione riuscita di pooch1.8.2, import riuscito e completamento inferenza.",
+  "next_guard": "Un resolver o pip check riuscito non sostituisce uno smoke test del percorso di import usato dall'inferenza, eseguito prima di scaricare/caricare il modello.",
+  "scope": "Correzione tecnica verificata; non prova qualità scientifica del modello.",
+  "evidence": [
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/inference_failure_r1/model_imports.log",
+      "bytes": 1440,
+      "sha256": "07301a87c5d74a100c82cc5ebbe54f4b51395de9e4cb0beee8d7e52547d0ccb0",
+      "supports": "071_import_error"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/inference_failure_r1/failure.json",
+      "bytes": 1021,
+      "sha256": "97002f4d58412c2c3c435785556658d03768f251973dc269557cb78f7e985911",
+      "supports": "071_failure"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_runtime_measurement_r2/runtime_repair_diff.json",
+      "bytes": 57,
+      "sha256": "bcbfd4887aa7827baaabc5dfd837c9f44d03e379d8d0a27d322c7777be1a2a67",
+      "supports": "072_package_diff"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_runtime_measurement_r2/model_imports.log",
+      "bytes": 22,
+      "sha256": "695800f27a3dfef49974625432c402914195452469716117e0cd5e89f4da2160",
+      "supports": "072_import_success"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/kaggle_lead_monitor/r2/stack/lead_stack_r1/pooch_install.log",
+      "bytes": 205,
+      "sha256": "1c6727f2f0e3de7f7d6c330e85ed1832f14ca2076d8dff070f06ca578360a214",
+      "supports": "kaggle_pooch_install"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/kaggle_lead_monitor/r2/stack/lead_stack_r1/model_imports.log",
+      "bytes": 22,
+      "sha256": "695800f27a3dfef49974625432c402914195452469716117e0cd5e89f4da2160",
+      "supports": "kaggle_import_success"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/kaggle_lead_monitor/r2/stack/lead_stack_r1/completion.json",
+      "bytes": 274,
+      "sha256": "bd00bb8609ac39b4fa18268aa8d1ffb990cd8475e88f79defa94444ecca7b592",
+      "supports": "kaggle_completion"
+    }
+  ],
+  "state": "verified_remotely",
+  "remote_verification": {
+    "evidence_path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_runtime_measurement_r2/model_imports.log",
+    "observed_utc": "2026-09-29T20:56:57Z",
+    "criterion": "Il retry Colab r2 registra soltanto pooch==1.8.2 aggiunto e nessun pacchetto rimosso, poi 'Stack/scvi imports OK'. Il successivo runtime Kaggle fresco registra installazione riuscita di pooch1.8.2, import riuscito e completamento inferenza."
+  }
+}

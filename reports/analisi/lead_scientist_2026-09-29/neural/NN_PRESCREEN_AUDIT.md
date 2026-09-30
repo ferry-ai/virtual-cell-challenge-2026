@@ -1,0 +1,43 @@
+# Il prescreen neurale non è un test dei sei membri
+
+29 settembre 2026. **Revisione post hoc del criterio; proposta di esperimento distinto, non avviato.** Restano invariati codice, risultati e soglie della rete già valutata. Questa nota non autorizza il vecchio runner `postgate` a ignorare il proprio controllo e non dichiara superato il test originario.
+
+## Giudizio sul filtro
+
+Il gate `+0,01` di rango era legittimo per l'ipotesi registrata di un miglioramento utile della discriminazione. Usarlo come prova che la rete non possa migliorare il punteggio a sei membri sarebbe invece una conclusione non misurata. `train_neural_sources.metrics` valuta il rango coseno su effetti centrati, su un supporto genico comune; `truth_arrays` sottrae anche il centro delle verità del contesto di test. Non genera cellule e non misura Wilcoxon, chiamate significative, fidelity, reach, Jaccard o MSE ufficiale. La loss e l'arresto sono a loro volta dominati dalla direzione/rango. Non esiste nel codice una taratura che renda `+0,01` di quel proxy una condizione necessaria per guadagnare nei sei membri.
+
+**Bias possibile della ricerca:** subordinare ogni scoring cellulare a quella soglia seleziona soltanto reti che modificano abbastanza la discriminazione. Può escludere miglioramenti d'ampiezza, calibrazione o variabilità che influenzano i membri DE a rango quasi costante. La conferma pubblica del generatore t28 è un controesempio alla *necessità generale* di un grande guadagno PDS: vince soprattutto nei membri direzionali con PDS quasi invariata. Non è però una prova a favore di questa rete.
+
+La misura della rete resta modesta: i due seed danno circa +0,00222/+0,00246 contro il trasferimento nel proxy, entrambi sotto soglia. I contrasti con rete cieca, contesto scambiato e prior permutati non dimostrano un uso robusto del contesto biologico. Una futura vittoria sullo scorer potrebbe quindi essere un vantaggio di ripesatura/regolarizzazione, senza provare la tesi biologica. Il controllo cieco va mantenuto e non scelto dopo il risultato.
+
+## Cosa esiste realmente per un fit completo e HepG2
+
+**Misurato sui piccoli metadati r2 locali:** `contexts.csv` contiene 12 contesti CRISPRi nelle famiglie K562, CD4, Orion, iPSC e RPE1, per **108586 righe** visibili. A549 KO ha altre 1000 righe ed è esclusa da `design`. HepG2 non compare né fra le righe né fra i sedici basali: i 13 contesti originali più A/B/C. Dimensioni r2: 109586×13248 per ciascuno di `raw`, `se`, `shrunk`; asse completo 18533 geni, 19265 target. Nessun valore di tali tre grandi array è stato letto per questo audit.
+
+- `train_neural_sources.py` implementa già `--holdout none --regime C`: selezione interna dei passi per rete vera e cieca, poi refit sui contesti visibili. `predict(..., family=-1)` permette un contesto noto soltanto dai controlli. Il fit completo non è però stato eseguito, e `--predict-contexts HepG2` fallirebbe oggi perché manca `pool.basal_index['HepG2']`.
+- Serve un wrapper nuovo: leggere soli controlli HepG2 congelati, allinearli per nome all'asse ufficiale, aggiungere in memoria un basale CPM con `NaN` dove il gene non è misurato, aggiornare indice/nome e costruire `SourceView`. Le chiusure/ranghi di `SourceView` restano identici. Il nuovo basale non entra nella media cieca, nei prior normalizzati, nei centri perturbativi o negli split: questi derivano dai contesti/target visibili originali. Il dataset r2 originale deve rimanere immutato.
+- Il batch non riceve outcome HepG2. Target noti nelle altre sorgenti sono ammessi nel regime C; questo non diventerebbe un test J di target mai visti in tutte le sorgenti.
+- L'export esistente scarta silenziosamente nomi di target assenti da `pool.target_index`; il wrapper nuovo deve invece preservare la lista congelata e definire fallback esplicito/maschere, oppure rifiutare prima dello scoring. Le stesse righe devono essere presenti in tutti i bracci.
+- `t25_source_adapter.py` è già implementato e verificato al neutro, ma costituisce un'altra ipotesi: applica i modificatori a quattro sorgenti r9 tramite sei token e protegge own/cis. I fold r2 e un futuro banco r2→HepG2 non ne attestano automaticamente il beneficio. La cache di produzione sui soli 300 target non basta per una nuova riserva HepG2; un test dell'adattatore richiede i relativi effetti pubblici delle sorgenti per quei target e una baseline ricostruita verificabile.
+
+Non proporrei di ridurre il banco alla sola sorgente K562 per comodità: con un solo token il peso relativo d'attenzione si cancella nella normalizzazione. Si testerebbe soprattutto il cancello d'ampiezza, non la selezione fra sorgenti che definisce questa rete.
+
+## Lavoro computazionale e ingegneristico concreto
+
+Per **un seed completo**, il percorso già implementato contiene quattro chiamate `fit`: selezione vera/cieca e refit vero/cieco. Il limite statico è **4000 update** complessivi. Nel fit senza holdout la famiglia interna scelta dal codice per numerosità mediana è K562: tre contesti. Con i parametri congelati, il massimo statico della selezione è **2016 forward di validazione** (2 modelli × 21 valutazioni × 3 contesti × 8 batch target × 2 batch geni). Il vero numero dipende dall'arresto; questi numeri non sono misure di durata.
+
+Il primo calcolo dei centri tocca circa **8631283968 byte** di elementi float16 raw/shrunk/se sui contesti CRISPRi; il cache dei centri può riusare i nove contesti della fase interna durante il refit. Un export in processo separato ricostruisce `SourceView` e ripete la scansione dei contesti visibili. Il solo tensore features massimo del batch è **15728640 byte**, prima di tensori intermedi e autograd; gli array restano mmap. Questa operazione va eseguita dove r2 è già disponibile, non idratando 8,7 GB sul portatile ora quasi pieno.
+
+Per esempio, tre bracci × 24 target × 13248 geni richiedono **78 forward batch** con batch16 e gene-batch1024, oltre alla costruzione delle feature. Due seed raddoppiano fit/export; i tre seed di campionamento delle cellule possono poi riusare i profili esatti, senza nuovi forward neurali. La rete ha 3314 parametri, ma il costo reale include letture dei profili, centri e feature: il conteggio parametri da solo non stima la durata.
+
+Restano da implementare e testare: wrapper del nuovo basale senza alterare r2; export completo con maschere/fallback e unità log-fold esplicite; trasformazione degli effetti nei profili e sampler comune; runner con separazione fra prompt controlli e verità; lettore dei sei score. Esistono già sampler, `FrozenTruthBench` e lettori MSE ratio-of-sums riusabili, ma non costituiscono un banco completo fino a quando sono collegati e verificati.
+
+## Proposta falsificabile, da registrare prima di nuovi esiti
+
+Aprire un esperimento separato di **utilità cellulare della rete**, senza chiamarlo superamento retroattivo del prescreen. Prima occorre un inventario dei target HepG2 i cui outcome sono già stati consultati: escludere sviluppo48, conferma96 del generatore, pilot Stack e riserva Stack12, oltre a qualunque nuovo banco già eseguito. I nominali 118 target residui non vanno dichiarati tutti vergini senza questa riconciliazione. Scegliere una lista con un hash deterministico fissato, usando solo disponibilità/metadati, non gli esiti.
+
+Congelare rete vera, rete cieca e trasferimento fisso, con uguali fonti, maschere, own/cis, scala e generatore. Nessuna calibrazione d'ampiezza o scelta dei passi su HepG2. Esportare i profili prima del campionamento e usare gli stessi tre seed cellulari. Leggere **tutti i sei membri** del vero scorer, mantenendo MSE come rapporto delle somme e i membri mancanti come mancanti. Una regola nuova può essere sul delta del punteggio completo, con bootstrap appaiato dei target ed esplicita non inferiorità PDS, senza pretendere un ulteriore +0,01 PDS. Numero di target, margine e soglia vanno fissati prima dello scoring; non li si seleziona in base ai due vecchi seed o ai risultati di Stack.
+
+Un test solo r2 net contro r2 frozen dimostrerebbe al massimo utilità cellulare di quel modello. Per promuovere una ricetta da inviare occorre poi il confronto dell'adattatore completo con la baseline operativa corrente, sullo stesso asse e con il medesimo generatore. Non propongo di saltare quel passaggio o di inferire generalizzazione a D/E/F da un unico nuovo contesto.
+
+Fonti lette: `PROTOCOLLO_NEURALE.md`, `train_neural_sources.py`, `neural_sources.py`, `t25_source_adapter.py`, `ADATTATORE_T25.md`, `RISULTATI_NEURALE_SEED1.md`; metadati locali `processed/rete_contesti_r2/{manifest.json,contexts.csv}`. Nessun training, inferenza, nuovo scoring, upload o selezione di risultati eseguito.

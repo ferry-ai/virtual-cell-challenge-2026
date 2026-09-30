@@ -1,0 +1,103 @@
+{
+  "created_utc": "2026-09-29T19:16:03.845683+00:00",
+  "claim_type": "static work counts from frozen code and input metadata; no remote progress or elapsed prediction",
+  "effect_values_read": false,
+  "genes": 13248,
+  "contexts": 12,
+  "folds": [
+    {
+      "family": "k562",
+      "validation_family": "orion",
+      "visible_contexts": 9,
+      "test_contexts": 3,
+      "test_targets": 1536,
+      "test_forward_batches": 6240,
+      "test_profile_calls": 898560,
+      "test_feature_bytes_cumulative": 73256140800,
+      "max_validation_forward_batches": 1344,
+      "centering_rows_once": 90049,
+      "training_forward_steps_upper_bound": 4000
+    },
+    {
+      "family": "cd4",
+      "validation_family": "k562",
+      "visible_contexts": 9,
+      "test_contexts": 3,
+      "test_targets": 1536,
+      "test_forward_batches": 6240,
+      "test_profile_calls": 898560,
+      "test_feature_bytes_cumulative": 73256140800,
+      "max_validation_forward_batches": 2016,
+      "centering_rows_once": 72285,
+      "training_forward_steps_upper_bound": 4000
+    },
+    {
+      "family": "orion",
+      "validation_family": "k562",
+      "visible_contexts": 10,
+      "test_contexts": 2,
+      "test_targets": 1024,
+      "test_forward_batches": 4160,
+      "test_profile_calls": 665600,
+      "test_feature_bytes_cumulative": 54263808000,
+      "max_validation_forward_batches": 2016,
+      "centering_rows_once": 74878,
+      "training_forward_steps_upper_bound": 4000
+    },
+    {
+      "family": "ipsc",
+      "validation_family": "orion",
+      "visible_contexts": 9,
+      "test_contexts": 3,
+      "test_targets": 1536,
+      "test_forward_batches": 6240,
+      "test_profile_calls": 898560,
+      "test_feature_bytes_cumulative": 73256140800,
+      "max_validation_forward_batches": 1344,
+      "centering_rows_once": 90939,
+      "training_forward_steps_upper_bound": 4000
+    },
+    {
+      "family": "rpe1",
+      "validation_family": "orion",
+      "visible_contexts": 11,
+      "test_contexts": 1,
+      "test_targets": 512,
+      "test_forward_batches": 2080,
+      "test_profile_calls": 366080,
+      "test_feature_bytes_cumulative": 29845094400,
+      "max_validation_forward_batches": 1344,
+      "centering_rows_once": 106193,
+      "training_forward_steps_upper_bound": 4000
+    }
+  ],
+  "totals": {
+    "test_contexts": 12,
+    "test_targets": 6144,
+    "test_forward_batches": 24960,
+    "test_profile_calls": 3727360,
+    "test_feature_bytes_cumulative": 303877324800,
+    "max_validation_forward_batches": 8064,
+    "centering_rows_once": 434344,
+    "training_forward_steps_upper_bound": 20000
+  },
+  "feature_bytes_max_one_batch": 14417920,
+  "centering_raw_shrunk_se_float16_source_bytes": 34525135872,
+  "training_fit_calls": 20,
+  "model_selection_fit_calls": 10,
+  "refit_calls": 10,
+  "sources": {
+    "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\analisi\\lead_scientist_2026-09-29\\train_neural_sources.py": "2b4e9734a0ea630010e0b83c8cbbb0c48fd1707e5356c3834ee5dbb954d55f72",
+    "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\analisi\\lead_scientist_2026-09-29\\neural_sources.py": "fdfc6e7cadc153e161d9679fe0ee3c3ca6a846e71df85b328ae9a726133f55b1",
+    "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_contesti_r2\\manifest.json": "2e59376b103dc6578b9a52e3c37c655207567ecc0375481bc5e3560e7fb8b32a",
+    "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_contesti_r2\\contexts.csv": "2847d53b3e35308e1e497ba6d700032c0066934733fd2a83873848db78ef4fd6",
+    "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_contesti_r2\\targets.csv": "3da48d5558b230a11b7950d41d3081794f78b12302071fd9de122e7755ba817c",
+    "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_contesti_r2\\row_target.npy": "c9e27f485f22409baa5b287ee6cef45a51cfb10bc1adecb76ec51aaff7fe8698"
+  },
+  "limitations": [
+    "Training/refit can stop early; counts labelled upper bound are not measured execution.",
+    "Feature bytes are cumulative allocated/uploaded float32 payload, not peak RAM.",
+    "No claim which operation dominates wall time without profiling.",
+    "NPZ compression, metrics, label reads and tensor intermediates are additional work."
+  ]
+}

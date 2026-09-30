@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260929-007",
+  "revision": 1,
+  "previous_sha256": null,
+  "recorded_utc": "2026-09-29T22:04:09.411564+00:00",
+  "claim_type": "operational_incident",
+  "state": "observed",
+  "title": "T28: lettura Drive fallita durante SHA prima della CLI di invio",
+  "symptom": "Il worker avviato alle 21:53:30 UTC termina con OSError 22 in f.read(8 MiB), durante il nuovo hash completo. Ultimo avanzamento registrato: 256 MiB. Non esistono directory del tentativo o submission_started.json.",
+  "cause": "Errore I/O di lettura dal percorso montato G: documentato. La causa precisa nel filesystem Drive, cache o handle non è verificata. Un hash completo precedente era riuscito alle 21:42:04 UTC e non garantisce la riuscita di una nuova lettura.",
+  "cause_verified": false,
+  "fix": "Proposta in preparazione da un altro agente: copia locale a blocchi con riapertura del file, retry I/O limitati, budget disco e hash completo finale su C:, poi runner di invio invariato. Non ancora verificata in questo record.",
+  "regression_test": "Il traceback originale documenta il guasto. Test di retry, scritture parziali, budget disco e SHA errato sono richiesti alla correzione; il loro esito non è attestato qui.",
+  "next_guard": "Prima della CLI verificare il contenitore nel percorso realmente usato per l'upload. Per file montati remoti, prevedere ripresa di lettura e copia su volume stabile con spazio esplicito; una vecchia ricevuta SHA non prova disponibilità futura.",
+  "scope": "Incidente aperto. Separare copia verificata, avvio upload, upload completo e score VCC. Nessuna di queste fasi è dimostrata dal solo fix scritto.",
+  "evidence": [
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_direct_attempt_r1.worker_started.json",
+      "sha256": "25b7bfce1eabf7abc38987cd6c2a6fc69bbcf4d09abfbd0a5a28bbaf77313b24",
+      "bytes": 720,
+      "supports": "Ricevuta originale di avvio worker e hash del runner"
+    },
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_direct_attempt_r1.worker_stdout.log",
+      "sha256": "c381f2a914b1a0d8360a8d297466168a4f92ac3ac279533c17d2c32415eae86c",
+      "bytes": 112,
+      "supports": "Ultimo avanzamento di hashing effettivamente registrato, non byte esatti al guasto"
+    },
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_direct_attempt_r1.worker_stderr.log",
+      "sha256": "663807c18aac17906e64144f6a52bd991eca353e99f1aded063a768169568e80",
+      "bytes": 1484,
+      "supports": "Traceback originale: errore durante validazione, prima di submit"
+    },
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_in_place_validation_r1/validation.json",
+      "sha256": "d19e118a0258fcccc96f0758f1f6db12528c280b96f870f26e99e6e6119117d3",
+      "bytes": 3262,
+      "supports": "Hash completo precedente riuscito; uploaded=false"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/direct_t28_submission.py",
+      "sha256": "adccdd054987dcfeb5e425982d68bb9a149a6d96ce6f3001620583df3ea55ec1",
+      "bytes": 13637,
+      "supports": "validate viene chiamato prima di submit e crea output solo dopo la lettura completa"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/learning/upload_read_failure_observation_r1.json",
+      "sha256": "7b5ce0d20a3068db9d4b2ec7d7e6609f9ce4fa06b46664f323f3adb2055edbc7",
+      "bytes": 617,
+      "supports": "Osservazione locale di assenza output e marker di invio"
+    }
+  ],
+  "remote_verification": null
+}

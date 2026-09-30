@@ -14,6 +14,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-047 | Si possono scegliere modifiche congiunte dopo un banco fattoriale preregistrato e una conferma separata; l'attribuzione ai singoli fattori resta distinta dalla scelta del candidato | attiva | 2026-09-29 | Mandato del proprietario alla lead; `reports/analisi/lead_scientist_2026-09-29/PROTOCOLLO_GENERATORE.md`, `reports/analisi/lead_scientist_2026-09-29/RISULTATI_GENERATORE_SVILUPPO.md` |
 | D-046 | L'evidenza sta in `reports/<categoria>/<tema>_<data>/`, con un indice per categoria che dice data, nocciolo, validità e peso di ogni cartella; i percorsi scritti prima si seguono per nome un livello più giù; le analisi superate stanno in `docs/storico/` | attiva | 2026-09-28 | Richiesta del proprietario in chat del 28 settembre; `reports/README.md`, `reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md` |
 | D-045 | Nessun limite preventivo: gli agenti non stimano i tempi e non chiudono la giornata perché un candidato non passa la sua regola; finché la quota del giorno è aperta si passa ad altri candidati | attiva | 2026-09-26 | Richiesta del proprietario in chat del 26 settembre, pomeriggio |
 | D-044 | La ricerca ammette sorgenti senza bersagli in comune col pannello; i nuovi predittori si valutano soprattutto su bersagli e contesti entrambi nuovi | attiva | 2026-09-24 | Richiesta del proprietario in chat; [CP-0036](checkpoints/0036-generalizzazione-bersagli-contesti.md), [GENERALIZZAZIONE.md](GENERALIZZAZIONE.md) |
@@ -62,6 +63,26 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-047 — Le interazioni richiedono confronti congiunti
+
+- **Mandato:** il 29 settembre il proprietario ha autorizzato la lead a riesaminare
+  vincoli metodologici precedenti. Questa decisione precede la lettura della conferma
+  del generatore; non ne dichiara il superamento.
+- **Perché:** il banco fattoriale di sviluppo misura un'interazione ampiezza × dispersione
+  di +0,017713 nella proiezione locale. La dispersione piena perde all'ampiezza 1 e
+  guadagna all'ampiezza 1,5. Cercare solo variazioni singole dal riferimento può quindi
+  escludere una combinazione utile. È un dato locale, non una stima del guadagno VCC.
+- **Decisione:** D-042 mantiene la misura ufficiale come prova della competitività.
+  La regola «un fattore alla volta» resta utile per attribuire un effetto, ma non vieta
+  candidati congiunti selezionati da una griglia registrata prima dei risultati e
+  giudicati su bersagli separati con semi e soglie congelati. Un eventuale invio valuta
+  il pacchetto di modifiche; da solo non identifica il contributo di ciascuna.
+- **Condizioni:** tutte le metriche grezze, i peggioramenti e il cambio di dominio si
+  riportano; una conferma fallita non si rinomina positiva; previsione prima della
+  generazione e autorizzazione del proprietario all'invio restano richieste.
+- **Riaprire se:** emerge contaminazione fra sviluppo e conferma, un artefatto del
+  generatore, oppure la conferma o la gara contraddicono l'interazione locale.
 
 ### D-046 — L'evidenza per categoria, con un indice che ne dice lo stato
 

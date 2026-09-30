@@ -20,7 +20,7 @@ README con una riga per cartella: **data, nocciolo, se vale ancora e quanto pesa
 | 5 | [Artefatto del pseudoconteggio](sorgenti/pseudoconteggio_2026-09-27/RISULTATI.md) | Uno stimatore leggeva un gene senza conteggi come indotto; cache r9 e t25 |
 | 6 | [Atlante](trasferimento/atlante_2026-09-26/RISULTATI.md) | Il trasferimento su migliaia di bersagli; linea e laboratorio pesano più dello stato cellulare |
 | 7 | [Modelli su molti contesti](modelli/README.md) | Rete, encoder, modello a cancelli e Tahoe: il contesto letto dai controlli non aiuta ancora; lo scambio vale quanto il contesto giusto |
-| 8 | [Ponte Flex–3'](sorgenti/ponte_flex_2026-09-28/RISULTATI.md) | La gara è in Flex, le sorgenti in 3': il divario non è solo rumore |
+| 8 | [Ponte Flex–3'](sorgenti/ponte_flex_2026-09-28/RISULTATI.md) | Divario VIPerturb–Replogle nella stessa linea K562. Non rappresenta tutte le sorgenti: CD4 è già Flex ([audit 29/09](analisi/lead_scientist_2026-09-29/AUDIT_DATI.md)) |
 | 9 | [Revisione critica del 28/09](analisi/revisione_criticita_2026-09-28/REVISIONE.md) | Criticità, bias, evidenze citate ma assenti, e la valutazione delle critiche di Alfredo. Le azioni che ne seguono, in ordine, sono la scheda [R-REV](../docs/piani/revisione-critica.md) |
 
 ## Le categorie

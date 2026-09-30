@@ -1,0 +1,76 @@
+{
+  "delta_projection": -0.15832148245718886,
+  "delta_pds_raw": -0.3333333333333334,
+  "member_contributions": {
+    "pds_cosine": -0.12417866663651321,
+    "de_wilcoxon_lfc_nmae": -0.0066255670948962555,
+    "de_wilcoxon_direction_fidelity_yield_raw": -0.017134443543045386,
+    "de_wilcoxon_direction_reach_raw": -0.00888141815475768,
+    "de_wilcoxon_sig_jaccard": -0.0015013870279763242
+  },
+  "eligible_targets_per_member": {
+    "pds_cosine": 12,
+    "de_wilcoxon_lfc_nmae": 9,
+    "de_wilcoxon_direction_fidelity_yield_raw": 12,
+    "de_wilcoxon_direction_reach_raw": 11,
+    "de_wilcoxon_sig_jaccard": 12
+  },
+  "paired_target_bootstrap_ci95_descriptive": [
+    -0.2367576097788978,
+    -0.08208255843622815
+  ],
+  "bootstrap_complete_fraction": 1.0,
+  "proceed_to_distinct_confirmation": false,
+  "rule": "projection > 0 AND mean PDS not lower; 12 development targets, exploratory only",
+  "raw": {
+    "transfer": {
+      "pds_cosine": 0.8712121212121212,
+      "expr_mse_unbiased_capped_norm": 1.44877447460788,
+      "de_wilcoxon_lfc_nmae": 0.9702080998461571,
+      "de_wilcoxon_direction_fidelity_yield_raw": 0.4811818398081233,
+      "de_wilcoxon_direction_reach_raw": 0.10848407072771181,
+      "de_wilcoxon_sig_jaccard": 0.04750610279360427
+    },
+    "stack": {
+      "pds_cosine": 0.537878787878788,
+      "expr_mse_unbiased_capped_norm": 1.3036893394768896,
+      "de_wilcoxon_lfc_nmae": 0.9943764216632656,
+      "de_wilcoxon_direction_fidelity_yield_raw": 0.4505692648871284,
+      "de_wilcoxon_direction_reach_raw": 0.06107316264070997,
+      "de_wilcoxon_sig_jaccard": 0.04421845977316838
+    }
+  },
+  "aggregation_checks": {
+    "transfer": {
+      "mse_identity": "verified ratio of summed capped numerator to summed distance",
+      "numerator_sum": 0.13355121178549512,
+      "denominator_sum": 0.09218219545291279,
+      "ratio": 1.4487744746078852,
+      "eligible_targets": 12
+    },
+    "stack": {
+      "mse_identity": "verified ratio of summed capped numerator to summed distance",
+      "numerator_sum": 0.12017694550153779,
+      "denominator_sum": 0.09218219545291279,
+      "ratio": 1.3036893394768938,
+      "eligible_targets": 12
+    }
+  },
+  "truth_cells_per_target": {
+    "CCDC130": 145,
+    "NRBP1": 50,
+    "MLLT6": 129,
+    "WBP11": 62,
+    "RPL36A": 68,
+    "MBTPS1": 115,
+    "RPL41": 109,
+    "COG6": 61,
+    "EEF2": 76,
+    "DCTN1": 70,
+    "HAUS8": 53,
+    "SETD1A": 81
+  },
+  "claim": "Paired 12-target development pilot; five-member projection, MSE reported separately; not a VCC score",
+  "scope_caveat": "PDS uses this 12-target local panel and is not directly comparable with a 48/96/300-target panel",
+  "pretraining_holdout_verified": false
+}

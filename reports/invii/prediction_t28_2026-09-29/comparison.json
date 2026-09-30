@@ -1,0 +1,146 @@
+{
+  "written_utc": "2026-09-29T23:08:24.749773+00:00",
+  "entry_id": "ZvrYZ4UazadAyuq4AsDB",
+  "submission_date": "2026-09-29T22:29:42.927175Z",
+  "score_avg": 0.14484520500645978,
+  "rank_at_scoring": 359,
+  "official_status": "published",
+  "panel_id": "vcc2026-val-1",
+  "anchor_version": "vcc2026-valA-r4+vcc2026-valB-r4+vcc2026-valC-r4",
+  "t28_minus_t25": 0.004607144091624243,
+  "t28_minus_t22_t24_mean": 0.002771524988650992,
+  "t28_minus_t24_best_observed": 0.001948344056439566,
+  "new_best_observed_among_registered_references": true,
+  "rule_branch": "otherwise",
+  "rule_text": "Inconclusive for the prespecified improvement claim; record any new best observed leaderboard number separately from robustness. Existing recipe remains the reference pending further evidence.",
+  "registered_band": [
+    0.135,
+    0.18
+  ],
+  "inside_avg_band": true,
+  "t28_minus_t25_band": [
+    -0.00523806091483553,
+    0.03976193908516446
+  ],
+  "inside_diff_band": true,
+  "reference": {
+    "t25": 0.14023806091483554,
+    "t22": 0.14125049908559736,
+    "t24_best_observed": 0.14289686095002022,
+    "t22_t24_mean": 0.1420736800178088
+  },
+  "scaled_published": {
+    "t25": {
+      "score_pds": 0.6235621757264928,
+      "score_mse": 0,
+      "score_nmae": 0.11798484120651283,
+      "score_fid": -0.0581287268841437,
+      "score_reach": 0.14405215190643564,
+      "score_jac": 0.013957923533715692
+    },
+    "t28": {
+      "score_pds": 0.6223070792267033,
+      "score_mse": 0,
+      "score_nmae": 0.04920195622768383,
+      "score_fid": -0.007408907363258718,
+      "score_reach": 0.19871265014354142,
+      "score_jac": 0.006258451804088974
+    },
+    "t28_minus_t25": {
+      "score_pds": -0.0012550964997894987,
+      "score_mse": 0,
+      "score_nmae": -0.068782884978829,
+      "score_fid": 0.05071981952088498,
+      "score_reach": 0.05466049823710578,
+      "score_jac": -0.007699471729626718
+    },
+    "t28_minus_t25_contribution_to_mean": {
+      "score_pds": -0.00020918274996491645,
+      "score_mse": 0.0,
+      "score_nmae": -0.011463814163138167,
+      "score_fid": 0.00845330325348083,
+      "score_reach": 0.00911008303951763,
+      "score_jac": -0.0012832452882711196
+    }
+  },
+  "raw": {
+    "pds_cosine": {
+      "t28": 0.781419546636938,
+      "t25": 0.7820921590486809,
+      "t28_minus_t25": -0.0006726124117428789
+    },
+    "expr_mse_unbiased_capped_norm": {
+      "t28": 5.8002071450332116,
+      "t25": 3.0171714908166867,
+      "t28_minus_t25": 2.783035654216525
+    },
+    "de_wilcoxon_lfc_nmae": {
+      "t28": 0.96754906574089,
+      "t25": 0.928018708954095,
+      "t28_minus_t25": 0.03953035678679495
+    },
+    "de_wilcoxon_direction_fidelity_yield_raw": {
+      "t28": 0.5102589850500234,
+      "t25": 0.49521951128742697,
+      "t28_minus_t25": 0.015039473762596456
+    },
+    "de_wilcoxon_direction_reach_raw": {
+      "t28": 0.2553142900353572,
+      "t25": 0.2065724653149838,
+      "t28_minus_t25": 0.04874182472037342
+    },
+    "de_wilcoxon_sig_jaccard": {
+      "t28": 0.03276922693127063,
+      "t25": 0.03557112599708424,
+      "t28_minus_t25": -0.002801899065813608
+    }
+  },
+  "registered_raw_priors": {
+    "score_avg_band": [
+      0.135,
+      0.18
+    ],
+    "working_centre": 0.155,
+    "t28_minus_t25_band": [
+      -0.00523806091483553,
+      0.03976193908516446
+    ],
+    "calibration": "Subjective planning range, not a confidence or prediction interval. Centre discounts the +0.028918 public-context gain by roughly one half; that discount has not been empirically calibrated.",
+    "members": "Directional fidelity and reach expected to improve; NMAE/Jaccard may worsen; PDS expected near unchanged. Raw MSE expected worse and its scaled value expected to remain clipped at zero."
+  },
+  "integrity": {
+    "all_six_raw_finite": true,
+    "all_six_published_scaled_finite": true,
+    "published_scaled_mean": 0.14484520500645978,
+    "score_avg_absolute_error": 0.0,
+    "no_member_imputed_or_clipped": true,
+    "same_panel_anchor_version": true
+  },
+  "claim_type": "Official published scores; fixed prospective reading rule, not a new significance test",
+  "limits": [
+    "A new best observed score alone does not pass the registered improvement threshold.",
+    "The joint amplitude/dispersion change does not identify either factor alone.",
+    "This current-panel result does not establish generalization to new contexts.",
+    "Raw-to-scaled aggregate reconstruction is not used; official published members are authoritative."
+  ],
+  "inputs": {
+    "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\invii\\prediction_t28_2026-09-29\\prediction.json": {
+      "bytes": 5000,
+      "sha256": "a2081b9cd615a1020a962def21eafa54d7116db79285887f56c775033d61e192"
+    },
+    "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\invii\\trial_2026-09-27\\status_ekxW6wo83Csum25pkddl.json": {
+      "bytes": 2098,
+      "sha256": "fbef35a25f683e3158b19b83199cd19d0448ecec1c01cbd8d1143cecc9b0d90d"
+    },
+    "reports\\invii\\trial_2026-09-29\\status_ZvrYZ4UazadAyuq4AsDB_20260929T2305.json": {
+      "bytes": 1939,
+      "sha256": "d895630a0d6bca398f9707900ebf3f2851fba8dbfe25279a51535b477841c25e"
+    },
+    "reports\\invii\\trial_2026-09-29\\submit_t28_raw.json": {
+      "bytes": 436,
+      "sha256": "49d59f98c95141700122f00665a84781dc9a431dcbd89ae246e1f7eb7acd19f7"
+    }
+  },
+  "reader_sha256": "9df4cda3b8ecf42b0160925ca662e1c3a8ba8ceadda530092ec234f6cc7db10c",
+  "entry_binding": "submit receipt and explicit entry"
+}

@@ -1,0 +1,614 @@
+{
+  "claim": "Descriptive comparison of all 12 diagnostic JSONs; no cell parity or quality claim",
+  "targets": 12,
+  "diagnostics_semantically_exact": true,
+  "provenance_fields": {
+    "bundle_sha256": {
+      "reference": "16cf30126a7c46ec651c8ed8262b19353e1a3ab07c4dd445590a8a040e36fc29",
+      "kaggle": "16cf30126a7c46ec651c8ed8262b19353e1a3ab07c4dd445590a8a040e36fc29",
+      "exact": true
+    },
+    "adapter_sha256": {
+      "reference": "b259371df3d0d515003597c4d9ce5755c25840f0d36fc96d8ac390ffe1275508",
+      "kaggle": "b259371df3d0d515003597c4d9ce5755c25840f0d36fc96d8ac390ffe1275508",
+      "exact": true
+    },
+    "checkpoint_sha256": {
+      "reference": "f93cf6f42f36c8a85dc570d92e801c1fc3e1f45d55741e6bb250d178a6b6ad36",
+      "kaggle": "f93cf6f42f36c8a85dc570d92e801c1fc3e1f45d55741e6bb250d178a6b6ad36",
+      "exact": true
+    },
+    "genelist_sha256": {
+      "reference": "d8761dfda955b9897d3251798b72361ddd0171ef707119eaf65381bed2d85dcc",
+      "kaggle": "d8761dfda955b9897d3251798b72361ddd0171ef707119eaf65381bed2d85dcc",
+      "exact": true
+    },
+    "shared_genes": {
+      "reference": 5179,
+      "kaggle": 5179,
+      "exact": true
+    },
+    "model_genes": {
+      "reference": 15012,
+      "kaggle": 15012,
+      "exact": true
+    },
+    "batch_size": {
+      "reference": 1,
+      "kaggle": 1,
+      "exact": true
+    },
+    "rng_note": {
+      "reference": "Same Stack seed for paired prompt and synthetic control; final target-specific IID draws",
+      "kaggle": "Same Stack seed for paired prompt and synthetic control; final target-specific IID draws",
+      "exact": true
+    },
+    "versions": {
+      "reference": {
+        "torch": "2.5.1",
+        "arc-stack": "0.1.3",
+        "numpy": "1.26.4",
+        "scipy": "1.14.1",
+        "anndata": "0.11.4",
+        "h5py": "3.12.1"
+      },
+      "kaggle": {
+        "torch": "2.5.1",
+        "arc-stack": "0.1.3",
+        "numpy": "1.26.4",
+        "scipy": "1.14.1",
+        "anndata": "0.11.4",
+        "h5py": "3.12.1"
+      },
+      "exact": true
+    }
+  },
+  "diagnostics": [
+    {
+      "target": "CCDC130",
+      "reference_sha256": "e517cb3e6954bbcb0d315fd662f216dcf522d667b168b5478f91eb9319f56a42",
+      "kaggle_sha256": "e517cb3e6954bbcb0d315fd662f216dcf522d667b168b5478f91eb9319f56a42",
+      "semantic_exact": true,
+      "fields": {
+        "baseline_mass_preserved_outside_shared": {
+          "reference": true,
+          "kaggle": true,
+          "exact": true
+        },
+        "shared_genes": {
+          "reference": 5179,
+          "kaggle": 5179,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "shared_lfc_rms": {
+          "reference": 0.05757047465281873,
+          "kaggle": 0.05757047465281873,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        },
+        "source_cells": {
+          "reference": 128,
+          "kaggle": 128,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "target": {
+          "reference": "CCDC130",
+          "kaggle": "CCDC130",
+          "exact": true
+        },
+        "total_mass_relative_error": {
+          "reference": 0.0,
+          "kaggle": 0.0,
+          "exact": true,
+          "delta": 0.0
+        }
+      }
+    },
+    {
+      "target": "NRBP1",
+      "reference_sha256": "585df381fe8064c8715559497c4244171811adbc8318ef81e53a07b72407f980",
+      "kaggle_sha256": "585df381fe8064c8715559497c4244171811adbc8318ef81e53a07b72407f980",
+      "semantic_exact": true,
+      "fields": {
+        "baseline_mass_preserved_outside_shared": {
+          "reference": true,
+          "kaggle": true,
+          "exact": true
+        },
+        "shared_genes": {
+          "reference": 5179,
+          "kaggle": 5179,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "shared_lfc_rms": {
+          "reference": 0.07949049529392786,
+          "kaggle": 0.07949049529392786,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        },
+        "source_cells": {
+          "reference": 92,
+          "kaggle": 92,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "target": {
+          "reference": "NRBP1",
+          "kaggle": "NRBP1",
+          "exact": true
+        },
+        "total_mass_relative_error": {
+          "reference": 0.0,
+          "kaggle": 0.0,
+          "exact": true,
+          "delta": 0.0
+        }
+      }
+    },
+    {
+      "target": "MLLT6",
+      "reference_sha256": "42ad6ded0095863715151320910143ae34b17a406ec65d71170ce915a445c671",
+      "kaggle_sha256": "42ad6ded0095863715151320910143ae34b17a406ec65d71170ce915a445c671",
+      "semantic_exact": true,
+      "fields": {
+        "baseline_mass_preserved_outside_shared": {
+          "reference": true,
+          "kaggle": true,
+          "exact": true
+        },
+        "shared_genes": {
+          "reference": 5179,
+          "kaggle": 5179,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "shared_lfc_rms": {
+          "reference": 0.07205537883423051,
+          "kaggle": 0.07205537883423051,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        },
+        "source_cells": {
+          "reference": 128,
+          "kaggle": 128,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "target": {
+          "reference": "MLLT6",
+          "kaggle": "MLLT6",
+          "exact": true
+        },
+        "total_mass_relative_error": {
+          "reference": 2.220446049250313e-16,
+          "kaggle": 2.220446049250313e-16,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        }
+      }
+    },
+    {
+      "target": "WBP11",
+      "reference_sha256": "a3ba9bd0e3aadf86e9adf271395e6994256336eaf72247f1095e2c64086010fa",
+      "kaggle_sha256": "a3ba9bd0e3aadf86e9adf271395e6994256336eaf72247f1095e2c64086010fa",
+      "semantic_exact": true,
+      "fields": {
+        "baseline_mass_preserved_outside_shared": {
+          "reference": true,
+          "kaggle": true,
+          "exact": true
+        },
+        "shared_genes": {
+          "reference": 5179,
+          "kaggle": 5179,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "shared_lfc_rms": {
+          "reference": 0.07528479192646753,
+          "kaggle": 0.07528479192646753,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        },
+        "source_cells": {
+          "reference": 128,
+          "kaggle": 128,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "target": {
+          "reference": "WBP11",
+          "kaggle": "WBP11",
+          "exact": true
+        },
+        "total_mass_relative_error": {
+          "reference": 0.0,
+          "kaggle": 0.0,
+          "exact": true,
+          "delta": 0.0
+        }
+      }
+    },
+    {
+      "target": "RPL36A",
+      "reference_sha256": "7a4a853dde218c901be3f229e425e0bbcc31ae704fbe8fa777a7575e853a49e6",
+      "kaggle_sha256": "7a4a853dde218c901be3f229e425e0bbcc31ae704fbe8fa777a7575e853a49e6",
+      "semantic_exact": true,
+      "fields": {
+        "baseline_mass_preserved_outside_shared": {
+          "reference": true,
+          "kaggle": true,
+          "exact": true
+        },
+        "shared_genes": {
+          "reference": 5179,
+          "kaggle": 5179,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "shared_lfc_rms": {
+          "reference": 0.06333740523750454,
+          "kaggle": 0.06333740523750454,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        },
+        "source_cells": {
+          "reference": 104,
+          "kaggle": 104,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "target": {
+          "reference": "RPL36A",
+          "kaggle": "RPL36A",
+          "exact": true
+        },
+        "total_mass_relative_error": {
+          "reference": 0.0,
+          "kaggle": 0.0,
+          "exact": true,
+          "delta": 0.0
+        }
+      }
+    },
+    {
+      "target": "MBTPS1",
+      "reference_sha256": "7b156b20e007dc0df7f250b2d1c0b205511b175f84c927c9b9e00df135f763c1",
+      "kaggle_sha256": "7b156b20e007dc0df7f250b2d1c0b205511b175f84c927c9b9e00df135f763c1",
+      "semantic_exact": true,
+      "fields": {
+        "baseline_mass_preserved_outside_shared": {
+          "reference": true,
+          "kaggle": true,
+          "exact": true
+        },
+        "shared_genes": {
+          "reference": 5179,
+          "kaggle": 5179,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "shared_lfc_rms": {
+          "reference": 0.0930893435109414,
+          "kaggle": 0.0930893435109414,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        },
+        "source_cells": {
+          "reference": 128,
+          "kaggle": 128,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "target": {
+          "reference": "MBTPS1",
+          "kaggle": "MBTPS1",
+          "exact": true
+        },
+        "total_mass_relative_error": {
+          "reference": 0.0,
+          "kaggle": 0.0,
+          "exact": true,
+          "delta": 0.0
+        }
+      }
+    },
+    {
+      "target": "RPL41",
+      "reference_sha256": "6d9bfae0d2980f4a72bb52c6080a3cd0f76f1901154a3b47b5331f21d4ddd53a",
+      "kaggle_sha256": "6d9bfae0d2980f4a72bb52c6080a3cd0f76f1901154a3b47b5331f21d4ddd53a",
+      "semantic_exact": true,
+      "fields": {
+        "baseline_mass_preserved_outside_shared": {
+          "reference": true,
+          "kaggle": true,
+          "exact": true
+        },
+        "shared_genes": {
+          "reference": 5179,
+          "kaggle": 5179,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "shared_lfc_rms": {
+          "reference": 0.07148828940931744,
+          "kaggle": 0.07148828940931744,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        },
+        "source_cells": {
+          "reference": 93,
+          "kaggle": 93,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "target": {
+          "reference": "RPL41",
+          "kaggle": "RPL41",
+          "exact": true
+        },
+        "total_mass_relative_error": {
+          "reference": 2.220446049250313e-16,
+          "kaggle": 2.220446049250313e-16,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        }
+      }
+    },
+    {
+      "target": "COG6",
+      "reference_sha256": "b12ffc30d0ae87535eb4c3c667029653d7f6b1d5233233f2622fe6d2bb96c6b2",
+      "kaggle_sha256": "b12ffc30d0ae87535eb4c3c667029653d7f6b1d5233233f2622fe6d2bb96c6b2",
+      "semantic_exact": true,
+      "fields": {
+        "baseline_mass_preserved_outside_shared": {
+          "reference": true,
+          "kaggle": true,
+          "exact": true
+        },
+        "shared_genes": {
+          "reference": 5179,
+          "kaggle": 5179,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "shared_lfc_rms": {
+          "reference": 0.07855005155609673,
+          "kaggle": 0.07855005155609673,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        },
+        "source_cells": {
+          "reference": 128,
+          "kaggle": 128,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "target": {
+          "reference": "COG6",
+          "kaggle": "COG6",
+          "exact": true
+        },
+        "total_mass_relative_error": {
+          "reference": 0.0,
+          "kaggle": 0.0,
+          "exact": true,
+          "delta": 0.0
+        }
+      }
+    },
+    {
+      "target": "EEF2",
+      "reference_sha256": "4d305615aef8fe5349e837debbc549c7487a8e0b3efe71bf652f9c3cf622ffb2",
+      "kaggle_sha256": "4d305615aef8fe5349e837debbc549c7487a8e0b3efe71bf652f9c3cf622ffb2",
+      "semantic_exact": true,
+      "fields": {
+        "baseline_mass_preserved_outside_shared": {
+          "reference": true,
+          "kaggle": true,
+          "exact": true
+        },
+        "shared_genes": {
+          "reference": 5179,
+          "kaggle": 5179,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "shared_lfc_rms": {
+          "reference": 0.11766462225532903,
+          "kaggle": 0.11766462225532903,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        },
+        "source_cells": {
+          "reference": 128,
+          "kaggle": 128,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "target": {
+          "reference": "EEF2",
+          "kaggle": "EEF2",
+          "exact": true
+        },
+        "total_mass_relative_error": {
+          "reference": 0.0,
+          "kaggle": 0.0,
+          "exact": true,
+          "delta": 0.0
+        }
+      }
+    },
+    {
+      "target": "DCTN1",
+      "reference_sha256": "6b14439be8c979343f4b71bff3c46cd279a640243b914cea1ed87a61cb92f422",
+      "kaggle_sha256": "6b14439be8c979343f4b71bff3c46cd279a640243b914cea1ed87a61cb92f422",
+      "semantic_exact": true,
+      "fields": {
+        "baseline_mass_preserved_outside_shared": {
+          "reference": true,
+          "kaggle": true,
+          "exact": true
+        },
+        "shared_genes": {
+          "reference": 5179,
+          "kaggle": 5179,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "shared_lfc_rms": {
+          "reference": 0.07468277743426764,
+          "kaggle": 0.07468277743426764,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        },
+        "source_cells": {
+          "reference": 128,
+          "kaggle": 128,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "target": {
+          "reference": "DCTN1",
+          "kaggle": "DCTN1",
+          "exact": true
+        },
+        "total_mass_relative_error": {
+          "reference": 0.0,
+          "kaggle": 0.0,
+          "exact": true,
+          "delta": 0.0
+        }
+      }
+    },
+    {
+      "target": "HAUS8",
+      "reference_sha256": "344edf51052db7f5ed976f63da0b00ee99133e398999d856b456faa94b83c6ef",
+      "kaggle_sha256": "344edf51052db7f5ed976f63da0b00ee99133e398999d856b456faa94b83c6ef",
+      "semantic_exact": true,
+      "fields": {
+        "baseline_mass_preserved_outside_shared": {
+          "reference": true,
+          "kaggle": true,
+          "exact": true
+        },
+        "shared_genes": {
+          "reference": 5179,
+          "kaggle": 5179,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "shared_lfc_rms": {
+          "reference": 0.07974751870290465,
+          "kaggle": 0.07974751870290465,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        },
+        "source_cells": {
+          "reference": 128,
+          "kaggle": 128,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "target": {
+          "reference": "HAUS8",
+          "kaggle": "HAUS8",
+          "exact": true
+        },
+        "total_mass_relative_error": {
+          "reference": 0.0,
+          "kaggle": 0.0,
+          "exact": true,
+          "delta": 0.0
+        }
+      }
+    },
+    {
+      "target": "SETD1A",
+      "reference_sha256": "d8a8770a3fcacf67704b7987932cbe59b48411ec134dcf078c74e0b69de3bf9f",
+      "kaggle_sha256": "d8a8770a3fcacf67704b7987932cbe59b48411ec134dcf078c74e0b69de3bf9f",
+      "semantic_exact": true,
+      "fields": {
+        "baseline_mass_preserved_outside_shared": {
+          "reference": true,
+          "kaggle": true,
+          "exact": true
+        },
+        "shared_genes": {
+          "reference": 5179,
+          "kaggle": 5179,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "shared_lfc_rms": {
+          "reference": 0.0982907519012651,
+          "kaggle": 0.0982907519012651,
+          "exact": true,
+          "delta": 0.0,
+          "relative_delta": 0.0
+        },
+        "source_cells": {
+          "reference": 89,
+          "kaggle": 89,
+          "exact": true,
+          "delta": 0,
+          "relative_delta": 0.0
+        },
+        "target": {
+          "reference": "SETD1A",
+          "kaggle": "SETD1A",
+          "exact": true
+        },
+        "total_mass_relative_error": {
+          "reference": 0.0,
+          "kaggle": 0.0,
+          "exact": true,
+          "delta": 0.0
+        }
+      }
+    }
+  ],
+  "reference_manifest_sha256": "e02f7cf5cbbbc9f6c759fb702867e5647a8d9a16596887d83e07b4bbae3cb7f9",
+  "kaggle_manifest_sha256": "e02f7cf5cbbbc9f6c759fb702867e5647a8d9a16596887d83e07b4bbae3cb7f9",
+  "quality_score_computed": false,
+  "cell_arrays_compared": false
+}

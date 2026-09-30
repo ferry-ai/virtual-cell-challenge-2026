@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\lead_scientist_2026-09-29\candidate_generation_remote\recovery_r2\direct_t28_submission.py", line 248, in <module>
+    main()
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\lead_scientist_2026-09-29\candidate_generation_remote\recovery_r2\direct_t28_submission.py", line 241, in main
+    receipt = validate(a.source, a.out, a.cache_volume, a.reserve_mib*1024**2)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\lead_scientist_2026-09-29\candidate_generation_remote\recovery_r2\direct_t28_submission.py", line 174, in validate
+    file_info = full_hash_checked(path, size, expected, cache_volume, reserve_bytes)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\lead_scientist_2026-09-29\candidate_generation_remote\recovery_r2\direct_t28_submission.py", line 147, in full_hash_checked
+    for block in iter(lambda: f.read(8*1024**2), b''):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\lead_scientist_2026-09-29\candidate_generation_remote\recovery_r2\direct_t28_submission.py", line 147, in <lambda>
+    for block in iter(lambda: f.read(8*1024**2), b''):
+                              ^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument

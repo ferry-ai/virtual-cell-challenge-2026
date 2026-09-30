@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260929-005",
+  "revision": 1,
+  "previous_sha256": null,
+  "recorded_utc": "2026-09-29T21:07:21.590727+00:00",
+  "claim_type": "operational_incident",
+  "title": "Job081/082: input parzialmente sincronizzati e snapshot mancante",
+  "symptom": "081 si ferma H5AD assente;082 attende poi lo snapshot del codice assente nel mount.",
+  "cause": "Il marker non dimostrava sincronizzazione dei file grandi; anche lo snapshot necessario non era disponibile al runtime. I log non distinguono da soli omissione copia e ritardo sync.",
+  "cause_verified": true,
+  "fix": "Inventario completo inclusivo snapshot; copia e attesa dei SHA completi di ogni input prima extraction/scoring.",
+  "regression_test": "test_preflight.py: marker presente/file assente, hash errato a stessa dimensione e output nuovo.",
+  "next_guard": "Manifest input completo; ricevuta locale distinta da runtime; mai usare marker o glob di altri run come prova di completezza.",
+  "scope": "Guasto tecnico risolto nel082. A perde il confronto scientifico: ciò non riapre questo incidente né autorizza una promozione.",
+  "evidence": [
+    {
+      "path": "G:/Il mio Drive/vcc2026/runs/jobs/081_lead_stack_score_kaggle_a_r1.log",
+      "sha256": "76c13d3df4d6f3a71a2f9b514034a9532e684e15c113e121cd62b5c23dcf6739",
+      "bytes": 317,
+      "supports": "Manifest visibile ma H5ADstack ancora assente sul runtime"
+    },
+    {
+      "path": "G:/Il mio Drive/vcc2026/runs/jobs/082_lead_stack_score_kaggle_a_r2.log",
+      "sha256": "7322e9efe0e9cca67bfc664d407ca2028f203affd0491b3f3c5f88290b119aaf",
+      "bytes": 20262,
+      "supports": "Attende transfer, poi snapshot assente; tutti hash OK al tentativo29 e scorer termina"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/082_lead_stack_score_kaggle_a_r2.sh",
+      "sha256": "09051a589929f4606993e95b1ada29d4b070ea5ab4867eccfae75e63a00975ed",
+      "bytes": 1792,
+      "supports": "Attesa fullhash di tutte le predizioni e dello snapshot"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_a_scoring_r2/evaluation_manifest.json",
+      "sha256": "4b86a8e42572a2392c0d8f58e122f405cbb88507d5f96fc2f5c99111ad44ad43",
+      "bytes": 989,
+      "supports": "Processo scoring avviato dopo verifica"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/RISULTATI_STACK_A.md",
+      "sha256": "eaebb97a0b6838c703af2d5aec54190cd0cb3e729c1adaa870582e8d875a6ef3",
+      "bytes": 1785,
+      "supports": "082rc0 20:53:18 e risultato scientifico negativo distinto dal guasto"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/learning/preflight.py",
+      "sha256": "1df1ca1f82ff3e4b7a65f829dc742da4218a32adb7180721d95b65328b88e744",
+      "bytes": 11396,
+      "supports": "Inventario completo, size/hash nel runtime e attesa"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/learning/test_preflight.py",
+      "sha256": "ccc7e41e6d6e3a3940a39c099c4da8ffa9d0b39e9fc53fa375d885a82807f898",
+      "bytes": 5075,
+      "supports": "Marker esistente non nasconde input assente"
+    }
+  ],
+  "state": "verified_remotely",
+  "remote_verification": {
+    "evidence_path": "G:/Il mio Drive/vcc2026/runs/jobs/082_lead_stack_score_kaggle_a_r2.log",
+    "observed_utc": "2026-09-29T20:53:18+00:00",
+    "criterion": "Tutti SHA richiesti OK prima estrazione,8testPASS e scoring completo; rc0 attestato nel reportroot"
+  }
+}

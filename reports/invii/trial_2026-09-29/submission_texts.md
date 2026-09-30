@@ -1,5 +1,18 @@
 # Testi delle sottomissioni preparate il 29 settembre
 
+## t28
+
+Registrazione alle 18:56 UTC, prima della generazione completa, in
+`reports/invii/prediction_t28_2026-09-29/prediction.json`. Sceglie la combinazione
+confermata su 96 bersagli pubblici e tre semi; la previsione numerica resta soggettiva
+per il cambio di dominio. L'invio attende il via del proprietario sul file convalidato.
+
+**Model name:** `trial-28 amplified multi-source transfer with control-fitted gene dispersion`
+
+**Description:**
+
+The trial-25 multi-source prediction combines public K562 perturbations from Replogle et al., primary CD4+ T cells from GSE314342, and HCT116 and HEK293T from X-Atlas/Orion (Xaira, CC-BY-NC-SA-4.0), with local shrinkage, source-mean removal and a CRISPRi cis component. This model multiplies the complete saved trial-25 effect vector by 1.5 and generates new gamma-Poisson count vectors using gene-specific dispersion estimated from the destination context's control cells. Library sizes are sampled from the same controls; no control-cell vector is copied and no realized group total is fixed. The amplitude and dispersion combination was selected in a preregistered factorial benchmark on public HepG2 cells and checked on disjoint targets with three generation seeds. This public benchmark does not establish its official challenge performance. No perturbed cells of the official contexts are used. This candidate contains no neural correction.
+
 ## t26
 
 Scritto il 29 settembre alle 14:26 (ora italiana), dopo la registrazione del t26 (12:24 UTC) e prima della sua

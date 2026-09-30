@@ -1,0 +1,547 @@
+{
+  "utc": "2026-09-29T19:37:07.528862+00:00",
+  "root_pid": 29730,
+  "processes": {
+    "29730": {
+      "Name": "bash",
+      "State": "S (sleeping)",
+      "PPid": "573",
+      "VmSize": "7344 kB",
+      "VmRSS": "3704 kB",
+      "Threads": "1",
+      "io": "rchar: 33589\nwchar: 264\nsyscr: 40\nsyscw: 2\nread_bytes: 0\nwrite_bytes: 0\ncancelled_write_bytes: 0\n",
+      "wchan": "do_wait",
+      "open_paths": [
+        "pipe:[32157]",
+        "/content/drive/MyDrive/vcc2026/runs/jobs/070_lead_t28_generate_r1.log",
+        "/content/drive/MyDrive/vcc2026/runs/jobs/070_lead_t28_generate_r1.log",
+        "/content/jobs/070_lead_t28_generate_r1.sh"
+      ]
+    },
+    "29734": {
+      "Name": "python",
+      "State": "S (sleeping)",
+      "PPid": "29730",
+      "VmSize": "32564 kB",
+      "VmRSS": "23716 kB",
+      "Threads": "1",
+      "io": "rchar: 7652365069\nwchar: 4935606369\nsyscr: 45059\nsyscw: 4781\nread_bytes: 4221784064\nwrite_bytes: 4937801728\ncancelled_write_bytes: 0\n",
+      "wchan": "pipe_read",
+      "open_paths": [
+        "pipe:[32157]",
+        "/content/drive/MyDrive/vcc2026/runs/lead_candidate_t28_2026-09-29_r1_driver/stdout.log",
+        "/content/drive/MyDrive/vcc2026/runs/lead_candidate_t28_2026-09-29_r1_driver/stdout.log",
+        "/content/lead_candidate_t28/stage48.log",
+        "pipe:[974380]"
+      ]
+    },
+    "37314": {
+      "Name": "python",
+      "State": "R (running)",
+      "PPid": "29734",
+      "VmSize": "3372016 kB",
+      "VmRSS": "864592 kB",
+      "Threads": "6",
+      "io": "rchar: 8245259474\nwchar: 136893\nsyscr: 10723\nsyscw: 41\nread_bytes: 8203866112\nwrite_bytes: 65536\ncancelled_write_bytes: 0\n",
+      "wchan": "0",
+      "open_paths": [
+        "pipe:[32157]",
+        "pipe:[974380]",
+        "pipe:[974380]",
+        "/content/lead_candidate_t28/gen/prediction.h5ad"
+      ]
+    }
+  },
+  "files": [
+    {
+      "path": "code/configs/CLAUDE.md",
+      "bytes": 1372
+    },
+    {
+      "path": "code/configs/config.yaml",
+      "bytes": 1214
+    },
+    {
+      "path": "code/configs/recipes/t08.json",
+      "bytes": 811
+    },
+    {
+      "path": "code/configs/recipes/t10.json",
+      "bytes": 597
+    },
+    {
+      "path": "code/configs/recipes/t11.json",
+      "bytes": 826
+    },
+    {
+      "path": "code/configs/recipes/t12.json",
+      "bytes": 995
+    },
+    {
+      "path": "code/configs/recipes/t15.json",
+      "bytes": 934
+    },
+    {
+      "path": "code/configs/recipes/t16.json",
+      "bytes": 731
+    },
+    {
+      "path": "code/configs/recipes/t17.json",
+      "bytes": 989
+    },
+    {
+      "path": "code/configs/recipes/t18.json",
+      "bytes": 783
+    },
+    {
+      "path": "code/configs/recipes/t19.json",
+      "bytes": 931
+    },
+    {
+      "path": "code/configs/recipes/t20.json",
+      "bytes": 1541
+    },
+    {
+      "path": "code/configs/recipes/t22.json",
+      "bytes": 1320
+    },
+    {
+      "path": "code/configs/recipes/t23.json",
+      "bytes": 1891
+    },
+    {
+      "path": "code/configs/recipes/t25.json",
+      "bytes": 2001
+    },
+    {
+      "path": "code/configs/recipes/t26.json",
+      "bytes": 1658
+    },
+    {
+      "path": "code/configs/recipes/t27.json",
+      "bytes": 1730
+    },
+    {
+      "path": "code/configs/trials.yaml",
+      "bytes": 1924
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/AUDIT_DATI.md",
+      "bytes": 11238
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/AUDIT_GENERATORE.md",
+      "bytes": 12502
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md",
+      "bytes": 15399
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/CALCOLO.md",
+      "bytes": 1921
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/EMENDAMENTO_GENERATORE_01.md",
+      "bytes": 1257
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/EMENDAMENTO_GENERATORE_02.md",
+      "bytes": 4007
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/PROTOCOLLO.md",
+      "bytes": 3148
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/PROTOCOLLO_GENERATORE.md",
+      "bytes": 4919
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/PROTOCOLLO_PONTE.md",
+      "bytes": 8028
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/audit_cd4_states.py",
+      "bytes": 6722
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/audit_data_light.py",
+      "bytes": 4806
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/audit_scientifico/reconstruct_scores.py",
+      "bytes": 6976
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generator_bench.py",
+      "bytes": 34700
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/INTEGRAZIONE_PRODUZIONE.md",
+      "bytes": 3031
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/PROTOCOLLO_BANCO_BINS.md",
+      "bytes": 3883
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/PROTOCOLLO_NULLO.md",
+      "bytes": 1771
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/audit_depth_bins.py",
+      "bytes": 4170
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/audit_lowlibrary.py",
+      "bytes": 3658
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/audit_null.py",
+      "bytes": 3438
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/audit_profile.py",
+      "bytes": 3835
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/check_production_parity.py",
+      "bytes": 3487
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/depth_bins.py",
+      "bytes": 6211
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/depth_candidate.py",
+      "bytes": 4259
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/pilot_dispersion_scale.py",
+      "bytes": 4404
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/production_before_depth.py",
+      "bytes": 24875
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/stage45_before_dispersion_scale.py",
+      "bytes": 23989
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/generatore/test_depth_bins.py",
+      "bytes": 3785
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/ponte_predittivo.py",
+      "bytes": 17714
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/prepare_kaggle.py",
+      "bytes": 4701
+    },
+    {
+      "path": "code/reports/analisi/lead_scientist_2026-09-29/test_generator_bench.py",
+      "bytes": 12946
+    },
+    {
+      "path": "code/reports/gara/anchors_2026-09-17/anchors.json",
+      "bytes": 4395
+    },
+    {
+      "path": "code/scripts/100_build_context_effects.py",
+      "bytes": 35311
+    },
+    {
+      "path": "code/scripts/101_transfer_diagnostics.py",
+      "bytes": 6318
+    },
+    {
+      "path": "code/scripts/102_extract_orion_panel.py",
+      "bytes": 11226
+    },
+    {
+      "path": "code/scripts/103_direction_transfer.py",
+      "bytes": 6707
+    },
+    {
+      "path": "code/scripts/104_learned_reweighting.py",
+      "bytes": 12392
+    },
+    {
+      "path": "code/scripts/105_ctj_bench.py",
+      "bytes": 8952
+    },
+    {
+      "path": "code/scripts/106_assemble_panel_cache.py",
+      "bytes": 14178
+    },
+    {
+      "path": "code/scripts/30_new_checkpoint.py",
+      "bytes": 9812
+    },
+    {
+      "path": "code/scripts/31_check_docs.py",
+      "bytes": 20519
+    },
+    {
+      "path": "code/scripts/45_generate_prediction.py",
+      "bytes": 27475
+    },
+    {
+      "path": "code/scripts/48_package_prediction.py",
+      "bytes": 15474
+    },
+    {
+      "path": "code/scripts/71_extract_k562_sc.py",
+      "bytes": 12989
+    },
+    {
+      "path": "code/scripts/72_generator_null.py",
+      "bytes": 9423
+    },
+    {
+      "path": "code/scripts/73_bench_k562_panel.py",
+      "bytes": 16317
+    },
+    {
+      "path": "code/scripts/74_fetch_gene_coordinates.py",
+      "bytes": 6466
+    },
+    {
+      "path": "code/scripts/75_bench_hepg2_transfer.py",
+      "bytes": 13748
+    },
+    {
+      "path": "code/scripts/76_generate_sc_prediction.py",
+      "bytes": 16309
+    },
+    {
+      "path": "code/scripts/77_cis_effect_report.py",
+      "bytes": 9111
+    },
+    {
+      "path": "code/scripts/79_fast_de_parity.py",
+      "bytes": 4537
+    },
+    {
+      "path": "code/scripts/82_solve_anchors.py",
+      "bytes": 5762
+    },
+    {
+      "path": "code/scripts/83_prediction_calls.py",
+      "bytes": 7930
+    },
+    {
+      "path": "code/scripts/84_predict_official.py",
+      "bytes": 5398
+    },
+    {
+      "path": "code/scripts/85_identify_contexts.py",
+      "bytes": 7383
+    },
+    {
+      "path": "code/scripts/97_extract_cd4_rows.py",
+      "bytes": 10729
+    },
+    {
+      "path": "code/scripts/98_multisource_effects.py",
+      "bytes": 14031
+    },
+    {
+      "path": "code/scripts/99_context_fingerprints.py",
+      "bytes": 8695
+    },
+    {
+      "path": "code/scripts/CLAUDE.md",
+      "bytes": 2281
+    },
+    {
+      "path": "code/scripts/env.ps1",
+      "bytes": 706
+    },
+    {
+      "path": "code/scripts/py.cmd",
+      "bytes": 285
+    },
+    {
+      "path": "code/scripts/vcc.cmd",
+      "bytes": 300
+    },
+    {
+      "path": "code/src/vcc2026/CLAUDE.md",
+      "bytes": 4597
+    },
+    {
+      "path": "code/src/vcc2026/__init__.py",
+      "bytes": 114
+    },
+    {
+      "path": "code/src/vcc2026/__pycache__/__init__.cpython-313.pyc",
+      "bytes": 284
+    },
+    {
+      "path": "code/src/vcc2026/__pycache__/config.cpython-313.pyc",
+      "bytes": 9555
+    },
+    {
+      "path": "code/src/vcc2026/__pycache__/depth_generator.cpython-313.pyc",
+      "bytes": 13063
+    },
+    {
+      "path": "code/src/vcc2026/__pycache__/genes.cpython-313.pyc",
+      "bytes": 4994
+    },
+    {
+      "path": "code/src/vcc2026/__pycache__/inference.cpython-313.pyc",
+      "bytes": 24149
+    },
+    {
+      "path": "code/src/vcc2026/__pycache__/manifest.cpython-313.pyc",
+      "bytes": 9460
+    },
+    {
+      "path": "code/src/vcc2026/__pycache__/packaging.cpython-313.pyc",
+      "bytes": 61522
+    },
+    {
+      "path": "code/src/vcc2026/__pycache__/panel.cpython-313.pyc",
+      "bytes": 6801
+    },
+    {
+      "path": "code/src/vcc2026/__pycache__/resources.cpython-313.pyc",
+      "bytes": 11042
+    },
+    {
+      "path": "code/src/vcc2026/__pycache__/sampling.cpython-313.pyc",
+      "bytes": 10088
+    },
+    {
+      "path": "code/src/vcc2026/__pycache__/submission.cpython-313.pyc",
+      "bytes": 10688
+    },
+    {
+      "path": "code/src/vcc2026/__pycache__/trials.cpython-313.pyc",
+      "bytes": 2412
+    },
+    {
+      "path": "code/src/vcc2026/bench.py",
+      "bytes": 14011
+    },
+    {
+      "path": "code/src/vcc2026/config.py",
+      "bytes": 6290
+    },
+    {
+      "path": "code/src/vcc2026/ctj.py",
+      "bytes": 12125
+    },
+    {
+      "path": "code/src/vcc2026/de_tools.py",
+      "bytes": 11123
+    },
+    {
+      "path": "code/src/vcc2026/depth_generator.py",
+      "bytes": 8860
+    },
+    {
+      "path": "code/src/vcc2026/generator.py",
+      "bytes": 12040
+    },
+    {
+      "path": "code/src/vcc2026/genes.py",
+      "bytes": 2684
+    },
+    {
+      "path": "code/src/vcc2026/inference.py",
+      "bytes": 17313
+    },
+    {
+      "path": "code/src/vcc2026/manifest.py",
+      "bytes": 6424
+    },
+    {
+      "path": "code/src/vcc2026/multisource.py",
+      "bytes": 26474
+    },
+    {
+      "path": "code/src/vcc2026/packaging.py",
+      "bytes": 50961
+    },
+    {
+      "path": "code/src/vcc2026/panel.py",
+      "bytes": 5007
+    },
+    {
+      "path": "code/src/vcc2026/predictor_sc.py",
+      "bytes": 16162
+    },
+    {
+      "path": "code/src/vcc2026/priors.py",
+      "bytes": 4961
+    },
+    {
+      "path": "code/src/vcc2026/remote_csr.py",
+      "bytes": 8481
+    },
+    {
+      "path": "code/src/vcc2026/remote_ranges.py",
+      "bytes": 3447
+    },
+    {
+      "path": "code/src/vcc2026/resources.py",
+      "bytes": 8129
+    },
+    {
+      "path": "code/src/vcc2026/sampling.py",
+      "bytes": 7262
+    },
+    {
+      "path": "code/src/vcc2026/sc_effects.py",
+      "bytes": 2537
+    },
+    {
+      "path": "code/src/vcc2026/sc_stream.py",
+      "bytes": 15555
+    },
+    {
+      "path": "code/src/vcc2026/submission.py",
+      "bytes": 6533
+    },
+    {
+      "path": "code/src/vcc2026/transfer_model.py",
+      "bytes": 12840
+    },
+    {
+      "path": "code/src/vcc2026/trials.py",
+      "bytes": 1549
+    },
+    {
+      "path": "confirmation_selection.json",
+      "bytes": 2586
+    },
+    {
+      "path": "copied_inputs.json",
+      "bytes": 2589
+    },
+    {
+      "path": "data/processed/effects_t25_2026-09-27/effects_A.npz",
+      "bytes": 17629146
+    },
+    {
+      "path": "data/processed/effects_t25_2026-09-27/effects_B.npz",
+      "bytes": 17629146
+    }
+  ],
+  "log_tails": {
+    "/content/drive/MyDrive/vcc2026/runs/lead_candidate_t28_2026-09-29_r1_driver/stdout.log": "   \"amplitude\": 1.5,\n    \"phi_scale\": 1.0,\n    \"generator\": \"pooled\",\n    \"confidence_level\": 0.975,\n    \"paired_target_bootstrap_interval\": [\n      0.019525634903636922,\n      0.03934189554761046\n    ],\n    \"passes_confirmation\": true\n  },\n  \"code_archive_sha256\": \"f7324778e5d7225552734e2c7303353f46dee6c01e9d455703adce3b9b105860\",\n  \"commands\": [\n    [\n      \"/content/lead_candidate_environment_r2/venv/bin/python\",\n      \"scripts/45_generate_prediction.py\",\n      \"--run-id\",\n      \"t28gen\",\n      \"--trial\",\n      \"trial-ext-profile\",\n      \"--out\",\n      \"/content/lead_candidate_t28/gen\",\n      \"--controls-dir\",\n      \"/content/lead_candidate_t28/data/raw/controls\",\n      \"--contexts\",\n      \"A,B,C\",\n      \"--cells-per-pert\",\n      \"400\",\n      \"--seed\",\n      \"20260912\",\n      \"--effects-scale\",\n      \"1.5\",\n      \"--gene-dispersion\",\n      \"--gene-dispersion-scale\",\n      \"1.0\",\n      \"--effects\",\n      \"A=/content/lead_candidate_t28/data/processed/effects_t25_2026-09-27/effects_A.npz\",\n      \"--effects\",\n      \"B=/content/lead_candidate_t28/data/processed/effects_t25_2026-09-27/effects_B.npz\",\n      \"--effects\",\n      \"C=/content/lead_candidate_t28/data/processed/effects_t25_2026-09-27/effects_C.npz\"\n    ],\n    [\n      \"/content/lead_candidate_environment_r2/venv/bin/python\",\n      \"scripts/48_package_prediction.py\",\n      \"--run-id\",\n      \"t28pack\",\n      \"--prediction\",\n      \"/content/lead_candidate_t28/gen/prediction.h5ad\",\n      \"--out\",\n      \"/content/lead_candidate_t28/pack\",\n      \"--workdir\",\n      \"/content/lead_candidate_t28/pack/temp\",\n      \"--contexts\",\n      \"A,B,C\",\n      \"--genes\",\n      \"/content/lead_candidate_t28/data/raw/controls/gene_names.csv\",\n      \"--perts\",\n      \"/content/lead_candidate_t28/data/raw/controls/pert_counts.csv\",\n      \"--zstd-threads\",\n      \"2\"\n    ]\n  ],\n  \"destination\": \"/content/drive/MyDrive/vcc2026/runs/lead_candidate_t28_2026-09-29_r1\",\n  \"scratch\": \"/content/lead_candidate_t28\",\n  \"submission\": false\n}\nCOMMAND [\"/content/lead_candidate_environment_r2/venv/bin/python\", \"scripts/45_generate_prediction.py\", \"--run-id\", \"t28gen\", \"--trial\", \"trial-ext-profile\", \"--out\", \"/content/lead_candidate_t28/gen\", \"--controls-dir\", \"/content/lead_candidate_t28/data/raw/controls\", \"--contexts\", \"A,B,C\", \"--cells-per-pert\", \"400\", \"--seed\", \"20260912\", \"--effects-scale\", \"1.5\", \"--gene-dispersion\", \"--gene-dispersion-scale\", \"1.0\", \"--effects\", \"A=/content/lead_candidate_t28/data/processed/effects_t25_2026-09-27/effects_A.npz\", \"--effects\", \"B=/content/lead_candidate_t28/data/processed/effects_t25_2026-09-27/effects_B.npz\", \"--effects\", \"C=/content/lead_candidate_t28/data/processed/effects_t25_2026-09-27/effects_C.npz\"]\ntrial          : trial-ext-profile (external_effects)\nshape          : 300 perturbations x 400 cells x 3 contexts = 360,000 cells\npilot          : False\ndisk free      : 59.97 GiB (estimated need 4.19 GiB)\nseed           : 20260912\n\n  basal A: 18,400 cells, median UMI 20,109, median detected genes 6,147\n  basal B: 18,400 cells, median UMI 19,946, median detected genes 5,756\n  basal C: 18,400 cells, median UMI 20,034, median detected genes 6,006\n  dispersion A: 13,454 genes overdispersed, median phi 0.165\n  dispersion B: 12,962 genes overdispersed, median phi 0.135\n  dispersion C: 12,187 genes overdispersed, median phi 0.083\neffects A      : /content/lead_candidate_t28/data/processed/effects_t25_2026-09-27/effects_A.npz (13,964 genes observed)\neffects B      : /content/lead_candidate_t28/data/processed/effects_t25_2026-09-27/effects_B.npz (13,964 genes observed)\neffects C      : /content/lead_candidate_t28/data/processed/effects_t25_2026-09-27/effects_C.npz (13,964 genes observed)\n    A 1/300 (1s)\n    A 26/300 (46s)\n    A 51/300 (90s)\n    A 76/300 (135s)\n    A 101/300 (179s)\n    A 126/300 (224s)\n    A 151/300 (267s)\n    A 176/300 (311s)\n    A 201/300 (354s)\n    A 226/300 (398s)\n    A 251/300 (441s)\n    A 276/300 (484s)\n    B 1/300 (527s)\n    B 26/300 (568s)\n    B 51/300 (609s)\n    B 76/300 (649s)\n    B 101/300 (689s)\n    B 126/300 (753s)\n    B 151/300 (816s)\n    B 176/300 (882s)\n    B 201/300 (948s)\n    B 226/300 (1014s)\n    B 251/300 (1074s)\n    B 276/300 (1115s)\n    C 1/300 (1154s)\n    C 26/300 (1195s)\n    C 51/300 (1236s)\n    C 76/300 (1277s)\n    C 101/300 (1318s)\n    C 126/300 (1359s)\n    C 151/300 (1400s)\n    C 176/300 (1441s)\n    C 201/300 (1480s)\n    C 226/300 (1522s)\n    C 251/300 (1563s)\n    C 276/300 (1604s)\n\nwrote prediction.h5ad: 360,000 cells, 2,085,425,466 stored values, 4018.0 MB\n  stored per cell     : 5,793 (budget 13,194)\n  context provenance  : OK\n  runtime             : basal 18s, generation 1662s, total 1717s\n  peak RSS            : 0.82 GiB\n-> /content/lead_candidate_t28/gen/prediction.h5ad\n-> /content/lead_candidate_t28/gen/generation_diagnostics.json\nCOMMAND [\"/content/lead_candidate_environment_r2/venv/bin/python\", \"scripts/48_package_prediction.py\", \"--run-id\", \"t28pack\", \"--prediction\", \"/content/lead_candidate_t28/gen/prediction.h5ad\", \"--out\", \"/content/lead_candidate_t28/pack\", \"--workdir\", \"/content/lead_candidate_t28/pack/temp\", \"--contexts\", \"A,B,C\", \"--genes\", \"/content/lead_candidate_t28/data/raw/controls/gene_names.csv\", \"--perts\", \"/content/lead_candidate_t28/data/raw/controls/pert_counts.csv\", \"--zstd-threads\", \"2\", \"--expect-sha256\", \"123ce93f4d8d21c107215c96f726a6b7121545c1329948f431234eabce80f40e\"]\ninput      : /content/lead_candidate_t28/gen/prediction.h5ad\ncontexts   : A, B, C (from --contexts; the CLI's own are A, B, C)\nhashing input (streamed) ...\n  sha256   : 123ce93f4d8d21c107215c96f726a6b7121545c1329948f431234eabce80f40e  (39s)\nlayout     : 360,000 x 18,533, 2,085,425,466 stored entries\n             data float32/gzip, indices int32, indptr int32\nresources  : RAM 12.67 GiB total, 8.43 GiB available; disk 47.01 GiB free\n             official vcc prep would peak at ~22.2 GiB; this stage streams instead\n             estimated transient disk 9.02 GiB\n\nvalidating and packaging (streamed) ...\n",
+    "/content/lead_candidate_t28/stage45.log": "trial          : trial-ext-profile (external_effects)\nshape          : 300 perturbations x 400 cells x 3 contexts = 360,000 cells\npilot          : False\ndisk free      : 59.97 GiB (estimated need 4.19 GiB)\nseed           : 20260912\n\n  basal A: 18,400 cells, median UMI 20,109, median detected genes 6,147\n  basal B: 18,400 cells, median UMI 19,946, median detected genes 5,756\n  basal C: 18,400 cells, median UMI 20,034, median detected genes 6,006\n  dispersion A: 13,454 genes overdispersed, median phi 0.165\n  dispersion B: 12,962 genes overdispersed, median phi 0.135\n  dispersion C: 12,187 genes overdispersed, median phi 0.083\neffects A      : /content/lead_candidate_t28/data/processed/effects_t25_2026-09-27/effects_A.npz (13,964 genes observed)\neffects B      : /content/lead_candidate_t28/data/processed/effects_t25_2026-09-27/effects_B.npz (13,964 genes observed)\neffects C      : /content/lead_candidate_t28/data/processed/effects_t25_2026-09-27/effects_C.npz (13,964 genes observed)\n    A 1/300 (1s)\n    A 26/300 (46s)\n    A 51/300 (90s)\n    A 76/300 (135s)\n    A 101/300 (179s)\n    A 126/300 (224s)\n    A 151/300 (267s)\n    A 176/300 (311s)\n    A 201/300 (354s)\n    A 226/300 (398s)\n    A 251/300 (441s)\n    A 276/300 (484s)\n    B 1/300 (527s)\n    B 26/300 (568s)\n    B 51/300 (609s)\n    B 76/300 (649s)\n    B 101/300 (689s)\n    B 126/300 (753s)\n    B 151/300 (816s)\n    B 176/300 (882s)\n    B 201/300 (948s)\n    B 226/300 (1014s)\n    B 251/300 (1074s)\n    B 276/300 (1115s)\n    C 1/300 (1154s)\n    C 26/300 (1195s)\n    C 51/300 (1236s)\n    C 76/300 (1277s)\n    C 101/300 (1318s)\n    C 126/300 (1359s)\n    C 151/300 (1400s)\n    C 176/300 (1441s)\n    C 201/300 (1480s)\n    C 226/300 (1522s)\n    C 251/300 (1563s)\n    C 276/300 (1604s)\n\nwrote prediction.h5ad: 360,000 cells, 2,085,425,466 stored values, 4018.0 MB\n  stored per cell     : 5,793 (budget 13,194)\n  context provenance  : OK\n  runtime             : basal 18s, generation 1662s, total 1717s\n  peak RSS            : 0.82 GiB\n-> /content/lead_candidate_t28/gen/prediction.h5ad\n-> /content/lead_candidate_t28/gen/generation_diagnostics.json\n",
+    "/content/lead_candidate_t28/stage48.log": "input      : /content/lead_candidate_t28/gen/prediction.h5ad\ncontexts   : A, B, C (from --contexts; the CLI's own are A, B, C)\nhashing input (streamed) ...\n  sha256   : 123ce93f4d8d21c107215c96f726a6b7121545c1329948f431234eabce80f40e  (39s)\nlayout     : 360,000 x 18,533, 2,085,425,466 stored entries\n             data float32/gzip, indices int32, indptr int32\nresources  : RAM 12.67 GiB total, 8.43 GiB available; disk 47.01 GiB free\n             official vcc prep would peak at ~22.2 GiB; this stage streams instead\n             estimated transient disk 9.02 GiB\n\nvalidating and packaging (streamed) ...\n"
+  },
+  "disk_free_bytes": 50432151552,
+  "memory": {
+    "MemTotal": "13286936 kB",
+    "MemAvailable": "11281564 kB"
+  }
+}

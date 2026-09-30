@@ -1,0 +1,521 @@
+{
+  "claim": "Small-file exact hash binding and large-file size binding only",
+  "all_passed": true,
+  "folds": [
+    {
+      "family": "k562",
+      "small_inputs_checked": [
+        {
+          "file": "axis.csv",
+          "bytes": 137824,
+          "sha256": "da3090db3d1b27b62ab513f4ecc93a5bf1ef2e6ac9c11e825d5dad2f19c03ccb"
+        },
+        {
+          "file": "basal.npy",
+          "bytes": 1186240,
+          "sha256": "e1e2c33f8e31db2bef295f2d1192597a314776fddd94b6660548627403e0fd9e"
+        },
+        {
+          "file": "cis_index.npy",
+          "bytes": 13492,
+          "sha256": "eeb844a6a7acbe33adcf239efbb2c3d0ab5a62ca9b52a4d6ae8dc30a60fd9b58"
+        },
+        {
+          "file": "cis_indptr.npy",
+          "bytes": 154256,
+          "sha256": "d232935fd8bab0b90ef74e86635926db23363c6234c409ceaa49d902b9b8cccb"
+        },
+        {
+          "file": "contexts.csv",
+          "bytes": 1457,
+          "sha256": "2847d53b3e35308e1e497ba6d700032c0066934733fd2a83873848db78ef4fd6"
+        },
+        {
+          "file": "genes.csv",
+          "bytes": 194675,
+          "sha256": "4009e0632f3d9854c0029b5e56cb21a23b821dba4fb430a1cafc18a348d62225"
+        },
+        {
+          "file": "manifest.json",
+          "bytes": 11508,
+          "sha256": "2e59376b103dc6578b9a52e3c37c655207567ecc0375481bc5e3560e7fb8b32a"
+        },
+        {
+          "file": "panel_targets.txt",
+          "bytes": 2194,
+          "sha256": "dc47a19604b25553c2c0c4f6d2fcf1592671c1658f89be01fce0219138413cd4"
+        },
+        {
+          "file": "partner_index.npy",
+          "bytes": 447852,
+          "sha256": "b8199d79e37bf9549f74043637df6a3d2144597717e5165619505dbd4d2d6813"
+        },
+        {
+          "file": "partner_indptr.npy",
+          "bytes": 154256,
+          "sha256": "d89cd8428990bf066a27c81b6ea47cb26942c8f24ffa49af70f924666beb347e"
+        },
+        {
+          "file": "partner_score.npy",
+          "bytes": 447852,
+          "sha256": "b1855fa650bae179997f72b30c865b118bcbdf73fa083bed42ab05cbbe3d554a"
+        },
+        {
+          "file": "row_context.npy",
+          "bytes": 438472,
+          "sha256": "d5a55bc818cde00e1dd4aad216904a7f1a80b43543aef21c834c1a531b5e0fab"
+        },
+        {
+          "file": "row_ncells.npy",
+          "bytes": 438472,
+          "sha256": "eceede9c26fb87be59fc3778a430f3be9fbf913382f42c84df4efcd0fce6a447"
+        },
+        {
+          "file": "row_own.npy",
+          "bytes": 876816,
+          "sha256": "6266cc54604ae895dbfe3edaab7117372e2131cc434cfd94b2a6a4a39ee84dbe"
+        },
+        {
+          "file": "row_target.npy",
+          "bytes": 438472,
+          "sha256": "c9e27f485f22409baa5b287ee6cef45a51cfb10bc1adecb76ec51aaff7fe8698"
+        },
+        {
+          "file": "targets.csv",
+          "bytes": 2279047,
+          "sha256": "3da48d5558b230a11b7950d41d3081794f78b12302071fd9de122e7755ba817c"
+        }
+      ],
+      "large_size_only": [
+        {
+          "file": "raw.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        },
+        {
+          "file": "se.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        },
+        {
+          "file": "shrunk.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        }
+      ],
+      "declared_identity_policy": "size plus dataset manifest; arrays not individually rehashed"
+    },
+    {
+      "family": "cd4",
+      "small_inputs_checked": [
+        {
+          "file": "axis.csv",
+          "bytes": 137824,
+          "sha256": "da3090db3d1b27b62ab513f4ecc93a5bf1ef2e6ac9c11e825d5dad2f19c03ccb"
+        },
+        {
+          "file": "basal.npy",
+          "bytes": 1186240,
+          "sha256": "e1e2c33f8e31db2bef295f2d1192597a314776fddd94b6660548627403e0fd9e"
+        },
+        {
+          "file": "cis_index.npy",
+          "bytes": 13492,
+          "sha256": "eeb844a6a7acbe33adcf239efbb2c3d0ab5a62ca9b52a4d6ae8dc30a60fd9b58"
+        },
+        {
+          "file": "cis_indptr.npy",
+          "bytes": 154256,
+          "sha256": "d232935fd8bab0b90ef74e86635926db23363c6234c409ceaa49d902b9b8cccb"
+        },
+        {
+          "file": "contexts.csv",
+          "bytes": 1457,
+          "sha256": "2847d53b3e35308e1e497ba6d700032c0066934733fd2a83873848db78ef4fd6"
+        },
+        {
+          "file": "genes.csv",
+          "bytes": 194675,
+          "sha256": "4009e0632f3d9854c0029b5e56cb21a23b821dba4fb430a1cafc18a348d62225"
+        },
+        {
+          "file": "manifest.json",
+          "bytes": 11508,
+          "sha256": "2e59376b103dc6578b9a52e3c37c655207567ecc0375481bc5e3560e7fb8b32a"
+        },
+        {
+          "file": "panel_targets.txt",
+          "bytes": 2194,
+          "sha256": "dc47a19604b25553c2c0c4f6d2fcf1592671c1658f89be01fce0219138413cd4"
+        },
+        {
+          "file": "partner_index.npy",
+          "bytes": 447852,
+          "sha256": "b8199d79e37bf9549f74043637df6a3d2144597717e5165619505dbd4d2d6813"
+        },
+        {
+          "file": "partner_indptr.npy",
+          "bytes": 154256,
+          "sha256": "d89cd8428990bf066a27c81b6ea47cb26942c8f24ffa49af70f924666beb347e"
+        },
+        {
+          "file": "partner_score.npy",
+          "bytes": 447852,
+          "sha256": "b1855fa650bae179997f72b30c865b118bcbdf73fa083bed42ab05cbbe3d554a"
+        },
+        {
+          "file": "row_context.npy",
+          "bytes": 438472,
+          "sha256": "d5a55bc818cde00e1dd4aad216904a7f1a80b43543aef21c834c1a531b5e0fab"
+        },
+        {
+          "file": "row_ncells.npy",
+          "bytes": 438472,
+          "sha256": "eceede9c26fb87be59fc3778a430f3be9fbf913382f42c84df4efcd0fce6a447"
+        },
+        {
+          "file": "row_own.npy",
+          "bytes": 876816,
+          "sha256": "6266cc54604ae895dbfe3edaab7117372e2131cc434cfd94b2a6a4a39ee84dbe"
+        },
+        {
+          "file": "row_target.npy",
+          "bytes": 438472,
+          "sha256": "c9e27f485f22409baa5b287ee6cef45a51cfb10bc1adecb76ec51aaff7fe8698"
+        },
+        {
+          "file": "targets.csv",
+          "bytes": 2279047,
+          "sha256": "3da48d5558b230a11b7950d41d3081794f78b12302071fd9de122e7755ba817c"
+        }
+      ],
+      "large_size_only": [
+        {
+          "file": "raw.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        },
+        {
+          "file": "se.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        },
+        {
+          "file": "shrunk.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        }
+      ],
+      "declared_identity_policy": "size plus dataset manifest; arrays not individually rehashed"
+    },
+    {
+      "family": "orion",
+      "small_inputs_checked": [
+        {
+          "file": "axis.csv",
+          "bytes": 137824,
+          "sha256": "da3090db3d1b27b62ab513f4ecc93a5bf1ef2e6ac9c11e825d5dad2f19c03ccb"
+        },
+        {
+          "file": "basal.npy",
+          "bytes": 1186240,
+          "sha256": "e1e2c33f8e31db2bef295f2d1192597a314776fddd94b6660548627403e0fd9e"
+        },
+        {
+          "file": "cis_index.npy",
+          "bytes": 13492,
+          "sha256": "eeb844a6a7acbe33adcf239efbb2c3d0ab5a62ca9b52a4d6ae8dc30a60fd9b58"
+        },
+        {
+          "file": "cis_indptr.npy",
+          "bytes": 154256,
+          "sha256": "d232935fd8bab0b90ef74e86635926db23363c6234c409ceaa49d902b9b8cccb"
+        },
+        {
+          "file": "contexts.csv",
+          "bytes": 1457,
+          "sha256": "2847d53b3e35308e1e497ba6d700032c0066934733fd2a83873848db78ef4fd6"
+        },
+        {
+          "file": "genes.csv",
+          "bytes": 194675,
+          "sha256": "4009e0632f3d9854c0029b5e56cb21a23b821dba4fb430a1cafc18a348d62225"
+        },
+        {
+          "file": "manifest.json",
+          "bytes": 11508,
+          "sha256": "2e59376b103dc6578b9a52e3c37c655207567ecc0375481bc5e3560e7fb8b32a"
+        },
+        {
+          "file": "panel_targets.txt",
+          "bytes": 2194,
+          "sha256": "dc47a19604b25553c2c0c4f6d2fcf1592671c1658f89be01fce0219138413cd4"
+        },
+        {
+          "file": "partner_index.npy",
+          "bytes": 447852,
+          "sha256": "b8199d79e37bf9549f74043637df6a3d2144597717e5165619505dbd4d2d6813"
+        },
+        {
+          "file": "partner_indptr.npy",
+          "bytes": 154256,
+          "sha256": "d89cd8428990bf066a27c81b6ea47cb26942c8f24ffa49af70f924666beb347e"
+        },
+        {
+          "file": "partner_score.npy",
+          "bytes": 447852,
+          "sha256": "b1855fa650bae179997f72b30c865b118bcbdf73fa083bed42ab05cbbe3d554a"
+        },
+        {
+          "file": "row_context.npy",
+          "bytes": 438472,
+          "sha256": "d5a55bc818cde00e1dd4aad216904a7f1a80b43543aef21c834c1a531b5e0fab"
+        },
+        {
+          "file": "row_ncells.npy",
+          "bytes": 438472,
+          "sha256": "eceede9c26fb87be59fc3778a430f3be9fbf913382f42c84df4efcd0fce6a447"
+        },
+        {
+          "file": "row_own.npy",
+          "bytes": 876816,
+          "sha256": "6266cc54604ae895dbfe3edaab7117372e2131cc434cfd94b2a6a4a39ee84dbe"
+        },
+        {
+          "file": "row_target.npy",
+          "bytes": 438472,
+          "sha256": "c9e27f485f22409baa5b287ee6cef45a51cfb10bc1adecb76ec51aaff7fe8698"
+        },
+        {
+          "file": "targets.csv",
+          "bytes": 2279047,
+          "sha256": "3da48d5558b230a11b7950d41d3081794f78b12302071fd9de122e7755ba817c"
+        }
+      ],
+      "large_size_only": [
+        {
+          "file": "raw.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        },
+        {
+          "file": "se.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        },
+        {
+          "file": "shrunk.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        }
+      ],
+      "declared_identity_policy": "size plus dataset manifest; arrays not individually rehashed"
+    },
+    {
+      "family": "ipsc",
+      "small_inputs_checked": [
+        {
+          "file": "axis.csv",
+          "bytes": 137824,
+          "sha256": "da3090db3d1b27b62ab513f4ecc93a5bf1ef2e6ac9c11e825d5dad2f19c03ccb"
+        },
+        {
+          "file": "basal.npy",
+          "bytes": 1186240,
+          "sha256": "e1e2c33f8e31db2bef295f2d1192597a314776fddd94b6660548627403e0fd9e"
+        },
+        {
+          "file": "cis_index.npy",
+          "bytes": 13492,
+          "sha256": "eeb844a6a7acbe33adcf239efbb2c3d0ab5a62ca9b52a4d6ae8dc30a60fd9b58"
+        },
+        {
+          "file": "cis_indptr.npy",
+          "bytes": 154256,
+          "sha256": "d232935fd8bab0b90ef74e86635926db23363c6234c409ceaa49d902b9b8cccb"
+        },
+        {
+          "file": "contexts.csv",
+          "bytes": 1457,
+          "sha256": "2847d53b3e35308e1e497ba6d700032c0066934733fd2a83873848db78ef4fd6"
+        },
+        {
+          "file": "genes.csv",
+          "bytes": 194675,
+          "sha256": "4009e0632f3d9854c0029b5e56cb21a23b821dba4fb430a1cafc18a348d62225"
+        },
+        {
+          "file": "manifest.json",
+          "bytes": 11508,
+          "sha256": "2e59376b103dc6578b9a52e3c37c655207567ecc0375481bc5e3560e7fb8b32a"
+        },
+        {
+          "file": "panel_targets.txt",
+          "bytes": 2194,
+          "sha256": "dc47a19604b25553c2c0c4f6d2fcf1592671c1658f89be01fce0219138413cd4"
+        },
+        {
+          "file": "partner_index.npy",
+          "bytes": 447852,
+          "sha256": "b8199d79e37bf9549f74043637df6a3d2144597717e5165619505dbd4d2d6813"
+        },
+        {
+          "file": "partner_indptr.npy",
+          "bytes": 154256,
+          "sha256": "d89cd8428990bf066a27c81b6ea47cb26942c8f24ffa49af70f924666beb347e"
+        },
+        {
+          "file": "partner_score.npy",
+          "bytes": 447852,
+          "sha256": "b1855fa650bae179997f72b30c865b118bcbdf73fa083bed42ab05cbbe3d554a"
+        },
+        {
+          "file": "row_context.npy",
+          "bytes": 438472,
+          "sha256": "d5a55bc818cde00e1dd4aad216904a7f1a80b43543aef21c834c1a531b5e0fab"
+        },
+        {
+          "file": "row_ncells.npy",
+          "bytes": 438472,
+          "sha256": "eceede9c26fb87be59fc3778a430f3be9fbf913382f42c84df4efcd0fce6a447"
+        },
+        {
+          "file": "row_own.npy",
+          "bytes": 876816,
+          "sha256": "6266cc54604ae895dbfe3edaab7117372e2131cc434cfd94b2a6a4a39ee84dbe"
+        },
+        {
+          "file": "row_target.npy",
+          "bytes": 438472,
+          "sha256": "c9e27f485f22409baa5b287ee6cef45a51cfb10bc1adecb76ec51aaff7fe8698"
+        },
+        {
+          "file": "targets.csv",
+          "bytes": 2279047,
+          "sha256": "3da48d5558b230a11b7950d41d3081794f78b12302071fd9de122e7755ba817c"
+        }
+      ],
+      "large_size_only": [
+        {
+          "file": "raw.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        },
+        {
+          "file": "se.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        },
+        {
+          "file": "shrunk.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        }
+      ],
+      "declared_identity_policy": "size plus dataset manifest; arrays not individually rehashed"
+    },
+    {
+      "family": "rpe1",
+      "small_inputs_checked": [
+        {
+          "file": "axis.csv",
+          "bytes": 137824,
+          "sha256": "da3090db3d1b27b62ab513f4ecc93a5bf1ef2e6ac9c11e825d5dad2f19c03ccb"
+        },
+        {
+          "file": "basal.npy",
+          "bytes": 1186240,
+          "sha256": "e1e2c33f8e31db2bef295f2d1192597a314776fddd94b6660548627403e0fd9e"
+        },
+        {
+          "file": "cis_index.npy",
+          "bytes": 13492,
+          "sha256": "eeb844a6a7acbe33adcf239efbb2c3d0ab5a62ca9b52a4d6ae8dc30a60fd9b58"
+        },
+        {
+          "file": "cis_indptr.npy",
+          "bytes": 154256,
+          "sha256": "d232935fd8bab0b90ef74e86635926db23363c6234c409ceaa49d902b9b8cccb"
+        },
+        {
+          "file": "contexts.csv",
+          "bytes": 1457,
+          "sha256": "2847d53b3e35308e1e497ba6d700032c0066934733fd2a83873848db78ef4fd6"
+        },
+        {
+          "file": "genes.csv",
+          "bytes": 194675,
+          "sha256": "4009e0632f3d9854c0029b5e56cb21a23b821dba4fb430a1cafc18a348d62225"
+        },
+        {
+          "file": "manifest.json",
+          "bytes": 11508,
+          "sha256": "2e59376b103dc6578b9a52e3c37c655207567ecc0375481bc5e3560e7fb8b32a"
+        },
+        {
+          "file": "panel_targets.txt",
+          "bytes": 2194,
+          "sha256": "dc47a19604b25553c2c0c4f6d2fcf1592671c1658f89be01fce0219138413cd4"
+        },
+        {
+          "file": "partner_index.npy",
+          "bytes": 447852,
+          "sha256": "b8199d79e37bf9549f74043637df6a3d2144597717e5165619505dbd4d2d6813"
+        },
+        {
+          "file": "partner_indptr.npy",
+          "bytes": 154256,
+          "sha256": "d89cd8428990bf066a27c81b6ea47cb26942c8f24ffa49af70f924666beb347e"
+        },
+        {
+          "file": "partner_score.npy",
+          "bytes": 447852,
+          "sha256": "b1855fa650bae179997f72b30c865b118bcbdf73fa083bed42ab05cbbe3d554a"
+        },
+        {
+          "file": "row_context.npy",
+          "bytes": 438472,
+          "sha256": "d5a55bc818cde00e1dd4aad216904a7f1a80b43543aef21c834c1a531b5e0fab"
+        },
+        {
+          "file": "row_ncells.npy",
+          "bytes": 438472,
+          "sha256": "eceede9c26fb87be59fc3778a430f3be9fbf913382f42c84df4efcd0fce6a447"
+        },
+        {
+          "file": "row_own.npy",
+          "bytes": 876816,
+          "sha256": "6266cc54604ae895dbfe3edaab7117372e2131cc434cfd94b2a6a4a39ee84dbe"
+        },
+        {
+          "file": "row_target.npy",
+          "bytes": 438472,
+          "sha256": "c9e27f485f22409baa5b287ee6cef45a51cfb10bc1adecb76ec51aaff7fe8698"
+        },
+        {
+          "file": "targets.csv",
+          "bytes": 2279047,
+          "sha256": "3da48d5558b230a11b7950d41d3081794f78b12302071fd9de122e7755ba817c"
+        }
+      ],
+      "large_size_only": [
+        {
+          "file": "raw.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        },
+        {
+          "file": "se.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        },
+        {
+          "file": "shrunk.npy",
+          "bytes": 2903590784,
+          "sha256_verified": false
+        }
+      ],
+      "declared_identity_policy": "size plus dataset manifest; arrays not individually rehashed"
+    }
+  ]
+}

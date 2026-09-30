@@ -1,0 +1,94 @@
+{
+  "created_utc": "2026-09-29T20:06:20.460574+00:00",
+  "run_id": "t28r2",
+  "manifest_sha256": "18dc29195d818cbfc8cb4a5442850e4e9581b60d8cba585afad65daf85a99bae",
+  "confirmation_sha256": "35471a773ae2e51759d946682c3223b5a2a72f53eb03c83559c7a9e463f9c41c",
+  "registration_sha256": "a2081b9cd615a1020a962def21eafa54d7116db79285887f56c775033d61e192",
+  "confirmed_candidate": {
+    "delta_projection": 0.028917710507027752,
+    "per_seed_delta": [
+      0.03425004775790016,
+      0.02337301940904806,
+      0.029130064354135024
+    ],
+    "seed_sd": 0.005441622647953365,
+    "member_contributions": {
+      "pds_cosine": -1.3616081868037943e-05,
+      "de_wilcoxon_lfc_nmae": -0.0032739876048592277,
+      "de_wilcoxon_direction_fidelity_yield_raw": 0.028301618132541246,
+      "de_wilcoxon_direction_reach_raw": 0.007670026719944261,
+      "de_wilcoxon_sig_jaccard": -0.0037663306587304903
+    },
+    "eligible_targets_per_member": {
+      "pds_cosine": 96,
+      "de_wilcoxon_lfc_nmae": 70,
+      "de_wilcoxon_direction_fidelity_yield_raw": 96,
+      "de_wilcoxon_direction_reach_raw": 87,
+      "de_wilcoxon_sig_jaccard": 96
+    },
+    "amplitude": 1.5,
+    "phi_scale": 1.0,
+    "generator": "pooled",
+    "confidence_level": 0.975,
+    "paired_target_bootstrap_interval": [
+      0.019525634903636922,
+      0.03934189554761046
+    ],
+    "passes_confirmation": true
+  },
+  "code_archive_sha256": "f7324778e5d7225552734e2c7303353f46dee6c01e9d455703adce3b9b105860",
+  "commands": [
+    [
+      "/content/lead_candidate_environment_r2/venv/bin/python",
+      "scripts/45_generate_prediction.py",
+      "--run-id",
+      "t28r2gen",
+      "--trial",
+      "trial-ext-profile",
+      "--out",
+      "/content/lead_candidate_t28r2/gen",
+      "--controls-dir",
+      "/content/lead_candidate_t28r2/data/raw/controls",
+      "--contexts",
+      "A,B,C",
+      "--cells-per-pert",
+      "400",
+      "--seed",
+      "20260912",
+      "--effects-scale",
+      "1.5",
+      "--gene-dispersion",
+      "--gene-dispersion-scale",
+      "1.0",
+      "--effects",
+      "A=/content/lead_candidate_t28r2/data/processed/effects_t25_2026-09-27/effects_A.npz",
+      "--effects",
+      "B=/content/lead_candidate_t28r2/data/processed/effects_t25_2026-09-27/effects_B.npz",
+      "--effects",
+      "C=/content/lead_candidate_t28r2/data/processed/effects_t25_2026-09-27/effects_C.npz"
+    ],
+    [
+      "/content/lead_candidate_environment_r2/venv/bin/python",
+      "scripts/48_package_prediction.py",
+      "--run-id",
+      "t28r2pack",
+      "--prediction",
+      "/content/lead_candidate_t28r2/gen/prediction.h5ad",
+      "--out",
+      "/content/lead_candidate_t28r2/pack",
+      "--workdir",
+      "/content/lead_candidate_t28r2/pack/temp",
+      "--contexts",
+      "A,B,C",
+      "--genes",
+      "/content/lead_candidate_t28r2/data/raw/controls/gene_names.csv",
+      "--perts",
+      "/content/lead_candidate_t28r2/data/raw/controls/pert_counts.csv",
+      "--zstd-threads",
+      "2"
+    ]
+  ],
+  "destination": "/content/drive/MyDrive/vcc2026/runs/lead_candidate_t28_2026-09-29_r2",
+  "scratch": "/content/lead_candidate_t28r2",
+  "submission": false
+}

@@ -25,6 +25,21 @@
 
 ## Obiettivo
 
+**Presa in carico aggiuntiva, 29/09 alle 19:23 CEST:** Codex, chat
+`01a0ee03-b357-7012-81a9-e8d7de767478`, su richiesta esplicita del proprietario di costruire
+anche un modello neurale con migliori informazioni biologiche entro questa notte.
+Ambito disgiunto: audit della rete r1/r2 e nuova variante che conserva separati gli effetti
+delle sorgenti prima della combinazione, con validazione per famiglia tenuta fuori.
+Codice e protocolli nuovi in `reports/analisi/lead_scientist_2026-09-29/`; gli esperimenti
+precedenti restano immutati. Sono in corso anche i banchi del generatore della stessa
+sessione: sviluppo Colab r3 concluso e conferma nel job `062_lead_generator_confirmation_r3`
+(dataset Kaggle ancora inaccessibile dopo la creazione). Il proprietario
+ha autorizzato esplicitamente in chat questi due trasferimenti di codice e dati privati.
+La nuova source-attention è in esecuzione su Kaggle in cinque fold C; il pilot Stack
+prepara prompt reali su Colab. Stato, limiti e correzioni storiche in
+[CP-0046](../checkpoints/0046-audit-lead-e-due-vie-neurali.md); nessun guadagno neurale
+è ancora stato misurato.
+
 Un modello che predice la risposta a un knockdown CRISPRi in un contesto nuovo (D/E/F) per
 bersagli nuovi, con componenti biologiche esplicite, scelto su un banco che calcola i sei
 membri ufficiali con lo scorer vero su contesti pubblici tenuti fuori. Il 22 ottobre deve

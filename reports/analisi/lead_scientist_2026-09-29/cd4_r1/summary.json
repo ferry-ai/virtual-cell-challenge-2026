@@ -1,0 +1,818 @@
+{
+  "claim_type": "descriptive exploratory audit, not VCC accuracy",
+  "source_metadata": {
+    "file": "reports\\storico\\candidate_verification\\annotations\\cd4_sample_metadata.csv",
+    "rows": 12,
+    "library_prep_kit_counts": {
+      "GEMX_flex_v1": 12
+    },
+    "culture_condition_counts": {
+      "Rest": 4,
+      "Stim8hr": 4,
+      "Stim48hr": 4
+    },
+    "sha256": "766134d11dabb5d63388e00b4d687a809c0254eb3c19d77f439a6bf9dad7abd4",
+    "manifest": {
+      "url": "https://raw.githubusercontent.com/emdann/GWT_perturbseq_analysis_2025/master/metadata/suppl_tables/sample_metadata.suppl_table.csv",
+      "bytes": 2966,
+      "sha256": "766134d11dabb5d63388e00b4d687a809c0254eb3c19d77f439a6bf9dad7abd4"
+    }
+  },
+  "coverage": [
+    {
+      "source": "cd4_Rest",
+      "targets": 293,
+      "missing": [
+        "ABCD1",
+        "C5orf22",
+        "EEF1A2",
+        "EPHB2",
+        "FZD2",
+        "LENG1",
+        "NICN1"
+      ],
+      "cells": {
+        "n": 293,
+        "median": 504.0,
+        "q25": 287.0,
+        "q75": 733.0
+      },
+      "cells_lt50": 9,
+      "measured_response_genes_per_target": {
+        "n": 293,
+        "median": 10530.0,
+        "q25": 10502.0,
+        "q75": 10531.0
+      },
+      "own_gene_raw_lfc": {
+        "n": 289,
+        "median": -1.9811110496520996,
+        "q25": -2.39919114112854,
+        "q75": -1.4075044393539429
+      },
+      "reliability_n_over_nplus100": {
+        "n": 293,
+        "median": 0.8344370860927153,
+        "q25": 0.7416020671834626,
+        "q75": 0.879951980792317
+      }
+    },
+    {
+      "source": "cd4_Stim8hr",
+      "targets": 292,
+      "missing": [
+        "ABCD1",
+        "C5orf22",
+        "EEF1A2",
+        "EPHB2",
+        "FZD2",
+        "LENG1",
+        "NICN1",
+        "TAF4"
+      ],
+      "cells": {
+        "n": 292,
+        "median": 485.5,
+        "q25": 288.0,
+        "q75": 695.25
+      },
+      "cells_lt50": 8,
+      "measured_response_genes_per_target": {
+        "n": 292,
+        "median": 10430.0,
+        "q25": 10426.0,
+        "q75": 10430.0
+      },
+      "own_gene_raw_lfc": {
+        "n": 289,
+        "median": -2.033128023147583,
+        "q25": -2.527571201324463,
+        "q75": -1.4221447706222534
+      },
+      "reliability_n_over_nplus100": {
+        "n": 292,
+        "median": 0.8291997036155403,
+        "q25": 0.7422680412371134,
+        "q75": 0.8742533421826112
+      }
+    },
+    {
+      "source": "cd4_Stim48hr",
+      "targets": 292,
+      "missing": [
+        "ABCD1",
+        "C5orf22",
+        "EEF1A2",
+        "EPHB2",
+        "FZD2",
+        "LENG1",
+        "NICN1",
+        "TAF4"
+      ],
+      "cells": {
+        "n": 292,
+        "median": 487.0,
+        "q25": 304.0,
+        "q75": 717.5
+      },
+      "cells_lt50": 9,
+      "measured_response_genes_per_target": {
+        "n": 292,
+        "median": 10775.0,
+        "q25": 10773.0,
+        "q75": 10775.0
+      },
+      "own_gene_raw_lfc": {
+        "n": 290,
+        "median": -1.85048246383667,
+        "q25": -2.280735433101654,
+        "q75": -1.2769897282123566
+      },
+      "reliability_n_over_nplus100": {
+        "n": 292,
+        "median": 0.829640271066417,
+        "q25": 0.7524752475247525,
+        "q75": 0.8776724298196691
+      }
+    },
+    {
+      "source": "cd4_mix",
+      "targets": 293,
+      "missing": [
+        "ABCD1",
+        "C5orf22",
+        "EEF1A2",
+        "EPHB2",
+        "FZD2",
+        "LENG1",
+        "NICN1"
+      ],
+      "cells": {
+        "n": 293,
+        "median": 1484.0,
+        "q25": 873.0,
+        "q75": 2137.0
+      },
+      "cells_lt50": 1,
+      "measured_response_genes_per_target": {
+        "n": 293,
+        "median": 11132.0,
+        "q25": 11116.0,
+        "q75": 11133.0
+      },
+      "own_gene_raw_lfc": {
+        "n": 291,
+        "median": -1.9387116432189941,
+        "q25": -2.4031656980514526,
+        "q75": -1.365747332572937
+      },
+      "reliability_n_over_nplus100": {
+        "n": 293,
+        "median": 0.9368686868686869,
+        "q25": 0.8972250770811921,
+        "q75": 0.9552972731336612
+      }
+    },
+    {
+      "source": "cd4_halfA",
+      "targets": 287,
+      "missing": [
+        "ABCD1",
+        "C5orf22",
+        "EEF1A2",
+        "EPHB2",
+        "FZD2",
+        "KIF21B",
+        "LENG1",
+        "NICN1",
+        "PRMT7",
+        "REV1",
+        "STK3",
+        "TAF4",
+        "TIMM50"
+      ],
+      "cells": {
+        "n": 287,
+        "median": 243.0,
+        "q25": 148.0,
+        "q75": 360.5
+      },
+      "cells_lt50": 11,
+      "measured_response_genes_per_target": {
+        "n": 287,
+        "median": 10732.0,
+        "q25": 10724.5,
+        "q75": 10732.0
+      },
+      "own_gene_raw_lfc": {
+        "n": 285,
+        "median": -1.7172917127609253,
+        "q25": -2.2683255672454834,
+        "q75": -1.1897014379501343
+      },
+      "reliability_n_over_nplus100": {
+        "n": 287,
+        "median": 0.7084548104956269,
+        "q25": 0.5967676373510236,
+        "q75": 0.7828444779779308
+      }
+    },
+    {
+      "source": "cd4_halfB",
+      "targets": 287,
+      "missing": [
+        "ABCD1",
+        "C5orf22",
+        "DCP2",
+        "EAPP",
+        "EEF1A2",
+        "EPHB2",
+        "FZD2",
+        "LENG1",
+        "MTF1",
+        "NICN1",
+        "PGLS",
+        "PIN1",
+        "TAF4"
+      ],
+      "cells": {
+        "n": 287,
+        "median": 221.0,
+        "q25": 113.5,
+        "q75": 426.5
+      },
+      "cells_lt50": 24,
+      "measured_response_genes_per_target": {
+        "n": 287,
+        "median": 10773.0,
+        "q25": 10664.5,
+        "q75": 10780.0
+      },
+      "own_gene_raw_lfc": {
+        "n": 282,
+        "median": -1.8500550389289856,
+        "q25": -2.438770830631256,
+        "q75": -1.2598095536231995
+      },
+      "reliability_n_over_nplus100": {
+        "n": 287,
+        "median": 0.6884735202492211,
+        "q25": 0.5316133561493572,
+        "q75": 0.810064935064935
+      }
+    },
+    {
+      "source": "k562",
+      "targets": 272,
+      "missing": [
+        "ABCD1",
+        "CAPRIN2",
+        "EPHB2",
+        "HEATR6",
+        "KIF21B",
+        "MAPK7",
+        "MLKL",
+        "NICN1",
+        "PARP3",
+        "PBLD",
+        "PDK3",
+        "PHF11",
+        "PSMB9",
+        "RAB11FIP5",
+        "SEMA4F",
+        "SLC44A1",
+        "SNN",
+        "SOCS5",
+        "SPATA20",
+        "TAF4",
+        "TBC1D19",
+        "TDRD7",
+        "TESK2",
+        "TMEM104",
+        "TMEM79",
+        "TTBK2",
+        "TXNDC16",
+        "ZC2HC1A"
+      ],
+      "cells": {
+        "n": 272,
+        "median": 171.5,
+        "q25": 126.0,
+        "q75": 225.25
+      },
+      "cells_lt50": 14,
+      "measured_response_genes_per_target": {
+        "n": 272,
+        "median": 7681.0,
+        "q25": 7681.0,
+        "q75": 7681.0
+      },
+      "own_gene_raw_lfc": {
+        "n": 229,
+        "median": -2.0099949836730957,
+        "q25": -2.573014259338379,
+        "q75": -1.5921841859817505
+      },
+      "reliability_n_over_nplus100": {
+        "n": 272,
+        "median": 0.631644642227227,
+        "q25": 0.5575221238938053,
+        "q75": 0.692543652666352
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "source_a": "cd4_Rest",
+      "source_b": "cd4_Stim48hr",
+      "context_weight": "A",
+      "cosine": {
+        "n": 292,
+        "median": 0.2653269962332483,
+        "q25": 0.18180951485301045,
+        "q75": 0.3696747841358313
+      },
+      "energy_ratio_a_over_b": {
+        "n": 292,
+        "median": 1.337365929036598,
+        "q25": 1.0827613908734401,
+        "q75": 1.662655955657582
+      },
+      "fraction_difference_energy_over_b": 1.612013447185552
+    },
+    {
+      "source_a": "cd4_Rest",
+      "source_b": "cd4_Stim48hr",
+      "context_weight": "B",
+      "cosine": {
+        "n": 292,
+        "median": 0.2866005180941772,
+        "q25": 0.19927362936731488,
+        "q75": 0.38901716747947346
+      },
+      "energy_ratio_a_over_b": {
+        "n": 292,
+        "median": 1.341370158872187,
+        "q25": 1.1172734646496345,
+        "q75": 1.6716117383305624
+      },
+      "fraction_difference_energy_over_b": 1.5831292932198417
+    },
+    {
+      "source_a": "cd4_Rest",
+      "source_b": "cd4_Stim48hr",
+      "context_weight": "C",
+      "cosine": {
+        "n": 292,
+        "median": 0.26281068924934836,
+        "q25": 0.1813515213072178,
+        "q75": 0.3632933048841773
+      },
+      "energy_ratio_a_over_b": {
+        "n": 292,
+        "median": 1.320025201607674,
+        "q25": 1.1040118513898696,
+        "q75": 1.6858430347391606
+      },
+      "fraction_difference_energy_over_b": 1.6097203141413203
+    },
+    {
+      "source_a": "cd4_Rest",
+      "source_b": "cd4_Stim8hr",
+      "context_weight": "A",
+      "cosine": {
+        "n": 292,
+        "median": 0.29661657698477784,
+        "q25": 0.22088584092456823,
+        "q75": 0.40608651609292806
+      },
+      "energy_ratio_a_over_b": {
+        "n": 292,
+        "median": 1.1494194781314975,
+        "q25": 0.9695632597857164,
+        "q75": 1.3308898611428819
+      },
+      "fraction_difference_energy_over_b": 1.3773111247504504
+    },
+    {
+      "source_a": "cd4_Rest",
+      "source_b": "cd4_Stim8hr",
+      "context_weight": "B",
+      "cosine": {
+        "n": 292,
+        "median": 0.32305839553860805,
+        "q25": 0.2368920106656996,
+        "q75": 0.4240346638505562
+      },
+      "energy_ratio_a_over_b": {
+        "n": 292,
+        "median": 1.1405336945158062,
+        "q25": 0.9619129624391202,
+        "q75": 1.3406996254119046
+      },
+      "fraction_difference_energy_over_b": 1.3289104725996228
+    },
+    {
+      "source_a": "cd4_Rest",
+      "source_b": "cd4_Stim8hr",
+      "context_weight": "C",
+      "cosine": {
+        "n": 292,
+        "median": 0.3115406815958771,
+        "q25": 0.21832419747311066,
+        "q75": 0.39617730348988234
+      },
+      "energy_ratio_a_over_b": {
+        "n": 292,
+        "median": 1.1387505758052225,
+        "q25": 0.9575815628909373,
+        "q75": 1.330871095186849
+      },
+      "fraction_difference_energy_over_b": 1.3513544958212473
+    },
+    {
+      "source_a": "cd4_Rest",
+      "source_b": "cd4_mix",
+      "context_weight": "A",
+      "cosine": {
+        "n": 293,
+        "median": 0.7560957254048026,
+        "q25": 0.7175449009414143,
+        "q75": 0.8026530708555686
+      },
+      "energy_ratio_a_over_b": {
+        "n": 293,
+        "median": 2.0063033836765714,
+        "q25": 1.7549284230340452,
+        "q75": 2.3405077215742334
+      },
+      "fraction_difference_energy_over_b": 0.8199662161947963
+    },
+    {
+      "source_a": "cd4_Rest",
+      "source_b": "cd4_mix",
+      "context_weight": "B",
+      "cosine": {
+        "n": 293,
+        "median": 0.7675999095595718,
+        "q25": 0.7246060263277905,
+        "q75": 0.8089264216753121
+      },
+      "energy_ratio_a_over_b": {
+        "n": 293,
+        "median": 1.989350128065504,
+        "q25": 1.706052527705893,
+        "q75": 2.3153282830680926
+      },
+      "fraction_difference_energy_over_b": 0.7752652143633516
+    },
+    {
+      "source_a": "cd4_Rest",
+      "source_b": "cd4_mix",
+      "context_weight": "C",
+      "cosine": {
+        "n": 293,
+        "median": 0.7569579742043625,
+        "q25": 0.7171073489592688,
+        "q75": 0.8007514704278708
+      },
+      "energy_ratio_a_over_b": {
+        "n": 293,
+        "median": 2.04065934992647,
+        "q25": 1.7407914037969843,
+        "q75": 2.3347520507436044
+      },
+      "fraction_difference_energy_over_b": 0.8070834120594541
+    },
+    {
+      "source_a": "cd4_Stim8hr",
+      "source_b": "cd4_Stim48hr",
+      "context_weight": "A",
+      "cosine": {
+        "n": 292,
+        "median": 0.30095161236806456,
+        "q25": 0.20816889246590403,
+        "q75": 0.40494123025118545
+      },
+      "energy_ratio_a_over_b": {
+        "n": 292,
+        "median": 1.1605775702074914,
+        "q25": 0.9931188767228205,
+        "q75": 1.3645379874515187
+      },
+      "fraction_difference_energy_over_b": 1.4308815750151418
+    },
+    {
+      "source_a": "cd4_Stim8hr",
+      "source_b": "cd4_Stim48hr",
+      "context_weight": "B",
+      "cosine": {
+        "n": 292,
+        "median": 0.3275951836296088,
+        "q25": 0.24610867179732993,
+        "q75": 0.4473613003499178
+      },
+      "energy_ratio_a_over_b": {
+        "n": 292,
+        "median": 1.2071949471221664,
+        "q25": 1.0097812334871852,
+        "q75": 1.3743996010361894
+      },
+      "fraction_difference_energy_over_b": 1.3670105266579615
+    },
+    {
+      "source_a": "cd4_Stim8hr",
+      "source_b": "cd4_Stim48hr",
+      "context_weight": "C",
+      "cosine": {
+        "n": 292,
+        "median": 0.31453427023815606,
+        "q25": 0.22390204750590348,
+        "q75": 0.41982382136590246
+      },
+      "energy_ratio_a_over_b": {
+        "n": 292,
+        "median": 1.1825077760762972,
+        "q25": 1.020998603009416,
+        "q75": 1.3717291776253888
+      },
+      "fraction_difference_energy_over_b": 1.4031567664583033
+    },
+    {
+      "source_a": "cd4_halfA",
+      "source_b": "cd4_halfB",
+      "context_weight": "A",
+      "cosine": {
+        "n": 282,
+        "median": 0.060041356993190576,
+        "q25": 0.0006081955954469887,
+        "q75": 0.12119196797487505
+      },
+      "energy_ratio_a_over_b": {
+        "n": 282,
+        "median": 0.538297704465867,
+        "q25": 0.37997167979522956,
+        "q75": 0.7360184119101878
+      },
+      "fraction_difference_energy_over_b": 1.3861610848965753
+    },
+    {
+      "source_a": "cd4_halfA",
+      "source_b": "cd4_halfB",
+      "context_weight": "B",
+      "cosine": {
+        "n": 282,
+        "median": 0.045530055489438025,
+        "q25": -0.011168482607590673,
+        "q75": 0.11606497631324805
+      },
+      "energy_ratio_a_over_b": {
+        "n": 282,
+        "median": 0.5342138310850955,
+        "q25": 0.37714315345116545,
+        "q75": 0.7153724200233723
+      },
+      "fraction_difference_energy_over_b": 1.3872038734524546
+    },
+    {
+      "source_a": "cd4_halfA",
+      "source_b": "cd4_halfB",
+      "context_weight": "C",
+      "cosine": {
+        "n": 282,
+        "median": 0.0471762294236705,
+        "q25": -0.013874734342650425,
+        "q75": 0.11901702294311788
+      },
+      "energy_ratio_a_over_b": {
+        "n": 282,
+        "median": 0.5576087256848695,
+        "q25": 0.3899362640954195,
+        "q75": 0.8073332542729992
+      },
+      "fraction_difference_energy_over_b": 1.4176136318965824
+    },
+    {
+      "source_a": "k562",
+      "source_b": "cd4_Rest",
+      "context_weight": "A",
+      "cosine": {
+        "n": 268,
+        "median": 0.015957291314817934,
+        "q25": -0.001570993505147197,
+        "q75": 0.04284824243429451
+      },
+      "energy_ratio_a_over_b": {
+        "n": 268,
+        "median": 0.9940843472853467,
+        "q25": 0.6219773572211194,
+        "q75": 1.6011832340119982
+      },
+      "fraction_difference_energy_over_b": 1.8579515491809768
+    },
+    {
+      "source_a": "k562",
+      "source_b": "cd4_Rest",
+      "context_weight": "B",
+      "cosine": {
+        "n": 268,
+        "median": 0.016149055999965082,
+        "q25": -0.00266191557071682,
+        "q75": 0.042892482020949384
+      },
+      "energy_ratio_a_over_b": {
+        "n": 268,
+        "median": 0.8584697708899783,
+        "q25": 0.5084260913875556,
+        "q75": 1.291366199602432
+      },
+      "fraction_difference_energy_over_b": 1.7283010653099322
+    },
+    {
+      "source_a": "k562",
+      "source_b": "cd4_Rest",
+      "context_weight": "C",
+      "cosine": {
+        "n": 268,
+        "median": 0.018693006757151156,
+        "q25": -0.000829262035131846,
+        "q75": 0.04536507536884023
+      },
+      "energy_ratio_a_over_b": {
+        "n": 268,
+        "median": 0.8683851580525933,
+        "q25": 0.5251969349554122,
+        "q75": 1.3775050226915193
+      },
+      "fraction_difference_energy_over_b": 1.7492800678487124
+    },
+    {
+      "source_a": "k562",
+      "source_b": "cd4_Stim48hr",
+      "context_weight": "A",
+      "cosine": {
+        "n": 268,
+        "median": 0.018037844184720292,
+        "q25": -2.589115522518866e-05,
+        "q75": 0.04602810502241653
+      },
+      "energy_ratio_a_over_b": {
+        "n": 268,
+        "median": 1.3769415021018199,
+        "q25": 0.8082862286371695,
+        "q75": 2.3215455157617297
+      },
+      "fraction_difference_energy_over_b": 2.1226748475924953
+    },
+    {
+      "source_a": "k562",
+      "source_b": "cd4_Stim48hr",
+      "context_weight": "B",
+      "cosine": {
+        "n": 268,
+        "median": 0.01933587575109063,
+        "q25": -0.0013795756576438331,
+        "q75": 0.045793270248097616
+      },
+      "energy_ratio_a_over_b": {
+        "n": 268,
+        "median": 1.1106881535735766,
+        "q25": 0.6645906462907668,
+        "q75": 1.7998344631082106
+      },
+      "fraction_difference_energy_over_b": 1.9191405077229255
+    },
+    {
+      "source_a": "k562",
+      "source_b": "cd4_Stim48hr",
+      "context_weight": "C",
+      "cosine": {
+        "n": 268,
+        "median": 0.016988757273047814,
+        "q25": -0.0031875288273960256,
+        "q75": 0.04679064723662601
+      },
+      "energy_ratio_a_over_b": {
+        "n": 268,
+        "median": 1.1521697767901722,
+        "q25": 0.6851158609562804,
+        "q75": 1.8914728886101648
+      },
+      "fraction_difference_energy_over_b": 1.9528062004581046
+    },
+    {
+      "source_a": "k562",
+      "source_b": "cd4_Stim8hr",
+      "context_weight": "A",
+      "cosine": {
+        "n": 268,
+        "median": 0.015140152329754884,
+        "q25": -0.005472275765140974,
+        "q75": 0.04540430324404751
+      },
+      "energy_ratio_a_over_b": {
+        "n": 268,
+        "median": 1.2758064062443137,
+        "q25": 0.7636863837000929,
+        "q75": 2.0250873439547923
+      },
+      "fraction_difference_energy_over_b": 1.964584174794462
+    },
+    {
+      "source_a": "k562",
+      "source_b": "cd4_Stim8hr",
+      "context_weight": "B",
+      "cosine": {
+        "n": 268,
+        "median": 0.016485283592533692,
+        "q25": -0.00552659519662883,
+        "q75": 0.043610324897207245
+      },
+      "energy_ratio_a_over_b": {
+        "n": 268,
+        "median": 0.9640942551596114,
+        "q25": 0.6087211325278911,
+        "q75": 1.567032457791047
+      },
+      "fraction_difference_energy_over_b": 1.7990463965241312
+    },
+    {
+      "source_a": "k562",
+      "source_b": "cd4_Stim8hr",
+      "context_weight": "C",
+      "cosine": {
+        "n": 268,
+        "median": 0.017153088039745662,
+        "q25": -0.006249017413305072,
+        "q75": 0.044332236972348144
+      },
+      "energy_ratio_a_over_b": {
+        "n": 268,
+        "median": 1.030312397022361,
+        "q25": 0.6170263453523915,
+        "q75": 1.6223270503319536
+      },
+      "fraction_difference_energy_over_b": 1.8183863926319472
+    },
+    {
+      "source_a": "k562",
+      "source_b": "cd4_mix",
+      "context_weight": "A",
+      "cosine": {
+        "n": 268,
+        "median": 0.021764193744511877,
+        "q25": 0.00040594665332572,
+        "q75": 0.05557555203540469
+      },
+      "energy_ratio_a_over_b": {
+        "n": 268,
+        "median": 2.0781689168511264,
+        "q25": 1.2626294355509773,
+        "q75": 3.577751544006602
+      },
+      "fraction_difference_energy_over_b": 2.715055389697437
+    },
+    {
+      "source_a": "k562",
+      "source_b": "cd4_mix",
+      "context_weight": "B",
+      "cosine": {
+        "n": 268,
+        "median": 0.020382712362373205,
+        "q25": 0.001559803989253017,
+        "q75": 0.0525716473053292
+      },
+      "energy_ratio_a_over_b": {
+        "n": 268,
+        "median": 1.5305141628304928,
+        "q25": 0.9138845488160897,
+        "q75": 2.534983190130328
+      },
+      "fraction_difference_energy_over_b": 2.3026238416860267
+    },
+    {
+      "source_a": "k562",
+      "source_b": "cd4_mix",
+      "context_weight": "C",
+      "cosine": {
+        "n": 268,
+        "median": 0.020492944098517034,
+        "q25": 0.0016646136271027147,
+        "q75": 0.05758099349029557
+      },
+      "energy_ratio_a_over_b": {
+        "n": 268,
+        "median": 1.5671528312901055,
+        "q25": 0.9377775016946227,
+        "q75": 2.6234334982739966
+      },
+      "fraction_difference_energy_over_b": 2.35521842712972
+    }
+  ],
+  "caveats": [
+    "CD4 halfA and halfB are independent donor subsets only for Stim48hr; they are not rest-state replicates",
+    "Different states share donors and guides; state correlations are not independent replication ceilings",
+    "Rest versus mix is self-including and cannot establish predictive accuracy",
+    "Basal expression similarity does not establish causal transfer quality"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260929-003",
+  "revision": 1,
+  "previous_sha256": null,
+  "recorded_utc": "2026-09-29T21:07:21.424790+00:00",
+  "claim_type": "operational_incident",
+  "title": "Job070: artefatto completo rimasto nel runtime perso",
+  "symptom": "Generazione terminata, poi runtime non più disponibile prima di un pacchetto durabile.",
+  "cause": "La copia persistente della predizione era rinviata dopo stage48. La ragione della perdita della sessione non è dimostrata.",
+  "cause_verified": true,
+  "fix": "Stessa ricetta/semi, nuovo run; copia .partial, SHA completo e rename del checkpoint stage45 prima di stage48.",
+  "regression_test": "Quattro test in recovery_r2/review.json: copia, no overwrite, partial, AST/order invariance.",
+  "next_guard": "Checkpoint durabile con ricevuta hash dopo ogni fase costosa riutilizzabile, prima della successiva.",
+  "scope": "Chiuso solo il recupero stage45: 4213225652 byte, SHA123ce93f…; non certifica packaging o submission.",
+  "evidence": [
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/t28_diagnostic_r1.json",
+      "sha256": "aecdb6fbfe9ecca314d7a7a1ee2e8828bc7682cda42830d0de67bc1afff50d3d",
+      "bytes": 22779,
+      "supports": "Il primo runtime aveva completato stage45 e avviato stage48, hash123ce nel log preservato"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/RECUPERO.md",
+      "sha256": "133fd93aa21113f5990d8300daa8a21187c84465e33984868a4da09542b69a46",
+      "bytes": 1860,
+      "supports": "Diagnosi owner19:58:07: processi, file e mount assenti; causa del distacco non accertata"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/generate_candidate.py",
+      "sha256": "c73f518ee173566d6df851f79815bd11f2838ca6cb5af1e471368717d1dcccfb",
+      "bytes": 11701,
+      "supports": "Il primo runner copiava solo il pacchetto concluso; H5AD temporaneo non preservato su Drive"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/generate_candidate_r2.py",
+      "sha256": "83911b5851b702e3a50cfed6a19b232c58a3848de457279dddb0c8baef5544bf",
+      "bytes": 13255,
+      "supports": "Checkpoint completo su Drive prima del packaging"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/review.json",
+      "sha256": "7cb8aee13e700d15c40f76e14b2ec1e238db27de912759907adbce703695560d",
+      "bytes": 862,
+      "supports": "Test di recupero e invariance"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/stage45_receipt/complete.json",
+      "sha256": "1164dcaabc9ea6abb4191a27ba83035589c4db14b351d799c0b3d9d8a4cc2759",
+      "bytes": 374,
+      "supports": "SHA completo della predizione recuperata identico al primo runtime"
+    }
+  ],
+  "state": "verified_remotely",
+  "remote_verification": {
+    "evidence_path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/stage45_receipt/complete.json",
+    "observed_utc": "2026-09-29T20:41:15.251554+00:00",
+    "criterion": "full_sha256_verified true e SHA della stessa predizione uguale al primo runtime"
+  }
+}

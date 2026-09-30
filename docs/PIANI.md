@@ -1,5 +1,9 @@
 # Piani aperti — scegliere il prossimo lavoro
 
+**Priorità aggiornata al 30/09:** [R-COMP — modello competitivo](piani/modello-competitivo.md):
+t28 concluso ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)); riconciliare i dataset,
+congelare una riserva indipendente e verificare un nuovo modello.
+
 Creato il 24 settembre 2026 su richiesta del proprietario. **Questo è l'indice
 operativo dei piani**, da leggere dopo lo stato in [PROGETTO.md](PROGETTO.md) §0.
 Le schede collegate contengono stato, dipendenze, prossimo passo e criterio di
@@ -29,6 +33,7 @@ L'aggiunta all'indice non avvia job, monitor o invii automatici.
 
 | ID | Priorità e motivo | Scheda | Prima di eseguire |
 |---|---|---|---|
+| R-COMP | **Adesso**, richiesta del 29/09: copertura reale dei dataset, modello biologico, training C/T/J e sei metriche con riserva indipendente | [Modello competitivo](piani/modello-competitivo.md) | Assegnazioni esistenti preservate; storico degli outcome e manifest prima dei nuovi training |
 | R-REV | **Adesso**, su richiesta del proprietario del 28/09 (12:30): le azioni della revisione critica, in ordine; la prima è portare nel `main` del portatile il branch che le contiene | [Revisione critica](piani/revisione-critica.md) | §0 della scheda; via del proprietario per invii, download, calcolo in cloud e push |
 | S-INVII | Scadenze e lettura delle prove già preparate | [Invii e set finale](piani/invii-finale.md) | Verificare stato effettivo e coordinarsi con chi segue gli invii |
 | R-V2 | Adesso, su richiesta del proprietario: il modello per il set finale, filoni F1–F8 | [Modello v2](piani/modello-v2.md) | Via del proprietario per download, calcolo in cloud e invii |
@@ -40,7 +45,8 @@ L'aggiunta all'indice non avvia job, monitor o invii automatici.
 scelta del proprietario); S-INVII, R-DATI, R-MODELLI e R-SWITCH hanno una nota datata che rimanda a
 dove il lavoro è proseguito. Le proposte della [revisione critica del 28/09](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md)
 (§6) sono, dalle 12:30 del 28/09 e su richiesta del proprietario, la scheda
-[R-REV](piani/revisione-critica.md), in ordine di esecuzione: è la prima scheda da leggere.
+[R-REV](piani/revisione-critica.md), in ordine di esecuzione. Dal 29/09 la priorità complessiva
+è [R-COMP](piani/modello-competitivo.md); gli incarichi già aperti in R-REV e R-V2 restano assegnati.
 
 **Le dieci ipotesi della ricerca del 24 settembre:** H1 (programmi, nella forma lineare) e H6 (pesi
 per somiglianza basale fra linee) sono state provate il 26/09 e hanno perso; le altre restano aperte.

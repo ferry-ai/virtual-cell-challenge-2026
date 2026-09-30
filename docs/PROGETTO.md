@@ -1,5 +1,8 @@
 # Mappa del progetto — VCC 2026
 
+**Prossimi passi:** [modello competitivo — piano operativo](piani/modello-competitivo.md),
+dai dati realmente usati al training e alla verifica indipendente sui sei membri.
+
 **Questo è il punto di ingresso per lo stato.** Il §0 dice dove siamo oggi;
 [PIANI.md](PIANI.md) indica i lavori aperti e promettenti, le dipendenze e i piani
 chiusi. Come si esegue il lavoro sta in [LAVORO.md](LAVORO.md); l'evidenza, per
@@ -13,12 +16,17 @@ Riorganizzata il 2026-09-28 (D-046):
 - §5 è nuovo: le criticità note. La versione del 23 settembre è nel tag
   `archivio/pre-pulizia-2026-09-23`.
 
-Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 29 settembre, con il t26
-([confronto](../reports/invii/prediction_t26_2026-09-29/comparison.json)).
+Il §0 si aggiorna a ogni invio valutato; l'ultima volta il 30 settembre, con il t28
+([confronto](../reports/invii/prediction_t28_2026-09-29/comparison.json)).
 
-## 0. Oggi — 28 settembre 2026
+## 0. Oggi — 30 settembre 2026
 
-**La ricetta migliore resta quella del t22: +0,141250, rango 337 all'invio.** È il t20 con
+**Il massimo osservato è t28: +0,144845, rango 359 al controllo; l'esito è non conclusivo.**
+Il delta contro t25 è +0,004607, sotto la soglia congelata +0,005. Fedeltà e reach
+salgono, NMAE e Jaccard scendono; la MSE grezza peggiora mentre lo scalato resta zero.
+Non dimostra generalizzazione ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)).
+
+**La ricetta di riferimento resta quella del t22: +0,141250, rango 337 all'invio.** È il t20 con
 Orion HEK293T come quarta sorgente genome-scale a peso uguale
 ([confronto](../reports/invii/prediction_t22_2026-09-26/comparison.json)). La sua replica con
 un altro seme del generatore, il t24, vale +0,142897: per la regola registrata la differenza
@@ -27,8 +35,9 @@ D = 0,0016 lascia la soglia ±0,005, e il riferimento della ricetta diventa la m
 la stessa ricetta con lo stimatore pseudobulk corretto, vale +0,140238: −0,0010, non
 conclusivo; la correzione resta nei dati da qui in avanti.
 
-**Dal t16 nessun cambio della ricetta si distingue dal rumore del seme**
-([lezioni dagli invii](../reports/invii/lezioni_invii_2026-09-28/RISULTATI.md)). Il set finale
+**Dal t16 i cambi della media sono piccoli; il plateau non dimostra che ampiezza e generatore siano ottimizzati.**
+Una sola coppia di semi non identifica il rumore, e diversi membri si compensano
+([audit del 29/09](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md)). Il set finale
 arriva il **22 ottobre**, con tre contesti nuovi (D, E, F) e 300 perturbazioni nuove; le
 sottomissioni chiudono il **5 novembre** (§1).
 
@@ -53,6 +62,7 @@ sottomissioni chiudono il **5 novembre** (§1).
 | t25 | il t22 con lo stimatore pseudobulk corretto (`min_expected` 1) | trial-01 | +0,140238 | 361 | [confronto](../reports/invii/prediction_t25_2026-09-27/comparison.json) |
 | t23 | il t22 con la parte trasferita pesata per la quota condivisa (conta l'esclusione dei geni); inviato il 28/09 | trial-01 | +0,141868 | 366 | [CP-0042](checkpoints/0042-t23-esclusione-pds.md) |
 | t26 | il t25 con effetto 0 sui geni sotto 5 CPM nei controlli del contesto (circa il 70 % dell'energia) | trial-01 | +0,138721 | 384 | [CP-0045](checkpoints/0045-t26-soglia-espressione.md) |
+| **t28** | effetti t25 ×1,5 e dispersione per gene ×1 | trial-01 con dispersione | **+0,144845** | 359 | [CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md) |
 
 In tutti gli invii:
 - lo scalato della `mse` vale 0 (tosato): la `mse` grezza segue l'energia che mettiamo, 1 + E/4786
@@ -67,16 +77,77 @@ derivati dagli scalati con le ancore: il 25 settembre `vcc status` serviva solo 
 
 ### Che cosa è in corso o sospeso
 
+Le scoperte della sessione lead, le prove e le conseguenze pratiche sono raccolte
+in [SCOPERTE_R1](../reports/analisi/lead_scientist_2026-09-29/SCOPERTE_R1.md).
+La fotografia distingue punteggi ufficiali, confronti locali e ipotesi ancora da verificare.
+Le correzioni successive sulla portata degli score e sulla copertura del training sono in
+[SCOPERTE_R2](../reports/analisi/lead_scientist_2026-09-29/SCOPERTE_R2.md).
+
+- **Rete a sorgenti separate, entrambi i semi conclusi:** i cinque fold C su 12 contesti
+  danno +0,002222 e +0,002459 di PDS contro il trasferimento; entrambi sotto la soglia
+  registrata +0,01. Il vantaggio sulla rete cieca non è robusto fra semi e il CI del
+  secondo include zero. Niente fit di produzione o correzione al t28.
+  [Replica conclusa](checkpoints/0049-rete-sorgenti-replica.md),
+  [replica e confronto completo](../reports/analisi/lead_scientist_2026-09-29/RISULTATI_NEURALE_SEED1.md).
+
+- **Stack A/B conclusi, nessun candidato alla conferma:** sui dodici target di sviluppo
+  A perde −0,158321 nell'indice locale e −0,333333 PDS; B, con gli assi misurati propri
+  negli input, perde rispettivamente −0,128512 e −0,234848. Entrambi falliscono la
+  regola registrata. Il ricontrollo numerico 085 termina il 29/09 alle 21:52:28 UTC:
+  baseline A/B identica, selettore originale superato, stessi delta scientifici.
+  Nessuna inferenza sulla riserva e nessuna promozione. Sono confronti locali,
+  non punti VCC né un test generale di tutti i modelli pretrained.
+  [CP-0051](checkpoints/0051-stack-ab-negativi.md),
+  [risultati e limiti](../reports/analisi/lead_scientist_2026-09-29/neural/RISULTATI_STACK_AB.md),
+  [protocollo A/B](../reports/analisi/lead_scientist_2026-09-29/neural/PROTOCOLLO_STACK_AB.md).
+
+- **t28 registrato**, prima della generazione, il 29/09 alle 18:56 UTC: effetti t25 ×1,5,
+  dispersione per gene alla scala 1. Su 96 bersagli pubblici HepG2 disgiunti dallo sviluppo,
+  tre semi positivi, delta locale +0,028918 e IC97,5% [0,019526;0,039342]. Passa la regola
+  del banco; il guadagno viene soprattutto dalla fedeltà, con NMAE/Jaccard peggiori e
+  MSE grezza più alta. Non è un risultato VCC né una stima calibrata del guadagno ufficiale.
+  Il primo runtime Colab è andato perso prima del recupero del pacchetto. La rigenerazione
+  CPU ha salvato su Drive alle 20:41 UTC le 360.000 cellule con SHA256 identico al primo
+  tentativo; il packaging è completo alle 21:21 UTC con validatore ufficiale e payload
+  verificato bit per bit. SHA del file completo dal portatile verificato alle 21:42 UTC.
+  Il proprietario ha richiesto l'upload immediato. Il processo delle 21:53 UTC si è fermato
+  prima della chiamata CLI per un errore I/O del file virtuale Drive (E007): nessuna entry.
+  Recupero locale completato alle 22:28:32 UTC: SHA completo e otto metadata verificati.
+  Su richiesta del proprietario è stato eliminato solo l'intermedio t26 da 4,25 GB,
+  conservandone il contenitore con SHA verificato. **Upload completato alle 22:46 UTC**:
+  4.161.126.400 byte, MD5 verificato, job avviato; entry **ZvrYZ4UazadAyuq4AsDB**.
+  **Esito ufficiale `published`: +0,144845**, delta t25 +0,004607: nuovo massimo
+  osservato, non conclusivo secondo la regola prefissata. Confronto dei sei membri
+  completo; seguito automatico concluso, nessun altro invio.
+  [CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md),
+  [confronto](../reports/invii/prediction_t28_2026-09-29/comparison.json),
+  [ricevuta dell'upload](../reports/invii/trial_2026-09-29/INVIO_T28.md).
+  La conferma riusa 95/96 target:
+  non è una riserva indipendente dall'intera ricerca; le ancore aggregate sono approssimate.
+  [Decisione con i limiti](../reports/invii/trial_2026-09-29/DECISIONE_INVIO_T28.md),
+  [audit degli score](../reports/analisi/lead_scientist_2026-09-29/SCORE_CREDIBILITA.md).
+  [Risultati](../reports/analisi/lead_scientist_2026-09-29/RISULTATI_GENERATORE_CONFERMA.md),
+  [registrazione](../reports/invii/prediction_t28_2026-09-29/prediction.json),
+  [recupero verificato](../reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/RISULTATO_STAGE45_R2.md),
+  [autorizzazione](../reports/invii/trial_2026-09-29/autorizzazione_lead_2026-09-29.md).
+
+- **Apprendimento dagli errori applicato ai nuovi job:** [ERRORI.md](ERRORI.md) collega
+  gli incidenti con causa, correzione, test e prove locali/remoti al preflight
+  obbligatorio. Il job084 ha ricevute distinte PASS locale e runtime; quella remota
+  delle 21:21:35 UTC precede lo scoring e non ne anticipa l'esito scientifico.
+
 - **t23 valutato** il 28/09 alle 22:37 UTC ([CP-0042](checkpoints/0042-t23-esclusione-pds.md)): +0,141868,
   t23 − t22 = +0,0006, non conclusivo per la sua regola. Nei membri però `pds_cosine` sale di
-  +0,0109 grezzo (circa dodici volte il seme), mentre `nmae`, `reach` e Jaccard scendono: l'esclusione
-  degli 8.247 geni non stimabili affila la discriminazione e perde sui membri DE (interpretazione).
+  +0,0109 grezzo, mentre `nmae`, `reach` e Jaccard scendono. Il confronto cambia esclusione,
+  pesatura e riscalatura insieme: l'attribuzione alla sola esclusione resta un'ipotesi
+  ([CP-0046](checkpoints/0046-audit-lead-e-due-vie-neurali.md)).
   Ipotesi per il prossimo candidato: l'esclusione con i membri DE recuperati, da scegliere con lo
   scorer vero (azione 4 di R-REV), non con il proxy ([CP-0041](checkpoints/0041-proxy-contro-ufficiale.md)).
 - **t26 valutato** il 29/09 alle 15:39 UTC ([CP-0045](checkpoints/0045-t26-soglia-espressione.md)): il t25 senza
   effetti sui geni sotto 5 CPM nel contesto, +0,138721, −0,0015 dal t25, non conclusivo. Il PDS non sale (−0,0020
-  grezzo): il guadagno del t23 non veniva dai geni poco espressi, ma da quelli espressi (interpretazione). La
-  prossima domanda riguarda l'esclusione e la pesatura sui soli geni espressi.
+  grezzo). Questo non sostiene l'ipotesi semplice che basti togliere i poco espressi;
+  non identifica quale parte dell'intervento diverso del t23 abbia aiutato
+  ([CP-0046](checkpoints/0046-audit-lead-e-due-vie-neurali.md)).
 - **R-V2**, il modello per il set finale ([scheda](piani/modello-v2.md)), **ripresa dal proprietario
   il 28/09 alle 19:22**, in parallelo con R-REV. Letti con le loro regole ([modelli](../reports/modelli/README.md)):
   - l'encoder di contesto non passa su nessuna verità;
@@ -156,7 +227,7 @@ La classifica finale dipende solo dal set finale, su tre contesti diversi (D, E,
 | Impacchettamento in memoria limitata (stadio 48) | fatto: 0,52 GiB di picco contro i 33,5 di `vcc prep` | [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) |
 | Ancore ufficiali di cinque membri su sei | fatto; reggono su tutti gli invii successivi | [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md), `reports/gara/anchors_2026-09-17/` |
 | Pipeline a singola cellula su Colab: K562 letto per intero, `ControlModel`, DE veloce identico allo scorer, banchi a sei metriche | fatto | [CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md), [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
-| Trasferimento dello stesso bersaglio da quattro sorgenti genome-scale (K562, CD4, Orion HCT116 e HEK293T) | ricetta del t22; satura: dal t16 i cambi stanno nel rumore del seme | §0, [invii](../reports/invii/README.md) |
+| Trasferimento dello stesso bersaglio da quattro sorgenti genome-scale (K562, CD4, Orion HCT116 e HEK293T) | ricetta del t22; ultimi cambi della media piccoli, ma ampiezza e generatore non confinati | §0, [audit 29/09](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md) |
 | Universi genome-wide: tutti i bersagli di ogni sorgente, non solo i 300 del pannello | fatti per K562, CD4, HCT116, HEK293T (corretti il 27/09), KOLF2.1J, A549, VIPerturb-seq, 19 linee HIPSCI | [sorgenti](../reports/sorgenti/README.md) |
 | Banco con lo scorer vero su un contesto pubblico tenuto fuori (HepG2) | r1 fatto il 27/09: descrittivo | [banco HepG2](../reports/generatore_e_banchi/banco_hepg2_v2_2026-09-26/RISULTATI.md) |
 | Modelli su molti contesti (modello a cancelli, rete, encoder, Tahoe T1) | nessuno passa la sua regola; R-V2 in pausa | [modelli](../reports/modelli/README.md) |
@@ -208,9 +279,10 @@ del 12–17 settembre è in [storico](storico/PROGETTO_sezioni_3_4_2026-09-28.md
 - **Misurato.** Lo stimatore pseudobulk leggeva un gene senza conteggi come indotto (geni Y delle
   donatrici CD4): corretto con `min_expected` (cache r9, universi `_me1`)
   ([pseudoconteggio](../reports/sorgenti/pseudoconteggio_2026-09-27/RISULTATI.md)).
-- **Misurato.** La gara è letta in 10x Flex, a sonde; le sorgenti sono in 3'. Sugli stessi knockdown
-  K562, metà contro metà di uno schermo Flex 0,110 di coseno, Flex contro 3' 0,030
-  ([ponte Flex](../reports/sorgenti/ponte_flex_2026-09-28/RISULTATI.md)).
+- **Misurato.** La gara è letta in 10x Flex, a sonde; **anche CD4 è GEM-X Flex v1**, verificato nelle
+  12 righe dei metadati originali. La ricetta usa quindi già una sorgente Flex per 293 bersagli.
+  Il ponte K562 VIPerturb–Replogle (metà Flex contro metà 0,110; Flex contro 3' 0,030) riguarda
+  quella coppia, non tutte le sorgenti ([audit e fonte](../reports/analisi/lead_scientist_2026-09-29/AUDIT_DATI.md)).
 - **Misurato.** I bersagli del pannello sono knockdown di forza tipica (percentile mediano 0,54 nel
   K562) e nessuno è nei pannelli *essential*; i banchi su bersagli essenziali misurano effetti più
   forti e più trasferibili di quelli del pannello ([atlante](../reports/trasferimento/atlante_2026-09-26/RISULTATI.md)).
@@ -222,8 +294,10 @@ del 12–17 settembre è in [storico](storico/PROGETTO_sezioni_3_4_2026-09-28.md
 - **Misurato**, su HepG2 con lo scorer vero: la forma t19 batte la t16 (+0,026); raddoppiare la t19
   non è distinguibile da zero; la testa cis non si vede; Jaccard negativo in ogni braccio
   ([banco HepG2](../reports/generatore_e_banchi/banco_hepg2_v2_2026-09-26/RISULTATI.md)).
-- **Ipotesi.** Le identità di linea di A/B/C (T-ALL, cervicale HPV+, squamoso) vengono da marcatori
-  e impronte genetiche, non da un confronto con DepMap/CCLE.
+- **Ipotesi.** Le identità di linea di A/B/C sono sostenute da marcatori, impronte genetiche e
+  da un confronto con espressione e numero di copie DepMap già svolto il 24/09. Il materiale
+  resta fuori dalla repository pubblica; non è una conferma degli organizzatori
+  ([audit del 29/09](../reports/analisi/lead_scientist_2026-09-29/AUDIT_DATI.md), §6).
 
 ## 4. Che cosa non sappiamo ancora
 
@@ -248,9 +322,13 @@ Le incertezze aperte al 28 settembre. Fra parentesi il numero che avevano nel ve
 5. **Se il contesto letto dai controlli sia utilizzabile** (nuovo). Ogni prova finora dice di no;
    con 4–13 contesti di poche famiglie, e laboratori e piattaforme confusi con le linee, non è
    ancora una risposta.
-6. **Quanto pesi il cambio di piattaforma** Flex contro 3' (nuovo), e come correggerlo gene per gene.
+6. **Quanto pesino piattaforma e studio**, e se una mappa gene per gene aiuti su bersagli tenuti
+   fuori. CD4 è già Flex; il ponte descrittivo VIPerturb–Replogle riguarda due studi K562 e
+   non isola l'effetto della chimica ([audit](../reports/analisi/lead_scientist_2026-09-29/AUDIT_DATI.md)).
 7. **Quali linee siano D/E/F, e se esistano Perturb-seq pubblici di quelle linee** (5, 7). Per
-   A/B/C la ricerca non ha trovato CRISPRi pubblico in linea T matura o squamosa.
+   A/B/C il percorso «stessa linea» è già stato esplorato in materiale riservato: un dataset
+   mirato è stato provato e non adottato per il debole segnale specifico del bersaglio. Questo
+   non chiude la ricerca di fonti ulteriori; identità e confronti restano fuori dalla repo pubblica.
 8. **Se l'asse genico ufficiale sia ricostruibile in identificatori Ensembl** (4): contraddizione
    aperta, scheda [R-004](REGISTRO.md#r-004--docsrevisione_analisi_2026-09-11md).
 9. **L'efficienza di knockdown nei contesti di gara** (8), non disponibile.
@@ -273,15 +351,17 @@ il codice archiviato; (20) le copie su Drive sono state lette.
 Dalla [revisione critica del 28 settembre](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md),
 che le argomenta con le fonti:
 
-1. **La ricetta è satura e la direzione gene per gene è quasi ortogonale al vero**: i prossimi
-   punti non vengono da altre sorgenti o altre ampiezze.
+1. **La direzione gene per gene è debole e i membri del punteggio si compensano**. Il fit energia–MSE
+   indica eccesso di energia, ma non dimostra saturazione di ogni ampiezza o generatore:
+   [correzione del 29/09](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md).
 2. **Le decisioni di ricerca si prendono su un proxy di due membri su sei**, contro verità
    pubbliche rumorose, con regole «positivo su 3 linee su 4» che hanno poca potenza e molti
    confronti in parallelo.
 3. **Il rumore del punteggio ufficiale è stimato su una coppia**, e i parametri della ricetta sono
    stati scelti su A/B/C: sul set finale vanno ricontrollati, non trasferiti.
-4. **Piattaforma e normalizzazione**: sorgenti in 3', gara in Flex; i profili basali sono
-   normalizzati su insiemi di geni diversi.
+4. **Piattaforma e normalizzazione**: sorgenti di saggi diversi, con CD4 già Flex; i profili basali
+   sono normalizzati su insiemi di geni diversi. La media dei CPM per cellula può inoltre differire
+   molto dalla composizione aggregata che il generatore Poisson conserva.
 5. **Il codice di ricerca sta nei report**: circa 22.000 righe senza test, importate da altri
    banchi per percorso ([reports/README.md](../reports/README.md)).
 6. **Evidenza citata ma assente dal repository**: l'audit di codex del 26/09, le schede R-018 e

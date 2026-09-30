@@ -1,0 +1,124 @@
+{
+  "run_id": "t28r2gen",
+  "stage": "45_generate_prediction",
+  "started_utc": "2026-09-29T20:39:10.151170+00:00",
+  "finished_utc": "2026-09-29T20:39:10.575259+00:00",
+  "seed": 20260912,
+  "config": {
+    "run_id": "t28r2gen",
+    "trial": "trial-ext-profile",
+    "out": "/content/lead_candidate_t28r2/gen",
+    "n_perts": null,
+    "contexts": "A,B,C",
+    "controls_dir": "/content/lead_candidate_t28r2/data/raw/controls",
+    "cells_per_pert": 400,
+    "seed": 20260912,
+    "overdispersion": null,
+    "reserve_gib": 10.0,
+    "skip_resource_check": false,
+    "allow_overwrite": false,
+    "gene_dispersion": true,
+    "gene_dispersion_scale": 1.0,
+    "depth_bins": false,
+    "effects_scale": 1.5,
+    "effects": [
+      "A=/content/lead_candidate_t28r2/data/processed/effects_t25_2026-09-27/effects_A.npz",
+      "B=/content/lead_candidate_t28r2/data/processed/effects_t25_2026-09-27/effects_B.npz",
+      "C=/content/lead_candidate_t28r2/data/processed/effects_t25_2026-09-27/effects_C.npz"
+    ]
+  },
+  "inputs": {
+    "controls:A": {
+      "path": "/content/lead_candidate_t28r2/data/raw/controls/context_A.h5ad",
+      "exists": true,
+      "bytes": 224973316,
+      "mtime_utc": "2026-09-29T20:06:24.697605+00:00",
+      "sha256": "daf888bd6894da5488c8dac3098a3618ff766d03fdf1250ec7f607124bb97834",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "controls:B": {
+      "path": "/content/lead_candidate_t28r2/data/raw/controls/context_B.h5ad",
+      "exists": true,
+      "bytes": 210966111,
+      "mtime_utc": "2026-09-29T20:06:27.003835+00:00",
+      "sha256": "8764c13cb61dd48e51c817335dd4ecc85a740406c5af144c4884d79d3cd3293d",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "controls:C": {
+      "path": "/content/lead_candidate_t28r2/data/raw/controls/context_C.h5ad",
+      "exists": true,
+      "bytes": 226056691,
+      "mtime_utc": "2026-09-29T20:06:30.998234+00:00",
+      "sha256": "486a299ad022ec5fd6a3c5f56ec77efeb7b8b85e5de0e41250d064c6f9b236f6",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "outputs": {
+    "prediction": {
+      "path": "/content/lead_candidate_t28r2/gen/prediction.h5ad",
+      "exists": true,
+      "bytes": 4213225652,
+      "mtime_utc": "2026-09-29T20:39:10.060870+00:00",
+      "sha256": "864685ff4201b4d07d392d062c3336b712cc571309c4040a1ddf61678232df80",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "diagnostics": {
+      "path": "/content/lead_candidate_t28r2/gen/generation_diagnostics.json",
+      "exists": true,
+      "bytes": 232207,
+      "mtime_utc": "2026-09-29T20:39:10.149879+00:00",
+      "sha256": "ed9ec15dbbf7ecfffe12676cf493331fd4c3e8160c7f52e82d2bb163f7b50acd",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "storage": {
+      "stored_entries": 2085425466,
+      "stored_entries_per_cell": 5792.848516666667,
+      "per_cell_budget": 13194,
+      "global_cap": 4750000000,
+      "fraction_of_global_cap_at_this_size": 0.4390369402105263,
+      "projected_entries_at_full_shape": 2085425466.0,
+      "projected_fraction_of_cap": 0.4390369402105263,
+      "file_bytes": 4213225652,
+      "bytes_per_cell": 11703.404588888889,
+      "projected_file_bytes_at_full_shape": 4213225652.0
+    },
+    "runtime": {
+      "basal_profiles_seconds": 20.06395532399995,
+      "generation_seconds": 1851.451251634,
+      "total_seconds": 1953.7055928519999,
+      "seconds_per_block": 2.0571680573711113,
+      "projected_generation_seconds_at_full_shape": 1851.451251634
+    },
+    "memory": {
+      "peak_rss_bytes": 680525824
+    },
+    "context_provenance_ok": true
+  },
+  "notes": [
+    "No VCC score here. Generation only; nothing uploaded."
+  ],
+  "environment": {
+    "python": "3.13.15",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "hostname": "7383d3cccffd",
+    "cpu_count": 2,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.4",
+      "numpy": "2.1.3",
+      "scipy": "1.16.3",
+      "pandas": "3.0.6",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.6.1",
+      "pyarrow": "23.0.1"
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "/content/lead_candidate_t28r2/data"
+    }
+  }
+}

@@ -29,6 +29,7 @@ several contain conclusions that later work corrected.
 | Prepare the final set (D, E, F; 22 October) | LAVORO §7 | |
 | Find data, choose sources or design a generalizing predictor | `docs/GENERALIZZAZIONE.md`; D-044 in `docs/DECISIONI.md` | ranking datasets only by overlap with the current 300 targets |
 | Queue or follow a Colab job | LAVORO §3 | the job's own log: it syncs only when the job ends |
+| Prepare a new job or repair an operational failure | `docs/ERRORI.md`; the relevant incident records and reusable preflight | treating a completion marker, a local Drive copy or a written fix as remote verification |
 | Change a stage | `scripts/CLAUDE.md`; the stage's docstring and its test | |
 | Change a library module | `src/vcc2026/CLAUDE.md`, which says which stages import it | |
 | Know why something was decided, or when to reopen it | the table at the top of `docs/DECISIONI.md`, then that one section | the other sections |
@@ -136,6 +137,14 @@ confident prose outrunning what was measured. Hold these lines:
   history from artifacts, say so in the text.
 
 ## No preset limits (D-045)
+
+Before queueing a newly prepared job, follow [`docs/ERRORI.md`](docs/ERRORI.md):
+declare every input and new output, validate the manifest locally, and require
+the same full hash/size checks in the destination runtime before scientific work.
+Reuse authorization already given in the session; this check does not require
+another permission request. Preserve failures in the append-only incident ledger,
+add a regression test and close an incident only with its stated verification
+evidence. This workflow does not stop running jobs or revive the retired cycles.
 
 - Do not estimate how long work will take, and do not cap what can be done in this session or
   the next ones: many agents work, some on the teammate's machine, and limits are not predictable.

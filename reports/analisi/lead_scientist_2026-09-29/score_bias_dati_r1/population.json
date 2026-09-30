@@ -1,0 +1,227 @@
+{
+  "claim": "Metadata/split audit only; no scores or expression arrays read",
+  "generator": {
+    "truth": "full",
+    "eligible_targets": 274,
+    "development_targets": 48,
+    "confirmation_targets": 96,
+    "split_overlap": 0,
+    "control_cells": 2000,
+    "response_genes": 9624,
+    "source_mask": {
+      "method": "stage98.k562_table; finite shrunk values and positive n_cells",
+      "control_fraction_gate": 1e-06,
+      "observed_genes_min_max": [
+        7681,
+        7681
+      ],
+      "source_stage_sha256": "7bf7b960fb166e4b235081ca14e8a80b1295a0c87fbdd4486510e310500e530a"
+    },
+    "preparation_same_across_runs": true,
+    "versions": {
+      "numpy": "2.1.3",
+      "scipy": "1.16.3",
+      "pandas": "3.0.6",
+      "h5py": "3.16.0",
+      "cell-eval2": "0.16.0",
+      "vcc-cli": null
+    },
+    "development_truth_cells": {
+      "min": 50,
+      "median": 72.5,
+      "max": 459,
+      "sum": 4659
+    },
+    "development_overlap_with_controls": 0,
+    "development_truth_rows_unique": true,
+    "confirmation_truth_cells": {
+      "min": 50,
+      "median": 67.0,
+      "max": 430,
+      "sum": 8249
+    },
+    "confirmation_overlap_with_controls": 0,
+    "confirmation_truth_rows_unique": true
+  },
+  "stack": {
+    "development_targets": 12,
+    "all_in_generator_development": true,
+    "overlap_generator_confirmation": 0,
+    "truth": "all cells per target; fixed real controls from inference preparation",
+    "pretraining_holdout_verified": false,
+    "versions": {
+      "cell-eval2": "0.16.0",
+      "scanpy": "1.12.4",
+      "numpy": "2.1.3",
+      "scipy": "1.16.3",
+      "anndata": "0.13.4"
+    }
+  },
+  "neural": {
+    "folds": [
+      {
+        "family": "k562",
+        "regime": "C",
+        "train_rows": 56341,
+        "refit_rows": 90049,
+        "validation_rows": 256,
+        "test_rows": 1536,
+        "test_contexts": 3,
+        "test_train_overlap": 0,
+        "test_refit_overlap": 0,
+        "validation_train_overlap": 0,
+        "hidden_context_rows_in_train": 0,
+        "hidden_context_rows_in_refit": 0,
+        "validation_family": "orion",
+        "hidden_targets_count": 0,
+        "truth_target_is_seen_elsewhere_count": 1443
+      },
+      {
+        "family": "cd4",
+        "regime": "C",
+        "train_rows": 53748,
+        "refit_rows": 72285,
+        "validation_rows": 384,
+        "test_rows": 1536,
+        "test_contexts": 3,
+        "test_train_overlap": 0,
+        "test_refit_overlap": 0,
+        "validation_train_overlap": 0,
+        "hidden_context_rows_in_train": 0,
+        "hidden_context_rows_in_refit": 0,
+        "validation_family": "k562",
+        "hidden_targets_count": 0,
+        "truth_target_is_seen_elsewhere_count": 1455
+      },
+      {
+        "family": "orion",
+        "regime": "C",
+        "train_rows": 56341,
+        "refit_rows": 74878,
+        "validation_rows": 384,
+        "test_rows": 1024,
+        "test_contexts": 2,
+        "test_train_overlap": 0,
+        "test_refit_overlap": 0,
+        "validation_train_overlap": 0,
+        "hidden_context_rows_in_train": 0,
+        "hidden_context_rows_in_refit": 0,
+        "validation_family": "k562",
+        "hidden_targets_count": 0,
+        "truth_target_is_seen_elsewhere_count": 845
+      },
+      {
+        "family": "ipsc",
+        "regime": "C",
+        "train_rows": 57231,
+        "refit_rows": 90939,
+        "validation_rows": 256,
+        "test_rows": 1536,
+        "test_contexts": 3,
+        "test_train_overlap": 0,
+        "test_refit_overlap": 0,
+        "validation_train_overlap": 0,
+        "hidden_context_rows_in_train": 0,
+        "hidden_context_rows_in_refit": 0,
+        "validation_family": "orion",
+        "hidden_targets_count": 0,
+        "truth_target_is_seen_elsewhere_count": 1486
+      },
+      {
+        "family": "rpe1",
+        "regime": "C",
+        "train_rows": 72485,
+        "refit_rows": 106193,
+        "validation_rows": 256,
+        "test_rows": 512,
+        "test_contexts": 1,
+        "test_train_overlap": 0,
+        "test_refit_overlap": 0,
+        "validation_train_overlap": 0,
+        "hidden_context_rows_in_train": 0,
+        "hidden_context_rows_in_refit": 0,
+        "validation_family": "orion",
+        "hidden_targets_count": 0,
+        "truth_target_is_seen_elsewhere_count": 512
+      }
+    ],
+    "target_context_pairs": 6144,
+    "unique_targets": 5049,
+    "contexts": 12,
+    "families": 5,
+    "test_rows_unique": true,
+    "stored_dataset_counts": {
+      "rows": 109586,
+      "genes": 13248,
+      "axis": 18533,
+      "contexts": 13,
+      "targets": 19265,
+      "basal_rows": 16
+    },
+    "stored_genes_rule": {
+      "min_frac": 0.5,
+      "min_families": 2,
+      "families": [
+        "a549",
+        "cd4",
+        "ipsc",
+        "k562",
+        "orion",
+        "rpe1"
+      ],
+      "stored": 13248
+    },
+    "active_test_context_names": [
+      "k562",
+      "k562ess",
+      "viperturb",
+      "rpe1",
+      "cd4_Rest",
+      "cd4_Stim8hr",
+      "cd4_Stim48hr",
+      "orion_hct116",
+      "orion_hek293t",
+      "kolf",
+      "hipsci_fit",
+      "hipsci_nonfit"
+    ]
+  },
+  "evidence": [
+    {
+      "path": "generator_confirmation_r3/target_manifest.json",
+      "sha256": "7b7459ca86d0bef53d4a53f3b7bcae983189a44f623deb2510d7ed33da07d79f"
+    },
+    {
+      "path": "generator_development_r3/target_manifest.json",
+      "sha256": "7b7459ca86d0bef53d4a53f3b7bcae983189a44f623deb2510d7ed33da07d79f"
+    },
+    {
+      "path": "neural/stack_a_scoring_r2/evaluation_manifest.json",
+      "sha256": "4b86a8e42572a2392c0d8f58e122f405cbb88507d5f96fc2f5c99111ad44ad43"
+    },
+    {
+      "path": "kaggle_lead_monitor/r6/seed1/neural_seed1_r1/folds/C_k562_s1/manifest.json",
+      "sha256": "ac728e68f55e0c65e28c72d36bce2435f0976766186b0397b5bb56d0187d09c2"
+    },
+    {
+      "path": "kaggle_lead_monitor/r6/seed1/neural_seed1_r1/folds/C_cd4_s1/manifest.json",
+      "sha256": "c0a859180825bef0195093ffa6a508837c53588387294f9599d4ae1d2c8840bc"
+    },
+    {
+      "path": "kaggle_lead_monitor/r6/seed1/neural_seed1_r1/folds/C_orion_s1/manifest.json",
+      "sha256": "fb3cb5dd5753062b2c7f96ae8b56b205079862e95b0514246fd55031933248e0"
+    },
+    {
+      "path": "kaggle_lead_monitor/r6/seed1/neural_seed1_r1/folds/C_ipsc_s1/manifest.json",
+      "sha256": "47fe9ce9322907d9bf3abbdbc9d46c5b2d6859dfa8d5946f2423e040b672775a"
+    },
+    {
+      "path": "kaggle_lead_monitor/r6/seed1/neural_seed1_r1/folds/C_rpe1_s1/manifest.json",
+      "sha256": "72e7de60b3691a984a589a67d192fb7322d5e8c0f5d67ad0be44214485dde6ae"
+    },
+    {
+      "path": "kaggle_neural_r1/input_metadata/manifest.json",
+      "sha256": "2e59376b103dc6578b9a52e3c37c655207567ecc0375481bc5e3560e7fb8b32a"
+    }
+  ]
+}

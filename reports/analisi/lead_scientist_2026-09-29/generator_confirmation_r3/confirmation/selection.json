@@ -1,0 +1,76 @@
+{
+  "claim_type": "local projection using five official-anchor slopes / six, MSE contribution fixed at zero; not a VCC score",
+  "comparisons": [
+    {
+      "delta_projection": 0.028917710507027752,
+      "per_seed_delta": [
+        0.03425004775790016,
+        0.02337301940904806,
+        0.029130064354135024
+      ],
+      "seed_sd": 0.005441622647953365,
+      "member_contributions": {
+        "pds_cosine": -1.3616081868037943e-05,
+        "de_wilcoxon_lfc_nmae": -0.0032739876048592277,
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.028301618132541246,
+        "de_wilcoxon_direction_reach_raw": 0.007670026719944261,
+        "de_wilcoxon_sig_jaccard": -0.0037663306587304903
+      },
+      "eligible_targets_per_member": {
+        "pds_cosine": 96,
+        "de_wilcoxon_lfc_nmae": 70,
+        "de_wilcoxon_direction_fidelity_yield_raw": 96,
+        "de_wilcoxon_direction_reach_raw": 87,
+        "de_wilcoxon_sig_jaccard": 96
+      },
+      "amplitude": 1.5,
+      "phi_scale": 1.0,
+      "generator": "pooled",
+      "confidence_level": 0.975,
+      "paired_target_bootstrap_interval": [
+        0.019525634903636922,
+        0.03934189554761046
+      ],
+      "passes_confirmation": true
+    },
+    {
+      "delta_projection": 0.023031414033283983,
+      "per_seed_delta": [
+        0.02878765316302223,
+        0.016329217753057703,
+        0.023977371183772
+      ],
+      "seed_sd": 0.006282855991822833,
+      "member_contributions": {
+        "pds_cosine": 0.0004084824560411621,
+        "de_wilcoxon_lfc_nmae": -0.0035876583315857494,
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.02325476609585032,
+        "de_wilcoxon_direction_reach_raw": 0.00506811145936922,
+        "de_wilcoxon_sig_jaccard": -0.002112287646390969
+      },
+      "eligible_targets_per_member": {
+        "pds_cosine": 96,
+        "de_wilcoxon_lfc_nmae": 70,
+        "de_wilcoxon_direction_fidelity_yield_raw": 96,
+        "de_wilcoxon_direction_reach_raw": 87,
+        "de_wilcoxon_sig_jaccard": 96
+      },
+      "amplitude": 1.5,
+      "phi_scale": 0.5,
+      "generator": "pooled",
+      "confidence_level": 0.975,
+      "paired_target_bootstrap_interval": [
+        0.013353814344795354,
+        0.033183478804521584
+      ],
+      "passes_confirmation": true
+    }
+  ],
+  "shortlist": [],
+  "shortlist_cli": [],
+  "matched_diagnostics": [],
+  "bootstrap_note": "paired targets; shared draws across seeds and members; seed SD separate; target families not independently resampled",
+  "truth": "full",
+  "n_targets": 96,
+  "finished_utc": "2026-09-29T18:49:57.080061+00:00"
+}

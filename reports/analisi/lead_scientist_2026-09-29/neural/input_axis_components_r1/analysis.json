@@ -1,0 +1,734 @@
+{
+  "created_utc": "2026-09-29T20:20:25.808896+00:00",
+  "claim_type": "Measured input-only diagnostic, no outcomes or prediction changes",
+  "targets_read": false,
+  "exact_shared_genes": 5179,
+  "uppercase_shared_genes": 5179,
+  "uppercase_additional_symbols": [],
+  "model_not_uppercase": [],
+  "model_uppercase_collisions": {},
+  "control_populations": {
+    "K562_source": {
+      "cells": 512,
+      "measured_genes": 8246,
+      "total_counts": 5916493,
+      "retained_counts_exact": 2888713,
+      "lost_fraction_aggregate_exact": 0.5117524858053579,
+      "lost_fraction_aggregate_uppercase": 0.5117524858053579,
+      "recoverable_fraction_of_all_counts": 0.0,
+      "lost_fraction_per_cell_quantiles": {
+        "0": 0.4084009883515708,
+        "0.01": 0.4468596950450272,
+        "0.05": 0.46886112086688536,
+        "0.25": 0.49645284604305756,
+        "0.5": 0.5106971237061133,
+        "0.75": 0.5276024818802453,
+        "0.95": 0.5570366094778568,
+        "0.99": 0.5744927297568445,
+        "1": 0.6272795403447414
+      },
+      "upper_loss_per_cell_quantiles": {
+        "0": 0.4084009883515708,
+        "0.01": 0.4468596950450272,
+        "0.05": 0.46886112086688536,
+        "0.25": 0.49645284604305756,
+        "0.5": 0.5106971237061133,
+        "0.75": 0.5276024818802453,
+        "0.95": 0.5570366094778568,
+        "0.99": 0.5744927297568445,
+        "1": 0.6272795403447414
+      },
+      "top20_excluded_genes": [
+        {
+          "gene": "MT-CO3",
+          "counts": 161280,
+          "fraction_of_all_counts": 0.027259391670031555,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-CO2",
+          "counts": 127046,
+          "fraction_of_all_counts": 0.02147319366388163,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-ATP6",
+          "counts": 94565,
+          "fraction_of_all_counts": 0.015983286044621365,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-CO1",
+          "counts": 86562,
+          "fraction_of_all_counts": 0.014630626622899748,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-ND4",
+          "counts": 71493,
+          "fraction_of_all_counts": 0.01208367862515852,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-CYB",
+          "counts": 58052,
+          "fraction_of_all_counts": 0.009811893633610316,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPLP1",
+          "counts": 48351,
+          "fraction_of_all_counts": 0.008172239872505553,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS2",
+          "counts": 47683,
+          "fraction_of_all_counts": 0.008059335150062715,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS18",
+          "counts": 43570,
+          "fraction_of_all_counts": 0.007364159815620504,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS12",
+          "counts": 38090,
+          "fraction_of_all_counts": 0.006437935445879848,
+          "control_cells_detected": 511,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-ND3",
+          "counts": 32264,
+          "fraction_of_all_counts": 0.005453230486370896,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS23",
+          "counts": 31500,
+          "fraction_of_all_counts": 0.0053240999355530375,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS8",
+          "counts": 29964,
+          "fraction_of_all_counts": 0.005064486681552737,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS3",
+          "counts": 29746,
+          "fraction_of_all_counts": 0.005027640529617799,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPL32",
+          "counts": 27971,
+          "fraction_of_all_counts": 0.004727631723725524,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-ND1",
+          "counts": 27726,
+          "fraction_of_all_counts": 0.004686222057560112,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPL19",
+          "counts": 27660,
+          "fraction_of_all_counts": 0.004675066800552286,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS27A",
+          "counts": 26451,
+          "fraction_of_all_counts": 0.004470722774454394,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPL7A",
+          "counts": 26294,
+          "fraction_of_all_counts": 0.0044441867842994155,
+          "control_cells_detected": 512,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS14",
+          "counts": 25910,
+          "fraction_of_all_counts": 0.00437928347079934,
+          "control_cells_detected": 511,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        }
+      ],
+      "uppercase_collisions": {},
+      "library_size_quantiles_before": {
+        "0": 1471.0,
+        "0.01": 2316.16,
+        "0.05": 3920.0,
+        "0.25": 7908.25,
+        "0.5": 11361.5,
+        "0.75": 14607.0,
+        "0.95": 20279.699999999997,
+        "0.99": 24760.599999999984,
+        "1": 27049.0
+      },
+      "library_size_quantiles_after_exact": {
+        "0": 678.0,
+        "0.01": 1124.0900000000001,
+        "0.05": 1774.75,
+        "0.25": 3953.75,
+        "0.5": 5550.5,
+        "0.75": 7163.75,
+        "0.95": 10052.5,
+        "0.99": 11848.029999999999,
+        "1": 13402.0
+      },
+      "loss_components": {
+        "genes_in_own_axis_and_model": 5760,
+        "genes_removed_only_by_other_axis": 581,
+        "counts_in_own_axis_and_model": 3041519,
+        "fraction_all_counts_outside_model": 0.485925361527513,
+        "fraction_all_counts_removed_only_by_other_axis": 0.025827124277845,
+        "fraction_model_mappable_counts_removed_only_by_other_axis": 0.05024002809122674,
+        "median_native_model_library_size": 5836.5,
+        "top20_removed_only_by_other_axis": [
+          {
+            "gene": "GP1BB",
+            "counts": 9229,
+            "fraction_of_all_counts": 0.0015598767715942535
+          },
+          {
+            "gene": "TMSB4X",
+            "counts": 6079,
+            "fraction_of_all_counts": 0.0010274667780389498
+          },
+          {
+            "gene": "LDHB",
+            "counts": 4955,
+            "fraction_of_all_counts": 0.0008374893708147715
+          },
+          {
+            "gene": "VIM",
+            "counts": 4861,
+            "fraction_of_all_counts": 0.000821601580530899
+          },
+          {
+            "gene": "HBG2",
+            "counts": 4832,
+            "fraction_of_all_counts": 0.0008167000282092787
+          },
+          {
+            "gene": "PRAME",
+            "counts": 4252,
+            "fraction_of_all_counts": 0.0007186689817768736
+          },
+          {
+            "gene": "MTRNR2L8",
+            "counts": 2817,
+            "fraction_of_all_counts": 0.00047612665137945737
+          },
+          {
+            "gene": "HBZ",
+            "counts": 2739,
+            "fraction_of_all_counts": 0.00046294316582475465
+          },
+          {
+            "gene": "GYPC",
+            "counts": 2374,
+            "fraction_of_all_counts": 0.00040125121419056864
+          },
+          {
+            "gene": "PRKAR2B",
+            "counts": 1959,
+            "fraction_of_all_counts": 0.000331108310277727
+          },
+          {
+            "gene": "HBG1",
+            "counts": 1907,
+            "fraction_of_all_counts": 0.0003223193199079252
+          },
+          {
+            "gene": "GTSF1",
+            "counts": 1671,
+            "fraction_of_all_counts": 0.00028243082515267066
+          },
+          {
+            "gene": "CTAG2",
+            "counts": 1540,
+            "fraction_of_all_counts": 0.000260289330182593
+          },
+          {
+            "gene": "MTRNR2L12",
+            "counts": 1375,
+            "fraction_of_all_counts": 0.00023240118766302943
+          },
+          {
+            "gene": "MYL4",
+            "counts": 1296,
+            "fraction_of_all_counts": 0.00021904868306275356
+          },
+          {
+            "gene": "BEX4",
+            "counts": 1295,
+            "fraction_of_all_counts": 0.00021887966401718044
+          },
+          {
+            "gene": "SELENOH",
+            "counts": 1292,
+            "fraction_of_all_counts": 0.0002183726068804611
+          },
+          {
+            "gene": "PPP1R14A",
+            "counts": 1286,
+            "fraction_of_all_counts": 0.00021735849260702244
+          },
+          {
+            "gene": "CELF2",
+            "counts": 1199,
+            "fraction_of_all_counts": 0.00020265383564216165
+          },
+          {
+            "gene": "MSN",
+            "counts": 1166,
+            "fraction_of_all_counts": 0.00019707620713824896
+          }
+        ]
+      },
+      "diagnostic_extension_sha256": "0c7b5bb753478d5ec84b917bb18e03b2bc82a9fb8760f495e8478754630fdae7"
+    },
+    "HepG2_destination": {
+      "cells": 2000,
+      "measured_genes": 9624,
+      "total_counts": 37657835,
+      "retained_counts_exact": 18580786,
+      "lost_fraction_aggregate_exact": 0.5065891068883805,
+      "lost_fraction_aggregate_uppercase": 0.5065891068883805,
+      "recoverable_fraction_of_all_counts": 0.0,
+      "lost_fraction_per_cell_quantiles": {
+        "0": 0.3540921021235982,
+        "0.01": 0.4520487861483108,
+        "0.05": 0.4672984362936564,
+        "0.25": 0.4903690701348766,
+        "0.5": 0.5067122800405892,
+        "0.75": 0.5262170272199698,
+        "0.95": 0.5566603510336272,
+        "0.99": 0.586558133795416,
+        "1": 0.6163928012519562
+      },
+      "upper_loss_per_cell_quantiles": {
+        "0": 0.3540921021235982,
+        "0.01": 0.4520487861483108,
+        "0.05": 0.4672984362936564,
+        "0.25": 0.4903690701348766,
+        "0.5": 0.5067122800405892,
+        "0.75": 0.5262170272199698,
+        "0.95": 0.5566603510336272,
+        "0.99": 0.586558133795416,
+        "1": 0.6163928012519562
+      },
+      "top20_excluded_genes": [
+        {
+          "gene": "MT-CO3",
+          "counts": 763088,
+          "fraction_of_all_counts": 0.020263724667124384,
+          "control_cells_detected": 1999,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-CO2",
+          "counts": 558977,
+          "fraction_of_all_counts": 0.014843577704347582,
+          "control_cells_detected": 1999,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-ATP6",
+          "counts": 535411,
+          "fraction_of_all_counts": 0.014217784957632323,
+          "control_cells_detected": 1999,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-ND4",
+          "counts": 425598,
+          "fraction_of_all_counts": 0.011301711848278054,
+          "control_cells_detected": 1999,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-CO1",
+          "counts": 364620,
+          "fraction_of_all_counts": 0.009682447225125927,
+          "control_cells_detected": 1999,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-ND1",
+          "counts": 297546,
+          "fraction_of_all_counts": 0.007901303938476548,
+          "control_cells_detected": 1998,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-CYB",
+          "counts": 283386,
+          "fraction_of_all_counts": 0.007525286570510493,
+          "control_cells_detected": 1997,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPL13",
+          "counts": 276215,
+          "fraction_of_all_counts": 0.007334861390730508,
+          "control_cells_detected": 2000,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "ALB",
+          "counts": 255531,
+          "fraction_of_all_counts": 0.006785599862551843,
+          "control_cells_detected": 1941,
+          "missing_model_exact": false,
+          "missing_other_axis_exact": true,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPL11",
+          "counts": 227032,
+          "fraction_of_all_counts": 0.006028811799722421,
+          "control_cells_detected": 2000,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS2",
+          "counts": 221129,
+          "fraction_of_all_counts": 0.005872058231706629,
+          "control_cells_detected": 2000,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS12",
+          "counts": 218017,
+          "fraction_of_all_counts": 0.005789419386430473,
+          "control_cells_detected": 2000,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS18",
+          "counts": 211151,
+          "fraction_of_all_counts": 0.005607093450805125,
+          "control_cells_detected": 2000,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "APOA2",
+          "counts": 209367,
+          "fraction_of_all_counts": 0.0055597195112252204,
+          "control_cells_detected": 1995,
+          "missing_model_exact": false,
+          "missing_other_axis_exact": true,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPLP1",
+          "counts": 195967,
+          "fraction_of_all_counts": 0.005203883866398586,
+          "control_cells_detected": 1999,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS27A",
+          "counts": 169080,
+          "fraction_of_all_counts": 0.004489902300543831,
+          "control_cells_detected": 2000,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "MT-ND3",
+          "counts": 165226,
+          "fraction_of_all_counts": 0.0043875597203078725,
+          "control_cells_detected": 1996,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS19",
+          "counts": 149658,
+          "fraction_of_all_counts": 0.0039741530547361525,
+          "control_cells_detected": 1999,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPL10",
+          "counts": 149380,
+          "fraction_of_all_counts": 0.003966770792850943,
+          "control_cells_detected": 2000,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        },
+        {
+          "gene": "RPS3",
+          "counts": 149269,
+          "fraction_of_all_counts": 0.003963823199076633,
+          "control_cells_detected": 2000,
+          "missing_model_exact": true,
+          "missing_other_axis_exact": false,
+          "recoverable_by_uppercase": false
+        }
+      ],
+      "uppercase_collisions": {},
+      "library_size_quantiles_before": {
+        "0": 2963.0,
+        "0.01": 4789.64,
+        "0.05": 7220.4,
+        "0.25": 11580.0,
+        "0.5": 15510.5,
+        "0.75": 22966.75,
+        "0.95": 40734.549999999996,
+        "0.99": 61955.42,
+        "1": 125043.0
+      },
+      "library_size_quantiles_after_exact": {
+        "0": 1399.0,
+        "0.01": 2314.0,
+        "0.05": 3466.35,
+        "0.25": 5584.25,
+        "0.5": 7631.0,
+        "0.75": 11400.0,
+        "0.95": 20017.4,
+        "0.99": 31248.369999999995,
+        "1": 63255.0
+      },
+      "loss_components": {
+        "genes_in_own_axis_and_model": 6797,
+        "genes_removed_only_by_other_axis": 1618,
+        "counts_in_own_axis_and_model": 21895925,
+        "fraction_all_counts_outside_model": 0.41855592601114744,
+        "fraction_all_counts_removed_only_by_other_axis": 0.08803318087723312,
+        "fraction_model_mappable_counts_removed_only_by_other_axis": 0.15140438232228148,
+        "median_native_model_library_size": 9041.0,
+        "top20_removed_only_by_other_axis": [
+          {
+            "gene": "ALB",
+            "counts": 255531,
+            "fraction_of_all_counts": 0.006785599862551843
+          },
+          {
+            "gene": "APOA2",
+            "counts": 209367,
+            "fraction_of_all_counts": 0.0055597195112252204
+          },
+          {
+            "gene": "APOB",
+            "counts": 144664,
+            "fraction_of_all_counts": 0.003841537889791062
+          },
+          {
+            "gene": "SERPINA1",
+            "counts": 106841,
+            "fraction_of_all_counts": 0.0028371519499195853
+          },
+          {
+            "gene": "APOA1",
+            "counts": 103747,
+            "fraction_of_all_counts": 0.0027549910928230475
+          },
+          {
+            "gene": "AHSG",
+            "counts": 66654,
+            "fraction_of_all_counts": 0.0017699902291249616
+          },
+          {
+            "gene": "TF",
+            "counts": 62657,
+            "fraction_of_all_counts": 0.0016638502983509274
+          },
+          {
+            "gene": "APOH",
+            "counts": 47993,
+            "fraction_of_all_counts": 0.0012744492613555717
+          },
+          {
+            "gene": "GPC3",
+            "counts": 46628,
+            "fraction_of_all_counts": 0.001238201824401217
+          },
+          {
+            "gene": "PEG10",
+            "counts": 32579,
+            "fraction_of_all_counts": 0.0008651320502094717
+          },
+          {
+            "gene": "FN1",
+            "counts": 30969,
+            "fraction_of_all_counts": 0.0008223786630325402
+          },
+          {
+            "gene": "GPX2",
+            "counts": 28507,
+            "fraction_of_all_counts": 0.0007570005020203631
+          },
+          {
+            "gene": "DHRS2",
+            "counts": 28176,
+            "fraction_of_all_counts": 0.0007482108304951679
+          },
+          {
+            "gene": "ORM1",
+            "counts": 26205,
+            "fraction_of_all_counts": 0.0006958711248270114
+          },
+          {
+            "gene": "ORM2",
+            "counts": 25562,
+            "fraction_of_all_counts": 0.0006787963248551065
+          },
+          {
+            "gene": "APOC2",
+            "counts": 22938,
+            "fraction_of_all_counts": 0.0006091162702263686
+          },
+          {
+            "gene": "ID3",
+            "counts": 22109,
+            "fraction_of_all_counts": 0.000587102259065079
+          },
+          {
+            "gene": "KRT19",
+            "counts": 21192,
+            "fraction_of_all_counts": 0.0005627514168034354
+          },
+          {
+            "gene": "SERPINA3",
+            "counts": 20911,
+            "fraction_of_all_counts": 0.0005552894902216232
+          },
+          {
+            "gene": "CCN2",
+            "counts": 20809,
+            "fraction_of_all_counts": 0.0005525808905371219
+          }
+        ]
+      },
+      "diagnostic_extension_sha256": "0c7b5bb753478d5ec84b917bb18e03b2bc82a9fb8760f495e8478754630fdae7"
+    }
+  },
+  "extracted_control_sha256": {
+    "bundle.json": "16cf30126a7c46ec651c8ed8262b19353e1a3ab07c4dd445590a8a040e36fc29",
+    "source_00.h5ad": "616f18fe3f7b99a7239249150f67f991bfbbc48caf9d0b89d5e05520d19ee491",
+    "destination_controls.h5ad": "c989a3121caa5b96c1752c92fd811522caf60d19c994fa3e08237625adcff598"
+  },
+  "original_inference_provenance": {
+    "bundle_sha256": "16cf30126a7c46ec651c8ed8262b19353e1a3ab07c4dd445590a8a040e36fc29",
+    "adapter_sha256": "b259371df3d0d515003597c4d9ce5755c25840f0d36fc96d8ac390ffe1275508",
+    "checkpoint_sha256": "f93cf6f42f36c8a85dc570d92e801c1fc3e1f45d55741e6bb250d178a6b6ad36",
+    "genelist_sha256": "d8761dfda955b9897d3251798b72361ddd0171ef707119eaf65381bed2d85dcc"
+  },
+  "inputs": {
+    "C:\\Users\\ferra\\vcc2026-data\\interim\\kaggle_stack_prompts_r1\\bundle.tar.gz": {
+      "bytes": 31984510,
+      "sha256": "8c693c8457590edca74e626b08d7318a276c44f4b9737f5d4d4c13272814cf3e"
+    },
+    "G:\\Il mio Drive\\vcc2026\\runs\\lead_stack_infer_2026-09-29_r2\\prediction\\model_genes.pkl": {
+      "bytes": 129830,
+      "sha256": "22b0227d07ebf61aed37f3863049885911d5c178742ba40c9efc54bac5687468"
+    },
+    "G:\\Il mio Drive\\vcc2026\\runs\\lead_stack_infer_2026-09-29_r2\\prediction\\inference_manifest.json": {
+      "bytes": 1185,
+      "sha256": "e02f7cf5cbbbc9f6c759fb702867e5647a8d9a16596887d83e07b4bbae3cb7f9"
+    }
+  },
+  "script_sha256": "e20f862671de2926a3e43ae3db829b36b5ca424e56e06f63aeeba0e041e093fe"
+}

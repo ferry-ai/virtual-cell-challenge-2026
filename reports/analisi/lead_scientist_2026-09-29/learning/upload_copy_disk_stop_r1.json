@@ -1,0 +1,48 @@
+{
+  "eid": "E-20260929-007",
+  "event": "copy_stopped_by_disk_guard",
+  "claim_type": "measured_local_observation",
+  "recorded_utc": "2026-09-29T22:19:50.280529+00:00",
+  "last_completed_window_utc": "2026-09-29T22:17:55.972671+00:00",
+  "partial_bytes": 3019898880,
+  "expected_bytes": 4161126400,
+  "remaining_bytes": 1141227520,
+  "free_bytes_at_guard_failure": 591491072,
+  "required_bytes_for_next_window": 603979776,
+  "free_bytes_at_observation": 875847680,
+  "copy_lock_exists": false,
+  "final_file_exists": false,
+  "copy_complete_receipt_exists": false,
+  "copier_sha256": "730fd206f2ecb85c137756228adb1b44c42a0a749dcdc153fc7aedbcd5a00c36",
+  "partial_content_hashed_by_this_observation": false,
+  "partial_preservation_claim": "Existence and byte length observed; complete integrity will require final full SHA.",
+  "cause_scope": "The immediate stop is the explicit disk guard before opening the next source window. This does not establish the cause of the earlier OSError 22.",
+  "action_taken": "Read and record only; no resume, source change, deletion, hash of the large partial or CLI invocation.",
+  "incident_closed": false,
+  "evidence": [
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_local_copy_r1.stdout.log",
+      "sha256": "ca4fef0c8160f82b078731ac5e76efaecec25b2c6635f4f4ea65ddbb074f048e",
+      "bytes": 7856,
+      "supports": "Original copied-window records and free-space observations"
+    },
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_local_copy_r1.stderr.log",
+      "sha256": "39e2194bc75c9e6162077a0ee575e2dc8f6803b9aad2ab72651ebbd1e854c815",
+      "bytes": 1410,
+      "supports": "Original disk-guard traceback before next source read"
+    },
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_local_copy_r1.started.json",
+      "sha256": "53a304d183703a4926b8b74fdda38b86d697417ea6e9f877a342ba5ad20300f1",
+      "bytes": 391,
+      "supports": "Original worker-start receipt"
+    },
+    {
+      "path": "C:/Users/ferra/vcc2026-data/artifacts/t28_local_upload_r1/copy_state.json",
+      "sha256": "ae055dbdec4f87750efe372d6684d2f84846fc363f3785b40296e58b366364b5",
+      "bytes": 1443,
+      "supports": "Frozen source, expected full SHA/size and resume contract"
+    }
+  ]
+}

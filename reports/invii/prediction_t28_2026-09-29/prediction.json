@@ -1,0 +1,102 @@
+{
+  "written_utc": "2026-09-29T18:56:07.955500+00:00",
+  "label": "t28: t25 external effects x1.5, control-fitted gene dispersion x1",
+  "claim_type": "subjective forecast registered before full generation; no official result",
+  "references": {
+    "t25": 0.14023806091483554,
+    "t22": 0.14125049908559736,
+    "t24_best_observed": 0.14289686095002022,
+    "t22_t24_mean": 0.1420736800178088
+  },
+  "source_recipe": "configs/recipes/t25.json",
+  "source_recipe_sha256": "c74df9a994c3accc1d7bbe53ab16b0739168737cadc21bb6fff92a18499ef50a",
+  "effects": "processed/effects_t25_2026-09-27, unchanged input NPZ files",
+  "input_manifest_sha256": "18dc29195d818cbfc8cb4a5442850e4e9581b60d8cba585afad65daf85a99bae",
+  "code_archive_sha256": "f7324778e5d7225552734e2c7303353f46dee6c01e9d455703adce3b9b105860",
+  "launcher_sha256": "c73f518ee173566d6df851f79815bd11f2838ca6cb5af1e471368717d1dcccfb",
+  "generator": {
+    "stage": 45,
+    "trial": "trial-ext-profile",
+    "contexts": [
+      "A",
+      "B",
+      "C"
+    ],
+    "targets_per_context": 300,
+    "cells_per_target": 400,
+    "seed": 20260912,
+    "effects_scale": 1.5,
+    "gene_dispersion": true,
+    "gene_dispersion_scale": 1.0,
+    "depth_bins": false,
+    "scope_of_scaling": "entire saved external effect vector, including embedded own/cis terms; not only recipe amplitude",
+    "sampling": "new independent gamma-Poisson counts with empirical library-size sampling; no control-cell copies or pinned aggregate"
+  },
+  "joint_changes": "effect scale and gene dispersion, selected by prospective factorial development and disjoint confirmation; D-047; no single-factor causal attribution",
+  "confirmation": {
+    "selection_path": "reports/analisi/lead_scientist_2026-09-29/generator_confirmation_r3/confirmation/selection.json",
+    "selection_sha256": "35471a773ae2e51759d946682c3223b5a2a72f53eb03c83559c7a9e463f9c41c",
+    "analysis_sha256": "b5db2a7fd853449a49b8ee89918083bdb884d1b6c838f4a11a7c73c6191f7858",
+    "n_targets": 96,
+    "winner": {
+      "delta_projection": 0.028917710507027752,
+      "per_seed_delta": [
+        0.03425004775790016,
+        0.02337301940904806,
+        0.029130064354135024
+      ],
+      "seed_sd": 0.005441622647953365,
+      "member_contributions": {
+        "pds_cosine": -1.3616081868037943e-05,
+        "de_wilcoxon_lfc_nmae": -0.0032739876048592277,
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.028301618132541246,
+        "de_wilcoxon_direction_reach_raw": 0.007670026719944261,
+        "de_wilcoxon_sig_jaccard": -0.0037663306587304903
+      },
+      "eligible_targets_per_member": {
+        "pds_cosine": 96,
+        "de_wilcoxon_lfc_nmae": 70,
+        "de_wilcoxon_direction_fidelity_yield_raw": 96,
+        "de_wilcoxon_direction_reach_raw": 87,
+        "de_wilcoxon_sig_jaccard": 96
+      },
+      "amplitude": 1.5,
+      "phi_scale": 1.0,
+      "generator": "pooled",
+      "confidence_level": 0.975,
+      "paired_target_bootstrap_interval": [
+        0.019525634903636922,
+        0.03934189554761046
+      ],
+      "passes_confirmation": true
+    },
+    "not_vcc_score": true,
+    "ranked_first_in_development_and_confirmation": true
+  },
+  "expected": {
+    "score_avg_band": [
+      0.135,
+      0.18
+    ],
+    "working_centre": 0.155,
+    "t28_minus_t25_band": [
+      -0.00523806091483553,
+      0.03976193908516446
+    ],
+    "calibration": "Subjective planning range, not a confidence or prediction interval. Centre discounts the +0.028918 public-context gain by roughly one half; that discount has not been empirically calibrated.",
+    "members": "Directional fidelity and reach expected to improve; NMAE/Jaccard may worsen; PDS expected near unchanged. Raw MSE expected worse and its scaled value expected to remain clipped at zero."
+  },
+  "reading_rule_fixed_before_the_result": {
+    "score >= 0.14523806091483554": "Gain >=0.005 over corrected t25: adopt this combination as a promising current-panel reference; no claim of generalization to D/E/F or attribution to one factor.",
+    "score <= 0.13523806091483553": "Loss >=0.005 versus t25: reject this combination as the current recipe improvement; inspect all raw members without moving the threshold.",
+    "otherwise": "Inconclusive for the prespecified improvement claim; record any new best observed leaderboard number separately from robustness. Existing recipe remains the reference pending further evidence."
+  },
+  "risks": [
+    "One public HepG2 context, different targets and K562-only source in the bench versus four-source t25 in production.",
+    "Independent target split does not make contexts or controls independent replications.",
+    "Bootstrap is conditional on observed targets, cells, controls and three seeds; it is not cross-context uncertainty.",
+    "t28 includes no learned neural correction; neural routes are evaluated separately."
+  ],
+  "submission_authorized": false,
+  "next": "Generate and fully validate artifact, then request owner authorization for any VCC upload."
+}

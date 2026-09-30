@@ -1,0 +1,5 @@
+{
+  "utc": "2026-09-29T19:22:45.849015+00:00",
+  "traceback": "Traceback (most recent call last):\n  File \"/content/drive/MyDrive/vcc2026/runs/lead_stack_infer_setup_2026-09-29_r1/colab_stack_infer_r1.py\", line 182, in main\n    run([python, \"-c\", \"from stack.model_loading import load_model_from_checkpoint; \"\n    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n         \"from scvi.distributions import NegativeBinomial; print('Stack/scvi imports OK')\"],\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        work / \"model_imports.log\", cwd=code, env=env)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/content/drive/MyDrive/vcc2026/runs/lead_stack_infer_setup_2026-09-29_r1/colab_stack_infer_r1.py\", line 81, in run\n    raise RuntimeError(f\"Command failed with status {rc}; see {Path(log_path).name}\")\nRuntimeError: Command failed with status 1; see model_imports.log\n",
+  "status": "incomplete"
+}

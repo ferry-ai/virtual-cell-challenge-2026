@@ -1,0 +1,17 @@
+{
+  "status": "reviewable_allowlist_no_download_no_execution",
+  "code_repository": "https://github.com/ArcInstitute/stack",
+  "code_commit": "cacc2e4b09435c3e536d46237d10b50f222dd144",
+  "model_repository": "arcinstitute/Stack-Large-Aligned",
+  "model_revision": "b09f085dac03d170b078a5c72f550ae93686e544",
+  "model_files": [
+    {"path": "bc_large_aligned.ckpt", "bytes": 2613863242, "sha256": "f93cf6f42f36c8a85dc570d92e801c1fc3e1f45d55741e6bb250d178a6b6ad36"},
+    {"path": "basecount_1000per_15000max.pkl", "bytes": 925039, "sha256": "d8761dfda955b9897d3251798b72361ddd0171ef707119eaf65381bed2d85dcc"}
+  ],
+  "adapter_files": ["stack_pilot.py", "test_stack_pilot.py", "PROTOCOLLO_STACK.md", "STACK_ALLOWLIST.json", "requirements_stack.txt"],
+  "local_module_files": ["src/vcc2026/__init__.py", "src/vcc2026/sc_stream.py", "src/vcc2026/inference.py", "src/vcc2026/sampling.py", "src/vcc2026/config.py"],
+  "prepare_only_inputs": ["original_K562_singlecell.h5ad", "public_HepG2.h5ad", "plan.json", "frozen_transfer_with_observed.npz"],
+  "inference_bundle_files": ["bundle.json", "destination_controls.h5ad", "source_00.h5ad", "source_01.h5ad", "source_02.h5ad", "source_03.h5ad", "source_04.h5ad", "source_05.h5ad", "source_06.h5ad", "source_07.h5ad", "source_08.h5ad", "source_09.h5ad", "source_10.h5ad", "source_11.h5ad", "source_12.h5ad", "transfer.npz"],
+  "forbidden_in_inference_bundle": ["destination_perturbed_truth", "credentials", "other_reports", "unselected_raw_cells", "original_65GB_K562_file"],
+  "runtime_evidence_required": ["pip_freeze.txt", "inference_manifest.json", "stdout.log", "finished.json"]
+}

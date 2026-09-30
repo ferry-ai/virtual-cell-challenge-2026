@@ -1,0 +1,38 @@
+{
+  "status": "validated_in_place_not_submitted",
+  "utc": "2026-09-29T22:29:38.201531+00:00",
+  "source": "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t28_local_upload_r1\\prediction.vcc",
+  "file": {
+    "sha256": "0d70ba92d68817b46383b11c53d513a41c85329230b9ff5524ac51f7bd110b32",
+    "bytes": 4161126400,
+    "mtime_ns": 1790720897607207200,
+    "lowest_cache_volume_free_bytes_during_sha": 3971497984,
+    "cache_volume": "C:\\",
+    "reserve_bytes": 536870912
+  },
+  "generation_sha256": "123ce93f4d8d21c107215c96f726a6b7121545c1329948f431234eabce80f40e",
+  "metadata_sha256": {
+    "completion.json": "3fbb87a0f61dcb7f6c1bd6db1717b69ddf2f4a0c0f4f18d0ca54adafd707efba",
+    "transfer_verification.json": "00a69acef03d449ccd70a90f57d8c4f2c29794f23b6fe14ddc6106ee340ff08a",
+    "launch_review.json": "9664fa7d77d6f27650b3c910f15ce532d01f30fba457484b35f83568d7d89814",
+    "pack/packaging.json": "a89f39dbe1a1cef2921d64b47c5740aebdcd9dc619be26d1dbc3d299229a3834",
+    "pack/manifest_48_package_prediction.json": "a7a42b92aab86a3ccf56d6da617ef4e10ad74dccd8ef015853e73448d882ce59",
+    "gen/manifest_45_generate_prediction.json": "66154a6c7c950cb27949c62a90a5d96ae1fe459f0d636f6438c63bc35d7fc2a5",
+    "gen/generation_diagnostics.json": "ed9ec15dbbf7ecfffe12676cf493331fd4c3e8160c7f52e82d2bb163f7b50acd",
+    "stage45_checkpoint/complete.json": "1164dcaabc9ea6abb4191a27ba83035589c4db14b351d799c0b3d9d8a4cc2759"
+  },
+  "registration_sha256": "a2081b9cd615a1020a962def21eafa54d7116db79285887f56c775033d61e192",
+  "submission_texts_sha256": "6a2881e819b4450780dc5922740cbf1dd68636fc649f319589466188a8c53947",
+  "authorization_sha256": "2d57dd28f2349ec81b89b0dd2c9e3a9dfbf5ce7f66c99a76c49706296ab51f66",
+  "cli_source_shas": {
+    "submit.py": "ab648c3c78fd5f8e09bccf259283810f169edb51b24944aeb8b6f0b5539af3b5",
+    "upload.py": "4b52db387b366abfbf69a105b8010da55b3d05e932223a1f4410904f3f3a9b0e",
+    "vccfile.py": "84a3c3e2468df53758e3054edc3b601b5fbb13f73d8748e0693c1caad4773a0b"
+  },
+  "runner_sha256": "adccdd054987dcfeb5e425982d68bb9a149a6d96ce6f3001620583df3ea55ec1",
+  "model_name": "trial-28 amplified multi-source transfer with control-fitted gene dispersion",
+  "description": "The trial-25 multi-source prediction combines public K562 perturbations from Replogle et al., primary CD4+ T cells from GSE314342, and HCT116 and HEK293T from X-Atlas/Orion (Xaira, CC-BY-NC-SA-4.0), with local shrinkage, source-mean removal and a CRISPRi cis component. This model multiplies the complete saved trial-25 effect vector by 1.5 and generates new gamma-Poisson count vectors using gene-specific dispersion estimated from the destination context's control cells. Library sizes are sampled from the same controls; no control-cell vector is copied and no realized group total is fixed. The amplitude and dispersion combination was selected in a preregistered factorial benchmark on public HepG2 cells and checked on disjoint targets with three generation seeds. This public benchmark does not establish its official challenge performance. No perturbed cells of the official contexts are used. This candidate contains no neural correction.",
+  "container_copied": false,
+  "container_decompressed": false,
+  "uploaded": false
+}

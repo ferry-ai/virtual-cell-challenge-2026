@@ -1,0 +1,101 @@
+{
+  "run_id": "t28r2pack",
+  "stage": "48_package_prediction",
+  "started_utc": "2026-09-29T21:16:29.566182+00:00",
+  "finished_utc": "2026-09-29T21:16:29.750954+00:00",
+  "seed": null,
+  "config": {
+    "run_id": "t28r2pack",
+    "prediction": "/content/lead_candidate_t28r2/gen/prediction.h5ad",
+    "out": "/content/lead_candidate_t28r2/pack",
+    "vcc_name": "prediction.vcc",
+    "workdir": "/content/lead_candidate_t28r2/pack/temp",
+    "expect_sha256": "123ce93f4d8d21c107215c96f726a6b7121545c1329948f431234eabce80f40e",
+    "genes": "/content/lead_candidate_t28r2/data/raw/controls/gene_names.csv",
+    "perts": "/content/lead_candidate_t28r2/data/raw/controls/pert_counts.csv",
+    "values_per_block": "16777216",
+    "zstd_level": "3",
+    "zstd_threads": "2",
+    "reserve_gib": "6.0",
+    "contexts": "['A,B,C']",
+    "validate_only": "False",
+    "skip_verify": "False",
+    "allow_overwrite": "False"
+  },
+  "inputs": {
+    "prediction": {
+      "path": "/content/lead_candidate_t28r2/gen/prediction.h5ad",
+      "exists": true,
+      "bytes": 4213225652,
+      "mtime_utc": "2026-09-29T20:39:10.060870+00:00",
+      "sha256": "864685ff4201b4d07d392d062c3336b712cc571309c4040a1ddf61678232df80",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "genes": {
+      "path": "/content/lead_candidate_t28r2/data/raw/controls/gene_names.csv",
+      "exists": true,
+      "bytes": 119295,
+      "mtime_utc": "2026-09-29T20:06:32.392373+00:00",
+      "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "sha256_mode": "full"
+    },
+    "perturbations": {
+      "path": "/content/lead_candidate_t28r2/data/raw/controls/pert_counts.csv",
+      "exists": true,
+      "bytes": 1906,
+      "mtime_utc": "2026-09-29T20:06:32.395373+00:00",
+      "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+      "sha256_mode": "full"
+    }
+  },
+  "outputs": {
+    "report": {
+      "path": "/content/lead_candidate_t28r2/pack/packaging.json",
+      "exists": true,
+      "bytes": 7294,
+      "mtime_utc": "2026-09-29T21:16:29.565487+00:00",
+      "sha256": "a89f39dbe1a1cef2921d64b47c5740aebdcd9dc619be26d1dbc3d299229a3834",
+      "sha256_mode": "full"
+    },
+    "vcc": {
+      "path": "/content/lead_candidate_t28r2/pack/prediction.vcc",
+      "exists": true,
+      "bytes": 4161126400,
+      "mtime_utc": "2026-09-29T21:05:32.786913+00:00",
+      "sha256": "f060837cb4a4006aa309fbc71df7ccd72325a255783c3c8b38fb58a8b25ff92f",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "metrics": {
+    "exit_code": 0,
+    "nnz": 2085425466,
+    "peak_rss_bytes": 750919680,
+    "total_seconds": 2111.968748707
+  },
+  "notes": [
+    "Streaming packager: the official validators on metadata, streamed equivalents on the matrix. Not an official CLI release.",
+    "Nothing uploaded. A passing archive is not server acceptance."
+  ],
+  "environment": {
+    "python": "3.13.15",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "hostname": "7383d3cccffd",
+    "cpu_count": 2,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.4",
+      "numpy": "2.1.3",
+      "scipy": "1.16.3",
+      "pandas": "3.0.6",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.6.1",
+      "pyarrow": "23.0.1"
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "/content/lead_candidate_t28r2/data"
+    }
+  }
+}

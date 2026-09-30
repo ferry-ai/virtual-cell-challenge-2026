@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260929-002",
+  "revision": 1,
+  "previous_sha256": null,
+  "recorded_utc": "2026-09-29T21:07:21.390322+00:00",
+  "claim_type": "operational_incident",
+  "title": "Job 072: H5AD nullable non serializzabile",
+  "symptom": "RuntimeError: anndata.settings.allow_write_nullable_strings is False; pd.arrays.StringArray; error writing '_index' to /var.",
+  "cause": "La scrittura H5AD rifiutava l'indice var nullable. Completamento delle chiamate modello non significava completamento o validità dell'artefatto di predizione.",
+  "cause_verified": true,
+  "fix": "Nel wrapper di esecuzione impostare anndata.settings.allow_write_nullable_strings=True prima dell'inferenza. Lasciare immutato l'adapter scientifico. Prima dei pesi, scrivere e rileggere due piccoli H5AD con indice geni e label nullable, verificando conteggi, assi e label.",
+  "regression_test": "learning/test_preflight.py: import assente e roundtrip H5AD; Il runtime Kaggle registra due roundtrip H5AD riusciti con AnnData0.11.4, poi finished.json con12target e400cellule ciascuno e completion.json generated_no_scores. Entrambi gli H5AD esportati sono stati scaricati; i loro SHA256 sono stati ricalcolati localmente e coincidono con prediction_hashes.json remoto.",
+  "next_guard": "Il preflight deve verificare anche la serializzazione dell'esatto tipo di metadata prodotto dalla pipeline, prima della fase costosa; il completamento richiede tutti gli output attesi e il manifest finale.",
+  "scope": "Correzione tecnica verificata; non prova qualità scientifica del modello.",
+  "evidence": [
+    {
+      "path": "G:/Il mio Drive/vcc2026/runs/lead_stack_infer_2026-09-29_r2/stdout.log",
+      "bytes": 85985,
+      "sha256": "d7786df1a9f2749fe7f69058bbc85b7b886f3f13b20e5359db4bf34ffa4b6be0",
+      "supports": "072_stdout"
+    },
+    {
+      "path": "G:/Il mio Drive/vcc2026/runs/lead_stack_infer_2026-09-29_r2/failure.json",
+      "bytes": 1157,
+      "sha256": "6e2949ca53318937a55356c0ab436478feba0e170e07796dffc2ab68563f72f1",
+      "supports": "072_failure"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/kaggle_lead_monitor/r2/stack/lead_stack_r1/serialization_roundtrip.log",
+      "bytes": 270,
+      "sha256": "c9fcdb7dc5aefa3983827bca85ab9dee06e9c66260920abbf72e3acb09cc4c8e",
+      "supports": "kaggle_roundtrip"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/kaggle_lead_monitor/r2/stack/lead_stack_r1/prediction/finished.json",
+      "bytes": 3117,
+      "sha256": "6a00dfe7881bf7f9e23623a238e88e78d5d00b0ed396a2d925754059448f783f",
+      "supports": "kaggle_finished"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/kaggle_lead_monitor/r2/stack/lead_stack_r1/prediction_hashes.json",
+      "bytes": 2234,
+      "sha256": "906adc984db2f9d6039fd3d3ebde50d0b35a36d8f80609f353689d814779c7b7",
+      "supports": "kaggle_prediction_hashes"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/kaggle_lead_monitor/r2/stack/lead_stack_r1/completion.json",
+      "bytes": 274,
+      "sha256": "bd00bb8609ac39b4fa18268aa8d1ffb990cd8475e88f79defa94444ecca7b592",
+      "supports": "kaggle_completion"
+    },
+    {
+      "path": "C:/Users/ferra/vcc2026-data/interim/lead_stack_kaggle_A_r1/prediction_stack.h5ad",
+      "bytes": 45573691,
+      "sha256": "4baa9e71184fcf365a13860843a5700fdcfed245f5e7d51a212b850d6c2d1255",
+      "verification": "SHA ricalcolato sul file scaricato il29settembre2026; identico alla ricevuta remota. Dimensione dalla ricevuta remota.",
+      "supports": "prediction_stack_local"
+    },
+    {
+      "path": "C:/Users/ferra/vcc2026-data/interim/lead_stack_kaggle_A_r1/prediction_transfer.h5ad",
+      "bytes": 45681785,
+      "sha256": "0210a9ffb131ee9f0412b89b70ea4e6d9aa0ea7c39d63b2276ab86e7dbd55828",
+      "verification": "SHA ricalcolato sul file scaricato il29settembre2026; identico alla ricevuta remota. Dimensione dalla ricevuta remota.",
+      "supports": "prediction_transfer_local"
+    }
+  ],
+  "state": "verified_remotely",
+  "remote_verification": {
+    "evidence_path": "reports/analisi/lead_scientist_2026-09-29/kaggle_lead_monitor/r2/stack/lead_stack_r1/completion.json",
+    "observed_utc": "2026-09-29T20:56:57Z",
+    "criterion": "Il runtime Kaggle registra due roundtrip H5AD riusciti con AnnData0.11.4, poi finished.json con12target e400cellule ciascuno e completion.json generated_no_scores. Entrambi gli H5AD esportati sono stati scaricati; i loro SHA256 sono stati ricalcolati localmente e coincidono con prediction_hashes.json remoto."
+  }
+}

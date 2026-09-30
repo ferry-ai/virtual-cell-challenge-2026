@@ -1,0 +1,59 @@
+trial          : trial-ext-profile (external_effects)
+shape          : 300 perturbations x 400 cells x 3 contexts = 360,000 cells
+pilot          : False
+disk free      : 85.73 GiB (estimated need 4.19 GiB)
+seed           : 20260912
+
+  basal A: 18,400 cells, median UMI 20,109, median detected genes 6,147
+  basal B: 18,400 cells, median UMI 19,946, median detected genes 5,756
+  basal C: 18,400 cells, median UMI 20,034, median detected genes 6,006
+  dispersion A: 13,454 genes overdispersed, median phi 0.165
+  dispersion B: 12,962 genes overdispersed, median phi 0.135
+  dispersion C: 12,187 genes overdispersed, median phi 0.083
+effects A      : /content/lead_candidate_t28r2/data/processed/effects_t25_2026-09-27/effects_A.npz (13,964 genes observed)
+effects B      : /content/lead_candidate_t28r2/data/processed/effects_t25_2026-09-27/effects_B.npz (13,964 genes observed)
+effects C      : /content/lead_candidate_t28r2/data/processed/effects_t25_2026-09-27/effects_C.npz (13,964 genes observed)
+    A 1/300 (2s)
+    A 26/300 (57s)
+    A 51/300 (112s)
+    A 76/300 (166s)
+    A 101/300 (223s)
+    A 126/300 (277s)
+    A 151/300 (333s)
+    A 176/300 (386s)
+    A 201/300 (440s)
+    A 226/300 (497s)
+    A 251/300 (552s)
+    A 276/300 (607s)
+    B 1/300 (663s)
+    B 26/300 (713s)
+    B 51/300 (769s)
+    B 76/300 (818s)
+    B 101/300 (866s)
+    B 126/300 (915s)
+    B 151/300 (962s)
+    B 176/300 (1009s)
+    B 201/300 (1056s)
+    B 226/300 (1109s)
+    B 251/300 (1159s)
+    B 276/300 (1207s)
+    C 1/300 (1253s)
+    C 26/300 (1301s)
+    C 51/300 (1348s)
+    C 76/300 (1399s)
+    C 101/300 (1449s)
+    C 126/300 (1501s)
+    C 151/300 (1553s)
+    C 176/300 (1601s)
+    C 201/300 (1649s)
+    C 226/300 (1698s)
+    C 251/300 (1751s)
+    C 276/300 (1801s)
+
+wrote prediction.h5ad: 360,000 cells, 2,085,425,466 stored values, 4018.0 MB
+  stored per cell     : 5,793 (budget 13,194)
+  context provenance  : OK
+  runtime             : basal 20s, generation 1851s, total 1954s
+  peak RSS            : 0.63 GiB
+-> /content/lead_candidate_t28r2/gen/prediction.h5ad
+-> /content/lead_candidate_t28r2/gen/generation_diagnostics.json

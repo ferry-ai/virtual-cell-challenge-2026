@@ -1,0 +1,363 @@
+{
+  "created_utc": "2026-09-29T20:44:08.404531+00:00",
+  "not_vcc_score": true,
+  "claim_type": "additive sensitivity diagnostic; frozen promotion rule unchanged",
+  "bootstrap": {
+    "draws": 2000,
+    "seed": 20260929,
+    "unit": "same target across all contexts/families",
+    "conditional": "fixed learned predictions, measured gene support and original truth centring; these five observed families"
+  },
+  "unique_targets": 5049,
+  "target_occurrences": 6144,
+  "targets_in_multiple_contexts": 936,
+  "target_overlap_by_context": {
+    "k562": {
+      "k562": 512,
+      "k562ess": 27,
+      "viperturb": 18,
+      "cd4_Rest": 19,
+      "cd4_Stim8hr": 32,
+      "cd4_Stim48hr": 14,
+      "orion_hct116": 6,
+      "orion_hek293t": 22,
+      "kolf": 13,
+      "hipsci_fit": 22,
+      "hipsci_nonfit": 21,
+      "rpe1": 22
+    },
+    "k562ess": {
+      "k562": 27,
+      "k562ess": 512,
+      "viperturb": 18,
+      "cd4_Rest": 16,
+      "cd4_Stim8hr": 13,
+      "cd4_Stim48hr": 16,
+      "orion_hct116": 10,
+      "orion_hek293t": 12,
+      "kolf": 11,
+      "hipsci_fit": 72,
+      "hipsci_nonfit": 15,
+      "rpe1": 107
+    },
+    "viperturb": {
+      "k562": 18,
+      "k562ess": 18,
+      "viperturb": 512,
+      "cd4_Rest": 13,
+      "cd4_Stim8hr": 12,
+      "cd4_Stim48hr": 12,
+      "orion_hct116": 16,
+      "orion_hek293t": 15,
+      "kolf": 14,
+      "hipsci_fit": 15,
+      "hipsci_nonfit": 12,
+      "rpe1": 18
+    },
+    "cd4_Rest": {
+      "k562": 19,
+      "k562ess": 16,
+      "viperturb": 13,
+      "cd4_Rest": 512,
+      "cd4_Stim8hr": 22,
+      "cd4_Stim48hr": 23,
+      "orion_hct116": 17,
+      "orion_hek293t": 17,
+      "kolf": 19,
+      "hipsci_fit": 16,
+      "hipsci_nonfit": 17,
+      "rpe1": 29
+    },
+    "cd4_Stim8hr": {
+      "k562": 32,
+      "k562ess": 13,
+      "viperturb": 12,
+      "cd4_Rest": 22,
+      "cd4_Stim8hr": 512,
+      "cd4_Stim48hr": 19,
+      "orion_hct116": 15,
+      "orion_hek293t": 18,
+      "kolf": 15,
+      "hipsci_fit": 13,
+      "hipsci_nonfit": 14,
+      "rpe1": 19
+    },
+    "cd4_Stim48hr": {
+      "k562": 14,
+      "k562ess": 16,
+      "viperturb": 12,
+      "cd4_Rest": 23,
+      "cd4_Stim8hr": 19,
+      "cd4_Stim48hr": 512,
+      "orion_hct116": 9,
+      "orion_hek293t": 19,
+      "kolf": 22,
+      "hipsci_fit": 15,
+      "hipsci_nonfit": 17,
+      "rpe1": 21
+    },
+    "orion_hct116": {
+      "k562": 6,
+      "k562ess": 10,
+      "viperturb": 16,
+      "cd4_Rest": 17,
+      "cd4_Stim8hr": 15,
+      "cd4_Stim48hr": 9,
+      "orion_hct116": 512,
+      "orion_hek293t": 17,
+      "kolf": 16,
+      "hipsci_fit": 13,
+      "hipsci_nonfit": 13,
+      "rpe1": 10
+    },
+    "orion_hek293t": {
+      "k562": 22,
+      "k562ess": 12,
+      "viperturb": 15,
+      "cd4_Rest": 17,
+      "cd4_Stim8hr": 18,
+      "cd4_Stim48hr": 19,
+      "orion_hct116": 17,
+      "orion_hek293t": 512,
+      "kolf": 15,
+      "hipsci_fit": 11,
+      "hipsci_nonfit": 14,
+      "rpe1": 15
+    },
+    "kolf": {
+      "k562": 13,
+      "k562ess": 11,
+      "viperturb": 14,
+      "cd4_Rest": 19,
+      "cd4_Stim8hr": 15,
+      "cd4_Stim48hr": 22,
+      "orion_hct116": 16,
+      "orion_hek293t": 15,
+      "kolf": 512,
+      "hipsci_fit": 22,
+      "hipsci_nonfit": 8,
+      "rpe1": 20
+    },
+    "hipsci_fit": {
+      "k562": 22,
+      "k562ess": 72,
+      "viperturb": 15,
+      "cd4_Rest": 16,
+      "cd4_Stim8hr": 13,
+      "cd4_Stim48hr": 15,
+      "orion_hct116": 13,
+      "orion_hek293t": 11,
+      "kolf": 22,
+      "hipsci_fit": 512,
+      "hipsci_nonfit": 0,
+      "rpe1": 70
+    },
+    "hipsci_nonfit": {
+      "k562": 21,
+      "k562ess": 15,
+      "viperturb": 12,
+      "cd4_Rest": 17,
+      "cd4_Stim8hr": 14,
+      "cd4_Stim48hr": 17,
+      "orion_hct116": 13,
+      "orion_hek293t": 14,
+      "kolf": 8,
+      "hipsci_fit": 0,
+      "hipsci_nonfit": 512,
+      "rpe1": 18
+    },
+    "rpe1": {
+      "k562": 22,
+      "k562ess": 107,
+      "viperturb": 18,
+      "cd4_Rest": 29,
+      "cd4_Stim8hr": 19,
+      "cd4_Stim48hr": 21,
+      "orion_hct116": 10,
+      "orion_hek293t": 15,
+      "kolf": 20,
+      "hipsci_fit": 70,
+      "hipsci_nonfit": 18,
+      "rpe1": 512
+    }
+  },
+  "contexts": {
+    "k562": {
+      "prediction_sha256": "495279c8d680c9ee9faa5bfd343cac90b45f23ef3373357624c2dde6551acfac",
+      "common_genes": 7069,
+      "targets": 512,
+      "original_rank_reproduced": true
+    },
+    "k562ess": {
+      "prediction_sha256": "b021b2cb64c8f21e949fb5b981a2506d7c98fe49174fc97a2c21d24975acf143",
+      "common_genes": 7282,
+      "targets": 512,
+      "original_rank_reproduced": true
+    },
+    "viperturb": {
+      "prediction_sha256": "49a4b6e5726bb42de3b7f177ee9a339ac9a71c0dcfaea5d095e0ea56df2944f0",
+      "common_genes": 7906,
+      "targets": 512,
+      "original_rank_reproduced": true
+    },
+    "cd4_Rest": {
+      "prediction_sha256": "17d9d167ac1c608140553b8924cbeda1230bad508a121d2e7b79603d93ce03c4",
+      "common_genes": 7119,
+      "targets": 512,
+      "original_rank_reproduced": true
+    },
+    "cd4_Stim8hr": {
+      "prediction_sha256": "2ef7fc99ae4d2486347e014f78316d0256b057041b3207ac45aa29b129596aac",
+      "common_genes": 7562,
+      "targets": 512,
+      "original_rank_reproduced": true
+    },
+    "cd4_Stim48hr": {
+      "prediction_sha256": "c76e2f6e70876d0a902bedd4453012dfe49f6e95628992fa5c2492e15db34ca8",
+      "common_genes": 7956,
+      "targets": 512,
+      "original_rank_reproduced": true
+    },
+    "orion_hct116": {
+      "prediction_sha256": "771e60635e021ec769bdd1ad6d49085b9d220e0245004d754c876aeb94819efc",
+      "common_genes": 8869,
+      "targets": 512,
+      "original_rank_reproduced": true
+    },
+    "orion_hek293t": {
+      "prediction_sha256": "ba505ef56e039347f183842f36bafee8abed4f4a9e0f8f2d225c60d3e97da940",
+      "common_genes": 9115,
+      "targets": 512,
+      "original_rank_reproduced": true
+    },
+    "kolf": {
+      "prediction_sha256": "85044409121582c1dfc4c491fb2b5a6781ee91723a1dfac9db601a04459167fa",
+      "common_genes": 6530,
+      "targets": 512,
+      "original_rank_reproduced": true
+    },
+    "hipsci_fit": {
+      "prediction_sha256": "38c04b6c47b746cd2d13556679db17709ade341d3bd6af69596f785d2edafedc",
+      "common_genes": 9066,
+      "targets": 512,
+      "original_rank_reproduced": true
+    },
+    "hipsci_nonfit": {
+      "prediction_sha256": "6a47372bcd9a92da972edc9ed03887ce2298a510a7eb8d489e34a2fb0c8e4205",
+      "common_genes": 9072,
+      "targets": 512,
+      "original_rank_reproduced": true
+    },
+    "rpe1": {
+      "prediction_sha256": "9abf54066027f2711fa4613984c5fa71c89620ef26f1d86eed6ba6863770ce8f",
+      "common_genes": 7631,
+      "targets": 512,
+      "original_rank_reproduced": true
+    }
+  },
+  "contrasts": {
+    "transfer": {
+      "macro_family_delta": 0.002458542278212655,
+      "per_context": {
+        "k562": -0.0066887842465753414,
+        "k562ess": -0.015861974070450095,
+        "viperturb": 0.0013759784735812106,
+        "cd4_Rest": 0.004468107876712327,
+        "cd4_Stim8hr": 0.005660622553816048,
+        "cd4_Stim48hr": 0.00579057607632094,
+        "orion_hct116": -0.0012230919765166333,
+        "orion_hek293t": -0.0032526602250489297,
+        "kolf": 0.00027901785714285875,
+        "hipsci_fit": 0.006795804794520544,
+        "hipsci_nonfit": 0.0025455601761252464,
+        "rpe1": 0.013075617661448142
+      },
+      "cluster_recalculated_pds_ci95": [
+        0.0005636737218134404,
+        0.0042940765575794
+      ],
+      "cluster_fixed_rank_ci95": [
+        0.0004493983006194192,
+        0.0043861849163588235
+      ]
+    },
+    "blind": {
+      "macro_family_delta": 0.0007422639432485322,
+      "per_context": {
+        "k562": 0.00021404109589041268,
+        "k562ess": 0.006921936154598825,
+        "viperturb": -0.00025608488258317057,
+        "cd4_Rest": 3.0577299412915416e-05,
+        "cd4_Stim8hr": 0.0002599070450097869,
+        "cd4_Stim48hr": -3.439946183953087e-05,
+        "orion_hct116": -0.003776296477495108,
+        "orion_hek293t": -0.002278008806262232,
+        "kolf": -0.0009478962818003898,
+        "hipsci_fit": 0.0008408757338551843,
+        "hipsci_nonfit": -0.0008026541095890402,
+        "rpe1": 0.004663038160469666
+      },
+      "cluster_recalculated_pds_ci95": [
+        -8.975925866012281e-05,
+        0.0015300284359326276
+      ],
+      "cluster_fixed_rank_ci95": [
+        -7.370531448482411e-05,
+        0.0015341986572657601
+      ]
+    }
+  },
+  "provenance_guard": {
+    "verified": true,
+    "families": {
+      "k562": {
+        "targets_per_context": {
+          "k562": 512,
+          "k562ess": 512,
+          "viperturb": 512
+        },
+        "test_rows": 1536,
+        "validation_family": "orion"
+      },
+      "cd4": {
+        "targets_per_context": {
+          "cd4_Rest": 512,
+          "cd4_Stim8hr": 512,
+          "cd4_Stim48hr": 512
+        },
+        "test_rows": 1536,
+        "validation_family": "k562"
+      },
+      "orion": {
+        "targets_per_context": {
+          "orion_hct116": 512,
+          "orion_hek293t": 512
+        },
+        "test_rows": 1024,
+        "validation_family": "k562"
+      },
+      "ipsc": {
+        "targets_per_context": {
+          "kolf": 512,
+          "hipsci_fit": 512,
+          "hipsci_nonfit": 512
+        },
+        "test_rows": 1536,
+        "validation_family": "orion"
+      },
+      "rpe1": {
+        "targets_per_context": {
+          "rpe1": 512
+        },
+        "test_rows": 512,
+        "validation_family": "orion"
+      }
+    },
+    "large_arrays_rehashed": false,
+    "limitation": "Compares recorded input identities and row disjointness. Large effect arrays remain identified by size and their dataset manifest, not independently rehashed here.",
+    "outcomes_read_for_model_selection": false,
+    "scientific_verdict": "Use the frozen readout next; provenance alone proves no improvement."
+  },
+  "code_sha256": "4413ad2662b6315c9f08c396a766ba6d9d4fa066d22ad5661b06226eb416c1e9",
+  "large_arrays_rehashed": false
+}

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\lead_scientist_2026-09-29\candidate_generation_remote\recovery_r2\copy_t28_chunked.py", line 171, in <module>
+    main()
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\lead_scientist_2026-09-29\candidate_generation_remote\recovery_r2\copy_t28_chunked.py", line 142, in main
+    verified = copy_payload(src, partial, SIZE, SHA, original, volume)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\lead_scientist_2026-09-29\candidate_generation_remote\recovery_r2\copy_t28_chunked.py", line 76, in copy_payload
+    buffer = read_window(source, offset, size, volume, reserve, opener=opener)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\lead_scientist_2026-09-29\candidate_generation_remote\recovery_r2\copy_t28_chunked.py", line 46, in read_window
+    disk_guard(volume, reserve+size)
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\lead_scientist_2026-09-29\candidate_generation_remote\recovery_r2\copy_t28_chunked.py", line 31, in disk_guard
+    raise OSError(f'Insufficient free disk: {free} bytes; need {required}')
+OSError: Insufficient free disk: 591491072 bytes; need 603979776

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260929-006",
+  "revision": 2,
+  "previous_sha256": "1afb2d7f61f7c72b007c060b3c359e5f83ce45e1fe32bf557806a05c53567df3",
+  "recorded_utc": "2026-09-29T21:56:36.125680+00:00",
+  "claim_type": "operational_incident",
+  "state": "verified_remotely",
+  "title": "Selettore A/B: uguaglianza esatta rifiuta una differenza numerica di11ULP",
+  "symptom": "Il selettore congelato rifiuta transferSETD1A/NMAE; nessun manifest di selezione scritto.",
+  "cause": "Misurata discrepanza1.2212453270876722e-15 su105valori, con6aggregati identici. Origine specifica dei11ULP ancora ignota; riduzioni/join paralleli plausibili, non dimostrati.",
+  "cause_verified": false,
+  "fix": "Preparato un solo job085 sequenziale conhashseed0 e thread1,stessiinput/scorer/versioni; il selettore esatto rimane immutato.",
+  "regression_test": "test_stack_numerical_incident.py riproduce il fallimento reale;3testpacket085 e bash-n verificano solo il setup. La fixture Polars locale non riproduce variazione nei valori.",
+  "next_guard": "Fissare thread/versioni prima import e misurare parita numerica ripetuta prima di pretendere baseline bit-identica. Non ampliare tolleranze dopo risultati senza prova e preregistrazione distinta.",
+  "scope": "085 remoto completa entrambi gli score; baselineCSV byte-identici, selettore invariato completa e sceglie nessun candidato. Causa specifica11ULP ancora non attribuita; nessuna conferma o nuovo job.",
+  "evidence": [
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_ab_selector_attempt1.json",
+      "sha256": "e66ca818bd6f9a398bd823d5f22f760c253a03a1da6a195077e060998aa4fae0",
+      "bytes": 935,
+      "supports": "Ricostruzione del lead dal risultato tool9431; non un file stdout originale"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_ab_numerical_diagnostic_r1/csv_difference.json",
+      "sha256": "2ba0ff3eef78192f85837f809e33dbf182d856f93a59fdb868eda89eb20642cd",
+      "bytes": 1340,
+      "supports": "Una differenza reale11ULP su105valori; aggregati/config/versioni uguali"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_ab_numerical_diagnostic_r1/polars_probe.json",
+      "sha256": "4ab398f77c24b19ce019eb0a381238eeb03e3a5bc3a26ef390d18b9e4735609b",
+      "bytes": 2524,
+      "supports": "Fixture locale cambia ordine gruppi con piu thread ma non valori; causa esatta non dimostrata"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/test_stack_numerical_incident.py",
+      "sha256": "a5e3d11d87294bf1aa6ac7697ecce6715c0de6281023ca31836e413388e9315e",
+      "bytes": 1151,
+      "supports": "Riproduce il rifiuto del selettore leggendo i CSV completi originali"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/EMENDAMENTO_NUMERICO_STACK_AB_01.md",
+      "sha256": "e61a3416d1f202645859411bdba7bfab0497e1c58b15331f9f2b8470fa148d33",
+      "bytes": 2972,
+      "supports": "Singolo ricontrollo sequenziale fissato, soglie e selector invariati"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_paired_scoring_setup_r1/review.json",
+      "sha256": "271d1f1571d58f8c14902f40b8bdb36c9182e41f5fd5547396a15f02ddd1d411",
+      "bytes": 1026,
+      "supports": "085preparato coninput/codice congelati e pinversioni; nessuna esecuzione attestata"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/test_stack_paired_rescore.py",
+      "sha256": "ab442e8df659c8043836d8072a9a75e7bc963a1a63c91916a546b22d9eac6fb3",
+      "bytes": 4165,
+      "supports": "Controlli equivalenza codice/input, preflight e sequenzialita del pacchetto"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_paired_scoring_results_r1/collection.json",
+      "sha256": "c08de3158b9dde005c4da7acfbd099df6143b90b84608f7b5c2d9896c7336834",
+      "bytes": 6392,
+      "supports": "085rc0 e22report originali copiati conhash"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_ab_selection_r2/selection_manifest.json",
+      "sha256": "cd15882b15884bfeb19958c321041fd525cd87cc72ebac90ff1303e4c94e9aee",
+      "bytes": 8434,
+      "supports": "Selettore congelato completa conbaseline esatta e nessun candidato"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_ab_numerical_diagnostic_r2/verification.json",
+      "sha256": "732b0f405fc139ffe34b6fa1a29932341d6c63cefb6c59a4fa12c0f56066d542",
+      "bytes": 1135,
+      "supports": "Delta primari invariati rispetto originali, dettagli differenze numeriche"
+    }
+  ],
+  "remote_verification": {
+    "evidence_path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_ab_numerical_diagnostic_r2/verification.json",
+    "observed_utc": "2026-09-29T21:56:36.125680+00:00",
+    "criterion": "085rc0; stessiinput/scorer/versioni; baselineA/B byte-identica; selectorfrozenrc0 senza tolleranza ampliata"
+  }
+}

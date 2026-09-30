@@ -1,0 +1,30 @@
+{
+  "status": "prepared_not_published_not_queued",
+  "snapshot_sha256": "6e216f900a606656c182bb7f520e351bb7805358a0e2943a226ce3a105071dcb",
+  "manifest_sha256": "dbc16fa15b37fb8601b0a4c63c12df50bf6b2ed1f426e321d02091ae5289f32b",
+  "amendment_sha256": "e61a3416d1f202645859411bdba7bfab0497e1c58b15331f9f2b8470fa148d33",
+  "launcher_sha256": "79c6ee1249fee7c31119a3e99c05d49ca21ee3e25dedb48ce6399c64b4ad150d",
+  "input_count": 15,
+  "runtime_versions": {
+    "cell-eval2": "0.16.0",
+    "scanpy": "1.12.4",
+    "numpy": "2.1.3",
+    "scipy": "1.16.3",
+    "pandas": "3.0.6",
+    "anndata": "0.13.4",
+    "h5py": "3.16.0",
+    "polars": "1.35.2",
+    "numba": "0.61.2",
+    "numexpr": "2.14.2"
+  },
+  "thread_settings": {
+    "PYTHONHASHSEED": "0",
+    "POLARS_MAX_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "NUMBA_NUM_THREADS": "1"
+  },
+  "changes": "Thread settings and newoutput paths only; scientific code and data unchanged"
+}

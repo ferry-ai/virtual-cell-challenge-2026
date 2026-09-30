@@ -1,0 +1,51 @@
+{
+  "verified": true,
+  "families": {
+    "k562": {
+      "targets_per_context": {
+        "k562": 512,
+        "k562ess": 512,
+        "viperturb": 512
+      },
+      "test_rows": 1536,
+      "validation_family": "orion"
+    },
+    "cd4": {
+      "targets_per_context": {
+        "cd4_Rest": 512,
+        "cd4_Stim8hr": 512,
+        "cd4_Stim48hr": 512
+      },
+      "test_rows": 1536,
+      "validation_family": "k562"
+    },
+    "orion": {
+      "targets_per_context": {
+        "orion_hct116": 512,
+        "orion_hek293t": 512
+      },
+      "test_rows": 1024,
+      "validation_family": "k562"
+    },
+    "ipsc": {
+      "targets_per_context": {
+        "kolf": 512,
+        "hipsci_fit": 512,
+        "hipsci_nonfit": 512
+      },
+      "test_rows": 1536,
+      "validation_family": "orion"
+    },
+    "rpe1": {
+      "targets_per_context": {
+        "rpe1": 512
+      },
+      "test_rows": 512,
+      "validation_family": "orion"
+    }
+  },
+  "large_arrays_rehashed": false,
+  "limitation": "Compares recorded input identities and row disjointness. Large effect arrays remain identified by size and their dataset manifest, not independently rehashed here.",
+  "outcomes_read_for_model_selection": false,
+  "scientific_verdict": "Use the frozen readout next; provenance alone proves no improvement."
+}

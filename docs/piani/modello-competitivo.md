@@ -1,0 +1,38 @@
+# R-COMP — costruire e verificare un modello competitivo
+
+- **Stato:** aperto; esperimenti attuali conclusi, passi successivi proposti e non avviati.
+- **Aggiornato:** 30 settembre 2026, dopo il risultato ufficiale t28.
+- **Mandato:** richiesta del proprietario di rendere visibile il piano e usare sistematicamente dati, biologia e modelli neurali, verificando la credibilità dei punteggi.
+- **Assegnazione:** regia, invio t28 e decisioni sui job: Codex lead, chat `01a0ee03-b357-7012-81a9-e8d7de767478`; questa scheda e audit di calibrazione: sottoagente `audit_generatore`. Dataset: audit già prodotto da `audit_dati`; chiusura Stack: `audit_scientifico`. I nuovi training vanno assegnati per file e output prima del lancio; gli incarichi Claude in [R-REV](revisione-critica.md) e [R-V2](modello-v2.md) restano validi.
+- **Prossimo passo:** riconciliare l'inventario di training e progettare una riserva davvero indipendente (passo 2). T28 è pubblicato: nuovo massimo osservato ma miglioramento non conclusivo secondo la regola congelata, [CP-0052](../checkpoints/0052-t28-punteggio-ufficiale.md). Stack è chiuso senza candidati: [CP-0051](../checkpoints/0051-stack-ab-negativi.md). Nessun nuovo training o invio avviato dal seguito notturno.
+- **Dipendenze:** [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), [preflight dei job](../ERRORI.md), [procedure](../LAVORO.md). Riutilizzare le autorizzazioni già date nella sessione; questa scheda non avvia automazioni né implica un push pubblico.
+
+## Punto di partenza verificato
+
+La [copertura effettiva](../../reports/analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md) distingue acquisizione, trasformazione e training: la produzione usa quattro tabelle di effetti; la rete r2 usa un pool di 108.586 righe CRISPRi aggregate, dodici contesti e cinque famiglie, **non tutte le cellule acquisite**. Diciannove universi HIPSCI per linea, già materializzati, non sono entrati in r2; sono genotipi iPSC dello stesso studio, non diciannove tessuti indipendenti. Nessuna motivazione predittiva della loro omissione è stata dimostrata.
+
+L'[audit degli score](../../reports/analisi/lead_scientist_2026-09-29/SCORE_CREDIBILITA.md) conferma l'aritmetica del banco generatore ma precisa che 95/96 target della conferma erano già valutati nello storico; le ancore aggregate non convertono esattamente i grezzi nei punteggi pubblicati. La rete e Stack restano esperimenti distinti: nessun fallimento precedente vieta un nuovo modello, nessun proxy lo promuove automaticamente. Correzione: [CP-0050](../checkpoints/0050-credibilita-score-e-riserva.md).
+
+## Ordine operativo e prove per avanzare
+
+| Passo | Azione concreta e artefatto | Criterio per avanzare |
+|---|---|---|
+| **1. Chiuso: prove attuali** | T28: status completo, sei membri e confronto congelato in [CP-0052](../checkpoints/0052-t28-punteggio-ufficiale.md); Stack: ricalcolo e selettore originale in CP-0051 | Integrità superata; t28 non conclusivo, Stack senza candidati. Soglie invariate e ricetta di riferimento conservata |
+| **2. Congelare dati e riserva** | Manifest unico: dataset → file/checksum → unità/mask → linea, donatore, studio, modalità → righe realmente usate. Integrare o motivare ogni universo disponibile, iniziando dai 19 HIPSCI. Inventario degli outcome già valutati | Nessun file ambiguo, nessuna risposta assente trasformata in zero. Riserva per studio/linea e target con storia verificata: un nuovo shuffle HepG2 non basta. Se non esiste, acquisirne una compatibile prima di rivendicare conferma |
+| **3. Costruire input biologici verificabili** | Basali dai soli controlli, unità e denominatori sull'asse dichiarato; target descritti da sequenza/funzione/complessi/reti con provenienza congelata. Mantenere sorgenti, SE, guide e metadati separati | Test di assi, alias, missing-mask e parità dei basali. Nessun outcome del test nei centri, feature, vicini, selezione geni o parametri. Annotazioni non equivalgono a nuovi schermi perturbativi |
+| **4. Addestrare su più contesti e target** | Nuovo candidato neurale con encoder di contesto, encoder del target e programmi genici; interazioni fra sorgenti e programmi, perdita mascherata e incertezza. Confronto semplice con identici input. Registrare righe/batch usati, seed e checkpoint | Validation annidata per famiglie; C, T e soprattutto J separati. In T/J il target e i suoi derivati sono esclusi da tutte le sorgenti. Iperparametri e arresto scelti soltanto nella validation |
+| **5. Collegare effetti, cellule e sei metriche** | Esportare profili attesi; generare 400 cellule indipendenti per target con lo stesso sampler per tutti i modelli. Scorer reale, output per target, coorti e componenti MSE. Ancore locali indipendenti per contesto, oppure sei grezzi senza falso score completo | Assi, target e popolazioni eleggibili identici; MSE rapporto di somme; nessuna media con membri mancanti. Separare controlli per input e valutazione quando i dati lo consentono. PDS confrontata sullo stesso pannello |
+| **6. Confermare un solo candidato** | Congelare prima degli esiti lista test, metriche, tre seed, bootstrap per gruppi, molteplicità e fallback. Confrontare modello completo, transfer compatibile, modello semplice, rete cieca al contesto e prior biologici permutati | Proposta di gate da congelare nel nuovo protocollo: delta macro sui sei membri locali ≥0,005, positivo in tutti i tre seed, limite inferiore CI95% appaiato >0; delta PDS medio non negativo. Con più finalisti, correggere la molteplicità. J principale; C/T diagnostici, senza target nascosti concessi al transfer |
+| **7. Preparare la produzione** | Solo dopo il gate: refit completo con passi già scelti, maschere/fallback espliciti, generazione, convalida, hash completo, registrazione e invio | Parità del percorso banco/produzione, copertura dichiarata e preflight PASS locale/remoto. Il vantaggio ufficiale si decide soltanto dallo status pubblicato |
+
+## Ipotesi da isolare, senza confonderle
+
+**Più dati:** confronto con/senza nuovi contesti sullo stesso test e budget dichiarato; contare studi e famiglie, non solo cellule. KO e CRISPRa possono entrare in una variante con modalità esplicita, non essere sommati tacitamente a CRISPRi. CD4 è già Flex: l'ipotesi da provare riguarda stato, qualità e studio, non l'assenza totale di quella piattaforma ([audit dati](../../reports/analisi/lead_scientist_2026-09-29/AUDIT_DATI.md)).
+
+**Biologia e capacità:** togliere o permutare separatamente descrittori del target, contesto e relazioni; verificare guadagni su target nuovi e gruppi funzionali definiti prima degli esiti. Aumentare i parametri è una scelta sperimentale, non una prova di progresso. Le differenze di knockdown, studio e profondità vanno modellate o stratificate, senza attribuirle automaticamente a programmi biologici.
+
+**Generazione:** provare ampiezza e dispersione con confronti fattoriali congelati; il miglioramento di una rete non deve essere un cambio occulto del generatore. I checkpoint preaddestrati sono un'alternativa con provenienza e contaminazione del test dichiarate, non una scorciatoia per rivendicare un holdout pulito.
+
+## Chiusura e alternative
+
+La scheda si chiude con manifest del modello e dati, confronto indipendente completo contro le ablazioni, artefatto convalidato e risultato ufficiale letto con regola prefissata; un esito negativo resta un risultato. Se manca una riserva intatta, proseguire come sviluppo esplorativo e procurare un nuovo test. Se la rete non supera il gate, mantenere il transfer validato e registrare una diversa ipotesi prima di nuovi esiti. Nessuna promessa di punteggio o durata.

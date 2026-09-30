@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260929-007",
+  "revision": 2,
+  "previous_sha256": "82a58942b3dbb33748df56d2b1a9e2c1858197cb937ad20e21501733984e9ad6",
+  "recorded_utc": "2026-09-29T22:07:18.859495+00:00",
+  "claim_type": "operational_incident",
+  "state": "implemented",
+  "title": "T28: lettura Drive fallita durante SHA prima della CLI di invio",
+  "symptom": "Il worker avviato alle 21:53:30 UTC termina con OSError 22 in f.read(8 MiB), durante il nuovo hash completo. Ultimo avanzamento registrato: 256 MiB. Non esistono directory del tentativo o submission_started.json.",
+  "cause": "Errore I/O di lettura dal percorso montato G: documentato. La causa precisa nel filesystem Drive, cache o handle non è verificata. Un hash completo precedente era riuscito alle 21:42:04 UTC e non garantisce la riuscita di una nuova lettura.",
+  "cause_verified": false,
+  "fix": "Copier congelato: finestre da 64 MiB, letture da 8 MiB, handle richiuso a ogni finestra, massimo tre retry I/O aggiuntivi, partial conservato e ripresa esplicita. Budget disco, hash e dimensione finali sul file locale prima della promozione; runner di invio invariato.",
+  "regression_test": "Quattro fixture sono presenti: retry di una finestra senza append parziale; retry limitati con partial intatto; hash errato senza promozione; guardia disco e identità della sorgente. Questa revisione registra codice e contratto: non attribuisce ai file un esito di esecuzione.",
+  "next_guard": "Prima della CLI verificare il contenitore nel percorso realmente usato per l'upload. Per file montati remoti, prevedere ripresa di lettura e copia su volume stabile con spazio esplicito; una vecchia ricevuta SHA non prova disponibilità futura.",
+  "scope": "Implementazione disponibile. Nessuna copia reale completata o upload è attestato in questa revisione; la chiusura richiede local_copy_complete.json con hash e dimensione esatti, seguita dalla validazione nel percorso reale usato dalla CLI.",
+  "evidence": [
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_direct_attempt_r1.worker_started.json",
+      "sha256": "25b7bfce1eabf7abc38987cd6c2a6fc69bbcf4d09abfbd0a5a28bbaf77313b24",
+      "bytes": 720,
+      "supports": "Ricevuta originale di avvio worker e hash del runner"
+    },
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_direct_attempt_r1.worker_stdout.log",
+      "sha256": "c381f2a914b1a0d8360a8d297466168a4f92ac3ac279533c17d2c32415eae86c",
+      "bytes": 112,
+      "supports": "Ultimo avanzamento di hashing effettivamente registrato, non byte esatti al guasto"
+    },
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_direct_attempt_r1.worker_stderr.log",
+      "sha256": "663807c18aac17906e64144f6a52bd991eca353e99f1aded063a768169568e80",
+      "bytes": 1484,
+      "supports": "Traceback originale: errore durante validazione, prima di submit"
+    },
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_in_place_validation_r1/validation.json",
+      "sha256": "d19e118a0258fcccc96f0758f1f6db12528c280b96f870f26e99e6e6119117d3",
+      "bytes": 3262,
+      "supports": "Hash completo precedente riuscito; uploaded=false"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/direct_t28_submission.py",
+      "sha256": "adccdd054987dcfeb5e425982d68bb9a149a6d96ce6f3001620583df3ea55ec1",
+      "bytes": 13637,
+      "supports": "validate viene chiamato prima di submit e crea output solo dopo la lettura completa"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/learning/upload_read_failure_observation_r1.json",
+      "sha256": "7b5ce0d20a3068db9d4b2ec7d7e6609f9ce4fa06b46664f323f3adb2055edbc7",
+      "bytes": 617,
+      "supports": "Osservazione locale di assenza output e marker di invio"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/copy_t28_chunked.py",
+      "sha256": "730fd206f2ecb85c137756228adb1b44c42a0a749dcdc153fc7aedbcd5a00c36",
+      "bytes": 8280,
+      "supports": "Codice congelato della correzione o della fixture; non ricevuta di esecuzione reale"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/test_copy_t28_chunked.py",
+      "sha256": "fcb09043301a3a3e0cbc3dbd79916f9b9a8bfe241d8a06b30ae6ae9f0175e0cf",
+      "bytes": 3778,
+      "supports": "Codice congelato della correzione o della fixture; non ricevuta di esecuzione reale"
+    }
+  ],
+  "remote_verification": null
+}

@@ -49,6 +49,15 @@ $D = "C:\Users\ferra\vcc2026-data"
 I manifest di ogni stadio stanno accanto all'output (`manifest.json`); quelli degli invii si
 copiano in `reports/invii/trial_<data>/`, come `t11_manifest_45.json` e `t11_manifest_48.json`.
 
+Lo stadio 45 conserva Poisson come comportamento predefinito. Con `--gene-dispersion`,
+`--gene-dispersion-scale` moltiplica la dispersione stimata sui controlli (1 mantiene la
+stima, 0 torna a Poisson). L'alternativa sperimentale `--depth-bins` apprende dai controlli
+la composizione condizionata sulla profondità, poi calibra i profili dei gruppi sul profilo
+pooled richiesto; non si combina con le opzioni di dispersione. Le diagnostiche registrano
+la scelta dei quantili, la convergenza e gli eventuali limiti applicati ai conteggi.
+Implementazione e prove: `reports/analisi/lead_scientist_2026-09-29/`; l'esistenza di queste
+opzioni non ne dimostra un vantaggio sul punteggio.
+
 ## 2. Le regole dell'invio
 
 Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
@@ -61,8 +70,10 @@ Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
    Anche i testi della sottomissione si scrivono prima, in
    `reports/invii/trial_<data>/submission_texts.md`. La soglia non si sposta dopo aver visto il
    numero ([CP-0030](checkpoints/0030-t10-attribuzione-cd4.md)).
-2. **Un fattore alla volta** rispetto al migliore. È ciò che ha reso leggibili t08, t10 e
-   t11.
+2. **Un fattore alla volta per attribuire un effetto.** Per scegliere un candidato sono
+   ammesse modifiche congiunte dopo un banco fattoriale preregistrato e una conferma
+   separata con soglie congelate ([D-047](DECISIONI.md#d-047--le-interazioni-richiedono-confronti-congiunti)).
+   L'eventuale invio misura allora il pacchetto, senza attribuire il risultato a un solo fattore.
 3. **L'invio consuma quota:** 2 al giorno, uno solo in volo per squadra. Serve
    l'autorizzazione del proprietario, data in chat. Quelle già ricevute sono trascritte in
    `reports/invii/trial_2026-09-22/autorizzazioni.md`: leggile, ma un agente nuovo le conferma
@@ -95,7 +106,12 @@ Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
    - un checkpoint (`python scripts/30_new_checkpoint.py`);
    - la mappa aggiornata.
 
-   I grezzi si convertono negli scalati con le ancore in `reports/gara/anchors_2026-09-17/`.
+   Leggere i sei scalati pubblicati dallo status completo e verificarne la media.
+   Le ancore aggregate in `reports/gara/anchors_2026-09-17/` sono pesi storici utili
+   per indici locali, **non una conversione esatta** dei grezzi aggregati: i contesti
+   hanno normalizzazioni separate. Non ricostruire membri ufficiali mancanti come misure.
+   Prova e portata: [audit credibilità](../reports/analisi/lead_scientist_2026-09-29/SCORE_CREDIBILITA.md)
+   e [CP-0050](checkpoints/0050-credibilita-score-e-riserva.md).
 
 ## 3. Colab: generatore `ControlModel` e banchi
 
@@ -103,6 +119,16 @@ Il portatile ha 7,8 GiB di RAM. Lo stadio 76 (`ControlModel`) gira anche qui: il
 ha generato il t14 in 35 minuti, con 1–3 GiB di RAM
 (`reports/generatore_e_banchi/dispersion_2026-09-23/T14_IN_LOCALE.md`). I banchi 73 e 75 restano su Colab. Il notebook `notebooks/colab_sc_training.ipynb` fa da dispatcher: esegue i `.sh`
 depositati in `G:\Il mio Drive\vcc2026\runs\queue\`.
+
+**Prima di mettere in coda un nuovo job:** seguire [ERRORI.md](ERRORI.md).
+Il manifest elenca tutti gli input con percorso locale/remoto, dimensione e
+SHA256, target richiesti, ambiente e output nuovi. Il preflight passa localmente
+e viene ripetuto nel launcher sul runtime destinatario, attendendo tutti gli
+hash completi prima del calcolo. La visibilità su Drive locale non dimostra
+quella su Colab. Verificare l'autorizzazione già ricevuta in sessione senza
+richiederla nuovamente. I job già in corso non vengono interrotti da questa aggiunta.
+Ogni correzione operativa lascia un incidente, un test e una verifica distinta
+del nuovo tentativo; `.done` da solo non chiude l'incidente.
 
 - **Portare il codice su Drive:** `powershell -File notebooks\colab_jobs\sync_to_drive.ps1`.
   Fa un mirror (`robocopy /MIR`) di `src`, `scripts`, `configs` e `notebooks` in `code/`:

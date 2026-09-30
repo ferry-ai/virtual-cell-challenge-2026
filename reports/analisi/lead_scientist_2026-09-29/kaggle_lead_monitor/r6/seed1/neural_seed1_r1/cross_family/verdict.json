@@ -1,0 +1,89 @@
+{
+  "not_vcc_score": true,
+  "families": {},
+  "contrasts": {
+    "transfer": {
+      "macro_family_delta": 0.0024585422782126545,
+      "ci95": [
+        0.0006812494903783425,
+        0.004396506033920416
+      ],
+      "per_family": {
+        "cd4": 0.005306435502283105,
+        "ipsc": 0.0032067942759295503,
+        "k562": -0.0070582599478147415,
+        "orion": -0.002237876100782782,
+        "rpe1": 0.01307561766144814
+      }
+    },
+    "blind": {
+      "macro_family_delta": 0.0007422639432485313,
+      "ci95": [
+        -4.817198711676625e-05,
+        0.0015553716670743626
+      ],
+      "per_family": {
+        "cd4": 8.536162752772283e-05,
+        "ipsc": -0.0003032248858447471,
+        "k562": 0.0022932974559686883,
+        "orion": -0.003027152641878672,
+        "rpe1": 0.004663038160469665
+      }
+    },
+    "swap": {
+      "macro_family_delta": 0.00020040871656881978,
+      "ci95": [
+        -8.245996921885196e-05,
+        0.0004532097246004562
+      ],
+      "per_family": {
+        "cd4": 1.274054142203752e-06,
+        "ipsc": -3.4399461839530636e-05,
+        "k562": 0.0002306037997390725,
+        "orion": 0.0004299932729941308,
+        "rpe1": 0.00037457191780822246
+      }
+    },
+    "prior_permuted": {
+      "macro_family_delta": 0.0003442494292237444,
+      "ci95": [
+        -6.412314497716932e-05,
+        0.0007415536580642535
+      ],
+      "per_family": {
+        "cd4": 0.0003452686725375078,
+        "ipsc": 8.153946510111246e-05,
+        "k562": 0.00022041136660143278,
+        "orion": -0.0002751956947162465,
+        "rpe1": 0.0013492233365949157
+      }
+    },
+    "null": {
+      "macro_family_delta": 0.13789272718933465,
+      "ci95": [
+        0.12982736407116358,
+        0.14548338251182324
+      ],
+      "per_family": {
+        "cd4": 0.06509206315231572,
+        "ipsc": 0.10224220788486628,
+        "k562": 0.1890059319960861,
+        "orion": 0.04726772718933464,
+        "rpe1": 0.2858557057240705
+      }
+    }
+  },
+  "regime": "C",
+  "training_seed": 1,
+  "bootstrap_scope": "targets within each observed context; equal families then contexts, conditional on these five families",
+  "eligible_for_cell_scorer": false,
+  "evidence_for_context_use": true,
+  "robust_across_seeds": false,
+  "next_requirement": "A separate seed and an independent cell-level benchmark; this readout never authorizes submission.",
+  "reader_provenance": {
+    "original_reader": "95f0f37610778d26b09806cfed5614d054c8f6fa181a6844480f5277f47c8f22",
+    "corrected_reader": "21b936b387ec734e0aaeb4b85f982f127a465a84fb3a77dc89917190881a8243",
+    "amendment": "eb318d4e79a73ade2d72e489be2e7a65bc37ee0f9210f71aa500a3d0497bec70",
+    "guard": "e90e095c25f7e4e17c0cc0e4cfad71f87b57eababf49765db9c5ec624ff0e3b4"
+  }
+}

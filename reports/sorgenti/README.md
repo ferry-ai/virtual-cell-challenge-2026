@@ -7,21 +7,25 @@ stanno fuori dal repository (`C:/Users/ferra/vcc2026-data`): qui ci sono script,
 indici e misure. Indice generale: [../README.md](../README.md).
 
 **Da sapere prima di usarle:**
-- **Tutte le sorgenti tranne VIPerturb-seq sono in 3'**; la gara è letta in 10x Flex
-  ([ponte Flex](ponte_flex_2026-09-28/RISULTATI.md)).
+- **CD4 e VIPerturb-seq sono in Flex**, come il saggio della gara; Replogle K562 è in 3'.
+  CD4 è `GEMX_flex_v1` in tutte le 12 righe dei metadati originali: la premessa «tutte le
+  sorgenti tranne VIPerturb sono in 3'» è corretta dall'[audit del 29/09](../analisi/lead_scientist_2026-09-29/AUDIT_DATI.md)
+  e dalla scheda [R-021](../../docs/REGISTRO.md#r-021--piattaforma-plateau-e-inferenze-causali-nelle-sintesi).
 - **Gli universi del 26/09 di CD4, HCT116 e HEK293T hanno l'artefatto del pseudoconteggio**: per i
   banchi dal 27/09 si usano quelli ricostruiti (`*_me1`, [universo_corretto](universo_corretto_2026-09-27/RISULTATI.md)).
   K562 passa per un altro stimatore e non ne soffre.
 - **I profili basali in CPM sono normalizzati sui geni di ogni sorgente**, cioè su insiemi diversi
   (le sorgenti 3' contengono RPL/RPS, l'asse Flex no). Il confronto dei livelli basali fra sorgenti
-  e contesti ha quindi uno scarto sistematico non misurato
-  ([revisione critica](../analisi/revisione_criticita_2026-09-28/REVISIONE.md), §2).
+  e contesti ha quindi uno scarto sistematico: il 29/09 i fattori per riportare a 10⁶ la somma
+  sull'asse misurato valgono 1,021 per CD4 mix, 1,407 per HCT116 e 1,357 per HEK293T
+  ([audit](../analisi/lead_scientist_2026-09-29/AUDIT_DATI.md), §4). La riscalatura non ricostruisce i geni mancanti.
 - Orion (HCT116, HEK293T) ha licenza **CC-BY-NC-SA-4.0**: ammessa negli invii per decisione del
   proprietario (`../invii/trial_2026-09-22/autorizzazioni.md`), non per verifica presso gli organizzatori.
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
-| 28/09 | [ponte_flex_2026-09-28/](ponte_flex_2026-09-28/) | Gli stessi knockdown K562 in Flex (VIPerturb-seq) e in 3': metà contro metà di VIPerturb 0,110 di coseno, verso il 3' 0,030; il rumore spiega una parte del divario, non tutto | sì; un solo schermo Flex, esplorativo | ★★★ (la gara è in Flex) |
+| 29/09 | [basali_asse_2026-09-29/](basali_asse_2026-09-29/) | Azione 5 di R-REV, in corso nella sessione Claude: protocollo per richiudere i CPM sull'asse comune, verificarli dal grezzo e misurare l'impatto sulle quote t23/t27 e sui lettori | protocollo, esiti ancora da aggiungere | ★ |
+| 28/09 | [ponte_flex_2026-09-28/](ponte_flex_2026-09-28/) | Gli stessi knockdown K562 in Flex (VIPerturb-seq) e in 3': metà contro metà di VIPerturb 0,110 di coseno, verso il 3' 0,030; il rumore spiega una parte del divario, non tutto | in parte: misure valide sulla coppia K562, esplorative; falsa la premessa che solo VIPerturb sia Flex, [R-021](../../docs/REGISTRO.md#r-021--piattaforma-plateau-e-inferenze-causali-nelle-sintesi) | ★★★ (confronto fra due studi K562) |
 | 28/09 | [corpus_basale_2026-09-28/](corpus_basale_2026-09-28/) | Profili basali per l'encoder: controlli delle nostre sorgenti (con 19 linee HIPSCI), A/B/C, DepMap, Tahoe DMSO; una decisione per sorgente in `SORGENTI.md` | sì come dati; piattaforme diverse mescolate | ★ |
 | 28/09 | [tahoe_dmso_2026-09-28/](tahoe_dmso_2026-09-28/) | Estrattori dei controlli DMSO di Tahoe-100M (tutti i frammenti, o uno ogni k); contratti del dataset in `LAYOUT.md` | sì | ★ |
 | 27/09 | [pseudoconteggio_2026-09-27/](pseudoconteggio_2026-09-27/) | Con il pseudoconteggio costante un gene senza conteggi valeva ln(L_c/L_t): i geni Y delle donatrici CD4 risultavano indotti dal 99–100 % dei knockdown. Correzione `min_expected` 1 (cache r9, t25); tre alternative misurate e scartate | sì | ★★★ |

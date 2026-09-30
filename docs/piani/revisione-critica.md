@@ -261,6 +261,12 @@ sull'asse Flex.
 - **Chiusura:** report. Se i modelli che leggono il contesto debbano cambiare file si decide con il
   proprietario.
 
+**Presa in carico (29/09, 19:17, Claude, sessione `f4f38e58`):** protocollo e regole in
+[basali_asse_2026-09-29](../../reports/sorgenti/basali_asse_2026-09-29/RISULTATI.md), scritti prima di girare. Il
+fattore per sorgente l'aveva già misurato Codex, nel suo audit dei dati (cartella `lead_scientist_2026-09-29`): qui
+si rifà in modo indipendente, si scrive il file nuovo e si misura che cosa cambia per ogni lettore, t27 compreso.
+Solo radice dati e CPU del portatile.
+
 ### Azione 6 — la misura decisiva per la rete relazionale
 
 È la proposta 1 della scheda R-V2 per quando si riparte, e la revisione (§3.2) la mette prima di ogni rete

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260929-004",
+  "revision": 1,
+  "previous_sha256": null,
+  "recorded_utc": "2026-09-29T21:07:21.511528+00:00",
+  "claim_type": "operational_incident",
+  "title": "Job075: effetti derivati senza i target riservati",
+  "symptom": "Frozen transfer lacks a confirmation target dopo il piano dei dodici target.",
+  "cause": "prepared_effects del banco comprende48+96target, mentre la riserva12 è disgiunta per costruzione.",
+  "cause_verified": true,
+  "fix": "Recupero valori t19like congelati e stessa maskstage98; parità esatta sui144 e12pilot. Pack scientifico immutato.",
+  "regression_test": "test_stack_confirmation_effects.py e test_preflight.py: riserva assente rifiutata prima del lavoro.",
+  "next_guard": "Controllare required⊆targets dell’NPZ durante preflight prima di estrazione costosa.",
+  "scope": "080 ha prodotto effetti verificati e piano; bundle completo non ancora verificato in questa revisione.",
+  "evidence": [
+    {
+      "path": "G:/Il mio Drive/vcc2026/runs/jobs/075_lead_stack_confirmation_prepare_r1.log",
+      "sha256": "d9d15e28bcc6af8a8bc9cc8d9ec4c5b9605254e54b9c84c126a530c70533bd52",
+      "bytes": 1138,
+      "supports": "ValueError target mancante prima creazione bundle"
+    },
+    {
+      "path": "G:/Il mio Drive/vcc2026/runs/lead_stack_confirmation_prompts_2026-09-29_r1/plan.json",
+      "sha256": "68b97c43d5cb811c4796554be46b47c6119c8f3b3fcb2e1f884ad5bde7d0a4ad",
+      "bytes": 2362,
+      "supports": "Dodici target riserva corretti, effects deriva dal banco144"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/RIPARAZIONE_075.md",
+      "sha256": "3d02e3a0559ed9084dba1d2b0c3a7ce26700e07bc413780da4fc4767725bc2d8",
+      "bytes": 3104,
+      "supports": "Diagnosi e correzione senza refit"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_confirmation_effects.py",
+      "sha256": "55414097c15fc0634f201a063e0541dbd558eb207c4cffd11e3ee72b51f31177",
+      "bytes": 7081,
+      "supports": "Guarda parità esatta144+pilot12 prima di salvare riserva"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/test_stack_confirmation_effects.py",
+      "sha256": "d7ef1904f937bd5ec6edba02be2432501bf4b26fef79f2a4dd40046e36b65651",
+      "bytes": 2579,
+      "supports": "Test di mappatura, maskzero e target mancanti"
+    },
+    {
+      "path": "G:/Il mio Drive/vcc2026/runs/lead_stack_confirmation_prompts_2026-09-29_r2/effects/manifest.json",
+      "sha256": "4aa7a4af11b4a397b9597cd590d974b9a8746ac8611dcd5c0f01c5a16c87baeb",
+      "bytes": 2832,
+      "supports": "080 ha verificato effetti144+12pilot; non attesta completamento del bundle cellulare"
+    }
+  ],
+  "state": "verified_locally",
+  "remote_verification": null
+}

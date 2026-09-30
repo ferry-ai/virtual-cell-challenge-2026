@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260929-007",
+  "revision": 3,
+  "previous_sha256": "0ea83f7c5847946cdfa7c0c7b57c12d1b8c974749e4b76aa42633f66c1fad10e",
+  "recorded_utc": "2026-09-29T22:30:57.167080+00:00",
+  "claim_type": "operational_incident",
+  "state": "verified_locally",
+  "title": "T28: lettura Drive fallita durante SHA prima della CLI di invio",
+  "symptom": "Il worker avviato alle 21:53:30 UTC termina con OSError 22 in f.read(8 MiB), durante il nuovo hash completo. Ultimo avanzamento registrato: 256 MiB. Non esistono directory del tentativo o submission_started.json.",
+  "cause": "Errore I/O di lettura dal percorso montato G: documentato. La causa precisa nel filesystem Drive, cache o handle non è verificata. Un hash completo precedente era riuscito alle 21:42:04 UTC e non garantisce la riuscita di una nuova lettura.",
+  "cause_verified": false,
+  "fix": "Copia reale completata sul volume locale con il copier congelato, riprendendo da 3.019.898.880 byte dopo l'arresto della guardia spazio. Ricevuta finale alle 22:28:32.001922 UTC: 4.161.126.400 byte, SHA256 atteso e otto hash metadata coerenti. Runner di invio separato e immutato.",
+  "regression_test": "Ricevuta di quattro test locali PASS conservata. La copia reale verifica inoltre ripresa del partial, SHA e dimensione completi e lettura dei metadata; non equivale a un test della CLI o della rete di upload.",
+  "next_guard": "Prima della CLI verificare il contenitore nel percorso realmente usato per l'upload. Per file montati remoti, prevedere ripresa di lettura e copia su volume stabile con spazio esplicito; una vecchia ricevuta SHA non prova disponibilità futura.",
+  "scope": "Chiuso soltanto il recupero mediante copia locale verificata. La guardia spazio ha fermato il primo tentativo senza promuovere il partial; il resume completa il file. Non si attesta avvio, completamento o score dell'upload. La validazione del runner sul percorso locale rimane una fase separata e qui non viene riletta.",
+  "evidence": [
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_direct_attempt_r1.worker_started.json",
+      "sha256": "25b7bfce1eabf7abc38987cd6c2a6fc69bbcf4d09abfbd0a5a28bbaf77313b24",
+      "bytes": 720,
+      "supports": "Ricevuta originale di avvio worker e hash del runner"
+    },
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_direct_attempt_r1.worker_stdout.log",
+      "sha256": "c381f2a914b1a0d8360a8d297466168a4f92ac3ac279533c17d2c32415eae86c",
+      "bytes": 112,
+      "supports": "Ultimo avanzamento di hashing effettivamente registrato, non byte esatti al guasto"
+    },
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_direct_attempt_r1.worker_stderr.log",
+      "sha256": "663807c18aac17906e64144f6a52bd991eca353e99f1aded063a768169568e80",
+      "bytes": 1484,
+      "supports": "Traceback originale: errore durante validazione, prima di submit"
+    },
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_in_place_validation_r1/validation.json",
+      "sha256": "d19e118a0258fcccc96f0758f1f6db12528c280b96f870f26e99e6e6119117d3",
+      "bytes": 3262,
+      "supports": "Hash completo precedente riuscito; uploaded=false"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/direct_t28_submission.py",
+      "sha256": "adccdd054987dcfeb5e425982d68bb9a149a6d96ce6f3001620583df3ea55ec1",
+      "bytes": 13637,
+      "supports": "validate viene chiamato prima di submit e crea output solo dopo la lettura completa"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/learning/upload_read_failure_observation_r1.json",
+      "sha256": "7b5ce0d20a3068db9d4b2ec7d7e6609f9ce4fa06b46664f323f3adb2055edbc7",
+      "bytes": 617,
+      "supports": "Osservazione locale di assenza output e marker di invio"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/copy_t28_chunked.py",
+      "sha256": "730fd206f2ecb85c137756228adb1b44c42a0a749dcdc153fc7aedbcd5a00c36",
+      "bytes": 8280,
+      "supports": "Codice congelato della correzione o della fixture; non ricevuta di esecuzione reale"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/test_copy_t28_chunked.py",
+      "sha256": "fcb09043301a3a3e0cbc3dbd79916f9b9a8bfe241d8a06b30ae6ae9f0175e0cf",
+      "bytes": 3778,
+      "supports": "Codice congelato della correzione o della fixture; non ricevuta di esecuzione reale"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/learning/upload_copy_recovery_r1/copy_state.json",
+      "sha256": "ae055dbdec4f87750efe372d6684d2f84846fc363f3785b40296e58b366364b5",
+      "bytes": 1443,
+      "supports": "Contratto originale del copier, copiato byte per byte"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/learning/upload_copy_recovery_r1/local_copy_complete.json",
+      "sha256": "70e7538d6c7964a1dfeee6d78185eb1984d56fdbe0ec24c50d50e0710d7d432e",
+      "bytes": 1343,
+      "supports": "Ricevuta originale del full SHA/size e degli otto metadata, non upload"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/learning/upload_copy_recovery_r1/receipt_readback.json",
+      "sha256": "539c54883d642838a56ef054991a577f104b9297445e686c708323bb25130d5f",
+      "bytes": 1149,
+      "supports": "Inventario e readback delle due piccole ricevute, nessuna ricopia del contenitore"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/learning/upload_copy_disk_stop_r1.json",
+      "sha256": "187d09b46e693e6a2b8c6ccedca96b1d383690decff0be00e76cb5e398650c2f",
+      "bytes": 2290,
+      "supports": "Arresto precedente della guardia spazio e partial conservato"
+    },
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_local_copy_resume1.stdout.log",
+      "sha256": "5a8a25f8992066a86a2d813bf70f4a124a1c7ac0aa0eb55bab24e6a663386b20",
+      "bytes": 3431,
+      "supports": "Log originale del resume e completamento della copia"
+    },
+    {
+      "path": "reports/invii/trial_2026-09-29/t28_local_copy_resume1.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "supports": "Stderr originale del resume"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/chunk_copy_tests_r1.json",
+      "sha256": "461c36b72ab3d7a996b1b4cd238d10195bfda994eeae42841806e5fb95a5a451",
+      "bytes": 1026,
+      "supports": "Ricevuta dei quattro test locali del copier"
+    }
+  ],
+  "remote_verification": null,
+  "resolution": {
+    "closed": true,
+    "scope": "recovery_copy_only",
+    "verified_in": "local copier runtime",
+    "observed_utc": "2026-09-29T22:28:32.001922+00:00",
+    "upload_verified": false
+  }
+}

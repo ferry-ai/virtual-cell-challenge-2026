@@ -1,0 +1,9 @@
+{
+  "claim_type": "local_verifier_correction",
+  "stage": "after all15 byte hashes and target metadata checks; before output or incident revision",
+  "error": "AssertionError: set(source_rows) == set(TARGETS)",
+  "cause_verified": "The frozen packer intentionally includes the non-targeting source control rows along with12perturbedtargets: stack_confirmation_pack.py lines154-155.",
+  "measured": "Metadata has12target keys plus non-targeting with512unique rows; each perturbed row count matchesmin(128,source_count).",
+  "fix": "Verify the complete13key set and512unique control rows, then count1421perturbedrows separately.",
+  "scope": "The incorrect assumption was in the new local verifier, not in bundle080. No bundle or scientific code changed; no outcome read. Final verification requires a fresh successful verifier run."
+}

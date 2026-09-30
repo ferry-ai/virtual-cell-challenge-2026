@@ -1,0 +1,914 @@
+{
+  "claim_type": "Post-hoc measured output diagnostics, not confirmatory or official scores",
+  "truth_expression_read": false,
+  "reserve_outcomes_read": false,
+  "inputs": {
+    "C:\\Users\\ferra\\vcc2026-data\\interim\\kaggle_stack_prompts_r1\\bundle.tar.gz": {
+      "sha256": "8c693c8457590edca74e626b08d7318a276c44f4b9737f5d4d4c13272814cf3e",
+      "bytes": 31984510
+    },
+    "G:\\Il mio Drive\\vcc2026\\runs\\lead_stack_infer_2026-09-29_r2\\prediction\\model_genes.pkl": {
+      "sha256": "22b0227d07ebf61aed37f3863049885911d5c178742ba40c9efc54bac5687468",
+      "bytes": 129830
+    },
+    "reports\\analisi\\lead_scientist_2026-09-29\\neural\\stack_a_scoring_r2\\pilot_comparison.json": {
+      "sha256": "e44a08265484c20d53f05d87367463f78f9339666b618b9c5c51ab5f27c144a4",
+      "bytes": 2702
+    },
+    "reports\\analisi\\lead_scientist_2026-09-29\\kaggle_lead_monitor\\r2\\stack\\lead_stack_r1\\prediction\\finished.json": {
+      "sha256": "6a00dfe7881bf7f9e23623a238e88e78d5d00b0ed396a2d925754059448f783f",
+      "bytes": 3117
+    },
+    "C:\\Users\\ferra\\vcc2026-data\\interim\\lead_stack_kaggle_A_r1\\prediction_transfer.h5ad": {
+      "sha256": "0210a9ffb131ee9f0412b89b70ea4e6d9aa0ea7c39d63b2276ab86e7dbd55828",
+      "bytes": 45681785
+    },
+    "reports\\analisi\\lead_scientist_2026-09-29\\neural\\stack_a_scoring_r2\\per_pert_transfer.csv": {
+      "sha256": "5034912f45e47e2e51abf3a78050af555f9f8e30a24c7bdfc8c3abb1ba7a7903",
+      "bytes": 4960
+    },
+    "C:\\Users\\ferra\\vcc2026-data\\interim\\lead_stack_kaggle_A_r1\\prediction_stack.h5ad": {
+      "sha256": "4baa9e71184fcf365a13860843a5700fdcfed245f5e7d51a212b850d6c2d1255",
+      "bytes": 45573691
+    },
+    "reports\\analisi\\lead_scientist_2026-09-29\\neural\\stack_a_scoring_r2\\per_pert_stack.csv": {
+      "sha256": "7c678a5453d5c490ca256bd344eb65645a099f246f7a53992e5179fd6ab3aa05",
+      "bytes": 5036
+    }
+  },
+  "script_sha256": "eb4f562b8923d0d283cee3767e90d8a677ea0bf3ef4694a89da2ed17e40a7125",
+  "targets": [
+    "CCDC130",
+    "NRBP1",
+    "MLLT6",
+    "WBP11",
+    "RPL36A",
+    "MBTPS1",
+    "RPL41",
+    "COG6",
+    "EEF2",
+    "DCTN1",
+    "HAUS8",
+    "SETD1A"
+  ],
+  "genes": 9624,
+  "control_sizes": {
+    "cells": [
+      2000
+    ],
+    "reads": [
+      37657835.0
+    ]
+  },
+  "prediction_sizes": {
+    "transfer": {
+      "cells": [
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400
+      ],
+      "reads": [
+        7459084.0,
+        7550215.0,
+        7889594.0,
+        7315602.0,
+        7734754.0,
+        7516548.0,
+        7200744.0,
+        7459206.0,
+        7369984.0,
+        7451400.0,
+        7472455.0,
+        7151407.0
+      ]
+    },
+    "stack": {
+      "cells": [
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400
+      ],
+      "reads": [
+        7462968.0,
+        7539229.0,
+        7891125.0,
+        7320108.0,
+        7733658.0,
+        7516762.0,
+        7203777.0,
+        7462778.0,
+        7374321.0,
+        7450862.0,
+        7470083.0,
+        7152363.0
+      ]
+    }
+  },
+  "official_local_comparison": {
+    "delta_projection": -0.15832148245718886,
+    "delta_pds_raw": -0.3333333333333334,
+    "member_contributions": {
+      "pds_cosine": -0.12417866663651321,
+      "de_wilcoxon_lfc_nmae": -0.0066255670948962555,
+      "de_wilcoxon_direction_fidelity_yield_raw": -0.017134443543045386,
+      "de_wilcoxon_direction_reach_raw": -0.00888141815475768,
+      "de_wilcoxon_sig_jaccard": -0.0015013870279763242
+    },
+    "eligible_targets_per_member": {
+      "pds_cosine": 12,
+      "de_wilcoxon_lfc_nmae": 9,
+      "de_wilcoxon_direction_fidelity_yield_raw": 12,
+      "de_wilcoxon_direction_reach_raw": 11,
+      "de_wilcoxon_sig_jaccard": 12
+    },
+    "paired_target_bootstrap_ci95_descriptive": [
+      -0.2367576097788978,
+      -0.08208255843622815
+    ],
+    "bootstrap_complete_fraction": 1.0,
+    "proceed_to_distinct_confirmation": false,
+    "rule": "projection > 0 AND mean PDS not lower; 12 development targets, exploratory only",
+    "raw": {
+      "transfer": {
+        "pds_cosine": 0.8712121212121212,
+        "expr_mse_unbiased_capped_norm": 1.44877447460788,
+        "de_wilcoxon_lfc_nmae": 0.9702080998461571,
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.4811818398081233,
+        "de_wilcoxon_direction_reach_raw": 0.10848407072771181,
+        "de_wilcoxon_sig_jaccard": 0.04750610279360427
+      },
+      "stack": {
+        "pds_cosine": 0.537878787878788,
+        "expr_mse_unbiased_capped_norm": 1.3036893394768896,
+        "de_wilcoxon_lfc_nmae": 0.9943764216632656,
+        "de_wilcoxon_direction_fidelity_yield_raw": 0.4505692648871284,
+        "de_wilcoxon_direction_reach_raw": 0.06107316264070997,
+        "de_wilcoxon_sig_jaccard": 0.04421845977316838
+      }
+    },
+    "aggregation_checks": {
+      "transfer": {
+        "mse_identity": "verified ratio of summed capped numerator to summed distance",
+        "numerator_sum": 0.13355121178549512,
+        "denominator_sum": 0.09218219545291279,
+        "ratio": 1.4487744746078852,
+        "eligible_targets": 12
+      },
+      "stack": {
+        "mse_identity": "verified ratio of summed capped numerator to summed distance",
+        "numerator_sum": 0.12017694550153779,
+        "denominator_sum": 0.09218219545291279,
+        "ratio": 1.3036893394768938,
+        "eligible_targets": 12
+      }
+    },
+    "truth_cells_per_target": {
+      "CCDC130": 145,
+      "NRBP1": 50,
+      "MLLT6": 129,
+      "WBP11": 62,
+      "RPL36A": 68,
+      "MBTPS1": 115,
+      "RPL41": 109,
+      "COG6": 61,
+      "EEF2": 76,
+      "DCTN1": 70,
+      "HAUS8": 53,
+      "SETD1A": 81
+    },
+    "claim": "Paired 12-target development pilot; five-member projection, MSE reported separately; not a VCC score",
+    "scope_caveat": "PDS uses this 12-target local panel and is not directly comparable with a 48/96/300-target panel",
+    "pretraining_holdout_verified": false
+  },
+  "geometry": {
+    "log1p_cpm": {
+      "all_genes": {
+        "transfer": {
+          "mean_target_rms": 0.22137991878682137,
+          "common_rms": 0.1564787498339133,
+          "target_residual_rms": 0.15940532376805241,
+          "common_energy_fraction": 0.4907360864371506,
+          "first_singular_energy_fraction": 0.4931006473416593,
+          "mean_pair_cosine": 0.46719638897830545,
+          "median_pair_cosine": 0.46743508248034615,
+          "split_half_noise_rms_for_400cell_mean": 0.09019422261885857
+        },
+        "stack": {
+          "mean_target_rms": 0.19920616822728787,
+          "common_rms": 0.15538700680685108,
+          "target_residual_rms": 0.12530131905254924,
+          "common_energy_fraction": 0.6059679553949002,
+          "first_singular_energy_fraction": 0.6073634045287168,
+          "mean_pair_cosine": 0.5762762548642582,
+          "median_pair_cosine": 0.57402077442416,
+          "split_half_noise_rms_for_400cell_mean": 0.09003656276866429
+        },
+        "stack_to_transfer_residual_rms_ratio": 0.7860547947248785,
+        "same_target_cross_arm_cosines": [
+          0.6498071571375191,
+          0.5880422803133574,
+          0.6150698469793158,
+          0.644594729575684,
+          0.6637545572314121,
+          0.553612998991931,
+          0.5917706557037538,
+          0.6261751499224846,
+          0.5810432602192899,
+          0.6578721681623644,
+          0.6116692921022295,
+          0.5316616858942286
+        ]
+      },
+      "shared_5179": {
+        "transfer": {
+          "mean_target_rms": 0.23697935381975566,
+          "common_rms": 0.1570915239081287,
+          "target_residual_rms": 0.1812836546032536,
+          "common_energy_fraction": 0.4288685985263567,
+          "first_singular_energy_fraction": 0.4321500983690911,
+          "mean_pair_cosine": 0.4040640857029917,
+          "median_pair_cosine": 0.40241748617035833,
+          "split_half_noise_rms_for_400cell_mean": 0.09179722933823019
+        },
+        "stack": {
+          "mean_target_rms": 0.19689300971140997,
+          "common_rms": 0.15482428339733897,
+          "target_residual_rms": 0.12212471101303762,
+          "common_energy_fraction": 0.6164473808869835,
+          "first_singular_energy_fraction": 0.6183296166736624,
+          "mean_pair_cosine": 0.5853977173386404,
+          "median_pair_cosine": 0.5945606881054821,
+          "split_half_noise_rms_for_400cell_mean": 0.09180918016340683
+        },
+        "stack_to_transfer_residual_rms_ratio": 0.6736664222723905,
+        "same_target_cross_arm_cosines": [
+          0.5472982275351242,
+          0.3746695014776514,
+          0.4556610340526227,
+          0.5278336667422608,
+          0.5359182119109704,
+          0.3891057255758321,
+          0.4238509492050602,
+          0.5085279817235808,
+          0.45789258749080997,
+          0.5492898131884438,
+          0.47790089916437395,
+          0.3141805061989189
+        ]
+      },
+      "outside_shared": {
+        "transfer": {
+          "mean_target_rms": 0.2014604318353486,
+          "common_rms": 0.15576174813876026,
+          "target_residual_rms": 0.12932720263870964,
+          "common_energy_fraction": 0.5919334341270706,
+          "first_singular_energy_fraction": 0.5936374229300391,
+          "mean_pair_cosine": 0.5695592816170706,
+          "median_pair_cosine": 0.585862135681742,
+          "split_half_noise_rms_for_400cell_mean": 0.0882898097421172
+        },
+        "stack": {
+          "mean_target_rms": 0.20136854952136019,
+          "common_rms": 0.15604009273621974,
+          "target_residual_rms": 0.12890377692550678,
+          "common_energy_fraction": 0.5943779390721726,
+          "first_singular_energy_fraction": 0.596333272841087,
+          "mean_pair_cosine": 0.5722375042058996,
+          "median_pair_cosine": 0.582781955581616,
+          "split_half_noise_rms_for_400cell_mean": 0.0879261703205706
+        },
+        "stack_to_transfer_residual_rms_ratio": 0.9967259346482136,
+        "same_target_cross_arm_cosines": [
+          0.7867687157446104,
+          0.8818193992439947,
+          0.834110253184861,
+          0.7990169956553156,
+          0.851231199574494,
+          0.7983075657228735,
+          0.8078506169604575,
+          0.7885053868781806,
+          0.764644151451277,
+          0.7934614533066956,
+          0.8006602961799237,
+          0.8479399439372539
+        ]
+      },
+      "shared_excluding_pilot_targets": {
+        "transfer": {
+          "mean_target_rms": 0.23663320765489568,
+          "common_rms": 0.15715295485667835,
+          "target_residual_rms": 0.18083164855069447,
+          "common_energy_fraction": 0.43028368305446696,
+          "first_singular_energy_fraction": 0.4335952147634858,
+          "mean_pair_cosine": 0.4061948648926976,
+          "median_pair_cosine": 0.40240603904689715,
+          "split_half_noise_rms_for_400cell_mean": 0.0918178175349712
+        },
+        "stack": {
+          "mean_target_rms": 0.1969477402863862,
+          "common_rms": 0.15490701143579402,
+          "target_residual_rms": 0.1221077836260391,
+          "common_energy_fraction": 0.6167654890743883,
+          "first_singular_energy_fraction": 0.6186487564979036,
+          "mean_pair_cosine": 0.5857324471378527,
+          "median_pair_cosine": 0.5951264794639326,
+          "split_half_noise_rms_for_400cell_mean": 0.09182219284955986
+        },
+        "stack_to_transfer_residual_rms_ratio": 0.6752567075768671,
+        "same_target_cross_arm_cosines": [
+          0.5481526372622705,
+          0.3748837876894063,
+          0.4556376194836116,
+          0.5280434981523775,
+          0.5361877673550948,
+          0.39210354757825683,
+          0.42400495485733,
+          0.5084194826457119,
+          0.45813813576833756,
+          0.5543591643239869,
+          0.4782814043699827,
+          0.3154630153423665
+        ]
+      }
+    },
+    "log1p_pooled_cpm": {
+      "all_genes": {
+        "transfer": {
+          "mean_target_rms": 0.13106825337579514,
+          "common_rms": 0.040858653527122556,
+          "target_residual_rms": 0.1273705466134903,
+          "common_energy_fraction": 0.0933023468280908,
+          "first_singular_energy_fraction": 0.16663355438771224,
+          "mean_pair_cosine": 0.016235884794743475,
+          "median_pair_cosine": 0.014532997868504333
+        },
+        "stack": {
+          "mean_target_rms": 0.11105701140183194,
+          "common_rms": 0.046523550800959816,
+          "target_residual_rms": 0.10138971861555755,
+          "common_energy_fraction": 0.1739300746159515,
+          "first_singular_energy_fraction": 0.19676092791031002,
+          "mean_pair_cosine": 0.10212838234337851,
+          "median_pair_cosine": 0.0952643614537412
+        },
+        "stack_to_transfer_residual_rms_ratio": 0.7960216966268322,
+        "same_target_cross_arm_cosines": [
+          0.15045375499862126,
+          0.35923518979832636,
+          0.24847706641584497,
+          0.16292311554295408,
+          0.2437395164775872,
+          0.15295034768894342,
+          0.2405731384864795,
+          0.2069084892575991,
+          0.11832745934937833,
+          0.16335647332443645,
+          0.19505787451599096,
+          0.2974109953165926
+        ]
+      },
+      "shared_5179": {
+        "transfer": {
+          "mean_target_rms": 0.1424710264239927,
+          "common_rms": 0.04463518627422794,
+          "target_residual_rms": 0.13933882474253842,
+          "common_energy_fraction": 0.09306503836594808,
+          "first_singular_energy_fraction": 0.1748938104535639,
+          "mean_pair_cosine": 0.017798019913633112,
+          "median_pair_cosine": 0.01794378263258649
+        },
+        "stack": {
+          "mean_target_rms": 0.10548336434826942,
+          "common_rms": 0.05375444931095994,
+          "target_residual_rms": 0.09150079405913163,
+          "common_energy_fraction": 0.25657584861947313,
+          "first_singular_energy_fraction": 0.3175515558583323,
+          "mean_pair_cosine": 0.1811960148462418,
+          "median_pair_cosine": 0.17012847393209518
+        },
+        "stack_to_transfer_residual_rms_ratio": 0.6566783825556235,
+        "same_target_cross_arm_cosines": [
+          0.00669000904047519,
+          0.03549868783655914,
+          0.05839181780101347,
+          -0.006443947520650296,
+          -0.018750888376223795,
+          0.009517492451485442,
+          0.007072977220160335,
+          0.016069081455335595,
+          0.04614852305646279,
+          0.07238868811752905,
+          0.033072788982523554,
+          0.019210971831628832
+        ]
+      },
+      "outside_shared": {
+        "transfer": {
+          "mean_target_rms": 0.11600824897671169,
+          "common_rms": 0.035961700725957,
+          "target_residual_rms": 0.11182174528713319,
+          "common_energy_fraction": 0.09373134944121451,
+          "first_singular_energy_fraction": 0.15341037873699295,
+          "mean_pair_cosine": 0.014335979183663911,
+          "median_pair_cosine": 0.010329020574949586
+        },
+        "stack": {
+          "mean_target_rms": 0.11607683219688314,
+          "common_rms": 0.036326373787898346,
+          "target_residual_rms": 0.11181384383346382,
+          "common_energy_fraction": 0.09547178811688696,
+          "first_singular_energy_fraction": 0.15439996164683795,
+          "mean_pair_cosine": 0.016445110159774328,
+          "median_pair_cosine": 0.01827274702458593
+        },
+        "stack_to_transfer_residual_rms_ratio": 0.9999293388450602,
+        "same_target_cross_arm_cosines": [
+          0.33008323524250427,
+          0.7289065493438079,
+          0.5312518527388413,
+          0.36462198483024777,
+          0.5628319369209284,
+          0.3981065610527808,
+          0.5186417961235663,
+          0.435570019046128,
+          0.2439381420603179,
+          0.29104849488797335,
+          0.4204489120836844,
+          0.6638155084665119
+        ]
+      },
+      "shared_excluding_pilot_targets": {
+        "transfer": {
+          "mean_target_rms": 0.14058205779801114,
+          "common_rms": 0.04424673638429763,
+          "target_residual_rms": 0.13775157084265446,
+          "common_energy_fraction": 0.09352450805994662,
+          "first_singular_energy_fraction": 0.17893523116129964,
+          "mean_pair_cosine": 0.01894650524550401,
+          "median_pair_cosine": 0.019725962904927456
+        },
+        "stack": {
+          "mean_target_rms": 0.10545395407049053,
+          "common_rms": 0.05374820263996398,
+          "target_residual_rms": 0.09146866008450022,
+          "common_energy_fraction": 0.25666552236332946,
+          "first_singular_energy_fraction": 0.3174880769152061,
+          "mean_pair_cosine": 0.18128032272041475,
+          "median_pair_cosine": 0.16929176833716125
+        },
+        "stack_to_transfer_residual_rms_ratio": 0.6640117388496389,
+        "same_target_cross_arm_cosines": [
+          0.00865499737846329,
+          0.03558498102861331,
+          0.058551196338206754,
+          -0.0060074435398033525,
+          -0.017858852827798925,
+          0.005396221624593485,
+          0.007207353118786236,
+          0.015012567374281523,
+          0.04553259968721638,
+          0.07160950604951787,
+          0.028003156047326276,
+          0.02150081499589001
+        ]
+      }
+    },
+    "cpm": {
+      "all_genes": {
+        "transfer": {
+          "mean_target_rms": 29.874041515010763,
+          "common_rms": 12.954549737012485,
+          "target_residual_rms": 29.000454595755958,
+          "common_energy_fraction": 0.166348717423582,
+          "first_singular_energy_fraction": 0.4310850133956856,
+          "mean_pair_cosine": 0.1816139477146886,
+          "median_pair_cosine": 0.2089571371276462
+        },
+        "stack": {
+          "mean_target_rms": 31.043782304039954,
+          "common_rms": 17.55155484794158,
+          "target_residual_rms": 27.114563997322477,
+          "common_energy_fraction": 0.2952840752235776,
+          "first_singular_energy_fraction": 0.4044919127585248,
+          "mean_pair_cosine": 0.3234182364323722,
+          "median_pair_cosine": 0.40127363668250154
+        },
+        "stack_to_transfer_residual_rms_ratio": 0.9349703090961384,
+        "same_target_cross_arm_cosines": [
+          0.649842849651496,
+          -0.363044852651533,
+          0.3355007197865008,
+          0.7876398096123286,
+          0.9148946520408122,
+          0.546550898863176,
+          0.7177131436230125,
+          0.5063474285548698,
+          0.1661499013431881,
+          0.6479511914596802,
+          0.6446727716740553,
+          0.12605632712511317
+        ]
+      },
+      "shared_5179": {
+        "transfer": {
+          "mean_target_rms": 26.166185775957075,
+          "common_rms": 11.392314113053079,
+          "target_residual_rms": 26.907400020725337,
+          "common_energy_fraction": 0.15200970416503626,
+          "first_singular_energy_fraction": 0.5252661603496392,
+          "mean_pair_cosine": 0.09450417650539682,
+          "median_pair_cosine": 0.07836607532463544
+        },
+        "stack": {
+          "mean_target_rms": 28.31078606915595,
+          "common_rms": 19.843653066964254,
+          "target_residual_rms": 22.119454057129726,
+          "common_energy_fraction": 0.4459256700597201,
+          "first_singular_energy_fraction": 0.5597538911131011,
+          "mean_pair_cosine": 0.4115107756505785,
+          "median_pair_cosine": 0.46175994123594755
+        },
+        "stack_to_transfer_residual_rms_ratio": 0.8220583943484799,
+        "same_target_cross_arm_cosines": [
+          0.14946364030615542,
+          -0.7030945857248896,
+          -0.26946141433653664,
+          0.297583135709117,
+          0.10560696606215307,
+          -0.05904915168830938,
+          0.2724095089643807,
+          -0.05902910464167136,
+          -0.1772734051078909,
+          0.23465886926555607,
+          0.407983195722157,
+          -0.031387414088437475
+        ]
+      },
+      "outside_shared": {
+        "transfer": {
+          "mean_target_rms": 31.119075693502584,
+          "common_rms": 14.5649126648947,
+          "target_residual_rms": 31.262880489136126,
+          "common_energy_fraction": 0.17834039534784657,
+          "first_singular_energy_fraction": 0.6839407767788429,
+          "mean_pair_cosine": 0.3146717020196829,
+          "median_pair_cosine": 0.579973428542359
+        },
+        "stack": {
+          "mean_target_rms": 31.610440456235086,
+          "common_rms": 14.428782850977145,
+          "target_residual_rms": 31.96465339741286,
+          "common_energy_fraction": 0.1692697720036402,
+          "first_singular_energy_fraction": 0.6953862068947143,
+          "mean_pair_cosine": 0.2985420207619568,
+          "median_pair_cosine": 0.5301154853669372
+        },
+        "stack_to_transfer_residual_rms_ratio": 1.0224474807598296,
+        "same_target_cross_arm_cosines": [
+          0.9703392292333969,
+          0.9538096263945811,
+          0.9834899565949328,
+          0.9903287620643803,
+          0.9970700166888707,
+          0.985135121500417,
+          0.9725631004973003,
+          0.9673042775355799,
+          0.9353379381937256,
+          0.9770343451111595,
+          0.967416833340352,
+          0.9492757298548182
+        ]
+      },
+      "shared_excluding_pilot_targets": {
+        "transfer": {
+          "mean_target_rms": 26.163834441226708,
+          "common_rms": 11.398193628299307,
+          "target_residual_rms": 26.902043960267072,
+          "common_energy_fraction": 0.15219413636303072,
+          "first_singular_energy_fraction": 0.5254872441760144,
+          "mean_pair_cosine": 0.09489013637970167,
+          "median_pair_cosine": 0.07801619205985702
+        },
+        "stack": {
+          "mean_target_rms": 28.318485919536887,
+          "common_rms": 19.849037567348745,
+          "target_residual_rms": 22.12633205850042,
+          "common_energy_fraction": 0.44590610651593543,
+          "first_singular_energy_fraction": 0.5598819918838631,
+          "mean_pair_cosine": 0.4114409199297783,
+          "median_pair_cosine": 0.4608586245396921
+        },
+        "stack_to_transfer_residual_rms_ratio": 0.822477730360558,
+        "same_target_cross_arm_cosines": [
+          0.14930489603913402,
+          -0.703479462640649,
+          -0.2691808608488431,
+          0.29854243733398605,
+          0.10568939524955405,
+          -0.05866922814161153,
+          0.27283320965949376,
+          -0.05903900212592177,
+          -0.18130323492426767,
+          0.23585019854957545,
+          0.4089863607223964,
+          -0.03131680019996971
+        ]
+      }
+    }
+  },
+  "diagnostics": [
+    {
+      "shared_genes": 5179,
+      "shared_lfc_rms": 0.05757047465281873,
+      "baseline_mass_preserved_outside_shared": true,
+      "total_mass_relative_error": 0.0,
+      "target": "CCDC130",
+      "source_cells": 128
+    },
+    {
+      "shared_genes": 5179,
+      "shared_lfc_rms": 0.07949049529392786,
+      "baseline_mass_preserved_outside_shared": true,
+      "total_mass_relative_error": 0.0,
+      "target": "NRBP1",
+      "source_cells": 92
+    },
+    {
+      "shared_genes": 5179,
+      "shared_lfc_rms": 0.07205537883423051,
+      "baseline_mass_preserved_outside_shared": true,
+      "total_mass_relative_error": 2.220446049250313e-16,
+      "target": "MLLT6",
+      "source_cells": 128
+    },
+    {
+      "shared_genes": 5179,
+      "shared_lfc_rms": 0.07528479192646753,
+      "baseline_mass_preserved_outside_shared": true,
+      "total_mass_relative_error": 0.0,
+      "target": "WBP11",
+      "source_cells": 128
+    },
+    {
+      "shared_genes": 5179,
+      "shared_lfc_rms": 0.06333740523750454,
+      "baseline_mass_preserved_outside_shared": true,
+      "total_mass_relative_error": 0.0,
+      "target": "RPL36A",
+      "source_cells": 104
+    },
+    {
+      "shared_genes": 5179,
+      "shared_lfc_rms": 0.0930893435109414,
+      "baseline_mass_preserved_outside_shared": true,
+      "total_mass_relative_error": 0.0,
+      "target": "MBTPS1",
+      "source_cells": 128
+    },
+    {
+      "shared_genes": 5179,
+      "shared_lfc_rms": 0.07148828940931744,
+      "baseline_mass_preserved_outside_shared": true,
+      "total_mass_relative_error": 2.220446049250313e-16,
+      "target": "RPL41",
+      "source_cells": 93
+    },
+    {
+      "shared_genes": 5179,
+      "shared_lfc_rms": 0.07855005155609673,
+      "baseline_mass_preserved_outside_shared": true,
+      "total_mass_relative_error": 0.0,
+      "target": "COG6",
+      "source_cells": 128
+    },
+    {
+      "shared_genes": 5179,
+      "shared_lfc_rms": 0.11766462225532903,
+      "baseline_mass_preserved_outside_shared": true,
+      "total_mass_relative_error": 0.0,
+      "target": "EEF2",
+      "source_cells": 128
+    },
+    {
+      "shared_genes": 5179,
+      "shared_lfc_rms": 0.07468277743426764,
+      "baseline_mass_preserved_outside_shared": true,
+      "total_mass_relative_error": 0.0,
+      "target": "DCTN1",
+      "source_cells": 128
+    },
+    {
+      "shared_genes": 5179,
+      "shared_lfc_rms": 0.07974751870290465,
+      "baseline_mass_preserved_outside_shared": true,
+      "total_mass_relative_error": 0.0,
+      "target": "HAUS8",
+      "source_cells": 128
+    },
+    {
+      "shared_genes": 5179,
+      "shared_lfc_rms": 0.0982907519012651,
+      "baseline_mass_preserved_outside_shared": true,
+      "total_mass_relative_error": 0.0,
+      "target": "SETD1A",
+      "source_cells": 89
+    }
+  ],
+  "per_metric_delta_counts": {
+    "de_wilcoxon_direction_fidelity_yield_raw": {
+      "positive": 3,
+      "negative": 9,
+      "zero": 0,
+      "missing": 0
+    },
+    "de_wilcoxon_direction_reach_raw": {
+      "positive": 2,
+      "negative": 7,
+      "zero": 2,
+      "missing": 1
+    },
+    "de_wilcoxon_lfc_nmae": {
+      "positive": 6,
+      "negative": 3,
+      "zero": 0,
+      "missing": 3
+    },
+    "de_wilcoxon_sig_jaccard": {
+      "positive": 4,
+      "negative": 7,
+      "zero": 1,
+      "missing": 0
+    },
+    "expr_distance_unbiased": {
+      "positive": 0,
+      "negative": 0,
+      "zero": 12,
+      "missing": 0
+    },
+    "expr_mse_unbiased": {
+      "positive": 2,
+      "negative": 10,
+      "zero": 0,
+      "missing": 0
+    },
+    "expr_mse_unbiased_capped": {
+      "positive": 2,
+      "negative": 10,
+      "zero": 0,
+      "missing": 0
+    },
+    "expr_real_mass_ratio": {
+      "positive": 0,
+      "negative": 0,
+      "zero": 12,
+      "missing": 0
+    },
+    "pds_cosine": {
+      "positive": 1,
+      "negative": 8,
+      "zero": 3,
+      "missing": 0
+    }
+  },
+  "shared_common_top30": [
+    {
+      "gene": "TOP2A",
+      "mean_log1p_cpm_delta": 1.9704969596882087
+    },
+    {
+      "gene": "MKI67",
+      "mean_log1p_cpm_delta": 1.8869322896446286
+    },
+    {
+      "gene": "CENPF",
+      "mean_log1p_cpm_delta": 1.6595992654666412
+    },
+    {
+      "gene": "CDK1",
+      "mean_log1p_cpm_delta": 1.6152104537929945
+    },
+    {
+      "gene": "TPX2",
+      "mean_log1p_cpm_delta": 1.5710467596681759
+    },
+    {
+      "gene": "MT2A",
+      "mean_log1p_cpm_delta": 1.5617838790065464
+    },
+    {
+      "gene": "HIST1H1E",
+      "mean_log1p_cpm_delta": 1.4790399565620573
+    },
+    {
+      "gene": "SLC2A1",
+      "mean_log1p_cpm_delta": 1.3982658794156873
+    },
+    {
+      "gene": "AURKA",
+      "mean_log1p_cpm_delta": 1.3921182955456795
+    },
+    {
+      "gene": "CCNB1",
+      "mean_log1p_cpm_delta": 1.3724791348884868
+    },
+    {
+      "gene": "LGALS1",
+      "mean_log1p_cpm_delta": 1.2500618690900795
+    },
+    {
+      "gene": "ASPM",
+      "mean_log1p_cpm_delta": 1.2443512660247271
+    },
+    {
+      "gene": "HMGB2",
+      "mean_log1p_cpm_delta": 1.2131077641594556
+    },
+    {
+      "gene": "HMMR",
+      "mean_log1p_cpm_delta": 1.2067299086973424
+    },
+    {
+      "gene": "PLK1",
+      "mean_log1p_cpm_delta": 1.200988304918349
+    },
+    {
+      "gene": "HIST1H4C",
+      "mean_log1p_cpm_delta": 1.1636035655983301
+    },
+    {
+      "gene": "CCNA2",
+      "mean_log1p_cpm_delta": 1.0732745209892003
+    },
+    {
+      "gene": "HIST1H1C",
+      "mean_log1p_cpm_delta": 0.9996964649626245
+    },
+    {
+      "gene": "GDF15",
+      "mean_log1p_cpm_delta": 0.9906745085520994
+    },
+    {
+      "gene": "PRC1",
+      "mean_log1p_cpm_delta": 0.9776490403435774
+    },
+    {
+      "gene": "CDC20",
+      "mean_log1p_cpm_delta": 0.9648413884308562
+    },
+    {
+      "gene": "RRM2",
+      "mean_log1p_cpm_delta": 0.956658064863877
+    },
+    {
+      "gene": "KIF20B",
+      "mean_log1p_cpm_delta": 0.9217182015654175
+    },
+    {
+      "gene": "KIF11",
+      "mean_log1p_cpm_delta": 0.916859381487277
+    },
+    {
+      "gene": "PTTG1",
+      "mean_log1p_cpm_delta": 0.9034143837598254
+    },
+    {
+      "gene": "CKS2",
+      "mean_log1p_cpm_delta": 0.844730681946495
+    },
+    {
+      "gene": "HIST1H1B",
+      "mean_log1p_cpm_delta": 0.8369792520688357
+    },
+    {
+      "gene": "HMGCS1",
+      "mean_log1p_cpm_delta": 0.8284476977615722
+    },
+    {
+      "gene": "BIRC5",
+      "mean_log1p_cpm_delta": 0.8079392837233641
+    },
+    {
+      "gene": "TUBB4B",
+      "mean_log1p_cpm_delta": 0.7918653452731164
+    }
+  ],
+  "memory_measurement": "psutil unavailable; CSR block limit 64 cells"
+}

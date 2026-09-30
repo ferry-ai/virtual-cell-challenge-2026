@@ -1,0 +1,19 @@
+{
+  "utc": "2026-09-29T22:29:38.211146+00:00",
+  "runner_pid": 15144,
+  "command": [
+    "C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\python.exe",
+    "-m",
+    "vcc",
+    "--json",
+    "submit",
+    "C:\\Users\\ferra\\vcc2026-data\\artifacts\\t28_local_upload_r1\\prediction.vcc",
+    "-m",
+    "trial-28 amplified multi-source transfer with control-fitted gene dispersion",
+    "-d",
+    "The trial-25 multi-source prediction combines public K562 perturbations from Replogle et al., primary CD4+ T cells from GSE314342, and HCT116 and HEK293T from X-Atlas/Orion (Xaira, CC-BY-NC-SA-4.0), with local shrinkage, source-mean removal and a CRISPRi cis component. This model multiplies the complete saved trial-25 effect vector by 1.5 and generates new gamma-Poisson count vectors using gene-specific dispersion estimated from the destination context's control cells. Library sizes are sampled from the same controls; no control-cell vector is copied and no realized group total is fixed. The amplitude and dispersion combination was selected in a preregistered factorial benchmark on public HepG2 cells and checked on disjoint targets with three generation seeds. This public benchmark does not establish its official challenge performance. No perturbed cells of the official contexts are used. This candidate contains no neural correction."
+  ],
+  "resume_entry": null,
+  "validation_sha256": "85aba880d62789d612bc8b6e889ae236f2625f3e632f16d28d490d2c16eb13b4",
+  "sleep_inhibition": true
+}

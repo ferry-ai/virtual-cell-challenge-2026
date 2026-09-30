@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260929-005",
+  "revision": 3,
+  "previous_sha256": "4f78f6e184d0a20543b81b95312d237844f1598b49dadb4808e7a3e7636db0b0",
+  "recorded_utc": "2026-09-29T21:23:47.818691+00:00",
+  "claim_type": "operational_incident",
+  "title": "Job081/082: input parzialmente sincronizzati e snapshot mancante",
+  "symptom": "081 si ferma H5AD assente;082 attende poi lo snapshot del codice assente nel mount.",
+  "cause": "Il marker non dimostrava sincronizzazione dei file grandi; anche lo snapshot necessario non era disponibile al runtime. I log non distinguono da soli omissione copia e ritardo sync.",
+  "cause_verified": true,
+  "fix": "Inventario completo inclusivo snapshot; copia e attesa dei SHA completi di ogni input prima extraction/scoring.",
+  "regression_test": "test_preflight.py: marker presente/file assente, hash errato a stessa dimensione e output nuovo.",
+  "next_guard": "Manifest input completo; ricevuta locale distinta da runtime; mai usare marker o glob di altri run come prova di completezza.",
+  "scope": "Guasto tecnico risolto nel082. A perde il confronto scientifico: ciÃƒÂ² non riapre questo incidente nÃƒÂ© autorizza una promozione. Evento aggiunto: il nuovo guard riusabile e applicato localmente a084; lo stato verified_remotely sopra continua a riferirsi solo alla chiusura storica082. Nuova ricevuta: preflight084 verificato nel runtime; nessuna conclusione sullo scoring084.",
+  "evidence": [
+    {
+      "path": "G:/Il mio Drive/vcc2026/runs/jobs/081_lead_stack_score_kaggle_a_r1.log",
+      "sha256": "76c13d3df4d6f3a71a2f9b514034a9532e684e15c113e121cd62b5c23dcf6739",
+      "bytes": 317,
+      "supports": "Manifest visibile ma H5ADstack ancora assente sul runtime"
+    },
+    {
+      "path": "G:/Il mio Drive/vcc2026/runs/jobs/082_lead_stack_score_kaggle_a_r2.log",
+      "sha256": "7322e9efe0e9cca67bfc664d407ca2028f203affd0491b3f3c5f88290b119aaf",
+      "bytes": 20262,
+      "supports": "Attende transfer, poi snapshot assente; tutti hash OK al tentativo29 e scorer termina"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/082_lead_stack_score_kaggle_a_r2.sh",
+      "sha256": "09051a589929f4606993e95b1ada29d4b070ea5ab4867eccfae75e63a00975ed",
+      "bytes": 1792,
+      "supports": "Attesa fullhash di tutte le predizioni e dello snapshot"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_a_scoring_r2/evaluation_manifest.json",
+      "sha256": "4b86a8e42572a2392c0d8f58e122f405cbb88507d5f96fc2f5c99111ad44ad43",
+      "bytes": 989,
+      "supports": "Processo scoring avviato dopo verifica"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/RISULTATI_STACK_A.md",
+      "sha256": "eaebb97a0b6838c703af2d5aec54190cd0cb3e729c1adaa870582e8d875a6ef3",
+      "bytes": 1785,
+      "supports": "082rc0 20:53:18 e risultato scientifico negativo distinto dal guasto"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/learning/preflight.py",
+      "sha256": "1df1ca1f82ff3e4b7a65f829dc742da4218a32adb7180721d95b65328b88e744",
+      "bytes": 11396,
+      "supports": "Inventario completo, size/hash nel runtime e attesa"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/learning/test_preflight.py",
+      "sha256": "ccc7e41e6d6e3a3940a39c099c4da8ffa9d0b39e9fc53fa375d885a82807f898",
+      "bytes": 5075,
+      "supports": "Marker esistente non nasconde input assente"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_b_scoring_bound_r1/preflight_local_receipt.json",
+      "sha256": "b8b670fb949b3cd04f3fb241a59c44b6c89cd86ef335432453722a2569a656e2",
+      "bytes": 4069,
+      "supports": "Uso reale del guard sul laptop; non prova remota"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_b_scoring_bound_r1/job_contract.json",
+      "sha256": "00ed6f7e57fc4644e62871d3f7a90e2ef2c700a2430c0c929159534251a0a1dc",
+      "bytes": 5493,
+      "supports": "Dieci input espliciti con percorsi locali/runtime e target richiesti"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_b_scoring_bound_r1/084_lead_stack_score_b_r1.sh",
+      "sha256": "e97f5a166284588cd49f928dadda75f55e6dde4b54f94cc87c81f6889beeff93",
+      "bytes": 3393,
+      "supports": "Guard runtime obbligatorio prima estrazione/scoring; non prova esecuzione"
+    },
+    {
+      "path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_b_scoring_runtime_r1/preflight_runtime_receipt.json",
+      "sha256": "a66965d8421878103daa48e771af3cc903c8168b71e8b6635ffbc9ba6cd623e1",
+      "bytes": 3971,
+      "supports": "Preflight084 PASS nel runtime; non prova scoring completo"
+    }
+  ],
+  "state": "verified_remotely",
+  "remote_verification": {
+    "evidence_path": "G:/Il mio Drive/vcc2026/runs/jobs/082_lead_stack_score_kaggle_a_r2.log",
+    "observed_utc": "2026-09-29T20:53:18+00:00",
+    "criterion": "Tutti SHA richiesti OK prima estrazione,8testPASS e scoring completo; rc0 attestato nel reportroot"
+  },
+  "guard_applications": [
+    {
+      "event_id": "E-20260929-005.guard-job084-local-r1",
+      "state": "verified_locally",
+      "job_id": "084_stack_b_development_scoring_r1",
+      "observed_utc": "2026-09-29T21:10:51.363204+00:00",
+      "site": "local",
+      "receipt_path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_b_scoring_bound_r1/preflight_local_receipt.json",
+      "receipt_sha256": "b8b670fb949b3cd04f3fb241a59c44b6c89cd86ef335432453722a2569a656e2",
+      "manifest_sha256": "00ed6f7e57fc4644e62871d3f7a90e2ef2c700a2430c0c929159534251a0a1dc",
+      "validator_sha256": "1df1ca1f82ff3e4b7a65f829dc742da4218a32adb7180721d95b65328b88e744",
+      "measured": "Ricevuta PASS sul laptop:10 input size/SHA,12 target presenti,output nuovo,import e roundtrip nullable.",
+      "implemented": "Il launcher richiede lo stesso preflight nel runtime prima di estrazione e scoring.",
+      "not_verified": "Disponibilita dei file nel runtime Colab,esecuzione084 e risultato scientifico non attestati da questa ricevuta."
+    },
+    {
+      "event_id": "E-20260929-005.guard-job084-runtime-r1",
+      "state": "verified_remotely",
+      "job_id": "084_stack_b_development_scoring_r1",
+      "observed_utc": "2026-09-29T21:21:35.283533+00:00",
+      "site": "runtime",
+      "receipt_path": "reports/analisi/lead_scientist_2026-09-29/neural/stack_b_scoring_runtime_r1/preflight_runtime_receipt.json",
+      "receipt_sha256": "a66965d8421878103daa48e771af3cc903c8168b71e8b6635ffbc9ba6cd623e1",
+      "manifest_sha256": "00ed6f7e57fc4644e62871d3f7a90e2ef2c700a2430c0c929159534251a0a1dc",
+      "validator_sha256": "1df1ca1f82ff3e4b7a65f829dc742da4218a32adb7180721d95b65328b88e744",
+      "measured": "Preflight completo PASS nel runtime:10 input,12target,output nuovo,ambiente e probe.",
+      "not_verified": "Scoring completo084 e utilita scientifica non dimostrati dal preflight."
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "status": "extended_row_coverage_exact_existing_parity_no_scores",
+  "utc": "2026-09-29T20:53:44.770675+00:00",
+  "targets": [
+    "PCBP1",
+    "CDC20",
+    "RNF31",
+    "KIF11",
+    "C7orf26",
+    "RPS24",
+    "GINS2",
+    "YRDC",
+    "DESI1",
+    "MRPL38",
+    "RSL1D1",
+    "MYBBP1A"
+  ],
+  "existing_generator_rows_bit_exact": 144,
+  "existing_pilot_rows_bit_exact": 12,
+  "values": "Original t19like natural-log effects selected only; no refit or recentering",
+  "mask": {
+    "method": "stage98.k562_table; finite shrunk values and positive n_cells",
+    "control_fraction_gate": 1e-06,
+    "observed_genes_min_max": [
+      7681,
+      7681
+    ],
+    "source_stage_sha256": "7bf7b960fb166e4b235081ca14e8a80b1295a0c87fbdd4486510e310500e530a"
+  },
+  "mask_dependency_hashes": {
+    "src/vcc2026/multisource.py": "adf9395e7c8a5eea64bd402ffb33616f03c21acbfacd78a07f33bb9f0ab4ba45",
+    "src/vcc2026/predictor_sc.py": "2d2ff0b11e99aeb9e293ab5581fbeb53ee42e52f8e5d6c3113bbd3218e172c41"
+  },
+  "destination_perturbed_rows_read": 0,
+  "output_sha256": "e7be7ee898599bc1474ce8f53cde43b9f75aa9eca49a96c4d805024e88abc616",
+  "inputs": {
+    "/content/drive/MyDrive/vcc2026/data/processed/banco_hepg2_v2_2026-09-26/t19like.npz": {
+      "bytes": 10704635,
+      "sha256": "a8d7e65c7b9ea6f9933b474628160b1167c5a229eb744dabd42912b097206169"
+    },
+    "/content/drive/MyDrive/vcc2026/data/external/K562_gwps_raw_bulk_01.h5ad": {
+      "bytes": 374587922,
+      "sha256": "7cec96b3b76169abbf6b6ab9d10bf00d71d942d89e63292351f745e130b154db"
+    },
+    "/content/drive/MyDrive/vcc2026/runs/lead_generator_2026-09-29_r3/target_manifest.json": {
+      "bytes": 305511,
+      "sha256": "7b7459ca86d0bef53d4a53f3b7bcae983189a44f623deb2510d7ed33da07d79f"
+    },
+    "/content/drive/MyDrive/vcc2026/runs/lead_generator_2026-09-29_r3/prepared_effects.npz": {
+      "bytes": 4443449,
+      "sha256": "5a7220cbfb5c036358d4262b39c6961aef9d26dd196d990f1ff6cd7ea2170822"
+    },
+    "/content/drive/MyDrive/vcc2026/runs/lead_stack_2026-09-29_r2/bundle/transfer.npz": {
+      "bytes": 428512,
+      "sha256": "ddb443b1ea888690cd7111607bc5175267003321c82d7c2668f80472f7fdf455"
+    },
+    "/content/drive/MyDrive/vcc2026/runs/lead_stack_2026-09-29_r2/bundle/bundle.json": {
+      "bytes": 53496,
+      "sha256": "16cf30126a7c46ec651c8ed8262b19353e1a3ab07c4dd445590a8a040e36fc29"
+    },
+    "/content/lead_stack_confirmation_pack_r2/reports/analisi/lead_scientist_2026-09-29/generator_bench.py": {
+      "bytes": 34700,
+      "sha256": "e959e6874a4a35e9d3dd6ebb64aec4230f2918d1de1eb3d11a031a9ff0f6bae6"
+    },
+    "/content/lead_stack_confirmation_pack_r2/reports/analisi/lead_scientist_2026-09-29/neural/stack_confirmation_effects.py": {
+      "bytes": 7081,
+      "sha256": "55414097c15fc0634f201a063e0541dbd558eb207c4cffd11e3ee72b51f31177"
+    }
+  }
+}

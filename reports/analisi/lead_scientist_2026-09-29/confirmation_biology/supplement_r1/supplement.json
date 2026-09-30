@@ -1,0 +1,269 @@
+{
+  "created_utc": "2026-09-29T19:33:47.361515+00:00",
+  "claim_type": "POST HOC descriptive exact decomposition; no change to predictions, selection, or gate",
+  "targets": 96,
+  "pairs": 288,
+  "FID_formula_reconstruction": [
+    {
+      "arm": "a1_p0",
+      "seed": 1,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "arm": "a1p5_p1",
+      "seed": 1,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "arm": "a1_p0",
+      "seed": 2,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "arm": "a1p5_p1",
+      "seed": 2,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "arm": "a1_p0",
+      "seed": 3,
+      "max_error": 1.1102230246251565e-16
+    },
+    {
+      "arm": "a1p5_p1",
+      "seed": 3,
+      "max_error": 1.1102230246251565e-16
+    }
+  ],
+  "maximum_decomposition_residual": 8.326672684688674e-17,
+  "FID_macro_baseline": 0.4729774466356258,
+  "FID_macro_candidate": 0.5235414117443417,
+  "FID_macro_delta": 0.050563965108715796,
+  "precision_component_macro": 0.03144231509817321,
+  "coverage_component_macro": 0.019121650010542585,
+  "precision_component_fraction_of_FID_delta": 0.6218324656812455,
+  "coverage_component_fraction_of_FID_delta": 0.3781675343187545,
+  "uncapped_coverage_pairs_baseline": 72,
+  "uncapped_coverage_pairs_candidate": 60,
+  "feature_correlations": [
+    {
+      "left": "n_conf",
+      "right": "real_cells",
+      "rho": 0.3026954964349434,
+      "p_exploratory": 0.002721109109722318
+    },
+    {
+      "left": "n_conf",
+      "right": "true_effect_distance_unbiased",
+      "rho": 0.9528768152395005,
+      "p_exploratory": 1.731700352592779e-50
+    },
+    {
+      "left": "n_conf",
+      "right": "source_expected_energy_all_genes",
+      "rho": 0.5343653699944734,
+      "p_exploratory": 2.053469931845086e-08
+    },
+    {
+      "left": "real_cells",
+      "right": "true_effect_distance_unbiased",
+      "rho": 0.13424841623299427,
+      "p_exploratory": 0.19221936515921487
+    },
+    {
+      "left": "real_cells",
+      "right": "source_expected_energy_all_genes",
+      "rho": -0.09871526371039287,
+      "p_exploratory": 0.33862890685374913
+    },
+    {
+      "left": "true_effect_distance_unbiased",
+      "right": "source_expected_energy_all_genes",
+      "rho": 0.5897042864894194,
+      "p_exploratory": 2.5876125411713726e-10
+    }
+  ],
+  "nconf_strata": [
+    {
+      "stratum": "zero",
+      "n": 9,
+      "mean_precision_baseline": 0.4829833870280653,
+      "mean_precision_candidate": 0.5208416973218137,
+      "mean_capped_coverage_baseline": 1.0,
+      "mean_capped_coverage_candidate": 1.0,
+      "macro_FID_precision_contribution": 0.0035492165900389144,
+      "macro_FID_coverage_contribution": 0.0,
+      "projection_contribution": 0.0014419211172318127
+    },
+    {
+      "stratum": "1_to_9",
+      "n": 17,
+      "mean_precision_baseline": 0.49017754858818874,
+      "mean_precision_candidate": 0.5186637174433474,
+      "mean_capped_coverage_baseline": 1.0,
+      "mean_capped_coverage_candidate": 1.0,
+      "macro_FID_precision_contribution": 0.00504442573476767,
+      "macro_FID_coverage_contribution": 0.0,
+      "projection_contribution": 0.0022190310321104404
+    },
+    {
+      "stratum": "10_to_99",
+      "n": 15,
+      "mean_precision_baseline": 0.5328712862361304,
+      "mean_precision_candidate": 0.568118189579618,
+      "mean_capped_coverage_baseline": 1.0,
+      "mean_capped_coverage_candidate": 1.0,
+      "macro_FID_precision_contribution": 0.005507328647419925,
+      "macro_FID_coverage_contribution": 0.0,
+      "projection_contribution": 0.001932833720335209
+    },
+    {
+      "stratum": "100_to_499",
+      "n": 11,
+      "mean_precision_baseline": 0.5374165497930488,
+      "mean_precision_candidate": 0.5693276935726594,
+      "mean_capped_coverage_baseline": 1.0,
+      "mean_capped_coverage_candidate": 1.0,
+      "macro_FID_precision_contribution": 0.003656485224747053,
+      "macro_FID_coverage_contribution": 0.0,
+      "projection_contribution": 0.0022187577870123997
+    },
+    {
+      "stratum": "500_plus",
+      "n": 44,
+      "mean_precision_baseline": 0.5536080489817645,
+      "mean_precision_candidate": 0.5954757970561667,
+      "mean_capped_coverage_baseline": 0.7690682608387394,
+      "mean_capped_coverage_candidate": 0.8381207470960074,
+      "macro_FID_precision_contribution": 0.013684858901199644,
+      "macro_FID_coverage_contribution": 0.019121650010542588,
+      "projection_contribution": 0.021105166850335127
+    }
+  ],
+  "experimental_annotation_sensitivity": [
+    {
+      "program": "ribosome",
+      "n_confirmation": 10,
+      "n_panel": 2,
+      "mean_contribution_times96": 0.031719643125785214,
+      "projection_contribution": 0.003304129492269293,
+      "positive": 7,
+      "members": [
+        "DHX37",
+        "EXOSC3",
+        "FAU",
+        "MRPL36",
+        "MRPS17",
+        "NOC4L",
+        "RPL35",
+        "RPL4",
+        "RPS15",
+        "RRP7A"
+      ]
+    },
+    {
+      "program": "spliceosome_rna_splicing",
+      "n_confirmation": 6,
+      "n_panel": 6,
+      "mean_contribution_times96": 0.06132567630888783,
+      "projection_contribution": 0.0038328547693054892,
+      "positive": 5,
+      "members": [
+        "HNRNPA1",
+        "LSM5",
+        "RBM48",
+        "SNRNP48",
+        "USP39",
+        "ZMAT2"
+      ]
+    },
+    {
+      "program": "mitochondrion",
+      "n_confirmation": 8,
+      "n_panel": 27,
+      "mean_contribution_times96": 0.04915857112260622,
+      "projection_contribution": 0.0040965475935505185,
+      "positive": 8,
+      "members": [
+        "AURKAIP1",
+        "DAP3",
+        "ISCU",
+        "MRPL36",
+        "MRPS17",
+        "PGAM5",
+        "TIMM10",
+        "TMX2"
+      ]
+    },
+    {
+      "program": "cell_cycle",
+      "n_confirmation": 8,
+      "n_panel": 7,
+      "mean_contribution_times96": 0.04316265229931039,
+      "projection_contribution": 0.003596887691609199,
+      "positive": 7,
+      "members": [
+        "CENPJ",
+        "CEP85",
+        "HJURP",
+        "MCMBP",
+        "NAA50",
+        "PDCD6IP",
+        "UHRF1",
+        "USP37"
+      ]
+    },
+    {
+      "program": "intracellular_vesicle_trafficking",
+      "n_confirmation": 3,
+      "n_panel": 11,
+      "mean_contribution_times96": 0.045612932493776,
+      "projection_contribution": 0.0014254041404305,
+      "positive": 3,
+      "members": [
+        "GPN1",
+        "PDCD6IP",
+        "PEX19"
+      ]
+    }
+  ],
+  "source_files": {
+    "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\analisi\\lead_scientist_2026-09-29\\confirmation_biology\\r1\\per_target.csv": {
+      "bytes": 55918,
+      "sha256": "c092a53a8cdf96f475aab56a4e2afc1ca8caef0d88c5230004cac05eb488ca7c"
+    },
+    "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\analisi\\lead_scientist_2026-09-29\\confirmation_analysis\\results_r1\\target_by_seed.csv": {
+      "bytes": 88470,
+      "sha256": "f2daf3415357d9b676b2bde9d2c341394aaba04a818f2343903551570fc332f6"
+    },
+    "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\analisi\\lead_scientist_2026-09-29\\confirmation_biology\\r1\\annotations_by_target.csv": {
+      "bytes": 49171,
+      "sha256": "4473b954e64926b5f181f118c4ba76f1f18b0fe4da0e553525ecf891dc5d729c"
+    },
+    "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\analisi\\lead_scientist_2026-09-29\\generator_confirmation_r3\\confirmation\\per_pert_a1_p0_s1.csv": {
+      "bytes": 39489,
+      "sha256": "5d52da8bbd559d9dc9b99a4cd1a748e330424a696d2a84703e7630d46520deec"
+    },
+    "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\analisi\\lead_scientist_2026-09-29\\generator_confirmation_r3\\confirmation\\per_pert_a1p5_p1_s1.csv": {
+      "bytes": 39628,
+      "sha256": "bbdf77e977fd535d6aa774d7f11fa1315070a2cb874dfd32ffb5a8bde3b393f2"
+    },
+    "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\analisi\\lead_scientist_2026-09-29\\generator_confirmation_r3\\confirmation\\per_pert_a1_p0_s2.csv": {
+      "bytes": 39501,
+      "sha256": "b3a1c9d32a47afbb01a82a412c6afe5c26c2c2ca5ddbf8a641f6c52f734a97eb"
+    },
+    "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\analisi\\lead_scientist_2026-09-29\\generator_confirmation_r3\\confirmation\\per_pert_a1p5_p1_s2.csv": {
+      "bytes": 39572,
+      "sha256": "0e491dd251083b3d50f13142ffb0a6040d820215e07d6126ff93c10450a7bd4b"
+    },
+    "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\analisi\\lead_scientist_2026-09-29\\generator_confirmation_r3\\confirmation\\per_pert_a1_p0_s3.csv": {
+      "bytes": 39556,
+      "sha256": "d7ad39446b1210d0f138ad0864b63ea828fd7dcfe5ddd1aecd0bc30044ccf54d"
+    },
+    "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\analisi\\lead_scientist_2026-09-29\\generator_confirmation_r3\\confirmation\\per_pert_a1p5_p1_s3.csv": {
+      "bytes": 39603,
+      "sha256": "3d1463387d47a6c400f1fae7ad1ccce9595cb26371f3a74ef7816d0221c5663a"
+    }
+  },
+  "script_sha256": "169f7cc0f6b01c9bd3e32fe24ed7bafe87aa9ae4bafe5f401073c77d8a3ade00"
+}

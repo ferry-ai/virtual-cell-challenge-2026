@@ -5,6 +5,7 @@ del lavoro scelto. Si applicano CLAUDE alla radice e [docs/CLAUDE.md](../CLAUDE.
 
 | Scheda | Ambito |
 |---|---|
+| [modello-competitivo.md](modello-competitivo.md) | R-COMP: piano del 29/09, copertura reale dei dati, modello biologico, training e verifica indipendente sui sei membri |
 | [dati-affidabilita.md](dati-affidabilita.md) | R-DATI: sorgenti, controlli, repliche, rumore e dati ponte |
 | [trasferimento-modelli.md](trasferimento-modelli.md) | R-MODELLI: programmi, contesto, bersagli nuovi, confronti |
 | [switch-distribuzioni.md](switch-distribuzioni.md) | R-SWITCH: soglie, intensità e quote di cellule rispondenti |
