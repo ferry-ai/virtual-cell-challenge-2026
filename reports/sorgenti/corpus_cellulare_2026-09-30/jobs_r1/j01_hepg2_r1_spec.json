@@ -1,0 +1,34 @@
+{
+ "job_id": "j01_hepg2_r1",
+ "min_free_out_bytes": 3221225472,
+ "units": [
+  {
+   "name": "hepg2_nadig",
+   "adapter": "h5ad",
+   "kwargs": {
+    "path": "{IN}/NadigOConner2024_hepg2.h5ad",
+    "study": "hepg2_nadig",
+    "context": "HepG2",
+    "chemistry": "10x 3'",
+    "modality": "CRISPRi",
+    "axis_csv": "{AXIS}",
+    "block": 20000
+   },
+   "source": {
+    "id": "hepg2_nadig",
+    "license": "see Zenodo 13350497",
+    "files": [
+     {
+      "role": "counts h5ad",
+      "locator": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_hepg2.h5ad/content",
+      "bytes": 850590740,
+      "sha256": "1af2f7b3e692ad3d077e6027d68a1f800619e29aa3f7a0efa70146fb7223a4bf"
+     }
+    ]
+   },
+   "expect": {
+    "cells": 145473
+   }
+  }
+ ]
+}

@@ -1,0 +1,109 @@
+{
+ "job_id": "j02_hipsci_r1",
+ "min_free_out_bytes": 34359738368,
+ "min_free_stage_bytes": 6442450944,
+ "units": [
+  {
+   "name": "hipsci_gw_fitness",
+   "adapter": "hipsci",
+   "kwargs": {
+    "counts": "{IN}/GenomeWideScreen_FitnessGenes_RNA-UMI-Counts.csv.gz",
+    "metadata": "{IN}/GenomeWideScreen_FitnessGenes_Cell-Metadata.tsv.gz",
+    "study": "hipsci_gw_fitness",
+    "axis_csv": "{AXIS}",
+    "work": "{WORK}/buckets/hipsci_gw_fitness",
+    "block": 20000,
+    "cells_per_pass": 600000
+   },
+   "source": {
+    "id": "hipsci_gw_fitness",
+    "release": "Figshare 27989294 v1",
+    "license": "MIT",
+    "files": [
+     {
+      "role": "counts",
+      "locator": "https://ndownloader.figshare.com/files/51059483",
+      "bytes": 1445924890,
+      "sha256": "bae144af382f81132720d10300daffc6e105f122eb5b5bdb65d5d796b64c1a19",
+      "md5": "ba7243599cca0d9b0b09dfd777d1cb97"
+     },
+     {
+      "role": "metadata",
+      "locator": "https://ndownloader.figshare.com/files/51051803",
+      "bytes": 3607490,
+      "sha256": "6a3a7c24d02a9e3ed71d53c5d0e5dab8d590d7966c922f0e0525060fb4b36115",
+      "md5": "15423c32d9122b2999bb7d657b8f8d18"
+     }
+    ]
+   }
+  },
+  {
+   "name": "hipsci_gw_nonfitness",
+   "adapter": "hipsci",
+   "kwargs": {
+    "counts": "{IN}/GenomeWideScreen_NonFitnessGenes_RNA-UMI-Counts.csv.gz",
+    "metadata": "{IN}/GenomeWideScreen_NonFitnessGenes_Cell-Metadata.tsv.gz",
+    "study": "hipsci_gw_nonfitness",
+    "axis_csv": "{AXIS}",
+    "work": "{WORK}/buckets/hipsci_gw_nonfitness",
+    "block": 20000,
+    "cells_per_pass": 600000
+   },
+   "source": {
+    "id": "hipsci_gw_nonfitness",
+    "release": "Figshare 27989294 v1",
+    "license": "MIT",
+    "files": [
+     {
+      "role": "counts",
+      "locator": "https://ndownloader.figshare.com/files/51059558",
+      "bytes": 1748940996,
+      "sha256": "20532e0527cb35ccc8052ec8801fd05c765b0d057adc0e36ae0d5dd313b48070",
+      "md5": "f62d21335ac27809db9ccce97c73af1e"
+     },
+     {
+      "role": "metadata",
+      "locator": "https://ndownloader.figshare.com/files/51051806",
+      "bytes": 4238782,
+      "sha256": "3618fc56041df89ce515037ad944923f745b3c597a3a1cb9e7352ea3eecabb83",
+      "md5": "9f27a55d488d8ffae93d112d307c263b"
+     }
+    ]
+   }
+  },
+  {
+   "name": "hipsci_targeted_19",
+   "adapter": "hipsci",
+   "kwargs": {
+    "counts": "{IN}/TargetedScreen_RNA-UMI-Counts.csv.gz",
+    "metadata": "{IN}/TargetedScreen_Cell-Metadata.tsv.gz",
+    "study": "hipsci_targeted_19",
+    "axis_csv": "{AXIS}",
+    "work": "{WORK}/buckets/hipsci_targeted_19",
+    "block": 20000,
+    "cells_per_pass": 600000
+   },
+   "source": {
+    "id": "hipsci_targeted_19",
+    "release": "Figshare 27989294 v1",
+    "license": "MIT",
+    "files": [
+     {
+      "role": "counts",
+      "locator": "https://ndownloader.figshare.com/files/51072902",
+      "bytes": 4480969391,
+      "sha256": "cbda45f0645f1ce06488ba733fb95da04145a6ff2bd8d6d197633d2534386471",
+      "md5": "f0d613b1ea8147425501baddba034158"
+     },
+     {
+      "role": "metadata",
+      "locator": "https://ndownloader.figshare.com/files/51051809",
+      "bytes": 13491635,
+      "sha256": "d6057946570edbbcd3406f4e55d8f338f602ef1b7cc71cffca101133e35b098d",
+      "md5": "980a440a8132a20567c4c3610e6a5b20"
+     }
+    ]
+   }
+  }
+ ]
+}

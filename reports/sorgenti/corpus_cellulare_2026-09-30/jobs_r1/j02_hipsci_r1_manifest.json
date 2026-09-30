@@ -1,0 +1,157 @@
+{
+ "schema_version": 1,
+ "job_id": "j02_hipsci_r1",
+ "incident_ids": [
+  "E-20260929-002",
+  "E-20260929-003",
+  "E-20260929-005",
+  "E-20260929-007"
+ ],
+ "guards": {
+  "E-20260929-002": "shards write object-dtype strings; validate_runtime.py round-trips an h5ad on the runtime first",
+  "E-20260929-003": "every shard is copied to Drive and hashed as soon as it is written, with its receipt",
+  "E-20260929-005": "the launcher waits for every setup file by sha256; the preflight hashes every input on the runtime",
+  "E-20260929-007": "inputs are copied or downloaded to the runtime's disk and hashed there; the job never reads them from the mount"
+ },
+ "inputs": [
+  {
+   "id": "code_snapshot",
+   "paths": {
+    "local": "G:/Il mio Drive/vcc2026/runs/rlab_setup_2026-09-30_r1/code_snapshot.tar.gz",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r1/code_snapshot.tar.gz"
+   },
+   "bytes": 16538,
+   "sha256": "e80d74c331559792489092109904295fe380097dd5b53202504bed332fdaa39d"
+  },
+  {
+   "id": "setup:j02_hipsci_r1_spec.json",
+   "paths": {
+    "local": "G:/Il mio Drive/vcc2026/runs/rlab_setup_2026-09-30_r1/j02_hipsci_r1_spec.json",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r1/j02_hipsci_r1_spec.json"
+   },
+   "bytes": 3384,
+   "sha256": "0d420f8d7b0599eef0549ba6b913bbf0146bf72976d96eb4f3729a165b8a6836"
+  },
+  {
+   "id": "setup:j02_hipsci_r1_fetch.json",
+   "paths": {
+    "local": "G:/Il mio Drive/vcc2026/runs/rlab_setup_2026-09-30_r1/j02_hipsci_r1_fetch.json",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r1/j02_hipsci_r1_fetch.json"
+   },
+   "bytes": 1624,
+   "sha256": "fea51a6eafb2dc357d0e7f9e0510420ec6c7262107d69e34e3a376a0c23c9d11"
+  },
+  {
+   "id": "GenomeWideScreen_FitnessGenes_RNA-UMI-Counts.csv.gz",
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\external\\hipsci\\GenomeWideScreen_FitnessGenes_RNA-UMI-Counts.csv.gz",
+    "runtime": "/content/work/rlab_j02_hipsci_r1/in/GenomeWideScreen_FitnessGenes_RNA-UMI-Counts.csv.gz"
+   },
+   "bytes": 1445924890,
+   "sha256": "bae144af382f81132720d10300daffc6e105f122eb5b5bdb65d5d796b64c1a19"
+  },
+  {
+   "id": "GenomeWideScreen_FitnessGenes_Cell-Metadata.tsv.gz",
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\external\\hipsci\\GenomeWideScreen_FitnessGenes_Cell-Metadata.tsv.gz",
+    "runtime": "/content/work/rlab_j02_hipsci_r1/in/GenomeWideScreen_FitnessGenes_Cell-Metadata.tsv.gz"
+   },
+   "bytes": 3607490,
+   "sha256": "6a3a7c24d02a9e3ed71d53c5d0e5dab8d590d7966c922f0e0525060fb4b36115"
+  },
+  {
+   "id": "GenomeWideScreen_NonFitnessGenes_RNA-UMI-Counts.csv.gz",
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\external\\hipsci\\GenomeWideScreen_NonFitnessGenes_RNA-UMI-Counts.csv.gz",
+    "runtime": "/content/work/rlab_j02_hipsci_r1/in/GenomeWideScreen_NonFitnessGenes_RNA-UMI-Counts.csv.gz"
+   },
+   "bytes": 1748940996,
+   "sha256": "20532e0527cb35ccc8052ec8801fd05c765b0d057adc0e36ae0d5dd313b48070"
+  },
+  {
+   "id": "GenomeWideScreen_NonFitnessGenes_Cell-Metadata.tsv.gz",
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\external\\hipsci\\GenomeWideScreen_NonFitnessGenes_Cell-Metadata.tsv.gz",
+    "runtime": "/content/work/rlab_j02_hipsci_r1/in/GenomeWideScreen_NonFitnessGenes_Cell-Metadata.tsv.gz"
+   },
+   "bytes": 4238782,
+   "sha256": "3618fc56041df89ce515037ad944923f745b3c597a3a1cb9e7352ea3eecabb83"
+  },
+  {
+   "id": "TargetedScreen_RNA-UMI-Counts.csv.gz",
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\external\\hipsci\\TargetedScreen_RNA-UMI-Counts.csv.gz",
+    "runtime": "/content/work/rlab_j02_hipsci_r1/in/TargetedScreen_RNA-UMI-Counts.csv.gz"
+   },
+   "bytes": 4480969391,
+   "sha256": "cbda45f0645f1ce06488ba733fb95da04145a6ff2bd8d6d197633d2534386471"
+  },
+  {
+   "id": "TargetedScreen_Cell-Metadata.tsv.gz",
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\external\\hipsci\\TargetedScreen_Cell-Metadata.tsv.gz",
+    "runtime": "/content/work/rlab_j02_hipsci_r1/in/TargetedScreen_Cell-Metadata.tsv.gz"
+   },
+   "bytes": 13491635,
+   "sha256": "d6057946570edbbcd3406f4e55d8f338f602ef1b7cc71cffca101133e35b098d"
+  },
+  {
+   "id": "official_axis",
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\gene_names.csv",
+    "runtime": "/content/work/rlab_j02_hipsci_r1/in/gene_names.csv"
+   },
+   "bytes": 119295,
+   "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  }
+ ],
+ "outputs": [
+  {
+   "id": "shards",
+   "paths": {
+    "local": "G:/Il mio Drive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j02_hipsci_r1",
+    "runtime": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j02_hipsci_r1"
+   },
+   "must_be_absent": true
+  },
+  {
+   "id": "stage",
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\processed\\corpus_cellulare_2026-09-30\\unused_j02_hipsci_r1\\stage",
+    "runtime": "/content/work/rlab_j02_hipsci_r1/stage"
+   },
+   "must_be_absent": true
+  },
+  {
+   "id": "buckets",
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\processed\\corpus_cellulare_2026-09-30\\unused_j02_hipsci_r1\\buckets",
+    "runtime": "/content/work/rlab_j02_hipsci_r1/buckets"
+   },
+   "must_be_absent": true
+  }
+ ],
+ "target_checks": [],
+ "environment": {
+  "python": {
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\python.exe",
+    "runtime": "/usr/bin/python3"
+   }
+  },
+  "packages": {
+   "anndata": null,
+   "h5py": null,
+   "numpy": null,
+   "pandas": null,
+   "scipy": null
+  },
+  "imports": [
+   "anndata",
+   "h5py",
+   "scipy.sparse"
+  ],
+  "probes": [],
+  "probes_note": "no nullable-string probe: the shards write object-dtype strings, and validate_runtime.py round-trips a real shard-like h5ad before the preflight"
+ }
+}

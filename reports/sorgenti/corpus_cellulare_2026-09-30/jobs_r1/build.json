@@ -1,0 +1,48 @@
+{
+ "commit": "190094b67262a3508558f21f4503463b82f46694",
+ "snapshot": {
+  "bytes": 16538,
+  "sha256": "e80d74c331559792489092109904295fe380097dd5b53202504bed332fdaa39d"
+ },
+ "preflight_sha256": "1df1ca1f82ff3e4b7a65f829dc742da4218a32adb7180721d95b65328b88e744",
+ "setup_runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r1",
+ "setup_local": "G:/Il mio Drive/vcc2026/runs/rlab_setup_2026-09-30_r1",
+ "jobs": {
+  "j01_hepg2_r1": {
+   "queue_file": "086_rlab_j01_hepg2_r1.sh",
+   "units": 1,
+   "inputs": 4,
+   "input_bytes": 850727361,
+   "setup_files": [
+    "j01_hepg2_r1_spec.json"
+   ],
+   "out": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j01_hepg2_r1",
+   "min_free_out_bytes": 3221225472
+  },
+  "j03_jurkat_r1": {
+   "queue_file": "087_rlab_j03_jurkat_r1.sh",
+   "units": 16,
+   "inputs": 150,
+   "input_bytes": 3753974220,
+   "setup_files": [
+    "j03_jurkat_r1_spec.json",
+    "j03_jurkat_r1_fetch.json",
+    "table_s2_panel.csv"
+   ],
+   "out": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j03_jurkat_r1",
+   "min_free_out_bytes": 5368709120
+  },
+  "j02_hipsci_r1": {
+   "queue_file": "088_rlab_j02_hipsci_r1.sh",
+   "units": 3,
+   "inputs": 10,
+   "input_bytes": 7697314025,
+   "setup_files": [
+    "j02_hipsci_r1_spec.json",
+    "j02_hipsci_r1_fetch.json"
+   ],
+   "out": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j02_hipsci_r1",
+   "min_free_out_bytes": 34359738368
+  }
+ }
+}

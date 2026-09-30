@@ -2,7 +2,9 @@
 
 The list is a JSON file of {"url", "bytes", "sha256", "dest"}: the locators and hashes come from
 the download manifests written when the same files were fetched to the laptop (HIPSCI on 27/09,
-Jurkat on 24/09), so a file that arrives different is refused, not used. A destination that already
+Jurkat on 24/09), so a file that arrives different is refused, not used. A file never fetched before
+(H1 2025) is declared with the "crc32c" its bucket publishes instead of a sha256: it is checked
+against that, and its sha256 is computed and recorded for every later use. A destination that already
 holds the right bytes is kept; a partial one is resumed with an HTTP Range request; nothing is ever
 written over a complete file with different bytes.
 
@@ -30,12 +32,33 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+def sha256_crc32c(path: Path) -> tuple[str, str]:
+    """One read: the sha256 (hex) and the crc32c in the base64 form Google Cloud Storage publishes."""
+    import base64
+    import google_crc32c
+    h, c = hashlib.sha256(), google_crc32c.Checksum()
+    with open(path, "rb") as fh:
+        for block in iter(lambda: fh.read(CHUNK), b""):
+            h.update(block)
+            c.update(block)
+    return h.hexdigest(), base64.b64encode(c.digest()).decode()
+
+
+def matches(path: Path, item: dict) -> tuple[bool, str]:
+    if item.get("sha256"):
+        got = sha256(path)
+        return got == item["sha256"], got
+    got, crc = sha256_crc32c(path)
+    return crc == item["crc32c"], got
+
+
 def fetch_one(item: dict, attempts: int) -> dict:
     dest = Path(item["dest"])
     dest.parent.mkdir(parents=True, exist_ok=True)
     if dest.exists() and dest.stat().st_size == item["bytes"]:
-        if sha256(dest) == item["sha256"]:
-            return {**item, "status": "already present, hash verified"}
+        ok, got = matches(dest, item)
+        if ok:
+            return {**item, "sha256": got, "status": "already present, hash verified"}
         sys.exit(f"refusing: {dest} is complete but its hash differs from the declared one")
     part = dest.with_name(dest.name + ".part")
     for attempt in range(1, attempts + 1):
@@ -62,11 +85,11 @@ def fetch_one(item: dict, attempts: int) -> dict:
         print(f"{dest.name}: attempt {attempt} ended at {part.stat().st_size} of {item['bytes']} bytes", flush=True)
     else:
         sys.exit(f"refusing: {dest.name} not complete after {attempts} attempts")
-    got = sha256(part)
-    if got != item["sha256"]:
-        sys.exit(f"refusing: {dest.name} arrived with sha256 {got}, declared {item['sha256']}")
+    ok, got = matches(part, item)
+    if not ok:
+        sys.exit(f"refusing: {dest.name} arrived with a hash different from the declared one (sha256 {got})")
     part.rename(dest)
-    return {**item, "status": "downloaded, hash verified"}
+    return {**item, "sha256": got, "status": "downloaded, hash verified"}
 
 
 def main() -> None:

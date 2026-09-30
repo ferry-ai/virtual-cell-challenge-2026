@@ -1,4 +1,8 @@
-"""Build the R-LAB jobs J01-J03 for the Colab dispatcher: specs, fetch lists, preflight manifests, launchers.
+"""Build the R-LAB jobs for the Colab dispatcher: specs, fetch lists, preflight manifests, launchers.
+
+J01-J03 ingest cells into contract shards (setup r1). H1 downloads the VCC 2025 H1 release to its
+frozen home on Drive, after J02 (setup r2): train and validation for training, test as the reserve
+the owner chose on 30/09, never opened by the job.
 
 Everything a job consumes is declared with its laptop path, its runtime path, bytes and sha256:
 the locators and hashes of the downloads come from the manifests written when the same files
@@ -8,6 +12,8 @@ stage or download the inputs to the runtime's disk, run the shared preflight on 
 only then start rlab_job.py. Nothing is overwritten: the output folder must be new.
 
     python build_jobs.py --snapshot <code_snapshot.tar.gz> --commit <sha> --out jobs_r1
+    python build_jobs.py --snapshot <...> --commit <sha> --out jobs_r2 --jobs h1 \
+        --setup-name rlab_setup_2026-09-30_r2 --bucket-listing <GCS listing.json>
 """
 from __future__ import annotations
 
@@ -200,20 +206,112 @@ echo "job {job} end $(date -u +%FT%TZ)"
 """
 
 
+H1_BASE = "https://storage.googleapis.com/arc-institute-virtual-cell-atlas/"
+H1_OUT = f"{DRIVE}/data/raw/vcc2025_h1_2026-09-30"
+H1_AFTER = f"{DRIVE}/runs/queue/088_rlab_j02_hipsci_r1.sh.done"
+H1_ROLES = {"test/": "RISERVA: non aprire; si legge una volta sola, a modello e regola congelati "
+                     "(scelta del proprietario, 30/09)",
+            "train/": "training", "validation/": "training", "gene_names.csv": "asse dei geni del rilascio"}
+
+H1_LAUNCHER = """#!/usr/bin/env bash
+# R-LAB {job}: VCC 2025 H1 release to its frozen home on Drive, after J02. Built by {report}/build_jobs.py at commit {commit}.
+# The test split is the reserve: this job downloads, verifies and copies it, and never opens it.
+set -euo pipefail
+export PYTHONUNBUFFERED=1 PYTHONIOENCODING=utf-8
+DRIVE={drive}
+SETUP="{setup}"
+WORK=/content/work/rlab_{job}
+OUT="{out}"
+REC="$SETUP/receipts/{job}"
+PY={py}
+echo "job {job} start $(date -u +%FT%TZ) host=$(hostname) cpus=$(nproc)"
+test -x "$PY"; test ! -e "$OUT"; test ! -e "$WORK"; test ! -e "$REC"
+while [ ! -f "{after}" ]; do echo "$(date -u +%T) waiting for J02 to end: {after}"; sleep 120; done
+free -g | head -2; df -h /content | tail -1; df -h /content/drive 2>/dev/null | tail -1 || true
+bootstrap_ready() {{
+  sha256sum -c --quiet - <<'SUMS' || return 1
+{sums}
+SUMS
+}}
+for attempt in $(seq 1 45); do
+  if bootstrap_ready; then break; fi
+  echo "waiting for the setup files by hash, attempt $attempt/45"; sleep 20
+done
+bootstrap_ready
+mkdir -p "$WORK/code" "$REC"
+tar -xzf "$SETUP/code_snapshot.tar.gz" -C "$WORK/code"
+C="$WORK/code/{report}"
+"$PY" "$C/validate_runtime.py" --out "$REC/environment_manifest_colab.json" --data-root "$DRIVE/data"
+"$PY" "$SETUP/preflight.py" validate --manifest "$SETUP/{job}_manifest.json" --site runtime --receipt "$REC/preflight_runtime.json" --attempts 3 --interval-seconds 20
+"$PY" -c "import shutil, sys; f = shutil.disk_usage('$DRIVE').free; print('drive free', f, 'needed', {need}); sys.exit(0 if f >= {need} else 1)"
+"$PY" "$C/fetch.py" --list "$SETUP/{job}_fetch.json" --receipt "$REC/fetch.json"
+"$PY" "$C/publish.py" --receipt "$REC/fetch.json" --from "$WORK/dl" --out "$OUT" --min-free-bytes 2147483648 --roles '{roles}' --note "VCC 2025 H1 (H1 hESC, CRISPRi, 10x Flex), Arc bucket objects of 16/12/2025; roles chosen by the owner on 30/09"
+rm -rf "$WORK"
+echo "job {job} end $(date -u +%FT%TZ)"
+"""
+
+
+def build_h1(a, listing: Path) -> dict:
+    job, work = "h1_vcc2025_r1", "/content/work/rlab_h1_vcc2025_r1"
+    objects = json.loads(listing.read_text(encoding="utf-8"))
+    wanted = [o for o in objects if o["name"].startswith("virtual-cell-challenge/2025/") and "/FASTQ/" not in o["name"]]
+    if len(wanted) != 7:
+        sys.exit(f"expected 7 non-FASTQ objects in the 2025 release, found {len(wanted)}")
+    fetch = [{"url": H1_BASE + o["name"], "bytes": int(o["size"]), "crc32c": o["crc32c"],
+              "generation": o["generation"],
+              "dest": f"{work}/dl/" + o["name"].removeprefix("virtual-cell-challenge/2025/")} for o in wanted]
+    name = f"{job}_fetch.json"
+    (a.out / name).write_text(json.dumps(fetch, indent=1), encoding="utf-8")
+    declared = [item("code_snapshot", f"{SETUP_LOCAL}/code_snapshot.tar.gz", f"{SETUP_RT}/code_snapshot.tar.gz",
+                     a.snapshot.stat().st_size, sha256(a.snapshot)),
+                item(f"setup:{name}", f"{SETUP_LOCAL}/{name}", f"{SETUP_RT}/{name}",
+                     (a.out / name).stat().st_size, sha256(a.out / name))]
+    env = {"python": {"paths": {"local": sys.executable, "runtime": PY_RT}},
+           "packages": {"google-crc32c": None}, "imports": ["google_crc32c"], "probes": []}
+    unused = DATA / "processed/corpus_cellulare_2026-09-30/unused_h1/dl"
+    manifest = {"schema_version": 1, "job_id": job, "incident_ids": INCIDENTS, "guards": GUARDS,
+                "inputs": declared,
+                "outputs": [{"id": "h1_release", "paths": {"local": f"{GDRIVE}/data/raw/vcc2025_h1_2026-09-30",
+                                                          "runtime": H1_OUT}, "must_be_absent": True},
+                            {"id": "download", "paths": {"local": str(unused), "runtime": f"{work}/dl"},
+                             "must_be_absent": True}],
+                "target_checks": [], "environment": env}
+    (a.out / f"{job}_manifest.json").write_text(json.dumps(manifest, indent=1), encoding="utf-8")
+    sums = [f"{sha256(a.preflight)}  {SETUP_RT}/preflight.py",
+            f"{sha256(a.out / f'{job}_manifest.json')}  {SETUP_RT}/{job}_manifest.json"]
+    sums += [f"{d['sha256']}  {d['paths']['runtime']}" for d in declared]
+    text = H1_LAUNCHER.format(job=job, report=REPORT, commit=a.commit, drive=DRIVE, setup=SETUP_RT, out=H1_OUT,
+                              py=PY_RT, after=H1_AFTER, sums="\n".join(sums),
+                              need=sum(f["bytes"] for f in fetch) + (2 << 30),
+                              roles=json.dumps(H1_ROLES, ensure_ascii=False))
+    script = a.out / f"089_rlab_{job}.sh"
+    script.write_bytes(text.encode("utf-8"))
+    return {"queue_file": script.name, "files": len(fetch), "bytes": sum(f["bytes"] for f in fetch),
+            "setup_files": [name], "out": H1_OUT, "after": H1_AFTER, "roles": H1_ROLES}
+
+
 def main() -> None:
+    global SETUP_NAME, SETUP_RT, SETUP_LOCAL
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--snapshot", required=True, type=Path)
     p.add_argument("--commit", required=True)
     p.add_argument("--out", required=True, type=Path)
     p.add_argument("--preflight", type=Path,
                    default=REPO / "reports/analisi/lead_scientist_2026-09-29/learning/preflight.py")
+    p.add_argument("--jobs", default="j01,j03,j02")
+    p.add_argument("--setup-name", default=SETUP_NAME)
+    p.add_argument("--bucket-listing", type=Path, help="GCS JSON listing of the 2025 release, for --jobs h1")
     a = p.parse_args()
     if a.out.exists():
         sys.exit(f"refusing: {a.out} exists")
+    SETUP_NAME = a.setup_name
+    SETUP_RT, SETUP_LOCAL = f"{DRIVE}/runs/{SETUP_NAME}", f"{GDRIVE}/runs/{SETUP_NAME}"
     a.out.mkdir(parents=True)
-    jobs = [("086", "j01_hepg2_r1", "HepG2 Nadig h5ad from Drive to contract shards", job_j01),
-            ("087", "j03_jurkat_r1", "Jurkat GSE249595, 16 channels from GEO to contract shards", job_j03),
-            ("088", "j02_hipsci_r1", "HIPSCI three screens from Figshare to contract shards", job_j02)]
+    chosen = a.jobs.split(",")
+    jobs = [j for j in [("086", "j01_hepg2_r1", "HepG2 Nadig h5ad from Drive to contract shards", job_j01),
+                        ("087", "j03_jurkat_r1", "Jurkat GSE249595, 16 channels from GEO to contract shards", job_j03),
+                        ("088", "j02_hipsci_r1", "HIPSCI three screens from Figshare to contract shards", job_j02)]
+            if j[1].split("_")[0] in chosen]
     built = {"commit": a.commit, "snapshot": {"bytes": a.snapshot.stat().st_size, "sha256": sha256(a.snapshot)},
              "preflight_sha256": sha256(a.preflight), "setup_runtime": SETUP_RT, "setup_local": SETUP_LOCAL,
              "jobs": {}}
@@ -254,7 +352,9 @@ def main() -> None:
                               "input_bytes": sum(i["bytes"] for i in manifest["inputs"]),
                               "setup_files": setup_files, "out": f"{OUT_RT}/{job}",
                               "min_free_out_bytes": spec["min_free_out_bytes"]}
-    (a.out / "build.json").write_text(json.dumps(built, indent=1), encoding="utf-8")
+    if "h1" in chosen:
+        built["jobs"]["h1_vcc2025_r1"] = build_h1(a, a.bucket_listing)
+    (a.out / "build.json").write_text(json.dumps(built, indent=1, ensure_ascii=False), encoding="utf-8")
     print(json.dumps(built["jobs"], indent=1))
 
 
