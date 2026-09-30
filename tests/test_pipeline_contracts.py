@@ -131,6 +131,40 @@ class TestMovedPaths(unittest.TestCase):
             finally:
                 config.REPO_ROOT = old
 
+    def test_a_renamed_document_is_followed_through_the_archive_table(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            (root / "docs" / "guide").mkdir(parents=True)
+            (root / "docs" / "PROCEDURE.md").write_text("# P\n", encoding="utf-8")
+            (root / "docs" / "guide" / "a.md").write_text("# A\n", encoding="utf-8")
+            (root / "docs" / "ARCHIVIO.md").write_text(
+                "| Percorso | Righe |\n|---|---|\n| `docs/ALTRO.md` | 3 |\n\n"
+                "| Nome vecchio | Nome nuovo | Dal | Perché |\n|---|---|---|---|\n"
+                "| `docs/LAVORO.md` | `docs/PROCEDURE.md` | 30/09/2026 | più chiaro |\n"
+                "| `docs/vecchia/` | `docs/guide/` | 30/09/2026 | cartella |\n\n"
+                "| `docs/FUORI.md` | `docs/DENTRO.md` | non è la tabella dei nomi |\n", encoding="utf-8")
+            old = config.REPO_ROOT
+            try:
+                config.REPO_ROOT = root
+                self.assertEqual(config.renamed_paths(),
+                                 {"docs/LAVORO.md": "docs/PROCEDURE.md", "docs/vecchia/": "docs/guide/"})
+                self.assertEqual(config.repo_file("docs/LAVORO.md"), root / "docs" / "PROCEDURE.md")
+                self.assertEqual(config.repo_file("docs/vecchia/a.md"), root / "docs" / "guide" / "a.md")
+                # renamed to a file that is not there, or never renamed: returned as named
+                self.assertEqual(config.repo_file("docs/vecchia/b.md"), root / "docs/vecchia/b.md")
+                self.assertEqual(config.repo_file("docs/ALTRO.md"), root / "docs/ALTRO.md")
+            finally:
+                config.REPO_ROOT = old
+
+    def test_the_checker_and_repo_file_read_the_same_renames(self):
+        """Two readers of one table in docs/ARCHIVIO.md: they must agree on the real one."""
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("check_docs", REPO / "scripts" / "31_check_docs.py")
+        check_docs = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(check_docs)
+        self.assertEqual(config.renamed_paths(), check_docs.renamed_paths(REPO))
+        self.assertIn("docs/LAVORO.md", config.renamed_paths())
+
 
 if __name__ == "__main__":
     unittest.main()

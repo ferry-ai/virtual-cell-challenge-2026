@@ -53,14 +53,14 @@ PDS e reach salgono, `nmae` peggiora. La ricetta del t20 è il nuovo riferimento
 
 Il prossimo invio porta il modello di [R-V2](modello-v2.md) quando il suo banco lo giustifica,
 con previsione e regola registrate prima; il t19 resta pronto per separare restrizione e modulo
-cis se serve. [LAVORO](../LAVORO.md) §2 conserva procedura e autorizzazioni.
+cis se serve. [PROCEDURE](../PROCEDURE.md) §2 conserva procedura e autorizzazioni.
 
 | Ordine | Lavoro aperto | Dipendenza / risultato atteso |
 |---|---|---|
 | 1 | Lettura t16 e t17 | **Fatta** il 25 settembre: CP-0037 e CP-0038 |
 | 2 | Curva dell'ampiezza | t18 (1,576) registrato; la sua regola decide il passo dopo |
 | 3 | Attribuzione dei pesi/sorgenti | Ablazione dei pesi t11 e sorgenti ad ampiezza scelta; isolare ciò che il confronto permette |
-| 4 | Set finale | Preparazione secondo LAVORO §7; nuovi controlli, assi e bersagli al rilascio previsto del 22 ottobre; chiusura invii il 5 novembre |
+| 4 | Set finale | Preparazione secondo PROCEDURE §7; nuovi controlli, assi e bersagli al rilascio previsto del 22 ottobre; chiusura invii il 5 novembre |
 
 **Candidato dal banco del 25 settembre**, corretto dopo due revisioni indipendenti
 ([CP-0039](../checkpoints/0039-banco-varianti-restrizione.md)): effetti ristretti prima della

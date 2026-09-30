@@ -1,6 +1,7 @@
-# Come si lavora — il percorso vivo
+# Procedure — il percorso vivo
 
-Scritto il 2026-09-23, con la pulizia di [D-040](DECISIONI.md#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione).
+Scritto il 2026-09-23, con la pulizia di [D-040](DECISIONI.md#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione),
+come `docs/LAVORO.md`; rinominato il 30/09 ([ARCHIVIO](ARCHIVIO.md#nomi-cambiati)).
 **Perimetro:** gli strumenti di esecuzione del progetto, cioè che cosa gira e in che ordine, con
 quali comandi, e dove finiscono i risultati. **Si legge per sezione**, quella del compito: §1–2
 generare, impacchettare, inviare e leggere un punteggio; §3 job su Colab e Kaggle; §4 gli stadi

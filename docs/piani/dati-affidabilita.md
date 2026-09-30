@@ -30,7 +30,7 @@ manca per ciascuna prova, con costo e destinazione di acquisizione proposti.
 [GENERALIZZAZIONE](../GENERALIZZAZIONE.md) è normativa: zero overlap col pannello
 non esclude una sorgente. Le sovrapposizioni sono invece necessarie quando si
 vuole attribuire un effetto a un cambio di saggio o modalità. Prima di download
-verificare disponibilità, dimensioni, licenza e risorse secondo [LAVORO](../LAVORO.md).
+verificare disponibilità, dimensioni, licenza e risorse secondo [PROCEDURE](../PROCEDURE.md).
 Non duplicare acquisizioni già in corso; una scheda degli agenti non sostituisce
 manifest, checksum e ispezione dei file. Non scrivere nella cache di produzione.
 

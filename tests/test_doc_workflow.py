@@ -297,6 +297,56 @@ class CheckerTests(unittest.TestCase):
         self.assertEqual(len(errors), 1, errors)
         self.assertIn('VECCHIO.md#assente', errors[0])
 
+    def test_a_renamed_document_is_followed_to_its_new_name(self):
+        """A live document renamed on purpose keeps its old citations working (ARCHIVIO).
+
+        Checkpoints are never edited, so they go on citing the old name: the checker follows it
+        to the new file for backtick paths and links, checks the anchor there, does not count
+        the old name as archived, and says the new name with --status. A name that is in no
+        table is still an error.
+        """
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root, True)
+        self.addCleanup(check_docs.archived_paths.cache_clear)
+        self.addCleanup(check_docs.renamed_paths.cache_clear)
+        (root / 'docs' / 'checkpoints').mkdir(parents=True)
+        (root / 'docs' / 'guide').mkdir(parents=True)
+        (root / 'docs' / 'PROCEDURE.md').write_text('# Procedure\n\n## 3. Job su Colab\n', encoding='utf-8')
+        (root / 'docs' / 'guide' / 'a.md').write_text('# A\n', encoding='utf-8')
+        (root / 'docs' / 'ARCHIVIO.md').write_text(
+            '# Archivio\n\n| Percorso | Righe |\n|---|---|\n| `src/gone.py` | 3 |\n\n'
+            '## Nomi cambiati\n\n| Nome vecchio | Nome nuovo | Dal | Perché |\n|---|---|---|---|\n'
+            '| `docs/LAVORO.md` | `docs/PROCEDURE.md` | 30/09/2026 | più chiaro |\n'
+            '| `docs/vecchia/` | `docs/guide/` | 30/09/2026 | cartella |\n', encoding='utf-8')
+        (root / 'docs' / 'checkpoints' / '0001-uno.md').write_text(
+            'vedi `docs/LAVORO.md`, `docs/vecchia/a.md`, [job](../LAVORO.md#3-job-su-colab), '
+            '[assente](../LAVORO.md#assente) e [altro](../ALTRO.md)\n', encoding='utf-8')
+        (root / 'docs' / 'REGISTRO.md').write_text(
+            '# R\n\n| Percorso | Stato | Sostituito da | Nota | Scheda |\n|---|---|---|---|---|\n'
+            '| `docs/PROCEDURE.md` | attuale | — | le procedure | — |\n', encoding='utf-8')
+        for name in ('CLAUDE.md', 'README.md'):
+            (root / name).write_text('ok\n', encoding='utf-8')
+        for name in ('PROGETTO.md', 'DECISIONI.md'):
+            (root / 'docs' / name).write_text('# X\n', encoding='utf-8')
+        check_docs.archived_paths.cache_clear()
+        check_docs.renamed_paths.cache_clear()
+        errors = []
+        with patch.object(check_docs, 'REPO_ROOT', root):
+            self.assertEqual(check_docs.renamed('docs/LAVORO.md'), 'docs/PROCEDURE.md')
+            self.assertEqual(check_docs.renamed('docs/vecchia/a.md'), 'docs/guide/a.md')
+            self.assertIsNone(check_docs.renamed('docs/ALTRO.md'))
+            self.assertTrue(check_docs.path_exists('docs/LAVORO.md'))
+            self.assertTrue(check_docs.path_exists('docs/vecchia/a.md'))
+            self.assertFalse(check_docs.path_exists('docs/vecchia/b.md'))
+            self.assertEqual(check_docs.archived_paths(root), frozenset({'src/gone.py'}))
+            check_docs.check_links(errors)
+            status = check_docs.registry_status('docs/LAVORO.md')
+        self.assertEqual(len(errors), 2, errors)
+        self.assertTrue(any('LAVORO.md#assente' in e for e in errors), errors)
+        self.assertTrue(any('ALTRO.md' in e for e in errors), errors)
+        self.assertIn('renamed: now docs/PROCEDURE.md', status[0])
+        self.assertIn('attuale', status[1])
+
     def test_status_prints_the_covering_entries_the_sheet_and_the_correction(self):
         """An agent asks about one path and gets its row, not the whole registry."""
         root = Path(tempfile.mkdtemp())

@@ -7,7 +7,7 @@ Due tipi di cartella, più due riepiloghi:
 - **`trial_<data>/`**: una per giorno di lavoro sugli invii. Contiene i testi scritti prima, i
   manifesti degli stadi 45 e 48 e l'output di `vcc` salvato così com'è (`submit_*`, `status_*`).
 
-Procedura e regole: [LAVORO §1–2](../../docs/LAVORO.md). Indice generale: [../README.md](../README.md).
+Procedura e regole: [PROCEDURE §1–2](../../docs/PROCEDURE.md). Indice generale: [../README.md](../README.md).
 
 ## I punteggi ufficiali in una tabella
 
@@ -69,7 +69,7 @@ pronto dal proprietario), t09 e t13 (fermati dalle loro regole), t21 (la sua pre
 | 23/09 | [prediction_t12_2026-09-23/](prediction_t12_2026-09-23/) | t11 + HEK293T: registrato, non generato | storico | ★ |
 | 23/09 | [prediction_t11_2026-09-23/](prediction_t11_2026-09-23/) | t08 + Orion HCT116 a pesi uguali: +0,070777 | sì | ★ |
 | 23/09 | [prediction_t10_2026-09-23/](prediction_t10_2026-09-23/) | t08 senza CD4: +0,0502; CD4 vale circa +0,010 | sì | ★ |
-| 23/09 | [trial_2026-09-23/](trial_2026-09-23/) | t10 inviato; t11 dopo tre tentativi falliti e la ripresa dell'upload; t14 | sì | ★ (lezioni pratiche sull'upload, LAVORO §2) |
+| 23/09 | [trial_2026-09-23/](trial_2026-09-23/) | t10 inviato; t11 dopo tre tentativi falliti e la ripresa dell'upload; t14 | sì | ★ (lezioni pratiche sull'upload, PROCEDURE §2) |
 | 22/09 | [prediction_t08_2026-09-22/](prediction_t08_2026-09-22/) | K562 + CD4, γ = 1: +0,0604, sul bordo superiore della banda | sì | ★ |
 | 22/09 | [trial_2026-09-22/](trial_2026-09-22/) | t08 e **le autorizzazioni del proprietario** (`autorizzazioni.md`: invii, Orion, disco) | sì | ★★ (le autorizzazioni vanno riconfermate in chat) |
 | 19/09 | [prediction_t07_2026-09-19/](prediction_t07_2026-09-19/) | Previsione dello stadio 84 per il t07: +0,0101 contro un ufficiale −0,0160 | sì | ★ |

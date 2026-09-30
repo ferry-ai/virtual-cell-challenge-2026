@@ -117,7 +117,7 @@ La classifica finale dipende solo dal set finale, su tre contesti diversi (D, E,
 |---|---|---|
 | Ambiente, CLI, dati di controllo, contratto di sottomissione e di punteggio | fatto | [SOTTOMISSIONE.md](SOTTOMISSIONE.md) §1–2 (`da-verificare` per §3 e §6: R-015), `reports/gara/scorer_2026-09-12/vcc2026_contract.json` |
 | Impacchettamento in memoria limitata (stadio 48) | fatto: 0,52 GiB di picco contro i 33,5 di `vcc prep` | [CP-0005](checkpoints/0005-packaging-streaming-trial01.md) |
-| Ancore ufficiali di cinque membri su sei | fatto; come conversione dei grezzi aggregati non sono esatte ([CP-0050](checkpoints/0050-credibilita-score-e-riserva.md)): un punteggio si legge dai sei scalati pubblicati (LAVORO §2, punto 7) | [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md), `reports/gara/anchors_2026-09-17/` |
+| Ancore ufficiali di cinque membri su sei | fatto; come conversione dei grezzi aggregati non sono esatte ([CP-0050](checkpoints/0050-credibilita-score-e-riserva.md)): un punteggio si legge dai sei scalati pubblicati (PROCEDURE §2, punto 7) | [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md), `reports/gara/anchors_2026-09-17/` |
 | Pipeline a singola cellula su Colab: K562 letto per intero, `ControlModel`, DE veloce identico allo scorer, banchi a sei metriche | fatto | [CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md), [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
 | Trasferimento dello stesso bersaglio da quattro sorgenti genome-scale (K562, CD4, Orion HCT116 e HEK293T) | ricetta del t22; ultimi cambi della media piccoli, ma ampiezza e generatore non confinati | §0, [audit 29/09](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md) |
 | Universi genome-wide: tutti i bersagli di ogni sorgente, non solo i 300 del pannello | fatti per K562, CD4, HCT116, HEK293T (corretti il 27/09), KOLF2.1J, A549, VIPerturb-seq, 19 linee HIPSCI | [sorgenti](../reports/sorgenti/README.md) |
@@ -126,7 +126,7 @@ La classifica finale dipende solo dal set finale, su tre contesti diversi (D, E,
 | Contesti A/B/C: saggio 10x Flex, impronte genetiche | misurato; le identità di linea restano ipotesi | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md) |
 | Generatore, cioè la fedeltà direzionale | trial-01 in tutti i migliori invii; `ControlModel` (t14) non attribuibile, la fedeltà scende | `reports/generatore_e_banchi/dispersion_2026-09-23/` |
 | Esperimenti in pseudobulk dell'11–19/09; orchestratore e catena di cicli | chiusi il 23/09, codice archiviato; la base di lancio degli agenti di oggi è fuori dalla repo ([AGENTI](AGENTI.md)) | [storico](../reports/storico/README.md), [ARCHIVIO.md](ARCHIVIO.md) |
-| Set finale D/E/F | esce il 22 ottobre; invii fino al 5 novembre; prova generale fatta in forma ridotta ([CP-0044](checkpoints/0044-prova-generale-22-ottobre.md)), non in forma piena | [LAVORO.md](LAVORO.md) §7 |
+| Set finale D/E/F | esce il 22 ottobre; invii fino al 5 novembre; prova generale fatta in forma ridotta ([CP-0044](checkpoints/0044-prova-generale-22-ottobre.md)), non in forma piena | [PROCEDURE.md](PROCEDURE.md) §7 |
 
 ## 3. Che cosa sappiamo e guida le scelte
 

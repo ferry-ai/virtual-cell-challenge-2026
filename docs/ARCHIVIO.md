@@ -56,6 +56,19 @@ anche **questo file**: un percorso elencato qui, o che sta sotto una cartella el
 (voce che finisce con `/`), conta come esistente. Un percorso che sparisce senza comparire
 qui resta un errore: è la differenza fra archiviare e perdere.
 
+## Nomi cambiati
+
+Un documento vivo rinominato di proposito non esce dall'albero: tiene testo e intestazioni sotto il
+nome nuovo, mentre checkpoint e report, che non si correggono, continuano a citare il vecchio.
+Questa tabella è l'unico elenco. La leggono il controllo documentale, che segue il nome vecchio
+fino al nuovo per percorsi, link e ancore e lo dice con `--status`, e `config.repo_file`. Una voce
+che finisce con `/` rinomina tutto ciò che sta sotto. Un nome si cambia solo dove il guadagno di
+chiarezza è netto: ogni nome cambiato rompe un'abitudine degli agenti.
+
+| Nome vecchio | Nome nuovo | Dal | Perché |
+|---|---|---|---|
+| `docs/LAVORO.md` | `docs/PROCEDURE.md` | 30/09/2026 | «Come si lavora» non diceva che cosa contiene: le procedure del perimetro di esecuzione (invio, Colab e Kaggle, stadi, set finale). Approvato dal proprietario in chat ([pulizia della struttura](../reports/analisi/pulizia_struttura_2026-09-30/README.md), §2) |
+
 ## Il precedente del 19 settembre
 
 Il branch `refactor/pulizia` (worktree `../vcc2026-refactor`, tag

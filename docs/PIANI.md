@@ -60,7 +60,7 @@ altrimenti chiedendo al proprietario. Come si committano i file condivisi è nel
 1. Leggere `git status --short`, la scheda scelta e le modifiche ai file da
    toccare. Un file non tracciato o un incarico senza assegnatario non è libero
    per definizione. Prima di lanciare un lavoro pesante verificare anche i job
-   secondo LAVORO; lo stato scritto in una scheda non prova che un job sia vivo.
+   secondo PROCEDURE; lo stato scritto in una scheda non prova che un job sia vivo.
 2. Dopo il coordinamento disponibile, annotare **nella singola scheda** agente,
    sessione identificabile, data/ora con fuso, sottoattività, file di lavoro e
    destinazione nuova degli output. Non assegnare né liberare il lavoro altrui.

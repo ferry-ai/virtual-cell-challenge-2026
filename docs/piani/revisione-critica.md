@@ -13,7 +13,7 @@
 - **Mandato del proprietario**, in chat alla sessione cloud il 28/09 verso le 12:30: «ok ora devo passare
   ad un'altra sessione in locale, fai in modo che ci siano informazioni in repo in evidenza per farlo
   agire basandosi sulle tue analisi». Vale come via a lavorare su questa scheda. **Non** vale come via a
-  invii, download, calcolo in cloud o push: quelli si chiedono in chat come sempre (LAVORO §2 e §3,
+  invii, download, calcolo in cloud o push: quelli si chiedono in chat come sempre (PROCEDURE §2 e §3,
   CLAUDE.md).
 - **Fonti:** la [revisione](../../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md) (le
   criticità, con le fonti e il tipo di ogni affermazione) e la
@@ -177,7 +177,7 @@ nessun candidato si propone più al proprietario sul solo proxy, serve il banco 
 
 È il filone F8 della [scheda R-V2](modello-v2.md), libero: la presa in carico si annota anche lì.
 
-- **I passi** sono quelli di LAVORO §7, «Il giorno del rilascio», su A/B/C trattati come nuovi:
+- **I passi** sono quelli di PROCEDURE §7, «Il giorno del rilascio», su A/B/C trattati come nuovi:
   - una copia dei controlli in una cartella a parte (`raw/controls/` non si tocca);
   - 300 bersagli finti, scelti con un seme. Una parte ha effetti negli universi, una parte in nessuna
     sorgente, per provare i ripieghi dello stadio 100;
@@ -203,7 +203,7 @@ isolata. D1 è corretto con il suo test. Restano da correggere, ciascuno con il 
 sbagliato passa in silenzio), D9 (il riferimento di γ) e le altre voci della lettura del codice. L'azione resta
 aperta fino a quelle correzioni.
 
-**Correzioni (29/09 pomeriggio):** D1–D5, D9–D11 corretti con i loro test, e D6, D12, D13 in LAVORO §7. Le
+**Correzioni (29/09 pomeriggio):** D1–D5, D9–D11 corretti con i loro test, e D6, D12, D13 in PROCEDURE §7. Le
 prove prima/dopo sono identiche bit per bit su t22, t25 e t26; lo stadio nuovo 106 costruisce la cache dagli universi
 ([RISULTATI](../../reports/invii/prova_generale_2026-09-28/RISULTATI.md), «Correzioni dei difetti»). Restano voci minori,
 elencate lì. Resta anche la forma piena, che richiede 17 GB liberi: il 29/09 il disco li ha, dopo lo svuotamento del
@@ -232,7 +232,7 @@ più di quelli di gara (revisione §2.5).
   - il generatore con e senza `--gene-dispersion` (revisione §2.7).
 - **Semi:** almeno tre semi del generatore. Si riporta la varianza fra semi accanto al bootstrap sui
   bersagli.
-- **Colab:** il job lo avvia il proprietario (LAVORO §3).
+- **Colab:** il job lo avvia il proprietario (PROCEDURE §3).
 - **Chiusura:** report e checkpoint. L'esito decide ampiezza ed esclusione per D/E/F, nella prova
   dell'azione 3.
 
@@ -335,7 +335,7 @@ Serve prima la decisione del proprietario: R-V2, «Domanda strategica aperta».
     crederci (revisione §3.2).
 - **[S-INVII](invii-finale.md):**
   - la regola sulle differenze sotto 0,005;
-  - l'esito delle azioni 3 e 4, che alimenta LAVORO §7.
+  - l'esito delle azioni 3 e 4, che alimenta PROCEDURE §7.
 - **[R-DATI](dati-affidabilita.md):** le azioni 1 e 5 toccano il suo ambito.
 
 ## 4. Criterio di chiusura

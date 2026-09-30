@@ -9,7 +9,7 @@ cell lines never seen during training.
 Submissions close **5 November 2026**. Final test set drops **22 October 2026**.
 
 > **Start from [`docs/PROGETTO.md`](docs/PROGETTO.md) §0** — where the project stands
-> today (best observed score +0.144845, t28; inconclusive improvement, t22 recipe remains the reference) — and [`docs/LAVORO.md`](docs/LAVORO.md),
+> today (best observed score +0.144845, t28; inconclusive improvement, t22 recipe remains the reference) — and [`docs/PROCEDURE.md`](docs/PROCEDURE.md),
 > the live pipeline with its exact commands. Agents: the working agreement is
 > [`CLAUDE.md`](CLAUDE.md). Open work is indexed in [`docs/PIANI.md`](docs/PIANI.md); the
 > evidence, filed by topic with the status of every folder, in

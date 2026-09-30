@@ -7,7 +7,7 @@
 | `configs/recipes/t<NN>.json` | the recipe of submission tNN: sources, weights and amplitude, per context | stage 100 |
 
 - **A recipe is written before its generation**, with the prediction it is judged by
-  (`docs/LAVORO.md` §2). Once stage 100 has run on it, it is never edited: its content and
+  (`docs/PROCEDURE.md` §2). Once stage 100 has run on it, it is never edited: its content and
   hash are in that run's manifest. A new idea is a new file.
 - **Repository paths inside a recipe** (the cis pairs, the gene share) are read through
   `config.repo_file`: recipes written before 28 September name `reports/<folder>/…`, which since

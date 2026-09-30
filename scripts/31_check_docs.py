@@ -8,7 +8,9 @@ rule that a flagged document must carry a review sheet.
 
 A path listed in `docs/ARCHIVIO.md` counts as existing: that file says which code and
 documents were moved into an archive tag on purpose, and with which command they come
-back. A path that disappears without being listed there is still an error.
+back. A path that disappears without being listed there is still an error. A live document
+renamed on purpose is listed there too, in the table "Nomi cambiati": its old name is
+followed to the new one, anchors included.
 
 It checks structure, never claims: no amount of green output means the science is
 right. Standard library only.
@@ -104,7 +106,41 @@ def archived_paths(root: Path) -> frozenset[str]:
     for line in path.read_text(encoding="utf-8").splitlines():
         if line.startswith("| `"):
             found.update(BACKTICK_PATH.findall(line.split("|")[1]))
-    return frozenset(found)
+    # A renamed document did not leave the tree: its old name is followed, not accepted.
+    return frozenset(found - set(renamed_paths(root)))
+
+
+@functools.lru_cache(maxsize=None)
+def renamed_paths(root: Path) -> dict[str, str]:
+    """Old name -> new name of the paths renamed on purpose, from docs/ARCHIVIO.md.
+
+    The table whose first column is "Nome vecchio" is the one list. A renamed document keeps
+    its text and its headings under the new name, while checkpoints and reports, never edited,
+    go on citing the old one. An entry ending in '/' renames everything below it.
+    `src/vcc2026/config.py` (`repo_file`) reads the same table.
+    """
+    path = root / "docs" / "ARCHIVIO.md"
+    if not path.exists():
+        return {}
+    found: dict[str, str] = {}
+    for _, header, rows in tables(path.read_text(encoding="utf-8")):
+        if not header or header[0] != "Nome vecchio":
+            continue
+        for row in rows:
+            names = [re.findall(r"`([^`]+)`", cell) for cell in row[:2]]
+            if len(names) == 2 and names[0] and names[1]:
+                found[names[0][0]] = names[1][0]
+    return found
+
+
+def renamed(raw: str) -> str | None:
+    """The current name of a path renamed on purpose, or None if it was not renamed."""
+    for old, new in renamed_paths(REPO_ROOT).items():
+        if raw in (old, old.rstrip("/")):
+            return new
+        if old.endswith("/") and raw.startswith(old):
+            return new + raw[len(old):]
+    return None
 
 
 def is_archived(raw: str) -> bool:
@@ -163,7 +199,16 @@ def documented_outside_repo(target: Path) -> bool:
 
 
 def path_exists(raw: str) -> bool:
-    """Repo-relative path, glob allowed. Absolute paths are outside our control."""
+    """Repo-relative path, glob allowed. Absolute paths are outside our control.
+
+    A path renamed on purpose exists if its new name does.
+    """
+    new = renamed(raw)
+    return exists_as_named(raw) or (new is not None and exists_as_named(new))
+
+
+def exists_as_named(raw: str) -> bool:
+    """On disk, beside its manifest, archived in a tag, or moved one level down (D-046)."""
     if any(ch in raw for ch in "*?["):
         return any(REPO_ROOT.glob(raw)) or is_archived(raw) or bool(moved(raw))
     target = REPO_ROOT / raw
@@ -372,7 +417,7 @@ def check_links(errors: list[str]) -> None:
              REPO_ROOT / "docs" / "DECISIONI.md"]
     # The working guide and the archive list are checked when present: an entry point
     # that names a missing stage misdirects the next agent before anything else can.
-    files += [path for path in (REPO_ROOT / "docs" / "LAVORO.md",
+    files += [path for path in (REPO_ROOT / "docs" / "PROCEDURE.md",
                                 REPO_ROOT / "docs" / "ARCHIVIO.md") if path.exists()]
     # So are the folder guides (D-043): the paths they route agents to must exist.
     files += [path for path in (REPO_ROOT / "AGENTS.md", REPO_ROOT / "src" / "vcc2026" / "CLAUDE.md")
@@ -412,7 +457,11 @@ def check_links(errors: list[str]) -> None:
                     rel = other.relative_to(REPO_ROOT).as_posix()
                 except ValueError:
                     rel = None
-                found = moved(rel) if rel is not None else []
+                new = renamed(rel) if rel is not None else None
+                if new is not None:
+                    found = [REPO_ROOT / new]  # its anchors are checked in the renamed file
+                else:
+                    found = moved(rel) if rel is not None else []
                 if len(found) == 1 and found[0].exists():
                     other = found[0]
                 else:
@@ -468,14 +517,19 @@ def registry_status(raw: str) -> list[str]:
 
     The registry entries that cover the path come most specific first: the file itself, then
     the folders above it. A path written before 28 September is followed into its category
-    first (`moved`), since checkpoints go on citing the old places. An empty list means that
-    nothing covers or indexes the path.
+    first (`moved`), and a document renamed on purpose to its new name (`renamed`), since
+    checkpoints go on citing the old places. An empty list means that nothing covers or indexes
+    the path.
     """
     rel = raw.replace("\\", "/").strip().removeprefix("./").rstrip("/")
+    followed = None
     if is_repo_relative(rel) and not (REPO_ROOT / rel).exists():
-        found = moved(rel)
+        new = renamed(rel)
+        found = [REPO_ROOT / new] if new is not None else moved(rel)
         if len(found) == 1:
-            rel = found[0].relative_to(REPO_ROOT).as_posix()
+            rel = found[0].relative_to(REPO_ROOT).as_posix().rstrip("/")
+            followed = (f"  renamed: now {rel} (docs/ARCHIVIO.md, \"Nomi cambiati\")" if new is not None
+                        else f"  now at {rel} (moved on 28 September, D-046)")
     path = REPO_ROOT / "docs" / "REGISTRO.md"
     text = path.read_text(encoding="utf-8")
     sheets = {m.group(1): m.group(0).lstrip("# ").strip()
@@ -514,8 +568,8 @@ def registry_status(raw: str) -> list[str]:
     lines += index_verdicts(rel)
     if len(lines) == 1 and not hits:
         return []
-    if rel != raw.replace("\\", "/").strip().removeprefix("./").rstrip("/"):
-        lines.insert(0, f"  now at {rel} (moved on 28 September, D-046)")
+    if followed:
+        lines.insert(0, followed)
     return lines
 
 

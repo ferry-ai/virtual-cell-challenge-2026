@@ -86,7 +86,7 @@ committare file condivisi o coordinarsi:
 - **Per parlare con un'altra sessione Claude:** `ListAgents` e `SendMessage`. Per prendere un lavoro
   assegnato a un'altra sessione: [PIANI §3](PIANI.md#3-lavorare-in-una-cartella-condivisa).
 - **Un job Colab o Kaggle** di un'altra sessione: come sapere se è vivo è in
-  [LAVORO §3](LAVORO.md#3-job-su-colab-e-kaggle).
+  [PROCEDURE §3](PROCEDURE.md#3-job-su-colab-e-kaggle).
 - **Worktree e branch lasciati dagli agenti** (misurato il 30/09 sera con `git worktree list`,
   `git branch` e `git stash list`, dopo la pulizia): oltre a `main` restano due worktree di Codex
   sotto `~/.codex/worktrees/`, tenuti per scelta del proprietario: `atlas-transfer-pilot`, sul

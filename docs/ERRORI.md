@@ -2,7 +2,7 @@
 
 Questa è la guida operativa per trasformare un guasto in una prova di regressione
 e in un controllo obbligatorio del prossimo lavoro pertinente. La pipeline resta
-descritta in [LAVORO.md](LAVORO.md); stato e risultati scientifici restano in
+descritta in [PROCEDURE.md](PROCEDURE.md); stato e risultati scientifici restano in
 [PROGETTO.md](PROGETTO.md) e nei report. Non serve un altro `pipeline.md` parallelo.
 
 La guida ha tre parti, e ciascuna ha i suoi lettori: **si legge solo la parte del proprio
@@ -183,7 +183,7 @@ nella memoria privata di un agente: qui valgono per tutti.
 
 - **Colab.** Il log di un job si sincronizza solo alla fine; un dispatcher muto per ore vuol dire
   runtime perso: i job con `.started` non ripartono e `/content/work` si perde
-  ([LAVORO §3](LAVORO.md#3-job-su-colab-e-kaggle)). Salvare su Drive ogni
+  ([PROCEDURE §3](PROCEDURE.md#3-job-su-colab-e-kaggle)). Salvare su Drive ogni
   artefatto prima del passo successivo (E-20260929-003).
 - **Drive virtuale (G:).** La lettura di un file grande può fallire con un errore di I/O prima
   dell'upload (E-20260929-007): copiarlo in locale e verificarne lo SHA completo prima del CLI.

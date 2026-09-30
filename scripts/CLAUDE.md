@@ -1,6 +1,6 @@
 # scripts — the live stages
 
-What each stage does and where it runs is the table in `docs/LAVORO.md` §4; the commands of a
+What each stage does and where it runs is the table in `docs/PROCEDURE.md` §4; the commands of a
 submission are in §1, the final set in §7. The same stages by role:
 
 ```

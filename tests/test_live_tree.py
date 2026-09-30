@@ -2,7 +2,7 @@
 
 Each test is a way an agent gets lost, or the tree grows back what a cleanup removed:
 
-* the stage table of `docs/LAVORO.md` §4 lists exactly the scripts in `scripts/`, and its
+* the stage table of `docs/PROCEDURE.md` §4 lists exactly the scripts in `scripts/`, and its
   next free number is the next number;
 * the module table of `src/vcc2026/CLAUDE.md` lists exactly the modules, with the stages and
   the modules that import each one;
@@ -75,21 +75,21 @@ def section(text: str, heading_start: str) -> str:
 
 
 class TestStageTable(unittest.TestCase):
-    """docs/LAVORO.md §4 is where an agent learns which stages exist."""
+    """docs/PROCEDURE.md §4 is where an agent learns which stages exist."""
 
     def setUp(self):
-        self.text = (REPO / "docs" / "LAVORO.md").read_text(encoding="utf-8")
+        self.text = (REPO / "docs" / "PROCEDURE.md").read_text(encoding="utf-8")
         self.table = section(self.text, "## 4.")
 
     def test_every_script_is_in_the_table_and_every_row_is_a_script(self):
         listed = {int(n) for n in re.findall(r"`scripts/(\d+)_[^`]*\.py`", self.table)}
         self.assertEqual(sorted(listed), sorted(stages()),
-                         "add the missing rows to docs/LAVORO.md §4, or remove the rows of "
+                         "add the missing rows to docs/PROCEDURE.md §4, or remove the rows of "
                          "scripts that left the tree")
 
     def test_the_next_free_number_is_the_next_number(self):
         match = re.search(r"prossimo numero libero è \*\*(\d+)\*\*", self.table)
-        self.assertIsNotNone(match, "docs/LAVORO.md §4 no longer states the next free number")
+        self.assertIsNotNone(match, "docs/PROCEDURE.md §4 no longer states the next free number")
         self.assertEqual(int(match.group(1)), max(stages()) + 1)
 
 
@@ -183,7 +183,7 @@ class TestNoDeadCode(unittest.TestCase):
                     frontier |= names_in(node)
         dead = sorted(f"{module}.{name}" for module, name in definitions
                       if (module, name) not in reached and name not in TEST_SUPPORT)
-        self.assertEqual(dead, [], "no live stage reaches these: archive them (docs/LAVORO.md §5), "
+        self.assertEqual(dead, [], "no live stage reaches these: archive them (docs/PROCEDURE.md §5), "
                                    "or list a test helper in TEST_SUPPORT with its reason")
 
     def test_no_file_imports_a_name_it_never_uses(self):

@@ -61,7 +61,7 @@ Written while generating and submitting, in `reports/invii/trial_<data>/`:
 - the output of `vcc`, saved as it is: `submit_t<NN>_started.txt`, `submit_t<NN>_raw.json`,
   `submit_<entry>.json`, `status_<entry>.json`.
 
-What follows the score is one checklist, `docs/LAVORO.md` §2, point 7. Two complete examples:
+What follows the score is one checklist, `docs/PROCEDURE.md` §2, point 7. Two complete examples:
 t25, all local (`reports/invii/prediction_t25_2026-09-27/`, `reports/invii/trial_2026-09-27/`), and
 t28, generated on Colab and uploaded from a local copy (`reports/invii/prediction_t28_2026-09-29/`,
 `reports/invii/trial_2026-09-29/`).

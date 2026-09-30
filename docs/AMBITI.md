@@ -23,7 +23,7 @@ indicizzate in [lead_scientist_2026-09-29](../reports/analisi/lead_scientist_202
 - **Regola.** A, B e C sono 10x Flex; le loro identità di linea sono ipotesi e non si scrivono
   mai accanto ai contesti nella repo (regola globale di [CLAUDE.md](../CLAUDE.md)).
 
-Leggi prima: [LAVORO §2](LAVORO.md#2-le-regole-dellinvio), punto 7, per leggere un punteggio;
+Leggi prima: [PROCEDURE §2](PROCEDURE.md#2-le-regole-dellinvio), punto 7, per leggere un punteggio;
 [credibilità degli score](../reports/analisi/lead_scientist_2026-09-29/SCORE_CREDIBILITA.md);
 [gara](../reports/gara/README.md).
 
@@ -37,7 +37,7 @@ Leggi prima: [LAVORO §2](LAVORO.md#2-le-regole-dellinvio), punto 7, per leggere
 - **Interpretazione.** Dal t16 i cambi della media sono piccoli, ma diversi membri si compensano
   ([audit scientifico](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md)).
 
-Leggi prima: [che cosa lascia un invio](../reports/CLAUDE.md), [LAVORO §1–2](LAVORO.md#1-il-percorso-di-un-invio).
+Leggi prima: [che cosa lascia un invio](../reports/CLAUDE.md), [PROCEDURE §1–2](PROCEDURE.md#1-il-percorso-di-un-invio).
 Piano: [R-COMP](piani/modello-competitivo.md); [S-INVII](piani/invii-finale.md) è ferma al 28/09.
 
 ### 3. Generatore e banchi con lo scorer vero
@@ -97,14 +97,14 @@ Piano: [R-COMP](piani/modello-competitivo.md), [R-V2](piani/modello-v2.md).
   ([CP-0044](checkpoints/0044-prova-generale-22-ottobre.md)); D1–D5 e D9–D11 sono corretti con i
   loro test. La forma piena chiede circa 17 GB liberi: il 30/09 alle 02:30 su C: ce n'erano 3,8.
 
-Leggi prima: [LAVORO §7](LAVORO.md#7-il-set-finale-22-ottobre), [la prova generale](../reports/invii/prova_generale_2026-09-28/RISULTATI.md).
+Leggi prima: [PROCEDURE §7](PROCEDURE.md#7-il-set-finale-22-ottobre), [la prova generale](../reports/invii/prova_generale_2026-09-28/RISULTATI.md).
 Piano: azione 3 di [R-REV](piani/revisione-critica.md).
 
 ## Strumenti di esecuzione
 
 ### 7. Calcolo, job, disco
 
-Le procedure stanno in [LAVORO](LAVORO.md): §1–2 per generare, impacchettare e inviare, §3 per i
+Le procedure stanno in [PROCEDURE](PROCEDURE.md): §1–2 per generare, impacchettare e inviare, §3 per i
 job su Colab e Kaggle, §7 per il set finale. Ogni job nuovo supera il preflight di
 [ERRORI](ERRORI.md), dove sono anche le [trappole operative](ERRORI.md#lezioni-operative-da-non-ripetere)
 già incontrate. Chi autorizza la quota, i download e i push: [CLAUDE.md](../CLAUDE.md).

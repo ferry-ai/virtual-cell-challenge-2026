@@ -5,7 +5,7 @@
 - **Mandato:** richiesta del proprietario di rendere visibile il piano e usare sistematicamente dati, biologia e modelli neurali, verificando la credibilità dei punteggi.
 - **Assegnazione:** regia, invio t28 e decisioni sui job: Codex lead, chat `01a0ee03-b357-7012-81a9-e8d7de767478`; questa scheda e audit di calibrazione: sottoagente `audit_generatore`. Dataset: audit già prodotto da `audit_dati`; chiusura Stack: `audit_scientifico`. I nuovi training vanno assegnati per file e output prima del lancio; gli incarichi Claude in [R-REV](revisione-critica.md) e [R-V2](modello-v2.md) restano validi.
 - **Prossimo passo:** riconciliare l'inventario di training e progettare una riserva davvero indipendente (passo 2). T28 è pubblicato: nuovo massimo osservato ma miglioramento non conclusivo secondo la regola congelata, [CP-0052](../checkpoints/0052-t28-punteggio-ufficiale.md). Stack è chiuso senza candidati: [CP-0051](../checkpoints/0051-stack-ab-negativi.md). Nessun nuovo training o invio avviato dal seguito notturno.
-- **Dipendenze:** [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), [preflight dei job](../ERRORI.md), [procedure](../LAVORO.md). Riutilizzare le autorizzazioni già date nella sessione; questa scheda non avvia automazioni né implica un push pubblico.
+- **Dipendenze:** [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), [preflight dei job](../ERRORI.md), [procedure](../PROCEDURE.md). Riutilizzare le autorizzazioni già date nella sessione; questa scheda non avvia automazioni né implica un push pubblico.
 
 ## Punto di partenza verificato
 

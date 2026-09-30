@@ -8,6 +8,7 @@ one-line change.
 from __future__ import annotations
 
 import os
+import re
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
@@ -111,6 +112,32 @@ def challenge() -> Challenge:
     return Challenge(**raw)
 
 
+def renamed_paths() -> dict[str, str]:
+    """Old name -> new name of the repository paths renamed on purpose.
+
+    The one list is the table whose first column is "Nome vecchio" in docs/ARCHIVIO.md; the
+    documentation checker (scripts/31_check_docs.py) reads the same table. An entry ending in
+    '/' renames everything below it.
+    """
+    path = REPO_ROOT / "docs" / "ARCHIVIO.md"
+    if not path.exists():
+        return {}
+    found: dict[str, str] = {}
+    inside = False
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.lstrip().startswith("|"):
+            inside = False
+            continue
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if cells[0] == "Nome vecchio":
+            inside = True
+        elif inside and len(cells) >= 2:
+            old, new = (re.findall(r"`([^`]+)`", cell) for cell in cells[:2])
+            if old and new:
+                found[old[0]] = new[0]
+    return found
+
+
 def repo_file(raw: str | Path) -> Path:
     """A repository path named in a recipe or an older record, followed to where it lives now.
 
@@ -118,12 +145,25 @@ def repo_file(raw: str | Path) -> Path:
     and eight analyses moved to docs/storico/ (D-046); no name changed. So a path that no
     longer exists is looked for one level below its first folder: the recipes' cis pairs, named
     as reports/cis_2026-09-17/<file>, are found in reports/trasferimento/cis_2026-09-17/<file>.
-    Recipes are never edited once used, and this is how they keep working. A path found nowhere
-    is returned as it was, so the caller fails on it as before.
+    A document renamed on purpose, listed in docs/ARCHIVIO.md (`renamed_paths`), is followed
+    to its new name first. Recipes are never edited once used, and this is how they keep
+    working. A path found nowhere is returned as it was, so the caller fails on it as before.
     """
     path = REPO_ROOT / raw
+    if path.exists():
+        return path
+    name = Path(raw).as_posix()
+    for old, new in renamed_paths().items():
+        if name == old.rstrip("/"):
+            target = REPO_ROOT / new
+        elif old.endswith("/") and name.startswith(old):
+            target = REPO_ROOT / new / name[len(old):]
+        else:
+            continue
+        if target.exists():
+            return target
     parts = Path(raw).parts
-    if path.exists() or len(parts) < 2 or parts[0] not in ("reports", "docs"):
+    if len(parts) < 2 or parts[0] not in ("reports", "docs"):
         return path
     rest = Path(*parts[1:])
     hits = [folder / rest for folder in sorted((REPO_ROOT / parts[0]).iterdir())

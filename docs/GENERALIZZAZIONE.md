@@ -152,5 +152,5 @@ modificare le regole di valutazione di questo documento.
 Riferimenti interni: [CP-0035](checkpoints/0035-dld1-mixscale-audit.md),
 [report dei dati](../reports/sorgenti/dld1_audit_2026-09-24/RISULTATI.md),
 [CP-0026](checkpoints/0026-predittore-neurale-condizionato.md),
-[ARCHIVIO.md](ARCHIVIO.md). Comandi e risorse restano in [LAVORO.md](LAVORO.md), le
+[ARCHIVIO.md](ARCHIVIO.md). Comandi e risorse restano in [PROCEDURE.md](PROCEDURE.md), le
 autorizzazioni in [CLAUDE.md](../CLAUDE.md).

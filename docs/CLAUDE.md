@@ -15,7 +15,7 @@ short extract that names its home. Read the row you need, not the whole folder.
 | What the project knows, does not know, and its known weaknesses | `docs/PROGETTO.md` §3–§5 | when a result changes a conclusion |
 | Priorities and dependencies between plans | `docs/PIANI.md` §2 | when a priority changes |
 | Assignment, next step and closure evidence of one plan | its card in `docs/piani/` (`docs/piani/CLAUDE.md`) | by whoever takes, hands off or closes the work (PIANI §3) |
-| Procedures: submission path and rules, Colab, stages, final set | `docs/LAVORO.md` | when the live path changes |
+| Procedures: submission path and rules, Colab, stages, final set | `docs/PROCEDURE.md` | when the live path changes |
 | Job preflight, incident ledger, operational traps | `docs/ERRORI.md` | when a failure is recorded |
 | Method errors already made | `docs/ERRORI.md`, "Errori di metodo già commessi" | a new row with its source; old rows are not rewritten |
 | Research scope for new targets and contexts, leakage controls (D-044) | `docs/GENERALIZZAZIONE.md` | when the research rules change |
