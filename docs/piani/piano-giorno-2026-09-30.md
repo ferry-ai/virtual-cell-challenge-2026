@@ -62,7 +62,29 @@
   effettive, verificati su casi piccoli. Fatto: `cell_data.py` con `test_cell_data.py`, 13 casi a verità nota
   che passano. **Da fare:** portare `cell_data.py` dentro `train_cellnet.py` (oggi usa ancora serbatoi per
   contesto e campionamento con reinserimento), poi il training.
-- **Prossimo passo:** (1) quando su `davidmaisterx` ci sono almeno HepG2, Jurkat di Nadig, K562 essenziali,
+- **Passaggio di consegne aggiornato (30/09, 23:20, Claude `ec2e5b07`, a fine quota; sostituisce lo stato del
+  blocco delle 22:55, che resta come storia).** Letto sulle code e su Kaggle alle 23:13:
+  - **Colab coda 1** (`runs/queue`, dispatcher 1): in corso J02 HIPSCI (088, pubblica su `davideferrante11` a
+    fine job) e J06 K562 genome-wide (096, idem). Quando esiste `…/j02_hipsci_r1/complete.json` o
+    `…/j06_k562_gwps_r1/complete.json`, serve un job di sola pubblicazione verso `davidmaisterx` (l'unico account con
+    GPU): `colab_job.py --job p05_… --number <libero> --queue queue --publish-only data/processed/corpus_cellulare_2026-09-30/<job>
+    --publish ALL=<slug> --owner davidmaisterx --secrets rlab_secrets_davidmaisterx --snapshot <setup_r5> --commit <sha> --setup rlab_setup_2026-09-30_r5`
+    (HIPSCI per schermo: `--publish hipsci_gw_fitness=rlab-hipsci-gwfit` ecc.).
+  - **Colab coda 2** (`runs/queue2`, dispatcher 2): 103 Jurkat di Nadig in corso; 105 H1 train+validation (blocchi da
+    5.000 cellule, dopo che il 100 ha esaurito la memoria); 106 K562 essenziali e RPE1 (lettore corretto per i redirect
+    firmati di Figshare, **non ancora provato su Colab**: se fallisce di nuovo con 403, scaricare i due file sul runtime
+    con `fetch.py` e leggerli in locale). Tutti pubblicano su `davidmaisterx`.
+  - **Falliti e sostituiti:** 090 (archivio H1: controllo dello spazio sbagliato), 100 (H1: memoria), 101/102 (chiave
+    `sha256` mancante), 104 (403 Figshare). Nessun dato perso; le ricevute stanno in `runs/rlab_setup_2026-09-30_r*/receipts/`.
+  - **Kaggle `davidmaisterx`:** pronti `rlab-hepg2-nadig`, `rlab-jurkat-gse249595` (senza chiamate delle guide: non
+    supervisionabile) e `rlab-cellnet-code` (versione con `cell_data.py`, commit 281e899). GPU: 2× T4, misurata;
+    quota settimanale residua non misurata.
+  - **Rete:** `cell_data.py` (regole dei dati) con 13 casi controllati che passano; `train_cellnet.py` le usa (pre-passata
+    con QC di ammissione per studio che non toglie i fenotipi, duplicati, classi C/T/J effettive, epoche senza
+    reinserimento con pesi per studio, controlli per libreria, stimatore unico, controllo di non-contaminazione);
+    provata in miniatura: copertura 1.340/1.340, non-contaminazione passata. **Nessun training vero eseguito.**
+- **Prossimo passo:** (0) ricontrollare le code (`runs/jobs/dispatcher*.log`) e i dataset (`kaggle datasets list --mine` con
+  `KAGGLE_CONFIG_DIR=~/.kaggle`); (1) quando su `davidmaisterx` ci sono almeno HepG2, Jurkat di Nadig, K562 essenziali,
   RPE1 e H1, un kernel Kaggle GPU con `train_cellnet.py` (dataset di codice con `cellnet.py`,
   `train_cellnet.py`, `gene_names.csv`, descrittori), contesto tenuto fuori HepG2, bracci `descriptors` e
   `identity`: è la **verifica tecnica**, non un risultato; (2) catalogo completo dalle misure remote,

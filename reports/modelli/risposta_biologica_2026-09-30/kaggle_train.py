@@ -88,7 +88,7 @@ def main():
         sys.exit(f"refusing: {a.stage} exists")
     a.stage.mkdir(parents=True)
     if a.cmd == "code":
-        for f in ("cellnet.py", "train_cellnet.py"):
+        for f in ("cellnet.py", "cell_data.py", "train_cellnet.py"):
             shutil.copyfile(HERE / f, a.stage / f)
         shutil.copyfile(a.axis, a.stage / "gene_names.csv")
         for f in ("descriptors.npy", "genes.txt", "manifest.json"):
