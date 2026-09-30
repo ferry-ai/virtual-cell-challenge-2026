@@ -84,5 +84,37 @@ class RangeReader(unittest.TestCase):
         self.run_case(dense=True)
 
 
+class ExpiringRange(inspect_remote.RangeFile):
+    """Every signed URL serves one request, then answers 403, as Figshare's do ten seconds after signing."""
+    blob = bytes(range(256)) * 40
+
+    def _resolve(self):
+        self.token = getattr(self, "token", 0) + 1
+        self.final_url, self.size, self.etag = f"signed-{self.token}", len(self.blob), "v1"
+
+    def _fetch(self, url, lo, hi):
+        used = self.__dict__.setdefault("used", set())
+        if url in used:
+            import urllib.error
+            raise urllib.error.HTTPError(url, 403, "Forbidden", {}, None)
+        used.add(url)
+        return self.blob[lo:hi + 1], "v1"
+
+
+class SignedUrls(unittest.TestCase):
+    def test_an_expired_signature_is_renewed_and_used_at_once(self):
+        slept = []
+        original = inspect_remote.time.sleep
+        inspect_remote.time.sleep = lambda s: slept.append(s)
+        try:
+            f = ExpiringRange("https://fake.invalid/file", block=100, max_bytes=400)
+            got = f.read()
+        finally:
+            inspect_remote.time.sleep = original
+        self.assertEqual(got, ExpiringRange.blob)
+        self.assertEqual(slept, [])                                  # no pause between renewal and request
+        self.assertGreater(f.token, 10)                              # one renewal per block after the first
+
+
 if __name__ == "__main__":
     unittest.main()

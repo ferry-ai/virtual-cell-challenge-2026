@@ -41,13 +41,21 @@ class RangeFile(io.RawIOBase):
     def _resolve(self):
         """The final URL and the size, from a GET of one byte: hosts that redirect to signed storage URLs (Figshare
         to S3) sign them for the method used, and a URL resolved by HEAD refuses ranged GETs. Called again when a
-        signed URL expires."""
+        signed URL expires: Figshare's expire 10 seconds after signing (X-Amz-Expires=10, read on 1/10), so the
+        caller uses the new URL at once. A failed resolution is retried with a pause."""
         req = urllib.request.Request(self.url, headers={"Range": "bytes=0-0", "User-Agent": "vcc2026-rlab/1"})
-        with urllib.request.urlopen(req, timeout=60) as r:
-            total = r.headers.get("Content-Range", "").rsplit("/", 1)[-1]
-            size = int(total) if total.isdigit() else int(r.headers["Content-Length"])
-            etag = r.headers.get("ETag")
-            self.final_url = r.geturl()
+        for attempt in range(1, 6):
+            try:
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    total = r.headers.get("Content-Range", "").rsplit("/", 1)[-1]
+                    size = int(total) if total.isdigit() else int(r.headers["Content-Length"])
+                    etag = r.headers.get("ETag")
+                    self.final_url = r.geturl()
+                break
+            except OSError:
+                if attempt == 5:
+                    raise
+                time.sleep(5 * attempt)
         if getattr(self, "size", None) not in (None, size):
             raise OSError(f"the file changed while it was read: {size} bytes after {self.size}")
         self.size = size
@@ -63,26 +71,33 @@ class RangeFile(io.RawIOBase):
         self.pos = off if whence == 0 else (self.pos + off if whence == 1 else self.size + off)
         return self.pos
 
-    def _get(self, lo, hi):
-        """Bytes lo..hi (inclusive) and the ETag they came with."""
-        req = urllib.request.Request(self.final_url, headers={"Range": f"bytes={lo}-{hi}",
-                                                              "User-Agent": "vcc2026-rlab/1"})
-        for attempt in range(1, 6):
+    def _fetch(self, url, lo, hi):
+        req = urllib.request.Request(url, headers={"Range": f"bytes={lo}-{hi}", "User-Agent": "vcc2026-rlab/1"})
+        with urllib.request.urlopen(req, timeout=120) as r:
+            return r.read(), r.headers.get("ETag")
+
+    def _get(self, lo, hi, max_resolves=20, max_failures=5):
+        """Bytes lo..hi (inclusive) and the ETag they came with. A 400 or 403 is an expired signed URL: it is resolved
+        again and the range requested at once, with no pause that would let the new signature expire too (job 109
+        stopped after five 403 in a row, 1/10); other failures are retried after a growing pause."""
+        resolves = failures = 0
+        while True:
             try:
-                with urllib.request.urlopen(req, timeout=120) as r:
-                    return r.read(), r.headers.get("ETag")
+                return self._fetch(self.final_url, lo, hi)
             except urllib.error.HTTPError as err:
-                if attempt == 5:
-                    raise
-                if err.code in (400, 403):              # an expired signed URL: resolve it again
+                if err.code in (400, 403) and resolves < max_resolves:
+                    resolves += 1
                     self._resolve()
-                    req = urllib.request.Request(self.final_url, headers={"Range": f"bytes={lo}-{hi}",
-                                                                          "User-Agent": "vcc2026-rlab/1"})
-                time.sleep(5 * attempt)
-            except OSError:
-                if attempt == 5:
+                    continue
+                failures += 1
+                if failures >= max_failures:
                     raise
-                time.sleep(5 * attempt)
+                time.sleep(5 * failures)
+            except OSError:
+                failures += 1
+                if failures >= max_failures:
+                    raise
+                time.sleep(5 * failures)
 
     def _blk(self, i):
         if i in self.cache:

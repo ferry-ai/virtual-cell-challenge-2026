@@ -113,17 +113,18 @@ def write_local(x, obs, var, uns: dict, path: Path, obsm: dict | None = None) ->
     return problems, info
 
 
-def reusable(reuse: Path | None, unit: str, name: str) -> dict | None:
-    if reuse is None:
-        return None
-    receipt = reuse / unit / "receipts" / f"{name}.json"
-    shard = reuse / unit / f"{name}.h5ad"
-    if not (receipt.is_file() and shard.is_file()):
-        return None
-    old = json.loads(receipt.read_text(encoding="utf-8"))
-    if shard.stat().st_size != old.get("bytes") or sha256(shard) != old.get("sha256"):
-        return None
-    return {**old, "reused_from": str(shard)}
+def reusable(reuse: list[Path] | None, unit: str, name: str) -> dict | None:
+    """The first earlier attempt (in the order given) holding this shard with a receipt whose size and sha256 match."""
+    for earlier in reuse or []:
+        receipt = earlier / unit / "receipts" / f"{name}.json"
+        shard = earlier / unit / f"{name}.h5ad"
+        if not (receipt.is_file() and shard.is_file()):
+            continue
+        old = json.loads(receipt.read_text(encoding="utf-8"))
+        if shard.stat().st_size != old.get("bytes") or sha256(shard) != old.get("sha256"):
+            continue
+        return {**old, "reused_from": str(shard)}
+    return None
 
 
 def parity(adapter: str, shards: list[dict], uns_seen: list[dict], expect: dict, max_cells) -> dict:
@@ -236,7 +237,7 @@ def main() -> None:
     p.add_argument("--stage", required=True, type=Path)
     p.add_argument("--out", required=True, type=Path)
     p.add_argument("--runtime-manifest", type=Path)
-    p.add_argument("--reuse", type=Path)
+    p.add_argument("--reuse", type=Path, nargs="+", help="earlier attempts, searched in this order")
     p.add_argument("--max-cells", type=int)
     p.add_argument("--set", nargs="*", default=[], help="KEY=VALUE replacing {KEY} in the unit arguments")
     args = p.parse_args()
@@ -262,7 +263,7 @@ def main() -> None:
               "runtime_manifest_sha256": sha256(args.runtime_manifest) if args.runtime_manifest else "MISSING"}
     started = {"job_id": spec["job_id"], "spec_sha256": sha256(args.spec), "writer": writer, "out_free_bytes": free,
                "min_free_out_bytes": need, "max_cells": args.max_cells,
-               "reuse": str(args.reuse) if args.reuse else None, "utc": now()}
+               "reuse": [str(r) for r in args.reuse] if args.reuse else None, "utc": now()}
     dump_new(args.out / "job_started.json", started)
     units = [run_unit(u, spec, args, table, writer) for u in spec["units"]]
     ok = all(u["parity"]["ok"] for u in units)

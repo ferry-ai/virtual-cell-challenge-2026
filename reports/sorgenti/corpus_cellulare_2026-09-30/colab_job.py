@@ -123,7 +123,8 @@ def main() -> None:
     p.add_argument("--spec", type=Path)
     p.add_argument("--publish-only", help="Drive-relative folder of an earlier job whose shards are published")
     p.add_argument("--publish", action="append", default=[], metavar="UNIT=SLUG", help="UNIT may be ALL")
-    p.add_argument("--reuse", help="Drive-relative folder of an earlier job whose verified shards are reused")
+    p.add_argument("--reuse", action="append", default=[],
+                   help="Drive-relative folder of an earlier job whose verified shards are reused (repeatable)")
     p.add_argument("--stop", metavar="JOB_ID", help="build a launcher that only stops this job's rlab_job.py")
     p.add_argument("--reason", default="", help="with --stop: why, written in the launcher")
     p.add_argument("--snapshot", type=Path)
@@ -160,7 +161,7 @@ def main() -> None:
         sums.append(f"{spec_sha}  {setup_rt}/{spec_name}")
         outputs.append({"id": "shards", "paths": {"local": f"{GDRIVE}/{OUT_ROOT}/{a.job}",
                                                  "runtime": f"{DRIVE}/{OUT_ROOT}/{a.job}"}, "must_be_absent": True})
-        reuse = f' --reuse "$DRIVE/{a.reuse}"' if a.reuse else ""
+        reuse = (" --reuse " + " ".join(f'"$DRIVE/{r}"' for r in a.reuse)) if a.reuse else ""
         run = (f'"$PY" "$C/rlab_job.py" --spec "$SETUP/{spec_name}" --stage "$WORK/stage" --out "$OUT" '
                f'--runtime-manifest "$REC/environment_manifest_colab.json"{reuse} --set IN="$WORK/in" '
                f'AXIS="$WORK/in/gene_names.csv" WORK="$WORK" DRIVE="$DRIVE"')
