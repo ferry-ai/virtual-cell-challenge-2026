@@ -1,0 +1,113 @@
+{
+ "what": "smoke_test.py on cut-outs of the real files, on the laptop, 30/09 evening (session ec2e5b07)",
+ "runs": {
+  "smoke_r1": "stopped by the adapter's disk guard: under 3 GB free beside the HIPSCI buckets on the laptop; the guard works",
+  "smoke_r2": "all three schemas pass; Jurkat still listed every guide with one UMI as the cell's guide set",
+  "smoke_r3": "final code: guides MISSING for Jurkat, raw guide and hash UMI matrices in obsm; all pass"
+ },
+ "smoke_r3": {
+  "hepg2_a/hepg2_nadig": {
+   "parity": {
+    "per_shard_reread": true,
+    "cells": 1500,
+    "contiguous_from_zero": true,
+    "note": "smoke test on the first 1500 cells: source-level parity not applicable",
+    "ok": true
+   },
+   "totals": {
+    "shards": 3,
+    "cells": 1500,
+    "nnz": 6335720,
+    "counts": 28710572,
+    "bytes": 17060081,
+    "control_kind": {
+     "none": 1452,
+     "NTC": 48
+    }
+   },
+   "reused": 0
+  },
+  "hepg2_b/hepg2_nadig": {
+   "parity": {
+    "per_shard_reread": true,
+    "cells": 1500,
+    "contiguous_from_zero": true,
+    "note": "smoke test on the first 1500 cells: source-level parity not applicable",
+    "ok": true
+   },
+   "totals": {
+    "shards": 3,
+    "cells": 1500,
+    "nnz": 6335720,
+    "counts": 28710572,
+    "bytes": 17060081,
+    "control_kind": {
+     "none": 1452,
+     "NTC": 48
+    }
+   },
+   "reused": 3
+  },
+  "cuts/hipsci_fit_cut": {
+   "parity": {
+    "per_shard_reread": true,
+    "cells": 1200,
+    "contiguous_from_zero": true,
+    "passes": {
+     "0:500": {
+      "parsed": 108893,
+      "in_shards": 108893,
+      "equal": true
+     },
+     "500:1000": {
+      "parsed": 109624,
+      "in_shards": 109624,
+      "equal": true
+     },
+     "1000:1200": {
+      "parsed": 43071,
+      "in_shards": 43071,
+      "equal": true
+     }
+    },
+    "parsed_sum_equals_shards": true,
+    "all_cells_of_file": true,
+    "ok": true
+   },
+   "totals": {
+    "shards": 5,
+    "cells": 1200,
+    "nnz": 77975,
+    "counts": 261588,
+    "bytes": 1508940,
+    "control_kind": {
+     "none": 410,
+     "UNASSIGNED": 790
+    }
+   },
+   "reused": 0
+  },
+  "cuts/jurkat_ch16_cut": {
+   "parity": {
+    "per_shard_reread": true,
+    "cells": 1277,
+    "matrix_total": 2498641.0,
+    "kept_plus_ambient": 2498641.0,
+    "kept_plus_ambient_equals_matrix": true,
+    "all_kept_barcodes": true,
+    "ok": true
+   },
+   "totals": {
+    "shards": 1,
+    "cells": 1277,
+    "nnz": 468507,
+    "counts": 2459655,
+    "bytes": 6157625,
+    "control_kind": {
+     "UNASSIGNED": 1277
+    }
+   },
+   "reused": 0
+  }
+ }
+}
