@@ -1,0 +1,217 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/ChangYe2021.h5ad/content",
+ "bytes": 501823050,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   42277,
+   45066
+  ],
+  "dtype": "float32",
+  "stored": 229956594,
+  "compression": "gzip",
+  "chunks": [
+   28071
+  ],
+  "sample_integer": true,
+  "sample_max": 2267.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "cancer",
+   "chembl-ID",
+   "disease",
+   "dose_unit",
+   "dose_value",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "sample",
+   "sex"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 42277,
+    "distinct": 42277,
+    "top": {
+     "AAACCCAAGACATACASAMba72f77788": 1,
+     "AAACCCAAGAGAGCCTSAM6fab2193f0": 1,
+     "AAACCCAAGAGTGACCSAMb6ba60b525": 1,
+     "AAACCCAAGATGCGACSAMb6ba60b525": 1,
+     "AAACCCAAGATGTTGASAM6fab2193f0": 1,
+     "AAACCCAAGGCCCACTSAMb6ba60b525": 1,
+     "AAACCCACAACCACATSAMb6ba60b525": 1,
+     "AAACCCACAAGTTCGTSAM6fab2193f0": 1,
+     "AAACCCACACATTCTTSAM6fab2193f0": 1,
+     "AAACCCACACCTAAACSAMb6ba60b525": 1,
+     "AAACCCACACGTAGAGSAMb6ba60b525": 1,
+     "AAACCCACACGTCATASAM4e026f0a8a": 1
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 42277,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "chembl-ID": {
+    "kind": "categorical",
+    "n": 42277,
+    "distinct": 1,
+    "top": {
+     "<NA>": 35700,
+     "CHEMBL553": 6577
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 42277,
+    "distinct": 1,
+    "top": {
+     "lung adenocarcinoma": 42277
+    }
+   },
+   "dose_unit": {
+    "kind": "categorical",
+    "n": 42277,
+    "distinct": 1,
+    "top": {
+     "micromolar": 42277
+    }
+   },
+   "dose_value": {
+    "kind": "categorical",
+    "n": 42277,
+    "distinct": 2,
+    "top": {
+     "1": 21234,
+     "0": 21043
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 42277,
+    "sample_min": 4217.0,
+    "sample_max": 138442.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int32",
+    "n": 42277,
+    "sample_min": 132.0,
+    "sample_max": 11335.0
+   },
+   "nperts": {
+    "kind": "categorical",
+    "n": 42277,
+    "distinct": 2,
+    "top": {
+     "1": 21234,
+     "0": 21043
+    }
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 42277,
+    "distinct": 1,
+    "top": {
+     "human": 42277
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 42277,
+    "sample_min": 0.004966722801327705,
+    "sample_max": 98.15081787109375
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 42277,
+    "sample_min": 0.1598295122385025,
+    "sample_max": 28.52960205078125
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 42277,
+    "distinct": 4,
+    "top": {
+     "control": 21043,
+     "GNE-104": 8737,
+     "erlotinib": 6577,
+     "GNE-069": 5920
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 42277,
+    "distinct": 1,
+    "top": {
+     "drug": 42277
+    }
+   },
+   "sample": {
+    "kind": "categorical",
+    "n": 42277,
+    "distinct": 4,
+    "top": {
+     "SAMb6ba60b525": 21043,
+     "SAM4e026f0a8a": 8737,
+     "SAM6fab2193f0": 6577,
+     "SAMba72f77788": 5920
+    }
+   },
+   "sex": {
+    "kind": "categorical",
+    "n": 42277,
+    "distinct": 1,
+    "top": {
+     "m": 42277
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "ensembl_gene_id",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 45066,
+  "first": [
+   "TSPAN6",
+   "TNMD",
+   "DPM1",
+   "SCYL3",
+   "C1orf112"
+  ]
+ },
+ "seconds": 8.5,
+ "fetched_bytes": 11089482,
+ "id": "scp_ChangYe2021"
+}

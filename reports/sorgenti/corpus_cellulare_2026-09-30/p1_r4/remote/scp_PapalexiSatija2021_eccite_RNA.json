@@ -1,0 +1,264 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/PapalexiSatija2021_eccite_RNA.h5ad/content",
+ "bytes": 147215278,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   20729,
+   18649
+  ],
+  "dtype": "float32",
+  "stored": 69529049,
+  "compression": "gzip",
+  "chunks": [
+   16975
+  ],
+  "sample_integer": true,
+  "sample_max": 127.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "cancer",
+   "cell_line",
+   "celltype",
+   "disease",
+   "gdo_barcode",
+   "guide_id",
+   "hto",
+   "hto_barcode",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "tissue_type"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 20729,
+    "distinct": 20729,
+    "top": {
+     "AAACCTGAGAGTACCG": 1,
+     "AAACCTGAGAGTCTGG": 1,
+     "AAACCTGAGATCCGAG": 1,
+     "AAACCTGAGCAGACTG": 1,
+     "AAACCTGAGCCAGAAC": 1,
+     "AAACCTGAGCCCAATT": 1,
+     "AAACCTGAGCCTTGAT": 1,
+     "AAACCTGAGCTAGTTC": 1,
+     "AAACCTGAGGAGTCTG": 1,
+     "AAACCTGAGGGTTTCT": 1,
+     "AAACCTGAGTAATCCC": 1,
+     "AAACCTGAGTGGACGT": 1
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 20729,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 20729,
+    "distinct": 1,
+    "top": {
+     "THP-1": 20729
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 20729,
+    "distinct": 1,
+    "top": {
+     "monocytes": 20729
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 20729,
+    "distinct": 1,
+    "top": {
+     "acute monocytic leukemia": 20729
+    }
+   },
+   "gdo_barcode": {
+    "kind": "categorical",
+    "n": 20729,
+    "distinct": 107,
+    "top": {
+     "AATGTTTTCTGGAGGCCCG": 579,
+     "TTCATTTCTCAGCAGGGTG": 500,
+     "GCCGTTAAGCGGAAACGAT": 445,
+     "TGCGACGCTTAGCCTCCGT": 431,
+     "TCTGATATCCAGTTTAGGT": 416,
+     "ATTCCTTGGATTACAGCTG": 401,
+     "GTGCTATTGCTCAGGGCCA": 397,
+     "GGGCAAGCTCTACGGCAAC": 391,
+     "AGAAAACTTGCTCTCTGTC": 363,
+     "CTTTCTGATATCCAGTTTA": 359,
+     "CGTGGTGACGTCCGGAGGG": 346,
+     "TGCATCAGATCTCTGCCAT": 345
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 20729,
+    "distinct": 107,
+    "top": {
+     "IFNGR2g1": 579,
+     "ATF2g1": 500,
+     "NTg7": 445,
+     "NTg4": 431,
+     "IFNGR1g3": 416,
+     "CD86g1": 401,
+     "IFNGR2g2": 397,
+     "POU2F2g1": 391,
+     "JAK2g2": 363,
+     "IFNGR1g2": 359,
+     "TNFRSF14g1": 346,
+     "MARCH8g4": 345
+    }
+   },
+   "hto": {
+    "kind": "categorical",
+    "n": 20729,
+    "distinct": 5,
+    "top": {
+     "rep1-tx": 9351,
+     "rep3-tx": 5992,
+     "rep4-tx": 5309,
+     "rep2-tx": 73,
+     "rep2-ctrl": 4
+    }
+   },
+   "hto_barcode": {
+    "kind": "categorical",
+    "n": 20729,
+    "distinct": 3,
+    "top": {
+     "AGGACCATCCAA": 15343,
+     "TCGATAATGCGA": 5382,
+     "GAGGCTGAGCTA": 4
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 20729,
+    "sample_min": 2969.0,
+    "sample_max": 71649.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 20729,
+    "sample_min": 1039.0,
+    "sample_max": 7163.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 20729,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 20729,
+    "distinct": 1,
+    "top": {
+     "human": 20729
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 20729,
+    "sample_min": 0.0,
+    "sample_max": 9.992202294753257
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 20729,
+    "sample_min": 1.2009512485136742,
+    "sample_max": 42.00220628792057
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 20729,
+    "distinct": 99,
+    "top": {
+     "control": 2386,
+     "IFNGR2g1": 579,
+     "ATF2g1": 500,
+     "IFNGR1g3": 416,
+     "CD86g1": 401,
+     "IFNGR2g2": 397,
+     "POU2F2g1": 391,
+     "JAK2g2": 363,
+     "IFNGR1g2": 359,
+     "TNFRSF14g1": 346,
+     "MARCH8g4": 345,
+     "CMTM6g3": 335
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 20729,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 20729
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 20729,
+    "distinct": 1,
+    "top": {
+     "cell_line": 20729
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "ensembl_id",
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 18649,
+  "first": [
+   "AL627309.1",
+   "AP006222.2",
+   "RP4-669L17.10",
+   "RP11-206L10.3",
+   "RP11-206L10.2"
+  ]
+ },
+ "seconds": 6.2,
+ "fetched_bytes": 7754670,
+ "id": "scp_PapalexiSatija2021_eccite_RNA"
+}

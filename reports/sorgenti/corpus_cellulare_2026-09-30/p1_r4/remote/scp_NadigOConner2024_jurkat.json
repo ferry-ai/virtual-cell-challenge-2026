@@ -1,0 +1,326 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_jurkat.h5ad/content",
+ "bytes": 1293665804,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "dense",
+  "shape": [
+   262956,
+   8882
+  ],
+  "dtype": "float32",
+  "compression": "gzip",
+  "chunks": [
+   1028,
+   70
+  ],
+  "first_rows_integer": true,
+  "first_rows_max": 321.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "UMI_count",
+   "batch",
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "disease",
+   "gene",
+   "gene_id",
+   "gene_transcript",
+   "guide_id",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "tissue_type",
+   "transcript",
+   "z_gemgroup_UMI"
+  ],
+  "describe": {
+   "UMI_count": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 262956,
+    "sample_min": 1751.0,
+    "sample_max": 211897.0
+   },
+   "batch": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 262956,
+    "sample_min": 1.0,
+    "sample_max": 56.0
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 262956,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 262956,
+    "distinct": 262956,
+    "top": {
+     "AAACCCAAGAAACTGT-27": 1,
+     "AAACCCAAGAAATCCA-12": 1,
+     "AAACCCAAGAAATTCG-56": 1,
+     "AAACCCAAGAAGCCAC-26": 1,
+     "AAACCCAAGACAACTA-5": 1,
+     "AAACCCAAGACATCAA-26": 1,
+     "AAACCCAAGACGCCCT-33": 1,
+     "AAACCCAAGACTGAGC-9": 1,
+     "AAACCCAAGAGAGCCT-29": 1,
+     "AAACCCAAGAGCAGAA-56": 1,
+     "AAACCCAAGAGGTTTA-29": 1,
+     "AAACCCAAGATAGCAT-54": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 262956,
+    "distinct": 1,
+    "top": {
+     "Jurkat": 262956
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 262956,
+    "distinct": 1,
+    "top": {
+     "acute T cell leukemia": 262956
+    }
+   },
+   "gene": {
+    "kind": "categorical",
+    "n": 262956,
+    "distinct": 2394,
+    "top": {
+     "non-targeting": 12013,
+     "TFAM": 2555,
+     "SLC1A5": 1740,
+     "GFM1": 1382,
+     "GTF3C4": 1294,
+     "PSMB5": 1243,
+     "MRPL36": 1192,
+     "PPP6C": 1186,
+     "NBPF12": 1142,
+     "MRPL35": 998,
+     "POGLUT3": 979,
+     "TARDBP": 827
+    }
+   },
+   "gene_id": {
+    "kind": "categorical",
+    "n": 262956,
+    "distinct": 2392,
+    "top": {
+     "non-targeting": 12013,
+     "ENSG00000108064": 2555,
+     "ENSG00000105281": 1740,
+     "ENSG00000168827": 1382,
+     "ENSG00000125484": 1294,
+     "ENSG00000100804": 1243,
+     "ENSG00000171421": 1192,
+     "ENSG00000119414": 1186,
+     "ENSG00000268043": 1142,
+     "ENSG00000132313": 998,
+     "ENSG00000178202": 979,
+     "ENSG00000120948": 827
+    }
+   },
+   "gene_transcript": {
+    "kind": "categorical",
+    "n": 262956,
+    "distinct": 2679,
+    "top": {
+     "8832_TFAM_P1P2_ENSG00000108064": 2555,
+     "7976_SLC1A5_P1_ENSG00000105281": 1633,
+     "3346_GFM1_P1P2_ENSG00000168827": 1382,
+     "3587_GTF3C4_P1P2_ENSG00000125484": 1294,
+     "6853_PSMB5_P1P2_ENSG00000100804": 1243,
+     "5218_MRPL36_P1P2_ENSG00000171421": 1192,
+     "6700_PPP6C_P1P2_ENSG00000119414": 1186,
+     "5481_NBPF12_P1P2_ENSG00000268043": 1142,
+     "5217_MRPL35_P1P2_ENSG00000132313": 998,
+     "8692_TARDBP_P1P2_ENSG00000120948": 827,
+     "5216_MRPL34_P1P2_ENSG00000130312": 798,
+     "3570_GTF2E2_P1P2_ENSG00000197265": 744
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 262956,
+    "distinct": 2679,
+    "top": {
+     "TFAM_+_60145205.23-P1P2|TFAM_-_60145223.23-P1P2": 2555,
+     "SLC1A5_+_47291839.23-P1|SLC1A5_+_47291829.23-P1": 1633,
+     "GFM1_-_158362387.23-P1P2|GFM1_+_158362379.23-P1P2": 1382,
+     "GTF3C4_+_135545609.23-P1P2|GTF3C4_-_135545497.23-P1P2": 1294,
+     "PSMB5_+_23504053.23-P1P2|PSMB5_-_23504062.23-P1P2": 1243,
+     "MRPL36_+_1799909.23-P1P2|MRPL36_+_1799899.23-P1P2": 1192,
+     "PPP6C_-_127952026.23-P1P2|PPP6C_+_127951685.23-P1P2": 1186,
+     "NBPF12_+_146373532.23-P1P2|NBPF12_-_146373567.23-P1P2": 1142,
+     "MRPL35_+_86426814.23-P1P2|MRPL35_-_86426601.23-P1P2": 998,
+     "TARDBP_-_11072919.23-P1P2|TARDBP_+_11072781.23-P1P2": 827,
+     "MRPL34_-_17416686.23-P1P2|MRPL34_+_17416659.23-P1P2": 798,
+     "GTF2E2_-_30515502.23-P1P2|GTF2E2_+_30515555.23-P1P2": 744
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 262956,
+    "sample_min": 1641.0,
+    "sample_max": 208129.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 262956,
+    "sample_min": 627.0,
+    "sample_max": 8578.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 262956,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 262956,
+    "distinct": 1,
+    "top": {
+     "human": 262956
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 262956,
+    "sample_min": 0.0,
+    "sample_max": 0.13995984196662903
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 262956,
+    "sample_min": 0.012056493200361729,
+    "sample_max": 0.4833886921405792
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 262956,
+    "distinct": 2394,
+    "top": {
+     "control": 12013,
+     "TFAM": 2555,
+     "SLC1A5": 1740,
+     "GFM1": 1382,
+     "GTF3C4": 1294,
+     "PSMB5": 1243,
+     "MRPL36": 1192,
+     "PPP6C": 1186,
+     "NBPF12": 1142,
+     "MRPL35": 998,
+     "POGLUT3": 979,
+     "TARDBP": 827
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 262956,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 262956
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 262956,
+    "distinct": 1,
+    "top": {
+     "cell_line": 262956
+    }
+   },
+   "transcript": {
+    "kind": "categorical",
+    "n": 262956,
+    "distinct": 62,
+    "top": {
+     "P1P2": 219313,
+     "P1": 13749,
+     "P2": 12193,
+     "non-targeting": 12013,
+     "ENST00000380876.4,ENST00000398943.3,ENST00000398944.3": 372,
+     "ENST00000380743.4": 309,
+     "ENST00000329516.3": 282,
+     "ENST00000340333.3": 210,
+     "ENST00000502662.1": 188,
+     "ENST00000568128.1": 171,
+     "ENST00000279873.7": 152,
+     "ENST00000248384.1": 145
+    }
+   },
+   "z_gemgroup_UMI": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 262956,
+    "sample_min": -2.585585594177246,
+    "sample_max": 21.67376136779785
+   }
+  }
+ },
+ "var": {
+  "index": "gene_name",
+  "columns": [
+   "chr",
+   "class",
+   "cv",
+   "end",
+   "ensembl_id",
+   "fano",
+   "gene_name",
+   "in_matrix",
+   "length",
+   "mean",
+   "ncells",
+   "ncounts",
+   "start",
+   "std",
+   "strand"
+  ],
+  "rows": 8882,
+  "first": [
+   "LINC01409",
+   "LINC01128",
+   "NOC2L",
+   "HES4",
+   "ISG15"
+  ]
+ },
+ "seconds": 34.0,
+ "fetched_bytes": 31180300,
+ "id": "scp_NadigOConner2024_jurkat"
+}

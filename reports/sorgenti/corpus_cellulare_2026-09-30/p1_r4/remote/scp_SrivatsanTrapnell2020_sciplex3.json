@@ -1,0 +1,331 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/SrivatsanTrapnell2020_sciplex3.h5ad/content",
+ "bytes": 2526631614,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   799317,
+   110983
+  ],
+  "dtype": "int64",
+  "stored": 1007419688,
+  "compression": "gzip",
+  "chunks": [
+   30745
+  ],
+  "sample_integer": true,
+  "sample_max": 2152.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "cancer",
+   "cell_line",
+   "celltype",
+   "disease",
+   "dose_unit",
+   "dose_value",
+   "ncounts",
+   "organism",
+   "pathway",
+   "pathway_level_1",
+   "pathway_level_2",
+   "perturbation",
+   "perturbation_type",
+   "plate",
+   "replicate",
+   "target",
+   "time",
+   "tissue_type",
+   "well"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 799317,
+    "distinct": 799317,
+    "top": {
+     "A01_E09_RT_BC_100_Lig_BC_147": 1,
+     "A01_E09_RT_BC_100_Lig_BC_186": 1,
+     "A01_E09_RT_BC_100_Lig_BC_196": 1,
+     "A01_E09_RT_BC_100_Lig_BC_213": 1,
+     "A01_E09_RT_BC_100_Lig_BC_220": 1,
+     "A01_E09_RT_BC_100_Lig_BC_227": 1,
+     "A01_E09_RT_BC_100_Lig_BC_245": 1,
+     "A01_E09_RT_BC_100_Lig_BC_254": 1,
+     "A01_E09_RT_BC_100_Lig_BC_289": 1,
+     "A01_E09_RT_BC_100_Lig_BC_306": 1,
+     "A01_E09_RT_BC_100_Lig_BC_316": 1,
+     "A01_E09_RT_BC_100_Lig_BC_334": 1
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 799317,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 3,
+    "top": {
+     "MCF7": 344862,
+     "A549": 244281,
+     "K562": 173652,
+     "<NA>": 36522
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 4,
+    "top": {
+     "mammary epithelial cells": 344862,
+     "alveolar basal epithelial cells": 244281,
+     "lymphoblasts": 173652,
+     "None": 36522
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 4,
+    "top": {
+     "breast adenocarcinoma": 344862,
+     "lung adenocarcinoma": 244281,
+     "chronic myelogenous leukemia": 173652,
+     "None": 36522
+    }
+   },
+   "dose_unit": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 1,
+    "top": {
+     "nM": 799317
+    }
+   },
+   "dose_value": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 799317,
+    "sample_min": 0.0,
+    "sample_max": 10000.0
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 799317,
+    "sample_min": 500.0,
+    "sample_max": 67576.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 1,
+    "top": {
+     "human": 799317
+    }
+   },
+   "pathway": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 21,
+    "top": {
+     "Epigenetics": 171604,
+     "DNA Damage": 118293,
+     "JAK/STAT": 82602,
+     "Cell Cycle": 77601,
+     "Protein Tyrosine Kinase": 55774,
+     "Angiogenesis": 41494,
+     "Cytoskeletal Signaling": 39219,
+     "<NA>": 36522,
+     "Endocrinology & Hormones": 22123,
+     "Metabolism": 18589,
+     "Apoptosis": 18413,
+     "Vehicle": 17578
+    }
+   },
+   "pathway_level_1": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 17,
+    "top": {
+     "Epigenetic regulation": 214942,
+     "Tyrosine kinase signaling": 98672,
+     "JAK/STAT signaling": 90758,
+     "Cell cycle regulation": 76617,
+     "DNA damage & DNA repair": 74600,
+     "<NA>": 36522,
+     "Other": 24461,
+     "Nuclear receptor signaling": 22328,
+     "Protein folding & Protein degradation": 22027,
+     "Metabolic regulation": 21555,
+     "Antioxidant": 18377,
+     "Vehicle": 17578
+    }
+   },
+   "pathway_level_2": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 55,
+    "top": {
+     "Histone deacetylation": 141857,
+     "JAK kinase activity": 75442,
+     "RTK activity": 70146,
+     "Aurora kinase activity": 59460,
+     "<NA>": 36522,
+     "ADP-rybosilation": 36260,
+     "Histone methylation": 34221,
+     "Nucleotide analog": 25423,
+     "Nuclear receptor activity": 22328,
+     "DNA methylation": 18984,
+     "Antioxidant": 18377,
+     "Vehicle": 17578
+    }
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 189,
+    "top": {
+     "<NA>": 36522,
+     "control": 17578,
+     "Ellagic acid": 6257,
+     "Divalproex Sodium": 6203,
+     "Ruxolitinib (INCB018424)": 6143,
+     "MC1568": 6126,
+     "UNC1999": 6088,
+     "Tazemetostat (EPZ-6438)": 6036,
+     "Fasudil (HA-1077) HCl": 6002,
+     "PFI-1 (PF-6405761)": 5948,
+     "Resveratrol": 5942,
+     "SRT2104 (GSK2245840)": 5942
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 1,
+    "top": {
+     "drug": 799317
+    }
+   },
+   "plate": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 52,
+    "top": {
+     "<NA>": 36522,
+     "plate44": 28510,
+     "plate43": 27816,
+     "plate47": 27355,
+     "plate48": 23814,
+     "plate46": 23486,
+     "plate20": 23463,
+     "plate17": 23405,
+     "plate42": 23057,
+     "plate41": 22041,
+     "plate51": 21459,
+     "plate50": 21343
+    }
+   },
+   "replicate": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 2,
+    "top": {
+     "rep2": 411710,
+     "rep1": 351085,
+     "<NA>": 36522
+    }
+   },
+   "target": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 87,
+    "top": {
+     "HDAC": 100157,
+     "JAK": 68623,
+     "Aurora Kinase": 47737,
+     "<NA>": 36522,
+     "PARP": 32537,
+     "Histone Methyltransferase": 32168,
+     "DNA/RNA Synthesis": 29290,
+     "Sirtuin": 25292,
+     "Vehicle": 17578,
+     "Epigenetic Reader Domain": 17535,
+     "Topoisomerase": 15199,
+     "DNA Methyltransferase": 15177
+    }
+   },
+   "time": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 799317,
+    "sample_min": 24.0,
+    "sample_max": 72.0
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 1,
+    "top": {
+     "cell_line": 799317
+    }
+   },
+   "well": {
+    "kind": "categorical",
+    "n": 799317,
+    "distinct": 864,
+    "top": {
+     "<NA>": 36522,
+     "plate10_C12": 1428,
+     "plate10_B2": 1428,
+     "plate10_B3": 1418,
+     "plate10_H5": 1391,
+     "plate10_B8": 1388,
+     "plate10_H6": 1385,
+     "plate8_H4": 1378,
+     "plate10_A2": 1366,
+     "plate10_A4": 1365,
+     "plate10_A3": 1363,
+     "plate8_G6": 1361
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "ensembl_id",
+   "gene_symbol"
+  ],
+  "rows": 110983,
+  "first": [
+   "TSPAN6",
+   "TNMD",
+   "DPM1",
+   "SCYL3",
+   "C1orf112"
+  ]
+ },
+ "seconds": 51.9,
+ "fetched_bytes": 59332286,
+ "id": "scp_SrivatsanTrapnell2020_sciplex3"
+}

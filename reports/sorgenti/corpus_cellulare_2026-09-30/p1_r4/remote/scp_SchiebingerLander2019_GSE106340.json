@@ -1,0 +1,220 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/SchiebingerLander2019_GSE106340.h5ad/content",
+ "bytes": 378858726,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   68339,
+   27998
+  ],
+  "dtype": "float32",
+  "stored": 162865154,
+  "compression": "gzip",
+  "chunks": [
+   39763
+  ],
+  "sample_integer": true,
+  "sample_max": 1683.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "GSM",
+   "age",
+   "cancer",
+   "cell_barcode",
+   "celltype",
+   "disease",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "tissue_type"
+  ],
+  "describe": {
+   "GSM": {
+    "kind": "categorical",
+    "n": 68339,
+    "distinct": 22,
+    "top": {
+     "GSM2836281": 5144,
+     "GSM2836283": 4621,
+     "GSM2836267": 4241,
+     "GSM2836271": 3976,
+     "GSM2836287": 3875,
+     "GSM2836275": 3677,
+     "GSM2836272": 3676,
+     "GSM2836273": 3534,
+     "GSM2836288": 3124,
+     "GSM2836284": 2917,
+     "GSM2836286": 2913,
+     "GSM2836268": 2909
+    }
+   },
+   "age": {
+    "kind": "categorical",
+    "n": 68339,
+    "distinct": 11,
+    "top": {
+     "D12": 10213,
+     "D16": 8496,
+     "D10": 7592,
+     "D6": 7210,
+     "D4": 6865,
+     "iPSCs": 6041,
+     "D8": 5854,
+     "D2": 5667,
+     "D9": 4628,
+     "D0": 4241,
+     "D11": 1532
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 68339,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 68339,
+    "distinct": 68339,
+    "top": {
+     "AAACATACAACAGA-GSM2836281": 1,
+     "AAACATACAAGCCT-GSM2836288": 1,
+     "AAACATACAAGTAG-GSM2836277": 1,
+     "AAACATACAATCGC-GSM2836288": 1,
+     "AAACATACACCGAT-GSM2836272": 1,
+     "AAACATACACTACG-GSM2836268": 1,
+     "AAACATACACTGTG-GSM2836283": 1,
+     "AAACATACACTTTC-GSM2836267": 1,
+     "AAACATACAGCCTA-GSM2836272": 1,
+     "AAACATACAGCGGA-GSM2836276": 1,
+     "AAACATACAGTTCG-GSM2836281": 1,
+     "AAACATACATGACC-GSM2836283": 1
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 68339,
+    "distinct": 1,
+    "top": {
+     "mESCs": 68339
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 68339,
+    "distinct": 1,
+    "top": {
+     "healthy": 68339
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 68339,
+    "sample_min": 702.0,
+    "sample_max": 85491.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 68339,
+    "sample_min": 383.0,
+    "sample_max": 7220.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 68339,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 68339,
+    "distinct": 1,
+    "top": {
+     "mouse": 68339
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 68339,
+    "sample_min": 0.0,
+    "sample_max": 35.4067
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 68339,
+    "sample_min": 1.4529198,
+    "sample_max": 62.06168
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 68339,
+    "distinct": 2,
+    "top": {
+     "<NA>": 29837,
+     "2i (LIF+MEKi+GSK3i)": 26496,
+     "control": 12006
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 68339,
+    "distinct": 1,
+    "top": {
+     "drug": 68339
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 68339,
+    "distinct": 1,
+    "top": {
+     "stem": 68339
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 27998,
+  "first": [
+   "Xkr4",
+   "Gm1992",
+   "Gm37381",
+   "Rp1",
+   "Rp1-1"
+  ]
+ },
+ "seconds": 8.6,
+ "fetched_bytes": 11857126,
+ "id": "scp_SchiebingerLander2019_GSE106340"
+}

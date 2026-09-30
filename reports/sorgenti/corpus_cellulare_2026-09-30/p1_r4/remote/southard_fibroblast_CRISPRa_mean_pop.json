@@ -1,0 +1,429 @@
+{
+ "url": "https://zenodo.org/api/records/15200179/files/fibroblast_CRISPRa_mean_pop.h5ad/content",
+ "bytes": 1720196368,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "dense",
+  "shape": [
+   10916,
+   4914
+  ],
+  "dtype": "float64",
+  "compression": null,
+  "chunks": null,
+  "first_rows_integer": false,
+  "first_rows_max": 5.361494064331055
+ },
+ "layers": {
+  "adj_p": {
+   "format": "dense",
+   "shape": [
+    10916,
+    4914
+   ],
+   "dtype": "float64",
+   "compression": null,
+   "chunks": null,
+   "first_rows_integer": false,
+   "first_rows_max": 0.9999984243185613
+  },
+  "masked": {
+   "format": "dense",
+   "shape": [
+    10916,
+    4914
+   ],
+   "dtype": "float64",
+   "compression": null,
+   "chunks": null,
+   "first_rows_integer": false,
+   "first_rows_max": NaN
+  },
+  "p": {
+   "format": "dense",
+   "shape": [
+    10916,
+    4914
+   ],
+   "dtype": "float64",
+   "compression": null,
+   "chunks": null,
+   "first_rows_integer": false,
+   "first_rows_max": 0.9999984243185613
+  }
+ },
+ "obs": {
+  "index": "guide_identity",
+  "columns": [
+   "active",
+   "bulk_expr",
+   "cell_count",
+   "cluster",
+   "cluster_description",
+   "cluster_name",
+   "de_genes",
+   "expressed",
+   "gene_driven",
+   "guide_identity",
+   "masked_active",
+   "masked_cluster",
+   "masked_cluster_description",
+   "masked_cluster_name",
+   "masked_cluster_num_genes",
+   "masked_cluster_size",
+   "p_expressed",
+   "protospacer",
+   "sequence_driven",
+   "sequence_suffix",
+   "strength",
+   "stricter_masked_cluster",
+   "stricter_masked_cluster_description",
+   "target_expr",
+   "target_gene",
+   "target_gene_id"
+  ],
+  "describe": {
+   "active": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 10916,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "bulk_expr": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 10916,
+    "sample_min": 0.0,
+    "sample_max": 1417.6308195000001
+   },
+   "cell_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 10916,
+    "sample_min": 1.0,
+    "sample_max": 1369.0
+   },
+   "cluster": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 10916,
+    "sample_min": 1.0,
+    "sample_max": 2301.0
+   },
+   "cluster_description": {
+    "kind": "categorical",
+    "n": 10916,
+    "distinct": 2100,
+    "top": {
+     "2251: neither (85)": 85,
+     "64: SEQUENCE-driven (CTG) (45)": 45,
+     "1021: neither (42)": 42,
+     "480: multi-GENE-driven (GLIS3(4), HES7(4), HIVEP1(2), YAP1(4), ZFP36L2(3), ZNF296(6), ZNF618(2)) (33)": 33,
+     "833: neither (28)": 28,
+     "428: neither (28)": 28,
+     "2172: neither (28)": 28,
+     "40: neither (28)": 28,
+     "186: multi-GENE-driven (FOXC1(2), FOXC2(4), GLI1(3), SOX13(3), ZEB2(4)) (27)": 27,
+     "1660: multi-GENE-driven (HELZ2(6), MXI1(5), MYBL1(2)) (26)": 26,
+     "1097: neither (25)": 25,
+     "1666: multi-GENE-driven (ETS1(3), FLI1(2), IRF4(5), SMAD1(4), SMAD5(3)) (25)": 25
+    }
+   },
+   "cluster_name": {
+    "kind": "categorical",
+    "n": 10916,
+    "distinct": 236,
+    "top": {
+     "<NA>": 10190,
+     "ALX4_1": 6,
+     "EGR3_1": 6,
+     "HES4_1": 6,
+     "HELZ2_1": 6,
+     "ZNF296_1": 6,
+     "SALL3_1": 6,
+     "NME2_1": 6,
+     "TP73_1": 6,
+     "FOXL2_1": 5,
+     "EPAS1_1": 5,
+     "CARHSP1_1": 5
+    }
+   },
+   "de_genes": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 10916,
+    "sample_min": 0.0,
+    "sample_max": 1087.0
+   },
+   "expressed": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 10916,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "gene_driven": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 10916,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "guide_identity": {
+    "kind": "strings",
+    "n": 10916,
+    "distinct": 10916,
+    "top": {
+     "AATF_GCGCAGAAGGTTGAAGGGAT": 1,
+     "AATF_GCGTGCGAGTGCGCGGGAAG": 1,
+     "AATF_GGAAGCGCGCAGAAGGTTGA": 1,
+     "AATF_GGAAGGGATTGGAGCCGTAT": 1,
+     "AATF_GGGCGTTGCTAGCATGAAGG": 1,
+     "AATF_GTGAAGGGATTGGAGCCGTA": 1,
+     "ABL1_GACCCCTTGACAGCAAGGGA": 1,
+     "ABL1_GCAAAGCAGAGAAGCGAGAG": 1,
+     "ABL1_GCCGCGCCCGTCCGCACCCA": 1,
+     "ABL1_GCTCGGCCTCGGGAACGCCA": 1,
+     "ABL1_GCTGAGACTAAGGGGGCCGT": 1,
+     "ABL1_GGGAGACCCCTTGACAGCAA": 1
+    }
+   },
+   "masked_active": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 10916,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "masked_cluster": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 10916,
+    "sample_min": 1.0,
+    "sample_max": 2287.0
+   },
+   "masked_cluster_description": {
+    "kind": "categorical",
+    "n": 10916,
+    "distinct": 2096,
+    "top": {
+     "2286: neither (48)": 48,
+     "1860: SEQUENCE-driven (CTG) (44)": 44,
+     "1975: multi-GENE-driven (BID(2), GLIS3(4), HES7(4), YAP1(4), ZFP36L2(3), ZNF296(6)) (32)": 32,
+     "1908: neither (29)": 29,
+     "1326: neither (27)": 27,
+     "714: multi-GENE-driven (HELZ2(6), MXI1(5), MYBL1(2)) (26)": 26,
+     "524: neither (25)": 25,
+     "1311: neither (25)": 25,
+     "1271: SEQUENCE-driven (CCA) (25)": 25,
+     "807: neither (24)": 24,
+     "1701: neither (24)": 24,
+     "86: neither (24)": 24
+    }
+   },
+   "masked_cluster_name": {
+    "kind": "categorical",
+    "n": 10916,
+    "distinct": 220,
+    "top": {
+     "<NA>": 10255,
+     "ALX4_1": 6,
+     "EGR3_1": 6,
+     "CDX2_1": 6,
+     "HELZ2_1": 6,
+     "ZNF296_1": 6,
+     "SALL3_1": 6,
+     "PRDM1_1": 6,
+     "TP73_1": 6,
+     "GFI1_1": 5,
+     "LHX4_1": 5,
+     "MXI1_1": 5
+    }
+   },
+   "masked_cluster_num_genes": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 10916,
+    "sample_min": 1.0,
+    "sample_max": 48.0
+   },
+   "masked_cluster_size": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 10916,
+    "sample_min": 1.0,
+    "sample_max": 48.0
+   },
+   "p_expressed": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 10916,
+    "sample_min": 0.0,
+    "sample_max": 0.9999955222071653
+   },
+   "protospacer": {
+    "kind": "strings",
+    "n": 10916,
+    "distinct": 10916,
+    "top": {
+     "GAAAAAAAAAATGTAGGGCT": 1,
+     "GAAAAAAAACAGCCCGGCGC": 1,
+     "GAAAAACAGAGGCGGTGGGA": 1,
+     "GAAAAACGGTATAGGAAAGT": 1,
+     "GAAAAACTGCATTACCCAGA": 1,
+     "GAAAAACTGCCTTACTCAGA": 1,
+     "GAAAAAGACCTGCATGAGAT": 1,
+     "GAAAAAGAGTCCTGACATGG": 1,
+     "GAAAAAGCAGAACGAGTGAG": 1,
+     "GAAAAAGGCACTAATAATGA": 1,
+     "GAAAAATCCTTAGTAAAAGT": 1,
+     "GAAAAATGAGACTGCGGGCT": 1
+    }
+   },
+   "sequence_driven": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 10916,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "sequence_suffix": {
+    "kind": "categorical",
+    "n": 10916,
+    "distinct": 126,
+    "top": {
+     "": 9833,
+     "CTG": 80,
+     "CCC": 51,
+     "CAG": 40,
+     "GGG": 36,
+     "CCG": 26,
+     "CCCA": 22,
+     "AGAGG": 21,
+     "GGA": 21,
+     "GGGG": 21,
+     "GGGAG": 19,
+     "ATGGG": 19
+    }
+   },
+   "strength": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 10916,
+    "sample_min": 0.0,
+    "sample_max": 575.4269757270813
+   },
+   "stricter_masked_cluster": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 10916,
+    "sample_min": 1.0,
+    "sample_max": 3222.0
+   },
+   "stricter_masked_cluster_description": {
+    "kind": "categorical",
+    "n": 10916,
+    "distinct": 2911,
+    "top": {
+     "1326: neither (21)": 21,
+     "2570: neither (20)": 20,
+     "1399: neither (19)": 19,
+     "1701: SEQUENCE-driven (GGGG) (19)": 19,
+     "singleton (GAGAG) (1)": 17,
+     "833: neither (16)": 16,
+     "2852: multi-GENE-driven (BID(2), GLIS3(4), ZFP36L2(3)) (16)": 16,
+     "singleton (GGGGA) (1)": 16,
+     "2107: neither (15)": 15,
+     "1679: SEQUENCE-driven (GGG) (15)": 15,
+     "singleton (AGGGG) (1)": 15,
+     "1434: SEQUENCE-driven (AGAGG) (14)": 14
+    }
+   },
+   "target_expr": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 10916,
+    "sample_min": -0.9607354402542114,
+    "sample_max": 40.457374572753906
+   },
+   "target_gene": {
+    "kind": "categorical",
+    "n": 10916,
+    "distinct": 1837,
+    "top": {
+     "off-target": 17,
+     "ALX4": 6,
+     "ALYREF": 6,
+     "ANHX": 6,
+     "ANKRD30A": 6,
+     "AP2B1": 6,
+     "APEX1": 6,
+     "AR": 6,
+     "ARGFX": 6,
+     "ARHGAP35": 6,
+     "ARID1A": 6,
+     "ARID1B": 6
+    }
+   },
+   "target_gene_id": {
+    "kind": "categorical",
+    "n": 10916,
+    "distinct": 378,
+    "top": {
+     "<NA>": 8669,
+     "ENSG00000005073": 6,
+     "ENSG00000198546": 6,
+     "ENSG00000198715": 6,
+     "ENSG00000198830": 6,
+     "ENSG00000198846": 6,
+     "ENSG00000204209": 6,
+     "ENSG00000204356": 6,
+     "ENSG00000204713": 6,
+     "ENSG00000205250": 6,
+     "ENSG00000213015": 6,
+     "ENSG00000213246": 6
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_name",
+  "columns": [
+   "cv",
+   "excess_cv",
+   "fano",
+   "feature_types",
+   "gene_id",
+   "gene_name",
+   "genome",
+   "in_matrix",
+   "mean",
+   "mean_adjusted_pairwise_p_cost",
+   "pairwise_chosen",
+   "pairwise_p_cost",
+   "std"
+  ],
+  "rows": 4914,
+  "first": [
+   "DPM1",
+   "FUCA2",
+   "NIPAL3",
+   "ANKIB1",
+   "CYP51A1"
+  ]
+ },
+ "seconds": 12.2,
+ "fetched_bytes": 16260368,
+ "id": "southard_fibroblast_CRISPRa_mean_pop"
+}

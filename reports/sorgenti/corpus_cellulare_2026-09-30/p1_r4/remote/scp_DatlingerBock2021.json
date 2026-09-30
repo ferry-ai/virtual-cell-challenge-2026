@@ -1,0 +1,239 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/DatlingerBock2021.h5ad/content",
+ "bytes": 33600780,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   39194,
+   25904
+  ],
+  "dtype": "float32",
+  "stored": 10713739,
+  "compression": "gzip",
+  "chunks": [
+   10463
+  ],
+  "sample_integer": true,
+  "sample_max": 552.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "celltype",
+   "disease",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_2",
+   "perturbation_type",
+   "perturbation_type_2",
+   "sample",
+   "tissue_type"
+  ],
+  "describe": {
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 39194,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 39194,
+    "distinct": 39194,
+    "top": {
+     "A01-ACTTTCAGTAACGGAC": 1,
+     "A01-AGCTGATTCGCTGATA": 1,
+     "A01-CCTTAATTCCAGAGAG": 1,
+     "A01-CTCTAGCGTCTGGGAA": 1,
+     "A01-GCGATTAGTGATAGAT": 1,
+     "A01-GCGGTGTTCATCGCAC": 1,
+     "A01-GCGGTGTTCATCGCTC": 1,
+     "A01-GCGTAGCAGAGGTACC": 1,
+     "A01-GCGTAGCCGAGGTACC": 1,
+     "A01-GGCACGTGTCCAGACC": 1,
+     "A01-GGCATTATCACGGGTC": 1,
+     "A01-GGCATTATCGATGAAA": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 39194,
+    "distinct": 1,
+    "top": {
+     "Jurkat cells": 39194
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 39194,
+    "distinct": 1,
+    "top": {
+     "T cells": 39194
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 39194,
+    "distinct": 1,
+    "top": {
+     "acute T cell leukemia": 39194
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 39194,
+    "sample_min": 100.0,
+    "sample_max": 38078.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 39194,
+    "sample_min": 14.0,
+    "sample_max": 3978.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 39194,
+    "sample_min": 1.0,
+    "sample_max": 2.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 39194,
+    "distinct": 1,
+    "top": {
+     "human": 39194
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 39194,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 39194,
+    "sample_min": 0.0,
+    "sample_max": 25.862068
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 39194,
+    "distinct": 41,
+    "top": {
+     "control": 4497,
+     "LAT_2": 1789,
+     "LCK_2": 1779,
+     "JUND_2": 1477,
+     "FOS_2": 1438,
+     "PTPN11_2": 1299,
+     "ZAP70_2": 1289,
+     "EGR4_1": 1252,
+     "EGR3_2": 1143,
+     "PTPN11_1": 1084,
+     "LAT_1": 1063,
+     "DOK2_1": 1053
+    }
+   },
+   "perturbation_2": {
+    "kind": "categorical",
+    "n": 39194,
+    "distinct": 2,
+    "top": {
+     "stimulated": 21471,
+     "unstimulated": 17723
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 39194,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 39194
+    }
+   },
+   "perturbation_type_2": {
+    "kind": "categorical",
+    "n": 39194,
+    "distinct": 1,
+    "top": {
+     "TCR stimulation": 39194
+    }
+   },
+   "sample": {
+    "kind": "categorical",
+    "n": 39194,
+    "distinct": 384,
+    "top": {
+     "C02": 496,
+     "B12": 373,
+     "M10": 342,
+     "M12": 325,
+     "I12": 323,
+     "M07": 289,
+     "I24": 278,
+     "L22": 278,
+     "L02": 272,
+     "A08": 260,
+     "C17": 252,
+     "B22": 240
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 39194,
+    "distinct": 1,
+    "top": {
+     "cell_line": 39194
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "ensembl_id",
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 25904,
+  "first": [
+   "TSPAN6",
+   "TNMD",
+   "DPM1",
+   "SCYL3",
+   "C1orf112"
+  ]
+ },
+ "seconds": 5.4,
+ "fetched_bytes": 6337804,
+ "id": "scp_DatlingerBock2021"
+}

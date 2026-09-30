@@ -161,3 +161,37 @@ dati della gara (virtualcellchallenge.org/datasets, letta il 30/09):
 
 Vanno aggiunte a `sources.yaml` in una prossima esecuzione dell'inventario. La stessa pagina dice che
 H1 2025 si può usare per il training.
+
+## 8. Dalle 21:40: la rete sulle singole cellule (sessione `ec2e5b07`)
+
+**La richiesta del proprietario, in chat, trascritta:** «Voglio una rete addestrata direttamente sulle singole
+cellule, usando tutti i dataset utilizzabili, non un'estensione della rete sugli effetti pseudobulk. Non limitarti
+alle sorgenti più facili o a quelle integrabili stanotte. Completa l'inventario, includendo scPerturb e tutti i
+dataset già individuati nella repo, e organizza un'ingestione progressiva con streaming e shard. Formati diversi
+richiedono adattatori; modalità diverse richiedono una gestione esplicita, non esclusioni automatiche. I conteggi
+cellulari originali devono essere la supervisione principale, con maschere per i geni non misurati, controlli
+appropriati e QC documentato. Conserva il raw immutabile e separa le trasformazioni necessarie al modello. Non
+sostituire le cellule con medie, LFC o valori shrunk. Il pseudobulk può restare soltanto come baseline o controllo
+ausiliario. Le sorgenti disponibili esclusivamente come aggregati devono essere dichiarate e trattate separatamente.
+Un primo training su un sottoinsieme è accettabile come verifica tecnica, ma non come risultato finale. Mostrami
+quali dataset e quante cellule entrano realmente nel training, quali restano fuori e perché. Restano escluse le
+riserve concordate. Se la rete cellulare non esiste ancora, costruiscila.»
+
+**Come è organizzato (implementato, 30/09 sera):**
+- `adapters.h5rows` legge h5ad a righe (CSR o denso), in locale o **a intervalli di byte via HTTP** con un controllo
+  dell'ETag su ogni intervallo: KOLF (189 GB) e CD4 (1,7 TB) non vanno scaricati interi. `inspect_remote.py` misura
+  la struttura di un h5ad remoto senza leggerne la matrice (72 dei 77 file di `urls_r4.json` misurati, in
+  `p1_r4/remote/`).
+- Colab ingerisce (due dispatcher, `runs/queue` e `runs/queue2`; il secondo notebook è
+  `notebooks/colab_dispatcher_queue2.ipynb`), gli shard stanno su Drive, e `publish_kaggle.py` li pubblica come
+  dataset privati dell'account Kaggle con GPU (`davidmaisterx`), dove gira il training. `colab_job.py` costruisce
+  i job (preflight comune, ingestione, pubblicazione), `wave1_specs.py` gli spec della prima ondata (`jobs_colab/`).
+- Prima ondata: H1 train e validation (il test è la riserva e non si scarica per il training), HepG2 e Jurkat di
+  Nadig, K562 genome-wide, K562 essenziali e RPE1 di Replogle; HIPSCI (J02) e Jurkat GSE249595 (J03, senza chiamate
+  delle guide: non supervisionabile finché l'assegnazione non è provata).
+- Il job 090 (archivio di H1 su Drive) è fallito per un mio controllo dello spazio sbagliato: il mount di Drive su
+  Colab riporta il disco del runtime. Tutti i file sono stati scaricati e verificati (crc32c, sha256 in
+  `runs/rlab_setup_2026-09-30_r2/receipts/h1_vcc2025_r2/fetch.json`); le copie temporanee sono state tolte dal
+  job 091 per non riempire il disco. L'archivio va rifatto su un runtime con disco libero.
+
+Stato dei job e passaggio di consegne: scheda R-LAB, voce del 30/09 alle 22:55.

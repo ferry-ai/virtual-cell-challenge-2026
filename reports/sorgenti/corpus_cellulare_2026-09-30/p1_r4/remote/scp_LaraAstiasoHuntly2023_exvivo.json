@@ -1,0 +1,279 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/LaraAstiasoHuntly2023_exvivo.h5ad/content",
+ "bytes": 1080740763,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   146793,
+   32287
+  ],
+  "dtype": "float32",
+  "stored": 472479805,
+  "compression": "gzip",
+  "chunks": [
+   57676
+  ],
+  "sample_integer": true,
+  "sample_max": 1072.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "Mixscape_classification",
+   "cancer",
+   "cell_barcode",
+   "cellcycle_phase",
+   "celltype",
+   "disease",
+   "guide_id",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "sample",
+   "time",
+   "tissue",
+   "tissue_type"
+  ],
+  "describe": {
+   "Mixscape_classification": {
+    "kind": "categorical",
+    "n": 146793,
+    "distinct": 3,
+    "top": {
+     "<NA>": 71931,
+     "KO": 32757,
+     "NP": 29661,
+     "NTC": 12444
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 146793,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 146793,
+    "distinct": 146793,
+    "top": {
+     "AAACCCAAGAAACTAC-LSK_OP1_NM_7d_1": 1,
+     "AAACCCAAGACCTCCG-LSK_OP1_NM_9d_1": 1,
+     "AAACCCAAGAGCATAT-LSK_OP4_NM_7d_1": 1,
+     "AAACCCAAGAGCATAT-LSK_OP4_NM_9d_1": 1,
+     "AAACCCAAGATAACAC-LSK_OP1_NM_7d_1": 1,
+     "AAACCCAAGATACCAA-LSK_OP3_NM_7d_1": 1,
+     "AAACCCAAGATGAACT-LSK_OP2_NM_7d_1": 1,
+     "AAACCCAAGATGCCGA-LSK_OP3_NM_9d_1": 1,
+     "AAACCCAAGCAACCAG-LSK_OP1_NM_7d_1": 1,
+     "AAACCCAAGCACGATG-LSK_OP3_NM_9d_1": 1,
+     "AAACCCAAGCCTCTTC-LSK_OP3_NM_9d_1": 1,
+     "AAACCCAAGCGCACAA-LSK_OP2_NM_7d_1": 1
+    }
+   },
+   "cellcycle_phase": {
+    "kind": "categorical",
+    "n": 146793,
+    "distinct": 3,
+    "top": {
+     "G1": 52672,
+     "G2M": 48896,
+     "S": 27651,
+     "<NA>": 17574
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 146793,
+    "distinct": 8,
+    "top": {
+     "GMP (late)": 28976,
+     "GMP": 28734,
+     "EBMP": 24698,
+     "MkP": 18231,
+     "<NA>": 17574,
+     "HSC": 17101,
+     "GMP (early)": 5886,
+     "Mono": 2990,
+     "Eo/Ba": 2603
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 146793,
+    "distinct": 1,
+    "top": {
+     "healthy": 146793
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 146793,
+    "distinct": 96,
+    "top": {
+     "<NA>": 71927,
+     "Carm1_B_69142": 3105,
+     "Mbd3_AS_41065": 2799,
+     "Ehmt2_B_59106": 2673,
+     "Carm1_B_69143": 2215,
+     "NTC_0008": 2065,
+     "NTC_0005": 2042,
+     "NTC_0006": 1919,
+     "NTC_0004": 1645,
+     "Smc2_B_15144": 1632,
+     "Rbbp4_AS_22098": 1553,
+     "Men1_AS_40513": 1507
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 146793,
+    "sample_min": 500.0,
+    "sample_max": 184355.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 146793,
+    "sample_min": 114.0,
+    "sample_max": 8984.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 146793,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 146793,
+    "distinct": 1,
+    "top": {
+     "Mus musculus": 146793
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 146793,
+    "sample_min": 0.0,
+    "sample_max": 82.54335021972656
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 146793,
+    "sample_min": 2.1565494537353516,
+    "sample_max": 78.34285736083984
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 146793,
+    "distinct": 43,
+    "top": {
+     "<NA>": 71927,
+     "control": 12444,
+     "Carm1": 5320,
+     "Ehmt2": 3379,
+     "Mbd3": 2799,
+     "Rbbp4": 2784,
+     "Prmt1": 2607,
+     "Smarcd1": 2598,
+     "Men1": 2273,
+     "Smc2": 2183,
+     "Kmt2d": 1988,
+     "Prmt5": 1761
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 146793,
+    "distinct": 1,
+    "top": {
+     "CRISPR-cas9": 146793
+    }
+   },
+   "sample": {
+    "kind": "categorical",
+    "n": 146793,
+    "distinct": 9,
+    "top": {
+     "LSK_OP3_NM_9d_1": 22227,
+     "LSK_OP1_NM_9d_1": 21143,
+     "LSK_OP3_NM_7d_1": 18689,
+     "LSK_OP1_NM_7d_1": 16878,
+     "LSK_OP4_NM_7d_1": 16642,
+     "LSK_OP2_NM_9d_1": 14746,
+     "LSK_OP2_NM_7d_1": 13108,
+     "LSK_OP0_NM_7d_1": 11896,
+     "LSK_OP4_NM_9d_1": 11464
+    }
+   },
+   "time": {
+    "kind": "categorical",
+    "n": 146793,
+    "distinct": 2,
+    "top": {
+     "7d": 68636,
+     "9d": 60583,
+     "<NA>": 17574
+    }
+   },
+   "tissue": {
+    "kind": "categorical",
+    "n": 146793,
+    "distinct": 1,
+    "top": {
+     "bone marrow transplant": 146793
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 146793,
+    "distinct": 1,
+    "top": {
+     "primary": 146793
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 32287,
+  "first": [
+   "Xkr4",
+   "Gm1992",
+   "Gm19938",
+   "Gm37381",
+   "Rp1"
+  ]
+ },
+ "seconds": 15.8,
+ "fetched_bytes": 18533275,
+ "id": "scp_LaraAstiasoHuntly2023_exvivo"
+}

@@ -1,0 +1,136 @@
+{
+ "url": "https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/train/adata_Training.h5ad",
+ "bytes": 15482497461,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   221273,
+   18080
+  ],
+  "dtype": "float32",
+  "stored": 1932554688,
+  "compression": null,
+  "chunks": [
+   58977
+  ],
+  "sample_integer": true,
+  "sample_max": 777.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "batch",
+   "guide_id",
+   "target_gene"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 221273,
+    "distinct": 221273,
+    "top": {
+     "AAACAAGCAAACCCAAAGTGAGTG-Flex_3_10": 1,
+     "AAACAAGCAAACGGTCATCATGTG-Flex_3_14": 1,
+     "AAACAAGCAAACTGGCATACGTCA-Flex_3_13": 1,
+     "AAACAAGCAAAGACCCAAGTAGAG-Flex_1_07": 1,
+     "AAACAAGCAAAGGGATAGAGGCAA-Flex_3_11": 1,
+     "AAACAAGCAAAGGGATAGTGAGTG-Flex_3_10": 1,
+     "AAACAAGCAAATATGCATACGTCA-Flex_3_13": 1,
+     "AAACAAGCAAATGACTACAGTCTG-Flex_1_09": 1,
+     "AAACAAGCAACAGGGAATCATGTG-Flex_1_14": 1,
+     "AAACAAGCAACCTTGTACAGACCT-Flex_1_05": 1,
+     "AAACAAGCAACCTTGTACTTTAGG-Flex_1_01": 1,
+     "AAACAAGCAACTGTTCAGCTGTGA-Flex_3_08": 1
+    }
+   },
+   "batch": {
+    "kind": "categorical",
+    "n": 221273,
+    "distinct": 48,
+    "top": {
+     "Flex_3_10": 5082,
+     "Flex_3_06": 5068,
+     "Flex_3_15": 5038,
+     "Flex_3_08": 4988,
+     "Flex_3_11": 4988,
+     "Flex_3_14": 4980,
+     "Flex_3_03": 4977,
+     "Flex_3_13": 4955,
+     "Flex_3_04": 4936,
+     "Flex_3_02": 4895,
+     "Flex_3_07": 4888,
+     "Flex_3_09": 4834
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 221273,
+    "distinct": 189,
+    "top": {
+     "TADA1_P1P2_A|TADA1_P1P2_B": 4035,
+     "PRCP_P1_A|PRCP_P1_B": 3415,
+     "IGF2R_P1P2_A|IGF2R_P1P2_B": 3109,
+     "NCK2_P1P2_A|NCK2_P1P2_B": 2929,
+     "HIRA_P1_A|HIRA_P1_B": 2888,
+     "MED13_P1P2_A|MED13_P1P2_B": 2787,
+     "MED12_P1P2_A|MED12_P1P2_B": 2766,
+     "non-targeting_00027|non-targeting_00143": 2749,
+     "TMSB4X_P1_A|TMSB4X_P1_B": 2499,
+     "STAT1_P1P2_A|STAT1_P1P2_B": 2493,
+     "USP22_P1P2_A|USP22_P1P2_B": 2491,
+     "MED13L_P1P2_A|MED13L_P1P2_B": 2469
+    }
+   },
+   "target_gene": {
+    "kind": "categorical",
+    "n": 221273,
+    "distinct": 151,
+    "top": {
+     "non-targeting": 38176,
+     "TMSB4X": 4760,
+     "PRCP": 4331,
+     "TADA1": 4035,
+     "HIRA": 3407,
+     "IGF2R": 3109,
+     "NCK2": 2929,
+     "MED13": 2787,
+     "MED12": 2766,
+     "STAT1": 2493,
+     "USP22": 2491,
+     "MED13L": 2469
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "gene_id"
+  ],
+  "rows": 18080,
+  "first": [
+   "SAMD11",
+   "NOC2L",
+   "KLHL17",
+   "PLEKHN1",
+   "PERM1"
+  ]
+ },
+ "seconds": 22.2,
+ "fetched_bytes": 25438645,
+ "id": "h1_train"
+}

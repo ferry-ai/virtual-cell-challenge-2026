@@ -1,0 +1,216 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/AdamsonWeissman2016_GSM2406677_10X005.h5ad/content",
+ "bytes": 139059637,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   15006,
+   32738
+  ],
+  "dtype": "float32",
+  "stored": 63553399,
+  "compression": "gzip",
+  "chunks": [
+   31032
+  ],
+  "sample_integer": true,
+  "sample_max": 67.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "UMI count",
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "celltype",
+   "disease",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "read count",
+   "tissue_type"
+  ],
+  "describe": {
+   "UMI count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 15006,
+    "sample_min": 1.0,
+    "sample_max": 645.0
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 15006,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 15006,
+    "distinct": 15006,
+    "top": {
+     "AAACATACACACTG": 1,
+     "AAACATACACTCAG": 1,
+     "AAACATACCCGATA": 1,
+     "AAACATACCTCATT": 1,
+     "AAACATACCTTGCC": 1,
+     "AAACATACGACACT": 1,
+     "AAACATACGAGGAC": 1,
+     "AAACATACTCCTAT": 1,
+     "AAACATTGCAGAGG": 1,
+     "AAACATTGGCGAAG": 1,
+     "AAACATTGGTTGTG": 1,
+     "AAACCGTGACACAC": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 15006,
+    "distinct": 1,
+    "top": {
+     "K562": 15006
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 15006,
+    "distinct": 1,
+    "top": {
+     "lymphoblasts": 15006
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 15006,
+    "distinct": 1,
+    "top": {
+     "chronic myelogenous leukemia": 15006
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 15006,
+    "sample_min": 4583.0,
+    "sample_max": 77281.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 15006,
+    "sample_min": 657.0,
+    "sample_max": 7056.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 15006,
+    "sample_min": 0.0,
+    "sample_max": 4.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 15006,
+    "distinct": 1,
+    "top": {
+     "human": 15006
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 15006,
+    "sample_min": 0.0,
+    "sample_max": 76.57938385009766
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 15006,
+    "sample_min": 5.881130695343018,
+    "sample_max": 46.54233169555664
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 15006,
+    "distinct": 20,
+    "top": {
+     "3x_neg_ctrl_pMJ144-1": 1715,
+     "ATF6_PERK_IRE1_pMJ158": 1693,
+     "ATF6_only_pMJ145": 1691,
+     "IRE1_only_pMJ148": 1685,
+     "3x_neg_ctrl_pMJ144-2": 1650,
+     "PERK_IRE1_pMJ154": 1629,
+     "ATF6_PERK_pMJ150": 1603,
+     "PERK_only_pMJ146": 1560,
+     "ATF6_IRE1_pMJ152": 1449,
+     "<NA>": 296,
+     "*": 13,
+     "PSMD12_pDS009": 6
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 15006,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 15006
+    }
+   },
+   "read count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 15006,
+    "sample_min": 1.0,
+    "sample_max": 3907.0
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 15006,
+    "distinct": 1,
+    "top": {
+     "cell_line": 15006
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "ensembl_id",
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 32738,
+  "first": [
+   "MIR1302-10",
+   "FAM138A",
+   "OR4F5",
+   "RP11-34P13.7",
+   "RP11-34P13.8"
+  ]
+ },
+ "seconds": 5.3,
+ "fetched_bytes": 6939061,
+ "id": "scp_AdamsonWeissman2016_GSM2406677_10X005"
+}

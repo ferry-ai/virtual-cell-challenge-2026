@@ -1,0 +1,365 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/CuiHacohen2023.h5ad/content",
+ "bytes": 472111867,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   96034,
+   31053
+  ],
+  "dtype": "int64",
+  "stored": 148255987,
+  "compression": "gzip",
+  "chunks": [
+   18098
+  ],
+  "sample_integer": true,
+  "sample_max": 4677.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "MULTI_ID",
+   "MULTI_classification",
+   "RNA_snn_res.1.5",
+   "bio_replicate",
+   "cancer",
+   "cell_barcode",
+   "celltype",
+   "channel",
+   "channel_hashtag",
+   "cluster_manual",
+   "cytokine_family",
+   "disease",
+   "nFeature_HTO",
+   "ncounts",
+   "ncounts_tags",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "seurat_clusters",
+   "tissue_type"
+  ],
+  "describe": {
+   "MULTI_ID": {
+    "kind": "categorical",
+    "n": 96034,
+    "distinct": 8,
+    "top": {
+     "tag02": 16381,
+     "tag01": 15967,
+     "tag04": 15947,
+     "tag03": 15523,
+     "tag05": 15520,
+     "tag06": 15025,
+     "tag07": 1640,
+     "tag08": 31
+    }
+   },
+   "MULTI_classification": {
+    "kind": "categorical",
+    "n": 96034,
+    "distinct": 8,
+    "top": {
+     "tag02-GGTCGAGAGCATTCA": 16381,
+     "tag01-ACCCACCAGTAAGAC": 15967,
+     "tag04-AAAGCATTCTTCACG": 15947,
+     "tag03-CTTGCCGCATGTCAT": 15523,
+     "tag05-CTTTGTCTTTGTGAG": 15520,
+     "tag06-TATGCTGCCACGGTA": 15025,
+     "tag07-GAGTCTGCCAGTATC": 1640,
+     "tag08-TATAGAACGCCAGGC": 31
+    }
+   },
+   "RNA_snn_res.1.5": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 96034,
+    "sample_min": 0.0,
+    "sample_max": 60.0
+   },
+   "bio_replicate": {
+    "kind": "categorical",
+    "n": 96034,
+    "distinct": 14,
+    "top": {
+     "rep1": 35977,
+     "rep2": 31467,
+     "rep3": 27427,
+     "rep11": 155,
+     "rep10": 135,
+     "rep6": 133,
+     "rep8": 132,
+     "rep7": 125,
+     "rep12": 101,
+     "rep4": 98,
+     "rep5": 84,
+     "rep14": 81
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 96034,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 96034,
+    "distinct": 96034,
+    "top": {
+     "AAACCCAAGAATGTTG-34": 1,
+     "AAACCCAAGACCCGCT-41": 1,
+     "AAACCCAAGACCCTTA-25": 1,
+     "AAACCCAAGACTCGAG-36": 1,
+     "AAACCCAAGCACACCC-18": 1,
+     "AAACCCAAGCAGCCCT-40": 1,
+     "AAACCCAAGCCATTGT-05": 1,
+     "AAACCCAAGCGAAACC-24": 1,
+     "AAACCCAAGCGTCTGC-42": 1,
+     "AAACCCAAGCGTTCCG-05": 1,
+     "AAACCCAAGCTCCATA-27": 1,
+     "AAACCCAAGCTCTGTA-21": 1
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 96034,
+    "distinct": 15,
+    "top": {
+     "MigDC": 8700,
+     "T_cell_CD4": 8700,
+     "T_cell_gd": 8700,
+     "T_cell_CD8": 8700,
+     "Treg": 8700,
+     "Macrophage": 8697,
+     "NK_cell": 8556,
+     "cDC1": 8102,
+     "B_cell": 8086,
+     "pDC": 7355,
+     "cDC2": 5726,
+     "Monocyte": 2094
+    }
+   },
+   "channel": {
+    "kind": "categorical",
+    "n": 96034,
+    "distinct": 44,
+    "top": {
+     "ln-hash-cytokine01": 3617,
+     "ln-hash-cytokine03": 3161,
+     "ln-hash-cytokine04": 3032,
+     "ln-hash-cytokine06": 2905,
+     "ln-hash-cytokine17": 2779,
+     "ln-hash-cytokine28": 2764,
+     "ln-hash-cytokine16": 2740,
+     "ln-hash-cytokine11": 2665,
+     "ln-hash-cytokine23": 2663,
+     "ln-hash-cytokine05": 2561,
+     "ln-hash-cytokine07": 2448,
+     "ln-hash-cytokine24": 2446
+    }
+   },
+   "channel_hashtag": {
+    "kind": "categorical",
+    "n": 96034,
+    "distinct": 301,
+    "top": {
+     "ln-hash-cytokine04_tag01": 768,
+     "ln-hash-cytokine16_tag04": 679,
+     "ln-hash-cytokine01_tag06": 618,
+     "ln-hash-cytokine17_tag05": 608,
+     "ln-hash-cytokine03_tag05": 594,
+     "ln-hash-cytokine11_tag06": 591,
+     "ln-hash-cytokine06_tag01": 578,
+     "ln-hash-cytokine03_tag02": 573,
+     "ln-hash-cytokine28_tag06": 572,
+     "ln-hash-cytokine17_tag06": 572,
+     "ln-hash-cytokine01_tag04": 554,
+     "ln-hash-cytokine07_tag03": 551
+    }
+   },
+   "cluster_manual": {
+    "kind": "categorical",
+    "n": 96034,
+    "distinct": 51,
+    "top": {
+     "pDC_1": 7225,
+     "B_cell_1": 6893,
+     "T_cell_CD4_1": 6337,
+     "NK_cell_1": 6140,
+     "cDC1_1": 5576,
+     "cDC2_1": 5205,
+     "Treg_1": 4746,
+     "T_cell_CD8_1": 4281,
+     "Treg_2": 3954,
+     "T_cell_gd_1": 3795,
+     "T_cell_gd_2": 3503,
+     "MigDC_1": 3470
+    }
+   },
+   "cytokine_family": {
+    "kind": "categorical",
+    "n": 96034,
+    "distinct": 12,
+    "top": {
+     "TNF": 18397,
+     "IL-6/IL-12": 13446,
+     "Other": 11070,
+     "Growth factor": 10416,
+     "Common beta chain/IL13/TSLP": 9304,
+     "IL-1": 7907,
+     "Interferon": 6688,
+     "IL-17": 6409,
+     "IL-10": 5468,
+     "Common beta chain": 3445,
+     "Complement": 2188,
+     "Control": 1296
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 96034,
+    "distinct": 1,
+    "top": {
+     "healthy": 96034
+    }
+   },
+   "nFeature_HTO": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 96034,
+    "sample_min": 4.0,
+    "sample_max": 8.0
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 96034,
+    "sample_min": 1001.0,
+    "sample_max": 45470.0
+   },
+   "ncounts_tags": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 96034,
+    "sample_min": 96.0,
+    "sample_max": 28572.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 96034,
+    "sample_min": 501.0,
+    "sample_max": 5119.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 96034,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 96034,
+    "distinct": 1,
+    "top": {
+     "mouse": 96034
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 96034,
+    "sample_min": 0.0,
+    "sample_max": 9.9987278972141
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 96034,
+    "sample_min": 1.8935334047874242,
+    "sample_max": 65.87823039859833
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 96034,
+    "distinct": 87,
+    "top": {
+     "control": 1296,
+     "IL15": 1258,
+     "IL10": 1255,
+     "IL2": 1244,
+     "IL3": 1243,
+     "IFNa1": 1217,
+     "IL7": 1211,
+     "IL36a": 1210,
+     "BAFF": 1207,
+     "LIF": 1200,
+     "IL1b": 1197,
+     "IL22": 1177
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 96034,
+    "distinct": 1,
+    "top": {
+     "cytokines": 96034
+    }
+   },
+   "seurat_clusters": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 96034,
+    "sample_min": 0.0,
+    "sample_max": 60.0
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 96034,
+    "distinct": 1,
+    "top": {
+     "primary": 96034
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "genes",
+  "columns": [
+   "genes",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 31053,
+  "first": [
+   "Xkr4",
+   "Gm1992",
+   "Gm37381",
+   "Rp1",
+   "Sox17"
+  ]
+ },
+ "seconds": 11.8,
+ "fetched_bytes": 12835579,
+ "id": "scp_CuiHacohen2023"
+}

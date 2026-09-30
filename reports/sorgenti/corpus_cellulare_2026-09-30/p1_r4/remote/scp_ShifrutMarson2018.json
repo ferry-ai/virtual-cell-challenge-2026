@@ -1,0 +1,279 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/ShifrutMarson2018.h5ad/content",
+ "bytes": 871481676,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   52236,
+   33694
+  ],
+  "dtype": "float32",
+  "stored": 108016065,
+  "compression": null,
+  "chunks": [
+   26372
+  ],
+  "sample_integer": true,
+  "sample_max": 416.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "cancer",
+   "celltype",
+   "disease",
+   "guide_counts",
+   "guide_id",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "patient",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_2",
+   "perturbation_type",
+   "perturbation_type_2",
+   "sample",
+   "target",
+   "tissue_type"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 52236,
+    "distinct": 52236,
+    "top": {
+     "AAACCTGAGAAACGAG": 1,
+     "AAACCTGAGACACTAA": 1,
+     "AAACCTGAGACAGGCT": 1,
+     "AAACCTGAGAGACTTA": 1,
+     "AAACCTGAGAGACTTA-1": 1,
+     "AAACCTGAGAGGACGG": 1,
+     "AAACCTGAGAGTACAT": 1,
+     "AAACCTGAGATAGTCA": 1,
+     "AAACCTGAGATCGATA": 1,
+     "AAACCTGAGCATCATC": 1,
+     "AAACCTGAGCGATTCT": 1,
+     "AAACCTGAGCGATTCT-1": 1
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 52236,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 52236,
+    "distinct": 1,
+    "top": {
+     "T cells": 52236
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 52236,
+    "distinct": 1,
+    "top": {
+     "healthy": 52236
+    }
+   },
+   "guide_counts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 52236,
+    "sample_min": 0.0,
+    "sample_max": 46.0
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 52236,
+    "distinct": 49,
+    "top": {
+     "NA": 27142,
+     "ES.sg15.DGKA": 1383,
+     "ES.sg2.BTLA": 1215,
+     "ES.sg26.PDCD1": 1111,
+     "ES.sg43.NonTarget.CTRL108": 1092,
+     "ES.sg14.DGKA": 913,
+     "ES.sg19.HAVCR2": 859,
+     "ES.sg16.DGKZ": 852,
+     "ES.sg4.C10orf54": 811,
+     "ES.sg28.RASA2": 728,
+     "ES.sg37.TMEM222": 724,
+     "ES.sg7.CBLB": 718
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 52236,
+    "sample_min": 1679.0,
+    "sample_max": 71232.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int32",
+    "n": 52236,
+    "sample_min": 689.0,
+    "sample_max": 7739.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 52236,
+    "sample_min": 0.0,
+    "sample_max": 2.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 52236,
+    "distinct": 1,
+    "top": {
+     "human": 52236
+    }
+   },
+   "patient": {
+    "kind": "categorical",
+    "n": 52236,
+    "distinct": 2,
+    "top": {
+     "D1": 26934,
+     "D2": 25302
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 52236,
+    "sample_min": 0.017627358436584473,
+    "sample_max": 48.92877960205078
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 52236,
+    "sample_min": 4.458598613739014,
+    "sample_max": 51.98307800292969
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 52236,
+    "distinct": 21,
+    "top": {
+     "<NA>": 27142,
+     "control": 3541,
+     "DGKA": 2296,
+     "PDCD1": 1484,
+     "TMEM222": 1426,
+     "BTLA": 1412,
+     "HAVCR2": 1355,
+     "CBLB": 1327,
+     "CD5": 1080,
+     "C10orf54": 1058,
+     "MEF2D": 1026,
+     "DGKZ": 1020
+    }
+   },
+   "perturbation_2": {
+    "kind": "categorical",
+    "n": 52236,
+    "distinct": 2,
+    "top": {
+     "stim": 29645,
+     "control": 22591
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 52236,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 52236
+    }
+   },
+   "perturbation_type_2": {
+    "kind": "categorical",
+    "n": 52236,
+    "distinct": 1,
+    "top": {
+     "TCR stimulation": 52236
+    }
+   },
+   "sample": {
+    "kind": "categorical",
+    "n": 52236,
+    "distinct": 4,
+    "top": {
+     "D1_stim": 15829,
+     "D2_stim": 13816,
+     "D2_nostim": 11486,
+     "D1_nostim": 11105
+    }
+   },
+   "target": {
+    "kind": "categorical",
+    "n": 52236,
+    "distinct": 21,
+    "top": {
+     "<NA>": 27142,
+     "NonTarget": 3541,
+     "DGKA": 2296,
+     "PDCD1": 1484,
+     "TMEM222": 1426,
+     "BTLA": 1412,
+     "HAVCR2": 1355,
+     "CBLB": 1327,
+     "CD5": 1080,
+     "C10orf54": 1058,
+     "MEF2D": 1026,
+     "DGKZ": 1020
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 52236,
+    "distinct": 1,
+    "top": {
+     "primary": 52236
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 33694,
+  "first": [
+   "RP11-34P13.3",
+   "FAM138A",
+   "OR4F5",
+   "RP11-34P13.7",
+   "RP11-34P13.8"
+  ]
+ },
+ "seconds": 10.7,
+ "fetched_bytes": 13746508,
+ "id": "scp_ShifrutMarson2018"
+}

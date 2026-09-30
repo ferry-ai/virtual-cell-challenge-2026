@@ -1,0 +1,259 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/TianKampmann2019_iPSC.h5ad/content",
+ "bytes": 350848489,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   275708,
+   33752
+  ],
+  "dtype": "float32",
+  "stored": 144094944,
+  "compression": "gzip",
+  "chunks": [
+   35180
+  ],
+  "sample_integer": true,
+  "sample_max": 119.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "batch",
+   "cancer",
+   "celltype",
+   "disease",
+   "guide_id",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "sgRNA_read_count",
+   "sgRNA_umi_count",
+   "tissue_type"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 275708,
+    "distinct": 275708,
+    "top": {
+     "AAACCTGAGAAACCAT": 1,
+     "AAACCTGAGAAACCAT-1": 1,
+     "AAACCTGAGAAACGAG": 1,
+     "AAACCTGAGAAACGAG-1": 1,
+     "AAACCTGAGAACTGTA": 1,
+     "AAACCTGAGAAGGTTT": 1,
+     "AAACCTGAGAATGTGT": 1,
+     "AAACCTGAGAATTCCC": 1,
+     "AAACCTGAGACAAGCC": 1,
+     "AAACCTGAGACAAGCC-1": 1,
+     "AAACCTGAGACAATAC": 1,
+     "AAACCTGAGACACTAA": 1
+    }
+   },
+   "batch": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 275708,
+    "sample_min": 1.0,
+    "sample_max": 2.0
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 275708,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 275708,
+    "distinct": 1,
+    "top": {
+     "iPSC": 275708
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 275708,
+    "distinct": 1,
+    "top": {
+     "healthy": 275708
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 275708,
+    "distinct": 80847,
+    "top": {
+     "PPP2R1A_sgRNA2": 27302,
+     "MAT2A_sgRNA2": 19056,
+     "control": 10521,
+     "UBA1_sgRNA1": 9863,
+     "PPP2R1A_sgRNA1": 7589,
+     "MMAB_sgRNA1": 6892,
+     "UROD_sgRNA1": 5347,
+     "HMGCS1_sgRNA1": 4551,
+     "MAT2A_sgRNA1": 4419,
+     "PPP2R1A_sgRNA2;MAT2A_sgRNA2": 2878,
+     "UROD_sgRNA2": 2821,
+     "RAB7A_sgRNA2": 2499
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 275708,
+    "sample_min": 0.0,
+    "sample_max": 105247.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 275708,
+    "sample_min": 0.0,
+    "sample_max": 8887.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 275708,
+    "sample_min": 0.0,
+    "sample_max": 26.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 275708,
+    "distinct": 1,
+    "top": {
+     "human": 275708
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 275708,
+    "sample_min": 0.0,
+    "sample_max": 100.0
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 275708,
+    "sample_min": 0.0,
+    "sample_max": 100.0
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 275708,
+    "distinct": 39162,
+    "top": {
+     "PPP2R1A": 39004,
+     "MAT2A": 25789,
+     "UBA1": 11561,
+     "control": 10687,
+     "MMAB": 8893,
+     "UROD": 8761,
+     "PPP2R1A_MAT2A": 8508,
+     "HMGCS1": 4829,
+     "PMVK": 4576,
+     "MVK": 3749,
+     "UQCRQ": 3206,
+     "RAB7A": 3075
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 275708,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 275708
+    }
+   },
+   "sgRNA_read_count": {
+    "kind": "categorical",
+    "n": 275708,
+    "distinct": 56471,
+    "top": {
+     "1": 104768,
+     "1-1": 27263,
+     "2": 13092,
+     "1-1-1": 8549,
+     "2-1": 7478,
+     "2-1-1": 3870,
+     "3": 3400,
+     "1-1-1-1": 3062,
+     "2-1-1-1": 2071,
+     "4": 1942,
+     "3-1": 1728,
+     "2-2": 1367
+    }
+   },
+   "sgRNA_umi_count": {
+    "kind": "categorical",
+    "n": 275708,
+    "distinct": 26539,
+    "top": {
+     "1": 125404,
+     "1-1": 41320,
+     "1-1-1": 15321,
+     "1-1-1-1": 6246,
+     "2-1": 4382,
+     "2-1-1": 3687,
+     "2": 3545,
+     "2-1-1-1": 2680,
+     "1-1-1-1-1": 2576,
+     "2-1-1-1-1": 1701,
+     "2-1-1-1-1-1": 1066,
+     "1-1-1-1-1-1": 1005
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 275708,
+    "distinct": 1,
+    "top": {
+     "stem": 275708
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "ensemble_id",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 33752,
+  "first": [
+   "RP11-34P13.3",
+   "FAM138A",
+   "OR4F5",
+   "RP11-34P13.7",
+   "RP11-34P13.8"
+  ]
+ },
+ "seconds": 37.8,
+ "fetched_bytes": 43615721,
+ "id": "scp_TianKampmann2019_iPSC"
+}

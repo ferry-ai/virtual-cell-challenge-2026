@@ -1,0 +1,61 @@
+{
+ "schema_version": 1,
+ "job_id": "p02_jurkat_gse249595_r1",
+ "incident_ids": [
+  "E-20260929-002",
+  "E-20260929-003",
+  "E-20260929-005",
+  "E-20260929-007"
+ ],
+ "inputs": [
+  {
+   "id": "code_snapshot",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\runs\\rlab_setup_2026-09-30_r3\\code_snapshot.tar.gz",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r3/code_snapshot.tar.gz"
+   },
+   "bytes": 23415,
+   "sha256": "439a69a6e4b2e61ade9847147e9a51d9486c022716464d6182baffd67c2405f9"
+  },
+  {
+   "id": "earlier_complete",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\data\\processed\\corpus_cellulare_2026-09-30\\j03_jurkat_r1\\complete.json",
+    "runtime": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j03_jurkat_r1/complete.json"
+   },
+   "bytes": 3344,
+   "sha256": "631f5d9166e28c7add7aa5e277c5a9fd73a52b25ac47ce80483fad1330650e6a"
+  }
+ ],
+ "outputs": [
+  {
+   "id": "stage",
+   "paths": {
+    "local": "C:/Users/ferra/vcc2026-data/unused/p02_jurkat_gse249595_r1/stage",
+    "runtime": "/content/work/rlab_p02_jurkat_gse249595_r1/stage"
+   },
+   "must_be_absent": true
+  }
+ ],
+ "target_checks": [],
+ "environment": {
+  "python": {
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\python.exe",
+    "runtime": "/usr/bin/python3"
+   }
+  },
+  "packages": {
+   "h5py": null,
+   "numpy": null,
+   "pandas": null,
+   "scipy": null
+  },
+  "imports": [
+   "h5py",
+   "scipy.sparse"
+  ],
+  "probes": []
+ },
+ "declared_limits": "sources read by HTTP byte ranges are not hashed whole before the run: every range is checked against the ETag of the file, every shard is hashed (plan \u00a76.5); anndata and kaggle are installed on the runtime when absent"
+}

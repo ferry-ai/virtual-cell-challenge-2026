@@ -1,0 +1,292 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/SrivatsanTrapnell2020_sciplex2.h5ad/content",
+ "bytes": 145178504,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   24262,
+   58347
+  ],
+  "dtype": "float32",
+  "stored": 60135001,
+  "compression": "gzip",
+  "chunks": [
+   29363
+  ],
+  "sample_integer": true,
+  "sample_max": 758.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "celltype",
+   "chembl-ID",
+   "disease",
+   "dose_value",
+   "hash_umis",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "pval_demultiplexing",
+   "qval_demultiplexing",
+   "tissue_type",
+   "top_oligo",
+   "top_to_second_best_ratio",
+   "well"
+  ],
+  "describe": {
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 24262,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 24262,
+    "distinct": 24262,
+    "top": {
+     "A01_A01_RT_384": 1,
+     "A01_A01_RT_389": 1,
+     "A01_A01_RT_390": 1,
+     "A01_A01_RT_396": 1,
+     "A01_A01_RT_397": 1,
+     "A01_A01_RT_400": 1,
+     "A01_A01_RT_401": 1,
+     "A01_A01_RT_402": 1,
+     "A01_A01_RT_403": 1,
+     "A01_A01_RT_404": 1,
+     "A01_A01_RT_405": 1,
+     "A01_A01_RT_406": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 24262,
+    "distinct": 1,
+    "top": {
+     "A549": 24262
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 24262,
+    "distinct": 1,
+    "top": {
+     "alveolar basal epithelial cells": 24262
+    }
+   },
+   "chembl-ID": {
+    "kind": "categorical",
+    "n": 24262,
+    "distinct": 1,
+    "top": {
+     "<NA>": 18306,
+     "CHEMBL407632;CHEMBL191334": 5956
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 24262,
+    "distinct": 1,
+    "top": {
+     "lung adenocarcinoma": 24262
+    }
+   },
+   "dose_value": {
+    "kind": "categorical",
+    "n": 24262,
+    "distinct": 8,
+    "top": {
+     "0": 3901,
+     "0.1": 3479,
+     "1": 3119,
+     "0.5": 3094,
+     "10": 2832,
+     "5": 2828,
+     "50": 2433,
+     "100": 2047,
+     "<NA>": 529
+    }
+   },
+   "hash_umis": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 24262,
+    "sample_min": 1.0,
+    "sample_max": 6229.0
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 24262,
+    "sample_min": 1000.0,
+    "sample_max": 67886.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 24262,
+    "sample_min": 321.0,
+    "sample_max": 10491.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 24262,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 24262,
+    "distinct": 1,
+    "top": {
+     "human": 24262
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 24262,
+    "sample_min": 0.42723631858825684,
+    "sample_max": 68.90034484863281
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 24262,
+    "sample_min": 0.0,
+    "sample_max": 10.371408462524414
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 24262,
+    "distinct": 5,
+    "top": {
+     "Dex": 8064,
+     "Nutlin": 5956,
+     "SAHA": 5530,
+     "BMS": 4183,
+     "control": 529
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 24262,
+    "distinct": 1,
+    "top": {
+     "drug": 24262
+    }
+   },
+   "pval_demultiplexing": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 24262,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "qval_demultiplexing": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 24262,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 24262,
+    "distinct": 1,
+    "top": {
+     "cell_line": 24262
+    }
+   },
+   "top_oligo": {
+    "kind": "categorical",
+    "n": 24262,
+    "distinct": 192,
+    "top": {
+     "<NA>": 529,
+     "Nutlin_10_AA03": 266,
+     "Dex_100_AC01": 264,
+     "Nutlin_10_AA11": 247,
+     "Dex_5_AD08": 236,
+     "Dex_50_AD06": 231,
+     "Dex_1_AD09": 230,
+     "Dex_1_AD01": 230,
+     "Dex_50_AC10": 219,
+     "Dex_100_AC09": 218,
+     "Dex_100_BC09": 213,
+     "Dex_5_AC04": 209
+    }
+   },
+   "top_to_second_best_ratio": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 24262,
+    "sample_min": 1.0,
+    "sample_max": Infinity
+   },
+   "well": {
+    "kind": "categorical",
+    "n": 24262,
+    "distinct": 192,
+    "top": {
+     "<NA>": 529,
+     "AA03": 266,
+     "AC01": 264,
+     "AA11": 247,
+     "AD08": 236,
+     "AD06": 231,
+     "AD09": 230,
+     "AD01": 230,
+     "AC10": 219,
+     "AC09": 218,
+     "BC09": 213,
+     "AC04": 209
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "ensembl_id",
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 58347,
+  "first": [
+   "TSPAN6",
+   "TNMD",
+   "DPM1",
+   "SCYL3",
+   "C1orf112"
+  ]
+ },
+ "seconds": 6.7,
+ "fetched_bytes": 7815048,
+ "id": "scp_SrivatsanTrapnell2020_sciplex2"
+}

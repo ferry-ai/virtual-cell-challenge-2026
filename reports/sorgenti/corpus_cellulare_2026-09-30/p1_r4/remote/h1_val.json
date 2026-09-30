@@ -1,0 +1,144 @@
+{
+ "url": "https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/validation/adata_Validation.h5ad",
+ "bytes": 6928967541,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   98927,
+   18080
+  ],
+  "dtype": "float32",
+  "stored": 864793017,
+  "compression": null,
+  "chunks": [
+   52783
+  ],
+  "sample_integer": true,
+  "sample_max": 683.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "batch",
+   "guide_id",
+   "target_gene"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 98927,
+    "distinct": 98927,
+    "top": {
+     "AAACAAGCAAACACGCAGTAGGCT-Flex_3_03": 1,
+     "AAACAAGCAAATAGGAAACGCCGA-Flex_2_15": 1,
+     "AAACAAGCAACTGTTCAGCTGTGA-Flex_2_08": 1,
+     "AAACAAGCAAGCCAGTAAGTAGAG-Flex_2_07": 1,
+     "AAACAAGCAAGCTATGACTACTCA-Flex_1_12": 1,
+     "AAACAAGCAAGTGCACATTCGGTT-Flex_2_16": 1,
+     "AAACAAGCAAGTGGCTAAGTAGAG-Flex_2_07": 1,
+     "AAACAAGCAAGTGGCTAGCTGTGA-Flex_2_08": 1,
+     "AAACAAGCAATTAGCGACTACTCA-Flex_2_12": 1,
+     "AAACAAGCAATTGAGTAGCTGTGA-Flex_2_08": 1,
+     "AAACAAGCACAAATACATGTTGAC-Flex_1_04": 1,
+     "AAACAAGCACACTGGGAACGGGAA-Flex_2_02": 1
+    }
+   },
+   "batch": {
+    "kind": "categorical",
+    "n": 98927,
+    "distinct": 48,
+    "top": {
+     "Flex_3_02": 2319,
+     "Flex_3_06": 2293,
+     "Flex_3_15": 2282,
+     "Flex_3_11": 2268,
+     "Flex_3_10": 2267,
+     "Flex_3_07": 2262,
+     "Flex_3_03": 2253,
+     "Flex_3_13": 2244,
+     "Flex_3_14": 2190,
+     "Flex_3_04": 2187,
+     "Flex_3_08": 2150,
+     "Flex_2_14": 2102
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 98927,
+    "distinct": 85,
+    "top": {
+     "SH3BP4_P1P2_A|SH3BP4_P1P2_B": 2925,
+     "non-targeting_00027|non-targeting_00143": 2749,
+     "ANXA6_P1P2_A|ANXA6_P1P2_B": 2496,
+     "non-targeting_00095|non-targeting_03143": 2243,
+     "non-targeting_00057|non-targeting_00277": 2231,
+     "PACSIN3_P1P2_A|PACSIN3_P1P2_B": 2101,
+     "MGST1_P1P2_A|MGST1_P1P2_B": 2096,
+     "non-targeting_00125|non-targeting_02335": 2086,
+     "ITGAV_P1P2_A|ITGAV_P1P2_B": 2034,
+     "SLIRP_P1P2_A|SLIRP_P1P2_B": 2000,
+     "CTSV_P1P2_A|CTSV_P1P2_B": 1989,
+     "MTFR1_P1P2_A|MTFR1_P1P2_B": 1787
+    }
+   },
+   "target_gene": {
+    "kind": "categorical",
+    "n": 98927,
+    "distinct": 51,
+    "top": {
+     "non-targeting": 38176,
+     "SH3BP4": 2925,
+     "ZNF581": 2502,
+     "ANXA6": 2496,
+     "PACSIN3": 2101,
+     "MGST1": 2096,
+     "IGF1R": 2056,
+     "ITGAV": 2034,
+     "SLIRP": 2000,
+     "CTSV": 1989,
+     "MTFR1": 1787,
+     "KLHDC2": 1763
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "log1p_mean_counts",
+   "log1p_total_counts",
+   "mean_counts",
+   "mt",
+   "n_cells",
+   "n_cells_by_counts",
+   "pct_dropout_by_counts",
+   "ribo",
+   "total_counts"
+  ],
+  "rows": 18080,
+  "first": [
+   "SAMD11",
+   "NOC2L",
+   "KLHL17",
+   "PLEKHN1",
+   "PERM1"
+  ]
+ },
+ "seconds": 13.6,
+ "fetched_bytes": 15705973,
+ "id": "h1_val"
+}

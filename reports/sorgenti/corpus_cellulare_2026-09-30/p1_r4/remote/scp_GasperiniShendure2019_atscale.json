@@ -1,0 +1,432 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/GasperiniShendure2019_atscale.h5ad/content",
+ "bytes": 1866293566,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   207324,
+   13135
+  ],
+  "dtype": "float32",
+  "stored": 698998312,
+  "compression": "gzip",
+  "chunks": [
+   42664
+  ],
+  "sample_integer": true,
+  "sample_max": 23.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "Size_Factor",
+   "_index",
+   "all_gene",
+   "barcode",
+   "cancer",
+   "cell_line",
+   "celltype",
+   "disease",
+   "gene",
+   "guide_count",
+   "id",
+   "ko_barcode_file",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent.mito",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "prep_batch",
+   "proportion",
+   "read_count",
+   "sample",
+   "sample_directory",
+   "tissue_type",
+   "total_umis",
+   "umi_count",
+   "within_batch_chip",
+   "within_chip_lane"
+  ],
+  "describe": {
+   "Size_Factor": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 207324,
+    "sample_min": 0.8444645651670749,
+    "sample_max": 1.24271317402709
+   },
+   "_index": {
+    "kind": "strings",
+    "n": 207324,
+    "distinct": 207324,
+    "top": {
+     "AAACCTGAGAACTGTA": 1,
+     "AAACCTGAGAAGAAGC": 1,
+     "AAACCTGAGAAGGTTT": 1,
+     "AAACCTGAGAATAGGG": 1,
+     "AAACCTGAGAATTCCC": 1,
+     "AAACCTGAGACACTAA": 1,
+     "AAACCTGAGACCCACC": 1,
+     "AAACCTGAGACCGGAT": 1,
+     "AAACCTGAGACGACGT": 1,
+     "AAACCTGAGACTAGAT": 1,
+     "AAACCTGAGACTTGAA": 1,
+     "AAACCTGAGAGACGAA": 1
+    }
+   },
+   "all_gene": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 203515,
+    "top": {
+     "nan": 1527,
+     "chr1.11646_top_two_chr1.7199_top_two_chr19.32_top_two_chr19.4654_top_two_chr6.1231_top_two": 6,
+     "chr1.10201_top_two_chr11.1778_second_two_chr11.9_top_two_chr12.3850_top_two_chr1.3349_top_two_chr16.4939_top_two_chr16.5184_top_two_chr2.181_top_two_chr2.2107_top_two_chr2.2686_top_two_chr2.3453_top_two_chr3.3203_top_two_chr7.2795_top_two_chrX.333_top_two_GNPDA1_TSS": 6,
+     "chr1.10050_top_two_chr11.1801_top_two_chr12.1832_top_two_chr12.732_top_two_chr1.3789_top_two_chr16.3244_top_two_chr20.537_top_two_chr21.240_top_two_chr3.666_top_two_chr5.1476_top_two_chr5.1603_top_two_chr7.3567_top_two_chr8.2697_top_two": 6,
+     "chr10.3492_top_two_chr14.1108_top_two_chr19.2350_top_two_chr19.3043_top_two_chr2.342_top_two_chr4.2449_top_two_chr5.3584_top_two_chr6.4480_top_two_chr7.2333_top_two_chrX.230_top_two_FKBP2_TSS_GUK1_TSS": 6,
+     "chr15.2083_top_two_chr17.3460_top_two_chr19.5328_top_two_chr4.2820_top_two_chr6.947_top_two_NUDC_TSS": 5,
+     "chr10.1312_top_two_chr1.5053_top_two_chr17.2443_top_two_chr17.2868_second_two_chr18.1099_top_two_chr18.1234_top_two_chr19.3095_top_two_chr1.9538_second_two_chr1.9914_top_two_chr20.2100_top_two_chr2.6077_top_two_chr2.6219_top_two_chr3.3206_top_two_chr3.5562_top_two_chr3.5794_top_two_chr4.2715_top_two_chr6.1266_top_two_chr6.145_top_two_chr6.2696_top_two_chr8.3568_top_two": 5,
+     "chr11.1970_top_two_chr11.2132_top_two_chr1.12583_top_two_chr17.4512_top_two_chr3.3031_top_two_chr3.4516_top_two_chr4.517_top_two_chr5.5202_top_two_chr6.2474_top_two_chr6.3646_top_two_chr6.5344_top_two_chr6.6121_top_two_chr7.4462_top_two_chrX.451_top_two_MAD2L1BP_TSS_RPL18A_TSS": 5,
+     "chr11.3338_top_two_chr11.653_top_two_chr14.164_top_two_chr14.623_top_two_chr16.1031_top_two_chr17.4171_top_two_chr17.5683_top_two_chr19.415_top_two_chr20.312_top_two_chr22.1059_top_two_chr2.2486_top_two_chr6.1300_top_two_chr9.1385_top_two_chr9.1625_top_two_chrX.2023_top_two_H3F3B_TSS_HNRNPF_TSS_RPL18A_TSS": 5,
+     "chr1.3819_top_two_chr17.6206_top_two_chr1.8792_top_two_chr19.1559_second_two_chr19.2897_top_two_chr2.1468_top_two_chr5.1621_top_two_chr5.5155_top_two_chr6.1227_top_two_chr6.2485_top_two_chr6.3562_top_two_chr6.5151_top_two_chr8.1665_second_two_chr9.3712_top_two_ZRANB2_TSS": 4,
+     "chr12.4742_top_two_chr1.9241_top_two_chr19.5062_top_two_chr20.845_top_two_chr5.1558_top_two_chr6.4890_top_two_chr7.5029_top_two_chr9.763_top_two_chrX.276_top_two_PRAME_TSS": 4,
+     "chr12.3695_top_two_chr13.830_top_two_chr14.2212_top_two_chr15.527_top_two_chr17.1407_top_two_chr19.1042_top_two_chr5.5079_top_two_chr7.1155_top_two_chr7.4374_top_two_chr7.5750_top_two_chr8.1492_top_two_MTRNR2L8_TSS": 4
+    }
+   },
+   "barcode": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 203557,
+    "top": {
+     "nan": 1527,
+     "AATGGCTGTCCACCTCTGTG_GAACTTCTCAGAGCTCCATG_TCGTATATTTGGGGCCCGGC_TTTCCTCTAGGTGCTGGCCA_GTCGTTATTTCGCCGTCTGG_GACTCTGAAACGCATCACAG_CTAACTTTGTGACAGAGGAG_GGTGGCTGAGATGGCGGCCG_GTCAGAGGTCAAGCTGGTGG_CCACGTGCTACAAAGAGTCA_CAGAGGCGGCAGCACCACCG_GAGGTGGCCCCGGATGCTGG": 6,
+     "CATCCAGTCGAGTTTAGTAC_TATTTCCGCCCAGAACACCA_TCAGGGGCCTGAGAAACGTG_ATATAACCAAGAGAAGGAAA_GGATCCCTCCATTTGTGAAA_AGGGTCATAATGAGACTGAG_CTACCTGCTTGCCTGCCACG_CCAGGAACACGGGTATGTAA_ACACGCTCACACTCAGACTG_CCATTCTAGAAACAGCTCAG_GTCCCCACCTCTTTACAACA_GCTAAGGAAGGTATTTCCCG_GCTCCTCCACAAAGGACTAG": 6,
+     "GCTGGTCTCTCTCTGAGCAT_GACCCAAAAGAACCTCACCT_CATAGGCCTGAAAAGTACCT_CTTGTTTGAGGCCAATGAGG_CTTCACATCCAGCTATACAT": 6,
+     "GTACCAGGAAAAGAAGAGGA_CCATTTACCTAAGGAGAACG_TGAGGGGAATCACCGCAGCG_AAGACGGTGGAGATTCAGCA_GCTGGGACCTGACTCCCGCA_GCCAGTCACCTGCATCCTCG_TGAGTCATAGACGAGGTAAG_ATACATGCAGATAAGCAGCT_CCAACTGTCCCCAGGACCCA_GCTGTCCTCTGATTCACCAG_CAGCATTCAAGACATCATCG_GGTGCCTTTGCACATTGCAG_GACGGCTCCCAAGTGACTAA_GCAGGTTTAAAGGACACCTA_GCCCTGCTACCCACTTACAG": 6,
+     "AGCTGGCAGCCAATGAGCAA_CCCTTGTTACTTATCCTAGA_GGGACCGTCATGATGCTGGT_AGCAAGATAGCCAATGGCCA_CAGTGAGGTATGGTACAACG_GCAGGAGCGTAGAGAGCGCG": 5,
+     "GTGGCTGCATTCTTTCTCCA_CCTTGCTGTGAGCTGTCCAA_GGAAAGTCTGGGGTTCACAG_ATGACCTTCTCAAGCCCAAG_GCTGGGCATCAGTTACACAG_CATCCCTCCAAGGAAAGGGA_AGTCAGGAGTTTATTCTGAC_GATCTAGGCAAGTGCTAGCG_CTCTCAGGTCAAGCTTGCAG_ATGACTGCCCCCAGCAGCAA_GTGGGTTAGGAACTCAGCAA_AGAGGTCCTTCAGTCTTGCA_GCAAAACTCCAGATGCCCGA_GCACTGATGACTCAGCCTAG_CACACCCCACAGCTTCCACG_GCTCTCTGCGGAGGGCTGCA_CCTGAGTCCCTCAATAAGAT_CGAGCCACATTACAACCCAG_GCTTCTCCAGATGTTCCTTG_GTAAGGCCCGAGAGGCTGCA": 5,
+     "GTTACCTCTTCAACAGCCCT_ACGTTAACAACTGCCATAAA_TGTCCTCCTCTAAACACAGG_CAACGGGTTGAACAGCAGAA_TCATAGTGCAACCTGCCAGG_TTTCTCCTATGTGTGATCCA_CTAAGCCTAGAATACACTGC_GCTTCAGAGAAGAAGCCGGA_GCTGTTGTCTGCATTGCCAG_ACAAAGGACGAAAAGAAAAG_GATTGTGCATGGTTGTTCCG_GGCTGGGTCTCCACACCGAG_CGGCCTCTCCACCTGAACAG_TCAGCAGCCAGGCAGCTGGG_TCAGCCGCAGTCCCTGGTAG_CCAACATGGCGGCCATCGTG": 5,
+     "TTTCTGCAGCCACAAGGCGG_GCAGGTGTCCCACTAGGAGT_GCAGTCTGAGAGCCTGGACG_TCACAGGTTGAACATACCCA_GCTTGGTCAGAATCTGGGCC_GAGGGCAGTGACATTGAAAG_GCCCTTCCTTACTCAGCAGG_GCCCACCCCATAAACAGCCA_GGCTGTGGCTGACCACCAGG_CTTGACACAAAACATCAGGG_GTAGGAAGATAAGAAAGCAA_TTGAAACAAGCAAAACACCC_AGGACTATCATTGGAAACTG_ATATCACTGAGTGTGCATGA_GCATGTCCATGGTGGAGTGG_CTTGGAGCGCAGAGCGGTTG_CCCCACCTTGAGGAAGACGG_CCAACATGGCGGCCATCGTG": 5,
+     "CCCAGTCTAGGGACCTCAGG_ACCCTAAACCATCTGAGCAG_ACAGCAAGAGAGGAGCCACG_GCAGACATAACTTCAAAAGC_TCTGACCTCCTTCTAGGTGA_TTTCCCAGATGTGGACCACA_ACTTACATGGAATCAACCTG_TCAGGTTCCTGAGAAGGCAG_ATATGATGAGTCATCCTATG_GTTAACACTGACAAAGGCCC_GGAAACACACGGAAAACCAG_CTGCTTATAAAAACCCCACT_GTAGGGATCTAGAGCACCAA_GGGAGCCTGTGACTTCCCTG_TTTGAAATAGATGTGTTCAG_GTTATCCCCTGTCATTTAGG_CCGGCGGACGTGGGCAGGAG": 4,
+     "CGGTCGGTCCTGCCTGTAAG_GTAAAGACGTGCCCTCTAAG_GCTTCCTCCAGCTCCACAGA_GCTGGGAAAGAGACAGACGG_TATCACCTCCGAACTCGTAG_GAGGCCGCTGAATTAACCCG_TTTACCTTGAAGAATAGCCA_TTGTGAAAGGAACTGCATGA_TTTCTCCTATGTGTGATCCA_GAGCTCTCTTTCTTCCCAGT_AAAAGTTTGGCTATTCACTA_CGAAAAGTTTCCATGCCACG_GAATAACTTGGTGAGTCGCG_GCTGATGTAATGCAGGAGAG_CACTGGCTTCTGAAAGAGGA_CATTCCCTCCCCCATCCCCG": 4,
+     "CCTGTCTTGAAGCGACCACA_GCAATTACCTCAGTGCCCCG_TGTGTCTAGAACATTCGCAT_GGACATTTCTCATAAACATC_GAAATGGAATGAACAAACAG_GGAGACAGCACACACGCACA_TCTGAGGCAGGAATTATACA_TGGGAGAGCAGCTTATCGCA_GGCTTGATGCAGATAAGCAT_GGGGCAAAGCTCAAGATGGG": 4
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 207324,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 1,
+    "top": {
+     "K562": 207324
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 1,
+    "top": {
+     "lymphoblasts": 207324
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 1,
+    "top": {
+     "chronic myelogenous leukemia": 207324
+    }
+   },
+   "gene": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 203515,
+    "top": {
+     "nan": 1527,
+     "chr1.11646_top_two_chr1.7199_top_two_chr19.32_top_two_chr19.4654_top_two_chr6.1231_top_two": 6,
+     "chr1.10201_top_two_chr11.1778_second_two_chr11.9_top_two_chr12.3850_top_two_chr1.3349_top_two_chr16.4939_top_two_chr16.5184_top_two_chr2.181_top_two_chr2.2107_top_two_chr2.2686_top_two_chr2.3453_top_two_chr3.3203_top_two_chr7.2795_top_two_chrX.333_top_two_GNPDA1_TSS": 6,
+     "chr1.10050_top_two_chr11.1801_top_two_chr12.1832_top_two_chr12.732_top_two_chr1.3789_top_two_chr16.3244_top_two_chr20.537_top_two_chr21.240_top_two_chr3.666_top_two_chr5.1476_top_two_chr5.1603_top_two_chr7.3567_top_two_chr8.2697_top_two": 6,
+     "chr10.3492_top_two_chr14.1108_top_two_chr19.2350_top_two_chr19.3043_top_two_chr2.342_top_two_chr4.2449_top_two_chr5.3584_top_two_chr6.4480_top_two_chr7.2333_top_two_chrX.230_top_two_FKBP2_TSS_GUK1_TSS": 6,
+     "chr15.2083_top_two_chr17.3460_top_two_chr19.5328_top_two_chr4.2820_top_two_chr6.947_top_two_NUDC_TSS": 5,
+     "chr10.1312_top_two_chr1.5053_top_two_chr17.2443_top_two_chr17.2868_second_two_chr18.1099_top_two_chr18.1234_top_two_chr19.3095_top_two_chr1.9538_second_two_chr1.9914_top_two_chr20.2100_top_two_chr2.6077_top_two_chr2.6219_top_two_chr3.3206_top_two_chr3.5562_top_two_chr3.5794_top_two_chr4.2715_top_two_chr6.1266_top_two_chr6.145_top_two_chr6.2696_top_two_chr8.3568_top_two": 5,
+     "chr11.1970_top_two_chr11.2132_top_two_chr1.12583_top_two_chr17.4512_top_two_chr3.3031_top_two_chr3.4516_top_two_chr4.517_top_two_chr5.5202_top_two_chr6.2474_top_two_chr6.3646_top_two_chr6.5344_top_two_chr6.6121_top_two_chr7.4462_top_two_chrX.451_top_two_MAD2L1BP_TSS_RPL18A_TSS": 5,
+     "chr11.3338_top_two_chr11.653_top_two_chr14.164_top_two_chr14.623_top_two_chr16.1031_top_two_chr17.4171_top_two_chr17.5683_top_two_chr19.415_top_two_chr20.312_top_two_chr22.1059_top_two_chr2.2486_top_two_chr6.1300_top_two_chr9.1385_top_two_chr9.1625_top_two_chrX.2023_top_two_H3F3B_TSS_HNRNPF_TSS_RPL18A_TSS": 5,
+     "chr1.3819_top_two_chr17.6206_top_two_chr1.8792_top_two_chr19.1559_second_two_chr19.2897_top_two_chr2.1468_top_two_chr5.1621_top_two_chr5.5155_top_two_chr6.1227_top_two_chr6.2485_top_two_chr6.3562_top_two_chr6.5151_top_two_chr8.1665_second_two_chr9.3712_top_two_ZRANB2_TSS": 4,
+     "chr12.4742_top_two_chr1.9241_top_two_chr19.5062_top_two_chr20.845_top_two_chr5.1558_top_two_chr6.4890_top_two_chr7.5029_top_two_chr9.763_top_two_chrX.276_top_two_PRAME_TSS": 4,
+     "chr12.3695_top_two_chr13.830_top_two_chr14.2212_top_two_chr15.527_top_two_chr17.1407_top_two_chr19.1042_top_two_chr5.5079_top_two_chr7.1155_top_two_chr7.4374_top_two_chr7.5750_top_two_chr8.1492_top_two_MTRNR2L8_TSS": 4
+    }
+   },
+   "guide_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 207324,
+    "sample_min": 1.0,
+    "sample_max": 104.0
+   },
+   "id": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 31,
+    "top": {
+     "1A_7": 7611,
+     "1B_6": 7602,
+     "1B_1": 7522,
+     "1B_5": 7509,
+     "1A_5": 7491,
+     "1A_2": 7469,
+     "1B_2": 7419,
+     "1B_8": 7281,
+     "1B_7": 7268,
+     "1B_3": 7181,
+     "1A_1": 7130,
+     "1A_4": 7095
+    }
+   },
+   "ko_barcode_file": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 31,
+    "top": {
+     "guide_libraries/1A_7.gRNAcaptured.txt": 7611,
+     "guide_libraries/1B_6.gRNAcaptured.txt": 7602,
+     "guide_libraries/1B_1.gRNAcaptured.txt": 7522,
+     "guide_libraries/1B_5.gRNAcaptured.txt": 7509,
+     "guide_libraries/1A_5.gRNAcaptured.txt": 7491,
+     "guide_libraries/1A_2.gRNAcaptured.txt": 7469,
+     "guide_libraries/1B_2.gRNAcaptured.txt": 7419,
+     "guide_libraries/1B_8.gRNAcaptured.txt": 7281,
+     "guide_libraries/1B_7.gRNAcaptured.txt": 7268,
+     "guide_libraries/1B_3.gRNAcaptured.txt": 7181,
+     "guide_libraries/1A_1.gRNAcaptured.txt": 7130,
+     "guide_libraries/1A_4.gRNAcaptured.txt": 7095
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 207324,
+    "sample_min": 3549.0,
+    "sample_max": 167569.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 207324,
+    "sample_min": 496.0,
+    "sample_max": 7956.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 207324,
+    "sample_min": 0.0,
+    "sample_max": 298.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 1,
+    "top": {
+     "human": 207324
+    }
+   },
+   "percent.mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 207324,
+    "sample_min": 0.0,
+    "sample_max": 0.0999785453765286
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 207324,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 207324,
+    "sample_min": 4.673216250047415,
+    "sample_max": 74.04461687681862
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 203496,
+    "top": {
+     "nan": 1527,
+     "chr1.11646_top_two_chr1.7199_top_two_chr19.32_top_two_chr19.4654_top_two_chr6.1231_top_two": 6,
+     "chr1.10201_top_two_chr11.1778_second_two_chr11.9_top_two_chr12.3850_top_two_chr1.3349_top_two_chr16.4939_top_two_chr16.5184_top_two_chr2.181_top_two_chr2.2107_top_two_chr2.2686_top_two_chr2.3453_top_two_chr3.3203_top_two_chr7.2795_top_two_chrX.333_top_two_GNPDA1": 6,
+     "chr1.10050_top_two_chr11.1801_top_two_chr12.1832_top_two_chr12.732_top_two_chr1.3789_top_two_chr16.3244_top_two_chr20.537_top_two_chr21.240_top_two_chr3.666_top_two_chr5.1476_top_two_chr5.1603_top_two_chr7.3567_top_two_chr8.2697_top_two": 6,
+     "chr10.3492_top_two_chr14.1108_top_two_chr19.2350_top_two_chr19.3043_top_two_chr2.342_top_two_chr4.2449_top_two_chr5.3584_top_two_chr6.4480_top_two_chr7.2333_top_two_chrX.230_top_two_FKBP2_GUK1": 6,
+     "chr15.2083_top_two_chr17.3460_top_two_chr19.5328_top_two_chr4.2820_top_two_chr6.947_top_two_NUDC": 5,
+     "chr10.1312_top_two_chr1.5053_top_two_chr17.2443_top_two_chr17.2868_second_two_chr18.1099_top_two_chr18.1234_top_two_chr19.3095_top_two_chr1.9538_second_two_chr1.9914_top_two_chr20.2100_top_two_chr2.6077_top_two_chr2.6219_top_two_chr3.3206_top_two_chr3.5562_top_two_chr3.5794_top_two_chr4.2715_top_two_chr6.1266_top_two_chr6.145_top_two_chr6.2696_top_two_chr8.3568_top_two": 5,
+     "chr11.3338_top_two_chr11.653_top_two_chr14.164_top_two_chr14.623_top_two_chr16.1031_top_two_chr17.4171_top_two_chr17.5683_top_two_chr19.415_top_two_chr20.312_top_two_chr22.1059_top_two_chr2.2486_top_two_chr6.1300_top_two_chr9.1385_top_two_chr9.1625_top_two_chrX.2023_top_two_H3F3B_HNRNPF_RPL18A": 5,
+     "chr11.1970_top_two_chr11.2132_top_two_chr1.12583_top_two_chr17.4512_top_two_chr3.3031_top_two_chr3.4516_top_two_chr4.517_top_two_chr5.5202_top_two_chr6.2474_top_two_chr6.3646_top_two_chr6.5344_top_two_chr6.6121_top_two_chr7.4462_top_two_chrX.451_top_two_MAD2L1BP_RPL18A": 5,
+     "DDX3X": 4,
+     "chr1.3819_top_two_chr17.6206_top_two_chr1.8792_top_two_chr19.1559_second_two_chr19.2897_top_two_chr2.1468_top_two_chr5.1621_top_two_chr5.5155_top_two_chr6.1227_top_two_chr6.2485_top_two_chr6.3562_top_two_chr6.5151_top_two_chr8.1665_second_two_chr9.3712_top_two_ZRANB2": 4,
+     "chr10.930_top_two_chr1.12093_top_two_chr17.628_top_two_chr1.8052_top_two_chr2.2452_second_two_chr2.6306_top_two_chr2.6797_top_two": 4
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 207324
+    }
+   },
+   "prep_batch": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 2,
+    "top": {
+     "prep_batch_1": 107947,
+     "prep_batch_2": 99377
+    }
+   },
+   "proportion": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 207324,
+    "sample_min": 0.0350877192982456,
+    "sample_max": 1.0
+   },
+   "read_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 207324,
+    "sample_min": 7.0,
+    "sample_max": 127748.0
+   },
+   "sample": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 31,
+    "top": {
+     "1A_7_SI-GA-E8": 7611,
+     "1B_6_SI-GA-F7": 7602,
+     "1B_1_SI-GA-F2": 7522,
+     "1B_5_SI-GA-F6": 7509,
+     "1A_5_SI-GA-E6": 7491,
+     "1A_2_SI-GA-E3": 7469,
+     "1B_2_SI-GA-F3": 7419,
+     "1B_8_SI-GA-F9": 7281,
+     "1B_7_SI-GA-F8": 7268,
+     "1B_3_SI-GA-F4": 7181,
+     "1A_1_SI-GA-E2": 7130,
+     "1A_4_SI-GA-E5": 7095
+    }
+   },
+   "sample_directory": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 31,
+    "top": {
+     "1A_7_SI-GA-E8": 7611,
+     "1B_6_SI-GA-F7": 7602,
+     "1B_1_SI-GA-F2": 7522,
+     "1B_5_SI-GA-F6": 7509,
+     "1A_5_SI-GA-E6": 7491,
+     "1A_2_SI-GA-E3": 7469,
+     "1B_2_SI-GA-F3": 7419,
+     "1B_8_SI-GA-F9": 7281,
+     "1B_7_SI-GA-F8": 7268,
+     "1B_3_SI-GA-F4": 7181,
+     "1A_1_SI-GA-E2": 7130,
+     "1A_4_SI-GA-E5": 7095
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 1,
+    "top": {
+     "cell_line": 207324
+    }
+   },
+   "total_umis": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 207324,
+    "sample_min": 3550.0,
+    "sample_max": 167692.0
+   },
+   "umi_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 207324,
+    "sample_min": 6.0,
+    "sample_max": 11731.0
+   },
+   "within_batch_chip": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 2,
+    "top": {
+     "within_batch_chip_B": 108010,
+     "within_batch_chip_A": 99314
+    }
+   },
+   "within_chip_lane": {
+    "kind": "categorical",
+    "n": 207324,
+    "distinct": 8,
+    "top": {
+     "within_chip_lane_5": 27905,
+     "within_chip_lane_2": 27354,
+     "within_chip_lane_1": 27251,
+     "within_chip_lane_7": 27157,
+     "within_chip_lane_6": 26803,
+     "within_chip_lane_4": 26123,
+     "within_chip_lane_3": 25618,
+     "within_chip_lane_8": 19113
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "ensembl_id",
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 13135,
+  "first": [
+   "ENSG00000238009",
+   "ENSG00000237683",
+   "ENSG00000228463",
+   "ENSG00000237094",
+   "ENSG00000235373"
+  ]
+ },
+ "seconds": 377.5,
+ "fetched_bytes": 502096190,
+ "id": "scp_GasperiniShendure2019_atscale"
+}

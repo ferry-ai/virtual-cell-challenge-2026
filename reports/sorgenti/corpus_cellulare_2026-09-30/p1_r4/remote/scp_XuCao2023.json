@@ -1,0 +1,314 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/XuCao2023.h5ad/content",
+ "bytes": 336637209,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   98315,
+   59429
+  ],
+  "dtype": "int64",
+  "stored": 129448599,
+  "compression": "gzip",
+  "chunks": [
+   15802
+  ],
+  "sample_integer": true,
+  "sample_max": 9.0
+ },
+ "layers": {
+  "nascent_counts": {
+   "format": "csc_matrix",
+   "shape": [
+    98315,
+    59429
+   ],
+   "dtype": "int64",
+   "stored": 37755967,
+   "compression": "gzip",
+   "chunks": [
+    9218
+   ],
+   "sample_integer": true,
+   "sample_max": 10.0
+  }
+ },
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "Cell_cycle_phase",
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "celltype",
+   "disease",
+   "gRNA_UMI_counts",
+   "guide_id",
+   "nascent_MT_ratio",
+   "nascent_UMI_counts",
+   "nascent_ratio",
+   "ncounts",
+   "new_exon_ratio",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "target",
+   "tissue_type",
+   "whole_exon_ratio"
+  ],
+  "describe": {
+   "Cell_cycle_phase": {
+    "kind": "categorical",
+    "n": 98315,
+    "distinct": 3,
+    "top": {
+     "G2M": 49169,
+     "S": 35772,
+     "G1": 13374
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 98315,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 98315,
+    "distinct": 98315,
+    "top": {
+     "220824perturbsci_01.AAGGCGTCGCCAACCGCTAA": 1,
+     "220824perturbsci_01.AAGGCGTCGCGACCTTGATA": 1,
+     "220824perturbsci_01.AAGGCGTCGCTCTGATACCA": 1,
+     "220824perturbsci_01.AAGTCAACGGAACCTCATTC": 1,
+     "220824perturbsci_01.AAGTCAACGGACTCAATAGG": 1,
+     "220824perturbsci_01.AAGTCAACGGACTTGCTAGA": 1,
+     "220824perturbsci_01.AAGTCAACGGGCCATTCTCC": 1,
+     "220824perturbsci_01.AAGTCAACGGGGCTCTCTAT": 1,
+     "220824perturbsci_01.AAGTCAACGGGGCTGAGCTC": 1,
+     "220824perturbsci_01.AATATATCAAAATCCATCTT": 1,
+     "220824perturbsci_01.AATATATCAAAATCGATAAT": 1,
+     "220824perturbsci_01.AATATATCAAACGGAGGCGG": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 98315,
+    "distinct": 1,
+    "top": {
+     "HEK293": 98315
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 98315,
+    "distinct": 1,
+    "top": {
+     "embryonic kidney cells": 98315
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 98315,
+    "distinct": 1,
+    "top": {
+     "healthy": 98315
+    }
+   },
+   "gRNA_UMI_counts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 98315,
+    "sample_min": 10.0,
+    "sample_max": 1536.0
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 98315,
+    "distinct": 489,
+    "top": {
+     "SMARCD1_3": 1227,
+     "XPO5_1": 952,
+     "SLC25A1_1": 899,
+     "SEC62_3": 862,
+     "LDHA_1": 806,
+     "LDB1_1": 738,
+     "ATP11A_2": 636,
+     "SMARCD1_2": 605,
+     "PHF10_2": 596,
+     "SLC25A1_3": 583,
+     "ZC3H13_1": 572,
+     "FOXK1_3": 567
+    }
+   },
+   "nascent_MT_ratio": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 98315,
+    "sample_min": 0.0,
+    "sample_max": 0.0540152963671128
+   },
+   "nascent_UMI_counts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 98315,
+    "sample_min": 2.0,
+    "sample_max": 7250.0
+   },
+   "nascent_ratio": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 98315,
+    "sample_min": 0.0042016806722689,
+    "sample_max": 0.566905005107252
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 98315,
+    "sample_min": 301.0,
+    "sample_max": 46416.0
+   },
+   "new_exon_ratio": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 98315,
+    "sample_min": 0.0697674418604651,
+    "sample_max": 1.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 98315,
+    "sample_min": 201.0,
+    "sample_max": 8102.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 98315,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 98315,
+    "distinct": 1,
+    "top": {
+     "human": 98315
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 98315,
+    "sample_min": 0.0,
+    "sample_max": 81.48760330578513
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 98315,
+    "sample_min": 0.0,
+    "sample_max": 17.877094972067038
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 98315,
+    "distinct": 204,
+    "top": {
+     "control": 2758,
+     "SMARCD1": 2158,
+     "SLC25A1": 1880,
+     "XPO5": 1583,
+     "LDHA": 1437,
+     "SEC62": 1375,
+     "ARID2": 1309,
+     "DLAT": 1256,
+     "PDHA1": 1184,
+     "ATP11A": 1167,
+     "LDB1": 1149,
+     "SDHAF1": 1148
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 98315,
+    "distinct": 1,
+    "top": {
+     "CRISPRi": 98315
+    }
+   },
+   "target": {
+    "kind": "categorical",
+    "n": 98315,
+    "distinct": 204,
+    "top": {
+     "control": 2758,
+     "SMARCD1": 2158,
+     "SLC25A1": 1880,
+     "XPO5": 1583,
+     "LDHA": 1437,
+     "SEC62": 1375,
+     "ARID2": 1309,
+     "DLAT": 1256,
+     "PDHA1": 1184,
+     "ATP11A": 1167,
+     "LDB1": 1149,
+     "SDHAF1": 1148
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 98315,
+    "distinct": 1,
+    "top": {
+     "cell_line": 98315
+    }
+   },
+   "whole_exon_ratio": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 98315,
+    "sample_min": 0.1353001017294,
+    "sample_max": 0.919667590027701
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 59429,
+  "first": [
+   "DDX11L1",
+   "WASH7P",
+   "MIR6859-1",
+   "MIR1302-2HG",
+   "MIR1302-2"
+  ]
+ },
+ "seconds": 21.2,
+ "fetched_bytes": 27307289,
+ "id": "scp_XuCao2023"
+}

@@ -1,0 +1,217 @@
+{
+ "url": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D1_Rest.assigned_guide.h5ad",
+ "bytes": 142828875662,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   3074496,
+   18130
+  ],
+  "dtype": "float32",
+  "stored": 11853949618,
+  "compression": null,
+  "chunks": [
+   6958
+  ],
+  "sample_integer": true,
+  "sample_max": 784.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "PuroR",
+   "_index",
+   "guide_group",
+   "guide_id",
+   "guide_type",
+   "lane_id",
+   "low_quality",
+   "n_genes_by_counts",
+   "pct_counts_mt",
+   "perturbed_gene_id",
+   "perturbed_gene_name",
+   "top_guide_UMI_counts",
+   "total_counts"
+  ],
+  "describe": {
+   "PuroR": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 3074496,
+    "sample_min": 0.0,
+    "sample_max": 4.808918476104736
+   },
+   "_index": {
+    "kind": "object",
+    "shape": [
+     3074496
+    ]
+   },
+   "guide_group": {
+    "kind": "categorical",
+    "n": 3074496,
+    "distinct": 3,
+    "top": {
+     "targeting single sgRNA": 1754014,
+     "no sgRNA": 794379,
+     "multi sgRNA": 526103
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 3074496,
+    "distinct": 23256,
+    "top": {
+     "<NA>": 794379,
+     "multi_sgRNA": 526103,
+     "CD8A-1": 1660,
+     "FAM229B-2": 1305,
+     "PIP-2": 1294,
+     "CLIC5-1": 1193,
+     "HSPH1-1": 1156,
+     "RPS6KA1-1": 1155,
+     "RAB30-2": 1024,
+     "FAM208A-1": 967,
+     "MOSMO-1": 955,
+     "KCNIP2-1": 898
+    }
+   },
+   "guide_type": {
+    "kind": "categorical",
+    "n": 3074496,
+    "distinct": 2,
+    "top": {
+     "targeting": 2203483,
+     "<NA>": 794379,
+     "non-targeting": 76634
+    }
+   },
+   "lane_id": {
+    "kind": "categorical",
+    "n": 3074496,
+    "distinct": 23,
+    "top": {
+     "CD4i_R1L04": 138604,
+     "CD4i_R1L01": 137668,
+     "CD4i_R1L03": 137289,
+     "CD4i_R1L08": 136657,
+     "CD4i_R1L07": 136149,
+     "CD4i_R1L23": 136002,
+     "CD4i_R1L09": 135943,
+     "CD4i_R1L02": 135716,
+     "CD4i_R1L20": 135434,
+     "CD4i_R1L22": 135344,
+     "CD4i_R1L19": 134422,
+     "CD4i_R1L05": 134129
+    }
+   },
+   "low_quality": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 3074496,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "n_genes_by_counts": {
+    "kind": "numeric",
+    "dtype": "int32",
+    "n": 3074496,
+    "sample_min": 369.0,
+    "sample_max": 9236.0
+   },
+   "pct_counts_mt": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 3074496,
+    "sample_min": 0.0,
+    "sample_max": 19.2874698638916
+   },
+   "perturbed_gene_id": {
+    "kind": "categorical",
+    "n": 3074496,
+    "distinct": 12100,
+    "top": {
+     "<NA>": 1320482,
+     "NTC": 76634,
+     "ENSG00000153563": 1845,
+     "ENSG00000112782": 1462,
+     "ENSG00000203778": 1421,
+     "ENSG00000159763": 1306,
+     "ENSG00000117676": 1288,
+     "ENSG00000137502": 1180,
+     "ENSG00000120694": 1157,
+     "ENSG00000163946": 1117,
+     "ENSG00000043514": 1062,
+     "ENSG00000181090": 971
+    }
+   },
+   "perturbed_gene_name": {
+    "kind": "categorical",
+    "n": 3074496,
+    "distinct": 12102,
+    "top": {
+     "<NA>": 1320482,
+     "NTC": 76634,
+     "CD8A": 1845,
+     "CLIC5": 1462,
+     "FAM229B": 1421,
+     "PIP": 1306,
+     "RPS6KA1": 1288,
+     "RAB30": 1180,
+     "HSPH1": 1157,
+     "FAM208A": 1117,
+     "TRIT1": 1062,
+     "EHMT1": 971
+    }
+   },
+   "top_guide_UMI_counts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 3074496,
+    "sample_min": 3.0,
+    "sample_max": 5590.0
+   },
+   "total_counts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 3074496,
+    "sample_min": 490.0,
+    "sample_max": 144059.0
+   }
+  }
+ },
+ "var": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "feature_types",
+   "gene_ids",
+   "gene_name",
+   "genome",
+   "mt"
+  ],
+  "rows": 18130,
+  "first": [
+   "ENSG00000000003",
+   "ENSG00000000005",
+   "ENSG00000000419",
+   "ENSG00000000457",
+   "ENSG00000000460"
+  ]
+ },
+ "seconds": 71.8,
+ "fetched_bytes": 56864654,
+ "id": "cd4_D1_Rest"
+}

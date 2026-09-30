@@ -1,0 +1,296 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/FrangiehIzar2021_protein.h5ad/content",
+ "bytes": 24714445,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   218331,
+   24
+  ],
+  "dtype": "float32",
+  "stored": 3458171,
+  "compression": "gzip",
+  "chunks": [
+   6755
+  ],
+  "sample_integer": true,
+  "sample_max": 294479.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_name",
+  "columns": [
+   "MOI",
+   "UMI_count",
+   "cancer",
+   "cell_name",
+   "celltype",
+   "disease",
+   "guide_id",
+   "library_preparation_protocol",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_2",
+   "perturbation_type",
+   "perturbation_type_2",
+   "sgRNA",
+   "tissue_type",
+   "umap_x",
+   "umap_y"
+  ],
+  "describe": {
+   "MOI": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 218331,
+    "sample_min": 0.0,
+    "sample_max": 19.0
+   },
+   "UMI_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 218331,
+    "sample_min": 500.0,
+    "sample_max": 59486.0
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 218331,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_name": {
+    "kind": "strings",
+    "n": 218331,
+    "distinct": 218331,
+    "top": {
+     "CELL_1": 1,
+     "CELL_10": 1,
+     "CELL_100": 1,
+     "CELL_1000": 1,
+     "CELL_10000": 1,
+     "CELL_100000": 1,
+     "CELL_100001": 1,
+     "CELL_100002": 1,
+     "CELL_100003": 1,
+     "CELL_100004": 1,
+     "CELL_100005": 1,
+     "CELL_100006": 1
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 218331,
+    "distinct": 1,
+    "top": {
+     "melanocytes": 218331
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 218331,
+    "distinct": 1,
+    "top": {
+     "melanoma": 218331
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 218331,
+    "distinct": 58211,
+    "top": {
+     "nan": 23028,
+     "IFNGR2_2": 358,
+     "NO_SITE_47": 333,
+     "NO_SITE_913": 317,
+     "HLA-DRB5_2": 315,
+     "ONE_NON-GENE_SITE_531": 296,
+     "NO_SITE_23": 296,
+     "NO_SITE_36": 296,
+     "CD59_2": 287,
+     "FGFR1_1": 285,
+     "JAK2_1": 285,
+     "JAK1_2": 283
+    }
+   },
+   "library_preparation_protocol": {
+    "kind": "categorical",
+    "n": 218331,
+    "distinct": 1,
+    "top": {
+     "10X 3' v3 sequencing": 218331
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 218331,
+    "sample_min": 0.0,
+    "sample_max": 878564.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 218331,
+    "sample_min": 0.0,
+    "sample_max": 24.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 218331,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 218331,
+    "distinct": 1,
+    "top": {
+     "human": 218331
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 218331,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 218331,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 218331,
+    "distinct": 249,
+    "top": {
+     "control": 57605,
+     "ACTA2": 1458,
+     "B2M": 1379,
+     "A2M": 1331,
+     "AEBP1": 1302,
+     "CD59": 1238,
+     "CD274": 1222,
+     "CTSD": 1217,
+     "IFNGR2": 1203,
+     "CSPG4": 1195,
+     "CD44": 1193,
+     "FGFR1": 1182
+    }
+   },
+   "perturbation_2": {
+    "kind": "categorical",
+    "n": 218331,
+    "distinct": 3,
+    "top": {
+     "IFN\u03b3": 87590,
+     "Co-culture": 73114,
+     "Control": 57627
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 218331,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 218331
+    }
+   },
+   "perturbation_type_2": {
+    "kind": "categorical",
+    "n": 218331,
+    "distinct": 1,
+    "top": {
+     "IFN-\u03b3 stimulation": 218331
+    }
+   },
+   "sgRNA": {
+    "kind": "categorical",
+    "n": 218331,
+    "distinct": 819,
+    "top": {
+     "nan": 91365,
+     "IFNGR2_2": 358,
+     "NO_SITE_47": 333,
+     "NO_SITE_913": 317,
+     "HLA-DRB5_2": 315,
+     "NO_SITE_23": 296,
+     "NO_SITE_36": 296,
+     "ONE_NON-GENE_SITE_531": 296,
+     "CD59_2": 287,
+     "FGFR1_1": 285,
+     "JAK2_1": 285,
+     "JAK1_2": 283
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 218331,
+    "distinct": 1,
+    "top": {
+     "cell_line_co-culture": 218331
+    }
+   },
+   "umap_x": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 218331,
+    "sample_min": -11.8081665,
+    "sample_max": 11.724062
+   },
+   "umap_y": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 218331,
+    "sample_min": -9.88349,
+    "sample_max": 11.519289
+   }
+  }
+ },
+ "var": {
+  "index": "protein",
+  "columns": [
+   "Barcode",
+   "Clone",
+   "Isotype_control",
+   "Target",
+   "TotalSeq A#",
+   "ncells",
+   "ncounts",
+   "protein"
+  ],
+  "rows": 24,
+  "first": [
+   "CD117",
+   "CD119",
+   "CD140a",
+   "CD140b",
+   "CD172a"
+  ]
+ },
+ "seconds": 17.0,
+ "fetched_bytes": 18422989,
+ "id": "scp_FrangiehIzar2021_protein"
+}

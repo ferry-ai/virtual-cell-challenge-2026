@@ -1,0 +1,229 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/JoungZhang2023_atlas.h5ad/content",
+ "bytes": 5804454475,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   1145823,
+   37528
+  ],
+  "dtype": "float32",
+  "stored": 2673739132,
+  "compression": "gzip",
+  "chunks": [
+   81597
+  ],
+  "sample_integer": false,
+  "sample_max": 5.783238887786865
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "batch",
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "celltype",
+   "disease",
+   "louvain",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "tissue_type"
+  ],
+  "describe": {
+   "batch": {
+    "kind": "categorical",
+    "n": 1145823,
+    "distinct": 2,
+    "top": {
+     "0": 951022,
+     "1": 194801
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 1145823,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 1145823,
+    "distinct": 1145823,
+    "top": {
+     "R1.01,R2.01,R3.01,P1.22-0-0": 1,
+     "R1.01,R2.01,R3.01,P1.31-1-2-0": 1,
+     "R1.01,R2.01,R3.01,P1.40-2-4-0": 1,
+     "R1.01,R2.01,R3.01,P1.63-1-3-0": 1,
+     "R1.01,R2.01,R3.02,P1.08-2-3-0": 1,
+     "R1.01,R2.01,R3.02,P1.22-0-0": 1,
+     "R1.01,R2.01,R3.03,P1.07-2-1-0": 1,
+     "R1.01,R2.01,R3.03,P1.24-0-4-0": 1,
+     "R1.01,R2.01,R3.03,P1.62-1-1-0": 1,
+     "R1.01,R2.01,R3.03,P1.62-3-1": 1,
+     "R1.01,R2.01,R3.03,P1.63-1-3-0": 1,
+     "R1.01,R2.01,R3.04,P1.54-0-1-0": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 1145823,
+    "distinct": 1,
+    "top": {
+     "hESCs": 1145823
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 1145823,
+    "distinct": 1,
+    "top": {
+     "hESCs": 1145823
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 1145823,
+    "distinct": 1,
+    "top": {
+     "healthy": 1145823
+    }
+   },
+   "louvain": {
+    "kind": "categorical",
+    "n": 1145823,
+    "distinct": 14,
+    "top": {
+     "0": 196734,
+     "1": 188069,
+     "2": 151761,
+     "3": 142109,
+     "4": 118755,
+     "5": 96266,
+     "6": 87605,
+     "7": 78450,
+     "8": 27989,
+     "9": 20675,
+     "10": 18001,
+     "11": 16082
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 1145823,
+    "sample_min": 896.0,
+    "sample_max": 14189.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 1145823,
+    "sample_min": 800.0,
+    "sample_max": 5803.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 1145823,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 1145823,
+    "distinct": 1,
+    "top": {
+     "human": 1145823
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 1145823,
+    "sample_min": 0.002822201233357191,
+    "sample_max": 0.0499194860458374
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 1145823,
+    "sample_min": 0.6909509897232056,
+    "sample_max": 7.547365188598633
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 1145823,
+    "distinct": 3369,
+    "top": {
+     "3368": 78274,
+     "3367": 49539,
+     "591": 13939,
+     "854": 7559,
+     "260": 7270,
+     "893": 6866,
+     "1984": 6609,
+     "239": 5535,
+     "2667": 5414,
+     "341": 5344,
+     "1289": 5306,
+     "1523": 5289
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 1145823,
+    "distinct": 1,
+    "top": {
+     "ORF overexpression": 1145823
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 1145823,
+    "distinct": 1,
+    "top": {
+     "cell_line": 1145823
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 37528,
+  "first": [
+   "A1BG",
+   "A1BG-AS1",
+   "A1CF",
+   "A2M",
+   "A2M-AS1"
+  ]
+ },
+ "seconds": 67.1,
+ "fetched_bytes": 78180939,
+ "id": "scp_JoungZhang2023_atlas"
+}

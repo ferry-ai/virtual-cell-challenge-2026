@@ -1,0 +1,46 @@
+{
+ "job_id": "j05_jurkat_nadig_r2",
+ "min_free_stage_bytes": 4294967296,
+ "units": [
+  {
+   "name": "jurkat_nadig",
+   "adapter": "h5rows",
+   "kwargs": {
+    "path": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_jurkat.h5ad/content",
+    "study": "jurkat_nadig",
+    "context": "Jurkat",
+    "chemistry": "10x 3'",
+    "modality": "CRISPRi",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "target_col": "gene",
+    "control_values": [
+     "non-targeting"
+    ],
+    "guides_col": "guide_id",
+    "library_col": "batch",
+    "published_depth": "UMI_count"
+   },
+   "source": {
+    "id": "jurkat_nadig",
+    "release": "Zenodo 13350497 (scPerturb)",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "counts h5ad (scPerturb)",
+      "locator": "https://zenodo.org/api/records/13350497/files/NadigOConner2024_jurkat.h5ad/content",
+      "bytes": 1293665804,
+      "md5": "d8b05d00bfbd686d37ffdd4293bc6c8c"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     0,
+     262956
+    ]
+   }
+  }
+ ],
+ "min_free_out_bytes": 0
+}

@@ -1,0 +1,252 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/AissaBenevolenskaya2021.h5ad/content",
+ "bytes": 45919115,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   119071,
+   17820
+  ],
+  "dtype": "float32",
+  "stored": 17121689,
+  "compression": "gzip",
+  "chunks": [
+   16721
+  ],
+  "sample_integer": true,
+  "sample_max": 338.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "GEO",
+   "batch",
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "celltype",
+   "chembl-ID",
+   "disease",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "replicate",
+   "subseries",
+   "time",
+   "tissue_type"
+  ],
+  "describe": {
+   "GEO": {
+    "kind": "categorical",
+    "n": 119071,
+    "distinct": 4,
+    "top": {
+     "GSM4869650": 29983,
+     "GSM4869652": 29963,
+     "GSM4869651": 29785,
+     "GSM4869653": 29340
+    }
+   },
+   "batch": {
+    "kind": "categorical",
+    "n": 119071,
+    "distinct": 1,
+    "top": {
+     "Xenograft": 119071
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 119071,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 119071,
+    "distinct": 119071,
+    "top": {
+     "AAAAAAAAACCC-GSM4869653": 1,
+     "AAAAAACCACCT-GSM4869651": 1,
+     "AAAAAACTGTCT-GSM4869652": 1,
+     "AAAAAACTGTCT-GSM4869653": 1,
+     "AAAAAAGTATGT-GSM4869653": 1,
+     "AAAAACAACATG-GSM4869652": 1,
+     "AAAAACAATAAG-GSM4869652": 1,
+     "AAAAACACAAAC-GSM4869653": 1,
+     "AAAAACAGAACA-GSM4869653": 1,
+     "AAAAACATACGA-GSM4869653": 1,
+     "AAAAACATAGAC-GSM4869652": 1,
+     "AAAAACATGCAA-GSM4869653": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 119071,
+    "distinct": 1,
+    "top": {
+     "PC9_xenograft": 119071
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 119071,
+    "distinct": 1,
+    "top": {
+     "": 119071
+    }
+   },
+   "chembl-ID": {
+    "kind": "categorical",
+    "n": 119071,
+    "distinct": 3,
+    "top": {
+     "<NA>": 29983,
+     "CHEMBL3353410": 29963,
+     "CHEMBL601719": 29785,
+     "CHEMBL3353410;CHEMBL601719": 29340
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 119071,
+    "distinct": 1,
+    "top": {
+     "": 119071
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 119071,
+    "sample_min": 0.0,
+    "sample_max": 63942.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int32",
+    "n": 119071,
+    "sample_min": 0.0,
+    "sample_max": 8079.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 119071,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 119071,
+    "distinct": 1,
+    "top": {
+     "human": 119071
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 119071,
+    "sample_min": 0.0,
+    "sample_max": 100.0
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 119071,
+    "sample_min": 0.0,
+    "sample_max": 100.0
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 119071,
+    "distinct": 4,
+    "top": {
+     "control": 29983,
+     "osimertinib": 29963,
+     "crizotinib": 29785,
+     "osimertinib+crizotinib": 29340
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 119071,
+    "distinct": 1,
+    "top": {
+     "drug": 119071
+    }
+   },
+   "replicate": {
+    "kind": "categorical",
+    "n": 119071,
+    "distinct": 1,
+    "top": {
+     "": 119071
+    }
+   },
+   "subseries": {
+    "kind": "categorical",
+    "n": 119071,
+    "distinct": 1,
+    "top": {
+     "GSE160244": 119071
+    }
+   },
+   "time": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 119071,
+    "sample_min": 72.0,
+    "sample_max": 72.0
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 119071,
+    "distinct": 1,
+    "top": {
+     "cell_line": 119071
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "mt",
+   "ncells",
+   "ncounts",
+   "ribo"
+  ],
+  "rows": 17820,
+  "first": [
+   "A2M",
+   "A2M-AS1",
+   "A2ML1",
+   "A4GALT",
+   "AAAS"
+  ]
+ },
+ "seconds": 8.9,
+ "fetched_bytes": 9218955,
+ "id": "scp_AissaBenevolenskaya2021"
+}

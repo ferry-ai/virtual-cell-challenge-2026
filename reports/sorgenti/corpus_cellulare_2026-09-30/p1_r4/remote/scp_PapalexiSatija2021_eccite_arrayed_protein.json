@@ -1,0 +1,275 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/PapalexiSatija2021_eccite_arrayed_protein.h5ad/content",
+ "bytes": 550922,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   8984,
+   4
+  ],
+  "dtype": "float32",
+  "stored": 35933,
+  "compression": "gzip",
+  "chunks": [
+   2246
+  ],
+  "sample_integer": true,
+  "sample_max": 2056.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "cancer",
+   "cell_line",
+   "celltype",
+   "disease",
+   "gdo_barcode",
+   "guide_id",
+   "hto",
+   "hto_barcode",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "tissue_type"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 8984,
+    "distinct": 8984,
+    "top": {
+     "AAACCTGAGAAACCAT": 1,
+     "AAACCTGAGAAACGCC": 1,
+     "AAACCTGAGAGTACAT": 1,
+     "AAACCTGAGCTGAACG": 1,
+     "AAACCTGAGTACATGA": 1,
+     "AAACCTGAGTATGACA": 1,
+     "AAACCTGAGTCTCCTC": 1,
+     "AAACCTGCAAGTCTGT": 1,
+     "AAACCTGCACAAGTAA": 1,
+     "AAACCTGGTAGCTTGT": 1,
+     "AAACCTGGTATTCGTG": 1,
+     "AAACCTGGTCCTAGCG": 1
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 8984,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 8984,
+    "distinct": 1,
+    "top": {
+     "THP-1": 8984
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 8984,
+    "distinct": 1,
+    "top": {
+     "monocytes": 8984
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 8984,
+    "distinct": 1,
+    "top": {
+     "acute monocytic leukemia": 8984
+    }
+   },
+   "gdo_barcode": {
+    "kind": "categorical",
+    "n": 8984,
+    "distinct": 14,
+    "top": {
+     "GCCGTTAAGCGGAAACGAT": 1023,
+     "TGTCTATGGAGACTTTAGC": 994,
+     "TTGTCCTTGAACTCTATTC": 991,
+     "TGAACGGGCCGCGGAAGCG": 986,
+     "CTGCTGTGGGATTACGTGT": 798,
+     "TTCATTTCTCAGCAGGGTG": 794,
+     "CGTGTAGCGCAGCTGCTTC": 750,
+     "TCCTTTTCTTTGGTCTTAC": 723,
+     "CTTTCTGATATCCAGTTTA": 701,
+     "CATTACCAGTTGCTCACTG": 576,
+     "GTCATCGTTGAGGTGTTTA": 409,
+     "ATATAGGTCCTTGGGAACC": 211
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 8984,
+    "distinct": 14,
+    "top": {
+     "NTg7": 1023,
+     "IRF1g1": 994,
+     "ETV7g2": 991,
+     "NTg5": 986,
+     "ETV7g1": 798,
+     "ATF2g1": 794,
+     "IRF7g1": 750,
+     "MARCH8g1": 723,
+     "IFNGR1g2": 701,
+     "STAT2g1": 576,
+     "CAV1g2": 409,
+     "PDL1g1": 211
+    }
+   },
+   "hto": {
+    "kind": "categorical",
+    "n": 8984,
+    "distinct": 15,
+    "top": {
+     "HTO-NT7": 1024,
+     "HTO-IRF1g1": 994,
+     "HTO-ETV7g2": 990,
+     "HTO-NT5": 985,
+     "HTO-ETV7g1": 799,
+     "HTO-ATF2g1": 794,
+     "HTO-IRF7g1": 750,
+     "HTO-MARCH8g1": 723,
+     "HTO-IFNGR1g2": 701,
+     "HTO-STAT2g1": 576,
+     "HTO-CAV1g2": 409,
+     "HTO-PDL1g1-CT": 175
+    }
+   },
+   "hto_barcode": {
+    "kind": "categorical",
+    "n": 8984,
+    "distinct": 9,
+    "top": {
+     "AGCTTACTATCC": 1779,
+     "ACATGTTACCGT": 1713,
+     "AGGACCATCCAA": 1549,
+     "TAACGACGTGGT": 1403,
+     "GAGGCTGAGCTA": 1024,
+     "TCGATAATGCGA": 701,
+     "TATCACATCGGT": 612,
+     "GTGTGACGTATT": 175,
+     "ACTGTCTAACGG": 28
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 8984,
+    "sample_min": 8.0,
+    "sample_max": 4495.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 8984,
+    "sample_min": 3.0,
+    "sample_max": 4.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 8984,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 8984,
+    "distinct": 1,
+    "top": {
+     "human": 8984
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 8984,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 8984,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 8984,
+    "distinct": 11,
+    "top": {
+     "control": 2009,
+     "ETV7": 1789,
+     "IRF1": 994,
+     "ATF2": 794,
+     "IRF7": 750,
+     "MARCH8": 723,
+     "IFNGR1": 701,
+     "STAT2": 576,
+     "CAV1": 409,
+     "PDL1": 235,
+     "IFNGR2": 4
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 8984,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 8984
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 8984,
+    "distinct": 1,
+    "top": {
+     "cell_line": 8984
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "protein",
+  "columns": [
+   "adt_barcode",
+   "ncells",
+   "ncounts",
+   "protein"
+  ],
+  "rows": 4,
+  "first": [
+   "CD86",
+   "PDL1",
+   "PDL2",
+   "CD366"
+  ]
+ },
+ "seconds": 1.0,
+ "fetched_bytes": 550922,
+ "id": "scp_PapalexiSatija2021_eccite_arrayed_protein"
+}

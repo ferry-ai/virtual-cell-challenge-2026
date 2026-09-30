@@ -1,0 +1,311 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/SantinhaPlatt2023.h5ad/content",
+ "bytes": 939335004,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   100134,
+   30556
+  ],
+  "dtype": "int64",
+  "stored": 421911333,
+  "compression": "gzip",
+  "chunks": [
+   25752
+  ],
+  "sample_integer": true,
+  "sample_max": 217.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "cancer",
+   "cell_barcode",
+   "cell_name",
+   "cell_types",
+   "cell_types_broad",
+   "cell_types_neuro",
+   "disease",
+   "gRNA_read_count",
+   "gRNA_umi_count",
+   "guide_id",
+   "lane",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "tissue",
+   "tissue_type"
+  ],
+  "describe": {
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 100134,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 100134,
+    "distinct": 100134,
+    "top": {
+     "AAACCTGAGAAAGTGG-8": 1,
+     "AAACCTGAGAAGGCCT-7": 1,
+     "AAACCTGAGAATAGGG-2": 1,
+     "AAACCTGAGAATTCCC-8": 1,
+     "AAACCTGAGAATTGTG-4": 1,
+     "AAACCTGAGACACGAC-13": 1,
+     "AAACCTGAGACACGAC-4": 1,
+     "AAACCTGAGACTAGAT-3": 1,
+     "AAACCTGAGAGAACAG-4": 1,
+     "AAACCTGAGAGCCTAG-6": 1,
+     "AAACCTGAGAGTAAGG-6": 1,
+     "AAACCTGAGAGTAATC-6": 1
+    }
+   },
+   "cell_name": {
+    "kind": "strings",
+    "n": 100134,
+    "distinct": 100134,
+    "top": {
+     "cell_1": 1,
+     "cell_10": 1,
+     "cell_100": 1,
+     "cell_1000": 1,
+     "cell_10000": 1,
+     "cell_10001": 1,
+     "cell_10002": 1,
+     "cell_10004": 1,
+     "cell_10005": 1,
+     "cell_10007": 1,
+     "cell_10008": 1,
+     "cell_10009": 1
+    }
+   },
+   "cell_types": {
+    "kind": "categorical",
+    "n": 100134,
+    "distinct": 10,
+    "top": {
+     "Interneurons_Sst_Pvalb": 25831,
+     "Neurons_L_2_3": 23087,
+     "Neurons_L_5": 16633,
+     "Neurons_L_6": 12915,
+     "Interneurons_Vip_Adarb2": 7336,
+     "Astrocytes": 6871,
+     "Oligodendrocytes": 3516,
+     "Polidendrocytes": 1629,
+     "Endothelial_cells": 1228,
+     "Microglia": 1088
+    }
+   },
+   "cell_types_broad": {
+    "kind": "categorical",
+    "n": 100134,
+    "distinct": 8,
+    "top": {
+     "Interneurons": 33167,
+     "Deep_layer_neurons": 29548,
+     "Supp_layer_neurons": 23087,
+     "Astrocytes": 6871,
+     "Oligodendrocytes": 3516,
+     "Polidendrocytes": 1629,
+     "Endothelial_cells": 1228,
+     "Microglia": 1088
+    }
+   },
+   "cell_types_neuro": {
+    "kind": "categorical",
+    "n": 100134,
+    "distinct": 3,
+    "top": {
+     "Neuronal": 85802,
+     "Glial": 13104,
+     "Endothelial": 1228
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 100134,
+    "distinct": 1,
+    "top": {
+     "healthy": 100134
+    }
+   },
+   "gRNA_read_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 100134,
+    "sample_min": 61.0,
+    "sample_max": 1001937.0
+   },
+   "gRNA_umi_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 100134,
+    "sample_min": 2.0,
+    "sample_max": 4586.0
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 100134,
+    "distinct": 64,
+    "top": {
+     "<NA>": 54736,
+     "Ccdc74a": 2052,
+     "Tmem191c": 1937,
+     "Comt_2": 1871,
+     "Zdhhc8": 1726,
+     "Comt": 1631,
+     "Hic2": 1623,
+     "Dgcr8": 1585,
+     "Snap29": 1522,
+     "Med15": 1440,
+     "Rimbp3_2": 1315,
+     "Safe_H": 1289
+    }
+   },
+   "lane": {
+    "kind": "categorical",
+    "n": 100134,
+    "distinct": 12,
+    "top": {
+     "lane_7": 10047,
+     "lane_2": 9906,
+     "lane_6": 9601,
+     "lane_5": 9501,
+     "lane_1": 9429,
+     "lane_9": 9416,
+     "lane_4": 9197,
+     "lane_3": 9172,
+     "lane_8": 8987,
+     "lane_13": 5142,
+     "lane_12": 5129,
+     "lane_14": 4607
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 100134,
+    "sample_min": 1504.0,
+    "sample_max": 70258.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 100134,
+    "sample_min": 1003.0,
+    "sample_max": 8459.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 100134,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 100134,
+    "distinct": 1,
+    "top": {
+     "Mus musculus": 100134
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 100134,
+    "sample_min": 0.0,
+    "sample_max": 0.19942664838589055
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 100134,
+    "sample_min": 0.0,
+    "sample_max": 4.746835443037975
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 100134,
+    "distinct": 31,
+    "top": {
+     "nan": 54736,
+     "Comt": 3502,
+     "Med15": 2694,
+     "control": 2520,
+     "Hic2": 2427,
+     "Ccdc74a": 2231,
+     "Pi4ka": 2172,
+     "Snap29": 2098,
+     "Dgcr2": 2088,
+     "Zdhhc8": 2027,
+     "Tmem191c": 2007,
+     "Lztr1": 1969
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 100134,
+    "distinct": 1,
+    "top": {
+     "CRISPR-cas9": 100134
+    }
+   },
+   "tissue": {
+    "kind": "categorical",
+    "n": 100134,
+    "distinct": 1,
+    "top": {
+     "brain": 100134
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 100134,
+    "distinct": 1,
+    "top": {
+     "primary": 100134
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 30556,
+  "first": [
+   "Xkr4",
+   "Gm1992",
+   "Gm37381",
+   "Rp1",
+   "Sox17"
+  ]
+ },
+ "seconds": 15.2,
+ "fetched_bytes": 18685276,
+ "id": "scp_SantinhaPlatt2023"
+}

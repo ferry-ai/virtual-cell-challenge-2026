@@ -1,0 +1,359 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/ReplogleWeissman2022_K562_essential.h5ad/content",
+ "bytes": 1546729675,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "dense",
+  "shape": [
+   310385,
+   8563
+  ],
+  "dtype": "float32",
+  "compression": "gzip",
+  "chunks": [
+   1213,
+   67
+  ],
+  "first_rows_integer": true,
+  "first_rows_max": 948.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "UMI_count",
+   "age",
+   "batch",
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "core_adjusted_UMI_count",
+   "core_scale_factor",
+   "disease",
+   "gene",
+   "gene_id",
+   "gene_transcript",
+   "guide_id",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "sex",
+   "tissue_type",
+   "transcript",
+   "z_gemgroup_UMI"
+  ],
+  "describe": {
+   "UMI_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 310385,
+    "sample_min": 1817.0,
+    "sample_max": 64989.0
+   },
+   "age": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 310385,
+    "sample_min": 53.0,
+    "sample_max": 53.0
+   },
+   "batch": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 310385,
+    "sample_min": 1.0,
+    "sample_max": 48.0
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 310385,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 310385,
+    "distinct": 310385,
+    "top": {
+     "AAACCCAAGAAATCCA-27": 1,
+     "AAACCCAAGAACTTCC-31": 1,
+     "AAACCCAAGAAGCCAC-34": 1,
+     "AAACCCAAGAATAGTC-43": 1,
+     "AAACCCAAGACAGCGT-28": 1,
+     "AAACCCAAGACATGCG-10": 1,
+     "AAACCCAAGACCATTC-19": 1,
+     "AAACCCAAGAGCTGCA-34": 1,
+     "AAACCCAAGAGGCGTT-11": 1,
+     "AAACCCAAGAGTTGCG-19": 1,
+     "AAACCCAAGATAACGT-32": 1,
+     "AAACCCAAGATAGCAT-11": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 310385,
+    "distinct": 1,
+    "top": {
+     "K562": 310385
+    }
+   },
+   "core_adjusted_UMI_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 310385,
+    "sample_min": 3000.9585,
+    "sample_max": 66660.04
+   },
+   "core_scale_factor": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 310385,
+    "sample_min": 0.6002644,
+    "sample_max": 1.2328124
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 310385,
+    "distinct": 1,
+    "top": {
+     "chronic myeloid leukemia": 310385
+    }
+   },
+   "gene": {
+    "kind": "categorical",
+    "n": 310385,
+    "distinct": 2058,
+    "top": {
+     "non-targeting": 10691,
+     "RPL3": 1996,
+     "NCBP2": 992,
+     "KIF11": 974,
+     "SLC39A9": 752,
+     "DONSON": 745,
+     "NUP205": 735,
+     "GAB2": 674,
+     "BUB1": 648,
+     "SNX15": 637,
+     "CPSF3": 627,
+     "CHMP6": 624
+    }
+   },
+   "gene_id": {
+    "kind": "categorical",
+    "n": 310385,
+    "distinct": 2058,
+    "top": {
+     "non-targeting": 10691,
+     "ENSG00000100316": 1996,
+     "ENSG00000114503": 992,
+     "ENSG00000138160": 974,
+     "ENSG00000029364": 752,
+     "ENSG00000159147": 745,
+     "ENSG00000155561": 735,
+     "ENSG00000033327": 674,
+     "ENSG00000169679": 648,
+     "ENSG00000110025": 637,
+     "ENSG00000119203": 627,
+     "ENSG00000176108": 624
+    }
+   },
+   "gene_transcript": {
+    "kind": "categorical",
+    "n": 310385,
+    "distinct": 2273,
+    "top": {
+     "7472_RPL3_P1P2_ENSG00000100316": 1996,
+     "5494_NCBP2_P1P2_ENSG00000114503": 992,
+     "4374_KIF11_P1P2_ENSG00000138160": 974,
+     "8080_SLC39A9_P1P2_ENSG00000029364": 752,
+     "2336_DONSON_P1P2_ENSG00000159147": 745,
+     "5891_NUP205_P1P2_ENSG00000155561": 735,
+     "3246_GAB2_P1P2_ENSG00000033327": 674,
+     "935_BUB1_P1P2_ENSG00000169679": 648,
+     "1842_CPSF3_P1P2_ENSG00000119203": 627,
+     "1588_CHMP6_P1P2_ENSG00000176108": 624,
+     "7558_RRM2_P1P2_ENSG00000171848": 577,
+     "4932_MED12_P1P2_ENSG00000184634": 573
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 310385,
+    "distinct": 2273,
+    "top": {
+     "RPL3_+_39715369.23-P1P2|RPL3_+_39715378.23-P1P2": 1996,
+     "NCBP2_-_196669400.23-P1P2|NCBP2_-_196669410.23-P1P2": 992,
+     "KIF11_-_94352958.23-P1P2|KIF11_-_94352939.23-P1P2": 974,
+     "SLC39A9_+_69865454.23-P1P2|SLC39A9_-_69865448.23-P1P2": 752,
+     "DONSON_+_34960976.23-P1P2|DONSON_+_34960973.23-P1P2": 745,
+     "NUP205_-_135242670.23-P1P2|NUP205_-_135242651.23-P1P2": 735,
+     "GAB2_-_78128828.23-P1P2|GAB2_-_78128897.23-P1P2": 674,
+     "BUB1_-_111435363.23-P1P2|BUB1_-_111435372.23-P1P2": 648,
+     "CPSF3_+_9564024.23-P1P2|CPSF3_+_9563875.23-P1P2": 627,
+     "CHMP6_-_78965692.23-P1P2|CHMP6_+_78965716.23-P1P2": 624,
+     "RRM2_+_10262870.23-P1P2|RRM2_+_10262952.23-P1P2": 577,
+     "MED12_+_70338481.23-P1P2|MED12_+_70338552.23-P1P2": 573
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 310385,
+    "sample_min": 1782.0,
+    "sample_max": 64082.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 310385,
+    "sample_min": 713.0,
+    "sample_max": 6608.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 310385,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 310385,
+    "distinct": 1,
+    "top": {
+     "human": 310385
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 310385,
+    "sample_min": 0.0,
+    "sample_max": 0.19997232
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 310385,
+    "sample_min": 0.032918148,
+    "sample_max": 0.5430449
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 310385,
+    "distinct": 2058,
+    "top": {
+     "control": 10691,
+     "RPL3": 1996,
+     "NCBP2": 992,
+     "KIF11": 974,
+     "SLC39A9": 752,
+     "DONSON": 745,
+     "NUP205": 735,
+     "GAB2": 674,
+     "BUB1": 648,
+     "SNX15": 637,
+     "CPSF3": 627,
+     "CHMP6": 624
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 310385,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 310385
+    }
+   },
+   "sex": {
+    "kind": "categorical",
+    "n": 310385,
+    "distinct": 1,
+    "top": {
+     "Female": 310385
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 310385,
+    "distinct": 1,
+    "top": {
+     "cell_line": 310385
+    }
+   },
+   "transcript": {
+    "kind": "categorical",
+    "n": 310385,
+    "distinct": 58,
+    "top": {
+     "P1P2": 264548,
+     "P1": 15801,
+     "P2": 12884,
+     "non-targeting": 10691,
+     "ENST00000380743.4": 319,
+     "ENST00000393695.3": 284,
+     "ENST00000443236.1": 233,
+     "ENST00000330339.7": 223,
+     "ENST00000421176.3": 218,
+     "ENST00000340333.3": 216,
+     "ENST00000510175.1,ENST00000511079.1,ENST00000513304.1,ENST00000513889.1": 215,
+     "ENST00000329516.3": 202
+    }
+   },
+   "z_gemgroup_UMI": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 310385,
+    "sample_min": -2.7570024,
+    "sample_max": 9.48258
+   }
+  }
+ },
+ "var": {
+  "index": "gene_name",
+  "columns": [
+   "chr",
+   "class",
+   "cv",
+   "end",
+   "ensembl_id",
+   "fano",
+   "gene_name",
+   "in_matrix",
+   "length",
+   "mean",
+   "ncells",
+   "ncounts",
+   "start",
+   "std",
+   "strand"
+  ],
+  "rows": 8563,
+  "first": [
+   "LINC01409",
+   "LINC01128",
+   "NOC2L",
+   "KLHL17",
+   "HES4"
+  ]
+ },
+ "seconds": 38.6,
+ "fetched_bytes": 40974539,
+ "id": "scp_ReplogleWeissman2022_K562_essential"
+}

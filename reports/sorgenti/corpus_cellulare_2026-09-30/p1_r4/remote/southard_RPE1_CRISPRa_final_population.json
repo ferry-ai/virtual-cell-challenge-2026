@@ -1,0 +1,315 @@
+{
+ "url": "https://zenodo.org/api/records/15213619/files/RPE1_CRISPRa_final_population.h5ad/content",
+ "bytes": 29749295165,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   850225,
+   31419
+  ],
+  "dtype": "float32",
+  "stored": 2454274899,
+  "compression": null,
+  "chunks": [
+   74899
+  ],
+  "sample_integer": true,
+  "sample_max": 337.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "UMI_count",
+   "batch",
+   "cell_barcode",
+   "control",
+   "dataset",
+   "gem_group",
+   "guide_identity",
+   "guide_target",
+   "guide_umi_count",
+   "keep",
+   "mt_frac",
+   "num_cells",
+   "old_barcode",
+   "pairwise_UMI_count",
+   "pairwise_coef",
+   "pairwise_singlet_equivalent_UMI_count",
+   "single_cell",
+   "thresholded_features",
+   "thresholded_guide_umi"
+  ],
+  "describe": {
+   "UMI_count": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 850225,
+    "sample_min": 2053.0,
+    "sample_max": 49804.0
+   },
+   "batch": {
+    "kind": "categorical",
+    "n": 850225,
+    "distinct": 20,
+    "top": {
+     "17": 53617,
+     "18": 53006,
+     "16": 52918,
+     "15": 52401,
+     "19": 52099,
+     "11": 51733,
+     "13": 50768,
+     "14": 50021,
+     "10": 49949,
+     "12": 46940,
+     "5": 40479,
+     "7": 39400
+    }
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 850225,
+    "distinct": 850225,
+    "top": {
+     "AAACCCAAGAAACCAT-18": 1,
+     "AAACCCAAGAAATGGG-16": 1,
+     "AAACCCAAGAACTGAT-18": 1,
+     "AAACCCAAGAAGCGGG-15": 1,
+     "AAACCCAAGAAGTCCG-11": 1,
+     "AAACCCAAGAAGTCTA-1": 1,
+     "AAACCCAAGAAGTGTT-11": 1,
+     "AAACCCAAGAATAGTC-13": 1,
+     "AAACCCAAGAATCGAT-4": 1,
+     "AAACCCAAGAATTCAG-13": 1,
+     "AAACCCAAGAATTGCA-14": 1,
+     "AAACCCAAGAATTTGG-6": 1
+    }
+   },
+   "control": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 850225,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "dataset": {
+    "kind": "categorical",
+    "n": 850225,
+    "distinct": 20,
+    "top": {
+     "12B": 53617,
+     "13B": 53006,
+     "11B": 52918,
+     "10B": 52401,
+     "14B": 52099,
+     "3B": 51733,
+     "5B": 50768,
+     "6B": 50021,
+     "2B": 49949,
+     "4B": 46940,
+     "10A": 40479,
+     "12A": 39400
+    }
+   },
+   "gem_group": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 850225,
+    "sample_min": 0.0,
+    "sample_max": 6.0
+   },
+   "guide_identity": {
+    "kind": "categorical",
+    "n": 850225,
+    "distinct": 10963,
+    "top": {
+     "non_targeting_GTGCAGCTGGTCGCGCAAAC": 1642,
+     "non_targeting_GGCCCTCCCCACCGGCACGA": 1578,
+     "non_targeting_GCGCCGGAGCACTCGCGTAT": 1375,
+     "non_targeting_GAACGGGCCGTGATCGGACC": 1125,
+     "non_targeting_GAAATGGACCGCGCTTACGC": 1092,
+     "non_targeting_GCCAGACGCGCCCGTAACGG": 1050,
+     "non_targeting_GTTGTGATGTATCACGACTA": 1040,
+     "ZBTB46_GGGAGCGGCGACCCCGGCGA": 1002,
+     "non_targeting_GGGTAGGCCTCGCCAGTCGT": 931,
+     "PRDM16_GCGGCGGCGGCGCGACGATG": 882,
+     "non_targeting_GCAGCCTAAAGCGTACGACG": 870,
+     "non_targeting_GCCCGTGATAATCGATACGA": 867
+    }
+   },
+   "guide_target": {
+    "kind": "categorical",
+    "n": 850225,
+    "distinct": 1837,
+    "top": {
+     "non": 42233,
+     "MYC": 1912,
+     "ZBTB46": 1871,
+     "TCF25": 1540,
+     "MTA1": 1396,
+     "MESP1": 1309,
+     "RXRA": 1250,
+     "DLX3": 1244,
+     "HES5": 1236,
+     "CUX1": 1223,
+     "ZIC1": 1200,
+     "ELK3": 1196
+    }
+   },
+   "guide_umi_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 850225,
+    "sample_min": 5.0,
+    "sample_max": 12835.0
+   },
+   "keep": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 850225,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "mt_frac": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 850225,
+    "sample_min": 6.528693484142423e-05,
+    "sample_max": 0.07496233284473419
+   },
+   "num_cells": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 850225,
+    "sample_min": 1.0,
+    "sample_max": 4.0
+   },
+   "old_barcode": {
+    "kind": "categorical",
+    "n": 850225,
+    "distinct": 891014,
+    "top": {
+     "TGAGGAGCAATTGAGA-1": 5,
+     "CAAGGGAAGCAGAAAG-1": 5,
+     "CCAATGAAGACAGCGT-1": 5,
+     "CGGCAGTGTCCGTACG-1": 5,
+     "AGCCACGTCTCTGAGA-1": 5,
+     "GGGTGAACAAGCGGAT-1": 5,
+     "AAGTGAAGTCAGGCAA-1": 5,
+     "GGTAATCAGAGCTGCA-1": 5,
+     "TACCGAAGTCCCGTGA-1": 5,
+     "TGGGCTGCAATACCTG-1": 5,
+     "ATACCTTCACAATTCG-1": 5,
+     "AGTTAGCTCTTCTCAA-1": 4
+    }
+   },
+   "pairwise_UMI_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 850225,
+    "sample_min": 1841.4435243516425,
+    "sample_max": 16551.040741820652
+   },
+   "pairwise_coef": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 850225,
+    "sample_min": 0.09639812623042127,
+    "sample_max": 4.274062330860986
+   },
+   "pairwise_singlet_equivalent_UMI_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 850225,
+    "sample_min": 0.3646108141567015,
+    "sample_max": 1.4894000447111928
+   },
+   "single_cell": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 850225,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "thresholded_features": {
+    "kind": "categorical",
+    "n": 850225,
+    "distinct": 666235,
+    "top": {
+     "non_targeting_GTGCAGCTGGTCGCGCAAAC": 504,
+     "non_targeting_GCGCCGGAGCACTCGCGTAT": 372,
+     "non_targeting_GAAATGGACCGCGCTTACGC": 362,
+     "non_targeting_GTTGTGATGTATCACGACTA": 353,
+     "non_targeting_GGGAACAGGGGCGGTCCGTA": 347,
+     "non_targeting_GAACGGGCCGTGATCGGACC": 341,
+     "non_targeting_GCCAGACGCGCCCGTAACGG": 341,
+     "non_targeting_GGCCCTCCCCACCGGCACGA": 331,
+     "non_targeting_GCTCTACACTGGATGATCGT": 331,
+     "non_targeting_GAGGAGCGTCATATCACGCG": 312,
+     "non_targeting_GAGCTGTCATTGTCGTACGG": 301,
+     "non_targeting_GGACTATGGGCGCCGATCAG": 287
+    }
+   },
+   "thresholded_guide_umi": {
+    "kind": "categorical",
+    "n": 850225,
+    "distinct": 643265,
+    "top": {
+     "5": 1430,
+     "6": 1092,
+     "7": 901,
+     "8": 799,
+     "9": 738,
+     "10": 636,
+     "11": 612,
+     "13": 594,
+     "12": 588,
+     "21": 574,
+     "14": 553,
+     "18": 548
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_id",
+  "columns": [
+   "cv",
+   "excess_cv",
+   "fano",
+   "feature_types",
+   "gene_id",
+   "gene_name",
+   "genome",
+   "in_matrix",
+   "mean",
+   "mean_adjusted_pairwise_p_cost",
+   "pairwise_chosen",
+   "pairwise_p_cost",
+   "std"
+  ],
+  "rows": 31419,
+  "first": [
+   "ENSG00000243485",
+   "ENSG00000237613",
+   "ENSG00000186092",
+   "ENSG00000238009",
+   "ENSG00000239945"
+  ]
+ },
+ "seconds": 201.9,
+ "fetched_bytes": 266483773,
+ "id": "southard_RPE1_CRISPRa_final_population"
+}

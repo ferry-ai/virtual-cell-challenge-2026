@@ -108,6 +108,8 @@ def main() -> None:
     p.add_argument("--commit", required=True)
     p.add_argument("--setup", required=True)
     p.add_argument("--jobs-dir", type=Path, default=HERE / "jobs_colab")
+    p.add_argument("--owner", default=OWNER, help="Kaggle account that receives the datasets")
+    p.add_argument("--secrets", default="rlab_secrets", help="Drive folder under runs/ holding that account's token")
     a = p.parse_args()
     if bool(a.spec) == bool(a.publish_only):
         sys.exit("give either --spec or --publish-only")
@@ -145,8 +147,8 @@ def main() -> None:
     publish = []
     for item in a.publish:
         unit, slug = item.split("=", 1)
-        publish.append(f'"$PY" "$C/publish_kaggle.py" --job-dir {job_dir} --unit {unit} --owner {OWNER} --slug {slug} '
-                       f'--config-dir "$DRIVE/runs/rlab_secrets" --stage "$WORK/publish_{slug}" '
+        publish.append(f'"$PY" "$C/publish_kaggle.py" --job-dir {job_dir} --unit {unit} --owner {a.owner} --slug {slug} '
+                       f'--config-dir "$DRIVE/runs/{a.secrets}" --stage "$WORK/publish_{slug}" '
                        f'--receipt "$REC/publish_{slug}.json"')
     manifest = {"schema_version": 1, "job_id": a.job, "incident_ids": INCIDENTS, "inputs": declared, "outputs": outputs,
                 "target_checks": [],

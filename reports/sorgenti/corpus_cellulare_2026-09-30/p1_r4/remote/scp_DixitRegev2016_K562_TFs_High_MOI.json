@@ -1,0 +1,271 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/DixitRegev2016_K562_TFs_High_MOI.h5ad/content",
+ "bytes": 319735470,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   51898,
+   23529
+  ],
+  "dtype": "float64",
+  "stored": 154803161,
+  "compression": "gzip",
+  "chunks": [
+   18897
+  ],
+  "sample_integer": true,
+  "sample_max": 35.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "cancer",
+   "cell_line",
+   "celltype",
+   "disease",
+   "grna_lenient",
+   "guide_id",
+   "moi",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "target",
+   "tissue_type"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 51898,
+    "distinct": 51898,
+    "top": {
+     "AAACATACAACTGC_ph14d_H6": 1,
+     "AAACATACAAGGTA_ph14d_B5": 1,
+     "AAACATACACACCA_ph14d_H6": 1,
+     "AAACATACACAGCT_ph14d_E7": 1,
+     "AAACATACACTGGT_ph14d_B7": 1,
+     "AAACATACATACCG_ph14d_F6": 1,
+     "AAACATACATCTCT_ph14d_B7": 1,
+     "AAACATACCCCGTT_ph14d_E7": 1,
+     "AAACATACCCCTAC_ph14d_H6": 1,
+     "AAACATACCCCTCA_ph14d_C7": 1,
+     "AAACATACCGTTGA_ph14d_E7": 1,
+     "AAACATACCTACCC_ph14d_A7": 1
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 51898,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 51898,
+    "distinct": 1,
+    "top": {
+     "K562": 51898
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 51898,
+    "distinct": 1,
+    "top": {
+     "lymphoblasts": 51898
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 51898,
+    "distinct": 1,
+    "top": {
+     "myelogenous leukemia": 51898
+    }
+   },
+   "grna_lenient": {
+    "kind": "categorical",
+    "n": 51898,
+    "distinct": 3257,
+    "top": {
+     "p-INTERGENIC393453": 3536,
+     "p-INTERGENIC393453;p-sgELF1-2": 1363,
+     "p-INTERGENIC393453;p-sgELF1-5": 1104,
+     "p-INTERGENIC1144056;p-INTERGENIC393453": 1006,
+     "p-INTERGENIC393453;p-INTERGENIC216151": 972,
+     "p-sgGABPA-9;p-INTERGENIC393453": 916,
+     "p-sgCREB1-4;p-INTERGENIC393453": 844,
+     "p-sgELK1-7;p-INTERGENIC393453": 816,
+     "p-INTERGENIC393453;p-sgE2F4-6": 802,
+     "p-INTERGENIC393453;p-sgGABPA-1": 802,
+     "p-sgELF1-2": 793,
+     "p-INTERGENIC1144056": 780
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 51898,
+    "distinct": 1728,
+    "top": {
+     "p_INTERGENIC393453": 4224,
+     "p_sgELF1_2": 1834,
+     "p_INTERGENIC216151": 1672,
+     "p_INTERGENIC1144056": 1625,
+     "p_sgELF1_5": 1485,
+     "p_sgGABPA_1": 1456,
+     "<NA>": 1445,
+     "p_sgELK1_6": 1364,
+     "p_sgNR2C2_5": 1301,
+     "p_INTERGENIC1216445": 1281,
+     "p_sgCREB1_5": 1231,
+     "p_sgELK1_7": 1224
+    }
+   },
+   "moi": {
+    "kind": "categorical",
+    "n": 51898,
+    "distinct": 1,
+    "top": {
+     "high": 51898
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 51898,
+    "sample_min": 2459.0,
+    "sample_max": 64120.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 51898,
+    "sample_min": 620.0,
+    "sample_max": 6374.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 51898,
+    "sample_min": 1.0,
+    "sample_max": 4.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 51898,
+    "distinct": 1,
+    "top": {
+     "human": 51898
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 51898,
+    "sample_min": 0.0,
+    "sample_max": 48.22873082287308
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 51898,
+    "sample_min": 7.5592747559274756,
+    "sample_max": 57.78254370572561
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 51898,
+    "distinct": 1726,
+    "top": {
+     "control": 8802,
+     "p-sgELF1-2": 1834,
+     "p-sgELF1-5": 1485,
+     "p-sgGABPA-1": 1456,
+     "nan": 1445,
+     "p-sgELK1-6": 1364,
+     "p-sgNR2C2-5": 1301,
+     "p-sgCREB1-5": 1231,
+     "p-sgELK1-7": 1224,
+     "p-sgETS1-5": 1201,
+     "p-sgCREB1-4": 1187,
+     "p-sgCREB1-2": 1164
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 51898,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 51898
+    }
+   },
+   "target": {
+    "kind": "categorical",
+    "n": 51898,
+    "distinct": 44,
+    "top": {
+     "ELF1": 6433,
+     "CREB1": 5928,
+     "EGR1": 5094,
+     "ELK1": 4871,
+     "INTERGENIC393453": 4224,
+     "NR2C2": 4113,
+     "YY1": 2938,
+     "GABPA": 2900,
+     "ETS1": 2862,
+     "IRF1": 2586,
+     "E2F4": 2236,
+     "INTERGENIC216151": 1672
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 51898,
+    "distinct": 1,
+    "top": {
+     "cell_line": 51898
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "gene_id",
+   "mt",
+   "ncells",
+   "ncounts",
+   "ribo"
+  ],
+  "rows": 23529,
+  "first": [
+   "MIR1302-10",
+   "FAM138A",
+   "OR4F5",
+   "RP11-34P13.7",
+   "RP11-34P13.8"
+  ]
+ },
+ "seconds": 7.9,
+ "fetched_bytes": 10405550,
+ "id": "scp_DixitRegev2016_K562_TFs_High_MOI"
+}

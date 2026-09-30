@@ -1,0 +1,224 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/WeinrebKlein2020.h5ad/content",
+ "bytes": 228524613,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   65075,
+   25289
+  ],
+  "dtype": "float32",
+  "stored": 95234935,
+  "compression": "gzip",
+  "chunks": [
+   23251
+  ],
+  "sample_integer": false,
+  "sample_max": 400.6060791015625
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "age",
+   "cancer",
+   "celltype",
+   "disease",
+   "library_names",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "tissue_type"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 65075,
+    "distinct": 65075,
+    "top": {
+     "AAACAAAC-AAACCTCC_d4_G_3": 1,
+     "AAACAAAC-AAACTGGT_d2_2": 1,
+     "AAACAAAC-AAAGTCGG_d6_all_1": 1,
+     "AAACAAAC-AACAATCC_d4_SCF_1": 1,
+     "AAACAAAC-AATGAATG_d2_4": 1,
+     "AAACAAAC-ACACTAAG_d6_M_2": 1,
+     "AAACAAAC-ACATCTAT_d2_5": 1,
+     "AAACAAAC-ACCACGCT_d4_G_2": 1,
+     "AAACAAAC-ACCACGCT_d4_G_3": 1,
+     "AAACAAAC-ACCCATAT_d2_2": 1,
+     "AAACAAAC-ACCTTCTT_d4_SCF_2": 1,
+     "AAACAAAC-ACCTTGCC_d2_6": 1
+    }
+   },
+   "age": {
+    "kind": "categorical",
+    "n": 65075,
+    "distinct": 3,
+    "top": {
+     "day 6": 25945,
+     "day 4": 23402,
+     "day 2": 15728
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 65075,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 65075,
+    "distinct": 11,
+    "top": {
+     "Undifferentiated": 24416,
+     "Mo": 19290,
+     "Neu": 8245,
+     "Er": 4818,
+     "Ba": 4392,
+     "Mk": 1974,
+     "Ma": 762,
+     "cDC": 690,
+     "pDC1": 274,
+     "Eos": 153,
+     "pDC2": 61
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 65075,
+    "distinct": 1,
+    "top": {
+     "healthy": 65075
+    }
+   },
+   "library_names": {
+    "kind": "categorical",
+    "n": 65075,
+    "distinct": 29,
+    "top": {
+     "d6_M_1": 4172,
+     "d6_M_2": 4051,
+     "d2_5": 2940,
+     "d6_all_1": 2863,
+     "d2_2": 2798,
+     "d2_1": 2715,
+     "d4_SCF_3": 2667,
+     "d6_all_2": 2652,
+     "d2_6": 2570,
+     "d4_G_3": 2563,
+     "d2_3": 2529,
+     "d4_M_3": 2253
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 65075,
+    "sample_min": 3229.8857421875,
+    "sample_max": 3229.887451171875
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 65075,
+    "sample_min": 96.0,
+    "sample_max": 5997.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 65075,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 65075,
+    "distinct": 1,
+    "top": {
+     "mouse": 65075
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 65075,
+    "sample_min": 0.0,
+    "sample_max": 11.993647575378418
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 65075,
+    "sample_min": 0.35137033462524414,
+    "sample_max": 32.52496337890625
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 65075,
+    "distinct": 5,
+    "top": {
+     "full cocktail": 26306,
+     "M-csf": 14350,
+     "G-csf": 9815,
+     "Epo": 8491,
+     "SCF": 6113
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 65075,
+    "distinct": 1,
+    "top": {
+     "cytokine": 65075
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 65075,
+    "distinct": 1,
+    "top": {
+     "primary": 65075
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 25289,
+  "first": [
+   "0610006L08Rik",
+   "0610007P14Rik",
+   "0610009B22Rik",
+   "0610009E02Rik",
+   "0610009L18Rik"
+  ]
+ },
+ "seconds": 9.4,
+ "fetched_bytes": 12517957,
+ "id": "scp_WeinrebKlein2020"
+}

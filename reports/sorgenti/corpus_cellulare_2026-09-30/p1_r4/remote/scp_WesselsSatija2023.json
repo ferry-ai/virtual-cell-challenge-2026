@@ -1,0 +1,393 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/WesselsSatija2023.h5ad/content",
+ "bytes": 219393529,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   30707,
+   21052
+  ],
+  "dtype": "int64",
+  "stored": 90716135,
+  "compression": "gzip",
+  "chunks": [
+   11074
+  ],
+  "sample_integer": true,
+  "sample_max": 499.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "10X_lane",
+   "CRISPRcas13_Array",
+   "Cell_cycle_phase",
+   "Guide.Class",
+   "HTO",
+   "ID.g1",
+   "ID.g2",
+   "UMI.g1",
+   "UMI.g2",
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "celltype",
+   "disease",
+   "fraction.g1.over.all",
+   "fraction.g1.over.g2",
+   "g1.by.g2",
+   "guides",
+   "nCount_GUIDE",
+   "ncounts",
+   "ncounts_ADT",
+   "ncounts_HTO",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "tissue_type"
+  ],
+  "describe": {
+   "10X_lane": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 4,
+    "top": {
+     "L4": 10688,
+     "L3": 8304,
+     "L2": 8248,
+     "L1": 3467
+    }
+   },
+   "CRISPRcas13_Array": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 367,
+    "top": {
+     "DOT1L_g1:INTS1_g2": 538,
+     "SMARCD1_g1:INTS1_g2": 528,
+     "HDAC3_g1:INTS1_g2": 506,
+     "IKZF1_g1:INTS1_g2": 503,
+     "RCOR1_g1:INTS1_g2": 489,
+     "SSRP1_g1:INTS1_g2": 447,
+     "RING1_g1:INTS1_g2": 445,
+     "GSE1_g1:INTS1_g2": 406,
+     "GATA2_g1:INTS1_g2": 399,
+     "KDM1A_g1:INTS1_g2": 296,
+     "GFI1_g1:INTS1_g2": 282,
+     "INTS1_g1:SMARCD1_g2": 239
+    }
+   },
+   "Cell_cycle_phase": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 3,
+    "top": {
+     "G1": 21880,
+     "S": 4748,
+     "G2M": 4079
+    }
+   },
+   "Guide.Class": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 3,
+    "top": {
+     "Dual": 28095,
+     "Single": 2188,
+     "NT": 424
+    }
+   },
+   "HTO": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 8,
+    "top": {
+     "HTO-52": 4609,
+     "HTO-44": 3975,
+     "HTO-51": 3781,
+     "HTO-22": 3741,
+     "HTO-28": 3720,
+     "HTO-29": 3703,
+     "HTO-21": 3593,
+     "HTO-30": 3585
+    }
+   },
+   "ID.g1": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 367,
+    "top": {
+     "UID-020": 538,
+     "UID-234": 528,
+     "UID-182": 506,
+     "UID-202": 503,
+     "UID-230": 489,
+     "UID-236": 447,
+     "UID-232": 445,
+     "UID-159": 406,
+     "UID-110": 399,
+     "UID-221": 296,
+     "UID-135": 282,
+     "UID-238": 239
+    }
+   },
+   "ID.g2": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 370,
+    "top": {
+     "UID-202": 2095,
+     "UID-020": 1859,
+     "UID-182": 1384,
+     "UID-065": 898,
+     "UID-006": 845,
+     "UID-062": 830,
+     "UID-019": 760,
+     "UID-011": 653,
+     "UID-042": 611,
+     "UID-007": 524,
+     "UID-023": 523,
+     "UID-234": 485
+    }
+   },
+   "UMI.g1": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 30707,
+    "sample_min": 5.0,
+    "sample_max": 585.0
+   },
+   "UMI.g2": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 30707,
+    "sample_min": 0.0,
+    "sample_max": 10.0
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 30707,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 30707,
+    "distinct": 30707,
+    "top": {
+     "L1_AAACCCAAGCGCCATC": 1,
+     "L1_AAACCCAAGGTGGGTT": 1,
+     "L1_AAACCCACAACCTAAC": 1,
+     "L1_AAACCCACACGTACAT": 1,
+     "L1_AAACCCATCAGACCGC": 1,
+     "L1_AAACGAAAGAATGTTG": 1,
+     "L1_AAACGAACATCAACCA": 1,
+     "L1_AAACGAAGTGCCTTCT": 1,
+     "L1_AAACGAAGTGGTGATG": 1,
+     "L1_AAACGAATCCTACACC": 1,
+     "L1_AAACGCTCAATCTCTT": 1,
+     "L1_AAACGCTCATTGGCAT": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 1,
+    "top": {
+     "THP-1": 30707
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 1,
+    "top": {
+     "monocytes": 30707
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 1,
+    "top": {
+     "leukemia": 30707
+    }
+   },
+   "fraction.g1.over.all": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 30707,
+    "sample_min": 0.0962962962962963,
+    "sample_max": 1.0
+   },
+   "fraction.g1.over.g2": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 30707,
+    "sample_min": 0.803921568627451,
+    "sample_max": 1.0
+   },
+   "g1.by.g2": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 30707,
+    "sample_min": 4.1,
+    "sample_max": Infinity
+   },
+   "guides": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 367,
+    "top": {
+     "UID-020": 538,
+     "UID-234": 528,
+     "UID-182": 506,
+     "UID-202": 503,
+     "UID-230": 489,
+     "UID-236": 447,
+     "UID-232": 445,
+     "UID-159": 406,
+     "UID-110": 399,
+     "UID-221": 296,
+     "UID-135": 282,
+     "UID-238": 239
+    }
+   },
+   "nCount_GUIDE": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 30707,
+    "sample_min": 5.0,
+    "sample_max": 612.0
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 30707,
+    "sample_min": 1554.0,
+    "sample_max": 97596.0
+   },
+   "ncounts_ADT": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 30707,
+    "sample_min": 663.0,
+    "sample_max": 43801.0
+   },
+   "ncounts_HTO": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 30707,
+    "sample_min": 121.0,
+    "sample_max": 10399.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 30707,
+    "sample_min": 1003.0,
+    "sample_max": 7939.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 30707,
+    "sample_min": 0.0,
+    "sample_max": 2.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 1,
+    "top": {
+     "human": 30707
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 30707,
+    "sample_min": 0.0561797752808989,
+    "sample_max": 19.9583116206357
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 30707,
+    "sample_min": 5.670682730923695,
+    "sample_max": 43.865881129786864
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 187,
+    "top": {
+     "DOT1L_INTS1": 773,
+     "INTS1_SMARCD1": 767,
+     "HDAC3_INTS1": 684,
+     "GATA2_INTS1": 599,
+     "INTS1_RING1": 575,
+     "IKZF1_INTS1": 565,
+     "INTS1_RCOR1": 555,
+     "INTS1_SSRP1": 514,
+     "GSE1_INTS1": 469,
+     "INTS1_KDM1A": 462,
+     "control": 424,
+     "INTS1_VPRBP": 410
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 1,
+    "top": {
+     "CRISPR-cas13": 30707
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 30707,
+    "distinct": 1,
+    "top": {
+     "cell_line": 30707
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 21052,
+  "first": [
+   "OR4F5",
+   "OR4F29",
+   "OR4F16",
+   "SAMD11",
+   "NOC2L"
+  ]
+ },
+ "seconds": 7.8,
+ "fetched_bytes": 9678329,
+ "id": "scp_WesselsSatija2023"
+}

@@ -1,0 +1,248 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/LotfollahiTheis2023.h5ad/content",
+ "bytes": 235963662,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   63430,
+   58347
+  ],
+  "dtype": "int64",
+  "stored": 119978494,
+  "compression": "gzip",
+  "chunks": [
+   14646
+  ],
+  "sample_integer": true,
+  "sample_max": 42.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "RT_well",
+   "Size_Factor",
+   "Well",
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "celltype",
+   "disease",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "tissue_type"
+  ],
+  "describe": {
+   "RT_well": {
+    "kind": "categorical",
+    "n": 63430,
+    "distinct": 96,
+    "top": {
+     "RT_84": 1701,
+     "RT_26": 1286,
+     "RT_86": 1208,
+     "RT_91": 1183,
+     "RT_25": 1173,
+     "RT_18": 1078,
+     "RT_48": 1066,
+     "RT_13": 1040,
+     "RT_22": 1036,
+     "RT_31": 1032,
+     "RT_93": 1023,
+     "RT_94": 1017
+    }
+   },
+   "Size_Factor": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 63430,
+    "sample_min": 0.3725162361912026,
+    "sample_max": 9.91824478859077
+   },
+   "Well": {
+    "kind": "categorical",
+    "n": 63430,
+    "distinct": 96,
+    "top": {
+     "G12": 1701,
+     "C2": 1286,
+     "H2": 1208,
+     "H7": 1183,
+     "C1": 1173,
+     "B6": 1078,
+     "D12": 1066,
+     "B1": 1040,
+     "B10": 1036,
+     "C7": 1032,
+     "H9": 1023,
+     "H10": 1017
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 63430,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 63430,
+    "distinct": 63430,
+    "top": {
+     "A01_A02_RT_BC_10_Lig_BC_18": 1,
+     "A01_A02_RT_BC_10_Lig_BC_25": 1,
+     "A01_A02_RT_BC_10_Lig_BC_48": 1,
+     "A01_A02_RT_BC_10_Lig_BC_51": 1,
+     "A01_A02_RT_BC_10_Lig_BC_70": 1,
+     "A01_A02_RT_BC_10_Lig_BC_72": 1,
+     "A01_A02_RT_BC_11_Lig_BC_23": 1,
+     "A01_A02_RT_BC_11_Lig_BC_26": 1,
+     "A01_A02_RT_BC_11_Lig_BC_3": 1,
+     "A01_A02_RT_BC_11_Lig_BC_5": 1,
+     "A01_A02_RT_BC_11_Lig_BC_52": 1,
+     "A01_A02_RT_BC_11_Lig_BC_61": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 63430,
+    "distinct": 1,
+    "top": {
+     "A549": 63430
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 63430,
+    "distinct": 1,
+    "top": {
+     "lung epthelial cells": 63430
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 63430,
+    "distinct": 1,
+    "top": {
+     "lung adenocarcinoma": 63430
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 63430,
+    "sample_min": 1000.0,
+    "sample_max": 26625.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 63430,
+    "sample_min": 568.0,
+    "sample_max": 7681.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 63430,
+    "sample_min": 0.0,
+    "sample_max": 2.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 63430,
+    "distinct": 1,
+    "top": {
+     "human": 63430
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 63430,
+    "sample_min": 0.128,
+    "sample_max": 52.979181622397704
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 63430,
+    "sample_min": 0.0,
+    "sample_max": 3.3426183844011144
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 63430,
+    "distinct": 32,
+    "top": {
+     "Dacinostat_PCI-34051": 3302,
+     "Cediranib_SRT3025": 3017,
+     "Cediranib_Givinostat": 2785,
+     "SRT2104": 2757,
+     "Curcumin_Givinostat": 2739,
+     "Givinostat_Sorafenib": 2736,
+     "Carmofur_Givinostat": 2694,
+     "Givinostat_crizotinib": 2666,
+     "Givinostat_dasatinib": 2421,
+     "Givinostat_SRT2104": 2357,
+     "dasatinib": 2343,
+     "Givinostat_SRT1720": 2265
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 63430,
+    "distinct": 1,
+    "top": {
+     "drug": 63430
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 63430,
+    "distinct": 1,
+    "top": {
+     "cell_line": 63430
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "ensembl_id",
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 58347,
+  "first": [
+   "TSPAN6",
+   "TNMD",
+   "DPM1",
+   "SCYL3",
+   "C1orf112"
+  ]
+ },
+ "seconds": 13.8,
+ "fetched_bytes": 13665550,
+ "id": "scp_LotfollahiTheis2023"
+}

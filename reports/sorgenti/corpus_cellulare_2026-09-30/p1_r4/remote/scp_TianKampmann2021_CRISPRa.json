@@ -1,0 +1,229 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/TianKampmann2021_CRISPRa.h5ad/content",
+ "bytes": 154788473,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   21193,
+   33538
+  ],
+  "dtype": "float32",
+  "stored": 73685264,
+  "compression": "gzip",
+  "chunks": [
+   17990
+  ],
+  "sample_integer": true,
+  "sample_max": 66.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "batch",
+   "cancer",
+   "celltype",
+   "disease",
+   "guide_id",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_hemo",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "tissue_type"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 21193,
+    "distinct": 21193,
+    "top": {
+     "AAACCCAAGAATTCAG": 1,
+     "AAACCCAAGAGGGCGA": 1,
+     "AAACCCAAGAGTCTTC": 1,
+     "AAACCCAAGATCACCT": 1,
+     "AAACCCAAGCCTCATA": 1,
+     "AAACCCAAGGAGACCT": 1,
+     "AAACCCAAGGCACTCC": 1,
+     "AAACCCAAGGGAGATA": 1,
+     "AAACCCAAGGTCGTCC": 1,
+     "AAACCCAAGGTCTGGA": 1,
+     "AAACCCAAGTGAACAT": 1,
+     "AAACCCAAGTTGGAAT": 1
+    }
+   },
+   "batch": {
+    "kind": "categorical",
+    "n": 21193,
+    "distinct": 2,
+    "top": {
+     "1": 12083,
+     "2": 9110
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 21193,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 21193,
+    "distinct": 1,
+    "top": {
+     "iPSC-induced neuron": 21193
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 21193,
+    "distinct": 1,
+    "top": {
+     "healthy": 21193
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 21193,
+    "distinct": 203,
+    "top": {
+     "TTBK2_a1": 497,
+     "JPH3_a1": 301,
+     "NOP56_a1": 264,
+     "INSR_a1": 262,
+     "YAP1_a2": 240,
+     "INSR_a2": 232,
+     "RRAS2_a2": 219,
+     "CASP3_a1": 210,
+     "GLIS3_a1": 209,
+     "CDC42EP3_a1": 208,
+     "BCL2L1_a1": 207,
+     "NOP56_a2": 203
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 21193,
+    "sample_min": 539.0,
+    "sample_max": 89144.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 21193,
+    "sample_min": 377.0,
+    "sample_max": 8891.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 21193,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 21193,
+    "distinct": 1,
+    "top": {
+     "human": 21193
+    }
+   },
+   "percent_hemo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 21193,
+    "sample_min": 0.0,
+    "sample_max": 0.08320456436467372
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 21193,
+    "sample_min": 0.08316951459246938,
+    "sample_max": 65.56899641577061
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 21193,
+    "sample_min": 0.9719839908519153,
+    "sample_max": 45.58772235786536
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 21193,
+    "distinct": 101,
+    "top": {
+     "TTBK2": 592,
+     "INSR": 494,
+     "NOP56": 467,
+     "control": 434,
+     "RRAS2": 422,
+     "JPH3": 415,
+     "GLIS3": 351,
+     "CDC42EP3": 341,
+     "RUNX1T1": 324,
+     "ARID1B": 311,
+     "IGF1R": 309,
+     "BCL2L1": 298
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 21193,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 21193
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 21193,
+    "distinct": 1,
+    "top": {
+     "primary": 21193
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "ensembl_id",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 33538,
+  "first": [
+   "MIR1302-2HG",
+   "FAM138A",
+   "OR4F5",
+   "AL627309.1",
+   "AL627309.3"
+  ]
+ },
+ "seconds": 6.5,
+ "fetched_bytes": 7987833,
+ "id": "scp_TianKampmann2021_CRISPRa"
+}

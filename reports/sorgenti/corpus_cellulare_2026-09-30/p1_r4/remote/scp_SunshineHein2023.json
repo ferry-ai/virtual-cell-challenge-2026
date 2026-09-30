@@ -1,0 +1,337 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/SunshineHein2023.h5ad/content",
+ "bytes": 743672579,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   90380,
+   33538
+  ],
+  "dtype": "int64",
+  "stored": 336938834,
+  "compression": "gzip",
+  "chunks": [
+   20566
+  ],
+  "sample_integer": true,
+  "sample_max": 605.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "UMI_count",
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "celltype",
+   "coverage",
+   "disease",
+   "gem_group",
+   "good_coverage",
+   "guide_id",
+   "match_type",
+   "matched_library_element",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "number_of_cells",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "read_count",
+   "tissue_type"
+  ],
+  "describe": {
+   "UMI_count": {
+    "kind": "categorical",
+    "n": 90380,
+    "distinct": 62812,
+    "top": {
+     "0": 16391,
+     "10": 244,
+     "9": 235,
+     "8": 205,
+     "11": 204,
+     "12": 203,
+     "13": 182,
+     "16": 162,
+     "14": 158,
+     "15": 138,
+     "19": 137,
+     "17": 134
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 90380,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 90380,
+    "distinct": 90380,
+    "top": {
+     "AAACCTGAGAAACCTA-1": 1,
+     "AAACCTGAGAAACGAG-6": 1,
+     "AAACCTGAGAACAATC-3": 1,
+     "AAACCTGAGAAGCCCA-2": 1,
+     "AAACCTGAGAAGGACA-6": 1,
+     "AAACCTGAGAAGGTTT-6": 1,
+     "AAACCTGAGAATTCCC-1": 1,
+     "AAACCTGAGACAAAGG-1": 1,
+     "AAACCTGAGACAGGCT-8": 1,
+     "AAACCTGAGACTGGGT-7": 1,
+     "AAACCTGAGACTGTAA-2": 1,
+     "AAACCTGAGAGTGAGA-8": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 90380,
+    "distinct": 1,
+    "top": {
+     "Calu-3": 90380
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 90380,
+    "distinct": 1,
+    "top": {
+     "lung epithelial cells": 90380
+    }
+   },
+   "coverage": {
+    "kind": "categorical",
+    "n": 90380,
+    "distinct": 67647,
+    "top": {
+     "0": 16391,
+     "1.3333333333333333": 284,
+     "1.5": 195,
+     "1.375": 156,
+     "1.25": 148,
+     "1.4": 139,
+     "1.2": 117,
+     "1.2222222222222223": 110,
+     "1.3": 94,
+     "1.2857142857142858": 93,
+     "1.4444444444444444": 76,
+     "1.3636363636363635": 72
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 90380,
+    "distinct": 1,
+    "top": {
+     "lung adenocarcinoma and SARS-CoV-2": 90380
+    }
+   },
+   "gem_group": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 90380,
+    "sample_min": 1.0,
+    "sample_max": 8.0
+   },
+   "good_coverage": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 90380,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 90380,
+    "distinct": 35564,
+    "top": {
+     "<NA>": 16391,
+     "VAC14_+_70835011.23-P1P2_CR1-cs1": 588,
+     "CNBP_+_128902721.23-P1P2_CR1-cs1": 495,
+     "EXOC8_-_231473564.23-P1P2_CR1-cs1": 443,
+     "LDLR_-_11200228.23-P1P2_CR1-cs1": 396,
+     "TMEM106B_+_12250968.23-P1P2_CR1-cs1": 380,
+     "MBTPS2_-_21857794.23-P1P2_CR1-cs1": 366,
+     "C19orf66_-_10197533.23-P1P2_CR1-cs1": 329,
+     "TOM1_-_35695895.23-P1P2_CR1-cs1": 302,
+     "FYCO1_-_46037113.23-P1P2_CR1-cs1": 273,
+     "LDLR_+_11200273.23-P1P2_CR1-cs1": 271,
+     "MFSD12_+_3557566.23-P1P2_CR1-cs1": 264
+    }
+   },
+   "match_type": {
+    "kind": "categorical",
+    "n": 90380,
+    "distinct": 5,
+    "top": {
+     "exact_match": 27882,
+     "multiplet": 26429,
+     "no_match": 16391,
+     "scrambled_pair": 13591,
+     "likely_match": 6087
+    }
+   },
+   "matched_library_element": {
+    "kind": "categorical",
+    "n": 90380,
+    "distinct": 239,
+    "top": {
+     "<NA>": 56411,
+     "CRISPRi_239_VAC14": 588,
+     "CRISPRi_219_CNBP": 495,
+     "CRISPRi_222_EXOC8": 443,
+     "CRISPRi_226_LDLR": 396,
+     "CRISPRi_235_TMEM106B": 380,
+     "CRISPRi_228_MBTPS2": 366,
+     "CRISPRi_216_C19orf66": 329,
+     "CRISPRi_022_BRD2": 306,
+     "CRISPRi_237_TOM1": 302,
+     "CRISPRi_041_CTSL": 292,
+     "CRISPRi_225_FYCO1": 273
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 90380,
+    "sample_min": 116.0,
+    "sample_max": 121893.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 90380,
+    "sample_min": 83.0,
+    "sample_max": 8794.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 90380,
+    "sample_min": 0.0,
+    "sample_max": 156.0
+   },
+   "number_of_cells": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 90380,
+    "sample_min": 1.0,
+    "sample_max": 2.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 90380,
+    "distinct": 1,
+    "top": {
+     "human": 90380
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 90380,
+    "sample_min": 0.0,
+    "sample_max": 93.77115775220041
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 90380,
+    "sample_min": 0.4892966360856269,
+    "sample_max": 72.51845775225594
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 90380,
+    "distinct": 24195,
+    "top": {
+     "<NA>": 16391,
+     "control": 3536,
+     "VAC14": 826,
+     "CNBP": 754,
+     "EXOC8": 742,
+     "LDLR": 700,
+     "TMEM106B": 672,
+     "MBTPS2": 607,
+     "C19orf66": 536,
+     "FYCO1": 472,
+     "MFSD12": 445,
+     "TOM1": 428
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 90380,
+    "distinct": 1,
+    "top": {
+     "CRISPR-cas9": 90380
+    }
+   },
+   "read_count": {
+    "kind": "categorical",
+    "n": 90380,
+    "distinct": 63467,
+    "top": {
+     "0": 16391,
+     "11": 231,
+     "15": 203,
+     "12": 198,
+     "13": 197,
+     "14": 170,
+     "16": 161,
+     "20": 138,
+     "18": 135,
+     "19": 131,
+     "17": 130,
+     "22": 109
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 90380,
+    "distinct": 1,
+    "top": {
+     "cell_line": 90380
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "ensembl_id",
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 33538,
+  "first": [
+   "MIR1302-2HG",
+   "FAM138A",
+   "OR4F5",
+   "AL627309.1",
+   "AL627309.3"
+  ]
+ },
+ "seconds": 27.9,
+ "fetched_bytes": 33786627,
+ "id": "scp_SunshineHein2023"
+}

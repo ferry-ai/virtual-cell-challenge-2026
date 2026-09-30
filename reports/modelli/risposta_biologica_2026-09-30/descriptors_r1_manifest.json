@@ -1,0 +1,143 @@
+{
+ "what": "biological descriptors of every official-axis gene, rows in genes.txt order",
+ "shape": [
+  18533,
+  284
+ ],
+ "layout": [
+  {
+   "block": "go",
+   "start": 0,
+   "stop": 128
+  },
+  {
+   "block": "string",
+   "start": 128,
+   "stop": 193
+  },
+  {
+   "block": "hgnc",
+   "start": 193,
+   "stop": 218
+  },
+  {
+   "block": "coords",
+   "start": 218,
+   "stop": 247
+  },
+  {
+   "block": "depmap",
+   "start": 247,
+   "stop": 279
+  },
+  {
+   "block": "go_present",
+   "start": 279,
+   "stop": 280
+  },
+  {
+   "block": "string_present",
+   "start": 280,
+   "stop": 281
+  },
+  {
+   "block": "hgnc_present",
+   "start": 281,
+   "stop": 282
+  },
+  {
+   "block": "coords_present",
+   "start": 282,
+   "stop": 283
+  },
+  {
+   "block": "depmap_present",
+   "start": 283,
+   "stop": 284
+  }
+ ],
+ "blocks": {
+  "go": {
+   "terms_kept": 11113,
+   "genes_annotated": 17591,
+   "dims": 128,
+   "genes_covered": 17591
+  },
+  "string": {
+   "edges": 60872,
+   "dims": 65,
+   "genes_covered": 9989
+  },
+  "hgnc": {
+   "groups": 2140,
+   "locus_types": [
+    "RNA, long non-coding",
+    "T cell receptor gene",
+    "complex locus constituent",
+    "endogenous retrovirus",
+    "gene with protein product",
+    "immunoglobulin gene",
+    "pseudogene",
+    "readthrough",
+    "unknown"
+   ],
+   "dims": 25,
+   "genes_covered": 17920
+  },
+  "coords": {
+   "genes_with_coordinates": 18447,
+   "dims": 29,
+   "genes_covered": 18447
+  },
+  "depmap": {
+   "lines": 1673,
+   "genes_in_file": 18176,
+   "dims": 32,
+   "genes_covered": 18176
+  }
+ },
+ "sources": {
+  "axis": {
+   "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\gene_names.csv",
+   "bytes": 119295,
+   "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  "goa": {
+   "path": "C:\\Users\\ferra\\vcc2026-data\\interim\\encoder_inputs_2026-09-14\\goa_human_gaf",
+   "bytes": 11020779,
+   "sha256": "92504b0208fc37d1b652beaab883298c169b0be342888b91924975a49778cfdb"
+  },
+  "obo": {
+   "path": "C:\\Users\\ferra\\vcc2026-data\\interim\\encoder_inputs_2026-09-14\\go_basic_obo",
+   "bytes": 32227785,
+   "sha256": "b08d45b268b8c24ccb2513dbbbc7d4df9f6521c099b413f79eb31e06e0fa3bcc"
+  },
+  "string_links": {
+   "path": "C:\\Users\\ferra\\vcc2026-data\\interim\\encoder_inputs_2026-09-14\\string_physical_links",
+   "bytes": 8954065,
+   "sha256": "1ca87209a93cf7685e9c2997fbcfbfc69fedc6a803ccc1df917318a651df0823"
+  },
+  "string_info": {
+   "path": "C:\\Users\\ferra\\vcc2026-data\\interim\\encoder_inputs_2026-09-14\\string_protein_info",
+   "bytes": 1970090,
+   "sha256": "144de4b0d98c6a7dfde6ddc2591cf88657f27b989eadff4f501450c3ed1f0f1c"
+  },
+  "hgnc": {
+   "path": "C:\\Users\\ferra\\vcc2026-data\\interim\\encoder_inputs_2026-09-14\\hgnc_complete_set",
+   "bytes": 16913731,
+   "sha256": "9e07bb49393c12aca8bc931a4349010404c24994a8a58745c14676b8c2b74492"
+  },
+  "coords": {
+   "path": "C:\\Users\\ferra\\vcc2026-data\\external\\annotation\\gene_coordinates_gencode_v50.tsv",
+   "bytes": 1718961,
+   "sha256": "065906f739094c6ae572d21c0b14e7b8f2d4daa0284cdb68864ed27b9caba34c"
+  },
+  "depmap_expression": {
+   "path": "C:\\Users\\ferra\\vcc2026-data\\external\\depmap_24q4\\OmicsExpressionProteinCodingGenesTPMLogp1.csv",
+   "bytes": 506628654,
+   "sha256": "2a71dc94110efcc0221eae821bb93a9f03b54bea16f005818911a09d33383d56"
+  }
+ },
+ "sha256_descriptors": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80",
+ "leakage": "annotations, a protein network, genomic coordinates and basal expression only: no perturbation outcome"
+}

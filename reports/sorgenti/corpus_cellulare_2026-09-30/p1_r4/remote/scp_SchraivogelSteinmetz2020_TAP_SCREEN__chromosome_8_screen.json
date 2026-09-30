@@ -1,0 +1,219 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_8_screen.h5ad/content",
+ "bytes": 21015792,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   112260,
+   4191
+  ],
+  "dtype": "float32",
+  "stored": 6866781,
+  "compression": "gzip",
+  "chunks": [
+   13412
+  ],
+  "sample_integer": true,
+  "sample_max": 10396.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "celltype",
+   "disease",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "replicate",
+   "tissue_type"
+  ],
+  "describe": {
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 112260,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 112260,
+    "distinct": 112260,
+    "top": {
+     "AACCAACGAAACCTGAGCCCAACC-sample_11": 1,
+     "AACCAACGAAACCTGAGTACCGGA-sample_11": 1,
+     "AACCAACGAAACCTGAGTGCTGCC-sample_11": 1,
+     "AACCAACGAAACCTGCACAAGTAA-sample_11": 1,
+     "AACCAACGAAACCTGCACGGTAGA-sample_11": 1,
+     "AACCAACGAAACCTGCAGATAATG-sample_11": 1,
+     "AACCAACGAAACCTGCAGCCAATT-sample_11": 1,
+     "AACCAACGAAACCTGCAGGACCCT-sample_11": 1,
+     "AACCAACGAAACCTGCAGGGTTAG-sample_11": 1,
+     "AACCAACGAAACCTGCATCCGCGA-sample_11": 1,
+     "AACCAACGAAACCTGCATTGCGGC-sample_11": 1,
+     "AACCAACGAAACCTGGTAAGAGGA-sample_11": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 112260,
+    "distinct": 1,
+    "top": {
+     "K562": 112260
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 112260,
+    "distinct": 1,
+    "top": {
+     "lymphoblasts": 112260
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 112260,
+    "distinct": 1,
+    "top": {
+     "chronic myelogenous leukemia": 112260
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 112260,
+    "sample_min": 82.0,
+    "sample_max": 11152.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 112260,
+    "sample_min": 7.0,
+    "sample_max": 314.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 112260,
+    "sample_min": 1.0,
+    "sample_max": 3.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 112260,
+    "distinct": 1,
+    "top": {
+     "human": 112260
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 112260,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 112260,
+    "sample_min": 0.0,
+    "sample_max": 24.88479232788086
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 112260,
+    "distinct": 4115,
+    "top": {
+     "multiplet": 20619,
+     "control": 2926,
+     "non-targeting_00025": 143,
+     "chr8:126984155-126984525_14_+": 124,
+     "non-targeting_00028": 121,
+     "FAM83A_+_124194986-P1P2": 116,
+     "non-targeting_00021": 108,
+     "chr8:116660379-116660747_54_+": 103,
+     "non-targeting_00018": 100,
+     "OXR1_+_107670422.23": 97,
+     "chr8:103549732-103550037_17_+": 97,
+     "chr8:95540921-95541327_9_+": 97
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 112260,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 112260
+    }
+   },
+   "replicate": {
+    "kind": "categorical",
+    "n": 112260,
+    "distinct": 14,
+    "top": {
+     "sample_6": 10120,
+     "sample_3": 9633,
+     "sample_10": 9517,
+     "sample_5": 9460,
+     "sample_9": 8957,
+     "sample_2": 8815,
+     "sample_11": 8717,
+     "sample_8": 8467,
+     "sample_4": 8432,
+     "sample_7": 8194,
+     "sample_13": 8139,
+     "sample_1": 5344
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 112260,
+    "distinct": 1,
+    "top": {
+     "cell_line": 112260
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 4191,
+  "first": [
+   "ANGPT1",
+   "ANKRD46",
+   "ASAP1",
+   "ATAD2",
+   "ATP6V1C1"
+  ]
+ },
+ "seconds": 10.5,
+ "fetched_bytes": 11578608,
+ "id": "scp_SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_8_screen"
+}

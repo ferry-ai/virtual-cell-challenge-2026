@@ -1,0 +1,516 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/McFarlandTsherniak2020.h5ad/content",
+ "bytes": 1459410830,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   182875,
+   32738
+  ],
+  "dtype": "float32",
+  "stored": 711380841,
+  "compression": "gzip",
+  "chunks": [
+   43420
+  ],
+  "sample_integer": true,
+  "sample_max": 33.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "DepMap_ID",
+   "_index",
+   "cancer",
+   "cell_det_rate",
+   "cell_line",
+   "cell_quality",
+   "channel",
+   "chembl-ID",
+   "disease",
+   "dose_unit",
+   "dose_value",
+   "doublet_CL1",
+   "doublet_CL2",
+   "doublet_GMM_prob",
+   "doublet_dev_imp",
+   "doublet_z_margin",
+   "hash_assignment",
+   "hash_tag",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "num_SNPs",
+   "organism",
+   "percent.mito",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "sex",
+   "singlet_ID",
+   "singlet_dev",
+   "singlet_dev_z",
+   "singlet_margin",
+   "singlet_z_margin",
+   "time",
+   "tissue_type",
+   "tot_reads"
+  ],
+  "describe": {
+   "DepMap_ID": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 209,
+    "top": {
+     "ACH-000463": 6867,
+     "ACH-000717": 4625,
+     "ACH-000189": 3862,
+     "ACH-000228": 3279,
+     "ACH-000397": 3172,
+     "ACH-000977": 2979,
+     "ACH-001190": 2690,
+     "ACH-000423": 2482,
+     "ACH-000174": 2474,
+     "ACH-000713": 2442,
+     "ACH-000834": 2441,
+     "ACH-000764": 2418
+    }
+   },
+   "_index": {
+    "kind": "strings",
+    "n": 182875,
+    "distinct": 182875,
+    "top": {
+     "AAACCCAAGAAGCCTG": 1,
+     "AAACCCAAGACAGTCG": 1,
+     "AAACCCAAGACCATTC": 1,
+     "AAACCCAAGACTCGAG": 1,
+     "AAACCCAAGAGCTGCA": 1,
+     "AAACCCAAGATGAAGG": 1,
+     "AAACCCAAGCAAATCA": 1,
+     "AAACCCAAGCACTTTG": 1,
+     "AAACCCAAGCATACTC": 1,
+     "AAACCCAAGCCACTCG": 1,
+     "AAACCCAAGCCTGCCA": 1,
+     "AAACCCAAGCGTACAG": 1
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 182875,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_det_rate": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182875,
+    "sample_min": 0.0009190331770976932,
+    "sample_max": 0.30781484544925397
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 209,
+    "top": {
+     "NCIH460": 6867,
+     "COLO680N": 4625,
+     "RCC10RGB": 3862,
+     "BICR31": 3279,
+     "TEN": 3172,
+     "LNCAPCLONEFGC": 2979,
+     "SKMEL2": 2690,
+     "SKMEL3": 2482,
+     "CAL62": 2474,
+     "CAOV3": 2442,
+     "UMUC1": 2441,
+     "SH10TC": 2418
+    }
+   },
+   "cell_quality": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 5,
+    "top": {
+     "normal": 155164,
+     "doublet": 16775,
+     "low_quality": 7213,
+     "empty_droplet": 3672,
+     "low_confidence": 51
+    }
+   },
+   "channel": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 17,
+    "top": {
+     "nan": 124991,
+     "A": 10822,
+     "B": 9206,
+     "4.0": 5387,
+     "10": 5142,
+     "9": 4378,
+     "5.0": 3378,
+     "6": 2828,
+     "5": 2763,
+     "2": 2147,
+     "2.0": 2142,
+     "1": 1923
+    }
+   },
+   "chembl-ID": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 11,
+    "top": {
+     "<NA>": 84105,
+     "CHEMBL2103875": 41300,
+     "CHEMBL2028663": 12814,
+     "CHEMBL443684": 9623,
+     "CHEMBL4297482": 7098,
+     "CHEMBL2402737": 5990,
+     "CHEMBL325041": 5150,
+     "CHEMBL3544911": 3972,
+     "CHEMBL1908360": 3825,
+     "CHEMBL1173655": 3807,
+     "CHEMBL2387080": 3098,
+     "CHEMBL888": 2093
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 21,
+    "top": {
+     "lung cancer": 47336,
+     "skin cancer": 15149,
+     "ovarian cancer": 14572,
+     "brain cancer": 13159,
+     "colon/colorectal cancer": 10516,
+     "pancreatic cancer": 9810,
+     "kidney cancer": 8691,
+     "bladder cancer": 8562,
+     "head and neck cancer": 8461,
+     "esophageal cancer": 8146,
+     "gastric cancer": 7427,
+     "breast cancer": 7221
+    }
+   },
+   "dose_unit": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 2,
+    "top": {
+     "\u00b5M": 154710,
+     "nan": 28165
+    }
+   },
+   "dose_value": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182875,
+    "sample_min": 0.0,
+    "sample_max": 10.0
+   },
+   "doublet_CL1": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 212,
+    "top": {
+     "NCIH460_LUNG": 6851,
+     "COLO680N_OESOPHAGUS": 4627,
+     "RCC10RGB_KIDNEY": 3852,
+     "BICR31_UPPER_AERODIGESTIVE_TRACT": 3275,
+     "TEN_ENDOMETRIUM": 3168,
+     "LNCAPCLONEFGC_PROSTATE": 2980,
+     "SKMEL2_SKIN": 2693,
+     "SKMEL3_SKIN": 2480,
+     "UMUC1_URINARY_TRACT": 2456,
+     "CAL62_THYROID": 2453,
+     "CAOV3_OVARY": 2438,
+     "SH10TC_STOMACH": 2415
+    }
+   },
+   "doublet_CL2": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 310,
+    "top": {
+     "SKMEL2_SKIN": 6692,
+     "NCIH2347_LUNG": 4017,
+     "COLO680N_OESOPHAGUS": 3240,
+     "LS1034_LARGE_INTESTINE": 3211,
+     "RCC10RGB_KIDNEY": 2918,
+     "BT474_BREAST": 2883,
+     "SNU1079_BILIARY_TRACT": 2761,
+     "IGROV1_OVARY": 2688,
+     "CAL62_THYROID": 2629,
+     "COV434_OVARY": 2585,
+     "IALM_LUNG": 2422,
+     "TEN_ENDOMETRIUM": 2395
+    }
+   },
+   "doublet_GMM_prob": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182875,
+    "sample_min": 8.629804981620947e-35,
+    "sample_max": 1.0
+   },
+   "doublet_dev_imp": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182875,
+    "sample_min": -1.2364886892157756e-11,
+    "sample_max": 0.5333640571357186
+   },
+   "doublet_z_margin": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182875,
+    "sample_min": 0.0,
+    "sample_max": 5.742818921073214
+   },
+   "hash_assignment": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 284,
+    "top": {
+     "nan": 162983,
+     "DMSO_48hr": 2942,
+     "Tram_24hr": 2080,
+     "Tram_48hr": 1876,
+     "Untreated_48hr": 1711,
+     "DMSO_24hr": 1545,
+     "Tram_6hr": 1347,
+     "DMSO_3hr": 1329,
+     "DMSO_12hr": 1262,
+     "Tram_12hr": 1168,
+     "DMSO_6hr": 1156,
+     "Tram_3hr": 1137
+    }
+   },
+   "hash_tag": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 14,
+    "top": {
+     "nan": 162847,
+     "DMSO_48hr": 2942,
+     "multiplet": 2339,
+     "Tram_24hr": 2080,
+     "Tram_48hr": 1876,
+     "Untreated_48hr": 1711,
+     "DMSO_24hr": 1545,
+     "Tram_6hr": 1347,
+     "DMSO_3hr": 1329,
+     "DMSO_12hr": 1262,
+     "Tram_12hr": 1168,
+     "DMSO_6hr": 1156
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182875,
+    "sample_min": 500.0,
+    "sample_max": 187561.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 182875,
+    "sample_min": 30.0,
+    "sample_max": 10060.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 182875,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "num_SNPs": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 182875,
+    "sample_min": 4.0,
+    "sample_max": 4316.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 1,
+    "top": {
+     "human": 182875
+    }
+   },
+   "percent.mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182875,
+    "sample_min": 0.0,
+    "sample_max": 99.15148490142252
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182875,
+    "sample_min": 0.0,
+    "sample_max": 99.15148490142252
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182875,
+    "sample_min": 0.10178117048346055,
+    "sample_max": 76.8228389535462
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 18,
+    "top": {
+     "Trametinib": 41300,
+     "control": 29143,
+     "BRD3379": 21206,
+     "Dabrafenib": 12814,
+     "Navitoclax": 9623,
+     "sgLACZ": 7567,
+     "sgOR2J2": 7250,
+     "AZD5591": 7098,
+     "sgGPX4-2": 6831,
+     "sgGPX4-1": 6517,
+     "Idasanutlin": 5990,
+     "JQ1": 5591
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 2,
+    "top": {
+     "drug": 154710,
+     "CRISPR": 28165
+    }
+   },
+   "sex": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 3,
+    "top": {
+     "Male": 98511,
+     "Female": 77709,
+     "Unknown": 6655
+    }
+   },
+   "singlet_ID": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 209,
+    "top": {
+     "NCIH460_LUNG": 6867,
+     "COLO680N_OESOPHAGUS": 4625,
+     "RCC10RGB_KIDNEY": 3862,
+     "BICR31_UPPER_AERODIGESTIVE_TRACT": 3279,
+     "TEN_ENDOMETRIUM": 3172,
+     "LNCAPCLONEFGC_PROSTATE": 2979,
+     "SKMEL2_SKIN": 2690,
+     "SKMEL3_SKIN": 2482,
+     "CAL62_THYROID": 2474,
+     "CAOV3_OVARY": 2442,
+     "UMUC1_URINARY_TRACT": 2441,
+     "SH10TC_STOMACH": 2418
+    }
+   },
+   "singlet_dev": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182875,
+    "sample_min": -Infinity,
+    "sample_max": 0.999999999998289
+   },
+   "singlet_dev_z": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182875,
+    "sample_min": 0.3770074892264744,
+    "sample_max": 46.99969346743328
+   },
+   "singlet_margin": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182875,
+    "sample_min": 1.1102230246251563e-15,
+    "sample_max": 0.7819016047813544
+   },
+   "singlet_z_margin": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182875,
+    "sample_min": 3.1086244689504387e-15,
+    "sample_max": 47.12882567988251
+   },
+   "time": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 4,
+    "top": {
+     "24": 101610,
+     "6": 33072,
+     "72, 96": 28165,
+     "3, 6, 12, 24, 48": 20028
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 182875,
+    "distinct": 1,
+    "top": {
+     "cell_line": 182875
+    }
+   },
+   "tot_reads": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 182875,
+    "sample_min": 8.0,
+    "sample_max": 13723.0
+   }
+  }
+ },
+ "var": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "ensembl_id",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 32738,
+  "first": [
+   "MIR1302-10",
+   "FAM138A",
+   "OR4F5",
+   "RP11-34P13.7",
+   "RP11-34P13.8"
+  ]
+ },
+ "seconds": 33.8,
+ "fetched_bytes": 32298894,
+ "id": "scp_McFarlandTsherniak2020"
+}

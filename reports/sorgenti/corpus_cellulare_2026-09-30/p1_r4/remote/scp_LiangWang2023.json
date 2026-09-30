@@ -1,0 +1,266 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/LiangWang2023.h5ad/content",
+ "bytes": 364166137,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   41383,
+   17444
+  ],
+  "dtype": "int64",
+  "stored": 157665606,
+  "compression": "gzip",
+  "chunks": [
+   19247
+  ],
+  "sample_integer": true,
+  "sample_max": 1530.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "celltype",
+   "disease",
+   "guide_id",
+   "guide_sequence",
+   "medium",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "sample",
+   "tissue_type"
+  ],
+  "describe": {
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 41383,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 41383,
+    "distinct": 41383,
+    "top": {
+     "DM2_1_AAACCTGAGAGCTGCA": 1,
+     "DM2_1_AAACCTGCAAGTACCT": 1,
+     "DM2_1_AAACCTGCAAGTTCTG": 1,
+     "DM2_1_AAACCTGCAGATTGCT": 1,
+     "DM2_1_AAACCTGCATGATCCA": 1,
+     "DM2_1_AAACCTGCATTCCTGC": 1,
+     "DM2_1_AAACCTGGTAGATTAG": 1,
+     "DM2_1_AAACCTGGTCCGAATT": 1,
+     "DM2_1_AAACCTGGTGCTTCTC": 1,
+     "DM2_1_AAACCTGGTGTGTGCC": 1,
+     "DM2_1_AAACCTGTCTCTGCTG": 1,
+     "DM2_1_AAACGGGAGTACGATA": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 41383,
+    "distinct": 1,
+    "top": {
+     "intrahepatic cholangiocyte organoids": 41383
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 41383,
+    "distinct": 1,
+    "top": {
+     "hepatocyte": 41383
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 41383,
+    "distinct": 1,
+    "top": {
+     "healthy": 41383
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 41383,
+    "distinct": 236,
+    "top": {
+     "Six5-2": 745,
+     "Tead2-2": 719,
+     "Relb-2": 686,
+     "Tet2-2": 590,
+     "non_target-1": 585,
+     "Onecut1-3": 578,
+     "Dnmt3b-1": 547,
+     "Tet3-3": 544,
+     "Nfe2-3": 540,
+     "Dnmt3b-3": 508,
+     "Spic-3": 500,
+     "Klf1-2": 472
+    }
+   },
+   "guide_sequence": {
+    "kind": "categorical",
+    "n": 41383,
+    "distinct": 236,
+    "top": {
+     "ACCTCGGTCACGGTCTCCCG": 745,
+     "CACTCTGGAACATTCCATGG": 719,
+     "GCCTCCTATCGGGACCAGCA": 686,
+     "CTCACAATAATACCCAAGGG": 590,
+     "AAGGCGTAAACGAGTACACG": 585,
+     "CCACTATGCTCATCCCGGCG": 578,
+     "CCATGTGCAGGAGTACCCTG": 547,
+     "CCCGGATAGAAGCTACTGTG": 544,
+     "TGGTATGGCTACATTACCAT": 540,
+     "GGAATAGGTGACCTCGTGTG": 508,
+     "CCCTTCTTCCAGCAAAAGGG": 500,
+     "GCTCGCGAGTCGGAGTACGA": 472
+    }
+   },
+   "medium": {
+    "kind": "categorical",
+    "n": 41383,
+    "distinct": 2,
+    "top": {
+     "Differentiation Medium": 30217,
+     "Expansion Medium": 11166
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 41383,
+    "sample_min": 513.0,
+    "sample_max": 72978.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 41383,
+    "sample_min": 362.0,
+    "sample_max": 5998.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 41383,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 41383,
+    "distinct": 1,
+    "top": {
+     "mouse": 41383
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 41383,
+    "sample_min": 0.049152125829442124,
+    "sample_max": 9.992429977289932
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 41383,
+    "sample_min": 2.8208744710860367,
+    "sample_max": 52.12307692307692
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 41383,
+    "distinct": 78,
+    "top": {
+     "control": 2459,
+     "Tead2": 1469,
+     "Dnmt3b": 1463,
+     "Tet3": 1202,
+     "Six5": 1153,
+     "Tet2": 1089,
+     "Spic": 979,
+     "Relb": 932,
+     "Cebpd": 904,
+     "Onecut1": 898,
+     "Klf4": 847,
+     "Arid3a": 844
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 41383,
+    "distinct": 1,
+    "top": {
+     "CRISPR-cas9": 41383
+    }
+   },
+   "sample": {
+    "kind": "categorical",
+    "n": 41383,
+    "distinct": 9,
+    "top": {
+     "DM2_1": 5596,
+     "DM2_5": 5251,
+     "DM2_2": 5234,
+     "DM2_4": 5062,
+     "DM2_6": 4991,
+     "EM2_3": 4679,
+     "EM2_1": 4497,
+     "DM2_3": 4083,
+     "EM2_2": 1990
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 41383,
+    "distinct": 1,
+    "top": {
+     "organoid": 41383
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 17444,
+  "first": [
+   "Xkr4",
+   "Rp1",
+   "Sox17",
+   "Mrpl15",
+   "Lypla1"
+  ]
+ },
+ "seconds": 6.9,
+ "fetched_bytes": 7650297,
+ "id": "scp_LiangWang2023"
+}

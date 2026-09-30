@@ -1,0 +1,361 @@
+{
+ "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE345nnn/GSE345058/suppl/GSE345058_SC_raw_normalized_counts.h5ad",
+ "bytes": 25049707311,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   606075,
+   29892
+  ],
+  "dtype": "float32",
+  "stored": 3598670133,
+  "compression": "gzip",
+  "chunks": [
+   54912
+  ],
+  "sample_integer": false,
+  "sample_max": 5.6396355628967285
+ },
+ "layers": {
+  "log_normalized": {
+   "format": "csr_matrix",
+   "shape": [
+    606075,
+    29892
+   ],
+   "dtype": "float32",
+   "stored": 3598670133,
+   "compression": "gzip",
+   "chunks": [
+    54912
+   ],
+   "sample_integer": false,
+   "sample_max": 5.6396355628967285
+  },
+  "raw_counts": {
+   "format": "csr_matrix",
+   "shape": [
+    606075,
+    29892
+   ],
+   "dtype": "float32",
+   "stored": 3598670133,
+   "compression": "gzip",
+   "chunks": [
+    54912
+   ],
+   "sample_integer": true,
+   "sample_max": 1362.0
+  }
+ },
+ "obs": {
+  "index": "cell_id",
+  "columns": [
+   "Batch",
+   "Condition",
+   "G2M_score",
+   "Lane",
+   "Perturbation",
+   "S_score",
+   "barcode_counts",
+   "cell_barcode",
+   "cell_id",
+   "full_sample",
+   "go",
+   "n_genes_by_counts",
+   "pct_counts_mt",
+   "phase",
+   "prefix",
+   "react",
+   "sgRNA",
+   "total_counts",
+   "total_counts_CAS9"
+  ],
+  "describe": {
+   "Batch": {
+    "kind": "categorical",
+    "n": 606075,
+    "distinct": 4,
+    "top": {
+     "batch1": 163833,
+     "batch3": 154614,
+     "batch2": 145974,
+     "batch4": 141654
+    }
+   },
+   "Condition": {
+    "kind": "categorical",
+    "n": 606075,
+    "distinct": 2,
+    "top": {
+     "Perturbed": 560755,
+     "Nontargeting": 45320
+    }
+   },
+   "G2M_score": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 606075,
+    "sample_min": -0.4322594089688326,
+    "sample_max": 1.0624408882163148
+   },
+   "Lane": {
+    "kind": "categorical",
+    "n": 606075,
+    "distinct": 32,
+    "top": {
+     "Lane1-1": 21554,
+     "Lane6-1": 21194,
+     "Lane7-1": 21080,
+     "Lane3-1": 20625,
+     "Lane5-1": 20451,
+     "Lane8-1": 20357,
+     "Lane1-3": 20043,
+     "Lane4-1": 19913,
+     "Lane7-3": 19553,
+     "Lane8-3": 19514,
+     "Lane3-3": 19505,
+     "Lane6-3": 19482
+    }
+   },
+   "Perturbation": {
+    "kind": "categorical",
+    "n": 606075,
+    "distinct": 1001,
+    "top": {
+     "Nontargeting": 45320,
+     "MXRA8": 1196,
+     "ATAD3A": 1110,
+     "ARGLU1": 1019,
+     "CHST12": 1018,
+     "ADAT3": 998,
+     "SLC39A7": 995,
+     "SALL3": 976,
+     "DUT": 972,
+     "HIC2": 962,
+     "SRSF8": 949,
+     "ALG12": 946
+    }
+   },
+   "S_score": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 606075,
+    "sample_min": -0.36909989104639407,
+    "sample_max": 0.5665345144367029
+   },
+   "barcode_counts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 606075,
+    "sample_min": 3.0,
+    "sample_max": 148.0
+   },
+   "cell_barcode": {
+    "kind": "categorical",
+    "n": 606075,
+    "distinct": 559858,
+    "top": {
+     "GGATAATGTATGGACA": 5,
+     "CTAATGGTCTCATCGT": 5,
+     "CGTTATAGTTTGACCG": 5,
+     "ACGTGGTTCCTCGACC": 5,
+     "TATGGCTGTTAGGCCC": 4,
+     "TCAAAGCCACCATTGC": 4,
+     "TCTACTATCGATGGCT": 4,
+     "ACCACAGCAGCACCAA": 4,
+     "TACATCCTCCACCTTG": 4,
+     "GTTGCCAGTCAGCGAG": 4,
+     "GTTCTAAGTTTGCAGT": 4,
+     "GTTCAGGCATTACGTT": 4
+    }
+   },
+   "cell_id": {
+    "kind": "strings",
+    "n": 606075,
+    "distinct": 606075,
+    "top": {
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane1-1_AAACCAAAGATTACGT": 1,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane1-1_AAACCAAAGCGCCAAT": 1,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane1-1_AAACCAAAGGCGATGA": 1,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane1-1_AAACCAAAGTGAACCC": 1,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane1-1_AAACCATTCGACCAAC": 1,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane1-1_AAACCCGCAATCAAGC": 1,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane1-1_AAACCCGCAATGAAGG": 1,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane1-1_AAACCCGCACAGCCAA": 1,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane1-1_AAACCCGCACATGCCT": 1,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane1-1_AAACCCGCAGGGACAG": 1,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane1-1_AAACCCGCATGGCTAG": 1,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane1-1_AAACCCTGTAGGTTGA": 1
+    }
+   },
+   "full_sample": {
+    "kind": "categorical",
+    "n": 606075,
+    "distinct": 32,
+    "top": {
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane1-1": 21554,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane6-1": 21194,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane7-1": 21080,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane3-1": 20625,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane5-1": 20451,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane8-1": 20357,
+     "A549_doxCas9_1000gene_batch3_cDNA_Lane1-3": 20043,
+     "A549_doxCas9_1000gene_batch1_cDNA_Lane4-1": 19913,
+     "A549_doxCas9_1000gene_batch3_cDNA_Lane7-3": 19553,
+     "A549_doxCas9_1000gene_batch3_cDNA_Lane8-3": 19514,
+     "A549_doxCas9_1000gene_batch3_cDNA_Lane3-3": 19505,
+     "A549_doxCas9_1000gene_batch3_cDNA_Lane6-3": 19482
+    }
+   },
+   "go": {
+    "kind": "categorical",
+    "n": 606075,
+    "distinct": 31,
+    "top": {
+     "NoneFound": 62719,
+     "mitochondrion": 36578,
+     "negative regulation of transcription by RNA polymerase II": 29027,
+     "protein-containing complex": 28580,
+     "Golgi membrane": 28020,
+     "metal ion binding": 24254,
+     "centrosome": 23607,
+     "plasma membrane": 22080,
+     "endoplasmic reticulum": 21949,
+     "positive regulation of DNA-templated transcription": 21845,
+     "focal adhesion": 21586,
+     "extracellular exosome": 20376
+    }
+   },
+   "n_genes_by_counts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 606075,
+    "sample_min": 3007.0,
+    "sample_max": 10725.0
+   },
+   "pct_counts_mt": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 606075,
+    "sample_min": 0.005955571308732033,
+    "sample_max": 9.994261741638184
+   },
+   "phase": {
+    "kind": "categorical",
+    "n": 606075,
+    "distinct": 3,
+    "top": {
+     "G1": 214772,
+     "G2M": 196885,
+     "S": 194418
+    }
+   },
+   "prefix": {
+    "kind": "categorical",
+    "n": 606075,
+    "distinct": 33,
+    "top": {
+     "Non": 478807,
+     "POL": 9658,
+     "SLC": 8106,
+     "EIF": 7674,
+     "SEC": 5910,
+     "RPS": 4843,
+     "CHM": 4702,
+     "ZNF": 4700,
+     "RAB": 4688,
+     "RBM": 4593,
+     "COP": 4539,
+     "EXO": 4460
+    }
+   },
+   "react": {
+    "kind": "categorical",
+    "n": 606075,
+    "distinct": 21,
+    "top": {
+     "NoneFound": 206558,
+     "Gene Expression": 61229,
+     "Metabolism": 40526,
+     "Metabolism of proteins": 25851,
+     "DNA Repair": 22907,
+     "Transmembrane transport of small molecules": 22814,
+     "Membrane Trafficking": 21754,
+     "Adaptive Immune System": 20728,
+     "Cellular responses to stress": 20290,
+     "Signal Transduction": 18199,
+     "Post-translational protein modification": 18040,
+     "Developmental Biology": 18017
+    }
+   },
+   "sgRNA": {
+    "kind": "categorical",
+    "n": 606075,
+    "distinct": 4211,
+    "top": {
+     "CCGGCCGGTCTCCCAACCCG": 403,
+     "GAAGTCGGCGACAGCGGCCG": 396,
+     "CGCGGCCCACGCGTCATCGC": 389,
+     "CCCGTGGCGTGCGCACCTGT": 385,
+     "ACGTCAACTGCTGGAGTGGG": 384,
+     "CCCGCCGAAGACCCTGCTTG": 382,
+     "CAGCGAGGGCCGCGACAGCG": 380,
+     "CGCTTCCGCGGCCCGTTCAA": 378,
+     "CGGCCGCGCCTTCACCACCA": 369,
+     "CAGTAAGCGGGCCCGGCCTG": 366,
+     "CCTCGTCCAGATTCCGGCGG": 364,
+     "CGCCGGCGACCTGACCAGTG": 360
+    }
+   },
+   "total_counts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 606075,
+    "sample_min": 8331.0,
+    "sample_max": 120830.0
+   },
+   "total_counts_CAS9": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 606075,
+    "sample_min": 0.0,
+    "sample_max": 1371.0
+   }
+  }
+ },
+ "var": {
+  "index": "index",
+  "columns": [
+   "G2_M",
+   "S",
+   "ensembl_id",
+   "gene_symbol",
+   "genome",
+   "highly_variable",
+   "index"
+  ],
+  "rows": 29892,
+  "first": [
+   "WASH7P",
+   "MIR1302-2HG",
+   "CICP27",
+   "WASH9P",
+   "LINC00115"
+  ]
+ },
+ "seconds": 127.8,
+ "fetched_bytes": 110375727,
+ "id": "a549_GSE345058_SC_raw_normalized_counts"
+}

@@ -1,0 +1,353 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/ZhaoSims2021.h5ad/content",
+ "bytes": 586888140,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   165748,
+   60725
+  ],
+  "dtype": "float32",
+  "stored": 244186275,
+  "compression": "gzip",
+  "chunks": [
+   29808
+  ],
+  "sample_integer": true,
+  "sample_max": 876.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "GEO",
+   "Sample",
+   "age",
+   "cancer",
+   "cell_barcode",
+   "celltype",
+   "chembl-ID",
+   "diagnosis",
+   "disease",
+   "dose_unit",
+   "dose_value",
+   "library",
+   "location",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "sample",
+   "sex",
+   "tissue",
+   "tissue_type"
+  ],
+  "describe": {
+   "GEO": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 43,
+    "top": {
+     "GSM4483761": 15894,
+     "GSM4483743": 14478,
+     "GSM4483760": 7782,
+     "GSM4483759": 7506,
+     "GSM4483752": 7366,
+     "GSM4483746": 7118,
+     "GSM4483750": 7085,
+     "GSM4483763": 6749,
+     "GSM4483744": 6669,
+     "GSM4483764": 6540,
+     "GSM4483765": 6120,
+     "GSM4483747": 4806
+    }
+   },
+   "Sample": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 43,
+    "top": {
+     "PW034-703": 15894,
+     "PW030-701": 14478,
+     "PW034-702": 7782,
+     "PW034-701": 7506,
+     "PW032-701": 7366,
+     "PW030-704": 7118,
+     "PW030-708": 7085,
+     "PW036-701": 6749,
+     "PW030-702": 6669,
+     "PW036-702": 6540,
+     "PW036-703": 6120,
+     "PW030-705": 4806
+    }
+   },
+   "age": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 165748,
+    "sample_min": 52.0,
+    "sample_max": 74.0
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 165748,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 165748,
+    "distinct": 165748,
+    "top": {
+     "AAAAAAAAATGG-PW036-705": 1,
+     "AAAAAAAATCGG-PW036-703": 1,
+     "AAAAAAAATTGT-PW034-703": 1,
+     "AAAAAAACGTCT-PW034-701": 1,
+     "AAAAAAACTCCT-PW036-701": 1,
+     "AAAAAAAGTTCA-PW030-706": 1,
+     "AAAAAAATGACA-PW034-702": 1,
+     "AAAAAACCAAGT-PW040-705": 1,
+     "AAAAAACCGTCG-PW036-705": 1,
+     "AAAAAACCTCGA-PW029-702": 1,
+     "AAAAAACGTCTT-PW030-702": 1,
+     "AAAAAACTCAAG-PW030-702": 1
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 1,
+    "top": {
+     "unknown": 165748
+    }
+   },
+   "chembl-ID": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 4,
+    "top": {
+     "<NA>": 98081,
+     "CHEMBL44657": 36513,
+     "CHEMBL483254": 22220,
+     "CHEMBL4297422": 4806,
+     "CHEMBL3414621": 4128
+    }
+   },
+   "diagnosis": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 2,
+    "top": {
+     "Glioblastoma, WHO Grade IV": 151621,
+     "Glioblastoma, WHO Grade IV, recurrent": 14127
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 1,
+    "top": {
+     "glioblastoma": 165748
+    }
+   },
+   "dose_unit": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 2,
+    "top": {
+     "<NA>": 88313,
+     "uM": 62861,
+     "nM": 14574
+    }
+   },
+   "dose_value": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 5,
+    "top": {
+     "<NA>": 88313,
+     "2.5": 36513,
+     "0.2": 22220,
+     "50": 8934,
+     "40": 7085,
+     "1.8": 2683
+    }
+   },
+   "library": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 43,
+    "top": {
+     "PW034-703": 15894,
+     "PW030-701": 14478,
+     "PW034-702": 7782,
+     "PW034-701": 7506,
+     "PW032-701": 7366,
+     "PW030-704": 7118,
+     "PW030-708": 7085,
+     "PW036-701": 6749,
+     "PW030-702": 6669,
+     "PW036-702": 6540,
+     "PW036-703": 6120,
+     "PW030-705": 4806
+    }
+   },
+   "location": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 6,
+    "top": {
+     "right parietal": 50909,
+     "right temporal": 38774,
+     "left parieto-occipital": 33861,
+     "left frontal": 21927,
+     "right frontal": 14127,
+     "splenial extension into left parietal": 6150
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 165748,
+    "sample_min": 101.0,
+    "sample_max": 72112.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 165748,
+    "sample_min": 58.0,
+    "sample_max": 9469.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 165748,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 1,
+    "top": {
+     "human": 165748
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 165748,
+    "sample_min": 0.0,
+    "sample_max": 19.035202026367188
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 165748,
+    "sample_min": 0.0,
+    "sample_max": 59.47452163696289
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 7,
+    "top": {
+     "control": 88313,
+     "etoposide": 36513,
+     "panobinostat": 22220,
+     "Ana-12": 7085,
+     "RO4929097": 4806,
+     "Tazemetostat": 4128,
+     "Ispenisib": 2683
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 1,
+    "top": {
+     "drug": 165748
+    }
+   },
+   "sample": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 10,
+    "top": {
+     "PW030": 50909,
+     "PW034": 33861,
+     "PW036": 22505,
+     "PW032": 20751,
+     "PW040": 16269,
+     "PW029": 6150,
+     "PW053": 5436,
+     "PW052": 4883,
+     "PW051": 3808,
+     "PW031": 1176
+    }
+   },
+   "sex": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 2,
+    "top": {
+     "m": 111610,
+     "f": 54138
+    }
+   },
+   "tissue": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 2,
+    "top": {
+     "acute slice culture of glioma resection": 143821,
+     "glioma surgical biopsy": 21927
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 165748,
+    "distinct": 1,
+    "top": {
+     "primary": 165748
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 60725,
+  "first": [
+   "TSPAN6",
+   "TNMD",
+   "DPM1",
+   "SCYL3",
+   "C1orf112"
+  ]
+ },
+ "seconds": 13.8,
+ "fetched_bytes": 15414220,
+ "id": "scp_ZhaoSims2021"
+}

@@ -34,10 +34,36 @@
   - Prova locale su ritagli dei file veri: tre schemi, parità esatte, ripresa con `--reuse`.
   - In coda sul Drive, con preflight locale passato: 086 J01 HepG2, 087 J03 Jurkat, 088 J02 HIPSCI,
     089 H1 2025 (parte dopo J02).
-- **Prossimo passo:** il proprietario avvia il dispatcher Colab (celle 1 e 2 del notebook). Poi si
-  leggono le ricevute dei job: `runs/rlab_setup_2026-09-30_r*/receipts/` e `complete.json` di ogni
-  uscita. Letti i primi manifest, si passa a P3, la politica di QC sulle misure per sorgente, e a
-  J04–J08: servono un via nuovo e, per J05–J06, un runtime con R.
+- **Svolta (30/09, 21:40–21:56):** su richiesta esplicita del proprietario (README del corpus §8) il
+  lavoro è una **rete addestrata direttamente sulle singole cellule** con tutti i dataset utilizzabili;
+  la rete sugli effetti pseudobulk non si estende. Colab fa la CPU (ingestione, due dispatcher: `runs/queue`
+  e `runs/queue2`), Kaggle la GPU: solo `davidmaisterx` ha GPU (2× T4) e internet, misurato con un
+  probe; `davideferrante11` e `davideferante` no, senza verifica del telefono.
+- **Passaggio di consegne (30/09, 22:55, Claude `ec2e5b07`).** Stato misurato e dove leggerlo:
+  - **Colab, coda 1:** J02 HIPSCI in corso (088); J06 K562 genome-wide da Drive in corso (096, pubblica
+    su `davideferrante11`: dopo il suo `complete.json` serve un job di sola pubblicazione verso
+    `davidmaisterx`, con `colab_job.py --publish-only ... --owner davidmaisterx --secrets rlab_secrets_davidmaisterx`).
+    J01 HepG2 e J03 Jurkat GSE249595 finiti; pubblicati su `davideferrante11`.
+  - **Colab, coda 2** (avviata 22:48): 098–099 ripubblicano J01 e J03 su `davidmaisterx`; 100 H1
+    train+validation dal bucket Arc, 101 Jurkat di Nadig, 102 K562 essenziali e RPE1 di Replogle, tutti letti
+    a intervalli di byte e pubblicati su `davidmaisterx`. Ricevute in `runs/rlab_setup_2026-09-30_r3/receipts/`.
+  - **Codice** (committato): adattatori `h5rows` e `mtx10x`/`hipsci`, `rlab_job.py`, `publish_kaggle.py`,
+    `colab_job.py` nel corpus; `cellnet.py`, `train_cellnet.py`, `target_descriptors.py` in
+    [risposta_biologica](../../reports/modelli/risposta_biologica_2026-09-30/). La rete: supervisione sui
+    conteggi grezzi (NB, maschere), miscela "risponde/sfugge" per cellula, contesto dai controlli, bersaglio
+    da descrittori biologici (GO, STRING, HGNC, GENCODE, DepMap; 18.533 × 284, in
+    `VCC2026_DATA_ROOT/processed/risposta_biologica_2026-09-30/descriptors_r1/`) con l'identità come braccio
+    di confronto; split C/T/J, controllo di non-contaminazione, QC e copertura distinta. Provata solo in
+    miniatura su CPU: **nessun training vero ancora eseguito**.
+  - **Inventario remoto:** `inspect_remote.py` ha misurato 72 dei 77 h5ad elencati in `urls_r4.json`
+    (scPerturb, H1, Southard, A549, KOLF, CD4) in `p1_r4/remote/`; manca la sintesi in catalogo.
+- **Prossimo passo:** (1) quando su `davidmaisterx` ci sono almeno HepG2, Jurkat di Nadig, K562 essenziali,
+  RPE1 e H1, un kernel Kaggle GPU con `train_cellnet.py` (dataset di codice con `cellnet.py`,
+  `train_cellnet.py`, `gene_names.csv`, descrittori), contesto tenuto fuori HepG2, bracci `descriptors` e
+  `identity`: è la **verifica tecnica**, non un risultato; (2) catalogo completo dalle misure remote,
+  con per ogni dataset stato, modalità, cellule, adattatore e motivo di esclusione; (3) adattatore CSC per
+  i file scPerturb ordinati per gene; (4) KOLF, CD4, Orion, Southard, A549 e Mixscale/VIPerturb (serve R)
+  a ondate; HIPSCI pubblicato per schermo quando J02 finisce.
 - **Dipendenze:** [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), [R-COMP](modello-competitivo.md), [ERRORI](../ERRORI.md), [PROCEDURE §3](../PROCEDURE.md#3-job-su-colab-e-kaggle). R-DATI e R-SWITCH contribuiscono ai blocchi qui definiti.
 - **Ambito:** nuova priorità operativa dentro R-COMP. La ricetta iPSC resta un confronto; non è il prerequisito della rete. Nessuna scadenza artificiale o arresto a fine giornata: l'ordine sotto indica dipendenze, non durata promessa.
 

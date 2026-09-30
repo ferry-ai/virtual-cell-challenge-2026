@@ -1,0 +1,229 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/SchiebingerLander2019_GSE115943.h5ad/content",
+ "bytes": 1640956517,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   259155,
+   27998
+  ],
+  "dtype": "float32",
+  "stored": 700860473,
+  "compression": "gzip",
+  "chunks": [
+   42778
+  ],
+  "sample_integer": true,
+  "sample_max": 5322.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "GSM",
+   "age",
+   "cancer",
+   "cell_barcode",
+   "celltype",
+   "disease",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "replicate",
+   "tissue_type"
+  ],
+  "describe": {
+   "GSM": {
+    "kind": "categorical",
+    "n": 259155,
+    "distinct": 126,
+    "top": {
+     "GSM3195672": 5554,
+     "GSM3195657": 5310,
+     "GSM3195772": 5247,
+     "GSM3195665": 4877,
+     "GSM3195662": 4626,
+     "GSM3195656": 4360,
+     "GSM3195773": 4340,
+     "GSM3195746": 4277,
+     "GSM3195755": 4094,
+     "GSM3195664": 4085,
+     "GSM3195668": 4018,
+     "GSM3195750": 3927
+    }
+   },
+   "age": {
+    "kind": "categorical",
+    "n": 259155,
+    "distinct": 38,
+    "top": {
+     "D8": 18510,
+     "iPSC": 14925,
+     "D15.5": 12530,
+     "D16.5": 11958,
+     "D16": 10169,
+     "D2": 9670,
+     "D4": 8962,
+     "D15": 8760,
+     "D6": 8422,
+     "D17.5": 8120,
+     "D17": 8110,
+     "D3.5": 8066
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 259155,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 259155,
+    "distinct": 259155,
+    "top": {
+     "AAACCTGAGAAACGAG-GSM3195665": 1,
+     "AAACCTGAGAAAGTGG-GSM3195669": 1,
+     "AAACCTGAGAACTCGG-GSM3195671": 1,
+     "AAACCTGAGAAGGGTA-GSM3195762": 1,
+     "AAACCTGAGAATAGGG-GSM3195654": 1,
+     "AAACCTGAGAATAGGG-GSM3195691": 1,
+     "AAACCTGAGAATCTCC-GSM3195770": 1,
+     "AAACCTGAGAATTGTG-GSM3195770": 1,
+     "AAACCTGAGACAAGCC-GSM3195689": 1,
+     "AAACCTGAGACACGAC-GSM3195651": 1,
+     "AAACCTGAGACAGGCT-GSM3195694": 1,
+     "AAACCTGAGACAGGCT-GSM3195772": 1
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 259155,
+    "distinct": 1,
+    "top": {
+     "mESCs": 259155
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 259155,
+    "distinct": 1,
+    "top": {
+     "healthy": 259155
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 259155,
+    "sample_min": 629.0,
+    "sample_max": 197528.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 259155,
+    "sample_min": 31.0,
+    "sample_max": 9251.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 259155,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 259155,
+    "distinct": 1,
+    "top": {
+     "mouse": 259155
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 259155,
+    "sample_min": 0.0,
+    "sample_max": 98.89764
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 259155,
+    "sample_min": 0.2624672,
+    "sample_max": 82.88673
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 259155,
+    "distinct": 3,
+    "top": {
+     "Dox": 102218,
+     "control": 78970,
+     "2i (LIF+MEKi+GSK3i)": 77967
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 259155,
+    "distinct": 1,
+    "top": {
+     "drug": 259155
+    }
+   },
+   "replicate": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 259155,
+    "sample_min": 1.0,
+    "sample_max": 2.0
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 259155,
+    "distinct": 1,
+    "top": {
+     "stem": 259155
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 27998,
+  "first": [
+   "Xkr4",
+   "Gm1992",
+   "Gm37381",
+   "Rp1",
+   "Rp1-1"
+  ]
+ },
+ "seconds": 20.5,
+ "fetched_bytes": 25100901,
+ "id": "scp_SchiebingerLander2019_GSE115943"
+}

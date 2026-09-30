@@ -1,0 +1,252 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/DatlingerBock2017.h5ad/content",
+ "bytes": 39085166,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   5905,
+   36722
+  ],
+  "dtype": "float32",
+  "stored": 16471085,
+  "compression": "gzip",
+  "chunks": [
+   16086
+  ],
+  "sample_integer": true,
+  "sample_max": 1037.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "celltype",
+   "disease",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_2",
+   "perturbation_type",
+   "perturbation_type_2",
+   "replicate",
+   "target",
+   "tissue_type"
+  ],
+  "describe": {
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 5905,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 5905,
+    "distinct": 5905,
+    "top": {
+     "AAAAAACGTAGG": 1,
+     "AAAAACAACTTT": 1,
+     "AAAAAGGTAATC": 1,
+     "AAAAATTTGGCC": 1,
+     "AAAACCGGAGAT": 1,
+     "AAAACCGTATCG": 1,
+     "AAAACTAAGTAC": 1,
+     "AAAACTTACGCN": 1,
+     "AAAAGCATGAAA": 1,
+     "AAAAGTGAGTTT": 1,
+     "AAAATCTACTCT": 1,
+     "AAAATCTGACCA": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 5905,
+    "distinct": 1,
+    "top": {
+     "Jurkat cells": 5905
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 5905,
+    "distinct": 1,
+    "top": {
+     "T cells": 5905
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 5905,
+    "distinct": 1,
+    "top": {
+     "acute T cell leukemia": 5905
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 5905,
+    "sample_min": 607.0,
+    "sample_max": 57146.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 5905,
+    "sample_min": 500.0,
+    "sample_max": 8442.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 5905,
+    "sample_min": 1.0,
+    "sample_max": 4.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 5905,
+    "distinct": 1,
+    "top": {
+     "human": 5905
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 5905,
+    "sample_min": 0.0,
+    "sample_max": 46.27702331542969
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 5905,
+    "sample_min": 0.5992010831832886,
+    "sample_max": 34.29895782470703
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 5905,
+    "distinct": 97,
+    "top": {
+     "control": 1320,
+     "Tcrlibrary_REL_2": 105,
+     "Tcrlibrary_EGR1_2": 95,
+     "Tcrlibrary_NFKB1_1": 91,
+     "Tcrlibrary_FOS_1": 90,
+     "Tcrlibrary_NFATC1_2": 89,
+     "Tcrlibrary_BACH2_2": 88,
+     "Tcrlibrary_NFATC1_3": 87,
+     "Tcrlibrary_FOS_2": 84,
+     "Tcrlibrary_PTPN11_2": 83,
+     "Tcrlibrary_JUNB_1": 81,
+     "Tcrlibrary_EGR4_2": 81
+    }
+   },
+   "perturbation_2": {
+    "kind": "categorical",
+    "n": 5905,
+    "distinct": 2,
+    "top": {
+     "stimulated": 3259,
+     "unstimulated": 2646
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 5905,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 5905
+    }
+   },
+   "perturbation_type_2": {
+    "kind": "categorical",
+    "n": 5905,
+    "distinct": 1,
+    "top": {
+     "TCR stimulation": 5905
+    }
+   },
+   "replicate": {
+    "kind": "categorical",
+    "n": 5905,
+    "distinct": 6,
+    "top": {
+     "4": 1346,
+     "2": 1108,
+     "3": 1102,
+     "5": 897,
+     "1": 753,
+     "6": 699
+    }
+   },
+   "target": {
+    "kind": "categorical",
+    "n": 5905,
+    "distinct": 32,
+    "top": {
+     "<NA>": 1320,
+     "NFATC1": 256,
+     "FOS": 253,
+     "NFKB1": 240,
+     "EGR1": 225,
+     "BACH2": 217,
+     "DOK2": 199,
+     "JUNB": 190,
+     "JUND": 184,
+     "RUNX2": 184,
+     "REL": 183,
+     "NR4A1": 182
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 5905,
+    "distinct": 1,
+    "top": {
+     "cell_line": 5905
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 36722,
+  "first": [
+   "A1BG",
+   "A1BG-AS1",
+   "A1CF",
+   "A2M",
+   "A2M-AS1"
+  ]
+ },
+ "seconds": 4.1,
+ "fetched_bytes": 4482158,
+ "id": "scp_DatlingerBock2017"
+}

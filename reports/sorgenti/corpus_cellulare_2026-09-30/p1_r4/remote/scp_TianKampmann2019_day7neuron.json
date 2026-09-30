@@ -1,0 +1,267 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/TianKampmann2019_day7neuron.h5ad/content",
+ "bytes": 268921535,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   182790,
+   33752
+  ],
+  "dtype": "float32",
+  "stored": 109234210,
+  "compression": "gzip",
+  "chunks": [
+   26669
+  ],
+  "sample_integer": true,
+  "sample_max": 86.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "batch",
+   "cancer",
+   "celltype",
+   "disease",
+   "guide_id",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_hemo",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "sgRNA_read_count",
+   "sgRNA_umi_count",
+   "tissue_type"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 182790,
+    "distinct": 182790,
+    "top": {
+     "AAACCTGAGAAACCAT": 1,
+     "AAACCTGAGAAACCAT-1": 1,
+     "AAACCTGAGAAACGAG": 1,
+     "AAACCTGAGAAACGAG-1": 1,
+     "AAACCTGAGAAGCCCA": 1,
+     "AAACCTGAGAAGGTTT": 1,
+     "AAACCTGAGAAGGTTT-1": 1,
+     "AAACCTGAGAATTCCC": 1,
+     "AAACCTGAGACAAGCC": 1,
+     "AAACCTGAGACAAGCC-1": 1,
+     "AAACCTGAGACCTAGG": 1,
+     "AAACCTGAGACCTTTG": 1
+    }
+   },
+   "batch": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 182790,
+    "sample_min": 1.0,
+    "sample_max": 2.0
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 182790,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 182790,
+    "distinct": 1,
+    "top": {
+     "iPSC-induced neuron": 182790
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 182790,
+    "distinct": 1,
+    "top": {
+     "healthy": 182790
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 182790,
+    "distinct": 71705,
+    "top": {
+     "control": 14870,
+     "MAT2A_sgRNA2": 14531,
+     "UBA1_sgRNA1": 7210,
+     "RAB7A_sgRNA2": 4050,
+     "MAT2A_sgRNA1": 2679,
+     "MAP3K12_sgRNA2": 2471,
+     "PPP2R1A_sgRNA2": 2269,
+     "MAP3K12_sgRNA1": 1815,
+     "control;MAT2A_sgRNA2": 1784,
+     "MMAB_sgRNA1": 1767,
+     "RFK_sgRNA1": 1484,
+     "HACD2_sgRNA2": 1401
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182790,
+    "sample_min": 0.0,
+    "sample_max": 78847.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 182790,
+    "sample_min": 0.0,
+    "sample_max": 9841.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 182790,
+    "sample_min": 0.0,
+    "sample_max": 26.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 182790,
+    "distinct": 1,
+    "top": {
+     "human": 182790
+    }
+   },
+   "percent_hemo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182790,
+    "sample_min": 0.0,
+    "sample_max": 1.3333333333333335
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182790,
+    "sample_min": 0.0,
+    "sample_max": 100.0
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 182790,
+    "sample_min": 0.0,
+    "sample_max": 100.0
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 182790,
+    "distinct": 41358,
+    "top": {
+     "MAT2A": 21895,
+     "control": 15580,
+     "UBA1": 10158,
+     "RAB7A": 5732,
+     "MAP3K12": 5144,
+     "PPP2R1A": 4222,
+     "UBA1_MAT2A": 3306,
+     "RFK": 3289,
+     "MMAB": 2991,
+     "HACD2": 2088,
+     "UQCRQ": 1870,
+     "PPCDC": 1869
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 182790,
+    "distinct": 1,
+    "top": {
+     "CRISPR": 182790
+    }
+   },
+   "sgRNA_read_count": {
+    "kind": "categorical",
+    "n": 182790,
+    "distinct": 45658,
+    "top": {
+     "1": 54095,
+     "1-1": 14647,
+     "2": 8895,
+     "1-1-1": 6535,
+     "2-1": 4293,
+     "1-1-1-1": 3498,
+     "3": 3180,
+     "2-1-1": 3042,
+     "2-1-1-1": 2176,
+     "2-2": 1924,
+     "1-1-1-1-1": 1670,
+     "4": 1440
+    }
+   },
+   "sgRNA_umi_count": {
+    "kind": "categorical",
+    "n": 182790,
+    "distinct": 23829,
+    "top": {
+     "1": 69139,
+     "1-1": 25018,
+     "1-1-1": 12028,
+     "1-1-1-1": 6387,
+     "1-1-1-1-1": 2766,
+     "2-1": 2507,
+     "2-1-1": 2267,
+     "2": 2016,
+     "2-1-1-1": 1928,
+     "2-1-1-1-1": 1255,
+     "1-1-1-1-1-1": 1010,
+     "2-1-1-1-1-1": 873
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 182790,
+    "distinct": 1,
+    "top": {
+     "primary": 182790
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "ensemble_id",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 33752,
+  "first": [
+   "RP11-34P13.3",
+   "FAM138A",
+   "OR4F5",
+   "RP11-34P13.7",
+   "RP11-34P13.8"
+  ]
+ },
+ "seconds": 28.9,
+ "fetched_bytes": 35089087,
+ "id": "scp_TianKampmann2019_day7neuron"
+}

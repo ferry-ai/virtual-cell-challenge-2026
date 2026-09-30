@@ -1,0 +1,265 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/JoungZhang2023_combinatorial.h5ad/content",
+ "bytes": 834073300,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   167947,
+   37302
+  ],
+  "dtype": "float32",
+  "stored": 311008152,
+  "compression": "gzip",
+  "chunks": [
+   37965
+  ],
+  "sample_integer": false,
+  "sample_max": 5.657792091369629
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "TF",
+   "batch",
+   "cancer",
+   "cell_barcode",
+   "cell_line",
+   "celltype",
+   "disease",
+   "louvain",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "tissue_type"
+  ],
+  "describe": {
+   "TF": {
+    "kind": "categorical",
+    "n": 167947,
+    "distinct": 57,
+    "top": {
+     "TFORF0902-PTF1A,TFORF0391-FERD3L": 29194,
+     "TFORF0391-FERD3L,TFORF3549-GFP": 24499,
+     "TFORF0391-FERD3L,TFORF0098-MSGN1": 23171,
+     "TFORF0902-PTF1A,TFORF0098-MSGN1": 15878,
+     "TFORF0902-PTF1A,TFORF3549-GFP": 15255,
+     "TFORF0098-MSGN1,TFORF3549-GFP": 8064,
+     "TFORF0391-FERD3L,TFORF1216-NHLH1": 6402,
+     "TFORF0391-FERD3L,TFORF2055-CDX1": 5063,
+     "TFORF0902-PTF1A,TFORF1216-NHLH1": 3804,
+     "TFORF0391-FERD3L,TFORF2078-FLI1": 3490,
+     "TFORF0391-FERD3L,TFORF1447-NR5A2": 3067,
+     "TFORF0902-PTF1A,TFORF2055-CDX1": 2977
+    }
+   },
+   "batch": {
+    "kind": "categorical",
+    "n": 167947,
+    "distinct": 9,
+    "top": {
+     "0": 27625,
+     "5": 23268,
+     "1": 22384,
+     "3": 22106,
+     "7": 21972,
+     "2": 14217,
+     "4": 13092,
+     "8": 11841,
+     "6": 11442
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 167947,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 167947,
+    "distinct": 167947,
+    "top": {
+     "R1.01,R2.01,R3.02,P1.47-5": 1,
+     "R1.01,R2.01,R3.03,P1.44-3": 1,
+     "R1.01,R2.01,R3.04,P1.29-6": 1,
+     "R1.01,R2.01,R3.08,P1.XX-0": 1,
+     "R1.01,R2.01,R3.12,P1.31-8": 1,
+     "R1.01,R2.01,R3.19,P1.28-4": 1,
+     "R1.01,R2.01,R3.25,P1.XX-0": 1,
+     "R1.01,R2.01,R3.26,P1.29-6": 1,
+     "R1.01,R2.01,R3.32,P1.48-7": 1,
+     "R1.01,R2.01,R3.36,P1.31-8": 1,
+     "R1.01,R2.01,R3.43,P1.29-6": 1,
+     "R1.01,R2.01,R3.43,P1.XX-0": 1
+    }
+   },
+   "cell_line": {
+    "kind": "categorical",
+    "n": 167947,
+    "distinct": 1,
+    "top": {
+     "hESCs": 167947
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 167947,
+    "distinct": 1,
+    "top": {
+     "hESCs": 167947
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 167947,
+    "distinct": 1,
+    "top": {
+     "healthy": 167947
+    }
+   },
+   "louvain": {
+    "kind": "categorical",
+    "n": 167947,
+    "distinct": 24,
+    "top": {
+     "0": 31411,
+     "1": 20816,
+     "2": 13791,
+     "3": 11435,
+     "4": 11273,
+     "5": 9602,
+     "6": 8519,
+     "7": 7945,
+     "8": 7144,
+     "9": 6790,
+     "10": 6636,
+     "11": 5892
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 167947,
+    "sample_min": 524.0,
+    "sample_max": 14993.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 167947,
+    "sample_min": 500.0,
+    "sample_max": 6783.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 167947,
+    "sample_min": 1.0,
+    "sample_max": 3.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 167947,
+    "distinct": 1,
+    "top": {
+     "human": 167947
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 167947,
+    "sample_min": 0.0,
+    "sample_max": 0.09995625913143158
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 167947,
+    "sample_min": 0.0,
+    "sample_max": 11.909111022949219
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 167947,
+    "distinct": 57,
+    "top": {
+     "FERD3L+PTF1A": 29194,
+     "FERD3L+GFP": 24499,
+     "FERD3L+MSGN1": 23171,
+     "MSGN1+PTF1A": 15878,
+     "GFP+PTF1A": 15255,
+     "GFP+MSGN1": 8064,
+     "FERD3L+NHLH1": 6402,
+     "CDX1+FERD3L": 5063,
+     "NHLH1+PTF1A": 3804,
+     "FERD3L+FLI1": 3490,
+     "FERD3L+NR5A2": 3067,
+     "CDX1+PTF1A": 2977
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 167947,
+    "distinct": 1,
+    "top": {
+     "ORF overexpression": 167947
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 167947,
+    "distinct": 1,
+    "top": {
+     "cell_line": 167947
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "n_cells-0",
+   "n_cells-1",
+   "n_cells-2",
+   "n_cells-3",
+   "n_cells-4",
+   "n_cells-5",
+   "n_cells-6",
+   "n_cells-7",
+   "n_cells-8",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 37302,
+  "first": [
+   "A1BG",
+   "A1BG-AS1",
+   "A1CF",
+   "A2M",
+   "A2M-AS1"
+  ]
+ },
+ "seconds": 15.3,
+ "fetched_bytes": 19329748,
+ "id": "scp_JoungZhang2023_combinatorial"
+}

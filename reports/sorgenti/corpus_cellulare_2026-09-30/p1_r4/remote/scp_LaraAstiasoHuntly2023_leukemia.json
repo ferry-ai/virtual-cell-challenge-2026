@@ -1,0 +1,269 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/LaraAstiasoHuntly2023_leukemia.h5ad/content",
+ "bytes": 1176002572,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   182949,
+   32287
+  ],
+  "dtype": "float32",
+  "stored": 497155969,
+  "compression": "gzip",
+  "chunks": [
+   30344
+  ],
+  "sample_integer": true,
+  "sample_max": 690.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "cell_barcode",
+  "columns": [
+   "Mixscape_classification",
+   "cancer",
+   "cell_barcode",
+   "cellcycle_phase",
+   "celltype",
+   "disease",
+   "guide_id",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_type",
+   "sample",
+   "tissue",
+   "tissue_type"
+  ],
+  "describe": {
+   "Mixscape_classification": {
+    "kind": "categorical",
+    "n": 182949,
+    "distinct": 3,
+    "top": {
+     "<NA>": 135629,
+     "NP": 22016,
+     "KO": 17587,
+     "NTC": 7717
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 182949,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "cell_barcode": {
+    "kind": "strings",
+    "n": 182949,
+    "distinct": 182949,
+    "top": {
+     "AAACCCAAGAACGTGC-DM_OP1_NM_6d_2": 1,
+     "AAACCCAAGAAGCGCT-DM_OP4_NM_6d_1": 1,
+     "AAACCCAAGAATTCAG-DM_OP2_NM_6d_1": 1,
+     "AAACCCAAGAATTCAG-DM_OP4_NM_6d_1": 1,
+     "AAACCCAAGAATTGTG-DM_OP1_NM_6d_2": 1,
+     "AAACCCAAGACATGCG-DM_OP4_NM_6d_1": 1,
+     "AAACCCAAGACCCGCT-DM_OP5_NM_6d_1": 1,
+     "AAACCCAAGAGAAGGT-DM_OP0_NM_6d_1": 1,
+     "AAACCCAAGAGAGAAC-DM_OP4_NM_6d_1": 1,
+     "AAACCCAAGAGAGCGG-DM_OP2_NM_6d_3": 1,
+     "AAACCCAAGAGCATTA-DM_OP2_NM_6d_1": 1,
+     "AAACCCAAGAGGGCGA-DM_OP1_NM_6d_1": 1
+    }
+   },
+   "cellcycle_phase": {
+    "kind": "categorical",
+    "n": 182949,
+    "distinct": 3,
+    "top": {
+     "<NA>": 100334,
+     "G2M": 34292,
+     "G1": 29478,
+     "S": 18845
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 182949,
+    "distinct": 6,
+    "top": {
+     "<NA>": 100334,
+     "LSC": 66500,
+     "GMP (late)": 8853,
+     "Eo/Ba": 3620,
+     "EBMP": 2746,
+     "Mono": 587,
+     "MkP": 309
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 182949,
+    "distinct": 1,
+    "top": {
+     "leukemia": 182949
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 182949,
+    "distinct": 126,
+    "top": {
+     "<NA>": 135613,
+     "Mbd3_AS_41065": 2187,
+     "NTC_0008": 1511,
+     "Rcor1_AS_21752": 1360,
+     "Pu.1": 1309,
+     "NTC_0010": 1048,
+     "Kmt2a": 950,
+     "NTC_0006": 933,
+     "Rbbp4_AS_22098": 931,
+     "NTC_0013": 906,
+     "Men1_AS_40513": 875,
+     "Ehmt2_B_59106": 871
+    }
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 182949,
+    "sample_min": 500.0,
+    "sample_max": 638054.0
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 182949,
+    "sample_min": 34.0,
+    "sample_max": 10470.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 182949,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 182949,
+    "distinct": 1,
+    "top": {
+     "Mus musculus": 182949
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 182949,
+    "sample_min": 0.0,
+    "sample_max": 96.71717071533203
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 182949,
+    "sample_min": 0.5050504803657532,
+    "sample_max": 56.21804428100586
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 182949,
+    "distinct": 59,
+    "top": {
+     "<NA>": 135613,
+     "control": 7717,
+     "Mbd3": 2187,
+     "Rcor1": 2000,
+     "Rbbp4": 1718,
+     "Smarcd1": 1672,
+     "Men1": 1416,
+     "Kmt2a": 1367,
+     "Pu.1": 1309,
+     "Atf7ip": 1257,
+     "Setd1b": 1236,
+     "Kmt2d": 1209
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 182949,
+    "distinct": 1,
+    "top": {
+     "CRISPR-cas9": 182949
+    }
+   },
+   "sample": {
+    "kind": "categorical",
+    "n": 182949,
+    "distinct": 13,
+    "top": {
+     "DM_OP1_NM_6d_2": 32089,
+     "DM_OP1_NM_6d_1": 31089,
+     "DM_OP2_NM_6d_1": 30890,
+     "DM_OP0_NM_6d_1": 13400,
+     "DM_CITEseq-1_NA_NM_1": 11177,
+     "DM_OP4_NM_6d_1": 10799,
+     "DM_OP2_NM_6d_2": 10471,
+     "DM_OP3_NM_6d_1": 10032,
+     "DM_OP2_NM_6d_3": 8595,
+     "DM_CITEseq-2_NA_NM_1": 8358,
+     "DM_Test1_NM_6d_1": 8303,
+     "DM_OP5_NM_6d_1": 5146
+    }
+   },
+   "tissue": {
+    "kind": "categorical",
+    "n": 182949,
+    "distinct": 1,
+    "top": {
+     "bone marrow transplant": 182949
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 182949,
+    "distinct": 1,
+    "top": {
+     "primary": 182949
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 32287,
+  "first": [
+   "Xkr4",
+   "Gm1992",
+   "Gm19938",
+   "Gm37381",
+   "Rp1"
+  ]
+ },
+ "seconds": 21.9,
+ "fetched_bytes": 20471820,
+ "id": "scp_LaraAstiasoHuntly2023_leukemia"
+}

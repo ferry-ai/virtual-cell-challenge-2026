@@ -1,0 +1,287 @@
+{
+ "url": "https://zenodo.org/api/records/13350497/files/GehringPachter2019.h5ad/content",
+ "bytes": 73274146,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   20382,
+   13256
+  ],
+  "dtype": "float32",
+  "stored": 30381404,
+  "compression": "gzip",
+  "chunks": [
+   14835
+  ],
+  "sample_integer": false,
+  "sample_max": 6.850262641906738
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "batch",
+   "cancer",
+   "celltype",
+   "disease",
+   "dose_unit",
+   "dose_unit_2",
+   "dose_unit_3",
+   "dose_unit_4",
+   "dose_value",
+   "dose_value_2",
+   "dose_value_3",
+   "dose_value_4",
+   "ncounts",
+   "ngenes",
+   "nperts",
+   "organism",
+   "percent_mito",
+   "percent_ribo",
+   "perturbation",
+   "perturbation_2",
+   "perturbation_3",
+   "perturbation_4",
+   "perturbation_type",
+   "tissue_type"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 20382,
+    "distinct": 20382,
+    "top": {
+     "AAACCTGAGACAGAGA": 1,
+     "AAACCTGAGACCCACC": 1,
+     "AAACCTGAGCTGCGAA": 1,
+     "AAACCTGAGGAGTAGA": 1,
+     "AAACCTGAGTCAATAG": 1,
+     "AAACCTGCAAGGACTG": 1,
+     "AAACCTGCAATCAGAA": 1,
+     "AAACCTGCACACATGT": 1,
+     "AAACCTGCACAGGTTT": 1,
+     "AAACCTGCACCGGAAA": 1,
+     "AAACCTGCACGTCAGC": 1,
+     "AAACCTGCACTGTGTA": 1
+    }
+   },
+   "batch": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 4,
+    "top": {
+     "0": 9249,
+     "1": 8755,
+     "3": 1226,
+     "2": 1152
+    }
+   },
+   "cancer": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 20382,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 1,
+    "top": {
+     "neural stem cells": 20382
+    }
+   },
+   "disease": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 1,
+    "top": {
+     "healthy": 20382
+    }
+   },
+   "dose_unit": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 1,
+    "top": {
+     "ng/mL": 20382
+    }
+   },
+   "dose_unit_2": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 1,
+    "top": {
+     "ng/mL": 20382
+    }
+   },
+   "dose_unit_3": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 1,
+    "top": {
+     "uM": 20382
+    }
+   },
+   "dose_unit_4": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 1,
+    "top": {
+     "uM": 20382
+    }
+   },
+   "dose_value": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 20382,
+    "sample_min": 0.0,
+    "sample_max": 40.0
+   },
+   "dose_value_2": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 20382,
+    "sample_min": 1.6,
+    "sample_max": 200.0
+   },
+   "dose_value_3": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 20382,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "dose_value_4": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 20382,
+    "sample_min": 0.0,
+    "sample_max": 10.0
+   },
+   "ncounts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 20382,
+    "sample_min": 1195.25048828125,
+    "sample_max": 3482.967529296875
+   },
+   "ngenes": {
+    "kind": "numeric",
+    "dtype": "int32",
+    "n": 20382,
+    "sample_min": 404.0,
+    "sample_max": 3598.0
+   },
+   "nperts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 20382,
+    "sample_min": 1.0,
+    "sample_max": 3.0
+   },
+   "organism": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 1,
+    "top": {
+     "mouse": 20382
+    }
+   },
+   "percent_mito": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 20382,
+    "sample_min": 0.0,
+    "sample_max": 0.44803768396377563
+   },
+   "percent_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 20382,
+    "sample_min": 0.0,
+    "sample_max": 1.9476959705352783
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 1,
+    "top": {
+     "BMP4": 20382
+    }
+   },
+   "perturbation_2": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 1,
+    "top": {
+     "EGF and bFGF": 20382
+    }
+   },
+   "perturbation_3": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 1,
+    "top": {
+     "1:5 Scriptaid:decitabine": 20382
+    }
+   },
+   "perturbation_4": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 1,
+    "top": {
+     "retinoic acid": 20382
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 1,
+    "top": {
+     "drug": 20382
+    }
+   },
+   "tissue_type": {
+    "kind": "categorical",
+    "n": 20382,
+    "distinct": 1,
+    "top": {
+     "primary": 20382
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_symbol",
+  "columns": [
+   "ensembl_id",
+   "gene_symbol",
+   "ncells",
+   "ncounts"
+  ],
+  "rows": 13256,
+  "first": [
+   "Gnai3",
+   "Cdc45",
+   "Apoh",
+   "Narf",
+   "Cav2"
+  ]
+ },
+ "seconds": 4.7,
+ "fetched_bytes": 5116706,
+ "id": "scp_GehringPachter2019"
+}

@@ -1,0 +1,272 @@
+{
+ "url": "https://zenodo.org/api/records/15200179/files/fibroblast_CRISPRa_final_pop.h5ad/content",
+ "bytes": 9720100792,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   447301,
+   30395
+  ],
+  "dtype": "float32",
+  "stored": 1200644563,
+  "compression": null,
+  "chunks": [
+   73282
+  ],
+  "sample_integer": true,
+  "sample_max": 780.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "UMI_count",
+   "_index",
+   "control",
+   "dataset",
+   "final_pairwise_UMI_count",
+   "gem_group",
+   "guide_identity",
+   "guide_target",
+   "guide_umi_count",
+   "keep",
+   "mt_frac",
+   "num_cells",
+   "pairwise_UMI_count",
+   "pairwise_coef",
+   "pairwise_singlet_equivalent_UMI_count",
+   "single_cell",
+   "thresholded_features",
+   "thresholded_guide_umi"
+  ],
+  "describe": {
+   "UMI_count": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 447301,
+    "sample_min": 1665.0,
+    "sample_max": 41311.0
+   },
+   "_index": {
+    "kind": "strings",
+    "n": 447301,
+    "distinct": 447301,
+    "top": {
+     "AAACCCAAGAAAGTCT-4": 1,
+     "AAACCCAAGAAGCGGG-2": 1,
+     "AAACCCAAGAATAACC-10": 1,
+     "AAACCCAAGACAGCTG-2": 1,
+     "AAACCCAAGACCAAGC-13": 1,
+     "AAACCCAAGACCAGCA-10": 1,
+     "AAACCCAAGACCTTTG-14": 1,
+     "AAACCCAAGACGACGT-7": 1,
+     "AAACCCAAGACGCCAA-10": 1,
+     "AAACCCAAGACGCCCT-7": 1,
+     "AAACCCAAGACTCCGC-12": 1,
+     "AAACCCAAGAGAACCC-3": 1
+    }
+   },
+   "control": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 447301,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "dataset": {
+    "kind": "categorical",
+    "n": 447301,
+    "distinct": 1,
+    "top": {
+     "aggr_ALL": 447301
+    }
+   },
+   "final_pairwise_UMI_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 447301,
+    "sample_min": 3486.9071454642276,
+    "sample_max": 13662.6803432381
+   },
+   "gem_group": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 447301,
+    "sample_min": 1.0,
+    "sample_max": 10.0
+   },
+   "guide_identity": {
+    "kind": "categorical",
+    "n": 447301,
+    "distinct": 10965,
+    "top": {
+     "non_targeting_GCGCCGGAGCACTCGCGTAT": 1088,
+     "non_targeting_GTGCAGCTGGTCGCGCAAAC": 1079,
+     "non_targeting_GGCCCTCCCCACCGGCACGA": 958,
+     "non_targeting_GAACGGGCCGTGATCGGACC": 953,
+     "non_targeting_GAAGCAGCATGAATACGCCG": 724,
+     "non_targeting_GAAATGGACCGCGCTTACGC": 724,
+     "non_targeting_GGGACTCCCTCGGCGGTTAT": 701,
+     "non_targeting_GGCTGTACGCTCGCGTAAAA": 673,
+     "non_targeting_GCCCGTGATAATCGATACGA": 624,
+     "non_targeting_GCTCTTGGTACGTATTCGAA": 618,
+     "non_targeting_GCAGCCTAAAGCGTACGACG": 578,
+     "non_targeting_GCCAGACGCGCCCGTAACGG": 557
+    }
+   },
+   "guide_target": {
+    "kind": "categorical",
+    "n": 447301,
+    "distinct": 1837,
+    "top": {
+     "non": 30864,
+     "ZBTB46": 753,
+     "REPIN1": 722,
+     "ZNF789": 718,
+     "FOXD2": 696,
+     "TCF25": 630,
+     "ZIC1": 609,
+     "MTA1": 582,
+     "LHX3": 579,
+     "NFIL3": 572,
+     "CAPN15": 566,
+     "ELK3": 560
+    }
+   },
+   "guide_umi_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 447301,
+    "sample_min": 5.0,
+    "sample_max": 25148.0
+   },
+   "keep": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 447301,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "mt_frac": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 447301,
+    "sample_min": 0.0,
+    "sample_max": 0.04998954012989998
+   },
+   "num_cells": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 447301,
+    "sample_min": 1.0,
+    "sample_max": 4.0
+   },
+   "pairwise_UMI_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 447301,
+    "sample_min": 1484.370273777976,
+    "sample_max": 18313.26671131353
+   },
+   "pairwise_coef": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 447301,
+    "sample_min": 0.16910715746993563,
+    "sample_max": 2.6736874424958947
+   },
+   "pairwise_singlet_equivalent_UMI_count": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 447301,
+    "sample_min": 0.3782605703207183,
+    "sample_max": 1.4770259344232302
+   },
+   "single_cell": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 447301,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "thresholded_features": {
+    "kind": "categorical",
+    "n": 447301,
+    "distinct": 255086,
+    "top": {
+     "non_targeting_GCGCCGGAGCACTCGCGTAT": 439,
+     "non_targeting_GTGCAGCTGGTCGCGCAAAC": 411,
+     "non_targeting_GAACGGGCCGTGATCGGACC": 400,
+     "non_targeting_GAAGCAGCATGAATACGCCG": 376,
+     "non_targeting_GGCCCTCCCCACCGGCACGA": 325,
+     "non_targeting_GAAATGGACCGCGCTTACGC": 323,
+     "non_targeting_GCTCTACACTGGATGATCGT": 278,
+     "non_targeting_GCCCGTGATAATCGATACGA": 250,
+     "non_targeting_GCTCTTGGTACGTATTCGAA": 250,
+     "non_targeting_GGCCGGAGCCGTTCGCTAGC": 238,
+     "non_targeting_GCTTCGGGGGAATCACCGGT": 236,
+     "non_targeting_GCCAGACGCGCCCGTAACGG": 235
+    }
+   },
+   "thresholded_guide_umi": {
+    "kind": "categorical",
+    "n": 447301,
+    "distinct": 259495,
+    "top": {
+     "5": 1056,
+     "6": 863,
+     "8": 775,
+     "7": 763,
+     "9": 696,
+     "10": 665,
+     "11": 651,
+     "13": 639,
+     "15": 632,
+     "12": 622,
+     "18": 618,
+     "26": 595
+    }
+   }
+  }
+ },
+ "var": {
+  "index": "gene_id",
+  "columns": [
+   "cv",
+   "excess_cv",
+   "fano",
+   "feature_types",
+   "gene_id",
+   "gene_name",
+   "genome",
+   "in_matrix",
+   "mean",
+   "mean_adjusted_pairwise_p_cost",
+   "pairwise_chosen",
+   "pairwise_p_cost",
+   "std"
+  ],
+  "rows": 30395,
+  "first": [
+   "ENSG00000243485",
+   "ENSG00000186092",
+   "ENSG00000238009",
+   "ENSG00000239945",
+   "ENSG00000241860"
+  ]
+ },
+ "seconds": 81.2,
+ "fetched_bytes": 111998904,
+ "id": "southard_fibroblast_CRISPRa_final_pop"
+}
