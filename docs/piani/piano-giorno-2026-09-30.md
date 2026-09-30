@@ -23,7 +23,21 @@
   fra i dati sul disco nessun grande schermo CRISPRi cellulare è intatto, e la riserva primaria
   proposta è H1 della gara 2025. **Aspetta il proprietario:** destinazione degli shard, via a J01–J03
   e ai download, regola sugli account, riserva.
-- **Prossimo passo:** eseguire P0–P1: riconciliare tutti gli archivi e i derivati con gli input dei training, identificare quali conteggi cellulari sono recuperabili e preparare manifest di shard e schede QC. Proseguire con P2 sulle sorgenti già verificabili senza attendere quelle bloccate.
+- **Ripresa (30/09, 19:56, Claude Code, sessione `ec2e5b07`):** la sessione `a1ec75f0` ha esaurito
+  i token a metà di P2. Il proprietario ha passato la chat e riconfermato in chat le autorizzazioni:
+  vedi [AUTORIZZAZIONI](../../reports/sorgenti/corpus_cellulare_2026-09-30/AUTORIZZAZIONI.md).
+  Ha scelto anche il ruolo di H1 2025: il test fa da riserva, train e validation vanno nel training
+  ([registro r2](../../reports/modelli/risposta_biologica_2026-09-30/holdout_registry_r2.json)).
+- **Avanzamento (30/09, 20:50, Claude `ec2e5b07`):** P2 è implementato e provato in locale, non
+  ancora eseguito su Colab; stato in [README §7](../../reports/sorgenti/corpus_cellulare_2026-09-30/README.md#7-p2-i-job-j01j03-e-il-download-di-h1-3009-sera-sessione-ec2e5b07).
+  - Adattatori, runner, download verificato e builder dei job.
+  - Prova locale su ritagli dei file veri: tre schemi, parità esatte, ripresa con `--reuse`.
+  - In coda sul Drive, con preflight locale passato: 086 J01 HepG2, 087 J03 Jurkat, 088 J02 HIPSCI,
+    089 H1 2025 (parte dopo J02).
+- **Prossimo passo:** il proprietario avvia il dispatcher Colab (celle 1 e 2 del notebook). Poi si
+  leggono le ricevute dei job: `runs/rlab_setup_2026-09-30_r*/receipts/` e `complete.json` di ogni
+  uscita. Letti i primi manifest, si passa a P3, la politica di QC sulle misure per sorgente, e a
+  J04–J08: servono un via nuovo e, per J05–J06, un runtime con R.
 - **Dipendenze:** [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), [R-COMP](modello-competitivo.md), [ERRORI](../ERRORI.md), [PROCEDURE §3](../PROCEDURE.md#3-job-su-colab-e-kaggle). R-DATI e R-SWITCH contribuiscono ai blocchi qui definiti.
 - **Ambito:** nuova priorità operativa dentro R-COMP. La ricetta iPSC resta un confronto; non è il prerequisito della rete. Nessuna scadenza artificiale o arresto a fine giornata: l'ordine sotto indica dipendenze, non durata promessa.
 

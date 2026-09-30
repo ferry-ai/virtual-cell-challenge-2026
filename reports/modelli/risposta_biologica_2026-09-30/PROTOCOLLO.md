@@ -35,6 +35,23 @@ perturbati sono già stati letti come verità, con la fonte, e il ruolo proposto
 
 ## 3. Che cosa manca prima del primo training
 
-- Il via del proprietario sui ruoli e sulla riserva.
+- Il via del proprietario sui ruoli degli altri dataset. Per H1 c'è: vedi §4.
 - Gli shard cellulari dei job J01–J03 (`reports/sorgenti/corpus_cellulare_2026-09-30/PIANO_JOB.md`).
 - `splits.py` e `test_leakage.py` (P4), scritti e provati prima di leggere qualunque esito.
+
+## 4. H1 2025: la scelta del proprietario (30/09, sera)
+
+Aggiunto dalla sessione `ec2e5b07`. Il proprietario ha visto locatore e byte di H1 (bucket pubblico
+di Arc, 34,36 GB in tre h5ad) e ha scelto in chat: **lo split di test (100 bersagli) è la riserva;
+train (150) e validation (50) vanno nel training.** Trascrizione in
+`reports/sorgenti/corpus_cellulare_2026-09-30/AUTORIZZAZIONI.md`. Il registro in vigore è
+[holdout_registry_r2.json](holdout_registry_r2.json); la versione r1 resta com'era.
+
+**Limite, scritto prima di qualunque lettura.** Con train e validation nel training, H1 non è più un
+contesto nuovo. La riserva misura quindi bersagli nuovi in un contesto già visto: è una domanda
+diversa da quella della gara, che chiede bersagli noti in contesti nuovi. Per il contesto nuovo
+restano i fold C/T/J. La regola con cui leggere la riserva si scrive in un protocollo nuovo, prima
+di aprirla.
+
+Il job 089 scarica i tre file, li verifica col crc32c del bucket, calcola lo sha256 e li copia su
+Drive senza aprirli. Il file di test porta nel manifest il ruolo «RISERVA: non aprire».

@@ -20,3 +20,12 @@ letta con `date` alle 20:00:21, subito dopo): «Certo confermo, anche la disponi
 colab e kaggle». La conferma copre J01–J03 su Colab con shard su Drive, i download sul runtime di
 HIPSCI (Figshare) e di Jurkat (GEO), e H1 2025 prima con locatore e byte mostrati, poi scaricato.
 Restano esclusi invii e push.
+
+**H1 2025, dopo aver visto locatore e byte** (in chat, prima delle 20:47 del 30/09: ora letta con
+`date` quando il job 089 è stato messo in coda, dopo le risposte). Mostrati al proprietario: bucket pubblico
+`gs://arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/`, letto via HTTPS senza costi;
+`adata_Training.h5ad` 15,48 GB, `adata_Validation.h5ad` 6,93 GB, `adata_Test.h5ad` 11,95 GB, con i
+crc32c del bucket. Risposte:
+- **download:** «Sì, dopo J02», su Drive, come dato congelato: job 089, che attende il `.done` di 088;
+- **ruolo:** «Parte riserva, parte training», con l'esempio proposto: lo split di test (100
+  bersagli) è la riserva, train e validation (200 bersagli) vanno nel training da subito.
