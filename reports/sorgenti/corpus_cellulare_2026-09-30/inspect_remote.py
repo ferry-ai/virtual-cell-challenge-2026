@@ -17,6 +17,7 @@ import io
 import json
 import sys
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -28,11 +29,25 @@ class RangeFile(io.RawIOBase):
 
     def __init__(self, url: str, block: int = 1 << 20):
         self.url, self.block, self.pos, self.cache, self.fetched = url, block, 0, {}, 0
-        req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "vcc2026-rlab/1"})
+        self.etag = None
+        self._resolve()
+
+    def _resolve(self):
+        """The final URL and the size, from a GET of one byte: hosts that redirect to signed storage URLs (Figshare
+        to S3) sign them for the method used, and a URL resolved by HEAD refuses ranged GETs. Called again when a
+        signed URL expires."""
+        req = urllib.request.Request(self.url, headers={"Range": "bytes=0-0", "User-Agent": "vcc2026-rlab/1"})
         with urllib.request.urlopen(req, timeout=60) as r:
-            self.size = int(r.headers["Content-Length"])
+            total = r.headers.get("Content-Range", "").rsplit("/", 1)[-1]
+            size = int(total) if total.isdigit() else int(r.headers["Content-Length"])
+            etag = r.headers.get("ETag")
             self.final_url = r.geturl()
-            self.etag = r.headers.get("ETag")      # every range must come from this same version of the file
+        if getattr(self, "size", None) not in (None, size):
+            raise OSError(f"the file changed while it was read: {size} bytes after {self.size}")
+        self.size = size
+        if self.etag and etag and etag != self.etag:
+            raise OSError(f"the file changed while it was read: ETag {etag} after {self.etag}")
+        self.etag = self.etag or etag      # every range must come from this same version of the file
 
     def readable(self): return True
     def seekable(self): return True
@@ -53,6 +68,14 @@ class RangeFile(io.RawIOBase):
                         data = r.read()
                         etag = r.headers.get("ETag")
                     break
+                except urllib.error.HTTPError as err:
+                    if attempt == 5:
+                        raise
+                    if err.code in (400, 403):              # an expired signed URL: resolve it again
+                        self._resolve()
+                        req = urllib.request.Request(self.final_url, headers={"Range": f"bytes={lo}-{hi}",
+                                                                              "User-Agent": "vcc2026-rlab/1"})
+                    time.sleep(5 * attempt)
                 except OSError:
                     if attempt == 5:
                         raise

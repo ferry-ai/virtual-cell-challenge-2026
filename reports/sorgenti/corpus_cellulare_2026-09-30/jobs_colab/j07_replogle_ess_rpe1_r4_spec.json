@@ -1,0 +1,73 @@
+{
+ "job_id": "j07_replogle_ess_rpe1_r4",
+ "min_free_stage_bytes": 4294967296,
+ "units": [
+  {
+   "name": "k562_essential",
+   "adapter": "h5rows",
+   "kwargs": {
+    "path": "https://ndownloader.figshare.com/files/35773219",
+    "study": "replogle_k562_essential",
+    "context": "K562",
+    "chemistry": "10x 3' v3",
+    "modality": "CRISPRi",
+    "axis_csv": "{AXIS}",
+    "block": 10000,
+    "target_col": "gene",
+    "control_values": [
+     "non-targeting"
+    ],
+    "guides_col": "sgID_AB",
+    "library_col": "gem_group",
+    "published_depth": "UMI_count"
+   },
+   "source": {
+    "id": "replogle_k562_essential",
+    "release": "Figshare 20029387, Replogle et al. 2022",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "raw single-cell h5ad",
+      "locator": "https://ndownloader.figshare.com/files/35773219",
+      "bytes": 10661879995,
+      "md5": "4f1122ce1c7f13299a68df6459a266d3"
+     }
+    ]
+   }
+  },
+  {
+   "name": "rpe1",
+   "adapter": "h5rows",
+   "kwargs": {
+    "path": "https://ndownloader.figshare.com/files/35775606",
+    "study": "replogle_rpe1",
+    "context": "RPE1",
+    "chemistry": "10x 3' v3",
+    "modality": "CRISPRi",
+    "axis_csv": "{AXIS}",
+    "block": 10000,
+    "target_col": "gene",
+    "control_values": [
+     "non-targeting"
+    ],
+    "guides_col": "sgID_AB",
+    "library_col": "gem_group",
+    "published_depth": "UMI_count"
+   },
+   "source": {
+    "id": "replogle_rpe1",
+    "release": "Figshare 20029387, Replogle et al. 2022",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "raw single-cell h5ad",
+      "locator": "https://ndownloader.figshare.com/files/35775606",
+      "bytes": 8700873216,
+      "md5": "not published by Figshare"
+     }
+    ]
+   }
+  }
+ ],
+ "min_free_out_bytes": 0
+}
