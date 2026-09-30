@@ -5,6 +5,13 @@ e in un controllo obbligatorio del prossimo lavoro pertinente. La pipeline resta
 descritta in [LAVORO.md](LAVORO.md); stato e risultati scientifici restano in
 [PROGETTO.md](PROGETTO.md) e nei report. Non serve un altro `pipeline.md` parallelo.
 
+La guida ha tre parti:
+- **job e guasti operativi**: il preflight e il registro degli incidenti, qui sotto;
+- **[errori di metodo già commessi](#errori-di-metodo-già-commessi)**: ragionamenti che hanno
+  prodotto conclusioni sbagliate, con la regola che li evita;
+- **[lezioni operative](#lezioni-operative-da-non-ripetere)**: trappole di Colab, Drive, disco e
+  cartella condivisa, comprese quelle che stavano solo nella memoria privata di un agente.
+
 Un esperimento concluso correttamente che smentisce un'ipotesi **non è un errore
 infrastrutturale**. Per esempio, Stack A termina lo scoring ma perde il confronto:
 si conserva il [risultato negativo](../reports/analisi/lead_scientist_2026-09-29/neural/RISULTATI_STACK_A.md)
@@ -138,3 +145,60 @@ Per aggiornare: preparare un nuovo record completo con revisione successiva e
 Per salvare un indice usare `--out <nuovo-indice.json>`; il file è un derivato,
 non la fonte degli stati. Testare la correzione, leggere l'esito remoto completo
 e aggiungere la revisione di verifica prima di dichiarare l'incidente chiuso.
+
+## Errori di metodo già commessi
+
+Ragionamenti che hanno prodotto conclusioni sbagliate, scoperti dopo. Prima di scrivere una
+conclusione, controllare che non ricada in uno di questi. Una correzione nuova si aggiunge qui
+come riga, con la fonte; le righe vecchie non si riscrivono.
+
+| Errore | Come si è visto | Regola che lo evita | Fonte |
+|---|---|---|---|
+| Una deduzione riscritta come misura in un riassunto | «non nei pannelli essenziali» → «non essenziale» → «effetti piccoli per costruzione», 12/09 | Riportare i caveat della fonte; etichettare misurato, interpretazione, ipotesi | [CP-0002](checkpoints/0002-correzioni-dopo-revisione-umana.md) |
+| Una premessa sui dati ripetuta senza leggere i metadati primari | «Tutte le sorgenti tranne VIPerturb sono in 3'»: il CSV degli autori con CD4 `GEMX_flex_v1` era nella repo dal 12/09 | Per saggio, chimica o stato di una sorgente citare il file di metadati primario | [audit dei dati](../reports/analisi/lead_scientist_2026-09-29/AUDIT_DATI.md), [CP-0046](checkpoints/0046-audit-lead-e-due-vie-neurali.md) |
+| Attribuire a un fattore l'effetto di un intervento che ne cambia diversi | t20 − t16 cambia forma, ampiezza e cis insieme; il t26 letto come prova sul t23 | Un contrasto identifica solo ciò che cambia da solo; altrimenti si parla di pacchetto (D-047) | [audit scientifico](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md) §2 |
+| Una media piatta letta come saturazione | «Dal t16 nessuna leva»: in t23 − t22 il 94,5 % del movimento dei membri si annulla nella media | Leggere tutti e sei i membri e i loro contributi | stesso audit, §1 |
+| Una sola coppia di semi usata come deviazione standard | t24 − t22 = 0,0016 chiamato «il rumore del seme» | ±0,005 è una soglia operativa, non un intervallo statistico | stesso audit, §2.2 |
+| Scegliere con un proxy che vede due membri su sei | Δ = 0,36 ΔPDS − 0,27 ΔnMAE non riproduce le differenze ufficiali | Scegliere con lo scorer vero, sui sei membri | [CP-0041](checkpoints/0041-proxy-contro-ufficiale.md) |
+| Un indice locale letto come guadagno atteso in gara | t28: +0,0289 sul banco HepG2, +0,0046 in gara. Interpretazione: già la forma t19 dava +0,026 al banco, mentre t20 − t16 in gara valeva +0,002, con altre modifiche insieme | Il banco dà il verso, non l'entità; la previsione ufficiale si registra a parte | [CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md), [banco HepG2](../reports/generatore_e_banchi/banco_hepg2_v2_2026-09-26/RISULTATI.md) |
+| Una riserva già valutata chiamata indipendente | 95 dei 96 bersagli della conferma del generatore erano già in un banco del 27/09 | Un registro globale delle riserve, controllato prima di selezionare | [CP-0050](checkpoints/0050-credibilita-score-e-riserva.md) |
+| Le ancore aggregate usate come conversione esatta | Errore di +0,0007 sul t03 e +0,0008 sul t25 | Leggere i sei scalati pubblicati nello status | [CP-0050](checkpoints/0050-credibilita-score-e-riserva.md) |
+| Una soglia nata per un'ipotesi usata per chiudere una linea | Il nullo «meno di 10 chiamate» chiuse il generatore con dispersione (t13); il prescreen PDS +0,01 trattato come condizione necessaria per le reti | Chiudere una linea richiede una prova sulla metrica obiettivo | [audit scientifico](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md) §3, [prescreen](../reports/analisi/lead_scientist_2026-09-29/neural/NN_PRESCREEN_AUDIT.md) |
+| Un calcolo riuscito letto come prova di utilità | «La rete è addestrata», «il job ha codice 0» | Il successo tecnico non è un risultato scientifico | [CP-0048](checkpoints/0048-rete-sorgenti-primo-seme.md) §7 |
+
+## Lezioni operative da non ripetere
+
+Trappole già incontrate, fuori dal registro degli incidenti dei job. Diverse erano scritte solo
+nella memoria privata di un agente: qui valgono per tutti.
+
+- **Colab.** Il log di un job si sincronizza solo alla fine; un dispatcher muto per ore vuol dire
+  runtime perso: i job con `.started` non ripartono e `/content/work` si perde
+  ([LAVORO §3](LAVORO.md#3-colab-generatore-controlmodel-e-banchi)). Salvare su Drive ogni
+  artefatto prima del passo successivo (E-20260929-003).
+- **Drive virtuale (G:).** La lettura di un file grande può fallire con un errore di I/O prima
+  dell'upload (E-20260929-007): copiarlo in locale e verificarne lo SHA completo prima del CLI.
+- **Orari.** Si leggono con `date` o dal commit, mai a memoria: il 27/09 un «00:45» scritto a
+  memoria era 00:25.
+- **Processi lunghi** (generazione, packaging, upload): si lanciano come processo Windows separato;
+  i comandi in background di una sessione vengono chiusi quando manca memoria.
+- **`vcc status`** può restituire solo l'ultimo invio ([CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md)):
+  salvare subito lo status completo di ogni invio.
+- **Disco.** Un candidato occupa circa 13 GB di picco: misurare lo spazio libero prima di generare
+  (il 30/09 alle 02:30 restavano 3,8 GB su C:). I file rigenerabili vanno nel Cestino, mai
+  cancellati in modo definitivo.
+- **Cartella condivisa fra agenti.** `git commit -- <file>` prende il file intero dal working
+  tree, anche le righe di altri (e7c933b, corretto da db32204); Codex mette segnaposto con
+  `git add -N`. Prima di committare: `git status`, `git diff --cached --stat`, poi solo i propri
+  file, per nome. Chi chiude una sessione committa il proprio lavoro (D-048): il 30/09 alle 02:07
+  circa 1.160 file di due sessioni chiuse erano ancora fuori dai commit.
+- **Copie di lavoro dentro l'albero.** Una copia della repo del 24/09 (`.runtime-deps/`, 858 file)
+  faceva comparire testi superati nelle ricerche; è stata spostata fuori il 30/09
+  (`reports/analisi/riordino_repo_2026-09-30/`). Nella cartella della repo non vanno copie, venv
+  o dati.
+- **Scratchpad di sessione.** Sono temporanei e possono sparire: i risultati vanno in `reports/`
+  prima di chiudere la sessione. Il 26/09 risultati verificati sono rimasti solo in uno scratchpad;
+  il 30/09 erano ancora lì, in attesa della decisione del proprietario.
+- **Identità dei contesti.** Nessun nome di linea accanto ad A, B o C nella repo, che è pubblica
+  (decisione del proprietario del 24/09): quel materiale sta nella cartella dati.
+- **Scorer installato.** `cell_eval2` nel venv contiene note degli organizzatori sui pannelli di
+  validazione: cercarle prima di dedurre ([PROGETTO §3](PROGETTO.md#3-che-cosa-sappiamo-e-guida-le-scelte)).

@@ -1,7 +1,8 @@
 # Mappa del progetto — VCC 2026
 
 **Prossimi passi:** [modello competitivo — piano operativo](piani/modello-competitivo.md),
-dai dati realmente usati al training e alla verifica indipendente sui sei membri.
+dai dati realmente usati al training e alla verifica indipendente sui sei membri. La direzione
+generale è nel §0; dove sta che cosa, per ambito, in [AMBITI.md](AMBITI.md).
 
 **Questo è il punto di ingresso per lo stato.** Il §0 dice dove siamo oggi;
 [PIANI.md](PIANI.md) indica i lavori aperti e promettenti, le dipendenze e i piani
@@ -40,6 +41,32 @@ Una sola coppia di semi non identifica il rumore, e diversi membri si compensano
 ([audit del 29/09](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md)). Il set finale
 arriva il **22 ottobre**, con tre contesti nuovi (D, E, F) e 300 perturbazioni nuove; le
 sottomissioni chiudono il **5 novembre** (§1).
+
+### Direzione generale
+
+**Proposta di sintesi del 30/09 (Claude), dalle prove citate.** Le priorità le fissa il
+proprietario in [PIANI.md](PIANI.md); la mappa per ambito è [AMBITI.md](AMBITI.md).
+
+1. **Il traguardo è il set finale D/E/F**, l'unico che conta per la classifica: tutta la catena
+   deve andare dall'input al `.vcc` su contesti e bersagli nuovi. Resta da fare la prova generale
+   in forma piena (azione 3 di [R-REV](piani/revisione-critica.md)), che chiede circa 17 GB liberi;
+   il 30/09 su C: ce n'erano 3,8.
+2. **La leva misurata è l'emissione.** Il t28 conferma in gara il verso del banco, cioè fedeltà e
+   reach che salgono, con un guadagno netto piccolo pagato in NMAE, Jaccard e MSE grezza
+   ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)). Il passo successivo è separare
+   ampiezza e dispersione e cercare varianti che non perdano NMAE, scegliendo con lo scorer vero su
+   una riserva mai valutata: il banco K562 dell'azione 4 e il passo 2 di
+   [R-COMP](piani/modello-competitivo.md), non il solo banco HepG2.
+3. **Il divario con i primi 100 sta soprattutto nella `mse`**, tosata a zero in tutti i nostri
+   invii (§3). La sola risposta comune non basta a colmarlo
+   ([audit del 29/09](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md), §2.4),
+   e nessun modello appreso ha ancora passato la sua regola: una rete nuova si prova sui sei
+   membri, con una riserva nuova.
+4. **I dati già pronti ma non usati**, come le diciannove linee HIPSCI e VIPerturb-seq (Flex, fuori
+   dalla ricetta), entrano con maschere esplicite e con la copertura tracciata
+   ([copertura del training](../reports/analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md)).
+5. **Metodo:** previsione registrata prima di ogni invio, lettura dai sei membri pubblicati, e
+   prima di concludere un controllo degli [errori già commessi](ERRORI.md#errori-di-metodo-già-commessi).
 
 ### I punteggi ufficiali
 
@@ -101,35 +128,22 @@ Le correzioni successive sulla portata degli score e sulla copertura del trainin
   [risultati e limiti](../reports/analisi/lead_scientist_2026-09-29/neural/RISULTATI_STACK_AB.md),
   [protocollo A/B](../reports/analisi/lead_scientist_2026-09-29/neural/PROTOCOLLO_STACK_AB.md).
 
-- **t28 registrato**, prima della generazione, il 29/09 alle 18:56 UTC: effetti t25 ×1,5,
-  dispersione per gene alla scala 1. Su 96 bersagli pubblici HepG2 disgiunti dallo sviluppo,
-  tre semi positivi, delta locale +0,028918 e IC97,5% [0,019526;0,039342]. Passa la regola
-  del banco; il guadagno viene soprattutto dalla fedeltà, con NMAE/Jaccard peggiori e
-  MSE grezza più alta. Non è un risultato VCC né una stima calibrata del guadagno ufficiale.
-  Il primo runtime Colab è andato perso prima del recupero del pacchetto. La rigenerazione
-  CPU ha salvato su Drive alle 20:41 UTC le 360.000 cellule con SHA256 identico al primo
-  tentativo; il packaging è completo alle 21:21 UTC con validatore ufficiale e payload
-  verificato bit per bit. SHA del file completo dal portatile verificato alle 21:42 UTC.
-  Il proprietario ha richiesto l'upload immediato. Il processo delle 21:53 UTC si è fermato
-  prima della chiamata CLI per un errore I/O del file virtuale Drive (E007): nessuna entry.
-  Recupero locale completato alle 22:28:32 UTC: SHA completo e otto metadata verificati.
-  Su richiesta del proprietario è stato eliminato solo l'intermedio t26 da 4,25 GB,
-  conservandone il contenitore con SHA verificato. **Upload completato alle 22:46 UTC**:
-  4.161.126.400 byte, MD5 verificato, job avviato; entry **ZvrYZ4UazadAyuq4AsDB**.
-  **Esito ufficiale `published`: +0,144845**, delta t25 +0,004607: nuovo massimo
-  osservato, non conclusivo secondo la regola prefissata. Confronto dei sei membri
-  completo; seguito automatico concluso, nessun altro invio.
-  [CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md),
+- **t28 valutato** ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)): effetti t25 ×1,5
+  e dispersione per gene alla scala 1, registrato prima di generare (29/09, 18:56 UTC).
+  **+0,144845**, rango 359, delta t25 +0,004607: nuovo massimo osservato, **non conclusivo**
+  per la regola. Sul banco HepG2 l'indice locale era +0,028918 (96 bersagli, tre semi,
+  IC97,5% [0,019526; 0,039342]), ma 95/96 bersagli erano già stati valutati e le ancore
+  aggregate sono approssimate ([CP-0050](checkpoints/0050-credibilita-score-e-riserva.md)).
+  La cronaca operativa (runtime Colab perso, rigenerazione identica alle 20:41 UTC, packaging
+  alle 21:21, errore di I/O di Drive E-20260929-007, recupero locale alle 22:28, upload alle
+  22:46 UTC, entry ZvrYZ4UazadAyuq4AsDB) è in [ricevuta dell'upload](../reports/invii/trial_2026-09-29/INVIO_T28.md),
+  [decisione con i limiti](../reports/invii/trial_2026-09-29/DECISIONE_INVIO_T28.md),
+  [recupero verificato](../reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/RISULTATO_STAGE45_R2.md)
+  e [autorizzazione](../reports/invii/trial_2026-09-29/autorizzazione_lead_2026-09-29.md).
+  Evidenza: [registrazione](../reports/invii/prediction_t28_2026-09-29/prediction.json),
   [confronto](../reports/invii/prediction_t28_2026-09-29/comparison.json),
-  [ricevuta dell'upload](../reports/invii/trial_2026-09-29/INVIO_T28.md).
-  La conferma riusa 95/96 target:
-  non è una riserva indipendente dall'intera ricerca; le ancore aggregate sono approssimate.
-  [Decisione con i limiti](../reports/invii/trial_2026-09-29/DECISIONE_INVIO_T28.md),
+  [risultati del banco](../reports/analisi/lead_scientist_2026-09-29/RISULTATI_GENERATORE_CONFERMA.md),
   [audit degli score](../reports/analisi/lead_scientist_2026-09-29/SCORE_CREDIBILITA.md).
-  [Risultati](../reports/analisi/lead_scientist_2026-09-29/RISULTATI_GENERATORE_CONFERMA.md),
-  [registrazione](../reports/invii/prediction_t28_2026-09-29/prediction.json),
-  [recupero verificato](../reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/RISULTATO_STAGE45_R2.md),
-  [autorizzazione](../reports/invii/trial_2026-09-29/autorizzazione_lead_2026-09-29.md).
 
 - **Apprendimento dagli errori applicato ai nuovi job:** [ERRORI.md](ERRORI.md) collega
   gli incidenti con causa, correzione, test e prove locali/remoti al preflight
@@ -178,20 +192,22 @@ Le correzioni successive sulla portata degli score e sulla copertura del trainin
   sessione locale (azione 1 di R-REV); serve il proprietario per ciò che sta solo nella sessione di
   un altro agente.
 - Il push in `main` della riorganizzazione e della revisione del 28/09, e le altre voci del §2 della
-  scheda [R-REV](piani/revisione-critica.md).
+  scheda [R-REV](piani/revisione-critica.md). Dal 30/09 anche i commit locali della notte: il
+  lavoro di Codex e della sessione `f4f38e58`, e il riordino della repo
+  ([riordino](../reports/analisi/riordino_repo_2026-09-30/RIORDINO.md)); nessuno è su GitHub.
+- Gli scratchpad temporanei di undici sessioni chiuse, fra cui quello del 26/09 con risultati
+  verificati mai trascritti: se spostarli nella cartella dati e se trascriverli
+  ([riordino](../reports/analisi/riordino_repo_2026-09-30/RIORDINO.md), §4).
+- Lo spazio su C:, 3,8 GB liberi il 30/09: la prova generale in forma piena ne chiede circa 17.
 
 ### Il prossimo passo
 
-**Scelto dal proprietario il 28/09 alle 12:30: la scheda [R-REV](piani/revisione-critica.md).**
-Raccoglie in ordine le azioni della [revisione critica del 28/09](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md),
-per una sessione sul portatile, con la radice dati:
-1. recuperare l'evidenza citata ma mai committata;
-2. tarare il proxy dei banchi sulle differenze ufficiali già misurate;
-3. la prova generale del 22 ottobre, senza invio.
-
-Il §0 della scheda dice come portare nel `main` del portatile il branch dove stanno revisione e
-riorganizzazione: è il primo passo. La coda completa resta in [PIANI.md](PIANI.md) e nelle sue
-schede; prima di prendere un'attività verificare chi la sta seguendo.
+**Dal 30/09 la direzione è quella del paragrafo [Direzione generale](#direzione-generale)**, e le
+priorità correnti sono in [PIANI.md](PIANI.md): R-COMP dal 29/09. Restano validi gli incarichi
+della scheda [R-REV](piani/revisione-critica.md), scelta dal proprietario il 28/09 alle 12:30, che
+raccoglie in ordine le azioni della [revisione critica del 28/09](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md):
+le azioni 2 e 6 sono chiuse, la 3 attende la forma piena della prova generale, la 4 il job Colab.
+Prima di prendere un'attività verificare nella scheda chi la sta seguendo.
 
 **Ricerca esplorativa del 25 settembre:** [CP-0040](checkpoints/0040-biologia-contesti-donatori.md)
 registra pattern con segno e di contesto, limiti della confidenza fra donatori CD4

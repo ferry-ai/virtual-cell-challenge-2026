@@ -14,6 +14,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-048 | Una mappa per ambiti (`docs/AMBITI.md`) instrada ogni area del lavoro; gli errori di metodo e le trappole operative stanno in `docs/ERRORI.md`; ogni sessione committa il proprio lavoro prima di chiudere, e quello lasciato da una sessione finita si committa com'è; le cartelle grandi hanno un indice; gli output pesanti vanno nella radice dati con un manifest | attiva | 2026-09-30 | Richiesta del proprietario in chat del 30 settembre; `reports/analisi/riordino_repo_2026-09-30/RIORDINO.md` |
 | D-047 | Si possono scegliere modifiche congiunte dopo un banco fattoriale preregistrato e una conferma separata; l'attribuzione ai singoli fattori resta distinta dalla scelta del candidato | attiva | 2026-09-29 | Mandato del proprietario alla lead; `reports/analisi/lead_scientist_2026-09-29/PROTOCOLLO_GENERATORE.md`, `reports/analisi/lead_scientist_2026-09-29/RISULTATI_GENERATORE_SVILUPPO.md` |
 | D-046 | L'evidenza sta in `reports/<categoria>/<tema>_<data>/`, con un indice per categoria che dice data, nocciolo, validità e peso di ogni cartella; i percorsi scritti prima si seguono per nome un livello più giù; le analisi superate stanno in `docs/storico/` | attiva | 2026-09-28 | Richiesta del proprietario in chat del 28 settembre; `reports/README.md`, `reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md` |
 | D-045 | Nessun limite preventivo: gli agenti non stimano i tempi e non chiudono la giornata perché un candidato non passa la sua regola; finché la quota del giorno è aperta si passa ad altri candidati | attiva | 2026-09-26 | Richiesta del proprietario in chat del 26 settembre, pomeriggio |
@@ -63,6 +64,37 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-048 — Una mappa per ambiti, gli errori in un posto, niente lavoro fuori dai commit
+
+- **Mandato:** il 30 settembre, alle 00:40, il proprietario ha chiesto di riordinare la repo
+  perché gli agenti si orientino senza perdersi, le scoperte del 29/09 restino in evidenza, ci
+  sia una direzione generale, le informazioni si ritrovino per ambito, le dimensioni scendano,
+  ogni agente impari dagli errori dei precedenti e nessuna informazione vada persa.
+- **Perché:** quella notte circa 1.160 file di due sessioni chiuse erano fuori dai commit; la
+  cartella della revisione lead contava circa 1.070 file senza un indice; una copia della repo
+  del 24/09 dentro l'albero faceva comparire testi superati nelle ricerche; le lezioni operative
+  stavano in parte solo nella memoria privata di un agente; un fatto decisivo (CD4 è Flex) era
+  in un CSV della repo dal 12/09 senza che nessun indice lo facesse emergere.
+- **Decisione:**
+  - `docs/AMBITI.md` ha una sezione per ambito: stato con il tipo di affermazione, letture
+    prime, evidenza, scheda del piano. Si aggiorna nello stesso commit dell'evidenza che la
+    cambia; il controllo documentale ne verifica i link, come per `docs/ERRORI.md`;
+  - `docs/ERRORI.md` tiene, oltre ai guasti dei job, gli errori di metodo già commessi e le
+    trappole operative; un errore nuovo si aggiunge come riga con la sua fonte;
+  - ogni sessione committa il proprio lavoro prima di chiudere, file per file. Il lavoro che una
+    sessione finita ha lasciato fuori si committa com'è, accreditandolo all'autore;
+  - una cartella di report con molti file o più studi ha un `README.md` che la indicizza per
+    ambito, con che cosa leggere prima;
+  - gli output pesanti delle macchine, oltre circa 1 MB, vanno nella radice dati con un manifest
+    committato di percorsi, dimensioni e hash, salvo che siano l'unica evidenza di un verdetto;
+    nell'albero non stanno copie della repo, venv, cache o dati.
+- **Che cosa non segue:** nessun report o checkpoint è stato modificato o spostato; la cartella
+  del 29/09 è stata committata intera, perché i suoi file grandi sono la catena di verifica dei
+  verdetti; la trascrizione degli scratchpad di altre sessioni resta una decisione del
+  proprietario.
+- **Riaprire se:** la mappa per ambiti fa leggere più di quanto risparmia, oppure un agente non
+  la tiene aggiornata e diventa una fonte stantia: in quel caso si accorcia, non si duplica.
 
 ### D-047 — Le interazioni richiedono confronti congiunti
 

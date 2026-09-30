@@ -12,6 +12,10 @@ pseudobulk di 400 cellule, con bootstrap appaiato sui bersagli. **Sono proxy**: 
 sorgente rumorosa, i bersagli sono i suoi, e fedeltà, reach, Jaccard e MSE non entrano. Il solo
 confronto con lo scorer vero è il [banco HepG2](../generatore_e_banchi/banco_hepg2_v2_2026-09-26/RISULTATI.md).
 
+**Dal 29/09** l'[audit scientifico](../analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md)
+corregge la lettura «ricetta satura»: le ultime modifiche hanno un guadagno netto piccolo, ma
+ampiezza e generatore non sono confinati, e diversi confronti cambiavano più fattori insieme.
+
 **Da dove viene la ricetta di oggi:** t08 (K562 + CD4) → t11 (+ HCT116) → t15 e t16
 (ampiezza × 2 e × 4, sul punteggio ufficiale) → t19/t20 (effetti ristretti a 1,576 + cis,
 [banco varianti](banco_varianti_2026-09-25/CORREZIONE.md) e [modulo cis](modulo_cis_2026-09-26/RISULTATI.md))

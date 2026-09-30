@@ -12,6 +12,11 @@ Indice generale: [../README.md](../README.md). Precedenti chiusi: il predittore 
 condizionato del 18–19/09 ([storico/conditioned_2026-09-18](../storico/conditioned_2026-09-18/),
 CP-0026), che con due contesti di training non generalizzava.
 
+**Dal 29/09**, la rete che pesa le sorgenti (due semi) e il modello preaddestrato Stack (varianti
+A e B) stanno nella revisione lead: [indice, sezioni «Rete sulle sorgenti» e «Stack»](../analisi/lead_scientist_2026-09-29/README.md#rete-sulle-sorgenti).
+Nessuno dei due passa la sua regola ([CP-0049](../../docs/checkpoints/0049-rete-sorgenti-replica.md),
+[CP-0051](../../docs/checkpoints/0051-stack-ab-negativi.md)).
+
 **Dove siamo (misurato, 28/09):** nessun modello passa la sua regola. Dove un modello batte la
 versione cieca, **non batte lo scambio**: il contesto giusto non aiuta più di uno sbagliato. La
 perdita sulla famiglia tenuta fuori è minima nei primi 50–100 passi e poi sale, mentre quella di

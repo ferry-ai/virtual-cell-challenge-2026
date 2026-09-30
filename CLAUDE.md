@@ -2,27 +2,31 @@
 
 ## Start here
 
-**Handoff of 28 September, afternoon.** The owner asked that the next session act on the
-critical review of that day. Its actions, in order, are the plan card
-[`docs/piani/revisione-critica.md`](docs/piani/revisione-critica.md) (R-REV): read it right after
-PROGETTO §0. Its §0 says how to bring that work into the laptop's `main`, if it is not there yet.
-Remove this paragraph when R-REV closes.
+**State on 30 September.** Codex's lead session of 29/09 corrected premises the project relied
+on (CD4 is already Flex; the plateau since t16 is not saturation), and t28 scored +0.144845, the
+best observed, inconclusive by its registered rule. Its findings are indexed in
+[`reports/analisi/lead_scientist_2026-09-29/README.md`](reports/analisi/lead_scientist_2026-09-29/README.md).
+Rewrite this paragraph when the state changes.
 
-1. [`docs/PROGETTO.md`](docs/PROGETTO.md) §0 and §5 — where the project stands today, on one
-   page: best score, what is in flight, what waits for the owner, the known weaknesses.
-2. [`docs/PIANI.md`](docs/PIANI.md) — open priorities, dependencies and the relevant plan
-   card. Before taking work, check its assignment and the shared-workspace rules in §3.
-3. [`reports/README.md`](reports/README.md) — the evidence to read first, and one index per
-   category with the date, core, validity and weight of every report folder.
-4. The last three rows of [`docs/checkpoints/INDICE.md`](docs/checkpoints/INDICE.md).
-5. The row below that matches your task, and only what it names. For anything that runs
-   code, that includes [`docs/LAVORO.md`](docs/LAVORO.md), the procedural guide.
+1. [`docs/PROGETTO.md`](docs/PROGETTO.md) §0 — where the project stands and the general
+   direction, on one page; §5 lists the known weaknesses.
+2. [`docs/AMBITI.md`](docs/AMBITI.md) — one section per area of the work (scoring, submissions,
+   generator, data, models, final set, operations, method): state, what to read first, plan card.
+3. [`docs/PIANI.md`](docs/PIANI.md) — open priorities and the relevant plan card. Before taking
+   work, check its assignment and the shared-workspace rules in §3.
+4. [`docs/ERRORI.md`](docs/ERRORI.md) — the method errors already made and the operational traps:
+   read them before you conclude anything or queue a job.
+5. The last three rows of [`docs/checkpoints/INDICE.md`](docs/checkpoints/INDICE.md), then the
+   row below that matches your task, and only what it names. For anything that runs code, that
+   includes [`docs/LAVORO.md`](docs/LAVORO.md), the procedural guide.
 
 Before you rely on any other document, check its row in [`docs/REGISTRO.md`](docs/REGISTRO.md):
-several contain conclusions that later work corrected.
+several contain conclusions that later work corrected. The evidence, by category, is indexed in
+[`reports/README.md`](reports/README.md).
 
 | Your task | Read | Leave aside |
 |---|---|---|
+| Find what is known about one area, and where its evidence is | that area's section of `docs/AMBITI.md` | browsing `reports/` or `docs/` folder by folder |
 | Choose, resume or hand off an open plan | `docs/PIANI.md`; `docs/piani/CLAUDE.md`; the one relevant plan card | treating old reports' next steps as current assignments |
 | Prepare, generate or submit a trial | LAVORO §1–2; `reports/CLAUDE.md`, which lists what a submission leaves, with a complete example; `reports/invii/README.md`; the latest recipe in `configs/recipes/` | the analyses of 11–15 September in `docs/storico/` |
 | Read an official score | LAVORO §2, point 7; `reports/gara/anchors_2026-09-17/`; the latest checkpoint as a model | the benches' local scores, which are not VCC scores |
@@ -52,7 +56,7 @@ vcc2026/
 ├── scripts/             the numbered stages, and the wrappers py.cmd and vcc.cmd
 ├── tests/               unittest suite; test_live_tree keeps these maps true
 ├── notebooks/           the Colab dispatcher and its job scripts (docs/LAVORO.md §3)
-├── docs/                map, working guide, decisions, registry, archive, checkpoints; storico/
+├── docs/                map, areas, working guide, errors, decisions, registry, archive, checkpoints; storico/
 └── reports/             the evidence, reports/<categoria>/<tema>_<data>/, with a README per category
 C:/Users/ferra/vcc2026-data/   data, venv and artifacts, outside the repository (D-001)
 ```
@@ -177,6 +181,13 @@ stay readable.
   annotated tag, rows in `docs/ARCHIVIO.md`, then `git rm` (D-040, `docs/LAVORO.md` §5).
   An untracked file goes to the Recycle Bin, never through a hard delete.
 - New material in `docs/` or `reports/` needs a registry row; the checker enforces it.
+- **Commit your own work before your session ends**, file by file. Evidence that a finished
+  session left uncommitted is committed as it is by the next session, crediting its author;
+  session scratchpads are temporary, so results go into `reports/` first (D-048).
+- A report folder with many files or several sub-studies gets a `README.md` that indexes it by
+  area, with what to read first; bulky machine outputs (over about 1 MB) go to the data root with
+  a committed manifest of paths, sizes and hashes, unless they are the only evidence of a verdict
+  (D-048). No copies of the repository, venvs or caches inside the working tree.
 - There is one branch, `main`, on the laptop and on GitHub, where the repository is
   **public**: whatever is pushed is published. Push only with the owner's go, and never
   commit a secret or data that must stay private. Retired branches are tags `archivio/*`

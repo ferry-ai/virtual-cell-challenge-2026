@@ -377,6 +377,9 @@ def check_links(errors: list[str]) -> None:
     # route agents too (D-046): a link there to a report that was never committed is caught.
     files += [path for path in (REPO_ROOT / "docs" / "PIANI.md", REPO_ROOT / "docs" / "GENERALIZZAZIONE.md",
                                 REPO_ROOT / "reports" / "README.md") if path.exists()]
+    # The map by area and the errors not to repeat are read at the start of every task (D-048).
+    files += [path for path in (REPO_ROOT / "docs" / "AMBITI.md", REPO_ROOT / "docs" / "ERRORI.md")
+              if path.exists()]
     files += sorted((REPO_ROOT / "docs" / "piani").glob("*.md"))
     files += sorted((REPO_ROOT / "docs" / "storico").glob("README.md"))
     files += sorted((REPO_ROOT / "reports").glob("*/README.md"))

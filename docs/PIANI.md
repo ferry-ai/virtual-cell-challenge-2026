@@ -2,7 +2,9 @@
 
 **Priorità aggiornata al 30/09:** [R-COMP — modello competitivo](piani/modello-competitivo.md):
 t28 concluso ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)); riconciliare i dataset,
-congelare una riserva indipendente e verificare un nuovo modello.
+congelare una riserva indipendente e verificare un nuovo modello. La direzione generale che lega
+i piani è nel §0 di [PROGETTO](PROGETTO.md#direzione-generale); dove sta che cosa, per ambito, in
+[AMBITI](AMBITI.md).
 
 Creato il 24 settembre 2026 su richiesta del proprietario. **Questo è l'indice
 operativo dei piani**, da leggere dopo lo stato in [PROGETTO.md](PROGETTO.md) §0.

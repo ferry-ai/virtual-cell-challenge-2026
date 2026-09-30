@@ -11,6 +11,8 @@ indici e misure. Indice generale: [../README.md](../README.md).
   CD4 è `GEMX_flex_v1` in tutte le 12 righe dei metadati originali: la premessa «tutte le
   sorgenti tranne VIPerturb sono in 3'» è corretta dall'[audit del 29/09](../analisi/lead_scientist_2026-09-29/AUDIT_DATI.md)
   e dalla scheda [R-021](../../docs/REGISTRO.md#r-021--piattaforma-plateau-e-inferenze-causali-nelle-sintesi).
+- **Quali sorgenti sono davvero entrate in un modello**, e quali sono pronte ma mai usate (per
+  esempio diciannove linee HIPSCI): [copertura del training](../analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md), 29/09.
 - **Gli universi del 26/09 di CD4, HCT116 e HEK293T hanno l'artefatto del pseudoconteggio**: per i
   banchi dal 27/09 si usano quelli ricostruiti (`*_me1`, [universo_corretto](universo_corretto_2026-09-27/RISULTATI.md)).
   K562 passa per un altro stimatore e non ne soffre.

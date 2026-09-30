@@ -11,6 +11,10 @@ pubbliche. Indice generale: [../README.md](../README.md).
   `ControlModel` (stadio 76) quasi nessuna, ma nel t14 ha abbassato la fedeltà.
 - **Il solo banco con lo scorer vero è HepG2** (un contesto, bersagli essenziali, solo K562 come
   sorgente, verità su metà delle cellule): è la prova più vicina alla gara, non la gara.
+- **Il banco fattoriale ampiezza × dispersione del 29/09**, che ha scelto il t28, sta nella
+  revisione lead: [indice, sezione «Generatore e t28»](../analisi/lead_scientist_2026-09-29/README.md#generatore-e-t28).
+  Sul banco dava +0,0289 d'indice locale, in gara +0,0046
+  ([CP-0052](../../docs/checkpoints/0052-t28-punteggio-ufficiale.md)).
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
