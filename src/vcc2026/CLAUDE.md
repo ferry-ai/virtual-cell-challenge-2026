@@ -10,6 +10,7 @@ disagree, so update the row in the same commit as the import.
 | `config.py` | Challenge constants and filesystem paths, loaded from `configs/config.yaml` | 45, 48, 71, 72, 74, 76, 77, 79, 83, 85, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106 | `genes`, `panel`, `trials` |
 | `ctj.py` | Frozen context, target and joint generalisation benchmarks in effect space: splits, linear baselines, context-swap control | 105 | — |
 | `de_tools.py` | The scorer's own differential-expression call, usable outside a full scoring run | 72, 79, 83 | `bench` |
+| `depth_generator.py` | Optional control-depth-bin generator with streaming fit and population pooled-profile calibration | 45 | — |
 | `generator.py` | A learned generative model of one context's control cells (`ControlModel`) | 72, 73, 75, 76 | — |
 | `genes.py` | The official 18,533-gene output axis | 45, 74, 76, 98, 100, 101, 103, 104, 105, 106 | — |
 | `inference.py` | From a predicted log2 fold change to the raw counts a submission contains; `trial01_cells` is stage 45's per-block sequence for the benches | 45, 72, 73, 76, 83 | — |
@@ -22,7 +23,7 @@ disagree, so update the row in the same commit as the import.
 | `remote_csr.py` | Selected rows of a remote CSR matrix, read as exact byte ranges in parallel | 97, 102 | — |
 | `remote_ranges.py` | Budgeted HTTP random access to public files | 97 | — |
 | `resources.py` | Measured machine limits, and the peak memory a run actually used | 45, 48, 98, 100, 106 | `packaging` |
-| `sampling.py` | Turn predicted mean expression profiles into raw count matrices | 45, 72, 73, 75 | `inference` |
+| `sampling.py` | Turn predicted mean expression profiles into raw count matrices | 45, 72, 73, 75 | `depth_generator`, `inference` |
 | `sc_effects.py` | Per-target effects estimated from single cells, with their own uncertainty | 73 | `predictor_sc` |
 | `sc_stream.py` | Read a dense, contiguous single-cell h5ad in one sequential pass | 71, 75, 76, 77, 79, 83, 98 | `predictor_sc` |
 | `submission.py` | Stream a prediction to .h5ad without ever holding the full matrix in RAM | 45, 76 | — |

@@ -42,6 +42,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from vcc2026 import config
+from vcc2026.depth_generator import DepthGenerator
 from vcc2026.inference import (
     count_generation_diagnostics,
     nearest_basal_context,
@@ -111,12 +112,25 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--gene-dispersion", action="store_true",
                    help="fit a per-gene Gamma-Poisson dispersion to each context's zero fractions "
                         "(sampling.fit_gene_dispersion) instead of Poisson around the pooled profile")
+    p.add_argument("--gene-dispersion-scale", type=float, default=1.0,
+                   help="multiply the fitted per-gene dispersion (requires --gene-dispersion); "
+                        "0 reproduces Poisson, 1 keeps the fitted dispersion")
+    p.add_argument("--depth-bins", action="store_true",
+                   help="experimental Poisson generator conditioned on control library-depth bins; "
+                        "matches the same population pooled profile and selects bin edges on controls only")
     p.add_argument("--effects-scale", type=float, default=1.0,
                    help="external_effects: multiply every file's lfc (0 = the null of this generator)")
     p.add_argument("--effects", action="append", default=None, metavar="CTX=PATH",
                    help="external_effects trials: per-context npz from stage 100 "
                         "(targets, genes, lfc in ln units, observed)")
-    return p.parse_args()
+    args = p.parse_args()
+    if not np.isfinite(args.gene_dispersion_scale) or args.gene_dispersion_scale < 0:
+        p.error("--gene-dispersion-scale must be finite and non-negative")
+    if args.gene_dispersion_scale != 1.0 and not args.gene_dispersion:
+        p.error("--gene-dispersion-scale requires --gene-dispersion")
+    if args.depth_bins and (args.gene_dispersion or args.overdispersion is not None):
+        p.error("--depth-bins cannot use pooled-profile dispersion; omit --gene-dispersion and --overdispersion")
+    return args
 
 
 def read_basals(contexts, controls: Path, axis) -> dict:
@@ -144,8 +158,10 @@ def read_basals(contexts, controls: Path, axis) -> dict:
     return basals
 
 
-def fit_dispersions(basals: dict, n_genes: int, seed: int) -> dict:
+def fit_dispersions(basals: dict, n_genes: int, seed: int, *, scale: float = 1.0) -> dict:
     """Per-gene Gamma-Poisson dispersion of each context, matched to its controls' zero fractions."""
+    if not np.isfinite(scale) or scale < 0:
+        raise ValueError("dispersion scale must be finite and non-negative")
     gene_phi = {}
     for ctx, prof in basals.items():
         with h5py.File(prof.source_path, "r") as f:
@@ -155,6 +171,8 @@ def fit_dispersions(basals: dict, n_genes: int, seed: int) -> dict:
                 detected += np.bincount(idx_ds[lo:lo + 20_000_000], minlength=n_genes)
         zero_fraction = 1.0 - detected / prof.n_cells
         gene_phi[ctx] = fit_gene_dispersion(prof.profile, prof.library_sizes, zero_fraction, seed=seed)
+        if scale != 1.0:
+            gene_phi[ctx] = gene_phi[ctx] * scale
         expressed = prof.profile > 0
         print(f"  dispersion {ctx}: {int((gene_phi[ctx] > 0).sum()):,} genes overdispersed, "
               f"median phi {np.median(gene_phi[ctx][expressed]):.3f}")
@@ -196,13 +214,18 @@ class Generated:
 
 
 def generate(pred_path: Path, axis, ch, contexts, targets, basals: dict, predictions: dict,
-             gene_phi: dict, overdispersion, cells_per_pert: int, rng) -> Generated:
+             gene_phi: dict, overdispersion, cells_per_pert: int, rng, *, depth_models: dict | None = None) -> Generated:
     """Stream one block of cells per (context, target) to the submission file.
 
     Blocks go context by context, targets in panel order. The random stream follows that
     order, so the order is part of the output: two runs with the same seed and inputs write
     the same bytes.
     """
+    if depth_models is not None:
+        if gene_phi or overdispersion is not None:
+            raise ValueError("Depth bins cannot use pooled-profile dispersion")
+        if set(depth_models) != set(contexts):
+            raise ValueError("Depth models must cover exactly the generated contexts")
     basal_profiles = {c: b.profile for c, b in basals.items()}
     t_gen = time.perf_counter()
     per_block = []
@@ -223,13 +246,27 @@ def generate(pred_path: Path, axis, ch, contexts, targets, basals: dict, predict
             for ti, target in enumerate(targets):
                 delta, observed = predictions[ctx][target]
                 profile, detail = predicted_profile(basal.profile, delta, observed)
-                libs = resample_library_sizes(basal.library_sizes, cells_per_pert, rng)
-                block = sample_counts(
-                    profile, libs, rng,
-                    max_stored_per_cell=ch.max_stored_per_cell,
-                    max_counts_per_cell=ch.max_counts_per_cell,
-                    overdispersion=gene_phi.get(ctx, overdispersion),
-                )
+                depth_detail = None
+                if depth_models is None:
+                    libs = resample_library_sizes(basal.library_sizes, cells_per_pert, rng)
+                    block = sample_counts(
+                        profile, libs, rng,
+                        max_stored_per_cell=ch.max_stored_per_cell,
+                        max_counts_per_cell=ch.max_counts_per_cell,
+                        overdispersion=gene_phi.get(ctx, overdispersion),
+                    )
+                else:
+                    block, depth_detail = depth_models[ctx].sample(
+                        profile, cells_per_pert, rng,
+                        max_stored_per_cell=ch.max_stored_per_cell,
+                        max_counts_per_cell=ch.max_counts_per_cell,
+                    )
+                    expected = profile / profile.sum()
+                    flat = basal.profile / basal.profile.sum()
+                    depth_detail["max_expected_unobserved_fraction_change"] = (
+                        float(np.max(np.abs(expected[~observed] - flat[~observed]))) if (~observed).any() else 0.0
+                    )
+                    detail["depth_bins"] = depth_detail
                 shifts.append(detail["compositional_shift_log2"])
 
                 writer.add(block, target_gene=target, context=ctx)
@@ -244,6 +281,8 @@ def generate(pred_path: Path, axis, ch, contexts, targets, basals: dict, predict
                     "max_counts_in_a_cell": float(np.asarray(block.sum(axis=1)).max()),
                     "compositional_shift_log2": detail["compositional_shift_log2"],
                 })
+                if depth_detail is not None:
+                    per_block[-1]["depth_bins"] = depth_detail
                 if block_index in diag_pick:
                     best, scores = nearest_basal_context(block_sum, basal_profiles)
                     diag = count_generation_diagnostics(block, basal)
@@ -333,7 +372,14 @@ def main() -> None:
     basals = read_basals(contexts, controls, axis)
     basal_seconds = time.perf_counter() - t_basal
     basal_profiles = {c: b.profile for c, b in basals.items()}
-    gene_phi = fit_dispersions(basals, len(axis), seed) if args.gene_dispersion else {}
+    gene_phi = fit_dispersions(basals, len(axis), seed, scale=args.gene_dispersion_scale) if args.gene_dispersion else {}
+    depth_models = None
+    if args.depth_bins:
+        depth_models = {}
+        for ctx, basal in basals.items():
+            depth_models[ctx] = DepthGenerator.fit_h5ad(basal.source_path, basal.library_sizes, basal.profile)
+            print(f"  depth bins {ctx}: {depth_models[ctx].diagnostics['selected']}; "
+                  f"control CPM RMSE {depth_models[ctx].diagnostics['candidate_rmse']}")
 
     # Contexts must be distinguishable for the provenance check to mean
     # anything: if two basal states were identical, a swap would be invisible
@@ -353,13 +399,16 @@ def main() -> None:
     if gene_phi:
         support["gene_dispersion"] = {
             ctx: {"method": "sampling.fit_gene_dispersion: zero-fraction matching, per gene",
+                  "scale": args.gene_dispersion_scale,
                   "genes_overdispersed": int((phi > 0).sum()),
                   "phi_quantiles_expressed": [float(q) for q in np.quantile(phi[basals[ctx].profile > 0], [0.1, 0.5, 0.9])]}
             for ctx, phi in gene_phi.items()}
+    if depth_models is not None:
+        support["depth_bins"] = {ctx: model.diagnostics for ctx, model in depth_models.items()}
 
     # --- generate, then check that each context still looks like itself ----
     gen = generate(pred_path, axis, ch, contexts, targets, basals, predictions, gene_phi,
-                   args.overdispersion, cells_per_pert, rng)
+                   args.overdispersion, cells_per_pert, rng, depth_models=depth_models)
     n_obs, nnz, gen_seconds = gen.n_obs, gen.nnz, gen.seconds
     size_bytes = pred_path.stat().st_size
     context_check = check_context_provenance(contexts, gen.context_totals, basal_profiles)
@@ -450,6 +499,9 @@ def main() -> None:
         "count_generation": {
             "sampled_blocks": gen.sampled_blocks,
             "zero_effect_artefact_note": (
+                "Depth bins match the population pooled profile while approximating control mean-per-cell CPM; "
+                "finite sampled profiles and DE calls still require empirical validation."
+                if args.depth_bins else
                 "The generated/real nnz ratio is above 1 even at zero predicted "
                 "effect, because a pooled mean profile is less sparse than any "
                 "single cell: an artefact of the generator, present before any "
