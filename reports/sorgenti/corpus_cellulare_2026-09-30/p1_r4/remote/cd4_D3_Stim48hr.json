@@ -1,0 +1,230 @@
+{
+ "url": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D3_Stim48hr.assigned_guide.h5ad",
+ "bytes": 137830572362,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csr_matrix",
+  "shape": [
+   2607532,
+   18130
+  ],
+  "dtype": "float32",
+  "stored": 11445647009,
+  "compression": null,
+  "chunks": [
+   8809
+  ],
+  "sample_integer": true,
+  "sample_max": 456.0
+ },
+ "layers": {},
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "PuroR",
+   "_index",
+   "guide_group",
+   "guide_id",
+   "guide_type",
+   "lane_id",
+   "low_quality",
+   "n_genes_by_counts",
+   "pct_counts_mt",
+   "perturbed_gene_id",
+   "perturbed_gene_name",
+   "top_guide_UMI_counts",
+   "total_counts"
+  ],
+  "describe": {
+   "PuroR": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 2607532,
+    "sample_min": 0.0,
+    "sample_max": 5.4686994552612305
+   },
+   "_index": {
+    "kind": "strings",
+    "n": 2607532,
+    "distinct": 2607532,
+    "top": {
+     "AAACAAGCAAACAAGAACTACTCA-1_CD4i_R2L29_CD4i_R2_D3_Stim48hr_CD4i_R2_Ultima": 1,
+     "AAACAAGCAAACAAGAACTACTCA-1_CD4i_R2L46_CD4i_R2_D3_Stim48hr_CD4i_R2_Ultima": 1,
+     "AAACAAGCAAACAAGAAGAGGCAA-1_CD4i_R2L43_CD4i_R2_D3_Stim48hr_CD4i_R2_Ultima": 1,
+     "AAACAAGCAAACAAGAAGTGAGTG-1_CD4i_R2L43_CD4i_R2_D3_Stim48hr_CD4i_R2_Ultima": 1,
+     "AAACAAGCAAACAATCACTACTCA-1_CD4i_R2L37_CD4i_R2_D3_Stim48hr_CD4i_R2_Ultima": 1,
+     "AAACAAGCAAACAATCAGAGGCAA-1_CD4i_R2L30_CD4i_R2_D3_Stim48hr_CD4i_R2_Ultima": 1,
+     "AAACAAGCAAACAATCAGAGGCAA-1_CD4i_R2L33_CD4i_R2_D3_Stim48hr_CD4i_R2_Ultima": 1,
+     "AAACAAGCAAACAATCAGTGAGTG-1_CD4i_R2L30_CD4i_R2_D3_Stim48hr_CD4i_R2_Ultima": 1,
+     "AAACAAGCAAACACGCACTACTCA-1_CD4i_R2L33_CD4i_R2_D3_Stim48hr_CD4i_R2_Ultima": 1,
+     "AAACAAGCAAACACGCAGAGGCAA-1_CD4i_R2L33_CD4i_R2_D3_Stim48hr_CD4i_R2_Ultima": 1,
+     "AAACAAGCAAACACGCAGTGAGTG-1_CD4i_R2L28_CD4i_R2_D3_Stim48hr_CD4i_R2_Ultima": 1,
+     "AAACAAGCAAACACGCAGTGAGTG-1_CD4i_R2L35_CD4i_R2_D3_Stim48hr_CD4i_R2_Ultima": 1
+    }
+   },
+   "guide_group": {
+    "kind": "categorical",
+    "n": 2607532,
+    "distinct": 3,
+    "top": {
+     "targeting single sgRNA": 1896516,
+     "multi sgRNA": 447131,
+     "no sgRNA": 263885
+    }
+   },
+   "guide_id": {
+    "kind": "categorical",
+    "n": 2607532,
+    "distinct": 21187,
+    "top": {
+     "multi_sgRNA": 447131,
+     "<NA>": 263885,
+     "TRAF3-2": 2968,
+     "PDLIM1-2": 2316,
+     "PRDM1-1": 2039,
+     "STAMBPL1-1": 1902,
+     "ATF7IP-1": 1825,
+     "LRRC37A3-1": 1699,
+     "SLC31A2-1": 1632,
+     "EN2-1": 1619,
+     "PPP4R3B-2": 1619,
+     "BRD4-2": 1617
+    }
+   },
+   "guide_type": {
+    "kind": "categorical",
+    "n": 2607532,
+    "distinct": 2,
+    "top": {
+     "targeting": 2265921,
+     "<NA>": 263885,
+     "non-targeting": 77726
+    }
+   },
+   "lane_id": {
+    "kind": "categorical",
+    "n": 2607532,
+    "distinct": 24,
+    "top": {
+     "CD4i_R2L33": 115318,
+     "CD4i_R2L39": 114468,
+     "CD4i_R2L29": 113709,
+     "CD4i_R2L35": 112188,
+     "CD4i_R2L36": 112114,
+     "CD4i_R2L42": 111819,
+     "CD4i_R2L34": 111456,
+     "CD4i_R2L40": 111213,
+     "CD4i_R2L37": 110179,
+     "CD4i_R2L43": 109194,
+     "CD4i_R2L32": 108553,
+     "CD4i_R2L47": 108225
+    }
+   },
+   "low_quality": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 2607532,
+    "sample_min": 0.0,
+    "sample_max": 1.0
+   },
+   "n_genes_by_counts": {
+    "kind": "numeric",
+    "dtype": "int32",
+    "n": 2607532,
+    "sample_min": 348.0,
+    "sample_max": 9179.0
+   },
+   "pct_counts_mt": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 2607532,
+    "sample_min": 0.0,
+    "sample_max": 19.97084617614746
+   },
+   "perturbed_gene_id": {
+    "kind": "categorical",
+    "n": 2607532,
+    "distinct": 11838,
+    "top": {
+     "<NA>": 711016,
+     "NTC": 77726,
+     "ENSG00000131323": 3163,
+     "ENSG00000107438": 2346,
+     "ENSG00000171681": 2252,
+     "ENSG00000057657": 2039,
+     "ENSG00000138134": 1905,
+     "ENSG00000176809": 1872,
+     "ENSG00000217236": 1712,
+     "ENSG00000275052": 1689,
+     "ENSG00000164778": 1656,
+     "ENSG00000136867": 1655
+    }
+   },
+   "perturbed_gene_name": {
+    "kind": "categorical",
+    "n": 2607532,
+    "distinct": 11840,
+    "top": {
+     "<NA>": 711016,
+     "NTC": 77726,
+     "TRAF3": 3163,
+     "PDLIM1": 2346,
+     "ATF7IP": 2252,
+     "PRDM1": 2039,
+     "STAMBPL1": 1905,
+     "LRRC37A3": 1872,
+     "SP9": 1712,
+     "PPP4R3B": 1689,
+     "EN2": 1656,
+     "SLC31A2": 1655
+    }
+   },
+   "top_guide_UMI_counts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 2607532,
+    "sample_min": 3.0,
+    "sample_max": 11140.0
+   },
+   "total_counts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 2607532,
+    "sample_min": 486.0,
+    "sample_max": 122595.0
+   }
+  }
+ },
+ "var": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "feature_types",
+   "gene_ids",
+   "gene_name",
+   "genome",
+   "mt"
+  ],
+  "rows": 18130,
+  "first": [
+   "CUSTOM001_PuroR",
+   "ENSG00000000003",
+   "ENSG00000000005",
+   "ENSG00000000419",
+   "ENSG00000000457"
+  ]
+ },
+ "seconds": 402.5,
+ "fetched_bytes": 324510026,
+ "id": "cd4_D3_Stim48hr"
+}

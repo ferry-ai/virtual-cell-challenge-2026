@@ -1,0 +1,69 @@
+{
+ "schema_version": 1,
+ "job_id": "j04_h1_trainval_r3",
+ "incident_ids": [
+  "E-20260929-002",
+  "E-20260929-003",
+  "E-20260929-005",
+  "E-20260929-007"
+ ],
+ "inputs": [
+  {
+   "id": "code_snapshot",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\runs\\rlab_setup_2026-09-30_r5\\code_snapshot.tar.gz",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r5/code_snapshot.tar.gz"
+   },
+   "bytes": 23794,
+   "sha256": "415ba63f614aea090b5b08273b1e38063ff53daa60313934a52d34d9b794046e"
+  },
+  {
+   "id": "spec",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\runs\\rlab_setup_2026-09-30_r5\\j04_h1_trainval_r3_spec.json",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r5/j04_h1_trainval_r3_spec.json"
+   },
+   "bytes": 2398,
+   "sha256": "4b2b1b64710394ee44ec23ff5ca1903279f57dcea5b7fee1cf1747998643aece"
+  }
+ ],
+ "outputs": [
+  {
+   "id": "stage",
+   "paths": {
+    "local": "C:/Users/ferra/vcc2026-data/unused/j04_h1_trainval_r3/stage",
+    "runtime": "/content/work/rlab_j04_h1_trainval_r3/stage"
+   },
+   "must_be_absent": true
+  },
+  {
+   "id": "shards",
+   "paths": {
+    "local": "G:/Il mio Drive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j04_h1_trainval_r3",
+    "runtime": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j04_h1_trainval_r3"
+   },
+   "must_be_absent": true
+  }
+ ],
+ "target_checks": [],
+ "environment": {
+  "python": {
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\python.exe",
+    "runtime": "/usr/bin/python3"
+   }
+  },
+  "packages": {
+   "h5py": null,
+   "numpy": null,
+   "pandas": null,
+   "scipy": null
+  },
+  "imports": [
+   "h5py",
+   "scipy.sparse"
+  ],
+  "probes": []
+ },
+ "declared_limits": "sources read by HTTP byte ranges are not hashed whole before the run: every range is checked against the ETag of the file, every shard is hashed (plan \u00a76.5); anndata and kaggle are installed on the runtime when absent"
+}
