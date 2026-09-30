@@ -181,7 +181,9 @@ def run_unit(unit: dict, spec: dict, args, table: dict, writer: dict) -> dict:
     shards, uns_seen, t0 = [], [], time.time()
     source = {"id": unit["source"]["id"], "release": unit["source"].get("release", "as published"),
               "locator": unit["source"]["files"][0]["locator"], "bytes": unit["source"]["files"][0]["bytes"],
-              "sha256": unit["source"]["files"][0]["sha256"],
+              "sha256": unit["source"]["files"][0].get("sha256", "not recomputed: read by ranges, see md5 or crc32c"),
+              "md5": unit["source"]["files"][0].get("md5", "MISSING"),
+              "crc32c": unit["source"]["files"][0].get("crc32c", "MISSING"),
               "files_json": json.dumps(unit["source"]["files"]), "license": unit["source"].get("license", "MISSING")}
     for shard_name, x, obs, var, uns in fn(**kwargs):
         uns_seen.append({k: v for k, v in uns.items() if k in ("rows", "read", "parity_source")})
