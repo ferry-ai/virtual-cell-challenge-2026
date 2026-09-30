@@ -1,0 +1,11 @@
+job j04_h1_trainval_r2 start 2026-09-30T20:50:42Z host=1b601ef68ff9 cpus=2
+               total        used        free      shared  buff/cache   available
+Mem:              12           1           1           0          10          11
+overlay         108G   23G   86G  22% /
+/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r3/receipts/j04_h1_trainval_r2/environment_manifest_colab.json: scorer ok, roundtrip ok, free RAM 12.26 GB
+{"status": "PASS", "receipt": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r3/receipts/j04_h1_trainval_r2/preflight_runtime.json"}
+h1_train/shard_00000: 20000 cells, 167482690 nnz, 362122290 bytes, 132s
+h1_train/shard_00001: 20000 cells, 168895288 nnz, 368000280 bytes, 260s
+h1_train/shard_00002: 20000 cells, 170331917 nnz, 373669149 bytes, 377s
+h1_train/shard_00003: 20000 cells, 172468909 nnz, 382683710 bytes, 495s
+/content/jobs_q2/100_rlab_j04_h1_trainval_r2.sh: line 38:  4633 Killed                  "$PY" "$C/rlab_job.py" --spec "$SETUP/j04_h1_trainval_r2_spec.json" --stage "$WORK/stage" --out "$OUT" --runtime-manifest "$REC/environment_manifest_colab.json" --set IN="$WORK/in" AXIS="$WORK/in/gene_names.csv" WORK="$WORK" DRIVE="$DRIVE"

@@ -1,0 +1,22 @@
+job j04_h1_trainval_r3 start 2026-09-30T21:14:06Z host=1b601ef68ff9 cpus=2
+               total        used        free      shared  buff/cache   available
+Mem:              12           2           4           0           5           9
+overlay         108G   27G   81G  25% /
+/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r5/receipts/j04_h1_trainval_r3/environment_manifest_colab.json: scorer ok, roundtrip ok, free RAM 10.41 GB
+{"status": "PASS", "receipt": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r5/receipts/j04_h1_trainval_r3/preflight_runtime.json"}
+h1_train/shard_00000: 5000 cells, 41583579 nnz, 91745018 bytes, 32s
+h1_train/shard_00001: 5000 cells, 41457239 nnz, 91142667 bytes, 70s
+h1_train/shard_00002: 5000 cells, 42153680 nnz, 93928870 bytes, 103s
+h1_train/shard_00003: 5000 cells, 42288192 nnz, 94397240 bytes, 131s
+h1_train/shard_00004: 5000 cells, 42581192 nnz, 95482655 bytes, 169s
+h1_train/shard_00005: 5000 cells, 42134416 nnz, 93875285 bytes, 205s
+h1_train/shard_00006: 5000 cells, 42090283 nnz, 93690250 bytes, 236s
+h1_train/shard_00007: 5000 cells, 42089397 nnz, 93751928 bytes, 266s
+h1_train/shard_00008: 5000 cells, 42476930 nnz, 95119319 bytes, 307s
+h1_train/shard_00009: 5000 cells, 42678623 nnz, 95818482 bytes, 338s
+h1_train/shard_00010: 5000 cells, 42784084 nnz, 96245898 bytes, 369s
+h1_train/shard_00011: 5000 cells, 42392280 nnz, 94835832 bytes, 399s
+h1_train/shard_00012: 5000 cells, 42698559 nnz, 95934116 bytes, 441s
+h1_train/shard_00013: 5000 cells, 42487312 nnz, 95254533 bytes, 473s
+h1_train/shard_00014: 5000 cells, 43723344 nnz, 99961126 bytes, 502s
+/content/jobs_q2/105_rlab_j04_h1_trainval_r3.sh: line 38: 10433 Killed                  "$PY" "$C/rlab_job.py" --spec "$SETUP/j04_h1_trainval_r3_spec.json" --stage "$WORK/stage" --out "$OUT" --runtime-manifest "$REC/environment_manifest_colab.json" --set IN="$WORK/in" AXIS="$WORK/in/gene_names.csv" WORK="$WORK" DRIVE="$DRIVE"
