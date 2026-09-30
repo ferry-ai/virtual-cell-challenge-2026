@@ -13,6 +13,7 @@ plan (§6.5), an ETag checked on every range and a sha256 of every shard written
 the shards of an earlier job and runs nothing else. --reuse passes an earlier job's folder to rlab_job.py, which
 skips the shards whose receipt and sha256 still match. --stop builds a launcher that only stops, on the runtime of
 its queue, the rlab_job.py process of an earlier job (the dispatchers have no stop command; 30/09, job 106).
+The local preflight of the manifest runs before the launcher is queued, and a failure refuses the queue (docs/ERRORI.md).
 
     python colab_job.py --job j04_h1_trainval_r1 --number 093 --queue queue2 --spec spec.json \
         --snapshot <tar.gz> --commit <sha> --setup rlab_setup_2026-09-30_r3 --publish ALL=rlab-h1-vcc2025-trainval
@@ -25,6 +26,7 @@ import argparse
 import hashlib
 import json
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -192,6 +194,12 @@ def main() -> None:
     man_path.write_text(json.dumps(manifest, indent=1), encoding="utf-8")
     man_sha = place(man_path, setup_local / f"{a.job}_manifest.json")
     sums.insert(1, f"{man_sha}  {setup_rt}/{a.job}_manifest.json")
+    receipt = a.jobs_dir / "receipts_local" / f"{a.job}_preflight_local.json"
+    pre = subprocess.run([sys.executable, str(PREFLIGHT), "validate", "--manifest", str(man_path), "--site", "local",
+                          "--receipt", str(receipt)], capture_output=True, text=True)
+    print(pre.stdout.strip()[-400:])
+    if pre.returncode != 0:
+        sys.exit(f"refusing to queue: the local preflight failed ({pre.stderr.strip()[-400:]})")
     text = LAUNCHER.format(job=a.job, report=REPORT, commit=a.commit, drive=DRIVE, setup=a.setup, out_root=OUT_ROOT,
                            out_test=out_test, sums="\n".join(sums), snapshot_sha=snap_sha, run=run,
                            publish="\n".join(publish) if publish else "# no publication")
