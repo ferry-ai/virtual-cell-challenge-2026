@@ -21,6 +21,8 @@ Zero overlap dei bersagli fra due sorgenti non le rende automaticamente inutili.
 Rende però più difficile separare l'effetto del bersaglio da quello di linea,
 stimolo e studio. Servono descrittori trasferibili e prove coerenti con ciò che
 è identificabile; una rete non risolve da sola la mancanza di collegamenti.
+Ammettere una sorgente senza bersagli in comune non vuol dire poterne concatenare
+assi di risposta o saggi incompatibili senza riconciliarli prima.
 
 ## 2. Come scegliere e conservare le sorgenti
 
@@ -46,6 +48,15 @@ Ogni scheda sorgente deve separare:
 costruire test indipendenti; ampliare diversità di bersagli e contesti; usare la
 copertura del pannello soltanto per l'eventuale impiego immediato nella baseline.
 Contesti lontani e pannelli mirati restano candidati con ruoli espliciti.
+
+**Acquisire e catalogare.** Un download lo autorizza il proprietario in chat, con file,
+dimensione e licenza detti prima ([CLAUDE.md](../CLAUDE.md)). I dati vanno nella radice
+dati, mai nella repo (D-001), con una riga nella tabella «Dati» del
+[registro](REGISTRO.md) che dice provenienza e come riprodurli. **Ogni dataset trovato
+entra nel catalogo della repo, anche se lontano dai contesti di gara o scartato**, con
+ruolo possibile e stato di verifica, nel report della ricerca che l'ha trovato, indicizzato
+in `reports/sorgenti/README.md`: lo ha chiesto il proprietario il 25/09, perché un candidato
+scartato a voce si perde (finora la regola stava solo nella memoria di un agente).
 
 ## 3. Valutazione che deve precedere la scelta di un modello
 
@@ -108,8 +119,9 @@ richiedono un banco con cellule e controlli. Non chiamare un proxy punteggio VCC
 
 ## 5. Priorità concrete dopo CP-0035
 
-L'ordine aggiornabile dei lavori e le prese in carico stanno in [PIANI.md](PIANI.md):
-R-DATI, R-MODELLI e R-SWITCH. I punti sotto motivano i requisiti iniziali; le nuove
+Priorità del 24/09, lasciate come motivazione dei requisiti: quelle correnti stanno in
+[PIANI.md](PIANI.md), che dal 29/09 mette prima R-COMP. L'ordine aggiornabile dei lavori
+e le prese in carico stanno lì: R-DATI, R-MODELLI e R-SWITCH. I punti sotto motivano i requisiti iniziali; le nuove
 ipotesi su programmi, switch e distribuzioni sono collegate dalle schede senza
 modificare le regole di valutazione di questo documento.
 
@@ -140,5 +152,5 @@ modificare le regole di valutazione di questo documento.
 Riferimenti interni: [CP-0035](checkpoints/0035-dld1-mixscale-audit.md),
 [report dei dati](../reports/sorgenti/dld1_audit_2026-09-24/RISULTATI.md),
 [CP-0026](checkpoints/0026-predittore-neurale-condizionato.md),
-[ARCHIVIO.md](ARCHIVIO.md). Comandi, risorse e autorizzazioni restano in
-[LAVORO.md](LAVORO.md).
+[ARCHIVIO.md](ARCHIVIO.md). Comandi e risorse restano in [LAVORO.md](LAVORO.md), le
+autorizzazioni in [CLAUDE.md](../CLAUDE.md).

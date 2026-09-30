@@ -13,7 +13,12 @@ back. A path that disappears without being listed there is still an error.
 It checks structure, never claims: no amount of green output means the science is
 right. Standard library only.
 
+With `--status`, it checks nothing and answers one question instead: can I rely on this
+document? It prints the registry entries that cover each path, the review sheet to read and,
+for a checkpoint, what corrected it, so an agent does not read the whole registry for a row.
+
     python scripts/31_check_docs.py
+    python scripts/31_check_docs.py --status docs/SOTTOMISSIONE.md reports/trial_2026-09-13/
 """
 from __future__ import annotations
 
@@ -22,6 +27,7 @@ import datetime as dt
 import functools
 import os
 import re
+import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -377,9 +383,10 @@ def check_links(errors: list[str]) -> None:
     # route agents too (D-046): a link there to a report that was never committed is caught.
     files += [path for path in (REPO_ROOT / "docs" / "PIANI.md", REPO_ROOT / "docs" / "GENERALIZZAZIONE.md",
                                 REPO_ROOT / "reports" / "README.md") if path.exists()]
-    # The map by area and the errors not to repeat are read at the start of every task (D-048).
-    files += [path for path in (REPO_ROOT / "docs" / "AMBITI.md", REPO_ROOT / "docs" / "ERRORI.md")
-              if path.exists()]
+    # The map by area and the errors not to repeat are read at the start of every task (D-048),
+    # and the page of the agent infrastructure routes to what lives outside the repository (D-049).
+    files += [path for path in (REPO_ROOT / "docs" / "AMBITI.md", REPO_ROOT / "docs" / "ERRORI.md",
+                                REPO_ROOT / "docs" / "AGENTI.md") if path.exists()]
     files += sorted((REPO_ROOT / "docs" / "piani").glob("*.md"))
     files += sorted((REPO_ROOT / "docs" / "storico").glob("README.md"))
     files += sorted((REPO_ROOT / "reports").glob("*/README.md"))
@@ -418,10 +425,117 @@ def check_links(errors: list[str]) -> None:
                 errors.append(f"{label}: anchor {target} does not resolve")
 
 
+def entry_covers(entry: str, rel: str) -> bool:
+    """Whether a registry entry covers a path, by the scope documented in REGISTRO.md."""
+    if any(ch in entry for ch in "*?["):
+        return is_repo_relative(entry) and (REPO_ROOT / rel) in set(REPO_ROOT.glob(entry))
+    if entry.endswith("/"):
+        return rel == entry.rstrip("/") or rel.startswith(entry)
+    return rel == entry
+
+
+def index_verdicts(rel: str) -> list[str]:
+    """The column "Vale?" of the folder index that lists the path, if one does.
+
+    Report folders are indexed by the README of their category, and the texts of docs/storico/
+    by its README. Those columns and the registry are kept apart and can disagree: printing both
+    shows the disagreement instead of hiding it.
+    """
+    parts = rel.split("/")
+    if len(parts) >= 3 and parts[0] == "reports":
+        index = REPO_ROOT / "reports" / parts[1] / "README.md"
+    elif len(parts) >= 3 and parts[:2] == ["docs", "storico"]:
+        index = REPO_ROOT / "docs" / "storico" / "README.md"
+    else:
+        return []
+    if not index.exists():
+        return []
+    lines = []
+    for _, header, rows in tables(index.read_text(encoding="utf-8")):
+        names = [i for i, cell in enumerate(header) if cell in ("Cartella", "File")]
+        if "Vale?" not in header or not names:
+            continue
+        verdict, name = header.index("Vale?"), names[0]
+        for row in rows:
+            if len(row) > max(verdict, name) and any(
+                    link.rstrip("/") == parts[2] for link in re.findall(r"\]\(([^)#\s]+)\)", row[name])):
+                lines.append(f"  index {index.relative_to(REPO_ROOT).as_posix()}, Vale?: {row[verdict]}")
+    return lines
+
+
+def registry_status(raw: str) -> list[str]:
+    """What the registry, the checkpoint index and the folder indexes say about one path.
+
+    The registry entries that cover the path come most specific first: the file itself, then
+    the folders above it. A path written before 28 September is followed into its category
+    first (`moved`), since checkpoints go on citing the old places. An empty list means that
+    nothing covers or indexes the path.
+    """
+    rel = raw.replace("\\", "/").strip().removeprefix("./").rstrip("/")
+    if is_repo_relative(rel) and not (REPO_ROOT / rel).exists():
+        found = moved(rel)
+        if len(found) == 1:
+            rel = found[0].relative_to(REPO_ROOT).as_posix()
+    path = REPO_ROOT / "docs" / "REGISTRO.md"
+    text = path.read_text(encoding="utf-8")
+    sheets = {m.group(1): m.group(0).lstrip("# ").strip()
+              for m in re.finditer(r"^### (R-\d{3}) .*$", text, re.M)}
+    ignored: list[str] = []
+    _, docs = table_by_first_column(text, "Percorso", path, ignored)
+    _, data = table_by_first_column(text, "Identificatore", path, ignored)
+    hits = []
+    for row in docs:
+        for entry in re.findall(r"`([^`]+)`", row[0]):
+            if len(row) >= 5 and entry_covers(entry, rel):
+                hits.append((len(entry), entry, row[1], row[2], row[3], row[4]))
+    for row in data:
+        for entry in re.findall(r"`([^`]+)`", row[0]):
+            if len(row) >= 6 and entry_covers(entry, rel):
+                hits.append((len(entry), entry, row[2], "—", row[5], "—"))
+    lines = []
+    for _, entry, status, replaced, note, sheet in sorted(hits, key=lambda hit: -hit[0]):
+        lines.append(f"  {status}  (entry `{entry}`)")
+        if replaced not in ("", "—"):
+            lines.append(f"    replaced by: {replaced}")
+        link = re.search(r"\[(R-\d{3})\]\(#([^)]+)\)", sheet)
+        if link:
+            lines.append(f"    review sheet: {sheets.get(link.group(1), link.group(1))} "
+                         f"(docs/REGISTRO.md#{link.group(2)})")
+        lines.append(f"    note: {note}")
+    match = CHECKPOINT_FILE.match(Path(rel).name)
+    if lines and rel.startswith("docs/checkpoints/") and match:
+        index = (REPO_ROOT / "docs" / "checkpoints" / "INDICE.md").read_text(encoding="utf-8")
+        _, rows = table_by_first_column(index, "N", path, ignored)
+        for row in rows:
+            if len(row) >= 5 and f"({Path(rel).name})" in row[0]:
+                lines.append(f"  docs/checkpoints/INDICE.md, Corretto da: {row[4]}")
+    if not lines:
+        lines.append("  no registry entry covers this path")
+    lines += index_verdicts(rel)
+    if len(lines) == 1 and not hits:
+        return []
+    if rel != raw.replace("\\", "/").strip().removeprefix("./").rstrip("/"):
+        lines.insert(0, f"  now at {rel} (moved on 28 September, D-046)")
+    return lines
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.parse_args()
+    parser.add_argument("--status", nargs="+", metavar="PATH",
+                        help="print what docs/REGISTRO.md says about these paths, and check nothing")
+    args = parser.parse_args()
+
+    if args.status:
+        # Registry notes carry characters a Windows console codepage lacks (Δ, γ, ≥).
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        uncovered = 0
+        for raw in args.status:
+            lines = registry_status(raw)
+            print(raw)
+            print("\n".join(lines) if lines else "  no registry entry covers this path")
+            uncovered += not any("(entry `" in line for line in lines)
+        raise SystemExit(1 if uncovered else 0)
 
     errors: list[str] = []
     numbers = check_checkpoints(errors)

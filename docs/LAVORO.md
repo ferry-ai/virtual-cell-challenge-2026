@@ -1,11 +1,12 @@
 # Come si lavora — il percorso vivo
 
 Scritto il 2026-09-23, con la pulizia di [D-040](DECISIONI.md#d-040--il-codice-vivo-è-solo-quello-che-produce-o-valuta-una-sottomissione).
-Questa è la guida delle procedure. I lavori da scegliere e le assegnazioni stanno
-in [PIANI.md](PIANI.md) e nelle sue schede. Questa pagina dice:
-- che cosa gira e in che ordine;
-- con quali comandi;
-- dove finiscono i risultati.
+**Perimetro:** gli strumenti di esecuzione del progetto, cioè che cosa gira e in che ordine, con
+quali comandi, e dove finiscono i risultati. **Si legge per sezione**, quella del compito: §1–2
+generare, impacchettare, inviare e leggere un punteggio; §3 job su Colab e Kaggle; §4 gli stadi
+vivi; §5 aggiungere e togliere codice; §6 dove stanno le cose; §7 il set finale. Si aggiorna
+quando cambia il percorso vivo. I lavori da scegliere e le assegnazioni stanno in
+[PIANI.md](PIANI.md) e nelle sue schede.
 
 I numeri e le incertezze stanno in [PROGETTO.md](PROGETTO.md), il perché delle scelte in
 [DECISIONI.md](DECISIONI.md). Il contratto del formato è in [SOTTOMISSIONE.md](SOTTOMISSIONE.md)
@@ -47,7 +48,8 @@ $D = "C:\Users\ferra\vcc2026-data"
 ```
 
 I manifest di ogni stadio stanno accanto all'output (`manifest.json`); quelli degli invii si
-copiano in `reports/invii/trial_<data>/`, come `t11_manifest_45.json` e `t11_manifest_48.json`.
+copiano in `reports/invii/trial_<data>/`, con i nomi elencati in `reports/CLAUDE.md` («What a
+submission leaves here»).
 
 Lo stadio 45 conserva Poisson come comportamento predefinito. Con `--gene-dispersion`,
 `--gene-dispersion-scale` moltiplica la dispersione stimata sui controlli (1 mantiene la
@@ -57,6 +59,14 @@ pooled richiesto; non si combina con le opzioni di dispersione. Le diagnostiche 
 la scelta dei quantili, la convergenza e gli eventuali limiti applicati ai conteggi.
 Implementazione e prove: `reports/analisi/lead_scientist_2026-09-29/`; l'esistenza di queste
 opzioni non ne dimostra un vantaggio sul punteggio.
+
+Il t28, massimo osservato, è la ricetta del t25 generata con `--effects-scale 1.5` e
+`--gene-dispersion` alla scala 1, su Colab. Le opzioni sono registrate nella sua previsione
+(`reports/invii/prediction_t28_2026-09-29/prediction.json`) e nel manifest dello stadio 45
+(`reports/invii/trial_2026-09-29/t28_manifest_45_generate_prediction.json`); il job è
+`reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/079_lead_t28_generate_r2.sh`.
+Un'opzione dello stadio 45 che fa parte di un candidato si scrive nella previsione, prima di
+generare, come la ricetta.
 
 ## 2. Le regole dell'invio
 
@@ -79,8 +89,9 @@ Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
    `reports/invii/trial_2026-09-22/autorizzazioni.md`: leggile, ma un agente nuovo le conferma
    in chat prima di usarle.
 4. **Un lavoro pesante alla volta.** Il 23 settembre tre lavori insieme hanno riempito il
-   disco durante l'impacchettamento: generare e impacchettare chiede circa 12 GB liberi.
-   Controlla con `df -h /c` prima di partire.
+   disco durante l'impacchettamento. Un candidato arriva a circa 13 GB di picco, e le riserve
+   degli stadi 45 e 48 chiedono circa 17 GB liberi per partire a forma piena (§7). Controlla
+   con `df -h /c` prima di partire.
 5. **Il portatile non deve andare in sospensione durante l'upload.** Il 23 settembre il
    sonno ha interrotto il secondo tentativo del t11 (`reports/invii/trial_2026-09-23/`).
    - **Un upload interrotto lascia l'entry sul server** in stato `uploading`. Occupa lo slot
@@ -101,34 +112,34 @@ Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
    successivo:** il 25 settembre `vcc status` rispondeva `not_found` per t15 e t16 e serviva
    solo l'ultimo invio, e l'output di `submit --wait` porta gli scalati ma non i grezzi
    ([CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md)).
-7. **Dopo il punteggio:**
-   - `comparison.json` accanto alla previsione;
+7. **Dopo il punteggio**, questa è la lista completa:
+   - `comparison.json` accanto alla previsione, con i sei scalati pubblicati e la regola applicata;
+   - una riga nella tabella dei punteggi di `reports/invii/README.md`, la loro sede unica;
    - un checkpoint (`python scripts/30_new_checkpoint.py`);
-   - la mappa aggiornata.
+   - il §0 di [PROGETTO](PROGETTO.md) se cambiano il massimo osservato, il riferimento o la
+     direzione, e la sezione 2 di [AMBITI](AMBITI.md).
 
    Leggere i sei scalati pubblicati dallo status completo e verificarne la media.
    Le ancore aggregate in `reports/gara/anchors_2026-09-17/` sono pesi storici utili
    per indici locali, **non una conversione esatta** dei grezzi aggregati: i contesti
    hanno normalizzazioni separate. Non ricostruire membri ufficiali mancanti come misure.
    Prova e portata: [audit credibilità](../reports/analisi/lead_scientist_2026-09-29/SCORE_CREDIBILITA.md)
-   e [CP-0050](checkpoints/0050-credibilita-score-e-riserva.md).
+   e [CP-0050](checkpoints/0050-credibilita-score-e-riserva.md). Un esempio di lettura offline e
+   testata, specifica del t28, è `reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/read_t28_score.py`:
+   per un altro invio se ne fa una copia in una cartella nuova.
 
-## 3. Colab: generatore `ControlModel` e banchi
+## 3. Job su Colab e Kaggle
 
 Il portatile ha 7,8 GiB di RAM. Lo stadio 76 (`ControlModel`) gira anche qui: il 23 settembre
 ha generato il t14 in 35 minuti, con 1–3 GiB di RAM
 (`reports/generatore_e_banchi/dispersion_2026-09-23/T14_IN_LOCALE.md`). I banchi 73 e 75 restano su Colab. Il notebook `notebooks/colab_sc_training.ipynb` fa da dispatcher: esegue i `.sh`
 depositati in `G:\Il mio Drive\vcc2026\runs\queue\`.
 
-**Prima di mettere in coda un nuovo job:** seguire [ERRORI.md](ERRORI.md).
-Il manifest elenca tutti gli input con percorso locale/remoto, dimensione e
-SHA256, target richiesti, ambiente e output nuovi. Il preflight passa localmente
-e viene ripetuto nel launcher sul runtime destinatario, attendendo tutti gli
-hash completi prima del calcolo. La visibilità su Drive locale non dimostra
-quella su Colab. Verificare l'autorizzazione già ricevuta in sessione senza
-richiederla nuovamente. I job già in corso non vengono interrotti da questa aggiunta.
-Ogni correzione operativa lascia un incidente, un test e una verifica distinta
-del nuovo tentativo; `.done` da solo non chiude l'incidente.
+**Prima di mettere in coda un nuovo job** si segue [ERRORI](ERRORI.md), da «Prima del prossimo
+job» a «Registro immutabile e chiusura»: manifest di tutti gli input con hash, preflight in locale
+e poi sul runtime destinatario prima del calcolo, guasti come incidenti in sola aggiunta. Gli
+script di `notebooks/colab_jobs/` sono del 17/09 e non eseguono il preflight: i launcher che lo
+eseguono sono nella revisione lead, per esempio in `reports/analisi/lead_scientist_2026-09-29/neural/`.
 
 - **Portare il codice su Drive:** `powershell -File notebooks\colab_jobs\sync_to_drive.ps1`.
   Fa un mirror (`robocopy /MIR`) di `src`, `scripts`, `configs` e `notebooks` in `code/`:
@@ -151,6 +162,11 @@ del nuovo tentativo; `.done` da solo non chiude l'incidente.
 - **Memoria:** due banchi HepG2 insieme, o un banco HepG2 con uno K562, possono esaurire i
   12 GB del runtime (`rc=137`). Per due job `ControlModel` insieme il job 045 annota lo
   stesso rischio, e per questo aspetta il `.done` del 044.
+- **Kaggle:** notebook e dataset privati dell'account del proprietario, via API. La procedura
+  seguita il 29/09 è in `reports/analisi/lead_scientist_2026-09-29/CALCOLO.md` e
+  `reports/analisi/lead_scientist_2026-09-29/KAGGLE_REMOTO.md`, report datati di una sessione
+  Codex: i loro script si copiano in una cartella nuova, non si modificano. Lo stesso preflight
+  vale anche qui.
 
 ## 4. Gli stadi vivi
 
@@ -188,13 +204,8 @@ nuova ([CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md)).
 
 ## 5. Aggiungere e togliere codice
 
-- **Uno stadio nuovo:**
-  - continua la numerazione e fa una cosa sola;
-  - ha un docstring con l'esempio d'uso;
-  - scrive in un `--out` nuovo e non sovrascrive mai un output;
-  - porta un test se sbagliare in silenzio è possibile;
-  - entra nella tabella del §4, e i moduli che importa nella mappa di
-    `src/vcc2026/CLAUDE.md`, nello stesso commit.
+- **Uno stadio nuovo** segue le regole di `scripts/CLAUDE.md` ed entra nella tabella del §4, e i
+  moduli che importa nella mappa di `src/vcc2026/CLAUDE.md`, nello stesso commit.
 - **Un esperimento chiuso** dal suo checkpoint lascia nel percorso vivo solo gli stadi che
   servono ancora. Gli altri si archiviano lo stesso giorno (D-040):
   1. un tag annotato `archivio/<motivo>-<data>` sul commit che ha ancora i file;
@@ -202,9 +213,8 @@ nuova ([CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md)).
      docstring;
   3. `git rm`;
   4. il controllo documentale e i test.
-- **Prima di chiudere una sessione:**
-  - `python scripts/31_check_docs.py`;
-  - `.\scripts\py.cmd -m unittest discover -s tests` (circa 2 minuti il 24 settembre).
+- **Prima di chiudere una sessione:** i due controlli di [CLAUDE.md](../CLAUDE.md), «Before you
+  finish».
 
 ## 6. Dove stanno le cose
 
@@ -215,7 +225,7 @@ nuova ([CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md)).
 | Effetti per contesto (stadio 100) | `C:/Users/ferra/vcc2026-data/processed/effects_tNN_<data>/` |
 | La ricetta usata da un invio | nel `manifest.json` dello stadio 100, per intero. `recipe_sha256_lf` vale su ogni checkout (esecuzioni dopo il 24 settembre). `recipe_sha256` è l'hash dei byte: LF per t08–t12, CRLF per t15–t17 (D-043) |
 | Previsioni e pacchetti | `C:/Users/ferra/vcc2026-data/artifacts/<run>/` |
-| Codice, coda e log di Colab | `G:\Il mio Drive\vcc2026\` (`code/`, `runs/queue/`, `runs/jobs/`) |
+| Codice, coda e log di Colab | `G:\Il mio Drive\vcc2026\` (`code/`, `runs/queue/`, `runs/jobs/`); non è la cartella `runs/` della base di lancio degli agenti ([AGENTI](AGENTI.md)) |
 | Report, uno per esperimento | `reports/<categoria>/<tema>_<data>/` (D-046), ciascuno con una riga nel README della categoria e in [REGISTRO.md](REGISTRO.md); la mappa è [reports/README.md](../reports/README.md) |
 
 ## 7. Il set finale (22 ottobre)

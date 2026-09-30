@@ -5,12 +5,17 @@ e in un controllo obbligatorio del prossimo lavoro pertinente. La pipeline resta
 descritta in [LAVORO.md](LAVORO.md); stato e risultati scientifici restano in
 [PROGETTO.md](PROGETTO.md) e nei report. Non serve un altro `pipeline.md` parallelo.
 
-La guida ha tre parti:
-- **job e guasti operativi**: il preflight e il registro degli incidenti, qui sotto;
-- **[errori di metodo già commessi](#errori-di-metodo-già-commessi)**: ragionamenti che hanno
-  prodotto conclusioni sbagliate, con la regola che li evita;
-- **[lezioni operative](#lezioni-operative-da-non-ripetere)**: trappole di Colab, Drive, disco e
-  cartella condivisa, comprese quelle che stavano solo nella memoria privata di un agente.
+La guida ha tre parti, e ciascuna ha i suoi lettori: **si legge solo la parte del proprio
+compito**.
+- **Job e guasti operativi**, da «Prima del prossimo job» a «Registro immutabile e chiusura»:
+  il preflight e il registro degli incidenti. Per chi prepara o segue un job su Colab o Kaggle.
+- **[Errori di metodo già commessi](#errori-di-metodo-già-commessi)**: ragionamenti che hanno
+  prodotto conclusioni sbagliate, con la regola che li evita. Per chiunque stia per scrivere una
+  conclusione, un report o un checkpoint: è una tabella.
+- **[Lezioni operative](#lezioni-operative-da-non-ripetere)**: trappole di Colab, Drive, disco,
+  file e cartella condivisa, comprese quelle che stavano solo nella memoria privata di un agente.
+  Per chi esegue codice o lavori lunghi. Le trappole della base di lancio degli agenti stanno in
+  [AGENTI](AGENTI.md), §4.
 
 Un esperimento concluso correttamente che smentisce un'ipotesi **non è un errore
 infrastrutturale**. Per esempio, Stack A termina lo scoring ma perde il confronto:
@@ -120,6 +125,11 @@ Un EID è `E-AAAAMMGG-NNN`; ogni revisione è un nuovo JSON `E-…r001.json`,
 `r002.json`, ecc. La revisione cita lo SHA256 della precedente. Non si sovrascrive
 il record iniziale per far scomparire un guasto o anticipare un successo.
 
+Il registro sta in una cartella di report datata, che per la regola di `reports/CLAUDE.md` non si
+modifica. È l'unica eccezione dichiarata (D-049): in `learning/incidents/` si aggiungono file nuovi,
+e nessun file che c'è già si cambia. Spostarlo in una sede senza data romperebbe i launcher che lo
+leggono per percorso.
+
 | Stato | Che cosa dimostra |
 |---|---|
 | `observed` | Il guasto è documentato; causa/fix possono essere ancora incerti |
@@ -173,7 +183,7 @@ nella memoria privata di un agente: qui valgono per tutti.
 
 - **Colab.** Il log di un job si sincronizza solo alla fine; un dispatcher muto per ore vuol dire
   runtime perso: i job con `.started` non ripartono e `/content/work` si perde
-  ([LAVORO §3](LAVORO.md#3-colab-generatore-controlmodel-e-banchi)). Salvare su Drive ogni
+  ([LAVORO §3](LAVORO.md#3-job-su-colab-e-kaggle)). Salvare su Drive ogni
   artefatto prima del passo successivo (E-20260929-003).
 - **Drive virtuale (G:).** La lettura di un file grande può fallire con un errore di I/O prima
   dell'upload (E-20260929-007): copiarlo in locale e verificarne lo SHA completo prima del CLI.
@@ -190,7 +200,12 @@ nella memoria privata di un agente: qui valgono per tutti.
   tree, anche le righe di altri (e7c933b, corretto da db32204); Codex mette segnaposto con
   `git add -N`. Prima di committare: `git status`, `git diff --cached --stat`, poi solo i propri
   file, per nome. Chi chiude una sessione committa il proprio lavoro (D-048): il 30/09 alle 02:07
-  circa 1.160 file di due sessioni chiuse erano ancora fuori dai commit.
+  circa 1.160 file di due sessioni chiuse erano ancora fuori dai commit. Come si committa un file
+  che anche altri stanno modificando: [AGENTI §3](AGENTI.md#3-coordinamento-fra-sessioni-nella-stessa-cartella).
+- **Heredoc in Git Bash.** Un heredoc passato a `py` o `python` dimezza le barre rovesciate: il 24/09
+  un `\r\n` scritto così è diventato un vero a capo, e il 30/09 un `\n` in una sostituzione è
+  diventato un a capo, facendola fallire. I file si modificano con gli strumenti dell'editor o con
+  uno script salvato in un file.
 - **Copie di lavoro dentro l'albero.** Una copia della repo del 24/09 (`.runtime-deps/`, 858 file)
   faceva comparire testi superati nelle ricerche; è stata spostata fuori il 30/09
   (`reports/analisi/riordino_repo_2026-09-30/`). Nella cartella della repo non vanno copie, venv

@@ -6,7 +6,8 @@ corregge nulla**: una nuova esecuzione va in una cartella nuova, e una conclusio
 si corregge con un checkpoint o una scheda del registro. Le regole per chi scrive sono in
 [CLAUDE.md](CLAUDE.md).
 
-Dal 28 settembre 2026 le cartelle stanno in otto categorie (D-046): 143 il 30 settembre. Ogni
+Dal 28 settembre 2026 le cartelle stanno in otto categorie (D-046): 141 il 30 settembre, più due
+file sciolti in `storico/`. Ogni
 categoria ha un README con una riga per cartella: **data, nocciolo, se vale ancora e quanto pesa
 oggi**. Per ambito di lavoro (gara, invii, generatore, dati, modelli, set finale, operazioni,
 metodo) la mappa che instrada verso queste cartelle è [docs/AMBITI.md](../docs/AMBITI.md).
@@ -88,7 +89,10 @@ i banchi che lo importano**: una versione nuova va in una cartella nuova.
 
 Hanno un test `kolf_sums.py` (`tests/test_kolf_sums.py`) e, dal 28 settembre, i proxy dei banchi
 (`tests/test_proxy_banchi.py`: `pds_proxy`, `rank_pds`, `fidelity_proxy`, `realise`, e la parità di
-`realise` con il passo di profilo che lo stadio 45 applica davvero). Il resto non è coperto. Il
+`realise` con il passo di profilo che lo stadio 45 applica davvero). Nelle cartelle ci sono
+inoltre test propri, accanto al codice che provano: 54 file `test_*.py` il 30 settembre, 50 nella
+revisione lead, fra cui quelli di `preflight.py` e `ledger.py`; non girano con la suite. Il resto
+non è coperto. Il
 28 settembre sono cambiate soltanto le righe che calcolano la radice del repository e i percorsi
 fra cartelle (+1 livello): tutti i 95 script che rispondevano a `--help` prima dello spostamento
 rispondono anche dopo.

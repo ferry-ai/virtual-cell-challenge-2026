@@ -3,15 +3,9 @@
 L'indice è [PIANI.md](../PIANI.md). Qui si legge e si aggiorna soltanto la scheda
 del lavoro scelto. Si applicano CLAUDE alla radice e [docs/CLAUDE.md](../CLAUDE.md).
 
-| Scheda | Ambito |
-|---|---|
-| [modello-competitivo.md](modello-competitivo.md) | R-COMP: piano del 29/09, copertura reale dei dati, modello biologico, training e verifica indipendente sui sei membri |
-| [dati-affidabilita.md](dati-affidabilita.md) | R-DATI: sorgenti, controlli, repliche, rumore e dati ponte |
-| [trasferimento-modelli.md](trasferimento-modelli.md) | R-MODELLI: programmi, contesto, bersagli nuovi, confronti |
-| [switch-distribuzioni.md](switch-distribuzioni.md) | R-SWITCH: soglie, intensità e quote di cellule rispondenti |
-| [invii-finale.md](invii-finale.md) | S-INVII: prove di validazione e preparazione del set finale |
-| [modello-v2.md](modello-v2.md) | R-V2: il modello per il set finale, costruito adesso |
-| [revisione-critica.md](revisione-critica.md) | R-REV: le azioni della revisione critica del 28/09, in ordine, per la sessione locale |
+L'elenco delle schede, con priorità e dipendenze, è la tabella del §2 di [PIANI](../PIANI.md): non
+si ripete qui. Lo stato e l'assegnazione di un piano stanno nell'intestazione della sua scheda, e
+solo lì.
 
 ## Regole delle schede
 
@@ -25,7 +19,7 @@ del lavoro scelto. Si applicano CLAUDE alla radice e [docs/CLAUDE.md](../CLAUDE.
 - Non copiare punteggi, comandi o intere analisi: collegare la fonte competente.
   I protocolli congelati e le misure vanno in report nuovi; la scheda non li riscrive.
 - Nuove schede: scegliere un ID e un nome non occupati, controllare di nuovo prima
-  di crearli, aggiungere il link qui e nell'indice. La voce `docs/piani/` nel registro
+  di crearli, aggiungere la riga nella tabella del §2 di PIANI. La voce `docs/piani/` nel registro
   copre queste schede omogenee; una chiusura va annotata anche nella nota del registro.
 - Conservare le schede chiuse con esito e condizione di riapertura. Nessuna
   archiviazione di file, modifica del codice o riattivazione di sottosistemi è implicita.

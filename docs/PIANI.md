@@ -6,26 +6,18 @@ congelare una riserva indipendente e verificare un nuovo modello. La direzione g
 i piani è nel §0 di [PROGETTO](PROGETTO.md#direzione-generale); dove sta che cosa, per ambito, in
 [AMBITI](AMBITI.md).
 
-Creato il 24 settembre 2026 su richiesta del proprietario. **Questo è l'indice
-operativo dei piani**, da leggere dopo lo stato in [PROGETTO.md](PROGETTO.md) §0.
-Le schede collegate contengono stato, dipendenze, prossimo passo e criterio di
-chiusura. Le priorità di ricerca sono proposte promettenti, non risultati acquisiti.
+**Perimetro:** le priorità e le dipendenze fra i piani (§2), le regole per prendere e lasciare un
+lavoro nella cartella condivisa (§3), i piani chiusi (§4). Stato, prossimo passo e assegnazione di
+un piano stanno nell'intestazione della sua scheda, non qui. Creato il 24/09 su richiesta del
+proprietario; si aggiorna quando cambiano priorità, dipendenze o l'elenco delle schede. Le priorità
+di ricerca sono proposte promettenti, non risultati acquisiti.
 
 ## 1. Dove leggere che cosa
 
-| Domanda | Fonte autorevole per quella domanda |
-|---|---|
-| Dove siamo, che cosa è stato misurato o inviato? | [PROGETTO.md](PROGETTO.md) §0; poi le evidenze citate |
-| Che cosa fare dopo? | Questo indice e la singola scheda in [piani](piani/CLAUDE.md) |
-| Come eseguire il lavoro? | [LAVORO.md](LAVORO.md), procedure e risorse |
-| Quali vincoli di ricerca rispettare? | [GENERALIZZAZIONE.md](GENERALIZZAZIONE.md) e [DECISIONI.md](DECISIONI.md) |
-| Quanto fidarsi di un documento? | [REGISTRO.md](REGISTRO.md), comprese le correzioni |
-| Perché una vecchia prova è stata chiusa? | [Indice dei checkpoint](checkpoints/INDICE.md), poi report originale |
-| Dove recuperare codice o piani ritirati? | [ARCHIVIO.md](ARCHIVIO.md), solo quando serve |
-
-Un risultato vecchio può restare valido; un'ipotesi recente non diventa un fatto.
-I report conservano l'evidenza, le schede conservano il prossimo passo. Non cercare
-un incarico attuale nei «prossimi passi» di un vecchio report.
+Che cosa leggere oltre alla scheda lo dice la tabella dei compiti di [CLAUDE.md](../CLAUDE.md); la
+sede di ogni tipo di informazione è in [docs/CLAUDE.md](CLAUDE.md). Un risultato vecchio può restare
+valido; un'ipotesi recente non diventa un fatto. I report conservano l'evidenza, le schede il
+prossimo passo: non cercare un incarico attuale nei «prossimi passi» di un vecchio report.
 
 ## 2. Ordine dei piani aperti
 
@@ -36,16 +28,18 @@ L'aggiunta all'indice non avvia job, monitor o invii automatici.
 | ID | Priorità e motivo | Scheda | Prima di eseguire |
 |---|---|---|---|
 | R-COMP | **Adesso**, richiesta del 29/09: copertura reale dei dataset, modello biologico, training C/T/J e sei metriche con riserva indipendente | [Modello competitivo](piani/modello-competitivo.md) | Assegnazioni esistenti preservate; storico degli outcome e manifest prima dei nuovi training |
-| R-REV | **Adesso**, su richiesta del proprietario del 28/09 (12:30): le azioni della revisione critica, in ordine; la prima è portare nel `main` del portatile il branch che le contiene | [Revisione critica](piani/revisione-critica.md) | §0 della scheda; via del proprietario per invii, download, calcolo in cloud e push |
+| R-REV | **Adesso**, su richiesta del proprietario del 28/09 (12:30): le azioni della revisione critica, in ordine; la prima, l'unione del loro branch nel `main` del portatile, è fatta dal 28/09 | [Revisione critica](piani/revisione-critica.md) | Via del proprietario per invii, download, calcolo in cloud e push (mandato della scheda) |
 | S-INVII | Scadenze e lettura delle prove già preparate | [Invii e set finale](piani/invii-finale.md) | Verificare stato effettivo e coordinarsi con chi segue gli invii |
 | R-V2 | Adesso, su richiesta del proprietario: il modello per il set finale, filoni F1–F8 | [Modello v2](piani/modello-v2.md) | Via del proprietario per download, calcolo in cloud e invii |
 | R-DATI | Prima: rendere utilizzabili dati, controlli e repliche | [Dati e affidabilità](piani/dati-affidabilita.md) | Audit locale e dei metadati; stimare costo prima di acquisire |
 | R-MODELLI | Promettente: programmi × stato × ruolo del bersaglio | [Trasferimento e modelli](piani/trasferimento-modelli.md) | R-DATI e protocollo C/T/J congelato prima del training |
 | R-SWITCH | Promettente: soglie, intensità e cellule rispondenti | [Switch e distribuzioni](piani/switch-distribuzioni.md) | Cellule, guide e controlli da R-DATI; score indipendente dalla risposta valutata |
 
-**Stato delle schede al 28 settembre.** R-V2 è la scheda viva (in pausa dalle 10:40 del 28/09 per
-scelta del proprietario); S-INVII, R-DATI, R-MODELLI e R-SWITCH hanno una nota datata che rimanda a
-dove il lavoro è proseguito. Le proposte della [revisione critica del 28/09](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md)
+**Stato delle schede.** Lo stato di un piano è nell'intestazione della sua scheda (R-V2, per
+esempio, è in corso dalla ripresa del 28/09 alle 19:22). S-INVII, R-DATI, R-MODELLI e R-SWITCH sono
+ferme al 28/09, con una nota datata che rimanda a dove il lavoro è proseguito. Diverse assegnazioni
+nominano sessioni che il 30/09 alle 02:07 risultavano chiuse, `f4f38e58` e la lead di Codex
+`01a0ee03` ([riordino](../reports/analisi/riordino_repo_2026-09-30/RIORDINO.md), §1): vedi §3. Le proposte della [revisione critica del 28/09](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md)
 (§6) sono, dalle 12:30 del 28/09 e su richiesta del proprietario, la scheda
 [R-REV](piani/revisione-critica.md), in ordine di esecuzione. Dal 29/09 la priorità complessiva
 è [R-COMP](piani/modello-competitivo.md); gli incarichi già aperti in R-REV e R-V2 restano assegnati.
@@ -59,8 +53,9 @@ tempo e reti causali hanno condizioni di apertura nelle schede.
 
 ## 3. Lavorare in una cartella condivisa
 
-Le assegnazioni al momento dell'introduzione dell'indice sono **da verificare**:
-altri agenti sono attivi e i vecchi incarichi non sono stati censiti qui.
+Un'assegnazione scritta in una scheda non prova che la sessione sia ancora attiva, né che sia
+chiusa. Si verifica con la sessione stessa, se è raggiungibile ([AGENTI §3](AGENTI.md#3-coordinamento-fra-sessioni-nella-stessa-cartella)),
+altrimenti chiedendo al proprietario. Come si committano i file condivisi è nella stessa sezione.
 
 1. Leggere `git status --short`, la scheda scelta e le modifiche ai file da
    toccare. Un file non tracciato o un incarico senza assegnatario non è libero
@@ -76,14 +71,14 @@ altri agenti sono attivi e i vecchi incarichi non sono stati censiti qui.
    ambito, risolvere il conflitto prima di modificarlo; proseguire su ambiti disgiunti.
 4. Usare report e output distinti; non sovrascrivere prove o protocolli.
    Aggiornare l'indice solo per priorità, dipendenze o nuove schede. Le regole
-   sui checkpoint e sulle autorizzazioni restano in CLAUDE e LAVORO.
+   sui checkpoint e sulle autorizzazioni stanno in CLAUDE.md e in docs/CLAUDE.md.
 5. A fine lavoro lasciare esito, evidenza e prossimo passo nella scheda. Per una
    chiusura, registrare la prova e la condizione di riapertura; conservare la
    scheda e spostare il suo collegamento sotto «Piani chiusi».
 
 ## 4. Piani chiusi e risultati precedenti
 
-Nessuna delle quattro nuove schede è chiusa. Per le linee precedenti:
+Nessuna delle sette schede è chiusa. Per le linee precedenti:
 
 | Filone precedente | Esito e come usarlo oggi |
 |---|---|
@@ -91,7 +86,7 @@ Nessuna delle quattro nuove schede è chiusa. Per le linee precedenti:
 | Ipotesi che togliere le chiamate spurie bastasse alla fedeltà | Esito contrario nel t14: [CP-0032](checkpoints/0032-t14-controlmodel-fedelta.md). ControlModel resta una alternativa, non una soluzione dimostrata |
 | Vecchia calibrazione dell'ampiezza | D-042 e [CP-0033](checkpoints/0033-t15-ampiezza-doppia.md), con limiti di [CP-0034](checkpoints/0034-audit-segni-e-ampiezza.md). La curva è ancora aperta in S-INVII |
 | Banchi e piani dell'11–19 settembre | [PROGETTO.md](PROGETTO.md) §2 e [REGISTRO.md](REGISTRO.md); leggere il checkpoint pertinente, non tutta la cartella |
-| Catena di cicli e orchestratore | Ritirati: D-040 in [DECISIONI.md](DECISIONI.md), percorsi in [ARCHIVIO.md](ARCHIVIO.md). Questo indice è manuale e non li riattiva |
+| Catena di cicli e orchestratore | Ritirati: D-040 in [DECISIONI.md](DECISIONI.md), percorsi in [ARCHIVIO.md](ARCHIVIO.md), stato in [AGENTI](AGENTI.md) §2. Questo indice è manuale e non li riattiva |
 
 Non modificare gli esiti storici per farli coincidere con un piano nuovo. Una
 correzione segue il registro e i checkpoint; un nuovo esperimento ha un nuovo output.

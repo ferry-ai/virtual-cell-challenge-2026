@@ -34,6 +34,17 @@ After a run, link its evidence from the relevant plan card; keep the report immu
   VCC score: say which members it sees.
 - **Code in a report is a record.** If you need a changed copy of a file other reports import
   (see the table in README.md), put it in your new folder and import it from there.
+- **A folder with many files or several sub-studies gets a `README.md`** that indexes it by area,
+  with what to read first (D-048).
+- **Bulky machine outputs** (over about 1 MB) go to the data root, with a committed manifest of
+  paths, sizes and hashes, unless they are the only evidence of a verdict (D-048).
+- **Reports of other agents** launched through the agent hub go, whole, in an `agenti/` subfolder
+  of the study's folder, as `<tema>_<agente>.md`, stating at the top the agent, the run, the
+  model, the mode and the brief. The owner asked for this on 25/09: the hub's `runs/` can be
+  cleaned (`docs/AGENTI.md` §1). A report of an agent is a claim until you verify it.
+- **One declared exception to "never edited":** the incident ledger in
+  `reports/analisi/lead_scientist_2026-09-29/learning/incidents/`, where new revision files are
+  added and none is changed (`docs/ERRORI.md`, D-049).
 - **A path you cite** goes as `reports/<categoria>/<cartella>/…` from now on.
 
 ## What a submission leaves here
@@ -50,9 +61,10 @@ Written while generating and submitting, in `reports/invii/trial_<data>/`:
 - the output of `vcc`, saved as it is: `submit_t<NN>_started.txt`, `submit_t<NN>_raw.json`,
   `submit_<entry>.json`, `status_<entry>.json`.
 
-After the score come `reports/invii/prediction_t<NN>_<data>/comparison.json`, a row in
-`reports/invii/README.md`, a checkpoint and §0 of `docs/PROGETTO.md`. The latest complete
-example is t25: `reports/invii/prediction_t25_2026-09-27/` and `reports/invii/trial_2026-09-27/`.
+What follows the score is one checklist, `docs/LAVORO.md` §2, point 7. Two complete examples:
+t25, all local (`reports/invii/prediction_t25_2026-09-27/`, `reports/invii/trial_2026-09-27/`), and
+t28, generated on Colab and uploaded from a local copy (`reports/invii/prediction_t28_2026-09-29/`,
+`reports/invii/trial_2026-09-29/`).
 
 The owner's authorisations are transcribed in `reports/invii/trial_2026-09-22/autorizzazioni.md`.
 Read them, but a new agent confirms in chat before using one.

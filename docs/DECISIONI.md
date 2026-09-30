@@ -14,6 +14,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-049 | Ingresso breve e letture su richiesta: `CLAUDE.md` tiene solo i perimetri, la tabella dei compiti con dove fermarsi e le regole globali; ogni informazione aggiornata a mano ha una sede sola, elencata in `docs/CLAUDE.md`; l'infrastruttura degli agenti ha una pagina sua, `docs/AGENTI.md`; la validità di un documento si chiede per percorso con `scripts/31_check_docs.py --status` | attiva | 2026-09-30 | Richiesta del proprietario in chat del 30 settembre, pomeriggio; `reports/analisi/ingresso_agenti_2026-09-30/RIORDINO.md` |
 | D-048 | Una mappa per ambiti (`docs/AMBITI.md`) instrada ogni area del lavoro; gli errori di metodo e le trappole operative stanno in `docs/ERRORI.md`; ogni sessione committa il proprio lavoro prima di chiudere, e quello lasciato da una sessione finita si committa com'è; le cartelle grandi hanno un indice; gli output pesanti vanno nella radice dati con un manifest | attiva | 2026-09-30 | Richiesta del proprietario in chat del 30 settembre; `reports/analisi/riordino_repo_2026-09-30/RIORDINO.md` |
 | D-047 | Si possono scegliere modifiche congiunte dopo un banco fattoriale preregistrato e una conferma separata; l'attribuzione ai singoli fattori resta distinta dalla scelta del candidato | attiva | 2026-09-29 | Mandato del proprietario alla lead; `reports/analisi/lead_scientist_2026-09-29/PROTOCOLLO_GENERATORE.md`, `reports/analisi/lead_scientist_2026-09-29/RISULTATI_GENERATORE_SVILUPPO.md` |
 | D-046 | L'evidenza sta in `reports/<categoria>/<tema>_<data>/`, con un indice per categoria che dice data, nocciolo, validità e peso di ogni cartella; i percorsi scritti prima si seguono per nome un livello più giù; le analisi superate stanno in `docs/storico/` | attiva | 2026-09-28 | Richiesta del proprietario in chat del 28 settembre; `reports/README.md`, `reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md` |
@@ -64,6 +65,49 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-049 — Ingresso breve, una sede per informazione, gli agenti in un perimetro loro
+
+- **Mandato:** il 30 settembre, nel pomeriggio, il proprietario ha chiesto di snellire e
+  riorganizzare la repo perché un agente appena arrivato capisca in fretta progetto, direzione,
+  stato e lavoro assegnato, legga solo i documenti del proprio compito, sappia che cosa ignorare,
+  e distingua le regole globali da quelle di un solo ambito; di separare il progetto VCC, gli
+  strumenti di esecuzione, l'infrastruttura degli agenti e l'archivio; di dare una sede canonica
+  a ogni informazione e di rendere consultabile la validità dei documenti senza leggere tutto il
+  registro. Con via a procedere fino all'implementazione, senza push.
+- **Perché:** misurato il 30/09 sul commit `1212e2f`: prima di qualunque compito l'accordo rendeva
+  obbligatorie circa 880 righe (CLAUDE.md 220, PROGETTO §0 e §5 223, AMBITI 135, PIANI 97,
+  ERRORI 204), più LAVORO (280) per chi esegue codice e il registro (1.193 righe) prima di fidarsi
+  di un documento. Lo stato del t28 era scritto a mano in sette posti, i percorsi di lettura erano
+  tre e diversi, e alcune copie erano scadute (R-V2 «in pausa», la prova generale «non fatta», le
+  righe di codice di ricerca 22.000 contro circa 60.000). La base di lancio degli agenti, attiva
+  fuori dalla repo, non era nominata da nessun documento d'ingresso, mentre PROGETTO chiamava
+  «chiusa» l'infrastruttura degli agenti.
+- **Decisione:**
+  - `CLAUDE.md` contiene i quattro perimetri, la tabella «se devi fare X, leggi Y, fermati lì» e le
+    regole globali; niente stato, punteggi o assegnazioni. `AGENTS.md` rimanda ad esso;
+  - le sedi canoniche sono la tabella di `docs/CLAUDE.md`. In particolare: lo stato nel §0 di
+    PROGETTO, riscritto corto; i punteggi ufficiali solo nella tabella di `reports/invii/README.md`;
+    lo stato e l'assegnazione di un piano solo nella sua scheda; le regole dei checkpoint
+    nell'intestazione di `docs/checkpoints/INDICE.md`; le regole di scrittura dei documenti in
+    `docs/CLAUDE.md`;
+  - `docs/AGENTI.md` è la pagina dell'infrastruttura degli agenti: l'interfaccia con la base di
+    lancio, lo stato dei sistemi ritirati, il coordinamento fra sessioni. Dove le regole del worker
+    dell'hub e l'accordo si scontrano, per il worker valgono le sue, più strette;
+  - la validità di un percorso si chiede con `python scripts/31_check_docs.py --status <percorso>`,
+    che stampa le voci del registro, le correzioni dell'indice dei checkpoint e il giudizio
+    dell'indice della cartella, anche quando non concordano;
+  - il registro degli incidenti resta in `reports/analisi/lead_scientist_2026-09-29/learning/incidents/`,
+    in sola aggiunta: unica eccezione dichiarata alla regola dei report immutabili, perché i
+    launcher lo leggono per percorso.
+- **Che cosa non segue:** nessun report, checkpoint o dato è stato spostato, cancellato o
+  riscritto; il testo tolto da PROGETTO è in `docs/storico/PROGETTO_sezioni_0_6_7_2026-09-30.md`.
+  Le schede dei piani, che hanno assegnatari, non sono state riscritte. Nessuna modifica alla base
+  di lancio né alle attività pianificate di Windows della catena ritirata, che restano una
+  decisione del proprietario.
+- **Riaprire se:** un agente non trova il contesto giusto partendo dalla tabella dei compiti, o una
+  sede canonica non viene aggiornata e un'altra copia prende il suo posto; oppure la base di lancio
+  entra nella repo o cambia interfaccia.
 
 ### D-048 — Una mappa per ambiti, gli errori in un posto, niente lavoro fuori dai commit
 

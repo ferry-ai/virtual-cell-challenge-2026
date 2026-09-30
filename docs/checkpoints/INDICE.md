@@ -1,9 +1,11 @@
 # Indice dei checkpoint
 
 Un checkpoint è una fotografia datata di un momento significativo del progetto: un
-dataset adottato o scartato, un benchmark completato, un'ipotesi contraddetta, un
-cambio di strategia di modellazione o di validazione. Non serve un checkpoint per
-ogni modifica, esecuzione o iterazione.
+dataset adottato o scartato, un benchmark completato, un invio valutato, un'ipotesi
+contraddetta, un cambio di strategia di modellazione o di validazione. Non serve un
+checkpoint per ogni modifica, esecuzione o iterazione. Queste regole stanno qui e solo qui;
+la colonna «Corretto da» è la sede delle correzioni di ogni checkpoint, e
+`python scripts/31_check_docs.py --status <checkpoint>` la mostra accanto al registro.
 
 **I checkpoint non si riscrivono.** Se una loro conclusione risulta sbagliata, si
 scrive un checkpoint nuovo e si compila qui la colonna "Corretto da". Il testo

@@ -11,8 +11,10 @@ Procedura e regole: [LAVORO §1–2](../../docs/LAVORO.md). Indice generale: [..
 
 ## I punteggi ufficiali in una tabella
 
-Fonte: i `comparison.json` e gli stati salvati. La tabella completa per membro è in
-[PROGETTO §0](../../docs/PROGETTO.md).
+Fonte: i `comparison.json` e gli stati salvati. **Questa tabella è la sede unica dei punteggi
+ufficiali** (`docs/CLAUDE.md`): si aggiorna dopo ogni punteggio, e il §0 di
+[PROGETTO](../../docs/PROGETTO.md) ne riporta solo il massimo osservato e il riferimento. I sei
+membri di ogni invio sono nel suo `comparison.json`.
 
 | Invio | Punteggio | Rango | Esito della regola registrata |
 |---|---|---|---|
@@ -33,10 +35,10 @@ Fonte: i `comparison.json` e gli stati salvati. La tabella completa per membro �
 | t25 | +0,140238 | 361 | t22 con lo stimatore corretto: −0,0010, non conclusivo; la correzione resta |
 | t23 | +0,141868 | 366 | t22 con la quota condivisa (conta l'esclusione): +0,0006, non conclusivo; PDS su, membri DE giù (CP-0042) |
 | t26 | +0,138721 | 384 | t25 senza effetti sui geni sotto 5 CPM: −0,0015, non conclusivo; il PDS non sale, i geni poco espressi pesano poco (CP-0045) |
-| **t28** | **+0,144845** | 359 | nuovo massimo osservato; +0,004607 contro t25, sotto +0,005: non conclusivo ([CP-0052](../../docs/checkpoints/0052-t28-punteggio-ufficiale.md)) |
+| **t28** | **+0,144845** | 359 | effetti t25 ×1,5 e dispersione per gene ×1: nuovo massimo osservato; +0,004607 contro t25, sotto +0,005: non conclusivo ([CP-0052](../../docs/checkpoints/0052-t28-punteggio-ufficiale.md)) |
 
-Non inviati: t04, t06, t12, t18, t19, t23 (pronto, aspetta il via), t09 e t13 (fermati dalle
-loro regole), t21 (la sua previsione è citata ma non è nel repository: vedi la
+Non inviati: t04, t06, t12, t18, t19, t27 (generato e impacchettato il 29/09, tenuto
+pronto dal proprietario), t09 e t13 (fermati dalle loro regole), t21 (la sua previsione è citata ma non è nel repository: vedi la
 [revisione critica](../analisi/revisione_criticita_2026-09-28/REVISIONE.md), §4).
 
 ## Le cartelle, dalla più recente

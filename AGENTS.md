@@ -1,17 +1,7 @@
 # Instructions for Codex and any other agent
 
-The working agreement for every agent in this repository is `CLAUDE.md`, and it applies
-to Codex in full: read it before anything else. Its table says what to read for each task.
-The project map is `docs/PROGETTO.md`, whose §0 gives the state and the general direction;
-`docs/AMBITI.md` routes each area of the work to its evidence and plan card; `docs/ERRORI.md`
-lists the method errors and operational traps already met. How the live pipeline is run is
-`docs/LAVORO.md`; open work and its assignments are in `docs/PIANI.md`.
+The working agreement for every agent in this repository is `CLAUDE.md`, and it applies to Codex
+in full: read it before anything else, then only what its task table names for your task.
 
-`configs/`, `src/vcc2026/`, `scripts/`, `reports/` and `docs/` each have a `CLAUDE.md` with the
-index and the rules of that folder. Read it before you edit a file there. The evidence is filed by
-category since 28 September (D-046): start from `reports/README.md`.
-
-The chain of cycles (Codex → Claude → Grok, with a guardian and a morning plan) and the
-multi-model orchestrator were retired on 23 September 2026 (D-040 in `docs/DECISIONI.md`).
-There is no cycle script to start and no cycle folder to write into; their code is in the
-tag `archivio/pre-pulizia-2026-09-23`, listed in `docs/ARCHIVIO.md`.
+Codex does not load the folder guides by itself: before editing a file in `configs/`,
+`src/vcc2026/`, `scripts/`, `docs/`, `docs/piani/` or `reports/`, read that folder's `CLAUDE.md`.

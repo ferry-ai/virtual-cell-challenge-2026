@@ -297,6 +297,49 @@ class CheckerTests(unittest.TestCase):
         self.assertEqual(len(errors), 1, errors)
         self.assertIn('VECCHIO.md#assente', errors[0])
 
+    def test_status_prints_the_covering_entries_the_sheet_and_the_correction(self):
+        """An agent asks about one path and gets its row, not the whole registry."""
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root, True)
+        (root / 'docs' / 'checkpoints').mkdir(parents=True)
+        (root / 'reports' / 'invii' / 'trial_x').mkdir(parents=True)
+        (root / 'reports' / 'invii' / 'trial_x' / 'status.json').write_text('{}', encoding='utf-8')
+        (root / 'docs' / 'VECCHIO.md').write_text('# V\n', encoding='utf-8')
+        (root / 'reports' / 'invii' / 'README.md').write_text(
+            '| Data | Cartella | Nocciolo | Vale? |\n|---|---|---|---|\n'
+            '| 29/09 | [trial_x/](trial_x/) | una corsa | in parte, vedi CP-0002 |\n', encoding='utf-8')
+        (root / 'docs' / 'checkpoints' / '0001-primo.md').write_text('# CP-0001 — Primo\n', encoding='utf-8')
+        (root / 'docs' / 'checkpoints' / 'INDICE.md').write_text(
+            INDEX.replace('| — |\n', '| [0002](0002-due.md), §3 |\n'), encoding='utf-8')
+        (root / 'docs' / 'REGISTRO.md').write_text(
+            '# R\n\n| Percorso | Stato | Sostituito da | Nota | Scheda |\n|---|---|---|---|---|\n'
+            '| `docs/VECCHIO.md` | superato | `docs/NUOVO.md` | il §2 resta | [R-001](#r-001--docsvecchiomd) |\n'
+            '| `docs/checkpoints/` | attuale | — | immutabili | — |\n'
+            '| `reports/invii/` | attuale | — | gli invii, Δ e γ | — |\n'
+            '| `reports/invii/trial_x/` | storico | — | una corsa | — |\n\n'
+            '| Identificatore | Tipo | Stato | Provenienza | Riproducibile con | Nota |\n'
+            '|---|---|---|---|---|---|\n'
+            '| `C:/dati/effects.npz` | derivato | attuale | stadio 100 | ricetta | effetti |\n\n'
+            '### R-001 — `docs/VECCHIO.md`\n', encoding='utf-8')
+        with patch.object(check_docs, 'REPO_ROOT', root):
+            old = check_docs.registry_status('docs/VECCHIO.md')
+            report = check_docs.registry_status('reports/trial_x/status.json')  # the path of before D-046
+            checkpoint = check_docs.registry_status('docs/checkpoints/0001-primo.md')
+            data = check_docs.registry_status('C:/dati/effects.npz')
+            nothing = check_docs.registry_status('docs/ALTRO.md')
+        self.assertIn('superato', old[0])
+        self.assertTrue(any('replaced by: `docs/NUOVO.md`' in line for line in old), old)
+        self.assertTrue(any('R-001' in line and '#r-001--docsvecchiomd' in line for line in old), old)
+        self.assertIn('now at reports/invii/trial_x', report[0])
+        statuses = [line.split()[0] for line in report if '(entry' in line]
+        self.assertEqual(statuses, ['storico', 'attuale'], report)  # the folder itself before its parent
+        # the category index keeps its own verdict, printed beside the registry's
+        self.assertEqual(report[-1], '  index reports/invii/README.md, Vale?: in parte, vedi CP-0002')
+        self.assertIn('Corretto da', checkpoint[-1])
+        self.assertIn('[0002](0002-due.md), §3', checkpoint[-1])
+        self.assertIn('attuale', data[0])
+        self.assertEqual(nothing, [])
+
     def test_this_repository_is_consistent(self):
         done = subprocess.run([sys.executable, str(ROOT / 'scripts' / '31_check_docs.py')],
                               capture_output=True, text=True, cwd=ROOT)

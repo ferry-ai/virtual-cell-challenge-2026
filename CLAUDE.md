@@ -1,47 +1,101 @@
 # Working agreement for agents
 
-## Start here
+The project: predict how cells respond to 300 CRISPRi knockdowns in cell contexts never seen
+perturbed (Virtual Cell Challenge 2026). Only the final set counts: three new contexts, D, E and
+F, released on 22 October; submissions close on 5 November. Where the project stands and where it
+is heading is one page, [`docs/PROGETTO.md`](docs/PROGETTO.md) §0.
 
-**State on 30 September.** Codex's lead session of 29/09 corrected premises the project relied
-on (CD4 is already Flex; the plateau since t16 is not saturation), and t28 scored +0.144845, the
-best observed, inconclusive by its registered rule. Its findings are indexed in
-[`reports/analisi/lead_scientist_2026-09-29/README.md`](reports/analisi/lead_scientist_2026-09-29/README.md).
-Rewrite this paragraph when the state changes.
+**Mandatory reading is this file, PROGETTO §0 and the row of the task table below that matches
+your task — nothing else.** Everything else is read on demand, by section, and each row says where
+to stop. State, scores and assignments are never written here: they change, and each has one home
+(`docs/CLAUDE.md` lists them all).
 
-1. [`docs/PROGETTO.md`](docs/PROGETTO.md) §0 — where the project stands and the general
-   direction, on one page; §5 lists the known weaknesses.
-2. [`docs/AMBITI.md`](docs/AMBITI.md) — one section per area of the work (scoring, submissions,
-   generator, data, models, final set, operations, method): state, what to read first, plan card.
-3. [`docs/PIANI.md`](docs/PIANI.md) — open priorities and the relevant plan card. Before taking
-   work, check its assignment and the shared-workspace rules in §3.
-4. [`docs/ERRORI.md`](docs/ERRORI.md) — the method errors already made and the operational traps:
-   read them before you conclude anything or queue a job.
-5. The last three rows of [`docs/checkpoints/INDICE.md`](docs/checkpoints/INDICE.md), then the
-   row below that matches your task, and only what it names. For anything that runs code, that
-   includes [`docs/LAVORO.md`](docs/LAVORO.md), the procedural guide.
+## Four perimeters
 
-Before you rely on any other document, check its row in [`docs/REGISTRO.md`](docs/REGISTRO.md):
-several contain conclusions that later work corrected. The evidence, by category, is indexed in
-[`reports/README.md`](reports/README.md).
+| Perimeter | What it holds | Entry | Who can leave it aside |
+|---|---|---|---|
+| VCC project | data, models, evaluation, the live pipeline code | [`docs/AMBITI.md`](docs/AMBITI.md), one section per area | whoever works only on the launch base |
+| Execution tools | Colab and Kaggle jobs, generation, packaging, submissions | [`docs/LAVORO.md`](docs/LAVORO.md), by section | whoever only analyses or writes |
+| Agent infrastructure | the launch base `C:/Users/ferra/agent-hub` (outside this repo), the orchestrator and cycles retired on 23 September, coordination between sessions | [`docs/AGENTI.md`](docs/AGENTI.md) | whoever works on data, models or submissions |
+| Archive and history | decisions, checkpoints, registry, archived code, superseded analyses, `reports/storico/` | the last row of the task table | anyone, until a current document cites it |
 
-| Your task | Read | Leave aside |
+## Task table: read this, then stop
+
+| If you must… | Read | Stop there; leave aside |
 |---|---|---|
-| Find what is known about one area, and where its evidence is | that area's section of `docs/AMBITI.md` | browsing `reports/` or `docs/` folder by folder |
-| Choose, resume or hand off an open plan | `docs/PIANI.md`; `docs/piani/CLAUDE.md`; the one relevant plan card | treating old reports' next steps as current assignments |
-| Prepare, generate or submit a trial | LAVORO §1–2; `reports/CLAUDE.md`, which lists what a submission leaves, with a complete example; `reports/invii/README.md`; the latest recipe in `configs/recipes/` | the analyses of 11–15 September in `docs/storico/` |
-| Read an official score | LAVORO §2, point 7; `reports/gara/anchors_2026-09-17/`; the latest checkpoint as a model | the benches' local scores, which are not VCC scores |
-| Prepare the final set (D, E, F; 22 October) | LAVORO §7 | |
-| Find data, choose sources or design a generalizing predictor | `docs/GENERALIZZAZIONE.md`; D-044 in `docs/DECISIONI.md` | ranking datasets only by overlap with the current 300 targets |
-| Queue or follow a Colab job | LAVORO §3 | the job's own log: it syncs only when the job ends |
-| Prepare a new job or repair an operational failure | `docs/ERRORI.md`; the relevant incident records and reusable preflight | treating a completion marker, a local Drive copy or a written fix as remote verification |
-| Change a stage | `scripts/CLAUDE.md`; the stage's docstring and its test | |
-| Change a library module | `src/vcc2026/CLAUDE.md`, which says which stages import it | |
-| Know why something was decided, or when to reopen it | the table at the top of `docs/DECISIONI.md`, then that one section | the other sections |
-| Find the evidence behind a claim | the checkpoint or decision that makes it, then the report it cites; a path `reports/<folder>/` written before 28 September is now `reports/<categoria>/<folder>/` (`ls -d reports/*/<folder>`) | browsing `reports/` folder by folder: read the category's `README.md` |
-| Run or change research code in a report | the table «Il codice di ricerca che sta qui» in `reports/README.md`: which files other benches import | editing a file other reports import: copy it into your new folder |
-| Bring back archived code | `docs/ARCHIVIO.md`: restore from the tag, with its test | rewriting it |
-| Write a recipe or change a setting | `configs/CLAUDE.md` | |
-| Write in `docs/` or `reports/` | `docs/CLAUDE.md` or `reports/CLAUDE.md` | |
+| Take, resume or hand off work | [`docs/PIANI.md`](docs/PIANI.md) §2–3, then the one plan card | other cards; the "next steps" of dated reports |
+| Know an area: state, evidence, plan | that section of `docs/AMBITI.md`, then only the sources it cites | the other sections; browsing `reports/` folder by folder |
+| Change the generator or another stage or module | `scripts/CLAUDE.md` or `src/vcc2026/CLAUDE.md`; the stage's docstring and test; AMBITI §3 for the evidence | submission rules and Colab, unless you then generate a trial |
+| Study a data source, design a predictor | AMBITI §4–5; [`docs/GENERALIZZAZIONE.md`](docs/GENERALIZZAZIONE.md) (scope D-044, leakage); `reports/sorgenti/README.md` | submissions, Colab, agent infrastructure |
+| Read an official score | LAVORO §2, point 7; the latest scored checkpoint as a model; `reports/invii/README.md` | bench scores, which are not VCC scores |
+| Prepare, generate or submit a trial | LAVORO §1–2; `reports/CLAUDE.md`, "What a submission leaves"; `configs/CLAUDE.md`, and the recipe and stage-45 options of the submission you start from (LAVORO §1 names those of t28) | the analyses in `docs/storico/` |
+| Prepare or follow a Colab or Kaggle job | LAVORO §3; [`docs/ERRORI.md`](docs/ERRORI.md) from "Prima del prossimo job" to "Registro immutabile", and its operational lessons | the job's own log: it syncs only when the job ends |
+| Prepare the final set (D, E, F) | LAVORO §7 | |
+| Draw a conclusion, write a report or a checkpoint | ERRORI, "Errori di metodo già commessi" (one table); `reports/CLAUDE.md` or `docs/CLAUDE.md` | |
+| Run or change research code in a report | the table "Il codice di ricerca che sta qui" in `reports/README.md` | editing a file other benches import: copy it into your new folder |
+| Work on the launch base or coordinate agents | `docs/AGENTI.md`; then the hub's own instructions, outside the repo | the project perimeters |
+| Reconstruct a past decision or result | the table atop [`docs/DECISIONI.md`](docs/DECISIONI.md), then that one section; the checkpoint it cites, via [`docs/checkpoints/INDICE.md`](docs/checkpoints/INDICE.md) and its column "Corretto da"; `--status` (below) on each document it cites | the other sections; `docs/storico/` unless cited |
+
+**Before relying on any document your row does not name**, ask about that path alone:
+`python scripts/31_check_docs.py --status <path>` prints its registry state (`attuale`,
+`da-verificare`, `superato`, `storico`), what replaced it, its review sheet, what corrected a
+checkpoint, and the verdict of the folder index that lists it. When they disagree, both are shown:
+trust the stricter one and say so. A path `reports/<folder>/` written before 28 September is now
+`reports/<categoria>/<folder>/`; the command follows it.
+
+## Global rules
+
+**Evidence.** This repository was built quickly by agents; its failure mode is confident prose
+outrunning what was measured.
+- A script existing is not proof it ran; a run completing is not proof its output is right;
+  ingesting data is not proof a model improved.
+- An agent-written summary is not evidence: trace each claim to a report, a script output, a
+  primary source or your own re-run, and cite the path. Label it: measured, interpretation,
+  hypothesis, proposal or implemented.
+- Summarising is where claims get promoted: keep the caveats of the source (CP-0002). A newer
+  document is not more correct by being newer: if two disagree without decisive evidence, record
+  the contradiction as open.
+- Register a prediction, with the rule you will read it by, before the submission; the threshold
+  does not move after the number is known (CP-0030).
+- Never invent dates, results, approvals or decisions; read times with `date` or from a commit,
+  and say so when you reconstruct history from artifacts.
+
+**Nothing is lost.** Reports, checkpoints and data are never deleted or overwritten: a new run
+writes to a new `--out` or report folder. A checkpoint is never edited: a correction is a new
+checkpoint and the column "Corretto da". A contradicted document gets a registry status and a
+review sheet, not a rewrite; `da-verificare` becomes `superato` only by naming what replaced it.
+Code and documents leave the live tree only through the archive (tag, rows in
+`docs/ARCHIVIO.md`, `git rm`); an untracked file goes to the Recycle Bin. New material in `docs/`
+or `reports/` gets a registry row.
+
+**The owner authorises** anything that spends quota (a submission, cloud compute, a launch of
+other agents), every download and every push, in chat. Past goes for submissions are transcribed
+in `reports/invii/trial_2026-09-22/autorizzazioni.md`; a new agent confirms them in chat before
+using one. On cloud compute two records disagree, and the contradiction is open: card R-V2 (F7)
+notes Colab and Kaggle as authorised on 27/09, while the mandate of card R-REV (28/09) and PIANI
+§2 ask for it in chat. Until the owner settles it, ask. The repository is **public** on GitHub,
+one branch `main`: never commit a secret or private data, and never write a cell-line identity
+next to the contexts A, B, C.
+
+**Shared checkout.** Other agents work in this folder. Start from `git status --short`; an
+untracked file or an unassigned plan is not proof that nobody is working on it. Re-read before
+patching and preserve others' changes; never touch the files of a session that is still active.
+Commit your own work, file by file and by name (never `git add -A`), before your session ends; for
+a file others are editing too, commit only your own lines (`docs/AGENTI.md` §3). Work a finished
+session left uncommitted is committed as it is, crediting its author. Session scratchpads are
+temporary: results go into `reports/` first (D-048). A worker launched by the agent hub does not
+commit: its launcher does.
+
+**No preset limits** (D-045): do not estimate durations or cap the work. A candidate that fails its
+registered rule does not close the day: pivot to another one while the quota window is open.
+
+**Conventions.** Documentation in plain Italian; code, identifiers, docstrings and commit messages
+in English. Data live outside the repository at `C:/Users/ferra/vcc2026-data` (D-001;
+`VCC2026_DATA_ROOT` overrides it); raw inputs are never modified, large data files are not moved,
+and no dataset, venv, cache or copy of the repository goes inside it. Run project code through
+`.\scripts\py.cmd` and `.\scripts\vcc.cmd`; scripts 30 and 31 need only Python 3.11+. Edit files
+with the editor tools or a script saved to a file: in Git Bash a heredoc piped into `py` halves
+backslashes (ERRORI, operational lessons).
 
 ## Repository map
 
@@ -56,157 +110,15 @@ vcc2026/
 ├── scripts/             the numbered stages, and the wrappers py.cmd and vcc.cmd
 ├── tests/               unittest suite; test_live_tree keeps these maps true
 ├── notebooks/           the Colab dispatcher and its job scripts (docs/LAVORO.md §3)
-├── docs/                map, areas, working guide, errors, decisions, registry, archive, checkpoints; storico/
+├── docs/                state, areas, plans, procedures, errors, decisions, registry, archive, checkpoints
 └── reports/             the evidence, reports/<categoria>/<tema>_<data>/, with a README per category
 C:/Users/ferra/vcc2026-data/   data, venv and artifacts, outside the repository (D-001)
 ```
 
-`configs/`, `src/vcc2026/`, `scripts/`, `docs/` and `reports/` each have a `CLAUDE.md` with the
-index and the rules of that folder. Claude Code loads it when you read a file there; other
-agents read it before editing there. `tests/test_live_tree.py` fails if this map, or one of
-those indexes, stops matching the tree.
-
-## What is live
-
-Open work is indexed in `docs/PIANI.md`, with separate editable cards under `docs/piani/`.
-These manual plans do not start jobs or revive the retired orchestrator. Current status
-lives in PROGETTO, procedures in LAVORO, evidence in reports/checkpoints, and validity in
-REGISTRO. In a shared checkout, preserve other agents' changes and re-read before patching;
-an untracked file or an unassigned plan is not evidence that nobody is working on it.
-
-Only the code that produces or scores a submission is in the tree (D-040, D-043):
-- the stages are the table in `docs/LAVORO.md` §4;
-- the modules are the table in `src/vcc2026/CLAUDE.md`;
-- `tests/test_live_tree.py` fails if either table disagrees with the tree, or if a definition
-  has no live caller.
-
-The research benches are not in that tree: about 22,000 lines of Python live in the report
-folders that used them, and several are imported by other benches by path. Only `kolf_sums.py`
-and the bench proxies (`tests/test_proxy_banchi.py`) are tested. The map of which file serves
-which is in `reports/README.md`; a changed copy goes in a new report folder, never over the
-old file.
-
-Everything else is in the tags listed file by file in `docs/ARCHIVIO.md`: the orchestrator,
-the pairwise oracle, the chain of cycles, the pseudobulk benchmark, the conditioned predictor,
-the source probes, the remote ingestion, trial-00 and trial-01, the expired plans.
-
-- There is no chain of cycles, no orchestrator and no morning plan: you work in a session
-  with the owner, and the owner authorises anything that spends quota.
-- If you need archived code, restore it from the tag with its test; do not rewrite it.
-  Reviving a subsystem is a decision: record it in `docs/DECISIONI.md`.
-- Checkpoints still name archived paths, and report paths as they were before 28 September
-  (`reports/<folder>/`, now `reports/<categoria>/<folder>/`; D-046). That is expected: the
-  checker, and `config.repo_file` for recipes, follow them.
-
-## Evidence discipline
-
-### Research scope: new targets and new contexts (D-044)
-
-- **Shared perturbation targets with the current panel are not required for a useful
-  dataset.** Do not reject a source or discard its other targets solely for low or zero
-  overlap with the current 300. Retain distant contexts as research candidates.
-- Distinguish perturbation targets from measured response genes. Missing response
-  measurements keep a mask (D-009); eligibility without target overlap does not imply
-  that incompatible response axes or assays can be concatenated without reconciliation.
-- The production same-target transfer pipeline is a baseline, not the limit of the
-  research objective. Evaluate new-target, new-context and jointly new-target/context
-  regimes separately. A target held out as unseen must have its perturbation outcomes
-  excluded from training across every source and derived feature.
-- More contexts improving generalization is a hypothesis to test, not an assumed result.
-  Read `docs/GENERALIZZAZIONE.md` for source roles, leakage controls and the next work.
-
-This repository was built quickly by agents, and its main failure mode has been
-confident prose outrunning what was measured. Hold these lines:
-
-- **A script existing is not proof it ran.** A run completing is not proof the output
-  is correct. Successful ingestion is not proof of model improvement.
-- **An agent-written summary is not evidence.** Trace every factual claim to a report,
-  a script output, a primary source, or your own re-run. Cite the path.
-- **Label the claim type**: measured, interpretation, hypothesis, proposal, or
-  implemented. The map uses these words on purpose; keep using them.
-- **A newer document is not automatically more correct.** When two documents disagree
-  and neither has decisive evidence, record the contradiction as open rather than
-  picking a winner.
-- **Summarising is where claims get promoted.** The documented failure in this repo is a
-  chain: "absent from the essential panels" → "non-essential" → "effects are small by
-  construction", each step reading like a paraphrase and each one a deduction. Before
-  restating an earlier document's conclusion, check whether it carried a caveat you are
-  about to drop. See CP-0002.
-- **Never overwrite a probe output or a report.** A failed request documents what the
-  endpoint looked like that day. New runs go to a new `--out` or `--report-dir`, the way
-  every stage in `docs/LAVORO.md` refuses to overwrite.
-- **Register the prediction before the submission**, with the rule you will read the
-  result by; the threshold does not move after the number is known (CP-0030).
-- Never invent dates, results, reviewer approvals, or decisions. If you reconstruct
-  history from artifacts, say so in the text.
-
-## No preset limits (D-045)
-
-Before queueing a newly prepared job, follow [`docs/ERRORI.md`](docs/ERRORI.md):
-declare every input and new output, validate the manifest locally, and require
-the same full hash/size checks in the destination runtime before scientific work.
-Reuse authorization already given in the session; this check does not require
-another permission request. Preserve failures in the append-only incident ledger,
-add a regression test and close an incident only with its stated verification
-evidence. This workflow does not stop running jobs or revive the retired cycles.
-
-- Do not estimate how long work will take, and do not cap what can be done in this session or
-  the next ones: many agents work, some on the teammate's machine, and limits are not predictable.
-- A candidate that fails its registered rule does not close the day. While the day's quota window
-  is open, pivot to other candidates, with parallel sessions and agents, and prepare a submission.
-  Registration before generation and the owner's go for every upload still apply.
-
-## When to write a checkpoint
-
-Write one when a dataset is adopted or rejected, a benchmark completes, a submission is
-scored, a hypothesis is contradicted, or the modeling or validation strategy changes. Not
-for a tool call, an edit, or an iteration.
-
-```bash
-python scripts/30_new_checkpoint.py --slug cd4-benchmark --title "Primo benchmark su CD4"
-```
-
-**Never edit an existing checkpoint.** A correction is a new checkpoint plus the
-"Corretto da" column in `docs/checkpoints/INDICE.md`. Historical disagreement has to
-stay readable.
-
-## When you touch documents, code or data
-
-- A document that is contradicted gets a status change and a review sheet listing the
-  specific disputed claims — not deletion, and not a rewrite of the whole file.
-- `da-verificare` never becomes `superato` without naming the material that replaced it.
-- Reports, checkpoints and datasets are never deleted. Do not move large data files or
-  copy datasets into the repository.
-- Code and documents that stop being live leave the tree only through the archive: an
-  annotated tag, rows in `docs/ARCHIVIO.md`, then `git rm` (D-040, `docs/LAVORO.md` §5).
-  An untracked file goes to the Recycle Bin, never through a hard delete.
-- New material in `docs/` or `reports/` needs a registry row; the checker enforces it.
-- **Commit your own work before your session ends**, file by file. Evidence that a finished
-  session left uncommitted is committed as it is by the next session, crediting its author;
-  session scratchpads are temporary, so results go into `reports/` first (D-048).
-- A report folder with many files or several sub-studies gets a `README.md` that indexes it by
-  area, with what to read first; bulky machine outputs (over about 1 MB) go to the data root with
-  a committed manifest of paths, sizes and hashes, unless they are the only evidence of a verdict
-  (D-048). No copies of the repository, venvs or caches inside the working tree.
-- There is one branch, `main`, on the laptop and on GitHub, where the repository is
-  **public**: whatever is pushed is published. Push only with the owner's go, and never
-  commit a secret or data that must stay private. Retired branches are tags `archivio/*`
-  (`docs/ARCHIVIO.md`).
-
-## Conventions
-
-- Human-facing documentation in plain Italian. Code, identifiers, CLI flags,
-  docstrings and commit messages in English, matching the existing analysis scripts.
-- Data lives outside the repo at `C:/Users/ferra/vcc2026-data` (`configs/config.yaml`,
-  overridable with `VCC2026_DATA_ROOT`). Raw inputs are never modified in place.
-- Run project code through the wrappers, which set UTF-8 and `PYTHONPATH`:
-  `.\scripts\py.cmd script.py` and `.\scripts\vcc.cmd`. The two documentation scripts
-  (30, 31) are standard-library only and run under any Python 3.11+.
-- Scripts are numbered and single-purpose; new ones continue the sequence
-  (`scripts/CLAUDE.md`).
-- Edit files with the editor tools, or with a script saved to a file. In Git Bash, a
-  heredoc piped into `py` halves backslashes: on 24 September an escaped `\r\n` written that
-  way became a real line break.
+Only code that produces or scores a submission is in the tree (D-040, D-043); the research
+benches live in the report folders that used them. `configs/`, `src/vcc2026/`, `scripts/`,
+`docs/`, `docs/piani/` and `reports/` each have a `CLAUDE.md` with the index and rules of that
+folder: Claude Code loads it when you read a file there, other agents read it before editing there.
 
 ## Before you finish
 
@@ -215,6 +127,5 @@ python scripts/31_check_docs.py
 .\scripts\py.cmd -m unittest discover -s tests
 ```
 
-The checker verifies paths, anchors, checkpoint numbering and required metadata, and the
-suite includes `tests/test_live_tree.py`, which keeps the tables of stages and modules true.
-Neither says whether a claim is true — that is still your job.
+The checker verifies paths, anchors, checkpoint numbering and registry metadata; the suite keeps
+the tables of stages and modules true. Neither says whether a claim is true: that is your job.
