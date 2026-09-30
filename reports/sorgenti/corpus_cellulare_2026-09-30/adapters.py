@@ -93,6 +93,139 @@ def h5ad(path, study, context, chemistry, modality, axis_csv, block=20000, max_c
     a.file.close()
 
 
+# ------------------------------------------------------------------------------------------ h5rows
+
+def _h5_open(path):
+    """An h5py File on a local path, or on a URL read by HTTP byte ranges (inspect_remote.RangeFile)."""
+    import io
+    import h5py
+    if str(path).startswith(("http://", "https://")):
+        from inspect_remote import RangeFile
+        return h5py.File(io.BufferedReader(RangeFile(str(path), block=8 << 20), buffer_size=8 << 20), "r")
+    return h5py.File(path, "r")
+
+
+def _h5_text(values):
+    return np.asarray([v.decode() if isinstance(v, bytes) else str(v) for v in values], dtype=object)
+
+
+def _h5_column(group, name):
+    """An anndata dataframe column as text (categorical, string or numeric), or None when absent."""
+    import h5py
+    if name is None or name not in group:
+        return None
+    node = group[name]
+    if isinstance(node, h5py.Group) and "categories" in node:
+        cats = _h5_text(node["categories"][:])
+        codes = node["codes"][:].astype(np.int64)
+        return np.where(codes >= 0, cats[np.clip(codes, 0, None)], MISSING).astype(object)
+    if isinstance(node, h5py.Group):                       # nullable string / int arrays
+        values = node["values"][:]
+        mask = node["mask"][:] if "mask" in node else np.zeros(values.shape, bool)
+        return np.where(mask, MISSING, _h5_text(values)).astype(object)
+    return _h5_text(node[:])
+
+
+def h5rows(path, study, context, chemistry, modality, axis_csv, block=20000, max_cells=None,
+           target_col="perturbation", control_values=("control",), control_pattern=None,
+           unassigned_values=("nan", "<NA>", "", "None", "MISSING"), guides_col=None, library_col=None,
+           published_depth=None, context_col=None, condition_cols=(), donor_col=None, var_symbol_col=None,
+           feature_id_col=None, layer="X", row_range=None):
+    """Row-major h5ad (CSR or dense X, or a CSR/dense layer), local or remote, read with h5py alone.
+
+    Column names come from the source's plan (the remote inventory); nothing is guessed at run time. Controls are
+    the target values in `control_values`, or matching `control_pattern` (a regex); unassigned cells keep target
+    UNASSIGNED and control_kind UNASSIGNED; every other label is kept as published in `target` (a later, declared
+    mapping turns guide-level labels into gene symbols). `row_range` = (start, stop) reads a part of the file, so a
+    very large source is split across jobs. A CSC matrix is refused here: it needs the transposing adapter.
+    """
+    import h5py
+    import pandas as pd
+    import scipy.sparse as sp
+    rx = re.compile(control_pattern) if control_pattern else None
+    f = _h5_open(path)
+    try:
+        node = f[layer] if layer in f else f["layers"][layer]
+        if isinstance(node, h5py.Dataset):
+            dense, (n_all, n_genes) = True, node.shape
+        else:
+            enc = node.attrs.get("encoding-type", b"")
+            enc = enc.decode() if isinstance(enc, bytes) else str(enc)
+            if enc != "csr_matrix":
+                raise ValueError(f"{layer} is {enc}: the row adapter reads CSR or dense only")
+            dense, (n_all, n_genes) = False, tuple(int(v) for v in node.attrs["shape"])
+        indptr = None if dense else node["indptr"][:].astype(np.int64)
+        obs, varg = f["obs"], f["var"]
+        vindex = varg.attrs.get("_index", "_index")
+        vindex = vindex.decode() if isinstance(vindex, bytes) else str(vindex)
+        symbols = list(_h5_column(varg, var_symbol_col) if var_symbol_col else _h5_column(varg, vindex))
+        feature_ids = _h5_column(varg, feature_id_col) if feature_id_col else None
+        idx, kind = _official(symbols, axis_csv)
+        var = pd.DataFrame({"feature_id": list(feature_ids) if feature_ids is not None else symbols,
+                            "symbol": symbols, "feature_type": "Gene Expression", "measured": True,
+                            "official_index": idx, "mapping": kind}, index=[f"f{i}" for i in range(len(symbols))])
+        oindex = obs.attrs.get("_index", "_index")
+        oindex = oindex.decode() if isinstance(oindex, bytes) else str(oindex)
+        barcodes = _h5_column(obs, oindex)
+        target_all = _h5_column(obs, target_col)
+        if target_all is None:
+            raise ValueError(f"obs has no column {target_col}")
+        cols = {"guides": _h5_column(obs, guides_col), "library": _h5_column(obs, library_col),
+                "context": _h5_column(obs, context_col), "donor": _h5_column(obs, donor_col),
+                "depth": _h5_column(obs, published_depth)}
+        conds = [(c, _h5_column(obs, c)) for c in condition_cols]
+        lo_all, hi_all = (0, n_all) if row_range is None else (int(row_range[0]), int(row_range[1]))
+        hi_all = hi_all if max_cells is None else min(hi_all, lo_all + max_cells)
+        for start in range(lo_all, hi_all, block):
+            stop = min(hi_all, start + block)
+            if dense:
+                x = sp.csr_matrix(np.asarray(node[start:stop]))
+            else:
+                a, b = int(indptr[start]), int(indptr[stop])
+                x = sp.csr_matrix((node["data"][a:b], node["indices"][a:b], indptr[start:stop + 1] - a),
+                                  shape=(stop - start, n_genes))
+            rows = slice(start, stop)
+            target = target_all[rows].astype(str)
+            is_ctrl = np.isin(target, list(control_values))
+            if rx is not None:
+                is_ctrl |= np.array([bool(rx.search(t)) for t in target])
+            unassigned = np.isin(target, list(unassigned_values)) & ~is_ctrl
+            library = cols["library"][rows] if cols["library"] is not None else np.array([MISSING] * (stop - start))
+            on_axis = np.asarray(x.sum(axis=1)).ravel().astype(float)
+            depth = on_axis
+            if cols["depth"] is not None:
+                published = pd.to_numeric(pd.Series(cols["depth"][rows]), errors="coerce").to_numpy(dtype=float)
+                depth = np.where(np.isfinite(published) & (published >= on_axis - 0.5), published, on_axis)
+            condition = MISSING
+            if conds:
+                condition = np.array(["|".join(f"{c}={v[i]}" for c, v in conds if v is not None)
+                                      for i in range(start, stop)], dtype=object)
+            ctx = cols["context"][rows] if cols["context"] is not None else context
+            bcs = barcodes[rows] if barcodes is not None else np.array([f"row{i}" for i in range(start, stop)])
+            obs_block = _obs(stop - start,
+                             cell_key=[f"{study}|{lib}|{bc}" for lib, bc in zip(library, bcs)],
+                             study=study, library=library, barcode=list(bcs),
+                             target=np.where(is_ctrl, "NTC", np.where(unassigned, "UNASSIGNED", target)),
+                             target_published=target,
+                             guides=cols["guides"][rows] if cols["guides"] is not None else MISSING,
+                             modality=modality,
+                             control_kind=np.where(is_ctrl, "NTC", np.where(unassigned, "UNASSIGNED", "none")),
+                             context=ctx, donor_or_clone=cols["donor"][rows] if cols["donor"] is not None else MISSING,
+                             batch=library, chemistry=chemistry, condition=condition, depth_native=depth,
+                             depth_published=depth, depth_on_file_axis=on_axis, n_genes_detected=np.diff(x.indptr))
+            obs_block.index = [f"c{i}" for i in range(start, stop)]
+            yield f"shard_{start // block:05d}", x, obs_block, var, {
+                "rows": {"range": f"{start}:{stop}", "of": int(n_all)},
+                "read": {"how": f"h5py row blocks of {layer} ({'dense' if dense else 'CSR'}), "
+                                f"{'HTTP byte ranges' if str(path).startswith('http') else 'local file'}",
+                         "block": block},
+                "notes": "target keeps controls as NTC and unassigned cells as UNASSIGNED; target_published is the "
+                         "label as published; depth_native is the published total when it is at least the file's "
+                         "row sum, otherwise the row sum"}
+    finally:
+        f.close()
+
+
 # ---------------------------------------------------------------------------------------- hipsci
 
 def _hipsci_ids(meta, cells):

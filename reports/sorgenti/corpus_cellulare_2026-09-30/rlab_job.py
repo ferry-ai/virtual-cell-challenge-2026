@@ -132,8 +132,13 @@ def parity(adapter: str, shards: list[dict], uns_seen: list[dict], expect: dict,
     cells = sum(s["cells"] for s in shards)
     out["cells"] = cells
     ranges = sorted(tuple(int(v) for v in u["rows"]["range"].split(":")) for u in uns_seen if "range" in u.get("rows", {}))
-    if ranges:
+    if ranges and adapter != "h5rows":
         out["contiguous_from_zero"] = ranges[0][0] == 0 and all(a[1] == b[0] for a, b in zip(ranges, ranges[1:]))
+    if adapter == "h5rows" and max_cells is None:
+        lo, hi = expect.get("rows", [0, uns_seen[0]["rows"]["of"]])
+        out["covers_declared_rows"] = (ranges[0][0] == lo and ranges[-1][1] == hi
+                                       and all(a[1] == b[0] for a, b in zip(ranges, ranges[1:])))
+        out["cells_equal_declared"] = cells == hi - lo
     if max_cells is not None:
         out["note"] = f"smoke test on the first {max_cells} cells: source-level parity not applicable"
         out["ok"] = out["per_shard_reread"]

@@ -29,3 +29,19 @@ crc32c del bucket. Risposte:
 - **download:** «Sì, dopo J02», su Drive, come dato congelato: job 089, che attende il `.done` di 088;
 - **ruolo:** «Parte riserva, parte training», con l'esempio proposto: lo split di test (100
   bersagli) è la riserva, train e validation (200 bersagli) vanno nel training da subito.
+
+**Decisioni della sera del 30/09 (sessione `ec2e5b07`), in chat, prima delle 21:56 (ora letta con `date`):**
+- Drive ha 2 TB: il download di H1 si anticipa (job 090, senza attesa di J02).
+- Obiettivo: una rete addestrata **direttamente sulle singole cellule**, su tutti i dataset utilizzabili, non
+  un'estensione della rete sugli effetti. Inventario completo (scPerturb compreso), ingestione progressiva con
+  streaming e shard, adattatori per formato, modalità gestite esplicitamente e mai escluse in automatico. I conteggi
+  originali sono la supervisione principale, con maschere, controlli appropriati e QC documentato; il raw resta
+  immutabile e le trasformazioni del modello stanno a parte. Niente medie, LFC o valori shrunk al posto delle cellule;
+  il pseudobulk solo come baseline o controllo. Le sorgenti solo aggregate si dichiarano e si trattano a parte. Un
+  primo training su un sottoinsieme vale come verifica tecnica, non come risultato. Restano escluse le riserve
+  concordate. Parole del proprietario trascritte nel README, §8.
+- Più notebook e più account per parallelizzare: autorizzato. Colab per la CPU, Kaggle per la GPU (30 ore a settimana).
+- Il token dell'account Kaggle `davideferrante11` (creato dal proprietario alle 21:18) è copiato, con il suo via, in
+  `MyDrive/vcc2026/runs/rlab_secrets/`: i job Colab lo usano solo per pubblicare gli shard nei dataset privati di
+  quell'account, dove gira il training. La chiave non è mai stampata né scritta nella repo.
+- Secondo dispatcher Colab su `runs/queue2`: autorizzato; lo avvia il proprietario.

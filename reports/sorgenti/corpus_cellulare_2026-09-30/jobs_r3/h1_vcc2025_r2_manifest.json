@@ -1,0 +1,70 @@
+{
+ "schema_version": 1,
+ "job_id": "h1_vcc2025_r2",
+ "incident_ids": [
+  "E-20260929-002",
+  "E-20260929-003",
+  "E-20260929-005",
+  "E-20260929-007"
+ ],
+ "guards": {
+  "E-20260929-002": "shards write object-dtype strings; validate_runtime.py round-trips an h5ad on the runtime first",
+  "E-20260929-003": "every shard is copied to Drive and hashed as soon as it is written, with its receipt",
+  "E-20260929-005": "the launcher waits for every setup file by sha256; the preflight hashes every input on the runtime",
+  "E-20260929-007": "inputs are copied or downloaded to the runtime's disk and hashed there; the job never reads them from the mount"
+ },
+ "inputs": [
+  {
+   "id": "code_snapshot",
+   "paths": {
+    "local": "G:/Il mio Drive/vcc2026/runs/rlab_setup_2026-09-30_r2/code_snapshot.tar.gz",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r2/code_snapshot.tar.gz"
+   },
+   "bytes": 5803,
+   "sha256": "0e637776e2ea610f181f4a90ddf9cc4a02aa22c9164c0319f6d407fbcfd9f757"
+  },
+  {
+   "id": "setup:h1_vcc2025_r2_fetch.json",
+   "paths": {
+    "local": "G:/Il mio Drive/vcc2026/runs/rlab_setup_2026-09-30_r2/h1_vcc2025_r2_fetch.json",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r2/h1_vcc2025_r2_fetch.json"
+   },
+   "bytes": 2105,
+   "sha256": "815b7851fa853e858db1a00a179d953b250819676713471d3fe9c563b3c852da"
+  }
+ ],
+ "outputs": [
+  {
+   "id": "h1_release",
+   "paths": {
+    "local": "G:/Il mio Drive/vcc2026/data/raw/vcc2025_h1_2026-09-30",
+    "runtime": "/content/drive/MyDrive/vcc2026/data/raw/vcc2025_h1_2026-09-30"
+   },
+   "must_be_absent": true
+  },
+  {
+   "id": "download",
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\processed\\corpus_cellulare_2026-09-30\\unused_h1\\dl",
+    "runtime": "/content/work/rlab_h1_vcc2025_r2/dl"
+   },
+   "must_be_absent": true
+  }
+ ],
+ "target_checks": [],
+ "environment": {
+  "python": {
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\python.exe",
+    "runtime": "/usr/bin/python3"
+   }
+  },
+  "packages": {
+   "google-crc32c": null
+  },
+  "imports": [
+   "google_crc32c"
+  ],
+  "probes": []
+ }
+}

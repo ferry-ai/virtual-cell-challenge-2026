@@ -214,7 +214,7 @@ H1_ROLES = {"test/": "RISERVA: non aprire; si legge una volta sola, a modello e 
             "train/": "training", "validation/": "training", "gene_names.csv": "asse dei geni del rilascio"}
 
 H1_LAUNCHER = """#!/usr/bin/env bash
-# R-LAB {job}: VCC 2025 H1 release to its frozen home on Drive, after J02. Built by {report}/build_jobs.py at commit {commit}.
+# R-LAB {job}: VCC 2025 H1 release to its frozen home on Drive. Built by {report}/build_jobs.py; code snapshot of commit {commit}.
 # The test split is the reserve: this job downloads, verifies and copies it, and never opens it.
 set -euo pipefail
 export PYTHONUNBUFFERED=1 PYTHONIOENCODING=utf-8
@@ -226,7 +226,7 @@ REC="$SETUP/receipts/{job}"
 PY={py}
 echo "job {job} start $(date -u +%FT%TZ) host=$(hostname) cpus=$(nproc)"
 test -x "$PY"; test ! -e "$OUT"; test ! -e "$WORK"; test ! -e "$REC"
-while [ ! -f "{after}" ]; do echo "$(date -u +%T) waiting for J02 to end: {after}"; sleep 120; done
+{wait}
 free -g | head -2; df -h /content | tail -1; df -h /content/drive 2>/dev/null | tail -1 || true
 bootstrap_ready() {{
   sha256sum -c --quiet - <<'SUMS' || return 1
@@ -252,7 +252,8 @@ echo "job {job} end $(date -u +%FT%TZ)"
 
 
 def build_h1(a, listing: Path) -> dict:
-    job, work = "h1_vcc2025_r1", "/content/work/rlab_h1_vcc2025_r1"
+    job = a.h1_job
+    work = f"/content/work/rlab_{job}"
     objects = json.loads(listing.read_text(encoding="utf-8"))
     wanted = [o for o in objects if o["name"].startswith("virtual-cell-challenge/2025/") and "/FASTQ/" not in o["name"]]
     if len(wanted) != 7:
@@ -280,14 +281,16 @@ def build_h1(a, listing: Path) -> dict:
     sums = [f"{sha256(a.preflight)}  {SETUP_RT}/preflight.py",
             f"{sha256(a.out / f'{job}_manifest.json')}  {SETUP_RT}/{job}_manifest.json"]
     sums += [f"{d['sha256']}  {d['paths']['runtime']}" for d in declared]
+    wait = (f'while [ ! -f "{a.h1_after}" ]; do echo "$(date -u +%T) waiting for {a.h1_after}"; sleep 120; done'
+            if a.h1_after else "# no wait: the owner moved the download ahead once Drive was known to hold 2 TB (30/09)")
     text = H1_LAUNCHER.format(job=job, report=REPORT, commit=a.commit, drive=DRIVE, setup=SETUP_RT, out=H1_OUT,
-                              py=PY_RT, after=H1_AFTER, sums="\n".join(sums),
+                              py=PY_RT, wait=wait, sums="\n".join(sums),
                               need=sum(f["bytes"] for f in fetch) + (2 << 30),
                               roles=json.dumps(H1_ROLES, ensure_ascii=False))
-    script = a.out / f"089_rlab_{job}.sh"
+    script = a.out / f"{a.h1_queue}_rlab_{job}.sh"
     script.write_bytes(text.encode("utf-8"))
     return {"queue_file": script.name, "files": len(fetch), "bytes": sum(f["bytes"] for f in fetch),
-            "setup_files": [name], "out": H1_OUT, "after": H1_AFTER, "roles": H1_ROLES}
+            "setup_files": [name], "out": H1_OUT, "after": a.h1_after or None, "roles": H1_ROLES}
 
 
 def main() -> None:
@@ -301,6 +304,9 @@ def main() -> None:
     p.add_argument("--jobs", default="j01,j03,j02")
     p.add_argument("--setup-name", default=SETUP_NAME)
     p.add_argument("--bucket-listing", type=Path, help="GCS JSON listing of the 2025 release, for --jobs h1")
+    p.add_argument("--h1-job", default="h1_vcc2025_r1")
+    p.add_argument("--h1-queue", default="089")
+    p.add_argument("--h1-after", default=H1_AFTER, help="file to wait for before starting; empty for no wait")
     a = p.parse_args()
     if a.out.exists():
         sys.exit(f"refusing: {a.out} exists")
