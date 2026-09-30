@@ -57,6 +57,11 @@
     miniatura su CPU: **nessun training vero ancora eseguito**.
   - **Inventario remoto:** `inspect_remote.py` ha misurato 72 dei 77 h5ad elencati in `urls_r4.json`
     (scPerturb, H1, Southard, A549, KOLF, CD4) in `p1_r4/remote/`; manca la sintesi in catalogo.
+- **Revisione di Codex (30/09, 23:00), accolta:** prima del training esteso servono controlli e maschere per
+  studio e libreria, copertura completa, stimatore unico nella valutazione, QC di ammissione e classi C/T/J
+  effettive, verificati su casi piccoli. Fatto: `cell_data.py` con `test_cell_data.py`, 13 casi a verità nota
+  che passano. **Da fare:** portare `cell_data.py` dentro `train_cellnet.py` (oggi usa ancora serbatoi per
+  contesto e campionamento con reinserimento), poi il training.
 - **Prossimo passo:** (1) quando su `davidmaisterx` ci sono almeno HepG2, Jurkat di Nadig, K562 essenziali,
   RPE1 e H1, un kernel Kaggle GPU con `train_cellnet.py` (dataset di codice con `cellnet.py`,
   `train_cellnet.py`, `gene_names.csv`, descrittori), contesto tenuto fuori HepG2, bracci `descriptors` e
