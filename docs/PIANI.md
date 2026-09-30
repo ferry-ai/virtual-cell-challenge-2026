@@ -32,12 +32,11 @@ L'aggiunta all'indice non avvia job, monitor o invii automatici.
 | S-INVII | Scadenze e lettura delle prove già preparate | [Invii e set finale](piani/invii-finale.md) | Verificare stato effettivo e coordinarsi con chi segue gli invii |
 | R-V2 | Adesso, su richiesta del proprietario: il modello per il set finale, filoni F1–F8 | [Modello v2](piani/modello-v2.md) | Via del proprietario per download, calcolo in cloud e invii |
 | R-DATI | Prima: rendere utilizzabili dati, controlli e repliche | [Dati e affidabilità](piani/dati-affidabilita.md) | Audit locale e dei metadati; stimare costo prima di acquisire |
-| R-MODELLI | Promettente: programmi × stato × ruolo del bersaglio | [Trasferimento e modelli](piani/trasferimento-modelli.md) | R-DATI e protocollo C/T/J congelato prima del training |
 | R-SWITCH | Promettente: soglie, intensità e cellule rispondenti | [Switch e distribuzioni](piani/switch-distribuzioni.md) | Cellule, guide e controlli da R-DATI; score indipendente dalla risposta valutata |
 
 **Stato delle schede.** Lo stato di un piano è nell'intestazione della sua scheda (R-V2, per
-esempio, è in corso dalla ripresa del 28/09 alle 19:22). S-INVII, R-DATI, R-MODELLI e R-SWITCH sono
-ferme al 28/09, con una nota datata che rimanda a dove il lavoro è proseguito. Diverse assegnazioni
+esempio, è in corso dalla ripresa del 28/09 alle 19:22). S-INVII, R-DATI e R-SWITCH sono ferme
+al 28/09, con una nota datata che rimanda a dove il lavoro è proseguito. Diverse assegnazioni
 nominano sessioni che il 30/09 alle 02:07 risultavano chiuse, `f4f38e58` e la lead di Codex
 `01a0ee03` ([riordino](../reports/analisi/riordino_repo_2026-09-30/RIORDINO.md), §1): vedi §3. Le proposte della [revisione critica del 28/09](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md)
 (§6) sono, dalle 12:30 del 28/09 e su richiesta del proprietario, la scheda
@@ -46,7 +45,8 @@ nominano sessioni che il 30/09 alle 02:07 risultavano chiuse, `f4f38e58` e la le
 
 **Le dieci ipotesi della ricerca del 24 settembre:** H1 (programmi, nella forma lineare) e H6 (pesi
 per somiglianza basale fra linee) sono state provate il 26/09 e hanno perso; le altre restano aperte.
-H2–H3 in R-MODELLI; H4–H5 in R-SWITCH; H7–H10 distribuite fra R-DATI e R-MODELLI. La matrice completa di ipotesi, alternative e prove resta nel
+H2–H3 stanno nella condizione di riapertura di R-MODELLI, chiusa il 30/09 (§4); H4–H5 in R-SWITCH;
+H7–H10 fra R-DATI e quella stessa condizione di riapertura. La matrice completa di ipotesi, alternative e prove resta nel
 [report di ricerca](../reports/analisi/ipotesi_trasferimento_2026-09-24/IPOTESI.md).
 Le opzioni successive non scompaiono: reti biologiche, embedding, generazione,
 tempo e reti causali hanno condizioni di apertura nelle schede.
@@ -78,7 +78,13 @@ altrimenti chiedendo al proprietario. Come si committano i file condivisi è nel
 
 ## 4. Piani chiusi e risultati precedenti
 
-Nessuna delle sette schede è chiusa. Per le linee precedenti:
+Una scheda su sette è chiusa, R-MODELLI; le altre linee chiuse sono precedenti alle schede.
+
+| Scheda | Chiusa | Esito e condizione di riapertura |
+|---|---|---|
+| R-MODELLI, programmi, stato cellulare e bersagli nuovi | 30/09, scelta del proprietario | I confronti 1–3 e 5 sono stati eseguiti in R-V2 e R-COMP, e nessuno ha superato la sua regola; il 4 (ruoli con segno, reti) non è stato eseguito. Si riapre con i descrittori dei bersagli nuovi (H2–H3, filone F5 di R-V2). Dettagli nella [scheda](piani/trasferimento-modelli.md), sezione «Chiusura» |
+
+Per le linee precedenti:
 
 | Filone precedente | Esito e come usarlo oggi |
 |---|---|

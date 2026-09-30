@@ -18,7 +18,7 @@ Una riga a fine tappa, con il commit che la chiude.
 |---|---|---|---|
 | 1 | inventario e proposta (16:25); eseguita dopo il via (17:29–17:35) | `581f264`, `9f0f2ea` | da 19 worktree e uno stash a 2 worktree di Codex tenuti dal proprietario, nessuno stash: §1.4 |
 | 2 | fatta dopo la tappa 1; ora dei commit in `git log` | `b254929`, `bc54bbf` | `LAVORO` → `PROCEDURE` con un reindirizzamento testato; nove righe di indice corrette sulle fonti: §2 |
-| 3 | punti 1–3 fatti; il punto 4, le schede, e `SOTTOMISSIONE.md` aspettano il via | il commit che aggiunge questa riga | sei script di job archiviati; 25 voci del registro a `storico` e 7 con la riserva; una regola per i checkpoint corretti: §3 |
+| 3 | fatta; il punto 4 secondo la scelta del proprietario | `6c7814f`, poi il commit che aggiunge questa riga | sei script di job archiviati; 25 voci del registro a `storico` e 7 con la riserva; una regola per i checkpoint corretti; R-MODELLI chiusa: §3 |
 
 ## 1. Worktree, branch e stash
 
@@ -310,11 +310,18 @@ cambiate a mano, due regole in `scripts/31_check_docs.py`, con i loro test:
 Il solo caso era CP-0035: la regola lo ha segnalato, e la sua nota ora nomina CP-0036, con le
 parole della riga di INDICE. La regola sta anche nell'intestazione di INDICE, la sua sede.
 
-### 3.4 Che cosa aspetta il proprietario
+### 3.4 Le schede e il contratto: la scelta del proprietario
 
-- **Le sei schede ferme o diventate diari** (S-INVII, R-DATI, R-MODELLI, R-SWITCH, R-V2, R-REV):
-  la proposta è in chat. Nessuna è stata riscritta.
-- **`docs/SOTTOMISSIONE.md`**, `da-verificare` (R-015). È il resoconto del primo invio, del 13/09.
-  Il suo §1, il contratto del formato, è ancora vivo e PROCEDURE non lo contiene; il resto è
-  storia o rimanda a stadi archiviati. Proposta: il contratto va in PROCEDURE, e il file intero in
-  `docs/storico/`, dove il controllo lo trova già con il nome vecchio.
+Proposta in chat, con una tabella per scheda: accorciare R-REV, R-V2 e S-INVII, portando i diari
+in `docs/storico/`; chiudere R-DATI, R-MODELLI e R-SWITCH con esito e condizione di riapertura;
+portare il contratto del formato di `docs/SOTTOMISSIONE.md` in PROCEDURE e il file in storico.
+
+**Scelta del proprietario** (in chat, prima delle 18:31, ora letta con `date`): nessuna scheda accorciata; si chiude solo
+**R-MODELLI**; `SOTTOMISSIONE.md` resta com'è, `da-verificare` con la scheda R-015.
+
+**Eseguito:** R-MODELLI è `chiuso`, con una sezione «Chiusura» che dà l'esito dei suoi cinque
+confronti, ciascuno con la sua fonte: 1–3 e 5 eseguiti in R-V2 e R-COMP senza superare la loro
+regola, il 4 mai eseguito. La condizione di riapertura è il ritorno dei descrittori dei bersagli
+nuovi e dei ruoli con segno (H2–H3, filone F5 di R-V2). Il resto della scheda resta com'era.
+PIANI toglie la sua riga dal §2 e la mette nel §4, i piani chiusi, e il testo del §2 la segue;
+la nota del registro su `docs/piani/` annota la chiusura, come chiede la guida delle schede.

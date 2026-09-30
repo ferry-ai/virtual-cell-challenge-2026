@@ -1,7 +1,10 @@
 # R-MODELLI — programmi, stato cellulare e bersagli nuovi
 
-- **Stato:** aperto; promettente, training in attesa dei dati e del protocollo.
-- **Aggiornato:** 24 settembre 2026. **Nota del 28/09 (D-046):** la scheda non è stata aggiornata;
+- **Stato:** **chiuso** il 30 settembre 2026, su scelta del proprietario in chat; esito e condizione
+  di riapertura nella sezione «Chiusura» qui sotto. Il testo che segue è com'era.
+- **Aggiornato:** 30 settembre 2026, chiusura (Claude, sessione `a1ec75f0`,
+  [pulizia della struttura](../../reports/analisi/pulizia_struttura_2026-09-30/README.md), §3).
+  Prima: 24 settembre 2026. **Nota del 28/09 (D-046):** la scheda non è stata aggiornata;
   i confronti che proponeva sono stati eseguiti nella scheda [R-V2](modello-v2.md) (programmi, H6,
   modello a cancelli, rete, encoder), tutti con esito negativo finora:
   [reports/trasferimento/README.md](../../reports/trasferimento/README.md) e
@@ -9,6 +12,30 @@
 - **Integrazione:** 25 settembre 2026, ricerca esplorativa CP-0040.
 - **Assegnazione:** da verificare con gli agenti già attivi; nessuna presa in carico registrata qui.
 - **Ipotesi:** H1 programmi, H2 stato, H3 ruolo con segno, H6 pesi delle sorgenti, H10 prior aggiuntivi.
+
+## Chiusura (30 settembre 2026)
+
+Nessuno ha preso in carico il training di questa scheda; la sola sottoattività, documentale, è di
+Codex del 25/09 (sotto). I suoi confronti sono stati
+eseguiti altrove, soprattutto in [R-V2](modello-v2.md) e in [R-COMP](modello-competitivo.md), e
+nessuno ha superato la sua regola. L'esito per confronto, dalle fonti citate:
+
+| Confronto (§ «Confronti in ordine») | Esito | Fonte |
+|---|---|---|
+| 1. Nullo, risposta comune, lineare | la risposta comune pesa l'1–14 % e non si trasferisce fra linee; il motore C/T/J con le basi di confronto è lo stadio 105 | [risposta comune](../../reports/trasferimento/risposta_comune_2026-09-26/), filone F3 di R-V2 |
+| 2. Programmi (H1) | proiettare l'effetto trasferito su programmi perde PDS a ogni rango | [programmi](../../reports/trasferimento/programmi_2026-09-26/) |
+| 3. Stato dai controlli, con il contesto scambiato (H2) | modello a cancelli: E1 non passa, e dove batte il cieco non batte lo scambio; rete su molti contesti r1: perde contro il trasferimento su K562, HCT116 e HEK293T e passa solo J; encoder dei basali, seme 0: nessuna condizione passa; misura decisiva per la rete relazionale inconclusiva; rete che pesa le sorgenti sotto soglia in due semi | [modello a cancelli](../../reports/modelli/modello_contesto_2026-09-27/), [lettura di r1](../../reports/modelli/rete_r1_lettura_2026-09-28/), [encoder](../../reports/modelli/encoder_contesto_2026-09-28/), [CP-0043](../checkpoints/0043-misura-decisiva-relazioni.md), [CP-0048](../checkpoints/0048-rete-sorgenti-primo-seme.md), [CP-0049](../checkpoints/0049-rete-sorgenti-replica.md) |
+| 4. Ruoli con segno, complessi e reti (H3); pesi per programma | **non eseguito**. I pesi per somiglianza basale (H6) sono caduti; i descrittori dei bersagli nuovi, filone F5 di R-V2, aspettano il via ai download | [contesti](../../reports/trasferimento/contesti_2026-09-26/), R-V2 F5 |
+| 5. Modelli preaddestrati | Stack A e B non superano il trasferimento | [CP-0051](../checkpoints/0051-stack-ab-negativi.md) |
+
+Sono esiti di banchi e proxy, non punteggi VCC, e ciascuno vale per il suo protocollo: non
+dimostrano che nessun modello appreso possa funzionare. Il lavoro sui modelli prosegue in
+R-COMP, priorità dal 29/09, e in R-V2.
+
+**Si riapre se** R-COMP o R-V2 riaprono i descrittori dei bersagli nuovi e i ruoli con segno (H2–H3,
+confronto 4), per esempio dopo il via ai download del filone F5. Si riapre anche se un nuovo
+protocollo C/T/J chiede i confronti di questa scheda. Chi la riapre scrive qui stato, data e
+assegnazione.
 
 ### Sottoattività documentale del 25 settembre
 
