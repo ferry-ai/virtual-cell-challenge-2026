@@ -99,8 +99,18 @@ class Stages(unittest.TestCase):
         x_k = np.hstack([x_k[:, [GENES.index(g) for g in keep]], x_k[:, [GENES.index("G7")]]])
         write_shard(sh / "s3_b.h5ad", x_k, "s3", "H", "L4", ["NTC"] * 100 + ["G4"] * 60,
                     [f"K{i}-1" for i in range(160)], "file://s3", native=keep + ["G7"])
+        # study s4 (context K2): ten controls only; study s5 is one experiment published as two files (s5a, s5b)
+        # that both carry its 100 control cells
+        write_shard(sh / "s4_a.h5ad", np.vstack([counts(rng, p, 10), counts(rng, q, 60)]), "s4", "K2", "L5",
+                    ["NTC"] * 10 + ["G1"] * 60, [f"F{i}-1" for i in range(70)], "file://s4")
+        x5 = counts(rng, p, 100)
+        write_shard(sh / "s5a.h5ad", np.vstack([x5, counts(rng, q, 50)]), "s5a", "K3", "L9", ["NTC"] * 100 + ["G2"] * 50,
+                    [f"E{i}-1" for i in range(100)] + [f"Ea{i}-1" for i in range(50)], "file://s5_train")
+        write_shard(sh / "s5b.h5ad", np.vstack([x5, counts(rng, q, 50)]), "s5b", "K3", "L9", ["NTC"] * 100 + ["G1"] * 50,
+                    [f"E{i}-1" for i in range(100)] + [f"Eb{i}-1" for i in range(50)], "file://s5_val")
         common = ["--shards", sh, "--axis", d / "axis.csv", "--holdout-context", "H", "--holdout-target-frac", "0.34",
-                  "--pool-size", "256", "--input-genes", "16", "--eval-min-cells", "10"]
+                  "--pool-size", "256", "--input-genes", "16", "--eval-min-cells", "10", "--min-controls-per-key", "20",
+                  "--same-experiment", "s5=s5a,s5b"]
         cls.pre = run("prepass", *common, "--out", d / "pre")
         (d / "rep.json").write_text(json.dumps({"s2": "s1"}), encoding="utf-8")
         cls.pre_rep = run("prepass", *common, "--out", d / "pre_rep", "--republications", d / "rep.json")
@@ -183,6 +193,17 @@ class Stages(unittest.TestCase):
         self.assertEqual(splits["trainable_symbols"], 3)            # G1, G2, G4 perturbed alone in K
         cov = self.read("run", "coverage.json")
         self.assertTrue(cov["leakage_check"]["passed"])
+
+    def test_a_key_with_too_few_controls_is_not_a_context(self):
+        qc = self.read("pre", "qc.json")
+        self.assertEqual(qc["controls_per_key"]["s4|K2"], 10)
+        self.assertEqual(qc["rejected"].get("s4|K2|too_few_controls_in_key"), 70)
+
+    def test_one_experiment_in_two_files_counts_its_cells_once(self):
+        ident = self.read("pre", "qc.json")["identity"]
+        self.assertEqual(ident["same_experiment"], {"s5a": "s5", "s5b": "s5"})
+        self.assertEqual(ident["by_study"]["s5"].get("duplicate"), 100)      # the controls read from the second file
+        self.assertEqual(self.read("pre", "qc.json")["rejected"].get("s5|K3|duplicate_cell"), 100)
 
     def test_phenotype_is_kept(self):
         guard = self.read("pre", "qc.json")["phenotype_guard"]

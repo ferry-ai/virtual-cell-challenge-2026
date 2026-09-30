@@ -144,6 +144,16 @@ def prepass(a):
     if a.holdout_context not in corpus.contexts:
         sys.exit(f"holdout context {a.holdout_context} is not in the corpus: {corpus.contexts}")
     republications = json.loads(Path(a.republications).read_text(encoding="utf-8")) if a.republications else {}
+    merged = {}                               # --same-experiment: files of one experiment become one study
+    for spec in a.same_experiment or []:
+        name, members = spec.split("=", 1)
+        merged.update({m: name for m in members.split(",")})
+    for info in shards:
+        if info.study in merged:
+            info.study_published = info.study
+            info.study = merged[info.study]
+            info.cell_keys = np.array([f"{info.study}|{k.split('|', 1)[1]}" for k in info.cell_keys], dtype=object)
+    corpus.studies = sorted({i.study for i in shards})
 
     # ---- 0. labels, feature columns and masks, from obs and var
     parsed, combo_parts = {}, {}
@@ -208,6 +218,7 @@ def prepass(a):
     # ---- 1a. first read: QC values on the key's mask, fingerprints, keys, sources, file hashes
     per = {}
     qc_vals = defaultdict(lambda: {"lib": [], "genes": [], "mito": []})
+    n_controls = Counter()
     barcodes = defaultdict(set)
     source_codes = {}
     for info in shards:
@@ -219,6 +230,7 @@ def prepass(a):
             l_, g_, m_ = CD.qc_values(x[rows], key_mask[k], mt)
             lib[rows], genes[rows], mito[rows] = l_, g_, m_
             sel = info.control[rows] & (l_ > 0)
+            n_controls[k] += int(sel.sum())
             q = qc_vals[k]
             for name, v in (("lib", l_[sel]), ("genes", g_[sel]), ("mito", m_[sel])):
                 if len(q[name]) < QC_KEEP:
@@ -233,8 +245,9 @@ def prepass(a):
             for c in np.unique(info.contexts):
                 barcodes[(info.study, str(c))].update(str(b).split("-")[0] for b in bc[info.contexts == c])
         log("first read", shard=info.path.name, study=info.study, cells=n)
+    # a key needs enough control cells to set its thresholds and to describe its context; fewer is not a context
     thresholds = {k: CD.thresholds_from_controls(np.array(v["lib"]), np.array(v["genes"]), np.array(v["mito"]))
-                  for k, v in qc_vals.items() if v["lib"]}
+                  for k, v in qc_vals.items() if n_controls[k] >= a.min_controls_per_key}
 
     # ---- 1b. identity by provenance; equal counts across keys only reported
     order = [info.sid for info in shards]
@@ -296,7 +309,7 @@ def prepass(a):
         for k in np.unique(info.keys):
             rows = info.keys == k
             if k not in thresholds:
-                reason[rows] = "no_controls_in_key"
+                reason[rows] = "no_controls_in_key" if n_controls[k] == 0 else "too_few_controls_in_key"
                 continue
             _, why = CD.admit(p["lib"][rows], p["genes"][rows], p["mito"][rows], thresholds[k])
             reason[rows] = why
@@ -460,6 +473,7 @@ def prepass(a):
                   "without control cells is not admitted; identity by provenance (cell_data.identity): duplicates and "
                   "other versions of a cell admitted once, collisions of keys kept; declared republications left out",
         "thresholds": thresholds,
+        "controls_per_key": dict(sorted(n_controls.items())), "min_controls_per_key": a.min_controls_per_key,
         "rejected": {f"{k}|{r}": n for (k, r), n in sorted(rejected.items())},
         "phenotype_guard": {"readmitted_by_key": dict(lifted),
                             "selective_groups": [r for r in guard_rows if r["selective"]][:300],
@@ -476,7 +490,7 @@ def prepass(a):
                      "by_study": {st: dict(c) for st, c in identity_report.items()},
                      "sources": sorted(source_codes, key=source_codes.get),
                      "content_matches_across_keys": matches,
-                     "declared_republications": declared,
+                     "declared_republications": declared, "same_experiment": merged,
                      "barcode_overlap_between_studies_of_a_context": sorted(overlap, key=lambda r: -r["fraction_of_smaller"])},
         "features": {"rule": "cell_data.feature_columns: native features colliding on one model gene are dropped and "
                              "the gene masked in that shard", "shards_with_collisions": feature_report},
@@ -1130,6 +1144,10 @@ def main():
     p.add_argument("--target-split-seed", type=int, default=20260930)
     p.add_argument("--out", required=True, type=Path)
     p.add_argument("--republications", help="JSON {study: preferred study}: the first is left out when both are present")
+    p.add_argument("--same-experiment", nargs="+", metavar="NAME=STUDY,STUDY",
+                   help="files of one experiment read as one study NAME (their shared cells are then duplicates)")
+    p.add_argument("--min-controls-per-key", type=int, default=30,
+                   help="a (study, context) with fewer usable control cells is not admitted")
     p.add_argument("--pool-size", type=int, default=2048, help="control cells kept per (study, context)")
     p.add_argument("--input-genes", type=int, default=2048)
     p.add_argument("--eval-min-cells", type=int, default=20)
