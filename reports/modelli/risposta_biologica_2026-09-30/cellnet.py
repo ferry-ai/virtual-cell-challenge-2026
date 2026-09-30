@@ -76,6 +76,17 @@ class ShardInfo:
     official_index: np.ndarray      # per native feature, -1 when not on the axis
     measured: np.ndarray            # per native feature
     cell_keys: np.ndarray = None    # per cell: study|library|barcode, unique in the corpus
+    source: str = "MISSING"         # the source file the shard was read from (uns/source: locator and release)
+
+
+def h5_scalar(group, *path):
+    node = group
+    for p in path:
+        if not isinstance(node, h5py.Group) or p not in node:
+            return None
+        node = node[p]
+    v = node[()]
+    return v.decode() if isinstance(v, bytes) else str(v)
 
 
 def index_shard(path: Path) -> ShardInfo:
@@ -83,6 +94,7 @@ def index_shard(path: Path) -> ShardInfo:
         obs, var = f["obs"], f["var"]
         study = h5_column(obs, "study")
         control_kind = h5_column(obs, "control_kind")
+        source = "|".join(str(h5_scalar(f, "uns", "source", k)) for k in ("locator", "release"))
         return ShardInfo(path=path, study=str(study[0]), n_cells=int(len(study)),
                          contexts=h5_column(obs, "context").astype(str),
                          targets=h5_column(obs, "target").astype(str),
@@ -91,29 +103,31 @@ def index_shard(path: Path) -> ShardInfo:
                          library=h5_column(obs, "library").astype(str),
                          official_index=np.asarray(h5_column(var, "official_index"), dtype=np.int64),
                          measured=np.asarray(h5_column(var, "measured")).astype(bool),
-                         cell_keys=h5_column(obs, "cell_key").astype(str))
+                         cell_keys=h5_column(obs, "cell_key").astype(str), source=source)
 
 
-def read_counts(info: ShardInfo, gene_of_axis: np.ndarray, n_model_genes: int):
-    """The shard's counts as CSR on the model genes (columns of features off the model are dropped) and the mask of
-    model genes the source measures. Returns (indptr, indices, data, mask)."""
+def read_csr(path, official_index, measured, gene_of_axis: np.ndarray, n_model_genes: int):
+    """A shard's counts as CSR on the model genes and the mask of model genes the shard measures. Features off the
+    model are dropped; features that collide on one model gene are dropped and that gene is masked
+    (cell_data.feature_columns), so no count is ever summed across features. Returns (csr, mask)."""
     import scipy.sparse as sp
-    with h5py.File(info.path, "r") as f:
+    import cell_data as CD
+    with h5py.File(path, "r") as f:
         g = f["X"]
         shape = tuple(int(v) for v in g.attrs["shape"])
         data, indices, indptr = g["data"][:], g["indices"][:], g["indptr"][:].astype(np.int64)
-    col = np.where(info.official_index >= 0, gene_of_axis[np.clip(info.official_index, 0, None)], -1)
-    col = np.where(info.measured, col, -1)
-    keep = np.flatnonzero(col >= 0)
+    col, mask, _ = CD.feature_columns(official_index, measured, gene_of_axis, n_model_genes)
     new_col = col[indices]
     ok = new_col >= 0
     counts = np.diff(indptr)
     row = np.repeat(np.arange(shape[0]), counts)[ok]
     m = sp.csr_matrix((data[ok].astype(np.float32), (row, new_col[ok])), shape=(shape[0], n_model_genes))
-    m.sum_duplicates()
-    mask = np.zeros(n_model_genes, bool)
-    mask[col[keep]] = True
+    m.sort_indices()
     return m, mask
+
+
+def read_counts(info: ShardInfo, gene_of_axis: np.ndarray, n_model_genes: int):
+    return read_csr(info.path, info.official_index, info.measured, gene_of_axis, n_model_genes)
 
 
 # ------------------------------------------------------------------------------------------ corpus
@@ -212,12 +226,12 @@ def build_model(n_genes, n_targets, n_modalities, n_studies, input_genes, dim=12
             nn.init.zeros_(self.delta_out.weight)
             nn.init.zeros_(self.delta_out.bias)
 
-        def context(self, ctrl_x, ctrl_mask_genes):
-            """ctrl_x: [n_ctx, K, n_genes] counts of control cells; mask: [n_ctx, n_genes] measured."""
-            ig = self.input_genes.to(ctrl_x.device)
-            lib = ctrl_x.sum(-1, keepdim=True).clamp_min(1.0)
-            norm = torch.log1p(ctrl_x[..., ig] / lib * 1e4)
-            m = ctrl_mask_genes[:, None, ig].float().expand_as(norm)
+        def context(self, x_in, m_in, lib):
+            """Control cells of each context, on the input genes only: x_in [n_ctx, K, n_input] counts; m_in the same
+            shape, the input genes each control row's own shard measures; lib [n_ctx, K], each row's counts on the
+            genes its shard measures. The input genes are fixed before training (self.input_genes)."""
+            m = m_in.float()
+            norm = torch.log1p(x_in * m / lib.clamp_min(1.0)[..., None] * 1e4)
             h = self.cell_enc(torch.cat([norm * m, m], -1)).mean(1)
             z = self.ctx_proj(h)
             beta = self.base(z)

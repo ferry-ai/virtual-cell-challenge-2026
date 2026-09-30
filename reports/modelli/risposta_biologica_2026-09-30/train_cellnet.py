@@ -1,23 +1,40 @@
-"""Train and evaluate the R-LAB cell network on contract shards (model: cellnet.py; data rules: cell_data.py).
+"""Train and evaluate the R-LAB cell network on contract shards, in two stages (model: cellnet.py; data rules:
+cell_data.py).
 
-    python train_cellnet.py --shards <dir or glob> [...] --axis gene_names.csv --descriptors <dir> \
-        --holdout-context <context> --holdout-target-frac 0.1 --target-code descriptors --out <new dir> \
-        [--epochs 2] [--batch 256] [--max-minutes 480] [--device cuda]
+    python train_cellnet.py prepass --shards <dir or glob> [...] --axis gene_names.csv --holdout-context <context> \
+        --out <new dir> [--holdout-target-frac 0.1] [--republications <json: study -> preferred study>]
+    python train_cellnet.py train --prepass <prepass dir> --out <new dir> [--descriptors <dir>] \
+        [--target-code descriptors] [--epochs 2] [--budget-minutes 240] [--checkpoint-minutes 15] \
+        [--workers 3] [--device cuda:0] [--resume <earlier run dir>]
 
-1. Pre-pass over every shard (before any training): labels normalised to axis symbols; hidden symbols (T) drawn
-   from the symbols perturbed in training contexts; the effective class of every cell (train, C, T, J, held-out
-   control); admission thresholds per (study, context) from its control cells and the admission of every cell, with
-   the rule each rejection failed; control pools per (study, context) with their library, for the context encoder;
-   pseudobulk sums of admitted training cells for the evaluation baselines only.
-2. Training: epochs without replacement over the admitted training cells (cell_data.EpochSampler), loss weighted so
-   each study weighs the same; each cell is conditioned on control cells of its own library when there are enough,
-   otherwise of its own (study, context), never of another study.
-3. Evaluation per effective class: log-likelihood gain over the no-effect model and over the same network told
-   nothing about the target, with the same learned baseline; and one shift estimator (cell_data.shift) for observed
-   cells, the model, the transfer baseline (same symbol in other training keys) and the generic-perturbation baseline.
-4. Leakage check: no drawn cell may have a class other than train.
+prepass (CPU only: every read of the corpus happens here, not on the GPU):
+0. index, from obs and var: labels parsed against the official axis (single gene, combined perturbation, unresolved
+   label, control, unlabelled); each shard's gene mask, colliding native features masked, never summed; each
+   (study, context) key's mask, the intersection of its shards' masks;
+1. first read: QC values on the key's mask, a fingerprint of the counts, the key and the source file of each cell;
+   identity by provenance (cell_data.identity), equal counts across keys only reported (cell_data.content_matches);
+   hidden symbols (T) and the effective class of every cell; admission: absolute floor, relative thresholds lifted
+   for perturbations they reject selectively (cell_data.phenotype_guard), declared republications left out;
+2. second read: control pools per key (input genes only, each row with its shard and its library), the mean control
+   profile of every key, pseudobulk sums of admitted training cells for the evaluation baselines; evaluation groups.
+Writes prepass.pkl (the state the training reads), splits.json, qc.json and prepass_done.json with its sha256.
 
-Outputs in a NEW --out: config.json, splits.json, qc.json, coverage.json, train_log.jsonl, model.pt, eval.json, done.json.
+train (GPU):
+- checks the state's sha256 and that every shard is present with its size;
+- batches are assembled by loader processes (--workers), each owning a disjoint set of shards balanced by cells, so
+  the GPU does not wait on decompression; batch k is always the same cells whatever the interruptions: samplers are
+  seeded per worker role and control draws per global step;
+- measures throughput on the first batches and the cost of the evaluation, then plans the end: training stops at the
+  budget minus the evaluation and export reserves (plan.json);
+- checkpoints every --checkpoint-minutes and when training stops: model, optimizer, step, the bitmap of the cells
+  actually consumed, draws per key and class, RNG states; --resume continues the last checkpoint of an earlier run
+  into a NEW --out with the same state and training arguments;
+- evaluation per effective class, one read of each shard: log-likelihood gain over the no-effect model and over the
+  same network told nothing about the target, with the same learned baseline; one shift estimator on the genes
+  perturbed cells and controls both measure, for observed cells, the model, the transfer baseline (the same symbol
+  in other training keys) and the generic-perturbation baseline;
+- leakage check: no drawn cell may have a class other than train.
+Outputs: config.json, plan.json, train_log.jsonl, checkpoints/, model.pt, coverage.json, eval.json, done.json.
 A first run on part of the corpus is a technical check, not a result (owner, 30/09).
 """
 from __future__ import annotations
@@ -26,6 +43,8 @@ import argparse
 import glob
 import hashlib
 import json
+import os
+import pickle
 import random
 import sys
 import time
@@ -33,6 +52,7 @@ from collections import Counter, OrderedDict, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
+import h5py
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
@@ -40,7 +60,19 @@ sys.path.insert(0, str(HERE))
 import cell_data as CD  # noqa: E402
 import cellnet as CN  # noqa: E402
 
+try:
+    import torch
+    from torch.utils.data import IterableDataset as _Iterable
+except ImportError:                      # the prepass needs no torch
+    torch, _Iterable = None, object
+
 QC_KEEP = 20000
+DRAWN = "train"
+STATE = "prepass.pkl"
+CLASSES = ["train", "C", "T", "J", "control_holdout", "combined:train", "combined:T", "combined:C", "combined:J",
+           "unlabelled"]
+SAME_ON_RESUME = ("target_code", "epochs", "batch", "ctrl_k", "buffer_shards", "input_dim", "dim", "rank", "lr", "seed",
+                  "roles", "descriptors_sha256")
 
 
 def now():
@@ -63,287 +95,775 @@ def shard_paths(patterns):
     return [p for p in dict.fromkeys(out) if not p.endswith(".partial.h5ad")]
 
 
-def main():
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--shards", nargs="+", required=True)
-    ap.add_argument("--axis", required=True)
-    ap.add_argument("--descriptors", type=Path)
-    ap.add_argument("--target-code", choices=["descriptors", "identity", "both"], default="descriptors")
-    ap.add_argument("--holdout-context", required=True)
-    ap.add_argument("--holdout-target-frac", type=float, default=0.1)
-    ap.add_argument("--target-split-seed", type=int, default=20260930)
-    ap.add_argument("--out", required=True, type=Path)
-    ap.add_argument("--epochs", type=float, default=2.0)
-    ap.add_argument("--batch", type=int, default=256)
-    ap.add_argument("--ctrl-k", type=int, default=64)
-    ap.add_argument("--pool-size", type=int, default=2048, help="control cells kept per (study, context)")
-    ap.add_argument("--buffer-shards", type=int, default=6)
-    ap.add_argument("--input-genes", type=int, default=2048)
-    ap.add_argument("--dim", type=int, default=128)
-    ap.add_argument("--rank", type=int, default=128)
-    ap.add_argument("--lr", type=float, default=1e-3)
-    ap.add_argument("--max-minutes", type=float, default=480)
-    ap.add_argument("--eval-min-cells", type=int, default=20)
-    ap.add_argument("--eval-max-groups", type=int, default=400)
-    ap.add_argument("--seed", type=int, default=0)
-    ap.add_argument("--device", default=None)
-    a = ap.parse_args()
-    import torch
+def top(counter, n=20):
+    return [{"value": str(k), "cells": int(v)} for k, v in counter.most_common(n)]
+
+
+def read_axis(path):
+    axis = [l.strip().split(",")[0] for l in open(path, encoding="utf-8") if l.strip()]
+    if axis and axis[0].lower() in ("gene", "gene_name", "genes", "x"):
+        axis = axis[1:]
+    return axis
+
+
+def codes_of(values, table: dict) -> np.ndarray:
+    """Integer codes of values, extending table (value -> code)."""
+    uniq, inv = np.unique(np.asarray(values, dtype=object).astype(str), return_inverse=True)
+    for u in uniq:
+        table.setdefault(u, len(table))
+    return np.array([table[u] for u in uniq], dtype=np.int32)[inv]
+
+
+def logger(out: Path):
+    t0 = time.time()
+    fh = open(out / "train_log.jsonl", "a", encoding="utf-8")
+
+    def log(msg, **kw):
+        line = {"t": round(time.time() - t0, 1), "utc": now(), "msg": msg, **kw}
+        print(json.dumps(line, default=str), flush=True)
+        fh.write(json.dumps(line, default=str) + "\n")
+        fh.flush()
+    return log
+
+
+# ============================================================================================== prepass
+
+def prepass(a):
     if a.out.exists():
         sys.exit(f"refusing: {a.out} exists")
     a.out.mkdir(parents=True)
-    dev = a.device or ("cuda" if torch.cuda.is_available() else "cpu")
-    random.seed(a.seed); np.random.seed(a.seed); torch.manual_seed(a.seed)
+    log = logger(a.out)
     rng = np.random.default_rng(a.seed)
-    t0 = time.time()
-    logf = open(a.out / "train_log.jsonl", "a", encoding="utf-8")
-
-    def log(msg, **kw):
-        line = {"t": round(time.time() - t0, 1), "msg": msg, **kw}
-        print(json.dumps(line, default=str), flush=True)
-        logf.write(json.dumps(line, default=str) + "\n"); logf.flush()
-
-    axis = [l.strip().split(",")[0] for l in open(a.axis, encoding="utf-8") if l.strip()]
-    if axis and axis[0].lower() in ("gene", "gene_name", "genes", "x"):
-        axis = axis[1:]
+    axis = read_axis(a.axis)
     axis_set = set(axis)
     paths = shard_paths(a.shards)
     corpus = CN.Corpus.build(paths, axis, log=log)
     G = len(corpus.genes)
-    gene_pos = {g: i for i, g in enumerate(corpus.genes)}
     mt = np.array([g.startswith("MT-") for g in corpus.genes])
     shards = corpus.shards
-    for i, info in enumerate(shards):
-        info.sid = i
-        info.symbols = np.array([t if t in (CD.CONTROL, CD.UNASSIGNED, CN.MISSING) else CD.normalise(t, axis_set)
-                                 for t in info.targets], dtype=object)
-        info.keys = np.array([CD.key_of(info.study, c) for c in info.contexts], dtype=object)
     if a.holdout_context not in corpus.contexts:
         sys.exit(f"holdout context {a.holdout_context} is not in the corpus: {corpus.contexts}")
+    republications = json.loads(Path(a.republications).read_text(encoding="utf-8")) if a.republications else {}
 
-    # ---- 1a. splits and effective classes, from labels only
+    # ---- 0. labels, feature columns and masks, from obs and var
+    parsed, combo_parts = {}, {}
+    kinds_by_study, combined_by_study, unresolved_by_study = defaultdict(Counter), defaultdict(Counter), defaultdict(Counter)
+    raw_per_symbol = defaultdict(set)
+    feature_report = []
+    for i, info in enumerate(shards):
+        info.sid = i
+        info.cols, info.mask, collided = CD.feature_columns(info.official_index, info.measured, corpus.gene_of_axis, G)
+        if collided.size:
+            feature_report.append({"shard": str(info.path), "study": info.study, "collided_model_genes": int(collided.size),
+                                   "examples": [corpus.genes[c] for c in collided[:10]]})
+        uniq, inv = np.unique(info.targets.astype(str), return_inverse=True)
+        ukind, usym = [], []
+        for t in uniq:
+            if t in CD.UNLABELLED or t == CN.MISSING:
+                ukind.append("unlabelled"); usym.append(t)
+                continue
+            if t not in parsed:
+                parsed[t] = CD.parse_label(t, axis_set)
+            kind, found = parsed[t]
+            ukind.append(kind)
+            if kind == "single":
+                usym.append(found[0])
+            elif kind == "combined":
+                usym.append(CD.COMBO.join(found)); combo_parts[CD.COMBO.join(found)] = found
+            else:
+                usym.append(t)
+        info.kind = np.array(ukind, dtype=object)[inv]
+        info.symbols = np.array(usym, dtype=object)[inv]
+        info.kind[info.control] = "control"
+        info.symbols[info.control] = CD.CONTROL
+        info.keys = np.array([CD.key_of(info.study, c) for c in info.contexts], dtype=object)
+        kinds_by_study[info.study].update(info.kind.tolist())
+        nc = ~info.control
+        for (t, kind, s), n in Counter(zip(info.targets[nc].astype(str), info.kind[nc], info.symbols[nc])).items():
+            if kind == "combined":
+                combined_by_study[info.study][s] += n
+            elif kind == "unresolved":
+                unresolved_by_study[info.study][t] += n
+            elif kind == "single":
+                raw_per_symbol[(info.study, s)].add(t)
+    key_mask = CD.key_masks([i.mask for i in shards], [set(np.unique(i.keys)) for i in shards])
+    union = defaultdict(lambda: np.zeros(G, bool))
+    for info in shards:
+        for k in np.unique(info.keys):
+            union[k] |= info.mask
+    mask_report = {k: {"genes_in_every_shard": int(m.sum()), "genes_in_some_shard_only": int((union[k] & ~m).sum())}
+                   for k, m in key_mask.items()}
+    many_labels = sorted(((st, s, sorted(v)) for (st, s), v in raw_per_symbol.items() if len(v) > 1),
+                         key=lambda r: -len(r[2]))
+    labels_report = {
+        "rule": "cell_data.parse_label: one axis gene = single; two or more distinct axis genes = combined (canonical "
+                "A+B, never its first gene); none = unresolved (kept as its own label); controls and unlabelled apart",
+        "cells_by_kind_and_study": {st: dict(c) for st, c in kinds_by_study.items()},
+        "combined_labels": {st: top(c, 30) for st, c in combined_by_study.items()},
+        "unresolved_labels": {st: top(c, 30) for st, c in unresolved_by_study.items()},
+        "symbols_with_several_raw_labels": {"count": len(many_labels),
+                                            "examples": [{"study": st, "symbol": s, "labels": v[:6]}
+                                                         for st, s, v in many_labels[:30]]}}
+
+    # ---- 1a. first read: QC values on the key's mask, fingerprints, keys, sources, file hashes
+    per = {}
+    qc_vals = defaultdict(lambda: {"lib": [], "genes": [], "mito": []})
+    barcodes = defaultdict(set)
+    source_codes = {}
+    for info in shards:
+        x, _ = CN.read_counts(info, corpus.gene_of_axis, G)
+        n = info.n_cells
+        lib, genes, mito = np.zeros(n), np.zeros(n), np.full(n, np.nan)
+        for k in np.unique(info.keys):
+            rows = np.flatnonzero(info.keys == k)
+            l_, g_, m_ = CD.qc_values(x[rows], key_mask[k], mt)
+            lib[rows], genes[rows], mito[rows] = l_, g_, m_
+            sel = info.control[rows] & (l_ > 0)
+            q = qc_vals[k]
+            for name, v in (("lib", l_[sel]), ("genes", g_[sel]), ("mito", m_[sel])):
+                if len(q[name]) < QC_KEEP:
+                    q[name].extend(rng.permutation(v)[:QC_KEEP - len(q[name])].tolist())
+        per[info.sid] = {"lib": lib, "genes": genes, "mito": mito, "fp": CD.fingerprints(x),
+                         "kh": CD.hash64(info.cell_keys),
+                         "src": np.full(n, source_codes.setdefault(info.source, len(source_codes)), np.int32)}
+        info.sha256, info.bytes = sha(info.path), info.path.stat().st_size
+        with h5py.File(info.path, "r") as f:
+            bc = CN.h5_column(f["obs"], "barcode")
+        if bc is not None:
+            for c in np.unique(info.contexts):
+                barcodes[(info.study, str(c))].update(str(b).split("-")[0] for b in bc[info.contexts == c])
+        log("first read", shard=info.path.name, study=info.study, cells=n)
+    thresholds = {k: CD.thresholds_from_controls(np.array(v["lib"]), np.array(v["genes"]), np.array(v["mito"]))
+                  for k, v in qc_vals.items() if v["lib"]}
+
+    # ---- 1b. identity by provenance; equal counts across keys only reported
+    order = [info.sid for info in shards]
+    offsets = np.cumsum([0] + [shards[s].n_cells for s in order])
+    cat = lambda f: np.concatenate([f(shards[s]) for s in order])            # noqa: E731
+    kh_all = np.concatenate([per[s]["kh"] for s in order])
+    fp_all = np.concatenate([per[s]["fp"] for s in order])
+    lib_all = np.concatenate([per[s]["lib"] for s in order])
+    study_all = cat(lambda i: np.full(i.n_cells, i.study, dtype=object))
+    status_all = CD.identity(kh_all, fp_all, np.concatenate([per[s]["src"] for s in order]))
+    matches = CD.content_matches(kh_all, fp_all, lib_all >= a.identity_min_counts, study_all)
+    identity_report = defaultdict(Counter)
+    for st, s_ in zip(study_all, status_all):
+        identity_report[st][s_] += 1
+    overlap = []
+    by_context = defaultdict(list)
+    for (st, c), bcs in barcodes.items():
+        by_context[c].append((st, bcs))
+    for c, items in by_context.items():
+        for x_ in range(len(items)):
+            for y_ in range(x_ + 1, len(items)):
+                (s1, b1), (s2, b2) = items[x_], items[y_]
+                inter = len(b1 & b2)
+                overlap.append({"context": c, "studies": [s1, s2], "shared_barcodes": inter,
+                                "fraction_of_smaller": inter / max(1, min(len(b1), len(b2)))})
+
+    # ---- 1c. splits and effective classes, from labels only
     where = defaultdict(set)
     for info in shards:
-        pert = ~info.control & ~np.isin(info.symbols, [CD.UNASSIGNED, CN.MISSING])
+        pert = np.isin(info.kind, ["single", "unresolved"])
         for c, s in zip(info.contexts[pert], info.symbols[pert]):
             where[s].add((info.study, c))
     hidden, trainable = CD.splits(where, a.holdout_context, a.holdout_target_frac, a.target_split_seed)
     trained_symbols = set(trainable) - hidden
     symbols = sorted(where)
     sidx = {s: k for k, s in enumerate(symbols)}              # target index of the network: the normalised symbol
-    for info in shards:
-        info.cls = np.array([CD.classify(c, s, bool(ct), a.holdout_context, hidden, trained_symbols)
-                             if (s not in (CD.UNASSIGNED, CN.MISSING) or ct) else "unlabelled"
-                             for c, s, ct in zip(info.contexts, info.symbols, info.control)], dtype=object)
-    (a.out / "splits.json").write_text(json.dumps({
-        "seed": a.target_split_seed, "holdout_context": a.holdout_context, "hidden_symbols": sorted(hidden),
-        "trainable_symbols": len(trainable), "rule": "classes of cell_data.classify on normalised symbols",
-        "cells_by_class": dict(Counter(c for info in shards for c in info.cls))}, indent=1), encoding="utf-8")
+    cls_cache = {}
 
-    # ---- 1b. pre-pass over the counts: admission QC, control pools, baseline sums
-    qc_vals = defaultdict(lambda: {"lib": [], "genes": [], "mito": []})
-    for info in shards:                                        # thresholds need the controls of every key first
-        x, mask = CN.read_counts(info, corpus.gene_of_axis, G)
-        lib, genes, mito = CD.qc_values(x, mask, mt)
-        for k in np.unique(info.keys):
-            sel = (info.keys == k) & info.control & (lib > 0)
-            q = qc_vals[k]
-            for name, v in (("lib", lib[sel]), ("genes", genes[sel]), ("mito", mito[sel])):
-                if len(q[name]) < QC_KEEP:
-                    q[name].extend(rng.permutation(v)[:QC_KEEP - len(q[name])].tolist())
-    thresholds = {k: CD.thresholds_from_controls(np.array(v["lib"]), np.array(v["genes"]), np.array(v["mito"]))
-                  for k, v in qc_vals.items() if v["lib"]}
-    rejected = Counter()
-    pools = {}                                                 # key -> dict(x float16 [n, G], lib per row, mask)
-    sums = defaultdict(lambda: np.zeros(G))                    # (key, symbol index or -1) -> sum of proportions
-    nsum = Counter()
-    pert_sum, pert_n = defaultdict(lambda: np.zeros(G)), Counter()
-    admitted_train = {}
-    offered = Counter()
-    seen_keys = set()
-    per_symbol = defaultdict(lambda: [0, 0])                   # symbol -> [admitted, rejected]
+    def cls_of(c, s, kind):
+        key = (c, s, kind)
+        if key not in cls_cache:
+            if kind == "control":
+                cls_cache[key] = CD.classify(c, s, True, a.holdout_context, hidden, trained_symbols)
+            elif kind in ("single", "unresolved"):
+                cls_cache[key] = CD.classify(c, s, False, a.holdout_context, hidden, trained_symbols)
+            elif kind == "combined":
+                cls_cache[key] = CD.classify_combined(c, combo_parts[s], a.holdout_context, hidden, trained_symbols)
+            else:
+                cls_cache[key] = "unlabelled"
+        return cls_cache[key]
     for info in shards:
-        x, mask = CN.read_counts(info, corpus.gene_of_axis, G)
-        info.mask = mask
-        lib, genes, mito = CD.qc_values(x, mask, mt)
-        ok = np.zeros(info.n_cells, bool)
+        info.cls = np.array([cls_of(c, s, k) for c, s, k in zip(info.contexts, info.symbols, info.kind)], dtype=object)
+
+    # ---- 1d. admission: absolute floor, relative thresholds, phenotype guard, identity, declared republications
+    reason_all = np.empty(offsets[-1], dtype=object)
+    for j, s in enumerate(order):
+        info, p = shards[s], per[s]
+        reason = np.full(info.n_cells, "", dtype=object)
         for k in np.unique(info.keys):
-            sel = info.keys == k
+            rows = info.keys == k
             if k not in thresholds:
-                rejected[(k, "no_controls_in_key")] += int(sel.sum())
+                reason[rows] = "no_controls_in_key"
                 continue
-            o, why = CD.admit(lib[sel], genes[sel], mito[sel], thresholds[k])
-            ok[sel] = o
-            for r, n in Counter(why[~o]).items():
-                rejected[(k, r)] += n
-        dup = np.array([ck in seen_keys for ck in info.cell_keys])     # the same cell in two shards counts once
-        for k, n in Counter(info.keys[dup & ok]).items():
-            rejected[(k, "duplicate_cell_key")] += n
-        ok &= ~dup
-        seen_keys.update(info.cell_keys.tolist())
-        for sym, o in zip(info.symbols, ok):
-            if sym not in (CD.CONTROL, CD.UNASSIGNED, CN.MISSING):
-                per_symbol[sym][0 if o else 1] += 1
-        info.admitted = ok
-        tr = np.flatnonzero(ok & (info.cls == "train"))
-        admitted_train[info.sid] = tr
-        for k, n in Counter(info.keys[tr]).items():
-            offered[k] += n
-        for k in np.unique(info.keys):                         # control pools, every key (held-out ones for evaluation)
+            _, why = CD.admit(p["lib"][rows], p["genes"][rows], p["mito"][rows], thresholds[k])
+            reason[rows] = why
+        reason_all[offsets[j]:offsets[j + 1]] = reason
+    keys_all, groups_all = cat(lambda i: i.keys), cat(lambda i: i.symbols)
+    ctrl_all, kind_all = cat(lambda i: i.control), cat(lambda i: i.kind)
+    declared = {st: pref for st, pref in republications.items()
+                if st in corpus.studies and pref in corpus.studies and st != pref}
+    in_declared = np.isin(study_all, list(declared)) if declared else np.zeros(offsets[-1], bool)
+    unique_cell = np.isin(status_all, ["new", "collision"]) & ~in_declared
+    _, r_u, guard_rows = CD.phenotype_guard(reason_all[unique_cell], groups_all[unique_cell], ctrl_all[unique_cell],
+                                            keys_all[unique_cell],
+                                            guarded=np.isin(kind_all[unique_cell], ["single", "unresolved", "combined"]))
+    reason_all[unique_cell] = r_u
+    reason_all[status_all == "duplicate"] = "duplicate_cell"
+    reason_all[status_all == "version"] = "other_version_of_cell"
+    for st, pref in declared.items():
+        reason_all[study_all == st] = f"republication_of:{pref}"
+    admitted_all = (reason_all == "") | (reason_all == "phenotype_guard")
+    with_controls = set(keys_all[admitted_all & ctrl_all])        # a key needs admitted controls for its context
+    lost = admitted_all & ~np.isin(keys_all, list(with_controls))
+    reason_all[lost] = "no_admitted_controls_in_key"
+    admitted_all &= ~lost
+    for j, s in enumerate(order):
+        shards[s].admitted = admitted_all[offsets[j]:offsets[j + 1]]
+    rejected = Counter(zip(keys_all[~admitted_all], reason_all[~admitted_all]))
+    lifted = Counter(keys_all[reason_all == "phenotype_guard"])
+    per_symbol = defaultdict(lambda: [0, 0])
+    pert_all = np.isin(kind_all, ["single", "unresolved", "combined"])
+    for s_, ok_ in zip(groups_all[pert_all & unique_cell], admitted_all[pert_all & unique_cell]):
+        per_symbol[s_][0 if ok_ else 1] += 1
+
+    # ---- 1e. evaluation groups: the largest per class, each capped at --eval-max-cells cells
+    groups = defaultdict(list)
+    for info in shards:
+        for r in np.flatnonzero(info.admitted & np.isin(info.cls, ["C", "T", "J"])):
+            groups[(info.cls[r], info.keys[r], info.symbols[r])].append((info.sid, int(r)))
+    eval_groups = []
+    for cl in ("C", "T", "J"):
+        cand = sorted(((k, v) for k, v in groups.items() if k[0] == cl and len(v) >= a.eval_min_cells),
+                      key=lambda kv: (-len(kv[1]), kv[0]))
+        for (c_, k_, s_), v in cand[:a.eval_max_groups]:
+            if len(v) > a.eval_max_cells:
+                pick = np.sort(rng.choice(len(v), a.eval_max_cells, replace=False))
+                v = [v[i] for i in pick]
+            eval_groups.append({"class": c_, "key": k_, "symbol": s_, "cells": v, "admitted_cells": len(groups[(c_, k_, s_)])})
+    eval_symbols = {g["symbol"] for g in eval_groups}
+
+    # ---- 2. second read: control pools, mean control profiles, baseline sums, training rows
+    key_names = sorted(key_mask)
+    kidx = {k: i for i, k in enumerate(key_names)}
+    lib_table, mod_table = {}, {m: i for i, m in enumerate(corpus.modalities)}
+    pools = {}
+    ctrl_sum, ctrl_n = defaultdict(lambda: np.zeros(G)), Counter()
+    sums, nsum = {}, Counter()
+    pert_sum, pert_n = defaultdict(lambda: np.zeros(G)), Counter()
+    offered = Counter()
+    for info in shards:
+        x, _ = CN.read_counts(info, corpus.gene_of_axis, G)
+        ok, lib_key = info.admitted, per[info.sid]["lib"]
+        info.libc = codes_of(info.library, lib_table)
+        for k in np.unique(info.keys):
             rows = np.flatnonzero(ok & info.control & (info.keys == k))
             if rows.size == 0:
                 continue
-            take = rows if rows.size <= a.pool_size else rng.choice(rows, a.pool_size, replace=False)
-            new = {"x": x[take].toarray().astype(np.float16), "lib": info.library[take], "mask": mask.copy()}
+            prop = x[rows].multiply(1.0 / np.maximum(lib_key[rows], 1)[:, None]).tocsr()
+            ctrl_sum[k] += np.asarray(prop.sum(axis=0)).ravel()
+            ctrl_n[k] += int(rows.size)
+            take = rows if rows.size <= a.pool_size else np.sort(rng.choice(rows, a.pool_size, replace=False))
+            xt = x[take]
+            new = {"x": np.minimum(xt.toarray(), 65504).astype(np.float16),
+                   "lib": np.asarray(xt.sum(axis=1)).ravel().astype(np.float32),
+                   "sid": np.full(take.size, info.sid, np.int32), "libc": info.libc[take]}
             if k in pools:
-                both = np.concatenate([pools[k]["x"], new["x"]])
-                libs = np.concatenate([pools[k]["lib"], new["lib"]])
-                keep = rng.choice(len(both), min(len(both), a.pool_size), replace=False)
-                pools[k] = {"x": both[keep], "lib": libs[keep], "mask": pools[k]["mask"] | mask}
+                both = {f: np.concatenate([pools[k][f], new[f]]) for f in new}
+                keep = np.sort(rng.choice(len(both["sid"]), min(len(both["sid"]), a.pool_size), replace=False))
+                pools[k] = {f: v[keep] for f, v in both.items()}
             else:
                 pools[k] = new
-        if tr.size == 0:
-            continue
-        prop = x[tr].multiply(1.0 / np.maximum(lib[tr], 1)[:, None]).tocsr()
-        for k in np.unique(info.keys[tr]):
-            selk = info.keys[tr] == k
-            ctrl = selk & info.control[tr]
-            pert = selk & ~info.control[tr]
-            if ctrl.any():
-                sums[(k, -1)] += np.asarray(prop[ctrl].sum(axis=0)).ravel()
-                nsum[(k, -1)] += int(ctrl.sum())
-            if pert.any():
-                pert_sum[k] += np.asarray(prop[pert].sum(axis=0)).ravel()
-                pert_n[k] += int(pert.sum())
-                for s in np.unique(info.symbols[tr][pert]):
-                    ss = pert & (info.symbols[tr] == s)
-                    sums[(k, sidx[s])] += np.asarray(prop[ss].sum(axis=0)).ravel()
-                    nsum[(k, sidx[s])] += int(ss.sum())
-    key_mask = {k: p["mask"] for k, p in pools.items()}
-    lib_rows = {k: {lb: np.flatnonzero(p["lib"] == lb) for lb in np.unique(p["lib"])} for k, p in pools.items()}
+        tr = np.flatnonzero(ok & (info.cls == DRAWN))
+        info.train_rows = tr
+        for k, n in Counter(info.keys[tr]).items():
+            offered[k] += n
+        pert_tr = tr[~info.control[tr]]
+        if pert_tr.size:
+            prop = x[pert_tr].multiply(1.0 / np.maximum(lib_key[pert_tr], 1)[:, None]).tocsr()
+            for k in np.unique(info.keys[pert_tr]):
+                selk = info.keys[pert_tr] == k
+                pert_sum[k] += np.asarray(prop[selk].sum(axis=0)).ravel()
+                pert_n[k] += int(selk.sum())
+                for s in np.unique(info.symbols[pert_tr][selk]):
+                    if s not in eval_symbols:
+                        continue
+                    ss = selk & (info.symbols[pert_tr] == s)
+                    sums.setdefault((k, s), np.zeros(G))
+                    sums[(k, s)] += np.asarray(prop[ss].sum(axis=0)).ravel()
+                    nsum[(k, s)] += int(ss.sum())
+        log("second read", shard=info.path.name, training_cells=int(tr.size))
+    tot = np.zeros(G)
+    for k, p in pools.items():
+        if k.split("|", 1)[1] != a.holdout_context:
+            tot += (p["x"].astype(np.float32) / np.maximum(p["lib"][:, None], 1)).sum(0)
+    input_genes = np.sort(np.argsort(-tot)[:a.input_genes])
+    P = max(len(p["sid"]) for p in pools.values())
+    pool_x = np.zeros((len(key_names), P, input_genes.size), np.float16)
+    pool_lib = np.ones((len(key_names), P), np.float32)
+    pool_sid = np.full((len(key_names), P), -1, np.int32)
+    pool_libc = np.full((len(key_names), P), -1, np.int32)
+    for k, p in pools.items():
+        i, n = kidx[k], len(p["sid"])
+        pool_x[i, :n], pool_lib[i, :n], pool_sid[i, :n], pool_libc[i, :n] = \
+            p["x"][:, input_genes], p["lib"], p["sid"], p["libc"]
+    by_study = Counter()
+    for info in shards:
+        by_study[info.study] += int(info.train_rows.size)
+    cls_code = {c: i for i, c in enumerate(CLASSES)}
+    records = []
+    for info in shards:
+        tgt = np.array([sidx[s] if k in ("single", "unresolved") else -1 for s, k in zip(info.symbols, info.kind)],
+                       dtype=np.int32)
+        records.append({"path": str(info.path), "name": info.path.name, "bytes": info.bytes, "sha256": info.sha256,
+                        "study": info.study, "n": info.n_cells, "source": info.source,
+                        "official_index": info.official_index, "measured": info.measured, "mask": info.mask,
+                        "key": np.array([kidx[k] for k in info.keys], np.int32), "libc": info.libc,
+                        "control": info.control, "mod": np.array([mod_table[m] for m in info.modality], np.int32),
+                        "tgt": tgt, "cls": np.array([cls_code[c] for c in info.cls], np.int8),
+                        "admitted": info.admitted, "train_rows": info.train_rows})
+    train_keys = sorted(k for k in pert_n if k.split("|", 1)[1] != a.holdout_context)
+    state = {"version": 2, "created_utc": now(), "args": {k: str(v) for k, v in vars(a).items()},
+             "axis_sha256": sha(a.axis), "genes": corpus.genes, "gene_of_axis": corpus.gene_of_axis, "G": G,
+             "contexts": corpus.contexts, "modalities": corpus.modalities, "studies": corpus.studies,
+             "holdout_context": a.holdout_context, "symbols": symbols, "hidden": sorted(hidden),
+             "trainable": len(trainable), "classes": CLASSES, "key_names": key_names,
+             "key_mask": np.stack([key_mask[k] for k in key_names]),
+             "library_names": sorted(lib_table, key=lib_table.get), "input_genes": input_genes,
+             "pool_x": pool_x, "pool_lib": pool_lib, "pool_sid": pool_sid, "pool_libc": pool_libc,
+             "ctrl_mean": {k: (ctrl_sum[k] / ctrl_n[k]).astype(np.float32) for k in key_names if ctrl_n[k]},
+             "sums": {kv: (v / nsum[kv]).astype(np.float32) for kv, v in sums.items() if nsum[kv] >= 10},
+             "pert_mean": {k: (pert_sum[k] / pert_n[k]).astype(np.float32) for k in pert_n if pert_n[k] >= 10},
+             "train_keys": train_keys, "study_weights": CD.study_weights(by_study), "eval_groups": eval_groups,
+             "shards": records, "corpus_summary": corpus.summary(a.holdout_context)}
+    with open(a.out / STATE, "wb") as fh:
+        pickle.dump(state, fh, protocol=4)
+
+    (a.out / "splits.json").write_text(json.dumps({
+        "seed": a.target_split_seed, "holdout_context": a.holdout_context, "hidden_symbols": sorted(hidden),
+        "trainable_symbols": len(trainable),
+        "rule": "classes of cell_data.classify on normalised single-target labels; combined perturbations by "
+                "cell_data.classify_combined (a hidden component makes the combination T or J); only 'train' is drawn",
+        "cells_by_class": dict(Counter(c for info in shards for c in info.cls)),
+        "admitted_cells_by_class": dict(Counter(c for info in shards for c in info.cls[info.admitted])),
+        "evaluation_groups": dict(Counter(g["class"] for g in eval_groups)),
+        "labels": labels_report}, indent=1), encoding="utf-8")
     (a.out / "qc.json").write_text(json.dumps({
-        "policy": "technical-failure thresholds per (study, context) from its control cells (cell_data."
-                  "thresholds_from_controls: half the q01 of counts and genes, mitochondrial fraction above max(2 q99, "
-                  "q99 + 0.05)); applied to every cell of the key; a key without control cells is not admitted; a cell "
-                  "key seen in an earlier shard is not admitted again",
-        "thresholds": thresholds, "rejected": {f"{k}|{r}": n for (k, r), n in sorted(rejected.items())},
+        "policy": "per (study, context) from its control cells (cell_data.thresholds_from_controls): an absolute floor of "
+                  "usability (fewer than 10 counts or 5 genes on the model genes), never lifted; relative rules, all "
+                  "lifted for a perturbation they reject selectively against its key's controls (cell_data."
+                  "phenotype_guard: at least 5 cells, excess >= 0.02 and binomial p < 0.001): counts below 0.2 x and "
+                  "0.5 x the controls' q01, genes detected below 0.5 x their q01, a mitochondrial fraction above "
+                  "max(2 q99, q99 + 0.05); QC values on the key's mask (intersection of its shards' masks); a key "
+                  "without control cells is not admitted; identity by provenance (cell_data.identity): duplicates and "
+                  "other versions of a cell admitted once, collisions of keys kept; declared republications left out",
+        "thresholds": thresholds,
+        "rejected": {f"{k}|{r}": n for (k, r), n in sorted(rejected.items())},
+        "phenotype_guard": {"readmitted_by_key": dict(lifted),
+                            "selective_groups": [r for r in guard_rows if r["selective"]][:300],
+                            "highest_non_selective_rates": sorted((r for r in guard_rows if not r["selective"]),
+                                                                  key=lambda r: -r["rate"])[:30]},
         "highest_rejection_rate_by_perturbation": sorted(
             ({"symbol": s_, "admitted": n_ok, "rejected": n_no, "rate": n_no / (n_ok + n_no)}
              for s_, (n_ok, n_no) in per_symbol.items() if n_ok + n_no >= 20), key=lambda d: -d["rate"])[:30],
         "overall_perturbed_rejection_rate": (sum(v_[1] for v_ in per_symbol.values())
                                              / max(1, sum(v_[0] + v_[1] for v_ in per_symbol.values()))),
+        "identity": {"rule": "cell_data.identity on (key hash, fingerprint of the counts on the model genes, source file); "
+                             "equal counts under different keys are reported, never used to drop a cell "
+                             f"(cells with at least {a.identity_min_counts:g} counts)",
+                     "by_study": {st: dict(c) for st, c in identity_report.items()},
+                     "sources": sorted(source_codes, key=source_codes.get),
+                     "content_matches_across_keys": matches,
+                     "declared_republications": declared,
+                     "barcode_overlap_between_studies_of_a_context": sorted(overlap, key=lambda r: -r["fraction_of_smaller"])},
+        "features": {"rule": "cell_data.feature_columns: native features colliding on one model gene are dropped and "
+                             "the gene masked in that shard", "shards_with_collisions": feature_report},
+        "masks": {"rule": "each cell's likelihood on its own shard's genes; control rows carry their shard's mask; a key's "
+                          "QC and shift estimator on the intersection of its shards' masks", "by_key": mask_report},
         "control_quantiles": {k: {n: {p: float(np.nanquantile(np.array(v[n], float), p / 100)) for p in (1, 5, 50, 95, 99)}
                                   for n in ("lib", "genes", "mito") if np.isfinite(np.array(v[n], float)).any()}
                               for k, v in qc_vals.items() if v["lib"]}}, indent=1, default=str), encoding="utf-8")
-    log("prepass", keys=len(pools), admitted_train=int(sum(len(v) for v in admitted_train.values())),
-        rejected=int(sum(rejected.values())), hidden=len(hidden))
+    done = {"state": STATE, "sha256": sha(a.out / STATE), "bytes": (a.out / STATE).stat().st_size, "utc": now(),
+            "shards": len(shards), "cells": int(offsets[-1]), "admitted_training_cells": int(sum(by_study.values())),
+            "evaluation_groups": len(eval_groups)}
+    (a.out / "prepass_done.json").write_text(json.dumps(done, indent=1), encoding="utf-8")
+    log("prepass done", **done)
 
-    # ---- descriptors and model
+
+# ============================================================================================== batches
+
+def roles_of(shards, W):
+    """Shards with training rows split into W roles, greedily balanced by training cells (deterministic)."""
+    parts, load = [[] for _ in range(W)], np.zeros(W)
+    for sid in sorted((i for i, s in enumerate(shards) if len(s["train_rows"])), key=lambda i: (-len(shards[i]["train_rows"]), i)):
+        r = int(np.argmin(load))
+        parts[r].append(sid)
+        load[r] += len(shards[sid]["train_rows"])
+    return parts
+
+
+def local_start(S, r, W):
+    """Batches of role r (global steps r, r + W, ...) already consumed when the next global step is S."""
+    return max(0, -(-(S - r) // W))
+
+
+def role_batches(shards, parts, batch):
+    """Batch size of each role, proportional to its training cells, so that every role ends its epochs together and
+    the batches average `batch`."""
+    n = np.array([sum(len(shards[s]["train_rows"]) for s in p) for p in parts], float)
+    return [max(1, int(round(batch * len(parts) * v / max(n.sum(), 1)))) for v in n], n
+
+
+def assemble(cells, xs, shards, lib_rows, ctrl_k, n_unknown, seed, step, unknown=False):
+    """One batch as tensors: counts of the cells (CSR), their shard, codes and target; the control rows of each
+    (key, library) pair, drawn with a generator seeded by (seed, step)."""
+    rng = np.random.default_rng([seed, 99, step])
+    sid = np.array([s for s, _ in cells], np.int64)
+    row = np.array([r for _, r in cells], np.int64)
+    x = xs.rows(sid, row)
+    key = np.array([shards[s]["key"][r] for s, r in cells], np.int64)
+    libc = np.array([shards[s]["libc"][r] for s, r in cells], np.int64)
+    ctrl = np.array([shards[s]["control"][r] for s, r in cells], bool)
+    tgt = np.array([shards[s]["tgt"][r] for s, r in cells], np.int64)
+    tgt = np.where(ctrl | unknown, n_unknown, tgt)
+    pairs = sorted(set(zip(key.tolist(), libc.tolist())))
+    pos = {p: i for i, p in enumerate(pairs)}
+    pair_rows = np.stack([CD.draw_controls({k: lib_rows[k]}, k, lc, ctrl_k, rng) for k, lc in pairs])
+    return {"step": torch.tensor(step), "sid": torch.from_numpy(sid), "row": torch.from_numpy(row),
+            "crow": torch.from_numpy(x.indptr.astype(np.int64)), "col": torch.from_numpy(x.indices.astype(np.int64)),
+            "val": torch.from_numpy(x.data.astype(np.float32)), "is_ctrl": torch.from_numpy(ctrl),
+            "tgt": torch.from_numpy(tgt), "key": torch.from_numpy(key),
+            "mod": torch.from_numpy(np.array([shards[s]["mod"][r] for s, r in cells], np.int64)),
+            "stu": torch.from_numpy(np.array([shards[s]["stu"] for s in sid], np.int64)),
+            "cls": torch.from_numpy(np.array([shards[s]["cls"][r] for s, r in cells], np.int64)),
+            "pair_key": torch.tensor([p[0] for p in pairs], dtype=torch.int64),
+            "pair_rows": torch.from_numpy(pair_rows.astype(np.int64)),
+            "sel": torch.tensor([pos[p] for p in zip(key.tolist(), libc.tolist())], dtype=torch.int64)}
+
+
+class ShardCache:
+    """Counts of training rows, one shard read at a time, the last `size` kept."""
+
+    def __init__(self, shards, gene_of_axis, G, size, rows_of=lambda s: s["train_rows"]):
+        self.shards, self.gene_of_axis, self.G, self.size, self.rows_of = shards, gene_of_axis, G, size, rows_of
+        self.cache = OrderedDict()
+
+    def get(self, sid):
+        if sid in self.cache:
+            self.cache.move_to_end(sid)
+            return self.cache[sid]
+        s = self.shards[sid]
+        x, _ = CN.read_csr(s["path"], s["official_index"], s["measured"], self.gene_of_axis, self.G)
+        keep = np.asarray(self.rows_of(s))
+        self.cache[sid] = (keep, x[keep])
+        while len(self.cache) > self.size:
+            self.cache.popitem(last=False)
+        return self.cache[sid]
+
+    def rows(self, sid, row):
+        import scipy.sparse as sp
+        parts, order = [], []
+        for s in dict.fromkeys(sid.tolist()):
+            keep, x = self.get(s)
+            sel = np.flatnonzero(sid == s)
+            pos = np.searchsorted(keep, row[sel])
+            if (pos >= keep.size).any() or (keep[np.minimum(pos, keep.size - 1)] != row[sel]).any():
+                raise KeyError(f"row not among the cached rows of shard {s}")
+            parts.append(x[pos])
+            order.append(sel)
+        stacked = sp.vstack(parts).tocsr()
+        inv = np.empty(sid.size, np.int64)
+        inv[np.concatenate(order)] = np.arange(sid.size)
+        return stacked[inv]
+
+
+class BatchStream(_Iterable):
+    """Batches of admitted training cells from global step `start` on. Role r (of W) owns a disjoint set of shards and
+    produces global steps r, r + W, r + 2W, ...; its sampler is seeded by (seed, r) and each step's control draws by
+    (seed, step). With W loader processes each plays one role, in the order the loader returns them; with none, one
+    process plays every role in turn. Either way batch k is the same cells."""
+
+    def __init__(self, shards, gene_of_axis, G, lib_rows, n_unknown, batch, buffer, ctrl_k, seed, W, start):
+        self.shards, self.gene_of_axis, self.G, self.lib_rows = shards, gene_of_axis, G, lib_rows
+        self.n_unknown, self.batch, self.buffer, self.ctrl_k, self.seed, self.W, self.start = \
+            n_unknown, batch, buffer, ctrl_k, seed, W, start
+        self.parts = roles_of(shards, W)
+        self.batches, _ = role_batches(shards, self.parts, batch)
+
+    def role(self, r):
+        sampler = CD.EpochSampler([(sid, self.shards[sid]["train_rows"]) for sid in self.parts[r]], self.buffer,
+                                  seed=self.seed * 1000 + r)
+        j = local_start(self.start, r, self.W)
+        for _ in range(j):
+            sampler.batch(self.batches[r])
+        cache = ShardCache(self.shards, self.gene_of_axis, self.G, self.buffer + 2)
+        while True:
+            cells = sampler.batch(self.batches[r])
+            yield assemble(cells, cache, self.shards, self.lib_rows, self.ctrl_k, self.n_unknown, self.seed, j * self.W + r)
+            j += 1
+
+    def __iter__(self):
+        info = torch.utils.data.get_worker_info()
+        if info is None:
+            streams = {r: self.role(r) for r in range(self.W)}
+            g = self.start
+            while True:
+                yield next(streams[g % self.W])
+                g += 1
+        if info.num_workers != self.W:
+            raise ValueError(f"{info.num_workers} loader processes for {self.W} roles")
+        yield from self.role((info.id + self.start) % self.W)
+
+
+# ============================================================================================== train
+
+def latest_checkpoint(run_dir: Path):
+    found = sorted((run_dir / "checkpoints").glob("ckpt_*.pt")) if (run_dir / "checkpoints").is_dir() else []
+    if not found:
+        sys.exit(f"no checkpoint in {run_dir / 'checkpoints'}")
+    return found[-1]
+
+
+def train(a):
+    if a.out.exists():
+        sys.exit(f"refusing: {a.out} exists")
+    a.out.mkdir(parents=True)
+    (a.out / "checkpoints").mkdir()
+    log = logger(a.out)
+    t_start = time.time()
+    done_pre = json.loads((a.prepass / "prepass_done.json").read_text(encoding="utf-8"))
+    state_sha = sha(a.prepass / STATE)
+    if state_sha != done_pre["sha256"]:
+        sys.exit(f"the prepass state hashes {state_sha}, prepass_done.json says {done_pre['sha256']}")
+    with open(a.prepass / STATE, "rb") as fh:
+        st = pickle.load(fh)
+    shards = st["shards"]
+    bad = [s["path"] for s in shards if not Path(s["path"]).is_file() or Path(s["path"]).stat().st_size != s["bytes"]]
+    if bad:
+        sys.exit(f"{len(bad)} shards absent or of another size, e.g. {bad[:3]}")
+    stix = {s: i for i, s in enumerate(st["studies"])}
+    for s in shards:
+        s["stu"] = stix[s["study"]]
+    a.roles = max(1, a.workers) if a.roles is None else a.roles
+    if a.workers not in (0, a.roles):
+        sys.exit("--workers must be 0 or equal to --roles")
+    dev = torch.device(a.device or ("cuda" if torch.cuda.is_available() else "cpu"))
+    random.seed(a.seed); np.random.seed(a.seed); torch.manual_seed(a.seed)
+    G, symbols = st["G"], st["symbols"]
+    n_sym = len(symbols)
+    input_genes = st["input_genes"]
+    a.input_dim = int(input_genes.size)
+    gene_pos = {g: i for i, g in enumerate(st["genes"])}
     desc, desc_info = None, None
+    a.descriptors_sha256 = None
     if a.descriptors:
         Dm = np.load(a.descriptors / "descriptors.npy")
         drow = {g: k for k, g in enumerate((a.descriptors / "genes.txt").read_text(encoding="utf-8").split())}
-        desc = np.zeros((len(symbols) + 1, Dm.shape[1]), np.float32)
+        desc = np.zeros((n_sym + 1, Dm.shape[1]), np.float32)
         found = 0
-        for s, k in sidx.items():
+        for k, s in enumerate(symbols):
             if s in drow:
                 desc[k] = Dm[drow[s]]
                 found += 1
-        desc_info = {"sha256": sha(a.descriptors / "descriptors.npy"), "dims": int(Dm.shape[1]),
-                     "symbols_with_descriptors": found, "symbols": len(symbols)}
-    target_gene = np.array([gene_pos.get(s, -1) for s in symbols] + [-1], dtype=np.int64)
-    by_study = Counter()
-    for info in shards:
-        by_study[info.study] += len(admitted_train[info.sid])
-    weights = CD.study_weights(by_study)
-    tot = np.zeros(G)
-    for k, p in pools.items():
-        if k.split("|", 1)[1] != a.holdout_context:
-            xx = p["x"].astype(np.float32)
-            tot += (xx / np.maximum(xx.sum(1, keepdims=True), 1)).sum(0)
-    input_genes = np.argsort(-tot)[:a.input_genes]
-    midx = {m: i for i, m in enumerate(corpus.modalities)}
-    stix = {s: i for i, s in enumerate(corpus.studies)}
-    model = CN.build_model(G, len(symbols), len(corpus.modalities), len(corpus.studies), input_genes, dim=a.dim,
-                           rank=a.rank, target_desc=desc, target_code=a.target_code).to(dev)
+        a.descriptors_sha256 = sha(a.descriptors / "descriptors.npy")
+        desc_info = {"sha256": a.descriptors_sha256, "dims": int(Dm.shape[1]), "symbols_with_descriptors": found,
+                     "symbols": n_sym}
+    target_gene = torch.as_tensor(np.array([gene_pos.get(s, -1) for s in symbols] + [-1], dtype=np.int64), device=dev)
+    model = CN.build_model(G, n_sym, len(st["modalities"]), len(st["studies"]), input_genes, dim=a.dim, rank=a.rank,
+                           target_desc=desc, target_code=a.target_code).to(dev)
     opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=a.lr, weight_decay=1e-4)
-    config = {"args": {k: str(v) for k, v in vars(a).items()}, "device": dev, "started_utc": now(),
-              "code": {p.name: sha(p) for p in (HERE / "cellnet.py", HERE / "cell_data.py", Path(__file__))},
-              "descriptors": desc_info, "study_weights": weights, "shards": len(paths),
-              "corpus": corpus.summary(a.holdout_context)}
-    (a.out / "config.json").write_text(json.dumps(config, indent=1, default=str), encoding="utf-8")
-    log("model", parameters=sum(p.numel() for p in model.parameters() if p.requires_grad), target_code=a.target_code,
-        symbols=len(symbols), descriptors=desc_info, study_weights=weights)
+    same = {k: str(getattr(a, k)) for k in SAME_ON_RESUME}
 
-    # ---- 2. training
-    cache = OrderedDict()
+    # tables on the device: masks per shard, control pools on the input genes
+    shard_masks = torch.as_tensor(np.stack([s["mask"] for s in shards]), device=dev)
+    ig = torch.as_tensor(input_genes, device=dev, dtype=torch.int64)
+    masks_in = shard_masks[:, ig]
+    pool_x = torch.as_tensor(st["pool_x"], device=dev)
+    pool_lib = torch.as_tensor(st["pool_lib"], device=dev)
+    pool_sid = torch.as_tensor(st["pool_sid"].astype(np.int64), device=dev).clamp_min(0)
+    lib_rows = {}
+    for k in range(len(st["key_names"])):
+        valid = np.flatnonzero(st["pool_sid"][k] >= 0)
+        if valid.size:
+            lc = st["pool_libc"][k][valid]
+            lib_rows[k] = {int(l): valid[lc == l] for l in np.unique(lc)}
+    w_t = torch.as_tensor([st["study_weights"].get(s, 0.0) for s in st["studies"]], device=dev, dtype=torch.float32)
 
-    def load(sid):
-        if sid in cache:
-            cache.move_to_end(sid)
-            return cache[sid]
-        x, _ = CN.read_counts(shards[sid], corpus.gene_of_axis, G)
-        cache[sid] = x
-        while len(cache) > a.buffer_shards + 2:
-            cache.popitem(last=False)
-        return x
-
-    tgt_gene_t = torch.as_tensor(target_gene, device=dev)
-
-    def encode(pairs, draw_rng):
-        """Context codes per (key, library): controls of the same library when it has ctrl-k of them, else of the key."""
-        order = sorted(set(pairs))
-        rows = {g: CD.draw_controls({g[0]: lib_rows[g[0]]}, g[0], g[1], a.ctrl_k, draw_rng) for g in order}
-        k = min(len(rows[g]) for g in order)
-        X = np.stack([pools[g[0]]["x"][rows[g][:k]].astype(np.float32) for g in order])
-        M = np.stack([key_mask[g[0]] for g in order])
-        z, beta = model.context(torch.as_tensor(X, device=dev), torch.as_tensor(M, device=dev))
-        return z, beta, {g: i for i, g in enumerate(order)}
-
-    def forward(cells, unknown=False, draw_rng=None):
-        """cells: list of (sid, row)."""
-        xs = np.zeros((len(cells), G), np.float32)
-        by = defaultdict(list)
-        for j, (sid, r) in enumerate(cells):
-            by[sid].append((j, r))
-        for sid, items in by.items():
-            x = load(sid)
-            xs[[j for j, _ in items]] = x[[r for _, r in items]].toarray()
-        infos = [shards[sid] for sid, _ in cells]
-        rws = [r for _, r in cells]
-        pairs = [(info.keys[r], info.library[r]) for info, r in zip(infos, rws)]
-        z_u, beta_u, pos = encode(pairs, draw_rng or rng)
-        sel = torch.as_tensor([pos[p] for p in pairs], device=dev)
-        z, beta = z_u[sel], beta_u[sel]
-        is_ctrl = torch.as_tensor([bool(info.control[r]) for info, r in zip(infos, rws)], device=dev)
-        tgt = torch.as_tensor([len(symbols) if (info.control[r] or unknown) else sidx[info.symbols[r]]
-                               for info, r in zip(infos, rws)], device=dev)
-        mod = torch.as_tensor([midx[info.modality[r]] for info, r in zip(infos, rws)], device=dev)
-        stu = torch.as_tensor([stix[info.study] for info in infos], device=dev)
-        mask = torch.as_tensor(np.stack([key_mask[info.keys[r]] for info, r in zip(infos, rws)]), device=dev)
-        x = torch.as_tensor(xs, device=dev)
+    def forward(b, unknown=False):
+        B = b["sid"].shape[0]
+        crow = b["crow"].to(dev)
+        rows_idx = torch.repeat_interleave(torch.arange(B, device=dev), crow[1:] - crow[:-1])
+        x = torch.zeros(B, G, device=dev)
+        x[rows_idx, b["col"].to(dev)] = b["val"].to(dev)
+        mask = shard_masks[b["sid"].to(dev)]
         lib = (x * mask).sum(-1)
+        pk, pr = b["pair_key"].to(dev), b["pair_rows"].to(dev)
+        z_u, beta_u = model.context(pool_x[pk[:, None], pr].float(), masks_in[pool_sid[pk[:, None], pr]],
+                                    pool_lib[pk[:, None], pr])
+        sel = b["sel"].to(dev)
+        z, beta = z_u[sel], beta_u[sel]
+        is_ctrl = b["is_ctrl"].to(dev)
+        tgt = torch.full_like(b["tgt"].to(dev), n_sym) if unknown else b["tgt"].to(dev)
+        stu = b["stu"].to(dev)
         theta = torch.exp(model.log_theta[stu]).clamp(1e-3, 1e4)
         ll0 = CN.cell_loglik(x, lib, beta, mask, theta)
-        delta, pi = model(z, beta, tgt, tgt_gene_t[tgt], mod)
+        delta, pi = model(z, beta, tgt, target_gene[tgt], b["mod"].to(dev))
         ll1 = CN.cell_loglik(x, lib, beta + delta, mask, theta)
         mix = torch.logsumexp(torch.stack([torch.log(pi.clamp_min(1e-6)) + ll1,
                                            torch.log((1 - pi).clamp_min(1e-6)) + ll0]), 0)
         return x, mask, lib, beta, delta, pi, ll0, mix, is_ctrl, stu
 
-    sampler = CD.EpochSampler([(sid, rows) for sid, rows in admitted_train.items()], a.buffer_shards, seed=a.seed)
-    total_train = int(sum(len(v) for v in admitted_train.values()))
-    drawn = {sid: np.zeros(shards[sid].n_cells, bool) for sid in admitted_train}
+    # coverage of the cells actually consumed, restored on resume
+    offsets = np.cumsum([0] + [s["n"] for s in shards])
+    seen = np.zeros(int(offsets[-1]), bool)
     draws, classes_drawn = Counter(), Counter()
-    w_t = torch.as_tensor([weights.get(s, 0.0) for s in corpus.studies], device=dev, dtype=torch.float32)
-    step, n_drawn, t_train = 0, 0, time.time()
-    while total_train and n_drawn < a.epochs * total_train and (time.time() - t0) / 60 < a.max_minutes:
-        cells = sampler.batch(a.batch)
-        for sid, r in cells:
-            drawn[sid][r] = True
-            draws[shards[sid].keys[r]] += 1
-            classes_drawn[shards[sid].cls[r]] += 1
-        x, mask, lib, beta, delta, pi, ll0, mix, is_ctrl, stu = forward(cells)
+    step, n_drawn, train_seconds, resumed_from = 0, 0, 0.0, None
+    if a.resume:
+        path = latest_checkpoint(a.resume)
+        ck = torch.load(path, map_location=dev, weights_only=False)
+        if ck["prepass_sha256"] != state_sha:
+            sys.exit("the checkpoint belongs to another prepass state")
+        diff = {k: (ck["same"][k], v) for k, v in same.items() if ck["same"].get(k) != v}
+        if diff:
+            sys.exit(f"resume with other training arguments: {diff}")
+        model.load_state_dict(ck["model"])
+        opt.load_state_dict(ck["opt"])
+        step, n_drawn, train_seconds = ck["step"], ck["n_drawn"], ck["train_seconds"]
+        seen = np.unpackbits(ck["seen"])[:seen.size].astype(bool)
+        draws, classes_drawn = Counter(ck["draws"]), Counter(ck["classes_drawn"])
+        torch.set_rng_state(ck["rng"]["torch"])
+        if ck["rng"]["cuda"] is not None and dev.type == "cuda":
+            torch.cuda.set_rng_state_all(ck["rng"]["cuda"])
+        np.random.set_state(ck["rng"]["numpy"])
+        random.setstate(ck["rng"]["python"])
+        resumed_from = {"checkpoint": str(path), "sha256": sha(path), "step": step}
+        log("resumed", **resumed_from)
+    total_train = int(sum(len(s["train_rows"]) for s in shards))
+    if total_train == 0:
+        sys.exit("no admitted training cell in the prepass state")
+    rbatch, rcells = role_batches(shards, roles_of(shards, a.roles), a.batch)
+
+    def epochs_at(S):
+        """Epochs completed by the slowest role when the next global step is S."""
+        return min(local_start(S, r, a.roles) * rbatch[r] / rcells[r] for r in range(a.roles) if rcells[r])
+
+    def steps_for_epochs():
+        """The first global step at which every role has drawn --epochs times its cells."""
+        return max((-(-a.epochs * rcells[r] // rbatch[r]) - 1) * a.roles + r + 1 for r in range(a.roles) if rcells[r])
+    step_goal = int(steps_for_epochs())
+    config = {"args": {k: str(v) for k, v in vars(a).items()}, "same_on_resume": same, "device": str(dev),
+              "started_utc": now(), "prepass_sha256": state_sha, "resumed_from": resumed_from,
+              "code": {p.name: sha(p) for p in (HERE / "cellnet.py", HERE / "cell_data.py", Path(__file__))},
+              "descriptors": desc_info, "study_weights": st["study_weights"], "admitted_training_cells": total_train,
+              "parameters": sum(p.numel() for p in model.parameters() if p.requires_grad)}
+    (a.out / "config.json").write_text(json.dumps(config, indent=1, default=str), encoding="utf-8")
+    log("model", parameters=config["parameters"], target_code=a.target_code, symbols=n_sym, descriptors=desc_info,
+        device=str(dev), roles=a.roles, workers=a.workers)
+
+    def save_checkpoint(reason):
+        path = a.out / "checkpoints" / f"ckpt_{step:07d}.pt"
+        tmp = path.with_suffix(".partial")
+        torch.save({"model": model.state_dict(), "opt": opt.state_dict(), "step": step, "n_drawn": n_drawn,
+                    "train_seconds": train_seconds, "seen": np.packbits(seen), "draws": dict(draws),
+                    "classes_drawn": dict(classes_drawn), "prepass_sha256": state_sha, "same": same,
+                    "rng": {"torch": torch.get_rng_state(),
+                            "cuda": torch.cuda.get_rng_state_all() if dev.type == "cuda" else None,
+                            "numpy": np.random.get_state(), "python": random.getstate()},
+                    "utc": now(), "reason": reason}, tmp)
+        os.replace(tmp, path)
+        kept = sorted((a.out / "checkpoints").glob("ckpt_*.pt"))
+        for old in kept[:-a.keep_checkpoints]:
+            old.unlink()
+        log("checkpoint", step=step, path=path.name, reason=reason, seen=int(seen.sum()))
+
+    # ---- evaluation, streaming by shard (also used before training to price the evaluation)
+    groups = st["eval_groups"]
+    key_mask = st["key_mask"]
+
+    def evaluate(limit_cells=None, deadline=None):
+        model.eval()
+        by_shard = defaultdict(list)
+        for gi, g in enumerate(groups):
+            for s, r in g["cells"]:
+                by_shard[s].append((gi, r))
+        acc = {gi: {"n": 0, "gain0": 0.0, "gainu": 0.0, "pi": 0.0, "obs": np.zeros(G), "pm": np.zeros(G),
+                    "pb": np.zeros(G)} for gi in range(len(groups))}
+        done_cells, t0, complete = 0, time.time(), True
+        cache = ShardCache(shards, st["gene_of_axis"], G, 1, rows_of=lambda s: np.arange(s["n"]))
+        for s in sorted(by_shard):
+            items = by_shard[s]
+            for c0 in range(0, len(items), a.eval_chunk):
+                if (limit_cells is not None and done_cells >= limit_cells) or (deadline and time.time() > deadline):
+                    complete = False
+                    break
+                chunk = items[c0:c0 + a.eval_chunk]
+                cells = [(s, r) for _, r in chunk]
+                b = assemble(cells, cache, shards, lib_rows, a.ctrl_k, n_sym, a.seed, 10**9 + s * 10**5 + c0)
+                with torch.no_grad():
+                    x, mask, lib, beta, delta, pi, ll0, mix, _, _ = forward(b)
+                    mix_u = forward(b, unknown=True)[7]
+                    per_gene = mask.sum(-1).clamp_min(1)
+                    kc = b["key"].to(dev)
+                    common = torch.as_tensor(key_mask, device=dev)[kc]
+                    p0 = torch.softmax(beta.masked_fill(~common, float("-inf")), -1)
+                    p1 = torch.softmax((beta + delta).masked_fill(~common, float("-inf")), -1)
+                    pm = pi[:, None] * p1 + (1 - pi[:, None]) * p0
+                    obs = x * common / (x * common).sum(-1, keepdim=True).clamp_min(1)
+                    g0 = ((mix - ll0) / per_gene).cpu().numpy()
+                    gu = ((mix - mix_u) / per_gene).cpu().numpy()
+                    pin, pmn, p0n, obn = pi.cpu().numpy(), pm.cpu().numpy(), p0.cpu().numpy(), obs.cpu().numpy()
+                for j, (gi, _) in enumerate(chunk):
+                    ac = acc[gi]
+                    ac["n"] += 1; ac["gain0"] += g0[j]; ac["gainu"] += gu[j]; ac["pi"] += pin[j]
+                    ac["obs"] += obn[j]; ac["pm"] += pmn[j]; ac["pb"] += p0n[j]
+                done_cells += len(chunk)
+            if not complete:
+                break
+        model.train()
+        return acc, done_cells, time.time() - t0, complete
+
+    eval_cells = sum(len(g["cells"]) for g in groups)
+    eval_shards = len({s for g in groups for s, _ in g["cells"]})
+    probe_cells = min(eval_cells, 2 * a.eval_chunk)
+    _, n_probe, t_probe, _ = evaluate(limit_cells=probe_cells) if eval_cells else ({}, 0, 0.0, True)
+    per_cell = t_probe / max(n_probe, 1)                     # the probe's time includes reading its shards
+    eval_reserve = 1.5 * per_cell * eval_cells + a.eval_reserve_seconds
+    export_reserve = 60.0 * a.reserve_export_minutes
+    train_deadline = t_start + 60.0 * a.budget_minutes - eval_reserve - export_reserve
+    log("evaluation priced", cells=eval_cells, shards=eval_shards, probe_cells=n_probe, probe_seconds=round(t_probe, 1),
+        reserve_seconds=round(eval_reserve, 1))
+
+    # ---- training
+    stream = BatchStream(shards, st["gene_of_axis"], G, lib_rows, n_sym, a.batch, a.buffer_shards, a.ctrl_k, a.seed,
+                         a.roles, step)
+    loader = torch.utils.data.DataLoader(stream, batch_size=None, num_workers=a.workers,
+                                         prefetch_factor=a.prefetch if a.workers else None,
+                                         pin_memory=dev.type == "cuda")
+    it = iter(loader)
+    shard_key = [s["key"] for s in shards]
+    t_train0, wait, last_ckpt = time.time(), 0.0, time.time()
+    measure = {"from": None, "wait": 0.0}
+    plan, stop_reason = None, None
+    start_step = step
+    while True:
+        if step >= step_goal:
+            stop_reason = "epochs done"
+            break
+        if time.time() >= train_deadline:
+            stop_reason = "time budget"
+            break
+        if a.stop_after_steps is not None and step >= a.stop_after_steps:
+            stop_reason = "stop-after-steps"
+            break
+        t_w = time.time()
+        b = next(it)
+        dt_wait = time.time() - t_w
+        wait += dt_wait
+        if int(b["step"]) != step:
+            sys.exit(f"the loader returned step {int(b['step'])} where {step} was due")
+        x, mask, lib, beta, delta, pi, ll0, mix, is_ctrl, stu = forward(b)
         per_gene = mask.sum(-1).clamp_min(1)
         ll = torch.where(is_ctrl, ll0, mix) / per_gene
         loss = -(ll * w_t[stu]).sum() / w_t[stu].sum()
@@ -351,86 +871,128 @@ def main():
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         opt.step()
+        sid, row = b["sid"].numpy(), b["row"].numpy()
+        seen[offsets[sid] + row] = True
+        draws.update(np.array(st["key_names"], dtype=object)[b["key"].numpy()].tolist())
+        classes_drawn.update(np.array(CLASSES, dtype=object)[b["cls"].numpy()].tolist())
         step += 1
-        n_drawn += len(cells)
-        if step % 100 == 0 or step == 1:
+        n_drawn += int(sid.size)
+        if step - start_step == a.measure_from:
+            if dev.type == "cuda":
+                torch.cuda.synchronize()
+            measure = {"from": time.time(), "wait": wait, "step": step}
+        if plan is None and measure["from"] is not None and step - measure["step"] >= a.measure_steps:
+            if dev.type == "cuda":
+                torch.cuda.synchronize()
+            span = time.time() - measure["from"]
+            steps_per_s = (step - measure["step"]) / span
+            remaining = train_deadline - time.time()
+            need = max(0, step_goal - step)
+            fit = int(max(0.0, remaining) * steps_per_s)
+            plan = {"measured_steps": step - measure["step"], "seconds": round(span, 2),
+                    "steps_per_second": round(steps_per_s, 3), "cells_per_second": round(steps_per_s * a.batch, 1),
+                    "data_wait_fraction": round((wait - measure["wait"]) / span, 3),
+                    "budget_minutes": a.budget_minutes, "evaluation_reserve_seconds": round(eval_reserve, 1),
+                    "export_reserve_seconds": export_reserve,
+                    "train_until_utc": datetime.fromtimestamp(train_deadline, timezone.utc).isoformat(),
+                    "steps_needed_for_epochs": need, "steps_that_fit": fit, "planned_steps": min(need, fit),
+                    "epochs_expected": round(epochs_at(step + min(need, fit)), 3),
+                    "admitted_training_cells": total_train, "step_at_plan": step,
+                    "roles": {"batches": rbatch, "training_cells": rcells.astype(int).tolist()}}
+            (a.out / "plan.json").write_text(json.dumps(plan, indent=1), encoding="utf-8")
+            log("plan", **plan)
+        train_seconds += time.time() - t_w
+        if step % a.log_every == 0 or step == start_step + 1:
             with torch.no_grad():
-                log("step", step=step, epoch=round(n_drawn / total_train, 3), loss=round(float(loss), 5),
+                log("step", step=step, epoch=round(epochs_at(step), 3), loss=round(float(loss), 5),
                     pert_gain=float(((mix - ll0) / per_gene)[~is_ctrl].mean()) if (~is_ctrl).any() else None,
                     pi_mean=float(pi[~is_ctrl].mean()) if (~is_ctrl).any() else None,
-                    cells_per_s=round(n_drawn / (time.time() - t_train), 1))
-    torch.save({"state": model.state_dict(), "genes": corpus.genes, "symbols": symbols, "studies": corpus.studies,
-                "modalities": corpus.modalities, "input_genes": input_genes.tolist(), "target_code": a.target_code},
-               a.out / "model.pt")
-    leaks = {c: n for c, n in classes_drawn.items() if c != "train"}
-    cov = {"steps": step, "batch": a.batch, "epochs_done": round(n_drawn / max(total_train, 1), 3),
-           "admitted_training_cells": total_train, "draws": n_drawn,
-           "by_key": [{"key": k, "admitted_offered": int(offered[k]),
-                       "distinct_drawn": int(sum(int(drawn[i.sid][i.keys == k].sum()) for i in shards if i.sid in drawn)),
-                       "draws": int(draws[k])} for k in sorted(offered)],
+                    cells_per_s=round((n_drawn - start_step * a.batch) / max(time.time() - t_train0, 1e-6), 1),
+                    data_wait_fraction=round(wait / max(time.time() - t_train0, 1e-6), 3))
+        if time.time() - last_ckpt >= 60.0 * a.checkpoint_minutes:
+            save_checkpoint("periodic")
+            last_ckpt = time.time()
+    del it, loader
+    if plan is None:
+        plan = {"measured_steps": 0, "note": "training ended before the measurement window (--measure-from, "
+                "--measure-steps)", "steps": step - start_step, "seconds": round(time.time() - t_train0, 2),
+                "data_wait_fraction": round(wait / max(time.time() - t_train0, 1e-6), 3),
+                "evaluation_reserve_seconds": round(eval_reserve, 1), "budget_minutes": a.budget_minutes}
+        (a.out / "plan.json").write_text(json.dumps(plan, indent=1), encoding="utf-8")
+    save_checkpoint(stop_reason)
+    leaks = {c: n for c, n in classes_drawn.items() if c != DRAWN}
+    by_key = defaultdict(lambda: [0, 0])
+    for s, sh in enumerate(shards):
+        tr = sh["train_rows"]
+        if tr.size:
+            ks = sh["key"][tr]
+            hit = seen[offsets[s] + tr]
+            for k in np.unique(ks):
+                by_key[k][0] += int((ks == k).sum())
+                by_key[k][1] += int(hit[ks == k].sum())
+    cov = {"steps": step, "batch": a.batch, "role_batches": rbatch, "epochs_done": round(epochs_at(step), 3),
+           "stop": stop_reason,
+           "admitted_training_cells": total_train, "draws": n_drawn, "distinct_cells_seen": int(seen.sum()),
+           "resumed_from": resumed_from,
+           "by_key": [{"key": st["key_names"][k], "admitted_offered": v[0], "distinct_drawn": v[1],
+                       "draws": int(draws.get(st["key_names"][k], 0))} for k, v in sorted(by_key.items())],
            "leakage_check": {"passed": not leaks, "non_train_classes_drawn": leaks}}
     (a.out / "coverage.json").write_text(json.dumps(cov, indent=1), encoding="utf-8")
-    log("trained", steps=step, epochs=cov["epochs_done"], leakage_passed=not leaks)
+    torch.save({"state": model.state_dict(), "genes": st["genes"], "symbols": symbols, "studies": st["studies"],
+                "modalities": st["modalities"], "input_genes": input_genes.tolist(), "target_code": a.target_code,
+                "prepass_sha256": state_sha}, a.out / "model.pt")
+    log("trained", steps=step, epochs=cov["epochs_done"], stop=stop_reason, leakage_passed=not leaks)
     if leaks:
         sys.exit(f"leakage: {leaks}")
+    if stop_reason == "stop-after-steps":
+        (a.out / "done.json").write_text(json.dumps({"finished_utc": now(), "steps": step, "evaluation": "skipped: "
+                                                     "stopped by --stop-after-steps"}, indent=1), encoding="utf-8")
+        return
 
-    # ---- 3. evaluation by effective class
-    model.eval()
+    # ---- evaluation by effective class
+    hard_deadline = t_start + 60.0 * a.budget_minutes - export_reserve
+    acc, n_eval, t_eval, complete = evaluate(deadline=hard_deadline)
 
     def cos(u, v):
         nu, nv = np.linalg.norm(u), np.linalg.norm(v)
         return float(u @ v / (nu * nv)) if nu > 0 and nv > 0 else 0.0
 
-    groups = defaultdict(list)
-    for info in shards:
-        for cl in ("C", "T", "J"):
-            for r in np.flatnonzero(info.admitted & (info.cls == cl)):
-                groups[(cl, info.keys[r], info.symbols[r])].append((info.sid, int(r)))
+    kidx = {k: i for i, k in enumerate(st["key_names"])}
     results = {"C": [], "T": [], "J": []}
-    train_keys = [k for k in pert_n if k.split("|", 1)[1] != a.holdout_context]
-    for (cl, key, sym), cells in sorted(groups.items(), key=lambda kv: -len(kv[1])):
-        if len(cells) < a.eval_min_cells or len(results[cl]) >= a.eval_max_groups:
+    for gi, g in enumerate(groups):
+        ac = acc[gi]
+        if ac["n"] == 0:
+            results[g["class"]].append({"key": g["key"], "symbol": g["symbol"], "skipped": "not reached"})
             continue
-        if key not in pools:
-            results[cl].append({"key": key, "symbol": sym, "skipped": "no admitted controls"})
+        if g["key"] not in st["ctrl_mean"]:
+            results[g["class"]].append({"key": g["key"], "symbol": g["symbol"], "skipped": "no admitted controls"})
             continue
-        cells = cells[:2000]
-        with torch.no_grad():
-            x, mask, lib, beta, delta, pi, ll0, mix, _, _ = forward(cells, draw_rng=np.random.default_rng(1234))
-            _, _, _, _, _, _, _, mix_u, _, _ = forward(cells, unknown=True, draw_rng=np.random.default_rng(1234))
-            per_gene = mask.sum(-1).clamp_min(1)
-            m0 = mask[0]
-            p0 = torch.softmax(beta[0].masked_fill(~m0, float("-inf")), -1)
-            p1 = torch.softmax((beta[0] + delta[0]).masked_fill(~m0, float("-inf")), -1)
-            p_model = (pi[0] * p1 + (1 - pi[0]) * p0).cpu().numpy()
-        measured = key_mask[key]
-        pc = pools[key]["x"].astype(np.float32)
-        obs, ok = CD.shift(CD.mean_prop(x.cpu().numpy(), lib.cpu().numpy(), measured),
-                           CD.mean_prop(pc, (pc * measured).sum(1), measured), measured)
-        pred, _ = CD.shift(p_model, p0.cpu().numpy(), measured)
+        common = key_mask[kidx[g["key"]]]
+        n = ac["n"]
+        obs, ok = CD.shift(ac["obs"] / n, st["ctrl_mean"][g["key"]], common)
+        pred, _ = CD.shift(ac["pm"] / n, ac["pb"] / n, common)
         trans, nt = np.zeros(G), 0
-        if sym in sidx:
-            for k2 in train_keys:
-                if k2 != key and nsum.get((k2, sidx[sym]), 0) >= 10 and nsum.get((k2, -1), 0) >= 10:
-                    s2, _ = CD.shift(sums[(k2, sidx[sym])] / nsum[(k2, sidx[sym])], sums[(k2, -1)] / nsum[(k2, -1)],
-                                     key_mask[k2] & measured)
-                    trans += s2
-                    nt += 1
+        for k2 in st["train_keys"]:
+            if k2 != g["key"] and (k2, g["symbol"]) in st["sums"] and k2 in st["ctrl_mean"]:
+                s2, _ = CD.shift(st["sums"][(k2, g["symbol"])], st["ctrl_mean"][k2], key_mask[kidx[k2]] & common)
+                trans += s2
+                nt += 1
         trans /= max(nt, 1)
         gen, ng = np.zeros(G), 0
-        for k2 in ([key] if key in train_keys else train_keys):
-            if pert_n[k2] >= 10 and nsum.get((k2, -1), 0) >= 10:
-                s2, _ = CD.shift(pert_sum[k2] / pert_n[k2], sums[(k2, -1)] / nsum[(k2, -1)], key_mask[k2] & measured)
+        for k2 in ([g["key"]] if g["key"] in st["train_keys"] else st["train_keys"]):
+            if k2 in st["pert_mean"] and k2 in st["ctrl_mean"]:
+                s2, _ = CD.shift(st["pert_mean"][k2], st["ctrl_mean"][k2], key_mask[kidx[k2]] & common)
                 gen += s2
                 ng += 1
         gen /= max(ng, 1)
-        top = np.argsort(-np.abs(obs * ok))[:200]
-        results[cl].append({"key": key, "symbol": sym, "cells": len(cells), "pi": float(pi[0]),
-                            "ll_gain_vs_no_effect": float(((mix - ll0) / per_gene).mean()),
-                            "ll_gain_vs_unknown_target": float(((mix - mix_u) / per_gene).mean()),
-                            "cos_model": cos(pred[top], obs[top]),
-                            "cos_transfer": cos(trans[top], obs[top]) if nt else None, "transfer_keys": nt,
-                            "cos_generic": cos(gen[top], obs[top]) if ng else None})
+        top_genes = np.argsort(-np.abs(obs * ok))[:200]
+        results[g["class"]].append({"key": g["key"], "symbol": g["symbol"], "cells": n,
+                                    "admitted_cells": g["admitted_cells"], "pi_mean": ac["pi"] / n,
+                                    "ll_gain_vs_no_effect": ac["gain0"] / n, "ll_gain_vs_unknown_target": ac["gainu"] / n,
+                                    "genes_compared": int(ok.sum()), "cos_model": cos(pred[top_genes], obs[top_genes]),
+                                    "cos_transfer": cos(trans[top_genes], obs[top_genes]) if nt else None,
+                                    "transfer_keys": nt,
+                                    "cos_generic": cos(gen[top_genes], obs[top_genes]) if ng else None})
 
     def summarize(rows, name):
         skipped = sum("skipped" in r for r in rows)
@@ -452,12 +1014,71 @@ def main():
                     "cos_transfer": float(np.mean([r["cos_transfer"] for r in tr])) if tr else None})
         return out
     summary = {k: summarize(v, k) for k, v in results.items()}
+    summary["evaluation"] = {"cells": n_eval, "seconds": round(t_eval, 1), "complete": complete,
+                             "reserve_seconds": round(eval_reserve, 1)}
     summary["note"] = ("technical check: log-likelihood gains with the same learned baseline; cosines of shifts computed "
-                       "with one estimator (cell_data.shift) against observed cells, on the 200 genes with the largest "
-                       "observed shift; baselines from admitted training cells only; not a VCC score")
-    (a.out / "eval.json").write_text(json.dumps({"summary": summary, **results}, indent=1), encoding="utf-8")
+                       "with one estimator (cell_data.shift on the key's genes, measured by perturbed cells and controls "
+                       "alike) against observed cells, on the 200 genes with the largest observed shift; baselines from "
+                       "admitted training cells only; not a VCC score")
+    (a.out / "eval.json").write_text(json.dumps({"summary": summary, **results}, indent=1, default=float),
+                                     encoding="utf-8")
     log("eval", **{k: v for k, v in summary.items() if k != "note"})
-    (a.out / "done.json").write_text(json.dumps({"finished_utc": now(), "steps": step}, indent=1), encoding="utf-8")
+    (a.out / "done.json").write_text(json.dumps({"finished_utc": now(), "steps": step,
+                                                 "wall_seconds": round(time.time() - t_start, 1),
+                                                 "budget_seconds": 60.0 * a.budget_minutes}, indent=1), encoding="utf-8")
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("prepass")
+    p.add_argument("--shards", nargs="+", required=True)
+    p.add_argument("--axis", required=True)
+    p.add_argument("--holdout-context", required=True)
+    p.add_argument("--holdout-target-frac", type=float, default=0.1)
+    p.add_argument("--target-split-seed", type=int, default=20260930)
+    p.add_argument("--out", required=True, type=Path)
+    p.add_argument("--republications", help="JSON {study: preferred study}: the first is left out when both are present")
+    p.add_argument("--pool-size", type=int, default=2048, help="control cells kept per (study, context)")
+    p.add_argument("--input-genes", type=int, default=2048)
+    p.add_argument("--eval-min-cells", type=int, default=20)
+    p.add_argument("--eval-max-groups", type=int, default=400)
+    p.add_argument("--eval-max-cells", type=int, default=500)
+    p.add_argument("--identity-min-counts", type=float, default=200,
+                   help="cells with fewer counts are not reported as content matches (too few to be told apart)")
+    p.add_argument("--seed", type=int, default=0)
+    t = sub.add_parser("train")
+    t.add_argument("--prepass", required=True, type=Path)
+    t.add_argument("--out", required=True, type=Path)
+    t.add_argument("--descriptors", type=Path)
+    t.add_argument("--target-code", choices=["descriptors", "identity", "both"], default="descriptors")
+    t.add_argument("--epochs", type=float, default=2.0)
+    t.add_argument("--batch", type=int, default=256)
+    t.add_argument("--ctrl-k", type=int, default=64)
+    t.add_argument("--buffer-shards", type=int, default=4)
+    t.add_argument("--dim", type=int, default=128)
+    t.add_argument("--rank", type=int, default=128)
+    t.add_argument("--lr", type=float, default=1e-3)
+    t.add_argument("--seed", type=int, default=0)
+    t.add_argument("--workers", type=int, default=0, help="loader processes (0: the main process assembles batches)")
+    t.add_argument("--roles", type=int, default=None, help="shard partitions (default: max(1, workers))")
+    t.add_argument("--prefetch", type=int, default=8, help="batches prepared ahead by each loader process")
+    t.add_argument("--budget-minutes", type=float, default=240)
+    t.add_argument("--reserve-export-minutes", type=float, default=5)
+    t.add_argument("--checkpoint-minutes", type=float, default=15)
+    t.add_argument("--keep-checkpoints", type=int, default=3)
+    t.add_argument("--measure-from", type=int, default=20, help="steps of warm-up before the throughput is measured")
+    t.add_argument("--measure-steps", type=int, default=60)
+    t.add_argument("--eval-chunk", type=int, default=512)
+    t.add_argument("--eval-reserve-seconds", type=float, default=60,
+                   help="added to the priced evaluation: 1.5 x the probe's seconds per cell x the evaluation cells")
+    t.add_argument("--log-every", type=int, default=100)
+    t.add_argument("--resume", type=Path, help="an earlier run directory: continue from its last checkpoint")
+    t.add_argument("--stop-after-steps", type=int, help="stop at this global step after a checkpoint, without "
+                                                          "evaluation (simulates an interruption; tests)")
+    t.add_argument("--device", default=None)
+    a = ap.parse_args()
+    prepass(a) if a.cmd == "prepass" else train(a)
 
 
 if __name__ == "__main__":

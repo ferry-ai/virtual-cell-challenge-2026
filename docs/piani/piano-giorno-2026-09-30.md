@@ -90,6 +90,18 @@
   Stessi file di lavoro (D) e (M); ogni esecuzione nuova scrive in cartelle e numeri di coda nuovi. L'ispettore
   `inspect_remote.py` lanciato da `ec2e5b07` alle 21:42 era ancora vivo alle 23:24 (ultimo file CD4): i suoi
   output si committano com'erano, a suo nome.
+- **Aperti prima del training esteso (proprietario in chat, 30/09, prima delle 23:39):** quattro punti della
+  revisione di Codex che i 13 casi di `test_cell_data.py` non coprono. Restano aperti finché ognuno non ha una regola
+  scritta in `cell_data.py`, casi controllati che la provano e il suo esito nel pre-passo di un training vero:
+  1. **duplicati e collisioni:** la stessa cellula in due shard o ripubblicata da un altro archivio conta una volta;
+     due cellule diverse con la stessa chiave restano due; più feature native sullo stesso gene non si sommano in
+     silenzio; etichette diverse che finiscono sullo stesso simbolo sono riportate;
+  2. **perturbazioni combinate:** un'etichetta con più geni bersaglio non diventa il suo primo gene; ha una classe
+     esplicita, e un bersaglio nascosto dentro una combinata non entra nel training;
+  3. **conservazione dei fenotipi nel QC:** un knockdown che abbassa i conteggi o alza la frazione mitocondriale non
+     viene tolto in modo selettivo; il rifiuto per perturbazione confrontato con quello dei controlli guida la regola;
+  4. **maschere dei controlli:** ogni cellula e ogni controllo usano la maschera dei geni del proprio shard, mai
+     l'unione della chiave; lo stimatore confronta perturbate e controlli sui geni misurati da entrambi.
 - **Prossimo passo:** (0) ricontrollare le code (`runs/jobs/dispatcher*.log`) e i dataset (`kaggle datasets list --mine` con
   `KAGGLE_CONFIG_DIR=~/.kaggle`); (1) quando su `davidmaisterx` ci sono almeno HepG2, Jurkat di Nadig, K562 essenziali,
   RPE1 e H1, un kernel Kaggle GPU con `train_cellnet.py` (dataset di codice con `cellnet.py`,
