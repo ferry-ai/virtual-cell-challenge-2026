@@ -120,6 +120,10 @@ class Stages(unittest.TestCase):
         budget = [a if a != "1" else "1000" for a in TRAIN_SMALL]  # epochs: far more than the budget allows
         cls.tb = run("train", "--prepass", pre, "--out", d / "tb", "--target-code", "identity", "--budget-minutes",
                      "0.5", *budget)
+        import shutil
+        shutil.copytree(sh, d / "elsewhere" / "mounted")             # another runtime: the shards moved
+        cls.mv = run("train", "--prepass", pre, "--out", d / "mv", "--target-code", "identity", "--roles", "2",
+                     "--stop-after-steps", "4", "--shard-roots", d / "elsewhere", *TRAIN_SMALL)
 
     @classmethod
     def tearDownClass(cls):
@@ -133,7 +137,7 @@ class Stages(unittest.TestCase):
         return torch.load(self.d / run_dir / "checkpoints" / f"ckpt_{step:07d}.pt", weights_only=False)
 
     def test_every_stage_finished(self):
-        for name in ("pre", "pre_rep", "full", "r1", "r2", "r3", "w2", "w0", "tb"):
+        for name in ("pre", "pre_rep", "full", "r1", "r2", "r3", "w2", "w0", "tb", "mv"):
             proc = getattr(self, name)
             self.assertEqual(proc.returncode, 0, f"{name}: {proc.stderr[-3000:]}")
         self.assertTrue((self.d / "run" / "eval.json").is_file())
@@ -198,7 +202,32 @@ class Stages(unittest.TestCase):
         self.assertTrue(np.array_equal(a["seen"], b["seen"]))
         self.assertEqual(a["draws"], b["draws"])
         self.assertEqual(a["n_drawn"], b["n_drawn"])
+        self.assertEqual(a["batch_chain"], b["batch_chain"])                 # the same cells, in the same order
         self.assertEqual(self.read("r2", "config.json")["resumed_from"]["step"], 5)
+        self.assertIsInstance(a["rng"]["torch"], torch.Tensor)
+        self.assertEqual(a["rng"]["torch"].device.type, "cpu")
+
+    def test_shards_found_on_another_runtime_and_hashed(self):
+        rows = self.read("mv", "shards_resolved.json")
+        self.assertTrue(all("elsewhere" in r["path"] and "elsewhere" not in r["prepass_path"] for r in rows))
+        verify = self.read("mv", "verify.json")
+        self.assertEqual(verify["differ"], [])
+        self.assertEqual(verify["shards"], len(rows))
+        pre = json.loads((self.d / "pre" / "prepass_done.json").read_text(encoding="utf-8"))
+        import hashlib
+        self.assertEqual(hashlib.sha256((self.d / "pre" / "prepass.pkl").read_bytes()).hexdigest(), pre["sha256"])
+
+    def test_hash_check_catches_a_changed_shard(self):
+        sys.path.insert(0, str(HERE))
+        import train_cellnet as TC
+        f = self.d / "hash_case.bin"
+        f.write_bytes(b"x" * 1000)
+        rec = [{"path": str(f), "bytes": 1000, "sha256": TC.sha(f)}]
+        self.assertTrue(TC.HashCheck(rec, self.d).wait())
+        f.write_bytes(b"y" + b"x" * 999)                                     # same size, other bytes
+        check = TC.HashCheck(rec, self.d)
+        self.assertFalse(check.wait())
+        self.assertEqual(check.bad, [str(f)])
 
     def test_loader_processes_give_the_same_batches(self):
         import torch

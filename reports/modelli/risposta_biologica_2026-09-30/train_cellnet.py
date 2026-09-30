@@ -626,6 +626,74 @@ def latest_checkpoint(run_dir: Path):
     return found[-1]
 
 
+def resolve_shards(shards, roots):
+    """The shards of the prepass state on this runtime: each found by file name under `roots`, with the size the
+    prepass recorded. The state is not changed: the caller uses the returned paths. Refuses a shard absent or found
+    twice."""
+    by_name = defaultdict(list)
+    for root in roots:
+        for p in Path(root).rglob("*.h5ad"):
+            by_name[p.name].append(p)
+    out, problems = [], []
+    for s in shards:
+        hits = [p for p in by_name.get(s["name"], []) if p.stat().st_size == s["bytes"]]
+        if len(hits) != 1:
+            problems.append(f"{s['name']}: {len(hits)} files of {s['bytes']} bytes")
+        else:
+            out.append(str(hits[0]))
+    if problems:
+        sys.exit(f"{len(problems)} shards not resolved, e.g. {problems[:3]}")
+    return out
+
+
+class HashCheck:
+    """The sha256 of every shard against the prepass state, in a background thread: the training starts at once and
+    stops if a shard differs; the evaluation waits for the check to end."""
+
+    def __init__(self, shards, out: Path):
+        import threading
+        self.shards, self.out, self.bad, self.done, self.t0 = shards, out, [], False, time.time()
+        self.thread = threading.Thread(target=self.run, daemon=True)
+        self.thread.start()
+
+    def run(self):
+        for s in self.shards:
+            if sha(s["path"]) != s["sha256"]:
+                self.bad.append(s["path"])
+        self.done = True
+        (self.out / "verify.json").write_text(json.dumps({
+            "shards": len(self.shards), "bytes": int(sum(s["bytes"] for s in self.shards)), "differ": self.bad,
+            "seconds": round(time.time() - self.t0, 1), "rule": "sha256 of each shard against the prepass state"},
+            indent=1), encoding="utf-8")
+
+    def wait(self):
+        self.thread.join()
+        return not self.bad
+
+
+def memory(dev=None) -> dict:
+    """Peak resident memory of this process and of its live loader processes, the device's peak allocation, and the
+    memory still available on the machine (Linux), in MB."""
+    out = {}
+    try:
+        import resource
+        out["rss_peak_mb"] = round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024, 1)
+    except ImportError:
+        pass
+    try:
+        import psutil
+        me = psutil.Process()
+        out["rss_mb"] = round(me.memory_info().rss / 2**20, 1)
+        out["children_rss_mb"] = round(sum(c.memory_info().rss for c in me.children(recursive=True)) / 2**20, 1)
+        out["system_available_mb"] = round(psutil.virtual_memory().available / 2**20, 1)
+    except Exception:                    # noqa: BLE001 - memory figures are a report, never a reason to stop
+        pass
+    if dev is not None and dev.type == "cuda":
+        out["gpu_peak_mb"] = round(torch.cuda.max_memory_allocated(dev) / 2**20, 1)
+        out["gpu_reserved_mb"] = round(torch.cuda.memory_reserved(dev) / 2**20, 1)
+    return out
+
+
 def train(a):
     if a.out.exists():
         sys.exit(f"refusing: {a.out} exists")
@@ -640,9 +708,17 @@ def train(a):
     with open(a.prepass / STATE, "rb") as fh:
         st = pickle.load(fh)
     shards = st["shards"]
+    recorded = [s["path"] for s in shards]
+    if a.shard_roots:                       # another runtime: find each shard by name and size, the state unchanged
+        for s, p in zip(shards, resolve_shards(shards, a.shard_roots)):
+            s["path"] = p
     bad = [s["path"] for s in shards if not Path(s["path"]).is_file() or Path(s["path"]).stat().st_size != s["bytes"]]
     if bad:
         sys.exit(f"{len(bad)} shards absent or of another size, e.g. {bad[:3]}")
+    (a.out / "shards_resolved.json").write_text(json.dumps(
+        [{"name": s["name"], "prepass_path": r, "path": s["path"], "bytes": s["bytes"], "sha256": s["sha256"]}
+         for s, r in zip(shards, recorded)], indent=1), encoding="utf-8")
+    hashes = HashCheck(shards, a.out) if not a.no_verify else None
     stix = {s: i for i, s in enumerate(st["studies"])}
     for s in shards:
         s["stu"] = stix[s["study"]]
@@ -720,9 +796,12 @@ def train(a):
     seen = np.zeros(int(offsets[-1]), bool)
     draws, classes_drawn = Counter(), Counter()
     step, n_drawn, train_seconds, resumed_from = 0, 0, 0.0, None
+    chain = hashlib.sha256(b"rlab batches").hexdigest()   # a hash chain over the cells consumed, step by step
     if a.resume:
         path = latest_checkpoint(a.resume)
-        ck = torch.load(path, map_location=dev, weights_only=False)
+        # everything to the CPU first: model and optimizer states move to their device when loaded; RNG states must
+        # stay on the CPU (torch.set_rng_state and torch.cuda.set_rng_state take CPU byte tensors)
+        ck = torch.load(path, map_location="cpu", weights_only=False)
         if ck["prepass_sha256"] != state_sha:
             sys.exit("the checkpoint belongs to another prepass state")
         diff = {k: (ck["same"][k], v) for k, v in same.items() if ck["same"].get(k) != v}
@@ -733,12 +812,13 @@ def train(a):
         step, n_drawn, train_seconds = ck["step"], ck["n_drawn"], ck["train_seconds"]
         seen = np.unpackbits(ck["seen"])[:seen.size].astype(bool)
         draws, classes_drawn = Counter(ck["draws"]), Counter(ck["classes_drawn"])
-        torch.set_rng_state(ck["rng"]["torch"])
+        chain = ck["batch_chain"]
+        torch.set_rng_state(ck["rng"]["torch"].cpu())
         if ck["rng"]["cuda"] is not None and dev.type == "cuda":
-            torch.cuda.set_rng_state_all(ck["rng"]["cuda"])
+            torch.cuda.set_rng_state(ck["rng"]["cuda"].cpu(), device=dev)
         np.random.set_state(ck["rng"]["numpy"])
         random.setstate(ck["rng"]["python"])
-        resumed_from = {"checkpoint": str(path), "sha256": sha(path), "step": step}
+        resumed_from = {"checkpoint": str(path), "sha256": sha(path), "step": step, "batch_chain": chain}
         log("resumed", **resumed_from)
     total_train = int(sum(len(s["train_rows"]) for s in shards))
     if total_train == 0:
@@ -768,15 +848,17 @@ def train(a):
         torch.save({"model": model.state_dict(), "opt": opt.state_dict(), "step": step, "n_drawn": n_drawn,
                     "train_seconds": train_seconds, "seen": np.packbits(seen), "draws": dict(draws),
                     "classes_drawn": dict(classes_drawn), "prepass_sha256": state_sha, "same": same,
+                    "batch_chain": chain,
                     "rng": {"torch": torch.get_rng_state(),
-                            "cuda": torch.cuda.get_rng_state_all() if dev.type == "cuda" else None,
+                            "cuda": torch.cuda.get_rng_state(dev) if dev.type == "cuda" else None,
                             "numpy": np.random.get_state(), "python": random.getstate()},
-                    "utc": now(), "reason": reason}, tmp)
+                    "memory": memory(dev), "utc": now(), "reason": reason}, tmp)
         os.replace(tmp, path)
         kept = sorted((a.out / "checkpoints").glob("ckpt_*.pt"))
         for old in kept[:-a.keep_checkpoints]:
             old.unlink()
-        log("checkpoint", step=step, path=path.name, reason=reason, seen=int(seen.sum()))
+        log("checkpoint", step=step, path=path.name, reason=reason, seen=int(seen.sum()),
+            batch_chain=chain[:16])
 
     # ---- evaluation, streaming by shard (also used before training to price the evaluation)
     groups = st["eval_groups"]
@@ -846,7 +928,7 @@ def train(a):
     t_train0, wait, last_ckpt = time.time(), 0.0, time.time()
     measure = {"from": None, "wait": 0.0}
     plan, stop_reason = None, None
-    start_step = step
+    start_step, start_n = step, n_drawn
     while True:
         if step >= step_goal:
             stop_reason = "epochs done"
@@ -873,6 +955,11 @@ def train(a):
         opt.step()
         sid, row = b["sid"].numpy(), b["row"].numpy()
         seen[offsets[sid] + row] = True
+        chain = hashlib.sha256(bytes.fromhex(chain) + np.int64(step).tobytes() + sid.astype(np.int64).tobytes()
+                               + row.astype(np.int64).tobytes()).hexdigest()
+        if hashes is not None and hashes.bad:
+            hashes.wait()
+            sys.exit(f"shards differ from the prepass state: {hashes.bad[:3]}")
         draws.update(np.array(st["key_names"], dtype=object)[b["key"].numpy()].tolist())
         classes_drawn.update(np.array(CLASSES, dtype=object)[b["cls"].numpy()].tolist())
         step += 1
@@ -897,7 +984,7 @@ def train(a):
                     "train_until_utc": datetime.fromtimestamp(train_deadline, timezone.utc).isoformat(),
                     "steps_needed_for_epochs": need, "steps_that_fit": fit, "planned_steps": min(need, fit),
                     "epochs_expected": round(epochs_at(step + min(need, fit)), 3),
-                    "admitted_training_cells": total_train, "step_at_plan": step,
+                    "admitted_training_cells": total_train, "step_at_plan": step, "memory": memory(dev),
                     "roles": {"batches": rbatch, "training_cells": rcells.astype(int).tolist()}}
             (a.out / "plan.json").write_text(json.dumps(plan, indent=1), encoding="utf-8")
             log("plan", **plan)
@@ -907,8 +994,8 @@ def train(a):
                 log("step", step=step, epoch=round(epochs_at(step), 3), loss=round(float(loss), 5),
                     pert_gain=float(((mix - ll0) / per_gene)[~is_ctrl].mean()) if (~is_ctrl).any() else None,
                     pi_mean=float(pi[~is_ctrl].mean()) if (~is_ctrl).any() else None,
-                    cells_per_s=round((n_drawn - start_step * a.batch) / max(time.time() - t_train0, 1e-6), 1),
-                    data_wait_fraction=round(wait / max(time.time() - t_train0, 1e-6), 3))
+                    cells_per_s=round((n_drawn - start_n) / max(time.time() - t_train0, 1e-6), 1),
+                    data_wait_fraction=round(wait / max(time.time() - t_train0, 1e-6), 3), **memory(dev))
         if time.time() - last_ckpt >= 60.0 * a.checkpoint_minutes:
             save_checkpoint("periodic")
             last_ckpt = time.time()
@@ -936,7 +1023,8 @@ def train(a):
            "resumed_from": resumed_from,
            "by_key": [{"key": st["key_names"][k], "admitted_offered": v[0], "distinct_drawn": v[1],
                        "draws": int(draws.get(st["key_names"][k], 0))} for k, v in sorted(by_key.items())],
-           "leakage_check": {"passed": not leaks, "non_train_classes_drawn": leaks}}
+           "leakage_check": {"passed": not leaks, "non_train_classes_drawn": leaks},
+           "batch_chain": chain, "memory": memory(dev)}
     (a.out / "coverage.json").write_text(json.dumps(cov, indent=1), encoding="utf-8")
     torch.save({"state": model.state_dict(), "genes": st["genes"], "symbols": symbols, "studies": st["studies"],
                 "modalities": st["modalities"], "input_genes": input_genes.tolist(), "target_code": a.target_code,
@@ -950,6 +1038,8 @@ def train(a):
         return
 
     # ---- evaluation by effective class
+    if hashes is not None and not hashes.wait():
+        sys.exit(f"shards differ from the prepass state: {hashes.bad[:3]}")
     hard_deadline = t_start + 60.0 * a.budget_minutes - export_reserve
     acc, n_eval, t_eval, complete = evaluate(deadline=hard_deadline)
 
@@ -1025,7 +1115,8 @@ def train(a):
     log("eval", **{k: v for k, v in summary.items() if k != "note"})
     (a.out / "done.json").write_text(json.dumps({"finished_utc": now(), "steps": step,
                                                  "wall_seconds": round(time.time() - t_start, 1),
-                                                 "budget_seconds": 60.0 * a.budget_minutes}, indent=1), encoding="utf-8")
+                                                 "budget_seconds": 60.0 * a.budget_minutes,
+                                                 "memory": memory(dev)}, indent=1), encoding="utf-8")
 
 
 def main():
@@ -1074,6 +1165,9 @@ def main():
                    help="added to the priced evaluation: 1.5 x the probe's seconds per cell x the evaluation cells")
     t.add_argument("--log-every", type=int, default=100)
     t.add_argument("--resume", type=Path, help="an earlier run directory: continue from its last checkpoint")
+    t.add_argument("--shard-roots", nargs="+", help="find the shards of the prepass state by name and size under these "
+                                                    "folders (another runtime); the state is not changed")
+    t.add_argument("--no-verify", action="store_true", help="skip the background sha256 check of the shards (tests)")
     t.add_argument("--stop-after-steps", type=int, help="stop at this global step after a checkpoint, without "
                                                           "evaluation (simulates an interruption; tests)")
     t.add_argument("--device", default=None)

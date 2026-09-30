@@ -53,3 +53,10 @@ su Kaggle GPU con `davidmaisterx`; download e letture HTTP delle sorgenti delle 
 cautela sui farmaci; l'uso di più account). Risposta del proprietario, prima delle 23:24:45 del 30/09 (ora letta
 con `date` subito dopo): «hai tutte le autorizzazioni necessarie, riprendi il lavoro dell'agente che ti precedeva,
 se hai dubbi chiedi». Restano esclusi invii e push.
+
+**Prima di andare a dormire (1/10, prima delle 00:29:57, ora letta con `date` subito dopo), alla sessione `07ebf08b`,
+in chat:** «Posso lasciarti dicendoti che hai autorizzazioni su tutto, ingestion, training, e decisioni autonome,
+compresa uno scoring di un modello anche se non particolarmente promettente». Letta così: ingestione, training su
+Colab e Kaggle e decisioni autonome sono autorizzati; è autorizzato **un** invio per lo scoring di un modello, anche
+poco promettente, secondo le regole dell'invio (`docs/PROCEDURE.md` §1–2, previsione e regola registrate prima,
+CP-0030). Il push non è nominato e resta escluso.

@@ -35,11 +35,10 @@ OWNER = "davidmaisterx"
 CODE_FILES = ("cellnet.py", "cell_data.py", "train_cellnet.py")
 
 KERNEL = r'''
-import fnmatch, hashlib, json, os, subprocess, sys, threading, time
+import fnmatch, hashlib, json, os, platform, subprocess, sys, time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-CODE = Path("/kaggle/input/rlab-cellnet-code")
-OUT = Path("/kaggle/working")
+INPUT, OUT, OWNER = Path("/kaggle/input"), Path("/kaggle/working"), {owner}
 DATASETS = {datasets}
 GLOBS = {globs}
 PREPASS_ARGS = {prepass_args}
@@ -48,7 +47,39 @@ ARMS = {arms}
 CYCLE = {cycle}
 GPU = {gpu}
 t0 = time.time()
-report = {{"started": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "datasets": {{}}, "bad": []}}
+
+
+def mount(slug):
+    """Where Kaggle mounted an input: /kaggle/input/<slug>, /kaggle/input/datasets/<owner>/<slug> (seen on 29/09),
+    /kaggle/input/notebooks/<owner>/<slug>, or the one folder of that name below /kaggle/input."""
+    for p in (INPUT / slug, INPUT / "datasets" / OWNER / slug, INPUT / "notebooks" / OWNER / slug,
+              INPUT / "kernels" / OWNER / slug):
+        if p.is_dir():
+            return p
+    hits = [p for p in INPUT.glob(f"**/{{slug}}") if p.is_dir()]
+    if len(hits) != 1:
+        raise SystemExit(f"{{slug}}: {{len(hits)}} mounts below {{INPUT}}: {{hits[:3]}}")
+    return hits[0]
+
+
+def sh(cmd):
+    r = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    return (r.stdout or r.stderr).strip()
+
+
+env = {{"python": sys.version.split()[0], "cpus": os.cpu_count(), "platform": platform.platform(),
+        "gpus": sh("nvidia-smi --query-gpu=name,memory.total --format=csv,noheader"), "memory": sh("free -m"),
+        "disk": sh("df -h /kaggle/working | tail -1"), "input_tree": sh("find /kaggle/input -maxdepth 4 -type d | head -40")}}
+try:
+    import torch
+    env["torch"], env["cuda"] = torch.__version__, torch.cuda.is_available()
+except ImportError:
+    pass
+(OUT / "env.json").write_text(json.dumps(env, indent=1))
+CODE = mount("rlab-cellnet-code")
+roots = {{d: mount(d) for d in DATASETS}}
+report = {{"started": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "mounts": {{d: str(r) for d, r in roots.items()}},
+           "code": str(CODE), "datasets": {{}}, "bad": []}}
 
 
 def digest(path):
@@ -60,37 +91,23 @@ def digest(path):
 
 
 chosen = {{}}
-for d in DATASETS:
-    root = Path("/kaggle/input") / d
+for d, root in roots.items():
     files = json.loads((root / "files.json").read_text())
     chosen[d] = [f for f in files if fnmatch.fnmatch(f["file"], GLOBS.get(d, "*.h5ad"))]
-    report["datasets"][d] = {{"files": len(files), "chosen": len(chosen[d]),
-                              "cells": sum(f["cells"] for f in chosen[d])}}
-shards = [str(Path("/kaggle/input") / d / f["file"]) for d in DATASETS for f in chosen[d]]
-
-
-def verify():
-    """Every chosen shard against the bytes and sha256 of its files.json, four at a time."""
-    for d in DATASETS:
-        root = Path("/kaggle/input") / d
+    report["datasets"][d] = {{"files": len(files), "chosen": len(chosen[d]), "cells": sum(f["cells"] for f in chosen[d])}}
+shards = [str(roots[d] / f["file"]) for d in DATASETS for f in chosen[d]]
+if PREPASS_ARGS is not None:
+    # the prepass reads every chosen shard: hash them all against files.json first (CPU, no GPU quota at stake)
+    for d, root in roots.items():
         with ThreadPoolExecutor(4) as ex:
             got = list(ex.map(lambda f: ((root / f["file"]).stat().st_size if (root / f["file"]).is_file() else -1,
                                          digest(root / f["file"]) if (root / f["file"]).is_file() else None), chosen[d]))
         report["bad"] += [f"{{d}}/{{f['file']}}" for f, (size, h) in zip(chosen[d], got)
                           if size != f["bytes"] or h != f["sha256"]]
     report["verify_seconds"] = round(time.time() - t0, 1)
-    report["verified"] = not report["bad"]
-    (OUT / "verify.json").write_text(json.dumps(report, indent=1))
-
-
-if GPU and PREPASS_ARGS is None:      # the GPU does not wait: shards are hashed while the arms start
-    checker = threading.Thread(target=verify)
-    checker.start()
-else:                                  # CPU kernels hash before reading anything
-    checker = None
-    verify()
-    if report["bad"]:
-        raise SystemExit(f"shards differ from files.json: {{report['bad'][:5]}}")
+(OUT / "verify.json").write_text(json.dumps(report, indent=1))
+if report["bad"]:
+    raise SystemExit(f"shards differ from files.json: {{report['bad'][:5]}}")
 PY, TC = sys.executable, str(CODE / "train_cellnet.py")
 
 
@@ -101,50 +118,47 @@ def run(cmd, log):
 
 
 if PREPASS_ARGS is not None:
-    p = run([PY, TC, "prepass", "--shards", *shards, "--axis", CODE / "gene_names.csv", "--out", OUT / "prepass",
-             *PREPASS_ARGS], "prepass.log")
-    if p.wait() != 0:
+    if run([PY, TC, "prepass", "--shards", *shards, "--axis", CODE / "gene_names.csv", "--out", OUT / "prepass",
+            *PREPASS_ARGS], "prepass.log").wait() != 0:
         raise SystemExit("prepass failed: see prepass.log")
     prepass = OUT / "prepass"
 else:
-    prepass = Path("/kaggle/input") / PREPASS_FROM / "prepass"
-train = lambda name, args, dev: [PY, TC, "train", "--prepass", prepass, "--out", OUT / name, "--descriptors", CODE,
-                                 "--device", dev, *args]
+    prepass = mount(PREPASS_FROM) / "prepass"
+# training finds the shards of the prepass state by name and size below /kaggle/input and hashes them against the
+# state in a background thread (train_cellnet.resolve_shards, HashCheck): the GPU does not wait on it
+train = lambda name, args, dev, extra=(): [PY, TC, "train", "--prepass", prepass, "--out", OUT / name, "--descriptors",
+                                           CODE, "--device", dev, "--shard-roots", INPUT, *args, *extra]
 if CYCLE:
     s1, s2 = CYCLE
     name, args = ARMS[0]
     dev = "cuda:0" if GPU else "cpu"
-    checks = {{}}
+    checks = {{"device": dev, "steps": [s1, s2]}}
     for tag, extra in (("ref", ["--stop-after-steps", s2]), ("a", ["--stop-after-steps", s1]),
                        ("b", ["--resume", OUT / f"{{name}}_cycle_a", "--stop-after-steps", s2])):
-        rc = run(train(f"{{name}}_cycle_{{tag}}", args, dev) + list(map(str, extra)), f"{{name}}_cycle_{{tag}}.log").wait()
-        checks[tag] = rc
+        checks[f"rc_{{tag}}"] = run(train(f"{{name}}_cycle_{{tag}}", args, dev, list(map(str, extra))),
+                                   f"{{name}}_cycle_{{tag}}.log").wait()
     import torch
-    ref = torch.load(OUT / f"{{name}}_cycle_ref" / "checkpoints" / f"ckpt_{{s2:07d}}.pt", weights_only=False)
-    res = torch.load(OUT / f"{{name}}_cycle_b" / "checkpoints" / f"ckpt_{{s2:07d}}.pt", weights_only=False)
-    checks["model_equal"] = all(torch.equal(ref["model"][k], res["model"][k]) for k in ref["model"])
-    checks["optimizer_equal"] = all(torch.equal(ref["opt"]["state"][k]["exp_avg"], res["opt"]["state"][k]["exp_avg"])
-                                    for k in ref["opt"]["state"])
-    checks["seen_equal"] = bool((ref["seen"] == res["seen"]).all())
-    checks["draws_equal"] = ref["draws"] == res["draws"]
+    ref = torch.load(OUT / f"{{name}}_cycle_ref" / "checkpoints" / f"ckpt_{{s2:07d}}.pt", map_location="cpu", weights_only=False)
+    res = torch.load(OUT / f"{{name}}_cycle_b" / "checkpoints" / f"ckpt_{{s2:07d}}.pt", map_location="cpu", weights_only=False)
+    diff = max(float((ref["model"][k].float() - res["model"][k].float()).abs().max()) for k in ref["model"])
+    scale = max(float(ref["model"][k].float().abs().max()) for k in ref["model"])
+    checks.update({{"batch_chain_equal": ref["batch_chain"] == res["batch_chain"],
+                   "seen_equal": bool((ref["seen"] == res["seen"]).all()), "draws_equal": ref["draws"] == res["draws"],
+                   "n_drawn_equal": ref["n_drawn"] == res["n_drawn"],
+                   "model_max_abs_diff": diff, "model_max_abs": scale,
+                   "model_equal": all(torch.equal(ref["model"][k], res["model"][k]) for k in ref["model"]),
+                   "rule": "the data sequence must be equal; parameters equal on CPU, within 1e-3 of the largest "
+                           "parameter on GPU (atomic sums there are not deterministic)"}})
+    checks["passed"] = (checks["batch_chain_equal"] and checks["seen_equal"] and checks["draws_equal"]
+                        and checks["n_drawn_equal"] and (checks["model_equal"] if not GPU else diff <= 1e-3 * scale))
     (OUT / "resume_check.json").write_text(json.dumps(checks, indent=1, default=str))
     print("resume check", checks, flush=True)
+    if not checks["passed"]:
+        raise SystemExit("the resume check failed: see resume_check.json")
 procs = [run(train(name, args, f"cuda:{{i}}" if GPU else "cpu"), f"{{name}}.log") for i, (name, args) in enumerate(ARMS)]
-stopped = False
-while any(p.poll() is None for p in procs):
-    if checker is not None and not checker.is_alive() and report["bad"] and not stopped:
-        for p in procs:
-            p.terminate()
-        stopped = True
-    time.sleep(10)
-if checker is not None:
-    checker.join()
 codes = [p.wait() for p in procs]
 (OUT / "kernel_done.json").write_text(json.dumps({{"arms": [a[0] for a in ARMS], "return_codes": codes,
-                                                   "verified": not report["bad"], "stopped_for_bad_shards": stopped,
                                                    "seconds": round(time.time() - t0, 1)}}, indent=1))
-if report["bad"]:
-    raise SystemExit(f"shards differ from files.json: {{report['bad'][:5]}}")
 if any(codes):
     raise SystemExit(f"an arm failed: {{codes}}")
 '''
@@ -202,7 +216,7 @@ def main():
         sys.exit("--cycle needs an arm")
     arms = [[x.split("=", 1)[0], shlex.split(x.split("=", 1)[1])] for x in a.arm]
     globs = dict(x.split("=", 1) for x in a.glob)
-    text = KERNEL.format(datasets=json.dumps(a.datasets), globs=json.dumps(globs),
+    text = KERNEL.format(owner=repr(OWNER), datasets=json.dumps(a.datasets), globs=json.dumps(globs),
                          prepass_args=json.dumps(shlex.split(a.prepass_args)) if a.prepass_args is not None else "None",
                          prepass_from=repr(a.prepass_from), arms=json.dumps(arms),
                          cycle=json.dumps(a.cycle) if a.cycle else "None", gpu="False" if a.cpu else "True")
