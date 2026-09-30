@@ -18,7 +18,8 @@ Una riga a fine tappa, con il commit che la chiude.
 |---|---|---|---|
 | 1 | inventario e proposta (16:25); eseguita dopo il via (17:29–17:35) | `581f264`, `9f0f2ea` | da 19 worktree e uno stash a 2 worktree di Codex tenuti dal proprietario, nessuno stash: §1.4 |
 | 2 | fatta dopo la tappa 1; ora dei commit in `git log` | `b254929`, `bc54bbf` | `LAVORO` → `PROCEDURE` con un reindirizzamento testato; nove righe di indice corrette sulle fonti: §2 |
-| 3 | fatta; il punto 4 secondo la scelta del proprietario | `6c7814f`, poi il commit che aggiunge questa riga | sei script di job archiviati; 25 voci del registro a `storico` e 7 con la riserva; una regola per i checkpoint corretti; R-MODELLI chiusa: §3 |
+| 3 | fatta; il punto 4 secondo la scelta del proprietario | `6c7814f`, `8b61eab` | sei script di job archiviati; 25 voci del registro a `storico` e 7 con la riserva; una regola per i checkpoint corretti; R-MODELLI chiusa: §3 |
+| 4 | protocollo, chiave e script scritti e verificati su un caso sintetico; **nessun agente lanciato**: il proprietario ha chiesto di fermarsi per il training | il commit che aggiunge questa riga | [test_orientamento_2026-09-30/PROTOCOLLO.md](../test_orientamento_2026-09-30/PROTOCOLLO.md); aspetta il via e la scelta fra versione economica e completa |
 
 ## 1. Worktree, branch e stash
 
