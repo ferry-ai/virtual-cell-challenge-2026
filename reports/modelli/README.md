@@ -39,7 +39,9 @@ linee viste. Con 48 linee di Tahoe, copiare le linee simili perde contro la medi
 - **Poche famiglie di contesti**: nella fase di training di E1 la rete vede 4 contesti di 2
   famiglie. Un vettore di contesto imparato da così pochi punti non generalizza, con o senza
   encoder.
-- **Laboratorio e piattaforma confusi con la linea**: le due Orion sono dello stesso studio e le
-  sorgenti sono quasi tutte in 3'. Un modello può imparare lo studio invece della biologia.
+- **Laboratorio e piattaforma confusi con la linea**: le due Orion sono dello stesso studio, e
+  ogni sorgente ha la sua piattaforma (K562 in 3′, CD4 in Flex, Orion in GEM-X 5′ secondo le
+  schede, da riverificare: [audit dei dati](../analisi/lead_scientist_2026-09-29/AUDIT_DATI.md), §1).
+  Un modello può imparare lo studio invece della biologia.
 - **Un seme solo** nelle tornate del 28/09: l'intervallo bootstrap sui bersagli non contiene la
   varianza fra semi.

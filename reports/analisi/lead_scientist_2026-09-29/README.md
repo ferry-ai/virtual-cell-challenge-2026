@@ -32,12 +32,12 @@ il punteggio ufficiale del t28.
 
 | File | Che cosa |
 |---|---|
-| [AUDIT_SCIENTIFICO.md](AUDIT_SCIENTIFICO.md) | 17 invii ricostruiti; compensazioni fra membri; cinque inferenze corrette (plateau, semi, t26, risposta comune, ortogonalità) |
+| [AUDIT_SCIENTIFICO.md](AUDIT_SCIENTIFICO.md), `audit_scientifico/` | 17 invii ricostruiti; compensazioni fra membri; cinque inferenze corrette (plateau, semi, t26, risposta comune, ortogonalità). La cartella ha lo script di ricostruzione e le tabelle `r1/` |
 | [AUDIT_DATI.md](AUDIT_DATI.md) | CD4 è GEM-X Flex v1; stati CD4; VIPerturb-seq; normalizzazione dei basali; sorgenti non intercambiabili |
 | [AUDIT_GENERATORE.md](AUDIT_GENERATORE.md) | Dal profilo alle cellule: media dei CPM per cellula contro composizione aggregata |
-| [SCORE_CREDIBILITA.md](SCORE_CREDIBILITA.md) | Ricostruzione degli score del banco; le ancore aggregate non convertono esattamente |
-| [SCORE_BIAS_DATI.md](SCORE_BIAS_DATI.md), [precisazione](SCORE_BIAS_DATI_PRECISAZIONE.md) | Separazioni e riuso dei bersagli: la conferma non era una riserva mai valutata |
-| [TRAINING_COPERTURA.md](TRAINING_COPERTURA.md) | Dataset acquisiti, trasformati e davvero usati dai modelli |
+| [SCORE_CREDIBILITA.md](SCORE_CREDIBILITA.md), `score_credibility_r1/` | Ricostruzione degli score del banco; le ancore aggregate non convertono esattamente. L'aritmetica è in `arithmetic.json` |
+| [SCORE_BIAS_DATI.md](SCORE_BIAS_DATI.md), [precisazione](SCORE_BIAS_DATI_PRECISAZIONE.md), `score_bias_dati_r1/` | Separazioni e riuso dei bersagli: la conferma non era una riserva mai valutata. Le misure sono in `population.json` e `historical_overlap.json` |
+| [TRAINING_COPERTURA.md](TRAINING_COPERTURA.md), `training_copertura_r1/` | Dataset acquisiti, trasformati e davvero usati dai modelli. Inventario e verifica degli hash degli ingressi |
 
 ## Generatore e t28
 
@@ -59,7 +59,7 @@ L'invio e il punteggio stanno in `reports/invii/trial_2026-09-29/` (`INVIO_T28.m
 
 | File o cartella | Che cosa |
 |---|---|
-| [PROTOCOLLO_NEURALE.md](PROTOCOLLO_NEURALE.md), [VALIDAZIONE_NEURALE.md](VALIDAZIONE_NEURALE.md) | Protocollo prospettico e verifiche su dati sintetici |
+| [PROTOCOLLO_NEURALE.md](PROTOCOLLO_NEURALE.md), [VALIDAZIONE_NEURALE.md](VALIDAZIONE_NEURALE.md), `neural_plan_k562/` | Protocollo prospettico e verifiche su dati sintetici. La cartella ha il manifest della sola preparazione, non del training (VALIDAZIONE_NEURALE) |
 | [lettore](EMENDAMENTO_LETTORE_NEURALE_01.md), [calendario](EMENDAMENTO_NEURALE_SCHEDULING_01.md) | Emendamenti scritti prima di leggere gli esiti |
 | [RISULTATI_NEURALE_SEED0.md](RISULTATI_NEURALE_SEED0.md), [REVIEW_CP0048.md](REVIEW_CP0048.md), [RISULTATI_NEURALE_SEED1.md](RISULTATI_NEURALE_SEED1.md) | Due semi: +0,0022 e +0,0025 contro la soglia +0,01 |
 | [ADATTATORE_T25.md](ADATTATORE_T25.md) | Riapplicazione alla ricetta t25: proposta, non usata in produzione |

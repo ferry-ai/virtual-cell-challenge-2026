@@ -20,7 +20,7 @@ ampiezza e generatore non sono confinati, e diversi confronti cambiavano più fa
 (ampiezza × 2 e × 4, sul punteggio ufficiale) → t19/t20 (effetti ristretti a 1,576 + cis,
 [banco varianti](banco_varianti_2026-09-25/CORREZIONE.md) e [modulo cis](modulo_cis_2026-09-26/RISULTATI.md))
 → t22 (+ HEK293T, [quattro sorgenti](quattro_sorgenti_2026-09-26/RISULTATI.md)) → t25 (stimatore
-corretto). Il t23 (quota condivisa) è pronto e non inviato; [l'ablazione](ablazione_t23_2026-09-27/RISULTATI.md)
+corretto). Il t23 (quota condivisa) è stato inviato il 28/09: +0,141868, non conclusivo ([CP-0042](../../docs/checkpoints/0042-t23-esclusione-pds.md)); [l'ablazione](ablazione_t23_2026-09-27/RISULTATI.md)
 dice che del t23 conta l'esclusione dei geni stimati da una sola sorgente.
 
 **La lezione che tiene insieme i risultati negativi (interpretazione):** riponderare sorgenti,
@@ -36,7 +36,7 @@ che si trasferisce è piccola e concentrata in pochi macchinari cellulari.
 | 26/09 | [atlante_2026-09-26/](atlante_2026-09-26/) | Trasferimento su 1.000 bersagli fuori pannello per linea tenuta fuori: nessun braccio passa (r1), r2 replica. Misure descrittive importanti: coseno fra linee 0,02–0,07, fra stati della stessa cellula 0,20–0,25; il pannello ha knockdown di forza tipica; lo SE di Replogle è calibrato | sì (proxy, regime C: non prova bersagli nuovi) | ★★★ |
 | 26/09 | [quattro_sorgenti_2026-09-26/](quattro_sorgenti_2026-09-26/) | HEK293T come quarta sorgente a peso uguale: +0,011 con K562 fuori, +0,001 con CD4 fuori; passa la regola, origine del t22 (ufficiale +0,0016, nel rumore) | sì | ★★ |
 | 26/09 | [trasferimento_gerarchico_2026-09-26/](trasferimento_gerarchico_2026-09-26/) | Bayes empirico (risposta condivisa + deviazione di linea + rumore): nessun braccio passa; con 2–3 linee la varianza condivisa è mal stimata | sì, esito negativo | ★★ |
-| 26/09 | [trasferimento_appreso_2026-09-26/](trasferimento_appreso_2026-09-26/) | Gradient boosting per coppia bersaglio–gene (stadio 104): r1 con perdite; r3–r4 con centri calcolati prima degli split; r5, isolato, +0,004…+0,008 con l'nMAE peggiore: niente t21 | in parte: vale solo r5; l'audit di codex che ha trovato le perdite non è nel repository | ★★ |
+| 26/09 | [trasferimento_appreso_2026-09-26/](trasferimento_appreso_2026-09-26/) | Gradient boosting per coppia bersaglio–gene (stadio 104): r1 con perdite; r3–r4 con centri calcolati prima degli split; r5, isolato, +0,004…+0,008 con l'nMAE peggiore: niente t21 | in parte: vale solo r5. L'audit di codex sui centri calcolati prima degli split è in [analisi/audit_piani_dati_2026-09-26/](../analisi/audit_piani_dati_2026-09-26/RISULTATI.md), recuperato il 28/09 (R-019, R-020); la revisione di r1 è in `agenti/` | ★★ |
 | 26/09 | [risposta_comune_2026-09-26/](risposta_comune_2026-09-26/) | La risposta comune a tutti i knockdown pesa l'1–14 % e non si trasferisce fra linee. **r2: la `mse` ufficiale dei nostri invii segue 1 + E/4786**: le previsioni sono quasi ortogonali agli effetti veri | sì (sei punti, un generatore) | ★★★ |
 | 26/09 | [contesti_2026-09-26/](contesti_2026-09-26/) | Pesare le sorgenti per somiglianza basale (H6, Mixscale) o per stato di p53 non aiuta in modo coerente | sì, esito negativo | ★★ |
 | 26/09 | [rete_2026-09-26/](rete_2026-09-26/) | Lisciare con i partner STRING i bersagli misurati: effetto piccolo (+0,0002…+0,003) | sì | ★ |

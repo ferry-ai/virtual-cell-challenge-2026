@@ -16,7 +16,8 @@ Una riga a fine tappa, con il commit che la chiude.
 
 | Tappa | Stato | Commit | Che cosa |
 |---|---|---|---|
-| 1 | inventario e proposta (16:25); eseguita dopo il via (17:29–17:35) | `581f264`, poi il commit che aggiunge questa riga | da 19 worktree e uno stash a 2 worktree di Codex tenuti dal proprietario, nessuno stash: §1.4 |
+| 1 | inventario e proposta (16:25); eseguita dopo il via (17:29–17:35) | `581f264`, `9f0f2ea` | da 19 worktree e uno stash a 2 worktree di Codex tenuti dal proprietario, nessuno stash: §1.4 |
+| 2 | fatta dopo la tappa 1; ora dei commit in `git log` | `b254929`, poi il commit che aggiunge questa riga | `LAVORO` → `PROCEDURE` con un reindirizzamento testato; nove righe di indice corrette sulle fonti: §2 |
 
 ## 1. Worktree, branch e stash
 
@@ -169,3 +170,71 @@ file, fino a quando il proprietario non lo svuota.
 - i due branch remoti, da togliere con un push;
 - le attività pianificate, lasciate per scelta del proprietario: rimettere `scripts/ciclo.cmd`
   nell'albero riattiverebbe la catena.
+
+## 2. Nomi più esplicativi e struttura a indice
+
+### 2.1 I nomi: proposta e scelta
+
+Valutati tutti i documenti vivi di `docs/` e le guide. Il conteggio delle citazioni è misurato
+con `git grep`: «vivi» sono i documenti che si aggiornano, «immutabili» checkpoint, report e
+`docs/storico/`.
+
+| Nome | Proposta | Citato da: vivi / immutabili | Perché |
+|---|---|---|---|
+| `docs/LAVORO.md` («Come si lavora») | `docs/PROCEDURE.md` | 20 file, 47 occorrenze, compresi il test degli stadi e il controllo documentale / 14 file | il nome non diceva che cosa contiene, cioè le procedure del perimetro di esecuzione; chi cercava come inviare apriva `SOTTOMISSIONE.md` |
+| `docs/SOTTOMISSIONE.md` | nessun rinomino; lo stato si valuta nella tappa 3 | 9 / 7 | resoconto del 13/09 con il contratto nel §1 |
+| `docs/AMBITI.md` | resta | 8 / 4 | il nome dice già «per area» |
+| `docs/REGISTRO.md` | resta | 13 / 28, ed è il cuore del controllo | costo alto, guadagno modesto |
+| PROGETTO, PIANI, ERRORI, GENERALIZZAZIONE, DECISIONI, ARCHIVIO, AGENTI | restano | — | nomi già espliciti |
+| le guide `CLAUDE.md`, `AGENTS.md`, le schede, i checkpoint, le cartelle dei report | restano | — | caricate per nome dagli agenti, o citate per ID e percorso ovunque |
+
+**Scelta del proprietario** (in chat, prima delle 17:57): `LAVORO → PROCEDURE`; gli altri nomi
+restano.
+
+### 2.2 Il rinomino e il reindirizzamento (commit `b254929`)
+
+- `git mv docs/LAVORO.md docs/PROCEDURE.md`, con il titolo «Procedure — il percorso vivo» e una
+  riga sul nome vecchio.
+- **Rimandi aggiornati:** 59 occorrenze in 23 file vivi, fra cui `CLAUDE.md` (perimetri, tabella dei
+  compiti e mappa verificata da `tests/test_live_tree.py`), le guide di cartella, le schede, gli
+  indici di `reports/` e il test degli stadi. **Lasciati col nome vecchio**, perché registrano che
+  cosa è successo allora: le due citazioni in DECISIONI, la sezione del 23/09 di ARCHIVIO, la riga
+  storica in testa al registro e la scheda R-022.
+- **Il meccanismo:** una tabella «Nomi cambiati» in ARCHIVIO, l'unico elenco. La leggono
+  `scripts/31_check_docs.py` e `config.repo_file`:
+  - `renamed_paths` e `renamed` nel controllo, che segue il nome vecchio per percorsi e link
+    e verifica le ancore nel file rinominato;
+  - `--status docs/LAVORO.md` risponde «renamed: now docs/PROCEDURE.md» con la riga di registro;
+  - un nome rinominato non conta più come archiviato.
+- **Test:** uno per il controllo (`tests/test_doc_workflow.py`), uno per `repo_file` e uno che
+  confronta i due lettori sulla tabella vera (`tests/test_pipeline_contracts.py`).
+- **Verifiche** (misurato):
+  - senza la tabella il controllo trova 5 citazioni rotte, con la tabella 0;
+  - `repo_file` dà gli stessi percorsi della versione precedente su tutti i file della repo che
+    le ricette nominano, più tre casi di controllo: 7 su 7. Lo stadio 100, che lo usa per le
+    ricette, legge gli stessi ingressi.
+
+### 2.3 Gli indici
+
+Ogni riga corretta è stata verificata sulla sua fonte prima di scriverla.
+
+| Indice | Prima | Dopo | Fonte |
+|---|---|---|---|
+| `analisi/lead_scientist_2026-09-29/README.md` | cinque sottocartelle non nominate | `audit_scientifico/`, `score_credibility_r1/`, `score_bias_dati_r1/`, `training_copertura_r1/` e `neural_plan_k562/` accanto al documento che le usa | i documenti stessi, che le citano |
+| `invii/README.md`, prova generale | D4 e D9 «da correggere» | corretti il 29/09 pomeriggio con i loro test; resta la forma piena | scheda R-REV, «Correzioni (29/09 pomeriggio)»; RISULTATI, «Correzioni dei difetti»; commit `117b2a8` |
+| `invii/README.md`, `lezioni_invii` | «sì; il rumore viene da una sola coppia di semi» | «in parte»: l'audit del 29/09 ne corregge il rumore stimato da una coppia di semi e il peso della risposta comune sull'MSE | `AUDIT_SCIENTIFICO.md`, §2.2 e §2.4 |
+| `trasferimento/README.md` | il t23 «pronto e non inviato» | inviato il 28/09, +0,141868, non conclusivo | tabella dei punteggi di `invii/README.md`, CP-0042 |
+| `trasferimento/README.md`, trasferimento appreso | l'audit di codex «non è nel repository» | è in `analisi/audit_piani_dati_2026-09-26/`, recuperato il 28/09 | registro, R-019 e R-020 |
+| `modelli/README.md`, rischi | le sorgenti «quasi tutte in 3'» | K562 in 3′, CD4 in Flex, Orion in GEM-X 5′ secondo le schede, da riverificare | `AUDIT_DATI.md`, §1 |
+| `sorgenti/README.md`, `basali_asse` | «in corso nella sessione Claude» | la sessione si è chiusa senza eseguire il protocollo, `r1/` è vuota | la cartella; il riordino della notte del 30/09 dà la sessione `f4f38e58` per chiusa |
+| `generatore_e_banchi/README.md`, banco K562 | «protocollo» | protocollo, bracci costruiti e copiati su Drive il 29/09 sera, job non eseguito | la cartella, senza `r1/`; commit `e7c933b` |
+| `docs/storico/README.md` | mancava `PROGETTO_sezioni_0_6_7_2026-09-30.md`; «fra l'11 e il 28 settembre» | riga aggiunta; date e provenienza corrette; il rimando a `--status` | la cartella; la riga di registro del file |
+
+Gli altri indici non hanno richiesto correzioni: ogni categoria ha un README con che cosa sapere
+prima e una tabella con «Vale?» e peso. Le cartelle grandi senza README sono le `trial_*` degli
+invii, che hanno la struttura fissa descritta in `reports/CLAUDE.md`, e quelle di `storico/`,
+indicizzate dal suo README.
+
+**Non fatto qui:** allineare le voci del registro con il «Vale?» degli indici, dove dicono cose
+diverse (per esempio `docs/storico/SVD_E_RANGO.md`, `attuale` nel registro e «chiuso»
+nell'indice). È il punto 3 della tappa 3.

@@ -1,11 +1,12 @@
 # docs/storico — analisi e testi superati, conservati com'erano
 
-Documenti che hanno guidato il progetto fra l'11 e il 28 settembre e che oggi **non sono una
+Documenti che hanno guidato il progetto fra l'11 e il 30 settembre e che oggi **non sono una
 guida**: le loro conclusioni sono state corrette, sostituite o riguardano linee chiuse con il
 codice archiviato. Si aprono quando una decisione o un checkpoint li cita, dopo aver letto la
-loro riga nel [registro](../REGISTRO.md). Sono stati spostati qui il 28 settembre (D-046) senza
-cambiare il testo, salvo i percorsi dei link; un checkpoint che li cita come `docs/<file>` li
-trova qui.
+loro riga nel [registro](../REGISTRO.md) (`python scripts/31_check_docs.py --status <file>`).
+Le analisi sono state spostate qui il 28 settembre (D-046), le sezioni tolte da PROGETTO il 28 e
+il 30 settembre, senza cambiare il testo salvo i percorsi dei link; un checkpoint che li cita come
+`docs/<file>` li trova qui.
 
 | Data | File | Nocciolo | Vale? |
 |---|---|---|---|
@@ -18,4 +19,5 @@ trova qui.
 | 14/09 | [ENCODER_INPUTS.md](ENCODER_INPUTS.md) | Specifica dei descrittori di bersaglio e contesto per i geni mai perturbati | vale come inventario; l'estensione GO slim è scartata (CP-0014) |
 | 15/09 | [SVD_E_RANGO.md](SVD_E_RANGO.md) | SVD randomizzata e scelta del rango | chiuso (CP-0015, D-029, D-030) |
 | 28/09 | [PROGETTO_sezioni_3_4_2026-09-28.md](PROGETTO_sezioni_3_4_2026-09-28.md) | La tabella delle misure del 12–17/09 e le 21 incertezze numerate, com'erano in PROGETTO | storico; lo stato di ogni incertezza è in PROGETTO §4 |
+| 30/09 | [PROGETTO_sezioni_0_6_7_2026-09-30.md](PROGETTO_sezioni_0_6_7_2026-09-30.md) | Il preambolo, il §0, il §6 e il §7 di PROGETTO com'erano la mattina del 30/09: la cronaca del t28, della rete sulle sorgenti e di Stack, la vecchia tabella dei punteggi e il vecchio percorso di lettura (D-049) | storico; lo stato è nel §0 di PROGETTO, i punteggi in `reports/invii/README.md` |
 | 28/09 | [README_2026-09-11_13.md](README_2026-09-11_13.md) | Le sezioni storiche del README in inglese (piano per fasi, revisioni dell'11–12/09) | storico; sei affermazioni contestate in R-001 |

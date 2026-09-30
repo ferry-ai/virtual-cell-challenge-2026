@@ -26,7 +26,7 @@ indici e misure. Indice generale: [../README.md](../README.md).
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
-| 29/09 | [basali_asse_2026-09-29/](basali_asse_2026-09-29/) | Azione 5 di R-REV, in corso nella sessione Claude: protocollo per richiudere i CPM sull'asse comune, verificarli dal grezzo e misurare l'impatto sulle quote t23/t27 e sui lettori | protocollo, esiti ancora da aggiungere | ★ |
+| 29/09 | [basali_asse_2026-09-29/](basali_asse_2026-09-29/) | Azione 5 di R-REV: protocollo per richiudere i CPM sull'asse comune, verificarli dal grezzo e misurare l'impatto sulle quote t23/t27 e sui lettori. La sessione `f4f38e58` si è chiusa senza eseguirlo: `r1/` è vuota | solo protocollo, nessun esito | ★ |
 | 28/09 | [ponte_flex_2026-09-28/](ponte_flex_2026-09-28/) | Gli stessi knockdown K562 in Flex (VIPerturb-seq) e in 3': metà contro metà di VIPerturb 0,110 di coseno, verso il 3' 0,030; il rumore spiega una parte del divario, non tutto | in parte: misure valide sulla coppia K562, esplorative; falsa la premessa che solo VIPerturb sia Flex, [R-021](../../docs/REGISTRO.md#r-021--piattaforma-plateau-e-inferenze-causali-nelle-sintesi) | ★★★ (confronto fra due studi K562) |
 | 28/09 | [corpus_basale_2026-09-28/](corpus_basale_2026-09-28/) | Profili basali per l'encoder: controlli delle nostre sorgenti (con 19 linee HIPSCI), A/B/C, DepMap, Tahoe DMSO; una decisione per sorgente in `SORGENTI.md` | sì come dati; piattaforme diverse mescolate | ★ |
 | 28/09 | [tahoe_dmso_2026-09-28/](tahoe_dmso_2026-09-28/) | Estrattori dei controlli DMSO di Tahoe-100M (tutti i frammenti, o uno ogni k); contratti del dataset in `LAYOUT.md` | sì | ★ |
