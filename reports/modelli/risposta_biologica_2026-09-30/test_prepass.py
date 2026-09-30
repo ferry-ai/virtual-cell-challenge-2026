@@ -112,6 +112,7 @@ class Stages(unittest.TestCase):
                   "--pool-size", "256", "--input-genes", "16", "--eval-min-cells", "10", "--min-controls-per-key", "20",
                   "--same-experiment", "s5=s5a,s5b"]
         cls.pre = run("prepass", *common, "--out", d / "pre")
+        cls.pre_w2 = run("prepass", *common, "--out", d / "pre_w2", "--workers", "2")
         (d / "rep.json").write_text(json.dumps({"s2": "s1"}), encoding="utf-8")
         cls.pre_rep = run("prepass", *common, "--out", d / "pre_rep", "--republications", d / "rep.json")
         pre = d / "pre"
@@ -193,6 +194,22 @@ class Stages(unittest.TestCase):
         self.assertEqual(splits["trainable_symbols"], 3)            # G1, G2, G4 perturbed alone in K
         cov = self.read("run", "coverage.json")
         self.assertTrue(cov["leakage_check"]["passed"])
+
+    def test_the_prepass_does_not_depend_on_its_processes(self):
+        import pickle
+        self.assertEqual(self.pre_w2.returncode, 0, self.pre_w2.stderr[-3000:])
+        for name in ("qc.json", "splits.json"):
+            self.assertEqual(self.read("pre", name), self.read("pre_w2", name), name)
+        one, two = (pickle.loads((self.d / r / "prepass.pkl").read_bytes()) for r in ("pre", "pre_w2"))
+        for f in ("pool_x", "pool_lib", "pool_sid", "pool_libc", "input_genes", "key_mask"):
+            self.assertTrue(np.array_equal(one[f], two[f]), f)
+        self.assertEqual(sorted(one["sums"]), sorted(two["sums"]))
+        self.assertTrue(all(np.array_equal(one["sums"][k], two["sums"][k]) for k in one["sums"]))
+        self.assertTrue(all(np.array_equal(one["ctrl_mean"][k], two["ctrl_mean"][k]) for k in one["ctrl_mean"]))
+        self.assertEqual([g["cells"] for g in one["eval_groups"]], [g["cells"] for g in two["eval_groups"]])
+        for s1, s2 in zip(one["shards"], two["shards"]):
+            self.assertTrue(np.array_equal(s1["train_rows"], s2["train_rows"]))
+            self.assertTrue(np.array_equal(s1["admitted"], s2["admitted"]))
 
     def test_a_key_with_too_few_controls_is_not_a_context(self):
         qc = self.read("pre", "qc.json")

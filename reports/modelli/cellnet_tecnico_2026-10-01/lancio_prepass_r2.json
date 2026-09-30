@@ -1,0 +1,23 @@
+{
+ "kernel": "davidmaisterx/rlab-prepass-r2",
+ "kind": "CPU, no GPU quota",
+ "commit": "187dfc41621369161bd2a299ec1e2837f746fd4a",
+ "code_dataset": "davidmaisterx/rlab-cellnet-code, version of 30/09 22:55 UTC (commit e95a0ef; train_cellnet.py 70,504 bytes)",
+ "datasets": [
+  "rlab-hepg2-nadig",
+  "rlab-jurkat-nadig",
+  "rlab-h1-vcc2025-trainval",
+  "rlab-hipsci-gwfit",
+  "rlab-hipsci-gwnonfit",
+  "rlab-hipsci-targeted19"
+ ],
+ "prepass_args": [
+  "--holdout-context",
+  "HepG2",
+  "--same-experiment",
+  "h1_vcc2025=h1_vcc2025_train,h1_vcc2025_val"
+ ],
+ "deviation_from_protocol": "K562 genome-wide (rlab-k562-gwps) left out: its shards carry category codes as targets and no control (incident E-20260930-003), found at 00:45 on 1/10 before any training of this run; H1 train and validation read as one experiment (same 38,176 control cells by count, manifests of job 108). Decided before any number of this run was seen.",
+ "supersedes": "rlab-prepass-r1 (diagnostic: includes the bad K562 shards)",
+ "launched_local": "2026-10-01T01:08:41+0200"
+}

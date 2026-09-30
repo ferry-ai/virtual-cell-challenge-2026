@@ -1,0 +1,480 @@
+{
+ "policy": "per (study, context) from its control cells (cell_data.thresholds_from_controls): an absolute floor of usability (fewer than 10 counts or 5 genes on the model genes), never lifted; relative rules, all lifted for a perturbation they reject selectively against its key's controls (cell_data.phenotype_guard: at least 5 cells, excess >= 0.02 and binomial p < 0.001): counts below 0.2 x and 0.5 x the controls' q01, genes detected below 0.5 x their q01, a mitochondrial fraction above max(2 q99, q99 + 0.05); QC values on the key's mask (intersection of its shards' masks); a key without control cells is not admitted; identity by provenance (cell_data.identity): duplicates and other versions of a cell admitted once, collisions of keys kept; declared republications left out",
+ "thresholds": {
+  "hepg2_nadig|HepG2": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 780.6800000000001,
+   "lib_min": 1951.7,
+   "genes_min": 948.0,
+   "mito_max": 0.4064537408906462
+  },
+  "jurkat_nadig|Jurkat": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 495.728,
+   "lib_min": 1239.32,
+   "genes_min": 747.56,
+   "mito_max": 0.28720174643582114
+  },
+  "h1_vcc2025_train|H1": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 4403.812000000001,
+   "lib_min": 11009.53,
+   "genes_min": 3284.54,
+   "mito_max": 0.05481682207513011
+  },
+  "h1_vcc2025_val|H1": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 4263.874,
+   "lib_min": 10659.685,
+   "genes_min": 3277.775,
+   "mito_max": 0.05542694505849628
+  }
+ },
+ "rejected": {
+  "hepg2_nadig|HepG2|counts_below_floor": 5,
+  "hepg2_nadig|HepG2|genes_below_floor": 3,
+  "jurkat_nadig|Jurkat|counts_below_floor": 4,
+  "replogle_k562_gwps|K562|no_controls_in_key": 20000
+ },
+ "phenotype_guard": {
+  "readmitted_by_key": {},
+  "selective_groups": [],
+  "highest_non_selective_rates": [
+   {
+    "key": "jurkat_nadig|Jurkat",
+    "group": "NFKBIE",
+    "cells_above_hard_floor": 7,
+    "soft_rejections": 1,
+    "rate": 0.14285714285714285,
+    "controls_rate": 0.0011001100110011,
+    "p_value": 0.034479353190515705,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "hepg2_nadig|HepG2",
+    "group": "SNRNP200",
+    "cells_above_hard_floor": 31,
+    "soft_rejections": 1,
+    "rate": 0.03225806451612903,
+    "controls_rate": 0.0,
+    "p_value": 0.14391772904487737,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "hepg2_nadig|HepG2",
+    "group": "ESPN",
+    "cells_above_hard_floor": 35,
+    "soft_rejections": 1,
+    "rate": 0.02857142857142857,
+    "controls_rate": 0.0,
+    "p_value": 0.16091138962942056,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "hepg2_nadig|HepG2",
+    "group": "SMN2",
+    "cells_above_hard_floor": 125,
+    "soft_rejections": 3,
+    "rate": 0.024,
+    "controls_rate": 0.0,
+    "p_value": 0.02529654847703128,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "hepg2_nadig|HepG2",
+    "group": "EIF2B1",
+    "cells_above_hard_floor": 53,
+    "soft_rejections": 1,
+    "rate": 0.018867924528301886,
+    "controls_rate": 0.0,
+    "p_value": 0.23330385513467705,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "hepg2_nadig|HepG2",
+    "group": "SMG5",
+    "cells_above_hard_floor": 57,
+    "soft_rejections": 1,
+    "rate": 0.017543859649122806,
+    "controls_rate": 0.0,
+    "p_value": 0.24852315647914103,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "hepg2_nadig|HepG2",
+    "group": "MRPL35",
+    "cells_above_hard_floor": 82,
+    "soft_rejections": 1,
+    "rate": 0.012195121951219513,
+    "controls_rate": 0.0,
+    "p_value": 0.3370319165386294,
+    "selective": false,
+    "readmitted": 0
+   }
+  ]
+ },
+ "highest_rejection_rate_by_perturbation": [
+  {
+   "symbol": "9866",
+   "admitted": 0,
+   "rejected": 718,
+   "rate": 1.0
+  },
+  {
+   "symbol": "SNRNP200",
+   "admitted": 33,
+   "rejected": 1,
+   "rate": 0.029411764705882353
+  },
+  {
+   "symbol": "CENPK",
+   "admitted": 37,
+   "rejected": 1,
+   "rate": 0.02631578947368421
+  },
+  {
+   "symbol": "SMN2",
+   "admitted": 137,
+   "rejected": 3,
+   "rate": 0.02142857142857143
+  },
+  {
+   "symbol": "ESPN",
+   "admitted": 67,
+   "rejected": 1,
+   "rate": 0.014705882352941176
+  },
+  {
+   "symbol": "EIF2B1",
+   "admitted": 68,
+   "rejected": 1,
+   "rate": 0.014492753623188406
+  },
+  {
+   "symbol": "SMG5",
+   "admitted": 78,
+   "rejected": 1,
+   "rate": 0.012658227848101266
+  },
+  {
+   "symbol": "MRPL35",
+   "admitted": 147,
+   "rejected": 1,
+   "rate": 0.006756756756756757
+  },
+  {
+   "symbol": "KIAA1143",
+   "admitted": 27,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "RNPS1",
+   "admitted": 25,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "PHF10",
+   "admitted": 49,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "TFAM",
+   "admitted": 538,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "BCAR1",
+   "admitted": 171,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "TMEM214",
+   "admitted": 109,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "BAP1",
+   "admitted": 40,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "SHQ1",
+   "admitted": 71,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "MRPL37",
+   "admitted": 23,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "NUP153",
+   "admitted": 23,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "ZNF787",
+   "admitted": 24,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "KPNA6",
+   "admitted": 20,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "SSU72",
+   "admitted": 88,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "WDR4",
+   "admitted": 50,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "MAGOH",
+   "admitted": 22,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "GAB2",
+   "admitted": 153,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "C16orf86",
+   "admitted": 27,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "NUP107",
+   "admitted": 45,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "PMPCB",
+   "admitted": 66,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "DDX46",
+   "admitted": 63,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "PTPN1",
+   "admitted": 57,
+   "rejected": 0,
+   "rate": 0.0
+  },
+  {
+   "symbol": "PFN1",
+   "admitted": 35,
+   "rejected": 0,
+   "rate": 0.0
+  }
+ ],
+ "overall_perturbed_rejection_rate": 0.23565086318566147,
+ "identity": {
+  "rule": "cell_data.identity on (key hash, fingerprint of the counts on the model genes, source file); equal counts under different keys are reported, never used to drop a cell (cells with at least 200 counts)",
+  "by_study": {
+   "hepg2_nadig": {
+    "new": 40000
+   },
+   "jurkat_nadig": {
+    "new": 20000
+   },
+   "h1_vcc2025_train": {
+    "new": 5000
+   },
+   "h1_vcc2025_val": {
+    "new": 5000
+   },
+   "replogle_k562_gwps": {
+    "new": 20000
+   }
+  },
+  "sources": [
+   "https://zenodo.org/api/records/13350497/files/NadigOConner2024_hepg2.h5ad/content|as published",
+   "https://zenodo.org/api/records/13350497/files/NadigOConner2024_jurkat.h5ad/content|Zenodo 13350497 (scPerturb)",
+   "https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/train/adata_Training.h5ad|Arc bucket, 16/12/2025 objects",
+   "https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/validation/adata_Validation.h5ad|Arc bucket, 16/12/2025 objects",
+   "https://ndownloader.figshare.com/files/35775507|Figshare 20029387, Replogle et al. 2022"
+  ],
+  "content_matches_across_keys": [
+   {
+    "studies": [
+     "h1_vcc2025_train",
+     "h1_vcc2025_val"
+    ],
+    "cells": 860
+   }
+  ],
+  "declared_republications": {},
+  "barcode_overlap_between_studies_of_a_context": [
+   {
+    "context": "H1",
+    "studies": [
+     "h1_vcc2025_train",
+     "h1_vcc2025_val"
+    ],
+    "shared_barcodes": 860,
+    "fraction_of_smaller": 0.172
+   }
+  ]
+ },
+ "features": {
+  "rule": "cell_data.feature_columns: native features colliding on one model gene are dropped and the gene masked in that shard",
+  "shards_with_collisions": []
+ },
+ "masks": {
+  "rule": "each cell's likelihood on its own shard's genes; control rows carry their shard's mask; a key's QC and shift estimator on the intersection of its shards' masks",
+  "by_key": {
+   "hepg2_nadig|HepG2": {
+    "genes_in_every_shard": 9023,
+    "genes_in_some_shard_only": 0
+   },
+   "jurkat_nadig|Jurkat": {
+    "genes_in_every_shard": 8283,
+    "genes_in_some_shard_only": 0
+   },
+   "h1_vcc2025_train|H1": {
+    "genes_in_every_shard": 18077,
+    "genes_in_some_shard_only": 0
+   },
+   "h1_vcc2025_val|H1": {
+    "genes_in_every_shard": 18077,
+    "genes_in_some_shard_only": 0
+   },
+   "replogle_k562_gwps|K562": {
+    "genes_in_every_shard": 0,
+    "genes_in_some_shard_only": 0
+   }
+  }
+ },
+ "control_quantiles": {
+  "hepg2_nadig|HepG2": {
+   "lib": {
+    "1": 3903.4,
+    "5": 5436.0,
+    "50": 12010.0,
+    "95": 31310.0,
+    "99": 50677.80000000001
+   },
+   "genes": {
+    "1": 1896.0,
+    "5": 2385.0,
+    "50": 3856.0,
+    "95": 6063.0,
+    "99": 7013.0
+   },
+   "mito": {
+    "1": 0.07276799607310966,
+    "5": 0.09701219512195122,
+    "50": 0.12856961543343065,
+    "95": 0.17076502732240437,
+    "99": 0.2032268704453231
+   }
+  },
+  "jurkat_nadig|Jurkat": {
+   "lib": {
+    "1": 2478.64,
+    "5": 4201.8,
+    "50": 8209.0,
+    "95": 20007.19999999999,
+    "99": 30480.599999999893
+   },
+   "genes": {
+    "1": 1495.12,
+    "5": 2209.8,
+    "50": 3317.0,
+    "95": 5168.4,
+    "99": 6004.159999999998
+   },
+   "mito": {
+    "1": 0.040683783175632565,
+    "5": 0.05883289769584714,
+    "50": 0.0875219683655536,
+    "95": 0.11863453449151548,
+    "99": 0.14360087321791057
+   }
+  },
+  "h1_vcc2025_train|H1": {
+   "lib": {
+    "1": 22019.06,
+    "5": 26519.6,
+    "50": 44274.0,
+    "95": 74456.2,
+    "99": 87237.68999999997
+   },
+   "genes": {
+    "1": 6569.08,
+    "5": 7077.65,
+    "50": 8332.5,
+    "95": 9469.2,
+    "99": 9782.51
+   },
+   "mito": {
+    "1": 3.1204117504456836e-05,
+    "5": 6.5577560203526e-05,
+    "50": 0.0004213956707483195,
+    "95": 0.002625050503070899,
+    "99": 0.004816822075130106
+   }
+  },
+  "h1_vcc2025_val|H1": {
+   "lib": {
+    "1": 21319.37,
+    "5": 25914.4,
+    "50": 44704.0,
+    "95": 76063.09999999999,
+    "99": 92243.52000000003
+   },
+   "genes": {
+    "1": 6555.55,
+    "5": 7014.6,
+    "50": 8356.0,
+    "95": 9540.45,
+    "99": 9937.380000000001
+   },
+   "mito": {
+    "1": 3.1255523242263134e-05,
+    "5": 7.267305272822034e-05,
+    "50": 0.0004313720463727647,
+    "95": 0.0027734243775766935,
+    "99": 0.0054269450584962815
+   }
+  }
+ }
+}

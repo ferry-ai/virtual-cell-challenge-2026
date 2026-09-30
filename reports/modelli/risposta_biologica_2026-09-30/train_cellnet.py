@@ -128,6 +128,80 @@ def logger(out: Path):
 
 # ============================================================================================== prepass
 
+def pool_map(fn, tasks, workers):
+    """fn over tasks, results in the order of the tasks; in `workers` processes when more than one. Every draw inside
+    fn is seeded by its task, so the results do not depend on the number of processes."""
+    if workers <= 1:
+        for t in tasks:
+            yield fn(t)
+        return
+    from concurrent.futures import ProcessPoolExecutor
+    with ProcessPoolExecutor(max_workers=workers) as ex:
+        yield from ex.map(fn, tasks, chunksize=1)
+
+
+def first_read(t):
+    """One shard, first read: QC values on the mask of each cell's key, the fingerprint of the counts, the hash of the
+    key, the control cells' QC values per key, the file's sha256 and the barcodes per context."""
+    x, _ = CN.read_csr(t["path"], t["official_index"], t["measured"], t["gene_of_axis"], t["G"])
+    keys, n = t["keys"], len(t["keys"])
+    lib, genes, mito = np.zeros(n), np.zeros(n), np.full(n, np.nan)
+    ctrl_qc = {}
+    for k, km in t["key_masks"].items():
+        rows = np.flatnonzero(keys == k)
+        l_, g_, m_ = CD.qc_values(x[rows], km, t["mt"])
+        lib[rows], genes[rows], mito[rows] = l_, g_, m_
+        sel = t["control"][rows] & (l_ > 0)
+        if sel.any():
+            ctrl_qc[k] = np.stack([l_[sel], g_[sel], m_[sel]])
+    with h5py.File(t["path"], "r") as f:
+        bc = CN.h5_column(f["obs"], "barcode")
+    bcs = {}
+    if bc is not None:
+        for c in np.unique(t["contexts"]):
+            bcs[str(c)] = {str(b).split("-")[0] for b in bc[t["contexts"] == c]}
+    return {"lib": lib, "genes": genes, "mito": mito, "fp": CD.fingerprints(x), "kh": CD.hash64(t["cell_keys"]),
+            "ctrl_qc": ctrl_qc, "sha256": sha(t["path"]), "bytes": Path(t["path"]).stat().st_size, "barcodes": bcs}
+
+
+def second_read(t):
+    """One shard, second read, admitted cells only: the sum and number of control proportions per key, up to
+    pool_size control rows per key drawn with a generator seeded by (seed, shard, key), the training rows, and the
+    proportion sums of training cells per key (all perturbed) and per (key, evaluated symbol)."""
+    x, _ = CN.read_csr(t["path"], t["official_index"], t["measured"], t["gene_of_axis"], t["G"])
+    keys, ok, lib_key = t["keys"], t["admitted"], t["lib_key"]
+    out = {"ctrl_sum": {}, "ctrl_n": {}, "pool": {}, "pert_sum": {}, "pert_n": {}, "sums": {}, "nsum": {}}
+    for k in np.unique(keys):
+        rows = np.flatnonzero(ok & t["control"] & (keys == k))
+        if rows.size == 0:
+            continue
+        prop = x[rows].multiply(1.0 / np.maximum(lib_key[rows], 1)[:, None]).tocsr()
+        out["ctrl_sum"][k] = np.asarray(prop.sum(axis=0)).ravel()
+        out["ctrl_n"][k] = int(rows.size)
+        rng = np.random.default_rng([t["seed"], 21, t["sid"], t["key_order"][k]])
+        take = rows if rows.size <= t["pool_size"] else np.sort(rng.choice(rows, t["pool_size"], replace=False))
+        xt = x[take]
+        out["pool"][k] = {"x": np.minimum(xt.toarray(), 65504).astype(np.float16),
+                          "lib": np.asarray(xt.sum(axis=1)).ravel().astype(np.float32),
+                          "sid": np.full(take.size, t["sid"], np.int32), "libc": t["libc"][take]}
+    tr = np.flatnonzero(ok & (t["cls"] == DRAWN))
+    out["train_rows"] = tr
+    pert_tr = tr[~t["control"][tr]]
+    if pert_tr.size:
+        prop = x[pert_tr].multiply(1.0 / np.maximum(lib_key[pert_tr], 1)[:, None]).tocsr()
+        sym = t["symbols"][pert_tr]
+        for k in np.unique(keys[pert_tr]):
+            selk = keys[pert_tr] == k
+            out["pert_sum"][k] = np.asarray(prop[selk].sum(axis=0)).ravel()
+            out["pert_n"][k] = int(selk.sum())
+            for s in np.unique(sym[selk]):
+                if s in t["eval_symbols"]:
+                    ss = selk & (sym == s)
+                    out["sums"][(k, s)] = np.asarray(prop[ss].sum(axis=0)).ravel().astype(np.float32)
+                    out["nsum"][(k, s)] = int(ss.sum())
+    return out
+
+
 def prepass(a):
     if a.out.exists():
         sys.exit(f"refusing: {a.out} exists")
@@ -215,36 +289,34 @@ def prepass(a):
                                             "examples": [{"study": st, "symbol": s, "labels": v[:6]}
                                                          for st, s, v in many_labels[:30]]}}
 
-    # ---- 1a. first read: QC values on the key's mask, fingerprints, keys, sources, file hashes
+    # ---- 1a. first read (in --workers processes): QC values on the key's mask, fingerprints, keys, file hashes
     per = {}
-    qc_vals = defaultdict(lambda: {"lib": [], "genes": [], "mito": []})
+    ctrl_qc = defaultdict(list)
     n_controls = Counter()
     barcodes = defaultdict(set)
     source_codes = {}
-    for info in shards:
-        x, _ = CN.read_counts(info, corpus.gene_of_axis, G)
-        n = info.n_cells
-        lib, genes, mito = np.zeros(n), np.zeros(n), np.full(n, np.nan)
-        for k in np.unique(info.keys):
-            rows = np.flatnonzero(info.keys == k)
-            l_, g_, m_ = CD.qc_values(x[rows], key_mask[k], mt)
-            lib[rows], genes[rows], mito[rows] = l_, g_, m_
-            sel = info.control[rows] & (l_ > 0)
-            n_controls[k] += int(sel.sum())
-            q = qc_vals[k]
-            for name, v in (("lib", l_[sel]), ("genes", g_[sel]), ("mito", m_[sel])):
-                if len(q[name]) < QC_KEEP:
-                    q[name].extend(rng.permutation(v)[:QC_KEEP - len(q[name])].tolist())
-        per[info.sid] = {"lib": lib, "genes": genes, "mito": mito, "fp": CD.fingerprints(x),
-                         "kh": CD.hash64(info.cell_keys),
-                         "src": np.full(n, source_codes.setdefault(info.source, len(source_codes)), np.int32)}
-        info.sha256, info.bytes = sha(info.path), info.path.stat().st_size
-        with h5py.File(info.path, "r") as f:
-            bc = CN.h5_column(f["obs"], "barcode")
-        if bc is not None:
-            for c in np.unique(info.contexts):
-                barcodes[(info.study, str(c))].update(str(b).split("-")[0] for b in bc[info.contexts == c])
-        log("first read", shard=info.path.name, study=info.study, cells=n)
+    key_order = {k: i for i, k in enumerate(sorted(key_mask))}
+    tasks = [{"path": str(i.path), "official_index": i.official_index, "measured": i.measured,
+              "gene_of_axis": corpus.gene_of_axis, "G": G, "keys": i.keys, "control": i.control, "mt": mt,
+              "key_masks": {k: key_mask[k] for k in np.unique(i.keys)}, "cell_keys": i.cell_keys,
+              "contexts": i.contexts} for i in shards]
+    for info, res in zip(shards, pool_map(first_read, tasks, a.workers)):
+        per[info.sid] = {"lib": res["lib"], "genes": res["genes"], "mito": res["mito"], "fp": res["fp"],
+                         "kh": res["kh"],
+                         "src": np.full(info.n_cells, source_codes.setdefault(info.source, len(source_codes)), np.int32)}
+        info.sha256, info.bytes = res["sha256"], res["bytes"]
+        for k, v in res["ctrl_qc"].items():
+            ctrl_qc[k].append(v)
+            n_controls[k] += int(v.shape[1])
+        for c, bcs in res["barcodes"].items():
+            barcodes[(info.study, c)].update(bcs)
+        log("first read", shard=info.path.name, study=info.study, cells=info.n_cells)
+    qc_vals = {}
+    for k, parts in ctrl_qc.items():                  # at most QC_KEEP controls per key, drawn per key: any --workers
+        v = np.concatenate(parts, axis=1)
+        if v.shape[1] > QC_KEEP:
+            v = v[:, np.sort(np.random.default_rng([a.seed, 11, key_order[k]]).permutation(v.shape[1])[:QC_KEEP])]
+        qc_vals[k] = {"lib": v[0], "genes": v[1], "mito": v[2]}
     # a key needs enough control cells to set its thresholds and to describe its context; fewer is not a context
     thresholds = {k: CD.thresholds_from_controls(np.array(v["lib"]), np.array(v["genes"]), np.array(v["mito"]))
                   for k, v in qc_vals.items() if n_controls[k] >= a.min_controls_per_key}
@@ -358,55 +430,47 @@ def prepass(a):
             eval_groups.append({"class": c_, "key": k_, "symbol": s_, "cells": v, "admitted_cells": len(groups[(c_, k_, s_)])})
     eval_symbols = {g["symbol"] for g in eval_groups}
 
-    # ---- 2. second read: control pools, mean control profiles, baseline sums, training rows
+    # ---- 2. second read (in --workers processes): control pools, mean control profiles, baseline sums, training rows
     key_names = sorted(key_mask)
     kidx = {k: i for i, k in enumerate(key_names)}
     lib_table, mod_table = {}, {m: i for i, m in enumerate(corpus.modalities)}
+    for info in shards:
+        info.libc = codes_of(info.library, lib_table)
     pools = {}
     ctrl_sum, ctrl_n = defaultdict(lambda: np.zeros(G)), Counter()
     sums, nsum = {}, Counter()
     pert_sum, pert_n = defaultdict(lambda: np.zeros(G)), Counter()
     offered = Counter()
-    for info in shards:
-        x, _ = CN.read_counts(info, corpus.gene_of_axis, G)
-        ok, lib_key = info.admitted, per[info.sid]["lib"]
-        info.libc = codes_of(info.library, lib_table)
-        for k in np.unique(info.keys):
-            rows = np.flatnonzero(ok & info.control & (info.keys == k))
-            if rows.size == 0:
-                continue
-            prop = x[rows].multiply(1.0 / np.maximum(lib_key[rows], 1)[:, None]).tocsr()
-            ctrl_sum[k] += np.asarray(prop.sum(axis=0)).ravel()
-            ctrl_n[k] += int(rows.size)
-            take = rows if rows.size <= a.pool_size else np.sort(rng.choice(rows, a.pool_size, replace=False))
-            xt = x[take]
-            new = {"x": np.minimum(xt.toarray(), 65504).astype(np.float16),
-                   "lib": np.asarray(xt.sum(axis=1)).ravel().astype(np.float32),
-                   "sid": np.full(take.size, info.sid, np.int32), "libc": info.libc[take]}
+    merge_rng = {k: np.random.default_rng([a.seed, 22, i]) for k, i in kidx.items()}
+    tasks = [{"path": str(i.path), "official_index": i.official_index, "measured": i.measured,
+              "gene_of_axis": corpus.gene_of_axis, "G": G, "keys": i.keys, "admitted": i.admitted,
+              "control": i.control, "cls": i.cls, "symbols": i.symbols, "lib_key": per[i.sid]["lib"],
+              "libc": i.libc, "eval_symbols": eval_symbols, "pool_size": a.pool_size, "seed": a.seed, "sid": i.sid,
+              "key_order": kidx} for i in shards]
+    for info, res in zip(shards, pool_map(second_read, tasks, a.workers)):
+        for k, v in res["ctrl_sum"].items():
+            ctrl_sum[k] += v
+            ctrl_n[k] += res["ctrl_n"][k]
+        for k, new in res["pool"].items():               # merged in shard order, drawn per key: any --workers
             if k in pools:
                 both = {f: np.concatenate([pools[k][f], new[f]]) for f in new}
-                keep = np.sort(rng.choice(len(both["sid"]), min(len(both["sid"]), a.pool_size), replace=False))
-                pools[k] = {f: v[keep] for f, v in both.items()}
+                if len(both["sid"]) > a.pool_size:
+                    keep = np.sort(merge_rng[k].choice(len(both["sid"]), a.pool_size, replace=False))
+                    both = {f: v[keep] for f, v in both.items()}
+                pools[k] = both
             else:
                 pools[k] = new
-        tr = np.flatnonzero(ok & (info.cls == DRAWN))
+        tr = res["train_rows"]
         info.train_rows = tr
         for k, n in Counter(info.keys[tr]).items():
             offered[k] += n
-        pert_tr = tr[~info.control[tr]]
-        if pert_tr.size:
-            prop = x[pert_tr].multiply(1.0 / np.maximum(lib_key[pert_tr], 1)[:, None]).tocsr()
-            for k in np.unique(info.keys[pert_tr]):
-                selk = info.keys[pert_tr] == k
-                pert_sum[k] += np.asarray(prop[selk].sum(axis=0)).ravel()
-                pert_n[k] += int(selk.sum())
-                for s in np.unique(info.symbols[pert_tr][selk]):
-                    if s not in eval_symbols:
-                        continue
-                    ss = selk & (info.symbols[pert_tr] == s)
-                    sums.setdefault((k, s), np.zeros(G))
-                    sums[(k, s)] += np.asarray(prop[ss].sum(axis=0)).ravel()
-                    nsum[(k, s)] += int(ss.sum())
+        for k, v in res["pert_sum"].items():
+            pert_sum[k] += v
+            pert_n[k] += res["pert_n"][k]
+        for ks, v in res["sums"].items():
+            sums.setdefault(ks, np.zeros(G))
+            sums[ks] += v
+            nsum[ks] += res["nsum"][ks]
         log("second read", shard=info.path.name, training_cells=int(tr.size))
     tot = np.zeros(G)
     for k, p in pools.items():
@@ -498,7 +562,7 @@ def prepass(a):
                           "QC and shift estimator on the intersection of its shards' masks", "by_key": mask_report},
         "control_quantiles": {k: {n: {p: float(np.nanquantile(np.array(v[n], float), p / 100)) for p in (1, 5, 50, 95, 99)}
                                   for n in ("lib", "genes", "mito") if np.isfinite(np.array(v[n], float)).any()}
-                              for k, v in qc_vals.items() if v["lib"]}}, indent=1, default=str), encoding="utf-8")
+                              for k, v in qc_vals.items() if len(v["lib"])}}, indent=1, default=str), encoding="utf-8")
     done = {"state": STATE, "sha256": sha(a.out / STATE), "bytes": (a.out / STATE).stat().st_size, "utc": now(),
             "shards": len(shards), "cells": int(offsets[-1]), "admitted_training_cells": int(sum(by_study.values())),
             "evaluation_groups": len(eval_groups)}
@@ -1148,6 +1212,7 @@ def main():
                    help="files of one experiment read as one study NAME (their shared cells are then duplicates)")
     p.add_argument("--min-controls-per-key", type=int, default=30,
                    help="a (study, context) with fewer usable control cells is not admitted")
+    p.add_argument("--workers", type=int, default=1, help="processes reading shards (results do not depend on it)")
     p.add_argument("--pool-size", type=int, default=2048, help="control cells kept per (study, context)")
     p.add_argument("--input-genes", type=int, default=2048)
     p.add_argument("--eval-min-cells", type=int, default=20)

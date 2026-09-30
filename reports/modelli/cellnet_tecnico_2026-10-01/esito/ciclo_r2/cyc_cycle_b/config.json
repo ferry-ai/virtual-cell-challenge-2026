@@ -1,0 +1,77 @@
+{
+ "args": {
+  "cmd": "train",
+  "prepass": "/kaggle/working/prepass",
+  "out": "/kaggle/working/cyc_cycle_b",
+  "descriptors": "/kaggle/input/datasets/davidmaisterx/rlab-cellnet-code",
+  "target_code": "descriptors",
+  "epochs": "1.0",
+  "batch": "256",
+  "ctrl_k": "64",
+  "buffer_shards": "4",
+  "dim": "64",
+  "rank": "64",
+  "lr": "0.001",
+  "seed": "0",
+  "workers": "2",
+  "roles": "2",
+  "prefetch": "8",
+  "budget_minutes": "40.0",
+  "reserve_export_minutes": "5",
+  "checkpoint_minutes": "5.0",
+  "keep_checkpoints": "3",
+  "measure_from": "20",
+  "measure_steps": "60",
+  "eval_chunk": "512",
+  "eval_reserve_seconds": "60",
+  "log_every": "20",
+  "resume": "/kaggle/working/cyc_cycle_a",
+  "shard_roots": "['/kaggle/input']",
+  "no_verify": "False",
+  "stop_after_steps": "40",
+  "device": "cpu",
+  "input_dim": "1024",
+  "descriptors_sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80"
+ },
+ "same_on_resume": {
+  "target_code": "descriptors",
+  "epochs": "1.0",
+  "batch": "256",
+  "ctrl_k": "64",
+  "buffer_shards": "4",
+  "input_dim": "1024",
+  "dim": "64",
+  "rank": "64",
+  "lr": "0.001",
+  "seed": "0",
+  "roles": "2",
+  "descriptors_sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80"
+ },
+ "device": "cpu",
+ "started_utc": "2026-09-30T22:42:06.481734+00:00",
+ "prepass_sha256": "c9a24a9d90e0e36b48553b534b80a0fd108156ca1aa24748a95cd0f3184508b8",
+ "resumed_from": {
+  "checkpoint": "/kaggle/working/cyc_cycle_a/checkpoints/ckpt_0000020.pt",
+  "sha256": "6acb56b45a9f69a1c0cfcf1fa267026220a41c8bcaac8ccd0feaf7614a600d73",
+  "step": 20,
+  "batch_chain": "cd956c97419d66fa37a51c533f6447e401bdea9f39fd9c3932bcc2c817cec37c"
+ },
+ "code": {
+  "cellnet.py": "fd7e24da86edd890d9b1f8de8849d5705f4565e0e37de27712831238cd94ae34",
+  "cell_data.py": "f00bdd2bbcab2f90bb38af6a99073c31093ea72717b15df99ac3c16339201a50",
+  "train_cellnet.py": "744f4450a2823ada0aa998f77e415c9aa2f4ea77579c171cc05881a7c983f37f"
+ },
+ "descriptors": {
+  "sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80",
+  "dims": 284,
+  "symbols_with_descriptors": 2307,
+  "symbols": 10207
+ },
+ "study_weights": {
+  "jurkat_nadig": 0.30560562262653745,
+  "h1_vcc2025_train": 1.195256040789182,
+  "h1_vcc2025_val": 1.1221227887617065
+ },
+ "admitted_training_cells": 26959,
+ "parameters": 4036151
+}
