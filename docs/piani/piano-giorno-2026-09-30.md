@@ -83,6 +83,13 @@
     con QC di ammissione per studio che non toglie i fenotipi, duplicati, classi C/T/J effettive, epoche senza
     reinserimento con pesi per studio, controlli per libreria, stimatore unico, controllo di non-contaminazione);
     provata in miniatura: copertura 1.340/1.340, non-contaminazione passata. **Nessun training vero eseguito.**
+- **Ripresa (30/09, 23:24 CEST, Claude Code, sessione `07ebf08b`),** su richiesta del proprietario in chat, dopo la
+  fine della quota di `ec2e5b07`; autorizzazioni riconfermate in chat
+  ([AUTORIZZAZIONI](../../reports/sorgenti/corpus_cellulare_2026-09-30/AUTORIZZAZIONI.md)). Sottoattività: code e
+  pubblicazioni, primo training tecnico su Kaggle, catalogo dalle misure remote, adattatore CSC e ondate successive.
+  Stessi file di lavoro (D) e (M); ogni esecuzione nuova scrive in cartelle e numeri di coda nuovi. L'ispettore
+  `inspect_remote.py` lanciato da `ec2e5b07` alle 21:42 era ancora vivo alle 23:24 (ultimo file CD4): i suoi
+  output si committano com'erano, a suo nome.
 - **Prossimo passo:** (0) ricontrollare le code (`runs/jobs/dispatcher*.log`) e i dataset (`kaggle datasets list --mine` con
   `KAGGLE_CONFIG_DIR=~/.kaggle`); (1) quando su `davidmaisterx` ci sono almeno HepG2, Jurkat di Nadig, K562 essenziali,
   RPE1 e H1, un kernel Kaggle GPU con `train_cellnet.py` (dataset di codice con `cellnet.py`,

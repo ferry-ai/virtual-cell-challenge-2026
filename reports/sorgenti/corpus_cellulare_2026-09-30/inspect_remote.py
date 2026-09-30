@@ -19,16 +19,22 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from collections import OrderedDict
 from pathlib import Path
 
 import numpy as np
 
 
 class RangeFile(io.RawIOBase):
-    """A read-only, seekable file over HTTP Range requests, cached by blocks."""
+    """A read-only, seekable file over HTTP Range requests, cached by blocks.
 
-    def __init__(self, url: str, block: int = 1 << 20):
-        self.url, self.block, self.pos, self.cache, self.fetched = url, block, 0, {}, 0
+    The cache keeps the most recently used blocks up to `max_bytes`: an adapter streams whole matrices through this
+    reader, and an unbounded cache held every byte read (jobs 100 and 105 were killed for memory after about 5 GB of
+    H1, 30/09). Evicted blocks are fetched again when needed."""
+
+    def __init__(self, url: str, block: int = 1 << 20, max_bytes: int = 256 << 20):
+        self.url, self.block, self.pos, self.cache, self.fetched = url, block, 0, OrderedDict(), 0
+        self.max_blocks = max(4, max_bytes // block)
         self.etag = None
         self._resolve()
 
@@ -57,36 +63,42 @@ class RangeFile(io.RawIOBase):
         self.pos = off if whence == 0 else (self.pos + off if whence == 1 else self.size + off)
         return self.pos
 
+    def _get(self, lo, hi):
+        """Bytes lo..hi (inclusive) and the ETag they came with."""
+        req = urllib.request.Request(self.final_url, headers={"Range": f"bytes={lo}-{hi}",
+                                                              "User-Agent": "vcc2026-rlab/1"})
+        for attempt in range(1, 6):
+            try:
+                with urllib.request.urlopen(req, timeout=120) as r:
+                    return r.read(), r.headers.get("ETag")
+            except urllib.error.HTTPError as err:
+                if attempt == 5:
+                    raise
+                if err.code in (400, 403):              # an expired signed URL: resolve it again
+                    self._resolve()
+                    req = urllib.request.Request(self.final_url, headers={"Range": f"bytes={lo}-{hi}",
+                                                                          "User-Agent": "vcc2026-rlab/1"})
+                time.sleep(5 * attempt)
+            except OSError:
+                if attempt == 5:
+                    raise
+                time.sleep(5 * attempt)
+
     def _blk(self, i):
-        if i not in self.cache:
-            lo, hi = i * self.block, min(self.size, (i + 1) * self.block) - 1
-            req = urllib.request.Request(self.final_url, headers={"Range": f"bytes={lo}-{hi}",
-                                                                  "User-Agent": "vcc2026-rlab/1"})
-            for attempt in range(1, 6):
-                try:
-                    with urllib.request.urlopen(req, timeout=120) as r:
-                        data = r.read()
-                        etag = r.headers.get("ETag")
-                    break
-                except urllib.error.HTTPError as err:
-                    if attempt == 5:
-                        raise
-                    if err.code in (400, 403):              # an expired signed URL: resolve it again
-                        self._resolve()
-                        req = urllib.request.Request(self.final_url, headers={"Range": f"bytes={lo}-{hi}",
-                                                                              "User-Agent": "vcc2026-rlab/1"})
-                    time.sleep(5 * attempt)
-                except OSError:
-                    if attempt == 5:
-                        raise
-                    time.sleep(5 * attempt)
-            if self.etag and etag and etag != self.etag:
-                raise OSError(f"the file changed while it was read: ETag {etag} after {self.etag}")
-            if len(data) != hi - lo + 1:
-                raise OSError(f"range {lo}-{hi} returned {len(data)} bytes: the server ignores Range")
-            self.cache[i] = data
-            self.fetched += len(data)
-        return self.cache[i]
+        if i in self.cache:
+            self.cache.move_to_end(i)
+            return self.cache[i]
+        lo, hi = i * self.block, min(self.size, (i + 1) * self.block) - 1
+        data, etag = self._get(lo, hi)
+        if self.etag and etag and etag != self.etag:
+            raise OSError(f"the file changed while it was read: ETag {etag} after {self.etag}")
+        if len(data) != hi - lo + 1:
+            raise OSError(f"range {lo}-{hi} returned {len(data)} bytes: the server ignores Range")
+        self.cache[i] = data
+        self.fetched += len(data)
+        while len(self.cache) > self.max_blocks:
+            self.cache.popitem(last=False)
+        return data
 
     def readinto(self, b):
         n = min(len(b), self.size - self.pos)

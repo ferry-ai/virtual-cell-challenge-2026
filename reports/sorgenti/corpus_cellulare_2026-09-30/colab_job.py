@@ -10,11 +10,14 @@ The launcher follows docs/ERRORI.md: it waits for every setup file by sha256, me
 preflight on the runtime, then rlab_job.py, then publish_kaggle.py for each publication. Sources read by HTTP byte
 ranges cannot be hashed whole before the run without downloading them: for those the declared limit is the one of the
 plan (§6.5), an ETag checked on every range and a sha256 of every shard written. A job with --publish-only publishes
-the shards of an earlier job and runs nothing else.
+the shards of an earlier job and runs nothing else. --reuse passes an earlier job's folder to rlab_job.py, which
+skips the shards whose receipt and sha256 still match. --stop builds a launcher that only stops, on the runtime of
+its queue, the rlab_job.py process of an earlier job (the dispatchers have no stop command; 30/09, job 106).
 
     python colab_job.py --job j04_h1_trainval_r1 --number 093 --queue queue2 --spec spec.json \
         --snapshot <tar.gz> --commit <sha> --setup rlab_setup_2026-09-30_r3 --publish ALL=rlab-h1-vcc2025-trainval
     python colab_job.py --job p01_hepg2_r1 --number 091 --queue queue --publish-only <Drive job dir> ...
+    python colab_job.py --job s01_stop_j07_r4 --number 107 --queue queue2 --stop j07_replogle_ess_rpe1_r4
 """
 from __future__ import annotations
 
@@ -76,6 +79,20 @@ echo "job {job} end $(date -u +%FT%TZ)"
 """
 
 
+STOP = """#!/usr/bin/env bash
+# R-LAB {job}: stop the rlab_job.py process of job {target} on this runtime, if it runs. Built by {report}/colab_job.py.
+# Reason: {reason}
+set -uo pipefail
+PAT='rlab_job[.]py --spec [^ ]*/{target}_spec[.]json'
+echo "job {job} start $(date -u +%FT%TZ) host=$(hostname)"
+ps -eo pid,etimes,rss,args | grep -E "$PAT" | grep -v grep || echo "no process of {target} on this runtime"
+if pkill -TERM -f "$PAT"; then echo "TERM sent"; sleep 30; pkill -KILL -f "$PAT" && echo "KILL sent"; fi
+ps -eo pid,etimes,rss,args | grep -E "$PAT" | grep -v grep || echo "{target}: not running"
+free -g | head -2
+echo "job {job} end $(date -u +%FT%TZ)"
+"""
+
+
 def sha256(path: Path) -> str:
     h = hashlib.sha256()
     with open(path, "rb") as fh:
@@ -104,13 +121,22 @@ def main() -> None:
     p.add_argument("--spec", type=Path)
     p.add_argument("--publish-only", help="Drive-relative folder of an earlier job whose shards are published")
     p.add_argument("--publish", action="append", default=[], metavar="UNIT=SLUG", help="UNIT may be ALL")
-    p.add_argument("--snapshot", required=True, type=Path)
-    p.add_argument("--commit", required=True)
-    p.add_argument("--setup", required=True)
+    p.add_argument("--reuse", help="Drive-relative folder of an earlier job whose verified shards are reused")
+    p.add_argument("--stop", metavar="JOB_ID", help="build a launcher that only stops this job's rlab_job.py")
+    p.add_argument("--reason", default="", help="with --stop: why, written in the launcher")
+    p.add_argument("--snapshot", type=Path)
+    p.add_argument("--commit")
+    p.add_argument("--setup")
     p.add_argument("--jobs-dir", type=Path, default=HERE / "jobs_colab")
     p.add_argument("--owner", default=OWNER, help="Kaggle account that receives the datasets")
     p.add_argument("--secrets", default="rlab_secrets", help="Drive folder under runs/ holding that account's token")
     a = p.parse_args()
+    number_is_free(a)
+    if a.stop:
+        write_and_queue(a, STOP.format(job=a.job, target=a.stop, report=REPORT, reason=a.reason or "not given"))
+        return
+    if not (a.snapshot and a.commit and a.setup):
+        sys.exit("give --snapshot, --commit and --setup")
     if bool(a.spec) == bool(a.publish_only):
         sys.exit("give either --spec or --publish-only")
     setup_local = Path(GDRIVE) / "runs" / a.setup
@@ -132,8 +158,9 @@ def main() -> None:
         sums.append(f"{spec_sha}  {setup_rt}/{spec_name}")
         outputs.append({"id": "shards", "paths": {"local": f"{GDRIVE}/{OUT_ROOT}/{a.job}",
                                                  "runtime": f"{DRIVE}/{OUT_ROOT}/{a.job}"}, "must_be_absent": True})
+        reuse = f' --reuse "$DRIVE/{a.reuse}"' if a.reuse else ""
         run = (f'"$PY" "$C/rlab_job.py" --spec "$SETUP/{spec_name}" --stage "$WORK/stage" --out "$OUT" '
-               f'--runtime-manifest "$REC/environment_manifest_colab.json" --set IN="$WORK/in" '
+               f'--runtime-manifest "$REC/environment_manifest_colab.json"{reuse} --set IN="$WORK/in" '
                f'AXIS="$WORK/in/gene_names.csv" WORK="$WORK" DRIVE="$DRIVE"')
         out_test, job_dir = 'test ! -e "$OUT"', '"$OUT"'
     else:
@@ -168,13 +195,22 @@ def main() -> None:
     text = LAUNCHER.format(job=a.job, report=REPORT, commit=a.commit, drive=DRIVE, setup=a.setup, out_root=OUT_ROOT,
                            out_test=out_test, sums="\n".join(sums), snapshot_sha=snap_sha, run=run,
                            publish="\n".join(publish) if publish else "# no publication")
+    write_and_queue(a, text)
+
+
+def number_is_free(a) -> None:
+    """A queue number is used once across both queues, their retired folders and this report's launchers."""
+    places = [a.jobs_dir] + [Path(GDRIVE) / "runs" / q / sub for q in ("queue", "queue2") for sub in ("", "ritirati")]
+    taken = sorted(str(q) for d in places if d.is_dir() for q in d.glob(f"{a.number}_*"))
+    if taken:
+        sys.exit(f"refusing: queue number {a.number} is taken: {taken}")
+
+
+def write_and_queue(a, text: str) -> None:
     script = a.jobs_dir / f"{a.number}_rlab_{a.job}.sh"
-    if script.exists():
-        sys.exit(f"refusing: {script} exists")
-    script.write_bytes(text.encode("utf-8"))
     queue = Path(GDRIVE) / "runs" / a.queue / script.name
-    if queue.exists() or (queue.parent / (script.name + ".started")).exists():
-        sys.exit(f"refusing: {queue} exists")
+    a.jobs_dir.mkdir(parents=True, exist_ok=True)
+    script.write_bytes(text.encode("utf-8"))
     shutil.copyfile(script, queue)
     print(f"queued {queue} ({sha256(queue)[:16]})")
 

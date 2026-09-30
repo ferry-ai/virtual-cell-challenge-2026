@@ -45,3 +45,11 @@ crc32c del bucket. Risposte:
   `MyDrive/vcc2026/runs/rlab_secrets/`: i job Colab lo usano solo per pubblicare gli shard nei dataset privati di
   quell'account, dove gira il training. La chiave non è mai stampata né scritta nella repo.
 - Secondo dispatcher Colab su `runs/queue2`: autorizzato; lo avvia il proprietario.
+
+**Conferma alla sessione `07ebf08b` (Claude Code, ripresa di `ec2e5b07` dopo la fine della sua quota).** Domanda
+in chat: quali autorizzazioni registrate qui confermare (nuovi job Colab sulle due code, compresi la sola
+pubblicazione di J02 e J06 verso `davidmaisterx` e il ripiego con `fetch.py` per il job 106; il training tecnico
+su Kaggle GPU con `davidmaisterx`; download e letture HTTP delle sorgenti delle ondate successive, Tahoe con la
+cautela sui farmaci; l'uso di più account). Risposta del proprietario, prima delle 23:24:45 del 30/09 (ora letta
+con `date` subito dopo): «hai tutte le autorizzazioni necessarie, riprendi il lavoro dell'agente che ti precedeva,
+se hai dubbi chiedi». Restano esclusi invii e push.
