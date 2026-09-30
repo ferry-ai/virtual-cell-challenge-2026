@@ -295,6 +295,45 @@ def check_index(numbers: dict[int, Path], errors: list[str]) -> None:
             errors.append(f"INDICE.md: row {number:04d} has no checkpoint file")
 
 
+def corrections() -> dict[str, str]:
+    """Checkpoint file name -> the column "Corretto da" of its index row, when it is filled."""
+    path = REPO_ROOT / "docs" / "checkpoints" / "INDICE.md"
+    if not path.exists():
+        return {}
+    _, rows = table_by_first_column(path.read_text(encoding="utf-8"), "N", path, [])
+    found = {}
+    for row in rows:
+        link = MD_LINK.search(row[0])
+        if link and len(row) >= 5 and row[4] not in ("", "—"):
+            found[link.group(1)] = row[4]
+    return found
+
+
+def check_corrected_checkpoints(errors: list[str]) -> None:
+    """A corrected checkpoint's own registry row must not read as a plain 'attuale'.
+
+    Checkpoints are never edited: a correction lives in a later checkpoint and in the index
+    column "Corretto da". A registry row of its own that says `attuale` must name the correcting
+    checkpoint in its note, or take another state. Rows that cover only the folder are left to
+    --status, which prints the correction first.
+    """
+    fixed = corrections()
+    path = REPO_ROOT / "docs" / "REGISTRO.md"
+    if not fixed or not path.exists():
+        return
+    _, docs = table_by_first_column(path.read_text(encoding="utf-8"), "Percorso", path, [])
+    for row in docs:
+        if len(row) < 5 or row[1] != "attuale":
+            continue
+        for raw in BACKTICK_PATH.findall(row[0]):
+            name = Path(raw).name
+            if raw.startswith("docs/checkpoints/") and name in fixed:
+                numbers = re.findall(r"\[(\d{4})\]", fixed[name])
+                if not any(number in row[3] for number in numbers):
+                    errors.append(f"REGISTRO.md: {raw} is 'attuale' but was corrected by "
+                                  f"{', '.join(numbers)} (INDICE, Corretto da): name it in the note")
+
+
 def check_registry(errors: list[str]) -> None:
     path = REPO_ROOT / "docs" / "REGISTRO.md"
     if not path.exists():
@@ -558,11 +597,12 @@ def registry_status(raw: str) -> list[str]:
         lines.append(f"    note: {note}")
     match = CHECKPOINT_FILE.match(Path(rel).name)
     if lines and rel.startswith("docs/checkpoints/") and match:
-        index = (REPO_ROOT / "docs" / "checkpoints" / "INDICE.md").read_text(encoding="utf-8")
-        _, rows = table_by_first_column(index, "N", path, ignored)
-        for row in rows:
-            if len(row) >= 5 and f"({Path(rel).name})" in row[0]:
-                lines.append(f"  docs/checkpoints/INDICE.md, Corretto da: {row[4]}")
+        fix = corrections().get(Path(rel).name)
+        if fix:
+            # First, before the registry's state: a corrected checkpoint holds only as amended.
+            lines.insert(0, f"  corrected: read {fix} (docs/checkpoints/INDICE.md, Corretto da)")
+        else:
+            lines.append("  docs/checkpoints/INDICE.md, Corretto da: —")
     if not lines:
         lines.append("  no registry entry covers this path")
     lines += index_verdicts(rel)
@@ -595,6 +635,7 @@ def main() -> None:
     numbers = check_checkpoints(errors)
     check_index(numbers, errors)
     check_registry(errors)
+    check_corrected_checkpoints(errors)
     check_decisions(errors)
     check_links(errors)
 

@@ -17,7 +17,8 @@ Le pulizie sono due:
 
 Branch, worktree e stash hanno sezioni proprie, in fondo: il
 [24 settembre](#24-settembre-2026--un-solo-branch-main) e il
-[30 settembre](#30-settembre-2026--worktree-branch-e-stash).
+[30 settembre](#30-settembre-2026--worktree-branch-e-stash). Gli script di job Colab del 17–18
+settembre sono usciti il [30 settembre](#30-settembre-2026--gli-script-di-job-colab-del-1718-settembre).
 
 | | |
 |---|---|
@@ -485,3 +486,38 @@ Restano, per scelta del proprietario: i worktree di Codex `atlas-transfer-pilot`
 branch, e `ipsc-transfer`, che contiene il lavoro R-IPSC del 29/09 mai entrato in `main`. Restano
 anche i branch remoti `origin/alfredo` e `origin/claude/compassionate-babbage-gpgzyt`, senza commit
 fuori da `main`: toglierli richiede un push.
+
+## 30 settembre 2026 — gli script di job Colab del 17–18 settembre
+
+Tappa 3 della [pulizia della struttura](../reports/analisi/pulizia_struttura_2026-09-30/README.md):
+esce dall'albero ciò che non serve più. Sei dei dieci script di `notebooks/colab_jobs/` non li cita
+nessun documento vivo, e nessun job in coda su Drive li usa: la coda è stata letta il 30/09, e i
+job che li nominano, 019–023, sono chiusi. Quattro sono istanze di un job del 17/09, con la
+cartella di output scritta dentro. Due sono modelli a parametri, per un banco HepG2 con la
+sorgente scambiata e per una generazione più veloce con lo stadio 76, che nessun documento vivo
+nomina. Nessuno dei sei esegue il preflight che [ERRORI](ERRORI.md) chiede per un job nuovo.
+Restano `common.sh`, che ogni job carica, compreso quello del banco K562 del 29/09;
+`generate_trial.sh` e `queue_trial.sh`, il modo documentato di mettere in coda una generazione con
+lo stadio 76 ([PROCEDURE](PROCEDURE.md) §3); `sync_to_drive.ps1` e il notebook dispatcher.
+
+| | |
+|---|---|
+| Tag | `archivio/pre-pulizia-2026-09-30` (annotato), solo in locale finché il proprietario non fa il push |
+| Punta a | `bc54bbf`, l'ultimo commit con i sei file |
+
+```bash
+git show archivio/pre-pulizia-2026-09-30:notebooks/colab_jobs/bench_hepg2_source.sh     # a schermo
+git checkout archivio/pre-pulizia-2026-09-30 -- notebooks/colab_jobs/generate_trial_fast.sh
+```
+
+Uno script ripreso da qui va adattato prima di metterlo in coda: cartella di output nuova, e il
+preflight di ERRORI.
+
+| Percorso | Righe | Che cosa dice di sé |
+|---|---:|---|
+| `notebooks/colab_jobs/bench_hepg2.sh` | 10 | «One bench at a time: two of them together do not fit in 12 GB.» Stadio 75, uscita `runs/bench_hepg2_2026-09-17/h002` |
+| `notebooks/colab_jobs/bench_hepg2_source.sh` | 18 | «Stage-75 HepG2 bench with the transfer source swapped, on a FIXED panel.» Usato dai job 019–023 del 18/09 |
+| `notebooks/colab_jobs/bench_k562.sh` | 6 | Senza commento: stadio 73, uscita `runs/bench_k562_2026-09-17/b002` |
+| `notebooks/colab_jobs/generate_trial_fast.sh` | 36 | «Generate, package and verify one trial. Two costs of jobs 011/012 are removed»: stadio 76 e 48, uscita `runs/trials_2026-09-17/` |
+| `notebooks/colab_jobs/generator_null.sh` | 10 | «After the benches: on 2026-09-17 the first attempt ran out of memory next to the extraction.» Stadio 72, uscita `runs/generator_null_2026-09-17/n003` |
+| `notebooks/colab_jobs/k562_extract.sh` | 5 | Senza commento: stadio 71, uscita `processed/k562_gwps_sc/x002` |

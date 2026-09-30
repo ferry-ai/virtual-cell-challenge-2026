@@ -385,10 +385,40 @@ class CheckerTests(unittest.TestCase):
         self.assertEqual(statuses, ['storico', 'attuale'], report)  # the folder itself before its parent
         # the category index keeps its own verdict, printed beside the registry's
         self.assertEqual(report[-1], '  index reports/invii/README.md, Vale?: in parte, vedi CP-0002')
-        self.assertIn('Corretto da', checkpoint[-1])
-        self.assertIn('[0002](0002-due.md), §3', checkpoint[-1])
+        # a corrected checkpoint says so first, before the registry's 'attuale' of its folder
+        self.assertIn('corrected: read [0002](0002-due.md), §3', checkpoint[0])
+        self.assertIn('Corretto da', checkpoint[0])
+        self.assertIn('attuale', checkpoint[1])
         self.assertIn('attuale', data[0])
         self.assertEqual(nothing, [])
+
+    def test_a_corrected_checkpoint_row_must_name_its_correction(self):
+        """A checkpoint's own registry row cannot read 'attuale' without naming who corrected it."""
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root, True)
+        (root / 'docs' / 'checkpoints').mkdir(parents=True)
+        for name in ('0001-primo.md', '0002-due.md', '0003-tre.md'):
+            (root / 'docs' / 'checkpoints' / name).write_text('# CP\n', encoding='utf-8')
+        (root / 'docs' / 'checkpoints' / 'INDICE.md').write_text(
+            INDEX.replace('| — |\n', '| [0002](0002-due.md), §7 |\n')
+            + '| [0002](0002-due.md) | 2026-09-13 | Due | correzione | — |\n'
+            + '| [0003](0003-tre.md) | 2026-09-14 | Tre | osservazione | [0002](0002-due.md) |\n',
+            encoding='utf-8')
+        registry = ('# R\n\n| Percorso | Stato | Sostituito da | Nota | Scheda |\n|---|---|---|---|---|\n'
+                    '| `docs/checkpoints/` | attuale | — | la cartella | — |\n'
+                    '| `docs/checkpoints/0001-primo.md` | attuale | — | {note} | — |\n'
+                    '| `docs/checkpoints/0002-due.md` | attuale | — | la correzione | — |\n'
+                    '| `docs/checkpoints/0003-tre.md` | storico | — | un altro stato | — |\n')
+        cases = {'il primo': 1, 'il primo, corretto da CP-0002 §7': 0}
+        for note, expected in cases.items():
+            (root / 'docs' / 'REGISTRO.md').write_text(registry.format(note=note), encoding='utf-8')
+            errors = []
+            with patch.object(check_docs, 'REPO_ROOT', root):
+                check_docs.check_corrected_checkpoints(errors)
+            self.assertEqual(len(errors), expected, errors)
+            if expected:
+                self.assertIn('0001-primo.md', errors[0])
+                self.assertIn('0002', errors[0])
 
     def test_this_repository_is_consistent(self):
         done = subprocess.run([sys.executable, str(ROOT / 'scripts' / '31_check_docs.py')],

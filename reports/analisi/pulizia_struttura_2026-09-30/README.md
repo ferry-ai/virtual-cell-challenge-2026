@@ -17,7 +17,8 @@ Una riga a fine tappa, con il commit che la chiude.
 | Tappa | Stato | Commit | Che cosa |
 |---|---|---|---|
 | 1 | inventario e proposta (16:25); eseguita dopo il via (17:29–17:35) | `581f264`, `9f0f2ea` | da 19 worktree e uno stash a 2 worktree di Codex tenuti dal proprietario, nessuno stash: §1.4 |
-| 2 | fatta dopo la tappa 1; ora dei commit in `git log` | `b254929`, poi il commit che aggiunge questa riga | `LAVORO` → `PROCEDURE` con un reindirizzamento testato; nove righe di indice corrette sulle fonti: §2 |
+| 2 | fatta dopo la tappa 1; ora dei commit in `git log` | `b254929`, `bc54bbf` | `LAVORO` → `PROCEDURE` con un reindirizzamento testato; nove righe di indice corrette sulle fonti: §2 |
+| 3 | punti 1–3 fatti; il punto 4, le schede, e `SOTTOMISSIONE.md` aspettano il via | il commit che aggiunge questa riga | sei script di job archiviati; 25 voci del registro a `storico` e 7 con la riserva; una regola per i checkpoint corretti: §3 |
 
 ## 1. Worktree, branch e stash
 
@@ -238,3 +239,82 @@ indicizzate dal suo README.
 **Non fatto qui:** allineare le voci del registro con il «Vale?» degli indici, dove dicono cose
 diverse (per esempio `docs/storico/SVD_E_RANGO.md`, `attuale` nel registro e «chiuso»
 nell'indice). È il punto 3 della tappa 3.
+
+## 3. Rimuovere l'obsoleto
+
+### 3.1 Che cosa è obsoleto nell'albero vivo (misurato, 30/09 dalle 18:05)
+
+Nell'albero vivo stanno `docs/` fuori da `storico/` e `checkpoints/`, `scripts/`, `src/`,
+`configs/`, `tests/`, `notebooks/` e la radice. Si è cercato con `--status`, il registro, gli
+indici e `git log`:
+- **`notebooks/colab_jobs/`**: sei script su dieci non li cita nessun documento vivo, e nessun job
+  in coda su Drive li usa. La coda è stata letta fra le 18:04 e le 18:22: i job che li nominano, 019–023, sono
+  chiusi, e non c'è nessun job in attesa. Quattro sono istanze di job del 17/09 con la cartella di
+  output scritta dentro. Due sono modelli a parametri. Restano gli altri quattro:
+  - `common.sh`, che il job del banco K562 del 29/09 carica;
+  - `generate_trial.sh` e `queue_trial.sh`, il modo documentato di generare con lo stadio 76, che
+    accetta ancora quegli argomenti;
+  - `sync_to_drive.ps1`.
+- **Registro:** tre voci `da-verificare` nominano file dell'albero vivo, ma due sono già
+  archiviate (R-013). La terza è `docs/SOTTOMISSIONE.md`, trattata al §3.4.
+- **Sezioni morte:** nessuna da togliere.
+  - PROGETTO §6–§7 sono rimandi, che tengono i numeri citati dai checkpoint.
+  - GENERALIZZAZIONE §5 si dichiara storica e porta regole ancora valide.
+- **File sparsi:** nessuno. La radice ha solo i file della mappa di `CLAUDE.md`; `configs/` le
+  ricette usate, che non si modificano, `config.yaml` e `trials.yaml`. Il resto lo tiene vero
+  `tests/test_live_tree.py`.
+
+### 3.2 Uscito dall'albero (procedura di ARCHIVIO)
+
+Tag annotato `archivio/pre-pulizia-2026-09-30` su `bc54bbf`, sezione con una riga per file in
+[ARCHIVIO](../../../docs/ARCHIVIO.md), poi `git rm` dei sei script. PROCEDURE §3 e la riga di
+registro di `notebooks/` dicono che cosa resta; §3 dice anche che `queue_trial.sh` mette in coda
+una generazione con lo stadio 76.
+
+### 3.3 Registro e indici allineati
+
+Uno script, [strumenti/divergences.py](strumenti/divergences.py), ha confrontato in sola lettura lo stato del registro con il «Vale?» dell'indice della
+cartella, per 149 voci indicizzate. Ne ha trovate 35 in netto disaccordo; ciascuna è stata letta
+nella sua nota, nell'indice e nelle prime righe del documento. Gli stati del registro dicono come
+usare un documento: `attuale` significa «è la guida valida adesso, seguilo», `storico`
+«registrazione datata, non una guida».
+
+- **25 voci, più due loro righe interne, da `attuale` a `storico`:**
+  - 21 perché l'indice le dà per storiche o chiuse: i tre testi di `docs/storico/` sui banchi e
+    sulla SVD, previsioni e trial fino al 25/09, i banchi del 17/09, la direzione del 19/09, e
+    nove cartelle di `reports/storico/`;
+  - quattro, sempre in `reports/storico/`, perché l'indice della categoria dichiara tutto ciò che
+    contiene «fotografie datate, non guide». L'elenco è in [strumenti/align_registry.py](strumenti/align_registry.py)
+    e nel diff del commit.
+- **Sette voci «in parte» restano `attuale`,** con la riserva nella nota e la sua fonte verificata:
+  `analisi_2026-09-24` (audit dei segni, CP-0034), `ipotesi_trasferimento_2026-09-24` (H1 e H6
+  cadute), `context_identity` (R-001, punto 3), `lezioni_invii` (audit del 29/09),
+  `universo_hipsci` (dall'indice, come interpretazione), `universo_2026-09-26` (sostituito per
+  CD4 e Orion), `quota_condivisa` (l'ablazione del t23).
+- **Tre voci «in parte» erano già coerenti,** perché una voce più specifica porta la riserva:
+  `trial_2026-09-12` (R-011), `multisource_2026-09-22` (nella nota) e `banco_varianti` (R-017,
+  R-018).
+- **Dopo:** 10 voci «in parte» con stato `attuale` e la riserva scritta; 139 concordi.
+
+Gli script della sessione, copiati dallo scratchpad così come sono girati, stanno in
+[strumenti/](strumenti/): il rinomino (`rename_refs.py`, `verify_rename.py`), gli indici
+(`fix_indexes.py`), il registro (`divergences.py`, `align_registry.py`). Hanno percorsi assoluti:
+sono una registrazione, non strumenti da rilanciare.
+
+**Checkpoint corretti:** 12 hanno la colonna «Corretto da» compilata. Al posto di cento righe
+cambiate a mano, due regole in `scripts/31_check_docs.py`, con i loro test:
+- con `--status` la correzione compare **per prima**, prima dello stato del registro;
+- il controllo fallisce se un checkpoint corretto ha una riga propria `attuale` che non nomina chi
+  l'ha corretto.
+
+Il solo caso era CP-0035: la regola lo ha segnalato, e la sua nota ora nomina CP-0036, con le
+parole della riga di INDICE. La regola sta anche nell'intestazione di INDICE, la sua sede.
+
+### 3.4 Che cosa aspetta il proprietario
+
+- **Le sei schede ferme o diventate diari** (S-INVII, R-DATI, R-MODELLI, R-SWITCH, R-V2, R-REV):
+  la proposta è in chat. Nessuna è stata riscritta.
+- **`docs/SOTTOMISSIONE.md`**, `da-verificare` (R-015). È il resoconto del primo invio, del 13/09.
+  Il suo §1, il contratto del formato, è ancora vivo e PROCEDURE non lo contiene; il resto è
+  storia o rimanda a stadi archiviati. Proposta: il contratto va in PROCEDURE, e il file intero in
+  `docs/storico/`, dove il controllo lo trova già con il nome vecchio.

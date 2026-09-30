@@ -139,15 +139,18 @@ depositati in `G:\Il mio Drive\vcc2026\runs\queue\`.
 **Prima di mettere in coda un nuovo job** si segue [ERRORI](ERRORI.md), da «Prima del prossimo
 job» a «Registro immutabile e chiusura»: manifest di tutti gli input con hash, preflight in locale
 e poi sul runtime destinatario prima del calcolo, guasti come incidenti in sola aggiunta. Gli
-script di `notebooks/colab_jobs/` sono del 17/09 e non eseguono il preflight: i launcher che lo
-eseguono sono nella revisione lead, per esempio in `reports/analisi/lead_scientist_2026-09-29/neural/`.
+script rimasti in `notebooks/colab_jobs/` sono del 17/09 e non eseguono il preflight: i launcher che
+lo eseguono sono nella revisione lead, per esempio in `reports/analisi/lead_scientist_2026-09-29/neural/`.
+Gli script dei singoli job del 17–18/09 sono archiviati dal 30/09 ([ARCHIVIO](ARCHIVIO.md)).
 
 - **Portare il codice su Drive:** `powershell -File notebooks\colab_jobs\sync_to_drive.ps1`.
   Fa un mirror (`robocopy /MIR`) di `src`, `scripts`, `configs` e `notebooks` in `code/`:
   quello che non c'è in locale sparisce anche da Drive. Ogni job ne copia una versione
   privata alla partenza, e `code/SYNC_STAMP.txt` dice da quale commit.
 - **Mettere in coda:** `bash notebooks/colab_jobs/queue_trial.sh <NNN_nome> <TRIAL> "<GEN_ARGS>" [<file da attendere>]`
-  scrive `runs/queue/<NNN_nome>.sh` e rifiuta di sovrascrivere. Per catene di job si attende
+  scrive `runs/queue/<NNN_nome>.sh` con il corpo di `generate_trial.sh`, cioè una generazione con
+  lo stadio 76 e l'impacchettamento con il 48, e rifiuta di sovrascrivere. Un altro job si scrive
+  a mano sullo stesso schema, caricando `common.sh`. Per catene di job si attende
   il `.done` del precedente, che si scrive con qualunque codice d'uscita.
 - **Avviare:** solo il proprietario, eseguendo le celle 1 e 2 del notebook (autorizzano
   Drive). Il segno che è partito è un `NNN_*.sh.started` entro un minuto.

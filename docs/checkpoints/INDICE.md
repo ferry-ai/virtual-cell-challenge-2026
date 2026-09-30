@@ -5,7 +5,9 @@ dataset adottato o scartato, un benchmark completato, un invio valutato, un'ipot
 contraddetta, un cambio di strategia di modellazione o di validazione. Non serve un
 checkpoint per ogni modifica, esecuzione o iterazione. Queste regole stanno qui e solo qui;
 la colonna «Corretto da» è la sede delle correzioni di ogni checkpoint, e
-`python scripts/31_check_docs.py --status <checkpoint>` la mostra accanto al registro.
+`python scripts/31_check_docs.py --status <checkpoint>` la mostra accanto al registro, e dal 30/09
+per prima, prima dello stato del registro. Una riga propria del registro che dice `attuale` per un
+checkpoint corretto deve nominare il checkpoint che lo corregge: il controllo lo verifica.
 
 **I checkpoint non si riscrivono.** Se una loro conclusione risulta sbagliata, si
 scrive un checkpoint nuovo e si compila qui la colonna "Corretto da". Il testo
