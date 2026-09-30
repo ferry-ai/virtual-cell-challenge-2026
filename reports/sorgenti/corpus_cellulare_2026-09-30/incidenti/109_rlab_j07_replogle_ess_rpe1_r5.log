@@ -1,0 +1,70 @@
+job j07_replogle_ess_rpe1_r5 start 2026-09-30T21:33:29Z host=1b601ef68ff9 cpus=2
+               total        used        free      shared  buff/cache   available
+Mem:              12           1           2           0           8          11
+overlay         108G   30G   79G  28% /
+/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r6/receipts/j07_replogle_ess_rpe1_r5/environment_manifest_colab.json: scorer ok, roundtrip ok, free RAM 11.68 GB
+{"status": "PASS", "receipt": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-09-30_r6/receipts/j07_replogle_ess_rpe1_r5/preflight_runtime.json"}
+k562_essential/shard_00000: reused from /content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r4/k562_essential/shard_00000.h5ad
+k562_essential/shard_00001: reused from /content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r4/k562_essential/shard_00001.h5ad
+k562_essential/shard_00002: reused from /content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r4/k562_essential/shard_00002.h5ad
+k562_essential/shard_00003: reused from /content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j07_replogle_ess_rpe1_r4/k562_essential/shard_00003.h5ad
+k562_essential/shard_00004: 10000 cells, 36082463 nnz, 79421819 bytes, 603s
+k562_essential/shard_00005: 10000 cells, 36355632 nnz, 79937882 bytes, 731s
+k562_essential/shard_00006: 10000 cells, 36272952 nnz, 79768546 bytes, 868s
+k562_essential/shard_00007: 10000 cells, 36895103 nnz, 80942348 bytes, 1006s
+k562_essential/shard_00008: 10000 cells, 36727124 nnz, 80584168 bytes, 1136s
+k562_essential/shard_00009: 10000 cells, 36816085 nnz, 80787434 bytes, 1273s
+k562_essential/shard_00010: 10000 cells, 36327709 nnz, 79852926 bytes, 1408s
+k562_essential/shard_00011: 10000 cells, 36132328 nnz, 79515705 bytes, 1533s
+k562_essential/shard_00012: 10000 cells, 35145476 nnz, 77619505 bytes, 1661s
+k562_essential/shard_00013: 10000 cells, 36235319 nnz, 79699667 bytes, 1826s
+k562_essential/shard_00014: 10000 cells, 36008108 nnz, 79261102 bytes, 1948s
+k562_essential/shard_00015: 10000 cells, 36750574 nnz, 80693696 bytes, 2077s
+k562_essential/shard_00016: 10000 cells, 36447961 nnz, 80111077 bytes, 2206s
+k562_essential/shard_00017: 10000 cells, 35740465 nnz, 78768172 bytes, 2325s
+Traceback (most recent call last):
+  File "/content/work/rlab_j07_replogle_ess_rpe1_r5/code/reports/sorgenti/corpus_cellulare_2026-09-30/rlab_job.py", line 281, in <module>
+    main()
+    ~~~~^^
+  File "/content/work/rlab_j07_replogle_ess_rpe1_r5/code/reports/sorgenti/corpus_cellulare_2026-09-30/rlab_job.py", line 267, in main
+    units = [run_unit(u, spec, args, table, writer) for u in spec["units"]]
+             ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/work/rlab_j07_replogle_ess_rpe1_r5/code/reports/sorgenti/corpus_cellulare_2026-09-30/rlab_job.py", line 188, in run_unit
+    for shard_name, x, obs, var, uns in fn(**kwargs):
+                                        ~~^^^^^^^^^^
+  File "/content/work/rlab_j07_replogle_ess_rpe1_r5/code/reports/sorgenti/corpus_cellulare_2026-09-30/adapters.py", line 182, in h5rows
+    x = sp.csr_matrix(np.asarray(node[start:stop]))
+                                 ~~~~^^^^^^^^^^^^
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "/usr/local/lib/python3.13/dist-packages/h5py/_hl/dataset.py", line 872, in __getitem__
+    return self._fast_reader.read(args)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/_selector.pyx", line 393, in h5py._selector.Reader.read
+  File "h5py/h5fd.pyx", line 159, in h5py.h5fd.H5FD_fileobj_read
+  File "/content/work/rlab_j07_replogle_ess_rpe1_r5/code/reports/sorgenti/corpus_cellulare_2026-09-30/inspect_remote.py", line 110, in readinto
+    data = self._blk(i)
+  File "/content/work/rlab_j07_replogle_ess_rpe1_r5/code/reports/sorgenti/corpus_cellulare_2026-09-30/inspect_remote.py", line 92, in _blk
+    data, etag = self._get(lo, hi)
+                 ~~~~~~~~~^^^^^^^^
+  File "/content/work/rlab_j07_replogle_ess_rpe1_r5/code/reports/sorgenti/corpus_cellulare_2026-09-30/inspect_remote.py", line 72, in _get
+    with urllib.request.urlopen(req, timeout=120) as r:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/usr/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/usr/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/usr/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
