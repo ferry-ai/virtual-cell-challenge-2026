@@ -90,6 +90,24 @@
   Stessi file di lavoro (D) e (M); ogni esecuzione nuova scrive in cartelle e numeri di coda nuovi. L'ispettore
   `inspect_remote.py` lanciato da `ec2e5b07` alle 21:42 era ancora vivo alle 23:24 (ultimo file CD4): i suoi
   output si committano com'erano, a suo nome.
+- **Avanzamento (1/10, 01:00 CEST, Claude `07ebf08b`).** Misurato o implementato, con dove leggerlo:
+  - *le quattro regole qui sotto*: scritte in `cell_data.py` con 30 casi controllati e 15 casi da capo a fondo
+    (`test_cell_data.py`, `test_prepass.py`), rivedute su due note di Codex (identità per provenienza; nessuna soglia
+    relativa ai controlli rifiuta da sola una forte perdita di RNA); il loro esito su dati reali è il pre-passo del
+    primo training (sotto);
+  - *training in due stadi*: `train_cellnet.py prepass` su CPU, `train` su GPU con processi di caricamento, checkpoint
+    periodici, ripresa esatta nella sequenza dei dati (catena degli hash dei lotti), throughput e memoria misurati,
+    fine pianificata con riserve per valutazione ed esportazione; `kaggle_train.py` per i kernel. Su Kaggle il ciclo
+    r2 (CPU, pochi shard reali) ha ripreso con sequenza identica e parametri entro 7,2e-7 su 74,5;
+  - *incidenti*: E-20260930-001 (cache del lettore HTTP, verificato in remoto dal job 108), -002 (firme S3 di
+    Figshare da 10 secondi, job 114 in verifica), -003 (categorie AnnData vecchie lette come codici: gli shard di
+    Replogle di J06 e J07 non hanno controlli; rilettura con i job 114 e 115, il dataset `rlab-k562-gwps` del 30/09
+    non entra in nessun training);
+  - *dati su `davidmaisterx`*: HepG2, Jurkat di Nadig, H1 train e validation (job 108), HIPSCI in tre dataset (job 111);
+    catalogo del corpus in [catalogo_r1](../../reports/sorgenti/corpus_cellulare_2026-09-30/catalogo_r1/CATALOGO.md);
+  - *primo training reale*: protocollo e regola di lettura scritti prima del lancio in
+    [cellnet_tecnico_2026-10-01](../../reports/modelli/cellnet_tecnico_2026-10-01/PROTOCOLLO.md); autorizzazioni del
+    proprietario dell'1/10, 00:29, in AUTORIZZAZIONI (tutto, compreso uno scoring).
 - **Aperti prima del training esteso (proprietario in chat, 30/09, prima delle 23:39):** quattro punti della
   revisione di Codex che i 13 casi di `test_cell_data.py` non coprono. Restano aperti finché ognuno non ha una regola
   scritta in `cell_data.py`, casi controllati che la provano e il suo esito nel pre-passo di un training vero:
