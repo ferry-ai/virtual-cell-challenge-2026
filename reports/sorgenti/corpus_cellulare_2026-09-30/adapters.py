@@ -110,7 +110,12 @@ def _h5_text(values):
 
 
 def _h5_column(group, name):
-    """An anndata dataframe column as text (categorical, string or numeric), or None when absent."""
+    """An anndata dataframe column as text (categorical, string or numeric), or None when absent.
+
+    Categoricals come in two encodings: a group with codes and categories (anndata >= 0.7), or, in older files, a
+    dataset of integer codes with the categories in `<frame>/__categories/<name>` (the Replogle 2022 files on
+    Figshare). The old one was read as its codes until 1/10: the targets of J06 and J07 were numbers and no control
+    was found."""
     import h5py
     if name is None or name not in group:
         return None
@@ -123,6 +128,11 @@ def _h5_column(group, name):
         values = node["values"][:]
         mask = node["mask"][:] if "mask" in node else np.zeros(values.shape, bool)
         return np.where(mask, MISSING, _h5_text(values)).astype(object)
+    legacy = group["__categories"] if "__categories" in group else None
+    if legacy is not None and name in legacy:
+        cats = _h5_text(legacy[name][:])
+        codes = node[:].astype(np.int64)
+        return np.where(codes >= 0, cats[np.clip(codes, 0, None)], MISSING).astype(object)
     return _h5_text(node[:])
 
 
