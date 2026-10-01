@@ -8,6 +8,7 @@ Invecchiano in fretta: prima di seguirne un «prossimo passo», controllare
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 01/10 | [presa_rlead_2026-10-01/](presa_rlead_2026-10-01/) | Presa in carico R-LEAD del teammate: ambiente verificato (Python 3.12, scorer, GPU), input assenti sulla macchina, prove dell'audit riprodotte con valori identici, matrice di applicabilità e blocchi | ambiente misurato e riproduzioni; correzioni nella cartella cellnet_rlead | ★★ |
 | 01/10 | [handoff_teammate_2026-10-01/](handoff_teammate_2026-10-01/) | Consegna del programma al teammate: brief e prompt in docs, inventario portabile per Git/runtime/input/applicabilità e verifica sul computer di origine | istruzioni e preflight; readiness del destinatario da misurare | ★★ |
 | 01/10 | [lead_audit_2026-10-01/](lead_audit_2026-10-01/) | Audit lead di corpus e cellnet: replay esatto dei pesi r2, split r5/r7 instabili, controlli HepG2 non appaiati dopo il cap, controesempi unknown/basale/QC; lettura di 145.473 cellule, rumore C/J e complementarità col transfer; D-050 e programma R-LEAD | nuove misure esplorative e difetti riprodotti; nessun nuovo score o training | ★★★ |
 | 30/09 | [test_orientamento_2026-09-30/](test_orientamento_2026-09-30/) | Protocollo dei test di orientamento: quanto in fretta un agente nuovo trova risposte precise e attuali partendo da `CLAUDE.md`; nove compiti, 46 domande con fonte, soglia fissata prima, script riutilizzabile | protocollo, non eseguito | ★ |

@@ -1,0 +1,200 @@
+{
+  "desc": {
+    "C": {
+      "groups": 400,
+      "unique_symbols": 400,
+      "ll_gain_vs_no_effect": {
+        "mean": 0.03061945083376486,
+        "median": 0.02411148976534605,
+        "positive": 1.0,
+        "n": 400
+      },
+      "ll_gain_vs_unknown_target": {
+        "mean": 0.0019015144535796935,
+        "median": 0.0015891160001046956,
+        "positive": 0.7075,
+        "n": 400
+      },
+      "cos_model": {
+        "mean": 0.30339288129534897,
+        "median": 0.27585961642700607,
+        "positive": 0.755,
+        "n": 400
+      },
+      "cos_transfer": {
+        "mean": 0.4053729966011837,
+        "median": 0.40074271260689076,
+        "positive": 0.985,
+        "n": 400
+      },
+      "cos_generic": {
+        "mean": -0.07593903780295543,
+        "median": -0.09912881044531119,
+        "positive": 0.255,
+        "n": 400
+      },
+      "pi_mean": {
+        "mean": 0.39034557435661554,
+        "median": 0.3765856772661209,
+        "positive": 1.0,
+        "n": 400
+      },
+      "cells": {
+        "mean": 136.41,
+        "median": 108.0,
+        "positive": 1.0,
+        "n": 400
+      },
+      "admitted_cells": {
+        "mean": 137.45,
+        "median": 108.0,
+        "positive": 1.0,
+        "n": 400
+      },
+      "likelihood_positive_cosine_negative": 88,
+      "model_minus_transfer": {
+        "mean": -0.10198011530583476,
+        "win_fraction": 0.4,
+        "exploratory_target_bootstrap_95": [
+          -0.1245269145624219,
+          -0.07929682196002809
+        ],
+        "caveat": "one held-out context; targets are not independent biological families"
+      }
+    },
+    "T": {
+      "groups": 400,
+      "unique_symbols": 340,
+      "ll_gain_vs_no_effect": {
+        "mean": 0.005045967845071573,
+        "median": 0.0029442739905789495,
+        "positive": 0.975,
+        "n": 400
+      },
+      "ll_gain_vs_unknown_target": {
+        "mean": 0.0016987674843316825,
+        "median": 0.0020380052737891674,
+        "positive": 0.8675,
+        "n": 400
+      },
+      "cos_model": {
+        "mean": 0.06874290335102212,
+        "median": 0.07611212868640796,
+        "positive": 0.6,
+        "n": 400
+      },
+      "cos_generic": {
+        "mean": 0.19745204613209563,
+        "median": 0.18590450890378396,
+        "positive": 0.6025,
+        "n": 400
+      },
+      "pi_mean": {
+        "mean": 0.3308433401408413,
+        "median": 0.31828582286834717,
+        "positive": 1.0,
+        "n": 400
+      },
+      "cells": {
+        "mean": 396.46,
+        "median": 377.0,
+        "positive": 1.0,
+        "n": 400
+      },
+      "admitted_cells": {
+        "mean": 498.505,
+        "median": 377.0,
+        "positive": 1.0,
+        "n": 400
+      },
+      "likelihood_positive_cosine_negative": 119
+    },
+    "J": {
+      "groups": 206,
+      "unique_symbols": 206,
+      "ll_gain_vs_no_effect": {
+        "mean": 0.027954677940409595,
+        "median": 0.021951111033558846,
+        "positive": 1.0,
+        "n": 206
+      },
+      "ll_gain_vs_unknown_target": {
+        "mean": 0.0012598377805579288,
+        "median": 0.0017937588854692876,
+        "positive": 0.7184466019417476,
+        "n": 206
+      },
+      "cos_model": {
+        "mean": 0.19402238503769806,
+        "median": 0.12882151556667334,
+        "positive": 0.6796116504854369,
+        "n": 206
+      },
+      "cos_generic": {
+        "mean": -0.17683761195561473,
+        "median": -0.18670281054348342,
+        "positive": 0.08737864077669903,
+        "n": 206
+      },
+      "pi_mean": {
+        "mean": 0.3727393266066764,
+        "median": 0.3532208949327469,
+        "positive": 1.0,
+        "n": 206
+      },
+      "cells": {
+        "mean": 58.47572815533981,
+        "median": 46.0,
+        "positive": 1.0,
+        "n": 206
+      },
+      "admitted_cells": {
+        "mean": 61.93689320388349,
+        "median": 46.0,
+        "positive": 1.0,
+        "n": 206
+      },
+      "likelihood_positive_cosine_negative": 60
+    }
+  },
+  "identity_gate": {
+    "C": 0.9975,
+    "T": 1.0,
+    "J": 1.0
+  },
+  "common": {
+    "C": {
+      "groups": 345,
+      "r2_cosine": 0.27325200528955984,
+      "r3_cosine": 0.297190401820022,
+      "caveat": "common labels only; corpus, controls, training exposure and fitted model differ"
+    },
+    "T": {
+      "groups": 29,
+      "r2_cosine": -0.13212802375643562,
+      "r3_cosine": 0.1689754697673131,
+      "caveat": "common labels only; corpus, controls, training exposure and fitted model differ"
+    },
+    "J": {
+      "groups": 20,
+      "r2_cosine": -0.01683270012702544,
+      "r3_cosine": 0.036734940268412834,
+      "caveat": "common labels only; corpus, controls, training exposure and fitted model differ"
+    }
+  },
+  "gate": {
+    "response_loglik_better_by": 1.0,
+    "results": {
+      "current_clamp": {
+        "pi": 9.99999999999999e-09,
+        "negative_loglik_gradient_gate_logit": 9.999972817255325e-09
+      },
+      "logsigmoid": {
+        "pi": 9.99999999999999e-09,
+        "negative_loglik_gradient_gate_logit": -1.718281781751303e-08
+      }
+    },
+    "interpretation": "below clamp, current gradient descent further closes gate despite better response; stable log weights reopen it",
+    "limit": "mechanism after collapse, not demonstrated cause of its onset in r3"
+  }
+}

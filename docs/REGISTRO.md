@@ -69,6 +69,8 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 | Percorso | Stato | Sostituito da | Cosa resta utile / nota | Scheda |
 |---|---|---|---|---|
+| `reports/analisi/presa_rlead_2026-10-01/` | attuale | — | Presa in carico R-LEAD del teammate (Claude, 1/10): preflight e runtime della macchina destinataria, inventario degli input, riproduzione delle prove dell'audit che non chiedono dati grezzi (valori identici), matrice di applicabilità dei difetti e blocchi. Nessun training né dato reale | — |
+| `reports/modelli/cellnet_rlead_2026-10-01/` | attuale | — | Versione corretta della rete cellulare per il passo A di R-LEAD: split stabili per hash, classi dopo il QC, pesi della loss globali, controlli per libreria indipendenti dall'ordine, miscela dal logit, braccio generico addestrato, gruppi di valutazione stratificati; 15 test di accettazione su dati sintetici. Nessun training su dati reali | — |
 | `docs/CONSEGNA_TEAMMATE.md` | attuale | — | Consegna R-LEAD richiesta il 1/10: brief, mappa della repo, ciò che Git trasferisce, input esterni e vincoli della macchina destinataria. Incarico R-LAB concorrente preservato | — |
 | `docs/PROMPT_CLAUDE_TEAMMATE.md` | attuale | — | Prompt autonomo per Claude del teammate: Git, runtime, scorer, disponibilità dati/accessi, applicabilità delle diagnosi, fase A e programma A–F con evidenza e criteri di avanzamento | — |
 | `reports/analisi/handoff_teammate_2026-10-01/` | attuale | — | Inventario portabile della consegna e verifiche sulla macchina di origine; il destinatario deve eseguire i propri check. Nessuna nuova prova del modello | — |
