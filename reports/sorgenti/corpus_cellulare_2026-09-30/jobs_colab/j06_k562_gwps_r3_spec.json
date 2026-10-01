@@ -1,0 +1,101 @@
+{
+ "job_id": "j06_k562_gwps_r3",
+ "min_free_stage_bytes": 4294967296,
+ "units": [
+  {
+   "name": "k562_gwps_a",
+   "adapter": "h5rows",
+   "kwargs": {
+    "path": "{DRIVE}/data/raw/replogle/K562_gwps_raw_singlecell_01.h5ad",
+    "study": "replogle_k562_gwps",
+    "context": "K562",
+    "chemistry": "10x 3' v3",
+    "modality": "CRISPRi",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "row_range": [
+     0,
+     1000000
+    ],
+    "target_col": "gene",
+    "control_values": [
+     "non-targeting"
+    ],
+    "guides_col": "sgID_AB",
+    "library_col": "gem_group",
+    "published_depth": "UMI_count",
+    "var_symbol_col": "gene_name",
+    "feature_id_col": "gene_id"
+   },
+   "source": {
+    "id": "replogle_k562_gwps",
+    "release": "Figshare 20029387, Replogle et al. 2022",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "raw single-cell h5ad",
+      "locator": "https://ndownloader.figshare.com/files/35775507",
+      "bytes": 65830941948,
+      "md5": "887e3e6a8c8df6eadf7a3030a53c9546",
+      "sha256": "b697ef7fedcec2972ec334608f86f2a29cb25e70c81b6725195f4cda60a9de2c",
+      "copy": "Drive data/raw/replogle/, verified at its fetch"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     0,
+     1000000
+    ]
+   }
+  },
+  {
+   "name": "k562_gwps_b",
+   "adapter": "h5rows",
+   "kwargs": {
+    "path": "{DRIVE}/data/raw/replogle/K562_gwps_raw_singlecell_01.h5ad",
+    "study": "replogle_k562_gwps",
+    "context": "K562",
+    "chemistry": "10x 3' v3",
+    "modality": "CRISPRi",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "row_range": [
+     1000000,
+     1989578
+    ],
+    "target_col": "gene",
+    "control_values": [
+     "non-targeting"
+    ],
+    "guides_col": "sgID_AB",
+    "library_col": "gem_group",
+    "published_depth": "UMI_count",
+    "var_symbol_col": "gene_name",
+    "feature_id_col": "gene_id"
+   },
+   "source": {
+    "id": "replogle_k562_gwps",
+    "release": "Figshare 20029387, Replogle et al. 2022",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "raw single-cell h5ad",
+      "locator": "https://ndownloader.figshare.com/files/35775507",
+      "bytes": 65830941948,
+      "md5": "887e3e6a8c8df6eadf7a3030a53c9546",
+      "sha256": "b697ef7fedcec2972ec334608f86f2a29cb25e70c81b6725195f4cda60a9de2c",
+      "copy": "Drive data/raw/replogle/, verified at its fetch"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     1000000,
+     1989578
+    ]
+   }
+  }
+ ],
+ "min_free_out_bytes": 0
+}

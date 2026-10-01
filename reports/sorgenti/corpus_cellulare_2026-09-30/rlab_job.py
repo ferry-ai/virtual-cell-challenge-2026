@@ -187,6 +187,14 @@ def run_unit(unit: dict, spec: dict, args, table: dict, writer: dict) -> dict:
               "crc32c": unit["source"]["files"][0].get("crc32c", "MISSING"),
               "files_json": json.dumps(unit["source"]["files"]), "license": unit["source"].get("license", "MISSING")}
     for shard_name, x, obs, var, uns in fn(**kwargs):
+        if not shards and kwargs.get("axis_csv") and "official_index" in var:
+            mapped = int((var["official_index"].to_numpy() >= 0).sum())
+            if mapped < min(1000, len(var) // 2):
+                dump_new(udir / "receipts" / f"{shard_name}.FAILED.json",
+                         {"problems": [f"{mapped} of {len(var)} features map to the official axis"], "utc": now(),
+                          "first_symbols": [str(s) for s in var["symbol"].head(5)]})
+                sys.exit(f"{name}: only {mapped} of {len(var)} features map to the official axis (symbols "
+                         f"{list(var['symbol'].head(3))}): check the symbol column of var (1/10, Replogle by gene_id)")
         uns_seen.append({k: v for k, v in uns.items() if k in ("rows", "read", "parity_source")})
         old = reusable(args.reuse, name, shard_name)
         if old is not None:
