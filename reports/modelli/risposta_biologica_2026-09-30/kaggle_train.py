@@ -96,7 +96,8 @@ def digest(path):
 chosen = {{}}
 for d, root in roots.items():
     files = json.loads((root / "files.json").read_text())
-    chosen[d] = [f for f in files if fnmatch.fnmatch(f["file"], GLOBS.get(d, "*.h5ad"))]
+    # a pattern may hold alternatives separated by "|" (1/10: the units of one dataset kept apart from the others)
+    chosen[d] = [f for f in files if any(fnmatch.fnmatch(f["file"], p) for p in GLOBS.get(d, "*.h5ad").split("|"))]
     report["datasets"][d] = {{"files": len(files), "chosen": len(chosen[d]), "cells": sum(f["cells"] for f in chosen[d])}}
 shards = [str(roots[d] / f["file"]) for d in DATASETS for f in chosen[d]]
 if PREPASS_ARGS is not None:
@@ -192,7 +193,7 @@ def main():
     k.add_argument("--slug", required=True)
     k.add_argument("--datasets", nargs="+", required=True)
     k.add_argument("--glob", action="append", default=[], metavar="DATASET=PATTERN",
-                   help="shards of a dataset to read (default all *.h5ad)")
+                   help="shards of a dataset to read (default all *.h5ad; alternatives separated by |)")
     k.add_argument("--prepass-args", default=None, help="run the prepass here with these arguments (one string)")
     k.add_argument("--prepass-from", default=None, help="kernel slug whose output holds prepass/")
     k.add_argument("--arm", action="append", default=[], metavar="NAME=TARGET_CODE",
