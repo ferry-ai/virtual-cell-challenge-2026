@@ -1,0 +1,35 @@
+{
+ "kernel": "davidmaisterx/rlab-prepass-r7",
+ "kind": "CPU, no GPU quota",
+ "commit": "8b356abf9e27aca1d530c8059df018e46108100c",
+ "kernel_builder_commit": "1cae68f (kaggle_train.py, glob alternatives)",
+ "code_dataset": "davidmaisterx/rlab-cellnet-code, version of 1/10 02:21 UTC (commit 8b356ab)",
+ "datasets": [
+  "rlab-hepg2-nadig",
+  "rlab-jurkat-nadig",
+  "rlab-h1-vcc2025-trainval",
+  "rlab-hipsci-gwfit",
+  "rlab-hipsci-gwnonfit",
+  "rlab-hipsci-targeted19",
+  "rlab-k562-gwps-r3",
+  "rlab-k562-essential-r2",
+  "rlab-rpe1-r2",
+  "rlab-a549",
+  "rlab-tian-norman",
+  "rlab-kolf-small",
+  "rlab-kolf-strong"
+ ],
+ "globs": {
+  "rlab-tian-norman": "norman2019__*.h5ad|tian2021_*.h5ad"
+ },
+ "prepass_args": [
+  "--holdout-context",
+  "HepG2",
+  "--same-experiment",
+  "h1_vcc2025=h1_vcc2025_train,h1_vcc2025_val",
+  "--workers",
+  "4"
+ ],
+ "purpose": "the third training (protocol of 03:59, deviation of 07:24): the second wave without Tian 2019 (unfiltered droplets) and without Southard (not published at launch)",
+ "launched_local": "2026-10-01T07:24:36+02:00"
+}
