@@ -11,6 +11,7 @@ Da leggere per primo: [PROTOCOLLO.md](PROTOCOLLO.md), scritto prima di ogni lanc
 | `lancio_prepass.json` | Kernel, commit, dataset e argomenti del pre-passo su CPU (`rlab-prepass-r1`) |
 | `LANCIO.md` | Il lancio del training su GPU: budget, argomenti dei bracci, ora (scritto al lancio) |
 | `esito/` | Gli output piccoli scaricati da Kaggle (piani, copertura, QC, split, valutazione, log); i file pesanti (checkpoint, stato del pre-passo) restano negli output dei kernel, con i loro sha256 in un manifest |
+| `ESITO.md` | La lettura del training su GPU (`esito/training_r1/`) con la regola del §4: la parte A non passa per intero (braccio `ident` ucciso per memoria, GPU in attesa dei dati per l'87% del tempo; incidente `E-20261001-001`) |
 
 Il codice sta in [risposta_biologica_2026-09-30](../risposta_biologica_2026-09-30/); gli shard nei dataset privati
 dell'account `davidmaisterx`, pubblicati dai job Colab di

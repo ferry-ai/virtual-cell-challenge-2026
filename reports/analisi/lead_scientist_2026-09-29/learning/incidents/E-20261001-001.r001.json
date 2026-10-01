@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "eid": "E-20261001-001",
+  "revision": 1,
+  "previous_sha256": null,
+  "recorded_utc": "2026-10-01T01:18:35+00:00",
+  "claim_type": "operational_incident",
+  "state": "observed",
+  "title": "R-LAB: primo training GPU (rlab-cellnet-r1), braccio identity ucciso per memoria e GPU in attesa dei dati per l'87% del tempo",
+  "symptom": "Il kernel rlab-cellnet-r1 (T4x2, 1/10 dalle 02:05 CEST) finisce in ERROR con codici [0, 1]. Il braccio identity muore al passo 2.800 circa (00:29:49 UTC) con 'DataLoader worker (pid 120) is killed by signal: Killed'. Il braccio descriptors finisce (4.653 passi, 1,117 epoche, ogni cellula ammessa vista, valutazione completa), ma dopo il passo 100 addestra a 510-650 cellule/s con data_wait_fraction 0,87-0,92, contro le 3.763 cellule/s e l'attesa 0,025 del piano. Mentre girano i due bracci la memoria disponibile della macchina scende fino a 6.337 MB. La riserva per la valutazione e 3.914 s, la valutazione ne prende 1.621: il kernel finisce dopo 62 minuti su un budget di 100 per braccio.",
+  "cause": "Indicata dai log, da verificare con la profilazione del caricatore (kernel CPU rlab-loader-profile-r1). Ogni braccio e un processo con due processi di caricamento. Ognuno legge shard h5ad interi compressi con gzip (circa 174 MB, 14 mila cellule, di cui circa 7 mila ammesse) e li converte in CSR passando per COO e ordinamento. I due bracci sono in parallelo su 4 CPU e 32 GB: ogni braccio tiene circa 3 GB nel processo principale e 8 GB nei processi di caricamento. Il piano misura il throughput sui passi 20-80, serviti dal buffer iniziale gia letto, quindi non rappresentativi. La riserva della valutazione moltiplica per 1,5 il costo per cellula di una sonda di 1.024 cellule, che include la lettura dei suoi shard.",
+  "cause_verified": false,
+  "fix": "Da fare prima del secondo training: misurare dove va il tempo del caricatore su shard reali (CPU, senza quota GPU); un percorso di lettura senza COO e ordinamento, che restituisce la stessa matrice (verificato in locale su uno shard sintetico con collisioni e feature fuori asse); meno processi in concorrenza sulle 4 CPU e sulla memoria; un throughput del piano misurato a regime, dopo i primi ricambi di shard.",
+  "regression_test": "Da scrivere con la correzione.",
+  "next_guard": "Prima di un training lungo, una corsa breve su GPU o su CPU con gli stessi shard deve misurare il throughput a regime, dopo che ogni ruolo ha letto almeno due shard oltre il buffer iniziale, e la memoria di tutti i processi insieme.",
+  "scope": "Riguarda il caricatore di train_cellnet.py e il kernel generato da kaggle_train.py, non i dati. La verifica degli hash (183 shard) e la ripresa su CUDA (resume_check) passano.",
+  "evidence": [
+    {
+      "path": "reports/modelli/cellnet_tecnico_2026-10-01/esito/training_r1/kernel_done.json",
+      "sha256": "5bc549c380fc2d08648fa406316a12db0b3a70155a9879ac7f4037afc39491c6",
+      "bytes": 89,
+      "supports": "Codici di uscita dei bracci [0, 1] dopo 3.728,6 s"
+    },
+    {
+      "path": "reports/modelli/cellnet_tecnico_2026-10-01/esito/training_r1/ident.log",
+      "sha256": "21df66b7d86b1207fef2cdcf13db5704ddc60fb9f2f65d6ea27367776625efe5",
+      "bytes": 14572,
+      "supports": "Processo di caricamento del braccio identity ucciso con SIGKILL"
+    },
+    {
+      "path": "reports/modelli/cellnet_tecnico_2026-10-01/esito/training_r1/desc/train_log.jsonl",
+      "sha256": "51c46d6dc6acb8fc46193213d7e5ab6b2a80ffa514c3cc0808f93053b8a129e1",
+      "bytes": 21159,
+      "supports": "Cellule/s, frazione di attesa dei dati, memoria disponibile e durata della valutazione del braccio descriptors"
+    },
+    {
+      "path": "reports/modelli/cellnet_tecnico_2026-10-01/esito/training_r1/desc/plan.json",
+      "sha256": "e475ad9af95c245a44680a3689a100418669af617066d3c8753cc1c84c4eb221",
+      "bytes": 733,
+      "supports": "Throughput del piano (3.763 cellule/s, attesa 0,025) misurato sui passi 20-80"
+    },
+    {
+      "path": "reports/modelli/cellnet_tecnico_2026-10-01/esito/training_r1/ident/train_log.jsonl",
+      "sha256": "f74749bf413966dfe5a24070ade8ff63036aff03cf21910ff9241aaefeb0b5d7",
+      "bytes": 12597,
+      "supports": "Ultimo passo del braccio identity e memoria dei suoi processi"
+    },
+    {
+      "path": "reports/modelli/cellnet_tecnico_2026-10-01/esito/training_r1/env.json",
+      "sha256": "cd3e020042bf209cd22f37e51f6da030bfe37b153338b22404c80fe543fd23b5",
+      "bytes": 1139,
+      "supports": "4 CPU, 32 GB di RAM, due T4"
+    }
+  ],
+  "remote_verification": null
+}

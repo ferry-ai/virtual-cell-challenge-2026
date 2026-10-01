@@ -1,0 +1,72 @@
+{
+ "args": {
+  "cmd": "train",
+  "prepass": "/kaggle/input/notebooks/davidmaisterx/rlab-prepass-r3/prepass",
+  "out": "/kaggle/working/desc_cycle_ref",
+  "descriptors": "/kaggle/input/datasets/davidmaisterx/rlab-cellnet-code",
+  "target_code": "descriptors",
+  "epochs": "10.0",
+  "batch": "256",
+  "ctrl_k": "64",
+  "buffer_shards": "4",
+  "dim": "128",
+  "rank": "128",
+  "lr": "0.001",
+  "seed": "0",
+  "workers": "2",
+  "roles": "2",
+  "prefetch": "8",
+  "budget_minutes": "100.0",
+  "reserve_export_minutes": "5",
+  "checkpoint_minutes": "15.0",
+  "keep_checkpoints": "3",
+  "measure_from": "20",
+  "measure_steps": "60",
+  "eval_chunk": "512",
+  "eval_reserve_seconds": "120.0",
+  "log_every": "100",
+  "resume": "None",
+  "shard_roots": "['/kaggle/input']",
+  "no_verify": "False",
+  "stop_after_steps": "100",
+  "device": "cuda:0",
+  "input_dim": "2048",
+  "descriptors_sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80"
+ },
+ "same_on_resume": {
+  "target_code": "descriptors",
+  "epochs": "10.0",
+  "batch": "256",
+  "ctrl_k": "64",
+  "buffer_shards": "4",
+  "input_dim": "2048",
+  "dim": "128",
+  "rank": "128",
+  "lr": "0.001",
+  "seed": "0",
+  "roles": "2",
+  "descriptors_sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80"
+ },
+ "device": "cuda:0",
+ "started_utc": "2026-10-01T00:06:22.097787+00:00",
+ "prepass_sha256": "3d1fe050f709cc6251c2c6e73fcb26407e02b6b8390b4c412772cb5dc42d2daa",
+ "resumed_from": null,
+ "code": {
+  "cellnet.py": "fd7e24da86edd890d9b1f8de8849d5705f4565e0e37de27712831238cd94ae34",
+  "cell_data.py": "f00bdd2bbcab2f90bb38af6a99073c31093ea72717b15df99ac3c16339201a50",
+  "train_cellnet.py": "633ee9eb75223d17de04f1465b799d969591067001a3238b29feb3f5e3818610"
+ },
+ "descriptors": {
+  "sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80",
+  "dims": 284,
+  "symbols_with_descriptors": 7128,
+  "symbols": 7490
+ },
+ "study_weights": {
+  "jurkat_nadig": 0.7483973481674253,
+  "h1_vcc2025": 0.6867606446560324,
+  "hipsci_targeted_19": 0.3117498507522031
+ },
+ "admitted_training_cells": 1066336,
+ "parameters": 7736313
+}

@@ -135,6 +135,9 @@ class Stages(unittest.TestCase):
         shutil.copytree(sh, d / "elsewhere" / "mounted")             # another runtime: the shards moved
         cls.mv = run("train", "--prepass", pre, "--out", d / "mv", "--target-code", "identity", "--roles", "2",
                      "--stop-after-steps", "4", "--shard-roots", d / "elsewhere", *TRAIN_SMALL)
+        # two arms on one batch stream, loader processes for training and evaluation (1/10, E-20261001-001)
+        cls.ma = run("train", "--prepass", pre, "--out", d / "ma", "--arm", "i1=identity", "--arm", "i2=identity",
+                     "--roles", "2", "--workers", "2", *TRAIN_SMALL)
 
     @classmethod
     def tearDownClass(cls):
@@ -148,7 +151,7 @@ class Stages(unittest.TestCase):
         return torch.load(self.d / run_dir / "checkpoints" / f"ckpt_{step:07d}.pt", weights_only=False)
 
     def test_every_stage_finished(self):
-        for name in ("pre", "pre_rep", "full", "r1", "r2", "r3", "w2", "w0", "tb", "mv"):
+        for name in ("pre", "pre_rep", "full", "r1", "r2", "r3", "w2", "w0", "tb", "mv", "ma"):
             proc = getattr(self, name)
             self.assertEqual(proc.returncode, 0, f"{name}: {proc.stderr[-3000:]}")
         self.assertTrue((self.d / "run" / "eval.json").is_file())
@@ -231,9 +234,9 @@ class Stages(unittest.TestCase):
     def test_resume_reaches_the_state_of_an_uninterrupted_run(self):
         import torch
         a, b = self.ckpt("r2", 10), self.ckpt("r3", 10)
-        for k in a["model"]:
-            self.assertTrue(torch.equal(a["model"][k], b["model"][k]), k)
-        sa, sb = a["opt"]["state"], b["opt"]["state"]
+        for k in a["models"]["main"]:
+            self.assertTrue(torch.equal(a["models"]["main"][k], b["models"]["main"][k]), k)
+        sa, sb = a["opts"]["main"]["state"], b["opts"]["main"]["state"]
         self.assertEqual(sorted(sa), sorted(sb))
         for k in sa:
             self.assertTrue(torch.equal(sa[k]["exp_avg"], sb[k]["exp_avg"]))
@@ -270,9 +273,33 @@ class Stages(unittest.TestCase):
     def test_loader_processes_give_the_same_batches(self):
         import torch
         a, b = self.ckpt("w2", 8), self.ckpt("w0", 8)
-        for k in a["model"]:
-            self.assertTrue(torch.equal(a["model"][k], b["model"][k]), k)
+        for k in a["models"]["main"]:
+            self.assertTrue(torch.equal(a["models"]["main"][k], b["models"]["main"][k]), k)
         self.assertTrue(np.array_equal(a["seen"], b["seen"]))
+
+    def test_arms_on_one_stream_train_as_alone(self):
+        import torch
+        cov = self.read("ma", "coverage.json")
+        self.assertEqual(cov["arms"], ["i1", "i2"])
+        last = cov["steps"]
+        self.assertEqual(self.read("run", "coverage.json")["steps"], last)
+        ma, alone = self.ckpt("ma", last), self.ckpt("run", last)
+        self.assertEqual(ma["batch_chain"], alone["batch_chain"])            # the same batches
+        for k in alone["models"]["main"]:
+            for arm in ("i1", "i2"):
+                self.assertTrue(torch.equal(ma["models"][arm][k], alone["models"]["main"][k]), (arm, k))
+        ev = {arm: self.read("ma", f"{arm}/eval.json")["summary"] for arm in ("i1", "i2")}
+        ref = self.read("run", "eval.json")["summary"]
+        self.assertTrue(ev["i1"]["evaluation"]["complete"])
+        self.assertEqual(ev["i1"]["evaluation"]["workers"], 2)              # shards read by loader processes
+        for c in ("C", "T", "J"):
+            for f in ("groups", "ll_gain_vs_no_effect", "cos_model"):
+                for arm in ("i1", "i2"):
+                    if isinstance(ref[c].get(f), float):
+                        self.assertAlmostEqual(ev[arm][c][f], ref[c][f], places=9, msg=(arm, c, f))
+                    else:
+                        self.assertEqual(ev[arm][c].get(f), ref[c].get(f), (arm, c, f))
+        self.assertTrue((self.d / "ma" / "i2" / "model.pt").is_file())
 
     def test_coverage_counts_consumed_cells(self):
         cov = self.read("run", "coverage.json")

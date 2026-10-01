@@ -7,17 +7,19 @@
      publish_kaggle.py), four files at a time;
   2. runs the prepass on CPU when --prepass-args is given (no GPU quota: use --cpu), or reads the prepass state from
      the output of an earlier kernel (--prepass-from);
-  3. runs the training arms at once, one per GPU (cuda:0, cuda:1), each with its own budget and checkpoints;
-  4. with --cycle S1 S2 (a check on few shards): an arm stopped at step S1 and resumed to S2 must end in the state of
-     an arm run straight to S2 (resume_check.json), then the first arm is trained to its end and evaluated.
-  Outputs stay in /kaggle/working: verify.json, prepass/, one folder per arm, their logs.
+  3. runs one training process whose arms (--arm NAME=TARGET_CODE, one per GPU: cuda:0, cuda:1) share the batch
+     stream, the loader processes, the budget and the checkpoints (1/10, incident E-20261001-001: one process per arm
+     read every shard twice and filled the memory);
+  4. with --cycle S1 S2: a run stopped at step S1 and resumed to S2 must end in the state of a run straight to S2, for
+     every arm (resume_check.json); then the training runs to its end and is evaluated.
+  Outputs stay in /kaggle/working: verify.json, prepass/, train/ (one folder per arm inside), the logs.
 
     python kaggle_train.py code --config-dir ~/.kaggle --stage <new dir> --descriptors <dir> --axis gene_names.csv \
         --version-note "..."
     python kaggle_train.py kernel --config-dir ~/.kaggle --stage <new dir> --slug rlab-prepass-r1 --cpu \
         --datasets rlab-hepg2-nadig ... --prepass-args="--holdout-context HepG2"
-    python kaggle_train.py kernel --config-dir ~/.kaggle --stage <new dir> --slug rlab-cellnet-r1 --datasets ... \
-        --prepass-from rlab-prepass-r1 --arm desc="--target-code descriptors ..." --arm ident="--target-code identity ..."
+    python kaggle_train.py kernel --config-dir ~/.kaggle --stage <new dir> --slug rlab-cellnet-r2 --datasets ... \
+        --prepass-from rlab-prepass-r1 --arm desc=descriptors --arm ident=identity --train-args="--epochs 10 ..."
 """
 from __future__ import annotations
 
@@ -44,6 +46,7 @@ GLOBS = {globs}
 PREPASS_ARGS = {prepass_args}
 PREPASS_FROM = {prepass_from}
 ARMS = {arms}
+TRAIN_ARGS = {train_args}
 CYCLE = {cycle}
 GPU = {gpu}
 t0 = time.time()
@@ -126,27 +129,30 @@ else:
     prepass = mount(PREPASS_FROM) / "prepass"
 # training finds the shards of the prepass state by name and size below /kaggle/input and hashes them against the
 # state in a background thread (train_cellnet.resolve_shards, HashCheck): the GPU does not wait on it
-train = lambda name, args, dev, extra=(): [PY, TC, "train", "--prepass", prepass, "--out", OUT / name, "--descriptors",
-                                           CODE, "--device", dev, "--shard-roots", INPUT, *args, *extra]
+ARM_FLAGS = []
+for i, (name, code) in enumerate(ARMS):
+    ARM_FLAGS += ["--arm", f"{{name}}={{code}}@" + (f"cuda:{{i}}" if GPU else "cpu")]
+train = lambda out, extra=(): [PY, TC, "train", "--prepass", prepass, "--out", OUT / out, "--descriptors", CODE,
+                               "--shard-roots", INPUT, *ARM_FLAGS, *TRAIN_ARGS, *extra]
 if CYCLE:
     s1, s2 = CYCLE
-    name, args = ARMS[0]
-    dev = "cuda:0" if GPU else "cpu"
-    checks = {{"device": dev, "steps": [s1, s2]}}
+    checks = {{"arms": ARM_FLAGS, "steps": [s1, s2]}}
     for tag, extra in (("ref", ["--stop-after-steps", s2]), ("a", ["--stop-after-steps", s1]),
-                       ("b", ["--resume", OUT / f"{{name}}_cycle_a", "--stop-after-steps", s2])):
-        checks[f"rc_{{tag}}"] = run(train(f"{{name}}_cycle_{{tag}}", args, dev, list(map(str, extra))),
-                                   f"{{name}}_cycle_{{tag}}.log").wait()
+                       ("b", ["--resume", OUT / "cycle_a", "--stop-after-steps", s2])):
+        # the short runs of the cycle skip the shard hashes: the training that follows checks them
+        checks[f"rc_{{tag}}"] = run(train(f"cycle_{{tag}}", list(map(str, extra)) + ["--no-verify"]),
+                                   f"cycle_{{tag}}.log").wait()
     import torch
-    ref = torch.load(OUT / f"{{name}}_cycle_ref" / "checkpoints" / f"ckpt_{{s2:07d}}.pt", map_location="cpu", weights_only=False)
-    res = torch.load(OUT / f"{{name}}_cycle_b" / "checkpoints" / f"ckpt_{{s2:07d}}.pt", map_location="cpu", weights_only=False)
-    diff = max(float((ref["model"][k].float() - res["model"][k].float()).abs().max()) for k in ref["model"])
-    scale = max(float(ref["model"][k].float().abs().max()) for k in ref["model"])
+    ref = torch.load(OUT / "cycle_ref" / "checkpoints" / f"ckpt_{{s2:07d}}.pt", map_location="cpu", weights_only=False)
+    res = torch.load(OUT / "cycle_b" / "checkpoints" / f"ckpt_{{s2:07d}}.pt", map_location="cpu", weights_only=False)
+    pairs = [(ref["models"][m][k], res["models"][m][k]) for m in ref["models"] for k in ref["models"][m]]
+    diff = max(float((u.float() - v.float()).abs().max()) for u, v in pairs)
+    scale = max(float(u.float().abs().max()) for u, _ in pairs)
     checks.update({{"batch_chain_equal": ref["batch_chain"] == res["batch_chain"],
                    "seen_equal": bool((ref["seen"] == res["seen"]).all()), "draws_equal": ref["draws"] == res["draws"],
                    "n_drawn_equal": ref["n_drawn"] == res["n_drawn"],
-                   "model_max_abs_diff": diff, "model_max_abs": scale,
-                   "model_equal": all(torch.equal(ref["model"][k], res["model"][k]) for k in ref["model"]),
+                   "models_compared": sorted(ref["models"]), "model_max_abs_diff": diff, "model_max_abs": scale,
+                   "model_equal": all(torch.equal(u, v) for u, v in pairs),
                    "rule": "the data sequence must be equal; parameters within 1e-5 of the largest parameter on CPU "
                            "(sums over several threads: cycle r2 of 1/10 differed by 7.2e-7 on 74.5) and within 1e-3 "
                            "on GPU (atomic sums are not deterministic)"}})
@@ -156,12 +162,11 @@ if CYCLE:
     print("resume check", checks, flush=True)
     if not checks["passed"]:
         raise SystemExit("the resume check failed: see resume_check.json")
-procs = [run(train(name, args, f"cuda:{{i}}" if GPU else "cpu"), f"{{name}}.log") for i, (name, args) in enumerate(ARMS)]
-codes = [p.wait() for p in procs]
-(OUT / "kernel_done.json").write_text(json.dumps({{"arms": [a[0] for a in ARMS], "return_codes": codes,
+code = run(train("train"), "train.log").wait() if ARMS else None      # a prepass kernel trains nothing
+(OUT / "kernel_done.json").write_text(json.dumps({{"arms": ARMS, "return_code": code,
                                                    "seconds": round(time.time() - t0, 1)}}, indent=1))
-if any(codes):
-    raise SystemExit(f"an arm failed: {{codes}}")
+if code:
+    raise SystemExit(f"the training failed with code {{code}}: see train.log")
 '''
 
 
@@ -190,7 +195,9 @@ def main():
                    help="shards of a dataset to read (default all *.h5ad)")
     k.add_argument("--prepass-args", default=None, help="run the prepass here with these arguments (one string)")
     k.add_argument("--prepass-from", default=None, help="kernel slug whose output holds prepass/")
-    k.add_argument("--arm", action="append", default=[], metavar="NAME=ARGS", help="a training arm (one string)")
+    k.add_argument("--arm", action="append", default=[], metavar="NAME=TARGET_CODE",
+                   help="an arm of the one training process, on the next GPU (repeatable)")
+    k.add_argument("--train-args", default="", help="the training arguments every arm shares (one string)")
     k.add_argument("--cycle", nargs=2, type=int, metavar=("S1", "S2"))
     k.add_argument("--cpu", action="store_true", help="no GPU (no GPU quota): the prepass, or a check on few shards")
     k.add_argument("--dry-run", action="store_true", help="write the stage and compile run.py, push nothing")
@@ -215,11 +222,14 @@ def main():
         sys.exit("give either --prepass-args or --prepass-from")
     if a.cycle and not a.arm:
         sys.exit("--cycle needs an arm")
-    arms = [[x.split("=", 1)[0], shlex.split(x.split("=", 1)[1])] for x in a.arm]
+    arms = [x.split("=", 1) for x in a.arm]
+    if any(len(x) != 2 or x[1] not in ("descriptors", "identity", "both") for x in arms):
+        sys.exit("--arm NAME=descriptors|identity|both")
     globs = dict(x.split("=", 1) for x in a.glob)
     text = KERNEL.format(owner=repr(OWNER), datasets=json.dumps(a.datasets), globs=json.dumps(globs),
                          prepass_args=json.dumps(shlex.split(a.prepass_args)) if a.prepass_args is not None else "None",
                          prepass_from=repr(a.prepass_from), arms=json.dumps(arms),
+                         train_args=json.dumps(shlex.split(a.train_args)),
                          cycle=json.dumps(a.cycle) if a.cycle else "None", gpu="False" if a.cpu else "True")
     (a.stage / "run.py").write_text(text, encoding="utf-8")
     meta = {"id": f"{OWNER}/{a.slug}", "title": a.slug, "code_file": "run.py", "language": "python",

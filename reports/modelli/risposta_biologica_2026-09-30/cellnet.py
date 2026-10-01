@@ -109,7 +109,13 @@ def index_shard(path: Path) -> ShardInfo:
 def read_csr(path, official_index, measured, gene_of_axis: np.ndarray, n_model_genes: int):
     """A shard's counts as CSR on the model genes and the mask of model genes the shard measures. Features off the
     model are dropped; features that collide on one model gene are dropped and that gene is masked
-    (cell_data.feature_columns), so no count is ever summed across features. Returns (csr, mask)."""
+    (cell_data.feature_columns), so no count is ever summed across features. Returns (csr, mask).
+
+    The stored CSR is filtered in place: columns remapped, entries off the model dropped, the row pointer rebuilt
+    from a running count of the kept entries; no COO, no sum, no sort (1/10, incident E-20261001-001: the loader of
+    the first GPU training kept the GPU waiting). Within a row the columns keep the shard's native order: the matrix
+    is the one the COO path built, but its indices may be unsorted, and whoever needs them sorted sorts them
+    (cell_data.fingerprints does)."""
     import scipy.sparse as sp
     import cell_data as CD
     with h5py.File(path, "r") as f:
@@ -119,10 +125,9 @@ def read_csr(path, official_index, measured, gene_of_axis: np.ndarray, n_model_g
     col, mask, _ = CD.feature_columns(official_index, measured, gene_of_axis, n_model_genes)
     new_col = col[indices]
     ok = new_col >= 0
-    counts = np.diff(indptr)
-    row = np.repeat(np.arange(shape[0]), counts)[ok]
-    m = sp.csr_matrix((data[ok].astype(np.float32), (row, new_col[ok])), shape=(shape[0], n_model_genes))
-    m.sort_indices()
+    kept = np.concatenate([[0], np.cumsum(ok, dtype=np.int64)])
+    m = sp.csr_matrix((data[ok].astype(np.float32, copy=False), new_col[ok].astype(np.int32), kept[indptr]),
+                      shape=(shape[0], n_model_genes))
     return m, mask
 
 

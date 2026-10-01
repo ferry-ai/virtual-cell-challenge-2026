@@ -43,6 +43,7 @@ import argparse
 import glob
 import hashlib
 import json
+import math
 import os
 import pickle
 import random
@@ -71,7 +72,7 @@ DRAWN = "train"
 STATE = "prepass.pkl"
 CLASSES = ["train", "C", "T", "J", "control_holdout", "combined:train", "combined:T", "combined:C", "combined:J",
            "unlabelled"]
-SAME_ON_RESUME = ("target_code", "epochs", "batch", "ctrl_k", "buffer_shards", "input_dim", "dim", "rank", "lr", "seed",
+SAME_ON_RESUME = ("arms", "epochs", "batch", "ctrl_k", "buffer_shards", "input_dim", "dim", "rank", "lr", "seed",
                   "roles", "descriptors_sha256")
 
 
@@ -627,15 +628,19 @@ class ShardCache:
     def __init__(self, shards, gene_of_axis, G, size, rows_of=lambda s: s["train_rows"]):
         self.shards, self.gene_of_axis, self.G, self.size, self.rows_of = shards, gene_of_axis, G, size, rows_of
         self.cache = OrderedDict()
+        self.reads, self.read_seconds = 0, 0.0
 
     def get(self, sid):
         if sid in self.cache:
             self.cache.move_to_end(sid)
             return self.cache[sid]
         s = self.shards[sid]
+        t0 = time.time()
         x, _ = CN.read_csr(s["path"], s["official_index"], s["measured"], self.gene_of_axis, self.G)
         keep = np.asarray(self.rows_of(s))
         self.cache[sid] = (keep, x[keep])
+        self.reads += 1
+        self.read_seconds += time.time() - t0
         while len(self.cache) > self.size:
             self.cache.popitem(last=False)
         return self.cache[sid]
@@ -749,9 +754,10 @@ class HashCheck:
         return not self.bad
 
 
-def memory(dev=None) -> dict:
-    """Peak resident memory of this process and of its live loader processes, the device's peak allocation, and the
-    memory still available on the machine (Linux), in MB."""
+def memory(devs=None) -> dict:
+    """Peak resident memory of this process and of its live loader processes, the memory still available on the
+    machine (Linux), in MB; for each CUDA device of `devs` (one device or a list) its peak allocation and reservation:
+    at the top for one device, by device for several."""
     out = {}
     try:
         import resource
@@ -766,10 +772,68 @@ def memory(dev=None) -> dict:
         out["system_available_mb"] = round(psutil.virtual_memory().available / 2**20, 1)
     except Exception:                    # noqa: BLE001 - memory figures are a report, never a reason to stop
         pass
-    if dev is not None and dev.type == "cuda":
-        out["gpu_peak_mb"] = round(torch.cuda.max_memory_allocated(dev) / 2**20, 1)
-        out["gpu_reserved_mb"] = round(torch.cuda.memory_reserved(dev) / 2**20, 1)
+    devs = [devs] if devs is not None and not isinstance(devs, (list, tuple)) else list(devs or [])
+    cuda = [d for d in devs if d.type == "cuda"]
+    gpu = {str(d): {"gpu_peak_mb": round(torch.cuda.max_memory_allocated(d) / 2**20, 1),
+                    "gpu_reserved_mb": round(torch.cuda.memory_reserved(d) / 2**20, 1)} for d in cuda}
+    if len(gpu) == 1:
+        out.update(next(iter(gpu.values())))
+    elif gpu:
+        out["gpu"] = gpu
     return out
+
+
+def parse_arms(a):
+    """The arms trained on the one batch stream: --arm NAME=TARGET_CODE[@DEVICE], repeatable; each arm has its own
+    model and optimizer and every arm gets the same batches (1/10, incident E-20261001-001: two arms in two processes
+    read every shard twice and filled the memory). Without --arm, one arm 'main' with --target-code on --device, whose
+    files stay at the top of --out."""
+    if not a.arm:
+        return [("main", a.target_code, a.device)]
+    arms = []
+    for spec in a.arm:
+        name, sep, rest = spec.partition("=")
+        code, _, dev = rest.partition("@")
+        if not sep or not name or code not in ("descriptors", "identity", "both"):
+            sys.exit(f"--arm {spec}: give NAME=descriptors|identity|both[@DEVICE]")
+        arms.append((name, code, dev or a.device))
+    if len({n for n, _, _ in arms}) != len(arms):
+        sys.exit("two arms with one name")
+    return arms
+
+
+class Arm:
+    """One model on the shared batch stream: its target code, device, tables, optimizer and output folder."""
+
+    def __init__(self, name, code, dev, out):
+        self.name, self.code, self.dev, self.out = name, code, dev, out
+        self.model = self.opt = self.T = self.last = None
+
+
+class EvalStream(_Iterable):
+    """The evaluation cells shard by shard in chunks, each chunk with the evaluation group of every cell. With loader
+    processes each reads its own shards (shard k of the sorted list goes to process k mod n); the sums the evaluation
+    accumulates do not depend on the order."""
+
+    def __init__(self, by_shard, shards, gene_of_axis, G, lib_rows, ctrl_k, n_unknown, seed, chunk):
+        self.by_shard, self.shards, self.gene_of_axis, self.G = by_shard, shards, gene_of_axis, G
+        self.lib_rows, self.ctrl_k, self.n_unknown, self.seed, self.chunk = lib_rows, ctrl_k, n_unknown, seed, chunk
+        self.cache = None
+
+    def __iter__(self):
+        info = torch.utils.data.get_worker_info()
+        k, n = (info.id, info.num_workers) if info is not None else (0, 1)
+        self.cache = ShardCache(self.shards, self.gene_of_axis, self.G, 1, rows_of=lambda s: np.arange(s["n"]))
+        for i, s in enumerate(sorted(self.by_shard)):
+            if i % n != k:
+                continue
+            items = self.by_shard[s]
+            for c0 in range(0, len(items), self.chunk):
+                chunk = items[c0:c0 + self.chunk]
+                b = assemble([(s, r) for _, r in chunk], self.cache, self.shards, self.lib_rows, self.ctrl_k,
+                             self.n_unknown, self.seed, 10**9 + s * 10**5 + c0)
+                b["gi"] = torch.tensor([gi for gi, _ in chunk], dtype=torch.int64)
+                yield b
 
 
 def train(a):
@@ -803,7 +867,14 @@ def train(a):
     a.roles = max(1, a.workers) if a.roles is None else a.roles
     if a.workers not in (0, a.roles):
         sys.exit("--workers must be 0 or equal to --roles")
-    dev = torch.device(a.device or ("cuda" if torch.cuda.is_available() else "cpu"))
+    specs = parse_arms(a)
+    a.arms = ";".join(f"{n}={c}" for n, c, _ in specs)
+    default_dev = "cuda" if torch.cuda.is_available() else "cpu"
+    arms = [Arm(n, c, torch.device(d or default_dev), a.out / n if a.arm else a.out) for n, c, d in specs]
+    for arm in arms:
+        arm.out.mkdir(exist_ok=True)
+    devs = list(dict.fromkeys(arm.dev for arm in arms))
+    cuda_devs = [d for d in devs if d.type == "cuda"]
     random.seed(a.seed); np.random.seed(a.seed); torch.manual_seed(a.seed)
     G, symbols = st["G"], st["symbols"]
     n_sym = len(symbols)
@@ -824,38 +895,47 @@ def train(a):
         a.descriptors_sha256 = sha(a.descriptors / "descriptors.npy")
         desc_info = {"sha256": a.descriptors_sha256, "dims": int(Dm.shape[1]), "symbols_with_descriptors": found,
                      "symbols": n_sym}
-    target_gene = torch.as_tensor(np.array([gene_pos.get(s, -1) for s in symbols] + [-1], dtype=np.int64), device=dev)
-    model = CN.build_model(G, n_sym, len(st["modalities"]), len(st["studies"]), input_genes, dim=a.dim, rank=a.rank,
-                           target_desc=desc, target_code=a.target_code).to(dev)
-    opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=a.lr, weight_decay=1e-4)
-    same = {k: str(getattr(a, k)) for k in SAME_ON_RESUME}
 
-    # tables on the device: masks per shard, control pools on the input genes
-    shard_masks = torch.as_tensor(np.stack([s["mask"] for s in shards]), device=dev)
-    ig = torch.as_tensor(input_genes, device=dev, dtype=torch.int64)
-    masks_in = shard_masks[:, ig]
-    pool_x = torch.as_tensor(st["pool_x"], device=dev)
-    pool_lib = torch.as_tensor(st["pool_lib"], device=dev)
-    pool_sid = torch.as_tensor(st["pool_sid"].astype(np.int64), device=dev).clamp_min(0)
+    # tables on the device of every arm: target genes, masks per shard and per key, control pools on the input genes,
+    # study weights
+    tg = np.array([gene_pos.get(s, -1) for s in symbols] + [-1], dtype=np.int64)
+    masks_np = np.stack([s["mask"] for s in shards])
+    w_np = np.array([st["study_weights"].get(s, 0.0) for s in st["studies"]], dtype=np.float32)
+    tables = {}
+    for d in devs:
+        T = {"target_gene": torch.as_tensor(tg, device=d), "shard_masks": torch.as_tensor(masks_np, device=d),
+             "pool_x": torch.as_tensor(st["pool_x"], device=d), "pool_lib": torch.as_tensor(st["pool_lib"], device=d),
+             "pool_sid": torch.as_tensor(st["pool_sid"].astype(np.int64), device=d).clamp_min(0),
+             "w_t": torch.as_tensor(w_np, device=d), "key_mask": torch.as_tensor(st["key_mask"], device=d)}
+        T["masks_in"] = T["shard_masks"][:, torch.as_tensor(input_genes, device=d, dtype=torch.int64)]
+        tables[d] = T
+    for arm in arms:
+        torch.manual_seed(a.seed)            # every arm starts from the weights of the seed, whatever the other arms
+        arm.model = CN.build_model(G, n_sym, len(st["modalities"]), len(st["studies"]), input_genes, dim=a.dim,
+                                   rank=a.rank, target_desc=desc, target_code=arm.code).to(arm.dev)
+        arm.opt = torch.optim.AdamW([p for p in arm.model.parameters() if p.requires_grad], lr=a.lr,
+                                    weight_decay=1e-4)
+        arm.T = tables[arm.dev]
+    same = {k: str(getattr(a, k)) for k in SAME_ON_RESUME}
     lib_rows = {}
     for k in range(len(st["key_names"])):
         valid = np.flatnonzero(st["pool_sid"][k] >= 0)
         if valid.size:
             lc = st["pool_libc"][k][valid]
             lib_rows[k] = {int(l): valid[lc == l] for l in np.unique(lc)}
-    w_t = torch.as_tensor([st["study_weights"].get(s, 0.0) for s in st["studies"]], device=dev, dtype=torch.float32)
 
-    def forward(b, unknown=False):
+    def forward(b, arm, unknown=False):
+        dev, T, model = arm.dev, arm.T, arm.model
         B = b["sid"].shape[0]
         crow = b["crow"].to(dev)
         rows_idx = torch.repeat_interleave(torch.arange(B, device=dev), crow[1:] - crow[:-1])
         x = torch.zeros(B, G, device=dev)
         x[rows_idx, b["col"].to(dev)] = b["val"].to(dev)
-        mask = shard_masks[b["sid"].to(dev)]
+        mask = T["shard_masks"][b["sid"].to(dev)]
         lib = (x * mask).sum(-1)
         pk, pr = b["pair_key"].to(dev), b["pair_rows"].to(dev)
-        z_u, beta_u = model.context(pool_x[pk[:, None], pr].float(), masks_in[pool_sid[pk[:, None], pr]],
-                                    pool_lib[pk[:, None], pr])
+        z_u, beta_u = model.context(T["pool_x"][pk[:, None], pr].float(), T["masks_in"][T["pool_sid"][pk[:, None], pr]],
+                                    T["pool_lib"][pk[:, None], pr])
         sel = b["sel"].to(dev)
         z, beta = z_u[sel], beta_u[sel]
         is_ctrl = b["is_ctrl"].to(dev)
@@ -863,11 +943,15 @@ def train(a):
         stu = b["stu"].to(dev)
         theta = torch.exp(model.log_theta[stu]).clamp(1e-3, 1e4)
         ll0 = CN.cell_loglik(x, lib, beta, mask, theta)
-        delta, pi = model(z, beta, tgt, target_gene[tgt], b["mod"].to(dev))
+        delta, pi = model(z, beta, tgt, T["target_gene"][tgt], b["mod"].to(dev))
         ll1 = CN.cell_loglik(x, lib, beta + delta, mask, theta)
         mix = torch.logsumexp(torch.stack([torch.log(pi.clamp_min(1e-6)) + ll1,
                                            torch.log((1 - pi).clamp_min(1e-6)) + ll0]), 0)
         return x, mask, lib, beta, delta, pi, ll0, mix, is_ctrl, stu
+
+    def synchronize():
+        for d in cuda_devs:
+            torch.cuda.synchronize(d)
 
     # coverage of the cells actually consumed, restored on resume
     offsets = np.cumsum([0] + [s["n"] for s in shards])
@@ -882,18 +966,21 @@ def train(a):
         ck = torch.load(path, map_location="cpu", weights_only=False)
         if ck["prepass_sha256"] != state_sha:
             sys.exit("the checkpoint belongs to another prepass state")
-        diff = {k: (ck["same"][k], v) for k, v in same.items() if ck["same"].get(k) != v}
+        diff = {k: (ck["same"].get(k), v) for k, v in same.items() if ck["same"].get(k) != v}
         if diff:
             sys.exit(f"resume with other training arguments: {diff}")
-        model.load_state_dict(ck["model"])
-        opt.load_state_dict(ck["opt"])
+        for arm in arms:
+            arm.model.load_state_dict(ck["models"][arm.name])
+            arm.opt.load_state_dict(ck["opts"][arm.name])
         step, n_drawn, train_seconds = ck["step"], ck["n_drawn"], ck["train_seconds"]
         seen = np.unpackbits(ck["seen"])[:seen.size].astype(bool)
         draws, classes_drawn = Counter(ck["draws"]), Counter(ck["classes_drawn"])
         chain = ck["batch_chain"]
         torch.set_rng_state(ck["rng"]["torch"].cpu())
-        if ck["rng"]["cuda"] is not None and dev.type == "cuda":
-            torch.cuda.set_rng_state(ck["rng"]["cuda"].cpu(), device=dev)
+        for d in cuda_devs:
+            state = (ck["rng"].get("cuda") or {}).get(str(d))
+            if state is not None:
+                torch.cuda.set_rng_state(state.cpu(), device=d)
         np.random.set_state(ck["rng"]["numpy"])
         random.setstate(ck["rng"]["python"])
         resumed_from = {"checkpoint": str(path), "sha256": sha(path), "step": step, "batch_chain": chain}
@@ -911,26 +998,32 @@ def train(a):
         """The first global step at which every role has drawn --epochs times its cells."""
         return max((-(-a.epochs * rcells[r] // rbatch[r]) - 1) * a.roles + r + 1 for r in range(a.roles) if rcells[r])
     step_goal = int(steps_for_epochs())
-    config = {"args": {k: str(v) for k, v in vars(a).items()}, "same_on_resume": same, "device": str(dev),
+    params = {arm.name: sum(p.numel() for p in arm.model.parameters() if p.requires_grad) for arm in arms}
+    config = {"args": {k: str(v) for k, v in vars(a).items()}, "same_on_resume": same,
+              "devices": [str(d) for d in devs],
+              "arms": [{"name": arm.name, "target_code": arm.code, "device": str(arm.dev), "out": str(arm.out)}
+                       for arm in arms],
               "started_utc": now(), "prepass_sha256": state_sha, "resumed_from": resumed_from,
               "code": {p.name: sha(p) for p in (HERE / "cellnet.py", HERE / "cell_data.py", Path(__file__))},
               "descriptors": desc_info, "study_weights": st["study_weights"], "admitted_training_cells": total_train,
-              "parameters": sum(p.numel() for p in model.parameters() if p.requires_grad)}
+              "parameters": params[arms[0].name], "parameters_by_arm": params}
     (a.out / "config.json").write_text(json.dumps(config, indent=1, default=str), encoding="utf-8")
-    log("model", parameters=config["parameters"], target_code=a.target_code, symbols=n_sym, descriptors=desc_info,
-        device=str(dev), roles=a.roles, workers=a.workers)
+    for arm in arms:
+        log("model", arm=arm.name, parameters=params[arm.name], target_code=arm.code, symbols=n_sym,
+            descriptors=desc_info, device=str(arm.dev), roles=a.roles, workers=a.workers)
 
     def save_checkpoint(reason):
         path = a.out / "checkpoints" / f"ckpt_{step:07d}.pt"
         tmp = path.with_suffix(".partial")
-        torch.save({"model": model.state_dict(), "opt": opt.state_dict(), "step": step, "n_drawn": n_drawn,
+        torch.save({"models": {arm.name: arm.model.state_dict() for arm in arms},
+                    "opts": {arm.name: arm.opt.state_dict() for arm in arms}, "step": step, "n_drawn": n_drawn,
                     "train_seconds": train_seconds, "seen": np.packbits(seen), "draws": dict(draws),
                     "classes_drawn": dict(classes_drawn), "prepass_sha256": state_sha, "same": same,
                     "batch_chain": chain,
                     "rng": {"torch": torch.get_rng_state(),
-                            "cuda": torch.cuda.get_rng_state(dev) if dev.type == "cuda" else None,
+                            "cuda": {str(d): torch.cuda.get_rng_state(d) for d in cuda_devs},
                             "numpy": np.random.get_state(), "python": random.getstate()},
-                    "memory": memory(dev), "utc": now(), "reason": reason}, tmp)
+                    "memory": memory(devs), "utc": now(), "reason": reason}, tmp)
         os.replace(tmp, path)
         kept = sorted((a.out / "checkpoints").glob("ckpt_*.pt"))
         for old in kept[:-a.keep_checkpoints]:
@@ -940,33 +1033,36 @@ def train(a):
 
     # ---- evaluation, streaming by shard (also used before training to price the evaluation)
     groups = st["eval_groups"]
-    key_mask = st["key_mask"]
+    by_shard = defaultdict(list)
+    for gi, g in enumerate(groups):
+        for s, r in g["cells"]:
+            by_shard[s].append((gi, r))
 
-    def evaluate(limit_cells=None, deadline=None):
-        model.eval()
-        by_shard = defaultdict(list)
-        for gi, g in enumerate(groups):
-            for s, r in g["cells"]:
-                by_shard[s].append((gi, r))
-        acc = {gi: {"n": 0, "gain0": 0.0, "gainu": 0.0, "pi": 0.0, "obs": np.zeros(G), "pm": np.zeros(G),
-                    "pb": np.zeros(G)} for gi in range(len(groups))}
+    def evaluate(limit_cells=None, deadline=None, workers=0):
+        """Every arm on the same evaluation chunks. In this process (workers 0: the probe, whose reads are timed)
+        or through loader processes that read the shards in parallel."""
+        for arm in arms:
+            arm.model.eval()
+        acc = {arm.name: {gi: {"n": 0, "gain0": 0.0, "gainu": 0.0, "pi": 0.0, "obs": np.zeros(G), "pm": np.zeros(G),
+                               "pb": np.zeros(G)} for gi in range(len(groups))} for arm in arms}
+        stream = EvalStream(by_shard, shards, st["gene_of_axis"], G, lib_rows, a.ctrl_k, n_sym, a.seed, a.eval_chunk)
+        source = iter(stream) if workers == 0 else iter(torch.utils.data.DataLoader(
+            stream, batch_size=None, num_workers=workers, prefetch_factor=2, pin_memory=bool(cuda_devs)))
         done_cells, t0, complete = 0, time.time(), True
-        cache = ShardCache(shards, st["gene_of_axis"], G, 1, rows_of=lambda s: np.arange(s["n"]))
-        for s in sorted(by_shard):
-            items = by_shard[s]
-            for c0 in range(0, len(items), a.eval_chunk):
-                if (limit_cells is not None and done_cells >= limit_cells) or (deadline and time.time() > deadline):
-                    complete = False
-                    break
-                chunk = items[c0:c0 + a.eval_chunk]
-                cells = [(s, r) for _, r in chunk]
-                b = assemble(cells, cache, shards, lib_rows, a.ctrl_k, n_sym, a.seed, 10**9 + s * 10**5 + c0)
-                with torch.no_grad():
-                    x, mask, lib, beta, delta, pi, ll0, mix, _, _ = forward(b)
-                    mix_u = forward(b, unknown=True)[7]
+        while limit_cells is None or done_cells < limit_cells:
+            b = next(source, None)
+            if b is None:
+                break
+            if deadline and time.time() > deadline:
+                complete = False
+                break
+            gis = b["gi"].numpy()
+            with torch.no_grad():
+                for arm in arms:
+                    x, mask, lib, beta, delta, pi, ll0, mix, _, _ = forward(b, arm)
+                    mix_u = forward(b, arm, unknown=True)[7]
                     per_gene = mask.sum(-1).clamp_min(1)
-                    kc = b["key"].to(dev)
-                    common = torch.as_tensor(key_mask, device=dev)[kc]
+                    common = arm.T["key_mask"][b["key"].to(arm.dev)]
                     p0 = torch.softmax(beta.masked_fill(~common, float("-inf")), -1)
                     p1 = torch.softmax((beta + delta).masked_fill(~common, float("-inf")), -1)
                     pm = pi[:, None] * p1 + (1 - pi[:, None]) * p0
@@ -974,25 +1070,38 @@ def train(a):
                     g0 = ((mix - ll0) / per_gene).cpu().numpy()
                     gu = ((mix - mix_u) / per_gene).cpu().numpy()
                     pin, pmn, p0n, obn = pi.cpu().numpy(), pm.cpu().numpy(), p0.cpu().numpy(), obs.cpu().numpy()
-                for j, (gi, _) in enumerate(chunk):
-                    ac = acc[gi]
-                    ac["n"] += 1; ac["gain0"] += g0[j]; ac["gainu"] += gu[j]; ac["pi"] += pin[j]
-                    ac["obs"] += obn[j]; ac["pm"] += pmn[j]; ac["pb"] += p0n[j]
-                done_cells += len(chunk)
-            if not complete:
-                break
-        model.train()
-        return acc, done_cells, time.time() - t0, complete
+                    ac_arm = acc[arm.name]
+                    for j, gi in enumerate(gis):
+                        ac = ac_arm[int(gi)]
+                        ac["n"] += 1; ac["gain0"] += g0[j]; ac["gainu"] += gu[j]; ac["pi"] += pin[j]
+                        ac["obs"] += obn[j]; ac["pm"] += pmn[j]; ac["pb"] += p0n[j]
+            done_cells += len(gis)
+        else:
+            complete = False                 # stopped by limit_cells
+        reads = (stream.cache.reads, stream.cache.read_seconds) if workers == 0 and stream.cache else (0, 0.0)
+        del source
+        for arm in arms:
+            arm.model.train()
+        return acc, done_cells, time.time() - t0, complete, reads
 
     eval_cells = sum(len(g["cells"]) for g in groups)
-    eval_shards = len({s for g in groups for s, _ in g["cells"]})
+    eval_shards = len(by_shard)
+    eval_workers = a.eval_workers if a.eval_workers is not None else a.workers
     probe_cells = min(eval_cells, 2 * a.eval_chunk)
-    _, n_probe, t_probe, _ = evaluate(limit_cells=probe_cells) if eval_cells else ({}, 0, 0.0, True)
-    per_cell = t_probe / max(n_probe, 1)                     # the probe's time includes reading its shards
-    eval_reserve = 1.5 * per_cell * eval_cells + a.eval_reserve_seconds
+    if eval_cells:
+        _, n_probe, t_probe, _, (n_reads, t_reads) = evaluate(limit_cells=probe_cells)
+    else:
+        n_probe, t_probe, n_reads, t_reads = 0, 0.0, 0, 0.0
+    # the reads and the rest priced apart: a probe of few cells pays a whole shard per read (1/10, rlab-cellnet-r1:
+    # 1.5 x the probe's seconds per cell gave a reserve of 3,914 s for an evaluation of 1,621 s)
+    per_read = t_reads / n_reads if n_reads else 0.0
+    per_cell = max(t_probe - t_reads, 0.0) / max(n_probe, 1)
+    eval_reserve = 1.25 * (per_read * eval_shards / max(1, eval_workers) + per_cell * eval_cells) \
+        + a.eval_reserve_seconds
     export_reserve = 60.0 * a.reserve_export_minutes
     train_deadline = t_start + 60.0 * a.budget_minutes - eval_reserve - export_reserve
     log("evaluation priced", cells=eval_cells, shards=eval_shards, probe_cells=n_probe, probe_seconds=round(t_probe, 1),
+        probe_reads=n_reads, probe_read_seconds=round(t_reads, 1), eval_workers=eval_workers,
         reserve_seconds=round(eval_reserve, 1))
 
     # ---- training
@@ -1000,9 +1109,11 @@ def train(a):
                          a.roles, step)
     loader = torch.utils.data.DataLoader(stream, batch_size=None, num_workers=a.workers,
                                          prefetch_factor=a.prefetch if a.workers else None,
-                                         pin_memory=dev.type == "cuda")
+                                         pin_memory=bool(cuda_devs))
     it = iter(loader)
-    shard_key = [s["key"] for s in shards]
+    if a.measure_from is None:
+        per_shard = total_train / max(1, sum(1 for s in shards if len(s["train_rows"])))
+        a.measure_from = int(math.ceil(3 * a.buffer_shards * per_shard / a.batch * a.roles))
     t_train0, wait, last_ckpt = time.time(), 0.0, time.time()
     measure = {"from": None, "wait": 0.0}
     plan, stop_reason = None, None
@@ -1023,14 +1134,17 @@ def train(a):
         wait += dt_wait
         if int(b["step"]) != step:
             sys.exit(f"the loader returned step {int(b['step'])} where {step} was due")
-        x, mask, lib, beta, delta, pi, ll0, mix, is_ctrl, stu = forward(b)
-        per_gene = mask.sum(-1).clamp_min(1)
-        ll = torch.where(is_ctrl, ll0, mix) / per_gene
-        loss = -(ll * w_t[stu]).sum() / w_t[stu].sum()
-        opt.zero_grad(set_to_none=True)
-        loss.backward()
-        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
-        opt.step()
+        for arm in arms:
+            x, mask, lib, beta, delta, pi, ll0, mix, is_ctrl, stu = forward(b, arm)
+            per_gene = mask.sum(-1).clamp_min(1)
+            ll = torch.where(is_ctrl, ll0, mix) / per_gene
+            w = arm.T["w_t"][stu]
+            loss = -(ll * w).sum() / w.sum()
+            arm.opt.zero_grad(set_to_none=True)
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(arm.model.parameters(), 1.0)
+            arm.opt.step()
+            arm.last = (loss, mix, ll0, per_gene, is_ctrl, pi)
         sid, row = b["sid"].numpy(), b["row"].numpy()
         seen[offsets[sid] + row] = True
         chain = hashlib.sha256(bytes.fromhex(chain) + np.int64(step).tobytes() + sid.astype(np.int64).tobytes()
@@ -1043,18 +1157,17 @@ def train(a):
         step += 1
         n_drawn += int(sid.size)
         if step - start_step == a.measure_from:
-            if dev.type == "cuda":
-                torch.cuda.synchronize()
+            synchronize()
             measure = {"from": time.time(), "wait": wait, "step": step}
         if plan is None and measure["from"] is not None and step - measure["step"] >= a.measure_steps:
-            if dev.type == "cuda":
-                torch.cuda.synchronize()
+            synchronize()
             span = time.time() - measure["from"]
             steps_per_s = (step - measure["step"]) / span
             remaining = train_deadline - time.time()
             need = max(0, step_goal - step)
             fit = int(max(0.0, remaining) * steps_per_s)
-            plan = {"measured_steps": step - measure["step"], "seconds": round(span, 2),
+            plan = {"measured_steps": step - measure["step"], "measured_from_step": measure["step"],
+                    "seconds": round(span, 2),
                     "steps_per_second": round(steps_per_s, 3), "cells_per_second": round(steps_per_s * a.batch, 1),
                     "data_wait_fraction": round((wait - measure["wait"]) / span, 3),
                     "budget_minutes": a.budget_minutes, "evaluation_reserve_seconds": round(eval_reserve, 1),
@@ -1062,18 +1175,26 @@ def train(a):
                     "train_until_utc": datetime.fromtimestamp(train_deadline, timezone.utc).isoformat(),
                     "steps_needed_for_epochs": need, "steps_that_fit": fit, "planned_steps": min(need, fit),
                     "epochs_expected": round(epochs_at(step + min(need, fit)), 3),
-                    "admitted_training_cells": total_train, "step_at_plan": step, "memory": memory(dev),
-                    "roles": {"batches": rbatch, "training_cells": rcells.astype(int).tolist()}}
+                    "admitted_training_cells": total_train, "step_at_plan": step, "memory": memory(devs),
+                    "roles": {"batches": rbatch, "training_cells": rcells.astype(int).tolist()},
+                    "arms": [arm.name for arm in arms]}
             (a.out / "plan.json").write_text(json.dumps(plan, indent=1), encoding="utf-8")
             log("plan", **plan)
         train_seconds += time.time() - t_w
         if step % a.log_every == 0 or step == start_step + 1:
             with torch.no_grad():
-                log("step", step=step, epoch=round(epochs_at(step), 3), loss=round(float(loss), 5),
-                    pert_gain=float(((mix - ll0) / per_gene)[~is_ctrl].mean()) if (~is_ctrl).any() else None,
-                    pi_mean=float(pi[~is_ctrl].mean()) if (~is_ctrl).any() else None,
-                    cells_per_s=round((n_drawn - start_n) / max(time.time() - t_train0, 1e-6), 1),
-                    data_wait_fraction=round(wait / max(time.time() - t_train0, 1e-6), 3), **memory(dev))
+                per_arm = {}
+                for arm in arms:
+                    loss, mix, ll0, per_gene, is_ctrl, pi = arm.last
+                    pert = ~is_ctrl
+                    per_arm[arm.name] = {"loss": round(float(loss), 5),
+                                         "pert_gain": float(((mix - ll0) / per_gene)[pert].mean()) if pert.any() else None,
+                                         "pi_mean": float(pi[pert].mean()) if pert.any() else None}
+            elapsed = max(time.time() - t_train0, 1e-6)
+            log("step", step=step, epoch=round(epochs_at(step), 3), **per_arm[arms[0].name],
+                **({"arms": per_arm} if len(arms) > 1 else {}),
+                cells_per_s=round((n_drawn - start_n) / elapsed, 1), data_wait_fraction=round(wait / elapsed, 3),
+                **memory(devs))
         if time.time() - last_ckpt >= 60.0 * a.checkpoint_minutes:
             save_checkpoint("periodic")
             last_ckpt = time.time()
@@ -1095,18 +1216,22 @@ def train(a):
             for k in np.unique(ks):
                 by_key[k][0] += int((ks == k).sum())
                 by_key[k][1] += int(hit[ks == k].sum())
+    elapsed = max(time.time() - t_train0, 1e-6)
     cov = {"steps": step, "batch": a.batch, "role_batches": rbatch, "epochs_done": round(epochs_at(step), 3),
-           "stop": stop_reason,
+           "stop": stop_reason, "arms": [arm.name for arm in arms],
            "admitted_training_cells": total_train, "draws": n_drawn, "distinct_cells_seen": int(seen.sum()),
            "resumed_from": resumed_from,
+           "throughput": {"cells_per_second": round((n_drawn - start_n) / elapsed, 1),
+                          "data_wait_fraction": round(wait / elapsed, 3), "seconds": round(elapsed, 1)},
            "by_key": [{"key": st["key_names"][k], "admitted_offered": v[0], "distinct_drawn": v[1],
                        "draws": int(draws.get(st["key_names"][k], 0))} for k, v in sorted(by_key.items())],
            "leakage_check": {"passed": not leaks, "non_train_classes_drawn": leaks},
-           "batch_chain": chain, "memory": memory(dev)}
+           "batch_chain": chain, "memory": memory(devs)}
     (a.out / "coverage.json").write_text(json.dumps(cov, indent=1), encoding="utf-8")
-    torch.save({"state": model.state_dict(), "genes": st["genes"], "symbols": symbols, "studies": st["studies"],
-                "modalities": st["modalities"], "input_genes": input_genes.tolist(), "target_code": a.target_code,
-                "prepass_sha256": state_sha}, a.out / "model.pt")
+    for arm in arms:
+        torch.save({"state": arm.model.state_dict(), "genes": st["genes"], "symbols": symbols, "studies": st["studies"],
+                    "modalities": st["modalities"], "input_genes": input_genes.tolist(), "target_code": arm.code,
+                    "prepass_sha256": state_sha}, arm.out / "model.pt")
     log("trained", steps=step, epochs=cov["epochs_done"], stop=stop_reason, leakage_passed=not leaks)
     if leaks:
         sys.exit(f"leakage: {leaks}")
@@ -1119,26 +1244,20 @@ def train(a):
     if hashes is not None and not hashes.wait():
         sys.exit(f"shards differ from the prepass state: {hashes.bad[:3]}")
     hard_deadline = t_start + 60.0 * a.budget_minutes - export_reserve
-    acc, n_eval, t_eval, complete = evaluate(deadline=hard_deadline)
+    acc_by_arm, n_eval, t_eval, complete, _ = evaluate(deadline=hard_deadline, workers=eval_workers)
+    key_mask = st["key_mask"]
 
     def cos(u, v):
         nu, nv = np.linalg.norm(u), np.linalg.norm(v)
         return float(u @ v / (nu * nv)) if nu > 0 and nv > 0 else 0.0
 
     kidx = {k: i for i, k in enumerate(st["key_names"])}
-    results = {"C": [], "T": [], "J": []}
+    # the baselines depend on the group only, not on the arm
+    base = {}
     for gi, g in enumerate(groups):
-        ac = acc[gi]
-        if ac["n"] == 0:
-            results[g["class"]].append({"key": g["key"], "symbol": g["symbol"], "skipped": "not reached"})
-            continue
         if g["key"] not in st["ctrl_mean"]:
-            results[g["class"]].append({"key": g["key"], "symbol": g["symbol"], "skipped": "no admitted controls"})
             continue
         common = key_mask[kidx[g["key"]]]
-        n = ac["n"]
-        obs, ok = CD.shift(ac["obs"] / n, st["ctrl_mean"][g["key"]], common)
-        pred, _ = CD.shift(ac["pm"] / n, ac["pb"] / n, common)
         trans, nt = np.zeros(G), 0
         for k2 in st["train_keys"]:
             if k2 != g["key"] and (k2, g["symbol"]) in st["sums"] and k2 in st["ctrl_mean"]:
@@ -1153,14 +1272,7 @@ def train(a):
                 gen += s2
                 ng += 1
         gen /= max(ng, 1)
-        top_genes = np.argsort(-np.abs(obs * ok))[:200]
-        results[g["class"]].append({"key": g["key"], "symbol": g["symbol"], "cells": n,
-                                    "admitted_cells": g["admitted_cells"], "pi_mean": ac["pi"] / n,
-                                    "ll_gain_vs_no_effect": ac["gain0"] / n, "ll_gain_vs_unknown_target": ac["gainu"] / n,
-                                    "genes_compared": int(ok.sum()), "cos_model": cos(pred[top_genes], obs[top_genes]),
-                                    "cos_transfer": cos(trans[top_genes], obs[top_genes]) if nt else None,
-                                    "transfer_keys": nt,
-                                    "cos_generic": cos(gen[top_genes], obs[top_genes]) if ng else None})
+        base[gi] = (common, trans, nt, gen, ng)
 
     def summarize(rows, name):
         skipped = sum("skipped" in r for r in rows)
@@ -1181,20 +1293,47 @@ def train(a):
                     "cos_model_where_transfer": float(np.mean([r["cos_model"] for r in tr])) if tr else None,
                     "cos_transfer": float(np.mean([r["cos_transfer"] for r in tr])) if tr else None})
         return out
-    summary = {k: summarize(v, k) for k, v in results.items()}
-    summary["evaluation"] = {"cells": n_eval, "seconds": round(t_eval, 1), "complete": complete,
-                             "reserve_seconds": round(eval_reserve, 1)}
-    summary["note"] = ("technical check: log-likelihood gains with the same learned baseline; cosines of shifts computed "
-                       "with one estimator (cell_data.shift on the key's genes, measured by perturbed cells and controls "
-                       "alike) against observed cells, on the 200 genes with the largest observed shift; baselines from "
-                       "admitted training cells only; not a VCC score")
-    (a.out / "eval.json").write_text(json.dumps({"summary": summary, **results}, indent=1, default=float),
-                                     encoding="utf-8")
-    log("eval", **{k: v for k, v in summary.items() if k != "note"})
+
+    for arm in arms:
+        acc = acc_by_arm[arm.name]
+        results = {"C": [], "T": [], "J": []}
+        for gi, g in enumerate(groups):
+            ac = acc[gi]
+            if ac["n"] == 0:
+                results[g["class"]].append({"key": g["key"], "symbol": g["symbol"], "skipped": "not reached"})
+                continue
+            if gi not in base:
+                results[g["class"]].append({"key": g["key"], "symbol": g["symbol"], "skipped": "no admitted controls"})
+                continue
+            common, trans, nt, gen, ng = base[gi]
+            n = ac["n"]
+            obs, ok = CD.shift(ac["obs"] / n, st["ctrl_mean"][g["key"]], common)
+            pred, _ = CD.shift(ac["pm"] / n, ac["pb"] / n, common)
+            top_genes = np.argsort(-np.abs(obs * ok))[:200]
+            results[g["class"]].append({"key": g["key"], "symbol": g["symbol"], "cells": n,
+                                        "admitted_cells": g["admitted_cells"], "pi_mean": ac["pi"] / n,
+                                        "ll_gain_vs_no_effect": ac["gain0"] / n,
+                                        "ll_gain_vs_unknown_target": ac["gainu"] / n,
+                                        "genes_compared": int(ok.sum()), "cos_model": cos(pred[top_genes], obs[top_genes]),
+                                        "cos_transfer": cos(trans[top_genes], obs[top_genes]) if nt else None,
+                                        "transfer_keys": nt,
+                                        "cos_generic": cos(gen[top_genes], obs[top_genes]) if ng else None})
+        summary = {k: summarize(v, k) for k, v in results.items()}
+        summary["evaluation"] = {"cells": n_eval, "seconds": round(t_eval, 1), "complete": complete,
+                                 "reserve_seconds": round(eval_reserve, 1), "workers": eval_workers}
+        summary["arm"] = {"name": arm.name, "target_code": arm.code, "device": str(arm.dev)}
+        summary["note"] = ("technical check: log-likelihood gains with the same learned baseline; cosines of shifts "
+                           "computed with one estimator (cell_data.shift on the key's genes, measured by perturbed cells "
+                           "and controls alike) against observed cells, on the 200 genes with the largest observed "
+                           "shift; baselines from admitted training cells only; not a VCC score")
+        (arm.out / "eval.json").write_text(json.dumps({"summary": summary, **results}, indent=1, default=float),
+                                           encoding="utf-8")
+        log("eval", arm=arm.name, **{k: v for k, v in summary.items() if k not in ("note", "arm")})
     (a.out / "done.json").write_text(json.dumps({"finished_utc": now(), "steps": step,
                                                  "wall_seconds": round(time.time() - t_start, 1),
                                                  "budget_seconds": 60.0 * a.budget_minutes,
-                                                 "memory": memory(dev)}, indent=1), encoding="utf-8")
+                                                 "arms": [arm.name for arm in arms],
+                                                 "memory": memory(devs)}, indent=1), encoding="utf-8")
 
 
 def main():
@@ -1226,6 +1365,11 @@ def main():
     t.add_argument("--out", required=True, type=Path)
     t.add_argument("--descriptors", type=Path)
     t.add_argument("--target-code", choices=["descriptors", "identity", "both"], default="descriptors")
+    t.add_argument("--arm", action="append", default=[], metavar="NAME=TARGET_CODE[@DEVICE]",
+                   help="an arm trained on the shared batches (repeatable; its files go to --out/NAME); without it, "
+                        "one arm with --target-code on --device, its files at the top of --out")
+    t.add_argument("--eval-workers", type=int, default=None,
+                   help="loader processes that read the evaluation shards (default: --workers)")
     t.add_argument("--epochs", type=float, default=2.0)
     t.add_argument("--batch", type=int, default=256)
     t.add_argument("--ctrl-k", type=int, default=64)
@@ -1241,8 +1385,11 @@ def main():
     t.add_argument("--reserve-export-minutes", type=float, default=5)
     t.add_argument("--checkpoint-minutes", type=float, default=15)
     t.add_argument("--keep-checkpoints", type=int, default=3)
-    t.add_argument("--measure-from", type=int, default=20, help="steps of warm-up before the throughput is measured")
-    t.add_argument("--measure-steps", type=int, default=60)
+    t.add_argument("--measure-from", type=int, default=None,
+                   help="steps of warm-up before the throughput is measured (default: until every role has read its "
+                        "initial buffer of shards three times over, so the plan sees the steady state; 1/10, "
+                        "rlab-cellnet-r1 measured 3,763 cells/s on the initial buffer and trained at about 600)")
+    t.add_argument("--measure-steps", type=int, default=300)
     t.add_argument("--eval-chunk", type=int, default=512)
     t.add_argument("--eval-reserve-seconds", type=float, default=60,
                    help="added to the priced evaluation: 1.5 x the probe's seconds per cell x the evaluation cells")
