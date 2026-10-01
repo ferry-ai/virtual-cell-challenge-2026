@@ -1,6 +1,6 @@
 # Terzo training della rete cellulare, con la seconda ondata: protocollo e regola di lettura
 
-1 ottobre 2026, 04:05 CEST, Claude Code (sessione `07ebf08b`), scheda
+1 ottobre 2026, 03:59 CEST (ora del commit; prima scritta 04:05 per stima, corretta), Claude Code (sessione `07ebf08b`), scheda
 [R-LAB](../../../docs/piani/piano-giorno-2026-09-30.md). **Scritto prima del lancio del secondo training e prima di
 ogni suo numero** ([cellnet_esteso_2026-10-01](../cellnet_esteso_2026-10-01/PROTOCOLLO.md), non ancora lanciato a
 quest'ora), e prima del lancio di questo. Codice: [risposta_biologica_2026-09-30](../risposta_biologica_2026-09-30/),
