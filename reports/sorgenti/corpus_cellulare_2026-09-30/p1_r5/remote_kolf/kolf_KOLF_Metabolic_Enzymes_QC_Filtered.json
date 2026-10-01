@@ -1,0 +1,397 @@
+{
+ "url": "https://ndownloader.figshare.com/files/64680708",
+ "bytes": 6984432788,
+ "top": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "format": "csc_matrix",
+  "shape": [
+   117768,
+   35067
+  ],
+  "dtype": "float32",
+  "stored": 434942511,
+  "compression": null,
+  "chunks": [
+   53094
+  ],
+  "sample_integer": true,
+  "sample_max": 12.0
+ },
+ "layers": {
+  "counts": {
+   "format": "csc_matrix",
+   "shape": [
+    117768,
+    35067
+   ],
+   "dtype": "float32",
+   "stored": 434942511,
+   "compression": null,
+   "chunks": [
+    53094
+   ],
+   "sample_integer": true,
+   "sample_max": 12.0
+  }
+ },
+ "obs": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "batch",
+   "celltype",
+   "channel",
+   "gRNA",
+   "gene_target",
+   "gene_target_ensembl_id",
+   "log1p_n_genes_by_counts",
+   "log1p_total_counts",
+   "log1p_total_counts_hb",
+   "log1p_total_counts_mt",
+   "log1p_total_counts_ribo",
+   "n_UMI_counts",
+   "n_gRNA",
+   "n_gRNA_UMIs",
+   "n_genes",
+   "n_genes_by_counts",
+   "outlier",
+   "pct_counts_hb",
+   "pct_counts_in_top_20_genes",
+   "pct_counts_mt",
+   "pct_counts_ribo",
+   "perturbation",
+   "perturbation_type",
+   "perturbed",
+   "total_counts",
+   "total_counts_hb",
+   "total_counts_mt",
+   "total_counts_ribo"
+  ],
+  "describe": {
+   "_index": {
+    "kind": "strings",
+    "n": 117768,
+    "distinct": 117768,
+    "top": {
+     "AAACCCAAGACAACTA-3": 1,
+     "AAACCCAAGACGGTTG-3": 1,
+     "AAACCCAAGACTCTAC-1": 1,
+     "AAACCCAAGAGAGGGC-2": 1,
+     "AAACCCAAGAGAGTTT-1": 1,
+     "AAACCCAAGAGCAGCT-2": 1,
+     "AAACCCAAGAGCCTGA-4": 1,
+     "AAACCCAAGAGTACCG-1": 1,
+     "AAACCCAAGAGTCAAT-3": 1,
+     "AAACCCAAGATACATG-1": 1,
+     "AAACCCAAGATAGTCA-1": 1,
+     "AAACCCAAGATGGTAT-2": 1
+    }
+   },
+   "batch": {
+    "kind": "categorical",
+    "n": 117768,
+    "distinct": 1,
+    "top": {
+     "Channel": 117768
+    }
+   },
+   "celltype": {
+    "kind": "categorical",
+    "n": 117768,
+    "distinct": 1,
+    "top": {
+     "KRAB-ZIM3-dCas9 KOLF2.1J hiPSC": 117768
+    }
+   },
+   "channel": {
+    "kind": "categorical",
+    "n": 117768,
+    "distinct": 4,
+    "top": {
+     "Channel-B": 34500,
+     "Channel-A": 30670,
+     "Channel-C": 28223,
+     "Channel-D": 24375
+    }
+   },
+   "gRNA": {
+    "kind": "categorical",
+    "n": 117768,
+    "distinct": 662,
+    "top": {
+     "KIT_1": 457,
+     "NNT_2": 446,
+     "MTHFD1_3": 436,
+     "ACOX3_1": 428,
+     "FOLR1_2": 426,
+     "DIO3_2": 408,
+     "GLUD2_2": 387,
+     "PLCG1_1": 375,
+     "PARP4_2": 374,
+     "ALDH5A1_4": 369,
+     "NUAK1_1": 352,
+     "GYG2_1": 351
+    }
+   },
+   "gene_target": {
+    "kind": "categorical",
+    "n": 117768,
+    "distinct": 98,
+    "top": {
+     "NTC": 18651,
+     "TGFBR2": 1514,
+     "ACOX3": 1397,
+     "PPA2": 1330,
+     "FOLR1": 1305,
+     "ACADM": 1299,
+     "MAT2B": 1293,
+     "GSTM1": 1285,
+     "LDHD": 1245,
+     "IDH1": 1227,
+     "CYP24A1": 1212,
+     "HEXA": 1202
+    }
+   },
+   "gene_target_ensembl_id": {
+    "kind": "categorical",
+    "n": 117768,
+    "distinct": 98,
+    "top": {
+     "NTC": 18651,
+     "ENSG00000163513": 1514,
+     "ENSG00000087008": 1397,
+     "ENSG00000138777": 1330,
+     "ENSG00000110195": 1305,
+     "ENSG00000117054": 1299,
+     "ENSG00000038274": 1293,
+     "ENSG00000134184": 1285,
+     "ENSG00000166816": 1245,
+     "ENSG00000138413": 1227,
+     "ENSG00000019186": 1212,
+     "ENSG00000213614": 1202
+    }
+   },
+   "log1p_n_genes_by_counts": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 117768,
+    "sample_min": 7.227662498728654,
+    "sample_max": 8.99342737041261
+   },
+   "log1p_total_counts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 117768,
+    "sample_min": 7.531552314758301,
+    "sample_max": 10.357108116149902
+   },
+   "log1p_total_counts_hb": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 117768,
+    "sample_min": 0.0,
+    "sample_max": 2.1972246170043945
+   },
+   "log1p_total_counts_mt": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 117768,
+    "sample_min": 1.9459102153778076,
+    "sample_max": 6.790097236633301
+   },
+   "log1p_total_counts_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 117768,
+    "sample_min": 4.905274868011475,
+    "sample_max": 8.610865592956543
+   },
+   "n_UMI_counts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 117768,
+    "sample_min": 1865.0,
+    "sample_max": 31479.0
+   },
+   "n_gRNA": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 117768,
+    "sample_min": 1.0,
+    "sample_max": 1.0
+   },
+   "n_gRNA_UMIs": {
+    "kind": "categorical",
+    "n": 117768,
+    "distinct": 129,
+    "top": {
+     "3": 11528,
+     "4": 6153,
+     "5": 4910,
+     "6": 4691,
+     "7": 4663,
+     "9": 4579,
+     "8": 4571,
+     "11": 4547,
+     "12": 4528,
+     "13": 4507,
+     "10": 4501,
+     "14": 4379
+    }
+   },
+   "n_genes": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 117768,
+    "sample_min": 1376.0,
+    "sample_max": 8049.0
+   },
+   "n_genes_by_counts": {
+    "kind": "numeric",
+    "dtype": "int64",
+    "n": 117768,
+    "sample_min": 1376.0,
+    "sample_max": 8049.0
+   },
+   "outlier": {
+    "kind": "numeric",
+    "dtype": "bool",
+    "n": 117768,
+    "sample_min": 0.0,
+    "sample_max": 0.0
+   },
+   "pct_counts_hb": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 117768,
+    "sample_min": 0.0,
+    "sample_max": 0.13386881351470947
+   },
+   "pct_counts_in_top_20_genes": {
+    "kind": "numeric",
+    "dtype": "float64",
+    "n": 117768,
+    "sample_min": 5.752323536799799,
+    "sample_max": 11.84072651065316
+   },
+   "pct_counts_mt": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 117768,
+    "sample_min": 0.22084805369377136,
+    "sample_max": 4.412944793701172
+   },
+   "pct_counts_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 117768,
+    "sample_min": 6.320977210998535,
+    "sample_max": 22.005170822143555
+   },
+   "perturbation": {
+    "kind": "categorical",
+    "n": 117768,
+    "distinct": 554,
+    "top": {
+     "NTC": 18651,
+     "KIT_1": 457,
+     "NNT_2": 446,
+     "MTHFD1_3": 436,
+     "ACOX3_1": 428,
+     "FOLR1_2": 426,
+     "DIO3_2": 408,
+     "GLUD2_2": 387,
+     "PLCG1_1": 375,
+     "PARP4_2": 374,
+     "ALDH5A1_4": 369,
+     "NUAK1_1": 352
+    }
+   },
+   "perturbation_type": {
+    "kind": "categorical",
+    "n": 117768,
+    "distinct": 1,
+    "top": {
+     "CRISPRi": 117768
+    }
+   },
+   "perturbed": {
+    "kind": "categorical",
+    "n": 117768,
+    "distinct": 2,
+    "top": {
+     "True": 99117,
+     "False": 18651
+    }
+   },
+   "total_counts": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 117768,
+    "sample_min": 1865.0,
+    "sample_max": 31479.0
+   },
+   "total_counts_hb": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 117768,
+    "sample_min": 0.0,
+    "sample_max": 8.0
+   },
+   "total_counts_mt": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 117768,
+    "sample_min": 6.0,
+    "sample_max": 888.0
+   },
+   "total_counts_ribo": {
+    "kind": "numeric",
+    "dtype": "float32",
+    "n": 117768,
+    "sample_min": 134.0,
+    "sample_max": 5490.0
+   }
+  }
+ },
+ "var": {
+  "index": "_index",
+  "columns": [
+   "_index",
+   "feature_types",
+   "gene_ids",
+   "hb",
+   "log1p_mean_counts",
+   "log1p_total_counts",
+   "mean_counts",
+   "mt",
+   "n_UMI_counts",
+   "n_cells",
+   "n_cells_by_counts",
+   "pct_dropout_by_counts",
+   "ribo",
+   "total_counts"
+  ],
+  "rows": 35067,
+  "first": [
+   "MIR1302-2HG",
+   "FAM138A",
+   "OR4F5",
+   "AL627309.1",
+   "AL627309.3"
+  ]
+ },
+ "seconds": 20.8,
+ "fetched_bytes": 36568212,
+ "id": "kolf_KOLF_Metabolic_Enzymes_QC_Filtered"
+}

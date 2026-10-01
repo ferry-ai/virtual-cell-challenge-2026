@@ -17,19 +17,30 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 REMOTE = HERE / "p1_r4" / "remote"
+REMOTE_LATER = [HERE / "p1_r5" / "remote_kolf"]          # measured again with the corrected reader (1/10)
 
-# state of the ingested datasets: cells from complete.json of each job (Drive), publication from the receipts
+# state of the ingested datasets (1/10, 02:10): cells from complete.json of each job (Drive), publication from the
+# receipts, admission from the prepass r3 of reports/modelli/cellnet_tecnico_2026-10-01
 INGESTED = {
-    "hepg2_nadig": ("J01 (job 086), pubblicato come rlab-hepg2-nadig", 145473, "nel primo training"),
-    "jurkat_nadig": ("J05 (job 103), rlab-jurkat-nadig", 262956, "nel primo training"),
-    "h1_vcc2025_trainval": ("J04 (job 108), rlab-h1-vcc2025-trainval", 320200, "nel primo training (il test è la riserva)"),
-    "replogle_k562_gwps": ("J06 (job 096), rlab-k562-gwps", 1989578, "nel primo training"),
-    "hipsci_gw_fitness": ("J02 (job 088), rlab-hipsci-gwfit", 322746, "nel primo training"),
-    "hipsci_gw_nonfitness": ("J02 (job 088), rlab-hipsci-gwnonfit", 396458, "nel primo training"),
-    "hipsci_targeted_19": ("J02 (job 088), rlab-hipsci-targeted19", 1161865, "nel primo training"),
-    "replogle_k562_essential": ("J07 (job 112 in corso; 106 e 109 fermati: E-20260930-001, -002)", 310385,
-                                "in ingestione: entra nel training successivo"),
-    "replogle_rpe1": ("J07 (job 112 in corso)", 247914, "in ingestione: entra nel training successivo"),
+    "hepg2_nadig": ("J01 (job 086), pubblicato come rlab-hepg2-nadig", 145473,
+                    "nei due training, come contesto tenuto fuori (classi C e J)"),
+    "jurkat_nadig": ("J05 (job 103), rlab-jurkat-nadig", 262956, "nei due training"),
+    "h1_vcc2025_trainval": ("J04 (job 108), rlab-h1-vcc2025-trainval", 320200,
+                            "nei due training, train e validation letti come un esperimento: 38.176 controlli sono gli "
+                            "stessi nei due file e contano una volta (il test è la riserva)"),
+    "hipsci_targeted_19": ("J02 (job 088), rlab-hipsci-targeted19", 1161865,
+                           "nei due training (526.843 cellule senza guida assegnata restano fuori dalla supervisione)"),
+    "hipsci_gw_fitness": ("J02 (job 088), rlab-hipsci-gwfit", 322746,
+                          "fuori dal training: 36 NTC in tutto, da 1 a 5 per linea, sotto il minimo di 30 per chiave; "
+                          "rientra solo con controlli dichiarati (le cellule non assegnate come controlli chiedono prima "
+                          "un'analisi)"),
+    "hipsci_gw_nonfitness": ("J02 (job 088), rlab-hipsci-gwnonfit", 396458,
+                             "fuori dal training: 12 NTC in tutto, come per il fitness"),
+    "replogle_k562_gwps": ("J06 r2 (job 115), rlab-k562-gwps-r2", 1989578,
+                           "nel secondo training; il dataset del 30/09, rlab-k562-gwps, ha codici al posto dei bersagli "
+                           "(E-20260930-003) e non entra in nessun training"),
+    "replogle_k562_essential": ("J07 r7 (job 114), rlab-k562-essential", 310385, "nel secondo training"),
+    "replogle_rpe1": ("J07 r7 (job 114), rlab-rpe1", 247914, "nel secondo training"),
     "jurkat_gse249595": ("J03 (job 087), rlab-jurkat-gse249595", None,
                          "fuori: nessuna chiamata delle guide nel rilascio; si supervisiona dopo un'assegnazione provata"),
 }
@@ -58,7 +69,10 @@ def row_for(d: dict) -> dict:
     pt = (obs.get("perturbation_type") or {}).get("top") or {}
     return {"id": d["id"], "bytes": d.get("bytes"), "format": x.get("format"), "cells": (x.get("shape") or [None])[0],
             "features": (x.get("shape") or [None, None])[1],
-            "integer": x.get("sample_integer", x.get("first_rows_integer")), "layers": list((d.get("layers") or {})),
+            "integer": x.get("sample_integer", x.get("first_rows_integer")),
+            "layers": {k: (v or {}).get("format") for k, v in (d.get("layers") or {}).items()},
+            "layer_integer": {k: (v or {}).get("sample_integer", (v or {}).get("first_rows_integer"))
+                              for k, v in (d.get("layers") or {}).items()},
             "perturbation_type": pt, "error": d.get("error")}
 
 
@@ -80,9 +94,12 @@ def classify(r: dict) -> tuple[str, str, str]:
         return modality, "h5rows", "ingerito (J04)"
     if "mean_pop" in i:
         return modality, "—", "solo aggregati: medie per popolazione (vedi sorgenti solo aggregate)"
+    counts_layer = next((k for k in ("counts", "raw_counts") if k in r["layers"] and r["layer_integer"].get(k)), None)
+    if r["integer"] is not True and counts_layer:
+        fmt = r["layers"][counts_layer]
+        adapter = f"h5rows, layer {counts_layer}" if fmt in ("csr_matrix", "dense") else f"CSC da scrivere, layer {counts_layer}"
+        return modality, adapter, f"da ingerire: X non è di conteggi, i conteggi interi sono nel layer {counts_layer}"
     if r["integer"] is False:
-        if "raw_counts" in r["layers"]:
-            return modality, "h5rows con layer raw_counts", "da ingerire: X normalizzato, i conteggi sono nel layer"
         return modality, "—", "fuori dalla supervisione dei conteggi: X non intero e nessun layer di conteggi grezzi"
     if kinds and kinds <= {"drug", "cytokines", "cytokine"}:
         return modality, "h5rows" if r["format"] in ("csr_matrix", "dense") else "CSC da scrivere", \
@@ -100,13 +117,15 @@ def main() -> None:
     if out.exists():
         sys.exit(f"refusing: {out} exists")
     out.mkdir(parents=True)
+    later = {f.name: f for d in REMOTE_LATER for f in d.glob("*.json") if f.name != "index.json"}
     rows = []
     for f in sorted(REMOTE.glob("*.json")):
         if f.name == "index.json":
             continue
+        f = later.get(f.name, f)
         r = row_for(json.loads(f.read_text(encoding="utf-8")))
         r["modality"], r["adapter"], r["state"] = classify(r)
-        r["evidence"] = f"p1_r4/remote/{f.name}"
+        r["evidence"] = f.relative_to(HERE).as_posix()
         rows.append(r)
     ingested = [{"id": k, "job": v[0], "cells": v[1], "state": v[2]} for k, v in INGESTED.items()]
     (out / "catalogo.json").write_text(json.dumps({"remote": rows, "ingested": ingested,
@@ -120,8 +139,11 @@ def main() -> None:
              "| Dataset | Job e dataset Kaggle | Cellule | Stato |", "|---|---|---|---|"]
     for r in ingested:
         lines.append(f"| {r['id']} | {r['job']} | {r['cells'] if r['cells'] else 'n.d.'} | {r['state']} |")
-    tot = sum(r["cells"] for r in ingested if r["cells"] and "primo training" in r["state"])
-    lines += ["", f"Nel primo training: **{tot:,} cellule** prima di QC e identità.".replace(",", "."), "",
+    tot = sum(r["cells"] for r in ingested if r["cells"] and "nei due training" in r["state"])
+    tot2 = tot + sum(r["cells"] for r in ingested if r["cells"] and r["state"].startswith("nel secondo training"))
+    lines += ["", f"Nel primo training: **{tot:,} cellule** prima di QC e identità; nel secondo **{tot2:,}**. Le "
+              "cellule di training ammesse e quelle viste stanno nel pre-passo e nella copertura di ciascun "
+              "training.".replace(",", "."), "",
               "## 2. Misurati in remoto, non ancora ingeriti", "",
               "| File | Modalità | Cellule | Formato | Adattatore | Stato e motivo |", "|---|---|---|---|---|---|"]
     for r in rows:
@@ -142,7 +164,7 @@ def main() -> None:
               "PerturbFate GSE291147 (non acquisiti), scBaseCount (a pagamento per chi legge): i loro dati per cellula "
               "esistono ma serve un lettore o un via, come scritto in `sources.yaml`.", ""]
     (out / "CATALOGO.md").write_text("\n".join(lines), encoding="utf-8")
-    print(out / "CATALOGO.md", len(rows), "remote files", tot, "cells in the first training")
+    print(out / "CATALOGO.md", len(rows), "remote files", tot, tot2, "cells in the two trainings")
 
 
 if __name__ == "__main__":
