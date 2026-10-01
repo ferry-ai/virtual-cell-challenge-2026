@@ -224,7 +224,7 @@ class Corpus:
 # ------------------------------------------------------------------------------------------ model
 
 def build_model(n_genes, n_targets, n_modalities, n_studies, input_genes, dim=128, rank=128,
-                target_desc=None, target_code="descriptors"):
+                target_desc=None, target_code="descriptors", pi_floor=0.0):
     """target_desc: [n_targets + 1, D] biological descriptors of each target's gene (last row: none), or None.
     target_code: 'descriptors' (transferable to targets never perturbed), 'identity' (a free embedding per target,
     the comparison arm) or 'both'."""
@@ -285,7 +285,9 @@ def build_model(n_genes, n_targets, n_modalities, n_studies, input_genes, dim=12
                 e = e + self.desc_enc(self.desc[target_idx])
             h = self.trunk(torch.cat([z, e, self.mod_emb(modality_idx)], -1))
             delta = self.delta_out(self.delta_low(h))
-            pi = torch.sigmoid(self.pi_head(h)).squeeze(-1)
+            # pi in [pi_floor, 1 - pi_floor]: with a floor the shift keeps a gradient even when the mixture prefers
+            # no effect (1/10: without it the identity arm of rlab-cellnet-r3 went to pi = 1e-10 and stopped learning)
+            pi = pi_floor + (1.0 - 2.0 * pi_floor) * torch.sigmoid(self.pi_head(h)).squeeze(-1)
             return delta, pi
 
     return CellNet()

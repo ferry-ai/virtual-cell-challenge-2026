@@ -73,7 +73,7 @@ STATE = "prepass.pkl"
 CLASSES = ["train", "C", "T", "J", "control_holdout", "combined:train", "combined:T", "combined:C", "combined:J",
            "unlabelled"]
 SAME_ON_RESUME = ("arms", "epochs", "batch", "ctrl_k", "buffer_shards", "input_dim", "dim", "rank", "lr", "seed",
-                  "roles", "descriptors_sha256")
+                  "roles", "descriptors_sha256", "pi_floor")
 
 
 def now():
@@ -941,7 +941,8 @@ def train(a):
     for arm in arms:
         torch.manual_seed(a.seed)            # every arm starts from the weights of the seed, whatever the other arms
         arm.model = CN.build_model(G, n_sym, len(st["modalities"]), len(st["studies"]), input_genes, dim=a.dim,
-                                   rank=a.rank, target_desc=desc, target_code=arm.code).to(arm.dev)
+                                   rank=a.rank, target_desc=desc, target_code=arm.code,
+                                   pi_floor=a.pi_floor).to(arm.dev)
         arm.opt = torch.optim.AdamW([p for p in arm.model.parameters() if p.requires_grad], lr=a.lr,
                                     weight_decay=1e-4)
         arm.T = tables[arm.dev]
@@ -995,7 +996,9 @@ def train(a):
         ck = torch.load(path, map_location="cpu", weights_only=False)
         if ck["prepass_sha256"] != state_sha:
             sys.exit("the checkpoint belongs to another prepass state")
-        diff = {k: (ck["same"].get(k), v) for k, v in same.items() if ck["same"].get(k) != v}
+        before = {"pi_floor": "0.0"}              # checkpoints written before the option had no floor
+        diff = {k: (ck["same"].get(k, before.get(k)), v) for k, v in same.items()
+                if ck["same"].get(k, before.get(k)) != v}
         if diff:
             sys.exit(f"resume with other training arguments: {diff}")
         for arm in arms:
@@ -1274,6 +1277,7 @@ def train(a):
     for arm in arms:
         torch.save({"state": arm.model.state_dict(), "genes": st["genes"], "symbols": symbols, "studies": st["studies"],
                     "modalities": st["modalities"], "input_genes": input_genes.tolist(), "target_code": arm.code,
+                    "pi_floor": a.pi_floor,
                     "prepass_sha256": state_sha}, arm.out / "model.pt")
     log("trained", steps=step, epochs=cov["epochs_done"], stop=stop_reason, leakage_passed=not leaks)
     if leaks:
@@ -1430,6 +1434,8 @@ def main():
     t.add_argument("--dim", type=int, default=128)
     t.add_argument("--rank", type=int, default=128)
     t.add_argument("--lr", type=float, default=1e-3)
+    t.add_argument("--pi-floor", type=float, default=0.0,
+                   help="floor on the responder probability, pi in [floor, 1 - floor] (0: none, the model until 1/10)")
     t.add_argument("--seed", type=int, default=0)
     t.add_argument("--workers", type=int, default=0, help="loader processes (0: the main process assembles batches)")
     t.add_argument("--roles", type=int, default=None, help="shard partitions (default: max(1, workers))")

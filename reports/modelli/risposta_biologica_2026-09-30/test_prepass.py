@@ -138,6 +138,9 @@ class Stages(unittest.TestCase):
         # two arms on one batch stream, loader processes for training and evaluation (1/10, E-20261001-001)
         cls.ma = run("train", "--prepass", pre, "--out", d / "ma", "--arm", "i1=identity", "--arm", "i2=identity",
                      "--roles", "2", "--workers", "2", "--eval-partial", "1.0", *TRAIN_SMALL)   # every shard row by row
+        # a floor on the responder probability (1/10: the identity arm of rlab-cellnet-r3 collapsed to pi = 0)
+        cls.pf = run("train", "--prepass", pre, "--out", d / "pf", "--target-code", "identity", "--pi-floor", "0.05",
+                     *TRAIN_SMALL)
 
     @classmethod
     def tearDownClass(cls):
@@ -151,7 +154,7 @@ class Stages(unittest.TestCase):
         return torch.load(self.d / run_dir / "checkpoints" / f"ckpt_{step:07d}.pt", weights_only=False)
 
     def test_every_stage_finished(self):
-        for name in ("pre", "pre_rep", "full", "r1", "r2", "r3", "w2", "w0", "tb", "mv", "ma"):
+        for name in ("pre", "pre_rep", "full", "r1", "r2", "r3", "w2", "w0", "tb", "mv", "ma", "pf"):
             proc = getattr(self, name)
             self.assertEqual(proc.returncode, 0, f"{name}: {proc.stderr[-3000:]}")
         self.assertTrue((self.d / "run" / "eval.json").is_file())
@@ -303,6 +306,15 @@ class Stages(unittest.TestCase):
         priced = [json.loads(l) for l in (self.d / "ma" / "train_log.jsonl").read_text(encoding="utf-8").splitlines()
                   if '"evaluation priced"' in l][0]
         self.assertGreaterEqual(priced["probe_partial_reads"], 1)              # the evaluation read rows alone
+
+    def test_pi_floor_reaches_the_model_and_the_evaluation(self):
+        import torch
+        self.assertEqual(self.read("pf", "config.json")["same_on_resume"]["pi_floor"], "0.05")
+        self.assertEqual(self.read("run", "config.json")["same_on_resume"]["pi_floor"], "0.0")
+        self.assertEqual(torch.load(self.d / "pf" / "model.pt", weights_only=False)["pi_floor"], 0.05)
+        ev = self.read("pf", "eval.json")
+        pis = [r["pi_mean"] for c in ("C", "T", "J") for r in ev[c] if "skipped" not in r]
+        self.assertTrue(pis and all(0.05 - 1e-6 <= v <= 0.95 + 1e-6 for v in pis))
 
     def test_coverage_counts_consumed_cells(self):
         cov = self.read("run", "coverage.json")

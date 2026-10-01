@@ -99,7 +99,7 @@ def main():
                 desc[k] = Dm[drow[s]]
     model = CN.build_model(G, n_sym + len(new), len(saved["modalities"]), len(saved["studies"]),
                            np.array(saved["input_genes"]), dim=int(cfg["dim"]), rank=int(cfg["rank"]),
-                           target_desc=desc, target_code=saved["target_code"])
+                           target_desc=desc, target_code=saved["target_code"], pi_floor=saved.get("pi_floor", 0.0))
     state = dict(saved["state"])
     emb = state["target_emb.weight"]
     state["target_emb.weight"] = torch.cat([emb[:n_sym], emb[n_sym:].repeat(len(new) + 1, 1)])
