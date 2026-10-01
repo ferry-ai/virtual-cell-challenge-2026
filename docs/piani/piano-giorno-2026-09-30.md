@@ -108,6 +108,21 @@
   - *primo training reale*: protocollo e regola di lettura scritti prima del lancio in
     [cellnet_tecnico_2026-10-01](../../reports/modelli/cellnet_tecnico_2026-10-01/PROTOCOLLO.md); autorizzazioni del
     proprietario dell'1/10, 00:29, in AUTORIZZAZIONI (tutto, compreso uno scoring).
+- **Stato alle 02:25 del 1/10 (Claude `07ebf08b`), dove leggerlo:**
+  - *primo training reale* in corso su Kaggle GPU dalle 02:05 (`rlab-cellnet-r1`: ciclo di ripresa su CUDA, poi bracci
+    `desc` e `ident` per 100 minuti), sul pre-passo r3: 2.609.698 cellule, 1.066.336 di training ammesse, HepG2 tenuto
+    fuori; lanci e protocollo in [cellnet_tecnico_2026-10-01](../../reports/modelli/cellnet_tecnico_2026-10-01/README.md);
+  - *pre-passo del secondo training* (`rlab-prepass-r4`, CPU) in corso dalle 01:58 sul corpus completo supervisionabile:
+    il primo più K562 genome-wide, K562 essenziali e RPE1, riletti dai job 114 e 115 dopo E-20260930-003;
+  - *seconda ondata d'ingestione* in coda su Colab (job 116-120: KOLF piccoli e forte, Southard RPE1 e Hs27 CRISPRa, A549
+    KO, Tian e Norman), con l'adattatore CSC nuovo; catalogo aggiornato in
+    [catalogo_r2](../../reports/sorgenti/corpus_cellulare_2026-09-30/catalogo_r2/CATALOGO.md);
+  - *scoring*: autorizzato (uno) ma non preparato stanotte. L'upload di un `.vcc` da circa 4 GB chiede una copia locale,
+    e il disco ne ha 1,2; caricarlo da Colab o Kaggle chiederebbe di copiarvi la chiave `vcc`, non autorizzato in modo
+    specifico. `export_effects.py` scrive gli effetti della rete nel formato dello stadio 100, provato in locale.
+- **Prossimo passo (1/10 notte):** leggere `rlab-cellnet-r1` secondo il §4 del protocollo e salvarne gli esiti in
+  `esito/`; poi lanciare il secondo training GPU sul pre-passo r4 entro la quota restante (circa 4 ore dopo il primo);
+  pubblicare la seconda ondata quando i job finiscono.
 - **Aperti prima del training esteso (proprietario in chat, 30/09, prima delle 23:39):** quattro punti della
   revisione di Codex che i 13 casi di `test_cell_data.py` non coprono. Restano aperti finché ognuno non ha una regola
   scritta in `cell_data.py`, casi controllati che la provano e il suo esito nel pre-passo di un training vero:
