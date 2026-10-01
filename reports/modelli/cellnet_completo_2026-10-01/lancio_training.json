@@ -1,0 +1,52 @@
+{
+ "kernel": "davidmaisterx/rlab-cellnet-r3",
+ "kind": "GPU T4x2, one training process, one arm per GPU",
+ "commit": "8b356abf9e27aca1d530c8059df018e46108100c",
+ "code_dataset_files": [
+  "cell_data.py         22702  2026-10-01 02:21:48.157000  ",
+  "cellnet.py           16941  2026-10-01 02:21:48.251000  ",
+  "descriptors.npy   21053616  2026-10-01 02:21:48.656000  ",
+  "train_cellnet.py     86301  2026-10-01 02:21:48.153000  "
+ ],
+ "prepass": "output of davidmaisterx/rlab-prepass-r7",
+ "datasets": [
+  "rlab-hepg2-nadig",
+  "rlab-jurkat-nadig",
+  "rlab-h1-vcc2025-trainval",
+  "rlab-hipsci-gwfit",
+  "rlab-hipsci-gwnonfit",
+  "rlab-hipsci-targeted19",
+  "rlab-k562-gwps-r3",
+  "rlab-k562-essential-r2",
+  "rlab-rpe1-r2",
+  "rlab-a549",
+  "rlab-tian-norman",
+  "rlab-kolf-small",
+  "rlab-kolf-strong"
+ ],
+ "arms": {
+  "desc": "descriptors on cuda:0",
+  "ident": "identity on cuda:1"
+ },
+ "train_args": [
+  "--epochs",
+  "10",
+  "--workers",
+  "3",
+  "--eval-workers",
+  "3",
+  "--budget-minutes",
+  "110",
+  "--checkpoint-minutes",
+  "15",
+  "--eval-reserve-seconds",
+  "120"
+ ],
+ "cycle": [
+  50,
+  100
+ ],
+ "quota": "6 GPU hours declared by the owner on the night of 30/09; used about 217 minutes by rlab-cellnet-r1 (3,729 s) and rlab-cellnet-r2 (8,688 s) with 5 minutes of start-up each; left about 143; the protocol's rule (left minus 20 minutes of margin, minus start-up and resume cycle) gives 115, set to 110",
+ "purpose": "the third training (protocol of 03:59, deviation of 07:24): prepass r7, arms desc and ident in one process",
+ "launched_local": "2026-10-01T12:49:31+02:00"
+}
