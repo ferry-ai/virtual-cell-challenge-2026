@@ -195,3 +195,39 @@ riserve concordate. Se la rete cellulare non esiste ancora, costruiscila.»
   job 091 per non riempire il disco. L'archivio va rifatto su un runtime con disco libero.
 
 Stato dei job e passaggio di consegne: scheda R-LAB, voce del 30/09 alle 22:55.
+
+## 9. La notte fra il 30/09 e l'1/10 (sessione `07ebf08b`)
+
+**Misurato.** I job che hanno finito, con parità ok nei loro `complete.json` su Drive:
+- H1 2025 train e validation (job 108): 221.273 e 98.927 cellule;
+- HIPSCI in tre schermi (job 088): 1.881.069 cellule;
+- Jurkat di Nadig (job 103): 262.956 cellule;
+- K562 genome-wide (job 115): 1.989.578 cellule;
+- K562 essenziali e RPE1 (job 114): 310.385 e 247.914 cellule.
+
+Tutti pubblicati su `davidmaisterx`. Gli shard di Replogle di 115 e 114, però, non si usano (incidente -004, sotto).
+
+**Quattro difetti trovati e corretti, ognuno con un incidente e un test** (registro in
+`reports/analisi/lead_scientist_2026-09-29/learning/incidents/`, evidenze in `incidenti/`):
+- E-20260930-001: il lettore a intervalli teneva in memoria ogni byte letto (job 100 e 105 uccisi su H1). Cache LRU;
+  verificato dal job 108;
+- E-20260930-002: Figshare firma gli URL S3 per 10 secondi e il lettore aspettava dopo il rinnovo (job 104 e 109).
+  Rinnovo e richiesta immediata; verificato dal job 114;
+- E-20260930-003: le categorie AnnData vecchie (`obs/__categories`) si leggevano come codici, e gli shard di Replogle
+  non avevano controlli né bersagli leggibili. Decodifica e test; verificato dai job 114 e 115;
+- E-20260930-004: gli shard di Replogle hanno ID Ensembl come simboli dei geni, quindi nessun gene sta sull'asse.
+  Spec con `var/gene_name`, guardia in `rlab_job` che ferma un'unità senza geni sull'asse; job 121 e 122 in corso.
+
+**Codice nuovo.**
+- `adapters.h5csc_shards`: matrici CSC (scPerturb, KOLF), a passate per intervalli di cellule; test contro la lettura a
+  righe sugli stessi dati.
+- `rlab_job`: riuso da più tentativi; parità per passata dell'adattatore CSC.
+- `colab_job`: preflight locale prima della coda, `--reuse` multiplo, `--stop`.
+- `catalogo.py`: il catalogo; versione corrente [catalogo_r2](catalogo_r2/CATALOGO.md).
+
+**Seconda ondata in coda** (job 116-120, poi 123), con i suoi spec in `wave2_specs.py`: KOLF piccoli e forte, Southard
+RPE1 e Hs27 (CRISPRa), A549 (KO), Tian 2019 e 2021 e Norman 2019. Le colonne e le etichette dei controlli vengono dalle
+misure remote. Le prime cellule di Southard, A549 e Tian sono state lette in locale con il loro spec prima della coda.
+
+I training che usano questi dati sono in `reports/modelli/cellnet_tecnico_2026-10-01/` e
+`reports/modelli/cellnet_esteso_2026-10-01/`.
