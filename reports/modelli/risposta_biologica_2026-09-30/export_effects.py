@@ -77,7 +77,9 @@ def main():
     with open(a.prepass / "prepass.pkl", "rb") as fh:
         st = pickle.load(fh)
     saved = torch.load(a.run / "model.pt", map_location="cpu", weights_only=False)
-    cfg = json.loads((a.run / "config.json").read_text(encoding="utf-8"))["args"]
+    # one arm per run (until 1/10) or several arms in one run: then --run is the arm's folder and config.json is above
+    cfg_path = a.run / "config.json" if (a.run / "config.json").is_file() else a.run.parent / "config.json"
+    cfg = json.loads(cfg_path.read_text(encoding="utf-8"))["args"]
     genes, symbols = saved["genes"], saved["symbols"]
     G, n_sym = len(genes), len(symbols)
     ref = np.load(a.axis_from, allow_pickle=False)
