@@ -49,7 +49,7 @@ nell'audit (`lead_audit_2026-10-01/VERIFICHE.md`).
 | Corpus (`corpus_cellulare_2026-09-30`) | non ripetuto | 10 OK |
 | Versione corretta: 51 test originali e 15 nuovi | 66 OK | 66 OK |
 
-I log sono in `ambiente_r1/test_cellnet_*_py312.log`, `ambiente_r1/suite_py312.log` (prima dell indice Git: 2 fallimenti di `test_live_tree`) e `ambiente_r1/suite_py312_dopo_commit_indice.log` (287 test, OK, 42 saltati).
+I log sono in `ambiente_r1/test_cellnet_*_py312.log`, `ambiente_r1/suite_py312.log` (prima dell'indice Git: 2 fallimenti di `test_live_tree`) e `ambiente_r1/suite_py312_dopo_commit_indice.log` (287 test, OK, 42 saltati).
 
 ## 2. Input e accessi, per passo
 
