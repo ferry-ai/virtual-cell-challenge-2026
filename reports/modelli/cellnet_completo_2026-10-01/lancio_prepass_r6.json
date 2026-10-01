@@ -1,0 +1,35 @@
+{
+ "kernel": "davidmaisterx/rlab-prepass-r6",
+ "kind": "CPU, no GPU quota",
+ "commit": "8b356abf9e27aca1d530c8059df018e46108100c",
+ "code_dataset_files": [
+  "cell_data.py         22702  2026-10-01 02:21:48.157000  ",
+  "cellnet.py           16941  2026-10-01 02:21:48.251000  ",
+  "train_cellnet.py     86301  2026-10-01 02:21:48.153000  "
+ ],
+ "datasets": [
+  "rlab-hepg2-nadig",
+  "rlab-jurkat-nadig",
+  "rlab-h1-vcc2025-trainval",
+  "rlab-hipsci-gwfit",
+  "rlab-hipsci-gwnonfit",
+  "rlab-hipsci-targeted19",
+  "rlab-k562-gwps-r3",
+  "rlab-k562-essential-r2",
+  "rlab-rpe1-r2",
+  "rlab-a549",
+  "rlab-tian-norman",
+  "rlab-kolf-small",
+  "rlab-kolf-strong"
+ ],
+ "prepass_args": [
+  "--holdout-context",
+  "HepG2",
+  "--same-experiment",
+  "h1_vcc2025=h1_vcc2025_train,h1_vcc2025_val",
+  "--workers",
+  "4"
+ ],
+ "purpose": "the third training (protocol of 03:59): the second training's corpus plus the second wave published at launch (A549 KO, Tian 2019 and 2021, Norman 2019, KOLF chromatin, metabolic and strong); Southard RPE1 and Hs27 out: not published at launch (job 125 reads 850,225 + 447,301 cells from Zenodo by HTTP ranges at about one shard every 9 minutes)",
+ "launched_local": "2026-10-01T06:00:33+02:00"
+}
