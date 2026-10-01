@@ -167,6 +167,34 @@
   2. lanciare il terzo training sul pre-passo r6, con il budget del protocollo (quota restante meno 20 minuti, almeno
      60);
   3. pubblicare la terza ondata, poi Southard.
+- **Stato alle 15:30 del 1/10 (Claude `07ebf08b`; sostituisce il prossimo passo qui sopra).** La sessione è rimasta
+  ferma dalle 07:45 alle 12:46 circa, quasi certamente per la sospensione del portatile.
+  - *Secondo training*: A passa per intero
+    ([ESITO](../../reports/modelli/cellnet_esteso_2026-10-01/ESITO.md)). `desc` ha guadagni positivi su C, T e J e
+    batte `identity` su J. Su C non batte il trasferimento (coseno 0,266 contro 0,390). Ogni braccio riceve 1.583
+    cellule/s, la GPU aspetta ancora i dati per il 58% del tempo.
+  - *Terzo training*: lanciato alle 12:49 sul pre-passo r7. r6 è scartato, perché Tian 2019 di scPerturb non è
+    filtrato ([SCOSTAMENTI](../../reports/modelli/cellnet_completo_2026-10-01/SCOSTAMENTI.md)). A passa per intero
+    ([ESITO](../../reports/modelli/cellnet_completo_2026-10-01/ESITO.md)). `desc` migliora su HepG2 (C 0,303, quota
+    J 0,72). Il braccio `ident` è collassato, con `pi` a zero dopo il passo 6.200: è un difetto della miscela da
+    correggere prima di un nuovo training.
+  - *Quota GPU*: circa 320 minuti usati dei 360 dichiarati.
+  - *Invio t29*, autorizzato dal proprietario (00:29, poi «invia appena puoi» alle 15:05 circa):
+    - è la rete r2 `desc` con il generatore del t22, registrata alle 12:06 UTC prima dell'esportazione
+      ([previsione](../../reports/invii/prediction_t29_2026-10-01/prediction.json), banda −0,02…+0,10);
+    - esportazione, stadio 45 e stadio 48 sono passati in locale ([trial_2026-10-01](../../reports/invii/trial_2026-10-01/));
+    - l'upload è partito alle 13:28 UTC come processo separato, e il portatile resta sveglio fino alle 18:09 UTC.
+  - *Disco*: con l'ok del proprietario sono andati nel Cestino generazione e pacchetto di t23 e t25 e il pacchetto
+    del t26, tutti con i manifest in `reports/invii`. Il proprietario ha svuotato il Cestino. La somma KOLF
+    (`interim/kolf_sums/sums.npz`) è compressa in NTFS da 6,4 a 2,3 GB, senza perdita.
+  - *Terza ondata* finita e pubblicata (`rlab-scp-ko`, `rlab-scp-tcells`, `rlab-scp-k562-hek`: 617.524 cellule,
+    parità ok). Southard (job 125) è ancora in lettura da Zenodo.
+- **Prossimo passo:**
+  1. a punteggio arrivato, la lista di PROCEDURE §2 punto 7: `comparison.json`, la riga in `reports/invii/README.md`,
+     un checkpoint, eventualmente PROGETTO §0;
+  2. correggere il collasso di `pi` (un pavimento o una penalità) e provarlo su CPU;
+  3. un training con la terza ondata e Southard quando la quota GPU si rinnova;
+  4. **decisioni del proprietario:** il campione di CD4 (33,6 milioni di cellule, circa 1,7 TB).
 - **Aperti prima del training esteso (proprietario in chat, 30/09, prima delle 23:39):** quattro punti della
   revisione di Codex che i 13 casi di `test_cell_data.py` non coprono. Restano aperti finché ognuno non ha una regola
   scritta in `cell_data.py`, casi controllati che la provano e il suo esito nel pre-passo di un training vero:
