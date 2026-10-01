@@ -1,0 +1,31 @@
+{
+ "kernel": "davidmaisterx/rlab-prepass-r5",
+ "kind": "CPU, no GPU quota",
+ "commit": "8b356abf9e27aca1d530c8059df018e46108100c",
+ "code_dataset_files": [
+  "cell_data.py         22702  2026-10-01 02:21:48.157000  ",
+  "cellnet.py           16941  2026-10-01 02:21:48.251000  ",
+  "train_cellnet.py     86301  2026-10-01 02:21:48.153000  "
+ ],
+ "datasets": [
+  "rlab-hepg2-nadig",
+  "rlab-jurkat-nadig",
+  "rlab-h1-vcc2025-trainval",
+  "rlab-hipsci-gwfit",
+  "rlab-hipsci-gwnonfit",
+  "rlab-hipsci-targeted19",
+  "rlab-k562-gwps-r3",
+  "rlab-k562-essential-r2",
+  "rlab-rpe1-r2"
+ ],
+ "prepass_args": [
+  "--holdout-context",
+  "HepG2",
+  "--same-experiment",
+  "h1_vcc2025=h1_vcc2025_train,h1_vcc2025_val",
+  "--workers",
+  "4"
+ ],
+ "purpose": "the second training (protocol of 02:40 with the deviations of 03:33 and 04:22): the first training's corpus plus K562 genome-wide, K562 essential and RPE1 read again with gene_name after E-20260930-004",
+ "launched_local": "2026-10-01T04:46:39+02:00"
+}
