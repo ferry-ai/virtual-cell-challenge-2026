@@ -8,7 +8,7 @@ on the genes the control file measures and the network knows; the other genes ar
 at the control profile). A target the network never saw gets its biological descriptors (arm `descriptors`) or the
 code of an unknown target (arm `identity`, which has nothing else to say about it).
 
-    python export_effects.py --run <run dir> --prepass <prepass dir> --descriptors <dir> \
+    python export_effects.py --run <run dir or arm dir> [--prepass <prepass dir>] --descriptors <dir> \
         --controls A=<h5ad> B=<h5ad> C=<h5ad> --axis-from <an effects_A.npz> --out <new dir> [--controls-k 2048]
 """
 from __future__ import annotations
@@ -62,7 +62,8 @@ def control_rows(path, genes, k, seed):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--run", required=True, type=Path)
-    ap.add_argument("--prepass", required=True, type=Path)
+    ap.add_argument("--prepass", type=Path, help="the prepass folder: its state is hashed against the one model.pt "
+                                                 "records (the export reads nothing else from it)")
     ap.add_argument("--descriptors", type=Path)
     ap.add_argument("--controls", nargs="+", required=True, metavar="CTX=H5AD")
     ap.add_argument("--axis-from", required=True, type=Path, help="an effects npz whose targets and genes to use")
@@ -74,9 +75,11 @@ def main():
     import torch
     if a.out.exists():
         sys.exit(f"refusing: {a.out} exists")
-    with open(a.prepass / "prepass.pkl", "rb") as fh:
-        st = pickle.load(fh)
     saved = torch.load(a.run / "model.pt", map_location="cpu", weights_only=False)
+    # the export needs nothing from the prepass state (1/10: unpickling 1.1 GB on a laptop with 0.8 GB free): model.pt
+    # records the sha256 of the state it was trained on; a given state is checked against it
+    if a.prepass is not None and sha(a.prepass / "prepass.pkl") != saved["prepass_sha256"]:
+        sys.exit("the prepass state differs from the one the model was trained on")
     # one arm per run (until 1/10) or several arms in one run: then --run is the arm's folder and config.json is above
     cfg_path = a.run / "config.json" if (a.run / "config.json").is_file() else a.run.parent / "config.json"
     cfg = json.loads(cfg_path.read_text(encoding="utf-8"))["args"]
@@ -113,7 +116,8 @@ def main():
     out_pos = np.array([gene_pos.get(g, -1) for g in out_genes])
     a.out.mkdir(parents=True)
     manifest = {"created_utc": datetime.now(timezone.utc).isoformat(), "run": str(a.run),
-                "model_sha256": sha(a.run / "model.pt"), "prepass_sha256": sha(a.prepass / "prepass.pkl"),
+                "model_sha256": sha(a.run / "model.pt"), "prepass_sha256": saved["prepass_sha256"],
+                "prepass_checked": a.prepass is not None,
                 "target_code": saved["target_code"], "targets": len(targets), "targets_new_to_the_network": len(new),
                 "controls_k": a.controls_k, "seed": a.seed, "contexts": {}}
     for spec in a.controls:
