@@ -1,0 +1,69 @@
+{
+ "schema_version": 1,
+ "job_id": "j09_southard_r2",
+ "incident_ids": [
+  "E-20260929-002",
+  "E-20260929-003",
+  "E-20260929-005",
+  "E-20260929-007"
+ ],
+ "inputs": [
+  {
+   "id": "code_snapshot",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\runs\\rlab_setup_2026-10-01_r10\\code_snapshot.tar.gz",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-10-01_r10/code_snapshot.tar.gz"
+   },
+   "bytes": 26286,
+   "sha256": "b4a3c6f79b29edf7228c082e32309a8aa75ab550e5bd875fa7669ba2753c86f2"
+  },
+  {
+   "id": "spec",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\runs\\rlab_setup_2026-10-01_r10\\j09_southard_r2_spec.json",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-10-01_r10/j09_southard_r2_spec.json"
+   },
+   "bytes": 2338,
+   "sha256": "4fe8118512a66fe0bf2a58634b3175b69073b2d0da1467de04e02e07f3faa77b"
+  }
+ ],
+ "outputs": [
+  {
+   "id": "stage",
+   "paths": {
+    "local": "C:/Users/ferra/vcc2026-data/unused/j09_southard_r2/stage",
+    "runtime": "/content/work/rlab_j09_southard_r2/stage"
+   },
+   "must_be_absent": true
+  },
+  {
+   "id": "shards",
+   "paths": {
+    "local": "G:/Il mio Drive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j09_southard_r2",
+    "runtime": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j09_southard_r2"
+   },
+   "must_be_absent": true
+  }
+ ],
+ "target_checks": [],
+ "environment": {
+  "python": {
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\python.exe",
+    "runtime": "/usr/bin/python3"
+   }
+  },
+  "packages": {
+   "h5py": null,
+   "numpy": null,
+   "pandas": null,
+   "scipy": null
+  },
+  "imports": [
+   "h5py",
+   "scipy.sparse"
+  ],
+  "probes": []
+ },
+ "declared_limits": "sources read by HTTP byte ranges are not hashed whole before the run: every range is checked against the ETag of the file, every shard is hashed (plan \u00a76.5); anndata and kaggle are installed on the runtime when absent"
+}
