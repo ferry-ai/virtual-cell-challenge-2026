@@ -34,3 +34,11 @@ secondo training: quando sono scritti, del secondo training non esiste alcun num
    regime (`plan.json`) e la frazione di attesa dei dati (`coverage.json`, `throughput`). Nessuna soglia nuova.
 6. **La seconda ondata resta fuori**, come dice il §2. A549, Tian e Norman sono già pubblicati; KOLF e Southard sono
    in coda (job 124-126). Entreranno in un training successivo, con un suo protocollo scritto prima.
+
+## Aggiunta delle 04:22, prima del pre-passo e del lancio
+
+7. **Valutazione (incidente `E-20261001-001`, prova su CPU in [caricatore](caricatore/README.md)).** Uno shard con le
+   cellule di valutazione entro l'8% delle sue (`--eval-partial 0.08`, il default) si legge riga per riga
+   (`cellnet.read_csr_rows`, stessa matrice). La riserva si stima dai byte che la valutazione decomprime e dal calcolo
+   per cellula dopo il primo blocco della sonda. Commit `8b356ab`, dataset `rlab-cellnet-code` aggiornato alle 02:21
+   UTC. Come per i punti precedenti, la regola di lettura non cambia.
