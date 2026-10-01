@@ -1,7 +1,7 @@
 # R-LAB — piano del giorno: dati cellulari, qualità e rete biologica
 
 - **Stato:** aperto; piano implementativo, nessuna nuova ingestione o rete eseguita da questa scheda.
-- **Aggiornato:** 30 settembre 2026, Europe/Rome.
+- **Aggiornato:** 1 ottobre 2026, Europe/Rome.
 - **Mandato:** richiesta del proprietario in chat: rendere evidente un nuovo piano per Claude, usare più dati possibile per generalizzare, preferire singole cellule al pseudobulk e progettare un'ingestione su risorse Colab/Kaggle con controlli su disomogeneità ed estremi.
 - **Assegnazione:** redazione completata da Codex, chat `01a0f312-3075-7741-bb98-e15ab7c4c4b8`; destinatario operativo Claude, presa in carico da registrare con sessione, file e output secondo [PIANI §3](../PIANI.md#3-lavorare-in-una-cartella-condivisa). Nessun incarico altrui viene liberato o sostituito.
 - **Presa in carico (30/09, 19:08 CEST, Claude Code, sessione `a1ec75f0`),** su richiesta del
@@ -123,6 +123,29 @@
 - **Prossimo passo (1/10 notte):** leggere `rlab-cellnet-r1` secondo il §4 del protocollo e salvarne gli esiti in
   `esito/`; poi lanciare il secondo training GPU sul pre-passo r4 entro la quota restante (circa 4 ore dopo il primo);
   pubblicare la seconda ondata quando i job finiscono.
+- **Stato alle 03:45 del 1/10 (Claude `07ebf08b`; sostituisce il prossimo passo qui sopra, che resta come storia):**
+  - *primo training letto* con la sua regola
+    ([ESITO](../../reports/modelli/cellnet_tecnico_2026-10-01/ESITO.md)):
+    - passano la ripresa su CUDA, gli hash dei 183 shard e la copertura e la valutazione del braccio `desc`;
+    - il braccio `ident` è stato ucciso per memoria, e la GPU ha aspettato i dati per l'87% del tempo;
+    - incidente `E-20261001-001`. Quota GPU usata: circa 62 minuti;
+  - *caricatore misurato e corretto*
+    ([caricatore](../../reports/modelli/cellnet_esteso_2026-10-01/caricatore/README.md), kernel CPU senza quota GPU):
+    - la decompressione gzip costa 6-10 s per shard, e il vecchio passaggio per COO quasi la raddoppiava;
+    - correzioni: `read_csr` diretto (stessa matrice), bracci in un solo processo sugli stessi lotti, valutazione con
+      processi di caricamento. Commit `12e0040`, dataset `rlab-cellnet-code` aggiornato;
+  - *Colab*: la coda 1 ha perso il runtime (nessun battito dopo le 02:29). Il suo lavoro è passato alla coda 2 come
+    job 124-126, e il 123 è ritirato. Il proprietario, quando vuole, riavvia il notebook del dispatcher 1. Sulla coda 2
+    girano 121 (K562 essenziali e RPE1) e 122 (K562 genome-wide), riletti con `gene_name` dopo `E-20260930-004`;
+  - *seconda ondata*: A549 (`rlab-a549`) e Tian e Norman (`rlab-tian-norman`) sono finiti e pubblicati. KOLF piccoli
+    (124, riusa gli shard di cromatina del 116), Southard (125) e KOLF forte (126) sono in coda;
+  - *scoring*: ancora rimandato, per le ragioni delle 02:25 (disco e chiave `vcc`).
+- **Prossimo passo:**
+  1. quando 121 e 122 pubblicano, il pre-passo `rlab-prepass-r5` (CPU), poi il secondo training `rlab-cellnet-r2`
+     secondo il [protocollo](../../reports/modelli/cellnet_esteso_2026-10-01/PROTOCOLLO.md) e gli
+     [scostamenti](../../reports/modelli/cellnet_esteso_2026-10-01/SCOSTAMENTI.md) scritti prima;
+  2. leggerlo con la regola del protocollo §4;
+  3. un protocollo per un terzo training con la seconda ondata.
 - **Aperti prima del training esteso (proprietario in chat, 30/09, prima delle 23:39):** quattro punti della
   revisione di Codex che i 13 casi di `test_cell_data.py` non coprono. Restano aperti finché ognuno non ha una regola
   scritta in `cell_data.py`, casi controllati che la provano e il suo esito nel pre-passo di un training vero:

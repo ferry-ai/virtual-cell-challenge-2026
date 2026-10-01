@@ -1244,7 +1244,14 @@ def train(a):
     if hashes is not None and not hashes.wait():
         sys.exit(f"shards differ from the prepass state: {hashes.bad[:3]}")
     hard_deadline = t_start + 60.0 * a.budget_minutes - export_reserve
-    acc_by_arm, n_eval, t_eval, complete, _ = evaluate(deadline=hard_deadline, workers=eval_workers)
+    try:
+        acc_by_arm, n_eval, t_eval, complete, _ = evaluate(deadline=hard_deadline, workers=eval_workers)
+    except Exception as e:               # noqa: BLE001 - a loader process lost must not cost the evaluation
+        if eval_workers == 0:
+            raise
+        log("evaluation by loader processes failed: again in this process, within the budget", error=repr(e)[:500])
+        eval_workers = 0
+        acc_by_arm, n_eval, t_eval, complete, _ = evaluate(deadline=hard_deadline, workers=0)
     key_mask = st["key_mask"]
 
     def cos(u, v):
