@@ -118,6 +118,8 @@ def main():
     ap.add_argument("--lam-cos", type=float, default=0.5)
     ap.add_argument("--gene-res", action="store_true", help="ablation: learned vector per gene")
     ap.add_argument("--max-c-eval", type=int, default=1000)
+    ap.add_argument("--max-train-pairs", type=int, default=0,
+                    help="smoke runs only: keep at most this many training pairs of each kind (0 = all)")
     ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     args = ap.parse_args()
     out = Path(args.out)
@@ -138,6 +140,9 @@ def main():
     with_src = [p for p in sp["train"] if ds.sources(p[0], p[1], tl)]
     no_src = [p for p in sp["train"] if not ds.sources(p[0], p[1], tl)]
     val = [p for p in sp["val"] if ds.sources(p[0], p[1], tl)]
+    if args.max_train_pairs:
+        cut = lambda ps: [ps[i] for i in sorted(rng.choice(len(ps), min(len(ps), args.max_train_pairs), replace=False))] if ps else ps
+        with_src, no_src, val = cut(with_src), cut(no_src), cut(val)
 
     model = TransferNet(load, d=args.d, k_prog=args.k_prog, gene_res=args.gene_res).to(args.device)
     n_params = sum(p.numel() for p in model.parameters() if p.requires_grad)

@@ -37,6 +37,23 @@ python -m unittest discover -s tests     # fuga d'informazione e parametri per g
 `make_synthetic.py` scrive dati finti nello stesso formato, per provare la pipeline. `VCC_MINI_DATA`
 sposta `raw/` e `mini/` in un'altra cartella.
 
+## Su Colab in una cella
+
+`python make_runcell.py` scrive `runcell.py`: una cella sola che porta con sé il codice e fa tutto
+in sequenza, dai dati già su Drive:
+1. i test;
+2. la costruzione di `mini/`;
+3. l'addestramento scelto da `RUN`.
+
+| `RUN` | Che cosa fa |
+|---|---|
+| `build` | si ferma dopo test e dataset |
+| `smoke` | aggiunge una prova breve, solo per vedere che gira |
+| `full` | 4 linee tenute fuori × 2 semi, poi `aggregate.py` |
+
+Si apre un notebook vuoto, si incolla la cella e si preme Shift+Invio. Le uscite vanno in cartelle
+nuove su Drive (`mini_<data>`, `runs_<data>`).
+
 ## Google Drive e Colab
 
 - `make_catalog.py` congela in `catalog.json` URL, byte e checksum di tutti i file che si possono

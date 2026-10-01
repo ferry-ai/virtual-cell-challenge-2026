@@ -40,11 +40,15 @@ ROOT = Path(__file__).resolve().parent
 # Data folder: raw/ is read from here and mini/ written here (Colab sets it to a local VM folder).
 DATA = Path(os.environ.get("VCC_MINI_DATA", ROOT))
 
-# Column choices are checked by --inspect before the first build; build() asserts them.
+# Column choices. Replogle bulk files have no target column: the target is the second field of
+# obs `gene_transcript` (also the obs index), and every row containing "non-targeting" is a control
+# guide. This is how the team's stage 98 reads the same file (scripts/98_multisource_effects.py,
+# k562_table); on 28/09 the Colab inspection showed the gene_transcript index, num_cells_filtered
+# and non-integer X (per-cell means) in K562_ess and K562_gw.
 SPEC = {
-    "K562_ess": dict(group="K562", kind="bulk", target_col="gene", ctrl="non-targeting"),
-    "K562_gw": dict(group="K562", kind="bulk", target_col="gene", ctrl="non-targeting"),
-    "RPE1": dict(group="RPE1", kind="bulk", target_col="gene", ctrl="non-targeting"),
+    "K562_ess": dict(group="K562", kind="bulk", target_col="gene_transcript", ctrl="non-targeting"),
+    "K562_gw": dict(group="K562", kind="bulk", target_col="gene_transcript", ctrl="non-targeting"),
+    "RPE1": dict(group="RPE1", kind="bulk", target_col="gene_transcript", ctrl="non-targeting"),
     "HepG2": dict(group="HepG2", kind="singlecell", target_col="perturbation", ctrl="control"),
     "Jurkat": dict(group="Jurkat", kind="singlecell", target_col="perturbation", ctrl="control"),
 }
@@ -88,8 +92,11 @@ def inspect(sources: list[dict]) -> None:
 def read_bulk(path: Path, spec: dict) -> tuple[np.ndarray, list[str], np.ndarray, np.ndarray, dict]:
     """Replogle raw bulk: one row per targeted transcript, X = mean counts per cell."""
     a = ad.read_h5ad(path)
-    assert spec["target_col"] in a.obs.columns, (path.name, list(a.obs.columns))
-    labels = a.obs[spec["target_col"]].astype(str).to_numpy()
+    col = spec["target_col"]
+    raw = (a.obs[col] if col in a.obs.columns else a.obs.index.to_series()).astype(str).to_numpy()
+    is_ntc = np.array([spec["ctrl"] in s for s in raw])
+    labels = np.array([spec["ctrl"] if nt else s.split("_")[1] for s, nt in zip(raw, is_ntc)])
+    assert is_ntc.sum() > 0, (path.name, "no control rows")
     ncol = next((c for c in N_CELLS_COLS if c in a.obs.columns), None)
     n = a.obs[ncol].to_numpy(float) if ncol else np.full(len(labels), np.nan)
     X = a.X.toarray() if sp.issparse(a.X) else np.asarray(a.X, dtype=np.float64)
@@ -101,7 +108,8 @@ def read_bulk(path: Path, spec: dict) -> tuple[np.ndarray, list[str], np.ndarray
     n_g = np.bincount(inv, weights=w, minlength=len(uniq))
     means = sums / n_g[:, None]
     n_out = n_g if ncol else np.full(len(uniq), np.nan)
-    info = {"n_cells_column": ncol, "rows": int(a.n_obs), "genes": int(a.n_vars)}
+    info = {"n_cells_column": ncol, "rows": int(a.n_obs), "genes": int(a.n_vars),
+            "label_source": col if col in a.obs.columns else "obs index", "control_rows": int(is_ntc.sum())}
     return means, list(uniq), n_out, gene_symbols(a.var), info
 
 
