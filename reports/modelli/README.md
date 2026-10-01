@@ -25,6 +25,7 @@ linee viste. Con 48 linee di Tahoe, copiare le linee simili perde contro la medi
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 01/10 | [cellnet_terza_ondata_2026-10-01/](cellnet_terza_ondata_2026-10-01/) | R-LAB: quarto training (corpus del terzo più la terza ondata, pavimento su `pi` contro il collasso del braccio `ident`), protocollo scritto prima del lancio; parte quando si rinnova la quota GPU | verifica tecnica, non un risultato | ★ |
 | 01/10 | [cellnet_completo_2026-10-01/](cellnet_completo_2026-10-01/) | R-LAB: terzo training della rete cellulare, il corpus del secondo più la seconda ondata (A549 KO, Tian e Norman, KOLF, Southard: CRISPRi, CRISPRa e KO); protocollo scritto prima del lancio del secondo e di ogni suo numero | verifica tecnica, non un risultato | ★★ |
 | 01/10 | [cellnet_esteso_2026-10-01/](cellnet_esteso_2026-10-01/) | R-LAB: secondo training della rete cellulare sul corpus supervisionabile completo (il primo più K562 genome-wide, K562 essenziali e RPE1); protocollo scritto prima dei numeri del primo e prima del lancio | verifica tecnica, non un risultato | ★★ |
 | 01/10 | [cellnet_tecnico_2026-10-01/](cellnet_tecnico_2026-10-01/) | R-LAB: primo training su dati reali della rete cellulare (4,6 milioni di cellule, sette dataset; HepG2 tenuto fuori), pre-passo su CPU e due bracci su GPU; protocollo e regola di lettura scritti prima del lancio | verifica tecnica, non un risultato | ★★ |
