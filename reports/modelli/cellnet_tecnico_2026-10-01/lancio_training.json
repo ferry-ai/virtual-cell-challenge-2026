@@ -1,0 +1,25 @@
+{
+ "kernel": "davidmaisterx/rlab-cellnet-r1",
+ "kind": "GPU T4x2",
+ "commit": "ae615154abbccc6ae912bc87f1e805add75bc8d1",
+ "code_dataset": "davidmaisterx/rlab-cellnet-code, version of 30/09 23:14 UTC (commit 320cc27; train_cellnet.py 74,274 bytes)",
+ "prepass": "output of davidmaisterx/rlab-prepass-r3 (prepass.pkl sha256 3d1fe050f709cc6251c2c6e73fcb26407e02b6b8390b4c412772cb5dc42d2daa, 2,609,698 cells, 1,066,336 admitted training cells)",
+ "datasets": [
+  "rlab-hepg2-nadig",
+  "rlab-jurkat-nadig",
+  "rlab-h1-vcc2025-trainval",
+  "rlab-hipsci-gwfit",
+  "rlab-hipsci-gwnonfit",
+  "rlab-hipsci-targeted19"
+ ],
+ "arms": {
+  "desc": "--target-code descriptors --epochs 10 --workers 2 --budget-minutes 100 --checkpoint-minutes 15 --eval-reserve-seconds 120",
+  "ident": "--target-code identity --epochs 10 --workers 2 --budget-minutes 100 --checkpoint-minutes 15 --eval-reserve-seconds 120"
+ },
+ "cycle": [
+  50,
+  100
+ ],
+ "quota": "6 GPU hours declared by the owner on the night of 30/09; this kernel about 1 h 55 min",
+ "launched_local": "2026-10-01T02:05:25+0200"
+}
