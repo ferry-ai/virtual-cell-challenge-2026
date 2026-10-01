@@ -1,0 +1,107 @@
+{
+ "args": {
+  "cmd": "train",
+  "prepass": "/kaggle/input/notebooks/davidmaisterx/rlab-prepass-r7/prepass",
+  "out": "/kaggle/working/cycle_a",
+  "descriptors": "/kaggle/input/datasets/davidmaisterx/rlab-cellnet-code",
+  "target_code": "descriptors",
+  "arm": "['desc=descriptors@cuda:0', 'ident=identity@cuda:1']",
+  "eval_workers": "3",
+  "eval_partial": "0.08",
+  "epochs": "10.0",
+  "batch": "256",
+  "ctrl_k": "64",
+  "buffer_shards": "4",
+  "dim": "128",
+  "rank": "128",
+  "lr": "0.001",
+  "seed": "0",
+  "workers": "3",
+  "roles": "3",
+  "prefetch": "8",
+  "budget_minutes": "110.0",
+  "reserve_export_minutes": "5",
+  "checkpoint_minutes": "15.0",
+  "keep_checkpoints": "3",
+  "measure_from": "None",
+  "measure_steps": "300",
+  "eval_chunk": "512",
+  "eval_reserve_seconds": "120.0",
+  "log_every": "100",
+  "resume": "None",
+  "shard_roots": "['/kaggle/input']",
+  "no_verify": "True",
+  "stop_after_steps": "50",
+  "device": "None",
+  "arms": "desc=descriptors;ident=identity",
+  "input_dim": "2048",
+  "descriptors_sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80"
+ },
+ "same_on_resume": {
+  "arms": "desc=descriptors;ident=identity",
+  "epochs": "10.0",
+  "batch": "256",
+  "ctrl_k": "64",
+  "buffer_shards": "4",
+  "input_dim": "2048",
+  "dim": "128",
+  "rank": "128",
+  "lr": "0.001",
+  "seed": "0",
+  "roles": "3",
+  "descriptors_sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80"
+ },
+ "devices": [
+  "cuda:0",
+  "cuda:1"
+ ],
+ "arms": [
+  {
+   "name": "desc",
+   "target_code": "descriptors",
+   "device": "cuda:0",
+   "out": "/kaggle/working/cycle_a/desc"
+  },
+  {
+   "name": "ident",
+   "target_code": "identity",
+   "device": "cuda:1",
+   "out": "/kaggle/working/cycle_a/ident"
+  }
+ ],
+ "started_utc": "2026-10-01T10:51:16.311783+00:00",
+ "prepass_sha256": "7859cd77508664c7995d4c88f2cf5161c3eb102a3b7f50636634664070c9d7c7",
+ "resumed_from": null,
+ "code": {
+  "cellnet.py": "e35ffe86e03f987580a63778191445b83080d7444424263f3db4797a086f43db",
+  "cell_data.py": "f00bdd2bbcab2f90bb38af6a99073c31093ea72717b15df99ac3c16339201a50",
+  "train_cellnet.py": "74ca7132a6557f1d830c227c8bc58bf6ae25f82fadd540b0f99826b12dc52e37"
+ },
+ "descriptors": {
+  "sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80",
+  "dims": 284,
+  "symbols_with_descriptors": 10926,
+  "symbols": 11420
+ },
+ "study_weights": {
+  "jurkat_nadig": 1.15420947446492,
+  "h1_vcc2025": 1.0619051149933314,
+  "hipsci_targeted_19": 0.48380498103782366,
+  "replogle_k562_gwps": 0.15265181577564294,
+  "replogle_k562_essential": 0.9766410021893698,
+  "replogle_rpe1": 1.2240518343232287,
+  "a549_liu_hillsley2026": 0.4979819685096635,
+  "tian2021_crispri": 9.282061220685916,
+  "tian2021_crispra": 14.107394411537472,
+  "norman2019_crispra": 4.2872470102995965,
+  "kolf_chromatin_modifiers": 6.720361725880852,
+  "kolf_metabolic_enzymes": 2.5238201918469647,
+  "kolf_strong_perturbations": 1.3017083745223657
+ },
+ "admitted_training_cells": 4382321,
+ "parameters": 7923483,
+ "parameters_by_arm": {
+  "desc": 7923483,
+  "ident": 9279515
+ }
+}

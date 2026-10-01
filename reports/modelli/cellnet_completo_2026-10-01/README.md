@@ -9,6 +9,8 @@ numero.
 |---|---|
 | `PROTOCOLLO.md` | Dati, disegno, budget e regola di lettura; scritto prima del lancio |
 | `lancio_*.json` | Kernel, commit, dataset e argomenti del pre-passo e del training (scritti al lancio) |
+| `SCOSTAMENTI.md` | Tian 2019 fuori (pre-passo r7 al posto di r6), deciso prima di ogni numero del training |
+| `ESITO.md` | La lettura con la regola del §4: A passa; il braccio `ident` è collassato (`pi` a 0) |
 | `esito/` | Gli output piccoli scaricati da Kaggle, con un manifest degli hash |
 
 I training precedenti, sullo stesso codice: [cellnet_tecnico_2026-10-01](../cellnet_tecnico_2026-10-01/README.md) e
