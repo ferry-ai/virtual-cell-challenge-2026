@@ -11,8 +11,10 @@ indici e misure. Indice generale: [../README.md](../README.md).
   CD4 è `GEMX_flex_v1` in tutte le 12 righe dei metadati originali: la premessa «tutte le
   sorgenti tranne VIPerturb sono in 3'» è corretta dall'[audit del 29/09](../analisi/lead_scientist_2026-09-29/AUDIT_DATI.md)
   e dalla scheda [R-021](../../docs/REGISTRO.md#r-021--piattaforma-plateau-e-inferenze-causali-nelle-sintesi).
-- **Quali sorgenti sono davvero entrate in un modello**, e quali sono pronte ma mai usate (per
-  esempio diciannove linee HIPSCI): [copertura del training](../analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md), 29/09.
+- **Uso nel training:** la [copertura del 29/09](../analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md)
+  riguarda i modelli di allora. HIPSCI e H1 train/val sono entrate nei training cellulari
+  successivi, indicizzati da [R-LAB](../../docs/piani/piano-giorno-2026-09-30.md).
+  Verificare i manifest e i ruoli dopo QC per ciascun checkpoint; H1 test resta riserva chiusa.
 - **Gli universi del 26/09 di CD4, HCT116 e HEK293T hanno l'artefatto del pseudoconteggio**: per i
   banchi dal 27/09 si usano quelli ricostruiti (`*_me1`, [universo_corretto](universo_corretto_2026-09-27/RISULTATI.md)).
   K562 passa per un altro stimatore e non ne soffre.
@@ -26,7 +28,7 @@ indici e misure. Indice generale: [../README.md](../README.md).
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
-| 30/09 | [corpus_cellulare_2026-09-30/](corpus_cellulare_2026-09-30/) | R-LAB, prima consegna: quali sorgenti hanno cellule in locale, su Drive o solo in remoto (con i byte), il contratto degli shard e un pilota HepG2, le prime misure QC per cellula; poi (P2) adattatori e runner provati su ritagli, J01–J03 e il download di H1 2025 in coda su Colab | sì; inventario e misure. I job sono approvati e in coda, non ancora eseguiti | ★★★ |
+| 30/09–01/10 | [corpus_cellulare_2026-09-30/](corpus_cellulare_2026-09-30/) | Inventari successivi, contratto degli shard, QC, adattatori e job; corpus usato nei training cellulari r1–r3 | dati e implementazione con manifest per versione; le vecchie code Colab non descrivono lo stato corrente. Disponibilità sulla macchina destinataria da verificare | ★★★ |
 | 29/09 | [basali_asse_2026-09-29/](basali_asse_2026-09-29/) | Azione 5 di R-REV: protocollo per richiudere i CPM sull'asse comune, verificarli dal grezzo e misurare l'impatto sulle quote t23/t27 e sui lettori. La sessione `f4f38e58` si è chiusa senza eseguirlo: `r1/` è vuota | solo protocollo, nessun esito | ★ |
 | 28/09 | [ponte_flex_2026-09-28/](ponte_flex_2026-09-28/) | Gli stessi knockdown K562 in Flex (VIPerturb-seq) e in 3': metà contro metà di VIPerturb 0,110 di coseno, verso il 3' 0,030; il rumore spiega una parte del divario, non tutto | in parte: misure valide sulla coppia K562, esplorative; falsa la premessa che solo VIPerturb sia Flex, [R-021](../../docs/REGISTRO.md#r-021--piattaforma-plateau-e-inferenze-causali-nelle-sintesi) | ★★★ (confronto fra due studi K562) |
 | 28/09 | [corpus_basale_2026-09-28/](corpus_basale_2026-09-28/) | Profili basali per l'encoder: controlli delle nostre sorgenti (con 19 linee HIPSCI), A/B/C, DepMap, Tahoe DMSO; una decisione per sorgente in `SORGENTI.md` | sì come dati; piattaforme diverse mescolate | ★ |

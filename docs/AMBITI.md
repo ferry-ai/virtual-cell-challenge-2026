@@ -51,9 +51,11 @@ Piani: [R-COMP](piani/modello-competitivo.md), [S-INVII](piani/invii-finale.md).
   ([CP-0047](checkpoints/0047-conferma-generatore-t28.md), [CP-0050](checkpoints/0050-credibilita-score-e-riserva.md)).
 - **Interpretazione.** Il banco HepG2 ha preso il verso dei cambi ufficiali e ne ha sovrastimato
   l'entità ([errori di metodo](ERRORI.md#errori-di-metodo-già-commessi)).
-- **In attesa.** Il banco con lo scorer vero sui bersagli del pannello K562 ha il codice e i bracci
-  pronti; il job Colab aspetta di girare da solo ([banco K562](../reports/generatore_e_banchi/banco_k562_pannello_2026-09-29/RISULTATI.md),
-  azione 4 di [R-REV](piani/revisione-critica.md)).
+- **Protocollo e bracci disponibili.** Il banco K562 non ha un esito del job registrato
+  ([protocollo](../reports/generatore_e_banchi/banco_k562_pannello_2026-09-29/RISULTATI.md),
+  azione 4 di [R-REV](piani/revisione-critica.md)). La ripresa richiede preflight e scelta
+  del confronto; non è una coda automatica. K562 già visto da r2/r3 non ne prova la
+  generalizzazione a un contesto nuovo.
 
 Leggi prima: [generatore e banchi](../reports/generatore_e_banchi/README.md), la sezione
 «Generatore e t28» dell'[indice lead](../reports/analisi/lead_scientist_2026-09-29/README.md),
@@ -77,9 +79,9 @@ cambiare il codice: `scripts/CLAUDE.md` e `src/vcc2026/CLAUDE.md`.
   gene non misurato resta mascherato, non vale zero (D-009).
 
 Leggi prima: [GENERALIZZAZIONE](GENERALIZZAZIONE.md), [sorgenti](../reports/sorgenti/README.md).
-Piano operativo: [R-LAB, corpus cellulare e QC](piani/piano-giorno-2026-09-30.md), dentro
-[R-COMP](piani/modello-competitivo.md); [R-DATI](piani/dati-affidabilita.md) instrada alle
-verifiche di qualità e ai dati necessari al banco, partendo dal corpus già prodotto in R-LAB.
+Piano operativo: [R-LEAD P0/P1 e P5](piani/strategia-scientifica.md).
+[R-LAB](piani/piano-giorno-2026-09-30.md) indicizza il corpus;
+[R-DATI](piani/dati-affidabilita.md) si attiva per lacune specifiche del banco.
 
 ### 5. Modelli appresi e generalizzazione
 
@@ -107,8 +109,9 @@ verifiche di qualità e ai dati necessari al banco, partendo dal corpus già pro
 
 Leggi prima: [GENERALIZZAZIONE](GENERALIZZAZIONE.md), [modelli](../reports/modelli/README.md), la
 sezione «Rete sulle sorgenti» dell'[indice lead](../reports/analisi/lead_scientist_2026-09-29/README.md).
-Piano operativo: [R-LAB, rete biologica e validazione](piani/piano-giorno-2026-09-30.md), dentro
-[R-COMP](piani/modello-competitivo.md); altri filoni in [R-V2](piani/modello-v2.md).
+Piano operativo: [R-LEAD, P0–P6](piani/strategia-scientifica.md).
+[R-LAB](piani/piano-giorno-2026-09-30.md) indicizza corpus e artefatti;
+[R-COMP](piani/modello-competitivo.md) mantiene l'obiettivo, [R-V2](piani/modello-v2.md) le alternative.
 
 ### 6. Set finale D, E, F
 
@@ -116,7 +119,8 @@ Piano operativo: [R-LAB, rete biologica e validazione](piani/piano-giorno-2026-0
   chiudono il 5 novembre.
 - **Misurato.** La prova generale in forma ridotta produce un `.vcc` valido
   ([CP-0044](checkpoints/0044-prova-generale-22-ottobre.md)); D1–D5 e D9–D11 sono corretti con i
-  loro test. La forma piena chiede circa 17 GB liberi: il 30/09 alle 02:30 su C: ce n'erano 3,8.
+  loro test. La stima della forma piena era circa 17 GB liberi; spazio e risorse disponibili
+  vanno misurati alla ripresa, senza usare come blocco attuale la fotografia del 30/09.
 
 Leggi prima: [PROCEDURE §7](PROCEDURE.md#7-il-set-finale-22-ottobre), [la prova generale](../reports/invii/prova_generale_2026-09-28/RISULTATI.md).
 Piano: azione 3 di [R-REV](piani/revisione-critica.md).

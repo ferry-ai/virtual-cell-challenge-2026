@@ -1,28 +1,19 @@
 # Virtual Cell Challenge 2026
 
-> **Teammate handoff:** [brief, repository map and machine checks](docs/CONSEGNA_TEAMMATE.md),
-> with a [ready-to-use Claude prompt](docs/PROMPT_CLAUDE_TEAMMATE.md) for the R-LEAD programme.
+**Start here:** agents read [CLAUDE.md](CLAUDE.md), then
+[current state](docs/PROGETTO.md) §0 and the [plan index](docs/PIANI.md) §2–3.
+There is one implementation plan: [R-LEAD](docs/piani/strategia-scientifica.md),
+with a [ready-to-use Claude prompt](docs/PROMPT_CLAUDE.md).
+On another machine, also read the [environment handoff](docs/CONSEGNA_TEAMMATE.md).
 
-> **Today's plan for Claude: [cell-level data, quality and biological modelling](docs/piani/piano-giorno-2026-09-30.md).**
-> Full dataset coverage, resumable ingestion, assay-aware QC and a model trained on individual cells where available.
-> Research programme and promotion criteria: [modello competitivo](docs/piani/modello-competitivo.md).
+After t29, no neural model is promoted. The current reference and observed scores
+are maintained in PROGETTO and the [submission ledger](reports/invii/README.md).
+The earlier training queues and instructions are [preserved as history](docs/storico/rinnovo_2026-10-01/INDICE.md).
 
-**Zero-shot** prediction of the transcriptional response to CRISPRi knockdown in
-cell lines never seen during training.
-
-Submissions close **5 November 2026**. Final test set drops **22 October 2026**.
-
-> **Start from [`docs/PROGETTO.md`](docs/PROGETTO.md) §0** — where the project stands
-> today (best observed score +0.144845, t28; inconclusive improvement, t22 recipe remains the reference) — and [`docs/PROCEDURE.md`](docs/PROCEDURE.md),
-> the live pipeline with its exact commands. Agents: the working agreement is
-> [`CLAUDE.md`](CLAUDE.md). Open work is indexed in [`docs/PIANI.md`](docs/PIANI.md); the
-> evidence, filed by topic with the status of every folder, in
-> [`reports/README.md`](reports/README.md).
-> This README covers the task, the scoring and the setup. Its sections of 11–13 September
-> (the plan by phases and the first reviews) moved on 28 September to
-> [`docs/storico/README_2026-09-11_13.md`](docs/storico/README_2026-09-11_13.md); six of
-> their claims are flagged in [`docs/REGISTRO.md`](docs/REGISTRO.md), sheet R-001. The
-> submission contract is in [`docs/SOTTOMISSIONE.md`](docs/SOTTOMISSIONE.md) §1.
+This README covers the challenge and setup. Use [PROCEDURE](docs/PROCEDURE.md) for
+execution, [AMBITI](docs/AMBITI.md) for one area's evidence, and
+[reports](reports/README.md) for dated results. The final test set D/E/F arrives
+on **22 October 2026**; submissions close on **5 November 2026**.
 
 ## The task
 

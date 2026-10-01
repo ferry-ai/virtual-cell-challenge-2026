@@ -71,9 +71,9 @@ or `reports/` gets a registry row.
 **The owner authorises** anything that spends quota (a submission, cloud compute, a launch of
 other agents), every download and every push, in chat. Past goes for submissions are transcribed
 in `reports/invii/trial_2026-09-22/autorizzazioni.md`; a new agent confirms them in chat before
-using one. On cloud compute two records disagree, and the contradiction is open: card R-V2 (F7)
-notes Colab and Kaggle as authorised on 27/09, while the mandate of card R-REV (28/09) and PIANI
-§2 ask for it in chat. Until the owner settles it, ask. The repository is **public** on GitHub,
+using one. On cloud compute two historical records disagree, and the contradiction is open: R-V2 (F7)
+notes Colab and Kaggle as authorised on 27/09, while R-REV (28/09) asks for it in chat.
+Those original cards are preserved in `docs/storico/rinnovo_2026-10-01/docs/piani/`. Until the owner settles it, ask. The repository is **public** on GitHub,
 one branch `main`: never commit a secret or private data, and never write a cell-line identity
 next to the contexts A, B, C.
 

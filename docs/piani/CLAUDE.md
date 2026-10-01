@@ -7,6 +7,10 @@ L'elenco delle schede, con priorità e dipendenze, è la tabella del §2 di [PIA
 si ripete qui. Lo stato e l'assegnazione di un piano stanno nell'intestazione della sua scheda, e
 solo lì.
 
+Keep only the current mandate, next step, dependencies and closure in a live card.
+Dated execution instructions go to `docs/storico/`, with provenance and registry metadata.
+R-LEAD owns the implementation sequence; other cards and prompts link to it.
+
 ## Regole delle schede
 
 - Stati ammessi: **aperto**, **in corso**, **in attesa** (dipendenza esplicita),

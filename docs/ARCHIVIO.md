@@ -521,3 +521,26 @@ preflight di ERRORI.
 | `notebooks/colab_jobs/generate_trial_fast.sh` | 36 | «Generate, package and verify one trial. Two costs of jobs 011/012 are removed»: stadio 76 e 48, uscita `runs/trials_2026-09-17/` |
 | `notebooks/colab_jobs/generator_null.sh` | 10 | «After the benches: on 2026-09-17 the first attempt ran out of memory next to the extraction.» Stadio 72, uscita `runs/generator_null_2026-09-17/n003` |
 | `notebooks/colab_jobs/k562_extract.sh` | 5 | Senza commento: stadio 71, uscita `processed/k562_gwps_sc/x002` |
+
+
+## 1–2 ottobre 2026 — rinnovo delle guide dopo t29
+
+Il tag annotato **locale** `archivio/pre-rinnovo-2026-10-01` conserva `3de6cd0`, prima del
+rinnovo D-051. Nessun file di codice o evidenza è rimosso dall'albero; le guide correnti
+sono riscritte, con le versioni precedenti in [docs/storico/rinnovo_2026-10-01](storico/rinnovo_2026-10-01/INDICE.md).
+Il manifest elenca ogni originale, copia e hash. Non si esegue `git rm`: nessun percorso
+originale lascia l'albero. I file pesanti, worktree e protocolli restano dove erano.
+
+| Versione precedente | Dove si recupera | Sede attuale |
+|---|---|---|
+| README, PROGETTO, PIANI e nove schede | [Indice delle 18 copie](storico/rinnovo_2026-10-01/INDICE.md), una riga per file | Stessi percorsi, con R-LEAD come sequenza unica |
+| Consegna e prompt teammate | Copie nello stesso indice | Addendum portabile e rimando a `docs/PROMPT_CLAUDE.md` |
+| PROCEDURE e tre indici dei report | Copie nello stesso indice | Stessi percorsi, metadata riallineati agli esiti |
+
+Recupero byte originali, senza modificare il checkout:
+
+```bash
+git show archivio/pre-rinnovo-2026-10-01:docs/piani/strategia-scientifica.md
+```
+
+[Perimetro, correzioni e verifiche](../reports/analisi/rinnovo_repo_2026-10-01/README.md).

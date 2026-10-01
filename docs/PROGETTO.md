@@ -9,107 +9,53 @@ cambia una conclusione. Il testo tolto resta in `docs/storico/`: le
 [sezioni 3–4 del 28/09](storico/PROGETTO_sezioni_3_4_2026-09-28.md) e il
 [§0, §6 e §7 del 30/09 mattina](storico/PROGETTO_sezioni_0_6_7_2026-09-30.md).
 
-## 0. Oggi — 1 ottobre 2026
+## 0. Oggi — dopo t29 e il rinnovo del 1–2 ottobre 2026
 
-**Ultimo esito: t29 negativo; la rete cellulare non sostituisce il transfer.** Il ramo `desc`
-di r2, con il generatore t22, cade nel ramo c della sua regola: nessun altro invio della rete
-finché un banco locale a sei membri non la mostra almeno al livello del transfer
-([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). Questo boccia il candidato
-provato; non identifica da solo la causa del fallimento o il limite di ogni rete.
+**La rete r2 `desc` non è promossa.** Il t29 cade nel ramo c della sua regola:
+nessun altro invio neurale prima di un banco locale a sei membri almeno al livello del
+transfer ([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). La causa dello
+score non è ancora isolata; il collasso identity di r3 non la dimostra.
 
-**Il massimo osservato resta t28: +0,144845, rango 359; non conclusivo.** Contro t25 fa
-+0,004607, sotto la soglia +0,005. Migliora fedeltà e reach, perde NMAE, Jaccard e MSE grezza;
-non dimostra generalizzazione ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)).
+**Il riferimento resta la ricetta t22**, quattro sorgenti a peso uguale; t22/t24 danno
+una media osservata di **0,14207**. Il massimo è t28, **0,144845**, con incremento sul
+t25 inferiore alla soglia registrata: non conclusivo ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)).
+La correzione dello stimatore t25 si conserva; l'emissione t28 è un confronto distinto.
+Ricette, cache, generatore e seed si ricostruiscono dai manifest, non dal numero del trial.
+La fonte completa dei punteggi è l'[indice degli invii](../reports/invii/README.md).
 
-**La ricetta di riferimento resta quella del t22**, le quattro sorgenti genome-scale a peso uguale.
-Il suo riferimento è la media del t22 e della replica t24 con un altro seme, **0,14207**
-([confronto](../reports/invii/prediction_t24_2026-09-27/comparison.json)). Tutti i punteggi, con
-l'esito della regola di ciascun invio, sono nella tabella degli [invii](../reports/invii/README.md).
+**Un solo piano eseguibile: [R-LEAD](piani/strategia-scientifica.md).** Prima verificare
+input/esposizioni, split, export, controlli e pesi; correggere i difetti riprodotti; confrontare
+transfer, generico addestrato, bilineare e rete sui sei membri. Solo dopo valutare residuo,
+dati aggiuntivi e distribuzioni. [Prompt per Claude](PROMPT_CLAUDE.md), [indice dei ruoli](PIANI.md).
 
-Il plateau precedente non dimostra saturazione; una coppia di semi non stima il rumore
-([audit del 29/09](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md)). Il set finale
-D/E/F arriva il **22 ottobre**, le sottomissioni chiudono il **5 novembre** (§1).
+Il corpus, le ingestioni e r1–r3 restano disponibili attraverso [R-LAB](piani/piano-giorno-2026-09-30.md).
+I loro risultati sono tecnici o esplorativi: più cellule non dimostrano un modello migliore.
+Il quarto training non è un lancio automatico al rinnovo della quota.
+**K562 è già visto dalle reti r2/r3; H1 train/val è nel corpus, H1 test resta chiusa.**
+La riserva non si usa per debug né si rinomina «nuovo contesto».
 
-### Direzione generale
+La consegna finale D/E/F resta il traguardo. La prova generale a forma piena è ancora
+da completare, anche se si conserva il transfer ([R-REV](piani/revisione-critica.md)).
+Risorse, spazio e accessi si misurano alla ripresa; i valori del 30/09 sono storia.
 
-**Direzione della lead dal 1/10:** [R-LEAD](piani/strategia-scientifica.md) precisa R-COMP:
-prima correggere split, controlli e confronti del training, poi transfer con residuo biologico,
-dati ponte e popolazioni. Diagnosi riprodotte in [CP-0053](checkpoints/0053-audit-cellnet-e-strategia.md);
-nessuna rete ancora promossa. Dopo t29 la prima consegna proposta è il banco diagnostico sui
-modelli disponibili, insieme alle correzioni; un altro training tecnico non basta a promuoverli.
-[R-LAB](piani/piano-giorno-2026-09-30.md) conserva il suo incarico.
-Priorità in [PIANI](PIANI.md), evidenze in [AMBITI](AMBITI.md); [testo precedente](storico/PROGETTO_direzione_2026-09-30.md).
+### Coordinamento e decisioni realmente aperte
 
-1. **Il traguardo è il set finale D/E/F**, l'unico che conta per la classifica: tutta la catena
-   deve andare dall'input al `.vcc` su contesti e bersagli nuovi. Resta da fare la prova generale
-   in forma piena (azione 3 di [R-REV](piani/revisione-critica.md)), che chiede circa 17 GB liberi;
-   il 30/09 su C: ce n'erano 3,8.
-2. **L'emissione resta una leva misurata e un confronto necessario.** Il t28 conferma in gara il verso del banco, cioè fedeltà e
-   reach che salgono, con un guadagno netto piccolo pagato in NMAE, Jaccard e MSE grezza
-   ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)). Separare
-   ampiezza e dispersione e cercare varianti che non perdano NMAE resta un confronto del nuovo piano, con lo scorer vero su
-   una riserva mai valutata: il banco K562 dell'azione 4 e il passo 2 di
-   [R-COMP](piani/modello-competitivo.md), non il solo banco HepG2.
-3. **Il divario con i primi 100 sta soprattutto nella `mse`**, tosata a zero in tutti i nostri
-   invii (§3). La sola risposta comune non basta a colmarlo
-   ([audit del 29/09](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md), §2.4),
-   e nessun modello appreso ha ancora passato la sua regola: una rete nuova si prova sui sei
-   membri, con una riserva nuova.
-4. **Tutti i dati utilizzabili hanno un ruolo esplicito nel nuovo corpus**, senza limitarsi ai
-   quattro della ricetta o al nucleo dei contrasti appaiati. Preservare le singole cellule dove
-   disponibili, tenere gli aggregati come viste/supervisioni distinte e tracciare QC e uso effettivo.
-   HIPSCI è già nel training cellulare r2; ulteriore copertura non dimostra da sola un beneficio.
-   Ruoli, acquisizioni ed esclusioni sono documentati in [R-LAB](piani/piano-giorno-2026-09-30.md).
-5. **Metodo:** previsione registrata prima di ogni invio, lettura dai sei membri pubblicati, e
-   prima di concludere un controllo degli [errori già commessi](ERRORI.md#errori-di-metodo-già-commessi).
+Il proprietario ha confermato Claude e teammate **fermi** durante il rinnovo; la prossima
+sessione prende R-LEAD registrando macchina, commit, file e output. Gli incarichi datati
+sono conservati nello [storico del rinnovo](storico/rinnovo_2026-10-01/INDICE.md).
 
-### Lavori aperti
+- Ogni accesso mancante si presenta con file necessario e passo impedito. H1 train/val
+  non è un download ancora da proporre sulla base della vecchia lista.
+- Nuovo cloud, download, invii e push seguono CLAUDE.md e la chat pertinente. Resta aperto
+  il perimetro delle autorizzazioni cloud annotate in modo diverso nelle vecchie schede.
+- Uso di ulteriori dati della stessa linea e verifica esterna della licenza Orion restano
+  decisioni distinte dall'autorizzazione già data per gli invii; identità fuori dalla repo pubblica.
+- La preregistrazione t21 citata ma assente resta [R-020](REGISTRO.md#r-020--evidenza-citata-ma-assente-dal-repository),
+  non va ricostruita dopo il risultato.
 
-Priorità e dipendenze in [PIANI](PIANI.md), stato e assegnazioni nelle schede; orientamento dopo t29:
-- **R-COMP → R-LEAD → R-LAB:** programma generale, direzione scientifica ed esecuzione dello
-  stesso lavoro. Corpus e r1–r3 sono stati prodotti, t29 è concluso; per riprendere usare
-  le intestazioni aggiornate, non le consegne cronologiche precedenti.
-- **R-REV**, le azioni della revisione critica del 28/09 ([scheda](piani/revisione-critica.md)):
-  la 2 e la 6 sono chiuse; la 3 aspetta la prova generale in forma piena (la forma ridotta dà un
-  `.vcc` valido, [CP-0044](checkpoints/0044-prova-generale-22-ottobre.md)), la 4 il job Colab del
-  banco K562 con lo scorer vero; le altre, con il loro stato, sono nella scheda.
-- **R-V2, R-DATI, R-SWITCH e S-INVII:** filoni precedenti, supporto dati, ipotesi sulle popolazioni
-  e presidio degli invii. [PIANI](PIANI.md) chiarisce le dipendenze; non sono quattro nuove
-  ricerche da avviare insieme.
-
-Gli esiti chiusi dal 28/09 (t23, t26, rete relazionale, rete sulle sorgenti, Stack A/B) sono nelle
-sezioni di [AMBITI](AMBITI.md) e nei checkpoint dal 0042 al 0052; il t29 è in CP-0055.
-
-### Che cosa aspetta una decisione del proprietario
-
-Per il proprietario, e per chi tocca una di queste voci.
-
-- Se e come usare dati pubblici della **stessa linea** dei contesti di gara, identificata dai
-  controlli: ammesso finora solo come esperimento dichiarato, con le identità fuori dal repository
-  pubblico ([scheda R-V2](piani/modello-v2.md), «Domanda strategica aperta»).
-- I download non ancora autorizzati elencati nella scheda R-V2 (DepMap CRISPRGeneEffect, profili
-  basali MIX-seq, De Simone 2025, H1 della gara 2025).
-- Se l'autorizzazione di Colab e Kaggle annotata il 27/09 nella scheda R-V2 valga per ogni agente:
-  la scheda R-REV e PIANI chiedono il calcolo in cloud in chat, e la contraddizione è aperta
-  ([CLAUDE.md](../CLAUDE.md), «The owner authorises»).
-- La sorte della previsione del t21, citata ma probabilmente mai scritta: è l'ultima voce aperta
-  dell'evidenza assente, le altre quattro sono state recuperate il 28/09
-  ([R-020](REGISTRO.md#r-020--evidenza-citata-ma-assente-dal-repository)).
-- Il push in `main` della riorganizzazione e della revisione del 28/09, e le altre voci del §2 della
-  scheda [R-REV](piani/revisione-critica.md). Dal 30/09 anche i commit locali: il lavoro di Codex e
-  della sessione `f4f38e58`, il riordino della notte
-  ([riordino](../reports/analisi/riordino_repo_2026-09-30/RIORDINO.md)) e quello dell'ingresso degli
-  agenti del pomeriggio ([ingresso](../reports/analisi/ingresso_agenti_2026-09-30/RIORDINO.md));
-  nessuno è su GitHub.
-- Gli scratchpad temporanei di undici sessioni chiuse, fra cui quello del 26/09 con risultati
-  verificati mai trascritti: se spostarli nella cartella dati e se trascriverli
-  ([riordino](../reports/analisi/riordino_repo_2026-09-30/RIORDINO.md), §4).
-- Lo spazio su C:, 3,8 GB liberi il 30/09: la prova generale in forma piena ne chiede circa 17.
-- Il lavoro R-IPSC di Codex del 29/09 (scheda, protocollo, codice, consenso a un upload su Kaggle)
-  sta solo nel suo worktree `ipsc-transfer`, fuori da `main`: se e quando committarlo lo decide il
-  proprietario, a chat Codex chiusa. Per sua scelta del 30/09 restano anche il worktree del
-  pilota atlas di Codex del 19/09 e le due attività pianificate della catena ritirata; gli altri
-  worktree degli agenti sono usciti ([AGENTI](AGENTI.md), §2–3).
+La pubblicazione si verifica confrontando commit locale e remoto aggiornato: nessuna lista
+statica di commit «mai pubblicati» è autorevole. Worktree, scratchpad e infrastruttura hanno
+il proprio stato in [AGENTI](AGENTI.md); il rinnovo non ne modifica la sorte.
 
 ## 1. Il problema
 
@@ -198,9 +144,10 @@ del 12–17 settembre è in [storico](storico/PROGETTO_sezioni_3_4_2026-09-28.md
   forti e più trasferibili di quelli del pannello ([atlante](../reports/trasferimento/atlante_2026-09-26/RISULTATI.md)).
 
 **Sui modelli per contesti nuovi**
-- **Misurato.** Nessun modello appreso passa la sua regola; dove batte la versione cieca non batte
-  quella con il contesto scambiato; la perdita sulla famiglia tenuta fuori sale dopo 50–100 passi
-  ([modelli](../reports/modelli/README.md)).
+- **Misurato nei modelli del 27–28/09.** Dove battono il contesto cieco non battono quello
+  scambiato; in quelle corse la perdita sulla famiglia esclusa sale dopo 50–100 passi.
+  Non estendere quella curva a r2/r3 cellulari: hanno [esiti e diagnosi propri](../reports/modelli/README.md).
+  Nessuna rete è stata promossa; t29 aggiunge un esito ufficiale negativo (CP-0055).
 - **Misurato**, su HepG2 con lo scorer vero: la forma t19 batte la t16 (+0,026); raddoppiare la t19
   non è distinguibile da zero; la testa cis non si vede; Jaccard negativo in ogni braccio
   ([banco HepG2](../reports/generatore_e_banchi/banco_hepg2_v2_2026-09-26/RISULTATI.md)).
@@ -252,7 +199,8 @@ Le incertezze aperte al 28 settembre. Fra parentesi il numero che avevano nel ve
     pannello nuovo cambiano la risposta media tolta da γ = 1 e i bersagli coperti.
 
 Le altre incertezze del vecchio elenco sono chiuse o assorbite: (1) le ancore di cinque membri
-sono risolte, la `mse` resta stimata dalla classifica; (6) la co-espressione non predice l'effetto
+non sono identificate per contesto: le ancore aggregate del 17/09 non convertono esattamente
+i grezzi ([CP-0050](checkpoints/0050-credibilita-score-e-riserva.md)); (6) la co-espressione non predice l'effetto
 su HepG2; (11), (12) e (21) sono superate dalla scelta dell'ampiezza sul punteggio ufficiale
 (D-042); (14) il limite di `vcc prep` è aggirato dallo stadio 48; (15)–(19) sono linee chiuse con
 il codice archiviato; (20) le copie su Drive sono state lette.
@@ -265,7 +213,7 @@ che le argomenta con le fonti:
 1. **La direzione gene per gene è debole e i membri del punteggio si compensano**. Il fit energia–MSE
    indica eccesso di energia, ma non dimostra saturazione di ogni ampiezza o generatore:
    [correzione del 29/09](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md).
-2. **Le decisioni di ricerca si prendono su un proxy di due membri su sei**, contro verità
+2. **Le decisioni precedenti sono state prese anche su un proxy di due membri su sei**, contro verità
    pubbliche rumorose, con regole «positivo su 3 linee su 4» che hanno poca potenza e molti
    confronti in parallelo.
 3. **Il rumore del punteggio ufficiale è stimato su una coppia**, e i parametri della ricetta sono

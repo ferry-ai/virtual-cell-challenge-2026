@@ -10,7 +10,7 @@ generalisation    105 frozen C/T/J bench with the context-swap control
 contexts          85 markers · 99 genetic fingerprints
 checks            83 calls on a prediction · 72 generator null · 79 fast-DE parity · 101 and 103 transfer diagnostics
 benches (Colab)   73 K562 · 75 HepG2
-official scale    82 anchors from official statuses · 84 expected official score of a bench arm
+historical fit    82 aggregate anchors · 84 approximate prediction (CP-0050: not an exact official scale)
 inputs            71 K562 single cell · 74 gene coordinates · 77 cis pairs
 documentation     30 new checkpoint · 31 check the documents
 ```

@@ -29,7 +29,7 @@ aggiunge da sé la riga qui sotto.
   riscrivono per questo.
 - **CP-0040 è arrivato il 28/09.** Era scritto da un'altra sessione il 25/09 e mai committato
   (registro, scheda R-020); è stato recuperato dal portatile e committato com'era, con il suo numero
-  (azione 1 della scheda [R-REV](../piani/revisione-critica.md)). Il prossimo checkpoint nuovo è il 0041.
+  (azione 1 della scheda [R-REV](../piani/revisione-critica.md)). Questa nota riguarda il recupero storico; il prossimo numero si ricava dall'indice corrente.
 
 ## Elenco
 

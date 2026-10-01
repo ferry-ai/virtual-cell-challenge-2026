@@ -1,48 +1,36 @@
-# reports — l'evidenza del progetto, per argomento
+# reports — evidenze datate, indicizzate per argomento
 
-Ogni cartella è la prova di ciò che si è visto in una data: misure, regole registrate prima,
-uscite dei comandi, rapporti degli agenti e il codice che li ha prodotti. **Qui non si
-corregge nulla**: una nuova esecuzione va in una cartella nuova, e una conclusione sbagliata
-si corregge con un checkpoint o una scheda del registro. Le regole per chi scrive sono in
-[CLAUDE.md](CLAUDE.md).
+Le cartelle conservano misure, protocolli, uscite e codice delle esecuzioni. I report non
+si riscrivono dopo un risultato: una correzione ha una nuova evidenza e un rimando nel
+registro. Le regole sono in [CLAUDE.md](CLAUDE.md). Gli indici di categoria si aggiornano.
 
-Dal 28 settembre 2026 le cartelle stanno in otto categorie (D-046): 141 il 30 settembre, più due
-file sciolti in `storico/`. Ogni
-categoria ha un README con una riga per cartella: **data, nocciolo, se vale ancora e quanto pesa
-oggi**. Per ambito di lavoro (gara, invii, generatore, dati, modelli, set finale, operazioni,
-metodo) la mappa che instrada verso queste cartelle è [docs/AMBITI.md](../docs/AMBITI.md).
+**Per scegliere il lavoro:** [PIANI](../docs/PIANI.md) e R-LEAD. Per scegliere cosa leggere:
+[AMBITI](../docs/AMBITI.md), solo la sezione pertinente. Non leggere tutti i report né
+seguire i «prossimi passi» datati come ordini attuali.
 
-## Da leggere per primi (stato al 30 settembre)
+## Evidenze che cambiano il prossimo passo
 
-| # | Evidenza | Perché conta |
-|---|---|---|
-| 1 | [Revisione lead del 29–30/09](analisi/lead_scientist_2026-09-29/README.md), a partire da [SCOPERTE_R1](analisi/lead_scientist_2026-09-29/SCOPERTE_R1.md) e [R2](analisi/lead_scientist_2026-09-29/SCOPERTE_R2.md) | CD4 è già Flex; il plateau non è saturazione; ampiezza e dispersione interagiscono; la rete sulle sorgenti e Stack perdono |
-| 2 | [t28 in gara](../docs/checkpoints/0052-t28-punteggio-ufficiale.md), dalla tabella degli [invii](invii/README.md) | Massimo osservato, non conclusivo: fedeltà e reach salgono, NMAE e Jaccard scendono |
-| 3 | [Audit scientifico del 29/09](analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md) | 17 invii ricostruiti; cinque inferenze del progetto corrette |
-| 4 | [Credibilità degli score](analisi/lead_scientist_2026-09-29/SCORE_CREDIBILITA.md) | Le ancore aggregate non convertono esattamente; la riserva del banco era già stata valutata |
-| 5 | [Lezioni dai nostri invii](invii/lezioni_invii_2026-09-28/RISULTATI.md) | Il divario con i primi 100 sta soprattutto nell'MSE. La lettura «dal t16 nessun cambio si distingue dal rumore» è corretta dall'audit del 29/09 |
-| 6 | [La `mse` ufficiale = 1 + E/4786](trasferimento/risposta_comune_2026-09-26/RISULTATI.md) | Più energia, più errore. L'ortogonalità quasi completa agli effetti veri è un'inferenza condizionata (audit del 29/09, §2.5) |
-| 7 | [Banco HepG2 con lo scorer vero](generatore_e_banchi/banco_hepg2_v2_2026-09-26/RISULTATI.md) | Sei membri veri fuori dalla classifica, un contesto e bersagli essenziali: dà il verso dei cambi ufficiali, non la loro entità |
-| 8 | [Artefatto del pseudoconteggio](sorgenti/pseudoconteggio_2026-09-27/RISULTATI.md) | Uno stimatore leggeva un gene senza conteggi come indotto; cache r9 e t25 |
-| 9 | [Modelli su molti contesti](modelli/README.md) | Nessun modello appreso passa la sua regola; il contesto letto dai controlli non aiuta ancora |
-| 10 | [Revisione critica del 28/09](analisi/revisione_criticita_2026-09-28/REVISIONE.md) | Criticità, bias, evidenze citate ma assenti. Le azioni che ne seguono sono la scheda [R-REV](../docs/piani/revisione-critica.md) |
-
-Nel primo elenco del 28/09 c'erano anche l'[ablazione del t23](trasferimento/ablazione_t23_2026-09-27/RISULTATI.md),
-l'[atlante](trasferimento/atlante_2026-09-26/RISULTATI.md) e il [ponte Flex–3'](sorgenti/ponte_flex_2026-09-28/RISULTATI.md),
-che vale per la coppia K562 VIPerturb–Replogle e non per tutte le sorgenti.
+| Domanda | Fonte |
+|---|---|
+| Che cosa ha bocciato t29? | [CP-0055](../docs/checkpoints/0055-t29-rete-cellulare-punteggio.md) e [invii](invii/README.md): candidato r2 `desc`, banco a sei membri richiesto prima del prossimo invio neurale |
+| Quali difetti riprodurre? | [Nota training](analisi/lead_audit_2026-10-01/NOTA_TRAINING.md) e [diagnosi r3](analisi/lead_audit_2026-10-01/AGGIORNAMENTO_R3.md): split, pesi, controlli, baseline e gate |
+| Quali risultati e input esistono? | [Modelli](modelli/README.md) e [sorgenti](sorgenti/README.md): esiti tecnici distinti da promozioni; disponibilità pesante da verificare |
+| Che cosa non si può chiamare score o conferma? | [Credibilità degli score](analisi/lead_scientist_2026-09-29/SCORE_CREDIBILITA.md), CP-0050: ancore aggregate e riserva già vista |
+| Perché il generatore resta un confronto separato? | [t28](../docs/checkpoints/0052-t28-punteggio-ufficiale.md), esito ufficiale non conclusivo, e [banco HepG2](generatore_e_banchi/banco_hepg2_v2_2026-09-26/RISULTATI.md), sviluppo su un contesto |
+| Che cosa ha cambiato il rinnovo? | [Registro del rinnovo](analisi/rinnovo_repo_2026-10-01/README.md), con copie e hash della navigazione precedente |
 
 ## Le categorie
 
-| Categoria | Che cosa contiene | Cartelle | Periodo | Indice |
-|---|---|---|---|---|
-| `gara/` | Le regole del gioco: contratto dello scorer, ancore ufficiali, classifica, identità dei contesti A/B/C | 8 | 11–22/09 | [gara](gara/README.md) |
-| `invii/` | I nostri invii: previsione registrata prima, file inviati, punteggi, confronti, lezioni | 34 | 12–29/09 | [invii](invii/README.md) |
-| `sorgenti/` | I dati: estrazioni, universi genome-wide, stimatori e loro difetti, ricerche e schede di sorgenti, corpora basali | 22 | 17–29/09 | [sorgenti](sorgenti/README.md) |
-| `trasferimento/` | La ricetta di produzione (media di sorgenti per lo stesso bersaglio) e le sue varianti, provate su sorgenti tenute fuori | 16 | 17–28/09 | [trasferimento](trasferimento/README.md) |
-| `modelli/` | Modelli appresi su molti contesti per bersagli e contesti nuovi (R-V2, F9–F10) | 8 | 27–28/09 | [modelli](modelli/README.md) |
-| `generatore_e_banchi/` | Dagli effetti alle cellule: chiamate spurie del generatore, DE dello scorer, banchi a sei metriche | 10 | 17–29/09 | [generatore e banchi](generatore_e_banchi/README.md) |
-| `analisi/` | Analisi dello stato, revisioni esterne, ipotesi di ricerca, la revisione lead del 29/09 e il riordino del 30/09 | 11 | 19–30/09 | [analisi](analisi/README.md) |
-| `storico/` | Linee chiuse dell'11–19 settembre (codice archiviato), sonde dei dati, infrastruttura ritirata | 34 | 11–19/09 | [storico](storico/README.md) |
+| Categoria | Domanda | Indice |
+|---|---|---|
+| `gara/` | Scorer, ancore, controlli e fotografie della classifica | [gara](gara/README.md) |
+| `invii/` | Previsione, artefatto, punteggio ufficiale e lettura della regola | [invii](invii/README.md) |
+| `sorgenti/` | Dati, estrazioni, stimatori, corpus e QC | [sorgenti](sorgenti/README.md) |
+| `trasferimento/` | Ricetta per lo stesso bersaglio e sue varianti | [trasferimento](trasferimento/README.md) |
+| `modelli/` | Modelli appresi, protocolli ed esiti | [modelli](modelli/README.md) |
+| `generatore_e_banchi/` | Emissione delle cellule e banchi con scorer | [generatore e banchi](generatore_e_banchi/README.md) |
+| `analisi/` | Audit, ipotesi, sintesi e riordini | [analisi](analisi/README.md) |
+| `storico/` | Linee chiuse e infrastruttura ritirata | [storico](storico/README.md) |
 
 ## Come si leggono le colonne
 

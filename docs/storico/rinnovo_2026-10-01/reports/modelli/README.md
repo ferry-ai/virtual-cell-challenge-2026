@@ -1,0 +1,52 @@
+# modelli — modelli appresi su molti contesti
+
+La scheda [R-V2](../../docs/piani/modello-v2.md), filoni F9 e F10: modelli che imparano come il
+contesto, letto solo dai controlli, cambia la risposta a un knockdown. Tutti si provano con le
+stesse domande:
+- **E1**: batte la sua versione cieca (contesto medio) su una famiglia di linee tenuta fuori?
+- **scambio**: batte la stessa rete con il contesto di un'altra linea? Se no, il guadagno viene
+  dalla forma del modello, non dal contesto giusto;
+- **E2**: prevede la differenza fra due linee tenute fuori?
+
+Indice generale: [../README.md](../README.md). Precedenti chiusi: il predittore neurale
+condizionato del 18–19/09 ([storico/conditioned_2026-09-18](../../../../../reports/storico/conditioned_2026-09-18),
+CP-0026), che con due contesti di training non generalizzava.
+
+**Dal 29/09**, la rete che pesa le sorgenti (due semi) e il modello preaddestrato Stack (varianti
+A e B) stanno nella revisione lead: [indice, sezioni «Rete sulle sorgenti» e «Stack»](../../../../../reports/analisi/lead_scientist_2026-09-29/README.md#rete-sulle-sorgenti).
+Nessuno dei due passa la sua regola ([CP-0049](../../../../checkpoints/0049-rete-sorgenti-replica.md),
+[CP-0051](../../../../checkpoints/0051-stack-ab-negativi.md)).
+
+**Dove siamo (misurato, 28/09):** nessun modello passa la sua regola. Dove un modello batte la
+versione cieca, **non batte lo scambio**: il contesto giusto non aiuta più di uno sbagliato. La
+perdita sulla famiglia tenuta fuori è minima nei primi 50–100 passi e poi sale, mentre quella di
+training scende: quello che la rete impara oltre il trasferimento calibrato è specifico delle
+linee viste. Con 48 linee di Tahoe, copiare le linee simili perde contro la media di tutte.
+
+| Data | Cartella | Nocciolo | Vale? | Peso oggi |
+|---|---|---|---|---|
+| 01/10 | [cellnet_terza_ondata_2026-10-01/](../../../../../reports/modelli/cellnet_terza_ondata_2026-10-01) | R-LAB: quarto training (corpus del terzo più la terza ondata, pavimento su `pi` contro il collasso del braccio `ident`), protocollo scritto prima del lancio; parte quando si rinnova la quota GPU | verifica tecnica, non un risultato | ★ |
+| 01/10 | [cellnet_completo_2026-10-01/](../../../../../reports/modelli/cellnet_completo_2026-10-01) | R-LAB: terzo training della rete cellulare, il corpus del secondo più la seconda ondata (A549 KO, Tian e Norman, KOLF, Southard: CRISPRi, CRISPRa e KO); protocollo scritto prima del lancio del secondo e di ogni suo numero | verifica tecnica, non un risultato | ★★ |
+| 01/10 | [cellnet_esteso_2026-10-01/](../../../../../reports/modelli/cellnet_esteso_2026-10-01) | R-LAB: secondo training della rete cellulare sul corpus supervisionabile completo (il primo più K562 genome-wide, K562 essenziali e RPE1); protocollo scritto prima dei numeri del primo e prima del lancio | verifica tecnica, non un risultato | ★★ |
+| 01/10 | [cellnet_tecnico_2026-10-01/](../../../../../reports/modelli/cellnet_tecnico_2026-10-01) | R-LAB: primo training su dati reali della rete cellulare (4,6 milioni di cellule, sette dataset; HepG2 tenuto fuori), pre-passo su CPU e due bracci su GPU; protocollo e regola di lettura scritti prima del lancio | verifica tecnica, non un risultato | ★★ |
+| 30/09 | [risposta_biologica_2026-09-30/](../../../../../reports/modelli/risposta_biologica_2026-09-30) | R-LAB, P0-M: le letture di esito già fatte per dataset, i ruoli proposti e la riserva primaria (H1 2025); regole prima di ogni training | proposta, in attesa del via | ★★ |
+| 28/09 | [covariazione_2026-09-28/](../../../../../reports/modelli/covariazione_2026-09-28) | Azione 6 di R-REV, la misura decisiva per la rete relazionale: la covariazione fra geni è più conservata fra linee dell'effetto del singolo bersaglio, e serve a prevedere una linea nuova? Protocollo e regola fissati alle 19:56, prima di calcolare. **Esito: inconclusivo per W1; «uso» no**: la via delle relazioni non prevede la risposta a un knockdown, nemmeno nella stessa linea, e sommata al trasferimento lo peggiora (CP-0043) | sì, esito negativo per la base della rete relazionale | ★★★ |
+| 28/09 | [rete_relazionale_2026-09-28/](../../../../../reports/modelli/rete_relazionale_2026-09-28) | La rete relazionale: carte dei geni da tutti i knockdown, vicini per carta, guadagni di modulo dai controlli, sopra il trasferimento calibrato; poche centinaia di parametri contro i 450.402 di r1. Disegno e regola della prima tornata (19:58), prima del codice; codice e autoverifica (12 su 12). **Non parte**: la misura decisiva non lo consente | proposta chiusa senza corsa | ★ |
+| 28/09 | [rete_r1_lettura_2026-09-28/](../../../../../reports/modelli/rete_r1_lettura_2026-09-28) | La regola di r1 letta sulle previsioni mediate dei tre semi (`leggi_r1.py`): uso del contesto ed E2 non passano; la rete **perde** contro il trasferimento `excl` su K562, HCT116 e HEK293T; passa solo J (+0,0015 K562, +0,0010 HCT116 contro il ripiego) | sì; proxy, non scorer vero (CP-0041) | ★★ |
+| 28/09 | [encoder_contesto_2026-09-28/](../../../../../reports/modelli/encoder_contesto_2026-09-28) | Encoder dei profili basali innestato nella rete; autoverifica 17 su 17. Prima tornata, parte Orion: nessuna condizione passa, guadagni di un millesimo, con l'embedding di un'altra linea la rete va meglio; parte K562/CD4 letta il 28/09 pomeriggio: **nessuna condizione passa** su tre verità E1 (su CD4 ogni condizione sta sotto −0,002 contro `none`) | sì, esito negativo; seme 0 solo | ★★ |
+| 28/09 | [rete_contesti_r2_2026-09-28/](../../../../../reports/modelli/rete_contesti_r2_2026-09-28) | Dataset r2 con 12 contesti CRISPRi (in più K562 essential, VIPerturb-seq, RPE1, due schermi HIPSCI) e la regola della tornata r2 fissata prima; varianti descrittive di r1: il minimo sulla famiglia tenuta fuori è entro i primi 100 passi Esito, seme 0: l'encoder su r2 crolla (`ours` − `none` −0,66 su HCT116); la curva non cambia; la lettura A (r2 contro r1 sugli stessi bersagli) **passa, provvisoria**: +0,0036 su K562, +0,0018 su HCT116, −0,0015 su CD4 a riposo | sì; un seme; A misura «il dataset r2», non i soli contesti | ★★ |
+| 28/09 | [tahoe_bracci_2026-09-28/](../../../../../reports/modelli/tahoe_bracci_2026-09-28) | I farmaci di Tahoe-100M come perturbazioni in 48 linee: T1 ridotto non passa. I vicini giusti battono quelli sbagliati (+0,06), ma copiarli perde contro la media di tutte le linee (−0,14) | sì; farmaci, non knockdown; effetto di piastra non separabile | ★★ |
+| 27/09 | [rete_contesti_2026-09-27/](../../../../../reports/modelli/rete_contesti_2026-09-27) | La rete su molti contesti (disegno di claude2, autoverifica 14 su 14): la corsa di produzione si ferma al passo 250; la perdita sulla famiglia tenuta fuori sale appena la rete impara oltre il trasferimento. I tre semi di r1 sono finiti; la regola è letta in `rete_r1_lettura_2026-09-28/` (riga qui sopra): passa solo J | sì | ★★ |
+| 27/09 | [modello_contesto_2026-09-27/](../../../../../reports/modelli/modello_contesto_2026-09-27) | Modello a cancelli a quattro parametri, con la letteratura verificata da grok. r1: E1 non passa, E2 parziale (coppia Orion sì, r ≈ 0,002; CD4 no); dove batte il cieco non batte lo scambio | sì, esito negativo per l'adozione | ★★ |
+
+## Rischi da tenere presenti (interpretazione)
+
+- **Poche famiglie di contesti**: nella fase di training di E1 la rete vede 4 contesti di 2
+  famiglie. Un vettore di contesto imparato da così pochi punti non generalizza, con o senza
+  encoder.
+- **Laboratorio e piattaforma confusi con la linea**: le due Orion sono dello stesso studio, e
+  ogni sorgente ha la sua piattaforma (K562 in 3′, CD4 in Flex, Orion in GEM-X 5′ secondo le
+  schede, da riverificare: [audit dei dati](../../../../../reports/analisi/lead_scientist_2026-09-29/AUDIT_DATI.md), §1).
+  Un modello può imparare lo studio invece della biologia.
+- **Un seme solo** nelle tornate del 28/09: l'intervallo bootstrap sui bersagli non contiene la
+  varianza fra semi.

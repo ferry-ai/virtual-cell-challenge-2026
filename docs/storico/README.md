@@ -1,6 +1,6 @@
 # docs/storico — analisi e testi superati, conservati com'erano
 
-Documenti che hanno guidato il progetto fra l'11 e il 30 settembre e che oggi **non sono una
+Documenti che hanno guidato il progetto prima del rinnovo corrente e che oggi **non sono una
 guida**: le loro conclusioni sono state corrette, sostituite o riguardano linee chiuse con il
 codice archiviato. Si aprono quando una decisione o un checkpoint li cita, dopo aver letto la
 loro riga nel [registro](../REGISTRO.md) (`python scripts/31_check_docs.py --status <file>`).
@@ -10,6 +10,7 @@ il 30 settembre, senza cambiare il testo salvo i percorsi dei link; un checkpoin
 
 | Data | File | Nocciolo | Vale? |
 |---|---|---|---|
+| 01/10 | [rinnovo_2026-10-01/README.md](rinnovo_2026-10-01/README.md) | Diciotto copie pre-rinnovo: piani, mappe, prompt e indici; incarichi e code datati | storico; per agire usare PIANI e R-LEAD correnti |
 | 30/09 | [PROGETTO_direzione_2026-09-30.md](PROGETTO_direzione_2026-09-30.md) | Apertura della direzione generale prima dell'audit D-050/CP-0053 del 1 ottobre | storico; programma attuale R-LEAD, esecuzione R-LAB |
 | 11/09 | [data_strategy_2026-09-11.md](data_strategy_2026-09-11.md) | Prima strategia dei dati e ordine di acquisizione | superato come ordine; il contratto di preprocessing (§4) e le misure locali (§1) restano (R-003) |
 | 11/09 | [revisione_analisi_2026-09-11.md](revisione_analisi_2026-09-11.md) | Identità dei contesti dai marcatori, povertà del segnale in K562, clamp dello scorer | da verificare: contraddizione aperta sull'asse in Ensembl (R-004) |

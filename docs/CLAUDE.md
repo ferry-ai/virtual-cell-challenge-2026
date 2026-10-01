@@ -15,6 +15,7 @@ short extract that names its home. Read the row you need, not the whole folder.
 | What the project knows, does not know, and its known weaknesses | `docs/PROGETTO.md` §3–§5 | when a result changes a conclusion |
 | Priorities and dependencies between plans | `docs/PIANI.md` §2 | when a priority changes |
 | Assignment, next step and closure evidence of one plan | its card in `docs/piani/` (`docs/piani/CLAUDE.md`) | by whoever takes, hands off or closes the work (PIANI §3) |
+| Initial implementation prompt | `docs/PROMPT_CLAUDE.md`, pointing to R-LEAD; `docs/CONSEGNA_TEAMMATE.md` only adds portable environment checks | when the entry path changes; do not duplicate the plan in the prompt |
 | Procedures: submission path and rules, Colab, stages, final set | `docs/PROCEDURE.md` | when the live path changes |
 | Job preflight, incident ledger, operational traps | `docs/ERRORI.md` | when a failure is recorded |
 | Method errors already made | `docs/ERRORI.md`, "Errori di metodo già commessi" | a new row with its source; old rows are not rewritten |

@@ -14,6 +14,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-051 | Un solo piano implementativo R-LEAD dopo t29; mappe correnti riscritte, code e incarichi datati nello storico recuperabile. R-COMP/R-LAB sono scopo e inventario, le alternative hanno dipendenze esplicite | attiva | 2026-10-01 | Richiesta del proprietario di rinnovare la repo e preparare il piano per Claude; `reports/analisi/rinnovo_repo_2026-10-01/README.md` |
 | D-050 | I nuovi programmi distinguono successo competitivo C/J e dichiarazione scientifica J; split stabili, ruoli dopo QC, confronti addestrati e sei membri prima di promuovere. Precisa D-044 senza cambiare protocolli o soglie passati | attiva | 2026-10-01 | Mandato del proprietario alla lead; `reports/analisi/lead_audit_2026-10-01/REVISIONE.md`, [R-LEAD](piani/strategia-scientifica.md) |
 | D-049 | Ingresso breve e letture su richiesta: `CLAUDE.md` tiene solo i perimetri, la tabella dei compiti con dove fermarsi e le regole globali; ogni informazione aggiornata a mano ha una sede sola, elencata in `docs/CLAUDE.md`; l'infrastruttura degli agenti ha una pagina sua, `docs/AGENTI.md`; la validità di un documento si chiede per percorso con `scripts/31_check_docs.py --status` | attiva | 2026-09-30 | Richiesta del proprietario in chat del 30 settembre, pomeriggio; `reports/analisi/ingresso_agenti_2026-09-30/RIORDINO.md` |
 | D-048 | Una mappa per ambiti (`docs/AMBITI.md`) instrada ogni area del lavoro; gli errori di metodo e le trappole operative stanno in `docs/ERRORI.md`; ogni sessione committa il proprio lavoro prima di chiudere, e quello lasciato da una sessione finita si committa com'è; le cartelle grandi hanno un indice; gli output pesanti vanno nella radice dati con un manifest | attiva | 2026-09-30 | Richiesta del proprietario in chat del 30 settembre; `reports/analisi/riordino_repo_2026-09-30/RIORDINO.md` |
@@ -58,7 +59,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-035 | Nessun invio con un generatore pulito se il predittore non produce chiamate: la FID vale `k / max(n_pred, N_conf)` e il silenzio vale 0 | attiva | 2026-09-17 | [CP-0020](checkpoints/0020-singola-cellula-cis-generatore.md) §3.2 |
 | D-036 | Il predittore contiene il termine cis (vicini misurati dalla sorgente, prior per distanza altrove); la co-espressione nei controlli non entra | attiva | 2026-09-17 | `reports/trasferimento/cis_2026-09-17/cis_effect.json`, `reports/storico/coexpression_2026-09-17/summary.json` |
 | D-037 | Nei banchi il DE è `fast_scorer_de`, verificato identico al percorso scanpy dello scorer | attiva | 2026-09-17 | `reports/generatore_e_banchi/fast_de_2026-09-17/parity.json`, `tests/test_sc_pipeline.py` |
-| D-038 | Le misure si confrontano con le ancore ufficiali risolte, e non si sottomette senza sapere in quale regime della fedeltà siamo | attiva | 2026-09-17 | `reports/gara/anchors_2026-09-17/anchors.json`, [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
+| D-038 | Le misure si confrontano con lo scorer e il regime della fedeltà; CP-0050 limita l'uso delle ancore aggregate, che non identificano la scala ufficiale per contesto | attiva | 2026-09-17 | `reports/gara/anchors_2026-09-17/anchors.json`, [CP-0021](checkpoints/0021-ancore-ufficiali-e-troppe-chiamate.md) |
 | D-039 | CD4 entra come sorgente per bersaglio dal pseudobulk letto per righe; primo test a un solo fattore contro trial-01 (t08) | attiva | 2026-09-22 | [CP-0028](checkpoints/0028-cd4-sorgente-flex-trasferimento.md), `reports/sorgenti/cd4_rows_2026-09-22/manifest.json` |
 | D-040 | Nell'albero resta solo il codice che produce o valuta una sottomissione; il resto è nel tag `archivio/pre-pulizia-2026-09-23`, e catena di cicli, orchestratore e oracolo sono ritirati | attiva | 2026-09-23 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 23 settembre |
 | D-041 | Orion HCT116 entra come sorgente per bersaglio, a pesi uguali con K562 e CD4 (t11, nuovo migliore) | attiva | 2026-09-23 | [CP-0031](checkpoints/0031-t11-punteggio-orion.md), `reports/invii/prediction_t11_2026-09-23/comparison.json` |
@@ -66,6 +67,21 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-051 — Una sola sequenza operativa dopo t29
+
+- **Mandato:** il 1 ottobre il proprietario chiede un rinnovo della repo per togliere i
+  depistaggi e un piano implementativo da affidare a Claude; conferma gli agenti fermi.
+- **Decisione:** R-LEAD contiene P0–P6 e i criteri di avanzamento; il prompt lo richiama.
+  R-COMP mantiene lo scopo, R-LAB l'inventario; verifiche e alternative non sono programmi
+  concorrenti. Le schede lunghe diventano brevi, salvo la specifica implementativa R-LEAD.
+- **Conservazione:** 18 versioni precedenti nello storico con hash; tag locale
+  `archivio/pre-rinnovo-2026-10-01` su `3de6cd0`. Evidenze, protocolli, dati e pesi invariati.
+- **Limite:** è una correzione della navigazione, non una validazione della rete né una
+  nuova autorizzazione a job, download, invii o push. Le soglie congelate restano invariate.
+- **Si riapre:** quando un risultato o una nuova istruzione cambia le dipendenze; aggiornare
+  la scheda canonica, non aggiungere un piano parallelo in un prompt o in un report.
+- **Verifiche:** [rapporto del rinnovo](../reports/analisi/rinnovo_repo_2026-10-01/README.md).
 
 ### D-050 — Il criterio di successo segue la dichiarazione e il supporto disponibile
 
@@ -1159,6 +1175,13 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
   è lo script 79.
 
 ### D-038 — Ancore ufficiali come metro, e nessuna sottomissione al buio
+
+**Applicazione corrente, corretta da CP-0050/R-022:** la ricostruzione affine da grezzi
+aggregati non identifica le ancore dei singoli contesti e non converte esattamente in score
+ufficiale. Leggere i sei scalati pubblicati per gli invii; per il banco dichiarare sei grezzi
+e normalizzazione locale con i suoi limiti, come R-LEAD P4. Resta utile distinguere il regime
+della fedeltà. La pretesa esattezza e l'obbligo di usare `anchors.json` nei punti sotto
+sono **la formulazione del 17/09, superata su questi aspetti**, conservata per capire la decisione.
 
 - **Perché:** `vcc status --json` pubblica il valore **grezzo** di ogni membro accanto al
   suo scalato. Due sottomissioni sullo stesso pannello e la stessa `anchor_version` danno

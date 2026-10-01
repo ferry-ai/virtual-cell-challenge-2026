@@ -13,12 +13,15 @@ I numeri e le incertezze stanno in [PROGETTO.md](PROGETTO.md), il perché delle 
 [DECISIONI.md](DECISIONI.md). Il contratto del formato è in [SOTTOMISSIONE.md](SOTTOMISSIONE.md)
 §1–2; per i comandi vale questa pagina.
 
-Tutto il codice che non compare qui è archiviato ([ARCHIVIO.md](ARCHIVIO.md)). Se ti serve,
-riprendilo dal tag: non riscriverlo.
+Questa pagina elenca la pipeline di produzione. Il codice di ricerca resta nelle cartelle
+dei [report](../reports/README.md#il-codice-di-ricerca-che-sta-qui), con copie congelate per
+esperimento; il codice ritirato si recupera tramite [ARCHIVIO](ARCHIVIO.md).
 
 ## 1. Il percorso di un invio
 
-È il percorso del t08, del t10 e del t11. Cambiano solo la ricetta e la cache delle sorgenti.
+Il percorso si ricostruisce dai manifest del riferimento scelto: ricetta, cache, effetti,
+generatore, scala e seed sono tutti parte del candidato. R-LEAD distingue replica t22,
+stimatore corretto t25 e variante di emissione t28; il numero più recente non è il default.
 
 ```
 sorgenti: bulk K562 · 97 CD4 · 102 Orion ──▶ 98  cache degli effetti per sorgente
@@ -29,24 +32,23 @@ ricetta configs/recipes/tNN.json ──────────▶ 100 effetti p
 previsione e testi scritti PRIMA ─────────▶ vcc submit ──▶ vcc status ──▶ checkpoint
 ```
 
-I comandi, con i percorsi usati per il t11:
+Prima di generare scegliere una destinazione nuova e registrare i parametri nel protocollo.
+Questi sono i punti d'ingresso per controllare gli argomenti correnti:
 
 ```powershell
-$D = "C:\Users\ferra\vcc2026-data"
-# effetti per contesto, dalla ricetta e dalla cache dello stadio 98
-.\scripts\py.cmd scripts\100_build_context_effects.py --recipe configs\recipes\t11.json `
-    --cache $D\processed\multisource_2026-09-23_r4 --out $D\processed\effects_t11_2026-09-23
-# cellule: generatore di trial-01, seme predefinito di trial-01
-.\scripts\py.cmd scripts\45_generate_prediction.py --run-id t11gen --trial trial-ext-profile `
-    --effects A=$D\processed\effects_t11_2026-09-23\effects_A.npz `
-    --effects B=$D\processed\effects_t11_2026-09-23\effects_B.npz `
-    --effects C=$D\processed\effects_t11_2026-09-23\effects_C.npz
-# pacchetto: 24 controlli ufficiali, contenitore, payload identico all'input
-.\scripts\py.cmd scripts\48_package_prediction.py --run-id t11pack --prediction $D\artifacts\t11gen\prediction.h5ad
-# invio (consuma quota: vedi §2)
-.\scripts\vcc.cmd submit $D\artifacts\t11pack_r2\prediction.vcc -m "<nome>" -d "<descrizione>"
-.\scripts\vcc.cmd --json status <entry_id>
+.\scripts\py.cmd scripts\100_build_context_effects.py --help
+.\scripts\py.cmd scripts\45_generate_prediction.py --help
+.\scripts\py.cmd scripts\48_package_prediction.py --help
 ```
+
+Preparare poi un comando esplicito con `--recipe`, `--cache` e un `--out` nuovo per 100;
+`--run-id` nuovo, `--trial trial-ext-profile`, effetti per contesto e opzioni congelate
+per 45; file realmente prodotto e altro `--run-id` nuovo per 48. Per un export neurale
+documentare il percorso che sostituisce 100. Il pacchetto da inviare è quello dichiarato
+dal manifest di 48, non un percorso copiato da un esempio vecchio. Invio e lettura: §2.
+
+Gli esempi t11 precedenti sono nello [storico](storico/rinnovo_2026-10-01/docs/PROCEDURE.md);
+contengono destinazioni occupate e non vanno eseguiti come un nuovo trial.
 
 I manifest di ogni stadio stanno accanto all'output (`manifest.json`); quelli degli invii si
 copiano in `reports/invii/trial_<data>/`, con i nomi elencati in `reports/CLAUDE.md` («What a
@@ -198,13 +200,14 @@ uno stadio nuovo entra qui nello stesso commit. Le regole di uno stadio sono in
 | `scripts/72_generator_null.py` | Chiamate spurie di un generatore a effetto nullo | locale o Colab |
 | `scripts/73_bench_k562_panel.py`, `scripts/75_bench_hepg2_transfer.py` | Banchi a sei metriche su cellule perturbate vere (K562, HepG2) | Colab |
 | `scripts/79_fast_de_parity.py` | Parità del DE veloce con il percorso scanpy dello scorer (D-037) | locale |
-| `scripts/82_solve_anchors.py`, `scripts/84_predict_official.py` | Ancore dagli status ufficiali; punteggio atteso di un braccio di banco | locale |
+| `scripts/82_solve_anchors.py`, `scripts/84_predict_official.py` | Diagnostica storica di ancore aggregate e previsione approssimata; non score ufficiale né criterio di promozione | locale |
 | `scripts/85_identify_contexts.py`, `scripts/99_context_fingerprints.py` | Che cellule sono i contesti: marcatori, saggio, impronte genetiche | locale |
 | `scripts/71_extract_k562_sc.py`, `scripts/74_fetch_gene_coordinates.py`, `scripts/77_cis_effect_report.py` | Input vivi: K562 a singola cellula, coordinate geniche, coppie cis | Colab / locale |
 | `scripts/30_new_checkpoint.py`, `scripts/31_check_docs.py` | Checkpoint nuovo; controllo strutturale della documentazione | locale |
 
-Lo stadio 84 vale per la famiglia di modelli su cui è stato tarato, non per una famiglia
-nuova ([CP-0027](checkpoints/0027-t07-punteggio-ufficiale.md)).
+Gli stadi 82/84 conservano un metodo storico approssimato: CP-0050 smentisce la conversione
+esatta dei grezzi aggregati, anche entro la famiglia originaria. Leggere [R-022](REGISTRO.md#r-022--ancore-aggregate-e-indipendenza-della-conferma).
+Per il risultato ufficiale usare i sei scalati pubblicati; per nuovi banchi vale R-LEAD P4.
 
 ## 5. Aggiungere e togliere codice
 

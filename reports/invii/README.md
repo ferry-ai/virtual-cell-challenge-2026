@@ -20,7 +20,7 @@ membri di ogni invio sono nel suo `comparison.json`.
 |---|---|---|---|
 | trial-01 | +0,045929 | 446 | primo invio; conferma il percorso d'impacchettamento |
 | t02 | −0,092774 | 764 | ControlModel ×1 + cis: troppe chiamate; serve a risolvere le ancore |
-| t03 | +0,019692 | 576 | verifica fuori campione delle ancore e dello stadio 84 |
+| t03 | +0,019692 | 576 | verifica storica delle ancore/stadio 84; la pretesa conversione esatta è smentita da CP-0050, non validata da questo invio |
 | t07 | −0,016004 | 671 | modello lineare condizionato: la previsione del banco non regge per una famiglia nuova |
 | t08 | +0,060370 | 547 | K562 + CD4, nuovo migliore |
 | t10 | +0,050191 | 570 | t08 senza CD4: non attribuibile per 0,0002 |

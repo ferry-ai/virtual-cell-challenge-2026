@@ -1,11 +1,15 @@
-"""Stage 84: predict a submission's official score from a bench arm, and register it first.
+"""Stage 84: historical approximate prediction from a bench arm.
+
+CP-0050 / registry R-022: aggregate anchors do not exactly recover official scaled
+scores. Preserve this diagnostic for historical replay; do not use its output as
+an official score or as the promotion rule for a new model.
 
 Three ingredients, all measured:
 
 1. a bench arm's six RAW members (`reports/generatore_e_banchi/bench_2026-09-17/*_bench.json`, field `raw`);
 2. a CALIBRATION pair -- one bench arm whose configuration was also submitted and scored,
    giving a per-member ratio `official_raw / bench_raw`;
-3. the official anchors solved by stage 82, which turn a raw value into the scaled score.
+3. the aggregate affine fit from stage 82 (an approximation, not identified context anchors).
 
 The output is a prediction, not a measurement, and its weakest link is (2): a single
 scored submission gives one ratio per member with no error bar, and the ratios measured on

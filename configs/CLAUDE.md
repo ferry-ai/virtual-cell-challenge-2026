@@ -14,6 +14,7 @@
   D-046 lives in `reports/<categoria>/<folder>/…`. A new recipe names the current path.
   `tests/test_pipeline_contracts.py` fails if a file a recipe names cannot be found.
 - **The format of a recipe** is in the docstring of `scripts/100_build_context_effects.py`;
-  the latest recipe is the best example.
+  use the declared reference recipe and its generation manifests as the example; the newest
+  recipe is not necessarily adopted, and does not specify every stage-45 option.
 - **The default seed is pinned by a test** (`tests/test_trial_inference.py`): changing it
   changes every regenerated matrix.
