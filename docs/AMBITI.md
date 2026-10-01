@@ -121,6 +121,11 @@ Piano operativo: [R-LEAD, P0–P6](piani/strategia-scientifica.md).
   ([CP-0044](checkpoints/0044-prova-generale-22-ottobre.md)); D1–D5 e D9–D11 sono corretti con i
   loro test. La stima della forma piena era circa 17 GB liberi; spazio e risorse disponibili
   vanno misurati alla ripresa, senza usare come blocco attuale la fotografia del 30/09.
+- **Dichiarato dagli organizzatori, 1/10.** Il protocollo è identico nelle sei linee: stesse
+  sgRNA, MOI, tempo di raccolta e pipeline. I bersagli della gara hanno un silenziamento
+  mediano di almeno l'80% (ln 1,61) e 400 cellule ciascuno. *Ipotesi:* almeno una delle sei
+  linee è immortalizzata non tumorale. Conseguenze e cautele nel
+  [post di Arc](../reports/gara/dati_arc_2026-10-02/RISULTATI.md).
 
 Leggi prima: [PROCEDURE §7](PROCEDURE.md#7-il-set-finale-22-ottobre), [la prova generale](../reports/invii/prova_generale_2026-09-28/RISULTATI.md).
 Piano: azione 3 di [R-REV](piani/revisione-critica.md).

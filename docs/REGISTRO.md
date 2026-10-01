@@ -55,6 +55,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 | Percorso | Stato | Sostituito da | Cosa resta utile / nota | Scheda |
 |---|---|---|---|---|
+| `reports/gara/dati_arc_2026-10-02/` | attuale | — | Parafrasi del post di Arc del 1/10 sulla produzione dei dati 2026 (dichiarazioni degli organizzatori, non misure nostre), confronto con NTC e profondità misurati su A/B/C, conseguenze etichettate e catalogo delle sorgenti citate. Nessun download, job o invio | — |
 | `docs/PROMPT_CLAUDE.md` | attuale | — | Prompt unico per implementare R-LEAD dopo t29; richiama piano, prima consegna, limiti delle evidenze e autorizzazioni della sessione | — |
 | `docs/storico/rinnovo_2026-10-01/` | storico | `docs/PIANI.md`, `docs/piani/strategia-scientifica.md` | Copie di 18 documenti prima del rinnovo, prose invariate salvo link relativi e fine riga; manifest con hash e commit 3de6cd0. Nessuna coda o assegnazione vigente si ricava dalle copie | — |
 | `reports/analisi/rinnovo_repo_2026-10-01/` | attuale | — | Rinnovo richiesto dal proprietario dopo t29: inventario dei depistaggi corretti, script applicati, snapshot/hash e verifiche. Nessun nuovo risultato biologico o training | — |
