@@ -149,7 +149,7 @@ def parity(adapter: str, shards: list[dict], uns_seen: list[dict], expect: dict,
         out["all_cells_of_file"] = cells == of and ranges[-1][1] == of
         if "cells" in expect:
             out["expected_cells"] = cells == expect["cells"]
-    elif adapter == "hipsci":
+    elif adapter in ("hipsci", "h5csc_shards"):
         by_pass: dict[str, list] = {}
         for s, u in zip(shards, uns_seen):
             by_pass.setdefault(u["read"]["pass_range"], [u["read"]["pass_sum_before"], 0])[1] += s["sum_after"]

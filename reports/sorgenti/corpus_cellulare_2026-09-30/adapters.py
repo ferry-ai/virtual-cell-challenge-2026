@@ -236,6 +236,151 @@ def h5rows(path, study, context, chemistry, modality, axis_csv, block=20000, max
         f.close()
 
 
+# ------------------------------------------------------------------------------------------ h5csc
+
+def h5csc(path, study, context, chemistry, modality, axis_csv, work, block=20000, cells_per_pass=600_000,
+          column_chunk=20_000_000, max_cells=None, min_free_bytes=3 << 30, layer="X", **labels):
+    """A gene-major (CSC) h5ad, local or read by HTTP ranges, into the same CSR shards as h5rows.
+
+    A CSC matrix stores cells gene by gene, so one block of cells is spread over the whole file. For each range of
+    cells (`cells_per_pass`) one pass reads the columns in contiguous chunks of `column_chunk` stored values, keeps the
+    entries of that range and writes them into an on-disk bucket per block of cells (`work`); each bucket then becomes
+    one CSR shard. A range bounds the disk the buckets take, at the price of reading the matrix once per range. The
+    labels (target, controls, guides, library, ...) are those of h5rows and read the same way."""
+    import h5py
+    import shutil
+    import scipy.sparse as sp
+    work = Path(work)
+    work.mkdir(parents=True, exist_ok=False)
+    f = _h5_open(path)
+    try:
+        node = f[layer] if layer in f else f["layers"][layer]
+        enc = node.attrs.get("encoding-type", b"")
+        enc = enc.decode() if isinstance(enc, bytes) else str(enc)
+        if enc != "csc_matrix":
+            raise ValueError(f"{layer} is {enc}: h5csc reads CSC only")
+        n_all, n_genes = (int(v) for v in node.attrs["shape"])
+        indptr = node["indptr"][:].astype(np.int64)
+        n = n_all if max_cells is None else min(n_all, max_cells)
+        for p, lo in enumerate(range(0, n, cells_per_pass)):
+            hi = min(n, lo + cells_per_pass)
+            bucket_dir = work / f"pass_{p:02d}"
+            bucket_dir.mkdir()
+            chunks, total = {}, 0
+            c0 = 0
+            while c0 < n_genes:
+                c1 = c0
+                while c1 < n_genes and indptr[c1 + 1] - indptr[c0] <= column_chunk:
+                    c1 += 1
+                c1 = max(c1, c0 + 1)
+                a, b = int(indptr[c0]), int(indptr[c1])
+                rows = node["indices"][a:b].astype(np.int64)
+                vals = node["data"][a:b]
+                cols = np.repeat(np.arange(c0, c1), np.diff(indptr[c0:c1 + 1]))
+                keep = (rows >= lo) & (rows < hi)
+                rows, vals, cols = rows[keep] - lo, vals[keep], cols[keep]
+                total += float(vals.sum(dtype=np.float64))
+                if shutil.disk_usage(bucket_dir).free < min_free_bytes:
+                    raise OSError(f"less than {min_free_bytes} bytes free beside the buckets: stopping")
+                blk = rows // block
+                for k in np.unique(blk):
+                    sel = blk == k
+                    i = chunks.get(int(k), 0)
+                    np.save(bucket_dir / f"b{int(k):05d}_{i:05d}_r.npy", (rows[sel] - k * block).astype(np.int32))
+                    np.save(bucket_dir / f"b{int(k):05d}_{i:05d}_g.npy", cols[sel].astype(np.int32))
+                    np.save(bucket_dir / f"b{int(k):05d}_{i:05d}_v.npy", vals[sel])
+                    chunks[int(k)] = i + 1
+                c0 = c1
+            for k in range((hi - lo + block - 1) // block):
+                start, stop = lo + k * block, min(hi, lo + (k + 1) * block)
+                parts = {"r": [], "g": [], "v": []}
+                for i in range(chunks.get(k, 0)):
+                    for name in parts:
+                        fpath = bucket_dir / f"b{k:05d}_{i:05d}_{name}.npy"
+                        parts[name].append(np.load(fpath))
+                        fpath.unlink()
+                r = np.concatenate(parts["r"]) if parts["r"] else np.zeros(0, np.int32)
+                g = np.concatenate(parts["g"]) if parts["g"] else np.zeros(0, np.int32)
+                v = np.concatenate(parts["v"]) if parts["v"] else np.zeros(0, np.float32)
+                x = sp.csr_matrix((v, (r, g)), shape=(stop - start, n_genes))
+                x.sum_duplicates()
+                yield start, stop, n_all, x, {"pass": p, "pass_range": f"{lo}:{hi}", "pass_sum_before": total}
+            bucket_dir.rmdir()
+    finally:
+        f.close()
+    work.rmdir()
+
+
+def h5csc_shards(path, study, context, chemistry, modality, axis_csv, work, block=20000, cells_per_pass=600_000,
+                 column_chunk=20_000_000, max_cells=None, layer="X", min_free_bytes=3 << 30,
+                 target_col="perturbation",
+                 control_values=("control",), control_pattern=None,
+                 unassigned_values=("nan", "<NA>", "", "None", "MISSING"), guides_col=None, library_col=None,
+                 published_depth=None, context_col=None, condition_cols=(), donor_col=None, var_symbol_col=None,
+                 feature_id_col=None):
+    """The shards of a CSC h5ad: counts from h5csc, labels exactly as h5rows writes them (same columns, same rules)."""
+    import pandas as pd
+    f = _h5_open(path)
+    try:
+        obs, varg = f["obs"], f["var"]
+        vindex = varg.attrs.get("_index", "_index")
+        vindex = vindex.decode() if isinstance(vindex, bytes) else str(vindex)
+        symbols = list(_h5_column(varg, var_symbol_col) if var_symbol_col else _h5_column(varg, vindex))
+        feature_ids = _h5_column(varg, feature_id_col) if feature_id_col else None
+        oindex = obs.attrs.get("_index", "_index")
+        oindex = oindex.decode() if isinstance(oindex, bytes) else str(oindex)
+        cols = {"barcodes": _h5_column(obs, oindex), "target": _h5_column(obs, target_col),
+                "guides": _h5_column(obs, guides_col), "library": _h5_column(obs, library_col),
+                "context": _h5_column(obs, context_col), "donor": _h5_column(obs, donor_col),
+                "depth": _h5_column(obs, published_depth)}
+        conds = [(c, _h5_column(obs, c)) for c in condition_cols]
+    finally:
+        f.close()
+    if cols["target"] is None:
+        raise ValueError(f"obs has no column {target_col}")
+    idx, kind = _official(symbols, axis_csv)
+    var = pd.DataFrame({"feature_id": list(feature_ids) if feature_ids is not None else symbols, "symbol": symbols,
+                        "feature_type": "Gene Expression", "measured": True, "official_index": idx, "mapping": kind},
+                       index=[f"f{i}" for i in range(len(symbols))])
+    rx = re.compile(control_pattern) if control_pattern else None
+    for start, stop, n_all, x, read in h5csc(path, study, context, chemistry, modality, axis_csv, work, block=block,
+                                             cells_per_pass=cells_per_pass, column_chunk=column_chunk,
+                                             max_cells=max_cells, layer=layer, min_free_bytes=min_free_bytes):
+        rows = slice(start, stop)
+        target = cols["target"][rows].astype(str)
+        is_ctrl = np.isin(target, list(control_values))
+        if rx is not None:
+            is_ctrl |= np.array([bool(rx.search(t)) for t in target])
+        unassigned = np.isin(target, list(unassigned_values)) & ~is_ctrl
+        library = cols["library"][rows] if cols["library"] is not None else np.array([MISSING] * (stop - start))
+        on_axis = np.asarray(x.sum(axis=1)).ravel().astype(float)
+        depth = on_axis
+        if cols["depth"] is not None:
+            published = pd.to_numeric(pd.Series(cols["depth"][rows]), errors="coerce").to_numpy(dtype=float)
+            depth = np.where(np.isfinite(published) & (published >= on_axis - 0.5), published, on_axis)
+        condition = MISSING
+        if conds:
+            condition = np.array(["|".join(f"{c}={v[i]}" for c, v in conds if v is not None)
+                                  for i in range(start, stop)], dtype=object)
+        ctx = cols["context"][rows] if cols["context"] is not None else context
+        bcs = cols["barcodes"][rows] if cols["barcodes"] is not None else np.array([f"row{i}" for i in range(start, stop)])
+        obs_block = _obs(stop - start, cell_key=[f"{study}|{lib}|{bc}" for lib, bc in zip(library, bcs)],
+                         study=study, library=library, barcode=list(bcs),
+                         target=np.where(is_ctrl, "NTC", np.where(unassigned, "UNASSIGNED", target)),
+                         target_published=target,
+                         guides=cols["guides"][rows] if cols["guides"] is not None else MISSING, modality=modality,
+                         control_kind=np.where(is_ctrl, "NTC", np.where(unassigned, "UNASSIGNED", "none")),
+                         context=ctx, donor_or_clone=cols["donor"][rows] if cols["donor"] is not None else MISSING,
+                         batch=library, chemistry=chemistry, condition=condition, depth_native=depth,
+                         depth_published=depth, depth_on_file_axis=on_axis, n_genes_detected=np.diff(x.indptr))
+        obs_block.index = [f"c{i}" for i in range(start, stop)]
+        yield f"shard_{start // block:05d}", x, obs_block, var, {
+            "rows": {"range": f"{start}:{stop}", "of": int(n_all)},
+            "read": {"how": f"passes over the CSC {layer} by contiguous column chunks, entries of the pass's cells "
+                            "bucketed per block on disk", "block": block, **read},
+            "notes": "labels as h5rows; depth_native is the published total when at least the file's row sum"}
+
+
 # ---------------------------------------------------------------------------------------- hipsci
 
 def _hipsci_ids(meta, cells):
