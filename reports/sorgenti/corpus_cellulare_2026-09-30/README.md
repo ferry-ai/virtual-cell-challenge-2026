@@ -231,3 +231,23 @@ misure remote. Le prime cellule di Southard, A549 e Tian sono state lette in loc
 
 I training che usano questi dati sono in `reports/modelli/cellnet_tecnico_2026-10-01/` e
 `reports/modelli/cellnet_esteso_2026-10-01/`.
+
+## 10. Dopo le 02:50 dell'1/10 (sessione `07ebf08b`)
+
+**Misurato.**
+- **Coda 1 persa.** Il dispatcher 1 non dà più battiti dopo le 02:29 CEST (`runs/jobs/dispatcher.log`). Il job 116
+  aveva scritto gli shard di KOLF cromatina, ma non quelli di KOLF metabolico; il 117 (Southard) nessuno shard. I
+  `.started` non ripartono. Il lavoro è passato alla coda 2 come job nuovi, il 123 è ritirato prima di partire:
+  - 124: KOLF piccoli, con `--reuse` degli shard di cromatina del 116;
+  - 125: Southard RPE1 e Hs27;
+  - 126: KOLF forte.
+- **Seconda ondata finita**, con parità ok nei `complete.json`, e pubblicata su `davidmaisterx`:
+  - A549 KO (job 118, `rlab-a549`): 606.075 cellule;
+  - job 119 (`rlab-tian-norman`), 623.436 cellule in tutto: Tian 2019 iPSC 275.708 e neuroni 182.790, Tian 2021
+    CRISPRi 32.300 e CRISPRa 21.193, Norman 2019 111.445.
+- **Replogle riletto con `gene_name`** (incidente `E-20260930-004`). Il job 121 (K562 essenziali 310.385 cellule in
+  32 shard, RPE1 247.914 in 25, parità ok) è pubblicato come `rlab-k562-essential-r2` e `rlab-rpe1-r2`. Nessuno shard
+  è stato fermato dalla guardia dell'asse. Il job 122 (K562 genome-wide, `rlab-k562-gwps-r3`) è in corso.
+
+I training che usano questi dati: `reports/modelli/cellnet_esteso_2026-10-01/` (il secondo, con le riletture di
+Replogle) e `reports/modelli/cellnet_completo_2026-10-01/` (il terzo, con la seconda ondata).
