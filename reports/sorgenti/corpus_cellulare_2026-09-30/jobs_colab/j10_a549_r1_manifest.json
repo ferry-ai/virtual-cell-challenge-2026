@@ -1,0 +1,69 @@
+{
+ "schema_version": 1,
+ "job_id": "j10_a549_r1",
+ "incident_ids": [
+  "E-20260929-002",
+  "E-20260929-003",
+  "E-20260929-005",
+  "E-20260929-007"
+ ],
+ "inputs": [
+  {
+   "id": "code_snapshot",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\runs\\rlab_setup_2026-10-01_r9\\code_snapshot.tar.gz",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-10-01_r9/code_snapshot.tar.gz"
+   },
+   "bytes": 26070,
+   "sha256": "07b61271204b909f77adabd76ab5f7a026f36169735ce404fcd1b80a127dc521"
+  },
+  {
+   "id": "spec",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\runs\\rlab_setup_2026-10-01_r9\\j10_a549_r1_spec.json",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/rlab_setup_2026-10-01_r9/j10_a549_r1_spec.json"
+   },
+   "bytes": 1200,
+   "sha256": "ad9dac656161df3b9a2b929e4392fe1ed7c1a464227893e971ae26e9a9588233"
+  }
+ ],
+ "outputs": [
+  {
+   "id": "stage",
+   "paths": {
+    "local": "C:/Users/ferra/vcc2026-data/unused/j10_a549_r1/stage",
+    "runtime": "/content/work/rlab_j10_a549_r1/stage"
+   },
+   "must_be_absent": true
+  },
+  {
+   "id": "shards",
+   "paths": {
+    "local": "G:/Il mio Drive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j10_a549_r1",
+    "runtime": "/content/drive/MyDrive/vcc2026/data/processed/corpus_cellulare_2026-09-30/j10_a549_r1"
+   },
+   "must_be_absent": true
+  }
+ ],
+ "target_checks": [],
+ "environment": {
+  "python": {
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\python.exe",
+    "runtime": "/usr/bin/python3"
+   }
+  },
+  "packages": {
+   "h5py": null,
+   "numpy": null,
+   "pandas": null,
+   "scipy": null
+  },
+  "imports": [
+   "h5py",
+   "scipy.sparse"
+  ],
+  "probes": []
+ },
+ "declared_limits": "sources read by HTTP byte ranges are not hashed whole before the run: every range is checked against the ETag of the file, every shard is hashed (plan \u00a76.5); anndata and kaggle are installed on the runtime when absent"
+}
