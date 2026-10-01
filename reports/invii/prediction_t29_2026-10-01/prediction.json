@@ -1,0 +1,48 @@
+{
+ "written_utc": "2026-10-01T12:06:02+00:00",
+ "label": "t29: single-cell network R-LAB r2, descriptors arm, exported effects with the t22 generator",
+ "claim_type": "subjective forecast registered before the export of the effects and before generation; no official result",
+ "authorization": "owner in chat, 1/10 00:29 (all, including one scoring of a model even if not promising), asked again on 1/10 at about 12:45 why the model was not up; disk freed by the owner at about 13:00",
+ "references": {
+  "t22": 0.14125049908559736,
+  "t22_t24_mean": 0.1420736800178088,
+  "t28_best_observed": 0.144845205,
+  "t08_unscaled_transfer": 0.06037,
+  "t11_unscaled_transfer": 0.070777
+ },
+ "model": {
+  "kernel": "davidmaisterx/rlab-cellnet-r2 (Kaggle GPU, 1/10 05:57-08:23 CEST)",
+  "arm": "desc (target code from biological descriptors)",
+  "model_pt_sha256": "f4dbc3e5c402ae774f244dccd1f3545a59212e5dfb1b964a704f7989770eea49",
+  "prepass_sha256": "3ca7a83072486a01af1e73a5714e49aa70a45f4dcb3f7c6aae936df94c95d1ab",
+  "training_code_commit": "8b356abf9e27aca1d530c8059df018e46108100c",
+  "outcome": "reports/modelli/cellnet_esteso_2026-10-01/ESITO.md (part A passes; one seed; HepG2 held out)"
+ },
+ "effects": {
+  "exporter": "reports/modelli/risposta_biologica_2026-09-30/export_effects.py at commit 652787e18449572f6b7da535c85df897961e2d2a",
+  "controls": "raw/controls/context_{A,B,C}.h5ad (the files of the t22 manifest), 2,048 control cells per context, seed 0",
+  "axis": "targets and genes of processed/effects_t22_2026-09-26/effects_{A,B,C}.npz",
+  "formula": "lfc = ln(pi softmax(beta + delta) + (1 - pi) softmax(beta)) - ln softmax(beta), on the genes the control file measures; other genes not observed",
+  "out": "processed/effects_t29_2026-10-01"
+ },
+ "generator": {
+  "stage": 45,
+  "trial": "trial-ext-profile",
+  "settings": "the defaults of t22 (effects_scale 1.0, gene_dispersion false, seed 20260912, 300 targets x 400 cells per context)",
+  "stage_48": "as t22"
+ },
+ "single_factor_against_t22": "the source of the effects: the network instead of recipe t22; generator, controls, targets and packaging as t22",
+ "expected": {
+  "score_avg_band": [-0.02, 0.1],
+  "working_centre": 0.04,
+  "calibration": "Subjective planning range, not a calibrated interval. On the held-out HepG2 the network's predicted shifts agree less with the observed ones than the transfer baseline does (cosine 0.266 against 0.390 on the targets seen elsewhere); the recipe is a transfer of public sources at amplified amplitude, and unscaled transfer scored 0.060-0.071 (t08, t11). The mixture with responders (pi about one half) shrinks the exported effects further.",
+  "members": "PDS and the DE members (fidelity, reach, Jaccard) expected below t22; MSE may be closer to t22 because small effects cost little there"
+ },
+ "rule": {
+  "a_at_least_0.137": "the network's effects are on a par with the reference recipe (t22/t24 mean minus the 0.005 seed noise): develop the network as a candidate (amplitude, combination with the recipe, more training); no claim of superiority",
+  "b_0.06_to_0.137": "the network carries transfer-like signal at natural amplitude (at or above unscaled transfer, t08-t11) but does not replace the recipe: next an amplitude and combination bench on public contexts before any further submission",
+  "c_below_0.06": "the exported network effects are weaker than plain transfer: no further submission of the network until a local six-member bench shows it at least at the transfer level",
+  "not": "a technical check of the network path with one seed: the score does not enter PROGETTO section 0 unless it changes the best observed; it says nothing about D, E, F"
+ },
+ "reserve": "no reserve is consumed: A, B, C are the public validation contexts; the H1 2025 test split stays unopened"
+}
