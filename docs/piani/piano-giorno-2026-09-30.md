@@ -195,6 +195,23 @@
   2. correggere il collasso di `pi` (un pavimento o una penalità) e provarlo su CPU;
   3. un training con la terza ondata e Southard quando la quota GPU si rinnova;
   4. **decisioni del proprietario:** il campione di CD4 (33,6 milioni di cellule, circa 1,7 TB).
+- **Aggiunte delle 16:50 (Claude `07ebf08b`):**
+  - *Correzione di `pi`* in codice e test (commit `39f451d`): `--pi-floor`, con 0 che lascia il modello di prima. Il
+    dataset `rlab-cellnet-code` è aggiornato. Il quarto training ha il suo
+    [protocollo](../../reports/modelli/cellnet_terza_ondata_2026-10-01/PROTOCOLLO.md), scritto alle 16:02: terza
+    ondata, `--pi-floor 0.05`. Parte quando si rinnova la quota GPU.
+  - *Catalogo* [r4](../../reports/sorgenti/corpus_cellulare_2026-09-30/catalogo_r4/CATALOGO.md).
+  - *Incidente E-20261001-001* verificato in remoto (r003). La GPU aspetta ancora i dati per più di metà del tempo:
+    la prossima leva sono shard senza gzip o una lettura con più core.
+  - *Upload del t29*: entry `K6Q36uGCaEwQ1wRLmBLp`. Il Wi-Fi di casa va fra 0,2 e 1 MB/s; alle 16:45 metà era
+    inviata. Lettore del punteggio pronto, scritto prima: `reports/invii/trial_2026-10-01/read_t29_score.py`.
+  - *Proposta per CD4, da decidere col proprietario.* I 12 file sono 4 donatori per 3 condizioni (Rest, 8 h e 48 h di
+    stimolo), da 2,5 a 3,1 milioni di cellule ciascuno: circa 76 mila NTC e 1,75 milioni con una sola guida per file.
+    - **Proposta di partenza:** un donatore e le tre condizioni, con tutti gli NTC e al più 10 cellule per guida
+      (circa 23 mila guide). Sono circa 0,9 milioni di cellule e 10 GB di shard, letti da S3 in poche ore.
+    - **Versione intera:** tutti i donatori con al più 25 cellule per guida, circa 7,8 milioni di cellule e 80 GB.
+      Va prima verificato il limite di spazio dei dataset privati di Kaggle.
+    - `var` ha gli ID Ensembl nell'indice e i simboli in `gene_name` (lezione di E-20260930-004).
 - **Aperti prima del training esteso (proprietario in chat, 30/09, prima delle 23:39):** quattro punti della
   revisione di Codex che i 13 casi di `test_cell_data.py` non coprono. Restano aperti finché ognuno non ha una regola
   scritta in `cell_data.py`, casi controllati che la provano e il suo esito nel pre-passo di un training vero:
