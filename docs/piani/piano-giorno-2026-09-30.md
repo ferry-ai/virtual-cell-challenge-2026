@@ -1,9 +1,24 @@
 # R-LAB — piano del giorno: dati cellulari, qualità e rete biologica
 
-- **Stato:** aperto; piano implementativo, nessuna nuova ingestione o rete eseguita da questa scheda.
-- **Aggiornato:** 1 ottobre 2026, Europe/Rome.
+- **Stato:** aperto; corpus e training r1–r3 eseguiti, t29 valutato con esito negativo.
+  Il quarto training ha un protocollo tecnico, non un risultato registrato.
+- **Aggiornato:** 1 ottobre 2026, dopo lo scoring t29 e il riordino serale, Europe/Rome.
 - **Mandato:** richiesta del proprietario in chat: rendere evidente un nuovo piano per Claude, usare più dati possibile per generalizzare, preferire singole cellule al pseudobulk e progettare un'ingestione su risorse Colab/Kaggle con controlli su disomogeneità ed estremi.
 - **Assegnazione:** redazione completata da Codex, chat `01a0f312-3075-7741-bb98-e15ab7c4c4b8`; destinatario operativo Claude, presa in carico da registrare con sessione, file e output secondo [PIANI §3](../PIANI.md#3-lavorare-in-una-cartella-condivisa). Nessun incarico altrui viene liberato o sostituito.
+- **Riferimento operativo più recente:** Claude `07ebf08b`, ultimo esito alle 20:25 qui sotto;
+  il proprietario conferma in chat al riordino serale che gli agenti sono fermi.
+- **Prossimo passo vigente:** banco locale a sei membri richiesto dal ramo c del t29
+  ([CP-0055](../checkpoints/0055-t29-rete-cellulare-punteggio.md)), coordinato con le correzioni
+  e i confronti di [R-LEAD](strategia-scientifica.md). Misurare la parte specifica del bersaglio
+  e verificare l'esportazione delle reti disponibili prima di proporre un altro invio.
+  Il quarto training resta una verifica tecnica: non include il banco a sei membri e non
+  soddisfa da solo la condizione. La sua priorità va conciliata con A/B di R-LEAD alla ripresa.
+
+## Registro degli avanzamenti del 30/09–1/10
+
+Le note e i «prossimi passi» seguenti conservano la sequenza delle consegne; per riprendere
+vale l'intestazione aggiornata sopra, insieme ai protocolli congelati di ogni esperimento.
+
 - **Presa in carico (30/09, 19:08 CEST, Claude Code, sessione `a1ec75f0`),** su richiesta del
   proprietario in chat («Esegui questo piano»): P0 e P1, poi la prima consegna del §10. File di
   lavoro nuovi: `reports/sorgenti/corpus_cellulare_2026-09-30/` (D) e

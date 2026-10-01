@@ -11,28 +11,33 @@ cambia una conclusione. Il testo tolto resta in `docs/storico/`: le
 
 ## 0. Oggi — 1 ottobre 2026
 
-**Il massimo osservato è t28: +0,144845, rango 359; l'esito è non conclusivo.** Contro il t25 fa
-+0,004607, sotto la soglia congelata +0,005. Fedeltà e reach salgono, NMAE e Jaccard scendono; la
-MSE grezza peggiora mentre lo scalato resta zero. Non dimostra generalizzazione
-([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)).
+**Ultimo esito: t29 negativo; la rete cellulare non sostituisce il transfer.** Il ramo `desc`
+di r2, con il generatore t22, cade nel ramo c della sua regola: nessun altro invio della rete
+finché un banco locale a sei membri non la mostra almeno al livello del transfer
+([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). Questo boccia il candidato
+provato; non identifica da solo la causa del fallimento o il limite di ogni rete.
+
+**Il massimo osservato resta t28: +0,144845, rango 359; non conclusivo.** Contro t25 fa
++0,004607, sotto la soglia +0,005. Migliora fedeltà e reach, perde NMAE, Jaccard e MSE grezza;
+non dimostra generalizzazione ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)).
 
 **La ricetta di riferimento resta quella del t22**, le quattro sorgenti genome-scale a peso uguale.
 Il suo riferimento è la media del t22 e della replica t24 con un altro seme, **0,14207**
 ([confronto](../reports/invii/prediction_t24_2026-09-27/comparison.json)). Tutti i punteggi, con
 l'esito della regola di ciascun invio, sono nella tabella degli [invii](../reports/invii/README.md).
 
-**Dal t16 i cambi della media sono piccoli; il plateau non dimostra che ampiezza e generatore siano
-ottimizzati.** Una sola coppia di semi non identifica il rumore, e diversi membri si compensano
+Il plateau precedente non dimostra saturazione; una coppia di semi non stima il rumore
 ([audit del 29/09](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md)). Il set finale
-arriva il **22 ottobre**, con tre contesti nuovi (D, E, F) e 300 perturbazioni nuove; le
-sottomissioni chiudono il **5 novembre** (§1).
+D/E/F arriva il **22 ottobre**, le sottomissioni chiudono il **5 novembre** (§1).
 
 ### Direzione generale
 
 **Direzione della lead dal 1/10:** [R-LEAD](piani/strategia-scientifica.md) precisa R-COMP:
 prima correggere split, controlli e confronti del training, poi transfer con residuo biologico,
 dati ponte e popolazioni. Diagnosi riprodotte in [CP-0053](checkpoints/0053-audit-cellnet-e-strategia.md);
-nessuna rete ancora promossa. [R-LAB](piani/piano-giorno-2026-09-30.md) conserva il suo incarico.
+nessuna rete ancora promossa. Dopo t29 la prima consegna proposta è il banco diagnostico sui
+modelli disponibili, insieme alle correzioni; un altro training tecnico non basta a promuoverli.
+[R-LAB](piani/piano-giorno-2026-09-30.md) conserva il suo incarico.
 Priorità in [PIANI](PIANI.md), evidenze in [AMBITI](AMBITI.md); [testo precedente](storico/PROGETTO_direzione_2026-09-30.md).
 
 1. **Il traguardo è il set finale D/E/F**, l'unico che conta per la classifica: tutta la catena
@@ -53,26 +58,27 @@ Priorità in [PIANI](PIANI.md), evidenze in [AMBITI](AMBITI.md); [testo preceden
 4. **Tutti i dati utilizzabili hanno un ruolo esplicito nel nuovo corpus**, senza limitarsi ai
    quattro della ricetta o al nucleo dei contrasti appaiati. Preservare le singole cellule dove
    disponibili, tenere gli aggregati come viste/supervisioni distinte e tracciare QC e uso effettivo.
-   Le diciannove linee HIPSCI e VIPerturb-seq (Flex, fuori dalla ricetta) sono esempi di integrazione
-   ([copertura del training](../reports/analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md)).
+   HIPSCI è già nel training cellulare r2; ulteriore copertura non dimostra da sola un beneficio.
+   Ruoli, acquisizioni ed esclusioni sono documentati in [R-LAB](piani/piano-giorno-2026-09-30.md).
 5. **Metodo:** previsione registrata prima di ogni invio, lettura dai sei membri pubblicati, e
    prima di concludere un controllo degli [errori già commessi](ERRORI.md#errori-di-metodo-già-commessi).
 
 ### Lavori aperti
 
-Priorità, stato e assegnazioni stanno in [PIANI](PIANI.md) e nelle schede; qui solo l'orientamento,
-al 30/09:
-- **R-LAB**, piano operativo del 30/09 per Claude: corpus cellulare esteso, qualità e rete biologica
-  ([scheda](piani/piano-giorno-2026-09-30.md)); attua **R-COMP**, che conserva riserva e criteri di
-  verifica sui sei membri ([programma](piani/modello-competitivo.md)).
+Priorità e dipendenze in [PIANI](PIANI.md), stato e assegnazioni nelle schede; orientamento dopo t29:
+- **R-COMP → R-LEAD → R-LAB:** programma generale, direzione scientifica ed esecuzione dello
+  stesso lavoro. Corpus e r1–r3 sono stati prodotti, t29 è concluso; per riprendere usare
+  le intestazioni aggiornate, non le consegne cronologiche precedenti.
 - **R-REV**, le azioni della revisione critica del 28/09 ([scheda](piani/revisione-critica.md)):
   la 2 e la 6 sono chiuse; la 3 aspetta la prova generale in forma piena (la forma ridotta dà un
   `.vcc` valido, [CP-0044](checkpoints/0044-prova-generale-22-ottobre.md)), la 4 il job Colab del
   banco K562 con lo scorer vero; le altre, con il loro stato, sono nella scheda.
-- **R-V2**, il modello per il set finale: filoni e stato nella [scheda](piani/modello-v2.md).
+- **R-V2, R-DATI, R-SWITCH e S-INVII:** filoni precedenti, supporto dati, ipotesi sulle popolazioni
+  e presidio degli invii. [PIANI](PIANI.md) chiarisce le dipendenze; non sono quattro nuove
+  ricerche da avviare insieme.
 
 Gli esiti chiusi dal 28/09 (t23, t26, rete relazionale, rete sulle sorgenti, Stack A/B) sono nelle
-sezioni di [AMBITI](AMBITI.md) e nei checkpoint dal 0042 al 0052.
+sezioni di [AMBITI](AMBITI.md) e nei checkpoint dal 0042 al 0052; il t29 è in CP-0055.
 
 ### Che cosa aspetta una decisione del proprietario
 

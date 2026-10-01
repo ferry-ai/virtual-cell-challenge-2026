@@ -1,9 +1,16 @@
 # S-INVII — validazione e set finale
 
-- **Stato:** in corso. Al 28/09: il migliore è il t22 (+0,141250; con la replica t24 il riferimento
+- **Stato:** aperto; t29 valutato e letto in [CP-0055](../checkpoints/0055-t29-rete-cellulare-punteggio.md).
+- **Aggiornato:** 1 ottobre 2026, dopo t29; gli esiti datati sotto restano storici.
+- **Prossimo passo vigente:** preparazione finale con la ricetta di riferimento e prova a forma
+  piena (azione 3 di [R-REV](revisione-critica.md)); per un nuovo invio neurale serve prima il
+  banco locale a sei membri almeno al livello del transfer, come registrato per t29.
+  Il t27 è conservato pronto, non è un invio da avviare automaticamente
+  ([indice degli invii](../../reports/invii/README.md)).
+- **Fotografia precedente, al 28/09:** il migliore è il t22 (+0,141250; con la replica t24 il riferimento
   della ricetta è 0,14207); t25 −0,0010 sul t22, non conclusivo; t23 impacchettato, aspetta il via.
   La tabella completa è in [reports/invii/README.md](../../reports/invii/README.md).
-- **Aggiornato:** 28 settembre 2026 (nota della riorganizzazione D-046; il testo sotto «Esiti del
+- **Nota storica:** 28 settembre 2026 (riorganizzazione D-046; il testo sotto «Esiti del
   25 settembre» e «Esito del 26 settembre» è com'era il 26/09).
 - **Assegnazione:** lettura di t16/t17 (fatta), t18 e candidato successivo: Claude (app,
   sessione `f4f38e58`), 25/09. Non assumere che lo slot sia libero.
@@ -51,9 +58,10 @@ PDS e reach salgono, `nmae` peggiora. La ricetta del t20 è il nuovo riferimento
 
 ## Prossima azione
 
-Il prossimo invio porta il modello di [R-V2](modello-v2.md) quando il suo banco lo giustifica,
-con previsione e regola registrate prima; il t19 resta pronto per separare restrizione e modulo
-cis se serve. [PROCEDURE](../PROCEDURE.md) §2 conserva procedura e autorizzazioni.
+Vale il prossimo passo nell'intestazione aggiornata. Se un candidato passa il proprio banco,
+previsione e regola si registrano prima della generazione; [PROCEDURE](../PROCEDURE.md) §2
+conserva procedura e autorizzazioni. La tabella seguente è il programma del 25–28/09:
+non riavvia t18/t19 o le letture già concluse.
 
 | Ordine | Lavoro aperto | Dipendenza / risultato atteso |
 |---|---|---|

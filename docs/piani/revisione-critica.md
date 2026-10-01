@@ -1,8 +1,13 @@
 # R-REV — agire sulla revisione critica del 28 settembre
 
 - **Stato:** in corso.
-- **Aggiornato:** 29 settembre 2026, 11:35 (ora italiana), dalla sessione Claude `f2abd9a6`. Scritta alle 12:40
-  dalla sessione cloud che ha fatto la revisione.
+- **Orientamento dopo t29 (1/10):** restano utili la prova generale a forma piena (azione 3),
+  il banco K562 con scorer vero (4) e i basali sull'asse comune (5). Il prossimo passo alla
+  ripresa è verificare input, risorse e stato effettivo di queste azioni, leggendone gli
+  esiti sotto prima di rieseguirle. La nuova ricerca neurale segue
+  [R-LEAD](strategia-scientifica.md); t29 non riapre l'azione 6 sulla rete relazionale.
+- **Aggiornato:** orientamento riallineato il 1° ottobre dopo t29; cronologia delle azioni
+  conservata. L'intestazione precedente era del 29/09, 11:35, Claude `f2abd9a6`.
 - **Assegnazione:** Claude (app desktop, sessione `f4f38e58`, sul portatile con la radice dati), dal 28/09
   alle 12:42 (ora italiana), su richiesta del proprietario in chat: §0 e le azioni in ordine, una alla volta.
   File di lavoro: questa scheda, il registro (R-020), gli indici dei report; output nelle categorie di D-046.

@@ -1,7 +1,12 @@
 # R-DATI — sorgenti, controlli e affidabilità
 
-- **Stato:** in corso; priorità iniziale della ricerca.
-- **Aggiornato:** 25 settembre 2026, 00:45 (ora italiana). **Nota del 28/09 (D-046):** la scheda
+- **Stato:** aperto; supporto ai confronti di R-LEAD e all'esecuzione R-LAB.
+- **Aggiornato:** orientamento riallineato il 1° ottobre; le proposte sotto risalgono al 25/09.
+- **Prossimo passo vigente:** partire dall'inventario e dal corpus già prodotti in
+  [R-LAB](piano-giorno-2026-09-30.md); individuare controlli, repliche o collegamenti mancanti
+  per il banco di [R-LEAD](strategia-scientifica.md). L'aggiunta di dati richiede un confronto
+  con split fissi; il t29 non dimostra che la sola quantità di cellule sia il limite.
+- **Nota storica del 28/09 (D-046):** la scheda
   non è stata aggiornata dopo il 25; il lavoro sui dati è proseguito nella scheda
   [R-V2](modello-v2.md) (universi genome-wide, KOLF2.1J, HIPSCI, VIPerturb-seq, Tahoe): gli esiti
   sono indicizzati in [reports/sorgenti/README.md](../../reports/sorgenti/README.md).
@@ -11,6 +16,8 @@
 - **Ipotesi:** H7 rumore, H8 saggio, H9 tempo/sopravvivenza; input per H1–H6/H10.
 
 ## Prossima azione
+
+Proposta originaria del 25/09, da verificare contro l'inventario R-LAB prima di ripeterla:
 
 Verificare gli output già prodotti dagli altri agenti, poi costruire un inventario
 dei **controlli, repliche, guide e unità delle risposte** nelle sorgenti candidate.

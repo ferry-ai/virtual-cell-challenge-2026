@@ -1,7 +1,14 @@
 # R-V2 — il modello per il set finale, costruito adesso
 
-- **Stato:** in corso.
-- **Aggiornato:** 29 settembre 2026, 11:35 (ora italiana).
+- **Stato:** aperto; raccolta dei filoni precedenti, con risultati e dipendenze distinti.
+- **Aggiornato:** intestazione riallineata il 1° ottobre dopo t29; il corpo conserva le note del 26–29/09.
+- **Prossimo passo vigente:** usare [R-LEAD](strategia-scientifica.md) per il nuovo confronto
+  scientifico e [R-LAB](piano-giorno-2026-09-30.md) per corpus e reti cellulari. La prova
+  generale F8 resta nell'azione 3 di [R-REV](revisione-critica.md). Prima di riprendere gli
+  altri filoni verificare i risultati in [AMBITI §5](../AMBITI.md#5-modelli-appresi-e-generalizzazione):
+  le vecchie righe «in corso» o «nulla eseguito» non attestano lo stato corrente.
+- **Dopo t29:** il fallimento non giustifica rilanciare automaticamente i modelli precedenti;
+  ogni nuova variante deve motivare quale limite affronta e come sarà confrontata.
 - **Assegnazione:** regia e filoni F1, F2 e F4: Claude (app, sessione `f4f38e58`), dal
   26/09 alle 00:20. Filone F3: codex via agent hub, lancio annotato qui sotto. Gli altri
   filoni sono liberi: prenderli annotando agente, sessione e ora in questa scheda.

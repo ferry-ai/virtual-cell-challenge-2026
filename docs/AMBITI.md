@@ -34,11 +34,15 @@ Leggi prima: [PROCEDURE §2](PROCEDURE.md#2-le-regole-dellinvio), punto 7, per l
   Tutti i punteggi: [invii](../reports/invii/README.md).
 - **Misurato.** Il t28 alza fedeltà (+0,051 scalato) e reach (+0,055), perde NMAE (−0,069) e
   Jaccard (−0,008): l'intervento sull'emissione sposta i membri DE, con costi.
+- **Ultimo esito, 1/10.** T29, rete cellulare r2 `desc` con generatore t22: ramo c negativo.
+  PDS, NMAE, reach e Jaccard scalati peggiorano rispetto a t22; fedeltà sale, MSE scalata
+  resta zero mentre la grezza peggiora. Nessun nuovo invio neurale senza il banco a sei
+  membri almeno al livello del transfer ([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)).
 - **Interpretazione.** Dal t16 i cambi della media sono piccoli, ma diversi membri si compensano
   ([audit scientifico](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md)).
 
 Leggi prima: [che cosa lascia un invio](../reports/CLAUDE.md), [PROCEDURE §1–2](PROCEDURE.md#1-il-percorso-di-un-invio).
-Piano: [R-COMP](piani/modello-competitivo.md); [S-INVII](piani/invii-finale.md) è ferma al 28/09.
+Piani: [R-COMP](piani/modello-competitivo.md), [S-INVII](piani/invii-finale.md).
 
 ### 3. Generatore e banchi con lo scorer vero
 
@@ -74,11 +78,16 @@ cambiare il codice: `scripts/CLAUDE.md` e `src/vcc2026/CLAUDE.md`.
 
 Leggi prima: [GENERALIZZAZIONE](GENERALIZZAZIONE.md), [sorgenti](../reports/sorgenti/README.md).
 Piano operativo: [R-LAB, corpus cellulare e QC](piani/piano-giorno-2026-09-30.md), dentro
-[R-COMP](piani/modello-competitivo.md); [R-DATI](piani/dati-affidabilita.md) è ferma al
-28/09, con il lavoro proseguito in R-V2 e R-COMP.
+[R-COMP](piani/modello-competitivo.md); [R-DATI](piani/dati-affidabilita.md) instrada alle
+verifiche di qualità e ai dati necessari al banco, partendo dal corpus già prodotto in R-LAB.
 
 ### 5. Modelli appresi e generalizzazione
 
+- **Scoring 1/10.** T29 non promuove la sostituzione del transfer con la rete r2 `desc`
+  ([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). La scarsa discriminazione
+  dei bersagli è misurata dal PDS; risposta comune, calibrazione, apprendimento ed esportazione
+  restano spiegazioni da separare. Il collasso identity di r3 è un altro braccio e un altro
+  training: non dimostra la causa dello score t29.
 - **Audit 1/10.** La rete cellulare r2 perde in media contro transfer su HepG2 C, ma mostra
   complementarità esplorativa. Split r2/r3 diversi impediscono un'attribuzione ai soli dati
   aggiunti; unknown non è una baseline generica addestrata. Evidenza e correzioni nella

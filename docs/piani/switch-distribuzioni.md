@@ -1,7 +1,12 @@
 # R-SWITCH — soglie, intensità e cellule rispondenti
 
-- **Stato:** aperto; promettente, esperimento in attesa di cellule e guide indipendenti.
-- **Aggiornato:** 24 settembre 2026. **Nota del 28/09 (D-046):** nessun lavoro registrato su questa
+- **Stato:** aperto; esperimento subordinato a cellule e guide indipendenti.
+- **Orientamento dopo t29 (1/10):** ipotesi ancora da provare, subordinata ai confronti
+  di [R-LEAD](strategia-scientifica.md). Il collasso del gate identity di r3 è un problema
+  di ottimizzazione; non prova l'esistenza o l'assenza di uno switch biologico. Questo
+  filone non fornisce ancora un rimedio misurato allo score della rete.
+- **Aggiornato:** orientamento riallineato il 1° ottobre; proposta originaria del 24/09.
+  **Nota storica del 28/09 (D-046):** nessun lavoro registrato su questa
   scheda dopo il 24; le sorgenti a singola cellula acquisite nel frattempo sono in
   [reports/sorgenti/README.md](../../reports/sorgenti/README.md).
 - **Assegnazione:** da verificare con gli agenti già attivi; nessuna presa in carico registrata qui.

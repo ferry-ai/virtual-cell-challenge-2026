@@ -1,12 +1,15 @@
 # Piani aperti — scegliere il prossimo lavoro
 
-**Piano del giorno per Claude, mandato del proprietario del 30/09:**
-[R-LAB — dati cellulari, qualità e rete biologica](piani/piano-giorno-2026-09-30.md).
-Estendere il corpus a tutti i dati utilizzabili, preservando le singole cellule; ingestione
-riprendibile, QC per assay e prove di generalizzazione. È l'esecuzione corrente di
-[R-COMP](piani/modello-competitivo.md), con riserva indipendente e sei metriche. La direzione generale che lega
-i piani è nel §0 di [PROGETTO](PROGETTO.md#direzione-generale); dove sta che cosa, per ambito, in
-[AMBITI](AMBITI.md).
+**Dopo lo scoring del 1° ottobre:** il t29 non promuove la rete. La sua regola richiede un
+banco locale a sei membri almeno al livello del transfer prima di un altro invio neurale
+([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). Il riferimento resta la ricetta
+esistente; stato e punteggi in [PROGETTO §0](PROGETTO.md).
+
+**Un programma, tre ruoli:** [R-COMP](piani/modello-competitivo.md) è il programma generale,
+[R-LEAD](piani/strategia-scientifica.md) ne precisa metodo e confronti,
+[R-LAB](piani/piano-giorno-2026-09-30.md) documenta l'esecuzione su corpus e rete.
+Non sono tre ricerche da avviare separatamente. La prossima consegna proposta è in R-LEAD:
+correzioni verificabili e banco diagnostico, prima di attribuire progresso a più dati o capacità.
 
 **Perimetro:** le priorità e le dipendenze fra i piani (§2), le regole per prendere e lasciare un
 lavoro nella cartella condivisa (§3), i piani chiusi (§4). Stato, prossimo passo e assegnazione di
@@ -30,23 +33,25 @@ L'aggiunta all'indice non avvia job, monitor o invii automatici.
 | ID | Priorità e motivo | Scheda | Prima di eseguire |
 |---|---|---|---|
 | R-LEAD | Direzione scientifica dal 1/10: rendere identificabile il training, poi transfer con residuo biologico, dati ponte e popolazioni; precisa il programma R-COMP senza sostituire l'assegnazione R-LAB | [Strategia scientifica](piani/strategia-scientifica.md) | Diagnosi riproducibili e D-050; split, controlli e confronti corretti prima di attribuire prestazioni a corpus o architettura |
-| R-LAB | **Prima priorità operativa**, richiesta del 30/09: corpus esteso di singole cellule, ingestione da laboratorio, QC e rete biologica; consegna a Claude | [Piano del giorno](piani/piano-giorno-2026-09-30.md) | Inventario completo e ruoli train/riserva; manifest, QC e risorse verificate prima dell'ingestione; incarichi esistenti preservati |
+| R-LAB | Esecuzione dello stesso programma: riusare corpus e reti già prodotti per capire il divario dal transfer | [Piano del giorno](piani/piano-giorno-2026-09-30.md) | Ramo c di t29 e confronti R-LEAD; il quarto training è una verifica tecnica e non sostituisce il banco |
 | R-COMP | Programma generale dal 29/09: copertura reale, modello biologico, C/T/J e sei metriche; dal 30/09 attuato attraverso R-LAB | [Modello competitivo](piani/modello-competitivo.md) | Storico degli outcome, riserva e criteri di promozione prima dei nuovi training |
-| R-REV | **Adesso**, su richiesta del proprietario del 28/09 (12:30): le azioni della revisione critica, in ordine; la prima, l'unione del loro branch nel `main` del portatile, è fatta dal 28/09 | [Revisione critica](piani/revisione-critica.md) | Via del proprietario per invii, download, calcolo in cloud e push (mandato della scheda) |
-| S-INVII | Scadenze e lettura delle prove già preparate | [Invii e set finale](piani/invii-finale.md) | Verificare stato effettivo e coordinarsi con chi segue gli invii |
-| R-V2 | Adesso, su richiesta del proprietario: il modello per il set finale, filoni F1–F8 | [Modello v2](piani/modello-v2.md) | Via del proprietario per download, calcolo in cloud e invii |
-| R-DATI | Prima: rendere utilizzabili dati, controlli e repliche | [Dati e affidabilità](piani/dati-affidabilita.md) | Audit locale e dei metadati; stimare costo prima di acquisire |
-| R-SWITCH | Promettente: soglie, intensità e cellule rispondenti | [Switch e distribuzioni](piani/switch-distribuzioni.md) | Cellule, guide e controlli da R-DATI; score indipendente dalla risposta valutata |
+| R-REV | Verifiche trasversali ancora utili: prova generale a forma piena, banco K562, basali sull'asse comune; leggere l'esito di ogni azione prima di ripeterla | [Revisione critica](piani/revisione-critica.md) | La forma ridotta e le azioni 2/6 hanno già un esito; risorse e autorizzazioni vanno verificate alla ripresa |
+| S-INVII | Presidio della ricetta e della consegna finale; t29 è già letto | [Invii e set finale](piani/invii-finale.md) | Un pacchetto pronto non è un ordine di invio; per la rete vale il ramo c di t29 |
+| R-V2 | Raccolta dei filoni precedenti e delle alternative; il nuovo programma scientifico è R-LEAD/R-COMP | [Modello v2](piani/modello-v2.md) | Confrontare gli stati datati con gli esiti in AMBITI; non rilanciare un filone già concluso dalla sua vecchia riga |
+| R-DATI | Supporto a R-LAB/R-LEAD: qualità, controlli, repliche e dati che risolvano un limite misurato | [Dati e affidabilità](piani/dati-affidabilita.md) | Inventario e corpus già prodotti in R-LAB; motivare la nuova acquisizione e fissare gli split prima di confrontare corpus diversi |
+| R-SWITCH | Ipotesi disponibile sulle popolazioni, subordinata a confronti e dati adeguati; non un rimedio dimostrato al t29 | [Switch e distribuzioni](piani/switch-distribuzioni.md) | Cellule, guide e controlli indipendenti; confronto a pari media e verifica sui sei membri |
 
-**Stato delle schede.** Lo stato di un piano è nell'intestazione della sua scheda (R-V2, per
-esempio, è in corso dalla ripresa del 28/09 alle 19:22). S-INVII, R-DATI e R-SWITCH sono ferme
-al 28/09, con una nota datata che rimanda a dove il lavoro è proseguito. Diverse assegnazioni
-nominano sessioni che il 30/09 alle 02:07 risultavano chiuse, `f4f38e58` e la lead di Codex
-`01a0ee03` ([riordino](../reports/analisi/riordino_repo_2026-09-30/RIORDINO.md), §1): vedi §3. Le proposte della [revisione critica del 28/09](../reports/analisi/revisione_criticita_2026-09-28/REVISIONE.md)
-(§6) sono, dalle 12:30 del 28/09 e su richiesta del proprietario, la scheda
-[R-REV](piani/revisione-critica.md), in ordine di esecuzione. Dal 29/09 la priorità complessiva
-è [R-COMP](piani/modello-competitivo.md), con piano operativo del 30/09 in
-[R-LAB](piani/piano-giorno-2026-09-30.md); gli incarichi già aperti in R-REV e R-V2 restano assegnati.
+**Come riprendere.** Leggere l'intestazione aggiornata della scheda, non l'ultimo «prossimo
+passo» trovato in una cronologia. R-LAB contiene più consegne successive; R-V2, R-DATI e
+R-SWITCH conservano parti del 24–29/09. Una scheda aperta non prova un job attivo, né che
+un'ipotesi sia ancora promettente. Gli incarichi restano registrati nelle schede (§3).
+
+**Priorità proposta dopo t29:** prima A/B di R-LEAD e il banco diagnostico sui modelli
+esistenti; la prova generale di R-REV resta un requisito di consegna indipendente dal successo
+della rete. Residuo sul transfer, ulteriori dati e modelli di popolazione vengono dopo i
+rispettivi confronti. Il quarto training R-LAB conserva il proprio protocollo: può rispondere
+a una domanda tecnica, ma non soddisfa da solo la regola per un nuovo invio. Questo ordine
+non cancella protocolli, non chiude intere famiglie di modelli e non avvia né interrompe job.
 
 **Le dieci ipotesi della ricerca del 24 settembre:** H1 (programmi, nella forma lineare) e H6 (pesi
 per somiglianza basale fra linee) sono state provate il 26/09 e hanno perso; le altre restano aperte.
@@ -83,7 +88,8 @@ altrimenti chiedendo al proprietario. Come si committano i file condivisi è nel
 
 ## 4. Piani chiusi e risultati precedenti
 
-Una scheda su otto è chiusa, R-MODELLI; le altre linee chiuse sono precedenti alle schede.
+R-MODELLI è la scheda formalmente chiusa; le otto schede elencate sopra hanno ruoli e
+dipendenze diversi. La bocciatura di un candidato non chiude automaticamente la sua famiglia.
 
 | Scheda | Chiusa | Esito e condizione di riapertura |
 |---|---|---|

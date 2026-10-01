@@ -1,7 +1,7 @@
 # R-LEAD — strategia scientifica e modello competitivo
 
 - **Stato:** aperto; revisione consegnata, programma da eseguire attraverso R-LAB/R-COMP.
-- **Aggiornato:** 1 ottobre 2026.
+- **Aggiornato:** 1 ottobre 2026, dopo lo scoring t29.
 - **Mandato:** revisione lead richiesta dal proprietario; facoltà di riformulare vincoli scientifici precedenti motivandone i bias.
 - **Assegnazione:** audit completato da Codex, chat `01a0f724-6a42-7dd0-bd2f-3496d9195695`.
   Il 1/10 il proprietario affida il programma al teammate: [consegna e prompt](../CONSEGNA_TEAMMATE.md).
@@ -10,10 +10,26 @@
   avviato dall'audit o dalla consegna.
 - **Evidenza:** [revisione con nuove misure](../../reports/analisi/lead_audit_2026-10-01/REVISIONE.md),
   [consegna tecnica](../../reports/analisi/lead_audit_2026-10-01/NOTA_TRAINING.md).
-- **Prossimo passo:** fissare gli split e correggere campionamento, controlli e baseline di
-  confronto prima del prossimo esperimento attribuibile all'espansione dei dati; correggere
-  il gradiente della miscela sotto il clamp emerso alla conclusione di r3
-  ([nuova prova](../../reports/analisi/lead_audit_2026-10-01/AGGIORNAMENTO_R3.md)).
+- **Prossimo passo:** completare A/B: split immutabili, controlli e pesi verificati, baseline
+  addestrate e verifica dei gradienti della miscela. Il pavimento `pi` implementato da R-LAB
+  è una modifica da valutare, non dimostra risolto il problema di apprendimento
+  ([diagnosi r3](../../reports/analisi/lead_audit_2026-10-01/AGGIORNAMENTO_R3.md),
+  [protocollo del quarto training](../../reports/modelli/cellnet_terza_ondata_2026-10-01/PROTOCOLLO.md)).
+  Prima consegna sperimentale proposta: banco diagnostico di sviluppo a sei membri per
+  transfer e reti disponibili, con gli stessi target, geni, controlli e generatore;
+  controllare il percorso di esportazione e la discriminazione fra bersagli. Le coorti
+  già valutate restano sviluppo; una conferma richiede una riserva separata.
+- **Vincolo dopo t29:** applicare il ramo c registrato: nessun altro invio della rete prima
+  che il banco a sei membri la mostri almeno al livello del transfer
+  ([CP-0055](../checkpoints/0055-t29-rete-cellulare-punteggio.md)). Un residuo sul transfer è
+  ancora un'ipotesi, non un candidato promosso.
+- **Riordino documentale (1/10, 23:13 CEST):** Codex, chat
+  `01a0f949-2230-7703-b5c2-7d467397b431`, su richiesta di orientamento dopo lo score.
+  Il proprietario conferma in chat che Claude e teammate sono fermi. Perimetro: mappe
+  `PROGETTO`, `PIANI`, `AMBITI` e intestazioni delle schede; nessuna riassegnazione del
+  programma, nuovo training o modifica di protocolli congelati. Esito: mappe e otto schede
+  riallineate al t29, con consegne storiche distinte dai passi vigenti; nessuna nuova scheda.
+  Le evidenze restano quelle citate; il prossimo passo scientifico è quello sopra.
 - **Dipendenze:** [R-LAB](piano-giorno-2026-09-30.md), [R-COMP](modello-competitivo.md),
   [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), D-050 in [DECISIONI](../DECISIONI.md).
 - **Chiusura della revisione:** rapporto, misure riproducibili e programma consegnati.
@@ -72,7 +88,8 @@ per selezionare il candidato finale. È una proposta da confrontare, non una ric
 | F. Conferma e produzione | Candidato congelato, riserva aperta una volta, pacchetto a forma piena, manifest e riproduzione | Regola registrata soddisfatta, nessuna fuga, supporto finale auditato, preparazione e inferenza complete | Nessuna promozione retroattiva; usare il riferimento affidabile e trattare l'esito come sviluppo futuro |
 
 L'ordine esprime dipendenze, non tempi stimati o limiti preventivi al lavoro.
-R3 e t29 restano esperimenti già avviati: leggerli secondo i protocolli loro, senza riscriverli.
+R3 e t29 sono conclusi: leggerli secondo i protocolli loro, senza riscriverli.
+Il t29 non supera la sua regola; il banco richiesto dal ramo c precede ogni nuovo invio neurale.
 
 ## 4. Contratto di valutazione del nuovo programma
 
