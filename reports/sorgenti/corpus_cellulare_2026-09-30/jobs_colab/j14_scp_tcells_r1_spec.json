@@ -1,0 +1,125 @@
+{
+ "job_id": "j14_scp_tcells_r1",
+ "min_free_stage_bytes": 4294967296,
+ "units": [
+  {
+   "name": "shifrut2018",
+   "adapter": "h5rows",
+   "kwargs": {
+    "path": "https://zenodo.org/api/records/13350497/files/ShifrutMarson2018.h5ad/content",
+    "study": "shifrut2018_tcells_ko",
+    "context": "primary T cells",
+    "chemistry": "10x",
+    "modality": "KO",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "target_col": "target",
+    "control_values": [
+     "NonTarget"
+    ],
+    "guides_col": "guide_id",
+    "context_col": "sample",
+    "donor_col": "patient"
+   },
+   "source": {
+    "id": "scp_ShifrutMarson2018",
+    "release": "Zenodo 13350497 (scPerturb)",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "counts h5ad",
+      "locator": "https://zenodo.org/api/records/13350497/files/ShifrutMarson2018.h5ad/content",
+      "bytes": 871481676,
+      "measured": "p1_r4/remote/scp_ShifrutMarson2018.json",
+      "md5": "813253590e31611560045333b7ffb637"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     0,
+     52236
+    ]
+   }
+  },
+  {
+   "name": "datlinger2017",
+   "adapter": "h5rows",
+   "kwargs": {
+    "path": "https://zenodo.org/api/records/13350497/files/DatlingerBock2017.h5ad/content",
+    "study": "datlinger2017_jurkat_ko",
+    "context": "Jurkat",
+    "chemistry": "CROP-seq",
+    "modality": "KO",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "target_col": "perturbation",
+    "control_values": [
+     "control"
+    ],
+    "library_col": "replicate",
+    "context_col": "perturbation_2"
+   },
+   "source": {
+    "id": "scp_DatlingerBock2017",
+    "release": "Zenodo 13350497 (scPerturb)",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "counts h5ad",
+      "locator": "https://zenodo.org/api/records/13350497/files/DatlingerBock2017.h5ad/content",
+      "bytes": 39085166,
+      "measured": "p1_r4/remote/scp_DatlingerBock2017.json",
+      "md5": "c797d8e0320afcc0cc2a94e94805b142"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     0,
+     5905
+    ]
+   }
+  },
+  {
+   "name": "datlinger2021",
+   "adapter": "h5rows",
+   "kwargs": {
+    "path": "https://zenodo.org/api/records/13350497/files/DatlingerBock2021.h5ad/content",
+    "study": "datlinger2021_jurkat_ko",
+    "context": "Jurkat",
+    "chemistry": "scifi-RNA-seq",
+    "modality": "KO",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "target_col": "perturbation",
+    "control_values": [
+     "control"
+    ],
+    "library_col": "sample",
+    "context_col": "perturbation_2"
+   },
+   "source": {
+    "id": "scp_DatlingerBock2021",
+    "release": "Zenodo 13350497 (scPerturb)",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "counts h5ad",
+      "locator": "https://zenodo.org/api/records/13350497/files/DatlingerBock2021.h5ad/content",
+      "bytes": 33600780,
+      "measured": "p1_r4/remote/scp_DatlingerBock2021.json",
+      "md5": "5cfbcb4770e9c859a07b2cc44fd12066"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     0,
+     39194
+    ]
+   }
+  }
+ ],
+ "min_free_out_bytes": 0
+}

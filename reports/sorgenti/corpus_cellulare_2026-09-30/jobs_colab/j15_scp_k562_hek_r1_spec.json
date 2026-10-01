@@ -1,0 +1,161 @@
+{
+ "job_id": "j15_scp_k562_hek_r1",
+ "min_free_stage_bytes": 4294967296,
+ "units": [
+  {
+   "name": "dixit2016_d7",
+   "adapter": "h5csc_shards",
+   "kwargs": {
+    "path": "https://zenodo.org/api/records/13350497/files/DixitRegev2016_K562_TFs_7_days.h5ad/content",
+    "study": "dixit2016_k562_ko",
+    "context": "K562 day 7",
+    "chemistry": "10x (Perturb-seq)",
+    "modality": "KO",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "target_col": "target",
+    "control_pattern": "^INTERGENIC",
+    "guides_col": "guide_id",
+    "work": "{WORK}/buckets_dixit2016_d7",
+    "cells_per_pass": 200000
+   },
+   "source": {
+    "id": "scp_DixitRegev2016_K562_TFs_7_days",
+    "release": "Zenodo 13350497 (scPerturb)",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "counts h5ad",
+      "locator": "https://zenodo.org/api/records/13350497/files/DixitRegev2016_K562_TFs_7_days.h5ad/content",
+      "bytes": 256685252,
+      "measured": "p1_r4/remote/scp_DixitRegev2016_K562_TFs_7_days.json",
+      "md5": "b4fb773a3b3857a8ee471d6d2f5221e0"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     0,
+     33013
+    ]
+   }
+  },
+  {
+   "name": "dixit2016_d13",
+   "adapter": "h5csc_shards",
+   "kwargs": {
+    "path": "https://zenodo.org/api/records/13350497/files/DixitRegev2016_K562_TFs_13_days.h5ad/content",
+    "study": "dixit2016_k562_ko",
+    "context": "K562 day 13",
+    "chemistry": "10x (Perturb-seq)",
+    "modality": "KO",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "target_col": "target",
+    "control_pattern": "^INTERGENIC",
+    "guides_col": "guide_id",
+    "work": "{WORK}/buckets_dixit2016_d13",
+    "cells_per_pass": 200000
+   },
+   "source": {
+    "id": "scp_DixitRegev2016_K562_TFs_13_days",
+    "release": "Zenodo 13350497 (scPerturb)",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "counts h5ad",
+      "locator": "https://zenodo.org/api/records/13350497/files/DixitRegev2016_K562_TFs_13_days.h5ad/content",
+      "bytes": 121166672,
+      "measured": "p1_r4/remote/scp_DixitRegev2016_K562_TFs_13_days.json",
+      "md5": "b594d224cf17b268cd7e02efc976cea7"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     0,
+     19268
+    ]
+   }
+  },
+  {
+   "name": "dixit2016_high_moi",
+   "adapter": "h5csc_shards",
+   "kwargs": {
+    "path": "https://zenodo.org/api/records/13350497/files/DixitRegev2016_K562_TFs_High_MOI.h5ad/content",
+    "study": "dixit2016_k562_ko",
+    "context": "K562 high MOI",
+    "chemistry": "10x (Perturb-seq)",
+    "modality": "KO",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "target_col": "target",
+    "control_pattern": "^INTERGENIC",
+    "guides_col": "guide_id",
+    "work": "{WORK}/buckets_dixit2016_high_moi",
+    "cells_per_pass": 200000
+   },
+   "source": {
+    "id": "scp_DixitRegev2016_K562_TFs_High_MOI",
+    "release": "Zenodo 13350497 (scPerturb)",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "counts h5ad",
+      "locator": "https://zenodo.org/api/records/13350497/files/DixitRegev2016_K562_TFs_High_MOI.h5ad/content",
+      "bytes": 319735470,
+      "measured": "p1_r4/remote/scp_DixitRegev2016_K562_TFs_High_MOI.json",
+      "md5": "b77c2249b7069b16f91f7384a88c39b1"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     0,
+     51898
+    ]
+   }
+  },
+  {
+   "name": "xu2023",
+   "adapter": "h5csc_shards",
+   "kwargs": {
+    "path": "https://zenodo.org/api/records/13350497/files/XuCao2023.h5ad/content",
+    "study": "xu2023_hek293_crispri",
+    "context": "HEK293",
+    "chemistry": "10x 3'",
+    "modality": "CRISPRi",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "target_col": "target",
+    "control_values": [
+     "control"
+    ],
+    "guides_col": "guide_id",
+    "work": "{WORK}/buckets_xu2023",
+    "cells_per_pass": 200000
+   },
+   "source": {
+    "id": "scp_XuCao2023",
+    "release": "Zenodo 13350497 (scPerturb)",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "counts h5ad",
+      "locator": "https://zenodo.org/api/records/13350497/files/XuCao2023.h5ad/content",
+      "bytes": 336637209,
+      "measured": "p1_r4/remote/scp_XuCao2023.json",
+      "md5": "3efb25a2927c5c228f04f783f18004d8"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     0,
+     98315
+    ]
+   }
+  }
+ ],
+ "min_free_out_bytes": 0
+}
