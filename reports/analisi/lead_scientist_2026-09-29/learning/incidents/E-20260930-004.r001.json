@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "eid": "E-20260930-004",
+  "revision": 1,
+  "previous_sha256": null,
+  "recorded_utc": "2026-10-01T00:49:42+00:00",
+  "claim_type": "operational_incident",
+  "state": "verified_locally",
+  "title": "R-LAB: geni degli shard di Replogle 2022 con ID Ensembl come simboli, nessun gene sull'asse ufficiale",
+  "symptom": "Il pre-passo r4 del secondo training (1/10, 02:44) scarta per intero K562 genome-wide (1.989.578 cellule), K562 essenziali (310.385) e RPE1 (247.914) con no_controls_in_key, benche i manifest dei job 114 e 115 contino i NTC. Uno shard di K562 essenziali scritto dal job 114 ha symbol = ENSG... e 0 geni su 8.563 agganciati all'asse: ogni cellula ha zero conteggi sui geni del modello, quindi nessun controllo con libreria positiva.",
+  "cause": "Nei file di Replogle 2022 l'indice di var e gene_id (Ensembl); i simboli stanno in var/gene_name. Gli spec J06 e J07 non indicavano var_symbol_col, e l'adattatore usava l'indice. Nessun controllo si fermava su un'unita senza geni sull'asse. Verificato sullo shard e sul file di Figshare.",
+  "cause_verified": true,
+  "fix": "Commit con la guardia di rlab_job: un'unita con meno di min(1000, meta) feature agganciate si ferma al primo shard con una ricevuta FAILED. Spec rifatti con var_symbol_col gene_name e feature_id_col gene_id (j07_replogle_ess_rpe1_r8, j06_k562_gwps_r3), snapshot r10, job 121 e 122 (pubblicazione con slug nuovi rlab-k562-essential-r2, rlab-rpe1-r2, rlab-k562-gwps-r3). Gli shard dei job 114 e 115 restano come sono e non entrano in nessun training; il pre-passo r4 resta come diagnosi e non alimenta il secondo training.",
+  "regression_test": "test_axis_guard.py: un'unita con feature fuori asse si ferma al primo shard con la ricevuta FAILED; con le feature sull'asse il job finisce. PASS il 1/10.",
+  "next_guard": "Ogni sorgente nuova si prova sulle prime cellule con il suo spec prima della coda (quante feature sull'asse, quanti NTC, bersagli leggibili), come la prova della seconda ondata; la guardia di rlab_job ferma il resto.",
+  "scope": "Verificato in locale e sul file di Figshare. La verifica remota sono i job 121 e 122: manifest con parita ok e un pre-passo che ammette cellule di K562 e RPE1.",
+  "evidence": [
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/incidenti/replogle_var_2026-10-01.txt",
+      "sha256": "49e6a8eca3c9c26a98e45beecccede9c580281daeb3888c0327c96f39b45ef95",
+      "bytes": 719,
+      "supports": "Shard del job 114 con simboli Ensembl e 0 geni sull'asse; var del file di Figshare con gene_id come indice e gene_name"
+    },
+    {
+      "path": "reports/modelli/cellnet_esteso_2026-10-01/esito/prepass_r4_scartato/prepass/qc.json",
+      "sha256": "3d727c88e27bee337d3ee83efb2b82e2ca05dddcf594da072551ac9ca08ea1f3",
+      "bytes": 88736,
+      "supports": "Pre-passo r4: K562 e RPE1 scartati per intero con no_controls_in_key"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/rlab_job.py",
+      "sha256": "cc5a6f784c27a6cc5b44bc2f4b0d19b2df1eaf4bb9645b55a6bc0007d37f8f1a",
+      "bytes": 15497,
+      "supports": "Guardia delle feature sull'asse"
+    },
+    {
+      "path": "reports/sorgenti/corpus_cellulare_2026-09-30/test_axis_guard.py",
+      "sha256": "bda08efc8b02513c174da40849e3bb9e1306428e2aec869559a12e14ea338f7d",
+      "bytes": 2175,
+      "supports": "Test della guardia"
+    }
+  ],
+  "remote_verification": null
+}
