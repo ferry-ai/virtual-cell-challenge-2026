@@ -1,12 +1,12 @@
 # R-DATI — colmare lacune misurate dei dati
 
-- **Stato:** in attesa della matrice di esposizione e dei bisogni del banco R-LEAD P1/P4.
-- **Aggiornato:** rinnovo del 1 ottobre 2026.
+- **Stato:** in attesa della fattibilità e matrice di esposizione R-LEAD P0/P1, o di un confronto P4.
+- **Aggiornato:** 2 ottobre 2026, dipendenze allineate al nuovo R-LEAD (D-052).
 - **Assegnazione:** audit del 25/09 completato da Claude `f4f38e58` e collaboratori;
   nessuna acquisizione nuova assegnata dal rinnovo.
 - **Prossimo passo:** identificare quale controllo, replica, guida o sovrapposizione manca
   per risolvere un limite specifico; partire dal corpus già prodotto in [R-LAB](piano-giorno-2026-09-30.md).
-- **Dipendenze:** P1/P4 di [R-LEAD](strategia-scientifica.md), [GENERALIZZAZIONE](../GENERALIZZAZIONE.md),
+- **Dipendenze:** P0/P1 o P4 di [R-LEAD](strategia-scientifica.md), [GENERALIZZAZIONE](../GENERALIZZAZIONE.md),
   disponibilità e autorizzazioni per l'eventuale acquisizione.
 
 ## Consegna utile

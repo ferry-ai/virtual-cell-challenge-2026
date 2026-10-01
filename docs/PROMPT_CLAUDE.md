@@ -1,40 +1,43 @@
-# Prompt per Claude — attuare R-LEAD
+# Prompt per Claude — generalizzazione a contesti nuovi
 
-Incollare il testo sotto nella sessione che lavorerà sulla repo. Il piano completo resta
-in una sola scheda; questo prompt lo richiama senza crearne una variante.
+Incollare il testo sotto nella sessione che lavorerà sulla repo. La specifica completa
+è R-LEAD nella versione del 2 ottobre: questo prompt non è un piano alternativo.
 
 ---
 
-Riprendi VCC 2026 e implementa `docs/piani/strategia-scientifica.md` (R-LEAD, P0–P6).
-La repo è stata riallineata dopo il t29: la rete r2 `desc` non è promossa e non può avere
-un altro invio prima del banco locale a sei membri richiesto dalla sua regola.
+Implementa `docs/piani/strategia-scientifica.md` (R-LEAD, revisione del 2 ottobre 2026).
+La domanda iniziale è: dai soli controlli di una linea mai vista perturbata sappiamo
+imparare una correzione della risposta che migliori il transfer? Il primo obiettivo è
+costruire questa prova; la riparazione completa di cellnet non deve precederla.
 
 Leggi prima `CLAUDE.md`, `docs/PROGETTO.md` §0, `docs/PIANI.md` §2–3 e R-LEAD.
-Segui le letture del tuo compito e le guide di cartella. Registra sessione, macchina,
-commit base, file e destinazioni nuove. Il proprietario ha confermato Claude e teammate
-fermi durante il rinnovo; verifica solo eventuali cambiamenti successivi rilevanti.
+Segui le letture per compito e le guide di cartella. Registra sessione, macchina, commit,
+file e nuove destinazioni; Claude e teammate erano fermi al rinnovo, verifica eventuali
+cambiamenti successivi rilevanti. Su altra macchina usa `docs/CONSEGNA_TEAMMATE.md`.
 
-Esegui il lavoro locale autorizzato: P0/P1, riproduzione dei difetti applicabili e nuova
-versione con test P3, replica export P2 quando gli input ci sono, protocollo P4 congelato
-prima dei nuovi numeri. La prima consegna deve contenere codice e prove, non un altro piano.
-Prosegui con le fasi successive quando soddisfano le loro dipendenze e autorizzazioni.
+Esegui P0/P1: inventario verificabile dei collegamenti contesto–bersaglio–studio,
+esposizione reale, controlli, split per linee intere e storia delle riserve. Poi implementa
+il banco P2, congela la regola prima dei nuovi risultati e realizza il confronto P3:
+transfer, generico addestrato, modello del bersaglio senza contesto e correzione semplice
+condizionata. Misura C e J separatamente; T resta diagnostico. Verifica il contributo del
+contesto all'effetto mantenendo veri basale e generatore nelle ablation previste dal piano.
 
-Non correggere l'evidenza storica: crea copie nuove del codice di ricerca e output nuovi.
-Ricostruisci l'esposizione reale prima di chiamare un gruppo C/T/J. K562 già visto da r2/r3
-non è un contesto neurale nuovo; H1 train/val è nel corpus e H1 test resta riserva chiusa.
-Non confondere il collasso identity di r3 con la causa del t29, né il floor già implementato
-con una soluzione dimostrata. Nessun riavvio automatico del quarto training.
+La prima consegna deve includere codice eseguibile e test, manifest e protocollo;
+anche misure se gli input sono disponibili. Non limitarti a un altro documento di proposte.
+Se il banco è fattibile, prosegui alle decisioni e alle fasi condizionate secondo R-LEAD.
+Se manca un input, completa il lavoro indipendente e indica file minimo e passo impedito.
 
-Confronta transfer, generico addestrato, bilineare e rete agli stessi input e supporti,
-usando tutti i sei membri. Distingui replica storica t22, correzione t25 ed emissione t28.
-Non ricavare uno score ufficiale dalle ancore aggregate. Se il candidato perde, conserva
-il riferimento e usa la diagnosi per scegliere il prossimo confronto verificabile.
+HepG2 già esaminata resta sviluppo; K562 vista da r2/r3 non è un loro contesto nuovo;
+H1 train/val sono nel corpus e H1 test resta chiusa. Applica esclusioni globali anche a
+transfer, cache e pretraining. Non confondere uno split di cellule con nuove linee.
+Conserva originali e report, usa copie e output nuovi. Il quarto training non riparte
+automaticamente e il collasso identity di r3 non spiega da solo il t29 r2 desc.
 
-Su un'altra macchina leggi anche `docs/CONSEGNA_TEAMMATE.md`: Git non porta dati e pesi.
-Se un input manca, completa le attività indipendenti e indica il file minimo e la fase
-impedita. Download, quota cloud, nuovi agenti, invii e push seguono le autorizzazioni della
-chat e `CLAUDE.md`; un vecchio protocollo non autorizza un lancio nuovo.
+Confronta la catena sui sei membri con supporti e generatori comuni. Una loss minore o
+un guadagno T non promuovono per il 2026. Una rete P4 richiede un'ipotesi verificabile;
+non richiede che il bilineare abbia vinto, ma neppure nasce automaticamente se perde.
+Conferma secondo P5 e prepara la forma piena P6 anche se resta il transfer.
 
-Consegna commit locali, test/log, manifest, protocollo, risultati e decisione secondo la
-regola. Aggiorna R-LEAD, indici e registro, separando implementato, eseguito, misurato e
-adottato. La prova finale a forma piena resta necessaria anche se rimane il transfer.
+Download, quota cloud, nuovi agenti, invii e push seguono CLAUDE.md e le autorizzazioni
+della chat. Consegna commit locali, test/log, misure e decisione secondo la regola;
+aggiorna scheda, indici e registro distinguendo implementato, eseguito, misurato e adottato.

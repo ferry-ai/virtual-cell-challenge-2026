@@ -10,6 +10,7 @@ il 30 settembre, senza cambiare il testo salvo i percorsi dei link; un checkpoin
 
 | Data | File | Nocciolo | Vale? |
 |---|---|---|---|
+| 02/10 | [R-LEAD_pre_contesti_2026-10-02.md](R-LEAD_pre_contesti_2026-10-02.md) | Piano post-t29 al commit 0b491b3, prima del cambio di priorità D-052; copia invariata | storico; seguire R-LEAD corrente, gli ID P0–P6 sono stati ridefiniti |
 | 01/10 | [rinnovo_2026-10-01/README.md](rinnovo_2026-10-01/README.md) | Diciotto copie pre-rinnovo: piani, mappe, prompt e indici; incarichi e code datati | storico; per agire usare PIANI e R-LEAD correnti |
 | 30/09 | [PROGETTO_direzione_2026-09-30.md](PROGETTO_direzione_2026-09-30.md) | Apertura della direzione generale prima dell'audit D-050/CP-0053 del 1 ottobre | storico; programma attuale R-LEAD, esecuzione R-LAB |
 | 11/09 | [data_strategy_2026-09-11.md](data_strategy_2026-09-11.md) | Prima strategia dei dati e ordine di acquisizione | superato come ordine; il contratto di preprocessing (§4) e le misure locali (§1) restano (R-003) |

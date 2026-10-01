@@ -1,8 +1,9 @@
 # Piani — un incarico operativo, supporti e alternative
 
 **Per lavorare adesso:** [R-LEAD](piani/strategia-scientifica.md), con il
-[prompt per Claude](PROMPT_CLAUDE.md). Dopo t29 la prima consegna è un esperimento
-interpretabile e un confronto completo, non l'espansione automatica del corpus.
+[prompt per Claude](PROMPT_CLAUDE.md). Dal 2 ottobre la prima consegna costruisce una
+prova del trasferimento a linee mai viste perturbate: dati collegati, split, banco e
+confronto semplice. La riparazione della rete è condizionata alla domanda del banco (D-052).
 Stato generale e riferimento in [PROGETTO §0](PROGETTO.md).
 
 Questo indice mantiene priorità e dipendenze; stato e presa in carico stanno nelle schede.
@@ -20,7 +21,7 @@ un protocollo o una riga «in corso» non prova che un job sia attivo o concluso
 
 | Ruolo | Scheda | Quando usarla |
 |---|---|---|
-| **Implementazione principale** | [R-LEAD — P0–P6](piani/strategia-scientifica.md) | Presa in carico unica: input/esposizione, diagnosi, correzioni, banco, estensioni condizionate e finale |
+| **Implementazione principale** | [R-LEAD — P0–P6](piani/strategia-scientifica.md) | Sequenza del 2/10: fattibilità, split C/J, banco, confronto semplice del contesto, estensioni motivate, conferma e finale |
 | Obiettivo del programma | [R-COMP](piani/modello-competitivo.md) | Perimetro e criterio competitivo; nessun secondo percorso da avviare |
 | Inventario dell'esecuzione | [R-LAB](piani/piano-giorno-2026-09-30.md) | Corpus, training e artefatti disponibili; nuovi job scelti attraverso R-LEAD |
 | Verifiche residue | [R-REV](piani/revisione-critica.md) | Forma piena, banco K562, basali e residui; la tabella distingue concluso e da fare |

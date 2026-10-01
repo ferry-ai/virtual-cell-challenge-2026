@@ -1,236 +1,119 @@
-# R-LEAD — piano implementativo dopo t29
+# R-LEAD — imparare risposte trasferibili a contesti nuovi
 
-- **Stato:** aperto; piano pronto per Claude, implementazione nuova non iniziata.
-- **Aggiornato:** rinnovo richiesto dal proprietario il 1 ottobre 2026, dopo t29.
-- **Mandato:** recuperare controllo dell'esperimento e cercare un miglioramento verificabile
-  rispetto al transfer. Questo è l'unico piano di esecuzione del programma R-COMP.
-- **Assegnazione:** destinatario Claude nella sessione scelta dal proprietario. Claude e
-  teammate sono fermi, confermato in chat durante il riordino. La futura presa in carico
-  registra sessione, macchina, commit base, file e output secondo [PIANI §3](../PIANI.md#3-lavorare-in-una-cartella-condivisa).
-  Il precedente incarico al teammate è conservato nello storico; non c'è una seconda
-  implementazione da avviare in parallelo.
-- **Prossimo passo:** P0–P1 e riproduzione dei difetti P3 su CPU; poi P2/P4 sugli input disponibili.
-  Prima consegna: manifest di esposizione, diagnosi applicabili, codice corretto con test
-  e protocollo del banco. Non basta un'altra sintesi o un training che completa.
-- **Dipendenze:** corpus e artefatti in [R-LAB](piano-giorno-2026-09-30.md),
-  [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), D-050, procedure e preflight pertinenti.
-- **Chiusura:** decisione motivata sul candidato, prove riproducibili e consegna operativa;
-  se nessun candidato passa, conservare il riferimento e indicare quale limite è misurato.
-  Nessun punteggio o piazzamento è promesso.
+- **Stato:** aperto; nuovo piano richiesto dal proprietario il 2 ottobre 2026, implementazione non iniziata.
+- **Mandato:** verificare se i controlli di una linea mai vista perturbata permettono di migliorare il transfer; scegliere il modello in base a questa prova. Unico percorso di R-COMP.
+- **Assegnazione:** destinatario Claude nella sessione scelta dal proprietario; Claude e teammate confermati fermi durante il rinnovo. Alla presa in carico registrare sessione, macchina, commit, file e output secondo [PIANI §3](../PIANI.md#3-lavorare-in-una-cartella-condivisa).
+- **Prossimo passo:** P0/P1, protocollo e runner P2, primo confronto semplice P3 sugli input disponibili. La riparazione completa di cellnet non è un prerequisito di questo confronto.
+- **Prima consegna:** matrice contesto × bersaglio × studio, split verificati, protocollo congelato, codice del banco e dei confronti semplici con test; misure se gli input lo consentono, altrimenti il file minimo mancante e il passo impedito. Non un altro piano.
+- **Dipendenze:** [R-LAB](piano-giorno-2026-09-30.md), [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), D-050 e D-052; procedure e preflight del lavoro effettivamente eseguito.
+- **Chiusura:** scelta motivata con prove riproducibili e pipeline finale verificata, oppure esito negativo/inconclusivo con transfer conservato e limite identificato.
 
-## 1. Punto fermo e domanda da risolvere
+## 1. Domanda scientifica e perimetro
 
-Il t29 prova **r2, braccio `desc`, generatore t22, effetti non riscalati**. Fallisce la sua
-regola: prima di un altro invio neurale serve un banco locale a sei membri almeno al livello
-del transfer ([CP-0055](../checkpoints/0055-t29-rete-cellulare-punteggio.md)). Il collasso
-del gate `ident` in r3 è un'altra osservazione: non identifica la causa del t29.
+**Ipotesi da verificare:** a parità di dati e generatore, una correzione della risposta dipendente dai controlli del contesto nuovo migliora il trasferimento degli effetti. Non basta ricostruire il basale, ridurre la loss o riconoscere un'identità di linea.
 
-La domanda iniziale è: il divario nasce dagli effetti appresi, dall'esportazione, dal
-generatore, dalla diversa distribuzione dei dati o da più fattori? Split mobili, pesi
-effettivi diversi dal dichiarato e controlli non appaiati impediscono già alcuni confronti.
-Le diagnosi riproducibili sono in [NOTA_TRAINING](../../reports/analisi/lead_audit_2026-10-01/NOTA_TRAINING.md)
-e [AGGIORNAMENTO_R3](../../reports/analisi/lead_audit_2026-10-01/AGGIORNAMENTO_R3.md).
-Sono verifiche locali ed esplorative, non una prova che le correzioni renderanno competitiva la rete.
+Il [confronto ufficiale Arc del 1 ottobre](https://arcinstitute.org/news/behind-the-data-virtual-cell-challenge-2026) distingue esempi perturbati nella linea destinataria nel 2025 e soli controlli nelle sei linee del 2026. Il bersaglio può essere già noto in altre linee. Quindi **C e J** sono i regimi rilevanti; T è diagnostico e non promuove un modello per contesti nuovi. La figura chiarisce il compito, non dimostra la causa dei fallimenti locali.
 
-**Riferimenti distinti:** ricostruire t22/t24 dai manifest per la replica storica; preservare
-la correzione dello stimatore di t25 nel confronto con la pipeline corretta. L'emissione
-t28 è un fattore separato, con esito ufficiale non conclusivo. Un nome di ricetta da solo
-non identifica cache, stima, generatore, scala e seme. La tabella degli [invii](../../reports/invii/README.md)
-è la fonte degli esiti; non scegliere il riferimento dopo aver visto il banco.
+Transfer e cellnet tentano già il trasferimento fra contesti. Ciò che manca è una prova robusta del beneficio appreso dal contesto: l'[audit](../../reports/analisi/lead_audit_2026-10-01/REVISIONE.md) trova r2 inferiore al transfer su HepG2 C in una misura esplorativa. HepG2 già esaminata resta sviluppo. Il [t29](../checkpoints/0055-t29-rete-cellulare-punteggio.md) richiede prima di un altro invio neurale un banco locale a sei membri almeno al livello del transfer. Il collasso `ident` di r3 non identifica la causa del t29, che usa r2 `desc`.
 
-## 2. Contratto dei nuovi output
+**Cambio rispetto al piano precedente:** costruire prima la prova di trasferimento e il confronto semplice; recuperare la rete solo come candidato motivato. Non si richiede che il bilineare vinca per poter provare una rete: un esito negativo può motivare un'ipotesi non lineare, ma occorrono dati identificabili e un contrasto che possa smentirla.
 
-Creare una cartella nuova `reports/analisi/diagnosi_cellnet_<data>/` per P0–P2 e una
-`reports/modelli/cellnet_corretto_<data>/` per codice e prove P3–P5, aggiungendo un suffisso
-se il nome è occupato. I percorsi sono proposti, le cartelle non esistono per effetto di
-questo piano. Registrarle negli indici e nel registro. Copiare il codice di ricerca da
-`reports/modelli/risposta_biologica_2026-09-30/` senza modificare l'originale importato da
-altri report; fissare hash e versione di ogni dipendenza usata per la replica.
+## 2. Sequenza e contratti di consegna
 
-Ogni esecuzione ha una directory nuova e un manifest con commit, comando, ambiente,
-input/hash, ruoli, parametri, seed e output/hash. Dati e pesi pesanti restano nella radice
-dati. Gli output minimi seguenti sono contratti di consegna, non risultati già prodotti:
+Gli identificativi P0–P6 sotto hanno questo significato dal 2 ottobre; la [versione precedente](../storico/R-LEAD_pre_contesti_2026-10-02.md) è storia, non una seconda coda.
 
-| Passo | Output minimo | Evidenza per avanzare |
+| Passo | Output minimo | Condizione per avanzare |
 |---|---|---|
-| P0 | `preflight.json`, `input_manifest.json` | Runtime e input necessari verificati sul sistema che eseguirà il passo |
-| P1 | `exposure_manifest.json`, `split_manifest.json`, `cohort_audit.json` | Ruoli effettivi C/T/J dopo QC, esclusioni e riserva controllabili |
-| P2 | `export_parity.json`, `diagnosi.md` | Replica del percorso r2 oppure differenze e input mancanti identificati |
-| P3 | Nuova versione, test di accettazione, `fix_matrix.json`, smoke e pilot | Ogni correzione passa il suo controesempio senza cambiare il problema valutato |
-| P4 | `PROTOCOLLO.md`, sei membri per braccio/contesto/seed, `decision.json` | Regola congelata prima della misura; nessuna promozione dal solo proxy |
-| P5 | Ablation del residuo o dei dati, conferma separata | Beneficio del componente identificato e ripetuto nel regime dichiarato |
-| P6 | Manifest della pipeline, prova a forma piena, verbale dei controlli | Artefatto valido e riproducibile dal pannello all'impacchettamento |
+| P0 — dati e fattibilità | `preflight.json`, `input_manifest.json`, `context_target_study.csv`, `feasibility.md` | Supporto, confondimenti e input disponibili espliciti |
+| P1 — esposizione e split | `exposure_manifest.json`, `split_manifest.json`, `reserve_manifest.json` | C/J effettivi, esclusioni globali e storia delle riserve verificati |
+| P2 — banco e regola | `PROTOCOLLO.md`, runner, fixture/test, `export_parity.json` | Regola fissata prima dei nuovi risultati; percorso fino allo scorer verificato |
+| P3 — confronto semplice | codice, manifest dei fit, sei metriche, `context_ablation.json`, `decision.json` | Beneficio, assenza di beneficio o inconclusività attribuiti al confronto corretto |
+| P4 — estensione motivata | `hypothesis.md`, nuova versione, `fix_matrix.json` se applicabile, misure appaiate | Una lacuna precisa motiva rete, dati o distribuzioni; stesso banco |
+| P5 — conferma indipendente | candidato congelato, `confirmation.json`, `decision.json` | Regola rispettata su riserva appropriata o indipendenza insufficiente dichiarata |
+| P6 — consegna finale | manifest della pipeline, prova a forma piena, verbale | Catena riproducibile e valida, anche se resta il transfer |
 
-Distinguere in ogni consegna **implementato**, **eseguito**, **misurato**, **adottato**.
-Un passaggio mancante blocca le conclusioni che ne dipendono, non il lavoro indipendente.
+Nuovi output in `reports/analisi/generalizzazione_contesti_<data>/` e nuovo codice di ricerca in `reports/modelli/risposta_contesto_<data>/`, con suffisso se già occupati. Sono destinazioni proposte, non risultati esistenti. Indici e registro si aggiornano quando vengono create. Ogni run ha directory nuova, commit, comando, ambiente, input/hash, ruoli, parametri, seed e output/hash; dati e pesi pesanti restano fuori da Git. Distinguere **implementato, eseguito, misurato, adottato**.
 
-## 3. P0 — ambiente, input e riferimento riproducibile
+## 3. P0 — quale trasferimento possiamo effettivamente imparare
 
-1. Verificare Git e file condivisi; registrare ambiente reale, spazio, RAM, GPU se usata,
-   interpreter, dipendenze e API dello scorer. Verificare `cell_eval2.config` e il preset
-   `vcc2026`, non il solo import del pacchetto. In [CP-0054](../checkpoints/0054-visibilita-scorer-e-consegna.md)
-   lo stesso Python passa i 287 test fuori dal sandbox: confrontare visibilità e percorsi
-   prima di reinstallare. Non sostituire lo scorer con un proxy per aggirare un errore.
-2. Inventariare copie leggibili e hash di controlli, asse, pannello, shard, descrittori,
-   prepass, pesi r2/r3, cache del transfer e generatori. `eval.json` non prova che esista
-   `model.pt`. Distinguere file mancanti da permessi mancanti e da manifest fuori data.
-   Su un'altra macchina applicare [CONSEGNA_TEAMMATE](../CONSEGNA_TEAMMATE.md).
-3. Separare nel manifest replica t22, riferimento corretto t25 e variante di emissione t28.
-   Ricostruire le opzioni effettive dalle ricevute di generazione. Non rigenerare l'intero
-   pannello per verificare una parità che si può misurare su un ritaglio dichiarato.
+1. Verificare Git, input leggibili, spazio, memoria, interpreter e scorer reale: `cell_eval2.config` e preset `vcc2026`. Per problemi di visibilità seguire [CP-0054](../checkpoints/0054-visibilita-scorer-e-consegna.md) prima di reinstallare. Su altra macchina usare [CONSEGNA_TEAMMATE](../CONSEGNA_TEAMMATE.md).
+2. Costruire dal corpus presente una matrice con linea/donatore/stimolo, studio, assay, modalità CRISPRi/a/KO, bersaglio, guide/repliche, controlli, numerosità, geni misurati, unità e disponibilità di cellule o sole DE. Distinguere identità biologiche e alias. Per ogni confronto indicare gli input e il codice che producono le stime.
+3. Contare perturbazioni osservate in più contesti, variazione fra contesti e confondimento linea/studio/assay. Se linea e studio coincidono, il confronto non separa le loro cause. Donatori della stessa linea non diventano automaticamente nuove linee indipendenti. Descrivere qualità delle etichette e riproducibilità fra guide/repliche quando misurabili.
+4. Riportare efficacia del knockdown, profondità, numerosità e assay come metadati/strati quando disponibili. L'80% di riduzione dichiarato da Arc per la propria curazione non autorizza a filtrare retroattivamente la nostra validazione per efficacia osservata. Valori mancanti restano mancanti. CRISPRi, KO e attivazione hanno ruoli distinti.
+5. Dichiarare quali linee permettono training, sviluppo e conferma separati, prima di sceglierle per i punteggi. Priorità ai collegamenti fra contesti, non al conteggio totale di cellule. Sorgenti senza overlap col pannello restano ammesse secondo D-044.
 
-**Se manca un input:** completare fixture, letture degli eval e codice indipendenti; elencare
-il file minimo da recuperare, locatore, byte, accesso e fase impedita. Non ricreare tutto
-il disco della macchina originale. Download, quota, nuovi agenti, invii e push seguono
-CLAUDE.md e le autorizzazioni della sessione, senza inferirle da un vecchio protocollo.
+**Esito utile:** una mappa di ciò che è identificabile. Se mancano controlli, repliche o collegamenti, indicare file, locatore, byte e confronto reso possibile; R-DATI colma quella lacuna. L'annuncio dei dati Arc non significa che le risposte della gara siano training scaricabile. Nessun download o job cloud è implicito in questo piano.
 
-## 4. P1 — split e esposizione effettiva ai dati
+## 4. P1 — simulare il 2026 senza cambiare gli split dopo i numeri
 
-Ricostruire per ciascun checkpoint r2/r3 quali contesti, studi, target, guide e modalità
-sono entrati nel fit, nella selezione e nelle valutazioni già lette. Salvare ruolo previsto,
-QC e ruolo effettivo; verificare alias di geni, duplicati, repliche e descrittori/pretraining.
+- **C:** bersaglio visto, linea nuova. **J:** bersaglio e linea nuovi. **T:** bersaglio nuovo, linea vista, solo diagnosi. Il cambio di pannello non implica automaticamente J.
+- Escludere la linea destinataria perturbata da tutti gli studi, stimoli, cache, prior e derivati del fit. In J escludere anche le risposte dei bersagli da tutte le sorgenti, riconciliando alias, guide e repliche. Registrare provenienza del pretraining.
+- Usare controlli della linea esclusa soltanto come input al percorso di inferenza preregistrato. Nessuna sua risposta perturbata in preprocessing, selezione di geni, fit, early stopping o tuning. Specificare separazione/incrocio delle librerie dei controlli usati per input basale e contrasto di valutazione.
+- Costruire fold di sviluppo con linee intere escluse, ripetuti su più linee se possibile; scegliere iperparametri su ulteriori contesti interni esclusi. Tenere distinta una riserva finale mai consultata. Se il corpus non consente questa separazione, dichiarare il banco esplorativo e cosa manca; non fabbricare indipendenza con split di cellule.
+- R2/r3 hanno esposizioni e split diversi: ricostruirli prima di ogni confronto. K562 già nel loro training non è un holdout neurale. Un nuovo fit può escluderla, ma risultati già noti non rendono il contesto una conferma finale intatta. H1 train/val sono nel corpus, H1 test resta chiusa: un test H1 dopo fit H1 non prova C/J.
 
-- **C:** target già osservato, contesto perturbato escluso; **T:** target escluso, contesto
-  osservato; **J:** target e contesto esclusi. Congelare identità e, quando dichiarato,
-  famiglie funzionali. Un holdout per identità non prova extrapolazione di famiglia.
-- Gli split r2/r3 sono cambiati: il confronto dei loro aggregati non isola l'effetto di
-  più dati. Un confronto retrospettivo usa solo gruppi con esposizione ammissibile per
-  entrambi, con numerosità e supporto comuni; resta sviluppo, non conferma.
-- **K562 è stato usato nel training r2/r3:** il banco K562 di R-REV valuta transfer e
-  generatore secondo il suo protocollo. Non è un contesto neurale mai visto; per tale
-  dichiarazione serve un nuovo fit che lo escluda, comprese le dipendenze dei prior.
-- **H1 train/validation sono nel corpus; H1 test è la riserva chiusa.** Non aprirla per
-  debug o onboarding e non chiamarla nuovo contesto se il modello ha usato H1 train/val.
-- Le risposte perturbate del contesto escluso non entrano in fit, preprocessing appreso,
-  early stopping o scelta dei parametri. I suoi controlli possono essere input; dichiarare
-  separazione/incrocio delle librerie per stimare il basale e misurare il contrasto.
+**Accettazione eseguibile:** fixture con alias e la stessa linea in studi diversi; aggiunta/riordino di shard e QC non cambiano ruoli congelati. Gruppi persi dopo QC sono riportati, non riassegnati. Il controllo di esclusione vale per ogni braccio, compreso il transfer. Un unico contesto escluso o il bootstrap dei suoi target non misura incertezza fra contesti. Il manifest delle riserve registra anche valutazioni e tuning già effettuati.
 
-**Accettazione:** aggiungendo sorgenti/target, riordinando shard o applicando QC, i ruoli
-congelati non cambiano; eventuali gruppi diventati non valutabili sono riportati, non
-riassegnati. Esclusioni globali e provenienza sono testate con fixture e audit sul corpus.
-Se non resta un contesto indipendente, dichiararlo: non fabbricare C/J rinominando gruppi.
+## 5. P2 — un banco comune e una regola prima dei risultati
 
-## 5. P2 — seguire il segnale fino alle cellule generate
+Congelare protocollo, bracci, supporti, fold, metrica primaria, aggregazione, miglioramento pratico richiesto, regressioni ammesse, confronti multipli e regola C/J. Motivare le soglie con pilot di sviluppo o informazione indipendente; se si usano risultati per progettarle, quelle osservazioni non sono conferma. Nessuna soglia numerica è inventata da questo piano.
 
-Costruire una replica piccola del percorso r2 `desc` → effetti esportati → generatore t22
-→ scorer. Confrontare implementazione nativa e export con gli stessi input e checkpoint.
-Registrare tolleranze numeriche prima del confronto; bitwise dove il percorso lo permette.
+Il runner usa verità, controlli, target, geni misurati, numerosità e seed comuni. Conservare copertura e gruppi esclusi; niente selezione silenziosa dei gruppi più numerosi. Normalizzatori, PCA e rappresentazioni si stimano sul fit ammesso. Un gene non misurato resta mascherato.
 
-Controllare ordine/identità dei geni, maschere, log naturale/log2, denominatore dei CPM,
-profondità, ponderazione della miscela, correzione cis, scala, clipping, selezione dei
-controlli e seed. Registrare supporto assente e fallback. Confrontare prima gli effetti
-trans e la discriminazione dei target, poi le popolazioni generate con le sei metriche.
-Usare lo stesso generatore per isolare gli effetti; eventuali generatori diversi sono
-bracci separati. La perdita media della rete non è questa prova.
+Ricostruire t22/t24 dai manifest per la replica; mantenere la correzione dello stimatore t25 nel riferimento corretto, distinguendo l'emissione t28. Fissare riferimento e generatore prima del confronto. Controllare ordine dei geni, log/CPM, maschere, scala, cis, clipping e fallback con una prova piccola di parità effetto → export → generazione; documentare tolleranze. La replica r2 serve se quel checkpoint entra nel banco, non blocca i confronti semplici.
 
-**Accettazione:** nessuna differenza di export lasciata senza spiegazione; rapportare
-misure prima/dopo generazione per distinguere perdita del predittore e perdita di emissione.
-Su dati pubblici dichiarare che questa è diagnosi di sviluppo: non conosciamo le risposte
-vere A/B/C e non possiamo isolare con certezza la causa dello score ufficiale.
+Misurare **PDS, MSE, NMAE, FID, reach e Jaccard**, con scorer e aggregazioni effettivi, per contesto/regime/seed; mantenere numeratori/denominatori della MSE. Macro per contesto e media operativa restano separate. Non convertire le ancore aggregate in uno score VCC esatto. Senza ancore locali indipendenti usare grezzi e una regola esplicita sui sei membri. Coseno top-200, likelihood e metriche sugli effetti servono alla diagnosi, non alla promozione. Sole DE permettono una prova sugli effetti, non il banco completo sulle cellule.
 
-Se manca un peso, la replica di quel checkpoint resta non verificata. Il nuovo codice può
-essere provato su fixture; un nuovo fit non sostituisce retroattivamente la replica r2.
+Prevedere almeno tre seed dei finalisti e incertezza appaiata per unità indipendenti, distinguendo variabilità di generazione, fit, target e contesto. Tre seed non sostituiscono nuove linee. D-050 permette adozione nel ramo C con protezione preregistrata di J; per affermare generalizzazione congiunta serve J. Resta il vincolo t29 per nuovi invii neurali.
 
-## 6. P3 — correggere soltanto difetti dimostrati
+## 6. P3 — primo esperimento: il contesto migliora la risposta?
 
-Partire dai controesempi dell'audit. Per ogni riga registrare `riprodotto`, `già corretto`,
-`non applicabile` o `non verificabile`, con hash del codice effettivo. I vecchi test restano
-prova del vecchio comportamento: i test di accettazione devono esercitare la nuova copia.
+Implementare un'interfaccia comune: `fit(train, validation, manifest)` e `predict(target_descriptor, control_context, measured_mask)` → effetto, supporto, fallback. È un contratto proposto, da adattare alle API esistenti senza duplicare il generatore.
 
-| Componente | Implementazione richiesta | Prova di accettazione |
-|---|---|---|
-| Split (`cell_data.py` e prepass) | Manifest immutabile, assegnazione dei soli nuovi gruppi, QC senza riassegnazione | P1; nessuna fuga fra famiglie/alias/repliche e ruoli effettivi esportati |
-| Pesi (`train_cellnet.py`, sampler) | Definire l'obiettivo globale e combinarlo correttamente col campionamento; non rinormalizzare in ogni batch annullando i pesi dichiarati | Coefficienti aggregati corretti nel replay, incluso studio vuoto; riordino/chunking degli stessi esempi non cambia l'obiettivo aggregato; varianza stocastica distinta dall'invarianza esatta |
-| Controlli (`cell_data.py`) | Reservoir riproducibile e stratificato per libreria, selezione senza prime righe privilegiate, fallback dichiarati | Copertura prima/dopo cap, appaiamento possibile preservato, assenza di cellule perturbate; fixture con librerie tardive e controllo della dipendenza dall'ordine |
-| Miscela (`cellnet.py`) | Log-pesi stabili; verificare il gradiente del gate e del ramo di risposta agli estremi | Gradienti finiti e direzione corretta, recupero nel controesempio, monitor di quantili per studio; ablation di floor/prior/warm-up se introdotti |
-| Baseline | Generico senza identità del target realmente addestrato e bilineare regolarizzato con gli stessi input ammessi | Test di indipendenza dal target per il generico; stesso split, supporto e opportunità di tuning; unknown non addestrato resta diagnostica |
-| Export/runner | Manifest completo, compatibilità dei checkpoint dichiarata, resume e seed ripristinati | Smoke end-to-end, parità export e ripresa su fixture, poi pilot reale ammesso prima del job completo |
+| Braccio | Scopo |
+|---|---|
+| Nullo | Riferimento di nessun effetto |
+| Generico addestrato senza identità del bersaglio | Misurare quanto spiega una risposta comune; unknown non addestrato non lo sostituisce |
+| Transfer dello stesso bersaglio | Riferimento C; in J nessuna risposta vietata, fallback esplicito |
+| Modello del bersaglio senza contesto | Stessi descrittori leciti del candidato; confronto per l'utilità del contesto |
+| Modello semplice condizionato | Effetto condiviso del bersaglio più correzione bilineare regolarizzata dai controlli |
 
-`--pi-floor` esiste già dal commit `39f451d`: non ricrearlo. Un minimo imposto può cambiare
-il bias; non è prova di apprendimento. Il clamp può impedire il recupero del gate, ma questo
-non prova la causa iniziale del collasso. L'uso congiunto di controlli e perturbate per
-imparare il basale è un'ipotesi da ablare, non un errore universale già dimostrato.
+Partire da descrittori basali su geni misurati e descrittori trasferibili del target; trasformazioni, rango, shrinkage e ampiezza si scelgono nei fold interni. Il target-ID può essere un confronto C, non la soluzione per J. Per il modello condizionato, il riferimento condiviso può essere il transfer C o il modello senza memoria J: le due strade sono esplicite, con fallback appreso e supporto registrato. Non si impone una nuova famiglia di embedding senza un'ablation che ne motivi l'informazione aggiuntiva.
 
-Il quarto training già descritto in R-LAB mescola pavimento e nuovi dati: rimane un
-protocollo tecnico datato, non è il prossimo job automatico e non isola questi fattori.
+Se si apprende un residuo rispetto al transfer, calcolare riferimento e residui di training out-of-fold per contesto: togliere ogni linea destinataria anche dalla media di transfer. In J rispettare inoltre le esclusioni globali dei target. Pesi di affidabilità e blending si stimano fuori campione; niente scelta per target del vincitore osservato nel test.
 
-## 7. P4 — banco di sviluppo con sei metriche e confronti equi
+**Prova dell'uso del contesto:** confrontare il modello con contesto corretto, con contesto ignorato (braccio riaddestrato) e con descrittori scambiati secondo permutazioni fissate nel protocollo. Nello scambio mantenere i veri controlli destinatari per basale e generatore, e fissi target, supporto, calibrazione e seed: cambia soltanto il condizionamento dell'effetto. Se codice ed encoder intrecciano basale ed effetto, separare i due percorsi prima del test. Lo scambio da solo può produrre input fuori distribuzione: non dimostra causalità né basta senza il confronto riaddestrato. Permutare anche il target per diagnosticare la specificità.
 
-Congelare il protocollo dopo i controlli tecnici e prima di misurare i nuovi bracci. Il banco
-deve salvare i gruppi effettivi e la provenienza di ciascuna verità, non soltanto medie.
+**Decisione:** distinguere miglioramento della catena e prova del contributo del contesto. Una calibrazione utile ma insensibile al contesto può essere valutata per la produzione senza chiamarla apprendimento della risposta contestuale. Se il candidato perde, salvare la matrice degli errori; il risultato chiude quel confronto, non tutte le reti.
 
-1. Confronti: nullo, generico addestrato, transfer dove ammissibile, bilineare, rete corretta.
-   Aggiungere descrittori/target permutati e contesto ignorato/scambiato per attribuire il
-   contributo dei due input. R2/r3 e identity sono confronti diagnostici con i loro limiti.
-   In J il transfer non accede alle risposte dei target esclusi: dichiararne il fallback.
-2. Stessi target valutabili, geni misurati, verità, controlli ammessi, numerosità e seed di
-   generazione; registrare differenze di informazione. Fit e tuning hanno regole comparabili.
-   Nessuna selezione dei «400 gruppi più numerosi» che elimini silenziosamente contesti.
-3. Riportare PDS, MSE, NMAE, FID, reach e Jaccard grezzi, per contesto/regime/seed.
-   Per MSE rispettare l'aggregazione dello scorer e conservare numeratori/denominatori:
-   il rapporto di somme non è la media dei rapporti. Assi e esclusioni dei target seguono
-   il preset. Non usare il solo coseno top-200 per decidere.
-4. Qualunque normalizzazione locale dichiara ancore, stima su dati indipendenti e limiti.
-   Se non disponibili, presentare i sei grezzi e una regola esplicita, non uno score VCC
-   inventato dalle ancore aggregate del 17/09. Media operativa e macro scientifica per
-   contesto/regime restano distinguibili, con supporti e risultati dei singoli contesti.
-5. Prima dei numeri fissare metrica primaria, aggregazione, miglioramento pratico richiesto,
-   regressioni ammesse e gestione di confronti multipli. Usare il pilot per progettare
-   numerosità e incertezza; non assumere che 0,005 misuri il rumore. Per stabilità al seme,
-   almeno tre seed dei finalisti; intervalli appaiati per gruppi realmente indipendenti.
-   Tre seed da soli non rendono indipendenti gli studi e non garantiscono potenza.
+## 7. P4 — rete, dati o distribuzioni solo per un limite identificato
 
-**Avanzamento:** il candidato passa la regola nuova nel regime dichiarato. D-050 permette
-un beneficio C con protezione preregistrata del ramo J; per rivendicare generalizzazione
-congiunta serve J. Le soglie di r2/r3/t29 rimangono quelle originali. Nessun nuovo invio
-neurale aggira il requisito del ramo c di t29.
+Prima di implementare l'estensione scrivere ipotesi, contrasto, output atteso e regola che la smentisce. Esempi: interazione non lineare non catturata dal bilineare; dati senza collegamenti; verità instabile; perdita introdotta dal generatore a pari effetto medio. Un esito inconclusivo per scarso supporto non motiva automaticamente una rete più grande.
 
-**Se perde:** pubblicare la matrice degli errori e conservare transfer e baseline semplici.
-Se il difetto è tecnico tornare a P2/P3; se è di informazione, motivare il confronto P5.
-Non aumentare automaticamente dati, capacità o numero di training.
+Se si riusa cellnet, copiare il codice in una destinazione nuova; preservare originali e report importati. Usare [NOTA_TRAINING](../../reports/analisi/lead_audit_2026-10-01/NOTA_TRAINING.md) e [AGGIORNAMENTO_R3](../../reports/analisi/lead_audit_2026-10-01/AGGIORNAMENTO_R3.md) per registrare ogni difetto come riprodotto, già corretto, non applicabile o non verificabile.
 
-## 8. P5 — residuo, dati e distribuzioni, solo con una domanda verificabile
+| Verifica necessaria per il codice riusato | Accettazione |
+|---|---|
+| Split e prepass | Esclusioni e stabilità P1 anche dopo QC |
+| Sampler e pesi globali | Coefficienti aggregati corretti nel replay; niente rinormalizzazione nel batch che annulli i pesi |
+| Controlli | Reservoir riproducibile per libreria, nessuna perturbata, fixture con librerie tardive e ordine variato |
+| Miscela e gradienti | Log-pesi stabili, gradienti finiti e recupero nel controesempio; monitor per studio |
+| Export e resume | Parità, seed ripristinati, smoke e pilot prima del job completo |
 
-La prima estensione candidata è transfer + residuo bilineare regolarizzato; confrontare
-poi il residuo neurale sugli stessi input. Stimare residuo e peso di affidabilità out-of-fold,
-senza scegliere per target il vincitore osservato nel test. Il ramo senza memoria ha un
-fallback addestrato e verificato. Tenere la parte soltanto se supera il riferimento.
+`--pi-floor` esiste già: non ricrearlo né scambiarlo per apprendimento dimostrato. Il quarto training datato mescola floor e dati: non riparte automaticamente. Una rete nuova si confronta con P3 sugli stessi fold e input; nessuna promozione da T o dalla likelihood.
 
-Più dati si provano con ablation annidate e split fissi: qualità, guide/repliche, assay,
-modalità, numero di contesti/target/cellule. Non cambiare contemporaneamente corpus e
-architettura per attribuire un miglioramento ai dati. R-DATI si attiva per una lacuna
-specifica del banco, con costo e accesso espliciti; CRISPRi/a/KO non sono intercambiabili.
+Per i dati, ablation annidate a split fisso separano contesti, cellule, qualità e assay; non cambiare corpus e architettura insieme per attribuire il beneficio. R-DATI può aprirsi già da P0/P1 se manca l'informazione per costruire il banco. Per R-SWITCH occorre un limite di popolazione misurato a pari effetto medio e guide/repliche indipendenti; niente coppie cellulari inventate o bistabilità dedotta dalla sola bimodalità.
 
-Le popolazioni R-SWITCH si aprono se resta un limite misurato a pari effetto medio:
-miscela compatta contro generatore attuale, stati e proporzioni separati. Attenzione su
-insiemi e flow restano alternative successive. Non inventare coppie di cellule mai misurate
-insieme né dedurre bistabilità dalla sola bimodalità.
+## 8. P5 — conferma e scelta
 
-Congelare infine candidato, adattamento, fallback e regola prima di aprire una riserva
-realmente mai valutata; aprirla una volta. I gruppi già letti nell'audit sono sviluppo.
-Una bocciatura non si sana cambiando la soglia: diventa evidenza per il confronto successivo.
+Congelare candidato, preprocessore, supporto C/J, adattamento dai controlli, fallback, calibrazione e regola prima di aprire la riserva appropriata di P1. Aprirla una volta; una bocciatura non si sana cambiando la soglia. H1 test non è automaticamente quella riserva. Se non esiste una conferma indipendente al livello di contesto, dichiarare il limite: non rinominare una rivalutazione del banco. Non sostenere generalizzazione robusta da un solo contesto o da target bootstrap sullo stesso contesto.
 
-## 9. P6 — consegna finale indipendente dal successo delle reti
+Conservare il transfer se nessun candidato passa. Un esito negativo produce una scelta del prossimo contrasto motivata da ciò che è misurato, senza espansione automatica del corpus né training senza domanda. La prova finale della pipeline procede comunque.
 
-La prova generale a forma piena di [R-REV](revisione-critica.md) è necessaria anche se resta
-il transfer. Verificare risorse attuali, inferenza completa, estrazione su nuovi target,
-assi, maschere, controlli e packaging bitwise; una prova ridotta non la sostituisce.
-Portare in produzione solo componenti adottati, con test di parità e tracciabilità.
+## 9. P6 — consegna D/E/F
 
-Al rilascio D/E/F del 22 ottobre applicare l'audit e l'adattamento preregistrati ai soli
-input leciti: un pannello nuovo non significa automaticamente target mai osservati.
-Registrare supporto C/J, fallback, hash e scelte per ciascun target. [S-INVII](invii-finale.md)
-presidia preparazione e invio entro il 5 novembre secondo le autorizzazioni della sessione.
+La [prova generale a forma piena](revisione-critica.md) è necessaria anche col transfer: risorse attuali, inferenza completa, nuovi target, assi, maschere, controlli e packaging bitwise. Portare in produzione soltanto componenti adottati con test di parità. Al rilascio del 22 ottobre usare solo input leciti e adattamento preregistrato; registrare supporto C/J e fallback per target. [S-INVII](invii-finale.md) presidia la consegna entro il 5 novembre secondo le autorizzazioni della sessione, senza promessa di punteggio.
 
-## 10. Consegna di Claude e alternative
+## 10. Handoff e lavoro indipendente
 
-Claude consegna commit locali, test eseguiti e log, manifest, misure, decisione secondo la
-regola e prossimo passo concreto. Aggiorna questa scheda, gli indici e il registro;
-checkpoint soltanto per eventi scientifici/operativi significativi. Non riscrive i report.
-Se un passo richiede accesso mancante, completa quelli indipendenti e chiede il minimo
-necessario per quel passo. Questo piano non assegna tempi né limita a priori il lavoro.
-
-La strategia precedente, con le idee di lungo periodo e gli incarichi datati, resta
-[nello storico](../storico/rinnovo_2026-10-01/docs/piani/strategia-scientifica.md).
-La prima domanda rimane aperta: quale modifica migliora una previsione completa su dati
-correttamente esclusi? Un esito negativo ben identificato è utile; non chiude tutte le reti.
+Claude consegna commit locali, codice/test/log, manifest, protocollo, misure e decisione; aggiorna scheda, indici e registro. Nessuna misura nasce dalla sola stesura di questo piano. Se manca un input, completare fixture, runner e verifiche indipendenti, poi indicare il minimo necessario per il passo impedito. Non ricreare tutto il disco della macchina origine. Download, cloud, nuovi agenti, invii e push seguono CLAUDE.md e le autorizzazioni della chat. Il piano non assegna tempi né limiti preventivi al lavoro.

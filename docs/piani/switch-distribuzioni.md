@@ -1,9 +1,9 @@
 # R-SWITCH — ipotesi sulle popolazioni
 
 - **Stato:** in attesa di un limite di distribuzione misurato in R-LEAD e di dati identificabili.
-- **Aggiornato:** rinnovo del 1 ottobre 2026.
+- **Aggiornato:** 2 ottobre 2026, dipendenze allineate al nuovo R-LEAD (D-052).
 - **Assegnazione:** nessuna presa in carico sperimentale registrata; proposte precedenti nello storico.
-- **Prossimo passo:** se P4/P5 di [R-LEAD](strategia-scientifica.md) lo motivano, fissare un
+- **Prossimo passo:** se il banco P2/P3 motiva l'estensione P4 di [R-LEAD](strategia-scientifica.md), fissare un
   confronto a pari media tra spostamento uniforme e miscela, usando guide/repliche disgiunte.
 - **Dipendenze:** cellule, controlli, supporto misurato e informazioni indipendenti per
   stimare intensità e risposta; [R-DATI](dati-affidabilita.md) per le lacune.

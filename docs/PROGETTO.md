@@ -23,10 +23,13 @@ La correzione dello stimatore t25 si conserva; l'emissione t28 è un confronto d
 Ricette, cache, generatore e seed si ricostruiscono dai manifest, non dal numero del trial.
 La fonte completa dei punteggi è l'[indice degli invii](../reports/invii/README.md).
 
-**Un solo piano eseguibile: [R-LEAD](piani/strategia-scientifica.md).** Prima verificare
-input/esposizioni, split, export, controlli e pesi; correggere i difetti riprodotti; confrontare
-transfer, generico addestrato, bilineare e rete sui sei membri. Solo dopo valutare residuo,
-dati aggiuntivi e distribuzioni. [Prompt per Claude](PROMPT_CLAUDE.md), [indice dei ruoli](PIANI.md).
+**Un solo piano eseguibile: [R-LEAD](piani/strategia-scientifica.md), rivisto il 2 ottobre
+per la task 2026 (D-052).** Prima verificare i collegamenti fra contesti e costruire split
+per linee intere; poi confrontare transfer e correzione semplice condizionata sui sei membri.
+La domanda è se i soli controlli permettono di migliorare la risposta in un contesto mai
+visto perturbato. C/J guidano la scelta, T resta diagnostico. La rete e l'espansione dei
+dati seguono un limite identificato dal banco; riparare tutta cellnet non viene prima.
+[Prompt per Claude](PROMPT_CLAUDE.md), [indice dei ruoli](PIANI.md).
 
 Il corpus, le ingestioni e r1–r3 restano disponibili attraverso [R-LAB](piani/piano-giorno-2026-09-30.md).
 I loro risultati sono tecnici o esplorativi: più cellule non dimostrano un modello migliore.

@@ -207,7 +207,7 @@ uno stadio nuovo entra qui nello stesso commit. Le regole di uno stadio sono in
 
 Gli stadi 82/84 conservano un metodo storico approssimato: CP-0050 smentisce la conversione
 esatta dei grezzi aggregati, anche entro la famiglia originaria. Leggere [R-022](REGISTRO.md#r-022--ancore-aggregate-e-indipendenza-della-conferma).
-Per il risultato ufficiale usare i sei scalati pubblicati; per nuovi banchi vale R-LEAD P4.
+Per il risultato ufficiale usare i sei scalati pubblicati; per nuovi banchi vale R-LEAD P2.
 
 ## 5. Aggiungere e togliere codice
 

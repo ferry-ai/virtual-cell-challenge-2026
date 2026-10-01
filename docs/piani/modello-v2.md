@@ -1,7 +1,7 @@
 # R-V2 — catalogo delle alternative precedenti
 
 - **Stato:** in attesa di una motivazione sperimentale di R-LEAD per riaprire un filone.
-- **Aggiornato:** rinnovo del 1 ottobre 2026.
+- **Aggiornato:** 2 ottobre 2026, dipendenze allineate al nuovo R-LEAD (D-052).
 - **Assegnazione:** incarichi Claude/Codex del 26–29/09 conservati nello storico;
   nessun nuovo lavoro assegnato da questa scheda.
 - **Prossimo passo:** leggere l'esito del filone pertinente in [AMBITI §5](../AMBITI.md#5-modelli-appresi-e-generalizzazione)
@@ -13,7 +13,7 @@
 | Area precedente | Sede attuale |
 |---|---|
 | Universi, copertura, affidabilità e basali | [R-LAB](piano-giorno-2026-09-30.md), [R-DATI](dati-affidabilita.md), [sorgenti](../../reports/sorgenti/README.md) |
-| Transfer, programmi e ripieghi per bersagli nuovi | [trasferimento](../../reports/trasferimento/README.md); confronti ammessi in R-LEAD P4/P5 |
+| Transfer, programmi e ripieghi per bersagli nuovi | [trasferimento](../../reports/trasferimento/README.md); confronti R-LEAD P2/P3, estensioni P4 e conferma P5 |
 | Contesto, encoder, reti sulle sorgenti, Stack | [modelli](../../reports/modelli/README.md); esiti negativi secondo i rispettivi protocolli, nessuna chiusura universale delle famiglie |
 | Rete relazionale | Azione 6 di [R-REV](revisione-critica.md), conclusa; nuova base empirica necessaria per riaprire |
 | Popolazioni e switch | [R-SWITCH](switch-distribuzioni.md), subordinata a informazioni indipendenti |

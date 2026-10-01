@@ -79,7 +79,7 @@ cambiare il codice: `scripts/CLAUDE.md` e `src/vcc2026/CLAUDE.md`.
   gene non misurato resta mascherato, non vale zero (D-009).
 
 Leggi prima: [GENERALIZZAZIONE](GENERALIZZAZIONE.md), [sorgenti](../reports/sorgenti/README.md).
-Piano operativo: [R-LEAD P0/P1 e P5](piani/strategia-scientifica.md).
+Piano operativo: [R-LEAD P0/P1 e P4](piani/strategia-scientifica.md).
 [R-LAB](piani/piano-giorno-2026-09-30.md) indicizza il corpus;
 [R-DATI](piani/dati-affidabilita.md) si attiva per lacune specifiche del banco.
 
@@ -109,7 +109,9 @@ Piano operativo: [R-LEAD P0/P1 e P5](piani/strategia-scientifica.md).
 
 Leggi prima: [GENERALIZZAZIONE](GENERALIZZAZIONE.md), [modelli](../reports/modelli/README.md), la
 sezione «Rete sulle sorgenti» dell'[indice lead](../reports/analisi/lead_scientist_2026-09-29/README.md).
-Piano operativo: [R-LEAD, P0–P6](piani/strategia-scientifica.md).
+Piano operativo: [R-LEAD, P0–P6](piani/strategia-scientifica.md), rivisto il 2/10 (D-052):
+prima la prova C/J su linee escluse e la correzione semplice dipendente dal contesto;
+rete e nuovi dati soltanto per un limite identificato. T non promuove per contesti nuovi.
 [R-LAB](piani/piano-giorno-2026-09-30.md) indicizza corpus e artefatti;
 [R-COMP](piani/modello-competitivo.md) mantiene l'obiettivo, [R-V2](piani/modello-v2.md) le alternative.
 

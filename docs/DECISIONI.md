@@ -14,6 +14,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-052 | R-LEAD parte dalla prova di trasferimento a linee escluse C/J e dal confronto semplice del contesto; recupero neurale ed espansione dati richiedono una domanda identificata. T resta diagnostico | attiva | 2026-10-02 | Richiesta del proprietario dopo il confronto Arc 2025/2026; [R-LEAD](piani/strategia-scientifica.md) |
 | D-051 | Un solo piano implementativo R-LEAD dopo t29; mappe correnti riscritte, code e incarichi datati nello storico recuperabile. R-COMP/R-LAB sono scopo e inventario, le alternative hanno dipendenze esplicite | attiva | 2026-10-01 | Richiesta del proprietario di rinnovare la repo e preparare il piano per Claude; `reports/analisi/rinnovo_repo_2026-10-01/README.md` |
 | D-050 | I nuovi programmi distinguono successo competitivo C/J e dichiarazione scientifica J; split stabili, ruoli dopo QC, confronti addestrati e sei membri prima di promuovere. Precisa D-044 senza cambiare protocolli o soglie passati | attiva | 2026-10-01 | Mandato del proprietario alla lead; `reports/analisi/lead_audit_2026-10-01/REVISIONE.md`, [R-LEAD](piani/strategia-scientifica.md) |
 | D-049 | Ingresso breve e letture su richiesta: `CLAUDE.md` tiene solo i perimetri, la tabella dei compiti con dove fermarsi e le regole globali; ogni informazione aggiornata a mano ha una sede sola, elencata in `docs/CLAUDE.md`; l'infrastruttura degli agenti ha una pagina sua, `docs/AGENTI.md`; la validità di un documento si chiede per percorso con `scripts/31_check_docs.py --status` | attiva | 2026-09-30 | Richiesta del proprietario in chat del 30 settembre, pomeriggio; `reports/analisi/ingresso_agenti_2026-09-30/RIORDINO.md` |
@@ -67,6 +68,26 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-052 — Prima dimostrare il trasferimento a contesti nuovi
+
+- **Mandato:** il 2 ottobre il proprietario chiede un nuovo piano per Claude dopo aver
+  discusso la figura Arc che distingue esempi perturbati nella linea destinataria nel
+  2025 e soli controlli nel 2026. Fonte primaria e disegno operativo in [R-LEAD](piani/strategia-scientifica.md).
+- **Decisione:** verificare la matrice contesto–bersaglio–studio; costruire split globali
+  per linee e banco C/J; confrontare transfer e correzione semplice condizionata prima
+  di assumere che il lavoro successivo debba essere riparare cellnet. T è diagnostico.
+  L'ablation del contesto agisce sull'effetto mantenendo il vero basale destinatario.
+- **Estensioni:** una rete richiede un'ipotesi verificabile e dati che la rendano misurabile,
+  non necessariamente una vittoria del bilineare. Dati mancanti possono richiedere R-DATI
+  già nell'audit di fattibilità. Conferma e adozione seguono D-050 e il vincolo del t29.
+- **Limite:** è una priorità di ricerca richiesta in chat, non evidenza biologica nuova
+  né attribuzione del fallimento alla task sbagliata. Nessuna nuova autorizzazione a quota,
+  download, agenti, invii o push. Le regole dei risultati passati restano invariate.
+- **Conservazione:** [R-LEAD precedente](storico/R-LEAD_pre_contesti_2026-10-02.md), copia
+  del file al commit `0b491b3`; la scheda corrente rimane l'unica sequenza operativa.
+- **Riaprire se:** l'audit mostra un banco non identificabile, una nuova evidenza cambia
+  il confronto prioritario o il contratto della gara cambia; documentare la dipendenza.
 
 ### D-051 — Una sola sequenza operativa dopo t29
 
@@ -1179,7 +1200,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 **Applicazione corrente, corretta da CP-0050/R-022:** la ricostruzione affine da grezzi
 aggregati non identifica le ancore dei singoli contesti e non converte esattamente in score
 ufficiale. Leggere i sei scalati pubblicati per gli invii; per il banco dichiarare sei grezzi
-e normalizzazione locale con i suoi limiti, come R-LEAD P4. Resta utile distinguere il regime
+e normalizzazione locale con i suoi limiti, come R-LEAD P2. Resta utile distinguere il regime
 della fedeltà. La pretesa esattezza e l'obbligo di usare `anchors.json` nei punti sotto
 sono **la formulazione del 17/09, superata su questi aspetti**, conservata per capire la decisione.
 
