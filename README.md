@@ -1,5 +1,8 @@
 # Virtual Cell Challenge 2026
 
+> **Teammate handoff:** [brief, repository map and machine checks](docs/CONSEGNA_TEAMMATE.md),
+> with a [ready-to-use Claude prompt](docs/PROMPT_CLAUDE_TEAMMATE.md) for the R-LEAD programme.
+
 > **Today's plan for Claude: [cell-level data, quality and biological modelling](docs/piani/piano-giorno-2026-09-30.md).**
 > Full dataset coverage, resumable ingestion, assay-aware QC and a model trained on individual cells where available.
 > Research programme and promotion criteria: [modello competitivo](docs/piani/modello-competitivo.md).

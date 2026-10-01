@@ -4,8 +4,10 @@
 - **Aggiornato:** 1 ottobre 2026.
 - **Mandato:** revisione lead richiesta dal proprietario; facoltà di riformulare vincoli scientifici precedenti motivandone i bias.
 - **Assegnazione:** audit completato da Codex, chat `01a0f724-6a42-7dd0-bd2f-3496d9195695`.
-  Il training corrente e gli invii restano all'agente assegnato a R-LAB. L'esecuzione del
-  programma si prende in carico secondo PIANI §3; nessun nuovo training avviato dall'audit.
+  Il 1/10 il proprietario affida il programma al teammate: [consegna e prompt](../CONSEGNA_TEAMMATE.md).
+  Il teammate registra sessione, commit base, macchina e perimetro alla presa in carico secondo
+  PIANI §3. Il training corrente e gli invii restano all'agente R-LAB; nessun nuovo training
+  avviato dall'audit o dalla consegna.
 - **Evidenza:** [revisione con nuove misure](../../reports/analisi/lead_audit_2026-10-01/REVISIONE.md),
   [consegna tecnica](../../reports/analisi/lead_audit_2026-10-01/NOTA_TRAINING.md).
 - **Prossimo passo:** fissare gli split e correggere campionamento, controlli e baseline di
@@ -88,9 +90,11 @@ R3 e t29 restano esperimenti già avviati: leggerli secondo i protocolli loro, s
 4. **Misure:** effetti trans, numerosità e affidabilità per target; likelihood e calibrazione
    sui controlli; sei metriche ufficiali per le popolazioni. Separare score grezzi, normalizzati
    e indice locale. Non convertire con ancore globali stimate un proxy in score ufficiale.
-   Verificare import e versione dello scorer prima del banco: il 1/10 nell'ambiente locale
-   manca `cell_eval2.config` ([verifiche](../../reports/analisi/lead_audit_2026-10-01/VERIFICHE.md));
-   ripristinare l'ambiente documentato, senza sostituire tacitamente la metrica.
+   Verificare import e versione dello scorer nel runtime effettivo prima del banco.
+   [CP-0054](../checkpoints/0054-visibilita-scorer-e-consegna.md) precisa la diagnosi del 1/10:
+   `cell_eval2.config` non era visibile dal sandbox; lo stesso Python fuori dal sandbox
+   passa tutti i 287 test senza reinstallazioni. Confrontare i contesti di esecuzione prima
+   di riparare un ambiente, senza sostituire tacitamente la metrica.
 5. **Aggregazione:** macro per contesto e regime per la lettura scientifica; media coerente
    con il contratto di gara per quella operativa. Riportare entrambe e i supporti.
    Nessun tetto «400 più numerosi» che cancelli silenziosamente interi contesti.

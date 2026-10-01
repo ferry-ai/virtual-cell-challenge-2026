@@ -1,0 +1,180 @@
+{
+  "written_utc": "2026-10-01T13:21:02.345842+00:00",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
+  "executable": "C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\python.exe",
+  "cpu_count": 8,
+  "repository": {
+    "root": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026",
+    "head": "53d17fef5fcc0ce44bb05614bc52f3b656430778",
+    "audit_base": "53d17fe",
+    "audit_is_ancestor": true,
+    "working_tree_changes": [
+      " M docs/REGISTRO.md",
+      " M docs/piani/strategia-scientifica.md",
+      " M reports/analisi/README.md",
+      "?? .claude/",
+      "?? docs/CONSEGNA_TEAMMATE.md",
+      "?? docs/PROMPT_CLAUDE_TEAMMATE.md",
+      "?? reports/analisi/handoff_teammate_2026-10-01/",
+      "?? reports/invii/trial_2026-10-01/keep_awake_t29.ps1",
+      "?? reports/invii/trial_2026-10-01/submit_t29.ps1",
+      "?? reports/invii/trial_2026-10-01/t29_description.txt",
+      "?? reports/invii/trial_2026-10-01/t29_effects_manifest.json",
+      "?? reports/invii/trial_2026-10-01/t29_generation_diagnostics.json",
+      "?? reports/invii/trial_2026-10-01/t29_keep_awake_started.json",
+      "?? reports/invii/trial_2026-10-01/t29_manifest_45_generate_prediction.json",
+      "?? reports/invii/trial_2026-10-01/t29_stage45.log"
+    ],
+    "required_files": {
+      "CLAUDE.md": true,
+      "docs/CONSEGNA_TEAMMATE.md": true,
+      "docs/PROMPT_CLAUDE_TEAMMATE.md": true,
+      "docs/piani/strategia-scientifica.md": true,
+      "reports/analisi/lead_audit_2026-10-01/AGGIORNAMENTO_R3.md": true,
+      "reports/modelli/cellnet_completo_2026-10-01/esito/training_r3/train/desc/eval.json": true
+    }
+  },
+  "packages": {
+    "numpy": {
+      "version": "2.5.3",
+      "required_module": "numpy",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "scipy": {
+      "version": "1.18.1",
+      "required_module": "scipy",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "pandas": {
+      "version": "3.0.5",
+      "required_module": "pandas",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "h5py": {
+      "version": "3.16.0",
+      "required_module": "h5py",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "anndata": {
+      "version": "0.13.3.post0",
+      "required_module": "anndata",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "PyYAML": {
+      "version": "6.0.3",
+      "required_module": "yaml",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "torch": {
+      "version": "2.14.0+cpu",
+      "required_module": "torch",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "scanpy": {
+      "version": null,
+      "required_module": "scanpy",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "cell-eval2": {
+      "version": null,
+      "required_module": "cell_eval2.config",
+      "module_found": false,
+      "actual_import_and_api_check_required": true
+    },
+    "vcc-cli": {
+      "version": "0.2.0",
+      "required_module": "vcc_cli",
+      "module_found": false,
+      "actual_import_and_api_check_required": true
+    }
+  },
+  "code_against_audit": {
+    "cellnet.py": {
+      "exists": true,
+      "sha256_bytes": "e35ffe86e03f987580a63778191445b83080d7444424263f3db4797a086f43db",
+      "sha256_lf": "ba515136413cbec3d5623a8e66c80de741bcdae05b9761cb24b2b47e62b1f7ec",
+      "recorded_r2_sha256": "e35ffe86e03f987580a63778191445b83080d7444424263f3db4797a086f43db",
+      "matches_r2_bytes": true,
+      "matches_audit_base_ignoring_line_endings": true
+    },
+    "cell_data.py": {
+      "exists": true,
+      "sha256_bytes": "f00bdd2bbcab2f90bb38af6a99073c31093ea72717b15df99ac3c16339201a50",
+      "sha256_lf": "79dcb0723cb48c7dae79d7bcf274372c66c2a1dc74bb51f8462f7d3c55c1a2d4",
+      "recorded_r2_sha256": "f00bdd2bbcab2f90bb38af6a99073c31093ea72717b15df99ac3c16339201a50",
+      "matches_r2_bytes": true,
+      "matches_audit_base_ignoring_line_endings": true
+    },
+    "train_cellnet.py": {
+      "exists": true,
+      "sha256_bytes": "74ca7132a6557f1d830c227c8bc58bf6ae25f82fadd540b0f99826b12dc52e37",
+      "sha256_lf": "b629136a2cf2aafdd5c08321a86702ce1d1c9dd0a0e430bf87cc9999e210605a",
+      "recorded_r2_sha256": "74ca7132a6557f1d830c227c8bc58bf6ae25f82fadd540b0f99826b12dc52e37",
+      "matches_r2_bytes": true,
+      "matches_audit_base_ignoring_line_endings": true
+    }
+  },
+  "data": {
+    "configured": true,
+    "root": "C:\\Users\\ferra\\vcc2026-data",
+    "exists": true,
+    "files": {
+      "raw/controls/gene_names.csv": {
+        "exists": true,
+        "bytes": 119295
+      },
+      "raw/controls/pert_counts.csv": {
+        "exists": true,
+        "bytes": 1906
+      },
+      "raw/controls/context_A.h5ad": {
+        "exists": true,
+        "bytes": 224973316
+      },
+      "raw/controls/context_B.h5ad": {
+        "exists": true,
+        "bytes": 210966111
+      },
+      "raw/controls/context_C.h5ad": {
+        "exists": true,
+        "bytes": 226056691
+      },
+      "raw/nadig_hepg2/NadigOConner2024_hepg2.h5ad": {
+        "exists": true,
+        "bytes": 850590740
+      }
+    },
+    "disk": {
+      "checked_path": "C:\\Users\\ferra\\vcc2026-data",
+      "free_bytes": 16935710720,
+      "total_bytes": 510342983680
+    },
+    "inside_repository": false,
+    "expected_venv_python": "C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\python.exe",
+    "expected_venv_python_exists": true,
+    "executing_expected_venv": true
+  },
+  "repository_disk": {
+    "checked_path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026",
+    "free_bytes": 16935710720,
+    "total_bytes": 510342983680
+  },
+  "readiness": {
+    "repo_evidence_present": true,
+    "python_3_12": true,
+    "cellnet_dependencies_located": true,
+    "scorer_config_module_located": false,
+    "data_root_configured_and_external": true,
+    "heavy_training_ready": "not assessed: shard/weight access, imports, GPU/RAM, runtime smoke and permissions required",
+    "limitations": "module discovery is not an import/API test; file size is not content/axis/checksum validation"
+  }
+}
