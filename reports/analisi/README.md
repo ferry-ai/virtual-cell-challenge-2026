@@ -8,6 +8,7 @@ Invecchiano in fretta: prima di seguirne un «prossimo passo», controllare
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 01/10 | [lead_audit_2026-10-01/](lead_audit_2026-10-01/) | Audit lead di corpus e cellnet: replay esatto dei pesi r2, split r5/r7 instabili, controlli HepG2 non appaiati dopo il cap, controesempi unknown/basale/QC; lettura di 145.473 cellule, rumore C/J e complementarità col transfer; D-050 e programma R-LEAD | nuove misure esplorative e difetti riprodotti; nessun nuovo score o training | ★★★ |
 | 30/09 | [test_orientamento_2026-09-30/](test_orientamento_2026-09-30/) | Protocollo dei test di orientamento: quanto in fretta un agente nuovo trova risposte precise e attuali partendo da `CLAUDE.md`; nove compiti, 46 domande con fonte, soglia fissata prima, script riutilizzabile | protocollo, non eseguito | ★ |
 | 30/09 | [pulizia_struttura_2026-09-30/](pulizia_struttura_2026-09-30/) | La pulizia a tappe del 30/09 sera: worktree, branch e stash (inventario misurato, proposta prima di agire, esito), nomi e indici, obsoleto, test di orientamento degli agenti; il registro delle tappe in testa | inventario sì; il resto secondo lo stato di ogni tappa | ★ |
 | 30/09 | [ingresso_agenti_2026-09-30/](ingresso_agenti_2026-09-30/) | Il riordino del pomeriggio (D-049): l'ingresso breve, i quattro perimetri, le sedi canoniche, `docs/AGENTI.md`, la validità per percorso; prima e dopo del percorso di un agente, che cosa resta aperto | sì; i sei percorsi verificati a mano, non con agenti | ★★ |

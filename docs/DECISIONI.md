@@ -14,6 +14,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-050 | I nuovi programmi distinguono successo competitivo C/J e dichiarazione scientifica J; split stabili, ruoli dopo QC, confronti addestrati e sei membri prima di promuovere. Precisa D-044 senza cambiare protocolli o soglie passati | attiva | 2026-10-01 | Mandato del proprietario alla lead; `reports/analisi/lead_audit_2026-10-01/REVISIONE.md`, [R-LEAD](piani/strategia-scientifica.md) |
 | D-049 | Ingresso breve e letture su richiesta: `CLAUDE.md` tiene solo i perimetri, la tabella dei compiti con dove fermarsi e le regole globali; ogni informazione aggiornata a mano ha una sede sola, elencata in `docs/CLAUDE.md`; l'infrastruttura degli agenti ha una pagina sua, `docs/AGENTI.md`; la validità di un documento si chiede per percorso con `scripts/31_check_docs.py --status` | attiva | 2026-09-30 | Richiesta del proprietario in chat del 30 settembre, pomeriggio; `reports/analisi/ingresso_agenti_2026-09-30/RIORDINO.md` |
 | D-048 | Una mappa per ambiti (`docs/AMBITI.md`) instrada ogni area del lavoro; gli errori di metodo e le trappole operative stanno in `docs/ERRORI.md`; ogni sessione committa il proprio lavoro prima di chiudere, e quello lasciato da una sessione finita si committa com'è; le cartelle grandi hanno un indice; gli output pesanti vanno nella radice dati con un manifest | attiva | 2026-09-30 | Richiesta del proprietario in chat del 30 settembre; `reports/analisi/riordino_repo_2026-09-30/RIORDINO.md` |
 | D-047 | Si possono scegliere modifiche congiunte dopo un banco fattoriale preregistrato e una conferma separata; l'attribuzione ai singoli fattori resta distinta dalla scelta del candidato | attiva | 2026-09-29 | Mandato del proprietario alla lead; `reports/analisi/lead_scientist_2026-09-29/PROTOCOLLO_GENERATORE.md`, `reports/analisi/lead_scientist_2026-09-29/RISULTATI_GENERATORE_SVILUPPO.md` |
@@ -65,6 +66,29 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-050 — Il criterio di successo segue la dichiarazione e il supporto disponibile
+
+- **Mandato:** il 1 ottobre il proprietario ha chiesto alla lead di revisionare dati, training
+  e strategia e riformulare i vincoli scientifici precedenti se viziati da bias.
+- **Perché:** l'audit riproduce split che cambiano all'aggiunta di sorgenti, bilanciamento della
+  loss diverso dal dichiarato, perdita dell'appaiamento dei controlli HepG2 e un confronto
+  unknown non addestrato come modello generico. Il banco J ha anche verità meno riproducibili
+  di C; il fallimento medio della rete coesiste con vantaggi su una parte dei target C.
+- **Decisione:** D-044 resta valida per la generalizzazione J e per l'ammissione delle
+  sorgenti. La produzione valuta separatamente C e J: un miglioramento verificato C può
+  essere adottato per quel supporto senza rivendicare J. La regola preregistrata deve proteggere
+  anche il ramo per target senza memoria. L'eventuale successo J richiede esclusioni globali.
+  I nuovi confronti fissano split indipendenti dal corpus, verificano i ruoli dopo QC,
+  distinguono likelihood ed effetti trans, usano baseline effettivamente addestrate e
+  selezionano la catena sui sei membri con compromessi dichiarati prima.
+- **Evidenza:** [revisione e riproduzioni](../reports/analisi/lead_audit_2026-10-01/README.md).
+  Contratto operativo: [GENERALIZZAZIONE](GENERALIZZAZIONE.md), programma [R-LEAD](piani/strategia-scientifica.md).
+- **Che cosa non segue:** nessuna promozione del modello attuale, riscrittura di soglie,
+  apertura della riserva, modifica al job in corso, autorizzazione di spesa o download.
+  T29 e r3 conservano le proprie regole. Un audit a posteriori non diventa conferma.
+- **Riaprire se:** cambia il contratto della gara, il supporto finale rende inutile la distinzione
+  C/J o una conferma indipendente smentisce i benefici della strategia per supporto.
 
 ### D-049 — Ingresso breve, una sede per informazione, gli agenti in un perimetro loro
 

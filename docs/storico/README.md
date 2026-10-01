@@ -10,6 +10,7 @@ il 30 settembre, senza cambiare il testo salvo i percorsi dei link; un checkpoin
 
 | Data | File | Nocciolo | Vale? |
 |---|---|---|---|
+| 30/09 | [PROGETTO_direzione_2026-09-30.md](PROGETTO_direzione_2026-09-30.md) | Apertura della direzione generale prima dell'audit D-050/CP-0053 del 1 ottobre | storico; programma attuale R-LEAD, esecuzione R-LAB |
 | 11/09 | [data_strategy_2026-09-11.md](data_strategy_2026-09-11.md) | Prima strategia dei dati e ordine di acquisizione | superato come ordine; il contratto di preprocessing (§4) e le misure locali (§1) restano (R-003) |
 | 11/09 | [revisione_analisi_2026-09-11.md](revisione_analisi_2026-09-11.md) | Identità dei contesti dai marcatori, povertà del segnale in K562, clamp dello scorer | da verificare: contraddizione aperta sull'asse in Ensembl (R-004) |
 | 12/09 | [candidate_adversarial_review_2026-09-12.md](candidate_adversarial_review_2026-09-12.md) | Verifica avversaria delle sorgenti candidate: CD4 prima, Orion seconda; coperture misurate | attuale per le misure; l'ordine è superato da D-031 e D-039 |

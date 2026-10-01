@@ -1,0 +1,1854 @@
+{
+  "scope": "post hoc; splits and exposure differ; neither causal corpus comparison nor VCC score",
+  "technical": {
+    "1_kernel_code": 0,
+    "2_resume_check": {
+      "passed": true,
+      "batch_chain_equal": true,
+      "seen_equal": true,
+      "model_max_abs_diff": 0.0,
+      "model_max_abs": 75.0472183227539,
+      "models_compared": [
+        "desc",
+        "ident"
+      ]
+    },
+    "3_verify": {
+      "shards": 402,
+      "differ": [],
+      "seconds": 811.4
+    },
+    "4_coverage": {
+      "epochs_done": 1.857,
+      "stop": "time budget",
+      "steps": 31808,
+      "admitted_training_cells": 4382321,
+      "distinct_cells_seen": 4382321,
+      "all_seen": true,
+      "leakage_passed": true,
+      "throughput": {
+        "cells_per_second": 1469.5,
+        "data_wait_fraction": 0.637,
+        "seconds": 5541.4
+      },
+      "memory": {
+        "rss_peak_mb": 6256.3,
+        "rss_mb": 4630.1,
+        "children_rss_mb": 0.0,
+        "system_available_mb": 25779.4,
+        "gpu": {
+          "cuda:0": {
+            "gpu_peak_mb": 1688.5,
+            "gpu_reserved_mb": 4796.0
+          },
+          "cuda:1": {
+            "gpu_peak_mb": 1703.3,
+            "gpu_reserved_mb": 4794.0
+          }
+        }
+      }
+    },
+    "5_eval": {
+      "desc": {
+        "cells": 225194,
+        "seconds": 516.5,
+        "complete": true,
+        "reserve_seconds": 744.2,
+        "workers": 3
+      },
+      "ident": {
+        "cells": 225194,
+        "seconds": 516.5,
+        "complete": true,
+        "reserve_seconds": 744.2,
+        "workers": 3
+      }
+    },
+    "6_plan": {
+      "measured_from_step": 1727,
+      "measured_steps": 300,
+      "cells_per_second": 1782.7,
+      "data_wait_fraction": 0.586,
+      "evaluation_reserve_seconds": 744.2,
+      "epochs_expected": 2.238,
+      "train_until_utc": "2026-10-01T12:25:22.337902+00:00",
+      "memory": {
+        "rss_peak_mb": 6256.3,
+        "rss_mb": 4210.8,
+        "children_rss_mb": 14402.8,
+        "system_available_mb": 18782.3,
+        "gpu": {
+          "cuda:0": {
+            "gpu_peak_mb": 1684.1,
+            "gpu_reserved_mb": 4600.0
+          },
+          "cuda:1": {
+            "gpu_peak_mb": 1697.8,
+            "gpu_reserved_mb": 4598.0
+          }
+        }
+      }
+    },
+    "done": {
+      "finished_utc": "2026-10-01T12:34:16.352623+00:00",
+      "steps": 31808,
+      "wall_seconds": 6089.8,
+      "budget_seconds": 6600.0,
+      "arms": [
+        "desc",
+        "ident"
+      ],
+      "memory": {
+        "rss_peak_mb": 6256.3,
+        "rss_mb": 5238.3,
+        "children_rss_mb": 0.0,
+        "system_available_mb": 25423.9,
+        "gpu": {
+          "cuda:0": {
+            "gpu_peak_mb": 1810.5,
+            "gpu_reserved_mb": 5954.0
+          },
+          "cuda:1": {
+            "gpu_peak_mb": 1886.7,
+            "gpu_reserved_mb": 5954.0
+          }
+        }
+      }
+    }
+  },
+  "evaluation": {
+    "desc": {
+      "C": {
+        "all": {
+          "groups": 400,
+          "unique_symbols": 400,
+          "ll_gain_vs_no_effect": {
+            "mean": 0.03061945083376486,
+            "median": 0.02411148976534605,
+            "positive": 1.0,
+            "n": 400
+          },
+          "ll_gain_vs_unknown_target": {
+            "mean": 0.0019015144535796935,
+            "median": 0.0015891160001046956,
+            "positive": 0.7075,
+            "n": 400
+          },
+          "cos_model": {
+            "mean": 0.30339288129534897,
+            "median": 0.27585961642700607,
+            "positive": 0.755,
+            "n": 400
+          },
+          "cos_transfer": {
+            "mean": 0.4053729966011837,
+            "median": 0.40074271260689076,
+            "positive": 0.985,
+            "n": 400
+          },
+          "cos_generic": {
+            "mean": -0.07593903780295543,
+            "median": -0.09912881044531119,
+            "positive": 0.255,
+            "n": 400
+          },
+          "pi_mean": {
+            "mean": 0.39034557435661554,
+            "median": 0.3765856772661209,
+            "positive": 1.0,
+            "n": 400
+          },
+          "cells": {
+            "mean": 136.41,
+            "median": 108.0,
+            "positive": 1.0,
+            "n": 400
+          },
+          "admitted_cells": {
+            "mean": 137.45,
+            "median": 108.0,
+            "positive": 1.0,
+            "n": 400
+          },
+          "likelihood_positive_cosine_negative": 88,
+          "model_minus_transfer": {
+            "mean": -0.10198011530583476,
+            "win_fraction": 0.4,
+            "exploratory_target_bootstrap_95": [
+              -0.1245269145624219,
+              -0.07929682196002809
+            ],
+            "caveat": "one held-out context; targets are not independent biological families"
+          }
+        },
+        "by_key": {
+          "hepg2_nadig|HepG2": {
+            "groups": 400,
+            "unique_symbols": 400,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.03061945083376486,
+              "median": 0.02411148976534605,
+              "positive": 1.0,
+              "n": 400
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0019015144535796935,
+              "median": 0.0015891160001046956,
+              "positive": 0.7075,
+              "n": 400
+            },
+            "cos_model": {
+              "mean": 0.30339288129534897,
+              "median": 0.27585961642700607,
+              "positive": 0.755,
+              "n": 400
+            },
+            "cos_transfer": {
+              "mean": 0.4053729966011837,
+              "median": 0.40074271260689076,
+              "positive": 0.985,
+              "n": 400
+            },
+            "cos_generic": {
+              "mean": -0.07593903780295543,
+              "median": -0.09912881044531119,
+              "positive": 0.255,
+              "n": 400
+            },
+            "pi_mean": {
+              "mean": 0.39034557435661554,
+              "median": 0.3765856772661209,
+              "positive": 1.0,
+              "n": 400
+            },
+            "cells": {
+              "mean": 136.41,
+              "median": 108.0,
+              "positive": 1.0,
+              "n": 400
+            },
+            "admitted_cells": {
+              "mean": 137.45,
+              "median": 108.0,
+              "positive": 1.0,
+              "n": 400
+            },
+            "likelihood_positive_cosine_negative": 88,
+            "model_minus_transfer": {
+              "mean": -0.10198011530583476,
+              "win_fraction": 0.4,
+              "exploratory_target_bootstrap_95": [
+                -0.1245269145624219,
+                -0.07929682196002809
+              ],
+              "caveat": "one held-out context; targets are not independent biological families"
+            }
+          }
+        },
+        "pi_below_1e6_fraction": 0.0,
+        "all_ll_gain_zero": false
+      },
+      "T": {
+        "all": {
+          "groups": 400,
+          "unique_symbols": 340,
+          "ll_gain_vs_no_effect": {
+            "mean": 0.005045967845071573,
+            "median": 0.0029442739905789495,
+            "positive": 0.975,
+            "n": 400
+          },
+          "ll_gain_vs_unknown_target": {
+            "mean": 0.0016987674843316825,
+            "median": 0.0020380052737891674,
+            "positive": 0.8675,
+            "n": 400
+          },
+          "cos_model": {
+            "mean": 0.06874290335102212,
+            "median": 0.07611212868640796,
+            "positive": 0.6,
+            "n": 400
+          },
+          "cos_generic": {
+            "mean": 0.19745204613209563,
+            "median": 0.18590450890378396,
+            "positive": 0.6025,
+            "n": 400
+          },
+          "pi_mean": {
+            "mean": 0.3308433401408413,
+            "median": 0.31828582286834717,
+            "positive": 1.0,
+            "n": 400
+          },
+          "cells": {
+            "mean": 396.46,
+            "median": 377.0,
+            "positive": 1.0,
+            "n": 400
+          },
+          "admitted_cells": {
+            "mean": 498.505,
+            "median": 377.0,
+            "positive": 1.0,
+            "n": 400
+          },
+          "likelihood_positive_cosine_negative": 119
+        },
+        "by_key": {
+          "replogle_rpe1|RPE1": {
+            "groups": 6,
+            "unique_symbols": 6,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.007680158829316497,
+              "median": 0.007900129072368145,
+              "positive": 1.0,
+              "n": 6
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.00014804077848869687,
+              "median": 0.0002820102163241245,
+              "positive": 0.8333333333333334,
+              "n": 6
+            },
+            "cos_model": {
+              "mean": -0.13524417184280407,
+              "median": -0.22347295443996995,
+              "positive": 0.3333333333333333,
+              "n": 6
+            },
+            "cos_generic": {
+              "mean": -0.05741435089063546,
+              "median": -0.15674651638055098,
+              "positive": 0.3333333333333333,
+              "n": 6
+            },
+            "pi_mean": {
+              "mean": 0.4062043974796931,
+              "median": 0.3776180297136307,
+              "positive": 1.0,
+              "n": 6
+            },
+            "cells": {
+              "mean": 364.0,
+              "median": 358.0,
+              "positive": 1.0,
+              "n": 6
+            },
+            "admitted_cells": {
+              "mean": 877.3333333333334,
+              "median": 358.0,
+              "positive": 1.0,
+              "n": 6
+            },
+            "likelihood_positive_cosine_negative": 3
+          },
+          "h1_vcc2025|H1": {
+            "groups": 19,
+            "unique_symbols": 19,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0033063189246030035,
+              "median": 0.0035879556089639664,
+              "positive": 1.0,
+              "n": 19
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": -0.0002960658445150138,
+              "median": 0.0002342649968340993,
+              "positive": 0.6842105263157895,
+              "n": 19
+            },
+            "cos_model": {
+              "mean": -0.3905986589226882,
+              "median": -0.4445726574262298,
+              "positive": 0.0,
+              "n": 19
+            },
+            "cos_generic": {
+              "mean": 0.430922128050261,
+              "median": 0.42093478365170794,
+              "positive": 1.0,
+              "n": 19
+            },
+            "pi_mean": {
+              "mean": 0.47905273343387406,
+              "median": 0.46236148476600647,
+              "positive": 1.0,
+              "n": 19
+            },
+            "cells": {
+              "mean": 495.10526315789474,
+              "median": 500.0,
+              "positive": 1.0,
+              "n": 19
+            },
+            "admitted_cells": {
+              "mean": 1226.4736842105262,
+              "median": 1105.0,
+              "positive": 1.0,
+              "n": 19
+            },
+            "likelihood_positive_cosine_negative": 13
+          },
+          "jurkat_nadig|Jurkat": {
+            "groups": 8,
+            "unique_symbols": 8,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.00542536482680589,
+              "median": 0.005622375989332795,
+              "positive": 1.0,
+              "n": 8
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.00040797128986014286,
+              "median": 0.0004888715920969844,
+              "positive": 0.75,
+              "n": 8
+            },
+            "cos_model": {
+              "mean": 0.17213218022084162,
+              "median": 0.16086855405676412,
+              "positive": 0.875,
+              "n": 8
+            },
+            "cos_generic": {
+              "mean": 0.24814896148957072,
+              "median": 0.09964347572752111,
+              "positive": 0.75,
+              "n": 8
+            },
+            "pi_mean": {
+              "mean": 0.3800056539475918,
+              "median": 0.3301466405391693,
+              "positive": 1.0,
+              "n": 8
+            },
+            "cells": {
+              "mean": 392.375,
+              "median": 373.5,
+              "positive": 1.0,
+              "n": 8
+            },
+            "admitted_cells": {
+              "mean": 703.375,
+              "median": 373.5,
+              "positive": 1.0,
+              "n": 8
+            },
+            "likelihood_positive_cosine_negative": 1
+          },
+          "norman2019_crispra|K562": {
+            "groups": 7,
+            "unique_symbols": 7,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 7
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 7
+            },
+            "cos_model": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 7
+            },
+            "cos_generic": {
+              "mean": 0.6004079924168455,
+              "median": 0.5841046508216305,
+              "positive": 1.0,
+              "n": 7
+            },
+            "pi_mean": {
+              "mean": 3.250550701621486e-09,
+              "median": 1.333108068379829e-09,
+              "positive": 1.0,
+              "n": 7
+            },
+            "cells": {
+              "mean": 472.85714285714283,
+              "median": 500.0,
+              "positive": 1.0,
+              "n": 7
+            },
+            "admitted_cells": {
+              "mean": 932.1428571428571,
+              "median": 779.0,
+              "positive": 1.0,
+              "n": 7
+            },
+            "likelihood_positive_cosine_negative": 0
+          },
+          "kolf_metabolic_enzymes|KOLF2.1J iPSC": {
+            "groups": 8,
+            "unique_symbols": 8,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0011746561649488285,
+              "median": 0.00113612727727741,
+              "positive": 1.0,
+              "n": 8
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": -8.660197330812025e-06,
+              "median": -2.7056230464950204e-06,
+              "positive": 0.125,
+              "n": 8
+            },
+            "cos_model": {
+              "mean": -0.4389130172553426,
+              "median": -0.42974266093204777,
+              "positive": 0.0,
+              "n": 8
+            },
+            "cos_generic": {
+              "mean": 0.3526517544255212,
+              "median": 0.3432861086561319,
+              "positive": 1.0,
+              "n": 8
+            },
+            "pi_mean": {
+              "mean": 0.40929001197218895,
+              "median": 0.4075974225997925,
+              "positive": 1.0,
+              "n": 8
+            },
+            "cells": {
+              "mean": 500.0,
+              "median": 500.0,
+              "positive": 1.0,
+              "n": 8
+            },
+            "admitted_cells": {
+              "mean": 1155.5,
+              "median": 1132.0,
+              "positive": 1.0,
+              "n": 8
+            },
+            "likelihood_positive_cosine_negative": 1
+          },
+          "replogle_k562_gwps|K562": {
+            "groups": 211,
+            "unique_symbols": 211,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.002715795083656704,
+              "median": 0.0027065270114690065,
+              "positive": 1.0,
+              "n": 211
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0024244725458396786,
+              "median": 0.0024536834098398685,
+              "positive": 0.966824644549763,
+              "n": 211
+            },
+            "cos_model": {
+              "mean": 0.18983383544483037,
+              "median": 0.19464898363603,
+              "positive": 0.8720379146919431,
+              "n": 211
+            },
+            "cos_generic": {
+              "mean": -0.06831442428806174,
+              "median": -0.0933250614281083,
+              "positive": 0.2843601895734597,
+              "n": 211
+            },
+            "pi_mean": {
+              "mean": 0.31044696405600597,
+              "median": 0.3025338649749756,
+              "positive": 1.0,
+              "n": 211
+            },
+            "cells": {
+              "mean": 352.5308056872038,
+              "median": 337.0,
+              "positive": 1.0,
+              "n": 211
+            },
+            "admitted_cells": {
+              "mean": 369.957345971564,
+              "median": 337.0,
+              "positive": 1.0,
+              "n": 211
+            },
+            "likelihood_positive_cosine_negative": 22
+          },
+          "a549_liu_hillsley2026|A549": {
+            "groups": 101,
+            "unique_symbols": 101,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.010653985230860735,
+              "median": 0.00943251047283411,
+              "positive": 1.0,
+              "n": 101
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.000676605547191189,
+              "median": 0.00021423448924906552,
+              "positive": 0.9108910891089109,
+              "n": 101
+            },
+            "cos_model": {
+              "mean": -0.0470269056825093,
+              "median": -0.060781254649995634,
+              "positive": 0.31683168316831684,
+              "n": 101
+            },
+            "cos_generic": {
+              "mean": 0.5365339171292738,
+              "median": 0.5405328916963112,
+              "positive": 1.0,
+              "n": 101
+            },
+            "pi_mean": {
+              "mean": 0.34649202581679467,
+              "median": 0.33201390504837036,
+              "positive": 1.0,
+              "n": 101
+            },
+            "cells": {
+              "mean": 466.91089108910893,
+              "median": 500.0,
+              "positive": 1.0,
+              "n": 101
+            },
+            "admitted_cells": {
+              "mean": 552.2475247524752,
+              "median": 537.0,
+              "positive": 1.0,
+              "n": 101
+            },
+            "likelihood_positive_cosine_negative": 65
+          },
+          "replogle_k562_essential|K562": {
+            "groups": 21,
+            "unique_symbols": 21,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.00879400322723779,
+              "median": 0.004636056255549192,
+              "positive": 1.0,
+              "n": 21
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.004814264859305695,
+              "median": 0.0022544190287590027,
+              "positive": 0.8571428571428571,
+              "n": 21
+            },
+            "cos_model": {
+              "mean": 0.44007225134190275,
+              "median": 0.7193406957230327,
+              "positive": 0.7142857142857143,
+              "n": 21
+            },
+            "cos_generic": {
+              "mean": 0.579417814448368,
+              "median": 0.673992785349572,
+              "positive": 0.9047619047619048,
+              "n": 21
+            },
+            "pi_mean": {
+              "mean": 0.3627472150893438,
+              "median": 0.32450762391090393,
+              "positive": 1.0,
+              "n": 21
+            },
+            "cells": {
+              "mean": 394.7142857142857,
+              "median": 405.0,
+              "positive": 1.0,
+              "n": 21
+            },
+            "admitted_cells": {
+              "mean": 422.9047619047619,
+              "median": 405.0,
+              "positive": 1.0,
+              "n": 21
+            },
+            "likelihood_positive_cosine_negative": 6
+          },
+          "kolf_chromatin_modifiers|KOLF2.1J iPSC": {
+            "groups": 7,
+            "unique_symbols": 7,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.001117052127873259,
+              "median": 0.0010900419438257813,
+              "positive": 1.0,
+              "n": 7
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": -3.513964721995373e-05,
+              "median": -1.2706302186415996e-05,
+              "positive": 0.2857142857142857,
+              "n": 7
+            },
+            "cos_model": {
+              "mean": -0.40482758279761333,
+              "median": -0.38501375790973996,
+              "positive": 0.0,
+              "n": 7
+            },
+            "cos_generic": {
+              "mean": 0.4646438928619497,
+              "median": 0.4652369511639824,
+              "positive": 1.0,
+              "n": 7
+            },
+            "pi_mean": {
+              "mean": 0.41369917563029696,
+              "median": 0.41078242659568787,
+              "positive": 1.0,
+              "n": 7
+            },
+            "cells": {
+              "mean": 399.7142857142857,
+              "median": 393.0,
+              "positive": 1.0,
+              "n": 7
+            },
+            "admitted_cells": {
+              "mean": 400.7142857142857,
+              "median": 393.0,
+              "positive": 1.0,
+              "n": 7
+            },
+            "likelihood_positive_cosine_negative": 2
+          },
+          "kolf_strong_perturbations|KOLF2.1J iPSC": {
+            "groups": 8,
+            "unique_symbols": 8,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0017955306393560022,
+              "median": 0.0019976806361228228,
+              "positive": 1.0,
+              "n": 8
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 6.90625175252535e-05,
+              "median": 0.00010049220873042941,
+              "positive": 0.75,
+              "n": 8
+            },
+            "cos_model": {
+              "mean": -0.4643189172762038,
+              "median": -0.4873148567464052,
+              "positive": 0.0,
+              "n": 8
+            },
+            "cos_generic": {
+              "mean": 0.4608668589589806,
+              "median": 0.4440651274196674,
+              "positive": 1.0,
+              "n": 8
+            },
+            "pi_mean": {
+              "mean": 0.37831520289182663,
+              "median": 0.371280699968338,
+              "positive": 1.0,
+              "n": 8
+            },
+            "cells": {
+              "mean": 330.625,
+              "median": 304.0,
+              "positive": 1.0,
+              "n": 8
+            },
+            "admitted_cells": {
+              "mean": 330.625,
+              "median": 304.0,
+              "positive": 1.0,
+              "n": 8
+            },
+            "likelihood_positive_cosine_negative": 6
+          },
+          "tian2021_crispri|iPSC-induced neuron": {
+            "groups": 1,
+            "unique_symbols": 1,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0007430088007822633,
+              "median": 0.0007430088007822633,
+              "positive": 1.0,
+              "n": 1
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": -0.0002574407262727618,
+              "median": -0.0002574407262727618,
+              "positive": 0.0,
+              "n": 1
+            },
+            "cos_model": {
+              "mean": -0.13414707804004297,
+              "median": -0.13414707804004297,
+              "positive": 0.0,
+              "n": 1
+            },
+            "cos_generic": {
+              "mean": 0.8316508347368641,
+              "median": 0.8316508347368641,
+              "positive": 1.0,
+              "n": 1
+            },
+            "pi_mean": {
+              "mean": 0.44363099336624146,
+              "median": 0.44363099336624146,
+              "positive": 1.0,
+              "n": 1
+            },
+            "cells": {
+              "mean": 375.0,
+              "median": 375.0,
+              "positive": 1.0,
+              "n": 1
+            },
+            "admitted_cells": {
+              "mean": 375.0,
+              "median": 375.0,
+              "positive": 1.0,
+              "n": 1
+            },
+            "likelihood_positive_cosine_negative": 0
+          },
+          "tian2021_crispra|iPSC-induced neuron": {
+            "groups": 3,
+            "unique_symbols": 3,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 3
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 3
+            },
+            "cos_model": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 3
+            },
+            "cos_generic": {
+              "mean": 0.8046910952849107,
+              "median": 0.8168873763898115,
+              "positive": 1.0,
+              "n": 3
+            },
+            "pi_mean": {
+              "mean": 8.786807516901943e-18,
+              "median": 1.1146436597983747e-17,
+              "positive": 1.0,
+              "n": 3
+            },
+            "cells": {
+              "mean": 298.3333333333333,
+              "median": 290.0,
+              "positive": 1.0,
+              "n": 3
+            },
+            "admitted_cells": {
+              "mean": 298.3333333333333,
+              "median": 290.0,
+              "positive": 1.0,
+              "n": 3
+            },
+            "likelihood_positive_cosine_negative": 0
+          }
+        },
+        "pi_below_1e6_fraction": 0.025,
+        "all_ll_gain_zero": false
+      },
+      "J": {
+        "all": {
+          "groups": 206,
+          "unique_symbols": 206,
+          "ll_gain_vs_no_effect": {
+            "mean": 0.027954677940409595,
+            "median": 0.021951111033558846,
+            "positive": 1.0,
+            "n": 206
+          },
+          "ll_gain_vs_unknown_target": {
+            "mean": 0.0012598377805579288,
+            "median": 0.0017937588854692876,
+            "positive": 0.7184466019417476,
+            "n": 206
+          },
+          "cos_model": {
+            "mean": 0.19402238503769806,
+            "median": 0.12882151556667334,
+            "positive": 0.6796116504854369,
+            "n": 206
+          },
+          "cos_generic": {
+            "mean": -0.17683761195561473,
+            "median": -0.18670281054348342,
+            "positive": 0.08737864077669903,
+            "n": 206
+          },
+          "pi_mean": {
+            "mean": 0.3727393266066764,
+            "median": 0.3532208949327469,
+            "positive": 1.0,
+            "n": 206
+          },
+          "cells": {
+            "mean": 58.47572815533981,
+            "median": 46.0,
+            "positive": 1.0,
+            "n": 206
+          },
+          "admitted_cells": {
+            "mean": 61.93689320388349,
+            "median": 46.0,
+            "positive": 1.0,
+            "n": 206
+          },
+          "likelihood_positive_cosine_negative": 60
+        },
+        "by_key": {
+          "hepg2_nadig|HepG2": {
+            "groups": 206,
+            "unique_symbols": 206,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.027954677940409595,
+              "median": 0.021951111033558846,
+              "positive": 1.0,
+              "n": 206
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0012598377805579288,
+              "median": 0.0017937588854692876,
+              "positive": 0.7184466019417476,
+              "n": 206
+            },
+            "cos_model": {
+              "mean": 0.19402238503769806,
+              "median": 0.12882151556667334,
+              "positive": 0.6796116504854369,
+              "n": 206
+            },
+            "cos_generic": {
+              "mean": -0.17683761195561473,
+              "median": -0.18670281054348342,
+              "positive": 0.08737864077669903,
+              "n": 206
+            },
+            "pi_mean": {
+              "mean": 0.3727393266066764,
+              "median": 0.3532208949327469,
+              "positive": 1.0,
+              "n": 206
+            },
+            "cells": {
+              "mean": 58.47572815533981,
+              "median": 46.0,
+              "positive": 1.0,
+              "n": 206
+            },
+            "admitted_cells": {
+              "mean": 61.93689320388349,
+              "median": 46.0,
+              "positive": 1.0,
+              "n": 206
+            },
+            "likelihood_positive_cosine_negative": 60
+          }
+        },
+        "pi_below_1e6_fraction": 0.0,
+        "all_ll_gain_zero": false
+      }
+    },
+    "ident": {
+      "C": {
+        "all": {
+          "groups": 400,
+          "unique_symbols": 400,
+          "ll_gain_vs_no_effect": {
+            "mean": 0.0,
+            "median": 0.0,
+            "positive": 0.0,
+            "n": 400
+          },
+          "ll_gain_vs_unknown_target": {
+            "mean": 0.0,
+            "median": 0.0,
+            "positive": 0.0,
+            "n": 400
+          },
+          "cos_model": {
+            "mean": 0.0005182447196487094,
+            "median": 0.0,
+            "positive": 0.0075,
+            "n": 400
+          },
+          "cos_transfer": {
+            "mean": 0.4053729966011837,
+            "median": 0.40074271260689076,
+            "positive": 0.985,
+            "n": 400
+          },
+          "cos_generic": {
+            "mean": -0.07593903780295543,
+            "median": -0.09912881044531119,
+            "positive": 0.255,
+            "n": 400
+          },
+          "pi_mean": {
+            "mean": 3.4521453764833918e-09,
+            "median": 7.478094961096819e-16,
+            "positive": 1.0,
+            "n": 400
+          },
+          "cells": {
+            "mean": 136.41,
+            "median": 108.0,
+            "positive": 1.0,
+            "n": 400
+          },
+          "admitted_cells": {
+            "mean": 137.45,
+            "median": 108.0,
+            "positive": 1.0,
+            "n": 400
+          },
+          "likelihood_positive_cosine_negative": 0,
+          "model_minus_transfer": {
+            "mean": -0.404854751881535,
+            "win_fraction": 0.015,
+            "exploratory_target_bootstrap_95": [
+              -0.4264409298916785,
+              -0.38440242259160423
+            ],
+            "caveat": "one held-out context; targets are not independent biological families"
+          }
+        },
+        "by_key": {
+          "hepg2_nadig|HepG2": {
+            "groups": 400,
+            "unique_symbols": 400,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 400
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 400
+            },
+            "cos_model": {
+              "mean": 0.0005182447196487094,
+              "median": 0.0,
+              "positive": 0.0075,
+              "n": 400
+            },
+            "cos_transfer": {
+              "mean": 0.4053729966011837,
+              "median": 0.40074271260689076,
+              "positive": 0.985,
+              "n": 400
+            },
+            "cos_generic": {
+              "mean": -0.07593903780295543,
+              "median": -0.09912881044531119,
+              "positive": 0.255,
+              "n": 400
+            },
+            "pi_mean": {
+              "mean": 3.4521453764833918e-09,
+              "median": 7.478094961096819e-16,
+              "positive": 1.0,
+              "n": 400
+            },
+            "cells": {
+              "mean": 136.41,
+              "median": 108.0,
+              "positive": 1.0,
+              "n": 400
+            },
+            "admitted_cells": {
+              "mean": 137.45,
+              "median": 108.0,
+              "positive": 1.0,
+              "n": 400
+            },
+            "likelihood_positive_cosine_negative": 0,
+            "model_minus_transfer": {
+              "mean": -0.404854751881535,
+              "win_fraction": 0.015,
+              "exploratory_target_bootstrap_95": [
+                -0.4264409298916785,
+                -0.38440242259160423
+              ],
+              "caveat": "one held-out context; targets are not independent biological families"
+            }
+          }
+        },
+        "pi_below_1e6_fraction": 0.9975,
+        "all_ll_gain_zero": true
+      },
+      "T": {
+        "all": {
+          "groups": 400,
+          "unique_symbols": 340,
+          "ll_gain_vs_no_effect": {
+            "mean": 0.0,
+            "median": 0.0,
+            "positive": 0.0,
+            "n": 400
+          },
+          "ll_gain_vs_unknown_target": {
+            "mean": 0.0,
+            "median": 0.0,
+            "positive": 0.0,
+            "n": 400
+          },
+          "cos_model": {
+            "mean": 0.0003451934139190682,
+            "median": 0.0,
+            "positive": 0.01,
+            "n": 400
+          },
+          "cos_generic": {
+            "mean": 0.19745204613209563,
+            "median": 0.18590450890378396,
+            "positive": 0.6025,
+            "n": 400
+          },
+          "pi_mean": {
+            "mean": 6.615325355135917e-10,
+            "median": 1.1922404390862085e-17,
+            "positive": 0.985,
+            "n": 400
+          },
+          "cells": {
+            "mean": 396.46,
+            "median": 377.0,
+            "positive": 1.0,
+            "n": 400
+          },
+          "admitted_cells": {
+            "mean": 498.505,
+            "median": 377.0,
+            "positive": 1.0,
+            "n": 400
+          },
+          "likelihood_positive_cosine_negative": 0
+        },
+        "by_key": {
+          "replogle_rpe1|RPE1": {
+            "groups": 6,
+            "unique_symbols": 6,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 6
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 6
+            },
+            "cos_model": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 6
+            },
+            "cos_generic": {
+              "mean": -0.05741435089063546,
+              "median": -0.15674651638055098,
+              "positive": 0.3333333333333333,
+              "n": 6
+            },
+            "pi_mean": {
+              "mean": 1.0075837482688089e-14,
+              "median": 4.801490633933482e-16,
+              "positive": 1.0,
+              "n": 6
+            },
+            "cells": {
+              "mean": 364.0,
+              "median": 358.0,
+              "positive": 1.0,
+              "n": 6
+            },
+            "admitted_cells": {
+              "mean": 877.3333333333334,
+              "median": 358.0,
+              "positive": 1.0,
+              "n": 6
+            },
+            "likelihood_positive_cosine_negative": 0
+          },
+          "h1_vcc2025|H1": {
+            "groups": 19,
+            "unique_symbols": 19,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 19
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 19
+            },
+            "cos_model": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 19
+            },
+            "cos_generic": {
+              "mean": 0.430922128050261,
+              "median": 0.42093478365170794,
+              "positive": 1.0,
+              "n": 19
+            },
+            "pi_mean": {
+              "mean": 2.1563617555058585e-12,
+              "median": 8.6925598159115e-17,
+              "positive": 1.0,
+              "n": 19
+            },
+            "cells": {
+              "mean": 495.10526315789474,
+              "median": 500.0,
+              "positive": 1.0,
+              "n": 19
+            },
+            "admitted_cells": {
+              "mean": 1226.4736842105262,
+              "median": 1105.0,
+              "positive": 1.0,
+              "n": 19
+            },
+            "likelihood_positive_cosine_negative": 0
+          },
+          "jurkat_nadig|Jurkat": {
+            "groups": 8,
+            "unique_symbols": 8,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 8
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 8
+            },
+            "cos_model": {
+              "mean": 0.018094473151311963,
+              "median": 0.0,
+              "positive": 0.125,
+              "n": 8
+            },
+            "cos_generic": {
+              "mean": 0.24814896148957072,
+              "median": 0.09964347572752111,
+              "positive": 0.75,
+              "n": 8
+            },
+            "pi_mean": {
+              "mean": 3.818335046842947e-10,
+              "median": 8.742997054500247e-16,
+              "positive": 1.0,
+              "n": 8
+            },
+            "cells": {
+              "mean": 392.375,
+              "median": 373.5,
+              "positive": 1.0,
+              "n": 8
+            },
+            "admitted_cells": {
+              "mean": 703.375,
+              "median": 373.5,
+              "positive": 1.0,
+              "n": 8
+            },
+            "likelihood_positive_cosine_negative": 0
+          },
+          "norman2019_crispra|K562": {
+            "groups": 7,
+            "unique_symbols": 7,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 7
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 7
+            },
+            "cos_model": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 7
+            },
+            "cos_generic": {
+              "mean": 0.6004079924168455,
+              "median": 0.5841046508216305,
+              "positive": 1.0,
+              "n": 7
+            },
+            "pi_mean": {
+              "mean": 2.54187664265792e-20,
+              "median": 3.983640841641077e-21,
+              "positive": 1.0,
+              "n": 7
+            },
+            "cells": {
+              "mean": 472.85714285714283,
+              "median": 500.0,
+              "positive": 1.0,
+              "n": 7
+            },
+            "admitted_cells": {
+              "mean": 932.1428571428571,
+              "median": 779.0,
+              "positive": 1.0,
+              "n": 7
+            },
+            "likelihood_positive_cosine_negative": 0
+          },
+          "kolf_metabolic_enzymes|KOLF2.1J iPSC": {
+            "groups": 8,
+            "unique_symbols": 8,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 8
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 8
+            },
+            "cos_model": {
+              "mean": 0.006869532656767643,
+              "median": 0.0,
+              "positive": 0.125,
+              "n": 8
+            },
+            "cos_generic": {
+              "mean": 0.3526517544255212,
+              "median": 0.3432861086561319,
+              "positive": 1.0,
+              "n": 8
+            },
+            "pi_mean": {
+              "mean": 2.3816418056492537e-10,
+              "median": 2.3506934585166596e-15,
+              "positive": 1.0,
+              "n": 8
+            },
+            "cells": {
+              "mean": 500.0,
+              "median": 500.0,
+              "positive": 1.0,
+              "n": 8
+            },
+            "admitted_cells": {
+              "mean": 1155.5,
+              "median": 1132.0,
+              "positive": 1.0,
+              "n": 8
+            },
+            "likelihood_positive_cosine_negative": 0
+          },
+          "replogle_k562_gwps|K562": {
+            "groups": 211,
+            "unique_symbols": 211,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 211
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 211
+            },
+            "cos_model": {
+              "mean": 0.0011725470732079895,
+              "median": 0.0,
+              "positive": 0.004739336492890996,
+              "n": 211
+            },
+            "cos_generic": {
+              "mean": -0.06831442428806174,
+              "median": -0.0933250614281083,
+              "positive": 0.2843601895734597,
+              "n": 211
+            },
+            "pi_mean": {
+              "mean": 3.1897727417549897e-10,
+              "median": 3.200549725402836e-17,
+              "positive": 1.0,
+              "n": 211
+            },
+            "cells": {
+              "mean": 352.5308056872038,
+              "median": 337.0,
+              "positive": 1.0,
+              "n": 211
+            },
+            "admitted_cells": {
+              "mean": 369.957345971564,
+              "median": 337.0,
+              "positive": 1.0,
+              "n": 211
+            },
+            "likelihood_positive_cosine_negative": 0
+          },
+          "a549_liu_hillsley2026|A549": {
+            "groups": 101,
+            "unique_symbols": 101,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 101
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 101
+            },
+            "cos_model": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 101
+            },
+            "cos_generic": {
+              "mean": 0.5365339171292738,
+              "median": 0.5405328916963112,
+              "positive": 1.0,
+              "n": 101
+            },
+            "pi_mean": {
+              "mean": 1.0035093218833642e-12,
+              "median": 7.018384513207502e-20,
+              "positive": 0.9405940594059405,
+              "n": 101
+            },
+            "cells": {
+              "mean": 466.91089108910893,
+              "median": 500.0,
+              "positive": 1.0,
+              "n": 101
+            },
+            "admitted_cells": {
+              "mean": 552.2475247524752,
+              "median": 537.0,
+              "positive": 1.0,
+              "n": 101
+            },
+            "likelihood_positive_cosine_negative": 0
+          },
+          "replogle_k562_essential|K562": {
+            "groups": 21,
+            "unique_symbols": 21,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 21
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 21
+            },
+            "cos_model": {
+              "mean": -0.018151863687802812,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 21
+            },
+            "cos_generic": {
+              "mean": 0.579417814448368,
+              "median": 0.673992785349572,
+              "positive": 0.9047619047619048,
+              "n": 21
+            },
+            "pi_mean": {
+              "mean": 5.2816515753512605e-09,
+              "median": 1.8776347424886546e-16,
+              "positive": 1.0,
+              "n": 21
+            },
+            "cells": {
+              "mean": 394.7142857142857,
+              "median": 405.0,
+              "positive": 1.0,
+              "n": 21
+            },
+            "admitted_cells": {
+              "mean": 422.9047619047619,
+              "median": 405.0,
+              "positive": 1.0,
+              "n": 21
+            },
+            "likelihood_positive_cosine_negative": 0
+          },
+          "kolf_chromatin_modifiers|KOLF2.1J iPSC": {
+            "groups": 7,
+            "unique_symbols": 7,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 7
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 7
+            },
+            "cos_model": {
+              "mean": 0.010306717728566245,
+              "median": 0.0,
+              "positive": 0.14285714285714285,
+              "n": 7
+            },
+            "cos_generic": {
+              "mean": 0.4646438928619497,
+              "median": 0.4652369511639824,
+              "positive": 1.0,
+              "n": 7
+            },
+            "pi_mean": {
+              "mean": 1.161310836521107e-08,
+              "median": 1.5268048395131358e-15,
+              "positive": 1.0,
+              "n": 7
+            },
+            "cells": {
+              "mean": 399.7142857142857,
+              "median": 393.0,
+              "positive": 1.0,
+              "n": 7
+            },
+            "admitted_cells": {
+              "mean": 400.7142857142857,
+              "median": 393.0,
+              "positive": 1.0,
+              "n": 7
+            },
+            "likelihood_positive_cosine_negative": 0
+          },
+          "kolf_strong_perturbations|KOLF2.1J iPSC": {
+            "groups": 8,
+            "unique_symbols": 8,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 8
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 8
+            },
+            "cos_model": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 8
+            },
+            "cos_generic": {
+              "mean": 0.4608668589589806,
+              "median": 0.4440651274196674,
+              "positive": 1.0,
+              "n": 8
+            },
+            "pi_mean": {
+              "mean": 5.614128136412582e-17,
+              "median": 3.238908768404153e-18,
+              "positive": 1.0,
+              "n": 8
+            },
+            "cells": {
+              "mean": 330.625,
+              "median": 304.0,
+              "positive": 1.0,
+              "n": 8
+            },
+            "admitted_cells": {
+              "mean": 330.625,
+              "median": 304.0,
+              "positive": 1.0,
+              "n": 8
+            },
+            "likelihood_positive_cosine_negative": 0
+          },
+          "tian2021_crispri|iPSC-induced neuron": {
+            "groups": 1,
+            "unique_symbols": 1,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 1
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 1
+            },
+            "cos_model": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 1
+            },
+            "cos_generic": {
+              "mean": 0.8316508347368641,
+              "median": 0.8316508347368641,
+              "positive": 1.0,
+              "n": 1
+            },
+            "pi_mean": {
+              "mean": 1.4357402016223728e-17,
+              "median": 1.4357402016223728e-17,
+              "positive": 1.0,
+              "n": 1
+            },
+            "cells": {
+              "mean": 375.0,
+              "median": 375.0,
+              "positive": 1.0,
+              "n": 1
+            },
+            "admitted_cells": {
+              "mean": 375.0,
+              "median": 375.0,
+              "positive": 1.0,
+              "n": 1
+            },
+            "likelihood_positive_cosine_negative": 0
+          },
+          "tian2021_crispra|iPSC-induced neuron": {
+            "groups": 3,
+            "unique_symbols": 3,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 3
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 3
+            },
+            "cos_model": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 3
+            },
+            "cos_generic": {
+              "mean": 0.8046910952849107,
+              "median": 0.8168873763898115,
+              "positive": 1.0,
+              "n": 3
+            },
+            "pi_mean": {
+              "mean": 1.1234836411266805e-21,
+              "median": 8.42550652212609e-23,
+              "positive": 1.0,
+              "n": 3
+            },
+            "cells": {
+              "mean": 298.3333333333333,
+              "median": 290.0,
+              "positive": 1.0,
+              "n": 3
+            },
+            "admitted_cells": {
+              "mean": 298.3333333333333,
+              "median": 290.0,
+              "positive": 1.0,
+              "n": 3
+            },
+            "likelihood_positive_cosine_negative": 0
+          }
+        },
+        "pi_below_1e6_fraction": 1.0,
+        "all_ll_gain_zero": true
+      },
+      "J": {
+        "all": {
+          "groups": 206,
+          "unique_symbols": 206,
+          "ll_gain_vs_no_effect": {
+            "mean": 0.0,
+            "median": 0.0,
+            "positive": 0.0,
+            "n": 206
+          },
+          "ll_gain_vs_unknown_target": {
+            "mean": 0.0,
+            "median": 0.0,
+            "positive": 0.0,
+            "n": 206
+          },
+          "cos_model": {
+            "mean": 0.00952587938215444,
+            "median": 0.0,
+            "positive": 0.019417475728155338,
+            "n": 206
+          },
+          "cos_generic": {
+            "mean": -0.17683761195561473,
+            "median": -0.18670281054348342,
+            "positive": 0.08737864077669903,
+            "n": 206
+          },
+          "pi_mean": {
+            "mean": 1.6873674610410889e-09,
+            "median": 3.1470678004154036e-16,
+            "positive": 1.0,
+            "n": 206
+          },
+          "cells": {
+            "mean": 58.47572815533981,
+            "median": 46.0,
+            "positive": 1.0,
+            "n": 206
+          },
+          "admitted_cells": {
+            "mean": 61.93689320388349,
+            "median": 46.0,
+            "positive": 1.0,
+            "n": 206
+          },
+          "likelihood_positive_cosine_negative": 0
+        },
+        "by_key": {
+          "hepg2_nadig|HepG2": {
+            "groups": 206,
+            "unique_symbols": 206,
+            "ll_gain_vs_no_effect": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 206
+            },
+            "ll_gain_vs_unknown_target": {
+              "mean": 0.0,
+              "median": 0.0,
+              "positive": 0.0,
+              "n": 206
+            },
+            "cos_model": {
+              "mean": 0.00952587938215444,
+              "median": 0.0,
+              "positive": 0.019417475728155338,
+              "n": 206
+            },
+            "cos_generic": {
+              "mean": -0.17683761195561473,
+              "median": -0.18670281054348342,
+              "positive": 0.08737864077669903,
+              "n": 206
+            },
+            "pi_mean": {
+              "mean": 1.6873674610410889e-09,
+              "median": 3.1470678004154036e-16,
+              "positive": 1.0,
+              "n": 206
+            },
+            "cells": {
+              "mean": 58.47572815533981,
+              "median": 46.0,
+              "positive": 1.0,
+              "n": 206
+            },
+            "admitted_cells": {
+              "mean": 61.93689320388349,
+              "median": 46.0,
+              "positive": 1.0,
+              "n": 206
+            },
+            "likelihood_positive_cosine_negative": 0
+          }
+        },
+        "pi_below_1e6_fraction": 1.0,
+        "all_ll_gain_zero": true
+      }
+    }
+  },
+  "same_role_intersections": {
+    "C": {
+      "groups": 345,
+      "r2_cosine": 0.27325200528955984,
+      "r3_cosine": 0.297190401820022,
+      "caveat": "common labels only; corpus, controls, training exposure and fitted model differ"
+    },
+    "T": {
+      "groups": 29,
+      "r2_cosine": -0.13212802375643562,
+      "r3_cosine": 0.1689754697673131,
+      "caveat": "common labels only; corpus, controls, training exposure and fitted model differ"
+    },
+    "J": {
+      "groups": 20,
+      "r2_cosine": -0.01683270012702544,
+      "r3_cosine": 0.036734940268412834,
+      "caveat": "common labels only; corpus, controls, training exposure and fitted model differ"
+    }
+  },
+  "gate_counterexample": {
+    "response_loglik_better_by": 1.0,
+    "results": {
+      "current_clamp": {
+        "pi": 9.99999999999999e-09,
+        "negative_loglik_gradient_gate_logit": 9.999972817255325e-09
+      },
+      "logsigmoid": {
+        "pi": 9.99999999999999e-09,
+        "negative_loglik_gradient_gate_logit": -1.718281781751303e-08
+      }
+    },
+    "interpretation": "below clamp, current gradient descent further closes gate despite better response; stable log weights reopen it",
+    "limit": "mechanism after collapse, not demonstrated cause of its onset in r3"
+  }
+}

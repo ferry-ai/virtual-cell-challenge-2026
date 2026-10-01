@@ -29,6 +29,7 @@ L'aggiunta all'indice non avvia job, monitor o invii automatici.
 
 | ID | Priorità e motivo | Scheda | Prima di eseguire |
 |---|---|---|---|
+| R-LEAD | Direzione scientifica dal 1/10: rendere identificabile il training, poi transfer con residuo biologico, dati ponte e popolazioni; precisa il programma R-COMP senza sostituire l'assegnazione R-LAB | [Strategia scientifica](piani/strategia-scientifica.md) | Diagnosi riproducibili e D-050; split, controlli e confronti corretti prima di attribuire prestazioni a corpus o architettura |
 | R-LAB | **Prima priorità operativa**, richiesta del 30/09: corpus esteso di singole cellule, ingestione da laboratorio, QC e rete biologica; consegna a Claude | [Piano del giorno](piani/piano-giorno-2026-09-30.md) | Inventario completo e ruoli train/riserva; manifest, QC e risorse verificate prima dell'ingestione; incarichi esistenti preservati |
 | R-COMP | Programma generale dal 29/09: copertura reale, modello biologico, C/T/J e sei metriche; dal 30/09 attuato attraverso R-LAB | [Modello competitivo](piani/modello-competitivo.md) | Storico degli outcome, riserva e criteri di promozione prima dei nuovi training |
 | R-REV | **Adesso**, su richiesta del proprietario del 28/09 (12:30): le azioni della revisione critica, in ordine; la prima, l'unione del loro branch nel `main` del portatile, è fatta dal 28/09 | [Revisione critica](piani/revisione-critica.md) | Via del proprietario per invii, download, calcolo in cloud e push (mandato della scheda) |

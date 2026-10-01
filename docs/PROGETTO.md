@@ -9,7 +9,7 @@ cambia una conclusione. Il testo tolto resta in `docs/storico/`: le
 [sezioni 3–4 del 28/09](storico/PROGETTO_sezioni_3_4_2026-09-28.md) e il
 [§0, §6 e §7 del 30/09 mattina](storico/PROGETTO_sezioni_0_6_7_2026-09-30.md).
 
-## 0. Oggi — 30 settembre 2026
+## 0. Oggi — 1 ottobre 2026
 
 **Il massimo osservato è t28: +0,144845, rango 359; l'esito è non conclusivo.** Contro il t25 fa
 +0,004607, sotto la soglia congelata +0,005. Fedeltà e reach salgono, NMAE e Jaccard scendono; la
@@ -29,11 +29,11 @@ sottomissioni chiudono il **5 novembre** (§1).
 
 ### Direzione generale
 
-**Mandato del proprietario del 30/09:** il [piano del giorno per Claude, R-LAB](piani/piano-giorno-2026-09-30.md)
-mette prima corpus esteso di singole cellule, ingestione riprendibile, QC per assay e una rete
-basata su funzione del bersaglio e stato cellulare. Attua [R-COMP](piani/modello-competitivo.md);
-è un piano, non un risultato predittivo. Priorità in [PIANI.md](PIANI.md), evidenze per ambito in
-[AMBITI.md](AMBITI.md). Restano i seguenti vincoli e risultati:
+**Direzione della lead dal 1/10:** [R-LEAD](piani/strategia-scientifica.md) precisa R-COMP:
+prima correggere split, controlli e confronti del training, poi transfer con residuo biologico,
+dati ponte e popolazioni. Diagnosi riprodotte in [CP-0053](checkpoints/0053-audit-cellnet-e-strategia.md);
+nessuna rete ancora promossa. [R-LAB](piani/piano-giorno-2026-09-30.md) conserva il suo incarico.
+Priorità in [PIANI](PIANI.md), evidenze in [AMBITI](AMBITI.md); [testo precedente](storico/PROGETTO_direzione_2026-09-30.md).
 
 1. **Il traguardo è il set finale D/E/F**, l'unico che conta per la classifica: tutta la catena
    deve andare dall'input al `.vcc` su contesti e bersagli nuovi. Resta da fare la prova generale

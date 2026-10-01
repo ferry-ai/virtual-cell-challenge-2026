@@ -64,12 +64,14 @@ scartato a voce si perde (finora la regola stava solo nella memoria di un agente
 |---|---|---|---|
 | C | visto | nuovo | Trasferisce lo stesso intervento? |
 | T | nuovo | visto | Predice un intervento mai osservato? |
-| J, principale per i nuovi predittori | nuovo | nuovo | Generalizza entrambe le componenti? |
+| J, generalizzazione congiunta | nuovo | nuovo | Generalizza entrambe le componenti? |
 
-Il regime J è il criterio principale della nuova ricerca, non una retroattiva
-reinterpretazione dei punteggi esistenti. Riportare anche C e T per capire le cause
-di un eventuale miglioramento. Aggiungere un test su uno studio distinto quando
-disponibile, per separare almeno in parte biologia e differenze tecniche.
+Il regime J è il criterio principale per dichiarare generalizzazione congiunta.
+**Precisazione D-050, 1 ottobre:** per la produzione competitiva valutare separatamente C e J,
+in base al supporto disponibile; un miglioramento C può essere adottato per C con una regola
+preregistrata che preservi il ramo J, senza pretendere che dimostri entrambe le capacità.
+Riportare anche T e un test su uno studio distinto quando disponibile, per distinguere
+biologia e differenze tecniche. Nessuna reinterpretazione dei protocolli esistenti.
 
 **Separazioni richieste:**
 
@@ -88,6 +90,10 @@ disponibile, per separare almeno in parte biologia e differenze tecniche.
 5. Registrare provenienza dei descrittori: annotazioni e sequenze esterne possono
    descrivere bersagli nuovi, ma un modello preaddestrato su perturbazioni di test
    non sostiene la stessa dichiarazione di generalizzazione rigorosa.
+6. Congelare un manifest esplicito di target e contesti: aggiungere una sorgente non deve
+   riassegnare gli split esistenti. Dopo QC, deduplicazione ed esclusioni, verificare C/T/J
+   contro le etichette effettivamente ammesse. Un seme fisso su un universo variabile non
+   basta ([audit del 1/10](../reports/analisi/lead_audit_2026-10-01/REVISIONE.md)).
 
 Confrontare i modelli sullo stesso supporto misurato; affiancare una misura di
 copertura. L'intersezione dei geni valida un confronto, non impone di buttare via
@@ -112,8 +118,10 @@ un confronto a budget e copertura comparabili sia quello con tutti i dati utili.
 Non confondere numero di cellule, numero di linee e numero di studi.
 
 Prima del prossimo training fissare metrica primaria, aggregazione per gruppi,
-incertezza e soglia di promozione in un protocollo immutabile. Richiedere evidenza
-di vantaggio su J rispetto ai confronti semplici e verificare uso del contesto.
+incertezza e soglia di promozione in un protocollo immutabile. Per dichiarare J, richiedere
+vantaggio su J rispetto ai confronti semplici e verificare uso del contesto. Per adottare
+un candidato competitivo seguire la regola sul supporto C/J (D-050), con baseline generica
+realmente addestrata, affidabilità della verità e composizione dei gruppi esplicite.
 Con DE aggregate si misura lo spazio degli effetti; le metriche VCC complete
 richiedono un banco con cellule e controlli. Non chiamare un proxy punteggio VCC.
 

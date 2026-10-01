@@ -64,9 +64,11 @@ cambiare il codice: `scripts/CLAUDE.md` e `src/vcc2026/CLAUDE.md`.
   ricrea i geni mancanti (K562 ne misura 7.681 nel basale) ([audit dei dati](../reports/analisi/lead_scientist_2026-09-29/AUDIT_DATI.md), §4).
   Il ricalcolo dell'azione 5 di R-REV ha il protocollo ma non ancora i risultati
   ([basali sull'asse](../reports/sorgenti/basali_asse_2026-09-29/RISULTATI.md)).
-- **Misurato.** La produzione usa quattro sorgenti, la rete r2 dodici contesti; diciannove linee
-  HIPSCI già pronte non sono mai entrate in un training
-  ([copertura del training](../reports/analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md)).
+- **Aggiornamento 1/10.** La produzione di riferimento usa quattro sorgenti; il nuovo training
+  cellulare r2 include HIPSCI. L'audit trova pesi effettivi e controlli diversi dal disegno,
+  e misura la riproducibilità degli effetti HepG2
+  ([revisione](../reports/analisi/lead_audit_2026-10-01/REVISIONE.md), §2–3). La copertura del
+  [29/09](../reports/analisi/lead_scientist_2026-09-29/TRAINING_COPERTURA.md) descrive la rete precedente.
 - **Regola.** Una sorgente non si scarta per scarsa sovrapposizione con i 300 bersagli (D-044); un
   gene non misurato resta mascherato, non vale zero (D-009).
 
@@ -76,6 +78,14 @@ Piano operativo: [R-LAB, corpus cellulare e QC](piani/piano-giorno-2026-09-30.md
 28/09, con il lavoro proseguito in R-V2 e R-COMP.
 
 ### 5. Modelli appresi e generalizzazione
+
+- **Audit 1/10.** La rete cellulare r2 perde in media contro transfer su HepG2 C, ma mostra
+  complementarità esplorativa. Split r2/r3 diversi impediscono un'attribuzione ai soli dati
+  aggiunti; unknown non è una baseline generica addestrata. Evidenza e correzioni nella
+  [revisione lead](../reports/analisi/lead_audit_2026-10-01/README.md); direzione in
+  [R-LEAD](piani/strategia-scientifica.md), criteri C/J precisati da D-050.
+  R3 concluso: identity collassato e controesempio del gradiente sotto clamp
+  nell'[aggiornamento](../reports/analisi/lead_audit_2026-10-01/AGGIORNAMENTO_R3.md).
 
 - **Misurato.** Nessun modello appreso ha passato la sua regola: encoder, modello a cancelli, rete
   dei contesti, rete relazionale ([CP-0043](checkpoints/0043-misura-decisiva-relazioni.md)), rete
