@@ -1,0 +1,89 @@
+{
+ "job_id": "j09_southard_r1",
+ "min_free_stage_bytes": 4294967296,
+ "units": [
+  {
+   "name": "southard_rpe1",
+   "adapter": "h5rows",
+   "kwargs": {
+    "path": "https://zenodo.org/api/records/15213619/files/RPE1_CRISPRa_final_population.h5ad/content",
+    "study": "southard_rpe1_crispra",
+    "context": "RPE1",
+    "chemistry": "10x 3'",
+    "modality": "CRISPRa",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "target_col": "guide_target",
+    "control_values": [
+     "non"
+    ],
+    "guides_col": "guide_identity",
+    "library_col": "gem_group",
+    "published_depth": "UMI_count",
+    "var_symbol_col": "gene_name",
+    "feature_id_col": "gene_id"
+   },
+   "source": {
+    "id": "southard_RPE1_CRISPRa_final_population",
+    "release": "Zenodo 15213619",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "counts h5ad",
+      "locator": "https://zenodo.org/api/records/15213619/files/RPE1_CRISPRa_final_population.h5ad/content",
+      "bytes": 29749295165,
+      "measured": "p1_r4/remote/southard_RPE1_CRISPRa_final_population.json"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     0,
+     850225
+    ]
+   }
+  },
+  {
+   "name": "southard_hs27",
+   "adapter": "h5rows",
+   "kwargs": {
+    "path": "https://zenodo.org/api/records/15200179/files/fibroblast_CRISPRa_final_pop.h5ad/content",
+    "study": "southard_hs27_crispra",
+    "context": "Hs27 fibroblast",
+    "chemistry": "10x 3'",
+    "modality": "CRISPRa",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "target_col": "guide_target",
+    "control_values": [
+     "non"
+    ],
+    "guides_col": "guide_identity",
+    "library_col": "gem_group",
+    "published_depth": "UMI_count",
+    "var_symbol_col": "gene_name",
+    "feature_id_col": "gene_id"
+   },
+   "source": {
+    "id": "southard_fibroblast_CRISPRa_final_pop",
+    "release": "Zenodo 15200179",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "counts h5ad",
+      "locator": "https://zenodo.org/api/records/15200179/files/fibroblast_CRISPRa_final_pop.h5ad/content",
+      "bytes": 9720100792,
+      "measured": "p1_r4/remote/southard_fibroblast_CRISPRa_final_pop.json"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     0,
+     447301
+    ]
+   }
+  }
+ ],
+ "min_free_out_bytes": 0
+}

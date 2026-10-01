@@ -1,0 +1,48 @@
+{
+ "job_id": "j12_kolf_strong_r1",
+ "min_free_stage_bytes": 4294967296,
+ "units": [
+  {
+   "name": "kolf_strong",
+   "adapter": "h5csc_shards",
+   "kwargs": {
+    "path": "https://ndownloader.figshare.com/files/64650852",
+    "study": "kolf_strong_perturbations",
+    "context": "KOLF2.1J iPSC",
+    "chemistry": "MISSING",
+    "modality": "CRISPRi",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "target_col": "gene_target",
+    "control_values": [
+     "NTC"
+    ],
+    "guides_col": "gRNA",
+    "library_col": "channel",
+    "layer": "counts",
+    "work": "{WORK}/buckets_kolf_strong",
+    "cells_per_pass": 200000
+   },
+   "source": {
+    "id": "kolf_KOLF_Strong_Perturbations",
+    "release": "Figshare+ 27261219",
+    "license": "CC BY 4.0",
+    "files": [
+     {
+      "role": "counts h5ad",
+      "locator": "https://ndownloader.figshare.com/files/64650852",
+      "bytes": 46718752086,
+      "measured": "p1_r5/remote_kolf/kolf_KOLF_Strong_Perturbations.json"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     0,
+     232438
+    ]
+   }
+  }
+ ],
+ "min_free_out_bytes": 0
+}

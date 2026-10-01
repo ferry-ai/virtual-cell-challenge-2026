@@ -1,0 +1,47 @@
+{
+ "job_id": "j10_a549_r1",
+ "min_free_stage_bytes": 4294967296,
+ "units": [
+  {
+   "name": "a549_ko",
+   "adapter": "h5rows",
+   "kwargs": {
+    "path": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE345nnn/GSE345058/suppl/GSE345058_SC_raw_normalized_counts.h5ad",
+    "study": "a549_liu_hillsley2026",
+    "context": "A549",
+    "chemistry": "MISSING",
+    "modality": "KO",
+    "axis_csv": "{AXIS}",
+    "block": 20000,
+    "target_col": "Perturbation",
+    "control_values": [
+     "Nontargeting"
+    ],
+    "guides_col": "sgRNA",
+    "library_col": "Lane",
+    "published_depth": "total_counts",
+    "layer": "raw_counts"
+   },
+   "source": {
+    "id": "a549_GSE345058_SC_raw_normalized_counts",
+    "release": "GEO GSE345058",
+    "license": "GEO terms",
+    "files": [
+     {
+      "role": "counts h5ad",
+      "locator": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE345nnn/GSE345058/suppl/GSE345058_SC_raw_normalized_counts.h5ad",
+      "bytes": 25049707311,
+      "measured": "p1_r4/remote/a549_GSE345058_SC_raw_normalized_counts.json"
+     }
+    ]
+   },
+   "expect": {
+    "rows": [
+     0,
+     606075
+    ]
+   }
+  }
+ ],
+ "min_free_out_bytes": 0
+}
