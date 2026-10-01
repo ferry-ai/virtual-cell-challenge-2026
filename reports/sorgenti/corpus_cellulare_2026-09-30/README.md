@@ -251,3 +251,13 @@ I training che usano questi dati sono in `reports/modelli/cellnet_tecnico_2026-1
 
 I training che usano questi dati: `reports/modelli/cellnet_esteso_2026-10-01/` (il secondo, con le riletture di
 Replogle) e `reports/modelli/cellnet_completo_2026-10-01/` (il terzo, con la seconda ondata).
+
+**Più tardi, fino alle 06:15.**
+- Il job 122 finisce con parità ok (1.989.578 cellule in 100 shard) ed è pubblicato come `rlab-k562-gwps-r3`.
+- KOLF piccoli (124) e KOLF forte (126, 232.438 cellule) sono finiti e pubblicati. Southard (125) legge da Zenodo a
+  circa uno shard ogni 9 minuti.
+- **Terza ondata** in coda (job 127-129), con `wave3_specs.py`: sorgenti scPerturb umane con bersagli su geni
+  singoli. Le loro etichette sono state lette in remoto prima della coda (`smoke_labels.py`, esiti in `smoke_w3/`).
+  Il catalogo dice perché restano fuori Adamson, Papalexi pooled, Wessels, gli schermi di enhancer, i topi e i farmaci.
+- **Catalogo**, versione corrente: [catalogo_r3](catalogo_r3/CATALOGO.md). CD4 (33,6 milioni di cellule, circa 1,7 TB)
+  è segnato «da campionare»: il disegno del campione spetta al proprietario.
