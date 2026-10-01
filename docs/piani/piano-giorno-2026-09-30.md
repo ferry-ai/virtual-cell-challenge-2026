@@ -146,6 +146,27 @@
      [scostamenti](../../reports/modelli/cellnet_esteso_2026-10-01/SCOSTAMENTI.md) scritti prima;
   2. leggerlo con la regola del protocollo §4;
   3. un protocollo per un terzo training con la seconda ondata.
+- **Stato alle 06:10 del 1/10 (Claude `07ebf08b`; sostituisce il prossimo passo qui sopra):**
+  - *secondo training* `rlab-cellnet-r2` su Kaggle GPU dalle 05:57 (ciclo di ripresa, poi 150 minuti; fine verso le
+    08:40), sul pre-passo r5: 5.157.575 cellule, 3.354.670 di training ammesse. Prima del lancio:
+    - una prova del codice corretto su Kaggle CPU con shard reali (in
+      [caricatore](../../reports/modelli/cellnet_esteso_2026-10-01/caricatore/README.md));
+    - la lettura riga per riga degli shard in valutazione (scostamento 7).
+  - *incidente E-20260930-004* verificato in remoto: le tre chiavi di Replogle hanno controlli nel pre-passo r5;
+  - *terzo training*: [protocollo](../../reports/modelli/cellnet_completo_2026-10-01/PROTOCOLLO.md) scritto alle 03:59,
+    prima del lancio del secondo. Il pre-passo `rlab-prepass-r6` gira su Kaggle CPU dalle 06:00, con la seconda ondata:
+    A549, Tian e Norman, KOLF piccoli e forte. Southard resta fuori: il job 125 legge 850.225 + 447.301 cellule da
+    Zenodo a circa uno shard ogni 9 minuti, e finirà a fine mattina;
+  - *terza ondata* in coda su Colab (job 127-129): Frangieh, Sunshine, Papalexi arrayed, Shifrut, Datlinger, Dixit, Xu.
+    Etichette provate in remoto prima della coda (`smoke_labels.py`, `smoke_w3/`);
+  - *CD4* (Marson 2025): 33,6 milioni di cellule in 12 file da circa 140 GB. Per intero non si ingerisce: serve un
+    disegno di campionamento (per donatore e stimolo, controlli interi e un tetto per guida), **da decidere col
+    proprietario**.
+- **Prossimo passo:**
+  1. leggere `rlab-cellnet-r2` con la regola del suo protocollo;
+  2. lanciare il terzo training sul pre-passo r6, con il budget del protocollo (quota restante meno 20 minuti, almeno
+     60);
+  3. pubblicare la terza ondata, poi Southard.
 - **Aperti prima del training esteso (proprietario in chat, 30/09, prima delle 23:39):** quattro punti della
   revisione di Codex che i 13 casi di `test_cell_data.py` non coprono. Restano aperti finché ognuno non ha una regola
   scritta in `cell_data.py`, casi controllati che la provano e il suo esito nel pre-passo di un training vero:
