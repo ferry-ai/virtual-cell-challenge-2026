@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "eid": "E-20261001-001",
+  "revision": 2,
+  "previous_sha256": "ecc35b0d6ec2491628061aebac750cabccfeae68501164925e47527f46bb012f",
+  "recorded_utc": "2026-10-01T01:45:08+00:00",
+  "claim_type": "operational_incident",
+  "state": "verified_locally",
+  "title": "R-LAB: primo training GPU (rlab-cellnet-r1), braccio identity ucciso per memoria e GPU in attesa dei dati per l'87% del tempo",
+  "symptom": "Come nella revisione 1: kernel rlab-cellnet-r1 in ERROR con codici [0, 1]; braccio identity morto al passo 2.800 circa per SIGKILL di un processo di caricamento; braccio descriptors a 510-650 cellule/s con data_wait_fraction 0,87-0,92 contro le 3.763 cellule/s del piano; riserva della valutazione 3.914 s contro 1.621 s spesi.",
+  "cause": "Misurata dal kernel CPU rlab-loader-profile-r1 su shard reali di HIPSCI targeted (244 MB, 20.000 cellule, circa 113 milioni di valori non nulli). La lettura grezza e veloce: 118 MB/s da sola, 385 MB/s con quattro letture insieme. La decompressione gzip di X costa 6,1-10,0 s per shard. read_csr com'era (COO, somma, ordinamento) costa 14,1-16,7 s, il filtro diretto 7,8-10,7 s. Un processo che gioca il flusso arriva a 932 cellule/s con read_csr com'era, con le letture al 97% del tempo, e a 2.025 cellule/s col filtro diretto. Nel primo training due bracci, ciascuno con due processi di caricamento, si dividevano 4 CPU e 32 GB. Il piano misurava i passi 20-80, serviti dal buffer iniziale. La memoria dei processi di caricamento era circa 8 GB per braccio (11,4 GB per tre processi nella profilazione).",
+  "cause_verified": true,
+  "fix": "Commit 12e0040 e d4a29e5, dataset rlab-cellnet-code aggiornato alle 01:44 UTC. cellnet.read_csr filtra il CSR direttamente, con la stessa matrice. train_cellnet.py allena i bracci in un solo processo sugli stessi lotti (--arm NAME=CODICE@DEVICE): ogni shard si legge una volta per tutti i bracci e la memoria non si raddoppia. La valutazione legge gli shard con processi di caricamento (--eval-workers); se uno si perde, riparte nel processo principale entro il budget. La riserva della valutazione separa le letture dal resto. Il piano misura il throughput a regime. kaggle_train.py lancia un solo processo di training con un braccio per GPU.",
+  "regression_test": "test_read_csr.py: stessa matrice di un riferimento denso con feature fuori ordine, una collisione, feature fuori asse e righe vuote; impronte indipendenti dall'ordine nativo. test_prepass.py test_arms_on_one_stream_train_as_alone: due bracci sugli stessi lotti, con processi di caricamento per training e valutazione, finiscono nello stato del braccio addestrato da solo, con le stesse valutazioni. Tutta la suite (test_prepass, test_read_csr, test_cell_data: 49 casi) PASS il 1/10; una simulazione locale del kernel generato (pre-passo, ciclo di ripresa a due bracci, training, valutazione) finisce con codice 0.",
+  "next_guard": "Prima di un training lungo, una corsa breve con gli stessi shard deve misurare il throughput a regime, dopo che ogni ruolo ha letto almeno due shard oltre il buffer iniziale, e la memoria di tutti i processi insieme. Il piano lo fa ora da solo (--measure-from a regime) e coverage.json riporta il throughput dell'intera corsa.",
+  "scope": "Verifica remota: il secondo training rlab-cellnet-r2 (plan.json e coverage.json: cellule/s per braccio a regime e frazione di attesa; nessun processo ucciso; valutazione completa entro il budget). Attesa scritta prima, non misura: circa 3.000 cellule/s per braccio con tre processi di caricamento.",
+  "evidence": [
+    {
+      "path": "reports/modelli/cellnet_esteso_2026-10-01/caricatore/esito_profilo_r1/profile.json",
+      "sha256": "6b8f528ce0a14e5a980a68002ce021715acf62c1916ea0846b81fdd1535df07b",
+      "bytes": 3480,
+      "supports": "Tempi di lettura, decompressione e conversione per shard; cellule/s dei flussi con read_csr com'era, col filtro diretto e con 2 e 3 processi di caricamento"
+    },
+    {
+      "path": "reports/modelli/risposta_biologica_2026-09-30/cellnet.py",
+      "sha256": "e4b2be01ddb8ca4abdfce598f608fc6300a98fc6f63aa2d7d6b554749c998c69",
+      "bytes": 15261,
+      "supports": "read_csr col filtro diretto"
+    },
+    {
+      "path": "reports/modelli/risposta_biologica_2026-09-30/train_cellnet.py",
+      "sha256": "bd5b244f83bdc09a1bd8341d761ef6f5d1d11b88f60b657bbf479228cc0bbba5",
+      "bytes": 82988,
+      "supports": "Bracci in un processo, valutazione con processi di caricamento e ripiego, riserva per letture, piano a regime"
+    },
+    {
+      "path": "reports/modelli/risposta_biologica_2026-09-30/kaggle_train.py",
+      "sha256": "76ecdf0025f086fb7eaa572f22585a5de2566272c8ab3f2be1778859692cebac",
+      "bytes": 14237,
+      "supports": "Un solo processo di training per kernel, un braccio per GPU, ciclo di ripresa su tutti i bracci"
+    },
+    {
+      "path": "reports/modelli/risposta_biologica_2026-09-30/test_read_csr.py",
+      "sha256": "d1a6820e5ef0a66ae66f327782f1f56df57344e155caacdbf37bde20f520fed6",
+      "bytes": 3031,
+      "supports": "Test del lettore diretto"
+    },
+    {
+      "path": "reports/modelli/risposta_biologica_2026-09-30/test_prepass.py",
+      "sha256": "1e9128a3e987429f110beaf906563d1f3c1a727e040840f992227e2c56de2fd1",
+      "bytes": 20081,
+      "supports": "Test dei bracci sugli stessi lotti"
+    }
+  ],
+  "remote_verification": null
+}
