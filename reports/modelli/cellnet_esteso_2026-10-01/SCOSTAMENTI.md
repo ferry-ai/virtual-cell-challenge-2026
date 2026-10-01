@@ -1,6 +1,6 @@
 # Scostamenti dal protocollo del secondo training, decisi prima di ogni suo numero
 
-1 ottobre 2026, 03:35 CEST, Claude Code (sessione `07ebf08b`). Il [protocollo](PROTOCOLLO.md), scritto alle 02:40,
+1 ottobre 2026, 03:33 CEST (ora del file; prima scritta 03:35 per stima, corretta), Claude Code (sessione `07ebf08b`). Il [protocollo](PROTOCOLLO.md), scritto alle 02:40,
 resta com'è. Questi scostamenti vengono dopo l'[esito del primo training](../cellnet_tecnico_2026-10-01/ESITO.md)
 (03:20) e dopo la [profilazione del caricatore](caricatore/README.md) (03:31). Precedono il pre-passo e il lancio del
 secondo training: quando sono scritti, del secondo training non esiste alcun numero.
