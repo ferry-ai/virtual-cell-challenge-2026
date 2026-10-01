@@ -212,6 +212,23 @@
     - **Versione intera:** tutti i donatori con al più 25 cellule per guida, circa 7,8 milioni di cellule e 80 GB.
       Va prima verificato il limite di spazio dei dataset privati di Kaggle.
     - `var` ha gli ID Ensembl nell'indice e i simboli in `gene_name` (lezione di E-20260930-004).
+- **Stato alle 20:25 del 1/10 (Claude `07ebf08b`).**
+  - **t29 valutato: −0,029625**, rango 893, sotto la banda registrata: ramo c della regola
+    ([CP-0055](../checkpoints/0055-t29-rete-cellulare-punteggio.md),
+    [confronto](../../reports/invii/prediction_t29_2026-10-01/comparison.json)).
+  - Il PDS grezzo vale 0,50 contro 0,79 del t22: la rete prevede soprattutto una risposta comune e distingue poco i
+    bersagli. La fedeltà della direzione è pari alla ricetta.
+  - Il t28 resta il massimo osservato e la ricetta del t22 il riferimento.
+  - La sessione è rimasta ferma anche dalle 17:28 alle 20:21 circa: il punteggio è stato letto solo alle 20:21.
+- **Prossimo passo (R-LAB):**
+  1. nessun nuovo invio della rete finché un banco locale a sei membri sui contesti pubblici non la mostra almeno al
+     livello del trasferimento (regola del t29);
+  2. misurare in locale la parte specifica del bersaglio, cioè il PDS dei contesti tenuti fuori, sul secondo e sul
+     terzo training;
+  3. provare la rete come correzione della ricetta invece che al suo posto;
+  4. il quarto training ([protocollo](../../reports/modelli/cellnet_terza_ondata_2026-10-01/PROTOCOLLO.md)) quando si
+     rinnova la quota GPU;
+  5. decisioni del proprietario: il campione di CD4.
 - **Aperti prima del training esteso (proprietario in chat, 30/09, prima delle 23:39):** quattro punti della
   revisione di Codex che i 13 casi di `test_cell_data.py` non coprono. Restano aperti finché ognuno non ha una regola
   scritta in `cell_data.py`, casi controllati che la provano e il suo esito nel pre-passo di un training vero:
