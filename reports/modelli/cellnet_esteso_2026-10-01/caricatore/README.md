@@ -8,6 +8,21 @@ e il braccio `ident` è stato ucciso per memoria.
 |---|---|
 | `profile_loader.py` | La misura: codice di un kernel Kaggle **CPU** (nessuna quota GPU) sugli shard di training del pre-passo r3 |
 | `esito_profilo_r1/` | `profile.json` e il log del kernel `rlab-loader-profile-r1` (01:16-01:30 UTC), con manifest e metadati |
+| `esito_prova_cpu_r1/` | La prova del codice corretto su Kaggle CPU (`rlab-cellnet-smoke-r1`, 01:46-02:12 UTC, commit `d4a29e5`): un processo, due bracci, tre processi di caricamento, sugli shard reali del primo training; output piccoli con manifest |
+
+## La prova su CPU del codice corretto (misurato)
+
+- Il kernel finisce con codice 0, e i due bracci scrivono `eval.json` e `model.pt`. Memoria del processo principale:
+  picco 5,4 GB.
+- Il training non fa passi. Su CPU la riserva della valutazione, 3.898 s, supera il budget di 30 minuti: il calcolo
+  dei modelli su CPU costa circa 21 ms per cellula, contro le letture.
+- La valutazione con tre processi di caricamento gira sugli shard veri (64.861 cellule in 1.136 s), ma su CPU si ferma
+  alla scadenza: 305 gruppi T su 400 non raggiunti.
+- Ne segue una correzione prima del secondo training. Le cellule T (bersagli nascosti nei contesti di training) stanno
+  a poche centinaia per shard, e la valutazione leggeva ogni shard per intero. Ora uno shard con le cellule di
+  valutazione entro l'8% delle sue si legge riga per riga (`cellnet.read_csr_rows`, stessa matrice). La riserva si
+  stima dai byte che la valutazione decomprime, al ritmo misurato dalla sonda, e dal calcolo per cellula dopo il primo
+  blocco.
 
 ## Che cosa è stato misurato
 

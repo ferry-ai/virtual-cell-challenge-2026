@@ -60,6 +60,24 @@ class ReadCsr(unittest.TestCase):
         keep = np.sort(rng.choice(200, 80, replace=False))
         np.testing.assert_array_equal(m[keep].toarray(), reference(x, native)[keep])
 
+    def test_rows_read_alone_are_the_rows_of_the_whole_read(self):
+        rng = np.random.default_rng(7)
+        native = ["G9", "G2", "XOFF1", "G7", "G30", "G1", "G7", "XOFF2"] + \
+                 [g for g in GENES if g not in ("G9", "G2", "G7", "G30", "G1")]
+        x = rng.poisson(1.2, size=(300, len(native)))
+        x[[0, 1, 2, 150, 299]] = 0                                  # empty rows, at the edges too
+        p = self.d / "r.h5ad"
+        write_shard(p, x, "s", "K", "L", ["NTC"] * 300, [f"b{i}" for i in range(300)], "file://s", native=native)
+        info = CN.index_shard(p)
+        whole, mask = CN.read_csr(p, info.official_index, info.measured, np.arange(len(GENES)), len(GENES))
+        cases = [np.array([0, 1, 2, 3, 299]), np.array([150]), np.array([299, 5, 6, 7, 5, 120]),
+                 np.sort(rng.choice(300, 40, replace=False)), rng.choice(300, 60), np.zeros(0, np.int64)]
+        for rows in cases:
+            part, m2 = CN.read_csr_rows(p, rows, info.official_index, info.measured, np.arange(len(GENES)), len(GENES))
+            self.assertEqual(part.shape, (rows.size, len(GENES)))
+            np.testing.assert_array_equal(part.toarray(), whole[rows].toarray())
+            np.testing.assert_array_equal(m2, mask)
+
     def test_fingerprints_do_not_depend_on_the_native_order(self):
         rng = np.random.default_rng(6)
         x = rng.poisson(2.0, size=(50, len(GENES)))

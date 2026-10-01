@@ -622,13 +622,29 @@ def assemble(cells, xs, shards, lib_rows, ctrl_k, n_unknown, seed, step, unknown
             "sel": torch.tensor([pos[p] for p in zip(key.tolist(), libc.tolist())], dtype=torch.int64)}
 
 
-class ShardCache:
-    """Counts of training rows, one shard read at a time, the last `size` kept."""
+CHUNK_FACTOR = 6        # a row read alone decompresses about six times its own bytes (1/10: chunks of ~27.7k values,
+#                         rows of ~5.6k in HIPSCI targeted); the price of a partial read, see read_bytes
 
-    def __init__(self, shards, gene_of_axis, G, size, rows_of=lambda s: s["train_rows"]):
+
+def read_bytes(s, keep, partial):
+    """The compressed bytes a read of rows `keep` of shard s decompresses, as priced: the whole file, or each row's
+    share times CHUNK_FACTOR when the rows are read alone (at most `partial` of the shard's cells)."""
+    if keep.size <= partial * s["n"]:
+        return min(s["bytes"], CHUNK_FACTOR * keep.size * s["bytes"] / max(s["n"], 1)), True
+    return s["bytes"], False
+
+
+class ShardCache:
+    """Counts of the rows a stream needs, one shard read at a time, the last `size` kept: the training rows by default,
+    or the rows of `rows_by_sid`. A shard whose needed rows are at most `partial` of its cells is read row by row
+    (cellnet.read_csr_rows), the others whole."""
+
+    def __init__(self, shards, gene_of_axis, G, size, rows_of=lambda s: s["train_rows"], rows_by_sid=None,
+                 partial=0.0):
         self.shards, self.gene_of_axis, self.G, self.size, self.rows_of = shards, gene_of_axis, G, size, rows_of
+        self.rows_by_sid, self.partial = rows_by_sid, partial
         self.cache = OrderedDict()
-        self.reads, self.read_seconds = 0, 0.0
+        self.reads, self.read_seconds, self.partial_reads, self.priced_bytes = 0, 0.0, 0, 0.0
 
     def get(self, sid):
         if sid in self.cache:
@@ -636,11 +652,18 @@ class ShardCache:
             return self.cache[sid]
         s = self.shards[sid]
         t0 = time.time()
-        x, _ = CN.read_csr(s["path"], s["official_index"], s["measured"], self.gene_of_axis, self.G)
-        keep = np.asarray(self.rows_of(s))
-        self.cache[sid] = (keep, x[keep])
+        keep = np.asarray(self.rows_by_sid[sid] if self.rows_by_sid is not None else self.rows_of(s))
+        nbytes, alone = read_bytes(s, keep, self.partial)
+        if alone:
+            xk, _ = CN.read_csr_rows(s["path"], keep, s["official_index"], s["measured"], self.gene_of_axis, self.G)
+            self.partial_reads += 1
+        else:
+            x, _ = CN.read_csr(s["path"], s["official_index"], s["measured"], self.gene_of_axis, self.G)
+            xk = x[keep]
+        self.cache[sid] = (keep, xk)
         self.reads += 1
         self.read_seconds += time.time() - t0
+        self.priced_bytes += nbytes
         while len(self.cache) > self.size:
             self.cache.popitem(last=False)
         return self.cache[sid]
@@ -815,15 +838,21 @@ class EvalStream(_Iterable):
     processes each reads its own shards (shard k of the sorted list goes to process k mod n); the sums the evaluation
     accumulates do not depend on the order."""
 
-    def __init__(self, by_shard, shards, gene_of_axis, G, lib_rows, ctrl_k, n_unknown, seed, chunk):
+    def __init__(self, by_shard, shards, gene_of_axis, G, lib_rows, ctrl_k, n_unknown, seed, chunk, partial=0.0):
         self.by_shard, self.shards, self.gene_of_axis, self.G = by_shard, shards, gene_of_axis, G
         self.lib_rows, self.ctrl_k, self.n_unknown, self.seed, self.chunk = lib_rows, ctrl_k, n_unknown, seed, chunk
-        self.cache = None
+        self.needed = {s: np.unique([r for _, r in items]) for s, items in by_shard.items()}
+        self.partial, self.cache = partial, None
+
+    def priced_bytes(self):
+        """The compressed bytes the whole evaluation decompresses, as ShardCache prices its reads."""
+        return float(sum(read_bytes(self.shards[s], rows, self.partial)[0] for s, rows in self.needed.items()))
 
     def __iter__(self):
         info = torch.utils.data.get_worker_info()
         k, n = (info.id, info.num_workers) if info is not None else (0, 1)
-        self.cache = ShardCache(self.shards, self.gene_of_axis, self.G, 1, rows_of=lambda s: np.arange(s["n"]))
+        self.cache = ShardCache(self.shards, self.gene_of_axis, self.G, 1, rows_by_sid=self.needed,
+                                partial=self.partial)
         for i, s in enumerate(sorted(self.by_shard)):
             if i % n != k:
                 continue
@@ -1045,10 +1074,11 @@ def train(a):
             arm.model.eval()
         acc = {arm.name: {gi: {"n": 0, "gain0": 0.0, "gainu": 0.0, "pi": 0.0, "obs": np.zeros(G), "pm": np.zeros(G),
                                "pb": np.zeros(G)} for gi in range(len(groups))} for arm in arms}
-        stream = EvalStream(by_shard, shards, st["gene_of_axis"], G, lib_rows, a.ctrl_k, n_sym, a.seed, a.eval_chunk)
+        stream = EvalStream(by_shard, shards, st["gene_of_axis"], G, lib_rows, a.ctrl_k, n_sym, a.seed, a.eval_chunk,
+                            partial=a.eval_partial)
         source = iter(stream) if workers == 0 else iter(torch.utils.data.DataLoader(
             stream, batch_size=None, num_workers=workers, prefetch_factor=2, pin_memory=bool(cuda_devs)))
-        done_cells, t0, complete = 0, time.time(), True
+        done_cells, t0, complete, compute = 0, time.time(), True, []
         while limit_cells is None or done_cells < limit_cells:
             b = next(source, None)
             if b is None:
@@ -1057,6 +1087,7 @@ def train(a):
                 complete = False
                 break
             gis = b["gi"].numpy()
+            t_c = time.time()
             with torch.no_grad():
                 for arm in arms:
                     x, mask, lib, beta, delta, pi, ll0, mix, _, _ = forward(b, arm)
@@ -1076,33 +1107,45 @@ def train(a):
                         ac["n"] += 1; ac["gain0"] += g0[j]; ac["gainu"] += gu[j]; ac["pi"] += pin[j]
                         ac["obs"] += obn[j]; ac["pm"] += pmn[j]; ac["pb"] += p0n[j]
             done_cells += len(gis)
+            compute.append((len(gis), time.time() - t_c))
         else:
             complete = False                 # stopped by limit_cells
-        reads = (stream.cache.reads, stream.cache.read_seconds) if workers == 0 and stream.cache else (0, 0.0)
+        c = stream.cache if workers == 0 else None
+        info = {"reads": c.reads if c else 0, "partial_reads": c.partial_reads if c else 0,
+                "read_seconds": c.read_seconds if c else 0.0, "priced_bytes": c.priced_bytes if c else 0.0,
+                "compute": compute, "all_priced_bytes": stream.priced_bytes()}
         del source
         for arm in arms:
             arm.model.train()
-        return acc, done_cells, time.time() - t0, complete, reads
+        return acc, done_cells, time.time() - t0, complete, info
 
     eval_cells = sum(len(g["cells"]) for g in groups)
     eval_shards = len(by_shard)
     eval_workers = a.eval_workers if a.eval_workers is not None else a.workers
-    probe_cells = min(eval_cells, 2 * a.eval_chunk)
+    probe_cells = min(eval_cells, 3 * a.eval_chunk)
     if eval_cells:
-        _, n_probe, t_probe, _, (n_reads, t_reads) = evaluate(limit_cells=probe_cells)
+        _, n_probe, t_probe, _, probe = evaluate(limit_cells=probe_cells)
     else:
-        n_probe, t_probe, n_reads, t_reads = 0, 0.0, 0, 0.0
-    # the reads and the rest priced apart: a probe of few cells pays a whole shard per read (1/10, rlab-cellnet-r1:
-    # 1.5 x the probe's seconds per cell gave a reserve of 3,914 s for an evaluation of 1,621 s)
-    per_read = t_reads / n_reads if n_reads else 0.0
-    per_cell = max(t_probe - t_reads, 0.0) / max(n_probe, 1)
-    eval_reserve = 1.25 * (per_read * eval_shards / max(1, eval_workers) + per_cell * eval_cells) \
-        + a.eval_reserve_seconds
+        n_probe, t_probe, probe = 0, 0.0, {"reads": 0, "partial_reads": 0, "read_seconds": 0.0, "priced_bytes": 0.0,
+                                           "compute": [], "all_priced_bytes": 0.0}
+    # reads and compute priced apart (1/10, rlab-cellnet-r1: 1.5 x the probe's seconds per cell, a whole shard read
+    # for few cells and the first passes on the device included, gave a reserve of 3,914 s for 1,621 s spent):
+    # reads at the probe's rate over the bytes the whole evaluation decompresses, with a speed-up of 1 + 0.25 per extra
+    # loader process (rlab-loader-profile-r1: 3 processes read about 1.4-1.6 times as fast as one); compute at the
+    # probe's seconds per cell after its first chunk
+    rate = probe["priced_bytes"] / probe["read_seconds"] if probe["read_seconds"] > 0 else None
+    read_seconds = probe["all_priced_bytes"] / rate if rate else 0.0
+    speedup = 1.0 + 0.25 * max(0, eval_workers - 1)
+    later = probe["compute"][1:] or probe["compute"]
+    per_cell = sum(t for _, t in later) / max(1, sum(n for n, _ in later))
+    eval_reserve = 1.25 * (read_seconds / speedup + per_cell * eval_cells) + a.eval_reserve_seconds
     export_reserve = 60.0 * a.reserve_export_minutes
     train_deadline = t_start + 60.0 * a.budget_minutes - eval_reserve - export_reserve
     log("evaluation priced", cells=eval_cells, shards=eval_shards, probe_cells=n_probe, probe_seconds=round(t_probe, 1),
-        probe_reads=n_reads, probe_read_seconds=round(t_reads, 1), eval_workers=eval_workers,
-        reserve_seconds=round(eval_reserve, 1))
+        probe_reads=probe["reads"], probe_partial_reads=probe["partial_reads"],
+        probe_read_seconds=round(probe["read_seconds"], 1), probe_mb_per_s=round(rate / 2**20, 1) if rate else None,
+        evaluation_priced_mb=round(probe["all_priced_bytes"] / 2**20, 1), compute_ms_per_cell=round(1e3 * per_cell, 3),
+        eval_workers=eval_workers, reserve_seconds=round(eval_reserve, 1))
 
     # ---- training
     stream = BatchStream(shards, st["gene_of_axis"], G, lib_rows, n_sym, a.batch, a.buffer_shards, a.ctrl_k, a.seed,
@@ -1377,6 +1420,9 @@ def main():
                         "one arm with --target-code on --device, its files at the top of --out")
     t.add_argument("--eval-workers", type=int, default=None,
                    help="loader processes that read the evaluation shards (default: --workers)")
+    t.add_argument("--eval-partial", type=float, default=0.08,
+                   help="a shard whose evaluation cells are at most this share of its cells is read row by row "
+                        "(cellnet.read_csr_rows), the others whole")
     t.add_argument("--epochs", type=float, default=2.0)
     t.add_argument("--batch", type=int, default=256)
     t.add_argument("--ctrl-k", type=int, default=64)

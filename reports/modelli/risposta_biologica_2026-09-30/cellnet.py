@@ -131,6 +131,36 @@ def read_csr(path, official_index, measured, gene_of_axis: np.ndarray, n_model_g
     return m, mask
 
 
+def read_csr_rows(path, rows, official_index, measured, gene_of_axis: np.ndarray, n_model_genes: int):
+    """Some rows of a shard, in the given order (repeats allowed), as CSR on the model genes, with the shard's mask:
+    the same matrix as read_csr(...)[0][rows]. Each run of consecutive rows is read as one slice, so only the
+    compressed chunks that hold those rows are decompressed (1/10: the evaluation read whole shards for a few hundred
+    cells of the hidden targets)."""
+    import scipy.sparse as sp
+    import cell_data as CD
+    rows = np.asarray(rows, dtype=np.int64)
+    col, mask, _ = CD.feature_columns(official_index, measured, gene_of_axis, n_model_genes)
+    srt = np.unique(rows)
+    if srt.size == 0:
+        return sp.csr_matrix((0, n_model_genes), dtype=np.float32), mask
+    with h5py.File(path, "r") as f:
+        g = f["X"]
+        indptr = g["indptr"][:].astype(np.int64)
+        data_parts, ind_parts = [], []
+        for run in np.split(srt, np.flatnonzero(np.diff(srt) != 1) + 1):
+            lo, hi = indptr[run[0]], indptr[run[-1] + 1]
+            data_parts.append(g["data"][lo:hi])
+            ind_parts.append(g["indices"][lo:hi])
+    data, indices = np.concatenate(data_parts), np.concatenate(ind_parts)
+    sub_ptr = np.concatenate([[0], np.cumsum(indptr[srt + 1] - indptr[srt])])
+    new_col = col[indices]
+    ok = new_col >= 0
+    kept = np.concatenate([[0], np.cumsum(ok, dtype=np.int64)])
+    m = sp.csr_matrix((data[ok].astype(np.float32, copy=False), new_col[ok].astype(np.int32), kept[sub_ptr]),
+                      shape=(srt.size, n_model_genes))
+    return m[np.searchsorted(srt, rows)], mask
+
+
 def read_counts(info: ShardInfo, gene_of_axis: np.ndarray, n_model_genes: int):
     return read_csr(info.path, info.official_index, info.measured, gene_of_axis, n_model_genes)
 

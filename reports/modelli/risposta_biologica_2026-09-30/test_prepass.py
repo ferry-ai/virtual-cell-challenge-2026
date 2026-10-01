@@ -137,7 +137,7 @@ class Stages(unittest.TestCase):
                      "--stop-after-steps", "4", "--shard-roots", d / "elsewhere", *TRAIN_SMALL)
         # two arms on one batch stream, loader processes for training and evaluation (1/10, E-20261001-001)
         cls.ma = run("train", "--prepass", pre, "--out", d / "ma", "--arm", "i1=identity", "--arm", "i2=identity",
-                     "--roles", "2", "--workers", "2", *TRAIN_SMALL)
+                     "--roles", "2", "--workers", "2", "--eval-partial", "1.0", *TRAIN_SMALL)   # every shard row by row
 
     @classmethod
     def tearDownClass(cls):
@@ -300,6 +300,9 @@ class Stages(unittest.TestCase):
                     else:
                         self.assertEqual(ev[arm][c].get(f), ref[c].get(f), (arm, c, f))
         self.assertTrue((self.d / "ma" / "i2" / "model.pt").is_file())
+        priced = [json.loads(l) for l in (self.d / "ma" / "train_log.jsonl").read_text(encoding="utf-8").splitlines()
+                  if '"evaluation priced"' in l][0]
+        self.assertGreaterEqual(priced["probe_partial_reads"], 1)              # the evaluation read rows alone
 
     def test_coverage_counts_consumed_cells(self):
         cov = self.read("run", "coverage.json")

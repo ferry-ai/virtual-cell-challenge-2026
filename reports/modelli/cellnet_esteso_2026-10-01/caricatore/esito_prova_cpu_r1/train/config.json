@@ -1,0 +1,95 @@
+{
+ "args": {
+  "cmd": "train",
+  "prepass": "/kaggle/input/notebooks/davidmaisterx/rlab-prepass-r3/prepass",
+  "out": "/kaggle/working/train",
+  "descriptors": "/kaggle/input/datasets/davidmaisterx/rlab-cellnet-code",
+  "target_code": "descriptors",
+  "arm": "['desc=descriptors@cpu', 'ident=identity@cpu']",
+  "eval_workers": "3",
+  "epochs": "10.0",
+  "batch": "256",
+  "ctrl_k": "64",
+  "buffer_shards": "4",
+  "dim": "128",
+  "rank": "128",
+  "lr": "0.001",
+  "seed": "0",
+  "workers": "3",
+  "roles": "3",
+  "prefetch": "8",
+  "budget_minutes": "30.0",
+  "reserve_export_minutes": "5",
+  "checkpoint_minutes": "5.0",
+  "keep_checkpoints": "3",
+  "measure_from": "None",
+  "measure_steps": "100",
+  "eval_chunk": "512",
+  "eval_reserve_seconds": "120.0",
+  "log_every": "100",
+  "resume": "None",
+  "shard_roots": "['/kaggle/input']",
+  "no_verify": "False",
+  "stop_after_steps": "None",
+  "device": "None",
+  "arms": "desc=descriptors;ident=identity",
+  "input_dim": "2048",
+  "descriptors_sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80"
+ },
+ "same_on_resume": {
+  "arms": "desc=descriptors;ident=identity",
+  "epochs": "10.0",
+  "batch": "256",
+  "ctrl_k": "64",
+  "buffer_shards": "4",
+  "input_dim": "2048",
+  "dim": "128",
+  "rank": "128",
+  "lr": "0.001",
+  "seed": "0",
+  "roles": "3",
+  "descriptors_sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80"
+ },
+ "devices": [
+  "cpu"
+ ],
+ "arms": [
+  {
+   "name": "desc",
+   "target_code": "descriptors",
+   "device": "cpu",
+   "out": "/kaggle/working/train/desc"
+  },
+  {
+   "name": "ident",
+   "target_code": "identity",
+   "device": "cpu",
+   "out": "/kaggle/working/train/ident"
+  }
+ ],
+ "started_utc": "2026-10-01T01:47:08.785884+00:00",
+ "prepass_sha256": "3d1fe050f709cc6251c2c6e73fcb26407e02b6b8390b4c412772cb5dc42d2daa",
+ "resumed_from": null,
+ "code": {
+  "cellnet.py": "e4b2be01ddb8ca4abdfce598f608fc6300a98fc6f63aa2d7d6b554749c998c69",
+  "cell_data.py": "f00bdd2bbcab2f90bb38af6a99073c31093ea72717b15df99ac3c16339201a50",
+  "train_cellnet.py": "bd5b244f83bdc09a1bd8341d761ef6f5d1d11b88f60b657bbf479228cc0bbba5"
+ },
+ "descriptors": {
+  "sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80",
+  "dims": 284,
+  "symbols_with_descriptors": 7128,
+  "symbols": 7490
+ },
+ "study_weights": {
+  "jurkat_nadig": 0.7483973481674253,
+  "h1_vcc2025": 0.6867606446560324,
+  "hipsci_targeted_19": 0.3117498507522031
+ },
+ "admitted_training_cells": 1066336,
+ "parameters": 7736313,
+ "parameters_by_arm": {
+  "desc": 7736313,
+  "ident": 8589305
+ }
+}
