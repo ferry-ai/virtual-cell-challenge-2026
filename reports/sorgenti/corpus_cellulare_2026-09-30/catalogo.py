@@ -19,7 +19,7 @@ HERE = Path(__file__).resolve().parent
 REMOTE = HERE / "p1_r4" / "remote"
 REMOTE_LATER = [HERE / "p1_r5" / "remote_kolf"]          # measured again with the corrected reader (1/10)
 
-# state of the ingested datasets (1/10, 06:15): cells from complete.json of each job (Drive), publication from the
+# state of the ingested datasets (1/10, 16:00): cells from complete.json of each job (Drive), publication from the
 # receipts and from `kaggle datasets status`, admission from the prepasses r3 (first training) and r5 (second training)
 # of reports/modelli/cellnet_tecnico_2026-10-01 and cellnet_esteso_2026-10-01; the third training's prepass r6 runs
 INGESTED = {
@@ -57,6 +57,15 @@ INGESTED = {
     "southard": ("J09 (job 125, in corso)", None,
                  "in ingestione: RPE1 850.225 e Hs27 447.301 cellule (CRISPRa), lette da Zenodo a circa uno shard ogni "
                  "9 minuti; fuori dal terzo training perché non pubblicato al lancio del suo pre-passo"),
+    "scp_ko_frangieh_sunshine_papalexi": ("J13 (job 127), rlab-scp-ko", 317695,
+                                          "pubblicato, in nessun training ancora: Frangieh 2021 218.331 (tre contesti: "
+                                          "Control, IFNγ, co-coltura), Sunshine 2023 90.380, Papalexi 2021 arrayed 8.984"),
+    "scp_tcells_shifrut_datlinger": ("J14 (job 128), rlab-scp-tcells", 97335,
+                                     "pubblicato, in nessun training ancora: Shifrut 2018 52.236 (quattro contesti, "
+                                     "donatore per stimolo), Datlinger 2017 5.905 e 2021 39.194 (stimolate e non)"),
+    "scp_k562_hek_dixit_xu": ("J15 (job 129), rlab-scp-k562-hek", 202494,
+                              "pubblicato, in nessun training ancora: Dixit 2016 giorno 7 33.013, giorno 13 19.268, alta "
+                              "MOI 51.898 (controlli i tagli intergenici), Xu 2023 HEK293 CRISPRi 98.315"),
     "jurkat_gse249595": ("J03 (job 087), rlab-jurkat-gse249595", None,
                          "fuori: nessuna chiamata delle guide nel rilascio; si supervisiona dopo un'assegnazione provata"),
 }
@@ -76,16 +85,16 @@ REMOTE_STATE = {
     "scp_TianKampmann2021_CRISPRi": "ingerito (J11, job 119): vedi §1",
     "southard_RPE1_CRISPRa_final_population": "in ingestione (J09, job 125): vedi §1",
     "southard_fibroblast_CRISPRa_final_pop": "in ingestione (J09, job 125): vedi §1",
-    "scp_FrangiehIzar2021_RNA": "in coda (J13, job 127): tre contesti (Control, IFNγ, co-coltura); etichette provate in smoke_w3/",
-    "scp_SunshineHein2023": "in coda (J13, job 127); etichette provate in smoke_w3/",
-    "scp_PapalexiSatija2021_eccite_arrayed_RNA": "in coda (J13, job 127); etichette provate in smoke_w3/",
-    "scp_ShifrutMarson2018": "in coda (J14, job 128): un contesto per donatore e stimolo; etichette provate in smoke_w3/",
-    "scp_DatlingerBock2017": "in coda (J14, job 128): stimolate e non, due contesti; etichette provate in smoke_w3/",
-    "scp_DatlingerBock2021": "in coda (J14, job 128): stimolate e non, due contesti; etichette provate in smoke_w3/",
-    "scp_DixitRegev2016_K562_TFs_7_days": "in coda (J15, job 129): controlli i tagli intergenici; etichette provate",
-    "scp_DixitRegev2016_K562_TFs_13_days": "in coda (J15, job 129): controlli i tagli intergenici; etichette provate",
-    "scp_DixitRegev2016_K562_TFs_High_MOI": "in coda (J15, job 129): controlli i tagli intergenici; etichette provate",
-    "scp_XuCao2023": "in coda (J15, job 129): HEK293 CRISPRi; etichette provate in smoke_w3/",
+    "scp_FrangiehIzar2021_RNA": "ingerito (J13, job 127): vedi §1",
+    "scp_SunshineHein2023": "ingerito (J13, job 127): vedi §1",
+    "scp_PapalexiSatija2021_eccite_arrayed_RNA": "ingerito (J13, job 127): vedi §1",
+    "scp_ShifrutMarson2018": "ingerito (J14, job 128): vedi §1",
+    "scp_DatlingerBock2017": "ingerito (J14, job 128): vedi §1",
+    "scp_DatlingerBock2021": "ingerito (J14, job 128): vedi §1",
+    "scp_DixitRegev2016_K562_TFs_7_days": "ingerito (J15, job 129): vedi §1",
+    "scp_DixitRegev2016_K562_TFs_13_days": "ingerito (J15, job 129): vedi §1",
+    "scp_DixitRegev2016_K562_TFs_High_MOI": "ingerito (J15, job 129): vedi §1",
+    "scp_XuCao2023": "ingerito (J15, job 129): vedi §1",
     "scp_AdamsonWeissman2016_GSM2406675_10X001": ("da ingerire: i controlli sono nomi di plasmidi (62(mod)_pBA581, "
                                                   "63(mod)_pBA580): serve una mappa delle etichette dichiarata"),
     "scp_AdamsonWeissman2016_GSM2406677_10X005": "da ingerire: come l'altro file di Adamson, serve una mappa delle etichette",
@@ -204,7 +213,7 @@ def main() -> None:
     (out / "catalogo.json").write_text(json.dumps({"remote": rows, "ingested": ingested,
                                                    "aggregate_only": AGGREGATE_ONLY}, indent=1), encoding="utf-8")
     lines = ["# Catalogo del corpus cellulare (R-LAB)", "",
-             "Generato da `catalogo.py` il 1/10 alle 06:15 dalle misure remote (`p1_r4/remote/`, `p1_r5/remote_kolf/`), "
+             "Generato da `catalogo.py` il 1/10 alle 16:00 dalle misure remote (`p1_r4/remote/`, `p1_r5/remote_kolf/`), "
              "dai `complete.json` dei job, dalle ricevute di pubblicazione e dai pre-passi. Stato: **misurato** dove c'è "
              "un file di prova, **scritto a mano con la sua evidenza** negli altri casi. Le cellule che entrano davvero "
              "nei training (dopo QC e identità) sono nei pre-passi di "

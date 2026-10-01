@@ -261,3 +261,7 @@ Replogle) e `reports/modelli/cellnet_completo_2026-10-01/` (il terzo, con la sec
   Il catalogo dice perché restano fuori Adamson, Papalexi pooled, Wessels, gli schermi di enhancer, i topi e i farmaci.
 - **Catalogo**, versione corrente: [catalogo_r3](catalogo_r3/CATALOGO.md). CD4 (33,6 milioni di cellule, circa 1,7 TB)
   è segnato «da campionare»: il disegno del campione spetta al proprietario.
+- **Alle 16:00.** La terza ondata è finita con parità ok ed è pubblicata (job 127-129): `rlab-scp-ko` (Frangieh,
+  Sunshine, Papalexi arrayed), `rlab-scp-tcells` (Shifrut, Datlinger 2017 e 2021), `rlab-scp-k562-hek` (Dixit, Xu),
+  617.524 cellule in tutto. Non è ancora in nessun training. Catalogo, versione corrente:
+  [catalogo_r4](catalogo_r4/CATALOGO.md).
