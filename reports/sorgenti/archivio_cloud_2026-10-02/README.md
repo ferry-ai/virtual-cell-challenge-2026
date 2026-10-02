@@ -42,6 +42,13 @@ sommava le cartelle (kaggle 16,2 + processed 54,4 GiB) contava due volte lo stes
 Esclusi perché non sono dati: `.venv`, `orch-venv`, `orchestrator`, `ciclo`, `archivio_repo`,
 `__pycache__`. Duplicati esatti fra file fisici diversi: 360 insiemi, 3,87 GiB (`r1/duplicati_esatti.json`).
 
+Per natura (gruppi a due livelli, [gruppi_r4_prima_di_colab.json](gruppi_r4_prima_di_colab.json), con destinazione, dataset Kaggle, impronta sha256 e stato di copia di ogni gruppo; lettura dei
+nomi e del registro, non dei contenuti): originali scaricati 64,50 GiB; originali della gara 2,03; derivati
+intermedi 58,20; effetti per bersaglio 28,16; dataset di training della rete 14,53; cache dello stadio 98
+2,91; effetti degli invii 0,92; previsioni e pacchetti degli invii 27,51; checkpoint, metriche e previsioni
+dei training su Kaggle 5,65; uscite e checkpoint delle corse del 12–16/09 1,99; staging per Kaggle (copie e
+hard link) 8,00; lavoro attivo R-LEAD 4,35.
+
 **Google Drive.** Cartella `MyDrive/vcc2026`: **206,51 GiB** in 3.481 file (dati 174,37, `runs/` 32,13),
 elenco dei soli metadati in 40 s. Ci sono già: shard del corpus (100,64 GiB, 17 job completi), K562 GWPS a
 singola cellula (61,31 GiB), `rete_contesti_r1`, controlli, HepG2, uscite dei job Colab. **La quota libera non
@@ -124,6 +131,19 @@ copie anteriori dello stesso corpus.
   remota letta da un ambiente indipendente con lo stesso sha256, e conta lo spazio liberato per file fisico
   (un hard link libera spazio solo se se ne vanno tutti i suoi percorsi). Con le sole prove Kaggle, alle 00:20
   del 3/10, **nessun gruppo è ancora eliminabile**; 181,7 GiB aspettano la lettura da Colab (`gruppi_r2_prima_di_colab.json`).
+
+### Proiezione dello spazio recuperabile (stima dal piano, 3/10 00:50)
+
+| Fase | Che cosa la sblocca | Gruppi | GiB |
+|---|---|---|---|
+| A | fine del giro r1 (file fino a 1 GiB) e lettura da Colab del job 131 | 44 gruppi piccoli e medi: Jurkat GSE249595, uscite Kaggle, `ipsc_replica`, cache multisource superate, previsioni dei banchi, zip dei controlli, … | circa 21,2, più 6,4 di `rete_contesti_r1` con il suo staging in hard link |
+| B | archiviazione dei file sopra 1 GiB (44 file, circa 95 GiB senza gli hard link) | HIPSCI originali e somme, somme KOLF, pool Orion, `rete_contesti_r2`, previsioni e pacchetti t22–t28, somme VIPerturb e Southard, DepMap | circa 119 |
+| C | archiviazione del CD4 | `external/cd4_gw` | 41,5 |
+
+**Piano senza strumenti nuovi:** dopo il via sulla fase A lo spazio libero sale a circa 35 GB, abbastanza per
+caricare tutti i file della fase B attraverso la cache (il più grande è 6,4 GiB) con un giro r2 e un job di
+verifica nuovo; dopo il via sulla fase B entra anche il CD4. **Più rapido:** un client che carica senza cache
+(rclone) fa B e C subito, se il proprietario lo autorizza e firma l'accesso a Drive.
 
 ## 6. Ostacoli e decisioni per il proprietario
 

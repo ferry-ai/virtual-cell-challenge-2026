@@ -8,6 +8,7 @@ physical file once and only when all its hard links are in deletable groups. Not
 """
 import argparse
 import csv
+import hashlib
 import json
 import sys
 from collections import defaultdict
@@ -34,6 +35,32 @@ ACTIVE = {
 SMALL = 100 << 20  # groups below this stay local: small results are part of a light laptop
 
 
+NATURE = (  # first matching prefix wins; a reading of the folder names and of the registry rows, 3 October
+    ("raw/controls_prova", "derivato: controlli con D/E/F rinominati, per la prova generale"),
+    ("raw/", "originale: dati della gara"),
+    ("external/", "originale scaricato"),
+    ("interim/kaggle_", "staging per Kaggle (copie e hard link)"),
+    ("interim/", "derivato intermedio (somme, pool, bundle, piloti)"),
+    ("kaggle/out_", "uscite di training su Kaggle: checkpoint, metriche, previsioni"),
+    ("kaggle/score_", "uscite di training su Kaggle: punteggi"),
+    ("kaggle/viperturb_sums", "derivato: uscita di un kernel"),
+    ("kaggle/", "staging per Kaggle (copie e hard link)"),
+    ("artifacts/t", "uscite: previsioni e pacchetti degli invii"),
+    ("artifacts/", "uscite e checkpoint delle corse del 12–16/09"),
+    ("processed/universe_", "derivato: effetti per bersaglio (banchi e produzione)"),
+    ("processed/multisource", "derivato: cache dello stadio 98"),
+    ("processed/effects_", "derivato: effetti degli invii"),
+    ("processed/rete_contesti", "derivato: dataset di training della rete"),
+    ("processed/generalizzazione", "lavoro attivo R-LEAD"),
+    ("processed/archivio_cloud", "stato della migrazione"),
+    ("processed/", "derivato o uscita di banco"),
+)
+
+
+def nature(g: str) -> str:
+    return next(n for pre, n in NATURE if g.startswith(pre)) if any(g.startswith(p) for p, _ in NATURE) else "altro"
+
+
 def group(rel: str) -> str:
     parts = rel.split("/")
     return "/".join(parts[:2]) if len(parts) > 2 else rel
@@ -44,6 +71,7 @@ def main() -> None:
     p.add_argument("--run", required=True, type=Path, help="processed/archivio_cloud_2026-10-02/r1")
     p.add_argument("--colab", nargs="*", default=[], type=Path, help="verify_receipts.jsonl files of jobs 130/131")
     p.add_argument("--kaggle", nargs="*", default=[], type=Path, help="compare_full.json of the Kaggle check")
+    p.add_argument("--receipts", type=Path, default=None, help="copy_receipts.jsonl, for the copy state of each group")
     p.add_argument("--out", required=True, type=Path)
     a = p.parse_args()
     if a.out.exists():
@@ -65,6 +93,17 @@ def main() -> None:
     by_group: dict[str, list[str]] = defaultdict(list)
     for rel in inv:
         by_group[group(rel)].append(rel)
+    copy_state: dict[str, str] = {}
+    if a.receipts and a.receipts.exists():
+        for line in a.receipts.read_text(encoding="utf-8").splitlines():
+            r = json.loads(line)
+            copy_state[r["rel"]] = r["status"]  # the last receipt of a file wins
+    kaggle_of: dict[str, set[str]] = defaultdict(set)
+    for f in a.kaggle:
+        for r in json.loads(f.read_text(encoding="utf-8"))["results"]:
+            ref = r.get("reference", "")
+            if r.get("status") == "match" and ref.startswith("local "):
+                kaggle_of[group(ref[len("local "):])].add(r["dataset"])
     rows = []
     for g, rels in sorted(by_group.items()):
         active = next((why for pre, why in ACTIVE.items() if g.startswith(pre) or (g + "/").startswith(pre)), None)
@@ -82,8 +121,15 @@ def main() -> None:
             status = "in attesa della prova remota"
         else:
             status = "eliminabile col via"
-        rows.append({"group": g, "files": len(rels), "unique_bytes": size, "status": status, "why": active,
-                     "proof_kinds": kinds, "files_without_proof": len(unproven)})
+        digest = hashlib.sha256("".join(f"{rel}\t{sha.get(rel, '')}\n" for rel in sorted(rels)).encode()).hexdigest()
+        states = defaultdict(int)
+        for rel in rels:
+            states[copy_state.get(rel, "already_on_drive_or_not_sent")] += 1
+        rows.append({"group": g, "nature": nature(g), "local_path": f"C:/Users/ferra/vcc2026-data/{g}",
+                     "files": len(rels), "unique_bytes": size,
+                     "drive_dest": f"MyDrive/vcc2026/data/{g}", "kaggle_datasets": sorted(kaggle_of.get(g, set())),
+                     "group_sha256": digest, "copy_states": dict(states),
+                     "status": status, "why": active, "proof_kinds": kinds, "files_without_proof": len(unproven)})
     deletable = {r["group"] for r in rows if r["status"] == "eliminabile col via"}
     # Freed bytes: a physical file is freed only if all its paths are in deletable groups.
     paths_by_id = defaultdict(list)

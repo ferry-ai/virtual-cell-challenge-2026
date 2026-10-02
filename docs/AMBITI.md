@@ -141,6 +141,12 @@ job su Colab e Kaggle, §7 per il set finale. Ogni job nuovo supera il preflight
 [ERRORI](ERRORI.md), dove sono anche le [trappole operative](ERRORI.md#lezioni-operative-da-non-ripetere)
 già incontrate. Chi autorizza la quota, i download e i push: [CLAUDE.md](../CLAUDE.md).
 
+- **Archivio cloud, dal 2/10.** La radice dati si copia su Drive a percorsi invariati
+  (`MyDrive/vcc2026/data/<rel>`, la radice dei job Colab); le copie valgono solo dopo la lettura da Colab
+  (job 130–131). Kaggle: 557/557 shard del corpus verificati sul server, dataset tutti privati. Nessuna copia
+  locale si cancella senza prova remota e senza il via del proprietario
+  ([archivio cloud](../reports/sorgenti/archivio_cloud_2026-10-02/README.md)).
+
 ## Infrastruttura degli agenti
 
 La base di lancio `agent-hub` (fuori dalla repo), l'orchestratore e la catena di cicli ritirati il

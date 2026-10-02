@@ -20,6 +20,7 @@
 | R2, corpus esteso | [ESITO](../../reports/modelli/cellnet_esteso_2026-10-01/ESITO.md): verifica tecnica con misure; braccio `desc` usato in t29, non promosso |
 | R3, seconda ondata | [ESITO](../../reports/modelli/cellnet_completo_2026-10-01/ESITO.md): training completato, collasso `ident`; [diagnosi](../../reports/analisi/lead_audit_2026-10-01/AGGIORNAMENTO_R3.md) |
 | Quarto training, terza ondata + floor | [Protocollo](../../reports/modelli/cellnet_terza_ondata_2026-10-01/PROTOCOLLO.md): nessun esito registrato; verifica tecnica che non comprende il banco richiesto dopo t29 |
+| Archivio e copie remote (2–3/10) | [Archivio cloud](../../reports/sorgenti/archivio_cloud_2026-10-02/README.md): inventario per file, specchio su Drive in corso, Kaggle verificato; [riconciliazione e ingestione](../../reports/sorgenti/archivio_cloud_2026-10-02/INGESTIONE.md): Jiang 2025 e Mixscale sono un'unica sorgente, Southard incompleto, campioni CD4/Orion e ruoli registrati prima dell'integrazione |
 
 H1 train/val e HIPSCI sono già stati usati nel corpus; non riaprire acquisizioni sulla base
 di vecchie liste d'attesa. H1 test resta riserva chiusa e non è un contesto nuovo per un
