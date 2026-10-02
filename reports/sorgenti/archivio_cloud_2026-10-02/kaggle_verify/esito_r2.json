@@ -1,0 +1,779 @@
+{
+ "kernel": "davidmaisterx/archivio-verify-corpus-r1",
+ "versions": [
+  1,
+  2
+ ],
+ "files_read_on_kaggle": 758,
+ "bytes_read": 85672512098,
+ "read_errors": {
+  "v1": 0,
+  "v2": 0
+ },
+ "v1_v2_identical_sha256": 758,
+ "environment_v2": {
+  "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+  "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+  "h5py": "3.16.0",
+  "hostname": "480ab063476c"
+ },
+ "seconds_v2": 810.2,
+ "per_dataset_status": {
+  "davidmaisterx/rlab-a549": {
+   "no_reference": 4,
+   "match": 31
+  },
+  "davidmaisterx/rlab-cellnet-code": {
+   "no_reference": 7
+  },
+  "davidmaisterx/rlab-h1-vcc2025-trainval": {
+   "no_reference": 6,
+   "match": 65
+  },
+  "davidmaisterx/rlab-hepg2-nadig": {
+   "no_reference": 4,
+   "match": 8
+  },
+  "davidmaisterx/rlab-hipsci-gwfit": {
+   "no_reference": 4,
+   "match": 17
+  },
+  "davidmaisterx/rlab-hipsci-gwnonfit": {
+   "no_reference": 4,
+   "match": 20
+  },
+  "davidmaisterx/rlab-hipsci-targeted19": {
+   "no_reference": 4,
+   "match": 59
+  },
+  "davidmaisterx/rlab-jurkat-gse249595": {
+   "match": 97,
+   "no_reference": 34
+  },
+  "davidmaisterx/rlab-jurkat-nadig": {
+   "no_reference": 4,
+   "match": 14
+  },
+  "davidmaisterx/rlab-k562-essential-r2": {
+   "no_reference": 4,
+   "match": 32
+  },
+  "davidmaisterx/rlab-k562-gwps-r3": {
+   "no_reference": 6,
+   "match": 100
+  },
+  "davidmaisterx/rlab-kolf-small": {
+   "no_reference": 6,
+   "match": 9
+  },
+  "davidmaisterx/rlab-kolf-strong": {
+   "no_reference": 4,
+   "match": 12
+  },
+  "davidmaisterx/rlab-rpe1-r2": {
+   "no_reference": 4,
+   "match": 25
+  },
+  "davidmaisterx/rlab-scp-k562-hek": {
+   "no_reference": 10,
+   "match": 11
+  },
+  "davidmaisterx/rlab-scp-ko": {
+   "no_reference": 8,
+   "match": 17
+  },
+  "davidmaisterx/rlab-scp-tcells": {
+   "no_reference": 8,
+   "match": 6
+  },
+  "davidmaisterx/rlab-tian-norman": {
+   "no_reference": 12,
+   "match": 34
+  },
+  "davidmaisterx/vcc-corpus-basale-r1": {
+   "match": 10
+  },
+  "davidmaisterx/vcc-corpus-tahoe-r1": {
+   "match": 3
+  },
+  "davidmaisterx/vcc-rete-contesti-r1": {
+   "match": 18,
+   "no_local_hash": 1
+  },
+  "davidmaisterx/vcc-rete-contesti-r2": {
+   "match": 19
+  },
+  "davidmaisterx/vcc-stack-prompts-r1": {
+   "no_local_hash": 16,
+   "match": 1
+  }
+ },
+ "receipt_files_missing_on_kaggle": [],
+ "status_meaning": {
+  "match": "sha256 and bytes equal to the publish receipt (shards) or to the local file the dataset was published from (vcc-*)",
+  "no_reference": "dataset metadata files (manifest, receipts, complete.json, files.json) and code, not in any receipt",
+  "no_local_hash": "file of the dataset without a local counterpart in the folder it was published from"
+ },
+ "samples_opened_v2": [
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-a549/a549_ko__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 29892,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 149650839,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-h1-vcc2025-trainval/h1_train__shard_00000.h5ad",
+   "n_obs": 5000,
+   "n_var": 18080,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 41583579,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-h1-vcc2025-trainval/h1_val__shard_00000.h5ad",
+   "n_obs": 5000,
+   "n_var": 18080,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 41571642,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-hepg2-nadig/hepg2_nadig__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 9624,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 84261611,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-gwfit/hipsci_gw_fitness__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 36518,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 116374854,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-gwnonfit/hipsci_gw_nonfitness__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 36518,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 99536438,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 36518,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 107102440,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951413_channel1__GSM7951413_channel1_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 5387424,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951414_channel2__GSM7951414_channel2_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 5668879,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951415_channel3__GSM7951415_channel3_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 5628869,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951416_channel4__GSM7951416_channel4_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 6545493,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951417_channel5__GSM7951417_channel5_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 6908859,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951418_channel6__GSM7951418_channel6_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 5724295,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951419_channel7__GSM7951419_channel7_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 5728923,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951420_channel8__GSM7951420_channel8_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 6806522,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951421_channel9__GSM7951421_channel9_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 7804360,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951422_channel10__GSM7951422_channel10_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 6689346,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951423_channel11__GSM7951423_channel11_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 8704036,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951424_channel12__GSM7951424_channel12_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 8004311,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951425_channel13__GSM7951425_channel13_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 8149261,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951426_channel14__GSM7951426_channel14_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 7797961,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951427_channel15__GSM7951427_channel15_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 8879392,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-gse249595/GSM7951428_channel16__GSM7951428_channel16_shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 20606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 7114047,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-nadig/jurkat_nadig__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 8882,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 71004507,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00000.h5ad",
+   "n_obs": 10000,
+   "n_var": 8563,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 37244440,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 8248,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 64795412,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00050.h5ad",
+   "n_obs": 20000,
+   "n_var": 8248,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 64436393,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-kolf-small/kolf_chromatin__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 34895,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 131144850,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-kolf-small/kolf_metabolic__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 35067,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 73286266,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-kolf-strong/kolf_strong__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 38606,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 58440083,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00000.h5ad",
+   "n_obs": 10000,
+   "n_var": 8749,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 35782178,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-scp-k562-hek/dixit2016_d13__shard_00000.h5ad",
+   "n_obs": 19268,
+   "n_var": 21713,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 55162642,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-scp-k562-hek/dixit2016_d7__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 23111,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 74968942,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-scp-k562-hek/dixit2016_high_moi__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 23529,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 63665606,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-scp-k562-hek/xu2023__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 59429,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 25536066,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-scp-ko/frangieh2021__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 23712,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 75230379,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-scp-ko/papalexi2021_arrayed__shard_00000.h5ad",
+   "n_obs": 8984,
+   "n_var": 16826,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 22953552,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-scp-ko/sunshine2023__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 33538,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 74839339,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-scp-tcells/datlinger2017__shard_00000.h5ad",
+   "n_obs": 5905,
+   "n_var": 36722,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 16471085,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-scp-tcells/datlinger2021__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 25904,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 5314344,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-scp-tcells/shifrut2018__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 33694,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 37151468,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-tian-norman/norman2019__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 33694,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 72075313,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-tian-norman/tian2019_ipsc__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 33752,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 10834143,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-tian-norman/tian2019_neuron__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 33752,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 11634554,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-tian-norman/tian2021_crispra__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 33538,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 69169424,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/rlab-tian-norman/tian2021_crispri__shard_00000.h5ad",
+   "n_obs": 20000,
+   "n_var": 33538,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "int32",
+   "X_nnz": 89966771,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/destination_controls.h5ad",
+   "n_obs": 2000,
+   "n_var": 9624,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 8428061,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/source_00.h5ad",
+   "n_obs": 512,
+   "n_var": 8246,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 1609512,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/source_01.h5ad",
+   "n_obs": 128,
+   "n_var": 8246,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 393122,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/source_02.h5ad",
+   "n_obs": 92,
+   "n_var": 8246,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 278145,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/source_03.h5ad",
+   "n_obs": 128,
+   "n_var": 8246,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 424093,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/source_04.h5ad",
+   "n_obs": 128,
+   "n_var": 8246,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 397274,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/source_05.h5ad",
+   "n_obs": 104,
+   "n_var": 8246,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 314978,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/source_06.h5ad",
+   "n_obs": 128,
+   "n_var": 8246,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 410957,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/source_07.h5ad",
+   "n_obs": 93,
+   "n_var": 8246,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 286101,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/source_08.h5ad",
+   "n_obs": 128,
+   "n_var": 8246,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 394728,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/source_09.h5ad",
+   "n_obs": 128,
+   "n_var": 8246,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 406702,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/source_10.h5ad",
+   "n_obs": 128,
+   "n_var": 8246,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 408242,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/source_11.h5ad",
+   "n_obs": 128,
+   "n_var": 8246,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 410649,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  },
+  {
+   "file": "/kaggle/input/datasets/davidmaisterx/vcc-stack-prompts-r1/bundle/source_12.h5ad",
+   "n_obs": 89,
+   "n_var": 8246,
+   "X_encoding": "csr_matrix",
+   "X_dtype": "float32",
+   "X_nnz": 262581,
+   "indptr_consistent": true,
+   "X_head_integer_valued": true,
+   "anndata": "not installed"
+  }
+ ]
+}

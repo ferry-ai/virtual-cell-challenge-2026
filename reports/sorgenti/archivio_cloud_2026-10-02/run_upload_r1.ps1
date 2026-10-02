@@ -28,8 +28,11 @@ foreach ($t in $tiers) {
     $a = $common + @('--only') + $t.only
     if ($t.exclude.Count -gt 0) { $a += @('--exclude') + $t.exclude }
     "$(Get-Date -Format o) start $($t.name)" | Add-Content "$Run\runner.log"
-    $p = Start-Process -FilePath $Py -ArgumentList $a -RedirectStandardOutput "$Run\copy_$($t.name).out.log" `
-        -RedirectStandardError "$Run\copy_$($t.name).err.log" -WindowStyle Hidden -PassThru -Wait
+    # One log pair per start: a restart must not overwrite the logs of an earlier attempt (it did once, at 00:11
+    # of 3 October; the append-only copy_receipts.jsonl kept every file of that attempt).
+    $stamp = Get-Date -Format 'yyyyMMddTHHmmss'
+    $p = Start-Process -FilePath $Py -ArgumentList $a -RedirectStandardOutput "$Run\copy_$($t.name)_$stamp.out.log" `
+        -RedirectStandardError "$Run\copy_$($t.name)_$stamp.err.log" -WindowStyle Hidden -PassThru -Wait
     "$(Get-Date -Format o) end $($t.name) exit=$($p.ExitCode)" | Add-Content "$Run\runner.log"
 }
 "$(Get-Date -Format o) runner finished" | Add-Content "$Run\runner.log"
