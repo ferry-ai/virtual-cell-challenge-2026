@@ -1,0 +1,35 @@
+{
+  "written_utc": "2026-10-02T15:58:09+00:00",
+  "claim": "measured: half/half reproducibility of the truth; diagnostic, no model",
+  "reading": "each half has about half the cells: the cosine between a full-depth truth and a perfect predictor would be higher than these values (Spearman-Brown); they bound what effect-space indices can reach",
+  "summary": {
+    "hepg2_nadig": {
+      "targets": 2053,
+      "cos_half_median": 0.13435877233510612,
+      "cos_half_mean": 0.23332454896580304,
+      "cos_spec_half_median": 0.16896402835845947,
+      "pds_half_mean": 0.8302011401675324,
+      "by_cells_tercile": {
+        "(19.999, 40.0]": 0.06982792862230922,
+        "(40.0, 64.0]": 0.14873521735660739,
+        "(64.0, 1213.0]": 0.30330164205185395
+      }
+    },
+    "k562_viperturb": {
+      "targets": 1448,
+      "cos_half_median": 0.052059125359047935,
+      "cos_half_mean": 0.07082748501121078,
+      "cos_spec_half_median": 0.05128348805010319,
+      "pds_half_mean": 0.8929769262406512,
+      "by_cells_tercile": {
+        "(19.999, 39.0]": 0.05260964592375363,
+        "(39.0, 55.0]": 0.05223192990539111,
+        "(55.0, 120.0]": 0.05031968499236175
+      }
+    }
+  },
+  "per_target": {
+    "file": "ceiling_per_target.csv.gz",
+    "sha256": "5b8e6964da350321e7a32532d40050f2dc30e6177ad40a38fc454d24ca796f3e"
+  }
+}

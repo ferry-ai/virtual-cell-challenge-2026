@@ -69,6 +69,8 @@ def main() -> None:
     p.add_argument('--targets', type=int, default=150)
     p.add_argument('--min-cells', type=int, default=50)
     p.add_argument('--cap-cells', type=int, default=64, help='cells read per target (stable draw)')
+    p.add_argument('--max-controls', type=int, default=0,
+                   help='controls read (stable draw; 0 = all): the scorer needs about 4 GB with all 4,976 here')
     p.add_argument('--seed', type=int, default=2026)
     p.add_argument('--gen-seed', type=int, default=20260912)
     a = p.parse_args()
@@ -139,6 +141,8 @@ def main() -> None:
             r = np.sort(rng.choice(r, a.cap_cells, replace=False))
         target_rows[lab] = r
     ctrl = np.flatnonzero(cell_gene == 'non-targeting')
+    if a.max_controls and ctrl.size > a.max_controls:
+        ctrl = np.sort(np.random.default_rng(a.seed + 1).choice(ctrl, a.max_controls, replace=False))
     all_rows = np.sort(np.concatenate(list(target_rows.values()) + [ctrl]))
     log(f'reading {all_rows.size} HepG2 cells ({len(labels)} targets, {ctrl.size} controls)')
     x = read_rows(hepg2, all_rows)
@@ -241,6 +245,7 @@ def main() -> None:
         log(f'{arm} scored ({timer()} s)')
     table = bench.finish(dict(stage='risposta_contesto six_member_hepg2', targets=labels, target_keys=chosen,
                               cap_cells=a.cap_cells, min_cells=a.min_cells, seed=a.seed, gen_seed=a.gen_seed,
+                              max_controls=a.max_controls,
                               generator='trial-01 (vcc2026.inference.trial01_cells, Poisson)',
                               protocol_sha256=sha256(a.protocol), run=str(a.run)))
     write_json(a.out / 'run.json', dict(written_utc=now_utc(), git=git_state(), seconds=timer(),

@@ -1,0 +1,73 @@
+{
+  "written_utc": "2026-10-02T18:22:10+00:00",
+  "exported": {
+    "null": {
+      "file": "effects_null.npz",
+      "sha256": "06e7bb9ec342f1a22d3cfb9232c09e1d97412b398ca518786a15dd00101843e4",
+      "roundtrip_identical": true,
+      "observed_share": 0.0
+    },
+    "generic": {
+      "file": "effects_generic.npz",
+      "sha256": "645240c73b400564c397688d0185b23f5acfe5b2a41d745f782b61646a4bf72e",
+      "roundtrip_identical": true,
+      "observed_share": 0.8892352452202826
+    },
+    "transfer": {
+      "file": "effects_transfer.npz",
+      "sha256": "be6b92e89881e62d7f3bd04d1447cff483e3b64d87f7daa60e7a738313f04749",
+      "roundtrip_identical": true,
+      "observed_share": 0.8842324743696315
+    },
+    "tm0": {
+      "file": "effects_tm0.npz",
+      "sha256": "8bcd9e073b73c6b936728407809f52a8a0a10f54c5bfb5969c5e62b1ea143e63",
+      "roundtrip_identical": true,
+      "observed_share": 0.8892352452202826
+    },
+    "m1": {
+      "file": "effects_m1.npz",
+      "sha256": "2dff04c34fc2e4e03cf09495861fe7cdc3eb1cfd58f65827916918faaf41a126",
+      "roundtrip_identical": true,
+      "observed_share": 0.8892352452202826
+    },
+    "m1_swap": {
+      "file": "effects_m1_swap.npz",
+      "sha256": "f9413ce42d980e2939818bee2d1a317160a096640040dc9ff1312e4c2a6b39c5",
+      "roundtrip_identical": true,
+      "observed_share": 0.8892352452202826
+    },
+    "m2_0": {
+      "file": "effects_m2_0.npz",
+      "sha256": "fe981834db381b0adad4f4cc64096502441cc1e9edbe83b56ced15ecfaa0d33f",
+      "roundtrip_identical": true,
+      "observed_share": 0.8892352452202826
+    },
+    "m2": {
+      "file": "effects_m2.npz",
+      "sha256": "9073e5346977f6d477df53850b54fb748e16c5537578a098871483430d8edee1",
+      "roundtrip_identical": true,
+      "observed_share": 0.8892352452202826
+    },
+    "m2_swap": {
+      "file": "effects_m2_swap.npz",
+      "sha256": "bebede912c1f5c9330155df63156257df67525f5db6e45918666c3879c2a3fd1",
+      "roundtrip_identical": true,
+      "observed_share": 0.8892352452202826
+    }
+  },
+  "generator_parity": {
+    "arm": "m1",
+    "targets": [
+      "RPL23",
+      "ANKS6",
+      "TAF13"
+    ],
+    "cells_per_target": 20,
+    "seed": 20260912,
+    "stage45_vs_trial01_bit_identical": true,
+    "checks": "gene order (native HepG2 axis), ln -> log2 in stage 45, observed mask, compositional shift, log2 clip 6, Poisson, storage and count caps"
+  },
+  "tolerance": "exact equality required (bits)",
+  "passed": true
+}

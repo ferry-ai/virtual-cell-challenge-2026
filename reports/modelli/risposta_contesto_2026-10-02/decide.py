@@ -21,8 +21,8 @@ from common import now_utc, sha256, write_json
 SEED = 20261002
 
 
-def load_records(run: Path, regime: str) -> pd.DataFrame:
-    files = sorted(run.glob(f'per_target_{regime}_*.csv.gz'))
+def load_records(runs: list[Path], regime: str) -> pd.DataFrame:
+    files = sorted(f for run in runs for f in run.glob(f'per_target_{regime}_*.csv.gz'))
     if not files:
         return pd.DataFrame()
     # 'null' is an arm name, not a missing value: only empty cells and 'nan' are missing
@@ -100,7 +100,7 @@ def chain_rule(df: pd.DataFrame, proto: dict, arm: str, ref: str = 'transfer') -
 
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument('--run', type=Path, required=True)
+    p.add_argument('--run', type=Path, nargs='+', required=True, help='one or more run folders (C and J)')
     p.add_argument('--protocol', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
     a = p.parse_args()
@@ -109,7 +109,9 @@ def main() -> None:
     proto = json.loads(a.protocol.read_text(encoding='utf-8'))
     a.out.mkdir(parents=True)
     result = dict(written_utc=now_utc(), protocol=str(a.protocol), protocol_sha256=sha256(a.protocol),
-                  run=str(a.run), regimes={})
+                  runs=[str(r) for r in a.run],
+                  inputs={str(f): sha256(f) for r in a.run for f in sorted(r.glob('per_target_*.csv.gz'))},
+                  regimes={})
     ablation = {}
     tables = []
     for regime in ('C', 'J'):
