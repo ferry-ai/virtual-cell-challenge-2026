@@ -149,4 +149,4 @@ copie anteriori dello stesso corpus.
 | [kaggle_check.py](kaggle_check.py), [kaggle_list_account.py](kaggle_list_account.py), [kaggle_privacy.py](kaggle_privacy.py) | confronto lato server con le ricevute, elenco e privacy dei dataset |
 | [kaggle_verify/](kaggle_verify/) | kernel di verifica, lanci e confronto |
 | [eliminabili.py](eliminabili.py), [dipendenze.py](dipendenze.py), [riporta.py](riporta.py) | copie eliminabili, riferimenti nel codice, ripristino verificato |
-| [INGESTIONE.md](INGESTIONE.md) | piano per i dati mancanti |
+| [INGESTIONE.md](INGESTIONE.md), [campionamento.py](campionamento.py) con test, [ruoli_ingestione_r1.json](ruoli_ingestione_r1.json) | piano per i dati mancanti, campioni di CD4 e Orion, ruoli registrati prima dell integrazione |

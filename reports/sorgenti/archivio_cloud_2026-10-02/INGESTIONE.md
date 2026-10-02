@@ -79,6 +79,13 @@ deterministico dell'identificativo della cellula (mai dall'esito); per ogni cell
 probabilità di inclusione π; il manifest del campione (cellule, strati, π, sale) si scrive e si hasha
 prima della lettura delle matrici. Le cellule escluse restano contate per strato.
 
+**Implementato e provato in locale** (nessun dato remoto letto): [campionamento.py](campionamento.py),
+con [test_campionamento.py](test_campionamento.py), 5 test passati il 3/10: π corretta per strato,
+controlli tutti inclusi, esclusioni contate con il motivo, stesso campione con le righe in un altro
+ordine, campione diverso con un altro sale, nessun effetto di una colonna di conteggi aggiunta.
+Dai conteggi misurati di `D1_Rest`: «targeting single sgRNA» (1.754.014) comprende i 76.634 controlli a
+guida singola e 1.677.380 cellule bersagliate; le 526.103 «multi sgRNA» hanno `guide_type` targeting.
+
 ### CD4 (Marson 2025, CRISPRi, Flex)
 
 - **Popolazione misurata** (struttura remota, `../corpus_cellulare_2026-09-30/p1_r4/remote/cd4_*.json`):
@@ -135,8 +142,12 @@ una riserva è un insieme di esiti mai letti, letto una volta sola
 
 Le linee correlate non diventano indipendenti: Xu 2023 HEK293 (terza ondata) appartiene alla famiglia
 di HEK293T; Dixit e Norman sono K562 (catalogo r4); Datlinger 2017 usa cellule Jurkat secondo la
-pubblicazione (CROP-seq), per il 2021 il contesto va letto negli shard prima di assegnare il ruolo. Il file dei ruoli si scrive con hash e sale
-prima del primo job d'integrazione (proposta di nome: `ruoli_ingestione_r1.json` in questa cartella).
+pubblicazione (CROP-seq), per il 2021 il contesto va letto negli shard prima di assegnare il ruolo.
+
+**Registrato prima di qualunque integrazione:** [ruoli_ingestione_r1.json](ruoli_ingestione_r1.json)
+(sha256 `f08118bbcaad75a64cbbfd9c2d5aa6460502e599107adabfaaaa036ac8b5d837`, sidecar
+`ruoli_ingestione_r1.sha256`), con lo sha256 dello split e del manifest delle riserve di R-LEAD a cui si
+riferisce. Non si modifica: una correzione di R-LEAD è un file nuovo.
 
 ## 5. Nuovi download: elenco separato, ciascuno aspetta il via
 

@@ -1,0 +1,113 @@
+{
+ "written_utc": "2026-10-02T22:35:26+00:00",
+ "author": "Claude Code, sessione 096065 (archivio cloud), su richiesta del proprietario: ruoli assegnati prima dell'integrazione",
+ "status": "proposta registrata prima di qualunque integrazione; R-LEAD (P1, P5) la adotta o la corregge con un nuovo file, mai modificando questo",
+ "unit": "gruppo di linea: tutti gli studi, stati, donatori e cloni di una linea (R-LEAD P1)",
+ "split_reference": {
+  "path": "reports/analisi/generalizzazione_contesti_2026-10-02/p1_r1/split_manifest.json",
+  "sha256": "e2b0e1a491586449d17e7ae4048609dfac10f71f4c05fe688d8681ea948fc968",
+  "salt": "r-lead-2026-10-02"
+ },
+ "reserve_reference": {
+  "path": "reports/analisi/generalizzazione_contesti_2026-10-02/p1_r1/reserve_manifest.json",
+  "sha256": "01680f0c5f752013f8f9fe0081847d118666f0ae191fc5d2557bcf55e8fcec39"
+ },
+ "rule": "nuove cellule di un gruppo già nel banco entrano nello stesso ruolo e negli stessi fold per chiave di bersaglio; un gruppo letto da un banco o visto da un training non diventa riserva; linee correlate restano nel gruppo della linea madre",
+ "roles": [
+  {
+   "source": "cd4_marson2025, cellule (campione §3)",
+   "group": "CD4T",
+   "role": "training"
+  },
+  {
+   "source": "orion_hct116, cellule (campione §3)",
+   "group": "HCT116",
+   "role": "training"
+  },
+  {
+   "source": "orion_hek293t, cellule (campione §3)",
+   "group": "HEK293T",
+   "role": "training"
+  },
+  {
+   "source": "kolf21j pan-genome, cellule",
+   "group": "iPSC",
+   "role": "training"
+  },
+  {
+   "source": "southard RPE1 CRISPRa",
+   "group": "RPE1",
+   "role": "training",
+   "note": "modalità CRISPRa dichiarata, separata dal CRISPRi"
+  },
+  {
+   "source": "jurkat_nadig",
+   "group": "Jurkat",
+   "role": "development",
+   "why": "visto dai training r1-r3"
+  },
+  {
+   "source": "h1_vcc2025 train e validation",
+   "group": "H1",
+   "role": "development",
+   "why": "visto dai training r1-r3"
+  },
+  {
+   "source": "h1_vcc2025 test",
+   "group": "H1",
+   "role": "riserva chiusa",
+   "note": "dopo un fit su H1 train/val non è una prova su un contesto nuovo"
+  },
+  {
+   "source": "tian2019/2021",
+   "group": "linea iPSC dello studio Tian (da leggere negli shard)",
+   "role": "development",
+   "why": "visto dal training r3"
+  },
+  {
+   "source": "norman2019",
+   "group": "K562",
+   "role": "development"
+  },
+  {
+   "source": "a549_ko",
+   "group": "A549",
+   "role": "development",
+   "why": "visto dal training r3; modalità KO"
+  },
+  {
+   "source": "southard Hs27 CRISPRa",
+   "group": "Hs27",
+   "role": "development",
+   "why": "modalità CRISPRa; effetti già letti nel banco P0 come fuori banco"
+  },
+  {
+   "source": "scPerturb terza ondata (Frangieh, Sunshine, Papalexi arrayed, Shifrut, Datlinger, Dixit, Xu)",
+   "group": "per studio; Xu HEK293 nel gruppo HEK293T, Dixit nel K562, Datlinger 2017 nel Jurkat",
+   "role": "development",
+   "why": "per lo più KO; gruppi correlati a linee già viste"
+  },
+  {
+   "source": "jiang2025 = mixscale (Zenodo 14518762), cellule di MCF7, HT29, HAP1, BxPC3",
+   "group": "una per linea",
+   "role": "riserva candidata",
+   "condition": "dichiarare in R-LEAD la lettura descrittiva dei DE del 24/09 (reports/sorgenti/pattern_mixscale_2026-09-24/) e giudicarla non selettiva; altrimenti development"
+  },
+  {
+   "source": "jiang2025 = mixscale, cellule di A549 e K562",
+   "group": "A549, K562",
+   "role": "development"
+  },
+  {
+   "source": "microglia GSE335887",
+   "group": "microglia da iPSC",
+   "role": "riserva candidata",
+   "condition": "dopo la lettura dei soli metadati"
+  },
+  {
+   "source": "gara D/E/F",
+   "group": "D, E, F",
+   "role": "test finale"
+  }
+ ]
+}
