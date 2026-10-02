@@ -6,7 +6,7 @@
 
 ## Due fatti delle regole che cambiano il gioco (letti dalla pagina ufficiale)
 
-Fonte: [le regole](https://virtualcellchallenge.org/rules), versione rivista il 16 settembre 2026, lette alle 00:10 CEST
+Fonte: [le regole](https://virtualcellchallenge.org/rules), versione rivista il 16 settembre 2026, lette poco dopo la mezzanotte
 del 3/10 nel browser.
 
 1. **La fase finale è cieca.** Le regole dicono:
