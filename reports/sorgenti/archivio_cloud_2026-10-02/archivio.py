@@ -249,78 +249,109 @@ def cmd_copy(a: argparse.Namespace) -> None:
     todo.sort(key=lambda r: r["rel"])
     print(f"{now()} {len(todo)} files, {sum(r['bytes'] for r in todo) / 2**30:.2f} GiB to consider", flush=True)
     stop_file = Path(a.stop_file) if a.stop_file else None
-    with receipts.open("a", encoding="utf-8") as rf:
-        for r in todo:
-            if stop_file and stop_file.exists():
-                print(f"{now()} stop file {stop_file} present: stopping before {r['rel']}", flush=True)
-                return
-            src, dst = root / r["rel"], dest_root / r["rel"]
-            if r["nlink"] > 1 and (r["file_id"] in on_drive_ids or r["file_id"] in copied_ids):
-                other = on_drive_ids.get(r["file_id"]) or f"data/{copied_ids[r['file_id']]}"
-                rf.write(json.dumps({"rel": r["rel"], "bytes": r["bytes"], "status": "skipped_hardlink",
-                                     "same_physical_file_as": other, "finished_utc": now()}) + "\n")
-                rf.flush()
-                continue
-            need = r["bytes"] + margin
-            waited = 0
-            while free_bytes(a.cache_disk) < need:
-                if waited == 0:
-                    print(f"{now()} waiting: free {free_bytes(a.cache_disk) / 2**30:.2f} GiB < "
-                          f"{need / 2**30:.2f} GiB for {r['rel']}", flush=True)
-                time.sleep(30)
-                waited += 30
-                if a.max_wait_s and waited > a.max_wait_s:
-                    print(f"{now()} stop: waited {waited}s for free space", flush=True)
-                    return
-                if stop_file and stop_file.exists():
-                    print(f"{now()} stop file {stop_file} present while waiting: stopping before {r['rel']}", flush=True)
-                    return
-            rec = {"rel": r["rel"], "bytes": r["bytes"], "dest": str(dst), "started_utc": now()}
-            if dst.exists():
-                same = dst.stat().st_size == r["bytes"]
-                rec.update(status="skipped_exists_same_size" if same else "refused_exists_different_size",
-                           dest_bytes=dst.stat().st_size, finished_utc=now())
-                rf.write(json.dumps(rec) + "\n")
-                rf.flush()
-                continue
-            dst.parent.mkdir(parents=True, exist_ok=True)
-            tmp = dst.with_name(dst.name + ".partial")
-            if tmp.exists():
-                tmp.unlink()
-            s, m, n = hashlib.sha256(), hashlib.md5(), 0
-            t0 = time.time()
+    stopped = lambda: bool(stop_file and stop_file.exists())  # noqa: E731
+    defer_bytes = int(a.defer_over_gb * 2**30) if a.defer_over_gb else 0
+
+    def write(rec: dict) -> None:
+        rf.write(json.dumps(rec) + "\n")
+        rf.flush()
+
+    def wait_for_space(r: dict, limit_s: int) -> str:
+        """'ok' when the file plus the margin fits on the cache disk; 'stop' or 'timeout' otherwise."""
+        need, waited = r["bytes"] + margin, 0
+        while free_bytes(a.cache_disk) < need:
+            if waited == 0:
+                print(f"{now()} waiting: free {free_bytes(a.cache_disk) / 2**30:.2f} GiB < "
+                      f"{need / 2**30:.2f} GiB for {r['rel']}", flush=True)
+            if stopped():
+                return "stop"
+            if limit_s and waited >= limit_s:
+                return "timeout"
+            time.sleep(30)
+            waited += 30
+        return "ok"
+
+    def copy_one(r: dict) -> None:
+        src, dst = root / r["rel"], dest_root / r["rel"]
+        rec = {"rel": r["rel"], "bytes": r["bytes"], "dest": str(dst), "started_utc": now()}
+        if dst.exists():
+            same = dst.stat().st_size == r["bytes"]
+            rec.update(status="skipped_exists_same_size" if same else "refused_exists_different_size",
+                       dest_bytes=dst.stat().st_size, finished_utc=now())
+            write(rec)
+            return
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        tmp = dst.with_name(dst.name + ".partial")
+        if tmp.exists():
+            tmp.unlink()
+        s, m, n = hashlib.sha256(), hashlib.md5(), 0
+        t0 = time.time()
+        try:
+            with src.open("rb") as fi, tmp.open("wb") as fo:
+                for b in iter(lambda: fi.read(CHUNK), b""):
+                    s.update(b)
+                    m.update(b)
+                    n += len(b)
+                    fo.write(b)
+            os.replace(tmp, dst)
+        except OSError as e:
+            rec.update(status="error", error=str(e), finished_utc=now())
+            write(rec)
+            print(f"{now()} error on {r['rel']}: {e}", flush=True)
             try:
-                with src.open("rb") as fi, tmp.open("wb") as fo:
-                    while True:
-                        b = fi.read(CHUNK)
-                        if not b:
-                            break
-                        s.update(b)
-                        m.update(b)
-                        n += len(b)
-                        fo.write(b)
-                os.replace(tmp, dst)
-            except OSError as e:
-                rec.update(status="error", error=str(e), finished_utc=now())
-                rf.write(json.dumps(rec) + "\n")
-                rf.flush()
-                print(f"{now()} error on {r['rel']}: {e}", flush=True)
-                if tmp.exists():
-                    try:
-                        tmp.unlink()
-                    except OSError:
-                        pass
-                continue
-            copied_ids[r["file_id"]] = r["rel"]
-            rec.update(status="copied", copied_bytes=n, sha256=s.hexdigest(), md5=m.hexdigest(),
-                       seconds=round(time.time() - t0, 2), finished_utc=now(),
-                       free_gib_after=round(free_bytes(a.cache_disk) / 2**30, 2))
-            h = hashes.get(r["rel"])
-            if h:
-                rec["matches_local_hash"] = (h["sha256"] == rec["sha256"])
-            rf.write(json.dumps(rec) + "\n")
-            rf.flush()
-            print(f"{now()} copied {r['rel']} {n / 2**20:.1f} MiB in {rec['seconds']}s", flush=True)
+                tmp.unlink()
+            except OSError:
+                pass
+            return
+        copied_ids[r["file_id"]] = r["rel"]
+        rec.update(status="copied", copied_bytes=n, sha256=s.hexdigest(), md5=m.hexdigest(),
+                   seconds=round(time.time() - t0, 2), finished_utc=now(),
+                   free_gib_after=round(free_bytes(a.cache_disk) / 2**30, 2))
+        h = hashes.get(r["rel"])
+        if h:
+            rec["matches_local_hash"] = (h["sha256"] == rec["sha256"])
+        write(rec)
+        print(f"{now()} copied {r['rel']} {n / 2**20:.1f} MiB in {rec['seconds']}s", flush=True)
+
+    with receipts.open("a", encoding="utf-8") as rf:
+        deferred: list[dict] = []
+        for final_pass, queue in ((False, todo), (True, None)):
+            if final_pass:
+                queue = deferred
+                if queue:
+                    print(f"{now()} final pass over {len(queue)} deferred files", flush=True)
+            for r in queue:
+                if stopped():
+                    print(f"{now()} stop file {stop_file} present: stopping before {r['rel']}", flush=True)
+                    return
+                if r["nlink"] > 1 and (r["file_id"] in on_drive_ids or r["file_id"] in copied_ids):
+                    other = on_drive_ids.get(r["file_id"]) or f"data/{copied_ids[r['file_id']]}"
+                    write({"rel": r["rel"], "bytes": r["bytes"], "status": "skipped_hardlink",
+                           "same_physical_file_as": other, "finished_utc": now()})
+                    continue
+                big = bool(defer_bytes) and r["bytes"] > defer_bytes
+                fits = free_bytes(a.cache_disk) >= r["bytes"] + margin
+                if big and not fits and not final_pass:
+                    # A large file that does not fit now goes after the others instead of blocking them.
+                    deferred.append(r)
+                    print(f"{now()} deferred to the final pass: {r['rel']} ({r['bytes'] / 2**30:.2f} GiB)", flush=True)
+                    continue
+                # Small files wait for the cache to drain; deferred ones wait at most --final-wait-s, then are
+                # recorded as not sent: a full disk is never forced.
+                state = wait_for_space(r, a.final_wait_s if (big and final_pass) else a.max_wait_s)
+                if state == "stop":
+                    print(f"{now()} stop file present while waiting: stopping before {r['rel']}", flush=True)
+                    return
+                if state == "timeout":
+                    if big and final_pass:
+                        write({"rel": r["rel"], "bytes": r["bytes"], "status": "deferred_no_space",
+                               "free_gib": round(free_bytes(a.cache_disk) / 2**30, 2),
+                               "needed_gib": round((r["bytes"] + margin) / 2**30, 2), "finished_utc": now()})
+                        print(f"{now()} not sent for lack of space: {r['rel']}", flush=True)
+                        continue
+                    print(f"{now()} stop: waited too long for free space before {r['rel']}", flush=True)
+                    return
+                copy_one(r)
 
 
 def cmd_manifest(a: argparse.Namespace) -> None:
@@ -393,7 +424,11 @@ def main() -> None:
     s.add_argument("--stop-file", default=None, help="stop before the next file when this path exists")
     s.add_argument("--cache-disk", default="C:\\")
     s.add_argument("--min-free-gb", type=float, default=8.0)
-    s.add_argument("--max-wait-s", type=int, default=0)
+    s.add_argument("--max-wait-s", type=int, default=0, help="0 = small files wait as long as needed")
+    s.add_argument("--defer-over-gb", type=float, default=0.0,
+                   help="files above this size that do not fit now go to a final pass instead of blocking the queue")
+    s.add_argument("--final-wait-s", type=int, default=1200,
+                   help="in the final pass, how long a deferred file waits for space before it is recorded as not sent")
     s = sub.add_parser("manifest")
     s.add_argument("--plan", required=True)
     s.add_argument("--receipts", required=True)

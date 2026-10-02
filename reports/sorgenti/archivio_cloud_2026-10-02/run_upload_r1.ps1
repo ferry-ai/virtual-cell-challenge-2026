@@ -4,12 +4,17 @@
 param(
     [string]$Py = 'C:\Users\ferra\vcc2026-data\.venv\Scripts\python.exe',
     [string]$Run = 'C:\Users\ferra\vcc2026-data\processed\archivio_cloud_2026-10-02\r1',
-    [double]$MinFreeGb = 6
+    [double]$MinFreeGb = 6,
+    # Files above this size that do not fit go to a final pass of their tier; if they still do not fit after
+    # FinalWaitS seconds they are recorded as deferred_no_space (from 00:45 of 3 October, 1 GiB and 20 minutes).
+    [double]$DeferOverGb = 0,
+    [int]$FinalWaitS = 1200
 )
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $common = @("`"$here\archivio.py`"", 'copy', '--root', 'C:\Users\ferra\vcc2026-data',
             '--dest', "`"G:\Il mio Drive\vcc2026\data`"", '--plan', "`"$Run\plan_r1.json`"",
-            '--receipts', "`"$Run\copy_receipts.jsonl`"", '--min-free-gb', "$MinFreeGb", '--stop-file', "`"$Run\STOP`"")
+            '--receipts', "`"$Run\copy_receipts.jsonl`"", '--min-free-gb', "$MinFreeGb", '--stop-file', "`"$Run\STOP`"",
+            '--defer-over-gb', "$DeferOverGb", '--final-wait-s', "$FinalWaitS")
 $tiers = @(
     @{ name = 't1_bench_inputs'
        only = @('processed/universe_', 'processed/basal_sources_2026-09-28.csv', 'processed/corpus_basale_2026-09-28', 'external/vcc2025')
