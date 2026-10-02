@@ -315,6 +315,7 @@ def cmd_copy(a: argparse.Namespace) -> None:
 
     with receipts.open("a", encoding="utf-8") as rf:
         deferred: list[dict] = []
+        gave_up = False  # in the final pass the wait is one budget: after the first timeout nobody waits again
         for final_pass, queue in ((False, todo), (True, None)):
             if final_pass:
                 queue = deferred
@@ -338,12 +339,16 @@ def cmd_copy(a: argparse.Namespace) -> None:
                     continue
                 # Small files wait for the cache to drain; deferred ones wait at most --final-wait-s, then are
                 # recorded as not sent: a full disk is never forced.
-                state = wait_for_space(r, a.final_wait_s if (big and final_pass) else a.max_wait_s)
+                if big and final_pass and gave_up and not fits:
+                    state = "timeout"
+                else:
+                    state = wait_for_space(r, a.final_wait_s if (big and final_pass) else a.max_wait_s)
                 if state == "stop":
                     print(f"{now()} stop file present while waiting: stopping before {r['rel']}", flush=True)
                     return
                 if state == "timeout":
                     if big and final_pass:
+                        gave_up = True
                         write({"rel": r["rel"], "bytes": r["bytes"], "status": "deferred_no_space",
                                "free_gib": round(free_bytes(a.cache_disk) / 2**30, 2),
                                "needed_gib": round((r["bytes"] + margin) / 2**30, 2), "finished_utc": now()})

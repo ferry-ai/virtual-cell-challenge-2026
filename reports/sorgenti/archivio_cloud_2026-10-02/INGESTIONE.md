@@ -62,6 +62,12 @@ sha256 calcolati sul server Kaggle), fattibilità R-LEAD
 | microglia GSE335887, PerturbFate GSE291147 | non acquisiti | no | no | elenco dei file da leggere (solo metadati) |
 | Tahoe-100M | controlli DMSO a sottocampione; bracci farmacologici su Kaggle | no | no | i farmaci non prevalgono (decisione del proprietario) |
 
+**Aggiornamento del 3/10, 00:40 (dichiarato dalla sessione R-LEAD `22d21f` in un messaggio; l'evidenza sarà
+nella sua cartella `generalizzazione_contesti_2026-10-02/`):** Jurkat (Nadig), H1 train/val e Tian 2021
+CRISPRi sono entrati nel banco come linee di **sviluppo** (gruppi Jurkat, H1, Neuron), dagli effetti di somme
+calcolate su Kaggle (`davidmaisterx/rlab-lead-sums-r1`); H1 test resta chiuso. Per queste tre righe la
+colonna «Banco R-LEAD» della tabella sopra va letta come «sì, development» da quel momento.
+
 Tre correzioni al quadro di partenza:
 - **Jurkat di Nadig e Tian non sono «acquisiti in parte»**: sono ingeriti per intero, con parità nei
   `complete.json` e copie verificate su Kaggle; mancano solo come tabelle di effetti del banco.

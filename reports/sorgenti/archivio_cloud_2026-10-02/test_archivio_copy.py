@@ -52,6 +52,24 @@ class TestCopy(unittest.TestCase):
         self.assertFalse((self.dest / "a" / "big.bin").exists())
         self.assertEqual([r["rel"] for r in recs][-1], "a/big.bin")  # recorded after the others
 
+    def test_final_pass_waits_once_not_per_file(self):
+        (self.root / "a" / "big2.bin").write_bytes(os.urandom(3 << 20))
+        (self.tmp / "inv.tsv").unlink()
+        (self.tmp / "plan.json").unlink()
+        archivio.cmd_inventory(argparse.Namespace(root=str(self.root), out=str(self.tmp / "inv.tsv")))
+        archivio.cmd_plan(argparse.Namespace(inventory=str(self.tmp / "inv.tsv"), drive_listing=str(self.tmp / "drive.tsv"),
+                                             out=str(self.tmp / "plan.json")))
+        slept = []
+        archivio.free_bytes = lambda _path: 1 << 20
+        args = dict(root=str(self.root), dest=str(self.dest), plan=str(self.tmp / "plan.json"), hashes=None,
+                    receipts=str(self.tmp / "rec.jsonl"), only=None, exclude=None, stop_file=None, cache_disk=str(self.tmp),
+                    min_free_gb=0.0, max_wait_s=0, defer_over_gb=0.001, final_wait_s=60)
+        with mock.patch.object(archivio.time, "sleep", lambda s: slept.append(s)):
+            archivio.cmd_copy(argparse.Namespace(**args))
+        recs = [json.loads(l) for l in (self.tmp / "rec.jsonl").read_text(encoding="utf-8").splitlines()]
+        self.assertEqual(sorted(r["rel"] for r in recs if r["status"] == "deferred_no_space"), ["a/big.bin", "a/big2.bin"])
+        self.assertEqual(sum(slept), 60)  # one budget for the whole final pass
+
     def test_everything_sent_when_space_allows_and_resume_skips_done(self):
         recs = self.copy(free=1 << 30)
         self.assertEqual(sorted(r["status"] for r in recs), ["copied", "copied", "copied", "skipped_hardlink"])

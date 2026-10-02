@@ -76,6 +76,11 @@ copie anteriori dello stesso corpus.
 - **Riavvii puliti:** alle 23:14 (margine) e alle 00:11 (margine, e il copiatore non leggeva il file `STOP`
   mentre attendeva spazio: corretto). Il riavvio delle 00:11 ha sovrascritto il log `.out.log` del lotto t1;
   le ricevute sono complete. Da allora ogni avvio scrive log con data e ora.
+- **File grandi (dalle 00:43 del 3/10):** con circa 7 GB liberi e 6,5 GiB di margine un file di qualche GiB
+  non entra mai e bloccava i più piccoli dietro di sé. Ora un file sopra 1 GiB che non entra passa in fondo al
+  suo lotto; se dopo 20 minuti non entra ancora resta registrato come `deferred_no_space` e non viene inviato.
+  Il margine non si abbassa. Questi file (e il CD4) aspettano spazio libero, cioè le prime cancellazioni
+  approvate, oppure un client che carichi senza cache (§6). Tre test in [test_archivio_copy.py](test_archivio_copy.py).
 - **Fine del caricamento:** quando il lanciatore termina, la sentinella [watch_upload_r1.ps1](watch_upload_r1.ps1)
   costruisce il manifest A (`archivio.py manifest`) e scrive su Drive il segnale `UPLOAD_COMPLETE_r1.json`.
 
