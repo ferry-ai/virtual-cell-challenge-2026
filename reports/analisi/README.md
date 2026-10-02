@@ -8,6 +8,7 @@ Invecchiano in fretta: prima di seguirne un «prossimo passo», controllare
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 02/10 | [t29_diagnosi_2026-10-02/](t29_diagnosi_2026-10-02/) | Perché il t29 (rete R-LAB r2, braccio `desc`) va sotto zero: verifiche del codice (unità, ingresso, geni, contesti: non sono la causa), quattro ipotesi scritte prima dei sei membri (spostamento denso e condiviso, codice del bersaglio debole, nessun knockdown del gene bersaglio, confondimento di libreria) e uno script che le distingue sugli effetti esportati | ipotesi; diagnosi provata solo su dati sintetici | ★★ |
 | 02/10 | [hepg2_locale_2026-10-02/](hepg2_locale_2026-10-02/) | HepG2 pubblico in locale: analisi HepG2 dell'audit rieseguite (valori identici); controlli corretti sui dati reali, 52 librerie su 52 con 64 controlli propri contro 0, stesso pool in ogni ordine | misurato, sola HepG2 senza QC | ★★ |
 | 01/10 | [presa_rlead_2026-10-01/](presa_rlead_2026-10-01/) | Presa in carico R-LEAD del teammate: ambiente verificato (Python 3.12, scorer, GPU), input assenti sulla macchina, prove dell'audit riprodotte con valori identici, matrice di applicabilità e blocchi | ambiente misurato e riproduzioni; correzioni nella cartella cellnet_rlead | ★★ |
 | 01/10 | [handoff_teammate_2026-10-01/](handoff_teammate_2026-10-01/) | Consegna del programma al teammate: brief e prompt in docs, inventario portabile per Git/runtime/input/applicabilità e verifica sul computer di origine | istruzioni e preflight; readiness del destinatario da misurare | ★★ |
