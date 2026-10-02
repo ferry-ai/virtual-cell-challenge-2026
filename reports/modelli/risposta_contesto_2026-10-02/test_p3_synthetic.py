@@ -79,15 +79,20 @@ def run_chain(tmp: Path, beta: float) -> dict:
     protocol(proto, coords)
     run = tmp / f'run_{beta}'
     out = tmp / f'decision_{beta}'
+    runj = tmp / f'runj_{beta}'
     for cmd in ([sys.executable, str(HERE / 'p3_run.py'), '--cube', str(cube), '--protocol', str(proto),
                  '--out', str(run)],
+                [sys.executable, str(HERE / 'p3_run_j.py'), '--cube', str(cube), '--protocol', str(proto),
+                 '--out', str(runj), '--folds', '0', '--max-train-keys', '120', '--fit-keys-per-group', '60'],
                 [sys.executable, str(HERE / 'decide.py'), '--run', str(run), '--protocol', str(proto),
                  '--out', str(out)]):
         done = subprocess.run(cmd, cwd=HERE, capture_output=True, text=True)
         if done.returncode:
             raise RuntimeError(f'{cmd[1]} failed:\n{done.stderr[-3000:]}')
     return dict(decision=json.loads((out / 'decision.json').read_text(encoding='utf-8')),
-                run=json.loads((run / 'run.json').read_text(encoding='utf-8')))
+                run=json.loads((run / 'run.json').read_text(encoding='utf-8')),
+                fits=json.loads((run / 'fits.json').read_text(encoding='utf-8')),
+                runj=json.loads((runj / 'run.json').read_text(encoding='utf-8')))
 
 
 class TestSyntheticControls(unittest.TestCase):
@@ -116,6 +121,20 @@ class TestSyntheticControls(unittest.TestCase):
         for res in (self.pos, self.neg):
             for g, chk in res['run']['leak_checks'].items():
                 self.assertEqual(chk['fit_reads_of_held_group'], [], g)
+            for name, chk in res['runj']['leak_checks'].items():
+                self.assertEqual(chk['fit_reads_of_held_group'], [], name)
+
+    def test_inner_selection_never_sees_the_validation_group(self):
+        for res in (self.pos, self.neg):
+            for g, fit in res['fits'].items():
+                for v, audit in fit['inner_audit'].items():
+                    self.assertNotIn(v, audit['basis_and_pca_groups'])
+                    self.assertNotIn(g, audit['basis_and_pca_groups'])
+                    for h, sources in audit['transfer_sources'].items():
+                        self.assertNotIn(v, sources)
+                        self.assertNotIn(h, sources)
+                        self.assertNotIn(g, sources)
+                    self.assertNotIn(v, audit['validation_transfer_sources'])
 
 
 if __name__ == '__main__':

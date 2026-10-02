@@ -1,9 +1,10 @@
 # Protocollo P2–P3 di R-LEAD: il contesto letto dai controlli migliora il transfer?
 
-**Congelato il 2 ottobre 2026 alle 17:40 CEST**, prima di adattare o valutare qualunque braccio sui dati
-reali; bozza alle 17:25 (versione 1), corretta prima dei dati reali per l'esito del controllo positivo
-sintetico (§5). La versione eseguibile è [PROTOCOLLO.json](PROTOCOLLO.json): `decide.py` legge la regola
-da lì. Autore: Claude Code, sessione `22d21f`. Scheda: [R-LEAD](../../../docs/piani/strategia-scientifica.md).
+**Congelato il 2 ottobre 2026 nel commit `e60767c` delle 17:32:23 CEST**, prima di adattare o valutare
+qualunque braccio sui dati reali. Bozza alle 17:25 (versione 1), corretta prima dei dati reali per
+l'esito del controllo positivo sintetico (§5). Il testo committato diceva «17:40», un orario scritto a
+memoria e sbagliato: corretto alle 17:33 (orario letto con `date`), regola invariata. La versione
+eseguibile è [PROTOCOLLO.json](PROTOCOLLO.json): `decide.py` legge la regola da lì. Autore: Claude Code, sessione `22d21f`. Scheda: [R-LEAD](../../../docs/piani/strategia-scientifica.md).
 Codice: [risposta_contesto_2026-10-02](../../modelli/risposta_contesto_2026-10-02/).
 
 ## 1. Domanda e tipo delle affermazioni
@@ -61,7 +62,8 @@ vincolo di non regressione `pds` (discriminazione in blocchi di 300 bersagli, co
 **Revisione prima dei dati reali.** Nella bozza la primaria era `pds`. Il controllo positivo sintetico
 (`test_p3_synthetic.py`: guadagno per gene piantato, β = 0,8) ha mostrato `pds` saturo e cieco al
 contesto (m1 − tm0: pds +0,0003, cos +0,125, mse_ratio −0,25) quando il transfer discrimina già.
-La primaria è diventata `cos` alle 17:40, con `pds` come vincolo; nessun dato reale era stato adattato.
+La primaria è diventata `cos` prima del commit delle 17:32:23, con `pds` come vincolo; nessun dato reale
+era stato adattato.
 
 Aggregazione: per gruppo, media delle differenze appaiate per bersaglio; macro = media non pesata
 sui gruppi. Incertezza: bootstrap sui gruppi (descrittivo, sette unità) e sui bersagli entro gruppo
@@ -126,3 +128,17 @@ Sette gruppi, con confondimenti: HCT116 e HEK293T stesso studio; K562 e RPE1 ste
 di HepG2 (Weissman, da verificare); iPSC 20 tabelle di un solo tipo cellulare. Saggi diversi (3′, 5′,
 Flex) confusi con le linee. La verità è pseudobulk con rumore proprio (riproducibilità HepG2 metà/metà
 in `hepg2_r2`). Nessuna riserva intatta in locale (`p1_r1/reserve_manifest.json`).
+
+## 10. Correzioni d'implementazione prima dei risultati
+
+- **Selezione interna di M2** (versione 2 del runner, `fitting.py`). La versione 1 (commit `e60767c`) non
+  ricostruiva senza il gruppo di validazione interna né la base dei geni né i transfer fuori fold delle
+  righe di training: il tuning interno era ottimista, il gruppo tenuto fuori nel test esterno non era
+  coinvolto. Segnalato da una revisione esterna inoltrata dal proprietario in chat. Nella versione 2 base,
+  transfer e PCA del fold interno escludono il gruppo di validazione; ogni fold registra le proprie
+  sorgenti (`inner_audit`), controllate dai test. La corsa `p3_c_r1` è stata fermata alle 17:50:42 durante
+  il secondo gruppo; il suo unico file parziale (CD4T) non è stato letto ed è conservato com'è.
+- **Riferimento J per i guadagni:** base, risposta comune e mappa ridge si riadattano senza il fold
+  interno, più stretto dell'approssimazione dichiarata nella regola J.
+
+Nessuna regola, soglia o metrica cambia con queste correzioni.
