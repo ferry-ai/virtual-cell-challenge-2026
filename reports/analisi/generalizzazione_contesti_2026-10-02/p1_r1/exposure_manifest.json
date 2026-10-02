@@ -1,0 +1,103 @@
+{
+  "written_utc": "2026-10-02T15:24:18+00:00",
+  "this_bench": {
+    "rule": "every arm of a split (transfer included) is fitted only on rows that splits.Split.row_allowed admits; p3_run.py asserts it on the rows and logs every table read with its purpose, failing if a fit reads the held group",
+    "controls": "held-out controls enter only as the basal profile of the held table",
+    "pretraining": "none: closed-form fits on the cube; no pretrained representation"
+  },
+  "prior_models": {
+    "cellnet_r2": {
+      "source": "reports\\modelli\\cellnet_esteso_2026-10-01\\esito\\prepass_r5\\prepass\\splits.json",
+      "sha256": "1248afa8f950cbcaf029263c3a04c19255af198f53e545f10aac84dc16b405d1",
+      "seed": 20260930,
+      "holdout_context": "HepG2",
+      "hidden_symbols": 1100,
+      "trainable_symbols": 11003,
+      "admitted_cells_by_class": {
+        "C": 123563,
+        "control_holdout": 4976,
+        "J": 16925,
+        "train": 3354670,
+        "T": 371584,
+        "unlabelled": 526789
+      },
+      "evaluation_groups": {
+        "C": 400,
+        "T": 400,
+        "J": 226
+      },
+      "studies": [
+        "h1_vcc2025",
+        "hepg2_nadig",
+        "hipsci_gw_fitness",
+        "hipsci_gw_nonfitness",
+        "hipsci_targeted_19",
+        "jurkat_nadig",
+        "replogle_k562_essential",
+        "replogle_k562_gwps",
+        "replogle_rpe1"
+      ],
+      "note": "K562, RPE1, Jurkat, H1 train/val and HIPSCI perturbed cells are training for this model: none of them is a new context for it; HepG2 is its held-out context (C/J classes), already read (lead audit 1/10)"
+    },
+    "cellnet_r3": {
+      "source": "reports\\modelli\\cellnet_completo_2026-10-01\\esito\\prepass_r7\\prepass\\splits.json",
+      "sha256": "2ca18ba933c182400819512ee76239ad9e41d4fce9650fad42936bb0948dea45",
+      "seed": 20260930,
+      "holdout_context": "HepG2",
+      "hidden_symbols": 1142,
+      "trainable_symbols": 11420,
+      "admitted_cells_by_class": {
+        "C": 127357,
+        "J": 13131,
+        "control_holdout": 4976,
+        "train": 4382321,
+        "T": 468040,
+        "unlabelled": 526789,
+        "combined:T": 8589,
+        "combined:train": 32194
+      },
+      "evaluation_groups": {
+        "C": 400,
+        "T": 400,
+        "J": 206
+      },
+      "studies": [
+        "a549_liu_hillsley2026",
+        "h1_vcc2025",
+        "hepg2_nadig",
+        "hipsci_gw_fitness",
+        "hipsci_gw_nonfitness",
+        "hipsci_targeted_19",
+        "jurkat_nadig",
+        "kolf_chromatin_modifiers",
+        "kolf_metabolic_enzymes",
+        "kolf_strong_perturbations",
+        "norman2019_crispra",
+        "replogle_k562_essential",
+        "replogle_k562_gwps",
+        "replogle_rpe1",
+        "tian2021_crispra",
+        "tian2021_crispri"
+      ],
+      "note": "K562, RPE1, Jurkat, H1 train/val and HIPSCI perturbed cells are training for this model: none of them is a new context for it; HepG2 is its held-out context (C/J classes), already read (lead audit 1/10)"
+    },
+    "r2_vs_r3_hidden_lists": {
+      "r2": 1100,
+      "r3": 1142,
+      "shared": 128,
+      "jaccard": 0.06054872280037843,
+      "reading": "reproduces lead audit 1/10 §2.1: the J barrier changed with the corpus"
+    },
+    "production_transfer_t22_t25": {
+      "sources": [
+        "k562 (Replogle GWPS)",
+        "cd4_mix (Marson, three states)",
+        "orion_hct116",
+        "orion_hek293t"
+      ],
+      "targets": "the A/B/C panel",
+      "recipe": "configs/recipes/t25.json (cache r9, estimator min_expected 1)",
+      "note": "every panel target of these four lines is training for the production transfer"
+    }
+  }
+}

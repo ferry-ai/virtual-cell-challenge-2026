@@ -1,0 +1,92 @@
+{
+  "version": 2,
+  "frozen": "2026-10-02 17:40 CEST (draft 17:25), before any arm of P3 was fitted or scored on real data",
+  "author": "Claude Code, session 22d21f (R-LEAD P2)",
+  "question": "From the controls alone of a line never seen perturbed, can a learned correction of the response improve on transfer?",
+  "bench": {
+    "unit": "line group held out whole: CD4T, HCT116, HEK293T, HepG2, K562, RPE1, iPSC (all studies, states, donors, clones)",
+    "cube": "processed/generalizzazione_contesti_2026-10-02/cube_r1 (manifest sha256 recorded by each run)",
+    "splits": "reports/analisi/generalizzazione_contesti_2026-10-02/p1_r1/split_manifest.json",
+    "truth": "raw ln fold change and SE of each held-out table (pseudobulk estimators of the universes; HepG2 rebuilt here with min_expected 1)",
+    "evaluated_rows": "held-out table rows with >= 10 cells; in C with transfer support from >= 1 training group after QC",
+    "strata": ["essential", "panel", "genome"],
+    "role": "development: every group has had outcome readings before (reserve_manifest.json); no result here is a confirmation"
+  },
+  "parameters": {
+    "min_cells": 10,
+    "n_folds": 5,
+    "n_fit": 800,
+    "m1_ridge": 0.001,
+    "m2_k_grid": [8, 16, 32],
+    "m2_d_grid": [1, 2, 3],
+    "m2_ridge_grid": [0.01, 0.1, 1.0],
+    "j_embed_k": 16,
+    "j_embed_ridge": 0.1,
+    "pds_block": 300,
+    "amplitude_t25": 1.576,
+    "gamma": 1.0,
+    "reliability_scale": 100,
+    "gene_coordinates": "external/annotation/gene_coordinates_gencode_v50.tsv"
+  },
+  "arms": {
+    "C": ["null", "generic", "transfer", "tm0", "m1", "m1_swap", "m1_tperm", "m1_null1..5", "m2_0", "m2", "m2_swap", "m2_null1..5"],
+    "J": ["null", "generic", "embed", "jm1_0", "jm1", "jm1_swap", "jm1_tperm", "jm1_null1..5"],
+    "candidates_C": {"m1": "tm0", "m2": "m2_0"},
+    "candidates_J": {"jm1": "jm1_0"},
+    "swap": {"m1": "m1_swap", "m2": "m2_swap", "jm1": "jm1_swap"},
+    "nulls": {"m1": "m1_null", "m2": "m2_null", "jm1": "jm1_null"}
+  },
+  "metrics": {
+    "primary": "cos",
+    "secondary": {"pds": "higher", "cos_spec": "higher", "sign_sig": "higher", "mse_ratio": "lower"},
+    "diagnostic": ["n_sig"],
+    "not_a_vcc_score": true,
+    "revision_before_real_data": "draft v1 (17:25) had pds as primary; the synthetic positive control (test_p3_synthetic.py, beta 0.8) showed pds saturated and blind to a planted per-gene context gain (m1 - tm0: pds +0.0003, cos +0.125, mse_ratio -0.25) while transfer already discriminated; primary set to cos, pds kept as a no-regression guard, at 17:40 CEST, before any real-data fit"
+  },
+  "aggregation": {
+    "group": "mean over the group's evaluated rows of the per-target paired difference (rows where both arms are finite)",
+    "macro": "unweighted mean over the evaluated groups",
+    "uncertainty": "bootstrap over groups (10000 draws, seed 20261002) and per-group bootstrap over targets (2000 draws): descriptive; the group is the unit of inference"
+  },
+  "rule_C_context": {
+    "applies_to": ["m1", "m2"],
+    "c1": "macro delta_ctx(cos) = macro(candidate - twin) > 0 and > max over the 5 permutation-null fits of macro(null_r - twin)",
+    "c2": "delta_ctx(cos) > 0 in at least 6 of 7 groups (ceil(6/7 n) if fewer groups are evaluable)",
+    "c3": "macro delta_swap(cos) = macro(candidate - swapped) > 0 and > 0 in at least 5 of 7 groups",
+    "c4": "for each secondary metric, macro(candidate - twin), oriented so that positive is better, >= the worst (minimum) macro(null_r - twin) of the same metric",
+    "pass": "c1 and c2 and c3 and c4",
+    "threshold_motivation": "no number is invented: c1 and c4 compare with fits that use the same rows and descriptors but a wrong line-to-controls association (cyclic shifts of the training groups), so they measure what an informative-looking but wrong context does on this bench; c2 and c3 count lines, the unit of inference (6 of 7 positive has one-sided sign-test p = 0.0625, 7 of 7 p = 0.0078)",
+    "multiplicity": "two C candidates, each with its own nulls; no correction applied; a pass of one is reported with the other's outcome"
+  },
+  "rule_C_chain": {
+    "applies_to": ["tm0", "m1", "m2_0", "m2"],
+    "h1": "macro(arm - transfer)(cos) > 0 and > 0 in at least 6 of 7 groups",
+    "h2": "no macro regression against transfer on any secondary metric (oriented difference >= 0)",
+    "pass": "h1 and h2",
+    "reading": "a chain improvement by a context-free arm (tm0, m2_0) is calibration, not learned context; a chain improvement by m1/m2 counts as context only if rule_C_context also passes"
+  },
+  "rule_J": {
+    "reference": "embed (memoryless linear embedding: target gene loading on the training response basis)",
+    "reference_viability": "macro(embed - generic)(pds) > 0: a memoryless reference must discriminate new targets",
+    "context": "same c1-c4 with jm1 against jm1_0, jm1_swap and jm1_null1..5",
+    "protection": "a C-adopted correction is applied to J targets only if jm1 passes the J context rule; otherwise J targets keep the memoryless fallback, and the J branch of any pipeline must not score below embed (macro pds)",
+    "approximation_declared": "the gene basis V of the J reference is computed once per outer split (training groups and folds only); inner refits change only the ridge map, so training rows see their own key's responses in the basis only"
+  },
+  "rule_T": "diagnostic only: never promotes a model for new contexts",
+  "outcomes": {
+    "context_benefit": "rule_C_context passes for >= 1 candidate: next P5 confirmation on an appropriate reserve and six-member check; no adoption from this bench",
+    "chain_improvement_without_context": "no context pass; some arm passes rule_C_chain: production candidate as calibration, judged by six members and P5",
+    "inconclusive": "a candidate fails rule_C_context only on c2 with exactly 5 of 7 positive groups, or only on c4",
+    "no_benefit": "otherwise: transfer stays; the decision names what is excluded and the next justified contrast"
+  },
+  "six_member_bench_HepG2": {
+    "role": "development only (HepG2 read many times before): measures the six official members for the C arms, no adoption",
+    "targets": "HepG2 cube keys with >= 50 cells, stable hash order (salt six-member), first 300",
+    "truth_and_anchors": "vcc2026.bench.Bench: half A of each target's cells + 4,976 controls; replicate = half B; baseline = the scorer's generic profile; local scale (u - b) / (r - b), not a VCC score",
+    "generator": "trial-01 (vcc2026.inference.trial01_cells, Poisson), the generator of t22/t25, bit-identical to stage 45 (tests/test_bench_generator.py and export_parity.json)",
+    "arms": ["null", "generic", "transfer", "tm0", "m1", "m1_swap", "m2_0", "m2", "m2_swap"],
+    "effects": "ln fold change of each arm on the cube genes mapped to HepG2 genes; other genes unobserved (kept at basal); no cis head in any arm (common to all, invisible on HepG2 in banco_hepg2_v2)",
+    "reading": "per member and mean of six (MSE included, clipped as the scorer clips), paired bootstrap over targets: descriptive"
+  },
+  "what_changes_from_CP_0026": "see PROTOCOLLO.md section 8"
+}
