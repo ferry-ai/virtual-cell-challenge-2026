@@ -36,11 +36,33 @@ Un checkpoint scritto prima di queste opzioni riprende solo con i valori precede
 - Il collasso di `pi`: la miscela dal logit toglie la zona piatta, ma non prova di prevenire il
   collasso in un training finito; warm-up o prior restano da confrontare.
 
+## Lancio su Kaggle dall'account del teammate
+
+`kaggle_train.py` è una copia del launcher di `risposta_biologica_2026-09-30` con quattro differenze:
+- **codice e kernel** appartengono a `--owner`, l'account del token che usa la CLI;
+- **dati** (gli shard `rlab-*`) e **asset** (asse ufficiale e descrittori, nel dataset
+  `rlab-cellnet-code`) restano di `davidmaisterx`, condivisi in lettura;
+- **il dataset del codice** (`<owner>/rlead-cellnet-code`) porta solo i tre file di questa cartella
+  con il loro SHA256. Il kernel li ricontrolla prima di eseguire. Il launcher originale caricava le
+  sue copie, senza le correzioni;
+- **il braccio `generic`** è accettato.
+
+**Stato: provato solo in locale.** Nessun dataset né kernel è stato inviato. La simulazione
+(`test_kaggle_launcher`) monta dati sintetici come li monta Kaggle, sotto i due proprietari. Poi
+esegue i kernel generati:
+- il prepass su CPU;
+- il training con i bracci `identity` e `generic`, più il ciclo di ripresa;
+- un kernel con un file di codice alterato, che si ferma prima di eseguire.
+
+Sul runtime vero restano da vedere il montaggio dei dataset condivisi da un altro account e la
+lettura del token `KGAT_` da `--config-dir`.
+
 ## Verifiche
 
 ```text
 python -m unittest test_rlead_fixes -v       # 15 test, le correzioni
 python -m unittest test_cell_data test_prepass test_read_csr   # i test originali, sulla versione nuova
+python -m unittest test_kaggle_launcher -v   # 7 test, il launcher senza Kaggle (circa due minuti)
 ```
 
 Esiti, interpreti e hash nella cartella di presa in carico.
