@@ -127,7 +127,14 @@ def main() -> None:
                for c, t in cands.items()}
         out = dict(context=ctx, rows=int(len(df)), groups=sorted(df.held_group.unique()))
         if regime == 'C':
-            chain = {arm: chain_rule(df, proto, arm) for arm in proto['rule_C_chain']['applies_to']}
+            refs = proto['rule_C_chain'].get('references')
+            if refs:          # P4 protocols: an arm must pass against every reference
+                chain = {}
+                for arm in proto['rule_C_chain']['applies_to']:
+                    by_ref = {ref: chain_rule(df, proto, arm, ref) for ref in refs}
+                    chain[arm] = dict(by_reference=by_ref, passed=all(v['passed'] for v in by_ref.values()))
+            else:
+                chain = {arm: chain_rule(df, proto, arm) for arm in proto['rule_C_chain']['applies_to']}
             out['chain'] = chain
             tperm = {c: {m: float(paired(df, c, f'{c}_tperm', m).mean()) for m in ('pds', 'cos', 'cos_spec')}
                      for c in ('m1',) if f'{c}_tperm' in set(df.arm)}

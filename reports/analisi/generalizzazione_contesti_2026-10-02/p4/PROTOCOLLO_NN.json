@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "frozen": "2026-10-02, before any fit of the network on real data (commit recorded by the run)",
+  "author": "Claude Code, session 22d21f (R-LEAD P4)",
+  "question": "Does a NONLINEAR correction of the out-of-fold transfer, conditioned on the held-out line's controls, beat its context-free twin and the simple calibration on line groups held out whole?",
+  "why_now": "P3 (p3_decision_cj_r1) excluded linear per-gene gains and low-rank bilinear corrections; M2 chose the largest rank in 6/7 folds. This is the falsifiable nonlinear version on the same bench, inputs and rows; if it fails, the limit is the data (lines), not the model form, and no GPU training on the same inputs is justified.",
+  "bench": "same cube (cube_r1), same 7 groups held out whole, same OOF transfers and evaluated rows as p3_c_r2",
+  "parameters": {
+    "min_cells": 10,
+    "n_folds": 5,
+    "n_fit": 400,
+    "basis_k": 16,
+    "pca_d": 3,
+    "gene_embedding": 8,
+    "hidden_gene": 32,
+    "hidden_program": 64,
+    "batch_rows": 32,
+    "batch_genes": 1024,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "step_grid": [
+      250,
+      500,
+      1000,
+      2000
+    ],
+    "seed": 20261002,
+    "nulls": 3,
+    "pds_block": 300,
+    "amplitude_t25": 1.576,
+    "gene_coordinates": "external/annotation/gene_coordinates_gencode_v50.tsv",
+    "m2_k_grid": [
+      16
+    ],
+    "m2_d_grid": [
+      3
+    ],
+    "m2_ridge_grid": [
+      0.1
+    ],
+    "m1_ridge": 0.001,
+    "threads": 8
+  },
+  "architecture": "y_hat[r, j] = MLP_gene([s, isnan(s), m, d, level, low, E_j]) + sum_k U[j, k] * MLP_program([U^T s_r, phi(c)])_k; MLP_gene 14 -> 32 -> 32 -> 1, MLP_program 19 -> 64 -> 16, SiLU; U = top-16 gene basis of the training transfers; phi = top-3 principal coordinates of training controls; E = learned gene embedding (8)",
+  "twin": "nn0: the same network trained on the same rows with the context replaced by the sources' reference profile (d = 0, level and low of the sources, phi = 0)",
+  "loss": "expression-weighted squared error on finite truth (weights of the row's own controls), 1,024 random genes per row per step, rows drawn group -> table -> row (each training group equally likely)",
+  "selection": "steps chosen on an inner validation group held out whole (the training group first in sha256 order of 'nn-val:<held group>'), with its own transfers, basis and PCA rebuilt without it; nn0 and nn choose their steps separately; the three nulls reuse the steps chosen for nn (compute); each arm is then refitted on all six training groups",
+  "arms": {
+    "C": [
+      "nn0",
+      "nn",
+      "nn_swap",
+      "nn_null1..3"
+    ],
+    "candidates_C": {
+      "nn": "nn0"
+    },
+    "candidates_J": {},
+    "swap": {
+      "nn": "nn_swap"
+    },
+    "nulls": {
+      "nn": "nn_null"
+    }
+  },
+  "metrics": {
+    "primary": "cos_spec",
+    "secondary": {
+      "pds": "higher",
+      "cos": "higher",
+      "sign_sig": "higher",
+      "mse_ratio": "lower"
+    },
+    "diagnostic": [
+      "n_sig"
+    ],
+    "not_a_vcc_score": true,
+    "why_primary": "P3 showed that cos rewards re-adding the common response that the recipe's transfer removes; cos_spec (prediction and truth centred over the block's targets) measures the target-specific correction"
+  },
+  "aggregation": {
+    "group": "mean of per-target paired differences",
+    "macro": "unweighted mean over groups"
+  },
+  "rule_C_context": {
+    "applies_to": [
+      "nn"
+    ],
+    "c1": "macro delta(cos_spec) nn - nn0 > 0 and > max of the 3 permuted-control nulls",
+    "c2": "> 0 in at least 6 of 7 groups",
+    "c3": "nn - nn_swap > 0 in macro and in at least 5 of 7 groups",
+    "c4": "no secondary worse than the worst null",
+    "pass": "c1 and c2 and c3 and c4"
+  },
+  "rule_C_chain": {
+    "applies_to": [
+      "nn0",
+      "nn"
+    ],
+    "references": [
+      "transfer",
+      "tm0"
+    ],
+    "h1": "macro(arm - reference)(cos_spec) > 0 and > 0 in at least 6 of 7 groups",
+    "h2": "no macro regression on any secondary metric against the reference",
+    "pass": "h1 and h2 against BOTH transfer and tm0 (taken from p3_c_r2 on the same rows)"
+  },
+  "outcomes": {
+    "context_benefit": "nn passes the context rule: specify the GPU cellular version with the same rule and a P5 reserve",
+    "chain_improvement_without_context": "nn0 passes the chain rule against transfer and tm0: a production calibration candidate, judged on six members and P5",
+    "no_benefit": "nonlinearity does not help with these inputs: next is data (more linked lines), not a larger network on the same inputs"
+  },
+  "seeds": "one seed in this pass; three seeds for any arm that passes, before any adoption",
+  "compute_note": "measured before freezing (22:33): 156 ms per step at 64 x 1,024 with 4 threads, 82 ms at 32 x 1,024 with 8 threads on this laptop; the grid is capped at 2,000 steps so the seven folds run in about two hours"
+}
