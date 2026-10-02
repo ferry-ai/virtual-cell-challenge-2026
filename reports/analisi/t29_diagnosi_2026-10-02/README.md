@@ -91,3 +91,45 @@ Le correzioni del passo A (controlli per libreria, braccio generico, miscela dal
 ([PROTOCOLLO](../../modelli/rlead_training_r1_2026-10-02/PROTOCOLLO.md)). Ma **nessun invio di una rete** dovrebbe
 partire senza prima girare questa diagnosi sui suoi effetti esportati: un pacchetto con migliaia di geni DE per
 bersaglio si riconosce in un minuto, senza consumare un invio.
+
+## Esito: i sei membri, letti contro le ipotesi (aggiunto dopo, 2 ottobre sera)
+
+**Fonte:** CP-0055 di Davide (`0055-t29-rete-cellulare-punteggio.md`, ricevuto in chat; non ancora su GitHub). Il
+t29 vale **−0,029625**, rango 893; contro il t22 (+0,141250) perde 0,1709.
+
+Scomposizione della perdita, come (t29 − t22) scalato / 6:
+
+| Membro | t29 grezzo | t22 grezzo | t29 scalato | t22 scalato | Contributo alla perdita |
+|---|---|---|---|---|---|
+| PDS | 0,503 | 0,787 | 0,007 | 0,634 | −0,1045 (61%) |
+| nMAE | 1,095 | 0,927 | −0,157 | 0,120 | −0,0462 (27%) |
+| reach | 0,057 | 0,195 | −0,026 | 0,131 | −0,0262 (15%) |
+| Jaccard | 0,034 | 0,036 | 0,009 | 0,014 | −0,0008 |
+| fedeltà | 0,510 | 0,497 | −0,011 | −0,052 | **+0,0068** |
+| MSE | 10,24 | 3,06 | 0 | 0 | 0 (tosato a 0 in entrambi) |
+
+**Lettura contro le ipotesi scritte sopra:**
+- **Ipotesi 2 (codice del bersaglio debole): confermata come causa principale.**
+  - Il PDS grezzo 0,503 è il caso (0,5): i 300 bersagli non si distinguono.
+  - Da sola spiega il 61% della perdita.
+- **Ipotesi 1 (spostamento denso e condiviso): confermata a metà.**
+  - La parte "condiviso" regge: è ciò che rende i bersagli indistinguibili, e l'MSE grezzo triplica (10,24 contro
+    3,06), quindi la risposta comune è sbagliata sui contesti A, B, C.
+  - La parte "migliaia di geni DE per bersaglio" **non regge**: fedeltà e Jaccard grezzi sono uguali al t22. Se la
+    previsione avesse chiamato migliaia di geni in più, la fedeltà (`k / max(n_pred, n_conf)`) sarebbe crollata, e
+    invece sale di poco.
+  - La firma prevista sopra (fedeltà molto negativa) è sbagliata.
+- **Reach e nMAE:** sui geni che cambiano davvero, la previsione è troppo piccola o nel posto sbagliato.
+  - È coerente con due cose già note:
+    - la miscela (`pi` medio 0,59–0,67) rimpicciolisce gli effetti;
+    - l'ampiezza naturale: il t22 usa l'amplificazione ×1,576, e D-042 ha mostrato che l'ampiezza conta.
+  - Questi due membri non separano rete e ampiezza.
+- **Ipotesi 3 (nessun knockdown del gene bersaglio) e 4 (confondimento di libreria):** compatibili col PDS al caso, ma
+  i sei membri non le distinguono dalla 2. Serve `diagnose_effects.py` sugli effetti veri. La misura
+  `own_gene_log2_shift` decide la 3; la quota condivisa e il confronto col t22 decidono fra 2 e 4.
+
+**Per R-LEAD:**
+- La domanda giusta è la parte specifica del bersaglio. Il confronto Q1 del training r1 (`ident` contro `generic` sui
+  gruppi C) misura proprio questa, in locale.
+- Per la regola del CP-0055 (ramo c), nessun invio di una rete prima di un banco locale a sei membri che la mostri
+  almeno al livello del trasferimento.
