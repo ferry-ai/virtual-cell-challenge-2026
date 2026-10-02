@@ -30,7 +30,7 @@ import torch
 from arms import (AMPLITUDE_T25, BasalPCA, Cube, combine_groups, derangement, fit_keys, gain_features,
                   gene_weight, generic_vector, reference_basal, table_means)
 from common import Timer, coords_path, data_root, git_state, log, now_utc, sha256, write_json
-from fitting import ReadOnlyGMCache, basis, transfer_for
+from fitting import GMCache, ReadOnlyGMCache, basis, transfer_for
 from metrics import blocks_of, score_table
 from splits import Split, assert_no_leak, unit_hash
 
@@ -207,6 +207,8 @@ def main() -> None:
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--groups', nargs='*', default=None)
     p.add_argument('--cap-rows', type=int, default=1200, help='training rows per group (stable hash)')
+    p.add_argument('--gm-cache-writable', action='store_true',
+                   help='compute group means missing from --gm-cache (a new folder), instead of reading a finished run')
     a = p.parse_args()
     if a.out.exists():
         raise FileExistsError(a.out)
@@ -223,7 +225,7 @@ def main() -> None:
     ens_to_sym = {str(gid).split('.')[0]: s for s, gid in zip(coords['symbol'], coords['gene_id']) if isinstance(gid, str)}
     a.out.mkdir(parents=True)
     commons, raw_means = table_means(cube, Split('C', '__none__', None, P['n_folds']))
-    gm = ReadOnlyGMCache(cube, commons, a.gm_cache)
+    gm = (GMCache if a.gm_cache_writable else ReadOnlyGMCache)(cube, commons, a.gm_cache)
     swap = derangement(cube.groups, 'swap')
     fits, leak_checks = {}, {}
     for g in (a.groups or cube.groups):

@@ -190,3 +190,17 @@ codice del commit `586fbc3`. L'archivio ha sha256 `e359a4ba…4736`, uguale a `a
 Verso le 17:50 del 29/09 il proprietario ha risposto «No, tienilo pronto» alla domanda se inviare il t27 appena
 impacchettato. Il t27 (`prediction_t27_2026-09-29/`, registrato alle 15:45 UTC) si genera e si impacchetta, ma **non
 si invia** senza un via nuovo.
+
+## Spazio, Kaggle e cloud, notte fra il 2 e il 3 ottobre (R-LEAD, sessione Claude 22d21f)
+
+Risposte del proprietario in chat a domande precise di questa sessione, con gli orari letti con `date`:
+- **Spazio per la prova a forma piena (P6):** «Sì, sposta t29». Alle 22:44:42 del 2/10 spostati nel Cestino con
+  `SendToRecycleBin` `artifacts/t29gen/prediction.h5ad` (4.262.433.910 byte) e `artifacts/t29pack/prediction.vcc`
+  (4.206.919.680 byte); t29 è valutato (CP-0055) e si rigenera con gli stadi 100, 45 e 48 dai manifest. Lo spazio
+  torna quando il proprietario svuota il Cestino.
+- **Dati di linee nuove:** «prediligi sempre cloud», download locale solo in subordine. Kernel CPU privato
+  `davidmaisterx/rlab-lead-sums-r1` sui dataset privati del corpus (Jurkat, H1 2025 train/val, Tian 2021 CRISPRi);
+  scaricate solo le somme (circa 160 MB).
+- **Training GPU:** «Condivido i dataset»; account GPU indicato: `davideferrante11`. Il banco a 10 gruppi è caricato
+  come dataset privato di quell'account. «Puoi tranquillamente settare i dataset come pubblici»: preparato
+  `share_datasets.py` (lettori o pubblico); al momento di questa nota eseguito solo a secco.

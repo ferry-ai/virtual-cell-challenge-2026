@@ -1,0 +1,136 @@
+{
+  "unit": "CRISPRi bench tables, targets with >= 10 cells, keyed by reconciled target_key",
+  "groups": [
+    "CD4T",
+    "H1",
+    "HCT116",
+    "HEK293T",
+    "HepG2",
+    "Jurkat",
+    "K562",
+    "Neuron",
+    "RPE1",
+    "iPSC"
+  ],
+  "tables_per_group": {
+    "CD4T": 3,
+    "H1": 2,
+    "HCT116": 1,
+    "HEK293T": 1,
+    "HepG2": 1,
+    "Jurkat": 1,
+    "K562": 3,
+    "Neuron": 1,
+    "RPE1": 1,
+    "iPSC": 20
+  },
+  "targets_per_group": {
+    "CD4T": 12238,
+    "H1": 200,
+    "HCT116": 16438,
+    "HEK293T": 17270,
+    "HepG2": 2346,
+    "Jurkat": 2353,
+    "K562": 12710,
+    "Neuron": 184,
+    "RPE1": 2354,
+    "iPSC": 11107
+  },
+  "keys_by_number_of_groups": {
+    "1": 798,
+    "2": 3172,
+    "3": 3677,
+    "4": 3049,
+    "5": 6022,
+    "6": 532,
+    "7": 592,
+    "8": 1084,
+    "9": 77,
+    "10": 2
+  },
+  "keys_in_ge2_groups": 18207,
+  "keys_in_ge3_groups": 15035,
+  "keys_in_ge5_groups": 8309,
+  "keys_in_all_groups": 2,
+  "keys_in_ge2_studies": 15459,
+  "keys_in_ge2_lines": 18214,
+  "panel_ABC_keys_in_ge2_groups": 300,
+  "other_modalities": {
+    "a549_ko": 1000,
+    "hipsci_gwfit": 950,
+    "hipsci_gwnonfit": 253,
+    "hs27_crispra": 1836
+  },
+  "not_local": [
+    {
+      "id": "jurkat_nadig",
+      "line": "Jurkat",
+      "group": "Jurkat",
+      "modality": "CRISPRi",
+      "study": "nadig2025_jurkat",
+      "cells": "Kaggle rlab-jurkat-nadig, Drive (job 103), 262.956 cells",
+      "missing": "effect table built on 2/10 from Kaggle sums (table jurkat_nadig)",
+      "reads": "in r1-r3 training; 21 T groups read in the r2 diagnostics (lead_audit_2026-10-01/REVISIONE.md §3.1)"
+    },
+    {
+      "id": "h1_vcc2025_trainval",
+      "line": "H1 (hESC)",
+      "group": "H1",
+      "modality": "CRISPRi",
+      "study": "vcc2025",
+      "cells": "Kaggle rlab-h1-vcc2025-trainval, 320.200 cells",
+      "missing": "effect tables built on 2/10 from Kaggle sums (h1_train, h1_val)",
+      "reads": "in r1-r3 training (17 T groups in r2 diagnostics); the 2025 test split stays closed"
+    },
+    {
+      "id": "jurkat_gse249595",
+      "line": "Jurkat",
+      "group": "Jurkat",
+      "modality": "CRISPRi",
+      "study": "gse249595",
+      "cells": "local MTX channels",
+      "missing": "no guide calls in the release: not supervisable",
+      "reads": "none recorded"
+    },
+    {
+      "id": "dld1_gse337988",
+      "line": "DLD-1",
+      "group": "DLD-1",
+      "modality": "CRISPRi",
+      "study": "gse337988",
+      "cells": "to verify",
+      "missing": "effects (LFC, SE) only on a targeted response panel; no control profile",
+      "reads": "audit and ceiling 24/09"
+    },
+    {
+      "id": "mixscale",
+      "line": "six lines",
+      "group": "mixscale",
+      "modality": "CRISPRi",
+      "study": "mixscale",
+      "cells": "remote Seurat objects (about 20 GB)",
+      "missing": "DE tables only; no separate basal profiles",
+      "reads": "H6 and pattern 24/09"
+    },
+    {
+      "id": "tian_norman",
+      "line": "iPSC, iPSC neurons, K562",
+      "group": "iPSC/neuron/K562",
+      "modality": "CRISPRi/CRISPRa",
+      "study": "tian2019_2021_norman2019",
+      "cells": "Kaggle rlab-tian-norman, 623.436 cells",
+      "missing": "Tian 2021 CRISPRi built on 2/10 (tian2021_neuron); Tian 2019 empty droplets, Norman CRISPRa not used",
+      "reads": "in r3 training only"
+    },
+    {
+      "id": "scp_third_wave",
+      "line": "melanoma, T cells, K562, HEK293",
+      "group": "various",
+      "modality": "KO/CRISPRi",
+      "study": "frangieh, sunshine, papalexi, shifrut, datlinger, dixit, xu2023",
+      "cells": "Kaggle rlab-scp-*",
+      "missing": "no local effect table",
+      "reads": "in no training"
+    }
+  ]
+}

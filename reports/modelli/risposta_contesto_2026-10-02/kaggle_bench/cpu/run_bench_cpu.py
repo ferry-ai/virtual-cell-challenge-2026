@@ -68,7 +68,7 @@ def run(args, label):
     return done.returncode == 0
 
 
-MODE = os.environ.get('BENCH_MODE', 'MODE_PLACEHOLDER')
+MODE = os.environ.get('BENCH_MODE', 'cpu')
 if MODE == 'gpu':
     run(['nn_residual.py', '--cube', str(cube), '--gm-cache', str(work / 'gm_cache'), '--gm-cache-writable',
          '--protocol', str(protos['PROTOCOLLO_NN.json']), '--out', str(work / 'p4_nn_r2')], 'p4_nn_r2')
