@@ -90,3 +90,4 @@ aggiunge da sé la riga qui sotto.
 | [0053](0053-audit-cellnet-e-strategia.md) | 2026-10-01 | Audit cellnet e strategia per un modello competitivo | cambio-di-strategia | [0054](0054-visibilita-scorer-e-consegna.md), §7: precisa soltanto la diagnosi ambientale delle verifiche citate; misure scientifiche invariate |
 | [0054](0054-visibilita-scorer-e-consegna.md) | 2026-10-01 | Lo scorer funziona fuori dal sandbox: consegna verificata al teammate | correzione | — |
 | [0055](0055-t29-rete-cellulare-punteggio.md) | 2026-10-01 | t29: la rete addestrata sulle singole cellule sulla classifica, -0,030 | esperimento | — |
+| [0056](0056-banco-contesto-c-j.md) | 2026-10-03 | R-LEAD P3: i controlli di una linea mai vista non migliorano il transfer su sette gruppi di linea | esperimento | — |
