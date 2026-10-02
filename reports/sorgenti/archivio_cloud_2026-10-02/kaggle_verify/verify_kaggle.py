@@ -31,21 +31,30 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+def frame_rows(frame) -> int | None:
+    """Rows of an AnnData dataframe group: its index column may be a dataset or an encoded group."""
+    import h5py
+    key = frame.attrs.get("_index", "_index")
+    key = key.decode() if isinstance(key, bytes) else key
+    if key not in frame:
+        return None
+    col = frame[key]
+    if isinstance(col, h5py.Dataset):
+        return int(col.shape[0])
+    for sub in ("codes", "values", "data"):
+        if sub in col:
+            return int(col[sub].shape[0])
+    return None
+
+
 def open_h5ad(path: Path) -> dict:
     import h5py
     import numpy as np
     rec: dict = {"file": str(path)}
     with h5py.File(path, "r") as f:
         obs = f["obs"]
-        index_key = obs.attrs.get("_index", "_index")
-        if isinstance(index_key, bytes):
-            index_key = index_key.decode()
-        rec["n_obs"] = int(obs[index_key].shape[0]) if index_key in obs else None
-        var = f["var"]
-        vkey = var.attrs.get("_index", "_index")
-        if isinstance(vkey, bytes):
-            vkey = vkey.decode()
-        rec["n_var"] = int(var[vkey].shape[0]) if vkey in var else None
+        rec["n_obs"] = frame_rows(obs)
+        rec["n_var"] = frame_rows(f["var"])
         X = f["X"]
         if isinstance(X, h5py.Group):
             enc = X.attrs.get("encoding-type", b"")
@@ -64,6 +73,16 @@ def open_h5ad(path: Path) -> dict:
         rec["X_head_integer_valued"] = bool(np.all(np.mod(head, 1) == 0))
         rec["obs_columns"] = sorted(k for k in obs.keys() if not k.startswith("__"))[:60]
         rec["layers"] = sorted(f["layers"].keys()) if "layers" in f else []
+    try:  # the reader the training uses, when the image has it
+        import anndata
+        ad = anndata.read_h5ad(path, backed="r")
+        rec["anndata_shape"] = list(ad.shape)
+        rec["anndata_matches_h5py"] = rec["anndata_shape"] == [rec["n_obs"], rec["n_var"]]
+        ad.file.close()
+    except ImportError:
+        rec["anndata"] = "not installed"
+    except Exception as e:  # noqa: BLE001
+        rec["anndata_error"] = repr(e)
     return rec
 
 
@@ -81,7 +100,8 @@ def main() -> None:
             errors.append({"path": rel, "error": str(e)})
             continue
         if p.suffix == ".h5ad":
-            dataset = rel.split("/", 1)[0]
+            parts = rel.split("/")
+            dataset = "/".join(parts[1:3]) if parts[0] == "datasets" else parts[0]
             unit = p.name.split("__", 1)[0]
             if (dataset, unit) not in opened_units:
                 opened_units.add((dataset, unit))
@@ -102,7 +122,8 @@ def main() -> None:
         "seconds": round(time.time() - t0, 1),
         "environment": {"python": sys.version, "platform": platform.platform(), "h5py": h5py_version,
                         "hostname": os.uname().nodename if hasattr(os, "uname") else None},
-        "datasets": sorted({f["path"].split("/", 1)[0] for f in files}),
+        "datasets": sorted({"/".join(f["path"].split("/")[1:3]) if f["path"].startswith("datasets/")
+                            else f["path"].split("/", 1)[0] for f in files}),
         "files": files, "samples": samples, "errors": errors}, indent=0), encoding="utf-8")
     print(f"done: {len(files)} files, {len(samples)} samples, {len(errors)} errors, {time.time() - t0:.0f}s")
 

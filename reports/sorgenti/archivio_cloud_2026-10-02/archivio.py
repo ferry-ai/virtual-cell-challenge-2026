@@ -272,6 +272,9 @@ def cmd_copy(a: argparse.Namespace) -> None:
                 if a.max_wait_s and waited > a.max_wait_s:
                     print(f"{now()} stop: waited {waited}s for free space", flush=True)
                     return
+                if stop_file and stop_file.exists():
+                    print(f"{now()} stop file {stop_file} present while waiting: stopping before {r['rel']}", flush=True)
+                    return
             rec = {"rel": r["rel"], "bytes": r["bytes"], "dest": str(dst), "started_utc": now()}
             if dst.exists():
                 same = dst.stat().st_size == r["bytes"]
@@ -320,6 +323,51 @@ def cmd_copy(a: argparse.Namespace) -> None:
             print(f"{now()} copied {r['rel']} {n / 2**20:.1f} MiB in {rec['seconds']}s", flush=True)
 
 
+def cmd_manifest(a: argparse.Namespace) -> None:
+    """What the remote check must find on Drive: copied files (sha256 of the bytes sent) and files that were
+    already on Drive at the same path and size (sha256 of the local file); hard links and files not sent are
+    listed apart. Writes <out> and <out>.sha256 (the sidecar verify_drive.py checks)."""
+    out = Path(a.out)
+    refuse_existing(out)
+    plan = json.loads(Path(a.plan).read_text(encoding="utf-8"))["rows"]
+    local = {r["rel"]: r for r in read_tsv(Path(a.hashes)) if r["sha256"]} if a.hashes else {}
+    rec_by_rel: dict[str, dict] = {}
+    for line in Path(a.receipts).read_text(encoding="utf-8").splitlines():
+        rec = json.loads(line)
+        rec_by_rel[rec["rel"]] = rec  # the last receipt of a file wins
+    files, hardlinks, missing, conflicts = [], [], [], []
+    for r in plan:
+        rec = rec_by_rel.get(r["rel"])
+        lh = local.get(r["rel"])
+        if r["status"] == "same_size_on_drive":
+            if lh:
+                files.append({"rel": r["rel"], "bytes": r["bytes"], "sha256": lh["sha256"], "md5": lh["md5"],
+                              "source": "already_on_drive_same_path"})
+            else:
+                missing.append({"rel": r["rel"], "bytes": r["bytes"], "reason": "already on Drive, local hash missing"})
+        elif rec and rec.get("status") == "copied":
+            entry = {"rel": r["rel"], "bytes": rec["copied_bytes"], "sha256": rec["sha256"], "md5": rec["md5"],
+                     "source": "copied", "copied_utc": rec["finished_utc"]}
+            if lh and lh["sha256"] != rec["sha256"]:
+                entry["local_hash_differs"] = lh["sha256"]
+                conflicts.append(entry)
+            files.append(entry)
+        elif rec and rec.get("status") == "skipped_hardlink":
+            hardlinks.append({"rel": r["rel"], "bytes": r["bytes"], "same_physical_file_as": rec["same_physical_file_as"]})
+        else:
+            missing.append({"rel": r["rel"], "bytes": r["bytes"],
+                            "reason": (rec or {}).get("status") or r["status"] + ", not sent in this run"})
+    doc = {"written_utc": now(), "plan": str(a.plan), "receipts": str(a.receipts), "hashes": str(a.hashes),
+           "files": files, "hardlinks": hardlinks, "not_on_drive": missing, "copy_hash_vs_local_hash_conflicts": conflicts}
+    out.write_text(json.dumps(doc, indent=0), encoding="utf-8")
+    digest = hashlib.sha256(out.read_bytes()).hexdigest()
+    Path(str(out.with_suffix("")) + ".sha256").write_text(f"{digest}  {out.name}\n", encoding="utf-8")
+    print(json.dumps({"files": len(files), "GiB": round(sum(f["bytes"] for f in files) / 2**30, 3),
+                      "hardlinks": len(hardlinks), "not_on_drive": len(missing),
+                      "not_on_drive_GiB": round(sum(m["bytes"] for m in missing) / 2**30, 3),
+                      "conflicts": len(conflicts), "sha256": digest}))
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -346,8 +394,14 @@ def main() -> None:
     s.add_argument("--cache-disk", default="C:\\")
     s.add_argument("--min-free-gb", type=float, default=8.0)
     s.add_argument("--max-wait-s", type=int, default=0)
+    s = sub.add_parser("manifest")
+    s.add_argument("--plan", required=True)
+    s.add_argument("--receipts", required=True)
+    s.add_argument("--hashes", default=None)
+    s.add_argument("--out", required=True, help="a .json path; the sidecar <out without .json>.sha256 is written too")
     a = p.parse_args()
-    {"inventory": cmd_inventory, "hash": cmd_hash, "plan": cmd_plan, "copy": cmd_copy}[a.cmd](a)
+    {"inventory": cmd_inventory, "hash": cmd_hash, "plan": cmd_plan, "copy": cmd_copy,
+     "manifest": cmd_manifest}[a.cmd](a)
 
 
 if __name__ == "__main__":
