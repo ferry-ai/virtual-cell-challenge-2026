@@ -1,8 +1,8 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
-- **Stato:** aperto; nuovo piano richiesto dal proprietario il 2 ottobre 2026, implementazione non iniziata.
+- **Stato:** in corso dal 2 ottobre 2026, 16:47 CEST (P0–P3).
 - **Mandato:** verificare se i controlli di una linea mai vista perturbata permettono di migliorare il transfer; scegliere il modello in base a questa prova. Unico percorso di R-COMP.
-- **Assegnazione:** destinatario Claude nella sessione scelta dal proprietario; Claude e teammate confermati fermi durante il rinnovo. Alla presa in carico registrare sessione, macchina, commit, file e output secondo [PIANI §3](../PIANI.md#3-lavorare-in-una-cartella-condivisa).
+- **Assegnazione:** Claude Code, sessione «R-LEAD implementazione vcc2026» (`22d21f`, scratchpad `b0e0cbfb`), macchina `LAPTOP-DLG1LHV1`, da commit `3600fe0`; presa in carico il 2/10 alle 16:47 CEST su richiesta del proprietario in chat. Sottoattività: P0–P3, poi P4–P6 se l'evidenza lo giustifica. File di lavoro: questa scheda, le due cartelle nuove sotto, gli indici delle loro categorie e il registro. Output: `reports/analisi/generalizzazione_contesti_2026-10-02/` (manifest, protocollo, misure, decisione), `reports/modelli/risposta_contesto_2026-10-02/` (codice e test), dati pesanti in `processed/generalizzazione_contesti_2026-10-02/` della radice dati. Sessione parallela visibile: «Memoria locale insufficiente» (`29e278`), inattiva; nessun suo file toccato.
 - **Prossimo passo:** P0/P1, protocollo e runner P2, primo confronto semplice P3 sugli input disponibili. La riparazione completa di cellnet non è un prerequisito di questo confronto.
 - **Prima consegna:** matrice contesto × bersaglio × studio, split verificati, protocollo congelato, codice del banco e dei confronti semplici con test; misure se gli input lo consentono, altrimenti il file minimo mancante e il passo impedito. Non un altro piano.
 - **Dipendenze:** [R-LAB](piano-giorno-2026-09-30.md), [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), D-050 e D-052; procedure e preflight del lavoro effettivamente eseguito.
