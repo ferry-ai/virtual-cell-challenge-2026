@@ -147,7 +147,8 @@ else:
 ARM_FLAGS = []
 for i, (name, code) in enumerate(ARMS):
     ARM_FLAGS += ["--arm", f"{{name}}={{code}}@" + (f"cuda:{{i}}" if GPU else "cpu")]
-train = lambda out, extra=(): [PY, TC, "train", "--prepass", prepass, "--out", OUT / out, "--descriptors", ASSETS,
+train = lambda out, extra=(): [PY, TC, "train", "--prepass", prepass, "--out", OUT / out,
+                               *(["--descriptors", ASSETS] if (ASSETS / "descriptors.npy").is_file() else []),
                                "--shard-roots", INPUT, *ARM_FLAGS, *TRAIN_ARGS, *extra]
 if CYCLE:
     s1, s2 = CYCLE
@@ -212,7 +213,8 @@ def main():
     c.add_argument("--version-note", default=None)
     k = sub.add_parser("kernel", parents=[common])
     k.add_argument("--slug", required=True)
-    k.add_argument("--assets", default=ASSETS_SLUG, help="dataset of --data-owner with gene_names.csv and descriptors")
+    k.add_argument("--assets", default=ASSETS_SLUG, help="dataset with gene_names.csv (and the descriptors, if any)")
+    k.add_argument("--assets-owner", default=None, help="owner of --assets (default: --data-owner)")
     k.add_argument("--datasets", nargs="+", required=True)
     k.add_argument("--glob", action="append", default=[], metavar="DATASET=PATTERN",
                    help="shards of a dataset to read (default all *.h5ad; alternatives separated by |)")
@@ -260,7 +262,7 @@ def main():
     meta = {"id": f"{a.owner}/{a.slug}", "title": a.slug, "code_file": "run.py", "language": "python",
             "kernel_type": "script", "is_private": True, "enable_gpu": not a.cpu, "enable_tpu": False,
             "enable_internet": False,
-            "dataset_sources": [f"{a.owner}/{CODE_SLUG}", f"{a.data_owner}/{a.assets}"]
+            "dataset_sources": [f"{a.owner}/{CODE_SLUG}", f"{a.assets_owner or a.data_owner}/{a.assets}"]
                                + [f"{a.data_owner}/{d}" for d in a.datasets],
             "kernel_sources": [f"{a.owner}/{a.prepass_from}"] if a.prepass_from else [], "competition_sources": []}
     if not a.cpu:
