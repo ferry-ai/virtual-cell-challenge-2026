@@ -90,6 +90,10 @@ try:
 except ImportError:
     pass
 (OUT / "env.json").write_text(json.dumps(env, indent=1))
+if GPU and not env.get("cuda"):
+    # 2/10: rlead-training-r1 v1 asked for a GPU and got a CPU-only runtime (torch +cpu, no nvidia-smi); the
+    # training died on its first CUDA tensor and the cycle check then on a missing checkpoint
+    raise SystemExit(f"a GPU was asked for and this runtime has none: torch {{env.get('torch')}}, {{env['gpus']}}")
 CODE, ASSETS = mount(CODE_SLUG), mount(ASSETS_SLUG)
 roots = {{d: mount(d) for d in DATASETS}}
 report = {{"started": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "mounts": {{d: str(r) for d, r in roots.items()}},
