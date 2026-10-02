@@ -5,7 +5,9 @@
   arm `generic`, and refuse an owner equal to the data owner;
 - the prepass kernel (CPU) and then the training kernel (arms identity and generic, resume cycle), run against a
   fake /kaggle/input with synthetic shards mounted under the two owners as Kaggle mounts them, end with return code
-  0, and a code file that differs from its manifest stops the kernel before anything runs.
+  0, and a code file that differs from its manifest stops the kernel before anything runs;
+- an evaluation kernel (--eval-from, 2/10) reads the training kernel's output, trains nothing, and evaluates the same
+  last checkpoint to the same eval.json, adding eval_discrimination.json.
 
     python -m unittest test_kaggle_launcher -v          (from this folder, with the project venv; a few minutes)
 """
@@ -137,13 +139,19 @@ class LocalKaggle(unittest.TestCase):
                              "--prepass-from", "rlead-prepass-syn", "--arm", "ident=identity", "--arm", "gen=generic",
                              "--cycle", "3", "6", f"--train-args={SMALL}")
         cls.train = run_kernel(d / "stage_train", d / "kaggle_train", inp)
+        # the evaluation kernel reads the training kernel's output, mounted as a notebook
+        shutil.copytree(d / "kaggle_train" / "working", inp / "notebooks" / OWNER / "rlead-train-syn")
+        cls.k_eval = launch("kernel", *common, "--stage", d / "stage_eval", "--slug", "rlead-eval-syn",
+                            "--prepass-from", "rlead-prepass-syn", "--eval-from", "rlead-train-syn",
+                            "--arm", "ident=identity", "--arm", "gen=generic", f"--train-args={SMALL}")
+        cls.ev = run_kernel(d / "stage_eval", d / "kaggle_eval", inp)
 
     @classmethod
     def tearDownClass(cls):
         cls.tmp.cleanup()
 
     def test_stages_written(self):
-        for r in (self.code, self.k_pre, self.k_train):
+        for r in (self.code, self.k_pre, self.k_train, self.k_eval):
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 
     def test_prepass_kernel_verifies_and_runs(self):
@@ -168,6 +176,24 @@ class LocalKaggle(unittest.TestCase):
         self.assertEqual((cfg["mixture"], cfg["loss_norm"]), ("logits", "global"))
         self.assertTrue(any((w / "train" / "checkpoints").glob("ckpt_*.pt")))
         self.assertTrue((w / "train" / "done.json").is_file())
+
+    def test_eval_kernel_trains_nothing_and_reproduces_the_evaluation(self):
+        w, t = self.d / "kaggle_eval" / "working", self.d / "kaggle_train" / "working"
+        logs = (w / "train.log").read_text() if (w / "train.log").is_file() else ""
+        self.assertEqual(self.ev.returncode, 0, self.ev.stdout + self.ev.stderr + logs)
+        meta = json.loads((self.d / "stage_eval" / "kernel-metadata.json").read_text())
+        self.assertEqual(meta["kernel_sources"], [f"{OWNER}/rlead-prepass-syn", f"{OWNER}/rlead-train-syn"])
+        cov, cov_t = (json.loads((x / "train" / "coverage.json").read_text()) for x in (w, t))
+        self.assertEqual(cov["stop"], "eval-only")
+        self.assertEqual(cov["steps"], cov_t["steps"])
+        self.assertFalse((w / "train" / "checkpoints").exists() and any((w / "train" / "checkpoints").iterdir()))
+        for arm in ("ident", "gen"):
+            e, e_t = (json.loads((x / "train" / arm / "eval.json").read_text()) for x in (w, t))
+            for c in ("C", "T", "J"):
+                self.assertEqual(e["summary"][c], e_t["summary"][c])
+            d, d_t = (json.loads((x / "train" / arm / "eval_discrimination.json").read_text()) for x in (w, t))
+            self.assertTrue(d["eval_only"])
+            self.assertEqual({c: d[c] for c in ("C", "T", "J") if c in d}, {c: d_t[c] for c in ("C", "T", "J") if c in d_t})
 
     def test_code_that_differs_from_its_manifest_stops_the_kernel(self):
         root = self.d / "kaggle_tampered"

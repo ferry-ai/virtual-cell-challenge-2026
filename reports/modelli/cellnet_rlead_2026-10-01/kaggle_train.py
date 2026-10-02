@@ -19,7 +19,9 @@ Copy of reports/modelli/risposta_biologica_2026-09-30/kaggle_train.py (commit 1f
      stream, the loader processes, the budget and the checkpoints (1/10, incident E-20261001-001: one process per arm
      read every shard twice and filled the memory);
   4. with --cycle S1 S2: a run stopped at step S1 and resumed to S2 must end in the state of a run straight to S2, for
-     every arm (resume_check.json); then the training runs to its end and is evaluated.
+     every arm (resume_check.json); then the training runs to its end and is evaluated;
+  5. with --eval-from SLUG (2/10): no training; the last checkpoint in SLUG's train/ is evaluated again
+     (train_cellnet.py --resume --eval-only), which writes eval.json and eval_discrimination.json per arm.
   Outputs stay in /kaggle/working: verify.json, prepass/, train/ (one folder per arm inside), the logs.
 
     python kaggle_train.py code --config-dir ~/.kaggle --owner <you> --stage <new dir> [--version-note "..."]
@@ -57,6 +59,7 @@ DATASETS = {datasets}
 GLOBS = {globs}
 PREPASS_ARGS = {prepass_args}
 PREPASS_FROM = {prepass_from}
+EVAL_FROM = {eval_from}
 ARMS = {arms}
 TRAIN_ARGS = {train_args}
 CYCLE = {cycle}
@@ -154,6 +157,13 @@ for i, (name, code) in enumerate(ARMS):
 train = lambda out, extra=(): [PY, TC, "train", "--prepass", prepass, "--out", OUT / out,
                                *(["--descriptors", ASSETS] if (ASSETS / "descriptors.npy").is_file() else []),
                                "--shard-roots", INPUT, *ARM_FLAGS, *TRAIN_ARGS, *extra]
+if EVAL_FROM:
+    # 2/10: evaluate the last checkpoint of an earlier training kernel, without a training step (--eval-only), so a
+    # measure added after its launch is computed on the very same state
+    CYCLE = None
+    EVAL_EXTRA = ["--resume", str(mount(EVAL_FROM) / "train"), "--eval-only"]
+else:
+    EVAL_EXTRA = []
 if CYCLE:
     s1, s2 = CYCLE
     checks = {{"arms": ARM_FLAGS, "steps": [s1, s2]}}
@@ -182,7 +192,7 @@ if CYCLE:
     print("resume check", checks, flush=True)
     if not checks["passed"]:
         raise SystemExit("the resume check failed: see resume_check.json")
-code = run(train("train"), "train.log").wait() if ARMS else None      # a prepass kernel trains nothing
+code = run(train("train", EVAL_EXTRA), "train.log").wait() if ARMS else None      # a prepass kernel trains nothing
 (OUT / "kernel_done.json").write_text(json.dumps({{"arms": ARMS, "return_code": code,
                                                    "seconds": round(time.time() - t0, 1)}}, indent=1))
 if code:
@@ -228,6 +238,9 @@ def main():
                    help="an arm of the one training process, on the next GPU (repeatable)")
     k.add_argument("--train-args", default="", help="the training arguments every arm shares (one string)")
     k.add_argument("--cycle", nargs=2, type=int, metavar=("S1", "S2"))
+    k.add_argument("--eval-from", default=None,
+                   help="kernel slug of --owner whose output holds train/: evaluate its last checkpoint, no training "
+                        "(give the same --arm and --train-args as that kernel)")
     k.add_argument("--cpu", action="store_true", help="no GPU (no GPU quota): the prepass, or a check on few shards")
     a = p.parse_args()
     if a.owner == a.data_owner:
@@ -252,6 +265,8 @@ def main():
         sys.exit("give either --prepass-args or --prepass-from")
     if a.cycle and not a.arm:
         sys.exit("--cycle needs an arm")
+    if a.eval_from and (not a.arm or a.cycle or a.prepass_args is not None):
+        sys.exit("--eval-from needs the arms, a --prepass-from and no --cycle")
     arms = [x.split("=", 1) for x in a.arm]
     if any(len(x) != 2 or x[1] not in ARM_CODES for x in arms):
         sys.exit("--arm NAME=" + "|".join(ARM_CODES))
@@ -259,7 +274,7 @@ def main():
     text = KERNEL.format(owners=repr([a.owner, a.data_owner]), code_slug=repr(CODE_SLUG), assets_slug=repr(a.assets),
                          datasets=json.dumps(a.datasets), globs=json.dumps(globs),
                          prepass_args=json.dumps(shlex.split(a.prepass_args)) if a.prepass_args is not None else "None",
-                         prepass_from=repr(a.prepass_from), arms=json.dumps(arms),
+                         prepass_from=repr(a.prepass_from), eval_from=repr(a.eval_from), arms=json.dumps(arms),
                          train_args=json.dumps(shlex.split(a.train_args)),
                          cycle=json.dumps(a.cycle) if a.cycle else "None", gpu="False" if a.cpu else "True")
     (a.stage / "run.py").write_text(text, encoding="utf-8")
@@ -268,7 +283,8 @@ def main():
             "enable_internet": False,
             "dataset_sources": [f"{a.owner}/{CODE_SLUG}", f"{a.assets_owner or a.data_owner}/{a.assets}"]
                                + [f"{a.data_owner}/{d}" for d in a.datasets],
-            "kernel_sources": [f"{a.owner}/{a.prepass_from}"] if a.prepass_from else [], "competition_sources": []}
+            "kernel_sources": ([f"{a.owner}/{a.prepass_from}"] if a.prepass_from else [])
+                              + ([f"{a.owner}/{a.eval_from}"] if a.eval_from else []), "competition_sources": []}
     if not a.cpu:
         meta["machine_shape"] = "NvidiaTeslaT4"
     (a.stage / "kernel-metadata.json").write_text(json.dumps(meta, indent=1))

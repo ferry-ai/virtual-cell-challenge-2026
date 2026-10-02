@@ -414,3 +414,35 @@ class EvaluationGroups(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class DiscriminationMeasure(unittest.TestCase):
+    """train_cellnet.discrimination (2/10): 1 when each group's prediction is nearest its own observation, 0.5 when
+    every prediction is the same profile, ranked within each key; small keys are left out."""
+
+    def test_perfect_shared_and_small_keys(self):
+        from train_cellnet import discrimination
+        rng = np.random.default_rng(0)
+        n, G = 12, 50
+        obs = rng.normal(size=(n, G))
+        ok = np.ones((n, G), bool)
+        keys = np.array(["K"] * 8 + ["S"] * 4)
+        m, per = discrimination(obs, ok, obs, ok, keys)
+        self.assertEqual(m["groups"], 8)
+        self.assertAlmostEqual(m["score"], 1.0)
+        self.assertEqual(m["own_nearest_share"], 1.0)
+        self.assertTrue(np.isnan(per[8:]).all())
+        same = np.repeat(rng.normal(size=(1, G)), n, 0)
+        m2, _ = discrimination(same, ok, obs, ok, keys)
+        self.assertAlmostEqual(m2["score"], 0.5)
+
+    def test_masked_genes_do_not_count(self):
+        from train_cellnet import discrimination
+        rng = np.random.default_rng(1)
+        obs = rng.normal(size=(6, 40))
+        pred = obs.copy()
+        pred[:, 20:] = 1e6 * rng.normal(size=(6, 20))      # garbage on genes the observation does not define
+        ok = np.ones((6, 40), bool)
+        ok[:, 20:] = False
+        m, _ = discrimination(pred, np.ones((6, 40), bool), obs, ok, np.array(["K"] * 6))
+        self.assertAlmostEqual(m["score"], 1.0)

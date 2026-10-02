@@ -880,6 +880,43 @@ class BatchStream(_Iterable):
 
 # ============================================================================================== train
 
+def discrimination(pred, pred_ok, obs, obs_ok, keys, min_groups=5):
+    """Descriptive, PDS-like (2/10, after the t29 scored at chance on PDS): can a group's predicted shift be told
+    apart from the other groups of its key? For groups g, h of one key, s_gh is the cosine between g's predicted shift
+    and h's observed shift on the genes where both are defined (every gene, no top-k); g's rank is the share of the
+    other groups h with s_gh > s_gg (ties count one half). Score 1 - rank: 1 = own group always nearest, 0.5 = chance.
+    Keys with fewer than `min_groups` groups are left out. Not a VCC score and not part of any registered rule."""
+    P = np.where(pred_ok, pred, 0.0)
+    O = np.where(obs_ok, obs, 0.0)
+    dot = P @ O.T
+    p2 = np.sqrt(np.maximum((P * P) @ obs_ok.T.astype(float), 0.0))     # |pred_g| on the genes h observes
+    o2 = np.sqrt(np.maximum(pred_ok.astype(float) @ (O * O).T, 0.0))    # |obs_h| on the genes g predicts
+    with np.errstate(divide="ignore", invalid="ignore"):
+        s = np.where((p2 > 0) & (o2 > 0), dot / (p2 * o2), 0.0)
+    keys = np.asarray(keys)
+    per_group = np.full(len(keys), np.nan)
+    nearest = np.zeros(len(keys), bool)
+    by_key = {}
+    for k in np.unique(keys):
+        idx = np.flatnonzero(keys == k)
+        if idx.size < min_groups:
+            continue
+        sk = s[np.ix_(idx, idx)]
+        own = np.diag(sk)[:, None]
+        off = ~np.eye(idx.size, dtype=bool)
+        rank = (((sk > own) + 0.5 * (sk == own)) * off).sum(1) / (idx.size - 1)
+        per_group[idx] = 1.0 - rank
+        nearest[idx] = ((sk > own) & off).sum(1) == 0
+        by_key[str(k)] = {"groups": int(idx.size), "score": float(np.mean(1.0 - rank)),
+                          "own_nearest_share": float(np.mean(nearest[idx])),
+                          "own_cosine_mean": float(np.mean(np.diag(sk))),
+                          "other_cosine_mean": float(sk[off].mean())}
+    used = np.isfinite(per_group)
+    return {"groups": int(used.sum()), "score": float(per_group[used].mean()) if used.any() else None,
+            "own_nearest_share": float(nearest[used].mean()) if used.any() else None,
+            "keys": by_key, "min_groups_per_key": min_groups}, per_group
+
+
 def latest_checkpoint(run_dir: Path):
     found = sorted((run_dir / "checkpoints").glob("ckpt_*.pt")) if (run_dir / "checkpoints").is_dir() else []
     if not found:
@@ -1327,6 +1364,9 @@ def train(a):
     plan, stop_reason = None, None
     start_step, start_n = step, n_drawn
     while True:
+        if a.eval_only:
+            stop_reason = "eval-only"
+            break
         if step >= step_goal:
             stop_reason = "epochs done"
             break
@@ -1413,7 +1453,8 @@ def train(a):
                 "data_wait_fraction": round(wait / max(time.time() - t_train0, 1e-6), 3),
                 "evaluation_reserve_seconds": round(eval_reserve, 1), "budget_minutes": a.budget_minutes}
         (a.out / "plan.json").write_text(json.dumps(plan, indent=1), encoding="utf-8")
-    save_checkpoint(stop_reason)
+    if not a.eval_only:                  # the resumed checkpoint is the state: nothing new to save
+        save_checkpoint(stop_reason)
     leaks = {c: n for c, n in classes_drawn.items() if c != DRAWN}
     by_key = defaultdict(lambda: [0, 0])
     for s, sh in enumerate(shards):
@@ -1513,6 +1554,7 @@ def train(a):
     for arm in arms:
         acc = acc_by_arm[arm.name]
         results = {"C": [], "T": [], "J": []}
+        vec = {"gi": [], "pred": [], "pred_ok": [], "obs": [], "obs_ok": [], "trans": [], "has_trans": []}
         for gi, g in enumerate(groups):
             ac = acc[gi]
             if ac["n"] == 0:
@@ -1524,7 +1566,11 @@ def train(a):
             common, trans, nt, gen, ng = base[gi]
             n = ac["n"]
             obs, ok = CD.shift(ac["obs"] / n, st["ctrl_mean"][g["key"]], common)
-            pred, _ = CD.shift(ac["pm"] / n, ac["pb"] / n, common)
+            pred, pred_ok = CD.shift(ac["pm"] / n, ac["pb"] / n, common)
+            for f, v in (("gi", gi), ("pred", pred.astype(np.float32)), ("pred_ok", pred_ok),
+                         ("obs", obs.astype(np.float32)), ("obs_ok", ok), ("trans", trans.astype(np.float32)),
+                         ("has_trans", nt > 0)):
+                vec[f].append(v)
             top_genes = np.argsort(-np.abs(obs * ok))[:200]
             results[g["class"]].append({"key": g["key"], "symbol": g["symbol"], "cells": n,
                                         "admitted_cells": g["admitted_cells"], "pi_mean": ac["pi"] / n,
@@ -1544,6 +1590,34 @@ def train(a):
                            "shift; baselines from admitted training cells only; not a VCC score")
         (arm.out / "eval.json").write_text(json.dumps({"summary": summary, **results}, indent=1, default=float),
                                            encoding="utf-8")
+        # descriptive discrimination (2/10): by class, the model's shifts and, on the groups that have one, the
+        # transfer's, each ranked within its key; a separate file, so eval.json keeps its registered shape
+        disc = {"note": discrimination.__doc__.split("\n")[0] + " See discrimination() in train_cellnet.py.",
+                "eval_only": bool(a.eval_only), "resumed_from": resumed_from}
+        if vec["gi"]:
+            V = {f: np.array(v) for f, v in vec.items()}
+            cls = np.array([groups[i]["class"] for i in V["gi"]])
+            keys = np.array([groups[i]["key"] for i in V["gi"]])
+            for c_ in ("C", "T", "J"):
+                sel = cls == c_
+                if not sel.any():
+                    continue
+                m, _ = discrimination(V["pred"][sel], V["pred_ok"][sel], V["obs"][sel], V["obs_ok"][sel], keys[sel])
+                entry = {"model": m}
+                st_ = sel & V["has_trans"]
+                if st_.any():
+                    entry["model_on_transfer_groups"], _ = discrimination(
+                        V["pred"][st_], V["pred_ok"][st_], V["obs"][st_], V["obs_ok"][st_], keys[st_])
+                    entry["transfer"], _ = discrimination(V["trans"][st_], V["trans"][st_] != 0, V["obs"][st_],
+                                                          V["obs_ok"][st_], keys[st_])
+                disc[c_] = entry
+            if a.save_shifts:
+                np.savez_compressed(arm.out / "eval_shifts.npz", classes=cls, keys=keys,
+                                    symbols=np.array([groups[i]["symbol"] for i in V["gi"]]), genes=np.array(st["genes"]),
+                                    **{f: V[f] for f in ("pred", "pred_ok", "obs", "obs_ok", "trans", "has_trans")})
+        (arm.out / "eval_discrimination.json").write_text(json.dumps(disc, indent=1, default=float), encoding="utf-8")
+        log("discrimination", arm=arm.name, **{c_: {k_: (v_.get("score"), v_.get("groups")) for k_, v_ in e.items()}
+                                               for c_, e in disc.items() if c_ in ("C", "T", "J")})
         log("eval", arm=arm.name, **{k: v for k, v in summary.items() if k not in ("note", "arm")})
     (a.out / "done.json").write_text(json.dumps({"finished_utc": now(), "steps": step,
                                                  "wall_seconds": round(time.time() - t_start, 1),
@@ -1640,8 +1714,15 @@ def main():
     t.add_argument("--no-verify", action="store_true", help="skip the background sha256 check of the shards (tests)")
     t.add_argument("--stop-after-steps", type=int, help="stop at this global step after a checkpoint, without "
                                                           "evaluation (simulates an interruption; tests)")
+    t.add_argument("--eval-only", action="store_true",
+                   help="with --resume: no training step; evaluate the resumed checkpoint (2/10: the discrimination "
+                        "measure added after rlead-training-r1 was launched)")
+    t.add_argument("--save-shifts", action="store_true",
+                   help="also write eval_shifts.npz per arm: predicted, observed and transfer shifts of every group")
     t.add_argument("--device", default=None)
     a = ap.parse_args()
+    if a.cmd == "train" and a.eval_only and not a.resume:
+        sys.exit("--eval-only needs --resume")
     prepass(a) if a.cmd == "prepass" else train(a)
 
 

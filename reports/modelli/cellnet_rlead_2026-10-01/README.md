@@ -57,12 +57,21 @@ esegue i kernel generati:
 Sul runtime vero restano da vedere il montaggio dei dataset condivisi da un altro account e la
 lettura del token `KGAT_` da `--config-dir`.
 
+**Aggiunta del 2 ottobre sera:** la misura di discriminazione (`discrimination` in `train_cellnet.py`). Ogni
+valutazione scrive `eval_discrimination.json` accanto a `eval.json`, che non cambia forma.
+- **`--eval-only` (con `--resume`):** valuta l'ultimo checkpoint senza addestrare.
+- **`--save-shifts`:** salva anche gli spostamenti per gruppo, in `eval_shifts.npz`.
+- **`kaggle_train.py --eval-from <slug>`:** lo fa su Kaggle, dall'output di un kernel di training.
+
+Il perché, e le attese scritte prima del risultato, sono in
+[rlead_training_r1_2026-10-02/DISCRIMINAZIONE.md](../rlead_training_r1_2026-10-02/DISCRIMINAZIONE.md).
+
 ## Verifiche
 
 ```text
-python -m unittest test_rlead_fixes -v       # 15 test, le correzioni
+python -m unittest test_rlead_fixes -v       # 17 test, le correzioni e la misura di discriminazione
 python -m unittest test_cell_data test_prepass test_read_csr   # i test originali, sulla versione nuova
-python -m unittest test_kaggle_launcher -v   # 7 test, il launcher senza Kaggle (circa due minuti)
+python -m unittest test_kaggle_launcher -v   # 8 test, il launcher senza Kaggle, con il kernel --eval-from (circa un minuto)
 ```
 
 Esiti, interpreti e hash nella cartella di presa in carico.
