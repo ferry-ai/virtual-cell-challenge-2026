@@ -133,6 +133,36 @@ Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
 
 ## 3. Job su Colab e Kaggle
 
+### Scelta del runtime — priorità operativa
+
+**Configurazione confermata dal proprietario in chat il 2 ottobre 2026: Colab CPU
+stabile e Kaggle GPU.** Questa è la configurazione del progetto, non una promessa
+generale dei provider. Prima di ogni calcolo pesante applicare questa scelta:
+
+| Lavoro | Destinazione preferita |
+|---|---|
+| Sviluppo, fixture, test piccoli | Portatile |
+| Banchi C/J, preprocessing, predizione e valutazioni pesanti su CPU | Colab CPU |
+| Training neurale con modello e tensori effettivamente su CUDA | Kaggle GPU |
+
+Un'esecuzione pesante sul portatile richiede una motivazione registrata nel manifest
+del job: risorse misurate, disponibilità del cloud, input e ostacolo concreto. Preparare
+un pacchetto remoto mancante è un'attività da svolgere, non un motivo automatico per
+preferire il locale. Verificare CPU/thread BLAS, RAM disponibile, disco e job attivi
+sul runtime effettivo. I circa 10 GB liberi ricordati dal proprietario per Colab sono
+da rimisurare, non una garanzia. Più RAM può ridurre la pressione sulla memoria;
+il guadagno di velocità richiede un confronto misurato, inclusi trasferimento e avvio.
+
+Per i banchi di ricerca, trasferire uno snapshot dei file necessari in `reports/` e
+delle dipendenze importate, oltre agli input e al protocollo congelati. Il mirror
+standard `sync_to_drive.ps1` **non include `reports/`**. Preparare i percorsi per Linux
+e verificare gli stessi hash nel runtime destinatario. Per letture ripetute usare,
+quando il disco lo consente, una copia verificata sul disco locale del runtime;
+Drive conserva input persistenti, checkpoint e risultati. Salvare avanzamento e
+artefatti senza attendere soltanto la fine del job. Separare i tempi di lettura,
+preprocessing, fit/training, predizione e scoring. La scelta del runtime non cambia
+dati, split, regole scientifiche o autorizzazioni in chat e non implica acquisti.
+
 Il portatile ha 7,8 GiB di RAM. Lo stadio 76 (`ControlModel`) gira anche qui: il 23 settembre
 ha generato il t14 in 35 minuti, con 1–3 GiB di RAM
 (`reports/generatore_e_banchi/dispersion_2026-09-23/T14_IN_LOCALE.md`). I banchi 73 e 75 restano su Colab. Il notebook `notebooks/colab_sc_training.ipynb` fa da dispatcher: esegue i `.sh`
@@ -164,7 +194,9 @@ Gli script dei singoli job del 17–18/09 sono archiviati dal 30/09 ([ARCHIVIO](
   è un job fermo.
 - **Runtime perso** (ore di silenzio nel dispatcher): un job con `.started` non riparte mai
   da solo. Si rimette in coda con un numero nuovo e un output nuovo, mai sopra il vecchio.
-  Di notte, senza nessuno al browser, il tier gratuito scollega la sessione.
+  La nota sulle disconnessioni notturne del tier gratuito descrive l'esperienza
+  precedente; non prova che l'attuale Colab CPU confermato stabile dal proprietario
+  sia perso. Verificare heartbeat e runtime effettivo prima di concludere.
 - **Memoria:** due banchi HepG2 insieme, o un banco HepG2 con uno K562, possono esaurire i
   12 GB del runtime (`rc=137`). Per due job `ControlModel` insieme il job 045 annota lo
   stesso rischio, e per questo aspetta il `.done` del 044.

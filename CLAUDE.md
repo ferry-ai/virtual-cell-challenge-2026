@@ -1,5 +1,26 @@
 # Working agreement for agents
 
+## CRUCIALE — dove eseguire i calcoli (leggere prima di ogni lavoro)
+
+**Configurazione del progetto confermata dal proprietario il 2 ottobre 2026:
+Colab = CPU stabile; Kaggle = GPU.** Prima di ogni calcolo pesante leggere
+[PROCEDURE §3](docs/PROCEDURE.md#3-job-su-colab-e-kaggle), sede della procedura operativa.
+
+- **Portatile:** sviluppo, fixture e test piccoli. Un job pesante in locale richiede
+  una motivazione esplicita basata su risorse, input e runtime disponibili.
+- **Colab CPU:** destinazione preferita per banchi C/J, preprocessing, predizione,
+  scoring e altri calcoli pesanti su CPU. Questi lavori non richiedono una GPU.
+- **Kaggle GPU:** destinazione preferita per training neurale che usa effettivamente
+  CUDA; selezionare una GPU nel notebook non trasferisce da solo modello e tensori.
+
+Misurare RAM libera, CPU, disco, accessi e job attivi prima del lancio: i circa 10 GB
+liberi ricordati per Colab non sono una quota garantita. Il vantaggio di velocità si
+misura, non si deduce dalla sola RAM. Preparare gli input e il codice necessari:
+**la sincronizzazione standard su Drive non include `reports/`**, dove vivono i banchi
+di ricerca. La mancanza di quel pacchetto è un passo da completare, non una ragione
+automatica per eseguire ore di calcolo sul portatile. Restano valide le autorizzazioni
+in chat e il preflight: questa regola di instradamento non autorizza nuovi job o acquisti.
+
 The project: predict how cells respond to 300 CRISPRi knockdowns in cell contexts never seen
 perturbed (Virtual Cell Challenge 2026). Only the final set counts: three new contexts, D, E and
 F, released on 22 October; submissions close on 5 November. Where the project stands and where it

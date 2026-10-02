@@ -1,5 +1,10 @@
 # Instructions for Codex and any other agent
 
+**CRUCIALE, prima di ogni lavoro:** leggere subito il riquadro iniziale di
+[`CLAUDE.md`](CLAUDE.md): **Colab = CPU stabile; Kaggle = GPU; portatile = sviluppo
+e test piccoli.** La procedura per scegliere il runtime e preparare i job è
+[PROCEDURE §3](docs/PROCEDURE.md#3-job-su-colab-e-kaggle).
+
 The working agreement for every agent in this repository is `CLAUDE.md`, and it applies to Codex
 in full: read it before anything else, then only what its task table names for your task.
 
