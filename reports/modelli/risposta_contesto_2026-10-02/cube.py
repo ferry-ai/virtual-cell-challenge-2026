@@ -65,6 +65,11 @@ def basal_profiles(root: Path, hepg2: Path, tables: list[dict], genes: list[str]
         elif tid == 'hepg2_nadig':
             v = hep.reindex(genes)['hepg2'].to_numpy(float)
             prov[tid] = 'hepg2_universe basal_hepg2.csv:hepg2 (control sums, this study)'
+        elif t['universe'].startswith('generalizzazione_contesti_2026-10-02/newlines_'):
+            folder = root / 'processed' / Path(t['universe']).parent
+            frame = pd.read_csv(folder / f"basal_{t['stem']}.csv").set_index('gene_name')
+            v = frame.reindex(genes)[t['stem']].to_numpy(float)
+            prov[tid] = f"{Path(t['universe']).parent}/basal_{t['stem']}.csv (control sums, Kaggle kernel rlab-lead-sums-r1)"
         elif tid.startswith('hipsci_'):
             ctx = tid
             rows = np.flatnonzero(meta['context'].to_numpy() == ctx)

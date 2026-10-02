@@ -25,6 +25,12 @@ def data_root() -> Path:
     return Path(paths().data_root)
 
 
+def coords_path(value: str) -> Path:
+    """A protocol path: absolute as given (Kaggle), otherwise relative to the data root."""
+    p = Path(value)
+    return p if p.is_absolute() else data_root() / p
+
+
 def heavy_root() -> Path:
     """Bulky outputs of this study live outside the repository (D-001, D-048)."""
     return data_root() / 'processed' / STUDY

@@ -29,7 +29,7 @@ import pandas as pd
 import scipy.sparse as sp
 
 from arms import Cube, gene_weight, table_means
-from common import REPO, Timer, data_root, git_state, h5_column, log, now_utc, sha256, write_json
+from common import REPO, Timer, coords_path, data_root, git_state, h5_column, log, now_utc, sha256, write_json
 from fitting import ReadOnlyGMCache, fit_c, predict_c
 from metrics import blocks_of, score_table
 from splits import Split, unit_hash
@@ -80,7 +80,7 @@ def main() -> None:
     proto = json.loads(a.protocol.read_text(encoding='utf-8'))
     P = proto['parameters']
     cube = Cube(a.cube, min_cells=P['min_cells'])
-    coords = pd.read_csv(data_root() / P['gene_coordinates'], sep='\t')
+    coords = pd.read_csv(coords_path(P['gene_coordinates']), sep='\t')
     ens_to_sym = {str(gid).split('.')[0]: s for s, gid in zip(coords['symbol'], coords['gene_id']) if isinstance(gid, str)}
     a.out.mkdir(parents=True)
     commons, raw_means = table_means(cube, Split('C', '__none__', None, P['n_folds']))

@@ -67,6 +67,22 @@ TABLES = [
        evidence=[_EV_SRC, 'reports/sorgenti/universo_hipsci_2026-09-27/RISULTATI.md'])
     for l in HIPSCI_LINES
 ] + [
+    # P4 data (2/10 night): count sums of the published R-LAB shards (Kaggle kernel rlab-lead-sums-r1 v2),
+    # effects estimated locally with the live estimator (sums_to_universe.py); identity of competition contexts untouched
+    _t('jurkat_nadig', 'generalizzazione_contesti_2026-10-02/newlines_r1/universe_jurkat_nadig', 'jurkat_nadig', 'Jurkat',
+       'Jurkat', 'nadig2025_jurkat', "10x 3' (da verificare)", 'CRISPRi', 'Kaggle rlab-jurkat-nadig',
+       evidence=[_EV_SRC, _EV_CAT], note='P4 data line; universe from kaggle_sums r2'),
+    _t('h1_train', 'generalizzazione_contesti_2026-10-02/newlines_r1/universe_h1_vcc2025_train', 'h1_vcc2025_train',
+       'H1 (hESC)', 'H1', 'vcc2025_h1_train', 'saggio della gara 2025 (da verificare)', 'CRISPRi',
+       'Kaggle rlab-h1-vcc2025-trainval', evidence=[_EV_SRC, _EV_CAT],
+       note='train split of the 2025 challenge; shares its 38,176 controls with h1_val; the 2025 test stays closed'),
+    _t('h1_val', 'generalizzazione_contesti_2026-10-02/newlines_r1/universe_h1_vcc2025_val', 'h1_vcc2025_val',
+       'H1 (hESC)', 'H1', 'vcc2025_h1_val', 'saggio della gara 2025 (da verificare)', 'CRISPRi',
+       'Kaggle rlab-h1-vcc2025-trainval', evidence=[_EV_SRC, _EV_CAT], note='validation split; same controls as h1_train'),
+    _t('tian2021_neuron', 'generalizzazione_contesti_2026-10-02/newlines_r1/universe_tian2021_crispri', 'tian2021_crispri',
+       'iPSC-induced neuron', 'Neuron', 'tian2021_crispri', 'da verificare', 'CRISPRi', 'Kaggle rlab-tian-norman',
+       evidence=[_EV_SRC, _EV_CAT], note='437 controls; a cell type absent from the 7-group bench'),
+] + [
     _t('hipsci_gwfit', 'universe_hipsci_gwfit_2026-09-27_me1', 'hipsci_gwfit', 'iPSC pool (HIPSCI)', 'iPSC',
        'hipsci_gw_fitness', 'da verificare', 'CRISPRi', 'Kaggle rlab-hipsci-gwfit', donor='pool',
        role='excluded: 36 NTC cells (me1); ua1 uses unassigned cells as controls',
@@ -84,10 +100,10 @@ TABLES = [
 # Sources the matrix must name although no effect table is on this machine (P0, file and step).
 NOT_LOCAL = [
     dict(id='jurkat_nadig', line='Jurkat', group='Jurkat', modality='CRISPRi', study='nadig2025_jurkat',
-         cells='Kaggle rlab-jurkat-nadig, Drive (job 103), 262.956 cells', missing='no local effect table or cells',
+         cells='Kaggle rlab-jurkat-nadig, Drive (job 103), 262.956 cells', missing='effect table built on 2/10 from Kaggle sums (table jurkat_nadig)',
          reads='in r1-r3 training; 21 T groups read in the r2 diagnostics (lead_audit_2026-10-01/REVISIONE.md §3.1)'),
     dict(id='h1_vcc2025_trainval', line='H1 (hESC)', group='H1', modality='CRISPRi', study='vcc2025',
-         cells='Kaggle rlab-h1-vcc2025-trainval, 320.200 cells', missing='no local effect table or cells',
+         cells='Kaggle rlab-h1-vcc2025-trainval, 320.200 cells', missing='effect tables built on 2/10 from Kaggle sums (h1_train, h1_val)',
          reads='in r1-r3 training (17 T groups in r2 diagnostics); the 2025 test split stays closed'),
     dict(id='jurkat_gse249595', line='Jurkat', group='Jurkat', modality='CRISPRi', study='gse249595',
          cells='local MTX channels', missing='no guide calls in the release: not supervisable',
@@ -100,7 +116,7 @@ NOT_LOCAL = [
          reads='H6 and pattern 24/09'),
     dict(id='tian_norman', line='iPSC, iPSC neurons, K562', group='iPSC/neuron/K562', modality='CRISPRi/CRISPRa',
          study='tian2019_2021_norman2019', cells='Kaggle rlab-tian-norman, 623.436 cells',
-         missing='no local effect table', reads='in r3 training only'),
+         missing='Tian 2021 CRISPRi built on 2/10 (tian2021_neuron); Tian 2019 empty droplets, Norman CRISPRa not used', reads='in r3 training only'),
     dict(id='scp_third_wave', line='melanoma, T cells, K562, HEK293', group='various', modality='KO/CRISPRi',
          study='frangieh, sunshine, papalexi, shifrut, datlinger, dixit, xu2023', cells='Kaggle rlab-scp-*',
          missing='no local effect table', reads='in no training'),

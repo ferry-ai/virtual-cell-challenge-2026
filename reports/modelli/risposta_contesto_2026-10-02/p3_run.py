@@ -25,7 +25,7 @@ import numpy as np
 import pandas as pd
 
 from arms import Cube, derangement, gene_weight, table_means
-from common import Timer, data_root, git_state, log, now_utc, sha256, write_json
+from common import Timer, coords_path, data_root, git_state, log, now_utc, sha256, write_json
 from fitting import GMCache, fit_c, predict_c
 from metrics import blocks_of, score_table
 from splits import Split
@@ -47,7 +47,7 @@ def main() -> None:
     timer = Timer()
     cube = Cube(a.cube, min_cells=P['min_cells'])
     keys_info = pd.read_csv(a.cube / 'keys.csv').set_index('target_key')
-    coords = pd.read_csv(data_root() / P['gene_coordinates'], sep='\t')
+    coords = pd.read_csv(coords_path(P['gene_coordinates']), sep='\t')
     ens_to_sym = {str(gid).split('.')[0]: s for s, gid in zip(coords['symbol'], coords['gene_id']) if isinstance(gid, str)}
     a.out.mkdir(parents=True)
     log(f'cube: {len(cube.tables)} tables, {len(cube.groups)} groups, {len(cube.genes)} genes (runner v{VERSION})')

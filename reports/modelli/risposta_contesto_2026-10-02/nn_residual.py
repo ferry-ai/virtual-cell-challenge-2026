@@ -29,12 +29,13 @@ import torch
 
 from arms import (AMPLITUDE_T25, BasalPCA, Cube, combine_groups, derangement, fit_keys, gain_features,
                   gene_weight, generic_vector, reference_basal, table_means)
-from common import Timer, data_root, git_state, log, now_utc, sha256, write_json
+from common import Timer, coords_path, data_root, git_state, log, now_utc, sha256, write_json
 from fitting import ReadOnlyGMCache, basis, transfer_for
 from metrics import blocks_of, score_table
 from splits import Split, assert_no_leak, unit_hash
 
 F32 = np.float32
+DEVICE = torch.device('cpu')
 
 
 class Net(torch.nn.Module):
@@ -106,6 +107,7 @@ class Trainer:
                  basal_of: dict | None = None):
         self.cube, self.P, self.rows, self.context = cube, P, rows, context
         self.U = torch.from_numpy(U)
+        self.Ud = self.U.to(DEVICE)
         self.pca, self.basal_of = pca, basal_of or {}
         G = len(cube.genes)
         self.feats = {}
@@ -143,19 +145,20 @@ class Trainer:
             gf[i] = gene_features(s[i:i + 1], rows.m[h][genes], self.feats[(h, t)][genes])[0]
             w[i] = self.weights[t][genes] * np.isfinite(y[i])
             zphi[i] = np.concatenate([z[i], self.phi[t]])
-        return (torch.from_numpy(genes.astype(np.int64)), torch.from_numpy(gf), torch.from_numpy(zphi),
-                torch.from_numpy(np.nan_to_num(y)), torch.from_numpy(w))
+        return tuple(t.to(DEVICE) for t in (torch.from_numpy(genes.astype(np.int64)), torch.from_numpy(gf),
+                                            torch.from_numpy(zphi), torch.from_numpy(np.nan_to_num(y)),
+                                            torch.from_numpy(w)))
 
     def train(self, steps: int, seed: int, checkpoints=(), val: 'Trainer | None' = None):
         torch.manual_seed(seed)
         P = self.P
-        net = Net(self.G, P['gene_embedding'], P['hidden_gene'], P['hidden_program'], self.U.shape[1], P['pca_d'])
+        net = Net(self.G, P['gene_embedding'], P['hidden_gene'], P['hidden_program'], self.U.shape[1], P['pca_d']).to(DEVICE)
         opt = torch.optim.AdamW(net.parameters(), lr=P['lr'], weight_decay=P['weight_decay'])
         rng = np.random.default_rng(seed)
         losses = {}
         for step in range(1, steps + 1):
             genes_t, gf, zphi, y, w = self.tensors(*self.batch(rng))
-            pred = net(genes_t, gf, zphi, self.U[genes_t])
+            pred = net(genes_t, gf, zphi, self.Ud[genes_t])
             loss = (w * (pred - y) ** 2).sum() / w.sum().clamp_min(1e-6)
             opt.zero_grad()
             loss.backward()
@@ -172,7 +175,7 @@ class Trainer:
             for b0 in range(0, len(self.rows.Y), 256):
                 idx = np.arange(b0, min(b0 + 256, len(self.rows.Y)))
                 genes_t, gf, zphi, y, w = self.tensors(idx, genes)
-                pred = net(genes_t, gf, zphi, self.U[genes_t])
+                pred = net(genes_t, gf, zphi, self.Ud[genes_t])
                 tot += float((w * (pred - y) ** 2).sum())
                 den += float(w.sum())
         return tot / max(den, 1e-12)
@@ -182,16 +185,17 @@ def predict(net: Net, U: np.ndarray, s: np.ndarray, m: np.ndarray, feats: np.nda
             chunk: int = 2048) -> np.ndarray:
     R, G = s.shape
     z = np.nan_to_num(s, nan=0.0) @ U
-    zphi = torch.from_numpy(np.concatenate([z, np.broadcast_to(phi, (R, len(phi)))], 1).astype(F32))
+    zphi = torch.from_numpy(np.concatenate([z, np.broadcast_to(phi, (R, len(phi)))], 1).astype(F32)).to(DEVICE)
     out = np.empty((R, G), F32)
-    Ut = torch.from_numpy(U)
+    Ut = torch.from_numpy(U).to(DEVICE)
     with torch.no_grad():
         prog = net.p(zphi)
         for g0 in range(0, G, chunk):
             genes = np.arange(g0, min(g0 + chunk, G))
-            gf = torch.from_numpy(gene_features(s[:, genes], m[genes], feats[genes]))
-            x = torch.cat([gf, net.E(torch.from_numpy(genes)).unsqueeze(0).expand(R, -1, -1)], -1)
-            out[:, genes] = (net.g(x).squeeze(-1) + prog @ Ut[genes].T).numpy()
+            gt = torch.from_numpy(genes).to(DEVICE)
+            gf = torch.from_numpy(gene_features(s[:, genes], m[genes], feats[genes])).to(DEVICE)
+            x = torch.cat([gf, net.E(gt).unsqueeze(0).expand(R, -1, -1)], -1)
+            out[:, genes] = (net.g(x).squeeze(-1) + prog @ Ut[gt].T).cpu().numpy()
     return out
 
 
@@ -209,10 +213,13 @@ def main() -> None:
     proto = json.loads(a.protocol.read_text(encoding='utf-8'))
     P = proto['parameters']
     torch.set_num_threads(int(P.get('threads', torch.get_num_threads())))
+    global DEVICE
+    DEVICE = torch.device(P.get('device') or ('cuda' if torch.cuda.is_available() else 'cpu'))
+    log(f'device {DEVICE}')
     timer = Timer()
     cube = Cube(a.cube, min_cells=P['min_cells'])
     keys_info = pd.read_csv(a.cube / 'keys.csv').set_index('target_key')
-    coords = pd.read_csv(data_root() / P['gene_coordinates'], sep='\t')
+    coords = pd.read_csv(coords_path(P['gene_coordinates']), sep='\t')
     ens_to_sym = {str(gid).split('.')[0]: s for s, gid in zip(coords['symbol'], coords['gene_id']) if isinstance(gid, str)}
     a.out.mkdir(parents=True)
     commons, raw_means = table_means(cube, Split('C', '__none__', None, P['n_folds']))
@@ -305,7 +312,7 @@ def main() -> None:
     write_json(a.out / 'fits.json', fits)
     write_json(a.out / 'run.json', dict(written_utc=now_utc(), git=git_state(), protocol=str(a.protocol),
                                         protocol_sha256=sha256(a.protocol), cube=str(a.cube), gm_cache=str(a.gm_cache),
-                                        cap_rows=a.cap_rows, torch=torch.__version__, threads=torch.get_num_threads(),
+                                        cap_rows=a.cap_rows, torch=torch.__version__, threads=torch.get_num_threads(), device=str(DEVICE),
                                         seconds=timer(), leak_checks=leak_checks,
                                         outputs={f.name: sha256(f) for f in sorted(a.out.glob('per_target_*.csv.gz'))}))
     log(f'done in {timer()} s')
