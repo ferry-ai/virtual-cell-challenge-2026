@@ -1,0 +1,32 @@
+{"msg": "start", "shards": 55, "jobs": {"vcc_orion_hct116_p0of4_r3": {"units": ["orion_hct116"], "chosen": 28, "bytes": 9470238821, "mount": "/kaggle/input/notebooks/davideferrante11/vcc-orion-hct116-p0of4-r3/vcc_orion_hct116_p0of4_r3/shards"}, "vcc_orion_hct116_p1of4_r3": {"units": ["orion_hct116"], "chosen": 27, "bytes": 9973710744, "mount": "/kaggle/input/notebooks/davideferrante11/vcc-orion-hct116-p1of4-r3/vcc_orion_hct116_p1of4_r3/shards"}}, "workers": 4}
+{"msg": "shard", "name": "HCT116_Batch1.h5ad", "verified": true, "seconds": {"raw_read_and_sha256": 1.762, "h5py_read_decompress": 5.325, "encode": 25.369, "decode_and_compare": 4.495}, "error": null}
+{"msg": "shard", "name": "HCT116_Batch102.h5ad", "verified": true, "seconds": {"raw_read_and_sha256": 2.18, "h5py_read_decompress": 7.468, "encode": 41.215, "decode_and_compare": 6.86}, "error": null}
+{"msg": "shard", "name": "HCT116_Batch106.h5ad", "verified": true, "seconds": {"raw_read_and_sha256": 1.439, "h5py_read_decompress": 4.168, "encode": 19.702, "decode_and_compare": 3.211}, "error": null}
+{"msg": "shard", "name": "HCT116_Batch11.h5ad", "verified": true, "seconds": {"raw_read_and_sha256": 2.082, "h5py_read_decompress": 6.926, "encode": 34.962, "decode_and_compare": 5.304}, "error": null}
+{"msg": "shard", "name": "HCT116_Batch15.h5ad", "verified": true, "seconds": {"raw_read_and_sha256": 1.862, "h5py_read_decompress": 11.7, "encode": 48.407, "decode_and_compare": 7.274}, "error": null}
+{"msg": "shard", "name": "HCT116_Batch19.h5ad", "verified": true, "seconds": {"raw_read_and_sha256": 1.663, "h5py_read_decompress": 9.048, "encode": 46.071, "decode_and_compare": 5.032}, "error": null}
+{"msg": "shard", "name": "HCT116_Batch22.h5ad", "verified": true, "seconds": {"raw_read_and_sha256": 2.062, "h5py_read_decompress": 6.889, "encode": 39.423, "decode_and_compare": 6.22}, "error": null}
+{"msg": "shard", "name": "HCT116_Batch26.h5ad", "verified": true, "seconds": {"raw_read_and_sha256": 1.526, "h5py_read_decompress": 6.774, "encode": 39.913, "decode_and_compare": 6.094}, "error": null}
+{"msg": "shard", "name": "HCT116_Batch3.h5ad", "verified": true, "seconds": {"raw_read_and_sha256": 1.754, "h5py_read_decompress": 5.348, "encode": 27.702, "decode_and_compare": 4.727}, "error": null}
+Traceback (most recent call last):
+  File "/kaggle/working/code/build_fast_units.py", line 105, in <module>
+    main()
+    ~~~~^^
+  File "/kaggle/working/code/build_fast_units.py", line 76, in main
+    for rec in ex.map(one, tasks, chunksize=1):
+               ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/concurrent/futures/process.py", line 620, in _chain_from_iterable_of_lists
+    for element in iterable:
+                   ^^^^^^^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 625, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 318, in _result_or_cancel
+    return fut.result(timeout)
+           ~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 460, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 402, in __get_result
+    raise self._exception
+concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.

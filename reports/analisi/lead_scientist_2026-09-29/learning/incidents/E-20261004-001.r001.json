@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "eid": "E-20261004-001",
+  "revision": 1,
+  "previous_sha256": null,
+  "recorded_utc": "2026-10-03T22:35:00+00:00",
+  "claim_type": "operational_incident",
+  "state": "observed",
+  "title": "Gemelli compatti degli shard Orion HCT116: il kernel rcell-v4-fast-hct116-a-r1 cade dopo quattro minuti con un processo del pool terminato",
+  "symptom": "Kernel Kaggle CPU spinto il 4/10 alle 00:23 CEST con 4 processi (uno per CPU) su 55 shard HCT116 (circa 160 milioni di valori non nulli per shard, 340 MB l'uno). Stato ERROR alle 00:31; build.log: 9 shard verificati, poi concurrent.futures.process.BrokenProcessPool. Nessun fast_manifest.json scritto.",
+  "cause": "Ipotesi, non verificata: memoria esaurita. fastshard.encode tiene in memoria gli array del CSR, la loro copia ordinata per riga, l'indice di riga a 64 bit e la decodifica di confronto; con quattro shard di questa taglia insieme il totale puo superare i 32 GB del runtime, che non ha swap, e il sistema uccide un processo. I due kernel HEK293T (131 milioni di valori per shard) alle 00:31 erano ancora in corsa con quattro processi. Il picco di memoria per processo non era misurato.",
+  "cause_verified": false,
+  "fix": "Rilancio con due processi (rcell-v4-fast-hct116-a-r2, 00:32 CEST), slug e output nuovi; il kernel fallito resta com'e (un kernel in ERROR non e una sorgente valida). build_fast_units.py ora registra per ogni shard il picco di memoria residente del processo (worker_peak_rss_mb) e i valori non nulli, cosi il prossimo lancio si dimensiona su una misura.",
+  "regression_test": "Il kernel r2 con due processi deve chiudere i 55 shard con fast_manifest.json senza fallimenti; le ricevute dei lanci successivi (HCT116 parti 2-3, KOLF) devono riportare worker_peak_rss_mb. test_fast_units.py (3 test) copre formato e rifiuti, non la memoria.",
+  "next_guard": "Per i gemelli di shard oltre 100 milioni di valori non nulli: al piu due processi su un runtime da 32 GB finche il picco per processo non e misurato; poi processi = memoria disponibile diviso picco misurato, con margine. Non usare il numero di CPU come numero di processi per default su shard grandi.",
+  "scope": "Solo la costruzione dei gemelli compatti degli shard Orion su Kaggle CPU (nessuna quota GPU). Shard, verifiche di linea e training del pilot non sono toccati. Tempo perso: circa otto minuti di una sessione CPU.",
+  "evidence": [
+    {
+      "path": "reports/modelli/rete_ancorata_v4_2026-10-03/incidente_E-20261004-001/build.log",
+      "sha256": "ab819efa8cc3c1216788bb0fe8f6d73bf1970e8aaabd3ba239afb7426fd31f90",
+      "bytes": 3437,
+      "supports": "Nove shard verificati, poi BrokenProcessPool: un processo del pool terminato bruscamente"
+    },
+    {
+      "path": "reports/modelli/rete_ancorata_v4_2026-10-03/incidente_E-20261004-001/kernel_done.json",
+      "sha256": "37bb328229c47c093f0545e0f2ab4e0b235c587e7334496d9397604b51ded697",
+      "bytes": 36,
+      "supports": "Codice di uscita 1 dopo 248,6 secondi"
+    },
+    {
+      "path": "reports/modelli/rete_ancorata_v4_2026-10-03/incidente_E-20261004-001/env.json",
+      "sha256": "cea260a7ddcac8a6ea153847dcef6f3026ecfff516a6cf93938ce3b298958f53",
+      "bytes": 385,
+      "supports": "Runtime con 32.099 MB di memoria, senza swap, 4 CPU"
+    }
+  ],
+  "remote_verification": null
+}

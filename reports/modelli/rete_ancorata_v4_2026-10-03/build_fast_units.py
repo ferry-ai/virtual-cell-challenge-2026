@@ -36,6 +36,18 @@ def find(input_root: Path, job: str) -> Path:
     return hits[0]
 
 
+def one_measured(task):
+    """build_fast.one, plus the peak resident memory of the worker so far (incident E-20261004-001: four workers on
+    shards of 160 million values were killed on a 32 GB runtime; the next launch is sized on this number)."""
+    rec = one(task)
+    try:
+        import resource
+        rec["worker_peak_rss_mb"] = round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024, 1)
+    except ImportError:                                  # no resource module on Windows (the tests)
+        pass
+    return rec
+
+
 def tasks_of(input_root: Path, jobs, out: Path):
     tasks, chosen = [], {}
     for job in jobs:
@@ -73,10 +85,12 @@ def main():
     print(json.dumps({"msg": "start", "shards": len(tasks), "jobs": chosen, "workers": a.workers}), flush=True)
     receipts = []
     with ProcessPoolExecutor(max_workers=a.workers) as ex:
-        for rec in ex.map(one, tasks, chunksize=1):
+        for rec in ex.map(one_measured, tasks, chunksize=1):
             receipts.append(rec)
             print(json.dumps({"msg": "shard", "name": rec["name"], "verified": rec.get("verified"),
-                              "seconds": rec.get("seconds"), "error": rec.get("error")}), flush=True)
+                              "seconds": rec.get("seconds"), "nnz": rec.get("nnz"),
+                              "worker_peak_rss_mb": rec.get("worker_peak_rss_mb"), "error": rec.get("error")}),
+                  flush=True)
     ok = [r for r in receipts if r.get("verified")]
     bad = [r for r in receipts if not r.get("verified")]
     prof = defaultdict(float)
@@ -89,7 +103,8 @@ def main():
                "source_mb": round(src_mb, 1), "twin_mb": round(twin_mb, 1),
                "twin_over_source": round(twin_mb / src_mb, 4) if src_mb else None,
                "values": int(sum(r["nnz"] for r in ok)), "cells": int(sum(r["n_rows"] for r in ok)),
-               "wall_seconds": round(time.time() - t0, 1), "workers": a.workers, "cpus": os.cpu_count()}
+               "wall_seconds": round(time.time() - t0, 1), "workers": a.workers, "cpus": os.cpu_count(),
+               "worker_peak_rss_mb_max": max((r.get("worker_peak_rss_mb") or 0 for r in ok), default=0) or None}
     manifest = {"format": FS.FORMAT, "version": FS.FORMAT_VERSION,
                 "created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "jobs": chosen, "shards": ok,
                 "failed": bad, "profile": profile,
