@@ -49,3 +49,5 @@ Lo stato si legge ai file citati, non da questa tabella, che è un indice.
 |---|---|
 | `verify_resume.py` | Copia di `archivio_cloud_2026-10-02/verify_drive.py` che salta i file già verificati con lo stesso sha256 da ricevute precedenti (`--already`); test: `test_verify_resume.py` |
 | `requeue_verify.py` | Rimette in coda 130 e 131 come 133 e 134: stesso setup r1 in sola lettura, setup r2 e output nuovi, preflight locale |
+| `adattatori_codex/` | Compito di Codex: `h5csc` compatto a intervalli (KOLF) e `h5rows` con filtro di idoneità (CD4) |
+| `agenti/` | Brief e rapporti degli agenti dell'hub, lanciati con l'autorizzazione del proprietario del 3/10: claude2 per la conversione RDS (run `20261003-155531-vcc-rds-conversion`, worktree isolato), Grok per i metadati GEO (run `20261003-155552-vcc-geo-metadata`, sola lettura) |
