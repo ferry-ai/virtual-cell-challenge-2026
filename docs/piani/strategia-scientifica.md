@@ -6,6 +6,13 @@
   obiettivo. Prima del prossimo corpus/training principale, riconciliare il catalogo e
   verificare l'esposizione effettiva; le lacune rimediabili restano lavori aperti. Le
   ablation ridotte e le esclusioni di validazione mantengono il proprio ruolo dichiarato.
+- **Presa in carico, 3/10 21:47 CEST:** Claude Code, sessione «Integrazione Codex e piano operativo»
+  (`5eacdf`), macchina `LAPTOP-DLG1LHV1`, da commit `8f43310`, su richiesta del proprietario in chat:
+  integrare le analisi Codex, correggere esposizione dei batch e ancore, avviare il training valido,
+  riordinare i documenti operativi. Perimetro: questa scheda, PIANI, PROGETTO §0, AMBITI, REGISTRO,
+  la nuova cartella `reports/modelli/rete_ancorata_v4_2026-10-03/` e i dati in
+  `processed/rete_ancorata_v4_2026-10-03/`. Fuori perimetro: `adattatori_codex/` e gli altri file non
+  tracciati di altre sessioni; l'ingestione solo per i job che il piano richiede, annotati anche in R-LAB.
 - **Analisi disgiunta Codex, 3/10 ore 20:17 CEST**, sessione `01a1027a-0ae4-7c32-9001-e868a2b91698`,
   richiesta dal proprietario: [candidato X + transfer, dati e raccordo dei piani](../../reports/analisi/candidato_ibrido_2026-10-03/README.md).
   Ricevute dei due training v3 concluse lette: H1 non passa il bilanciamento della loss già richiesto;
