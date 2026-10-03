@@ -27,8 +27,12 @@ La fonte completa dei punteggi è l'[indice degli invii](../reports/invii/README
 per la task 2026 (D-052).** Prima verificare i collegamenti fra contesti e costruire split
 per linee intere; poi confrontare transfer e correzione semplice condizionata sui sei membri.
 La domanda è se i soli controlli permettono di migliorare la risposta in un contesto mai
-visto perturbato. C/J guidano la scelta, T resta diagnostico. La rete e l'espansione dei
-dati seguono un limite identificato dal banco; riparare tutta cellnet non viene prima.
+visto perturbato. C/J guidano la scelta, T resta diagnostico. Le estensioni della rete
+seguono un limite identificato dal banco; riparare tutta cellnet non viene prima.
+**Dal 3/10, D-053: tutte le linee e i contesti idonei devono entrare nel percorso principale.**
+Campioni cellulari e aggregati hanno ruoli distinti; ogni assenza ed esclusione è tracciata,
+la copertura effettiva si verifica e le riserve restano protette. Un pilot ridotto non
+sostituisce il corpus completo: [vincolo operativo](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile).
 [Prompt per Claude](PROMPT_CLAUDE.md), [indice dei ruoli](PIANI.md).
 
 Il corpus, le ingestioni e r1–r3 restano disponibili attraverso [R-LAB](piani/piano-giorno-2026-09-30.md).

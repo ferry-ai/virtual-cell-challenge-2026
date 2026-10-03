@@ -26,6 +26,17 @@ perturbed (Virtual Cell Challenge 2026). Only the final set counts: three new co
 F, released on 22 October; submissions close on 5 November. Where the project stands and where it
 is heading is one page, [`docs/PROGETTO.md`](docs/PROGETTO.md) §0.
 
+## NON NEGOZIABILE — tutte le linee e tutti i contesti idonei
+
+**Mandato del proprietario, 3 ottobre 2026 (D-053):** il percorso principale deve includere
+tutte le linee e tutti i contesti scientificamente utilizzabili del catalogo, con le
+esclusioni richieste dalla validazione. Campionare cellule non autorizza a eliminare
+contesti per comodità, dimensione, somiglianza alla gara o overlap dei bersagli.
+Prima di dichiarare completo un corpus o training, verificare **copertura prevista e uso
+effettivo**, con ogni lacuna o esclusione nominata e motivata. Un pilot ridotto resta tale.
+La regola completa e i requisiti di accettazione stanno in
+[GENERALIZZAZIONE §2.1](docs/GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile).
+
 **Mandatory reading is this file, PROGETTO §0 and the row of the task table below that matches
 your task — nothing else.** Everything else is read on demand, by section, and each row says where
 to stop. State, scores and assignments are never written here: they change, and each has one home

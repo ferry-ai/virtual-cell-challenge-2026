@@ -58,6 +58,61 @@ ruolo possibile e stato di verifica, nel report della ricerca che l'ha trovato, 
 in `reports/sorgenti/README.md`: lo ha chiesto il proprietario il 25/09, perché un candidato
 scartato a voce si perde (finora la regola stava solo nella memoria di un agente).
 
+### 2.1 Copertura integrale: vincolo non negoziabile
+
+**D-053, mandato del proprietario del 3 ottobre 2026:** usare tutte le linee e tutti i
+contesti scientificamente utilizzabili del catalogo nel percorso principale. Il numero
+di un pilot o di una prima espansione non è un limite al corpus da costruire. Nuove fonti
+idonee entrano nella versione successiva del corpus; non modificano gli split già congelati.
+
+- **Identità conservate.** Linea, donatore, stimolo, tempo, stato, studio, libreria,
+  chimica, guida/replica e modalità restano distinguibili quando disponibili. Raggruppare
+  cloni o alias per evitare leakage non autorizza a cancellarne i sottocontesti. Non
+  inventare identità o strati quando i metadati mancano; registrarne la lacuna.
+- **Tre rappresentazioni collegate.** Conservare l'archivio completo verificato; calcolare
+  aggregati e statistiche sulle cellule ammesse, per contesto/target e strati pertinenti;
+  costruire campioni cellulari stratificati per la supervisione della rete. I campioni
+  riducono il numero di cellule lette, non l'insieme di contesti idonei. Una media globale
+  non sostituisce donatori/stimoli distinti e non conserva tutta l'eterogeneità.
+- **Uso coerente con i dati.** Ogni fonte deve avere un ruolo effettivo esplicito. Se
+  possiede sole stime aggregate, può contribuire ad ancore o confronti compatibili e non
+  conta come supervisione cellulare. Distinguere CRISPRi, CRISPRa e KO, unità e maschere;
+  l'obbligo di copertura non autorizza concatenazioni biologicamente incoerenti. La sola
+  presenza nel catalogo o sul disco non vale come uso da parte del modello.
+- **Inventario riconciliato obbligatorio.** Prima di congelare un nuovo corpus principale,
+  confrontare il manifest con l'intero catalogo pertinente. Per ciascun contesto indicare
+  fonti/versioni, ruolo, disponibilità di cellule o aggregati, numeri attesi e ammessi,
+  stato di integrazione. Ogni assenza richiede un motivo verificabile e, se rimediabile,
+  il lavoro necessario per integrarla. Ingestione incompleta o adapter mancante sono
+  lacune aperte, non motivi per dichiarare definitivamente inutile una linea.
+- **Esclusioni tracciate.** Sono motivate dal protocollo di validazione, duplicazione,
+  qualità/integrità insufficienti, incompatibilità verificata o condizioni di accesso.
+  Documentare evidenza, perimetro e condizione di riesame. Non bastano comodità, dimensione,
+  rarità, poco overlap dei bersagli o distanza dai contesti di gara. Non rimuovere a
+  posteriori i contesti sui quali il modello perde per migliorare il risultato riportato.
+- **Uso effettivo obbligatorio.** La pipeline deve confrontare gruppi e strati previsti
+  con quelli realmente letti, cellule ammesse/campionate/viste, target e guide coperti,
+  contributo alla loss e controlli utilizzati. Fissare i criteri nel protocollo, verificarli
+  anche in finestre intermedie e dopo resume. Un contesto richiesto dimenticato dal loader
+  o un bilanciamento fuori criterio rendono il training tecnicamente non accettabile;
+  uscita zero o loss in calo non sanano il difetto. La sola presenza di pesi nel codice
+  non dimostra il bilanciamento se il training si interrompe prima dell'epoca completa.
+- **Pilot e ablation dichiarati.** Si possono eseguire prove tecniche e confronti su
+  sottoinsiemi per verificare una modifica o misurare il valore dei dati. Devono nominare
+  il sottoinsieme, la domanda e le lacune; non sostituiscono il percorso di integrazione
+  completa e non si presentano come addestramento su tutte le linee.
+- **Validazione protetta.** Tutte le linee devono essere considerate nel programma, ma
+  le risposte perturbate della linea esclusa non entrano nel training del suo fold. Per
+  J si escludono anche i target nascosti da tutte le fonti e da ogni derivato (§3). Le
+  riserve protette restano chiuse; non si usano per soddisfare artificialmente la copertura.
+
+**Accettazione operativa:** nessun agente può chiamare completo o promuovere come tale un
+corpus/training privo di riconciliazione con il catalogo e ricevuta dell'uso effettivo.
+I controlli mancanti devono essere implementati nei nuovi runner; questa regola scritta
+non prova che il codice esistente li applichi già. Il protocollo deve dichiarare separatamente
+copertura del corpus, celle campionate, esposizione effettiva e qualità delle previsioni.
+L'obbligo amplia la copertura, non garantisce che ogni fonte migliori il punteggio.
+
 ## 3. Valutazione che deve precedere la scelta di un modello
 
 | Regime | Bersaglio nel training | Contesto nel training | Domanda |

@@ -1,16 +1,20 @@
 # Prompt per Claude — generalizzazione a contesti nuovi
 
 Incollare il testo sotto nella sessione che lavorerà sulla repo. La specifica completa
-è R-LEAD nella versione del 2 ottobre: questo prompt non è un piano alternativo.
+è la scheda R-LEAD corrente: questo prompt non è un piano alternativo.
 
 ---
 
-Implementa `docs/piani/strategia-scientifica.md` (R-LEAD, revisione del 2 ottobre 2026).
+Implementa `docs/piani/strategia-scientifica.md` (R-LEAD), con i mandati correnti registrati.
 La domanda iniziale è: dai soli controlli di una linea mai vista perturbata sappiamo
 imparare una correzione della risposta che migliori il transfer? Il primo obiettivo è
 costruire questa prova; la riparazione completa di cellnet non deve precederla.
 
 Leggi prima `CLAUDE.md`, `docs/PROGETTO.md` §0, `docs/PIANI.md` §2–3 e R-LEAD.
+Applica il mandato non negoziabile D-053 di `docs/GENERALIZZAZIONE.md` §2.1: tutte le linee
+e i contesti idonei, campionamento senza omissioni silenziose, riconciliazione del catalogo
+e verifica dell'uso effettivo. Un pilot su poche linee resta intermedio; le esclusioni di
+validazione e le riserve protette non si aggirano per ottenere copertura.
 Segui le letture per compito e le guide di cartella. Registra sessione, macchina, commit,
 file e nuove destinazioni; Claude e teammate erano fermi al rinnovo, verifica eventuali
 cambiamenti successivi rilevanti. Su altra macchina usa `docs/CONSEGNA_TEAMMATE.md`.

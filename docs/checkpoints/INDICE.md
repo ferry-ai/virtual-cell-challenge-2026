@@ -92,3 +92,4 @@ aggiunge da sé la riga qui sotto.
 | [0055](0055-t29-rete-cellulare-punteggio.md) | 2026-10-01 | t29: la rete addestrata sulle singole cellule sulla classifica, -0,030 | esperimento | — |
 | [0056](0056-banco-contesto-c-j.md) | 2026-10-03 | R-LEAD P3: i controlli di una linea mai vista non migliorano il transfer su sette gruppi di linea | esperimento | — |
 | [0057](0057-p4-dieci-gruppi-pseudobulk.md) | 2026-10-03 | R-LEAD P4: dieci gruppi e una rete non lineare sul pseudobulk non danno beneficio dal contesto; sui sei membri vince il transfer | esperimento | — |
+| [0058](0058-copertura-integrale-contesti.md) | 2026-10-03 | Copertura obbligatoria di tutte le linee e i contesti idonei | cambio-di-strategia | — |
