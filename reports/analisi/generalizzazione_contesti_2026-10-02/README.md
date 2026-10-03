@@ -16,4 +16,5 @@ job cloud, agente, invio o push. Le misure sono **sviluppo**: ogni linea del ban
 | `p1_r1/split_manifest.json`, `split_folds.csv.gz` | P1 | split per gruppi di linea, regimi dopo QC, perdite, prova di stabilità | misurato |
 | `p1_r1/exposure_manifest.json` | P1 | esposizioni del banco e dei modelli r2/r3 dai loro prepass | misurato |
 | `p1_r1/reserve_manifest.json` | P1 | storia delle letture per dataset e candidate riserve per P5 | registro |
+| `p1_r2/` | P1, dieci gruppi | gli stessi manifest su `p0_r2` e `cube_r2` (dieci gruppi di linea, 110 split C/J/T): prova di stabilità passata (fold uguali per le chiavi comuni, nessun ruolo cambiato togliendo un quinto delle tabelle) | misurato |
 | `PROTOCOLLO.md`, `PROTOCOLLO.json` | P2 | bracci, metriche, aggregazione, soglie motivate, regola C/J | protocollo |

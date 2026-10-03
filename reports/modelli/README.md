@@ -17,6 +17,7 @@ CP-0049 e CP-0051. [Indice generale](../README.md).
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 03/10 | [rete_cellulare_2026-10-03/](rete_cellulare_2026-10-03/) | Rete cellulare v2: le correzioni dell'audit dell'1/10 con i test, e il protocollo del pilot su H1, HepG2 e RPE1 escluse intere (stato contro media dei controlli, rete contro transfer, generico) | codice di ricerca e protocollo; risultati da aggiungere | ★★ |
 | 02/10 | [risposta_contesto_2026-10-02/](risposta_contesto_2026-10-02/) | Codice e test di R-LEAD P0–P3: universo HepG2, cubo, split stabili, bracci semplici con gemelli senza contesto, scambi e nulli permutati; misure in `reports/analisi/generalizzazione_contesti_2026-10-02/` | codice di ricerca con controllo sintetico; nessuna adozione | ★★ |
 | 01/10 | [cellnet_terza_ondata_2026-10-01/](cellnet_terza_ondata_2026-10-01/) | Quarto training: terza ondata più floor su pi; protocollo tecnico conservato, non prossimo job automatico | protocollo; nessun esito registrato, non soddisfa da solo il banco richiesto dopo t29 | ★ |
 | 01/10 | [cellnet_completo_2026-10-01/](cellnet_completo_2026-10-01/) | R3: seconda ondata CRISPRi/a/KO; lettura in ESITO.md e diagnosi del gate identity nell'audit del 1/10 | misure tecniche/esplorative; nessuna promozione; split diversi da r2 | ★★ |

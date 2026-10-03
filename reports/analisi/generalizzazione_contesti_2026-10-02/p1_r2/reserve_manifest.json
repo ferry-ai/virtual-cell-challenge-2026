@@ -1,0 +1,317 @@
+{
+  "written_utc": "2026-10-02T23:34:57+00:00",
+  "base": {
+    "path": "reports/modelli/risposta_biologica_2026-09-30/holdout_registry.json",
+    "sha256": "9cf39b097d82461bf44a82efd8afb369157f9e1f299888cf4dd06bbe85760574"
+  },
+  "rule": "Una riserva è un insieme di esiti che nessuno ha letto e che si legge una sola volta, dopo aver congelato modello e regola di lettura, secondo R-COMP. Leggerla per scegliere una variante la trasforma in development.",
+  "datasets": [
+    {
+      "id": "gara_ABC",
+      "letture": [
+        "ogni invio valutato sul pannello di validazione, dal trial-01 al t28: solo punteggi aggregati, reports/invii/README.md"
+      ],
+      "ruolo": "validazione ufficiale, osservata solo in aggregato; ogni invio la consuma",
+      "letture_dopo_30_09": [
+        "t29 scored 1/10 (CP-0055)"
+      ]
+    },
+    {
+      "id": "gara_DEF",
+      "letture": [],
+      "ruolo": "test finale; nessuna scelta ci si appoggia",
+      "letture_dopo_30_09": []
+    },
+    {
+      "id": "hepg2_nadig",
+      "letture": [
+        "banchi del 17/09 (reports/generatore_e_banchi/bench_2026-09-17/)",
+        "banco HepG2 v2, 300 bersagli (reports/generatore_e_banchi/banco_hepg2_v2_2026-09-26/)",
+        "sviluppo e conferma del generatore, 95 dei 96 bersagli già letti (CP-0050)",
+        "Stack, 12 bersagli development e riserva (reports/analisi/lead_scientist_2026-09-29/SCORE_BIAS_DATI.md)"
+      ],
+      "ruolo": "development",
+      "letture_dopo_30_09": [
+        "lead audit 1/10: C/J/T readings of r2 desc (reports/analisi/lead_audit_2026-10-01/)",
+        "this study 2/10: held-out group of the C/J bench (development)"
+      ]
+    },
+    {
+      "id": "replogle_k562_gwps",
+      "letture": [
+        "banco K562 del pannello b002, 224 bersagli (bench_2026-09-17)",
+        "sorgente tenuta fuori nei banchi di trasferimento dal 25/09 (reports/trasferimento/README.md)",
+        "famiglia K562 nei fold della rete sulle sorgenti (TRAINING_COPERTURA.md)"
+      ],
+      "ruolo": "train e development",
+      "letture_dopo_30_09": [
+        "r2 T diagnostics (315 groups), lead audit 1/10",
+        "this study 2/10: bench group K562"
+      ]
+    },
+    {
+      "id": "cd4_marson2025",
+      "letture": [
+        "sorgente tenuta fuori nei banchi di trasferimento",
+        "famiglia CD4 nei fold della rete sulle sorgenti"
+      ],
+      "ruolo": "train e development",
+      "letture_dopo_30_09": [
+        "this study 2/10: bench group CD4T"
+      ]
+    },
+    {
+      "id": "orion_hct116",
+      "letture": [
+        "sorgente tenuta fuori nei banchi di trasferimento",
+        "famiglia Orion nei fold"
+      ],
+      "ruolo": "train e development",
+      "letture_dopo_30_09": [
+        "this study 2/10: bench group HCT116"
+      ]
+    },
+    {
+      "id": "orion_hek293t",
+      "letture": [
+        "come HCT116"
+      ],
+      "ruolo": "train e development",
+      "letture_dopo_30_09": [
+        "this study 2/10: bench group HEK293T"
+      ]
+    },
+    {
+      "id": "replogle_k562_essential",
+      "letture": [
+        "fold della rete sulle sorgenti e rete su molti contesti r2"
+      ],
+      "ruolo": "train e development",
+      "letture_dopo_30_09": [
+        "r2 T diagnostics (30 groups)",
+        "this study 2/10: bench group K562"
+      ]
+    },
+    {
+      "id": "replogle_rpe1",
+      "letture": [
+        "fold RPE1 della rete sulle sorgenti"
+      ],
+      "ruolo": "train e development",
+      "letture_dopo_30_09": [
+        "r2 T diagnostics (17 groups)",
+        "this study 2/10: bench group RPE1"
+      ]
+    },
+    {
+      "id": "viperturb_k562_flex",
+      "letture": [
+        "metà contro metà del ponte Flex (reports/sorgenti/ponte_flex_2026-09-28/)",
+        "tetto S0 della covariazione (reports/modelli/covariazione_2026-09-28/)"
+      ],
+      "ruolo": "train e development",
+      "letture_dopo_30_09": [
+        "this study 2/10: bench group K562"
+      ]
+    },
+    {
+      "id": "kolf21j",
+      "letture": [
+        "famiglia iPSC nei fold",
+        "covariazione, parte A"
+      ],
+      "ruolo": "train e development",
+      "letture_dopo_30_09": [
+        "this study 2/10: bench group iPSC"
+      ]
+    },
+    {
+      "id": "hipsci_gw_fitness",
+      "letture": [
+        "famiglia iPSC nei fold",
+        "covariazione, parte A"
+      ],
+      "ruolo": "train e development",
+      "letture_dopo_30_09": []
+    },
+    {
+      "id": "hipsci_gw_nonfitness",
+      "letture": [
+        "come fitness"
+      ],
+      "ruolo": "train e development",
+      "letture_dopo_30_09": []
+    },
+    {
+      "id": "hipsci_targeted_19",
+      "letture": [
+        "covariazione, parte B (28–29/09): 15 linee su 19, coppie dello stesso donatore e di donatori diversi"
+      ],
+      "ruolo": "train, con prove per linea (E2) come development",
+      "letture_dopo_30_09": [
+        "this study 2/10: bench group iPSC"
+      ]
+    },
+    {
+      "id": "a549_ko",
+      "letture": [
+        "covariazione, parte A"
+      ],
+      "ruolo": "train, testa KO",
+      "letture_dopo_30_09": []
+    },
+    {
+      "id": "southard_hs27",
+      "letture": [],
+      "nota": "nessuna lettura di esito accertata; citata nel corpus basale, nell'encoder e nella prova generale",
+      "ruolo": "train, testa CRISPRa; la parte RPE-1, mai ingerita, può fare da riserva di modalità",
+      "letture_dopo_30_09": []
+    },
+    {
+      "id": "jurkat_gse249595",
+      "letture": [],
+      "nota": "nessuna lettura di esito accertata; auditata come file e metadati",
+      "ruolo": "da decidere: train con adattatore multi-guida, oppure riserva secondaria",
+      "letture_dopo_30_09": []
+    },
+    {
+      "id": "mixscale",
+      "letture": [
+        "H6, somiglianza basale (reports/trasferimento/contesti_2026-09-26/)",
+        "pattern del 24/09 (reports/sorgenti/pattern_mixscale_2026-09-24/)"
+      ],
+      "ruolo": "train, loss DE mascherata",
+      "letture_dopo_30_09": []
+    },
+    {
+      "id": "dld1_gse337988",
+      "letture": [
+        "audit e tetto del 24/09 (reports/sorgenti/dld1_audit_2026-09-24/)"
+      ],
+      "ruolo": "train, loss mascherata",
+      "letture_dopo_30_09": []
+    },
+    {
+      "id": "tahoe100m",
+      "letture": [
+        "bracci T1 del 28/09 (reports/modelli/tahoe_bracci_2026-09-28/)"
+      ],
+      "ruolo": "train, testa farmacologica; DMSO per l'encoder",
+      "letture_dopo_30_09": []
+    },
+    {
+      "id": "h1_vcc2025",
+      "letture": [],
+      "nota": "mai scaricato: in locale solo gene_names e pert_counts; 18.077 geni su 18.080 in comune con l'asse 2026, 25 dei suoi 300 bersagli nel pannello 2026 (misurato il 30/09)",
+      "ruolo": "RISERVA PRIMARIA proposta: una linea nuova, saggio della gara, esiti mai letti. Serve il via al download",
+      "letture_dopo_30_09": [
+        "train/val in r1-r3 training; r2 T diagnostics read 17 H1 groups (lead audit 1/10 §3.1); the 2025 test split was never downloaded nor read"
+      ]
+    },
+    {
+      "id": "microglia_gse335887",
+      "letture": [],
+      "nota": "non acquisita",
+      "ruolo": "riserva secondaria per quota e intensità (R-SWITCH), se acquisita",
+      "letture_dopo_30_09": []
+    },
+    {
+      "id": "perturbfate_gse291147",
+      "letture": [],
+      "nota": "non acquisita",
+      "ruolo": "candidata; ruolo da decidere all'acquisizione",
+      "letture_dopo_30_09": []
+    }
+  ],
+  "not_local": [
+    {
+      "id": "jurkat_nadig",
+      "line": "Jurkat",
+      "group": "Jurkat",
+      "modality": "CRISPRi",
+      "study": "nadig2025_jurkat",
+      "cells": "Kaggle rlab-jurkat-nadig, Drive (job 103), 262.956 cells",
+      "missing": "effect table built on 2/10 from Kaggle sums (table jurkat_nadig)",
+      "reads": "in r1-r3 training; 21 T groups read in the r2 diagnostics (lead_audit_2026-10-01/REVISIONE.md §3.1)"
+    },
+    {
+      "id": "h1_vcc2025_trainval",
+      "line": "H1 (hESC)",
+      "group": "H1",
+      "modality": "CRISPRi",
+      "study": "vcc2025",
+      "cells": "Kaggle rlab-h1-vcc2025-trainval, 320.200 cells",
+      "missing": "effect tables built on 2/10 from Kaggle sums (h1_train, h1_val)",
+      "reads": "in r1-r3 training (17 T groups in r2 diagnostics); the 2025 test split stays closed"
+    },
+    {
+      "id": "jurkat_gse249595",
+      "line": "Jurkat",
+      "group": "Jurkat",
+      "modality": "CRISPRi",
+      "study": "gse249595",
+      "cells": "local MTX channels",
+      "missing": "no guide calls in the release: not supervisable",
+      "reads": "none recorded"
+    },
+    {
+      "id": "dld1_gse337988",
+      "line": "DLD-1",
+      "group": "DLD-1",
+      "modality": "CRISPRi",
+      "study": "gse337988",
+      "cells": "to verify",
+      "missing": "effects (LFC, SE) only on a targeted response panel; no control profile",
+      "reads": "audit and ceiling 24/09"
+    },
+    {
+      "id": "mixscale",
+      "line": "six lines",
+      "group": "mixscale",
+      "modality": "CRISPRi",
+      "study": "mixscale",
+      "cells": "remote Seurat objects (about 20 GB)",
+      "missing": "DE tables only; no separate basal profiles",
+      "reads": "H6 and pattern 24/09"
+    },
+    {
+      "id": "tian_norman",
+      "line": "iPSC, iPSC neurons, K562",
+      "group": "iPSC/neuron/K562",
+      "modality": "CRISPRi/CRISPRa",
+      "study": "tian2019_2021_norman2019",
+      "cells": "Kaggle rlab-tian-norman, 623.436 cells",
+      "missing": "Tian 2021 CRISPRi built on 2/10 (tian2021_neuron); Tian 2019 empty droplets, Norman CRISPRa not used",
+      "reads": "in r3 training only"
+    },
+    {
+      "id": "scp_third_wave",
+      "line": "melanoma, T cells, K562, HEK293",
+      "group": "various",
+      "modality": "KO/CRISPRi",
+      "study": "frangieh, sunshine, papalexi, shifrut, datlinger, dixit, xu2023",
+      "cells": "Kaggle rlab-scp-*",
+      "missing": "no local effect table",
+      "reads": "in no training"
+    }
+  ],
+  "status": "No line on this machine is an intact reserve for C/J: every bench group has had outcome readings. The bench is development; a confirmation (P5) needs a line never read, appropriate to the regime.",
+  "candidates_for_p5": [
+    {
+      "id": "tian2019_neurons",
+      "why": "CRISPRi in iPSC-derived neurons, a cell type absent from the bench; outcomes never read (in r3 training only)",
+      "needs": "its effect table (Kaggle rlab-tian-norman or Drive shards) and a target-overlap check with the bench sources before opening"
+    },
+    {
+      "id": "h1_vcc2025_test",
+      "why": "a line absent from this bench, competition assay; outcomes never read",
+      "needs": "closed by D-052/R-LEAD during development; download of the test split authorised by the owner, and C/J classes recomputed against this bench"
+    },
+    {
+      "id": "jurkat_gse249595",
+      "why": "Jurkat outcomes of this study never read",
+      "needs": "a proven guide assignment (multi-guide, high MOI); Jurkat Nadig readings in r2 make the line not new for r2, but this bench never used Jurkat"
+    }
+  ],
+  "seconds": 1738.2
+}

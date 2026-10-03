@@ -204,3 +204,15 @@ Risposte del proprietario in chat a domande precise di questa sessione, con gli 
 - **Training GPU:** «Condivido i dataset»; account GPU indicato: `davideferrante11`. Il banco a 10 gruppi è caricato
   come dataset privato di quell'account. «Puoi tranquillamente settare i dataset come pubblici»: preparato
   `share_datasets.py` (lettori o pubblico); al momento di questa nota eseguito solo a secco.
+
+## Rete cellulare, notte del 3 ottobre (R-LEAD dopo P3, sessione Claude 22d21f)
+
+Il proprietario in chat, dopo aver chiesto di non addestrare altre reti sul pseudobulk:
+- **Training GPU:** «Puoi fare tutti i training gpu che vuoi» (account `davideferrante11`).
+- **Il resto, a una domanda precisa di questa sessione** (kernel CPU su Kaggle per i prepass e la valutazione,
+  dataset privati su `davideferrante11` con codice, configurazione e stati del prepass, download degli output dei
+  kernel nella radice dati): «si hai autorizzazioni su tutto». La sessione aveva scritto che, senza un via esplicito,
+  non avrebbe fatto push, invii né dataset pubblici: questa risposta non viene letta come via a nessuno dei tre.
+- Prima della risposta, fra le 02:03 e le 02:13 del 3/10 (orari letti con `date` prima e dopo), i 12 dataset `rlab-*` di `davidmaisterx` sono stati condivisi in privato
+  con `davideferrante11` come lettore (`share_datasets.py`, restano privati), sul via «Condivido i dataset» e «puoi
+  tranquillamente settare i dataset come pubblici» della notte precedente.
