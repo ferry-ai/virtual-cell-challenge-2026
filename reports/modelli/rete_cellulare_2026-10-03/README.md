@@ -18,7 +18,7 @@ congelato prima di ogni training.
 | `decide_lane_b.py` | La stessa regola sulla corsia B: media locale dei sei membri delle cellule della rete e del transfer (§12) |
 | `choose_targets.py`, `generate_cells.py`, `extract_cells.py`, `kaggle_gen.py` | Corsia B su Kaggle: bersagli per regola, cellule generate dalla rete e cellule vere degli stessi bersagli estratte dagli shard |
 | `lane_b.py`, `lane_b_hepg2.py` | Corsia B in locale: i sei membri sulle cellule estratte (ogni linea) o sul file HepG2 locale (test: `test_lane_b.py`) |
-| `MISCELE.md`, `lane_b_blend.py` | Controllo descrittivo prespecificato dopo il verdetto r3: transfer mescolato allo spostamento della rete, sugli stessi sei membri della corsia B (test: `test_lane_b_blend.py`) |
+| `MISCELE.md`, `lane_b_blend.py` | Controllo descrittivo prespecificato dopo il verdetto r3: transfer mescolato allo spostamento della rete, sugli stessi sei membri della corsia B (test: `test_lane_b_blend.py`); esito in `esito/miscele_r3/`: non promettente (1 linea su 3, media −0,056) |
 | `target_matrix.py` | Matrice bersaglio × gruppo di training per modalità ed errori per numero di contesti (richiesta di Codex) |
 | `lancio_*.json` | Kernel, commit, dataset e argomenti di ogni lancio, scritti al lancio |
 | `inventory.py` | Quali dataset e quante cellule entrano davvero nel training, e perché le altre restano fuori |
