@@ -1,0 +1,50 @@
+{
+ "measured_steps": 300,
+ "measured_from_step": 200,
+ "seconds": 35.53,
+ "steps_per_second": 8.443,
+ "cells_per_second": 2161.3,
+ "data_wait_fraction": 0.407,
+ "train_budget_minutes": 150.0,
+ "eval_budget_minutes": 90.0,
+ "evaluation_estimate_seconds": 244.4,
+ "export_reserve_seconds": 300.0,
+ "sampler": "balanced",
+ "train_until_utc": "2026-10-03T23:38:13.779346+00:00",
+ "steps_needed_for_epochs": 30522,
+ "steps_that_fit": 73864,
+ "planned_steps": 30522,
+ "epochs_expected": 2.0,
+ "admitted_training_cells": 3970762,
+ "step_at_plan": 500,
+ "memory": {
+  "rss_peak_mb": 6823.3,
+  "rss_mb": 4563.1,
+  "children_rss_mb": 11212.4,
+  "system_available_mb": 20636.5,
+  "gpu": {
+   "cuda:0": {
+    "gpu_peak_mb": 1506.4,
+    "gpu_reserved_mb": 2214.0
+   },
+   "cuda:1": {
+    "gpu_peak_mb": 1350.3,
+    "gpu_reserved_mb": 1748.0
+   }
+  }
+ },
+ "roles": {
+  "batches": [
+   256,
+   256
+  ],
+  "training_cells": [
+   1985384,
+   1985378
+  ]
+ },
+ "arms": [
+  "ancorata",
+  "ancorata_mean"
+ ]
+}

@@ -1,0 +1,1053 @@
+{
+ "rule": "every complete window of 500 steps and the whole run: each active line group's share of the loss coefficients within 0.02 of 1/7, every active unit drawn; otherwise the training is technically unacceptable whatever its exit code",
+ "sampler": "balanced",
+ "groups": [
+  "A549",
+  "H1",
+  "Jurkat",
+  "K562",
+  "Neuron",
+  "RPE1",
+  "iPSC"
+ ],
+ "units": [
+  "A549::a549_liu_hillsley2026",
+  "H1::h1_vcc2025",
+  "Jurkat::jurkat_nadig",
+  "K562::norman2019_crispra",
+  "K562::replogle_k562_essential",
+  "K562::replogle_k562_gwps",
+  "Neuron::tian2021_crispra",
+  "Neuron::tian2021_crispri",
+  "RPE1::replogle_rpe1",
+  "iPSC::hipsci_targeted_19",
+  "iPSC::kolf_chromatin_modifiers",
+  "iPSC::kolf_metabolic_enzymes",
+  "iPSC::kolf_strong_perturbations"
+ ],
+ "windows": 63,
+ "complete_windows": 62,
+ "windows_out_of_rule": [],
+ "run_shares": {
+  "A549": 0.142857160845529,
+  "H1": 0.142857160845529,
+  "Jurkat": 0.142857160845529,
+  "K562": 0.142857160845529,
+  "Neuron": 0.1428570349268261,
+  "RPE1": 0.142857160845529,
+  "iPSC": 0.142857160845529
+ },
+ "run_max_abs_deviation": 0.0,
+ "units_never_drawn": [],
+ "passed": true,
+ "all_windows": [
+  {
+   "from_step": 0,
+   "to_step": 500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142852
+   },
+   "max_abs_deviation": 6e-06,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 500,
+   "to_step": 1000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142867,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142867
+   },
+   "max_abs_deviation": 1e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 1000,
+   "to_step": 1500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 1500,
+   "to_step": 2000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142844,
+    "RPE1": 0.142859,
+    "iPSC": 0.142867
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 2000,
+   "to_step": 2500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142852
+   },
+   "max_abs_deviation": 6e-06,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 2500,
+   "to_step": 3000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 3000,
+   "to_step": 3500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 3500,
+   "to_step": 4000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 4000,
+   "to_step": 4500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 4500,
+   "to_step": 5000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142867,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 5000,
+   "to_step": 5500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142844,
+    "Neuron": 0.142844,
+    "RPE1": 0.142859,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 5500,
+   "to_step": 6000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142867,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 6000,
+   "to_step": 6500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 6500,
+   "to_step": 7000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 7000,
+   "to_step": 7500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 7500,
+   "to_step": 8000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 8000,
+   "to_step": 8500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142852
+   },
+   "max_abs_deviation": 6e-06,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 8500,
+   "to_step": 9000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142844,
+    "RPE1": 0.142859,
+    "iPSC": 0.142867
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 9000,
+   "to_step": 9500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 9500,
+   "to_step": 10000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142867,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142867
+   },
+   "max_abs_deviation": 1e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 10000,
+   "to_step": 10500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142852
+   },
+   "max_abs_deviation": 6e-06,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 10500,
+   "to_step": 11000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142852
+   },
+   "max_abs_deviation": 6e-06,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 11000,
+   "to_step": 11500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142867,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142867
+   },
+   "max_abs_deviation": 1e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 11500,
+   "to_step": 12000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 12000,
+   "to_step": 12500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142844,
+    "RPE1": 0.142859,
+    "iPSC": 0.142867
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 12500,
+   "to_step": 13000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142852
+   },
+   "max_abs_deviation": 6e-06,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 13000,
+   "to_step": 13500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 13500,
+   "to_step": 14000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 14000,
+   "to_step": 14500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 14500,
+   "to_step": 15000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 15000,
+   "to_step": 15500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142867,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 15500,
+   "to_step": 16000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142844,
+    "Neuron": 0.142844,
+    "RPE1": 0.142859,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 16000,
+   "to_step": 16500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142867,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 16500,
+   "to_step": 17000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 17000,
+   "to_step": 17500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 17500,
+   "to_step": 18000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 18000,
+   "to_step": 18500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 18500,
+   "to_step": 19000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142852
+   },
+   "max_abs_deviation": 6e-06,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 19000,
+   "to_step": 19500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142844,
+    "RPE1": 0.142859,
+    "iPSC": 0.142867
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 19500,
+   "to_step": 20000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 20000,
+   "to_step": 20500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142867,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142867
+   },
+   "max_abs_deviation": 1e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 20500,
+   "to_step": 21000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142852
+   },
+   "max_abs_deviation": 6e-06,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 21000,
+   "to_step": 21500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142852
+   },
+   "max_abs_deviation": 6e-06,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 21500,
+   "to_step": 22000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142867,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142867
+   },
+   "max_abs_deviation": 1e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 22000,
+   "to_step": 22500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 22500,
+   "to_step": 23000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142844,
+    "RPE1": 0.142859,
+    "iPSC": 0.142867
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 23000,
+   "to_step": 23500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142852
+   },
+   "max_abs_deviation": 6e-06,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 23500,
+   "to_step": 24000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 24000,
+   "to_step": 24500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 24500,
+   "to_step": 25000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 25000,
+   "to_step": 25500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 25500,
+   "to_step": 26000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142867,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 26000,
+   "to_step": 26500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142844,
+    "Neuron": 0.142844,
+    "RPE1": 0.142859,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 26500,
+   "to_step": 27000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142867,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 27000,
+   "to_step": 27500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 27500,
+   "to_step": 28000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 28000,
+   "to_step": 28500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 28500,
+   "to_step": 29000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142875
+   },
+   "max_abs_deviation": 1.8e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 29000,
+   "to_step": 29500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142852
+   },
+   "max_abs_deviation": 6e-06,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 29500,
+   "to_step": 30000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142852,
+    "Neuron": 0.142844,
+    "RPE1": 0.142859,
+    "iPSC": 0.142867
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 30000,
+   "to_step": 30500,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142859,
+    "H1": 0.142859,
+    "Jurkat": 0.142859,
+    "K562": 0.142859,
+    "Neuron": 0.142859,
+    "RPE1": 0.142859,
+    "iPSC": 0.142844
+   },
+   "max_abs_deviation": 1.3e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 30500,
+   "to_step": 31000,
+   "partial": false,
+   "by_group": {
+    "A549": 0.142852,
+    "H1": 0.142852,
+    "Jurkat": 0.142852,
+    "K562": 0.142867,
+    "Neuron": 0.142859,
+    "RPE1": 0.142852,
+    "iPSC": 0.142867
+   },
+   "max_abs_deviation": 1e-05,
+   "units_not_drawn": []
+  },
+  {
+   "from_step": 31000,
+   "to_step": 31022,
+   "partial": true,
+   "by_group": {
+    "A549": 0.142933,
+    "H1": 0.142933,
+    "Jurkat": 0.142933,
+    "K562": 0.142756,
+    "Neuron": 0.142756,
+    "RPE1": 0.142933,
+    "iPSC": 0.142756
+   },
+   "max_abs_deviation": 0.000101,
+   "units_not_drawn": []
+  }
+ ]
+}
