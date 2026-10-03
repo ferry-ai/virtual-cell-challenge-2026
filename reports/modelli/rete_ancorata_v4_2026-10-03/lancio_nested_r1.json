@@ -1,0 +1,32 @@
+{
+ "what": "nested-samples study of the data track (CAMPIONI_ANNIDATI.md, frozen at 115acd4 before this push): levels 32/64/128, plus 256 and 512 to size exceptions, on the 365 shards of the pilot corpus through their compact twins",
+ "authorisation": "owner in chat: 3/10 evening (session 5eacdf), the jobs the plan needs on Colab and Kaggle within the available quotas; 3/10 23:31 (session d0100a), 'continue the task of the previous agent', whose handoff lists this launcher as the next step of the data track",
+ "why_kaggle_cpu": "shards are Kaggle datasets of davidmaisterx and the twins are outputs of Kaggle kernels: nothing crosses Drive (same reason as lancio_fast_r1.json); no GPU quota",
+ "preflight": {
+  "checked_local_23:51": "the five modules of this folder have the sha256 of the staged code dataset rcell-v4-code-r1 (staged.json); the 11 corpus datasets are those of rcell-prepass-h1-r1's kernel-metadata.json; prepass and the three twin kernels COMPLETE; slug unused; dry run compiled",
+  "checked_on_runtime_before_computing": "code modules against the launcher's sha256; prepass.pkl against 0e67592b... (PROTOCOLLO.md §2); every shard (bytes and sha256 of the prepass state) and every twin (bytes and sha256 of the package manifests) re-hashed; any difference ends the kernel before the study (verify.json)",
+  "sessions_before_push": "4 CPU kernels running (vcc-orion-hct116-p3of4-r3, vcc-orion-hek293t-verify-r1, vcc-cd4-d1-stim8hr-p{0,1}of2-r1), 2 GPU trainings running; GPU quota 12.14 h left at 23:34, not touched by this kernel",
+  "tests": "test_nested_samples (6), test_nested_rule (10), test_kaggle_nested (4): OK on the laptop, 3/10 23:51",
+  "incidents_considered": {
+   "E-20261003-001": "one push, typed by the session; the waiting process only reads statuses",
+   "E-20260929-005": "inputs absent or different on a mount: every file re-hashed on the runtime that reads it",
+   "E-20261001-001": "memory of worker processes: per key at most (caps + 3) x genes x 4 bytes per target (about 2.6 GB for K562 GWPS at 8,200 genes), 4 workers, 31 GB machine"
+  }
+ },
+ "kernel": {
+  "slug": "davideferrante11/rcell-v4-nested-h1-r1",
+  "pushed": "2026-10-03 23:52:31 +0200",
+  "answer": "Kernel version 1 successfully pushed.",
+  "status_23:52": "RUNNING",
+  "stage": "C:/Users/ferra/vcc2026-data/processed/rete_ancorata_v4_2026-10-03/kernel_nested_h1_r1",
+  "run_sha256": "aa0c5c183a2391d63d2ca9b9637796fce0d293581a0054358e8c2982ac9f6fbd",
+  "nested_samples_sha256": "35b5177353b6489e15d3b95d38d37ee30e9fda02b37a2e61811943083f010f30",
+  "caps": [32, 64, 128, 256, 512],
+  "dataset_sources": ["davideferrante11/rcell-v4-code-r1", "davidmaisterx/rlab-k562-gwps-r3", "davidmaisterx/rlab-rpe1-r2", "davidmaisterx/rlab-kolf-small", "davidmaisterx/rlab-hipsci-targeted19", "davidmaisterx/rlab-jurkat-nadig", "davidmaisterx/rlab-hepg2-nadig", "davidmaisterx/rlab-tian-norman", "davidmaisterx/rlab-a549", "davidmaisterx/rlab-h1-vcc2025-trainval", "davidmaisterx/rlab-k562-essential-r2", "davidmaisterx/rlab-kolf-strong"],
+  "kernel_sources": ["davideferrante11/rcell-prepass-h1-r1", "davideferrante11/rcell-v4-fast-a-r1", "davideferrante11/rcell-v4-fast-b-r1", "davideferrante11/rcell-v4-fast-c-r1"]
+ },
+ "command": "python kaggle_nested.py --config-dir <~/.kaggle-davideferrante11> --owner davideferrante11 --stage <new folder> --slug rcell-v4-nested-h1-r1 --prepass-kernel rcell-prepass-h1-r1 --prepass-sha256 0e67592be6cb59131e6365614df14f00931de38927172b1d051ab9fbdfe47358 --caps 32 64 128 256 512 --launch-log <jsonl> (with the venv's Python)",
+ "expected_outputs": "/kaggle/working: env.json, verify.json, nested.log, nested/summary.json, nested/groups.csv.gz, nested/manifest.json, nested/selection/<shard>.npz (365), kernel_done.json",
+ "after": "fetch verify.json, nested.log, summary.json, manifest.json and groups.csv.gz with fetch_outputs.py; apply nested_rule.py (rule frozen in CAMPIONI_ANNIDATI.md §4) to groups.csv.gz with --caps 32 64 128 256 512; write the outcome in a new file of this folder",
+ "note": "the stage kernel_nested_h1_r1_dry in the data root is the dry run of 23:51 (same run.py, nothing pushed)"
+}
