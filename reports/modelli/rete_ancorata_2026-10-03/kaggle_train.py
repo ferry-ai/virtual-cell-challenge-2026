@@ -1,5 +1,8 @@
 """Run the R-LAB cell network on Kaggle, in the stages of train_cellnet.py.
 
+Version 3 (3/10, reports/modelli/rete_ancorata_2026-10-03): --anchors-from <slug> --anchors-line <line> mounts the
+output of the anchors kernel (kaggle_anchors.py) and passes anchors_<line>/ to the training (train --anchors).
+
 Version 2 (3/10, reports/modelli/rete_cellulare_2026-10-03): kernels and code on --owner (the GPU account,
 davideferrante11), corpus datasets on --data-owner (davidmaisterx, shared with the GPU account as reader); the code
 dataset also carries line_groups.json and target_keys.json, and a prepass argument written @CODE/<file> is that file
@@ -57,6 +60,7 @@ ARMS = {arms}
 TRAIN_ARGS = {train_args}
 CYCLE = {cycle}
 GPU = {gpu}
+ANCHORS_FROM, ANCHORS_LINE = {anchors_from}, {anchors_line}
 t0 = time.time()
 
 
@@ -138,6 +142,8 @@ if PREPASS_ARGS is not None:
     prepass = OUT / "prepass"
 else:
     prepass = mount(PREPASS_FROM) / "prepass"
+# version 3: the anchors of this line, from the output of the anchors kernel (anchors.py, checked again by the training)
+anchors = mount(ANCHORS_FROM) / f"anchors_{{ANCHORS_LINE}}" if ANCHORS_FROM else None
 # training finds the shards of the prepass state by name and size below /kaggle/input and hashes them against the
 # state in a background thread (train_cellnet.resolve_shards, HashCheck): the GPU does not wait on it
 ARM_FLAGS = []
@@ -153,7 +159,8 @@ for i, spec in enumerate(ARMS):
     dev = ("" if "@" in spec else "@" + (f"cuda:{{i % max(n_gpu, 1)}}" if GPU and n_gpu else "cpu"))
     ARM_FLAGS += ["--arm", spec + dev]
 train = lambda out, extra=(): [PY, TC, "train", "--prepass", prepass, "--out", OUT / out, "--descriptors", CODE,
-                               "--shard-roots", INPUT, *ARM_FLAGS, *TRAIN_ARGS, *extra]
+                               "--shard-roots", INPUT, *ARM_FLAGS, *TRAIN_ARGS,
+                               *(["--anchors", anchors] if anchors else []), *extra]
 if CYCLE:
     s1, s2 = CYCLE
     checks = {{"arms": ARM_FLAGS, "steps": [s1, s2]}}
@@ -227,6 +234,8 @@ def main():
                    help="an arm of the one training process, on the next GPU (repeatable)")
     k.add_argument("--train-args", default="", help="the training arguments every arm shares (one string)")
     k.add_argument("--cycle", nargs=2, type=int, metavar=("S1", "S2"))
+    k.add_argument("--anchors-from", default=None, help="version 3: kernel slug whose output holds anchors_<line>/")
+    k.add_argument("--anchors-line", default=None, help="version 3: the held-out line of the anchors")
     k.add_argument("--cpu", action="store_true", help="no GPU (no GPU quota): the prepass, or a check on few shards")
     k.add_argument("--dry-run", action="store_true", help="write the stage and compile run.py, push nothing")
     a = p.parse_args()
@@ -271,13 +280,17 @@ def main():
                          prepass_args=json.dumps(shlex.split(a.prepass_args)) if a.prepass_args is not None else "None",
                          prepass_from=repr(a.prepass_from), arms=json.dumps(a.arm),
                          train_args=json.dumps(shlex.split(a.train_args)),
-                         cycle=json.dumps(a.cycle) if a.cycle else "None", gpu="False" if a.cpu else "True")
+                         cycle=json.dumps(a.cycle) if a.cycle else "None", gpu="False" if a.cpu else "True",
+                         anchors_from=repr(a.anchors_from), anchors_line=repr(a.anchors_line))
+    if bool(a.anchors_from) != bool(a.anchors_line):
+        sys.exit("give --anchors-from and --anchors-line together")
     (a.stage / "run.py").write_text(text, encoding="utf-8")
     meta = {"id": f"{a.owner}/{a.slug}", "title": a.slug, "code_file": "run.py", "language": "python",
             "kernel_type": "script", "is_private": True, "enable_gpu": not a.cpu, "enable_tpu": False,
             "enable_internet": False,
             "dataset_sources": [f"{a.owner}/{a.code_slug}"] + [f"{a.data_owner}/{d}" for d in a.datasets],
-            "kernel_sources": [f"{a.owner}/{a.prepass_from}"] if a.prepass_from else [], "competition_sources": []}
+            "kernel_sources": ([f"{a.owner}/{a.prepass_from}"] if a.prepass_from else [])
+            + ([f"{a.owner}/{a.anchors_from}"] if a.anchors_from else []), "competition_sources": []}
     if not a.cpu:
         meta["machine_shape"] = "NvidiaTeslaT4"
     (a.stage / "kernel-metadata.json").write_text(json.dumps(meta, indent=1))
