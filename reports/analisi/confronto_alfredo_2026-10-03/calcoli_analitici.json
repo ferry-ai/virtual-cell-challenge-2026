@@ -1,0 +1,62 @@
+{
+  "kind": "analytic examples, not measurements on cells or official scores",
+  "responsibilities": [
+    {
+      "pi": 0.01,
+      "ll1_minus_ll0": -20,
+      "responsibility": 2.0819733559551973e-11
+    },
+    {
+      "pi": 0.01,
+      "ll1_minus_ll0": -100,
+      "responsibility": 3.757652501031148e-46
+    },
+    {
+      "pi": 0.05,
+      "ll1_minus_ll0": -20,
+      "responsibility": 1.0848176959026108e-10
+    },
+    {
+      "pi": 0.05,
+      "ll1_minus_ll0": -100,
+      "responsibility": 1.9579347242214927e-45
+    },
+    {
+      "pi": 0.5,
+      "ll1_minus_ll0": -20,
+      "responsibility": 2.0611536181902033e-09
+    },
+    {
+      "pi": 0.5,
+      "ll1_minus_ll0": -100,
+      "responsibility": 3.720075976020836e-44
+    }
+  ],
+  "ordinary_squared_error": [
+    {
+      "cosine": 0,
+      "optimal_nonnegative_norm_ratio": 0,
+      "minimum_error_ratio": 1
+    },
+    {
+      "cosine": 0.05,
+      "optimal_nonnegative_norm_ratio": 0.05,
+      "minimum_error_ratio": 0.9975
+    },
+    {
+      "cosine": 0.12,
+      "optimal_nonnegative_norm_ratio": 0.12,
+      "minimum_error_ratio": 0.9856
+    },
+    {
+      "cosine": 0.3,
+      "optimal_nonnegative_norm_ratio": 0.3,
+      "minimum_error_ratio": 0.91
+    }
+  ],
+  "limitations": [
+    "Responder gradient multiplier, not the full parameter gradient or gate gradient.",
+    "Squared-error geometry assumes a common fixed support, metric and true control.",
+    "The official MSE includes jackknife terms, caps, panel aggregation and anchor scaling."
+  ]
+}
