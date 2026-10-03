@@ -1,10 +1,16 @@
 # Rete cellulare ancorata al transfer: protocollo del pilot
 
-**Stato: bozza, non congelata.** Scritta il 3/10 dopo le 14:40 CEST (ora letta con `date`) da Claude Code, sessione
-«R-LEAD implementazione vcc2026» (`22d21f`), programma [R-LEAD](../../../docs/piani/strategia-scientifica.md). Si
-congela con un commit **dopo** la lettura del controllo delle miscele
-([MISCELE.md](../rete_cellulare_2026-10-03/MISCELE.md)) e **prima** di qualunque training. Da quel commit le soglie non
-cambiano. La decisione del proprietario che la motiva è al §11 del
+**Stato: congelato** con il commit di questo testo, il 3/10 verso le 16:10 CEST, prima di ogni training. La bozza è
+del 3/10 dopo le 14:40 (ora letta con `date`), scritta da Claude Code, sessione «R-LEAD implementazione vcc2026»
+(`22d21f`), programma [R-LEAD](../../../docs/piani/strategia-scientifica.md). Da questo commit le soglie non
+cambiano.
+- Il congelamento viene dopo la lettura delle miscele: l'esito è nel §8.
+- La revisione chiesta a Codex, supervisore dalle 15:47, non era arrivata. Le sue osservazioni, se arrivano prima
+  della lettura dei risultati, diventano emendamenti registrati, come nel pilot r3. Il congelamento è anticipato
+  perché un limite di spesa dell'account ha fermato claude2 alle 16:01 e può fermare questa sessione: i training
+  su Kaggle continuano anche senza di essa.
+
+La decisione del proprietario che motiva il pilot è al §11 del
 [protocollo del pilot r3](../rete_cellulare_2026-10-03/PROTOCOLLO.md).
 
 ## 1. Domanda
@@ -129,3 +135,25 @@ non si espande.
 Corpus, pre-passi, gruppi di linea, fold nascosta, pesi della loss, serbatoio dei controlli, stimatore dello
 spostamento, cubo e metriche del banco. Il codice è una copia della versione 2 in questa cartella (versione 3); gli
 originali restano intatti.
+
+## 8. Che cosa si sapeva al congelamento
+
+- **Miscele** ([lettura](../rete_cellulare_2026-10-03/esito/miscele_r3/LETTURA.md)): `blend_50` supera il transfer in
+  1 linea su 3, con media −0,056, quindi **non promettente**. Lo spostamento della rete r3 non porta un segnale
+  complementare ai sei membri. L'attesa a priori per la primaria è quindi bassa. La rete ancorata è comunque
+  un'ipotesi diversa: impara la correzione partendo dal transfer.
+- **Ancore** (kernel `rcell-anchors-r1`, [lancio](lancio_anchors_r1.json); manifest nella radice dati,
+  `out_anchors_r1/`). Tutti i controlli passano: nessuna sorgente uguale alla linea della riga o a *H*, nessun
+  bersaglio nascosto con ancora, solo CRISPRi, VIPerturb escluso.
+
+  | Linea esclusa | Righe in tutto | Righe di valutazione C | Righe C della corsia A |
+  |---|---:|---:|---:|
+  | H1 | 9.270 | 73 | 72 |
+  | HepG2 | 9.078 | 1.743 | 1.743 |
+  | RPE1 | 9.122 | 1.789 | 1.789 |
+
+  Delle 151 righe C di H1 nella valutazione della rete, le 78 senza fonti nel cubo restano senza ancora: per loro
+  la rete ancorata coincide con una rete senza ancora. La regola legge le corsie A e B, i cui bersagli hanno il
+  supporto del transfer per costruzione.
+- **I training della v3 condividono con r3** pre-passi (`rcell-prepass-<linea>-r1`), dataset, glob, argomenti e
+  seme. Cambiano il codice v3 (`rcell-anchored-code-r1`, dal commit `211402e`), le ancore e i due bracci del §4.

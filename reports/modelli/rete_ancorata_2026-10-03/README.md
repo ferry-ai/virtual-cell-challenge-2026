@@ -5,9 +5,9 @@
 
 Dopo il verdetto del pilot r3 il proprietario ha scelto di non espandere la rete versione 2: si parte dal transfer e la
 rete impara a correggerlo, sempre sulle singole cellule (§11 del
-[protocollo r3](../rete_cellulare_2026-10-03/PROTOCOLLO.md)). Da leggere per primo: [PROTOCOLLO.md](PROTOCOLLO.md).
-È una **bozza** finché un commit non lo congela; il congelamento viene dopo il controllo delle miscele
-([MISCELE.md](../rete_cellulare_2026-10-03/MISCELE.md)) e prima di ogni training.
+[protocollo r3](../rete_cellulare_2026-10-03/PROTOCOLLO.md)). Da leggere per primo: [PROTOCOLLO.md](PROTOCOLLO.md),
+**congelato** il 3/10 verso le 16:10. Il congelamento è venuto dopo il controllo delle miscele, risultato non
+promettente, e prima di ogni training; il §8 dice che cosa si sapeva in quel momento.
 
 | File | Che cosa |
 |---|---|
@@ -15,7 +15,9 @@ rete impara a correggerlo, sempre sulle singole cellule (§11 del
 | `anchors.py` | Le ancore: il transfer t25 del banco per ogni coppia (linea, bersaglio) di training e per i bersagli C della linea esclusa, mai dalla linea della riga né da quella esclusa (test: `test_anchors.py`, sul cubo vero) |
 | `cellnet.py`, `train_cellnet.py`, `generate_cells.py` | Versione 3, copie della versione 2 con l'ancora nei logit, il guadagno, il braccio `ancora_sola` e i controlli delle ancore (test: `test_v3_anchored.py`; regressione della versione 2: `test_v2_units.py`, `test_v2_stages.py`, `test_pi_floor.py`) |
 | `cell_data.py`, `extract_cells.py`, `target_descriptors.py`, `line_groups.json` | Copie della versione 2, non modificate |
-| `kaggle_train.py`, `kaggle_gen.py`, `lane_b.py`, `bench_effects.py` | Copie della versione 2, da adattare: le ancore come sorgente dei kernel, e la corsia B con le due definizioni del transfer |
+| `kaggle_anchors.py`, `lancio_anchors_r1.json` | Il kernel CPU delle ancore delle tre linee e il suo lancio |
+| `kaggle_train.py` | Il kernel di training, adattato: monta il kernel delle ancore e passa al training quelle della linea |
+| `kaggle_gen.py`, `lane_b.py`, `bench_effects.py` | Copie della versione 2, da adattare dopo i training: ancore nella generazione, corsia B con le due definizioni del transfer |
 | `test_prepass.py` | Copia della versione 1: fornisce `GENES` e `counts` ai test |
 
 I dati pesanti e gli output vanno nella radice dati, `processed/rete_ancorata_2026-10-03/`.
