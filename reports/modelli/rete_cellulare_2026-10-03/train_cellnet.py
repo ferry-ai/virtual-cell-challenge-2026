@@ -88,7 +88,7 @@ STATE = "prepass.pkl"
 CLASSES = ["train", "C", "T", "J", "control_holdout", "combined:train", "combined:T", "combined:C", "combined:J",
            "unlabelled"]
 SAME_ON_RESUME = ("arms", "epochs", "batch", "ctrl_k", "buffer_shards", "input_dim", "dim", "rank", "lr", "seed",
-                  "roles", "descriptors_sha256", "pi_floor", "min_own")
+                  "roles", "descriptors_sha256", "pi_floor", "min_own", "delta_bound", "gate_warmup")
 VERSION = 2
 
 
@@ -1092,7 +1092,8 @@ def train(a):
         torch.manual_seed(a.seed)            # every arm starts from the weights of the seed, whatever the other arms
         arm.model = CN.build_model(G, n_sym, len(st["modalities"]), len(st["studies"]), input_genes, dim=a.dim,
                                    rank=a.rank, target_desc=desc, target_code=arm.code,
-                                   pi_floor=a.pi_floor, context_mode=arm.ctx).to(arm.dev)
+                                   pi_floor=a.pi_floor, context_mode=arm.ctx,
+                                   delta_bound=a.delta_bound).to(arm.dev)
         arm.opt = torch.optim.AdamW([p for p in arm.model.parameters() if p.requires_grad], lr=a.lr,
                                     weight_decay=1e-4)
         arm.T = tables[arm.dev]
@@ -1104,7 +1105,7 @@ def train(a):
         lib_rows[int(k)] = {int(l): rows_k[pool_libc[rows_k] == l] for l in np.unique(pool_libc[rows_k])}
     unit_of_key, unit_weights = st["unit_of_key"], st["unit_weights"]
 
-    def forward(b, arm, unknown=False):
+    def forward(b, arm, unknown=False, warm=False):
         """Per cell: counts, mask, library, baseline, shift, pi, the no-effect and the mixture log-likelihoods, and
         the gate's logit and the responder component's log-likelihood (for the gate's diagnostics)."""
         dev, T, model = arm.dev, arm.T, arm.model
@@ -1126,8 +1127,12 @@ def train(a):
         ll0 = CN.cell_loglik(x, lib, beta, mask, theta)
         delta, gate = model(z, beta, tgt, T["target_gene"][tgt], b["mod"].to(dev))
         ll1 = CN.cell_loglik(x, lib, beta + delta, mask, theta)
-        mix = CN.mixture_loglik(gate, ll1, ll0, model.pi_floor)     # log-sigmoid weights, no clamp (audit, r3)
-        pi = model.pi_of(gate)
+        if warm:                    # version 2.1: during the gate warm-up pi is fixed at 1/2 and the gate learns nothing
+            mix = torch.logaddexp(ll1, ll0) - math.log(2.0)
+            pi = torch.full_like(gate, 0.5)
+        else:
+            mix = CN.mixture_loglik(gate, ll1, ll0, model.pi_floor)     # log-sigmoid weights, no clamp (audit, r3)
+            pi = model.pi_of(gate)
         return x, mask, lib, beta, delta, pi, ll0, mix, is_ctrl, stu, gate, ll1
 
     def synchronize():
@@ -1148,7 +1153,7 @@ def train(a):
         ck = torch.load(path, map_location="cpu", weights_only=False)
         if ck["prepass_sha256"] != state_sha:
             sys.exit("the checkpoint belongs to another prepass state")
-        before = {"pi_floor": "0.0"}              # checkpoints written before the option had no floor
+        before = {"pi_floor": "0.0", "min_own": "8", "delta_bound": "0.0", "gate_warmup": "0"}   # options added later
         diff = {k: (ck["same"].get(k, before.get(k)), v) for k, v in same.items()
                 if ck["same"].get(k, before.get(k)) != v}
         if diff:
@@ -1344,7 +1349,7 @@ def train(a):
         if int(b["step"]) != step:
             sys.exit(f"the loader returned step {int(b['step'])} where {step} was due")
         for arm in arms:
-            x, mask, lib, beta, delta, pi, ll0, mix, is_ctrl, stu, gate, ll1 = forward(b, arm)
+            x, mask, lib, beta, delta, pi, ll0, mix, is_ctrl, stu, gate, ll1 = forward(b, arm, warm=step < a.gate_warmup)
             per_gene = mask.sum(-1).clamp_min(1)
             ll = torch.where(is_ctrl, ll0, mix) / per_gene
             w = arm.T["w_k"][b["key"].to(arm.dev)]
@@ -1466,6 +1471,7 @@ def train(a):
         torch.save({"state": arm.model.state_dict(), "genes": st["genes"], "symbols": symbols, "studies": st["studies"],
                     "modalities": st["modalities"], "input_genes": input_genes.tolist(), "target_code": arm.code,
                     "context_mode": arm.ctx, "pi_floor": a.pi_floor, "code_version": VERSION,
+                    "delta_bound": a.delta_bound, "gate_warmup": a.gate_warmup,
                     "dim": a.dim, "rank": a.rank, "descriptors_sha256": a.descriptors_sha256,
                     "prepass_sha256": state_sha}, arm.out / "model.pt")
     log("trained", steps=step, epochs=cov["epochs_done"], stop=stop_reason, leakage_passed=not leaks)
@@ -1663,6 +1669,10 @@ def main():
     t.add_argument("--dim", type=int, default=128)
     t.add_argument("--rank", type=int, default=128)
     t.add_argument("--lr", type=float, default=1e-3)
+    t.add_argument("--delta-bound", type=float, default=0.0,
+                   help="version 2.1: shifts bounded smoothly, B tanh(raw / B) (0: unbounded, the pilot r1)")
+    t.add_argument("--gate-warmup", type=int, default=0,
+                   help="version 2.1: steps with pi fixed at 1/2 before the gate learns (0: none, the pilot r1)")
     t.add_argument("--pi-floor", type=float, default=0.0,
                    help="floor on the responder probability, pi in [floor, 1 - floor] (0: none, the model until 1/10)")
     t.add_argument("--seed", type=int, default=0)

@@ -79,5 +79,21 @@ class Gate(unittest.TestCase):
         self.assertGreater(grad_floor, 1000 * grad)
 
 
+class DeltaBound(unittest.TestCase):
+    def test_shifts_stay_within_the_bound_and_keep_a_gradient(self):
+        import torch
+        torch.manual_seed(0)
+        m = CN.build_model(30, 5, 1, 1, np.arange(8), dim=8, rank=4, target_code="identity", delta_bound=6.0)
+        with torch.no_grad():
+            m.delta_out.weight.normal_(0, 50.0)          # a raw shift far beyond the bound, as in the pilot r1
+        z, beta = torch.randn(6, 8), torch.randn(6, 30)
+        delta, _ = m(z, beta, torch.arange(6) % 5, torch.full((6,), -1), torch.zeros(6, dtype=torch.long))
+        self.assertLessEqual(float(delta.abs().max()), 6.0 + 1e-5)
+        delta.sum().backward()
+        self.assertGreater(float(m.delta_out.weight.grad.abs().sum()), 0.0)
+        m0 = CN.build_model(30, 5, 1, 1, np.arange(8), dim=8, rank=4, target_code="identity")
+        self.assertEqual(m0.delta_bound, 0.0)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -22,6 +22,7 @@ import pandas as pd
 METRICS = ("pds", "cos_spec", "cos", "mse_ratio", "sign_sig")
 LOWER = {"mse_ratio"}
 COLLAPSE = 1e-3                     # pi_q50 of the perturbed cells at the last logged step (PROTOCOLLO §6)
+RESP_MIN = 0.01                     # amendment 2.1 (PROTOCOLLO §8): or the gate at its floor, or no responsibility
 SHARE_TOL = 0.02                    # loss shares of the line groups within this of 1/G
 
 
@@ -48,7 +49,11 @@ def technical(train: Path) -> dict:
         s = json.loads((d / "eval.json").read_text(encoding="utf-8"))["summary"]
         evals[d.name] = bool(s["evaluation"]["complete"])
     out["evaluation_complete"] = evals
-    last = {}
+    last, resp = {}, {}
+    floor = 0.0
+    cfg = train / "config.json"
+    if cfg.is_file():
+        floor = float(json.loads(cfg.read_text(encoding="utf-8"))["args"].get("pi_floor", 0.0))
     log = train / "train_log.jsonl"
     if log.is_file():
         for line in log.read_text(encoding="utf-8").splitlines():
@@ -58,8 +63,11 @@ def technical(train: Path) -> dict:
                 for arm, v in arms.items():
                     if v.get("pi_q50") is not None:
                         last[arm] = v["pi_q50"]
-    out["pi_q50_last"] = last
-    out["collapsed"] = sorted(a for a, v in last.items() if v < COLLAPSE)
+                        resp[arm] = v.get("responsibility_mean")
+    out["pi_q50_last"], out["responsibility_last"], out["pi_floor"] = last, resp, floor
+    # the letter of §6 (pi_q50 < 1e-3) cannot fire with a floor; amendment §8: the gate at its floor or no responsibility
+    out["collapsed"] = sorted(a for a, v in last.items()
+                              if v < COLLAPSE or v <= floor + COLLAPSE or (resp.get(a) is not None and resp[a] < RESP_MIN))
     out["accepted"] = bool(cov and out.get("leakage_passed") and out.get("loss_shares_within_tolerance")
                            and not out.get("shards_differ") and out.get("return_code") in (0, None)
                            and evals and all(evals.values()))

@@ -33,7 +33,9 @@ def fake_line(root: Path, g: str, pds: dict, shares=(0.5, 0.5), pi_q50=None):
                                                encoding="utf-8")
     pq = pi_q50 or {}
     (train / "train_log.jsonl").write_text(json.dumps({"msg": "step", "arms": {
-        arm: {"pi_q50": pq.get(arm, 0.5)} for arm in ("cells", "mean", "generic")}}) + "\n", encoding="utf-8")
+        arm: {"pi_q50": pq.get(arm, 0.5), "responsibility_mean": 0.0 if pq.get(arm) == 0.01 else 0.4}
+        for arm in ("cells", "mean", "generic")}}) + "\n", encoding="utf-8")
+    (train / "config.json").write_text(json.dumps({"args": {"pi_floor": "0.01"}}), encoding="utf-8")
     rng = np.random.default_rng(0)
     rows = []
     for i in range(40):
@@ -90,6 +92,19 @@ class Rule(unittest.TestCase):
             q1 = r["comparisons"]["Q1_state"]["C"]["pds"]
             self.assertEqual(q1["lines"], 1)                      # only RPE1 counts
             self.assertFalse(q1["passed"])                        # one positive line is less than two
+
+
+class GateAtTheFloor(unittest.TestCase):
+    def test_the_pilot_r1_case_is_a_collapse(self):
+        # pi_q50 = 0.01 = the floor, responsibility 0: the letter of §6 (pi_q50 < 1e-3) missed it; §8 catches it
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            floor = {"cells": 0.01, "mean": 0.01, "generic": 0.01}
+            lines = [fake_line(d, g, {"cells": 0.70, "mean": 0.60}, pi_q50=floor) for g in ("H1", "HepG2", "RPE1")]
+            r = decide(lines, d / "out")
+            self.assertEqual(r["technical"]["H1"]["collapsed"], ["cells", "generic", "mean"])
+            self.assertEqual(r["comparisons"]["Q1_state"]["C"]["pds"]["lines"], 0)
+            self.assertFalse(r["outcome"]["expand_on_lane_A"])
 
 
 if __name__ == "__main__":

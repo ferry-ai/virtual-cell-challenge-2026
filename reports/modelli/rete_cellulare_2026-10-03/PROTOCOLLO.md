@@ -112,3 +112,56 @@ transfer su HepG2 C, e P3 non ha trovato beneficio dai controlli. Su Q1 nessuna 
 
 Con tre linee e un seme nessun esito è una conferma: il pilot decide solo se espandere. La riserva (test H1 2025) resta
 chiusa.
+
+## 7. Prima corsa (r1): fallimento tecnico
+
+Scritto il 3/10 dopo le 07:16 CEST (ora letta con `date`), prima di aprire qualunque confronto Q1–Q3 delle corsie A e B.
+Il training H1 r1 (`davideferrante11/rcell-train-h1-r1`, versione 2, finito alle 07:06) passa le voci tecniche:
+- codice 0;
+- 2 epoche, tutte le 3.850.952 cellule viste;
+- non-contaminazione;
+- quote della loss 1/7 per gruppo;
+- valutazione completa.
+
+**Ma i tre bracci sono collassati insieme.** Misurato dal `train_log.jsonl`: fino al passo 1.200 circa `pi` mediano sta
+fra 0,4 e 0,9, la responsabilità della componente di risposta fra 0,4 e 1,0 e il guadagno di log-verosimiglianza è
+positivo. Dal passo 3.700, in tutti e tre i bracci:
+- `pi` è fermo al pavimento 0,01;
+- la responsabilità vale 0 e il guadagno 0;
+- lo spostamento `delta` ha RMS 28 (`cells`), poi fra 170 e 205 fino alla fine.
+
+Le uniche misure dei risultati viste prima di scrivere questo paragrafo sono i coseni diagnostici della rete in
+`eval.json` (−0,59 su C per `cells`), parte del quadro del collasso.
+
+Il criterio del §6 (`pi_q50` < 10⁻³) **non poteva scattare**: con il pavimento a 0,01, `pi` non scende sotto 0,01.
+L'errore è mio, nel protocollo; l'intenzione era riconoscere il gate chiuso.
+
+La stessa versione del codice gira anche su HepG2 e RPE1 (lanciati alle 07:01 e alle 07:06, prima di questa lettura): le
+loro corse r1 si leggono con il §8 e non si scartano a priori.
+
+## 8. Emendamento 2.1, prima della seconda corsa (r2)
+
+Cambia solo ciò che riguarda il fallimento tecnico. Domande, bracci, linee, fold, misure, soglie di Q1–Q3 e regola di
+espansione restano quelle dei §1–6.
+
+1. **Collasso** (sostituisce il criterio del §6): un braccio è collassato se, all'ultimo passo registrato, `pi_q50` vale
+   meno di 10⁻³ oppure non supera il pavimento più 10⁻³, oppure se la responsabilità media della componente di risposta
+   è sotto 0,01 (`decide_pilot.py`, test `GateAtTheFloor`). Con questo criterio le tre braccia di H1 r1 sono collassate:
+   H1 r1 è un fallimento tecnico, non un risultato.
+2. **Spostamento limitato:** `delta = 6 tanh(raw / 6)`, cioè fold change entro e^±6 (`--delta-bound 6`, `cellnet.py`).
+3. **Riscaldamento del gate:** per i primi 3.000 passi `pi` è fisso a 1/2 e il gate non impara (`--gate-warmup 3000`); il
+   pavimento resta 0,01.
+4. **Prova breve obbligatoria prima di ogni training lungo** (la revisione la chiedeva; la r1 l'ha saltata). Linea H1 su GPU,
+   tre bracci, `--stop-after-steps 5000`, oltre la finestra del collasso di r1. Passa se, all'ultimo passo registrato e
+   per ogni braccio:
+   - la responsabilità media è almeno 0,05;
+   - `pi_q50` supera il pavimento di almeno 0,01;
+   - l'RMS di `delta` è al massimo 6.
+
+   Se la prova non passa, nessun training lungo: si registra e si torna alla diagnosi.
+5. Se la prova passa, i tre training r2 ripartono con gli argomenti del §4 più `--delta-bound 6 --gate-warmup 3000`, sugli
+   stessi prepass.
+
+**Interpretazione, non verificata:** qualche batch ha spinto `delta` su valori estremi. La componente di risposta è
+diventata peggiore della baseline per ogni cellula e il gate si è chiuso. Poi Adam, che normalizza i gradienti, ha fatto
+derivare `delta` anche con gradienti quasi nulli.

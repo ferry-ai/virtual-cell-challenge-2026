@@ -46,7 +46,7 @@ def load_arm(arm_dir: Path, st: dict, descriptors: Path | None, device: str):
     model = CN.build_model(len(m["genes"]), len(symbols), len(m["modalities"]), len(m["studies"]),
                            np.asarray(m["input_genes"]), dim=m.get("dim", 128), rank=m.get("rank", 128),
                            target_desc=desc, target_code=m["target_code"], pi_floor=m.get("pi_floor", 0.0),
-                           context_mode=m.get("context_mode", "cells"))
+                           context_mode=m.get("context_mode", "cells"), delta_bound=m.get("delta_bound", 0.0))
     model.load_state_dict(m["state"])
     return model.to(device).eval(), m
 

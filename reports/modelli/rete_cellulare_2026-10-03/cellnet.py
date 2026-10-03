@@ -252,13 +252,15 @@ def mixture_loglik(gate_logit, ll1, ll0, pi_floor=0.0):
 
 
 def build_model(n_genes, n_targets, n_modalities, n_studies, input_genes, dim=128, rank=128,
-                target_desc=None, target_code="descriptors", pi_floor=0.0, context_mode="cells"):
+                target_desc=None, target_code="descriptors", pi_floor=0.0, context_mode="cells", delta_bound=0.0):
     """target_desc: [n_targets + 1, D] biological descriptors of each target's gene (last row: none), or None.
     target_code: 'descriptors' (transferable to targets never perturbed), 'identity' (a free embedding per target,
     the comparison arm), 'both', or 'generic' (no information on the target at all: the unknown row, no descriptor,
     no target-gene feature; the trained generic response the audit asked for, 2.4).
     context_mode: 'cells' (each control cell encoded, then the embeddings averaged) or 'mean' (the encoder sees only
-    the pooled profile of the same control cells: the twin without any information on cell states)."""
+    the pooled profile of the same control cells: the twin without any information on cell states).
+    delta_bound: > 0 bounds every shift smoothly, delta = B tanh(raw / B) (version 2.1, 3/10: in the first pilot
+    training the shifts of all three arms exploded to an RMS of 28-205 logits while the gate closed; 0 = unbounded)."""
     import torch
     from torch import nn
     if target_code not in TARGET_CODES or context_mode not in CONTEXT_MODES:
@@ -269,6 +271,7 @@ def build_model(n_genes, n_targets, n_modalities, n_studies, input_genes, dim=12
             super().__init__()
             self.input_genes = torch.as_tensor(input_genes, dtype=torch.long)
             self.n_targets, self.pi_floor, self.context_mode = n_targets, float(pi_floor), context_mode
+            self.delta_bound = float(delta_bound)
             k = len(input_genes)
             self.cell_enc = nn.Sequential(nn.Linear(2 * k, 512), nn.GELU(), nn.Linear(512, dim))
             self.ctx_proj = nn.Sequential(nn.Linear(dim, dim), nn.GELU(), nn.Linear(dim, dim))
@@ -335,6 +338,8 @@ def build_model(n_genes, n_targets, n_modalities, n_studies, input_genes, dim=12
                 e = e + self.desc_enc(self.desc[target_idx])
             h = self.trunk(torch.cat([z, e, self.mod_emb(modality_idx)], -1))
             delta = self.delta_out(self.delta_low(h))
+            if self.delta_bound > 0:
+                delta = self.delta_bound * torch.tanh(delta / self.delta_bound)
             return delta, self.pi_head(h).squeeze(-1)
 
         def pi_of(self, gate_logit):

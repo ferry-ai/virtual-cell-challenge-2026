@@ -105,6 +105,8 @@ class StagesV2(unittest.TestCase):
         cls.pre_w2 = run("prepass", *common, "--out", d / "pre_w2", "--workers", "2")
         cls.tr = run("train", "--prepass", d / "pre", "--out", d / "run", "--arm", "d=identity", "--arm", "g=generic",
                      "--arm", "m=identity/mean", "--roles", "2", *TRAIN)
+        cls.tr21 = run("train", "--prepass", d / "pre", "--out", d / "run21", "--arm", "d=identity", "--roles", "2",
+                       "--delta-bound", "6", "--gate-warmup", "6", "--pi-floor", "0.01", *TRAIN)
 
     @classmethod
     def tearDownClass(cls):
@@ -117,6 +119,19 @@ class StagesV2(unittest.TestCase):
         for name in ("pre", "pre_w2", "tr"):
             proc = getattr(self, name)
             self.assertEqual(proc.returncode, 0, f"{name}: {proc.stderr[-3000:]}")
+
+    def test_bound_and_warmup(self):
+        self.assertEqual(self.tr21.returncode, 0, self.tr21.stderr[-3000:])
+        same = self.read("run21", "config.json")["same_on_resume"]
+        self.assertEqual((same["delta_bound"], same["gate_warmup"]), ("6.0", "6"))
+        steps = [json.loads(l) for l in (self.d / "run21" / "train_log.jsonl").read_text(encoding="utf-8").splitlines()
+                 if '"msg": "step"' in l]
+        first = steps[0]
+        self.assertAlmostEqual(first["pi_q50"], 0.5, places=6)          # warm-up: pi fixed at 1/2
+        self.assertLessEqual(max(s["delta_rms"] for s in steps if s.get("delta_rms") is not None), 6.0)
+        import torch
+        m = torch.load(self.d / "run21" / "d" / "model.pt", weights_only=False)
+        self.assertEqual((m["delta_bound"], m["gate_warmup"]), (6.0, 6))
 
     def test_whole_line_held_out(self):
         s = self.read("pre", "splits.json")
