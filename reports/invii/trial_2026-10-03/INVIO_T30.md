@@ -34,3 +34,9 @@ inviata. Se no, lo si scrive qui come differenza.
 5. Copiare manifest e diagnostiche qui, con i nomi di `reports/CLAUDE.md`.
 6. Upload come processo Windows separato, con il PC tenuto sveglio. Lo lancia Alfredo, perché il classificatore dei
    permessi blocca gli invii dell'agente.
+
+## Quota (3/10, 16:33 ora italiana)
+
+Alfredo ha scritto in chat: «ho l'ok per poi partire con il grading appena il corto finisce». L'accordo sulla quota
+con il lato Davide è quindi preso, ed è riportato qui come lo ha scritto Alfredo, non verificato con Davide. Prima
+dell'upload si controlla comunque con `vcc` che nessun invio della squadra sia in volo.
