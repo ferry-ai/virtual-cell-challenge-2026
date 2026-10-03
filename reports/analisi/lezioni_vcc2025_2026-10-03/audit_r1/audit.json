@@ -1,0 +1,301 @@
+{
+  "written_utc": "2026-10-03T16:56:58.010885+00:00",
+  "git_head": "1327f252966977def6241635696e5fbee9fcd74c",
+  "scope": "Reanalysis of recorded metadata; no current raw-data integrity check, no training, no new VCC score.",
+  "limitations": [
+    "Cell counts may represent admitted training appearances, not deduplicated biological cells across releases.",
+    "Coarse caps collapse donors/states/studies/guides and exclude controls; they are lower bounds for per-stratum caps, not recommended training sizes.",
+    "20/50-cell filters are descriptive sensitivity checks, not validated eligibility thresholds.",
+    "Input manifest sizes describe an earlier snapshot and do not measure the full cellular archive."
+  ],
+  "recorded_effect_manifest": {
+    "written_utc": "2026-10-02T21:52:39+00:00",
+    "files": 468,
+    "bytes": 17836308273,
+    "GB_decimal": 17.836308273,
+    "GiB": 16.61135654244572,
+    "recorded_hash_mismatches": [],
+    "by_table": {
+      "k562_gwps": {
+        "files": 18,
+        "bytes": 1019505534
+      },
+      "k562_essential": {
+        "files": 5,
+        "bytes": 219469767
+      },
+      "k562_viperturb": {
+        "files": 13,
+        "bytes": 856193372
+      },
+      "rpe1": {
+        "files": 5,
+        "bytes": 262221533
+      },
+      "hepg2_nadig": {
+        "files": 6,
+        "bytes": 1125503935
+      },
+      "cd4_rest": {
+        "files": 85,
+        "bytes": 1625254326
+      },
+      "cd4_stim8hr": {
+        "files": 84,
+        "bytes": 1625214885
+      },
+      "cd4_stim48hr": {
+        "files": 84,
+        "bytes": 1663474538
+      },
+      "hct116": {
+        "files": 29,
+        "bytes": 2300608852
+      },
+      "hek293t": {
+        "files": 30,
+        "bytes": 2619677329
+      },
+      "kolf21j": {
+        "files": 21,
+        "bytes": 1520043103
+      },
+      "hipsci_eipl_1": {
+        "files": 2,
+        "bytes": 66880787
+      },
+      "hipsci_eipl_3": {
+        "files": 2,
+        "bytes": 66467927
+      },
+      "hipsci_fiaj_1": {
+        "files": 2,
+        "bytes": 66993796
+      },
+      "hipsci_fiaj_3": {
+        "files": 2,
+        "bytes": 23385255
+      },
+      "hipsci_iudw_1": {
+        "files": 2,
+        "bytes": 68215337
+      },
+      "hipsci_iudw_4": {
+        "files": 2,
+        "bytes": 67181770
+      },
+      "hipsci_jejf_2": {
+        "files": 2,
+        "bytes": 69239328
+      },
+      "hipsci_jejf_3": {
+        "files": 2,
+        "bytes": 67496951
+      },
+      "hipsci_kolf_2": {
+        "files": 2,
+        "bytes": 68575197
+      },
+      "hipsci_kolf_3": {
+        "files": 2,
+        "bytes": 67282757
+      },
+      "hipsci_oikd_2": {
+        "files": 2,
+        "bytes": 50691821
+      },
+      "hipsci_oikd_5": {
+        "files": 2,
+        "bytes": 67873453
+      },
+      "hipsci_paab_3": {
+        "files": 2,
+        "bytes": 66091618
+      },
+      "hipsci_paab_4": {
+        "files": 2,
+        "bytes": 67555709
+      },
+      "hipsci_pipw_4": {
+        "files": 2,
+        "bytes": 66994557
+      },
+      "hipsci_pipw_5": {
+        "files": 2,
+        "bytes": 31465630
+      },
+      "hipsci_tolg_4": {
+        "files": 2,
+        "bytes": 55708187
+      },
+      "hipsci_tolg_6": {
+        "files": 2,
+        "bytes": 66494194
+      },
+      "hipsci_zapk_3": {
+        "files": 2,
+        "bytes": 69491471
+      },
+      "jurkat_nadig": {
+        "files": 5,
+        "bytes": 258337664
+      },
+      "h1_train": {
+        "files": 2,
+        "bytes": 25119877
+      },
+      "h1_val": {
+        "files": 2,
+        "bytes": 8390584
+      },
+      "tian2021_neuron": {
+        "files": 2,
+        "bytes": 25005622
+      },
+      "hipsci_gwfit": {
+        "files": 5,
+        "bytes": 107460182
+      },
+      "hipsci_gwnonfit": {
+        "files": 10,
+        "bytes": 16902044
+      },
+      "a549_ko": {
+        "files": 3,
+        "bytes": 143454946
+      },
+      "hs27_crispra": {
+        "files": 5,
+        "bytes": 235121735
+      },
+      "null": {
+        "files": 16,
+        "bytes": 1005262700
+      }
+    }
+  },
+  "pilot_coverage": {
+    "h1": {
+      "steps": 30089,
+      "batch": 256,
+      "epochs_done": 2.0,
+      "admitted_training_cells": 3850952,
+      "draws": 7702784,
+      "distinct_cells_seen": 3850952,
+      "throughput": {
+        "cells_per_second": 1375.2,
+        "data_wait_fraction": 0.377,
+        "seconds": 5601.4
+      }
+    },
+    "hepg2": {
+      "steps": 31028,
+      "batch": 256,
+      "epochs_done": 2.0,
+      "admitted_training_cells": 3970762,
+      "draws": 7943168,
+      "distinct_cells_seen": 3970762,
+      "throughput": {
+        "cells_per_second": 1398.2,
+        "data_wait_fraction": 0.361,
+        "seconds": 5681.1
+      }
+    },
+    "rpe1": {
+      "steps": 30377,
+      "batch": 256,
+      "epochs_done": 2.0,
+      "admitted_training_cells": 3887913,
+      "draws": 7776512,
+      "distinct_cells_seen": 3887913,
+      "throughput": {
+        "cells_per_second": 1341.5,
+        "data_wait_fraction": 0.393,
+        "seconds": 5796.8
+      }
+    }
+  },
+  "pilot_outcomes": {
+    "A": {
+      "Q1_state": "passed",
+      "Q2_transfer": "failed",
+      "Q3_target": "passed",
+      "Q3_target_used": true,
+      "Q1_state_passed": true,
+      "Q2_transfer_passed": false,
+      "interpretable": true,
+      "complete": true,
+      "expand_on_lane_A": true,
+      "lane_B": "applied separately where computed (PROTOCOLLO §5-6)"
+    },
+    "B": {
+      "Q1_state": "passed",
+      "Q2_transfer": "failed",
+      "Q3_target_used": true,
+      "expansion_clause_lane_B": false,
+      "note": "§6: the expansion clause of lane B is the network's cells above the transfer in at least two of three lines (Q2 here)"
+    }
+  },
+  "inputs": [
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/matrix_r1/h1/target_by_group.csv.gz",
+      "bytes": 79925,
+      "sha256": "63ad0a73c4c0da184d8514aa9b40f1cf2cefaecf9c707ad62c29e633b06e986d"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/matrix_r1/h1/eval_support.csv",
+      "bytes": 22545,
+      "sha256": "0c49f80dffa183442a1001b69f3f2b714568dc6cd383b083ac54a1a9b78e1e5b"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/train_h1_r3/coverage.json",
+      "bytes": 8625,
+      "sha256": "8941f8fbff1182d57376c0640097be5258f6965b30b38dc1b56d4939a05c11d0"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/matrix_r1/hepg2/target_by_group.csv.gz",
+      "bytes": 72954,
+      "sha256": "15afdcad7cf8add3073567318fe6d7d63c46912ae678bdf8c3f986d68ce02801"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/matrix_r1/hepg2/eval_support.csv",
+      "bytes": 129332,
+      "sha256": "6552b30f467d13427c38d29cdbe40516c76eedd1c5de5157f7b8aa36738649d0"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/train_hepg2_r3/coverage.json",
+      "bytes": 8556,
+      "sha256": "ca9977eea627e31230024787ce83081ddce41da186fb880e0ce99e156669eb1c"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/matrix_r1/rpe1/target_by_group.csv.gz",
+      "bytes": 72551,
+      "sha256": "08719d5bdcd939c4c47744195fff735897438f78a989f3132c4eec62cdfcaf70"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/matrix_r1/rpe1/eval_support.csv",
+      "bytes": 136520,
+      "sha256": "4eecdb6556aece5b8991b1ded28c3a094e57f14f259495b8f28b9331548e2715"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/train_rpe1_r3/coverage.json",
+      "bytes": 8614,
+      "sha256": "8702e8436826fc0dd9176fc050d23b8721b1482820099c76186bbd77785af19a"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/decision_r3/decision.json",
+      "bytes": 13612,
+      "sha256": "5fd4a5c271cfcf33680d6cbd6c3862fb018cc0d048902daf3aaa06db1063aedf"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/decision_laneB_r3/decision_lane_b.json",
+      "bytes": 14778,
+      "sha256": "36b72ca8330e4730a7ce7791ce6a8f64d7008fe513c55a0230f156dc21542e8b"
+    },
+    {
+      "path": "reports/analisi/generalizzazione_contesti_2026-10-02/p0_r2/input_manifest.json",
+      "bytes": 148522,
+      "sha256": "d0b93081db58e61cd6e24b5e1b26d6782ae5c04bfbc62ab864c16598b711df56"
+    }
+  ]
+}

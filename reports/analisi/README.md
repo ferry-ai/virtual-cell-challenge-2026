@@ -8,6 +8,7 @@ Invecchiano in fretta: prima di seguirne un «prossimo passo», controllare
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 03/10 | [lezioni_vcc2025_2026-10-03/](lezioni_vcc2025_2026-10-03/) | Vincitori 2025 verificati su fonti primarie, limiti del trasferimento al 2026; riconto di copertura e dimensioni, priorità per rete ancorata, affidabilità, ESM2 e campioni cellulari annidati | rianalisi descrittiva e proposte; nessun nuovo training o score | ★★★ |
 | 03/10 | [revisione_ancorata_codex_2026-10-03/](revisione_ancorata_codex_2026-10-03/) | Revisione v3: dipendenza indiretta delle ancore dai target nascosti riprodotta su fixture, riferimento della primaria B e pacchetto di generazione ancora da allineare | verifica locale; correzioni e integrazione spettano alla regia | ★★★ |
 | 03/10 | [confronto_alfredo_2026-10-03/](confronto_alfredo_2026-10-03/) | Critica del resoconto di Alfredo e messaggio pronto: responsabilità della miscela, limiti di Strada C e della soglia MSE, aggiornamento dei due Claude, incarichi complementari su transfer e affidabilità; Grok e Antigravity verificati | revisione e proposta; nessun nuovo training o invio | ★★★ |
 | 03/10 | [revisione_pilot_cellulare_2026-10-03/](revisione_pilot_cellulare_2026-10-03/) | Replica delle guardie segnalate da Codex: salute mancante corretta, confronto incompleto ancora promuovibile; verifica della matrice e limiti dell'attribuzione al numero di contesti | prove sintetiche e lettura descrittiva; nessun nuovo training | ★★★ |

@@ -26,6 +26,9 @@ indici e misure. Indice generale: [../README.md](../README.md).
 - Orion (HCT116, HEK293T) ha licenza **CC-BY-NC-SA-4.0**: ammessa negli invii per decisione del
   proprietario (`../invii/trial_2026-09-22/autorizzazioni.md`), non per verifica presso gli organizzatori.
 
+Risorse dei vincitori 2025: [catalogo PRiMeFlow ed ESM2 del 3/10](../analisi/lezioni_vcc2025_2026-10-03/SORGENTI.md).
+Rilascio derivato, consultato ma non acquisito; sovrapposizioni, condizioni dei componenti e uso nel 2026 da verificare.
+
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
 | 03/10 | [ingestione_completa_2026-10-03/](ingestione_completa_2026-10-03/) | Ingestione completa per mandato del proprietario: sorgenti, assegnazioni, parallelismo e vincoli misurati; verifiche dell'archivio riprese dopo il runtime perso | in corso: job in coda, adattatori da consegnare | ★★ |
