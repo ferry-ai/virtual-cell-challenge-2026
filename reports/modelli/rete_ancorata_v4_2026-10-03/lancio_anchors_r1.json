@@ -1,0 +1,16 @@
+{
+ "what": "version 4 anchors (anchors.py: regime-J table means, source rules all / cells / production) for the held-out lines H1, HepG2, RPE1, from the r1 prepass states (unchanged from v3) and the bench cube rlead-bench-cube-r2",
+ "authorisation": "owner in chat, 3/10 evening (session 5eacdf), as for lancio_fast_r1.json",
+ "machine": "Kaggle CPU (davideferrante11), no GPU quota",
+ "checks_before_push": "test_anchors_v4 (6, synthetic cube: invariance to hidden responses, positive control, source rules, refusals) OK; a run on the real cube_r2 with a made-up state: rules all/cells/production give 9/6/4 sources for the eval rows, every check passed (3/10 22:33)",
+ "code_dataset": {"slug": "davideferrante11/rcell-v4-anchor-code-r1",
+                  "staged_sha256": {"anchors.py": "151e7f6555bf5473d916a668b0f6cd1a5ef6375694257ff2656e4b24e8abbc18",
+                                    "target_keys.json": "55a4e601f75dbbee2ccf3d8e052483b8cc355b0d1a57c3fc33f53ca687a1515a"},
+                  "target_keys_note": "the same bytes as version 3's anchors (processed/rete_ancorata_2026-10-03/kaggle_anchor_code_r1/target_keys.json)"},
+ "kernel": {"slug": "rcell-v4-anchors-r1", "pushed": "2026-10-03 22:35:06 +0200", "status_22:36": "RUNNING",
+            "inputs": ["davideferrante11/rlead-bench-cube-r2", "davideferrante11/rcell-v4-anchor-code-r1",
+                       "kernels rcell-prepass-h1-r1, rcell-prepass-hepg2-r1, rcell-prepass-rpe1-r1"],
+            "outputs": "anchors_<line>_<rule>/ (anchors.npz, anchors.json, manifest.json) and their logs, anchors_done.json",
+            "stage": "C:/Users/ferra/vcc2026-data/processed/rete_ancorata_v4_2026-10-03/kernel_anchors_r1"},
+ "incidents_considered": {"E-20261003-001": "one push, status read after it"}
+}

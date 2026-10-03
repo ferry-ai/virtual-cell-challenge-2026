@@ -1,0 +1,160 @@
+{
+ "args": {
+  "cmd": "train",
+  "prepass": "/kaggle/input/notebooks/davideferrante11/rcell-prepass-hepg2-r1/prepass",
+  "out": "/kaggle/working/train",
+  "descriptors": "/kaggle/input/datasets/davideferrante11/rcell-anchored-code-r1",
+  "anchors": "/kaggle/input/notebooks/davideferrante11/rcell-anchors-r1/anchors_HepG2",
+  "target_code": "descriptors",
+  "arm": "['ancorata=both@cuda:0', 'ancorata_mean=both/mean@cuda:1']",
+  "eval_workers": "3",
+  "eval_partial": "0.08",
+  "epochs": "2.0",
+  "batch": "256",
+  "ctrl_k": "64",
+  "min_own": "8",
+  "buffer_shards": "4",
+  "dim": "128",
+  "rank": "128",
+  "lr": "0.001",
+  "delta_bound": "6.0",
+  "gate_mode": "off",
+  "health_check_step": "5000",
+  "health_window": "5",
+  "gate_warmup": "0",
+  "pi_floor": "0.01",
+  "seed": "0",
+  "workers": "3",
+  "roles": "3",
+  "prefetch": "8",
+  "budget_minutes": "180.0",
+  "reserve_export_minutes": "5",
+  "checkpoint_minutes": "15.0",
+  "keep_checkpoints": "3",
+  "measure_from": "None",
+  "measure_steps": "300",
+  "eval_chunk": "512",
+  "eval_reserve_seconds": "120.0",
+  "log_every": "100",
+  "resume": "None",
+  "shard_roots": "['/kaggle/input']",
+  "no_verify": "False",
+  "stop_after_steps": "None",
+  "device": "None",
+  "arms": "ancorata=both/cells;ancorata_mean=both/mean",
+  "input_dim": "2048",
+  "descriptors_sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80",
+  "anchors_sha256": "a4e0dc55d4da29bff2fc2b27b4bee97150eaa8bad519d547d94a7c2152d49cdf",
+  "anchor_rank": "32"
+ },
+ "same_on_resume": {
+  "arms": "ancorata=both/cells;ancorata_mean=both/mean",
+  "epochs": "2.0",
+  "batch": "256",
+  "ctrl_k": "64",
+  "buffer_shards": "4",
+  "input_dim": "2048",
+  "dim": "128",
+  "rank": "128",
+  "lr": "0.001",
+  "seed": "0",
+  "roles": "3",
+  "descriptors_sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80",
+  "pi_floor": "0.01",
+  "min_own": "8",
+  "delta_bound": "6.0",
+  "gate_warmup": "0",
+  "gate_mode": "off",
+  "anchors_sha256": "a4e0dc55d4da29bff2fc2b27b4bee97150eaa8bad519d547d94a7c2152d49cdf"
+ },
+ "devices": [
+  "cuda:0",
+  "cuda:1"
+ ],
+ "arms": [
+  {
+   "name": "ancorata",
+   "target_code": "both",
+   "context": "cells",
+   "device": "cuda:0",
+   "out": "/kaggle/working/train/ancorata"
+  },
+  {
+   "name": "ancorata_mean",
+   "target_code": "both",
+   "context": "mean",
+   "device": "cuda:1",
+   "out": "/kaggle/working/train/ancorata_mean"
+  }
+ ],
+ "started_utc": "2026-10-03T14:13:38.323469+00:00",
+ "prepass_sha256": "572e74248a1f5d9103a390b815021af84024c2c1c18225f2ea9192d2f2b391df",
+ "resumed_from": null,
+ "code_version": 3,
+ "code": {
+  "cellnet.py": "a9e465238bd69a407ca1883a78e5c0c53963f7863f905196fd49bc85aefe0e13",
+  "cell_data.py": "28182555bfefa2d59e8374751760775cc3ba64d5decab0d2ebb6a85cc0a29cc3",
+  "train_cellnet.py": "753f52fdd53441b36eb390dc23975a535a542d49b02da4c9ff3777fe47120b37"
+ },
+ "descriptors": {
+  "sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80",
+  "dims": 284,
+  "symbols_with_descriptors": 10041,
+  "symbols": 10467
+ },
+ "anchors": {
+  "rows": 9078,
+  "rank": 32,
+  "by_role": {
+   "train": 7335,
+   "eval": 1743
+  },
+  "unmatched": {},
+  "anchored_modalities": [
+   "CRISPRi"
+  ],
+  "manifest_checks": {
+   "own_or_held_in_sources": 0,
+   "hidden_with_anchor": 0,
+   "role_mismatch": 0,
+   "passed": true
+  },
+  "rows_by_group": {
+   "eval:HepG2": 1743,
+   "train:H1": 74,
+   "train:Jurkat": 1934,
+   "train:K562": 2629,
+   "train:Neuron": 61,
+   "train:RPE1": 1934,
+   "train:iPSC": 703
+  }
+ },
+ "admitted_training_cells": 3970762,
+ "loss": {
+  "rule": "-(sum over the batch of w * loglik per gene) / --batch, w the hierarchical weight of the cell's unit (line group, study)",
+  "unit_weights": {
+   "Jurkat::jurkat_nadig": 2.6361730378553503,
+   "H1::h1_vcc2025": 2.3752469005088153,
+   "iPSC::hipsci_targeted_19": 0.27876092154013865,
+   "K562::replogle_k562_gwps": 0.11697016218969014,
+   "K562::replogle_k562_essential": 0.7464908970967077,
+   "RPE1::replogle_rpe1": 2.810166178461556,
+   "A549::a549_liu_hillsley2026": 1.1250775290331885,
+   "Neuron::tian2021_crispri": 10.817982193258722,
+   "Neuron::tian2021_crispra": 18.355284567878407,
+   "K562::norman2019_crispra": 3.145265145664367,
+   "iPSC::kolf_chromatin_modifiers": 3.884434331418554,
+   "iPSC::kolf_metabolic_enzymes": 1.4122965011644764,
+   "iPSC::kolf_strong_perturbations": 0.7329856288548199
+  }
+ },
+ "holdout_group": "HepG2",
+ "held_keys": [
+  "hepg2_nadig|HepG2"
+ ],
+ "parameters": 9247826,
+ "parameters_by_arm": {
+  "ancorata": 9247826,
+  "ancorata_mean": 9247826
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "what": "compact twins of the 365 corpus shards of the v3 pilot (fastshard.py, build_fast.py), each verified against files.json and decoded back exactly; profile of read, decompression, encoding and decoding per shard; kernel a also replays version 3's epoch sampler on the H1 prepass state",
+ "authorisation": "owner in chat, 3/10 evening (session 5eacdf): resume the jobs the plan needs on Colab and Kaggle, in the configured accounts, within the available quotas",
+ "why_kaggle_cpu": "the shards are Kaggle datasets of davidmaisterx and the twins are read by Kaggle GPU kernels through kernel outputs: nothing crosses Drive (CLAUDE.md prefers Colab for CPU work; here data locality decides)",
+ "preflight_utc_check": "2026-10-03 22:26 CEST: no GPU kernel running; one CPU kernel running (vcc-kolf-pan-p0of2-r1, superfluous, not stoppable by API); GPU quota used 16.94 h of 30, 13.06 h left, refresh 2026-10-10; slugs unused",
+ "incidents_considered": {
+  "E-20261003-001": "double launches: one push per slug, status read after each push, no loop that pushes by itself",
+  "E-20260929-005": "inputs absent from a mount: the kernel checks every shard's bytes and sha256 against its dataset's files.json and refuses ambiguous mounts",
+  "E-20261001-001": "memory of loader processes: 4 encoding processes, one shard each at a time (about 1 GB peak each)"
+ },
+ "code_dataset": {
+  "slug": "davideferrante11/rcell-v4-build-r1",
+  "stage": "C:/Users/ferra/vcc2026-data/processed/rete_ancorata_v4_2026-10-03/kaggle_build_code_r1",
+  "staged_sha256": {
+   "build_fast.py": "c6ae7632c57149efe6a833c21928976e44ed56a16e9be908115108f06b734440",
+   "cell_data.py": "28182555bfefa2d59e8374751760775cc3ba64d5decab0d2ebb6a85cc0a29cc3",
+   "coverage_h1_r1.json": "e081ec4a1e4ccf1d7e4b6d5d1d86de77fe2ad1c696136833f6cf13d74b83c47f",
+   "fastshard.py": "1c5ac364369eff0f68dc1dfc963c83047bce5a3c18fea3e8ebdc001a5682d823"
+  },
+  "status_22:27": "ready"
+ },
+ "kernels": {
+  "rcell-v4-fast-a-r1": {"pushed": "2026-10-03 22:27:54 +0200", "datasets": ["rlab-k562-gwps-r3", "rlab-rpe1-r2", "rlab-kolf-small"], "source_gb": 17.51, "reconstruct": "rcell-prepass-h1-r1 + coverage_h1_r1.json", "status_22:29": "RUNNING", "stage": "C:/Users/ferra/vcc2026-data/processed/rete_ancorata_v4_2026-10-03/kernel_fast_a_r1"},
+  "rcell-v4-fast-b-r1": {"pushed": "2026-10-03 22:28:00 +0200", "datasets": ["rlab-hipsci-targeted19", "rlab-jurkat-nadig", "rlab-hepg2-nadig", "rlab-tian-norman"], "glob": "rlab-tian-norman=norman2019__*.h5ad|tian2021_*.h5ad (the r3/v3 glob)", "source_gb": 17.72, "status_22:29": "RUNNING", "stage": "C:/Users/ferra/vcc2026-data/processed/rete_ancorata_v4_2026-10-03/kernel_fast_b_r1"},
+  "rcell-v4-fast-c-r1": {"pushed": "2026-10-03 22:28:07 +0200", "datasets": ["rlab-a549", "rlab-h1-vcc2025-trainval", "rlab-k562-essential-r2", "rlab-kolf-strong"], "source_gb": 18.07, "status_22:29": "RUNNING", "stage": "C:/Users/ferra/vcc2026-data/processed/rete_ancorata_v4_2026-10-03/kernel_fast_c_r1"}
+ },
+ "expected_outputs": "/kaggle/working/twins/<shard>.fcsr.npz and fast_manifest.json in each kernel; the union must cover the 365 shards of shards_resolved.json of the v3 runs (same names, bytes and sha256 in the three folds)",
+ "tests_before_push": "test_fastshard (5), test_build_fast (3), test_balanced (6), test_train_v4 (8), test_anchors_v4 (6): all OK on the laptop, 3/10 22:00-22:25"
+}
