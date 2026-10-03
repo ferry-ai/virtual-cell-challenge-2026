@@ -75,7 +75,12 @@ committare file condivisi o coordinarsi:
 
 - **Prima di ogni commit** `git log -3`, `git status` e `git diff --cached --stat`; si aggiungono
   solo i propri file, per nome, mai `git add -A` sulla radice. Codex lascia segnaposto nell'indice
-  con `git add -N`: un commit senza percorsi li includerebbe.
+  con `git add -N`: un commit senza percorsi li includerebbe. L'indice è uno solo per tutte le
+  sessioni: anche un'altra sessione Claude può avere file in stage, quindi i propri file nuovi si
+  committano con `git commit -- <percorsi>`. Il 3/10 un commit senza percorsi ne ha presi 23 di
+  un'altra sessione. Se succede e il commit non è pushato, il rimedio è
+  `[ "$(git rev-parse HEAD)" = <sha> ] && git reset --soft HEAD~1`, che lascia l'indice altrui
+  com'era; poi si ricommitta con i percorsi.
 - **Un file che anche altri stanno modificando** (REGISTRO, PROGETTO, un README, una scheda,
   `src/vcc2026/CLAUDE.md`): `git commit -- <file>` prende il file intero, righe altrui comprese
   (e7c933b, corretto da db32204). Si committa un blob con le sole proprie righe: `git hash-object -w`
