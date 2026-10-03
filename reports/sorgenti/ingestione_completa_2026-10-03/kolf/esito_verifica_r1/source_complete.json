@@ -1,0 +1,88 @@
+{
+ "ok": true,
+ "verdict": {
+  "parts_ok": true,
+  "no_part_of_another_unit": true,
+  "units_covered": true,
+  "bytes_and_sha256_reread": true,
+  "shards_distinct": true
+ },
+ "units": {
+  "kolf_pan_genome": {
+   "parts": 2,
+   "expected_rows": 2659209,
+   "rows": 2659209,
+   "cells": 2659209,
+   "excluded": 0,
+   "bytes": 18386427991,
+   "nnz": 7872183461,
+   "counts": 15760481245,
+   "covers_the_unit": true
+  }
+ },
+ "totals": {
+  "shards": 133,
+  "cells": 2659209,
+  "nnz": 7872183461,
+  "counts": 15760481245,
+  "bytes": 18386427991
+ },
+ "inventory": {
+  "rows": 887280,
+  "contexts": [
+   "KOLF2.1J iPSC"
+  ],
+  "context_target_combinations": 11687,
+  "targeted_cells": 2512462,
+  "control_cells": 146747,
+  "targeted_cells_at_cap": {
+   "32": 365813,
+   "64": 716099,
+   "128": 1376068
+  }
+ },
+ "parts": [
+  {
+   "job": "vcc_kolf_pan_p0of2_r2",
+   "unit": "kolf_pan_genome",
+   "range": [
+    0,
+    1320000
+   ],
+   "rows": 1320000,
+   "cells": 1320000,
+   "excluded": 0,
+   "by_reason": null,
+   "shards": 66,
+   "bytes": 9200054049,
+   "nnz": 3946529896,
+   "counts": 7966149908,
+   "smoke": null,
+   "complete": true,
+   "unit_manifest_sha256": "e129fbe6c2bb58d97f406689517cd2774b905580d7f3ec38b438ff8afd566bb2",
+   "ok": true
+  },
+  {
+   "job": "vcc_kolf_pan_p1of2_r1",
+   "unit": "kolf_pan_genome",
+   "range": [
+    1320000,
+    2659209
+   ],
+   "rows": 1339209,
+   "cells": 1339209,
+   "excluded": 0,
+   "by_reason": null,
+   "shards": 67,
+   "bytes": 9186373942,
+   "nnz": 3925653565,
+   "counts": 7794331337,
+   "smoke": null,
+   "complete": true,
+   "unit_manifest_sha256": "62c6d3a326be093d4df9a1db1cfbb1227dde15c142f9e2bfaabc61005d7ff7aa",
+   "ok": true
+  }
+ ],
+ "seconds": 346.5,
+ "utc": "2026-10-03T17:44:59Z"
+}
