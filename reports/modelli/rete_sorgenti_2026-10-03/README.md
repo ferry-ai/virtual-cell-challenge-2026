@@ -47,6 +47,8 @@ linee:
 |---|---|
 | [`dati.py`](dati.py) | Una passata sugli shard rlab con l'accumulatore del banco della strada C (`banco_tipo.Sums`, importato senza modifiche). Scrive un file per chiave: effetti, profilo basale, geni misurati, gruppo e tipo. Gira su Kaggle |
 | [`rete.py`](rete.py) | Modello, episodi lascia-una-chiave-fuori con le esclusioni della strada C, addestramento, monitor ed esportazione degli effetti nel formato dei banchi |
+| [`esporta_abc.py`](esporta_abc.py) | Effetti della rete per i contesti della gara (A/B/C ora, D/E/F dal 22/10) nel formato dello stadio 45: profilo basale dai controlli con la formula di `dati.py`, sorgenti = chiavi di addestramento, ripiego a 0 non osservato per un bersaglio che nessuna sorgente copre. Uscite solo nella cartella dati. Previsione del t30 in [prediction_t30](../../invii/prediction_t30_2026-10-03/prediction.json) |
+| [`test_esporta.py`](test_esporta.py) | Due prove sintetiche dell'esportatore: file letti come li legge lo stadio 45, ripiego del bersaglio scoperto, nessuna sovrascrittura, profilo basale uguale a `dati.py`. Hanno trovato un difetto (asse dei geni salvato come oggetti, che lo stadio 45 rifiuta), corretto prima del commit |
 | [`test_rete.py`](test_rete.py) | Tre prove sintetiche: al passo 0 la rete è la media a pesi uguali; esclusioni KOLF/HipSci; con tipi che contano, la rete impara a fidarsi delle sorgenti dello stesso tipo (coseno di validazione da 0,40 a 0,65, a 400 passi) |
 
 ## Salute durante tutta la corsa

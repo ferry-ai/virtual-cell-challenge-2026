@@ -1,0 +1,58 @@
+{
+  "written_utc": "2026-10-03T13:55:00Z",
+  "label": "t30: source-attention network r1 (ckpt_best, training-key sources) with the t22 generator",
+  "claim_type": "subjective forecast registered before the network's real-scorer vote is known, before the export of the effects and before generation; no official result",
+  "status": "candidate M4, not authorised to submit: generation and submission need the conditions below and the owner's ok in chat",
+  "authorization": "the owner asked in chat on 3/10 (about 15:50 CEST) to do what is missing for the official submission M4; this is not an ok to submit, which is asked separately with the package in hand",
+  "references": {
+    "t22": 0.14125049908559736,
+    "t22_t24_mean": 0.1420736800178088,
+    "t28_best_observed": 0.144845205,
+    "t29_network": -0.029625,
+    "t08_unscaled_transfer": 0.06037,
+    "t11_unscaled_transfer": 0.070777
+  },
+  "model": {
+    "kernel": "alfredo2003bit/rete-sorgenti-r1 (Kaggle CPU, launched 3/10 13:35 UTC)",
+    "protocol": "reports/modelli/rete_sorgenti_2026-10-03/PROTOCOLLO_R1.md (commit 23d6475)",
+    "checkpoint": "ckpt_best.pt of that run (lowest validation loss on kolf and jurkat)",
+    "what_it_is": "a weighting of effects measured in public CRISPRi screens (rlab corpus), learned from control profiles only; at step 0 it is the equal weight per line group; no per-target parameters"
+  },
+  "conditions_before_generation": [
+    "the kernel ends with done.json and the network's technical gate passes (PROTOCOLLO_R1, 'Cancello tecnico')",
+    "the network's registered rule is read and written in an outcome document before any export for A, B, C",
+    "the owner authorises the download of chiavi/ and of the run folder from the kernel output, in chat",
+    "the team's quota is agreed with Davide's side: 2 scored submissions a day, one in flight"
+  ],
+  "if_the_network_rule_fails": "the forecast and the rule below stay as written; submitting is then a measurement of the network on the leaderboard, decided by the owner with the failed vote in hand, never a claim that the network helps",
+  "effects": {
+    "exporter": "reports/modelli/rete_sorgenti_2026-10-03/esporta_abc.py (sha256 2b61112a8fc4a9eb6d8a7efc43bb48b8bceaaa0538126fd72219bd355ca7b9b4), synthetic tests test_esporta.py",
+    "network_code": "reports/modelli/rete_sorgenti_2026-10-03/rete.py (sha256 7fb08d33f0f755cb9ebe3317d286461343345e34c53377bddde184d2c3ccc4b9)",
+    "sources": "--sources train: the training keys of split.json, the configuration the vote measured; validation and test keys are not added",
+    "basal": "log1p(1e4 x pooled control fraction) of raw/controls/context_{A,B,C}.h5ad on the official axis, the formula dati.py uses for every key",
+    "targets": "the 300 targets of raw/controls/pert_counts.csv; a target no source covers gets lfc 0 and observed False on every gene, counted in export_abc.json",
+    "amplitude": "the network's own: norm-match over the covered targets of each context times the learned factor; no extra scale",
+    "out": "<data root>/processed/effects_t30_2026-10-03 (private, outside the repository)"
+  },
+  "generator": {
+    "stage": 45,
+    "trial": "trial-ext-profile",
+    "settings": "the defaults of t22, as t29 (effects_scale 1.0, gene_dispersion false, seed 20260912, 300 targets x 400 cells per context)",
+    "stage_48": "as t22",
+    "smoke_test": "stage 45 ran on this PC on 3/10 at 15:52 CEST with zero effects, context A, 6 targets: provenance OK, projected full run 4.20 GiB, about 11 minutes"
+  },
+  "against_t22": "not a single factor: the sources (rlab corpus instead of the four genome-scale sources), the effect estimator (pooled-fraction log ratio with z-shrink k 4 and gamma 1) and the weighting all change together; generator, controls, targets and packaging as t22. A score separates nothing among them; the export of net0 (step 0, equal weights) would be the control for the weighting alone",
+  "expected": {
+    "score_avg_band": [0.02, 0.13],
+    "working_centre": 0.07,
+    "calibration": "Subjective planning range, not a calibrated interval. The network outputs transfer at its natural amplitude (norm-match), and unscaled transfer scored 0.060-0.071 (t08, t11) while t22 amplifies by 1.576; on the route C bench the amplitude x2 arms beat the natural ones on H1 (cross_a2 - cross +0.032 [+0.010; +0.056]). Unlike t29 the effects are measured effects of the same target in other lines, so target specificity is kept (same - same_shuf +0.128 on H1 in route C r1).",
+    "members": "MSE scaled expected at 0 as in every submission; PDS and the DE members below t22 if the amplitude is the main loss"
+  },
+  "rule": {
+    "a_at_least_0.137": "the network's effects are on a par with the reference recipe (t22/t24 mean minus the 0.005 seed noise): develop it as a candidate for D, E, F (amplitude, combination with the recipe's sources); no claim of superiority",
+    "b_0.06_to_0.137": "transfer-like signal at natural amplitude, not a replacement of the recipe: next an amplitude bench on public lines before any further submission of the network",
+    "c_below_0.06": "weaker than plain transfer: no further submission of the network until a local six-member bench shows it at least at the transfer level",
+    "not": "one seed and one checkpoint; the score says nothing about D, E, F and does not enter PROGETTO section 0 unless it changes the best observed"
+  },
+  "reserve": "no reserve is consumed: A, B, C are the public validation contexts; the H1 2025 test split stays unopened"
+}
