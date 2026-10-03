@@ -26,3 +26,5 @@ Da P4 (3/10) corse su Kaggle, condivisioni e download di output con il via del p
 | `RISULTATI.md` | P0–P3 | lettura dei risultati e limiti della primaria | interpretazione |
 | `p4/` | P4 | ipotesi e protocollo congelato della rete non lineare sul pseudobulk | protocollo |
 | `p4_decision_nn_r1/` | P4 | la regola della rete sui sette gruppi (`no_benefit`), con [LETTURA.md](p4_decision_nn_r1/LETTURA.md) | misurato |
+| `p4_decision_c_r3/`, `p4_decision_cj_r3/` | P4, dieci gruppi | le regole C e C+J dei bracci semplici calcolate nel kernel CPU `rlead-bench-cpu-r1`, copiate senza modifiche (`no_benefit`) | misurato |
+| `p4_decision_nn_r2/` | P4, dieci gruppi | la regola della rete sul kernel GPU `rlead-bench-nn-r1` (`no_benefit`), con [LETTURA.md](p4_decision_nn_r2/LETTURA.md) che legge anche i bracci semplici | misurato |

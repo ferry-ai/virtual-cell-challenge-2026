@@ -1,0 +1,333 @@
+{
+  "written_utc": "2026-10-03T00:44:37+00:00",
+  "protocol": "/kaggle/working/PROTOCOLLO.json",
+  "protocol_sha256": "d1a401e8b0e31dcce6ebc8c04fd61b582cbe77f41346e3b50cb4cf9f18cbc799",
+  "runs": [
+    "/kaggle/working/p3_c_r3"
+  ],
+  "inputs": {
+    "/kaggle/working/p3_c_r3/per_target_C_CD4T.csv.gz": "04dc5919881c07d53101c5e98b3326fe9ff26abde2e3a211fd84d13d41c605c5",
+    "/kaggle/working/p3_c_r3/per_target_C_H1.csv.gz": "bdad5d77320945ffdcec3870baa38613c0289bd54c21ee93d1cb737e045a4305",
+    "/kaggle/working/p3_c_r3/per_target_C_HCT116.csv.gz": "cae00a3495224a98a2481a2550a285cf87537ef7928c185ec57df6a3718c994e",
+    "/kaggle/working/p3_c_r3/per_target_C_HEK293T.csv.gz": "cbcd498c91137ae13ddfd36fb721aa1b1de0bccda6aac9aaa7f829d79f801501",
+    "/kaggle/working/p3_c_r3/per_target_C_HepG2.csv.gz": "918a6a57e95cca9fc5b7b0167d9d9670a3e17d0a5937c2cbf887fb3889052031",
+    "/kaggle/working/p3_c_r3/per_target_C_Jurkat.csv.gz": "966dfce52b44775728d816d6f62d5743a634ca6202a0a5684daa3b36846cb985",
+    "/kaggle/working/p3_c_r3/per_target_C_K562.csv.gz": "b2a59e50680721fbc16327fab8ad7c4aa7045028790b93b1097be09a06ab65a7",
+    "/kaggle/working/p3_c_r3/per_target_C_Neuron.csv.gz": "09efd26ce400e522c5355e5acf43cf736b17aa0246479e372e79ed5d1ec5f693",
+    "/kaggle/working/p3_c_r3/per_target_C_RPE1.csv.gz": "41f5d204642869a80ca8bb2c0744680e4240c65fe8a6564dd6d871888d8f55a8",
+    "/kaggle/working/p3_c_r3/per_target_C_iPSC.csv.gz": "4e5ef24734e525bba873795b5ebda692dd54acc3ece67fd5f5e4b71975f4fb10"
+  },
+  "regimes": {
+    "C": {
+      "context": {
+        "m1": {
+          "candidate": "m1",
+          "twin": "tm0",
+          "swap": "m1_swap",
+          "groups": 10,
+          "delta_ctx_by_group": {
+            "CD4T": -0.0025636474977156053,
+            "H1": -0.0038236590496680736,
+            "HCT116": -0.0005085542593801527,
+            "HEK293T": -0.002089317633662798,
+            "HepG2": 0.0012867204112897456,
+            "Jurkat": 0.0009009791004910928,
+            "K562": 0.0007817381506980698,
+            "Neuron": 0.0016924240544170424,
+            "RPE1": 0.003993890154320837,
+            "iPSC": 9.993777668790217e-05
+          },
+          "delta_ctx_macro": -2.2948879252193925e-05,
+          "delta_ctx_group_bootstrap_95": [
+            -0.0013847074839763215,
+            0.0013169853265100407
+          ],
+          "groups_positive": 6,
+          "groups_needed": 9,
+          "null_macro": {
+            "m1_null1": -0.0012064807110982894,
+            "m1_null2": -0.00046474802519446063,
+            "m1_null3": -0.005844315033294575,
+            "m1_null4": -0.0006877030918550465,
+            "m1_null5": -0.0040558447018734425,
+            "m1_null6": -0.0033555043761202647,
+            "m1_null7": -0.0030713449571017726,
+            "m1_null8": -0.009447076024064254
+          },
+          "delta_swap_by_group": {
+            "CD4T": -0.004972303940614531,
+            "H1": -0.005158268877629463,
+            "HCT116": 0.0005299882926014245,
+            "HEK293T": -0.0034146381459190366,
+            "HepG2": -0.0009844684830605127,
+            "Jurkat": 0.005791605733896689,
+            "K562": 0.0007727530230740684,
+            "Neuron": 0.0024132150687346315,
+            "RPE1": 0.005669084418700374,
+            "iPSC": 0.0008022896579001125
+          },
+          "delta_swap_macro": 0.00014492567476837565,
+          "c1": false,
+          "c2": false,
+          "c3": true,
+          "c4": true,
+          "c4_detail": {
+            "pds": {
+              "candidate_minus_twin": -0.0006101460779650187,
+              "worst_null_minus_twin": -0.007665956487025125,
+              "ok": true
+            },
+            "cos_spec": {
+              "candidate_minus_twin": 0.00039477127120033615,
+              "worst_null_minus_twin": -0.003415483454074385,
+              "ok": true
+            },
+            "sign_sig": {
+              "candidate_minus_twin": 0.0013165898544498001,
+              "worst_null_minus_twin": -0.0004568487005995181,
+              "ok": true
+            },
+            "mse_ratio": {
+              "candidate_minus_twin": 0.0017042128422635968,
+              "worst_null_minus_twin": -0.011757775347817908,
+              "ok": true
+            }
+          },
+          "passed": false,
+          "inconclusive": false
+        },
+        "m2": {
+          "candidate": "m2",
+          "twin": "m2_0",
+          "swap": "m2_swap",
+          "groups": 10,
+          "delta_ctx_by_group": {
+            "CD4T": -0.0142327077000744,
+            "H1": -0.01665701210590414,
+            "HCT116": -0.0050351536768039355,
+            "HEK293T": -0.010553541682659052,
+            "HepG2": 0.014424243951969687,
+            "Jurkat": 0.006875826313436427,
+            "K562": 0.009120348050555295,
+            "Neuron": -0.0007148196350618196,
+            "RPE1": 0.013040839732609975,
+            "iPSC": -0.0009374740308791911
+          },
+          "delta_ctx_macro": -0.00046694507828111507,
+          "delta_ctx_group_bootstrap_95": [
+            -0.007148033000974826,
+            0.006047716551708968
+          ],
+          "groups_positive": 4,
+          "groups_needed": 9,
+          "null_macro": {
+            "m2_null1": 0.00028466006533978415,
+            "m2_null2": 0.006806544756101712,
+            "m2_null3": -0.006323628969442203,
+            "m2_null4": -4.588264256791993e-05,
+            "m2_null5": -0.0012888153493522917,
+            "m2_null6": 0.000489889560523882,
+            "m2_null7": 0.001064709173560103,
+            "m2_null8": -0.004050445777351046
+          },
+          "delta_swap_by_group": {
+            "CD4T": -0.012270959724143405,
+            "H1": 0.006273964211349518,
+            "HCT116": -0.01603136357804696,
+            "HEK293T": -0.008686853551814859,
+            "HepG2": 0.08636558586817014,
+            "Jurkat": -0.00244300279335089,
+            "K562": -0.0009070247812226699,
+            "Neuron": -0.0028079117109638695,
+            "RPE1": 0.023400240420577197,
+            "iPSC": 0.0028461735334677205
+          },
+          "delta_swap_macro": 0.007573884789402192,
+          "c1": false,
+          "c2": false,
+          "c3": false,
+          "c4": true,
+          "c4_detail": {
+            "pds": {
+              "candidate_minus_twin": -0.0013426581745094352,
+              "worst_null_minus_twin": -0.014317471637859186,
+              "ok": true
+            },
+            "cos_spec": {
+              "candidate_minus_twin": 0.0011310559288630966,
+              "worst_null_minus_twin": -0.004907103252053274,
+              "ok": true
+            },
+            "sign_sig": {
+              "candidate_minus_twin": 0.002041122998027442,
+              "worst_null_minus_twin": -0.0023480625349087195,
+              "ok": true
+            },
+            "mse_ratio": {
+              "candidate_minus_twin": 0.005808872038483668,
+              "worst_null_minus_twin": -0.03698353909486953,
+              "ok": true
+            }
+          },
+          "passed": false,
+          "inconclusive": false
+        }
+      },
+      "rows": 1016522,
+      "groups": [
+        "CD4T",
+        "H1",
+        "HCT116",
+        "HEK293T",
+        "HepG2",
+        "Jurkat",
+        "K562",
+        "Neuron",
+        "RPE1",
+        "iPSC"
+      ],
+      "chain": {
+        "tm0": {
+          "arm": "tm0",
+          "reference": "transfer",
+          "primary": "cos",
+          "delta_by_group": {
+            "CD4T": 0.0472413812683055,
+            "H1": 0.04151518750478347,
+            "HCT116": 0.02654963009540272,
+            "HEK293T": 0.019228009275270897,
+            "HepG2": 0.08356482325900454,
+            "Jurkat": 0.029051861259498594,
+            "K562": 0.0319077955745218,
+            "Neuron": 0.01718406904202724,
+            "RPE1": 0.1318647122311983,
+            "iPSC": 0.011509215844471976
+          },
+          "delta_macro": 0.04396166853544851,
+          "delta_group_bootstrap_95": [
+            0.025182604030564024,
+            0.06764241238634303
+          ],
+          "groups_positive": 10,
+          "groups": 10,
+          "secondary_oriented_macro": {
+            "pds": -0.10076642672096667,
+            "cos_spec": 0.01282276260052713,
+            "sign_sig": 0.026627871466493397,
+            "mse_ratio": 0.53141294928099
+          },
+          "h1": true,
+          "h2": false,
+          "passed": false
+        },
+        "m1": {
+          "arm": "m1",
+          "reference": "transfer",
+          "primary": "cos",
+          "delta_by_group": {
+            "CD4T": 0.044677733770589895,
+            "H1": 0.0376915284551154,
+            "HCT116": 0.026041075836022564,
+            "HEK293T": 0.0171386916416081,
+            "HepG2": 0.08485154367029428,
+            "Jurkat": 0.02995284035998969,
+            "K562": 0.03268953372521987,
+            "Neuron": 0.01887649309644428,
+            "RPE1": 0.13585860238551914,
+            "iPSC": 0.01160915362115988
+          },
+          "delta_macro": 0.043938719656196314,
+          "delta_group_bootstrap_95": [
+            0.02488811312833777,
+            0.06874263302019878
+          ],
+          "groups_positive": 10,
+          "groups": 10,
+          "secondary_oriented_macro": {
+            "pds": -0.10137657279893168,
+            "cos_spec": 0.013217533871727466,
+            "sign_sig": 0.0279444613209432,
+            "mse_ratio": 0.5331171621232536
+          },
+          "h1": true,
+          "h2": false,
+          "passed": false
+        },
+        "m2_0": {
+          "arm": "m2_0",
+          "reference": "transfer",
+          "primary": "cos",
+          "delta_by_group": {
+            "CD4T": 0.014365974349840407,
+            "H1": 0.02379523658144543,
+            "HCT116": 0.003431391948174678,
+            "HEK293T": -0.0008347031068387629,
+            "HepG2": 0.01320230857100712,
+            "Jurkat": 0.006350998186198083,
+            "K562": 0.007037891454576359,
+            "Neuron": 0.004895280044411353,
+            "RPE1": 0.023329903520297752,
+            "iPSC": 0.002182546565054622
+          },
+          "delta_macro": 0.009775682811416704,
+          "delta_group_bootstrap_95": [
+            0.005057159074783552,
+            0.015036772284809093
+          ],
+          "groups_positive": 9,
+          "groups": 10,
+          "secondary_oriented_macro": {
+            "pds": -0.0004146001613156902,
+            "cos_spec": -0.009596800306159222,
+            "sign_sig": 0.002950651538588353,
+            "mse_ratio": 0.08162808487895659
+          },
+          "h1": true,
+          "h2": false,
+          "passed": false
+        },
+        "m2": {
+          "arm": "m2",
+          "reference": "transfer",
+          "primary": "cos",
+          "delta_by_group": {
+            "CD4T": 0.00013326664976600543,
+            "H1": 0.007138224475541295,
+            "HCT116": -0.0016037617286292576,
+            "HEK293T": -0.011388244789497817,
+            "HepG2": 0.02762655252297681,
+            "Jurkat": 0.01322682449963451,
+            "K562": 0.016158239505131653,
+            "Neuron": 0.004180460409349533,
+            "RPE1": 0.036370743252907727,
+            "iPSC": 0.001245072534175431
+          },
+          "delta_macro": 0.009308737733135588,
+          "delta_group_bootstrap_95": [
+            0.0013049080899765512,
+            0.01800477698880578
+          ],
+          "groups_positive": 8,
+          "groups": 10,
+          "secondary_oriented_macro": {
+            "pds": -0.0017572583358251264,
+            "cos_spec": -0.008465744377296126,
+            "sign_sig": 0.004991774536615795,
+            "mse_ratio": 0.08743695691744026
+          },
+          "h1": false,
+          "h2": false,
+          "passed": false
+        }
+      },
+      "target_specificity": {
+        "m1": {
+          "pds": 0.18044760560948891,
+          "cos": 0.07434854531842323,
+          "cos_spec": 0.11450326850942856
+        }
+      },
+      "outcome": "no_benefit"
+    }
+  }
+}
