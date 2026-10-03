@@ -218,6 +218,13 @@ nella memoria privata di un agente: qui valgono per tutti.
   sessioni Kaggle, circa 3 ore di quota) e bloccato gli altri sul limite di 2 sessioni
   (E-20261003-001). Un lanciatore è un processo unico con lock che termina da solo; dopo ogni
   spinta si legge la quota GPU usata e riservata. Una versione nuova non annulla quella in corsa.
+- **Banchi sul portatile «perché la sessione prima ha fatto così».** Il 4/10 la corsia B di H1 (venti minuti di
+  scorer, con meno di 1 GB di RAM libera) è girata in locale e quella di HepG2 era partita, con una motivazione di
+  comodità nel verbale: Colab occupato, pacchetto remoto assente, corsie r3 già girate in locale. Il proprietario lo ha
+  fermato: la regola di `CLAUDE.md` dice che il pacchetto mancante è lavoro da fare. Rimedio in mezz'ora: ogni input
+  era già su Kaggle, mancavano lo snapshot del codice e lo scorer
+  (`reports/modelli/rete_ancorata_v4_2026-10-03/kaggle_lanes.py`). Un'esecuzione locale precedente non è un
+  precedente; prima di lanciare un banco si controlla dove stanno già gli input.
 - **Scratchpad di sessione.** Sono temporanei e possono sparire: i risultati vanno in `reports/`
   prima di chiudere la sessione. Il 26/09 risultati verificati sono rimasti solo in uno scratchpad;
   il 30/09 erano ancora lì, in attesa della decisione del proprietario.
