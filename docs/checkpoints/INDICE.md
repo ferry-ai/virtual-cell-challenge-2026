@@ -89,3 +89,4 @@ aggiunge da sé la riga qui sotto.
 | [0052](0052-t28-punteggio-ufficiale.md) | 2026-09-30 | T28 nuovo migliore osservato, sotto la soglia di miglioramento registrata | osservazione | — |
 | [0053](0053-audit-cellnet-e-strategia.md) | 2026-10-01 | Audit cellnet e strategia per un modello competitivo | cambio-di-strategia | [0054](0054-visibilita-scorer-e-consegna.md), §7: precisa soltanto la diagnosi ambientale delle verifiche citate; misure scientifiche invariate |
 | [0054](0054-visibilita-scorer-e-consegna.md) | 2026-10-01 | Lo scorer funziona fuori dal sandbox: consegna verificata al teammate | correzione | — |
+| [0056](0056-t30-punteggio-ufficiale.md) | 2026-10-03 | t30: punteggio ufficiale della rete sulle sorgenti | esperimento | — |
