@@ -1,13 +1,28 @@
-# R-DATI — colmare lacune misurate dei dati
+# R-DATI — inventario riconciliato e lacune dei dati
 
-- **Stato:** in attesa della fattibilità e matrice di esposizione R-LEAD P0/P1, o di un confronto P4.
-- **Aggiornato:** 2 ottobre 2026, dipendenze allineate al nuovo R-LEAD (D-052).
-- **Assegnazione:** audit del 25/09 completato da Claude `f4f38e58` e collaboratori;
-  nessuna acquisizione nuova assegnata dal rinnovo.
-- **Prossimo passo:** identificare quale controllo, replica, guida o sovrapposizione manca
-  per risolvere un limite specifico; partire dal corpus già prodotto in [R-LAB](piano-giorno-2026-09-30.md).
-- **Dipendenze:** P0/P1 o P4 di [R-LEAD](strategia-scientifica.md), [GENERALIZZAZIONE](../GENERALIZZAZIONE.md),
-  disponibilità e autorizzazioni per l'eventuale acquisizione.
+- **Stato:** in corso dal 3/10 sera come parte del binario dati di [R-LEAD](strategia-scientifica.md): il mandato
+  non negoziabile D-053 chiede un inventario riconciliato col catalogo prima di congelare il prossimo corpus
+  principale ([GENERALIZZAZIONE §2.1](../GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile)).
+- **Aggiornato:** 3 ottobre 2026, 23:20 CEST. Testo precedente nello
+  [storico del consolidamento](../storico/consolidamento_2026-10-03/docs/piani/dati-affidabilita.md).
+- **Assegnazione:** regia nella sessione `5eacdf` (R-LEAD); le sottoattività già consegnate restano a chi le ha fatte
+  (sotto). Un agente che prende una voce la registra qui con sessione, file e output.
+- **Prossimo passo:**
+  1. **Inventario riconciliato:** per ogni voce del catalogo (gli 8 gruppi del pilot, le 13 voci in più della
+     [proposta di gruppi](../../reports/sorgenti/ingestione_completa_2026-10-03/orion/line_groups_expanded_v1.json),
+     le risorse ancora in ricognizione) fonte e versione, gruppo biologico, linea, donatori, stati, studi, modalità
+     CRISPRi/a/KO, ruolo (cellule, aggregati, entrambi), numeri attesi e ammessi, stato d'integrazione, lacuna e
+     azione. Distinguere gruppo biologico, linea clonale, donatore, stimolo e studio; alias e famiglie correlate si
+     escludono insieme nei fold.
+  2. **Aggregati per le voci senza tabella nel cubo** (oggi 10 gruppi), calcolati in streaming sulle cellule
+     ammesse e rispettando le esclusioni dei fold.
+  3. **Campioni annidati 32/64/128** per contesto e bersaglio, letti dai gemelli compatti: copertura di guide,
+     librerie, donatori e stati, perdita d'informazione contro i riassunti completi, probabilità di campionamento.
+     Le soglie di sufficienza si fissano prima di leggere i numeri.
+- **Dipendenze:** [R-LAB](piano-giorno-2026-09-30.md) per le cellule verificate; R-LEAD per ruoli e fold.
+- **Chiusura:** inventario riconciliato e verificato per ogni voce, con ogni assenza motivata secondo §2.1
+  (validazione, duplicazione, qualità, incompatibilità verificata, accesso) e le lacune rimediabili ancora aperte
+  come lavori assegnati. Per D-053 l'acquisizione e l'integrazione non si fermano a un sottoinsieme comodo.
 
 ## Consegna utile
 
@@ -41,6 +56,8 @@ si verificano nei manifest e nel replay del training. H1 test resta chiusa.
 
 Una lacuna si chiude con file/QC verificati e ablation a split fisso, oppure con la prova
 che quei dati non permettono il confronto. Se il problema è campionamento o qualità,
-correggerlo prima di aggiungere cellule. Nessun obbligo di acquisire tutte le sorgenti.
+correggerlo prima di aggiungere cellule. Dal 3/10 (D-053) tutte le sorgenti e i contesti idonei
+vanno integrati nel ruolo che i loro dati consentono; il testo precedente («nessun obbligo di
+acquisire tutte le sorgenti») è superato ed è conservato nello storico.
 
 [Audit e ipotesi H7–H10 del 24–26/09](../storico/rinnovo_2026-10-01/docs/piani/dati-affidabilita.md).

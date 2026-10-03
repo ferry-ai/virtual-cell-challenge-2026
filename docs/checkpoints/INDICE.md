@@ -93,3 +93,4 @@ aggiunge da sé la riga qui sotto.
 | [0056](0056-banco-contesto-c-j.md) | 2026-10-03 | R-LEAD P3: i controlli di una linea mai vista non migliorano il transfer su sette gruppi di linea | esperimento | — |
 | [0057](0057-p4-dieci-gruppi-pseudobulk.md) | 2026-10-03 | R-LEAD P4: dieci gruppi e una rete non lineare sul pseudobulk non danno beneficio dal contesto; sui sei membri vince il transfer | esperimento | — |
 | [0058](0058-copertura-integrale-contesti.md) | 2026-10-03 | Copertura obbligatoria di tutte le linee e i contesti idonei | cambio-di-strategia | — |
+| [0060](0060-direzione-x-transfer-pilot-v4.md) | 2026-10-03 | Direzione X + transfer, diagnosi dei training v3 e pilot v4 lanciato | cambio-di-strategia | — |

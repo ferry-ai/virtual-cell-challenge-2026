@@ -14,6 +14,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-054 | Direzione operativa: rete ancorata al transfer (X adattato: basale dai controlli, ancora dagli aggregati delle altre linee, correzione appresa sulle cellule), provata nel pilot v4 corretto; transfer t22/t25 riferimento di produzione; binario dati D-053 indipendente dall'esito; ESM2 dopo, a parità di dati | attiva | 2026-10-03 | Richiesta del proprietario in chat (3/10 sera); [CP-0060](checkpoints/0060-direzione-x-transfer-pilot-v4.md), [protocollo v4](../reports/modelli/rete_ancorata_v4_2026-10-03/PROTOCOLLO.md) |
 | D-053 | Tutte le linee e i contesti idonei nel percorso principale; campionamento di cellule senza perdita silenziosa di contesti, manifest riconciliato e uso effettivo obbligatori; validazione e riserve protette | attiva | 2026-10-03 | Mandato esplicito del proprietario; [CP-0058](checkpoints/0058-copertura-integrale-contesti.md), [GENERALIZZAZIONE §2.1](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile) |
 | D-052 | R-LEAD parte dalla prova C/J e dal confronto semplice del contesto; recupero neurale con ipotesi verificabile, T diagnostico. Dal 3/10 il mandato di copertura dei dati è precisato da D-053 | attiva | 2026-10-02 | Richiesta del proprietario dopo il confronto Arc 2025/2026; [R-LEAD](piani/strategia-scientifica.md) |
 | D-051 | Un solo piano implementativo R-LEAD dopo t29; mappe correnti riscritte, code e incarichi datati nello storico recuperabile. R-COMP/R-LAB sono scopo e inventario, le alternative hanno dipendenze esplicite | attiva | 2026-10-01 | Richiesta del proprietario di rinnovare la repo e preparare il piano per Claude; `reports/analisi/rinnovo_repo_2026-10-01/README.md` |
@@ -69,6 +70,26 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-054 — La rete ancorata al transfer come candidato operativo, su due binari
+
+- **Mandato:** il 3/10 sera il proprietario chiede di integrare le analisi di Codex, consolidare un piano operativo
+  unico e passare all'implementazione, partendo dall'adattamento dell'idea di X alla rete ancorata: basale dai
+  controlli + effetto trasferito da altri contesti + correzione appresa. Richiesta conservata in
+  [CP-0060](checkpoints/0060-direzione-x-transfer-pilot-v4.md).
+- **Decisione:** il candidato operativo di R-LEAD è la rete ancorata al transfer con supervisione cellulare. L'ancora
+  è il transfer t25 del banco dalle tabelle aggregate di tutte le altre linee disponibili (D-053), con medie del
+  regime J; la rete impara guadagno e correzione partendo da zero. Prima prova: il pilot v4 sul corpus a 8 gruppi,
+  dichiarato come pilot, con il percorso dei batch e i budget corretti dopo la diagnosi dei training v3. Il transfer
+  t22/t25 resta il riferimento di produzione: per sostituirlo serve batterlo sulle stesse righe, poi P5 e P6 (§10 del
+  protocollo v4). Il binario dati (tutte le linee e i contesti idonei) prosegue qualunque sia l'esito.
+- **Perché:** è la via più vicina a ciò che è già implementato e misurato, e separa i contributi nuovi uno alla volta
+  (correzione appresa; fonti delle ancore; corpus ampliato; ESM2). La v3 non è stata bocciata: i suoi training non
+  erano tecnicamente accettabili ([diagnosi](../reports/modelli/rete_ancorata_v4_2026-10-03/diagnosi_r1/DIAGNOSI.md)).
+- **Limiti:** non è una prova che il candidato funzioni; le soglie sono quelle del protocollo v4. Non autorizza
+  invii neurali (vincolo del t29), acquisti, push o download non necessari.
+- **Riaprire se:** il pilot v4 o il successivo sul corpus ampliato non passano la loro regola, o il proprietario
+  cambia direzione; un esito negativo chiude quel candidato, non la famiglia dei modelli.
 
 ### D-053 — Tutte le linee e i contesti idonei, con uso verificabile
 

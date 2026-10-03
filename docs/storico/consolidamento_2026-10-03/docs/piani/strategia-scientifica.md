@@ -1,53 +1,75 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
-- **Mandato:** prevedere come rispondono linee mai viste perturbate partendo dai soli controlli, e scegliere il modello
-  con prove C/J su linee escluse intere; unico percorso operativo di R-COMP (D-052). **Mandato non negoziabile del
-  proprietario (D-053):** tutte le linee e i contesti idonei nel percorso principale, secondo
-  [GENERALIZZAZIONE §2.1](../GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile); i pilot ridotti
-  restano dichiarati e non lo sostituiscono.
-- **Direzione adottata (D-054, 3/10 sera):** la rete ancorata al transfer, adattamento dell'idea di X (secondo
-  classificato 2025): basale dai controlli + effetto trasferito dalle altre linee (l'ancora, dagli aggregati) +
-  correzione appresa sulle singole cellule. Il transfer t22/t25 resta il riferimento di produzione e una componente;
-  ESM2 è un confronto successivo, a parità di dati. Fonti: [proposta Codex](../../reports/analisi/candidato_ibrido_2026-10-03/README.md),
-  [lezioni 2025](../../reports/analisi/lezioni_vcc2025_2026-10-03/README.md),
-  [revisione delle ancore](../../reports/analisi/revisione_ancorata_codex_2026-10-03/README.md),
-  [diagnosi dei training v3](../../reports/modelli/rete_ancorata_v4_2026-10-03/diagnosi_r1/DIAGNOSI.md).
-- **Stato (3/10, 23:15 CEST):** in corso su due binari. Lo stato scritto qui non prova che un job sia vivo: si rilegge
-  su Kaggle prima di agire (PIANI §3).
-  - **Modello, pilot v4** ([protocollo](../../reports/modelli/rete_ancorata_v4_2026-10-03/PROTOCOLLO.md), congelato a
-    `ec580c6`, emendamento §10 a `953eb1e`, entrambi prima dei training): batch bilanciati a ogni passo, gemelli
-    compatti degli shard, budget separati, ancore a medie J da tutti gli aggregati del cubo. Training
-    `rcell-v4-train-h1-r1` e `rcell-v4-train-hepg2-r1` in esecuzione dalle 23:06
-    ([lancio](../../reports/modelli/rete_ancorata_v4_2026-10-03/lancio_train_r1.json)); RPE1 quando una delle due
-    sessioni GPU si libera. La v3 r1 è un pilot incompleto (H1 tecnicamente non accettabile), non una bocciatura.
-  - **Dati, integrazione di tutti i contesti (D-053), indipendente dall'esito del pilot:** esecuzione in
-    [R-LAB](piano-giorno-2026-09-30.md) (le quattro parti Orion che completano HCT116 e HEK293T in corsa dalle 23:08,
-    [log di lancio](../../reports/sorgenti/ingestione_completa_2026-10-03/kaggle_cpu/lancio_orion_r2.jsonl));
-    inventario riconciliato del catalogo, aggregati mancanti e campioni annidati in [R-DATI](dati-affidabilita.md).
-- **Assegnazione:** Claude Code, sessione «Integrazione Codex e piano operativo» (`5eacdf`), macchina
-  `LAPTOP-DLG1LHV1`, dal 3/10 21:47 CEST (commit di partenza `8f43310`), su richiesta del proprietario in chat, con
-  l'autorizzazione dei job necessari al piano su Colab e Kaggle entro quota. Perimetro: questa scheda, PIANI,
-  PROGETTO §0, AMBITI, REGISTRO, `reports/modelli/rete_ancorata_v4_2026-10-03/`, dati in
-  `processed/rete_ancorata_v4_2026-10-03/`, regia dei job del binario dati che il piano richiede. Fuori perimetro:
-  `adattatori_codex/` e i file non tracciati di altre sessioni. Le sessioni `22d21f` e `c7c07a` risultano inattive.
+- **Mandato non negoziabile del proprietario, 3/10 (D-053):** integrare tutte le linee e
+  i contesti idonei, secondo [GENERALIZZAZIONE §2.1](../GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile).
+  Gli 8 gruppi del pilot e la proposta 8→11 descrivono passaggi intermedi, non il corpus
+  obiettivo. Prima del prossimo corpus/training principale, riconciliare il catalogo e
+  verificare l'esposizione effettiva; le lacune rimediabili restano lavori aperti. Le
+  ablation ridotte e le esclusioni di validazione mantengono il proprio ruolo dichiarato.
+- **Presa in carico, 3/10 21:47 CEST:** Claude Code, sessione «Integrazione Codex e piano operativo»
+  (`5eacdf`), macchina `LAPTOP-DLG1LHV1`, da commit `8f43310`, su richiesta del proprietario in chat:
+  integrare le analisi Codex, correggere esposizione dei batch e ancore, avviare il training valido,
+  riordinare i documenti operativi. Perimetro: questa scheda, PIANI, PROGETTO §0, AMBITI, REGISTRO,
+  la nuova cartella `reports/modelli/rete_ancorata_v4_2026-10-03/` e i dati in
+  `processed/rete_ancorata_v4_2026-10-03/`. Fuori perimetro: `adattatori_codex/` e gli altri file non
+  tracciati di altre sessioni; l'ingestione solo per i job che il piano richiede, annotati anche in R-LAB.
+- **Analisi disgiunta Codex, 3/10 ore 20:17 CEST**, sessione `01a1027a-0ae4-7c32-9001-e868a2b91698`,
+  richiesta dal proprietario: [candidato X + transfer, dati e raccordo dei piani](../../reports/analisi/candidato_ibrido_2026-10-03/README.md).
+  Ricevute dei due training v3 concluse lette: H1 non passa il bilanciamento della loss già richiesto;
+  nessuna promozione scientifica. Proposta: verificare e correggere copertura dei batch prima di proseguire
+  con lo stesso launcher, poi confronti separati per ancore ampliate ed ESM2. La pausa dei nuovi job riportata
+  nell'handoff dell'ingestione delle 19:55 resta mantenuta; questa nota non riassegna né riavvia il lavoro.
+- **Stato:** in corso dal 2 ottobre 2026, 16:47 CEST. P0–P4 eseguiti e misurati.
+  - **Pilot v2 chiuso** ([§11–12 del protocollo](../../reports/modelli/rete_cellulare_2026-10-03/PROTOCOLLO.md)):
+    Q1 passa e Q2 no, in entrambe le corsie; niente espansione, per decisione del proprietario.
+  - **Miscele:** non promettenti ([lettura](../../reports/modelli/rete_cellulare_2026-10-03/esito/miscele_r3/LETTURA.md)).
+  - **Rete ancorata v3 in preparazione** ([cartella](../../reports/modelli/rete_ancorata_2026-10-03/README.md)):
+    ancore calcolate con controlli passati, codice e test pronti, protocollo in bozza in attesa della revisione di
+    Codex.
+- **Esito P3 (misurato, sviluppo, 2/10 22:19):** C e J `no_benefit` secondo la regola congelata; nessuna adozione, il transfer t22/t25 resta il riferimento. I controlli della linea tenuta fuori non migliorano il transfer né come guadagni per gene né come correzione bilineare, su sette gruppi di linea; la calibrazione senza contesto migliora coseno e MSE ma perde PDS. [Risultati](../../reports/analisi/generalizzazione_contesti_2026-10-02/RISULTATI.md), [decisione](../../reports/analisi/generalizzazione_contesti_2026-10-02/p3_decision_cj_r1/decision.json).
+- **P4 (3/10 notte):** ipotesi «più linee collegate, non più capacità» ([hypothesis.md](../../reports/analisi/generalizzazione_contesti_2026-10-02/p4/hypothesis.md)); rete non lineare **sul pseudobulk** con protocollo congelato ([PROTOCOLLO_NN.json](../../reports/analisi/generalizzazione_contesti_2026-10-02/p4/PROTOCOLLO_NN.json)): kernel GPU a 10 gruppi finito il 3/10 (34 minuti, output scaricato in `processed/generalizzazione_contesti_2026-10-02/kaggle_nn_r1/`), corsa locale a 7 gruppi in chiusura, kernel CPU dei bracci semplici a 10 gruppi in corsa; letture ancora da fare con le regole. Il proprietario ha chiesto il 3/10 di non addestrare altre reti sul pseudobulk (30/09: supervisione sulle cellule, pseudobulk solo come baseline): questi risultati valgono come baseline.
+- **Rete cellulare v2 (3/10):** correzioni dell'audit dell'1/10 con test e pilot su H1, HepG2 e RPE1 escluse intere (stato contro media dei controlli, rete contro transfer, generico), protocollo congelato al commit `ad5ddd8` prima di ogni training: [cartella](../../reports/modelli/rete_cellulare_2026-10-03/README.md), [protocollo](../../reports/modelli/rete_cellulare_2026-10-03/PROTOCOLLO.md). **Prima corsa (r1) fallita tecnicamente:** nel training H1 i tre bracci collassano dal passo 3.700 circa (gate al pavimento, responsabilità 0, spostamenti esplosi); emendamento 2.1 (spostamento limitato, riscaldamento del gate, criterio di collasso corretto, prova breve obbligatoria) committato alle 07:17 prima di aprire i confronti; incidente dei lanci doppi E-20261003-001. Via del proprietario in chat: training GPU, kernel CPU, dataset privati e download.
+- **Mandato:** verificare se i controlli di una linea mai vista perturbata permettono di migliorare il transfer; scegliere il modello in base a questa prova. Unico percorso di R-COMP.
+- **Assegnazione:** Claude Code, sessione «R-LEAD implementazione vcc2026» (`22d21f`, scratchpad `b0e0cbfb`), macchina `LAPTOP-DLG1LHV1`, da commit `3600fe0`; presa in carico il 2/10 alle 16:47 CEST su richiesta del proprietario in chat. Sottoattività: P0–P3, poi P4–P6 se l'evidenza lo giustifica. File di lavoro: questa scheda, le due cartelle nuove sotto, gli indici delle loro categorie e il registro. Output: `reports/analisi/generalizzazione_contesti_2026-10-02/` (manifest, protocollo, misure, decisione), `reports/modelli/risposta_contesto_2026-10-02/` (codice e test), dati pesanti in `processed/generalizzazione_contesti_2026-10-02/` della radice dati. Sessione parallela visibile: «Memoria locale insufficiente» (`29e278`), inattiva; nessun suo file toccato.
 - **Prossimo passo:**
-  1. Leggere le ricevute tecniche dei training H1 e HepG2 con `fetch_outputs.py`, senza file di valutazione, e
-     l'accettazione del §5 del protocollo; lanciare RPE1 con il comando del lancio.
-  2. Per ogni linea accettata: generazione delle cellule (`kaggle_gen.py`, CPU), corsia A (`bench_effects.py`) e
-     corsia B (`lane_b.py`); poi `decide_anchored.py`, che applica la regola del §7 e il requisito di promozione del
-     §10.4 (battere anche `transfer_prod_J`).
-  3. Binario dati: verifica di linea di HCT116 e HEK293T a parti finite (`build_orion_verify.py`), poi le parti CD4;
-     inventario riconciliato del catalogo e aggregati per le voci senza tabella (R-DATI); campioni annidati
-     32/64/128 con perdita d'informazione misurata contro i riassunti completi, letti dai gemelli.
-  4. Qualunque sia l'esito del pilot, il corpus ampliato (prima CD4T, HCT116, HEK293T con cellule verificate) entra nel
-     protocollo successivo; ESM2 dopo, a parità di dati e di campione.
-- **Dipendenze:** [R-LAB](piano-giorno-2026-09-30.md) e [R-DATI](dati-affidabilita.md) per i dati,
-  [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), D-050, D-052, D-053, D-054; PROCEDURE §3 ed ERRORI per ogni job.
-- **Chiusura:** scelta motivata con prove riproducibili e pipeline finale verificata, oppure esito negativo o
-  inconclusivo con il transfer conservato e il limite identificato.
-- **Dove stanno gli esiti precedenti:** P3, P4, pilot v2 (r3), miscele, v3 e v4 in
-  [AMBITI §5](../AMBITI.md#5-modelli-appresi-e-generalizzazione); le note datate di questa scheda fino al 3/10 sera
-  nello [storico del consolidamento](../storico/consolidamento_2026-10-03/INDICE.md).
+  1. Congelare il protocollo della rete ancorata, dopo la revisione di Codex o senza di essa se non arriva, e con
+     l'esito delle miscele scritto nel testo.
+  2. Lanciare i training: H1 e HepG2 subito, perché `davideferrante11` regge al più 2 sessioni GPU, poi RPE1.
+  3. Applicare corsia A, corsia B e la regola del protocollo.
+  4. P5 solo se un candidato passa (la riserva, test H1 2025, resta chiusa); P6, prova a forma piena, appena C: ha
+     almeno 17 GB liberi.
+- **Stato riprendibile (3/10, 16:00 CEST), per chi subentra:**
+  - **Già fatto:**
+    - kernel CPU `davideferrante11/rcell-anchors-r1`, completo: output `anchors_<linea>/`, controlli passati, lancio
+      in `lancio_anchors_r1.json`;
+    - dataset del codice v3 `davideferrante11/rcell-anchored-code-r1`, creato alle 16:00 dal commit `211402e`
+      (stage `processed/rete_ancorata_2026-10-03/kaggle_code_r1`).
+  - **Comando per il training di una linea:**
+    ```
+    python kaggle_train.py kernel --config-dir <~/.kaggle-davideferrante11> --stage <nuova cartella>
+      --slug rcell-anchored-train-<linea>-r1 --owner davideferrante11 --data-owner davidmaisterx
+      --code-slug rcell-anchored-code-r1
+      --datasets <gli 11 di r3> --glob "rlab-tian-norman=norman2019__*.h5ad|tian2021_*.h5ad"
+      --prepass-from rcell-prepass-<linea>-r1 --anchors-from rcell-anchors-r1 --anchors-line <LINEA>
+      --arm "ancorata=both@cuda:0" --arm "ancorata_mean=both/mean@cuda:1" --train-args="<quelli di r3>"
+    ```
+    Va eseguito con il Python del venv e non con `py.cmd`: cmd.exe tratta la `|` del glob come una pipe. Gli 11
+    dataset e gli argomenti di training stanno in `run.py` dei kernel r3, `processed/rete_cellulare_2026-10-03/kernel_train_*_r3/`.
+  - **Aggiornamento delle 16:10:** protocollo congelato al commit `4cb61d4`. I training
+    `rcell-anchored-train-h1-r1` e `rcell-anchored-train-hepg2-r1` sono in corso dalle 16:09
+    ([lancio](../../reports/modelli/rete_ancorata_2026-10-03/lancio_train_r1.json)).
+  - **RPE1** si lancia con lo stesso comando appena una delle due sessioni GPU si libera. Dopo ogni spinta si
+    rilegge la quota con `kaggle quota`.
+  - **Dopo i training, nell'ordine:**
+    1. corsia A con `bench_effects.py` sulla cartella `train/` scaricata;
+    2. le cellule generate con `kaggle_gen.py`, da adattare alle ancore;
+    3. corsia B con `lane_b.py`, da adattare alle due definizioni del transfer;
+    4. la regola del §6.
+
+    L'ingestione ha il proprio stato riprendibile nella scheda [R-LAB](piano-giorno-2026-09-30.md).
+- **Prima consegna:** matrice contesto × bersaglio × studio, split verificati, protocollo congelato, codice del banco e dei confronti semplici con test; misure se gli input lo consentono, altrimenti il file minimo mancante e il passo impedito. Non un altro piano.
+- **Dipendenze:** [R-LAB](piano-giorno-2026-09-30.md), [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), D-050 e D-052; procedure e preflight del lavoro effettivamente eseguito.
+- **Chiusura:** scelta motivata con prove riproducibili e pipeline finale verificata, oppure esito negativo/inconclusivo con transfer conservato e limite identificato.
 
 ## 1. Domanda scientifica e perimetro
 

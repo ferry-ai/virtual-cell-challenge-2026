@@ -1,78 +1,31 @@
 # R-LAB — corpus e artefatti cellulari disponibili
 
-- **Stato:** in corso, per l'**ingestione completa** chiesta dal proprietario in chat il 3/10 dopo le 15:28 CEST:
-  tutti i dataset per intero, in fretta, anche su più runtime. Il corpus idoneo va su Drive; che cosa entra nel
-  training lo decide R-LEAD con i ruoli registrati. Piano, sorgenti e stato:
-  [ingestione completa](../../reports/sorgenti/ingestione_completa_2026-10-03/README.md).
-- **Aggiornato:** 3 ottobre 2026, 18:00 CEST circa (ora letta con `date`).
-- **Assegnazione (PIANI §3), sottoattività disgiunte:**
-  - **Regia, job e archivio, dal 3/10 16:51:** Claude Code, sessione `c7c07a` (claude2, altro account), per
-    [passaggio di consegne](../../reports/sorgenti/ingestione_completa_2026-10-03/HANDOFF_CLAUDE2.md) dalla sessione
-    `22d21f`, che ha esaurito la quota. Stesso perimetro e stessi file della riga seguente; lo stato verificato alle
-    18:00 è negli aggiornamenti del passaggio di consegne. Orion e KOLF pan-genome girano su kernel CPU di Kaggle.
-    **Indicazione del proprietario delle 17:46:** l'acquisizione resta completa, CD4 compreso; il campionamento
-    riguarda le copie preparate per i training
-    ([strategia](../../reports/sorgenti/ingestione_completa_2026-10-03/STRATEGIA_DATI_TRAINING.md), con la prima
-    consegna chiesta; le misure sono in
-    [DIMENSIONAMENTO](../../reports/sorgenti/ingestione_completa_2026-10-03/DIMENSIONAMENTO.md)). I punti su
-    valutazione, confronti e protocollo sono di R-LEAD.
-  - **Regia, job e archivio, fino al passaggio:** Claude Code, sessione «R-LEAD implementazione vcc2026» (`22d21f`), dal 3/10 15:28.
-    Comprende Southard r3 (job 132), le verifiche dell'archivio riprese (133–134), Orion completo, Mixscale e
-    VIPerturb con R, e i metadati di microglia, PerturbFate e DLD-1. Lavora in
-    `reports/sorgenti/ingestione_completa_2026-10-03/`, fuori da `adattatori_codex/`.
-  - **Adattatori per l'acquisizione completa:** Codex, tramite la relay `vcc2026-1c`, dal 3/10 15:50. Due compiti:
-    `h5csc` con bucket compatti e intervalli di cellule (KOLF pan-genome); `h5rows` con filtro di idoneità CD4 ed
-    esclusioni contate. Copie con fixture in `reports/sorgenti/ingestione_completa_2026-10-03/adattatori_codex/`;
-    nessun job Colab o Kaggle. Non tocca:
-    - `reports/sorgenti/corpus_cellulare_2026-09-30/` (codice dei job in corso);
-    - `G:/Il mio Drive/vcc2026/runs/`;
-    - `reports/modelli/rete_*_2026-10-03/`;
-    - il resto di `ingestione_completa_2026-10-03/`.
-- **Prossimo passo:** il proprietario riavvia i due dispatcher Colab (`queue`, `queue2`); Codex consegna gli
-  adattatori; Claude li integra e mette in coda KOLF e CD4, mentre prepara Orion, Mixscale e VIPerturb.
-  Il nome storico «piano-giorno» non indica una scadenza.
-- **Supervisione:** Codex, dal 3/10 15:47 per scelta del proprietario. Monitora ogni 15 minuti, fa audit e prepara
-  fixture su copie isolate, e legge questa scheda: la sua relay non riceve messaggi in modo stabile.
-  **Revisione chiesta a Codex, prima del congelamento:** il protocollo in bozza e il codice v3 della
-  [rete ancorata](../../reports/modelli/rete_ancorata_2026-10-03/README.md). I punti sono quattro:
-  - ancore, controlli di fuga e restrizione a CRISPRi;
-  - guadagno e correzione;
-  - la regola, con la corsia B primaria e la guardia della corsia A a −0,02;
-  - l'esito non promettente delle [miscele](../../reports/modelli/rete_cellulare_2026-10-03/esito/miscele_r3/LETTURA.md).
-- **Collo di bottiglia attuale (3/10, 15:55):** un solo runtime Colab attivo, quello di `queue`, occupato dalle
-  verifiche 133–134. Southard (132) aspetta `queue2`. Dopo vengono gli adattatori di KOLF e CD4.
-
-## Stato riprendibile (3/10, 16:00 CEST), per chi subentra
-
-**Colab**, account del proprietario, avvio dal browser. Il battito sta nel log del dispatcher, ogni 10 minuti; i
-log dei singoli job si sincronizzano solo alla fine.
-
-| Coda | Notebook | Job | Log |
-|---|---|---|---|
-| `queue` | `notebooks/colab_sc_training.ipynb` | 133 e 134, verifiche dell'archivio, avviati alle 15:46 | `runs/jobs/dispatcher.log` |
-| `queue2` | `notebooks/colab_dispatcher_queue2.ipynb` | 132, Southard r3, avviato alle 15:51 | `runs/jobs/dispatcher_q2.log` |
-
-Un job con `.started` senza battiti per ore non riparte da solo: si rimette in coda con numero e output nuovi (per
-le verifiche `requeue_verify.py`, per l'ingestione `corpus_cellulare_2026-09-30/colab_job.py`).
-
-**Agenti dell'hub**, lanciati alle 15:55 con l'autorizzazione del proprietario. Lo stato si legge con
-`py -3 C:/Users/ferra/agent-hub/control/hub.py status <run>`, i risultati con `... result <run>`, la patch di
-claude2 con `... diff <run>`.
-
-| Agente | Run | Incarico | Dove lavora | Output |
-|---|---|---|---|---|
-| claude2 | `20261003-155531-vcc-rds-conversion` | codice di conversione RDS (Mixscale, VIPerturb) | worktree isolato | **fallito alle 16:01:** errore 429 «monthly spend limit… session limit resets 4:50pm». È l'account condiviso con la regia; nessuna modifica scritta. Si rilancia dopo le 16:50, o dopo che il proprietario alza il limite |
-| Grok | `20261003-155552-vcc-geo-metadata` | metadati GEO di microglia, PerturbFate e DLD-1 | sola lettura | **vuoto:** in modalità `read` Grok gira in `plan` e si è fermato al piano |
-| Grok | `20261003-160553-vcc-geo-metadata-r2` | lo stesso brief | `edit` in worktree isolato, con l'istruzione di non modificare file | rapporto da copiare in `ingestione_completa_2026-10-03/agenti/` |
-
-**Job Orion in coda alle 16:04:** 135 (meta e campione completo di HCT116, `queue2`) e 136 (lo stesso per HEK293T,
-`queue`). I job `shards` per parte si costruiscono con `orion/build_orion_job.py` dalla cartella `sample` finita.
-
-**Codex**, tramite relay: adattatori in `ingestione_completa_2026-10-03/adattatori_codex/`, supervisione, e
-subentro se la regia esaurisce la quota. Il brief è nella stessa cartella.
-
-**Kaggle:** i dataset nuovi del corpus vanno su `davidmaisterx`, i training su `davideferrante11`; i token stanno in
-`~/.kaggle*`, e su Drive in `runs/rlab_secrets_*`.
+- **Stato:** in corso: esecuzione del binario dati di [R-LEAD](strategia-scientifica.md) per il mandato D-053
+  (tutte le linee e i contesti idonei) e per l'acquisizione completa chiesta dal proprietario il 3/10. Piano, sorgenti
+  e misure: [ingestione completa](../../reports/sorgenti/ingestione_completa_2026-10-03/README.md). Che cosa entra in un
+  training lo decide R-LEAD con ruoli e fold registrati.
+- **Aggiornato:** 3 ottobre 2026, 23:20 CEST (ora letta con `date`). La pausa delle 19:51 è stata tolta dal messaggio
+  del proprietario della sera, che autorizza i job necessari al piano senza riavviare per intero la vecchia coda.
+  Stato dettagliato fino alle 19:55 nella [consegna](../../reports/sorgenti/ingestione_completa_2026-10-03/HANDOFF_CLAUDE2.md);
+  la versione precedente di questa scheda è nello [storico](../storico/consolidamento_2026-10-03/docs/piani/piano-giorno-2026-09-30.md).
+- **Assegnazione:** regia dei job dal 3/10 23:08: Claude Code, sessione `5eacdf` (R-LEAD); claude2 (`c7c07a`) e
+  `22d21f` inattive. Gli adattatori consegnati da Codex restano nella sua cartella `adattatori_codex/`, non
+  tracciata e non toccata.
+- **Job verificati alle 23:15 CEST:**
+  - Kaggle CPU (`davideferrante11`): parti Orion `vcc-orion-hct116-p3of4-r3` e `vcc-orion-hek293t-p{0,1,2}of8-r3` in
+    esecuzione dalle 23:08 ([log di lancio](../../reports/sorgenti/ingestione_completa_2026-10-03/kaggle_cpu/lancio_orion_r2.jsonl)),
+    scelte prima delle parti CD4 perché completano due linee. Concluse dopo la pausa: HCT116 1/4 r3, CD4 `D1_Rest` 0/2,
+    il kernel KOLF lento.
+  - Colab: `queue2` vivo (battito alle 21:11 UTC) con Southard r3 (job 132); `queue` muto dalle 19:57 UTC e senza job.
+- **Prossimo passo:**
+  1. A parti Orion finite: le loro ricevute, poi la verifica di linea di HCT116 e HEK293T
+     (`kaggle_cpu/build_orion_verify.py`), che chiude le due linee se l'unione coincide con la lista congelata.
+  2. Le parti CD4 rimaste, nell'ordine di `kaggle_cpu/fill_sessions.py`, una chiamata per volta e mai da un ciclo
+     automatico (E-20261003-001), lasciando sessioni CPU libere per i job di R-LEAD.
+  3. DLD-1 (adattatore dalle matrici h5 per canale, prima la MOI bassa), Mixscale e VIPerturb (sonda RDS r2 già
+     committata), microglia e PerturbFate, secondo la consegna.
+  4. Per ogni linea chiusa: pubblicazione o montaggio come output di kernel, gemelli compatti e riga
+     nell'inventario riconciliato di [R-DATI](dati-affidabilita.md).
 
 ## Ingestione completa: filoni
 
@@ -83,15 +36,15 @@ Per ogni dataset, completo vuol dire tre cose:
 
 Il dettaglio di sorgenti e misure è nel [README](../../reports/sorgenti/ingestione_completa_2026-10-03/README.md).
 
-| Filone | Chi | Dipende da | Prossimo passo | Output |
-|---|---|---|---|---|
-| Southard RPE1 + Hs27 (CRISPRa), 850.225 + 447.301 cellule | Claude | runtime `queue2` | avvio di `queue2` | `j09_southard_r3` su Drive, `rlab-southard-*` su Kaggle |
-| Verifica dell'archivio (816 + 4.334 file) | Claude | runtime `queue` | in corso (133–134) | `archivio_verify_2026-10-03_r2/out_*_r2` |
-| KOLF pan-genome, 2.659.209 cellule | Codex (adattatore) → Claude (job) | `h5csc` compatto a intervalli | consegna di Codex | shard per intervallo di cellule |
-| CD4 completo, 12 file, 33,6 milioni di cellule | Codex (filtro) → Claude (job) | filtro di idoneità; quota di Drive misurata dal runtime | consegna di Codex; `df` su `/content/drive` | un job per file, esclusioni per motivo e per corsia |
-| Orion completo, HCT116 3.409.169 + HEK293T 4.534.299 | Claude | `orion_job.py` corretto | modalità senza campione | shard per lotto GEM |
-| Mixscale (5 RDS) e VIPerturb | Claude | R sul runtime | job di conversione | shard di contratto |
-| microglia, PerturbFate, DLD-1 | Claude, o Grok per la sola ricerca web | — | elenco di file, dimensioni e formati | decisione registrata |
+| Filone | Stato al 3/10 23:15 | Prossimo passo | Output |
+|---|---|---|---|
+| Southard RPE1 + Hs27 (CRISPRa), 850.225 + 447.301 cellule | job 132 in corsa su `queue2` | ricevute alla fine; verifica da un altro runtime | `j09_southard_r3` su Drive |
+| Verifica dell'archivio (816 + 4.334 file) | conclusa (133–134, codice 0) | — | `archivio_verify_2026-10-03_r2/out_*_r2` |
+| KOLF pan-genome, 2.659.209 cellule | chiuso: due parti verificate da un altro kernel, 133 shard, 18,39 GB | gemelli compatti e campioni annidati quando entra in un corpus | output dei kernel `vcc-kolf-pan-*` |
+| Orion HCT116 3.409.169 + HEK293T 4.534.299 | HCT116 0/4–2/4 e HEK293T 3/8–7/8 concluse (r3); HCT116 3/4 e HEK293T 0/8–2/8 in corsa | verifica di linea (`build_orion_verify.py`) | output dei kernel `vcc-orion-*-r3` |
+| CD4 completo, 12 file, 33,6 milioni di cellule | `D1_Rest` 0/2 e 1/2 concluse; 22 parti in coda | `fill_sessions.py`, una chiamata per volta | 24 parti da 7–9 GB, verifica per file |
+| Mixscale (5 RDS) e VIPerturb | sonda RDS r2 committata, non lanciata | sonda, poi conversione | shard di contratto |
+| DLD-1, microglia, PerturbFate | struttura di DLD-1 letta (MOI bassa 1.196.592 cellule); metadati degli altri | adattatori | shard di contratto |
 - **Dipendenze:** [R-LEAD](strategia-scientifica.md), [sorgenti](../../reports/sorgenti/README.md)
   e [modelli](../../reports/modelli/README.md). Dati pesanti esterni a Git.
 

@@ -7,57 +7,62 @@ affermazione: questa pagina instrada e riassume, non è evidenza. **Si aggiorna:
 invio valutato e quando cambia la direzione, riscritto e non allungato; §3–§5 quando un risultato
 cambia una conclusione. Il testo tolto resta in `docs/storico/`: le
 [sezioni 3–4 del 28/09](storico/PROGETTO_sezioni_3_4_2026-09-28.md) e il
-[§0, §6 e §7 del 30/09 mattina](storico/PROGETTO_sezioni_0_6_7_2026-09-30.md), il
-§0 del 3/10 sera nel [consolidamento](storico/consolidamento_2026-10-03/INDICE.md).
+[§0, §6 e §7 del 30/09 mattina](storico/PROGETTO_sezioni_0_6_7_2026-09-30.md).
 
-## 0. Oggi — 3 ottobre 2026 sera, dopo il consolidamento
+## 0. Oggi — dopo t29 e il rinnovo del 1–2 ottobre 2026
 
-**Il riferimento resta la ricetta t22**, quattro sorgenti a peso uguale (K562 GWPS, CD4 in tre stati, HCT116,
-HEK293T) con lo stimatore t25 corretto; t22/t24 danno una media osservata di **0,14207**; il massimo è t28,
-**0,144845**, non conclusivo ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)). Il t29, rete r2 `desc`, è
-negativo: nessun invio neurale prima di un banco a sei membri almeno al livello del transfer
-([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). Punteggi: [indice degli invii](../reports/invii/README.md).
+**La rete r2 `desc` non è promossa.** Il t29 cade nel ramo c della sua regola:
+nessun altro invio neurale prima di un banco locale a sei membri almeno al livello del
+transfer ([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). La causa dello
+score non è ancora isolata; il collasso identity di r3 non la dimostra.
 
-**Un solo piano operativo, [R-LEAD](piani/strategia-scientifica.md), su due binari (D-054).**
-- **Modello:** la rete ancorata al transfer, adattamento dell'idea di X (2° classificato 2025): basale dai controlli
-  \+ effetto trasferito dagli aggregati delle altre linee (l'ancora) + correzione appresa sulle singole cellule. Il
-  **pilot v4** corregge i difetti tecnici della v3 (batch che lasciavano fuori i neuroni, riserva di valutazione
-  sovrastimata, attesa della decompressione) e la dipendenza delle ancore dai bersagli nascosti; protocollo congelato
-  prima dei training ([v4](../reports/modelli/rete_ancorata_v4_2026-10-03/PROTOCOLLO.md)). Training H1 e HepG2 in corso
-  dal 3/10 23:06, RPE1 dopo. Passare il pilot autorizza il corpus ampliato e la conferma, non la sostituzione del
-  transfer, che richiede anche di battere la ricetta di produzione sulle stesse righe (§10 del protocollo).
-- **Dati, mandato non negoziabile D-053:** tutte le linee e i contesti idonei entrano nel percorso principale,
-  qualunque sia l'esito del pilot; archivio completo, aggregati e campioni cellulari restano distinti e l'uso
-  effettivo si verifica ([vincolo](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile)). Esecuzione in
-  [R-LAB](piani/piano-giorno-2026-09-30.md), inventario riconciliato e lacune in [R-DATI](piani/dati-affidabilita.md).
+**Il riferimento resta la ricetta t22**, quattro sorgenti a peso uguale; t22/t24 danno
+una media osservata di **0,14207**. Il massimo è t28, **0,144845**, con incremento sul
+t25 inferiore alla soglia registrata: non conclusivo ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)).
+La correzione dello stimatore t25 si conserva; l'emissione t28 è un confronto distinto.
+Ricette, cache, generatore e seed si ricostruiscono dai manifest, non dal numero del trial.
+La fonte completa dei punteggi è l'[indice degli invii](../reports/invii/README.md).
 
-**Che cosa vale (misurato).** Le correzioni del transfer dai controlli medi non danno beneficio, semplici o con una
-rete sul pseudobulk, e sui sei membri vince il transfer ([CP-0056](checkpoints/0056-banco-contesto-c-j.md),
-[CP-0057](checkpoints/0057-p4-dieci-gruppi-pseudobulk.md)); nel pilot v2 lo stato delle cellule aiuta rispetto al
-profilo medio ma la rete resta sotto il transfer; la v3 r1 è un pilot
-incompleto per difetti tecnici ricostruiti esattamente, non una bocciatura
-([diagnosi](../reports/modelli/rete_ancorata_v4_2026-10-03/diagnosi_r1/DIAGNOSI.md)). Nessuna rete ha ancora battuto il
-transfer su linee escluse. Esiti e fonti per area in [AMBITI §4–5](AMBITI.md#5-modelli-appresi-e-generalizzazione).
+**Un solo piano eseguibile: [R-LEAD](piani/strategia-scientifica.md), rivisto il 2 ottobre
+per la task 2026 (D-052).** Prima verificare i collegamenti fra contesti e costruire split
+per linee intere; poi confrontare transfer e correzione semplice condizionata sui sei membri.
+La domanda è se i soli controlli permettono di migliorare la risposta in un contesto mai
+visto perturbato. C/J guidano la scelta, T resta diagnostico. Le estensioni della rete
+seguono un limite identificato dal banco; riparare tutta cellnet non viene prima.
+**Dal 3/10, D-053: tutte le linee e i contesti idonei devono entrare nel percorso principale.**
+Campioni cellulari e aggregati hanno ruoli distinti; ogni assenza ed esclusione è tracciata,
+la copertura effettiva si verifica e le riserve restano protette. Un pilot ridotto non
+sostituisce il corpus completo: [vincolo operativo](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile).
+[Prompt per Claude](PROMPT_CLAUDE.md), [indice dei ruoli](PIANI.md).
 
-**Riserve e traguardo.** K562 è già vista dalle reti r2/r3; H1 train/val è nel corpus, H1 test resta chiusa e non si
-usa per debug. La consegna D/E/F (dati il 22/10, invii fino al 5/11) richiede la prova generale a forma piena
-([R-REV](piani/revisione-critica.md), [S-INVII](piani/invii-finale.md)) anche se resta il transfer.
+Il corpus, le ingestioni e r1–r3 restano disponibili attraverso [R-LAB](piani/piano-giorno-2026-09-30.md).
+I loro risultati sono tecnici o esplorativi: più cellule non dimostrano un modello migliore.
+Il quarto training non è un lancio automatico al rinnovo della quota.
+**K562 è già visto dalle reti r2/r3; H1 train/val è nel corpus, H1 test resta chiusa.**
+La riserva non si usa per debug né si rinomina «nuovo contesto».
 
-### Coordinamento e decisioni aperte
+La consegna finale D/E/F resta il traguardo. La prova generale a forma piena è ancora
+da completare, anche se si conserva il transfer ([R-REV](piani/revisione-critica.md)).
+Risorse, spazio e accessi si misurano alla ripresa; i valori del 30/09 sono storia.
 
-- La sessione che lavora su R-LEAD si registra nella sua intestazione con macchina, commit, file e output; lo stato
-  scritto in una scheda non prova che un job sia vivo. Le guide prima di questa riscrittura sono nello
-  [storico del consolidamento](storico/consolidamento_2026-10-03/INDICE.md).
-- **Autorizzazioni:** il 3/10 sera il proprietario ha autorizzato in chat i job necessari al piano su Colab e Kaggle,
-  negli account configurati ed entro quota, con i trasferimenti e i download strettamente necessari delle fonti già
-  catalogate. Acquisti, servizi a pagamento, invii ufficiali e push restano da chiedere ogni volta.
-- Uso di ulteriori dati della stessa linea e verifica esterna della licenza Orion restano decisioni distinte;
-  identità fuori dalla repo pubblica.
+### Coordinamento e decisioni realmente aperte
+
+Il proprietario ha confermato Claude e teammate **fermi** durante il rinnovo; la prossima
+sessione prende R-LEAD registrando macchina, commit, file e output. Gli incarichi datati
+sono conservati nello [storico del rinnovo](storico/rinnovo_2026-10-01/INDICE.md).
+
+- Ogni accesso mancante si presenta con file necessario e passo impedito. H1 train/val
+  non è un download ancora da proporre sulla base della vecchia lista.
+- Nuovo cloud, download, invii e push seguono CLAUDE.md e la chat pertinente. Resta aperto
+  il perimetro delle autorizzazioni cloud annotate in modo diverso nelle vecchie schede.
+- Uso di ulteriori dati della stessa linea e verifica esterna della licenza Orion restano
+  decisioni distinte dall'autorizzazione già data per gli invii; identità fuori dalla repo pubblica.
 - La preregistrazione t21 citata ma assente resta [R-020](REGISTRO.md#r-020--evidenza-citata-ma-assente-dal-repository),
   non va ricostruita dopo il risultato.
 
-La pubblicazione si verifica confrontando commit locale e remoto aggiornato. Worktree, scratchpad e infrastruttura
-hanno il proprio stato in [AGENTI](AGENTI.md).
+La pubblicazione si verifica confrontando commit locale e remoto aggiornato: nessuna lista
+statica di commit «mai pubblicati» è autorevole. Worktree, scratchpad e infrastruttura hanno
+il proprio stato in [AGENTI](AGENTI.md); il rinnovo non ne modifica la sorte.
 
 ## 1. Il problema
 

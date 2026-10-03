@@ -1,14 +1,13 @@
 # Piani — un incarico operativo, supporti e alternative
 
 **Per lavorare adesso:** [R-LEAD](piani/strategia-scientifica.md), con il
-[prompt per Claude](PROMPT_CLAUDE.md). Dal 3 ottobre sera R-LEAD procede su due binari (D-054):
-il **modello**, la rete ancorata al transfer nel pilot v4 e poi sul corpus ampliato; i **dati**,
-l'integrazione di tutte le linee e i contesti idonei (D-053), che prosegue qualunque sia l'esito
-del pilot. Stato generale e riferimento in [PROGETTO §0](PROGETTO.md).
+[prompt per Claude](PROMPT_CLAUDE.md). Dal 2 ottobre la prima consegna costruisce una
+prova del trasferimento a linee mai viste perturbate: dati collegati, split, banco e
+confronto semplice. La riparazione della rete è condizionata alla domanda del banco (D-052).
+Stato generale e riferimento in [PROGETTO §0](PROGETTO.md).
 
 Questo indice mantiene priorità e dipendenze; stato e presa in carico stanno nelle schede.
-Le versioni precedenti sono conservate: [rinnovo dell'1–2 ottobre](storico/rinnovo_2026-10-01/INDICE.md),
-[consolidamento del 3 ottobre sera](storico/consolidamento_2026-10-03/INDICE.md).
+Il rinnovo del 1–2 ottobre conserva [le versioni precedenti](storico/rinnovo_2026-10-01/INDICE.md).
 Non sono incarichi da riprendere dai loro vecchi «prossimi passi».
 
 ## 1. Dove leggere che cosa
@@ -22,20 +21,18 @@ un protocollo o una riga «in corso» non prova che un job sia attivo o concluso
 
 | Ruolo | Scheda | Quando usarla |
 |---|---|---|
-| **Piano operativo unico** | [R-LEAD — P0–P6](piani/strategia-scientifica.md) | Binario del modello (pilot v4, corpus ampliato, conferma P5, finale P6) e binario dei dati (D-053); stato, prossimo passo e job attivi stanno nella sua intestazione |
-| Esecuzione del binario dati | [R-LAB](piani/piano-giorno-2026-09-30.md) | Ingestione completa, archivio, verifiche indipendenti, gemelli compatti; i job li sceglie R-LEAD |
-| Riconciliazione e lacune dei dati | [R-DATI](piani/dati-affidabilita.md) | Inventario riconciliato col catalogo (D-053), aggregati per le voci che non ne hanno, campioni annidati con perdita d'informazione misurata |
-| Verifiche | [R-REV](piani/revisione-critica.md) | Forma piena, scorer, leakage, generazione; non si chiude perché parte un training |
-| Consegna finale | [S-INVII](piani/invii-finale.md) | Manifest, pacchetto e lettura ufficiale; preparazione indipendente dal successo neurale |
+| **Implementazione principale** | [R-LEAD — P0–P6](piani/strategia-scientifica.md) | Sequenza del 2/10: fattibilità, split C/J, banco, confronto semplice del contesto, estensioni motivate, conferma e finale |
 | Obiettivo del programma | [R-COMP](piani/modello-competitivo.md) | Perimetro e criterio competitivo; nessun secondo percorso da avviare |
+| Inventario dell'esecuzione | [R-LAB](piani/piano-giorno-2026-09-30.md) | Corpus, training e artefatti disponibili; nuovi job scelti attraverso R-LEAD |
+| Verifiche residue | [R-REV](piani/revisione-critica.md) | Forma piena, banco K562, basali e residui; la tabella distingue concluso e da fare |
+| Consegna finale | [S-INVII](piani/invii-finale.md) | Manifest, pacchetto e lettura ufficiale; preparazione indipendente dal successo neurale |
+| Supporto condizionato | [R-DATI](piani/dati-affidabilita.md) | Una lacuna di dati misurata nel banco, non una nuova raccolta indiscriminata |
 | Ipotesi condizionata | [R-SWITCH](piani/switch-distribuzioni.md) | Limite di popolazione misurato e guide/repliche indipendenti |
 | Catalogo precedente | [R-V2](piani/modello-v2.md) | Ritrovare filoni ed esiti; riapertura motivata attraverso R-LEAD |
 
-Dipendenze: il binario del modello legge i dati che R-LAB e R-DATI rendono verificati; il
-corpus ampliato entra nel protocollo successivo al pilot in ogni caso. S-INVII e R-REV non
-dipendono dall'esito neurale. Le alternative conservano valore come ipotesi, senza diventare
-piani da eseguire insieme. Ogni nuovo confronto ha una regola scritta prima dei numeri.
-Nessuna voce dell'indice autorizza quota o invii.
+R-COMP e R-LAB descrivono scopo e mezzi dello stesso lavoro. Le alternative conservano
+valore come ipotesi, senza diventare otto piani da eseguire insieme. Ogni nuovo confronto
+ha una regola scritta prima dei numeri. Nessuna voce dell'indice autorizza quota o invii.
 
 ## 3. Lavorare in una cartella condivisa
 

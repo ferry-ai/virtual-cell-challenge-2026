@@ -64,18 +64,6 @@ cambiare il codice: `scripts/CLAUDE.md` e `src/vcc2026/CLAUDE.md`.
 
 ### 4. Dati e sorgenti
 
-- **Mandato non negoziabile, 3/10 (D-053).** Tutte le linee e i contesti idonei nel percorso principale, con
-  tre rappresentazioni collegate (archivio completo verificato, aggregati, campioni cellulari), inventario
-  riconciliato col catalogo e uso effettivo verificato ([GENERALIZZAZIONE §2.1](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile)).
-  L'integrazione prosegue qualunque sia l'esito del pilot v4.
-- **Misurato, 3/10 sera.** Corpus cellulare del pilot: 8 gruppi, 365 shard, 5.603.629 cellule, 53,3 GB; i loro
-  gemelli compatti, verificati per decodifica, occupano 21,25 GB
-  ([manifest](../reports/modelli/rete_ancorata_v4_2026-10-03/esito/)). Aggregati nel cubo del banco r2 per 10
-  gruppi, fra cui CD4T (tre stati), HCT116, HEK293T e K562 VIPerturb, già usati come fonti delle ancore v4.
-  Ingestione completa ([README](../reports/sorgenti/ingestione_completa_2026-10-03/README.md),
-  [consegna](../reports/sorgenti/ingestione_completa_2026-10-03/HANDOFF_CLAUDE2.md)): KOLF pan-genome chiuso e
-  verificato; Orion HCT116 e HEK293T con le ultime quattro parti in corsa dal 3/10 23:08; CD4 due parti su 24; DLD-1,
-  Mixscale, VIPerturb in cellule, microglia e PerturbFate ancora da convertire.
 - **Mandato del proprietario, 3/10.** Acquisizione completa delle cellule CD4 idonee:
   capacità Drive dichiarata 5 TB, occupazione da misurare; il campione iniziale non è
   un tetto definitivo. Revisione locale della consegna Claude2 e passaggio della regia
@@ -95,34 +83,18 @@ cambiare il codice: `scripts/CLAUDE.md` e `src/vcc2026/CLAUDE.md`.
 - **Regola.** Una sorgente non si scarta per scarsa sovrapposizione con i 300 bersagli (D-044); un
   gene non misurato resta mascherato, non vale zero (D-009).
 
-Leggi prima: [GENERALIZZAZIONE §2.1](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile),
-[sorgenti](../reports/sorgenti/README.md), [strategia dati inoltrata dal proprietario](../reports/sorgenti/ingestione_completa_2026-10-03/STRATEGIA_DATI_TRAINING.md).
-Piano operativo: il binario dati di [R-LEAD](piani/strategia-scientifica.md); l'esecuzione (ingestione, archivio,
-verifiche, gemelli) in [R-LAB](piani/piano-giorno-2026-09-30.md); inventario riconciliato, aggregati mancanti e
-campioni annidati in [R-DATI](piani/dati-affidabilita.md).
+Leggi prima: [GENERALIZZAZIONE](GENERALIZZAZIONE.md), [sorgenti](../reports/sorgenti/README.md).
+Piano operativo: [R-LEAD P0/P1 e P4](piani/strategia-scientifica.md).
+[R-LAB](piani/piano-giorno-2026-09-30.md) indicizza il corpus;
+[R-DATI](piani/dati-affidabilita.md) si attiva per lacune specifiche del banco.
 
 ### 5. Modelli appresi e generalizzazione
 
-- **In corso, 3/10 sera: pilot v4 della rete ancorata** (direzione D-054: basale dai controlli +
-  ancora dal transfer degli aggregati + correzione appresa sulle cellule). Protocollo congelato prima
-  dei training, con la regola contro la propria ancora e il requisito di promozione contro la ricetta
-  di produzione ([protocollo](../reports/modelli/rete_ancorata_v4_2026-10-03/PROTOCOLLO.md),
-  [lanci](../reports/modelli/rete_ancorata_v4_2026-10-03/lancio_train_r1.json)). Nessun esito ancora.
-- **Misurato, v3 r1 (3/10):** pilot incompleto. H1 non soddisfa il bilanciamento: il campionatore a
-  epoche, rigiocato sullo stato reale, riproduce esattamente le estrazioni della corsa e non carica mai
-  gli shard dei neuroni CRISPRi; la riserva di valutazione ha tolto circa 88 minuti di training; la GPU
-  aspettava la decompressione gzip. Risultati scientifici non aperti; non è una bocciatura
-  ([diagnosi](../reports/modelli/rete_ancorata_v4_2026-10-03/diagnosi_r1/DIAGNOSI.md),
-  [ricevute Codex](../reports/analisi/candidato_ibrido_2026-10-03/README.md)).
-- **Misurato, pilot v2 r3 (3/10):** lo stato delle cellule di controllo aggiunge informazione al loro
-  profilo medio (Q1 passa), la rete non supera il transfer (Q2 no) in entrambe le corsie; le miscele a
-  posteriori non sono promettenti ([protocollo r3 §11–12](../reports/modelli/rete_cellulare_2026-10-03/PROTOCOLLO.md),
-  [miscele](../reports/modelli/rete_cellulare_2026-10-03/esito/miscele_r3/LETTURA.md)).
-- **Misurato, P3 (2/10) e P4 (3/10):** C e J `no_benefit`: i controlli medi della linea esclusa non
-  migliorano il transfer né come guadagni per gene né come correzione bilineare, né con dieci gruppi né con
-  una rete non lineare sul pseudobulk; sui sei membri di HepG2 vince il transfer (0,232 contro 0,184 del
-  migliore braccio) ([CP-0056](checkpoints/0056-banco-contesto-c-j.md), [CP-0057](checkpoints/0057-p4-dieci-gruppi-pseudobulk.md)).
-  Per indicazione del proprietario quelle reti sul pseudobulk valgono come baseline, non come candidati.
+- **Audit tecnico 3/10 sera.** Le ricevute della rete ancorata v3 mostrano un training H1
+  che non supera la guardia preregistrata sul bilanciamento dei gruppi; non è un verdetto
+  scientifico sul candidato. Conteggio delle linee, proposta ispirata a X e priorità per
+  dati e batch nel [rapporto Codex](../reports/analisi/candidato_ibrido_2026-10-03/README.md).
+  Nessun nuovo training o score; scelte operative in R-LEAD, nuovi job in pausa.
 - **Scoring 1/10.** T29 non promuove la sostituzione del transfer con la rete r2 `desc`
   ([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). La scarsa discriminazione
   dei bersagli è misurata dal PDS; risposta comune, calibrazione, apprendimento ed esportazione
@@ -145,12 +117,12 @@ campioni annidati in [R-DATI](piani/dati-affidabilita.md).
 - **Regola proposta.** Una rete nuova si prova sui sei membri, con una riserva mai valutata
   ([audit del prescreen](../reports/analisi/lead_scientist_2026-09-29/neural/NN_PRESCREEN_AUDIT.md)).
 
-Leggi prima: il [protocollo v4](../reports/modelli/rete_ancorata_v4_2026-10-03/PROTOCOLLO.md) e la
-[diagnosi](../reports/modelli/rete_ancorata_v4_2026-10-03/diagnosi_r1/DIAGNOSI.md); le analisi Codex del 3/10
-([candidato ibrido](../reports/analisi/candidato_ibrido_2026-10-03/README.md),
-[lezioni 2025](../reports/analisi/lezioni_vcc2025_2026-10-03/README.md)); [GENERALIZZAZIONE](GENERALIZZAZIONE.md);
-[modelli](../reports/modelli/README.md). Piano operativo: [R-LEAD](piani/strategia-scientifica.md), con il
-binario del modello e quello dei dati (D-053, D-054). T non promuove per contesti nuovi.
+Leggi prima: [GENERALIZZAZIONE](GENERALIZZAZIONE.md), [modelli](../reports/modelli/README.md), la
+sezione «Rete sulle sorgenti» dell'[indice lead](../reports/analisi/lead_scientist_2026-09-29/README.md).
+Piano operativo: [R-LEAD, P0–P6](piani/strategia-scientifica.md), rivisto il 2/10 (D-052):
+prima la prova C/J su linee escluse e la correzione semplice dipendente dal contesto;
+rete e nuovi dati soltanto per un limite identificato. T non promuove per contesti nuovi.
+[R-LAB](piani/piano-giorno-2026-09-30.md) indicizza corpus e artefatti;
 [R-COMP](piani/modello-competitivo.md) mantiene l'obiettivo, [R-V2](piani/modello-v2.md) le alternative.
 
 ### 6. Set finale D, E, F

@@ -21,8 +21,9 @@ lettura degli shard, i budget, le medie delle ancore e le loro fonti. Gli origin
 | `kaggle_anchors.py`, `kaggle_train.py`, `kaggle_gen.py` | Launcher v4 di ancore, training (gemelli come sorgenti) e generazione (bersagli della corsia B r3, modulo completo) |
 | `bench_effects.py`, `lane_b.py`, `decide_anchored.py`, `decide_pilot.py` | Corsie A e B con i tre riferimenti di transfer a medie J; la regola del §7 (`decide_pilot.py` è la copia v3 di cui la regola usa `technical`, `paired`, `rule`) |
 | `generate_cells.py`, `extract_cells.py`, `choose_targets.py` | Generazione delle cellule (v4: `--with-baseline`); estrazione e scelta dei bersagli, copie v3 non usate dalla v4 |
-| `fixtures.py` e `test_*.py` | Test: formato (5), costruzione (3), campionatore (6), training end-to-end (8), ancore (6), regola (4), generazione (3) |
+| `fixtures.py` e `test_*.py` | Test: formato (5), costruzione (3), campionatore (6), training end-to-end (8), ancore (6), regola (5), generazione (3) |
 | `lancio_fast_r1.json`, `lancio_anchors_r1.json`, `lancio_train_r1.json` | Lanci su Kaggle con autorizzazione, preflight, input e stato |
+| `fetch_outputs.py`, `esito/` | Scarico in sola lettura dei file piccoli di un kernel concluso; manifest e log dei gemelli (`fast_<x>_r1/`) e delle ancore (`anchors_r1/`), poi le ricevute dei training |
 
 I dati pesanti stanno nella radice dati, `processed/rete_ancorata_v4_2026-10-03/`: stage dei kernel, ricevute grezze
 dei training v3 (`r1_logs_raw/`), output scaricati.
