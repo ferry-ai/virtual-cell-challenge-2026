@@ -538,12 +538,16 @@ def prepass(a):
     sums, nsum = {}, Counter()
     pert_sum, pert_n = defaultdict(lambda: np.zeros(G)), Counter()
     offered = Counter()
+    quota_by_key = defaultdict(dict)        # built once: the pilot's prepasses (commit ad5ddd8) recomputed np.unique of
+    for kl, q in quota.items():             # the shard's keys for every quota item of every shard (slow, same quotas)
+        quota_by_key[kl[0]][kl] = q
     tasks = [{"path": str(i.path), "official_index": i.official_index, "measured": i.measured,
               "gene_of_axis": corpus.gene_of_axis, "G": G, "keys": i.keys, "admitted": i.admitted,
               "control": i.control, "cls": i.cls, "symbols": i.symbols, "lib_key": per[i.sid]["lib"],
               "libc": i.libc, "eval_symbols": eval_symbols, "seed": a.seed, "sid": i.sid,
               "cell_keys": i.cell_keys, "input_genes": input_genes,
-              "quota": {kl: q for kl, q in quota.items() if kl[0] in set(np.unique(i.keys))}} for i in shards]
+              "quota": {kl: q for k in np.unique(i.keys) for kl, q in quota_by_key.get(k, {}).items()}}
+             for i in shards]
     for info, res in zip(shards, pool_map(second_read, tasks, a.workers)):
         for k, v in res["ctrl_sum"].items():
             ctrl_sum[k] += v
