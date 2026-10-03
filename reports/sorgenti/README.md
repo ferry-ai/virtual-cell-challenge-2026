@@ -28,6 +28,7 @@ indici e misure. Indice generale: [../README.md](../README.md).
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 03/10 | [revisione_ingestion_2026-10-03/](revisione_ingestion_2026-10-03/) | Revisione del codice Claude2, mandato CD4 completo e passaggio a Claude1; originale preservato, correzioni e test locali, stato archivio | verifica locale; acquisizione e validazione remota ancora da completare | ★★ |
 | 03/10 | [libera_spazio_2026-10-03/](libera_spazio_2026-10-03/) | Copie locali delle vecchie matrici r1/r2: hash locali contro verifica indipendente Kaggle, hard link contati una volta, rimozione circoscritta e ricevute | perimetro di nove percorsi; il resto dell'archivio attende verifica Colab | ★★ |
 | 02/10 | [archivio_cloud_2026-10-02/](archivio_cloud_2026-10-02/) | Inventario reale di portatile, Drive e Kaggle; specchio della radice dati su Drive (`MyDrive/vcc2026/data/<rel>`) con ricevute; verifiche indipendenti su Kaggle e Colab; elenco delle copie locali eliminabili; piano d'ingestione nel cloud | in corso: le copie sul mount di Drive valgono solo dopo la lettura dal runtime Colab | ★★ |
 | 30/09–01/10 | [corpus_cellulare_2026-09-30/](corpus_cellulare_2026-09-30/) | Inventari successivi, contratto degli shard, QC, adattatori e job; corpus usato nei training cellulari r1–r3 | dati e implementazione con manifest per versione; le vecchie code Colab non descrivono lo stato corrente. Disponibilità sulla macchina destinataria da verificare | ★★★ |

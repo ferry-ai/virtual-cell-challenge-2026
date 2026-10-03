@@ -15,8 +15,18 @@
 `01a10114-058a-7342-9f0e-7942cc43ad6c`, portatile Windows, presa in carico alle 12:43 CEST.
 File e nuove prove in [libera_spazio_2026-10-03](../../reports/sorgenti/libera_spazio_2026-10-03/README.md):
 prima rimozione conclusa alle 12:49 CEST (14,517 GiB di copie già verificate su Kaggle).
-Il resto è in attesa delle ricevute dei job Colab 130–131: il proprietario ha confermato che
-avvierà il dispatcher. Nessun cambiamento alle assegnazioni della ricerca o all'ingestion parallela.
+I job Colab 130–131 sono partiti il 3/10 alle 14:00 CEST; alla verifica delle 14:40
+non erano ancora visibili ricevute degli hash. Il proprietario affida ora la regia a Claude1;
+il monitor periodico Codex è sospeso. Stato, consegna Claude2 e correzioni nella
+[revisione ingestion](../../reports/sorgenti/revisione_ingestion_2026-10-03/README.md).
+
+**Ingestion, precisazione del proprietario del 3/10:** Drive ha 5 TB di capacità dichiarata;
+l'obiettivo CD4 è l'acquisizione completa delle cellule idonee, senza tetto definitivo di
+10 cellule per guida. Spazio libero, copie già presenti e dimensione degli output vanno
+misurati. Campioni iniziali e bilanciamento del training sono scelte distinte dall'archivio.
+Codex termina la revisione locale e consegna a Claude1 la prosecuzione; nessun nuovo job
+o seguito Claude2 è stato avviato durante il passaggio. La revisione conserva i dettagli
+e le condizioni di adozione; non cambia i ruoli e gli split di R-LEAD.
 
 Una tabella di lacune con domanda, file necessario, ruolo C/T/J, unità e maschere,
 controlli/repliche/guide, accesso, byte e limite che risolve. Distinguere overlap dei target

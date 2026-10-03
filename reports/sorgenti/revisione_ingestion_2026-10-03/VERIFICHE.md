@@ -45,3 +45,10 @@ si è fermata prima di creare un commit inatteso. Nessuna cronologia è stata ri
 il commit finale Codex riguarda soltanto README, prompt di passaggio e questo riepilogo.
 Nelle prossime sessioni condivise usare un worktree o un indice temporaneo per isolare
 la preparazione, e committare percorsi espliciti come già richiesto da `docs/AGENTI.md`.
+
+**Aggiornamento prima della chiusura:** la sessione concorrente ha corretto il proprio
+commit: la lane B ora è in `719be07`, mentre `b6df9d0` registra la lezione in
+`docs/AGENTI.md`. I 23 file ingestion sono tornati nell'indice; `4c2b5bb` ha quindi
+salvato soltanto i tre riepiloghi. I restanti 21 file della revisione vengono committati
+separatamente da Codex con percorsi espliciti. Nessun codice è perso o riapplicato alla
+pipeline; `54405b2` descrive l'incidente osservato, non la sede finale del lavoro.

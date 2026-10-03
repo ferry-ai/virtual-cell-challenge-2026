@@ -64,6 +64,11 @@ cambiare il codice: `scripts/CLAUDE.md` e `src/vcc2026/CLAUDE.md`.
 
 ### 4. Dati e sorgenti
 
+- **Mandato del proprietario, 3/10.** Acquisizione completa delle cellule CD4 idonee:
+  capacità Drive dichiarata 5 TB, occupazione da misurare; il campione iniziale non è
+  un tetto definitivo. Revisione locale della consegna Claude2 e passaggio della regia
+  a Claude1 nella [revisione ingestion](../reports/sorgenti/revisione_ingestion_2026-10-03/README.md).
+  Codice e fixture non attestano una nuova acquisizione remota.
 - **Verificato.** CD4 è Flex e K562 Replogle è 3'. Per Orion le schede indicano GEM-X 5′, da
   riverificare sul protocollo primario ([audit dei dati](../reports/analisi/lead_scientist_2026-09-29/AUDIT_DATI.md)).
 - **Misurato.** I profili basali sono normalizzati su supporti genici diversi: riscalarli non

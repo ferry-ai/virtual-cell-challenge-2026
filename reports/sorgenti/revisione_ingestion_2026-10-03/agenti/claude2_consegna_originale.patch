@@ -1,0 +1,1692 @@
+diff --git a/reports/sorgenti/ingestione_espansione_2026-10-03/EXECUTION_HANDOFF.md b/reports/sorgenti/ingestione_espansione_2026-10-03/EXECUTION_HANDOFF.md
+new file mode 100644
+index 0000000..54dee2d
+--- /dev/null
++++ b/reports/sorgenti/ingestione_espansione_2026-10-03/EXECUTION_HANDOFF.md
+@@ -0,0 +1,59 @@
++# EXECUTION_HANDOFF — che cosa eseguire, in ordine (3 ottobre 2026, worker claude2)
++
++Nulla di questo è stato eseguito da me: il confine dell'hub nega Python, rete e letture fuori dal worktree.
++`R` = cartella `reports/sorgenti/ingestione_espansione_2026-10-03`. Ogni `--out` è una cartella **nuova**.
++
++## 0. Test locali (portatile, nessuna rete, nessuna quota)
++
++```powershell
++.\scripts\py.cmd -m unittest discover -s reports/sorgenti/ingestione_espansione_2026-10-03 -p "test_*.py" -v
++```
++Atteso: `test_coverage_audit` (16 casi). Se un caso fallisce è un difetto mio, non un risultato: il codice non è mai girato.
++**Mancano** (da scrivere prima dell'uso): test di `common.py` (schema delle ricevute di `rlab_job`, server che ignora
++Range, risposta corta, dimensione o ETag cambiati, checksum fallito), di `campionamento_v2.py` e di `orion_job.py`.
++
++## A. Terza ondata scPerturb: audit di copertura sugli shard già pubblicati (nessun download dalle sorgenti)
++
++- **Prerequisito:** kernel CPU privato Kaggle con i dataset `davidmaisterx/rlab-scp-ko`, `rlab-scp-tcells`,
++  `rlab-scp-k562-hek` (e, per il confronto, gli undici del pilot elencati in `lancio_prepass_r1.json`), più questa
++  cartella e `corpus_cellulare_2026-09-30/adapters.py` come dataset di codice. **Permesso:** push di un kernel CPU
++  (nessuna GPU); via del proprietario per i kernel CPU registrato nella scheda R-LEAD il 3/10.
++- **Comandi nel kernel:**
++```bash
++python R/coverage_audit.py collect --shards /kaggle/input/rlab-scp-ko /kaggle/input/rlab-scp-tcells /kaggle/input/rlab-scp-k562-hek --out /kaggle/working/w3_counts
++python R/coverage_audit.py audit --counts /kaggle/working/w3_counts/label_counts.csv --line-groups R/line_groups_expanded_v1.json \
++  --axis <gene_names.csv> --target-keys <target_keys.json del dataset rcell-code-r1> --hidden-fold 0 --n-folds 5 \
++  --holdout-group H1 --out /kaggle/working/w3_audit_h1     # ripetere per HepG2 e RPE1; e con i label_counts del pilot
++```
++- **Uscita:** `by_source.csv`, `control_pools.csv`, `target_by_group.csv`, `histogram.csv`, `summary.json`.
++- **Nota:** senza `--aliases` le etichette non risolte (TCEB1, C19orf66, PDL1, …) restano fuori, contate.
++
++## B. Orion (priorità): tre fasi per linea su Colab CPU
++
++- **Prerequisiti:** via del proprietario al download (126,3 GB letti sul runtime; vedi `specs/orion_v2.json`,
++  `authorisation`); snapshot del codice con `R/`, `corpus_cellulare_2026-09-30/` e
++  `universo_2026-09-26/orion_*/manifest.json`; `pyarrow`, `anndata`, `h5py`, `scipy`, `pandas` sul runtime;
++  `gene_names.csv`; almeno 4 GB liberi sul disco del runtime; spazio su Drive per gli shard (stima circa 20 GB, da misurare).
++- **Launcher:** non ancora materializzato (manca `build_jobs.py`): va scritto sul modello di
++  `corpus_cellulare_2026-09-30/colab_job.py` (attesa dei file di setup per sha256, `validate_runtime.py`, preflight
++  comune sul runtime, poi i comandi sotto), con numero di coda nuovo e `OUT` assente. Non mettere in coda prima dei test.
++```bash
++DRIVE=/content/drive/MyDrive/vcc2026; OUT=$DRIVE/data/processed/corpus_cellulare_2026-10-03/j16_orion_cells_r1
++python R/orion_job.py meta   --spec R/specs/orion_v2.json --line HCT116 --out $OUT/meta_hct116
++python R/orion_job.py sample --spec R/specs/orion_v2.json --line HCT116 --meta $OUT/meta_hct116 --out $OUT/sample_hct116
++python R/orion_job.py shards --spec R/specs/orion_v2.json --line HCT116 --sample $OUT/sample_hct116 \
++  --axis /content/work/in/gene_names.csv --stage /content/work/j16/stage_hct116 --out $OUT/shards_hct116 --data-root $DRIVE/data
++# prova breve prima del job intero: aggiungere --max-files 2 con out nuovi (l'unità risulta volutamente incompleta)
++# runtime perso: stesso comando shards con --out nuovo e --reuse $OUT/shards_hct116 (i file GEM finiti non si riscaricano)
++# poi HEK293T con gli stessi tre comandi
++```
++- **Verifica indipendente (dopo `complete.json`):** su un altro runtime
++  `python reports/sorgenti/archivio_cloud_2026-10-02/verify_drive.py --manifest-dir $OUT/shards_hct116 --data-root $DRIVE/data --out <nuova>`;
++  poi `corpus_cellulare_2026-09-30/publish_kaggle.py --job-dir $OUT/shards_hct116 --unit orion_hct116 --owner <account verificato> --slug rlab-orion-hct116 ...`
++  e il kernel `archivio_cloud_2026-10-02/kaggle_verify/`. Solo allora «verificato in remoto».
++
++## C. Ancora aperto dell'incarico originale (non consegnato in questo turno)
++
++CD4 (job a intervalli esatti con `vcc2026.remote_csr`, tabella incrociata `guide_group × guide_type` già in
++`campionamento_v2.cd4_crosstab`), Mixscale/Jiang (conversione RDS), KOLF pan-genome, VIPerturb, completamento di
++Southard, metadati di microglia e PerturbFate, `preflight_metadata.py`, `build_jobs.py`, righe di registro e indice.
+diff --git a/reports/sorgenti/ingestione_espansione_2026-10-03/PROGRESS.md b/reports/sorgenti/ingestione_espansione_2026-10-03/PROGRESS.md
+new file mode 100644
+index 0000000..d58fbaa
+--- /dev/null
++++ b/reports/sorgenti/ingestione_espansione_2026-10-03/PROGRESS.md
+@@ -0,0 +1,46 @@
++# PROGRESS — ingestione espansa (worker claude2, agent hub)
++
++Aggiornato il 3/10/2026 alle 14:37 circa (inizio del turno letto con `date`: 14:11:44). Parole: **scritto** = codice
++presente; **eseguito** = test o comando girato davvero; **lanciato** = job cloud partito; **verificato in remoto** =
++shard riletti da un runtime indipendente.
++
++## Limite della sessione (misurato)
++
++Negati dal confine dell'hub: esecuzione di Python, rete (`WebFetch`), letture fuori dal worktree (radice dati,
++Drive). **Nessun test eseguito, nessun metadato remoto riletto, nessun job lanciato, nessuno shard prodotto.**
++I numeri «misurati» vengono da file della repo al commit `05504a1`.
++
++## Stato dei file
++
++| File | Che cosa | Stato |
++|---|---|---|
++| `coverage_audit.py` | audit: conteggi per sorgente/gruppo/studio/modalità/pool di controlli, matrice bersaglio × gruppo, istogramma 1/2/3/4+ (tutte le modalità e solo CRISPRi) dopo holdout e fold nascosta | scritto, **non eseguito** |
++| `test_coverage_audit.py` | 16 casi: alias, cellule duplicate, ripubblicazioni, modalità, gruppo escluso, gruppi correlati, bersagli nascosti, contesti senza regola, parità con i gruppi del pilot; fold attese calcolate con `sha256sum` | scritto, **non eseguito** |
++| `line_groups_expanded_v1.json` | proposta dei gruppi di linea (contiene invariato il file del pilot) | scritto |
++| `inventario_scp_w3.json` | J13–J15: identità delle sorgenti, cellule, controlli, bersagli, gruppi proposti, aggiunta proposta al manifest di training | scritto dai file della repo; somme verificate a mano |
++| `campionamento_v2.py` | Orion: due disegni nominati (`srs_line_target`, `proportional_gem`), tranche annidate; CD4: tabella incrociata e suo controllo | scritto, **non eseguito**, **senza test** |
++| `orion_job.py`, `specs/orion_v2.json` | Orion: fasi meta, sample, shards; riuso dopo runtime perso; parità con il passaggio del 26/09 | scritto, **non eseguito**, **senza test** |
++| `common.py` | sink degli shard (layout `rlab_job`), fetch a intervalli con lettura limitata, download senza sovrascrittura | scritto, **non eseguito**, **senza test** |
++| `env_check.py` | interprete, pacchetti, strumenti | scritto, non eseguito |
++| `EXECUTION_HANDOFF.md` | comandi esatti, prerequisiti, permessi | scritto |
++
++## Comando per il supervisore
++
++```powershell
++.\scripts\py.cmd -m unittest discover -s reports/sorgenti/ingestione_espansione_2026-10-03 -p "test_*.py" -v
++```
++
++## Rimane da fare (incarico originale ancora aperto)
++
++1. test di `common.py` richiesti dalla revisione (schema reale delle ricevute di `rlab_job`; server che ignora Range;
++   risposta corta; dimensione/ETag cambiati; checksum fallito), di `campionamento_v2.py` e di `orion_job.py`;
++2. `build_jobs.py` e launcher Orion (snapshot, manifest di preflight, coda); `preflight_metadata.py`;
++3. CD4 (job), Mixscale (conversione RDS), KOLF pan-genome, VIPerturb, Southard, metadati di microglia e PerturbFate;
++4. README del report, riga in `reports/sorgenti/README.md` e in `docs/REGISTRO.md` (senza, `31_check_docs.py` segnala
++   la cartella non coperta), proposta per R-DATI.
++
++## Blocchi
++
++- esecuzione, rete e letture esterne negate qui: test e cloud li esegue il supervisore;
++- byte di `metadata/gene_metadata.parquet` non registrati nella repo (lo sha256 sì): il job li legge dall'host;
++- via del proprietario al download Orion da confermare (due registrazioni diverse: INGESTIONE §5 e scheda R-LEAD).
+diff --git a/reports/sorgenti/ingestione_espansione_2026-10-03/campionamento_v2.py b/reports/sorgenti/ingestione_espansione_2026-10-03/campionamento_v2.py
+new file mode 100644
+index 0000000..bc9c6a4
+--- /dev/null
++++ b/reports/sorgenti/ingestione_espansione_2026-10-03/campionamento_v2.py
+@@ -0,0 +1,135 @@
++"""Outcome-blind cell samples, version 2: the Orion design made explicit, tranches that never discard, CD4 checks.
++
++Version 1 (`archivio_cloud_2026-10-02/campionamento.py`) is untouched. Its Orion code takes, per (line, target), the
++first k cells by hash rank over all GEM files; its prose says "allocated across GEM files in proportion". These are
++two designs with the same first-order inclusion probability and different joint behaviour, so here each has a name
++and the manifest records which one was used:
++
++  srs_line_target    v1's code: a simple random sample without replacement of the pooled stratum (line, target).
++                     pi = min(1, k/n). Cells per GEM file are hypergeometric: proportional only in expectation.
++  proportional_gem   stratified by GEM file with proportional allocation. Inside (line, target, GEM) cells are
++                     ordered by hash rank; the cell at position p of the n_g cells gets the score (p + v_g) / n_g,
++                     v_g in [0, 1) a hash of (salt, line, target, GEM); it is selected when score < k/n. Each score
++                     is uniform, so pi = min(1, k/n) exactly, and a GEM file gives floor or ceil of its share
++                     k*n_g/n. The number selected per target is random around k (never a fixed total).
++
++Both are nested in k: a larger k keeps every cell already selected, so k is a tranche size, not a decision to
++discard the rest. `window=(k0, k1)` selects the tranche between two sizes with pi = (min(k1,n) - min(k0,n)) / n.
++Selection reads only identity and guide columns; no count or depth column is used. Controls: all, pi = 1, in the
++first tranche. Excluded cells stay in the table with pi = 0 and a reason.
++"""
++from __future__ import annotations
++
++import hashlib
++
++import numpy as np
++import pandas as pd
++
++DESIGNS = ("srs_line_target", "proportional_gem")
++
++
++def _u64(text: str) -> int:
++    return int.from_bytes(hashlib.sha256(text.encode()).digest()[:8], "big")
++
++
++def rank(salt: str, tag: str, cells) -> np.ndarray:
++    """sha256(salt:tag:cell) as uint64: the rank of version 1, so equal salts give equal orders."""
++    return np.array([_u64(f"{salt}:{tag}:{c}") for c in cells], dtype=np.uint64)
++
++
++def _window(window, k):
++    k0, k1 = (0, k) if window is None else window
++    if not 0 <= k0 < k1:
++        raise ValueError("window must be 0 <= k0 < k1")
++    return int(k0), int(k1)
++
++
++def _pi(n, k0, k1):
++    n = np.asarray(n, dtype=np.int64)
++    return (np.minimum(k1, n) - np.minimum(k0, n)) / np.maximum(n, 1)
++
++
++def select_orion(obs: pd.DataFrame, line: str, salt: str, k: int, design: str, window=None) -> pd.DataFrame:
++    """One row per cell of a line. `obs`: index = cell id unique in the line, columns gem_file, target,
++    pass_guide_filter, is_control."""
++    if design not in DESIGNS:
++        raise ValueError(f"design must be one of {DESIGNS}")
++    need = {"gem_file", "target", "pass_guide_filter", "is_control"}
++    if need - set(obs.columns):
++        raise ValueError(f"obs lacks {sorted(need - set(obs.columns))}")
++    if not obs.index.is_unique:
++        raise ValueError("cell ids are not unique in the line")
++    k0, k1 = _window(window, k)
++    t = pd.DataFrame({"cell": obs.index.astype(str), "line": line, "gem_file": obs["gem_file"].astype(str).values,
++                      "target": obs["target"].astype(str).values})
++    ok = (obs["pass_guide_filter"] == 1).to_numpy()
++    ctl = obs["is_control"].astype(bool).to_numpy()
++    t["role"] = np.where(~ok, "excluded", np.where(ctl, "control", "targeted"))
++    t["reason"] = np.where(~ok, "pass_guide_filter != 1", "")
++    t["rank"] = rank(salt, line, t["cell"])
++    tg = t[t["role"] == "targeted"].sort_values(["target", "gem_file", "rank", "cell"], kind="mergesort").copy()
++    tg["n_stratum"] = tg.groupby("target")["cell"].transform("size").astype(np.int64)
++    if design == "srs_line_target":
++        tg = tg.sort_values(["target", "rank", "cell"], kind="mergesort")
++        pos = tg.groupby("target").cumcount().to_numpy()
++        tg["n_gem"] = tg.groupby(["target", "gem_file"])["cell"].transform("size").astype(np.int64)
++        tg["selected"] = (pos >= k0) & (pos < k1)
++    else:
++        tg["n_gem"] = tg.groupby(["target", "gem_file"])["cell"].transform("size").astype(np.int64)
++        pos = tg.groupby(["target", "gem_file"]).cumcount().to_numpy(dtype=np.int64)
++        pairs = tg[["target", "gem_file"]].drop_duplicates()
++        v = {(a, b): _u64(f"{salt}:gem:{line}:{a}:{b}") >> 32 for a, b in zip(pairs["target"], pairs["gem_file"])}
++        v32 = np.array([v[(a, b)] for a, b in zip(tg["target"], tg["gem_file"])], dtype=np.int64)
++        n, ng = tg["n_stratum"].to_numpy(), tg["n_gem"].to_numpy()
++        if len(tg) and int(pos.max() + 1) * int(n.max()) >= 2 ** 31:
++            raise OverflowError("stratum too large for the exact integer comparison")
++        lhs = (pos * 2 ** 32 + v32) * n                    # (p + v) / n_g < k / n  <=>  (p*2^32 + v32)*n < k*n_g*2^32
++        hi = np.minimum(k1, n) * ng * 2 ** 32
++        lo = np.minimum(k0, n) * ng * 2 ** 32
++        tg["selected"] = (lhs >= lo) & (lhs < hi)
++    tg["pi"] = _pi(tg["n_stratum"], k0, k1)
++    c = t[t["role"] == "control"].copy()
++    c["n_stratum"] = c.groupby("gem_file")["cell"].transform("size").astype(np.int64)
++    c["n_gem"] = c["n_stratum"]
++    c["selected"], c["pi"] = k0 == 0, float(k0 == 0)
++    e = t[t["role"] == "excluded"].copy()
++    e["n_stratum"], e["n_gem"], e["selected"], e["pi"] = 0, 0, False, 0.0
++    out = pd.concat([c, tg, e]).sort_values("cell", kind="mergesort").reset_index(drop=True)
++    out["design"] = design
++    return out
++
++
++def cd4_crosstab(obs: pd.DataFrame) -> dict:
++    """Counts of guide_group x guide_type x (gene id class), the intersection the sample relies on."""
++    g = obs["guide_group"].astype("string").fillna("<NA>")
++    y = obs["guide_type"].astype("string").fillna("<NA>")
++    gene = obs["perturbed_gene_id"].astype("string").fillna("<NA>")
++    cls = np.where(gene == "NTC", "NTC", np.where(gene == "<NA>", "<NA>", "gene"))
++    tab = pd.DataFrame({"g": g.values, "y": y.values, "c": cls}).value_counts()
++    return {"|".join(k): int(v) for k, v in tab.items()}
++
++
++def check_cd4_crosstab(tab: dict) -> list[str]:
++    """Problems of the intersection, empty when it is the one the eligibility rule assumes: the group 'targeting
++    single sgRNA' holds the targeting cells AND the single-guide non-targeting controls, and nothing else; 'no sgRNA'
++    has no type and no gene; 'multi sgRNA' has no gene. The marginals of 30/09 are compatible with this in all twelve
++    files, but they do not prove it: the cross-tabulation does."""
++    allowed = {"targeting single sgRNA|targeting|gene", "targeting single sgRNA|non-targeting|NTC",
++               "no sgRNA|<NA>|<NA>", "multi sgRNA|targeting|<NA>"}
++    bad = [f"unexpected cells {k}: {v}" for k, v in sorted(tab.items()) if k not in allowed and v]
++    if not tab.get("targeting single sgRNA|non-targeting|NTC"):
++        bad.append("no single-guide non-targeting control in 'targeting single sgRNA'")
++    return bad
++
++
++def summary(sample: pd.DataFrame) -> dict:
++    by = sample.groupby(["role", "reason"]).agg(cells=("cell", "size"), selected=("selected", "sum"))
++    tg = sample[sample["role"] == "targeted"]
++    per_target = tg.groupby("target")["selected"].sum() if len(tg) else pd.Series(dtype=float)
++    return {"cells": int(len(sample)), "selected": int(sample["selected"].sum()),
++            "by_role": {f"{r}|{w}": {"cells": int(v.cells), "selected": int(v.selected)} for (r, w), v in by.iterrows()},
++            "targets": int(tg["target"].nunique()),
++            "selected_per_target": {"min": float(per_target.min()) if len(per_target) else 0.0,
++                                    "median": float(per_target.median()) if len(per_target) else 0.0,
++                                    "max": float(per_target.max()) if len(per_target) else 0.0},
++            "expected_selected_targeted": float(tg["pi"].sum())}
+diff --git a/reports/sorgenti/ingestione_espansione_2026-10-03/common.py b/reports/sorgenti/ingestione_espansione_2026-10-03/common.py
+new file mode 100644
+index 0000000..162b9aa
+--- /dev/null
++++ b/reports/sorgenti/ingestione_espansione_2026-10-03/common.py
+@@ -0,0 +1,447 @@
++"""Shared pieces of the expanded ingestion: the reused R-LAB code, a shard sink with receipts, byte-range fetching.
++
++The shard contract, the adapters and the job runner of `reports/sorgenti/corpus_cellulare_2026-09-30` are imported
++from their own files, never copied or changed (reports/CLAUDE.md). A shard written through `ShardSink` is judged by
++the same `contracts.validate_shard` and laid out as `rlab_job.py` lays it out:
++
++    <out>/<unit>/<shard>.h5ad
++    <out>/<unit>/receipts/<shard>.json
++    <out>/<unit>/manifest.json             (written when the unit ends, with its parity)
++    <out>/complete.json                    (written last, only if every unit passed)
++    <out>/verify_manifest.json (+ .sha256) (the list an independent runtime re-hashes: archivio_cloud verify_drive.py)
++
++so `publish_kaggle.py` and the readers of the cell network work on it unchanged. Nothing is written over: every
++output directory must be new; an earlier attempt is passed as `reuse` and its verified shards are referenced in
++place, exactly as `rlab_job.py --reuse` does.
++"""
++from __future__ import annotations
++
++import hashlib
++import http.client
++import json
++import os
++import shutil
++import sys
++import threading
++import time
++import urllib.error
++import urllib.parse
++import urllib.request
++from collections import Counter
++from datetime import datetime, timezone
++from pathlib import Path
++
++HERE = Path(__file__).resolve().parent
++REPO = HERE.parents[2]
++CORPUS = HERE.parent / "corpus_cellulare_2026-09-30"
++MISSING = "MISSING"
++USER_AGENT = "vcc2026-ingestione-espansione/1"
++REDIRECTS = (301, 302, 303, 307, 308)
++
++
++def corpus():
++    """(adapters, rlab_job, contracts, inspect_remote): the R-LAB modules, imported from their own folder."""
++    if str(CORPUS) not in sys.path:
++        sys.path.insert(0, str(CORPUS))
++    import adapters  # noqa: PLC0415
++    import contracts  # noqa: PLC0415
++    import inspect_remote  # noqa: PLC0415
++    import rlab_job  # noqa: PLC0415
++    return adapters, rlab_job, contracts, inspect_remote
++
++
++def remote_csr():
++    """`vcc2026.remote_csr` (selected rows of a remote CSR as exact byte ranges), from the live library."""
++    src = str(REPO / "src")
++    if src not in sys.path:
++        sys.path.insert(0, src)
++    from vcc2026 import remote_csr as module  # noqa: PLC0415
++    return module
++
++
++def now() -> str:
++    return datetime.now(timezone.utc).isoformat()
++
++
++def sha256_file(path: Path) -> str:
++    h = hashlib.sha256()
++    with open(path, "rb") as fh:
++        for block in iter(lambda: fh.read(8 << 20), b""):
++            h.update(block)
++    return h.hexdigest()
++
++
++def md5_file(path: Path) -> str:
++    h = hashlib.md5()
++    with open(path, "rb") as fh:
++        for block in iter(lambda: fh.read(8 << 20), b""):
++            h.update(block)
++    return h.hexdigest()
++
++
++def _plain(v):
++    if hasattr(v, "item"):
++        return v.item()
++    if isinstance(v, Path):
++        return str(v)
++    if isinstance(v, (set, frozenset)):
++        return sorted(v)
++    return str(v)
++
++
++def dump_new(path: Path, obj) -> None:
++    """Write JSON to a file that must not exist yet."""
++    path.parent.mkdir(parents=True, exist_ok=True)
++    with open(path, "x", encoding="utf-8") as fh:
++        json.dump(obj, fh, indent=1, ensure_ascii=False, default=_plain)
++
++
++def load_json(path: Path):
++    return json.loads(Path(path).read_text(encoding="utf-8"))
++
++
++def new_dir(path: Path) -> Path:
++    """A directory that must not exist: no output is ever written over."""
++    if path.exists():
++        sys.exit(f"refusing: {path} exists")
++    path.mkdir(parents=True)
++    return path
++
++
++def sidecar_of(path: Path) -> Path:
++    return path.with_name(path.name + ".sha256")
++
++
++def write_sidecar(path: Path) -> str:
++    """`<file>.sha256` next to a state file (obs table, chunk map, sample), written once."""
++    digest = sha256_file(path)
++    with open(sidecar_of(path), "x", encoding="utf-8") as fh:
++        fh.write(f"{digest}  {path.name}\n")
++    return digest
++
++
++def check_sidecar(path: Path) -> str:
++    """The sha256 of `path`, which must equal the one in its sidecar."""
++    want = sidecar_of(path).read_text(encoding="utf-8").split()[0]
++    got = sha256_file(path)
++    if got != want:
++        sys.exit(f"refusing: {path} hashes {got}, its sidecar says {want}")
++    return got
++
++
++def find_state(name: str, out: Path, reuse: list[Path] | None) -> Path | None:
++    """A state file of this attempt or of an earlier one (searched in the order given), when its sidecar matches."""
++    for root in [out] + list(reuse or []):
++        path = root / name
++        if path.is_file() and sidecar_of(path).is_file():
++            check_sidecar(path)
++            return path
++    return None
++
++
++# ------------------------------------------------------------------------------------------ byte ranges
++
++def head(url: str, attempts: int = 5) -> dict:
++    """Size, ETag and Last-Modified of a public URL, from a one-byte ranged GET (hosts that redirect to signed
++    storage sign the URL for the method used: a HEAD-resolved URL can refuse ranged GETs, inspect_remote.py)."""
++    req = urllib.request.Request(url, headers={"Range": "bytes=0-0", "User-Agent": USER_AGENT})
++    last = None
++    for attempt in range(1, attempts + 1):
++        try:
++            with urllib.request.urlopen(req, timeout=60) as r:
++                total = r.headers.get("Content-Range", "").rsplit("/", 1)[-1]
++                size = int(total) if total.isdigit() else int(r.headers["Content-Length"])
++                return {"url": url, "final_host": urllib.parse.urlsplit(r.geturl()).netloc, "bytes": size,
++                        "etag": r.headers.get("ETag") or MISSING,
++                        "last_modified": r.headers.get("Last-Modified") or MISSING, "status": r.status}
++        except OSError as err:
++            last = err
++            time.sleep(5 * attempt)
++    raise OSError(f"{url}: no answer after {attempts} attempts ({last})")
++
++
++def range_fetcher(url: str, expected_size: int, etag: str | None = None, retries: int = 6, timeout: float = 120.0):
++    """`fetch(a, b)` -> bytes [a, b) of the URL, thread-safe, with the standard library only.
++
++    Every answer must be a 206 of exactly the span asked, of a file of `expected_size` bytes and, when the host sends
++    ETags, of the same ETag as the first answer (or as `etag` when given): bytes of two versions of a file are never
++    mixed. Each thread keeps one connection open (thousands of small ranges would otherwise pay a TLS handshake
++    each); a host that answers with a redirect (signed storage URLs) is asked through urllib, which follows it."""
++    parts = urllib.parse.urlsplit(url)
++    target = parts.path + (f"?{parts.query}" if parts.query else "")
++    local = threading.local()
++    lock = threading.Lock()
++    state = {"etag": etag if etag and etag != MISSING else None, "redirects": False, "requests": 0, "bytes": 0}
++
++    def headers(a: int, b: int) -> dict:
++        return {"Range": f"bytes={a}-{b - 1}", "User-Agent": USER_AGENT, "Accept-Encoding": "identity"}
++
++    def bounded(r, status: int, span: str, a: int, b: int) -> bytes:
++        """The body of an answer, read only when it is the 206 asked for and never beyond the span: a server that
++        ignores Range (a 200 with the whole file) is refused before one byte of the file is materialised."""
++        if status in REDIRECTS:
++            return b""
++        if status != 206:
++            raise OSError(f"HTTP {status}: the server did not honour Range")
++        if not span.startswith(f"bytes {a}-{b - 1}/"):
++            raise OSError(f"unexpected Content-Range {span!r}")
++        if int(span.rsplit("/", 1)[-1]) != expected_size:
++            raise ValueError(f"the remote size changed: {span}, expected {expected_size}")
++        body = r.read(b - a + 1)
++        if len(body) != b - a:
++            raise OSError(f"body of {len(body)} bytes for a span of {b - a}")
++        return body
++
++    def keepalive(a: int, b: int):
++        conn = getattr(local, "conn", None)
++        if conn is None:
++            cls = http.client.HTTPSConnection if parts.scheme == "https" else http.client.HTTPConnection
++            conn = local.conn = cls(parts.netloc, timeout=timeout)
++        try:
++            conn.request("GET", target, headers=headers(a, b))
++            r = conn.getresponse()
++            span = r.getheader("Content-Range", "") or ""
++            body = bounded(r, r.status, span, a, b)
++            if r.status in REDIRECTS:
++                r.read()
++        except Exception:
++            conn.close()                      # an unread or refused body must not poison the next request
++            local.conn = None
++            raise
++        return r.status, r.getheader("ETag"), body
++
++    def oneshot(a: int, b: int):
++        req = urllib.request.Request(url, headers=headers(a, b))
++        with urllib.request.urlopen(req, timeout=timeout) as r:
++            span = r.headers.get("Content-Range", "") or ""
++            return r.status, r.headers.get("ETag"), bounded(r, r.status, span, a, b)
++
++    def fetch(a: int, b: int) -> bytes:
++        last = None
++        for attempt in range(retries):
++            try:
++                status, tag, body = oneshot(a, b) if state["redirects"] else keepalive(a, b)
++                if status in REDIRECTS:
++                    state["redirects"] = True
++                    status, tag, body = oneshot(a, b)
++                if status != 206 or len(body) != b - a:
++                    raise OSError(f"HTTP {status} with {len(body)} bytes for a span of {b - a}")
++                with lock:
++                    if tag and state["etag"] is None:
++                        state["etag"] = tag
++                    elif tag and tag != state["etag"]:
++                        raise ValueError(f"the file changed while it was read: ETag {tag} after {state['etag']}")
++                    state["requests"] += 1
++                    state["bytes"] += len(body)
++                return body
++            except ValueError:
++                raise
++            except (OSError, http.client.HTTPException) as err:
++                last = err
++                time.sleep(min(60.0, 2.0 ** attempt))
++        raise OSError(f"range {a}-{b} of {url} failed after {retries} attempts: {last}")
++
++    fetch.state = state
++    return fetch
++
++
++def local_fetcher(path: Path):
++    """Byte ranges of a local file: the test double of `range_fetcher`."""
++    state = {"etag": None, "redirects": False, "requests": 0, "bytes": 0}
++
++    def fetch(a: int, b: int) -> bytes:
++        with open(path, "rb") as fh:
++            fh.seek(a)
++            body = fh.read(b - a)
++        state["requests"] += 1
++        state["bytes"] += len(body)
++        return body
++
++    fetch.state = state
++    return fetch
++
++
++def download(url: str, size: int, dest: Path, sha256: str | None = None, md5: str | None = None, threads: int = 8,
++             chunk: int = 32 << 20) -> dict:
++    """A whole file by parallel ranges, accepted only with the published size and checksum.
++
++    Nothing is written over: `dest` must not exist, the bytes go to a fresh `<dest>.<pid>.<ns>.partial` opened
++    exclusively, and the partial becomes `dest` only after every check passed. A failed attempt removes its own
++    partial and leaves `dest` absent."""
++    from concurrent.futures import ThreadPoolExecutor  # noqa: PLC0415
++    dest = Path(dest)
++    if dest.exists():
++        raise FileExistsError(f"refusing: {dest} exists")
++    partial = dest.with_name(f"{dest.name}.{os.getpid()}.{time.time_ns()}.partial")
++    fetch = range_fetcher(url, size)
++    spans = [(a, min(a + chunk, size)) for a in range(0, size, chunk)]
++
++    def run(span):
++        buf = fetch(*span)
++        with open(partial, "r+b") as fh:
++            fh.seek(span[0])
++            fh.write(buf)
++
++    t0 = time.time()
++    try:
++        with open(partial, "xb") as fh:
++            fh.truncate(size)
++        with ThreadPoolExecutor(threads) as ex:
++            list(ex.map(run, spans))
++        got = {"bytes": partial.stat().st_size, "seconds": round(time.time() - t0, 1),
++               "etag": fetch.state["etag"] or MISSING}
++        if got["bytes"] != size:
++            raise OSError(f"{dest.name}: {got['bytes']} bytes on disk, {size} published")
++        if sha256:
++            got["sha256"] = sha256_file(partial)
++            if got["sha256"] != sha256:
++                raise OSError(f"{dest.name}: sha256 {got['sha256']} is not the published {sha256}")
++        if md5:
++            got["md5"] = md5_file(partial)
++            if got["md5"] != md5:
++                raise OSError(f"{dest.name}: md5 {got['md5']} is not the published {md5}")
++        if dest.exists():
++            raise FileExistsError(f"refusing: {dest} appeared during the download")
++        os.rename(partial, dest)
++    finally:
++        if partial.exists():
++            partial.unlink()
++    return got
++
++
++# ------------------------------------------------------------------------------------------ shards
++
++def writer_record(script: Path, runtime_manifest: Path | None = None) -> dict:
++    """Who wrote a shard: script, reused modules and snapshot, as `rlab_job.py` records them."""
++    return {"script": script.name, "script_sha256": sha256_file(script),
++            "adapters_sha256": sha256_file(CORPUS / "adapters.py"),
++            "contracts_sha256": sha256_file(CORPUS / "contracts.py"),
++            "rlab_job_sha256": sha256_file(CORPUS / "rlab_job.py"),
++            "common_sha256": sha256_file(HERE / "common.py"),
++            "snapshot_sha256": os.environ.get("RLAB_SNAPSHOT_SHA256", MISSING),
++            "commit": os.environ.get("RLAB_COMMIT", MISSING),
++            "runtime_manifest": str(runtime_manifest) if runtime_manifest else MISSING,
++            "runtime_manifest_sha256": sha256_file(runtime_manifest) if runtime_manifest else MISSING}
++
++
++def source_record(source_id: str, release: str, license_: str, files: list[dict]) -> dict:
++    """The `uns/source` of a shard: id, release, locator and checksum of the bytes read (the first file in the open,
++    all of them as JSON). Never a None: anndata cannot write it."""
++    first = files[0]
++    return {"id": source_id, "release": release, "locator": first["locator"], "bytes": int(first["bytes"]),
++            "sha256": first.get("sha256") or "not recomputed: read by ranges, see etag, md5 or crc32c",
++            "md5": first.get("md5") or MISSING, "etag": first.get("etag") or MISSING,
++            "files_json": json.dumps(files), "license": license_ or MISSING}
++
++
++class ShardSink:
++    """One unit of a job: shards written, validated, copied to the out disk, re-hashed there and receipted one by one."""
++
++    def __init__(self, out: Path, stage: Path, unit: str, source: dict, writer: dict, reuse: list[Path] | None = None,
++                 min_free_stage_bytes: int = 4 << 30, require: dict | None = None):
++        self.unit, self.source, self.writer = unit, source, writer
++        self.out, self.stage = out / unit, stage / unit
++        self.reuse = list(reuse or [])
++        self.min_free = min_free_stage_bytes
++        self.require = require or {}          # receipt fields an earlier shard must share to be reused
++        self.out.mkdir(parents=True)
++        self.stage.mkdir(parents=True)
++        self.shards: list[dict] = []
++        self.t0 = time.time()
++
++    def have(self, name: str) -> dict | None:
++        """A shard of an earlier attempt with a matching receipt, size and sha256 (re-read now): referenced, not
++        copied. A shard made under other parameters (`require`, e.g. another sample manifest) is never reused."""
++        _, rlab_job, _, _ = corpus()
++        for earlier in self.reuse:
++            receipt = earlier / self.unit / "receipts" / f"{name}.json"
++            if not receipt.is_file():
++                continue
++            old = load_json(receipt)
++            if any(old.get(k) != v for k, v in self.require.items()):
++                continue
++            hit = rlab_job.reusable([earlier], self.unit, name)
++            if hit is not None:
++                self.shards.append(hit)
++                print(f"{self.unit}/{name}: reused from {hit['reused_from']}", flush=True)
++                return hit
++        return None
++
++    def put(self, name: str, x, obs, var, uns: dict, obsm: dict | None = None, extra: dict | None = None) -> dict:
++        _, rlab_job, _, _ = corpus()
++        free = shutil.disk_usage(self.stage).free
++        if free < self.min_free:
++            sys.exit(f"stopping: {free} bytes free on the stage disk")
++        uns = {**uns, "source": self.source, "qc_version": "none", "writer": self.writer}
++        local = self.stage / f"{name}.h5ad"
++        problems, info = rlab_job.write_local(x, obs, var, uns, local, obsm)
++        if problems:
++            dump_new(self.out / "receipts" / f"{name}.FAILED.json", {"problems": problems, "utc": now()})
++            sys.exit(f"{self.unit}/{name}: contract problems {problems}")
++        digest = sha256_file(local)
++        dest, tmp = self.out / f"{name}.h5ad", self.out / f"{name}.h5ad.partial"
++        shutil.copyfile(local, tmp)
++        os.replace(tmp, dest)
++        copy_digest = sha256_file(dest)
++        if copy_digest != digest:
++            sys.exit(f"{self.unit}/{name}: the copy on the out disk hashes {copy_digest}, the local file {digest}")
++        receipt = {**info, "shard": name, "path": str(dest), "bytes": dest.stat().st_size, "sha256": digest,
++                   "copy_sha256_reread": copy_digest, "rows": uns.get("rows"), "utc": now(),
++                   **self.require, **(extra or {})}
++        dump_new(self.out / "receipts" / f"{name}.json", receipt)
++        local.unlink()
++        self.shards.append(receipt)
++        print(f"{self.unit}/{name}: {info['cells']} cells, {info['nnz']} nnz, {receipt['bytes']} bytes, "
++              f"{time.time() - self.t0:.0f}s", flush=True)
++        return receipt
++
++    def finish(self, parity: dict, extra: dict | None = None) -> dict:
++        """The unit manifest. `parity` holds the unit's checks; `ok` is the conjunction of its boolean entries and of
++        the per-shard re-read. A unit without shards never passes."""
++        parity = {"per_shard_reread": all(s["sum_after"] == s["sum_before"] for s in self.shards),
++                  "has_shards": bool(self.shards), **parity}
++        parity["ok"] = all(v for v in parity.values() if isinstance(v, bool))
++        keys = ("shard", "path", "bytes", "sha256", "cells", "nnz", "sum_after", "targets", "control_kind",
++                "reused_from")
++        manifest = {"unit": self.unit, "source": self.source,
++                    "shards": [{k: s.get(k) for k in keys} for s in self.shards],
++                    "totals": {"shards": len(self.shards), "cells": sum(s["cells"] for s in self.shards),
++                               "nnz": sum(s["nnz"] for s in self.shards),
++                               "counts": sum(s["sum_after"] for s in self.shards),
++                               "bytes": sum(s["bytes"] for s in self.shards),
++                               "control_kind": dict(sum((Counter(s["control_kind"]) for s in self.shards),
++                                                        Counter()))},
++                    "parity": parity, "seconds": round(time.time() - self.t0, 1), "utc": now(), **(extra or {})}
++        dump_new(self.out / "manifest.json", manifest)
++        if self.stage.is_dir() and not any(self.stage.iterdir()):
++            self.stage.rmdir()
++        return manifest
++
++
++def complete(out: Path, job_id: str, units: list[dict], data_root: Path | None = None,
++             extra: dict | None = None) -> bool:
++    """`complete.json` (or `parity_failed.json`) written last, and the list an independent runtime re-hashes."""
++    ok = bool(units) and all(u["parity"]["ok"] for u in units)
++    if ok and data_root is not None:
++        files = []
++        for u in units:
++            for s in u["shards"]:
++                p = Path(s["path"])
++                try:
++                    rel = p.resolve().relative_to(Path(data_root).resolve()).as_posix()
++                except ValueError:
++                    rel = str(p)
++                files.append({"rel": rel, "bytes": s["bytes"], "sha256": s["sha256"], "unit": u["unit"],
++                              "cells": s["cells"]})
++        listing = out / "verify_manifest.json"
++        dump_new(listing, {"job_id": job_id, "data_root": str(data_root), "files": files, "utc": now()})
++        with open(listing.with_suffix(".sha256"), "x", encoding="utf-8") as fh:   # the name verify_drive.py reads
++            fh.write(f"{sha256_file(listing)}  {listing.name}\n")
++    dump_new(out / ("complete.json" if ok else "parity_failed.json"),
++             {"job_id": job_id, "status": "complete" if ok else "parity_failed",
++              "units": {u["unit"]: {"cells": u["totals"]["cells"], "shards": u["totals"]["shards"],
++                                    "bytes": u["totals"]["bytes"], "parity_ok": u["parity"]["ok"],
++                                    "manifest_sha256": sha256_file(out / u["unit"] / "manifest.json")}
++                        for u in units},
++              "utc": now(), **(extra or {})})
++    return ok
+diff --git a/reports/sorgenti/ingestione_espansione_2026-10-03/coverage_audit.py b/reports/sorgenti/ingestione_espansione_2026-10-03/coverage_audit.py
+new file mode 100644
+index 0000000..25d6cc3
+--- /dev/null
++++ b/reports/sorgenti/ingestione_espansione_2026-10-03/coverage_audit.py
+@@ -0,0 +1,292 @@
++"""Coverage audit of the (expanded) cell corpus: which line groups really teach each target, after exclusions.
++
++The unit of independent support is the **line group** of R-LEAD P1 (every study, state, donor and clone of a line):
++cells, files, donors, studies and contexts of one group never add support. Two steps:
++
++    collect  shards (obs only, never X) or sample manifests -> label_counts.csv + exclusions.csv
++             per (study, context, modality, published label): cells before and after the label-level and obs-level
++             exclusions (duplicate cell keys, declared republications, keys without enough controls, depth and genes
++             below half the 1st percentile of the key's own controls: a proxy of the prepass QC, which stays the
++             authority for a training)
++    audit    label_counts.csv -> counts by source/group/study/modality/target/control pool, the sparse target by
++             line-group matrix, and the histogram of targets taught by 1, 2, 3, 4+ training groups, for all
++             modalities and for CRISPRi alone, computed AFTER the frozen holdout group and the globally hidden
++             target fold are removed (same sha256 fold rule and salt as R-LEAD's splits.py)
++
++Aliases are reconciled before counting (declared alias map, then the R-LEAD key table: Ensembl ID, else SYM:<symbol>),
++so one gene under two spellings is one target; a context without a line-group rule is never silently a new group.
++
++    python coverage_audit.py collect --shards <dir with *.h5ad, recursive> --out <new dir>
++    python coverage_audit.py audit --counts <label_counts.csv> [...] --line-groups line_groups_expanded_v1.json \
++        --holdout-group H1 --hidden-fold 0 --n-folds 5 [--axis gene_names.csv] [--target-keys target_keys.json] \
++        [--aliases aliases.json] --out <new dir>
++"""
++from __future__ import annotations
++
++import argparse
++import hashlib
++import json
++import re
++import sys
++from collections import Counter, defaultdict
++from pathlib import Path
++
++import numpy as np
++import pandas as pd
++
++SALT = "r-lead-2026-10-02"                     # reports/modelli/risposta_contesto_2026-10-02/splits.py
++SEP = re.compile(r"[|_,;+\s]")                 # reports/modelli/rete_cellulare_2026-10-03/cell_data.py
++UNLABELLED = {"UNASSIGNED", "MISSING", "NO_METADATA", "", "nan", "<NA>", "None"}
++CONTROL = "NTC"
++COLUMNS = ["study", "context", "modality", "target", "target_id", "control_kind"]
++
++
++# ------------------------------------------------------------------------------------ rules shared with R-LEAD
++
++def unit_hash(key: str, salt: str = SALT) -> float:
++    """Uniform number in [0, 1) from sha256(salt:key): the function of R-LEAD's splits.py, copied."""
++    h = hashlib.sha256(f"{salt}:{key}".encode("utf-8")).hexdigest()
++    return int(h[:15], 16) / 16 ** 15
++
++
++def target_fold(key: str, n_folds: int, salt: str = SALT) -> int:
++    if n_folds < 2:
++        raise ValueError("n_folds >= 2")
++    return min(int(unit_hash(key, salt + ":fold") * n_folds), n_folds - 1)
++
++
++def group_of(study: str, context: str, rules: dict) -> str | None:
++    """Line group of a (study, context) as cell_data.group_of resolves it (exact context, then the longest study
++    prefix), but with no fallback: None means no rule, and the caller decides (never a silent new group)."""
++    g = (rules.get("contexts") or {}).get(context)
++    if g:
++        return g
++    for prefix, grp in sorted((rules.get("study_prefixes") or {}).items(), key=lambda kv: -len(kv[0])):
++        if study.startswith(prefix):
++            return grp
++    return None
++
++
++def parse_label(label: str, axis: set | None, aliases: dict) -> tuple[str, tuple]:
++    """(kind, symbols): 'single', 'combined' or 'unresolved', after the alias map. With an axis the rule is
++    cell_data.parse_label (tokens that are axis genes); without one a label is single unless it joins several
++    names with `+`, `|`, `,` or `;`."""
++    label = aliases.get(label, label)
++    if axis is None:
++        parts = sorted({aliases.get(t, t) for t in re.split(r"[|,;+]", label) if t.strip()})
++        if not parts:
++            return "unresolved", ()
++        return ("single" if len(parts) == 1 else "combined"), tuple(parts)
++    if label in axis:
++        return "single", (label,)
++    found = sorted({aliases.get(t, t) for t in SEP.split(label) if aliases.get(t, t) in axis})
++    if not found:
++        return "unresolved", ()
++    return ("single" if len(found) == 1 else "combined"), tuple(found)
++
++
++def key_of(symbol: str, target_id: str, target_keys: dict) -> str:
++    """Reconciled target key: the Ensembl ID the source records, else the R-LEAD key table, else SYM:<symbol>."""
++    tid = str(target_id or "")
++    if tid.startswith("ENSG"):
++        return tid.split(".")[0]
++    return target_keys.get(symbol) or f"SYM:{symbol}"
++
++
++# ------------------------------------------------------------------------------------ collect
++
++def count_cells(cells: pd.DataFrame, min_controls: int = 30, republications: dict | None = None,
++                seen: set | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
++    """One row per cell (cell_key, study, context, modality, target, control_kind and, when present, target_id,
++    depth_on_file_axis, n_genes_detected) -> (label counts, exclusions by reason).
++
++    `seen` carries the cell keys of earlier calls, so a cell published in two shards or two datasets counts once."""
++    c = cells.copy()
++    for col in COLUMNS:
++        if col not in c:
++            c[col] = ""
++        c[col] = c[col].astype(str)
++    rep = republications or {}
++    present = set(c["study"])
++    c["reason"] = ""
++    is_rep = c["study"].isin([s for s, canon in rep.items() if canon in present]).to_numpy()
++    c.loc[is_rep, "reason"] = "republication"
++    c["study"] = [rep.get(s, s) if not r else s for s, r in zip(c["study"], is_rep)]
++    seen = set() if seen is None else seen
++    dup = np.zeros(len(c), bool)
++    for i, k in enumerate(c["cell_key"].astype(str)):
++        if k in seen:
++            dup[i] = True
++        else:
++            seen.add(k)
++    c.loc[dup & (c["reason"] == ""), "reason"] = "duplicate_cell"
++    c["is_control"] = (c["control_kind"] == CONTROL) | (c["target"] == CONTROL)
++    c["key"] = c["study"] + "|" + c["context"]
++    live = c["reason"] == ""
++    n_ctrl = c[live & c["is_control"]].groupby("key").size()
++    few = ~c["key"].map(n_ctrl).fillna(0).ge(min_controls)
++    c.loc[live & few.to_numpy(), "reason"] = "key_without_controls"
++    for col, why in (("depth_on_file_axis", "depth_below_floor"), ("n_genes_detected", "genes_below_floor")):
++        if col not in c:
++            continue
++        v = pd.to_numeric(c[col], errors="coerce")
++        ctrl = c["is_control"] & (c["reason"] == "")
++        floor = 0.5 * v[ctrl].groupby(c.loc[ctrl, "key"]).quantile(0.01)
++        low = (v < c["key"].map(floor)).fillna(False).to_numpy()
++        c.loc[low & (c["reason"] == "").to_numpy(), "reason"] = why
++    c["admitted"] = c["reason"] == ""
++    counts = (c.groupby(COLUMNS, dropna=False)
++              .agg(n_cells=("admitted", "size"), n_admitted=("admitted", "sum")).reset_index())
++    excl = (c[~c["admitted"]].groupby(["study", "context", "reason"]).size().rename("cells").reset_index())
++    return counts, excl
++
++
++def read_obs(path: Path) -> pd.DataFrame:
++    """The obs columns the audit needs from one contract shard, with h5py alone (X is never opened)."""
++    import h5py  # noqa: PLC0415
++    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "corpus_cellulare_2026-09-30"))
++    from adapters import _h5_column  # noqa: PLC0415
++    names = ["cell_key"] + COLUMNS + ["depth_on_file_axis", "n_genes_detected"]
++    with h5py.File(path, "r") as f:
++        cols = {n: _h5_column(f["obs"], n) for n in names}
++    return pd.DataFrame({n: v for n, v in cols.items() if v is not None})
++
++
++def collect(shards: list[Path], min_controls: int, republications: dict) -> tuple[pd.DataFrame, pd.DataFrame]:
++    """Label counts of a set of shards. The obs of every shard are concatenated in memory before counting (about
++    half a GB per million cells as text), so controls, floors and duplicates are judged over the whole set: run it
++    per group of datasets on a runtime with enough RAM, then give all the label_counts.csv to `audit`."""
++    frames = [read_obs(p) for p in shards]            # obs only: a few MB per shard
++    cells = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame(columns=["cell_key"] + COLUMNS)
++    return count_cells(cells, min_controls, republications)
++
++
++# ------------------------------------------------------------------------------------ audit
++
++def audit(counts: pd.DataFrame, rules: dict, holdout_groups=(), hidden_fold: int | None = None, n_folds: int = 5,
++          salt: str = SALT, min_cells: int = 10, axis: set | None = None, aliases: dict | None = None,
++          target_keys: dict | None = None, allow_unmapped: bool = False) -> dict:
++    """Tables of the audit, as DataFrames and a summary. `counts` has COLUMNS + n_cells, n_admitted."""
++    aliases, target_keys = aliases or {}, target_keys or {}
++    related = rules.get("related") or {}
++    held = set(holdout_groups)
++    held |= {r for g in holdout_groups for r in related.get(g, [])}
++    t = counts.copy()
++    for col in COLUMNS:
++        t[col] = t[col].fillna("").astype(str)
++    t["group"] = [group_of(s, c, rules) for s, c in zip(t["study"], t["context"])]
++    unmapped = t[t["group"].isna()][["study", "context"]].drop_duplicates()
++    if len(unmapped) and not allow_unmapped:
++        raise ValueError(f"contexts without a line-group rule: {unmapped.to_dict('records')[:10]}")
++    t["group"] = [g if g is not None else f"UNMAPPED:{s}|{c}" for g, s, c in zip(t["group"], t["study"], t["context"])]
++    t["is_control"] = (t["control_kind"] == CONTROL) | (t["target"] == CONTROL)
++    kind, key, symbol = [], [], []
++    for label, tid, ctrl, ck in zip(t["target"], t["target_id"], t["is_control"], t["control_kind"]):
++        if ctrl:
++            k, syms = "control", ()
++        elif ck == "UNASSIGNED" or label in UNLABELLED:
++            k, syms = "unassigned", ()
++        else:
++            k, syms = parse_label(label, axis, aliases)
++        kind.append(k)
++        symbol.append(syms[0] if k == "single" else "+".join(syms))
++        key.append(key_of(syms[0], tid, target_keys) if k == "single" else "")
++    t["label_kind"], t["target_key"], t["symbol"] = kind, key, symbol
++    single = t["label_kind"] == "single"
++    t["hidden"] = [bool(k) and hidden_fold is not None and target_fold(k, n_folds, salt) == int(hidden_fold)
++                   for k in t["target_key"]]
++    t["held_out"] = t["group"].isin(held)
++    t["role"] = np.where(t["is_control"], "control", np.where(~single, t["label_kind"],
++                         np.where(t["held_out"], "held_out_group", np.where(t["hidden"], "hidden_target", "train"))))
++    by_source = (t.groupby(["study", "group", "context", "modality", "role"])
++                 .agg(labels=("target", "nunique"), n_cells=("n_cells", "sum"), n_admitted=("n_admitted", "sum"))
++                 .reset_index())
++    pools = (t[t["is_control"]].groupby(["study", "group", "context", "modality"])
++             .agg(control_cells=("n_cells", "sum"), control_cells_admitted=("n_admitted", "sum")).reset_index())
++    train = t[t["role"] == "train"]
++    taught = train[train["n_admitted"] > 0]      # a label with no admitted cell (republication, QC) is no source
++    matrix = (taught.groupby(["target_key", "group", "modality"])
++              .agg(symbols=("symbol", lambda s: ";".join(sorted(set(s)))), studies=("study", "nunique"),
++                   contexts=("context", "nunique"), n_cells=("n_cells", "sum"), n_admitted=("n_admitted", "sum"))
++              .reset_index())
++    matrix["supports"] = matrix["n_admitted"] >= min_cells
++    hist, support = {}, {}
++    for name, sel in (("all_modalities", matrix), ("CRISPRi", matrix[matrix["modality"] == "CRISPRi"])):
++        cells = sel.groupby(["target_key", "group"])["n_admitted"].sum()       # modalities pooled inside a group
++        groups = cells[cells >= min_cells].reset_index().groupby("target_key")["group"].nunique()
++        support[name] = groups
++        c = Counter(min(int(n), 4) for n in groups)
++        hist[name] = {"1": c.get(1, 0), "2": c.get(2, 0), "3": c.get(3, 0), "4+": c.get(4, 0),
++                      "targets": int(len(groups))}
++    hist_df = pd.DataFrame([{"selection": k, **v} for k, v in hist.items()])
++    summary = {"holdout_groups": sorted(holdout_groups), "held_with_related": sorted(held),
++               "hidden_fold": hidden_fold, "n_folds": n_folds, "salt": salt, "min_cells": min_cells,
++               "support_unit": "line group (R-LEAD P1); cells, files, donors, studies and contexts never add support",
++               "key_reconciliation": {"axis": axis is not None, "aliases": len(aliases),
++                                      "target_keys": len(target_keys),
++                                      "keys_by_kind": dict(Counter("ensembl" if k.startswith("ENSG") else "symbol"
++                                                                   for k in set(train["target_key"])))},
++               "training_groups": sorted(set(train["group"])),
++               "unmapped_contexts": unmapped.to_dict("records"),
++               "cells": {"total": int(t["n_cells"].sum()), "admitted": int(t["n_admitted"].sum()),
++                         "by_role_admitted": {r: int(v) for r, v in t.groupby("role")["n_admitted"].sum().items()}},
++               "histogram_targets_by_training_groups": hist}
++    return {"by_source": by_source, "control_pools": pools, "target_by_group": matrix, "histogram": hist_df,
++            "labels": t, "support": support, "summary": summary}
++
++
++def main() -> None:
++    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
++    sub = p.add_subparsers(dest="cmd", required=True)
++    c = sub.add_parser("collect")
++    c.add_argument("--shards", type=Path, nargs="+", required=True, help="folders searched recursively for *.h5ad")
++    c.add_argument("--glob", default="*.h5ad")
++    c.add_argument("--min-controls", type=int, default=30)
++    c.add_argument("--republications", type=Path, help="JSON {republished study: canonical study}")
++    c.add_argument("--out", type=Path, required=True)
++    a = sub.add_parser("audit")
++    a.add_argument("--counts", type=Path, nargs="+", required=True)
++    a.add_argument("--line-groups", type=Path, required=True)
++    a.add_argument("--holdout-group", action="append", default=[])
++    a.add_argument("--hidden-fold", type=int)
++    a.add_argument("--n-folds", type=int, default=5)
++    a.add_argument("--salt", default=SALT)
++    a.add_argument("--min-cells", type=int, default=10)
++    a.add_argument("--axis", type=Path, help="gene_names.csv of the official axis")
++    a.add_argument("--aliases", type=Path, help="JSON {old symbol: current symbol}")
++    a.add_argument("--target-keys", type=Path, help="R-LEAD target_keys.json {symbol: Ensembl ID}")
++    a.add_argument("--allow-unmapped", action="store_true")
++    a.add_argument("--out", type=Path, required=True)
++    args = p.parse_args()
++    if args.out.exists():
++        sys.exit(f"refusing: {args.out} exists")
++    load = lambda f: json.loads(f.read_text(encoding="utf-8")) if f else {}  # noqa: E731
++    if args.cmd == "collect":
++        shards = sorted(q for d in args.shards for q in d.rglob(args.glob))
++        counts, excl = collect(shards, args.min_controls, load(args.republications))
++        args.out.mkdir(parents=True)
++        counts.to_csv(args.out / "label_counts.csv", index=False)
++        excl.to_csv(args.out / "exclusions.csv", index=False)
++        (args.out / "collect.json").write_text(json.dumps(
++            {"shards": [str(s) for s in shards], "cells": int(counts["n_cells"].sum()),
++             "admitted": int(counts["n_admitted"].sum()), "min_controls": args.min_controls}, indent=1),
++            encoding="utf-8")
++        print(f"{len(shards)} shards, {int(counts['n_cells'].sum())} cells -> {args.out}")
++        return
++    counts = pd.concat([pd.read_csv(f, dtype=str, keep_default_na=False) for f in args.counts], ignore_index=True)
++    for col in ("n_cells", "n_admitted"):
++        counts[col] = counts[col].astype(int)
++    axis = None
++    if args.axis:
++        axis = {l.strip().split(",")[0] for l in args.axis.read_text(encoding="utf-8").splitlines()[1:] if l.strip()}
++    res = audit(counts, load(args.line_groups), args.holdout_group, args.hidden_fold, args.n_folds, args.salt,
++                args.min_cells, axis, load(args.aliases), load(args.target_keys), args.allow_unmapped)
++    args.out.mkdir(parents=True)
++    for name in ("by_source", "control_pools", "target_by_group", "histogram"):
++        res[name].to_csv(args.out / f"{name}.csv", index=False)
++    (args.out / "summary.json").write_text(json.dumps(res["summary"], indent=1), encoding="utf-8")
++    print(json.dumps(res["summary"]["histogram_targets_by_training_groups"]))
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/reports/sorgenti/ingestione_espansione_2026-10-03/env_check.py b/reports/sorgenti/ingestione_espansione_2026-10-03/env_check.py
+new file mode 100644
+index 0000000..a491ebf
+--- /dev/null
++++ b/reports/sorgenti/ingestione_espansione_2026-10-03/env_check.py
+@@ -0,0 +1,73 @@
++"""Record the interpreter and the packages the ingestion package needs, on any runtime (laptop, Colab, Kaggle).
++
++Prints one JSON object and, with --out, writes it to a NEW file. Nothing is installed and no data is read: a missing
++package is recorded as null, so the preflight of a job can refuse instead of installing into the base runtime
++(docs/ERRORI.md, "Prima del prossimo job", point 5).
++
++    python env_check.py [--out <new file>.json]
++"""
++from __future__ import annotations
++
++import argparse
++import importlib
++import json
++import os
++import platform
++import shutil
++import subprocess
++import sys
++from datetime import datetime, timezone
++from pathlib import Path
++
++PACKAGES = ("numpy", "pandas", "scipy", "h5py", "anndata", "pyarrow")
++TOOLS = ("Rscript", "kaggle", "git")
++
++
++def version(name: str):
++    try:
++        return getattr(importlib.import_module(name), "__version__", "present")
++    except Exception as err:  # noqa: BLE001 - an inventory records what it cannot import
++        return None if isinstance(err, ImportError) else f"import failed: {type(err).__name__}: {err}"
++
++
++def tool(name: str):
++    path = shutil.which(name)
++    if not path:
++        return None
++    try:
++        out = subprocess.run([path, "--version"], capture_output=True, text=True, timeout=60)
++        first = (out.stdout or out.stderr).strip().splitlines()
++        return {"path": path, "version": first[0] if first else ""}
++    except Exception as err:  # noqa: BLE001
++        return {"path": path, "version": f"not read: {type(err).__name__}"}
++
++
++def memory_bytes():
++    try:
++        with open("/proc/meminfo", encoding="utf-8") as fh:
++            kv = {l.split(":")[0]: int(l.split()[1]) * 1024 for l in fh if ":" in l}
++        return {"total": kv.get("MemTotal"), "available": kv.get("MemAvailable")}
++    except OSError:
++        return None
++
++
++def main() -> None:
++    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
++    p.add_argument("--out", type=Path)
++    p.add_argument("--disk", action="append", default=[], help="a path whose free bytes are recorded (repeatable)")
++    a = p.parse_args()
++    if a.out and a.out.exists():
++        sys.exit(f"refusing: {a.out} exists")
++    info = {"utc": datetime.now(timezone.utc).isoformat(), "python": sys.version, "executable": sys.executable,
++            "platform": platform.platform(), "cpus": os.cpu_count(), "memory_bytes": memory_bytes(),
++            "packages": {n: version(n) for n in PACKAGES}, "tools": {n: tool(n) for n in TOOLS},
++            "disk_free_bytes": {d: shutil.disk_usage(d).free for d in a.disk if Path(d).exists()}}
++    text = json.dumps(info, indent=1)
++    if a.out:
++        a.out.parent.mkdir(parents=True, exist_ok=True)
++        a.out.write_text(text, encoding="utf-8")
++    print(text)
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/reports/sorgenti/ingestione_espansione_2026-10-03/inventario_scp_w3.json b/reports/sorgenti/ingestione_espansione_2026-10-03/inventario_scp_w3.json
+new file mode 100644
+index 0000000..31e5560
+--- /dev/null
++++ b/reports/sorgenti/ingestione_espansione_2026-10-03/inventario_scp_w3.json
+@@ -0,0 +1,41 @@
++{
++ "about": "Third scPerturb wave J13-J15, reconciled from files of the repo at commit 05504a1 (worker claude2, 3/10/2026). Nothing was re-downloaded or re-read remotely in this session: Python, network and reads outside the worktree were denied. 'measured' = read in the cited file; 'derived' = arithmetic on measured numbers; 'unverified' = not checked here.",
++ "evidence": {
++  "specs_and_source_identity": "reports/sorgenti/corpus_cellulare_2026-09-30/jobs_colab/j13_scp_ko_r1_spec.json, j14_scp_tcells_r1_spec.json, j15_scp_k562_hek_r1_spec.json (locators, bytes, md5 of Zenodo 13350497, CC BY 4.0)",
++  "cells": "reports/sorgenti/corpus_cellulare_2026-09-30/catalogo_r4/CATALOGO.md §1 (from complete.json of jobs 127-129 on Drive, 1/10 16:00)",
++  "labels_controls_targets": "reports/sorgenti/corpus_cellulare_2026-09-30/smoke_w3/*_labels.json (remote read of obs before the queue, 1/10)",
++  "kaggle_copies": "reports/sorgenti/archivio_cloud_2026-10-02/kaggle_verify/esito_r2.json: sha256 recomputed on Kaggle's servers equals the publish receipts for 17/17, 6/6 and 11/11 shards; one shard per unit opened with h5py (CSR, integer counts)",
++  "not_reread_today": ["complete.json and unit manifests of jobs 127-129 on Drive", "Zenodo record 13350497 (current version, md5)", "the full target lists: only counts and the five largest targets are in the repo"]
++ },
++ "totals": {"cells": 617524, "derived_check": "317695 + 97335 + 202494 = 617524; ceil(cells/20000) per unit sums to 17, 6 and 11 shards, the numbers verified on Kaggle"},
++ "units": [
++  {"job": "J13 (queue 127)", "kaggle": "davidmaisterx/rlab-scp-ko", "unit": "frangieh2021", "study": "frangieh2021_melanoma_ko", "source_id": "scp_FrangiehIzar2021_RNA", "bytes": 1458928348, "md5": "dc438f53c476a3dd562898654d48ed15", "modality": "KO", "chemistry": "10x 3' v3", "cells": 218331, "contexts": {"Control": {"cells": 57627, "controls": 15361}, "IFNγ": {"cells": 87590, "controls": 23910}, "Co-culture": {"cells": 73114, "controls": 18334}}, "unassigned": 0, "single_gene_targets": 219, "cells_single": 142014, "cells_unresolved_label": 18712, "features": 23712, "features_on_axis": 15924, "proposed_group": "Melanoma_Frangieh2021", "group_kind": "new line group, three states", "note": "contexts are states, not lines: without the study-prefix rule the pilot's fallback would create three groups"},
++  {"job": "J13 (queue 127)", "kaggle": "davidmaisterx/rlab-scp-ko", "unit": "sunshine2023", "study": "sunshine2023_calu3_ko", "source_id": "scp_SunshineHein2023", "bytes": 743672579, "md5": "739f42ccb24815c4ac1d8ca6d4aa85d8", "modality": "KO", "chemistry": "10x 3'", "cells": 90380, "contexts": {"Calu-3": {"cells": 90380, "controls": 3536}}, "unassigned": 16391, "single_gene_targets": 174, "cells_single": 32134, "cells_combined": 36760, "cells_unresolved_label": 1559, "libraries": 8, "features": 33538, "features_on_axis": 18333, "proposed_group": "Calu-3", "group_kind": "new line group", "note": "high MOI: 36,760 cells carry several guides and are combinations, never single-target supervision"},
++  {"job": "J13 (queue 127)", "kaggle": "davidmaisterx/rlab-scp-ko", "unit": "papalexi2021_arrayed", "study": "papalexi2021_thp1_arrayed_ko", "source_id": "scp_PapalexiSatija2021_eccite_arrayed_RNA", "bytes": 52339395, "md5": "843820d48b024348d6132cd53be0da91", "modality": "KO", "chemistry": "10x 3' (ECCITE)", "cells": 8984, "contexts": {"THP-1": {"cells": 8984, "controls": 2009}}, "unassigned": 0, "single_gene_targets": 9, "cells_single": 6740, "cells_unresolved_label": 235, "features": 16826, "features_on_axis": 12499, "proposed_group": "THP-1", "group_kind": "new line group", "note": "PDL1 is published under an alias of CD274: unresolved until the alias map names it"},
++  {"job": "J14 (queue 128)", "kaggle": "davidmaisterx/rlab-scp-tcells", "unit": "shifrut2018", "study": "shifrut2018_tcells_ko", "source_id": "scp_ShifrutMarson2018", "modality": "KO", "chemistry": "10x", "cells": 52236, "contexts": {"D1_nostim": {"cells": 11105, "controls": 852, "unassigned": 5570}, "D1_stim": {"cells": 15829, "controls": 955, "unassigned": 8876}, "D2_nostim": {"cells": 11486, "controls": 698, "unassigned": 6341}, "D2_stim": {"cells": 13816, "controls": 1036, "unassigned": 6355}}, "single_gene_targets": 18, "cells_single": 19566, "cells_unresolved_label": 1987, "features": 33694, "features_on_axis": 17743, "proposed_group": "PrimaryT_Shifrut2018", "group_kind": "new group; two donors and two states are one group; related to CD4T (T subset unverified)"},
++  {"job": "J14 (queue 128)", "kaggle": "davidmaisterx/rlab-scp-tcells", "unit": "datlinger2017", "study": "datlinger2017_jurkat_ko", "source_id": "scp_DatlingerBock2017", "modality": "KO", "chemistry": "CROP-seq", "cells": 5905, "contexts": {"stimulated": {"cells": 3259, "controls": 705}, "unstimulated": {"cells": 2646, "controls": 615}}, "unassigned": 0, "single_gene_targets": 32, "cells_single": 4585, "libraries": 6, "features": 36722, "features_on_axis": 15343, "proposed_group": "Jurkat", "group_kind": "extra study and states of an existing group"},
++  {"job": "J14 (queue 128)", "kaggle": "davidmaisterx/rlab-scp-tcells", "unit": "datlinger2021", "study": "datlinger2021_jurkat_ko", "source_id": "scp_DatlingerBock2021", "modality": "KO", "chemistry": "scifi-RNA-seq", "cells": 39194, "contexts": {"stimulated": {"cells": 21471, "controls": 2990}, "unstimulated": {"cells": 17723, "controls": 1507}}, "unassigned": 0, "single_gene_targets": 20, "cells_single": 34697, "libraries": 384, "features": 25904, "features_on_axis": 16267, "proposed_group": "Jurkat", "group_kind": "extra study and states of an existing group; the line is the spec's label, UNVERIFIED in the shards"},
++  {"job": "J15 (queue 129)", "kaggle": "davidmaisterx/rlab-scp-k562-hek", "unit": "dixit2016_d7", "study": "dixit2016_k562_ko", "source_id": "scp_DixitRegev2016_K562_TFs_7_days", "modality": "KO", "chemistry": "10x (Perturb-seq)", "cells": 33013, "contexts": {"K562 day 7": {"cells": 33013, "controls": 5381}}, "unassigned": 4979, "single_gene_targets": 10, "cells_single": 22653, "controls_are": "intergenic cuts (^INTERGENIC)", "features": 23111, "features_on_axis": 14564, "proposed_group": "K562", "group_kind": "extra study and state of an existing group"},
++  {"job": "J15 (queue 129)", "kaggle": "davidmaisterx/rlab-scp-k562-hek", "unit": "dixit2016_d13", "study": "dixit2016_k562_ko", "source_id": "scp_DixitRegev2016_K562_TFs_13_days", "modality": "KO", "chemistry": "10x (Perturb-seq)", "cells": 19268, "contexts": {"K562 day 13": {"cells": 19268, "controls": 3491}}, "unassigned": 3419, "single_gene_targets": 10, "cells_single": 12358, "controls_are": "intergenic cuts (^INTERGENIC)", "features": 21713, "features_on_axis": 14144, "proposed_group": "K562", "group_kind": "extra study and state of an existing group"},
++  {"job": "J15 (queue 129)", "kaggle": "davidmaisterx/rlab-scp-k562-hek", "unit": "dixit2016_high_moi", "study": "dixit2016_k562_ko", "source_id": "scp_DixitRegev2016_K562_TFs_High_MOI", "modality": "KO", "chemistry": "10x (Perturb-seq)", "cells": 51898, "contexts": {"K562 high MOI": {"cells": 51898, "controls": 10492}}, "unassigned": 1445, "single_gene_targets": 10, "cells_single": 39961, "controls_are": "intergenic cuts (^INTERGENIC)", "features": 23529, "features_on_axis": 14808, "proposed_group": "K562", "group_kind": "extra study and state of an existing group"},
++  {"job": "J15 (queue 129)", "kaggle": "davidmaisterx/rlab-scp-k562-hek", "unit": "xu2023", "study": "xu2023_hek293_crispri", "source_id": "scp_XuCao2023", "modality": "CRISPRi", "chemistry": "10x 3'", "cells": 98315, "contexts": {"HEK293": {"cells": 98315, "controls": 2758}}, "unassigned": 0, "single_gene_targets": 190, "cells_single": 91529, "cells_unresolved_label": 4028, "features": 59429, "features_on_axis": 18277, "proposed_group": "HEK293T", "group_kind": "the only CRISPRi unit of the wave; first cells of the HEK293 family (Orion HEK293T cells are not ingested yet)"}
++ ],
++ "reading": {
++  "modalities": "nine units are KO, one is CRISPRi (Xu 2023, 190 single-gene targets, 98,315 cells): for the CRISPRi histogram the wave adds at most one group (HEK293T) for at most 190 targets; the other nine units add support only in the all-modalities view",
++  "groups": "new at the cell level: Melanoma_Frangieh2021, Calu-3, THP-1, PrimaryT_Shifrut2018, HEK293T; extra studies of existing groups: Jurkat (Datlinger), K562 (Dixit)",
++  "targets": "692 single-gene target labels summed over units (219+174+9+18+32+20+10+10+10+190; the three Dixit units share one panel of 10): a small wave by targets. Overlaps between units and with the pilot corpus are NOT in the repo: they come from coverage_audit.py on the shards",
++  "what_no_count_shows": "no benefit of adding this wave to a training is established"
++ },
++ "proposed_training_manifest_addition": {
++  "status": "PROPOSAL for review by R-LEAD; the frozen pilot (reports/modelli/rete_cellulare_2026-10-03, commit ad5ddd8) is not changed and H1 test stays closed",
++  "format": "the fields of reports/modelli/rete_cellulare_2026-10-03/lancio_prepass_r1.json that an expansion would extend",
++  "datasets_owner": "davidmaisterx",
++  "datasets": ["rlab-scp-ko", "rlab-scp-tcells", "rlab-scp-k562-hek"],
++  "globs": {},
++  "line_groups": "line_groups_expanded_v1.json of this folder (the pilot's file plus the rules above)",
++  "role": "development, as in ruoli_ingestione_r1.json: never a reserve (KO units of lines related to seen ones; Xu in the HEK293T family that the bench already read)",
++  "left_out_of_single_target_supervision": {"unassigned cells": 53376, "combined labels (Sunshine)": 36760, "unresolved labels": 26521},
++  "derived_check": "unassigned 16391 + 27142 (Shifrut) + 4979 + 3419 + 1445 = 53376; unresolved 18712 + 1559 + 235 + 1987 + 4028 = 26521",
++  "before_use": ["run coverage_audit.py collect + audit on the three datasets (EXECUTION_HANDOFF.md, step A)", "declare the alias map for unresolved labels (TCEB1, TCEB2, C19orf66, ADCK4, C10orf54, PDL1, MARCH8, ...) or leave them out, counted", "read the cell line of Datlinger 2021 in the shards", "the prepass QC of the training stays the authority for admitted cells"]
++ }
++}
+diff --git a/reports/sorgenti/ingestione_espansione_2026-10-03/line_groups_expanded_v1.json b/reports/sorgenti/ingestione_espansione_2026-10-03/line_groups_expanded_v1.json
+new file mode 100644
+index 0000000..5da7b1d
+--- /dev/null
++++ b/reports/sorgenti/ingestione_espansione_2026-10-03/line_groups_expanded_v1.json
+@@ -0,0 +1,66 @@
++{
++ "about": "PROPOSAL (worker claude2, 3/10/2026), not adopted: line groups for the expanded corpus, in the schema of reports/modelli/rete_cellulare_2026-10-03/line_groups.json (contexts, study_prefixes), which it contains unchanged. R-LEAD owns P1: it adopts or corrects this with a new file. Resolution is cell_data.group_of without its fallback: a (study, context) with no rule is refused by coverage_audit.py, never a silent new group. 'related' lists groups removed together with a held-out group when strictness is wanted (shared donor or line family); 'evidence' says where each new rule comes from and what is unverified.",
++ "contexts": {
++  "H1": "H1",
++  "K562": "K562",
++  "A549": "A549",
++  "KOLF2.1J iPSC": "iPSC",
++  "Jurkat": "Jurkat",
++  "RPE1": "RPE1",
++  "HepG2": "HepG2",
++  "iPSC-induced neuron": "Neuron",
++  "Hs27": "Hs27",
++  "Hs27 fibroblast": "Hs27",
++  "HEK293": "HEK293T",
++  "HEK293T": "HEK293T",
++  "HCT116": "HCT116",
++  "Calu-3": "Calu-3",
++  "THP-1": "THP-1",
++  "iPSC": "iPSC",
++  "iPSC-induced neuron day 7": "Neuron",
++  "MCF7": "MCF7",
++  "HT29": "HT29",
++  "HAP1": "HAP1",
++  "BxPC3": "BxPC3",
++  "DLD-1": "DLD-1"
++ },
++ "study_prefixes": {
++  "hipsci_": "iPSC",
++  "kolf_": "iPSC",
++  "dixit2016_": "K562",
++  "norman2019_": "K562",
++  "replogle_k562": "K562",
++  "viperturb_k562": "K562",
++  "datlinger2017_": "Jurkat",
++  "datlinger2021_": "Jurkat",
++  "frangieh2021_": "Melanoma_Frangieh2021",
++  "shifrut2018_": "PrimaryT_Shifrut2018",
++  "cd4_marson2025": "CD4T",
++  "orion_hct116": "HCT116",
++  "orion_hek293t": "HEK293T",
++  "mixscale_jiang2025_a549": "A549",
++  "mixscale_jiang2025_k562": "K562",
++  "mixscale_jiang2025_mcf7": "MCF7",
++  "mixscale_jiang2025_ht29": "HT29",
++  "mixscale_jiang2025_hap1": "HAP1",
++  "mixscale_jiang2025_bxpc3": "BxPC3"
++ },
++ "related": {
++  "CD4T": ["PrimaryT_Shifrut2018"],
++  "PrimaryT_Shifrut2018": ["CD4T"],
++  "Neuron": ["iPSC"]
++ },
++ "evidence": {
++  "unchanged from the pilot": "H1, K562, A549, KOLF2.1J iPSC, Jurkat, RPE1, HepG2, iPSC-induced neuron, Hs27, prefix hipsci_ (reports/modelli/rete_cellulare_2026-10-03/line_groups.json)",
++  "bench groups (R-LEAD registry.py)": "CD4T, HCT116, HEK293T, iPSC with KOLF2.1J, K562 with Replogle and VIPerturb",
++  "HEK293 -> HEK293T": "Xu 2023 HEK293 kept in the HEK293T family as in ruoli_ingestione_r1.json; HEK293T derives from HEK293: not an independent context (inference from the line names, not a measurement)",
++  "dixit2016_, norman2019_ -> K562": "contexts 'K562 day 7', 'K562 day 13', 'K562 high MOI' of J15 (wave3_specs.py); time and MOI are states of one line",
++  "datlinger2017_, datlinger2021_ -> Jurkat": "spec labels of wave3_specs.py; contexts are 'stimulated'/'unstimulated'. UNVERIFIED in the shards: INGESTIONE.md §4 asks to read the 2021 context before fixing the role; Jurkat is the conservative choice (it creates no new group)",
++  "frangieh2021_ -> Melanoma_Frangieh2021": "contexts Control, IFNγ, Co-culture are three states of one melanoma line (smoke_w3/j13_scp_ko_r1_labels.json); as contexts they would have become three false groups",
++  "shifrut2018_ -> PrimaryT_Shifrut2018": "primary T cells of two donors, stimulated or not (smoke_w3/j14). The T subset is UNVERIFIED here, hence 'related' to CD4T",
++  "Calu-3, THP-1": "Sunshine 2023 and Papalexi 2021 arrayed (J13): new lines, KO",
++  "iPSC, iPSC-induced neuron day 7": "Tian 2019 (J11), left out of the pilot (unfiltered droplets). The iPSC group is by cell type as in the bench (it already joins ten HipSci donors); the donor of the Tian lines is UNVERIFIED here, hence Neuron related to iPSC",
++  "mixscale_jiang2025_<line>": "the Seurat objects hold several lines per stimulus: the adapter writes one study id per line, so a prefix names the group; the line labels are UNVERIFIED until the inspection reads them",
++  "MCF7, HT29, HAP1, BxPC3, DLD-1": "listed for completeness; no cell of them is ingested"
++ }
++}
+diff --git a/reports/sorgenti/ingestione_espansione_2026-10-03/orion_job.py b/reports/sorgenti/ingestione_espansione_2026-10-03/orion_job.py
+new file mode 100644
+index 0000000..5320cd7
+--- /dev/null
++++ b/reports/sorgenti/ingestione_espansione_2026-10-03/orion_job.py
+@@ -0,0 +1,256 @@
++"""Orion (X-Atlas, HCT116 and HEK293T) cells into contract shards, from the original parquet files, in three phases.
++
++    meta    per GEM file, only the identity and guide columns (gene_target, pass_guide_filter, sample) by HTTP byte
++            ranges; no count is read. Checked against the pass of 26/09 (rows, non-targeting cells per line).
++    sample  campionamento_v2.select_orion on that table; written and hashed BEFORE any count is read.
++    shards  per GEM file: whole file to the runtime disk (size and LFS sha256 of the frozen list), selected rows on the
++            native token axis as integer CSR, every scalar column of the source kept as `orion_<name>`, one shard per
++            GEM file, file deleted. A finished GEM file of an earlier attempt (--reuse) is not downloaded again.
++
++The file list is the one frozen on 26/09 (`universo_2026-09-26/orion_<line>/manifest.json`, bytes and sha256 per
++file): a file that changed on the host fails its checksum instead of being mixed in. The axis reconciliation is the
++existing one (stage 102 / orion_universe.token_columns): tokens matched to the official axis by name, the first of
++several tokens with one name keeps it; later ones are marked ambiguous and never summed.
++
++    python orion_job.py meta   --spec specs/orion_v2.json --line HCT116 --out <new dir>
++    python orion_job.py sample --spec specs/orion_v2.json --line HCT116 --meta <meta dir> --out <new dir>
++    python orion_job.py shards --spec specs/orion_v2.json --line HCT116 --sample <sample dir> --axis gene_names.csv \
++        --stage <local dir> --out <new dir> --data-root <Drive data root> [--reuse <earlier out> ...] [--max-files N]
++"""
++from __future__ import annotations
++
++import argparse
++import sys
++from pathlib import Path
++
++import numpy as np
++import pandas as pd
++
++HERE = Path(__file__).resolve().parent
++sys.path.insert(0, str(HERE))
++import campionamento_v2 as cv  # noqa: E402
++import common  # noqa: E402
++
++NTC_LABEL = "Non-Targeting"
++DESIGN_COLS = ["gene_target", "pass_guide_filter", "sample"]
++LIST_COLS = ["gene_token_id", "gene_expression"]
++
++
++def frozen_files(spec: dict, line: str) -> list[dict]:
++    doc = common.load_json(common.REPO / spec["lines"][line]["files_manifest"])
++    files = [f for f in doc["files"] if "path" in f and "sha256" in f]
++    if len(files) != spec["lines"][line]["expected"]["files"]:
++        sys.exit(f"{line}: {len(files)} files in the frozen list, the spec expects another number")
++    return files
++
++
++def token_axis(tokens: pd.DataFrame, axis_csv: Path | None) -> pd.DataFrame:
++    """var of the native token axis with its mapping to the official axis (first token of a name keeps it)."""
++    n = int(tokens["gene_token_id"].max()) + 1
++    names = tokens.set_index("gene_token_id").reindex(range(n))["gene_name"].fillna("").astype(str).to_numpy()
++    axis = []
++    if axis_csv:
++        axis = [l.strip().split(",")[0] for l in Path(axis_csv).read_text(encoding="utf-8").splitlines()[1:] if l.strip()]
++    where = {g: i for i, g in reversed(list(enumerate(axis)))}
++    seen, dup, official, mapping = {}, np.zeros(n, int), np.full(n, -1), []
++    for i, s in enumerate(names):
++        dup[i] = seen.get(s, 0)
++        seen[s] = dup[i] + 1
++        if s and dup[i] == 0 and s in where:
++            official[i] = where[s]
++        mapping.append("unique" if official[i] >= 0 else ("ambiguous" if s in where else "none"))
++    hit = official[official >= 0]
++    if np.unique(hit).size != hit.size:
++        raise ValueError("two gene tokens map to one axis gene")
++    return pd.DataFrame({"feature_id": [f"orion_token_{i}" for i in range(n)], "symbol": names,
++                         "feature_type": "Gene Expression", "measured": names != "", "official_index": official,
++                         "mapping": mapping, "symbol_duplicate_rank": dup}, index=[f"f{i}" for i in range(n)])
++
++
++def phase_meta(spec: dict, line: str, out: Path) -> None:
++    import pyarrow.parquet as pq  # noqa: PLC0415
++    _, _, _, inspect_remote = common.corpus()
++    common.new_dir(out)
++    frames, per_file, schema = [], [], None
++    for f in frozen_files(spec, line):
++        fh = inspect_remote.RangeFile(spec["source"]["base"] + f["path"], block=1 << 20)
++        if fh.size != f["bytes"]:
++            sys.exit(f"{f['name']}: {fh.size} bytes on the host, {f['bytes']} in the frozen list")
++        pf = pq.ParquetFile(fh, pre_buffer=False)
++        schema = schema or [(x.name, str(x.type)) for x in pf.schema_arrow]
++        t = pf.read(columns=DESIGN_COLS).to_pandas()
++        t.insert(0, "row", np.arange(len(t)))
++        t.insert(0, "gem_file", f["name"])
++        frames.append(t)
++        per_file.append({"file": f["name"], "rows": int(len(t)), "fetched_bytes": int(fh.fetched), "etag": fh.etag,
++                         "ntc": int((t["gene_target"] == NTC_LABEL).sum())})
++        print(f"{f['name']}: {len(t)} rows, {fh.fetched} bytes read", flush=True)
++    obs = pd.concat(frames, ignore_index=True)
++    obs.to_parquet(out / f"{line}.parquet", index=False)
++    digest = common.write_sidecar(out / f"{line}.parquet")
++    ok = obs["pass_guide_filter"] == 1
++    exp = spec["lines"][line]["expected"]
++    got = {"rows": int(len(obs)), "cells_pass_filter": int(ok.sum()),
++           "ntc_cells": int((ok & (obs["gene_target"] == NTC_LABEL)).sum()),
++           "targets_with_cells": int(obs.loc[ok & (obs["gene_target"] != NTC_LABEL), "gene_target"].nunique())}
++    parity = {k: got[k] == exp[k] for k in got if k in exp}
++    common.dump_new(out / f"{line}.json", {"line": line, "table_sha256": digest, "schema": schema, "measured": got,
++                                           "expected_26_09": exp, "parity": parity, "ok": all(parity.values()),
++                                           "files": per_file, "utc": common.now()})
++    if not all(parity.values()):
++        sys.exit(f"{line}: the metadata pass differs from the pass of 26/09: {parity}")
++
++
++def phase_sample(spec: dict, line: str, meta: Path, out: Path) -> None:
++    common.new_dir(out)
++    table_sha = common.check_sidecar(meta / f"{line}.parquet")
++    obs = pd.read_parquet(meta / f"{line}.parquet")
++    d = spec["design"]
++    frame = pd.DataFrame({"gem_file": obs["gem_file"].values, "target": obs["gene_target"].astype(str).values,
++                          "pass_guide_filter": obs["pass_guide_filter"].values,
++                          "is_control": (obs["gene_target"] == NTC_LABEL).values},
++                         index=obs["gem_file"].astype(str) + ":" + obs["row"].astype(str))
++    s = cv.select_orion(frame, line, d["salt"], d["k"], d["name"], tuple(d["window"]) if d.get("window") else None)
++    s.to_parquet(out / f"{line}.parquet", index=False)
++    digest = common.write_sidecar(out / f"{line}.parquet")
++    common.dump_new(out / f"{line}.json", {"line": line, "sample_sha256": digest, "meta_table_sha256": table_sha,
++                                           "design": d, **cv.summary(s), "utc": common.now()})
++    print(f"{line}: sample {digest}", flush=True)
++
++
++def read_selected(parquet: Path, rows: np.ndarray, n_tokens: int):
++    """(X on the token axis, scalar columns) of the selected row ordinals of one GEM file."""
++    import pyarrow.parquet as pq  # noqa: PLC0415
++    import scipy.sparse as sp  # noqa: PLC0415
++    pf = pq.ParquetFile(parquet, pre_buffer=False)
++    scalars = [x.name for x in pf.schema_arrow if x.name not in LIST_COLS]
++    idx, val, lens, keep, row0 = [], [], [], {c: [] for c in scalars}, 0
++    for batch in pf.iter_batches(batch_size=2048):
++        n = batch.num_rows
++        local = rows[(rows >= row0) & (rows < row0 + n)] - row0
++        row0 += n
++        if not local.size:
++            continue
++        tok, ex = batch.column("gene_token_id"), batch.column("gene_expression")
++        off = tok.offsets.to_numpy(zero_copy_only=False)
++        if not np.array_equal(off, ex.offsets.to_numpy(zero_copy_only=False)):
++            raise ValueError(f"{parquet.name}: token and expression lists differ")
++        tv, ev = tok.values.to_numpy(zero_copy_only=False), ex.values.to_numpy(zero_copy_only=False)
++        for r in local:
++            idx.append(tv[off[r]:off[r + 1]])
++            val.append(ev[off[r]:off[r + 1]])
++            lens.append(int(off[r + 1] - off[r]))
++        for c in scalars:
++            col = batch.column(c).to_pylist()
++            keep[c].extend(col[r] for r in local)
++    if row0 <= (rows.max() if rows.size else -1):
++        raise ValueError(f"{parquet.name}: {row0} rows, the sample names row {rows.max()}")
++    indices = np.concatenate(idx) if idx else np.zeros(0, np.int64)
++    values = np.concatenate(val) if val else np.zeros(0, np.float32)
++    if indices.size and (indices.min() < 0 or indices.max() >= n_tokens):
++        raise ValueError(f"{parquet.name}: gene token outside gene_metadata")
++    x = sp.csr_matrix((values, indices, np.concatenate([[0], np.cumsum(lens)])), shape=(len(rows), n_tokens))
++    x.sum_duplicates()
++    return x, keep, row0
++
++
++def phase_shards(spec: dict, line: str, a) -> None:
++    adapters, _, _, _ = common.corpus()
++    common.new_dir(a.out)
++    common.new_dir(a.stage)
++    sample_sha = common.check_sidecar(a.sample / f"{line}.parquet")
++    s = pd.read_parquet(a.sample / f"{line}.parquet")
++    s = s[s["selected"]]
++    cfg, src = spec["lines"][line], spec["source"]
++    tok_path = a.stage / "gene_metadata.parquet"
++    tok_url = src["base"] + src["gene_metadata"]["path"]
++    common.download(tok_url, src["gene_metadata"].get("bytes") or common.head(tok_url)["bytes"], tok_path,
++                    sha256=src["gene_metadata"]["sha256"])
++    var = token_axis(pd.read_parquet(tok_path), a.axis)
++    files = frozen_files(spec, line)[: a.max_files]
++    source = common.source_record(cfg["source_id"], src["release"], src["license"],
++                                  [{"locator": src["base"] + f["path"], "bytes": f["bytes"], "sha256": f["sha256"]}
++                                   for f in files])
++    sink = common.ShardSink(a.out, a.stage, cfg["unit"], source, common.writer_record(Path(__file__), a.runtime_manifest),
++                            a.reuse, require={"sample_sha256": sample_sha})
++    by_file = {g: d for g, d in s.groupby("gem_file")}
++    depth_equal = depth_seen = 0
++    for f in files:
++        d = by_file.get(f["name"])
++        if d is None or sink.have(f["name"]) is not None:
++            continue
++        rows = np.sort(d["cell"].str.rsplit(":", n=1).str[1].astype(np.int64).to_numpy())
++        local = a.stage / f"{f['name']}.parquet"
++        got = common.download(src["base"] + f["path"], f["bytes"], local, sha256=f["sha256"])
++        x, keep, n_rows = read_selected(local, rows, len(var))
++        local.unlink()
++        meta = d.set_index(d["cell"].str.rsplit(":", n=1).str[1].astype(np.int64)).loc[rows]
++        target = np.asarray(keep["gene_target"], dtype=object).astype(str)
++        if not np.array_equal(target, meta["target"].to_numpy().astype(str)):
++            raise ValueError(f"{f['name']}: the rows read are not the cells the sample chose")
++        ntc = target == NTC_LABEL
++        on_axis = np.asarray(x.sum(axis=1)).ravel().astype(float)
++        published = pd.to_numeric(pd.Series(keep.get("total_counts", on_axis)), errors="coerce").to_numpy(dtype=float)
++        depth_equal += int(np.isclose(published, on_axis, atol=0.5).sum())
++        depth_seen += len(rows)
++        extra = {f"orion_{c}": np.asarray(v, dtype=object).astype(str) for c, v in keep.items()}
++        obs = adapters._obs(len(rows), cell_key=[f"{cfg['study']}|{f['name']}|row{r}" for r in rows],
++                            study=cfg["study"], library=f["name"], barcode=[f"row{r}" for r in rows],
++                            target=np.where(ntc, "NTC", target), target_published=target, guides=common.MISSING,
++                            modality="CRISPRi", control_kind=np.where(ntc, "NTC", "none"), context=line,
++                            batch=f["name"], chemistry=cfg["chemistry"],
++                            depth_native=np.where(np.isfinite(published) & (published >= on_axis - 0.5), published, on_axis),
++                            depth_published=np.where(np.isfinite(published), published, on_axis),
++                            depth_on_file_axis=on_axis, n_genes_detected=np.diff(x.indptr), source_row=rows,
++                            sample_pi=meta["pi"].to_numpy(float), sample_role=meta["role"].to_numpy().astype(str),
++                            sample_stratum_n=meta["n_stratum"].to_numpy(), **extra)
++        obs.index = [f"{f['name']}_r{r}" for r in rows]
++        uns = {"rows": {"gem_file": f["name"], "selected": int(len(rows)), "of": int(n_rows), "sample_sha256": sample_sha},
++               "read": {"how": "whole parquet to the runtime disk by parallel ranges, size and LFS sha256 checked; "
++                               "selected rows decoded with pyarrow", "seconds": got["seconds"]},
++               "sample": {"design": spec["design"]["name"], "k": int(spec["design"]["k"]), "salt": spec["design"]["salt"]},
++               "notes": "barcode is the row ordinal in the GEM file (cell identity = file sha256 + row); guides is "
++                        "MISSING unless a later spec maps a guide column; every scalar column of the source is in "
++                        "obs as orion_<name>"}
++        sink.put(f["name"], x, obs, var, uns, extra={"selected": int(len(rows))})
++    done = {r["shard"] for r in sink.shards}
++    want = {f["name"] for f in files if f["name"] in by_file}
++    cells_want = int(sum(len(by_file[n]) for n in want))
++    unit = sink.finish({"every_gem_file_done": done == want,
++                        "cells_equal_sample": sum(r["cells"] for r in sink.shards) == cells_want,
++                        "whole_line": a.max_files is None},
++                       {"sample_sha256": sample_sha, "published_depth_equals_row_sum": [depth_equal, depth_seen]})
++    tok_path.unlink()
++    ok = common.complete(a.out, f"{spec['job_id']}_{line.lower()}", [unit], a.data_root)
++    print("complete" if ok else "PARITY FAILED", flush=True)
++    sys.exit(0 if ok else 1)
++
++
++def main() -> None:
++    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
++    p.add_argument("phase", choices=["meta", "sample", "shards"])
++    p.add_argument("--spec", type=Path, required=True)
++    p.add_argument("--line", choices=["HCT116", "HEK293T"], required=True)
++    p.add_argument("--out", type=Path, required=True)
++    p.add_argument("--meta", type=Path)
++    p.add_argument("--sample", type=Path)
++    p.add_argument("--axis", type=Path)
++    p.add_argument("--stage", type=Path)
++    p.add_argument("--data-root", type=Path)
++    p.add_argument("--runtime-manifest", type=Path)
++    p.add_argument("--reuse", type=Path, nargs="*", default=[])
++    p.add_argument("--max-files", type=int, help="smoke test: only the first N GEM files (never a complete unit)")
++    a = p.parse_args()
++    spec = common.load_json(a.spec)
++    if a.phase == "meta":
++        phase_meta(spec, a.line, a.out)
++    elif a.phase == "sample":
++        phase_sample(spec, a.line, a.meta, a.out)
++    else:
++        if not (a.sample and a.stage and a.axis):
++            sys.exit("shards needs --sample, --stage and --axis")
++        phase_shards(spec, a.line, a)
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/reports/sorgenti/ingestione_espansione_2026-10-03/specs/orion_v2.json b/reports/sorgenti/ingestione_espansione_2026-10-03/specs/orion_v2.json
+new file mode 100644
+index 0000000..9cd000b
+--- /dev/null
++++ b/reports/sorgenti/ingestione_espansione_2026-10-03/specs/orion_v2.json
+@@ -0,0 +1,37 @@
++{
++ "spec_version": "orion_v2 (3/10/2026, worker claude2): replaces the Orion paragraph of archivio_cloud_2026-10-02/INGESTIONE.md §3, whose prose (proportional per GEM) and code (pooled simple random sample) described two designs",
++ "job_id": "j16_orion_cells_r1",
++ "status": "written, not executed; no byte of the source was read in the session that wrote it",
++ "source": {
++  "repo": "Xaira-Therapeutics/X-Atlas-Orion",
++  "base": "https://huggingface.co/datasets/Xaira-Therapeutics/X-Atlas-Orion/resolve/main/",
++  "release": "Hugging Face dataset, file list frozen on 26/09/2026 with the LFS sha256 of every file",
++  "license": "CC-BY-NC-SA-4.0",
++  "license_note": "non commercial; admitted in submissions by the owner's decision (reports/invii/trial_2026-09-22/autorizzazioni.md), external verification still open (PROGETTO §0). Not re-read from the host today",
++  "gene_metadata": {"path": "metadata/gene_metadata.parquet", "bytes": null, "sha256": "33900a0dbaeafb84601c7c8ba7c6642c440774fc3f49613dab11cf1f2bf0fdbf"},
++  "authorisation": "a download of 126.3 GB read on a cloud runtime: listed in INGESTIONE.md §5 as waiting for the owner's go; R-LEAD's card records a go in chat for downloads on 3/10. The supervisor confirms which one covers this job before queueing"
++ },
++ "design": {"name": "proportional_gem", "k": 40, "salt": "orion-cells-2026-10-03", "window": null,
++  "why": "controls are matched per GEM file, so the sample keeps each file's share of every target; pi = min(1, 40/n) for every cell of a target; k is a tranche size: a later window (40, k1) adds cells and keeps these",
++  "not_an_owner_decision": "the cap is a proposal: the original parquet files stay on the host, and window can be widened without resampling"},
++ "filters": {"eligible": "pass_guide_filter == 1", "controls": "gene_target == 'Non-Targeting': all, pi = 1", "targeted": "one target per cell as published in gene_target"},
++ "lines": {
++  "HCT116": {"unit": "orion_hct116", "study": "orion_hct116", "source_id": "orion_hct116", "chemistry": "MISSING",
++   "files_manifest": "reports/sorgenti/universo_2026-09-26/orion_hct116/manifest.json",
++   "expected": {"files": 109, "rows": 3409169, "cells_pass_filter": 3409169, "ntc_cells": 165777, "targets_with_cells": 18293},
++   "bytes": 46576484789, "group": "HCT116"},
++  "HEK293T": {"unit": "orion_hek293t", "study": "orion_hek293t", "source_id": "orion_hek293t", "chemistry": "MISSING",
++   "files_manifest": "reports/sorgenti/universo_2026-09-26/orion_hek293t/manifest.json",
++   "expected": {"files": 223, "rows": 4534299, "cells_pass_filter": 4534299, "ntc_cells": 218838, "targets_with_cells": 18311},
++   "bytes": 79683336248, "group": "HEK293T"}
++ },
++ "output_contract": {
++  "shards": "contracts.py version 1, one shard per GEM file, X = integer counts on the native token axis (gene_metadata), var with official_index/mapping/symbol_duplicate_rank",
++  "extra_obs": ["target_published", "source_row", "sample_pi", "sample_role", "sample_stratum_n", "orion_<every scalar column of the parquet>"],
++  "identity": "cell_key = study|GEM file|row<ordinal>: the row ordinal in a file pinned by its sha256; no barcode column is assumed",
++  "layout": "<out>/<unit>/<GEM file>.h5ad, receipts, manifest.json, complete.json last, verify_manifest.json for verify_drive.py"
++ },
++ "validators": ["meta: rows, pass-filter cells, non-targeting cells and targets per line equal the pass of 26/09 or the job stops", "sample: parquet with sidecar sha256 written before any count is read; shards carry that sha256", "shards: size and LFS sha256 of every file; rows read equal the cells chosen (target by target); contract validation and re-read of every shard; cells in shards equal the sample", "after the job: verify_drive.py on another Colab runtime, then publish_kaggle.py and the Kaggle-side sha256"],
++ "resources_estimate": {"meta": "a few MB per file by ranges (unmeasured)", "shards": "126.3 GB downloaded one file at a time (about 0.5 GB on disk at once), about 29% of the cells kept: an estimate from medians of 164 and 211 cells per target, to be measured"},
++ "proposed_role": "training inside the frozen folds of groups HCT116 and HEK293T (already bench groups); never a reserve; adoption is R-LEAD's decision"
++}
+diff --git a/reports/sorgenti/ingestione_espansione_2026-10-03/test_coverage_audit.py b/reports/sorgenti/ingestione_espansione_2026-10-03/test_coverage_audit.py
+new file mode 100644
+index 0000000..1f0e9af
+--- /dev/null
++++ b/reports/sorgenti/ingestione_espansione_2026-10-03/test_coverage_audit.py
+@@ -0,0 +1,174 @@
++"""Fixtures proving that aliases, duplicate cells or sources, modalities, held-out groups and hidden targets cannot
++inflate coverage. The fold expectations were computed outside Python (printf | sha256sum, 3/10), so they also check
++that the copied hash rule is R-LEAD's.
++
++    python -m unittest test_coverage_audit -v      (from this folder)
++"""
++import json
++import sys
++import unittest
++from pathlib import Path
++
++import pandas as pd
++
++HERE = Path(__file__).resolve().parent
++sys.path.insert(0, str(HERE))
++import coverage_audit as ca  # noqa: E402
++
++RULES = {"contexts": {"K562": "K562", "HEK293": "HEK293T", "HEK293T": "HEK293T", "HepG2": "HepG2", "RPE1": "RPE1",
++                      "A549": "A549", "Jurkat": "Jurkat", "H1": "H1"},
++         "study_prefixes": {"dixit2016_": "K562", "hipsci_": "iPSC"}, "related": {}}
++N_CTRL = 5
++
++
++def cells(study, context, target, n, modality="CRISPRi", tag=""):
++    control = target == "NTC"
++    return [{"cell_key": f"{study}|lib|{context}:{target}:{tag}{i}", "study": study, "context": context,
++             "modality": modality, "target": target, "control_kind": "NTC" if control else "none"} for i in range(n)]
++
++
++def key(study, context, modality="CRISPRi", **targets):
++    """One (study, context) with its controls and n cells per target."""
++    rows = cells(study, context, "NTC", N_CTRL, modality)
++    for t, n in targets.items():
++        rows += cells(study, context, t, n, modality)
++    return rows
++
++
++def run(rows, rules=RULES, **kw):
++    count_kw = {k: kw.pop(k) for k in ("republications",) if k in kw}
++    counts, excl = ca.count_cells(pd.DataFrame(rows), min_controls=N_CTRL, **count_kw)
++    return ca.audit(counts, rules, **kw), excl
++
++
++class TestFoldRule(unittest.TestCase):
++    def test_folds_equal_the_shell_computed_ones(self):
++        expect = {"ENSG00000141510": 1, "ENSG00000136997": 2, "ENSG00000012048": 4, "ENSG00000171862": 1,
++                  "SYM:G1": 4, "SYM:G2": 1, "SYM:G3": 0, "SYM:G4": 0, "SYM:G5": 2, "SYM:G7": 3, "SYM:G8": 0,
++                  "SYM:G10": 0, "SYM:G12": 4}
++        self.assertEqual({k: ca.target_fold(k, 5) for k in expect}, expect)
++
++
++class TestCoverage(unittest.TestCase):
++    def test_alias_is_one_target_not_two(self):
++        rows = key("a", "K562", TCEB1=20) + key("b", "HepG2", ELOC=20)
++        res, _ = run(rows, aliases={"TCEB1": "ELOC"})
++        h = res["summary"]["histogram_targets_by_training_groups"]["all_modalities"]
++        self.assertEqual((h["targets"], h["1"], h["2"]), (1, 0, 1))
++        res, _ = run(rows)                                         # without the alias map: two targets, one group each
++        h = res["summary"]["histogram_targets_by_training_groups"]["all_modalities"]
++        self.assertEqual((h["targets"], h["1"], h["2"]), (2, 2, 0))
++
++    def test_alias_in_the_same_group_adds_no_support(self):
++        rows = key("a", "K562", TCEB1=20) + key("dixit2016_k562_ko", "K562 day 7", ELOC=20)
++        res, _ = run(rows, aliases={"TCEB1": "ELOC"})
++        h = res["summary"]["histogram_targets_by_training_groups"]["all_modalities"]
++        self.assertEqual((h["targets"], h["1"], h["2"]), (1, 1, 0))
++
++    def test_the_source_ensembl_id_joins_two_spellings(self):
++        a = key("a", "K562", FAM208A=20)
++        b = key("b", "HepG2", TASOR=20)
++        for r in a + b:
++            r["target_id"] = "ENSG00000163946" if r["target"] != "NTC" else "NTC"
++        res, _ = run(a + b)
++        self.assertEqual(res["summary"]["histogram_targets_by_training_groups"]["all_modalities"]["2"], 1)
++
++    def test_duplicate_cells_count_once(self):
++        rows = key("a", "K562", G1=8)
++        rows += cells("a", "K562", "G1", 8)                       # the same eight cell keys, published twice
++        res, excl = run(rows)
++        self.assertEqual(int(excl.loc[excl.reason == "duplicate_cell", "cells"].sum()), 8)
++        self.assertEqual(res["summary"]["histogram_targets_by_training_groups"]["all_modalities"]["targets"], 0)
++
++    def test_a_republished_study_is_not_a_second_source(self):
++        rows = key("replogle_k562", "K562", G1=12) + key("scp_replogle_k562", "K562", G1=12)
++        res, excl = run(rows, republications={"scp_replogle_k562": "replogle_k562"})
++        self.assertEqual(int(excl.loc[excl.reason == "republication", "cells"].sum()), 12 + N_CTRL)
++        m = res["target_by_group"]
++        self.assertEqual((int(m.n_admitted.sum()), int(m.studies.max())), (12, 1))
++
++    def test_modalities_are_counted_apart(self):
++        rows = key("a", "K562", G1=20) + key("b", "A549", modality="KO", G1=20)
++        res, _ = run(rows)
++        h = res["summary"]["histogram_targets_by_training_groups"]
++        self.assertEqual((h["all_modalities"]["2"], h["CRISPRi"]["1"], h["CRISPRi"]["2"]), (1, 1, 0))
++
++    def test_a_held_out_group_leaves_with_every_study_and_state(self):
++        rows = (key("replogle", "K562", G1=20, G2=20) + key("dixit2016_k562_ko", "K562 day 7", G1=20, G2=20)
++                + key("c", "HepG2", G1=20))
++        res, _ = run(rows, holdout_groups=["K562"])
++        self.assertNotIn("K562", res["summary"]["training_groups"])
++        self.assertEqual(dict(res["support"]["all_modalities"]), {"SYM:G1": 1})   # G2 lived only in K562: untaught
++        roles = res["labels"].groupby("role")["n_admitted"].sum()
++        self.assertEqual(int(roles["held_out_group"]), 80)
++
++    def test_related_groups_leave_together(self):
++        rules = {**RULES, "related": {"HEK293T": ["HepG2"]}}
++        rows = key("a", "HEK293T", G1=20) + key("b", "HepG2", G1=20) + key("c", "K562", G1=20)
++        res, _ = run(rows, rules=rules, holdout_groups=["HEK293T"])
++        self.assertEqual(dict(res["support"]["all_modalities"]), {"SYM:G1": 1})
++
++    def test_hidden_targets_are_removed_in_every_group(self):
++        rows = []
++        for study, ctx in (("a", "K562"), ("b", "HepG2"), ("c", "RPE1")):
++            rows += key(study, ctx, G3=20, G1=20)                  # G3 is in fold 0, G1 in fold 4
++        res, _ = run(rows, hidden_fold=0, n_folds=5)
++        self.assertEqual(dict(res["support"]["all_modalities"]), {"SYM:G1": 3})
++        res, _ = run(rows)
++        self.assertEqual(dict(res["support"]["all_modalities"]), {"SYM:G1": 3, "SYM:G3": 3})
++
++    def test_cells_donors_and_contexts_do_not_add_support(self):
++        rows = []
++        for donor in ("eipl_1", "fiaj_1", "iudw_1"):
++            rows += key("hipsci_targeted_19", donor, G1=500)
++        res, _ = run(rows)
++        h = res["summary"]["histogram_targets_by_training_groups"]["all_modalities"]
++        self.assertEqual((h["1"], h["2"], h["3"]), (1, 0, 0))
++        self.assertEqual(int(res["target_by_group"].contexts.iloc[0]), 3)
++
++    def test_too_few_cells_is_no_support(self):
++        res, _ = run(key("a", "K562", G1=9) + key("b", "HepG2", G1=20))
++        self.assertEqual(dict(res["support"]["all_modalities"]), {"SYM:G1": 1})
++
++    def test_a_context_without_a_rule_is_refused_not_promoted(self):
++        rows = key("frangieh2021_melanoma_ko", "Control", modality="KO", G1=20)
++        with self.assertRaises(ValueError):
++            run(rows)
++        res, _ = run(rows, allow_unmapped=True)
++        self.assertEqual(res["summary"]["training_groups"], ["UNMAPPED:frangieh2021_melanoma_ko|Control"])
++        self.assertEqual(len(res["summary"]["unmapped_contexts"]), 1)
++
++    def test_a_key_without_controls_teaches_nothing(self):
++        rows = cells("a", "K562", "NTC", 2) + cells("a", "K562", "G1", 50)
++        res, excl = run(rows)
++        self.assertEqual(int(excl.loc[excl.reason == "key_without_controls", "cells"].sum()), 52)
++        self.assertEqual(res["summary"]["histogram_targets_by_training_groups"]["all_modalities"]["targets"], 0)
++
++    def test_unassigned_and_combined_labels_are_no_targets(self):
++        rows = key("a", "K562", G1=20) + cells("a", "K562", "UNASSIGNED", 30) + cells("a", "K562", "G1+G2", 30)
++        res, _ = run(rows)
++        self.assertEqual(dict(res["support"]["all_modalities"]), {"SYM:G1": 1})
++        roles = res["labels"].groupby("role")["n_admitted"].sum()
++        self.assertEqual((int(roles["unassigned"]), int(roles["combined"])), (30, 30))
++
++
++class TestExpandedRules(unittest.TestCase):
++    def test_the_proposed_map_agrees_with_the_pilot_and_names_the_third_wave(self):
++        rules = json.loads((HERE / "line_groups_expanded_v1.json").read_text(encoding="utf-8"))
++        pilot = json.loads((HERE.parents[1] / "modelli" / "rete_cellulare_2026-10-03" / "line_groups.json")
++                           .read_text(encoding="utf-8"))
++        for ctx, grp in pilot["contexts"].items():
++            self.assertEqual(ca.group_of("any", ctx, rules), grp)
++        for prefix, grp in pilot["study_prefixes"].items():
++            self.assertEqual(ca.group_of(prefix + "x", "eipl_1", rules), grp)
++        expect = {("dixit2016_k562_ko", "K562 day 7"): "K562", ("xu2023_hek293_crispri", "HEK293"): "HEK293T",
++                  ("datlinger2017_jurkat_ko", "stimulated"): "Jurkat", ("frangieh2021_melanoma_ko", "IFNγ"):
++                  "Melanoma_Frangieh2021", ("orion_hct116", "HCT116"): "HCT116",
++                  ("cd4_marson2025", "CD4T D1 Rest"): "CD4T", ("shifrut2018_tcells_ko", "D1_stim"):
++                  "PrimaryT_Shifrut2018"}
++        for (study, ctx), grp in expect.items():
++            self.assertEqual(ca.group_of(study, ctx, rules), grp)
++
++
++if __name__ == "__main__":
++    unittest.main()
