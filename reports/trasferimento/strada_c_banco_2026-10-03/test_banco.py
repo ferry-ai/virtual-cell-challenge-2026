@@ -91,5 +91,21 @@ class EndToEnd(unittest.TestCase):
             print(json.dumps(lett["rule"], indent=1)[:2000])
 
 
+class Groups(unittest.TestCase):
+    def test_contexts_seen_in_run_r1(self):
+        sys.path.insert(0, str(HERE))
+        import banco_tipo as bt
+        seen = {("tian2019_ipsc", "iPSC"): "tian_ipsc",
+                ("tian2019_neuron_day7", "iPSC-induced neuron day 7"): "tian_neuron",
+                ("tian2021_crispri", "iPSC-induced neuron"): "tian_neuron",
+                ("kolf_strong_perturbations", "KOLF2.1J iPSC"): "kolf",
+                ("hipsci_targeted_19", "kolf_2"): "hipsci",
+                ("h1_vcc2025_val", "H1"): "h1", ("replogle_k562_gwps", "K562"): "k562",
+                ("replogle_rpe1", "RPE1"): "rpe1", ("hepg2_nadig", "HepG2"): "hepg2",
+                ("jurkat_nadig", "Jurkat"): "jurkat"}
+        for (study, ctx), g in seen.items():
+            self.assertEqual(bt.group_of(study, ctx), g, (study, ctx))
+
+
 if __name__ == "__main__":
     unittest.main()

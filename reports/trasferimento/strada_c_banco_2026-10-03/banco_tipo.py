@@ -50,10 +50,10 @@ def group_of(study: str, context: str) -> str | None:
     if "tian" in s or "norman" in s:
         if "k562" in c or "norman" in c:
             return None
+        if "neuron" in c:                  # "iPSC-induced neuron" is a neuron: checked before "ipsc" (r1 erred here)
+            return "tian_neuron"
         if "ipsc" in c or "ips" == c:
             return "tian_ipsc"
-        if "neuron" in c:
-            return "tian_neuron"
         return None
     for name in ("k562", "rpe1", "hepg2", "jurkat", "kolf"):
         if name in s:

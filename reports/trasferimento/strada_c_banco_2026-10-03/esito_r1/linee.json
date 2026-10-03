@@ -1,0 +1,131 @@
+{
+ "h1": {
+  "line": "h1",
+  "key": "h1_vcc2025_train|H1",
+  "excluded_keys": [
+   "h1_vcc2025_train|H1",
+   "h1_vcc2025_val|H1"
+  ],
+  "groups_same": [
+   "hipsci",
+   "kolf",
+   "tian_ipsc"
+  ],
+  "groups_cross": [
+   "hepg2",
+   "jurkat",
+   "k562",
+   "rpe1"
+  ],
+  "eligible_targets": 53,
+  "readable": true,
+  "panel": 53,
+  "arms": [
+   "null",
+   "k562",
+   "cross",
+   "same",
+   "all",
+   "same_shuf",
+   "same_a2",
+   "cross_a2",
+   "alloc",
+   "normrest"
+  ]
+ },
+ "kolf": {
+  "line": "kolf",
+  "key": "kolf_strong_perturbations|KOLF2.1J iPSC",
+  "excluded_keys": [
+   "hipsci_targeted_19|kolf_2",
+   "hipsci_targeted_19|kolf_3",
+   "kolf_chromatin_modifiers|KOLF2.1J iPSC",
+   "kolf_metabolic_enzymes|KOLF2.1J iPSC",
+   "kolf_strong_perturbations|KOLF2.1J iPSC"
+  ],
+  "groups_same": [
+   "h1",
+   "hipsci",
+   "tian_ipsc"
+  ],
+  "groups_cross": [
+   "hepg2",
+   "jurkat",
+   "k562",
+   "rpe1"
+  ],
+  "eligible_targets": 153,
+  "readable": true,
+  "panel": 150,
+  "arms": [
+   "null",
+   "k562",
+   "cross",
+   "same",
+   "all",
+   "same_shuf",
+   "same_a2",
+   "cross_a2",
+   "alloc",
+   "normrest"
+  ]
+ },
+ "hepg2": {
+  "line": "hepg2",
+  "key": "hepg2_nadig|HepG2",
+  "excluded_keys": [
+   "hepg2_nadig|HepG2"
+  ],
+  "groups_same": [],
+  "groups_cross": [
+   "h1",
+   "hipsci",
+   "jurkat",
+   "k562",
+   "kolf",
+   "rpe1",
+   "tian_ipsc"
+  ],
+  "eligible_targets": 1271,
+  "readable": true,
+  "panel": 150,
+  "arms": [
+   "null",
+   "k562",
+   "cross",
+   "cross_shuf",
+   "cross_a2",
+   "alloc",
+   "normrest"
+  ]
+ },
+ "jurkat": {
+  "line": "jurkat",
+  "key": "jurkat_nadig|Jurkat",
+  "excluded_keys": [
+   "jurkat_nadig|Jurkat"
+  ],
+  "groups_same": [],
+  "groups_cross": [
+   "h1",
+   "hepg2",
+   "hipsci",
+   "k562",
+   "kolf",
+   "rpe1",
+   "tian_ipsc"
+  ],
+  "eligible_targets": 1790,
+  "readable": true,
+  "panel": 150,
+  "arms": [
+   "null",
+   "k562",
+   "cross",
+   "cross_shuf",
+   "cross_a2",
+   "alloc",
+   "normrest"
+  ]
+ }
+}
