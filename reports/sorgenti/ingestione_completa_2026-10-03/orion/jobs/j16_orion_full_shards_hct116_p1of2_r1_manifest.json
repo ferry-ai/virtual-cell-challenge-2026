@@ -1,0 +1,88 @@
+{
+ "schema_version": 1,
+ "job_id": "j16_orion_full_shards_hct116_p1of2_r1",
+ "incident_ids": [
+  "E-20260929-002",
+  "E-20260929-003",
+  "E-20260929-005",
+  "E-20260929-007"
+ ],
+ "inputs": [
+  {
+   "id": "code_snapshot",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\runs\\orion_full_setup_2026-10-03_r1\\code_snapshot.tar.gz",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/orion_full_setup_2026-10-03_r1/code_snapshot.tar.gz"
+   },
+   "bytes": 69019,
+   "sha256": "4df47fab900ee65ac2527b6135a8118c395ea73a52157fa1f44b0e7cca83da01"
+  },
+  {
+   "id": "preflight",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\runs\\orion_full_setup_2026-10-03_r1\\preflight.py",
+    "runtime": "/content/drive/MyDrive/vcc2026/runs/orion_full_setup_2026-10-03_r1/preflight.py"
+   },
+   "bytes": 11396,
+   "sha256": "1df1ca1f82ff3e4b7a65f829dc742da4218a32adb7180721d95b65328b88e744"
+  },
+  {
+   "id": "sample_HCT116.parquet",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\data\\processed\\ingestione_completa_2026-10-03\\j16_orion_full_meta_hct116_r1\\sample\\HCT116.parquet",
+    "runtime": "/content/drive/MyDrive/vcc2026/data/processed/ingestione_completa_2026-10-03/j16_orion_full_meta_hct116_r1/sample/HCT116.parquet"
+   },
+   "bytes": 58618765,
+   "sha256": "51d028d37bd0c219f9ec25b6a834565b17b0d5c97e0e3ca957d305ef4015a21c"
+  },
+  {
+   "id": "sample_HCT116.parquet.sha256",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\data\\processed\\ingestione_completa_2026-10-03\\j16_orion_full_meta_hct116_r1\\sample\\HCT116.parquet.sha256",
+    "runtime": "/content/drive/MyDrive/vcc2026/data/processed/ingestione_completa_2026-10-03/j16_orion_full_meta_hct116_r1/sample/HCT116.parquet.sha256"
+   },
+   "bytes": 81,
+   "sha256": "94af7192f27e07ca206d626605361cb655bf346bf55dd1318d8f81f728d9a0a5"
+  },
+  {
+   "id": "sample_HCT116.json",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\data\\processed\\ingestione_completa_2026-10-03\\j16_orion_full_meta_hct116_r1\\sample\\HCT116.json",
+    "runtime": "/content/drive/MyDrive/vcc2026/data/processed/ingestione_completa_2026-10-03/j16_orion_full_meta_hct116_r1/sample/HCT116.json"
+   },
+   "bytes": 999,
+   "sha256": "265804567e9a9e11b769c9699661e443e4ad696429de920e57bfe5ced5bec8b7"
+  }
+ ],
+ "outputs": [
+  {
+   "id": "out",
+   "paths": {
+    "local": "G:\\Il mio Drive\\vcc2026\\data\\processed\\ingestione_completa_2026-10-03\\j16_orion_full_shards_hct116_p1of2_r1",
+    "runtime": "/content/drive/MyDrive/vcc2026/data/processed/ingestione_completa_2026-10-03/j16_orion_full_shards_hct116_p1of2_r1"
+   },
+   "must_be_absent": true
+  }
+ ],
+ "target_checks": [],
+ "environment": {
+  "python": {
+   "paths": {
+    "local": "C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\python.exe",
+    "runtime": "/usr/bin/python3"
+   }
+  },
+  "packages": {
+   "numpy": null,
+   "pandas": null,
+   "scipy": null
+  },
+  "imports": [
+   "numpy",
+   "pandas",
+   "scipy.sparse"
+  ],
+  "probes": []
+ },
+ "declared_limits": "the Orion parquet files are read from Hugging Face: the meta phase by byte ranges with the ETag checked, the shards phase whole, with size and LFS sha256 of the list frozen on 26/09; anndata and pyarrow are installed when absent"
+}
