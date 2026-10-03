@@ -23,6 +23,12 @@
   Il nome storico «piano-giorno» non indica una scadenza.
 - **Supervisione:** Codex, dal 3/10 15:47 per scelta del proprietario. Monitora ogni 15 minuti, fa audit e prepara
   fixture su copie isolate, e legge questa scheda: la sua relay non riceve messaggi in modo stabile.
+  **Revisione chiesta a Codex, prima del congelamento:** il protocollo in bozza e il codice v3 della
+  [rete ancorata](../../reports/modelli/rete_ancorata_2026-10-03/README.md). I punti sono quattro:
+  - ancore, controlli di fuga e restrizione a CRISPRi;
+  - guadagno e correzione;
+  - la regola, con la corsia B primaria e la guardia della corsia A a −0,02;
+  - l'esito non promettente delle [miscele](../../reports/modelli/rete_cellulare_2026-10-03/esito/miscele_r3/LETTURA.md).
 - **Collo di bottiglia attuale (3/10, 15:55):** un solo runtime Colab attivo, quello di `queue`, occupato dalle
   verifiche 133–134. Southard (132) aspetta `queue2`. Dopo vengono gli adattatori di KOLF e CD4.
 
