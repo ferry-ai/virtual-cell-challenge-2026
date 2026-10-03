@@ -70,6 +70,17 @@
     di training; lo studio r1 resta esplorativo ([emendamento §10](../../reports/modelli/rete_ancorata_v4_2026-10-03/CAMPIONI_ANNIDATI.md),
     test di invarianza). Da lanciare a sessione libera: `kaggle_nested.py` con `--dispersion` e slug
     `rcell-v4-nested-fold-<linea>-r1`, uno per fold.
+  - **Aggiornamento delle 00:53, binario del modello.** H1 concluso alle 00:39 e **tecnicamente accettato** (§5:
+    uscita 0, 365 gemelli verificati, nessuna cellula non di training, quote esatte in 60 finestre su 60, salute e
+    valutazione complete, ancore a regime J; 2,0 epoche in 4.878 s, 1.579 cellule al secondo, attesa dei dati 0,565;
+    [ricevute](../../reports/modelli/rete_ancorata_v4_2026-10-03/esito/train_h1_r1/)). RPE1 spinto alle 00:42
+    ([lancio](../../reports/modelli/rete_ancorata_v4_2026-10-03/lancio_train_rpe1_r1.json)); HepG2 ancora in corsa.
+    Cellule di H1 generate (`rcell-v4-gen-h1-r1`). **Corsia A di H1 letta (misurato, 72 righe C, una linea su tre):**
+    `ancorata` PDS 0,547 contro 0,965 di `transfer_all_J` e 0,963 di `ancora_sola`; coseno −0,031 contro 0,162;
+    coseno specifico 0,145 contro 0,183; rapporto MSE 13,9 contro 2,6 (`laneA_h1_r1/summary.json` nella radice dati).
+    Con −0,42 su H1 la guardia del §7 (media delle tre linee ≥ −0,02) è aritmeticamente quasi irraggiungibile. La
+    corsia B di H1 gira sul portatile dalle 00:50 (PID 28200, `laneB_h1_r1` nella radice dati). Dopo: ricevute,
+    generazione e corsie di HepG2 e RPE1, poi `decide_anchored.py` sulle tre linee e il checkpoint.
   - **Corpus ampliato, percorso critico (non iniziato):** protocollo con i gruppi adottati; pre-passo sui 365 shard
     del pilot più HCT116, HEK293T e KOLF pan-genome (16,2 milioni di cellule). Stima, non misura: il pre-passo del
     pilot ha impiegato 10.200 s per 5,6 milioni di cellule con 4 processi, quindi circa 8 ore per fold a parità di
