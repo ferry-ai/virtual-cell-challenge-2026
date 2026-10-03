@@ -1,0 +1,4378 @@
+{
+ "policy": "per (study, context) from its control cells (cell_data.thresholds_from_controls): an absolute floor of usability (fewer than 10 counts or 5 genes on the model genes), never lifted; relative rules, all lifted for a perturbation they reject selectively against its key's controls (cell_data.phenotype_guard: at least 5 cells, excess >= 0.02 and binomial p < 0.001): counts below 0.2 x and 0.5 x the controls' q01, genes detected below 0.5 x their q01, a mitochondrial fraction above max(2 q99, q99 + 0.05); QC values on the key's mask (intersection of its shards' masks); a key without control cells is not admitted; identity by provenance (cell_data.identity): duplicates and other versions of a cell admitted once, collisions of keys kept; declared republications left out",
+ "thresholds": {
+  "hepg2_nadig|HepG2": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 664.3000000000001,
+   "lib_min": 1660.75,
+   "genes_min": 867.625,
+   "mito_max": 0.40860646452841154
+  },
+  "jurkat_nadig|Jurkat": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 504.248,
+   "lib_min": 1260.62,
+   "genes_min": 760.6800000000001,
+   "mito_max": 0.28416940507790406
+  },
+  "h1_vcc2025|H1": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 4514.1900000000005,
+   "lib_min": 11285.475,
+   "genes_min": 3357.5,
+   "mito_max": 0.055098290520349036
+  },
+  "hipsci_targeted_19|eipl_3": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 919.0,
+   "lib_min": 2297.5,
+   "genes_min": 1203.5,
+   "mito_max": 0.19997001948733323
+  },
+  "hipsci_targeted_19|fiaj_1": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 776.6560000000001,
+   "lib_min": 1941.64,
+   "genes_min": 1059.7,
+   "mito_max": 0.1718029445378498
+  },
+  "hipsci_targeted_19|iudw_4": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 899.7040000000002,
+   "lib_min": 2249.26,
+   "genes_min": 1256.4,
+   "mito_max": 0.1833175401670977
+  },
+  "hipsci_targeted_19|jejf_3": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 647.576,
+   "lib_min": 1618.94,
+   "genes_min": 963.145,
+   "mito_max": 0.16964661559523653
+  },
+  "hipsci_targeted_19|kolf_2": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 829.118,
+   "lib_min": 2072.795,
+   "genes_min": 1141.73,
+   "mito_max": 0.14939327222075013
+  },
+  "hipsci_targeted_19|oikd_5": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 931.5520000000001,
+   "lib_min": 2328.88,
+   "genes_min": 1221.22,
+   "mito_max": 0.17762866346854636
+  },
+  "hipsci_targeted_19|paab_3": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 948.7600000000001,
+   "lib_min": 2371.9,
+   "genes_min": 1200.0,
+   "mito_max": 0.15712672834161473
+  },
+  "hipsci_targeted_19|tolg_6": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 915.28,
+   "lib_min": 2288.2,
+   "genes_min": 1209.395,
+   "mito_max": 0.17161507125558553
+  },
+  "hipsci_targeted_19|zapk_3": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 911.148,
+   "lib_min": 2277.87,
+   "genes_min": 1247.365,
+   "mito_max": 0.16748065010706772
+  },
+  "hipsci_targeted_19|pipw_5": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 1200.24,
+   "lib_min": 3000.6,
+   "genes_min": 1493.84,
+   "mito_max": 0.17273722091972588
+  },
+  "hipsci_targeted_19|eipl_1": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 846.6100000000001,
+   "lib_min": 2116.525,
+   "genes_min": 1170.275,
+   "mito_max": 0.18665039641840228
+  },
+  "hipsci_targeted_19|fiaj_3": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 724.09,
+   "lib_min": 1810.225,
+   "genes_min": 1054.05,
+   "mito_max": 0.14241814778433015
+  },
+  "hipsci_targeted_19|iudw_1": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 835.5880000000002,
+   "lib_min": 2088.9700000000003,
+   "genes_min": 1146.61,
+   "mito_max": 0.19867378705485053
+  },
+  "hipsci_targeted_19|jejf_2": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 786.3040000000001,
+   "lib_min": 1965.76,
+   "genes_min": 1146.16,
+   "mito_max": 0.1590926658484884
+  },
+  "hipsci_targeted_19|kolf_3": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 827.9879999999999,
+   "lib_min": 2069.97,
+   "genes_min": 1137.06,
+   "mito_max": 0.18183931579406926
+  },
+  "hipsci_targeted_19|oikd_2": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 860.624,
+   "lib_min": 2151.56,
+   "genes_min": 1155.3,
+   "mito_max": 0.1856140409287696
+  },
+  "hipsci_targeted_19|paab_4": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 878.8240000000001,
+   "lib_min": 2197.06,
+   "genes_min": 1195.26,
+   "mito_max": 0.15479942733276758
+  },
+  "hipsci_targeted_19|pipw_4": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 882.98,
+   "lib_min": 2207.45,
+   "genes_min": 1196.115,
+   "mito_max": 0.1735251546483895
+  },
+  "hipsci_targeted_19|tolg_4": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 954.698,
+   "lib_min": 2386.745,
+   "genes_min": 1243.89,
+   "mito_max": 0.21846765749414854
+  },
+  "replogle_k562_gwps|K562": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 346.79600000000005,
+   "lib_min": 866.99,
+   "genes_min": 527.475,
+   "mito_max": 0.5349893462028766
+  },
+  "replogle_k562_essential|K562": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 694.4200000000001,
+   "lib_min": 1736.05,
+   "genes_min": 892.5,
+   "mito_max": 0.4660422298353471
+  },
+  "replogle_rpe1|RPE1": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 585.336,
+   "lib_min": 1463.34,
+   "genes_min": 788.92,
+   "mito_max": 0.2796059309887245
+  },
+  "a549_liu_hillsley2026|A549": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 1590.18,
+   "lib_min": 3975.45,
+   "genes_min": 1621.4850000000001,
+   "mito_max": 0.10419732044053545
+  },
+  "tian2021_crispri|iPSC-induced neuron": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 137.84,
+   "lib_min": 344.6,
+   "genes_min": 257.0,
+   "mito_max": 0.5868797093063047
+  },
+  "tian2021_crispra|iPSC-induced neuron": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 233.74400000000003,
+   "lib_min": 584.36,
+   "genes_min": 329.29,
+   "mito_max": 1.0
+  },
+  "norman2019_crispra|K562": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 528.632,
+   "lib_min": 1321.58,
+   "genes_min": 719.27,
+   "mito_max": 0.3686280889561041
+  },
+  "kolf_chromatin_modifiers|KOLF2.1J iPSC": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 1463.44,
+   "lib_min": 3658.6,
+   "genes_min": 1838.0,
+   "mito_max": 0.11030442889933686
+  },
+  "kolf_metabolic_enzymes|KOLF2.1J iPSC": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 441.8,
+   "lib_min": 1104.5,
+   "genes_min": 789.25,
+   "mito_max": 0.10045533321629506
+  },
+  "kolf_strong_perturbations|KOLF2.1J iPSC": {
+   "lib_abs": 10.0,
+   "genes_abs": 5.0,
+   "lib_far": 290.598,
+   "lib_min": 726.495,
+   "genes_min": 550.49,
+   "mito_max": 0.2486052522338794
+  }
+ },
+ "controls_per_key": {
+  "a549_liu_hillsley2026|A549": 45320,
+  "h1_vcc2025|H1": 76352,
+  "hepg2_nadig|HepG2": 4976,
+  "hipsci_targeted_19|eipl_1": 496,
+  "hipsci_targeted_19|eipl_3": 501,
+  "hipsci_targeted_19|fiaj_1": 549,
+  "hipsci_targeted_19|fiaj_3": 86,
+  "hipsci_targeted_19|iudw_1": 575,
+  "hipsci_targeted_19|iudw_4": 433,
+  "hipsci_targeted_19|jejf_2": 605,
+  "hipsci_targeted_19|jejf_3": 484,
+  "hipsci_targeted_19|kolf_2": 520,
+  "hipsci_targeted_19|kolf_3": 455,
+  "hipsci_targeted_19|oikd_2": 177,
+  "hipsci_targeted_19|oikd_5": 668,
+  "hipsci_targeted_19|paab_3": 397,
+  "hipsci_targeted_19|paab_4": 543,
+  "hipsci_targeted_19|pipw_4": 488,
+  "hipsci_targeted_19|pipw_5": 92,
+  "hipsci_targeted_19|tolg_4": 182,
+  "hipsci_targeted_19|tolg_6": 368,
+  "hipsci_targeted_19|zapk_3": 622,
+  "jurkat_nadig|Jurkat": 12013,
+  "kolf_chromatin_modifiers|KOLF2.1J iPSC": 7161,
+  "kolf_metabolic_enzymes|KOLF2.1J iPSC": 18651,
+  "kolf_strong_perturbations|KOLF2.1J iPSC": 35424,
+  "norman2019_crispra|K562": 11855,
+  "replogle_k562_essential|K562": 10691,
+  "replogle_k562_gwps|K562": 75328,
+  "replogle_rpe1|RPE1": 11485,
+  "tian2021_crispra|iPSC-induced neuron": 434,
+  "tian2021_crispri|iPSC-induced neuron": 437
+ },
+ "min_controls_per_key": 30,
+ "rejected": {
+  "a549_liu_hillsley2026|A549|mito_above_ceiling": 8,
+  "h1_vcc2025|H1|duplicate_cell": 38176,
+  "h1_vcc2025|H1|mito_above_ceiling": 1,
+  "hepg2_nadig|HepG2|counts_below_floor": 1,
+  "hepg2_nadig|HepG2|genes_below_floor": 8,
+  "hipsci_targeted_19|MISSING|no_controls_in_key": 1,
+  "hipsci_targeted_19|pipw_5|counts_below_floor": 62,
+  "jurkat_nadig|Jurkat|counts_below_floor": 85,
+  "jurkat_nadig|Jurkat|genes_below_floor": 6,
+  "kolf_strong_perturbations|KOLF2.1J iPSC|counts_below_floor": 39,
+  "kolf_strong_perturbations|KOLF2.1J iPSC|genes_below_floor": 6,
+  "kolf_strong_perturbations|KOLF2.1J iPSC|mito_above_ceiling": 55,
+  "norman2019_crispra|K562|mito_above_ceiling": 19,
+  "replogle_k562_essential|K562|counts_below_floor": 155,
+  "replogle_k562_essential|K562|genes_below_floor": 10,
+  "replogle_k562_gwps|K562|counts_below_floor": 1310,
+  "replogle_k562_gwps|K562|counts_far_below_controls": 1,
+  "replogle_k562_gwps|K562|genes_below_floor": 18,
+  "replogle_rpe1|RPE1|counts_below_floor": 70,
+  "replogle_rpe1|RPE1|genes_below_floor": 15,
+  "tian2021_crispra|iPSC-induced neuron|counts_below_floor": 83,
+  "tian2021_crispri|iPSC-induced neuron|mito_above_ceiling": 5
+ },
+ "phenotype_guard": {
+  "readmitted_by_key": {
+   "replogle_rpe1|RPE1": 8
+  },
+  "selective_groups": [
+   {
+    "key": "replogle_rpe1|RPE1",
+    "group": "SART1",
+    "cells_above_hard_floor": 105,
+    "soft_rejections": 8,
+    "rate": 0.0761904761904762,
+    "controls_rate": 0.000174140182847192,
+    "p_value": 7.078658971400673e-08,
+    "selective": true,
+    "readmitted": 8,
+    "lifted_rules": {
+     "counts_below_floor": 7,
+     "genes_below_floor": 1
+    }
+   }
+  ],
+  "highest_non_selective_rates": [
+   {
+    "key": "jurkat_nadig|Jurkat",
+    "group": "ZNF830",
+    "cells_above_hard_floor": 5,
+    "soft_rejections": 1,
+    "rate": 0.2,
+    "controls_rate": 0.00016648630650129028,
+    "p_value": 0.024751246878125,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_rpe1|RPE1",
+    "group": "TAF1",
+    "cells_above_hard_floor": 6,
+    "soft_rejections": 1,
+    "rate": 0.16666666666666666,
+    "controls_rate": 0.000174140182847192,
+    "p_value": 0.029627490643734374,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_k562_gwps|K562",
+    "group": "POLR3A",
+    "cells_above_hard_floor": 13,
+    "soft_rejections": 2,
+    "rate": 0.15384615384615385,
+    "controls_rate": 0.0004911852166525064,
+    "p_value": 0.0018798246707616329,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "jurkat_nadig|Jurkat",
+    "group": "PRIM2",
+    "cells_above_hard_floor": 8,
+    "soft_rejections": 1,
+    "rate": 0.125,
+    "controls_rate": 0.00016648630650129028,
+    "p_value": 0.039306956424563125,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_k562_gwps|K562",
+    "group": "PARK7",
+    "cells_above_hard_floor": 8,
+    "soft_rejections": 1,
+    "rate": 0.125,
+    "controls_rate": 0.0004911852166525064,
+    "p_value": 0.039306956424563125,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "hipsci_targeted_19|pipw_5",
+    "group": "PNISR",
+    "cells_above_hard_floor": 9,
+    "soft_rejections": 1,
+    "rate": 0.1111111111111111,
+    "controls_rate": 0.0,
+    "p_value": 0.04411042164244031,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_rpe1|RPE1",
+    "group": "SUPT5H",
+    "cells_above_hard_floor": 11,
+    "soft_rejections": 1,
+    "rate": 0.09090909090909091,
+    "controls_rate": 0.000174140182847192,
+    "p_value": 0.053645420186556964,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "jurkat_nadig|Jurkat",
+    "group": "DDX19A",
+    "cells_above_hard_floor": 12,
+    "soft_rejections": 1,
+    "rate": 0.08333333333333333,
+    "controls_rate": 0.00016648630650129028,
+    "p_value": 0.05837719308562418,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_k562_gwps|K562",
+    "group": "ZNF497",
+    "cells_above_hard_floor": 12,
+    "soft_rejections": 1,
+    "rate": 0.08333333333333333,
+    "controls_rate": 0.0004911852166525064,
+    "p_value": 0.05837719308562418,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_rpe1|RPE1",
+    "group": "CRNKL1",
+    "cells_above_hard_floor": 12,
+    "soft_rejections": 1,
+    "rate": 0.08333333333333333,
+    "controls_rate": 0.000174140182847192,
+    "p_value": 0.05837719308562418,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "jurkat_nadig|Jurkat",
+    "group": "MYB",
+    "cells_above_hard_floor": 13,
+    "soft_rejections": 1,
+    "rate": 0.07692307692307693,
+    "controls_rate": 0.00016648630650129028,
+    "p_value": 0.06308530712019605,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "hipsci_targeted_19|pipw_5",
+    "group": "CCNH",
+    "cells_above_hard_floor": 14,
+    "soft_rejections": 1,
+    "rate": 0.07142857142857142,
+    "controls_rate": 0.0,
+    "p_value": 0.06776988058459509,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_rpe1|RPE1",
+    "group": "SF3B1",
+    "cells_above_hard_floor": 43,
+    "soft_rejections": 3,
+    "rate": 0.06976744186046512,
+    "controls_rate": 0.000174140182847192,
+    "p_value": 0.0013283639948509932,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_k562_gwps|K562",
+    "group": "GATA1",
+    "cells_above_hard_floor": 46,
+    "soft_rejections": 3,
+    "rate": 0.06521739130434782,
+    "controls_rate": 0.0004911852166525064,
+    "p_value": 0.0016158268396469439,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "jurkat_nadig|Jurkat",
+    "group": "NSL1",
+    "cells_above_hard_floor": 17,
+    "soft_rejections": 1,
+    "rate": 0.058823529411764705,
+    "controls_rate": 0.00016648630650129028,
+    "p_value": 0.08168353164563492,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_rpe1|RPE1",
+    "group": "HOXA3",
+    "cells_above_hard_floor": 19,
+    "soft_rejections": 1,
+    "rate": 0.05263157894736842,
+    "controls_rate": 0.000174140182847192,
+    "p_value": 0.09084373841746972,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_k562_gwps|K562",
+    "group": "HSPE1",
+    "cells_above_hard_floor": 39,
+    "soft_rejections": 2,
+    "rate": 0.05128205128205128,
+    "controls_rate": 0.0004911852166525064,
+    "p_value": 0.016387521510080556,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_k562_essential|K562",
+    "group": "WEE1",
+    "cells_above_hard_floor": 41,
+    "soft_rejections": 2,
+    "rate": 0.04878048780487805,
+    "controls_rate": 0.00028060985875970443,
+    "p_value": 0.018015854772790763,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_rpe1|RPE1",
+    "group": "GPKOW",
+    "cells_above_hard_floor": 42,
+    "soft_rejections": 2,
+    "rate": 0.047619047619047616,
+    "controls_rate": 0.000174140182847192,
+    "p_value": 0.01885463289683899,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_k562_essential|K562",
+    "group": "RPS8",
+    "cells_above_hard_floor": 22,
+    "soft_rejections": 1,
+    "rate": 0.045454545454545456,
+    "controls_rate": 0.00028060985875970443,
+    "p_value": 0.10441300926612168,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_k562_gwps|K562",
+    "group": "PAF1",
+    "cells_above_hard_floor": 88,
+    "soft_rejections": 4,
+    "rate": 0.045454545454545456,
+    "controls_rate": 0.0004911852166525064,
+    "p_value": 0.0010433116460907541,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "hipsci_targeted_19|pipw_5",
+    "group": "KIF5A",
+    "cells_above_hard_floor": 23,
+    "soft_rejections": 1,
+    "rate": 0.043478260869565216,
+    "controls_rate": 0.0,
+    "p_value": 0.10889094421979106,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "hipsci_targeted_19|pipw_5",
+    "group": "POLR1D",
+    "cells_above_hard_floor": 23,
+    "soft_rejections": 1,
+    "rate": 0.043478260869565216,
+    "controls_rate": 0.0,
+    "p_value": 0.10889094421979106,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_k562_gwps|K562",
+    "group": "AARS",
+    "cells_above_hard_floor": 46,
+    "soft_rejections": 2,
+    "rate": 0.043478260869565216,
+    "controls_rate": 0.0004911852166525064,
+    "p_value": 0.0223695448396663,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_k562_gwps|K562",
+    "group": "CFL1",
+    "cells_above_hard_floor": 23,
+    "soft_rejections": 1,
+    "rate": 0.043478260869565216,
+    "controls_rate": 0.0004911852166525064,
+    "p_value": 0.10889094421979106,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_k562_gwps|K562",
+    "group": "PRDM15",
+    "cells_above_hard_floor": 47,
+    "soft_rejections": 2,
+    "rate": 0.0425531914893617,
+    "controls_rate": 0.0004911852166525064,
+    "p_value": 0.02328732036900054,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "hipsci_targeted_19|pipw_5",
+    "group": "PIM1",
+    "cells_above_hard_floor": 24,
+    "soft_rejections": 1,
+    "rate": 0.041666666666666664,
+    "controls_rate": 0.0,
+    "p_value": 0.11334648949869212,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "hipsci_targeted_19|pipw_5",
+    "group": "ZC3H13",
+    "cells_above_hard_floor": 24,
+    "soft_rejections": 1,
+    "rate": 0.041666666666666664,
+    "controls_rate": 0.0,
+    "p_value": 0.11334648949869212,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "jurkat_nadig|Jurkat",
+    "group": "DDX41",
+    "cells_above_hard_floor": 24,
+    "soft_rejections": 1,
+    "rate": 0.041666666666666664,
+    "controls_rate": 0.00016648630650129028,
+    "p_value": 0.11334648949869212,
+    "selective": false,
+    "readmitted": 0
+   },
+   {
+    "key": "replogle_rpe1|RPE1",
+    "group": "RPS4X",
+    "cells_above_hard_floor": 24,
+    "soft_rejections": 1,
+    "rate": 0.041666666666666664,
+    "controls_rate": 0.000174140182847192,
+    "p_value": 0.11334648949869212,
+    "selective": false,
+    "readmitted": 0
+   }
+  ]
+ },
+ "highest_rejection_rate_by_perturbation": [
+  {
+   "symbol": "CRIM1",
+   "admitted": 26,
+   "rejected": 1,
+   "rate": 0.037037037037037035
+  },
+  {
+   "symbol": "CYP2U1",
+   "admitted": 27,
+   "rejected": 1,
+   "rate": 0.03571428571428571
+  },
+  {
+   "symbol": "ZC3H12C",
+   "admitted": 29,
+   "rejected": 1,
+   "rate": 0.03333333333333333
+  },
+  {
+   "symbol": "ZBTB16",
+   "admitted": 32,
+   "rejected": 1,
+   "rate": 0.030303030303030304
+  },
+  {
+   "symbol": "CSRNP3",
+   "admitted": 135,
+   "rejected": 4,
+   "rate": 0.02877697841726619
+  },
+  {
+   "symbol": "FKBPL",
+   "admitted": 36,
+   "rejected": 1,
+   "rate": 0.02702702702702703
+  },
+  {
+   "symbol": "HRK",
+   "admitted": 36,
+   "rejected": 1,
+   "rate": 0.02702702702702703
+  },
+  {
+   "symbol": "IFI35",
+   "admitted": 38,
+   "rejected": 1,
+   "rate": 0.02564102564102564
+  },
+  {
+   "symbol": "PRR4",
+   "admitted": 81,
+   "rejected": 2,
+   "rate": 0.024096385542168676
+  },
+  {
+   "symbol": "GFI1B",
+   "admitted": 41,
+   "rejected": 1,
+   "rate": 0.023809523809523808
+  },
+  {
+   "symbol": "PPP1R12B",
+   "admitted": 43,
+   "rejected": 1,
+   "rate": 0.022727272727272728
+  },
+  {
+   "symbol": "TLE1",
+   "admitted": 45,
+   "rejected": 1,
+   "rate": 0.021739130434782608
+  },
+  {
+   "symbol": "LRSAM1",
+   "admitted": 47,
+   "rejected": 1,
+   "rate": 0.020833333333333332
+  },
+  {
+   "symbol": "LTB",
+   "admitted": 97,
+   "rejected": 2,
+   "rate": 0.020202020202020204
+  },
+  {
+   "symbol": "LCLAT1",
+   "admitted": 49,
+   "rejected": 1,
+   "rate": 0.02
+  },
+  {
+   "symbol": "PGM3",
+   "admitted": 148,
+   "rejected": 3,
+   "rate": 0.019867549668874173
+  },
+  {
+   "symbol": "ZNF830",
+   "admitted": 51,
+   "rejected": 1,
+   "rate": 0.019230769230769232
+  },
+  {
+   "symbol": "TIGD5",
+   "admitted": 52,
+   "rejected": 1,
+   "rate": 0.018867924528301886
+  },
+  {
+   "symbol": "GMNN",
+   "admitted": 54,
+   "rejected": 1,
+   "rate": 0.01818181818181818
+  },
+  {
+   "symbol": "SHMT2",
+   "admitted": 54,
+   "rejected": 1,
+   "rate": 0.01818181818181818
+  },
+  {
+   "symbol": "VENTX",
+   "admitted": 56,
+   "rejected": 1,
+   "rate": 0.017543859649122806
+  },
+  {
+   "symbol": "ACTR3B",
+   "admitted": 115,
+   "rejected": 2,
+   "rate": 0.017094017094017096
+  },
+  {
+   "symbol": "STOML2",
+   "admitted": 58,
+   "rejected": 1,
+   "rate": 0.01694915254237288
+  },
+  {
+   "symbol": "RPP25L",
+   "admitted": 62,
+   "rejected": 1,
+   "rate": 0.015873015873015872
+  },
+  {
+   "symbol": "RORA",
+   "admitted": 126,
+   "rejected": 2,
+   "rate": 0.015625
+  },
+  {
+   "symbol": "TBC1D31",
+   "admitted": 63,
+   "rejected": 1,
+   "rate": 0.015625
+  },
+  {
+   "symbol": "C6orf203",
+   "admitted": 190,
+   "rejected": 3,
+   "rate": 0.015544041450777202
+  },
+  {
+   "symbol": "CCNB2",
+   "admitted": 64,
+   "rejected": 1,
+   "rate": 0.015384615384615385
+  },
+  {
+   "symbol": "PYM1",
+   "admitted": 64,
+   "rejected": 1,
+   "rate": 0.015384615384615385
+  },
+  {
+   "symbol": "POLE3",
+   "admitted": 129,
+   "rejected": 2,
+   "rate": 0.015267175572519083
+  }
+ ],
+ "overall_perturbed_rejection_rate": 0.0003850019060956814,
+ "identity": {
+  "rule": "cell_data.identity on (key hash, fingerprint of the counts on the model genes, source file); equal counts under different keys are reported, never used to drop a cell (cells with at least 200 counts)",
+  "by_study": {
+   "hepg2_nadig": {
+    "new": 145473
+   },
+   "jurkat_nadig": {
+    "new": 262956
+   },
+   "h1_vcc2025": {
+    "new": 282024,
+    "duplicate": 38176
+   },
+   "hipsci_targeted_19": {
+    "new": 1161865
+   },
+   "replogle_k562_gwps": {
+    "new": 1989578
+   },
+   "replogle_k562_essential": {
+    "new": 310385
+   },
+   "replogle_rpe1": {
+    "new": 247914
+   },
+   "a549_liu_hillsley2026": {
+    "new": 606075
+   },
+   "tian2021_crispri": {
+    "new": 32300
+   },
+   "tian2021_crispra": {
+    "new": 21193
+   },
+   "norman2019_crispra": {
+    "new": 111445
+   },
+   "kolf_chromatin_modifiers": {
+    "new": 44039
+   },
+   "kolf_metabolic_enzymes": {
+    "new": 117768
+   },
+   "kolf_strong_perturbations": {
+    "new": 232438
+   }
+  },
+  "sources": [
+   "https://zenodo.org/api/records/13350497/files/NadigOConner2024_hepg2.h5ad/content|as published",
+   "https://zenodo.org/api/records/13350497/files/NadigOConner2024_jurkat.h5ad/content|Zenodo 13350497 (scPerturb)",
+   "https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/train/adata_Training.h5ad|Arc bucket, 16/12/2025 objects",
+   "https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/validation/adata_Validation.h5ad|Arc bucket, 16/12/2025 objects",
+   "https://ndownloader.figshare.com/files/51072902|Figshare 27989294 v1",
+   "https://ndownloader.figshare.com/files/35775507|Figshare 20029387, Replogle et al. 2022",
+   "https://ndownloader.figshare.com/files/35773219|Figshare 20029387, Replogle et al. 2022",
+   "https://ndownloader.figshare.com/files/35775606|Figshare 20029387, Replogle et al. 2022",
+   "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE345nnn/GSE345058/suppl/GSE345058_SC_raw_normalized_counts.h5ad|GEO GSE345058",
+   "https://zenodo.org/api/records/13350497/files/TianKampmann2021_CRISPRi.h5ad/content|Zenodo 13350497 (scPerturb)",
+   "https://zenodo.org/api/records/13350497/files/TianKampmann2021_CRISPRa.h5ad/content|Zenodo 13350497 (scPerturb)",
+   "https://zenodo.org/api/records/13350497/files/NormanWeissman2019_filtered.h5ad/content|Zenodo 13350497 (scPerturb)",
+   "https://ndownloader.figshare.com/files/64680606|Figshare+ 27261219",
+   "https://ndownloader.figshare.com/files/64680708|Figshare+ 27261219",
+   "https://ndownloader.figshare.com/files/64650852|Figshare+ 27261219"
+  ],
+  "content_matches_across_keys": [],
+  "declared_republications": {},
+  "same_experiment": {
+   "h1_vcc2025_train": "h1_vcc2025",
+   "h1_vcc2025_val": "h1_vcc2025"
+  },
+  "barcode_overlap_between_studies_of_a_context": [
+   {
+    "context": "K562",
+    "studies": [
+     "replogle_k562_gwps",
+     "replogle_k562_essential"
+    ],
+    "shared_barcodes": 124308,
+    "fraction_of_smaller": 0.4174294982437524
+   },
+   {
+    "context": "KOLF2.1J iPSC",
+    "studies": [
+     "kolf_metabolic_enzymes",
+     "kolf_strong_perturbations"
+    ],
+    "shared_barcodes": 7309,
+    "fraction_of_smaller": 0.06281692077625178
+   },
+   {
+    "context": "KOLF2.1J iPSC",
+    "studies": [
+     "kolf_chromatin_modifiers",
+     "kolf_strong_perturbations"
+    ],
+    "shared_barcodes": 2627,
+    "fraction_of_smaller": 0.059921078442553774
+   },
+   {
+    "context": "K562",
+    "studies": [
+     "replogle_k562_gwps",
+     "norman2019_crispra"
+    ],
+    "shared_barcodes": 3474,
+    "fraction_of_smaller": 0.033261206747984606
+   },
+   {
+    "context": "KOLF2.1J iPSC",
+    "studies": [
+     "kolf_chromatin_modifiers",
+     "kolf_metabolic_enzymes"
+    ],
+    "shared_barcodes": 1438,
+    "fraction_of_smaller": 0.03280034670741999
+   },
+   {
+    "context": "iPSC-induced neuron",
+    "studies": [
+     "tian2021_crispri",
+     "tian2021_crispra"
+    ],
+    "shared_barcodes": 181,
+    "fraction_of_smaller": 0.008561562839979187
+   },
+   {
+    "context": "K562",
+    "studies": [
+     "replogle_k562_essential",
+     "norman2019_crispra"
+    ],
+    "shared_barcodes": 686,
+    "fraction_of_smaller": 0.0065679872852957505
+   }
+  ]
+ },
+ "features": {
+  "rule": "cell_data.feature_columns: native features colliding on one model gene are dropped and the gene masked in that shard",
+  "shards_with_collisions": [
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00000.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00001.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00002.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00003.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00004.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00005.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00006.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00007.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00008.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00009.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00010.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00011.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00012.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00013.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00014.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00015.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00016.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00017.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00018.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00019.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00020.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00021.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00022.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00023.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00024.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00025.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00026.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00027.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00028.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00029.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00030.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00031.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00032.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00033.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00034.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00035.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00036.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00037.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00038.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00039.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00040.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00041.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00042.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00043.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00044.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00045.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00046.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00047.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00048.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00049.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00050.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00051.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00052.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00053.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00054.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00055.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00056.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00057.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19/hipsci_targeted_19__shard_00058.h5ad",
+    "study": "hipsci_targeted_19",
+    "collided_model_genes": 6,
+    "examples": [
+     "CYB561D2",
+     "TMSB15B",
+     "HSPA14",
+     "GOLGA8M",
+     "TBCE",
+     "GGT1"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00000.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00001.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00002.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00003.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00004.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00005.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00006.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00007.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00008.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00009.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00010.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00011.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00012.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00013.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00014.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00015.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00016.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00017.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00018.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00019.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00020.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00021.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00022.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00023.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00024.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00025.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00026.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00027.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00028.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00029.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00030.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00031.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00032.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00033.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00034.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00035.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00036.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00037.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00038.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00039.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00040.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00041.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00042.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00043.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00044.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00045.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00046.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00047.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00048.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_a__shard_00049.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00050.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00051.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00052.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00053.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00054.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00055.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00056.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00057.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00058.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00059.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00060.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00061.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00062.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00063.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00064.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00065.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00066.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00067.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00068.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00069.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00070.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00071.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00072.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00073.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00074.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00075.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00076.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00077.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00078.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00079.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00080.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00081.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00082.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00083.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00084.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00085.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00086.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00087.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00088.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00089.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00090.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00091.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00092.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00093.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00094.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00095.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00096.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00097.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00098.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3/k562_gwps_b__shard_00099.h5ad",
+    "study": "replogle_k562_gwps",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00000.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00001.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00002.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00003.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00004.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00005.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00006.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00007.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00008.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00009.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00010.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00011.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00012.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00013.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00014.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00015.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00016.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00017.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00018.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00019.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00020.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00021.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00022.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00023.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00024.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00025.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00026.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00027.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00028.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00029.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00030.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2/k562_essential__shard_00031.h5ad",
+    "study": "replogle_k562_essential",
+    "collided_model_genes": 2,
+    "examples": [
+     "HSPA14",
+     "TBCE"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00000.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00001.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00002.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00003.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00004.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00005.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00006.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00007.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00008.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00009.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00010.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00011.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00012.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00013.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00014.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00015.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00016.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00017.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00018.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00019.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00020.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00021.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00022.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00023.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   },
+   {
+    "shard": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2/rpe1__shard_00024.h5ad",
+    "study": "replogle_rpe1",
+    "collided_model_genes": 1,
+    "examples": [
+     "HSPA14"
+    ]
+   }
+  ]
+ },
+ "masks": {
+  "rule": "each cell's likelihood on its own shard's genes; control rows carry their shard's mask; a key's QC and shift estimator on the intersection of its shards' masks",
+  "by_key": {
+   "hepg2_nadig|HepG2": {
+    "genes_in_every_shard": 9023,
+    "genes_in_some_shard_only": 0
+   },
+   "jurkat_nadig|Jurkat": {
+    "genes_in_every_shard": 8283,
+    "genes_in_some_shard_only": 0
+   },
+   "h1_vcc2025|H1": {
+    "genes_in_every_shard": 18077,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|oikd_5": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|kolf_2": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|fiaj_1": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|eipl_3": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|zapk_3": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|tolg_6": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|jejf_3": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|pipw_5": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|paab_3": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|iudw_4": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|MISSING": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|tolg_4": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|pipw_4": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|eipl_1": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|fiaj_3": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|jejf_2": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|paab_4": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|iudw_1": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|kolf_3": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "hipsci_targeted_19|oikd_2": {
+    "genes_in_every_shard": 18507,
+    "genes_in_some_shard_only": 0
+   },
+   "replogle_k562_gwps|K562": {
+    "genes_in_every_shard": 7679,
+    "genes_in_some_shard_only": 0
+   },
+   "replogle_k562_essential|K562": {
+    "genes_in_every_shard": 7938,
+    "genes_in_some_shard_only": 0
+   },
+   "replogle_rpe1|RPE1": {
+    "genes_in_every_shard": 8259,
+    "genes_in_some_shard_only": 0
+   },
+   "a549_liu_hillsley2026|A549": {
+    "genes_in_every_shard": 17156,
+    "genes_in_some_shard_only": 0
+   },
+   "tian2021_crispri|iPSC-induced neuron": {
+    "genes_in_every_shard": 18333,
+    "genes_in_some_shard_only": 0
+   },
+   "tian2021_crispra|iPSC-induced neuron": {
+    "genes_in_every_shard": 18333,
+    "genes_in_some_shard_only": 0
+   },
+   "norman2019_crispra|K562": {
+    "genes_in_every_shard": 17743,
+    "genes_in_some_shard_only": 0
+   },
+   "kolf_chromatin_modifiers|KOLF2.1J iPSC": {
+    "genes_in_every_shard": 18171,
+    "genes_in_some_shard_only": 0
+   },
+   "kolf_metabolic_enzymes|KOLF2.1J iPSC": {
+    "genes_in_every_shard": 18217,
+    "genes_in_some_shard_only": 0
+   },
+   "kolf_strong_perturbations|KOLF2.1J iPSC": {
+    "genes_in_every_shard": 18106,
+    "genes_in_some_shard_only": 0
+   }
+  }
+ },
+ "control_quantiles": {
+  "hepg2_nadig|HepG2": {
+   "lib": {
+    "1": 3321.5,
+    "5": 5335.75,
+    "50": 11825.5,
+    "95": 30814.0,
+    "99": 47773.0
+   },
+   "genes": {
+    "1": 1735.25,
+    "5": 2364.25,
+    "50": 3827.0,
+    "95": 5952.75,
+    "99": 6888.5
+   },
+   "mito": {
+    "1": 0.0745761748803284,
+    "5": 0.09578810993921716,
+    "50": 0.12858791749565873,
+    "95": 0.17101887232299412,
+    "99": 0.20430323226420577
+   }
+  },
+  "jurkat_nadig|Jurkat": {
+   "lib": {
+    "1": 2521.24,
+    "5": 3814.6,
+    "50": 7852.0,
+    "95": 19191.6,
+    "99": 30485.159999999996
+   },
+   "genes": {
+    "1": 1521.3600000000001,
+    "5": 2026.0,
+    "50": 3236.0,
+    "95": 5075.4,
+    "99": 6049.759999999998
+   },
+   "mito": {
+    "1": 0.03349811785481922,
+    "5": 0.058624167914355804,
+    "50": 0.0872093023255814,
+    "95": 0.11952915212614962,
+    "99": 0.14208470253895203
+   }
+  },
+  "h1_vcc2025|H1": {
+   "lib": {
+    "1": 22570.95,
+    "5": 29884.0,
+    "50": 54504.0,
+    "95": 94038.45,
+    "99": 116342.38999999962
+   },
+   "genes": {
+    "1": 6715.0,
+    "5": 7381.0,
+    "50": 8778.0,
+    "95": 9947.0,
+    "99": 10381.0
+   },
+   "mito": {
+    "1": 3.4614110954170606e-05,
+    "5": 8.275038653832306e-05,
+    "50": 0.00042954834513608126,
+    "95": 0.002663597839066292,
+    "99": 0.005098290520349032
+   }
+  },
+  "hipsci_targeted_19|eipl_3": {
+   "lib": {
+    "1": 4595.0,
+    "5": 6426.0,
+    "50": 11950.0,
+    "95": 21075.0,
+    "99": 25588.0
+   },
+   "genes": {
+    "1": 2407.0,
+    "5": 2998.0,
+    "50": 4405.0,
+    "95": 6017.0,
+    "99": 6547.0
+   },
+   "mito": {
+    "1": 0.031388522822570986,
+    "5": 0.039784029553850526,
+    "50": 0.05659826898764952,
+    "95": 0.08540438079191238,
+    "99": 0.09998500974366661
+   }
+  },
+  "hipsci_targeted_19|fiaj_1": {
+   "lib": {
+    "1": 3883.28,
+    "5": 5757.8,
+    "50": 12080.0,
+    "95": 21438.800000000003,
+    "99": 27792.71999999999
+   },
+   "genes": {
+    "1": 2119.4,
+    "5": 2804.0,
+    "50": 4401.0,
+    "95": 6014.400000000001,
+    "99": 6732.44
+   },
+   "mito": {
+    "1": 0.018020919198676433,
+    "5": 0.02780522270122971,
+    "50": 0.04956133600123134,
+    "95": 0.07301366692047251,
+    "99": 0.0859014722689249
+   }
+  },
+  "hipsci_targeted_19|iudw_4": {
+   "lib": {
+    "1": 4498.52,
+    "5": 6662.2,
+    "50": 13657.0,
+    "95": 23097.799999999996,
+    "99": 27792.960000000006
+   },
+   "genes": {
+    "1": 2512.8,
+    "5": 3171.0,
+    "50": 4851.0,
+    "95": 6304.4,
+    "99": 6769.280000000001
+   },
+   "mito": {
+    "1": 0.02645385805200787,
+    "5": 0.031369813609973374,
+    "50": 0.045878693623639194,
+    "95": 0.0686825554452168,
+    "99": 0.09165877008354885
+   }
+  },
+  "hipsci_targeted_19|jejf_3": {
+   "lib": {
+    "1": 3237.88,
+    "5": 7470.25,
+    "50": 16087.0,
+    "95": 29285.249999999993,
+    "99": 37760.9700000001
+   },
+   "genes": {
+    "1": 1926.29,
+    "5": 3375.3,
+    "50": 5109.0,
+    "95": 6824.549999999999,
+    "99": 7562.450000000006
+   },
+   "mito": {
+    "1": 0.011739747118146751,
+    "5": 0.025813884985926985,
+    "50": 0.04039442950574939,
+    "95": 0.06399255794933524,
+    "99": 0.08482330779761826
+   }
+  },
+  "hipsci_targeted_19|kolf_2": {
+   "lib": {
+    "1": 4145.59,
+    "5": 6328.650000000001,
+    "50": 13253.5,
+    "95": 22735.449999999983,
+    "99": 30543.45999999996
+   },
+   "genes": {
+    "1": 2283.46,
+    "5": 3105.4,
+    "50": 4811.0,
+    "95": 6351.849999999996,
+    "99": 7107.199999999999
+   },
+   "mito": {
+    "1": 0.016963095786217453,
+    "5": 0.024364264444313763,
+    "50": 0.03889749627258518,
+    "95": 0.06021371229325067,
+    "99": 0.07469663611037507
+   }
+  },
+  "hipsci_targeted_19|oikd_5": {
+   "lib": {
+    "1": 4657.76,
+    "5": 6407.35,
+    "50": 13326.5,
+    "95": 23444.2,
+    "99": 27575.760000000006
+   },
+   "genes": {
+    "1": 2442.44,
+    "5": 3098.7,
+    "50": 4771.5,
+    "95": 6253.45,
+    "99": 6837.960000000001
+   },
+   "mito": {
+    "1": 0.0244816530373611,
+    "5": 0.031052756153157345,
+    "50": 0.04725879325207434,
+    "95": 0.07419891083446566,
+    "99": 0.08881433173427318
+   }
+  },
+  "hipsci_targeted_19|paab_3": {
+   "lib": {
+    "1": 4743.8,
+    "5": 7130.2,
+    "50": 14217.0,
+    "95": 25197.0,
+    "99": 31213.200000000023
+   },
+   "genes": {
+    "1": 2400.0,
+    "5": 3266.0,
+    "50": 4857.0,
+    "95": 6401.799999999999,
+    "99": 7192.56
+   },
+   "mito": {
+    "1": 0.02415773433651405,
+    "5": 0.02812351030070279,
+    "50": 0.041378774939833864,
+    "95": 0.06190110961557912,
+    "99": 0.07856336417080736
+   }
+  },
+  "hipsci_targeted_19|tolg_6": {
+   "lib": {
+    "1": 4576.4,
+    "5": 7655.0,
+    "50": 15563.0,
+    "95": 26037.949999999997,
+    "99": 30717.309999999987
+   },
+   "genes": {
+    "1": 2418.79,
+    "5": 3350.6,
+    "50": 5130.0,
+    "95": 6648.95,
+    "99": 7086.439999999999
+   },
+   "mito": {
+    "1": 0.027338636799063898,
+    "5": 0.03406500112865165,
+    "50": 0.05038084633691109,
+    "95": 0.07035468410313483,
+    "99": 0.08580753562779277
+   }
+  },
+  "hipsci_targeted_19|zapk_3": {
+   "lib": {
+    "1": 4555.74,
+    "5": 6607.5,
+    "50": 13714.5,
+    "95": 22653.099999999995,
+    "99": 30295.969999999998
+   },
+   "genes": {
+    "1": 2494.73,
+    "5": 3126.6,
+    "50": 4913.0,
+    "95": 6372.049999999996,
+    "99": 7164.099999999997
+   },
+   "mito": {
+    "1": 0.024621101978081,
+    "5": 0.031834754606475626,
+    "50": 0.04839186042270771,
+    "95": 0.07210926723290391,
+    "99": 0.08374032505353386
+   }
+  },
+  "hipsci_targeted_19|pipw_5": {
+   "lib": {
+    "1": 6001.2,
+    "5": 8087.6,
+    "50": 13852.5,
+    "95": 25304.250000000004,
+    "99": 28619.17000000001
+   },
+   "genes": {
+    "1": 2987.68,
+    "5": 3682.45,
+    "50": 4873.5,
+    "95": 6446.5,
+    "99": 7100.260000000001
+   },
+   "mito": {
+    "1": 0.01606215614740058,
+    "5": 0.03121821619777228,
+    "50": 0.04527175196089647,
+    "95": 0.06916828306384279,
+    "99": 0.08636861045986294
+   }
+  },
+  "hipsci_targeted_19|eipl_1": {
+   "lib": {
+    "1": 4233.05,
+    "5": 7156.5,
+    "50": 13646.5,
+    "95": 25731.75,
+    "99": 33892.3
+   },
+   "genes": {
+    "1": 2340.55,
+    "5": 3273.75,
+    "50": 4707.0,
+    "95": 6442.25,
+    "99": 7324.250000000001
+   },
+   "mito": {
+    "1": 0.0075789342833853844,
+    "5": 0.031061780534544406,
+    "50": 0.04602449430059931,
+    "95": 0.07252618995093778,
+    "99": 0.09332519820920114
+   }
+  },
+  "hipsci_targeted_19|fiaj_3": {
+   "lib": {
+    "1": 3620.45,
+    "5": 6169.0,
+    "50": 14613.0,
+    "95": 27535.75,
+    "99": 30648.2
+   },
+   "genes": {
+    "1": 2108.1,
+    "5": 2921.25,
+    "50": 4899.5,
+    "95": 6619.5,
+    "99": 6898.600000000001
+   },
+   "mito": {
+    "1": 0.02080203721271657,
+    "5": 0.029702369789311792,
+    "50": 0.044838275202524015,
+    "95": 0.06778855887679658,
+    "99": 0.07120907389216508
+   }
+  },
+  "hipsci_targeted_19|iudw_1": {
+   "lib": {
+    "1": 4177.9400000000005,
+    "5": 6758.0,
+    "50": 15088.0,
+    "95": 29316.899999999987,
+    "99": 37331.05999999999
+   },
+   "genes": {
+    "1": 2293.22,
+    "5": 3144.6,
+    "50": 4899.0,
+    "95": 6695.299999999999,
+    "99": 7419.08
+   },
+   "mito": {
+    "1": 0.0228821848434534,
+    "5": 0.03195905303172701,
+    "50": 0.0483536827257901,
+    "95": 0.07633618267092392,
+    "99": 0.09933689352742527
+   }
+  },
+  "hipsci_targeted_19|jejf_2": {
+   "lib": {
+    "1": 3931.52,
+    "5": 5767.8,
+    "50": 12910.0,
+    "95": 23853.2,
+    "99": 27487.640000000007
+   },
+   "genes": {
+    "1": 2292.32,
+    "5": 2918.0,
+    "50": 4740.0,
+    "95": 6396.999999999996,
+    "99": 6846.880000000002
+   },
+   "mito": {
+    "1": 0.019342391304347825,
+    "5": 0.023937986256669395,
+    "50": 0.039941735663906776,
+    "95": 0.06479501717709976,
+    "99": 0.0795463329242442
+   }
+  },
+  "hipsci_targeted_19|kolf_3": {
+   "lib": {
+    "1": 4139.94,
+    "5": 5784.7,
+    "50": 13020.0,
+    "95": 24957.499999999996,
+    "99": 30486.239999999994
+   },
+   "genes": {
+    "1": 2274.12,
+    "5": 2865.9,
+    "50": 4714.0,
+    "95": 6484.099999999999,
+    "99": 7066.079999999999
+   },
+   "mito": {
+    "1": 0.02187493454291555,
+    "5": 0.026380121418794936,
+    "50": 0.0416632827093316,
+    "95": 0.060811596500903946,
+    "99": 0.09091965789703463
+   }
+  },
+  "hipsci_targeted_19|oikd_2": {
+   "lib": {
+    "1": 4303.12,
+    "5": 6570.6,
+    "50": 13174.0,
+    "95": 25255.6,
+    "99": 31104.760000000017
+   },
+   "genes": {
+    "1": 2310.6,
+    "5": 3048.0,
+    "50": 4608.0,
+    "95": 6294.999999999998,
+    "99": 6903.400000000001
+   },
+   "mito": {
+    "1": 0.022285168014267203,
+    "5": 0.02920017683710888,
+    "50": 0.046540193803739596,
+    "95": 0.07349555829191164,
+    "99": 0.0928070204643848
+   }
+  },
+  "hipsci_targeted_19|paab_4": {
+   "lib": {
+    "1": 4394.12,
+    "5": 6881.8,
+    "50": 14156.0,
+    "95": 24832.499999999996,
+    "99": 33606.060000000005
+   },
+   "genes": {
+    "1": 2390.52,
+    "5": 3131.6,
+    "50": 4829.0,
+    "95": 6445.4,
+    "99": 7312.900000000004
+   },
+   "mito": {
+    "1": 0.023139101539554795,
+    "5": 0.026595439622148404,
+    "50": 0.04004888074209854,
+    "95": 0.06254922294095273,
+    "99": 0.07739971366638379
+   }
+  },
+  "hipsci_targeted_19|pipw_4": {
+   "lib": {
+    "1": 4414.9,
+    "5": 6674.6,
+    "50": 14317.5,
+    "95": 26796.899999999998,
+    "99": 30863.3
+   },
+   "genes": {
+    "1": 2392.23,
+    "5": 3164.75,
+    "50": 4857.5,
+    "95": 6550.6,
+    "99": 6986.41
+   },
+   "mito": {
+    "1": 0.027038892123552694,
+    "5": 0.03199950002533764,
+    "50": 0.046483050536201484,
+    "95": 0.06865854086297389,
+    "99": 0.08676257732419475
+   }
+  },
+  "hipsci_targeted_19|tolg_4": {
+   "lib": {
+    "1": 4773.49,
+    "5": 6457.700000000001,
+    "50": 16637.0,
+    "95": 32026.699999999993,
+    "99": 36686.73999999999
+   },
+   "genes": {
+    "1": 2487.78,
+    "5": 3104.5,
+    "50": 5293.0,
+    "95": 7104.65,
+    "99": 7767.23
+   },
+   "mito": {
+    "1": 0.030503025775700212,
+    "5": 0.03388826694525713,
+    "50": 0.04724427851152477,
+    "95": 0.0704968688198144,
+    "99": 0.10923382874707427
+   }
+  },
+  "replogle_k562_gwps|K562": {
+   "lib": {
+    "1": 1733.98,
+    "5": 2875.0,
+    "50": 7782.0,
+    "95": 14158.149999999998,
+    "99": 18011.039999999994
+   },
+   "genes": {
+    "1": 1054.95,
+    "5": 1537.0,
+    "50": 2954.0,
+    "95": 4112.049999999999,
+    "99": 4598.0
+   },
+   "mito": {
+    "1": 0.09061933731806412,
+    "5": 0.12239351815351492,
+    "50": 0.17507175002566383,
+    "95": 0.23417236020342744,
+    "99": 0.2674946731014383
+   }
+  },
+  "replogle_k562_essential|K562": {
+   "lib": {
+    "1": 3472.1,
+    "5": 5485.0,
+    "50": 9587.0,
+    "95": 15965.0,
+    "99": 20130.1
+   },
+   "genes": {
+    "1": 1785.0,
+    "5": 2402.0,
+    "50": 3372.0,
+    "95": 4371.5,
+    "99": 4804.200000000001
+   },
+   "mito": {
+    "1": 0.08603264009319972,
+    "5": 0.10780538241710134,
+    "50": 0.15288540432126904,
+    "95": 0.20492485238862052,
+    "99": 0.23302111491767355
+   }
+  },
+  "replogle_rpe1|RPE1": {
+   "lib": {
+    "1": 2926.68,
+    "5": 4485.2,
+    "50": 8437.0,
+    "95": 16581.8,
+    "99": 25342.19999999999
+   },
+   "genes": {
+    "1": 1577.84,
+    "5": 2137.2,
+    "50": 3212.0,
+    "95": 4564.799999999999,
+    "99": 5473.16
+   },
+   "mito": {
+    "1": 0.04635850417881951,
+    "5": 0.0661364154237065,
+    "50": 0.08601240834743373,
+    "95": 0.11619941632144931,
+    "99": 0.13980296549436225
+   }
+  },
+  "a549_liu_hillsley2026|A549": {
+   "lib": {
+    "1": 7950.9,
+    "5": 10354.85,
+    "50": 18306.0,
+    "95": 38347.25,
+    "99": 48307.099999999984
+   },
+   "genes": {
+    "1": 3242.9700000000003,
+    "5": 3831.0,
+    "50": 5213.0,
+    "95": 6894.0,
+    "99": 7423.0
+   },
+   "mito": {
+    "1": 0.018160814167976023,
+    "5": 0.02257144826024266,
+    "50": 0.03274321499427869,
+    "95": 0.04472108815541136,
+    "99": 0.052098660220267726
+   }
+  },
+  "tian2021_crispri|iPSC-induced neuron": {
+   "lib": {
+    "1": 689.2,
+    "5": 1665.4,
+    "50": 11869.0,
+    "95": 26698.8,
+    "99": 36673.23999999999
+   },
+   "genes": {
+    "1": 514.0,
+    "5": 1013.0,
+    "50": 4204.0,
+    "95": 6237.0,
+    "99": 7021.839999999999
+   },
+   "mito": {
+    "1": 0.04039562926515039,
+    "5": 0.05071901219476085,
+    "50": 0.07705764745084971,
+    "95": 0.13624423764337149,
+    "99": 0.29343985465315237
+   }
+  },
+  "tian2021_crispra|iPSC-induced neuron": {
+   "lib": {
+    "1": 1168.72,
+    "5": 1827.65,
+    "50": 8890.5,
+    "95": 18745.84999999999,
+    "99": 28634.330000000005
+   },
+   "genes": {
+    "1": 658.58,
+    "5": 1114.15,
+    "50": 3520.0,
+    "95": 5275.65,
+    "99": 6394.4800000000005
+   },
+   "mito": {
+    "1": 0.05079149899296859,
+    "5": 0.059543607315614255,
+    "50": 0.0983399837099425,
+    "95": 0.3071607940051019,
+    "99": 0.5370868510701328
+   }
+  },
+  "norman2019_crispra|K562": {
+   "lib": {
+    "1": 2643.16,
+    "5": 3959.0,
+    "50": 8263.0,
+    "95": 14225.599999999991,
+    "99": 17630.92
+   },
+   "genes": {
+    "1": 1438.54,
+    "5": 1927.0,
+    "50": 2995.0,
+    "95": 4058.0,
+    "99": 4506.979999999989
+   },
+   "mito": {
+    "1": 0.06285772110908723,
+    "5": 0.08125154623272221,
+    "50": 0.116881743177491,
+    "95": 0.15914854036881804,
+    "99": 0.18431404447805205
+   }
+  },
+  "kolf_chromatin_modifiers|KOLF2.1J iPSC": {
+   "lib": {
+    "1": 7317.2,
+    "5": 9293.0,
+    "50": 15918.0,
+    "95": 30035.0,
+    "99": 38015.79999999999
+   },
+   "genes": {
+    "1": 3676.0,
+    "5": 4250.0,
+    "50": 5764.0,
+    "95": 7662.0,
+    "99": 8361.599999999999
+   },
+   "mito": {
+    "1": 0.013823395674866039,
+    "5": 0.01945610353270374,
+    "50": 0.03232304733998718,
+    "95": 0.04763867139207121,
+    "99": 0.05515221444966843
+   }
+  },
+  "kolf_metabolic_enzymes|KOLF2.1J iPSC": {
+   "lib": {
+    "1": 2209.0,
+    "5": 2894.5,
+    "50": 5749.0,
+    "95": 11936.0,
+    "99": 15532.0
+   },
+   "genes": {
+    "1": 1578.5,
+    "5": 1935.0,
+    "50": 3162.0,
+    "95": 4901.0,
+    "99": 5643.5
+   },
+   "mito": {
+    "1": 0.011628896822398198,
+    "5": 0.01698387279349585,
+    "50": 0.029517351416035103,
+    "95": 0.04386212340997386,
+    "99": 0.05022766660814753
+   }
+  },
+  "kolf_strong_perturbations|KOLF2.1J iPSC": {
+   "lib": {
+    "1": 1452.99,
+    "5": 1806.0,
+    "50": 3283.0,
+    "95": 6537.049999999999,
+    "99": 8630.0
+   },
+   "genes": {
+    "1": 1100.98,
+    "5": 1339.0,
+    "50": 2147.5,
+    "95": 3468.0499999999993,
+    "99": 4096.009999999998
+   },
+   "mito": {
+    "1": 0.013131468530387313,
+    "5": 0.022668071992224467,
+    "50": 0.04834291656288169,
+    "95": 0.08892095579591142,
+    "99": 0.1243026261169397
+   }
+  }
+ },
+ "reservoir": {
+  "rule": "cell_data.pool_quotas and pool_hash: per (key, library) the admitted controls with the smallest hash of (seed, cell key); each library keeps min(n, 64), the rest of 2048 per key in proportion; a cell draws in its own library when it holds 64, with replacement in it when it holds 8, else in the key's pool",
+  "rows": 56727,
+  "by_key": {
+   "a549_liu_hillsley2026|A549": {
+    "libraries": 32,
+    "controls": 45320,
+    "libraries_with_ctrl_k": 32,
+    "kept": 2048,
+    "libraries_with_ctrl_k_kept": 32,
+    "perturbed_cells_by_draw": {
+     "own_library": 1.0
+    }
+   },
+   "h1_vcc2025|H1": {
+    "libraries": 48,
+    "controls": 38176,
+    "libraries_with_ctrl_k": 48,
+    "kept": 3072,
+    "libraries_with_ctrl_k_kept": 48,
+    "perturbed_cells_by_draw": {
+     "own_library": 1.0
+    }
+   },
+   "hepg2_nadig|HepG2": {
+    "libraries": 56,
+    "controls": 4976,
+    "libraries_with_ctrl_k": 52,
+    "kept": 3426,
+    "libraries_with_ctrl_k_kept": 52,
+    "perturbed_cells_by_draw": {
+     "own_library": 0.97611,
+     "own_library_resampled": 0.02064,
+     "key_pool": 0.00325
+    }
+   },
+   "hipsci_targeted_19|eipl_1": {
+    "libraries": 72,
+    "controls": 496,
+    "libraries_with_ctrl_k": 0,
+    "kept": 496,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "key_pool": 0.57638,
+     "own_library_resampled": 0.42362
+    }
+   },
+   "hipsci_targeted_19|eipl_3": {
+    "libraries": 69,
+    "controls": 501,
+    "libraries_with_ctrl_k": 0,
+    "kept": 501,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "own_library_resampled": 0.46987,
+     "key_pool": 0.53013
+    }
+   },
+   "hipsci_targeted_19|fiaj_1": {
+    "libraries": 70,
+    "controls": 549,
+    "libraries_with_ctrl_k": 0,
+    "kept": 549,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "own_library_resampled": 0.58304,
+     "key_pool": 0.41696
+    }
+   },
+   "hipsci_targeted_19|fiaj_3": {
+    "libraries": 47,
+    "controls": 86,
+    "libraries_with_ctrl_k": 0,
+    "kept": 86,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "key_pool": 1.0
+    }
+   },
+   "hipsci_targeted_19|iudw_1": {
+    "libraries": 72,
+    "controls": 575,
+    "libraries_with_ctrl_k": 0,
+    "kept": 575,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "key_pool": 0.42315,
+     "own_library_resampled": 0.57685
+    }
+   },
+   "hipsci_targeted_19|iudw_4": {
+    "libraries": 69,
+    "controls": 433,
+    "libraries_with_ctrl_k": 0,
+    "kept": 433,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "own_library_resampled": 0.33847,
+     "key_pool": 0.66153
+    }
+   },
+   "hipsci_targeted_19|jejf_2": {
+    "libraries": 72,
+    "controls": 605,
+    "libraries_with_ctrl_k": 0,
+    "kept": 605,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "own_library_resampled": 0.56845,
+     "key_pool": 0.43155
+    }
+   },
+   "hipsci_targeted_19|jejf_3": {
+    "libraries": 54,
+    "controls": 484,
+    "libraries_with_ctrl_k": 0,
+    "kept": 484,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "own_library_resampled": 0.66823,
+     "key_pool": 0.33177
+    }
+   },
+   "hipsci_targeted_19|kolf_2": {
+    "libraries": 62,
+    "controls": 520,
+    "libraries_with_ctrl_k": 0,
+    "kept": 520,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "key_pool": 0.38238,
+     "own_library_resampled": 0.61762
+    }
+   },
+   "hipsci_targeted_19|kolf_3": {
+    "libraries": 70,
+    "controls": 455,
+    "libraries_with_ctrl_k": 0,
+    "kept": 455,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "own_library_resampled": 0.39261,
+     "key_pool": 0.60739
+    }
+   },
+   "hipsci_targeted_19|oikd_2": {
+    "libraries": 65,
+    "controls": 177,
+    "libraries_with_ctrl_k": 0,
+    "kept": 177,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "key_pool": 1.0
+    }
+   },
+   "hipsci_targeted_19|oikd_5": {
+    "libraries": 70,
+    "controls": 668,
+    "libraries_with_ctrl_k": 0,
+    "kept": 668,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "key_pool": 0.32379,
+     "own_library_resampled": 0.67621
+    }
+   },
+   "hipsci_targeted_19|paab_3": {
+    "libraries": 69,
+    "controls": 397,
+    "libraries_with_ctrl_k": 0,
+    "kept": 397,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "key_pool": 0.77025,
+     "own_library_resampled": 0.22975
+    }
+   },
+   "hipsci_targeted_19|paab_4": {
+    "libraries": 72,
+    "controls": 543,
+    "libraries_with_ctrl_k": 0,
+    "kept": 543,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "key_pool": 0.54609,
+     "own_library_resampled": 0.45391
+    }
+   },
+   "hipsci_targeted_19|pipw_4": {
+    "libraries": 72,
+    "controls": 488,
+    "libraries_with_ctrl_k": 0,
+    "kept": 488,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "own_library_resampled": 0.44508,
+     "key_pool": 0.55492
+    }
+   },
+   "hipsci_targeted_19|pipw_5": {
+    "libraries": 42,
+    "controls": 92,
+    "libraries_with_ctrl_k": 0,
+    "kept": 92,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "key_pool": 1.0
+    }
+   },
+   "hipsci_targeted_19|tolg_4": {
+    "libraries": 68,
+    "controls": 182,
+    "libraries_with_ctrl_k": 0,
+    "kept": 182,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "key_pool": 0.98689,
+     "own_library_resampled": 0.01311
+    }
+   },
+   "hipsci_targeted_19|tolg_6": {
+    "libraries": 70,
+    "controls": 368,
+    "libraries_with_ctrl_k": 0,
+    "kept": 368,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "key_pool": 0.80202,
+     "own_library_resampled": 0.19798
+    }
+   },
+   "hipsci_targeted_19|zapk_3": {
+    "libraries": 70,
+    "controls": 622,
+    "libraries_with_ctrl_k": 0,
+    "kept": 622,
+    "libraries_with_ctrl_k_kept": 0,
+    "perturbed_cells_by_draw": {
+     "key_pool": 0.3425,
+     "own_library_resampled": 0.6575
+    }
+   },
+   "jurkat_nadig|Jurkat": {
+    "libraries": 55,
+    "controls": 12011,
+    "libraries_with_ctrl_k": 53,
+    "kept": 3490,
+    "libraries_with_ctrl_k_kept": 53,
+    "perturbed_cells_by_draw": {
+     "own_library": 0.99029,
+     "own_library_resampled": 0.00971
+    }
+   },
+   "kolf_chromatin_modifiers|KOLF2.1J iPSC": {
+    "libraries": 4,
+    "controls": 7161,
+    "libraries_with_ctrl_k": 4,
+    "kept": 2048,
+    "libraries_with_ctrl_k_kept": 4,
+    "perturbed_cells_by_draw": {
+     "own_library": 1.0
+    }
+   },
+   "kolf_metabolic_enzymes|KOLF2.1J iPSC": {
+    "libraries": 4,
+    "controls": 18651,
+    "libraries_with_ctrl_k": 4,
+    "kept": 2048,
+    "libraries_with_ctrl_k_kept": 4,
+    "perturbed_cells_by_draw": {
+     "own_library": 1.0
+    }
+   },
+   "kolf_strong_perturbations|KOLF2.1J iPSC": {
+    "libraries": 90,
+    "controls": 35398,
+    "libraries_with_ctrl_k": 90,
+    "kept": 5760,
+    "libraries_with_ctrl_k_kept": 90,
+    "perturbed_cells_by_draw": {
+     "own_library": 1.0
+    }
+   },
+   "norman2019_crispra|K562": {
+    "libraries": 8,
+    "controls": 11854,
+    "libraries_with_ctrl_k": 8,
+    "kept": 2048,
+    "libraries_with_ctrl_k_kept": 8,
+    "perturbed_cells_by_draw": {
+     "own_library": 1.0
+    }
+   },
+   "replogle_k562_essential|K562": {
+    "libraries": 48,
+    "controls": 10688,
+    "libraries_with_ctrl_k": 48,
+    "kept": 3072,
+    "libraries_with_ctrl_k_kept": 48,
+    "perturbed_cells_by_draw": {
+     "own_library": 1.0
+    }
+   },
+   "replogle_k562_gwps|K562": {
+    "libraries": 267,
+    "controls": 75291,
+    "libraries_with_ctrl_k": 264,
+    "kept": 17020,
+    "libraries_with_ctrl_k_kept": 264,
+    "perturbed_cells_by_draw": {
+     "own_library": 0.99828,
+     "own_library_resampled": 0.00172
+    }
+   },
+   "replogle_rpe1|RPE1": {
+    "libraries": 56,
+    "controls": 11483,
+    "libraries_with_ctrl_k": 56,
+    "kept": 3584,
+    "libraries_with_ctrl_k_kept": 56,
+    "perturbed_cells_by_draw": {
+     "own_library": 1.0
+    }
+   },
+   "tian2021_crispra|iPSC-induced neuron": {
+    "libraries": 2,
+    "controls": 433,
+    "libraries_with_ctrl_k": 2,
+    "kept": 433,
+    "libraries_with_ctrl_k_kept": 2,
+    "perturbed_cells_by_draw": {
+     "own_library": 1.0
+    }
+   },
+   "tian2021_crispri|iPSC-induced neuron": {
+    "libraries": 4,
+    "controls": 437,
+    "libraries_with_ctrl_k": 4,
+    "kept": 437,
+    "libraries_with_ctrl_k_kept": 4,
+    "perturbed_cells_by_draw": {
+     "own_library": 1.0
+    }
+   }
+  }
+ },
+ "input_genes": {
+  "rule": "the --input-genes genes with the largest sum over kept keys of their mean control proportion (all controls with counts, before admission)",
+  "n": 2048
+ }
+}

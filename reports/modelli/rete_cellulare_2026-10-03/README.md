@@ -19,6 +19,9 @@ congelato prima di ogni training.
 | `lane_b.py`, `lane_b_hepg2.py` | Corsia B in locale: i sei membri sulle cellule estratte (ogni linea) o sul file HepG2 locale (test: `test_lane_b.py`) |
 | `lancio_*.json` | Kernel, commit, dataset e argomenti di ogni lancio, scritti al lancio |
 | `inventory.py` | Quali dataset e quante cellule entrano davvero nel training, e perché le altre restano fuori |
+| `esito/prepass_<linea>_r1/` | Gli output piccoli dei tre prepass (QC, split, pesi, serbatoio, log), con manifest; lo stato `.pkl` resta su Kaggle | 
+| `inventario/` | Inventario delle cellule per linea esclusa, dal prepass (le colonne del training si aggiungono a fine training) |
+| `incidente_E-20261003-001/` | Evidenza dell'incidente dei lanci doppi (registro in `reports/analisi/lead_scientist_2026-09-29/learning/incidents/`) |
 | `export_effects.py`, `target_descriptors.py` | Copie della versione 1, non modificate |
 
 Dati e output pesanti nella radice dati, `processed/rete_cellulare_2026-10-03/`.
