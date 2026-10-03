@@ -23,6 +23,7 @@ Da P4 (3/10) corse su Kaggle, condivisioni e download di output con il via del p
 | `p2_parity/` | P2 | parità degli adattamenti di HepG2 e dell'esportazione effetti → generatore (stadio 45 contro trial-01) | misurato |
 | `ceiling_r1/` | P2 | tetto della verità: coseno pesato fra metà indipendenti delle cellule | misurato |
 | `p3_decision_c_r1/`, `p3_decision_cj_r1/` | P3 | la regola congelata su C e su C+J: `no_benefit` | misurato |
+| `p3_six_member_r2/` | P3 | i bracci di P3 sui sei membri ufficiali su HepG2 (3/10, 2.048 controlli): il transfer resta il migliore, con [LETTURA.md](p3_six_member_r2/LETTURA.md) | misurato |
 | `RISULTATI.md` | P0–P3 | lettura dei risultati e limiti della primaria | interpretazione |
 | `p4/` | P4 | ipotesi e protocollo congelato della rete non lineare sul pseudobulk | protocollo |
 | `p4_decision_nn_r1/` | P4 | la regola della rete sui sette gruppi (`no_benefit`), con [LETTURA.md](p4_decision_nn_r1/LETTURA.md) | misurato |
