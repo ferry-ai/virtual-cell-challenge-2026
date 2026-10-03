@@ -11,7 +11,7 @@ its own, with its peak memory recorded: the conversion jobs are sized on it.
 
 Run as a Kaggle script kernel (push_script.py); nothing is passed on the command line.
 """
-import hashlib, json, subprocess, time, urllib.request
+import hashlib, json, resource, subprocess, time, urllib.request
 from pathlib import Path
 
 OUT, WORK = Path("/kaggle/working"), Path("/tmp/rds")
@@ -125,12 +125,12 @@ for record, name, md5, is_rds in FILES:
     if not is_rds:
         (OUT / name).write_bytes(dest.read_bytes())
     else:
-        ok = sh(f"/usr/bin/time -v Rscript {OUT / 'rds_inspect.R'} {dest} {OUT / (name + '.structure.json')}", f"inspect_{name}", 7200)
-        tail = doc["steps"][f"inspect_{name}"]["tail"]
-        rss = [l for l in tail.splitlines() if "Maximum resident set size" in l]
-        got["inspected"], got["max_rss_kb"] = ok, int(rss[0].rsplit(":", 1)[1]) if rss else None
+        # r1 used /usr/bin/time, which the image does not have (exit code 127 on every object, 3/10 19:50). The peak
+        # memory is the largest child of this process so far: it only grows, so read it as "at most this".
+        ok = sh(f"Rscript {OUT / 'rds_inspect.R'} {dest} {OUT / (name + '.structure.json')}", f"inspect_{name}", 7200)
+        got["inspected"], got["max_child_rss_kb_so_far"] = ok, resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss
     dest.unlink()
 doc["seconds"] = round(time.time() - t0, 1)
 (OUT / "rds_probe.json").write_text(json.dumps(doc, indent=1))
-print(json.dumps({"files": {k: {a: v.get(a) for a in ("md5_ok", "inspected", "max_rss_kb", "error")} for k, v in doc["files"].items()},
+print(json.dumps({"files": {k: {a: v.get(a) for a in ("md5_ok", "inspected", "max_child_rss_kb_so_far", "error")} for k, v in doc["files"].items()},
                   "seconds": doc["seconds"]}), flush=True)
