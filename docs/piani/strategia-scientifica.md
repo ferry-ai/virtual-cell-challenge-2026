@@ -41,6 +41,28 @@
      32/64/128 con perdita d'informazione misurata contro i riassunti completi, letti dai gemelli.
   4. Qualunque sia l'esito del pilot, il corpus ampliato (prima CD4T, HCT116, HEK293T con cellule verificate) entra nel
      protocollo successivo; ESM2 dopo, a parità di dati e di campione.
+- **Riprendere da qui (passaggio ad altro account, 3/10 23:30 CEST; job verificati alle 23:27, tutti RUNNING):**
+  - GPU: `rcell-v4-train-h1-r1`, `rcell-v4-train-hepg2-r1` (dalle 23:06). CPU: `vcc-orion-hct116-p3of4-r3`,
+    `vcc-orion-hek293t-p{0,1,2}of8-r3` (dalle 23:08). Pronti: dataset `davideferrante11/rcell-v4-code-r1` (training),
+    `rcell-v4-gen-r1` (generazione, bersagli r3), kernel `rcell-v4-anchors-r1` e `rcell-v4-fast-{a,b,c}-r1`.
+  - Ricevute a training finito, senza i file di valutazione: `python fetch_outputs.py --config-dir
+    ~/.kaggle-davideferrante11 --slug rcell-v4-train-<linea>-r1 --pattern "train/*.json" --pattern "train.log"
+    --pattern "*kernel_done.json" --exclude "*eval*" --out esito/train_<linea>_r1` nella cartella v4; accettazione
+    del §5 (`exposure.json`, `coverage.json` con `timing`, `verify.json`, `health.json`).
+  - RPE1: il comando di [lancio_train_r1.json](../../reports/modelli/rete_ancorata_v4_2026-10-03/lancio_train_r1.json)
+    con `--anchors-line RPE1 --anchors-dir anchors_RPE1_all --prepass-from rcell-prepass-rpe1-r1`, slug
+    `rcell-v4-train-rpe1-r1`, appena una sessione GPU è libera; poi `kaggle quota`.
+  - Generazione per linea: `python kaggle_gen.py kernel --config-dir <dir> --owner davideferrante11 --stage <nuova>
+    --held-group <LINEA> --train-kernel rcell-v4-train-<linea>-r1 --prepass-kernel rcell-prepass-<linea>-r1
+    --anchors-kernel rcell-v4-anchors-r1 --anchors-dir anchors_<LINEA>_all --slug rcell-v4-gen-<linea>-r1`.
+    Corsie A/B e regola: comandi nei docstring di `bench_effects.py`, `lane_b.py`, `decide_anchored.py` (cellule vere e
+    bersagli da `out_gen_h1_r3`, `out_gen_hepg2_r3b`, `out_gen_rpe1_r3b`; `--splits` da `out_prepass_<linea>_r1`).
+  - Binario dati: `nested_samples.py` (studio dei campioni annidati) è scritto e testato, il suo launcher Kaggle no
+    (input: gemelli, i dataset `rlab-*` per le colonne obs, `rcell-prepass-h1-r1`). Inventario riconciliato di
+    R-DATI non iniziato. Verifiche di linea Orion a parti finite (R-LAB).
+  - Da riferire al proprietario: un processo Python bloccato da una sessione chiusa (PID 2288, `C:\\Python314\\python.exe -`,
+    padre bash PID 17800, dalle 16:19) occupa circa un core del portatile; terminarlo è stato negato dal controllo dei
+    permessi, va fatto a mano.
 - **Dipendenze:** [R-LAB](piano-giorno-2026-09-30.md) e [R-DATI](dati-affidabilita.md) per i dati,
   [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), D-050, D-052, D-053, D-054; PROCEDURE §3 ed ERRORI per ogni job.
 - **Chiusura:** scelta motivata con prove riproducibili e pipeline finale verificata, oppure esito negativo o
