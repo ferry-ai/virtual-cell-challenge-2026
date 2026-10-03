@@ -1,0 +1,125 @@
+{
+ "spec_version": "cd4_v1 (3/10/2026, regia c7c07a): every eligible cell of the 12 files, no sampling (the owner's mandate of 3/10, kept by the strategy forwarded at 17:46); eligibility as INGESTIONE section 3, implemented by Codex's h5rows_cd4",
+ "job_id": "j18_cd4_full_r1",
+ "status": "written; no remote byte read by this spec yet",
+ "source": {
+  "id": "cd4_marson2025",
+  "release": "s3://genome-scale-tcell-perturb-seq/marson2025_data/ (public bucket), as measured on 1/10/2026",
+  "license": "MIT",
+  "license_note": "read on 3/10/2026 on the CZI page of the dataset (virtualcellmodels.cziscience.com/dataset/genome-scale-tcell-perturb-seq): MIT License, with an acceptable use policy; not a legal verification",
+  "citation": "Zhu, Dann, Yan et al., Cell 2026, doi 10.1016/j.cell.2026.08.002; bioRxiv 2025.12.23.696273",
+  "checksum_note": "no checksum published in the repository; each file is read by HTTP ranges, bound to one ETag",
+  "authorisation": "the owner in chat on 3/10 after 15:28 (every dataset in full) and at 17:46 (full acquisition kept, CD4 included)"
+ },
+ "unit": {
+  "study": "cd4_marson2025",
+  "context": "CD4T",
+  "chemistry": "10x Flex",
+  "block": 20000,
+  "max_gap": 8
+ },
+ "eligibility": {
+  "eligible": "low_quality is false, guide_group is 'targeting single sgRNA'",
+  "controls": "guide_type 'non-targeting' with perturbed_gene_id 'NTC': all",
+  "targeted": "guide_type 'targeting' with an Ensembl id",
+  "excluded_and_counted": "low quality, no sgRNA, multi sgRNA, unexpected labels, by reason and by lane"
+ },
+ "files": {
+  "D1_Rest": {
+   "locator": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D1_Rest.assigned_guide.h5ad",
+   "bytes": 142828875662,
+   "cells": 3074496,
+   "genes": 18130,
+   "values": 11853949618,
+   "measured": "reports/sorgenti/corpus_cellulare_2026-09-30/p1_r4/remote/cd4_D1_Rest.json"
+  },
+  "D1_Stim48hr": {
+   "locator": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D1_Stim48hr.assigned_guide.h5ad",
+   "bytes": 156246167022,
+   "cells": 2805354,
+   "genes": 18130,
+   "values": 12973186787,
+   "measured": "reports/sorgenti/corpus_cellulare_2026-09-30/p1_r4/remote/cd4_D1_Stim48hr.json"
+  },
+  "D1_Stim8hr": {
+   "locator": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D1_Stim8hr.assigned_guide.h5ad",
+   "bytes": 154774003188,
+   "cells": 2789727,
+   "genes": 18130,
+   "values": 12850470637,
+   "measured": "reports/sorgenti/corpus_cellulare_2026-09-30/p1_r4/remote/cd4_D1_Stim8hr.json"
+  },
+  "D2_Rest": {
+   "locator": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D2_Rest.assigned_guide.h5ad",
+   "bytes": 140574804978,
+   "cells": 2940194,
+   "genes": 18130,
+   "values": 11668960770,
+   "measured": "reports/sorgenti/corpus_cellulare_2026-09-30/p1_r4/remote/cd4_D2_Rest.json"
+  },
+  "D2_Stim48hr": {
+   "locator": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D2_Stim48hr.assigned_guide.h5ad",
+   "bytes": 137554355000,
+   "cells": 2863571,
+   "genes": 18130,
+   "values": 11417773379,
+   "measured": "reports/sorgenti/corpus_cellulare_2026-09-30/p1_r4/remote/cd4_D2_Stim48hr.json"
+  },
+  "D2_Stim8hr": {
+   "locator": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D2_Stim8hr.assigned_guide.h5ad",
+   "bytes": 172796432870,
+   "cells": 3032848,
+   "genes": 18130,
+   "values": 14352017864,
+   "measured": "reports/sorgenti/corpus_cellulare_2026-09-30/p1_r4/remote/cd4_D2_Stim8hr.json"
+  },
+  "D3_Rest": {
+   "locator": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D3_Rest.assigned_guide.h5ad",
+   "bytes": 138149946574,
+   "cells": 2778524,
+   "genes": 18130,
+   "values": 11469097211,
+   "measured": "reports/sorgenti/corpus_cellulare_2026-09-30/p1_r4/remote/cd4_D3_Rest.json"
+  },
+  "D3_Stim48hr": {
+   "locator": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D3_Stim48hr.assigned_guide.h5ad",
+   "bytes": 137830572362,
+   "cells": 2607532,
+   "genes": 18130,
+   "values": 11445647009,
+   "measured": "reports/sorgenti/corpus_cellulare_2026-09-30/p1_r4/remote/cd4_D3_Stim48hr.json"
+  },
+  "D3_Stim8hr": {
+   "locator": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D3_Stim8hr.assigned_guide.h5ad",
+   "bytes": 142656069026,
+   "cells": 2481284,
+   "genes": 18130,
+   "values": 11845716886,
+   "measured": "reports/sorgenti/corpus_cellulare_2026-09-30/p1_r4/remote/cd4_D3_Stim8hr.json"
+  },
+  "D4_Rest": {
+   "locator": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D4_Rest.assigned_guide.h5ad",
+   "bytes": 118609904492,
+   "cells": 2693903,
+   "genes": 18130,
+   "values": 9844028382,
+   "measured": "reports/sorgenti/corpus_cellulare_2026-09-30/p1_r4/remote/cd4_D4_Rest.json"
+  },
+  "D4_Stim48hr": {
+   "locator": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D4_Stim48hr.assigned_guide.h5ad",
+   "bytes": 159231588926,
+   "cells": 2815784,
+   "genes": 18130,
+   "values": 13221575009,
+   "measured": "reports/sorgenti/corpus_cellulare_2026-09-30/p1_r4/remote/cd4_D4_Stim48hr.json"
+  },
+  "D4_Stim8hr": {
+   "locator": "https://genome-scale-tcell-perturb-seq.s3.amazonaws.com/marson2025_data/D4_Stim8hr.assigned_guide.h5ad",
+   "bytes": 134582395766,
+   "cells": 2727254,
+   "genes": 18130,
+   "values": 11172666538,
+   "measured": "reports/sorgenti/corpus_cellulare_2026-09-30/p1_r4/remote/cd4_D4_Stim8hr.json"
+  }
+ }
+}

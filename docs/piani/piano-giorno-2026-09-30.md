@@ -4,14 +4,18 @@
   tutti i dataset per intero, in fretta, anche su più runtime. Il corpus idoneo va su Drive; che cosa entra nel
   training lo decide R-LEAD con i ruoli registrati. Piano, sorgenti e stato:
   [ingestione completa](../../reports/sorgenti/ingestione_completa_2026-10-03/README.md).
-- **Aggiornato:** 3 ottobre 2026, 17:20 CEST circa (ora letta con `date`).
+- **Aggiornato:** 3 ottobre 2026, 18:00 CEST circa (ora letta con `date`).
 - **Assegnazione (PIANI §3), sottoattività disgiunte:**
   - **Regia, job e archivio, dal 3/10 16:51:** Claude Code, sessione `c7c07a` (claude2, altro account), per
     [passaggio di consegne](../../reports/sorgenti/ingestione_completa_2026-10-03/HANDOFF_CLAUDE2.md) dalla sessione
     `22d21f`, che ha esaurito la quota. Stesso perimetro e stessi file della riga seguente; lo stato verificato alle
-    17:16 è nell'aggiornamento in fondo al passaggio di consegne. Orion gira su cinque kernel CPU di Kaggle (r2).
-    **In attesa del proprietario:** CD4 a tranche invece che per intero
-    ([DIMENSIONAMENTO](../../reports/sorgenti/ingestione_completa_2026-10-03/DIMENSIONAMENTO.md)).
+    18:00 è negli aggiornamenti del passaggio di consegne. Orion e KOLF pan-genome girano su kernel CPU di Kaggle.
+    **Indicazione del proprietario delle 17:46:** l'acquisizione resta completa, CD4 compreso; il campionamento
+    riguarda le copie preparate per i training
+    ([strategia](../../reports/sorgenti/ingestione_completa_2026-10-03/STRATEGIA_DATI_TRAINING.md), con la prima
+    consegna chiesta; le misure sono in
+    [DIMENSIONAMENTO](../../reports/sorgenti/ingestione_completa_2026-10-03/DIMENSIONAMENTO.md)). I punti su
+    valutazione, confronti e protocollo sono di R-LEAD.
   - **Regia, job e archivio, fino al passaggio:** Claude Code, sessione «R-LEAD implementazione vcc2026» (`22d21f`), dal 3/10 15:28.
     Comprende Southard r3 (job 132), le verifiche dell'archivio riprese (133–134), Orion completo, Mixscale e
     VIPerturb con R, e i metadati di microglia, PerturbFate e DLD-1. Lavora in

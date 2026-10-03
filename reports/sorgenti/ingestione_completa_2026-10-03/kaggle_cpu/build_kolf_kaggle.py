@@ -135,7 +135,9 @@ def git(*args: str) -> str:
     return subprocess.run(["git", "-C", str(REPO), *args], capture_output=True, text=True, check=True).stdout
 
 
-def main() -> None:
+def main(paths=None, kernel=None, code_slug="vcc-ingest-code-kolf-r1", source="kolf_pan_genome", extra=()) -> None:
+    """`extra`: names of further required kernel arguments that become parameters of the kernel (CD4: file)."""
+    paths, kernel = paths or SNAPSHOT_PATHS, kernel or KERNEL
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
     c, k = sub.add_parser("code"), sub.add_parser("kernel")
@@ -143,7 +145,7 @@ def main() -> None:
         q.add_argument("--config-dir", required=True)
         q.add_argument("--owner", required=True)
         q.add_argument("--stage", type=Path, required=True)
-        q.add_argument("--code-slug", default="vcc-ingest-code-kolf-r1")
+        q.add_argument("--code-slug", default=code_slug)
         q.add_argument("--dry-run", action="store_true")
     c.add_argument("--axis", type=Path, required=True)
     k.add_argument("--code-stage", type=Path, required=True)
@@ -152,11 +154,13 @@ def main() -> None:
     k.add_argument("--max-cells", help="smoke test: only the first N cells of the range")
     k.add_argument("--readahead", help="blocks read ahead by as many threads (kolf_job.py --readahead)")
     k.add_argument("--launch-log", type=Path, help="JSON lines, one per push, appended")
+    for name in extra:
+        k.add_argument(f"--{name}", required=True)
     a = p.parse_args()
     if a.stage.exists():
         sys.exit(f"refusing: {a.stage} exists")
     if a.cmd == "code":
-        if git("status", "--porcelain", "--", *SNAPSHOT_PATHS).strip():
+        if git("status", "--porcelain", "--", *paths).strip():
             sys.exit("refusing: a file of the snapshot is not committed as it is")
         commit = git("rev-parse", "HEAD").strip()
         a.stage.mkdir(parents=True)
@@ -164,8 +168,8 @@ def main() -> None:
         # core.autocrlf=false: the blobs as committed. With the setting of this checkout (true) git archive writes
         # CRLF, and the hash of a file in the runtime would not be the one of the committed file.
         subprocess.run(["git", "-C", str(REPO), "-c", "core.autocrlf=false", "archive", "--format=tar.gz", "-o",
-                        str(tar), commit, "--", *SNAPSHOT_PATHS], check=True)
-        if sorted(snapshot_members(tar)) != sorted(SNAPSHOT_PATHS):
+                        str(tar), commit, "--", *paths], check=True)
+        if sorted(snapshot_members(tar)) != sorted(paths):
             sys.exit("the archive does not hold exactly the files of the snapshot")
         shutil.copyfile(a.axis, a.stage / "gene_names.csv")
         (a.stage / "dataset-metadata.json").write_text(json.dumps(
@@ -173,7 +177,7 @@ def main() -> None:
              "isPrivate": True}))
         (a.stage / "staged.json").write_text(json.dumps(
             {"code_snapshot.tar.gz": sha256_file(tar), "gene_names.csv": sha256_file(a.stage / "gene_names.csv"),
-             "commit": commit, "files": SNAPSHOT_PATHS}, indent=1))
+             "commit": commit, "files": paths}, indent=1))
         print((a.stage / "staged.json").read_text())
         if not a.dry_run:
             kaggle(["datasets", "create", "-p", str(a.stage), "--dir-mode", "skip"], a.config_dir)
@@ -184,8 +188,9 @@ def main() -> None:
         sys.exit("the staged tar is not the one its staged.json names")
     params = {"part": a.part, "job": a.slug.replace("-", "_"), "code_slug": a.code_slug, "commit": staged["commit"],
               "snapshot_sha256": staged["code_snapshot.tar.gz"], "members": snapshot_members(tar),
-              "axis_sha256": staged["gene_names.csv"], "max_cells": a.max_cells, "readahead": a.readahead}
-    text = KERNEL.replace("__PARAMS__", json.dumps(params, indent=1))
+              "axis_sha256": staged["gene_names.csv"], "max_cells": a.max_cells, "readahead": a.readahead,
+              **{name: getattr(a, name) for name in extra}}
+    text = kernel.replace("__PARAMS__", json.dumps(params, indent=1))
     compile(text, "run.py", "exec")
     a.stage.mkdir(parents=True)
     (a.stage / "run.py").write_text(text, encoding="utf-8", newline="\n")
@@ -193,8 +198,8 @@ def main() -> None:
         {"id": f"{a.owner}/{a.slug}", "title": a.slug, "code_file": "run.py", "language": "python",
          "kernel_type": "script", "is_private": True, "enable_gpu": False, "enable_tpu": False, "enable_internet": True,
          "dataset_sources": [f"{a.owner}/{a.code_slug}"], "kernel_sources": [], "competition_sources": []}, indent=1))
-    record = {"slug": f"{a.owner}/{a.slug}", "source": "kolf_pan_genome", "part": a.part, "max_cells": a.max_cells,
-              "readahead": a.readahead,
+    record = {"slug": f"{a.owner}/{a.slug}", "source": source, "part": a.part, "max_cells": a.max_cells,
+              "readahead": a.readahead, **{name: getattr(a, name) for name in extra},
               "stage": a.stage.as_posix(), "run_sha256": sha256_file(a.stage / "run.py"),
               "snapshot_sha256": params["snapshot_sha256"], "commit": params["commit"]}
     if a.dry_run:

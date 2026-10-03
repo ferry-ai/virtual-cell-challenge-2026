@@ -103,6 +103,38 @@ Stato verificato sui log e su Kaggle, ore lette con `date`.
 - **Codex** ha consegnato `adattatori_codex/complete_adapters.py` con 20 test passati (`test_r2.txt`, 16:15). I file
   sono ancora non tracciati e restano suoi.
 
+## Aggiornamento delle 18:00 (sessione `c7c07a`)
+
+- **Difetto trovato nel codice Orion ereditato:** `orion_job.py` mette `whole_line` fra i controlli di un'unità, e
+  per una parte vale sempre falso. Ogni job `--part` finisce quindi con «PARITY FAILED», `parity_failed.json` e
+  codice 1, anche quando ogni file della parte è fatto e le cellule sono quelle del campione. Vale per i cinque kernel
+  r2 (stato `ERROR`) e varrà per il job Colab 138. **Gli shard e le ricevute sono validi**: Kaggle conserva l'output
+  di un kernel fallito (provato scaricando `kaggle_done.json` e `parity_failed.json` di `vcc-orion-hct116-p0of4-r2`).
+  Il primo kernel ha scritto 28 shard, 9,53 GB.
+- **Regola per una parte, scritta prima di vedere una parte finita** (`build_orion_kaggle_r2.py --part-rule`, kernel
+  con suffisso `-r3`): ogni altro controllo booleano dell'unità è vero, e cellule e shard sono le cellule selezionate
+  e i file del campione che cadono nella parte, ricontati dalla tabella del campione. Se passa, il kernel scrive
+  `part_complete.json` ed esce con 0. Il codice di ingestione e lo snapshot non cambiano.
+- **In esecuzione:** HEK293T 3/8, 4/8, 5/8 (dalle 17:43) e 6/8 (17:51) come r3; KOLF parte 0/2 (17:47). Da spingere
+  quando si libera una sessione: KOLF 1/2 con `--readahead 8`, HEK293T 7/8, poi HCT116 1/4 e 3/4, così tutta la linea
+  sta anche su Kaggle (la metà del job 138 resta su Drive come seconda copia).
+- **Da fare a parti finite:** un kernel che monta tutte le parti di una linea, applica la stessa regola alle parti r2,
+  controlla che l'unione sia la lista congelata (109 e 223 file; 3.409.169 e 4.534.299 cellule) e ricalcola lo sha256
+  di ogni shard. È la verifica indipendente e la chiusura della linea.
+- **KOLF pan-genome:** [kolf/](kolf/) con l'adattatore di Codex in copia identica, parti contigue, controllo
+  preliminare e 4 test; dataset del codice `vcc-ingest-code-kolf-r2` (parte 0/2) e `-r3` (con la lettura anticipata).
+  Sul file vero il controllo preliminare è passato: 17.971 geni sull'asse ufficiale. **La lettura è lenta:** 5,8 MB/s
+  un blocco alla volta, cioè circa 4,5 ore per i 94,5 GB dello strato dei conteggi. Per questo esiste
+  [lettura/prefetch.py](lettura/prefetch.py) (blocchi richiesti in parallelo, 5 test, stessi byte del lettore
+  originale sul file vero anche dopo il rinnovo dell'URL firmato): la parte 1/2 la usa, e serve per CD4, dove un file
+  da 143 GB non starebbe nelle 12 ore di un kernel.
+- **Strategia dati inoltrata dal proprietario alle 17:46:** [STRATEGIA_DATI_TRAINING.md](STRATEGIA_DATI_TRAINING.md).
+  L'acquisizione resta completa, CD4 compreso; il campionamento (livelli 32, 64, 128 annidati) riguarda le copie
+  preparate per i training. Prima consegna chiesta: inventario dopo QC, campioni con dimensioni reali, manifest degli
+  split, verifica del bilanciamento, protocollo del primo confronto.
+- **Codice ancora da scrivere:** il job CD4 (`h5rows_cd4` di Codex più `ShardSink` e lettura anticipata, un file per
+  kernel) e il job dell'inventario per combinazione.
+
 ## Prossimi passi, in ordine
 
 1. **Orion**, quando le parti finiscono:

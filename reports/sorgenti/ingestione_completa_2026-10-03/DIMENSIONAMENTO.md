@@ -71,6 +71,14 @@ La velocità è quella di r3: un'altra rete, un altro batch o un altro caricamen
 5. **Training finale su tutto** solo se il punto 2 lo giustifica: 2 passaggi su 36 milioni di cellule sono 10–16 ore,
    cioè due sessioni Kaggle con ripresa.
 
+**Esito, 3/10 alle 17:46.** Il proprietario ha inoltrato una [strategia](STRATEGIA_DATI_TRAINING.md) che mantiene
+l'acquisizione completa, CD4 compreso: il punto 4 non è adottato. I punti 1, 2 e 5 vi compaiono come campioni
+annidati da 32, 64 e 128 cellule per combinazione, da dimensionare sull'inventario reale.
+
+**Correzione di una stima, 3/10 alle 17:24.** Gli shard HEK293T sono più densi di quelli HCT116: 15 KB per cellula
+sui primi due letti dal log di `vcc-orion-hek293t-p0of8-r2` (18.003 cellule in 274,7 MB; 23.768 in 356,6 MB), contro
+11 KB. Orion intero va quindi verso i 105 GB, non 90. Il numero esatto verrà dai manifest delle parti.
+
 ## Altri cloud, prezzi letti il 3/10
 
 Nessun acquisto è autorizzato da questa nota. La velocità su queste macchine **non è misurata**: prima di spendere
