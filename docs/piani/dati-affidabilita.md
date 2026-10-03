@@ -3,10 +3,17 @@
 - **Stato:** in corso dal 3/10 sera come parte del binario dati di [R-LEAD](strategia-scientifica.md): il mandato
   non negoziabile D-053 chiede un inventario riconciliato col catalogo prima di congelare il prossimo corpus
   principale ([GENERALIZZAZIONE §2.1](../GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile)).
-- **Aggiornato:** 3 ottobre 2026, 23:20 CEST. Testo precedente nello
+- **Aggiornato:** 4 ottobre 2026, 00:04 CEST. Testo precedente nello
   [storico del consolidamento](../storico/consolidamento_2026-10-03/docs/piani/dati-affidabilita.md).
-- **Assegnazione:** regia nella sessione `5eacdf` (R-LEAD); le sottoattività già consegnate restano a chi le ha fatte
-  (sotto). Un agente che prende una voce la registra qui con sessione, file e output.
+- **Assegnazione:** regia nella sessione `d0100a` (R-LEAD, subentrata alla `5eacdf` il 3/10 alle 23:34); le
+  sottoattività già consegnate restano a chi le ha fatte (sotto). Un agente che prende una voce la registra qui con
+  sessione, file e output.
+- **Fatto dalla sessione `d0100a`:** prima stesura dell'[inventario riconciliato](../../reports/sorgenti/inventario_riconciliato_2026-10-04/README.md)
+  (passo 1: 8 gruppi su 21 nelle cellule del pilot, 10 nelle ancore, lacune e lavoro per voce; gruppi e ruoli ancora
+  da adottare); studio dei campioni annidati con regola congelata prima dei numeri
+  ([protocollo](../../reports/modelli/rete_ancorata_v4_2026-10-03/CAMPIONI_ANNIDATI.md), kernel
+  `rcell-v4-nested-h1-r1` in corsa dal 3/10 alle 23:52; passo 3, solo per il corpus del pilot). Il passo 2 (aggregati
+  per le voci senza tabella) non è iniziato.
 - **Prossimo passo:**
   1. **Inventario riconciliato:** per ogni voce del catalogo (gli 8 gruppi del pilot, le 13 voci in più della
      [proposta di gruppi](../../reports/sorgenti/ingestione_completa_2026-10-03/orion/line_groups_expanded_v1.json),
