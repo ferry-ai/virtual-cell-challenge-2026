@@ -40,3 +40,9 @@ inviata. Se no, lo si scrive qui come differenza.
 Alfredo ha scritto in chat: «ho l'ok per poi partire con il grading appena il corto finisce». L'accordo sulla quota
 con il lato Davide è quindi preso, ed è riportato qui come lo ha scritto Alfredo, non verificato con Davide. Prima
 dell'upload si controlla comunque con `vcc` che nessun invio della squadra sia in volo.
+
+## Upload autorizzato all'agente (3/10, scritto alle 18:05 ora italiana)
+
+Alfredo ha scritto in chat: «appena finisce manda da solo il grading che mi sto allontanando hai il mio si». L'agente
+può quindi lanciare da solo la catena locale e l'upload del t30, appena finisce il kernel corto. Prima dell'upload
+controlla con `vcc` che nessun invio della squadra sia in volo.
