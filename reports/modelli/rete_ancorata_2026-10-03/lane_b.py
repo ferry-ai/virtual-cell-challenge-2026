@@ -1,4 +1,10 @@
-"""Pilot lane B for any held-out line (PROTOCOLLO.md §5): the six official members, local scale, on the real cells that
+"""Lane B of the transfer-anchored network (version 3, PROTOCOLLO.md §5): a copy of
+reports/modelli/rete_cellulare_2026-10-03/lane_b.py with the arms of version 3 (shifts of ancorata, ancorata_mean and
+ancora_sola; cells of the trained arms only) and the transfer in two definitions: transfer_cells as lane A builds it
+(the cell corpus's groups without the k562_viperturb table, the primary rule's reference) and transfer_cells_r3 as
+the r3 lane B built it (whole groups), for continuity.
+
+The r3 docstring follows. Pilot lane B for any held-out line (PROTOCOLLO.md §5): the six official members, local scale, on the real cells that
 extract_cells.py took from the corpus shards (the same rule and the same Bench as lane_b_hepg2.py, which reads the local
 HepG2 file instead).
 
@@ -35,6 +41,7 @@ from vcc2026.inference import trial01_cells  # noqa: E402
 
 F32 = np.float32
 CELL_GROUPS = ("H1", "HepG2", "RPE1", "K562", "iPSC", "Jurkat", "Neuron")
+NOT_IN_CELL_CORPUS = ("k562_viperturb",)       # tables of those groups whose cells the corpus does not hold
 CONTROL = "non-targeting"
 
 
@@ -53,7 +60,8 @@ def main() -> None:
     p.add_argument("--run", type=Path, required=True)
     p.add_argument("--cube", type=Path, required=True)
     p.add_argument("--protocol", type=Path, required=True)
-    p.add_argument("--arms", nargs="+", default=["cells", "mean", "generic"])
+    p.add_argument("--arms", nargs="+", default=["ancorata", "ancorata_mean", "ancora_sola"])
+    p.add_argument("--cell-arms", nargs="+", default=["ancorata", "ancorata_mean"])
     p.add_argument("--seed", type=int, default=2026)
     p.add_argument("--gen-seed", type=int, default=20260912)
     p.add_argument("--out", type=Path, required=True)
@@ -78,13 +86,20 @@ def main() -> None:
     libs = np.asarray(ctrl_x.sum(1)).ravel().astype(np.int64)
     ch = challenge()
     cube = Cube(a.cube, min_cells=P["min_cells"])
+
+    class SubCube(Cube):
+        def tables_of(self, group):
+            return [t for t in super().tables_of(group) if t not in NOT_IN_CELL_CORPUS]
+
+    cube_cells = SubCube(a.cube, min_cells=P["min_cells"])
     commons, _ = table_means(cube, Split("C", held, None, P["n_folds"]))
     cpos = pd.Index(cube.genes).get_indexer(genes)
     have = cpos >= 0
     effects = {}
-    for name, srcs in (("transfer_cells", [h for h in CELL_GROUPS if h != held and h in cube.groups]),
-                       ("transfer_all", [h for h in cube.groups if h != held])):
-        s, _ = transfer_for(cube, tkeys, srcs, commons)
+    cells_srcs = [h for h in CELL_GROUPS if h != held and h in cube.groups]
+    for name, cb, srcs in (("transfer_cells", cube_cells, cells_srcs), ("transfer_cells_r3", cube, cells_srcs),
+                           ("transfer_all", cube, [h for h in cube.groups if h != held])):
+        s, _ = transfer_for(cb, tkeys, srcs, commons)
         lfc = np.zeros((len(tkeys), genes.size), F32)
         obs = np.zeros_like(lfc, bool)
         lfc[:, have] = s[:, cpos[have]] * AMPLITUDE_T25
@@ -115,7 +130,7 @@ def main() -> None:
             labs.append(np.full(n, t))
         bench.score(name, sp.vstack(blocks).tocsr(), np.concatenate(labs), {"observed_share": float(obs.mean())})
         log(f"{name} scored ({timer()} s)")
-    for arm in a.arms:
+    for arm in a.cell_arms:
         gx, glab, ggenes = load_csr(a.cells_dir / f"cells_{arm}.npz")
         gcol = pd.Index(ggenes).get_indexer(genes)
         gx = gx[:, gcol].tocsr()
