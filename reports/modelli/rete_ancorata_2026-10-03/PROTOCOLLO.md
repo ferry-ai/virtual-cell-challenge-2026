@@ -157,3 +157,41 @@ originali restano intatti.
   supporto del transfer per costruzione.
 - **I training della v3 condividono con r3** pre-passi (`rcell-prepass-<linea>-r1`), dataset, glob, argomenti e
   seme. Cambiano il codice v3 (`rcell-anchored-code-r1`, dal commit `211402e`), le ancore e i due bracci del §4.
+
+## 9. Emendamento dopo la revisione di Codex (3/10, 16:17 CEST, prima di leggere qualunque risultato)
+
+Codex ha consegnato la revisione in due tempi. L'allerta (`adattatori_codex/MONITOR_1605.md`, commit `9d4e160`) è
+delle 16:07:04, 54 secondi prima del congelamento; la regia non l'aveva vista. La revisione completa
+([revisione_ancorata_codex](../../analisi/revisione_ancorata_codex_2026-10-03/README.md), commit `8c70705`) è delle
+16:13. I training H1 e HepG2 erano partiti alle 16:09. Nessun loro output è stato letto prima di questo emendamento.
+
+**P1, le ancore dipendono dalle risposte dei bersagli nascosti (misurato da Codex su fixture).** Le medie di tabella
+sottratte in `group_mean` sono quelle del regime C, quindi includono anche le righe del fold nascosto, circa un quinto
+delle righe di ogni tabella sorgente. Le righe J/T non hanno un'ancora propria, ma i loro effetti entrano nelle
+ancore di tutti gli altri bersagli. Conseguenze, decise ora:
+- **Le righe J (e T) di questo pilot sono contaminate.** Si riportano solo con questa etichetta e non sostengono
+  conclusioni su bersagli mai visti (GENERALIZZAZIONE §3.1).
+- **La regola resta quella del §6:** primaria in corsia B e guardia in corsia A, entrambe sulle righe C.
+  - `ancorata` e il suo riferimento `transfer_cells` usano le stesse medie, quindi sulle righe C differiscono solo
+    per la correzione appresa.
+  - Le medie escludono comunque le tabelle della linea esclusa, e quindi qualunque dato di *H*.
+  - Codex concorda che il punto non invalida la primaria C.
+- **Dal prossimo passo** (corpus ampliato, o qualunque uso di J) le ancore e il `transfer_cells` di riferimento si
+  calcolano con le medie del regime J (`Split("J", H, 0, …)`). Si aggiunge un test di invarianza: cambiare la
+  risposta di un bersaglio nascosto non deve cambiare nessuna ancora. La sonda di Codex (`probe_hidden.py`) ne è il
+  modello. Gli output sono nuovi.
+
+**P1, il riferimento della primaria in corsia B:** già corretto in `f6cd8f7` (16:13:38), prima della consegna
+completa di Codex:
+- `transfer_cells` usa le tabelle della corsia A, senza VIPerturb;
+- `transfer_cells_r3` conserva il riferimento di r3;
+- `decide_anchored.py`, con i suoi test, legge `transfer_cells`.
+
+**P1 operativo, la generazione v3:** già corretto in `e23fc02` (16:12:57):
+- `kaggle_gen.py` monta le ancore e passa `--anchors`;
+- impacchetta `train_cellnet.py` e `choose_targets.py`;
+- `lane_b.py` separa i bracci con le sole cellule generate (`--cell-arms`) da `ancora_sola`, che ha solo lo
+  spostamento.
+
+Manca ancora una fixture completa del pacchetto di generazione. Si fa prima di spingere il kernel, perché scoprire
+una dipendenza mancante sul cloud costa un kernel.
