@@ -146,6 +146,10 @@ già incontrate. Chi autorizza la quota, i download e i push: [CLAUDE.md](../CLA
   (job 130–131). Kaggle: 557/557 shard del corpus verificati sul server, dataset tutti privati. Nessuna copia
   locale si cancella senza prova remota e senza il via del proprietario
   ([archivio cloud](../reports/sorgenti/archivio_cloud_2026-10-02/README.md)).
+- **Pulizia locale del 3/10:** rimosse copie delle matrici delle vecchie reti sui contesti r1/r2
+  per 14,517 GiB, con hash locali ricalcolati contro la prova indipendente Kaggle e ricevute per file;
+  metadati e dipendenze attive conservati. Il resto attende le verifiche Colab
+  ([ricevute e ripristino](../reports/sorgenti/libera_spazio_2026-10-03/README.md)).
 
 ## Infrastruttura degli agenti
 

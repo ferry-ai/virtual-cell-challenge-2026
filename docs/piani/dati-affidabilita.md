@@ -11,6 +11,13 @@
 
 ## Consegna utile
 
+**Sottoattività di archivio, richiesta in chat il 3 ottobre:** Codex, sessione
+`01a10114-058a-7342-9f0e-7942cc43ad6c`, portatile Windows, presa in carico alle 12:43 CEST.
+File e nuove prove in [libera_spazio_2026-10-03](../../reports/sorgenti/libera_spazio_2026-10-03/README.md):
+prima rimozione conclusa alle 12:49 CEST (14,517 GiB di copie già verificate su Kaggle).
+Il resto è in attesa delle ricevute dei job Colab 130–131: il proprietario ha confermato che
+avvierà il dispatcher. Nessun cambiamento alle assegnazioni della ricerca o all'ingestion parallela.
+
 Una tabella di lacune con domanda, file necessario, ruolo C/T/J, unità e maschere,
 controlli/repliche/guide, accesso, byte e limite che risolve. Distinguere overlap dei target
 e copertura dei geni di risposta; zero overlap con i 300 non esclude una sorgente.

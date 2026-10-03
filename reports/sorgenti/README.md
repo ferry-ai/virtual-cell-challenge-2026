@@ -28,6 +28,7 @@ indici e misure. Indice generale: [../README.md](../README.md).
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 03/10 | [libera_spazio_2026-10-03/](libera_spazio_2026-10-03/) | Copie locali delle vecchie matrici r1/r2: hash locali contro verifica indipendente Kaggle, hard link contati una volta, rimozione circoscritta e ricevute | perimetro di nove percorsi; il resto dell'archivio attende verifica Colab | ★★ |
 | 02/10 | [archivio_cloud_2026-10-02/](archivio_cloud_2026-10-02/) | Inventario reale di portatile, Drive e Kaggle; specchio della radice dati su Drive (`MyDrive/vcc2026/data/<rel>`) con ricevute; verifiche indipendenti su Kaggle e Colab; elenco delle copie locali eliminabili; piano d'ingestione nel cloud | in corso: le copie sul mount di Drive valgono solo dopo la lettura dal runtime Colab | ★★ |
 | 30/09–01/10 | [corpus_cellulare_2026-09-30/](corpus_cellulare_2026-09-30/) | Inventari successivi, contratto degli shard, QC, adattatori e job; corpus usato nei training cellulari r1–r3 | dati e implementazione con manifest per versione; le vecchie code Colab non descrivono lo stato corrente. Disponibilità sulla macchina destinataria da verificare | ★★★ |
 | 29/09 | [basali_asse_2026-09-29/](basali_asse_2026-09-29/) | Azione 5 di R-REV: protocollo per richiudere i CPM sull'asse comune, verificarli dal grezzo e misurare l'impatto sulle quote t23/t27 e sui lettori. La sessione `f4f38e58` si è chiusa senza eseguirlo: `r1/` è vuota | solo protocollo, nessun esito | ★ |
