@@ -119,6 +119,7 @@ work.mkdir()
 (work / "nested_samples.py").write_bytes(source)
 cmd = [sys.executable, str(work / "nested_samples.py"), "--prepass", str(PRE), "--shard-roots", str(INPUT),
        "--fast-roots", str(INPUT), "--caps", *map(str, P["caps"]), "--workers", str(P["workers"] or os.cpu_count() or 1),
+       "--classes", P.get("classes", "train"), *(["--dispersion"] if P.get("dispersion") else []),
        "--out", str(OUT / "nested")]
 print(" ".join(cmd), flush=True)
 with open(OUT / "nested.log", "w") as fh:
@@ -134,10 +135,12 @@ def sha256_file(path: Path) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def params(owner, code_slug, prepass_kernel, prepass_sha256, caps, workers, hash_shards=True, hash_threads=4) -> dict:
+def params(owner, code_slug, prepass_kernel, prepass_sha256, caps, workers, hash_shards=True, hash_threads=4,
+           classes="train", dispersion=False) -> dict:
     source = (HERE / "nested_samples.py").read_bytes()
     return {"owner": owner, "code_slug": code_slug, "prepass_kernel": prepass_kernel, "prepass_sha256": prepass_sha256,
             "caps": list(caps), "workers": workers, "hash_shards": bool(hash_shards), "hash_threads": hash_threads,
+            "classes": classes, "dispersion": bool(dispersion),
             "code_sha256": {f: sha256_file(HERE / f) for f in CODE_FILES},
             "nested_sha256": hashlib.sha256(source).hexdigest(), "nested_b64": base64.b64encode(source).decode("ascii")}
 
@@ -167,13 +170,16 @@ def main() -> None:
     p.add_argument("--caps", nargs="+", type=int, default=[32, 64, 128])
     p.add_argument("--workers", type=int, default=0, help="0 = the CPUs of the runtime")
     p.add_argument("--no-hash-shards", action="store_true", help="check the h5ad shards by name and bytes only")
+    p.add_argument("--classes", choices=["train", "all"], default="train",
+                   help="train (default): the fold's class-train cells only, what a training decision may read")
+    p.add_argument("--dispersion", action="store_true", help="also variance and zero fraction per gene")
     p.add_argument("--launch-log", type=Path)
     p.add_argument("--dry-run", action="store_true")
     a = p.parse_args()
     if a.stage.exists():
         sys.exit(f"refusing: {a.stage} exists")
     prm = params(a.owner, a.code_slug, a.prepass_kernel, a.prepass_sha256, a.caps, a.workers,
-                 hash_shards=not a.no_hash_shards)
+                 hash_shards=not a.no_hash_shards, classes=a.classes, dispersion=a.dispersion)
     text = kernel_text(prm)
     a.stage.mkdir(parents=True)
     (a.stage / "run.py").write_text(text, encoding="utf-8", newline="\n")
@@ -187,6 +193,7 @@ def main() -> None:
     record = {"slug": f"{a.owner}/{a.slug}", "stage": a.stage.as_posix(), "run_sha256": sha256_file(a.stage / "run.py"),
               "nested_samples_sha256": prm["nested_sha256"], "code_sha256": prm["code_sha256"],
               "prepass_kernel": a.prepass_kernel, "prepass_sha256": a.prepass_sha256, "caps": a.caps,
+              "classes": a.classes, "dispersion": a.dispersion,
               "dataset_sources": meta["dataset_sources"], "kernel_sources": meta["kernel_sources"]}
     if a.dry_run:
         print(f"dry run: {a.stage / 'run.py'} compiles; nothing pushed\n{json.dumps(record)}")

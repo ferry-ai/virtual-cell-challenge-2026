@@ -101,15 +101,26 @@ class Rule(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             d = Path(tmp)
             self.df.to_csv(d / "groups.csv.gz", index=False, compression="gzip")
-            r = subprocess.run([sys.executable, str(HERE / "nested_rule.py"), "--groups", str(d / "groups.csv.gz"),
-                                "--out", str(d / "out")], capture_output=True, text=True)
+            run = lambda *extra: subprocess.run([sys.executable, str(HERE / "nested_rule.py"), "--groups",
+                                                 str(d / "groups.csv.gz"), *map(str, extra)],
+                                                capture_output=True, text=True)
+            (d / "train.json").write_text(json.dumps({"classes": "train", "holdout_group": "LINE"}), encoding="utf-8")
+            (d / "all.json").write_text(json.dumps({"classes": "all", "holdout_group": "LINE"}), encoding="utf-8")
+            r = run("--manifest", d / "train.json", "--out", d / "out")
             self.assertEqual(r.returncode, 0, r.stderr[-2000:])
             doc = json.loads((d / "out" / "decision.json").read_text(encoding="utf-8"))
-            self.assertEqual(doc["rule"], NR.RULE)
+            self.assertEqual((doc["rule"], doc["fold_holdout_group"], doc["exploratory"]), (NR.RULE, "LINE", False))
             self.assertIn("| `A::s` |", (d / "out" / "decision.md").read_text(encoding="utf-8"))
-            again = subprocess.run([sys.executable, str(HERE / "nested_rule.py"), "--groups", str(d / "groups.csv.gz"),
-                                    "--out", str(d / "out")], capture_output=True, text=True)
-            self.assertNotEqual(again.returncode, 0)                                  # never over an existing output
+            self.assertNotEqual(run("--manifest", d / "train.json", "--out", d / "out").returncode, 0)   # never over
+            # a table that read every class decides nothing: refused, or described as exploratory
+            self.assertNotEqual(run("--manifest", d / "all.json", "--out", d / "out_all").returncode, 0)
+            self.assertNotEqual(run("--out", d / "out_none").returncode, 0)            # no manifest, no decision
+            self.assertFalse((d / "out_all").exists() or (d / "out_none").exists())
+            e = run("--manifest", d / "all.json", "--exploratory", "--out", d / "out_expl")
+            self.assertEqual(e.returncode, 0, e.stderr[-2000:])
+            self.assertFalse((d / "out_expl" / "decision.json").exists())
+            self.assertTrue(json.loads((d / "out_expl" / "exploratory.json").read_text(encoding="utf-8"))["exploratory"])
+            self.assertIn("non utilizzabile", (d / "out_expl" / "exploratory.md").read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

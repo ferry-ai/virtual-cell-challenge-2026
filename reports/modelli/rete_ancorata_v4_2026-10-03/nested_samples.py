@@ -1,5 +1,10 @@
 """Nested training samples of the cell corpus and what they lose (R-DATI; D-053; PROTOCOLLO §10 of this folder).
 
+Which cells: by default (--classes train) only the cells of class train of the prepass state, that is of one fold: the
+held-out line and the hidden targets give nothing to the samples, to the summaries, to the generic response or to the
+recommended cap, so the choice of a training's data never reads that training's evaluation (CAMPIONI_ANNIDATI.md §10,
+test_nested_fold.py). --classes all reads every class and is an exploratory description no training may use.
+
 For every (key, target) group of admitted single-target perturbed cells of a prepass state:
 - strata: (library, guide), from the shards' obs ('library', 'guides': the vector's guide string);
 - order: within each stratum the cells sorted by sha256(seed|cell_key), stable when shards are re-cut; the strata
@@ -69,13 +74,26 @@ def order_group(strata: np.ndarray, cell_h: np.ndarray, stratum_h: dict) -> np.n
     return rank
 
 
-def plan(st, obs_of, caps, seed):
+def allowed_rows(st, s, classes: str) -> np.ndarray:
+    """The rows of a shard a study may read. 'train' (the default of every run that feeds a training decision): only
+    the cells of class train in this prepass state, so the held-out line and the hidden targets of the fold give
+    nothing to the samples, to the summaries or to the generic response (CAMPIONI_ANNIDATI.md §10). 'all': every
+    class, for an exploratory description only."""
+    if classes == "all":
+        return np.ones(len(s["admitted"]), bool)
+    if classes != "train":
+        raise ValueError(classes)
+    return np.asarray(s["cls"]) == st["classes"].index("train")
+
+
+def plan(st, obs_of, caps, seed, classes="train"):
     """Levels and inclusion probabilities of every sampled cell, from the state and the shards' obs.
     obs_of(sid) -> (cell_keys, libraries, guides). Returns per shard {level, prob} arrays and the groups' table."""
     rows_of_group = defaultdict(list)
     meta = {}
     for sid, s in enumerate(st["shards"]):
-        adm = np.asarray(s["admitted"], bool) & ~np.asarray(s["control"], bool) & (np.asarray(s["tgt"]) >= 0)
+        adm = (np.asarray(s["admitted"], bool) & ~np.asarray(s["control"], bool) & (np.asarray(s["tgt"]) >= 0)
+               & allowed_rows(st, s, classes))
         r = np.flatnonzero(adm)
         if not r.size:
             continue
@@ -128,6 +146,8 @@ def key_task(task):
     G = st_small["G"]
     mask = st_small["key_mask"]
     acc, nacc = {}, defaultdict(int)
+    sq, nz = {}, {}                                    # --dispersion: sums of squares and nonzero cells, full + levels
+    n_disp = len(caps) + 1
     cols = np.flatnonzero(mask)
     csum, cn = np.zeros(cols.size), 0
     n_acc = len(caps) + 3                              # full, levels..., half A, half B
@@ -141,7 +161,7 @@ def key_task(task):
         L = np.asarray(xk.sum(1)).ravel()
         ok = L > 0
         prop = xk.multiply(1.0 / np.maximum(L, 1)[:, None]).tocsr()
-        adm = np.asarray(s["admitted"], bool)[keyrows] & ok
+        adm = np.asarray(s["admitted"], bool)[keyrows] & ok & np.asarray(s["allowed"], bool)[keyrows]
         ctrl = adm & np.asarray(s["control"], bool)[keyrows]
         if ctrl.any():
             csum += np.asarray(prop[ctrl].sum(0)).ravel()
@@ -162,7 +182,20 @@ def key_task(task):
                 acc[int(t)] += vec
             else:
                 acc[int(t)] = vec
-    return {"key": k, "acc": acc, "n": dict(nacc), "ctrl_sum": csum, "ctrl_n": cn, "genes": int(cols.size)}
+            if task.get("dispersion"):
+                v2, vz = np.zeros((n_disp, cols.size), np.float32), np.zeros((n_disp, cols.size), np.float32)
+                for i, m in enumerate(parts[:n_disp]):
+                    if m.any():
+                        sub = prop[m]
+                        v2[i] = np.asarray(sub.multiply(sub).sum(0)).ravel()
+                        vz[i] = np.asarray((sub > 0).sum(0)).ravel()
+                sq[int(t)] = sq[int(t)] + v2 if int(t) in sq else v2
+                nz[int(t)] = nz[int(t)] + vz if int(t) in nz else vz
+    res = {"key": k, "acc": acc, "n": dict(nacc), "ctrl_sum": csum, "ctrl_n": cn, "genes": int(cols.size)}
+    if task.get("dispersion"):
+        res.update(sq=sq, nz=nz)
+    # the metrics are computed here, in the worker: the accumulators of a large key never cross to the parent
+    return {"key": k, "ctrl_n": cn, "rows": rows_of_key(res, caps, task["min_prop"])}
 
 
 def metrics(s_full, s_x):
@@ -216,6 +249,21 @@ def rows_of_key(res, caps, min_prop) -> dict:
                "halves_spec": metrics(spec[-2], spec[-1])}
         for j in range(len(caps)):
             row["levels"].append({"total": metrics(s[0], s[1 + j]), "spec": metrics(spec[0], spec[1 + j])})
+        if "sq" in res:                               # variance and zero fraction per gene, each level against the full
+            def disp(i):
+                if n[i] == 0:
+                    return None, None
+                mean = vec[i] / n[i]
+                return np.maximum(res["sq"][t][i] / n[i] - mean * mean, 0.0), 1.0 - res["nz"][t][i] / n[i]
+            v0, z0 = disp(0)
+            for j in range(len(caps)):
+                vj, zj = disp(1 + j)
+                both = f & (v0 > 0) & (vj > 0) if vj is not None else np.zeros(f.size, bool)
+                a_, b_ = np.log(v0[both]), (np.log(vj[both]) if vj is not None else np.zeros(0))
+                row["levels"][j]["dispersion"] = {
+                    "var_r": float(np.corrcoef(a_, b_)[0, 1]) if both.sum() >= 3 and a_.std() > 0 and b_.std() > 0
+                    else None,
+                    "zero_mad": float(np.abs(zj[f] - z0[f]).mean()) if vj is not None and f.any() else None}
         out[t] = row
     return out
 
@@ -229,6 +277,10 @@ def main():
     p.add_argument("--min-prop", type=float, default=1e-5)
     p.add_argument("--seed", type=int, default=20261003)
     p.add_argument("--workers", type=int, default=1)
+    p.add_argument("--classes", choices=["train", "all"], default="train",
+                   help="train: only the cells of class train of this fold (what a training decision may read); "
+                        "all: every class, an exploratory description that no training decision may use")
+    p.add_argument("--dispersion", action="store_true", help="also compare variance and zero fraction per gene")
     p.add_argument("--out", type=Path, required=True)
     a = p.parse_args()
     if a.out.exists():
@@ -247,8 +299,9 @@ def main():
             return (CN.h5_column(o, "cell_key").astype(str), CN.h5_column(o, "library").astype(str),
                     CN.h5_column(o, "guides").astype(str) if "guides" in o else np.full(len(st["shards"][sid]["key"]),
                                                                                        "MISSING", dtype=object))
-    level, prob, half, groups = plan(st, obs_of, a.caps, a.seed)
-    print(json.dumps({"msg": "planned", "groups": len(groups), "seconds": round(time.time() - t0, 1)}), flush=True)
+    level, prob, half, groups = plan(st, obs_of, a.caps, a.seed, a.classes)
+    print(json.dumps({"msg": "planned", "groups": len(groups), "classes": a.classes,
+                      "seconds": round(time.time() - t0, 1)}), flush=True)
     keys = sorted({g["key"] for g in groups})
     shards_of_key = defaultdict(dict)
     for sid, s in enumerate(st["shards"]):
@@ -259,9 +312,11 @@ def main():
     for k in keys:
         sids = list(shards_of_key[k])
         small = {"G": st["G"], "gene_of_axis": st["gene_of_axis"], "key_mask": np.asarray(st["key_mask"][k], bool),
-                 "shards": {sid: {f: st["shards"][sid][f] for f in ("official_index", "measured", "key", "admitted",
-                                                                   "control", "tgt")} for sid in sids}}
-        tasks.append({"st": small, "key": k, "paths": shards_of_key[k], "caps": a.caps,
+                 "shards": {sid: {**{f: st["shards"][sid][f] for f in ("official_index", "measured", "key", "admitted",
+                                                                      "control", "tgt")},
+                                  "allowed": allowed_rows(st, st["shards"][sid], a.classes)} for sid in sids}}
+        tasks.append({"st": small, "key": k, "paths": shards_of_key[k], "caps": a.caps, "min_prop": a.min_prop,
+                      "dispersion": a.dispersion,
                       "level": {sid: level[sid] for sid in sids}, "half": {sid: half[sid] for sid in sids}})
     rows = []
     ex = ProcessPoolExecutor(max_workers=a.workers) if a.workers > 1 else None
@@ -269,7 +324,7 @@ def main():
     gmeta = {(g["key"], g["tgt"]): g for g in groups}
     for res in results:
         k = res["key"]
-        for t, e in rows_of_key(res, a.caps, a.min_prop).items():
+        for t, e in res["rows"].items():
             g = gmeta[(k, t)]
             row = {"key": st["key_names"][k], "unit": st["unit_of_key"].get(st["key_names"][k]), "target":
                    st["symbols"][t], "cells": e["n"][0], "strata": g["strata"], "libraries": g["libraries"],
@@ -281,6 +336,9 @@ def main():
                             f"r_spec_{c}": ms["r"], f"sign_top_spec_{c}": ms["sign_top"],
                             f"overlap_top_spec_{c}": ms["overlap_top"],
                             f"strata_{c}": g["coverage"][c]["strata"], f"guides_{c}": g["coverage"][c]["guides"]})
+                if a.dispersion:
+                    row.update({f"var_r_{c}": e["levels"][j]["dispersion"]["var_r"],
+                                f"zero_mad_{c}": e["levels"][j]["dispersion"]["zero_mad"]})
             row.update({"r_halves": e["halves"]["r"], "sign_top_halves": e["halves"]["sign_top"],
                         "r_spec_halves": e["halves_spec"]["r"], "sign_top_spec_halves": e["halves_spec"]["sign_top"]})
             rows.append(row)
@@ -294,10 +352,14 @@ def main():
     for sid, s in enumerate(st["shards"]):
         np.savez_compressed(a.out / "selection" / f"{s['name']}.npz", level=level[sid], prob=prob[sid].astype(np.float16),
                             caps=np.array(a.caps))
-    summary = {"rule": __doc__.split("\n\n")[1].replace("\n", " "), "caps": a.caps, "seed": a.seed,
+    use = ("only the cells of class train of this fold: may feed a training decision of this fold" if a.classes == "train"
+           else "every class, held-out line and hidden targets included: exploratory, no training decision may use it")
+    rule = next(par for par in __doc__.split("\n\n") if par.startswith("For every"))
+    summary = {"rule": rule.replace("\n", " "), "caps": a.caps, "seed": a.seed,
+               "classes": a.classes, "use": use, "holdout_group": st.get("holdout_group"),
                "groups": int(len(df)), "cells_full": int(df["cells"].sum()) if len(df) else 0}
     by_unit = {}
-    for u, sub in df.groupby("unit"):
+    for u, sub in (df.groupby("unit") if len(df) else []):
         e = {"groups": int(len(sub)), "cells": int(sub["cells"].sum()),
              "r_halves_median": float(sub["r_halves"].median()) if sub["r_halves"].notna().any() else None}
         for c in a.caps:
@@ -317,6 +379,8 @@ def main():
     summary["seconds"] = round(time.time() - t0, 1)
     (a.out / "summary.json").write_text(json.dumps(summary, indent=1), encoding="utf-8")
     manifest = {"prepass_sha256": TC.sha(a.prepass / "prepass.pkl"), "caps": a.caps, "seed": a.seed,
+                "classes": a.classes, "use": use, "holdout_group": st.get("holdout_group"),
+                "hidden_symbols": len(st.get("hidden", [])), "dispersion": bool(a.dispersion),
                 "min_prop": a.min_prop, "twins": "checked by train_cellnet.resolve_twins against fast_manifest.json",
                 "outputs": {"groups.csv.gz": TC.sha(a.out / "groups.csv.gz"), "summary.json": TC.sha(a.out / "summary.json")}}
     (a.out / "manifest.json").write_text(json.dumps(manifest, indent=1), encoding="utf-8")

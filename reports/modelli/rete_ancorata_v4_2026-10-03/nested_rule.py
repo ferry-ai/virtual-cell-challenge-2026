@@ -1,6 +1,13 @@
 """The sufficiency rule of the nested-samples study (CAMPIONI_ANNIDATI.md §4), applied to the groups table.
 
-    python nested_rule.py --groups <nested/groups.csv.gz> --out <new dir> [--caps 32 64 128]
+    python nested_rule.py --groups <nested/groups.csv.gz> --manifest <nested/manifest.json> --out <new dir> \
+        [--caps 32 64 128] [--exploratory]
+
+A decision that a training may use is written only for a table computed on the cells of class train of one fold
+(nested_samples.py --classes train, the manifest says so): decision.json and decision.md, with the fold. A table
+that read every class (held-out line and hidden targets included) is refused unless --exploratory is given, and then
+the output is exploratory.json and exploratory.md, marked as not usable by any training (CAMPIONI_ANNIDATI.md §10:
+choosing the data with the responses of the evaluation brings their information into the training).
 
 The constants below were written before any number of the study was read (CAMPIONI_ANNIDATI.md, frozen with the commit
 that holds it). Per unit (line group::study) and level c:
@@ -77,6 +84,9 @@ def level_of_unit(sub: pd.DataFrame, c: int) -> dict:
     if len(read):
         diff = read[f"r_spec_{c}"] - r_pred(read["cells"], read["r_spec_halves"], c)
         e["reported"]["measured_minus_r_pred_median"] = float(diff.median())
+    if f"var_r_{c}" in sub.columns:                    # --dispersion runs: variance and zeros, no threshold
+        e["reported"]["var_r_median_truncated"] = q(truncated[f"var_r_{c}"], 0.5)
+        e["reported"]["zero_mad_median_truncated"] = q(truncated[f"zero_mad_{c}"], 0.5)
     if not len(truncated):
         e["status"] = "no_loss"
     elif len(read) < MIN_GROUPS:
@@ -133,17 +143,38 @@ def markdown(doc: dict) -> str:
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--groups", type=Path, required=True)
+    p.add_argument("--manifest", type=Path, help="manifest.json of the nested_samples.py run that wrote the table")
+    p.add_argument("--exploratory", action="store_true",
+                   help="describe a table that read every class; the output cannot be used by a training")
     p.add_argument("--caps", nargs="+", type=int, default=[32, 64, 128])
     p.add_argument("--out", type=Path, required=True)
     a = p.parse_args()
     if a.out.exists():
         raise SystemExit(f"refusing: {a.out} exists")
+    man = json.loads(a.manifest.read_text(encoding="utf-8")) if a.manifest else {}
+    sha = hashlib.sha256(a.groups.read_bytes()).hexdigest()
+    if man and man.get("outputs", {}).get("groups.csv.gz") not in (None, sha):
+        raise SystemExit("refusing: the manifest is of another groups table")
+    classes = man.get("classes", "all" if man else None)     # a manifest older than --classes read every class
+    if not a.exploratory and classes != "train":
+        raise SystemExit("refusing: a decision for a training needs the manifest of a --classes train run of one fold "
+                         f"(classes here: {classes}); --exploratory describes the table without deciding")
     doc = decide(pd.read_csv(a.groups), a.caps)
-    doc["inputs"] = {"groups": str(a.groups), "sha256": hashlib.sha256(a.groups.read_bytes()).hexdigest()}
+    doc["inputs"] = {"groups": str(a.groups), "sha256": sha, "manifest": str(a.manifest) if a.manifest else None,
+                     "prepass_sha256": man.get("prepass_sha256")}
+    doc["classes"], doc["fold_holdout_group"] = classes, man.get("holdout_group")
+    doc["exploratory"] = bool(a.exploratory)
+    doc["use"] = ("exploratory description: no training decision may use it" if a.exploratory else
+                  f"levels for the trainings of the fold that holds out {man.get('holdout_group')}, from its class-train "
+                  "cells only")
+    name = "exploratory" if a.exploratory else "decision"
+    head = ("**Analisi esplorativa: letta su tutte le classi, non utilizzabile per decisioni di addestramento.**\n\n"
+            if a.exploratory else f"Fold con linea esclusa {man.get('holdout_group')}: solo cellule di classe training.\n\n")
     a.out.mkdir(parents=True)
-    (a.out / "decision.json").write_text(json.dumps(doc, indent=1), encoding="utf-8")
-    (a.out / "decision.md").write_text(markdown(doc), encoding="utf-8")
-    print(json.dumps({"units": {u: e["recommended"] for u, e in doc["units"].items()}, "totals": doc["totals"]}))
+    (a.out / f"{name}.json").write_text(json.dumps(doc, indent=1), encoding="utf-8")
+    (a.out / f"{name}.md").write_text(head + markdown(doc), encoding="utf-8")
+    print(json.dumps({"use": doc["use"], "units": {u: e["recommended"] for u, e in doc["units"].items()},
+                      "totals": doc["totals"]}))
 
 
 if __name__ == "__main__":

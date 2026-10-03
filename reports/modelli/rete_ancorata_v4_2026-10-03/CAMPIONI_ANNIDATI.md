@@ -137,6 +137,35 @@ frazione di zeri del campione contro quelle del gruppo intero. La regola del §4
 della prima corsa. Gli «stati osservabili» della stessa lista (donatori, stimoli) in questo corpus sono chiavi distinte:
 il campionamento è per chiave e bersaglio, quindi nessuno stato viene perso per costruzione.
 
+## 10. Emendamento del 4/10, 00:24 CEST: correzione di Codex, la scelta è per fold e legge solo il training
+
+Il proprietario ha inoltrato in chat una correzione mirata di Codex, prima che qualunque uscita del kernel
+`rcell-v4-nested-h1-r1` fosse scaricata. Il rilievo è giusto e corregge il §0: lo studio lanciato legge tutte le
+classi di cellule (training, linea esclusa, bersagli nascosti) e la sua regola raccomanda il tetto. Scegliere i dati
+di un training guardando le risposte della sua valutazione porta nel training informazione della valutazione, anche
+se «qui non si addestra niente».
+
+1. **La corsa in corso è analisi esplorativa.** Le uscite di `rcell-v4-nested-h1-r1` (r1) descrivono il corpus e
+   restano conservate come tali. Nessun training può usare i suoi tetti né la sua selezione: `nested_rule.py` rifiuta
+   una tabella letta su tutte le classi, salvo `--exploratory`, che scrive `exploratory.json` e non `decision.json`.
+2. **La scelta dei campioni è per fold.** `nested_samples.py --classes train` (ora il default) legge soltanto le
+   cellule di classe training dello stato del pre-passo di quel fold: campioni, medie, controlli, risposta generica
+   della chiave e quindi il tetto raccomandato non ricevono niente dalla linea esclusa né dai bersagli nascosti, in
+   nessuna sorgente. Ogni fold ha il suo kernel, le sue uscite e la sua decisione; il tetto di un'unità può differire
+   fra i fold.
+3. **La regola del §4 non cambia.** Si applica alla tabella del fold. Le unità sono quelle in training nel fold.
+4. **Prova** (`test_nested_fold.py`, 5 test, superati il 4/10 alle 00:22): cambiando le risposte escluse (linea
+   esclusa e bersaglio nascosto, con qualità invariata) restano identici la tabella dei riassunti, stati e livelli
+   raccomandati, livello e probabilità d'inclusione di ogni cellula; cambiando le risposte ammesse la tabella e il
+   livello raccomandato cambiano (controllo positivo); in modalità esplorativa le cellule escluse entrano nella
+   tabella e cambiarle la cambia, cioè la dipendenza che il default chiude esiste davvero.
+5. **Uscite nuove:** un kernel per fold, `rcell-v4-nested-fold-<linea>-r1`, con `--dispersion` (le misure del §9).
+   La decisione di un fold vale solo per i training di quel fold e solo per il corpus di quello stato del pre-passo:
+   il corpus ampliato richiede il suo pre-passo e una nuova corsa.
+
+Questa correzione non riguarda i training v4 in corsa, che non usano campioni né tetti: leggono tutte le cellule
+di training del loro fold.
+
 ## 8. Che cosa si sapeva al congelamento
 
 - Nessun numero di questo studio: il kernel non era stato lanciato.

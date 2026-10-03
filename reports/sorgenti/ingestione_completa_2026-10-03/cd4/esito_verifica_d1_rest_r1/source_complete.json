@@ -1,0 +1,106 @@
+{
+ "ok": true,
+ "verdict": {
+  "parts_ok": true,
+  "no_part_of_another_unit": true,
+  "units_covered": true,
+  "bytes_and_sha256_reread": true,
+  "shards_distinct": true
+ },
+ "units": {
+  "cd4_D1_Rest": {
+   "parts": 2,
+   "expected_rows": 3074496,
+   "rows": 3074496,
+   "cells": 1750820,
+   "excluded": 1323676,
+   "bytes": 15082075405,
+   "nnz": 6509002266,
+   "counts": 16365563681,
+   "covers_the_unit": true
+  }
+ },
+ "totals": {
+  "shards": 154,
+  "cells": 1750820,
+  "nnz": 6509002266,
+  "counts": 16365563681,
+  "bytes": 15082075405
+ },
+ "inventory": {
+  "rows": 371213,
+  "contexts": [
+   "CD4T D1 Rest"
+  ],
+  "context_target_combinations": 12091,
+  "targeted_cells": 1674277,
+  "control_cells": 76543,
+  "targeted_cells_at_cap": {
+   "32": 348975,
+   "64": 644649,
+   "128": 1076830
+  }
+ },
+ "parts": [
+  {
+   "job": "vcc_cd4_d1_rest_p0of2_r1",
+   "unit": "cd4_D1_Rest",
+   "range": [
+    0,
+    1540000
+   ],
+   "rows": 1540000,
+   "cells": 875487,
+   "excluded": 664513,
+   "by_reason": {
+    "multi_sgRNA": 262200,
+    "no_sgRNA": 399697,
+    "eligible_control": 38342,
+    "eligible_targeted": 837145,
+    "low_quality": 2013,
+    "invalid_target_id": 603,
+    "unmapped_target_symbol": 34857,
+    "emitted": 875487
+   },
+   "shards": 77,
+   "bytes": 7546104915,
+   "nnz": 3257174354,
+   "counts": 8202914274,
+   "smoke": null,
+   "complete": true,
+   "unit_manifest_sha256": "a3ca2c9d953bc1c2b66e2ed41467590c330cd02c0be73727a9a84fd487ff7481",
+   "ok": true
+  },
+  {
+   "job": "vcc_cd4_d1_rest_p1of2_r1",
+   "unit": "cd4_D1_Rest",
+   "range": [
+    1540000,
+    3074496
+   ],
+   "rows": 1534496,
+   "cells": 875333,
+   "excluded": 659163,
+   "by_reason": {
+    "no_sgRNA": 393069,
+    "eligible_targeted": 837132,
+    "multi_sgRNA": 263522,
+    "eligible_control": 38201,
+    "low_quality": 1958,
+    "invalid_target_id": 614,
+    "unmapped_target_symbol": 34261,
+    "emitted": 875333
+   },
+   "shards": 77,
+   "bytes": 7535970490,
+   "nnz": 3251827912,
+   "counts": 8162649407,
+   "smoke": null,
+   "complete": true,
+   "unit_manifest_sha256": "aae17cb1eb19a985976e4725fba479ae1638c1b695d83b5f5976ef51bc3cba73",
+   "ok": true
+  }
+ ],
+ "seconds": 209.9,
+ "utc": "2026-10-03T22:09:07Z"
+}
