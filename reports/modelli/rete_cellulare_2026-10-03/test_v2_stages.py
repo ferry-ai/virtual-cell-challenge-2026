@@ -107,6 +107,11 @@ class StagesV2(unittest.TestCase):
                      "--arm", "m=identity/mean", "--roles", "2", *TRAIN)
         cls.tr21 = run("train", "--prepass", d / "pre", "--out", d / "run21", "--arm", "d=identity", "--roles", "2",
                        "--delta-bound", "6", "--gate-warmup", "6", "--pi-floor", "0.01", *TRAIN)
+        cls.tr22 = run("train", "--prepass", d / "pre", "--out", d / "run22", "--arm", "d=identity", "--arm", "g=generic",
+                       "--roles", "2", "--delta-bound", "6", "--gate-mode", "off", "--health-check-step", "10",
+                       "--health-window", "3", *TRAIN)
+        cls.tr22u = run("train", "--prepass", d / "pre", "--out", d / "run22u", "--arm", "d=identity", "--roles", "2",
+                        "--gate-mode", "off", "--health-check-step", "1", "--health-window", "1", "--lr", "0", *TRAIN)
 
     @classmethod
     def tearDownClass(cls):
@@ -132,6 +137,19 @@ class StagesV2(unittest.TestCase):
         import torch
         m = torch.load(self.d / "run21" / "d" / "model.pt", weights_only=False)
         self.assertEqual((m["delta_bound"], m["gate_warmup"]), (6.0, 6))
+
+    def test_no_mixture_and_health_check(self):
+        self.assertEqual(self.tr22.returncode, 0, self.tr22.stderr[-3000:])
+        steps = [json.loads(l) for l in (self.d / "run22" / "train_log.jsonl").read_text(encoding="utf-8").splitlines()
+                 if '"msg": "step"' in l]
+        self.assertTrue(all(abs(v["pi_q50"] - 1.0) < 1e-6 for s in steps for v in s["arms"].values()))
+        health = self.read("run22", "health.json")
+        self.assertIn("passed", health)
+        # an untrained shift (lr 0, zero output layer) gains nothing: the check stops the run, without evaluation
+        self.assertNotEqual(self.tr22u.returncode, 0)
+        self.assertFalse(self.read("run22u", "health.json")["passed"])
+        self.assertIn("unhealthy", self.read("run22u", "done.json")["evaluation"])
+        self.assertFalse((self.d / "run22u" / "d" / "eval.json").exists())
 
     def test_whole_line_held_out(self):
         s = self.read("pre", "splits.json")

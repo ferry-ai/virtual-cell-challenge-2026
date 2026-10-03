@@ -116,7 +116,7 @@ def main() -> None:
                 z, beta = model.context(pool_x[r].float(), masks_in[pool_sid[r]], pool_lib_t[r])
                 delta, gate = model(z, beta, torch.tensor([tgt], device=dev), torch.tensor([tg], device=dev),
                                     torch.tensor([mod_of_key[k]], device=dev))
-                pi = float(model.pi_of(gate)[0])
+                pi = 1.0 if meta.get("gate_mode") == "off" else float(model.pi_of(gate)[0])
                 p0 = torch.softmax(beta[0].masked_fill(~measured, float("-inf")), -1)
                 p1 = torch.softmax((beta[0] + delta[0]).masked_fill(~measured, float("-inf")), -1)
                 resp = rng.random(n) < pi

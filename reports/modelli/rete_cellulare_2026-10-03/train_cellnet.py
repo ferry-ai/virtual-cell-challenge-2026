@@ -64,7 +64,7 @@ import pickle
 import random
 import sys
 import time
-from collections import Counter, OrderedDict, defaultdict
+from collections import Counter, OrderedDict, defaultdict, deque
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -88,7 +88,7 @@ STATE = "prepass.pkl"
 CLASSES = ["train", "C", "T", "J", "control_holdout", "combined:train", "combined:T", "combined:C", "combined:J",
            "unlabelled"]
 SAME_ON_RESUME = ("arms", "epochs", "batch", "ctrl_k", "buffer_shards", "input_dim", "dim", "rank", "lr", "seed",
-                  "roles", "descriptors_sha256", "pi_floor", "min_own", "delta_bound", "gate_warmup")
+                  "roles", "descriptors_sha256", "pi_floor", "min_own", "delta_bound", "gate_warmup", "gate_mode")
 VERSION = 2
 
 
@@ -1127,7 +1127,10 @@ def train(a):
         ll0 = CN.cell_loglik(x, lib, beta, mask, theta)
         delta, gate = model(z, beta, tgt, T["target_gene"][tgt], b["mod"].to(dev))
         ll1 = CN.cell_loglik(x, lib, beta + delta, mask, theta)
-        if warm:                    # version 2.1: during the gate warm-up pi is fixed at 1/2 and the gate learns nothing
+        if a.gate_mode == "off":    # version 2.2: no mixture, every perturbed cell carries the shift (pi = 1), so the
+            mix = ll1               # shift always gets the full gradient (2.1's smoke run: the mixture let it die)
+            pi = torch.ones_like(gate)
+        elif warm:                  # version 2.1: during the gate warm-up pi is fixed at 1/2 and the gate learns nothing
             mix = torch.logaddexp(ll1, ll0) - math.log(2.0)
             pi = torch.full_like(gate, 0.5)
         else:
@@ -1153,7 +1156,8 @@ def train(a):
         ck = torch.load(path, map_location="cpu", weights_only=False)
         if ck["prepass_sha256"] != state_sha:
             sys.exit("the checkpoint belongs to another prepass state")
-        before = {"pi_floor": "0.0", "min_own": "8", "delta_bound": "0.0", "gate_warmup": "0"}   # options added later
+        before = {"pi_floor": "0.0", "min_own": "8", "delta_bound": "0.0", "gate_warmup": "0",
+                  "gate_mode": "mixture"}                                                   # options added later
         diff = {k: (ck["same"].get(k, before.get(k)), v) for k, v in same.items()
                 if ck["same"].get(k, before.get(k)) != v}
         if diff:
@@ -1332,6 +1336,7 @@ def train(a):
     measure = {"from": None, "wait": 0.0}
     plan, stop_reason = None, None
     start_step, start_n = step, n_drawn
+    health_hist, health = deque(maxlen=50), None     # version 2.2: the short run inside every training
     while True:
         if step >= step_goal:
             stop_reason = "epochs done"
@@ -1423,6 +1428,23 @@ def train(a):
                 **({"arms": per_arm} if len(arms) > 1 else {}),
                 cells_per_s=round((n_drawn - start_n) / elapsed, 1), data_wait_fraction=round(wait / elapsed, 3),
                 **memory(devs))
+            health_hist.append({nm: v.get("pert_gain") for nm, v in per_arm.items()})
+            if a.health_check_step and health is None and step >= a.health_check_step:
+                win = list(health_hist)[-a.health_window:]
+                gains = {}
+                for nm in per_arm:
+                    vals = [h[nm] for h in win if h.get(nm) is not None]
+                    gains[nm] = float(np.mean(vals)) if vals else None
+                ok = all(g is not None and g > 0 for g in gains.values())
+                health = {"step": step, "window_logs": len(win), "mean_pert_gain": gains, "passed": ok,
+                          "rule": "PROTOCOLLO §9: at --health-check-step, every arm's mean gain of log-likelihood per gene "
+                                  "over no effect, on the perturbed cells of the last --health-window logged batches, "
+                                  "must be > 0; otherwise the training stops without evaluation"}
+                (a.out / "health.json").write_text(json.dumps(health, indent=1), encoding="utf-8")
+                log("health", **health)
+                if not ok:
+                    stop_reason = "unhealthy"
+                    break
         if time.time() - last_ckpt >= 60.0 * a.checkpoint_minutes:
             save_checkpoint("periodic")
             last_ckpt = time.time()
@@ -1471,15 +1493,17 @@ def train(a):
         torch.save({"state": arm.model.state_dict(), "genes": st["genes"], "symbols": symbols, "studies": st["studies"],
                     "modalities": st["modalities"], "input_genes": input_genes.tolist(), "target_code": arm.code,
                     "context_mode": arm.ctx, "pi_floor": a.pi_floor, "code_version": VERSION,
-                    "delta_bound": a.delta_bound, "gate_warmup": a.gate_warmup,
+                    "delta_bound": a.delta_bound, "gate_warmup": a.gate_warmup, "gate_mode": a.gate_mode,
                     "dim": a.dim, "rank": a.rank, "descriptors_sha256": a.descriptors_sha256,
                     "prepass_sha256": state_sha}, arm.out / "model.pt")
     log("trained", steps=step, epochs=cov["epochs_done"], stop=stop_reason, leakage_passed=not leaks)
     if leaks:
         sys.exit(f"leakage: {leaks}")
-    if stop_reason == "stop-after-steps":
+    if stop_reason in ("stop-after-steps", "unhealthy"):
         (a.out / "done.json").write_text(json.dumps({"finished_utc": now(), "steps": step, "evaluation": "skipped: "
-                                                     "stopped by --stop-after-steps"}, indent=1), encoding="utf-8")
+                                                     f"stopped ({stop_reason})"}, indent=1), encoding="utf-8")
+        if stop_reason == "unhealthy":
+            sys.exit(f"unhealthy at step {step}: see health.json")
         return
 
     # ---- evaluation by effective class
@@ -1671,6 +1695,11 @@ def main():
     t.add_argument("--lr", type=float, default=1e-3)
     t.add_argument("--delta-bound", type=float, default=0.0,
                    help="version 2.1: shifts bounded smoothly, B tanh(raw / B) (0: unbounded, the pilot r1)")
+    t.add_argument("--gate-mode", choices=["mixture", "off"], default="mixture",
+                   help="version 2.2: 'off' drops the responder mixture, every perturbed cell carries the shift")
+    t.add_argument("--health-check-step", type=int, default=0,
+                   help="version 2.2: at this step every arm must gain log-likelihood over no effect, else stop (0: none)")
+    t.add_argument("--health-window", type=int, default=5, help="logged batches averaged by the health check")
     t.add_argument("--gate-warmup", type=int, default=0,
                    help="version 2.1: steps with pi fixed at 1/2 before the gate learns (0: none, the pilot r1)")
     t.add_argument("--pi-floor", type=float, default=0.0,

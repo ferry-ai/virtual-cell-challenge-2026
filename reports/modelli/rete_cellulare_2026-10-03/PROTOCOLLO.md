@@ -165,3 +165,36 @@ espansione restano quelle dei §1–6.
 **Interpretazione, non verificata:** qualche batch ha spinto `delta` su valori estremi. La componente di risposta è
 diventata peggiore della baseline per ogni cellula e il gate si è chiuso. Poi Adam, che normalizza i gradienti, ha fatto
 derivare `delta` anche con gradienti quasi nulli.
+
+## 9. Emendamento 2.2, dopo la prova breve della 2.1
+
+Scritto il 3/10 dopo le 09:20 CEST, prima di aprire qualunque confronto Q1–Q3.
+
+**La prova breve della 2.1 (`rcell-smoke-h1-r2`, dalle 08:48 alle 09:18) non passa il §8.4.** Si è fermata al passo
+2.200 invece che a 5.000: il budget di 60 minuti, tolte le riserve di valutazione ed esportazione, lasciava circa 20 minuti
+di training. È un errore mio di dimensionamento. Misurato dal suo `train_log.jsonl`, durante il riscaldamento (`pi` fisso
+a 1/2):
+
+| Braccio | Responsabilità media | `delta` (RMS) | Guadagno di log-verosimiglianza |
+|---|---|---:|---:|
+| `generic` | 1,0 | 0,27 | +0,045 |
+| `mean` | 0 dal passo 800 | 1,56 | — |
+| `cells` | 0 dal passo 1.800 | 4,08 | — |
+
+Lo spostamento resta entro il limite. Il gate dunque non c'entra: la miscela permette alla componente di risposta di
+diventare peggiore della baseline. Da lì la responsabilità va a zero e lo spostamento non riceve più gradiente utile per
+correggersi. Il braccio senza codice del bersaglio ne esce.
+
+Cambia, per i training r3:
+1. **Niente miscela** (`--gate-mode off`): ogni cellula perturbata porta lo spostamento (`pi` = 1), che riceve sempre il
+   gradiente pieno. Le domande Q1–Q3 non dipendono dalla miscela; nella corsia B le cellule generate perdono la
+   componente dei non-rispondenti, e questo va detto leggendola.
+2. Lo spostamento resta limitato (`--delta-bound 6`); niente riscaldamento (senza gate non serve).
+3. **Prova breve dentro ogni training** (sostituisce la prova separata del §8.4), con `--health-check-step 5000
+   --health-window 5`. Al passo 5.000, per ogni braccio, il guadagno medio di log-verosimiglianza per gene rispetto a
+   nessun effetto, sulle cellule perturbate degli ultimi cinque batch registrati, deve essere positivo. Altrimenti il
+   training si ferma senza valutazione (`health.json`, test `test_no_mixture_and_health_check`) e `decide_pilot.py` non
+   lo accetta.
+4. Gli altri argomenti sono quelli del §4, sugli stessi prepass, con il codice `rcell-code-r3`.
+
+Le corse r1 di HepG2 e RPE1 si leggono con il §8 per il registro; non entrano nella regola del pilot.

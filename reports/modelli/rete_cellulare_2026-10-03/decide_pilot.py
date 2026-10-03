@@ -68,7 +68,10 @@ def technical(train: Path) -> dict:
     # the letter of §6 (pi_q50 < 1e-3) cannot fire with a floor; amendment §8: the gate at its floor or no responsibility
     out["collapsed"] = sorted(a for a, v in last.items()
                               if v < COLLAPSE or v <= floor + COLLAPSE or (resp.get(a) is not None and resp[a] < RESP_MIN))
+    health = train / "health.json"
+    out["health"] = json.loads(health.read_text(encoding="utf-8")) if health.is_file() else None
     out["accepted"] = bool(cov and out.get("leakage_passed") and out.get("loss_shares_within_tolerance")
+                           and (out["health"] is None or out["health"].get("passed"))
                            and not out.get("shards_differ") and out.get("return_code") in (0, None)
                            and evals and all(evals.values()))
     return out
