@@ -1,6 +1,6 @@
 # Strada C (con due bracci della B): banco per tipo cellulare con lo scorer vero, su Kaggle
 
-3 ottobre 2026, 12:45 CEST, Claude Code per Alfredo (sessione `42343bb9`), che ha chiesto in chat un'idea con più
+3 ottobre 2026, 12:14 ora del PC (commit 9a5e20d), Claude Code per Alfredo (sessione `42343bb9`), che ha chiesto in chat un'idea con più
 sfaccettature e un voto entro oggi. **Registrato prima di ogni numero.** Le soglie e la regola non si spostano dopo i
 risultati (CP-0030).
 
