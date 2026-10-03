@@ -1,0 +1,24 @@
+[{"stream_name":"stdout","time":6.860504353,"data":"/usr/bin/python3 /kaggle/input/datasets/alfredo2003bit/rlead-cellnet-code/train_cellnet.py train --prepass /kaggle/input/notebooks/alfredo2003bit/rlead-prepass-r1/prepass --out /kaggle/working/cycle_ref --shard-roots /kaggle/input --arm ident=identity@cuda:0 --arm gen=generic@cuda:1 --epochs 10 --batch 256 --ctrl-k 64 --buffer-shards 4 --dim 128 --rank 128 --lr 0.001 --seed 0 --workers 3 --roles 3 --prefetch 8 --budget-minutes 150 --reserve-export-minutes 5 --checkpoint-minutes 15 --keep-checkpoints 3 --measure-steps 300 --eval-chunk 512 --eval-reserve-seconds 120 --log-every 100 --eval-workers 3 --eval-partial 0.08 --stop-after-steps 200 --no-verify\n"}
+,{"stream_name":"stdout","time":18.785487697,"data":"/usr/bin/python3 /kaggle/input/datasets/alfredo2003bit/rlead-cellnet-code/train_cellnet.py train --prepass /kaggle/input/notebooks/alfredo2003bit/rlead-prepass-r1/prepass --out /kaggle/working/cycle_a --shard-roots /kaggle/input --arm ident=identity@cuda:0 --arm gen=generic@cuda:1 --epochs 10 --batch 256 --ctrl-k 64 --buffer-shards 4 --dim 128 --rank 128 --lr 0.001 --seed 0 --workers 3 --roles 3 --prefetch 8 --budget-minutes 150 --reserve-export-minutes 5 --checkpoint-minutes 15 --keep-checkpoints 3 --measure-steps 300 --eval-chunk 512 --eval-reserve-seconds 120 --log-every 100 --eval-workers 3 --eval-partial 0.08 --stop-after-steps 100 --no-verify\n"}
+,{"stream_name":"stdout","time":26.712296639,"data":"/usr/bin/python3 /kaggle/input/datasets/alfredo2003bit/rlead-cellnet-code/train_cellnet.py train --prepass /kaggle/input/notebooks/alfredo2003bit/rlead-prepass-r1/prepass --out /kaggle/working/cycle_b --shard-roots /kaggle/input --arm ident=identity@cuda:0 --arm gen=generic@cuda:1 --epochs 10 --batch 256 --ctrl-k 64 --buffer-shards 4 --dim 128 --rank 128 --lr 0.001 --seed 0 --workers 3 --roles 3 --prefetch 8 --budget-minutes 150 --reserve-export-minutes 5 --checkpoint-minutes 15 --keep-checkpoints 3 --measure-steps 300 --eval-chunk 512 --eval-reserve-seconds 120 --log-every 100 --eval-workers 3 --eval-partial 0.08 --resume /kaggle/working/cycle_a --stop-after-steps 200 --no-verify\n"}
+,{"stream_name":"stderr","time":34.495561069,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":34.495599679,"data":"  File \"/kaggle/src/script.py\", line 114, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":34.495606147,"data":"    ref = torch.load(OUT / \"cycle_ref\" / \"checkpoints\" / f\"ckpt_{s2:07d}.pt\", map_location=\"cpu\", weights_only=False)\n"}
+,{"stream_name":"stderr","time":34.495878263,"data":"          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":34.495983338,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/serialization.py\", line 1500, in load\n"}
+,{"stream_name":"stderr","time":34.498469265,"data":"    with _open_file_like(f, \"rb\") as opened_file:\n"}
+,{"stream_name":"stderr","time":34.498499178,"data":"         ^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":34.498504104,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/serialization.py\", line 768, in _open_file_like\n"}
+,{"stream_name":"stderr","time":34.498841823,"data":"    return _open_file(name_or_buffer, mode)\n"}
+,{"stream_name":"stderr","time":34.498862045,"data":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":34.498874229,"data":"  File \"/usr/local/lib/python3.12/dist-packages/torch/serialization.py\", line 749, in __init__\n"}
+,{"stream_name":"stderr","time":34.49920687,"data":"    super().__init__(open(name, mode))  # noqa: SIM115\n"}
+,{"stream_name":"stderr","time":34.499290015,"data":"                     ^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":34.499301148,"data":"FileNotFoundError: [Errno 2] No such file or directory: '/kaggle/working/cycle_ref/checkpoints/ckpt_0000200.pt'\n"}
+,{"stream_name":"stderr","time":37.699984608,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":37.700022269,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":38.165420921,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":38.165455215,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":39.050104283,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":40.892073915,"data":"[NbConvertApp] Writing 321987 bytes to __results__.html\n"}
+]

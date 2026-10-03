@@ -8,6 +8,11 @@
   Il teammate registra sessione, commit base, macchina e perimetro alla presa in carico secondo
   PIANI §3. Il training corrente e gli invii restano all'agente R-LAB; nessun nuovo training
   avviato dall'audit o dalla consegna.
+  **Presa in carico, 1/10 (preflight scritto alle 16:54 CEST):** Claude Code (Opus 5.5) per il teammate Alfredo,
+  sessione `42343bb9-c8d1-4b93-a9cc-2008dd008900`, portatile Windows 11 con RTX 4080 Laptop;
+  branch `codex/teammate-rlead` da `1f086cb`. Sottoattività: preflight, riproduzioni dell'audit e
+  correzioni del passo A. File: `reports/analisi/presa_rlead_2026-10-01/` e
+  `reports/modelli/cellnet_rlead_2026-10-01/` (cartelle nuove); i file di R-LAB non vengono toccati.
 - **Evidenza:** [revisione con nuove misure](../../reports/analisi/lead_audit_2026-10-01/REVISIONE.md),
   [consegna tecnica](../../reports/analisi/lead_audit_2026-10-01/NOTA_TRAINING.md).
 - **Prossimo passo:** fissare gli split e correggere campionamento, controlli e baseline di

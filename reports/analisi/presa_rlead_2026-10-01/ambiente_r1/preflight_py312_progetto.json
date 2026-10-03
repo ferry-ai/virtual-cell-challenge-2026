@@ -1,0 +1,169 @@
+{
+  "written_utc": "2026-10-01T15:21:05.966621+00:00",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "preflight_sha256_lf": "5b0e800f37b6d63b6c8003e050a82e0f62fe8ec4db15cd8271629cd2d1a59943",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "executable": "C:\\Users\\39346\\vcc2026-data\\.venv\\Scripts\\python.exe",
+  "cpu_count": 32,
+  "repository": {
+    "root": "C:\\Users\\39346\\virtual-cell-challenge-2026",
+    "head": "1f086cb2cc60c2eb6b6b413ebe5199609b1410de",
+    "audit_base": "53d17fe",
+    "audit_is_ancestor": true,
+    "working_tree_changes": [
+      " M docs/piani/strategia-scientifica.md",
+      "?? reports/analisi/presa_rlead_2026-10-01/",
+      "?? reports/modelli/cellnet_rlead_2026-10-01/"
+    ],
+    "required_files": {
+      "CLAUDE.md": true,
+      "docs/CONSEGNA_TEAMMATE.md": true,
+      "docs/PROMPT_CLAUDE_TEAMMATE.md": true,
+      "docs/piani/strategia-scientifica.md": true,
+      "reports/analisi/lead_audit_2026-10-01/AGGIORNAMENTO_R3.md": true,
+      "reports/modelli/cellnet_completo_2026-10-01/esito/training_r3/train/desc/eval.json": true
+    }
+  },
+  "packages": {
+    "numpy": {
+      "version": "2.5.3",
+      "required_module": "numpy",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "scipy": {
+      "version": "1.18.1",
+      "required_module": "scipy",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "pandas": {
+      "version": "3.0.5",
+      "required_module": "pandas",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "h5py": {
+      "version": "3.16.0",
+      "required_module": "h5py",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "anndata": {
+      "version": "0.13.3.post0",
+      "required_module": "anndata",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "PyYAML": {
+      "version": "6.0.3",
+      "required_module": "yaml",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "torch": {
+      "version": "2.14.1+cu126",
+      "required_module": "torch",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "scanpy": {
+      "version": "1.12.4",
+      "required_module": "scanpy",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "cell-eval2": {
+      "version": "0.16.0",
+      "required_module": "cell_eval2.config",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    },
+    "vcc-cli": {
+      "version": "0.2.0",
+      "required_module": "vcc",
+      "module_found": true,
+      "actual_import_and_api_check_required": true
+    }
+  },
+  "code_against_audit": {
+    "cellnet.py": {
+      "exists": true,
+      "sha256_bytes": "33c32cc88b38d43ebe661a5e4daa29bf7b846cdb51733b1c83b564ac43dfb9d9",
+      "sha256_lf": "e5b4f33179b3b79368196e74605198715e8739d11a696b9b45f4697cf94bcb93",
+      "recorded_r2_sha256": "e35ffe86e03f987580a63778191445b83080d7444424263f3db4797a086f43db",
+      "matches_r2_bytes": false,
+      "matches_audit_base_ignoring_line_endings": false
+    },
+    "cell_data.py": {
+      "exists": true,
+      "sha256_bytes": "f00bdd2bbcab2f90bb38af6a99073c31093ea72717b15df99ac3c16339201a50",
+      "sha256_lf": "79dcb0723cb48c7dae79d7bcf274372c66c2a1dc74bb51f8462f7d3c55c1a2d4",
+      "recorded_r2_sha256": "f00bdd2bbcab2f90bb38af6a99073c31093ea72717b15df99ac3c16339201a50",
+      "matches_r2_bytes": true,
+      "matches_audit_base_ignoring_line_endings": true
+    },
+    "train_cellnet.py": {
+      "exists": true,
+      "sha256_bytes": "81f0b7fcd7a39ffee1c34b72f090864e60f48dace7a4d62c5756d85e28261f13",
+      "sha256_lf": "161597b0659f912e5ae50ff7b7513c6ec1b9390c1df0726d747f5c37a9770ffe",
+      "recorded_r2_sha256": "74ca7132a6557f1d830c227c8bc58bf6ae25f82fadd540b0f99826b12dc52e37",
+      "matches_r2_bytes": false,
+      "matches_audit_base_ignoring_line_endings": false
+    }
+  },
+  "data": {
+    "configured": true,
+    "root": "C:\\Users\\39346\\vcc2026-data",
+    "exists": true,
+    "files": {
+      "raw/controls/gene_names.csv": {
+        "exists": false,
+        "bytes": null
+      },
+      "raw/controls/pert_counts.csv": {
+        "exists": false,
+        "bytes": null
+      },
+      "raw/controls/context_A.h5ad": {
+        "exists": false,
+        "bytes": null
+      },
+      "raw/controls/context_B.h5ad": {
+        "exists": false,
+        "bytes": null
+      },
+      "raw/controls/context_C.h5ad": {
+        "exists": false,
+        "bytes": null
+      },
+      "raw/nadig_hepg2/NadigOConner2024_hepg2.h5ad": {
+        "exists": false,
+        "bytes": null
+      }
+    },
+    "disk": {
+      "checked_path": "C:\\Users\\39346\\vcc2026-data",
+      "free_bytes": 87008456704,
+      "total_bytes": 998277902336
+    },
+    "inside_repository": false,
+    "expected_venv_python": "C:\\Users\\39346\\vcc2026-data\\.venv\\Scripts\\python.exe",
+    "expected_venv_python_exists": true,
+    "executing_expected_venv": true
+  },
+  "repository_disk": {
+    "checked_path": "C:\\Users\\39346\\virtual-cell-challenge-2026",
+    "free_bytes": 87008456704,
+    "total_bytes": 998277902336
+  },
+  "readiness": {
+    "repo_evidence_present": true,
+    "python_3_12": true,
+    "cellnet_dependencies_located": true,
+    "scorer_config_module_located": true,
+    "data_root_configured_and_external": true,
+    "heavy_training_ready": "not assessed: shard/weight access, imports, GPU/RAM, runtime smoke and permissions required",
+    "limitations": "module discovery is not an import/API test; file size is not content/axis/checksum validation"
+  }
+}

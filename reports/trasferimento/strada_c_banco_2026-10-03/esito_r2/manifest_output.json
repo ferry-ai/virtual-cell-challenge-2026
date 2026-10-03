@@ -1,0 +1,527 @@
+{
+ "kernel": "alfredo2003bit/rete-sorgenti-r1",
+ "downloaded": "small files only (json, csv, log, jsonl); chiavi/*.npz, export/*.npz and checkpoints stay on Kaggle",
+ "data_root_copy": "vcc2026-data/kaggle/rete_sorgenti_r1_output",
+ "files": {
+  "1_dati.log": {
+   "bytes": 621,
+   "sha256": "ffbefe0df36806c95aa2774a09d6ea2cfd5c99ce3d22ec714482434249f5a3e1"
+  },
+  "2_rete.log": {
+   "bytes": 2796,
+   "sha256": "f0222a4d5d8e9850d9fc744b52be5831f7a07725b3b314ccedd84e39d035455a"
+  },
+  "3_voto_rete.log": {
+   "bytes": 44499,
+   "sha256": "62768b13e51397b9bfc7f6681c1882fcf18e2ace2b0a640c3c4fd3c8af50bb7a"
+  },
+  "4_strada_c_r2.log": {
+   "bytes": 78778,
+   "sha256": "76dcae339bbd43d54a910418e3ad07d24b7c11d507465db00530e8074d9f0797"
+  },
+  "chiavi/index.json": {
+   "bytes": 6596,
+   "sha256": "1e29da90c6d112b6547932bb7361b496c71a27235a1e432cac6e2ad3a420046d"
+  },
+  "env.json": {
+   "bytes": 1262,
+   "sha256": "c7af3a3dfb1c12da5ceab0be54318eb662b0a03d9e4ec0b12dac09bba735af92"
+  },
+  "export/export.json": {
+   "bytes": 3764,
+   "sha256": "d5d85ac57d36bd3a38061c661eb565a6d67e1e207c2a7dca4245e2eefdb6658d"
+  },
+  "kernel_done.json": {
+   "bytes": 324,
+   "sha256": "46cae2d77347e4ca9e0342d7d691f9da25b81fc2652dd6329151faf4c8006f2b"
+  },
+  "rete/done.json": {
+   "bytes": 697,
+   "sha256": "a5e95a1e7a60225e1d7235f70b4ac1d5dba581d85f756101bd1e91814c9c3c52"
+  },
+  "rete/monitor.jsonl": {
+   "bytes": 15817,
+   "sha256": "aa5339b603f11b59d620e32b636275a65d1223c456351b1d1c928181ae9990fb"
+  },
+  "rete/split.json": {
+   "bytes": 1372,
+   "sha256": "8cbeb29f8953ed65ac9719dc2e8ba91bb5bfdb591ee9970c889708a42212899c"
+  },
+  "rete-sorgenti-r1.log": {
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "steps.json": {
+   "bytes": 229,
+   "sha256": "176f6f7106cb56ac9066a4355426fb3d06b329bc7e4bbf7f65b58b36cbed72ad"
+  },
+  "strada_c_r2/bench_h1/bench.json": {
+   "bytes": 16834,
+   "sha256": "ca4d257327358f5f184c80440a1e5865702acd5b49dc1b51cb9716ec94418203"
+  },
+  "strada_c_r2/bench_h1/components_all.csv": {
+   "bytes": 935,
+   "sha256": "c935ac43083c1bfc676d3afe7298873c7e05e50acb22244e9960b56fc6d0ce86"
+  },
+  "strada_c_r2/bench_h1/components_alloc.csv": {
+   "bytes": 902,
+   "sha256": "42ceddb448191b4ae7bb94978ff9d19c37f5f73b2a20fd7786177edf2c1cf562"
+  },
+  "strada_c_r2/bench_h1/components_cross.csv": {
+   "bytes": 984,
+   "sha256": "1e918a799f334f12d2036fa07f4640790e3ddbea1ae968a7a70205a91c46275d"
+  },
+  "strada_c_r2/bench_h1/components_cross_a2.csv": {
+   "bytes": 1032,
+   "sha256": "e0699cc494ef3359ffb94c1fdbfb84a6ed7bcdd6b4aded437e186b79d0e93e80"
+  },
+  "strada_c_r2/bench_h1/components_k562.csv": {
+   "bytes": 970,
+   "sha256": "a5d0c25706f885a050975ccc0c9f65b53f1ad420f47d2934a1c920ff0be98ef1"
+  },
+  "strada_c_r2/bench_h1/components_normrest.csv": {
+   "bytes": 950,
+   "sha256": "031bbfe450d7af2c67fd13a638b2561fd14228f8e44316666306bcb2bfc16f6b"
+  },
+  "strada_c_r2/bench_h1/components_null.csv": {
+   "bytes": 754,
+   "sha256": "5d74c595774d3e90d3b6667c4743aee3de0c191ea4ec2192a0254631a89b96ea"
+  },
+  "strada_c_r2/bench_h1/components_replicate.csv": {
+   "bytes": 978,
+   "sha256": "20c92bf6bfb8a8a4751cd11c759a76820e26dbf67364a82f9593eaf672aa0274"
+  },
+  "strada_c_r2/bench_h1/components_same.csv": {
+   "bytes": 947,
+   "sha256": "e451807a879fa09abeb241fe1fe9737bdd5ba8cdfa023c994df21232a7800400"
+  },
+  "strada_c_r2/bench_h1/components_same_a2.csv": {
+   "bytes": 1022,
+   "sha256": "ff6262070b5af0ed87a6f4ce3f098364d7296e31171740e20ab6938ae9e9df55"
+  },
+  "strada_c_r2/bench_h1/components_same_shuf.csv": {
+   "bytes": 943,
+   "sha256": "2d303e1e11945cc22c46030b3eda1bc74dbc4e303b397a0f201b64ab56c0e4c3"
+  },
+  "strada_c_r2/bench_h1/per_pert_all.csv": {
+   "bytes": 21654,
+   "sha256": "67b5a6d3cf9bf1cc48b0e330643b86fde8ca92c644c52054a07f656fed1f79e2"
+  },
+  "strada_c_r2/bench_h1/per_pert_alloc.csv": {
+   "bytes": 21403,
+   "sha256": "3bd86595a1341a93ad94f532610ea43ea85526d94cd82742128846b3ab4c1005"
+  },
+  "strada_c_r2/bench_h1/per_pert_baseline.csv": {
+   "bytes": 21837,
+   "sha256": "38a463b6bae90380f74ec9760f8e0a5a22ed7ad28adff93de2e83a8b94abaa50"
+  },
+  "strada_c_r2/bench_h1/per_pert_cross.csv": {
+   "bytes": 21566,
+   "sha256": "c69921a6300ebaa77b7b67fee46fed8363c575166c2208cc8b7882ef69b2aff1"
+  },
+  "strada_c_r2/bench_h1/per_pert_cross_a2.csv": {
+   "bytes": 21478,
+   "sha256": "a5a8a415405fbb28ed437666f3fd489b8d193a9ef97b509c37ed99fac1488316"
+  },
+  "strada_c_r2/bench_h1/per_pert_k562.csv": {
+   "bytes": 21564,
+   "sha256": "27728f4514e8700df868dc4207a6b1730a0b60af01be900d30e564e764daaf2f"
+  },
+  "strada_c_r2/bench_h1/per_pert_normrest.csv": {
+   "bytes": 21603,
+   "sha256": "c71d50dee249ae7511a4c17661b1d646fbb969c80b41bc26da9da016db31d4f1"
+  },
+  "strada_c_r2/bench_h1/per_pert_null.csv": {
+   "bytes": 20201,
+   "sha256": "d4beb71ebaa2bfc387f4d58f6f40ecf31d83f04e87723da779e69e9c4085a8b0"
+  },
+  "strada_c_r2/bench_h1/per_pert_replicate.csv": {
+   "bytes": 20950,
+   "sha256": "bc73ba3b48145b55c8857b12ba2907f8805834644936776e03069f91fd0dfc21"
+  },
+  "strada_c_r2/bench_h1/per_pert_same.csv": {
+   "bytes": 21531,
+   "sha256": "333fb63614f6167d32fa255fb03be4fa5ea4bb998a0d95a47b96b142b7c7a796"
+  },
+  "strada_c_r2/bench_h1/per_pert_same_a2.csv": {
+   "bytes": 21604,
+   "sha256": "dda9f9678f1e6567aa1bdd633bf88cd7db2ec90886a3a308007c58a6a5089101"
+  },
+  "strada_c_r2/bench_h1/per_pert_same_shuf.csv": {
+   "bytes": 21802,
+   "sha256": "31f466808ba9ccc4ae12eb6acc6ef7be51e6fe54fbe7b8309b3ccda44d8e31ed"
+  },
+  "strada_c_r2/bench_h1/scaled_local.csv": {
+   "bytes": 1652,
+   "sha256": "fe1fa0c783fee528bba1107c3df70856810a4983381e0f678c78144d65f3850b"
+  },
+  "strada_c_r2/bench_hepg2/bench.json": {
+   "bytes": 16669,
+   "sha256": "fc7157754b8bb6c7536b5e5cffeb3b67f94e8d14422f5dccca2bcc4b768b5ae0"
+  },
+  "strada_c_r2/bench_hepg2/components_alloc.csv": {
+   "bytes": 2108,
+   "sha256": "3a0155be349e9abdb789fe5986cbf39a4dcbb8caf1c12228dcbcff928fb7a35c"
+  },
+  "strada_c_r2/bench_hepg2/components_cross.csv": {
+   "bytes": 2144,
+   "sha256": "41eaa9d6f288a6419555539f8a520ccbaf0577613f98cbf3f7ddfd202ae7a42d"
+  },
+  "strada_c_r2/bench_hepg2/components_cross_a2.csv": {
+   "bytes": 2384,
+   "sha256": "709af38f2337cea5a02e38f041a434f8079172f0b158f354b606f498a9858427"
+  },
+  "strada_c_r2/bench_hepg2/components_cross_shuf.csv": {
+   "bytes": 2126,
+   "sha256": "8b091b9e285ffb5a35ac2bc679ee080b57533ac3ba8d677c9f85f795f355bb83"
+  },
+  "strada_c_r2/bench_hepg2/components_k562.csv": {
+   "bytes": 2109,
+   "sha256": "3a24ec2f376ebc4046c0d3c58ac50c319874f2c13a7b488a6b056c7ffb106362"
+  },
+  "strada_c_r2/bench_hepg2/components_normrest.csv": {
+   "bytes": 2140,
+   "sha256": "6258ecc7a694c5c825639876c61ef81faf404048841533b61315daa89b186505"
+  },
+  "strada_c_r2/bench_hepg2/components_null.csv": {
+   "bytes": 1982,
+   "sha256": "32bc64d4b9b65e2a20f2acad2257c08bb020b624d6296b6d3b88167d789a198a"
+  },
+  "strada_c_r2/bench_hepg2/components_replicate.csv": {
+   "bytes": 2253,
+   "sha256": "014219703e4cb547756eb04e08484ca55537fa38d90d41d061dafa8c03aef82b"
+  },
+  "strada_c_r2/bench_hepg2/per_pert_alloc.csv": {
+   "bytes": 58100,
+   "sha256": "4e893e560b8c252e0f6e8f39dc83f24e9f8a9b45f24196312b52a417dfccb6f5"
+  },
+  "strada_c_r2/bench_hepg2/per_pert_baseline.csv": {
+   "bytes": 56770,
+   "sha256": "40bd1053ce5dfa9adc99ae6992289d145f39e017b9f7cba2181ce6af8e2c5904"
+  },
+  "strada_c_r2/bench_hepg2/per_pert_cross.csv": {
+   "bytes": 58496,
+   "sha256": "34dba03d0470fe16a09cb28b3c9fb8d5a1b28399c616653ffdeac711c1db42a5"
+  },
+  "strada_c_r2/bench_hepg2/per_pert_cross_a2.csv": {
+   "bytes": 58997,
+   "sha256": "e3ad4e3a2e68366fbb5961f0ef4423c7148bf6da8c0c69486939c403cae057a4"
+  },
+  "strada_c_r2/bench_hepg2/per_pert_cross_shuf.csv": {
+   "bytes": 57805,
+   "sha256": "478f03f9ffc786b4d169b430412e2d889ca6f3cce7727f53e296171f60f8be33"
+  },
+  "strada_c_r2/bench_hepg2/per_pert_k562.csv": {
+   "bytes": 58270,
+   "sha256": "95087a49e5b3820432353b682207ef15da6d49db870ea64da2df919fe8097690"
+  },
+  "strada_c_r2/bench_hepg2/per_pert_normrest.csv": {
+   "bytes": 58541,
+   "sha256": "be0f62dd2005e117fe11013e1eba4b16384e9c359e43cfc30afeb5c5513953b2"
+  },
+  "strada_c_r2/bench_hepg2/per_pert_null.csv": {
+   "bytes": 55791,
+   "sha256": "905a81ec2b1c864643bf125104fab5f6fb9e211b245a8946b61137c64722f952"
+  },
+  "strada_c_r2/bench_hepg2/per_pert_replicate.csv": {
+   "bytes": 57395,
+   "sha256": "208fb2fa3dfa51cc87185e1ee07547c7cc6cfea2ae394cb40f8a5882a6db3ceb"
+  },
+  "strada_c_r2/bench_hepg2/scaled_local.csv": {
+   "bytes": 1194,
+   "sha256": "1f97f07468ef92ca1ddbb3782252e47e5bcd32d16918645c8b9c8815791dced2"
+  },
+  "strada_c_r2/bench_jurkat/bench.json": {
+   "bytes": 16533,
+   "sha256": "b4f4a2f6b46c44de1afc3e9ec6abaab5233662f005a469e3e6f0dd21cf9929f2"
+  },
+  "strada_c_r2/bench_jurkat/components_alloc.csv": {
+   "bytes": 2119,
+   "sha256": "b9a5e6487245798a9470b0672975c13651447ccd5058f061bbeed28a9172c296"
+  },
+  "strada_c_r2/bench_jurkat/components_cross.csv": {
+   "bytes": 2129,
+   "sha256": "ebecfc7bc4b79bb6295c50e2a1ba5cbdf12349a0a388f181c329c227800786f8"
+  },
+  "strada_c_r2/bench_jurkat/components_cross_a2.csv": {
+   "bytes": 2420,
+   "sha256": "8250d823b5cd7a2156a72ce0ee046babe6cbc42d73f3d313355fa13fb2618a4f"
+  },
+  "strada_c_r2/bench_jurkat/components_cross_shuf.csv": {
+   "bytes": 2119,
+   "sha256": "6a9a26d10b6d4438fd4395defe8bce87153d7f0e2a96437b7d56b0d72c083ce7"
+  },
+  "strada_c_r2/bench_jurkat/components_k562.csv": {
+   "bytes": 2058,
+   "sha256": "c3ae045727c6b51ec70abe82d4cdd6b6937185026aa63b7f7ff6ac707ab473c2"
+  },
+  "strada_c_r2/bench_jurkat/components_normrest.csv": {
+   "bytes": 2129,
+   "sha256": "4d41f376f4d6c561723278c59c2466ed6ace26aacdd1bfb418bd185f02ecc8f9"
+  },
+  "strada_c_r2/bench_jurkat/components_null.csv": {
+   "bytes": 1931,
+   "sha256": "36527e77daa9ef37028d9591234cbbea6a93ad3e2148f0ca16c70e3e0b65dd91"
+  },
+  "strada_c_r2/bench_jurkat/components_replicate.csv": {
+   "bytes": 2139,
+   "sha256": "4e224c71b7728f409078512ae5de0aa67839e13769c761382d3b3f87b6db6f2c"
+  },
+  "strada_c_r2/bench_jurkat/per_pert_alloc.csv": {
+   "bytes": 58152,
+   "sha256": "a5c1148636360f1b642144e81252c9dc04f1ee41aba4af98b85d58e2ce789b6b"
+  },
+  "strada_c_r2/bench_jurkat/per_pert_baseline.csv": {
+   "bytes": 56558,
+   "sha256": "6caa54c1d2da49fa1d88102cf4e806c451ec757b98322eb10b790bf274f565c4"
+  },
+  "strada_c_r2/bench_jurkat/per_pert_cross.csv": {
+   "bytes": 58447,
+   "sha256": "620c37a7336837be10c0284ea186ec978a9a5a961c0a10f6ce60fa2ef50aa053"
+  },
+  "strada_c_r2/bench_jurkat/per_pert_cross_a2.csv": {
+   "bytes": 59081,
+   "sha256": "c3449aeb179c489200e6de4e2c1958fb07a63221c1e22f302d6506678101f441"
+  },
+  "strada_c_r2/bench_jurkat/per_pert_cross_shuf.csv": {
+   "bytes": 57762,
+   "sha256": "72d6be6748718eeb039a288ea50a0c76a8ddb8eb6db45bf2c3929788350e5d08"
+  },
+  "strada_c_r2/bench_jurkat/per_pert_k562.csv": {
+   "bytes": 57994,
+   "sha256": "e87621572be4570107d01b75911a650a0923ba6dd7dd1e76792dcf5f399c6423"
+  },
+  "strada_c_r2/bench_jurkat/per_pert_normrest.csv": {
+   "bytes": 58397,
+   "sha256": "3ca7b8d80cb4d7c2da72bd36c86821229777452352eda73c1f4865b3e877f6ca"
+  },
+  "strada_c_r2/bench_jurkat/per_pert_null.csv": {
+   "bytes": 55985,
+   "sha256": "2d7134a39959be1ea7cdc3f919ab0b402e5c478fc4c14ef2e86c0eeb1e5f5bd4"
+  },
+  "strada_c_r2/bench_jurkat/per_pert_replicate.csv": {
+   "bytes": 57221,
+   "sha256": "65ed5b0940fd0e239643995ae2618d8f44fd4c4f5233c5d1f747cb027f79d490"
+  },
+  "strada_c_r2/bench_jurkat/scaled_local.csv": {
+   "bytes": 1149,
+   "sha256": "ca0d64e5cf565afdb9dbd56f09f746cdf59901578cda30fb149248b915fcf508"
+  },
+  "strada_c_r2/bench_kolf/bench.json": {
+   "bytes": 19926,
+   "sha256": "7a7567ce3f1aabaa2e31557fd597dd159386701ce1ef1ed4e7d0b01930844c4f"
+  },
+  "strada_c_r2/bench_kolf/components_all.csv": {
+   "bytes": 1956,
+   "sha256": "1085c2b23c7132fdd037b4fc8c8cadc145ffe8db00bed365096bde2aa3376eea"
+  },
+  "strada_c_r2/bench_kolf/components_alloc.csv": {
+   "bytes": 2028,
+   "sha256": "0bd4487f6905792cfcdc3055b02ff45a6267b1474f997d50c693330016fa02be"
+  },
+  "strada_c_r2/bench_kolf/components_cross.csv": {
+   "bytes": 1936,
+   "sha256": "8bb9e729b69d7e60207e5ec6b0bb9dbf5a72f60cf2f90176763d6c0ce8d3fda8"
+  },
+  "strada_c_r2/bench_kolf/components_cross_a2.csv": {
+   "bytes": 2124,
+   "sha256": "9627df0c331c59a0ae4745485699e0bb841e6ea5916eaf8531c39fcb60457f77"
+  },
+  "strada_c_r2/bench_kolf/components_k562.csv": {
+   "bytes": 1927,
+   "sha256": "1d4389ea424d77d561d164f1bc30c7866e6cea6f3c0ad47ee083b55fcb10e0e6"
+  },
+  "strada_c_r2/bench_kolf/components_normrest.csv": {
+   "bytes": 2005,
+   "sha256": "588cf4af79068aebf1fe35d68c19381f8051c8110912440004d13655a18e5546"
+  },
+  "strada_c_r2/bench_kolf/components_null.csv": {
+   "bytes": 1828,
+   "sha256": "4059eb6c84578aafdf4af0f95739de8f5f7904ec2b01833ca137e9c2341e1553"
+  },
+  "strada_c_r2/bench_kolf/components_replicate.csv": {
+   "bytes": 2126,
+   "sha256": "0d3f5a8a4bbadc1d7071374de75df0f9786de28fdccee2321549c9a055afbabc"
+  },
+  "strada_c_r2/bench_kolf/components_same.csv": {
+   "bytes": 2025,
+   "sha256": "95d6d363f198f157d6d1c41dbb7c5b08633dbd88da3a2fa304a69295643976f7"
+  },
+  "strada_c_r2/bench_kolf/components_same_a2.csv": {
+   "bytes": 2147,
+   "sha256": "fc69517d145c7253f6911a6146eae999e7d0d7d1420bcfffa7257509ad959ee8"
+  },
+  "strada_c_r2/bench_kolf/components_same_shuf.csv": {
+   "bytes": 2007,
+   "sha256": "68616cd36e354bd6614ce686154fd62ed4390b171df170b0cfc4f4f95ff15f55"
+  },
+  "strada_c_r2/bench_kolf/per_pert_all.csv": {
+   "bytes": 56063,
+   "sha256": "1aef1ded9f5246aff07a0d5e3cb1657e4047f841aac4e26cf0d8c1fda98be280"
+  },
+  "strada_c_r2/bench_kolf/per_pert_alloc.csv": {
+   "bytes": 56533,
+   "sha256": "fd23793aa066261ebd9e669fb1743fe6ff0b494d1b20f7b589660cbd7eb1a486"
+  },
+  "strada_c_r2/bench_kolf/per_pert_baseline.csv": {
+   "bytes": 54801,
+   "sha256": "c514ae7670146a17cff3b3b81b9d2055bd83bc6614452fa09c2af83edaebaa28"
+  },
+  "strada_c_r2/bench_kolf/per_pert_cross.csv": {
+   "bytes": 55883,
+   "sha256": "6e9ede96e110fbc5193e982f088e0fa8e8465756be8c76b93985fbe28fc80443"
+  },
+  "strada_c_r2/bench_kolf/per_pert_cross_a2.csv": {
+   "bytes": 56468,
+   "sha256": "82e0907ff85b86de8e329b138b157686866e327f0c94d14335b41182ba4ce76f"
+  },
+  "strada_c_r2/bench_kolf/per_pert_k562.csv": {
+   "bytes": 56009,
+   "sha256": "5fdbbf9be637613d65bb934908a01651e8c3ff247ca8f04084ee6cf7c323225b"
+  },
+  "strada_c_r2/bench_kolf/per_pert_normrest.csv": {
+   "bytes": 56319,
+   "sha256": "a90d0790bbddc1e0ae09bce47c7cf70bf30a11d45034e5799b1d750d5494270b"
+  },
+  "strada_c_r2/bench_kolf/per_pert_null.csv": {
+   "bytes": 54837,
+   "sha256": "58d26b05ac83c20c381c50dc68db91570e5a3da45616df991ff63e88d85d0854"
+  },
+  "strada_c_r2/bench_kolf/per_pert_replicate.csv": {
+   "bytes": 57017,
+   "sha256": "d0a5f11db6869be5aa29f99e987973d5bf549a9d0db8721a902fc49cff1aba97"
+  },
+  "strada_c_r2/bench_kolf/per_pert_same.csv": {
+   "bytes": 55926,
+   "sha256": "f1f7e9f611d95ff896d29547c46afd0a358ba260b00139ef41c7f2a6de0ab413"
+  },
+  "strada_c_r2/bench_kolf/per_pert_same_a2.csv": {
+   "bytes": 56392,
+   "sha256": "2c0308bcaa7c498d47d8b55b2a8748960246642c725dc4b598404a64d560c326"
+  },
+  "strada_c_r2/bench_kolf/per_pert_same_shuf.csv": {
+   "bytes": 56203,
+   "sha256": "3743d5bd6492fe301cd4a5e0875dab3368c8f416a5422e38cb50f9bb0aab055f"
+  },
+  "strada_c_r2/bench_kolf/scaled_local.csv": {
+   "bytes": 1606,
+   "sha256": "f2a41d3adbeb7dfae20280215d0afdc6d68aa35361ff5b5702a30860bf3a1515"
+  },
+  "strada_c_r2/lettura.json": {
+   "bytes": 20252,
+   "sha256": "f8a5af797ae51a10ff85c33d7e3f774673ded9e0f5d218de80671aacc7d14c72"
+  },
+  "strada_c_r2/linee.json": {
+   "bytes": 2027,
+   "sha256": "ef97a09ac24b96328e9638d35918f6a946bc9acb8b4b12d895c1c47f2cf61fe0"
+  },
+  "strada_c_r2/sorgenti.json": {
+   "bytes": 58404,
+   "sha256": "4487c2db9c3398d0b323e889af6a3bd5ea12d494a115f5eb0f17676f0417d3f0"
+  },
+  "voto_rete/bench_hepg2/bench.json": {
+   "bytes": 19102,
+   "sha256": "9b0cbfc7be792a72cd416324a4337aa8166410e8d5bb304bcd3521aeab84330d"
+  },
+  "voto_rete/bench_hepg2/components_alloc.csv": {
+   "bytes": 2130,
+   "sha256": "9fa9e597e4e326db8a7a7d7e372fd1b08b03bdb7824b4b28f26ac9ba3cf8cc1f"
+  },
+  "voto_rete/bench_hepg2/components_cross.csv": {
+   "bytes": 2158,
+   "sha256": "d83454cf46c01905037961497d1d596e136e6f879332faa869c887ce94ce0215"
+  },
+  "voto_rete/bench_hepg2/components_cross_a2.csv": {
+   "bytes": 2407,
+   "sha256": "13bf4f421be0702b5796c480cdf59d7786022dd8971408c6213d3394e6b32125"
+  },
+  "voto_rete/bench_hepg2/components_cross_shuf.csv": {
+   "bytes": 2145,
+   "sha256": "aa81418a7f74bed91b14bc2868d1016aa70dca1f028b6b723a70d492f2347223"
+  },
+  "voto_rete/bench_hepg2/components_k562.csv": {
+   "bytes": 2109,
+   "sha256": "3a24ec2f376ebc4046c0d3c58ac50c319874f2c13a7b488a6b056c7ffb106362"
+  },
+  "voto_rete/bench_hepg2/components_net.csv": {
+   "bytes": 1982,
+   "sha256": "1b1ee64b5d307c59398161de1c83d78f87b834022082322ee0038e1c3d313c1d"
+  },
+  "voto_rete/bench_hepg2/components_net0.csv": {
+   "bytes": 2250,
+   "sha256": "5d84fcf3ceebf3fefdb8fc602290a8e1000c5caee71810ba744d4ac4a04384bd"
+  },
+  "voto_rete/bench_hepg2/components_normrest.csv": {
+   "bytes": 2166,
+   "sha256": "a54f94539c3d4dace283a6be3f7d69a1f24889374fa8f746103ff2b2c2f3f70c"
+  },
+  "voto_rete/bench_hepg2/components_null.csv": {
+   "bytes": 1982,
+   "sha256": "32bc64d4b9b65e2a20f2acad2257c08bb020b624d6296b6d3b88167d789a198a"
+  },
+  "voto_rete/bench_hepg2/components_replicate.csv": {
+   "bytes": 2253,
+   "sha256": "014219703e4cb547756eb04e08484ca55537fa38d90d41d061dafa8c03aef82b"
+  },
+  "voto_rete/bench_hepg2/per_pert_alloc.csv": {
+   "bytes": 57975,
+   "sha256": "7cf76721ce228d7c4ea1fe857dc935feef776a430d29552d64b90e0c99e6f033"
+  },
+  "voto_rete/bench_hepg2/per_pert_baseline.csv": {
+   "bytes": 56770,
+   "sha256": "bae02a534e90e4162709c62516a594560dd8aae5f989b91aa9cc202c68c3f96c"
+  },
+  "voto_rete/bench_hepg2/per_pert_cross.csv": {
+   "bytes": 58475,
+   "sha256": "7f747f56988159c183ad62de66e5f5c60354700857af0fd120d9ab5bdc4808d3"
+  },
+  "voto_rete/bench_hepg2/per_pert_cross_a2.csv": {
+   "bytes": 59156,
+   "sha256": "79813b6fff69fb055061acfc687dfab00d37859505f040005b9cde2945bf0288"
+  },
+  "voto_rete/bench_hepg2/per_pert_cross_shuf.csv": {
+   "bytes": 58134,
+   "sha256": "2900db2c1ec7ac2d8267ad56a3d54826ed25a36c61faa894696c25ef88dfda9b"
+  },
+  "voto_rete/bench_hepg2/per_pert_k562.csv": {
+   "bytes": 58270,
+   "sha256": "f2db9ebfc1f985c72e4f1f14d540ec43376bd367f7a5de0ba548e785c5bd9a32"
+  },
+  "voto_rete/bench_hepg2/per_pert_net.csv": {
+   "bytes": 56205,
+   "sha256": "0ad8462c11bc1745689bfa1e7fb8839d3efefa6565ba9b1b4e11eee719377c03"
+  },
+  "voto_rete/bench_hepg2/per_pert_net0.csv": {
+   "bytes": 58709,
+   "sha256": "4bcb0c143e7ca31840bf96827c0af1736c394c9200daf5fa759786d1daeec7ee"
+  },
+  "voto_rete/bench_hepg2/per_pert_normrest.csv": {
+   "bytes": 58479,
+   "sha256": "97521463e782a6345773244f63903fd2a70a632e7bcb138b715ea6f512419d28"
+  },
+  "voto_rete/bench_hepg2/per_pert_null.csv": {
+   "bytes": 55791,
+   "sha256": "e72bb0323e195957e8a8b54c1f49c645d38d2b172be82581743f3dcbbf5457c6"
+  },
+  "voto_rete/bench_hepg2/per_pert_replicate.csv": {
+   "bytes": 57395,
+   "sha256": "f68b9a1b78d1dc219df5644c55c9cc0e7848f786b8b655dfc3bfbdd1c23dfbe6"
+  },
+  "voto_rete/bench_hepg2/scaled_local.csv": {
+   "bytes": 1458,
+   "sha256": "177c7e1a16b62e5ddf71151f40bfed4daabad0a8d1e5835ba52433c285db45a5"
+  },
+  "voto_rete/lettura.json": {
+   "bytes": 7512,
+   "sha256": "48b5335518b6f65b75ef49951aabddca59f54d1b62dfcef60825ea40f0835c64"
+  },
+  "voto_rete/linee.json": {
+   "bytes": 779,
+   "sha256": "df178f6cb0bbeda836aeccff59f772c8f8a4598bc67cc4326077acad35f8cdae"
+  },
+  "voto_rete/sorgenti.json": {
+   "bytes": 58404,
+   "sha256": "4487c2db9c3398d0b323e889af6a3bd5ea12d494a115f5eb0f17676f0417d3f0"
+  }
+ }
+}

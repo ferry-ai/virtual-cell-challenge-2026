@@ -1,0 +1,48 @@
+{
+  "written_utc": "2026-10-03T21:50:00Z",
+  "label": "t31: equal-weight multi-line transfer (net0, step-0 checkpoint of the source-attention network) at amplitude x2, with the t22 generator",
+  "claim_type": "subjective forecast registered before the export of the effects and before generation; no official result",
+  "status": "prepared on the owner's request in chat (3/10, about 23:40: 'ingegna una soluzione applicabile in 2 ore'); the upload needs his explicit yes in chat and the team quota agreed with Davide's side",
+  "references": {
+    "t22": 0.14125049908559736,
+    "t22_t24_mean": 0.1420736800178088,
+    "t28_best_observed": 0.144845205,
+    "t30_network": 0.027878307730988663,
+    "t11_unscaled_transfer": 0.070777,
+    "t15_amplitude_x2": 0.107533,
+    "t16_amplitude_x4": 0.137627
+  },
+  "why_this_candidate": [
+    "what transfers is the part common to the lines: same-type sources do not beat cross-type ones (route C r2, H1 same - cross -0.007 [-0.050, +0.037]), learned source weights add no direction (r2 local, max +0.0004 cosine on RPE1)",
+    "the t30 network lost by shrinking its effects (learned amplitude); its step-0 start, net0, is on a par with the best arms on HepG2 with the real scorer (0.277; net0 - cross +0.030 [-0.020, +0.074], net0 - k562 +0.147 [+0.083, +0.204]; ESITO_R1)",
+    "at natural size the equal-weight transfer predicts effects about half the truth (size 0.524 on held-out RPE1, ESITO_LOCALE); x2 arms were never worse on the pluripotent lines of route C (r1 and r2); amplitude x2 and x4 lifted the leaderboard in t15 and t16"
+  ],
+  "effects": {
+    "exporter": "reports/modelli/rete_sorgenti_2026-10-03/esporta_abc.py as used for t30, with --checkpoint ckpt_step000000.pt (sha256 9a316d32078c2057ab87a50294057b487f18ace96b2538f9fc6818fb8863f3c6; output layers all zero: equal weight per line group times the norm-match amplitude)",
+    "sources": "the 25 training keys of rete-sorgenti-r1 (K562 genome-wide and essential, RPE1, 19 HipSci lines, Tian iPSC and neurons), as for t30 and as the HepG2 vote measured net0",
+    "targets": "the 300 of pert_counts.csv; the 28 no source covers stay at lfc 0, not observed (as t30)",
+    "out": "<data root>/processed/effects_t31_2026-10-03"
+  },
+  "generator": {
+    "stage": 45,
+    "trial": "trial-ext-profile",
+    "effects_scale": 2.0,
+    "settings": "otherwise the defaults of t22 (gene_dispersion false, seed 20260912, 300 targets x 400 cells per context)",
+    "stage_48": "as t22"
+  },
+  "against_t30": "two changes: the checkpoint (step 0 instead of the learned one, which removes both the learned weights and the learned amplitude) and effects_scale 2.0; not a single factor",
+  "against_t22": "the sources and the effect estimator (rlab public screens with the route C estimator instead of the four genome-scale sources of the recipe, no cis term) and the amplitude; not a single factor: the question is whether the multi-line public transfer, which serves any new context, reaches the recipe",
+  "expected": {
+    "score_avg_band": [0.05, 0.15],
+    "working_centre": 0.10,
+    "calibration": "Subjective planning range. Unscaled transfer scored 0.060-0.071 (t08, t11) and amplitude x2 on the recipe sources 0.108 (t15); the rlab multi-line average beat a single K562 source by +0.147 on the HepG2 bench, which argues for the upper half, while the lack of the cis term and 28 targets at zero argue for the lower half."
+  },
+  "rule": {
+    "a_at_least_0.137": "the multi-line public transfer at x2 is on a par with the recipe (t22/t24 mean minus 0.005): it becomes a candidate for D, E, F, next an amplitude bench (x1.5, x2, x3) and adding the cis term",
+    "b_0.10_to_0.137": "useful signal but below the recipe: the recipe stays the reference; the rlab sources are worth testing as an addition to the recipe's sources, not as a replacement",
+    "c_0.06_to_0.10": "at the level of plain transfer: no further submission of this form; amplitude alone does not close the gap",
+    "d_below_0.06": "worse than plain transfer: an error in the export or the estimator scale is suspected first; check before any interpretation",
+    "not": "one seed; says nothing about D, E, F directly; does not enter PROGETTO section 0 unless it changes the best observed"
+  },
+  "reserve": "no reserve is consumed: A, B, C are the public validation contexts"
+}

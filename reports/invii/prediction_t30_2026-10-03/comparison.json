@@ -1,0 +1,68 @@
+{
+  "written_utc": "2026-10-03T17:00:37+00:00",
+  "entry_id": "0GRBdx7CEwnmE6dH9AYa",
+  "submission_date": "2026-10-03T16:28:01.106501Z",
+  "official_status": "published",
+  "score_avg": 0.027878307730988663,
+  "score_avg_recomputed_from_members": 0.027878307730988667,
+  "rank_at_scoring": 781,
+  "panel_id": "vcc2026-val-1",
+  "anchor_version": "vcc2026-valA-r4+vcc2026-valB-r4+vcc2026-valC-r4",
+  "registered_band": [
+    0.02,
+    0.13
+  ],
+  "inside_avg_band": true,
+  "rule_branch": "c_below_0.06",
+  "rule_text": "weaker than plain transfer: no further submission of the network until a local six-member bench shows it at least at the transfer level",
+  "expectation_added_before_generation": "band c (INVIO_T30.md, commit 5b7ab3f): the learned amplitude shrank the effects to mean |lfc| 0.005-0.007; met",
+  "differences": {
+    "t30_minus_t22": -0.1133721913546087,
+    "t30_minus_t22_t24_mean": -0.11419537228682013,
+    "t30_minus_t29": 0.05750330773098866,
+    "t30_minus_t08": -0.03249169226901134
+  },
+  "reference": {
+    "t22": 0.14125049908559736,
+    "t22_t24_mean": 0.1420736800178088,
+    "t28_best_observed": 0.144845205,
+    "t29_network": -0.029625,
+    "t08_unscaled_transfer": 0.06037,
+    "t11_unscaled_transfer": 0.070777
+  },
+  "scaled_published": {
+    "t30": {
+      "score_pds": 0.3610057328013267,
+      "score_mse": 0,
+      "score_nmae": 0.015439481142247616,
+      "score_fid": -0.21625733171093411,
+      "score_reach": 0.012946159101742112,
+      "score_jac": -0.005864194948450312
+    },
+    "t25": {
+      "score_pds": 0.6235621757264928,
+      "score_mse": 0,
+      "score_nmae": 0.11798484120651283,
+      "score_fid": -0.0581287268841437,
+      "score_reach": 0.14405215190643564,
+      "score_jac": 0.013957923533715692
+    },
+    "t28": {
+      "score_pds": 0.6223070792267033,
+      "score_mse": 0,
+      "score_nmae": 0.04920195622768383,
+      "score_fid": -0.007408907363258718,
+      "score_reach": 0.19871265014354142,
+      "score_jac": 0.006258451804088974
+    }
+  },
+  "raw_published_t30": {
+    "pds_cosine": 0.6638833147528799,
+    "expr_mse_unbiased_capped_norm": 1.0381238254876273,
+    "de_wilcoxon_lfc_nmae": 0.9923266105006222,
+    "de_wilcoxon_direction_fidelity_yield_raw": 0.4476864324871261,
+    "de_wilcoxon_direction_reach_raw": 0.09000350019113208,
+    "de_wilcoxon_sig_jaccard": 0.02824669228691622
+  },
+  "not": "one seed and one checkpoint; not a single factor against t22 (sources, estimator, weighting and learned amplitude change together); says nothing about D, E, F"
+}

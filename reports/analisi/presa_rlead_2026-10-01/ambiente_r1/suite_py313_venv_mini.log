@@ -1,0 +1,184 @@
+......EE....................................................E.............................................................ssssssssssssssssssssss....sssssssssssssssssssssssss.........C:\Users\39346\virtual-cell-challenge-2026\src\vcc2026\multisource.py:443: RuntimeWarning: Mean of empty slice
+  Pc = P - np.nanmean(np.where(valid, P, np.nan), axis=0)
+C:\Users\39346\virtual-cell-challenge-2026\src\vcc2026\multisource.py:444: RuntimeWarning: Mean of empty slice
+  Oc = O - np.nanmean(np.where(valid, O, np.nan), axis=0)
+C:\Users\39346\virtual-cell-challenge-2026\src\vcc2026\multisource.py:443: RuntimeWarning: Mean of empty slice
+  Pc = P - np.nanmean(np.where(valid, P, np.nan), axis=0)
+C:\Users\39346\virtual-cell-challenge-2026\src\vcc2026\multisource.py:444: RuntimeWarning: Mean of empty slice
+  Oc = O - np.nanmean(np.where(valid, O, np.nan), axis=0)
+...................................EE.E.E.....F.....E...........................................
+======================================================================
+ERROR: test_g0_arms_are_scored_once_per_generator_seed (test_bench_generator.TestStage73Smoke.test_g0_arms_are_scored_once_per_generator_seed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\39346\virtual-cell-challenge-2026\tests\test_bench_generator.py", line 329, in test_g0_arms_are_scored_once_per_generator_seed
+    run_stage73(self.stage, ["--k562", str(k562), "--out", str(out), "--control-cells", "30",
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             "--min-cells", "10", "--seed", "2026", "--gen-seeds", "1", "2",
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             "--effects", f"x={npz}", "--arms", "g0:x_a1.0", "g0d:x_a1.0"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\39346\virtual-cell-challenge-2026\tests\test_bench_generator.py", line 305, in run_stage73
+    module.main()
+    ~~~~~~~~~~~^^
+  File "C:\Users\39346\virtual-cell-challenge-2026\scripts\73_bench_k562_panel.py", line 172, in main
+    bench = Bench(x, {t: np.flatnonzero(sym == t) for t in targets}, ctrl_rows, genes, args.out, seed=args.seed)
+  File "C:\Users\39346\virtual-cell-challenge-2026\src\vcc2026\bench.py", line 163, in __init__
+    import cell_eval2  # noqa: F401  (fail early if the scorer is missing)
+    ^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'cell_eval2'
+
+======================================================================
+ERROR: test_without_the_new_flags_the_old_stage_is_reproduced (test_bench_generator.TestStage73Smoke.test_without_the_new_flags_the_old_stage_is_reproduced)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\39346\virtual-cell-challenge-2026\tests\test_bench_generator.py", line 355, in test_without_the_new_flags_the_old_stage_is_reproduced
+    run_stage73(before, ["--k562", str(k562), "--out", str(Path(d) / "old"), *argv])
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\39346\virtual-cell-challenge-2026\tests\test_bench_generator.py", line 305, in run_stage73
+    module.main()
+    ~~~~~~~~~~~^^
+  File "C:\Users\39346\AppData\Local\Temp\tmpqc0w1vb3\old73.py", line 111, in main
+  File "C:\Users\39346\virtual-cell-challenge-2026\src\vcc2026\bench.py", line 163, in __init__
+    import cell_eval2  # noqa: F401  (fail early if the scorer is missing)
+    ^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'cell_eval2'
+
+======================================================================
+ERROR: test_kolf_sums (unittest.loader._FailedTest.test_kolf_sums)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_kolf_sums
+Traceback (most recent call last):
+  File "C:\Users\39346\AppData\Local\Programs\Python\Python313\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "C:\Users\39346\AppData\Local\Programs\Python\Python313\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "C:\Users\39346\virtual-cell-challenge-2026\tests\test_kolf_sums.py", line 22, in <module>
+    SPEC.loader.exec_module(kolf)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\39346\virtual-cell-challenge-2026\reports\sorgenti\universo_kolf_2026-09-27\kolf_sums.py", line 30, in <module>
+    from vcc2026.remote_ranges import HTTPRangeReader
+  File "C:\Users\39346\virtual-cell-challenge-2026\src\vcc2026\remote_ranges.py", line 5, in <module>
+    import httpx
+ModuleNotFoundError: No module named 'httpx'
+
+
+======================================================================
+ERROR: test_remote_ranges (unittest.loader._FailedTest.test_remote_ranges)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_remote_ranges
+Traceback (most recent call last):
+  File "C:\Users\39346\AppData\Local\Programs\Python\Python313\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "C:\Users\39346\AppData\Local\Programs\Python\Python313\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "C:\Users\39346\virtual-cell-challenge-2026\tests\test_remote_ranges.py", line 3, in <module>
+    import httpx
+ModuleNotFoundError: No module named 'httpx'
+
+
+======================================================================
+ERROR: test_components_reproduce_the_scored_fidelity (test_sc_pipeline.BenchComponentTests.test_components_reproduce_the_scored_fidelity)
+k / max(n_pred, n_conf) from `direction_components` IS the fidelity the scorer reports.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\39346\virtual-cell-challenge-2026\tests\test_sc_pipeline.py", line 281, in test_components_reproduce_the_scored_fidelity
+    bench = Bench(x, target_rows, ctrl_rows, genes, Path(tmp), seed=3)
+  File "C:\Users\39346\virtual-cell-challenge-2026\src\vcc2026\bench.py", line 163, in __init__
+    import cell_eval2  # noqa: F401  (fail early if the scorer is missing)
+    ^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'cell_eval2'
+
+======================================================================
+ERROR: test_gate_and_bh_are_per_target (test_sc_pipeline.FastDETests.test_gate_and_bh_are_per_target)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\39346\virtual-cell-challenge-2026\tests\test_sc_pipeline.py", line 126, in test_gate_and_bh_are_per_target
+    table = fast_scorer_de(cells, np.repeat(["a", "b"], 30), pool)
+  File "C:\Users\39346\virtual-cell-challenge-2026\src\vcc2026\de_tools.py", line 231, in fast_scorer_de
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+
+======================================================================
+ERROR: test_counts_are_new_integers_on_the_same_axis (test_sc_pipeline.GeneratorTests.test_counts_are_new_integers_on_the_same_axis)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\39346\virtual-cell-challenge-2026\tests\test_sc_pipeline.py", line 145, in test_counts_are_new_integers_on_the_same_axis
+    model.fit(ctrl, log=lambda *_: None)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\39346\virtual-cell-challenge-2026\src\vcc2026\generator.py", line 86, in fit
+    from sklearn.decomposition import PCA
+ModuleNotFoundError: No module named 'sklearn'
+
+======================================================================
+ERROR: test_grouped_early_stopping_holds_out_whole_groups (test_transfer_model.FitTests.test_grouped_early_stopping_holds_out_whole_groups)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\39346\virtual-cell-challenge-2026\tests\test_transfer_model.py", line 143, in test_grouped_early_stopping_holds_out_whole_groups
+    model = fit_magnitude_model(X, y, np.ones(4000, np.float32), 0, groups=np.repeat(np.arange(40), 100))
+  File "C:\Users\39346\virtual-cell-challenge-2026\src\vcc2026\transfer_model.py", line 168, in fit_magnitude_model
+    from sklearn.ensemble import HistGradientBoostingRegressor
+ModuleNotFoundError: No module named 'sklearn'
+
+======================================================================
+FAIL: test_stream_and_accumulate_match_direct_reads (test_sc_pipeline.StreamingTests.test_stream_and_accumulate_match_direct_reads)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\39346\virtual-cell-challenge-2026\tests\test_sc_pipeline.py", line 83, in test_stream_and_accumulate_match_direct_reads
+    np.testing.assert_allclose(acc.frac_sums[c], frac[m].sum(0), rtol=1e-12)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\39346\AppData\Local\Programs\Python\Python313\Lib\site-packages\numpy\testing\_private\utils.py", line 1768, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         verbose=verbose, header=header, equal_nan=equal_nan,
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         strict=strict)
+                         ^^^^^^^^^^^^^^
+  File "C:\Users\39346\AppData\Local\Programs\Python\Python313\Lib\site-packages\numpy\testing\_private\utils.py", line 983, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=1e-12, atol=0
+
+Mismatched elements: 13 / 13 (100%)
+First 5 mismatches are at indices:
+ [0]: 0.9153642244637012 (ACTUAL), 0.9153642109524462 (DESIRED)
+ [1]: 1.075288224965334 (ACTUAL), 1.0752882058029116 (DESIRED)
+ [2]: 1.026647798717022 (ACTUAL), 1.0266477803242509 (DESIRED)
+ [3]: 1.0122657045722008 (ACTUAL), 1.0122656891039243 (DESIRED)
+ [4]: 1.4987035915255547 (ACTUAL), 1.4987035567917921 (DESIRED)
+Max absolute difference among violations: 3.47337625e-08
+Max relative difference among violations: 2.57136156e-08
+ ACTUAL: array([0.915364, 1.075288, 1.026648, 1.012266, 1.498704, 1.213157,
+       1.057185, 1.062586, 1.137314, 0.766938, 0.948138, 1.309312,
+       0.977101])
+ DESIRED: array([0.915364, 1.075288, 1.026648, 1.012266, 1.498704, 1.213157,
+       1.057185, 1.062586, 1.137314, 0.766938, 0.948138, 1.309312,
+       0.977101])
+
+----------------------------------------------------------------------
+Ran 278 tests in 29.631s
+
+FAILED (failures=1, errors=8, skipped=47)
+Wrote 1200 target/control records across 3 frozen splits
+Wrote 1200 target/control records across 6 frozen splits
+Wrote 1200 target/control records across 6 frozen splits
+Wrote 1200 target/control records across 6 frozen splits
+Wrote 1200 target/control records across 3 frozen splits
+  dispersion A: 2 genes overdispersed, median phi 1.200
+  dispersion A: 2 genes overdispersed, median phi 0.600
+  dispersion A: 0 genes overdispersed, median phi 0.000
+-> C:\Users\39346\AppData\Local\Temp\tmpk54erzx3\0002-ok-slug.md
+Fill the eight sections. Every observed number needs an evidence path.
+Corrections to earlier checkpoints go in section 7, never by editing them.
+-> C:\Users\39346\AppData\Local\Temp\tmp6tt_n3_l\0002-benchmark-cd4.md
+Fill the eight sections. Every observed number needs an evidence path.
+Corrections to earlier checkpoints go in section 7, never by editing them.
+-> C:\Users\39346\AppData\Local\Temp\tmp8ey8aiam\docs\checkpoints\0003-nuovo.md
+Fill the eight sections. Every observed number needs an evidence path.
+Corrections to earlier checkpoints go in section 7, never by editing them.
+-> C:\Users\39346\AppData\Local\Temp\tmpb06xmo28\0003-benchmark-cd4.md
+Fill the eight sections. Every observed number needs an evidence path.
+Corrections to earlier checkpoints go in section 7, never by editing them.
+exit=1
