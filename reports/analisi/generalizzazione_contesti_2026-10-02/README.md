@@ -5,6 +5,8 @@ dalle 16:47 CEST. Scheda: [R-LEAD](../../../docs/piani/strategia-scientifica.md)
 [risposta_contesto_2026-10-02](../../modelli/risposta_contesto_2026-10-02/README.md). Nessun download,
 job cloud, agente, invio o push. Le misure sono **sviluppo**: ogni linea del banco era già stata letta.
 
+Da P4 (3/10) corse su Kaggle, condivisioni e download di output con il via del proprietario in chat (`reports/invii/trial_2026-09-22/autorizzazioni.md`).
+
 **Leggere prima:** [PROTOCOLLO.md](PROTOCOLLO.md) (regola congelata alle 17:40, prima dei dati reali).
 
 | Cartella o file | Passo | Che cosa contiene | Tipo |
@@ -18,3 +20,9 @@ job cloud, agente, invio o push. Le misure sono **sviluppo**: ogni linea del ban
 | `p1_r1/reserve_manifest.json` | P1 | storia delle letture per dataset e candidate riserve per P5 | registro |
 | `p1_r2/` | P1, dieci gruppi | gli stessi manifest su `p0_r2` e `cube_r2` (dieci gruppi di linea, 110 split C/J/T): prova di stabilità passata (fold uguali per le chiavi comuni, nessun ruolo cambiato togliendo un quinto delle tabelle) | misurato |
 | `PROTOCOLLO.md`, `PROTOCOLLO.json` | P2 | bracci, metriche, aggregazione, soglie motivate, regola C/J | protocollo |
+| `p2_parity/` | P2 | parità degli adattamenti di HepG2 e dell'esportazione effetti → generatore (stadio 45 contro trial-01) | misurato |
+| `ceiling_r1/` | P2 | tetto della verità: coseno pesato fra metà indipendenti delle cellule | misurato |
+| `p3_decision_c_r1/`, `p3_decision_cj_r1/` | P3 | la regola congelata su C e su C+J: `no_benefit` | misurato |
+| `RISULTATI.md` | P0–P3 | lettura dei risultati e limiti della primaria | interpretazione |
+| `p4/` | P4 | ipotesi e protocollo congelato della rete non lineare sul pseudobulk | protocollo |
+| `p4_decision_nn_r1/` | P4 | la regola della rete sui sette gruppi (`no_benefit`), con [LETTURA.md](p4_decision_nn_r1/LETTURA.md) | misurato |
