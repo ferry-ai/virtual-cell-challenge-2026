@@ -1,8 +1,10 @@
-"""Kaggle kernel: what is inside the RDS files of Mixscale (Zenodo 14518762) and VIPerturb (Zenodo 18460279).
+"""Kaggle kernel: what is inside the RDS files of Mixscale (Zenodo 14518762), VIPerturb (Zenodo 18460279) and DLD-1 (GEO).
 
 The columns of their cell metadata are not known yet, and the conversion spec cannot be written without them. This
 kernel installs R (base, Matrix, jsonlite: no Seurat), reads from Zenodo the smallest Seurat object of Mixscale, the
-filtered genome-wide object of VIPerturb and the small text files, checks the published md5, and writes for each
+filtered genome-wide object of VIPerturb, the cell table of the low-MOI processed object of DLD-1 (GSE337988, whose
+counts are in an HDF5 file read by probe_dld1.py) and the small text files, checks the md5 where one is published
+(Zenodo; GEO publishes none), and writes for each
 object a JSON with its structure: classes, slots, assays and layers with their shapes, whether the counts are whole
 numbers, and every metadata column with its type and values. Nothing is converted. R reads each file in a process of
 its own, with its peak memory recorded: the conversion jobs are sized on it.
@@ -14,7 +16,13 @@ from pathlib import Path
 
 OUT, WORK = Path("/kaggle/working"), Path("/tmp/rds")
 WORK.mkdir(parents=True, exist_ok=True)
-FILES = [
+GEO = "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE337nnn/GSE337988/suppl/"
+FILES = [                                                  # (Zenodo record or base URL, file, md5 or None, read with R)
+    (GEO, "GSE337988_sublib2_samplesheet.csv.gz", None, False),
+    (GEO, "GSE337988_pilot_samplesheet.csv.gz", None, False),
+    (GEO, "GSE337988_NGS6475_Sample_Mapping_File_All.csv.gz", None, False),
+    (GEO, "GSE337988_NGS6475_crispr_feature_barcode_MENGNTCUPDATE.csv.gz", None, False),
+    (GEO, "GSE337988_sublib2_processed_objects_Low_se.rds", None, True),
     ("14518762", "A_readme.txt", "b05ff3d3117887faa4aaff1414030317", False),
     ("14518762", "Pathway_genelist.rds", "f107354d6d075364a3c94e34f1ff5134", True),
     ("14518762", "Seurat_object_TGFB_Perturb_seq.rds", "8e9b4d39a95ec5881a30be6a2df541d1", True),
@@ -86,15 +94,16 @@ def sh(cmd, name, timeout=3600):
 
 def fetch(record, name, md5):
     dest, h, n = WORK / name, hashlib.md5(), 0
-    req = urllib.request.Request(f"https://zenodo.org/records/{record}/files/{name}?download=1",
-                                 headers={"User-Agent": "vcc2026-ingestione/1"})
+    url = record + name if record.startswith("http") else f"https://zenodo.org/records/{record}/files/{name}?download=1"
+    req = urllib.request.Request(url, headers={"User-Agent": "vcc2026-ingestione/1"})
     t = time.time()
     with urllib.request.urlopen(req, timeout=300) as r, open(dest, "wb") as fh:
         for block in iter(lambda: r.read(8 << 20), b""):
             fh.write(block)
             h.update(block)
             n += len(block)
-    got = {"record": record, "bytes": n, "md5": h.hexdigest(), "md5_published": md5, "md5_ok": h.hexdigest() == md5,
+    got = {"record": record, "bytes": n, "md5": h.hexdigest(), "md5_published": md5,
+           "md5_ok": None if md5 is None else h.hexdigest() == md5,
            "seconds": round(time.time() - t, 1), "mb_per_s": round(n / 1e6 / max(time.time() - t, 0.01), 1)}
     print(json.dumps({name: got}), flush=True)
     return dest, got
@@ -111,7 +120,7 @@ for record, name, md5, is_rds in FILES:
         doc["files"][name] = {"error": f"{type(err).__name__}: {err}"}
         continue
     doc["files"][name] = got
-    if not got["md5_ok"]:
+    if got["md5_ok"] is False:
         continue
     if not is_rds:
         (OUT / name).write_bytes(dest.read_bytes())
