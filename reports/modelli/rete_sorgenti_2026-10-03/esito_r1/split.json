@@ -1,0 +1,61 @@
+{
+ "train": [
+  "hipsci_targeted_19|eipl_1",
+  "hipsci_targeted_19|eipl_3",
+  "hipsci_targeted_19|fiaj_1",
+  "hipsci_targeted_19|fiaj_3",
+  "hipsci_targeted_19|iudw_1",
+  "hipsci_targeted_19|iudw_4",
+  "hipsci_targeted_19|jejf_2",
+  "hipsci_targeted_19|jejf_3",
+  "hipsci_targeted_19|kolf_2",
+  "hipsci_targeted_19|kolf_3",
+  "hipsci_targeted_19|oikd_2",
+  "hipsci_targeted_19|oikd_5",
+  "hipsci_targeted_19|paab_3",
+  "hipsci_targeted_19|paab_4",
+  "hipsci_targeted_19|pipw_4",
+  "hipsci_targeted_19|pipw_5",
+  "hipsci_targeted_19|tolg_4",
+  "hipsci_targeted_19|tolg_6",
+  "hipsci_targeted_19|zapk_3",
+  "replogle_k562_essential|K562",
+  "replogle_k562_gwps|K562",
+  "replogle_rpe1|RPE1",
+  "tian2019_ipsc|iPSC",
+  "tian2019_neuron_day7|iPSC-induced neuron day 7",
+  "tian2021_crispri|iPSC-induced neuron"
+ ],
+ "val": [
+  "jurkat_nadig|Jurkat",
+  "kolf_chromatin_modifiers|KOLF2.1J iPSC",
+  "kolf_metabolic_enzymes|KOLF2.1J iPSC",
+  "kolf_strong_perturbations|KOLF2.1J iPSC"
+ ],
+ "test": [
+  "h1_vcc2025_train|H1",
+  "h1_vcc2025_val|H1",
+  "hepg2_nadig|HepG2"
+ ],
+ "config": {
+  "dim": 32,
+  "gene_dim": 8,
+  "panel": 2000,
+  "targets_per_episode": 64,
+  "genes_per_episode": 2048,
+  "cos_weight": 1.0,
+  "lr": 0.003,
+  "steps": 3000,
+  "eval_every": 100,
+  "keep_steps": [
+   0,
+   100,
+   300,
+   1000,
+   3000
+  ],
+  "patience": 5,
+  "min_steps": 300,
+  "seed": 0
+ }
+}

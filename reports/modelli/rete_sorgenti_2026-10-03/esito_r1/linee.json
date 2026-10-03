@@ -1,0 +1,53 @@
+{
+ "h1": {
+  "line": "h1",
+  "key": "h1_vcc2025_train|H1",
+  "excluded_keys": [
+   "h1_vcc2025_train|H1",
+   "h1_vcc2025_val|H1"
+  ],
+  "groups_same": [
+   "hipsci",
+   "tian_ipsc"
+  ],
+  "groups_cross": [
+   "hepg2",
+   "k562",
+   "rpe1",
+   "tian_neuron"
+  ],
+  "eligible_targets": 11,
+  "readable": false,
+  "why": "panel of 11 targets < 20"
+ },
+ "hepg2": {
+  "line": "hepg2",
+  "key": "hepg2_nadig|HepG2",
+  "excluded_keys": [
+   "hepg2_nadig|HepG2"
+  ],
+  "groups_same": [],
+  "groups_cross": [
+   "h1",
+   "hipsci",
+   "k562",
+   "rpe1",
+   "tian_ipsc",
+   "tian_neuron"
+  ],
+  "eligible_targets": 1271,
+  "readable": true,
+  "panel": 150,
+  "arms": [
+   "null",
+   "k562",
+   "cross",
+   "cross_shuf",
+   "cross_a2",
+   "alloc",
+   "normrest",
+   "net",
+   "net0"
+  ]
+ }
+}
