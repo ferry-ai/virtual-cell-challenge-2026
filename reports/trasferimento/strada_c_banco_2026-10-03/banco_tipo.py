@@ -260,7 +260,19 @@ def read_cells(sums: Sums, shard_paths: list[Path], picks: list[tuple[int, int]]
     return sp.vstack(out).tocsr()
 
 
-def run_line(L: str, sums: Sums, lib: Library, shard_paths, axis: np.ndarray, out: Path, arms_mod) -> dict:
+def load_extra(pattern: str, L: str):
+    """External effects for line L (npz: targets, genes = official-axis indices, lfc), as {target: row}, lfc."""
+    with np.load(pattern.format(line=L)) as z:
+        targets, genes, lfc = z["targets"].astype(str), z["genes"], z["lfc"].astype(np.float32)
+    full = np.zeros((targets.size, int(genes.max()) + 1), np.float32)
+    full[:, genes] = lfc
+    return {t: i for i, t in enumerate(targets)}, full
+
+
+def run_line(L: str, sums: Sums, lib: Library, shard_paths, axis: np.ndarray, out: Path, arms_mod,
+             exclude_groups=(), extras=None) -> dict:
+    """``exclude_groups`` leaves whole line groups out of every arm's sources; ``extras`` {name: path pattern with
+    {line}} adds arms that apply external effects as they are (no amplitude rule), on a panel they all cover."""
     from vcc2026.bench import Bench
     from vcc2026.generator import ControlModel
     from vcc2026.predictor_sc import derangement
@@ -271,7 +283,9 @@ def run_line(L: str, sums: Sums, lib: Library, shard_paths, axis: np.ndarray, ou
         return {"line": L, "readable": False, "why": "no key of this line in the corpus"}
     studies = {k.split("|", 1)[0] for k in cand}
     excluded = {k for k in lib.eff if k.split("|", 1)[0] in studies or lib.group[k] == L} | SAME_LINE.get(L, set())
-    allowed = {k for k in lib.eff if k not in excluded and lib.group[k] is not None}
+    allowed = {k for k in lib.eff if k not in excluded and lib.group[k] is not None
+               and lib.group[k] not in set(exclude_groups)}
+    ext = {name: load_extra(pat, L) for name, pat in (extras or {}).items()}
     groups = sorted({lib.group[k] for k in allowed})
     same = [g for g in groups if TYPES[g] == TYPES[L]]
     cross = [g for g in groups if TYPES[g] != TYPES[L]]
@@ -282,7 +296,7 @@ def run_line(L: str, sums: Sums, lib: Library, shard_paths, axis: np.ndarray, ou
         for t, n in sums.n[key].items():
             if t == NTC or n < PANEL_MIN_CELLS:
                 continue
-            if all(any(lib.covers(g, allowed, t) for g in gs) for gs in compared.values()):
+            if all(any(lib.covers(g, allowed, t) for g in gs) for gs in compared.values())                     and all(t in rows for rows, _ in ext.values()):
                 out_t.append(t)
         return sorted(out_t)
 
@@ -335,13 +349,19 @@ def run_line(L: str, sums: Sums, lib: Library, shard_paths, axis: np.ndarray, ou
     else:
         plan += [("cross_shuf", ("cross", 1.0, "shuf")), ("cross_a2", ("cross", 2.0, None))]
     plan += [("alloc", ("all", 1.0, "alloc")), ("normrest", ("all", 1.0, "normrest"))]
+    plan += [(name, ("extra", 1.0, name)) for name in ext]
     amp_log, factor_log = {}, {}
     for arm, spec in plan:
         rng_arm = np.random.default_rng(PANEL_SEED + 1)
         blocks, labs = [], []
         if spec is not None:
             base, a, mod = spec
-            M, S, s = built[base]
+            if base == "extra":
+                rows_x, lfc_x = ext[mod]
+                M = np.stack([lfc_x[rows_x[t], genes_idx] for t in targets])
+                S, s = None, 1.0
+            else:
+                M, S, s = built[base]
             f = np.ones(len(targets))
             if mod in ("alloc", "normrest"):
                 fn = arms_mod.alloc_factors if mod == "alloc" else arms_mod.normrest_factors
@@ -364,6 +384,7 @@ def run_line(L: str, sums: Sums, lib: Library, shard_paths, axis: np.ndarray, ou
             labs.append(np.full(n, t))
         bench.score(arm, sp.vstack(blocks).tocsr(), np.concatenate(labs))
     bench.finish({"stage": "strada_c_banco", "line": L, "key": key, "panel": targets, "amplitudes": amp_log,
+                  "exclude_groups": list(exclude_groups), "extras": {n: str(v) for n, v in (extras or {}).items()},
                   "factors": factor_log, "groups_same": same, "groups_cross": cross,
                   "excluded_keys": sorted(excluded), "shuffle_partner": partner})
     return info | {"readable": True, "panel": len(targets), "arms": [a for a, _ in plan]}
@@ -436,7 +457,7 @@ def gate(bdir: Path) -> dict:
             "scaled_local": s.round(4).to_dict(orient="index")}
 
 
-def read_rule(out: Path, lines: dict) -> dict:
+def read_rule(out: Path, lines: dict, extras=()) -> dict:
     res = {"lines": {}, "rule": {}}
     for L, info in lines.items():
         if not info.get("readable"):
@@ -448,6 +469,9 @@ def read_rule(out: Path, lines: dict) -> dict:
         pairs = [("same", "cross"), ("same", "same_shuf"), ("all", "cross"), ("cross", "k562"),
                  ("alloc", "all"), ("normrest", "all"), ("cross", "cross_shuf"), ("same_a2", "same"),
                  ("cross_a2", "cross"), ("null", "cross")]
+        pairs += [(x, ref) for x in extras for ref in ("all", "cross", "k562", "same")]
+        if "net" in extras and "net0" in extras:
+            pairs.append(("net", "net0"))
         res["lines"][L] = info | {"gate": g, "comparisons": [c for a, b in pairs if (c := compare(bdir, targets, a, b))]}
         res["lines"][L]["readable"] = g["passes"]
 
@@ -470,6 +494,10 @@ def read_rule(out: Path, lines: dict) -> dict:
     passing = [a for a in b_arms if b_arms[a]["passes"]]
     res["rule"]["strada_b_arms"] = b_arms | {"winner": max(passing, key=lambda a: b_arms[a]["hepg2"]["mean"])
                                              if passing else None}
+    if "net" in extras:      # reports/modelli/rete_sorgenti_2026-10-03/PROTOCOLLO_R1.md
+        nh, ng = get("h1", "net", "all"), get("hepg2", "net", "all")
+        res["rule"]["rete_sorgenti"] = {"h1_net_vs_all": nh, "hepg2_net_vs_all": ng,
+                                        "passes": bool(nh and ng and nh["ci95"][0] > 0 and ng["mean"] >= 0)}
     return res
 
 
@@ -482,6 +510,9 @@ def main() -> None:
     p.add_argument("--out", type=Path, required=True)
     p.add_argument("--code", type=Path, default=None, help="folder holding the vcc2026 package (src/)")
     p.add_argument("--lines", nargs="+", default=list(HELD_OUT))
+    p.add_argument("--exclude-groups", nargs="*", default=[], help="line groups never used as sources")
+    p.add_argument("--extra", action="append", default=[], metavar="NAME=PATTERN",
+                   help="external effects arm; PATTERN is an npz path with {line}")
     a = p.parse_args()
     if a.code:
         sys.path.insert(0, str(a.code))
@@ -539,13 +570,14 @@ def main() -> None:
     lines = {}
     for L in a.lines:
         try:
-            lines[L] = run_line(L, sums, lib, shard_paths, axis, a.out, arms_mod)
+            lines[L] = run_line(L, sums, lib, shard_paths, axis, a.out, arms_mod, exclude_groups=a.exclude_groups,
+                                extras=dict(e.split("=", 1) for e in a.extra))
         except Exception as exc:
             import traceback
             traceback.print_exc()
             lines[L] = {"line": L, "readable": False, "why": f"{type(exc).__name__}: {exc}"}
         (a.out / "linee.json").write_text(json.dumps(lines, indent=1, default=str))
-    lettura = read_rule(a.out, lines)
+    lettura = read_rule(a.out, lines, extras=[e.split("=", 1)[0] for e in a.extra])
     (a.out / "lettura.json").write_text(json.dumps(lettura, indent=1, default=str))
     log(json.dumps(lettura["rule"], indent=1, default=str))
     log("done")

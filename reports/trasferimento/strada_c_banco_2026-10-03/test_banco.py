@@ -107,5 +107,33 @@ class Groups(unittest.TestCase):
             self.assertEqual(bt.group_of(study, ctx), g, (study, ctx))
 
 
+class Extras(unittest.TestCase):
+    def test_external_arms_and_excluded_groups(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            axis = write_shards(root)
+            rng = np.random.default_rng(3)
+            for line in ("h1", "hepg2"):
+                for name in ("net", "net0"):
+                    np.savez_compressed(root / f"{name}_{line}.npz", targets=axis[:35], genes=np.arange(axis.size),
+                                        lfc=rng.normal(0, 0.2, (35, axis.size)).astype(np.float32))
+            cmd = [sys.executable, str(HERE / "banco_tipo.py"), "--inputs", str(root / "inputs"),
+                   "--axis", str(root / "gene_names.csv"), "--out", str(root / "out"), "--code", str(SRC),
+                   "--lines", "h1", "hepg2", "--exclude-groups", "kolf", "jurkat",
+                   "--extra", f"net={root}/net_{{line}}.npz", "--extra", f"net0={root}/net0_{{line}}.npz"]
+            r = subprocess.run(cmd, capture_output=True, text=True)
+            self.assertEqual(r.returncode, 0, r.stdout[-3000:] + r.stderr[-3000:])
+            lett = json.loads((root / "out" / "lettura.json").read_text())
+            self.assertIn("rete_sorgenti", lett["rule"])
+            h1 = lett["lines"]["h1"]
+            self.assertLessEqual(h1["eligible_targets"], 35)                  # panel restricted to the extras
+            b = json.loads((root / "out" / "bench_h1" / "bench.json").read_text())
+            self.assertNotIn("kolf", h1["groups_same"])
+            self.assertNotIn("jurkat", h1["groups_cross"])
+            arms = {c["arm"] for c in h1["comparisons"]}
+            self.assertTrue({"net"} <= arms)
+            self.assertEqual(b["exclude_groups"], ["kolf", "jurkat"])
+
+
 if __name__ == "__main__":
     unittest.main()

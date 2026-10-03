@@ -58,7 +58,10 @@ class Rete(unittest.TestCase):
         other = rete.Key("hipsci_targeted_19|zapk_3", "hipsci", "pluripotent", np.array(["A"]),
                          np.zeros((1, 3), np.float16), np.zeros(3, np.float32), np.ones(3, bool))
         self.assertEqual([k.key for k in rete.allowed_sources(kolf, [L, other])], [other.key])  # only kolf_2 out
-        self.assertEqual(rete.allowed_sources(L, [kolf, other]), [])          # KOLF2.1J derives from kolf_2
+        self.assertEqual([k.key for k in rete.allowed_sources(L, [kolf, other])], [other.key])  # KOLF2.1J out
+        clone = rete.Key("hipsci_targeted_19|kolf_3", "hipsci", "pluripotent", np.array(["A"]),
+                         np.zeros((1, 3), np.float16), np.zeros(3, np.float32), np.ones(3, bool))
+        self.assertEqual(rete.allowed_sources(L, [clone]), [])                # same donor, another clone
 
     def test_learns_to_trust_same_type_sources(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -85,6 +88,32 @@ class Rete(unittest.TestCase):
             with np.load(path) as z:
                 self.assertEqual(z["lfc"].shape, (5, 600))
             print(json.dumps(evals[-1]))
+
+
+class Pipeline(unittest.TestCase):
+    def test_files_in_the_dati_layout_train_and_export(self):
+        keys = synthetic_keys(seed=1)
+        with tempfile.TemporaryDirectory() as tmp:
+            kd = Path(tmp) / "chiavi"
+            kd.mkdir()
+            for k in keys:                                     # the layout dati.py writes
+                np.savez_compressed(kd / (k.key.replace("|", "__") + ".npz"), targets=k.targets, eff=k.eff,
+                                    basal=k.basal, measured=k.measured, n_cells=np.ones(len(k.targets)), key=k.key,
+                                    group=k.group, type=k.type)
+            loaded = rete.load_keys(kd)
+            self.assertEqual(sorted(k.key for k in loaded), sorted(k.key for k in keys))
+            cfg = rete.Config(panel=200, steps=60, eval_every=20, keep_steps=(0,), min_steps=60,
+                              targets_per_episode=8, genes_per_episode=200)
+            run = Path(tmp) / "run"
+            rete.train(loaded, ["alpha0"], ["gamma0"], run, cfg)
+            gamma0 = next(k.key for k in loaded if k.group == "gamma0")
+            done = rete.export_lines(kd, run, [gamma0], Path(tmp) / "exp")
+            with np.load(Path(tmp) / "exp" / "net_gamma0.npz") as z:
+                self.assertEqual(z["lfc"].shape[1], 600)
+                self.assertTrue(np.isfinite(z["lfc"]).all())
+            with np.load(Path(tmp) / "exp" / "net0_gamma0.npz") as z0:
+                self.assertEqual(z0["lfc"].shape[0], done["net0_gamma0"]["targets"])
+            self.assertNotIn(gamma0, done["net_gamma0"]["sources"])
 
 
 if __name__ == "__main__":

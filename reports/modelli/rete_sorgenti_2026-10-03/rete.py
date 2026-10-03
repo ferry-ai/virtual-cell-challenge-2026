@@ -70,11 +70,24 @@ def load_keys(folder: Path) -> list[Key]:
     return keys
 
 
+def donor(key: str) -> str:
+    """HipSci line names are <donor>_<clone> (eipl_1, eipl_3): two clones of one donor are one genome."""
+    return key.split("|", 1)[1].split("_")[0]
+
+
 def allowed_sources(L: Key, pool: list[Key]) -> list[Key]:
-    """The route C exclusions: not L's study, not L's group, not a line L derives from (or that derives from L)."""
+    """The route C exclusions: not L's study, not L's group, not a line L derives from (or that derives from L).
+    One registered exception (PROTOCOLLO_R1): a HipSci line may read the HipSci lines of OTHER donors, which are other
+    genomes of the same cell type; it only matters in training, since no test line is a HipSci line."""
     same_line = SAME_LINE.get(L.group, set())
-    return [k for k in pool if k.study != L.study and k.group != L.group and k.key not in same_line
-            and L.key not in SAME_LINE.get(k.group, set())]
+
+    def ok(k: Key) -> bool:
+        if k.key in same_line or L.key in SAME_LINE.get(k.group, set()):
+            return False
+        if L.group == "hipsci" and k.group == "hipsci":
+            return donor(k.key) != donor(L.key)
+        return k.study != L.study and k.group != L.group
+    return [k for k in pool if ok(k)]
 
 
 def basal_panel(keys: list[Key], n: int = 2000) -> np.ndarray:
@@ -128,15 +141,16 @@ class SourceAttention(nn.Module):
         x = (basal[..., self.panel] - self.mu) / self.sd
         return self.enc(x)
 
-    def forward(self, E, avail, basal_L, basal_S, genes, A0):
+    def forward(self, E, avail, basal_L, basal_S, genes, A0, prior):
         """E (K, T, g) source effects with 0 where unavailable, avail (K, T, g) bool; basal_L (G,), basal_S (K, G);
-        genes (g,) axis indices; A0 scalar. Returns y_hat (T, g), alpha (K, T, g), amplitude."""
+        genes (g,) axis indices; A0 scalar; prior (K,) = -log(keys of the source's group), so that at step 0 every
+        line group weighs the same, as the bench's `all` arm. Returns y_hat (T, g), alpha (K, T, g), amplitude."""
         zL, zS = self.encode(basal_L[None])[0], self.encode(basal_S)               # (d,), (K, d)
         h = self.pair(torch.cat([zS * zL[None], (zS - zL[None]).abs()], dim=-1))   # (K, d)
         s = self.score(h)[:, 0]                                                    # (K,)
         mod = self.gene_mod(h) @ self.gene_emb(genes).T                            # (K, g)
         gap = (basal_S[:, genes] - basal_L[genes][None]).abs()                     # (K, g)
-        logit = (s[:, None] + mod - self.basal_gap * gap)[:, None, :].expand_as(E)
+        logit = (prior[:, None] + s[:, None] + mod - self.basal_gap * gap)[:, None, :].expand_as(E)
         logit = logit.masked_fill(~avail, -1e9)
         alpha = torch.softmax(logit, dim=0) * avail
         alpha = alpha / alpha.sum(0, keepdim=True).clamp_min(1e-12)
@@ -181,8 +195,10 @@ def episode(L: Key, sources: list[Key], rng, n_t: int, n_g: int, targets=None, g
         i = L.row.get(t)
         if i is not None:
             Y[ti] = L.eff[i, genes].astype(np.float32)
+    groups = [k.group for k in sources]
+    prior = -np.log(np.array([groups.count(g) for g in groups], np.float32))
     return {"E": E, "avail": avail, "Y": Y, "genes": genes, "targets": list(targets), "A0": norm_match(E, avail),
-            "basal_L": L.basal, "basal_S": np.stack([k.basal for k in sources])}
+            "basal_L": L.basal, "basal_S": np.stack([k.basal for k in sources]), "prior": prior}
 
 
 def to_t(ep):
@@ -203,9 +219,10 @@ def run_episode(model, ep, cfg, uniform=False):
     if uniform:
         with torch.no_grad():
             E, av = t["E"], t["avail"]
-            y = t["A0"] * (E * av).sum(0) / av.sum(0).clamp_min(1)
+            w = torch.exp(t["prior"])[:, None, None] * av
+            y = t["A0"] * (w * E).sum(0) / w.sum(0).clamp_min(1e-12)
             return loss_fn(y, t["Y"], cfg.cos_weight), None, t["A0"]
-    y, alpha, A = model(t["E"], t["avail"], t["basal_L"], t["basal_S"], t["genes"], t["A0"])
+    y, alpha, A = model(t["E"], t["avail"], t["basal_L"], t["basal_S"], t["genes"], t["A0"], t["prior"])
     return loss_fn(y, t["Y"], cfg.cos_weight), alpha, A
 
 
@@ -248,6 +265,7 @@ def train(keys: list[Key], val_groups, test_groups, out: Path, cfg: Config) -> d
     panel = basal_panel(train_keys, cfg.panel)
     B = np.stack([k.basal for k in train_keys])[:, panel]
     model = SourceAttention(G, panel, B.mean(0), B.std(0) + 1e-3, cfg)
+    np.savez(out / "norm.npz", panel=panel, mu=B.mean(0), sd=B.std(0) + 1e-3, n_genes=G)
     opt = torch.optim.Adam(model.parameters(), lr=cfg.lr)
     val_eps = []
     vr = np.random.default_rng(cfg.seed + 1)                  # fixed validation episodes
@@ -301,14 +319,48 @@ def train(keys: list[Key], val_groups, test_groups, out: Path, cfg: Config) -> d
     return summary
 
 
-def export_effects(model, L: Key, sources: list[Key], targets, path: Path) -> None:
-    """Predicted effects of ``targets`` in L on every gene, in the npz layout the benches read (targets, genes, lfc)."""
+def export_effects(model, L: Key, sources: list[Key], targets, path: Path, chunk: int = 50) -> None:
+    """Predicted effects of ``targets`` in L on every gene, in the npz layout the benches read (targets, genes, lfc).
+    The amplitude rule is applied once over all ``targets`` (as the bench does over its panel), not per chunk."""
     genes = np.arange(L.basal.size)
-    ep = episode(L, sources, None, 0, 0, targets=list(targets), genes=genes)
-    t = to_t(ep)
+    targets = list(targets)
+    parts, A0s = [], []
+    full = episode(L, sources, None, 0, 0, targets=targets, genes=genes)
+    A0 = full["A0"]
+    del full
     with torch.no_grad():
-        y, _, _ = model(t["E"], t["avail"], t["basal_L"], t["basal_S"], t["genes"], t["A0"])
-    np.savez_compressed(path, targets=np.array(targets), genes=genes, lfc=y.numpy().astype(np.float32))
+        for i in range(0, len(targets), chunk):
+            t = to_t(episode(L, sources, None, 0, 0, targets=targets[i:i + chunk], genes=genes))
+            y, _, _ = model(t["E"], t["avail"], t["basal_L"], t["basal_S"], t["genes"], A0, t["prior"])
+            parts.append(y.numpy().astype(np.float32))
+    np.savez_compressed(path, targets=np.array(targets), genes=genes, lfc=np.vstack(parts), A0=A0)
+
+
+def export_lines(keys_dir: Path, run: Path, line_keys: list[str], out: Path, ckpts=("ckpt_best.pt", "ckpt_step000000.pt"),
+                 names=("net", "net0")) -> dict:
+    """For each held-out key, the effects of every target its training sources cover, from each checkpoint:
+    ``<name>_<group>.npz``. The training keys are read back from split.json, the encoder normalisation from norm.npz."""
+    keys = load_keys(keys_dir)
+    split = json.loads((run / "split.json").read_text())
+    cfg = Config(**{k: (tuple(v) if k == "keep_steps" else v) for k, v in split["config"].items()})
+    train_keys = [k for k in keys if k.key in set(split["train"])]
+    nz = np.load(run / "norm.npz")
+    out.mkdir(parents=True, exist_ok=True)
+    done = {}
+    for lk in line_keys:
+        L = next(k for k in keys if k.key == lk)
+        sources = allowed_sources(L, train_keys)
+        targets = [t for t in L.targets if any(t in k.row for k in sources)]
+        for ck, name in zip(ckpts, names):
+            model = SourceAttention(int(nz["n_genes"]), nz["panel"], nz["mu"], nz["sd"], cfg)
+            model.load_state_dict(torch.load(run / ck))
+            model.eval()
+            path = out / f"{name}_{L.group}.npz"
+            export_effects(model, L, sources, targets, path)
+            done[f"{name}_{L.group}"] = {"key": lk, "targets": len(targets), "sources": [k.key for k in sources],
+                                         "checkpoint": ck}
+    (out / "export.json").write_text(json.dumps(done, indent=1))
+    return done
 
 
 def main() -> None:
@@ -319,9 +371,13 @@ def main() -> None:
     p.add_argument("--test", nargs="+", required=True, help="line groups kept for the real-scorer bench")
     p.add_argument("--steps", type=int, default=Config.steps)
     p.add_argument("--seed", type=int, default=0)
+    p.add_argument("--export-keys", nargs="*", default=[], help="held-out keys to export effects for, after training")
+    p.add_argument("--export-out", type=Path, default=None)
     a = p.parse_args()
     cfg = Config(steps=a.steps, seed=a.seed)
     train(load_keys(a.keys), a.val, a.test, a.out, cfg)
+    if a.export_keys:
+        export_lines(a.keys, a.out, a.export_keys, a.export_out or a.out / "export")
 
 
 if __name__ == "__main__":
