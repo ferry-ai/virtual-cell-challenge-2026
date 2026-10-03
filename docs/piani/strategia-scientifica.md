@@ -90,6 +90,16 @@
     account restano libere per questo. HepG2 concluso alle 01:01 e tecnicamente accettato
     ([ricevute](../../reports/modelli/rete_ancorata_v4_2026-10-03/esito/train_hepg2_r1/)); la sua generazione attende
     una sessione CPU libera.
+  - **Aggiornamento delle 01:38.** Corsia B di H1 conclusa in locale alle 01:10 (media dei sei membri: `ancorata_shift`
+    0,057 contro 0,272 di `transfer_all_J`; `esito/laneB_h1_r1/`); corsia A di HepG2: PDS 0,639 contro 0,886
+    (`esito/laneA_hepg2_r1/`). Il proprietario ha fermato le corsie sul portatile (regola di `CLAUDE.md`): la corsia B
+    di HepG2, partita in locale, è stata interrotta alle 01:31 e **le corsie girano ora su Kaggle CPU**
+    (`kaggle_lanes.py`: `rcell-v4-lanes-hepg2-r1` dalle 01:35; da spingere `rcell-v4-lanes-h1-r1` come parità con il
+    risultato locale e `rcell-v4-lanes-rpe1-r1` dopo training e generazione di RPE1; registro in
+    `lancio_lanes_r1.jsonl`). Gemelli: HEK293T parti 4–7 e HCT116 parti 0–1 conclusi; il kernel HEK293T parti 0–3 è
+    caduto a 106 shard su 112 (E-20261004-001) ed è rilanciato come `-a-r2`; HCT116 parti 2–3 e KOLF in corsa.
+    Un'altra sessione lavora nel checkout su `reports/sorgenti/libera_spazio_2026-10-04/` (prova a secco, niente
+    rimosso): non toccata.
   - **Corpus ampliato, percorso critico (non iniziato):** protocollo con i gruppi adottati; pre-passo sui 365 shard
     del pilot più HCT116, HEK293T e KOLF pan-genome (16,2 milioni di cellule). Stima, non misura: il pre-passo del
     pilot ha impiegato 10.200 s per 5,6 milioni di cellule con 4 processi, quindi circa 8 ore per fold a parità di
