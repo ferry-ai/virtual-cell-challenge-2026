@@ -1,0 +1,19 @@
+[{"stream_name":"stderr","time":1.3228160930000001,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":1.326010699,"data":"  File \"/kaggle/src/script.py\", line 19, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":1.3260453970000001,"data":"    with tarfile.open(DS / \"code_snapshot.tar.gz\") as t:\n"}
+,{"stream_name":"stderr","time":1.326051729,"data":"         ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":1.326056992,"data":"  File \"/usr/lib/python3.13/tarfile.py\", line 1937, in open\n"}
+,{"stream_name":"stderr","time":1.326062093,"data":"    return func(name, \"r\", fileobj, **kwargs)\n"}
+,{"stream_name":"stderr","time":1.32606725,"data":"  File \"/usr/lib/python3.13/tarfile.py\", line 2005, in gzopen\n"}
+,{"stream_name":"stderr","time":1.326072528,"data":"    fileobj = GzipFile(name, mode + \"b\", compresslevel, fileobj)\n"}
+,{"stream_name":"stderr","time":1.326077483,"data":"  File \"/usr/lib/python3.13/gzip.py\", line 205, in __init__\n"}
+,{"stream_name":"stderr","time":1.3260824580000001,"data":"    fileobj = self.myfileobj = builtins.open(filename, mode or 'rb')\n"}
+,{"stream_name":"stderr","time":1.326087637,"data":"                               ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":1.326092778,"data":"FileNotFoundError: [Errno 2] No such file or directory: '/kaggle/input/datasets/davideferrante11/vcc-ingest-code-r1/code_snapshot.tar.gz'\n"}
+,{"stream_name":"stderr","time":4.559169466,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":4.559218511,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":5.126355227,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":5.126402401,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":7.628983379,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":9.226910457,"data":"[NbConvertApp] Writing 289170 bytes to __results__.html\n"}
+]

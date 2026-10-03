@@ -77,6 +77,32 @@ perso: si rimette in coda con **numero e output nuovi**, mai sopra il vecchio.
 - **Concorrenza:** con 2 training GPU e 2 kernel CPU attivi non è stato visto nessun rifiuto per limite di sessioni;
   gli errori erano tutti il FileNotFoundError.
 
+## Aggiornamento delle 17:16: claude2 ha preso la regia (sessione `c7c07a`)
+
+Stato verificato sui log e su Kaggle, ore lette con `date`.
+
+- **Colab:** 133 e 134 (verifiche dell'archivio) finiti con codice 0 alle 16:06 e alle 16:47. Girano 132 (Southard,
+  `queue2`) e 138 (Orion HCT116 parte 1/2, `queue`: 27 shard su 55 alle 17:16).
+- **Kernel Orion r1:** tutti e cinque in `ERROR` per lo stesso `FileNotFoundError`
+  ([log](kaggle_cpu/esito_orion_r1/vcc-orion-hek293t-p0of8-r1.log)). Kaggle ha scompattato il tar in
+  `code_snapshot/`.
+- **Kernel Orion r2:** [build_orion_kaggle_r2.py](kaggle_cpu/build_orion_kaggle_r2.py) legge la cartella scompattata
+  dopo aver confrontato ogni file con i membri del tar (sha256). Stesso dataset del codice, nessun caricamento nuovo.
+  In esecuzione dalle 17:05–17:07: HCT116 0/4 e 2/4, HEK293T 0/8, 1/8, 2/8. Sul primo: controllo del codice
+  passato, parità dei metadati in 130 s, 3.409.169 cellule selezionate come nel campione Colab, 40–75 s per shard.
+- **Limite misurato:** Kaggle accetta 5 sessioni CPU insieme. Le parti HEK293T 3/8–7/8 sono state rifiutate alle
+  17:12; le loro cartelle di stage esistono e si rispingono con `--repush` quando una sessione si libera. Ogni spinta
+  è in [lancio_orion_r2.jsonl](kaggle_cpu/lancio_orion_r2.jsonl). La CLI esce con 0 anche su un rifiuto: decide la
+  frase «successfully pushed».
+- **I file parquet del campione** hanno sha256 diverso fra Kaggle e Colab (versioni diverse di pyarrow), con lo stesso
+  numero di cellule. Il confronto vero è fra le ricevute degli shard: gli 8 shard del job 137 su Drive coprono file
+  che i kernel HCT116 0/4 e 2/4 rifanno.
+- **Dimensionamento e proposta su CD4:** [DIMENSIONAMENTO.md](DIMENSIONAMENTO.md). Il proprietario ha chiesto se il
+  terabyte entra nel training: no, il limite è il tempo di GPU. La proposta è CD4 a tranche; **aspetta il suo sì**,
+  quindi i job CD4 completi non si costruiscono prima.
+- **Codex** ha consegnato `adattatori_codex/complete_adapters.py` con 20 test passati (`test_r2.txt`, 16:15). I file
+  sono ancora non tracciati e restano suoi.
+
 ## Prossimi passi, in ordine
 
 1. **Orion**, quando le parti finiscono:
