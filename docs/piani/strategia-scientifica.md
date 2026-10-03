@@ -1,12 +1,43 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
-- **Stato:** in corso dal 2 ottobre 2026, 16:47 CEST. P0–P3 eseguiti e misurati; P4 eseguito, da leggere; pilot della rete cellulare v2 in corso.
+- **Stato:** in corso dal 2 ottobre 2026, 16:47 CEST. P0–P4 eseguiti e misurati.
+  - **Pilot v2 chiuso** ([§11–12 del protocollo](../../reports/modelli/rete_cellulare_2026-10-03/PROTOCOLLO.md)):
+    Q1 passa e Q2 no, in entrambe le corsie; niente espansione, per decisione del proprietario.
+  - **Miscele:** non promettenti ([lettura](../../reports/modelli/rete_cellulare_2026-10-03/esito/miscele_r3/LETTURA.md)).
+  - **Rete ancorata v3 in preparazione** ([cartella](../../reports/modelli/rete_ancorata_2026-10-03/README.md)):
+    ancore calcolate con controlli passati, codice e test pronti, protocollo in bozza in attesa della revisione di
+    Codex.
 - **Esito P3 (misurato, sviluppo, 2/10 22:19):** C e J `no_benefit` secondo la regola congelata; nessuna adozione, il transfer t22/t25 resta il riferimento. I controlli della linea tenuta fuori non migliorano il transfer né come guadagni per gene né come correzione bilineare, su sette gruppi di linea; la calibrazione senza contesto migliora coseno e MSE ma perde PDS. [Risultati](../../reports/analisi/generalizzazione_contesti_2026-10-02/RISULTATI.md), [decisione](../../reports/analisi/generalizzazione_contesti_2026-10-02/p3_decision_cj_r1/decision.json).
 - **P4 (3/10 notte):** ipotesi «più linee collegate, non più capacità» ([hypothesis.md](../../reports/analisi/generalizzazione_contesti_2026-10-02/p4/hypothesis.md)); rete non lineare **sul pseudobulk** con protocollo congelato ([PROTOCOLLO_NN.json](../../reports/analisi/generalizzazione_contesti_2026-10-02/p4/PROTOCOLLO_NN.json)): kernel GPU a 10 gruppi finito il 3/10 (34 minuti, output scaricato in `processed/generalizzazione_contesti_2026-10-02/kaggle_nn_r1/`), corsa locale a 7 gruppi in chiusura, kernel CPU dei bracci semplici a 10 gruppi in corsa; letture ancora da fare con le regole. Il proprietario ha chiesto il 3/10 di non addestrare altre reti sul pseudobulk (30/09: supervisione sulle cellule, pseudobulk solo come baseline): questi risultati valgono come baseline.
 - **Rete cellulare v2 (3/10):** correzioni dell'audit dell'1/10 con test e pilot su H1, HepG2 e RPE1 escluse intere (stato contro media dei controlli, rete contro transfer, generico), protocollo congelato al commit `ad5ddd8` prima di ogni training: [cartella](../../reports/modelli/rete_cellulare_2026-10-03/README.md), [protocollo](../../reports/modelli/rete_cellulare_2026-10-03/PROTOCOLLO.md). **Prima corsa (r1) fallita tecnicamente:** nel training H1 i tre bracci collassano dal passo 3.700 circa (gate al pavimento, responsabilità 0, spostamenti esplosi); emendamento 2.1 (spostamento limitato, riscaldamento del gate, criterio di collasso corretto, prova breve obbligatoria) committato alle 07:17 prima di aprire i confronti; incidente dei lanci doppi E-20261003-001. Via del proprietario in chat: training GPU, kernel CPU, dataset privati e download.
 - **Mandato:** verificare se i controlli di una linea mai vista perturbata permettono di migliorare il transfer; scegliere il modello in base a questa prova. Unico percorso di R-COMP.
 - **Assegnazione:** Claude Code, sessione «R-LEAD implementazione vcc2026» (`22d21f`, scratchpad `b0e0cbfb`), macchina `LAPTOP-DLG1LHV1`, da commit `3600fe0`; presa in carico il 2/10 alle 16:47 CEST su richiesta del proprietario in chat. Sottoattività: P0–P3, poi P4–P6 se l'evidenza lo giustifica. File di lavoro: questa scheda, le due cartelle nuove sotto, gli indici delle loro categorie e il registro. Output: `reports/analisi/generalizzazione_contesti_2026-10-02/` (manifest, protocollo, misure, decisione), `reports/modelli/risposta_contesto_2026-10-02/` (codice e test), dati pesanti in `processed/generalizzazione_contesti_2026-10-02/` della radice dati. Sessione parallela visibile: «Memoria locale insufficiente» (`29e278`), inattiva; nessun suo file toccato.
-- **Prossimo passo:** prova breve su GPU della versione 2.1 (H1, 5.000 passi, criteri del §8.4) appena si libera una sessione (occupate dalle corse r1 di HepG2 e RPE1, da leggere con il §8); se passa, i tre training r2, poi corsia A (`bench_effects.py`), regola (`decide_pilot.py`) e corsia B (`kaggle_gen.py`, `lane_b.py`); espansione ai sette gruppi solo se il pilot passa la regola. Baseline già lette: P3/P4 pseudobulk `no_benefit` su 7 e 10 gruppi, e sui sei membri su HepG2 il transfer resta il migliore ([p3_six_member_r2](../../reports/analisi/generalizzazione_contesti_2026-10-02/p3_six_member_r2/LETTURA.md)). P5 solo se un candidato passa (riserva: test H1 2025, chiusa); P6 prova a forma piena appena C: ha almeno 17 GB liberi.
+- **Prossimo passo:**
+  1. Congelare il protocollo della rete ancorata, dopo la revisione di Codex o senza di essa se non arriva, e con
+     l'esito delle miscele scritto nel testo.
+  2. Lanciare i training: H1 e HepG2 subito, perché `davideferrante11` regge al più 2 sessioni GPU, poi RPE1.
+  3. Applicare corsia A, corsia B e la regola del protocollo.
+  4. P5 solo se un candidato passa (la riserva, test H1 2025, resta chiusa); P6, prova a forma piena, appena C: ha
+     almeno 17 GB liberi.
+- **Stato riprendibile (3/10, 16:00 CEST), per chi subentra:**
+  - **Già fatto:**
+    - kernel CPU `davideferrante11/rcell-anchors-r1`, completo: output `anchors_<linea>/`, controlli passati, lancio
+      in `lancio_anchors_r1.json`;
+    - dataset del codice v3 `davideferrante11/rcell-anchored-code-r1`, creato alle 16:00 dal commit `211402e`
+      (stage `processed/rete_ancorata_2026-10-03/kaggle_code_r1`).
+  - **Comando per il training di una linea:**
+    ```
+    python kaggle_train.py kernel --config-dir <~/.kaggle-davideferrante11> --stage <nuova cartella>
+      --slug rcell-anchored-train-<linea>-r1 --owner davideferrante11 --data-owner davidmaisterx
+      --code-slug rcell-anchored-code-r1
+      --datasets <gli 11 di r3> --glob "rlab-tian-norman=norman2019__*.h5ad|tian2021_*.h5ad"
+      --prepass-from rcell-prepass-<linea>-r1 --anchors-from rcell-anchors-r1 --anchors-line <LINEA>
+      --arm "ancorata=both@cuda:0" --arm "ancorata_mean=both/mean@cuda:1" --train-args="<quelli di r3>"
+    ```
+    Va eseguito con il Python del venv e non con `py.cmd`: cmd.exe tratta la `|` del glob come una pipe. Gli 11
+    dataset e gli argomenti di training stanno in `run.py` dei kernel r3, `processed/rete_cellulare_2026-10-03/kernel_train_*_r3/`.
+  - **Nessun training della v3 è partito.** L'ingestione ha il proprio stato riprendibile nella scheda
+    [R-LAB](piano-giorno-2026-09-30.md).
 - **Prima consegna:** matrice contesto × bersaglio × studio, split verificati, protocollo congelato, codice del banco e dei confronti semplici con test; misure se gli input lo consentono, altrimenti il file minimo mancante e il passo impedito. Non un altro piano.
 - **Dipendenze:** [R-LAB](piano-giorno-2026-09-30.md), [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), D-050 e D-052; procedure e preflight del lavoro effettivamente eseguito.
 - **Chiusura:** scelta motivata con prove riproducibili e pipeline finale verificata, oppure esito negativo/inconclusivo con transfer conservato e limite identificato.

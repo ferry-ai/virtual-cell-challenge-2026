@@ -32,6 +32,34 @@
 - **Collo di bottiglia attuale (3/10, 15:55):** un solo runtime Colab attivo, quello di `queue`, occupato dalle
   verifiche 133–134. Southard (132) aspetta `queue2`. Dopo vengono gli adattatori di KOLF e CD4.
 
+## Stato riprendibile (3/10, 16:00 CEST), per chi subentra
+
+**Colab**, account del proprietario, avvio dal browser. Il battito sta nel log del dispatcher, ogni 10 minuti; i
+log dei singoli job si sincronizzano solo alla fine.
+
+| Coda | Notebook | Job | Log |
+|---|---|---|---|
+| `queue` | `notebooks/colab_sc_training.ipynb` | 133 e 134, verifiche dell'archivio, avviati alle 15:46 | `runs/jobs/dispatcher.log` |
+| `queue2` | `reports/sorgenti/corpus_cellulare_2026-09-30/colab_dispatcher_queue2.ipynb` | 132, Southard r3, avviato alle 15:51 | `runs/jobs/dispatcher_q2.log` |
+
+Un job con `.started` senza battiti per ore non riparte da solo: si rimette in coda con numero e output nuovi (per
+le verifiche `requeue_verify.py`, per l'ingestione `corpus_cellulare_2026-09-30/colab_job.py`).
+
+**Agenti dell'hub**, lanciati alle 15:55 con l'autorizzazione del proprietario. Lo stato si legge con
+`py -3 C:/Users/ferra/agent-hub/control/hub.py status <run>`, i risultati con `... result <run>`, la patch di
+claude2 con `... diff <run>`.
+
+| Agente | Run | Incarico | Dove lavora | Output |
+|---|---|---|---|---|
+| claude2 | `20261003-155531-vcc-rds-conversion` | codice di conversione RDS (Mixscale, VIPerturb) | worktree isolato; la sorgente aveva 3 file non committati, i brief e il README, che il worktree non contiene | `diff.patch`, che la regia rivede |
+| Grok | `20261003-155552-vcc-geo-metadata` | metadati GEO di microglia, PerturbFate e DLD-1 | sola lettura, ricerca web | rapporto da copiare in `ingestione_completa_2026-10-03/agenti/` |
+
+**Codex**, tramite relay: adattatori in `ingestione_completa_2026-10-03/adattatori_codex/`, supervisione, e
+subentro se la regia esaurisce la quota. Il brief è nella stessa cartella.
+
+**Kaggle:** i dataset nuovi del corpus vanno su `davidmaisterx`, i training su `davideferrante11`; i token stanno in
+`~/.kaggle*`, e su Drive in `runs/rlab_secrets_*`.
+
 ## Ingestione completa: filoni
 
 Per ogni dataset, completo vuol dire tre cose:
