@@ -1,0 +1,20 @@
+{
+ "protocol_commit": "4cb61d45da9093518715b758607c9f7ce1d5a248 (frozen 16:07:58 CEST, before any training)",
+ "code_dataset": "davideferrante11/rcell-anchored-code-r1, from commit 211402e (staged.json in processed/rete_ancorata_2026-10-03/kaggle_code_r1)",
+ "anchors": "davideferrante11/rcell-anchors-r1 (kernel output anchors_<line>/)",
+ "machine": "Kaggle GPU T4 x2 (davideferrante11)",
+ "gpu_quota_before": "used 12.52 h of 30 h, reserved 0, refresh 2026-10-10T00:00:00Z (kaggle quota, 16:08)",
+ "gpu_quota_after_two_pushes": "used 12.53 h, remaining 17.47 h (16:09:29)",
+ "kernels": {
+  "rcell-anchored-train-h1-r1": {"pushed": "2026-10-03 16:09:02 +0200", "status_16:09:29": "RUNNING",
+                                 "stage": "C:/Users/ferra/vcc2026-data/processed/rete_ancorata_2026-10-03/kernel_train_h1_r1"},
+  "rcell-anchored-train-hepg2-r1": {"pushed": "2026-10-03 16:09:10 +0200", "status_16:09:29": "RUNNING",
+                                    "stage": "C:/Users/ferra/vcc2026-data/processed/rete_ancorata_2026-10-03/kernel_train_hepg2_r1"},
+  "rcell-anchored-train-rpe1-r1": {"pushed": null,
+                                   "note": "waits for one of the two GPU sessions the account allows; the same command with --anchors-line RPE1"}
+ },
+ "arms": ["ancorata=both@cuda:0", "ancorata_mean=both/mean@cuda:1"],
+ "train_args": "--epochs 2 --batch 256 --ctrl-k 64 --min-own 8 --dim 128 --rank 128 --lr 1e-3 --pi-floor 0.01 --seed 0 --workers 3 --eval-workers 3 --checkpoint-minutes 15 --eval-reserve-seconds 120 --delta-bound 6 --gate-mode off --health-check-step 5000 --health-window 5 --budget-minutes 180 (the arguments of r3)",
+ "datasets": "the 11 rlab-* of r3 on davidmaisterx, glob rlab-tian-norman=norman2019__*.h5ad|tian2021_*.h5ad",
+ "prepass": "rcell-prepass-<line>-r1 (the same states as r3)"
+}
