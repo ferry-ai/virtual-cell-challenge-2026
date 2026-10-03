@@ -40,7 +40,7 @@ log dei singoli job si sincronizzano solo alla fine.
 | Coda | Notebook | Job | Log |
 |---|---|---|---|
 | `queue` | `notebooks/colab_sc_training.ipynb` | 133 e 134, verifiche dell'archivio, avviati alle 15:46 | `runs/jobs/dispatcher.log` |
-| `queue2` | `reports/sorgenti/corpus_cellulare_2026-09-30/colab_dispatcher_queue2.ipynb` | 132, Southard r3, avviato alle 15:51 | `runs/jobs/dispatcher_q2.log` |
+| `queue2` | `notebooks/colab_dispatcher_queue2.ipynb` | 132, Southard r3, avviato alle 15:51 | `runs/jobs/dispatcher_q2.log` |
 
 Un job con `.started` senza battiti per ore non riparte da solo: si rimette in coda con numero e output nuovi (per
 le verifiche `requeue_verify.py`, per l'ingestione `corpus_cellulare_2026-09-30/colab_job.py`).

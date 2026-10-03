@@ -51,7 +51,7 @@ Lo stato si legge ai file citati, non da questa tabella, che è un indice.
 | `requeue_verify.py` | Rimette in coda 130 e 131 come 133 e 134: stesso setup r1 in sola lettura, setup r2 e output nuovi, preflight locale |
 | `adattatori_codex/` | Compito di Codex: `h5csc` compatto a intervalli (KOLF) e `h5rows` con filtro di idoneità (CD4) |
 | `orion/` | Orion completo: copia del codice corretto da Codex, spec `orion_full_v1.json` (k = 10⁹, π = 1), `--part i/n`, test (27), `build_orion_job.py` e i job 135–142 in `jobs/` |
-| `colab_dispatcher_queue3.ipynb`, `colab_dispatcher_queue4.ipynb` | Dispatcher delle code 3 e 4, una copia anche su Drive in `vcc2026/notebooks/`, con log `dispatcher_q3.log` e `dispatcher_q4.log` |
+| `notebooks/colab_dispatcher_queue3.ipynb`, `notebooks/colab_dispatcher_queue4.ipynb` (nella cartella `notebooks/` della repo) | Dispatcher delle code 3 e 4, una copia anche su Drive in `vcc2026/notebooks/`, con log `dispatcher_q3.log` e `dispatcher_q4.log` |
 | `GEO_METADATI.md` | Dimensioni e formati per cellula di DLD-1, microglia e PerturbFate, letti direttamente da GEO |
 | `HANDOFF_CLAUDE2.md` | Passaggio di consegne a claude2 delle 16:25: stato, code, prossimi passi, autorizzazioni e trappole |
 | `agenti/` | Brief e rapporti degli agenti dell'hub, lanciati con l'autorizzazione del proprietario del 3/10: claude2 per la conversione RDS (run `20261003-155531-vcc-rds-conversion`, worktree isolato), Grok per i metadati GEO (run `20261003-155552-vcc-geo-metadata`, sola lettura) |

@@ -25,9 +25,25 @@ Drive solo alla fine.
 | Coda | Notebook | Job in corso o in attesa |
 |---|---|---|
 | `queue` | `notebooks/colab_sc_training.ipynb` | 134 verifica dell'archivio A (ripresa r2); 138 Orion HCT116 shard, parte 1/2 |
-| `queue2` | `reports/sorgenti/corpus_cellulare_2026-09-30/colab_dispatcher_queue2.ipynb` | 132 Southard r3; 137 Orion HCT116 shard, parte 0/2 |
-| `queue3` | `colab_dispatcher_queue3.ipynb` (questa cartella, e su Drive in `vcc2026/notebooks/`) | 139 e 140, Orion HEK293T, parti 0 e 1 di 4 |
-| `queue4` | `colab_dispatcher_queue4.ipynb` (idem) | 141 e 142, Orion HEK293T, parti 2 e 3 di 4 |
+| `queue2` | `notebooks/colab_dispatcher_queue2.ipynb` | 132 Southard r3 (137 è fallito, vedi sotto) |
+| `queue3` | `notebooks/colab_dispatcher_queue3.ipynb` (anche su Drive in `vcc2026/notebooks/`) | 139, Orion HEK293T, parte 0 di 4 |
+| `queue4` | `notebooks/colab_dispatcher_queue4.ipynb` (idem) | 141, Orion HEK293T, parte 2 di 4 |
+
+**Memoria (misurato alle 16:23):** il job 137, HCT116 parte 0/2, è stato ucciso con rc=137 al nono file, mentre
+girava accanto a Southard; il runtime era a 7 GiB su 12. Ogni file Orion ha circa 31.000 cellule e 170 milioni di
+valori. **Regola: un solo job di shard Orion per runtime, mai accanto a Southard o a un altro job pesante.** Per
+questo 140 e 142 sono stati spostati in `runs/queue3/ritirati/` e `runs/queue4/ritirati/` prima di partire.
+
+**Parti Orion ancora da mettere in coda,** una per runtime quando il job Orion di quel runtime finisce, con
+`orion/build_orion_job.py --kind shards`, numeri nuovi da 143 e lo stesso setup e snapshot. La riga di comando è in
+`orion/jobs/*_manifest.json` e nei launcher.
+- HCT116 parte 0/2: rifatta con un nome nuovo, per esempio `j16_orion_full_shards_hct116_p0of2_r2`. Gli shard del
+  primo tentativo restano dove sono e si possono passare a `--reuse`.
+- HEK293T parti 1/4 e 3/4.
+
+Si può ridurre il picco di memoria in `orion_job.py:read_selected`: con la selezione completa si costruisce la CSR
+direttamente dagli offset di arrow, in int32 e float32, senza le liste per riga. Va fatto con un test, prima di
+lanciare due job per runtime.
 
 Le code 3 e 4 partono quando il proprietario apre i due notebook. Un job con `.started` e senza battito per ore è
 perso: si rimette in coda con **numero e output nuovi**, mai sopra il vecchio.
