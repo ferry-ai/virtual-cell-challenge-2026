@@ -81,6 +81,15 @@
     Con −0,42 su H1 la guardia del §7 (media delle tre linee ≥ −0,02) è aritmeticamente quasi irraggiungibile. La
     corsia B di H1 gira sul portatile dalle 00:50 (PID 28200, `laneB_h1_r1` nella radice dati). Dopo: ricevute,
     generazione e corsie di HepG2 e RPE1, poi `decide_anchored.py` sulle tre linee e il checkpoint.
+  - **Indicazione del proprietario in chat, 4/10 01:06:** Alfredo riferisce un modello a «quasi 0,08»; si può
+    aspettare che lo pubblichi, seguirlo e migliorarlo «se non c'è nulla di meglio». Non verificato qui: scala e
+    provenienza di quel numero (chiesto al proprietario; sul punteggio ufficiale la ricetta t22/t24 vale 0,142, il t28
+    0,1448 e l'unica rete inviata, t29, −0,030). Non cambia il piano scritto: il pilot v4 si chiude sulle tre linee
+    con la sua regola, il binario dati prosegue; il modello di Alfredo, quando arriva, si mette sul banco C/J a sei
+    membri contro il transfer con una regola scritta prima dei numeri. Le 30 ore GPU intere di ciascuno degli altri due
+    account restano libere per questo. HepG2 concluso alle 01:01 e tecnicamente accettato
+    ([ricevute](../../reports/modelli/rete_ancorata_v4_2026-10-03/esito/train_hepg2_r1/)); la sua generazione attende
+    una sessione CPU libera.
   - **Corpus ampliato, percorso critico (non iniziato):** protocollo con i gruppi adottati; pre-passo sui 365 shard
     del pilot più HCT116, HEK293T e KOLF pan-genome (16,2 milioni di cellule). Stima, non misura: il pre-passo del
     pilot ha impiegato 10.200 s per 5,6 milioni di cellule con 4 processi, quindi circa 8 ore per fold a parità di
