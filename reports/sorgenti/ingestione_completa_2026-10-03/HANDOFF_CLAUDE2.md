@@ -135,6 +135,24 @@ Stato verificato sui log e su Kaggle, ore lette con `date`.
 - **Codice ancora da scrivere:** il job CD4 (`h5rows_cd4` di Codex più `ShardSink` e lettura anticipata, un file per
   kernel) e il job dell'inventario per combinazione.
 
+## Aggiornamento delle 18:35 (sessione `c7c07a`)
+
+- **Un kernel finito in `ERROR` non si può montare:** alla spinta della verifica parziale Kaggle ha risposto «not
+  valid kernel sources» per le due parti r2 di HCT116. Il loro output si scarica ma non entra in un altro kernel.
+  Le cinque parti r2 (HCT116 0/4 e 2/4, HEK293T 0/8, 1/8, 2/8) si rifanno quindi come r3, che esce con 0.
+- **La regola della parte funziona sui dati veri:** HEK293T 3/8 r3 ha 563.632 cellule, quante ne seleziona il campione
+  nei suoi 28 file, 7,81 GB; stato `COMPLETE`. Finite anche 4/8, 5/8 e 6/8. La parte Colab 138 (HCT116 1/2) è finita
+  con codice 1 per il solo `whole_line`: 54 shard, 1.697.191 cellule, 19,37 GB, ogni altro controllo vero.
+- **Lettura anticipata misurata su Kaggle:** KOLF parte 1/2 legge a 92 MB/s (11,04 GB in 120 s), contro 5,8 MB/s
+  della parte 0/2 lanciata prima. La 0/2 è stata rilanciata come `vcc-kolf-pan-p0of2-r2`; il kernel lento
+  `vcc-kolf-pan-p0of2-r1` occupa una sessione finché non finisce o il proprietario lo ferma dalla pagina di Kaggle.
+- **CD4, prova sul file vero** (`vcc-cd4-d1-rest-smoke-r1`, 79 s): 40.000 righe di `D1_Rest`, 22.751 idonee (1.018
+  controlli), escluse 10.287 senza guida, 6.903 con più guide, 41 di bassa qualità, 18 con bersaglio non valido;
+  884 bersagli senza simbolo sull'asse del file (il simbolo pubblicato resta in `cd4_perturbed_gene_name`);
+  184 MB, 2,35 byte per valore. Proiezione per tutto CD4: circa 170 GB in 24 parti da 7–9 GB.
+- **Coda:** [fill_sessions.py](kaggle_cpu/fill_sessions.py) spinge i prossimi kernel nelle sessioni libere, una
+  chiamata per volta fatta dalla sessione. In coda 6 parti Orion r3 e le 24 parti CD4.
+
 ## Prossimi passi, in ordine
 
 1. **Orion**, quando le parti finiscono:
