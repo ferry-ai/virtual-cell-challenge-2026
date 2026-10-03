@@ -155,6 +155,48 @@ close(ok and done.is_file())
 '''
 
 
+# The end of the kernel, as r2 ran it, and its replacement for the kernels built with --part-rule (r3).
+R2_TAIL = '''done = out / "shards" / "complete.json"
+if done.is_file():
+    log["complete"] = json.loads(done.read_text())
+    print(json.dumps({"complete": log["complete"]}), flush=True)
+close(ok and done.is_file())
+'''
+R3_TAIL = '''done = out / "shards" / "complete.json"
+if done.is_file():
+    log["complete"] = json.loads(done.read_text())
+    print(json.dumps({"complete": log["complete"]}), flush=True)
+final = ok and done.is_file()
+# orion_job.py counts `whole_line` among the checks of a unit: a part of a line always ends with parity_failed.json and
+# exit code 1 (read in the code on 3/10 at 17:36, before any part had finished). Rule for a part, written before any
+# result: every other boolean check of the unit is true, and the cells and shards of the unit are the selected cells
+# and the files of the sample that fall in the part, counted here from the sample table.
+unit = out / "shards" / P["unit"] / "manifest.json"
+if not final and "shards" in log["steps"] and unit.is_file():
+    import pandas as pd
+    m = json.loads(unit.read_text())
+    checks = {k: v for k, v in m["parity"].items() if isinstance(v, bool) and k not in ("ok", "whole_line")}
+    s = pd.read_parquet(out / "sample" / f"{LINE}.parquet", columns=["gem_file", "selected"])
+    want = s[s["selected"] & s["gem_file"].isin(m["files_in_part"])]
+    rule = {"checks": checks, "whole_line": m["parity"].get("whole_line"), "cells": m["totals"]["cells"],
+            "cells_selected_in_part": int(len(want)), "shards": m["totals"]["shards"],
+            "files_with_cells_in_part": int(want["gem_file"].nunique()), "bytes": m["totals"]["bytes"],
+            "unit_manifest_sha256": sha(unit)}
+    rule["ok"] = bool(checks and all(checks.values()) and rule["whole_line"] is False
+                      and rule["cells"] == rule["cells_selected_in_part"]
+                      and rule["shards"] == rule["files_with_cells_in_part"])
+    log["part_rule"] = rule
+    print(json.dumps({"part_rule": rule}), flush=True)
+    if rule["ok"]:
+        (out / "part_complete.json").write_text(json.dumps(
+            {"job": JOB, "line": LINE, "part": PART, **rule,
+             "note": "parity_failed.json next to the shards is the whole-line flag of orion_job.py: a part is never "
+                     "the whole line. The line is complete when the union of its parts is reconciled"}, indent=1))
+    final = rule["ok"]
+close(final)
+'''
+
+
 def sha256_file(path: Path) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -196,6 +238,8 @@ def main() -> None:
     p.add_argument("--commit", required=True)
     p.add_argument("--launch-log", type=Path, help="JSON lines, one per push, appended")
     p.add_argument("--dry-run", action="store_true")
+    p.add_argument("--part-rule", action="store_true",
+                   help="r3: the kernel judges a part by its own checks instead of failing on the whole-line flag")
     p.add_argument("--repush", action="store_true",
                    help="push a stage built earlier and refused by Kaggle (5 batch CPU sessions at most): its files "
                         "must be the ones this build would write")
@@ -210,12 +254,18 @@ def main() -> None:
     spec_path = ORION / "specs/orion_full_v1.json"
     if sha256_file(spec_path) != members.get(SPEC_IN_SNAPSHOT):
         sys.exit("the spec in the repository is not the one in the snapshot")
-    expected = json.loads(spec_path.read_text(encoding="utf-8"))["lines"][a.line]["expected"]["cells_pass_filter"]
+    line_spec = json.loads(spec_path.read_text(encoding="utf-8"))["lines"][a.line]
     params = {"line": a.line, "part": a.part, "job": a.slug.replace("-", "_"), "code_slug": a.code_slug,
               "commit": a.commit, "snapshot_sha256": staged["code_snapshot.tar.gz"], "members": members,
-              "axis_sha256": staged["gene_names.csv"], "expected_cells": expected,
+              "axis_sha256": staged["gene_names.csv"], "expected_cells": line_spec["expected"]["cells_pass_filter"],
               "sample_sha256_colab": colab_sample_sha(a.line)}
-    text = KERNEL.replace("__PARAMS__", json.dumps(params, indent=1))
+    text = KERNEL
+    if a.part_rule:
+        if text.count(R2_TAIL) != 1:
+            sys.exit("the end of the r2 kernel is not where --part-rule expects it")
+        text = text.replace(R2_TAIL, R3_TAIL)
+        params["unit"] = line_spec["unit"]
+    text = text.replace("__PARAMS__", json.dumps(params, indent=1))
     compile(text, "run.py", "exec")
     metadata = json.dumps(
         {"id": f"{a.owner}/{a.slug}", "title": a.slug, "code_file": "run.py", "language": "python",

@@ -1,0 +1,41 @@
+{
+ "spec_version": "kolf_pan_v1 (3/10/2026, regia c7c07a): every cell of the pan-genome screen, no sampling; columns and labels are those of the three smaller KOLF screens (corpus_cellulare_2026-09-30/wave2_specs.py, KOLF), read again in the measurement of this file",
+ "job_id": "j17_kolf_pan_r1",
+ "status": "written; no remote byte read by this spec yet",
+ "source": {
+  "id": "kolf_KOLF_Pan_Genome_QC_Filtered",
+  "locator": "https://ndownloader.figshare.com/files/64650261",
+  "bytes": 189393177972,
+  "cells": 2659209,
+  "genes": 37567,
+  "values_in_counts_layer": 7872183461,
+  "release": "Figshare+ 27261219",
+  "license": "CC BY 4.0",
+  "measured": "reports/sorgenti/corpus_cellulare_2026-09-30/p1_r5/remote_kolf/kolf_KOLF_Pan_Genome_QC_Filtered.json",
+  "checksum_note": "no md5 in urls_r5_kolf.json; the file is read by HTTP ranges, bound to one ETag",
+  "authorisation": "the owner in chat on 3/10 after 15:28: take every dataset in full; Kaggle CPU instead of a second Colab (3/10, 16:38)"
+ },
+ "unit": {
+  "name": "kolf_pan_genome",
+  "study": "kolf_pan_genome",
+  "context": "KOLF2.1J iPSC",
+  "chemistry": "MISSING",
+  "modality": "CRISPRi",
+  "block": 20000,
+  "kwargs": {
+   "target_col": "gene_target",
+   "control_values": ["NTC"],
+   "guides_col": "gRNA",
+   "library_col": "channel",
+   "layer": "counts",
+   "target_id_col": "gene_target_ensembl_id",
+   "feature_id_col": "gene_ids"
+  }
+ },
+ "measured_columns": {
+  "gene_target": "11,688 values, NTC on 146,747 cells",
+  "gRNA": "35,659 guides; n_gRNA is 1 on every sampled cell",
+  "channel": "90 channels",
+  "perturbation_type": "CRISPRi on every cell"
+ }
+}
