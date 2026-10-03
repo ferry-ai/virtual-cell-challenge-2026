@@ -11,6 +11,12 @@
 - **Assegnazione:** regia dei job dal 3/10 23:08: Claude Code, sessione `5eacdf` (R-LEAD); claude2 (`c7c07a`) e
   `22d21f` inattive. Gli adattatori consegnati da Codex restano nella sua cartella `adattatori_codex/`, non
   tracciata e non toccata.
+- **Aggiornamento del 4/10, 00:09 CEST (sessione `d0100a`, subentrata alla `5eacdf`):** HEK293T chiusa dalla verifica
+  di linea (223 shard, 4.534.299 cellule, 63,12 GB,
+  [ricevute](../../reports/sorgenti/ingestione_completa_2026-10-03/orion/esito_verifica_hek293t_r1/line_complete.json));
+  HCT116 con le quattro parti concluse e la verifica in corsa dalle 23:59; CD4 `D1_Rest` in verifica per file dalle
+  00:04 e `D1_Stim8hr` 0/2 e 1/2 in corsa dalle 23:35 (20 parti in coda); Southard vivo su `queue2` (battito 23:51).
+  Le righe sotto descrivono lo stato delle 23:15.
 - **Job verificati alle 23:15 CEST:**
   - Kaggle CPU (`davideferrante11`): parti Orion `vcc-orion-hct116-p3of4-r3` e `vcc-orion-hek293t-p{0,1,2}of8-r3` in
     esecuzione dalle 23:08 ([log di lancio](../../reports/sorgenti/ingestione_completa_2026-10-03/kaggle_cpu/lancio_orion_r2.jsonl)),

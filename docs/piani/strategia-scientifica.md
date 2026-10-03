@@ -45,6 +45,23 @@
      32/64/128 con perdita d'informazione misurata contro i riassunti completi, letti dai gemelli.
   4. Qualunque sia l'esito del pilot, il corpus ampliato (prima CD4T, HCT116, HEK293T con cellule verificate) entra nel
      protocollo successivo; ESM2 dopo, a parità di dati e di campione.
+- **Stato della sessione `d0100a` (4/10, 00:09 CEST; i job si rileggono su Kaggle prima di agire):**
+  - In corsa: i due training GPU (dalle 23:06 del 3/10); su CPU `vcc-orion-hct116-verify-r1` (23:59),
+    `vcc-cd4-d1-rest-verify-r1` (00:04), `vcc-cd4-d1-stim8hr-p{0,1}of2-r1` (23:35) e lo studio dei campioni annidati
+    `rcell-v4-nested-h1-r1` (23:52, [protocollo](../../reports/modelli/rete_ancorata_v4_2026-10-03/CAMPIONI_ANNIDATI.md)
+    con la regola congelata prima dei numeri, [lancio](../../reports/modelli/rete_ancorata_v4_2026-10-03/lancio_nested_r1.json)).
+  - Chiusa: HEK293T, 223 shard e 4.534.299 cellule come attese, sha256 riletti da un altro kernel
+    ([ricevute](../../reports/sorgenti/ingestione_completa_2026-10-03/orion/esito_verifica_hek293t_r1/line_complete.json)).
+  - Pronto e non ancora spinto: gemelli compatti degli shard lasciati negli output dei kernel (`kaggle_fast_units.py`,
+    3 test), da lanciare a sessione CPU libera per HEK293T (due kernel da quattro parti), HCT116 dopo la sua verifica
+    e KOLF pan-genome; poi le 20 parti CD4 rimaste con `fill_sessions.py`.
+  - [Inventario riconciliato](../../reports/sorgenti/inventario_riconciliato_2026-10-04/README.md): cellule di 8 gruppi
+    su 21 nel pilot, aggregati di 10 nelle ancore, lacuna e lavoro per ogni altra voce.
+  - Quota GPU letta il 3/10 alle 23:58: 11,32 h residue su `davideferrante11` (in consumo), 30 h intere su ciascuno
+    degli altri due account; gli input dei training sono kernel e dataset privati di `davideferrante11`.
+  - Scostamenti dalla proposta di Codex, detti al proprietario in chat: batch e fonti delle ancore cambiati insieme
+    nella v4; Kaggle CPU al posto di Colab CPU per gemelli, campioni e generazione; riassunti delle cellule ammesse
+    (R-DATI passo 2) non iniziati.
 - **Riprendere da qui (passaggio ad altro account, 3/10 23:30 CEST; job verificati alle 23:27, tutti RUNNING):**
   - GPU: `rcell-v4-train-h1-r1`, `rcell-v4-train-hepg2-r1` (dalle 23:06). CPU: `vcc-orion-hct116-p3of4-r3`,
     `vcc-orion-hek293t-p{0,1,2}of8-r3` (dalle 23:08). Pronti: dataset `davideferrante11/rcell-v4-code-r1` (training),
