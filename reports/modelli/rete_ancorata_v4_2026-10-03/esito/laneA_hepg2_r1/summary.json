@@ -1,0 +1,168 @@
+{
+  "written_utc": "2026-10-03T23:14:44+00:00",
+  "held_group": "HepG2",
+  "run": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_ancorata_v4_2026-10-03\\out_train_hepg2_r1\\train",
+  "arms": [
+    "ancora_sola",
+    "ancorata",
+    "ancorata_mean"
+  ],
+  "rows": {
+    "C": 1743,
+    "J": 412
+  },
+  "unmatched_groups": {
+    "no_key_in_cube": 5,
+    "not_held": 279
+  },
+  "tables": [
+    "hepg2_nadig"
+  ],
+  "sources": {
+    "transfer_all_J": [
+      "CD4T",
+      "H1",
+      "HCT116",
+      "HEK293T",
+      "Jurkat",
+      "K562",
+      "Neuron",
+      "RPE1",
+      "iPSC"
+    ],
+    "transfer_cells_J": [
+      "H1",
+      "Jurkat",
+      "K562",
+      "Neuron",
+      "RPE1",
+      "iPSC"
+    ],
+    "transfer_prod_J": [
+      "CD4T",
+      "HCT116",
+      "HEK293T",
+      "K562"
+    ]
+  },
+  "commons": {
+    "regime": "J",
+    "hidden_fold": 0,
+    "n_folds": 5,
+    "keys_kept_out": 2239
+  },
+  "inputs": {
+    "eval_groups": "56f8096d1f6e3b87fb9f11b3daa8a54fafd6d75f99ffdb9b57d1fcbec2321f06",
+    "cube_manifest": "c7fb76628b8246b9e00c789582ba3e512a8018e9469c5e8f3344001375fe1099",
+    "target_keys": "55a4e601f75dbbee2ccf3d8e052483b8cc355b0d1a57c3fc33f53ca687a1515a",
+    "splits": "e1f829b56d455c20139604f3452a6154ca886612f489be7047869267a1db62c2",
+    "ancora_sola": "7f56b0e7eb29d6da2a1e63e1c035c24ac6b9660490918365f825df33ebc35836",
+    "ancorata": "b9e98aefc4e631cb34f1cc8b6d6423423ecae1cb3425b190f17d90980383e790",
+    "ancorata_mean": "931400ce5113ea0d59f9829d84cdd81e380211048f280bb6f39f7c282dc04263"
+  },
+  "means": {
+    "C": {
+      "ancora_sola": {
+        "pds": 0.88313,
+        "cos": 0.15493,
+        "cos_spec": 0.19271,
+        "mse_ratio": 1.07035,
+        "sign_sig": 0.58205
+      },
+      "ancorata": {
+        "pds": 0.63847,
+        "cos": 0.21458,
+        "cos_spec": 0.20091,
+        "mse_ratio": 1.19287,
+        "sign_sig": 0.55623
+      },
+      "ancorata_mean": {
+        "pds": 0.58892,
+        "cos": 0.15452,
+        "cos_spec": 0.13116,
+        "mse_ratio": 1.88673,
+        "sign_sig": 0.57615
+      },
+      "generic_pseudobulk": {
+        "pds": 0.50222,
+        "cos": 0.1741,
+        "cos_spec": 0.00226,
+        "mse_ratio": 0.9858,
+        "sign_sig": 0.57101
+      },
+      "transfer_all_J": {
+        "pds": 0.88613,
+        "cos": 0.15575,
+        "cos_spec": 0.20331,
+        "mse_ratio": 1.06958,
+        "sign_sig": 0.60771
+      },
+      "transfer_cells_J": {
+        "pds": 0.87502,
+        "cos": 0.15676,
+        "cos_spec": 0.21573,
+        "mse_ratio": 1.16528,
+        "sign_sig": 0.6012
+      },
+      "transfer_prod_J": {
+        "pds": 0.85942,
+        "cos": 0.10379,
+        "cos_spec": 0.11819,
+        "mse_ratio": 1.12529,
+        "sign_sig": 0.57415
+      }
+    },
+    "J": {
+      "ancora_sola": {
+        "pds": NaN,
+        "cos": NaN,
+        "cos_spec": 0.0565,
+        "mse_ratio": 1.0,
+        "sign_sig": 0.0
+      },
+      "ancorata": {
+        "pds": 0.51293,
+        "cos": 0.13896,
+        "cos_spec": 0.00354,
+        "mse_ratio": 1.65394,
+        "sign_sig": 0.44484
+      },
+      "ancorata_mean": {
+        "pds": 0.50099,
+        "cos": 0.10078,
+        "cos_spec": -0.00485,
+        "mse_ratio": 2.5585,
+        "sign_sig": 0.51806
+      },
+      "generic_pseudobulk": {
+        "pds": 0.49062,
+        "cos": 0.16581,
+        "cos_spec": 0.00326,
+        "mse_ratio": 0.98601,
+        "sign_sig": 0.56799
+      },
+      "transfer_all_J": {
+        "pds": NaN,
+        "cos": NaN,
+        "cos_spec": NaN,
+        "mse_ratio": NaN,
+        "sign_sig": NaN
+      },
+      "transfer_cells_J": {
+        "pds": NaN,
+        "cos": NaN,
+        "cos_spec": NaN,
+        "mse_ratio": NaN,
+        "sign_sig": NaN
+      },
+      "transfer_prod_J": {
+        "pds": NaN,
+        "cos": NaN,
+        "cos_spec": NaN,
+        "mse_ratio": NaN,
+        "sign_sig": NaN
+      }
+    }
+  },
+  "note": "lane A of version 4: effect indices of the bench on the cube rows of the held-out line, regime-J means, not VCC scores"
+}

@@ -1,0 +1,33 @@
+[00:51:18] H1: 70 targets, 2048 controls, 18077 genes
+[00:51:28] bench: 70 targets, median half 32 cells, control pool 2048, genes 18077
+[00:54:22] replicate: PDS=0.9584 MSE=0.0034 NMAE=0.3910 FID=0.7817 REACH=0.9596 JAC=0.3532 sig/t=403.4 (94s)
+[00:56:40] baseline: PDS=0.5383 MSE=0.9378 NMAE=0.9365 FID=0.0254 REACH=0.1824 JAC=0.0143
+[00:59:50] transfer_all_J: PDS=0.8807 MSE=1.2945 NMAE=0.9028 FID=0.3923 REACH=0.3412 JAC=0.0361 sig/t=164.5 (92s)
+[00:59:50] transfer_all_J scored (526.5 s)
+[01:01:19] transfer_cells_J: PDS=0.8723 MSE=1.6600 NMAE=0.8791 FID=0.4574 REACH=0.2897 JAC=0.0378 sig/t=399.0 (78s)
+[01:01:19] transfer_cells_J scored (615.2 s)
+[01:02:45] transfer_prod_J: PDS=0.8516 MSE=1.5860 NMAE=0.9219 FID=0.4185 REACH=0.2970 JAC=0.0306 sig/t=249.0 (80s)
+[01:02:45] transfer_prod_J scored (701.3 s)
+[01:05:00] ancorata_shift: PDS=0.5292 MSE=4.0429 NMAE=1.0619 FID=0.4841 REACH=0.1228 JAC=0.0367 sig/t=1806.7 (129s)
+[01:05:00] ancorata_shift scored (837.0 s)
+[01:06:53] ancorata_mean_shift: PDS=0.5375 MSE=3.2278 NMAE=1.0761 FID=0.4463 REACH=0.1062 JAC=0.0318 sig/t=1131.0 (102s)
+[01:06:53] ancorata_mean_shift scored (949.5 s)
+[01:08:23] ancora_sola_shift: PDS=0.8959 MSE=1.2861 NMAE=0.8971 FID=0.3899 REACH=0.3219 JAC=0.0359 sig/t=163.9 (80s)
+[01:08:23] ancora_sola_shift scored (1039.8 s)
+[01:09:50] ancorata_cells: PDS=0.5217 MSE=53.5418 NMAE=1.5450 FID=0.5081 REACH=0.1597 JAC=0.0387 sig/t=7433.0 (84s)
+[01:09:50] ancorata_cells scored (1126.2 s)
+[01:10:48] ancorata_mean_cells: PDS=0.5166 MSE=52.6860 NMAE=1.5982 FID=0.5089 REACH=0.1459 JAC=0.0389 sig/t=7367.2 (57s)
+[01:10:48] ancorata_mean_cells scored (1185.1 s)
+[01:10:49] 
+                       PDS  MSE   NMAE    FID  REACH    JAC    avg     sig/t
+replicate            1.000  1.0  1.000  1.000  1.000  1.000  1.000   403.386
+baseline             0.000 -0.0 -0.000  0.000  0.000  0.000  0.000     0.200
+transfer_all_J       0.815  0.0  0.062  0.485  0.204  0.064  0.272   164.543
+transfer_cells_J     0.795  0.0  0.105  0.571  0.138  0.069  0.280   398.957
+transfer_prod_J      0.746  0.0  0.027  0.520  0.147  0.048  0.248   248.986
+ancorata_shift      -0.022  0.0 -0.230  0.606 -0.077  0.066  0.057  1806.743
+ancorata_mean_shift -0.002  0.0 -0.256  0.557 -0.098  0.052  0.042  1131.029
+ancora_sola_shift    0.851  0.0  0.072  0.482  0.179  0.064  0.275   163.929
+ancorata_cells      -0.039  0.0 -1.115  0.638 -0.029  0.072 -0.079  7432.986
+ancorata_mean_cells -0.052  0.0 -1.213  0.639 -0.047  0.073 -0.100  7367.186
+[01:10:50] done
