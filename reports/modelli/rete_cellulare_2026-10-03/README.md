@@ -17,6 +17,7 @@ congelato prima di ogni training.
 | `decide_pilot.py` | La regola del §6: accettazione tecnica, collasso, Q1–Q3, espansione (test: `test_decide_pilot.py`) |
 | `choose_targets.py`, `generate_cells.py`, `kaggle_gen.py`, `lane_b_hepg2.py` | Corsia B: bersagli per regola, cellule generate dalla rete su Kaggle, sei membri in locale su HepG2 |
 | `lancio_*.json` | Kernel, commit, dataset e argomenti di ogni lancio, scritti al lancio |
+| `inventory.py` | Quali dataset e quante cellule entrano davvero nel training, e perché le altre restano fuori |
 | `export_effects.py`, `target_descriptors.py` | Copie della versione 1, non modificate |
 
 Dati e output pesanti nella radice dati, `processed/rete_cellulare_2026-10-03/`.
