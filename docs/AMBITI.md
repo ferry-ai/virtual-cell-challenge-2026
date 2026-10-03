@@ -90,6 +90,11 @@ Piano operativo: [R-LEAD P0/P1 e P4](piani/strategia-scientifica.md).
 
 ### 5. Modelli appresi e generalizzazione
 
+- **Audit tecnico 3/10 sera.** Le ricevute della rete ancorata v3 mostrano un training H1
+  che non supera la guardia preregistrata sul bilanciamento dei gruppi; non è un verdetto
+  scientifico sul candidato. Conteggio delle linee, proposta ispirata a X e priorità per
+  dati e batch nel [rapporto Codex](../reports/analisi/candidato_ibrido_2026-10-03/README.md).
+  Nessun nuovo training o score; scelte operative in R-LEAD, nuovi job in pausa.
 - **Scoring 1/10.** T29 non promuove la sostituzione del transfer con la rete r2 `desc`
   ([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). La scarsa discriminazione
   dei bersagli è misurata dal PDS; risposta comune, calibrazione, apprendimento ed esportazione

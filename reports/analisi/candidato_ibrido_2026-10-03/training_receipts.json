@@ -1,0 +1,1116 @@
+{
+  "utc": "2026-10-03T18:05:20.127026+00:00",
+  "kind": "read_only_technical_receipts",
+  "runs": {
+    "rcell-anchored-train-h1-r1": {
+      "files": [
+        "env.json",
+        "kernel_done.json",
+        "train.log",
+        "train/ancora_sola/eval.json",
+        "train/ancora_sola/eval_shifts.npz",
+        "train/ancorata/eval.json",
+        "train/ancorata/eval_shifts.npz",
+        "train/ancorata/model.pt",
+        "train/ancorata_mean/eval.json",
+        "train/ancorata_mean/eval_shifts.npz",
+        "train/ancorata_mean/model.pt",
+        "train/checkpoints/ckpt_0007602.pt",
+        "train/checkpoints/ckpt_0009866.pt",
+        "train/checkpoints/ckpt_0010740.pt",
+        "train/config.json",
+        "train/coverage.json",
+        "train/done.json",
+        "train/eval_groups.json",
+        "train/eval_observed.npz",
+        "train/health.json",
+        "train/plan.json",
+        "train/shards_resolved.json",
+        "train/train_log.jsonl",
+        "train/verify.json",
+        "verify.json"
+      ],
+      "receipts": {
+        "kernel_done.json": {
+          "bytes": 117,
+          "sha256": "78add5760e681a038a56ced95cbf823fbaa6e86819799cb38a9e0e15038c5129",
+          "content": {
+            "arms": [
+              "ancorata=both@cuda:0",
+              "ancorata_mean=both/mean@cuda:1"
+            ],
+            "return_code": 0,
+            "seconds": 5262.6
+          }
+        },
+        "train/coverage.json": {
+          "bytes": 8462,
+          "sha256": "e081ec4a1e4ccf1d7e4b6d5d1d86de77fe2ad1c696136833f6cf13d74b83c47f",
+          "content": {
+            "steps": 10740,
+            "batch": 256,
+            "role_batches": [
+              256,
+              256,
+              256
+            ],
+            "epochs_done": 0.714,
+            "stop": "time budget",
+            "arms": [
+              "ancorata",
+              "ancorata_mean"
+            ],
+            "admitted_training_cells": 3850952,
+            "draws": 2749440,
+            "distinct_cells_seen": 2749440,
+            "resumed_from": null,
+            "throughput": {
+              "cells_per_second": 694.8,
+              "data_wait_fraction": 0.814,
+              "seconds": 3957.4
+            },
+            "by_key": [
+              {
+                "key": "a549_liu_hillsley2026|A549",
+                "admitted_offered": 504189,
+                "distinct_drawn": 287698,
+                "draws": 287698
+              },
+              {
+                "key": "hepg2_nadig|HepG2",
+                "admitted_offered": 119008,
+                "distinct_drawn": 51537,
+                "draws": 51537
+              },
+              {
+                "key": "hipsci_targeted_19|eipl_1",
+                "admitted_offered": 31135,
+                "distinct_drawn": 21599,
+                "draws": 21599
+              },
+              {
+                "key": "hipsci_targeted_19|eipl_3",
+                "admitted_offered": 29685,
+                "distinct_drawn": 25210,
+                "draws": 25210
+              },
+              {
+                "key": "hipsci_targeted_19|fiaj_1",
+                "admitted_offered": 33547,
+                "distinct_drawn": 28237,
+                "draws": 28237
+              },
+              {
+                "key": "hipsci_targeted_19|fiaj_3",
+                "admitted_offered": 6747,
+                "distinct_drawn": 4895,
+                "draws": 4895
+              },
+              {
+                "key": "hipsci_targeted_19|iudw_1",
+                "admitted_offered": 35564,
+                "distinct_drawn": 24711,
+                "draws": 24711
+              },
+              {
+                "key": "hipsci_targeted_19|iudw_4",
+                "admitted_offered": 27853,
+                "distinct_drawn": 23627,
+                "draws": 23627
+              },
+              {
+                "key": "hipsci_targeted_19|jejf_2",
+                "admitted_offered": 37883,
+                "distinct_drawn": 26078,
+                "draws": 26078
+              },
+              {
+                "key": "hipsci_targeted_19|jejf_3",
+                "admitted_offered": 27866,
+                "distinct_drawn": 23397,
+                "draws": 23397
+              },
+              {
+                "key": "hipsci_targeted_19|kolf_2",
+                "admitted_offered": 32473,
+                "distinct_drawn": 27474,
+                "draws": 27474
+              },
+              {
+                "key": "hipsci_targeted_19|kolf_3",
+                "admitted_offered": 29466,
+                "distinct_drawn": 20565,
+                "draws": 20565
+              },
+              {
+                "key": "hipsci_targeted_19|oikd_2",
+                "admitted_offered": 11328,
+                "distinct_drawn": 7931,
+                "draws": 7931
+              },
+              {
+                "key": "hipsci_targeted_19|oikd_5",
+                "admitted_offered": 36410,
+                "distinct_drawn": 31127,
+                "draws": 31127
+              },
+              {
+                "key": "hipsci_targeted_19|paab_3",
+                "admitted_offered": 23031,
+                "distinct_drawn": 19445,
+                "draws": 19445
+              },
+              {
+                "key": "hipsci_targeted_19|paab_4",
+                "admitted_offered": 34097,
+                "distinct_drawn": 23435,
+                "draws": 23435
+              },
+              {
+                "key": "hipsci_targeted_19|pipw_4",
+                "admitted_offered": 29856,
+                "distinct_drawn": 21472,
+                "draws": 21472
+              },
+              {
+                "key": "hipsci_targeted_19|pipw_5",
+                "admitted_offered": 7493,
+                "distinct_drawn": 6260,
+                "draws": 6260
+              },
+              {
+                "key": "hipsci_targeted_19|tolg_4",
+                "admitted_offered": 13482,
+                "distinct_drawn": 9446,
+                "draws": 9446
+              },
+              {
+                "key": "hipsci_targeted_19|tolg_6",
+                "admitted_offered": 23566,
+                "distinct_drawn": 20329,
+                "draws": 20329
+              },
+              {
+                "key": "hipsci_targeted_19|zapk_3",
+                "admitted_offered": 37244,
+                "distinct_drawn": 31550,
+                "draws": 31550
+              },
+              {
+                "key": "jurkat_nadig|Jurkat",
+                "admitted_offered": 215180,
+                "distinct_drawn": 149595,
+                "draws": 149595
+              },
+              {
+                "key": "kolf_chromatin_modifiers|KOLF2.1J iPSC",
+                "admitted_offered": 36508,
+                "distinct_drawn": 16625,
+                "draws": 16625
+              },
+              {
+                "key": "kolf_metabolic_enzymes|KOLF2.1J iPSC",
+                "admitted_offered": 100413,
+                "distinct_drawn": 85205,
+                "draws": 85205
+              },
+              {
+                "key": "kolf_strong_perturbations|KOLF2.1J iPSC",
+                "admitted_offered": 193473,
+                "distinct_drawn": 160742,
+                "draws": 160742
+              },
+              {
+                "key": "norman2019_crispra|K562",
+                "admitted_offered": 60117,
+                "distinct_drawn": 60117,
+                "draws": 60117
+              },
+              {
+                "key": "replogle_k562_essential|K562",
+                "admitted_offered": 253297,
+                "distinct_drawn": 188039,
+                "draws": 188039
+              },
+              {
+                "key": "replogle_k562_gwps|K562",
+                "admitted_offered": 1616514,
+                "distinct_drawn": 1221853,
+                "draws": 1221853
+              },
+              {
+                "key": "replogle_rpe1|RPE1",
+                "admitted_offered": 201857,
+                "distinct_drawn": 130369,
+                "draws": 130369
+              },
+              {
+                "key": "tian2021_crispra|iPSC-induced neuron",
+                "admitted_offered": 15452,
+                "distinct_drawn": 872,
+                "draws": 872
+              },
+              {
+                "key": "tian2021_crispri|iPSC-induced neuron",
+                "admitted_offered": 26218,
+                "distinct_drawn": 0,
+                "draws": 0
+              }
+            ],
+            "leakage_check": {
+              "passed": true,
+              "non_train_classes_drawn": {}
+            },
+            "batch_chain": "784623fbb5ee12c028d575fa41d8ca52635969e13c4298e2eeeb08cc4bc76a7f",
+            "memory": {
+              "rss_peak_mb": 4147.2,
+              "rss_mb": 3400.5,
+              "children_rss_mb": 0.0,
+              "system_available_mb": 27396.5,
+              "gpu": {
+                "cuda:0": {
+                  "gpu_peak_mb": 1597.1,
+                  "gpu_reserved_mb": 4058.0
+                },
+                "cuda:1": {
+                  "gpu_peak_mb": 1355.9,
+                  "gpu_reserved_mb": 3620.0
+                }
+              }
+            },
+            "loss_shares": {
+              "by_group": {
+                "A549": 0.14503374932670857,
+                "HepG2": 0.1100699009126327,
+                "Jurkat": 0.17670171828762044,
+                "K562": 0.21165836872004873,
+                "Neuron": 0.007171787081281663,
+                "RPE1": 0.16415575676760955,
+                "iPSC": 0.18520871890409846
+              },
+              "by_unit": {
+                "A549::a549_liu_hillsley2026": 0.14503374932670857,
+                "HepG2::hepg2_nadig": 0.1100699009126327,
+                "Jurkat::jurkat_nadig": 0.17670171828762044,
+                "K562::norman2019_crispra": 0.08472358866969744,
+                "K562::replogle_k562_essential": 0.06289588463290618,
+                "K562::replogle_k562_gwps": 0.06403889541744509,
+                "Neuron::tian2021_crispra": 0.007171787081281663,
+                "RPE1::replogle_rpe1": 0.16415575676760955,
+                "iPSC::hipsci_targeted_19": 0.049561016098654154,
+                "iPSC::kolf_chromatin_modifiers": 0.028936048160000276,
+                "iPSC::kolf_metabolic_enzymes": 0.05391886538049036,
+                "iPSC::kolf_strong_perturbations": 0.05279278926495367
+              }
+            },
+            "control_draws": {
+              "rule": "cell_data.draw_controls_lib: own library without replacement, own library with replacement, or the key's pool; counts of training cells",
+              "by_key": {
+                "a549_liu_hillsley2026|A549": {
+                  "own_library": 287698
+                },
+                "hepg2_nadig|HepG2": {
+                  "key_pool": 179,
+                  "own_library": 50291,
+                  "own_library_resampled": 1067
+                },
+                "hipsci_targeted_19|eipl_1": {
+                  "key_pool": 11911,
+                  "own_library_resampled": 9688
+                },
+                "hipsci_targeted_19|eipl_3": {
+                  "key_pool": 13597,
+                  "own_library_resampled": 11613
+                },
+                "hipsci_targeted_19|fiaj_1": {
+                  "key_pool": 11207,
+                  "own_library_resampled": 17030
+                },
+                "hipsci_targeted_19|fiaj_3": {
+                  "key_pool": 4895
+                },
+                "hipsci_targeted_19|iudw_1": {
+                  "key_pool": 11032,
+                  "own_library_resampled": 13679
+                },
+                "hipsci_targeted_19|iudw_4": {
+                  "key_pool": 15531,
+                  "own_library_resampled": 8096
+                },
+                "hipsci_targeted_19|jejf_2": {
+                  "key_pool": 11552,
+                  "own_library_resampled": 14526
+                },
+                "hipsci_targeted_19|jejf_3": {
+                  "key_pool": 7378,
+                  "own_library_resampled": 16019
+                },
+                "hipsci_targeted_19|kolf_2": {
+                  "key_pool": 8197,
+                  "own_library_resampled": 19277
+                },
+                "hipsci_targeted_19|kolf_3": {
+                  "key_pool": 12266,
+                  "own_library_resampled": 8299
+                },
+                "hipsci_targeted_19|oikd_2": {
+                  "key_pool": 7931
+                },
+                "hipsci_targeted_19|oikd_5": {
+                  "key_pool": 8917,
+                  "own_library_resampled": 22210
+                },
+                "hipsci_targeted_19|paab_3": {
+                  "key_pool": 14366,
+                  "own_library_resampled": 5079
+                },
+                "hipsci_targeted_19|paab_4": {
+                  "key_pool": 12146,
+                  "own_library_resampled": 11289
+                },
+                "hipsci_targeted_19|pipw_4": {
+                  "key_pool": 12258,
+                  "own_library_resampled": 9214
+                },
+                "hipsci_targeted_19|pipw_5": {
+                  "key_pool": 6260
+                },
+                "hipsci_targeted_19|tolg_4": {
+                  "key_pool": 9136,
+                  "own_library_resampled": 310
+                },
+                "hipsci_targeted_19|tolg_6": {
+                  "key_pool": 15569,
+                  "own_library_resampled": 4760
+                },
+                "hipsci_targeted_19|zapk_3": {
+                  "key_pool": 10320,
+                  "own_library_resampled": 21230
+                },
+                "jurkat_nadig|Jurkat": {
+                  "own_library": 148170,
+                  "own_library_resampled": 1425
+                },
+                "kolf_chromatin_modifiers|KOLF2.1J iPSC": {
+                  "own_library": 16625
+                },
+                "kolf_metabolic_enzymes|KOLF2.1J iPSC": {
+                  "own_library": 85205
+                },
+                "kolf_strong_perturbations|KOLF2.1J iPSC": {
+                  "own_library": 160742
+                },
+                "norman2019_crispra|K562": {
+                  "own_library": 60117
+                },
+                "replogle_k562_essential|K562": {
+                  "own_library": 188039
+                },
+                "replogle_k562_gwps|K562": {
+                  "own_library": 1219761,
+                  "own_library_resampled": 2092
+                },
+                "replogle_rpe1|RPE1": {
+                  "own_library": 130369
+                },
+                "tian2021_crispra|iPSC-induced neuron": {
+                  "own_library": 872
+                }
+              }
+            }
+          }
+        },
+        "train/done.json": {
+          "bytes": 464,
+          "sha256": "460ed8d91e471a331403d83f2cb9584290782667c5adc57ab9c60ce80e481718",
+          "content": {
+            "finished_utc": "2026-10-03T15:39:34.066529+00:00",
+            "steps": 10740,
+            "wall_seconds": 5243.0,
+            "budget_seconds": 10800.0,
+            "arms": [
+              "ancorata",
+              "ancorata_mean"
+            ],
+            "memory": {
+              "rss_peak_mb": 4320.0,
+              "rss_mb": 4288.1,
+              "children_rss_mb": 0.0,
+              "system_available_mb": 26737.0,
+              "gpu": {
+                "cuda:0": {
+                  "gpu_peak_mb": 1597.1,
+                  "gpu_reserved_mb": 4072.0
+                },
+                "cuda:1": {
+                  "gpu_peak_mb": 1480.5,
+                  "gpu_reserved_mb": 3632.0
+                }
+              }
+            }
+          }
+        },
+        "train/health.json": {
+          "bytes": 404,
+          "sha256": "ac717e516f6caf42ba558d104bbc364dc674ace2b2b5d1768726f40838831c55",
+          "content": {
+            "step": 5000,
+            "window_logs": 5,
+            "mean_pert_gain": {
+              "ancorata": 0.0058631602674722675,
+              "ancorata_mean": 0.007811780599877238
+            },
+            "passed": true,
+            "rule": "PROTOCOLLO \u00a79: at --health-check-step, every arm's mean gain of log-likelihood per gene over no effect, on the perturbed cells of the last --health-window logged batches, must be > 0; otherwise the training stops without evaluation"
+          }
+        },
+        "train/verify.json": {
+          "bytes": 135,
+          "sha256": "379c0da887ea9c0131f710b79e809dc3793ab8943f6aa4b351b46a32c2aa6c0a",
+          "content": {
+            "shards": 365,
+            "bytes": 53318752541,
+            "differ": [],
+            "seconds": 2384.9,
+            "rule": "sha256 of each shard against the prepass state"
+          }
+        },
+        "verify.json": {
+          "bytes": 1949,
+          "sha256": "9313b87cc5dd28008216d12e3a30d70f5569f074b64ee2a0bef49132eb670679",
+          "content": {
+            "started": "2026-10-03T14:12:08Z",
+            "mounts": {
+              "rlab-hepg2-nadig": "/kaggle/input/datasets/davidmaisterx/rlab-hepg2-nadig",
+              "rlab-jurkat-nadig": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-nadig",
+              "rlab-h1-vcc2025-trainval": "/kaggle/input/datasets/davidmaisterx/rlab-h1-vcc2025-trainval",
+              "rlab-hipsci-targeted19": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19",
+              "rlab-k562-gwps-r3": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3",
+              "rlab-k562-essential-r2": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2",
+              "rlab-rpe1-r2": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2",
+              "rlab-a549": "/kaggle/input/datasets/davidmaisterx/rlab-a549",
+              "rlab-tian-norman": "/kaggle/input/datasets/davidmaisterx/rlab-tian-norman",
+              "rlab-kolf-small": "/kaggle/input/datasets/davidmaisterx/rlab-kolf-small",
+              "rlab-kolf-strong": "/kaggle/input/datasets/davidmaisterx/rlab-kolf-strong"
+            },
+            "code": "/kaggle/input/datasets/davideferrante11/rcell-anchored-code-r1",
+            "datasets": {
+              "rlab-hepg2-nadig": {
+                "files": 8,
+                "chosen": 8,
+                "cells": 145473
+              },
+              "rlab-jurkat-nadig": {
+                "files": 14,
+                "chosen": 14,
+                "cells": 262956
+              },
+              "rlab-h1-vcc2025-trainval": {
+                "files": 65,
+                "chosen": 65,
+                "cells": 320200
+              },
+              "rlab-hipsci-targeted19": {
+                "files": 59,
+                "chosen": 59,
+                "cells": 1161865
+              },
+              "rlab-k562-gwps-r3": {
+                "files": 100,
+                "chosen": 100,
+                "cells": 1989578
+              },
+              "rlab-k562-essential-r2": {
+                "files": 32,
+                "chosen": 32,
+                "cells": 310385
+              },
+              "rlab-rpe1-r2": {
+                "files": 25,
+                "chosen": 25,
+                "cells": 247914
+              },
+              "rlab-a549": {
+                "files": 31,
+                "chosen": 31,
+                "cells": 606075
+              },
+              "rlab-tian-norman": {
+                "files": 34,
+                "chosen": 10,
+                "cells": 164938
+              },
+              "rlab-kolf-small": {
+                "files": 9,
+                "chosen": 9,
+                "cells": 161807
+              },
+              "rlab-kolf-strong": {
+                "files": 12,
+                "chosen": 12,
+                "cells": 232438
+              }
+            },
+            "bad": []
+          }
+        }
+      }
+    },
+    "rcell-anchored-train-hepg2-r1": {
+      "files": [
+        "env.json",
+        "kernel_done.json",
+        "train.log",
+        "train/ancora_sola/eval.json",
+        "train/ancora_sola/eval_shifts.npz",
+        "train/ancorata/eval.json",
+        "train/ancorata/eval_shifts.npz",
+        "train/ancorata/model.pt",
+        "train/ancorata_mean/eval.json",
+        "train/ancorata_mean/eval_shifts.npz",
+        "train/ancorata_mean/model.pt",
+        "train/checkpoints/ckpt_0019992.pt",
+        "train/checkpoints/ckpt_0022393.pt",
+        "train/checkpoints/ckpt_0023810.pt",
+        "train/config.json",
+        "train/coverage.json",
+        "train/done.json",
+        "train/eval_groups.json",
+        "train/eval_observed.npz",
+        "train/health.json",
+        "train/plan.json",
+        "train/shards_resolved.json",
+        "train/train_log.jsonl",
+        "train/verify.json",
+        "verify.json"
+      ],
+      "receipts": {
+        "kernel_done.json": {
+          "bytes": 118,
+          "sha256": "c92588cb9e667e33d303c0700190d006ad0a55206401b9610cc4b5f14e709397",
+          "content": {
+            "arms": [
+              "ancorata=both@cuda:0",
+              "ancorata_mean=both/mean@cuda:1"
+            ],
+            "return_code": 0,
+            "seconds": 10633.2
+          }
+        },
+        "train/coverage.json": {
+          "bytes": 8551,
+          "sha256": "b16c691bccc7b10f618db6e045d86ebea836726be3fdf3afd8d78eb0ef0fd35c",
+          "content": {
+            "steps": 23810,
+            "batch": 256,
+            "role_batches": [
+              256,
+              256,
+              256
+            ],
+            "epochs_done": 1.535,
+            "stop": "time budget",
+            "arms": [
+              "ancorata",
+              "ancorata_mean"
+            ],
+            "admitted_training_cells": 3970762,
+            "draws": 6095360,
+            "distinct_cells_seen": 3970762,
+            "resumed_from": null,
+            "throughput": {
+              "cells_per_second": 621.9,
+              "data_wait_fraction": 0.839,
+              "seconds": 9801.3
+            },
+            "by_key": [
+              {
+                "key": "a549_liu_hillsley2026|A549",
+                "admitted_offered": 504189,
+                "distinct_drawn": 504189,
+                "draws": 787244
+              },
+              {
+                "key": "h1_vcc2025|H1",
+                "admitted_offered": 238818,
+                "distinct_drawn": 238818,
+                "draws": 370623
+              },
+              {
+                "key": "hipsci_targeted_19|eipl_1",
+                "admitted_offered": 31135,
+                "distinct_drawn": 31135,
+                "draws": 44276
+              },
+              {
+                "key": "hipsci_targeted_19|eipl_3",
+                "admitted_offered": 29685,
+                "distinct_drawn": 29685,
+                "draws": 43667
+              },
+              {
+                "key": "hipsci_targeted_19|fiaj_1",
+                "admitted_offered": 33547,
+                "distinct_drawn": 33547,
+                "draws": 49632
+              },
+              {
+                "key": "hipsci_targeted_19|fiaj_3",
+                "admitted_offered": 6747,
+                "distinct_drawn": 6747,
+                "draws": 9399
+              },
+              {
+                "key": "hipsci_targeted_19|iudw_1",
+                "admitted_offered": 35564,
+                "distinct_drawn": 35564,
+                "draws": 48695
+              },
+              {
+                "key": "hipsci_targeted_19|iudw_4",
+                "admitted_offered": 27853,
+                "distinct_drawn": 27853,
+                "draws": 41606
+              },
+              {
+                "key": "hipsci_targeted_19|jejf_2",
+                "admitted_offered": 37883,
+                "distinct_drawn": 37883,
+                "draws": 53961
+              },
+              {
+                "key": "hipsci_targeted_19|jejf_3",
+                "admitted_offered": 27866,
+                "distinct_drawn": 27866,
+                "draws": 40466
+              },
+              {
+                "key": "hipsci_targeted_19|kolf_2",
+                "admitted_offered": 32473,
+                "distinct_drawn": 32473,
+                "draws": 47530
+              },
+              {
+                "key": "hipsci_targeted_19|kolf_3",
+                "admitted_offered": 29466,
+                "distinct_drawn": 29466,
+                "draws": 42106
+              },
+              {
+                "key": "hipsci_targeted_19|oikd_2",
+                "admitted_offered": 11328,
+                "distinct_drawn": 11328,
+                "draws": 16009
+              },
+              {
+                "key": "hipsci_targeted_19|oikd_5",
+                "admitted_offered": 36410,
+                "distinct_drawn": 36410,
+                "draws": 53607
+              },
+              {
+                "key": "hipsci_targeted_19|paab_3",
+                "admitted_offered": 23031,
+                "distinct_drawn": 23031,
+                "draws": 34050
+              },
+              {
+                "key": "hipsci_targeted_19|paab_4",
+                "admitted_offered": 34097,
+                "distinct_drawn": 34097,
+                "draws": 48413
+              },
+              {
+                "key": "hipsci_targeted_19|pipw_4",
+                "admitted_offered": 29856,
+                "distinct_drawn": 29856,
+                "draws": 42311
+              },
+              {
+                "key": "hipsci_targeted_19|pipw_5",
+                "admitted_offered": 7493,
+                "distinct_drawn": 7493,
+                "draws": 11217
+              },
+              {
+                "key": "hipsci_targeted_19|tolg_4",
+                "admitted_offered": 13482,
+                "distinct_drawn": 13482,
+                "draws": 19043
+              },
+              {
+                "key": "hipsci_targeted_19|tolg_6",
+                "admitted_offered": 23566,
+                "distinct_drawn": 23566,
+                "draws": 34687
+              },
+              {
+                "key": "hipsci_targeted_19|zapk_3",
+                "admitted_offered": 37244,
+                "distinct_drawn": 37244,
+                "draws": 55196
+              },
+              {
+                "key": "jurkat_nadig|Jurkat",
+                "admitted_offered": 215180,
+                "distinct_drawn": 215180,
+                "draws": 362575
+              },
+              {
+                "key": "kolf_chromatin_modifiers|KOLF2.1J iPSC",
+                "admitted_offered": 36508,
+                "distinct_drawn": 36508,
+                "draws": 53133
+              },
+              {
+                "key": "kolf_metabolic_enzymes|KOLF2.1J iPSC",
+                "admitted_offered": 100413,
+                "distinct_drawn": 100413,
+                "draws": 166702
+              },
+              {
+                "key": "kolf_strong_perturbations|KOLF2.1J iPSC",
+                "admitted_offered": 193473,
+                "distinct_drawn": 193473,
+                "draws": 307585
+              },
+              {
+                "key": "norman2019_crispra|K562",
+                "admitted_offered": 60117,
+                "distinct_drawn": 60117,
+                "draws": 71371
+              },
+              {
+                "key": "replogle_k562_essential|K562",
+                "admitted_offered": 253297,
+                "distinct_drawn": 253297,
+                "draws": 351398
+              },
+              {
+                "key": "replogle_k562_gwps|K562",
+                "admitted_offered": 1616514,
+                "distinct_drawn": 1616514,
+                "draws": 2514225
+              },
+              {
+                "key": "replogle_rpe1|RPE1",
+                "admitted_offered": 201857,
+                "distinct_drawn": 201857,
+                "draws": 305873
+              },
+              {
+                "key": "tian2021_crispra|iPSC-induced neuron",
+                "admitted_offered": 15452,
+                "distinct_drawn": 15452,
+                "draws": 16324
+              },
+              {
+                "key": "tian2021_crispri|iPSC-induced neuron",
+                "admitted_offered": 26218,
+                "distinct_drawn": 26218,
+                "draws": 52436
+              }
+            ],
+            "leakage_check": {
+              "passed": true,
+              "non_train_classes_drawn": {}
+            },
+            "batch_chain": "de833891601b5dfb987977e98ccfc0fe4300b0c597d478b004fa02aff4e53889",
+            "memory": {
+              "rss_peak_mb": 6780.6,
+              "rss_mb": 5075.3,
+              "children_rss_mb": 0.0,
+              "system_available_mb": 25707.2,
+              "gpu": {
+                "cuda:0": {
+                  "gpu_peak_mb": 1581.7,
+                  "gpu_reserved_mb": 3824.0
+                },
+                "cuda:1": {
+                  "gpu_peak_mb": 1347.8,
+                  "gpu_reserved_mb": 3716.0
+                }
+              }
+            },
+            "loss_shares": {
+              "by_group": {
+                "A549": 0.14516092911456105,
+                "H1": 0.14427764884520555,
+                "Jurkat": 0.15664974734287912,
+                "K562": 0.12798092672602296,
+                "Neuron": 0.142075307839555,
+                "RPE1": 0.14087407404401742,
+                "iPSC": 0.14298136608775883
+              },
+              "by_unit": {
+                "A549::a549_liu_hillsley2026": 0.14516092911456105,
+                "H1::h1_vcc2025": 0.14427764884520555,
+                "Jurkat::jurkat_nadig": 0.15664974734287912,
+                "K562::norman2019_crispra": 0.03679060870989947,
+                "K562::replogle_k562_essential": 0.042991414136608425,
+                "K562::replogle_k562_gwps": 0.04819890387951507,
+                "Neuron::tian2021_crispra": 0.04910725258687421,
+                "Neuron::tian2021_crispri": 0.09296805525268077,
+                "RPE1::replogle_rpe1": 0.14087407404401742,
+                "iPSC::hipsci_targeted_19": 0.03361952002986158,
+                "iPSC::kolf_chromatin_modifiers": 0.03382595376178295,
+                "iPSC::kolf_metabolic_enzymes": 0.03858554357187911,
+                "iPSC::kolf_strong_perturbations": 0.03695034872423519
+              }
+            },
+            "control_draws": {
+              "rule": "cell_data.draw_controls_lib: own library without replacement, own library with replacement, or the key's pool; counts of training cells",
+              "by_key": {
+                "a549_liu_hillsley2026|A549": {
+                  "own_library": 787244
+                },
+                "h1_vcc2025|H1": {
+                  "own_library": 370623
+                },
+                "hipsci_targeted_19|eipl_1": {
+                  "key_pool": 24840,
+                  "own_library_resampled": 19436
+                },
+                "hipsci_targeted_19|eipl_3": {
+                  "key_pool": 23312,
+                  "own_library_resampled": 20355
+                },
+                "hipsci_targeted_19|fiaj_1": {
+                  "key_pool": 19563,
+                  "own_library_resampled": 30069
+                },
+                "hipsci_targeted_19|fiaj_3": {
+                  "key_pool": 9399
+                },
+                "hipsci_targeted_19|iudw_1": {
+                  "key_pool": 20534,
+                  "own_library_resampled": 28161
+                },
+                "hipsci_targeted_19|iudw_4": {
+                  "key_pool": 27834,
+                  "own_library_resampled": 13772
+                },
+                "hipsci_targeted_19|jejf_2": {
+                  "key_pool": 22410,
+                  "own_library_resampled": 31551
+                },
+                "hipsci_targeted_19|jejf_3": {
+                  "key_pool": 13299,
+                  "own_library_resampled": 27167
+                },
+                "hipsci_targeted_19|kolf_2": {
+                  "key_pool": 17770,
+                  "own_library_resampled": 29760
+                },
+                "hipsci_targeted_19|kolf_3": {
+                  "key_pool": 24133,
+                  "own_library_resampled": 17973
+                },
+                "hipsci_targeted_19|oikd_2": {
+                  "key_pool": 16009
+                },
+                "hipsci_targeted_19|oikd_5": {
+                  "key_pool": 17828,
+                  "own_library_resampled": 35779
+                },
+                "hipsci_targeted_19|paab_3": {
+                  "key_pool": 26231,
+                  "own_library_resampled": 7819
+                },
+                "hipsci_targeted_19|paab_4": {
+                  "key_pool": 24820,
+                  "own_library_resampled": 23593
+                },
+                "hipsci_targeted_19|pipw_4": {
+                  "key_pool": 23761,
+                  "own_library_resampled": 18550
+                },
+                "hipsci_targeted_19|pipw_5": {
+                  "key_pool": 11217
+                },
+                "hipsci_targeted_19|tolg_4": {
+                  "key_pool": 18733,
+                  "own_library_resampled": 310
+                },
+                "hipsci_targeted_19|tolg_6": {
+                  "key_pool": 27946,
+                  "own_library_resampled": 6741
+                },
+                "hipsci_targeted_19|zapk_3": {
+                  "key_pool": 18314,
+                  "own_library_resampled": 36882
+                },
+                "jurkat_nadig|Jurkat": {
+                  "own_library": 359080,
+                  "own_library_resampled": 3495
+                },
+                "kolf_chromatin_modifiers|KOLF2.1J iPSC": {
+                  "own_library": 53133
+                },
+                "kolf_metabolic_enzymes|KOLF2.1J iPSC": {
+                  "own_library": 166702
+                },
+                "kolf_strong_perturbations|KOLF2.1J iPSC": {
+                  "own_library": 307585
+                },
+                "norman2019_crispra|K562": {
+                  "own_library": 71371
+                },
+                "replogle_k562_essential|K562": {
+                  "own_library": 351398
+                },
+                "replogle_k562_gwps|K562": {
+                  "own_library": 2509911,
+                  "own_library_resampled": 4314
+                },
+                "replogle_rpe1|RPE1": {
+                  "own_library": 305873
+                },
+                "tian2021_crispra|iPSC-induced neuron": {
+                  "own_library": 16324
+                },
+                "tian2021_crispri|iPSC-induced neuron": {
+                  "own_library": 52436
+                }
+              }
+            }
+          }
+        },
+        "train/done.json": {
+          "bytes": 465,
+          "sha256": "0da7fa19d31ad7af9e378d7a2179600fdc5afaeaa1b17f2fad5b19ad8515cb4d",
+          "content": {
+            "finished_utc": "2026-10-03T17:09:02.551477+00:00",
+            "steps": 23810,
+            "wall_seconds": 10603.7,
+            "budget_seconds": 10800.0,
+            "arms": [
+              "ancorata",
+              "ancorata_mean"
+            ],
+            "memory": {
+              "rss_peak_mb": 6780.6,
+              "rss_mb": 6712.8,
+              "children_rss_mb": 0.0,
+              "system_available_mb": 24253.7,
+              "gpu": {
+                "cuda:0": {
+                  "gpu_peak_mb": 1581.7,
+                  "gpu_reserved_mb": 3836.0
+                },
+                "cuda:1": {
+                  "gpu_peak_mb": 1457.2,
+                  "gpu_reserved_mb": 3730.0
+                }
+              }
+            }
+          }
+        },
+        "train/health.json": {
+          "bytes": 401,
+          "sha256": "cf7b9be90493f6663cb5f4896ea4abd54020d2e4f728b89125881e0b9f5ce83c",
+          "content": {
+            "step": 5000,
+            "window_logs": 5,
+            "mean_pert_gain": {
+              "ancorata": 0.04493500422686338,
+              "ancorata_mean": 0.00906279447954148
+            },
+            "passed": true,
+            "rule": "PROTOCOLLO \u00a79: at --health-check-step, every arm's mean gain of log-likelihood per gene over no effect, on the perturbed cells of the last --health-window logged batches, must be > 0; otherwise the training stops without evaluation"
+          }
+        },
+        "train/verify.json": {
+          "bytes": 135,
+          "sha256": "c8d86cd02374024a517595a87d12f45311e57b37e95bbb381e04e61698ae69d3",
+          "content": {
+            "shards": 365,
+            "bytes": 53318752541,
+            "differ": [],
+            "seconds": 2351.0,
+            "rule": "sha256 of each shard against the prepass state"
+          }
+        },
+        "verify.json": {
+          "bytes": 1949,
+          "sha256": "acc4085b9363c0b280edc5bf6662a896b9c4279b10e0e42ab6ca2dfc5fc2f6d2",
+          "content": {
+            "started": "2026-10-03T14:12:16Z",
+            "mounts": {
+              "rlab-hepg2-nadig": "/kaggle/input/datasets/davidmaisterx/rlab-hepg2-nadig",
+              "rlab-jurkat-nadig": "/kaggle/input/datasets/davidmaisterx/rlab-jurkat-nadig",
+              "rlab-h1-vcc2025-trainval": "/kaggle/input/datasets/davidmaisterx/rlab-h1-vcc2025-trainval",
+              "rlab-hipsci-targeted19": "/kaggle/input/datasets/davidmaisterx/rlab-hipsci-targeted19",
+              "rlab-k562-gwps-r3": "/kaggle/input/datasets/davidmaisterx/rlab-k562-gwps-r3",
+              "rlab-k562-essential-r2": "/kaggle/input/datasets/davidmaisterx/rlab-k562-essential-r2",
+              "rlab-rpe1-r2": "/kaggle/input/datasets/davidmaisterx/rlab-rpe1-r2",
+              "rlab-a549": "/kaggle/input/datasets/davidmaisterx/rlab-a549",
+              "rlab-tian-norman": "/kaggle/input/datasets/davidmaisterx/rlab-tian-norman",
+              "rlab-kolf-small": "/kaggle/input/datasets/davidmaisterx/rlab-kolf-small",
+              "rlab-kolf-strong": "/kaggle/input/datasets/davidmaisterx/rlab-kolf-strong"
+            },
+            "code": "/kaggle/input/datasets/davideferrante11/rcell-anchored-code-r1",
+            "datasets": {
+              "rlab-hepg2-nadig": {
+                "files": 8,
+                "chosen": 8,
+                "cells": 145473
+              },
+              "rlab-jurkat-nadig": {
+                "files": 14,
+                "chosen": 14,
+                "cells": 262956
+              },
+              "rlab-h1-vcc2025-trainval": {
+                "files": 65,
+                "chosen": 65,
+                "cells": 320200
+              },
+              "rlab-hipsci-targeted19": {
+                "files": 59,
+                "chosen": 59,
+                "cells": 1161865
+              },
+              "rlab-k562-gwps-r3": {
+                "files": 100,
+                "chosen": 100,
+                "cells": 1989578
+              },
+              "rlab-k562-essential-r2": {
+                "files": 32,
+                "chosen": 32,
+                "cells": 310385
+              },
+              "rlab-rpe1-r2": {
+                "files": 25,
+                "chosen": 25,
+                "cells": 247914
+              },
+              "rlab-a549": {
+                "files": 31,
+                "chosen": 31,
+                "cells": 606075
+              },
+              "rlab-tian-norman": {
+                "files": 34,
+                "chosen": 10,
+                "cells": 164938
+              },
+              "rlab-kolf-small": {
+                "files": 9,
+                "chosen": 9,
+                "cells": 161807
+              },
+              "rlab-kolf-strong": {
+                "files": 12,
+                "chosen": 12,
+                "cells": 232438
+              }
+            },
+            "bad": []
+          }
+        }
+      }
+    }
+  }
+}

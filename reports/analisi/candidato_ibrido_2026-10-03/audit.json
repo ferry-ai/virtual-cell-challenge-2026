@@ -1,0 +1,255 @@
+{
+  "utc": "2026-10-03T18:10:11.833501+00:00",
+  "kind": "measured_from_recorded_metadata",
+  "pilot_groups": [
+    "A549",
+    "H1",
+    "HepG2",
+    "Jurkat",
+    "K562",
+    "Neuron",
+    "RPE1",
+    "iPSC"
+  ],
+  "pilot_group_count": 8,
+  "pilot_by_fold": {
+    "h1": {
+      "groups": [
+        "A549",
+        "HepG2",
+        "Jurkat",
+        "K562",
+        "Neuron",
+        "RPE1",
+        "iPSC"
+      ],
+      "admitted_training_cells": 3850952
+    },
+    "hepg2": {
+      "groups": [
+        "A549",
+        "H1",
+        "Jurkat",
+        "K562",
+        "Neuron",
+        "RPE1",
+        "iPSC"
+      ],
+      "admitted_training_cells": 3970762
+    },
+    "rpe1": {
+      "groups": [
+        "A549",
+        "H1",
+        "HepG2",
+        "Jurkat",
+        "K562",
+        "Neuron",
+        "iPSC"
+      ],
+      "admitted_training_cells": 3887913
+    }
+  },
+  "proposed_groups": [
+    "A549",
+    "BxPC3",
+    "CD4T",
+    "Calu-3",
+    "DLD-1",
+    "H1",
+    "HAP1",
+    "HCT116",
+    "HEK293T",
+    "HT29",
+    "HepG2",
+    "Hs27",
+    "Jurkat",
+    "K562",
+    "MCF7",
+    "Melanoma_Frangieh2021",
+    "Neuron",
+    "PrimaryT_Shifrut2018",
+    "RPE1",
+    "THP-1",
+    "iPSC"
+  ],
+  "proposed_group_count": 21,
+  "proposed_but_not_in_pilot": [
+    "BxPC3",
+    "CD4T",
+    "Calu-3",
+    "DLD-1",
+    "HAP1",
+    "HCT116",
+    "HEK293T",
+    "HT29",
+    "Hs27",
+    "MCF7",
+    "Melanoma_Frangieh2021",
+    "PrimaryT_Shifrut2018",
+    "THP-1"
+  ],
+  "proposal_warning": "PROPOSAL (worker claude2, 3/10/2026), not adopted: line groups for the expanded corpus, in the schema of reports/modelli/rete_cellulare_2026-10-03/line_groups.json (contexts, study_prefixes), which it contains unchanged. R-LEAD owns P1: it adopts or corrects this with a new file. Resolution is cell_data.group_of without its fallback: a (study, context) with no rule is refused by coverage_audit.py, never a silent new group. 'related' lists groups removed together with a held-out group when strictness is wanted (shared donor or line family); 'evidence' says where each new rule comes from and what is unverified.",
+  "related_groups": {
+    "CD4T": [
+      "PrimaryT_Shifrut2018"
+    ],
+    "PrimaryT_Shifrut2018": [
+      "CD4T"
+    ],
+    "Neuron": [
+      "iPSC"
+    ]
+  },
+  "anchor_source_allowlist": [
+    "H1",
+    "HepG2",
+    "RPE1",
+    "K562",
+    "iPSC",
+    "Jurkat",
+    "Neuron"
+  ],
+  "kolf": {
+    "ok": true,
+    "utc": "2026-10-03T17:44:59Z",
+    "totals": {
+      "shards": 133,
+      "cells": 2659209,
+      "nnz": 7872183461,
+      "counts": 15760481245,
+      "bytes": 18386427991
+    },
+    "inventory": {
+      "rows": 887280,
+      "contexts": [
+        "KOLF2.1J iPSC"
+      ],
+      "context_target_combinations": 11687,
+      "targeted_cells": 2512462,
+      "control_cells": 146747,
+      "targeted_cells_at_cap": {
+        "32": 365813,
+        "64": 716099,
+        "128": 1376068
+      }
+    },
+    "sample_count_warning": "Coarse context-target caps only; no stratification by donor, guide, library or phenotype; controls separate"
+  },
+  "technical_training_audit": {
+    "rcell-anchored-train-h1-r1": {
+      "exit_code": 0,
+      "health_passed": true,
+      "shard_hash_differences": [],
+      "cell_class_leakage_passed": true,
+      "anchor_derived_leakage_note": "Not tested by the cell-class check; J/T excluded from scientific conclusions by protocol amendment 9",
+      "epochs_done": 0.714,
+      "stop": "time budget",
+      "distinct_cells_seen": 2749440,
+      "admitted_training_cells": 3850952,
+      "fraction_admitted_cells_seen": 0.7139637159850344,
+      "data_wait_fraction": 0.814,
+      "expected_group_share": 0.14285714285714285,
+      "allowed_absolute_deviation": 0.02,
+      "actual_group_shares": {
+        "A549": 0.14503374932670857,
+        "HepG2": 0.1100699009126327,
+        "Jurkat": 0.17670171828762044,
+        "K562": 0.21165836872004873,
+        "Neuron": 0.007171787081281663,
+        "RPE1": 0.16415575676760955,
+        "iPSC": 0.18520871890409846
+      },
+      "share_violations": {
+        "HepG2": 0.1100699009126327,
+        "Jurkat": 0.17670171828762044,
+        "K562": 0.21165836872004873,
+        "Neuron": 0.007171787081281663,
+        "RPE1": 0.16415575676760955,
+        "iPSC": 0.18520871890409846
+      },
+      "group_balance_passed": false,
+      "admitted_but_unseen_keys": [
+        {
+          "key": "tian2021_crispri|iPSC-induced neuron",
+          "admitted_offered": 26218,
+          "distinct_drawn": 0,
+          "draws": 0
+        }
+      ],
+      "scientific_metrics_opened": false,
+      "full_technical_acceptance": "Not assessed here: evaluation completeness and other gates still required"
+    },
+    "rcell-anchored-train-hepg2-r1": {
+      "exit_code": 0,
+      "health_passed": true,
+      "shard_hash_differences": [],
+      "cell_class_leakage_passed": true,
+      "anchor_derived_leakage_note": "Not tested by the cell-class check; J/T excluded from scientific conclusions by protocol amendment 9",
+      "epochs_done": 1.535,
+      "stop": "time budget",
+      "distinct_cells_seen": 3970762,
+      "admitted_training_cells": 3970762,
+      "fraction_admitted_cells_seen": 1.0,
+      "data_wait_fraction": 0.839,
+      "expected_group_share": 0.14285714285714285,
+      "allowed_absolute_deviation": 0.02,
+      "actual_group_shares": {
+        "A549": 0.14516092911456105,
+        "H1": 0.14427764884520555,
+        "Jurkat": 0.15664974734287912,
+        "K562": 0.12798092672602296,
+        "Neuron": 0.142075307839555,
+        "RPE1": 0.14087407404401742,
+        "iPSC": 0.14298136608775883
+      },
+      "share_violations": {},
+      "group_balance_passed": true,
+      "admitted_but_unseen_keys": [],
+      "scientific_metrics_opened": false,
+      "full_technical_acceptance": "Not assessed here: evaluation completeness and other gates still required"
+    }
+  },
+  "hypothetical_iid_sampling": {
+    "rare_population_fraction": 0.01,
+    "n": 64,
+    "probability_of_missing_it": 0.525596487525562
+  },
+  "inputs": [
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/train_h1_r3/coverage.json",
+      "bytes": 8625,
+      "sha256": "8941f8fbff1182d57376c0640097be5258f6965b30b38dc1b56d4939a05c11d0"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/train_hepg2_r3/coverage.json",
+      "bytes": 8556,
+      "sha256": "ca9977eea627e31230024787ce83081ddce41da186fb880e0ce99e156669eb1c"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/esito/train_rpe1_r3/coverage.json",
+      "bytes": 8614,
+      "sha256": "8702e8436826fc0dd9176fc050d23b8721b1482820099c76186bbd77785af19a"
+    },
+    {
+      "path": "reports/sorgenti/ingestione_completa_2026-10-03/orion/line_groups_expanded_v1.json",
+      "bytes": 3874,
+      "sha256": "f5b67928cd5fc59aa25127d0e9d60dc091eeb8da3d7f64668573c94b08bd6c48"
+    },
+    {
+      "path": "reports/sorgenti/ingestione_completa_2026-10-03/kolf/esito_verifica_r1/source_complete.json",
+      "bytes": 1734,
+      "sha256": "a7ba725c4a41052d3657ba7c35a374e49735e96917347de0fe7c84d4bcdc675a"
+    },
+    {
+      "path": "reports/analisi/candidato_ibrido_2026-10-03/training_receipts.json",
+      "bytes": 40838,
+      "sha256": "f905e0994476fe7b690d6d36f37a32729ab3cd3cc192faeb76238bd14766b782"
+    },
+    {
+      "path": "reports/modelli/rete_ancorata_2026-10-03/anchors.py",
+      "bytes": 10873,
+      "sha256": "90ed266ec4de3f9b48f0308e4bf05fd6f6e0fa6fda26f5d8f9cd19b170a08a79"
+    }
+  ]
+}

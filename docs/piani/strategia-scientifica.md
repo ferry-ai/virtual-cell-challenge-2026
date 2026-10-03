@@ -1,5 +1,11 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Analisi disgiunta Codex, 3/10 ore 20:17 CEST**, sessione `01a1027a-0ae4-7c32-9001-e868a2b91698`,
+  richiesta dal proprietario: [candidato X + transfer, dati e raccordo dei piani](../../reports/analisi/candidato_ibrido_2026-10-03/README.md).
+  Ricevute dei due training v3 concluse lette: H1 non passa il bilanciamento della loss già richiesto;
+  nessuna promozione scientifica. Proposta: verificare e correggere copertura dei batch prima di proseguire
+  con lo stesso launcher, poi confronti separati per ancore ampliate ed ESM2. La pausa dei nuovi job riportata
+  nell'handoff dell'ingestione delle 19:55 resta mantenuta; questa nota non riassegna né riavvia il lavoro.
 - **Stato:** in corso dal 2 ottobre 2026, 16:47 CEST. P0–P4 eseguiti e misurati.
   - **Pilot v2 chiuso** ([§11–12 del protocollo](../../reports/modelli/rete_cellulare_2026-10-03/PROTOCOLLO.md)):
     Q1 passa e Q2 no, in entrambe le corsie; niente espansione, per decisione del proprietario.

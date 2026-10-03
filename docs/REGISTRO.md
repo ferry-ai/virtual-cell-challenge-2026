@@ -55,6 +55,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 | Percorso | Stato | Sostituito da | Cosa resta utile / nota | Scheda |
 |---|---|---|---|---|
+| `reports/analisi/candidato_ibrido_2026-10-03/` | attuale | — | Proposta Codex di adattamento di X alla rete ancorata, ruoli di aggregati e campioni, riconto 8/21 gruppi. Nuove ricevute tecniche v3: H1 non passa il bilanciamento preregistrato, attesa dei batch 81–84%; nessuna metrica scientifica aperta o nuova corsa. Raccordo dei piani proposto, pausa mantenuta | [R-LEAD](piani/strategia-scientifica.md) |
 | `reports/analisi/lezioni_vcc2025_2026-10-03/` | attuale | — | Analisi Codex dei vincitori 2025 con fonti primarie e catalogo PRiMeFlow/ESM2; riconti riproducibili su metadati del pilot e del banco, limiti inferiori dei campioni e proposte per modelli/dati. Nessun nuovo training, download di dataset o score; R-LEAD resta la sede operativa | — |
 | `reports/sorgenti/ingestione_completa_2026-10-03/` | attuale | — | Ingestione completa per mandato del proprietario del 3/10 (sessione 22d21f): sorgenti con stato e assegnazione, vincoli di parallelismo misurati, verificatore dell'archivio che riprende da ricevute precedenti con test, job 133–134 | [R-LAB](piani/piano-giorno-2026-09-30.md) |
 | `reports/analisi/revisione_ancorata_codex_2026-10-03/` | attuale | — | Revisione Codex richiesta prima del training v3: fixture della dipendenza delle ancore da target nascosti, allineamento del riferimento B e pacchetto di generazione; nessuna modifica del codice attivo né job avviato | — |
