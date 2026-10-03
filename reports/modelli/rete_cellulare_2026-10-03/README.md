@@ -25,6 +25,7 @@ congelato prima di ogni training.
 | `esito/train_<linea>_r1/`, `esito/smoke_h1_r2/`, `esito/train_<linea>_r3/` | I training: r1 collassato (§7), la prova 2.1 (§8), r3 accettato (§9–11) |
 | `esito/laneA_<linea>_r3/`, `esito/laneB_<linea>_r3/`, `esito/decision_r3/` | Corsia A, corsia B e la regola del §6 applicata alle tre linee (§11) |
 | `esito/matrix_r1/` | La matrice bersaglio × gruppo, con la lettura e la nota dopo la revisione di Codex |
+| `support_strata.py`, `esito/strati_r3/` | Corsia A per numero di linee che insegnano il bersaglio, sulle tre linee e con il conteggio stretto di Codex |
 | `inventario/` | Inventario delle cellule per linea esclusa, dal prepass (le colonne del training si aggiungono a fine training) |
 | `incidente_E-20261003-001/` | Evidenza dell'incidente dei lanci doppi (registro in `reports/analisi/lead_scientist_2026-09-29/learning/incidents/`) |
 | `export_effects.py`, `target_descriptors.py` | Copie della versione 1, non modificate |
