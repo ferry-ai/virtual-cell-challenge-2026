@@ -1,0 +1,89 @@
+{
+ "spec_version": "orion_full_v1 (3/10/2026, regia 22d21f): orion_v2 with the full design, for the owner's mandate of 3/10 (every dataset in full); the code is the corrected copy of revisione_ingestion_2026-10-03",
+ "job_id": "j16_orion_full_r1",
+ "status": "written; the meta pass and a smoke of one GEM file per line run first",
+ "source": {
+  "repo": "Xaira-Therapeutics/X-Atlas-Orion",
+  "base": "https://huggingface.co/datasets/Xaira-Therapeutics/X-Atlas-Orion/resolve/main/",
+  "release": "Hugging Face dataset, file list frozen on 26/09/2026 with the LFS sha256 of every file",
+  "license": "CC-BY-NC-SA-4.0",
+  "license_note": "non commercial; admitted in submissions by the owner's decision (reports/invii/trial_2026-09-22/autorizzazioni.md), external verification still open (PROGETTO \u00a70). Not re-read from the host today",
+  "gene_metadata": {
+   "path": "metadata/gene_metadata.parquet",
+   "bytes": null,
+   "sha256": "33900a0dbaeafb84601c7c8ba7c6642c440774fc3f49613dab11cf1f2bf0fdbf"
+  },
+  "authorisation": "the owner in chat on 3/10 after 15:28: take every dataset in full (a download of 126.3 GB read on Colab)"
+ },
+ "design": {
+  "name": "proportional_gem",
+  "k": 1000000000,
+  "salt": "orion-cells-2026-10-03",
+  "window": null,
+  "why": "k = 10^9 is above every stratum, so every eligible cell is selected with pi = 1 and every control is kept: the full eligible corpus; the training sample is chosen later by R-LEAD",
+  "not_an_owner_decision": "the eligibility rules are those of orion_v2 (pass_guide_filter == 1, one published target)"
+ },
+ "filters": {
+  "eligible": "pass_guide_filter == 1",
+  "controls": "gene_target == 'Non-Targeting': all, pi = 1",
+  "targeted": "one target per cell as published in gene_target"
+ },
+ "lines": {
+  "HCT116": {
+   "unit": "orion_hct116",
+   "study": "orion_hct116",
+   "source_id": "orion_hct116",
+   "chemistry": "MISSING",
+   "files_manifest": "reports/sorgenti/universo_2026-09-26/orion_hct116/manifest.json",
+   "expected": {
+    "files": 109,
+    "rows": 3409169,
+    "cells_pass_filter": 3409169,
+    "ntc_cells": 165777,
+    "targets_with_cells": 18293
+   },
+   "bytes": 46576484789,
+   "group": "HCT116"
+  },
+  "HEK293T": {
+   "unit": "orion_hek293t",
+   "study": "orion_hek293t",
+   "source_id": "orion_hek293t",
+   "chemistry": "MISSING",
+   "files_manifest": "reports/sorgenti/universo_2026-09-26/orion_hek293t/manifest.json",
+   "expected": {
+    "files": 223,
+    "rows": 4534299,
+    "cells_pass_filter": 4534299,
+    "ntc_cells": 218838,
+    "targets_with_cells": 18311
+   },
+   "bytes": 79683336248,
+   "group": "HEK293T"
+  }
+ },
+ "output_contract": {
+  "shards": "contracts.py version 1, one shard per GEM file, X = integer counts on the native token axis (gene_metadata), var with official_index/mapping/symbol_duplicate_rank",
+  "extra_obs": [
+   "target_published",
+   "source_row",
+   "sample_pi",
+   "sample_role",
+   "sample_stratum_n",
+   "orion_<every scalar column of the parquet>"
+  ],
+  "identity": "cell_key = study|GEM file|row<ordinal>: the row ordinal in a file pinned by its sha256; no barcode column is assumed",
+  "layout": "<out>/<unit>/<GEM file>.h5ad, receipts, manifest.json, complete.json last, verify_manifest.json for verify_drive.py"
+ },
+ "validators": [
+  "meta: rows, pass-filter cells, non-targeting cells and targets per line equal the pass of 26/09 or the job stops",
+  "sample: parquet with sidecar sha256 written before any count is read; shards carry that sha256",
+  "shards: size and LFS sha256 of every file; rows read equal the cells chosen (target by target); contract validation and re-read of every shard; cells in shards equal the sample",
+  "after the job: verify_drive.py on another Colab runtime, then publish_kaggle.py and the Kaggle-side sha256"
+ ],
+ "resources_estimate": {
+  "meta": "a few MB per file by ranges (unmeasured)",
+  "shards": "126.3 GB downloaded one file at a time (about 0.5 GB on disk at once); every eligible cell kept; split over runtimes with --part i/n"
+ },
+ "proposed_role": "training inside the frozen folds of groups HCT116 and HEK293T (already bench groups); never a reserve; adoption is R-LEAD's decision"
+}
