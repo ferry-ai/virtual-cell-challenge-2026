@@ -91,3 +91,4 @@ aggiunge da sé la riga qui sotto.
 | [0054](0054-visibilita-scorer-e-consegna.md) | 2026-10-01 | Lo scorer funziona fuori dal sandbox: consegna verificata al teammate | correzione | — |
 | [0055](0055-t29-rete-cellulare-punteggio.md) | 2026-10-01 | t29: la rete addestrata sulle singole cellule sulla classifica, -0,030 | esperimento | — |
 | [0056](0056-banco-contesto-c-j.md) | 2026-10-03 | R-LEAD P3: i controlli di una linea mai vista non migliorano il transfer su sette gruppi di linea | esperimento | — |
+| [0057](0057-p4-dieci-gruppi-pseudobulk.md) | 2026-10-03 | R-LEAD P4: dieci gruppi e una rete non lineare sul pseudobulk non danno beneficio dal contesto; sui sei membri vince il transfer | esperimento | — |
