@@ -30,6 +30,10 @@
   PROGETTO §0, AMBITI, REGISTRO, `reports/modelli/rete_ancorata_v4_2026-10-03/`, dati in
   `processed/rete_ancorata_v4_2026-10-03/`, regia dei job del binario dati che il piano richiede. Fuori perimetro:
   `adattatori_codex/` e i file non tracciati di altre sessioni. Le sessioni `22d21f` e `c7c07a` risultano inattive.
+  **Subentro, 3/10 23:34 CEST:** Claude Code, sessione `d0100a`, stessa macchina, commit di partenza `c86f6ed`, su
+  richiesta del proprietario in chat («Continua il compito dell'agente precedente», con il messaggio di passaggio della
+  `5eacdf`, chiusa). Stesso perimetro e stesse destinazioni degli output; job riletti su Kaggle alle 23:32 prima di
+  agire (cinque in corsa, `vcc-orion-hek293t-p2of8-r3` concluso), quota GPU 12,14 h residue alle 23:34.
 - **Prossimo passo:**
   1. Leggere le ricevute tecniche dei training H1 e HepG2 con `fetch_outputs.py`, senza file di valutazione, e
      l'accettazione del §5 del protocollo; lanciare RPE1 con il comando del lancio.

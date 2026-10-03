@@ -14,6 +14,10 @@ What a level loses, per group, from the counts of the compact twins (fastshard.p
   mean proportions; genes where the full group's and the controls' means are both above --min-prop): Pearson r, sign
   agreement and overlap on the full group's 200 largest shifts, RMSE;
 - the same between two halves of the full group (cells split by the parity of their hash): the noise floor;
+- the same on specific shifts (r_spec, sign_top_spec): each shift minus the key's generic response, the mean of the full
+  groups' shifts of the key's other targets, gene by gene (leave-one-out, so a target does not explain itself). Perturbed
+  cells differ from controls also for reasons common to every target of a key; a sample that kept only that common part
+  would still correlate with the full group on the total shift, so the rule of the study reads the specific one;
 - coverage: strata, libraries and guides present at each level over the group's.
 Outputs (a new --out): summary.json (per unit and level, totals, rule), groups.csv.gz (one row per group),
 selection/<shard>.npz (per row: the smallest level holding it, 0 = not a sampled perturbed cell; and its inclusion
@@ -174,6 +178,48 @@ def metrics(s_full, s_x):
             "rmse": float(np.sqrt(np.mean((a - b) ** 2)))}
 
 
+def rows_of_key(res, caps, min_prop) -> dict:
+    """Per target of one key (a result of key_task): cells per accumulator, genes compared and the metrics of every
+    level and of the two halves, on total and on specific shifts. Accumulators: full, one per cap, half A, half B."""
+    if res["ctrl_n"] == 0:
+        return {}
+    mc = res["ctrl_sum"] / res["ctrl_n"]
+    lmc = np.log(np.maximum(mc, 1e-12))
+    n_acc = len(caps) + 3
+
+    def shifts(t, vec):
+        n = [res["n"].get((t, i), 0) for i in range(n_acc)]
+        if n[0] == 0:
+            return n, None
+        means = [vec[i] / n[i] if n[i] else np.full(vec.shape[1], np.nan) for i in range(n_acc)]
+        ok = (means[0] > min_prop) & (mc > min_prop)
+        return n, [np.where(ok, np.log(np.maximum(m, 1e-12)) - lmc, np.nan) for m in means]
+
+    gsum, gn = np.zeros(mc.size), np.zeros(mc.size)              # the key's generic response, from the full groups
+    for t, vec in res["acc"].items():
+        _, s = shifts(t, vec)
+        if s is not None:
+            f = np.isfinite(s[0])
+            gsum[f] += s[0][f]
+            gn[f] += 1
+    targets = int(sum(1 for t in res["acc"] if res["n"].get((t, 0), 0) > 0))
+    out = {}
+    for t, vec in res["acc"].items():
+        n, s = shifts(t, vec)
+        if s is None:
+            continue
+        f = np.isfinite(s[0])
+        others = gn - f
+        generic = np.where(others >= 1, (gsum - np.where(f, s[0], 0.0)) / np.maximum(others, 1), np.nan)
+        spec = [x - generic for x in s]
+        row = {"n": n, "genes": int(f.sum()), "targets_in_key": targets, "levels": [], "halves": metrics(s[-2], s[-1]),
+               "halves_spec": metrics(spec[-2], spec[-1])}
+        for j in range(len(caps)):
+            row["levels"].append({"total": metrics(s[0], s[1 + j]), "spec": metrics(spec[0], spec[1 + j])})
+        out[t] = row
+    return out
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--prepass", type=Path, required=True)
@@ -223,27 +269,20 @@ def main():
     gmeta = {(g["key"], g["tgt"]): g for g in groups}
     for res in results:
         k = res["key"]
-        if res["ctrl_n"] == 0:
-            continue
-        mc = res["ctrl_sum"] / res["ctrl_n"]
-        for t, vec in res["acc"].items():
-            n = [res["n"].get((t, i), 0) for i in range(len(a.caps) + 3)]
-            if n[0] == 0:
-                continue
-            means = [vec[i] / n[i] if n[i] else np.full(vec.shape[1], np.nan) for i in range(vec.shape[0])]
-            ok = (means[0] > a.min_prop) & (mc > a.min_prop)
-            shift = [np.where(ok, np.log(np.maximum(m, 1e-12)) - np.log(np.maximum(mc, 1e-12)), np.nan) for m in means]
+        for t, e in rows_of_key(res, a.caps, a.min_prop).items():
             g = gmeta[(k, t)]
             row = {"key": st["key_names"][k], "unit": st["unit_of_key"].get(st["key_names"][k]), "target":
-                   st["symbols"][t], "cells": n[0], "strata": g["strata"], "libraries": g["libraries"],
-                   "guides": g["guides"], "genes_compared": int(ok.sum())}
+                   st["symbols"][t], "cells": e["n"][0], "strata": g["strata"], "libraries": g["libraries"],
+                   "guides": g["guides"], "genes_compared": e["genes"], "targets_in_key": e["targets_in_key"]}
             for j, c in enumerate(a.caps):
-                m = metrics(shift[0], shift[1 + j])
-                row.update({f"cells_{c}": n[1 + j], f"r_{c}": m["r"], f"sign_top_{c}": m["sign_top"],
+                m, ms = e["levels"][j]["total"], e["levels"][j]["spec"]
+                row.update({f"cells_{c}": e["n"][1 + j], f"r_{c}": m["r"], f"sign_top_{c}": m["sign_top"],
                             f"overlap_top_{c}": m["overlap_top"], f"rmse_{c}": m["rmse"],
+                            f"r_spec_{c}": ms["r"], f"sign_top_spec_{c}": ms["sign_top"],
+                            f"overlap_top_spec_{c}": ms["overlap_top"],
                             f"strata_{c}": g["coverage"][c]["strata"], f"guides_{c}": g["coverage"][c]["guides"]})
-            hm = metrics(shift[-2], shift[-1])
-            row.update({"r_halves": hm["r"], "sign_top_halves": hm["sign_top"]})
+            row.update({"r_halves": e["halves"]["r"], "sign_top_halves": e["halves"]["sign_top"],
+                        "r_spec_halves": e["halves_spec"]["r"], "sign_top_spec_halves": e["halves_spec"]["sign_top"]})
             rows.append(row)
     if ex:
         ex.shutdown()
@@ -267,6 +306,8 @@ def main():
                          "groups_whole": int((sub["cells"] <= c).sum()),
                          "r_median": float(sub[f"r_{c}"].median()) if sub[f"r_{c}"].notna().any() else None,
                          "r_p10": float(sub[f"r_{c}"].quantile(0.1)) if sub[f"r_{c}"].notna().any() else None,
+                         "r_spec_median": float(sub[f"r_spec_{c}"].median()) if sub[f"r_spec_{c}"].notna().any()
+                         else None,
                          "sign_top_median": float(sub[f"sign_top_{c}"].median())
                          if sub[f"sign_top_{c}"].notna().any() else None,
                          "guides_kept_share": float(sub[f"guides_{c}"].sum() / max(1, sub["guides"].sum()))}

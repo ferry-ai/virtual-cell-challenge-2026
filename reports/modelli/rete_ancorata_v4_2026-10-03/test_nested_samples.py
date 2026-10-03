@@ -127,6 +127,40 @@ class Nested(unittest.TestCase):
         self.assertTrue(df["r_halves"].notna().any())
         s = json.loads((self.d / "out" / "summary.json").read_text(encoding="utf-8"))
         self.assertEqual(s["totals"][str(8)], int(np.minimum(df.cells, 8).sum()))
+        for col in ("r_spec_8", "sign_top_spec_32", "r_spec_halves", "targets_in_key"):
+            self.assertIn(col, df.columns)
+        self.assertTrue((whole["r_spec_32"].dropna() > 0.9999).all())
+
+
+class SpecificShift(unittest.TestCase):
+    """rows_of_key on hand-made accumulators: a sample that keeps the key's generic response and loses the target's own
+    one still correlates with the full group on the total shift; the specific shift shows the loss."""
+
+    def test_generic_response_removed(self):
+        import nested_samples as NS
+        rng = np.random.default_rng(0)
+        genes, targets, caps = 400, 40, [2, 4, 8]
+        mc = rng.dirichlet(np.ones(genes) * 5)
+        generic = rng.normal(0, 1.0, genes)                           # common to every target of the key
+        own = rng.normal(0, 0.2, (targets, genes))
+        n_ctrl, n_full = 50, 40
+        acc, n = {}, {}
+        for t in range(targets):
+            full = mc * np.exp(generic + own[t])
+            lost = mc * np.exp(generic - own[t])                      # level 1 of target 0: its own shift inverted
+            means = [full, lost if t == 0 else full, full, full, full, full]
+            cells = [n_full, 2, 4, 8, n_full // 2, n_full // 2]
+            acc[t] = np.stack([m * c for m, c in zip(means, cells)]).astype(np.float32)
+            n.update({(t, i): c for i, c in enumerate(cells)})
+        res = {"key": 0, "acc": acc, "n": n, "ctrl_sum": mc * n_ctrl, "ctrl_n": n_ctrl, "genes": genes}
+        rows = NS.rows_of_key(res, caps, 1e-5)
+        self.assertEqual(len(rows), targets)
+        self.assertEqual(rows[0]["targets_in_key"], targets)
+        self.assertGreater(rows[0]["levels"][0]["total"]["r"], 0.8)   # the generic part hides the loss
+        self.assertLess(rows[0]["levels"][0]["spec"]["r"], -0.8)      # the specific shift shows it
+        self.assertGreater(rows[0]["levels"][2]["spec"]["r"], 0.9999)
+        self.assertGreater(rows[5]["levels"][0]["spec"]["r"], 0.9999)
+        self.assertEqual(NS.rows_of_key({**res, "ctrl_n": 0}, caps, 1e-5), {})
 
 
 if __name__ == "__main__":
