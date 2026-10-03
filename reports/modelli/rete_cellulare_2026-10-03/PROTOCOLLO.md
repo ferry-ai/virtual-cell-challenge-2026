@@ -238,3 +238,16 @@ transfer e lo corregga. Motivo dichiarato nella domanda: lo scarto dal transfer 
 riduce. Prima viene un controllo gratuito sui sei membri: se mescolare transfer e spostamento della rete aiuta. Poi il
 training sul corpus ampliato da un'altra sessione (claude2), quando sarà pronto. È una deviazione dalla regola di
 espansione decisa per risorse e obiettivo, non uno spostamento di soglia: l'esito di Q1 resta quello registrato.
+
+## 12. Corsia B sulle tre linee (3/10, dopo le 14:57 CEST)
+
+La corsia B di H1 è finita alle 14:56 ([`esito/laneB_h1_r3/`](esito/laneB_h1_r3/NOTA.md)). Sulle tre linee, la regola
+del §6 sulla media locale dei sei membri ([lettura](esito/decision_laneB_r3/LETTURA.md)) dà:
+- **Q1 passa**: +0,146, positiva in 2 linee su 3, soprattutto per NMAE;
+- **Q2 non passa**: 0 su 3, con scarti da −0,36 a −0,64;
+- **Q3** è usata: +0,202.
+
+La clausola di espansione della corsia B non scatta, e la decisione del §11 non cambia.
+
+Il `transfer_cells` della corsia B usa i gruppi interi del cubo, compresa la tabella VIPerturb di K562. La corsia A la
+esclude. La differenza è registrata nella lettura.

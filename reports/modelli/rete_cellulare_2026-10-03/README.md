@@ -15,6 +15,7 @@ congelato prima di ogni training.
 | `test_v2_units.py`, `test_v2_stages.py`, `test_pi_floor.py` | Test della versione 2; `test_cell_data.py`, `test_prepass.py`, `test_read_csr.py` della versione 1 |
 | `bench_effects.py` | Corsia A: spostamenti previsti contro le righe del cubo del banco della linea esclusa, con i transfer delle stesse righe (test: `test_bench_effects.py`, sul cubo vero) |
 | `decide_pilot.py` | La regola del §6: accettazione tecnica, collasso, Q1–Q3, espansione (test: `test_decide_pilot.py`) |
+| `decide_lane_b.py` | La stessa regola sulla corsia B: media locale dei sei membri delle cellule della rete e del transfer (§12) |
 | `choose_targets.py`, `generate_cells.py`, `extract_cells.py`, `kaggle_gen.py` | Corsia B su Kaggle: bersagli per regola, cellule generate dalla rete e cellule vere degli stessi bersagli estratte dagli shard |
 | `lane_b.py`, `lane_b_hepg2.py` | Corsia B in locale: i sei membri sulle cellule estratte (ogni linea) o sul file HepG2 locale (test: `test_lane_b.py`) |
 | `MISCELE.md`, `lane_b_blend.py` | Controllo descrittivo prespecificato dopo il verdetto r3: transfer mescolato allo spostamento della rete, sugli stessi sei membri della corsia B (test: `test_lane_b_blend.py`) |
@@ -24,6 +25,7 @@ congelato prima di ogni training.
 | `esito/prepass_<linea>_r1/` | Gli output piccoli dei tre prepass (QC, split, pesi, serbatoio, log), con manifest; lo stato `.pkl` resta su Kaggle |
 | `esito/train_<linea>_r1/`, `esito/smoke_h1_r2/`, `esito/train_<linea>_r3/` | I training: r1 collassato (§7), la prova 2.1 (§8), r3 accettato (§9–11) |
 | `esito/laneA_<linea>_r3/`, `esito/laneB_<linea>_r3/`, `esito/decision_r3/` | Corsia A, corsia B e la regola del §6 applicata alle tre linee (§11) |
+| `esito/decision_laneB_r3/` | La regola del §6 sulla corsia B delle tre linee, con la lettura membro per membro (§12) |
 | `esito/matrix_r1/` | La matrice bersaglio × gruppo, con la lettura e la nota dopo la revisione di Codex |
 | `support_strata.py`, `esito/strati_r3/` | Corsia A per numero di linee che insegnano il bersaglio, sulle tre linee e con il conteggio stretto di Codex |
 | `inventario/` | Inventario delle cellule per linea esclusa, dal prepass (le colonne del training si aggiungono a fine training) |

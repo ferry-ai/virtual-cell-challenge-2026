@@ -1,0 +1,656 @@
+{
+ "protocol": "PROTOCOLLO.md \u00a75-6, lane B",
+ "lines": [
+  "H1",
+  "HepG2",
+  "RPE1"
+ ],
+ "inputs": {
+  "H1": "esito/laneB_h1_r3/scaled_local.csv",
+  "HepG2": "esito/laneB_hepg2_r3/scaled_local.csv",
+  "RPE1": "esito/laneB_rpe1_r3/scaled_local.csv"
+ },
+ "local_avg": {
+  "H1": {
+   "replicate": 1.0,
+   "baseline": 0.0,
+   "transfer_cells": 0.27863,
+   "transfer_all": 0.27202,
+   "cells_shift": 0.02369,
+   "mean_shift": 0.01024,
+   "generic_shift": 0.00848,
+   "cells_cells": -0.07946,
+   "mean_cells": -0.19554,
+   "generic_cells": -0.06461
+  },
+  "HepG2": {
+   "replicate": 1.0,
+   "baseline": 0.0,
+   "transfer_cells": 0.24701,
+   "transfer_all": 0.21205,
+   "cells_shift": 0.21172,
+   "mean_shift": -0.03176,
+   "generic_shift": -0.13129,
+   "cells_cells": -0.38826,
+   "mean_cells": -0.71177,
+   "generic_cells": -0.91304
+  },
+  "RPE1": {
+   "replicate": 1.0,
+   "baseline": 0.0,
+   "transfer_cells": 0.22321,
+   "transfer_all": 0.21599,
+   "cells_shift": 0.03407,
+   "mean_shift": -0.0215,
+   "generic_shift": -0.02391,
+   "cells_cells": -0.24264,
+   "mean_cells": -0.24086,
+   "generic_cells": -0.33888
+  }
+ },
+ "registered": {
+  "Q1_state": {
+   "arms": [
+    "cells_cells",
+    "mean_cells"
+   ],
+   "by_member": {
+    "PDS": {
+     "by_line": {
+      "H1": 0.0004928536224741015,
+      "HepG2": 0.05730659025787979,
+      "RPE1": 0.0723752598752599
+     },
+     "complete": true,
+     "macro": 0.04339156791853793,
+     "lines_positive": 3,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "MSE": {
+     "by_line": {
+      "H1": 0.0,
+      "HepG2": 0.0,
+      "RPE1": 0.0
+     },
+     "complete": true,
+     "macro": 0.0,
+     "lines_positive": 0,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "NMAE": {
+     "by_line": {
+      "H1": 0.7837216391861039,
+      "HepG2": 1.8492599533469671,
+      "RPE1": -0.12285637815982287
+     },
+     "complete": true,
+     "macro": 0.8367084047910828,
+     "lines_positive": 2,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "FID": {
+     "by_line": {
+      "H1": -0.002662310892044606,
+      "HepG2": 0.01418927255267266,
+      "RPE1": 0.04909267094004066
+     },
+     "complete": true,
+     "macro": 0.020206544200222904,
+     "lines_positive": 2,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "REACH": {
+     "by_line": {
+      "H1": -0.083090886313004,
+      "HepG2": 0.0217265412510128,
+      "RPE1": -0.020719487252804702
+     },
+     "complete": true,
+     "macro": -0.027361277438265302,
+     "lines_positive": 1,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "JAC": {
+     "by_line": {
+      "H1": -0.0019765541961501015,
+      "HepG2": -0.0014319410857397408,
+      "RPE1": 0.011472535452632993
+     },
+     "complete": true,
+     "macro": 0.002688013390247717,
+     "lines_positive": 1,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "avg": {
+     "by_line": {
+      "H1": 0.11608079023456319,
+      "HepG2": 0.3235084027204655,
+      "RPE1": -0.0017725665241158095
+     },
+     "complete": true,
+     "macro": 0.14593887547697096,
+     "lines_positive": 2,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    }
+   }
+  },
+  "Q2_transfer": {
+   "arms": [
+    "cells_cells",
+    "transfer_cells"
+   ],
+   "by_member": {
+    "PDS": {
+     "by_line": {
+      "H1": -0.8772794480039433,
+      "HepG2": -0.7745940783190063,
+      "RPE1": -0.7752079002079
+     },
+     "complete": true,
+     "macro": -0.8090271421769498,
+     "lines_positive": 0,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "MSE": {
+     "by_line": {
+      "H1": 0.0,
+      "HepG2": 0.0,
+      "RPE1": 0.0
+     },
+     "complete": true,
+     "macro": 0.0,
+     "lines_positive": 0,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "NMAE": {
+     "by_line": {
+      "H1": -1.1132378322767496,
+      "HepG2": -2.9246655547090414,
+      "RPE1": -2.030528969153417
+     },
+     "complete": true,
+     "macro": -2.022810785379736,
+     "lines_positive": 0,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "FID": {
+     "by_line": {
+      "H1": 0.07181941842683082,
+      "HepG2": 0.13980321758332903,
+      "RPE1": 0.2589310111737729
+     },
+     "complete": true,
+     "macro": 0.15685121572797758,
+     "lines_positive": 3,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "REACH": {
+     "by_line": {
+      "H1": -0.2356937141558229,
+      "HepG2": -0.2362404382870576,
+      "RPE1": -0.23676099046243798
+     },
+     "complete": true,
+     "macro": -0.23623171430177284,
+     "lines_positive": 0,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "JAC": {
+     "by_line": {
+      "H1": 0.0058321553542552,
+      "HepG2": -0.01592493117151106,
+      "RPE1": -0.01151228709231171
+     },
+     "complete": true,
+     "macro": -0.007201687636522523,
+     "lines_positive": 1,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "avg": {
+     "by_line": {
+      "H1": -0.3580932367759049,
+      "HepG2": -0.6352702974838812,
+      "RPE1": -0.4658465226237156
+     },
+     "complete": true,
+     "macro": -0.48640335229450055,
+     "lines_positive": 0,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    }
+   }
+  },
+  "Q3_target": {
+   "arms": [
+    "cells_cells",
+    "generic_cells"
+   ],
+   "by_member": {
+    "PDS": {
+     "by_line": {
+      "H1": 0.003942828979792798,
+      "HepG2": 0.2009312320916905,
+      "RPE1": 0.11135654885654901
+     },
+     "complete": true,
+     "macro": 0.1054102033093441,
+     "lines_positive": 3,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "MSE": {
+     "by_line": {
+      "H1": 0.0,
+      "HepG2": 0.0,
+      "RPE1": 0.0
+     },
+     "complete": true,
+     "macro": 0.0,
+     "lines_positive": 0,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "NMAE": {
+     "by_line": {
+      "H1": -0.07661106595383249,
+      "HepG2": 2.740555282576866,
+      "RPE1": 0.46498793067430766
+     },
+     "complete": true,
+     "macro": 1.042977382432447,
+     "lines_positive": 2,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "FID": {
+     "by_line": {
+      "H1": 0.0033767168205021125,
+      "HepG2": 0.06695991551338021,
+      "RPE1": 0.022651195727002915
+     },
+     "complete": true,
+     "macro": 0.030995942686961746,
+     "lines_positive": 3,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "REACH": {
+     "by_line": {
+      "H1": -0.0191448664660228,
+      "HepG2": 0.14013383957483172,
+      "RPE1": -0.02442104778685969
+     },
+     "complete": true,
+     "macro": 0.032189308440649746,
+     "lines_positive": 1,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "JAC": {
+     "by_line": {
+      "H1": -0.0006593481544669016,
+      "HepG2": 0.00010733031635445922,
+      "RPE1": 0.0028734998384799953
+     },
+     "complete": true,
+     "macro": 0.000773827333455851,
+     "lines_positive": 2,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "avg": {
+     "by_line": {
+      "H1": -0.0148492891290046,
+      "HepG2": 0.524781266678854,
+      "RPE1": 0.09624135455157998
+     },
+     "complete": true,
+     "macro": 0.20205777736714314,
+     "lines_positive": 2,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    }
+   }
+  }
+ },
+ "descriptive": {
+  "shift_state": {
+   "arms": [
+    "cells_shift",
+    "mean_shift"
+   ],
+   "by_member": {
+    "PDS": {
+     "by_line": {
+      "H1": 0.1153277476589454,
+      "HepG2": 0.2125119388729705,
+      "RPE1": -0.08199064449064439
+     },
+     "complete": true,
+     "macro": 0.08194968068042384,
+     "lines_positive": 2,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "MSE": {
+     "by_line": {
+      "H1": 0.0,
+      "HepG2": 0.0,
+      "RPE1": 0.0
+     },
+     "complete": true,
+     "macro": 0.0,
+     "lines_positive": 0,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "NMAE": {
+     "by_line": {
+      "H1": 0.4360990842844358,
+      "HepG2": 0.8044999791386108,
+      "RPE1": 0.3212225141842212
+     },
+     "complete": true,
+     "macro": 0.5206071925357559,
+     "lines_positive": 3,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "FID": {
+     "by_line": {
+      "H1": -0.37213156504019324,
+      "HepG2": 0.0018223192585465897,
+      "RPE1": 0.040278003032144294
+     },
+     "complete": true,
+     "macro": -0.11001041424983411,
+     "lines_positive": 2,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "REACH": {
+     "by_line": {
+      "H1": 0.003942410773205507,
+      "HepG2": 0.38795808781839347,
+      "RPE1": 0.038566076268264915
+     },
+     "complete": true,
+     "macro": 0.1434888582866213,
+     "lines_positive": 3,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "JAC": {
+     "by_line": {
+      "H1": -0.1025695212718526,
+      "HepG2": 0.05408216213681766,
+      "RPE1": 0.0153653780180932
+     },
+     "complete": true,
+     "macro": -0.011040660372313917,
+     "lines_positive": 2,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "avg": {
+     "by_line": {
+      "H1": 0.0134446927340902,
+      "HepG2": 0.24347908120422312,
+      "RPE1": 0.055573554502013
+     },
+     "complete": true,
+     "macro": 0.10416577614677545,
+     "lines_positive": 3,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    }
+   }
+  },
+  "shift_transfer": {
+   "arms": [
+    "cells_shift",
+    "transfer_cells"
+   ],
+   "by_member": {
+    "PDS": {
+     "by_line": {
+      "H1": -0.7318876293740761,
+      "HepG2": -0.624641833810888,
+      "RPE1": -0.7959979209979208
+     },
+     "complete": true,
+     "macro": -0.7175091280609617,
+     "lines_positive": 0,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "MSE": {
+     "by_line": {
+      "H1": 0.0,
+      "HepG2": 0.0,
+      "RPE1": 0.0
+     },
+     "complete": true,
+     "macro": 0.0,
+     "lines_positive": 0,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "NMAE": {
+     "by_line": {
+      "H1": -0.16424700078084792,
+      "HepG2": 0.1719802126795584,
+      "RPE1": -0.1385010188419547
+     },
+     "complete": true,
+     "macro": -0.043589268981081404,
+     "lines_positive": 1,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "FID": {
+     "by_line": {
+      "H1": -0.30409994747237284,
+      "HepG2": 0.17447605072145345,
+      "RPE1": 0.08567946348475519
+     },
+     "complete": true,
+     "macro": -0.014648144422054735,
+     "lines_positive": 2,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "REACH": {
+     "by_line": {
+      "H1": -0.2399360181720394,
+      "HepG2": -0.0026279016488015006,
+      "RPE1": -0.2541457569277738
+     },
+     "complete": true,
+     "macro": -0.16556989224953825,
+     "lines_positive": 0,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "JAC": {
+     "by_line": {
+      "H1": -0.0894963757159747,
+      "HepG2": 0.0690471933157411,
+      "RPE1": -0.03185594019190051
+     },
+     "complete": true,
+     "macro": -0.0174350408640447,
+     "lines_positive": 1,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "avg": {
+     "by_line": {
+      "H1": -0.2549444952525518,
+      "HepG2": -0.03529437979048938,
+      "RPE1": -0.1891368622457992
+     },
+     "complete": true,
+     "macro": -0.15979191242961346,
+     "lines_positive": 0,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    }
+   }
+  },
+  "shift_target": {
+   "arms": [
+    "cells_shift",
+    "generic_shift"
+   ],
+   "by_member": {
+    "PDS": {
+     "by_line": {
+      "H1": 0.1453918186298671,
+      "HepG2": 0.3313037249283667,
+      "RPE1": 0.0787422037422036
+     },
+     "complete": true,
+     "macro": 0.18514591576681247,
+     "lines_positive": 3,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "MSE": {
+     "by_line": {
+      "H1": 0.0,
+      "HepG2": 0.0,
+      "RPE1": 0.0
+     },
+     "complete": true,
+     "macro": 0.0,
+     "lines_positive": 0,
+     "lines": 3,
+     "passed": false,
+     "status": "failed"
+    },
+    "NMAE": {
+     "by_line": {
+      "H1": 0.02173680008632589,
+      "HepG2": 0.4970296315228035,
+      "RPE1": 0.0176500826377555
+     },
+     "complete": true,
+     "macro": 0.17880550474896162,
+     "lines_positive": 3,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "FID": {
+     "by_line": {
+      "H1": -0.11198552810909551,
+      "HepG2": 0.5033648853002393,
+      "RPE1": 0.1488365982890439
+     },
+     "complete": true,
+     "macro": 0.18007198516006254,
+     "lines_positive": 2,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "REACH": {
+     "by_line": {
+      "H1": 0.03522441834563041,
+      "HepG2": 0.4377416198405209,
+      "RPE1": 0.07976466441821056
+     },
+     "complete": true,
+     "macro": 0.1842435675347873,
+     "lines_positive": 3,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "JAC": {
+     "by_line": {
+      "H1": 0.0008664110756206982,
+      "HepG2": 0.2885883045139683,
+      "RPE1": 0.022908344711789097
+     },
+     "complete": true,
+     "macro": 0.10412102010045936,
+     "lines_positive": 3,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    },
+    "avg": {
+     "by_line": {
+      "H1": 0.0152056533380581,
+      "HepG2": 0.34300469435098313,
+      "RPE1": 0.057983648966500295
+     },
+     "complete": true,
+     "macro": 0.13873133221851386,
+     "lines_positive": 3,
+     "lines": 3,
+     "passed": true,
+     "status": "passed"
+    }
+   }
+  }
+ },
+ "outcome": {
+  "Q1_state": "passed",
+  "Q2_transfer": "failed",
+  "Q3_target_used": true,
+  "expansion_clause_lane_B": false,
+  "note": "\u00a76: the expansion clause of lane B is the network's cells above the transfer in at least two of three lines (Q2 here)"
+ }
+}
