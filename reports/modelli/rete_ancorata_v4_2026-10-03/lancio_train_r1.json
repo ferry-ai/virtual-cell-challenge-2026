@@ -1,0 +1,32 @@
+{
+ "what": "first trainings of the v4 pilot (PROTOCOLLO.md, frozen at ec580c6, amendment §10 at 953eb1e, both before any v4 training)",
+ "authorisation": "owner in chat, 3/10 evening (session 5eacdf): resume the jobs the plan needs on Colab and Kaggle within the available quotas",
+ "machine": "Kaggle GPU T4 x2 (davideferrante11); at most two GPU sessions: H1 and HepG2 now, RPE1 when one ends",
+ "gpu_quota_before": "used 16.94 h of 30, 13.06 h left, refresh 2026-10-10T00:00:00Z (kaggle quota, 23:06)",
+ "gpu_quota_after_two_pushes": "used 16.96 h, 13.04 h left (23:07)",
+ "preflight": {
+  "running_before_push": "no GPU kernel; no CPU kernel (builds, anchors and the slow KOLF kernel all COMPLETE at 23:02)",
+  "inputs": {
+   "code_dataset": "davideferrante11/rcell-v4-code-r1, staged from commit 953eb1e; staged.json sha256 equal to the committed files (train_cellnet.py 1e94a482..., cellnet.py 689c6e5c..., balanced.py c1d5ca36..., fastshard.py 1c5ac364..., cell_data.py 28182555...); descriptors, axis and target keys the same bytes as v3's code dataset",
+   "prepass": "kernels rcell-prepass-<line>-r1, sha256 in PROTOCOLLO §2 (checked by the training against prepass_done.json)",
+   "anchors": "kernel rcell-v4-anchors-r1, folders anchors_<line>_all (manifest checks passed, regime J; checked by the training against their manifest)",
+   "twins": "kernels rcell-v4-fast-{a,b,c}-r1: 365/365 twins, each checked by the training against fast_manifest.json (source name, bytes and sha256 equal to the prepass state's) and hashed in the background"
+  },
+  "outputs": "/kaggle/working/train/ of each kernel: config, plan, exposure.json, coverage.json (timing, units, targets), checkpoints, model.pt and eval files per arm, done.json",
+  "incidents_considered": {
+   "E-20261003-001": "one push per slug, status read after the pushes, nothing pushes by itself",
+   "E-20261001-001": "two arms in one process on one batch stream; two loader roles; loader memory measured in coverage.json (cache_peak_mb)"
+  }
+ },
+ "train_args": "--epochs 2 --batch 256 --ctrl-k 64 --min-own 8 --dim 128 --rank 128 --lr 1e-3 --pi-floor 0.01 --seed 0 --workers 2 --roles 2 --eval-workers 3 --checkpoint-minutes 15 --delta-bound 6 --gate-mode off --health-check-step 5000 --health-window 5 --sampler balanced --unit-buffer 2 --share-window 500 --share-tolerance 0.02 --time-every 50 --train-budget-minutes 150 --eval-budget-minutes 90 --reserve-export-minutes 5 (+ --fast-roots /kaggle/input, --anchors anchors_<line>_all, --descriptors <code dataset>, by the kernel)",
+ "arms": ["ancorata=both@cuda:0", "ancorata_mean=both/mean@cuda:1"],
+ "kernels": {
+  "rcell-v4-train-h1-r1": {"pushed": "2026-10-03 23:06:27 +0200", "status_23:07": "RUNNING",
+                           "stage": "C:/Users/ferra/vcc2026-data/processed/rete_ancorata_v4_2026-10-03/kernel_train_h1_r1"},
+  "rcell-v4-train-hepg2-r1": {"pushed": "2026-10-03 23:06:33 +0200", "status_23:07": "RUNNING",
+                              "stage": "C:/Users/ferra/vcc2026-data/processed/rete_ancorata_v4_2026-10-03/kernel_train_hepg2_r1"},
+  "rcell-v4-train-rpe1-r1": {"pushed": null, "note": "the same command with --anchors-line RPE1 --anchors-dir anchors_RPE1_all --prepass-from rcell-prepass-rpe1-r1, when one GPU session ends"}
+ },
+ "command": "python kaggle_train.py kernel --config-dir <~/.kaggle-davideferrante11> --stage <new folder> --slug rcell-v4-train-<line>-r1 --owner davideferrante11 --data-owner davidmaisterx --code-slug rcell-v4-code-r1 --prepass-from rcell-prepass-<line>-r1 --anchors-from rcell-v4-anchors-r1 --anchors-line <LINE> --anchors-dir anchors_<LINE>_all --fast-kernels rcell-v4-fast-a-r1 rcell-v4-fast-b-r1 rcell-v4-fast-c-r1 --arm ancorata=both@cuda:0 --arm ancorata_mean=both/mean@cuda:1 --train-args=\"<train_args>\" (with the venv's Python)",
+ "after": "fetch the technical receipts (fetch_outputs.py, without eval files) and read the acceptance of PROTOCOLLO §5; generation (kaggle_gen.py, CPU), lane A (bench_effects.py) and lane B (lane_b.py), then decide_anchored.py"
+}
