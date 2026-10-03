@@ -22,7 +22,8 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-FILES = ("generate_cells.py", "choose_targets.py", "extract_cells.py", "cellnet.py", "cell_data.py")
+# version 3: train_cellnet.py too (generate_cells.py loads and checks the anchors with its load_anchors)
+FILES = ("generate_cells.py", "choose_targets.py", "extract_cells.py", "cellnet.py", "cell_data.py", "train_cellnet.py")
 
 KERNEL = r'''
 import json, os, subprocess, sys, time
@@ -43,8 +44,10 @@ def mount(slug):
     return hits[0]
 
 
-GEN, CODE, CUBE = mount("rcell-gen-r1"), mount({code_slug}), mount("rlead-bench-cube-r2")
+GEN, CODE, CUBE = mount({gen_slug}), mount({code_slug}), mount("rlead-bench-cube-r2")
 TRAIN, PRE = mount({train_kernel}) / "train", mount({prepass_kernel}) / "prepass"
+# version 3: the anchors the arms were trained with (anchors kernel output), passed to the generator
+ANCHORS = mount({anchors_kernel}) / f"anchors_{{HELD}}" if {anchors_kernel} else None
 cube = OUT / "cube_rows"
 cube.mkdir()
 (cube / "manifest.json").write_bytes((CUBE / "cube__manifest.json").read_bytes())
@@ -71,7 +74,8 @@ if ok:
          "--cap", 64, "--max-controls", 2048, "--seed", 2026, "--out", OUT / "real_cells.npz"], "extract")
     for arm in ARMS:
         run([GEN / "generate_cells.py", "--prepass", PRE, "--arm-dir", TRAIN / arm, "--descriptors", CODE,
-             "--targets", OUT / "targets.json", "--n", N, "--out", OUT / f"cells_{{arm}}.npz"], f"generate_{{arm}}")
+             "--targets", OUT / "targets.json", "--n", N, "--out", OUT / f"cells_{{arm}}.npz",
+             *(["--anchors", ANCHORS] if ANCHORS else [])], f"generate_{{arm}}")
 import shutil
 shutil.rmtree(cube, ignore_errors=True)
 (OUT / "gen_done.json").write_text(json.dumps(log, indent=1))
@@ -106,6 +110,9 @@ def main() -> None:
     k.add_argument("--targets", type=int, default=150)
     k.add_argument("--data-owner", default="davidmaisterx")
     k.add_argument("--shard-datasets", nargs="+", required=True, help="the corpus datasets of the held-out line")
+    k.add_argument("--anchors-kernel", default=None, help="version 3: kernel slug whose output holds anchors_<line>/")
+    for q in (d, k):
+        q.add_argument("--gen-slug", default="rcell-gen-r1", help="the dataset of the generation code")
     a = p.parse_args()
     if a.stage.exists():
         sys.exit(f"refusing: {a.stage} exists")
@@ -114,7 +121,8 @@ def main() -> None:
         for f in FILES:
             shutil.copyfile(HERE / f, a.stage / f)
         (a.stage / "dataset-metadata.json").write_text(json.dumps(
-            {"title": "rcell gen r1", "id": f"{a.owner}/rcell-gen-r1", "licenses": [{"name": "other"}], "isPrivate": True}))
+            {"title": a.gen_slug.replace("-", " "), "id": f"{a.owner}/{a.gen_slug}", "licenses": [{"name": "other"}],
+             "isPrivate": True}))
         (a.stage / "staged.json").write_text(json.dumps(
             {f: hashlib.sha256((a.stage / f).read_bytes()).hexdigest() for f in FILES}, indent=1))
         if not a.dry_run:
@@ -122,15 +130,17 @@ def main() -> None:
         return
     text = KERNEL.format(owner=repr(a.owner), held=repr(a.held_group), arms=json.dumps(a.arms), n=a.n,
                          targets=a.targets, code_slug=repr(a.code_slug), train_kernel=repr(a.train_kernel),
-                         prepass_kernel=repr(a.prepass_kernel))
+                         prepass_kernel=repr(a.prepass_kernel), gen_slug=repr(a.gen_slug),
+                         anchors_kernel=repr(a.anchors_kernel))
     compile(text, "run.py", "exec")
     (a.stage / "run.py").write_text(text, encoding="utf-8")
     meta = {"id": f"{a.owner}/{a.slug}", "title": a.slug, "code_file": "run.py", "language": "python",
             "kernel_type": "script", "is_private": True, "enable_gpu": False, "enable_tpu": False,
             "enable_internet": False,
-            "dataset_sources": [f"{a.owner}/rcell-gen-r1", f"{a.owner}/{a.code_slug}", f"{a.owner}/rlead-bench-cube-r2"]
+            "dataset_sources": [f"{a.owner}/{a.gen_slug}", f"{a.owner}/{a.code_slug}", f"{a.owner}/rlead-bench-cube-r2"]
             + [f"{a.data_owner}/{d}" for d in a.shard_datasets],
-            "kernel_sources": [f"{a.owner}/{a.train_kernel}", f"{a.owner}/{a.prepass_kernel}"],
+            "kernel_sources": [f"{a.owner}/{a.train_kernel}", f"{a.owner}/{a.prepass_kernel}"]
+            + ([f"{a.owner}/{a.anchors_kernel}"] if a.anchors_kernel else []),
             "competition_sources": []}
     (a.stage / "kernel-metadata.json").write_text(json.dumps(meta, indent=1))
     if a.dry_run:
