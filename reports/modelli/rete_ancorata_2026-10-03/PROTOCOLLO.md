@@ -32,6 +32,9 @@ Per una cellula del contesto *k* (linea *L*), perturbata sul bersaglio *t*, i lo
   perché le sue cellule non sono nel corpus.
 - Per una cellula di training della linea *L* l'ancora non usa mai *L* né *H*. Dove nessuna sorgente ha il bersaglio,
   l'ancora vale 0 e un indicatore lo dice alla rete. I bersagli nascosti (J, fold 0) e i T non hanno ancora.
+- L'ancora vale solo per le cellule **CRISPRi**, la modalità degli effetti del banco. Le cellule CRISPRa (Norman in
+  K562, Tian nei neuroni) e KO (A549) si addestrano senza ancora, come in r3: un'ancora CRISPRi potrebbe puntare nel
+  verso opposto, e il guadagno non può cambiare segno.
 - **Δ_θ** è la correzione: la rete della versione 2 (stesso contesto, stessi codici del bersaglio, stessa testa a
   rango 128). Tre cose cambiano:
   - il tronco riceve in più la proiezione dell'ancora sulle 32 direzioni geniche principali delle ancore di training,
