@@ -25,6 +25,7 @@ COLLAPSE = 1e-3                     # pi_q50 of the perturbed cells at the last 
 RESP_MIN = 0.01                     # amendment 2.1 (PROTOCOLLO §8): or the gate at its floor, or no responsibility
 SHARE_TOL = 0.02                    # loss shares of the line groups within this of 1/G
 ARMS_REQUIRED = ("cells", "mean", "generic")
+PREREGISTERED = ("H1", "HepG2", "RPE1")      # PROTOCOLLO §3: the rule reads these three lines, all of them
 
 
 def technical(train: Path) -> dict:
@@ -96,11 +97,16 @@ def paired(df: pd.DataFrame, a: str, b: str, metric: str, cls: str = "C") -> flo
 
 
 def rule(deltas: dict, need: int) -> dict:
+    """The §6 threshold on the three pre-registered lines: the mean of the three > 0 and > 0 in at least `need`.
+    A line without a finite difference (technical failure, collapsed arm) makes the comparison incomplete: it is
+    neither a pass nor a zero (Codex, reports/analisi/revisione_pilot_cellulare_2026-10-03/README.md, 3/10)."""
     v = [x for x in deltas.values() if np.isfinite(x)]
-    macro = float(np.mean(v)) if v else float("nan")
+    complete = len(v) == len(deltas) == len(PREREGISTERED)
+    macro = float(np.mean(v)) if complete else float("nan")
     pos = int(sum(x > 0 for x in v))
-    return {"by_line": deltas, "macro": macro, "lines_positive": pos, "lines": len(v),
-            "passed": bool(v and macro > 0 and pos >= need)}
+    return {"by_line": deltas, "complete": complete, "macro": macro, "lines_positive": pos, "lines": len(v),
+            "passed": bool(complete and macro > 0 and pos >= need),
+            "status": ("passed" if complete and macro > 0 and pos >= need else "failed" if complete else "incomplete")}
 
 
 def main() -> None:
@@ -116,7 +122,9 @@ def main() -> None:
         frames[g] = pd.read_csv(Path(lane) / f"per_target_{g}.csv.gz", keep_default_na=False,
                                 na_values=["", "nan", "NaN"])
     lines = [g for g, _, _ in a.line]
-    need = math.ceil(2 / 3 * len(lines))
+    if sorted(lines) != sorted(PREREGISTERED) or len(set(lines)) != len(lines):
+        raise SystemExit(f"the rule reads exactly the pre-registered lines {PREREGISTERED}, got {lines}")
+    need = math.ceil(2 / 3 * len(PREREGISTERED))
     usable = {g: tech[g]["accepted"] for g in lines}
     comparisons = {"Q1_state": ("cells", "mean"), "Q2_transfer": ("cells", "transfer_cells"),
                    "Q3_target": ("cells", "generic"), "transfer_all": ("cells", "transfer_all"),
@@ -133,12 +141,14 @@ def main() -> None:
         j = {g: paired(frames[g], x, y, "pds", cls="J") for g in lines} if name in ("Q1_state", "Q3_target") else None
         result["comparisons"][name] = {"arms": [x, y], "C": per_metric, "J_pds_by_line": j}
     q = result["comparisons"]
-    q3_ok = q["Q3_target"]["C"]["pds"]["macro"] > 0
-    expand = q["Q1_state"]["C"]["pds"]["passed"] or q["Q2_transfer"]["C"]["pds"]["passed"]
-    result["outcome"] = {"Q3_target_used": bool(q3_ok),
-                         "Q1_state_passed": q["Q1_state"]["C"]["pds"]["passed"],
-                         "Q2_transfer_passed": q["Q2_transfer"]["C"]["pds"]["passed"],
+    q1, q2, q3 = (q[k]["C"]["pds"] for k in ("Q1_state", "Q2_transfer", "Q3_target"))
+    q3_ok = q3["complete"] and q3["macro"] > 0
+    expand = q1["passed"] or q2["passed"]
+    result["outcome"] = {"Q1_state": q1["status"], "Q2_transfer": q2["status"], "Q3_target": q3["status"],
+                         "Q3_target_used": bool(q3_ok),
+                         "Q1_state_passed": q1["passed"], "Q2_transfer_passed": q2["passed"],
                          "interpretable": bool(q3_ok),
+                         "complete": bool(q1["complete"] and q2["complete"] and q3["complete"]),
                          "expand_on_lane_A": bool(expand and q3_ok),
                          "lane_B": "applied separately where computed (PROTOCOLLO §5-6)"}
     a.out.mkdir(parents=True)

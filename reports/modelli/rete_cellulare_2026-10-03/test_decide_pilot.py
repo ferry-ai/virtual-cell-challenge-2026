@@ -20,7 +20,8 @@ HERE = Path(__file__).resolve().parent
 ARMS = ("cells", "mean", "generic", "transfer_cells", "transfer_all", "generic_pseudobulk")
 
 
-def fake_line(root: Path, g: str, pds: dict, shares=(0.5, 0.5), pi_q50=None, return_code=0, drop=()):
+def fake_line(root: Path, g: str, pds: dict, shares=(0.5, 0.5), pi_q50=None, return_code=0, drop=(), health=None,
+              health_step=0):
     """A training laid out as the kernel leaves it: <kernel>/kernel_done.json and <kernel>/train/..."""
     kernel, lane = root / f"kernel_{g}", root / f"lane_{g}"
     train = kernel / "train"
@@ -43,7 +44,10 @@ def fake_line(root: Path, g: str, pds: dict, shares=(0.5, 0.5), pi_q50=None, ret
     (train / "train_log.jsonl").write_text(json.dumps({"msg": "step", "arms": {
         arm: {"pi_q50": pq.get(arm, 0.5), "responsibility_mean": 0.0 if pq.get(arm) == 0.01 else 0.4}
         for arm in ("cells", "mean", "generic")}}) + "\n", encoding="utf-8")
-    (train / "config.json").write_text(json.dumps({"args": {"pi_floor": "0.01"}}), encoding="utf-8")
+    (train / "config.json").write_text(json.dumps({"args": {"pi_floor": "0.01", "health_check_step": str(health_step)}}),
+                                      encoding="utf-8")
+    if health is not None:
+        (train / "health.json").write_text(json.dumps(health), encoding="utf-8")
     rng = np.random.default_rng(0)
     rows = []
     for i in range(40):
@@ -100,6 +104,7 @@ class Rule(unittest.TestCase):
             q1 = r["comparisons"]["Q1_state"]["C"]["pds"]
             self.assertEqual(q1["lines"], 1)                      # only RPE1 counts
             self.assertFalse(q1["passed"])                        # one positive line is less than two
+            self.assertEqual(q1["status"], "incomplete")          # and two lines are missing: not a defeat either
 
 
 class Guards(unittest.TestCase):
@@ -123,6 +128,51 @@ class Guards(unittest.TestCase):
             r = decide([line, fake_line(d, "HepG2", {}), fake_line(d, "RPE1", {})], d / "out")
             self.assertEqual(r["technical"]["H1"]["return_code"], 0)
             self.assertTrue(r["usable"]["H1"])
+
+
+class Completeness(unittest.TestCase):
+    """The cases Codex reproduced (reports/analisi/revisione_pilot_cellulare_2026-10-03/README.md)."""
+
+    def test_a_failed_line_makes_the_comparison_incomplete(self):
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            win = {"cells": 0.70, "mean": 0.60, "generic": 0.5}
+            lines = [fake_line(d, "H1", win, health={"passed": False}, health_step=5000),
+                     fake_line(d, "HepG2", win, health={"passed": True}, health_step=5000),
+                     fake_line(d, "RPE1", win, health={"passed": True}, health_step=5000)]
+            r = decide(lines, d / "out")
+            self.assertFalse(r["usable"]["H1"])
+            self.assertEqual(r["outcome"]["Q1_state"], "incomplete")
+            self.assertFalse(r["outcome"]["complete"])
+            self.assertFalse(r["outcome"]["expand_on_lane_A"])
+
+    def test_missing_health_file_is_a_failed_line(self):
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            win = {"cells": 0.70, "mean": 0.60, "generic": 0.5}
+            lines = [fake_line(d, "H1", win, health_step=5000),
+                     fake_line(d, "HepG2", win, health={"passed": True}, health_step=5000),
+                     fake_line(d, "RPE1", win, health={"passed": True}, health_step=5000)]
+            r = decide(lines, d / "out")
+            self.assertFalse(r["usable"]["H1"])
+            self.assertFalse(r["outcome"]["expand_on_lane_A"])
+
+    def test_only_the_three_preregistered_lines(self):
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            win = {"cells": 0.70, "mean": 0.60, "generic": 0.5}
+            two = [fake_line(d, "HepG2", win), fake_line(d, "RPE1", win)]
+            with self.assertRaises(AssertionError):
+                decide(two, d / "out")
+
+    def test_positive_control_passes(self):
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            win = {"cells": 0.70, "mean": 0.60, "generic": 0.5}
+            r = decide([fake_line(d, g, win) for g in ("H1", "HepG2", "RPE1")], d / "out")
+            self.assertTrue(r["outcome"]["complete"])
+            self.assertEqual(r["outcome"]["Q1_state"], "passed")
+            self.assertTrue(r["outcome"]["expand_on_lane_A"])
 
 
 class GateAtTheFloor(unittest.TestCase):

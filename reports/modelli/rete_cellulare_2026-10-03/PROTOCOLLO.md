@@ -214,3 +214,14 @@ cambiano. Le corse r3 hanno ogni file richiesto. Se i difetti trovati da Codex s
 bersaglio × gruppo di linea × modalità delle cellule di training di ogni prepass, dopo esclusioni e QC. Per ogni gruppo
 valutato riporta il numero di linee di training che hanno visto il bersaglio; gli errori della corsia A si leggono per
 quel numero.
+
+**Completamento (stessa mattina, prima del verdetto), dalla nota di Codex**
+([revisione_pilot_cellulare_2026-10-03](../../analisi/revisione_pilot_cellulare_2026-10-03/README.md), commit `b86617f`).
+Il secondo difetto di Codex era un altro e restava aperto: se H1 falliva tecnicamente e le altre due linee erano
+positive, la regola promuoveva sulla media di due. Ora `decide_pilot.py`:
+- legge esattamente le tre linee preregistrate, altrimenti si ferma;
+- dichiara **incompleto** un confronto in cui una linea non ha differenza finita (fallimento tecnico o braccio
+  collassato), senza contarlo come passato né come zero;
+- richiede la completezza anche per Q3.
+
+Le soglie non cambiano. Test: `test_decide_pilot.Completeness`, con i casi di Codex.
