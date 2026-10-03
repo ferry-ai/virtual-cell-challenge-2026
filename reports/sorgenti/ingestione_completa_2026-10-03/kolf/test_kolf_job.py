@@ -118,6 +118,23 @@ class Parts(unittest.TestCase):
             self.assertNotEqual(r.returncode, 0)
             self.assertFalse((root / "out_wrong" / "complete.json").exists())
 
+    def test_a_wrong_column_is_refused_before_the_scan(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            fixture(root)
+            spec = json.loads((root / "spec.json").read_text(encoding="utf-8"))
+            for key, bad in (("guides_col", "no_such_column"), ("layer", "X")):
+                changed = json.loads(json.dumps(spec))
+                changed["unit"]["kwargs"][key] = bad
+                if key == "layer":                                  # the shape of the layer is checked too
+                    changed["source"]["cells"] = N + 2
+                (root / "spec.json").write_text(json.dumps(changed), encoding="utf-8")
+                r = run(root, f"bad_{key}")
+                self.assertNotEqual(r.returncode, 0)
+                self.assertIn("precheck", r.stdout + r.stderr)
+                self.assertFalse((root / f"stage_bad_{key}").exists())
+                self.assertFalse((root / f"out_bad_{key}").exists())
+
 
 if __name__ == "__main__":
     unittest.main()

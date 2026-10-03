@@ -44,6 +44,38 @@ def part_range(n_cells: int, block: int, part: str | None) -> tuple[int, int]:
     return lo, hi
 
 
+def precheck(url, unit: dict, axis: Path, n_cells: int, lo: int) -> dict:
+    """Fail before the scan, not after it. The adapter reads the gene axis and the obs columns only when it yields
+    its first block, an hour or more into the scan: a wrong column name or axis would cost the whole pass."""
+    kw = unit["kwargs"]
+    with ca.base._h5_open(url) as f:
+        layer = kw.get("layer", "X")
+        node = f[layer] if layer in f else f["layers"][layer]
+        enc = node.attrs.get("encoding-type", "")
+        enc = enc.decode() if isinstance(enc, bytes) else str(enc)
+        shape = [int(v) for v in node.attrs["shape"]]
+        if enc != "csc_matrix" or shape[0] != n_cells:
+            sys.exit(f"precheck: {layer} is {enc} of shape {shape}, the spec says CSC with {n_cells} cells")
+        var = ca.axis_frame(f["var"], str(axis), kw.get("var_symbol_col"), kw.get("feature_id_col"))
+        mapped = int((var["official_index"].to_numpy() >= 0).sum())
+        if len(var) != shape[1] or mapped < min(1000, len(var) // 2):      # the guard of rlab_job.run_unit
+            sys.exit(f"precheck: {len(var)} genes for {shape[1]} columns, {mapped} on the official axis")
+        og, stop = f["obs"], min(n_cells, lo + 1000)
+        names = {k: kw.get(k) for k in ("target_col", "guides_col", "library_col", "target_id_col", "published_depth",
+                                        "context_col", "donor_col")}
+        names["index"] = ca.index_name(og)
+        absent = sorted(v for v in names.values() if v is not None and v not in og)
+        if absent:
+            sys.exit(f"precheck: obs lacks {absent}")
+        target = ca.column(og, names["target_col"], lo, stop, required=True)
+        controls = int(sum(t in kw.get("control_values", ()) for t in target))
+        ca.column(og, names["index"], lo, stop, required=True)
+    seen = {"layer": layer, "shape": shape, "genes_on_official_axis": mapped, "rows_read": [lo, stop],
+            "controls_in_rows_read": controls, "targets_in_rows_read": len(set(target))}
+    print(f"precheck: {seen}", flush=True)
+    return seen
+
+
 def count_http():
     """Count the bytes, the requests and the ETags of every HTTP range the adapters read (the scan of a CSC layer
     prints nothing for an hour or more: without this a slow host and a dead job look the same)."""
@@ -101,6 +133,7 @@ def main() -> None:
     lo, hi = part_range(src["cells"], u["block"], a.part)
     if a.max_cells is not None:
         hi = min(hi, lo + a.max_cells)
+    checked = precheck(url, u, a.axis, src["cells"], lo)
     common.new_dir(a.out)
     common.new_dir(a.stage)
     source = common.source_record(src["id"], src["release"], src["license"],
@@ -132,7 +165,7 @@ def main() -> None:
          "cells_equal_declared": sum(s["cells"] for s in sink.shards) == hi - lo,
          "one_version_of_the_file": len(http["etags"] | ({etag} if remote and etag != common.MISSING else set())) <= 1},
         {"scope": f"cells {lo}:{hi} of {src['cells']}", "part": a.part, "smoke_max_cells": a.max_cells,
-         "passes": passes, "http": {"bytes": http["bytes"], "requests": http["requests"], "etags": sorted(http["etags"])},
+         "precheck": checked, "passes": passes, "http": {"bytes": http["bytes"], "requests": http["requests"], "etags": sorted(http["etags"])},
          **bind})
     tag = f"{spec['job_id']}_cells{lo}_{hi}" + ("_smoke" if a.max_cells is not None else "")
     ok = common.complete(a.out, tag, [unit], a.data_root, {"scope": unit["scope"], "part": a.part})

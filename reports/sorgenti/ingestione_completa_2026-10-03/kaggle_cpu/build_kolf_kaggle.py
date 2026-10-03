@@ -159,8 +159,10 @@ def main() -> None:
         commit = git("rev-parse", "HEAD").strip()
         a.stage.mkdir(parents=True)
         tar = a.stage / "code_snapshot.tar.gz"
-        subprocess.run(["git", "-C", str(REPO), "archive", "--format=tar.gz", "-o", str(tar), commit, "--",
-                        *SNAPSHOT_PATHS], check=True)
+        # core.autocrlf=false: the blobs as committed. With the setting of this checkout (true) git archive writes
+        # CRLF, and the hash of a file in the runtime would not be the one of the committed file.
+        subprocess.run(["git", "-C", str(REPO), "-c", "core.autocrlf=false", "archive", "--format=tar.gz", "-o",
+                        str(tar), commit, "--", *SNAPSHOT_PATHS], check=True)
         if sorted(snapshot_members(tar)) != sorted(SNAPSHOT_PATHS):
             sys.exit("the archive does not hold exactly the files of the snapshot")
         shutil.copyfile(a.axis, a.stage / "gene_names.csv")
