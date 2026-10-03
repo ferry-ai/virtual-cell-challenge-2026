@@ -62,6 +62,19 @@
   - Scostamenti dalla proposta di Codex, detti al proprietario in chat: batch e fonti delle ancore cambiati insieme
     nella v4; Kaggle CPU al posto di Colab CPU per gemelli, campioni e generazione; riassunti delle cellule ammesse
     (R-DATI passo 2) non iniziati.
+  - **Aggiornamento delle 00:30.** Chiuse e verificate anche HCT116 (109 shard, 3.409.169 cellule) e CD4 `D1_Rest`
+    (154 shard, 1.750.820 cellule idonee su 3.074.496 righe), ricevute in `orion/esito_verifica_hct116_r1/` e
+    `cd4/esito_verifica_d1_rest_r1/` dell'ingestione. Gemelli in corsa: `rcell-v4-fast-hek293t-{a,b}-r1` (00:12,
+    00:14), `rcell-v4-fast-hct116-a-r1` (00:23); restano HCT116 parti 2–3, KOLF pan-genome, la terza ondata scPerturb.
+    Correzione di Codex inoltrata dal proprietario (00:13): la scelta dei campioni è per fold e legge solo le cellule
+    di training; lo studio r1 resta esplorativo ([emendamento §10](../../reports/modelli/rete_ancorata_v4_2026-10-03/CAMPIONI_ANNIDATI.md),
+    test di invarianza). Da lanciare a sessione libera: `kaggle_nested.py` con `--dispersion` e slug
+    `rcell-v4-nested-fold-<linea>-r1`, uno per fold.
+  - **Corpus ampliato, percorso critico (non iniziato):** protocollo con i gruppi adottati; pre-passo sui 365 shard
+    del pilot più HCT116, HEK293T e KOLF pan-genome (16,2 milioni di cellule: quello del pilot ha impiegato 10.200 s
+    per 5,6 milioni, quindi circa 8 ore di CPU per fold, entro le 12 di un kernel); `kaggle_train.py` oggi costruisce
+    l'elenco degli shard solo dai dataset con `files.json`, va esteso agli output dei kernel; chiavi dei bersagli da
+    rigenerare per i simboli nuovi; campioni per fold; ancore per fold.
 - **Riprendere da qui (passaggio ad altro account, 3/10 23:30 CEST; job verificati alle 23:27, tutti RUNNING):**
   - GPU: `rcell-v4-train-h1-r1`, `rcell-v4-train-hepg2-r1` (dalle 23:06). CPU: `vcc-orion-hct116-p3of4-r3`,
     `vcc-orion-hek293t-p{0,1,2}of8-r3` (dalle 23:08). Pronti: dataset `davideferrante11/rcell-v4-code-r1` (training),
