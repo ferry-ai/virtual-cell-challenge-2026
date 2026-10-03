@@ -109,7 +109,7 @@ def main() -> None:
     p.add_argument("--line", choices=["HCT116", "HEK293T"], required=True)
     p.add_argument("--job", required=True)
     p.add_argument("--number", required=True)
-    p.add_argument("--queue", choices=["queue", "queue2"], required=True)
+    p.add_argument("--queue", choices=["queue", "queue2", "queue3", "queue4"], required=True)
     p.add_argument("--setup", required=True)
     p.add_argument("--commit", required=True)
     p.add_argument("--snapshot", type=Path, required=True)
@@ -118,7 +118,7 @@ def main() -> None:
     p.add_argument("--sample-dir", help="shards: Drive-relative folder holding <LINE>.parquet, .sha256 and .json")
     p.add_argument("--jobs-dir", type=Path, default=HERE / "jobs")
     a = p.parse_args()
-    taken = [q for d in (a.jobs_dir, GDRIVE / "runs" / "queue", GDRIVE / "runs" / "queue2") if d.is_dir()
+    taken = [q for d in (a.jobs_dir, *(GDRIVE / "runs" / f"queue{s}" for s in ("", "2", "3", "4"))) if d.is_dir()
              for q in d.glob(f"{a.number}_*")]
     if taken:
         sys.exit(f"refusing: queue number {a.number} is taken: {taken}")
