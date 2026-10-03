@@ -21,6 +21,29 @@
 - **Prossimo passo:** il proprietario riavvia i due dispatcher Colab (`queue`, `queue2`); Codex consegna gli
   adattatori; Claude li integra e mette in coda KOLF e CD4, mentre prepara Orion, Mixscale e VIPerturb.
   Il nome storico «piano-giorno» non indica una scadenza.
+- **Supervisione:** Codex, dal 3/10 15:47 per scelta del proprietario. Monitora ogni 15 minuti, fa audit e prepara
+  fixture su copie isolate, e legge questa scheda: la sua relay non riceve messaggi in modo stabile.
+- **Collo di bottiglia attuale (3/10, 15:55):** un solo runtime Colab attivo, quello di `queue`, occupato dalle
+  verifiche 133–134. Southard (132) aspetta `queue2`. Dopo vengono gli adattatori di KOLF e CD4.
+
+## Ingestione completa: filoni
+
+Per ogni dataset, completo vuol dire tre cose:
+- **conteggi riconciliati:** cellule grezze = idonee + esclusioni per motivo, e idonee = righe negli shard;
+- **ricevute:** sha256 di ogni shard su Drive;
+- **verifica indipendente:** una rilettura da un altro runtime.
+
+Il dettaglio di sorgenti e misure è nel [README](../../reports/sorgenti/ingestione_completa_2026-10-03/README.md).
+
+| Filone | Chi | Dipende da | Prossimo passo | Output |
+|---|---|---|---|---|
+| Southard RPE1 + Hs27 (CRISPRa), 850.225 + 447.301 cellule | Claude | runtime `queue2` | avvio di `queue2` | `j09_southard_r3` su Drive, `rlab-southard-*` su Kaggle |
+| Verifica dell'archivio (816 + 4.334 file) | Claude | runtime `queue` | in corso (133–134) | `archivio_verify_2026-10-03_r2/out_*_r2` |
+| KOLF pan-genome, 2.659.209 cellule | Codex (adattatore) → Claude (job) | `h5csc` compatto a intervalli | consegna di Codex | shard per intervallo di cellule |
+| CD4 completo, 12 file, 33,6 milioni di cellule | Codex (filtro) → Claude (job) | filtro di idoneità; quota di Drive misurata dal runtime | consegna di Codex; `df` su `/content/drive` | un job per file, esclusioni per motivo e per corsia |
+| Orion completo, HCT116 3.409.169 + HEK293T 4.534.299 | Claude | `orion_job.py` corretto | modalità senza campione | shard per lotto GEM |
+| Mixscale (5 RDS) e VIPerturb | Claude | R sul runtime | job di conversione | shard di contratto |
+| microglia, PerturbFate, DLD-1 | Claude, o Grok per la sola ricerca web | — | elenco di file, dimensioni e formati | decisione registrata |
 - **Dipendenze:** [R-LEAD](strategia-scientifica.md), [sorgenti](../../reports/sorgenti/README.md)
   e [modelli](../../reports/modelli/README.md). Dati pesanti esterni a Git.
 
