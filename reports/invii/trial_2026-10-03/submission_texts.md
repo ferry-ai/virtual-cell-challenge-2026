@@ -26,3 +26,20 @@ It was trained by leave-one-line-out on public screens:
 KOLF2.1J and Jurkat (Nadig et al. 2025) served only for early stopping. The H1 data of the 2025 challenge and HepG2
 (Nadig et al. 2025) were held out for evaluation. Here only the training screens serve as sources. The effects are
 turned into cells with the same generator and settings as trial-22. One seed, one checkpoint.
+
+## t31 (preparato; invio solo con il sì del proprietario)
+
+Scritto il 3 ottobre alle 23:50, ora italiana. In quel momento nessun effetto era ancora stato esportato o generato.
+Previsione e regola di lettura in `reports/invii/prediction_t31_2026-10-03/prediction.json`.
+
+**Model name:** `trial-31 equal-weight multi-line transfer at amplitude x2 with the trial-22 generator`
+
+**Description:**
+
+Measured CRISPRi knockdown effects of the same target from public screens are averaged with equal weight per cell-line
+group. The screens are Replogle et al. 2022 (K562 genome-wide and essential, RPE1), the HipSci iPSC CRISPRi screens,
+and Tian et al. 2019 and 2021 (iPSC and induced neurons). The average is scaled by the median single-source norm, then
+doubled. Nothing is learned per target, and nothing is fitted to the leaderboard. This is the starting point of
+trial-30's network without its learned weights and learned amplitude. On a held-out HepG2 bench with the real scorer,
+that learned part lost 0.25, while this equal-weight start matched the best transfer arms. The effects are turned into
+cells with the trial-22 generator, at effect scale 2. One seed.
