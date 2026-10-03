@@ -1,0 +1,88 @@
+{
+  "written_utc": "2026-10-03T22:58:51+00:00",
+  "entry_id": "iJRHcbswOtopr8kDLJuP",
+  "submission_date": "2026-10-03T22:25:16.074760Z",
+  "official_status": "published",
+  "score_avg": 0.07874905138420325,
+  "score_avg_recomputed_from_members": 0.07874905138420324,
+  "rank_at_scoring": 652,
+  "panel_id": "vcc2026-val-1",
+  "anchor_version": "vcc2026-valA-r4+vcc2026-valB-r4+vcc2026-valC-r4",
+  "registered_band": [
+    0.05,
+    0.15
+  ],
+  "registered_centre": 0.1,
+  "inside_avg_band": true,
+  "rule_branch": "c_0.06_to_0.10",
+  "rule_text": "at the level of plain transfer: no further submission of this form; amplitude alone does not close the gap",
+  "differences": {
+    "t31_minus_t22": -0.06250144770139411,
+    "t31_minus_t22_t24_mean": -0.06332462863360554,
+    "t31_minus_t28": -0.06609615361579675,
+    "t31_minus_t30": 0.05087074365321459,
+    "t31_minus_t08": 0.018379051384203253,
+    "t31_minus_t11": 0.007972051384203246,
+    "t31_minus_t15": -0.02878394861579675
+  },
+  "reference": {
+    "t22": 0.14125049908559736,
+    "t22_t24_mean": 0.1420736800178088,
+    "t28_best_observed": 0.144845205,
+    "t30_network": 0.027878307730988663,
+    "t08_unscaled_transfer": 0.06037,
+    "t11_unscaled_transfer": 0.070777,
+    "t15_amplitude_x2": 0.107533
+  },
+  "scaled_published": {
+    "t31": {
+      "score_pds": 0.5570393070801006,
+      "score_mse": 0,
+      "score_nmae": -0.10246457849784152,
+      "score_fid": -0.05924124808487186,
+      "score_reach": 0.07890141201768315,
+      "score_jac": -0.0017405842098509542
+    },
+    "t30": {
+      "score_pds": 0.3610057328013267,
+      "score_mse": 0,
+      "score_nmae": 0.015439481142247616,
+      "score_fid": -0.21625733171093411,
+      "score_reach": 0.012946159101742112,
+      "score_jac": -0.005864194948450312
+    },
+    "t28": {
+      "score_pds": 0.6223070792267033,
+      "score_mse": 0,
+      "score_nmae": 0.04920195622768383,
+      "score_fid": -0.007408907363258718,
+      "score_reach": 0.19871265014354142,
+      "score_jac": 0.006258451804088974
+    },
+    "t25": {
+      "score_pds": 0.6235621757264928,
+      "score_mse": 0,
+      "score_nmae": 0.11798484120651283,
+      "score_fid": -0.0581287268841437,
+      "score_reach": 0.14405215190643564,
+      "score_jac": 0.013957923533715692
+    }
+  },
+  "raw_published_t31": {
+    "pds_cosine": 0.7515719063545151,
+    "expr_mse_unbiased_capped_norm": 7.7330245711986585,
+    "de_wilcoxon_lfc_nmae": 1.0607995176777465,
+    "de_wilcoxon_direction_fidelity_yield_raw": 0.4947353678852161,
+    "de_wilcoxon_direction_reach_raw": 0.14920763075399357,
+    "de_wilcoxon_sig_jaccard": 0.029726314026920303
+  },
+  "raw_published_t30": {
+    "pds_cosine": 0.6638833147528799,
+    "expr_mse_unbiased_capped_norm": 1.0381238254876273,
+    "de_wilcoxon_lfc_nmae": 0.9923266105006222,
+    "de_wilcoxon_direction_fidelity_yield_raw": 0.4476864324871261,
+    "de_wilcoxon_direction_reach_raw": 0.09000350019113208,
+    "de_wilcoxon_sig_jaccard": 0.02824669228691622
+  },
+  "not": "one seed; not a single factor against t22 (sources, estimator, no cis term, 28 targets at zero and amplitude change together) nor against t30 (checkpoint and effects_scale 2.0 change together); says nothing about D, E, F"
+}
