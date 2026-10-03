@@ -133,6 +133,8 @@ def main() -> None:
                 anchored = False
                 if anchor is not None:
                     ar = int(anchor["arow"][anchor["gidx"][k], tgt])
+                    if not anchor["mods"][mod_of_key[k]]:
+                        ar = len(anchor["rows"]) - 1                      # a modality without anchors
                     anchored = ar < len(anchor["rows"]) - 1
                     anc = torch.as_tensor(anchor["rows"][ar][None, :], device=dev).float()
                     ainfo = torch.as_tensor(anchor["info"][ar][None, :], device=dev)

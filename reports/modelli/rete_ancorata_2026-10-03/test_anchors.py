@@ -1,7 +1,8 @@
 """The anchors on the real bench cube with a made-up prepass state whose answers are known (skipped when the cube is not
 on this machine): each training row comes from the cell groups other than its own and the held-out one; the held-out
-line's rows are lane A's 'transfer_cells' (the same function, sources and amplitude); hidden targets and T cells get no
-row; a planted row with its own group among the sources fails the check; the held-out tables are never read for a fit.
+line's rows are lane A's 'transfer_cells' (the same function, sources and amplitude); hidden targets, T cells and pairs
+taught only by CRISPRa cells get no row; a planted row with its own group among the sources fails the check; the
+held-out tables are never read for a fit.
 
     python -m unittest test_anchors -v            (from this folder, with the project venv)
 """
@@ -34,21 +35,24 @@ KEYS = {"EWSR1": "ENSG00000182944", "TFAM": "ENSG00000108064", "TARDBP": "ENSG00
 SYMBOLS = list(KEYS)
 
 
-def shard(key, tgt, cls):
+def shard(key, tgt, cls, mod=0):
     n = len(tgt)
     return {"key": np.full(n, key, np.int32), "tgt": np.array(tgt, np.int64),
             "cls": np.array([CLASSES.index(c) for c in cls], np.int8), "admitted": np.ones(n, bool),
-            "control": np.array([t < 0 for t in tgt], bool)}
+            "control": np.array([t < 0 for t in tgt], bool), "mod": np.full(n, mod, np.int32)}
 
 
 def fake_state(genes):
+    # Norman-like K562 CRISPRa cells of HSPA5: a CRISPRi anchor must not start them, so (K562, HSPA5) has no row
     return {"holdout_group": "HepG2", "genes": genes, "symbols": SYMBOLS, "hidden": ["TEAD3"], "classes": CLASSES,
-            "key_names": ["k562_a", "rpe1_a", "jurkat_a", "hepg2_a"],
-            "key_group": {"k562_a": "K562", "rpe1_a": "RPE1", "jurkat_a": "Jurkat", "hepg2_a": "HepG2"},
+            "modalities": ["CRISPRi", "CRISPRa"], "key_names": ["k562_a", "rpe1_a", "jurkat_a", "hepg2_a", "k562_n"],
+            "key_group": {"k562_a": "K562", "rpe1_a": "RPE1", "jurkat_a": "Jurkat", "hepg2_a": "HepG2",
+                          "k562_n": "K562"},
             "shards": [shard(0, [0, 1, -1, 4], ["train", "train", "train", "T"]),
                        shard(1, [0, 2, -1], ["train", "train", "train"]),
                        shard(2, [3, -1], ["train", "train"]),
-                       shard(3, [0, 1, 2, 3, 4, -1], ["C", "C", "C", "C", "J", "control_holdout"])],
+                       shard(3, [0, 1, 2, 3, 4, -1], ["C", "C", "C", "C", "J", "control_holdout"]),
+                       shard(4, [3, 3, -1], ["train", "train", "train"], mod=1)],
             "eval_groups": [{"class": "C", "key": "hepg2_a", "symbol": s} for s in SYMBOLS[:4]]
                            + [{"class": "J", "key": "hepg2_a", "symbol": "TEAD3"}]}
 
@@ -126,6 +130,7 @@ class Anchors(unittest.TestCase):
             m = json.loads((d / "out" / "manifest.json").read_text(encoding="utf-8"))
             self.assertEqual(m["rows"], 9)
             self.assertTrue(m["checks"]["passed"])
+            self.assertEqual(m["anchored_modalities"], ["CRISPRi"])
             self.assertEqual(m["dropped_tables"], ["k562_viperturb"])
             with np.load(d / "out" / "anchors.npz") as z:
                 self.assertEqual(z["rows"].shape, (9, len(self.genes)))

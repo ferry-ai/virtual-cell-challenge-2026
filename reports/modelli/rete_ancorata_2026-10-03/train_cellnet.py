@@ -106,7 +106,8 @@ def load_anchors(folder: Path, st) -> dict:
     """The anchors of anchors.py for this prepass state, checked (module docstring, version 3), as tables:
     rows [R + 1, G] float16 with 0 where a source measures nothing and a last row of zeros (no anchor); info [R + 1, 2]
     (support / 6, presence); arow [groups, symbols + 1] the row of each (line group, target), R where none (the last
-    column is the unknown target of controls); gidx [keys] the group of each key."""
+    column is the unknown target of controls); gidx [keys] the group of each key; mods [modalities] whether a cell of
+    that modality gets its anchor (the manifest's anchored modalities: CRISPRi, the bench's)."""
     manifest = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))
     for name, f in (("anchors_npz", "anchors.npz"), ("anchors_json", "anchors.json")):
         if sha(folder / f) != manifest["outputs"][name]:
@@ -140,9 +141,14 @@ def load_anchors(folder: Path, st) -> dict:
     info[:R, 0] = [r["support"] / ANCHOR_SOURCES for r in index]
     info[:R, 1] = 1.0
     gidx = np.array([gpos[st["key_group"][k]] for k in st["key_names"]], np.int64)
+    if "anchored_modalities" not in manifest:
+        sys.exit("anchors: the manifest does not say which modalities are anchored")
+    mods = np.array([m in set(manifest["anchored_modalities"]) for m in st["modalities"]], bool)
     roles = Counter(r["role"] for r in index)
-    return {"rows": table, "info": info, "arow": arow, "gidx": gidx, "U": U, "sha256": manifest["outputs"]["anchors_npz"],
+    return {"rows": table, "info": info, "arow": arow, "gidx": gidx, "mods": mods, "U": U,
+            "sha256": manifest["outputs"]["anchors_npz"],
             "summary": {"rows": R, "rank": int(U.shape[1]), "by_role": dict(roles), "unmatched": dict(unmatched),
+                        "anchored_modalities": [m for m, k in zip(st["modalities"], mods) if k],
                         "manifest_checks": manifest.get("checks"), "rows_by_group": manifest.get("rows_by_group")}}
 
 
@@ -1149,7 +1155,8 @@ def train(a):
         if anchor:
             T.update({"anchor": torch.as_tensor(anchor["rows"], device=d),
                       "anchor_info": torch.as_tensor(anchor["info"], device=d),
-                      "arow": torch.as_tensor(anchor["arow"], device=d), "gidx": torch.as_tensor(anchor["gidx"], device=d)})
+                      "arow": torch.as_tensor(anchor["arow"], device=d), "gidx": torch.as_tensor(anchor["gidx"], device=d),
+                      "anchor_mod": torch.as_tensor(anchor["mods"], device=d)})
         tables[d] = T
     for arm in arms:
         torch.manual_seed(a.seed)            # every arm starts from the weights of the seed, whatever the other arms
@@ -1191,10 +1198,12 @@ def train(a):
         theta = torch.exp(model.log_theta[stu]).clamp(1e-3, 1e4)
         ll0 = CN.cell_loglik(x, lib, beta, mask, theta)
         anc = ainfo = None
-        if "anchor" in T:
+        mod = b["mod"].to(dev)
+        if "anchor" in T:               # version 3: the anchor of (line group, target), for anchored modalities only
             ar = T["arow"][T["gidx"][b["key"].to(dev)], tgt]
+            ar = torch.where(T["anchor_mod"][mod], ar, torch.full_like(ar, T["anchor"].shape[0] - 1))
             anc, ainfo = T["anchor"][ar].float(), T["anchor_info"][ar]
-        delta, gate = model(z, beta, tgt, T["target_gene"][tgt], b["mod"].to(dev), anc, ainfo)
+        delta, gate = model(z, beta, tgt, T["target_gene"][tgt], mod, anc, ainfo)
         ll1 = CN.cell_loglik(x, lib, beta + delta, mask, theta)
         if a.gate_mode == "off":    # version 2.2: no mixture, every perturbed cell carries the shift (pi = 1), so the
             mix = ll1               # shift always gets the full gradient (2.1's smoke run: the mixture let it die)

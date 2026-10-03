@@ -43,7 +43,7 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def write_anchors(folder: Path, st, rng, extra=(), held=None):
+def write_anchors(folder: Path, st, rng, extra=(), held=None, modalities=("CRISPRi",)):
     """Anchors for every training pair and the held-out C groups, sources a made-up group 'SRC', plus `extra` rows."""
     index, rows = [], []
     G = len(st["genes"])
@@ -63,6 +63,7 @@ def write_anchors(folder: Path, st, rng, extra=(), held=None):
     (folder / "anchors.json").write_text(json.dumps(index), encoding="utf-8")
     (folder / "manifest.json").write_text(json.dumps({
         "held_group": held or st["holdout_group"], "rows": len(index), "checks": {"passed": True},
+        "anchored_modalities": list(modalities),
         "outputs": {"anchors_npz": sha(folder / "anchors.npz"), "anchors_json": sha(folder / "anchors.json")}}),
         encoding="utf-8")
     return folder
@@ -135,6 +136,16 @@ class AnchoredV3(unittest.TestCase):
         for i, g in enumerate(groups):
             if g["class"] == "J":                                           # hidden targets have no anchor
                 self.assertLess(np.nanmax(np.abs(net[i])), 1e-3)
+
+    def test_only_anchored_modalities_get_the_anchor(self):
+        # every synthetic cell is CRISPRi: anchors declared for CRISPRa only must start nobody
+        other = write_anchors(self.d / "crispra_only", self.st, np.random.default_rng(1), modalities=("CRISPRa",))
+        proc = run("train", "--prepass", self.d / "pre", "--out", self.d / "crispra_run", "--anchors", other,
+                   "--arm", "a=both", "--lr", "0", *TRAIN)
+        self.assertEqual(proc.returncode, 0, proc.stderr[-3000:])
+        groups = json.loads((self.d / "crispra_run" / "eval_groups.json").read_text(encoding="utf-8"))
+        c = [i for i, g in enumerate(groups) if g["class"] == "C"]
+        self.assertLess(np.nanmax(np.abs(self.shifts("crispra_run", "a")[c])), 1e-3)
 
     def test_training_moves_away_from_the_anchor(self):
         groups = json.loads((self.d / "learned" / "eval_groups.json").read_text(encoding="utf-8"))

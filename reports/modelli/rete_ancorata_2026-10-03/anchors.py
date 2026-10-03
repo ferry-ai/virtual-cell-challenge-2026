@@ -4,10 +4,13 @@ The anchor of a (line group L, target t) is the bench's t25 transfer of t (repor
 group_mean, combine_groups, amplitude 1.576, the table means without the held-out group's tables) from the cell
 corpus's line groups other than L and H, on the bench tables whose cells the corpus holds: lane A's 'transfer_cells'
 (no k562_viperturb). Rows:
-- every (L, t) with at least one admitted training cell (class 'train') in the prepass state, role 'train';
+- every (L, t) with at least one admitted training cell (class 'train') of an anchored modality in the prepass state,
+  role 'train';
 - the held-out line's C evaluation groups, as (H, t), from every cell group but H, role 'eval'.
 Hidden targets (the state's 'hidden', classes J and T) get no row; a row without any source is left out: the training
-then adds nothing and tells the network so.
+then adds nothing and tells the network so. The anchored modality is CRISPRi only (--modalities): the bench's effects
+are CRISPRi knockdowns, and a CRISPRa or KO cell started from them could point the wrong way with a gain that cannot
+change sign; those cells train without an anchor, as in version 2.
 
 Writes anchors.npz (rows [R, G] float16 on the model's genes, NaN where no source measures a gene; support [R], the
 source groups that have the target; U [G, k], the top-k gene directions of the training rows), anchors.json (one entry
@@ -32,6 +35,7 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 CELL_GROUPS = ("H1", "HepG2", "RPE1", "K562", "iPSC", "Jurkat", "Neuron")
 NOT_IN_CELL_CORPUS = ("k562_viperturb",)       # tables of those groups whose cells the corpus does not hold
+MODALITIES = ("CRISPRi",)                      # the modality of the bench's effects
 BLOCK = 500
 
 
@@ -52,14 +56,15 @@ def bench(code_dir: Path):
     return arms, fitting, splits
 
 
-def training_pairs(st) -> dict:
-    """Symbols with at least one admitted training cell, per line group of the cell's key."""
+def training_pairs(st, modalities=MODALITIES) -> dict:
+    """Symbols with at least one admitted training cell of an anchored modality, per line group of the cell's key."""
     train = st["classes"].index("train")
     group_of_key = [st["key_group"][k] for k in st["key_names"]]
+    mods = np.array([m in set(modalities) for m in st["modalities"]], bool)
     out = defaultdict(set)
     for s in st["shards"]:
         sel = (np.asarray(s["admitted"], bool) & ~np.asarray(s["control"], bool)
-               & (np.asarray(s["cls"]) == train) & (np.asarray(s["tgt"]) >= 0))
+               & (np.asarray(s["cls"]) == train) & (np.asarray(s["tgt"]) >= 0) & mods[np.asarray(s["mod"])])
         if not sel.any():
             continue
         pairs = np.unique(np.stack([np.asarray(s["key"])[sel], np.asarray(s["tgt"])[sel]], 1), axis=0)
@@ -72,11 +77,11 @@ def sources_for(row_group: str, held: str, cube_groups) -> list:
     return [h for h in CELL_GROUPS if h not in (row_group, held) and h in cube_groups]
 
 
-def jobs_of(st) -> list:
+def jobs_of(st, modalities=MODALITIES) -> list:
     """(row group, role, symbols): the training pairs of every group, then the held-out line's C groups."""
     held = st["holdout_group"]
     hidden = set(st.get("hidden", ()))
-    pairs = training_pairs(st)
+    pairs = training_pairs(st, modalities)
     if held in pairs:
         raise AssertionError(f"training cells of the held-out group {held}")
     leaked = sorted(set().union(*pairs.values()) & hidden) if pairs else []
@@ -86,7 +91,8 @@ def jobs_of(st) -> list:
     return [(L, "train", sorted(s)) for L, s in sorted(pairs.items())] + [(held, "eval", c_syms)]
 
 
-def compute(st, cube_cells, commons, keys_of_symbol, transfer_for, amplitude, basis, rank=32, log=print):
+def compute(st, cube_cells, commons, keys_of_symbol, transfer_for, amplitude, basis, rank=32, log=print,
+            modalities=MODALITIES):
     """Rows, their index and the projection U, on the model's genes (st['genes'])."""
     held = st["holdout_group"]
     model_genes = [str(g) for g in st["genes"]]
@@ -95,7 +101,7 @@ def compute(st, cube_cells, commons, keys_of_symbol, transfer_for, amplitude, ba
     have = cube_col >= 0
     G = len(model_genes)
     rows, index = [], []
-    for L, role, syms in jobs_of(st):
+    for L, role, syms in jobs_of(st, modalities):
         srcs = sources_for(L, held, cube_cells.groups)
         if L in srcs or held in srcs:
             raise AssertionError(f"sources of {L} include {L} or {held}")
@@ -138,6 +144,7 @@ def main() -> None:
     p.add_argument("--target-keys", type=Path, required=True)
     p.add_argument("--bench-code", type=Path, default=HERE.parent / "risposta_contesto_2026-10-02")
     p.add_argument("--rank", type=int, default=32)
+    p.add_argument("--modalities", nargs="+", default=list(MODALITIES))
     p.add_argument("--out", type=Path, required=True)
     a = p.parse_args()
     if a.out.exists():
@@ -166,7 +173,7 @@ def main() -> None:
     commons, _ = arms.table_means(cube_all, splits.Split("C", held, None, P["n_folds"]))
     keys_of_symbol = json.loads(a.target_keys.read_text(encoding="utf-8"))
     R, index, U = compute(st, cube_cells, commons, keys_of_symbol, fitting.transfer_for, arms.AMPLITUDE_T25,
-                          fitting.basis, a.rank)
+                          fitting.basis, a.rank, modalities=a.modalities)
     checks = check(st, index)
     if not checks["passed"]:
         raise AssertionError(f"anchor checks failed: {checks}")
@@ -182,7 +189,8 @@ def main() -> None:
     for r in index:
         by[f"{r['role']}:{r['group']}"] += 1
     manifest = {"held_group": held, "rows": int(R.shape[0]), "genes": int(R.shape[1]), "rank": int(U.shape[1]),
-                "rows_by_group": dict(sorted(by.items())), "dropped_tables": cube_cells.dropped,
+                "anchored_modalities": list(a.modalities), "commons": "table means of regime C without the held-out "
+                "group's tables, as lane A", "rows_by_group": dict(sorted(by.items())), "dropped_tables": cube_cells.dropped,
                 "amplitude": arms.AMPLITUDE_T25, "checks": checks, "seconds": round(time.time() - t0, 1),
                 "inputs": {"prepass_pkl": sha(a.prepass / "prepass.pkl"), "cube_manifest": sha(a.cube / "manifest.json"),
                            "protocol": sha(a.protocol), "target_keys": sha(a.target_keys),
