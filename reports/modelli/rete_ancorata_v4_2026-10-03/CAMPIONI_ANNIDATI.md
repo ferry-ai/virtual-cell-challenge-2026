@@ -126,6 +126,17 @@ Test prima della spinta (20, tutti superati il 3/10 alle 23:51 sul portatile): `
 tabella dell'esecuzione diretta; un gemello alterato, uno stato diverso o un modulo cambiato fermano il kernel prima
 dello studio).
 
+## 9. Emendamento del 4/10, 00:08 CEST, prima di leggere qualunque risultato
+
+Il kernel `rcell-v4-nested-h1-r1` è in corsa e nessuna sua uscita è stata scaricata. Rileggendo la
+[proposta di Codex](../../analisi/candidato_ibrido_2026-10-03/README.md) (§3) su richiesta del proprietario: per
+scegliere la taglia chiede di confrontare, oltre a medie ed effetti e alla copertura delle guide, anche **varianza e
+zeri**. Il kernel r1 non li calcola. Si aggiungono come misure **riportate senza soglia** in una seconda corsa (r2,
+stesso seme e quindi stessa selezione delle cellule): per gruppo e livello, varianza per gene delle proporzioni e
+frazione di zeri del campione contro quelle del gruppo intero. La regola del §4 non cambia e si applica alla tabella
+della prima corsa. Gli «stati osservabili» della stessa lista (donatori, stimoli) in questo corpus sono chiavi distinte:
+il campionamento è per chiave e bersaglio, quindi nessuno stato viene perso per costruzione.
+
 ## 8. Che cosa si sapeva al congelamento
 
 - Nessun numero di questo studio: il kernel non era stato lanciato.
