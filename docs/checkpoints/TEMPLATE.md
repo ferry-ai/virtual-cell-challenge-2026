@@ -5,6 +5,7 @@
 - **Redatto da:** nome umano oppure agente + modello
 - **Revisione umana:** no
 - **Stato:** immutabile
+- **Strade:** per un esperimento: gli ID delle voci di `docs/STRADE.md` che apre o aggiorna (S-NNN, …), oppure «nessuna:» e il motivo
 
 > Un checkpoint è una fotografia datata. Non si riscrive: se una sua conclusione
 > risulta sbagliata, si scrive un checkpoint nuovo e si aggiorna la colonna

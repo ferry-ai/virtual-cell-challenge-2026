@@ -58,12 +58,12 @@ to stop. State, scores and assignments are never written here: they change, and 
 | Take, resume or hand off work | [`docs/PIANI.md`](docs/PIANI.md) §2–3, then the one plan card | other cards; the "next steps" of dated reports |
 | Know an area: state, evidence, plan | that section of `docs/AMBITI.md`, then only the sources it cites | the other sections; browsing `reports/` folder by folder |
 | Change the generator or another stage or module | `scripts/CLAUDE.md` or `src/vcc2026/CLAUDE.md`; the stage's docstring and test; AMBITI §3 for the evidence | submission rules and Colab, unless you then generate a trial |
-| Study a data source, design a predictor | AMBITI §4–5; [`docs/GENERALIZZAZIONE.md`](docs/GENERALIZZAZIONE.md) (scope D-044, leakage); `reports/sorgenti/README.md` | submissions, Colab, agent infrastructure |
+| Study a data source, design a predictor | AMBITI §4–5; [`docs/GENERALIZZAZIONE.md`](docs/GENERALIZZAZIONE.md) (scope D-044, leakage); `reports/sorgenti/README.md`; the table of [`docs/STRADE.md`](docs/STRADE.md), then the entries your design relates to (what was tried, why it failed, what would reopen it) | submissions, Colab, agent infrastructure |
 | Read an official score | PROCEDURE §2, point 7; the latest scored checkpoint as a model; `reports/invii/README.md` | bench scores, which are not VCC scores |
 | Prepare, generate or submit a trial | PROCEDURE §1–2; `reports/CLAUDE.md`, "What a submission leaves"; `configs/CLAUDE.md`, and the recipe and stage-45 options of the submission you start from (PROCEDURE §1 names those of t28) | the analyses in `docs/storico/` |
 | Prepare or follow a Colab or Kaggle job | PROCEDURE §3; [`docs/ERRORI.md`](docs/ERRORI.md) from "Prima del prossimo job" to "Registro immutabile", and its operational lessons | the job's own log: it syncs only when the job ends |
 | Prepare the final set (D, E, F) | PROCEDURE §7 | |
-| Draw a conclusion, write a report or a checkpoint | ERRORI, "Errori di metodo già commessi" (one table); `reports/CLAUDE.md` or `docs/CLAUDE.md` | |
+| Draw a conclusion, write a report or a checkpoint | ERRORI, "Errori di metodo già commessi" (one table); `reports/CLAUDE.md` or `docs/CLAUDE.md`; when the outcome of a rule is read, the entry of [`docs/STRADE.md`](docs/STRADE.md) it opens or updates, in the same commit as the checkpoint | |
 | Run or change research code in a report | the table "Il codice di ricerca che sta qui" in `reports/README.md` | editing a file other benches import: copy it into your new folder |
 | Work on the launch base or coordinate agents | `docs/AGENTI.md`; then the hub's own instructions, outside the repo | the project perimeters |
 | Reconstruct a past decision or result | the table atop [`docs/DECISIONI.md`](docs/DECISIONI.md), then that one section; the checkpoint it cites, via [`docs/checkpoints/INDICE.md`](docs/checkpoints/INDICE.md) and its column "Corretto da"; `--status` (below) on each document it cites | the other sections; `docs/storico/` unless cited |
@@ -99,6 +99,13 @@ review sheet, not a rewrite; `da-verificare` becomes `superato` only by naming w
 Code and documents leave the live tree only through the archive (tag, rows in
 `docs/ARCHIVIO.md`, `git rm`); an untracked file goes to the Recycle Bin. New material in `docs/`
 or `reports/` gets a registry row.
+
+**Learning from failures** (D-055). Before designing a model, a correction or an experiment, read the table of
+[`docs/STRADE.md`](docs/STRADE.md). A new protocol has a section "Precedenti": the entries it relates to, how its design
+differs from each mechanism, and the cheap early signal that will stop the work if the same failure shows again. An
+outcome read (passed, failed, incomplete) becomes a checkpoint and an entry there, with the mechanism labelled verified,
+hypothesised or unknown; where a check can recognise the failure, the lesson becomes a guard in code.
+`scripts/31_check_docs.py` enforces the form, not the truth.
 
 **The owner authorises** anything that spends quota (a submission, cloud compute, a launch of
 other agents), every download and every push, in chat. Past goes for submissions are transcribed

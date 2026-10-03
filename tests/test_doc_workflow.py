@@ -420,6 +420,108 @@ class CheckerTests(unittest.TestCase):
                 self.assertIn('0001-primo.md', errors[0])
                 self.assertIn('0002', errors[0])
 
+    # The loop of docs/STRADE.md (D-055): registry, gate in new protocols, closure in experiment checkpoints.
+    ROADS = ('# Strade\n\n| ID | Strada | Esito | Meccanismo | Aggiornata |\n|---|---|---|---|---|\n'
+             '| S-001 | Una rete | perde | ipotizzato | 2026-10-04 |\n\n'
+             '### S-001 — Una rete\n\n'
+             '- **Che cosa si è provato:** una rete\n- **Prova:** un report\n- **Sintomo:** PDS a 0,5\n'
+             '- **Meccanismo:** ipotizzato: una parte comune\n- **Che cosa esclude e che cosa no:** questo disegno\n'
+             '- **Che cosa la riaprirebbe:** una correzione vincolata\n- **Segnale precoce:** PDS al passo 5.000\n'
+             '- **Guardia eseguibile:** nessuna\n')
+
+    def roads_root(self, text=None):
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root, True)
+        (root / 'docs' / 'checkpoints').mkdir(parents=True)
+        (root / 'docs' / 'STRADE.md').write_text(self.ROADS if text is None else text, encoding='utf-8')
+        return root
+
+    def roads_errors(self, text):
+        errors = []
+        with patch.object(check_docs, 'REPO_ROOT', self.roads_root(text)):
+            ids = check_docs.check_roads(errors)
+        return ids, errors
+
+    def test_the_roads_registry_needs_every_field_and_a_mechanism_label(self):
+        self.assertEqual(self.roads_errors(None), ({'S-001'}, []))
+        _, errors = self.roads_errors(self.ROADS.replace('- **Segnale precoce:** PDS al passo 5.000\n', ''))
+        self.assertTrue(any('Segnale precoce' in e for e in errors), errors)
+        _, errors = self.roads_errors(self.ROADS.replace('- **Sintomo:** PDS a 0,5\n', '- **Sintomo:**\n'))
+        self.assertTrue(any('Sintomo' in e for e in errors), errors)       # a label without text is not a field
+        _, errors = self.roads_errors(self.ROADS.replace('| ipotizzato |', '| probabile |'))
+        self.assertTrue(any('mechanism not in' in e for e in errors), errors)
+        _, errors = self.roads_errors(self.ROADS.replace('**Meccanismo:** ipotizzato', '**Meccanismo:** accertato'))
+        self.assertTrue(any('another label' in e for e in errors), errors)  # table and section must agree
+        _, errors = self.roads_errors(self.ROADS.replace('**Meccanismo:** ipotizzato: ', '**Meccanismo:** forse '))
+        self.assertTrue(any("must start with" in e for e in errors), errors)
+        _, errors = self.roads_errors(self.ROADS + '\n### S-002 — Senza riga\n\n- **Prova:** x\n')
+        self.assertTrue(any('S-002 has a section but no table row' in e for e in errors), errors)
+        _, errors = self.roads_errors(self.ROADS.replace('### S-001 — Una rete', '### Una rete'))
+        self.assertTrue(any("no '### S-001" in e for e in errors), errors)
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root, True)
+        errors = []
+        with patch.object(check_docs, 'REPO_ROOT', root):
+            self.assertEqual(check_docs.check_roads(errors), set())
+        self.assertEqual(errors, ['docs/STRADE.md missing'])
+
+    def test_a_new_protocol_must_name_its_precedents_and_its_early_stop(self):
+        root = self.roads_root()
+        good = ('# Protocollo\n\n## 2. Precedenti\n\nS-001: qui la correzione non può spostare la media.\n\n'
+                '**Segnale precoce e arresto:** PDS sui bersagli nascosti al passo 5.000, arresto sotto l\'ancora.\n\n'
+                '## 3. Regola\n\nS-999 citata fuori dalla sezione non conta.\n')
+
+        def errors_for(text, folder='rete_nuova_2026-10-05', name='PROTOCOLLO.md'):
+            path = root / 'reports' / 'modelli' / folder / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(text, encoding='utf-8')
+            errors = []
+            with patch.object(check_docs, 'REPO_ROOT', root):
+                check_docs.check_protocol_precedents({'S-001'}, errors)
+            path.unlink()
+            return errors
+
+        self.assertEqual(errors_for(good), [])
+        self.assertTrue(any("no '## ... Precedenti' section" in e for e in errors_for('# Protocollo\n\n## 1. Domanda\n')))
+        self.assertTrue(any('cites no S-NNN' in e for e in errors_for(good.replace('S-001: ', 'Come le altre: '))))
+        self.assertTrue(any('S-777' in e for e in errors_for(good.replace('S-001', 'S-777'))))
+        self.assertTrue(any('Segnale precoce e arresto' in e
+                            for e in errors_for(good.replace('**Segnale precoce e arresto:**', 'Segnale:'))))
+        none = good.replace('S-001: qui la correzione non può spostare la media.',
+                            'Nessun precedente pertinente: è il primo studio di questo tipo.')
+        self.assertEqual(errors_for(none), [])
+        # a protocol written before the gate is not judged by it; another file of the folder is not a protocol
+        self.assertEqual(errors_for('# Protocollo\n', folder='rete_vecchia_2026-10-03'), [])
+        self.assertEqual(errors_for('# Note\n', name='NOTE.md'), [])
+        self.assertTrue(errors_for('# Emendato\n', name='PROTOCOLLO_NN.md'))
+
+    def test_an_experiment_checkpoint_names_the_roads_it_updates(self):
+        root = self.roads_root()
+        path = root / 'docs' / 'checkpoints' / '0061-esito.md'
+
+        def errors_for(text, number=61, registry=None):
+            path.write_text(text, encoding='utf-8')
+            if registry is not None:
+                (root / 'docs' / 'STRADE.md').write_text(registry, encoding='utf-8')
+            errors = []
+            with patch.object(check_docs, 'REPO_ROOT', root):
+                check_docs.check_checkpoint_roads({number: path}, {'S-001'}, errors)
+            return errors
+
+        head = '# CP-0061 — Esito\n\n- **Data:** 2026-10-04\n- **Tipo:** esperimento\n'
+        self.assertTrue(any("needs '- **Strade:**" in e for e in errors_for(head)))
+        self.assertTrue(any('does not cite CP-0061 back' in e for e in errors_for(head + '- **Strade:** S-001\n')))
+        cited = self.ROADS.replace('- **Prova:** un report', '- **Prova:** CP-0061')
+        self.assertEqual(errors_for(head + '- **Strade:** S-001\n', registry=cited), [])
+        self.assertTrue(any('S-002' in e for e in errors_for(head + '- **Strade:** S-001, S-002\n')))
+        self.assertEqual(errors_for(head + '- **Strade:** nessuna: è una replica senza esito nuovo\n'), [])
+        template_line = [line for line in TEMPLATE.splitlines() if line.startswith('- **Strade:**')]
+        self.assertEqual(len(template_line), 1)                         # the template carries the line...
+        self.assertTrue(errors_for(head + template_line[0] + '\n'))     # ...and left as it is, it does not pass
+        # older checkpoints and other kinds of checkpoint are not judged
+        self.assertEqual(errors_for(head, number=60), [])
+        self.assertEqual(errors_for(head.replace('esperimento', 'osservazione')), [])
+
     def test_this_repository_is_consistent(self):
         done = subprocess.run([sys.executable, str(ROOT / 'scripts' / '31_check_docs.py')],
                               capture_output=True, text=True, cwd=ROOT)

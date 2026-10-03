@@ -14,6 +14,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-055 | Ciclo per imparare dagli errori: registro delle strade provate con meccanismo e condizione di riapertura, sezione «Precedenti» obbligatoria nei protocolli nuovi, riga «Strade» nei checkpoint di esperimento, verificati dal controllo dei documenti | attiva | 2026-10-04 | Richiesta del proprietario in chat il 4/10; [STRADE](STRADE.md) |
 | D-054 | Direzione operativa: rete ancorata al transfer (X adattato: basale dai controlli, ancora dagli aggregati delle altre linee, correzione appresa sulle cellule), provata nel pilot v4 corretto; transfer t22/t25 riferimento di produzione; binario dati D-053 indipendente dall'esito; ESM2 dopo, a parità di dati | attiva | 2026-10-03 | Richiesta del proprietario in chat (3/10 sera); [CP-0060](checkpoints/0060-direzione-x-transfer-pilot-v4.md), [protocollo v4](../reports/modelli/rete_ancorata_v4_2026-10-03/PROTOCOLLO.md) |
 | D-053 | Tutte le linee e i contesti idonei nel percorso principale; campionamento di cellule senza perdita silenziosa di contesti, manifest riconciliato e uso effettivo obbligatori; validazione e riserve protette | attiva | 2026-10-03 | Mandato esplicito del proprietario; [CP-0058](checkpoints/0058-copertura-integrale-contesti.md), [GENERALIZZAZIONE §2.1](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile) |
 | D-052 | R-LEAD parte dalla prova C/J e dal confronto semplice del contesto; recupero neurale con ipotesi verificabile, T diagnostico. Dal 3/10 il mandato di copertura dei dati è precisato da D-053 | attiva | 2026-10-02 | Richiesta del proprietario dopo il confronto Arc 2025/2026; [R-LEAD](piani/strategia-scientifica.md) |
@@ -70,6 +71,23 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-055 — Un ciclo che obbliga a imparare dai fallimenti
+
+- **Mandato:** il 4/10 il proprietario chiede, prima di ogni altro lavoro, una pipeline per imparare dagli errori:
+  gli agenti futuri devono evitare le strade sbagliate e correggere gli approcci, senza informazioni perse.
+- **Decisione:** [STRADE](STRADE.md) è il registro degli approcci provati, una voce per strada con sintomo,
+  meccanismo etichettato (accertato, ipotizzato, ignoto), che cosa esclude, che cosa la riaprirebbe, segnale precoce
+  e guardia eseguibile. Ogni protocollo in una cartella di report datata dal 4/10 ha una sezione «Precedenti» con le
+  voci pertinenti e il proprio segnale precoce con la regola di arresto; ogni checkpoint di esperimento dal numero
+  0061 ha la riga «Strade». `scripts/31_check_docs.py` verifica struttura, ID e citazioni reciproche; i test sono in
+  `tests/test_doc_workflow.py`. Il registro è lettura obbligata per chi progetta un predittore e per chi scrive una
+  conclusione ([CLAUDE.md](../CLAUDE.md)).
+- **Perché:** gli esiti erano registrati bene, il loro meccanismo no. Il 4/10 una rete ha perso per la terza volta
+  la capacità di distinguere i bersagli (t29, pilot r3, v4) senza che una guardia lo cogliesse nei primi minuti.
+- **Limiti:** il controllo verifica la forma, non che una voce dica il vero né che un disegno sia davvero diverso.
+  Le voci nate il 4/10 riassumono fonti già scritte: dove il meccanismo non era stato ricostruito è segnato ignoto.
+- **Riaprire se:** il cancello produce sezioni di rito senza contenuto, o blocca lavori che non sono esperimenti.
 
 ### D-054 — La rete ancorata al transfer come candidato operativo, su due binari
 

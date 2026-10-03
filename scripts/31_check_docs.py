@@ -12,6 +12,11 @@ back. A path that disappears without being listed there is still an error. A liv
 renamed on purpose is listed there too, in the table "Nomi cambiati": its old name is
 followed to the new one, anchors included.
 
+It also enforces the loop of `docs/STRADE.md` (D-055): the registry of the roads already
+tried has every field, a protocol in a report folder dated from 4 October 2026 names the
+roads it relates to and its early stop signal, and an experiment checkpoint from 0061 says
+which roads it opens or updates.
+
 It checks structure, never claims: no amount of green output means the science is
 right. Standard library only.
 
@@ -44,6 +49,16 @@ CHECKPOINT_SECTIONS = ("1. Domanda", "2. Cosa", "3. Cosa", "4. Interpretazione",
 SHEET_FIELDS = ("Perché è segnalato:", "Affermazioni contestate:", "Evidenza contraria:",
                 "Cosa resta valido:", "È ancora usato o citato:", "Disposizione proposta:",
                 "Cosa chiuderebbe la revisione:")
+
+# The roads already tried (docs/STRADE.md, D-055): the registry, the gate in new protocols, the closure in checkpoints.
+ROAD_MECHANISMS = ("accertato", "ipotizzato", "ignoto")
+ROAD_FIELDS = ("Che cosa si è provato:", "Prova:", "Sintomo:", "Meccanismo:", "Che cosa esclude e che cosa no:",
+               "Che cosa la riaprirebbe:", "Segnale precoce:", "Guardia eseguibile:")
+ROAD_ID = re.compile(r"\bS-\d{3}\b")
+PROTOCOL_GATE_FROM = dt.date(2026, 10, 4)       # report folders dated from this day carry a "Precedenti" section
+ROADS_FROM_CHECKPOINT = 61                      # experiment checkpoints from this number carry a "Strade" line
+NO_PRECEDENT = "Nessun precedente pertinente:"
+EARLY_SIGNAL = "**Segnale precoce e arresto:**"
 
 CHECKPOINT_FILE = re.compile(r"^(\d{4})-[a-z0-9][a-z0-9-]*\.md$")
 BACKTICK_PATH = re.compile(r"`((?:docs|scripts|src|reports|configs|tests)/[^`\s]*|README\.md|CLAUDE\.md)`")
@@ -450,14 +465,111 @@ def check_decisions(errors: list[str]) -> None:
         errors.append(f"DECISIONI.md: {decision} has a section but no table row")
 
 
+def check_roads(errors: list[str]) -> set[str]:
+    """docs/STRADE.md: every row has an S-NNN id, a mechanism label and a section with every field; returns the ids."""
+    path = REPO_ROOT / "docs" / "STRADE.md"
+    if not path.exists():
+        errors.append("docs/STRADE.md missing")
+        return set()
+    text = path.read_text(encoding="utf-8")
+    header, rows = table_by_first_column(text, "ID", path, errors)
+    sections = {m.group(1): m.start() for m in re.finditer(r"^### (S-\d{3}) — ", text, re.M)}
+    starts = sorted(sections.values()) + [len(text)]
+    mechanism = header.index("Meccanismo") if header and "Meccanismo" in header else None
+    if header and mechanism is None:
+        errors.append("STRADE.md: the table has no 'Meccanismo' column")
+    listed: set[str] = set()
+    for row in rows:
+        if not re.fullmatch(r"S-\d{3}", row[0]):
+            errors.append(f"STRADE.md: id {row[0]!r} is not S-NNN")
+            continue
+        if row[0] in listed:
+            errors.append(f"STRADE.md: id {row[0]} appears twice")
+        listed.add(row[0])
+        if mechanism is not None and (len(row) <= mechanism or row[mechanism] not in ROAD_MECHANISMS):
+            errors.append(f"STRADE.md: {row[0]} mechanism not in {ROAD_MECHANISMS}")
+        if row[0] not in sections:
+            errors.append(f"STRADE.md: {row[0]} has no '### {row[0]} — ...' section")
+            continue
+        body = text[sections[row[0]]:starts[starts.index(sections[row[0]]) + 1]]
+        for field in ROAD_FIELDS:
+            found = re.search(rf"^- \*\*{re.escape(field)}\*\* *(\S.*)$", body, re.M)
+            if not found:
+                errors.append(f"STRADE.md: {row[0]} has no '- **{field}** ...' line with text")
+            elif field == "Meccanismo:" and not found.group(1).lower().startswith(ROAD_MECHANISMS):
+                errors.append(f"STRADE.md: {row[0]} 'Meccanismo:' must start with one of {ROAD_MECHANISMS}")
+            elif (field == "Meccanismo:" and mechanism is not None and len(row) > mechanism
+                  and not found.group(1).lower().startswith(row[mechanism])):
+                errors.append(f"STRADE.md: {row[0]} says {row[mechanism]!r} in the table and another label in its section")
+    for road in sorted(set(sections) - listed):
+        errors.append(f"STRADE.md: {road} has a section but no table row")
+    return listed
+
+
+def check_protocol_precedents(roads: set[str], errors: list[str]) -> None:
+    """A protocol in a report folder dated from PROTOCOL_GATE_FROM names the roads it relates to, or says there is none,
+    and declares its early signal and stop rule (docs/STRADE.md, step 2)."""
+    for path in sorted((REPO_ROOT / "reports").glob("*/*/PROTOCOLLO*.md")):
+        dated = re.search(r"_(\d{4}-\d{2}-\d{2})$", path.parent.name)
+        try:
+            day = dt.date.fromisoformat(dated.group(1)) if dated else None
+        except ValueError:
+            day = None
+        if day is None or day < PROTOCOL_GATE_FROM:
+            continue
+        rel = path.relative_to(REPO_ROOT).as_posix()
+        text = path.read_text(encoding="utf-8")
+        head = re.search(r"^## .*Precedenti.*$", text, re.M)
+        if not head:
+            errors.append(f"{rel}: no '## ... Precedenti' section (docs/STRADE.md, step 2)")
+            continue
+        rest = text[head.end():]
+        nxt = re.search(r"^## ", rest, re.M)
+        body = rest[:nxt.start()] if nxt else rest
+        cited = set(ROAD_ID.findall(body))
+        if not cited and NO_PRECEDENT not in body:
+            errors.append(f"{rel}: 'Precedenti' cites no S-NNN and does not say '{NO_PRECEDENT} <motivo>'")
+        for road in sorted(cited - roads):
+            errors.append(f"{rel}: 'Precedenti' cites {road}, which docs/STRADE.md does not list")
+        if EARLY_SIGNAL not in body:
+            errors.append(f"{rel}: 'Precedenti' has no '{EARLY_SIGNAL}' line")
+
+
+def check_checkpoint_roads(numbers: dict[int, Path], roads: set[str], errors: list[str]) -> None:
+    """An experiment checkpoint from ROADS_FROM_CHECKPOINT says which roads it opens or updates, and they cite it back;
+    or it says 'nessuna:' and why (docs/STRADE.md, step 3)."""
+    strade = REPO_ROOT / "docs" / "STRADE.md"
+    registry = strade.read_text(encoding="utf-8") if strade.exists() else ""
+    for number, path in sorted(numbers.items()):
+        if number < ROADS_FROM_CHECKPOINT:
+            continue
+        text = path.read_text(encoding="utf-8")
+        kind = re.search(r"^- \*\*Tipo:\*\* (.+)$", text, re.M)
+        if not kind or kind.group(1).strip() != "esperimento":
+            continue
+        line = re.search(r"^- \*\*Strade:\*\* *(.*)$", text, re.M)
+        if not line or not line.group(1).strip():
+            errors.append(f"{path.name}: an experiment checkpoint needs '- **Strade:** S-NNN, ...' or 'nessuna: <motivo>'")
+            continue
+        cited = set(ROAD_ID.findall(line.group(1)))
+        if not cited:
+            if not re.match(r"nessuna: *\S", line.group(1).strip()):
+                errors.append(f"{path.name}: 'Strade:' names no S-NNN and is not 'nessuna: <motivo>'")
+            continue
+        for road in sorted(cited - roads):
+            errors.append(f"{path.name}: 'Strade:' cites {road}, which docs/STRADE.md does not list")
+        if f"CP-{number:04d}" not in registry and path.name not in registry:
+            errors.append(f"{path.name}: docs/STRADE.md does not cite CP-{number:04d} back")
+
+
 def check_links(errors: list[str]) -> None:
     files = [REPO_ROOT / "README.md", REPO_ROOT / "CLAUDE.md",
              REPO_ROOT / "docs" / "PROGETTO.md", REPO_ROOT / "docs" / "REGISTRO.md",
              REPO_ROOT / "docs" / "DECISIONI.md"]
     # The working guide and the archive list are checked when present: an entry point
     # that names a missing stage misdirects the next agent before anything else can.
-    files += [path for path in (REPO_ROOT / "docs" / "PROCEDURE.md",
-                                REPO_ROOT / "docs" / "ARCHIVIO.md") if path.exists()]
+    files += [path for path in (REPO_ROOT / "docs" / "PROCEDURE.md", REPO_ROOT / "docs" / "ARCHIVIO.md",
+                                REPO_ROOT / "docs" / "STRADE.md") if path.exists()]
     # So are the folder guides (D-043): the paths they route agents to must exist.
     files += [path for path in (REPO_ROOT / "AGENTS.md", REPO_ROOT / "src" / "vcc2026" / "CLAUDE.md")
               if path.exists()]
@@ -637,6 +749,9 @@ def main() -> None:
     check_registry(errors)
     check_corrected_checkpoints(errors)
     check_decisions(errors)
+    roads = check_roads(errors)
+    check_protocol_precedents(roads, errors)
+    check_checkpoint_roads(numbers, roads, errors)
     check_links(errors)
 
     if errors:
@@ -645,7 +760,7 @@ def main() -> None:
             print(f"  - {error}")
         raise SystemExit(1)
     archived = archived_paths(REPO_ROOT)
-    print(f"OK: {len(numbers)} checkpoint(s), registry, decisions and links are consistent.")
+    print(f"OK: {len(numbers)} checkpoint(s), registry, decisions, {len(roads)} road(s) and links are consistent.")
     if archived:
         print(f"{len(archived)} path(s) accepted as archived, from docs/ARCHIVIO.md.")
     print("Structure only. This says nothing about whether the claims are true.")

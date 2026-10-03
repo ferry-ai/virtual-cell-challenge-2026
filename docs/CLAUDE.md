@@ -19,6 +19,7 @@ short extract that names its home. Read the row you need, not the whole folder.
 | Procedures: submission path and rules, Colab, stages, final set | `docs/PROCEDURE.md` | when the live path changes |
 | Job preflight, incident ledger, operational traps | `docs/ERRORI.md` | when a failure is recorded |
 | Method errors already made | `docs/ERRORI.md`, "Errori di metodo già commessi" | a new row with its source; old rows are not rewritten |
+| Approaches already tried: symptom, mechanism, what would reopen them, early signal (D-055) | `docs/STRADE.md` | when the outcome of a rule is read, in the same commit as the checkpoint; a new protocol cites its entries in "Precedenti" |
 | Research scope for new targets and contexts, leakage controls (D-044) | `docs/GENERALIZZAZIONE.md` | when the research rules change |
 | Agent infrastructure and its interface with the project | `docs/AGENTI.md` | when the interface changes, or a system is retired or revived |
 | Evidence | `reports/<categoria>/<tema>_<data>/`, never edited; the map is `reports/README.md` | a new folder for every run |

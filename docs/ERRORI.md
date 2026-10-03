@@ -159,7 +159,9 @@ e aggiungere la revisione di verifica prima di dichiarare l'incidente chiuso.
 ## Errori di metodo già commessi
 
 Ragionamenti che hanno prodotto conclusioni sbagliate, scoperti dopo. Prima di scrivere una
-conclusione, controllare che non ricada in uno di questi. Una correzione nuova si aggiunge qui
+conclusione, controllare che non ricada in uno di questi. Gli approcci provati e non riusciti (modelli,
+correzioni, strategie sui dati), con il loro meccanismo e che cosa li riaprirebbe, stanno in
+[STRADE](STRADE.md): si legge prima di progettare. Una correzione nuova si aggiunge qui
 come riga, con la fonte; le righe vecchie non si riscrivono.
 
 | Errore | Come si è visto | Regola che lo evita | Fonte |
@@ -178,6 +180,8 @@ come riga, con la fonte; le righe vecchie non si riscrivono.
 | Le ancore aggregate usate come conversione esatta | Errore di +0,0007 sul t03 e +0,0008 sul t25 | Leggere i sei scalati pubblicati nello status | [CP-0050](checkpoints/0050-credibilita-score-e-riserva.md) |
 | Una soglia nata per un'ipotesi usata per chiudere una linea | Il nullo «meno di 10 chiamate» chiuse il generatore con dispersione (t13); il prescreen PDS +0,01 trattato come condizione necessaria per le reti | Chiudere una linea richiede una prova sulla metrica obiettivo | [audit scientifico](../reports/analisi/lead_scientist_2026-09-29/AUDIT_SCIENTIFICO.md) §3, [prescreen](../reports/analisi/lead_scientist_2026-09-29/neural/NN_PRESCREEN_AUDIT.md) |
 | Un calcolo riuscito letto come prova di utilità | «La rete è addestrata», «il job ha codice 0» | Il successo tecnico non è un risultato scientifico | [CP-0048](checkpoints/0048-rete-sorgenti-primo-seme.md) §7 |
+| Scegliere i dati di un training con misure che leggono le risposte della sua valutazione | Lo studio dei campioni annidati del 4/10 leggeva linea esclusa e bersagli nascosti, e la sua regola raccomandava il tetto; «qui non si addestra» non bastava | La scelta dei dati è per fold e legge solo la classe training; un test cambia le risposte escluse e pretende che campioni e tetti restino identici, con un controllo positivo | [emendamento §10](../reports/modelli/rete_ancorata_v4_2026-10-03/CAMPIONI_ANNIDATI.md), `test_nested_fold.py` nella stessa cartella |
+| Registrare l'esito di un fallimento senza il suo meccanismo | Tre reti di fila senza capacità di distinguere i bersagli (t29, pilot r3, v4), ogni volta registrate come «non ha passato la regola»; la terza è partita senza una guardia che lo cogliesse nei primi minuti | Ogni esito letto diventa una voce di [STRADE](STRADE.md) con meccanismo etichettato e segnale precoce; un protocollo nuovo cita i precedenti e dichiara il proprio arresto (D-055) | [STRADE](STRADE.md), voci S-001, S-002, S-006 |
 
 ## Lezioni operative da non ripetere
 
