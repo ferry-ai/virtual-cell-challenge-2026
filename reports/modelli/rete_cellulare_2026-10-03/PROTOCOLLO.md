@@ -226,7 +226,7 @@ positive, la regola promuoveva sulla media di due. Ora `decide_pilot.py`:
 
 Le soglie non cambiano. Test: `test_decide_pilot.Completeness`, con i casi di Codex.
 
-## 11. Verdetto r3 e decisione del proprietario (3/10, 12:55–13:00 CEST)
+## 11. Verdetto r3 (3/10, 12:54 CEST, commit `b12db62`) e decisione del proprietario (in chat, prima delle 14:16 lette con `date`)
 
 `decide_pilot.py` sulle tre linee r3, tutte accettate tecnicamente: confronto completo; **Q1 passa** (PDS `cells` −
 `mean` +0,014 in media, 2 linee su 3: H1 +0,029, HepG2 +0,050, RPE1 −0,038); **Q2 non passa** (−0,32, 0 su 3); **Q3
