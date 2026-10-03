@@ -1,0 +1,10 @@
+{"group": "H1", "role": "train", "symbols": 159, "sources": ["Jurkat", "K562", "Neuron", "RPE1", "iPSC"], "rows": 74}
+{"group": "Jurkat", "role": "train", "symbols": 1950, "sources": ["H1", "K562", "Neuron", "RPE1", "iPSC"], "rows": 1934}
+{"group": "K562", "role": "train", "symbols": 7922, "sources": ["H1", "Jurkat", "Neuron", "RPE1", "iPSC"], "rows": 2629}
+{"group": "Neuron", "role": "train", "symbols": 147, "sources": ["H1", "Jurkat", "K562", "RPE1", "iPSC"], "rows": 61}
+{"group": "RPE1", "role": "train", "symbols": 1950, "sources": ["H1", "Jurkat", "K562", "Neuron", "iPSC"], "rows": 1934}
+{"group": "iPSC", "role": "train", "symbols": 1747, "sources": ["H1", "Jurkat", "K562", "Neuron", "RPE1"], "rows": 703}
+{"group": "HepG2", "role": "eval", "symbols": 1748, "sources": ["H1", "Jurkat", "K562", "Neuron", "RPE1", "iPSC"], "rows": 1743}
+{"held_group": "HepG2", "rows": 9078, "genes": 18533, "rank": 32, "rows_by_group": {"eval:HepG2": 1743, "train:H1": 74, "train:Jurkat": 1934, "train:K562": 2629, "train:Neuron": 61, "train:RPE1": 1934, "train:iPSC": 703}, "checks": {"own_or_held_in_sources": 0, "hidden_with_anchor": 0, "role_mismatch": 0, "row_of_a_key_kept_out_of_the_means": 0, "passed": true}, "max_sources": 6}
+
+--- stderr ---

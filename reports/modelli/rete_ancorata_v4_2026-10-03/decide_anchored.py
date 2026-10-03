@@ -32,6 +32,7 @@ import decide_pilot as DP
 DP.ARMS_REQUIRED = ("ancorata", "ancorata_mean", "ancora_sola")
 GUARD = -0.02
 REFERENCE = "transfer_all_J"
+PRODUCTION = "transfer_prod_J"            # amendment §10.4: the reference a promotion must also beat
 MEMBERS = ("PDS", "MSE", "NMAE", "FID", "REACH", "JAC", "avg")
 
 
@@ -106,6 +107,18 @@ def main() -> None:
         outcome = "non concluso"
     else:
         outcome = "non passa"
+    # amendment §10.4: the requirement to propose replacing production, read on the same lines and kept apart from the
+    # outcome of the pilot (which only decides whether the candidate goes on to the expanded corpus and P5)
+    prod_primary = DP.rule({g: lane_b(tables[g], "ancorata_shift", PRODUCTION) if ok[g] else nan for g in lines}, need)
+    prod_guard_d = {g: DP.paired(frames[g], "ancorata", PRODUCTION, "pds") if ok[g] else nan for g in lines}
+    prod_guard_ok = all(np.isfinite(v) for v in prod_guard_d.values())
+    prod_guard_mean = float(np.mean(list(prod_guard_d.values()))) if prod_guard_ok else nan
+    promotion = {"rule": "PROTOCOLLO §10.4: lane B ancorata_shift - transfer_prod_J > 0 in at least two accepted lines "
+                         "with mean > 0, and lane A mean C-row PDS ancorata - transfer_prod_J >= -0.02; then P5 and P6",
+                 "laneB": prod_primary, "laneA": {"by_line": prod_guard_d, "mean": prod_guard_mean,
+                                                  "passed": bool(prod_guard_ok and prod_guard_mean >= GUARD)},
+                 "met": bool(outcome == "passa" and prod_primary["passed"] and prod_guard_ok
+                             and prod_guard_mean >= GUARD)}
     pairs_b = (("ancorata_shift", REFERENCE), ("ancorata_shift", "ancora_sola_shift"),
                ("ancorata_shift", "ancorata_mean_shift"), ("ancorata_shift", "transfer_cells_J"),
                ("ancorata_shift", "transfer_prod_J"), ("ancorata_cells", REFERENCE),
@@ -119,16 +132,16 @@ def main() -> None:
         "laneA_C_pds": {f"{x}-{y}": {g: DP.paired(frames[g], x, y, "pds") for g in lines} for x, y in pairs_a},
         "laneA_J_pds": {f"{x}-{y}": {g: DP.paired(frames[g], x, y, "pds", cls="J") for g in lines}
                         for x, y in (("ancorata", "ancora_sola"), ("ancorata", "ancorata_mean"))}}
-    result = {"protocol": "rete_ancorata_v4_2026-10-03/PROTOCOLLO.md §5 and §7", "lines": lines, "technical": tech,
-              "accepted": ok, "primary_laneB": primary, "guard_laneA": guard, "outcome": outcome,
-              "secondary": secondary,
+    result = {"protocol": "rete_ancorata_v4_2026-10-03/PROTOCOLLO.md §5, §7 and §10", "lines": lines,
+              "technical": tech, "accepted": ok, "primary_laneB": primary, "guard_laneA": guard, "outcome": outcome,
+              "promotion_requirement": promotion, "secondary": secondary,
               "local_avg": {g: {k: round(float(v), 5) for k, v in tables[g]["avg"].items()} for g in lines}}
     a.out.mkdir(parents=True)
     (a.out / "decision.json").write_text(json.dumps(result, indent=1, default=float), encoding="utf-8")
     print(json.dumps({"outcome": outcome, "primary": {k: primary[k] for k in ("by_line", "macro", "lines_positive",
                                                                               "status")},
-                      "guard": {k: guard[k] for k in ("by_line", "mean", "passed")}, "accepted": ok}, indent=1,
-                     default=float))
+                      "guard": {k: guard[k] for k in ("by_line", "mean", "passed")}, "accepted": ok,
+                      "promotion_requirement_met": promotion["met"]}, indent=1, default=float))
 
 
 if __name__ == "__main__":

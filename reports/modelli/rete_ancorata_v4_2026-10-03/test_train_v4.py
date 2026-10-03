@@ -127,6 +127,10 @@ class TrainV4(unittest.TestCase):
         cov = self.read("fast", "coverage.json")
         self.assertTrue(cov["exposure"]["passed"])
         self.assertGreater(cov["units"]["S::ss"]["draws_per_cell"], cov["units"]["K::sk"]["draws_per_cell"])
+        tg = cov["targets"]                      # amendment §10: contexts and targets reached, reported
+        self.assertEqual(sorted(tg["by_key"]), ["sk|K", "sq|Q", "ss|S"])
+        self.assertTrue(all(0 < v["targets_seen"] <= v["targets_offered"] for v in tg["by_key"].values()))
+        self.assertIn("guides", tg["not_certified"])
         t = cov["timing"]
         self.assertGreater(t["compute_steps_timed"], 0)
         self.assertGreater(t["loader"]["batches"], 0)

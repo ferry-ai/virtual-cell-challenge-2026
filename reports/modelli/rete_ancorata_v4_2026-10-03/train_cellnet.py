@@ -1924,6 +1924,30 @@ def train(a):
     seen_by_unit = Counter()
     for k, v in by_key.items():
         seen_by_unit[unit_of_key[key_names[k]]] += v[1]
+    # version 4, amendment §10: coverage of contexts (keys: study and context, so donors, clones and states where they
+    # are contexts) and of their targets, reported and not part of the acceptance; guides and replicates are not in the
+    # prepass state, so this receipt does not certify them
+    pair_off, pair_seen = defaultdict(set), defaultdict(set)
+    for s, sh in enumerate(shards):
+        tr = np.asarray(sh["train_rows"])
+        if not tr.size:
+            continue
+        pert = ~np.asarray(sh["control"])[tr] & (np.asarray(sh["tgt"])[tr] >= 0)
+        rows = tr[pert]
+        ks, ts = np.asarray(sh["key"])[rows], np.asarray(sh["tgt"])[rows]
+        hit = seen[offsets[s] + rows]
+        for k in np.unique(ks):
+            m = ks == k
+            pair_off[int(k)].update(np.unique(ts[m]).tolist())
+            pair_seen[int(k)].update(np.unique(ts[m & hit]).tolist())
+    cov["targets"] = {
+        "rule": "per key (study|context), the targets with at least one admitted perturbed training cell and those with "
+                "at least one such cell drawn; reported, not part of the acceptance (amendment §10)",
+        "by_key": {key_names[k]: {"targets_offered": len(pair_off[k]), "targets_seen": len(pair_seen[k])}
+                   for k in sorted(pair_off)},
+        "keys_offered": len(pair_off), "keys_with_every_target_seen": sum(pair_off[k] == pair_seen[k] for k in pair_off),
+        "targets_offered": sum(len(v) for v in pair_off.values()), "targets_seen": sum(len(v) for v in pair_seen.values()),
+        "not_certified": "guides and replicates (not carried by the prepass state)"}
     complete_windows = [w for w in windows if not w["partial"]]
     window_bad = [w for w in complete_windows if w["max_abs_deviation"] > a.share_tolerance or w["units_not_drawn"]]
     run_dev = {g: abs(cov["loss_shares"]["by_group"].get(g, 0.0) - 1.0 / G_active) for g in active_groups}

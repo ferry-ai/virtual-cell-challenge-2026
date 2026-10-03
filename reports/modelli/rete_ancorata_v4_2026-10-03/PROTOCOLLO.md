@@ -135,3 +135,27 @@ vere; righe J (ora pulite, comunque secondarie); i membri uno per uno; ricevute 
 
 Niente ESM2, niente corpus ampliato, niente generatore diverso in questo pilot. La riserva H1 test resta chiusa. I
 risultati della v3 r1 restano non letti fino alla lettura della v4 e non entrano nella regola.
+
+## 10. Emendamento del 3/10 sera, dopo la revisione di Codex e prima di ogni training v4
+
+Il proprietario ha inoltrato in chat una revisione di Codex del lavoro di questa sessione. Nessun training v4 era
+partito; nessun risultato era stato letto. La regola del §7 non cambia. Si precisano quattro punti:
+
+1. **Il pilot verifica la rete, non decide i dati.** L'integrazione di tutte le linee e i contesti idonei (D-053)
+   prosegue in ogni caso: ingestione verificata di CD4T, HCT116 e HEK293T, riconciliazione del catalogo, aggregati per
+   le voci che ne sono prive, campioni annidati. Se la primaria non passa, il corpus ampliato si costruisce lo stesso e
+   serve al prossimo candidato e al transfer; il ramo «se passa» del §7 dice solo quale modello lo usa per primo.
+2. **«Tutte le fonti» delle ancore** vuol dire le tabelle aggregate oggi presenti nel cubo r2: 10 gruppi (CD4T, H1,
+   HCT116, HEK293T, HepG2, Jurkat, K562 con VIPerturb, Neuron, RPE1, iPSC), non l'intero catalogo. Le voci del catalogo
+   senza aggregati sono lacune del binario dati, non fonti escluse.
+3. **Che cosa certifica la ricevuta di esposizione.** Le quote per gruppo di linea e per studio in ogni finestra, e
+   ogni unità estratta. Non certifica da sola la copertura di donatori, stati, bersagli e guide. Si aggiunge in
+   `coverage.json` una ricevuta riportata (non nell'accettazione): per ogni contesto (`studio|contesto`, quindi
+   donatori, cloni e stati dove sono contesti) i bersagli offerti e quelli estratti almeno una volta. Guide e
+   repliche non sono nello stato del pre-passo: questo pilot non ne certifica la copertura.
+4. **Proseguire non è sostituire la produzione.** Passare il §7 (battere la propria ancora) autorizza il passo al
+   corpus ampliato e la conferma P5, non la sostituzione del transfer t22/t25 negli invii. Per proporla serve in più,
+   registrato ora: in corsia B, `ancorata_shift` − `transfer_prod_J` > 0 in almeno 2 linee accettate su 3 con media
+   > 0, e in corsia A la media del PDS delle righe C `ancorata` − `transfer_prod_J` ≥ −0,02; poi P5 su riserva
+   appropriata e la prova a forma piena P6 (R-LEAD). Se il §7 passa e questo requisito no, l'esito resta «la
+   correzione appresa serve rispetto alla sua ancora», senza promozione.

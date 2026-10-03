@@ -91,7 +91,28 @@ codifica e decodifica (`fast_manifest.json`, `profile`).
 | Dipendenza delle ancore dai bersagli nascosti | confermato (sonda di Codex) e corretto nella v4 con un test di invarianza | `test_anchors_v4` |
 | Probabilità di non vedere una popolazione all'1% con 64 cellule: 0,526 | aritmetica corretta (0,99^64), ipotesi di campionamento indipendente | `audit.json` |
 
-## Ricostruzione e profilo dai kernel dei gemelli
+## Ricostruzione e profilo dai kernel dei gemelli (3/10, 23:03 CEST)
 
-Da compilare quando finiscono `rcell-v4-fast-{a,b,c}-r1` (sezione aggiunta con data e ora, il resto del documento non
-cambia).
+Kernel `rcell-v4-fast-{a,b,c}-r1` conclusi con codice 0 in circa 33 minuti ciascuno; manifest e log in
+[../esito/](../esito/) (`fast_<x>_r1/`).
+
+**Ricostruzione (misurata):** il campionatore della v3 rigiocato senza leggere conteggi sullo stato del pre-passo H1
+(`rcell-prepass-h1-r1`), con ruoli 3, buffer 4, seme 0, fino al passo 10.740, dà **le stesse estrazioni per chiave
+della corsa H1, senza alcuna differenza** (`draws_equal_to_the_run: true`). I due shard di `tian2021_crispri`
+(ruoli 2 e 1) non erano ancora stati caricati all'arresto; dei due di `tian2021_crispra`, uno è entrato al passo
+4.026 e l'altro mai. All'arresto 81 dei 300 shard con celle di training non erano mai stati caricati. Il meccanismo
+del §2 è quindi dimostrato sugli shard reali, non solo simulato.
+
+**Profilo (misurato, secondi sommati sui 4 processi, MB/s per processo riferiti ai byte degli shard):**
+
+| Kernel | Shard | Lettura grezza + sha256 | Lettura e decompressione h5py | Codifica | Decodifica e confronto |
+|---|---:|---:|---:|---:|---:|
+| a | 134 | 66,6 MB/s | 26,8 MB/s | 4,7 MB/s | 31,9 MB/s |
+| b | 91 | 68,0 MB/s | 27,3 MB/s | 4,8 MB/s | 30,8 MB/s |
+| c | 140 | 30,5 MB/s | 13,6 MB/s | 5,8 MB/s | 34,8 MB/s |
+
+La lettura dei byte è 2,3–2,5 volte più veloce della decompressione h5py sugli stessi file: conferma che il limite
+della v3 era il lavoro di CPU, non lo storage. La colonna della decodifica comprende anche il confronto esatto con
+la sorgente (un ordinamento di tutti i valori): la velocità della sola decodifica durante il training la misura la
+ricevuta `timing` della v4. I gemelli occupano 21,25 GB contro 53,32 (0,40); tutti i 365 shard dei training v3 sono
+coperti con sha256 e byte uguali, nessun fallimento.

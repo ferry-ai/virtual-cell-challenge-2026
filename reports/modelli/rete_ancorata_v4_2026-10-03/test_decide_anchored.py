@@ -83,6 +83,19 @@ class Rule(unittest.TestCase):
         self.assertEqual(r["outcome"], "passa")
         self.assertLess(r["secondary"]["laneB_by_member"]["avg"]["ancorata_shift-transfer_cells_J"]["H1"], 0)
 
+    def test_passing_the_pilot_is_not_a_promotion(self):
+        # amendment §10.4: beating transfer_all_J (0.25) passes the pilot; transfer_prod_J at 0.28 is not beaten
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            lines = [fake(d, g, {"ancorata_shift": v, "transfer_prod_J": 0.28}, {"ancorata": 0.80,
+                                                                              "transfer_all_J": 0.81})
+                     for g, v in zip(LINES, (0.27, 0.26, 0.26))]
+            r = decide(lines, d / "out")
+        self.assertEqual(r["outcome"], "passa")
+        self.assertFalse(r["promotion_requirement"]["met"])
+        r2 = self.run_case([0.27, 0.26, 0.26], {"ancorata": 0.80, "transfer_all_J": 0.81})
+        self.assertTrue(r2["promotion_requirement"]["met"])       # transfer_prod_J at 0.20 in the default table
+
     def test_guard_fails(self):
         r = self.run_case([0.27, 0.26, 0.24], {"ancorata": 0.70, "transfer_all_J": 0.81})
         self.assertEqual(r["outcome"], "non concluso")
