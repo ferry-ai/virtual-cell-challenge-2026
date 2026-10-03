@@ -8,6 +8,7 @@ Invecchiano in fretta: prima di seguirne un «prossimo passo», controllare
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 03/10 | [revisione_pilot_cellulare_2026-10-03/](revisione_pilot_cellulare_2026-10-03/) | Replica delle guardie segnalate da Codex: salute mancante corretta, confronto incompleto ancora promuovibile; verifica della matrice e limiti dell'attribuzione al numero di contesti | prove sintetiche e lettura descrittiva; nessun nuovo training | ★★★ |
 | 02/10 | [generalizzazione_contesti_2026-10-02/](generalizzazione_contesti_2026-10-02/) | R-LEAD P0–P3: matrice contesto × bersaglio × studio, split per linee intere stabili, esposizioni e riserve, protocollo congelato prima dei risultati, confronto transfer contro correzione dai controlli su sette gruppi di linea | sviluppo; esito nella decisione della corsa | ★★★ |
 | 01–02/10 | [rinnovo_repo_2026-10-01/](rinnovo_repo_2026-10-01/) | Rinnovo post-t29: 18 copie storiche con hash, schede operative ridotte, piano unico P0–P6 per Claude, metadata corretti e verifiche | sì, manutenzione documentale; nessun nuovo training o risultato biologico | ★★ |
 | 01/10 | [handoff_teammate_2026-10-01/](handoff_teammate_2026-10-01/) | Consegna del programma al teammate: brief e prompt in docs, inventario portabile per Git/runtime/input/applicabilità e verifica sul computer di origine | istruzioni e preflight; readiness del destinatario da misurare | ★★ |

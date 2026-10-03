@@ -1,0 +1,355 @@
+{
+  "written_utc": "2026-10-03T10:00:37.510737+00:00",
+  "script_sha256": "461813648e68bc4e7d6cf9e1e6e6e69cfa4217d86272a3ef719e8be3a98fad2b",
+  "guards": {
+    "1357466": {
+      "commit": "1357466511cc559e69b2da67284ca70c65ec25ea",
+      "source_sha256": "51284a239bb55c07b0f250e2d8bf5005fd6dbf2d9ff5532821bad755216de150",
+      "cases": {
+        "complete_positive_control": {
+          "usable": {
+            "H1": true,
+            "HepG2": true,
+            "RPE1": true
+          },
+          "outcome": {
+            "Q3_target_used": true,
+            "Q1_state_passed": true,
+            "Q2_transfer_passed": true,
+            "interpretable": true,
+            "expand_on_lane_A": true,
+            "lane_B": "applied separately where computed (PROTOCOLLO \u00a75-6)"
+          },
+          "Q1_pds": {
+            "by_line": {
+              "H1": 0.20000000000000007,
+              "HepG2": 0.20000000000000007,
+              "RPE1": 0.20000000000000007
+            },
+            "macro": 0.20000000000000007,
+            "lines_positive": 3,
+            "lines": 3,
+            "passed": true
+          },
+          "expected_expand_under_three_line_protocol": true
+        },
+        "missing_required_health": {
+          "usable": {
+            "H1": true,
+            "HepG2": true,
+            "RPE1": true
+          },
+          "outcome": {
+            "Q3_target_used": true,
+            "Q1_state_passed": true,
+            "Q2_transfer_passed": true,
+            "interpretable": true,
+            "expand_on_lane_A": true,
+            "lane_B": "applied separately where computed (PROTOCOLLO \u00a75-6)"
+          },
+          "Q1_pds": {
+            "by_line": {
+              "H1": 0.20000000000000007,
+              "HepG2": 0.20000000000000007,
+              "RPE1": 0.20000000000000007
+            },
+            "macro": 0.20000000000000007,
+            "lines_positive": 3,
+            "lines": 3,
+            "passed": true
+          },
+          "expected_expand_under_three_line_protocol": false
+        },
+        "failed_H1_health": {
+          "usable": {
+            "H1": false,
+            "HepG2": true,
+            "RPE1": true
+          },
+          "outcome": {
+            "Q3_target_used": true,
+            "Q1_state_passed": true,
+            "Q2_transfer_passed": true,
+            "interpretable": true,
+            "expand_on_lane_A": true,
+            "lane_B": "applied separately where computed (PROTOCOLLO \u00a75-6)"
+          },
+          "Q1_pds": {
+            "by_line": {
+              "H1": null,
+              "HepG2": 0.20000000000000007,
+              "RPE1": 0.20000000000000007
+            },
+            "macro": 0.20000000000000007,
+            "lines_positive": 2,
+            "lines": 2,
+            "passed": true
+          },
+          "expected_expand_under_three_line_protocol": false
+        },
+        "H1_not_supplied": {
+          "usable": {
+            "HepG2": true,
+            "RPE1": true
+          },
+          "outcome": {
+            "Q3_target_used": true,
+            "Q1_state_passed": true,
+            "Q2_transfer_passed": true,
+            "interpretable": true,
+            "expand_on_lane_A": true,
+            "lane_B": "applied separately where computed (PROTOCOLLO \u00a75-6)"
+          },
+          "Q1_pds": {
+            "by_line": {
+              "HepG2": 0.20000000000000007,
+              "RPE1": 0.20000000000000007
+            },
+            "macro": 0.20000000000000007,
+            "lines_positive": 2,
+            "lines": 2,
+            "passed": true
+          },
+          "expected_expand_under_three_line_protocol": false
+        }
+      }
+    },
+    "05504a1": {
+      "commit": "05504a17be7cc59b8e00bf395d605710a847bb0f",
+      "source_sha256": "8e1b57d77969212c3a6e94b442aa2b3e5c9af08df5fd3276746a4e992e4c54cb",
+      "cases": {
+        "complete_positive_control": {
+          "usable": {
+            "H1": true,
+            "HepG2": true,
+            "RPE1": true
+          },
+          "outcome": {
+            "Q3_target_used": true,
+            "Q1_state_passed": true,
+            "Q2_transfer_passed": true,
+            "interpretable": true,
+            "expand_on_lane_A": true,
+            "lane_B": "applied separately where computed (PROTOCOLLO \u00a75-6)"
+          },
+          "Q1_pds": {
+            "by_line": {
+              "H1": 0.20000000000000007,
+              "HepG2": 0.20000000000000007,
+              "RPE1": 0.20000000000000007
+            },
+            "macro": 0.20000000000000007,
+            "lines_positive": 3,
+            "lines": 3,
+            "passed": true
+          },
+          "expected_expand_under_three_line_protocol": true
+        },
+        "missing_required_health": {
+          "usable": {
+            "H1": false,
+            "HepG2": true,
+            "RPE1": true
+          },
+          "outcome": {
+            "Q3_target_used": true,
+            "Q1_state_passed": true,
+            "Q2_transfer_passed": true,
+            "interpretable": true,
+            "expand_on_lane_A": true,
+            "lane_B": "applied separately where computed (PROTOCOLLO \u00a75-6)"
+          },
+          "Q1_pds": {
+            "by_line": {
+              "H1": null,
+              "HepG2": 0.20000000000000007,
+              "RPE1": 0.20000000000000007
+            },
+            "macro": 0.20000000000000007,
+            "lines_positive": 2,
+            "lines": 2,
+            "passed": true
+          },
+          "expected_expand_under_three_line_protocol": false
+        },
+        "failed_H1_health": {
+          "usable": {
+            "H1": false,
+            "HepG2": true,
+            "RPE1": true
+          },
+          "outcome": {
+            "Q3_target_used": true,
+            "Q1_state_passed": true,
+            "Q2_transfer_passed": true,
+            "interpretable": true,
+            "expand_on_lane_A": true,
+            "lane_B": "applied separately where computed (PROTOCOLLO \u00a75-6)"
+          },
+          "Q1_pds": {
+            "by_line": {
+              "H1": null,
+              "HepG2": 0.20000000000000007,
+              "RPE1": 0.20000000000000007
+            },
+            "macro": 0.20000000000000007,
+            "lines_positive": 2,
+            "lines": 2,
+            "passed": true
+          },
+          "expected_expand_under_three_line_protocol": false
+        },
+        "H1_not_supplied": {
+          "usable": {
+            "HepG2": true,
+            "RPE1": true
+          },
+          "outcome": {
+            "Q3_target_used": true,
+            "Q1_state_passed": true,
+            "Q2_transfer_passed": true,
+            "interpretable": true,
+            "expand_on_lane_A": true,
+            "lane_B": "applied separately where computed (PROTOCOLLO \u00a75-6)"
+          },
+          "Q1_pds": {
+            "by_line": {
+              "HepG2": 0.20000000000000007,
+              "RPE1": 0.20000000000000007
+            },
+            "macro": 0.20000000000000007,
+            "lines_positive": 2,
+            "lines": 2,
+            "passed": true
+          },
+          "expected_expand_under_three_line_protocol": false
+        }
+      }
+    }
+  },
+  "support": {
+    "h1": {
+      "inputs_sha256": {
+        "target_by_group.csv.gz": "63ad0a73c4c0da184d8514aa9b40f1cf2cefaecf9c707ad62c29e633b06e986d",
+        "eval_support.csv": "0c49f80dffa183442a1001b69f3f2b714568dc6cd383b083ac54a1a9b78e1e5b"
+      },
+      "training_targets": 8380,
+      "training_targets_by_any_groups": {
+        "1": 5281,
+        "2": 1081,
+        "3": 68,
+        "4": 1004,
+        "5": 786,
+        "6": 154,
+        "7": 6
+      },
+      "fraction_training_targets_single_group": 0.6301909307875895,
+      "C_rows": 151,
+      "C_unique_symbols": 151,
+      "C_any_groups": {
+        "1": 66,
+        "2": 31,
+        "3": 2,
+        "4": 14,
+        "5": 32,
+        "6": 6
+      },
+      "C_CRISPRi_groups": {
+        "1": 72,
+        "2": 26,
+        "3": 1,
+        "4": 22,
+        "5": 28,
+        "6": 2
+      },
+      "C_CRISPRi_groups_ge20cells": {
+        "0": 1,
+        "1": 71,
+        "2": 28,
+        "3": 3,
+        "4": 27,
+        "5": 20,
+        "6": 1
+      },
+      "note": "The >=20-cell view is a descriptive sensitivity check, not a new inclusion or verdict rule."
+    },
+    "hepg2": {
+      "inputs_sha256": {
+        "target_by_group.csv.gz": "15afdcad7cf8add3073567318fe6d7d63c46912ae678bdf8c3f986d68ce02801",
+        "eval_support.csv": "6552b30f467d13427c38d29cdbe40516c76eedd1c5de5157f7b8aa36738649d0"
+      },
+      "training_targets": 8388,
+      "training_targets_by_any_groups": {
+        "1": 5223,
+        "2": 1118,
+        "3": 1083,
+        "4": 772,
+        "5": 180,
+        "6": 12
+      },
+      "fraction_training_targets_single_group": 0.6226752503576538,
+      "C_rows": 1748,
+      "C_unique_symbols": 1748,
+      "C_any_groups": {
+        "3": 892,
+        "4": 688,
+        "5": 157,
+        "6": 11
+      },
+      "C_CRISPRi_groups": {
+        "3": 1198,
+        "4": 509,
+        "5": 40,
+        "6": 1
+      },
+      "C_CRISPRi_groups_ge20cells": {
+        "1": 11,
+        "2": 114,
+        "3": 1096,
+        "4": 488,
+        "5": 38,
+        "6": 1
+      },
+      "note": "The >=20-cell view is a descriptive sensitivity check, not a new inclusion or verdict rule."
+    },
+    "rpe1": {
+      "inputs_sha256": {
+        "target_by_group.csv.gz": "08719d5bdcd939c4c47744195fff735897438f78a989f3132c4eec62cdfcaf70",
+        "eval_support.csv": "4eecdb6556aece5b8991b1ded28c3a094e57f14f259495b8f28b9331548e2715"
+      },
+      "training_targets": 8388,
+      "training_targets_by_any_groups": {
+        "1": 5223,
+        "2": 1117,
+        "3": 1085,
+        "4": 771,
+        "5": 180,
+        "6": 12
+      },
+      "fraction_training_targets_single_group": 0.6226752503576538,
+      "C_rows": 1794,
+      "C_unique_symbols": 1794,
+      "C_any_groups": {
+        "3": 900,
+        "4": 714,
+        "5": 168,
+        "6": 12
+      },
+      "C_CRISPRi_groups": {
+        "3": 1212,
+        "4": 532,
+        "5": 48,
+        "6": 2
+      },
+      "C_CRISPRi_groups_ge20cells": {
+        "1": 15,
+        "2": 128,
+        "3": 1114,
+        "4": 497,
+        "5": 39,
+        "6": 1
+      },
+      "note": "The >=20-cell view is a descriptive sensitivity check, not a new inclusion or verdict rule."
+    }
+  }
+}
