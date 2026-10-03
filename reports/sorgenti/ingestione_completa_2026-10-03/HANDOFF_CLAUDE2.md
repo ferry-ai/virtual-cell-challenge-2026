@@ -153,6 +153,30 @@ Stato verificato sui log e su Kaggle, ore lette con `date`.
 - **Coda:** [fill_sessions.py](kaggle_cpu/fill_sessions.py) spinge i prossimi kernel nelle sessioni libere, una
   chiamata per volta fatta dalla sessione. In coda 6 parti Orion r3 e le 24 parti CD4.
 
+## Aggiornamento delle 19:55: in pausa su richiesta del proprietario (sessione `c7c07a`)
+
+Alle 19:51 il proprietario ha scritto in chat: «Aspetta, sto delineando un nuovo piano con codex». Da quel momento la
+sessione **non spinge altri kernel**; i processi che la richiamavano a sessione libera sono stati fermati. I kernel
+già partiti finiscono da soli. Per riprendere la coda com'era: `kaggle_cpu/fill_sessions.py`, una chiamata per volta.
+
+- **Chiuso:** KOLF pan-genome. Il kernel `vcc-kolf-pan-verify-r1` ha riletto le due parti (`vcc-kolf-pan-p0of2-r2`,
+  `vcc-kolf-pan-p1of2-r1`): 2.659.209 cellule, 133 shard, 18,39 GB, 7.872.183.461 valori come nella sorgente, sha256
+  uguali. Ricevute in [kolf/esito_verifica_r1/](kolf/esito_verifica_r1/). Dall'inventario: 11.687 bersagli, mediana
+  218 cellule per bersaglio, 3 guide e 30 librerie per bersaglio; con tetto 32, 64, 128 restano 365.813, 716.099 e
+  1.376.068 cellule bersagliate su 2.512.462, più 146.747 controlli.
+- **In corso alle 19:52:** CD4 `D1_Rest` parte 0/2, HCT116 1/4 r3, il kernel KOLF lento `vcc-kolf-pan-p0of2-r1`
+  (superfluo, non fermabile via API) e la sonda `vcc-rds-probe-r1`, che non ispeziona niente perché l'immagine non
+  ha `/usr/bin/time`: la versione corretta è committata e **non spinta**.
+- **Finiti e montabili:** Orion HEK293T 3/8–7/8, HCT116 0/4 e 2/4 (r3); CD4 `D1_Rest` 1/2 (finita in 39 minuti).
+- **Fermo in coda (26 kernel):** HCT116 3/4, HEK293T 0/8, 1/8, 2/8, e 22 parti CD4. Poi le verifiche di linea di
+  HCT116 e HEK293T (`build_orion_verify.py`) e quelle dei file CD4 (`build_parts_verify.py`).
+- **DLD-1** ([dld1/esito_probe_r1/](dld1/esito_probe_r1/)): il tar ha 280 membri, 48 librerie di espressione (4 del
+  pilota, 44 dell'esperimento grande in tre pool da 24, 12 e 8 canali) e 44 matrici di UMI delle guide (23.480
+  guide). Gli oggetti elaborati dagli autori hanno i conteggi in HDF5 (`assay001`, 1.196.592 cellule × 36.601 geni
+  per la MOI bassa) e la tabella delle cellule in un `_se.rds`: è la via più semplice, e la tabella si legge con la
+  sonda RDS.
+- **Colab:** `queue` è libera dalle 18:00; `queue2` porta ancora Southard (132).
+
 ## Prossimi passi, in ordine
 
 1. **Orion**, quando le parti finiscono:
