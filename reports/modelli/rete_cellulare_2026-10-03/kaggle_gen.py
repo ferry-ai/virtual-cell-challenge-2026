@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-FILES = ("generate_cells.py", "choose_targets.py", "cellnet.py", "cell_data.py")
+FILES = ("generate_cells.py", "choose_targets.py", "extract_cells.py", "cellnet.py", "cell_data.py")
 
 KERNEL = r'''
 import json, os, subprocess, sys, time
@@ -34,7 +34,7 @@ t0 = time.time()
 
 def mount(slug):
     for p in (INPUT / slug, INPUT / "datasets" / OWNER / slug, INPUT / "notebooks" / OWNER / slug,
-              INPUT / "kernels" / OWNER / slug):
+              INPUT / "kernels" / OWNER / slug, INPUT / "datasets" / "davidmaisterx" / slug):
         if p.is_dir():
             return p
     hits = [p for p in INPUT.glob(f"**/{{slug}}") if p.is_dir()]
@@ -66,6 +66,9 @@ def run(args, name):
 ok = run([GEN / "choose_targets.py", "--eval-groups", TRAIN / "eval_groups.json", "--cube", cube, "--target-keys",
           CODE / "target_keys.json", "--held-group", HELD, "--targets", TARGETS, "--out", OUT / "targets.json"], "choose")
 if ok:
+    # the real cells of the same targets and the key's controls, for the six members computed elsewhere
+    run([GEN / "extract_cells.py", "--prepass", PRE, "--targets", OUT / "targets.json", "--shard-roots", INPUT,
+         "--cap", 64, "--max-controls", 2048, "--seed", 2026, "--out", OUT / "real_cells.npz"], "extract")
     for arm in ARMS:
         run([GEN / "generate_cells.py", "--prepass", PRE, "--arm-dir", TRAIN / arm, "--descriptors", CODE,
              "--targets", OUT / "targets.json", "--n", N, "--out", OUT / f"cells_{{arm}}.npz"], f"generate_{{arm}}")
@@ -101,6 +104,8 @@ def main() -> None:
     k.add_argument("--arms", nargs="+", default=["cells", "mean", "generic"])
     k.add_argument("--n", type=int, default=32)
     k.add_argument("--targets", type=int, default=150)
+    k.add_argument("--data-owner", default="davidmaisterx")
+    k.add_argument("--shard-datasets", nargs="+", required=True, help="the corpus datasets of the held-out line")
     a = p.parse_args()
     if a.stage.exists():
         sys.exit(f"refusing: {a.stage} exists")
@@ -123,7 +128,8 @@ def main() -> None:
     meta = {"id": f"{a.owner}/{a.slug}", "title": a.slug, "code_file": "run.py", "language": "python",
             "kernel_type": "script", "is_private": True, "enable_gpu": False, "enable_tpu": False,
             "enable_internet": False,
-            "dataset_sources": [f"{a.owner}/rcell-gen-r1", f"{a.owner}/{a.code_slug}", f"{a.owner}/rlead-bench-cube-r2"],
+            "dataset_sources": [f"{a.owner}/rcell-gen-r1", f"{a.owner}/{a.code_slug}", f"{a.owner}/rlead-bench-cube-r2"]
+            + [f"{a.data_owner}/{d}" for d in a.shard_datasets],
             "kernel_sources": [f"{a.owner}/{a.train_kernel}", f"{a.owner}/{a.prepass_kernel}"],
             "competition_sources": []}
     (a.stage / "kernel-metadata.json").write_text(json.dumps(meta, indent=1))

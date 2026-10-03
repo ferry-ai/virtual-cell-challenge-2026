@@ -210,6 +210,23 @@ class StagesV2(unittest.TestCase):
         self.assertEqual(sum(b["cells"] for b in side["blocks"]), 36)
 
 
+    def test_extracted_real_cells(self):
+        import scipy.sparse as sp
+        targets = self.d / "real_targets.json"
+        targets.write_text(json.dumps([{"key": "sa|La", "symbol": "G1"}, {"key": "sa|La", "symbol": "G4"}]),
+                           encoding="utf-8")
+        out = self.d / "gen" / "real_cells.npz"
+        proc = subprocess.run([sys.executable, str(HERE / "extract_cells.py"), "--prepass", str(self.d / "pre"),
+                               "--targets", str(targets), "--shard-roots", str(self.d / "shards"), "--cap", "30",
+                               "--max-controls", "100", "--out", str(out)], capture_output=True, text=True)
+        self.assertEqual(proc.returncode, 0, proc.stderr[-3000:])
+        z = np.load(out)
+        lab = z["labels"].astype(str)
+        self.assertEqual(((lab == "G1").sum(), (lab == "G4").sum(), (lab == "non-targeting").sum()), (30, 30, 100))
+        x = sp.csr_matrix((z["data"], z["indices"], z["indptr"]), shape=tuple(z["shape"]))
+        self.assertEqual(x.shape, (160, len(GENES)))
+
+
 class MeanContext(unittest.TestCase):
     def test_mean_mode_sees_only_the_pooled_profile(self):
         import torch
