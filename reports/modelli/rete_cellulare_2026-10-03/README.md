@@ -13,6 +13,9 @@ congelato prima di ogni training.
 | `kaggle_train.py` | Kernel Kaggle: codice e kernel su `davideferrante11`, corpus su `davidmaisterx` |
 | `line_groups.json`, `target_keys.py` | Gruppi di linea; chiavi riconciliate per le fold a hash del banco |
 | `test_v2_units.py`, `test_v2_stages.py`, `test_pi_floor.py` | Test della versione 2; `test_cell_data.py`, `test_prepass.py`, `test_read_csr.py` della versione 1 |
+| `bench_effects.py` | Corsia A: spostamenti previsti contro le righe del cubo del banco della linea esclusa, con i transfer delle stesse righe (test: `test_bench_effects.py`, sul cubo vero) |
+| `decide_pilot.py` | La regola del §6: accettazione tecnica, collasso, Q1–Q3, espansione (test: `test_decide_pilot.py`) |
+| `lancio_*.json` | Kernel, commit, dataset e argomenti di ogni lancio, scritti al lancio |
 | `export_effects.py`, `target_descriptors.py` | Copie della versione 1, non modificate |
 
 Dati e output pesanti nella radice dati, `processed/rete_cellulare_2026-10-03/`.

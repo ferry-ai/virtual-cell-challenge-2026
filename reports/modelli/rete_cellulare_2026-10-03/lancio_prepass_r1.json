@@ -1,0 +1,49 @@
+{
+ "kernels": {
+  "h1": "davideferrante11/rcell-prepass-h1-r1",
+  "hepg2": "davideferrante11/rcell-prepass-hepg2-r1",
+  "rpe1": "davideferrante11/rcell-prepass-rpe1-r1"
+ },
+ "kind": "CPU, no GPU quota",
+ "commit": "ad5ddd8 (protocol and code frozen, 2026-10-03 02:17:14 +0200)",
+ "code_dataset": {
+  "id": "davideferrante11/rcell-code-r1",
+  "created_local": "2026-10-03 02:19 (date read after the upload)",
+  "sha256": {
+   "cell_data.py": "28182555bfefa2d59e8374751760775cc3ba64d5decab0d2ebb6a85cc0a29cc3",
+   "cellnet.py": "9c49dbfc19fd508457c0fc85b21261841bf38cc59e062e41c66469576d750489",
+   "descriptors.npy": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80",
+   "gene_names.csv": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "genes.txt": "7a8ee78c52cebdae6d20d69cb7c9aeecedde39a9aeadfa0887ce4ce7036355d5",
+   "line_groups.json": "6b1ca89f065f946cccf92bead36d8c4c9de29609322c24ce0f5e5a9df6731546",
+   "manifest.json": "914ce957d67a7b296b5c9b36652cf39baaff4f5b7d18106134f1dc9cafa0342e",
+   "target_keys.json": "55a4e601f75dbbee2ccf3d8e052483b8cc355b0d1a57c3fc33f53ca687a1515a",
+   "train_cellnet.py": "3b54e749af038a820883a90d4d249385f6210278bf40cba2ce010af4c3a7495b"
+  }
+ },
+ "datasets_owner": "davidmaisterx (shared as reader with davideferrante11 between 02:03 and 02:13)",
+ "datasets": [
+  "rlab-hepg2-nadig",
+  "rlab-jurkat-nadig",
+  "rlab-h1-vcc2025-trainval",
+  "rlab-hipsci-targeted19",
+  "rlab-k562-gwps-r3",
+  "rlab-k562-essential-r2",
+  "rlab-rpe1-r2",
+  "rlab-a549",
+  "rlab-tian-norman",
+  "rlab-kolf-small",
+  "rlab-kolf-strong"
+ ],
+ "globs": {
+  "rlab-tian-norman": "norman2019__*.h5ad|tian2021_*.h5ad"
+ },
+ "left_out": {
+  "rlab-hipsci-gwfit, rlab-hipsci-gwnonfit": "1-5 NTC per line: every key below --min-controls-per-key in r7",
+  "tian2019": "unfiltered droplets (r7 deviation of 1/10)",
+  "southard": "not published",
+  "h1 2025 test": "the closed reserve"
+ },
+ "prepass_args": "--line-groups @CODE/line_groups.json --holdout-group <H1|HepG2|RPE1> --hidden-fold 0 --n-folds 5 --target-keys @CODE/target_keys.json --same-experiment h1_vcc2025=h1_vcc2025_train,h1_vcc2025_val --pool-size 2048 --ctrl-k 64 --input-genes 2048 --eval-min-cells 20 --eval-max-cells 150 --eval-max-groups-t 300 --workers 4",
+ "pushed_local": "2026-10-03 02:20 (the three pushes ended at 02:20:53, date read)"
+}
