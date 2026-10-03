@@ -73,6 +73,32 @@ class LaneB(unittest.TestCase):
             for arm in ("replicate", "baseline", "transfer_cells", "transfer_all", "cells_shift", "mean_shift",
                         "generic_shift", "cells_cells", "mean_cells", "generic_cells"):
                 self.assertIn(arm, table)
+            # the same through lane_b.py, from real cells stored as extract_cells.py writes them
+            import scipy.sparse as sp
+            from six_member_hepg2 import read_rows
+            with h5py.File(hepg2, "r") as f:
+                cell_gene = h5_column(f["obs/gene"])
+            pick, labs = [], []
+            for t in targets:
+                r = np.flatnonzero(cell_gene == t["symbol"])[:32]
+                pick.append(r)
+                labs += [t["symbol"]] * r.size
+            c = np.flatnonzero(cell_gene == "non-targeting")[:512]
+            rows_all = np.concatenate(pick + [c])
+            labs += ["non-targeting"] * c.size
+            order = np.argsort(rows_all)
+            xr = read_rows(hepg2, rows_all[order])
+            xr = xr[np.argsort(order)].tocsr()
+            np.savez_compressed(cells / "real_cells.npz", data=xr.data, indices=xr.indices, indptr=xr.indptr,
+                                shape=np.array(xr.shape), labels=np.array(labs), genes=native)
+            proc = subprocess.run([sys.executable, str(HERE / "lane_b.py"), "--held-group", "HepG2", "--real",
+                                   str(cells / "real_cells.npz"), "--targets", str(d / "targets.json"), "--cells-dir",
+                                   str(cells), "--run", str(run), "--cube", str(CUBE), "--protocol", str(PROTO),
+                                   "--out", str(d / "out_generic")], capture_output=True, text=True)
+            self.assertEqual(proc.returncode, 0, proc.stderr[-4000:])
+            table = (d / "out_generic" / "bench" / "scaled_local.csv").read_text(encoding="utf-8")
+            for arm in ("replicate", "transfer_cells", "cells_shift", "generic_cells"):
+                self.assertIn(arm, table)
 
 
 if __name__ == "__main__":
