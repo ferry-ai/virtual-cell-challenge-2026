@@ -61,6 +61,22 @@ perso: si rimette in coda con **numero e output nuovi**, mai sopra il vecchio.
 - Il run claude2 dell'hub `20261003-155531-vcc-rds-conversion` si è fermato per un limite di spesa e non ha scritto
   niente.
 
+## Aggiornamento delle 16:38: niente secondo Colab, si usa Kaggle CPU (decisione del proprietario)
+
+- **Code 3 e 4:** non si aprono. I job 139–142 sono in `runs/queue3/ritirati/` e `runs/queue4/ritirati/`.
+- **Kaggle CPU misurato** (`kaggle_cpu/esito_nettest_r1/nettest.json`): 4 CPU, 31 GB di RAM, 20 GB di output per
+  kernel; Hugging Face, S3, Zenodo e GEO raggiungibili, 44 MB/s su un file Orion.
+- **Kernel Orion:** `kaggle_cpu/build_orion_kaggle.py`, dataset del codice `davideferrante11/vcc-ingest-code-r1`,
+  stesso snapshot `4df47fab…` dei job Colab. Le parti sono 8 per HEK293T e, per HCT116, la 0/4 e la 2/4, cioè i file
+  del job 137 fallito; la 1/2 la fa il job Colab 138.
+- **Difetto da correggere prima di rispingere:** alle 16:37 tre kernel sono andati in `ERROR` per
+  `FileNotFoundError: .../vcc-ingest-code-r1/code_snapshot.tar.gz`. Kaggle scompatta da solo gli archivi caricati in
+  un dataset, e probabilmente falliranno anche i due ancora `RUNNING`. Correzione: nel `run.py` del kernel cercare
+  la cartella già estratta sotto il mount (per esempio `reports/` dentro `DS`) invece di aprire il tar, oppure
+  caricare lo snapshot con un nome non d'archivio (`code_snapshot.bin`). Poi slug nuovi `-r2`.
+- **Concorrenza:** con 2 training GPU e 2 kernel CPU attivi non è stato visto nessun rifiuto per limite di sessioni;
+  gli errori erano tutti il FileNotFoundError.
+
 ## Prossimi passi, in ordine
 
 1. **Orion**, quando le parti finiscono:
