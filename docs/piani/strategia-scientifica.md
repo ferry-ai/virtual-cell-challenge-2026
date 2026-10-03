@@ -90,7 +90,7 @@
     account restano libere per questo. HepG2 concluso alle 01:01 e tecnicamente accettato
     ([ricevute](../../reports/modelli/rete_ancorata_v4_2026-10-03/esito/train_hepg2_r1/)); la sua generazione attende
     una sessione CPU libera.
-  - **Aggiornamento delle 01:38.** Corsia B di H1 conclusa in locale alle 01:10 (media dei sei membri: `ancorata_shift`
+  - **Aggiornamento delle 01:37.** Corsia B di H1 conclusa in locale alle 01:10 (media dei sei membri: `ancorata_shift`
     0,057 contro 0,272 di `transfer_all_J`; `esito/laneB_h1_r1/`); corsia A di HepG2: PDS 0,639 contro 0,886
     (`esito/laneA_hepg2_r1/`). Il proprietario ha fermato le corsie sul portatile (regola di `CLAUDE.md`): la corsia B
     di HepG2, partita in locale, è stata interrotta alle 01:31 e **le corsie girano ora su Kaggle CPU**
