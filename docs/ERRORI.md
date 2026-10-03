@@ -213,6 +213,11 @@ nella memoria privata di un agente: qui valgono per tutti.
   faceva comparire testi superati nelle ricerche; è stata spostata fuori il 30/09
   (`reports/analisi/riordino_repo_2026-09-30/`). Nella cartella della repo non vanno copie, venv
   o dati.
+- **Lanciatori che spendono quota.** La scadenza di un Monitor non ferma il processo che lo alimenta:
+  il 3/10 quattro cicli bash sopravvissuti hanno spinto due volte lo stesso training GPU (due
+  sessioni Kaggle, circa 3 ore di quota) e bloccato gli altri sul limite di 2 sessioni
+  (E-20261003-001). Un lanciatore è un processo unico con lock che termina da solo; dopo ogni
+  spinta si legge la quota GPU usata e riservata. Una versione nuova non annulla quella in corsa.
 - **Scratchpad di sessione.** Sono temporanei e possono sparire: i risultati vanno in `reports/`
   prima di chiudere la sessione. Il 26/09 risultati verificati sono rimasti solo in uno scratchpad;
   il 30/09 erano ancora lì, in attesa della decisione del proprietario.

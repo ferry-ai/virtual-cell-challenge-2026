@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "eid": "E-20261003-001",
+  "revision": 1,
+  "previous_sha256": null,
+  "recorded_utc": "2026-10-03T03:29:31+00:00",
+  "claim_type": "operational_incident",
+  "state": "implemented",
+  "title": "Pilot della rete cellulare v2: il training H1 lanciato due volte su GPU (due sessioni, circa 3 ore di quota sprecate) da istanze del lanciatore sopravvissute alla scadenza del Monitor",
+  "symptom": "Alle 05:13 CEST del 3/10, finito il prepass H1, il kernel davideferrante11/rcell-train-h1-r1 risulta alla versione 2 benché la sessione ne abbia chiesto una sola. Le spinte successive (HepG2, RPE1) sono respinte con 'Maximum batch GPU session count of 2 reached' mentre un solo training risulta RUNNING. La quota GPU usata sale di 14 minuti in al massimo 9 minuti di tempo reale: due sessioni attive.",
+  "cause": "Ogni Monitor del harness (30 minuti) avviava auto_train.sh, un ciclo bash che spinge il training quando il prepass e COMPLETE. Alla scadenza del Monitor il ciclo non veniva terminato: alle 05:13 ne giravano quattro, e ciascuno ha visto COMPLETE e spinto una versione (le prime due accettate, le altre respinte dal limite di 2 sessioni). Spingere una versione nuova non annulla quella in corsa. Verificata dai processi trovati (quattro PID su auto_train.sh) e dalla quota.",
+  "cause_verified": true,
+  "fix": "Lanciatori uccisi (Stop-Process); un lanciatore unico (auto_train_v2.sh) con file di lock e PID, che spinge solo se il prepass e COMPLETE e meno di due training risultano RUNNING o QUEUED, e si chiude da solo. La versione 1 di H1 non si puo annullare dall'API (CancelKernelSession vuole un id di sessione che nessun endpoint restituisce) ne cancellando il kernel (irreversibile, colpirebbe anche la versione buona): finisce col suo budget di 180 minuti.",
+  "regression_test": "Prima del prossimo lancio automatico: avviare due volte auto_train_v2.sh; la seconda istanza deve uscire subito ('another instance ... is running'). Nessun lanciatore va affidato alla scadenza di un Monitor per terminare.",
+  "next_guard": "Un processo che spinge kernel o consuma quota non si avvia dentro un Monitor che scade: si usa un processo in background unico, con lock, che termina da solo; dopo ogni spinta si legge get_accelerator_quota_statistics (usata e riservata) per escludere sessioni doppie.",
+  "scope": "Solo l'orchestrazione locale dei lanci del pilot (script nello scratchpad della sessione 22d21f, copiati qui). Codice di training, prepass e dati non sono toccati; la versione 2 del training H1 e quella che si legge.",
+  "evidence": [
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/incidente_E-20261003-001/auto_train_v1.sh",
+      "sha256": "1830cf5c8d0c60f4f02df5bb1dc20ab2bd19cd35cbf7ccf49bd3bf4889e9b933",
+      "bytes": 1146,
+      "supports": "Il lanciatore senza lock avviato da ogni Monitor"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/incidente_E-20261003-001/auto_train_v2.sh",
+      "sha256": "50f047d24dd5871e6f3cb2acb946bfbbe09fed447aed1edb8c40e5d6f772f902",
+      "bytes": 1840,
+      "supports": "Il lanciatore unico con lock e controllo delle sessioni"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/incidente_E-20261003-001/push_h1_last_writer.txt",
+      "sha256": "5e4c414b9f10ebcf18b342fa47ebc06e389763dcecccc17c2c332ec865de46ac",
+      "bytes": 65,
+      "supports": "L'ultima istanza che ha scritto l'esito della spinta H1: respinta per il limite di 2 sessioni GPU"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/incidente_E-20261003-001/launcher_v2_log_0528.txt",
+      "sha256": "05f6fd6933c50cb8adb63fafaea4d2f01a55874cfa9eff03db552712ebb3119f",
+      "bytes": 948,
+      "supports": "Spinte di HepG2 e RPE1 respinte con un solo training visibile"
+    },
+    {
+      "path": "reports/modelli/rete_cellulare_2026-10-03/incidente_E-20261003-001/osservazioni.json",
+      "sha256": "9cff6b36ebdf4f0db166adfb033c7630df738f13848d35771ef04dc80a406340",
+      "bytes": 1423,
+      "supports": "Letture della quota GPU, processi trovati e limiti dell'API, con gli orari letti"
+    }
+  ],
+  "remote_verification": null
+}

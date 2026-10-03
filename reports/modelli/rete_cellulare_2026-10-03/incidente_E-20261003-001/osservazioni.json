@@ -1,0 +1,21 @@
+{
+ "monitor_event_received": "05:13:42 prepass h1 COMPLETE -> push train: Kernel version 2 successfully pushed (event of the fourth Monitor instance, task bf5zljl7u)",
+ "kernels_list_0514": "davideferrante11/rcell-train-h1-r1 lastRunTime 2026-10-03 03:13:45 UTC (kernels list read at 05:14:02); current_version_number 2 (get_kernel, read between 05:23:03 and 05:27:49, date before and after)",
+ "launcher_processes_0514": "four bash processes running scratchpad/auto_train.sh (PIDs 13000, 15076, 8256, 15924) besides the live Monitor's; stopped with Stop-Process between 05:14:02 and 05:17:40 (date before and after), none left",
+ "gpu_quota_readings": [
+  {
+   "read_between": "05:14:02 and 05:17:40 CEST (date read before and after)",
+   "time_used": "0:05:34",
+   "time_reserved": "11:57:40",
+   "total_time_allowed": "30:00:00",
+   "refresh": "2026-10-10 00:00 UTC"
+  },
+  {
+   "read_at": "05:23:03 CEST (date printed right after)",
+   "time_used": "0:19:34",
+   "time_reserved": "11:50:39"
+  }
+ ],
+ "reading": "14 minutes of quota used in at most 9 minutes of wall time: two GPU sessions running; the third and fourth pushes were refused with 'Maximum batch GPU session count of 2 reached'",
+ "api": "kagglesdk exposes CancelKernelSession(kernel_session_id) but no endpoint returns the session id of a version (GetKernelSessionStatus and GetKernelSessionLogsStream with version_label answer 404)"
+}
