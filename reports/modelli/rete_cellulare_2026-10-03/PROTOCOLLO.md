@@ -225,3 +225,16 @@ positive, la regola promuoveva sulla media di due. Ora `decide_pilot.py`:
 - richiede la completezza anche per Q3.
 
 Le soglie non cambiano. Test: `test_decide_pilot.Completeness`, con i casi di Codex.
+
+## 11. Verdetto r3 e decisione del proprietario (3/10, 12:55–13:00 CEST)
+
+`decide_pilot.py` sulle tre linee r3, tutte accettate tecnicamente: confronto completo; **Q1 passa** (PDS `cells` −
+`mean` +0,014 in media, 2 linee su 3: H1 +0,029, HepG2 +0,050, RPE1 −0,038); **Q2 non passa** (−0,32, 0 su 3); **Q3
+passa** (+0,070, 3 su 3). Per la regola del §6 l'espansione sarebbe giustificata da Q1
+([`esito/decision_r3/decision.json`](esito/decision_r3/decision.json)).
+
+**Il proprietario ha scelto in chat di non espandere questa rete** e di passare a una rete cellulare che parta dal
+transfer e lo corregga. Motivo dichiarato nella domanda: lo scarto dal transfer (Q2) resta grande e l'espansione non lo
+riduce. Prima viene un controllo gratuito sui sei membri: se mescolare transfer e spostamento della rete aiuta. Poi il
+training sul corpus ampliato da un'altra sessione (claude2), quando sarà pronto. È una deviazione dalla regola di
+espansione decisa per risorse e obiettivo, non uno spostamento di soglia: l'esito di Q1 resta quello registrato.
