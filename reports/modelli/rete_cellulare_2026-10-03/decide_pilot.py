@@ -24,6 +24,7 @@ LOWER = {"mse_ratio"}
 COLLAPSE = 1e-3                     # pi_q50 of the perturbed cells at the last logged step (PROTOCOLLO §6)
 RESP_MIN = 0.01                     # amendment 2.1 (PROTOCOLLO §8): or the gate at its floor, or no responsibility
 SHARE_TOL = 0.02                    # loss shares of the line groups within this of 1/G
+ARMS_REQUIRED = ("cells", "mean", "generic")
 
 
 def technical(train: Path) -> dict:
@@ -37,17 +38,20 @@ def technical(train: Path) -> dict:
         out["loss_shares_by_group"] = shares
         out["loss_shares_within_tolerance"] = bool(g and all(abs(v - 1 / g) <= SHARE_TOL for v in shares.values()))
         out["epochs_done"] = cov.get("epochs_done")
+    # guards corrected on 3/10 (the first version read kernel_done.json in the training folder, where the kernel never
+    # writes it, and took a missing file, a missing verify.json or a missing arm for a pass): every item is required
     verify = train / "verify.json"
+    out["verify_present"] = verify.is_file()
     if verify.is_file():
         v = json.loads(verify.read_text(encoding="utf-8"))
         out["shards_differ"] = v.get("differ", v.get("bad"))
-    done = train / "kernel_done.json"
-    if done.is_file():
-        out["return_code"] = json.loads(done.read_text(encoding="utf-8")).get("return_code")
+    done = next((p for p in (train / "kernel_done.json", train.parent / "kernel_done.json") if p.is_file()), None)
+    out["kernel_done"] = str(done) if done else None
+    out["return_code"] = json.loads(done.read_text(encoding="utf-8")).get("return_code") if done else "missing"
     evals = {}
-    for d in sorted(p for p in train.iterdir() if (p / "eval.json").is_file()):
-        s = json.loads((d / "eval.json").read_text(encoding="utf-8"))["summary"]
-        evals[d.name] = bool(s["evaluation"]["complete"])
+    for arm in ARMS_REQUIRED:
+        f = train / arm / "eval.json"
+        evals[arm] = bool(json.loads(f.read_text(encoding="utf-8"))["summary"]["evaluation"]["complete"]) if f.is_file() else False
     out["evaluation_complete"] = evals
     last, resp = {}, {}
     floor = 0.0
@@ -70,10 +74,13 @@ def technical(train: Path) -> dict:
                               if v < COLLAPSE or v <= floor + COLLAPSE or (resp.get(a) is not None and resp[a] < RESP_MIN))
     health = train / "health.json"
     out["health"] = json.loads(health.read_text(encoding="utf-8")) if health.is_file() else None
+    wanted = int(float(json.loads(cfg.read_text(encoding="utf-8"))["args"].get("health_check_step", 0) or 0)) if cfg.is_file() else 0
+    out["health_required"] = wanted > 0
+    health_ok = (out["health"] is not None and bool(out["health"].get("passed"))) if wanted > 0 else (
+        out["health"] is None or bool(out["health"].get("passed")))
     out["accepted"] = bool(cov and out.get("leakage_passed") and out.get("loss_shares_within_tolerance")
-                           and (out["health"] is None or out["health"].get("passed"))
-                           and not out.get("shards_differ") and out.get("return_code") in (0, None)
-                           and evals and all(evals.values()))
+                           and health_ok and out["verify_present"] and not out.get("shards_differ")
+                           and out["return_code"] == 0 and all(evals.values()))
     return out
 
 

@@ -20,15 +20,23 @@ HERE = Path(__file__).resolve().parent
 ARMS = ("cells", "mean", "generic", "transfer_cells", "transfer_all", "generic_pseudobulk")
 
 
-def fake_line(root: Path, g: str, pds: dict, shares=(0.5, 0.5), pi_q50=None):
-    train, lane = root / f"train_{g}", root / f"lane_{g}"
-    train.mkdir()
+def fake_line(root: Path, g: str, pds: dict, shares=(0.5, 0.5), pi_q50=None, return_code=0, drop=()):
+    """A training laid out as the kernel leaves it: <kernel>/kernel_done.json and <kernel>/train/..."""
+    kernel, lane = root / f"kernel_{g}", root / f"lane_{g}"
+    train = kernel / "train"
+    train.mkdir(parents=True)
     lane.mkdir()
+    if "kernel_done" not in drop:
+        (kernel / "kernel_done.json").write_text(json.dumps({"return_code": return_code}), encoding="utf-8")
+    if "verify" not in drop:
+        (train / "verify.json").write_text(json.dumps({"differ": []}), encoding="utf-8")
     (train / "coverage.json").write_text(json.dumps({
         "leakage_check": {"passed": True}, "epochs_done": 2.0,
         "loss_shares": {"by_group": {"A": shares[0], "B": shares[1]}}}), encoding="utf-8")
     for arm in ("cells", "mean", "generic"):
         (train / arm).mkdir()
+        if f"eval_{arm}" in drop:
+            continue
         (train / arm / "eval.json").write_text(json.dumps({"summary": {"evaluation": {"complete": True}}}),
                                                encoding="utf-8")
     pq = pi_q50 or {}
@@ -92,6 +100,29 @@ class Rule(unittest.TestCase):
             q1 = r["comparisons"]["Q1_state"]["C"]["pds"]
             self.assertEqual(q1["lines"], 1)                      # only RPE1 counts
             self.assertFalse(q1["passed"])                        # one positive line is less than two
+
+
+class Guards(unittest.TestCase):
+    def test_missing_or_failed_items_make_a_line_unusable(self):
+        # the first version read kernel_done.json inside train/ (never there) and passed missing files and arms
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            good = {"cells": 0.70, "mean": 0.60}
+            lines = [fake_line(d, "H1", good, drop=("kernel_done",)),
+                     fake_line(d, "HepG2", good, return_code=1),
+                     fake_line(d, "RPE1", good, drop=("eval_generic", "verify"))]
+            r = decide(lines, d / "out")
+            self.assertEqual(r["usable"], {"H1": False, "HepG2": False, "RPE1": False})
+            self.assertEqual(r["technical"]["H1"]["return_code"], "missing")
+            self.assertFalse(r["technical"]["RPE1"]["evaluation_complete"]["generic"])
+
+    def test_the_kernel_layout_is_read(self):
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            line = fake_line(d, "H1", {"cells": 0.70, "mean": 0.60})
+            r = decide([line, fake_line(d, "HepG2", {}), fake_line(d, "RPE1", {})], d / "out")
+            self.assertEqual(r["technical"]["H1"]["return_code"], 0)
+            self.assertTrue(r["usable"]["H1"])
 
 
 class GateAtTheFloor(unittest.TestCase):

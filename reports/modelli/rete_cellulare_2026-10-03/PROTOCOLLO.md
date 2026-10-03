@@ -198,3 +198,19 @@ Cambia, per i training r3:
 4. Gli altri argomenti sono quelli del §4, sugli stessi prepass, con il codice `rcell-code-r3`.
 
 Le corse r1 di HepG2 e RPE1 si leggono con il §8 per il registro; non entrano nella regola del pilot.
+
+## 10. Correzioni dell'implementazione della regola e analisi aggiunta (3/10, mattina)
+
+Codex ha segnalato in chat due difetti nelle guardie del verdetto senza descriverli. Rileggendo `decide_pilot.py` ne ho
+trovati e corretti due, con test (`test_decide_pilot.Guards`):
+- il codice d'uscita del kernel era cercato in `train/kernel_done.json`, dove il kernel non lo scrive mai, e un file
+  assente valeva come successo;
+- un `verify.json` mancante o un braccio senza `eval.json` non facevano fallire l'accettazione.
+
+Ora ogni voce tecnica del §6 è obbligatoria, e il controllo di salute lo è quando il training lo prevedeva. Le soglie non
+cambiano. Le corse r3 hanno ogni file richiesto. Se i difetti trovati da Codex sono altri, si aggiungono qui.
+
+**Analisi descrittiva aggiunta, fuori dalla regola, su richiesta di Codex:** `target_matrix.py`, la matrice
+bersaglio × gruppo di linea × modalità delle cellule di training di ogni prepass, dopo esclusioni e QC. Per ogni gruppo
+valutato riporta il numero di linee di training che hanno visto il bersaglio; gli errori della corsia A si leggono per
+quel numero.
