@@ -106,7 +106,7 @@ class Parts(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
             fixture(root)
-            r = run(root, "smoke", "--max-cells", "10")
+            r = run(root, "smoke", "--max-cells", "10", "--readahead", "4")     # read-ahead leaves local files alone
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
             done = json.loads((root / "out_smoke" / "complete.json").read_text(encoding="utf-8"))
             self.assertTrue(done["job_id"].endswith("_smoke"))

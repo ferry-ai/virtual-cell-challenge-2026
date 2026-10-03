@@ -13,7 +13,8 @@ counts in its shards. That the parts make the whole file is a later reconciliati
 whole-line flag of orion_job.py made every part end as a parity failure, 3/10).
 
     python kolf_job.py --spec specs/kolf_pan_v1.json --axis gene_names.csv --stage <local dir> --out <new dir> \
-        --data-root <root of out> [--runtime-manifest <json>] [--part i/n] [--max-cells N] [--source <local h5ad>]
+        --data-root <root of out> [--runtime-manifest <json>] [--part i/n] [--max-cells N] [--source <local h5ad>] \
+        [--readahead 8]
 """
 from __future__ import annotations
 
@@ -117,12 +118,18 @@ def main() -> None:
     p.add_argument("--max-cells", type=int, help="smoke test: only the first N cells of the range")
     p.add_argument("--source", help="read this file instead of the locator of the spec (fixtures)")
     p.add_argument("--heartbeat-seconds", type=float, default=120.0)
+    p.add_argument("--readahead", type=int, default=0,
+                   help="read N blocks ahead with N threads (lettura/prefetch.py); 0 = one block at a time")
     a = p.parse_args()
     spec = common.load_json(a.spec)
     src, u = spec["source"], spec["unit"]
     url = a.source or src["locator"]
     remote = str(url).startswith(("http://", "https://"))
     http = count_http()
+    if a.readahead:
+        sys.path.insert(0, str(HERE.parent / "lettura"))
+        import prefetch  # noqa: PLC0415
+        prefetch.install(ca.base, ahead=a.readahead, threads=a.readahead)
     etag = common.MISSING
     if remote:
         head = common.head(url)
@@ -165,7 +172,7 @@ def main() -> None:
          "cells_equal_declared": sum(s["cells"] for s in sink.shards) == hi - lo,
          "one_version_of_the_file": len(http["etags"] | ({etag} if remote and etag != common.MISSING else set())) <= 1},
         {"scope": f"cells {lo}:{hi} of {src['cells']}", "part": a.part, "smoke_max_cells": a.max_cells,
-         "precheck": checked, "passes": passes, "http": {"bytes": http["bytes"], "requests": http["requests"], "etags": sorted(http["etags"])},
+         "precheck": checked, "readahead": a.readahead, "passes": passes, "http": {"bytes": http["bytes"], "requests": http["requests"], "etags": sorted(http["etags"])},
          **bind})
     tag = f"{spec['job_id']}_cells{lo}_{hi}" + ("_smoke" if a.max_cells is not None else "")
     ok = common.complete(a.out, tag, [unit], a.data_root, {"scope": unit["scope"], "part": a.part})

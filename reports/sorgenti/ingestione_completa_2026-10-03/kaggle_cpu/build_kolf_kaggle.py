@@ -32,7 +32,7 @@ from build_orion_kaggle_r2 import kaggle, sha256_file, snapshot_members  # noqa:
 REPORT = "reports/sorgenti/ingestione_completa_2026-10-03"
 CORPUS = "reports/sorgenti/corpus_cellulare_2026-09-30"
 SNAPSHOT_PATHS = [f"{REPORT}/kolf/{f}" for f in ("kolf_job.py", "complete_adapters.py", "specs/kolf_pan_v1.json")] + \
-    [f"{REPORT}/orion/common.py"] + \
+    [f"{REPORT}/orion/common.py", f"{REPORT}/lettura/prefetch.py"] + \
     [f"{CORPUS}/{f}" for f in ("adapters.py", "contracts.py", "inspect_remote.py", "rlab_job.py", "validate_runtime.py")]
 
 KERNEL = r'''
@@ -119,6 +119,7 @@ print(json.dumps({"runtime": log["runtime"]}), flush=True)
 if not (rt.get("sparse_roundtrip") or {}).get("ok"):
     close(False)
 extra = ["--max-cells", P["max_cells"]] if P.get("max_cells") else []
+extra += ["--readahead", P["readahead"]] if P.get("readahead") else []
 ok = run([K / "kolf_job.py", "--spec", K / "specs/kolf_pan_v1.json", "--axis", DS / "gene_names.csv", "--stage",
           work / "stage", "--out", out / "shards", "--data-root", OUT, "--runtime-manifest", env, "--part", PART,
           *extra], "shards")
@@ -149,6 +150,7 @@ def main() -> None:
     k.add_argument("--part", required=True)
     k.add_argument("--slug", required=True)
     k.add_argument("--max-cells", help="smoke test: only the first N cells of the range")
+    k.add_argument("--readahead", help="blocks read ahead by as many threads (kolf_job.py --readahead)")
     k.add_argument("--launch-log", type=Path, help="JSON lines, one per push, appended")
     a = p.parse_args()
     if a.stage.exists():
@@ -182,7 +184,7 @@ def main() -> None:
         sys.exit("the staged tar is not the one its staged.json names")
     params = {"part": a.part, "job": a.slug.replace("-", "_"), "code_slug": a.code_slug, "commit": staged["commit"],
               "snapshot_sha256": staged["code_snapshot.tar.gz"], "members": snapshot_members(tar),
-              "axis_sha256": staged["gene_names.csv"], "max_cells": a.max_cells}
+              "axis_sha256": staged["gene_names.csv"], "max_cells": a.max_cells, "readahead": a.readahead}
     text = KERNEL.replace("__PARAMS__", json.dumps(params, indent=1))
     compile(text, "run.py", "exec")
     a.stage.mkdir(parents=True)
@@ -192,6 +194,7 @@ def main() -> None:
          "kernel_type": "script", "is_private": True, "enable_gpu": False, "enable_tpu": False, "enable_internet": True,
          "dataset_sources": [f"{a.owner}/{a.code_slug}"], "kernel_sources": [], "competition_sources": []}, indent=1))
     record = {"slug": f"{a.owner}/{a.slug}", "source": "kolf_pan_genome", "part": a.part, "max_cells": a.max_cells,
+              "readahead": a.readahead,
               "stage": a.stage.as_posix(), "run_sha256": sha256_file(a.stage / "run.py"),
               "snapshot_sha256": params["snapshot_sha256"], "commit": params["commit"]}
     if a.dry_run:
