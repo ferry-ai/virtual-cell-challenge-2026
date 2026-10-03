@@ -84,7 +84,11 @@ def main():
     a.out.mkdir(parents=True)
     print(json.dumps({"msg": "start", "shards": len(tasks), "jobs": chosen, "workers": a.workers}), flush=True)
     receipts = []
-    with ProcessPoolExecutor(max_workers=a.workers) as ex:
+    # a fresh process per shard (E-20261004-001: workers were killed after 9 and after 106 shards): no memory is
+    # carried from one shard to the next, and each receipt's peak is the peak of its own shard
+    import multiprocessing
+    with ProcessPoolExecutor(max_workers=a.workers, mp_context=multiprocessing.get_context("spawn"),
+                             max_tasks_per_child=1) as ex:
         for rec in ex.map(one_measured, tasks, chunksize=1):
             receipts.append(rec)
             print(json.dumps({"msg": "shard", "name": rec["name"], "verified": rec.get("verified"),
