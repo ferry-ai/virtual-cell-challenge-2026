@@ -188,6 +188,28 @@ class StagesV2(unittest.TestCase):
         self.assertEqual(ev["summary"]["arm"]["target_code"], "generic")
 
 
+    def test_generated_cells(self):
+        import scipy.sparse as sp
+        targets = self.d / "gen_targets.json"
+        targets.write_text(json.dumps([{"key": "sa|La", "symbol": "G1"}, {"key": "sb|Lb", "symbol": "G2"},
+                                       {"key": "sa|La", "symbol": "G5"}]), encoding="utf-8")
+        out = self.d / "gen" / "cells_d.npz"
+        proc = subprocess.run([sys.executable, str(HERE / "generate_cells.py"), "--prepass", str(self.d / "pre"),
+                               "--arm-dir", str(self.d / "run" / "d"), "--targets", str(targets), "--n", "12",
+                               "--ctrl-k", "32", "--out", str(out)], capture_output=True, text=True)
+        self.assertEqual(proc.returncode, 0, proc.stderr[-3000:])
+        z = np.load(out)
+        x = sp.csr_matrix((z["data"], z["indices"], z["indptr"]), shape=tuple(z["shape"]))
+        self.assertEqual(x.shape, (36, len(GENES)))
+        self.assertEqual(list(z["labels"][:12]), ["G1"] * 12)
+        self.assertTrue((x.data > 0).all())
+        lib = np.asarray(x.sum(1)).ravel()
+        self.assertTrue(500 < np.median(lib) < 20000)               # the libraries of the synthetic controls (e^8)
+        side = json.loads(out.with_suffix(".json").read_text(encoding="utf-8"))
+        self.assertTrue(all(0.0 <= b["pi"] <= 1.0 for b in side["blocks"]))
+        self.assertEqual(sum(b["cells"] for b in side["blocks"]), 36)
+
+
 class MeanContext(unittest.TestCase):
     def test_mean_mode_sees_only_the_pooled_profile(self):
         import torch
