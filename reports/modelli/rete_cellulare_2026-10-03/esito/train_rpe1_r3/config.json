@@ -1,0 +1,137 @@
+{
+ "args": {
+  "cmd": "train",
+  "prepass": "/kaggle/input/notebooks/davideferrante11/rcell-prepass-rpe1-r1/prepass",
+  "out": "/kaggle/working/train",
+  "descriptors": "/kaggle/input/datasets/davideferrante11/rcell-code-r3",
+  "target_code": "descriptors",
+  "arm": "['cells=both@cuda:0', 'generic=generic@cuda:0', 'mean=both/mean@cuda:1']",
+  "eval_workers": "3",
+  "eval_partial": "0.08",
+  "epochs": "2.0",
+  "batch": "256",
+  "ctrl_k": "64",
+  "min_own": "8",
+  "buffer_shards": "4",
+  "dim": "128",
+  "rank": "128",
+  "lr": "0.001",
+  "delta_bound": "6.0",
+  "gate_mode": "off",
+  "health_check_step": "5000",
+  "health_window": "5",
+  "gate_warmup": "0",
+  "pi_floor": "0.01",
+  "seed": "0",
+  "workers": "3",
+  "roles": "3",
+  "prefetch": "8",
+  "budget_minutes": "180.0",
+  "reserve_export_minutes": "5",
+  "checkpoint_minutes": "15.0",
+  "keep_checkpoints": "3",
+  "measure_from": "None",
+  "measure_steps": "300",
+  "eval_chunk": "512",
+  "eval_reserve_seconds": "120.0",
+  "log_every": "100",
+  "resume": "None",
+  "shard_roots": "['/kaggle/input']",
+  "no_verify": "False",
+  "stop_after_steps": "None",
+  "device": "None",
+  "arms": "cells=both/cells;generic=generic/cells;mean=both/mean",
+  "input_dim": "2048",
+  "descriptors_sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80"
+ },
+ "same_on_resume": {
+  "arms": "cells=both/cells;generic=generic/cells;mean=both/mean",
+  "epochs": "2.0",
+  "batch": "256",
+  "ctrl_k": "64",
+  "buffer_shards": "4",
+  "input_dim": "2048",
+  "dim": "128",
+  "rank": "128",
+  "lr": "0.001",
+  "seed": "0",
+  "roles": "3",
+  "descriptors_sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80",
+  "pi_floor": "0.01",
+  "min_own": "8",
+  "delta_bound": "6.0",
+  "gate_warmup": "0",
+  "gate_mode": "off"
+ },
+ "devices": [
+  "cuda:0",
+  "cuda:1"
+ ],
+ "arms": [
+  {
+   "name": "cells",
+   "target_code": "both",
+   "context": "cells",
+   "device": "cuda:0",
+   "out": "/kaggle/working/train/cells"
+  },
+  {
+   "name": "generic",
+   "target_code": "generic",
+   "context": "cells",
+   "device": "cuda:0",
+   "out": "/kaggle/working/train/generic"
+  },
+  {
+   "name": "mean",
+   "target_code": "both",
+   "context": "mean",
+   "device": "cuda:1",
+   "out": "/kaggle/working/train/mean"
+  }
+ ],
+ "started_utc": "2026-10-03T07:30:49.097335+00:00",
+ "prepass_sha256": "31247004cf926484471a0476ed0272e16a5d708df021c6a1cb8e468a56d372bd",
+ "resumed_from": null,
+ "code_version": 2,
+ "code": {
+  "cellnet.py": "63cf65770490a72a938b59f608a1c2cebb7e59f3b9f80a0aff3fe511f29c3132",
+  "cell_data.py": "28182555bfefa2d59e8374751760775cc3ba64d5decab0d2ebb6a85cc0a29cc3",
+  "train_cellnet.py": "aabfe2065afe71831613bdebfc8161f74c6490d44e2867fd39e23bcb2c6c16dc"
+ },
+ "descriptors": {
+  "sha256": "7313ba892ba8aaaa8c967be15ac5fe1f17578811ecfa5e55c58fb914a1c81c80",
+  "dims": 284,
+  "symbols_with_descriptors": 10041,
+  "symbols": 10467
+ },
+ "admitted_training_cells": 3887913,
+ "loss": {
+  "rule": "-(sum over the batch of w * loglik per gene) / --batch, w the hierarchical weight of the cell's unit (line group, study)",
+  "unit_weights": {
+   "HepG2::hepg2_nadig": 4.66704879383859,
+   "Jurkat::jurkat_nadig": 2.581169917544116,
+   "H1::h1_vcc2025": 2.3256879416842233,
+   "iPSC::hipsci_targeted_19": 0.2729446415443396,
+   "K562::replogle_k562_gwps": 0.11452960771494357,
+   "K562::replogle_k562_essential": 0.7309155429622707,
+   "A549::a549_liu_hillsley2026": 1.1016030553168412,
+   "Neuron::tian2021_crispri": 10.59226758061528,
+   "Neuron::tian2021_crispra": 17.972305942827557,
+   "K562::norman2019_crispra": 3.079639940211825,
+   "iPSC::kolf_chromatin_modifiers": 3.80338653758863,
+   "iPSC::kolf_metabolic_enzymes": 1.382829272248471,
+   "iPSC::kolf_strong_perturbations": 0.7176920589140899
+  }
+ },
+ "holdout_group": "RPE1",
+ "held_keys": [
+  "replogle_rpe1|RPE1"
+ ],
+ "parameters": 9226321,
+ "parameters_by_arm": {
+  "cells": 9226321,
+  "generic": 9120465,
+  "mean": 9226321
+ }
+}

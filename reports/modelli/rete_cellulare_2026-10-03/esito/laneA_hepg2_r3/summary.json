@@ -1,0 +1,142 @@
+{
+  "written_utc": "2026-10-03T09:18:08+00:00",
+  "held_group": "HepG2",
+  "run": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_train_hepg2_r3\\train",
+  "arms": [
+    "cells",
+    "generic",
+    "mean"
+  ],
+  "rows": {
+    "C": 1743,
+    "J": 412
+  },
+  "unmatched_groups": {
+    "no_key_in_cube": 5,
+    "not_held": 279
+  },
+  "tables": [
+    "hepg2_nadig"
+  ],
+  "sources_cells": [
+    "H1",
+    "RPE1",
+    "K562",
+    "iPSC",
+    "Jurkat",
+    "Neuron"
+  ],
+  "sources_all": [
+    "CD4T",
+    "H1",
+    "HCT116",
+    "HEK293T",
+    "Jurkat",
+    "K562",
+    "Neuron",
+    "RPE1",
+    "iPSC"
+  ],
+  "dropped_tables_for_cells": [
+    "k562_viperturb"
+  ],
+  "inputs": {
+    "eval_groups": "56f8096d1f6e3b87fb9f11b3daa8a54fafd6d75f99ffdb9b57d1fcbec2321f06",
+    "cube_manifest": "c7fb76628b8246b9e00c789582ba3e512a8018e9469c5e8f3344001375fe1099",
+    "target_keys": "55a4e601f75dbbee2ccf3d8e052483b8cc355b0d1a57c3fc33f53ca687a1515a",
+    "cells": "6a3cb79884e44da29e9dd23803579882a9cb6aba4f6845118979002822d4ed6d",
+    "generic": "7d8d8aa27e1a42ddc7fbda4d153bd07073bebe0087e00967b758ad2b82e5c7c3",
+    "mean": "28d644180c4f9747920169cc6328b6f9d221ad7b5078fbf8b0450c55c17abd9d"
+  },
+  "means": {
+    "C": {
+      "cells": {
+        "pds": 0.61312,
+        "cos": 0.20219,
+        "cos_spec": 0.22143,
+        "mse_ratio": 1.33899,
+        "sign_sig": 0.61228
+      },
+      "generic": {
+        "pds": 0.50197,
+        "cos": 0.10292,
+        "cos_spec": -0.00519,
+        "mse_ratio": 1.0023,
+        "sign_sig": 0.5421
+      },
+      "generic_pseudobulk": {
+        "pds": 0.50227,
+        "cos": 0.17393,
+        "cos_spec": 0.00211,
+        "mse_ratio": 0.98575,
+        "sign_sig": 0.56867
+      },
+      "mean": {
+        "pds": 0.56278,
+        "cos": 0.08613,
+        "cos_spec": 0.11252,
+        "mse_ratio": 7.76952,
+        "sign_sig": 0.52792
+      },
+      "transfer_all": {
+        "pds": 0.88619,
+        "cos": 0.15653,
+        "cos_spec": 0.20337,
+        "mse_ratio": 1.06868,
+        "sign_sig": 0.60831
+      },
+      "transfer_cells": {
+        "pds": 0.87511,
+        "cos": 0.15764,
+        "cos_spec": 0.21577,
+        "mse_ratio": 1.16377,
+        "sign_sig": 0.6017
+      }
+    },
+    "J": {
+      "cells": {
+        "pds": 0.50933,
+        "cos": 0.15474,
+        "cos_spec": 0.14096,
+        "mse_ratio": 1.39504,
+        "sign_sig": 0.58978
+      },
+      "generic": {
+        "pds": 0.49162,
+        "cos": 0.09892,
+        "cos_spec": -0.01615,
+        "mse_ratio": 1.0024,
+        "sign_sig": 0.54152
+      },
+      "generic_pseudobulk": {
+        "pds": 0.49038,
+        "cos": 0.16555,
+        "cos_spec": 0.00213,
+        "mse_ratio": 0.98599,
+        "sign_sig": 0.56635
+      },
+      "mean": {
+        "pds": 0.55086,
+        "cos": 0.05314,
+        "cos_spec": 0.05385,
+        "mse_ratio": 2.9717,
+        "sign_sig": 0.53761
+      },
+      "transfer_all": {
+        "pds": NaN,
+        "cos": NaN,
+        "cos_spec": NaN,
+        "mse_ratio": NaN,
+        "sign_sig": NaN
+      },
+      "transfer_cells": {
+        "pds": NaN,
+        "cos": NaN,
+        "cos_spec": NaN,
+        "mse_ratio": NaN,
+        "sign_sig": NaN
+      }
+    }
+  },
+  "note": "lane A of the pilot: effect indices of the bench on the cube rows of the held-out line, not VCC scores"
+}

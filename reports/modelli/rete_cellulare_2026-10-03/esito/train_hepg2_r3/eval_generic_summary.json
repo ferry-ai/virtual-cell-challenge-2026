@@ -1,0 +1,55 @@
+{
+ "C": {
+  "class": "C",
+  "groups": 1748,
+  "skipped": 0,
+  "ll_gain_vs_no_effect": -0.008035550825297832,
+  "ll_gain_vs_unknown_target": 0.0,
+  "share_target_specific_gain_positive": 0.0,
+  "cos_model": 0.23505790932530748,
+  "cos_generic": -0.17742089602846842,
+  "groups_with_transfer": 1748,
+  "cos_model_where_transfer": 0.23505790932530748,
+  "cos_transfer": 0.3018589122647185
+ },
+ "T": {
+  "class": "T",
+  "groups": 279,
+  "skipped": 0,
+  "ll_gain_vs_no_effect": 0.0016231396002694964,
+  "ll_gain_vs_unknown_target": 0.0,
+  "share_target_specific_gain_positive": 0.0,
+  "cos_model": -0.40557741119178486,
+  "cos_generic": 0.5260491112208782,
+  "groups_with_transfer": 0,
+  "cos_model_where_transfer": null,
+  "cos_transfer": null
+ },
+ "J": {
+  "class": "J",
+  "groups": 412,
+  "skipped": 0,
+  "ll_gain_vs_no_effect": -0.008194542489945889,
+  "ll_gain_vs_unknown_target": 0.0,
+  "share_target_specific_gain_positive": 0.0,
+  "cos_model": 0.22328600589730216,
+  "cos_generic": -0.17996008093020055,
+  "groups_with_transfer": 0,
+  "cos_model_where_transfer": null,
+  "cos_transfer": null
+ },
+ "evaluation": {
+  "cells": 153306,
+  "seconds": 265.6,
+  "complete": true,
+  "reserve_seconds": 415.1,
+  "workers": 3
+ },
+ "arm": {
+  "name": "generic",
+  "target_code": "generic",
+  "context": "cells",
+  "device": "cuda:0"
+ },
+ "note": "technical check: log-likelihood gains with the same learned baseline; cosines of shifts computed with one estimator (cell_data.shift on the key's genes, measured by perturbed cells and controls alike) against observed cells, on the 200 genes with the largest observed shift; baselines from admitted training cells only; not a VCC score"
+}
