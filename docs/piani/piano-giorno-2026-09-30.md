@@ -51,8 +51,12 @@ claude2 con `... diff <run>`.
 
 | Agente | Run | Incarico | Dove lavora | Output |
 |---|---|---|---|---|
-| claude2 | `20261003-155531-vcc-rds-conversion` | codice di conversione RDS (Mixscale, VIPerturb) | worktree isolato; la sorgente aveva 3 file non committati, i brief e il README, che il worktree non contiene | `diff.patch`, che la regia rivede |
-| Grok | `20261003-155552-vcc-geo-metadata` | metadati GEO di microglia, PerturbFate e DLD-1 | sola lettura, ricerca web | rapporto da copiare in `ingestione_completa_2026-10-03/agenti/` |
+| claude2 | `20261003-155531-vcc-rds-conversion` | codice di conversione RDS (Mixscale, VIPerturb) | worktree isolato | **fallito alle 16:01:** errore 429 «monthly spend limit… session limit resets 4:50pm». È l'account condiviso con la regia; nessuna modifica scritta. Si rilancia dopo le 16:50, o dopo che il proprietario alza il limite |
+| Grok | `20261003-155552-vcc-geo-metadata` | metadati GEO di microglia, PerturbFate e DLD-1 | sola lettura | **vuoto:** in modalità `read` Grok gira in `plan` e si è fermato al piano |
+| Grok | `20261003-160553-vcc-geo-metadata-r2` | lo stesso brief | `edit` in worktree isolato, con l'istruzione di non modificare file | rapporto da copiare in `ingestione_completa_2026-10-03/agenti/` |
+
+**Job Orion in coda alle 16:04:** 135 (meta e campione completo di HCT116, `queue2`) e 136 (lo stesso per HEK293T,
+`queue`). I job `shards` per parte si costruiscono con `orion/build_orion_job.py` dalla cartella `sample` finita.
 
 **Codex**, tramite relay: adattatori in `ingestione_completa_2026-10-03/adattatori_codex/`, supervisione, e
 subentro se la regia esaurisce la quota. Il brief è nella stessa cartella.
