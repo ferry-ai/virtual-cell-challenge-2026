@@ -1,0 +1,37 @@
+{
+ "what": "third training of the v4 pilot (RPE1 held out) and the chain that follows an accepted training: generation of the cells on Kaggle CPU, lanes A and B on the laptop. Continues lancio_train_r1.json, which is left as written",
+ "authorisation": "owner in chat: 3/10 evening (session 5eacdf), the jobs the plan needs on Colab and Kaggle within the quotas; 3/10 23:31 (session d0100a), 'continue the task of the previous agent', whose handoff says to launch RPE1 as soon as a GPU session is free",
+ "h1_acceptance_before_the_push": {
+  "read_at": "2026-10-04 00:41 +0200, technical receipts only (esito/train_h1_r1/, fetched without evaluation files)",
+  "conditions_of_PROTOCOLLO_5": {
+   "exit_code": 0,
+   "twins": "365 files, none differs from the package manifests (train/verify.json)",
+   "leakage": "no cell of a class other than train drawn",
+   "exposure": "passed: 60 complete windows of 500 steps, none out of rule, every group at 1/7, no unit never drawn",
+   "health_at_step_5000": "passed",
+   "evaluation": "complete, 408 s of a budget of 5,400 s",
+   "anchors": "regime J, manifest checks passed, 2,239 keys kept out of the means"
+  },
+  "technical_facts": "30,086 steps, 2.0 epochs (stop: epochs done) in 4,878 s of training; 1,579 cells/s over the run, data wait 0.565 (v3 H1: 0.714 epochs, wait 0.814); 2,367,546 distinct cells seen of 3,850,952 admitted: with balanced batches K562 GWPS gives 366,762 of its 1,616,514 cells and HipSci 275,072 of 508,726"
+ },
+ "rpe1_training": {
+  "slug": "davideferrante11/rcell-v4-train-rpe1-r1",
+  "pushed": "2026-10-04 00:42:49 +0200",
+  "status_00:43": "RUNNING",
+  "stage": "C:/Users/ferra/vcc2026-data/processed/rete_ancorata_v4_2026-10-03/kernel_train_rpe1_r1",
+  "run_sha256": "c0dcb52ff90026b4bf0e60bcad420120c0c62fed8413f9c95045674c901ee7dd",
+  "same_as_h1": "run.py differs from kernel_train_h1_r1/run.py only in PREPASS_FROM, ANCHORS_LINE and ANCHORS_DIR (diff of a dry run read before the push); same train_args and arms",
+  "gpu_quota": "before: used 20.04 h, 9.96 h left; after: used 20.07 h, 9.93 h left (kaggle quota, 00:42-00:43); one other GPU session running (HepG2)",
+  "incidents_considered": {"E-20261003-001": "one push, typed by the session; status and quota read after it; the waiting process only reads statuses"}
+ },
+ "generation": {
+  "rcell-v4-gen-h1-r1": {"pushed": "2026-10-04 00:44:14 +0200", "ended": "COMPLETE by 00:49", "run_sha256": "2fce452f92ea2f998e8781b7fd4079cddce03261598835bc57193022ef6e1a9f",
+                        "stage": "C:/Users/ferra/vcc2026-data/processed/rete_ancorata_v4_2026-10-03/kernel_gen_h1_r1",
+                        "outputs": "cells_ancorata.npz, cells_ancorata_mean.npz and sidecars, downloaded to out_gen_h1_r1 in the data root"}
+ },
+ "lanes": {
+  "where": "the laptop, as separate Windows processes (the r3 lanes ran here: lane B of H1 in 2,177 s). Colab is the preferred place for CPU benches (CLAUDE.md): tonight queue has no heartbeat since 19:57 UTC and queue2 carries the Southard job, one heavy job per runtime; the lanes read report code, the cube and real cells that are not in the standard Drive mirror. Measured before the launch: 485 MB of RAM free with the lane running, 23 GB of disk",
+  "lane_a_h1": "bench_effects.py, 00:45-00:46, output laneA_h1_r1 in the data root",
+  "lane_b_h1": "lane_b.py, started 00:50:55 as PID 28200, logs laneB_h1_r1.{out,err}.log in the data root"
+ }
+}
