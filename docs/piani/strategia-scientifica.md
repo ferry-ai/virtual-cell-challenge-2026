@@ -36,8 +36,18 @@
     ```
     Va eseguito con il Python del venv e non con `py.cmd`: cmd.exe tratta la `|` del glob come una pipe. Gli 11
     dataset e gli argomenti di training stanno in `run.py` dei kernel r3, `processed/rete_cellulare_2026-10-03/kernel_train_*_r3/`.
-  - **Nessun training della v3 è partito.** L'ingestione ha il proprio stato riprendibile nella scheda
-    [R-LAB](piano-giorno-2026-09-30.md).
+  - **Aggiornamento delle 16:10:** protocollo congelato al commit `4cb61d4`. I training
+    `rcell-anchored-train-h1-r1` e `rcell-anchored-train-hepg2-r1` sono in corso dalle 16:09
+    ([lancio](../../reports/modelli/rete_ancorata_2026-10-03/lancio_train_r1.json)).
+  - **RPE1** si lancia con lo stesso comando appena una delle due sessioni GPU si libera. Dopo ogni spinta si
+    rilegge la quota con `kaggle quota`.
+  - **Dopo i training, nell'ordine:**
+    1. corsia A con `bench_effects.py` sulla cartella `train/` scaricata;
+    2. le cellule generate con `kaggle_gen.py`, da adattare alle ancore;
+    3. corsia B con `lane_b.py`, da adattare alle due definizioni del transfer;
+    4. la regola del §6.
+
+    L'ingestione ha il proprio stato riprendibile nella scheda [R-LAB](piano-giorno-2026-09-30.md).
 - **Prima consegna:** matrice contesto × bersaglio × studio, split verificati, protocollo congelato, codice del banco e dei confronti semplici con test; misure se gli input lo consentono, altrimenti il file minimo mancante e il passo impedito. Non un altro piano.
 - **Dipendenze:** [R-LAB](piano-giorno-2026-09-30.md), [GENERALIZZAZIONE](../GENERALIZZAZIONE.md), D-050 e D-052; procedure e preflight del lavoro effettivamente eseguito.
 - **Chiusura:** scelta motivata con prove riproducibili e pipeline finale verificata, oppure esito negativo/inconclusivo con transfer conservato e limite identificato.
