@@ -1,6 +1,6 @@
 # Il t31 era il solo K562 travestito da media di più linee
 
-4 ottobre 2026, verso le 2, ora del PC. Conteggio in [copertura_t31.py](copertura_t31.py), uscita in
+4 ottobre 2026, commit 77da2e2 alle 01:34, ora del PC. Conteggio in [copertura_t31.py](copertura_t31.py), uscita in
 [copertura_t31.json](copertura_t31.json). Solo conteggi: nessun nome di bersaglio, perché `pert_counts.csv` è privato.
 
 ## Misurato

@@ -1,6 +1,6 @@
 # Margini all'orizzonte: quanto può chiudere il solo generatore
 
-4 ottobre 2026, verso l'1:30, ora del PC. Su richiesta del proprietario: «continua a provare la strada e vedere se ci
+4 ottobre 2026, commit 3d0646f alle 01:18, ora del PC. Su richiesta del proprietario: «continua a provare la strada e vedere se ci
 sono all'orizzonte importanti margini di cambiamento». È il passo 1 della proposta del 3/10 sera: il disaccoppiamento
 dell'ampiezza fra i membri basati sulle medie (MSE, nMAE) e quelli basati sui ranghi (Wilcoxon), con la ricetta del
 t28 come base.

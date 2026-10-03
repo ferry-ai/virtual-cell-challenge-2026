@@ -1,6 +1,6 @@
 # Propagazione nel contesto: protocollo registrato prima di ogni numero
 
-4 ottobre 2026, verso le 2:30, ora del PC. Ora esatta di registrazione: il commit che aggiunge questo file. Su richiesta
+4 ottobre 2026, registrato con il commit e475d07 alle 01:42, ora del PC. Su richiesta
 del proprietario: «scrivi il protocollo del punto 3». Nessun braccio è stato calcolato. L'unico conto fatto prima è
 l'[inventario](inventario.json) dei bersagli e dei geni disponibili ([inventario.py](inventario.py)): usa solo gli
 effetti veri aggregati, non le previsioni.
