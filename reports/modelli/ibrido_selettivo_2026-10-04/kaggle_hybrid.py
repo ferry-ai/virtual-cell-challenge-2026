@@ -201,6 +201,8 @@ def main() -> None:
     p.add_argument("--weights", type=Path, help="lanes: the weights file of selector.py")
     p.add_argument("--code-slug", default="rcell-d056-code-r1")
     p.add_argument("--cube-slug", default="rlead-bench-cube-r2")
+    p.add_argument("--cube-owner", default=None, help="the account of the cube dataset (default --owner; the replica "
+                                                       "reads davideferrante11's, shared as reader)")
     p.add_argument("--launch-log", type=Path)
     p.add_argument("--dry-run", action="store_true")
     a = p.parse_args()
@@ -229,7 +231,8 @@ def main() -> None:
     kernels = [a.train_kernel, a.prepass_kernel, a.anchors_kernel] + ([a.real_kernel] if a.mode == "lanes" else [])
     meta = {"id": f"{a.owner}/{a.slug}", "title": a.slug, "code_file": "run.py", "language": "python",
             "kernel_type": "script", "is_private": True, "enable_gpu": False, "enable_tpu": False,
-            "enable_internet": True, "dataset_sources": [f"{a.owner}/{a.cube_slug}", f"{a.owner}/{a.code_slug}"],
+            "enable_internet": True,
+            "dataset_sources": [f"{a.cube_owner or a.owner}/{a.cube_slug}", f"{a.owner}/{a.code_slug}"],
             "kernel_sources": [f"{a.owner}/{k}" for k in kernels], "competition_sources": []}
     (a.stage / "kernel-metadata.json").write_text(json.dumps(meta, indent=1))
     record = {"slug": f"{a.owner}/{a.slug}", "held": a.held_group, "mode": a.mode, "stage": a.stage.as_posix(),

@@ -96,6 +96,7 @@ def main() -> None:
     p.add_argument("--slug", required=True)
     p.add_argument("--code-slug", default="rcell-code-r1")
     p.add_argument("--targets", type=int, default=150)
+    p.add_argument("--cube-owner", default=None, help="the account of rlead-bench-cube-r2 (default --owner)")
     p.add_argument("--launch-log", type=Path)
     p.add_argument("--dry-run", action="store_true")
     a = p.parse_args()
@@ -109,7 +110,8 @@ def main() -> None:
     meta = {"id": f"{a.owner}/{a.slug}", "title": a.slug, "code_file": "run.py", "language": "python",
             "kernel_type": "script", "is_private": True, "enable_gpu": False, "enable_tpu": False,
             "enable_internet": False,
-            "dataset_sources": [f"{a.owner}/rcell-gen-r1", f"{a.owner}/{a.code_slug}", f"{a.owner}/rlead-bench-cube-r2"]
+            "dataset_sources": [f"{a.owner}/rcell-gen-r1", f"{a.owner}/{a.code_slug}",
+                                f"{a.cube_owner or a.owner}/rlead-bench-cube-r2"]
             + [f"{a.data_owner}/{d}" for d in a.shard_datasets],
             "kernel_sources": [f"{a.owner}/{a.prepass_kernel}"], "competition_sources": []}
     (a.stage / "kernel-metadata.json").write_text(json.dumps(meta, indent=1))

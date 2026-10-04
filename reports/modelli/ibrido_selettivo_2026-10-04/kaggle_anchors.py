@@ -120,6 +120,7 @@ def main() -> None:
     k.add_argument("--rank", type=int, default=32)
     k.add_argument("--line", action="append", default=[], metavar="LINE=PREPASS_KERNEL",
                    help="D-056: a held-out line and its prepass kernel (repeatable; default the three of version 4)")
+    k.add_argument("--cube-owner", default=None, help="D-056: the account of rlead-bench-cube-r2 (default --owner)")
     a = p.parse_args()
     lines = dict(x.split("=", 1) for x in a.line) if getattr(a, "line", None) else LINES
     if a.stage.exists():
@@ -144,7 +145,8 @@ def main() -> None:
     meta = {"id": f"{a.owner}/{a.slug}", "title": a.slug, "code_file": "run.py", "language": "python",
             "kernel_type": "script", "is_private": True, "enable_gpu": False, "enable_tpu": False,
             "enable_internet": False,
-            "dataset_sources": [f"{a.owner}/rlead-bench-cube-r2", f"{a.owner}/{a.code_slug}"],
+            "dataset_sources": [f"{getattr(a, 'cube_owner', None) or a.owner}/rlead-bench-cube-r2",
+                                f"{a.owner}/{a.code_slug}"],
             "kernel_sources": [f"{a.owner}/{k_}" for k_ in lines.values()], "competition_sources": []}
     (a.stage / "kernel-metadata.json").write_text(json.dumps(meta, indent=1))
     if a.dry_run:
