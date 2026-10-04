@@ -61,6 +61,23 @@
     HepG2, la generazione HepG2, le parti CD4 `D1_Stim8hr`, lo studio `nested-h1-r1`. Quota GPU `davideferrante11`
     8,01 h, altri due account 30 h. Lanciati: `vcc-cd4-d1-stim8hr-verify-r1` (02:26) e `rcell-prepass-jurkat-r1`
     (02:38, pre-passo della linea di conferma dell'ibrido, scelta prima di ogni risultato D-056).
+  - **Stato alle 07:32 (sessione `2b35612c`, dopo una pausa dalle 04:27 alle 07:22 per il limite d'uso).**
+    - *Misurato:* training D-056 H1 e HepG2 **tecnicamente accettati** (§10: 2,0 epoche, nessun arresto per guardia,
+      quote effettive entro 0,006, stato esportato al passo 20.000). Sulle coppie di validazione interne delle linee di
+      training la correzione migliora il rango di discriminazione (0,34–0,41 contro 0,43–0,47 dell'ancora), resta a
+      0,55–0,72 dell'ampiezza dell'ancora, con componente comune 0,12–0,20 e beneficio +0,13 sul coseno. Righe delle
+      linee escluse (sviluppo, già lette): correzione nella direzione del residuo nel 86 % (H1) e 67 % (HepG2) delle
+      righe, peso ottimo mediano 0,24 e 0,21, errore quadratico +0,8 % e +0,4 % con la miscela fissa, −2,2 % e −6 % con
+      peso 1 (`esito/rows_*_r1/` dell'[ibrido](../../reports/modelli/ibrido_selettivo_2026-10-04/PROTOCOLLO.md)).
+      Studio dei campioni per fold di H1 letto con la regola congelata: il livello 64 è insufficiente, la decisione
+      sul corpus ampliato è corretta ([DECISIONE_AGGIORNATA](../../reports/sorgenti/prepasso_ampliato_2026-10-04/DECISIONE_AGGIORNATA.md)).
+    - *In corsa:* GPU `rcell-d056-train-rpe1-r1` (dalle 07:24, `davideferrante11`, quota 3,98 h prima del lancio);
+      su `davidmaisterx` ancore `rcell-d056-anchors-conf-r1` (Jurkat e K562) ed estrazione K562; estrazione Jurkat
+      conclusa (150 bersagli, 2.048 controlli). CPU di `davideferrante11`: `vcc-sampled-hct116-l64-r3` (prova tecnica
+      del costruttore), `vcc-cd4-d2-rest-verify-r1`, `vcc-cd4-d2-stim8hr-p{0,1}of2-r1`.
+    - *Prossimi passi:* ancore pronte → training `rcell-d056-train-{jurkat,k562}-r1` su `davidmaisterx` (comandi già
+      provati a secco); RPE1 finito (verso le 09:20) → righe RPE1 → `selector.py lolo` e `final` → corsie delle tre
+      linee di sviluppo → `decide_hybrid.py`; poi righe e corsie di Jurkat e K562 con il sistema congelato.
   - **Stato alle 03:54 e punto di ripresa (sessione `2b35612c`).**
     - *Fatto:* protocollo D-056 v1 congelato a `817f42a`, emendamento §12 sul selettore prima di ogni uscita;
       codice v5 con test (`cb0f3dc`, 13 + 5 test); pilot v4 chiuso, **non passa**
