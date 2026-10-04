@@ -106,11 +106,19 @@ campioni annidati in [R-DATI](piani/dati-affidabilita.md).
 - **Direzione confermata, 4/10: [D-056](DECISIONI.md#d-056--transfer-con-correzione-neurale-selettiva).**
   Transfer congelato con correzione neurale selettiva, pesata sul beneficio validato fuori fold. Il selettore
   può tornare al transfer; familiarità con bersagli o contesti non equivale a affidabilità dimostrata.
-  **In corso dal 4/10 notte:** protocollo v1 congelato prima dei training (testa comune esclusa dalla previsione,
-  guadagno fisso, penalità sulla correzione, guardie su coppie di validazione interne, selettore fuori fold con
-  leave-one-line-out su H1/HepG2/RPE1, conferma su Jurkat e K562), codice testato, training in corsa
-  ([protocollo](../reports/modelli/ibrido_selettivo_2026-10-04/PROTOCOLLO.md)). Nessun esito ancora; nessuna
-  promozione acquisita.
+- **Misurato, ibrido selettivo D-056 v1 (4/10): passa sviluppo e conferma**
+  ([CP-0062](checkpoints/0062-d056-ibrido-selettivo-esito-banco.md),
+  [S-009](STRADE.md#s-009--ibrido-selettivo-d-056-v1-transfer-congelato--correzione-neurale-regolarizzata--selettore-fuori-fold)).
+  - Il protocollo v1 è stato congelato prima dei training
+    ([protocollo](../reports/modelli/ibrido_selettivo_2026-10-04/PROTOCOLLO.md)): testa comune esclusa dalla
+    previsione, guadagno fisso, penalità, guardie interne, selettore fuori fold.
+  - Corsia B, `ibrido_selettivo − transfer` sui sei membri locali:
+    - sviluppo +0,006, +0,063, +0,040 (H1, HepG2, RPE1, selettore leave-one-line-out);
+    - conferma +0,037 e +0,074 (Jurkat e K562, sistema congelato).
+  - Punteggio di banco del §9: 0,134 contro 0,090 del transfer.
+  - Limiti: un seme, corpus pilot a 8 gruppi, scala locale; lo stato delle cellule (`ibrido − ibrido_mean`) non dà un
+    contributo coerente.
+  - Il candidato A/B/C (t30: t25 + w · R) è registrato e in invio; nessuna promozione prima del punteggio ufficiale.
 - **Misurato, pilot v4 della rete ancorata (4/10): non passa** ([CP-0061](checkpoints/0061-pilot-v4-esito-tre-linee.md)).
   Tre training tecnicamente accettati; la correzione appresa peggiora la propria ancora su tre linee su tre (corsia
   B, media dei sei membri: −0,214, −0,050 e −0,131; guardia della corsia A −0,307). Non è soddisfatto nemmeno il

@@ -10,27 +10,29 @@ cambia una conclusione. Il testo tolto resta in `docs/storico/`: le
 [§0, §6 e §7 del 30/09 mattina](storico/PROGETTO_sezioni_0_6_7_2026-09-30.md), il
 §0 del 3/10 sera nel [consolidamento](storico/consolidamento_2026-10-03/INDICE.md).
 
-## 0. Oggi — 4 ottobre 2026 notte, pilot v4 chiuso e ibrido D-056 in prova
+## 0. Oggi — 4 ottobre 2026 mattina, l'ibrido D-056 passa il banco e il t30 è in invio
 
 **Il riferimento resta la ricetta t22**, quattro sorgenti a peso uguale (K562 GWPS, CD4 in tre stati, HCT116,
 HEK293T) con lo stimatore t25 corretto; t22/t24 danno una media osservata di **0,14207**; il massimo è t28,
-**0,144845**, non conclusivo ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)). Il t29, rete r2 `desc`, è
-negativo: nessun invio neurale prima di un banco a sei membri almeno al livello del transfer
-([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). Punteggi: [indice degli invii](../reports/invii/README.md).
+**0,144845**, non conclusivo ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)). Il t29, rete r2 `desc` al posto
+del transfer, è negativo ([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). Punteggi:
+[indice degli invii](../reports/invii/README.md).
 
 **Un solo piano operativo, [R-LEAD](piani/strategia-scientifica.md), su due binari (D-054).**
 **Direzione dal 4/10 ([D-056](DECISIONI.md#d-056--transfer-con-correzione-neurale-selettiva)):**
 transfer congelato e correzioni neurali pesate da un selettore di beneficio validato; in assenza di evidenza,
 ritorno al transfer.
 
-- **Modello.** Il **pilot v4** della rete ancorata (basale dai controlli + ancora dal transfer + correzione appresa
-  sulle cellule) **non passa**: tre training tecnicamente accettati, e la correzione peggiora la propria ancora su tre
-  linee su tre (corsia B −0,214, −0,050, −0,131; [CP-0061](checkpoints/0061-pilot-v4-esito-tre-linee.md)). Il
-  meccanismo ipotizzato è uno spostamento comune ai bersagli ([S-006](STRADE.md)). L'**ibrido selettivo D-056 v1** è
-  implementato e in training dal 4/10 alle 03:00
-  ([protocollo](../reports/modelli/ibrido_selettivo_2026-10-04/PROTOCOLLO.md), congelato prima dei training). Ha una
-  testa comune esclusa dalla previsione, guadagno fisso e guardie interne; un selettore fuori fold sceglie il peso,
-  anche zero. Lo sviluppo è su H1/HepG2/RPE1 (già letti), la conferma su Jurkat e K562. Nessun esito ancora.
+- **Modello.** L'**ibrido selettivo D-056 v1** passa le regole congelate sia in sviluppo (H1, HepG2, RPE1) sia in
+  conferma (Jurkat e K562): T + w · R batte il transfer sui sei membri locali in cinque linee escluse su cinque
+  (+0,006…+0,074). Il punteggio di banco del §9 è 0,134 contro 0,090 del transfer
+  ([CP-0062](checkpoints/0062-d056-ibrido-selettivo-esito-banco.md), [S-009](STRADE.md)). È la prima rete sulle
+  cellule che migliora il transfer su linee escluse, con un seme e un corpus pilot a 8 gruppi; in scala locale, non
+  sul sito. Il **t30** (effetti t25 + w · R della rete del fold HepG2) è registrato prima della generazione e in
+  corso di generazione e upload ([previsione](../reports/invii/prediction_t30_2026-10-04/prediction.json)). Il pilot v4
+  (correzione libera) resta negativo ([CP-0061](checkpoints/0061-pilot-v4-esito-tre-linee.md)).
+- **Fonti del transfer:** su Jurkat e K562 più tabelle aggregate battono le fonti della ricetta (+0,07…+0,14 locali).
+  Nessun candidato di solo transfer è ammesso, perché il banco di quelle due linee è sotto 0,100 ([S-010](STRADE.md)).
 - **Dati, mandato non negoziabile D-053:** tutte le linee e i contesti idonei entrano nel percorso principale,
   qualunque sia l'esito del pilot; archivio completo, aggregati e campioni cellulari restano distinti e l'uso
   effettivo si verifica ([vincolo](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile)). Esecuzione in
@@ -41,8 +43,10 @@ rete sul pseudobulk, e sui sei membri vince il transfer ([CP-0056](checkpoints/0
 [CP-0057](checkpoints/0057-p4-dieci-gruppi-pseudobulk.md)); nel pilot v2 lo stato delle cellule aiuta rispetto al
 profilo medio ma la rete resta sotto il transfer; la v3 r1 è un pilot
 incompleto per difetti tecnici ricostruiti esattamente, non una bocciatura
-([diagnosi](../reports/modelli/rete_ancorata_v4_2026-10-03/diagnosi_r1/DIAGNOSI.md)). Nessuna rete ha ancora battuto il
-transfer su linee escluse. Esiti e fonti per area in [AMBITI §4–5](AMBITI.md#5-modelli-appresi-e-generalizzazione).
+([diagnosi](../reports/modelli/rete_ancorata_v4_2026-10-03/diagnosi_r1/DIAGNOSI.md)). La prima correzione neurale
+che batte il transfer su linee escluse è quella pesata dell'ibrido D-056 (CP-0062), nel banco locale. Il punteggio
+ufficiale (t30) dirà se passa al sito. Esiti e fonti per area in
+[AMBITI §4–5](AMBITI.md#5-modelli-appresi-e-generalizzazione).
 
 **Riserve e traguardo.** K562 è già vista dalle reti r2/r3; H1 train/val è nel corpus, H1 test resta chiusa e non si
 usa per debug. La consegna D/E/F (dati il 22/10, invii fino al 5/11) richiede la prova generale a forma piena
