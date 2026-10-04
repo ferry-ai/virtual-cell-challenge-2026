@@ -1,5 +1,14 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Ibrido semplice, Codex, 4/10 22:00 CEST:** il proprietario sceglie «ibrido semplice»,
+  transfer promettente, molti contesti, pseudobulk e campionamento. Stessa chat del subentro.
+  [Pacchetto di lavoro](../../reports/modelli/ibrido_pseudobulk_2026-10-04/README.md): base `all`,
+  pseudobulk sulle cellule ammesse e campioni stratificati annidati; riaddestrare con/senza contesto.
+  Rilettura dei cinque banchi senza rete favorevole ad all contro prod, esplorativa.
+  Componenti e fixture implementati; **training non lanciato, integrazione incompleta**.
+  Prossimo passo: banca completa dei sottocontesti e campioni, manifest riconciliato D-053,
+  collegamento al trainer/export e parità fino alla generazione. GEARS resta successivo.
+
 - **Approfondimento GEARS, Codex, 4/10 20:18 CEST:** stessa chat `01a107a9-9c9c-76c2-9161-258f22bd57b1`,
   macchina `LAPTOP-DLG1LHV1`, da `7b3d410`, su mandato del proprietario. [Studio e prototipo](../../reports/analisi/gears_nella_rete_2026-10-04/README.md):
   fonti primarie e codice ufficiale fissato; innesto a grafo sul codice del bersaglio, modulato dal contesto,
