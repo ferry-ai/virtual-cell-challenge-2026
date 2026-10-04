@@ -236,3 +236,15 @@ nella memoria privata di un agente: qui valgono per tutti.
   (decisione del proprietario del 24/09): quel materiale sta nella cartella dati.
 - **Scorer installato.** `cell_eval2` nel venv contiene note degli organizzatori sui pannelli di
   validazione: cercarle prima di dedurre ([PROGETTO §3](PROGETTO.md#3-che-cosa-sappiamo-e-guida-le-scelte)).
+  La suite della repo si esegue con `.\scripts\py.cmd`: con un altro interprete tre test cadono per
+  `No module named cell_eval2.config` (il 4/10: 287 + 3 con l'interprete di Codex, 290 OK con il venv;
+  [report](../reports/gara/scorer_0_18_2026-10-04/README.md)).
+- **Shard negli output dei kernel d'ingestione.** Stanno in `<job>/shards/<unità>/<shard>.h5ad`, con un `manifest.json`
+  per unità, non in `<job>/shards/`. Il 4/10 un kernel degli shard campionati cercava `shards/*.h5ad` e si è fermato
+  dopo 10 s con «no shard found» (`vcc-sampled-hct116-l64-r1`); il pattern giusto è `shards/*/*.h5ad`, come legge
+  `build_fast_units.py`. Un costruttore che non trova input deve fermarsi così, mai produrre un manifest vuoto.
+- **Kernel di un account, dati di un altro.** Un kernel monta i dataset condivisi con il suo account, non gli output dei
+  kernel privati di un altro account. Gli shard delle sorgenti nuove sono output di `davideferrante11`: ciò che li legge
+  gira su `davideferrante11` (`reports/sorgenti/prepasso_ampliato_2026-10-04/STATO.md`). I dataset piccoli di codice si
+  copiano byte per byte, quelli grandi si condividono in lettura
+  (`reports/modelli/ibrido_selettivo_2026-10-04/replicate_datasets.py`, `share_to.py`).
