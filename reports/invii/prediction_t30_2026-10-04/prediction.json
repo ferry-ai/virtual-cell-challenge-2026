@@ -1,0 +1,46 @@
+{
+ "written_utc": "2026-10-04T08:14:00+00:00",
+ "label": "t30: D-056 selective hybrid, t25 effects plus the weighted correction of the HepG2-fold cell network",
+ "claim_type": "subjective forecast registered before the hybrid effects were read and before generation; no official result",
+ "authorization": "owner in chat, 4/10 night (session 2b35612c mandate): official submissions allowed when the frozen bench rule passes (bench score >= 0.100, complete and valid on every preregistered context); transcribed in reports/invii/trial_2026-09-22/autorizzazioni.md, section 'Mandato D-056 e invii autonomi'",
+ "references": {
+  "t25": 0.14023806091483554,
+  "t28_best_observed": 0.144845205,
+  "t22": 0.14125049908559736,
+  "t29_network_alone": -0.029625
+ },
+ "protocol": {
+  "file": "reports/modelli/ibrido_selettivo_2026-10-04/PROTOCOLLO.md (frozen at 817f42a; amendments §12, §13 at fd5e8f9, §14 at 732a32b)",
+  "development_outcome": "contributo neurale nello sviluppo (esito/decision_dev_r1/decision.json)",
+  "confirmation_outcome": "confermato on Jurkat and K562 (esito/decision_full_r1/decision.json)",
+  "bench_score_section_9": {"ibrido_selettivo": 0.13364541485749845, "transfer": 0.08959391329950968,
+                            "rule": "mean of the six scaled members of lane B per line (local scale), equal-weight macro over H1, HepG2, RPE1 (selector leave-one-line-out), Jurkat and K562 (frozen system); >= 0.100 with complete and valid results; not a VCC score"}
+ },
+ "candidate": {
+  "effects": "t25 lfc (stage 100, recipe configs/recipes/t25.json, cache r9; regenerated 4/10 with the t25 manifest's sha256 1d3e1dac...) plus w R on the observed (target, gene) pairs",
+  "R": "s(N) - s(A) of the HepG2-fold network (davideferrante11/rcell-d056-train-hepg2-r1, arm ibrido, exported best check, model.pt sha256 365bf62508cab76c3b2971678557adfd6a7c51d10fb336f6c3e05e75902a88bc) on 1,024 draws of 64 official controls per context, anchors by the fold's rule (nine cube groups, HepG2 never a source)",
+  "w": "frozen selector esito/selector_final_r1/selector_final.json (sha256 007587789a3516bf31e891493fba7a6b49e05d75f5b22f0c018dc9792de8fe42), arm ibrido; w = 0 for targets outside the network's regime C (hidden fold, no CRISPRi training row, no anchor)",
+  "exporter": "reports/modelli/ibrido_selettivo_2026-10-04/export_abc.py (sha256 f91f27d53ca2404b5fcdaf32446698097a06f6643a3e9579299e96809e298ab6), out processed/ibrido_selettivo_2026-10-04/export_abc_r1",
+  "not_a_refit": "PROTOCOLLO §13: the prepass refuses a run without a held-out group; the network is the evaluated fold with the most training cells, chosen by a rule that reads no outcome"
+ },
+ "generator": {
+  "stage": 45,
+  "trial": "trial-ext-profile",
+  "settings": "the t25 arguments unchanged (effects_scale 1.0, gene_dispersion false, seed 20260912, official controls); only the effects files change",
+  "stage_48": "as t25"
+ },
+ "single_factor_against_t25": "the neural correction w R added to the t25 effects on the corrected targets; recipe, cache, generator, seed, controls and packaging as t25",
+ "expected": {
+  "score_avg_band": [0.125, 0.16],
+  "working_centre": 0.143,
+  "calibration": "Subjective planning range, not a calibrated interval. On five held-out lines the selective hybrid beat its transfer by +0.006 to +0.074 in the local six-member scale (mean +0.044); local deltas have overstated official ones before (t28: local +0.029, official +0.0046). Here the transfer the network corrects (its anchor, nine cube groups) is not the t25 recipe the correction is added to, the weights average about 0.3, and about 70 of the 300 targets keep w = 0. The network alone scored -0.03 (t29), so a harmful transfer to the Flex contexts is possible but bounded by the weights."
+ },
+ "rule": {
+  "a_gain_at_least_0.005": "t30 - t25 >= +0.005: the neural correction helps on the official contexts; the hybrid becomes the development line for D/E/F (a refit on all groups with a modified prepass, then the transfer sources), with a protocol of its own; no claim beyond A/B/C",
+  "b_within_0.005": "|t30 - t25| < 0.005: not conclusive; the bench gain does not show on the site at this size; t25/t28 stay the reference; the next hybrid needs a larger expected effect or a cheaper read before another submission",
+  "c_loss_at_least_0.005": "t30 - t25 <= -0.005: the correction hurts on the official contexts despite the bench; no hybrid for D/E/F without a new protocol that names the mechanism (domain of the Flex controls, mismatch between the anchor and the t25 recipe)",
+  "also_reported": "t30 - t28 (not a rule: t28 has other generation options), the six scaled members against t25, and which members move",
+  "not": "the score enters PROGETTO section 0 only if it changes the best observed or the direction; it says nothing about D, E, F by itself"
+ },
+ "reserve": "no reserve is consumed: A, B, C are the public validation contexts; the H1 2025 test split stays unopened"
+}
