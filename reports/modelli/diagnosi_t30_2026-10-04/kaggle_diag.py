@@ -2,9 +2,11 @@
 
 The launcher of the D-056 lanes (reports/modelli/ibrido_selettivo_2026-10-04/kaggle_hybrid.py) imported as it is, with
 two changes made here and checked before anything is written:
-- the code snapshot also carries diag_lanes.py of this folder;
+- the code snapshot also carries diag_lanes.py of this folder and the modules the export procedure imports
+  (export_abc.py, cellnet.py, cell_data.py, fastshard.py, selector.py of the D-056 folder);
 - the kernel's `lanes` steps are replaced by one step, `diagB`, that runs diag_lanes.py with the same inputs as lane B
-  (network outputs, splits, anchors manifest, cube, real cells, targets, weights) and --dose-share 0.65.
+  (network outputs, splits, anchors manifest, cube, real cells, targets, weights), --dose-share 0.65 and the fold's
+  model.pt of the arm `ibrido` (the faithful arms of protocol §8).
 Arguments are those of kaggle_hybrid.py with `--mode lanes`. A push spends Kaggle CPU quota: it needs the owner's go.
 
     python kaggle_diag.py --config-dir <dir> --owner davideferrante11 --stage <new dir> --mode lanes \
@@ -26,20 +28,22 @@ sys.path.insert(0, str(HYBRID))
 import kaggle_hybrid as KH  # noqa: E402
 
 MINE = "reports/modelli/diagnosi_t30_2026-10-04/diag_lanes.py"
+EXPORT_MODULES = [f"{KH.ME}/{f}" for f in ("export_abc.py", "cellnet.py", "cell_data.py", "fastshard.py", "selector.py")]
 DOSE_SHARE = "0.65"
 OLD_STEPS = '''    steps = {"laneA": ["hybrid_lanes.py", "laneA", *common, "--weights", weights, "--out", OUT / "laneA"],
              "laneB": ["hybrid_lanes.py", "laneB", *common, "--weights", weights, "--real", REAL / P["real_file"],
                        "--targets", REAL / P["targets_file"], "--out", OUT / "laneB"]}
 '''
 NEW_STEPS = f'''    steps = {{"diagB": [repo / "{MINE}", *common, "--weights", weights, "--real", REAL / P["real_file"],
-                       "--targets", REAL / P["targets_file"], "--dose-share", "{DOSE_SHARE}", "--out", OUT / "diagB"]}}
+                       "--targets", REAL / P["targets_file"], "--dose-share", "{DOSE_SHARE}",
+                       "--model", TRAIN / "ibrido" / "model.pt", "--out", OUT / "diagB"]}}
 '''
 
 
 def snapshot() -> tuple[bytes, list]:
     """kaggle_hybrid.snapshot's file list plus diag_lanes.py, zipped the same way."""
     _, names = ORIGINAL_SNAPSHOT()
-    names = [*names, MINE]
+    names = [*names, *[n for n in EXPORT_MODULES if n not in names], MINE]
     buf = io.BytesIO()
     with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
         for n in names:

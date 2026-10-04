@@ -23,8 +23,8 @@ Tutto ciò che segue è calcolo locale leggero su file già esistenti. Nessun jo
 | `export_vs_rows.py`, [esito/export_vs_rows_r1.json](esito/export_vs_rows_r1.json) | Correzione esportata per A/B/C contro le righe del banco; ingressi del selettore | misurato (R3) |
 | `export_on_line_controls.py`, [esito/export_on_line_controls_r2.json](esito/export_on_line_controls_r2.json) | La procedura di esportazione sui controlli di tre linee del banco | misurato (R4); `r1` è il tentativo fermato dal controllo positivo |
 | `panel_vs_rows_targets.py`, [esito/panel_vs_rows_targets_r1.json](esito/panel_vs_rows_targets_r1.json) | I bersagli del pannello contro quelli del banco: sovrapposizione, ampiezze di T e R | misurato, esplorativo (R5) |
-| [PROTOCOLLO_CONFRONTI.md](PROTOCOLLO_CONFRONTI.md) | Confronti controllati sulle corsie B: baseline, parte comune, ampiezza | congelato prima delle uscite; **non eseguito**, serve il via per Kaggle |
-| `diag_lanes.py`, `test_diag_lanes.py`, `kaggle_diag.py`, `read_diag.py` | Codice dei confronti: bracci (7 test), launcher provato a secco, lettore scritto prima | implementato |
+| [PROTOCOLLO_CONFRONTI.md](PROTOCOLLO_CONFRONTI.md) | Confronti controllati sulle corsie B: baseline, parte comune, ampiezza e, dal §8, il braccio fedele (R calcolata come nell'invio); §7 è il controllo locale R4 | congelato prima delle uscite; le corsie **non sono eseguite**, serve il via per Kaggle |
+| `diag_lanes.py`, `test_diag_lanes.py`, `kaggle_diag.py`, `read_diag.py` | Codice dei confronti: 16 bracci, 10 test rapidi più un controllo positivo lento (la funzione del braccio fedele ridà la R archiviata di A), launcher provato a secco, lettore scritto prima | implementato |
 
 ## 1. Risultato esatto
 
@@ -155,7 +155,8 @@ dell'esportazione; cambiano solo i controlli. *R4.*
   compare mai.
 - **Conseguenza pratica:** il braccio fedele si può costruire oggi, dove la verità esiste: R calcolata con la
   procedura di esportazione sui controlli della linea esclusa, per i bersagli della corsia B, e poi i sei membri.
-  È il confronto che manca al protocollo; va aggiunto con un emendamento prima di eseguirlo.
+  Aggiunto come §8 del protocollo (bracci `all_wRexp`, `prod_wRexp`, `all_wRexpspec`, causa C4), con codice e test,
+  prima di qualunque esecuzione delle corsie.
 
 ## 3. Che cosa del banco si riusa e che cosa va corretto prima di promuovere un candidato
 
@@ -188,12 +189,12 @@ sotto sha256; le ricevute del training e le guardie interne.
 | Parte comune | `all_wRdose` (quota comune a 0,65) e `all_wRspec` contro `all_wR`, sul PDS (C2) | il PDS scende con la dose in ≥ 4 linee su 5, media ≤ −0,020 | PDS invariato o più alto con la dose | pronto, non eseguito |
 | Guadagno di banco non specifico | `all_wRcom` e `all_wRspec` contro `all` (C3) | la sola parte comune dà ≥ metà del guadagno | la parte specifica da sola guadagna ≥ 0,010 | pronto, non eseguito |
 | Dominio dei controlli | la procedura di esportazione su controlli non di gara (R4) | quota comune bassa sulle linee, alta su A/B/C | quota alta anche sulle linee | eseguito, §2.4: non distinto sulla quota comune (alta su HepG2, bassa su H1 e RPE1), ampiezza dalla parte di procedura/bersagli |
-| Procedura e bersagli dell'invio | corsia B con R della procedura di esportazione sui controlli della linea esclusa, contro R del banco, stessi bersagli e pesi | il guadagno locale si riduce o il PDS scende con la R dell'invio | stessi membri con le due R | **da aggiungere al protocollo** (emendamento prima dell'esecuzione) |
+| Procedura e bersagli dell'invio | corsia B con R della procedura di esportazione sui controlli della linea esclusa, contro R del banco, stessi bersagli e pesi | il guadagno locale si riduce o il PDS scende con la R dell'invio | stessi membri con le due R | pronto (§8, C4), non eseguito |
 | Rumore di realizzazione | lo stesso candidato con due semi; t25 rigenerato con flusso per blocco | differenze fra semi dell'ordine di 0,005 | differenze ≪ 0,005 | da disegnare; sul sito costa invii |
 | Potenza DE del banco | corsia B con 400 cellule previste per bersaglio | i guadagni NMAE/fedeltà/reach si riducono | restano | da disegnare |
 | Ampiezza dell'emissione | `prod_wR_x15 − prod_x15` accanto a `prod_wR − prod` | — (descrittivo) | — | pronto; la dispersione del t28 non è coperta |
 
-I primi tre e l'ultimo sono un kernel Kaggle CPU per linea ([protocollo](PROTOCOLLO_CONFRONTI.md) §3–4), con pesi e
+Le righe «pronto» sono un solo kernel Kaggle CPU per linea ([protocollo](PROTOCOLLO_CONFRONTI.md) §3–4), con pesi e
 reti congelati. Un incrocio con vecchi pesi è diagnostico: non equivale a riaddestrare una correzione sulla baseline
 coerente, e nessun esito autorizza un invio.
 

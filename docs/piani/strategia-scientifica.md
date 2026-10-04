@@ -14,8 +14,8 @@
     La causa della perdita non è isolata.
   - *Pronto e non eseguito:* confronti controllati sulle corsie B
     ([protocollo](../../reports/modelli/diagnosi_t30_2026-10-04/PROTOCOLLO_CONFRONTI.md) congelato a `8f9118c`,
-    launcher provato a secco): cinque kernel Kaggle CPU, **serve il via del proprietario**. Da aggiungere prima, con un
-    emendamento: il braccio con R calcolata dalla procedura di esportazione sui controlli della linea esclusa.
+    launcher provato a secco): cinque kernel Kaggle CPU, **serve il via del proprietario**. Il §8 aggiunge il braccio
+    fedele: R calcolata dalla procedura di esportazione sui controlli della linea esclusa, stessi bersagli e pesi.
   - *Job riletti su Kaggle alle 13:18, `davideferrante11`, senza lanciare niente:* `vcc-cd4-d3-rest-p0of2-r1` in corsa;
     `vcc-cd4-d3-rest-p1of2-r1` in ERROR (da rilanciare come r2 e da registrare fra gli incidenti); `D2_Stim8hr` e
     `D2_Stim48hr` completi nelle due parti, da verificare. Questa sessione non ha l'autorizzazione autonoma della

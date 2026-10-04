@@ -21,6 +21,13 @@ weights of the weights file, R_bar the mean of R over the lane's targets (gene-w
 | prod_wRdose  | T_prod + w ((R - R_bar) + c R_bar)        |                                                            |
 | prod_x15     | 1.5 T_prod                                | the amplitude part of the t28 emission (no gene dispersion)|
 | prod_wR_x15  | 1.5 (T_prod + w R)                        |                                                            |
+| all_wRexp    | T_all + w R_exp                           | the faithful arm (protocol §8): R by the export procedure  |
+| prod_wRexp   | T_prod + w R_exp                          |                                                            |
+| all_wRexpspec| T_all + w (R_exp - mean R_exp)            |                                                            |
+
+R_exp (only with --model): export_abc.corrections, imported, on the `non-targeting` cells of the lane's real file
+(1,024 draws of 64 controls, the same for every target, one library, seed 20261004), with the anchor T_all of each
+lane target and its support over the fold's max_sources; the weights stay those of the bench.
 
 c >= 0 is the factor on R_bar that brings the common share  ||mean_i R_i||^2 / mean_i ||R_i||^2  of the lane's
 corrections to --dose-share; it is computed from R alone, on the genes where T_all is defined, never from the truth.
@@ -29,7 +36,7 @@ two baselines and R), parity.json, run.json. Not VCC scores.
 
     py diag_lanes.py --run <train> --cube <cube_r2> --protocol <PROTOCOLLO.json> --target-keys <json> \
         --held-group HepG2 --splits <splits.json> --anchors-manifest <manifest> --weights <weights.json> \
-        --real <real_cells.npz> --targets <targets.json> --out <new dir> [--dose-share 0.65]
+        --real <real_cells.npz> --targets <targets.json> --out <new dir> [--dose-share 0.65] [--model <model.pt>]
 """
 from __future__ import annotations
 
@@ -91,6 +98,77 @@ def rms(x: np.ndarray, ok: np.ndarray) -> float:
     return float(np.sqrt((np.where(ok, x, 0.0).astype(np.float64) ** 2).sum() / n)) if n else float("nan")
 
 
+def controls_from_matrix(x, var: list, model_genes: list, input_genes: np.ndarray) -> dict:
+    """What export_abc.read_controls returns, for control cells already in memory (rows of `x`, columns `var`)."""
+    x = x.tocsc()
+    pos = {g: i for i, g in enumerate(model_genes)}
+    col = np.array([pos.get(g, -1) for g in var], np.int64)
+    measured = np.zeros(len(model_genes), bool)
+    measured[col[col >= 0]] = True
+    lib = np.asarray(x @ (col >= 0).astype(np.float64)).ravel().astype(F32)
+    vpos = {g: j for j, g in enumerate(var)}
+    in_var = np.array([vpos.get(model_genes[g], -1) for g in input_genes], np.int64)
+    x_in = np.zeros((x.shape[0], input_genes.size), np.float32)
+    have = in_var >= 0
+    x_in[:, have] = x[:, in_var[have]].toarray()
+    return {"x_in": np.minimum(x_in, 65504).astype(np.float16), "measured": measured, "lib": lib,
+            "cells": int(x.shape[0]), "var_genes": len(var), "var_off_model": int((col < 0).sum()),
+            "input_genes_absent": int((~have).sum())}
+
+
+def anchors_on_model(T_cube: np.ndarray, cube_genes: list, model_genes: list, support: np.ndarray, max_sources: int,
+                     known: set, symbols: list) -> dict:
+    """The lane targets' anchors as export_abc.panel_anchors builds them: T on every cube gene of the model's axis
+    (float16, 0 where no source measures; not only the genes the line's file measures), info = (support /
+    max_sources, 1), eligible where the network knows the symbol and an anchor exists."""
+    pos = {g: i for i, g in enumerate(model_genes)}
+    col = np.array([pos.get(g, -1) for g in cube_genes], np.int64)
+    have = col >= 0
+    rows = np.zeros((T_cube.shape[0], len(model_genes)), np.float16)
+    rows[:, col[have]] = np.nan_to_num(T_cube[:, have].astype(F32).astype(np.float16), nan=0.0)
+    info = np.zeros((T_cube.shape[0], 2), F32)
+    info[:, 0] = np.asarray(support, float) / float(max_sources)
+    info[:, 1] = 1.0
+    eligible = np.array([s in known for s in symbols]) & np.isfinite(T_cube).any(1) & (np.asarray(support) > 0)
+    return {"anchor": rows, "info": info, "eligible": eligible}
+
+
+def export_style_R(model_path: Path, x_ctrl, var: list, symbols: list, T_cube: np.ndarray, cube_genes: list,
+                   support: np.ndarray, max_sources: int, log=print) -> tuple[np.ndarray, dict]:
+    """R_exp [targets, len(var)] (NaN where undefined or not computed) by the export procedure on these controls."""
+    import export_abc as EX
+    model, ck = EX.load_model(model_path)
+    model_genes = [str(g) for g in ck["genes"]]
+    ctrl = controls_from_matrix(x_ctrl, var, model_genes, np.asarray(ck["input_genes"], np.int64))
+    anc = anchors_on_model(T_cube, cube_genes, model_genes, support, max_sources, {str(s) for s in ck["symbols"]},
+                           symbols)
+    R, _, how = EX.corrections(model, ck, ctrl, anc, symbols, log=log)
+    mcol = pd.Index(model_genes).get_indexer(var)
+    out = np.full((T_cube.shape[0], len(var)), np.nan, F32)
+    out[:, mcol >= 0] = R[:, mcol[mcol >= 0]]
+    return out, {"draws": how, "controls": {k: ctrl[k] for k in ("cells", "var_genes", "var_off_model",
+                                                                    "input_genes_absent")},
+                 "targets_computed": int(anc["eligible"].sum()), "model_sha256": sha256(model_path),
+                 "exported_state": ck.get("exported")}
+
+
+def faithful_arms(T_all, T_prod, R, R_exp, w) -> tuple[dict, dict]:
+    """The arms of protocol §8 and what distinguishes R_exp from the bench's R on the same targets."""
+    okA = np.isfinite(T_all)
+    spec, com = split_common(R_exp, okA)
+    Rz = np.where(okA, np.nan_to_num(R, nan=0.0), 0.0)
+    Ez = np.where(okA, np.nan_to_num(R_exp, nan=0.0), 0.0)
+    eff = {"all_wRexp": HL.hybrid(T_all, R_exp, w), "prod_wRexp": HL.hybrid(T_prod, R_exp, w),
+           "all_wRexpspec": HL.hybrid(T_all, spec, w)}
+    diag = {"common_share_R_exp": common_share(Ez), "common_share_R": common_share(Rz),
+            "rms": {"R_exp": rms(Ez, okA), "R": rms(Rz, okA), "T_all": rms(T_all, okA), "R_exp_bar": rms(com, okA)},
+            "cos_mean_R_exp_vs_R": float(np.nanmean(row_cos(Ez, Rz, okA))),
+            "cos_common_R_exp_vs_common_R": float(np.nanmean(row_cos(Ez.mean(0, keepdims=True),
+                                                                      Rz.mean(0, keepdims=True),
+                                                                      np.ones((1, Ez.shape[1]), bool))))}
+    return eff, diag
+
+
 def build_effects(T_all, T_prod, R, w, share) -> tuple[dict, dict]:
     """The arms' effects [targets, genes] (NaN where the arm's baseline is undefined) and what was measured on them."""
     okA, okP = np.isfinite(T_all), np.isfinite(T_prod)
@@ -129,6 +207,7 @@ def main() -> None:
     p.add_argument("--seed", type=int, default=2026)
     p.add_argument("--gen-seed", type=int, default=20260912)
     p.add_argument("--dose-share", type=float, default=0.65)
+    p.add_argument("--model", type=Path, help="the fold's model.pt: adds the faithful arms of protocol §8")
     a = p.parse_args()
     if a.out.exists():
         raise FileExistsError(a.out)
@@ -164,15 +243,22 @@ def main() -> None:
         raise SystemExit("lane B targets must be C groups")
 
     def on_real(name):
-        s, _ = transfer_for(S.cubes[name], tkeys, S.sources[name], S.commons)
+        s, sup = transfer_for(S.cubes[name], tkeys, S.sources[name], S.commons)
         lfc = np.full((len(tkeys), genes.size), np.nan, F32)
         lfc[:, have] = (s * AMPLITUDE_T25)[:, cpos[have]]
-        return lfc
+        return lfc, sup, s * AMPLITUDE_T25
 
-    T_all, T_prod = on_real("transfer_all_J"), on_real("transfer_prod_J")
+    (T_all, sup_all, T_all_cube), (T_prod, _, _) = on_real("transfer_all_J"), on_real("transfer_prod_J")
     R = (S.pred[ARM][gis][:, mcol] - S.pred["ancora_sola"][gis][:, mcol]).astype(F32)
     w = HL.arm_weights(W, ARM, tkeys)
     effects, diag = build_effects(T_all, T_prod, R, w, a.dose_share)
+    if a.model:
+        max_sources = json.loads(a.anchors_manifest.read_text(encoding="utf-8"))["max_sources"]
+        R_exp, how = export_style_R(a.model, ctrl_x, [str(g) for g in genes], labels, T_all_cube,
+                                    [str(g) for g in S.cube.genes], sup_all, max_sources)
+        more, fdiag = faithful_arms(T_all, T_prod, R, R_exp, w)
+        effects.update(more)
+        diag["export_style"] = {**how, **fdiag}
     cells_of = {}
     for name, lfc_raw in effects.items():
         obs = np.isfinite(lfc_raw)
