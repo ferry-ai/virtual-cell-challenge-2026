@@ -156,3 +156,33 @@ un passo di float16: il file archivia R arrotondata a float16 e s(N), s(A) sono 
 differenza. La tolleranza del controllo positivo diventa **un passo di float16, 2⁻¹⁰ ≈ 0,00098**, con le coppie definite
 identiche; si riportano anche la quota di coppie identiche e lo scarto quadratico medio. Soglie e letture delle linee
 (§7) restano quelle scritte alle 13:30.
+
+## 8. Emendamento del 4/10, 14:09 CEST (ora letta con `date`): il braccio fedele, prima di qualunque esecuzione delle corsie
+
+Nessuna corsia diagnostica è stata lanciata e nessun braccio del §3 esiste. Letti dopo il congelamento:
+`esito/export_on_line_controls_r2.json` (sui controlli di HepG2 la procedura di esportazione dà quota comune 0,61 e
+ampiezza 0,88, contro 0,23 e 0,42 misurati dal banco sulla stessa linea e rete) e `esito/panel_vs_rows_targets_r1.json`
+(i bersagli del pannello non sono fra quelli del banco su tre linee). Ne segue una quarta causa candidata, che il §3
+non copriva:
+
+- **C4, procedura dell'invio:** la correzione calcolata come nell'invio (1.024 estrazioni di 64 controlli della linea,
+  uguali per tutti i bersagli, una sola libreria) è diversa da quella che il banco ha valutato (media sulle cellule di
+  valutazione di ogni gruppo), e vale meno.
+
+**Bracci aggiunti**, stessi bersagli, stesse cellule vere, stesso seme e **stessi pesi w** del banco (un solo fattore:
+come si calcola R): `all_wRexp` = T_all + w · R_exp, `prod_wRexp` = T_prod + w · R_exp, `all_wRexpspec` =
+T_all + w · (R_exp − R̄_exp). R_exp viene da `export_abc.corrections` (importata, non copiata) con il `model.pt` del
+fold, i controlli `non-targeting` delle cellule vere della corsia e l'ancora `transfer_all_J` dei bersagli della corsia
+(supporto diviso per il `max_sources` del manifest delle ancore del fold); seme 20261004 come nell'invio. Si
+registrano quota comune e ampiezza di R_exp e il coseno medio per bersaglio fra R_exp e R.
+
+**Lettura, fissata ora.** E = avg(`all_wRexp`) − avg(`all_wR`); F = PDS(`all_wRexp`) − PDS(`all_wR`).
+- *C4 sostenuta sul banco* se F < 0 in almeno 4 linee su 5 con media ≤ −0,020, oppure E < 0 in almeno 4 linee su 5
+  con media ≤ −0,010;
+- *C4 smentita sul banco* se le medie di E e di F sono entrambe ≥ 0;
+- altrimenti *non distinta*. Con meno di cinque linee valide vale la regola del §4.
+- Si riporta avg(`all_wRexp`) − avg(`all`): è il guadagno che il banco avrebbe letto valutando la correzione come
+  viene esportata. Non è una regola e non autorizza niente.
+
+Limite: i bersagli restano quelli del banco, non quelli del pannello; i pesi sono quelli stimati con la R del banco.
+Procedura e bersagli, che nel controllo del §7 cambiavano insieme, qui sono separati solo dal lato della procedura.
