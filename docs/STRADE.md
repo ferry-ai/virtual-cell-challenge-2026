@@ -40,6 +40,8 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 | S-006 | Rete ancorata v4: ancora dal transfer più correzione appresa sulle cellule | peggiora la propria ancora su 3 linee su 3; regola non passata (CP-0061) | ipotizzato | 2026-10-04 |
 | S-007 | Correzioni del transfer dai controlli medi (guadagni per gene, bilineare, rete sul pseudobulk) | nessun beneficio | ignoto | 2026-10-04 |
 | S-008 | Modelli appresi precedenti (encoder, cancelli, rete dei contesti, relazionale, rete sulle sorgenti, Stack A e B) | nessuno ha passato la sua regola | ignoto | 2026-10-04 |
+| S-009 | Ibrido selettivo D-056 v1: transfer congelato + correzione neurale regolarizzata + selettore fuori fold | regola di banco passata su 5 linee (sviluppo e conferma, CP-0062); invio t30 da leggere | ipotizzato | 2026-10-04 |
+| S-010 | Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25 | «più fonti meglio» su Jurkat e K562; nessun candidato di solo transfer ammesso (CP-0062) | ipotizzato | 2026-10-04 |
 
 ## Voci
 
@@ -155,7 +157,8 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
   qui sotto non perda discriminazione. Serve un protocollo nuovo e linee non ancora lette (H1, HepG2 e RPE1 lo sono).
   Il primo tentativo è il protocollo D-056 v1 (`reports/modelli/ibrido_selettivo_2026-10-04/PROTOCOLLO.md`): testa
   comune esclusa dalla previsione, guadagno fisso, penalità, guardie interne, selettore fuori fold, conferma su Jurkat e
-  K562.
+  K562. Esito, 4/10: regola di banco passata su cinque linee, comprese le tre di questa voce
+  ([CP-0062](checkpoints/0062-d056-ibrido-selettivo-esito-banco.md), S-009).
 - **Segnale precoce:** al controllo di salute, il PDS dello spostamento previsto sui bersagli nascosti delle linee
   di training contro quello dell'ancora sola, e il rapporto fra l'ampiezza della correzione e quella dell'ancora
   (nel log: `shift_minus_anchor_rms` 0,23 contro `anchor_rms` 0,13 a fine corsa). Avrebbe fermato i training dopo
@@ -194,3 +197,66 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 - **Che cosa la riaprirebbe:** dipende dalla famiglia: va scritto nella voce propria.
 - **Segnale precoce:** non definito per l'insieme.
 - **Guardia eseguibile:** nessuna.
+
+### S-009 — Ibrido selettivo D-056 v1: transfer congelato + correzione neurale regolarizzata + selettore fuori fold
+
+- **Che cosa si è provato:** `ibrido = T + w · R`. T è `transfer_all_J`; R = s(N) − s(A) è la correzione della rete v5
+  sulle singole cellule:
+  - guadagno fisso a 1 sull'ancora;
+  - testa comune nella sola verosimiglianza;
+  - penalità L2 0,05 sulla correzione;
+  - coppie di validazione interne a peso zero e guardie con arresto.
+  w viene da un selettore logistico a cinque ingressi, stimato fuori fold. Corpus pilot a 8 gruppi; sviluppo H1, HepG2
+  e RPE1, conferma Jurkat e K562.
+- **Prova:** [CP-0062](checkpoints/0062-d056-ibrido-selettivo-esito-banco.md);
+  [protocollo](../reports/modelli/ibrido_selettivo_2026-10-04/PROTOCOLLO.md) con gli emendamenti §12–§14;
+  [decision.json](../reports/modelli/ibrido_selettivo_2026-10-04/esito/decision_full_r1/decision.json).
+- **Sintomo:** è un esito positivo, non un guasto. Corsia B, `ibrido_selettivo − transfer` sui sei membri locali:
+  - sviluppo +0,006, +0,063, +0,040;
+  - conferma +0,037 (Jurkat), +0,074 (K562);
+  - guardia della corsia A ≥ −0,02 ovunque;
+  - punteggio di banco del §9: 0,134 contro 0,090 del transfer.
+  Il guadagno fuori fold del selettore sull'errore quadratico pesato delle righe è piccolo (−1,8…+0,4 %), e lo stato
+  delle cellule (`ibrido − ibrido_mean`) non dà un contributo coerente.
+- **Meccanismo:** ipotizzato: separare la risposta comune dalla correzione e pesare la correzione fuori fold toglie lo
+  spostamento comune che in S-006 copriva il segnale specifico. Lo indicano la quota comune di R nelle guardie interne
+  (0,12–0,20) e la tenuta del PDS delle righe C. Non è isolato: le quattro differenze di disegno cambiano insieme.
+- **Che cosa esclude e che cosa no:** esclude che una correzione neurale debba per forza peggiorare il transfer su
+  linee nuove (S-001, S-002, S-006). Non dimostra che il guadagno passi al sito né al corpus completo D-053; un seme,
+  8 gruppi.
+- **Che cosa la riaprirebbe:** voce aperta: la lettura ufficiale del t30
+  (`reports/invii/prediction_t30_2026-10-04/prediction.json`). Poi un refit su tutti i gruppi, che richiede la modifica
+  del pre-passo, e il corpus completo.
+- **Segnale precoce:** le guardie interne del trainer v5 (discriminazione, ampiezza, quota comune) e la parità
+  `ibrido_w0`. Sul candidato A/B/C, il rapporto RMS(R)/RMS(T) dell'esportazione confrontato con quello delle righe di
+  sviluppo: su A vale circa e^−0,35 ≈ 0,70 contro 0,24–0,42 delle righe (`export_abc_r2`, targets_A.csv).
+- **Guardia eseguibile:** `reports/modelli/ibrido_selettivo_2026-10-04/guards.py` e l'arresto in `train_cellnet.py`; la
+  parità in `hybrid_lanes.py laneB` (fallisce la corsia) e in `export_abc.py` (rifiuta l'esportazione se w = 0 non dà
+  gli effetti del t25); test in `test_guards.py`, `test_hybrid_train.py` e `test_export_abc.py`.
+
+### S-010 — Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25
+
+- **Che cosa si è provato:** tre regole di fonti dello stesso transfer, con medie J e ampiezza t25:
+  - `production`: le tabelle della ricetta inviata, senza la linea esclusa;
+  - `cells`: i gruppi con cellule del corpus pilot;
+  - `all`: tutte le tabelle del cubo r2.
+  Il confronto usa le stesse cellule, gli stessi bersagli e lo stesso generatore su Jurkat e K562.
+- **Prova:** [CP-0062](checkpoints/0062-d056-ibrido-selettivo-esito-banco.md) §3;
+  [protocollo](../reports/trasferimento/fonti_transfer_2026-10-04/PROTOCOLLO.md); corsie B in
+  `reports/modelli/ibrido_selettivo_2026-10-04/esito/lanes_jurkat_r1/laneB/bench/scaled_local.csv` e
+  `reports/modelli/ibrido_selettivo_2026-10-04/esito/lanes_k562_r1/laneB/bench/scaled_local.csv`.
+- **Sintomo:** è un esito positivo della regola primaria:
+  - `cells_J − prod_J` vale +0,113 e +0,105;
+  - `all_J − prod_J` vale +0,073 e +0,142;
+  - il punteggio di banco su Jurkat e K562 resta sotto 0,100 per tutti i bracci (−0,11, per il JAC di K562), quindi
+    nessun candidato di solo transfer è ammesso.
+  Sulle tre linee dell'indizio (H1, HepG2, RPE1) il segno era lo stesso.
+- **Meccanismo:** ipotizzato: più gruppi di linea mediano via le particolarità di ciascuna sorgente; le tabelle della
+  ricetta sono poche e due di loro, K562 e CD4T, sono molto diverse dalle linee nuove. Non è isolato.
+- **Che cosa esclude e che cosa no:** non esclude la ricetta t25 come riferimento ufficiale (nessun invio con più
+  fonti finora); indica che per D/E/F le fonti vanno scelte su linee escluse, non per abitudine.
+- **Che cosa la riaprirebbe:** voce aperta: un candidato con più fonti per A/B/C richiede un punteggio di banco ≥ 0,100
+  sulle linee del suo protocollo e la prova di parità della catena (§4 del protocollo).
+- **Segnale precoce:** la differenza contro `transfer_prod_J` sulla prima linea completata (arresto del §5 del
+  protocollo).
+- **Guardia eseguibile:** nessuna nel codice; la regola è nel protocollo.
