@@ -1,0 +1,128 @@
+{
+  "written_utc": "2026-10-04T07:49:01+00:00",
+  "held_group": "K562",
+  "run": "/kaggle/input/notebooks/davidmaisterx/rcell-d056-train-k562-r1/train",
+  "rows": {
+    "C": 2119,
+    "J": 1215
+  },
+  "unmatched_groups": {
+    "no_key_in_cube": 6573,
+    "not_held": 290
+  },
+  "weights_file": {
+    "path": "/kaggle/working/weights.json",
+    "sha256": "5c9340a677b53f00d3a54112373797fc8be1bc6fa8981b0b4203b203a3aa7e2a",
+    "fit_on": [
+      "H1",
+      "HepG2",
+      "RPE1"
+    ]
+  },
+  "w_fixed": {
+    "ibrido": 0.38014967538552474,
+    "ibrido_mean": 0.587822340561169
+  },
+  "w_selective_ibrido": {
+    "mean": 0.3078039321005941,
+    "share_above_0.5": 0.022180273714016045,
+    "share_below_0.1": 0.012741859367626238
+  },
+  "commons": {
+    "regime": "J",
+    "keys_kept_out": 2239
+  },
+  "inputs": {
+    "eval_groups": "15d6ab3cf311351ff60c3cb74d50ef194d4c7a04b11c4c9c48602378bf3d420d",
+    "cube_manifest": "c7fb76628b8246b9e00c789582ba3e512a8018e9469c5e8f3344001375fe1099",
+    "target_keys": "55a4e601f75dbbee2ccf3d8e052483b8cc355b0d1a57c3fc33f53ca687a1515a",
+    "splits": "4f7bcc1d3e150b1d1f7e9ecfef3682786314214409444671b73d3fed5a0cceda",
+    "ibrido": "e79cfcc966be9623031ef35240b234d8e3b8ba2c73da0b7430d1bc5134d1d829",
+    "ibrido_mean": "59b3360d57380d41485939194ea8cc09d99ae39159061504345bc6820a41d431",
+    "ancora_sola": "72c22c19c4b3b892ad34969b7c29c0f5b0057d852cfa76c3a2f5d99082c28458"
+  },
+  "means": {
+    "C": {
+      "generic_pseudobulk": {
+        "pds": 0.54205,
+        "cos": 0.09354,
+        "cos_spec": 2e-05,
+        "mse_ratio": 1.07024,
+        "sign_sig": 0.55131
+      },
+      "ibrido_selettivo": {
+        "pds": 0.86689,
+        "cos": 0.13086,
+        "cos_spec": 0.15965,
+        "mse_ratio": 1.37998,
+        "sign_sig": 0.62523
+      },
+      "miscela_fissa": {
+        "pds": 0.86893,
+        "cos": 0.13151,
+        "cos_spec": 0.15975,
+        "mse_ratio": 1.35569,
+        "sign_sig": 0.62605
+      },
+      "rete": {
+        "pds": 0.85058,
+        "cos": 0.13584,
+        "cos_spec": 0.1595,
+        "mse_ratio": 1.37411,
+        "sign_sig": 0.6314
+      },
+      "rete_mean": {
+        "pds": 0.85392,
+        "cos": 0.1379,
+        "cos_spec": 0.15903,
+        "mse_ratio": 1.36208,
+        "sign_sig": 0.63682
+      },
+      "selettivo_mean": {
+        "pds": 0.8598,
+        "cos": 0.13498,
+        "cos_spec": 0.16073,
+        "mse_ratio": 1.3812,
+        "sign_sig": 0.63301
+      },
+      "transfer": {
+        "pds": 0.86469,
+        "cos": 0.1212,
+        "cos_spec": 0.15203,
+        "mse_ratio": 1.40829,
+        "sign_sig": 0.61391
+      },
+      "transfer_cells_J": {
+        "pds": 0.8345,
+        "cos": 0.10973,
+        "cos_spec": 0.14257,
+        "mse_ratio": 1.88833,
+        "sign_sig": 0.59642
+      },
+      "transfer_prod_J": {
+        "pds": 0.8309,
+        "cos": 0.0835,
+        "cos_spec": 0.09224,
+        "mse_ratio": 1.37042,
+        "sign_sig": 0.58246
+      }
+    },
+    "J": {
+      "generic_pseudobulk": {
+        "pds": 0.42667,
+        "cos": 0.05389,
+        "cos_spec": 0.00018,
+        "mse_ratio": 1.11167,
+        "sign_sig": 0.50533
+      },
+      "rete_J": {
+        "pds": 0.51938,
+        "cos": 0.03218,
+        "cos_spec": 0.01311,
+        "mse_ratio": 1.10169,
+        "sign_sig": 0.52916
+      }
+    }
+  },
+  "note": "lane A of the D-056 hybrid: bench indices on the held-out line's cube rows; J rows (generic_pseudobulk, rete_J) reported apart; not VCC scores"
+}
