@@ -1,0 +1,106 @@
+{
+ "ok": true,
+ "verdict": {
+  "parts_ok": true,
+  "no_part_of_another_unit": true,
+  "units_covered": true,
+  "bytes_and_sha256_reread": true,
+  "shards_distinct": true
+ },
+ "units": {
+  "cd4_D2_Stim48hr": {
+   "parts": 2,
+   "expected_rows": 2863571,
+   "rows": 2863571,
+   "cells": 2050788,
+   "excluded": 812783,
+   "bytes": 18199653476,
+   "nnz": 7919336972,
+   "counts": 20322095096,
+   "covers_the_unit": true
+  }
+ },
+ "totals": {
+  "shards": 144,
+  "cells": 2050788,
+  "nnz": 7919336972,
+  "counts": 20322095096,
+  "bytes": 18199653476
+ },
+ "inventory": {
+  "rows": 361203,
+  "contexts": [
+   "CD4T D2 Stim48hr"
+  ],
+  "context_target_combinations": 12070,
+  "targeted_cells": 1963041,
+  "control_cells": 87747,
+  "targeted_cells_at_cap": {
+   "32": 339714,
+   "64": 611186,
+   "128": 995731
+  }
+ },
+ "parts": [
+  {
+   "job": "vcc_cd4_d2_stim48hr_p0of2_r1",
+   "unit": "cd4_D2_Stim48hr",
+   "range": [
+    0,
+    1440000
+   ],
+   "rows": 1440000,
+   "cells": 1031403,
+   "excluded": 408597,
+   "by_reason": {
+    "multi_sgRNA": 255359,
+    "eligible_targeted": 987244,
+    "no_sgRNA": 142846,
+    "eligible_control": 44159,
+    "low_quality": 9241,
+    "invalid_target_id": 1151,
+    "unmapped_target_symbol": 36912,
+    "emitted": 1031403
+   },
+   "shards": 72,
+   "bytes": 9216926019,
+   "nnz": 4016177930,
+   "counts": 10380238498,
+   "smoke": null,
+   "complete": true,
+   "unit_manifest_sha256": "67e2d6db6bbeb8aa938a64044eb21421adc636085e3d046a864b33056b1a40df",
+   "ok": true
+  },
+  {
+   "job": "vcc_cd4_d2_stim48hr_p1of2_r1",
+   "unit": "cd4_D2_Stim48hr",
+   "range": [
+    1440000,
+    2863571
+   ],
+   "rows": 1423571,
+   "cells": 1019385,
+   "excluded": 404186,
+   "by_reason": {
+    "multi_sgRNA": 251604,
+    "eligible_targeted": 975797,
+    "no_sgRNA": 142452,
+    "eligible_control": 43588,
+    "low_quality": 9011,
+    "invalid_target_id": 1119,
+    "unmapped_target_symbol": 36146,
+    "emitted": 1019385
+   },
+   "shards": 72,
+   "bytes": 8982727457,
+   "nnz": 3903159042,
+   "counts": 9941856598,
+   "smoke": null,
+   "complete": true,
+   "unit_manifest_sha256": "90310763326f6e38e398d938e4e40e59471c266e6bee3bfb4a0212228175dbee",
+   "ok": true
+  }
+ ],
+ "seconds": 233.1,
+ "utc": "2026-10-04T14:01:51Z"
+}
