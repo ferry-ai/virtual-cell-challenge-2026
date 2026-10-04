@@ -1,0 +1,140 @@
+{
+ "source": "davideferante/vcc-hybrid-prep-jurkat-r2",
+ "files": {
+  "anchor.npy": {
+   "bytes": 987140378,
+   "sha256": "7e7829279bd4e51c90140bfb69132b42e0d75859d055e284beaab813d2d8c3d0"
+  },
+  "basal.npy": {
+   "bytes": 1772228,
+   "sha256": "5133dba5710241914efc0318ebbbd48eea5a774805a001810cff81ad09a3845a"
+  },
+  "complete.json": {
+   "bytes": 2017,
+   "sha256": "65169526533c7cece4de72843f0761b9ee4b872feb953975cb5c19f4b995d7e0"
+  },
+  "genes.json": {
+   "bytes": 125732,
+   "sha256": "525e7d91c638e87f9e7996d089f7b69a66656fbde2d61ec0302730b7862185f1"
+  },
+  "rows.csv": {
+   "bytes": 2951811,
+   "sha256": "f369e03abc8a98366e6aa63a3d6c09045c44325494a081cbb549050014a142f3"
+  },
+  "target.npy": {
+   "bytes": 41765168,
+   "sha256": "a9e96a94d35888acd7db0680eb0d421f5cf2e14041619ae8aa598d2bc23535e0"
+  },
+  "truth_effect.npy": {
+   "bytes": 987140378,
+   "sha256": "d9e33a9ef3b1bc198c43696732eeff4ec8b5fa1153f73fed90bf5c48cd661558"
+  }
+ },
+ "receipt": {
+  "complete": true,
+  "held": "Jurkat",
+  "regime": "C",
+  "rows": 36765,
+  "genes": 13425,
+  "source_policy": "all",
+  "cohort": "current cube r2 aggregates; CD4 donor-resolved bank being built separately; NOT complete catalogue",
+  "truth": "legacy pseudobulk log effects; not claimed as mean per-cell proportions",
+  "tables_expected": [
+   "k562_gwps",
+   "k562_essential",
+   "k562_viperturb",
+   "rpe1",
+   "hepg2_nadig",
+   "cd4_rest",
+   "cd4_stim8hr",
+   "cd4_stim48hr",
+   "hct116",
+   "hek293t",
+   "kolf21j",
+   "hipsci_eipl_1",
+   "hipsci_eipl_3",
+   "hipsci_fiaj_1",
+   "hipsci_fiaj_3",
+   "hipsci_iudw_1",
+   "hipsci_iudw_4",
+   "hipsci_jejf_2",
+   "hipsci_jejf_3",
+   "hipsci_kolf_2",
+   "hipsci_kolf_3",
+   "hipsci_oikd_2",
+   "hipsci_oikd_5",
+   "hipsci_paab_3",
+   "hipsci_paab_4",
+   "hipsci_pipw_4",
+   "hipsci_pipw_5",
+   "hipsci_tolg_4",
+   "hipsci_tolg_6",
+   "hipsci_zapk_3",
+   "h1_train",
+   "h1_val",
+   "tian2021_neuron"
+  ],
+  "tables_used": [
+   "k562_gwps",
+   "k562_essential",
+   "k562_viperturb",
+   "rpe1",
+   "hepg2_nadig",
+   "cd4_rest",
+   "cd4_stim8hr",
+   "cd4_stim48hr",
+   "hct116",
+   "hek293t",
+   "kolf21j",
+   "hipsci_eipl_1",
+   "hipsci_eipl_3",
+   "hipsci_fiaj_1",
+   "hipsci_fiaj_3",
+   "hipsci_iudw_1",
+   "hipsci_iudw_4",
+   "hipsci_jejf_2",
+   "hipsci_jejf_3",
+   "hipsci_kolf_2",
+   "hipsci_kolf_3",
+   "hipsci_oikd_2",
+   "hipsci_oikd_5",
+   "hipsci_paab_3",
+   "hipsci_paab_4",
+   "hipsci_pipw_4",
+   "hipsci_pipw_5",
+   "hipsci_tolg_4",
+   "hipsci_tolg_6",
+   "hipsci_zapk_3",
+   "h1_train",
+   "h1_val",
+   "tian2021_neuron"
+  ],
+  "groups": [
+   "CD4T",
+   "H1",
+   "HCT116",
+   "HEK293T",
+   "HepG2",
+   "K562",
+   "Neuron",
+   "RPE1",
+   "iPSC"
+  ],
+  "held_fit_reads": [],
+  "unknown_target_descriptors": 2687,
+  "seconds": 203,
+  "parameters": {
+   "held": "Jurkat",
+   "seed": 20261004,
+   "steps": 3000,
+   "width": 64,
+   "rank": 32,
+   "lr": 0.0003,
+   "residual_bound": 0.5,
+   "batch": 64,
+   "residual_l2": 0.01,
+   "cohort": "aggregate-first-cohort"
+  },
+  "cube_manifest_sha256": "c7fb76628b8246b9e00c789582ba3e512a8018e9469c5e8f3344001375fe1099"
+ }
+}

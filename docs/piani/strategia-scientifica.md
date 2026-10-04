@@ -8,6 +8,14 @@
   Aggiornamento circa 23:00: tre preparazioni COMPLETE; primo training H1
   effettivamente su Tesla T4/CUDA, primo braccio a 3.000 passi. Sei job banca RUNNING.
   [Prova e prosecuzione](../../reports/modelli/ibrido_esecuzione_2026-10-04/AVVIO_TRAINING.md).
+  **Controllo notturno 5/10:** conclusi i 18 fit H1/HepG2/Jurkat; recuperati i
+  checkpoint e verificata l'esposizione di tutte le righe e tabelle ammesse, con
+  linea esterna assente ([verifica](../../reports/modelli/ibrido_esecuzione_2026-10-04/exposure_verified_20261005_r1.json)).
+  Tre banche D4 recuperate e verificate per hash e conteggi: 5.380.955 cellule,
+  5.032.701.395 byte di artefatti; [manifest](../../reports/modelli/ibrido_esecuzione_2026-10-04/recovery_20261005_r1.json).
+  D1–D3 ancora nei tre job CPU attivi. Prossimi passi: esportare i nuovi checkpoint
+  nel formato del banco v2 e valutarli con t28; completare e integrare le dodici
+  unità CD4 nel training esteso. Nessun miglioramento o corpus completo dichiarato.
 
 - **Ibrido semplice, Codex, 4/10 22:00 CEST:** il proprietario sceglie «ibrido semplice»,
   transfer promettente, molti contesti, pseudobulk e campionamento. Stessa chat del subentro.
