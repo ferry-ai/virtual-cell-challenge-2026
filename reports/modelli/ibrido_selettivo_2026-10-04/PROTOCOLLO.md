@@ -212,3 +212,17 @@ non è valida.
 
 Niente ESM2, niente corpus ampliato, niente generatore diverso. Nessuna soglia del selettore scelta guardando le
 linee di conferma. Le uscite della v4 non entrano nel selettore. La riserva H1 test resta chiusa.
+
+## 12. Emendamento del 4/10, 03:16, prima di leggere qualunque uscita di questo protocollo
+
+I training H1 e HepG2 erano in corsa dalle 03:00 e nessuna loro uscita era disponibile. Un test sintetico di
+`selector.py` (`test_selector.py`) ha mostrato un difetto della forma congelata al §4 e al §6. L'obiettivo
+`media_r(a_r w² − 2 b_r w)` non è invariante di scala: con la penalità α = 1 sui coefficienti standardizzati, il
+selettore resta una miscela costante qualunque siano i dati. Nel test la correzione aiuta nel 38 % delle righe,
+riconoscibile da un ingresso, eppure il peso imparato era ≈ 0 ovunque. Sui dati veri a e b sono piccoli (differenze di
+errori quadratici di log fold change) e la penalità dominerebbe ancora di più. La correzione è stata scelta sul solo
+test sintetico, prima di ogni dato reale:
+`J(θ) = Σ_r (a_r w_r² − 2 b_r w_r) / Σ_r a_r + α ‖β‖²`, con α = 0,01 e l'intercetta libera.
+Sullo stesso test il selettore pesa l'ingresso giusto (coefficiente 2,62 contro |·| ≤ 0,03 degli altri), dà w medio
+0,60 dove la correzione aiuta e 0,06 dove nuoce, e batte la miscela fissa fuori campione. Restano immutati gli
+ingressi, la stima su righe di altre linee (§6), la miscela fissa, le regole di lettura (§8) e quella degli invii (§9).

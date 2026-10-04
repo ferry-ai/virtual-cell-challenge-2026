@@ -109,7 +109,7 @@ class TrainV4(unittest.TestCase):
             proc = getattr(self, name)
             self.assertEqual(proc.returncode, 0, f"{name}: {proc.stderr[-3000:]}")
         cfg = self.read("fast", "config.json")
-        self.assertEqual(cfg["code_version"], 4)
+        self.assertEqual(cfg["code_version"], 5)      # this folder's copy: version 5 with its options off is version 4
         self.assertEqual(cfg["sampler"]["kind"], "balanced")
         self.assertIn("compact twins", cfg["reads"])
         self.assertIn("weighs 1", cfg["loss"]["rule"])
