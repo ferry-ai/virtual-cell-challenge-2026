@@ -121,3 +121,28 @@ meno. Una C1 smentita sul banco non assolve la baseline sul sito: lì la baselin
 `kaggle_diag.py … --slug rcell-t30diag-<linea>-r1 --launch-log lancio_diag_r1.jsonl`; uscite scaricate in
 `processed/diagnosi_t30_2026-10-04/` e ricevute piccole in `esito/` di questa cartella; lettura con uno script
 scritto prima di scaricare le uscite. Esito → checkpoint e aggiornamento di S-009 nello stesso commit.
+
+## 7. Emendamento del 4/10, 13:35 CEST: controllo locale sui controlli delle linee, scritto prima di eseguirlo
+
+Al momento della scrittura sono lette le ricevute locali `esito/chain_t30_r2.json`, `esito/bench_members_r1.json` ed
+`esito/export_vs_rows_r1.json` (quota comune di R all'esportazione 0,62–0,69; sulle righe del banco 0,07–0,24;
+RMS(R)/RMS(T) mediano 0,71–0,96 contro 0,24–0,42). Nessuna R calcolata con la procedura di esportazione su controlli
+diversi da quelli di gara esiste ancora. Le letture del §4 non cambiano.
+
+**Domanda.** La quota comune alta segue i **controlli di gara** (dominio degli ingressi della rete) oppure la
+**procedura di esportazione** (1.024 estrazioni di 64 controlli uguali per tutti i bersagli, una sola libreria, i
+bersagli del pannello), che sul banco non è mai stata usata? Sul banco R veniva dalle cellule di valutazione di ogni
+gruppo, con rumore indipendente fra bersagli, che abbassa la quota comune a parità di rete.
+
+**Disegno.** `export_on_line_controls.py`: la stessa rete (fold HepG2), le stesse ancore dei 230 bersagli corretti del
+pannello, le stesse funzioni di `export_abc.py` (importate, non copiate) e lo stesso seme, con al posto dei controlli
+ufficiali i controlli `non-targeting` delle cellule vere del banco di tre linee: HepG2 (esclusa dal training di questa
+rete), H1 e RPE1 (nel suo training). Calcolo locale leggero (CPU, minuti per linea). Nessun peso, nessuna verità.
+
+**Lettura.** Quota comune di R sui bersagli corretti, sui geni misurati dal file dei controlli della linea; per A/B/C
+la si ricalcola sugli stessi geni.
+- *segue i controlli di gara* se la quota è ≤ 0,35 su tutte e tre le linee e resta ≥ 0,55 su A, B e C sugli stessi geni;
+- *segue la procedura o i bersagli del pannello* se è ≥ 0,55 su almeno due linee;
+- altrimenti *non distinto*. Si riporta anche RMS(R)/RMS(ancora) con le due letture analoghe a soglie 0,5 e 0,6.
+Limiti: H1 e RPE1 sono linee di training della rete; 2.048 controlli per linea contro 18.400; nessuna di queste linee
+è Flex, quindi «controlli di gara» non distingue saggio, linea e profondità.
