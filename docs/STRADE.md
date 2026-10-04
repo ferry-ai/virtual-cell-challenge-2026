@@ -136,7 +136,9 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
   linee lette su tre, RPE1 in training; la decisione sulle tre linee e il checkpoint aggiornano questa voce.
 - **Sintomo:** i training sono tecnicamente accettati (quote esatte, 2 epoche, valutazione completa). Corsia A, PDS
   delle righe C: 0,547 contro 0,965 dell'ancora su H1 e 0,639 contro 0,886 su HepG2; rapporto MSE 13,9 contro 2,6 su
-  H1. Corsia B di H1, media dei sei membri: 0,057 contro 0,272. L'ancora da sola passata per la rete riproduce il
+  H1. Corsia B, media dei sei membri: 0,057 contro 0,272 su H1 e 0,162 contro 0,212 su HepG2
+  (`esito/lanes_hepg2_r1_kaggle/laneB/bench/scaled_local.csv`): con due linee negative la primaria non può più
+  passare. L'ancora da sola passata per la rete riproduce il
   transfer (0,963 e 0,883): il danno viene dalla correzione appresa. I geni chiamati per bersaglio dalle cellule
   generate sono circa 1.800 contro 160 dell'ancora e 400 delle cellule vere.
 - **Meccanismo:** ipotizzato: la correzione impara uno spostamento comune a tutti i bersagli, tipico delle linee di

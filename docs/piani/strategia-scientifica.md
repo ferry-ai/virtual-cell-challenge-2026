@@ -45,6 +45,56 @@
      32/64/128 con perdita d'informazione misurata contro i riassunti completi, letti dai gemelli.
   4. Qualunque sia l'esito del pilot, il corpus ampliato (prima CD4T, HCT116, HEK293T con cellule verificate) entra nel
      protocollo successivo; ESM2 dopo, a parità di dati e di campione.
+- **PASSAGGIO DI CONSEGNE della sessione `d0100a`, 4/10 02:02 CEST (da leggere per primo; i blocchi sotto sono la
+  cronaca della notte). I job si rileggono su Kaggle prima di agire.**
+  - **Esito finora del pilot v4 (misurato, due linee su tre):** la rete ancorata peggiora la propria ancora. Media
+    locale dei sei membri, corsia B: H1 0,057 contro 0,272 di `transfer_all_J`; HepG2 0,162 contro 0,212. Corsia A,
+    PDS delle righe C: H1 0,547 contro 0,965; HepG2 0,639 contro 0,886. Con due linee negative la primaria del §7 non
+    può più passare e la guardia nemmeno. Training tecnicamente accettati (H1, HepG2). Evidenza in `esito/` del
+    [report v4](../../reports/modelli/rete_ancorata_v4_2026-10-03/README.md) e voce S-006 di [STRADE](../STRADE.md).
+  - **In corsa alle 02:02:** GPU `rcell-v4-train-rpe1-r1` (dalle 00:42; quota 8,36 h residue). CPU:
+    `rcell-v4-fast-hek293t-a-r2`, `rcell-v4-fast-kolf-pan-r1` (01:26), `vcc-cd4-d1-stim48hr-p{0,1}of2-r1` (01:52,
+    02:00). Una sessione CPU è lasciata libera per la generazione di RPE1.
+  - **Per chiudere il pilot** (tutto dalla cartella v4, con il Python del venv, token `~/.kaggle-davideferrante11`):
+    1. ricevute di RPE1 senza file di valutazione e accettazione §5 (comando di `fetch_outputs.py` più sotto);
+    2. `kaggle_gen.py kernel … --held-group RPE1 --train-kernel rcell-v4-train-rpe1-r1 --prepass-kernel
+       rcell-prepass-rpe1-r1 --anchors-kernel rcell-v4-anchors-r1 --anchors-dir anchors_RPE1_all --slug
+       rcell-v4-gen-rpe1-r1` (controllare la risposta: la CLI esce 0 anche sul rifiuto);
+    3. **corsie su Kaggle, mai sul portatile:** `kaggle_lanes.py --held-group RPE1 --train-kernel
+       rcell-v4-train-rpe1-r1 --gen-kernel rcell-v4-gen-rpe1-r1 --real-kernel rcell-gen-rpe1-r3b --prepass-kernel
+       rcell-prepass-rpe1-r1 --anchors-dir anchors_RPE1_all --slug rcell-v4-lanes-rpe1-r1 --launch-log
+       lancio_lanes_r1.jsonl` (parità con il locale verificata su H1 a 4·10⁻¹⁶);
+    4. scaricare nella radice dati i file di valutazione del training (`out_train_rpe1_r1`, come per H1) e le uscite
+       delle corsie; `decide_anchored.py --line H1 <out_train_h1_r1/train> <laneA_h1_r1>
+       <laneB_h1_r1/bench/scaled_local.csv> --line HepG2 <out_train_hepg2_r1/train> <out_lanes_hepg2_r1_b/laneA>
+       <out_lanes_hepg2_r1_b/laneB/bench/scaled_local.csv> --line RPE1 … --out <nuova>` (cartelle in
+       `processed/rete_ancorata_v4_2026-10-03/`);
+    5. checkpoint con `scripts/30_new_checkpoint.py`, tipo `esperimento`, riga `- **Strade:** S-006`; aggiornare la
+       voce S-006 (che deve citare il checkpoint), AMBITI §5 e PROGETTO §0 nello stesso commit. Il controllo dei
+       documenti lo pretende (D-055).
+  - **Indizio per la produzione, da verificare con una regola sua:** il transfer con più fonti batte quello delle
+    quattro fonti della ricetta inviata sulle linee lette (sei membri: H1 0,272 e 0,280 contro 0,248; HepG2 0,212 e
+    0,245 contro 0,141, per `transfer_all_J` e `transfer_cells_J` contro `transfer_prod_J`). È la leva più concreta
+    sul punteggio ufficiale; un invio resta da autorizzare.
+  - **Binario dati:** chiuse e verificate HEK293T, HCT116, CD4 `D1_Rest`. Gemelli conclusi: HEK293T parti 4–7 (111
+    shard, 12,95 GB), HCT116 parti 0–1 e 2–3 (55 e 54 shard, 7,95 e 7,83 GB). Misurato: 10,9 GB di picco per
+    processo su uno shard Orion da 200 milioni di valori, quindi due processi per kernel (E-20261004-001, da
+    aggiornare con questa misura). Da fare: verifica per file di CD4 `D1_Stim8hr` (`build_parts_verify.py --units
+    cd4_D1_Stim8hr=2789727 --parts vcc-cd4-d1-stim8hr-p0of2-r1 vcc-cd4-d1-stim8hr-p1of2-r1`), le 18 parti CD4 in coda
+    (`fill_sessions.py --max 1` per volta), gemelli della terza ondata scPerturb, studio dei campioni per fold
+    (`kaggle_nested.py --dispersion`, slug `rcell-v4-nested-fold-<linea>-r1`); lo studio esplorativo r1 è concluso e
+    non letto, e non decide niente.
+  - **Regole nuove di stanotte:** ciclo per imparare dagli errori (D-055, [STRADE](../STRADE.md): sezione
+    «Precedenti» nei protocolli nuovi, riga «Strade» nei checkpoint); banchi e corsie nel cloud; scelta dei campioni
+    per fold. Nessun nuovo training della nostra architettura senza un'ipotesi mirata e il suo protocollo
+    (indicazione del proprietario: si attende anche il modello di Alfredo, riferito a circa 0,08 ufficiale, da mettere
+    sul banco C/J a sei membri contro il transfer).
+  - **Cartella condivisa:** Codex (`01a10414`) sta liberando spazio e ha i suoi file nell'indice git: committare solo
+    con `git commit -- <percorsi>`; per `docs/REGISTRO.md` solo le proprie righe (AGENTI §3). 143 commit locali non
+    pubblicati: il push va chiesto.
+  - **Da riferire al proprietario:** il processo PID 2288 ancora attivo; lo scorer `cell-eval2` 0.18.0 esiste su PyPI
+    e noi usiamo la 0.16.0; 30 ore GPU intere su ciascuno degli altri due account, ma gli input sono privati di
+    `davideferrante11`; il pre-passo del corpus ampliato richiede prima una scelta su come alleggerirlo (sotto).
 - **Stato della sessione `d0100a` (4/10, 00:09 CEST; i job si rileggono su Kaggle prima di agire):**
   - In corsa: i due training GPU (dalle 23:06 del 3/10); su CPU `vcc-orion-hct116-verify-r1` (23:59),
     `vcc-cd4-d1-rest-verify-r1` (00:04), `vcc-cd4-d1-stim8hr-p{0,1}of2-r1` (23:35) e lo studio dei campioni annidati
