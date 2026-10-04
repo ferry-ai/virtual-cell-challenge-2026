@@ -169,6 +169,16 @@ def faithful_arms(T_all, T_prod, R, R_exp, w) -> tuple[dict, dict]:
     return eff, diag
 
 
+NOISE_ARMS = ("all", "all_wR", "prod", "prod_wR")
+
+
+def noise_plan(gen_seed: int, seeds: int, n_alt: int) -> list:
+    """(name, arm, generator seed, cells per target or None for the bench's) of protocol §9: every noise arm with
+    `seeds` generator seeds, at the bench's cell counts (`nb`) and at `n_alt` cells per target."""
+    return [(f"{arm}@{tag}s{k}", arm, gen_seed + k, n) for tag, n in (("nb", None), (f"n{n_alt}", n_alt))
+            for k in range(seeds) for arm in NOISE_ARMS]
+
+
 def build_effects(T_all, T_prod, R, w, share) -> tuple[dict, dict]:
     """The arms' effects [targets, genes] (NaN where the arm's baseline is undefined) and what was measured on them."""
     okA, okP = np.isfinite(T_all), np.isfinite(T_prod)
@@ -208,6 +218,9 @@ def main() -> None:
     p.add_argument("--gen-seed", type=int, default=20260912)
     p.add_argument("--dose-share", type=float, default=0.65)
     p.add_argument("--model", type=Path, help="the fold's model.pt: adds the faithful arms of protocol §8")
+    p.add_argument("--noise-seeds", type=int, default=0,
+                   help="protocol §9: only the arms all, all_wR, prod, prod_wR, each with this many generator seeds")
+    p.add_argument("--noise-n", type=int, default=400, help="protocol §9: the second number of cells per target")
     a = p.parse_args()
     if a.out.exists():
         raise FileExistsError(a.out)
@@ -252,21 +265,27 @@ def main() -> None:
     R = (S.pred[ARM][gis][:, mcol] - S.pred["ancora_sola"][gis][:, mcol]).astype(F32)
     w = HL.arm_weights(W, ARM, tkeys)
     effects, diag = build_effects(T_all, T_prod, R, w, a.dose_share)
-    if a.model:
+    if a.model and not a.noise_seeds:
         max_sources = json.loads(a.anchors_manifest.read_text(encoding="utf-8"))["max_sources"]
         R_exp, how = export_style_R(a.model, ctrl_x, [str(g) for g in genes], labels, T_all_cube,
                                     [str(g) for g in S.cube.genes], sup_all, max_sources)
         more, fdiag = faithful_arms(T_all, T_prod, R, R_exp, w)
         effects.update(more)
         diag["export_style"] = {**how, **fdiag}
+    plan = [(name, name, a.gen_seed, None) for name in effects]
+    if a.noise_seeds:
+        plan = [(name, name, a.gen_seed, None) for name in ("all", "all_w0")]
+        plan += noise_plan(a.gen_seed, a.noise_seeds, a.noise_n)
+        diag["noise"] = {"seeds": a.noise_seeds, "n_alt": a.noise_n, "arms": list(NOISE_ARMS)}
     cells_of = {}
-    for name, lfc_raw in effects.items():
+    for name, arm, gen_seed, n_fixed in plan:
+        lfc_raw = effects[arm]
         obs = np.isfinite(lfc_raw)
         lfc = np.where(obs, np.nan_to_num(lfc_raw), 0.0).astype(F32)
-        stream = np.random.default_rng(a.gen_seed)
+        stream = np.random.default_rng(gen_seed)
         blocks, labs = [], []
         for i, t in enumerate(labels):
-            n = bench.n_pred(t)
+            n = n_fixed or bench.n_pred(t)
             cells, _ = trial01_cells(basal, lfc[i], obs[i], libs, n, stream,
                                      max_stored_per_cell=ch.max_stored_per_cell,
                                      max_counts_per_cell=ch.max_counts_per_cell)

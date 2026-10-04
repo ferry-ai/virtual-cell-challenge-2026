@@ -66,6 +66,18 @@ class EffectArms(unittest.TestCase):
             D.dose_factor(spec, np.zeros_like(com), 0.65)
 
 
+class NoisePlan(unittest.TestCase):
+    def test_every_arm_gets_every_seed_at_both_cell_counts_and_seed_zero_is_the_bench(self):
+        plan = D.noise_plan(20260912, 5, 400)
+        self.assertEqual(len(plan), 4 * 5 * 2)
+        self.assertEqual(len({p[0] for p in plan}), len(plan))
+        self.assertIn(("all_wR@nbs0", "all_wR", 20260912, None), plan)
+        self.assertIn(("prod@n400s4", "prod", 20260916, 400), plan)
+        for arm in D.NOISE_ARMS:
+            self.assertEqual(sorted(p[2] for p in plan if p[1] == arm and p[3] is None),
+                             [20260912 + k for k in range(5)])
+
+
 class FaithfulArm(unittest.TestCase):
     """Protocol §8: the correction computed by the export procedure on a line's own control cells."""
 

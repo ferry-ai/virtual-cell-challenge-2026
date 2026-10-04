@@ -30,13 +30,18 @@ import kaggle_hybrid as KH  # noqa: E402
 MINE = "reports/modelli/diagnosi_t30_2026-10-04/diag_lanes.py"
 EXPORT_MODULES = [f"{KH.ME}/{f}" for f in ("export_abc.py", "cellnet.py", "cell_data.py", "fastshard.py", "selector.py")]
 DOSE_SHARE = "0.65"
+NOISE = "--noise" in sys.argv          # protocol §9: the noise calibration instead of the arms of §3 and §8
+if NOISE:
+    sys.argv.remove("--noise")
 OLD_STEPS = '''    steps = {"laneA": ["hybrid_lanes.py", "laneA", *common, "--weights", weights, "--out", OUT / "laneA"],
              "laneB": ["hybrid_lanes.py", "laneB", *common, "--weights", weights, "--real", REAL / P["real_file"],
                        "--targets", REAL / P["targets_file"], "--out", OUT / "laneB"]}
 '''
-NEW_STEPS = f'''    steps = {{"diagB": [repo / "{MINE}", *common, "--weights", weights, "--real", REAL / P["real_file"],
+EXTRA = '"--noise-seeds", "5", "--noise-n", "400"' if NOISE else '"--model", TRAIN / "ibrido" / "model.pt"'
+STEP = "noiseB" if NOISE else "diagB"
+NEW_STEPS = f'''    steps = {{"{STEP}": [repo / "{MINE}", *common, "--weights", weights, "--real", REAL / P["real_file"],
                        "--targets", REAL / P["targets_file"], "--dose-share", "{DOSE_SHARE}",
-                       "--model", TRAIN / "ibrido" / "model.pt", "--out", OUT / "diagB"]}}
+                       {EXTRA}, "--out", OUT / "{STEP}"]}}
 '''
 
 
