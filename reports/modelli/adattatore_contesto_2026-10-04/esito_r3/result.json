@@ -1,0 +1,576 @@
+{
+  "folds": {
+    "h1": {
+      "inner_group": "kolf",
+      "dropped_from_training": [],
+      "best_step": 0,
+      "inner_best": 0.045362079377151886,
+      "inner_copy": 0.045362079377151886,
+      "history": [
+        {
+          "step": 0,
+          "inner_val_cos": 0.045362079377151886
+        },
+        {
+          "step": 100,
+          "inner_val_cos": 0.03209879179591161
+        },
+        {
+          "step": 200,
+          "inner_val_cos": 0.031830516623828374
+        },
+        {
+          "step": 300,
+          "inner_val_cos": 0.026909164059073253
+        },
+        {
+          "step": 400,
+          "inner_val_cos": 0.02696631601043731
+        },
+        {
+          "step": 500,
+          "inner_val_cos": 0.031191221679024023
+        },
+        {
+          "step": 600,
+          "inner_val_cos": 0.024289389624771816
+        },
+        {
+          "step": 700,
+          "inner_val_cos": 0.028939499366474754
+        },
+        {
+          "step": 800,
+          "inner_val_cos": 0.02484256807640529
+        },
+        {
+          "step": 900,
+          "inner_val_cos": 0.02789052359864227
+        },
+        {
+          "step": 1000,
+          "inner_val_cos": 0.021796509281241477
+        }
+      ],
+      "n_pairs": [
+        8547,
+        204,
+        50
+      ],
+      "test_targets": 50,
+      "test_cos": {
+        "k562": 0.16898661594526876,
+        "adapter3": 0.16898661594526876,
+        "adapter3_nocenter": 0.16898661594526876,
+        "adapter3_swap": 0.16898661594526876
+      },
+      "discrimination": {
+        "k562": 0.9614285714285714,
+        "adapter3": 0.9614285714285714,
+        "adapter3_nocenter": 0.9614285714285714,
+        "adapter3_swap": 0.9614285714285714
+      },
+      "common_share_test": {},
+      "diff": {
+        "adapter3-k562": {
+          "mean": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n_targets": 50
+        },
+        "adapter3_nocenter-k562": {
+          "mean": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n_targets": 50
+        },
+        "adapter3_swap-k562": {
+          "mean": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n_targets": 50
+        }
+      },
+      "diff_adapter3-swap": {
+        "mean": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "n_targets": 50
+      },
+      "panel_test_targets": 3,
+      "panel_test_cos": {
+        "k562": 0.2748170346900748,
+        "adapter3": 0.2748170346900748,
+        "adapter3_nocenter": 0.2748170346900748,
+        "adapter3_swap": 0.2748170346900748
+      },
+      "nan": false
+    },
+    "kolf": {
+      "inner_group": "rpe1",
+      "dropped_from_training": [
+        "hipsci_targeted_19|kolf_2",
+        "hipsci_targeted_19|kolf_3"
+      ],
+      "best_step": 500,
+      "inner_best": 0.27333338808762087,
+      "inner_copy": 0.10578294537825067,
+      "history": [
+        {
+          "step": 0,
+          "inner_val_cos": 0.10578294537825067
+        },
+        {
+          "step": 100,
+          "inner_val_cos": 0.19114627242201662
+        },
+        {
+          "step": 200,
+          "inner_val_cos": 0.24012699267429022
+        },
+        {
+          "step": 300,
+          "inner_val_cos": 0.266616884065627
+        },
+        {
+          "step": 400,
+          "inner_val_cos": 0.2436741793837439
+        },
+        {
+          "step": 500,
+          "inner_val_cos": 0.27333338808762087
+        },
+        {
+          "step": 600,
+          "inner_val_cos": 0.23107527752670687
+        },
+        {
+          "step": 700,
+          "inner_val_cos": 0.26507499953119895
+        },
+        {
+          "step": 800,
+          "inner_val_cos": 0.22542557844586175
+        },
+        {
+          "step": 900,
+          "inner_val_cos": 0.2699944679147598
+        },
+        {
+          "step": 1000,
+          "inner_val_cos": 0.26157597778047215
+        },
+        {
+          "step": 1100,
+          "inner_val_cos": 0.2225940382666345
+        },
+        {
+          "step": 1200,
+          "inner_val_cos": 0.24009744423133256
+        },
+        {
+          "step": 1300,
+          "inner_val_cos": 0.21154771310144904
+        },
+        {
+          "step": 1400,
+          "inner_val_cos": 0.21671891424250275
+        },
+        {
+          "step": 1500,
+          "inner_val_cos": 0.24675323289496312
+        }
+      ],
+      "n_pairs": [
+        6877,
+        336,
+        364
+      ],
+      "test_targets": 356,
+      "test_cos": {
+        "k562": 0.041949387240733216,
+        "adapter3": 0.026446633483548986,
+        "adapter3_nocenter": 0.025362908048707514,
+        "adapter3_swap": 0.027000982196125612
+      },
+      "discrimination": {
+        "k562": 0.8405595137463269,
+        "adapter3": 0.6471022018274766,
+        "adapter3_nocenter": 0.6418938936521354,
+        "adapter3_swap": 0.6501151229722657
+      },
+      "common_share_test": {
+        "kolf_chromatin_modifiers|KOLF2.1J iPSC": 0.06910337012573378,
+        "kolf_metabolic_enzymes|KOLF2.1J iPSC": 0.047668016513062635,
+        "kolf_strong_perturbations|KOLF2.1J iPSC": 0.00672603507811807
+      },
+      "diff": {
+        "adapter3-k562": {
+          "mean": -0.01484277200362673,
+          "lo": -0.019897752569921424,
+          "hi": -0.009777243431095378,
+          "n_targets": 356
+        },
+        "adapter3_nocenter-k562": {
+          "mean": -0.015914157979097295,
+          "lo": -0.021228027310206097,
+          "hi": -0.010548943555429338,
+          "n_targets": 356
+        },
+        "adapter3_swap-k562": {
+          "mean": -0.014287371834260034,
+          "lo": -0.01931917117239037,
+          "hi": -0.009304903878561652,
+          "n_targets": 356
+        }
+      },
+      "diff_adapter3-swap": {
+        "mean": -0.0005554001693666952,
+        "lo": -0.0008281022711739337,
+        "hi": -0.0002935309027739668,
+        "n_targets": 356
+      },
+      "panel_test_targets": 15,
+      "panel_test_cos": {
+        "k562": 0.0406275008161565,
+        "adapter3": 0.03294770895121515,
+        "adapter3_nocenter": 0.037776187400266024,
+        "adapter3_swap": 0.033416644454227935
+      },
+      "nan": false
+    },
+    "rpe1": {
+      "inner_group": "hepg2",
+      "dropped_from_training": [],
+      "best_step": 500,
+      "inner_best": 0.11685013356437055,
+      "inner_copy": 0.10144849686725149,
+      "history": [
+        {
+          "step": 0,
+          "inner_val_cos": 0.10144849686725149
+        },
+        {
+          "step": 100,
+          "inner_val_cos": 0.09313516117392931
+        },
+        {
+          "step": 200,
+          "inner_val_cos": 0.11237355578256925
+        },
+        {
+          "step": 300,
+          "inner_val_cos": 0.11506016511662284
+        },
+        {
+          "step": 400,
+          "inner_val_cos": 0.1069531246002503
+        },
+        {
+          "step": 500,
+          "inner_val_cos": 0.11685013356437055
+        },
+        {
+          "step": 600,
+          "inner_val_cos": 0.10268421040274807
+        },
+        {
+          "step": 700,
+          "inner_val_cos": 0.11506047078470807
+        },
+        {
+          "step": 800,
+          "inner_val_cos": 0.11283217732073143
+        },
+        {
+          "step": 900,
+          "inner_val_cos": 0.10664631299263772
+        },
+        {
+          "step": 1000,
+          "inner_val_cos": 0.1114351733165514
+        },
+        {
+          "step": 1100,
+          "inner_val_cos": 0.11165905700398071
+        },
+        {
+          "step": 1200,
+          "inner_val_cos": 0.09745691045005189
+        },
+        {
+          "step": 1300,
+          "inner_val_cos": 0.10241101381684528
+        },
+        {
+          "step": 1400,
+          "inner_val_cos": 0.11665845148742914
+        },
+        {
+          "step": 1500,
+          "inner_val_cos": 0.10899909295764708
+        }
+      ],
+      "n_pairs": [
+        6887,
+        336,
+        530
+      ],
+      "test_targets": 530,
+      "test_cos": {
+        "k562": 0.10809411053729197,
+        "adapter3": 0.13619314951559136,
+        "adapter3_nocenter": 0.1343067949168259,
+        "adapter3_swap": 0.13673157896223212
+      },
+      "discrimination": {
+        "k562": 0.8824767271819381,
+        "adapter3": 0.8088383207903842,
+        "adapter3_nocenter": 0.8108035809822735,
+        "adapter3_swap": 0.8085565502728538
+      },
+      "common_share_test": {
+        "replogle_rpe1|RPE1": 0.02429114881065087
+      },
+      "diff": {
+        "adapter3-k562": {
+          "mean": 0.0280990389782994,
+          "lo": 0.020545900915361515,
+          "hi": 0.035714553701719144,
+          "n_targets": 530
+        },
+        "adapter3_nocenter-k562": {
+          "mean": 0.02621268437953394,
+          "lo": 0.018042126332356873,
+          "hi": 0.03441379118722169,
+          "n_targets": 530
+        },
+        "adapter3_swap-k562": {
+          "mean": 0.02863746842494017,
+          "lo": 0.021002432883592808,
+          "hi": 0.03627498291136293,
+          "n_targets": 530
+        }
+      },
+      "diff_adapter3-swap": {
+        "mean": -0.0005384294466407668,
+        "lo": -0.0007780953383471673,
+        "hi": -0.00030194410523927916,
+        "n_targets": 530
+      },
+      "panel_test_targets": 0,
+      "panel_test_cos": null,
+      "nan": false
+    },
+    "hepg2": {
+      "inner_group": "jurkat",
+      "dropped_from_training": [],
+      "best_step": 0,
+      "inner_best": 0.14249382821874937,
+      "inner_copy": 0.14249382821874937,
+      "history": [
+        {
+          "step": 0,
+          "inner_val_cos": 0.14249382821874937
+        },
+        {
+          "step": 100,
+          "inner_val_cos": 0.08882433784446948
+        },
+        {
+          "step": 200,
+          "inner_val_cos": 0.09957086406156748
+        },
+        {
+          "step": 300,
+          "inner_val_cos": 0.10004889881140745
+        },
+        {
+          "step": 400,
+          "inner_val_cos": 0.08677108187260271
+        },
+        {
+          "step": 500,
+          "inner_val_cos": 0.08079859713650803
+        },
+        {
+          "step": 600,
+          "inner_val_cos": 0.08922440889376924
+        },
+        {
+          "step": 700,
+          "inner_val_cos": 0.08851974116874761
+        },
+        {
+          "step": 800,
+          "inner_val_cos": 0.09405758054995808
+        },
+        {
+          "step": 900,
+          "inner_val_cos": 0.08660610582468467
+        },
+        {
+          "step": 1000,
+          "inner_val_cos": 0.08029928668059949
+        }
+      ],
+      "n_pairs": [
+        6886,
+        335,
+        530
+      ],
+      "test_targets": 530,
+      "test_cos": {
+        "k562": 0.10090005879410212,
+        "adapter3": 0.10090005879410212,
+        "adapter3_nocenter": 0.10090005879410212,
+        "adapter3_swap": 0.10090005879410212
+      },
+      "discrimination": {
+        "k562": 0.9106680457966259,
+        "adapter3": 0.9106680457966259,
+        "adapter3_nocenter": 0.9106680457966259,
+        "adapter3_swap": 0.9106680457966259
+      },
+      "common_share_test": {},
+      "diff": {
+        "adapter3-k562": {
+          "mean": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n_targets": 530
+        },
+        "adapter3_nocenter-k562": {
+          "mean": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n_targets": 530
+        },
+        "adapter3_swap-k562": {
+          "mean": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n_targets": 530
+        }
+      },
+      "diff_adapter3-swap": {
+        "mean": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "n_targets": 530
+      },
+      "panel_test_targets": 0,
+      "panel_test_cos": null,
+      "nan": false
+    },
+    "jurkat": {
+      "inner_group": "h1",
+      "dropped_from_training": [],
+      "best_step": 0,
+      "inner_best": 0.21783185818100614,
+      "inner_copy": 0.21783185818100614,
+      "history": [
+        {
+          "step": 0,
+          "inner_val_cos": 0.21783185818100614
+        },
+        {
+          "step": 100,
+          "inner_val_cos": 0.15065427161685319
+        },
+        {
+          "step": 200,
+          "inner_val_cos": 0.12454511617810471
+        },
+        {
+          "step": 300,
+          "inner_val_cos": 0.1015714320708863
+        },
+        {
+          "step": 400,
+          "inner_val_cos": 0.11493941267357585
+        },
+        {
+          "step": 500,
+          "inner_val_cos": 0.123535448684442
+        },
+        {
+          "step": 600,
+          "inner_val_cos": 0.1136754055914527
+        },
+        {
+          "step": 700,
+          "inner_val_cos": 0.11842673856668869
+        },
+        {
+          "step": 800,
+          "inner_val_cos": 0.11958166982385876
+        },
+        {
+          "step": 900,
+          "inner_val_cos": 0.10514705241722447
+        },
+        {
+          "step": 1000,
+          "inner_val_cos": 0.10085673324914557
+        }
+      ],
+      "n_pairs": [
+        8080,
+        20,
+        530
+      ],
+      "test_targets": 530,
+      "test_cos": {
+        "k562": 0.1472619821582385,
+        "adapter3": 0.1472619821582385,
+        "adapter3_nocenter": 0.1472619821582385,
+        "adapter3_swap": 0.1472619821582385
+      },
+      "discrimination": {
+        "k562": 0.9296429717872811,
+        "adapter3": 0.9296429717872811,
+        "adapter3_nocenter": 0.9296429717872811,
+        "adapter3_swap": 0.9296429717872811
+      },
+      "common_share_test": {},
+      "diff": {
+        "adapter3-k562": {
+          "mean": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n_targets": 530
+        },
+        "adapter3_nocenter-k562": {
+          "mean": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n_targets": 530
+        },
+        "adapter3_swap-k562": {
+          "mean": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "n_targets": 530
+        }
+      },
+      "diff_adapter3-swap": {
+        "mean": 0.0,
+        "lo": 0.0,
+        "hi": 0.0,
+        "n_targets": 530
+      },
+      "panel_test_targets": 0,
+      "panel_test_cos": null,
+      "nan": false
+    }
+  },
+  "macro": {
+    "adapter3-k562": 0.002651253394934534,
+    "lo": 0.0008360227215665737,
+    "hi": 0.004511515815754333,
+    "folds_positive": 1,
+    "discrimination_adapter3-k562": -0.05341914366208085,
+    "adapter3-swap": -0.0002187659232014924
+  }
+}
