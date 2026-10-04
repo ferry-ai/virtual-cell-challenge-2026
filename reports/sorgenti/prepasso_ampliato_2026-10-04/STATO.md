@@ -26,6 +26,15 @@ Questa pagina registra lo stato, non le regole: le regole sono in [DECISIONE.md]
 - **Replica dei gemelli del pilot su `davidmaisterx`**: i 365 gemelli (134 + 91 + 140) sono identici byte per byte a
   quelli di `rcell-v4-fast-{a,b,c}-r1` (sha256 dei manifest confrontati il 4/10).
 
+- **Montaggi in un kernel, misurati il 4/10 alle 11:20** ([sonda](sonda_montaggi.py), `vcc-probe-mounts-r1`, esito in
+  `esito_sonda_montaggi_r1/mounts.json`):
+  - un kernel CPU di `davideferrante11` accetta 18 uscite di kernel e 4 dataset, per 137,7 GB in tutto;
+  - tutti i 22 montaggi sono visibili e listati entro 5 secondi dall'avvio, perché il montaggio è pigro;
+  - le sorgenti sono gli 11 kernel di gemelli esistenti, 4 parti CD4 D2, pre-passo, ancore, training D-056 HepG2, cubo e
+    codice.
+  Il training sul corpus ampliato può quindi montare i gemelli di tutte le sorgenti in un solo kernel, almeno fino a
+  22 sorgenti. Il limite superiore non è stato cercato.
+
 ## In corsa
 
 - `vcc-sampled-hct116-l64-r1` (davideferrante11, 04:19): primo kernel degli shard campionati, livello 64, 2 processi
