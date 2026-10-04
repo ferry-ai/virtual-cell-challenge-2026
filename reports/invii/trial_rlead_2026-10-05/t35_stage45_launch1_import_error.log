@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "C:\Users\39346\virtual-cell-challenge-2026\reports\modelli\rete_l1_2026-10-04\genera_l1.py", line 191, in <module>
+    main()
+  File "C:\Users\39346\virtual-cell-challenge-2026\reports\modelli\rete_l1_2026-10-04\genera_l1.py", line 161, in main
+    spec.loader.exec_module(mod)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\39346\virtual-cell-challenge-2026\scripts\45_generate_prediction.py", line 203, in <module>
+    @dataclass
+     ^^^^^^^^^
+  File "C:\Users\39346\AppData\Local\Programs\Python\Python312\Lib\dataclasses.py", line 1275, in dataclass
+    return wrap(cls)
+           ^^^^^^^^^
+  File "C:\Users\39346\AppData\Local\Programs\Python\Python312\Lib\dataclasses.py", line 1265, in wrap
+    return _process_class(cls, init, repr, eq, order, unsafe_hash,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\39346\AppData\Local\Programs\Python\Python312\Lib\dataclasses.py", line 983, in _process_class
+    and _is_type(type, cls, dataclasses, dataclasses.KW_ONLY,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\39346\AppData\Local\Programs\Python\Python312\Lib\dataclasses.py", line 749, in _is_type
+    ns = sys.modules.get(cls.__module__).__dict__
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute '__dict__'. Did you mean: '__dir__'?

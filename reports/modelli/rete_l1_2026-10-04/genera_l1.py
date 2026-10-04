@@ -158,6 +158,7 @@ def main() -> None:
     rest = a.rest[1:] if a.rest[:1] == ["--"] else a.rest
     spec = importlib.util.spec_from_file_location("stage45", REPO / "scripts" / "45_generate_prediction.py")
     mod = importlib.util.module_from_spec(spec)
+    sys.modules["stage45"] = mod  # dataclasses look the module up by name
     spec.loader.exec_module(mod)
     tg = Targets(a.targets, 18533)
     log = []
