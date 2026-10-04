@@ -1,0 +1,312 @@
+{
+  "created_utc": "2026-10-04T10:21:20.591113+00:00",
+  "claim": "pilot receipt recount and synthetic threshold probe; no new training or official score",
+  "script_sha256": "fa9aea4b06a2e56b0f1016d74f1cf756b18db65997063a3631c2641baced3f53",
+  "source_hashes": {
+    "train_cellnet.py": "9da614d2facf57adf939256fe5fe6d5931e49974f83d520431f9f0b4519a5966",
+    "cell_data.py": "28182555bfefa2d59e8374751760775cc3ba64d5decab0d2ebb6a85cc0a29cc3",
+    "cellnet.py": "33975a3498b67cf77247bcc3ab94f2a9e0aba6acbf124923267d863b38149e58",
+    "fixtures.py": "79f574ab44f4846af70316c9c6b1233660475dc70af6d68d9342476720cc1dc1"
+  },
+  "pilot": {
+    "h1": {
+      "inputs": [
+        {
+          "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_prepass_h1_r1\\prepass\\qc.json",
+          "bytes": 106419,
+          "sha256": "07d49e338cb00a8ffd622a676c3dc72393695b49b86b3813e28ac2f099d505b3"
+        },
+        {
+          "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_prepass_h1_r1\\prepass\\prepass_done.json",
+          "bytes": 315,
+          "sha256": "2c77b87180fe3d490b9a67d92fb238e9b95fa98175ff58668736604b28d04326"
+        },
+        {
+          "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_prepass_h1_r1\\prepass\\splits.json",
+          "bytes": 46879,
+          "sha256": "3d472e8cdf06704fd1adc4fdc9c81eefb6d18d4e653c0b9cc54a9de09773709f"
+        }
+      ],
+      "done": {
+        "state": "prepass.pkl",
+        "sha256": "0e67592be6cb59131e6365614df14f00931de38927172b1d051ab9fbdfe47358",
+        "bytes": 493480029,
+        "utc": "2026-10-03T03:12:04.011854+00:00",
+        "shards": 365,
+        "cells": 5603629,
+        "admitted_training_cells": 3850952,
+        "evaluation_groups": 479,
+        "holdout_group": "H1",
+        "pool_rows": 56727
+      },
+      "min_controls": 30,
+      "keys_with_control_counts": 32,
+      "controls_related_rejections": {
+        "hipsci_targeted_19|MISSING|no_controls_in_key": 1
+      },
+      "all_rejections": {
+        "a549_liu_hillsley2026|A549|mito_above_ceiling": 8,
+        "h1_vcc2025|H1|duplicate_cell": 38176,
+        "h1_vcc2025|H1|mito_above_ceiling": 1,
+        "hepg2_nadig|HepG2|counts_below_floor": 1,
+        "hepg2_nadig|HepG2|genes_below_floor": 8,
+        "hipsci_targeted_19|MISSING|no_controls_in_key": 1,
+        "hipsci_targeted_19|pipw_5|counts_below_floor": 62,
+        "jurkat_nadig|Jurkat|counts_below_floor": 85,
+        "jurkat_nadig|Jurkat|genes_below_floor": 6,
+        "kolf_strong_perturbations|KOLF2.1J iPSC|counts_below_floor": 39,
+        "kolf_strong_perturbations|KOLF2.1J iPSC|genes_below_floor": 6,
+        "kolf_strong_perturbations|KOLF2.1J iPSC|mito_above_ceiling": 55,
+        "norman2019_crispra|K562|mito_above_ceiling": 19,
+        "replogle_k562_essential|K562|counts_below_floor": 155,
+        "replogle_k562_essential|K562|genes_below_floor": 10,
+        "replogle_k562_gwps|K562|counts_below_floor": 1310,
+        "replogle_k562_gwps|K562|counts_far_below_controls": 1,
+        "replogle_k562_gwps|K562|genes_below_floor": 18,
+        "replogle_rpe1|RPE1|counts_below_floor": 70,
+        "replogle_rpe1|RPE1|genes_below_floor": 15,
+        "tian2021_crispra|iPSC-induced neuron|counts_below_floor": 83,
+        "tian2021_crispri|iPSC-induced neuron|mito_above_ceiling": 5
+      },
+      "perturbed_rejection_rate": 0.0003850019060956814,
+      "phenotype_readmitted": 8,
+      "mask_intersection_losses": {},
+      "input_genes": {
+        "rule": "the --input-genes genes with the largest sum over kept keys of their mean control proportion (all controls with counts, before admission)",
+        "n": 2048
+      },
+      "training_cells_by_unit": {
+        "HepG2::hepg2_nadig": 119008,
+        "Jurkat::jurkat_nadig": 215180,
+        "iPSC::hipsci_targeted_19": 508726,
+        "K562::replogle_k562_gwps": 1616514,
+        "K562::replogle_k562_essential": 253297,
+        "RPE1::replogle_rpe1": 201857,
+        "A549::a549_liu_hillsley2026": 504189,
+        "Neuron::tian2021_crispri": 26218,
+        "Neuron::tian2021_crispra": 15452,
+        "K562::norman2019_crispra": 60117,
+        "iPSC::kolf_chromatin_modifiers": 36508,
+        "iPSC::kolf_metabolic_enzymes": 100413,
+        "iPSC::kolf_strong_perturbations": 193473
+      },
+      "admitted_cells_by_class": {
+        "T": 862948,
+        "train": 3850952,
+        "C": 190584,
+        "J": 53263,
+        "control_holdout": 38176,
+        "unlabelled": 526789,
+        "combined:T": 8025,
+        "combined:train": 32758
+      }
+    },
+    "hepg2": {
+      "inputs": [
+        {
+          "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_prepass_hepg2_r1\\prepass\\qc.json",
+          "bytes": 106419,
+          "sha256": "df54beabf945d7e8c540bc588ef4013d27b2988a83635aa46b76e40823a51990"
+        },
+        {
+          "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_prepass_hepg2_r1\\prepass\\prepass_done.json",
+          "bytes": 320,
+          "sha256": "b827244469635421668517ef554edd1811909f26f05fda337e0659abd30c24fc"
+        },
+        {
+          "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_prepass_hepg2_r1\\prepass\\splits.json",
+          "bytes": 46881,
+          "sha256": "e1f829b56d455c20139604f3452a6154ca886612f489be7047869267a1db62c2"
+        }
+      ],
+      "done": {
+        "state": "prepass.pkl",
+        "sha256": "572e74248a1f5d9103a390b815021af84024c2c1c18225f2ea9192d2f2b391df",
+        "bytes": 1300973512,
+        "utc": "2026-10-03T03:16:52.158420+00:00",
+        "shards": 365,
+        "cells": 5603629,
+        "admitted_training_cells": 3970762,
+        "evaluation_groups": 2439,
+        "holdout_group": "HepG2",
+        "pool_rows": 56727
+      },
+      "min_controls": 30,
+      "keys_with_control_counts": 32,
+      "controls_related_rejections": {
+        "hipsci_targeted_19|MISSING|no_controls_in_key": 1
+      },
+      "all_rejections": {
+        "a549_liu_hillsley2026|A549|mito_above_ceiling": 8,
+        "h1_vcc2025|H1|duplicate_cell": 38176,
+        "h1_vcc2025|H1|mito_above_ceiling": 1,
+        "hepg2_nadig|HepG2|counts_below_floor": 1,
+        "hepg2_nadig|HepG2|genes_below_floor": 8,
+        "hipsci_targeted_19|MISSING|no_controls_in_key": 1,
+        "hipsci_targeted_19|pipw_5|counts_below_floor": 62,
+        "jurkat_nadig|Jurkat|counts_below_floor": 85,
+        "jurkat_nadig|Jurkat|genes_below_floor": 6,
+        "kolf_strong_perturbations|KOLF2.1J iPSC|counts_below_floor": 39,
+        "kolf_strong_perturbations|KOLF2.1J iPSC|genes_below_floor": 6,
+        "kolf_strong_perturbations|KOLF2.1J iPSC|mito_above_ceiling": 55,
+        "norman2019_crispra|K562|mito_above_ceiling": 19,
+        "replogle_k562_essential|K562|counts_below_floor": 155,
+        "replogle_k562_essential|K562|genes_below_floor": 10,
+        "replogle_k562_gwps|K562|counts_below_floor": 1310,
+        "replogle_k562_gwps|K562|counts_far_below_controls": 1,
+        "replogle_k562_gwps|K562|genes_below_floor": 18,
+        "replogle_rpe1|RPE1|counts_below_floor": 70,
+        "replogle_rpe1|RPE1|genes_below_floor": 15,
+        "tian2021_crispra|iPSC-induced neuron|counts_below_floor": 83,
+        "tian2021_crispri|iPSC-induced neuron|mito_above_ceiling": 5
+      },
+      "perturbed_rejection_rate": 0.0003850019060956814,
+      "phenotype_readmitted": 8,
+      "mask_intersection_losses": {},
+      "input_genes": {
+        "rule": "the --input-genes genes with the largest sum over kept keys of their mean control proportion (all controls with counts, before admission)",
+        "n": 2048
+      },
+      "training_cells_by_unit": {
+        "Jurkat::jurkat_nadig": 215180,
+        "H1::h1_vcc2025": 238818,
+        "iPSC::hipsci_targeted_19": 508726,
+        "K562::replogle_k562_gwps": 1616514,
+        "K562::replogle_k562_essential": 253297,
+        "RPE1::replogle_rpe1": 201857,
+        "A549::a549_liu_hillsley2026": 504189,
+        "Neuron::tian2021_crispri": 26218,
+        "Neuron::tian2021_crispra": 15452,
+        "K562::norman2019_crispra": 60117,
+        "iPSC::kolf_chromatin_modifiers": 36508,
+        "iPSC::kolf_metabolic_enzymes": 100413,
+        "iPSC::kolf_strong_perturbations": 193473
+      },
+      "admitted_cells_by_class": {
+        "J": 26456,
+        "C": 114032,
+        "control_holdout": 4976,
+        "train": 3970762,
+        "T": 879697,
+        "unlabelled": 526789,
+        "combined:T": 8025,
+        "combined:train": 32758
+      }
+    },
+    "rpe1": {
+      "inputs": [
+        {
+          "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_prepass_rpe1_r1\\prepass\\qc.json",
+          "bytes": 106419,
+          "sha256": "1f2e1e50771f6e40b4cc0b6523b8cb6c026564f03c79fd63ed36c7dfb0b23acc"
+        },
+        {
+          "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_prepass_rpe1_r1\\prepass\\prepass_done.json",
+          "bytes": 319,
+          "sha256": "9850b03e0eedafc63ad41a0ec8505832d101a12cb3b79a8c227cd80f03489485"
+        },
+        {
+          "path": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_prepass_rpe1_r1\\prepass\\splits.json",
+          "bytes": 46875,
+          "sha256": "0a774adafca499cedef878c7756de2dde485c70f07f062f36eb9af5a362ff6bb"
+        }
+      ],
+      "done": {
+        "state": "prepass.pkl",
+        "sha256": "31247004cf926484471a0476ed0272e16a5d708df021c6a1cb8e468a56d372bd",
+        "bytes": 1333590944,
+        "utc": "2026-10-03T03:18:33.518419+00:00",
+        "shards": 365,
+        "cells": 5603629,
+        "admitted_training_cells": 3887913,
+        "evaluation_groups": 2483,
+        "holdout_group": "RPE1",
+        "pool_rows": 56727
+      },
+      "min_controls": 30,
+      "keys_with_control_counts": 32,
+      "controls_related_rejections": {
+        "hipsci_targeted_19|MISSING|no_controls_in_key": 1
+      },
+      "all_rejections": {
+        "a549_liu_hillsley2026|A549|mito_above_ceiling": 8,
+        "h1_vcc2025|H1|duplicate_cell": 38176,
+        "h1_vcc2025|H1|mito_above_ceiling": 1,
+        "hepg2_nadig|HepG2|counts_below_floor": 1,
+        "hepg2_nadig|HepG2|genes_below_floor": 8,
+        "hipsci_targeted_19|MISSING|no_controls_in_key": 1,
+        "hipsci_targeted_19|pipw_5|counts_below_floor": 62,
+        "jurkat_nadig|Jurkat|counts_below_floor": 85,
+        "jurkat_nadig|Jurkat|genes_below_floor": 6,
+        "kolf_strong_perturbations|KOLF2.1J iPSC|counts_below_floor": 39,
+        "kolf_strong_perturbations|KOLF2.1J iPSC|genes_below_floor": 6,
+        "kolf_strong_perturbations|KOLF2.1J iPSC|mito_above_ceiling": 55,
+        "norman2019_crispra|K562|mito_above_ceiling": 19,
+        "replogle_k562_essential|K562|counts_below_floor": 155,
+        "replogle_k562_essential|K562|genes_below_floor": 10,
+        "replogle_k562_gwps|K562|counts_below_floor": 1310,
+        "replogle_k562_gwps|K562|counts_far_below_controls": 1,
+        "replogle_k562_gwps|K562|genes_below_floor": 18,
+        "replogle_rpe1|RPE1|counts_below_floor": 70,
+        "replogle_rpe1|RPE1|genes_below_floor": 15,
+        "tian2021_crispra|iPSC-induced neuron|counts_below_floor": 83,
+        "tian2021_crispri|iPSC-induced neuron|mito_above_ceiling": 5
+      },
+      "perturbed_rejection_rate": 0.0003850019060956814,
+      "phenotype_readmitted": 8,
+      "mask_intersection_losses": {},
+      "input_genes": {
+        "rule": "the --input-genes genes with the largest sum over kept keys of their mean control proportion (all controls with counts, before admission)",
+        "n": 2048
+      },
+      "training_cells_by_unit": {
+        "HepG2::hepg2_nadig": 119008,
+        "Jurkat::jurkat_nadig": 215180,
+        "H1::h1_vcc2025": 238818,
+        "iPSC::hipsci_targeted_19": 508726,
+        "K562::replogle_k562_gwps": 1616514,
+        "K562::replogle_k562_essential": 253297,
+        "A549::a549_liu_hillsley2026": 504189,
+        "Neuron::tian2021_crispri": 26218,
+        "Neuron::tian2021_crispra": 15452,
+        "K562::norman2019_crispra": 60117,
+        "iPSC::kolf_chromatin_modifiers": 36508,
+        "iPSC::kolf_metabolic_enzymes": 100413,
+        "iPSC::kolf_strong_perturbations": 193473
+      },
+      "admitted_cells_by_class": {
+        "T": 860181,
+        "train": 3887913,
+        "unlabelled": 526789,
+        "C": 190374,
+        "J": 45972,
+        "control_holdout": 11483,
+        "combined:T": 8025,
+        "combined:train": 32758
+      }
+    }
+  },
+  "boundary_probe": [
+    {
+      "controls_in_kept_context": 29,
+      "perturbed_in_kept_context": 20,
+      "admitted_training_cells": 0,
+      "rejected": {
+        "study_KEPT|KEPT|too_few_controls_in_key": 49
+      },
+      "exit_code": 0
+    },
+    {
+      "controls_in_kept_context": 30,
+      "perturbed_in_kept_context": 20,
+      "admitted_training_cells": 50,
+      "rejected": {},
+      "exit_code": 0
+    }
+  ],
+  "limits": [
+    "Pilot receipts are dated 3 October, not a coverage receipt for the expanded corpus.",
+    "No full raw-data scan, no state rehash, no proof of clinical or biological QC validity.",
+    "The threshold probe reproduces a policy, not the cause of the t30 result."
+  ]
+}
