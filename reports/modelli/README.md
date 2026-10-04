@@ -17,6 +17,7 @@ CP-0049 e CP-0051. [Indice generale](../README.md).
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 04/10 | [ibrido_esecuzione_2026-10-04/](ibrido_esecuzione_2026-10-04/) | Banca CD4 completa per donatore in esecuzione; preparazione CPU di tre fold e lanciatore GPU del primo ibrido aggregato | Campagna avviata; primo cohort ridotto, catalogo e integrazione ancora incompleti | ★★★ |
 | 04/10 | [ibrido_pseudobulk_2026-10-04/](ibrido_pseudobulk_2026-10-04/) | Mandato: transfer all, pseudobulk completi e campioni stratificati; componenti e fixture | Preparazione; nessun training reale, corpus e integrazione ancora incompleti | ★★ |
 | 04/10 | [diagnosi_t30_2026-10-04/](diagnosi_t30_2026-10-04/) | Diagnosi dopo il t30 (sessione ba9b8bcb): catena entry–modello–effetti–pacchetto, tabella training → banco → export → generazione, difetti riprodotti distinti dalle ipotesi, protocollo dei confronti controllati (baseline, componente comune, ampiezza) congelato prima delle uscite | resoconto in README; i confronti su Kaggle attendono il via | ★★★ |
 | 04/10 | [ibrido_selettivo_2026-10-04/](ibrido_selettivo_2026-10-04/) | Ibrido selettivo D-056 v1: transfer congelato + correzione neurale regolarizzata (testa comune esclusa dalla previsione, guadagno fisso, guardie interne) + selettore fuori fold; sviluppo su H1/HepG2/RPE1, conferma su Jurkat | protocollo congelato prima dei training; esiti nella scheda R-LEAD | ★★★ |

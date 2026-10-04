@@ -1,5 +1,11 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Esecuzione Codex, 4/10 22:47 CEST:** autorizzati banca e training. Sei job CPU
+  per le dodici unità CD4 e tre preparazioni CPU sul terzo account; [ricevute e
+  codice](../../reports/modelli/ibrido_esecuzione_2026-10-04/README.md). Primo fit
+  sul cubo aggregato r2, con/senza contesto, tre semi: cohort esplicitamente ridotto;
+  banca per donatore e catalogo completo restano da integrare. Nessuna promozione.
+
 - **Ibrido semplice, Codex, 4/10 22:00 CEST:** il proprietario sceglie «ibrido semplice»,
   transfer promettente, molti contesti, pseudobulk e campionamento. Stessa chat del subentro.
   [Pacchetto di lavoro](../../reports/modelli/ibrido_pseudobulk_2026-10-04/README.md): base `all`,
