@@ -1,0 +1,31 @@
+{
+  "written_utc": "registered by the commit that adds this file, before the final fit, the target export, generation and packaging",
+  "number_note": "t35 is a provisional number (see t34): confirm the numbering with Davide before merging",
+  "label": "t35: Rete L1 (MLP, nMAE-weighted L1 loss on DE genes: conditional median log2FC) imposed on the per-cell CPM mean by moving counts between cells, on top of t34 with the bulk unchanged",
+  "claim_type": "subjective forecast registered before the export and generation; no official result",
+  "status": "owner's request in chat on 4/10 evening ('traina e gradalo'); upload in the first slot of 5/10 UTC, only if the bench rule of reports/modelli/rete_l1_2026-10-04/PROTOCOLLO.md section 2 passes",
+  "references": {"t34": 0.07673215950900288, "t31": 0.07874905138420325, "t28_best_observed": 0.144845205},
+  "candidate": {
+    "model": "rete_l1_final.pt (all groups, steps = median best step of the bench folds), read back by sha256",
+    "targets": "per context, panel target and gene with control mean per-cell CPM >= 5 (own gene excluded): the network's log2FC",
+    "stage_45": "exactly as t34 (trial-ext-profile, effects_t34_2026-10-04, --effects-scale 2.0, seed 20260912), through reports/modelli/rete_l1_2026-10-04/genera_l1.py, which only adds the count move after each block",
+    "stage_48": "as t34"
+  },
+  "against_t34": "a single factor: the move keeps every gene's total in every block and the zero pattern, so the bulk (MSE, PDS) is identical and the blocks before the move are those of t34",
+  "expected": {
+    "nmae_raw": [0.96, 1.02],
+    "pds_cosine_raw_within": 0.003,
+    "direction_and_jaccard_scaled_within": 0.01,
+    "score_avg_minus_t34_band": [0.005, 0.03],
+    "working_centre": 0.013,
+    "calibration": "Subjective. The nMAE lever is bounded by the sign accuracy on DE genes (low for a K562 transfer); the bench gate proxy and the label (pseudobulk lfc, not mean per-cell CPM) are approximations; the move changes Wilcoxon ranks a little."
+  },
+  "rule": {
+    "a_gain_at_least_0.005": "t35 - t34 >= +0.005: the count move with the Rete L1 targets stays in the recipe",
+    "b_within_0.005": "|t35 - t34| < 0.005: not conclusive",
+    "c_loss_at_least_0.005": "t35 - t34 <= -0.005: the move harms the DE members; not repeated in this form",
+    "also_reported": "the six scaled members against t34",
+    "not": "one seed; says nothing about D, E, F"
+  },
+  "reserve": "no reserve is consumed: A, B, C are the public validation contexts"
+}
