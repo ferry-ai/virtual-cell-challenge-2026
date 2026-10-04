@@ -61,6 +61,26 @@
     HepG2, la generazione HepG2, le parti CD4 `D1_Stim8hr`, lo studio `nested-h1-r1`. Quota GPU `davideferrante11`
     8,01 h, altri due account 30 h. Lanciati: `vcc-cd4-d1-stim8hr-verify-r1` (02:26) e `rcell-prepass-jurkat-r1`
     (02:38, pre-passo della linea di conferma dell'ibrido, scelta prima di ogni risultato D-056).
+  - **Stato alle 03:54 e punto di ripresa (sessione `2b35612c`).**
+    - *Fatto:* protocollo D-056 v1 congelato a `817f42a`, emendamento §12 sul selettore prima di ogni uscita;
+      codice v5 con test (`cb0f3dc`, 13 + 5 test); pilot v4 chiuso, **non passa**
+      ([CP-0061](../checkpoints/0061-pilot-v4-esito-tre-linee.md)); protocollo delle fonti del transfer congelato
+      (`810a08d`); scorer 0.18.0 confrontato e suite della repo 290 OK con il venv
+      ([report](../../reports/gara/scorer_0_18_2026-10-04/README.md)); CD4 `D1_Stim8hr` e `D1_Stim48hr` verificati;
+      E-20261004-001 rev. 2; decisione sul pre-passo ampliato
+      ([DECISIONE](../../reports/sorgenti/prepasso_ampliato_2026-10-04/DECISIONE.md)).
+    - *In corsa su `davideferrante11`:* GPU `rcell-d056-train-{h1,hepg2}-r1` (dalle 03:00); CPU
+      `rcell-prepass-jurkat-r1`, `vcc-cd4-d2-rest-p{0,1}of2-r1`, `rcell-v4-nested-fold-h1-r1`. Su `davidmaisterx`
+      (catena replicata, [lancio](../../reports/modelli/ibrido_selettivo_2026-10-04/lancio_replica_r1.json)): gemelli
+      `rcell-d056-fast-{a,b,c}-r1`, pre-passi `rcell-prepass-{k562,jurkat}-r1`.
+    - *Prossimi passi, in ordine:* (1) a training H1/HepG2 finiti, ricevute senza file di valutazione e accettazione
+      (§10), poi `kaggle_hybrid.py --mode rows` per ciascuno e il training RPE1 con gli argomenti di
+      `lancio_train_r1.json`; (2) pre-passo Jurkat finito → `kaggle_anchors.py kernel --line Jurkat=…` e
+      `kaggle_extract.py`, poi il training Jurkat (GPU di `davideferrante11` se la quota basta, altrimenti la replica);
+      (3) con le righe delle tre linee di sviluppo, `selector.py lolo` e `final` (sha256 del sistema congelato prima di
+      ogni uscita di conferma), poi `kaggle_hybrid.py --mode lanes` per le tre linee; (4) K562 sulla replica: ancore,
+      estrazione, training, righe e corsie con `selector.py apply`; (5) lettura con il §8 del protocollo, checkpoint e
+      voce STRADE, ed eventuale invio con la regola del §9.
 - **PASSAGGIO DI CONSEGNE della sessione `d0100a`, 4/10 02:02 CEST (da leggere per primo; i blocchi sotto sono la
   cronaca della notte). I job si rileggono su Kaggle prima di agire.**
   - **Esito finora del pilot v4 (misurato, due linee su tre):** la rete ancorata peggiora la propria ancora. Media
