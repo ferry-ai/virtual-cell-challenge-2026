@@ -181,6 +181,19 @@ congelati: riconciliare le parti attese con quelle effettivamente usate, mantene
 le esclusioni di validazione. Questa è una regola operativa per ogni agente, non
 la dichiarazione che esista già uno scheduler automatico fra gli account.
 
+### Importante — banca pubblica Kaggle oltre 200 GB
+
+**Verificato il 4 ottobre 2026:** la quota dei dataset **privati è 200 GB complessivi
+per account**; per i dataset **pubblici il limite ordinario è 200 GB per singolo
+dataset**, non per l'intera banca. Più dataset pubblici possono quindi superare
+complessivamente 200 GB. [Specifiche ufficiali](https://www.kaggle.com/docs/datasets).
+
+Per dimensionare il corpus D-053, considerare questa possibilità per dati
+redistribuibili, con partizioni e manifest riconciliati. Non scambiare la quota
+privata per un tetto ai dati utilizzabili nel training: la lettura a blocchi consente
+di usare corpus più grandi della RAM. Pubblicare dati o modelli non aumenta
+automaticamente RAM, ore GPU o spazio di output del singolo job.
+
 ### Preparazione e verifica del runtime
 
 Un'esecuzione pesante sul portatile richiede una motivazione registrata nel manifest
