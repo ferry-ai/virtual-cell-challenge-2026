@@ -61,6 +61,26 @@
     HepG2, la generazione HepG2, le parti CD4 `D1_Stim8hr`, lo studio `nested-h1-r1`. Quota GPU `davideferrante11`
     8,01 h, altri due account 30 h. Lanciati: `vcc-cd4-d1-stim8hr-verify-r1` (02:26) e `rcell-prepass-jurkat-r1`
     (02:38, pre-passo della linea di conferma dell'ibrido, scelta prima di ogni risultato D-056).
+  - **Stato alle 10:40 (sessione `2b35612c`; i job si rileggono su Kaggle prima di agire).**
+    - *Misurato, letto con le regole congelate:* D-056 v1 passa lo sviluppo («contributo neurale nello sviluppo») e la
+      conferma («confermato» su Jurkat e K562). Il punteggio di banco del §9 è 0,134 per `ibrido_selettivo` contro
+      0,090 del transfer, in scala locale e non uno score VCC
+      ([CP-0062](../checkpoints/0062-d056-ibrido-selettivo-esito-banco.md), S-009). Fonti del transfer: «più fonti
+      meglio» su Jurkat e K562; nessun candidato di solo transfer è ammesso (S-010).
+    - *Invio t30 in preparazione:* il candidato A/B/C del §13–§14 è l'ibrido t25 + w · R, con la rete del fold HepG2 e
+      il selettore congelato.
+      - Previsione e testi registrati prima della generazione
+        ([prediction.json](../../reports/invii/prediction_t30_2026-10-04/prediction.json)).
+      - Effetti esportati con parità (`export_abc_r2`).
+      - Generazione e pacchetto locali dalle 10:30 (`gen_t30.ps1`), poi l'upload come processo separato
+        ([registro](../../reports/invii/trial_2026-10-04/INVIO_T30.md)).
+    - *Dati D-053:* spinte le parti CD4 `D2_Stim48hr` p1 e `D3_Rest` p0 (11 in coda) e i gemelli di CD4 `D1_Stim8hr` e
+      `D1_Stim48hr`. `D2_Stim8hr` p0 è ancora in corsa, poi va verificata. Cinque sessioni CPU di `davideferrante11`
+      occupate.
+    - *Prossimi passi:*
+      1. stadio 48 finito → `submit_t30.ps1` (upload);
+      2. a punteggio arrivato, status, `comparison.json`, checkpoint e riga nell'indice degli invii;
+      3. dati: verifica di `D2_Stim8hr`, parti CD4 successive (`fill_sessions.py --max 1`), verifica dei gemelli D1.
   - **Stato alle 07:32 (sessione `2b35612c`, dopo una pausa dalle 04:27 alle 07:22 per il limite d'uso).**
     - *Misurato:* training D-056 H1 e HepG2 **tecnicamente accettati** (§10: 2,0 epoche, nessun arresto per guardia,
       quote effettive entro 0,006, stato esportato al passo 20.000). Sulle coppie di validazione interne delle linee di
