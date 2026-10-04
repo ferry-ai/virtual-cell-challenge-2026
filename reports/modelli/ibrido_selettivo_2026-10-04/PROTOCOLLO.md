@@ -226,3 +226,28 @@ test sintetico, prima di ogni dato reale:
 Sullo stesso test il selettore pesa l'ingresso giusto (coefficiente 2,62 contro |·| ≤ 0,03 degli altri), dà w medio
 0,60 dove la correzione aiuta e 0,06 dove nuoce, e batte la miscela fissa fuori campione. Restano immutati gli
 ingressi, la stima su righe di altre linee (§6), la miscela fissa, le regole di lettura (§8) e quella degli invii (§9).
+
+## 13. Emendamento del 4/10, 09:50: il candidato per A/B/C, scritto prima di leggere le linee di conferma
+
+Al momento della scrittura l'esito di sviluppo è letto («contributo neurale nello sviluppo»). Delle linee di conferma
+esistono i training accettati e le righe di K562, usate solo per applicare il sistema congelato, che non ne legge l'esito.
+Nessun indice, nessuna corsia e nessuna statistica di esito di Jurkat o K562 è stata aperta.
+
+Il refit del §9, cioè la rete su tutti i gruppi senza linea esclusa, non si può eseguire con il codice attuale: il
+pre-passo rifiuta sia l'assenza di una linea esclusa sia una linea esclusa senza cellule (prova su un corpus sintetico,
+4/10 mattina). Il candidato per A/B/C allora **non è un refit**: usa una rete già valutata, scelta con una regola che non
+guarda alcun esito, cioè il fold con più cellule di training ammesse. È il fold con HepG2 esclusa (3.970.762 cellule),
+braccio `ibrido`. Il resto, fissato ora:
+- **T:** gli effetti della ricetta di produzione t25 per A/B/C (stadio 100, ricetta `configs/recipes/t25.json`, cache
+  r9), come preregistrato al §9;
+- **R per ogni contesto di gara:** `s(N) − s(A)` della rete, con le cellule di controllo del contesto (file ufficiale
+  dei controlli) e con l'ancora `all` dei bersagli del pannello: il transfer dai gruppi del cubo, medie delle tabelle nel
+  regime J come nel training;
+- **peso:** il selettore congelato (`esito/selector_final_r1/selector_final.json`, sha256 `00758778…`). Gli ingressi
+  sono calcolati come nelle righe: supporto e concordanza dai gruppi del cubo; ampiezza e direzione di R rispetto
+  all'ancora; espressione del gene bersaglio, cioè il log1p CPM medio nei controlli del contesto;
+- **effetti dell'ibrido:** `T + w · R` sui geni dove T è definito; altrove come T;
+- **generazione e pacchetto:** gli argomenti degli stadi 45 e 48 del t25, identici, con i soli effetti cambiati.
+Un refit su tutti i gruppi resta possibile dopo una modifica del pre-passo: sarebbe un candidato diverso, con un
+protocollo suo. L'invio resta soggetto al §9: punteggio di banco ≥ 0,100 su tutti i contesti preregistrati (sviluppo
+in leave-one-line-out e conferma con il sistema congelato), risultati completi e validi, previsione registrata prima.
