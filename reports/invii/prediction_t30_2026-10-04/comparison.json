@@ -1,0 +1,82 @@
+{
+ "written_utc": "2026-10-04T10:22:48.055911+00:00",
+ "entry_id": "lDMSYUZU5cFYHcRqI0lq",
+ "submission_date": "2026-10-04T09:13:45.047800Z",
+ "score_avg": 0.135248601985599,
+ "rank_at_scoring": 460,
+ "official_status": "published",
+ "panel_id": "vcc2026-val-1",
+ "anchor_version": "vcc2026-valA-r4+vcc2026-valB-r4+vcc2026-valC-r4",
+ "mean_of_six_scaled": 0.135248601985599,
+ "mean_matches_score_avg": true,
+ "t30_minus_t25": -0.004989458929236551,
+ "t30_minus_t28_best_observed": -0.009596603014401017,
+ "registered_band": [
+  0.125,
+  0.16
+ ],
+ "inside_avg_band": true,
+ "rule_branch": "b",
+ "rule_text": "|t30 - t25| < 0.005: not conclusive; the bench gain does not show on the site at this size; t25/t28 stay the reference; the next hybrid needs a larger expected effect or a cheaper read before another submission",
+ "scaled_published": {
+  "t30": {
+   "score_pds": 0.5813252025096552,
+   "score_mse": 0.0,
+   "score_nmae": 0.11609106061917344,
+   "score_fid": -0.04440231448253831,
+   "score_reach": 0.1422138286972014,
+   "score_jac": 0.01626383457010212
+  },
+  "t25": {
+   "score_pds": 0.6235621757264928,
+   "score_mse": 0,
+   "score_nmae": 0.11798484120651283,
+   "score_fid": -0.0581287268841437,
+   "score_reach": 0.14405215190643564,
+   "score_jac": 0.013957923533715692
+  },
+  "t30_minus_t25": {
+   "score_pds": -0.0422369732168375,
+   "score_mse": 0.0,
+   "score_nmae": -0.0018937805873393831,
+   "score_fid": 0.013726412401605388,
+   "score_reach": -0.0018383232092342439,
+   "score_jac": 0.0023059110363864276
+  }
+ },
+ "raw": {
+  "pds_cosine": {
+   "t30": 0.7630583426235601,
+   "t25": 0.7820921590486809,
+   "t30_minus_t25": -0.01903381642512081
+  },
+  "expr_mse_unbiased_capped_norm": {
+   "t30": 3.168230706092609,
+   "t25": 3.0171714908166867,
+   "t30_minus_t25": 0.15105921527592248
+  },
+  "de_wilcoxon_lfc_nmae": {
+   "t30": 0.9291278059055131,
+   "t25": 0.928018708954095,
+   "t30_minus_t25": 0.0011090969514181426
+  },
+  "de_wilcoxon_direction_fidelity_yield_raw": {
+   "t30": 0.49927820530645084,
+   "t25": 0.49521951128742697,
+   "t30_minus_t25": 0.004058694019023867
+  },
+  "de_wilcoxon_direction_reach_raw": {
+   "t30": 0.2046336270390178,
+   "t25": 0.2065724653149838,
+   "t30_minus_t25": -0.0019388382759659983
+  },
+  "de_wilcoxon_sig_jaccard": {
+   "t30": 0.03640446488688212,
+   "t25": 0.03557112599708424,
+   "t30_minus_t25": 0.0008333388897978841
+  }
+ },
+ "registration_sha256_lf": "4b8f5dc07ca54d542f52d4cad3756fbf2f02781ef4fc3238083cbce5cf0ffa42",
+ "status_file": "status_lDMSYUZU5cFYHcRqI0lq.json",
+ "note": "one submission, one network (the HepG2 fold) and one seed: the rule is read as registered; the only factor changed against t25 is the weighted neural correction of the effects"
+}
