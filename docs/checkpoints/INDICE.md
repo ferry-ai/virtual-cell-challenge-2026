@@ -92,3 +92,4 @@ aggiunge da sé la riga qui sotto.
 | [0056](0056-t30-punteggio-ufficiale.md) | 2026-10-03 | t30: punteggio ufficiale della rete sulle sorgenti | esperimento | — |
 | [0057](0057-t31-punteggio-ufficiale.md) | 2026-10-04 | t31: la media a pesi uguali di più linee pubbliche ×2 in classifica, ramo c | esperimento | [0058](0058-t31-solo-k562.md): sul pannello il t31 è il solo K562 gwps (260 bersagli su 272); i numeri restano validi |
 | [0058](0058-t31-solo-k562.md) | 2026-10-04 | Il t31 era il solo K562: correzione della lettura del CP-0057 | osservazione | — |
+| [0059](0059-t34-contrastiva-punteggio.md) | 2026-10-04 | t34: la rete contrastiva in classifica, non conclusiva | osservazione | — |
