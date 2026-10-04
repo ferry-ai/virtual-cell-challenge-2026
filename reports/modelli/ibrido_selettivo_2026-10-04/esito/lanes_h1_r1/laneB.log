@@ -1,0 +1,49 @@
+[07:37:01] bench: 70 targets, median half 32 cells, control pool 2048, genes 18077
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. ARPC2). The gate is real-side only, so this set is the same for every submission.
+[07:37:55] replicate: PDS=0.9584 MSE=0.0034 NMAE=0.3910 FID=0.7817 REACH=0.9596 JAC=0.3532 sig/t=403.4 (34s)
+allow_fractional_counts=True was LOAD-BEARING here: the pred side has fractional values under declared input_type='counts', so it passed the input-type check ONLY because of the flag -- without it validation would have refused the run ("declared input_type='counts' but values are fractional"). If this is a BASELINE arm that is expected: a mean profile is fractional in any space. If this is a SUBMISSION and processing continues (later gates, including the scale limit, may still refuse it), these values will be INTERPRETED as counts. Note that config_digest cannot see this flag (baseline.DIGEST_EXEMPT_FIELDS), so `score --baseline-agg` pairing will NOT report a baseline/submission mismatch on it; the --real-bundle path IS protected (anchor._SEMANTIC_FIELDS compares it, via score.expect_from_run_meta).
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. POLB). The gate is real-side only, so this set is the same for every submission.
+[07:38:30] baseline: PDS=0.5383 MSE=0.9378 NMAE=0.9365 FID=0.0254 REACH=0.1824 JAC=0.0143
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. PTPN1). The gate is real-side only, so this set is the same for every submission.
+[07:39:07] transfer: PDS=0.8807 MSE=1.2945 NMAE=0.9028 FID=0.3923 REACH=0.3412 JAC=0.0361 sig/t=164.5 (32s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. POLB). The gate is real-side only, so this set is the same for every submission.
+[07:39:43] ibrido_w0: PDS=0.8807 MSE=1.2945 NMAE=0.9028 FID=0.3923 REACH=0.3412 JAC=0.0361 sig/t=164.5 (32s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. RRM1). The gate is real-side only, so this set is the same for every submission.
+[07:40:18] rete: PDS=0.8975 MSE=1.2946 NMAE=0.8938 FID=0.3895 REACH=0.3061 JAC=0.0352 sig/t=148.1 (31s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. NISCH). The gate is real-side only, so this set is the same for every submission.
+[07:40:53] ibrido_selettivo: PDS=0.8892 MSE=1.2786 NMAE=0.8993 FID=0.3922 REACH=0.3506 JAC=0.0355 sig/t=156.7 (31s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. KLF10). The gate is real-side only, so this set is the same for every submission.
+[07:41:29] miscela_fissa: PDS=0.8909 MSE=1.2743 NMAE=0.8934 FID=0.3844 REACH=0.3368 JAC=0.0345 sig/t=151.0 (32s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. IGF2R). The gate is real-side only, so this set is the same for every submission.
+[07:42:04] rete_mean: PDS=0.8795 MSE=1.2755 NMAE=0.9009 FID=0.3899 REACH=0.3399 JAC=0.0351 sig/t=144.7 (32s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. SLIRP). The gate is real-side only, so this set is the same for every submission.
+[07:42:39] selettivo_mean: PDS=0.8818 MSE=1.2743 NMAE=0.8994 FID=0.3927 REACH=0.3399 JAC=0.0374 sig/t=154.2 (31s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. TAZ). The gate is real-side only, so this set is the same for every submission.
+[07:43:14] transfer_cells_J: PDS=0.8723 MSE=1.6600 NMAE=0.8791 FID=0.4574 REACH=0.2897 JAC=0.0378 sig/t=399.0 (31s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. IGF2R). The gate is real-side only, so this set is the same for every submission.
+[07:43:49] transfer_prod_J: PDS=0.8516 MSE=1.5860 NMAE=0.9219 FID=0.4185 REACH=0.2970 JAC=0.0306 sig/t=249.0 (31s)
+[07:43:50] 
+                    PDS  MSE   NMAE    FID  REACH    JAC    avg    sig/t
+replicate         1.000  1.0  1.000  1.000  1.000  1.000  1.000  403.386
+baseline          0.000 -0.0 -0.000  0.000  0.000  0.000  0.000    0.200
+transfer          0.815  0.0  0.062  0.485  0.204  0.064  0.272  164.543
+ibrido_w0         0.815  0.0  0.062  0.485  0.204  0.064  0.272  164.543
+rete              0.855  0.0  0.078  0.481  0.159  0.062  0.273  148.100
+ibrido_selettivo  0.835  0.0  0.068  0.485  0.216  0.062  0.278  156.657
+miscela_fissa     0.839  0.0  0.079  0.475  0.199  0.060  0.275  151.000
+rete_mean         0.812  0.0  0.065  0.482  0.203  0.061  0.271  144.686
+selettivo_mean    0.818  0.0  0.068  0.486  0.203  0.068  0.274  154.229
+transfer_cells_J  0.795  0.0  0.105  0.571  0.138  0.069  0.280  398.957
+transfer_prod_J   0.746  0.0  0.027  0.520  0.147  0.048  0.248  248.986
+{"held": "H1", "targets": 70, "parity": true}

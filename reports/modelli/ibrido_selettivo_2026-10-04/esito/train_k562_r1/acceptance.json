@@ -1,0 +1,43 @@
+{
+ "folder": "esito\\train_k562_r1",
+ "accepted": true,
+ "checks": {
+  "exit_code_0": true,
+  "twins_verified": true,
+  "no_leakage": true,
+  "exposure_passed": true,
+  "effective_shares_passed": true,
+  "health_passed": true,
+  "evaluation_complete": true,
+  "anchors_regime_J": true,
+  "validation_zero_weight": true,
+  "guard_checks_written": true
+ },
+ "stop": "epochs done",
+ "steps": 16874,
+ "epochs": 2.0,
+ "throughput": {
+  "cells_per_second": 1215.1,
+  "data_wait_fraction": 0.48,
+  "seconds": 3555.1
+ },
+ "exported": {
+  "ibrido": {
+   "state": "best check",
+   "step": 12500,
+   "benefit": 0.1144513943210237,
+   "internal_benefit_positive": true
+  },
+  "ibrido_mean": {
+   "state": "best check",
+   "step": 12500,
+   "benefit": 0.11534174989356628,
+   "internal_benefit_positive": true
+  }
+ },
+ "guard_checks": 6,
+ "validation_pairs": 427,
+ "val_draws": 81325,
+ "effective_max_abs_deviation": 0.005231,
+ "rule": "PROTOCOLLO.md \u00a710 of reports/modelli/ibrido_selettivo_2026-10-04"
+}
