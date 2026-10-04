@@ -1,0 +1,69 @@
+{
+  "written_utc": "2026-10-04T05:25:48+00:00",
+  "held_group": "H1",
+  "run": "/kaggle/input/notebooks/davideferrante11/rcell-d056-train-h1-r1/train",
+  "rows": 72,
+  "tables": [
+    "h1_train",
+    "h1_val"
+  ],
+  "unmatched_groups": {
+    "no_key_in_cube": 104,
+    "not_held": 279
+  },
+  "sources": [
+    "CD4T",
+    "HCT116",
+    "HEK293T",
+    "HepG2",
+    "Jurkat",
+    "K562",
+    "Neuron",
+    "RPE1",
+    "iPSC"
+  ],
+  "commons": {
+    "regime": "J",
+    "keys_kept_out": 2239
+  },
+  "inputs": {
+    "eval_groups": "834df4e39cf012fd680dece2daf285cc885a059e1563465702135747f2db2b22",
+    "cube_manifest": "c7fb76628b8246b9e00c789582ba3e512a8018e9469c5e8f3344001375fe1099",
+    "target_keys": "55a4e601f75dbbee2ccf3d8e052483b8cc355b0d1a57c3fc33f53ca687a1515a",
+    "splits": "3d472e8cdf06704fd1adc4fdc9c81eefb6d18d4e653c0b9cc54a9de09773709f",
+    "ibrido": "2e3e2f8bf492ff73ff4fdee53a95d1e6848c59a2ee9bf1cb622b0ff5a54df059",
+    "ibrido_mean": "84fc8ef6de1d90dcee299d51dbc7f17785e775ce327955141a534c583edc010e",
+    "ancora_sola": "db6c1ff03b80f304c4c880f3e4c1d7c20e6252e2ecbe31b24ec3127a538bc292"
+  },
+  "diagnostics_of_R": [
+    {
+      "table": "h1_train",
+      "arm": "ibrido",
+      "rows": 53,
+      "common_share": 0.20490427315235138,
+      "ratio_rms": 0.28813832998275757
+    },
+    {
+      "table": "h1_train",
+      "arm": "ibrido_mean",
+      "rows": 53,
+      "common_share": 0.24247291684150696,
+      "ratio_rms": 0.298916220664978
+    },
+    {
+      "table": "h1_val",
+      "arm": "ibrido",
+      "rows": 19,
+      "common_share": 0.3206728994846344,
+      "ratio_rms": 0.23742100596427917
+    },
+    {
+      "table": "h1_val",
+      "arm": "ibrido_mean",
+      "rows": 19,
+      "common_share": 0.4252987504005432,
+      "ratio_rms": 0.2737234830856323
+    }
+  ],
+  "note": "selector statistics and inputs of PROTOCOLLO.md §6 on the C rows; no weight chosen, not a VCC score"
+}

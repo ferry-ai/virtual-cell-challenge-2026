@@ -36,8 +36,10 @@ ALPHA = 0.01                    # PROTOCOLLO.md §12: with the objective divided
 
 
 def features(df: pd.DataFrame, arm: str) -> np.ndarray:
+    """The five inputs; a missing value is 0 (PROTOCOLLO.md §4: the control expression of a target gene the line's
+    table does not measure is 0), so one missing input never turns the whole fit into NaN."""
     cols = [*SHARED, *(f"{arm}__{c}" for c in PER_ARM), *LAST]
-    return df[cols].to_numpy(np.float64)
+    return np.nan_to_num(df[cols].to_numpy(np.float64), nan=0.0, posinf=0.0, neginf=0.0)
 
 
 def usable(df: pd.DataFrame, arm: str) -> np.ndarray:

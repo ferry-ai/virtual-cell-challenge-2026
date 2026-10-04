@@ -85,6 +85,14 @@ class Selector(unittest.TestCase):
         self.assertGreater(sel["mean_gain"], fix["mean_gain"])
         self.assertGreater(sel["mean_gain"], 0)
 
+    def test_missing_input_is_zero(self):
+        rng = np.random.default_rng(5)
+        df = rows(rng, 800, lambda d: d["f_concordance"].to_numpy() > 0)
+        df.loc[df.index[:100], "f_expression"] = np.nan                 # genes the line's table does not measure
+        m = SEL.fit(df, "ibrido")
+        self.assertTrue(np.all(np.isfinite(m["theta"])) and np.all(np.isfinite(m["mu"])))
+        self.assertTrue(np.all(np.isfinite(SEL.apply(m, df))))
+
     def test_never_helps_gives_zero(self):
         rng = np.random.default_rng(3)
         df = rows(rng, 2000, lambda d: np.zeros(len(d), bool))
