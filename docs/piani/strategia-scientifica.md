@@ -5,7 +5,8 @@
   fonti primarie e codice ufficiale fissato; innesto a grafo sul codice del bersaglio, modulato dal contesto,
   sette fixture passate con la CellNet esistente. È un candidato aggiuntivo per il contrasto sui descrittori,
   non sostituisce il piano del corpus e del prossimo ibrido. Prima del training: manifest/costruzione del grafo
-  lecito, integrazione trainer/export e confronto con grafo ricablato e modello senza contesto;
+  lecito (descrittori integri, ma sorgenti ai percorsi storici mancanti: [audit](../../reports/analisi/gears_nella_rete_2026-10-04/NOTE_INPUTS.md)),
+  integrazione trainer/export e confronto con grafo ricablato e modello senza contesto;
   nessuna utilità biologica ancora misurata, nessun nuovo job avviato.
 
 - **Subentro Codex, aggiornamento 4/10 18:34 CEST (ora letta da sistema):** chat `01a107a9-9c9c-76c2-9161-258f22bd57b1`, macchina
