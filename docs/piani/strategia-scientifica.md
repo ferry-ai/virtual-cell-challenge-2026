@@ -1,5 +1,12 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Subentro Codex, aggiornamento 4/10 18:34 CEST (ora letta da sistema):** chat `01a107a9-9c9c-76c2-9161-258f22bd57b1`, macchina
+  `LAPTOP-DLG1LHV1`, da `d16094d`, consegna finale `8aa1a0a` riletta. Il proprietario conferma in chat:
+  «Claude ha concluso: subentra tu». Perimetro: continuazione dei job CD4 e preparazione del banco v2
+  sulle reti esistenti, nella nuova cartella [ripresa_banco_v2](../../reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/README.md).
+  Stati remoti e quote riletti; sette parti CD4 ancora RUNNING, nessuna duplicata. Output nuovi nella radice dati
+  `processed/ripresa_banco_v2_2026-10-04/`. Push e invii non autorizzati; nessun training avviato.
+
 - **Sottoattività Codex, 4/10 12:28 CEST:** chat `01a10649-0c7f-7551-8bfe-8eca0fe03654`, macchina `LAPTOP-DLG1LHV1`, partenza `1309914`, su mandato del proprietario: audit informativo del prepasso e piano del prossimo ibrido in [prossimo_ibrido_2026-10-04](../../reports/analisi/prossimo_ibrido_2026-10-04/README.md). Riconti e fixture locali completati; piano proposto, da congelare dopo diagnosi di Claude1 e bilancio del corpus ampliato. Perimetro: sola nuova cartella e proprie righe negli indici/scheda; nessun job avviato, nessuna modifica al prepasso altrui. Claude1 mantiene chiusura ufficiale t30, diagnosi banco/export e propri job; [consegna pronta](../../reports/analisi/prossimo_ibrido_2026-10-04/PROMPT_CLAUDE1.md).
 - **PASSAGGIO DI CONSEGNE della sessione Claude `ba9b8bcb` a Codex, 4/10 18:08 CEST (ora letta con `date`; da
   leggere per primo; i job si rileggono su Kaggle prima di agire).** Il proprietario ha detto in chat che il lavoro
