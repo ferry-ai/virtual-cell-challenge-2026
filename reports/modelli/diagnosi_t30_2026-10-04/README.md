@@ -17,6 +17,7 @@ Tutto ciò che segue è calcolo locale leggero su file già esistenti. Nessun jo
 
 | File | Contenuto | Stato |
 |---|---|---|
+| [ADDENDUM_1451.md](ADDENDUM_1451.md) | Due correzioni di Codex accolte: la parte comune non si azzera per regola (§5); conta il regime dei bersagli, non i 300 del pannello (§3, punto 6) | **da leggere insieme ai §3 e §5** |
 | [TABELLA_CATENA.md](TABELLA_CATENA.md) | Training → banco → esportazione → generazione, voce per voce, e la parità a w = 0 lungo la catena | letto da codice e ricevute |
 | `chain_t30.py`, [esito/chain_t30_r2.json](esito/chain_t30_r2.json) | Entry, ricevuta, modello, effetti, generazione, pacchetto, sei membri, regola | misurato (R1); `r1` è la stessa lettura prima di separare parità del profilo e delle cellule |
 | `bench_members.py`, [esito/bench_members_r1.json](esito/bench_members_r1.json) | I sei membri del banco D-056 per linea, denominatori, contributi | misurato (R2) |
