@@ -80,12 +80,12 @@ cambiare il codice: `scripts/CLAUDE.md` e `src/vcc2026/CLAUDE.md`.
   [consegna](../reports/sorgenti/ingestione_completa_2026-10-03/HANDOFF_CLAUDE2.md)): KOLF pan-genome chiuso e
   verificato; Orion HCT116 e HEK293T con le ultime quattro parti in corsa dal 3/10 23:08; CD4 due parti su 24; DLD-1,
   Mixscale, VIPerturb in cellule, microglia e PerturbFate ancora da convertire.
-- **Aggiornamento CD4 misurato, 4/10 19:10.** Tutte le parti concluse; 10 unità su 12 con ricevuta
-  indipendente positiva e conteggi riconciliati alla specifica. Le ultime due verifiche, D4_Rest e
-  D4_Stim8hr, sono RUNNING ([stati](../reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/stato_verifiche_r2.json),
-  [copertura](../reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/copertura_cd4_r1.json)).
+- **Aggiornamento CD4 misurato, 4/10 19:36.** Ingestione verificata per tutte le 12 unità:
+  ricevute indipendenti positive, SHA degli shard riletti e conteggi riconciliati alla specifica.
+  21.980.517 cellule idonee su 33.610.471 righe originali
+  ([copertura](../reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/copertura_cd4_r2.json)).
   Gemelli compatti, integrazione e uso effettivo nel training restano da verificare;
-  [stato e seguito](../reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/STATO_1910.md).
+  [stato e seguito](../reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/STATO_1936.md).
 - **Mandato del proprietario, 3/10.** Acquisizione completa delle cellule CD4 idonee:
   capacità Drive dichiarata 5 TB, occupazione da misurare; il campione iniziale non è
   un tetto definitivo. Revisione locale della consegna Claude2 e passaggio della regia

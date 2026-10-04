@@ -1,0 +1,106 @@
+{
+ "ok": true,
+ "verdict": {
+  "parts_ok": true,
+  "no_part_of_another_unit": true,
+  "units_covered": true,
+  "bytes_and_sha256_reread": true,
+  "shards_distinct": true
+ },
+ "units": {
+  "cd4_D4_Stim8hr": {
+   "parts": 2,
+   "expected_rows": 2727254,
+   "rows": 2727254,
+   "cells": 1755121,
+   "excluded": 972133,
+   "bytes": 15967803114,
+   "nnz": 6969648512,
+   "counts": 18925867176,
+   "covers_the_unit": true
+  }
+ },
+ "totals": {
+  "shards": 137,
+  "cells": 1755121,
+  "nnz": 6969648512,
+  "counts": 18925867176,
+  "bytes": 15967803114
+ },
+ "inventory": {
+  "rows": 463875,
+  "contexts": [
+   "CD4T D4 Stim8hr"
+  ],
+  "context_target_combinations": 12456,
+  "targeted_cells": 1678091,
+  "control_cells": 77030,
+  "targeted_cells_at_cap": {
+   "32": 370468,
+   "64": 704706,
+   "128": 1211785
+  }
+ },
+ "parts": [
+  {
+   "job": "vcc_cd4_d4_stim8hr_p0of2_r1",
+   "unit": "cd4_D4_Stim8hr",
+   "range": [
+    0,
+    1360000
+   ],
+   "rows": 1360000,
+   "cells": 875729,
+   "excluded": 484271,
+   "by_reason": {
+    "multi_sgRNA": 315114,
+    "eligible_targeted": 837325,
+    "low_quality": 15472,
+    "no_sgRNA": 153033,
+    "eligible_control": 38404,
+    "invalid_target_id": 652,
+    "unmapped_target_symbol": 35260,
+    "emitted": 875729
+   },
+   "shards": 68,
+   "bytes": 7998229727,
+   "nnz": 3494251515,
+   "counts": 9517480308,
+   "smoke": null,
+   "complete": true,
+   "unit_manifest_sha256": "250b4cbdb4b7d09c8a55fd202d190cdab26fc25792057534e234df48c447bc31",
+   "ok": true
+  },
+  {
+   "job": "vcc_cd4_d4_stim8hr_p1of2_r1",
+   "unit": "cd4_D4_Stim8hr",
+   "range": [
+    1360000,
+    2727254
+   ],
+   "rows": 1367254,
+   "cells": 879392,
+   "excluded": 487862,
+   "by_reason": {
+    "eligible_targeted": 840766,
+    "no_sgRNA": 153003,
+    "multi_sgRNA": 318719,
+    "eligible_control": 38626,
+    "low_quality": 15549,
+    "invalid_target_id": 591,
+    "unmapped_target_symbol": 35620,
+    "emitted": 879392
+   },
+   "shards": 69,
+   "bytes": 7969573387,
+   "nnz": 3475396997,
+   "counts": 9408386868,
+   "smoke": null,
+   "complete": true,
+   "unit_manifest_sha256": "5bde6e06ed05e5a5bc81941c2528577f63e369fee3edec60908cb8a68505310a",
+   "ok": true
+  }
+ ],
+ "seconds": 223.8,
+ "utc": "2026-10-04T17:10:45Z"
+}
