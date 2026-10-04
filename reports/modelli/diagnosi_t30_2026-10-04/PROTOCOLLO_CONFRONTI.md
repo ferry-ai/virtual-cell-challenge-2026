@@ -146,3 +146,13 @@ la si ricalcola sugli stessi geni.
 - altrimenti *non distinto*. Si riporta anche RMS(R)/RMS(ancora) con le due letture analoghe a soglie 0,5 e 0,6.
 Limiti: H1 e RPE1 sono linee di training della rete; 2.048 controlli per linea contro 18.400; nessuna di queste linee
 è Flex, quindi «controlli di gara» non distingue saggio, linea e profondità.
+
+### 7-bis. Nota del 4/10, 13:38 CEST (ora letta con `date`), prima di leggere qualunque linea
+
+La prima esecuzione (`esito/export_on_line_controls_r1.json`) si è fermata sul proprio controllo positivo: i controlli
+ufficiali di A, ripassati per lo script, ridanno la R archiviata con uno scarto massimo di 0,00049 sulle stesse coppie
+definite, e lo script pretendeva uno scarto esattamente nullo. **Nessuna linea è stata calcolata o letta.** Lo scarto è
+un passo di float16: il file archivia R arrotondata a float16 e s(N), s(A) sono a loro volta arrotondate prima della
+differenza. La tolleranza del controllo positivo diventa **un passo di float16, 2⁻¹⁰ ≈ 0,00098**, con le coppie definite
+identiche; si riportano anche la quota di coppie identiche e lo scarto quadratico medio. Soglie e letture delle linee
+(§7) restano quelle scritte alle 13:30.

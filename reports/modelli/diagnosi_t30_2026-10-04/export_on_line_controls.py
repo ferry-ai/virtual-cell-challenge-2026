@@ -7,7 +7,9 @@ manifest); only the control cells change: the `non-targeting` rows of a bench li
 official control file. No weight, no truth, no effects file is written.
 
 Positive control (--reproduce A): the official controls of a context through this script must give back the R stored
-in correction_<ctx>.npz, else nothing else is read.
+in correction_<ctx>.npz within one float16 step (2^-10: the file stores R rounded to float16, and s(N), s(A) are
+themselves rounded to float16 before the difference), on the same defined pairs; else nothing else is read. The first
+run (r1) asked for a gap of exactly 0, found 0.00049 and stopped before reading any line: PROTOCOLLO_CONFRONTI.md §7-bis.
 
 Per line, on the corrected panel targets and the genes the line's file measures (R finite): the common share
 ||mean_i R_i||^2 / mean_i ||R_i||^2, RMS(R), RMS(s(A)) and their ratio; the same quantities of the stored A/B/C
@@ -41,6 +43,7 @@ EXPORT = DATA / "processed/ibrido_selettivo_2026-10-04/export_abc_r2"
 MANIFEST = REPO / "reports/invii/trial_2026-10-04/t30_effects_manifest.json"
 F32 = np.float32
 SHARE_LOW, SHARE_HIGH, RATIO_LOW, RATIO_HIGH = 0.35, 0.55, 0.5, 0.6
+POSITIVE_TOL = 2.0 ** -10
 
 
 def sha(path: Path) -> str:
@@ -128,10 +131,13 @@ def main() -> None:
     ctrl = EX.read_controls(args.controls / f"context_{a.reproduce}.h5ad", model_genes, input_genes)
     R, SA, _ = EX.corrections(model, ck, ctrl, anc, targets, log=log)
     both = np.isfinite(R[el]) & np.isfinite(stored[a.reproduce][0][el])
-    gap = float(np.abs(R[el][both] - stored[a.reproduce][0][el][both]).max())
+    diff = np.abs(R[el][both].astype(np.float16).astype(F32) - stored[a.reproduce][0][el][both])
+    gap = float(diff.max())
     same_support = bool(np.array_equal(np.isfinite(R[el]), np.isfinite(stored[a.reproduce][0][el])))
-    positive = {"context": a.reproduce, "max_abs_gap_to_stored_R": gap, "same_defined_pairs": same_support,
-                "passed": gap == 0.0 and same_support}
+    positive = {"context": a.reproduce, "max_abs_gap_to_stored_R": gap, "tolerance": POSITIVE_TOL,
+                "share_of_pairs_identical": float((diff == 0).mean()), "rms_gap": float(np.sqrt((diff ** 2).mean())),
+                "rms_stored_R": float(np.sqrt((stored[a.reproduce][0][el][both] ** 2).mean())),
+                "same_defined_pairs": same_support, "passed": gap <= POSITIVE_TOL and same_support}
     log(f"positive control: {positive}")
     if not positive["passed"]:
         a.out.write_text(json.dumps({"positive_control": positive, "stopped": "the export is not reproduced"}, indent=1),
