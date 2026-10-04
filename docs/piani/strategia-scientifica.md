@@ -1,5 +1,13 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Approfondimento GEARS, Codex, 4/10 20:18 CEST:** stessa chat `01a107a9-9c9c-76c2-9161-258f22bd57b1`,
+  macchina `LAPTOP-DLG1LHV1`, da `7b3d410`, su mandato del proprietario. [Studio e prototipo](../../reports/analisi/gears_nella_rete_2026-10-04/README.md):
+  fonti primarie e codice ufficiale fissato; innesto a grafo sul codice del bersaglio, modulato dal contesto,
+  sette fixture passate con la CellNet esistente. È un candidato aggiuntivo per il contrasto sui descrittori,
+  non sostituisce il piano del corpus e del prossimo ibrido. Prima del training: manifest/costruzione del grafo
+  lecito, integrazione trainer/export e confronto con grafo ricablato e modello senza contesto;
+  nessuna utilità biologica ancora misurata, nessun nuovo job avviato.
+
 - **Subentro Codex, aggiornamento 4/10 18:34 CEST (ora letta da sistema):** chat `01a107a9-9c9c-76c2-9161-258f22bd57b1`, macchina
   `LAPTOP-DLG1LHV1`, da `d16094d`, consegna finale `8aa1a0a` riletta. Il proprietario conferma in chat:
   «Claude ha concluso: subentra tu». Perimetro: continuazione dei job CD4 e preparazione del banco v2

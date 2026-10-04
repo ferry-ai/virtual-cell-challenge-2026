@@ -1,0 +1,21 @@
+{
+  "commit": "f374e43e197b295016d80395d7a54ddb81cc6769",
+  "torch": "2.14.0+cpu",
+  "source_hashes_verified": true,
+  "loss_values_lambda_0_10": [
+    1.2416002750396729,
+    41.241600036621094
+  ],
+  "max_gradient_difference": 0.0,
+  "x_reads_in_forward": [
+    {
+      "line": 126,
+      "code": "out = x.reshape(-1,1)"
+    },
+    {
+      "line": 206,
+      "code": "out = out.reshape(num_graphs * self.num_genes, -1) + x.reshape(-1,1)"
+    }
+  ],
+  "scope": "Actual upstream loss on a tiny fixture; static forward data-flow inventory. Not a GEARS training replication."
+}
