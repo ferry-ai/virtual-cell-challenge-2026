@@ -19,6 +19,10 @@ negativo: nessun invio neurale prima di un banco a sei membri almeno al livello 
 ([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). Punteggi: [indice degli invii](../reports/invii/README.md).
 
 **Un solo piano operativo, [R-LEAD](piani/strategia-scientifica.md), su due binari (D-054).**
+**Direzione precisata il 4/10 ([D-056](DECISIONI.md#d-056--transfer-con-correzione-neurale-selettiva)):**
+transfer congelato e correzioni neurali pesate da un selettore di beneficio validato; in assenza di evidenza,
+ritorno al transfer. È il prossimo candidato da verificare, non una promozione né una modifica delle regole v4.
+
 - **Modello:** la rete ancorata al transfer, adattamento dell'idea di X (2° classificato 2025): basale dai controlli
   \+ effetto trasferito dagli aggregati delle altre linee (l'ancora) + correzione appresa sulle singole cellule. Il
   **pilot v4** corregge i difetti tecnici della v3 (batch che lasciavano fuori i neuroni, riserva di valutazione

@@ -103,6 +103,10 @@ campioni annidati in [R-DATI](piani/dati-affidabilita.md).
 
 ### 5. Modelli appresi e generalizzazione
 
+- **Direzione confermata, 4/10: [D-056](DECISIONI.md#d-056--transfer-con-correzione-neurale-selettiva).**
+  Transfer congelato con correzione neurale selettiva, pesata sul beneficio validato fuori fold. Il selettore
+  può tornare al transfer; familiarità con bersagli o contesti non equivale a affidabilità dimostrata.
+  Proposta da implementare e confermare in R-LEAD, con precedenti S-001–S-007; nessuna promozione acquisita.
 - **In corso, 3/10 sera: pilot v4 della rete ancorata** (direzione D-054: basale dai controlli +
   ancora dal transfer degli aggregati + correzione appresa sulle cellule). Protocollo congelato prima
   dei training, con la regola contro la propria ancora e il requisito di promozione contro la ricetta

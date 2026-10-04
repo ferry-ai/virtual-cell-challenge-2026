@@ -14,6 +14,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-056 | Direzione confermata: transfer congelato con correzione neurale selettiva, pesata in base al beneficio validato; ritorno al transfer in assenza di evidenza. Candidato da verificare, non modello già promosso | attiva | 2026-10-04 | Conferma del proprietario in chat: «ok allora teniamo il modello ibrido che stavamo ipotizzando prima»; precedenti [STRADE](STRADE.md), S-001–S-007 |
 | D-055 | Ciclo per imparare dagli errori: registro delle strade provate con meccanismo e condizione di riapertura, sezione «Precedenti» obbligatoria nei protocolli nuovi, riga «Strade» nei checkpoint di esperimento, verificati dal controllo dei documenti | attiva | 2026-10-04 | Richiesta del proprietario in chat il 4/10; [STRADE](STRADE.md) |
 | D-054 | Direzione operativa: rete ancorata al transfer (X adattato: basale dai controlli, ancora dagli aggregati delle altre linee, correzione appresa sulle cellule), provata nel pilot v4 corretto; transfer t22/t25 riferimento di produzione; binario dati D-053 indipendente dall'esito; ESM2 dopo, a parità di dati | attiva | 2026-10-03 | Richiesta del proprietario in chat (3/10 sera); [CP-0060](checkpoints/0060-direzione-x-transfer-pilot-v4.md), [protocollo v4](../reports/modelli/rete_ancorata_v4_2026-10-03/PROTOCOLLO.md) |
 | D-053 | Tutte le linee e i contesti idonei nel percorso principale; campionamento di cellule senza perdita silenziosa di contesti, manifest riconciliato e uso effettivo obbligatori; validazione e riserve protette | attiva | 2026-10-03 | Mandato esplicito del proprietario; [CP-0058](checkpoints/0058-copertura-integrale-contesti.md), [GENERALIZZAZIONE §2.1](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile) |
@@ -71,6 +72,55 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-056 — Transfer con correzione neurale selettiva
+
+- **Mandato:** il 4/10 il proprietario conferma l'ibrido discusso in chat: partire dal transfer e lasciare alla
+  rete deviazioni dove abbia dimostrato di essere utile. Precisa la direzione D-054 per il prossimo candidato;
+  non cambia le regole congelate del pilot v4. R-LEAD resta l'unico piano operativo.
+- **Decisione:** mantenere il transfer di riferimento congelato e apprendere una correzione, con un selettore
+  separatamente validato che ne regoli il peso. Nello stesso spazio degli effetti: `ibrido = T + w * R`, dove
+  `R = N - T` se la rete fornisce una previsione completa, e `0 <= w <= 1`. Con `w = 0` si deve recuperare
+  esattamente la pipeline del transfer, anche dopo generazione e normalizzazione; la sola parità dei logit non basta.
+  La ricetta t22/t25 rimane il riferimento di produzione finché il candidato non supera i confronti previsti.
+- **Che cosa significa fiducia:** stimare il beneficio della correzione rispetto al transfer, non usare la
+  certezza dichiarata dalla rete come prova. Presenza del bersaglio nei dati, somiglianza dei contesti,
+  concordanza fra sorgenti e supporto sono possibili ingressi del selettore, non garanzie. Un peso non è
+  automaticamente una probabilità calibrata. Senza beneficio validato il selettore deve poter scegliere zero.
+- **Proposta da preregistrare:** iniziare con pochi pesi regolarizzati per bersaglio/contesto o programma genico;
+  pesi distinti per ogni gene di risposta richiedono supporto sufficiente. Rete e selettore si costruiscono con
+  predizioni fuori fold, su linee interne escluse dal fit dei componenti; una riserva separata valuta l'intero
+  sistema già congelato. Non scegliere soglie sui risultati di H1/HepG2/RPE1 già letti e poi chiamarli conferma.
+  In C/J le esclusioni valgono anche per aggregati, descrittori, campioni e calibrazione. In J manca il transfer
+  dello stesso bersaglio: dichiarare e validare un riferimento generico ammesso, senza recuperare etichette nascoste.
+- **Dati:** D-053 resta non negoziabile. Aggregati per contesto/bersaglio alimentano il transfer e le statistiche
+  di affidabilità; campioni cellulari stratificati conservano l'eterogeneità per la rete. Tutte le linee e i contesti
+  idonei hanno un ruolo verificabile, con quote ed esposizione effettiva controllate, nel rispetto degli split.
+
+#### Precedenti e differenze da verificare
+
+- **S-001, S-002, S-006:** una correzione può coprire il segnale del bersaglio con uno spostamento comune.
+  Il nuovo candidato deve vincolare la correzione e confrontare presto discriminazione, componente comune e
+  ampiezza contro il transfer. Iniziare dal transfer non evita da solo questo guasto.
+- **S-003:** una miscela a peso fisso o scelta dopo aver visto il test non dimostra la selettività proposta.
+  Cercare complementarità riproducibile su predizioni fuori fold, poi verificare il selettore su riserva separata.
+- **S-004:** il selettore di beneficio fra transfer e correzione è distinto dal cancello effetto/nessun effetto
+  della verosimiglianza; non deve togliere il gradiente al ramo neurale durante il suo addestramento.
+- **S-005, S-007:** mantenere le guardie di esposizione; la media dei controlli da sola non è un nuovo ingrediente
+  dimostrato utile. Misurare il contributo dello stato cellulare con un confronto a parità di dati.
+
+**Segnale precoce e arresto:** il prossimo protocollo deve congelare soglie e cadenza, usando solo validation
+interna: parità del ritorno al transfer, discriminazione dei bersagli, rapporto correzione/ancora e beneficio
+fuori fold dei casi selezionati. Se il selettore non separa casi utili da dannosi, non promuoverlo; se la correzione
+ripete il collasso, fermare quel candidato. Queste guardie sono requisiti da implementare, non controlli già attivi.
+
+- **Promozione:** confronto con transfer, rete sola, miscela fissa e ibrido selettivo sullo stesso supporto e con
+  lo stesso generatore; sei metriche, risultati per contesto e C/J separati. Il peso zero protegge il riferimento
+  solo quando viene scelto: nessuna garanzia automatica di non peggiorare su un contesto nuovo.
+- **Stato:** direzione scelta e proposta tecnica; nessun nuovo training, risultato o modello adottato con questa
+  decisione. Protocollo, soglie e implementazione spettano al passo successivo di R-LEAD.
+- **Riaprire se:** manca complementarità riproducibile o il selettore fallisce la conferma; resta il transfer e si
+  rivede quel candidato, senza interrompere l'integrazione dei dati.
 
 ### D-055 — Un ciclo che obbliga a imparare dai fallimenti
 
