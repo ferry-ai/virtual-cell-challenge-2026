@@ -15,11 +15,12 @@
   sulle reti esistenti, nella nuova cartella [ripresa_banco_v2](../../reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/README.md).
   Stati remoti e quote riletti; sette parti CD4 ancora RUNNING, nessuna duplicata. Output nuovi nella radice dati
   `processed/ripresa_banco_v2_2026-10-04/`. Push e invii non autorizzati; nessun training avviato.
-  Aggiornamento delle 19:36: proprietario autorizza «Sì, lancia i cinque banchi CPU»;
-  cinque banchi riletti RUNNING, incluso K562 r2 dopo riparazione del controllo di copertura;
-  nessun risultato scientifico ancora letto. Tutte le dodici unità CD4 verificate e riconciliate
-  alla specifica; integrazione e uso nel training restano aperti. Incidenti D3_Rest e K562 registrati.
-  Evidenza, limiti e prossimo passo nello [stato della ripresa](../../reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/STATO_1936.md).
+  Aggiornamento delle 21:04: cinque banchi CPU autorizzati completati e verificati, incluso K562 r2;
+  [esito e limiti](../../reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/ESITO_BANCO_V2.md),
+  [CP-0066](../checkpoints/0066-banco-v2-t28-cinque-linee.md). Nessun fold promosso.
+  Tutte le dodici unità CD4 verificate e riconciliate alla specifica; integrazione e uso nel training restano aperti.
+  Prossimo passo: integrare le evidenze nel protocollo del prossimo ibrido e completare il corpus D-053;
+  l'approfondimento GEARS sopra resta un candidato da confrontare, non un risultato biologico.
 
 - **Sottoattività Codex, 4/10 12:28 CEST:** chat `01a10649-0c7f-7551-8bfe-8eca0fe03654`, macchina `LAPTOP-DLG1LHV1`, partenza `1309914`, su mandato del proprietario: audit informativo del prepasso e piano del prossimo ibrido in [prossimo_ibrido_2026-10-04](../../reports/analisi/prossimo_ibrido_2026-10-04/README.md). Riconti e fixture locali completati; piano proposto, da congelare dopo diagnosi di Claude1 e bilancio del corpus ampliato. Perimetro: sola nuova cartella e proprie righe negli indici/scheda; nessun job avviato, nessuna modifica al prepasso altrui. Claude1 mantiene chiusura ufficiale t30, diagnosi banco/export e propri job; [consegna pronta](../../reports/analisi/prossimo_ibrido_2026-10-04/PROMPT_CLAUDE1.md).
 - **PASSAGGIO DI CONSEGNE della sessione Claude `ba9b8bcb` a Codex, 4/10 18:08 CEST (ora letta con `date`; da

@@ -1,0 +1,93 @@
+[16:45:33] bench: 70 targets, median half 32 cells, control pool 2048, genes 18077
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. NISCH). The gate is real-side only, so this set is the same for every submission.
+[16:46:33] replicate: PDS=0.9584 MSE=0.0034 NMAE=0.3910 FID=0.7817 REACH=0.9596 JAC=0.3532 sig/t=403.4 (37s)
+allow_fractional_counts=True was LOAD-BEARING here: the pred side has fractional values under declared input_type='counts', so it passed the input-type check ONLY because of the flag -- without it validation would have refused the run ("declared input_type='counts' but values are fractional"). If this is a BASELINE arm that is expected: a mean profile is fractional in any space. If this is a SUBMISSION and processing continues (later gates, including the scale limit, may still refuse it), these values will be INTERPRETED as counts. Note that config_digest cannot see this flag (baseline.DIGEST_EXEMPT_FIELDS), so `score --baseline-agg` pairing will NOT report a baseline/submission mismatch on it; the --real-bundle path IS protected (anchor._SEMANTIC_FIELDS compares it, via score.expect_from_run_meta).
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. PTPN1). The gate is real-side only, so this set is the same for every submission.
+[16:47:09] baseline: PDS=0.5383 MSE=0.9378 NMAE=0.9365 FID=0.0254 REACH=0.1824 JAC=0.0143
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. ARPC2). The gate is real-side only, so this set is the same for every submission.
+[16:51:12] all@s0: PDS=0.8975 MSE=1.8624 NMAE=0.8642 FID=0.5429 REACH=0.3799 JAC=0.0452 sig/t=3593.2 (144s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. POLB). The gate is real-side only, so this set is the same for every submission.
+[16:55:15] all_wR@s0: PDS=0.9025 MSE=1.8415 NMAE=0.8648 FID=0.5424 REACH=0.3740 JAC=0.0446 sig/t=3589.2 (157s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. NFE2L1). The gate is real-side only, so this set is the same for every submission.
+[16:59:12] prod@s0: PDS=0.8631 MSE=2.5137 NMAE=0.9018 FID=0.5374 REACH=0.3331 JAC=0.0428 sig/t=3348.9 (158s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. NFE2L1). The gate is real-side only, so this set is the same for every submission.
+[17:03:11] prod_wR@s0: PDS=0.8749 MSE=2.4990 NMAE=0.8985 FID=0.5365 REACH=0.3186 JAC=0.0428 sig/t=3389.5 (160s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. SLIRP). The gate is real-side only, so this set is the same for every submission.
+[17:07:16] all@s1: PDS=0.8905 MSE=1.8652 NMAE=0.8643 FID=0.5415 REACH=0.3832 JAC=0.0448 sig/t=3586.4 (164s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. NISCH). The gate is real-side only, so this set is the same for every submission.
+[17:11:25] all_wR@s1: PDS=0.8996 MSE=1.8412 NMAE=0.8628 FID=0.5419 REACH=0.3964 JAC=0.0447 sig/t=3594.0 (162s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. TAZ). The gate is real-side only, so this set is the same for every submission.
+[17:15:23] prod@s1: PDS=0.8596 MSE=2.5137 NMAE=0.8984 FID=0.5373 REACH=0.3132 JAC=0.0429 sig/t=3351.6 (158s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. ARPC2). The gate is real-side only, so this set is the same for every submission.
+[17:19:19] prod_wR@s1: PDS=0.8631 MSE=2.5014 NMAE=0.8978 FID=0.5360 REACH=0.3364 JAC=0.0428 sig/t=3389.8 (157s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. ZNF714). The gate is real-side only, so this set is the same for every submission.
+[17:23:07] all@s2: PDS=0.8942 MSE=1.8643 NMAE=0.8643 FID=0.5422 REACH=0.3884 JAC=0.0448 sig/t=3587.8 (147s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. ZNF714). The gate is real-side only, so this set is the same for every submission.
+[17:26:37] all_wR@s2: PDS=0.8986 MSE=1.8423 NMAE=0.8636 FID=0.5419 REACH=0.3934 JAC=0.0446 sig/t=3578.0 (132s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. PTPN1). The gate is real-side only, so this set is the same for every submission.
+[17:30:32] prod@s2: PDS=0.8652 MSE=2.5141 NMAE=0.8987 FID=0.5374 REACH=0.3172 JAC=0.0428 sig/t=3347.2 (157s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. RRM1). The gate is real-side only, so this set is the same for every submission.
+[17:34:34] prod_wR@s2: PDS=0.8710 MSE=2.4997 NMAE=0.8980 FID=0.5368 REACH=0.3616 JAC=0.0427 sig/t=3393.0 (161s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. TAZ). The gate is real-side only, so this set is the same for every submission.
+[17:38:41] all@s3: PDS=0.8983 MSE=1.8648 NMAE=0.8658 FID=0.5432 REACH=0.3622 JAC=0.0449 sig/t=3586.6 (163s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. UQCRQ). The gate is real-side only, so this set is the same for every submission.
+[17:42:24] all_wR@s3: PDS=0.9004 MSE=1.8414 NMAE=0.8639 FID=0.5419 REACH=0.3773 JAC=0.0448 sig/t=3582.9 (139s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. TWF2). The gate is real-side only, so this set is the same for every submission.
+[17:46:31] prod@s3: PDS=0.8563 MSE=2.5150 NMAE=0.8997 FID=0.5376 REACH=0.3532 JAC=0.0430 sig/t=3346.5 (164s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. POLB). The gate is real-side only, so this set is the same for every submission.
+[17:50:37] prod_wR@s3: PDS=0.8640 MSE=2.5018 NMAE=0.8982 FID=0.5365 REACH=0.3178 JAC=0.0428 sig/t=3392.3 (162s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. COX6C). The gate is real-side only, so this set is the same for every submission.
+[17:54:34] all@s4: PDS=0.8919 MSE=1.8658 NMAE=0.8663 FID=0.5423 REACH=0.4103 JAC=0.0449 sig/t=3590.1 (159s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. DAXX). The gate is real-side only, so this set is the same for every submission.
+[17:58:33] all_wR@s4: PDS=0.9010 MSE=1.8420 NMAE=0.8623 FID=0.5425 REACH=0.3860 JAC=0.0450 sig/t=3583.6 (160s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. DAXX). The gate is real-side only, so this set is the same for every submission.
+[18:02:39] prod@s4: PDS=0.8596 MSE=2.5143 NMAE=0.8995 FID=0.5374 REACH=0.3509 JAC=0.0430 sig/t=3358.4 (164s)
+de_lfc_nmae: omitted 2 perturbation(s) for an empty gate (e.g. NDUFB4). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 19 perturbation(s) for fewer than 10 gated genes (e.g. ARPC2). The gate is real-side only, so this set is the same for every submission.
+[18:06:41] prod_wR@s4: PDS=0.8733 MSE=2.5011 NMAE=0.8992 FID=0.5370 REACH=0.3545 JAC=0.0427 sig/t=3381.3 (162s)
+[18:06:42] 
+              PDS  MSE   NMAE    FID  REACH    JAC    avg     sig/t
+replicate   1.000  1.0  1.000  1.000  1.000  1.000  1.000   403.386
+baseline    0.000 -0.0 -0.000  0.000  0.000  0.000  0.000     0.200
+all@s0      0.855  0.0  0.133  0.684  0.254  0.091  0.336  3593.171
+all_wR@s0   0.867  0.0  0.131  0.684  0.246  0.090  0.336  3589.171
+prod@s0     0.773  0.0  0.064  0.677  0.194  0.084  0.299  3348.900
+prod_wR@s0  0.801  0.0  0.070  0.676  0.175  0.084  0.301  3389.514
+all@s1      0.838  0.0  0.132  0.682  0.258  0.090  0.334  3586.400
+all_wR@s1   0.860  0.0  0.135  0.683  0.275  0.090  0.341  3594.043
+prod@s1     0.765  0.0  0.070  0.677  0.168  0.084  0.294  3351.600
+prod_wR@s1  0.773  0.0  0.071  0.675  0.198  0.084  0.300  3389.757
+all@s2      0.847  0.0  0.132  0.683  0.265  0.090  0.336  3587.843
+all_wR@s2   0.858  0.0  0.134  0.683  0.271  0.090  0.339  3578.029
+prod@s2     0.778  0.0  0.069  0.677  0.173  0.084  0.297  3347.200
+prod_wR@s2  0.792  0.0  0.071  0.676  0.231  0.084  0.309  3392.986
+all@s3      0.857  0.0  0.130  0.685  0.231  0.090  0.332  3586.614
+all_wR@s3   0.862  0.0  0.133  0.683  0.251  0.090  0.336  3582.886
+prod@s3     0.757  0.0  0.067  0.677  0.220  0.085  0.301  3346.529
+prod_wR@s3  0.775  0.0  0.070  0.676  0.174  0.084  0.297  3392.300
+all@s4      0.842  0.0  0.129  0.684  0.293  0.090  0.340  3590.071
+all_wR@s4   0.863  0.0  0.136  0.684  0.262  0.091  0.339  3583.557
+prod@s4     0.765  0.0  0.068  0.677  0.217  0.085  0.302  3358.386
+prod_wR@s4  0.797  0.0  0.068  0.676  0.221  0.084  0.308  3381.257
+{"prod_wR:prod": {"six": [0.0044, 0.006, false], "PDS": [0.0202, 0.01]}, "all_wR:all": {"six": [0.0028, 0.003, true], "PDS": [0.0141, 0.0074]}}

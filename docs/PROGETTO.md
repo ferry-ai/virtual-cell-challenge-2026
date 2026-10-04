@@ -34,7 +34,9 @@ ritorno al transfer.
   terzi comune ai bersagli e più ampia all'esportazione, perdita di PDS già visibile sul fold esportato. La causa non
   è isolata ([diagnosi](../reports/modelli/diagnosi_t30_2026-10-04/README.md)); il v1 non è un candidato per D/E/F. Rifatto su 5 semi e 400 cellule
   per bersaglio, il guadagno di banco è +0,013 di media (non +0,044), e il fold esportato perde PDS in modo netto
-  ([CP-0065](checkpoints/0065-d056-confronti-e-rumore-del-banco.md)): il prossimo banco usa più semi e la numerosità dell'invio. Il pilot v4
+  ([CP-0065](checkpoints/0065-d056-confronti-e-rumore-del-banco.md)). Il banco v2 t28 a 400 cellule × 5 semi è ora concluso:
+  superano la regola con guardia PDS 4/5 linee su all, solo Jurkat su prod; HepG2 perde PDS su entrambe,
+  RPE1 su prod ([CP-0066](checkpoints/0066-banco-v2-t28-cinque-linee.md)). Diagnosi su linee già di sviluppo, nessuna promozione. Il pilot v4
   (correzione libera) resta negativo ([CP-0061](checkpoints/0061-pilot-v4-esito-tre-linee.md)).
 - **Fonti del transfer:** su Jurkat e K562 più tabelle aggregate battono le fonti della ricetta (+0,07…+0,14 locali).
   Nessun candidato di solo transfer è ammesso, perché il banco di quelle due linee è sotto 0,100 ([S-010](STRADE.md)).

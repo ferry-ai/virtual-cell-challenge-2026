@@ -1,0 +1,768 @@
+{
+  "ok": true,
+  "files": 152,
+  "inputs": [
+    {
+      "path": "/kaggle/input/notebooks/davideferrante11/rcell-d056-train-hepg2-r1/train/eval_groups.json",
+      "bytes": 272036,
+      "sha256": "56f8096d1f6e3b87fb9f11b3daa8a54fafd6d75f99ffdb9b57d1fcbec2321f06"
+    },
+    {
+      "path": "/kaggle/input/notebooks/davideferrante11/rcell-d056-train-hepg2-r1/train/eval_observed.npz",
+      "bytes": 151967385,
+      "sha256": "36e1c7532254808022dbeeb62111aa7c4ede640edaeca292e854ad42fad861f9"
+    },
+    {
+      "path": "/kaggle/input/notebooks/davideferrante11/rcell-d056-train-hepg2-r1/train/ibrido/eval_shifts.npz",
+      "bytes": 57384344,
+      "sha256": "7e0437ed6bcecfd39ee4307716b55a48616d00eec0be25a167286ff940882d61"
+    },
+    {
+      "path": "/kaggle/input/notebooks/davideferrante11/rcell-d056-train-hepg2-r1/train/ibrido_mean/eval_shifts.npz",
+      "bytes": 57342005,
+      "sha256": "daf04244eaa92775acc549e6eea6d19035736bcd328ab6a83fdde0e64392d8a8"
+    },
+    {
+      "path": "/kaggle/input/notebooks/davideferrante11/rcell-d056-train-hepg2-r1/train/ancora_sola/eval_shifts.npz",
+      "bytes": 40782556,
+      "sha256": "4789c428949cea281e5975a86117be39ba9741bfbf9e894a3f229d442136abbf"
+    },
+    {
+      "path": "/kaggle/input/notebooks/davideferrante11/rcell-prepass-hepg2-r1/prepass/splits.json",
+      "bytes": 46881,
+      "sha256": "e1f829b56d455c20139604f3452a6154ca886612f489be7047869267a1db62c2"
+    },
+    {
+      "path": "/kaggle/input/notebooks/davideferrante11/rcell-v4-anchors-r1/anchors_HepG2_all/manifest.json",
+      "bytes": 2439,
+      "sha256": "c54b8fdcb056876769455768d15637559db220309633f13630fa8dbe5dff560d"
+    },
+    {
+      "path": "/kaggle/input/notebooks/davideferrante11/rcell-gen-hepg2-r3b/real_cells.npz",
+      "bytes": 94276682,
+      "sha256": "6394a4cef66240c0e5b5f7fc1a5d0d3296611f616b31b47948c18835141ea5b7"
+    },
+    {
+      "path": "/kaggle/input/notebooks/davideferrante11/rcell-gen-hepg2-r3b/targets.json",
+      "bytes": 21040,
+      "sha256": "f1099427427967e45d671e0c637b78356d0bcb97c8b54e18b06214e04183211e"
+    },
+    {
+      "path": "/kaggle/input/datasets/davideferrante11/rcell-d056-code-r1/target_keys.json",
+      "bytes": 583174,
+      "sha256": "55a4e601f75dbbee2ccf3d8e052483b8cc355b0d1a57c3fc33f53ca687a1515a"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/manifest.json",
+      "bytes": 28005,
+      "sha256": "c7fb76628b8246b9e00c789582ba3e512a8018e9469c5e8f3344001375fe1099"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/genes.csv",
+      "bytes": 98888,
+      "sha256": "4c35e49a7127ea1e487c93df20afd9a9562667050e576b4fe1fbfee0b142e9a1"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/basal.npz",
+      "bytes": 1996366,
+      "sha256": "8a37a3fec6b5466a2fc62061842ed9e1a748fa6f6cebf914628f497f241d73b8"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/k562_gwps/rows.csv",
+      "bytes": 110708,
+      "sha256": "f34f54a3d2b40256f60dce5e2d934349b20386d66447f2b0c9b66ef742f6da6c"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/k562_gwps/raw.npy",
+      "bytes": 90028178,
+      "sha256": "588ef89153648bfeb4e2d06ecd9719e6849a794357da1d80e87ef47ab4e0a576"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/k562_gwps/se.npy",
+      "bytes": 90028178,
+      "sha256": "2e9898ea89ad9a476d809d23cab70622d4cef3773d5d4a3e2269416b705a9267"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/k562_gwps/shrunk.npy",
+      "bytes": 90028178,
+      "sha256": "239cc42bb382e58c1437bfe9324f27393dcd4daa2f94f0014b1939fb03098116"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/k562_essential/rows.csv",
+      "bytes": 66842,
+      "sha256": "1b9641a6ae9a80b77cb154bf1e09057552a1866e6f03f7fd0b29e0077c4330f2"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/k562_essential/raw.npy",
+      "bytes": 54693578,
+      "sha256": "a5f9734906e50a636753f528f53851c714b366b461d189a0a06d31632de9e408"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/k562_essential/se.npy",
+      "bytes": 54693578,
+      "sha256": "9fd5d91daac807ae0748972d0d244aafb1fb8fe441f375ffc1ea22c6449a8902"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/k562_essential/shrunk.npy",
+      "bytes": 54693578,
+      "sha256": "86560661fa4a40cf8ee1c98bf00d2348618f1cf82705322d12bc41f77e3da69e"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/k562_viperturb/rows.csv",
+      "bytes": 57581,
+      "sha256": "b56bff32c495caf8703b1b14e7b116f512ddef0fcb409f38a624c06c2f8ff9a9"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/k562_viperturb/raw.npy",
+      "bytes": 47900528,
+      "sha256": "87c5650d860641437bc04324bfa528c04319954078cf1be5add6bbc79d80a15e"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/k562_viperturb/se.npy",
+      "bytes": 47900528,
+      "sha256": "bda03b2194b7cf51d1ce81f03e193d61fdb2fabe381fdac19ff9a9c9c8a7bb5e"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/k562_viperturb/shrunk.npy",
+      "bytes": 47900528,
+      "sha256": "eea1fae06a47c3332f61fc57add763ff86ecd0964002285da22c0d2d30bc83ed"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/rpe1/rows.csv",
+      "bytes": 76590,
+      "sha256": "1c281d29094b2363c442ff5e8153f45c5f83221ad73a3645f22834bb07c8e338"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/rpe1/raw.npy",
+      "bytes": 63205028,
+      "sha256": "3538bd94061ac50fdc67b33a7194bb7ad27a2d4596143f6d4c62b73391676dd0"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/rpe1/se.npy",
+      "bytes": 63205028,
+      "sha256": "1f1356daaebcdc458db8bccee4883eb6704f10a447c86c11f06621014afe6d39"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/rpe1/shrunk.npy",
+      "bytes": 63205028,
+      "sha256": "3edd1c30cc76e607187bea9750466db6b03ed5989d12eadd7e1ef72171b6e219"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hepg2_nadig/rows.csv",
+      "bytes": 75796,
+      "sha256": "5ab2a022b238befde077af4407e9af774717428bc4f20c31756dd16a2ea1ecd2"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hepg2_nadig/raw.npy",
+      "bytes": 62990228,
+      "sha256": "ecbb6f8edb429b7506adaa93c49acb94a3733dd8c3c782df9f28dec43fc0b209"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hepg2_nadig/se.npy",
+      "bytes": 62990228,
+      "sha256": "a91c7daf44fd60592078b2f987492c41d5f0ed468e1448afe89bc1883034f566"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hepg2_nadig/shrunk.npy",
+      "bytes": 62990228,
+      "sha256": "8f9abffbae195f528d5bf0d78b52576fecb7142bb3d3bced0641ebe3d28f11b7"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/cd4_rest/rows.csv",
+      "bytes": 98292,
+      "sha256": "ee4592ee46f376bcde0b788c07ac133a35bc610a1f11af0e11125c2e8308a9d1"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/cd4_rest/raw.npy",
+      "bytes": 79610378,
+      "sha256": "b06e461a76eb41a5b72d0392f7fc4b650d94da7cf93f300cafeeb4ba7060acc8"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/cd4_rest/se.npy",
+      "bytes": 79610378,
+      "sha256": "011cba2de8e99f8892598ac8b3774a3d19e5830b6d8daf50262cb3d59a7848b3"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/cd4_rest/shrunk.npy",
+      "bytes": 79610378,
+      "sha256": "9846297fcc3f6d70a9ce1ec6da05e1e03df712f9cd5deeb6e10cf8224aeb2d9f"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/cd4_stim8hr/rows.csv",
+      "bytes": 100101,
+      "sha256": "f2c3a4c0b7f179072b0c24fd8edd71106eddb2dd03d1ae54dacdf1a794a44986"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/cd4_stim8hr/raw.npy",
+      "bytes": 81113978,
+      "sha256": "2abb9ecb378a3654cbc9e4a281b23dc2cadf8ae190743e5d16764e654f534bd5"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/cd4_stim8hr/se.npy",
+      "bytes": 81113978,
+      "sha256": "86d42c54e3d73004496ef27cdd7faf65065cbc70c9bd640fd176d306c35fb83f"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/cd4_stim8hr/shrunk.npy",
+      "bytes": 81113978,
+      "sha256": "b549ca5f7a8f86a665c1c29110011c85b0561192b471b9c65b2af65b025f9399"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/cd4_stim48hr/rows.csv",
+      "bytes": 99461,
+      "sha256": "40eb30f1a3bda15c193870437a15d501ebf21207516f707ef4025293d7889cbd"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/cd4_stim48hr/raw.npy",
+      "bytes": 80576978,
+      "sha256": "178087bb697c2e0e9e7bfe13048167c7ca4d04a09dcef19deb1cf03bbe530f2d"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/cd4_stim48hr/se.npy",
+      "bytes": 80576978,
+      "sha256": "769c883bcb9f77c1388bbf1db1d323708324268c9e2ae2ac292a09a91b8fd6c1"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/cd4_stim48hr/shrunk.npy",
+      "bytes": 80576978,
+      "sha256": "d82883299785522344d6c73796e1ece87a63882d7bb8536abfa6a2dac4402286"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hct116/rows.csv",
+      "bytes": 117251,
+      "sha256": "c4bfa7cd0f61c4a9595f74df9a3783e6015f1b8c92036270c9e22ffd3ec22159"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hct116/raw.npy",
+      "bytes": 95398178,
+      "sha256": "794dc3feb83a0d42c66ab7b23e290fdfef40edc9392595e969a0958c66e400bc"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hct116/se.npy",
+      "bytes": 95398178,
+      "sha256": "6ce8aea0f9b25bd68789e620c25695ffeaadffdfbef9da8611e349dc1c190160"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hct116/shrunk.npy",
+      "bytes": 95398178,
+      "sha256": "4c8f3ac9f366b1add8a0dd4eac340ca2d11a426ec9e563b7c3ae64fa54e6f55a"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hek293t/rows.csv",
+      "bytes": 123839,
+      "sha256": "ab3bac6647de7bb1a00d511cb3ac46b32bc185d59e32db9d4cf85b0c5649e1f4"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hek293t/raw.npy",
+      "bytes": 100580228,
+      "sha256": "e70bfc62674410ade9223c4ca2f8300dd5b112328c8692f8749c2d47099cce7e"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hek293t/se.npy",
+      "bytes": 100580228,
+      "sha256": "6350b365d648ccbf1f2066a740744a4ec6a7757560a4cf2e345277b369643b4c"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hek293t/shrunk.npy",
+      "bytes": 100580228,
+      "sha256": "117e07087a7bd3ed765d6d07a2d18ec47338ab451e38e45da8754b17506e136c"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/kolf21j/rows.csv",
+      "bytes": 91355,
+      "sha256": "9f6c84dba9fb53160c0f59e72eb80cba6895129d3ab82310234e816c88116bc4"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/kolf21j/raw.npy",
+      "bytes": 74106128,
+      "sha256": "1458acae775857a5fa537bc73c96cf60d7e9245853fc3d16a9647b13c4dbddb7"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/kolf21j/se.npy",
+      "bytes": 74106128,
+      "sha256": "2f5d8eac7ca904e45195824034a8c442875c66ee9431dcfe621e9fe5493f0172"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/kolf21j/shrunk.npy",
+      "bytes": 74106128,
+      "sha256": "e1f45764fcd0d4444fc3ee905b4e05fa1f06b29658f3a83227ab2623e7b5e341"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_eipl_1/rows.csv",
+      "bytes": 10386,
+      "sha256": "0441f74be5d15a8d9801cfa940542c3c070befd51a922d2b54b51cc68ce75444"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_eipl_1/raw.npy",
+      "bytes": 8565278,
+      "sha256": "1d9cbd52183535bd12ae4253af169d68699c35a01e84ccfcc7b96fef3a440421"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_eipl_1/se.npy",
+      "bytes": 8565278,
+      "sha256": "58c7bc5ab2b95c5ab3e0352f987c34c9616e445845883e8945f063bdbb132647"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_eipl_1/shrunk.npy",
+      "bytes": 8565278,
+      "sha256": "c4ab0365242ca5ae40841c5279a8c8661383eda04611edefb4bd119135b7495f"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_eipl_3/rows.csv",
+      "bytes": 10344,
+      "sha256": "9029e1b79c970344db210928d07ea7f2d67e880dda2171a8d23d521cbb8c3fc9"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_eipl_3/raw.npy",
+      "bytes": 8538428,
+      "sha256": "56e9df221e728d83555a091014b9cb47df8ae356c66d21b27498868819e9b4cc"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_eipl_3/se.npy",
+      "bytes": 8538428,
+      "sha256": "defb83d195ebbf018306f507b328213ca4c8e80b3458a2c4dd6918b7923447a0"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_eipl_3/shrunk.npy",
+      "bytes": 8538428,
+      "sha256": "a72c3069a58c8d153fcd87d5fbc79166ef5b1e6bcceeb8ebf3868b6937ccb216"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_fiaj_1/rows.csv",
+      "bytes": 10385,
+      "sha256": "1853dc727f8f73a33a892eebcdc470dbef516a784c0feeeab0f827b3e414548b"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_fiaj_1/raw.npy",
+      "bytes": 8538428,
+      "sha256": "1f3a07a0344a9de139d8b2b9193abe3156a7dd3a8e5a7386444573e7db605d35"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_fiaj_1/se.npy",
+      "bytes": 8538428,
+      "sha256": "7382b34590066cc23a2f33bcdbbf1368429bfe90442865f1181685d4f7a65308"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_fiaj_1/shrunk.npy",
+      "bytes": 8538428,
+      "sha256": "64365da1c2d2f70d4838353a27d2ec7eb7d01278de0e6d006b6f6515ae7afc6c"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_fiaj_3/rows.csv",
+      "bytes": 4543,
+      "sha256": "747c83ec52b962be6a4b502e13c57fa130beeb73f3caee448f8e19521f235902"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_fiaj_3/raw.npy",
+      "bytes": 3759128,
+      "sha256": "eec1c84cea7c51308e8d4fc7c97c66b9bd9b826040658962157313b54247d89f"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_fiaj_3/se.npy",
+      "bytes": 3759128,
+      "sha256": "cd7c717f1934123aa0a7568045935f746a0ccdf0616beeb62503557ecc5e0674"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_fiaj_3/shrunk.npy",
+      "bytes": 3759128,
+      "sha256": "d1e26a34de531cc42bc05aa11cd5ac7c8df56cf1c9cc1017da6f18adeaa88a71"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_iudw_1/rows.csv",
+      "bytes": 10444,
+      "sha256": "72f3edec91b166a63204a2397a4c9867d811bd252b69570f34920d25c1eb839c"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_iudw_1/raw.npy",
+      "bytes": 8565278,
+      "sha256": "e954b766e9121f8a10f2998c222c212a250fc79499e1c07367272879697a3d13"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_iudw_1/se.npy",
+      "bytes": 8565278,
+      "sha256": "6d6aeeaccba84e2370e2f16ac0fbb082551fc133209657c2c3fec8a54bc6e5ce"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_iudw_1/shrunk.npy",
+      "bytes": 8565278,
+      "sha256": "fe9c6234940c9f24ec4cf2f8479dbb93e5003d25c3d9a1a70c27e57fee3819c8"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_iudw_4/rows.csv",
+      "bytes": 10323,
+      "sha256": "6317e4183430abb39f8c2984ee935667150a6f3cead736c4103435fdc9bc49aa"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_iudw_4/raw.npy",
+      "bytes": 8538428,
+      "sha256": "036ec274ded1bcc15caf2fbf6f515fa07be69279f458f2db56ac2c72099e595f"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_iudw_4/se.npy",
+      "bytes": 8538428,
+      "sha256": "f718cad869aabc4db73fef83ffcc13d6b086c61032fd2a79ceb44fba81bda03f"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_iudw_4/shrunk.npy",
+      "bytes": 8538428,
+      "sha256": "963eacdc8ada463c83b4eb24a6a15ca6780a7aa50c9481dc8493d03902a7a932"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_jejf_2/rows.csv",
+      "bytes": 10434,
+      "sha256": "81ddb120470e9dbc26a50fa7396093df2af29f74d7350247d7a96940dd6242f6"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_jejf_2/raw.npy",
+      "bytes": 8538428,
+      "sha256": "2c1869dc459e32605fbaf83b282b5bd53fec3f655515afd6380e29d0a168d829"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_jejf_2/se.npy",
+      "bytes": 8538428,
+      "sha256": "c3cc5a29d5eb3fb71a26c07281e26e622a88e48017550abe0e9f4812a6433aa1"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_jejf_2/shrunk.npy",
+      "bytes": 8538428,
+      "sha256": "04bf7e8fe00fae2c1a761de888dd0d1999aad2567cfb52e6ec25d01cb6eb2855"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_jejf_3/rows.csv",
+      "bytes": 10324,
+      "sha256": "05909d5ade6ad20204fcd228459e7e8ce9e4d02584e06a6c1c0c085802d3b94a"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_jejf_3/raw.npy",
+      "bytes": 8538428,
+      "sha256": "7dfc03795867517983521780b4c931a17ffcd88a567f0ab2f58998997967a581"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_jejf_3/se.npy",
+      "bytes": 8538428,
+      "sha256": "8ef5b3d69fb994ed403d2f67d86999f804cdd6b321f2de7cb8923af42ddb891d"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_jejf_3/shrunk.npy",
+      "bytes": 8538428,
+      "sha256": "fbebddb188257be81fe3ef8fca4b28e4dc7ce338a0e9c57231ca1c3b9ee4c0ed"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_kolf_2/rows.csv",
+      "bytes": 10374,
+      "sha256": "7cfc2ead5fdee1955199abc895ff2a3e7deb13d423906a3dce7d292a2dfd70de"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_kolf_2/raw.npy",
+      "bytes": 8538428,
+      "sha256": "2c145757320b30082b8c794fe597eaf94a36242e026cc65d464b8b1d600134af"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_kolf_2/se.npy",
+      "bytes": 8538428,
+      "sha256": "45ad9e38d8d9865009cf49c63631305b1240bf1c3e61a73ce9e27dd1d6910da4"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_kolf_2/shrunk.npy",
+      "bytes": 8538428,
+      "sha256": "80b4e81b5d199d9f17fff4339f5676de183b3eb80581ed33595ea5dbd421b7dd"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_kolf_3/rows.csv",
+      "bytes": 10341,
+      "sha256": "f1281b96c1c6d4989fd5728da80a2b15f2b8c67389366668807865d0497a23bb"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_kolf_3/raw.npy",
+      "bytes": 8538428,
+      "sha256": "086010b005226d66f26be77551dc04e7b3f39a05d09b6518b079d8964a808dbc"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_kolf_3/se.npy",
+      "bytes": 8538428,
+      "sha256": "d47fe57654b60fcd3e5ec0ff1ff5a1414539ed3e09ba653d7af67111be00d250"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_kolf_3/shrunk.npy",
+      "bytes": 8538428,
+      "sha256": "5377191397d7b9c28fe1848f709c9467dc55d70b24dff481f305f7afa2753629"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_oikd_2/rows.csv",
+      "bytes": 9236,
+      "sha256": "a572b15808ec1daed7bb65507a0dab940e9ac663a5b1202c7040b119f5b2ce79"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_oikd_2/raw.npy",
+      "bytes": 7679228,
+      "sha256": "416480071d3eae6eeea8f1968ef3f52df2215ad552fe10c5291baa256943a8b9"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_oikd_2/se.npy",
+      "bytes": 7679228,
+      "sha256": "b554b8e8f865a0351ef193b0cbcd21b6e9bfe8007c2bada253d347a2e97aace6"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_oikd_2/shrunk.npy",
+      "bytes": 7679228,
+      "sha256": "910718f27651ced409b3fcdd77857aba54a03e7bcff284e8e2d9946defb9da8b"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_oikd_5/rows.csv",
+      "bytes": 10408,
+      "sha256": "b5c18772d632d03a1474f5ef00e82655e8d6c38b1414abfbc5002234a508d304"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_oikd_5/raw.npy",
+      "bytes": 8538428,
+      "sha256": "8eb5f974e5e7b47c82d3573447d43244ef69484e8b6db4acc51b4b483b2cdc14"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_oikd_5/se.npy",
+      "bytes": 8538428,
+      "sha256": "b86e0460a411b35b51fc01ec0a7408e98f1256b0c23243efafd2bf384a132bca"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_oikd_5/shrunk.npy",
+      "bytes": 8538428,
+      "sha256": "9bdd811a989fba96c5f4f649ac5a87712fe62268ec342eb4144cfeeb9a67f354"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_paab_3/rows.csv",
+      "bytes": 10290,
+      "sha256": "98bb50ba8320cad5479d6636a646f75663cda977dc37d880227c102f092c629b"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_paab_3/raw.npy",
+      "bytes": 8538428,
+      "sha256": "0d0189b61c25555dbe01d365aff6ef5992a18ac1f1f5784c8a325de6a23eb0ac"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_paab_3/se.npy",
+      "bytes": 8538428,
+      "sha256": "6050e2bfb900c9cf898f57a1ae23309ddaa1f4cdbe2b3a21e947cf5d78a2d9f4"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_paab_3/shrunk.npy",
+      "bytes": 8538428,
+      "sha256": "c3128ea0cb52cd3f127bc5531baa57b097c425531fc05894b02be3793831e358"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_paab_4/rows.csv",
+      "bytes": 10426,
+      "sha256": "3545f70b505baad68f842ea6c5b02a60d39760267b8e1bd0f58e4b09d2d448cf"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_paab_4/raw.npy",
+      "bytes": 8565278,
+      "sha256": "951f4dcea05140d118be509c3cdcf1012ce71590ffeb65caf09d2a456b2ac920"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_paab_4/se.npy",
+      "bytes": 8565278,
+      "sha256": "5940f16882e49820f3401a941212278fd08880ff59a0fa7f9f3e49aa4ca3da85"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_paab_4/shrunk.npy",
+      "bytes": 8565278,
+      "sha256": "cedcc11c022a97d22ee1e02983e5727ae8a210f97ad55efa1af9124ac1405f6f"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_pipw_4/rows.csv",
+      "bytes": 10348,
+      "sha256": "90a31cd87f143f533c42e912954f39cb3b226ee8d6065225dac79bd201347420"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_pipw_4/raw.npy",
+      "bytes": 8538428,
+      "sha256": "bd9ed576b429f309dedd25e965492b08aa2d1498d2367ba1ec6fcb77705e2de4"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_pipw_4/se.npy",
+      "bytes": 8538428,
+      "sha256": "9fc5d4fffac21027ee2dad1fb4b3a29981819446b88e1b456b2a56668dc82be0"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_pipw_4/shrunk.npy",
+      "bytes": 8538428,
+      "sha256": "4081ecefe97054cfaa2cdb253588ad9a87b23f918fbe02d62357dffb86190d7a"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_pipw_5/rows.csv",
+      "bytes": 5965,
+      "sha256": "e949adc506f6b7ad856534faca2b1829ac4dbcc9fe0435c33acfe573d780a16f"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_pipw_5/raw.npy",
+      "bytes": 4940528,
+      "sha256": "7133a2cf695d0deb385c8fc171ff6ac670137f24aec1f61649216a9a4a944eb0"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_pipw_5/se.npy",
+      "bytes": 4940528,
+      "sha256": "648bbd89d114311c7e71f117f52dc34f60a43b509ab467645f1320693dba1a50"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_pipw_5/shrunk.npy",
+      "bytes": 4940528,
+      "sha256": "770098a7e3c7299bc5cc0a78f36258f815672f55ce1efecfb6e71883c7231599"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_tolg_4/rows.csv",
+      "bytes": 9408,
+      "sha256": "f2735fc6c1442ec963bc8e834f6399c4de082408b0e9b41452cd61c8be36505a"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_tolg_4/raw.npy",
+      "bytes": 7813478,
+      "sha256": "4682bb4fe89a7b6327b46b20fe8a03eb220089a397dfd147c41a232ba5c84cb2"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_tolg_4/se.npy",
+      "bytes": 7813478,
+      "sha256": "ce5ac3ef25bad095bda4ef83dad95a26eff7cbb9900ccfb4c69392e363237607"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_tolg_4/shrunk.npy",
+      "bytes": 7813478,
+      "sha256": "e0cc49cf9aea8a6ad4e23a33b730abf5beb5daad888c5cd81020371f98d192d8"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_tolg_6/rows.csv",
+      "bytes": 10259,
+      "sha256": "6c6de704920606a8998acba9047ed7c3ffd281120b2ba748fabc643107e22527"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_tolg_6/raw.npy",
+      "bytes": 8511578,
+      "sha256": "c0ef5615d7e1f61f297a9c539903f3b1db5e18423a08062a1be75b3d0eb71cca"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_tolg_6/se.npy",
+      "bytes": 8511578,
+      "sha256": "7d7701f966ff82364e71cad0dd45856a227eb08bfee347ef6192a67c970861b7"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_tolg_6/shrunk.npy",
+      "bytes": 8511578,
+      "sha256": "ac027f2effef6147cfbeeef718d3d3e32b3fe939e51440536c4c7fb8993741a7"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_zapk_3/rows.csv",
+      "bytes": 10424,
+      "sha256": "f8bac4b25381a73def2dc64d9ede9594fbeb957e7361a3be41b715449b28e7d9"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_zapk_3/raw.npy",
+      "bytes": 8538428,
+      "sha256": "1e26c076d623e3a3310416a8419a59bbd4eadcb3d59dd0e5f687ac950bde2700"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_zapk_3/se.npy",
+      "bytes": 8538428,
+      "sha256": "de372ca743d038e8cec7c4a7c5504e63b49e4a7b4426e18f26e07af95c8aae30"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/hipsci_zapk_3/shrunk.npy",
+      "bytes": 8538428,
+      "sha256": "f7774c1a829f02aea924395159dcc43d6f2eac8d4b0e41c100e43f9931bd5923"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/jurkat_nadig/rows.csv",
+      "bytes": 75951,
+      "sha256": "bd8d1c0224275d0b6eed9398eea8f4a9cad0c317cf1cc08f28486ea4ecffca45"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/jurkat_nadig/raw.npy",
+      "bytes": 62614328,
+      "sha256": "1438cfa57c6142625fe7965d0480329f63e7132fc8d2e40a4d2c2dc5ef3f34f3"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/jurkat_nadig/se.npy",
+      "bytes": 62614328,
+      "sha256": "03712aba24abcf80ac09e97808f91a621bb79ef161de9ad8c42a6f12778c13cf"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/jurkat_nadig/shrunk.npy",
+      "bytes": 62614328,
+      "sha256": "7d8844ac413da0ec1b88f4ad37ff4df07ca2655cd7e1d453d2556bf6f8ebd202"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/h1_train/rows.csv",
+      "bytes": 2487,
+      "sha256": "26c17707cda99c0196af8b76f424ddc74aab3aac2b66607bcbf5ff630d46e4bb"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/h1_train/raw.npy",
+      "bytes": 1960178,
+      "sha256": "87c765a575d191919edee2fc08e8b3af0cd208e687ae1f282457460bf48e9230"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/h1_train/se.npy",
+      "bytes": 1960178,
+      "sha256": "29712c94d4ece00278263d317cf46f147e8b432a1fccdc970be541098574561e"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/h1_train/shrunk.npy",
+      "bytes": 1960178,
+      "sha256": "645503e3467020eca3ccfd4de29bab2ba665c515e89e5a1d5366546c9728408d"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/h1_val/rows.csv",
+      "bytes": 815,
+      "sha256": "a363a5b3c033fd62d755ef7752c7909ef4072ad7f2f36ba04dffb4473f037a6f"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/h1_val/raw.npy",
+      "bytes": 617678,
+      "sha256": "92c1eaf35546037360ab4811998e2ffe231b295953f9cdcf699c45e502962b34"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/h1_val/se.npy",
+      "bytes": 617678,
+      "sha256": "0dd95030c3d7088b5fb03903f39f48c9f4baa5be0748a1e8b7a69b14460bb769"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/h1_val/shrunk.npy",
+      "bytes": 617678,
+      "sha256": "6b754d3cf782f22eca87cb7c78e851b2146a6bfaa1c7f94cf20ecbbcba83fcc4"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/tian2021_neuron/rows.csv",
+      "bytes": 2536,
+      "sha256": "e699c89a3874c1b708ddf71a91132339881fa21f4a605606f1e51948a34d07cb"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/tian2021_neuron/raw.npy",
+      "bytes": 2040728,
+      "sha256": "b28127302d5989f2a6f7f21218f3a52a5222310b6827c93da5cd288f270f54b0"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/tian2021_neuron/se.npy",
+      "bytes": 2040728,
+      "sha256": "378427a43b8eec7cca1d5825ca11c17ac37d4cea6fcf2f49826233e16d31c98f"
+    },
+    {
+      "path": "/kaggle/working/cube_r2/tian2021_neuron/shrunk.npy",
+      "bytes": 2040728,
+      "sha256": "38949810143dbd047890890922db69a95274219654e53efb5f5ea9320dee737e"
+    },
+    {
+      "path": "/kaggle/input/datasets/davideferrante11/rlead-bench-cube-r2/gene_coordinates_gencode_v50.tsv",
+      "bytes": 1718961,
+      "sha256": "065906f739094c6ae572d21c0b14e7b8f2d4daa0284cdb68864ed27b9caba34c"
+    },
+    {
+      "path": "/kaggle/working/weights.json",
+      "bytes": 154805,
+      "sha256": "2590759cc0e21f70a8e5a49cfb13bad0f780e958020c058761c38532609f3c0c"
+    },
+    {
+      "path": "/kaggle/working/repo/reports/analisi/generalizzazione_contesti_2026-10-02/PROTOCOLLO.json",
+      "bytes": 9108,
+      "sha256": "f005535222483d3f0b8cc27ad0c1f746109338651064e6a7fd6a269d0a9ff4e2"
+    }
+  ],
+  "seconds": 32.34349986999996,
+  "scorer_version": "0.16.0"
+}

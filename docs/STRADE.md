@@ -249,6 +249,12 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
   - a un seme: alzare la quota comune a 0,65 toglie PDS (−0,027 di media, −0,111 su HepG2) e la parte specifica da
     sola guadagna +0,024.
   Meccanismo ancora ipotizzato per il sito: la scelta del fold HepG2 e il regime dei bersagli del pannello.
+- **Banco v2 t28, 4/10 ([CP-0066](checkpoints/0066-banco-v2-t28-cinque-linee.md)):** cinque kernel CPU verificati,
+  400 cellule × 5 semi. La regola con guadagno risolto anche senza JAC e guardia PDS passa su 4/5 linee contro all,
+  solo Jurkat contro prod. HepG2 perde PDS su entrambe; RPE1 guadagna PDS contro all e lo perde contro prod.
+  È verificata la dipendenza del risultato dalla baseline in questo contrasto; il meccanismo biologico e la causa
+  sul sito restano ignoti. Nessuna selezione automatica del fold. K562 prod resta appena sotto la soglia:
+  la guardia in `reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/read_results.py` legge valori non arrotondati.
 - **Che cosa la riaprirebbe:** un ibrido in cui il candidato inviato è esattamente un braccio valutato (una sola
   baseline in fit, banco ed esportazione), con le guardie del trainer applicate all'esportazione, una guardia sul PDS
   per linea e una correzione che non sposta la media sui bersagli; i confronti che separano le cause sul banco sono

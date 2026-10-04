@@ -139,6 +139,10 @@ campioni annidati in [R-DATI](piani/dati-affidabilita.md).
     ha deviazione standard 0,007–0,045, quanto i guadagni letti; su 5 semi e 400 cellule è +0,004…+0,031, risolto in
     tre linee su cinque. Il fold esportato (HepG2) perde PDS, −0,129 ± 0,005. La procedura dell'invio è fedele al
     banco; sulla baseline di produzione il guadagno resta ([esito](../reports/modelli/diagnosi_t30_2026-10-04/ESITO_CONFRONTI.md)).
+  - **Banco v2 t28 concluso (4/10, [CP-0066](checkpoints/0066-banco-v2-t28-cinque-linee.md)):** 400 cellule × 5 semi;
+    regola con guardia PDS favorevole in 4/5 linee su all, solo Jurkat su prod. HepG2 perde PDS su entrambe,
+    RPE1 su prod. Rumore del generatore a fit/verità fissi; pilot a otto gruppi, nessuna promozione.
+    [Esito verificato](../reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/ESITO_BANCO_V2.md).
 - **Misurato, pilot v4 della rete ancorata (4/10): non passa** ([CP-0061](checkpoints/0061-pilot-v4-esito-tre-linee.md)).
   Tre training tecnicamente accettati; la correzione appresa peggiora la propria ancora su tre linee su tre (corsia
   B, media dei sei membri: −0,214, −0,050 e −0,131; guardia della corsia A −0,307). Non è soddisfatto nemmeno il
