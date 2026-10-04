@@ -45,6 +45,22 @@
      32/64/128 con perdita d'informazione misurata contro i riassunti completi, letti dai gemelli.
   4. Qualunque sia l'esito del pilot, il corpus ampliato (prima CD4T, HCT116, HEK293T con cellule verificate) entra nel
      protocollo successivo; ESM2 dopo, a parità di dati e di campione.
+- **PRIORITÀ DAL 4/10 02:20 (mandato del proprietario alla sessione `2b35612c`): D-056.** Implementare, addestrare e
+  valutare l'ibrido selettivo `T + w·R` (transfer congelato, correzione neurale regolarizzata, selettore validato su
+  predizioni fuori fold); intanto chiudere il pilot v4 (RPE1, regola §7, checkpoint) e proseguire il binario dati
+  D-053. Protocollo, codice e lanci in `reports/modelli/ibrido_selettivo_2026-10-04/` (in scrittura); autorizzazioni
+  della notte, compresa la regola degli invii autonomi con banco ≥ 0,100, trascritte in
+  [autorizzazioni](../../reports/invii/trial_2026-09-22/autorizzazioni.md#mandato-d-056-e-invii-autonomi-notte-del-4-ottobre-r-lead-sessione-claude-2b35612c).
+  - **Subentro, 4/10 02:20 CEST:** Claude Code, sessione `2b35612c`, macchina `LAPTOP-DLG1LHV1`, commit di partenza
+    `3758743`. Perimetro: questa scheda, PROGETTO §0, AMBITI §5, STRADE, le proprie righe di REGISTRO, la cartella
+    nuova dell'ibrido, la chiusura v4 in `reports/modelli/rete_ancorata_v4_2026-10-03/`, la regia dei job del binario
+    dati (ingestione, campioni). Fuori perimetro: `adattatori_codex/`, `libera_spazio_2026-10-04/`,
+    `revisione_ancorata_codex_2026-10-03/ADDENDUM_1615.md` (Codex, processo attivo), `t29_keep_awake*.json`.
+  - **Job riletti su Kaggle alle 02:23** (non dedotti dal passaggio sotto): in corsa GPU `rcell-v4-train-rpe1-r1`, CPU
+    `rcell-v4-fast-hek293t-a-r2`, `vcc-cd4-d1-stim48hr-p{0,1}of2-r1`; conclusi i gemelli KOLF e HCT116, le corsie H1 e
+    HepG2, la generazione HepG2, le parti CD4 `D1_Stim8hr`, lo studio `nested-h1-r1`. Quota GPU `davideferrante11`
+    8,01 h, altri due account 30 h. Lanciati: `vcc-cd4-d1-stim8hr-verify-r1` (02:26) e `rcell-prepass-jurkat-r1`
+    (02:38, pre-passo della linea di conferma dell'ibrido, scelta prima di ogni risultato D-056).
 - **PASSAGGIO DI CONSEGNE della sessione `d0100a`, 4/10 02:02 CEST (da leggere per primo; i blocchi sotto sono la
   cronaca della notte). I job si rileggono su Kaggle prima di agire.**
   - **Esito finora del pilot v4 (misurato, due linee su tre):** la rete ancorata peggiora la propria ancora. Media

@@ -216,3 +216,36 @@ Il proprietario in chat, dopo aver chiesto di non addestrare altre reti sul pseu
 - Prima della risposta, fra le 02:03 e le 02:13 del 3/10 (orari letti con `date` prima e dopo), i 12 dataset `rlab-*` di `davidmaisterx` sono stati condivisi in privato
   con `davideferrante11` come lettore (`share_datasets.py`, restano privati), sul via «Condivido i dataset» e «puoi
   tranquillamente settare i dataset come pubblici» della notte precedente.
+
+## Mandato D-056 e invii autonomi, notte del 4 ottobre (R-LEAD, sessione Claude 2b35612c)
+
+Messaggio del proprietario in chat alla sessione Claude `2b35612c`, che subentra alla `d0100a`; letto alle 02:20 del
+4/10 (ora del primo `date` della sessione). Trascritto nel senso, con le frasi chiave tra virgolette:
+- **Perimetro:** «Sto andando a dormire. Ti autorizzo a procedere autonomamente, senza chiedermi conferme, per tutte
+  le attività necessarie a questo mandato» (D-056, chiusura del pilot v4, dati completi D-053, confronto delle fonti
+  del transfer). Elenco esplicito: sviluppo, correzioni, test, preparazione e integrazione dei dati; download e
+  trasferimenti necessari; nuovi training, preprocessing, generazione, banchi e scoring; gestione dei job negli
+  account configurati e delle quote disponibili; commit e push necessari, dopo verifica del contenuto da pubblicare;
+  invii ufficiali in grading dei candidati che soddisfano la regola sotto.
+- **Validità:** «Questa autorizzazione sostituisce, per questa sessione e questo mandato, le precedenti richieste di
+  attendere il mio via per training, invii, download e push». Non va chiesta di nuovo in questa sessione. Non vale
+  per sessioni successive né per altri mandati.
+- **Limiti espliciti:** niente acquisti né accessi non disponibili; non aggirare permessi, limiti degli account o
+  condizioni della piattaforma; nessun segreto o identità riservata nella repo pubblica; prima di un push si verifica
+  l'intera differenza in uscita.
+- **Regola degli invii ufficiali autonomi:** si può inviare in grading un candidato con punteggio sul banco ≥ 0,100,
+  dove il punteggio è la media dei sei membri scalati, sul banco completo a sei membri con lo scorer della pipeline di
+  riferimento, poi macro-media a peso uguale dei contesti preregistrati. Prima di leggere il risultato si congelano
+  versione, scala, contesti, supporto C/J e aggregazione (anche C/J, coerente con l'uso previsto; i due regimi si
+  riportano comunque separati). Esclusi: miglior contesto, miglior membro, solo PDS, sola loss, eliminazione a
+  posteriori dei casi sfavorevoli. Servono risultati completi e validi, senza leakage, valori mancanti o errori dello
+  scorer; il candidato inviato corrisponde alla ricetta valutata (un eventuale refit è previsto e tracciato prima).
+  «Questa soglia è il mio criterio per autorizzare il grading, anche se il candidato resta sotto il transfer sullo
+  stesso banco»: il vecchio vincolo di battere il transfer prima di un invio neurale (CP-0055) non è più una
+  richiesta di permesso per questa sessione, ma il confronto col transfer si misura e si riporta. Un invio
+  esplorativo non è una promozione né una prova di miglioramento; non si invia ogni checkpoint sopra 0,1, ma versioni
+  distinte e informative, entro le quote reali. Prima di ogni invio: controlli tecnici e packaging, previsione e
+  regola di lettura registrate, modello, ricetta, hash e ricevute salvati; dopo: esito ufficiale, risposta grezza e
+  sei membri conservati, confronto, checkpoint, indice degli invii e stato aggiornati.
+- **Scelte tecniche:** «Le decisioni tecniche, inclusa la scelta di come alleggerire il corpus, spettano a te»; per un
+  impedimento insuperabile si registra che cosa manca e si continua il lavoro indipendente, senza domande.
