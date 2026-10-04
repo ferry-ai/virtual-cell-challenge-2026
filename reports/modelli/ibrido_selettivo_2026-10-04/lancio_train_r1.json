@@ -1,0 +1,20 @@
+{
+ "what": "first trainings of the D-056 network (PROTOCOLLO.md §4-5), development lines H1 and HepG2; RPE1 when a GPU session frees, Jurkat after its prepass and anchors",
+ "authorisation": "owner in chat, 4/10 night, session 2b35612c (reports/invii/trial_2026-09-22/autorizzazioni.md, section 'Mandato D-056 e invii autonomi')",
+ "protocol": "PROTOCOLLO.md frozen at commit 817f42a (2026-10-04 02:41:48 +0200), before any training of this protocol",
+ "checks_before_push": {
+  "tests": "test_hybrid_train (7: untrained network = its anchor exactly; common head never in a shift; validation cells with loss weight 0; guards written; best state exported; guard stop; refusals) and test_guards (6) passed on the laptop at 02:58",
+  "code_dataset": "davideferrante11/rcell-d056-code-r1, created 02:59:40; every file but cellnet.py, train_cellnet.py and guards.py has the sha256 of rcell-v4-code-r1 (staged.json of both stages compared)",
+  "dry_run": "run.py differs from the v4 H1 kernel only in CODE_SLUG, ARMS and the version 5 options appended to TRAIN_ARGS; kernel-metadata.json only in id, title and code dataset",
+  "gpu_quota_before": "22.26 h used, 7.74 h left (03:00); the v4 RPE1 training had ended (COMPLETE at 02:52)"
+ },
+ "kernels": {
+  "rcell-d056-train-h1-r1": {"pushed": "2026-10-04 03:00:35 +0200", "stage": "C:/Users/ferra/vcc2026-data/processed/ibrido_selettivo_2026-10-04/kernel_train_h1_r1"},
+  "rcell-d056-train-hepg2-r1": {"pushed": "2026-10-04 03:00:42 +0200", "stage": "C:/Users/ferra/vcc2026-data/processed/ibrido_selettivo_2026-10-04/kernel_train_hepg2_r1"}
+ },
+ "inputs": ["davideferrante11/rcell-d056-code-r1", "kernels rcell-prepass-<line>-r1", "rcell-v4-anchors-r1 (anchors_<LINE>_all)", "rcell-v4-fast-{a,b,c}-r1"],
+ "arms": ["ibrido=both@cuda:0", "ibrido_mean=both/mean@cuda:1"],
+ "train_args": "--epochs 2 --batch 256 --ctrl-k 64 --min-own 8 --dim 128 --rank 128 --lr 1e-3 --pi-floor 0.01 --seed 0 --workers 2 --roles 2 --eval-workers 3 --checkpoint-minutes 15 --delta-bound 6 --gate-mode off --health-check-step 5000 --health-window 5 --sampler balanced --unit-buffer 2 --share-window 500 --share-tolerance 0.02 --time-every 50 --train-budget-minutes 150 --eval-budget-minutes 90 --reserve-export-minutes 5 --gain-mode fixed --common-head --delta-l2 0.05 --val-frac 0.08 --val-per-key 25 --val-max 600 --val-min-admitted 40 --guard-every 2500 --guard-min-cells 20 --guard-min-pairs 5 --guard-rank-margin 0.05 --guard-ratio-max 1.0 --guard-common-max 0.5 --guard-patience 2",
+ "command": "python kaggle_train.py kernel --config-dir <~/.kaggle-davideferrante11> --stage <new folder> --slug rcell-d056-train-<line>-r1 --owner davideferrante11 --data-owner davidmaisterx --code-slug rcell-d056-code-r1 --prepass-from rcell-prepass-<line>-r1 --anchors-from rcell-v4-anchors-r1 --anchors-line <LINE> --anchors-dir anchors_<LINE>_all --fast-kernels rcell-v4-fast-a-r1 rcell-v4-fast-b-r1 rcell-v4-fast-c-r1 --arm ibrido=both@cuda:0 --arm ibrido_mean=both/mean@cuda:1 --train-args=\"<train_args>\" (with the venv's Python)",
+ "incidents_considered": {"E-20261003-001": "each push typed by the session after reading statuses; no loop pushes kernels"}
+}
