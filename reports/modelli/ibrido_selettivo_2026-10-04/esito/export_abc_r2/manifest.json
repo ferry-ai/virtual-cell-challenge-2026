@@ -1,0 +1,235 @@
+{
+ "stage": "D-056 export for A/B/C (PROTOCOLLO.md \u00a713-\u00a714)",
+ "started_utc": "2026-10-04T08:15:58+00:00",
+ "argv": [
+  "export_abc.py",
+  "--model",
+  "C:\\Users\\ferra\\vcc2026-data\\processed\\ibrido_selettivo_2026-10-04\\out_train_hepg2_model_r1\\train\\ibrido\\model.pt",
+  "--anchor-index",
+  "C:\\Users\\ferra\\vcc2026-data\\processed\\ibrido_selettivo_2026-10-04\\out_anchors_hepg2_index_r1\\anchors_HepG2_all",
+  "--splits",
+  "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_prepass_hepg2_r1\\prepass\\splits.json",
+  "--cube",
+  "C:\\Users\\ferra\\vcc2026-data\\processed\\generalizzazione_contesti_2026-10-02\\cube_r2",
+  "--protocol",
+  "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\analisi\\generalizzazione_contesti_2026-10-02\\PROTOCOLLO.json",
+  "--target-keys",
+  "C:\\Users\\ferra\\vcc2026-data\\processed\\ibrido_selettivo_2026-10-04\\kaggle_code_r1\\target_keys.json",
+  "--controls",
+  "C:\\Users\\ferra\\vcc2026-data\\raw\\controls",
+  "--effects",
+  "C:\\Users\\ferra\\vcc2026-data\\processed\\effects_t25_regen_2026-10-04",
+  "--selector",
+  "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\ibrido_selettivo_2026-10-04\\esito\\selector_final_r1\\selector_final.json",
+  "--out",
+  "C:\\Users\\ferra\\vcc2026-data\\processed\\ibrido_selettivo_2026-10-04\\export_abc_r2"
+ ],
+ "contexts": {
+  "A": {
+   "controls": {
+    "cells": 18400,
+    "var_genes": 18533,
+    "var_off_model": 0,
+    "input_genes_absent": 0
+   },
+   "measured_genes": 18533,
+   "draws": {
+    "draws": 1024,
+    "ctrl_k": 64,
+    "seed": 20261004,
+    "modality": "CRISPRi",
+    "corrected": 230,
+    "seconds": 167.6
+   },
+   "parity_w0_equal_t25": true,
+   "w": {
+    "mean_corrected": 0.27648099996582554,
+    "mean_all_targets": 0.21196876664046627,
+    "share_above_0.5": 0.0,
+    "share_below_0.1": 0.0,
+    "quantiles": [
+     0.11100237716854687,
+     0.22681098622362889,
+     0.27047366385036997,
+     0.33717873371515283,
+     0.4653156283148323
+    ]
+   },
+   "inputs_mean_corrected": {
+    "f_support": 1.754123558745296,
+    "f_concordance": 0.04790674277365484,
+    "ibrido__f_log_ratio": -0.3602357817328758,
+    "ibrido__f_cos_rt": -0.0711610346511406,
+    "f_expression": 4.232617504279251
+   },
+   "rms": {
+    "R_on_observed": 0.07792694121599197,
+    "lfc_t25_on_observed": 0.14348894357681274,
+    "added_on_observed": 0.019055552780628204
+   },
+   "pairs_moved": 3103050,
+   "targets_moved": 230,
+   "outputs": {
+    "effects_A.npz": "63f6ad595c571e28e15cbcf66c5c38d8f643c21af3ff0d6db1ed481672c1e286",
+    "correction_A.npz": "4f84710c2ee1d58f3cf4e30317a0240f8da6679445b760c2c71a9cd0212298fb",
+    "targets_A.csv": "886101cfcbcf600014069b6d7fbe4b7b2510a454310a1ea4e73bfad1741ee76b"
+   }
+  },
+  "B": {
+   "controls": {
+    "cells": 18400,
+    "var_genes": 18533,
+    "var_off_model": 0,
+    "input_genes_absent": 0
+   },
+   "measured_genes": 18533,
+   "draws": {
+    "draws": 1024,
+    "ctrl_k": 64,
+    "seed": 20261004,
+    "modality": "CRISPRi",
+    "corrected": 230,
+    "seconds": 200.1
+   },
+   "parity_w0_equal_t25": true,
+   "w": {
+    "mean_corrected": 0.27772165748495853,
+    "mean_all_targets": 0.21291993740513485,
+    "share_above_0.5": 0.0,
+    "share_below_0.1": 0.0,
+    "quantiles": [
+     0.10495056599379819,
+     0.2300471171584899,
+     0.2736607636629379,
+     0.3267672610725256,
+     0.4593279169057383
+    ]
+   },
+   "inputs_mean_corrected": {
+    "f_support": 1.754123558745296,
+    "f_concordance": 0.04790674277365484,
+    "ibrido__f_log_ratio": -0.07007570625215044,
+    "ibrido__f_cos_rt": -0.03852878415547928,
+    "f_expression": 3.919281328242758
+   },
+   "rms": {
+    "R_on_observed": 0.10531380772590637,
+    "lfc_t25_on_observed": 0.14348894357681274,
+    "added_on_observed": 0.025538098067045212
+   },
+   "pairs_moved": 3103199,
+   "targets_moved": 230,
+   "outputs": {
+    "effects_B.npz": "0e49d878baa2c9fa956b564a62ba6d8508e4a1fa05fde3f4e03ba877f099e1f1",
+    "correction_B.npz": "1ca72631f38ccf66976da6549f133a42786fe9f4b76669f17218f8e59eeccba8",
+    "targets_B.csv": "b72aacdc3c18ae8c2abeef4bb60893654a8daf51cd335f718e5fe00a5e50e6de"
+   }
+  },
+  "C": {
+   "controls": {
+    "cells": 18400,
+    "var_genes": 18533,
+    "var_off_model": 0,
+    "input_genes_absent": 0
+   },
+   "measured_genes": 18533,
+   "draws": {
+    "draws": 1024,
+    "ctrl_k": 64,
+    "seed": 20261004,
+    "modality": "CRISPRi",
+    "corrected": 230,
+    "seconds": 175.2
+   },
+   "parity_w0_equal_t25": true,
+   "w": {
+    "mean_corrected": 0.27806636106073374,
+    "mean_all_targets": 0.21318421014656252,
+    "share_above_0.5": 0.0,
+    "share_below_0.1": 0.004347826086956522,
+    "quantiles": [
+     0.09184483927399538,
+     0.2314600790730072,
+     0.273106163237929,
+     0.33316593717130144,
+     0.49061897699423457
+    ]
+   },
+   "inputs_mean_corrected": {
+    "f_support": 1.754123558745296,
+    "f_concordance": 0.04790674277365484,
+    "ibrido__f_log_ratio": -0.0770741444185272,
+    "ibrido__f_cos_rt": -0.03915513132858127,
+    "f_expression": 3.890913306111875
+   },
+   "rms": {
+    "R_on_observed": 0.10500896722078323,
+    "lfc_t25_on_observed": 0.14348894357681274,
+    "added_on_observed": 0.025597229599952698
+   },
+   "pairs_moved": 3103193,
+   "targets_moved": 230,
+   "outputs": {
+    "effects_C.npz": "13abf22af8516e85dc1e23f154e44f4cb0f432df6288935cb54778afaf0a3b4d",
+    "correction_C.npz": "957a97c3a11f1b1137df291b0aca84007c0203e745bf8ba277f6f3e44a9fff95",
+    "targets_C.csv": "2bacfdb73a720b1171855b038f62efaa4f75844258a6a5eae55cd616b2e19a02"
+   }
+  }
+ },
+ "anchors": {
+  "sources": [
+   "CD4T",
+   "H1",
+   "HCT116",
+   "HEK293T",
+   "Jurkat",
+   "K562",
+   "Neuron",
+   "RPE1",
+   "iPSC"
+  ],
+  "held": "HepG2",
+  "kept_out": 2239,
+  "max_sources": 9,
+  "trained_symbols": 2761
+ },
+ "targets": 300,
+ "corrected_targets": 230,
+ "not_corrected": {
+  "no CRISPRi training row": 22,
+  "no CRISPRi training row; hidden": 48
+ },
+ "inputs": {
+  "model": "365bf62508cab76c3b2971678557adfd6a7c51d10fb336f6c3e05e75902a88bc",
+  "anchor_manifest": "c54b8fdcb056876769455768d15637559db220309633f13630fa8dbe5dff560d",
+  "anchor_index": "ed8bc2c581bd64c85e9047ce311d081e9419e391fffb0524cd60ceaed5497720",
+  "splits": "e1f829b56d455c20139604f3452a6154ca886612f489be7047869267a1db62c2",
+  "cube_manifest": "c7fb76628b8246b9e00c789582ba3e512a8018e9469c5e8f3344001375fe1099",
+  "protocol": "f005535222483d3f0b8cc27ad0c1f746109338651064e6a7fd6a269d0a9ff4e2",
+  "target_keys": "55a4e601f75dbbee2ccf3d8e052483b8cc355b0d1a57c3fc33f53ca687a1515a",
+  "selector": "007587789a3516bf31e891493fba7a6b49e05d75f5b22f0c018dc9792de8fe42",
+  "effects_A": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a",
+  "effects_B": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a",
+  "effects_C": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a",
+  "controls_A": "f22e71968487d3da9402769dcd0c73a47851fad4cd7dd25510283c923031fe3e",
+  "controls_B": "41557555b3febf6db19fd930b4dd7db88941840077bf985d14dfff959c782380",
+  "controls_C": "e090e7c7cfdd0006f689214ba38ba0cd2669578e89c9bc325b65f0bd940c02e0"
+ },
+ "model": {
+  "exported": {
+   "state": "best check",
+   "step": 20000,
+   "benefit": 0.14282635745287015,
+   "internal_benefit_positive": true
+  },
+  "prepass_sha256": "572e74248a1f5d9103a390b815021af84024c2c1c18225f2ea9192d2f2b391df",
+  "anchors_sha256": "3a9171098772f183db82d7a52361331b3e02a14aa3948769d986d7a169f8db7e",
+  "gain_mode": "fixed",
+  "common_head": true,
+  "delta_l2": 0.05,
+  "code_version": 5
+ },
+ "finished_utc": "2026-10-04T08:30:22+00:00",
+ "seconds": 976.3,
+ "note": "effects of the D-056 hybrid for A/B/C: t25 + w R (PROTOCOLLO.md \u00a713-\u00a714); generation and packaging follow with the t25 arguments of stages 45 and 48; not a VCC score"
+}

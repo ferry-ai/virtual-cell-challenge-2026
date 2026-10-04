@@ -1,0 +1,185 @@
+{
+  "stage": "100_build_context_effects",
+  "written_utc": "2026-10-04T08:06:35.465647+00:00",
+  "recipe": {
+    "name": "t25",
+    "effect": "shrunk",
+    "gamma": 1.0,
+    "reliability_scale": 100,
+    "allow_missing_targets": true,
+    "contexts": {
+      "A": {
+        "amplitude": 1.576,
+        "weights": {
+          "k562": 1.0,
+          "cd4_mix": 1.0,
+          "orion_hct116": 1.0,
+          "orion_hek293t": 1.0
+        }
+      },
+      "B": {
+        "amplitude": 1.576,
+        "weights": {
+          "k562": 1.0,
+          "cd4_mix": 1.0,
+          "orion_hct116": 1.0,
+          "orion_hek293t": 1.0
+        }
+      },
+      "C": {
+        "amplitude": 1.576,
+        "weights": {
+          "k562": 1.0,
+          "cd4_mix": 1.0,
+          "orion_hct116": 1.0,
+          "orion_hek293t": 1.0
+        }
+      }
+    },
+    "cis": {
+      "pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv",
+      "max_distance_bp": 5000,
+      "scale": 2.0
+    },
+    "why": "t22's recipe unchanged, built on the stage-98 cache r9 (processed/multisource_2026-09-27_r9) instead of r5: one factor, how the pseudobulk estimator treats a donor with no evidence for a gene. With the constant pseudocount a gene with no count in either group read as ln(L_c / L_t), the ratio of the totals: in CD4 the six Y-chromosome genes of the female donors came out induced by 99-100% of the 293 panel knockdowns, the top genes of the source, and in t22 they carry 5.3-5.5% of the log1p-weighted energy on the genes expressed in A and C, tracking each target's cell count (Spearman -0.52); in HCT116, 315 genes near 1 CPM read as induced by over 90% of the knockdowns. r9 drops, gene by gene, a donor or Orion pool whose controls predict under one count in the target group, whatever the target's own count (effects_from_pseudobulk, min_expected 1): below that the constant pseudocount reads as induction. The donor mean is taken over the others, and a gene no donor informs is unmeasured, never a zero. Three other fixes were measured and are not used: a pseudocount at the geometric mean of the totals (r6) and one in the smaller group's units (r7) moved far more than the artefact, and a drop rule that also looked at the target's count (r8) selected on the outcome (reports/pseudoconteggio_2026-09-27/). K562, amplitude, shrinkage, gamma, weights and cis head as t22."
+  },
+  "recipe_sha256": "c74df9a994c3accc1d7bbe53ab16b0739168737cadc21bb6fff92a18499ef50a",
+  "recipe_sha256_lf": "3ebcd87a318ecc1a30f62202870a335f00485f3836b4b5daf61854bb17d56730",
+  "cache": "C:\\Users\\ferra\\vcc2026-data\\processed\\multisource_2026-09-27_r9",
+  "gamma": 1.0,
+  "reliability_scale": 100.0,
+  "contexts": {
+    "A": {
+      "weights": {
+        "k562": 1.0,
+        "cd4_mix": 1.0,
+        "orion_hct116": 1.0,
+        "orion_hek293t": 1.0
+      },
+      "amplitude": 1.576,
+      "targets_covered": 300,
+      "targets_missing": [],
+      "genes_nonzero_median": 13728.5,
+      "abs_lfc_q99_median": 0.45648963066483705,
+      "sha256": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a",
+      "cis": {
+        "pairs": 78,
+        "targets_with_a_neighbour": 77
+      }
+    },
+    "B": {
+      "weights": {
+        "k562": 1.0,
+        "cd4_mix": 1.0,
+        "orion_hct116": 1.0,
+        "orion_hek293t": 1.0
+      },
+      "amplitude": 1.576,
+      "targets_covered": 300,
+      "targets_missing": [],
+      "genes_nonzero_median": 13728.5,
+      "abs_lfc_q99_median": 0.45648963066483705,
+      "sha256": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a",
+      "cis": {
+        "pairs": 78,
+        "targets_with_a_neighbour": 77
+      }
+    },
+    "C": {
+      "weights": {
+        "k562": 1.0,
+        "cd4_mix": 1.0,
+        "orion_hct116": 1.0,
+        "orion_hek293t": 1.0
+      },
+      "amplitude": 1.576,
+      "targets_covered": 300,
+      "targets_missing": [],
+      "genes_nonzero_median": 13728.5,
+      "abs_lfc_q99_median": 0.45648963066483705,
+      "sha256": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a",
+      "cis": {
+        "pairs": 78,
+        "targets_with_a_neighbour": 77
+      }
+    }
+  },
+  "units": "ln fold change on the official axis; unmeasured pairs are exactly 0",
+  "argv": [
+    "scripts/100_build_context_effects.py",
+    "--recipe",
+    "configs/recipes/t25.json",
+    "--cache",
+    "C:/Users/ferra/vcc2026-data/processed/multisource_2026-09-27_r9",
+    "--out",
+    "C:/Users/ferra/vcc2026-data/processed/effects_t25_regen_2026-10-04"
+  ],
+  "started_utc": "2026-10-04T08:06:06.592753+00:00",
+  "targets": {
+    "path": "C:\\Users\\ferra\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+    "file_sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+    "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+    "n": 300
+  },
+  "contexts_checked": null,
+  "cache_check": {
+    "cache_manifest": false,
+    "targets_sha256_in_cache": null,
+    "targets_verified": false,
+    "allow_foreign_cache": false,
+    "targets": 300,
+    "targets_covered": 300,
+    "coverage": 1.0,
+    "targets_covered_by_table": {
+      "cd4_mix": 293,
+      "k562": 272,
+      "orion_hct116": 268,
+      "orion_hek293t": 281
+    },
+    "why_not_verified": "the cache has no manifest.json",
+    "refusals_lifted": []
+  },
+  "common": {
+    "mode": "panel"
+  },
+  "cache_npz_sha256": {
+    "cd4_mix.npz": "9d0b4bd0359c1d95c7b37144fcba17e7f8bc3c032266f1038c537ac61a6292a5",
+    "k562.npz": "a37c78ce1f7c13a3fc145e75e64f2ccead555ec8e38a656d671903ed4fd7218f",
+    "orion_hct116.npz": "f9716177f742c6dd39a2daced30f1d6a62f7d1d95f1e8e35f5a60b62684c4306",
+    "orion_hek293t.npz": "8dcb3fd5f9d619383534ba81254649c2341b2b004b2ded713f9f178a742e5ee6"
+  },
+  "cis": {
+    "spec": {
+      "pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv",
+      "max_distance_bp": 5000,
+      "scale": 2.0
+    },
+    "pairs_sha256": "d874c305f12e932d2d43eff629ea7d44c8536b7a198868c8fac10007d01dcf8f",
+    "coords": "C:\\Users\\ferra\\vcc2026-data\\external\\annotation\\gene_coordinates_gencode_v50.tsv",
+    "coords_sha256": "065906f739094c6ae572d21c0b14e7b8f2d4daa0284cdb68864ed27b9caba34c",
+    "edges_bp": [
+      0,
+      1000,
+      2000,
+      5000,
+      10000,
+      20000
+    ],
+    "prior_ln_by_bin": [
+      -0.3323155970492182,
+      -0.2312014418620707,
+      -0.10858278570905305,
+      -0.08656477168665586,
+      -0.03597850765225018
+    ],
+    "pairs_by_bin": [
+      890,
+      179,
+      196,
+      410,
+      1004
+    ]
+  },
+  "finished_utc": "2026-10-04T08:06:35.935732+00:00",
+  "peak_rss_bytes": 592678912
+}
