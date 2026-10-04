@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "eid": "E-20261004-003",
+  "revision": 1,
+  "previous_sha256": null,
+  "recorded_utc": "2026-10-04T16:56:58.303402+00:00",
+  "claim_type": "operational_incident",
+  "state": "verified_locally",
+  "title": "Banco v2 K562: guardia di copertura rifiuta target senza transfer di produzione",
+  "symptom": "Preflight remoto passato; export fallisce prima dello scoring con prod: a target has no observed genes.",
+  "cause": "La guardia nuova trattava le righe senza transfer come input corrotti; la baseline archiviata conserva quei target e genera dal basale.",
+  "cause_verified": true,
+  "fix": "Esportatore r2 distinto: ammettere solo le righe realmente senza supporto della baseline prod, identiche nei due bracci; registrare i target e mantenerli tutti.",
+  "regression_test": "test_repair.py: target non supportato mantenuto e nominato; target supportato mancante e riga vuota di all ancora rifiutati. Sei test piccoli passati.",
+  "next_guard": "Distinguere assenza di supporto della baseline da asse o input mancante; nessun target eliminato per far passare il banco.",
+  "scope": "Solo esportatore del retry K562; altri quattro job e regola scientifica invariati. Nessuno scoring K562 letto.",
+  "evidence": [
+    {
+      "path": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/k562_r1_effects.log",
+      "bytes": 418,
+      "sha256": "326ac64f9c39e041aa833d375651df2c76937e06c19ebb8a8c513b4bd69d5114",
+      "supports": "Log del fallimento, risorse, emendamento o regressione della riparazione"
+    },
+    {
+      "path": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/k562_r1_kernel_done.json",
+      "bytes": 301,
+      "sha256": "6008f1b9d1510283dd6782248cfe5afcc5c863d43ea57620112034904c5b6508",
+      "supports": "Log del fallimento, risorse, emendamento o regressione della riparazione"
+    },
+    {
+      "path": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/k562_r1_resources.json",
+      "bytes": 144,
+      "sha256": "121212fa2c2b851d1df0c1b657ca53de9daf67b043650c2abaef6c32e3cd382a",
+      "supports": "Log del fallimento, risorse, emendamento o regressione della riparazione"
+    },
+    {
+      "path": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/EMENDAMENTO_K562.md",
+      "bytes": 881,
+      "sha256": "2296582419d09d7df23a1515672db80861685e1308d16d78d511ca9474bf5449",
+      "supports": "Log del fallimento, risorse, emendamento o regressione della riparazione"
+    },
+    {
+      "path": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/test_repair.py",
+      "bytes": 749,
+      "sha256": "7f2fd9685eab21cb840f6b0a7eea107bce20171e6ffffc7831341c44ee35bedb",
+      "supports": "Log del fallimento, risorse, emendamento o regressione della riparazione"
+    }
+  ],
+  "remote_verification": null
+}
