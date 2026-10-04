@@ -57,7 +57,7 @@ class Sampled(unittest.TestCase):
         (d / "b" / "z").mkdir(parents=True)
         shutil.copy(d / "a" / "s1.h5ad", d / "b" / "z" / "x9.h5ad")
         shutil.copy(d / "a" / "s2.h5ad", d / "b" / "a0.h5ad")
-        cls.rb = run("--shard-roots", d / "b", "--out", d / "ob", "--level", "64", "--workers", "1")
+        cls.rb = run("--shard-roots", d / "b", "--out", d / "ob", "--level", "64", "--workers", "2")   # the spawn pool
 
     @classmethod
     def tearDownClass(cls):

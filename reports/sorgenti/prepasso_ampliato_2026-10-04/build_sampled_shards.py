@@ -119,36 +119,52 @@ def plan(obs_by_shard: dict, levels, seed: int):
 
 
 def write_one(task):
-    """Write the sampled shard of one source shard; returns its manifest row."""
+    """Write the sampled shard of one source shard; returns its manifest row.
+
+    Revision of 4/10 04:45, after vcc-sampled-hct116-l64-r2 died at the 46th of 109 Orion shards with an empty log
+    (hypothesis: memory, as E-20261004-001): the source is opened backed and only the kept rows of X are read
+    (anndata reads the row slices of the CSR); the check re-reads the written X with h5py and compares it with the
+    kept rows in memory, and the kept rows' lengths with the source's row pointer; each shard runs in a fresh process
+    (main: spawn, max_tasks_per_child=1) and prints one line when done."""
     import anndata as ad
+    import h5py
     import scipy.sparse as sp
     src, out_dir, keep_rows, level, rule, meta = task
     t0 = time.time()
-    a = ad.read_h5ad(src)
-    X = a.X if sp.issparse(a.X) else sp.csr_matrix(a.X)
-    X = X.tocsr()
     keep = np.asarray(keep_rows, np.int64)
-    sub_before = X[keep]
-    b = a[keep].copy()
-    b.X = sub_before.copy()
+    a = ad.read_h5ad(src, backed="r")
+    n_src = int(a.n_obs)
+    b = a[keep].to_memory()
+    a.file.close()
+    sub = b.X if sp.issparse(b.X) else sp.csr_matrix(b.X)
+    sub = sub.tocsr()
+    with h5py.File(src, "r") as f:
+        indptr = f["X"]["indptr"][:]
+    want_len = (indptr[keep + 1] - indptr[keep]).astype(np.int64)
+    src_nnz = int(indptr[-1])
+    del indptr
     uns = dict(b.uns)
-    uns["rows"] = {"rule": rule, "level": level, "source_shard": src.name, "source_rows": int(a.n_obs),
+    uns["rows"] = {"rule": rule, "level": level, "source_shard": src.name, "source_rows": n_src,
                    "kept_rows": int(len(keep))}
-    uns["parity"] = {"kept_cells": int(len(keep)), "kept_nnz": int(sub_before.nnz),
-                     "kept_counts": int(sub_before.sum()), "source_cells": int(a.n_obs), "source_nnz": int(X.nnz)}
+    uns["parity"] = {"kept_cells": int(len(keep)), "kept_nnz": int(sub.nnz), "kept_counts": int(sub.sum()),
+                     "source_cells": n_src, "source_nnz": src_nnz}
     uns["writer"] = meta
     b.uns = uns
+    b.X = sub
     dest = out_dir / f"{src.stem}__L{level}.h5ad"
     b.write_h5ad(dest)
-    back = ad.read_h5ad(dest)
-    Y = back.X.tocsr() if sp.issparse(back.X) else sp.csr_matrix(back.X)
-    same = (Y.shape == sub_before.shape) and (Y != sub_before).nnz == 0 and list(back.obs["cell_key"]) == list(
-        a.obs["cell_key"].to_numpy()[keep])
-    return {"source": src.name, "source_bytes": src.stat().st_size, "source_sha256": sha256_file(src),
-            "output": dest.name, "output_bytes": dest.stat().st_size, "output_sha256": sha256_file(dest),
-            "kept_rows": int(len(keep)), "kept_nnz": int(sub_before.nnz), "kept_counts": int(sub_before.sum()),
-            "reread_equal": bool(same), "seconds": round(time.time() - t0, 2),
-            "peak_rss_mb": peak_rss_mb()}
+    with h5py.File(dest, "r") as f:
+        g = f["X"]
+        same = (np.array_equal(g["indptr"][:], sub.indptr) and np.array_equal(g["indices"][:], sub.indices)
+                and np.array_equal(g["data"][:], sub.data))
+    same = bool(same and np.array_equal(np.diff(sub.indptr), want_len))
+    row = {"source": src.name, "source_bytes": src.stat().st_size, "source_sha256": sha256_file(src),
+           "output": dest.name, "output_bytes": dest.stat().st_size, "output_sha256": sha256_file(dest),
+           "kept_rows": int(len(keep)), "kept_nnz": int(sub.nnz), "kept_counts": int(sub.sum()),
+           "reread_equal": same, "seconds": round(time.time() - t0, 2), "peak_rss_mb": peak_rss_mb()}
+    print(json.dumps({"msg": "shard", **{k: row[k] for k in ("source", "kept_rows", "reread_equal", "seconds",
+                                                             "peak_rss_mb")}}), flush=True)
+    return row
 
 
 def peak_rss_mb():
@@ -203,10 +219,16 @@ def main() -> None:
         counts["perturbed_total"] += int(pert.sum())
         counts["perturbed_kept"] += int((pert & (lv > 0) & (lv <= a.level)).sum())
         counts["dropped_unlabelled_or_unassigned"] += int((~ctrl & ~pert).sum())
-        tasks.append((s, a.out, keep.tolist(), a.level, rule, meta))
+        tasks.append((s, a.out, keep.astype(np.int64), a.level, rule, meta))
+    del obs_by_shard, level_of
+    print(json.dumps({"msg": "start", "shards": len(tasks), **counts, "groups": len(groups),
+                      "seconds_plan": round(time.time() - t0, 1)}), flush=True)
     rows = []
     if a.workers > 1:
-        with ProcessPoolExecutor(max_workers=a.workers) as ex:
+        import multiprocessing as mp
+        # a fresh process per shard, started clean: no memory carried from one shard to the next (E-20261004-001)
+        with ProcessPoolExecutor(max_workers=a.workers, mp_context=mp.get_context("spawn"),
+                                 max_tasks_per_child=1) as ex:
             rows = list(ex.map(write_one, tasks))
     else:
         rows = [write_one(t) for t in tasks]
