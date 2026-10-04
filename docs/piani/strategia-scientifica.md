@@ -108,7 +108,9 @@
       - `submit_t30_raw.json` porta l'email dell'account nel percorso di storage, come i `submit_*_raw.json` già
         pubblici: da valutare dal proprietario;
       - invii del 4/10: 1 su 2;
-      - i commit dopo `0106571` non sono pubblicati: prima di un push si verifica l'intera differenza.
+      - push delle 12:33: `0106571..33c2bb2` pubblicati dopo la verifica dell'intera differenza in uscita. Sono 284
+        file; nessun segreto, credenziale, identità di linea o file sopra 1,5 MB. L'unico riscontro è l'email nel
+        percorso di storage di `submit_t30_raw.json`.
     - *Attività suggerita, in ordine:*
       1. Chiudere il t30 come sopra.
       2. Diagnosi controllata del t30, secondo `reports/analisi/prossimo_ibrido_2026-10-04/PROMPT_CLAUDE1.md` §2–3.
