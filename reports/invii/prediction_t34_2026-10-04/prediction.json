@@ -1,0 +1,34 @@
+{
+  "written_utc": "registered by the commit that adds this file, before the candidate export, generation and packaging",
+  "number_note": "t34 is a provisional number: on main Davide's t30 (4/10) exists and a t31 is planned, while on codex/teammate-rlead t30 and t31 are Alfredo's submissions of 3/10; the proposal sent to Davide renames ours t32 and t33. Confirm with Davide before the upload.",
+  "label": "t34: contrastive effect network (residual adapter on K562 effects, PDS-like InfoNCE loss) with the t31 sources and amplitude and the t22 generator",
+  "claim_type": "subjective forecast registered before the export and generation; no official result",
+  "status": "prepared on the owner's request in chat (4/10 afternoon: 'si procedi e prepara il pacchetto'); the upload needs his explicit yes and the team quota agreed with Davide",
+  "references": {"t31": 0.07874905138420325, "t30_rlead": 0.027878307730988663, "t25": 0.140238, "t28_best_observed": 0.144845205, "t15_three_genome_wide_sources_x2": 0.107533},
+  "evidence": [
+    "bench (reports/modelli/contrastiva_2026-10-04/ESITO.md): macro contr - k562 +0.0151 [+0.0137, +0.0164] over five held-out line groups, 4 of 5 folds positive, discrimination -0.007; the same network with the old loss does not pass",
+    "addendum 1: against the copy in the t31 semantics (same lfc) the gain holds, +0.0144 [+0.0118, +0.0169]",
+    "on 260 of the 272 covered panel targets the only source is K562 gwps (CP-0058 of this branch), so t31 is in practice K562 x2"
+  ],
+  "candidate": {
+    "model": "contr_final.pt of processed/effects_contr_2026-10-04 (phase-2 fit on all 8 groups, 100 steps = median best step of the folds), read back by sha256",
+    "export": "reports/modelli/contrastiva_2026-10-04/esporta_d.py: d = K562 d-copy + correction centred over the 272 covered targets; genes with 5e4 p < 0.5 in the context get d = 0 and observed False; per-target d-norm on the expressed genes equal to that of the t31 effect converted to d; lfc by the exact inverse with the context basal",
+    "gate": "common share of the correction before centring <= 0.5 in every context, else no upload",
+    "stage_45": "trial-ext-profile, --effects-scale 2.0, otherwise as t31 (t22 defaults, seed 20260912)",
+    "stage_48": "as t31"
+  },
+  "against_t31": "not a single factor: the model's direction, the effect definition in d space with the amplitude matched in d instead of lfc, and the exclusion of unexpressed genes (plus effects on expressed genes K562 does not measure) change together; sources, covered targets, generator and effects scale are the same",
+  "expected": {
+    "score_avg_band": [0.06, 0.11],
+    "working_centre": 0.085,
+    "calibration": "Subjective. The bench gain (+0.015 cosine on a base near 0.1) is small and local benches overstated the site three times (t28, t31 of this branch, Davide's t30); the change of effect definition may move the score either way by a few thousandths."
+  },
+  "rule": {
+    "a_gain_at_least_0.005": "t34 - t31 >= +0.005: the contrastive model helps on the official contexts; next it is applied to the recipe's sources (needs Davide's r9 caches or cube tables), with a protocol of its own",
+    "b_within_0.005": "|t34 - t31| < 0.005: not conclusive; the bench gain does not show at this size; no further submission of this model on K562 alone",
+    "c_loss_at_least_0.005": "t34 - t31 <= -0.005: harmful on the official contexts despite the bench; the effect-level line stops until the mechanism is named",
+    "also_reported": "the six scaled members against t31, and which members move",
+    "not": "one seed; says nothing about D, E, F; does not enter PROGETTO section 0 unless it changes the best observed"
+  },
+  "reserve": "no reserve is consumed: A, B, C are the public validation contexts"
+}
