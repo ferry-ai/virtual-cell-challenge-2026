@@ -58,3 +58,24 @@ VCC: un banco locale ha già sovrastimato la gara tre volte.**
 - Un seme.
 - H1 non è stata letta: l'arresto è tornato alla copia.
 - Le linee di test non sono A, B, C né D, E, F.
+
+## 5. Addendum 1: controllo contro la copia nella semantica del t31
+
+Registrato in [ADDENDUM_1.md](ADDENDUM_1.md) (commit c1a8e13) e codice nel commit successivo, prima del conto. Corsa alle
+15:52. Uscita in [esito/addendum1.json](esito/addendum1.json).
+
+| Piega | `k562` (copia in `d`) | `k562_lfc` (copia in lfc, come il t31) | `contr` |
+|---|---|---|---|
+| H1 | 0,179 | **0,190** | 0,179 (copia in `d`) |
+| KOLF | 0,045 | 0,044 | **0,055** |
+| RPE1 | 0,103 | 0,099 | **0,135** |
+| HepG2 | 0,100 | 0,099 | **0,129** |
+| Jurkat | 0,143 | 0,140 | **0,148** |
+
+- **Regola dell'addendum: passa.** La macro `contr − k562_lfc` è **+0,0144 [+0,0118; +0,0169]**, e la discriminazione
+  `contr − k562_lfc` è −0,005.
+- **`k562_lfc − k562` = +0,0006:** sul banco le due copie si equivalgono.
+- **Su H1 la copia in lfc è migliore di quella in `d`** (+0,011), e lì la contrastiva è tornata alla copia in `d`. È
+  l'unica piega con bersagli del pannello e verità molto pulite.
+- **L'esportazione `effects_contr_2026-10-04` non è un candidato** (addendum, §1). Il candidato va esportato nello
+  spazio `d` del contesto, con la regola d'ampiezza e la previsione registrate prima.

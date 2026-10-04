@@ -1,6 +1,6 @@
 # Addendum 1: la copia del banco non è la copia del t31
 
-4 ottobre 2026, verso le 15:55, ora del PC. Scritto **prima** del conto che descrive. Il commit che aggiunge questo
+4 ottobre 2026, commit c1a8e13 alle 15:51, ora del PC. Scritto **prima** del conto che descrive. Il commit che aggiunge questo
 file ne fissa l'ora.
 
 ## Che cosa ho trovato esportando A, B, C (misurato)
