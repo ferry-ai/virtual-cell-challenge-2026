@@ -251,3 +251,38 @@ braccio `ibrido`. Il resto, fissato ora:
 Un refit su tutti i gruppi resta possibile dopo una modifica del pre-passo: sarebbe un candidato diverso, con un
 protocollo suo. L'invio resta soggetto al §9: punteggio di banco ≥ 0,100 su tutti i contesti preregistrati (sviluppo
 in leave-one-line-out e conferma con il sistema congelato), risultati completi e validi, previsione registrata prima.
+
+## 14. Emendamento del 4/10, 10:10: i dettagli dell'esportazione per A/B/C, prima di calcolare qualunque R su A/B/C
+
+Al momento della scrittura sono letti l'esito di conferma («confermato» su Jurkat e K562) e il punteggio di banco del §9
+(`esito/decision_full_r1/decision.json`). Nessuna R, nessun peso e nessun effetto ibrido di A/B/C esiste ancora. Gli
+effetti del t25 sono stati rigenerati con lo stadio 100 (ricetta t25, cache r9) e hanno lo sha256 del manifest del t25
+(`1d3e1dac…`, uguale per A, B e C). Questo emendamento non cambia alcuna regola: fissa ciò che il §13 lascia aperto.
+
+1. **Ancora dei contesti di gara.** Si applica la regola delle ancore del fold della rete (`anchors.py`, `sources_for`)
+   a una riga di un gruppo che non è nel cubo. Le fonti sono i gruppi del cubo diversi dalla linea esclusa della rete,
+   HepG2: nove gruppi, regola `all`. Le medie J sono quelle del training: `j_table_means` con HepG2 esclusa e le 2.239
+   chiavi nascoste. Ampiezza t25; divisore del supporto 9, dal manifest delle ancore del fold. È la lettura stretta di
+   «il transfer dai gruppi del cubo»: ingressi d'ancora e supporto restano nella distribuzione vista dalla rete, e
+   HepG2 non entra in alcuna ancora di questa rete.
+2. **Bersagli corretti.** R si calcola solo per i bersagli del pannello nel regime C della rete:
+   - simbolo addestrato con cellule CRISPRi (almeno una riga `train` nell'indice delle ancore del fold);
+   - non nascosto (simboli nascosti dello split, fold 0 di 5);
+   - con ancora (supporto > 0).
+   Per gli altri w = 0, cioè l'ibrido è T. Il selettore è stato stimato e valutato solo su righe C.
+3. **Cellule virtuali.** Per ogni contesto si fanno 1.024 estrazioni di 64 controlli senza reinserimento dal file
+   ufficiale dei controlli (seme 20261004). Il file non ha colonne di libreria, quindi c'è una libreria per contesto.
+   Le estrazioni sono le stesse per tutti i bersagli. Modalità CRISPRi, π = 1 (cancello spento). s(N) e s(A) usano lo
+   stimatore della v4 sulle proporzioni medie (geni misurati dal file) e si arrotondano a float16 come in
+   `eval_shifts.npz`; R è la loro differenza.
+4. **Ingressi del selettore**, come nelle righe e sui geni del cubo:
+   - supporto e concordanza dei nove gruppi;
+   - logaritmo del rapporto delle RMS e coseno di R rispetto all'ancora del punto 1 (il «T» delle righe), sul gene
+     bersaglio escluso;
+   - espressione: il basale del cubo `competition_<contesto>` (log1p CPM dei controlli ufficiali) nella posizione del
+     gene bersaglio, 0 se manca.
+   Il selettore congelato (`00758778…`) dà w con il braccio `ibrido`.
+5. **Effetti.** Si usa `lfc_t25 + w · R` sulle coppie (bersaglio, gene) con `observed` vero; altrove gli effetti restano
+   invariati. L'asse dei geni della rete è quello ufficiale (18.533 geni), e R si allinea per nome.
+6. **Parità dell'esportazione.** Con w = 0 per tutti i bersagli, gli array degli effetti devono essere identici a quelli
+   del t25. La verifica si scrive nel manifest prima di generare.
