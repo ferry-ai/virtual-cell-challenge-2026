@@ -20,6 +20,15 @@
     `vcc-cd4-d3-rest-p1of2-r1` in ERROR (da rilanciare come r2 e da registrare fra gli incidenti); `D2_Stim8hr` e
     `D2_Stim48hr` completi nelle due parti, da verificare. Questa sessione non ha l'autorizzazione autonoma della
     `2b35612c`: rilanci, verifiche su Kaggle, push e invii attendono il via in chat.
+  - *Aggiornamento delle 17:55 (via del proprietario in chat: corsie diagnostiche alle 14:53, poi «puoi anticipare
+    tutto quello che vuoi»):* confronti eseguiti e letti, [CP-0065](../checkpoints/0065-d056-confronti-e-rumore-del-banco.md)
+    ed [esito](../../reports/modelli/diagnosi_t30_2026-10-04/ESITO_CONFRONTI.md): banco a un seme rumoroso quanto i
+    guadagni; su 5 semi e 400 cellule +0,013 di media; il fold HepG2 perde PDS; procedura dell'invio fedele.
+    Dati: verificate CD4 `D2_Stim8hr`, `D2_Stim48hr` e `D3_Rest` (p1 rilanciata come r2); in corsa alle 17:55 su
+    `davideferrante11` `D3_Stim48hr` p0–p1 e la verifica di `D3_Stim8hr`, su `davidmaisterx` (codice replicato come
+    dataset privato, stesso sha256) `D4_Stim48hr` p0–p1, `D4_Stim8hr` p0–p1, `D4_Rest` p0; resta `D4_Rest` p1, da
+    lanciare su `davidmaisterx` perché l'unità resti su un account. GPU: solo `davidmaisterx` (indicazione del
+    proprietario); nessuna usata.
   - *Per Codex:* vincoli per il prossimo protocollo nel §3 e §5 del resoconto; nessun file di
     `prossimo_ibrido_2026-10-04/` è stato toccato.
 - **Mandato:** prevedere come rispondono linee mai viste perturbate partendo dai soli controlli, e scegliere il modello

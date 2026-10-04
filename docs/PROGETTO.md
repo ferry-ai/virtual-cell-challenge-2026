@@ -32,7 +32,9 @@ ritorno al transfer.
   ramo b della regola registrata, non conclusivo e non un miglioramento; perde PDS (−0,042 scalato)
   ([CP-0064](checkpoints/0064-t30-ibrido-selettivo-punteggio-ufficiale.md)). Il banco non aveva valutato il candidato inviato: baseline diversa, correzione per due
   terzi comune ai bersagli e più ampia all'esportazione, perdita di PDS già visibile sul fold esportato. La causa non
-  è isolata ([diagnosi](../reports/modelli/diagnosi_t30_2026-10-04/README.md)); il v1 non è un candidato per D/E/F. Il pilot v4
+  è isolata ([diagnosi](../reports/modelli/diagnosi_t30_2026-10-04/README.md)); il v1 non è un candidato per D/E/F. Rifatto su 5 semi e 400 cellule
+  per bersaglio, il guadagno di banco è +0,013 di media (non +0,044), e il fold esportato perde PDS in modo netto
+  ([CP-0065](checkpoints/0065-d056-confronti-e-rumore-del-banco.md)): il prossimo banco usa più semi e la numerosità dell'invio. Il pilot v4
   (correzione libera) resta negativo ([CP-0061](checkpoints/0061-pilot-v4-esito-tre-linee.md)).
 - **Fonti del transfer:** su Jurkat e K562 più tabelle aggregate battono le fonti della ricetta (+0,07…+0,14 locali).
   Nessun candidato di solo transfer è ammesso, perché il banco di quelle due linee è sotto 0,100 ([S-010](STRADE.md)).

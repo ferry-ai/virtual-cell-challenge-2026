@@ -128,8 +128,11 @@ campioni annidati in [R-DATI](piani/dati-affidabilita.md).
     0,62–0,69 contro 0,07–0,24 delle righe e l'ampiezza 0,71–0,96 contro 0,24–0,42; sul fold esportato il banco
     perdeva PDS (−0,093) e la media lo copriva; il JAC locale di K562 porta il 77 % del suo guadagno.
     La stessa procedura di esportazione sui controlli di HepG2 (non di gara) dà quota comune 0,61: non servono i controlli di gara; i bersagli del pannello non erano fra quelli del banco su tre linee su cinque.
-    La causa della perdita resta un'ipotesi; i confronti che la separano sono
-    [congelati](../reports/modelli/diagnosi_t30_2026-10-04/PROTOCOLLO_CONFRONTI.md) e non eseguiti. Le cinque linee lette sono sviluppo.
+    La causa della perdita sul sito resta un'ipotesi. Le cinque linee lette sono sviluppo.
+  - **Confronti e rumore del banco (misurato, 4/10 sera, [CP-0065](checkpoints/0065-d056-confronti-e-rumore-del-banco.md)):** il guadagno a un seme e 32 cellule
+    ha deviazione standard 0,007–0,045, quanto i guadagni letti; su 5 semi e 400 cellule è +0,004…+0,031, risolto in
+    tre linee su cinque. Il fold esportato (HepG2) perde PDS, −0,129 ± 0,005. La procedura dell'invio è fedele al
+    banco; sulla baseline di produzione il guadagno resta ([esito](../reports/modelli/diagnosi_t30_2026-10-04/ESITO_CONFRONTI.md)).
 - **Misurato, pilot v4 della rete ancorata (4/10): non passa** ([CP-0061](checkpoints/0061-pilot-v4-esito-tre-linee.md)).
   Tre training tecnicamente accettati; la correzione appresa peggiora la propria ancora su tre linee su tre (corsia
   B, media dei sei membri: −0,214, −0,050 e −0,131; guardia della corsia A −0,307). Non è soddisfatto nemmeno il

@@ -17,6 +17,7 @@ Tutto ciò che segue è calcolo locale leggero su file già esistenti. Nessun jo
 
 | File | Contenuto | Stato |
 |---|---|---|
+| [ESITO_CONFRONTI.md](ESITO_CONFRONTI.md) | **Esito dei confronti e della taratura del rumore (17:55), CP-0065**: da leggere dopo questo resoconto; chiude l'ipotesi «procedura», ridimensiona i guadagni di banco | misurato |
 | [ADDENDUM_1451.md](ADDENDUM_1451.md) | Due correzioni di Codex accolte: la parte comune non si azzera per regola (§5); conta il regime dei bersagli, non i 300 del pannello (§3, punto 6) | **da leggere insieme ai §3 e §5** |
 | [TABELLA_CATENA.md](TABELLA_CATENA.md) | Training → banco → esportazione → generazione, voce per voce, e la parità a w = 0 lungo la catena | letto da codice e ricevute |
 | `chain_t30.py`, [esito/chain_t30_r2.json](esito/chain_t30_r2.json) | Entry, ricevuta, modello, effetti, generazione, pacchetto, sei membri, regola | misurato (R1); `r1` è la stessa lettura prima di separare parità del profilo e delle cellule |
