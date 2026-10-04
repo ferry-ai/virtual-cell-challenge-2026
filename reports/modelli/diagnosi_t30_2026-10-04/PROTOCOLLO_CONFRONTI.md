@@ -122,7 +122,7 @@ meno. Una C1 smentita sul banco non assolve la baseline sul sito: lì la baselin
 `processed/diagnosi_t30_2026-10-04/` e ricevute piccole in `esito/` di questa cartella; lettura con uno script
 scritto prima di scaricare le uscite. Esito → checkpoint e aggiornamento di S-009 nello stesso commit.
 
-## 7. Emendamento del 4/10, 13:35 CEST: controllo locale sui controlli delle linee, scritto prima di eseguirlo
+## 7. Emendamento del 4/10, 13:30 CEST (ora letta con `date`): controllo locale sui controlli delle linee, scritto prima di eseguirlo
 
 Al momento della scrittura sono lette le ricevute locali `esito/chain_t30_r2.json`, `esito/bench_members_r1.json` ed
 `esito/export_vs_rows_r1.json` (quota comune di R all'esportazione 0,62–0,69; sulle righe del banco 0,07–0,24;
