@@ -1,0 +1,357 @@
+{
+ "written_utc": "2026-10-04T13:13:54+00:00",
+ "protocol": "reports/modelli/diagnosi_t30_2026-10-04/PROTOCOLLO_CONFRONTI.md \u00a74",
+ "thresholds": {
+  "C1_mean": -0.01,
+  "C2_mean": -0.02,
+  "C3_mean": 0.01,
+  "C3_share": 0.5,
+  "C4_avg_mean": -0.01,
+  "C4_pds_mean": -0.02,
+  "reproduction_tolerance": 1e-09
+ },
+ "lines": {
+  "HepG2": {
+   "valid": true,
+   "parity": true,
+   "max_gap_to_stored": {
+    "all": 0.0,
+    "all_wR": 0.0,
+    "prod": 0.0
+   },
+   "effects": {
+    "written_utc": "2026-10-04T13:11:50+00:00",
+    "held_group": "HepG2",
+    "targets": 150,
+    "targets_without_T_all": 0,
+    "targets_without_T_prod": 0,
+    "common_share_R": 0.20708954528712312,
+    "common_share_dose": 0.6500000195690661,
+    "dose_factor": 2.666586285278982,
+    "dose_share_requested": 0.65,
+    "rms": {
+     "R": 0.09728955937329654,
+     "T_all": 0.12956329423973414,
+     "T_prod": 0.12904271626633418,
+     "R_bar": 0.04419004635801742,
+     "R_spec": 0.08658929761276661
+    },
+    "cos_mean": {
+     "T_all_vs_T_prod": 0.6852438896031019,
+     "R_vs_T_all": 0.17247953968442664,
+     "R_vs_T_prod": 0.03546249022890535,
+     "R_vs_T_prod_minus_T_all": -0.17640235484639225
+    },
+    "w_mean": 0.5874578369971816,
+    "export_style": {
+     "draws": {
+      "draws": 1024,
+      "ctrl_k": 64,
+      "seed": 20261004,
+      "modality": "CRISPRi",
+      "corrected": 150,
+      "seconds": 70.1
+     },
+     "controls": {
+      "cells": 2048,
+      "var_genes": 9023,
+      "var_off_model": 0,
+      "input_genes_absent": 117
+     },
+     "targets_computed": 150,
+     "model_sha256": "365bf62508cab76c3b2971678557adfd6a7c51d10fb336f6c3e05e75902a88bc",
+     "exported_state": {
+      "state": "best check",
+      "step": 20000,
+      "benefit": 0.14282635745287015,
+      "internal_benefit_positive": true
+     },
+     "common_share_R_exp": 0.2092706727128427,
+     "common_share_R": 0.20708954528712312,
+     "rms": {
+      "R_exp": 0.09741257535547021,
+      "R": 0.09728955937329654,
+      "T_all": 0.12956329423973414,
+      "R_exp_bar": 0.04447911934474334
+     },
+     "cos_mean_R_exp_vs_R": 0.9997743510881655,
+     "cos_common_R_exp_vs_common_R": 0.9998340326471037
+    },
+    "sources": {
+     "transfer_all_J": [
+      "CD4T",
+      "H1",
+      "HCT116",
+      "HEK293T",
+      "Jurkat",
+      "K562",
+      "Neuron",
+      "RPE1",
+      "iPSC"
+     ],
+     "transfer_prod_J": [
+      "CD4T",
+      "HCT116",
+      "HEK293T",
+      "K562"
+     ]
+    }
+   },
+   "members": {
+    "replicate": {
+     "PDS": 1.0,
+     "MSE": 1.0,
+     "NMAE": 1.0,
+     "FID": 1.0,
+     "REACH": 1.0,
+     "JAC": 1.0
+    },
+    "baseline": {
+     "PDS": 0.0,
+     "MSE": -0.0,
+     "NMAE": -0.0,
+     "FID": 0.0,
+     "REACH": 0.0,
+     "JAC": 0.0
+    },
+    "all": {
+     "PDS": 0.984121,
+     "MSE": 0.0,
+     "NMAE": 0.136968,
+     "FID": 0.568794,
+     "REACH": 0.156587,
+     "JAC": -0.574668
+    },
+    "all_w0": {
+     "PDS": 0.984121,
+     "MSE": 0.0,
+     "NMAE": 0.136968,
+     "FID": 0.568794,
+     "REACH": 0.156587,
+     "JAC": -0.574668
+    },
+    "all_wR": {
+     "PDS": 0.890879,
+     "MSE": 0.0,
+     "NMAE": 0.238783,
+     "FID": 0.711887,
+     "REACH": 0.326125,
+     "JAC": -0.515675
+    },
+    "all_wRspec": {
+     "PDS": 0.917622,
+     "MSE": 0.0,
+     "NMAE": 0.21399,
+     "FID": 0.660846,
+     "REACH": 0.283065,
+     "JAC": -0.537831
+    },
+    "all_wRcom": {
+     "PDS": 0.88288,
+     "MSE": 0.0,
+     "NMAE": 0.210995,
+     "FID": 0.594957,
+     "REACH": 0.205764,
+     "JAC": -0.546028
+    },
+    "all_wRdose": {
+     "PDS": 0.779847,
+     "MSE": 0.0,
+     "NMAE": 0.272819,
+     "FID": 0.79464,
+     "REACH": 0.388477,
+     "JAC": -0.46615
+    },
+    "prod": {
+     "PDS": 0.894819,
+     "MSE": 0.0,
+     "NMAE": 0.014754,
+     "FID": 0.524115,
+     "REACH": 0.033667,
+     "JAC": -0.619513
+    },
+    "prod_wR": {
+     "PDS": 0.793935,
+     "MSE": 0.0,
+     "NMAE": 0.047978,
+     "FID": 0.628213,
+     "REACH": 0.125187,
+     "JAC": -0.573448
+    },
+    "prod_wRspec": {
+     "PDS": 0.890282,
+     "MSE": 0.0,
+     "NMAE": 0.053371,
+     "FID": 0.586728,
+     "REACH": 0.107956,
+     "JAC": -0.587179
+    },
+    "prod_wRcom": {
+     "PDS": 0.618075,
+     "MSE": 0.0,
+     "NMAE": -0.016276,
+     "FID": 0.551292,
+     "REACH": 0.046317,
+     "JAC": -0.612938
+    },
+    "prod_wRdose": {
+     "PDS": 0.504179,
+     "MSE": 0.0,
+     "NMAE": 0.206943,
+     "FID": 0.723428,
+     "REACH": 0.249721,
+     "JAC": -0.537595
+    },
+    "prod_x15": {
+     "PDS": 0.925621,
+     "MSE": 0.0,
+     "NMAE": 0.011003,
+     "FID": 0.656917,
+     "REACH": 0.0549,
+     "JAC": -0.58128
+    },
+    "prod_wR_x15": {
+     "PDS": 0.832378,
+     "MSE": 0.0,
+     "NMAE": 0.13225,
+     "FID": 0.787493,
+     "REACH": 0.272517,
+     "JAC": -0.508892
+    },
+    "all_wRexp": {
+     "PDS": 0.878582,
+     "MSE": 0.0,
+     "NMAE": 0.214133,
+     "FID": 0.708221,
+     "REACH": 0.317131,
+     "JAC": -0.511084
+    },
+    "prod_wRexp": {
+     "PDS": 0.814112,
+     "MSE": 0.0,
+     "NMAE": 0.114738,
+     "FID": 0.633898,
+     "REACH": 0.162646,
+     "JAC": -0.573468
+    },
+    "all_wRexpspec": {
+     "PDS": 0.915831,
+     "MSE": 0.0,
+     "NMAE": 0.147476,
+     "FID": 0.670341,
+     "REACH": 0.245254,
+     "JAC": -0.529614
+    }
+   },
+   "six": {
+    "E": -0.007502542596723449,
+    "gain_as_exported": 0.05586337510064804,
+    "gain_as_exported_prod": 0.05068061349482075,
+    "gain_as_exported_specific": 0.029580838552728306,
+    "G": 0.06336591769737149,
+    "G_prod": 0.029003913035608703,
+    "D": -0.034362004661762785,
+    "S": 0.04431475014363512,
+    "K": 0.012794243852239484,
+    "S_prod": 0.03388586494854187,
+    "K_prod": -0.043562006231687725,
+    "dose": 0.08297176334127782,
+    "dose_prod": 0.049805773387288144,
+    "x15": 0.07476431878429055
+   },
+   "five_without_JAC": {
+    "E": -0.009921219947532145,
+    "gain_as_exported": 0.054319287309268105,
+    "gain_as_exported_prod": 0.05160784277198133,
+    "gain_as_exported_specific": 0.026486235083649556,
+    "G": 0.06424050725680025,
+    "G_prod": 0.025591681924590826,
+    "D": -0.038648825332209424,
+    "S": 0.04581036978039493,
+    "K": 0.009625036020566413,
+    "S_prod": 0.034196291657200506,
+    "K_prod": -0.0535892253905797,
+    "dose": 0.07786253269907117,
+    "dose_prod": 0.04338331842978549,
+    "x15": 0.07523957930551012
+   },
+   "pds": {
+    "P": -0.11103151862464189,
+    "Q": 0.026743075453677156,
+    "prod_wR_minus_prod": -0.10088347659980879,
+    "all_wR_minus_all": -0.093242597898758,
+    "F": -0.012297039159503309
+   }
+  }
+ },
+ "excluded": {},
+ "note": "diagnostic readings on lines already read; local scale, not VCC scores; no candidate is promoted",
+ "primary_six_members": {
+  "lines": 1,
+  "lines_needed": 1,
+  "C4": {
+   "mean_E": -0.007502542596723449,
+   "lines_E_negative": 1.0,
+   "mean_F": -0.012297039159503309,
+   "lines_F_negative": 1,
+   "mean_gain_as_exported": 0.05586337510064804,
+   "verdict": "non distinta"
+  },
+  "C1": {
+   "mean_D": -0.034362004661762785,
+   "lines_D_negative": 1.0,
+   "verdict": "sostenuta sul banco"
+  },
+  "C2": {
+   "mean_P": -0.11103151862464189,
+   "lines_P_negative": 1,
+   "mean_Q": 0.026743075453677156,
+   "verdict": "sostenuta"
+  },
+  "C3": {
+   "mean_S": 0.04431475014363512,
+   "mean_K": 0.012794243852239484,
+   "mean_G": 0.06336591769737149,
+   "lines_S_positive": 1.0,
+   "verdict": "guadagno specifico"
+  },
+  "amplitude": {
+   "mean_gain_x15": 0.07476431878429055,
+   "mean_gain_x1": 0.029003913035608703
+  }
+ },
+ "secondary_without_JAC": {
+  "lines": 1,
+  "lines_needed": 1,
+  "C4": {
+   "mean_E": -0.009921219947532145,
+   "lines_E_negative": 1.0,
+   "mean_F": -0.012297039159503309,
+   "lines_F_negative": 1,
+   "mean_gain_as_exported": 0.054319287309268105,
+   "verdict": "non distinta"
+  },
+  "C1": {
+   "mean_D": -0.038648825332209424,
+   "lines_D_negative": 1.0,
+   "verdict": "sostenuta sul banco"
+  },
+  "C2": {
+   "mean_P": -0.11103151862464189,
+   "lines_P_negative": 1,
+   "mean_Q": 0.026743075453677156,
+   "verdict": "sostenuta"
+  },
+  "C3": {
+   "mean_S": 0.04581036978039493,
+   "mean_K": 0.009625036020566413,
+   "mean_G": 0.06424050725680025,
+   "lines_S_positive": 1.0,
+   "verdict": "guadagno specifico"
+  },
+  "amplitude": {
+   "mean_gain_x15": 0.07523957930551012,
+   "mean_gain_x1": 0.025591681924590826
+  }
+ }
+}

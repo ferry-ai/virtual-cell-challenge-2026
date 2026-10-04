@@ -1,0 +1,78 @@
+{
+  "written_utc": "2026-10-04T13:28:04+00:00",
+  "held_group": "H1",
+  "targets": 70,
+  "targets_without_T_all": 0,
+  "targets_without_T_prod": 0,
+  "common_share_R": 0.20607062871999504,
+  "common_share_dose": 0.6500000043074388,
+  "dose_factor": 2.674887632511345,
+  "dose_share_requested": 0.65,
+  "rms": {
+    "R": 0.036912680047789026,
+    "T_all": 0.13244100228317637,
+    "T_prod": 0.14862642686289979,
+    "R_bar": 0.016672336651090417,
+    "R_spec": 0.032847394989630685
+  },
+  "cos_mean": {
+    "T_all_vs_T_prod": 0.7727951031680197,
+    "R_vs_T_all": -0.09791131294708372,
+    "R_vs_T_prod": -0.0675739451032675,
+    "R_vs_T_prod_minus_T_all": 0.023579901029578687
+  },
+  "w_mean": 0.28718735851816457,
+  "export_style": {
+    "draws": {
+      "draws": 1024,
+      "ctrl_k": 64,
+      "seed": 20261004,
+      "modality": "CRISPRi",
+      "corrected": 70,
+      "seconds": 26.4
+    },
+    "controls": {
+      "cells": 2048,
+      "var_genes": 18077,
+      "var_off_model": 0,
+      "input_genes_absent": 35
+    },
+    "targets_computed": 70,
+    "model_sha256": "690c61241c74351a9f4ccb73250b9d992ec283947396459e3b1d16d6ca6af437",
+    "exported_state": {
+      "state": "best check",
+      "step": 20000,
+      "benefit": 0.14000397755236207,
+      "internal_benefit_positive": true
+    },
+    "common_share_R_exp": 0.20637627641425377,
+    "common_share_R": 0.20607062871999504,
+    "rms": {
+      "R_exp": 0.03693360993891556,
+      "R": 0.036912680047789026,
+      "T_all": 0.13244100228317637,
+      "R_exp_bar": 0.016694117115881757
+    },
+    "cos_mean_R_exp_vs_R": 0.9999892693216805,
+    "cos_common_R_exp_vs_common_R": 0.9999918293010307
+  },
+  "sources": {
+    "transfer_all_J": [
+      "CD4T",
+      "HCT116",
+      "HEK293T",
+      "HepG2",
+      "Jurkat",
+      "K562",
+      "Neuron",
+      "RPE1",
+      "iPSC"
+    ],
+    "transfer_prod_J": [
+      "CD4T",
+      "HCT116",
+      "HEK293T",
+      "K562"
+    ]
+  }
+}
