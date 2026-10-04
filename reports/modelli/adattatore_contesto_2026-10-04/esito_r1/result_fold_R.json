@@ -1,0 +1,171 @@
+{
+  "fold": "R",
+  "seed": 0,
+  "device": "cuda",
+  "n_pairs": {
+    "train": 4353,
+    "val": 1125,
+    "test": 539
+  },
+  "test_lines": [
+    "replogle_rpe1|RPE1"
+  ],
+  "train_lines": [
+    "hipsci_targeted_19|eipl_1",
+    "hipsci_targeted_19|eipl_3",
+    "hipsci_targeted_19|fiaj_1",
+    "hipsci_targeted_19|fiaj_3",
+    "hipsci_targeted_19|iudw_1",
+    "hipsci_targeted_19|iudw_4",
+    "hipsci_targeted_19|jejf_2",
+    "hipsci_targeted_19|jejf_3",
+    "hipsci_targeted_19|kolf_2",
+    "hipsci_targeted_19|kolf_3",
+    "hipsci_targeted_19|oikd_2",
+    "hipsci_targeted_19|oikd_5",
+    "hipsci_targeted_19|paab_3",
+    "hipsci_targeted_19|paab_4",
+    "hipsci_targeted_19|pipw_4",
+    "hipsci_targeted_19|pipw_5",
+    "hipsci_targeted_19|tolg_4",
+    "hipsci_targeted_19|tolg_6",
+    "hipsci_targeted_19|zapk_3",
+    "tian2019_ipsc|iPSC",
+    "tian2019_neuron_day7|iPSC-induced neuron day 7",
+    "tian2021_crispri|iPSC-induced neuron"
+  ],
+  "test_targets": 539,
+  "genes_M": 7681,
+  "ridge_lambda": 31.622776601683793,
+  "ridge_val_grid": {
+    "0.001": 0.029594262228252014,
+    "0.0031622776601683794": 0.029756970175721334,
+    "0.01": 0.030253892262687165,
+    "0.03162277660168379": 0.03166999468072648,
+    "0.1": 0.035028534884254316,
+    "0.31622776601683794": 0.04039859518059347,
+    "1.0": 0.04544449880004663,
+    "3.1622776601683795": 0.04943095664207035,
+    "10.0": 0.05218646310238551,
+    "31.622776601683793": 0.05254302131183849,
+    "100.0": 0.05000971048160489,
+    "316.22776601683796": 0.04528933981004405,
+    "1000.0": 0.04064037021280022
+  },
+  "adapter_history": [
+    {
+      "step": 0,
+      "val_cos": 0.06132395965943868
+    },
+    {
+      "step": 100,
+      "val_cos": 0.06131337609587884
+    },
+    {
+      "step": 200,
+      "val_cos": 0.06577693924238438
+    },
+    {
+      "step": 300,
+      "val_cos": 0.06342228723414561
+    },
+    {
+      "step": 400,
+      "val_cos": 0.06458903444809139
+    },
+    {
+      "step": 500,
+      "val_cos": 0.06443387376590792
+    },
+    {
+      "step": 600,
+      "val_cos": 0.06232697471993169
+    },
+    {
+      "step": 700,
+      "val_cos": 0.06384115360663284
+    },
+    {
+      "step": 800,
+      "val_cos": 0.06282199527136771
+    },
+    {
+      "step": 900,
+      "val_cos": 0.06261165957861577
+    },
+    {
+      "step": 1000,
+      "val_cos": 0.06314890079080404
+    },
+    {
+      "step": 1100,
+      "val_cos": 0.06231072728508148
+    },
+    {
+      "step": 1200,
+      "val_cos": 0.06485081302022912
+    }
+  ],
+  "adapter_best_val": 0.06577693924238438,
+  "val_cos": {
+    "k562": 0.06132395965943868,
+    "ridge": 0.05254302131183849,
+    "adapter": 0.06577693924238438
+  },
+  "test_cos": {
+    "k562": 0.10633895527217015,
+    "ridge": 0.07387056715187973,
+    "adapter": 0.09039078789710797,
+    "adapter_swap": 0.09302069372933211
+  },
+  "test_cos_U": {
+    "k562": 0.0,
+    "ridge": 0.06944747139132013,
+    "adapter": 0.06370567458813574,
+    "adapter_swap": 0.06467335461929652
+  },
+  "test_cos_M": {
+    "k562": 0.12026168444312844,
+    "ridge": 0.0748701154796981,
+    "adapter": 0.09619881999325347,
+    "adapter_swap": 0.09918702306465318
+  },
+  "diff": {
+    "ridge-k562": {
+      "mean": -0.0324683881202904,
+      "lo": -0.04032165687631199,
+      "hi": -0.024744030475866458,
+      "n_targets": 539
+    },
+    "adapter-k562": {
+      "mean": -0.01594816737506218,
+      "lo": -0.022470861948012878,
+      "hi": -0.00951746891623795,
+      "n_targets": 539
+    },
+    "adapter_swap-k562": {
+      "mean": -0.013318261542838019,
+      "lo": -0.01953609692696737,
+      "hi": -0.007229521889666898,
+      "n_targets": 539
+    },
+    "adapter-ridge": {
+      "mean": 0.016520220745228232,
+      "lo": 0.01234621507911977,
+      "hi": 0.020714563291154023,
+      "n_targets": 539
+    },
+    "adapter-adapter_swap": {
+      "mean": -0.002629905832224157,
+      "lo": -0.0035944137517589392,
+      "hi": -0.001688152084967167,
+      "n_targets": 539
+    }
+  },
+  "nan_in_predictions": {
+    "k562": false,
+    "ridge": false,
+    "adapter": false,
+    "adapter_swap": false
+  }
+}

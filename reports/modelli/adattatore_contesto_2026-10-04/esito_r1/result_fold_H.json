@@ -1,0 +1,171 @@
+{
+  "fold": "H",
+  "seed": 0,
+  "device": "cuda",
+  "n_pairs": {
+    "train": 4759,
+    "val": 1229,
+    "test": 363
+  },
+  "test_lines": [
+    "hipsci_targeted_19|eipl_1",
+    "hipsci_targeted_19|eipl_3",
+    "hipsci_targeted_19|fiaj_1",
+    "hipsci_targeted_19|fiaj_3"
+  ],
+  "train_lines": [
+    "hipsci_targeted_19|iudw_1",
+    "hipsci_targeted_19|iudw_4",
+    "hipsci_targeted_19|jejf_2",
+    "hipsci_targeted_19|jejf_3",
+    "hipsci_targeted_19|kolf_2",
+    "hipsci_targeted_19|kolf_3",
+    "hipsci_targeted_19|oikd_2",
+    "hipsci_targeted_19|oikd_5",
+    "hipsci_targeted_19|paab_3",
+    "hipsci_targeted_19|paab_4",
+    "hipsci_targeted_19|pipw_4",
+    "hipsci_targeted_19|pipw_5",
+    "hipsci_targeted_19|tolg_4",
+    "hipsci_targeted_19|tolg_6",
+    "hipsci_targeted_19|zapk_3",
+    "replogle_rpe1|RPE1",
+    "tian2019_ipsc|iPSC",
+    "tian2019_neuron_day7|iPSC-induced neuron day 7",
+    "tian2021_crispri|iPSC-induced neuron"
+  ],
+  "test_targets": 91,
+  "genes_M": 7681,
+  "ridge_lambda": 10.0,
+  "ridge_val_grid": {
+    "0.001": 0.07688629235076155,
+    "0.0031622776601683794": 0.07731095632414185,
+    "0.01": 0.07853915501926934,
+    "0.03162277660168379": 0.08164239442191336,
+    "0.1": 0.0877918612733501,
+    "0.31622776601683794": 0.09652810101768482,
+    "1.0": 0.1054218488269891,
+    "3.1622776601683795": 0.11237720714760753,
+    "10.0": 0.1154819085362215,
+    "31.622776601683793": 0.11236271138984281,
+    "100.0": 0.1036372238544507,
+    "316.22776601683796": 0.0929629699282436,
+    "1000.0": 0.08416519330710047
+  },
+  "adapter_history": [
+    {
+      "step": 0,
+      "val_cos": 0.07509892828301103
+    },
+    {
+      "step": 100,
+      "val_cos": 0.10974178319273963
+    },
+    {
+      "step": 200,
+      "val_cos": 0.1289526574826552
+    },
+    {
+      "step": 300,
+      "val_cos": 0.12272670403709025
+    },
+    {
+      "step": 400,
+      "val_cos": 0.12207471303925253
+    },
+    {
+      "step": 500,
+      "val_cos": 0.12351888470363465
+    },
+    {
+      "step": 600,
+      "val_cos": 0.12279852664464058
+    },
+    {
+      "step": 700,
+      "val_cos": 0.12053987014004225
+    },
+    {
+      "step": 800,
+      "val_cos": 0.11939742313616053
+    },
+    {
+      "step": 900,
+      "val_cos": 0.11768361555051522
+    },
+    {
+      "step": 1000,
+      "val_cos": 0.12096810546642027
+    },
+    {
+      "step": 1100,
+      "val_cos": 0.11466812711312802
+    },
+    {
+      "step": 1200,
+      "val_cos": 0.1198639638241078
+    }
+  ],
+  "adapter_best_val": 0.1289526574826552,
+  "val_cos": {
+    "k562": 0.07509892828301103,
+    "ridge": 0.1154819085362215,
+    "adapter": 0.1289526574826552
+  },
+  "test_cos": {
+    "k562": 0.050556458017763574,
+    "ridge": 0.036793182528152404,
+    "adapter": 0.04815747693647582,
+    "adapter_swap": 0.04843267116424718
+  },
+  "test_cos_U": {
+    "k562": 0.0,
+    "ridge": 0.02803799086486055,
+    "adapter": 0.033918532235525156,
+    "adapter_swap": 0.03381065024282021
+  },
+  "test_cos_M": {
+    "k562": 0.0643032209093508,
+    "ridge": 0.04107545024319921,
+    "adapter": 0.05476502522706358,
+    "adapter_swap": 0.055174456482426255
+  },
+  "diff": {
+    "ridge-k562": {
+      "mean": -0.01378565441574623,
+      "lo": -0.022353820662304475,
+      "hi": -0.00481683644174644,
+      "n_targets": 91
+    },
+    "adapter-k562": {
+      "mean": -0.002412210358454835,
+      "lo": -0.009529384410087702,
+      "hi": 0.005295606760742049,
+      "n_targets": 91
+    },
+    "adapter_swap-k562": {
+      "mean": -0.002136250764665821,
+      "lo": -0.009205161746832875,
+      "hi": 0.005520455107230755,
+      "n_targets": 91
+    },
+    "adapter-ridge": {
+      "mean": 0.011373444057291392,
+      "lo": 0.006796606763041119,
+      "hi": 0.015952289219747166,
+      "n_targets": 91
+    },
+    "adapter-adapter_swap": {
+      "mean": -0.00027595959378901415,
+      "lo": -0.00044413302512943004,
+      "hi": -0.0001368548386920182,
+      "n_targets": 91
+    }
+  },
+  "nan_in_predictions": {
+    "k562": false,
+    "ridge": false,
+    "adapter": false,
+    "adapter_swap": false
+  }
+}
