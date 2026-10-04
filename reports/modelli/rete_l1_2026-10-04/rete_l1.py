@@ -101,13 +101,14 @@ def line_rows(src: Source, ln: dict, rng: np.random.Generator, gpos: dict):
     cpm = cpm_of(z["basal"])
     ok_gene = meas & (cpm >= MIN_CPM)
     targets = list(map(str, z["targets"]))
+    eff, n_cells = z["eff"], z["n_cells"]  # read once: each npz access decompresses the whole array
     covered = [i for i, t in enumerate(targets) if t in src.row]
     unc = [i for i, t in enumerate(targets) if t not in src.row]
     unc = list(rng.permutation(unc)[:UNCOVERED_PER_LINE]) if unc else []
     X, Y, T = [], [], []
     for i in covered + unc:
-        y = z["eff"][i].astype(np.float64)
-        n = float(z["n_cells"][i])
+        y = eff[i].astype(np.float64)
+        n = float(n_cells[i])
         se = np.sqrt((1.0 / max(n, 1.0) + 1.0 / N_CTRL) / np.maximum(cpm * DEPTH / 1e6, 1e-12))
         gate = ok_gene & np.isfinite(y) & (np.abs(y) >= Z_GATE * se) & (y != 0)
         if targets[i] in gpos:  # the knocked-down gene's own row leaves the gate, as in the scorer
