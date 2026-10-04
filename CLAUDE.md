@@ -13,6 +13,14 @@ Colab = CPU stabile; Kaggle = GPU.** Prima di ogni calcolo pesante leggere
 - **Kaggle GPU:** destinazione preferita per training neurale che usa effettivamente
   CUDA; selezionare una GPU nel notebook non trasferisce da solo modello e tensori.
 
+**NON NEGOZIABILE — parallelismo cloud (D-057, mandato del 4 ottobre 2026):**
+distribuire i job indipendenti già autorizzati fra le sessioni disponibili degli account
+Kaggle configurati e Colab, entro accessi e limiti consentiti dai servizi. Kaggle CPU
+affianca Colab per ingestione e banchi. Prima di serializzare lavoro pronto o spostarlo
+sul portatile, verificare tutti i runtime e registrare l'ostacolo concreto al parallelismo.
+Verificare l'esecuzione effettiva, non solo i lanci; RAM separata per sessione, mai
+sommata come memoria di un solo job. Procedura obbligatoria in [PROCEDURE §3](docs/PROCEDURE.md#3-job-su-colab-e-kaggle).
+
 Misurare RAM libera, CPU, disco, accessi e job attivi prima del lancio: i circa 10 GB
 liberi ricordati per Colab non sono una quota garantita. Il vantaggio di velocità si
 misura, non si deduce dalla sola RAM. Preparare gli input e il codice necessari:

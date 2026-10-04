@@ -145,6 +145,44 @@ generale dei provider. Prima di ogni calcolo pesante applicare questa scelta:
 | Banchi C/J, preprocessing, predizione e valutazioni pesanti su CPU | Colab CPU |
 | Training neurale con modello e tensori effettivamente su CUDA | Kaggle GPU |
 
+### Parallelismo cloud obbligatorio (D-057)
+
+**Mandato del proprietario del 4 ottobre 2026:** sfruttare in parallelo le sessioni
+disponibili degli account Kaggle configurati e Colab per i job indipendenti già
+autorizzati. Colab resta la destinazione CPU preferita; Kaggle CPU la affianca per
+ingestione, preprocessing e banchi, senza accendere GPU che il job non usa.
+
+1. Prima di assegnare i job, rilevare per ogni account/runtime accessibilità, sessioni
+   attive e in coda, slot consentiti, quota residua disponibile, CPU, RAM libera,
+   disco e disponibilità degli input. Registrare data e fonte della misura nel
+   manifest o registro della campagna; un dato non leggibile resta «non verificato».
+   I valori 32 GB Kaggle e 12 GB Colab non sono capacità garantite per account.
+2. Dividere il lavoro pronto per sorgente, shard, fold o seme quando le dipendenze
+   lo consentono. Assegnare parti distinte ai runtime disponibili: non lasciare
+   lavoro indipendente in serie mentre una risorsa idonea è inutilizzata senza
+   motivazione registrata. Preparare codice e input mancanti fa parte del lavoro.
+   Ogni processo deve rientrare nella RAM del proprio runtime; le memorie delle
+   sessioni non costituiscono un unico spazio condiviso.
+3. Usare un'assegnazione univoca per job, launcher con lock, output separati e
+   manifest con hash. Prima di un rilancio verificare che lo stesso lavoro non
+   sia già attivo su un altro account; non interrompere job di altre sessioni.
+4. Dopo il lancio verificare stato remoto e avanzamento/heartbeat per ciascun job;
+   ricevuta di push o stato in coda non provano parallelismo effettivo. Registrare
+   runtime, job e orari osservati; alla chiusura verificare output e ricomposizione
+   senza parti mancanti o duplicate. Conservare checkpoint prima della fine.
+5. Se il parallelismo non è possibile, nominare la dipendenza, il limite di
+   risorse/accesso, la contesa I/O o l'altro impedimento misurato e rivalutare
+   l'assegnazione quando cambia. Rispettare quote e condizioni dei servizi:
+   non usare account aggiuntivi per aggirare restrizioni. Restano valide le
+   autorizzazioni di lancio e download; nessun acquisto è implicito.
+
+Il partizionamento conserva tutte le linee e i contesti idonei di D-053 e gli split
+congelati: riconciliare le parti attese con quelle effettivamente usate, mantenendo
+le esclusioni di validazione. Questa è una regola operativa per ogni agente, non
+la dichiarazione che esista già uno scheduler automatico fra gli account.
+
+### Preparazione e verifica del runtime
+
 Un'esecuzione pesante sul portatile richiede una motivazione registrata nel manifest
 del job: risorse misurate, disponibilità del cloud, input e ostacolo concreto. Preparare
 un pacchetto remoto mancante è un'attività da svolgere, non un motivo automatico per

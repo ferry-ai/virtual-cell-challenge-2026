@@ -14,6 +14,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-057 | Parallelismo obbligatorio dei job indipendenti autorizzati fra i runtime disponibili di Kaggle e Colab, con inventario delle risorse e verifica dell'esecuzione effettiva | attiva | 2026-10-04 | Mandato del proprietario in chat: «se non lo stiamo facendo rendilo regola imprescindibile»; [PROCEDURE §3](PROCEDURE.md#3-job-su-colab-e-kaggle) |
 | D-056 | Direzione confermata: transfer congelato con correzione neurale selettiva, pesata in base al beneficio validato; ritorno al transfer in assenza di evidenza. Candidato da verificare, non modello già promosso | attiva | 2026-10-04 | Conferma del proprietario in chat: «ok allora teniamo il modello ibrido che stavamo ipotizzando prima»; precedenti [STRADE](STRADE.md), S-001–S-007 |
 | D-055 | Ciclo per imparare dagli errori: registro delle strade provate con meccanismo e condizione di riapertura, sezione «Precedenti» obbligatoria nei protocolli nuovi, riga «Strade» nei checkpoint di esperimento, verificati dal controllo dei documenti | attiva | 2026-10-04 | Richiesta del proprietario in chat il 4/10; [STRADE](STRADE.md) |
 | D-054 | Direzione operativa: rete ancorata al transfer (X adattato: basale dai controlli, ancora dagli aggregati delle altre linee, correzione appresa sulle cellule), provata nel pilot v4 corretto; transfer t22/t25 riferimento di produzione; binario dati D-053 indipendente dall'esito; ESM2 dopo, a parità di dati | attiva | 2026-10-03 | Richiesta del proprietario in chat (3/10 sera); [CP-0060](checkpoints/0060-direzione-x-transfer-pilot-v4.md), [protocollo v4](../reports/modelli/rete_ancorata_v4_2026-10-03/PROTOCOLLO.md) |
@@ -72,6 +73,20 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-057 — Parallelismo cloud obbligatorio e verificato
+
+- **Mandato:** il 4 ottobre 2026 il proprietario chiede di rendere imprescindibile
+  la distribuzione del lavoro su più account Kaggle e Colab, sfruttandone le sessioni.
+- **Decisione:** per i job indipendenti già autorizzati, censire i runtime disponibili,
+  distribuirvi il lavoro e verificare il parallelismo effettivo. Serializzazione o
+  ripiego locale richiedono un impedimento concreto registrato. Procedura e criteri
+  di accettazione in [PROCEDURE §3](PROCEDURE.md#3-job-su-colab-e-kaggle).
+- **Confini:** RAM separata per runtime, capacità misurate e non presunte; quote e
+  condizioni dei servizi rispettate; nessun acquisto o nuovo esperimento autorizzato
+  implicitamente. Il partizionamento conserva copertura D-053 e validazione.
+- **Riaprire se:** disponibilità, condizioni dei servizi o misure di contesa rendono
+  inefficace una distribuzione; correggere l'assegnazione sulla base delle misure.
 
 ### D-056 — Transfer con correzione neurale selettiva
 
