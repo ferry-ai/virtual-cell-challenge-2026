@@ -22,15 +22,18 @@ import numpy as np
 import scipy.sparse as sp
 
 REPO = Path(__file__).resolve().parents[3]
+DEPTH_CAP = 0.02  # a cell's depth may change by at most 2% (the check of 4/10 saw +160% without a cap)
+GENE_ORDER = np.random.default_rng(0).permutation(18533).astype(np.int64)  # no axis-order priority
 
 
 @numba.njit(cache=True)
-def slide(indptr, indices, data, L, target, active):
-    """In place on a CSC block: per active column, move counts toward sum(x/L) == target. Returns the residuals."""
+def slide(indptr, indices, data, L, target, active, delta, cap, gene_order):
+    """In place on a CSC block: per active column, move counts toward sum(x/L) == target, never letting a cell's
+    net change in depth (delta, carried across calls) leave [-cap, +cap]. Returns the residuals."""
     n_cols = len(indptr) - 1
     resid = np.zeros(n_cols)
     before = np.zeros(n_cols)
-    for g in range(n_cols):
+    for g in gene_order:
         a, b = indptr[g], indptr[g + 1]
         if not active[g] or b - a < 2:
             continue
@@ -57,9 +60,19 @@ def slide(indptr, indices, data, L, target, active):
                 if cap_d <= 0:
                     i += 1
                     continue
-                k = min(cap_s, cap_d, np.ceil(need / gain))
+                room_s = cap[indices[s]] + delta[indices[s]]
+                room_d = cap[indices[d]] - delta[indices[d]]
+                if room_s < 1:
+                    j -= 1
+                    continue
+                if room_d < 1:
+                    i += 1
+                    continue
+                k = min(cap_s, cap_d, np.ceil(need / gain), np.floor(room_s), np.floor(room_d))
                 data[s] -= k
                 data[d] += k
+                delta[indices[s]] -= k
+                delta[indices[d]] += k
                 need -= k * gain
         elif need < 0:  # small -> big lowers it
             i, j = 0, b - a - 1
@@ -76,9 +89,19 @@ def slide(indptr, indices, data, L, target, active):
                 if cap_d <= 0:
                     j -= 1
                     continue
-                k = min(cap_s, cap_d, np.ceil(-need / gain))
+                room_s = cap[indices[s]] + delta[indices[s]]
+                room_d = cap[indices[d]] - delta[indices[d]]
+                if room_s < 1:
+                    i += 1
+                    continue
+                if room_d < 1:
+                    j -= 1
+                    continue
+                k = min(cap_s, cap_d, np.ceil(-need / gain), np.floor(room_s), np.floor(room_d))
                 data[s] -= k
                 data[d] += k
+                delta[indices[s]] -= k
+                delta[indices[d]] += k
                 need += k * gain
         resid[g] = -need
     return resid, before
@@ -108,9 +131,12 @@ class Targets:
         totals0 = np.asarray(block.sum(axis=1)).ravel().astype(np.float64)
         col0 = np.asarray(csc.sum(axis=0)).ravel()
         stats = {}
+        delta = np.zeros(n)
+        cap = DEPTH_CAP * totals0
         for p in range(2):  # the second pass re-reads the depths the first pass moved
             L = np.asarray(csc.sum(axis=1)).ravel()
-            resid, before = slide(csc.indptr.astype(np.int64), csc.indices.astype(np.int64), csc.data, L, goal, active)
+            resid, before = slide(csc.indptr.astype(np.int64), csc.indices.astype(np.int64), csc.data, L, goal, active,
+                                  delta, cap, GENE_ORDER)
             if p == 0:
                 stats["need_abs_sum"] = float(np.abs(before[active]).sum())
         stats["resid_abs_sum"] = float(np.abs(resid[active]).sum())
