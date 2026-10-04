@@ -1,0 +1,98 @@
+{
+ "held_group": "Jurkat",
+ "rows": 9174,
+ "genes": 18533,
+ "rank": 32,
+ "anchored_modalities": [
+  "CRISPRi"
+ ],
+ "version": 4,
+ "sources": {
+  "rule": "cells",
+  "groups": [
+   "H1",
+   "HepG2",
+   "K562",
+   "Neuron",
+   "RPE1",
+   "iPSC"
+  ],
+  "tables": [
+   "k562_gwps",
+   "k562_essential",
+   "rpe1",
+   "hepg2_nadig",
+   "kolf21j",
+   "hipsci_eipl_1",
+   "hipsci_eipl_3",
+   "hipsci_fiaj_1",
+   "hipsci_fiaj_3",
+   "hipsci_iudw_1",
+   "hipsci_iudw_4",
+   "hipsci_jejf_2",
+   "hipsci_jejf_3",
+   "hipsci_kolf_2",
+   "hipsci_kolf_3",
+   "hipsci_oikd_2",
+   "hipsci_oikd_5",
+   "hipsci_paab_3",
+   "hipsci_paab_4",
+   "hipsci_pipw_4",
+   "hipsci_pipw_5",
+   "hipsci_tolg_4",
+   "hipsci_tolg_6",
+   "hipsci_zapk_3",
+   "jurkat_nadig",
+   "h1_train",
+   "h1_val",
+   "tian2021_neuron"
+  ],
+  "dropped_tables": [
+   "cd4_rest",
+   "cd4_stim48hr",
+   "cd4_stim8hr",
+   "hct116",
+   "hek293t",
+   "k562_viperturb"
+  ]
+ },
+ "max_sources": 6,
+ "commons": {
+  "regime": "J",
+  "hidden_fold": 0,
+  "n_folds": 5,
+  "keys_kept_out": 2239,
+  "rule": "table means of the source tables without the held-out group's tables and without every row of a hidden target (hash fold, hidden symbols by target keys, hidden symbols by cube symbol)"
+ },
+ "rows_by_group": {
+  "eval:Jurkat": 1837,
+  "train:H1": 74,
+  "train:HepG2": 1934,
+  "train:K562": 2631,
+  "train:Neuron": 61,
+  "train:RPE1": 1934,
+  "train:iPSC": 703
+ },
+ "amplitude": 1.576,
+ "checks": {
+  "own_or_held_in_sources": 0,
+  "hidden_with_anchor": 0,
+  "role_mismatch": 0,
+  "row_of_a_key_kept_out_of_the_means": 0,
+  "passed": true
+ },
+ "seconds": 61.4,
+ "inputs": {
+  "prepass_pkl": "5fb4d4a8b503f9b68471373cbaaa95e09622f03706b09ec6de35fb07f8954158",
+  "cube_manifest": "c7fb76628b8246b9e00c789582ba3e512a8018e9469c5e8f3344001375fe1099",
+  "protocol": "d1a401e8b0e31dcce6ebc8c04fd61b582cbe77f41346e3b50cb4cf9f18cbc799",
+  "target_keys": "55a4e601f75dbbee2ccf3d8e052483b8cc355b0d1a57c3fc33f53ca687a1515a",
+  "bench_arms": "7940b4adb9f54b46ebfaf316e2d0e0da57c4ff3e8528e446ea1720b1835d642d",
+  "bench_fitting": "e332592afd59aadfdd6bb4c9eb7a05d2cdf754ee76b24b4ad49bf4705ee933a1",
+  "bench_splits": "ef111017c09c655ce662a15e738f756979667476b2b8fd4d03e6edbe4b0ca224"
+ },
+ "outputs": {
+  "anchors_npz": "ed5439b3034e38e4ea90061936eee9c6d21f500319dfe57db4895a3b97ff0a93",
+  "anchors_json": "45e49db6f295bb560fbc2d89f72300308b691362f36f99335308126bf45894d9"
+ }
+}

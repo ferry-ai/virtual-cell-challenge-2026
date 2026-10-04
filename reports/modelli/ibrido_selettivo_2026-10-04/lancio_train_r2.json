@@ -1,0 +1,23 @@
+{
+ "what": "the morning launches of the D-056 chain after the usage-limit pause of the session (04:27-07:22): the third development training (RPE1), the rows of H1 and HepG2, and the confirmation chain of Jurkat and K562 on the replica account",
+ "authorisation": "owner in chat, 4/10 night, session 2b35612c (autorizzazioni.md, section 'Mandato D-056 e invii autonomi')",
+ "acceptance_before": {
+  "rcell-d056-train-h1-r1": "accepted (esito/train_h1_r1/acceptance.json): exit 0, 365 twins verified, no leakage, exposure and effective shares passed (max deviation 0.0026), health passed, evaluation complete, anchors regime J, validation cells with loss weight 0, 12 guard checks; stop 'epochs done' at 30,086 steps (2.0 epochs); exported the best check at step 20,000 (internal benefit +0.140)",
+  "rcell-d056-train-hepg2-r1": "accepted: as H1; 31,022 steps (2.0 epochs), effective max deviation 0.0054, best check at step 20,000 (internal benefit +0.143)"
+ },
+ "kernels": {
+  "davideferrante11/rcell-d056-train-rpe1-r1": {"pushed": "2026-10-04 07:24:04 +0200", "gpu_quota_after": "26.02 h used, 3.98 h left", "stage": "C:/Users/ferra/vcc2026-data/processed/ibrido_selettivo_2026-10-04/kernel_train_rpe1_r1", "dry_run_diff": "run.py differs from the H1 kernel only in PREPASS_FROM and the anchors line/dir"},
+  "davideferrante11/rcell-d056-rows-h1-r1": {"pushed": "2026-10-04 07:24 +0200", "ended": "COMPLETE, rows 59 s", "outputs": "esito/rows_h1_r1/"},
+  "davideferrante11/rcell-d056-rows-hepg2-r1": {"pushed": "2026-10-04 07:24 +0200", "ended": "COMPLETE", "outputs": "esito/rows_hepg2_r1/"},
+  "davidmaisterx/rcell-d056-anchors-conf-r1": {"pushed": "2026-10-04 07:24:50 +0200", "lines": {"Jurkat": "rcell-prepass-jurkat-r1", "K562": "rcell-prepass-k562-r1"}, "ended": "COMPLETE: six runs with return code 0; anchors_<line>_all checks passed, regime J, 2,239 keys kept out (as the development folds), at most 9 sources (esito/anchors_conf_r1/)"},
+  "davidmaisterx/rcell-d056-extract-jurkat-r1": {"ended": "COMPLETE: 150 C targets of 1,468 candidates, 2,048 controls, 8,283 genes (esito/extract_jurkat_r1/)"},
+  "davidmaisterx/rcell-d056-extract-k562-r1": {"ended": "COMPLETE: 150 C targets of 2,028 candidates, every one with cells and controls of the K562 GWPS key, 7,679 genes (esito/extract_k562_r1/)"},
+  "davidmaisterx/rcell-d056-train-jurkat-r1": {"pushed": "2026-10-04 07:34:16 +0200", "stage": "C:/Users/ferra/vcc2026-data/processed/ibrido_selettivo_2026-10-04/kernel_mx_train_jurkat_r1", "dry_run_diff": "run.py differs from the H1 kernel only in owner, prepass, anchors kernel/line/dir; metadata in owner of code, prepass, anchors and twins (the replica twins are byte-identical to v4's)"},
+  "davidmaisterx/rcell-d056-train-k562-r1": {"pushed": "2026-10-04 07:34:20 +0200", "stage": "C:/Users/ferra/vcc2026-data/processed/ibrido_selettivo_2026-10-04/kernel_mx_train_k562_r1", "note": "K562 held out: 2,159,842 admitted training cells, 12,203 evaluation groups (C 4,789, J 7,124, T 290)"}
+ },
+ "prepass_states": {
+  "Jurkat": "the two accounts' prepasses have the same cells (5,603,629), admitted training cells (3,874,590) and evaluation groups (2,549), different sha256 (the state records the mount paths, which differ by owner); the trainings of the replica read the replica's own state",
+  "K562": "5,603,629 cells, 2,159,842 admitted training cells, 12,203 evaluation groups"
+ },
+ "train_args": "those of lancio_train_r1.json, unchanged"
+}
