@@ -1,0 +1,886 @@
+{
+ "protocol": "rete_ancorata_v4_2026-10-03/PROTOCOLLO.md \u00a75, \u00a77 and \u00a710",
+ "lines": [
+  "H1",
+  "HepG2",
+  "RPE1"
+ ],
+ "technical": {
+  "H1": {
+   "coverage_present": true,
+   "leakage_passed": true,
+   "loss_shares_by_group": {
+    "A549": 0.14285714285714285,
+    "HepG2": 0.14285714285714285,
+    "Jurkat": 0.14285714285714285,
+    "K562": 0.14285714285714285,
+    "Neuron": 0.14285714285714285,
+    "RPE1": 0.14285714285714285,
+    "iPSC": 0.14285714285714285
+   },
+   "loss_shares_within_tolerance": true,
+   "epochs_done": 2.0,
+   "verify_present": true,
+   "shards_differ": [],
+   "kernel_done": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_ancorata_v4_2026-10-03\\out_train_h1_r1\\kernel_done.json",
+   "return_code": 0,
+   "evaluation_complete": {
+    "ancorata": true,
+    "ancorata_mean": true,
+    "ancora_sola": true
+   },
+   "pi_q50_last": {
+    "ancorata": 1.0,
+    "ancorata_mean": 1.0
+   },
+   "responsibility_last": {
+    "ancorata": 0.9999999403953552,
+    "ancorata_mean": 0.9999999403953552
+   },
+   "pi_floor": 0.01,
+   "collapsed": [],
+   "health": {
+    "step": 5000,
+    "window_logs": 5,
+    "mean_pert_gain": {
+     "ancorata": 0.004540166258811951,
+     "ancorata_mean": 0.0043850535526871685
+    },
+    "passed": true,
+    "rule": "PROTOCOLLO \u00a79: at --health-check-step, every arm's mean gain of log-likelihood per gene over no effect, on the perturbed cells of the last --health-window logged batches, must be > 0; otherwise the training stops without evaluation"
+   },
+   "health_required": true,
+   "accepted": true,
+   "exposure": {
+    "present": true,
+    "passed": true,
+    "run_max_abs_deviation": 0.0,
+    "complete_windows": 60,
+    "windows_out_of_rule": 0,
+    "units_never_drawn": []
+   },
+   "anchors": {
+    "summary": {
+     "rows": 9392,
+     "rank": 32,
+     "by_role": {
+      "train": 9319,
+      "eval": 73
+     },
+     "unmatched": {},
+     "max_sources": 9,
+     "sources_rule": {
+      "rule": "all",
+      "groups": [
+       "CD4T",
+       "HCT116",
+       "HEK293T",
+       "HepG2",
+       "Jurkat",
+       "K562",
+       "Neuron",
+       "RPE1",
+       "iPSC"
+      ],
+      "tables": [
+       "k562_gwps",
+       "k562_essential",
+       "k562_viperturb",
+       "rpe1",
+       "hepg2_nadig",
+       "cd4_rest",
+       "cd4_stim8hr",
+       "cd4_stim48hr",
+       "hct116",
+       "hek293t",
+       "kolf21j",
+       "hipsci_eipl_1",
+       "hipsci_eipl_3",
+       "hipsci_fiaj_1",
+       "hipsci_fiaj_3",
+       "hipsci_iudw_1",
+       "hipsci_iudw_4",
+       "hipsci_jejf_2",
+       "hipsci_jejf_3",
+       "hipsci_kolf_2",
+       "hipsci_kolf_3",
+       "hipsci_oikd_2",
+       "hipsci_oikd_5",
+       "hipsci_paab_3",
+       "hipsci_paab_4",
+       "hipsci_pipw_4",
+       "hipsci_pipw_5",
+       "hipsci_tolg_4",
+       "hipsci_tolg_6",
+       "hipsci_zapk_3",
+       "jurkat_nadig",
+       "h1_train",
+       "h1_val",
+       "tian2021_neuron"
+      ],
+      "dropped_tables": []
+     },
+     "commons": {
+      "regime": "J",
+      "hidden_fold": 0,
+      "n_folds": 5,
+      "keys_kept_out": 2239,
+      "rule": "table means of the source tables without the held-out group's tables and without every row of a hidden target (hash fold, hidden symbols by target keys, hidden symbols by cube symbol)"
+     },
+     "anchored_modalities": [
+      "CRISPRi"
+     ],
+     "manifest_checks": {
+      "own_or_held_in_sources": 0,
+      "hidden_with_anchor": 0,
+      "role_mismatch": 0,
+      "row_of_a_key_kept_out_of_the_means": 0,
+      "passed": true
+     },
+     "rows_by_group": {
+      "eval:H1": 73,
+      "train:HepG2": 1934,
+      "train:Jurkat": 1934,
+      "train:K562": 2728,
+      "train:Neuron": 62,
+      "train:RPE1": 1934,
+      "train:iPSC": 727
+     }
+    },
+    "regime_J": true,
+    "passed": true
+   }
+  },
+  "HepG2": {
+   "coverage_present": true,
+   "leakage_passed": true,
+   "loss_shares_by_group": {
+    "A549": 0.142857160845529,
+    "H1": 0.142857160845529,
+    "Jurkat": 0.142857160845529,
+    "K562": 0.142857160845529,
+    "Neuron": 0.1428570349268261,
+    "RPE1": 0.142857160845529,
+    "iPSC": 0.142857160845529
+   },
+   "loss_shares_within_tolerance": true,
+   "epochs_done": 2.0,
+   "verify_present": true,
+   "shards_differ": [],
+   "kernel_done": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_ancorata_v4_2026-10-03\\out_train_hepg2_r1\\kernel_done.json",
+   "return_code": 0,
+   "evaluation_complete": {
+    "ancorata": true,
+    "ancorata_mean": true,
+    "ancora_sola": true
+   },
+   "pi_q50_last": {
+    "ancorata": 1.0,
+    "ancorata_mean": 1.0
+   },
+   "responsibility_last": {
+    "ancorata": 0.9999999403953552,
+    "ancorata_mean": 0.9999999403953552
+   },
+   "pi_floor": 0.01,
+   "collapsed": [],
+   "health": {
+    "step": 5000,
+    "window_logs": 5,
+    "mean_pert_gain": {
+     "ancorata": 0.0036627432331442834,
+     "ancorata_mean": 0.0035405758768320083
+    },
+    "passed": true,
+    "rule": "PROTOCOLLO \u00a79: at --health-check-step, every arm's mean gain of log-likelihood per gene over no effect, on the perturbed cells of the last --health-window logged batches, must be > 0; otherwise the training stops without evaluation"
+   },
+   "health_required": true,
+   "accepted": true,
+   "exposure": {
+    "present": true,
+    "passed": true,
+    "run_max_abs_deviation": 0.0,
+    "complete_windows": 62,
+    "windows_out_of_rule": 0,
+    "units_never_drawn": []
+   },
+   "anchors": {
+    "summary": {
+     "rows": 9203,
+     "rank": 32,
+     "by_role": {
+      "train": 7460,
+      "eval": 1743
+     },
+     "unmatched": {},
+     "max_sources": 9,
+     "sources_rule": {
+      "rule": "all",
+      "groups": [
+       "CD4T",
+       "H1",
+       "HCT116",
+       "HEK293T",
+       "Jurkat",
+       "K562",
+       "Neuron",
+       "RPE1",
+       "iPSC"
+      ],
+      "tables": [
+       "k562_gwps",
+       "k562_essential",
+       "k562_viperturb",
+       "rpe1",
+       "hepg2_nadig",
+       "cd4_rest",
+       "cd4_stim8hr",
+       "cd4_stim48hr",
+       "hct116",
+       "hek293t",
+       "kolf21j",
+       "hipsci_eipl_1",
+       "hipsci_eipl_3",
+       "hipsci_fiaj_1",
+       "hipsci_fiaj_3",
+       "hipsci_iudw_1",
+       "hipsci_iudw_4",
+       "hipsci_jejf_2",
+       "hipsci_jejf_3",
+       "hipsci_kolf_2",
+       "hipsci_kolf_3",
+       "hipsci_oikd_2",
+       "hipsci_oikd_5",
+       "hipsci_paab_3",
+       "hipsci_paab_4",
+       "hipsci_pipw_4",
+       "hipsci_pipw_5",
+       "hipsci_tolg_4",
+       "hipsci_tolg_6",
+       "hipsci_zapk_3",
+       "jurkat_nadig",
+       "h1_train",
+       "h1_val",
+       "tian2021_neuron"
+      ],
+      "dropped_tables": []
+     },
+     "commons": {
+      "regime": "J",
+      "hidden_fold": 0,
+      "n_folds": 5,
+      "keys_kept_out": 2239,
+      "rule": "table means of the source tables without the held-out group's tables and without every row of a hidden target (hash fold, hidden symbols by target keys, hidden symbols by cube symbol)"
+     },
+     "anchored_modalities": [
+      "CRISPRi"
+     ],
+     "manifest_checks": {
+      "own_or_held_in_sources": 0,
+      "hidden_with_anchor": 0,
+      "role_mismatch": 0,
+      "row_of_a_key_kept_out_of_the_means": 0,
+      "passed": true
+     },
+     "rows_by_group": {
+      "eval:HepG2": 1743,
+      "train:H1": 75,
+      "train:Jurkat": 1934,
+      "train:K562": 2728,
+      "train:Neuron": 62,
+      "train:RPE1": 1934,
+      "train:iPSC": 727
+     }
+    },
+    "regime_J": true,
+    "passed": true
+   }
+  },
+  "RPE1": {
+   "coverage_present": true,
+   "leakage_passed": true,
+   "loss_shares_by_group": {
+    "A549": 0.1428571244855967,
+    "H1": 0.1428571244855967,
+    "HepG2": 0.1428571244855967,
+    "Jurkat": 0.1428571244855967,
+    "K562": 0.14285725308641975,
+    "Neuron": 0.14285725308641975,
+    "iPSC": 0.14285699588477366
+   },
+   "loss_shares_within_tolerance": true,
+   "epochs_done": 2.0,
+   "verify_present": true,
+   "shards_differ": [],
+   "kernel_done": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_ancorata_v4_2026-10-03\\out_train_rpe1_r1\\kernel_done.json",
+   "return_code": 0,
+   "evaluation_complete": {
+    "ancorata": true,
+    "ancorata_mean": true,
+    "ancora_sola": true
+   },
+   "pi_q50_last": {
+    "ancorata": 1.0,
+    "ancorata_mean": 1.0
+   },
+   "responsibility_last": {
+    "ancorata": 1.0,
+    "ancorata_mean": 1.0
+   },
+   "pi_floor": 0.01,
+   "collapsed": [],
+   "health": {
+    "step": 5000,
+    "window_logs": 5,
+    "mean_pert_gain": {
+     "ancorata": 0.0032531140372157098,
+     "ancorata_mean": 0.0034253373742103577
+    },
+    "passed": true,
+    "rule": "PROTOCOLLO \u00a79: at --health-check-step, every arm's mean gain of log-likelihood per gene over no effect, on the perturbed cells of the last --health-window logged batches, must be > 0; otherwise the training stops without evaluation"
+   },
+   "health_required": true,
+   "accepted": true,
+   "exposure": {
+    "present": true,
+    "passed": true,
+    "run_max_abs_deviation": 0.0,
+    "complete_windows": 60,
+    "windows_out_of_rule": 0,
+    "units_never_drawn": []
+   },
+   "anchors": {
+    "summary": {
+     "rows": 9248,
+     "rank": 32,
+     "by_role": {
+      "train": 7459,
+      "eval": 1789
+     },
+     "unmatched": {},
+     "max_sources": 9,
+     "sources_rule": {
+      "rule": "all",
+      "groups": [
+       "CD4T",
+       "H1",
+       "HCT116",
+       "HEK293T",
+       "HepG2",
+       "Jurkat",
+       "K562",
+       "Neuron",
+       "iPSC"
+      ],
+      "tables": [
+       "k562_gwps",
+       "k562_essential",
+       "k562_viperturb",
+       "rpe1",
+       "hepg2_nadig",
+       "cd4_rest",
+       "cd4_stim8hr",
+       "cd4_stim48hr",
+       "hct116",
+       "hek293t",
+       "kolf21j",
+       "hipsci_eipl_1",
+       "hipsci_eipl_3",
+       "hipsci_fiaj_1",
+       "hipsci_fiaj_3",
+       "hipsci_iudw_1",
+       "hipsci_iudw_4",
+       "hipsci_jejf_2",
+       "hipsci_jejf_3",
+       "hipsci_kolf_2",
+       "hipsci_kolf_3",
+       "hipsci_oikd_2",
+       "hipsci_oikd_5",
+       "hipsci_paab_3",
+       "hipsci_paab_4",
+       "hipsci_pipw_4",
+       "hipsci_pipw_5",
+       "hipsci_tolg_4",
+       "hipsci_tolg_6",
+       "hipsci_zapk_3",
+       "jurkat_nadig",
+       "h1_train",
+       "h1_val",
+       "tian2021_neuron"
+      ],
+      "dropped_tables": []
+     },
+     "commons": {
+      "regime": "J",
+      "hidden_fold": 0,
+      "n_folds": 5,
+      "keys_kept_out": 2239,
+      "rule": "table means of the source tables without the held-out group's tables and without every row of a hidden target (hash fold, hidden symbols by target keys, hidden symbols by cube symbol)"
+     },
+     "anchored_modalities": [
+      "CRISPRi"
+     ],
+     "manifest_checks": {
+      "own_or_held_in_sources": 0,
+      "hidden_with_anchor": 0,
+      "role_mismatch": 0,
+      "row_of_a_key_kept_out_of_the_means": 0,
+      "passed": true
+     },
+     "rows_by_group": {
+      "eval:RPE1": 1789,
+      "train:H1": 75,
+      "train:HepG2": 1934,
+      "train:Jurkat": 1934,
+      "train:K562": 2727,
+      "train:Neuron": 62,
+      "train:iPSC": 727
+     }
+    },
+    "regime_J": true,
+    "passed": true
+   }
+  }
+ },
+ "accepted": {
+  "H1": true,
+  "HepG2": true,
+  "RPE1": true
+ },
+ "primary_laneB": {
+  "by_line": {
+   "H1": -0.2143841016732469,
+   "HepG2": -0.04991821020568779,
+   "RPE1": -0.1308353544437598
+  },
+  "complete": true,
+  "macro": -0.1317125554408982,
+  "lines_positive": 0,
+  "lines": 3,
+  "passed": false,
+  "status": "failed"
+ },
+ "guard_laneA": {
+  "by_line": {
+   "H1": -0.4180776784943452,
+   "HepG2": -0.24766356600599676,
+   "RPE1": -0.2554182446455734
+  },
+  "mean": -0.30705316304863844,
+  "complete": true,
+  "passed": false,
+  "threshold": -0.02
+ },
+ "outcome": "non passa",
+ "promotion_requirement": {
+  "rule": "PROTOCOLLO \u00a710.4: lane B ancorata_shift - transfer_prod_J > 0 in at least two accepted lines with mean > 0, and lane A mean C-row PDS ancorata - transfer_prod_J >= -0.02; then P5 and P6",
+  "laneB": {
+   "by_line": {
+    "H1": -0.1905468043538513,
+    "HepG2": 0.020741946458922605,
+    "RPE1": -0.09511460988803588
+   },
+   "complete": true,
+   "macro": -0.0883064892609882,
+   "lines_positive": 1,
+   "lines": 3,
+   "passed": false,
+   "status": "failed"
+  },
+  "laneA": {
+   "by_line": {
+    "H1": -0.3985501381334715,
+    "HepG2": -0.22115503122152194,
+    "RPE1": -0.23231496413929428
+   },
+   "mean": -0.28400671116476256,
+   "passed": false
+  },
+  "met": false
+ },
+ "secondary": {
+  "laneB_by_member": {
+   "PDS": {
+    "ancorata_shift-transfer_all_J": {
+     "H1": -0.8368654509610649,
+     "HepG2": -0.5105062082139443,
+     "RPE1": -0.42411642411642414
+    },
+    "ancorata_shift-ancora_sola_shift": {
+     "H1": -0.8728437654016762,
+     "HepG2": -0.5060888252148995,
+     "RPE1": -0.3917619542619546
+    },
+    "ancorata_shift-ancorata_mean_shift": {
+     "H1": -0.0197141448989651,
+     "HepG2": 0.16212989493791802,
+     "RPE1": -0.03261434511434547
+    },
+    "ancorata_shift-transfer_cells_J": {
+     "H1": -0.8166584524396259,
+     "HepG2": -0.5353390639923591,
+     "RPE1": -0.40033783783783805
+    },
+    "ancorata_shift-transfer_prod_J": {
+     "H1": -0.7673730901922134,
+     "HepG2": -0.4212034383954154,
+     "RPE1": -0.2761174636174639
+    },
+    "ancorata_cells-transfer_all_J": {
+     "H1": -0.8546081813701333,
+     "HepG2": -0.7743553008595985,
+     "RPE1": -0.7861226611226609
+    },
+    "transfer_all_J-transfer_cells_J": {
+     "H1": 0.020206998521439035,
+     "HepG2": -0.024832855778414764,
+     "RPE1": 0.02377858627858609
+    },
+    "transfer_all_J-transfer_prod_J": {
+     "H1": 0.06949236076885146,
+     "HepG2": 0.08930276981852892,
+     "RPE1": 0.14799896049896022
+    }
+   },
+   "MSE": {
+    "ancorata_shift-transfer_all_J": {
+     "H1": 0.0,
+     "HepG2": 0.0,
+     "RPE1": 0.0
+    },
+    "ancorata_shift-ancora_sola_shift": {
+     "H1": 0.0,
+     "HepG2": 0.0,
+     "RPE1": 0.0
+    },
+    "ancorata_shift-ancorata_mean_shift": {
+     "H1": 0.0,
+     "HepG2": 0.0,
+     "RPE1": 0.0
+    },
+    "ancorata_shift-transfer_cells_J": {
+     "H1": 0.0,
+     "HepG2": 0.0,
+     "RPE1": 0.0
+    },
+    "ancorata_shift-transfer_prod_J": {
+     "H1": 0.0,
+     "HepG2": 0.0,
+     "RPE1": 0.0
+    },
+    "ancorata_cells-transfer_all_J": {
+     "H1": 0.0,
+     "HepG2": 0.0,
+     "RPE1": 0.0
+    },
+    "transfer_all_J-transfer_cells_J": {
+     "H1": 0.0,
+     "HepG2": 0.0,
+     "RPE1": 0.0
+    },
+    "transfer_all_J-transfer_prod_J": {
+     "H1": 0.0,
+     "HepG2": 0.0,
+     "RPE1": 0.0
+    }
+   },
+   "NMAE": {
+    "ancorata_shift-transfer_all_J": {
+     "H1": -0.2916438227598005,
+     "HepG2": 0.07072576877973541,
+     "RPE1": -0.30967274854175
+    },
+    "ancorata_shift-ancora_sola_shift": {
+     "H1": -0.3021664534625358,
+     "HepG2": 0.05209747334002521,
+     "RPE1": -0.35919418442583045
+    },
+    "ancorata_shift-ancorata_mean_shift": {
+     "H1": 0.025977678598232606,
+     "HepG2": 0.1123914912876965,
+     "RPE1": 0.03663823956020973
+    },
+    "ancorata_shift-transfer_cells_J": {
+     "H1": -0.3350713076093772,
+     "HepG2": 0.1165359326019294,
+     "RPE1": -0.42294506802148546
+    },
+    "ancorata_shift-transfer_prod_J": {
+     "H1": -0.25663794029024267,
+     "HepG2": 0.1929401847625628,
+     "RPE1": -0.3125508520789524
+    },
+    "ancorata_cells-transfer_all_J": {
+     "H1": -1.1770815043216785,
+     "HepG2": -2.7446123585613087,
+     "RPE1": -1.5474227595273127
+    },
+    "transfer_all_J-transfer_cells_J": {
+     "H1": -0.0434274848495767,
+     "HepG2": 0.045810163822193994,
+     "RPE1": -0.1132723194797355
+    },
+    "transfer_all_J-transfer_prod_J": {
+     "H1": 0.035005882469557804,
+     "HepG2": 0.1222144159828274,
+     "RPE1": -0.0028781035372024005
+    }
+   },
+   "FID": {
+    "ancorata_shift-transfer_all_J": {
+     "H1": 0.12134907007922724,
+     "HepG2": 0.0898981738345862,
+     "RPE1": 0.1195794124464129
+    },
+    "ancorata_shift-ancora_sola_shift": {
+     "H1": 0.12448953776056404,
+     "HepG2": 0.10606795359075061,
+     "RPE1": 0.11338254874286641
+    },
+    "ancorata_shift-ancorata_mean_shift": {
+     "H1": 0.04990401668829214,
+     "HepG2": -0.06895168635451054,
+     "RPE1": 0.005227069340419388
+    },
+    "ancorata_shift-transfer_cells_J": {
+     "H1": 0.035305619727091786,
+     "HepG2": 0.004789641830801994,
+     "RPE1": 0.04784267934397979
+    },
+    "ancorata_shift-transfer_prod_J": {
+     "H1": 0.08666462503720107,
+     "HepG2": 0.13457752661110012,
+     "RPE1": 0.13212002800766237
+    },
+    "ancorata_cells-transfer_all_J": {
+     "H1": 0.1530970990379057,
+     "HepG2": 0.18770853339499505,
+     "RPE1": 0.27733985747584855
+    },
+    "transfer_all_J-transfer_cells_J": {
+     "H1": -0.08604345035213545,
+     "HepG2": -0.08510853200378421,
+     "RPE1": -0.07173673310243311
+    },
+    "transfer_all_J-transfer_prod_J": {
+     "H1": -0.03468444504202617,
+     "HepG2": 0.044679352776513914,
+     "RPE1": 0.012540615561249469
+    }
+   },
+   "REACH": {
+    "ancorata_shift-transfer_all_J": {
+     "H1": -0.2810347005591222,
+     "HepG2": 0.031421476359435596,
+     "RPE1": -0.1650903494140572
+    },
+    "ancorata_shift-ancora_sola_shift": {
+     "H1": -0.2562143461782075,
+     "HepG2": 0.0037437098904753996,
+     "RPE1": -0.1411619125751638
+    },
+    "ancorata_shift-ancorata_mean_shift": {
+     "H1": 0.021267059887984094,
+     "HepG2": 0.1431743921315804,
+     "RPE1": 0.02453200306515041
+    },
+    "ancorata_shift-transfer_cells_J": {
+     "H1": -0.2147647464830582,
+     "HepG2": -0.06494962345188593,
+     "RPE1": -0.2348763342192241
+    },
+    "ancorata_shift-transfer_prod_J": {
+     "H1": -0.22418527431703011,
+     "HepG2": 0.1543413659975868,
+     "RPE1": -0.0959191446990315
+    },
+    "ancorata_cells-transfer_all_J": {
+     "H1": -0.2334734790661229,
+     "HepG2": -0.20638293212867248,
+     "RPE1": -0.2032448171797826
+    },
+    "transfer_all_J-transfer_cells_J": {
+     "H1": 0.06626995407606401,
+     "HepG2": -0.09637109981132153,
+     "RPE1": -0.0697859848051669
+    },
+    "transfer_all_J-transfer_prod_J": {
+     "H1": 0.056849426242092105,
+     "HepG2": 0.12291988963815119,
+     "RPE1": 0.06917120471502569
+    }
+   },
+   "JAC": {
+    "ancorata_shift-transfer_all_J": {
+     "H1": 0.0018902941612794072,
+     "HepG2": 0.018951528006059926,
+     "RPE1": -0.005712017036740805
+    },
+    "ancorata_shift-ancora_sola_shift": {
+     "H1": 0.002360579278383401,
+     "HepG2": 0.021458302391347606,
+     "RPE1": -0.003911219149425202
+    },
+    "ancorata_shift-ancorata_mean_shift": {
+     "H1": 0.014553592966611809,
+     "HepG2": -0.017670704260522085,
+     "RPE1": 0.018185366208303605
+    },
+    "ancorata_shift-transfer_cells_J": {
+     "H1": -0.003145180954086599,
+     "HepG2": -0.021526594955775358,
+     "RPE1": -0.021734387667644697
+    },
+    "ancorata_shift-transfer_prod_J": {
+     "H1": 0.018250853639177805,
+     "HepG2": 0.06379603977770132,
+     "RPE1": -0.018220226940429893
+    },
+    "ancorata_cells-transfer_all_J": {
+     "H1": 0.007536551321113194,
+     "HepG2": 0.019292499882076597,
+     "RPE1": -0.01070024974197771
+    },
+    "transfer_all_J-transfer_cells_J": {
+     "H1": -0.005035475115366006,
+     "HepG2": -0.04047812296183528,
+     "RPE1": -0.016022370630903893
+    },
+    "transfer_all_J-transfer_prod_J": {
+     "H1": 0.016360559477898398,
+     "HepG2": 0.04484451177164139,
+     "RPE1": -0.012508209903689088
+    }
+   },
+   "avg": {
+    "ancorata_shift-transfer_all_J": {
+     "H1": -0.2143841016732469,
+     "HepG2": -0.04991821020568779,
+     "RPE1": -0.1308353544437598
+    },
+    "ancorata_shift-ancora_sola_shift": {
+     "H1": -0.21739574133391198,
+     "HepG2": -0.05378689766705008,
+     "RPE1": -0.1304411202782512
+    },
+    "ancorata_shift-ancorata_mean_shift": {
+     "H1": 0.015331367207025895,
+     "HepG2": 0.0551788979570271,
+     "RPE1": 0.008661388843289597
+    },
+    "ancorata_shift-transfer_cells_J": {
+     "H1": -0.22238901129317612,
+     "HepG2": -0.08341495132788149,
+     "RPE1": -0.1720084914003688
+    },
+    "ancorata_shift-transfer_prod_J": {
+     "H1": -0.1905468043538513,
+     "HepG2": 0.020741946458922605,
+     "RPE1": -0.09511460988803588
+    },
+    "ancorata_cells-transfer_all_J": {
+     "H1": -0.3507549190664859,
+     "HepG2": -0.5863915930454178,
+     "RPE1": -0.3783584383493141
+    },
+    "transfer_all_J-transfer_cells_J": {
+     "H1": -0.008004909619929224,
+     "HepG2": -0.033496741122193696,
+     "RPE1": -0.04117313695660901
+    },
+    "transfer_all_J-transfer_prod_J": {
+     "H1": 0.0238372973193956,
+     "HepG2": 0.0706601566646104,
+     "RPE1": 0.03572074455572391
+    }
+   }
+  },
+  "laneA_C_pds": {
+   "ancorata-ancora_sola": {
+    "H1": -0.41602995769662443,
+    "HepG2": -0.24466255028104505,
+    "RPE1": -0.26071975468734404
+   },
+   "ancorata-ancorata_mean": {
+    "H1": -0.011012906846240183,
+    "HepG2": 0.04954412333905338,
+    "RPE1": -0.015073765301229978
+   },
+   "ancora_sola-transfer_all_J": {
+    "H1": -0.002047720797720797,
+    "HepG2": -0.003001015724951744,
+    "RPE1": 0.005301510041770658
+   },
+   "ancorata-transfer_cells_J": {
+    "H1": -0.3854922084088751,
+    "HepG2": -0.23655301949634927,
+    "RPE1": -0.2353406520401487
+   },
+   "ancorata-transfer_prod_J": {
+    "H1": -0.3985501381334715,
+    "HepG2": -0.22115503122152194,
+    "RPE1": -0.23231496413929428
+   },
+   "transfer_all_J-transfer_cells_J": {
+    "H1": 0.03258547008547009,
+    "HepG2": 0.011110546509647492,
+    "RPE1": 0.020077592605424688
+   },
+   "transfer_all_J-transfer_prod_J": {
+    "H1": 0.01952754036087369,
+    "HepG2": 0.026648572725856617,
+    "RPE1": 0.023244090690624195
+   }
+  },
+  "laneA_J_pds": {
+   "ancorata-ancora_sola": {
+    "H1": NaN,
+    "HepG2": NaN,
+    "RPE1": NaN
+   },
+   "ancorata-ancorata_mean": {
+    "H1": 0.02004419191919195,
+    "HepG2": 0.011944150112396832,
+    "RPE1": 0.00041693811499757786
+   }
+  }
+ },
+ "local_avg": {
+  "H1": {
+   "replicate": 1.0,
+   "baseline": 0.0,
+   "transfer_all_J": 0.27178,
+   "transfer_cells_J": 0.27979,
+   "transfer_prod_J": 0.24795,
+   "ancorata_shift": 0.0574,
+   "ancorata_mean_shift": 0.04207,
+   "ancora_sola_shift": 0.2748,
+   "ancorata_cells": -0.07897,
+   "ancorata_mean_cells": -0.09994
+  },
+  "HepG2": {
+   "replicate": 1.0,
+   "baseline": 0.0,
+   "transfer_all_J": 0.21197,
+   "transfer_cells_J": 0.24546,
+   "transfer_prod_J": 0.14131,
+   "ancorata_shift": 0.16205,
+   "ancorata_mean_shift": 0.10687,
+   "ancora_sola_shift": 0.21584,
+   "ancorata_cells": -0.37442,
+   "ancorata_mean_cells": -0.62019
+  },
+  "RPE1": {
+   "replicate": 1.0,
+   "baseline": 0.0,
+   "transfer_all_J": 0.19157,
+   "transfer_cells_J": 0.23274,
+   "transfer_prod_J": 0.15585,
+   "ancorata_shift": 0.06073,
+   "ancorata_mean_shift": 0.05207,
+   "ancora_sola_shift": 0.19118,
+   "ancorata_cells": -0.18679,
+   "ancorata_mean_cells": -0.22029
+  }
+ }
+}

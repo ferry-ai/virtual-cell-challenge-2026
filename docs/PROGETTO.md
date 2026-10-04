@@ -10,7 +10,7 @@ cambia una conclusione. Il testo tolto resta in `docs/storico/`: le
 [§0, §6 e §7 del 30/09 mattina](storico/PROGETTO_sezioni_0_6_7_2026-09-30.md), il
 §0 del 3/10 sera nel [consolidamento](storico/consolidamento_2026-10-03/INDICE.md).
 
-## 0. Oggi — 3 ottobre 2026 sera, dopo il consolidamento
+## 0. Oggi — 4 ottobre 2026 notte, pilot v4 chiuso e ibrido D-056 in prova
 
 **Il riferimento resta la ricetta t22**, quattro sorgenti a peso uguale (K562 GWPS, CD4 in tre stati, HCT116,
 HEK293T) con lo stimatore t25 corretto; t22/t24 danno una media osservata di **0,14207**; il massimo è t28,
@@ -19,17 +19,18 @@ negativo: nessun invio neurale prima di un banco a sei membri almeno al livello 
 ([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). Punteggi: [indice degli invii](../reports/invii/README.md).
 
 **Un solo piano operativo, [R-LEAD](piani/strategia-scientifica.md), su due binari (D-054).**
-**Direzione precisata il 4/10 ([D-056](DECISIONI.md#d-056--transfer-con-correzione-neurale-selettiva)):**
+**Direzione dal 4/10 ([D-056](DECISIONI.md#d-056--transfer-con-correzione-neurale-selettiva)):**
 transfer congelato e correzioni neurali pesate da un selettore di beneficio validato; in assenza di evidenza,
-ritorno al transfer. È il prossimo candidato da verificare, non una promozione né una modifica delle regole v4.
+ritorno al transfer.
 
-- **Modello:** la rete ancorata al transfer, adattamento dell'idea di X (2° classificato 2025): basale dai controlli
-  \+ effetto trasferito dagli aggregati delle altre linee (l'ancora) + correzione appresa sulle singole cellule. Il
-  **pilot v4** corregge i difetti tecnici della v3 (batch che lasciavano fuori i neuroni, riserva di valutazione
-  sovrastimata, attesa della decompressione) e la dipendenza delle ancore dai bersagli nascosti; protocollo congelato
-  prima dei training ([v4](../reports/modelli/rete_ancorata_v4_2026-10-03/PROTOCOLLO.md)). Training H1 e HepG2 in corso
-  dal 3/10 23:06, RPE1 dopo. Passare il pilot autorizza il corpus ampliato e la conferma, non la sostituzione del
-  transfer, che richiede anche di battere la ricetta di produzione sulle stesse righe (§10 del protocollo).
+- **Modello.** Il **pilot v4** della rete ancorata (basale dai controlli + ancora dal transfer + correzione appresa
+  sulle cellule) **non passa**: tre training tecnicamente accettati, e la correzione peggiora la propria ancora su tre
+  linee su tre (corsia B −0,214, −0,050, −0,131; [CP-0061](checkpoints/0061-pilot-v4-esito-tre-linee.md)). Il
+  meccanismo ipotizzato è uno spostamento comune ai bersagli ([S-006](STRADE.md)). L'**ibrido selettivo D-056 v1** è
+  implementato e in training dal 4/10 alle 03:00
+  ([protocollo](../reports/modelli/ibrido_selettivo_2026-10-04/PROTOCOLLO.md), congelato prima dei training). Ha una
+  testa comune esclusa dalla previsione, guadagno fisso e guardie interne; un selettore fuori fold sceglie il peso,
+  anche zero. Lo sviluppo è su H1/HepG2/RPE1 (già letti), la conferma su Jurkat e K562. Nessun esito ancora.
 - **Dati, mandato non negoziabile D-053:** tutte le linee e i contesti idonei entrano nel percorso principale,
   qualunque sia l'esito del pilot; archivio completo, aggregati e campioni cellulari restano distinti e l'uso
   effettivo si verifica ([vincolo](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile)). Esecuzione in
@@ -52,9 +53,12 @@ usa per debug. La consegna D/E/F (dati il 22/10, invii fino al 5/11) richiede la
 - La sessione che lavora su R-LEAD si registra nella sua intestazione con macchina, commit, file e output; lo stato
   scritto in una scheda non prova che un job sia vivo. Le guide prima di questa riscrittura sono nello
   [storico del consolidamento](storico/consolidamento_2026-10-03/INDICE.md).
-- **Autorizzazioni:** il 3/10 sera il proprietario ha autorizzato in chat i job necessari al piano su Colab e Kaggle,
-  negli account configurati ed entro quota, con i trasferimenti e i download strettamente necessari delle fonti già
-  catalogate. Acquisti, servizi a pagamento, invii ufficiali e push restano da chiedere ogni volta.
+- **Autorizzazioni:** il 4/10 notte il proprietario ha autorizzato la sessione `2b35612c`, per il mandato D-056 e solo
+  per essa, a procedere senza conferme. L'autorizzazione copre training, banchi, download, gestione dei job negli
+  account configurati, commit e push dopo verifica, e invii in grading dei candidati con banco ≥ 0,100 secondo una
+  regola precisa ([autorizzazioni](../reports/invii/trial_2026-09-22/autorizzazioni.md#mandato-d-056-e-invii-autonomi-notte-del-4-ottobre-r-lead-sessione-claude-2b35612c)).
+  Acquisti e servizi a pagamento restano esclusi. Per le sessioni successive valgono le regole precedenti: invii e
+  push si chiedono.
 - Uso di ulteriori dati della stessa linea e verifica esterna della licenza Orion restano decisioni distinte;
   identità fuori dalla repo pubblica.
 - La preregistrazione t21 citata ma assente resta [R-020](REGISTRO.md#r-020--evidenza-citata-ma-assente-dal-repository),

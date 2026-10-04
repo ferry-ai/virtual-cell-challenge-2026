@@ -106,12 +106,16 @@ campioni annidati in [R-DATI](piani/dati-affidabilita.md).
 - **Direzione confermata, 4/10: [D-056](DECISIONI.md#d-056--transfer-con-correzione-neurale-selettiva).**
   Transfer congelato con correzione neurale selettiva, pesata sul beneficio validato fuori fold. Il selettore
   può tornare al transfer; familiarità con bersagli o contesti non equivale a affidabilità dimostrata.
-  Proposta da implementare e confermare in R-LEAD, con precedenti S-001–S-007; nessuna promozione acquisita.
-- **In corso, 3/10 sera: pilot v4 della rete ancorata** (direzione D-054: basale dai controlli +
-  ancora dal transfer degli aggregati + correzione appresa sulle cellule). Protocollo congelato prima
-  dei training, con la regola contro la propria ancora e il requisito di promozione contro la ricetta
-  di produzione ([protocollo](../reports/modelli/rete_ancorata_v4_2026-10-03/PROTOCOLLO.md),
-  [lanci](../reports/modelli/rete_ancorata_v4_2026-10-03/lancio_train_r1.json)). Nessun esito ancora.
+  **In corso dal 4/10 notte:** protocollo v1 congelato prima dei training (testa comune esclusa dalla previsione,
+  guadagno fisso, penalità sulla correzione, guardie su coppie di validazione interne, selettore fuori fold con
+  leave-one-line-out su H1/HepG2/RPE1, conferma su Jurkat e K562), codice testato, training in corsa
+  ([protocollo](../reports/modelli/ibrido_selettivo_2026-10-04/PROTOCOLLO.md)). Nessun esito ancora; nessuna
+  promozione acquisita.
+- **Misurato, pilot v4 della rete ancorata (4/10): non passa** ([CP-0061](checkpoints/0061-pilot-v4-esito-tre-linee.md)).
+  Tre training tecnicamente accettati; la correzione appresa peggiora la propria ancora su tre linee su tre (corsia
+  B, media dei sei membri: −0,214, −0,050 e −0,131; guardia della corsia A −0,307). Non è soddisfatto nemmeno il
+  requisito di promozione contro la ricetta di produzione. Meccanismo ipotizzato: uno spostamento comune ai
+  bersagli ([S-006](STRADE.md#s-006--rete-ancorata-v4-ancora-dal-transfer-più-correzione-appresa-sulle-cellule)).
 - **Misurato, v3 r1 (3/10):** pilot incompleto. H1 non soddisfa il bilanciamento: il campionatore a
   epoche, rigiocato sullo stato reale, riproduce esattamente le estrazioni della corsa e non carica mai
   gli shard dei neuroni CRISPRi; la riserva di valutazione ha tolto circa 88 minuti di training; la GPU

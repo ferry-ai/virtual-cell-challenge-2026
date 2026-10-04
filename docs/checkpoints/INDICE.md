@@ -94,3 +94,4 @@ aggiunge da sé la riga qui sotto.
 | [0057](0057-p4-dieci-gruppi-pseudobulk.md) | 2026-10-03 | R-LEAD P4: dieci gruppi e una rete non lineare sul pseudobulk non danno beneficio dal contesto; sui sei membri vince il transfer | esperimento | — |
 | [0058](0058-copertura-integrale-contesti.md) | 2026-10-03 | Copertura obbligatoria di tutte le linee e i contesti idonei | cambio-di-strategia | — |
 | [0060](0060-direzione-x-transfer-pilot-v4.md) | 2026-10-03 | Direzione X + transfer, diagnosi dei training v3 e pilot v4 lanciato | cambio-di-strategia | — |
+| [0061](0061-pilot-v4-esito-tre-linee.md) | 2026-10-04 | Pilot v4: la rete ancorata peggiora la propria ancora su tre linee su tre | esperimento | — |

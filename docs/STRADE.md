@@ -37,7 +37,7 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 | S-003 | Miscele a posteriori fra transfer e rete (r3) | non promettenti | ignoto | 2026-10-04 |
 | S-004 | Miscela con cancello fra «nessun effetto» ed «effetto» nella rete | collasso del cancello | accertato | 2026-10-04 |
 | S-005 | Rete ancorata v3: campionatore a epoche, riserva di valutazione stimata, lettura gzip | pilot incompleto, non una bocciatura | accertato | 2026-10-04 |
-| S-006 | Rete ancorata v4: ancora dal transfer più correzione appresa sulle cellule | peggiora la propria ancora su H1 e HepG2; RPE1 in corso | ipotizzato | 2026-10-04 |
+| S-006 | Rete ancorata v4: ancora dal transfer più correzione appresa sulle cellule | peggiora la propria ancora su 3 linee su 3; regola non passata (CP-0061) | ipotizzato | 2026-10-04 |
 | S-007 | Correzioni del transfer dai controlli medi (guadagni per gene, bilineare, rete sul pseudobulk) | nessun beneficio | ignoto | 2026-10-04 |
 | S-008 | Modelli appresi precedenti (encoder, cancelli, rete dei contesti, relazionale, rete sulle sorgenti, Stack A e B) | nessuno ha passato la sua regola | ignoto | 2026-10-04 |
 
@@ -130,17 +130,18 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 
 - **Che cosa si è provato:** logit = basale dai controlli + guadagno × ancora (il transfer da tutti gli aggregati
   delle altre linee, medie del regime J) + correzione appresa sulle singole cellule; H1, HepG2 e RPE1 escluse intere.
-- **Prova:** [protocollo v4](../reports/modelli/rete_ancorata_v4_2026-10-03/PROTOCOLLO.md); misure in
+- **Prova:** [CP-0061](checkpoints/0061-pilot-v4-esito-tre-linee.md), regola del §7 applicata alle tre linee
+  ([decision.json](../reports/modelli/rete_ancorata_v4_2026-10-03/esito/decision_r1/decision.json));
+  [protocollo v4](../reports/modelli/rete_ancorata_v4_2026-10-03/PROTOCOLLO.md); misure in
   `reports/modelli/rete_ancorata_v4_2026-10-03/esito/` (`laneA_h1_r1/summary.json`, `laneA_hepg2_r1/summary.json`,
-  `laneB_h1_r1/bench/scaled_local.csv`); ricevute dei training nella stessa cartella. Stato al 4/10 alle 01:43: due
-  linee lette su tre, RPE1 in training; la decisione sulle tre linee e il checkpoint aggiornano questa voce.
-- **Sintomo:** i training sono tecnicamente accettati (quote esatte, 2 epoche, valutazione completa). Corsia A, PDS
-  delle righe C: 0,547 contro 0,965 dell'ancora su H1 e 0,639 contro 0,886 su HepG2; rapporto MSE 13,9 contro 2,6 su
-  H1. Corsia B, media dei sei membri: 0,057 contro 0,272 su H1 e 0,162 contro 0,212 su HepG2
-  (`esito/lanes_hepg2_r1_kaggle/laneB/bench/scaled_local.csv`): con due linee negative la primaria non può più
-  passare. L'ancora da sola passata per la rete riproduce il
-  transfer (0,963 e 0,883): il danno viene dalla correzione appresa. I geni chiamati per bersaglio dalle cellule
-  generate sono circa 1.800 contro 160 dell'ancora e 400 delle cellule vere.
+  `laneB_h1_r1/bench/scaled_local.csv`, `lanes_rpe1_r1_kaggle/`); ricevute dei training nella stessa cartella.
+- **Sintomo:** i training sono tecnicamente accettati su tre linee su tre (quote esatte, 2 epoche, valutazione
+  completa). Corsia A, PDS delle righe C: 0,547 contro 0,965 dell'ancora su H1 e 0,639 contro 0,886 su HepG2; rapporto
+  MSE 13,9 contro 2,6 su H1. Corsia B, media dei sei membri, `ancorata_shift − transfer_all_J`: −0,214 (H1), −0,050
+  (HepG2), −0,131 (RPE1), macro −0,132; guardia della corsia A −0,307; requisito di promozione non soddisfatto. L'ancora
+  da sola passata per la rete riproduce il transfer (corsia B: 0,275, 0,216 e 0,191 contro 0,272, 0,212 e 0,192): il
+  danno viene dalla correzione appresa. I geni chiamati per bersaglio dalle cellule generate sono circa 1.800 contro 160
+  dell'ancora e 400 delle cellule vere (H1).
 - **Meccanismo:** ipotizzato: la correzione impara uno spostamento comune a tutti i bersagli, tipico delle linee di
   training, che sulla linea nuova copre il segnale specifico. Indizio esplorativo, su linee già lette
   (`esito/esplorativo_centrato_h1_r1/summary.json`, `esito/esplorativo_centrato_hepg2_r1/summary.json`): togliendo
@@ -152,12 +153,17 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 - **Che cosa la riaprirebbe:** un disegno in cui la correzione non possa spostare la media sui bersagli, o sia
   penalizzata per allontanarsi dall'ancora con una forza scelta su linee interne escluse, e che sul segnale precoce
   qui sotto non perda discriminazione. Serve un protocollo nuovo e linee non ancora lette (H1, HepG2 e RPE1 lo sono).
+  Il primo tentativo è il protocollo D-056 v1 (`reports/modelli/ibrido_selettivo_2026-10-04/PROTOCOLLO.md`): testa
+  comune esclusa dalla previsione, guadagno fisso, penalità, guardie interne, selettore fuori fold, conferma su Jurkat e
+  K562.
 - **Segnale precoce:** al controllo di salute, il PDS dello spostamento previsto sui bersagli nascosti delle linee
   di training contro quello dell'ancora sola, e il rapporto fra l'ampiezza della correzione e quella dell'ancora
   (nel log: `shift_minus_anchor_rms` 0,23 contro `anchor_rms` 0,13 a fine corsa). Avrebbe fermato i training dopo
   dieci minuti invece di novanta.
-- **Guardia eseguibile:** nessuna: il controllo di salute della v4 guarda solo il guadagno di verosimiglianza. Il
-  prossimo trainer deve fermarsi sul segnale precoce.
+- **Guardia eseguibile:** nella v4 nessuna: il controllo di salute guarda solo il guadagno di verosimiglianza. Dal 4/10
+  il trainer v5 si ferma sul segnale precoce: `reports/modelli/ibrido_selettivo_2026-10-04/guards.py` misura
+  discriminazione, ampiezza e componente comune su coppie di validazione interne, e `train_cellnet.py` si arresta su
+  due violazioni consecutive (test in `test_guards.py` e `test_hybrid_train.py`).
 
 ### S-007 — Correzioni del transfer dai controlli medi (guadagni per gene, bilineare, rete sul pseudobulk)
 
