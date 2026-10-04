@@ -1,6 +1,49 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
 - **Sottoattività Codex, 4/10 12:28 CEST:** chat `01a10649-0c7f-7551-8bfe-8eca0fe03654`, macchina `LAPTOP-DLG1LHV1`, partenza `1309914`, su mandato del proprietario: audit informativo del prepasso e piano del prossimo ibrido in [prossimo_ibrido_2026-10-04](../../reports/analisi/prossimo_ibrido_2026-10-04/README.md). Riconti e fixture locali completati; piano proposto, da congelare dopo diagnosi di Claude1 e bilancio del corpus ampliato. Perimetro: sola nuova cartella e proprie righe negli indici/scheda; nessun job avviato, nessuna modifica al prepasso altrui. Claude1 mantiene chiusura ufficiale t30, diagnosi banco/export e propri job; [consegna pronta](../../reports/analisi/prossimo_ibrido_2026-10-04/PROMPT_CLAUDE1.md).
+- **PASSAGGIO DI CONSEGNE della sessione Claude `ba9b8bcb` a Codex, 4/10 18:08 CEST (ora letta con `date`; da
+  leggere per primo; i job si rileggono su Kaggle prima di agire).** Il proprietario ha detto in chat che il lavoro
+  passa a Codex. Ultimo commit della sessione: quello che contiene questa nota. 21 commit locali non pubblicati prima
+  di questo: **il push non è stato autorizzato** e resta da chiedere.
+  - *Chiuso e committato:* t30 ([CP-0064](../checkpoints/0064-t30-ibrido-selettivo-punteggio-ufficiale.md)); confronti
+    controllati e taratura del rumore ([CP-0065](../checkpoints/0065-d056-confronti-e-rumore-del-banco.md),
+    [esito](../../reports/modelli/diagnosi_t30_2026-10-04/ESITO_CONFRONTI.md)); S-009, ERRORI, PROGETTO §0, AMBITI §2 e
+    §5 aggiornati. Da leggere insieme: [resoconto](../../reports/modelli/diagnosi_t30_2026-10-04/README.md),
+    [addendum](../../reports/modelli/diagnosi_t30_2026-10-04/ADDENDUM_1451.md) con le due correzioni di Codex accolte.
+  - *Che cosa è misurato e serve al prossimo training:* il guadagno di banco D-056 a un seme e 32 cellule aveva
+    deviazione standard 0,007–0,045, quanto i guadagni; su 5 semi e 400 cellule vale +0,004…+0,031 (media +0,013),
+    risolto in tre linee su cinque su entrambe le baseline; il fold HepG2 (quello del t30) perde PDS, −0,129 ± 0,005;
+    la procedura dell'invio dà la stessa correzione del banco sugli stessi bersagli; la quota comune alta dell'invio
+    viene dai bersagli del pannello (transfer debole, 5 fonti). La causa della perdita **sul sito** resta un'ipotesi.
+  - *Strumento pronto, mai eseguito su dati veri:*
+    [banco v2](../../reports/generatore_e_banchi/banco_v2_2026-10-04/README.md) (`bench_v2.py`: bracci come file di
+    effetti nel formato dello stadio 100, 400 cellule, 5 semi, un flusso casuale per bersaglio condiviso fra i bracci,
+    emissione `t25` o `t28`, differenze appaiate con `--pair`). Non ha ancora un launcher Kaggle: quello delle corsie
+    diagnostiche (`reports/modelli/diagnosi_t30_2026-10-04/kaggle_diag.py`) è il modello da cui copiarlo. Proposta
+    fatta al proprietario e **non autorizzata**: usarlo sulle cinque reti D-056 esistenti per scegliere il fold con
+    guadagno risolto e PDS non in perdita, come base del confronto con il nuovo training.
+  - *Job letti su Kaggle alle 18:08, tutti RUNNING, tutti CPU, nessuna GPU usata da questa sessione:*
+    - `davideferrante11`: `vcc-cd4-d3-stim48hr-p{0,1}of2-r1`;
+    - `davidmaisterx` (token in `~/.kaggle`; codice d'ingestione replicato come dataset privato
+      `vcc-ingest-code-cd4-r1`, stesso sha256 `37986c85…`, stage `kaggle_code_cd4_r1_mx`):
+      `vcc-cd4-d4-stim48hr-p1of2-r1` (p0 conclusa), `vcc-cd4-d4-stim8hr-p{0,1}of2-r1`, `vcc-cd4-d4-rest-p{0,1}of2-r1`.
+    La coda di `fill_sessions.py` è esaurita. Un comando di attesa in background di questa sessione muore con essa:
+    non lancia niente da solo.
+  - *Verificate oggi:* CD4 `D2_Stim8hr`, `D2_Stim48hr`, `D3_Rest` (p1 rilanciata come r2 dopo l'`IncompleteRead`,
+    **incidente ancora da registrare nel registro degli incidenti**), `D3_Stim8hr`
+    (`reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_*`).
+  - *Da fare a parti finite* (dalla cartella `kaggle_cpu`, con il Python del venv e
+    `C:/Users/ferra/vcc2026-data/.venv/Scripts` nel PATH, altrimenti `kaggle` non si trova): quattro verifiche con
+    `build_parts_verify.py --units cd4_<file>=<righe> --parts <p0> <p1> --slug vcc-cd4-<file>-verify-r1 --launch-log
+    lancio_cd4_r1.jsonl`; righe dalla specifica: `D3_Stim48hr` 2.607.532 (account `davideferrante11`); `D4_Rest`
+    2.693.903, `D4_Stim8hr` 2.727.254, `D4_Stim48hr` 2.815.784 (account `davidmaisterx`, `--config-dir ~/.kaggle
+    --owner davidmaisterx`, perché una verifica monta le parti del proprio account). Poi i gemelli compatti delle
+    unità verificate e, per un training che monti D4 da `davideferrante11`, la condivisione fra account.
+  - *Vincoli del proprietario detti in chat oggi:* GPU solo su `davidmaisterx` (30 h; l'altro account «non è
+    verificato»); «puoi anticipare tutto quello che vuoi» valeva per questa sessione, una sessione nuova lo conferma.
+  - *Aperto:* protocollo e codice del nuovo training (piano di Codex: correzione semplice sulla ricetta t28, con e
+    senza contesto); pre-passo del corpus ampliato, da profilare; il generatore dello stadio 45 usa ancora un solo
+    flusso casuale (un confronto fra due invii contiene un cambio di realizzazione).
 - **Sottoattività Claude1, 4/10 13:15–14:10 CEST (ore lette con `date`):** Claude Code, sessione `ba9b8bcb`, macchina
   `LAPTOP-DLG1LHV1`, partenza `a6f7dd2`, su consegna del proprietario
   ([PROMPT_CLAUDE1](../../reports/analisi/prossimo_ibrido_2026-10-04/PROMPT_CLAUDE1.md)). Perimetro: la cartella nuova
