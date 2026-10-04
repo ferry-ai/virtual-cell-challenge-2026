@@ -1,0 +1,66 @@
+{
+ "utc": "2026-10-04T21:01:20Z",
+ "jobs": [
+  {
+   "job": "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+   "returncode": 0,
+   "status": "davideferrante11/vcc-bank-cd4-1-3-rest-r2 has status \"KernelWorkerStatus.RUNNING\""
+  },
+  {
+   "job": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+   "returncode": 0,
+   "status": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2 has status \"KernelWorkerStatus.RUNNING\""
+  },
+  {
+   "job": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+   "returncode": 0,
+   "status": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2 has status \"KernelWorkerStatus.RUNNING\""
+  },
+  {
+   "job": "davidmaisterx/vcc-bank-cd4-4-4-rest-r2",
+   "returncode": 0,
+   "status": "davidmaisterx/vcc-bank-cd4-4-4-rest-r2 has status \"KernelWorkerStatus.RUNNING\""
+  },
+  {
+   "job": "davidmaisterx/vcc-bank-cd4-4-4-stim8hr-r2",
+   "returncode": 0,
+   "status": "davidmaisterx/vcc-bank-cd4-4-4-stim8hr-r2 has status \"KernelWorkerStatus.RUNNING\""
+  },
+  {
+   "job": "davidmaisterx/vcc-bank-cd4-4-4-stim48hr-r2",
+   "returncode": 0,
+   "status": "davidmaisterx/vcc-bank-cd4-4-4-stim48hr-r2 has status \"KernelWorkerStatus.RUNNING\""
+  },
+  {
+   "job": "davideferante/vcc-hybrid-prep-h1-r2",
+   "returncode": 0,
+   "status": "davideferante/vcc-hybrid-prep-h1-r2 has status \"KernelWorkerStatus.COMPLETE\""
+  },
+  {
+   "job": "davideferante/vcc-hybrid-prep-hepg2-r2",
+   "returncode": 0,
+   "status": "davideferante/vcc-hybrid-prep-hepg2-r2 has status \"KernelWorkerStatus.COMPLETE\""
+  },
+  {
+   "job": "davideferante/vcc-hybrid-prep-jurkat-r2",
+   "returncode": 0,
+   "status": "davideferante/vcc-hybrid-prep-jurkat-r2 has status \"KernelWorkerStatus.COMPLETE\""
+  },
+  {
+   "job": "davidmaisterx/vcc-hybrid-train-h1-r1",
+   "returncode": 0,
+   "status": "davidmaisterx/vcc-hybrid-train-h1-r1 has status \"KernelWorkerStatus.RUNNING\""
+  }
+ ],
+ "training_verified": {
+  "gpu": "Tesla T4",
+  "cuda": "12.8",
+  "held": "H1",
+  "rows": 39001,
+  "genes": 13425,
+  "first_arm_steps_seen": 3000,
+  "evidence": "live_train_h1_r1.txt"
+ },
+ "coverage": "First aggregate cohort only; 12-unit donor-resolved CD4 bank running, full catalogue integration not complete",
+ "continuation": "dispatch_training_r2.py handles the remaining HepG2 and Jurkat input transfers and GPU launches; bank construction runs independently on Kaggle"
+}

@@ -5,6 +5,9 @@
   codice](../../reports/modelli/ibrido_esecuzione_2026-10-04/README.md). Primo fit
   sul cubo aggregato r2, con/senza contesto, tre semi: cohort esplicitamente ridotto;
   banca per donatore e catalogo completo restano da integrare. Nessuna promozione.
+  Aggiornamento circa 23:00: tre preparazioni COMPLETE; primo training H1
+  effettivamente su Tesla T4/CUDA, primo braccio a 3.000 passi. Sei job banca RUNNING.
+  [Prova e prosecuzione](../../reports/modelli/ibrido_esecuzione_2026-10-04/AVVIO_TRAINING.md).
 
 - **Ibrido semplice, Codex, 4/10 22:00 CEST:** il proprietario sceglie «ibrido semplice»,
   transfer promettente, molti contesti, pseudobulk e campionamento. Stessa chat del subentro.

@@ -1,0 +1,140 @@
+{
+ "source": "davideferante/vcc-hybrid-prep-hepg2-r2",
+ "files": {
+  "anchor.npy": {
+   "bytes": 986764478,
+   "sha256": "f30af191ae766a6563a4541a4c3232a2d52ebdaeacb21a8ca293459177f05391"
+  },
+  "basal.npy": {
+   "bytes": 1772228,
+   "sha256": "a7c40b94f70054e4dee1deb6aacac38c53cfcd92486d40768d21e8e9aada4889"
+  },
+  "complete.json": {
+   "bytes": 2018,
+   "sha256": "ae64199522e7f759e3b8748c3d5d8ff184f495878f432363fdcb72b6fac24a97"
+  },
+  "genes.json": {
+   "bytes": 125732,
+   "sha256": "525e7d91c638e87f9e7996d089f7b69a66656fbde2d61ec0302730b7862185f1"
+  },
+  "rows.csv": {
+   "bytes": 2949240,
+   "sha256": "7d751a0f9bfea42bd7ff189147c6e22d07bbaa9c201f02d7635b8b3faa0a5a6f"
+  },
+  "target.npy": {
+   "bytes": 41749264,
+   "sha256": "14bd9fdf1cf646028fc09fa92758935bc2ef6f5ec7b957eb244da06cc9cfbe75"
+  },
+  "truth_effect.npy": {
+   "bytes": 986764478,
+   "sha256": "9b1a54149124fbefdd23e6d377e803c8bf36b515d9416dbc7076462c3a6ceb6a"
+  }
+ },
+ "receipt": {
+  "complete": true,
+  "held": "HepG2",
+  "regime": "C",
+  "rows": 36751,
+  "genes": 13425,
+  "source_policy": "all",
+  "cohort": "current cube r2 aggregates; CD4 donor-resolved bank being built separately; NOT complete catalogue",
+  "truth": "legacy pseudobulk log effects; not claimed as mean per-cell proportions",
+  "tables_expected": [
+   "k562_gwps",
+   "k562_essential",
+   "k562_viperturb",
+   "rpe1",
+   "cd4_rest",
+   "cd4_stim8hr",
+   "cd4_stim48hr",
+   "hct116",
+   "hek293t",
+   "kolf21j",
+   "hipsci_eipl_1",
+   "hipsci_eipl_3",
+   "hipsci_fiaj_1",
+   "hipsci_fiaj_3",
+   "hipsci_iudw_1",
+   "hipsci_iudw_4",
+   "hipsci_jejf_2",
+   "hipsci_jejf_3",
+   "hipsci_kolf_2",
+   "hipsci_kolf_3",
+   "hipsci_oikd_2",
+   "hipsci_oikd_5",
+   "hipsci_paab_3",
+   "hipsci_paab_4",
+   "hipsci_pipw_4",
+   "hipsci_pipw_5",
+   "hipsci_tolg_4",
+   "hipsci_tolg_6",
+   "hipsci_zapk_3",
+   "jurkat_nadig",
+   "h1_train",
+   "h1_val",
+   "tian2021_neuron"
+  ],
+  "tables_used": [
+   "k562_gwps",
+   "k562_essential",
+   "k562_viperturb",
+   "rpe1",
+   "cd4_rest",
+   "cd4_stim8hr",
+   "cd4_stim48hr",
+   "hct116",
+   "hek293t",
+   "kolf21j",
+   "hipsci_eipl_1",
+   "hipsci_eipl_3",
+   "hipsci_fiaj_1",
+   "hipsci_fiaj_3",
+   "hipsci_iudw_1",
+   "hipsci_iudw_4",
+   "hipsci_jejf_2",
+   "hipsci_jejf_3",
+   "hipsci_kolf_2",
+   "hipsci_kolf_3",
+   "hipsci_oikd_2",
+   "hipsci_oikd_5",
+   "hipsci_paab_3",
+   "hipsci_paab_4",
+   "hipsci_pipw_4",
+   "hipsci_pipw_5",
+   "hipsci_tolg_4",
+   "hipsci_tolg_6",
+   "hipsci_zapk_3",
+   "jurkat_nadig",
+   "h1_train",
+   "h1_val",
+   "tian2021_neuron"
+  ],
+  "groups": [
+   "CD4T",
+   "H1",
+   "HCT116",
+   "HEK293T",
+   "Jurkat",
+   "K562",
+   "Neuron",
+   "RPE1",
+   "iPSC"
+  ],
+  "held_fit_reads": [],
+  "unknown_target_descriptors": 2676,
+  "seconds": 150,
+  "parameters": {
+   "held": "HepG2",
+   "seed": 20261004,
+   "steps": 3000,
+   "width": 64,
+   "rank": 32,
+   "lr": 0.0003,
+   "residual_bound": 0.5,
+   "batch": 64,
+   "residual_l2": 0.01,
+   "cohort": "aggregate-first-cohort"
+  },
+  "cube_manifest_sha256": "c7fb76628b8246b9e00c789582ba3e512a8018e9469c5e8f3344001375fe1099"
+ }
+}
