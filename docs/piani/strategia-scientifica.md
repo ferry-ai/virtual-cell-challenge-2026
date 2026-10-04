@@ -61,6 +61,79 @@
     HepG2, la generazione HepG2, le parti CD4 `D1_Stim8hr`, lo studio `nested-h1-r1`. Quota GPU `davideferrante11`
     8,01 h, altri due account 30 h. Lanciati: `vcc-cd4-d1-stim8hr-verify-r1` (02:26) e `rcell-prepass-jurkat-r1`
     (02:38, pre-passo della linea di conferma dell'ibrido, scelta prima di ogni risultato D-056).
+  - **PASSAGGIO DI CONSEGNE della sessione `2b35612c`, 4/10 12:30 CEST (da leggere per primo; i job si rileggono su
+    Kaggle prima di agire).** Ultimo commit della sessione al momento della scrittura: `0898ba2`.
+    - *Implementato ed eseguito:* ibrido D-056 v1. Protocollo congelato a `817f42a`, emendamenti §12–§14 scritti prima
+      delle uscite che toccano; cinque training accettati; righe, corsie, selettore congelato, esportazione A/B/C
+      (`reports/modelli/ibrido_selettivo_2026-10-04/`).
+    - *Misurato, banco locale:* sviluppo e conferma passano; punteggio del §9 0,134 contro 0,090 del transfer
+      ([CP-0062](../checkpoints/0062-d056-ibrido-selettivo-esito-banco.md), S-009). Fonti del transfer: «più fonti
+      meglio» su Jurkat e K562, nessun candidato di solo transfer (S-010).
+    - *Inviato:* t30 = effetti t25 + w · R della rete del fold HepG2, entry `lDMSYUZU5cFYHcRqI0lq`.
+    - *Misurato, ufficiale:* 0,135249 (rango 460).
+      - t30 − t25 = −0,004989: ramo b della regola registrata, non conclusivo, al confine del ramo c.
+      - t30 − t28 = −0,0096.
+      - PDS scalato −0,042 (coseno grezzo 0,763 contro 0,782), FID +0,014, JAC +0,002
+        ([comparison.json](../../reports/invii/prediction_t30_2026-10-04/comparison.json)).
+      - *Promosso:* nulla.
+    - *Diagnostica esplorativa, letta dopo il punteggio (non una regola):*
+      - su A/B/C la quota comune ai bersagli di R vale 0,63–0,70, e quella della correzione aggiunta 0,59–0,67; sulle
+        righe C delle cinque linee valutate vale 0,13–0,26, negli effetti t25 0,001;
+      - R è anche relativamente più ampio (RMS(R)/RMS(T) mediano ≈ 0,70 contro 0,24–0,42);
+      - il banco aggiungeva R a `transfer_all_J`, il t30 al t25: è una discrepanza di baseline, un'ipotesi da misurare
+        che anche la consegna di Codex segnala.
+      - Il meccanismo resta ipotizzato: componente comune come in S-006, dominio dei contesti di gara, baseline.
+    - *Chiusura del t30 ancora da fare* (PROCEDURE §2, punto 7): riga nell'indice degli invii, checkpoint CP-0063,
+      aggiornamento di S-009, PROGETTO §0, AMBITI §2 e §5.
+    - *Job alle 12:26, `davideferrante11`, CPU:*
+      - `vcc-cd4-d3-rest-p0of2-r1` in corsa;
+      - `vcc-cd4-d3-rest-p1of2-r1` in ERROR dopo 1.735 s per `http.client.IncompleteRead` nella lettura remota. Le
+        ricevute arrivano fino a `D3_Rest_001900000_001920000`; il log è in
+        `processed/ingestione_completa_2026-10-03/out_vcc-cd4-d3-rest-p1of2-r1_error/`. Va rilanciato come r2, e
+        l'incidente va registrato nel registro degli incidenti;
+      - complete e da verificare: CD4 `D2_Stim8hr` e `D2_Stim48hr` (entrambe le parti);
+      - nessun processo locale attivo; la veglia del portatile è fermata.
+      - Quote GPU: `davideferrante11` circa 2 h fino al 10/10; le altre due vanno rilette.
+    - *Dati D-053:*
+      - gemelli CD4 D1 (tre unità) verificati;
+      - un kernel monta almeno 22 sorgenti (137,7 GB) in 5 s
+        ([STATO](../../reports/sorgenti/prepasso_ampliato_2026-10-04/STATO.md));
+      - il pre-passo pilota ha impiegato 2,9 h: prima lettura 0,6 h, fase globale centrale 1,85 h, seconda lettura
+        0,4 h (`processed/rete_cellulare_2026-10-03/out_prepass_hepg2_r1/prepass/train_log.jsonl`). La fase centrale
+        va strumentata prima di scegliere fra un pre-passo unico accelerato e quello diviso.
+    - *Fuori perimetro, di altri:* `reports/analisi/prossimo_ibrido_2026-10-04/` (Codex: audit del pre-passo, piano
+      del prossimo ibrido, consegna `PROMPT_CLAUDE1.md`), `adattatori_codex/`, `ADDENDUM_1615.md`,
+      `t29_keep_awake*_stop.json`.
+    - *Note:*
+      - `submit_t30_raw.json` porta l'email dell'account nel percorso di storage, come i `submit_*_raw.json` già
+        pubblici: da valutare dal proprietario;
+      - invii del 4/10: 1 su 2;
+      - i commit dopo `0106571` non sono pubblicati: prima di un push si verifica l'intera differenza.
+    - *Attività suggerita, in ordine:*
+      1. Chiudere il t30 come sopra.
+      2. Diagnosi controllata del t30, secondo `reports/analisi/prossimo_ibrido_2026-10-04/PROMPT_CLAUDE1.md` §2–3.
+         - Prima si scrive un protocollo nuovo, con Precedenti S-006 e S-009 e un segnale precoce: quota comune di R
+           all'esportazione > 0,5.
+         - Poi, sulle corsie B esistenti e a pesi congelati, si confrontano tre bracci:
+           a) `transfer_prod_J` + w · R, l'analogo del t30;
+           b) `transfer_all_J` + w · R, il caso del banco;
+           c) T + w · (R − R̄), con la media sui bersagli tolta per linea.
+         - Si misura anche la quota comune di R per linea.
+         - Un eventuale t31 (t25 + w · (R − R̄)) si invia solo se la regola passa, con la previsione registrata.
+      3. Dati:
+         - verifica di CD4 `D2_Stim8hr` e `D2_Stim48hr` (`build_parts_verify.py`);
+         - rilancio r2 di `D3_Rest` p1;
+         - coda con `fill_sessions.py --max 1` (10 parti) e gemelli delle unità verificate.
+      4. Pre-passo del corpus completo: marcatori di tempo per fase, poi la scelta. La scheda suggerita alla sessione
+         del 4/10 mattina è il pre-passo diviso; va coordinata con l'audit di Codex.
+    - *Prompt di subentro:* «Continua il lavoro della sessione Claude `2b35612c` su VCC 2026 in
+      `C:\Users\ferra\OneDrive\Desktop\vcc2026`. Leggi `CLAUDE.md`, `git status --short`, PROGETTO §0 e il passaggio di
+      consegne della sessione `2b35612c` nella scheda R-LEAD (`docs/piani/strategia-scientifica.md`); rileggi i job su
+      Kaggle prima di agire. Svolgi l'attività suggerita in ordine: chiusura del t30, diagnosi controllata con
+      protocollo nuovo prima di leggere, dati D-053, pre-passo. Coordina con Codex
+      (`reports/analisi/prossimo_ibrido_2026-10-04/`), non modificare i file di altre sessioni, committa solo i tuoi
+      file per nome. Invii, push, nuovi download e calcolo cloud oltre i job già in corso richiedono il via del
+      proprietario in chat.»
   - **Stato alle 10:40 (sessione `2b35612c`; i job si rileggono su Kaggle prima di agire).**
     - *Misurato, letto con le regole congelate:* D-056 v1 passa lo sviluppo («contributo neurale nello sviluppo») e la
       conferma («confermato» su Jurkat e K562). Il punteggio di banco del §9 è 0,134 per `ibrido_selettivo` contro
