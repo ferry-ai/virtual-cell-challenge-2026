@@ -1,0 +1,223 @@
+{
+ "written_utc": "2026-10-04T11:52:59+00:00",
+ "protocol": "reports/modelli/diagnosi_t30_2026-10-04/PROTOCOLLO_CONFRONTI.md \u00a77",
+ "network": {
+  "model_sha256": "365bf62508cab76c3b2971678557adfd6a7c51d10fb336f6c3e05e75902a88bc",
+  "held_group": "HepG2",
+  "sources": [
+   "CD4T",
+   "H1",
+   "HCT116",
+   "HEK293T",
+   "Jurkat",
+   "K562",
+   "Neuron",
+   "RPE1",
+   "iPSC"
+  ]
+ },
+ "corrected_targets": 230,
+ "positive_control": {
+  "context": "A",
+  "max_abs_gap_to_stored_R": 0.0,
+  "tolerance": 0.0009765625,
+  "share_of_pairs_identical": 1.0,
+  "rms_gap": 0.0,
+  "rms_stored_R": 0.07362433522939682,
+  "same_defined_pairs": true,
+  "passed": true
+ },
+ "lines": {
+  "HepG2": {
+   "real_cells": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_gen_hepg2_r3b\\real_cells.npz",
+   "real_cells_sha256": "6394a4cef66240c0e5b5f7fc1a5d0d3296611f616b31b47948c18835141ea5b7",
+   "controls": {
+    "cells": 2048,
+    "var_genes": 9023,
+    "var_off_model": 0,
+    "input_genes_absent": 117,
+    "median_library": 11854.5
+   },
+   "draws": {
+    "draws": 1024,
+    "ctrl_k": 64,
+    "seed": 20261004,
+    "modality": "CRISPRi",
+    "corrected": 230,
+    "seconds": 151.3
+   },
+   "line": {
+    "genes": 9023,
+    "common_share_R": 0.6074948410746994,
+    "rms_R": 0.0704777379547013,
+    "rms_s_anchor": 0.07999522579944833,
+    "ratio_rms_pooled": 0.8810243017676105,
+    "ratio_rms_per_target_median": 0.88975077169626,
+    "rms_common_vector": 0.05493172707983593
+   },
+   "competition_on_the_same_genes": {
+    "A": {
+     "genes": 9023,
+     "common_share_R": 0.6492460206748203,
+     "rms_R": 0.0755040945860558,
+     "rms_s_anchor": 0.07949601140436127,
+     "ratio_rms_pooled": 0.9497846904796223,
+     "ratio_rms_per_target_median": 0.9834404613882253,
+     "rms_common_vector": 0.06083803134295048,
+     "cos_common_vector_with_line": 0.8934678339801371
+    },
+    "B": {
+     "genes": 9023,
+     "common_share_R": 0.7239010287251635,
+     "rms_R": 0.1014513310749203,
+     "rms_s_anchor": 0.07926289157712038,
+     "ratio_rms_pooled": 1.2799347722030963,
+     "ratio_rms_per_target_median": 1.3292115000978144,
+     "rms_common_vector": 0.08631720046677308,
+     "cos_common_vector_with_line": 0.8698354238711432
+    },
+    "C": {
+     "genes": 9023,
+     "common_share_R": 0.69509405063572,
+     "rms_R": 0.09871196748959206,
+     "rms_s_anchor": 0.07917439412201378,
+     "ratio_rms_pooled": 1.246766313582007,
+     "ratio_rms_per_target_median": 1.2697952109479356,
+     "rms_common_vector": 0.08229843825779802,
+     "cos_common_vector_with_line": 0.7415209213648759
+    }
+   }
+  },
+  "H1": {
+   "real_cells": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_gen_h1_r3\\real_cells.npz",
+   "real_cells_sha256": "b7bceab981ed4629ca975040d87596386d467cd9d3ec84ed16fb5d59e6bf9a1a",
+   "controls": {
+    "cells": 2048,
+    "var_genes": 18077,
+    "var_off_model": 0,
+    "input_genes_absent": 34,
+    "median_library": 54529.5
+   },
+   "draws": {
+    "draws": 1024,
+    "ctrl_k": 64,
+    "seed": 20261004,
+    "modality": "CRISPRi",
+    "corrected": 230,
+    "seconds": 174.0
+   },
+   "line": {
+    "genes": 18077,
+    "common_share_R": 0.2965781411420736,
+    "rms_R": 0.037334302411928665,
+    "rms_s_anchor": 0.09580017351810369,
+    "ratio_rms_pooled": 0.38971017526261026,
+    "ratio_rms_per_target_median": 0.33923179586430696,
+    "rms_common_vector": 0.02033188339871902
+   },
+   "competition_on_the_same_genes": {
+    "A": {
+     "genes": 18077,
+     "common_share_R": 0.6316899639950924,
+     "rms_R": 0.07400881069708035,
+     "rms_s_anchor": 0.09674650779066567,
+     "ratio_rms_pooled": 0.7649765597453523,
+     "ratio_rms_per_target_median": 0.7681184230879959,
+     "rms_common_vector": 0.05882140770973244,
+     "cos_common_vector_with_line": -0.06816897527895108
+    },
+    "B": {
+     "genes": 18077,
+     "common_share_R": 0.6995817574605475,
+     "rms_R": 0.09974797624411239,
+     "rms_s_anchor": 0.09652661576835696,
+     "ratio_rms_pooled": 1.0333727692627908,
+     "ratio_rms_per_target_median": 1.0513578799703007,
+     "rms_common_vector": 0.08343020894621284,
+     "cos_common_vector_with_line": 0.05715296990101647
+    },
+    "C": {
+     "genes": 18077,
+     "common_share_R": 0.6688491935816947,
+     "rms_R": 0.10012020889442746,
+     "rms_s_anchor": 0.09644641857215117,
+     "ratio_rms_pooled": 1.0380915162705389,
+     "ratio_rms_per_target_median": 1.0564023518942696,
+     "rms_common_vector": 0.08188151149818182,
+     "cos_common_vector_with_line": 0.13854125788326357
+    }
+   }
+  },
+  "RPE1": {
+   "real_cells": "C:\\Users\\ferra\\vcc2026-data\\processed\\rete_cellulare_2026-10-03\\out_gen_rpe1_r3b\\real_cells.npz",
+   "real_cells_sha256": "f10c03f98bcdee9d1bec30a7ce8d59c1e0505957169bbda55595420331fdd50f",
+   "controls": {
+    "cells": 2048,
+    "var_genes": 8259,
+    "var_off_model": 0,
+    "input_genes_absent": 112,
+    "median_library": 8435.5
+   },
+   "draws": {
+    "draws": 1024,
+    "ctrl_k": 64,
+    "seed": 20261004,
+    "modality": "CRISPRi",
+    "corrected": 230,
+    "seconds": 213.2
+   },
+   "line": {
+    "genes": 8259,
+    "common_share_R": 0.3238322403783119,
+    "rms_R": 0.056407849526347385,
+    "rms_s_anchor": 0.0762316162160018,
+    "ratio_rms_pooled": 0.7399534776557288,
+    "ratio_rms_per_target_median": 0.6572661680287546,
+    "rms_common_vector": 0.03209959739587454
+   },
+   "competition_on_the_same_genes": {
+    "A": {
+     "genes": 8259,
+     "common_share_R": 0.6351434099832267,
+     "rms_R": 0.0763455398696627,
+     "rms_s_anchor": 0.07584903958807922,
+     "ratio_rms_pooled": 1.0065459007032902,
+     "ratio_rms_per_target_median": 1.0440320510602863,
+     "rms_common_vector": 0.06084425372372922,
+     "cos_common_vector_with_line": 0.7008524943678478
+    },
+    "B": {
+     "genes": 8259,
+     "common_share_R": 0.7151700239709541,
+     "rms_R": 0.1025136727629269,
+     "rms_s_anchor": 0.07563127654530946,
+     "ratio_rms_pooled": 1.3554402020639258,
+     "ratio_rms_per_target_median": 1.39649042513298,
+     "rms_common_vector": 0.0866934816455706,
+     "cos_common_vector_with_line": 0.7200032550068919
+    },
+    "C": {
+     "genes": 8259,
+     "common_share_R": 0.6858282124043282,
+     "rms_R": 0.09847119484793715,
+     "rms_s_anchor": 0.07554769573399443,
+     "ratio_rms_pooled": 1.3034308179915508,
+     "ratio_rms_per_target_median": 1.3270134897490076,
+     "rms_common_vector": 0.08154866971217356,
+     "cos_common_vector_with_line": 0.606203107159929
+    }
+   }
+  }
+ },
+ "thresholds": {
+  "share_low": 0.35,
+  "share_high": 0.55,
+  "ratio_low": 0.5,
+  "ratio_high": 0.6
+ },
+ "reading": {
+  "common_share": "non distinto",
+  "amplitude_ratio": "segue la procedura o i bersagli del pannello"
+ },
+ "note": "diagnostic of corrections, no truth and no score; H1 and RPE1 are training lines of this network, HepG2 its held-out line; none is a Flex context"
+}

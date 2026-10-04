@@ -1,6 +1,27 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
 - **Sottoattività Codex, 4/10 12:28 CEST:** chat `01a10649-0c7f-7551-8bfe-8eca0fe03654`, macchina `LAPTOP-DLG1LHV1`, partenza `1309914`, su mandato del proprietario: audit informativo del prepasso e piano del prossimo ibrido in [prossimo_ibrido_2026-10-04](../../reports/analisi/prossimo_ibrido_2026-10-04/README.md). Riconti e fixture locali completati; piano proposto, da congelare dopo diagnosi di Claude1 e bilancio del corpus ampliato. Perimetro: sola nuova cartella e proprie righe negli indici/scheda; nessun job avviato, nessuna modifica al prepasso altrui. Claude1 mantiene chiusura ufficiale t30, diagnosi banco/export e propri job; [consegna pronta](../../reports/analisi/prossimo_ibrido_2026-10-04/PROMPT_CLAUDE1.md).
+- **Sottoattività Claude1, 4/10 13:15–14:10 CEST (ore lette con `date`):** Claude Code, sessione `ba9b8bcb`, macchina
+  `LAPTOP-DLG1LHV1`, partenza `a6f7dd2`, su consegna del proprietario
+  ([PROMPT_CLAUDE1](../../reports/analisi/prossimo_ibrido_2026-10-04/PROMPT_CLAUDE1.md)). Perimetro: la cartella nuova
+  [diagnosi_t30](../../reports/modelli/diagnosi_t30_2026-10-04/README.md), il checkpoint CP-0064 e le proprie righe in
+  indici, STRADE, ERRORI, PROGETTO §0, AMBITI §2 e §5.
+  - *Fatto:* chiusura del t30 ([CP-0064](../checkpoints/0064-t30-ibrido-selettivo-punteggio-ufficiale.md): 0,135249,
+    −0,004989 contro il t25, ramo b, nessuna promozione; il numero 0063 citato nel passaggio delle 12:30 non esiste);
+    catena dell'invio riletta e integra; tabella training → banco → esportazione → generazione; difetti riprodotti
+    distinti dalle ipotesi (baseline diversa, quota comune 0,62–0,69 all'esportazione, PDS già in perdita sul fold
+    esportato, JAC locale di K562, flusso casuale unico, bersagli del pannello assenti dal banco su tre linee).
+    La causa della perdita non è isolata.
+  - *Pronto e non eseguito:* confronti controllati sulle corsie B
+    ([protocollo](../../reports/modelli/diagnosi_t30_2026-10-04/PROTOCOLLO_CONFRONTI.md) congelato a `8f9118c`,
+    launcher provato a secco): cinque kernel Kaggle CPU, **serve il via del proprietario**. Da aggiungere prima, con un
+    emendamento: il braccio con R calcolata dalla procedura di esportazione sui controlli della linea esclusa.
+  - *Job riletti su Kaggle alle 13:18, `davideferrante11`, senza lanciare niente:* `vcc-cd4-d3-rest-p0of2-r1` in corsa;
+    `vcc-cd4-d3-rest-p1of2-r1` in ERROR (da rilanciare come r2 e da registrare fra gli incidenti); `D2_Stim8hr` e
+    `D2_Stim48hr` completi nelle due parti, da verificare. Questa sessione non ha l'autorizzazione autonoma della
+    `2b35612c`: rilanci, verifiche su Kaggle, push e invii attendono il via in chat.
+  - *Per Codex:* vincoli per il prossimo protocollo nel §3 e §5 del resoconto; nessun file di
+    `prossimo_ibrido_2026-10-04/` è stato toccato.
 - **Mandato:** prevedere come rispondono linee mai viste perturbate partendo dai soli controlli, e scegliere il modello
   con prove C/J su linee escluse intere; unico percorso operativo di R-COMP (D-052). **Mandato non negoziabile del
   proprietario (D-053):** tutte le linee e i contesti idonei nel percorso principale, secondo

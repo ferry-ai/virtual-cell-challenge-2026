@@ -40,7 +40,7 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 | S-006 | Rete ancorata v4: ancora dal transfer più correzione appresa sulle cellule | peggiora la propria ancora su 3 linee su 3; regola non passata (CP-0061) | ipotizzato | 2026-10-04 |
 | S-007 | Correzioni del transfer dai controlli medi (guadagni per gene, bilineare, rete sul pseudobulk) | nessun beneficio | ignoto | 2026-10-04 |
 | S-008 | Modelli appresi precedenti (encoder, cancelli, rete dei contesti, relazionale, rete sulle sorgenti, Stack A e B) | nessuno ha passato la sua regola | ignoto | 2026-10-04 |
-| S-009 | Ibrido selettivo D-056 v1: transfer congelato + correzione neurale regolarizzata + selettore fuori fold | regola di banco passata su 5 linee (sviluppo e conferma, CP-0062); invio t30 da leggere | ipotizzato | 2026-10-04 |
+| S-009 | Ibrido selettivo D-056 v1: transfer congelato + correzione neurale regolarizzata + selettore fuori fold | regola di banco passata su 5 linee (CP-0062); sul sito t30 −0,005 contro il t25, non conclusivo e nessuna promozione (CP-0064): il banco non aveva valutato il candidato inviato | ipotizzato | 2026-10-04 |
 | S-010 | Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25 | «più fonti meglio» su Jurkat e K562; nessun candidato di solo transfer ammesso (CP-0062) | ipotizzato | 2026-10-04 |
 
 ## Voci
@@ -224,15 +224,35 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 - **Che cosa esclude e che cosa no:** esclude che una correzione neurale debba per forza peggiorare il transfer su
   linee nuove (S-001, S-002, S-006). Non dimostra che il guadagno passi al sito né al corpus completo D-053; un seme,
   8 gruppi.
-- **Che cosa la riaprirebbe:** voce aperta: la lettura ufficiale del t30
-  (`reports/invii/prediction_t30_2026-10-04/prediction.json`). Poi un refit su tutti i gruppi, che richiede la modifica
-  del pre-passo, e il corpus completo.
+- **Esito ufficiale, 4/10 ([CP-0064](checkpoints/0064-t30-ibrido-selettivo-punteggio-ufficiale.md)):** t30 = 0,135249, −0,004989 contro il t25, ramo b della
+  regola registrata: non conclusivo, nessuna promozione. Il PDS scalato perde 0,042; fedeltà +0,014, Jaccard +0,002.
+- **Che cosa del banco non si è trasferito (misurato, [diagnosi](../reports/modelli/diagnosi_t30_2026-10-04/README.md)):**
+  - il candidato inviato non era un braccio del banco: R definita contro `transfer_all_J` è stata sommata al t25
+    (coseno mediano fra le due baseline 0,71), con uno stimatore di R mai passato per il banco;
+  - all'esportazione la quota comune di R è 0,62–0,69 contro 0,07–0,24 delle righe, oltre la soglia 0,5 della
+    guardia del trainer, che lì non era applicata; l'ampiezza relativa è 0,71–0,96 contro 0,24–0,42 e l'ingresso di
+    ampiezza del selettore è fuori dal suo intervallo di stima per il 45 % dei bersagli di B e C;
+  - sul fold esportato (HepG2) il banco perdeva già PDS (corsia B −0,093, corsia A −0,039) e la media lo copriva con
+    membri DE che sul sito non si sono mossi; il +0,074 di K562 viene per il 77 % dal JAC locale (denominatore 0,047);
+  - `t30 − t25` contiene anche un cambio di realizzazione del rumore: lo stadio 45 usa un solo flusso casuale e le
+    cellule dei bersagli non corretti non sono quelle del t25 (1 blocco su 210).
+  Controllo locale (R4, lettura scritta prima): la stessa procedura sui controlli di HepG2, linea non di gara esclusa dal training, dà quota comune 0,61 e ampiezza 0,88 (0,23 e 0,42 sul banco della stessa linea); sulle linee di training H1 e RPE1 0,30 e 0,32. Esito registrato: non distinto sulla quota comune, «procedura o bersagli del pannello» sull'ampiezza. I 300 bersagli del pannello non sono fra quelli del banco su HepG2, RPE1 e Jurkat (0), 15 su H1, 72 su K562.
+  Quale di queste differenze abbia prodotto la perdita **non è isolato**: meccanismo ipotizzato.
+- **Che cosa la riaprirebbe:** un ibrido in cui il candidato inviato è esattamente un braccio valutato (una sola
+  baseline in fit, banco ed esportazione), con le guardie del trainer applicate all'esportazione, una guardia sul PDS
+  per linea e una correzione che non sposta la media sui bersagli; i confronti che separano le cause sul banco sono
+  in `reports/modelli/diagnosi_t30_2026-10-04/PROTOCOLLO_CONFRONTI.md`, congelati e non eseguiti. Poi il refit su
+  tutti i gruppi e il corpus completo. Le cinque linee lette sono ormai sviluppo.
 - **Segnale precoce:** le guardie interne del trainer v5 (discriminazione, ampiezza, quota comune) e la parità
   `ibrido_w0`. Sul candidato A/B/C, il rapporto RMS(R)/RMS(T) dell'esportazione confrontato con quello delle righe di
-  sviluppo: su A vale circa e^−0,35 ≈ 0,70 contro 0,24–0,42 delle righe (`export_abc_r2`, targets_A.csv).
+  sviluppo: su A vale circa e^−0,35 ≈ 0,70 contro 0,24–0,42 delle righe (`export_abc_r2`, targets_A.csv); su B e C
+  0,96. Dal 4/10: la quota comune della correzione all'esportazione (> 0,5 avrebbe fermato il t30) e il PDS della
+  corsia B del fold che si esporta (`reports/modelli/diagnosi_t30_2026-10-04/export_vs_rows.py`, `bench_members.py`).
 - **Guardia eseguibile:** `reports/modelli/ibrido_selettivo_2026-10-04/guards.py` e l'arresto in `train_cellnet.py`; la
   parità in `hybrid_lanes.py laneB` (fallisce la corsia) e in `export_abc.py` (rifiuta l'esportazione se w = 0 non dà
-  gli effetti del t25); test in `test_guards.py`, `test_hybrid_train.py` e `test_export_abc.py`.
+  gli effetti del t25); test in `test_guards.py`, `test_hybrid_train.py` e `test_export_abc.py`. **Manca** un rifiuto
+  dell'esportazione su quota comune, ampiezza e ingressi del selettore: oggi li misura solo, a posteriori,
+  `reports/modelli/diagnosi_t30_2026-10-04/export_vs_rows.py`.
 
 ### S-010 — Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25
 

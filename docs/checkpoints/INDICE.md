@@ -95,4 +95,5 @@ aggiunge da sé la riga qui sotto.
 | [0058](0058-copertura-integrale-contesti.md) | 2026-10-03 | Copertura obbligatoria di tutte le linee e i contesti idonei | cambio-di-strategia | — |
 | [0060](0060-direzione-x-transfer-pilot-v4.md) | 2026-10-03 | Direzione X + transfer, diagnosi dei training v3 e pilot v4 lanciato | cambio-di-strategia | — |
 | [0061](0061-pilot-v4-esito-tre-linee.md) | 2026-10-04 | Pilot v4: la rete ancorata peggiora la propria ancora su tre linee su tre | esperimento | — |
-| [0062](0062-d056-ibrido-selettivo-esito-banco.md) | 2026-10-04 | D-056 v1: l'ibrido selettivo batte il transfer su cinque linee escluse, in sviluppo e in conferma | esperimento | — |
+| [0062](0062-d056-ibrido-selettivo-esito-banco.md) | 2026-10-04 | D-056 v1: l'ibrido selettivo batte il transfer su cinque linee escluse, in sviluppo e in conferma | esperimento | [0064](0064-t30-ibrido-selettivo-punteggio-ufficiale.md), §7: le misure locali restano; il guadagno non si è trasferito al sito, sul fold esportato il PDS scendeva, il +0,074 di K562 viene per tre quarti dal JAC locale, il candidato inviato non era un braccio del banco |
+| [0064](0064-t30-ibrido-selettivo-punteggio-ufficiale.md) | 2026-10-04 | t30: l'ibrido selettivo sul sito, −0,005 contro il t25; che cosa del banco non si è trasferito | esperimento | — |

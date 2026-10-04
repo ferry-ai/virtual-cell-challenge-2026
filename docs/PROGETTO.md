@@ -10,7 +10,7 @@ cambia una conclusione. Il testo tolto resta in `docs/storico/`: le
 [§0, §6 e §7 del 30/09 mattina](storico/PROGETTO_sezioni_0_6_7_2026-09-30.md), il
 §0 del 3/10 sera nel [consolidamento](storico/consolidamento_2026-10-03/INDICE.md).
 
-## 0. Oggi — 4 ottobre 2026 mattina, l'ibrido D-056 passa il banco e il t30 è in invio
+## 0. Oggi — 4 ottobre 2026, l'ibrido D-056 passa il banco ma il t30 non migliora il t25
 
 **Il riferimento resta la ricetta t22**, quattro sorgenti a peso uguale (K562 GWPS, CD4 in tre stati, HCT116,
 HEK293T) con lo stimatore t25 corretto; t22/t24 danno una media osservata di **0,14207**; il massimo è t28,
@@ -28,8 +28,11 @@ ritorno al transfer.
   (+0,006…+0,074). Il punteggio di banco del §9 è 0,134 contro 0,090 del transfer
   ([CP-0062](checkpoints/0062-d056-ibrido-selettivo-esito-banco.md), [S-009](STRADE.md)). È la prima rete sulle
   cellule che migliora il transfer su linee escluse, con un seme e un corpus pilot a 8 gruppi; in scala locale, non
-  sul sito. Il **t30** (effetti t25 + w · R della rete del fold HepG2) è registrato prima della generazione e in
-  corso di generazione e upload ([previsione](../reports/invii/prediction_t30_2026-10-04/prediction.json)). Il pilot v4
+  sul sito. Il **t30** (effetti t25 + w · R della rete del fold HepG2) vale **0,135249**, −0,004989 contro il t25:
+  ramo b della regola registrata, non conclusivo e non un miglioramento; perde PDS (−0,042 scalato)
+  ([CP-0064](checkpoints/0064-t30-ibrido-selettivo-punteggio-ufficiale.md)). Il banco non aveva valutato il candidato inviato: baseline diversa, correzione per due
+  terzi comune ai bersagli e più ampia all'esportazione, perdita di PDS già visibile sul fold esportato. La causa non
+  è isolata ([diagnosi](../reports/modelli/diagnosi_t30_2026-10-04/README.md)); il v1 non è un candidato per D/E/F. Il pilot v4
   (correzione libera) resta negativo ([CP-0061](checkpoints/0061-pilot-v4-esito-tre-linee.md)).
 - **Fonti del transfer:** su Jurkat e K562 più tabelle aggregate battono le fonti della ricetta (+0,07…+0,14 locali).
   Nessun candidato di solo transfer è ammesso, perché il banco di quelle due linee è sotto 0,100 ([S-010](STRADE.md)).
@@ -44,8 +47,8 @@ rete sul pseudobulk, e sui sei membri vince il transfer ([CP-0056](checkpoints/0
 profilo medio ma la rete resta sotto il transfer; la v3 r1 è un pilot
 incompleto per difetti tecnici ricostruiti esattamente, non una bocciatura
 ([diagnosi](../reports/modelli/rete_ancorata_v4_2026-10-03/diagnosi_r1/DIAGNOSI.md)). La prima correzione neurale
-che batte il transfer su linee escluse è quella pesata dell'ibrido D-056 (CP-0062), nel banco locale. Il punteggio
-ufficiale (t30) dirà se passa al sito. Esiti e fonti per area in
+che batte il transfer su linee escluse è quella pesata dell'ibrido D-056 (CP-0062), nel banco locale. Sul sito il
+guadagno non è comparso (t30, CP-0064). Esiti e fonti per area in
 [AMBITI §4–5](AMBITI.md#5-modelli-appresi-e-generalizzazione).
 
 **Riserve e traguardo.** K562 è già vista dalle reti r2/r3; H1 train/val è nel corpus, H1 test resta chiusa e non si

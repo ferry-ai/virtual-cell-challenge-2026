@@ -1,0 +1,313 @@
+{
+ "written_utc": "2026-10-04T11:26:24+00:00",
+ "entry_id": "lDMSYUZU5cFYHcRqI0lq",
+ "passed": {
+  "receipt": true,
+  "model_and_selector": true,
+  "effects": true,
+  "generation": false,
+  "package": true,
+  "score": true
+ },
+ "checks": {
+  "receipt": {
+   "entry_matches_status": true,
+   "model_name_matches_status": true,
+   "md5_verified_by_server": true,
+   "bytes_uploaded": 4198400000,
+   "package_archive_bytes": 4198400000,
+   "bytes_match_package": true,
+   "upload_exit_code": 0,
+   "status": "published",
+   "is_terminal": true,
+   "panel_and_anchors_equal_t25_t28": true,
+   "panel_id": "vcc2026-val-1",
+   "anchor_version": "vcc2026-valA-r4+vcc2026-valB-r4+vcc2026-valC-r4"
+  },
+  "model_and_selector": {
+   "model_sha256": "365bf62508cab76c3b2971678557adfd6a7c51d10fb336f6c3e05e75902a88bc",
+   "model_matches_export_manifest": true,
+   "model_named_in_registration": true,
+   "selector_sha256": "007587789a3516bf31e891493fba7a6b49e05d75f5b22f0c018dc9792de8fe42",
+   "selector_matches_export_manifest": true,
+   "selector_named_in_registration": true,
+   "exported_state": {
+    "state": "best check",
+    "step": 20000,
+    "benefit": 0.14282635745287015,
+    "internal_benefit_positive": true
+   },
+   "anchor_sources": [
+    "CD4T",
+    "H1",
+    "HCT116",
+    "HEK293T",
+    "Jurkat",
+    "K562",
+    "Neuron",
+    "RPE1",
+    "iPSC"
+   ],
+   "held_group_of_the_network": "HepG2",
+   "exporter_sha256_now": "269ea632b1980a195f9d3a78ceca77c3a2026252b10946d47e6cd9c63a0a2d13",
+   "exporter_named_in_registration": false,
+   "exporter_note": "the registration names the exporter before its gene-index reading fix (INVIO_T30.md)"
+  },
+  "effects": {
+   "contexts": {
+    "A": {
+     "sha256": "63f6ad595c571e28e15cbcf66c5c38d8f643c21af3ff0d6db1ed481672c1e286",
+     "matches_export_manifest": true,
+     "named_in_stage45_arguments": true,
+     "parity_w0_equal_t25": true,
+     "t25_regenerated_sha256": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a",
+     "t25_input_of_export": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a"
+    },
+    "B": {
+     "sha256": "0e49d878baa2c9fa956b564a62ba6d8508e4a1fa05fde3f4e03ba877f099e1f1",
+     "matches_export_manifest": true,
+     "named_in_stage45_arguments": true,
+     "parity_w0_equal_t25": true,
+     "t25_regenerated_sha256": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a",
+     "t25_input_of_export": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a"
+    },
+    "C": {
+     "sha256": "13abf22af8516e85dc1e23f154e44f4cb0f432df6288935cb54778afaf0a3b4d",
+     "matches_export_manifest": true,
+     "named_in_stage45_arguments": true,
+     "parity_w0_equal_t25": true,
+     "t25_regenerated_sha256": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a",
+     "t25_input_of_export": "1d3e1dac4885262d1881560d0dcce39201d7b7cfd3d784284e0f59a5c55dc30a"
+    }
+   },
+   "corrected_targets": 230,
+   "not_corrected": {
+    "no CRISPRi training row": 22,
+    "no CRISPRi training row; hidden": 48
+   },
+   "note": "stage 45 does not record the sha256 of the effects files it reads, only their paths: the link effects -> cells rests on the paths and on the files not having changed since (mtime before the generation start)",
+   "effects_mtime_before_generation": true,
+   "t25_original_effects_paths": [
+    "A=C:/Users/ferra/vcc2026-data/processed/effects_t25_2026-09-27/effects_A.npz",
+    "B=C:/Users/ferra/vcc2026-data/processed/effects_t25_2026-09-27/effects_B.npz",
+    "C=C:/Users/ferra/vcc2026-data/processed/effects_t25_2026-09-27/effects_C.npz"
+   ]
+  },
+  "generation": {
+   "seed_t30": 20260912,
+   "seed_t25": 20260912,
+   "trial_t30": "trial-ext-profile",
+   "trial_t25": "trial-ext-profile",
+   "argument_differences": {
+    "depth_bins": [
+     "<absent>",
+     false
+    ],
+    "effects": [
+     [
+      "A=C:/Users/ferra/vcc2026-data/processed/effects_t25_2026-09-27/effects_A.npz",
+      "B=C:/Users/ferra/vcc2026-data/processed/effects_t25_2026-09-27/effects_B.npz",
+      "C=C:/Users/ferra/vcc2026-data/processed/effects_t25_2026-09-27/effects_C.npz"
+     ],
+     [
+      "A=C:\\Users\\ferra\\vcc2026-data\\processed\\ibrido_selettivo_2026-10-04\\export_abc_r2\\effects_A.npz",
+      "B=C:\\Users\\ferra\\vcc2026-data\\processed\\ibrido_selettivo_2026-10-04\\export_abc_r2\\effects_B.npz",
+      "C=C:\\Users\\ferra\\vcc2026-data\\processed\\ibrido_selettivo_2026-10-04\\export_abc_r2\\effects_C.npz"
+     ]
+    ],
+    "gene_dispersion_scale": [
+     "<absent>",
+     1.0
+    ],
+    "run_id": [
+     "t25gen",
+     "t30gen"
+    ]
+   },
+   "unexpected_argument_differences": {},
+   "arguments_equal_but_effects": true,
+   "controls_equal": true,
+   "per_block_parity": {
+    "A": {
+     "targets_w0": 70,
+     "w0_blocks_identical_to_t25": 1,
+     "targets_corrected": 230,
+     "corrected_blocks_identical_to_t25": 0
+    },
+    "B": {
+     "targets_w0": 70,
+     "w0_blocks_identical_to_t25": 0,
+     "targets_corrected": 230,
+     "corrected_blocks_identical_to_t25": 0
+    },
+    "C": {
+     "targets_w0": 70,
+     "w0_blocks_identical_to_t25": 0,
+     "targets_corrected": 230,
+     "corrected_blocks_identical_to_t25": 0
+    }
+   },
+   "w0_parity_through_generator": false,
+   "block_fields_compared": [
+    "n_cells",
+    "nnz",
+    "nnz_per_cell",
+    "max_counts_in_a_cell",
+    "compositional_shift_log2"
+   ]
+  },
+  "package": {
+   "stage48_reads_stage45_output": true,
+   "package_on_disk": true,
+   "bytes_on_disk": 4198400000,
+   "sampled_sha256_on_disk": "e80c46f94443fbf9bfae0ebc76d97c7f4daee062e75accd46e5d9322558c9ac5",
+   "matches_stage48_manifest": true,
+   "validation": {
+    "n_obs": 360000,
+    "n_vars": 18533,
+    "all_integer": true,
+    "n_nonfinite": 0,
+    "cells_per_context": {
+     "A": 120000,
+     "B": 120000,
+     "C": 120000
+    },
+    "n_targets_per_context": {
+     "A": 300,
+     "B": 300,
+     "C": 300
+    }
+   }
+  },
+  "score": {
+   "score_avg": {
+    "t30": 0.135248601985599,
+    "t25": 0.14023806091483554,
+    "t28": 0.14484520500645978
+   },
+   "mean_of_six": {
+    "t30": 0.135248601985599,
+    "t25": 0.14023806091483554,
+    "t28": 0.14484520500645978
+   },
+   "mean_matches_score_avg": {
+    "t30": true,
+    "t25": true,
+    "t28": true
+   },
+   "scaled": {
+    "t30": {
+     "score_pds": 0.5813252025096552,
+     "score_mse": 0.0,
+     "score_nmae": 0.11609106061917344,
+     "score_fid": -0.04440231448253831,
+     "score_reach": 0.1422138286972014,
+     "score_jac": 0.01626383457010212
+    },
+    "t25": {
+     "score_pds": 0.6235621757264928,
+     "score_mse": 0.0,
+     "score_nmae": 0.11798484120651283,
+     "score_fid": -0.0581287268841437,
+     "score_reach": 0.14405215190643564,
+     "score_jac": 0.013957923533715692
+    },
+    "t28": {
+     "score_pds": 0.6223070792267033,
+     "score_mse": 0.0,
+     "score_nmae": 0.04920195622768383,
+     "score_fid": -0.007408907363258718,
+     "score_reach": 0.19871265014354142,
+     "score_jac": 0.006258451804088974
+    }
+   },
+   "raw": {
+    "t30": {
+     "pds_cosine": 0.7630583426235601,
+     "expr_mse_unbiased_capped_norm": 3.168230706092609,
+     "de_wilcoxon_lfc_nmae": 0.9291278059055131,
+     "de_wilcoxon_direction_fidelity_yield_raw": 0.49927820530645084,
+     "de_wilcoxon_direction_reach_raw": 0.2046336270390178,
+     "de_wilcoxon_sig_jaccard": 0.03640446488688212
+    },
+    "t25": {
+     "pds_cosine": 0.7820921590486809,
+     "expr_mse_unbiased_capped_norm": 3.0171714908166867,
+     "de_wilcoxon_lfc_nmae": 0.928018708954095,
+     "de_wilcoxon_direction_fidelity_yield_raw": 0.49521951128742697,
+     "de_wilcoxon_direction_reach_raw": 0.2065724653149838,
+     "de_wilcoxon_sig_jaccard": 0.03557112599708424
+    },
+    "t28": {
+     "pds_cosine": 0.781419546636938,
+     "expr_mse_unbiased_capped_norm": 5.8002071450332116,
+     "de_wilcoxon_lfc_nmae": 0.96754906574089,
+     "de_wilcoxon_direction_fidelity_yield_raw": 0.5102589850500234,
+     "de_wilcoxon_direction_reach_raw": 0.2553142900353572,
+     "de_wilcoxon_sig_jaccard": 0.03276922693127063
+    }
+   },
+   "t30_minus_t25": {
+    "score_pds": -0.0422369732168375,
+    "score_mse": 0.0,
+    "score_nmae": -0.0018937805873393831,
+    "score_fid": 0.013726412401605388,
+    "score_reach": -0.0018383232092342439,
+    "score_jac": 0.0023059110363864276
+   },
+   "t30_minus_t28": {
+    "score_pds": -0.040981876717048005,
+    "score_mse": 0.0,
+    "score_nmae": 0.06688910439148962,
+    "score_fid": -0.03699340711927959,
+    "score_reach": -0.056498821446340025,
+    "score_jac": 0.010005382766013145
+   },
+   "contribution_to_mean_vs_t25": {
+    "score_pds": -0.007039495536139584,
+    "score_mse": 0.0,
+    "score_nmae": -0.0003156300978898972,
+    "score_fid": 0.0022877354002675647,
+    "score_reach": -0.00030638720153904064,
+    "score_jac": 0.0003843185060644046
+   },
+   "contribution_to_mean_vs_t28": {
+    "score_pds": -0.006830312786174668,
+    "score_mse": 0.0,
+    "score_nmae": 0.01114818406524827,
+    "score_fid": -0.006165567853213265,
+    "score_reach": -0.00941647024105667,
+    "score_jac": 0.0016675637943355242
+   },
+   "raw_t30_minus_t25": {
+    "pds_cosine": -0.01903381642512081,
+    "expr_mse_unbiased_capped_norm": 0.15105921527592248,
+    "de_wilcoxon_lfc_nmae": 0.0011090969514181426,
+    "de_wilcoxon_direction_fidelity_yield_raw": 0.004058694019023867,
+    "de_wilcoxon_direction_reach_raw": -0.0019388382759659983,
+    "de_wilcoxon_sig_jaccard": 0.0008333388897978841
+   },
+   "raw_t30_minus_t28": {
+    "pds_cosine": -0.01836120401337793,
+    "expr_mse_unbiased_capped_norm": -2.6319764389406024,
+    "de_wilcoxon_lfc_nmae": -0.03842125983537681,
+    "de_wilcoxon_direction_fidelity_yield_raw": -0.010980779743572588,
+    "de_wilcoxon_direction_reach_raw": -0.050680662996339415,
+    "de_wilcoxon_sig_jaccard": 0.003635237955611492
+   },
+   "rule": {
+    "reference_t25_registered": 0.14023806091483554,
+    "reference_equals_t25_status": true,
+    "delta_unrounded": -0.004989458929236551,
+    "threshold": 0.005,
+    "lower_bound_score": 0.13523806091483553,
+    "score_minus_lower_bound": 1.0541070763453453e-05,
+    "branch": "b",
+    "rounded_to_4_digits_would_be_ambiguous": true,
+    "inside_registered_band": true
+   },
+   "per_context_members": "not published in the status: none is reconstructed"
+  }
+ },
+ "note": "offline re-read of receipts and files; no call to the site; not a new score"
+}

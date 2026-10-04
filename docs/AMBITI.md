@@ -34,7 +34,11 @@ Leggi prima: [PROCEDURE §2](PROCEDURE.md#2-le-regole-dellinvio), punto 7, per l
   Tutti i punteggi: [invii](../reports/invii/README.md).
 - **Misurato.** Il t28 alza fedeltà (+0,051 scalato) e reach (+0,055), perde NMAE (−0,069) e
   Jaccard (−0,008): l'intervento sull'emissione sposta i membri DE, con costi.
-- **Ultimo esito, 1/10.** T29, rete cellulare r2 `desc` con generatore t22: ramo c negativo.
+- **Ultimo esito, 4/10.** T30, ibrido selettivo D-056 (effetti t25 + w · R): 0,135249, −0,004989 contro il t25, ramo b
+  non conclusivo, nessuna promozione. PDS scalato −0,042, fedeltà +0,014, Jaccard +0,002, NMAE e reach −0,002
+  ([CP-0064](checkpoints/0064-t30-ibrido-selettivo-punteggio-ufficiale.md)). Le cellule dei bersagli non corretti non sono quelle del t25: il delta contiene anche un
+  cambio di realizzazione del rumore ([catena](../reports/modelli/diagnosi_t30_2026-10-04/esito/chain_t30_r2.json)).
+- **Esito del 1/10.** T29, rete cellulare r2 `desc` con generatore t22: ramo c negativo.
   PDS, NMAE, reach e Jaccard scalati peggiorano rispetto a t22; fedeltà sale, MSE scalata
   resta zero mentre la grezza peggiora. Nessun nuovo invio neurale senza il banco a sei
   membri almeno al livello del transfer ([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)).
@@ -118,7 +122,14 @@ campioni annidati in [R-DATI](piani/dati-affidabilita.md).
   - Punteggio di banco del §9: 0,134 contro 0,090 del transfer.
   - Limiti: un seme, corpus pilot a 8 gruppi, scala locale; lo stato delle cellule (`ibrido − ibrido_mean`) non dà un
     contributo coerente.
-  - Il candidato A/B/C (t30: t25 + w · R) è registrato e in invio; nessuna promozione prima del punteggio ufficiale.
+  - **Sul sito il guadagno non è comparso (misurato, 4/10):** t30 −0,004989 contro il t25, non conclusivo
+    ([CP-0064](checkpoints/0064-t30-ibrido-selettivo-punteggio-ufficiale.md)). Misurato nella [diagnosi](../reports/modelli/diagnosi_t30_2026-10-04/README.md): il candidato inviato non era un
+    braccio del banco (R definita contro `transfer_all_J`, sommata al t25); all'esportazione la quota comune di R è
+    0,62–0,69 contro 0,07–0,24 delle righe e l'ampiezza 0,71–0,96 contro 0,24–0,42; sul fold esportato il banco
+    perdeva PDS (−0,093) e la media lo copriva; il JAC locale di K562 porta il 77 % del suo guadagno.
+    La stessa procedura di esportazione sui controlli di HepG2 (non di gara) dà quota comune 0,61: non servono i controlli di gara; i bersagli del pannello non erano fra quelli del banco su tre linee su cinque.
+    La causa della perdita resta un'ipotesi; i confronti che la separano sono
+    [congelati](../reports/modelli/diagnosi_t30_2026-10-04/PROTOCOLLO_CONFRONTI.md) e non eseguiti. Le cinque linee lette sono sviluppo.
 - **Misurato, pilot v4 della rete ancorata (4/10): non passa** ([CP-0061](checkpoints/0061-pilot-v4-esito-tre-linee.md)).
   Tre training tecnicamente accettati; la correzione appresa peggiora la propria ancora su tre linee su tre (corsia
   B, media dei sei membri: −0,214, −0,050 e −0,131; guardia della corsia A −0,307). Non è soddisfatto nemmeno il
