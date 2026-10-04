@@ -1,0 +1,457 @@
+{
+ "rule": "PROTOCOLLO.md \u00a75 of reports/modelli/ibrido_selettivo_2026-10-04: every --guard-every steps, per arm, on the validation pairs with at least --guard-min-cells cells since the last check; the run stops when the first arm breaks one condition (rank_N - rank_A > --guard-rank-margin, RMS(R)/RMS(A) > --guard-ratio-max, common share > --guard-common-max) at --guard-patience consecutive checks; each arm exports the state of its best check without a breach (largest benefit)",
+ "args": {
+  "guard_every": 2500,
+  "guard_start": 2500,
+  "guard_min_cells": 20,
+  "guard_min_pairs": 5,
+  "guard_rank_margin": 0.05,
+  "guard_ratio_max": 1.0,
+  "guard_common_max": 0.5,
+  "guard_patience": 2
+ },
+ "checks": [
+  {
+   "step": 2500,
+   "utc": "2026-10-04T05:36:27.159911+00:00",
+   "arms": {
+    "ibrido": {
+     "pairs_used": 80,
+     "pairs": 452,
+     "cells_used": 9544,
+     "ratio": 0.7108677061371356,
+     "rms_correction": 0.0904498393724711,
+     "rms_anchor": 0.12723863890790132,
+     "keys_used": 5,
+     "rank_N": 0.41706372840976774,
+     "rank_A": 0.45086360929124486,
+     "rank_diff": -0.03379988088147712,
+     "common_share": 0.3502086384403816,
+     "benefit": 0.05101460633288153,
+     "breaches": [],
+     "best_so_far": true
+    },
+    "ibrido_mean": {
+     "pairs_used": 80,
+     "pairs": 452,
+     "cells_used": 9544,
+     "ratio": 0.6965542761069347,
+     "rms_correction": 0.08863516738678887,
+     "rms_anchor": 0.12724804143357468,
+     "keys_used": 5,
+     "rank_N": 0.4170885447687116,
+     "rank_A": 0.45086360929124486,
+     "rank_diff": -0.03377506452253326,
+     "common_share": 0.38802671781368037,
+     "benefit": 0.04891746323235239,
+     "breaches": [],
+     "best_so_far": true
+    }
+   }
+  },
+  {
+   "step": 5000,
+   "utc": "2026-10-04T05:45:02.872134+00:00",
+   "arms": {
+    "ibrido": {
+     "pairs_used": 78,
+     "pairs": 452,
+     "cells_used": 9343,
+     "ratio": 0.5994308408384451,
+     "rms_correction": 0.06826947254862761,
+     "rms_anchor": 0.11389049060795185,
+     "keys_used": 5,
+     "rank_N": 0.39415279556124627,
+     "rank_A": 0.45586397170904214,
+     "rank_diff": -0.061711176147795865,
+     "common_share": 0.2185288358128931,
+     "benefit": 0.08976274669717817,
+     "breaches": [],
+     "best_so_far": true
+    },
+    "ibrido_mean": {
+     "pairs_used": 78,
+     "pairs": 452,
+     "cells_used": 9343,
+     "ratio": 0.6457305367640503,
+     "rms_correction": 0.07353898152239698,
+     "rms_anchor": 0.11388493703723987,
+     "keys_used": 5,
+     "rank_N": 0.3930324370465216,
+     "rank_A": 0.45586397170904214,
+     "rank_diff": -0.06283153466252056,
+     "common_share": 0.3198704805700242,
+     "benefit": 0.09018272187091535,
+     "breaches": [],
+     "best_so_far": true
+    }
+   }
+  },
+  {
+   "step": 7500,
+   "utc": "2026-10-04T05:53:43.807624+00:00",
+   "arms": {
+    "ibrido": {
+     "pairs_used": 75,
+     "pairs": 452,
+     "cells_used": 9347,
+     "ratio": 0.6084812603659784,
+     "rms_correction": 0.07077235551954188,
+     "rms_anchor": 0.11630983586409051,
+     "keys_used": 4,
+     "rank_N": 0.37381628787878785,
+     "rank_A": 0.44513494318181823,
+     "rank_diff": -0.07131865530303039,
+     "common_share": 0.14779466735912347,
+     "benefit": 0.12124318626722302,
+     "breaches": [],
+     "best_so_far": true
+    },
+    "ibrido_mean": {
+     "pairs_used": 75,
+     "pairs": 452,
+     "cells_used": 9347,
+     "ratio": 0.5932639758978724,
+     "rms_correction": 0.06899785840854002,
+     "rms_anchor": 0.11630212049217306,
+     "keys_used": 4,
+     "rank_N": 0.3744081439393939,
+     "rank_A": 0.44513494318181823,
+     "rank_diff": -0.07072679924242431,
+     "common_share": 0.16136124330922047,
+     "benefit": 0.11646507212583829,
+     "breaches": [],
+     "best_so_far": true
+    }
+   }
+  },
+  {
+   "step": 10000,
+   "utc": "2026-10-04T06:02:17.087999+00:00",
+   "arms": {
+    "ibrido": {
+     "pairs_used": 76,
+     "pairs": 452,
+     "cells_used": 9547,
+     "ratio": 0.6038670099274728,
+     "rms_correction": 0.07612116639254295,
+     "rms_anchor": 0.12605617651092654,
+     "keys_used": 4,
+     "rank_N": 0.3553790412486065,
+     "rank_A": 0.43720735785953174,
+     "rank_diff": -0.08182831661092527,
+     "common_share": 0.14382630713911815,
+     "benefit": 0.12034536916799853,
+     "breaches": []
+    },
+    "ibrido_mean": {
+     "pairs_used": 76,
+     "pairs": 452,
+     "cells_used": 9547,
+     "ratio": 0.5931243608403731,
+     "rms_correction": 0.0747664064082111,
+     "rms_anchor": 0.12605519406128876,
+     "keys_used": 4,
+     "rank_N": 0.35529542920847274,
+     "rank_A": 0.43720735785953174,
+     "rank_diff": -0.08191192865105901,
+     "common_share": 0.14692060051294364,
+     "benefit": 0.1155866850491471,
+     "breaches": []
+    }
+   }
+  },
+  {
+   "step": 12500,
+   "utc": "2026-10-04T06:11:01.778257+00:00",
+   "arms": {
+    "ibrido": {
+     "pairs_used": 78,
+     "pairs": 452,
+     "cells_used": 9405,
+     "ratio": 0.6037116695745068,
+     "rms_correction": 0.07431476232324748,
+     "rms_anchor": 0.1230964483022569,
+     "keys_used": 4,
+     "rank_N": 0.34459706959706965,
+     "rank_A": 0.4399267399267399,
+     "rank_diff": -0.09532967032967027,
+     "common_share": 0.12819681511343994,
+     "benefit": 0.13124528721420592,
+     "breaches": [],
+     "best_so_far": true
+    },
+    "ibrido_mean": {
+     "pairs_used": 78,
+     "pairs": 452,
+     "cells_used": 9405,
+     "ratio": 0.576343571815028,
+     "rms_correction": 0.07094487345814388,
+     "rms_anchor": 0.12309475966691782,
+     "keys_used": 4,
+     "rank_N": 0.351007326007326,
+     "rank_A": 0.4399267399267399,
+     "rank_diff": -0.08891941391941394,
+     "common_share": 0.12809781777014462,
+     "benefit": 0.12258918622872855,
+     "breaches": [],
+     "best_so_far": true
+    }
+   }
+  },
+  {
+   "step": 15000,
+   "utc": "2026-10-04T06:19:13.904340+00:00",
+   "arms": {
+    "ibrido": {
+     "pairs_used": 76,
+     "pairs": 452,
+     "cells_used": 9241,
+     "ratio": 0.6375100918070599,
+     "rms_correction": 0.07388484663165568,
+     "rms_anchor": 0.11589596397168354,
+     "keys_used": 4,
+     "rank_N": 0.3637402452619844,
+     "rank_A": 0.45019509476031216,
+     "rank_diff": -0.08645484949832777,
+     "common_share": 0.14213843359828865,
+     "benefit": 0.12435613596414385,
+     "breaches": []
+    },
+    "ibrido_mean": {
+     "pairs_used": 76,
+     "pairs": 452,
+     "cells_used": 9241,
+     "ratio": 0.6074569367282883,
+     "rms_correction": 0.07040271059949865,
+     "rms_anchor": 0.1158974510665426,
+     "keys_used": 4,
+     "rank_N": 0.37591973244147153,
+     "rank_A": 0.45019509476031216,
+     "rank_diff": -0.07427536231884063,
+     "common_share": 0.14577678480960887,
+     "benefit": 0.11889531681713474,
+     "breaches": []
+    }
+   }
+  },
+  {
+   "step": 17500,
+   "utc": "2026-10-04T06:27:21.449833+00:00",
+   "arms": {
+    "ibrido": {
+     "pairs_used": 80,
+     "pairs": 452,
+     "cells_used": 9610,
+     "ratio": 0.6277428168779222,
+     "rms_correction": 0.07385877289838572,
+     "rms_anchor": 0.11765769501867372,
+     "keys_used": 5,
+     "rank_N": 0.34703196347031967,
+     "rank_A": 0.4252283105022831,
+     "rank_diff": -0.07819634703196343,
+     "common_share": 0.18541760684845215,
+     "benefit": 0.12325581881564864,
+     "breaches": []
+    },
+    "ibrido_mean": {
+     "pairs_used": 80,
+     "pairs": 452,
+     "cells_used": 9610,
+     "ratio": 0.6063858551361696,
+     "rms_correction": 0.07134434667678254,
+     "rms_anchor": 0.11765503115299661,
+     "keys_used": 5,
+     "rank_N": 0.35216894977168955,
+     "rank_A": 0.4246575342465753,
+     "rank_diff": -0.07248858447488576,
+     "common_share": 0.1463834458307093,
+     "benefit": 0.11760996946676104,
+     "breaches": []
+    }
+   }
+  },
+  {
+   "step": 20000,
+   "utc": "2026-10-04T06:35:59.330839+00:00",
+   "arms": {
+    "ibrido": {
+     "pairs_used": 78,
+     "pairs": 452,
+     "cells_used": 9469,
+     "ratio": 0.6331193766565189,
+     "rms_correction": 0.07351819250969667,
+     "rms_anchor": 0.11612058518559906,
+     "keys_used": 4,
+     "rank_N": 0.3604006820119352,
+     "rank_A": 0.4479433077578858,
+     "rank_diff": -0.08754262574595062,
+     "common_share": 0.13526038200448265,
+     "benefit": 0.12378059453931603,
+     "breaches": []
+    },
+    "ibrido_mean": {
+     "pairs_used": 78,
+     "pairs": 452,
+     "cells_used": 9469,
+     "ratio": 0.6149405464244032,
+     "rms_correction": 0.07141047813039174,
+     "rms_anchor": 0.11612582475754911,
+     "keys_used": 4,
+     "rank_N": 0.35991226200625176,
+     "rank_A": 0.4479433077578858,
+     "rank_diff": -0.08803104575163406,
+     "common_share": 0.12447580359675306,
+     "benefit": 0.11965934446198914,
+     "breaches": []
+    }
+   }
+  },
+  {
+   "step": 22500,
+   "utc": "2026-10-04T06:44:23.390503+00:00",
+   "arms": {
+    "ibrido": {
+     "pairs_used": 82,
+     "pairs": 452,
+     "cells_used": 9608,
+     "ratio": 0.6087598214938407,
+     "rms_correction": 0.07809597365914957,
+     "rms_anchor": 0.1282870040067842,
+     "keys_used": 5,
+     "rank_N": 0.3566666666666667,
+     "rank_A": 0.43388888888888894,
+     "rank_diff": -0.07722222222222225,
+     "common_share": 0.16762051946400103,
+     "benefit": 0.11844829858646554,
+     "breaches": []
+    },
+    "ibrido_mean": {
+     "pairs_used": 82,
+     "pairs": 452,
+     "cells_used": 9608,
+     "ratio": 0.5850249659157892,
+     "rms_correction": 0.07505372990605724,
+     "rms_anchor": 0.12829149913041618,
+     "keys_used": 5,
+     "rank_N": 0.36666666666666664,
+     "rank_A": 0.43388888888888894,
+     "rank_diff": -0.0672222222222223,
+     "common_share": 0.1829918045719185,
+     "benefit": 0.11603800362156713,
+     "breaches": []
+    }
+   }
+  },
+  {
+   "step": 25000,
+   "utc": "2026-10-04T06:52:37.822560+00:00",
+   "arms": {
+    "ibrido": {
+     "pairs_used": 76,
+     "pairs": 452,
+     "cells_used": 9384,
+     "ratio": 0.6274781705378555,
+     "rms_correction": 0.0743157450879376,
+     "rms_anchor": 0.11843558641129522,
+     "keys_used": 4,
+     "rank_N": 0.3643190143190143,
+     "rank_A": 0.4474608724608725,
+     "rank_diff": -0.0831418581418582,
+     "common_share": 0.1470274171576781,
+     "benefit": 0.13310394087670951,
+     "breaches": [],
+     "best_so_far": true
+    },
+    "ibrido_mean": {
+     "pairs_used": 76,
+     "pairs": 452,
+     "cells_used": 9384,
+     "ratio": 0.5898208964602384,
+     "rms_correction": 0.06985627763661761,
+     "rms_anchor": 0.1184364237616102,
+     "keys_used": 4,
+     "rank_N": 0.3721861471861472,
+     "rank_A": 0.4474608724608725,
+     "rank_diff": -0.07527472527472534,
+     "common_share": 0.1335812921899291,
+     "benefit": 0.12771858306263245,
+     "breaches": [],
+     "best_so_far": true
+    }
+   }
+  },
+  {
+   "step": 27500,
+   "utc": "2026-10-04T07:00:58.478648+00:00",
+   "arms": {
+    "ibrido": {
+     "pairs_used": 81,
+     "pairs": 452,
+     "cells_used": 9428,
+     "ratio": 0.6378748000405955,
+     "rms_correction": 0.072717684741763,
+     "rms_anchor": 0.11399993343072201,
+     "keys_used": 5,
+     "rank_N": 0.3827779642997034,
+     "rank_A": 0.45299997202171116,
+     "rank_diff": -0.07022200772200776,
+     "common_share": 0.2372495694988433,
+     "benefit": 0.10190181552133949,
+     "breaches": []
+    },
+    "ibrido_mean": {
+     "pairs_used": 81,
+     "pairs": 452,
+     "cells_used": 9428,
+     "ratio": 0.5948531626916082,
+     "rms_correction": 0.06781369241307693,
+     "rms_anchor": 0.11400072600477007,
+     "keys_used": 5,
+     "rank_N": 0.3875237815455207,
+     "rank_A": 0.45299997202171116,
+     "rank_diff": -0.06547619047619047,
+     "common_share": 0.24885936857194557,
+     "benefit": 0.10574088728202716,
+     "breaches": []
+    }
+   }
+  },
+  {
+   "step": 30000,
+   "utc": "2026-10-04T07:09:34.679199+00:00",
+   "arms": {
+    "ibrido": {
+     "pairs_used": 75,
+     "pairs": 452,
+     "cells_used": 9445,
+     "ratio": 0.6397490385109995,
+     "rms_correction": 0.07311925374137875,
+     "rms_anchor": 0.11429365163496306,
+     "keys_used": 4,
+     "rank_N": 0.35956101190476186,
+     "rank_A": 0.4445684523809524,
+     "rank_diff": -0.08500744047619052,
+     "common_share": 0.14550738809750072,
+     "benefit": 0.12314104928812168,
+     "breaches": []
+    },
+    "ibrido_mean": {
+     "pairs_used": 75,
+     "pairs": 452,
+     "cells_used": 9445,
+     "ratio": 0.608868566150463,
+     "rms_correction": 0.0695905547381885,
+     "rms_anchor": 0.11429487184429774,
+     "keys_used": 4,
+     "rank_N": 0.36904761904761907,
+     "rank_A": 0.4445684523809524,
+     "rank_diff": -0.07552083333333331,
+     "common_share": 0.13883450161033378,
+     "benefit": 0.12623650126162872,
+     "breaches": []
+    }
+   }
+  }
+ ]
+}
