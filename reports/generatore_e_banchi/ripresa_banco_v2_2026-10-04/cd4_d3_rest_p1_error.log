@@ -1,0 +1,99 @@
+precheck: {'shape': [2778524, 18130], 'genes_on_official_axis': 17772, 'rows_read': [1380000, 1381000], 'eligible_in_rows_read': 669, 'controls_in_rows_read': 22}
+cd4_D3_Rest/D3_Rest_001380000_001400000: 13715 cells, 49856615 nnz, 116729196 bytes, 59s
+cd4_D3_Rest/D3_Rest_001400000_001420000: 13741 cells, 50475903 nnz, 118014990 bytes, 114s
+http: 8.66 GB in 1033 ranges, 72.1 MB/s now, 120s
+cd4_D3_Rest/D3_Rest_001420000_001440000: 13559 cells, 51790123 nnz, 120414442 bytes, 156s
+http: 11.09 GB in 1323 ranges, 20.3 MB/s now, 240s
+cd4_D3_Rest/D3_Rest_001440000_001460000: 13614 cells, 50289141 nnz, 117344026 bytes, 324s
+http: 13.28 GB in 1585 ranges, 18.3 MB/s now, 360s
+cd4_D3_Rest/D3_Rest_001460000_001480000: 13610 cells, 50613931 nnz, 118045742 bytes, 366s
+cd4_D3_Rest/D3_Rest_001480000_001500000: 13503 cells, 48243244 nnz, 113229869 bytes, 423s
+http: 20.98 GB in 2503 ranges, 64.1 MB/s now, 480s
+cd4_D3_Rest/D3_Rest_001500000_001520000: 13602 cells, 50876492 nnz, 118606153 bytes, 477s
+cd4_D3_Rest/D3_Rest_001520000_001540000: 13783 cells, 55509828 nnz, 127843031 bytes, 535s
+cd4_D3_Rest/D3_Rest_001540000_001560000: 13676 cells, 55811416 nnz, 128285241 bytes, 585s
+http: 28.69 GB in 3423 ranges, 64.3 MB/s now, 600s
+cd4_D3_Rest/D3_Rest_001560000_001580000: 13789 cells, 55573521 nnz, 127889969 bytes, 650s
+cd4_D3_Rest/D3_Rest_001580000_001600000: 13652 cells, 55388006 nnz, 127452393 bytes, 694s
+http: 34.94 GB in 4168 ranges, 52.0 MB/s now, 720s
+cd4_D3_Rest/D3_Rest_001600000_001620000: 13703 cells, 53244658 nnz, 123071428 bytes, 735s
+cd4_D3_Rest/D3_Rest_001620000_001640000: 13783 cells, 54914204 nnz, 126631624 bytes, 795s
+http: 43.53 GB in 5193 ranges, 71.6 MB/s now, 840s
+cd4_D3_Rest/D3_Rest_001640000_001660000: 13709 cells, 55055500 nnz, 126917807 bytes, 857s
+cd4_D3_Rest/D3_Rest_001660000_001680000: 13731 cells, 56134315 nnz, 128939850 bytes, 919s
+http: 51.69 GB in 6166 ranges, 68.0 MB/s now, 960s
+cd4_D3_Rest/D3_Rest_001680000_001700000: 13689 cells, 55262726 nnz, 127327608 bytes, 980s
+cd4_D3_Rest/D3_Rest_001700000_001720000: 13806 cells, 55487886 nnz, 127711937 bytes, 1042s
+http: 59.55 GB in 7103 ranges, 65.5 MB/s now, 1080s
+http: 59.55 GB in 7103 ranges, 0.0 MB/s now, 1200s
+cd4_D3_Rest/D3_Rest_001720000_001740000: 13739 cells, 53074194 nnz, 122970716 bytes, 1229s
+cd4_D3_Rest/D3_Rest_001740000_001760000: 13744 cells, 53524235 nnz, 124032659 bytes, 1287s
+http: 68.09 GB in 8122 ranges, 71.2 MB/s now, 1320s
+cd4_D3_Rest/D3_Rest_001760000_001780000: 13765 cells, 51776629 nnz, 120610313 bytes, 1342s
+cd4_D3_Rest/D3_Rest_001780000_001800000: 13697 cells, 53002288 nnz, 122903032 bytes, 1398s
+http: 73.65 GB in 8785 ranges, 46.3 MB/s now, 1440s
+cd4_D3_Rest/D3_Rest_001800000_001820000: 13709 cells, 52103689 nnz, 121283059 bytes, 1438s
+cd4_D3_Rest/D3_Rest_001820000_001840000: 13650 cells, 51793777 nnz, 120484345 bytes, 1493s
+cd4_D3_Rest/D3_Rest_001840000_001860000: 13544 cells, 49395889 nnz, 115571951 bytes, 1532s
+http: 82.37 GB in 9826 ranges, 72.7 MB/s now, 1560s
+cd4_D3_Rest/D3_Rest_001860000_001880000: 13691 cells, 52669977 nnz, 122240346 bytes, 1594s
+cd4_D3_Rest/D3_Rest_001880000_001900000: 13732 cells, 54651039 nnz, 126010532 bytes, 1655s
+http: 89.09 GB in 10627 ranges, 56.0 MB/s now, 1680s
+cd4_D3_Rest/D3_Rest_001900000_001920000: 13757 cells, 56308951 nnz, 129290668 bytes, 1701s
+Traceback (most recent call last):
+  File "/tmp/w/code/reports/sorgenti/ingestione_completa_2026-10-03/cd4/cd4_job.py", line 127, in <module>
+    main()
+    ~~~~^^
+  File "/tmp/w/code/reports/sorgenti/ingestione_completa_2026-10-03/cd4/cd4_job.py", line 104, in main
+    for name, x, obs, var, uns in ca.h5rows_cd4(url, u["study"], str(a.axis), exclusions, block=u["block"],
+                                  ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                cell_range=(lo, hi), chemistry=u["chemistry"], context=u["context"],
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                                max_gap=u["max_gap"]):
+                                                ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/w/code/reports/sorgenti/ingestione_completa_2026-10-03/kolf/complete_adapters.py", line 371, in h5rows_cd4
+    x = read_selected_rows(node, rows, n_genes, max_gap)
+  File "/tmp/w/code/reports/sorgenti/ingestione_completa_2026-10-03/kolf/complete_adapters.py", line 309, in read_selected_rows
+    x = sp.csr_matrix((node["data"][lo:hi], node["indices"][lo:hi], ptr - lo), shape=(stop - start, n_genes))
+                                            ~~~~~~~~~~~~~~~^^^^^^^
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "/usr/local/lib/python3.13/dist-packages/h5py/_hl/dataset.py", line 872, in __getitem__
+    return self._fast_reader.read(args)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/_selector.pyx", line 393, in h5py._selector.Reader.read
+  File "h5py/h5fd.pyx", line 159, in h5py.h5fd.H5FD_fileobj_read
+  File "/tmp/w/code/reports/sorgenti/corpus_cellulare_2026-09-30/inspect_remote.py", line 125, in readinto
+    data = self._blk(i)
+  File "/tmp/w/code/reports/sorgenti/ingestione_completa_2026-10-03/lettura/prefetch.py", line 73, in _blk
+    return wait.result()
+           ~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 453, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 402, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/tmp/w/code/reports/sorgenti/ingestione_completa_2026-10-03/lettura/prefetch.py", line 50, in _load
+    data, etag = self._get(lo, hi)
+                 ~~~~~~~~~^^^^^^^^
+  File "/tmp/w/code/reports/sorgenti/corpus_cellulare_2026-09-30/inspect_remote.py", line 86, in _get
+    return self._fetch(self.final_url, lo, hi)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/w/code/reports/sorgenti/ingestione_completa_2026-10-03/lettura/prefetch.py", line 46, in _fetch
+    return super()._fetch(url, lo, hi)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/tmp/w/code/reports/sorgenti/ingestione_completa_2026-10-03/kolf/kolf_job.py", line 87, in counted
+    body, etag = fetch(self, url, lo, hi)
+                 ~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/tmp/w/code/reports/sorgenti/corpus_cellulare_2026-09-30/inspect_remote.py", line 77, in _fetch
+    return r.read(), r.headers.get("ETag")
+           ~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 510, in read
+    s = self._safe_read(self.length)
+  File "/usr/lib/python3.13/http/client.py", line 684, in _safe_read
+    raise IncompleteRead(data.getvalue(), amt - data.tell())
+http.client.IncompleteRead: IncompleteRead(8378417 bytes read, 10191 more expected)

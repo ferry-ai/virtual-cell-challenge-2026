@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "eid": "E-20261004-002",
+  "revision": 1,
+  "previous_sha256": null,
+  "recorded_utc": "2026-10-04T16:44:12.618834+00:00",
+  "claim_type": "operational_incident",
+  "state": "verified_remotely",
+  "title": "CD4 D3_Rest p1: lettura HTTP incompleta, rilancio r2 verificato",
+  "symptom": "Il kernel p1 r1 si ferma con IncompleteRead: 8378417 byte letti, 10191 ancora attesi.",
+  "cause": "Trasferimento HTTP interrotto durante r.read(); la causa di rete o del servizio non è isolata.",
+  "cause_verified": false,
+  "fix": "Claude ha rilanciato la stessa parte come p1 r2, conservando r1; la verifica indipendente di linea è passata.",
+  "regression_test": "La verifica deve rifiutare una parte senza complete.json e unione con buchi o SHA divergenti.",
+  "next_guard": "Mai montare r1 fallita come parte valida; richiedere stato COMPLETE e verifica indipendente di copertura, celle e SHA.",
+  "scope": "Solo recupero di CD4 D3_Rest; nessuna correzione generale al trasporto HTTP dichiarata.",
+  "evidence": [
+    {
+      "path": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/cd4_d3_rest_p1_error.log",
+      "sha256": "c2a7e4d11d82d1a963d27713dfe46f7d064da3099ee4bf9164c1dba4948e655d",
+      "bytes": 7153,
+      "supports": "IncompleteRead nella lettura di un blocco remoto"
+    },
+    {
+      "path": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d3_rest_r1/source_complete.json",
+      "sha256": "7c30b8bc62f20a151e7844882fe8c7d7576036e9e66f32b92d0696f00d24df2f",
+      "bytes": 2202,
+      "supports": "Rilettura indipendente dell'unione p0 r1 e p1 r2"
+    }
+  ],
+  "remote_verification": {
+    "evidence_path": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d3_rest_r1/source_complete.json",
+    "observed_utc": "2026-10-04T15:07:20Z",
+    "criterion": "139 shard riletti con SHA corretti; 2778524 righe = 1901024 celle idonee + 877500 escluse; intervalli contigui."
+  }
+}
