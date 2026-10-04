@@ -1,0 +1,19 @@
+{
+  "scope": "Metadata supervision and standalone coverage contract; extended trainer integration remains open",
+  "targeted_contract_tests": {"tests": 5, "passed": true},
+  "documentation_checker": {"passed": true, "note": "Rerun after snapshot creation ended; first concurrent scan saw files created after its registry expansion."},
+  "repository_suite": {
+    "tests": 290,
+    "seconds": 427.406,
+    "errors": 3,
+    "failures": 1,
+    "error_cause": "ModuleNotFoundError: cell_eval2.config in three existing scorer tests; local environment unresolved, no installation performed",
+    "failed_test": "TestFolderMaps.test_reports_are_filed_by_category_and_each_folder_is_indexed_once",
+    "failure_cause": "New report was not tracked when the suite collected its Git inventory",
+    "failed_test_rerun_after_commit": "passed (1 test, 2.419 seconds)",
+    "full_suite_passed": false
+  },
+  "cloud": {"saved_private_bank_versions_verified": 3, "banks_total_expected": 12, "large_array_downloads_this_turn": 0},
+  "source_commit": "2f08630",
+  "training_or_scientific_success_claimed": false
+}
