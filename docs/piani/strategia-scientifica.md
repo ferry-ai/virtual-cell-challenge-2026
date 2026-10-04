@@ -73,6 +73,11 @@
       `rcell-prepass-jurkat-r1`, `vcc-cd4-d2-rest-p{0,1}of2-r1`, `rcell-v4-nested-fold-h1-r1`. Su `davidmaisterx`
       (catena replicata, [lancio](../../reports/modelli/ibrido_selettivo_2026-10-04/lancio_replica_r1.json)): gemelli
       `rcell-d056-fast-{a,b,c}-r1`, pre-passi `rcell-prepass-{k562,jurkat}-r1`.
+    - *Push del 4/10, 04:10:* 161 commit pubblicati (`1f086cb..0106571`) dopo verifica dell'intera differenza in
+      uscita. Esito: nessun segreto, token, URL firmato o file di credenziali; nessuna identità di linea accanto ad
+      A/B/C; nessun nome di persona della classifica; nessun file sopra 1,5 MB. I `submit_*_raw.json` portano nel
+      percorso di storage l'email dell'account, come gli altri file `vcc` già pubblici dal 13/9 (PROCEDURE §2.6): da
+      valutare dal proprietario, non è un'esposizione nuova.
     - *Prossimi passi, in ordine:* (1) a training H1/HepG2 finiti, ricevute senza file di valutazione e accettazione
       (§10), poi `kaggle_hybrid.py --mode rows` per ciascuno e il training RPE1 con gli argomenti di
       `lancio_train_r1.json`; (2) pre-passo Jurkat finito → `kaggle_anchors.py kernel --line Jurkat=…` e
