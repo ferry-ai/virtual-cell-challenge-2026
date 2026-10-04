@@ -1,0 +1,22 @@
+{
+ "what": "the D-056 chain also on the account davidmaisterx (owner of the corpus datasets, GPU quota 30 h free): the second confirmation line K562 (PROTOCOLLO.md §3, 'poi K562 se quota GPU e tempo lo permettono') and a reserve for Jurkat, because 7.74 h of GPU on davideferrante11 (03:00) cover the three development trainings and Jurkat with no margin",
+ "authorisation": "owner in chat, 4/10 night, session 2b35612c: 'gestione dei job negli account configurati e delle quote disponibili'; no purchase, no account setting other than a private reader share between the owner's own accounts",
+ "code_datasets_copied": {
+  "how": "replicate_datasets.py from the local stages, every file checked against the stage's staged.json (rcell-gen-r1: the stage kaggle_gen_r4, whose choose_targets.py and extract_cells.py have the sha256 of the files downloaded from davideferrante11/rcell-gen-r1 at 03:29)",
+  "created_03:30": ["davidmaisterx/rcell-code-r1", "davidmaisterx/rcell-v4-build-r1", "davidmaisterx/rcell-v4-anchor-code-r1", "davidmaisterx/rcell-gen-r1", "davidmaisterx/rcell-d056-code-r1"],
+  "receipt": "C:/Users/ferra/vcc2026-data/processed/ibrido_selettivo_2026-10-04/replica_davidmaisterx_r1/replicate_receipt.json",
+  "train_cellnet_of_the_prepass": "3b54e749... in davideferrante11/rcell-code-r1 (downloaded at 03:27) and in the copy: the code of the prepasses of H1, HepG2, RPE1 (lancio_prepass_r1.json of rete_cellulare_2026-10-03)"
+ },
+ "shared_as_reader": {"davideferrante11/rlead-bench-cube-r2": "03:31, share_to.py; read back: isPrivate true, collaborators davidmaisterx READER"},
+ "kernels_davidmaisterx": {
+  "rcell-d056-fast-a-r1": {"pushed": "2026-10-04 03:32 +0200", "datasets": ["rlab-k562-gwps-r3", "rlab-rpe1-r2", "rlab-kolf-small"], "as": "rcell-v4-fast-a-r1 without the v3 sampler replay"},
+  "rcell-d056-fast-b-r1": {"pushed": "2026-10-04 03:32 +0200", "datasets": ["rlab-hipsci-targeted19", "rlab-jurkat-nadig", "rlab-hepg2-nadig", "rlab-tian-norman"], "dry_run_diff": "run.py identical to rcell-v4-fast-b-r1; metadata differs only in id and code dataset owner"},
+  "rcell-d056-fast-c-r1": {"pushed": "2026-10-04 03:32 +0200", "datasets": ["rlab-a549", "rlab-h1-vcc2025-trainval", "rlab-k562-essential-r2", "rlab-kolf-strong"]},
+  "rcell-prepass-k562-r1": {"pushed": "2026-10-04 03:33 +0200", "args": "those of rcell-prepass-<line>-r1 with --holdout-group K562"},
+  "rcell-prepass-jurkat-r1": {"pushed": "2026-10-04 03:33 +0200", "args": "those of rcell-prepass-<line>-r1 with --holdout-group Jurkat; run.py equal to davideferrante11/rcell-prepass-jurkat-r1 but for the owner"}
+ },
+ "kernels_davideferrante11": {
+  "rcell-prepass-jurkat-r1": {"pushed": "2026-10-04 02:38 +0200", "stage": "C:/Users/ferra/vcc2026-data/processed/ibrido_selettivo_2026-10-04/kernel_prepass_jurkat_r1_push", "dry_run_diff": "run.py differs from rcell-prepass-h1-r1 only in --holdout-group"}
+ },
+ "next": "after the prepasses: anchors (kaggle_anchors.py --line), lane B cells (kaggle_extract.py), the D-056 training with the arguments of lancio_train_r1.json; kernels of davidmaisterx that read the cube carry davideferrante11/rlead-bench-cube-r2 in their metadata"
+}
