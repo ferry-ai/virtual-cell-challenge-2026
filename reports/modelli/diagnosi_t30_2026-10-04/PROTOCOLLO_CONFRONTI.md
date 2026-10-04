@@ -186,3 +186,31 @@ registrano quota comune e ampiezza di R_exp e il coseno medio per bersaglio fra 
 
 Limite: i bersagli restano quelli del banco, non quelli del pannello; i pesi sono quelli stimati con la R del banco.
 Procedura e bersagli, che nel controllo del §7 cambiavano insieme, qui sono separati solo dal lato della procedura.
+
+## 9. Emendamento del 4/10, 15:59 CEST (ora letta con `date`): taratura del rumore del banco, prima di eseguirla
+
+Lette le cinque corsie (`esito/read_diag_r1.json`, valide tutte). Il braccio fedele ha dato una R quasi identica a
+quella del banco sugli stessi bersagli (coseno medio 0,9998 su quattro linee, 0,977 su RPE1; stessa quota comune),
+eppure `all_wRexp − all_wR` vale −0,008…−0,060 sulla media e fino a ±0,16 su un membro. Due bracci con effetti quasi
+uguali non dovrebbero differire così: il sospetto è il rumore di realizzazione del generatore (un seme, 32 cellule
+previste per bersaglio). **È un'ipotesi finché non si misura**; se è vera, nessuna lettura del §4 e del §8, e nemmeno
+la regola di CP-0062, è risolta dal banco a un seme.
+
+**Disegno** (`diag_lanes.py --noise-seeds 5 --noise-n 400`, solo generazione e scorer, niente rete): i bracci `all`,
+`all_wR`, `prod`, `prod_wR`, con gli stessi effetti delle corsie r1, rigenerati con 5 semi del generatore
+(20260912 + k, k = 0…4) a due numerosità di cellule previste per bersaglio: quella del banco (metà delle cellule vere,
+mediana 32) e 400 come nell'invio. Verità, controlli e seme del banco invariati. Il seme k = 0 alla numerosità del
+banco deve riprodurre le corsie r1.
+
+**Lettura, fissata ora**, per linea e numerosità, sul guadagno appaiato g_k = avg(`all_wR`) − avg(`all`) allo stesso
+seme (e lo stesso su `prod`):
+- si riportano media e deviazione standard (n − 1) di g_k sui 5 semi, per la media dei sei membri, per quella senza
+  JAC e per ogni membro;
+- **«il banco a un seme non risolve il guadagno»** su una linea se la deviazione standard di g_k alla numerosità del
+  banco è ≥ metà del valore assoluto del guadagno archiviato di quella linea; l'esito complessivo vale se accade in
+  almeno 3 linee su 5;
+- **«guadagno risolto»** su una linea e una numerosità se |media di g_k| > 2 · deviazione standard / √5; si riporta
+  in quante linee e con quale segno, per `all` e per `prod`, a 32 e a 400 cellule;
+- si riporta il rapporto fra le deviazioni standard alle due numerosità: dice quanto rumore tolgono 400 cellule.
+Nessuna di queste letture promuove un candidato. Servono a fissare, nel prossimo protocollo, quanti semi e quante
+cellule occorrono perché una differenza di banco sia leggibile.
