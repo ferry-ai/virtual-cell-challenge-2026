@@ -1,0 +1,53 @@
+{
+ "utc": "2026-10-04T23:37:09.826203+00:00",
+ "status": {
+  "davideferrante11/vcc-samples-cd4-d1-rest-r1": {
+   "returncode": 0,
+   "text": "davideferrante11/vcc-samples-cd4-d1-rest-r1 has status \"KernelWorkerStatus.RUNNING\""
+  },
+  "davideferrante11/vcc-samples-cd4-d2-rest-r1": {
+   "returncode": 0,
+   "text": "davideferrante11/vcc-samples-cd4-d2-rest-r1 has status \"KernelWorkerStatus.RUNNING\""
+  },
+  "davidmaisterx/vcc-samples-cd4-d4-rest-r1": {
+   "returncode": 0,
+   "text": "davidmaisterx/vcc-samples-cd4-d4-rest-r1 has status \"KernelWorkerStatus.RUNNING\""
+  },
+  "davidmaisterx/vcc-samples-cd4-d4-stim8hr-r1": {
+   "returncode": 0,
+   "text": "davidmaisterx/vcc-samples-cd4-d4-stim8hr-r1 has status \"KernelWorkerStatus.RUNNING\""
+  },
+  "davidmaisterx/vcc-samples-cd4-d4-stim48hr-r1": {
+   "returncode": 0,
+   "text": "davidmaisterx/vcc-samples-cd4-d4-stim48hr-r1 has status \"KernelWorkerStatus.RUNNING\""
+  }
+ },
+ "logs": {
+  "davideferrante11/vcc-samples-cd4-d1-rest-r1": {
+   "tail": [
+    "{\"cpus\": 4, \"ram_available\": 32645906432, \"disk_free\": 20940374016}",
+    "{\"unit\": \"D1_Rest\", \"shard\": 1, \"of\": 154, \"cells\": 7023, \"output_bytes\": 48205028, \"seconds\": 41}"
+   ],
+   "timeout_expected_for_follow": true
+  },
+  "davideferrante11/vcc-samples-cd4-d2-rest-r1": {
+   "tail": [],
+   "timeout_expected_for_follow": true
+  },
+  "davidmaisterx/vcc-samples-cd4-d4-rest-r1": {
+   "tail": [],
+   "timeout_expected_for_follow": true
+  },
+  "davidmaisterx/vcc-samples-cd4-d4-stim8hr-r1": {
+   "tail": [
+    "{\"cpus\": 4, \"ram_available\": 32636379136, \"disk_free\": 20940374016}",
+    "{\"unit\": \"D4_Stim8hr\", \"shard\": 1, \"of\": 137, \"cells\": 8853, \"output_bytes\": 69835336, \"seconds\": 50}"
+   ],
+   "timeout_expected_for_follow": true
+  },
+  "davidmaisterx/vcc-samples-cd4-d4-stim48hr-r1": {
+   "tail": [],
+   "timeout_expected_for_follow": true
+  }
+ }
+}

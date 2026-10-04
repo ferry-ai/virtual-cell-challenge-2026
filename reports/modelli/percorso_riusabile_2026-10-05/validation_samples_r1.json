@@ -1,0 +1,11 @@
+{
+  "fixture": "test_materialize.py",
+  "tests": 1,
+  "passed": true,
+  "checks": ["actual H5AD round trip", "exact sampled counts", "unmeasured gene mask", "cell identities", "nested inclusion probabilities", "reject altered raw shard"],
+  "cloud": {"bank_units_persistent": 6, "sample_jobs_accepted": 5, "sample_jobs_with_real_shard_progress": 5, "sample_units_deferred": ["D3_Rest"], "sample_jobs_completed": 0},
+  "documentation_checker": "passed",
+  "full_suite": "not repeated; previous local scorer dependency errors remain recorded in validation_r1.json",
+  "extended_training_complete": false,
+  "large_local_transfers": 0
+}
