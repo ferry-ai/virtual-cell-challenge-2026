@@ -33,6 +33,14 @@
 
 ## Consegna utile
 
+**Pulizia locale del 4 ottobre, autorizzata dal proprietario in chat:** Codex, sessione
+`01a10414-c24f-7130-86ff-82615c92e968`, portatile Windows. Sottoattività disgiunta dai job
+R-LEAD: sole copie delle lavorazioni precedenti con ricevuta SHA256 Colab, nuova verifica
+locale e nessuna dipendenza attiva identificata. **Conclusa**, con controllo finale delle
+copie remote e permanenza dei file conservati; piano, ricevute e ripristino in
+[libera_spazio_2026-10-04](../../reports/sorgenti/libera_spazio_2026-10-04/README.md).
+Restano protetti il lavoro corrente, gli input della produzione e i dati senza copia verificata.
+
 **Sottoattività di archivio, richiesta in chat il 3 ottobre:** Codex, sessione
 `01a10114-058a-7342-9f0e-7942cc43ad6c`, portatile Windows, presa in carico alle 12:43 CEST.
 File e nuove prove in [libera_spazio_2026-10-03](../../reports/sorgenti/libera_spazio_2026-10-03/README.md):

@@ -31,6 +31,7 @@ Rilascio derivato, consultato ma non acquisito; sovrapposizioni, condizioni dei 
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 04/10 | [libera_spazio_2026-10-04/](libera_spazio_2026-10-04/) | Pulizia autorizzata: 942 copie locali archiviate rimosse, 126,581 GiB, SHA256 Colab e locale coincidenti | conclusa; copie Drive e dati locali conservati verificati, ripristino documentato | ★ |
 | 04/10 | [inventario_riconciliato_2026-10-04/](inventario_riconciliato_2026-10-04/) | Riconciliazione per gruppo di linea fra catalogo, acquisizioni e uso nel pilot v4 (D-053): cellule di 8 gruppi su 21 nel training, aggregati di 10 nelle ancore; per ogni voce fuori dal percorso il motivo e il lavoro che manca | sintesi dei manifest citati; gruppi e ruoli restano proposte finché R-LEAD non li adotta; lo stato dei job cambia | ★★ |
 | 03/10 | [ingestione_completa_2026-10-03/](ingestione_completa_2026-10-03/) | Ingestione completa per mandato del proprietario: sorgenti, assegnazioni, parallelismo e vincoli misurati; verifiche dell'archivio riprese dopo il runtime perso | in corso: job in coda, adattatori da consegnare | ★★ |
 | 03/10 | [revisione_ingestion_2026-10-03/](revisione_ingestion_2026-10-03/) | Revisione del codice Claude2, mandato CD4 completo e passaggio a Claude1; originale preservato, correzioni e test locali, stato archivio | verifica locale; acquisizione e validazione remota ancora da completare | ★★ |
