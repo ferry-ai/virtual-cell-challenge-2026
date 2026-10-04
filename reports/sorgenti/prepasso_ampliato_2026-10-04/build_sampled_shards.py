@@ -122,7 +122,8 @@ def write_one(task):
     """Write the sampled shard of one source shard; returns its manifest row.
 
     Revision of 4/10 04:45, after vcc-sampled-hct116-l64-r2 died at the 46th of 109 Orion shards with an empty log
-    (hypothesis: memory, as E-20261004-001): the source is opened backed and only the kept rows of X are read
+    (hypothesis then: memory, as E-20261004-001; the r3 log showed the cause was the disk: the shards were written
+    without compression, now gzip): the source is opened backed and only the kept rows of X are read
     (anndata reads the row slices of the CSR); the check re-reads the written X with h5py and compares it with the
     kept rows in memory, and the kept rows' lengths with the source's row pointer; each shard runs in a fresh process
     (main: spawn, max_tasks_per_child=1) and prints one line when done."""
@@ -152,7 +153,9 @@ def write_one(task):
     b.uns = uns
     b.X = sub
     dest = out_dir / f"{src.stem}__L{level}.h5ad"
-    b.write_h5ad(dest)
+    # gzip like the source shards: written raw, 42 sampled HCT116 shards filled the 20 GB of a kernel's output
+    # (vcc-sampled-hct116-l64-r3, OSError errno 28, 4/10 05:42 UTC; r2 had stopped at the same point)
+    b.write_h5ad(dest, compression="gzip")
     with h5py.File(dest, "r") as f:
         g = f["X"]
         same = (np.array_equal(g["indptr"][:], sub.indptr) and np.array_equal(g["indices"][:], sub.indices)
