@@ -42,14 +42,13 @@ def main() -> None:
             man["files"][arc] = hashlib.sha256(data).hexdigest()
     (a.out / "code_manifest.json").write_text(json.dumps(man, indent=1), encoding="utf-8")
     shutil.copy2(a.wheel, a.out / a.wheel.name)
-    dst = a.out / "obiettivi"
-    dst.mkdir()
+    dst = a.out  # flat: `kaggle datasets create` uploads no subfolders by default
     for p in sorted(a.obiettivi.glob("obiettivi_*.npz")) + [a.obiettivi / "obiettivi.json"]:
         shutil.copy2(p, dst / p.name)
     (a.out / "dataset-metadata.json").write_text(json.dumps(
         {"title": "banco t35 code", "id": "alfredo2003bit/banco-t35-code", "licenses": [{"name": "CC0-1.0"}]},
         indent=1), encoding="utf-8")
-    print(f"{len(entries)} code files; {len(list(dst.iterdir()))} objective files -> {a.out}")
+    print(f"{len(entries)} code files; {len(list(dst.glob("obiettivi*")))} objective files -> {a.out}")
 
 
 if __name__ == "__main__":
