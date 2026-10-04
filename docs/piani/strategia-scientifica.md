@@ -1,5 +1,14 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Mandato Codex, 5/10, stessa chat di subentro:** rendere riutilizzabile il percorso
+  archivio → banca → trainer e includere tutti i contesti idonei. [Strumenti e prove](../../reports/modelli/percorso_riusabile_2026-10-05/README.md):
+  D4 recuperabile dalle versioni private salvate su Kaggle; D1–D3 ancora attivi.
+  Inventario conserva tutte le voci r4, senza confondere presenza e uso; aggiunte
+  successive e ruoli restano da riconciliare. Contratto di copertura testato,
+  da integrare nel nuovo trainer. Supervisione ogni 30 minuti aggiornata;
+  nessuna ricostruzione dei derivati invariati né copia locale obbligatoria.
+  Chiusura soltanto con banca, campioni, trainer e valutazione provati end-to-end.
+
 - **Esecuzione Codex, 4/10 22:47 CEST:** autorizzati banca e training. Sei job CPU
   per le dodici unità CD4 e tre preparazioni CPU sul terzo account; [ricevute e
   codice](../../reports/modelli/ibrido_esecuzione_2026-10-04/README.md). Primo fit
