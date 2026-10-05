@@ -1,5 +1,9 @@
 # Archivio, banca e trainer riutilizzabili
 
+[Priorità training e prova cloud](PRIORITA_TRAINING_r1.md): prima release estesa
+appena lanciabile, design in parallelo; Grok stessa sessione r4. Hash originali
+Norman/iPSC e reader lineage Norman provati nel consumer Kaggle mx.
+
 [Accelerazione del collegamento](ACCELERAZIONE_r1.md): Grok stessa sessione r3,
 pacchetti pronti al parent per i push; r2 uscita senza ricevute di lancio.
 

@@ -1,5 +1,12 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Mandato urgente, 5/10:** [prima release estesa e accesso verificato](../../reports/modelli/percorso_riusabile_2026-10-05/PRIORITA_TRAINING_r1.md).
+  Proprietario chiede fit il prima possibile, design successivo in parallelo.
+  Grok stessa sessione r4 (PID19708) prepara il runtime, parent verifica/push;
+  release estesa congelata con blocchi nominati, percorso completo D-053 aperto.
+  Prova cloud Norman bank/sample e iPSC statistiche completata: hash originali
+  e linkage reader verificati sul consumer mx. Nessun fit ancora avviato.
+
 - **Accelerazione del collegamento, 5/10:** [prova e consegna](../../reports/modelli/percorso_riusabile_2026-10-05/ACCELERAZIONE_r1.md).
   Grok r2 è uscito senza ricevute di lanci; 13 fixture passate, ma parametri
   split/asse/componenti del lanciatore ancora da correggere. Stessa sessione
