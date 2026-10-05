@@ -2,17 +2,15 @@
 
 - **Vincolo del proprietario, 5/10:** preservare l'ingestione e impedire scambi con
   vecchi dataset Kaggle. [Identità e release esplicite](../../reports/modelli/percorso_riusabile_2026-10-05/IDENTITA_BANCA.md):
-  `release_cd4_r4.json` aggiorna il ramo CD4 conservando le precedenti; il nuovo trainer deve registrare il
+  `release_cd4_r5.json` aggiorna il ramo CD4 conservando le precedenti; il nuovo trainer deve registrare il
   release hash e rifiutare input diversi, senza fallback al cubo aggregato del pilot.
   Integrare `release_lock.resolve` e i controlli dei file prima del fit/resume.
 
-- **Heartbeat Codex 5/10, oltre CD4:** dodici banche e undici campionamenti CD4
-  persistenti; D3 Stim8hr avviato e in progresso. Accettati i banchi CPU KOLF,
-  HCT116 e HEK293T dagli archivi già verificati. Non duplicare i quattro job.
-  [Evidenze e prossimo passo](../../reports/modelli/percorso_riusabile_2026-10-05/BANCHE_OLTRE_CD4.md).
-  [Controllo 07:13](../../reports/modelli/percorso_riusabile_2026-10-05/progress_r4.json):
-  runtime HCT116 ora confermato, come HEK293T; entrambi senza primo shard ancora
-  visibile. KOLF a 21/133 shard, campioni D3 Stim8hr a 28/125; nessun errore rilevato.
+- **Controllo Codex 5/10, 12:23:** dodici banche e dodici campionamenti CD4
+  persistenti; completati e verificati anche i banchi KOLF, HCT116 e HEK293T.
+  I quattro job sono conclusi: non rilanciarli. Prossimo lavoro: materializzare
+  i campioni delle nuove sorgenti, integrare le altre linee e il trainer.
+  [Evidenze e prossimo passo](../../reports/modelli/percorso_riusabile_2026-10-05/CHIUSURE_VERIFICATE.md).
   Usare `pipeline_state_r2.py`, `sample_state.py`, `launch_samples_r2.py`.
   Per i tre nuovi banchi usare `other_bank_state.py` con i rispettivi `launch.json`.
   `axis_binding_r1.json` lega l'asse nominale ai 24 lanci d'ingestione: da verificare
