@@ -1,8 +1,8 @@
 # Archivio, banca e trainer riutilizzabili
 
-**Stato operativo corrente:** [due joint CD4 verificate, dodici sourcefit e retry mirati](ESECUZIONE_r6.md) e
+**Stato operativo corrente:** [tre retry conclusi e pooling esatto](ESECUZIONE_r8.md) e
 [copertura attesa congelata](ESECUZIONE_r1.md).
-Grok stessa sessione r6 amplia il mixer esatto; parent ha lanciato i tre joint CD4.
+Grok stessa sessione r7 corregge il pooling prima dello shrink; i tre retry CD4/KOLF sono verificati.
 Il modello completo e la copertura D-053 restano aperti. Le note r2/r3/r4 sotto
 documentano passaggi precedenti, non l'assegnazione o lo stato attuale.
 

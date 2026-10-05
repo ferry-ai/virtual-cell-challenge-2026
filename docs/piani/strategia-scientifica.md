@@ -1,10 +1,9 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
-- **Esecuzione corrente, 5/10:** [due joint CD4 verificate e retry mirati](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r6.md) e [copertura attesa](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).
-  Parent ha avviato dodici sourcefit, verificato CD4 Rest/Stim48hr, ritentato
-  Stim8hr prima-runtime e corretto montaggio asse KOLFpan; HEK ha un fold mancante.
-  Restano frammenti, non mix
-  esteso completo. Grok stessa sessione r6 amplia mix/export esatti e adapter.
+- **Esecuzione corrente, 5/10:** [tre retry conclusi e pooling esatto](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r8.md) e [copertura attesa](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).
+  Parent ha verificato CD4 Stim8 e KOLF metabolic/strong; restano pan e GWPS attivi.
+  R6 mixer non adottato come identico: pooling dopo shrink differisce dall'originale.
+  Grok stessa sessione r7 prepara joint count_sum e poi mix/export esatti.
   Questo aggiornamento supera le assegnazioni r2/r3/r4 sotto. Copertura effettiva
   di tutte le linee/contesti aperta; parent continua lanci e persistenza.
 
