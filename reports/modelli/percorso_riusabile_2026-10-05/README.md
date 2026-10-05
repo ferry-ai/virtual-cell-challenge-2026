@@ -1,5 +1,8 @@
 # Archivio, banca e trainer riutilizzabili
 
+[Accelerazione del collegamento](ACCELERAZIONE_r1.md): Grok stessa sessione r3,
+pacchetti pronti al parent per i push; r2 uscita senza ricevute di lancio.
+
 **Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r10/README.md),
 con manifest immutabile, account, versioni, hash e distinzione dai dataset storici.
 R10 chiude HIPSCI mirato19: banca e campioni verificati su 20 contesti BIO;

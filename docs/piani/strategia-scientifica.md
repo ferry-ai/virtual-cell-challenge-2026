@@ -1,5 +1,12 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Accelerazione del collegamento, 5/10:** [prova e consegna](../../reports/modelli/percorso_riusabile_2026-10-05/ACCELERAZIONE_r1.md).
+  Grok r2 è uscito senza ricevute di lanci; 13 fixture passate, ma parametri
+  split/asse/componenti del lanciatore ancora da correggere. Stessa sessione
+  ripresa in r3 (PID19532); Grok prepara ready_dispatch.json su r10, parent
+  verifica e lancia in parallelo alle altre preparazioni. Nessun altro worker.
+  Ultimo preflight vede un job attivo, non 15. Nessun fit esteso ancora.
+
 - **Chiusura HIPSCI mirato19, 5/10:** [indice r10](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r10/README.md).
   Banca/campioni verificati: 20 contesti BIO, 622.353 cellule al livello 128.
   Rimane K562 GWPS attivo, snapshot remaining_open_progress_r7. Tutte le HIPSCI
