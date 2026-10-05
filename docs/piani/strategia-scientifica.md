@@ -1,5 +1,13 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Precisazione del confronto, 5/10:** [transfer identico, solo nuova banca](../../reports/modelli/percorso_riusabile_2026-10-05/TRANSFER_IDENTICO_r1.md).
+  Riferimento richiesto t28 (massimo osservato0,144845), effetti t25/cache r9 e
+  stessa emissione t28. Congelare algoritmo/ricetta/aggregazioni/cis/emitter;
+  cambia solo banca ammessa, tutte le fonti possibili. Adapter nuovi equivalenti
+  a parità di input; nessun ibrido o redesign in questo esperimento. Priorità fit
+  effettivo, Grok r4 prepara e parent lancia. Valutazione vecchio/nuovo sullo stesso
+  banco C/J appaiato, non confronto score locale vs ufficiale.
+
 - **Mandato urgente, 5/10:** [prima release estesa e accesso verificato](../../reports/modelli/percorso_riusabile_2026-10-05/PRIORITA_TRAINING_r1.md).
   Proprietario chiede fit il prima possibile, design successivo in parallelo.
   Grok stessa sessione r4 (PID19708) prepara il runtime, parent verifica/push;

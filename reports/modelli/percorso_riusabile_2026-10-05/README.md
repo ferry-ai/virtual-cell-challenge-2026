@@ -1,5 +1,8 @@
 # Archivio, banca e trainer riutilizzabili
 
+[Esperimento richiesto: stesso transfer t28, solo banca ampliata](TRANSFER_IDENTICO_r1.md).
+Algoritmo/ricetta/emissione congelati, tutte le fonti possibili, confronto appaiato.
+
 [Priorità training e prova cloud](PRIORITA_TRAINING_r1.md): prima release estesa
 appena lanciabile, design in parallelo; Grok stessa sessione r4. Hash originali
 Norman/iPSC e reader lineage Norman provati nel consumer Kaggle mx.
