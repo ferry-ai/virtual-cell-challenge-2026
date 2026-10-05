@@ -2,17 +2,17 @@
 
 - **Vincolo del proprietario, 5/10:** preservare l'ingestione e impedire scambi con
   vecchi dataset Kaggle. [Identità e release esplicite](../../reports/modelli/percorso_riusabile_2026-10-05/IDENTITA_BANCA.md):
-  `release_cd4_r1.json` congela il ramo CD4; il nuovo trainer deve registrare il
+  `release_cd4_r2.json` aggiorna il ramo CD4 conservando r1; il nuovo trainer deve registrare il
   release hash e rifiutare input diversi, senza fallback al cubo aggregato del pilot.
   Integrare `release_lock.resolve` e i controlli dei file prima del fit/resume.
 
-- **Heartbeat Codex 5/10, campioni persistenti:** D1 Rest completo, 8,10 GB di
-  campioni nella versione privata Kaggle verificata; lettura congiunta banca/campioni
-  avviata su CPU, da verificare fino a `consumer_complete.json`.
-  [Evidenze e prossimo passo](../../reports/modelli/percorso_riusabile_2026-10-05/PERSISTENZA_CAMPIONI.md).
-  Sei banche persistenti; due banche stimolate e cinque materializzazioni ancora
-  in corso. Usare `pipeline_state_r2.py`, `sample_state.py`, `launch_samples_r2.py`.
-  Trainer esteso, asse nominale e catalogo completo ancora aperti; nessun nuovo fit.
+- **Heartbeat Codex 5/10, consumo verificato:** nove banche e quattro unità di
+  campioni persistenti; lettura congiunta D1 Rest conclusa con 660.906 cellule e
+  hash verificati sul cloud. Tre campionamenti Stim48hr D1–D3 avviati e in progresso.
+  [Evidenze e prossimo passo](../../reports/modelli/percorso_riusabile_2026-10-05/CONSUMO_VERIFICATO.md).
+  Usare `pipeline_state_r2.py`, `sample_state.py`, `launch_samples_r2.py`.
+  `axis_binding_r1.json` lega l'asse nominale ai 24 lanci d'ingestione: da verificare
+  anche nel trainer. Corpus completo, fit esteso e valutazione restano aperti.
 
 - **Mandato Codex, 5/10, stessa chat di subentro:** rendere riutilizzabile il percorso
   archivio → banca → trainer e includere tutti i contesti idonei. [Strumenti e prove](../../reports/modelli/percorso_riusabile_2026-10-05/README.md):
