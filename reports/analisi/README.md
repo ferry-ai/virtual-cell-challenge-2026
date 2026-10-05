@@ -8,6 +8,7 @@ Invecchiano in fretta: prima di seguirne un «prossimo passo», controllare
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 05/10 | [pezzi_adottabili_2026-10-05/](pezzi_adottabili_2026-10-05/) | Catalogo dei pezzi copiabili letti il 5/10: AMMI senza effetto principale di contesto, STAR, PLE con l'arXiv corretto, HorNet, una GRN dai controlli, prodotto di Hadamard e FiLM senza termine additivo; rapporti Antigravity integrali | proposta; nessun innesto, training o score | ★★★ |
 | 04/10 | [gears_nella_rete_2026-10-04/](gears_nella_rete_2026-10-04/) | GEARS letto a commit fisso, limite cross-contesto e gradiente direzionale verificati; innesto originale a grafo condizionato dal contesto nella CellNet D-056, sette fixture | studio e prototipo tecnico; nessun grafo reale o nuovo training, utilità da misurare | ★★★ |
 | 04/10 | [prossimo_ibrido_2026-10-04/](prossimo_ibrido_2026-10-04/) | Piano post-t30, consegna Claude1, audit dei QC del pilot e fixture: sotto 30 controlli un contesto intero è escluso; pseudobulk e campioni con copertura D-053, fonti 2025 ricontrollate | misure locali e proposta; nessun nuovo training, diagnosi causale t30 aperta | ★★★ |
 | 03/10 | [candidato_ibrido_2026-10-03/](candidato_ibrido_2026-10-03/) | Proposta X + transfer con supervisione cellulare, 8 gruppi nel pilot contro 21 nel catalogo; ricevute v3: H1 fallisce il bilanciamento, attesa batch 81–84%; dati stratificati e raccordo dei piani | misure tecniche e proposta; pausa dei job mantenuta, nessun nuovo training o score | ★★★ |

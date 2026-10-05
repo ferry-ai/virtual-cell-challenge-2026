@@ -55,6 +55,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 | Percorso | Stato | Sostituito da | Cosa resta utile / nota | Scheda |
 |---|---|---|---|---|
+| `reports/analisi/pezzi_adottabili_2026-10-05/` | attuale | — | Catalogo del 5/10 dei pezzi copiabili nel residuo ancorato: equazioni riaperte in stesura, correzioni ai rapporti Antigravity (l'arXiv 2007.02747 non è PLE), testi integrali in agenti/. Nessun innesto, training o score | [R-LEAD](piani/strategia-scientifica.md) |
 | `reports/analisi/gears_nella_rete_2026-10-04/` | attuale | — | GEARS a commit fisso: studio di fonti primarie, audit della loss e del flusso dei dati; prototipo a grafo condizionato dal contesto collegato su fixture alla CellNet D-056. Nessun training o beneficio biologico misurato | [R-LEAD](piani/strategia-scientifica.md) |
 | `reports/analisi/prossimo_ibrido_2026-10-04/` | attuale | — | Codex: consegna Claude1 e piano proposto post-t30, audit leggero dei QC del pilot, esclusione di contesto sotto 30 controlli riprodotta su fixture, ricalcolo dello score dagli status, fonti primarie 2025. Nessun nuovo training né modifica al prepasso; corpus ampliato ancora da certificare | [R-LEAD](piani/strategia-scientifica.md) |
 | `docs/checkpoints/0065-d056-confronti-e-rumore-del-banco.md` | attuale | — | Confronti controllati e taratura del rumore del banco D-056: guadagni a un seme rumorosi quanto il loro valore, +0,013 di media su 5 semi e 400 cellule, PDS in perdita netta sul fold esportato, procedura dell'invio fedele; corregge CP-0062 e CP-0064 | — |
