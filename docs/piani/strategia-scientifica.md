@@ -1,5 +1,12 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Chiusura prima parte campionata nuova, 5/10:** KOLF p0/3 persistente e
+  ricevuta verificata; otto altre parti RUNNING con avanzamento effettivo.
+  [Verifica e riuso delle chiusure](../../reports/modelli/percorso_riusabile_2026-10-05/CHIUSURA_PARTI_r1.md).
+  Usare `partition_state.py` con nuovo output e `--previous snapshot_parts_r1/state.json`
+  per evitare recuperi ripetuti. Unità complete solo dopo l'unione verificata.
+  HEK293T p2–p5 attendono ancora l'accessibilità del terzo blocco.
+
 - **Indice unico dell'archivio, 5/10:** [banca attuale e percorsi](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r1/README.md)
   conserva grezzi, 15 banche e campioni per unità, account/versioni/ricevute/hash;
   27 identità già chiuse validate tramite `release_lock.resolve`. Il manifest
