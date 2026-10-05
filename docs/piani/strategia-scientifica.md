@@ -1,5 +1,11 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Vincolo del proprietario, 5/10:** preservare l'ingestione e impedire scambi con
+  vecchi dataset Kaggle. [Identità e release esplicite](../../reports/modelli/percorso_riusabile_2026-10-05/IDENTITA_BANCA.md):
+  `release_cd4_r1.json` congela il ramo CD4; il nuovo trainer deve registrare il
+  release hash e rifiutare input diversi, senza fallback al cubo aggregato del pilot.
+  Integrare `release_lock.resolve` e i controlli dei file prima del fit/resume.
+
 - **Heartbeat Codex 5/10, campioni persistenti:** D1 Rest completo, 8,10 GB di
   campioni nella versione privata Kaggle verificata; lettura congiunta banca/campioni
   avviata su CPU, da verificare fino a `consumer_complete.json`.

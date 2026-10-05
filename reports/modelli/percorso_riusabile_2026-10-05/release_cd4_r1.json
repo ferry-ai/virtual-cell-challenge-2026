@@ -1,0 +1,624 @@
+{
+ "schema": 1,
+ "created_utc": "2026-10-05T00:50:51.209110+00:00",
+ "scope": "CD4 ingestion and donor-bank branch; NOT the complete training corpus",
+ "training_ready": false,
+ "fallback_to_legacy": false,
+ "sources": [
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r9/state.json",
+   "sha256": "e296e11bb0798a782602104d3299214fde9fe31d2e7ef63e8b03e47af8a75696"
+  },
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r1/state.json",
+   "sha256": "0b52dfdab08f4d8023fe98ddffcd7438c1c8f6cb797c5dbf4c3dc7ba750c32c0"
+  }
+ ],
+ "legacy_classification": {
+  "davideferrante11/rlead-bench-cube-r2": "aggregate pilot input only; not a replacement for the donor bank"
+ },
+ "other_sources": "Unreconciled historical datasets require explicit role, provenance and version before inclusion; no age-based exclusion.",
+ "units": {
+  "D1_Rest": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d1_rest_r1/source_complete.json",
+    "sha256": "edd6373984337d34d4c4c6e9708aa10bc3e9354255c3c9f849dab4f067f963b3",
+    "cells": 1750820,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d1-rest-p0of2-r1",
+     "davideferrante11/vcc-cd4-d1-rest-p1of2-r1"
+    ]
+   },
+   "derivation_key": "03c4c58ff53aa5a9a975b57320fcb00053e217f15f3f90494038f2f983d702c1",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+    "relative_path": "bank/D1_Rest",
+    "files": {
+     "mean_proportion.npz": {
+      "bytes": 508625656,
+      "sha256": "8d6e9125ab50888b3da43a5f21034a684e9f1b0cb2f5465e467025320c2232f5"
+     },
+     "mask.npz": {
+      "bytes": 7849443,
+      "sha256": "687514acb694ffa4fca9186a429a7d6e8f0d5b2bb527556760833e7ea9aa82b7"
+     },
+     "count_sum.npz": {
+      "bytes": 270780162,
+      "sha256": "1b90886b3f9a744a48b42f48718233325540b657f94eae00504b9be9c9a8fe1b"
+     },
+     "variance_proportion.npz": {
+      "bytes": 509122980,
+      "sha256": "abe1c32b2dd7c1206ecfc8505867bc128f73a52079f9a5077af958081e5f8ea3"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 28683741,
+      "sha256": "dd2d5f5e1e1cea49067b1bbf2703eb49a3bcff60dab22faa350e94330e64dd7d"
+     },
+     "zero_fraction.npz": {
+      "bytes": 224405967,
+      "sha256": "9899c2cfebe0623ba43c813af8dfcc747cf6601a17f632c36b5366555ef91409"
+     },
+     "sampled_controls.npz": {
+      "bytes": 113125,
+      "sha256": "2f580d18ddf3d0eb2b8f7e6a95de51b140ebbcca72a7e8a46ca3e9e3d630cdd5"
+     },
+     "rows.csv": {
+      "bytes": 849329,
+      "sha256": "8d07d38d37999376a60b1f3fa0eeaa0405e370bc3d10171cdac9e71a132bf16b"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084937,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-cd4-1-3-rest-r2/versions/1",
+     "saved_source_sha256": "612a8cb5f1ca1035591e8131c970d8ba8cce3152152423223e5c9e37bcce6ecc",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r9/receipts/davideferrante11/vcc-bank-cd4-1-3-rest-r2/bank/D1_Rest/complete.json",
+    "receipt_sha256": "bc5d1b3a464e659922b4161f28f463f91cbc478618de2250bd08856402b553e4",
+    "cells_used": 1750820,
+    "rows": 12092
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-samples-cd4-d1-rest-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-samples-cd4-d1-rest-r1",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r1/receipts/davideferrante11/vcc-samples-cd4-d1-rest-r1/samples/D1_Rest/complete.json",
+    "receipt_sha256": "37a882ac2fa895358ba93c19d309872ecc0e70d5c28a2cb814f9d35a5aecff86",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137099078,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-samples-cd4-d1-rest-r1/versions/1",
+     "saved_source_sha256": "79affc76afa69234abfb9973994bad60cf79cec1d83f887f848d9cc52fafa92f",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 414048,
+     "64": 660906,
+     "128": 1093082
+    },
+    "bytes": 8100133840,
+    "bank_receipt_sha256": "bc5d1b3a464e659922b4161f28f463f91cbc478618de2250bd08856402b553e4",
+    "consumer_hashes_verified": false,
+    "training_used": false
+   }
+  },
+  "D2_Rest": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d2_rest_r1/source_complete.json",
+    "sha256": "c770822dcac65c1939ca8314423551bbc5a17cc68c7aee4ed443a9f55afadbc7",
+    "cells": 1981060,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d2-rest-p0of2-r1",
+     "davideferrante11/vcc-cd4-d2-rest-p1of2-r1"
+    ]
+   },
+   "derivation_key": "13d1b013f983eeffbf41e3065c4884dd52c0b167500b9e83fb96978c21a1657e",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+    "relative_path": "bank/D2_Rest",
+    "files": {
+     "mean_proportion.npz": {
+      "bytes": 498927930,
+      "sha256": "45ffea49d0565137c2d7000fb0afeff678613d1dea6ea00e345589c7c87db603"
+     },
+     "mask.npz": {
+      "bytes": 7830637,
+      "sha256": "05359bc200f5b70181637fde4b2af9a3d3f004bfabb71b254f3186234e56ed66"
+     },
+     "count_sum.npz": {
+      "bytes": 263980099,
+      "sha256": "fdeaa4e203aa22a820ccbe1dee9e4970a5beed05dd541c9b6c4318005fc65b81"
+     },
+     "variance_proportion.npz": {
+      "bytes": 499191276,
+      "sha256": "2caa2651fda441582ecc461aeb5f37e9c8f761cee9c105a71585103d3319e3f5"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 25904106,
+      "sha256": "ed393bd57a46eb34c11bf1dc0893b23d08f64fa32ad574e8bcd10a39d5017a15"
+     },
+     "zero_fraction.npz": {
+      "bytes": 219094672,
+      "sha256": "920b04846212a6161c0344d57794207d576ea192afe162e82b8c4342870c1dfe"
+     },
+     "sampled_controls.npz": {
+      "bytes": 112780,
+      "sha256": "576ca4f2f78d8b8ddf5849922e63c2661602ec76a571dacf68151fc308fc6868"
+     },
+     "rows.csv": {
+      "bytes": 846125,
+      "sha256": "a61500eb12a58c61c69eea7c1b7776b8684da3c776125d4de82356db602fc45f"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084937,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-cd4-1-3-rest-r2/versions/1",
+     "saved_source_sha256": "612a8cb5f1ca1035591e8131c970d8ba8cce3152152423223e5c9e37bcce6ecc",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r9/receipts/davideferrante11/vcc-bank-cd4-1-3-rest-r2/bank/D2_Rest/complete.json",
+    "receipt_sha256": "d9f7b52253a90a4eac65af4278d71efa5cce60d4dbae5b080fa1a71997bd3cd6",
+    "cells_used": 1981060,
+    "rows": 12063
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-samples-cd4-d2-rest-r1 has status \"KernelWorkerStatus.RUNNING\""
+    },
+    "state": "not_complete",
+    "kernel": "davideferrante11/vcc-samples-cd4-d2-rest-r1"
+   }
+  },
+  "D3_Rest": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d3_rest_r1/source_complete.json",
+    "sha256": "7c30b8bc62f20a151e7844882fe8c7d7576036e9e66f32b92d0696f00d24df2f",
+    "cells": 1901024,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d3-rest-p0of2-r1",
+     "davideferrante11/vcc-cd4-d3-rest-p1of2-r2"
+    ]
+   },
+   "derivation_key": "418a625c8589371933923f940775948e2f611255cb70d0f3c82df6706ce26abb",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+    "relative_path": "bank/D3_Rest",
+    "files": {
+     "mean_proportion.npz": {
+      "bytes": 500465102,
+      "sha256": "57028adbff460270ee59d998ed9c35e19ab6a82b2b664fd8cd27ca3f803d1d47"
+     },
+     "mask.npz": {
+      "bytes": 7752070,
+      "sha256": "d83b80fa3fc60495e6fbaecad724a87ae5bcc3aed61ad4f2d2aa0bcba664936f"
+     },
+     "count_sum.npz": {
+      "bytes": 269436605,
+      "sha256": "c899444cf80eedbb820477e8b299533a00b174ab714b7cbcaed9222fb4a52dbd"
+     },
+     "variance_proportion.npz": {
+      "bytes": 501196731,
+      "sha256": "06e51f046db00f02ba7f60cecda8c9273e50304575599bf7ff2a8635728138ed"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 25902308,
+      "sha256": "2b66b0524d6bc4848852dda73aff899762ff351b5aa0a1a168e2e36b6fecd4b3"
+     },
+     "zero_fraction.npz": {
+      "bytes": 219005807,
+      "sha256": "3c99f90c3479c13dac70494c95163b65a7572924f1fdf1440de6c9c6a282510f"
+     },
+     "sampled_controls.npz": {
+      "bytes": 117120,
+      "sha256": "a07fc75d648a4fa2cd9b71557c1271df023168db00f5bae4b42f5a7863588b43"
+     },
+     "rows.csv": {
+      "bytes": 837780,
+      "sha256": "3892d7e83c7ece492bbfe07825d1e5750bce6ee93c45e30bb738a8f2514aed93"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084937,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-cd4-1-3-rest-r2/versions/1",
+     "saved_source_sha256": "612a8cb5f1ca1035591e8131c970d8ba8cce3152152423223e5c9e37bcce6ecc",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r9/receipts/davideferrante11/vcc-bank-cd4-1-3-rest-r2/bank/D3_Rest/complete.json",
+    "receipt_sha256": "c4f605c128b6305e2fa5ebec43dda3ab42c2506ad839da104f7e32e6868a0724",
+    "cells_used": 1901024,
+    "rows": 11942
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-samples-cd4-d3-rest-r1 has status \"KernelWorkerStatus.RUNNING\""
+    },
+    "state": "not_complete",
+    "kernel": "davideferrante11/vcc-samples-cd4-d3-rest-r1"
+   }
+  },
+  "D1_Stim8hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d1_stim8hr_r1/source_complete.json",
+    "sha256": "5f4ee0cb5b667be8581c3e62374a951b534e1e818c8280780c5f58947f6ddee2",
+    "cells": 1605685,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d1-stim8hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d1-stim8hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "eb4db928dc75b1e3cd101ef6c12e75e9f3608d27c561c04c2a3ef63c328407fc",
+   "bank": {
+    "state": "running",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+    "relative_path": "bank/D1_Stim8hr",
+    "files": {},
+    "consumer_access": "not_verified",
+    "saved_version": {}
+   },
+   "samples": {
+    "state": "pending"
+   }
+  },
+  "D2_Stim8hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d2_stim8hr_r1/source_complete.json",
+    "sha256": "8ab26035d52a71024f5fa7dd19db004b402726d4e992befd1bda1e9303ed692f",
+    "cells": 2086574,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d2-stim8hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d2-stim8hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "ea066099c3b656e8b4cc86be73577ff08a6ee6ba3030dc4122371ffbe4c7d036",
+   "bank": {
+    "state": "running",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+    "relative_path": "bank/D2_Stim8hr",
+    "files": {},
+    "consumer_access": "not_verified",
+    "saved_version": {}
+   },
+   "samples": {
+    "state": "pending"
+   }
+  },
+  "D3_Stim8hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d3_stim8hr_r1/source_complete.json",
+    "sha256": "9cb160b0d1dc22ad1e96ef1fdb10522e920d9717f1fda17aba9715c2d41ec6dd",
+    "cells": 1691290,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d3-stim8hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d3-stim8hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "380dc35b33d5a0c44937d9d14487443d0735ce6324a336fbb7cd14ff99d366b4",
+   "bank": {
+    "state": "running",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+    "relative_path": "bank/D3_Stim8hr",
+    "files": {},
+    "consumer_access": "not_verified",
+    "saved_version": {}
+   },
+   "samples": {
+    "state": "pending"
+   }
+  },
+  "D1_Stim48hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d1_stim48hr_r1/source_complete.json",
+    "sha256": "06bc16af5be94cc62fd68baf306b9f4902ad46cc0b0dc6120554fc7b25cb59e4",
+    "cells": 1646772,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d1-stim48hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d1-stim48hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "0d387997f86cc4a339becbceb8fde7aa241f6f616162c89f272677e8bbcfb973",
+   "bank": {
+    "state": "running",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+    "relative_path": "bank/D1_Stim48hr",
+    "files": {},
+    "consumer_access": "not_verified",
+    "saved_version": {}
+   },
+   "samples": {
+    "state": "pending"
+   }
+  },
+  "D2_Stim48hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d2_stim48hr_r1/source_complete.json",
+    "sha256": "ac27d3044a37e0767d6325ab8b84221d7e8fd130e38eb67663cd1d84f9e55025",
+    "cells": 2050788,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d2-stim48hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d2-stim48hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "9d0dbc5903c10c400a4535eb6dfb1b7802a827c9071621e759200d4070de1845",
+   "bank": {
+    "state": "running",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+    "relative_path": "bank/D2_Stim48hr",
+    "files": {},
+    "consumer_access": "not_verified",
+    "saved_version": {}
+   },
+   "samples": {
+    "state": "pending"
+   }
+  },
+  "D3_Stim48hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/verifica_d3_stim48hr_r1/source_complete.json",
+    "sha256": "a8e3b3414a6e12e9c3aaed778883e96f1f66e7d1560eb471ab2a356100043d3a",
+    "cells": 1885549,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d3-stim48hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d3-stim48hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "db411efdbfe3a19e8dc3f8a77eb41be2c8ff722cd093b1f64fa9a9448de52448",
+   "bank": {
+    "state": "running",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+    "relative_path": "bank/D3_Stim48hr",
+    "files": {},
+    "consumer_access": "not_verified",
+    "saved_version": {}
+   },
+   "samples": {
+    "state": "pending"
+   }
+  },
+  "D4_Rest": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/verifica_d4_rest_r1/source_complete.json",
+    "sha256": "b8ce75fa698c0338ce1052428d89b87bf844b0a05f9dea191d2d23249f91d904",
+    "cells": 1747709,
+    "kernel_sources": [
+     "davidmaisterx/vcc-cd4-d4-rest-p0of2-r1",
+     "davidmaisterx/vcc-cd4-d4-rest-p1of2-r1"
+    ]
+   },
+   "derivation_key": "4eedf32bdfac611d3e6804c6d8c59b460d857fc8c5be48f8a671d752163e02fe",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-bank-cd4-4-4-rest-r2",
+    "relative_path": "bank/D4_Rest",
+    "files": {
+     "samples.jsonl.gz": {
+      "bytes": 32007300,
+      "sha256": "2aae4240983e3284fa0924991d173cf4e6842b65ca40fe2896d95d2943ea45e5"
+     },
+     "mean_proportion.npz": {
+      "bytes": 534697039,
+      "sha256": "2d796f95c2473f6ac0c681baf0963d1e893db0e6e1cb0711f4293f1209864a94"
+     },
+     "count_sum.npz": {
+      "bytes": 282316698,
+      "sha256": "554d00892b95ed9d14447aaeca427fc0481071f11f377e4491224434139981cc"
+     },
+     "zero_fraction.npz": {
+      "bytes": 234529439,
+      "sha256": "4866b518e01afa2a0cd0dc5bfda341571299c9e827b98ec2c21a1df55581c4ec"
+     },
+     "sampled_controls.npz": {
+      "bytes": 117175,
+      "sha256": "e7c30d1fb4a3724f8b11eac8abc0ae0249496f670cdcc155e32415fcea93cea0"
+     },
+     "rows.csv": {
+      "bytes": 872720,
+      "sha256": "9cd9ad16299bd2229235a464024647f4cc8ca07f8e197acc350bcd1abe1e4d66"
+     },
+     "mask.npz": {
+      "bytes": 8054564,
+      "sha256": "152fbaa5866c1281ffbc70f1b49f81710e7fdf5ed3245cac57d88a0b94e78ce7"
+     },
+     "variance_proportion.npz": {
+      "bytes": 535910325,
+      "sha256": "0579dc2f33a8676678470717df5a13644f4edd2c9aeb46c4eb8f8d25b7acced8"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084956,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-bank-cd4-4-4-rest-r2/versions/1",
+     "saved_source_sha256": "d5b14034c1a5d3f057c81e31135c2d467029d48c4c60df0b273632ff22a75494",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r9/receipts/davidmaisterx/vcc-bank-cd4-4-4-rest-r2/bank/D4_Rest/complete.json",
+    "receipt_sha256": "3c8b212406188a68f344eba4bf88896d35d6ba4ea93081df0451b39eb130ed98",
+    "cells_used": 1747709,
+    "rows": 12408
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davidmaisterx/vcc-samples-cd4-d4-rest-r1 has status \"KernelWorkerStatus.RUNNING\""
+    },
+    "state": "not_complete",
+    "kernel": "davidmaisterx/vcc-samples-cd4-d4-rest-r1"
+   }
+  },
+  "D4_Stim8hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/verifica_d4_stim8hr_r1/source_complete.json",
+    "sha256": "136fc11fa25614a1b4e55d5606b7299f4e326bc5a90cd303f3b514c0bd87a7c8",
+    "cells": 1755121,
+    "kernel_sources": [
+     "davidmaisterx/vcc-cd4-d4-stim8hr-p0of2-r1",
+     "davidmaisterx/vcc-cd4-d4-stim8hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "e90b48979f7f18782ec371a11eba992d1fe2ef9e8fd8cadae564ac5bb4adb141",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-bank-cd4-4-4-stim8hr-r2",
+    "relative_path": "bank/D4_Stim8hr",
+    "files": {
+     "samples.jsonl.gz": {
+      "bytes": 32593473,
+      "sha256": "29bf5611493365be70dd87a82b2638a75176f45dbd0d21c404159628a9235177"
+     },
+     "mask.npz": {
+      "bytes": 8086372,
+      "sha256": "96337fb43b2ed7e598c16217c1748adecf5e771d35ab1f43ba0dcf253b0c4b4b"
+     },
+     "sampled_controls.npz": {
+      "bytes": 119657,
+      "sha256": "396e10e3c739467e9c8e61ce008c8ab8be2785e6a7943cae580deb86088a7e23"
+     },
+     "zero_fraction.npz": {
+      "bytes": 240463317,
+      "sha256": "134c8cc125257bae0e56662711ebceb4d2de86d23fe5228e5c10117cf69c5f96"
+     },
+     "variance_proportion.npz": {
+      "bytes": 546299344,
+      "sha256": "f2fa31628800693f8b3efbea352d460bbd8f530b610004328b6bdab97b871824"
+     },
+     "mean_proportion.npz": {
+      "bytes": 543821782,
+      "sha256": "1a7a8143b09ffc9f0efd1aa177b049ba3f5707fbe1e0d8c3a439e359b54fa182"
+     },
+     "count_sum.npz": {
+      "bytes": 293614183,
+      "sha256": "e7dcb2d4ab3489471d8d00736d4f5c8470860ea4993133f54510f3f4132fe609"
+     },
+     "rows.csv": {
+      "bytes": 950979,
+      "sha256": "69694959750b0be40b2c94def5890af9023893abcc3058b4e0097d8b714c2206"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084968,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-bank-cd4-4-4-stim8hr-r2/versions/1",
+     "saved_source_sha256": "731fc0645c962e1eea9acf06a24080595aeb3e2b8fc7b0c01e45d0a0b69cfb28",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r9/receipts/davidmaisterx/vcc-bank-cd4-4-4-stim8hr-r2/bank/D4_Stim8hr/complete.json",
+    "receipt_sha256": "bcf456e3e2200c5675c3d41014b1a1c32e2ca5935d929fdf63163f0e693942d6",
+    "cells_used": 1755121,
+    "rows": 12457
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davidmaisterx/vcc-samples-cd4-d4-stim8hr-r1 has status \"KernelWorkerStatus.RUNNING\""
+    },
+    "state": "not_complete",
+    "kernel": "davidmaisterx/vcc-samples-cd4-d4-stim8hr-r1"
+   }
+  },
+  "D4_Stim48hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/verifica_d4_stim48hr_r1/source_complete.json",
+    "sha256": "d87789248c1517c2cc330030c4a42a54d4758dc851bbe6273c363819090c179d",
+    "cells": 1878125,
+    "kernel_sources": [
+     "davidmaisterx/vcc-cd4-d4-stim48hr-p0of2-r1",
+     "davidmaisterx/vcc-cd4-d4-stim48hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "32f4df94c512f7fc256dc450bc80188ef96105dc9b66743603ce907e3d1f652c",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-bank-cd4-4-4-stim48hr-r2",
+    "relative_path": "bank/D4_Stim48hr",
+    "files": {
+     "rows.csv": {
+      "bytes": 972815,
+      "sha256": "db26a86482c43e1131b017e8077f943cc4fca7fe5adbcbb5a9d7985014cd2de3"
+     },
+     "zero_fraction.npz": {
+      "bytes": 251575128,
+      "sha256": "b57067e7fd42296d3372342f95241164e2d4aae22139c0c56c51330e78e588eb"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 32932582,
+      "sha256": "b1096c5558757ec8cb30fa1d4e019fa4162018990144c632e0e4d0c1efe702e5"
+     },
+     "variance_proportion.npz": {
+      "bytes": 568513409,
+      "sha256": "6411352ea5807f478914d30456097ee1f611afabeb78765cda0985a1cc4c2b15"
+     },
+     "count_sum.npz": {
+      "bytes": 309482065,
+      "sha256": "415d4c3449c251068562d362119d55a308e7084fba52ee0f6614679e223f0ac8"
+     },
+     "mean_proportion.npz": {
+      "bytes": 566588637,
+      "sha256": "1886f2fec2e2cd0ad68a622a48cd4ab82fafb0c779669ba073d6d40d6ad6b9e7"
+     },
+     "mask.npz": {
+      "bytes": 8059102,
+      "sha256": "6ce7ae6774c863ab0c68727b507b86da00b85ec672c71f1477a87fdcf1ca0937"
+     },
+     "sampled_controls.npz": {
+      "bytes": 123290,
+      "sha256": "54ea8be63c99b517194deb8ba8dd6cf7af3eb3ecc209c5f5f1835511e6b36d01"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084972,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-bank-cd4-4-4-stim48hr-r2/versions/1",
+     "saved_source_sha256": "4cf1f75b53615e290833e34b6ab1806aa44bd4ea5334c383b13ba5702e9ccf1e",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r9/receipts/davidmaisterx/vcc-bank-cd4-4-4-stim48hr-r2/bank/D4_Stim48hr/complete.json",
+    "receipt_sha256": "414526a33fd732325d3746a295247c1529bc02c1294fb8f2213327068aaa68c3",
+    "cells_used": 1878125,
+    "rows": 12415
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davidmaisterx/vcc-samples-cd4-d4-stim48hr-r1 has status \"KernelWorkerStatus.RUNNING\""
+    },
+    "state": "not_complete",
+    "kernel": "davidmaisterx/vcc-samples-cd4-d4-stim48hr-r1"
+   }
+  }
+ }
+}
