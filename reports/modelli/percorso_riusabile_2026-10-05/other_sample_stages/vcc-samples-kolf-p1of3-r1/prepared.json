@@ -1,0 +1,89 @@
+{
+ "parameters": {
+  "unit": "kolf_pan_genome",
+  "spec": {
+   "name": "kolf_pan_genome",
+   "line_group": "iPSC",
+   "expected_contexts": [
+    "KOLF2.1J iPSC"
+   ],
+   "cells": 2659209,
+   "receipt_sha256": "a7ba725c4a41052d3657ba7c35a374e49735e96917347de0fe7c84d4bcdc675a",
+   "parts": [
+    {
+     "job": "vcc_kolf_pan_p0of2_r2",
+     "unit": "kolf_pan_genome",
+     "range": [
+      0,
+      1320000
+     ],
+     "rows": 1320000,
+     "cells": 1320000,
+     "excluded": 0,
+     "by_reason": null,
+     "shards": 66,
+     "bytes": 9200054049,
+     "nnz": 3946529896,
+     "counts": 7966149908,
+     "smoke": null,
+     "complete": true,
+     "unit_manifest_sha256": "e129fbe6c2bb58d97f406689517cd2774b905580d7f3ec38b438ff8afd566bb2",
+     "ok": true
+    },
+    {
+     "job": "vcc_kolf_pan_p1of2_r1",
+     "unit": "kolf_pan_genome",
+     "range": [
+      1320000,
+      2659209
+     ],
+     "rows": 1339209,
+     "cells": 1339209,
+     "excluded": 0,
+     "by_reason": null,
+     "shards": 67,
+     "bytes": 9186373942,
+     "nnz": 3925653565,
+     "counts": 7794331337,
+     "smoke": null,
+     "complete": true,
+     "unit_manifest_sha256": "62c6d3a326be093d4df9a1db1cfbb1227dde15c142f9e2bfaabc61005d7ff7aa",
+     "ok": true
+    }
+   ]
+  },
+  "bank_receipt_sha256": "c0025f94a7562f24ee20e51287e99f311f922e3d19e9c6dc7d950cbb69e111a9",
+  "bank_saved_version": {
+   "kernel_id": 137127560,
+   "version": 1,
+   "private": true,
+   "version_ref": "davideferrante11/vcc-bank-kolf-pan-r1/versions/1",
+   "saved_source_sha256": "77075982582bf15fb17f7085d92d7c13126fac7e7e86a9725958aab672ce8e49",
+   "version_stable_during_output_read": true
+  },
+  "part": 1,
+  "parts": 3,
+  "max_output_bytes": 19327352832
+ },
+ "metadata": {
+  "id": "davideferrante11/vcc-samples-kolf-p1of3-r1",
+  "title": "vcc-samples-kolf-p1of3-r1",
+  "code_file": "run.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [
+   "davideferrante11/vcc-bank-kolf-pan-r1",
+   "davideferrante11/vcc-kolf-pan-p0of2-r2",
+   "davideferrante11/vcc-kolf-pan-p1of2-r1"
+  ],
+  "competition_sources": []
+ },
+ "code_sha256": "25d362a46fac888f621e3fee740b59f1d361a30872bd1f9dbf4c2fc275af6298",
+ "state_sha256": "17530295aabba03ecac9a2b4b13ea837de3596141b68ee8b3defbdcb7101c1da",
+ "producer_sha256": "77075982582bf15fb17f7085d92d7c13126fac7e7e86a9725958aab672ce8e49"
+}

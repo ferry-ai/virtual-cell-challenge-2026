@@ -1,5 +1,12 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Prosecuzione Codex 5/10, 12:33:** avviata la materializzazione dei campioni
+  KOLF/HCT116/HEK293T in parti disgiunte: cinque push accettati, otto ancora da
+  lanciare negli slot liberi. [Codice, ricevute e prosecuzione](../../reports/modelli/percorso_riusabile_2026-10-05/CAMPIONI_PARTIZIONATI.md).
+  Usare `launch_other_samples.py` e `sample_partition_progress.py`; verificare
+  ricevute e unione alla chiusura. Non ripetere banche o campioni CD4 conclusi.
+  Training esteso e collegamento dei lettori restano aperti.
+
 - **Vincolo del proprietario, 5/10:** preservare l'ingestione e impedire scambi con
   vecchi dataset Kaggle. [Identità e release esplicite](../../reports/modelli/percorso_riusabile_2026-10-05/IDENTITA_BANCA.md):
   `release_cd4_r5.json` aggiorna il ramo CD4 conservando le precedenti; il nuovo trainer deve registrare il
