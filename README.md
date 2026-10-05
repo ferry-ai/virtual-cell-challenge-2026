@@ -3,6 +3,8 @@
 **DATA ARCHIVE — REUSE, DO NOT REINGEST:** [current dataset index, versions and hashes](reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r10/README.md)
 and [available data, contexts and GB](reports/modelli/percorso_riusabile_2026-10-05/DATI_DISPONIBILI_r2.md).
 The main path is verified archive → reusable banks and cell samples → extended training.
+**Training coverage is tracked separately:** [current executions and all expected inputs](reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).
+Archived GB and launched jobs do not certify that every context contributed to a fitted model.
 
 **Start here:** agents read [CLAUDE.md](CLAUDE.md), then
 [current state](docs/PROGETTO.md) §0 and the [plan index](docs/PIANI.md) §2–3.

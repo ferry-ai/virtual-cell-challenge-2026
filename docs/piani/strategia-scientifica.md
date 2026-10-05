@@ -1,5 +1,12 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Esecuzione corrente, 5/10:** [cinque stime su banca e copertura attesa](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).
+  Parent ha verificato cinque job RUNNING; restano frammenti per fonte, non mix
+  esteso completo. Grok stessa sessione r5 corregge CD4 e uso di tutte le tabelle
+  BIO, prepara mix identico e chiude adapter delle altre fonti idonee.
+  Questo aggiornamento supera le assegnazioni r2/r3/r4 sotto. Copertura effettiva
+  di tutte le linee/contesti aperta; parent continua lanci e persistenza.
+
 - **Precisazione del confronto, 5/10:** [transfer identico, solo nuova banca](../../reports/modelli/percorso_riusabile_2026-10-05/TRANSFER_IDENTICO_r1.md).
   Riferimento richiesto t28 (massimo osservato0,144845), effetti t25/cache r9 e
   stessa emissione t28. Congelare algoritmo/ricetta/aggregazioni/cis/emitter;

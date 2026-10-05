@@ -1,5 +1,10 @@
 # Archivio, banca e trainer riutilizzabili
 
+**Stato operativo corrente:** [cinque stime avviate e copertura attesa congelata](ESECUZIONE_r1.md).
+Grok stessa sessione r5 prepara CD4 congiunto e mix esatto; parent esegue i lanci.
+Il modello completo e la copertura D-053 restano aperti. Le note r2/r3/r4 sotto
+documentano passaggi precedenti, non l'assegnazione o lo stato attuale.
+
 [Esperimento richiesto: stesso transfer t28, solo banca ampliata](TRANSFER_IDENTICO_r1.md).
 Algoritmo/ricetta/emissione congelati, tutte le fonti possibili, confronto appaiato.
 
