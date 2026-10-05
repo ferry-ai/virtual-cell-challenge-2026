@@ -1,0 +1,30 @@
+[{"stream_name":"stdout","time":3.834292199,"data":"{\"cpus\": 4, \"ram_available\": 32624095232, \"disk_free\": 20940013568, \"provider\": \"kaggle\"}\n"}
+,{"stream_name":"stderr","time":4.503323711,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":4.504460076,"data":"  File \"/kaggle/src/script.py\", line 7, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":4.504492016,"data":"    runpy.run_path(\"archive_runtime.py\",run_name=\"__main__\")\n"}
+,{"stream_name":"stderr","time":4.50449665,"data":"    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":4.50450007,"data":"  File \"\u003cfrozen runpy\u003e\", line 294, in run_path\n"}
+,{"stream_name":"stderr","time":4.5045036320000005,"data":"  File \"\u003cfrozen runpy\u003e\", line 98, in _run_module_code\n"}
+,{"stream_name":"stderr","time":4.504506775,"data":"  File \"\u003cfrozen runpy\u003e\", line 88, in _run_code\n"}
+,{"stream_name":"stderr","time":4.504509926,"data":"  File \"archive_runtime.py\", line 38, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":4.504515193,"data":"    if __name__=='__main__':main()\n"}
+,{"stream_name":"stderr","time":4.504519919,"data":"                            ~~~~^^\n"}
+,{"stream_name":"stderr","time":4.504524312,"data":"  File \"archive_runtime.py\", line 31, in main\n"}
+,{"stream_name":"stderr","time":4.504528966,"data":"    materialize({'unit':spec['name'],'bank_receipt_sha256':sha(bank/'complete.json'),\n"}
+,{"stream_name":"stderr","time":4.504533948,"data":"    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":4.5045388410000005,"data":"                 'bank_input_path':str(bank),'spec':spec},root,samples)\n"}
+,{"stream_name":"stderr","time":4.504543408,"data":"                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":4.504548088,"data":"  File \"/kaggle/working/materialize_samples.py\", line 74, in run\n"}
+,{"stream_name":"stderr","time":4.504553342,"data":"    if f.stat().st_size != expected['bytes'] or sha(f) != expected['sha256']:\n"}
+,{"stream_name":"stderr","time":4.504558219,"data":"       ~~~~~~^^\n"}
+,{"stream_name":"stderr","time":4.504562812,"data":"  File \"/usr/lib/python3.13/pathlib/_local.py\", line 515, in stat\n"}
+,{"stream_name":"stderr","time":4.5045675450000005,"data":"    return os.stat(self, follow_symlinks=follow_symlinks)\n"}
+,{"stream_name":"stderr","time":4.504572063,"data":"           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":4.5045769060000005,"data":"FileNotFoundError: [Errno 2] No such file or directory: '/kaggle/input/datasets/davideferante/vcc-tian-ipsc-sample-input-r1/samples.jsonl.gz'\n"}
+,{"stream_name":"stderr","time":7.7797205609999995,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":7.7797611,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":8.274414475,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":8.274446029,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":10.483984151,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":11.909412959,"data":"[NbConvertApp] Writing 393261 bytes to __results__.html\n"}
+]

@@ -1,5 +1,35 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Indice e chiusure correnti, 5/10:** [r6](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r6/README.md)
+  conserva tutte le cinque unità Tian/Norman verificate, codice/versioni/hash e
+  produttori distinti; HEK293T completo e otto ulteriori chiusure confermati.
+  Sette input grezzi pubblici; HIPSCI 14/24 parti lanciate, tre verificate,
+  unioni ancora aperte. Secondo preflight dopo le chiusure: 5/5/4 attivi,
+  ultimo slot CPU assegnato sul terzo account. Seguire SOLO dispatcher condiviso
+  e validator v2 con entrambi i ledger. Portare questo corpus nel trainer reale;
+  le statistiche iPSC del produttore ERROR devono essere rese montabili una volta,
+  senza rifare banca. Copertura intero catalogo e training esteso ancora aperti.
+
+- **Slot liberi riempiti, 5/10:** il proprietario autorizza la pubblicazione
+  necessaria alla pipeline; due input HIPSCI pubblici verificati, senza modifica
+  dei grezzi. [Redistribuzione](../../reports/modelli/percorso_riusabile_2026-10-05/PARALLELISMO_r3.md):
+  dieci nuovi push, quattro su davideferrante11; 13/24 parti HIPSCI lanciate.
+  Proseguire SOLO dispatch_hipsci_shared_v1 e archive_partition_state_v2:
+  leggere entrambi i ledger per non duplicare parti. iPSC r4 riusa la banca con
+  locatori gzip preservati nell'input privato versione 2; seguire tian_ipsc_r4,
+  gli altri Tian r3 e Norman già chiuso. Integrare poi reader e trainer reale.
+
+- **Nuove chiusure e recuperi, 5/10:** [indice r5](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r5/README.md).
+  HEK293T 6/6 campioni e unione verificati (27,26 GB); otto nuovi job di archivi
+  chiusi con manifest/versioni/lineage verificati. [Prosecuzione](../../reports/modelli/percorso_riusabile_2026-10-05/PROSECUZIONE_r1.md):
+  HIPSCI gwfit/gwnonfit divisi in gruppi BIO/target interi, 12 parti ciascuno;
+  tre lanci r2 avanzano, restanti in attesa degli slot del proprietario.
+  Tian recupera Norman già completo e banca iPSC; campioni correggono il caso
+  delle righe a popolazione misurata zero. Primo input notebook rifiutato dal
+  provider perché il produttore è ERROR: trasferiti solo 35 MB di file necessari
+  in un dataset privato, non rifatta banca/ingestion. Seguire tian_resume_r2.
+  Integrare trainer con lettura delle parti e controlli incrociati; training esteso ancora aperto.
+
 - **Archivio e parallelismo, 5/10:** [indice corrente r4](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r4/README.md)
   in evidenza nella repo; 395,75 GB grezzi conservati, senza reingestione.
   Sedici derivati CPU accettati sui tre account: `archive_launches_r2.jsonl`

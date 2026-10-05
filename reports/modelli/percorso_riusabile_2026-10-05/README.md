@@ -1,10 +1,15 @@
 # Archivio, banca e trainer riutilizzabili
 
-**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r4/README.md),
+**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r6/README.md),
 con manifest immutabile, account, versioni, hash e distinzione dai dataset storici.
 Include 15 banche verificate e 12 matrici campionate CD4 complete; le nuove parti
-HEK293T restano aperte; KOLF e HCT116 sono chiusi anche nei campioni.
-Include anche la prima chiusura banca/campioni HepG2 verificata; il trainer resta aperto.
+HEK293T sono ora chiuse (6/6 e unione, snapshot_parts_r5); KOLF e HCT116 sono chiusi anche nei campioni.
+Include anche HepG2 e otto nuove chiusure banca/campioni verificate; il trainer resta aperto.
+[Prosecuzione e recuperi HIPSCI/Tian](PROSECUZIONE_r1.md) indica i ledger da seguire.
+[Redistribuzione sui tre account](PARALLELISMO_r3.md): due input HIPSCI ora pubblici,
+dieci nuovi push; usare il dispatcher condiviso e il recupero iPSC r4.
+Seconda ondata condivisa: un ulteriore push, 14/24 parti HIPSCI lanciate.
+Tutte le cinque unità Tian/Norman ora verificate in tian_resume_verified_r1.
 
 **Non perdere né reingerire:** [17 archivi precedenti e nuova ingestione, 395,75 GB grezzi](DATI_DISPONIBILI_r2.md).
 Account, versioni e hash sono nel manifest; nessun fallback al cubo ridotto del pilot.
