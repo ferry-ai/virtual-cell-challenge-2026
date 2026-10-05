@@ -1,6 +1,6 @@
 # Archivio, banca e trainer riutilizzabili
 
-**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r6/README.md),
+**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r7/README.md),
 con manifest immutabile, account, versioni, hash e distinzione dai dataset storici.
 Include 15 banche verificate e 12 matrici campionate CD4 complete; le nuove parti
 HEK293T sono ora chiuse (6/6 e unione, snapshot_parts_r5); KOLF e HCT116 sono chiusi anche nei campioni.
@@ -10,6 +10,13 @@ Include anche HepG2 e otto nuove chiusure banca/campioni verificate; il trainer 
 dieci nuovi push; usare il dispatcher condiviso e il recupero iPSC r4.
 Seconda ondata condivisa: un ulteriore push, 14/24 parti HIPSCI lanciate.
 Tutte le cinque unità Tian/Norman ora verificate in tian_resume_verified_r1.
+Nuovo stato r7: A549 chiusa e verificata; HIPSCI 24/24 parti avviate e 14/24
+verificate. Statistiche iPSC originali montabili nel dataset di input versione 3 ready.
+[Loop di ottimizzazione e confronto transfer](TRAINER_r1.md): integrazione reale
+dei reader verificata su fixture; catalogo/QC, feature congelate e lancio esteso aperti.
+Delega Grok esplicitamente autorizzata: `agenti/grok_transfer_esteso_r1/prompt.md`
+e `launch.json` conservano il mandato e la sessione. Preparazione del trainer in
+parallelo alla chiusura dati; fit sul corpus ammesso congelato, non aggiunte silenziose.
 
 **Non perdere né reingerire:** [17 archivi precedenti e nuova ingestione, 395,75 GB grezzi](DATI_DISPONIBILI_r2.md).
 Account, versioni e hash sono nel manifest; nessun fallback al cubo ridotto del pilot.

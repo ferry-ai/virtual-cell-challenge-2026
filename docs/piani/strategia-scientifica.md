@@ -1,5 +1,19 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Nuovo stato, 5/10:** [indice r7](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r7/README.md).
+  HIPSCI 24/24 parti avviate sui tre account, 14/24 verificate; unioni aperte.
+  A549 banca/campioni verificati. iPSC statistiche originali rese montabili nella
+  versione 3 ready, senza ricalcolo. [Trainer e confronto transfer](../../reports/modelli/percorso_riusabile_2026-10-05/TRAINER_r1.md):
+  nuovo loop aggiorna pesi su fixture, con controlli fra parti e consumo/resume;
+  completare catalogo/QC, feature/assi congelati, accessi e launcher reale.
+  Il proprietario richiede confronto del transfer lineare aggiornato con la banca,
+  mantenendo emissione t28 e split C/J. HIPSCI già inclusa nei 395,75 GB grezzi.
+  Training esteso ancora non avviato; non confondere la fixture con consumo reale.
+  Delega Grok autorizzata e CLI avviata: `agenti/grok_transfer_esteso_r1/` nel report
+  conserva mandato/sessione e riceverà stato/prove del rifit. Il parent chiude i dati;
+  Grok prepara trainer e confronto. Fit su release completa ammessa e congelata,
+  senza inserire fonti durante un fit né ripresentare un pilot come corpus completo.
+
 - **Indice e chiusure correnti, 5/10:** [r6](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r6/README.md)
   conserva tutte le cinque unità Tian/Norman verificate, codice/versioni/hash e
   produttori distinti; HEK293T completo e otto ulteriori chiusure confermati.
