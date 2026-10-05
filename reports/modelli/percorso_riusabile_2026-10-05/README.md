@@ -2,7 +2,7 @@
 
 **Ingresso unico per riuso:** [procedura del prossimo training](RIUSO_r2.md).
 **Stato e assegnazioni correnti:** [R-LEAD](../../../docs/piani/strategia-scientifica.md).
-**Rifit/invio in corso:** [candidato completo e invio t36](ESECUZIONE_r17.md) e
+**Rifit/invio conclusi, valutazione in corso:** [candidato completo e invio t36](ESECUZIONE_r18.md) e
 [invio diretto autorizzato](INVIO_DIRETTO_r1.md).
 
 [Identità riconciliate e lacune](../../analisi/riconciliazione_banca_2026-10-05/README.md).

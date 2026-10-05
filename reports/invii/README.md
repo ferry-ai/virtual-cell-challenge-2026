@@ -9,7 +9,7 @@ Due tipi di cartella, più due riepiloghi:
 
 Procedura e regole: [PROCEDURE §1–2](../../docs/PROCEDURE.md). Indice generale: [../README.md](../README.md).
 
-**In corso:** [t36](prediction_t36_2026-10-06/README.md), candidato completo, download/invio; nessun punteggio dichiarato. La bozza locale t31 non è stata inviata. [Stato operativo](../modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r17.md).
+**In valutazione:** [t36](prediction_t36_2026-10-06/README.md), ricevuto da VCC alle00:56 del6ottobre, entry `JLcMRGExhXKk77XVds7x`, stato launching senza punteggio. La bozza locale t31 non è stata inviata. [Ricevuta e stato](../modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r18.md).
 
 ## I punteggi ufficiali in una tabella
 
