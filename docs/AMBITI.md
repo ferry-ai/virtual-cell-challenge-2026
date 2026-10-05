@@ -29,9 +29,7 @@ Leggi prima: [PROCEDURE §2](PROCEDURE.md#2-le-regole-dellinvio), punto 7, per l
 
 ### 2. Invii e ricetta di produzione
 
-- **Misurato.** Massimo osservato: t28, +0,144845, contro il t25 +0,0046, non conclusivo per la sua
-  regola; la ricetta di riferimento resta quella del t22 ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)).
-  Tutti i punteggi: [invii](../reports/invii/README.md).
+- **Misurato, 6/10.** Massimo osservato t36 **0,147249**, +0,002404 da t28 sulla banca estesa parziale. Sei membri ufficiali verificati; PDS/NMAE salgono, reach/fedeltà/Jaccard scendono, MSE scalata0. Confronto descrittivo senza soglia numerica preregistrata; nessuna stabilità dimostrata o promozione automatica ([CP-0067](checkpoints/0067-t36-banca-estesa-punteggio-ufficiale.md)). Tutti i punteggi: [invii](../reports/invii/README.md).
 - **Misurato.** Il t28 alza fedeltà (+0,051 scalato) e reach (+0,055), perde NMAE (−0,069) e
   Jaccard (−0,008): l'intervento sull'emissione sposta i membri DE, con costi.
 - **Ultimo esito, 4/10.** T30, ibrido selettivo D-056 (effetti t25 + w · R): 0,135249, −0,004989 contro il t25, ramo b

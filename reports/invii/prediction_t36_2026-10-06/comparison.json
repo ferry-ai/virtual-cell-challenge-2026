@@ -1,0 +1,80 @@
+{
+  "written_utc": "2026-10-05T23:40:51.372740+00:00",
+  "entry_id": "JLcMRGExhXKk77XVds7x",
+  "official_status": "published",
+  "model_name": "t36 - transfer t28 banca estesa",
+  "score_avg": 0.14724935991548274,
+  "rank_at_scoring": 432,
+  "panel_id": "vcc2026-val-1",
+  "anchor_version": "vcc2026-valA-r4+vcc2026-valB-r4+vcc2026-valC-r4",
+  "reference_t28": 0.14484520500645978,
+  "t36_minus_t28": 0.0024041549090229597,
+  "scaled_published": {
+    "t36": {
+      "score_pds": 0.6310665604161688,
+      "score_mse": 0,
+      "score_nmae": 0.07163852828264632,
+      "score_fid": -0.009521475148901774,
+      "score_reach": 0.18656283267158072,
+      "score_jac": 0.0037497132714024357
+    },
+    "t28": {
+      "score_pds": 0.6223070792267033,
+      "score_mse": 0,
+      "score_nmae": 0.04920195622768383,
+      "score_fid": -0.007408907363258718,
+      "score_reach": 0.19871265014354142,
+      "score_jac": 0.006258451804088974
+    },
+    "t36_minus_t28": {
+      "score_pds": 0.008759481189465568,
+      "score_mse": 0,
+      "score_nmae": 0.022436572054962488,
+      "score_fid": -0.002112567785643056,
+      "score_reach": -0.0121498174719607,
+      "score_jac": -0.0025087385326865385
+    }
+  },
+  "raw_published": {
+    "pds_cosine": 0.7851765143069491,
+    "expr_mse_unbiased_capped_norm": 5.13868288727513,
+    "de_wilcoxon_lfc_nmae": 0.9551208318435991,
+    "de_wilcoxon_direction_fidelity_yield_raw": 0.5097109733055971,
+    "de_wilcoxon_direction_reach_raw": 0.2444628358078856,
+    "de_wilcoxon_sig_jaccard": 0.03184599592393781
+  },
+  "integrity": {
+    "published_scaled_mean": 0.14724935991548274,
+    "score_avg_absolute_error": 0.0,
+    "all_six_finite": true,
+    "no_member_imputed_or_reconstructed": true,
+    "same_panel_anchor_version": true
+  },
+  "registered_band": null,
+  "rule_branch": "descriptive_only_no_numeric_threshold_registered",
+  "rule_text": "Single exploratory official result; compare descriptively to t28 without attributing any gain to an individual added source. No demonstrated improvement before submission.",
+  "new_best_among_recorded_official_references": true,
+  "claim_type": "Official published result; descriptive comparison, no significance or individual-source attribution",
+  "limits": [
+    "Single exploratory result, no paired multiseed confirmation.",
+    "Expanded release is partial, not all archived sources or 395.75GB.",
+    "Four KOLF experiments share one cell line; source count is not cell-line count.",
+    "No retrospective band or numeric improvement rule.",
+    "Current validation panel does not establish generalization to D/E/F."
+  ],
+  "inputs": {
+    "reports/invii/trial_2026-10-06/status_JLcMRGExhXKk77XVds7x_0138.json": {
+      "bytes": 1158,
+      "sha256": "471286d413dce9c09925d6276b371de0cf987fa0420a9647c5df6914c0931a75"
+    },
+    "reports/invii/prediction_t28_2026-09-29/comparison.json": {
+      "bytes": 5648,
+      "sha256": "c5e6277591228751abd1759dde7669b3fe7b5eae1d98e7247237838da5688be3"
+    },
+    "reports/invii/prediction_t36_2026-10-06/prediction.json": {
+      "bytes": 14039,
+      "sha256": "378865efdfcec3d9fb6ba354f9b076e2373805d73d8317c3ddee2b9bfa8d7889"
+    }
+  },
+  "reader_sha256": "148fc6ad9a0a16908598665e987b8eb54d1e732b2004bb20585315c631ad1b9f"
+}

@@ -9,7 +9,7 @@ Due tipi di cartella, più due riepiloghi:
 
 Procedura e regole: [PROCEDURE §1–2](../../docs/PROCEDURE.md). Indice generale: [../README.md](../README.md).
 
-**In valutazione:** [t36](prediction_t36_2026-10-06/README.md), ricevuto da VCC alle00:56 del6ottobre, entry `JLcMRGExhXKk77XVds7x`, stato launching senza punteggio. La bozza locale t31 non è stata inviata. [Ricevuta e stato](../modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r18.md).
+**Ultimo esito:** [t36](prediction_t36_2026-10-06/comparison.json), nuovo massimo osservato **0,147249**, +0,002404 contro t28; confronto descrittivo, stabilità non dimostrata ([CP-0067](../../docs/checkpoints/0067-t36-banca-estesa-punteggio-ufficiale.md)). Bozza locale t31 mai inviata.
 
 ## I punteggi ufficiali in una tabella
 
@@ -20,6 +20,7 @@ membri di ogni invio sono nel suo `comparison.json`.
 
 | Invio | Punteggio | Rango | Esito della regola registrata |
 |---|---|---|---|
+| **t36** | **+0,147249** | 432 | Transfer t25/emitter t28, banca estesa parziale; +0,002404 contro t28, nuovo massimo osservato. Nessuna soglia numerica preregistrata; confronto descrittivo, nessuna promozione robusta ([CP-0067](../../docs/checkpoints/0067-t36-banca-estesa-punteggio-ufficiale.md)) |
 | trial-01 | +0,045929 | 446 | primo invio; conferma il percorso d'impacchettamento |
 | t02 | −0,092774 | 764 | ControlModel ×1 + cis: troppe chiamate; serve a risolvere le ancore |
 | t03 | +0,019692 | 576 | verifica storica delle ancore/stadio 84; la pretesa conversione esatta è smentita da CP-0050, non validata da questo invio |

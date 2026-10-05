@@ -99,3 +99,4 @@ aggiunge da sé la riga qui sotto.
 | [0064](0064-t30-ibrido-selettivo-punteggio-ufficiale.md) | 2026-10-04 | t30: l'ibrido selettivo sul sito, −0,005 contro il t25; che cosa del banco non si è trasferito | esperimento | [0065](0065-d056-confronti-e-rumore-del-banco.md), §7: la procedura dell'invio è fedele al banco; il controllo sui controlli di HepG2 misurava i bersagli del pannello |
 | [0065](0065-d056-confronti-e-rumore-del-banco.md) | 2026-10-04 | D-056 dopo il t30: il banco a un seme era rumoroso quanto i guadagni; la perdita di PDS del fold esportato è reale | esperimento | — |
 | [0066](0066-banco-v2-t28-cinque-linee.md) | 2026-10-04 | Banco v2 t28: Jurkat supera la regola su entrambe le baseline | esperimento | — |
+| [0067](0067-t36-banca-estesa-punteggio-ufficiale.md) | 2026-10-06 | t36: massimo osservato sulla banca estesa parziale | esperimento | — |

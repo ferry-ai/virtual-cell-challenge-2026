@@ -41,7 +41,7 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 | S-007 | Correzioni del transfer dai controlli medi (guadagni per gene, bilineare, rete sul pseudobulk) | nessun beneficio | ignoto | 2026-10-04 |
 | S-008 | Modelli appresi precedenti (encoder, cancelli, rete dei contesti, relazionale, rete sulle sorgenti, Stack A e B) | nessuno ha passato la sua regola | ignoto | 2026-10-04 |
 | S-009 | Ibrido selettivo D-056 v1: transfer congelato + correzione neurale regolarizzata + selettore fuori fold | regola di banco passata su 5 linee (CP-0062); sul sito t30 −0,005 contro il t25, non conclusivo e nessuna promozione (CP-0064); su 5 semi e 400 cellule il guadagno di banco è +0,013 di media e il fold esportato perde PDS (CP-0065) | ipotizzato | 2026-10-04 |
-| S-010 | Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25 | «più fonti meglio» su Jurkat e K562; nessun candidato di solo transfer ammesso (CP-0062) | ipotizzato | 2026-10-04 |
+| S-010 | Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25 | Banco storico positivo ma non ammesso; t36 ufficiale +0,002404 da t28, nuovo massimo descrittivo (CP-0067), stabilità non dimostrata | ipotizzato | 2026-10-06 |
 
 ## Voci
 
@@ -273,6 +273,8 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
   `reports/modelli/diagnosi_t30_2026-10-04/export_vs_rows.py`.
 
 ### S-010 — Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25
+
+- **Aggiornamento 6/10:** [CP-0067](checkpoints/0067-t36-banca-estesa-punteggio-ufficiale.md), [comparison t36](../reports/invii/prediction_t36_2026-10-06/comparison.json): transfer t25/emitter t28 su banca estesa parziale,0,147249 e +0,002404 da t28. Invio diretto autorizzato dal proprietario, senza banco comparativo o soglia numerica preregistrata. Nuovo massimo osservato, non prova stabile o attribuibile a una fonte. Meccanismo ancora **ipotizzato**. Il banco storico e il suo criterio qui sotto mantengono il loro perimetro; «nessun invio finora» si riferisce al4ottobre, non allo stato attuale. La lettura eseguibile read_t36_score.py vincola entry/pannello/ancore/media e vieta soglie inventate, non misura robustezza.
 
 - **Che cosa si è provato:** tre regole di fonti dello stesso transfer, con medie J e ampiezza t25:
   - `production`: le tabelle della ricetta inviata, senza la linea esclusa;
