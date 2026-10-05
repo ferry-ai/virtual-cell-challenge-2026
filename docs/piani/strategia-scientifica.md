@@ -1,5 +1,13 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **KOLF intero verificato, 5/10:** tutte le tre parti e unione dei conteggi
+  verificate in `snapshot_parts_r3/state.json`, 7,34 GB. HCT116 2/4 e HEK293T
+  2/6 verificati; tutti i job necessari già lanciati. [Dimensioni e limiti](../../reports/modelli/percorso_riusabile_2026-10-05/DIMENSIONI_r1.md).
+  Prossimo snapshot con `--previous snapshot_parts_r3/state.json`; non recuperare
+  di nuovo chiusure immutate. Quattro famiglie/15 contesti, circa 190 GB di
+  derivati previsti: blocco corrente, non catalogo completo. Integrare trainer e
+  altre linee; nessun avvio del training esteso ancora.
+
 - **HEK293T condivisa e ultime parti avviate, 5/10:** verificati tutti i nove
   input sui due account consumatori; quattro nuovi push accettati. Tutte le
   13 parti KOLF/HCT116/HEK293T lanciate, nessuna ancora da distribuire.
