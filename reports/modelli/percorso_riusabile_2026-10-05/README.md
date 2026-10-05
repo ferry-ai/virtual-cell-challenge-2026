@@ -1,6 +1,6 @@
 # Archivio, banca e trainer riutilizzabili
 
-**Stato operativo corrente:** [sette stime avviate](ESECUZIONE_r2.md) e
+**Stato operativo corrente:** [nove stime avviate, cinque verificate](ESECUZIONE_r3.md) e
 [copertura attesa congelata](ESECUZIONE_r1.md).
 Grok stessa sessione r5 prepara CD4 congiunto e mix esatto; parent esegue i lanci.
 Il modello completo e la copertura D-053 restano aperti. Le note r2/r3/r4 sotto

@@ -1,7 +1,7 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
-- **Esecuzione corrente, 5/10:** [sette stime su banca](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r2.md) e [copertura attesa](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).
-  Parent ha verificato sette push/RUNNING, tre già derived; restano frammenti per fonte, non mix
+- **Esecuzione corrente, 5/10:** [nove stime su banca](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r3.md) e [copertura attesa](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).
+  Parent ha verificato nove push/RUNNING, cinque già derived; restano frammenti per fonte, non mix
   esteso completo. Grok stessa sessione r5 corregge CD4 e uso di tutte le tabelle
   BIO, prepara mix identico e chiude adapter delle altre fonti idonee.
   Questo aggiornamento supera le assegnazioni r2/r3/r4 sotto. Copertura effettiva
