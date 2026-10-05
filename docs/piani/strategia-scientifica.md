@@ -1,5 +1,7 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Riuso dei dati:** [ingresso unico e procedura del prossimo training](../../reports/modelli/percorso_riusabile_2026-10-05/RIUSO_r1.md). Identità/versioni/hash, release congelata e ricevute di consumo; nessuna reingestione dei derivati compatibili.
+
 - **Priorità umana, 5/10:** [rifit e invio diretto autorizzati](../../reports/modelli/percorso_riusabile_2026-10-05/INVIO_DIRETTO_r1.md). Avviare appena eseguibile; generare e inviare senza attendere il banco comparativo. Supera il precedente divieto di invio della supervisione.
 
 - **Esecuzione corrente, 5/10:** [retry del mix dopo errore di avvio](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r11.md) e [copertura attesa](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).

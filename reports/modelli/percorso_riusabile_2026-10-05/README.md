@@ -1,133 +1,56 @@
-# Archivio, banca e trainer riutilizzabili
+# Archivio → banca pronta → training
 
-**Priorità umana aggiornata:** [rifit e invio VCC diretto autorizzati](INVIO_DIRETTO_r1.md), senza attendere il banco comparativo.
+**Ingresso unico per riuso:** [procedura del prossimo training](RIUSO_r1.md).
+**Stato e assegnazioni correnti:** [R-LEAD](../../../docs/piani/strategia-scientifica.md).
+**Rifit/invio in corso:** [retry del mix](ESECUZIONE_r11.md) e
+[invio diretto autorizzato](INVIO_DIRETTO_r1.md).
 
-**Stato operativo corrente:** [retry del mix dopo errore di avvio](ESECUZIONE_r11.md) e
-[copertura attesa congelata](ESECUZIONE_r1.md).
-Grok stessa sessione r8 prepara la predizione .vcc; parent segue l'unico retry del mix con H1 joint e KOLF pan.
-Il modello completo e la copertura D-053 restano aperti. Le note r2/r3/r4 sotto
-documentano passaggi precedenti, non l'assegnazione o lo stato attuale.
+## Quali dati usare
 
-[Esperimento richiesto: stesso transfer t28, solo banca ampliata](TRANSFER_IDENTICO_r1.md).
-Algoritmo/ricetta/emissione congelati, tutte le fonti possibili, confronto appaiato.
+| Livello | Riferimento | Che cosa certifica |
+|---|---|---|
+| Archivio grezzi, banche, campioni | [manifest storage r10](cloud_catalog_r10/manifest.json) | Account, versioni, file, hash e provenienza; non ammissione al fit |
+| Dimensioni e contesti disponibili | [dati r2](DATI_DISPONIBILI_r2.md) | 395,75 GB grezzi; storage e contesti distinti |
+| Copertura da riconciliare | [expected congelato](training_coverage_r1/expected.json) | Tutte le unità attese e fonti storiche; lacune da motivare |
+| Release del rifit corrente | [params congelati](extended_mix_launch_r2/vcc-effects-mix-t25-bank-r1-retry1/params.json) | Input specifici del primo mix esteso parziale; non tutto il catalogo |
+| Esecuzione del rifit | [ricevuta di lancio](extended_mix_launch_r2/vcc-effects-mix-t25-bank-r1-retry1.json) | Codice e parametri, account, alias del retry; non risultato scientifico |
+| Uso effettivo | `fit_receipt.json`, `source_manifest.json`, `checkpoint.json` del consumer concluso | Fonti realmente votanti, contributi, file e hash; ancora da recuperare per il rifit corrente |
 
-[Priorità training e prova cloud](PRIORITA_TRAINING_r1.md): prima release estesa
-appena lanciabile, design in parallelo; Grok stessa sessione r4. Hash originali
-Norman/iPSC e reader lineage Norman provati nel consumer Kaggle mx.
+Non scegliere dataset per titolo, data o nome più recente. Il manifest individua
+la versione e i byte. `rlead-bench-cube-r2` resta input del pilot, mai fallback.
+I dati storici utilizzabili restano nel catalogo: non si scartano per età.
 
-[Accelerazione del collegamento](ACCELERAZIONE_r1.md): Grok stessa sessione r3,
-pacchetti pronti al parent per i push; r2 uscita senza ricevute di lancio.
+## Riuso senza nuova ingestione
 
-**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r10/README.md),
-con manifest immutabile, account, versioni, hash e distinzione dai dataset storici.
-R10 chiude HIPSCI mirato19: banca e campioni verificati su 20 contesti BIO;
-622.353 cellule campionate al livello 128. Resta aperto K562 GWPS, snapshot r7.
-R9: HIPSCI genome-wide 24/24 e due unioni chiuse; Norman banca/campioni v1 e
-iPSC input v3 pubblici senza ricalcolo. K562 GWPS e HIPSCI mirato19 ancora aperti.
-Il percorso completo fino al consumo effettivo nel trainer non è ancora certificato.
-Grok continua nella stessa sessione in `agenti/grok_transfer_esteso_r2/`;
-la prima consegna r1 non è adottata: [difetto BIO riprodotto](GROK_REVIEW_r1.md).
-Include 15 banche verificate e 12 matrici campionate CD4 complete; le nuove parti
-HEK293T sono ora chiuse (6/6 e unione, snapshot_parts_r5); KOLF e HCT116 sono chiusi anche nei campioni.
-Include anche HepG2 e otto nuove chiusure banca/campioni verificate; il trainer resta aperto.
-[Prosecuzione e recuperi HIPSCI/Tian](PROSECUZIONE_r1.md) indica i ledger da seguire.
-[Redistribuzione sui tre account](PARALLELISMO_r3.md): due input HIPSCI ora pubblici,
-dieci nuovi push; usare il dispatcher condiviso e il recupero iPSC r4.
-Seconda ondata condivisa: un ulteriore push, 14/24 parti HIPSCI lanciate.
-Tutte le cinque unità Tian/Norman ora verificate in tian_resume_verified_r1.
-Nuovo stato r7: A549 chiusa e verificata; HIPSCI 24/24 parti avviate e 14/24
-verificate. Statistiche iPSC originali montabili nel dataset di input versione 3 ready.
-[Loop di ottimizzazione e confronto transfer](TRAINER_r1.md): integrazione reale
-dei reader verificata su fixture; catalogo/QC, feature congelate e lancio esteso aperti.
-Delega Grok esplicitamente autorizzata: `agenti/grok_transfer_esteso_r1/prompt.md`
-e `launch.json` conservano il mandato e la sessione. Preparazione del trainer in
-parallelo alla chiusura dati; fit sul corpus ammesso congelato, non aggiunte silenziose.
-Nuovo snapshot r8: SCP KO tre unità verificate; HIPSCI fitness 12/12 e unione,
-nonfitness 11/12 ancora aperta. K562 GWPS e HIPSCI mirato19 ancora attivi.
+Montare direttamente gli output salvati dei producer; non è obbligatorio il
+passaggio cloud → locale → cloud. Riutilizzare la banca a parità di input,
+asse, QC, codice e parametri. Un nuovo dataset aggiunge il proprio adattatore,
+banca/campioni e una nuova release globale; modifica dei soli derivati dipendenti
+se cambiano normalizzazione, ancore o split. [Procedura precisa](RIUSO_r1.md).
 
-**Non perdere né reingerire:** [17 archivi precedenti e nuova ingestione, 395,75 GB grezzi](DATI_DISPONIBILI_r2.md).
-Account, versioni e hash sono nel manifest; nessun fallback al cubo ridotto del pilot.
-[Lanci e ostacolo HIPSCI](PARALLELISMO_r2.md): 16 job CPU distinti accettati;
-i quattro Colab preparati sono sostituiti dai job Kaggle, non avviarli.
-Cinque archivi pubblici autorizzati e verificati; i nuovi output restano privati.
-[Stima del lotto e dimensioni](PROIEZIONE_r1.md), condizionata anche al recupero HIPSCI.
-La tabella dati r2 corregge le unità effettivamente presenti nei singoli dataset:
-le ricevute di ingestion possono nominare anche unità sorelle del medesimo job.
-`DATI_DISPONIBILI_r1.md` resta storico; usare r2.
+Non rilanciare i dispatcher delle campagne chiuse. Prima di rilanciare un
+fallimento, seguire il ledger e l'alias `supersedes_failed`; niente doppie voci.
+Le privacy modificate dopo r10 sono overlay con prove separate, non nuovi dati:
+[Norman/iPSC](cloud_catalog_r9/README.md), [CD4/K562](public_cd4_fragments_r1/consumer_verified.json),
+[KOLF pan](public_kolf_pan_r1/consumer_verified.json).
 
-Mandato del proprietario, 5 ottobre 2026: supervisionare la catena completa,
-conservare gli output su Kaggle e includere tutte le linee e i contesti idonei.
-Questo report contiene strumenti e verifiche operative; non dimostra un nuovo
-training né un miglioramento scientifico.
+## Portata del percorso
 
-## Evidenza e stato
+La banca è in gran parte persistente e verificata. Il modello richiesto resta
+[transfer t28, sola banca cambiata](TRANSFER_IDENTICO_r1.md). Il lineare consuma
+pseudobulk; le matrici cellulari campionate persistenti servono ad altri trainer,
+non entrano automaticamente in questo rifit. Un archivio di 395,75 GB non prova
+che un singolo fit li abbia usati tutti.
 
-- `snapshot_r6/state.json`: inventario con provenienza dei grezzi, chiavi dei
-  derivati per unità, output cloud e stato del collegamento al trainer. Le tre
-  banche D4 sono conservate nella versione privata 1 dei rispettivi notebook:
-  codice salvato uguale al lancio, versione stabile prima/dopo la lettura,
-  otto artefatti per unità presenti e manifest riconciliati alle cellule ingerite.
-  I file erano già stati scaricati e verificati integralmente nella campagna
-  precedente; qui si trasferiscono soltanto i piccoli manifest.
-- D1–D3: tre job CPU ancora in corso al controllo; gli output finali non sono
-  ancora certificati persistenti. `progress_r1.json` conserva il controllo dei log.
-- Tutte le 100 **voci**, non dataset distinti, del catalogo r4 sono conservate:
-  77 remote, 18 ingerite, 5 aggregate. Ruoli, alias e sottocontesti non ancora
-  riconciliati restano aperti; l'inventario non assegna esclusioni automatiche.
-  Le aggiunte successive al catalogo r4 vanno riconciliate prima del corpus finale:
-  questo snapshot non dichiara il catalogo completo.
-- `training_contract.py`: controlli riusabili su copertura, file montati e uso
-  effettivo; cinque fixture in `test_contract.py`. **Da collegare al nuovo
-  trainer**, non retroattivamente ai 18 fit aggregati conclusi.
-- Il training esteso resta esplicitamente `extended_training_ready=false`.
-  Mancano integrazione dei contesti oltre il pilot, campioni materializzati e
-  collegamento verificato al trainer. Un elenco di locatori non è una matrice
-  cellulare autonoma. Le riserve e gli split restano protetti.
+GWPS, adapter/QC e copertura del catalogo restano aperti. Il percorso completo
+non è certificato finché mancano consumo effettivo, generazione e risultati.
+Manifest o script esistenti, da soli, non sono prova end-to-end.
 
-## Persistenza e riuso
+## Evidenze precedenti
 
-I job scrivono sotto `/kaggle/working`; la versione salvata conserva gli output,
-che si possono montare come input dei consumatori. Fonte:
-[documentazione Kaggle](https://www.kaggle.com/docs/notebooks).
-Il percorso su `/kaggle/working` durante un'esecuzione attiva, da solo, non è
-prova di persistenza. La supervisione controlla conclusione e recuperabilità.
-Non cancellare né riutilizzare gli slug dei produttori verificati. Registrare
-versione, codice e hash dei file; controllare gli stessi hash nel consumatore.
-Le copie locali sono facoltative, non un passaggio obbligatorio cloud–locale–cloud.
-L'accesso dal diverso account del trainer richiede ancora verifica sul runtime.
-
-Un nuovo dataset richiede **solo** acquisizione/adattamento della nuova sorgente,
-banca per i nuovi contesti, campioni e aggiornamento del manifest del corpus.
-Non si ricostruiscono le vecchie banche se input, QC, asse dei geni, codice e
-parametri sono identici. La chiave del derivato contiene codice congelato e
-specifica della singola unità; aggiungere altre unità al job non la cambia.
-Se cambia QC, asse o stimatore, si rigenerano i soli derivati dipendenti.
-Le ancore combinate e la preparazione degli split possono cambiare aggiungendo
-sorgenti; si versionano separatamente, senza riscrivere le banche di base.
-Il modello va aggiornato e rivalutato: un resume compatibile non è garantito da
-questa persistenza e non sostituisce la validazione di nuovi dati/split.
-
-## Comandi e condizioni di chiusura
-
-`pipeline_state.py --remote --out <nuova-cartella-nella-repo>` rilegge lo stato
-dei job già autorizzati, scarica solo manifest di completamento e produce uno
-snapshot nuovo. Non lancia, cancella, ricostruisce né scarica matrici.
-`training_contract.py` deve essere chiamato dal nuovo trainer prima del fit e
-prima dell'accettazione; il manifest adottato deve elencare tutti i contesti
-idonei con asse, artefatti, ruolo, target e strati. Le ricevute dell'uso vengono
-dai dati letti e dalla loss, non copiate dall'elenco degli input.
-
-La supervisione ogni 30 minuti è aggiornata: chiusura solo dopo verifica del
-percorso intero, copertura del catalogo, training esteso e valutazione t28.
-Un nuovo dataset viene aggiunto al manifest, mai escluso per volume, comodità
-o scarso overlap. Qualità, duplicazioni, incompatibilità e riserve hanno
-motivazione verificabile; un adapter mancante resta un lavoro da completare.
-
-Tentativi tecnici conservati: r1 si è fermato su conversione percorso relativo
-in assoluto (corretta); r2 ha verificato gli output senza numero di versione;
-r3 ha ricevuto 404 usando `version_label` numerico per ListKernelSessionOutput.
-r4 usa l'endpoint funzionante e verifica stabilità della versione prima/dopo
-la lettura. r5 ha fermato la guardia sul codice locale per terminatori CRLF:
-il lanciatore originale calcola lo SHA sul testo LF prima della scrittura Windows;
-r6 applica lo stesso contratto e aggiunge le chiavi indipendenti per unità.
-Nessun job cloud è stato rilanciato per questi controlli.
+[Indice precedente conservato integralmente](README_storia_r1.md) contiene la
+cronologia; non usarne stati, PID o comandi come istruzioni correnti.
+[Reader e trainer neurale su fixture](TRAINER_r1.md) documenta un'altra integrazione:
+non è il launcher del transfer lineare corrente.
+[Prove del pooling corretto](GROK_REVIEW_r6.md), [H1 joint e primo mix](ESECUZIONE_r10.md),
+[chiusure e accessi KOLF](ESECUZIONE_r9.md).
