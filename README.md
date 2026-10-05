@@ -1,10 +1,10 @@
 # Virtual Cell Challenge 2026
 
-**DATA ARCHIVE — REUSE, DO NOT REINGEST:** [current dataset index, versions and hashes](reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r10/README.md)
-and [available data, contexts and GB](reports/modelli/percorso_riusabile_2026-10-05/DATI_DISPONIBILI_r2.md).
+**DATA ARCHIVE — REUSE, DO NOT REINGEST:** [current dataset index, versions and hashes](reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r11/manifest.json)
+and [verified selection, data and remaining gaps](reports/analisi/riconciliazione_banca_2026-10-05/README.md).
 The main path is verified archive → reusable banks and cell samples → extended training.
 **Next training — reuse the existing bank:** [single entry point and reuse procedure](reports/modelli/percorso_riusabile_2026-10-05/README.md).
-**Training coverage is tracked separately:** [all expected inputs, frozen](reports/modelli/percorso_riusabile_2026-10-05/training_coverage_r1/expected.json).
+**Training coverage is tracked separately:** [all expected inputs, frozen](reports/analisi/riconciliazione_banca_2026-10-05/frozen/expected_r3.json).
 Archived GB and launched jobs do not certify that every context contributed to a fitted model.
 
 **Start here:** agents read [CLAUDE.md](CLAUDE.md), then

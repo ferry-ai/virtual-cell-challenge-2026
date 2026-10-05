@@ -1,0 +1,400 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-05T20:22:45.235518+00:00",
+  "scope": "partial production transfer; not complete catalogue or held-out validation",
+  "storage": {
+    "path": "reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r10/manifest.json",
+    "sha256": "7134c13c741e04b1bb90b15f42afd2a50e653454aca17e49005edcad6f2e7fdf"
+  },
+  "coverage": {
+    "path": "reports/analisi/riconciliazione_banca_2026-10-05/frozen/expected_r2.json",
+    "sha256": "54e9d5107282f2aeaab8ca7d78dca5d24c6333837453c0af7234eed5fd3c128e",
+    "units": [
+      "D1_Rest",
+      "D1_Stim48hr",
+      "D1_Stim8hr",
+      "D2_Rest",
+      "D2_Stim48hr",
+      "D2_Stim8hr",
+      "D3_Rest",
+      "D3_Stim48hr",
+      "D3_Stim8hr",
+      "D4_Rest",
+      "D4_Stim48hr",
+      "D4_Stim8hr",
+      "a549_ko",
+      "datlinger2017",
+      "datlinger2021",
+      "dixit2016_d13",
+      "dixit2016_d7",
+      "dixit2016_high_moi",
+      "frangieh2021",
+      "h1_train",
+      "h1_val",
+      "hepg2_nadig",
+      "hipsci_gw_fitness",
+      "hipsci_gw_nonfitness",
+      "hipsci_targeted_19",
+      "jurkat_nadig",
+      "k562_essential",
+      "kolf_chromatin",
+      "kolf_metabolic",
+      "kolf_pan_genome",
+      "kolf_strong",
+      "norman2019",
+      "orion_hct116",
+      "orion_hek293t",
+      "papalexi2021_arrayed",
+      "rpe1",
+      "shifrut2018",
+      "sunshine2023",
+      "tian2019_ipsc",
+      "tian2019_neuron",
+      "tian2021_crispra",
+      "tian2021_crispri",
+      "xu2023"
+    ]
+  },
+  "consumer": {
+    "job": "davideferrante11/vcc-effects-mix-t25-bank-r1-retry1",
+    "version": 1,
+    "launch_receipt": "reports/modelli/percorso_riusabile_2026-10-05/extended_mix_launch_r2/vcc-effects-mix-t25-bank-r1-retry1.json",
+    "code_sha256": "c12314fdb1e9c6cb2d826adcb208d70d16d81c4cddd69f9f94213eb984226694",
+    "params_sha256": "894fa692fd9d4e234ee91ebd0d4b848414aae2a7f734112bf4d1a390e63c6657",
+    "mounted_producers": [
+      "davideferrante11/vcc-effects-cd4-rest-joint-r5",
+      "davideferrante11/vcc-effects-cd4-stim48hr-joint-r5",
+      "davideferrante11/vcc-effects-cd4-stim8hr-joint-r5-retry1",
+      "davideferrante11/vcc-effects-hepg2-nadig-r4",
+      "davideferrante11/vcc-effects-jurkat-nadig-r4",
+      "davidmaisterx/vcc-effects-k562-essential-r4",
+      "davideferrante11/vcc-effects-kolf-chromatin-r4",
+      "davideferrante11/vcc-effects-kolf-metabolic-r4-retry1",
+      "davideferrante11/vcc-effects-kolf-strong-r4-retry1",
+      "davideferrante11/vcc-effects-orion-hct116-r4",
+      "davideferrante11/vcc-effects-orion-hek293t-r4",
+      "davideferrante11/vcc-effects-rpe1-r4",
+      "davideferrante11/vcc-effects-h1-joint-r7",
+      "davidmaisterx/vcc-effects-kolf-pan-genome-r4-access1"
+    ],
+    "failed_aliases": [
+      {
+        "old": "davideferrante11/vcc-effects-kolf-metabolic-r4",
+        "new": "davideferrante11/vcc-effects-kolf-metabolic-r4-retry1",
+        "receipt": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-kolf-metabolic-r4-retry1.json"
+      },
+      {
+        "old": "davidmaisterx/vcc-effects-kolf-pan-genome-r4",
+        "new": "davidmaisterx/vcc-effects-kolf-pan-genome-r4-access1",
+        "receipt": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-kolf-pan-genome-r4-access1.json"
+      },
+      {
+        "old": "davideferrante11/vcc-effects-kolf-strong-r4",
+        "new": "davideferrante11/vcc-effects-kolf-strong-r4-retry1",
+        "receipt": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-kolf-strong-r4-retry1.json"
+      },
+      {
+        "old": "davideferrante11/vcc-effects-cd4-stim8hr-joint-r5",
+        "new": "davideferrante11/vcc-effects-cd4-stim8hr-joint-r5-retry1",
+        "receipt": "reports/modelli/percorso_riusabile_2026-10-05/cd4_joint_launch_r1/vcc-effects-cd4-stim8hr-joint-r5-retry1.json"
+      },
+      {
+        "old": "davideferrante11/vcc-effects-mix-t25-bank-r1",
+        "new": "davideferrante11/vcc-effects-mix-t25-bank-r1-retry1",
+        "receipt": "reports/modelli/percorso_riusabile_2026-10-05/extended_mix_launch_r2/vcc-effects-mix-t25-bank-r1-retry1.json"
+      }
+    ]
+  },
+  "model": {
+    "registered_sources": [
+      "cd4_mix",
+      "hepg2_nadig",
+      "jurkat_nadig",
+      "k562_essential",
+      "kolf_chromatin",
+      "kolf_metabolic",
+      "kolf_pan_genome",
+      "kolf_strong",
+      "orion_hct116",
+      "orion_hek293t",
+      "rpe1",
+      "h1"
+    ],
+    "sources_with_panel_targets": [
+      "cd4_mix",
+      "kolf_chromatin",
+      "kolf_metabolic",
+      "kolf_pan_genome",
+      "kolf_strong",
+      "orion_hct116",
+      "orion_hek293t",
+      "h1"
+    ],
+    "panel_targets": 300,
+    "baseline_sources": [
+      "cd4_mix",
+      "k562",
+      "orion_hct116",
+      "orion_hek293t"
+    ],
+    "baseline_sources_missing": [
+      "k562"
+    ],
+    "strict_baseline_plus_additions": false,
+    "same_algorithm_equivalence_complete": false,
+    "cache_hashes_to_verify_in_consumer": [
+      {
+        "path": "cache/cd4_Rest.npz",
+        "sha256": "5e350d5ac4aa94a0b5d77a7ccb57309f3b3f6ae33248f0bc228ee19680bcf127",
+        "bytes": 39553095
+      },
+      {
+        "path": "cache/cd4_Stim48hr.npz",
+        "sha256": "797c4ab280a216829a3888e836b1e41c4d3ba8a2333306613b548e168f5a29e4",
+        "bytes": 40252933
+      },
+      {
+        "path": "cache/cd4_Stim8hr.npz",
+        "sha256": "55cb086aee50e445b5e25972c84a28cb9a8b44168b28f5ac6d2078fdbbbd8d41",
+        "bytes": 39267438
+      },
+      {
+        "path": "cache/cd4_mix.npz",
+        "sha256": "ccde53b7546e5138447fee8b27ff6a98d3abb7b48f0d330fa3962f1c8c3b5ec6",
+        "bytes": 28086110
+      },
+      {
+        "path": "cache/h1.npz",
+        "sha256": "672e36e33006668752cd45a1f2ddc46950b4fe8e0e98e06ad583323f0df563f0",
+        "bytes": 2674274
+      },
+      {
+        "path": "cache/hepg2_nadig.npz",
+        "sha256": "f0deff3c55e9df28b02888263f2e4699250b5871adc5cd0a337c0402c423881b",
+        "bytes": 12477
+      },
+      {
+        "path": "cache/jurkat_nadig.npz",
+        "sha256": "6d458e589897f650e16cf1a2a6ed0dee9a86df4f3ebb0117b9783e176396ca1a",
+        "bytes": 12495
+      },
+      {
+        "path": "cache/k562_essential.npz",
+        "sha256": "510dec23350f3ce66de73eef348a400d0be3af595a1e53f61a0c42fdf548b08f",
+        "bytes": 11290
+      },
+      {
+        "path": "cache/kolf_chromatin.npz",
+        "sha256": "3e86712081806dbd8ef31c63f9c4a2f0f87bc44c1f1e7a37c0688f0cc733b257",
+        "bytes": 1378608
+      },
+      {
+        "path": "cache/kolf_metabolic.npz",
+        "sha256": "87e97c898397fed4ed9f83a9a6f3f72f64b349e09b0fff602a965fd5e317c6f9",
+        "bytes": 690002
+      },
+      {
+        "path": "cache/kolf_pan_genome.npz",
+        "sha256": "22a25eaf4412b9d0b29c4c78447aa685480493322899df4b397c0afb829ccdbd",
+        "bytes": 45805643
+      },
+      {
+        "path": "cache/kolf_strong.npz",
+        "sha256": "62f2da7d7f3a0cb10f73d5006c0b03a060967bf30c9ee7da2ebdd5a7ca839515",
+        "bytes": 8464153
+      },
+      {
+        "path": "cache/orion_hct116.npz",
+        "sha256": "912bf0c397ca9b2196e99dae25a60ea3a90c1601151c27767c913bda21301b02",
+        "bytes": 43808159
+      },
+      {
+        "path": "cache/orion_hek293t.npz",
+        "sha256": "afe6c06a539961a424ebbfca41f8ec68dff051cf6b43f1e3494f9e664c115005",
+        "bytes": 47684474
+      },
+      {
+        "path": "cache/rpe1.npz",
+        "sha256": "89c0d24054382833c43c0620ed9302b02f944ad51b4886ff5861641c5013b5da",
+        "bytes": 12490
+      },
+      {
+        "path": "effects.npz",
+        "sha256": "fa125337c4a71fccf4a777c72cf1f6d37e55ef0043342e6dafe77a568dbae199",
+        "bytes": 39651375
+      }
+    ],
+    "usable_export": true
+  },
+  "raw_archives": [
+    {
+      "dataset": "davidmaisterx/rlab-a549",
+      "version": 1,
+      "bytes": 7652347277,
+      "units": [
+        "a549_ko"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-h1-vcc2025-trainval",
+      "version": 1,
+      "bytes": 6383674844,
+      "units": [
+        "h1_train",
+        "h1_val"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-hepg2-nadig",
+      "version": 1,
+      "bytes": 1332075491,
+      "units": [
+        "hepg2_nadig"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-hipsci-targeted19",
+      "version": 1,
+      "bytes": 13030135370,
+      "units": [
+        "hipsci_targeted_19"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-jurkat-nadig",
+      "version": 1,
+      "bytes": 2040433751,
+      "units": [
+        "jurkat_nadig"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-k562-essential-r2",
+      "version": 1,
+      "bytes": 2471546599,
+      "units": [
+        "k562_essential"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-k562-gwps-r3",
+      "version": 1,
+      "bytes": 13972553227,
+      "units": [
+        "k562_gwps_a",
+        "k562_gwps_b"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-rpe1-r2",
+      "version": 1,
+      "bytes": 1947262556,
+      "units": [
+        "rpe1"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-scp-k562-hek",
+      "version": 1,
+      "bytes": 1105237775,
+      "units": [
+        "dixit2016_d13",
+        "dixit2016_d7",
+        "dixit2016_high_moi",
+        "xu2023"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-scp-ko",
+      "version": 1,
+      "bytes": 2488013357,
+      "units": [
+        "frangieh2021",
+        "papalexi2021_arrayed",
+        "sunshine2023"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-scp-tcells",
+      "version": 1,
+      "bytes": 343314942,
+      "units": [
+        "datlinger2017",
+        "datlinger2021",
+        "shifrut2018"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-tian-norman",
+      "version": 1,
+      "bytes": 2090999463,
+      "units": [
+        "norman2019",
+        "tian2019_ipsc",
+        "tian2019_neuron",
+        "tian2021_crispra",
+        "tian2021_crispri"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-hipsci-gwfit",
+      "version": 1,
+      "bytes": 4163416551,
+      "units": [
+        "hipsci_gw_fitness"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-hipsci-gwnonfit",
+      "version": 1,
+      "bytes": 4986913999,
+      "units": [
+        "hipsci_gw_nonfitness"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-jurkat-gse249595",
+      "version": 1,
+      "bytes": 2410504245,
+      "units": [
+        "GSM7951413_channel1",
+        "GSM7951414_channel2",
+        "GSM7951415_channel3",
+        "GSM7951416_channel4",
+        "GSM7951417_channel5",
+        "GSM7951418_channel6",
+        "GSM7951419_channel7",
+        "GSM7951420_channel8",
+        "GSM7951421_channel9",
+        "GSM7951422_channel10",
+        "GSM7951423_channel11",
+        "GSM7951424_channel12",
+        "GSM7951425_channel13",
+        "GSM7951426_channel14",
+        "GSM7951427_channel15",
+        "GSM7951428_channel16"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-kolf-small",
+      "version": 1,
+      "bytes": 1592314240,
+      "units": [
+        "kolf_chromatin",
+        "kolf_metabolic"
+      ]
+    },
+    {
+      "dataset": "davidmaisterx/rlab-kolf-strong",
+      "version": 1,
+      "bytes": 1572742316,
+      "units": [
+        "kolf_strong"
+      ]
+    }
+  ],
+  "fallback_to_legacy": false,
+  "claims_complete_training": false,
+  "claims_complete_corpus": false,
+  "source_identity_rule": "version+bytes+axis+QC+code+parameters; age/title do not select inputs"
+}

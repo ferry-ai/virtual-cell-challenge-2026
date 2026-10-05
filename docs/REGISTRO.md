@@ -55,6 +55,13 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 | Percorso | Stato | Sostituito da | Cosa resta utile / nota | Scheda |
 |---|---|---|---|---|
+| `reports/analisi/riconciliazione_banca_2026-10-05/` | attuale | — | Verifica metadata, versioni/hash/mount, ledger storico recuperato, byte Git e limiti del consumo; nessuna certificazione di corpus completo | [R-LEAD](piani/strategia-scientifica.md) |
+| `docs/storico/consolidamento_banca_2026-10-05/` | storico | `docs/piani/strategia-scientifica.md` | Quattro guide complete e byte-identiche prima del consolidamento; manifest dei file originali | — |
+| `reports/modelli/percorso_riusabile_2026-10-05/DATI_DISPONIBILI_r2.md` | da-verificare | — | Dimensioni datate utili; note su training non avviato superate, GB storage non uso del fit | [R-024](#r-024--identità-della-banca-ledger-congelati-e-stato-del-rifit) |
+| `reports/modelli/percorso_riusabile_2026-10-05/TRAINER_r1.md` | storico | `reports/modelli/percorso_riusabile_2026-10-05/RIUSO_r2.md` | Reader neurali e fixture, non launcher lineare corrente; divieti e stato datati non operativi | — |
+| `reports/modelli/percorso_riusabile_2026-10-05/TRANSFER_IDENTICO_r1.md` | da-verificare | — | Identità t25/t28 valida; no-VCC superato dal mandato umano INVIO_DIRETTO, senza cambiare ricetta | [R-024](#r-024--identità-della-banca-ledger-congelati-e-stato-del-rifit) |
+| `reports/modelli/percorso_riusabile_2026-10-05/RIUSO_r1.md` | superato | `reports/modelli/percorso_riusabile_2026-10-05/RIUSO_r2.md` | Procedura utile, vecchio inventario vincola un ledger operativo mutato; r2 usa la copia storica byte-identica | [R-024](#r-024--identità-della-banca-ledger-congelati-e-stato-del-rifit) |
+| `reports/modelli/percorso_riusabile_2026-10-05/training_coverage_r1/expected.json` | superato | `reports/analisi/riconciliazione_banca_2026-10-05/frozen/expected_r2.json` | Inventario originale preservato; r2 conserva copertura e corregge soltanto il riferimento al ledger congelato | [R-024](#r-024--identità-della-banca-ledger-congelati-e-stato-del-rifit) |
 | `reports/analisi/pezzi_adottabili_2026-10-05/` | attuale | — | Catalogo del 5/10 dei pezzi copiabili nel residuo ancorato: equazioni riaperte in stesura, correzioni ai rapporti Antigravity (l'arXiv 2007.02747 non è PLE), testi integrali in agenti/. Nessun innesto, training o score | [R-LEAD](piani/strategia-scientifica.md) |
 | `reports/analisi/gears_nella_rete_2026-10-04/` | attuale | — | GEARS a commit fisso: studio di fonti primarie, audit della loss e del flusso dei dati; prototipo a grafo condizionato dal contesto collegato su fixture alla CellNet D-056. Nessun training o beneficio biologico misurato | [R-LEAD](piani/strategia-scientifica.md) |
 | `reports/analisi/prossimo_ibrido_2026-10-04/` | attuale | — | Codex: consegna Claude1 e piano proposto post-t30, audit leggero dei QC del pilot, esclusione di contesto sotto 30 controlli riprodotta su fixture, ricalcolo dello score dagli status, fonti primarie 2025. Nessun nuovo training né modifica al prepasso; corpus ampliato ancora da certificare | [R-LEAD](piani/strategia-scientifica.md) |
@@ -72,7 +79,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/trasferimento/fonti_transfer_2026-10-04/` | attuale | — | Confronto delle fonti del transfer (sessione 2b35612c): `transfer_cells_J` e `transfer_all_J` contro `transfer_prod_J` sui sei membri di Jurkat e K562, linee che non hanno dato l'indizio di H1 e HepG2; regola e condizioni di un invio di solo transfer congelate prima delle uscite | [R-LEAD](piani/strategia-scientifica.md) |
 | `reports/generatore_e_banchi/banco_v2_2026-10-04/` | attuale | — | Banco v2 (sessione ba9b8bcb): strumento per differenze appaiate su più semi con la numerosità dell'invio e flusso casuale per blocco, emissione t25 o t28; test senza scorer passati, nessuna esecuzione su dati veri e nessun risultato | — |
 | `reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/` | attuale | — | Subentro Codex: CD4 12/12 verificata; cinque banchi CPU t28 completati e ricevute verificate. ESITO_BANCO_V2 e decisione_r1: favorevoli 4/5 su all, solo Jurkat su prod; PDS negativo HepG2 su entrambe e RPE1 su prod. Pilot diagnostico, nessuna promozione | [R-LEAD](piani/strategia-scientifica.md) |
-| `reports/modelli/percorso_riusabile_2026-10-05/` | attuale | — | Storage r10: 395,75 GB grezzi, HIPSCI inclusa; banco persistente, K562 GWPS ancora aperto. Undici sourcefit e tre joint CD4 verificati; H1 joint r7 derivato. Primo mix esteso parziale avviato con KOLF pan pubblico, consumo da verificare. Grok stessa sessione r8 prepara generazione .vcc; invio diretto autorizzato senza banco comparativo. Catalogo completo/QC e valutazione restano aperti | [R-LEAD](piani/strategia-scientifica.md) |
+| `reports/modelli/percorso_riusabile_2026-10-05/` | attuale | — | Storage r10 e producer persistenti; mix parziale concluso 12 fonti/8 sul pannello. Grok r10 unico worker. Cache K562 byte-identico e controlli caricati con consenso specifico; guardia SE blocca consumer, adapter originale da ripristinare prima del freeze23:30. Corpus completo/consumer/hash/QC restano aperti | [R-LEAD](piani/strategia-scientifica.md) |
 | `reports/modelli/ibrido_esecuzione_2026-10-04/` | attuale | — | Banca CD4 e preparazione di tre fold CPU su tre account; catena del primo fit GPU. Campagna in corso, primo cohort aggregato non completo; nessuna promozione | [R-LEAD](piani/strategia-scientifica.md) |
 | `reports/modelli/ibrido_pseudobulk_2026-10-04/` | attuale | — | Mandato e componenti dell'ibrido semplice. Esecuzione successiva in ibrido_esecuzione_2026-10-04; integrazione del corpus completo ancora aperta | [R-LEAD](piani/strategia-scientifica.md) |
 | `docs/checkpoints/0066-banco-v2-t28-cinque-linee.md` | attuale | — | Esito preregistrato banco v2 t28: 4/5 favorevoli su all, 1/5 su prod; Jurkat unica su entrambe, rumore del generatore a fit e verità fissi | — |
@@ -102,7 +109,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `docs/storico/PROGETTO_direzione_2026-09-30.md` | storico | — | Apertura della direzione generale del 30/09, sostituita il 1/10 con D-050/CP-0053; testo conservato salvo i link | — |
 | `reports/analisi/lead_audit_2026-10-01/` | attuale | — | Revisione lead con nuove misure riproducibili: split r5/r7, replay di 50.172 batch r2, controesempi unknown/basale/ruoli pre-QC, controlli per libreria e lettura integrale HepG2. Consegna tecnica e D-050; post hoc, nessuna conferma VCC né modifica al training concorrente | — |
 | `reports/analisi/lead_audit_2026-10-01/VERIFICHE.md` | storico | — | Fotografia dei check nel sandbox: errori di import osservati confermati, ma non provano che il pacchetto sia assente dalla macchina. CP-0054 e la scheda collegata documentano 287 test passati nello stesso Python fuori dal sandbox | [Correzione scorer](../reports/analisi/handoff_teammate_2026-10-01/VERIFICHE.md#correzione-scorer) |
-| `docs/piani/strategia-scientifica.md` | attuale | — | R-LEAD rivisto il 2/10 (D-052): P0 fattibilità, P1 split, P2 banco, P3 confronto semplice del contesto, P4 estensione motivata, P5 conferma, P6 finale. Destinatario Claude; implementazione nuova non iniziata | — |
+| `docs/piani/strategia-scientifica.md` | attuale | — | Coda unica del 5/10: banca persistente, rifit lineare t28 e invio diretto autorizzato; stati/PID precedenti conservati nello storico, nessun nuovo worker dichiarato | — |
 | `reports/sorgenti/corpus_cellulare_2026-09-30/` | attuale | — | Inventari successivi, contratti, QC, shard, adattatori e job; sorgenti usate nei training cellulari r1–r3. Le vecchie code Colab sono fotografie datate; catalogo, presenza e uso dopo QC sono distinti. Leggere README e manifest della versione effettiva, disponibilità sul destinatario da verificare | — |
 | `reports/sorgenti/archivio_cloud_2026-10-02/` | attuale | — | Migrazione dei dati pesanti al cloud del 2/10: inventario per file fisico, specchio su Drive con ricevute, verifiche lato Kaggle e su Colab, copie locali eliminabili solo col via del proprietario, piano d'ingestione. In corso alla prima scrittura; lo stato pesante sta in `processed/archivio_cloud_2026-10-02/` della radice dati | — |
 | `reports/modelli/cellnet_terza_ondata_2026-10-01/` | attuale | — | Protocollo tecnico del quarto training, terza ondata e floor pi. Nessun esito registrato; il prossimo job si decide tramite R-LEAD dopo t29, non automaticamente alla riapertura della quota. Non contiene il banco a sei membri richiesto per un altro invio neurale | — |
@@ -1275,6 +1282,23 @@ il suo consenso esplicito:
 | `.runtime-deps/` | Dipendenza di runtime installata per la sola sonda Orion; ignorata da git e reinstallabile | **Eseguito il 23 settembre**: spostata nel Cestino di Windows (D-040) |
 | `C:/Users/ferra/vcc2026-data/predictions/smoke.h5ad` (43 MB) | Prova di formato del writer, già superata dal fatto che `vcc prep` ha validato — **quest'ultima giustificazione non è sostenuta da nessun artefatto**: non esiste un log di `vcc prep` prima del 2026-09-12, e misurato il 2026-09-12 `vcc prep` **rifiuta** un file con meno delle 300 perturbazioni ufficiali (`reports/invii/trial_2026-09-12/`, log del pilot), quindi non può aver validato un file da 3 perturbazioni senza `--no-verify-targets`. Vedi [CP-0004](checkpoints/0004-primo-trial-locale-e-pacchetti.md) §7. Il file resta un candidato alla pulizia per il motivo originale — è una prova di formato — non per quello smentito | **Eseguito il 23 settembre**: spostato nel Cestino |
 | Sonde remote in `reports/storico/candidate_verification/*.json` | Alcune sono grandi e sono fotografie datate di endpoint pubblici | Mai cancellare quelle citate nei documenti: sono l'unica prova di cosa si vedeva a quella data |
+
+### R-024 — Identità della banca, ledger congelati e stato del rifit
+
+- **Perché è segnalato:** inventario r1 riferiva un ledger operativo successivamente ampliato;
+  alcuni report del 5/10 conservano stati/PID precedenti e il vecchio no-VCC.
+- **Affermazioni contestate:** che un indice storage sia un corpus consumato; che note
+  «training non iniziato» o divieti datati siano la coda corrente; che il ledger vivo
+  conservi per sempre i byte vincolati dall'inventario precedente.
+- **Evidenza contraria:** [riconciliazione](../reports/analisi/riconciliazione_banca_2026-10-05/README.md),
+  verifica dei pin, copie storiche byte-identiche e autorizzazione INVIO_DIRETTO.
+- **Cosa resta valido:** dimensioni datate, identità della ricetta e prove dei vecchi fit;
+  storico preservato, nessuna fonte scartata per età.
+- **È ancora usato o citato:** sì, come provenienza. Per agire R-LEAD, RIUSO r2 e expected r2.
+- **Disposizione proposta:** inventario r1/riuso r1 superati dai riferimenti congelati r2;
+  note datate da verificare contro R-LEAD, non riscritte negli originali.
+- **Cosa chiuderebbe la revisione:** percorso completo e consumo di tutte le unità ammesse
+  provati nel runtime; la sola verifica documentale non chiude D-053.
 
 Controllo automatico della coerenza del registro:
 

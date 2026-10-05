@@ -10,73 +10,21 @@ cambia una conclusione. Il testo tolto resta in `docs/storico/`: le
 [§0, §6 e §7 del 30/09 mattina](storico/PROGETTO_sezioni_0_6_7_2026-09-30.md), il
 §0 del 3/10 sera nel [consolidamento](storico/consolidamento_2026-10-03/INDICE.md).
 
-## 0. Oggi — 4 ottobre 2026, l'ibrido D-056 passa il banco ma il t30 non migliora il t25
+## 0. Oggi — 5 ottobre 2026, banca persistente e rifit sul riferimento originale
 
-**Il riferimento resta la ricetta t22**, quattro sorgenti a peso uguale (K562 GWPS, CD4 in tre stati, HCT116,
-HEK293T) con lo stimatore t25 corretto; t22/t24 danno una media osservata di **0,14207**; il massimo è t28,
-**0,144845**, non conclusivo ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)). Il t29, rete r2 `desc` al posto
-del transfer, è negativo ([CP-0055](checkpoints/0055-t29-rete-cellulare-punteggio.md)). Punteggi:
-[indice degli invii](../reports/invii/README.md).
+**Riferimento ufficiale:** transfer t25 con emissione t28, massimo osservato **0,144845**, non conclusivo ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)). Il proprietario chiede lo stesso modello su banca ampliata; design neurale successivo distinto. Stato, assegnazioni e autorizzazioni correnti solo in [R-LEAD](piani/strategia-scientifica.md).
 
-**Un solo piano operativo, [R-LEAD](piani/strategia-scientifica.md), su due binari (D-054).**
-**Direzione dal 4/10 ([D-056](DECISIONI.md#d-056--transfer-con-correzione-neurale-selettiva)):**
-transfer congelato e correzioni neurali pesate da un selettore di beneficio validato; in assenza di evidenza,
-ritorno al transfer.
+**Dati:** circa 395,75 GB grezzi conservati, 45 unità storage censite. [Ingresso unico riconciliato](../reports/analisi/riconciliazione_banca_2026-10-05/README.md) distingue archivio, banca, campioni, ammissione e consumo. Campioni persistenti non significano training cellulare: il transfer usa pseudobulk. Il vincolo [D-053](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile) resta aperto per catalogo completo, adapter/QC e uso effettivo.
 
-- **Modello.** L'**ibrido selettivo D-056 v1** passa le regole congelate sia in sviluppo (H1, HepG2, RPE1) sia in
-  conferma (Jurkat e K562): T + w · R batte il transfer sui sei membri locali in cinque linee escluse su cinque
-  (+0,006…+0,074). Il punteggio di banco del §9 è 0,134 contro 0,090 del transfer
-  ([CP-0062](checkpoints/0062-d056-ibrido-selettivo-esito-banco.md), [S-009](STRADE.md)). È la prima rete sulle
-  cellule che migliora il transfer su linee escluse, con un seme e un corpus pilot a 8 gruppi; in scala locale, non
-  sul sito. Il **t30** (effetti t25 + w · R della rete del fold HepG2) vale **0,135249**, −0,004989 contro il t25:
-  ramo b della regola registrata, non conclusivo e non un miglioramento; perde PDS (−0,042 scalato)
-  ([CP-0064](checkpoints/0064-t30-ibrido-selettivo-punteggio-ufficiale.md)). Il banco non aveva valutato il candidato inviato: baseline diversa, correzione per due
-  terzi comune ai bersagli e più ampia all'esportazione, perdita di PDS già visibile sul fold esportato. La causa non
-  è isolata ([diagnosi](../reports/modelli/diagnosi_t30_2026-10-04/README.md)); il v1 non è un candidato per D/E/F. Rifatto su 5 semi e 400 cellule
-  per bersaglio, il guadagno di banco è +0,013 di media (non +0,044), e il fold esportato perde PDS in modo netto
-  ([CP-0065](checkpoints/0065-d056-confronti-e-rumore-del-banco.md)). Il banco v2 t28 a 400 cellule × 5 semi è ora concluso:
-  superano la regola con guardia PDS 4/5 linee su all, solo Jurkat su prod; HepG2 perde PDS su entrambe,
-  RPE1 su prod ([CP-0066](checkpoints/0066-banco-v2-t28-cinque-linee.md)). Diagnosi su linee già di sviluppo, nessuna promozione. Il pilot v4
-  (correzione libera) resta negativo ([CP-0061](checkpoints/0061-pilot-v4-esito-tre-linee.md)).
-- **Fonti del transfer:** su Jurkat e K562 più tabelle aggregate battono le fonti della ricetta (+0,07…+0,14 locali).
-  Nessun candidato di solo transfer è ammesso, perché il banco di quelle due linee è sotto 0,100 ([S-010](STRADE.md)).
-- **Dati, mandato non negoziabile D-053:** tutte le linee e i contesti idonei entrano nel percorso principale,
-  qualunque sia l'esito del pilot; archivio completo, aggregati e campioni cellulari restano distinti e l'uso
-  effettivo si verifica ([vincolo](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile)). Esecuzione in
-  [R-LAB](piani/piano-giorno-2026-09-30.md), inventario riconciliato e lacune in [R-DATI](piani/dati-affidabilita.md).
+**Rifit:** il mix parziale precedente è concluso, ma il consumatore ha rilevato una maschera dei geni diversa dall'originale: sei cache corrette sono state verificate e montate nel job finale. Il cache K562 GWPS del riferimento è stato recuperato byte-identico e caricato; il suo consumo in un fit riuscito resta da verificare. [Prove e limiti](../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r15.md). HIPSCI e altre fonti archiviate non sono ancora tutte collegate. Nessun miglioramento dimostrato.
 
-**Che cosa vale (misurato).** Le correzioni del transfer dai controlli medi non danno beneficio, semplici o con una
-rete sul pseudobulk, e sui sei membri vince il transfer ([CP-0056](checkpoints/0056-banco-contesto-c-j.md),
-[CP-0057](checkpoints/0057-p4-dieci-gruppi-pseudobulk.md)); nel pilot v2 lo stato delle cellule aiuta rispetto al
-profilo medio ma la rete resta sotto il transfer; la v3 r1 è un pilot
-incompleto per difetti tecnici ricostruiti esattamente, non una bocciatura
-([diagnosi](../reports/modelli/rete_ancorata_v4_2026-10-03/diagnosi_r1/DIAGNOSI.md)). La prima correzione neurale
-che batte il transfer su linee escluse è quella pesata dell'ibrido D-056 (CP-0062), nel banco locale. Sul sito il
-guadagno non è comparso (t30, CP-0064). Esiti e fonti per area in
-[AMBITI §4–5](AMBITI.md#5-modelli-appresi-e-generalizzazione).
+**Consegna:** cache K562 e controlli ufficiali sono caricati privati dopo consenso specifico; rifit/generazione .vcc accettato su Kaggle alle23:29:37, provider RUNNING. Fonti compatibili aggiunte fino alle 23:30 locali, poi release congelata e generazione; upload entro le 02:00 è un obiettivo, non una promessa. L'invio esplorativo è autorizzato senza banco comparativo. Nessun nuovo candidato inviato da questa campagna.
 
-**Riserve e traguardo.** K562 è già vista dalle reti r2/r3; H1 train/val è nel corpus, H1 test resta chiusa e non si
-usa per debug. La consegna D/E/F (dati il 22/10, invii fino al 5/11) richiede la prova generale a forma piena
-([R-REV](piani/revisione-critica.md), [S-INVII](piani/invii-finale.md)) anche se resta il transfer.
+**Esiti precedenti:** l'ibrido D-056 aveva un guadagno locale più piccolo a rumore ridotto e un danno PDS sul fold esportato ([CP-0065](checkpoints/0065-d056-confronti-e-rumore-del-banco.md), [CP-0066](checkpoints/0066-banco-v2-t28-cinque-linee.md)); t30 non migliora t25 sul sito ([CP-0064](checkpoints/0064-t30-ibrido-selettivo-punteggio-ufficiale.md)). Il rifit corrente non è un nuovo ibrido. Tutti i punteggi stanno nell'[indice degli invii](../reports/invii/README.md).
 
-### Coordinamento e decisioni aperte
+H1 test resta protetta; gli split C/J escludono contesto e target/componenti prima delle statistiche. Produzione con hidden vuoto non è validazione. Il traguardo D/E/F resta distinto dall'invio esplorativo.
 
-- La sessione che lavora su R-LEAD si registra nella sua intestazione con macchina, commit, file e output; lo stato
-  scritto in una scheda non prova che un job sia vivo. Le guide prima di questa riscrittura sono nello
-  [storico del consolidamento](storico/consolidamento_2026-10-03/INDICE.md).
-- **Autorizzazioni:** il 4/10 notte il proprietario ha autorizzato la sessione `2b35612c`, per il mandato D-056 e solo
-  per essa, a procedere senza conferme. L'autorizzazione copre training, banchi, download, gestione dei job negli
-  account configurati, commit e push dopo verifica, e invii in grading dei candidati con banco ≥ 0,100 secondo una
-  regola precisa ([autorizzazioni](../reports/invii/trial_2026-09-22/autorizzazioni.md#mandato-d-056-e-invii-autonomi-notte-del-4-ottobre-r-lead-sessione-claude-2b35612c)).
-  Acquisti e servizi a pagamento restano esclusi. Per le sessioni successive valgono le regole precedenti: invii e
-  push si chiedono.
-- Uso di ulteriori dati della stessa linea e verifica esterna della licenza Orion restano decisioni distinte;
-  identità fuori dalla repo pubblica.
-- La preregistrazione t21 citata ma assente resta [R-020](REGISTRO.md#r-020--evidenza-citata-ma-assente-dal-repository),
-  non va ricostruita dopo il risultato.
-
-La pubblicazione si verifica confrontando commit locale e remoto aggiornato. Worktree, scratchpad e infrastruttura
-hanno il proprio stato in [AGENTI](AGENTI.md).
+Le guide precedenti e il §0 completo sono conservati nello [storico del consolidamento banca](storico/consolidamento_banca_2026-10-05/INDICE.md). Nessun dato o evidenza eliminato.
 
 ## 1. Il problema
 

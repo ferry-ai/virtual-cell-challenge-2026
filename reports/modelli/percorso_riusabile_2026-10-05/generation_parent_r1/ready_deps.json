@@ -1,0 +1,38 @@
+{
+  "package": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\generation_parent_r1\\package_deps",
+  "slug": "davideferrante11/vcc-generate-t28-bank-k562-reuse-r1",
+  "metadata": {
+    "id": "davideferrante11/vcc-generate-t28-bank-k562-reuse-r1",
+    "title": "vcc-generate-t28-bank-k562-reuse-r1",
+    "code_file": "run.py",
+    "language": "python",
+    "kernel_type": "script",
+    "is_private": true,
+    "enable_gpu": false,
+    "enable_tpu": false,
+    "enable_internet": true,
+    "dataset_sources": [
+      "davideferrante11/vcc-ingest-code-cd4-r1",
+      "davideferrante11/vcc-k562-t25-cache-r1",
+      "davideferrante11/vcc-official-controls-r1"
+    ],
+    "kernel_sources": [
+      "davideferrante11/vcc-effects-mix-t25-bank-r1-retry1"
+    ],
+    "competition_sources": []
+  },
+  "code_sha256": "6a709ef3c5b8b9cde97c7e879cf0537c2b3f9d33ff4973e9d5c1324cc1d3c17a",
+  "params_sha256": "90474efb277ab56ff687cbc882f92c6e9218962a8c0137b7e8520b2ad769d78c",
+  "controls_upload_authorized": true,
+  "needs_ready_inputs_and_preflight": true,
+  "fit_bank_complete": false,
+  "generation_launched": false,
+  "corrections": [
+    "unique source names across A/B/C",
+    "producer checkpoint and every matrix hash",
+    "explicit historical K562 vote",
+    "self-contained code_file"
+  ],
+  "bootstrap_import_path_repaired": true,
+  "dependency_installation": "pinned anndata0.13.3.post0/zstandard0.25.0, no core upgrades, runtime versions recorded"
+}

@@ -1,10 +1,10 @@
 # Piani — un incarico operativo, supporti e alternative
 
 **Per lavorare adesso:** [R-LEAD](piani/strategia-scientifica.md), con il
-[prompt per Claude](PROMPT_CLAUDE.md). Dal 3 ottobre sera R-LEAD procede su due binari (D-054):
-il **modello**, la rete ancorata al transfer nel pilot v4 e poi sul corpus ampliato; i **dati**,
-l'integrazione di tutte le linee e i contesti idonei (D-053), che prosegue qualunque sia l'esito
-del pilot. Stato generale e riferimento in [PROGETTO §0](PROGETTO.md).
+[prompt per Claude](PROMPT_CLAUDE.md). Il mandato corrente è il rifit del transfer lineare
+con banca ampliata; il design neurale resta separato. L'integrazione di tutte le linee
+e i contesti idonei (D-053) prosegue indipendentemente dal primo candidato parziale.
+Stato generale e riferimento in [PROGETTO §0](PROGETTO.md).
 
 Questo indice mantiene priorità e dipendenze; stato e presa in carico stanno nelle schede.
 Le versioni precedenti sono conservate: [rinnovo dell'1–2 ottobre](storico/rinnovo_2026-10-01/INDICE.md),
@@ -22,7 +22,7 @@ un protocollo o una riga «in corso» non prova che un job sia attivo o concluso
 
 | Ruolo | Scheda | Quando usarla |
 |---|---|---|
-| **Piano operativo unico** | [R-LEAD — P0–P6](piani/strategia-scientifica.md) | Binario del modello (pilot v4, corpus ampliato, conferma P5, finale P6) e binario dei dati (D-053); stato, prossimo passo e job attivi stanno nella sua intestazione |
+| **Piano operativo unico** | [R-LEAD](piani/strategia-scientifica.md) | Banca riusabile, rifit lineare t28 e invio autorizzato; copertura D-053 aperta. Stato, prossimo passo e job attivi soltanto nella scheda |
 | Esecuzione del binario dati | [R-LAB](piani/piano-giorno-2026-09-30.md) | Ingestione completa, archivio, verifiche indipendenti, gemelli compatti; i job li sceglie R-LEAD |
 | Riconciliazione e lacune dei dati | [R-DATI](piani/dati-affidabilita.md) | Inventario riconciliato col catalogo (D-053), aggregati per le voci che non ne hanno, campioni annidati con perdita d'informazione misurata |
 | Verifiche | [R-REV](piani/revisione-critica.md) | Forma piena, scorer, leakage, generazione; non si chiude perché parte un training |

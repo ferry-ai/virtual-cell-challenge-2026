@@ -1,17 +1,20 @@
 # Archivio → banca pronta → training
 
-**Ingresso unico per riuso:** [procedura del prossimo training](RIUSO_r1.md).
+**Ingresso unico per riuso:** [procedura del prossimo training](RIUSO_r2.md).
 **Stato e assegnazioni correnti:** [R-LEAD](../../../docs/piani/strategia-scientifica.md).
-**Rifit/invio in corso:** [mix concluso e generazione](ESECUZIONE_r12.md) e
+**Rifit/invio in corso:** [cache K562, guardia maschere e freeze](ESECUZIONE_r15.md) e
 [invio diretto autorizzato](INVIO_DIRETTO_r1.md).
+
+[Identità riconciliate e lacune](../../analisi/riconciliazione_banca_2026-10-05/README.md).
+K562 storico disponibile con SHA verificato: [riuso preparato](k562_reuse_r1/ready_r3.json), caricato privato; sei cache corrette pronte per il fit finale.
 
 ## Quali dati usare
 
 | Livello | Riferimento | Che cosa certifica |
 |---|---|---|
-| Archivio grezzi, banche, campioni | [manifest storage r10](cloud_catalog_r10/manifest.json) | Account, versioni, file, hash e provenienza; non ammissione al fit |
-| Dimensioni e contesti disponibili | [dati r2](DATI_DISPONIBILI_r2.md) | 395,75 GB grezzi; storage e contesti distinti |
-| Copertura da riconciliare | [expected congelato](training_coverage_r1/expected.json) | Tutte le unità attese e fonti storiche; lacune da motivare |
+| Archivio grezzi, banche, campioni | [manifest storage r11](cloud_catalog_r11/manifest.json) | Account, versioni, file, hash e provenienza; non ammissione al fit |
+| Dimensioni e contesti disponibili | [dati r2, fotografia datata](DATI_DISPONIBILI_r2.md) | 395,75 GB grezzi; non stato corrente né uso nel fit |
+| Copertura da riconciliare | [expected r3 congelato](../../analisi/riconciliazione_banca_2026-10-05/frozen/expected_r3.json) | Tutte le unità attese e fonti storiche; lacune da motivare |
 | Release del rifit corrente | [params congelati](extended_mix_launch_r2/vcc-effects-mix-t25-bank-r1-retry1/params.json) | Input specifici del primo mix esteso parziale; non tutto il catalogo |
 | Esecuzione del rifit | [ricevuta di lancio](extended_mix_launch_r2/vcc-effects-mix-t25-bank-r1-retry1.json) | Codice e parametri, account, alias del retry; non risultato scientifico |
 | Rifit e disponibilità sul pannello | [ricevute del mix concluso](extended_mix_completion_r1/model/fit_receipt.json), [inventario](extended_mix_completion_r1/model/panel_inventory.json) | 12 fonti registrate; 8 con target sul pannello. Hash delle matrici nel consumer e copertura completa ancora aperti |
@@ -26,7 +29,7 @@ Montare direttamente gli output salvati dei producer; non è obbligatorio il
 passaggio cloud → locale → cloud. Riutilizzare la banca a parità di input,
 asse, QC, codice e parametri. Un nuovo dataset aggiunge il proprio adattatore,
 banca/campioni e una nuova release globale; modifica dei soli derivati dipendenti
-se cambiano normalizzazione, ancore o split. [Procedura precisa](RIUSO_r1.md).
+se cambiano normalizzazione, ancore o split. [Procedura precisa](RIUSO_r2.md).
 
 Non rilanciare i dispatcher delle campagne chiuse. Prima di rilanciare un
 fallimento, seguire il ledger e l'alias `supersedes_failed`; niente doppie voci.

@@ -1,0 +1,182 @@
+{
+  "package": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\generation_successors_r1\\package",
+  "metadata": {
+    "id": "davideferrante11/vcc-generate-t28-frozen-bank-r1",
+    "title": "vcc-generate-t28-frozen-bank-r1",
+    "code_file": "run.py",
+    "language": "python",
+    "kernel_type": "script",
+    "is_private": true,
+    "enable_gpu": false,
+    "enable_tpu": false,
+    "enable_internet": true,
+    "dataset_sources": [
+      "davideferrante11/vcc-ingest-code-cd4-r1",
+      "davideferrante11/vcc-k562-t25-cache-r1",
+      "davideferrante11/vcc-official-controls-r1"
+    ],
+    "kernel_sources": [
+      "davideferrante11/vcc-effects-mix-t25-bank-r1-retry1",
+      "davideferrante11/vcc-prod-kolf-chromatin-mask-r1",
+      "davideferrante11/vcc-prod-kolf-metabolic-mask-r1",
+      "davideferrante11/vcc-prod-kolf-strong-mask-r1",
+      "davideferrante11/vcc-prod-orion-hct116-mask-r1",
+      "davideferrante11/vcc-prod-orion-hek293t-mask-r1",
+      "davidmaisterx/vcc-prod-kolf-pan-genome-mask-r1"
+    ],
+    "competition_sources": []
+  },
+  "slug": "davideferrante11/vcc-generate-t28-frozen-bank-r1",
+  "code_sha256": "4a49bc7880dc9b877d71a9dd3b3bfc01ea4e584214ea0355fc98fd3c1293b021",
+  "params_sha256": "2b994988fd04853f5a7145c8f50807f11a3e72c93ec5ca2de45b42334951adcd",
+  "source_overrides": {
+    "orion_hct116": {
+      "unit": "orion_hct116",
+      "source": "orion_hct116",
+      "path": "cache/orion_hct116.npz",
+      "sha256": "e3376fa8532d1a6b46da90109dcc9dfbf409354606d3569051813d63a7fe7c8a",
+      "bytes": 42898547,
+      "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "target_panel": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+      "count_sum_sha256": "8b91e0f041d8535347d1fc5d1f7847a8b862a513a2028c96ecd9635130322f8d",
+      "code_sha256": {
+        "estimator_core.py": "7b1d248b00188cf6c851275fbeaeb823738cb30931ff004e67de2ad1831cf5d1",
+        "cloud_job.py": "aecb1333905d59a7214393fb5ddfb8e8bf9f2f1791709551895d9100f8050234",
+        "split_rule.py": "874dac28771e99e93c6f8a4f4633da5090ccd3d63b30a6c063231f015beb9a42"
+      },
+      "targets": 293,
+      "shape": [
+        293,
+        18533
+      ],
+      "scope": "production only, not C/J validation",
+      "kernel": "davideferrante11/vcc-prod-orion-hct116-mask-r1",
+      "version": 1,
+      "receipt_sha256": "95c0ab4997525955e6694ba31195d553fd70b113b35c3c880211f20c20b1ddf8"
+    },
+    "orion_hek293t": {
+      "unit": "orion_hek293t",
+      "source": "orion_hek293t",
+      "path": "cache/orion_hek293t.npz",
+      "sha256": "efcf76ac67e069596ad8d15cc416e1559e21417fb699f540098670af64271a44",
+      "bytes": 46411037,
+      "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "target_panel": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+      "count_sum_sha256": "41fc0a80d966b28fbc8c1e37741c72a4a28bb5b5b4d1a3e3a4e863a4f9129649",
+      "code_sha256": {
+        "estimator_core.py": "7b1d248b00188cf6c851275fbeaeb823738cb30931ff004e67de2ad1831cf5d1",
+        "cloud_job.py": "aecb1333905d59a7214393fb5ddfb8e8bf9f2f1791709551895d9100f8050234",
+        "split_rule.py": "874dac28771e99e93c6f8a4f4633da5090ccd3d63b30a6c063231f015beb9a42"
+      },
+      "targets": 299,
+      "shape": [
+        299,
+        18533
+      ],
+      "scope": "production only, not C/J validation",
+      "kernel": "davideferrante11/vcc-prod-orion-hek293t-mask-r1",
+      "version": 1,
+      "receipt_sha256": "e4267635ad1195042992f2de8d1129638c09004c91d7643fb581d264ee7a7838"
+    },
+    "kolf_chromatin": {
+      "unit": "kolf_chromatin",
+      "source": "kolf_chromatin",
+      "path": "cache/kolf_chromatin.npz",
+      "sha256": "f93a45edbb9b8763472bcb50a3096bd8a55436e1da37f2d33fc9f0ae9e484601",
+      "bytes": 1340205,
+      "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "target_panel": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+      "count_sum_sha256": "32db974b46d12aa7dc897ef0c36ce1f4ce3988d4d813988fb1d6b95a9c2c6065",
+      "code_sha256": {
+        "estimator_core.py": "7b1d248b00188cf6c851275fbeaeb823738cb30931ff004e67de2ad1831cf5d1",
+        "cloud_job.py": "aecb1333905d59a7214393fb5ddfb8e8bf9f2f1791709551895d9100f8050234",
+        "split_rule.py": "874dac28771e99e93c6f8a4f4633da5090ccd3d63b30a6c063231f015beb9a42"
+      },
+      "targets": 8,
+      "shape": [
+        8,
+        18533
+      ],
+      "scope": "production only, not C/J validation",
+      "kernel": "davideferrante11/vcc-prod-kolf-chromatin-mask-r1",
+      "version": 1,
+      "receipt_sha256": "0a12651f9db4b14438867f82e6899341e420aafb32fd2c16ba8e86f1d142490c"
+    },
+    "kolf_metabolic": {
+      "unit": "kolf_metabolic",
+      "source": "kolf_metabolic",
+      "path": "cache/kolf_metabolic.npz",
+      "sha256": "5dcd8a6e726cff0906cbd6c543b36260809e396f8825a94b66a9391f243a4bea",
+      "bytes": 665524,
+      "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "target_panel": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+      "count_sum_sha256": "25643e969710768c364e6cfe57900d14b028906f3035816c61019bd88dca60ab",
+      "code_sha256": {
+        "estimator_core.py": "7b1d248b00188cf6c851275fbeaeb823738cb30931ff004e67de2ad1831cf5d1",
+        "cloud_job.py": "aecb1333905d59a7214393fb5ddfb8e8bf9f2f1791709551895d9100f8050234",
+        "split_rule.py": "874dac28771e99e93c6f8a4f4633da5090ccd3d63b30a6c063231f015beb9a42"
+      },
+      "targets": 4,
+      "shape": [
+        4,
+        18533
+      ],
+      "scope": "production only, not C/J validation",
+      "kernel": "davideferrante11/vcc-prod-kolf-metabolic-mask-r1",
+      "version": 1,
+      "receipt_sha256": "f379b95cb0bc0deb4280f9f78bfe35141083bd542e5f1fdcfbc4dbd2cff2ae0a"
+    },
+    "kolf_strong": {
+      "unit": "kolf_strong",
+      "source": "kolf_strong",
+      "path": "cache/kolf_strong.npz",
+      "sha256": "66b45affac139a72bdaef7297f1386acd74559b6c026d6422bc5108d5d111c8e",
+      "bytes": 8361839,
+      "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "target_panel": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+      "count_sum_sha256": "7a767e843042a200aaa4e298b920d8482f926b12a56230b826ffee901549e702",
+      "code_sha256": {
+        "estimator_core.py": "7b1d248b00188cf6c851275fbeaeb823738cb30931ff004e67de2ad1831cf5d1",
+        "cloud_job.py": "aecb1333905d59a7214393fb5ddfb8e8bf9f2f1791709551895d9100f8050234",
+        "split_rule.py": "874dac28771e99e93c6f8a4f4633da5090ccd3d63b30a6c063231f015beb9a42"
+      },
+      "targets": 55,
+      "shape": [
+        55,
+        18533
+      ],
+      "scope": "production only, not C/J validation",
+      "kernel": "davideferrante11/vcc-prod-kolf-strong-mask-r1",
+      "version": 1,
+      "receipt_sha256": "d128ccbb939e94ec09a40f297c9d5bb22ceb8891350b30f75d6ca1830a120050"
+    },
+    "kolf_pan_genome": {
+      "unit": "kolf_pan_genome",
+      "source": "kolf_pan_genome",
+      "path": "cache/kolf_pan_genome.npz",
+      "sha256": "cdc53d288a4ba78db7717d3cfa0357b80389a5387d5758f00fdf4cf3910fa87d",
+      "bytes": 45318115,
+      "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "target_panel": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+      "count_sum_sha256": "2f8ee51dfe9ca5c7e39cec74d9a447056444ce1cb25f468626b1f9c3c470c634",
+      "code_sha256": {
+        "estimator_core.py": "7b1d248b00188cf6c851275fbeaeb823738cb30931ff004e67de2ad1831cf5d1",
+        "cloud_job.py": "aecb1333905d59a7214393fb5ddfb8e8bf9f2f1791709551895d9100f8050234",
+        "split_rule.py": "874dac28771e99e93c6f8a4f4633da5090ccd3d63b30a6c063231f015beb9a42"
+      },
+      "targets": 282,
+      "shape": [
+        282,
+        18533
+      ],
+      "scope": "production only, not C/J validation",
+      "kernel": "davidmaisterx/vcc-prod-kolf-pan-genome-mask-r1",
+      "version": 1,
+      "receipt_sha256": "0fd6cd04f2dd799a332c2ab05661bb35a633134fc9129126a3aa2f8944956e6c"
+    }
+  },
+  "bank_complete": false,
+  "only_bank_changes": true,
+  "effects_only": false,
+  "generation_started": false
+}

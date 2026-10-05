@@ -10,6 +10,7 @@ il 30 settembre, senza cambiare il testo salvo i percorsi dei link; un checkpoin
 
 | Data | File | Nocciolo | Vale? |
 |---|---|---|---|
+| 05/10 | [consolidamento_banca_2026-10-05/INDICE.md](consolidamento_banca_2026-10-05/INDICE.md) | Quattro guide complete prima della riconciliazione; copie byte-identiche con manifest | storico; stato corrente R-LEAD |
 | 03/10 | [consolidamento_2026-10-03/INDICE.md](consolidamento_2026-10-03/INDICE.md) | Sei guide al commit `36cea0a` (PROGETTO, PIANI, AMBITI, R-LEAD, R-DATI, R-LAB) prima del consolidamento della sera: istruzioni datate della v3 e dell'ingestione delle 16:00, copie identiche al byte | storico; per agire usare PIANI, R-LEAD e PROGETTO §0 correnti |
 | 02/10 | [R-LEAD_pre_contesti_2026-10-02.md](R-LEAD_pre_contesti_2026-10-02.md) | Piano post-t29 al commit 0b491b3, prima del cambio di priorità D-052; copia invariata | storico; seguire R-LEAD corrente, gli ID P0–P6 sono stati ridefiniti |
 | 01/10 | [rinnovo_2026-10-01/README.md](rinnovo_2026-10-01/README.md) | Diciotto copie pre-rinnovo: piani, mappe, prompt e indici; incarichi e code datati | storico; per agire usare PIANI e R-LEAD correnti |
