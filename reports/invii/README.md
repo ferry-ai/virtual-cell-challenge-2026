@@ -9,6 +9,8 @@ Due tipi di cartella, più due riepiloghi:
 
 Procedura e regole: [PROCEDURE §1–2](../../docs/PROCEDURE.md). Indice generale: [../README.md](../README.md).
 
+**In corso:** [t36](prediction_t36_2026-10-06/README.md), candidato completo, download/invio; nessun punteggio dichiarato. La bozza locale t31 non è stata inviata. [Stato operativo](../modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r17.md).
+
 ## I punteggi ufficiali in una tabella
 
 Fonte: i `comparison.json` e gli stati salvati. **Questa tabella è la sede unica dei punteggi
@@ -47,6 +49,9 @@ pronto dal proprietario), t09 e t13 (fermati dalle loro regole), t21 (la sua pre
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 2026-10-06 | [prediction_t36](prediction_t36_2026-10-06/) | Record runtime originale e correzione nome richiesta dall'utente; nessuna banda numerica inventata | attuale | Invio esplorativo della release estesa parziale |
+| 2026-10-06 | [trial](trial_2026-10-06/) | Manifest packaging, testi e trasferimento del candidato; output CLI quando disponibile | attuale | Nessun score ancora dichiarato |
+| 2026-10-06 | [prediction_t31](prediction_t31_2026-10-06/) | Bozza locale con record runtime, mai inviata | storico | Sostituita solo l'etichetta da t36; stessi byte |
 | 04/10 | [prediction_t30_2026-10-04/](prediction_t30_2026-10-04/) | Ibrido selettivo D-056: effetti t25 + w · R della rete del fold HepG2 con il selettore congelato; cambia solo la fonte degli effetti rispetto al t25. Registrata alle 08:14 UTC prima della lettura degli effetti ibridi e della generazione; banda 0,125…0,160, regola a ±0,005 contro il t25. Ufficiale 0,135248602, delta −0,004989459: ramo b, non conclusivo; [confronto](prediction_t30_2026-10-04/comparison.json), catena e diagnosi in [diagnosi_t30](../modelli/diagnosi_t30_2026-10-04/README.md) | sì; non conclusivo, nessuna promozione | ★★★ |
 | 04/10 | [trial_2026-10-04/](trial_2026-10-04/) | Testi del t30 scritti prima della generazione; effetti t25 rigenerati (stesso sha256 del t25), esportazione `export_abc_r2`, manifesti degli stadi 45 e 48, upload 09:13–09:30 UTC (entry lDMSYUZU5cFYHcRqI0lq, MD5 verificato), status pubblicato e lettore scritto prima; registro in [INVIO_T30.md](trial_2026-10-04/INVIO_T30.md) | sì | ★★★ |
 | 01/10 | [prediction_t29_2026-10-01/](prediction_t29_2026-10-01/) | La rete addestrata sulle singole cellule (R-LAB, secondo training, braccio `desc`) con il generatore del t22: cambia solo la fonte degli effetti. Registrata alle 12:06 UTC prima dell'esportazione e della generazione; banda −0,02…+0,10, regola a 0,06 e 0,137. Ufficiale −0,029625, ramo c; [confronto](prediction_t29_2026-10-01/comparison.json) | sì | ★★ |

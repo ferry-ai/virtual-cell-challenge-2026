@@ -1,0 +1,81 @@
+{
+  "context_provenance_ok": true,
+  "is_pilot": false,
+  "memory": {
+    "peak_rss_bytes": 803856384,
+    "peak_rss_gib": 0.7486495971679688,
+    "resources_after": {
+      "cpu_count": 4,
+      "disk_free_bytes": 1144534212608,
+      "disk_free_gib": 1065.930549621582,
+      "disk_path": "/kaggle/temp/stage45",
+      "disk_total_bytes": 8758385086464,
+      "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+      "ram_available_bytes": 32179974144,
+      "ram_available_gib": 29.96993637084961,
+      "ram_total_bytes": 33658314752,
+      "ram_total_gib": 31.34674835205078,
+      "source": "/proc/meminfo + shutil.disk_usage"
+    },
+    "resources_before": {
+      "cpu_count": 4,
+      "disk_free_bytes": 1148749230080,
+      "disk_free_gib": 1069.8560905456543,
+      "disk_path": "/kaggle/temp/stage45",
+      "disk_total_bytes": 8758385086464,
+      "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+      "ram_available_bytes": 32110759936,
+      "ram_available_gib": 29.905475616455078,
+      "ram_total_bytes": 33658314752,
+      "ram_total_gib": 31.34674835205078,
+      "source": "/proc/meminfo + shutil.disk_usage"
+    }
+  },
+  "not_a_score": "This file contains no VCC score. It records what was generated and what it cost. Nothing here has been uploaded.",
+  "per_block_omitted": true,
+  "run_id": "gen-extbank-r1",
+  "runtime": {
+    "basal_profiles_seconds": 20.059132960999932,
+    "generation_seconds": 1432.383861779,
+    "projected_generation_seconds_at_full_shape": 1432.383861779,
+    "seconds_per_block": 1.5915376241988888,
+    "total_seconds": 1520.7057102480003
+  },
+  "seed": 20260912,
+  "shape": {
+    "cells_per_pert": 400,
+    "contexts": [
+      "A",
+      "B",
+      "C"
+    ],
+    "n_cells": 360000,
+    "n_genes": 18533,
+    "n_perturbations": 300,
+    "official_full_shape": {
+      "cells_per_pert": 400,
+      "n_cells": 360000,
+      "n_contexts": 3,
+      "n_genes": 18533,
+      "n_perturbations": 300
+    }
+  },
+  "storage": {
+    "bytes_per_cell": 11708.34738888889,
+    "file_bytes": 4215005060,
+    "fraction_of_global_cap_at_this_size": 0.43930542252631577,
+    "global_cap": 4750000000,
+    "per_cell_budget": 13194,
+    "projected_entries_at_full_shape": 2086700757.0,
+    "projected_file_bytes_at_full_shape": 4215005060.0,
+    "projected_fraction_of_cap": 0.43930542252631577,
+    "stored_entries": 2086700757,
+    "stored_entries_per_cell": 5796.390991666667
+  },
+  "trial": {
+    "id": "trial-ext-profile",
+    "kind": "external_effects",
+    "title": "trial-01's generator driven by per-context effects from a file",
+    "trains": false
+  }
+}

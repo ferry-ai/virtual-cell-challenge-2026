@@ -1,0 +1,335 @@
+{
+  "amplitude_applied_in_mix": false,
+  "cis_applied_in_mix": false,
+  "controls_linked": {
+    "context_A.h5ad": "/kaggle/input/datasets/davideferrante11/vcc-official-controls-r1/context_A.h5ad",
+    "context_B.h5ad": "/kaggle/input/datasets/davideferrante11/vcc-official-controls-r1/context_B.h5ad",
+    "context_C.h5ad": "/kaggle/input/datasets/davideferrante11/vcc-official-controls-r1/context_C.h5ad"
+  },
+  "effects_scale_applied_in_mix": false,
+  "emission": {
+    "cells_per_target": 400,
+    "contexts": [
+      "A",
+      "B",
+      "C"
+    ],
+    "controls_included": false,
+    "depth_bins": false,
+    "effects_scale": 1.5,
+    "five_seed_bench": false,
+    "gene_dispersion": true,
+    "gene_dispersion_scale": 1.0,
+    "generator_seed": 20260912,
+    "n_genes": 18533,
+    "n_perturbations": 300,
+    "trial": "trial-ext-profile"
+  },
+  "fit_ready": false,
+  "k562_essential_is_not_k562": true,
+  "k562_in_recipe": true,
+  "loss": null,
+  "optimizer": null,
+  "origin": {
+    "cd4_Rest": {
+      "bytes": 39553095,
+      "role": "cd4_condition_not_a_second_vote",
+      "sha256": "5e350d5ac4aa94a0b5d77a7ccb57309f3b3f6ae33248f0bc228ee19680bcf127"
+    },
+    "cd4_Stim48hr": {
+      "bytes": 40252933,
+      "role": "cd4_condition_not_a_second_vote",
+      "sha256": "797c4ab280a216829a3888e836b1e41c4d3ba8a2333306613b548e168f5a29e4"
+    },
+    "cd4_Stim8hr": {
+      "bytes": 39267438,
+      "role": "cd4_condition_not_a_second_vote",
+      "sha256": "55cb086aee50e445b5e25972c84a28cb9a8b44168b28f5ac6d2078fdbbbd8d41"
+    },
+    "cd4_mix": {
+      "bytes": 28086110,
+      "role": "voted",
+      "sha256": "ccde53b7546e5138447fee8b27ff6a98d3abb7b48f0d330fa3962f1c8c3b5ec6",
+      "successor": null
+    },
+    "h1": {
+      "bytes": 2674274,
+      "role": "voted",
+      "sha256": "672e36e33006668752cd45a1f2ddc46950b4fe8e0e98e06ad583323f0df563f0",
+      "successor": null
+    },
+    "hepg2_nadig": {
+      "bytes": 12477,
+      "role": "voted",
+      "sha256": "f0deff3c55e9df28b02888263f2e4699250b5871adc5cd0a337c0402c423881b",
+      "successor": null
+    },
+    "jurkat_nadig": {
+      "bytes": 12495,
+      "role": "voted",
+      "sha256": "6d458e589897f650e16cf1a2a6ed0dee9a86df4f3ebb0117b9783e176396ca1a",
+      "successor": null
+    },
+    "k562": {
+      "bytes": 28104995,
+      "role": "voted",
+      "sha256": "a37c78ce1f7c13a3fc145e75e64f2ccead555ec8e38a656d671903ed4fd7218f",
+      "successor": null
+    },
+    "k562_essential": {
+      "bytes": 11290,
+      "role": "voted",
+      "sha256": "510dec23350f3ce66de73eef348a400d0be3af595a1e53f61a0c42fdf548b08f",
+      "successor": null
+    },
+    "kolf_chromatin": {
+      "bytes": 1340205,
+      "role": "voted",
+      "sha256": "f93a45edbb9b8763472bcb50a3096bd8a55436e1da37f2d33fc9f0ae9e484601",
+      "successor": {
+        "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+        "bytes": 1340205,
+        "code_sha256": {
+          "cloud_job.py": "aecb1333905d59a7214393fb5ddfb8e8bf9f2f1791709551895d9100f8050234",
+          "estimator_core.py": "7b1d248b00188cf6c851275fbeaeb823738cb30931ff004e67de2ad1831cf5d1",
+          "split_rule.py": "874dac28771e99e93c6f8a4f4633da5090ccd3d63b30a6c063231f015beb9a42"
+        },
+        "count_sum_sha256": "32db974b46d12aa7dc897ef0c36ce1f4ce3988d4d813988fb1d6b95a9c2c6065",
+        "kernel": "davideferrante11/vcc-prod-kolf-chromatin-mask-r1",
+        "path": "cache/kolf_chromatin.npz",
+        "receipt_sha256": "0a12651f9db4b14438867f82e6899341e420aafb32fd2c16ba8e86f1d142490c",
+        "scope": "production only, not C/J validation",
+        "sha256": "f93a45edbb9b8763472bcb50a3096bd8a55436e1da37f2d33fc9f0ae9e484601",
+        "shape": [
+          8,
+          18533
+        ],
+        "source": "kolf_chromatin",
+        "target_panel": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+        "targets": 8,
+        "unit": "kolf_chromatin",
+        "version": 1
+      }
+    },
+    "kolf_metabolic": {
+      "bytes": 665524,
+      "role": "voted",
+      "sha256": "5dcd8a6e726cff0906cbd6c543b36260809e396f8825a94b66a9391f243a4bea",
+      "successor": {
+        "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+        "bytes": 665524,
+        "code_sha256": {
+          "cloud_job.py": "aecb1333905d59a7214393fb5ddfb8e8bf9f2f1791709551895d9100f8050234",
+          "estimator_core.py": "7b1d248b00188cf6c851275fbeaeb823738cb30931ff004e67de2ad1831cf5d1",
+          "split_rule.py": "874dac28771e99e93c6f8a4f4633da5090ccd3d63b30a6c063231f015beb9a42"
+        },
+        "count_sum_sha256": "25643e969710768c364e6cfe57900d14b028906f3035816c61019bd88dca60ab",
+        "kernel": "davideferrante11/vcc-prod-kolf-metabolic-mask-r1",
+        "path": "cache/kolf_metabolic.npz",
+        "receipt_sha256": "f379b95cb0bc0deb4280f9f78bfe35141083bd542e5f1fdcfbc4dbd2cff2ae0a",
+        "scope": "production only, not C/J validation",
+        "sha256": "5dcd8a6e726cff0906cbd6c543b36260809e396f8825a94b66a9391f243a4bea",
+        "shape": [
+          4,
+          18533
+        ],
+        "source": "kolf_metabolic",
+        "target_panel": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+        "targets": 4,
+        "unit": "kolf_metabolic",
+        "version": 1
+      }
+    },
+    "kolf_pan_genome": {
+      "bytes": 45318115,
+      "role": "voted",
+      "sha256": "cdc53d288a4ba78db7717d3cfa0357b80389a5387d5758f00fdf4cf3910fa87d",
+      "successor": {
+        "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+        "bytes": 45318115,
+        "code_sha256": {
+          "cloud_job.py": "aecb1333905d59a7214393fb5ddfb8e8bf9f2f1791709551895d9100f8050234",
+          "estimator_core.py": "7b1d248b00188cf6c851275fbeaeb823738cb30931ff004e67de2ad1831cf5d1",
+          "split_rule.py": "874dac28771e99e93c6f8a4f4633da5090ccd3d63b30a6c063231f015beb9a42"
+        },
+        "count_sum_sha256": "2f8ee51dfe9ca5c7e39cec74d9a447056444ce1cb25f468626b1f9c3c470c634",
+        "kernel": "davidmaisterx/vcc-prod-kolf-pan-genome-mask-r1",
+        "path": "cache/kolf_pan_genome.npz",
+        "receipt_sha256": "0fd6cd04f2dd799a332c2ab05661bb35a633134fc9129126a3aa2f8944956e6c",
+        "scope": "production only, not C/J validation",
+        "sha256": "cdc53d288a4ba78db7717d3cfa0357b80389a5387d5758f00fdf4cf3910fa87d",
+        "shape": [
+          282,
+          18533
+        ],
+        "source": "kolf_pan_genome",
+        "target_panel": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+        "targets": 282,
+        "unit": "kolf_pan_genome",
+        "version": 1
+      }
+    },
+    "kolf_strong": {
+      "bytes": 8361839,
+      "role": "voted",
+      "sha256": "66b45affac139a72bdaef7297f1386acd74559b6c026d6422bc5108d5d111c8e",
+      "successor": {
+        "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+        "bytes": 8361839,
+        "code_sha256": {
+          "cloud_job.py": "aecb1333905d59a7214393fb5ddfb8e8bf9f2f1791709551895d9100f8050234",
+          "estimator_core.py": "7b1d248b00188cf6c851275fbeaeb823738cb30931ff004e67de2ad1831cf5d1",
+          "split_rule.py": "874dac28771e99e93c6f8a4f4633da5090ccd3d63b30a6c063231f015beb9a42"
+        },
+        "count_sum_sha256": "7a767e843042a200aaa4e298b920d8482f926b12a56230b826ffee901549e702",
+        "kernel": "davideferrante11/vcc-prod-kolf-strong-mask-r1",
+        "path": "cache/kolf_strong.npz",
+        "receipt_sha256": "d128ccbb939e94ec09a40f297c9d5bb22ceb8891350b30f75d6ca1830a120050",
+        "scope": "production only, not C/J validation",
+        "sha256": "66b45affac139a72bdaef7297f1386acd74559b6c026d6422bc5108d5d111c8e",
+        "shape": [
+          55,
+          18533
+        ],
+        "source": "kolf_strong",
+        "target_panel": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+        "targets": 55,
+        "unit": "kolf_strong",
+        "version": 1
+      }
+    },
+    "orion_hct116": {
+      "bytes": 42898547,
+      "role": "voted",
+      "sha256": "e3376fa8532d1a6b46da90109dcc9dfbf409354606d3569051813d63a7fe7c8a",
+      "successor": {
+        "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+        "bytes": 42898547,
+        "code_sha256": {
+          "cloud_job.py": "aecb1333905d59a7214393fb5ddfb8e8bf9f2f1791709551895d9100f8050234",
+          "estimator_core.py": "7b1d248b00188cf6c851275fbeaeb823738cb30931ff004e67de2ad1831cf5d1",
+          "split_rule.py": "874dac28771e99e93c6f8a4f4633da5090ccd3d63b30a6c063231f015beb9a42"
+        },
+        "count_sum_sha256": "8b91e0f041d8535347d1fc5d1f7847a8b862a513a2028c96ecd9635130322f8d",
+        "kernel": "davideferrante11/vcc-prod-orion-hct116-mask-r1",
+        "path": "cache/orion_hct116.npz",
+        "receipt_sha256": "95c0ab4997525955e6694ba31195d553fd70b113b35c3c880211f20c20b1ddf8",
+        "scope": "production only, not C/J validation",
+        "sha256": "e3376fa8532d1a6b46da90109dcc9dfbf409354606d3569051813d63a7fe7c8a",
+        "shape": [
+          293,
+          18533
+        ],
+        "source": "orion_hct116",
+        "target_panel": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+        "targets": 293,
+        "unit": "orion_hct116",
+        "version": 1
+      }
+    },
+    "orion_hek293t": {
+      "bytes": 46411037,
+      "role": "voted",
+      "sha256": "efcf76ac67e069596ad8d15cc416e1559e21417fb699f540098670af64271a44",
+      "successor": {
+        "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+        "bytes": 46411037,
+        "code_sha256": {
+          "cloud_job.py": "aecb1333905d59a7214393fb5ddfb8e8bf9f2f1791709551895d9100f8050234",
+          "estimator_core.py": "7b1d248b00188cf6c851275fbeaeb823738cb30931ff004e67de2ad1831cf5d1",
+          "split_rule.py": "874dac28771e99e93c6f8a4f4633da5090ccd3d63b30a6c063231f015beb9a42"
+        },
+        "count_sum_sha256": "41fc0a80d966b28fbc8c1e37741c72a4a28bb5b5b4d1a3e3a4e863a4f9129649",
+        "kernel": "davideferrante11/vcc-prod-orion-hek293t-mask-r1",
+        "path": "cache/orion_hek293t.npz",
+        "receipt_sha256": "e4267635ad1195042992f2de8d1129638c09004c91d7643fb581d264ee7a7838",
+        "scope": "production only, not C/J validation",
+        "sha256": "efcf76ac67e069596ad8d15cc416e1559e21417fb699f540098670af64271a44",
+        "shape": [
+          299,
+          18533
+        ],
+        "source": "orion_hek293t",
+        "target_panel": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+        "targets": 299,
+        "unit": "orion_hek293t",
+        "version": 1
+      }
+    },
+    "rpe1": {
+      "bytes": 12490,
+      "role": "voted",
+      "sha256": "89c0d24054382833c43c0620ed9302b02f944ad51b4886ff5861641c5013b5da",
+      "successor": null
+    }
+  },
+  "product_will_be": "prediction.vcc",
+  "reading_rule": {
+    "comparison_started": false,
+    "five_seed_bench_before_submission": false,
+    "local_score": null,
+    "loss": null,
+    "no_improvement_band": true,
+    "not_attributed_to_one_added_source": true,
+    "not_compared_as_a_local_bench_to_the_t28_score": true,
+    "optimizer": null,
+    "reference_is_not_a_target_or_a_promise": true,
+    "reference_t28_official_score": 0.14484520500645978,
+    "registered_before_generation": true,
+    "what_is_read": "one official VCC score of the single submitted .vcc"
+  },
+  "recipe_sha256": "3109a6d9c6a0305ae73694d7e897dbe2ab35b344034ec9d2b492308898753226",
+  "registered_before_stage100": true,
+  "resources_before": {
+    "note": "stages 45 and 48 still apply their own reserves; the full run wants about 17 GiB free",
+    "scratch": {
+      "cpu_count": 4,
+      "disk_free_bytes": 1148805701632,
+      "disk_free_gib": 1069.9086837768555,
+      "disk_path": "/kaggle/temp",
+      "disk_total_bytes": 8758385086464,
+      "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+      "ram_available_bytes": 32569466880,
+      "ram_available_gib": 30.332679748535156,
+      "ram_total_bytes": 33658314752,
+      "ram_total_gib": 31.34674835205078,
+      "source": "/proc/meminfo + shutil.disk_usage"
+    },
+    "stage45_reserve_gib": 10.0,
+    "stage48_reserve_gib": 6.0,
+    "working": {
+      "cpu_count": 4,
+      "disk_free_bytes": 20936282112,
+      "disk_free_gib": 19.498432159423828,
+      "disk_path": "/kaggle/working",
+      "disk_total_bytes": 20957446144,
+      "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+      "ram_available_bytes": 32569466880,
+      "ram_available_gib": 30.332679748535156,
+      "ram_total_bytes": 33658314752,
+      "ram_total_gib": 31.34674835205078,
+      "source": "/proc/meminfo + shutil.disk_usage"
+    }
+  },
+  "training_ready": false,
+  "voted_sources": [
+    "cd4_mix",
+    "h1",
+    "hepg2_nadig",
+    "jurkat_nadig",
+    "k562",
+    "k562_essential",
+    "kolf_chromatin",
+    "kolf_metabolic",
+    "kolf_pan_genome",
+    "kolf_strong",
+    "orion_hct116",
+    "orion_hek293t",
+    "rpe1"
+  ],
+  "record_copied_after_generation": true,
+  "original_record": "reports\\modelli\\percorso_riusabile_2026-10-05\\generation_successors_r1\\records_r1\\prediction_record.json",
+  "expected_band": null,
+  "numeric_forecast_not_registered": true,
+  "interpretation": "Single exploratory official result; compare descriptively to t28 without attributing any gain to an individual added source. No demonstrated improvement before submission."
+}

@@ -10,15 +10,15 @@ cambia una conclusione. Il testo tolto resta in `docs/storico/`: le
 [§0, §6 e §7 del 30/09 mattina](storico/PROGETTO_sezioni_0_6_7_2026-09-30.md), il
 §0 del 3/10 sera nel [consolidamento](storico/consolidamento_2026-10-03/INDICE.md).
 
-## 0. Oggi — 5 ottobre 2026, banca persistente e rifit sul riferimento originale
+## 0. Oggi — 6 ottobre 2026, banca persistente e rifit sul riferimento originale
 
 **Riferimento ufficiale:** transfer t25 con emissione t28, massimo osservato **0,144845**, non conclusivo ([CP-0052](checkpoints/0052-t28-punteggio-ufficiale.md)). Il proprietario chiede lo stesso modello su banca ampliata; design neurale successivo distinto. Stato, assegnazioni e autorizzazioni correnti solo in [R-LEAD](piani/strategia-scientifica.md).
 
 **Dati:** circa 395,75 GB grezzi conservati, 45 unità storage censite. [Ingresso unico riconciliato](../reports/analisi/riconciliazione_banca_2026-10-05/README.md) distingue archivio, banca, campioni, ammissione e consumo. Campioni persistenti non significano training cellulare: il transfer usa pseudobulk. Il vincolo [D-053](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile) resta aperto per catalogo completo, adapter/QC e uso effettivo.
 
-**Rifit:** il mix parziale precedente è concluso, ma il consumatore ha rilevato una maschera dei geni diversa dall'originale: sei cache corrette sono state verificate e montate nel job finale. Il cache K562 GWPS del riferimento è stato recuperato byte-identico e caricato; il suo consumo in un fit riuscito resta da verificare. [Prove e limiti](../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r15.md). HIPSCI e altre fonti archiviate non sono ancora tutte collegate. Nessun miglioramento dimostrato.
+**Rifit:** concluso il transfer originale t25 con emitter t28 sulla release estesa parziale. Sei cache corrette, K562 storico BULK e controlli montati; 13 nomi registrati, 9 con target sul pannello. Sono fonti, non 9 linee distinte. HIPSCI e altre fonti archiviate non sono ancora tutte collegate. Nessun miglioramento dimostrato. [Prove e limiti](../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r17.md).
 
-**Consegna:** cache K562 e controlli ufficiali sono caricati privati dopo consenso specifico; rifit/generazione .vcc accettato su Kaggle alle23:29:37, provider RUNNING. Fonti compatibili aggiunte fino alle 23:30 locali, poi release congelata e generazione; upload entro le 02:00 è un obiettivo, non una promessa. L'invio esplorativo è autorizzato senza banco comparativo. Nessun nuovo candidato inviato da questa campagna.
+**Consegna:** candidato completo, packaging PASS: 360.000 cellule generate, distinte dalle cellule sperimentali della banca. Download a blocchi ripreso dopo interruzione; nome **t36** richiesto dal proprietario, invio del file esatto autorizzato. Stato e processo solo in R-LEAD. Non ancora dichiarato inviato; upload entro le 02:00 resta obiettivo, non promessa.
 
 **Esiti precedenti:** l'ibrido D-056 aveva un guadagno locale più piccolo a rumore ridotto e un danno PDS sul fold esportato ([CP-0065](checkpoints/0065-d056-confronti-e-rumore-del-banco.md), [CP-0066](checkpoints/0066-banco-v2-t28-cinque-linee.md)); t30 non migliora t25 sul sito ([CP-0064](checkpoints/0064-t30-ibrido-selettivo-punteggio-ufficiale.md)). Il rifit corrente non è un nuovo ibrido. Tutti i punteggi stanno nell'[indice degli invii](../reports/invii/README.md).
 
