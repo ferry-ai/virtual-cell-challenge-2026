@@ -1,5 +1,13 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Indice unico dell'archivio, 5/10:** [banca attuale e percorsi](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r1/README.md)
+  conserva grezzi, 15 banche e campioni per unità, account/versioni/ricevute/hash;
+  27 identità già chiuse validate tramite `release_lock.resolve`. Il manifest
+  mantiene le voci storiche e classifica il cubo r2 come pilot, senza fallback.
+  Nuovi dataset aggiungono derivati propri e una nuova release; non ripetere
+  ingestion o derivati invariati. Campioni nuovi ancora da chiudere; integrare
+  il vincolo del manifest nel trainer/resume prima del fit esteso.
+
 - **Condivisione KOLF/HCT116 verificata, 5/10:** il proprietario pubblica i primi
   due blocchi. Accessi verificati sui due account consumatori; quattro nuovi job
   accettati, due su davidmaisterx e due su davideferante.

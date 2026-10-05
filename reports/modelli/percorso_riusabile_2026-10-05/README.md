@@ -1,5 +1,10 @@
 # Archivio, banca e trainer riutilizzabili
 
+**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r1/README.md),
+con manifest immutabile, account, versioni, hash e distinzione dai dataset storici.
+Include 15 banche verificate e 12 matrici campionate CD4 complete; le nuove parti
+restano aperte. `build_cloud_catalog.py` crea nuove revisioni senza ingestion.
+
 Mandato del proprietario, 5 ottobre 2026: supervisionare la catena completa,
 conservare gli output su Kaggle e includere tutte le linee e i contesti idonei.
 Questo report contiene strumenti e verifiche operative; non dimostra un nuovo
