@@ -39,6 +39,7 @@ membri di ogni invio sono nel suo `comparison.json`.
 | t30 | +0,027878 | 781 | rete sulle sorgenti r1 con il generatore del t22: ramo c (sotto 0,06); l'ampiezza appresa riduce gli effetti di circa 20 volte; PDS +0,36, membri DE quasi nulli ([CP-0056](../../docs/checkpoints/0056-t30-punteggio-ufficiale.md)) |
 | t31 | +0,078749 | 652 | media a pesi uguali delle linee pubbliche ×2 con il generatore del t22: ramo c (0,06–0,10); +0,051 sul t30, −0,029 sul t15; NMAE −0,10, MSE grezza 7,73 ([CP-0057](../../docs/checkpoints/0057-t31-punteggio-ufficiale.md)) |
 | t34 (provvisorio) | +0,076732 | 674 | rete contrastiva sugli effetti sul transfer K562 del t31: ramo b, t34 − t31 = −0,0020, non conclusivo; PDS −0,021, fedeltà +0,012 ([CP-0059](../../docs/checkpoints/0059-t34-contrastiva-punteggio.md)) |
+| t35 (provvisorio) | +0,089314 | 647 | t34 più lo spostamento dei conteggi verso le magnitudini della rete L1 (`rete_anti`), stesse cellule: **ramo a**, t35 − t34 = +0,0126 (banda registrata +0,005…+0,03, centro +0,013); nMAE scalata +0,075 (grezza 1,066 → 1,020), PDS identico, fedeltà +0,005, reach −0,002, Jaccard −0,003; MSE grezza 7,65 → 7,50 (lo spostamento la tocca poco); entry 2amQBkbhdjqEj52vDA5C, [confronto](prediction_t35_2026-10-04/comparison.json) |
 
 Non inviati: t04, t06, t12, t18, t19, t27 (generato e impacchettato il 29/09, tenuto
 pronto dal proprietario), t09 e t13 (fermati dalle loro regole), t21 (la sua previsione è citata ma non è nel repository: vedi la
