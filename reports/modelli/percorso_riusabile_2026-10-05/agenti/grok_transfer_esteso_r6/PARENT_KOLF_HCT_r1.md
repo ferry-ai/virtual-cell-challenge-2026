@@ -1,0 +1,7 @@
+# New jobs and exact receipts
+
+HCT116 now verified derived,72splits/6statistics, no missing output splits;917blocked labels still unresolved. Receipt sourcefits_status_r5/verification.json, runtime matrix hashes remain consumer duty.
+
+KOLFmetabolic df11/vcc-effects-kolf-metabolic-r4 and KOLFpan mx/vcc-effects-kolf-pan-genome-r4 now accepted/RUNNING in sourcefits_launch_r1; eleven sourcefits total plus three CD4 joint. Pan was assigned to FREE mx account after both mx/third successfully accessed existing PUBLIC df11/vcc-bank-kolf-pan-r1 (kolf_cross_access_r1.json). Same embedded r4 code/params/hash; metadata owner only changed, actual resource wrapper unchanged. Do NOT hardcode original owner for pan. KOLFstrong still pending on df11, other accounts cannot read its private derivative input. No duplicate compute.
+
+CD4joint all3 still RUNNING preflight_joint_progress_r2.json. Parent new source_fit_state_v2.py reuses saved partial HEK receipt too and explicitly records launches after snapshot as unobserved instead of aborting. sourcefits_status_r4 attempt failed due snapshot preceding newlaunch, not producer failure; use r5. Mixer ready must include all scientifically compatible source outputs, not only original five. HCT fullproduction rows and HEKpartial arrays need exact se/raw/shrunk checks; output budgets still constrain persistence, reuse/partition equivalently, no guard weakening.

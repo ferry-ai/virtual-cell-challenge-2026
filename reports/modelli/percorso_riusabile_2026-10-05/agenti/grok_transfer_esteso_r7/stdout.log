@@ -1,0 +1,16 @@
+Il problema è il pooling: H1 e i frammenti multi-BIO vengono mediati dopo lo shrink. Leggo la review e lo script 98, poi preparo in r7 i job che uniscono le conte prima di `z_shrink`.H1 train e val sono gli unici due banchi con lo stesso `transfer_source_id`. Il joint li somma prima dello shrink; le altre linee già chiuse restano una tabella ciascuna.Il joint H1 che ho abbozzato sparge le colonne due volte. Lo riscrivo: un solo `effects_from_pseudobulk` sulle conte unite.Il lavoro r7 è a metà: i moduli ci sono e i test non sono ancora partiti. Leggo lo stato dei file, correggo i difetti noti e lancio i pacchetti pronti per il dispatch.Nel folder r7 ci sono due note del parent che il riepilogo non copriva. Le leggo insieme ai moduli da correggere prima di eseguire i test.Il pannello originale è `pert_counts.csv`: 300 bersagli, non l’unione da 12k. H1 ne copre 17 negli indici locali. Proietto le statistiche già esatte su quel pannello e preparo il joint H1 prima dello shrink.Due pacchetti sono pronti per il push del parent. Il mixer aspetta l'output del joint H1. Non ho chiamato Kaggle.
+
+`ready_dispatch.json` è in `reports/modelli/percorso_riusabile_2026-10-05/agenti/grok_transfer_esteso_r7/`, utc 2026-10-05T19:00:09Z. `worker_pushed` false.
+
+Spingere ora:
+
+1. `davideferrante11/vcc-effects-h1-joint-r7` — pool di `h1_train` e `h1_val` prima di `z_shrink`, un solo voto. Input: la banca `vcc-derivatives-rlab-h1-vcc2025-trainval` e l'asse. Non i kernel di effetti già shrunk.
+2. `davideferrante11/vcc-effects-hek293t-j-a549-f4-r7` — solo lo split `J:A549:f4`. Non sostituisce la produzione HEK.
+
+`davideferrante11/vcc-effects-mix-t25-r7` ha `push_now` false. Va spinto quando il joint H1 è COMPLETE con shrunk, raw e se. Monta i tre joint CD4 (Stim8hr è `retry1`), le fonti chiuse e i retry metabolic/strong. Pan `access1` non è montato. Gli slug falliti non sono in `kernel_sources`.
+
+Il pannello t25 è `raw/controls/pert_counts.csv`: 300 bersagli. Proiettare una statistica completa su quel pannello coincide con `effects_from_pseudobulk(targets=panel)`. Il centraggio sull'unione dei bersagli no. Sugli indici locali, H1 ha 13 bersagli di train e 4 di val sul pannello. Gli altri restano inventario.
+
+`test_r7_pool.py`: 7 test PASS. La media post-shrink non coincide con la chiamata originale. L'adattatore sì, anche su due banche sintetiche. `scripts/31_check_docs.py` è OK e non ha chiesto una riga di registro.
+
+`fit_ready` false. `comparison_started` false. `local_score` null. Il banco 400×5 non è partito.

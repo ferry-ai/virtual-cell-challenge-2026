@@ -1,0 +1,545 @@
+{
+ "kind": "ready_dispatch",
+ "wave": "r6",
+ "worker_pushed": false,
+ "kaggle_called": false,
+ "fit_admitted": false,
+ "fit_ready": false,
+ "all_compatible_admitted": false,
+ "claims_complete_training": false,
+ "claims_complete_corpus": false,
+ "is_final_d053_catalogue": false,
+ "training_ready": false,
+ "loss": null,
+ "optimizer": null,
+ "loss_note": "The linear model has no optimizer and no loss. No benefit is read from a loss.",
+ "storage_sha256": "7134c13c741e04b1bb90b15f42afd2a50e653454aca17e49005edcad6f2e7fdf",
+ "axis": {
+  "dataset": "davideferrante11/vcc-ingest-code-cd4-r1",
+  "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+  "genes": 18533,
+  "bytes": 119295,
+  "ordering": "gene_name CSV row order, zero based official_index"
+ },
+ "cis": {
+  "recipe_path": "reports/cis_2026-09-17/k562_neighbour_pairs.csv",
+  "recipe_path_present": false,
+  "located_present": true,
+  "max_distance_bp": 5000,
+  "scale": 2.0,
+  "applied_in_effect_kernel": false,
+  "applied_in_mixer": false,
+  "sha256": "d874c305f12e932d2d43eff629ea7d44c8536b7a198868c8fac10007d01dcf8f",
+  "bytes": 248599
+ },
+ "coverage_contract": {
+  "expected_sha256": "f7edac31784e56fab3a192e74dc0b6b8ea56bc1496dbba5d5c06c753d2e66015",
+  "launches_frozen_sha256": "f570efeb0d0efe3fdc39413339185265e9dc7c3135e9cf5086ff13e024ec9368",
+  "claims_complete_training": false,
+  "claims_complete_corpus": false
+ },
+ "model": {
+  "gamma": 1.0,
+  "reliability_scale": 100.0,
+  "weight": 1.0,
+  "amplitude": 1.576,
+  "amplitude_applied": false,
+  "cis_applied": false,
+  "effects_scale_applied": false,
+  "effect": "shrunk",
+  "cd4_condition_gamma": 0.0,
+  "reference_t28_score_transcribed": 0.14484520500645978,
+  "score_measured_here": false,
+  "selection_rule": "split_identity"
+ },
+ "emission": {
+  "effects_scale": 1.5,
+  "gene_dispersion": true,
+  "gene_dispersion_scale": 1.0,
+  "cells_per_target": 400,
+  "generator_seed": 20260912,
+  "seed_indices": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "trial": "trial-ext-profile"
+ },
+ "selection_rule": "split_identity",
+ "frozen_ledgers": [
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_status_r6/verification.json",
+   "snapshot": "sourcefits_status_r6__verification.json",
+   "sha256": "d1ff62e02c19477289074b89509e1340cd5259c7b9bc18740268937a72900a9a",
+   "bytes": 14757,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_status_r3/verification.json",
+   "snapshot": "sourcefits_status_r3__verification.json",
+   "sha256": "b55696512adde200dbcb08ea26eb47ccd7cfbf0f590ad1f94bb0ff3579eb6f60",
+   "bytes": 11247,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/public_cd4_fragments_r1/consumer_verified.json",
+   "snapshot": "public_cd4_fragments_r1__consumer_verified.json",
+   "sha256": "3a3ec27d025fb6edc92ae74bfb70b53d32bb538e5c76117000d94e543b8b0961",
+   "bytes": 1112,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/preflight_public_joint_r1.json",
+   "snapshot": "percorso_riusabile_2026-10-05__preflight_public_joint_r1.json",
+   "sha256": "6ea02284d6e9b16d18f128d7c3cd8e8f4a153972370e9785456bc27f26bc6fcb",
+   "bytes": 14381,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-h1-train-r4.json",
+   "snapshot": "sourcefits_launch_r1__vcc-effects-h1-train-r4.json",
+   "sha256": "762115d77840dbe0b8bc7cde512a212bef183e8de7b2ae4e32b2bfbb79f2514f",
+   "bytes": 1447,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-h1-val-r4.json",
+   "snapshot": "sourcefits_launch_r1__vcc-effects-h1-val-r4.json",
+   "sha256": "31637c9c4f0a6cb30a316d5c2bae7d8bcdf7a383e96a4ce06604124da39a02fd",
+   "bytes": 1437,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-hepg2-nadig-r4.json",
+   "snapshot": "sourcefits_launch_r1__vcc-effects-hepg2-nadig-r4.json",
+   "sha256": "948b1d460fca2cf079bca86d84ab842b5c21820beb6d1d4ae7ab1a7cee769469",
+   "bytes": 1438,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-jurkat-nadig-r4.json",
+   "snapshot": "sourcefits_launch_r1__vcc-effects-jurkat-nadig-r4.json",
+   "sha256": "68ab19f1288bbd4fbe8ddcaada00508d99a102b3044f3fad9a543ab1975c45d3",
+   "bytes": 1446,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-k562-essential-r4.json",
+   "snapshot": "sourcefits_launch_r1__vcc-effects-k562-essential-r4.json",
+   "sha256": "54690862fa4a44d14db111d79663e3cd0c57247685afafe953b7e99f7cbf7ba4",
+   "bytes": 1450,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-kolf-chromatin-r4.json",
+   "snapshot": "sourcefits_launch_r1__vcc-effects-kolf-chromatin-r4.json",
+   "sha256": "615dadd9f173c4ff86a8b8127fbae522146e7ab857043ada7fdb94629cddc5ee",
+   "bytes": 1444,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-kolf-metabolic-r4.json",
+   "snapshot": "sourcefits_launch_r1__vcc-effects-kolf-metabolic-r4.json",
+   "sha256": "cfbc735fb24407e0018a2548a48667257472cf27a39709f04ef473bf1cefb82b",
+   "bytes": 1444,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-kolf-pan-genome-r4-access1.json",
+   "snapshot": "sourcefits_launch_r1__vcc-effects-kolf-pan-genome-r4-access1.json",
+   "sha256": "d271548f3e096ef627acea47b3bf8c59a4cdbc79239b991cf4e2291c45b37f4b",
+   "bytes": 1616,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-kolf-pan-genome-r4.json",
+   "snapshot": "sourcefits_launch_r1__vcc-effects-kolf-pan-genome-r4.json",
+   "sha256": "66c44622752d48728ebc9a1bc2df2d3026d35afe6d9abc8e46963a12b50fcd54",
+   "bytes": 1537,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-kolf-strong-r4.json",
+   "snapshot": "sourcefits_launch_r1__vcc-effects-kolf-strong-r4.json",
+   "sha256": "db161aa337672cd7c716e974bcc5693cd5260b93ea09fedb87bdba14578db2b3",
+   "bytes": 1432,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-orion-hct116-r4.json",
+   "snapshot": "sourcefits_launch_r1__vcc-effects-orion-hct116-r4.json",
+   "sha256": "6cd28383bf0ab1e9c3f96bb75f4d27be93103e2ebb581a675732c0ee6a0bc5c4",
+   "bytes": 1419,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-orion-hek293t-r4.json",
+   "snapshot": "sourcefits_launch_r1__vcc-effects-orion-hek293t-r4.json",
+   "sha256": "dc623358e9957d093934e15d2298386b63b92602c5064133575398afc6a6799b",
+   "bytes": 1427,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/sourcefits_launch_r1/vcc-effects-rpe1-r4.json",
+   "snapshot": "sourcefits_launch_r1__vcc-effects-rpe1-r4.json",
+   "sha256": "eb713c4ba9ef9b7ef2200e5f615b6efc21bb71fae6e4afa0dc765b7d0a11659c",
+   "bytes": 1391,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/cd4_joint_launch_r1/vcc-effects-cd4-rest-joint-r5.json",
+   "snapshot": "cd4_joint_launch_r1__vcc-effects-cd4-rest-joint-r5.json",
+   "sha256": "0af148d247b7c74bb98971149a80f54d01843e360e94fb12b719cec5157ccc15",
+   "bytes": 1475,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/cd4_joint_launch_r1/vcc-effects-cd4-stim48hr-joint-r5.json",
+   "snapshot": "cd4_joint_launch_r1__vcc-effects-cd4-stim48hr-joint-r5.json",
+   "sha256": "b55373d190320b39e6bf8b931ff103b743fd7947e8d35d426a347d7505974a27",
+   "bytes": 1507,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/cd4_joint_launch_r1/vcc-effects-cd4-stim8hr-joint-r5-retry1.json",
+   "snapshot": "cd4_joint_launch_r1__vcc-effects-cd4-stim8hr-joint-r5-retry1.json",
+   "sha256": "e8329466a0440e408dbde0ab9cbba95f8ce10063cadcb272e84a82dc4c8f4441",
+   "bytes": 1682,
+   "copied": true
+  },
+  {
+   "source": "reports/modelli/percorso_riusabile_2026-10-05/cd4_joint_launch_r1/vcc-effects-cd4-stim8hr-joint-r5.json",
+   "snapshot": "cd4_joint_launch_r1__vcc-effects-cd4-stim8hr-joint-r5.json",
+   "sha256": "16a28fc7cbbb937633bad153e8039f5b3cd0efac4ee77653930ac6bd2cfba6dc",
+   "bytes": 1499,
+   "copied": true
+  }
+ ],
+ "packages": [
+  {
+   "slug": "vcc-effects-mix-t25-r6",
+   "owner": "davideferrante11",
+   "phase": "mix",
+   "push_now": false,
+   "push_when": "the three CD4 joint outputs are COMPLETE. Stim8hr is the accepted retry1 kernel: the first stim8hr slug had no scientific output and is not mounted. HCT and the other required sourcefits are already in this kernel. HEK is mounted and votes only when shrunk, raw and se are present. Metabolic, strong and pan access1 stay deferred until their outputs exist.",
+   "worker_pushed": false,
+   "kernel_sources": [
+    "davideferrante11/vcc-effects-cd4-rest-joint-r5",
+    "davideferrante11/vcc-effects-cd4-stim8hr-joint-r5-retry1",
+    "davideferrante11/vcc-effects-cd4-stim48hr-joint-r5",
+    "davideferrante11/vcc-effects-h1-train-r4",
+    "davideferrante11/vcc-effects-h1-val-r4",
+    "davideferrante11/vcc-effects-hepg2-nadig-r4",
+    "davideferrante11/vcc-effects-jurkat-nadig-r4",
+    "davidmaisterx/vcc-effects-k562-essential-r4",
+    "davideferrante11/vcc-effects-kolf-chromatin-r4",
+    "davideferrante11/vcc-effects-orion-hct116-r4",
+    "davideferrante11/vcc-effects-orion-hek293t-r4",
+    "davideferrante11/vcc-effects-rpe1-r4"
+   ],
+   "kernel_sources_when_remaining_kolf_exact": [
+    "davideferrante11/vcc-effects-cd4-rest-joint-r5",
+    "davideferrante11/vcc-effects-cd4-stim8hr-joint-r5-retry1",
+    "davideferrante11/vcc-effects-cd4-stim48hr-joint-r5",
+    "davideferrante11/vcc-effects-h1-train-r4",
+    "davideferrante11/vcc-effects-h1-val-r4",
+    "davideferrante11/vcc-effects-hepg2-nadig-r4",
+    "davideferrante11/vcc-effects-jurkat-nadig-r4",
+    "davidmaisterx/vcc-effects-k562-essential-r4",
+    "davideferrante11/vcc-effects-kolf-chromatin-r4",
+    "davideferrante11/vcc-effects-orion-hct116-r4",
+    "davideferrante11/vcc-effects-orion-hek293t-r4",
+    "davideferrante11/vcc-effects-rpe1-r4",
+    "davideferrante11/vcc-effects-kolf-metabolic-r4-retry1",
+    "davideferrante11/vcc-effects-kolf-metabolic-r4",
+    "davidmaisterx/vcc-effects-kolf-pan-genome-r4-access1",
+    "davideferrante11/vcc-effects-kolf-strong-r4-retry1",
+    "davideferrante11/vcc-effects-kolf-strong-r4"
+   ],
+   "dataset_sources": [
+    "davideferrante11/vcc-ingest-code-cd4-r1"
+   ],
+   "enable_gpu": false,
+   "enable_internet": false,
+   "is_private": true,
+   "ram_budget_bytes": 6442450944,
+   "output_budget_bytes": 10737418240,
+   "parent_push_command": "Remove-Item Env:KAGGLE_USERNAME,Env:KAGGLE_KEY,Env:KAGGLE_API_TOKEN,Env:KAGGLE_CONFIG_DIR -ErrorAction SilentlyContinue; $env:KAGGLE_CONFIG_DIR = Join-Path $HOME '.kaggle-davideferrante11'; $py = & .\\scripts\\py.cmd -c \"import sys; print(sys.executable)\"; $kaggle = Join-Path (Split-Path $py) 'kaggle.exe'; & $kaggle kernels push -p 'C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\agenti\\grok_transfer_esteso_r6\\packages\\vcc-effects-mix-t25-r6'",
+   "later_metadata": "kernel-metadata-when-remaining-kolf-exact.json",
+   "pan_repair_already_running": "davidmaisterx/vcc-effects-kolf-pan-genome-r4-access1",
+   "pan_blocked_not_mounted": "davidmaisterx/vcc-effects-kolf-pan-genome-r4"
+  }
+ ],
+ "parent_can_push_new": [],
+ "do_not_relaunch": [
+  "davideferrante11/vcc-derivatives-rlab-k562-gwps-r3",
+  "davidmaisterx/vcc-reuse-runtime-norman-ipsc-r1",
+  "davideferante/vcc-derivatives-hipsci-targeted19-r1",
+  "davideferrante11/vcc-effects-cd4-stim8hr-joint-r5",
+  "davideferrante11/vcc-effects-h1-train-r4",
+  "davideferrante11/vcc-effects-h1-val-r4",
+  "davideferrante11/vcc-effects-hepg2-nadig-r4",
+  "davideferrante11/vcc-effects-jurkat-nadig-r4",
+  "davidmaisterx/vcc-effects-k562-essential-r4",
+  "davideferrante11/vcc-effects-kolf-chromatin-r4",
+  "davideferrante11/vcc-effects-kolf-metabolic-r4-retry1",
+  "davideferrante11/vcc-effects-kolf-metabolic-r4",
+  "davidmaisterx/vcc-effects-kolf-pan-genome-r4-access1",
+  "davidmaisterx/vcc-effects-kolf-pan-genome-r4",
+  "davideferrante11/vcc-effects-kolf-strong-r4-retry1",
+  "davideferrante11/vcc-effects-kolf-strong-r4",
+  "davideferrante11/vcc-effects-orion-hct116-r4",
+  "davideferrante11/vcc-effects-orion-hek293t-r4",
+  "davideferrante11/vcc-effects-rpe1-r4",
+  "davideferrante11/vcc-effects-cd4-rest-joint-r5",
+  "davideferrante11/vcc-effects-cd4-stim8hr-joint-r5-retry1",
+  "davideferrante11/vcc-effects-cd4-stim48hr-joint-r5"
+ ],
+ "consumed_fragments": [
+  {
+   "slug": "davideferrante11/vcc-effects-h1-train-r4",
+   "owner": "davideferrante11",
+   "unit": "h1_train",
+   "transfer_source_id": "h1",
+   "line_group": "H1",
+   "training_vote": false,
+   "role": "fragment",
+   "admission": "required",
+   "condition": null
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-h1-val-r4",
+   "owner": "davideferrante11",
+   "unit": "h1_val",
+   "transfer_source_id": "h1",
+   "line_group": "H1",
+   "training_vote": false,
+   "role": "fragment",
+   "admission": "required",
+   "condition": null
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-hepg2-nadig-r4",
+   "owner": "davideferrante11",
+   "unit": "hepg2_nadig",
+   "transfer_source_id": "hepg2_nadig",
+   "line_group": "HepG2",
+   "training_vote": true,
+   "role": "fragment",
+   "admission": "required",
+   "condition": null
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-jurkat-nadig-r4",
+   "owner": "davideferrante11",
+   "unit": "jurkat_nadig",
+   "transfer_source_id": "jurkat_nadig",
+   "line_group": "Jurkat",
+   "training_vote": true,
+   "role": "fragment",
+   "admission": "required",
+   "condition": null
+  },
+  {
+   "slug": "davidmaisterx/vcc-effects-k562-essential-r4",
+   "owner": "davidmaisterx",
+   "unit": "k562_essential",
+   "transfer_source_id": "k562_essential",
+   "line_group": "K562",
+   "training_vote": true,
+   "role": "fragment",
+   "admission": "required",
+   "condition": null
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-kolf-chromatin-r4",
+   "owner": "davideferrante11",
+   "unit": "kolf_chromatin",
+   "transfer_source_id": "kolf_chromatin",
+   "line_group": "iPSC",
+   "training_vote": true,
+   "role": "fragment",
+   "admission": "required",
+   "condition": null
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-kolf-metabolic-r4-retry1",
+   "owner": "davideferrante11",
+   "unit": "kolf_metabolic",
+   "transfer_source_id": "kolf_metabolic",
+   "line_group": "iPSC",
+   "training_vote": true,
+   "role": "fragment",
+   "admission": "if_exact",
+   "condition": null
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-kolf-metabolic-r4",
+   "owner": "davideferrante11",
+   "unit": "kolf_metabolic",
+   "transfer_source_id": "kolf_metabolic",
+   "line_group": "iPSC",
+   "training_vote": true,
+   "role": "fragment",
+   "admission": "if_exact",
+   "condition": null
+  },
+  {
+   "slug": "davidmaisterx/vcc-effects-kolf-pan-genome-r4-access1",
+   "owner": "davidmaisterx",
+   "unit": "kolf_pan_genome",
+   "transfer_source_id": "kolf_pan_genome",
+   "line_group": "iPSC",
+   "training_vote": true,
+   "role": "fragment",
+   "admission": "if_exact",
+   "condition": null
+  },
+  {
+   "slug": "davidmaisterx/vcc-effects-kolf-pan-genome-r4",
+   "owner": "davidmaisterx",
+   "unit": "kolf_pan_genome",
+   "transfer_source_id": "kolf_pan_genome",
+   "line_group": "iPSC",
+   "training_vote": true,
+   "role": "fragment",
+   "admission": "if_exact",
+   "condition": null
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-kolf-strong-r4-retry1",
+   "owner": "davideferrante11",
+   "unit": "kolf_strong",
+   "transfer_source_id": "kolf_strong",
+   "line_group": "iPSC",
+   "training_vote": true,
+   "role": "fragment",
+   "admission": "if_exact",
+   "condition": null
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-kolf-strong-r4",
+   "owner": "davideferrante11",
+   "unit": "kolf_strong",
+   "transfer_source_id": "kolf_strong",
+   "line_group": "iPSC",
+   "training_vote": true,
+   "role": "fragment",
+   "admission": "if_exact",
+   "condition": null
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-orion-hct116-r4",
+   "owner": "davideferrante11",
+   "unit": "orion_hct116",
+   "transfer_source_id": "orion_hct116",
+   "line_group": "HCT116",
+   "training_vote": true,
+   "role": "fragment",
+   "admission": "required",
+   "condition": null
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-orion-hek293t-r4",
+   "owner": "davideferrante11",
+   "unit": "orion_hek293t",
+   "transfer_source_id": "orion_hek293t",
+   "line_group": "HEK293T",
+   "training_vote": true,
+   "role": "fragment",
+   "admission": "if_exact",
+   "condition": null
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-rpe1-r4",
+   "owner": "davideferrante11",
+   "unit": "rpe1",
+   "transfer_source_id": "rpe1",
+   "line_group": "RPE1",
+   "training_vote": true,
+   "role": "fragment",
+   "admission": "required",
+   "condition": null
+  }
+ ],
+ "catalogue_gaps": [
+  {
+   "name": "k562_gwps",
+   "reason": "open_parent_job",
+   "evidence": "The parent GWPS kernel stays running. k562_essential does not replace it."
+  },
+  {
+   "name": "kolf_metabolic",
+   "reason": "accepted_output_not_mounted",
+   "evidence": "Receipt accepted and the snapshot still says RUNNING. Not relaunched. It votes only if a later mount is exact."
+  },
+  {
+   "name": "kolf_strong",
+   "reason": "accepted_output_not_observed",
+   "evidence": "Receipt accepted. The status snapshot has no provider status. Not relaunched."
+  },
+  {
+   "name": "kolf_pan_genome",
+   "reason": "technical_access_axis",
+   "evidence": "r4 completed blocked: gene_names.csv under the df11 axis found 0. access1 is accepted and was RUNNING, with the mx axis embedded and mounted. It is not duplicated. The blocked r4 output does not vote. access1 votes only if its production statistic is exact."
+  },
+  {
+   "name": "norman2019_compounds",
+   "reason": "compound_tokens_excluded",
+   "evidence": "Single-gene perturbations stay eligible. Compound tokens are excluded. No compound map is invented. Separator tokens are not split."
+  },
+  {
+   "name": "tian2021_control",
+   "reason": "control_token_unmapped",
+   "evidence": "The token control is not non-targeting without a verified map."
+  },
+  {
+   "name": "tian2019_ipsc",
+   "reason": "qc_unverified",
+   "evidence": "QC is not invented. The study is not excluded."
+  },
+  {
+   "name": "hipsci_partitions",
+   "reason": "controls_registered_not_relaunched",
+   "evidence": "Control anchors are registered. The bank kernels are not relaunched. Partition statistics are not in this mixer."
+  },
+  {
+   "name": "scp_ko_a549",
+   "reason": "adapter_not_in_this_package",
+   "evidence": "A compatible KO source is not a scientific exclusion. No statistic is launched in this package."
+  },
+  {
+   "name": "GSE249595",
+   "reason": "guides_absent",
+   "evidence": "Guides are absent and are not invented."
+  },
+  {
+   "name": "davideferante_axis",
+   "reason": "technical_access",
+   "evidence": "The third account has no axis dataset. The fix is a byte-identical gene_names.csv, not dropping the source."
+  }
+ ],
+ "comparison": {
+  "started": false,
+  "observed_result": null,
+  "local_score": null,
+  "blocks_phase_1": false,
+  "cells_per_target": 400,
+  "seeds": 5,
+  "official_t28_score_is_not_the_local_baseline": 0.14484520500645978,
+  "rule": "six-member delta resolved positive, the same without Jaccard resolved positive, PDS not resolved negative, and expanded-arm local score >= 0.100"
+ },
+ "export_contract": {
+  "mixer_writes": "cache/<source>.npz in the stage-98 save_table layout, plus effects.npz of the gamma-1 mix",
+  "stage100_reads_cache_not_effects_npz": true,
+  "amplitude_1_576_and_cis_5000_scale_2_applied_in": "scripts/100_build_context_effects.py",
+  "effects_scale_1_5_applied_in": "scripts/45_generate_prediction.py read_effects",
+  "applied_in_mixer": false,
+  "double_application": false,
+  "evaluation_started": false
+ },
+ "n_packages": 1,
+ "utc": "2026-10-05T18:26:02Z"
+}

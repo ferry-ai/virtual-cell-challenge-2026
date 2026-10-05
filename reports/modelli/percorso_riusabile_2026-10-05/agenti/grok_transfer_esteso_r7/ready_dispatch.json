@@ -1,0 +1,291 @@
+{
+ "kind": "ready_dispatch",
+ "wave": "r7",
+ "utc": "2026-10-05T19:00:09Z",
+ "worker_pushed": false,
+ "kaggle_called": false,
+ "fit_ready": false,
+ "fit_admitted": false,
+ "claims_complete_training": false,
+ "all_compatible_admitted": false,
+ "push_order": [
+  "vcc-effects-h1-joint-r7",
+  "vcc-effects-hek293t-j-a549-f4-r7",
+  "vcc-effects-mix-t25-r7"
+ ],
+ "packages": [
+  {
+   "slug": "vcc-effects-h1-joint-r7",
+   "owner": "davideferrante11",
+   "push_now": true,
+   "ready_for_parent": true,
+   "kernel_sources": [
+    "davideferrante11/vcc-derivatives-rlab-h1-vcc2025-trainval"
+   ],
+   "parent_push_command": "Remove-Item Env:KAGGLE_USERNAME,Env:KAGGLE_KEY,Env:KAGGLE_API_TOKEN,Env:KAGGLE_CONFIG_DIR -ErrorAction SilentlyContinue; $env:KAGGLE_CONFIG_DIR = Join-Path $HOME '.kaggle-davideferrante11'; $py = & .\\scripts\\py.cmd -c \"import sys; print(sys.executable)\"; $kaggle = Join-Path (Split-Path $py) 'kaggle.exe'; & $kaggle kernels push -p 'C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\agenti\\grok_transfer_esteso_r7\\packages\\vcc-effects-h1-joint-r7'",
+   "push_when": "parent may push now; inputs are the existing banks"
+  },
+  {
+   "slug": "vcc-effects-hek293t-j-a549-f4-r7",
+   "owner": "davideferrante11",
+   "push_now": true,
+   "ready_for_parent": true,
+   "kernel_sources": [
+    "davideferrante11/vcc-bank-orion-hek293t-r1"
+   ],
+   "parent_push_command": "Remove-Item Env:KAGGLE_USERNAME,Env:KAGGLE_KEY,Env:KAGGLE_API_TOKEN,Env:KAGGLE_CONFIG_DIR -ErrorAction SilentlyContinue; $env:KAGGLE_CONFIG_DIR = Join-Path $HOME '.kaggle-davideferrante11'; $py = & .\\scripts\\py.cmd -c \"import sys; print(sys.executable)\"; $kaggle = Join-Path (Split-Path $py) 'kaggle.exe'; & $kaggle kernels push -p 'C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\agenti\\grok_transfer_esteso_r7\\packages\\vcc-effects-hek293t-j-a549-f4-r7'",
+   "push_when": "parent may push now; inputs are the existing banks"
+  },
+  {
+   "slug": "vcc-effects-mix-t25-r7",
+   "owner": "davideferrante11",
+   "push_now": false,
+   "ready_for_parent": false,
+   "kernel_sources": [
+    "davideferrante11/vcc-effects-cd4-rest-joint-r5",
+    "davideferrante11/vcc-effects-cd4-stim48hr-joint-r5",
+    "davideferrante11/vcc-effects-cd4-stim8hr-joint-r5-retry1",
+    "davideferrante11/vcc-effects-hepg2-nadig-r4",
+    "davideferrante11/vcc-effects-jurkat-nadig-r4",
+    "davidmaisterx/vcc-effects-k562-essential-r4",
+    "davideferrante11/vcc-effects-kolf-chromatin-r4",
+    "davideferrante11/vcc-effects-kolf-metabolic-r4-retry1",
+    "davideferrante11/vcc-effects-kolf-strong-r4-retry1",
+    "davideferrante11/vcc-effects-orion-hct116-r4",
+    "davideferrante11/vcc-effects-orion-hek293t-r4",
+    "davideferrante11/vcc-effects-rpe1-r4",
+    "davideferrante11/vcc-effects-h1-joint-r7",
+    "davideferrante11/vcc-effects-hek293t-j-a549-f4-r7"
+   ],
+   "parent_push_command": "Remove-Item Env:KAGGLE_USERNAME,Env:KAGGLE_KEY,Env:KAGGLE_API_TOKEN,Env:KAGGLE_CONFIG_DIR -ErrorAction SilentlyContinue; $env:KAGGLE_CONFIG_DIR = Join-Path $HOME '.kaggle-davideferrante11'; $py = & .\\scripts\\py.cmd -c \"import sys; print(sys.executable)\"; $kaggle = Join-Path (Split-Path $py) 'kaggle.exe'; & $kaggle kernels push -p 'C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\agenti\\grok_transfer_esteso_r7\\packages\\vcc-effects-mix-t25-r7'",
+   "push_when": "after vcc-effects-h1-joint-r7 is COMPLETE with shrunk, raw and se. Stim8hr, metabolic and strong retries are already derived. The HEK repair does not replace HEK production."
+  }
+ ],
+ "superseded_not_mounted": [
+  "davideferrante11/vcc-effects-cd4-stim8hr-joint-r5",
+  "davideferrante11/vcc-effects-kolf-metabolic-r4",
+  "davideferrante11/vcc-effects-kolf-strong-r4",
+  "davidmaisterx/vcc-effects-kolf-pan-genome-r4"
+ ],
+ "panel": {
+  "n": 300,
+  "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+  "file_sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+  "path": "raw/controls/pert_counts.csv"
+ },
+ "h1_identity": {
+  "present": true,
+  "h1_train_targets": 150,
+  "h1_val_targets": 50,
+  "shared_targets": 0,
+  "h1_test_in_indexes": false,
+  "local_index_on_panel": {
+   "h1_train": 13,
+   "h1_val": 4,
+   "note": "local index.csv, not the cloud count_sum rows"
+  },
+  "same_transfer_source_id": "h1",
+  "pooling": "count_sum before z_shrink",
+  "controls": "identical non-targeting count rows are kept once",
+  "off_panel_targets_stay_inventory": true
+ },
+ "ledger_note": "preflight_joint_progress_r4 predates the KOLF metabolic and strong retries. sourcefits_status_r8, cd4_joint_status_r3 and preflight_joint_progress_r5 are the later closures. In r5, pan access1 and the K562 GWPS kernel were still RUNNING.",
+ "catalogue_gaps": [
+  "k562_gwps running; not mounted",
+  "kolf_pan_genome access1 running; blocked r4 not mounted",
+  "norman2019 compound tokens; no invented map",
+  "tian2021 control token is not non-targeting without a verified map",
+  "tian2019 QC not verified",
+  "hipsci anchors and partitions already registered; not relaunched here",
+  "scp KO A549 and GSE249595 guides have no statistic in this package",
+  "davideferante has no axis dataset; technical access, not a scientific exclusion"
+ ],
+ "logical_source_ids": [
+  "cd4_mix",
+  "h1",
+  "hepg2_nadig",
+  "jurkat_nadig",
+  "k562_essential",
+  "kolf_chromatin",
+  "kolf_metabolic",
+  "kolf_pan_genome",
+  "kolf_strong",
+  "orion_hct116",
+  "orion_hek293t",
+  "rpe1"
+ ],
+ "multi_group_pooled_before_shrink": {
+  "h1": [
+   "h1_train",
+   "h1_val"
+  ]
+ },
+ "reused_single_table_units": [
+  "hepg2_nadig",
+  "jurkat_nadig",
+  "k562_essential",
+  "kolf_chromatin",
+  "kolf_metabolic",
+  "kolf_pan_genome",
+  "kolf_strong",
+  "orion_hct116",
+  "orion_hek293t",
+  "rpe1"
+ ],
+ "frozen_ledgers": [
+  {
+   "snapshot": "sourcefits_status_r7__verification.json",
+   "sha256": "fc684a92405c9cd1306e0b8d765a8ba593855c4a5ad2cd4d15d5ca902a6c5c79",
+   "bytes": 15034,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_status_r8__verification.json",
+   "sha256": "c6d51ab7d456d77e81223c951b46f73068fd53c81d57262c48be3ef08721c465",
+   "bytes": 17725,
+   "copied": true
+  },
+  {
+   "snapshot": "cd4_joint_status_r2__verification.json",
+   "sha256": "c71801d83fbaae5fa805f4b02f8b5a6b25d9dd607be4ca5eacec686d52cafd5b",
+   "bytes": 3470,
+   "copied": true
+  },
+  {
+   "snapshot": "cd4_joint_status_r3__verification.json",
+   "sha256": "cdfcd3ad3687dfe758fa4dd378f63ed109547a61b971ad31281e6c0da71c0e33",
+   "bytes": 4249,
+   "copied": true
+  },
+  {
+   "snapshot": "percorso_riusabile_2026-10-05__preflight_joint_progress_r4.json",
+   "sha256": "460a14dccd656e177a69fafb6c67ec5eb2246acf3ca7abccc025c58e6302fa00",
+   "bytes": 14634,
+   "copied": true
+  },
+  {
+   "snapshot": "percorso_riusabile_2026-10-05__preflight_joint_progress_r5.json",
+   "sha256": "89ab887b17054d45061188310efb75099e58d02f57373b938182449810d3664b",
+   "bytes": 14615,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-h1-train-r4.json",
+   "sha256": "762115d77840dbe0b8bc7cde512a212bef183e8de7b2ae4e32b2bfbb79f2514f",
+   "bytes": 1447,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-h1-val-r4.json",
+   "sha256": "31637c9c4f0a6cb30a316d5c2bae7d8bcdf7a383e96a4ce06604124da39a02fd",
+   "bytes": 1437,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-hepg2-nadig-r4.json",
+   "sha256": "948b1d460fca2cf079bca86d84ab842b5c21820beb6d1d4ae7ab1a7cee769469",
+   "bytes": 1438,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-jurkat-nadig-r4.json",
+   "sha256": "68ab19f1288bbd4fbe8ddcaada00508d99a102b3044f3fad9a543ab1975c45d3",
+   "bytes": 1446,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-k562-essential-r4.json",
+   "sha256": "54690862fa4a44d14db111d79663e3cd0c57247685afafe953b7e99f7cbf7ba4",
+   "bytes": 1450,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-kolf-chromatin-r4.json",
+   "sha256": "615dadd9f173c4ff86a8b8127fbae522146e7ab857043ada7fdb94629cddc5ee",
+   "bytes": 1444,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-kolf-metabolic-r4-retry1.json",
+   "sha256": "f8e313bfccf99808d1d19dec8001086c5109abf9505e5f3947bd5a1d49ba1ac6",
+   "bytes": 1760,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-kolf-metabolic-r4.json",
+   "sha256": "cfbc735fb24407e0018a2548a48667257472cf27a39709f04ef473bf1cefb82b",
+   "bytes": 1444,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-kolf-pan-genome-r4-access1.json",
+   "sha256": "d271548f3e096ef627acea47b3bf8c59a4cdbc79239b991cf4e2291c45b37f4b",
+   "bytes": 1616,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-kolf-pan-genome-r4.json",
+   "sha256": "66c44622752d48728ebc9a1bc2df2d3026d35afe6d9abc8e46963a12b50fcd54",
+   "bytes": 1537,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-kolf-strong-r4-retry1.json",
+   "sha256": "c003047f4927aace13c0e92ef048e414982762d8b8fd7a2310c16e3bf176ca37",
+   "bytes": 1745,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-kolf-strong-r4.json",
+   "sha256": "db161aa337672cd7c716e974bcc5693cd5260b93ea09fedb87bdba14578db2b3",
+   "bytes": 1432,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-orion-hct116-r4.json",
+   "sha256": "6cd28383bf0ab1e9c3f96bb75f4d27be93103e2ebb581a675732c0ee6a0bc5c4",
+   "bytes": 1419,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-orion-hek293t-r4.json",
+   "sha256": "dc623358e9957d093934e15d2298386b63b92602c5064133575398afc6a6799b",
+   "bytes": 1427,
+   "copied": true
+  },
+  {
+   "snapshot": "sourcefits_launch_r1__vcc-effects-rpe1-r4.json",
+   "sha256": "eb713c4ba9ef9b7ef2200e5f615b6efc21bb71fae6e4afa0dc765b7d0a11659c",
+   "bytes": 1391,
+   "copied": true
+  },
+  {
+   "snapshot": "cd4_joint_launch_r1__vcc-effects-cd4-rest-joint-r5.json",
+   "sha256": "0af148d247b7c74bb98971149a80f54d01843e360e94fb12b719cec5157ccc15",
+   "bytes": 1475,
+   "copied": true
+  },
+  {
+   "snapshot": "cd4_joint_launch_r1__vcc-effects-cd4-stim48hr-joint-r5.json",
+   "sha256": "b55373d190320b39e6bf8b931ff103b743fd7947e8d35d426a347d7505974a27",
+   "bytes": 1507,
+   "copied": true
+  },
+  {
+   "snapshot": "cd4_joint_launch_r1__vcc-effects-cd4-stim8hr-joint-r5-retry1.json",
+   "sha256": "e8329466a0440e408dbde0ab9cbba95f8ce10063cadcb272e84a82dc4c8f4441",
+   "bytes": 1682,
+   "copied": true
+  },
+  {
+   "snapshot": "cd4_joint_launch_r1__vcc-effects-cd4-stim8hr-joint-r5.json",
+   "sha256": "16a28fc7cbbb937633bad153e8039f5b3cd0efac4ee77653930ac6bd2cfba6dc",
+   "bytes": 1499,
+   "copied": true
+  }
+ ],
+ "comparison_started": false,
+ "local_score": null,
+ "official_t28_score_is_not_the_local_baseline": 0.14484520500645978,
+ "n_packages_written": 3
+}

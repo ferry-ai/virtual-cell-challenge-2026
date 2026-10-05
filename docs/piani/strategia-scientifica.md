@@ -2,10 +2,10 @@
 
 - **Priorità umana, 5/10:** [rifit e invio diretto autorizzati](../../reports/modelli/percorso_riusabile_2026-10-05/INVIO_DIRETTO_r1.md). Avviare appena eseguibile; generare e inviare senza attendere il banco comparativo. Supera il precedente divieto di invio della supervisione.
 
-- **Esecuzione corrente, 5/10:** [KOLF pan pronto e accessibile](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r9.md) e [copertura attesa](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).
-  Parent ha verificato undici sourcefit e tre condizioni CD4; solo GWPS producer ancora attivo.
-  R6 mixer non adottato come identico: pooling dopo shrink differisce dall'originale.
-  Grok stessa sessione r7 prepara joint count_sum e poi mix/export esatti.
+- **Esecuzione corrente, 5/10:** [primo mix esteso avviato](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r10.md) e [copertura attesa](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).
+  Parent ha lanciato il mix esteso con H1 joint derivato e KOLF pan verificato/pubblico.
+  R7 terminato; stessa sessione Grok r8 prepara generazione .vcc per invio diretto.
+  HEK J repair procede in parallelo e non blocca la produzione. GWPS ancora aperto.
   Questo aggiornamento supera le assegnazioni r2/r3/r4 sotto. Copertura effettiva
   di tutte le linee/contesti aperta; parent continua lanci e persistenza.
 
