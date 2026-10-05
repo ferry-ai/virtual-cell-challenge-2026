@@ -2,15 +2,16 @@
 
 - **Vincolo del proprietario, 5/10:** preservare l'ingestione e impedire scambi con
   vecchi dataset Kaggle. [Identità e release esplicite](../../reports/modelli/percorso_riusabile_2026-10-05/IDENTITA_BANCA.md):
-  `release_cd4_r3.json` aggiorna il ramo CD4 conservando r1/r2; il nuovo trainer deve registrare il
+  `release_cd4_r4.json` aggiorna il ramo CD4 conservando le precedenti; il nuovo trainer deve registrare il
   release hash e rifiutare input diversi, senza fallback al cubo aggregato del pilot.
   Integrare `release_lock.resolve` e i controlli dei file prima del fit/resume.
 
-- **Heartbeat Codex 5/10, banche CD4 complete:** dodici banche e sei unità di
-  campioni persistenti; due campionamenti Stim8hr avviati, D3 ancora da lanciare
-  quando si libera uno slot. Il terzo account riceve 403 sugli output privati.
-  [Evidenze e prossimo passo](../../reports/modelli/percorso_riusabile_2026-10-05/BANCHE_CD4_COMPLETE.md).
+- **Heartbeat Codex 5/10, oltre CD4:** dodici banche e undici campionamenti CD4
+  persistenti; D3 Stim8hr avviato e in progresso. Accettati i banchi CPU KOLF,
+  HCT116 e HEK293T dagli archivi già verificati. Non duplicare i quattro job.
+  [Evidenze e prossimo passo](../../reports/modelli/percorso_riusabile_2026-10-05/BANCHE_OLTRE_CD4.md).
   Usare `pipeline_state_r2.py`, `sample_state.py`, `launch_samples_r2.py`.
+  Per i tre nuovi banchi usare `other_bank_state.py` con i rispettivi `launch.json`.
   `axis_binding_r1.json` lega l'asse nominale ai 24 lanci d'ingestione: da verificare
   anche nel trainer. Corpus completo, fit esteso e valutazione restano aperti.
 

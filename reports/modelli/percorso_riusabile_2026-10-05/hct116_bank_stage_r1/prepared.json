@@ -1,0 +1,140 @@
+{
+ "code_sha256": "6d8f213accac9e06720b330a56d294c4646db6f7d8e8e54e81c19d4a7801b5fa",
+ "metadata_sha256": "589bc9992941ff1af952ae5a378c9e4d1314204b73950dfad60619c48b8d75c4",
+ "source_receipt": "reports\\sorgenti\\ingestione_completa_2026-10-03\\orion\\esito_verifica_hct116_r1\\line_complete.json",
+ "source_receipt_sha256": "3d99053d9e3ad5bc13cf06482e370a357cda316fe09c3931282a2b82b331d580",
+ "producer_axes": [
+  {
+   "kernel": "davideferrante11/vcc-orion-hct116-p0of4-r3",
+   "run_sha256": "aa29f9e3267931575ed4d82847a6c8667d4c2809a09bffdb242d6a7aa2afb3e3",
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  {
+   "kernel": "davideferrante11/vcc-orion-hct116-p1of4-r3",
+   "run_sha256": "a6ba4413b39e1e094ce4e537caa7b830ea36f9be577689c701e5341d7903dd2c",
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  {
+   "kernel": "davideferrante11/vcc-orion-hct116-p2of4-r3",
+   "run_sha256": "d8031efd7084869badd640f008f9df9b242728ecf4f827cd7422d86a714897ab",
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  {
+   "kernel": "davideferrante11/vcc-orion-hct116-p3of4-r3",
+   "run_sha256": "6bab7ed851748b75b8b2afb3be8344e1f50f9f6ba47dbf48eaa8a6924a20a757",
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  }
+ ],
+ "payload_hashes": {
+  "bank.py": "4a9b97c165437d527957dc381cdbd9f9689862430ff69663278dd8752454469c",
+  "preparation.py": "99d2a5fd90e02495a3f8e6bb00d03fada9eeaafecc297cffeab2bc8c504a30d1",
+  "params.json": "e876c3a48d2308888556f756dcd5f07009d5264ac9d42b1601bd83e062626a32"
+ },
+ "spec": {
+  "name": "orion_hct116",
+  "line_group": "HCT116",
+  "expected_contexts": [
+   "HCT116"
+  ],
+  "cells": 3409169,
+  "receipt_sha256": "3d99053d9e3ad5bc13cf06482e370a357cda316fe09c3931282a2b82b331d580",
+  "parts": [
+   {
+    "job": "vcc_orion_hct116_p0of4_r3",
+    "part": "0/4",
+    "checks": {
+     "per_shard_reread": true,
+     "has_shards": true,
+     "every_gem_file_done": true,
+     "cells_equal_sample": true
+    },
+    "whole_line": false,
+    "cells": 838819,
+    "cells_selected_in_part": 838819,
+    "shards": 28,
+    "files_with_cells_in_part": 28,
+    "bytes": 9470238821,
+    "nnz": 4257044738,
+    "counts": 16192022274,
+    "same_sample_as_first_part": true,
+    "complete_json": false,
+    "part_complete_json": true,
+    "unit_manifest_sha256": "c0c5ecb78df352de6ced1b713b8d6d445d8da22121e98ba3d5ba048f11cb6990",
+    "ok": true,
+    "unit": "orion_hct116"
+   },
+   {
+    "job": "vcc_orion_hct116_p1of4_r3",
+    "part": "1/4",
+    "checks": {
+     "per_shard_reread": true,
+     "has_shards": true,
+     "every_gem_file_done": true,
+     "cells_equal_sample": true
+    },
+    "whole_line": false,
+    "cells": 859494,
+    "cells_selected_in_part": 859494,
+    "shards": 27,
+    "files_with_cells_in_part": 27,
+    "bytes": 9973710744,
+    "nnz": 4508828297,
+    "counts": 17578292970,
+    "same_sample_as_first_part": true,
+    "complete_json": false,
+    "part_complete_json": true,
+    "unit_manifest_sha256": "ca9c3915be37a98c9ef476adaaa5ebbf64a4fd88e0c5c3050a6f2595c9ef7dfe",
+    "ok": true,
+    "unit": "orion_hct116"
+   },
+   {
+    "job": "vcc_orion_hct116_p2of4_r3",
+    "part": "2/4",
+    "checks": {
+     "per_shard_reread": true,
+     "has_shards": true,
+     "every_gem_file_done": true,
+     "cells_equal_sample": true
+    },
+    "whole_line": false,
+    "cells": 873159,
+    "cells_selected_in_part": 873159,
+    "shards": 27,
+    "files_with_cells_in_part": 27,
+    "bytes": 9817893088,
+    "nnz": 4420896216,
+    "counts": 16548733930,
+    "same_sample_as_first_part": true,
+    "complete_json": false,
+    "part_complete_json": true,
+    "unit_manifest_sha256": "0b285a6115d1722c796f21423b4658133831f3ba35342896cd342fdd84273057",
+    "ok": true,
+    "unit": "orion_hct116"
+   },
+   {
+    "job": "vcc_orion_hct116_p3of4_r3",
+    "part": "3/4",
+    "checks": {
+     "per_shard_reread": true,
+     "has_shards": true,
+     "every_gem_file_done": true,
+     "cells_equal_sample": true
+    },
+    "whole_line": false,
+    "cells": 837697,
+    "cells_selected_in_part": 837697,
+    "shards": 27,
+    "files_with_cells_in_part": 27,
+    "bytes": 9394561666,
+    "nnz": 4227644906,
+    "counts": 15750984999,
+    "same_sample_as_first_part": true,
+    "complete_json": false,
+    "part_complete_json": true,
+    "unit_manifest_sha256": "e6a4aaabff6b1238d44c3c988e32f0b6afbaac8fa5bdeea22797f5813ab2f856",
+    "ok": true,
+    "unit": "orion_hct116"
+   }
+  ]
+ }
+}

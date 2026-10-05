@@ -1,0 +1,400 @@
+{
+ "utc": "2026-10-05T05:03:30.906696+00:00",
+ "units": {
+  "kolf_pan_genome": {
+   "kernel": "davideferrante11/vcc-bank-kolf-pan-r1",
+   "state": "not_complete",
+   "status": {
+    "returncode": 0,
+    "text": "davideferrante11/vcc-bank-kolf-pan-r1 has status \"KernelWorkerStatus.RUNNING\""
+   },
+   "line_group": "iPSC",
+   "expected_cells": 2659209,
+   "spec": {
+    "name": "kolf_pan_genome",
+    "line_group": "iPSC",
+    "expected_contexts": [
+     "KOLF2.1J iPSC"
+    ],
+    "cells": 2659209,
+    "receipt_sha256": "a7ba725c4a41052d3657ba7c35a374e49735e96917347de0fe7c84d4bcdc675a",
+    "parts": [
+     {
+      "job": "vcc_kolf_pan_p0of2_r2",
+      "unit": "kolf_pan_genome",
+      "range": [
+       0,
+       1320000
+      ],
+      "rows": 1320000,
+      "cells": 1320000,
+      "excluded": 0,
+      "by_reason": null,
+      "shards": 66,
+      "bytes": 9200054049,
+      "nnz": 3946529896,
+      "counts": 7966149908,
+      "smoke": null,
+      "complete": true,
+      "unit_manifest_sha256": "e129fbe6c2bb58d97f406689517cd2774b905580d7f3ec38b438ff8afd566bb2",
+      "ok": true
+     },
+     {
+      "job": "vcc_kolf_pan_p1of2_r1",
+      "unit": "kolf_pan_genome",
+      "range": [
+       1320000,
+       2659209
+      ],
+      "rows": 1339209,
+      "cells": 1339209,
+      "excluded": 0,
+      "by_reason": null,
+      "shards": 67,
+      "bytes": 9186373942,
+      "nnz": 3925653565,
+      "counts": 7794331337,
+      "smoke": null,
+      "complete": true,
+      "unit_manifest_sha256": "62c6d3a326be093d4df9a1db1cfbb1227dde15c142f9e2bfaabc61005d7ff7aa",
+      "ok": true
+     }
+    ]
+   },
+   "consumer_hashes_verified": false
+  },
+  "orion_hct116": {
+   "kernel": "davideferrante11/vcc-bank-orion-hct116-r1",
+   "state": "not_complete",
+   "status": {
+    "returncode": 0,
+    "text": "davideferrante11/vcc-bank-orion-hct116-r1 has status \"KernelWorkerStatus.RUNNING\""
+   },
+   "line_group": "HCT116",
+   "expected_cells": 3409169,
+   "spec": {
+    "name": "orion_hct116",
+    "line_group": "HCT116",
+    "expected_contexts": [
+     "HCT116"
+    ],
+    "cells": 3409169,
+    "receipt_sha256": "3d99053d9e3ad5bc13cf06482e370a357cda316fe09c3931282a2b82b331d580",
+    "parts": [
+     {
+      "job": "vcc_orion_hct116_p0of4_r3",
+      "part": "0/4",
+      "checks": {
+       "per_shard_reread": true,
+       "has_shards": true,
+       "every_gem_file_done": true,
+       "cells_equal_sample": true
+      },
+      "whole_line": false,
+      "cells": 838819,
+      "cells_selected_in_part": 838819,
+      "shards": 28,
+      "files_with_cells_in_part": 28,
+      "bytes": 9470238821,
+      "nnz": 4257044738,
+      "counts": 16192022274,
+      "same_sample_as_first_part": true,
+      "complete_json": false,
+      "part_complete_json": true,
+      "unit_manifest_sha256": "c0c5ecb78df352de6ced1b713b8d6d445d8da22121e98ba3d5ba048f11cb6990",
+      "ok": true,
+      "unit": "orion_hct116"
+     },
+     {
+      "job": "vcc_orion_hct116_p1of4_r3",
+      "part": "1/4",
+      "checks": {
+       "per_shard_reread": true,
+       "has_shards": true,
+       "every_gem_file_done": true,
+       "cells_equal_sample": true
+      },
+      "whole_line": false,
+      "cells": 859494,
+      "cells_selected_in_part": 859494,
+      "shards": 27,
+      "files_with_cells_in_part": 27,
+      "bytes": 9973710744,
+      "nnz": 4508828297,
+      "counts": 17578292970,
+      "same_sample_as_first_part": true,
+      "complete_json": false,
+      "part_complete_json": true,
+      "unit_manifest_sha256": "ca9c3915be37a98c9ef476adaaa5ebbf64a4fd88e0c5c3050a6f2595c9ef7dfe",
+      "ok": true,
+      "unit": "orion_hct116"
+     },
+     {
+      "job": "vcc_orion_hct116_p2of4_r3",
+      "part": "2/4",
+      "checks": {
+       "per_shard_reread": true,
+       "has_shards": true,
+       "every_gem_file_done": true,
+       "cells_equal_sample": true
+      },
+      "whole_line": false,
+      "cells": 873159,
+      "cells_selected_in_part": 873159,
+      "shards": 27,
+      "files_with_cells_in_part": 27,
+      "bytes": 9817893088,
+      "nnz": 4420896216,
+      "counts": 16548733930,
+      "same_sample_as_first_part": true,
+      "complete_json": false,
+      "part_complete_json": true,
+      "unit_manifest_sha256": "0b285a6115d1722c796f21423b4658133831f3ba35342896cd342fdd84273057",
+      "ok": true,
+      "unit": "orion_hct116"
+     },
+     {
+      "job": "vcc_orion_hct116_p3of4_r3",
+      "part": "3/4",
+      "checks": {
+       "per_shard_reread": true,
+       "has_shards": true,
+       "every_gem_file_done": true,
+       "cells_equal_sample": true
+      },
+      "whole_line": false,
+      "cells": 837697,
+      "cells_selected_in_part": 837697,
+      "shards": 27,
+      "files_with_cells_in_part": 27,
+      "bytes": 9394561666,
+      "nnz": 4227644906,
+      "counts": 15750984999,
+      "same_sample_as_first_part": true,
+      "complete_json": false,
+      "part_complete_json": true,
+      "unit_manifest_sha256": "e6a4aaabff6b1238d44c3c988e32f0b6afbaac8fa5bdeea22797f5813ab2f856",
+      "ok": true,
+      "unit": "orion_hct116"
+     }
+    ]
+   },
+   "consumer_hashes_verified": false
+  },
+  "orion_hek293t": {
+   "kernel": "davideferrante11/vcc-bank-orion-hek293t-r1",
+   "state": "not_complete",
+   "status": {
+    "returncode": 0,
+    "text": "davideferrante11/vcc-bank-orion-hek293t-r1 has status \"KernelWorkerStatus.RUNNING\""
+   },
+   "line_group": "HEK293T",
+   "expected_cells": 4534299,
+   "spec": {
+    "name": "orion_hek293t",
+    "line_group": "HEK293T",
+    "expected_contexts": [
+     "HEK293T"
+    ],
+    "cells": 4534299,
+    "receipt_sha256": "3d43e9631f220346461136b8584cf1d232f4e342ccb46bc86e6657d39746a4c6",
+    "parts": [
+     {
+      "job": "vcc_orion_hek293t_p0of8_r3",
+      "part": "0/8",
+      "checks": {
+       "per_shard_reread": true,
+       "has_shards": true,
+       "every_gem_file_done": true,
+       "cells_equal_sample": true
+      },
+      "whole_line": false,
+      "cells": 576729,
+      "cells_selected_in_part": 576729,
+      "shards": 28,
+      "files_with_cells_in_part": 28,
+      "bytes": 8012851674,
+      "nnz": 3704277974,
+      "counts": 13393422123,
+      "same_sample_as_first_part": true,
+      "complete_json": false,
+      "part_complete_json": true,
+      "unit_manifest_sha256": "025808a739a8dab36d2e83cba5562bfe13a04ada7f35fdfc4fea8bed1c7c4fc7",
+      "ok": true,
+      "unit": "orion_hek293t"
+     },
+     {
+      "job": "vcc_orion_hek293t_p1of8_r3",
+      "part": "1/8",
+      "checks": {
+       "per_shard_reread": true,
+       "has_shards": true,
+       "every_gem_file_done": true,
+       "cells_equal_sample": true
+      },
+      "whole_line": false,
+      "cells": 536006,
+      "cells_selected_in_part": 536006,
+      "shards": 28,
+      "files_with_cells_in_part": 28,
+      "bytes": 7548291894,
+      "nnz": 3480893551,
+      "counts": 12959231117,
+      "same_sample_as_first_part": true,
+      "complete_json": false,
+      "part_complete_json": true,
+      "unit_manifest_sha256": "586f2d534a99bc5b4eed581d3858482bb9d3a8d887f65fabea6fb6073eccd0c1",
+      "ok": true,
+      "unit": "orion_hek293t"
+     },
+     {
+      "job": "vcc_orion_hek293t_p2of8_r3",
+      "part": "2/8",
+      "checks": {
+       "per_shard_reread": true,
+       "has_shards": true,
+       "every_gem_file_done": true,
+       "cells_equal_sample": true
+      },
+      "whole_line": false,
+      "cells": 568033,
+      "cells_selected_in_part": 568033,
+      "shards": 28,
+      "files_with_cells_in_part": 28,
+      "bytes": 7902267263,
+      "nnz": 3633863797,
+      "counts": 13506407414,
+      "same_sample_as_first_part": true,
+      "complete_json": false,
+      "part_complete_json": true,
+      "unit_manifest_sha256": "e4362c276e014918b4afd89d61824b6af97293201acc7f13590592cd9bf3e828",
+      "ok": true,
+      "unit": "orion_hek293t"
+     },
+     {
+      "job": "vcc_orion_hek293t_p3of8_r3",
+      "part": "3/8",
+      "checks": {
+       "per_shard_reread": true,
+       "has_shards": true,
+       "every_gem_file_done": true,
+       "cells_equal_sample": true
+      },
+      "whole_line": false,
+      "cells": 563632,
+      "cells_selected_in_part": 563632,
+      "shards": 28,
+      "files_with_cells_in_part": 28,
+      "bytes": 7807488788,
+      "nnz": 3596394676,
+      "counts": 13235925290,
+      "same_sample_as_first_part": true,
+      "complete_json": false,
+      "part_complete_json": true,
+      "unit_manifest_sha256": "f2945d76e3fe620b519b1324cf62ccf0cfde9a6754382b06a9af6f10fa873ba4",
+      "ok": true,
+      "unit": "orion_hek293t"
+     },
+     {
+      "job": "vcc_orion_hek293t_p4of8_r3",
+      "part": "4/8",
+      "checks": {
+       "per_shard_reread": true,
+       "has_shards": true,
+       "every_gem_file_done": true,
+       "cells_equal_sample": true
+      },
+      "whole_line": false,
+      "cells": 575108,
+      "cells_selected_in_part": 575108,
+      "shards": 28,
+      "files_with_cells_in_part": 28,
+      "bytes": 8122559046,
+      "nnz": 3750848625,
+      "counts": 14159645736,
+      "same_sample_as_first_part": true,
+      "complete_json": false,
+      "part_complete_json": true,
+      "unit_manifest_sha256": "b96d92271b5a5de4a4474588bce9d42d48243ad34e099a369ec7ee24eb2bf9f8",
+      "ok": true,
+      "unit": "orion_hek293t"
+     },
+     {
+      "job": "vcc_orion_hek293t_p5of8_r3",
+      "part": "5/8",
+      "checks": {
+       "per_shard_reread": true,
+       "has_shards": true,
+       "every_gem_file_done": true,
+       "cells_equal_sample": true
+      },
+      "whole_line": false,
+      "cells": 581230,
+      "cells_selected_in_part": 581230,
+      "shards": 28,
+      "files_with_cells_in_part": 28,
+      "bytes": 8021159369,
+      "nnz": 3702080387,
+      "counts": 13517310042,
+      "same_sample_as_first_part": true,
+      "complete_json": false,
+      "part_complete_json": true,
+      "unit_manifest_sha256": "b27f9e75b21d941e249c8b4df2864c0768181c49e0891cb0086d6c05be177eba",
+      "ok": true,
+      "unit": "orion_hek293t"
+     },
+     {
+      "job": "vcc_orion_hek293t_p6of8_r3",
+      "part": "6/8",
+      "checks": {
+       "per_shard_reread": true,
+       "has_shards": true,
+       "every_gem_file_done": true,
+       "cells_equal_sample": true
+      },
+      "whole_line": false,
+      "cells": 599222,
+      "cells_selected_in_part": 599222,
+      "shards": 28,
+      "files_with_cells_in_part": 28,
+      "bytes": 8220978245,
+      "nnz": 3809538226,
+      "counts": 13444838710,
+      "same_sample_as_first_part": true,
+      "complete_json": false,
+      "part_complete_json": true,
+      "unit_manifest_sha256": "3045fdeedb4cb25ab27eacd1f594b2fa206e3aca5146c3ba36c34b5cc9855d0a",
+      "ok": true,
+      "unit": "orion_hek293t"
+     },
+     {
+      "job": "vcc_orion_hek293t_p7of8_r3",
+      "part": "7/8",
+      "checks": {
+       "per_shard_reread": true,
+       "has_shards": true,
+       "every_gem_file_done": true,
+       "cells_equal_sample": true
+      },
+      "whole_line": false,
+      "cells": 534339,
+      "cells_selected_in_part": 534339,
+      "shards": 27,
+      "files_with_cells_in_part": 27,
+      "bytes": 7484967523,
+      "nnz": 3458494152,
+      "counts": 12722915188,
+      "same_sample_as_first_part": true,
+      "complete_json": false,
+      "part_complete_json": true,
+      "unit_manifest_sha256": "9351b6050c686acd89cff7bf60a04c67e812772585840af976df0ba2d998f04b",
+      "ok": true,
+      "unit": "orion_hek293t"
+     }
+    ]
+   },
+   "consumer_hashes_verified": false
+  }
+ },
+ "extended_training_ready": false
+}
