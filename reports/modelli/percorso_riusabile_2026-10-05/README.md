@@ -1,6 +1,6 @@
 # Archivio, banca e trainer riutilizzabili
 
-**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r7/README.md),
+**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r8/README.md),
 con manifest immutabile, account, versioni, hash e distinzione dai dataset storici.
 Include 15 banche verificate e 12 matrici campionate CD4 complete; le nuove parti
 HEK293T sono ora chiuse (6/6 e unione, snapshot_parts_r5); KOLF e HCT116 sono chiusi anche nei campioni.
@@ -17,6 +17,8 @@ dei reader verificata su fixture; catalogo/QC, feature congelate e lancio esteso
 Delega Grok esplicitamente autorizzata: `agenti/grok_transfer_esteso_r1/prompt.md`
 e `launch.json` conservano il mandato e la sessione. Preparazione del trainer in
 parallelo alla chiusura dati; fit sul corpus ammesso congelato, non aggiunte silenziose.
+Nuovo snapshot r8: SCP KO tre unità verificate; HIPSCI fitness 12/12 e unione,
+nonfitness 11/12 ancora aperta. K562 GWPS e HIPSCI mirato19 ancora attivi.
 
 **Non perdere né reingerire:** [17 archivi precedenti e nuova ingestione, 395,75 GB grezzi](DATI_DISPONIBILI_r2.md).
 Account, versioni e hash sono nel manifest; nessun fallback al cubo ridotto del pilot.

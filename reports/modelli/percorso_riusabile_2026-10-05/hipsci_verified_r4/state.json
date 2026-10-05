@@ -1,0 +1,4900 @@
+{
+ "jobs": {
+  "davidmaisterx/vcc-derivatives-hipsci-gwfit-p0of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p0of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r1/bank_receipts/davidmaisterx/vcc-derivatives-hipsci-gwfit-p0of12-r2/bank/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "21611ae309d95dcd28e9cffa9985abb721e67b79eb902abf441c4d7eaeb2bbfa",
+    "saved_version": {
+     "kernel_id": 137179981,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p0of12-r2/versions/1",
+     "saved_source_sha256": "9f42beb1847a3f6b40d62c19ef762efe4c2d7c07634a2bdb73d2fc6d5298fb3e",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_fitness",
+    "files": {
+     "variance_proportion.npz": {
+      "bytes": 39754218,
+      "sha256": "e8131db8ff4a8e1173cab5be15f985f85e34e69189434bcc931484848a96c047"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     },
+     "mean_proportion.npz": {
+      "bytes": 58121228,
+      "sha256": "13bb49718402dab6aaa05002ab33f7068b968ca17764a544e58c522d2420e7be"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24882109,
+      "sha256": "92ed1615dc268f4706b98c48d3838bde505361747f06a68e3303d95884486764"
+     },
+     "rows.csv": {
+      "bytes": 293272,
+      "sha256": "5e493b43a6d2dd1e44466c7a3482e3b9017c469b9546f7e3fe86688773f3c3b7"
+     },
+     "count_sum.npz": {
+      "bytes": 45828517,
+      "sha256": "fb6956f69b2d5bb5e59ae7df2e7ef4a51559b665be797fd7f5367952bf7baf26"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 377918,
+      "sha256": "64ddeed77175f80a48ca9a116c9c96ff291ab510fdf6a7ea724cb9d16256f47c"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_fitness",
+    "cells_in": 29997,
+    "cells_used": 29997,
+    "zero_depth_excluded": 0,
+    "contexts": 60,
+    "rows": 4294,
+    "samples128": 9455,
+    "seconds": 511,
+    "sources": [
+     {
+      "file": "hipsci_gw_fitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00016.h5ad",
+      "cells": 2746
+     }
+    ],
+    "source_verification": "311bf5f671db67258d47d783aa62f7028bb590c817529f09cb16ee5f06d73a68",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 0,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "7f9e4c8efcfec28f769b9676b82c758f0d4178657983f1de29f61d9c3e5e4443",
+     "global_rows": 51525,
+     "global_cells": 322746,
+     "selected_cells": 29997
+    },
+    "files": {
+     "variance_proportion.npz": {
+      "bytes": 39754218,
+      "sha256": "e8131db8ff4a8e1173cab5be15f985f85e34e69189434bcc931484848a96c047"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     },
+     "mean_proportion.npz": {
+      "bytes": 58121228,
+      "sha256": "13bb49718402dab6aaa05002ab33f7068b968ca17764a544e58c522d2420e7be"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24882109,
+      "sha256": "92ed1615dc268f4706b98c48d3838bde505361747f06a68e3303d95884486764"
+     },
+     "rows.csv": {
+      "bytes": 293272,
+      "sha256": "5e493b43a6d2dd1e44466c7a3482e3b9017c469b9546f7e3fe86688773f3c3b7"
+     },
+     "count_sum.npz": {
+      "bytes": 45828517,
+      "sha256": "fb6956f69b2d5bb5e59ae7df2e7ef4a51559b665be797fd7f5367952bf7baf26"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 377918,
+      "sha256": "64ddeed77175f80a48ca9a116c9c96ff291ab510fdf6a7ea724cb9d16256f47c"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p0of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r1/receipts/davidmaisterx/vcc-derivatives-hipsci-gwfit-p0of12-r2/samples/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "ddecaff65baad04775dc52c9f2c0b27adc4a41ebf822daac3b10ec99f83283ee",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137179981,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p0of12-r2/versions/1",
+     "saved_source_sha256": "9f42beb1847a3f6b40d62c19ef762efe4c2d7c07634a2bdb73d2fc6d5298fb3e",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 8879,
+     "64": 9071,
+     "128": 9455
+    },
+    "bytes": 109630476,
+    "bank_receipt_sha256": "21611ae309d95dcd28e9cffa9985abb721e67b79eb902abf441c4d7eaeb2bbfa",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_fitness"
+   },
+   "unit": "hipsci_gw_fitness"
+  },
+  "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p0of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p0of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r1/bank_receipts/davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p0of12-r2/bank/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "4d10bd186c7c664c3a141b6ed9313c41c654acfedaddf65c863a28f17e11c232",
+    "saved_version": {
+     "kernel_id": 137179992,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p0of12-r2/versions/1",
+     "saved_source_sha256": "64085b80b97fccbff258a9f044cff54a55832d778887612c8296b14c1264b971",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_nonfitness",
+    "files": {
+     "rows.csv": {
+      "bytes": 375309,
+      "sha256": "68ab9c4ba6fc321ca17963e1107b8096c97fd68b48a14b9cecd154d16eb5001e"
+     },
+     "sampled_controls.npz": {
+      "bytes": 14442,
+      "sha256": "0ca93507210d7fbd1ab9ca170d85f340d94b755fb86bed16d20deaa73df0363c"
+     },
+     "mask.npz": {
+      "bytes": 379958,
+      "sha256": "3f5ef88b8eb4502ab26de44bb3e95c7cd041722d06678c7b8202e2ab4d26f9c9"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67771504,
+      "sha256": "6aac4d5f71f08cb30f4db3f3595f26c2fb9006b79c63a36c958670ff5080220f"
+     },
+     "variance_proportion.npz": {
+      "bytes": 42405711,
+      "sha256": "2cdfab4798b02067476d90cf43746458ef7d37838310d00d3facbeac582af0d7"
+     },
+     "count_sum.npz": {
+      "bytes": 55711590,
+      "sha256": "df3a3f99634634a6ad0a0f1a933e1efe0e1979efd7c38e9fe0080e38f14baeae"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28842902,
+      "sha256": "3f85af2165f6754d4d943e60469fb0edaaeb21802b661341a9d8b90780557a6c"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 410050,
+      "sha256": "423b84d9bc99123259762a48369023568e3b7182c2ba675be620e8ca8e80465f"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_nonfitness",
+    "cells_in": 33633,
+    "cells_used": 33633,
+    "zero_depth_excluded": 0,
+    "contexts": 40,
+    "rows": 5263,
+    "samples128": 9759,
+    "seconds": 610,
+    "sources": [
+     {
+      "file": "hipsci_gw_nonfitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00016.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00017.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00018.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00019.h5ad",
+      "cells": 16458
+     }
+    ],
+    "source_verification": "7707c03885ff2fb4935c0e81cdeac555089beae9b789e74c3ef4e88d8cbda348",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 0,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "2b1ce3507e417dc9b335795938fed1dfc2c071f4ac8523c97e26090074d85f50",
+     "global_rows": 63149,
+     "global_cells": 396458,
+     "selected_cells": 33633
+    },
+    "files": {
+     "rows.csv": {
+      "bytes": 375309,
+      "sha256": "68ab9c4ba6fc321ca17963e1107b8096c97fd68b48a14b9cecd154d16eb5001e"
+     },
+     "sampled_controls.npz": {
+      "bytes": 14442,
+      "sha256": "0ca93507210d7fbd1ab9ca170d85f340d94b755fb86bed16d20deaa73df0363c"
+     },
+     "mask.npz": {
+      "bytes": 379958,
+      "sha256": "3f5ef88b8eb4502ab26de44bb3e95c7cd041722d06678c7b8202e2ab4d26f9c9"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67771504,
+      "sha256": "6aac4d5f71f08cb30f4db3f3595f26c2fb9006b79c63a36c958670ff5080220f"
+     },
+     "variance_proportion.npz": {
+      "bytes": 42405711,
+      "sha256": "2cdfab4798b02067476d90cf43746458ef7d37838310d00d3facbeac582af0d7"
+     },
+     "count_sum.npz": {
+      "bytes": 55711590,
+      "sha256": "df3a3f99634634a6ad0a0f1a933e1efe0e1979efd7c38e9fe0080e38f14baeae"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28842902,
+      "sha256": "3f85af2165f6754d4d943e60469fb0edaaeb21802b661341a9d8b90780557a6c"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 410050,
+      "sha256": "423b84d9bc99123259762a48369023568e3b7182c2ba675be620e8ca8e80465f"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p0of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r1/receipts/davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p0of12-r2/samples/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "0dac435e1afe196832ed96db250ff5245d44ac27be9ea7d228de3c0f20241715",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137179992,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p0of12-r2/versions/1",
+     "saved_source_sha256": "64085b80b97fccbff258a9f044cff54a55832d778887612c8296b14c1264b971",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 9663,
+     "64": 9695,
+     "128": 9759
+    },
+    "bytes": 115138935,
+    "bank_receipt_sha256": "4d10bd186c7c664c3a141b6ed9313c41c654acfedaddf65c863a28f17e11c232",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_nonfitness"
+   },
+   "unit": "hipsci_gw_nonfitness"
+  },
+  "davidmaisterx/vcc-derivatives-hipsci-gwfit-p1of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p1of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r1/bank_receipts/davidmaisterx/vcc-derivatives-hipsci-gwfit-p1of12-r2/bank/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "61ec9d33cc5e080cc407c7ec53b6f66fdd66db039327457e70c3a57dcfdb26fa",
+    "saved_version": {
+     "kernel_id": 137179999,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p1of12-r2/versions/1",
+     "saved_source_sha256": "56be8b8402d39b3e116a42a6176dc5716fdc264b06e09d1b4c979861e42120ed",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_fitness",
+    "files": {
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "count_sum.npz": {
+      "bytes": 45651099,
+      "sha256": "71e22cc59be7eea2ca5e18b8f1ab59b51afd16e9ab9713b1a4a30220d7e13eda"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24702303,
+      "sha256": "a15d63e9c377652e35ee71dbec02cd1d4fe116aaaebed7eb0e5c97e723c68326"
+     },
+     "rows.csv": {
+      "bytes": 293377,
+      "sha256": "0d5b3854f81502f2e23566736a705c2b27d281157b61ecd65d504d2312148e6c"
+     },
+     "variance_proportion.npz": {
+      "bytes": 38977583,
+      "sha256": "35fabb91fa481bd2f94f6e7343f3dfecf083016dcf59d8c76a997bf5977cc9b2"
+     },
+     "mean_proportion.npz": {
+      "bytes": 57565310,
+      "sha256": "0095f605f2787edad7184da992f254cb66261c6b39ef58aafa61658959d2d3ed"
+     },
+     "sampled_controls.npz": {
+      "bytes": 47445,
+      "sha256": "2583a85f2190da2772e809a3c99a7b6998ac439797237d4329cd0c87f6377bd0"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 373568,
+      "sha256": "e6ea75f837857295afacd462ab610473bba575c0b7c61b8a0989a4045bff400f"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_fitness",
+    "cells_in": 32460,
+    "cells_used": 32460,
+    "zero_depth_excluded": 0,
+    "contexts": 60,
+    "rows": 4294,
+    "samples128": 9318,
+    "seconds": 536,
+    "sources": [
+     {
+      "file": "hipsci_gw_fitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00016.h5ad",
+      "cells": 2746
+     }
+    ],
+    "source_verification": "311bf5f671db67258d47d783aa62f7028bb590c817529f09cb16ee5f06d73a68",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 1,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "7f9e4c8efcfec28f769b9676b82c758f0d4178657983f1de29f61d9c3e5e4443",
+     "global_rows": 51525,
+     "global_cells": 322746,
+     "selected_cells": 32460
+    },
+    "files": {
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "count_sum.npz": {
+      "bytes": 45651099,
+      "sha256": "71e22cc59be7eea2ca5e18b8f1ab59b51afd16e9ab9713b1a4a30220d7e13eda"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24702303,
+      "sha256": "a15d63e9c377652e35ee71dbec02cd1d4fe116aaaebed7eb0e5c97e723c68326"
+     },
+     "rows.csv": {
+      "bytes": 293377,
+      "sha256": "0d5b3854f81502f2e23566736a705c2b27d281157b61ecd65d504d2312148e6c"
+     },
+     "variance_proportion.npz": {
+      "bytes": 38977583,
+      "sha256": "35fabb91fa481bd2f94f6e7343f3dfecf083016dcf59d8c76a997bf5977cc9b2"
+     },
+     "mean_proportion.npz": {
+      "bytes": 57565310,
+      "sha256": "0095f605f2787edad7184da992f254cb66261c6b39ef58aafa61658959d2d3ed"
+     },
+     "sampled_controls.npz": {
+      "bytes": 47445,
+      "sha256": "2583a85f2190da2772e809a3c99a7b6998ac439797237d4329cd0c87f6377bd0"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 373568,
+      "sha256": "e6ea75f837857295afacd462ab610473bba575c0b7c61b8a0989a4045bff400f"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p1of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r1/receipts/davidmaisterx/vcc-derivatives-hipsci-gwfit-p1of12-r2/samples/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "a0850238f9990ae651db9b5131996fddad0e23f4d92e8e532ade8074a3d25090",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137179999,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p1of12-r2/versions/1",
+     "saved_source_sha256": "56be8b8402d39b3e116a42a6176dc5716fdc264b06e09d1b4c979861e42120ed",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 8742,
+     "64": 8934,
+     "128": 9318
+    },
+    "bytes": 108476388,
+    "bank_receipt_sha256": "61ec9d33cc5e080cc407c7ec53b6f66fdd66db039327457e70c3a57dcfdb26fa",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_fitness"
+   },
+   "unit": "hipsci_gw_fitness"
+  },
+  "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p1of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p1of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/bank_receipts/davideferrante11/vcc-derivatives-hipsci-gwnonfit-p1of12-r2/bank/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "8398732660eb42d4ba614c3bc2d2a5dd4d4786831a405216d6523ab920480490",
+    "saved_version": {
+     "kernel_id": 137182955,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p1of12-r2/versions/1",
+     "saved_source_sha256": "1b958d1346fe8dfc23a1e1e11563ef95888d8c298e4a79480c3f855a4f3ea4ce",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_nonfitness",
+    "files": {
+     "mean_proportion.npz": {
+      "bytes": 67615058,
+      "sha256": "62d52334004d208e1f0f92fde61a73406e5ccedba8952c9ae20f5e388c84defa"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 416362,
+      "sha256": "c4f10ba004cd556ac8ca969f7d7f131bcbae1fdcb9527ff1c0f6e23ff49fb057"
+     },
+     "mask.npz": {
+      "bytes": 379958,
+      "sha256": "3f5ef88b8eb4502ab26de44bb3e95c7cd041722d06678c7b8202e2ab4d26f9c9"
+     },
+     "count_sum.npz": {
+      "bytes": 55722113,
+      "sha256": "b6c576be4fd2f71544daa92e4af397d047971c2a5795fa478988bb818576f315"
+     },
+     "rows.csv": {
+      "bytes": 375370,
+      "sha256": "920f478fd60ebe05cd266017b723dd705cf2dee82c6014885e611a31f8c97ee0"
+     },
+     "variance_proportion.npz": {
+      "bytes": 42362870,
+      "sha256": "dfc35aeab9d4ef6c7dc66dce1173306054d7e28630f61cb2dec9e1a2ce4a5878"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28838293,
+      "sha256": "533300136b3bbde1d8e8b41f046c25e7697bfaa4c6dc0a60aa24cacd0c5b5832"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_nonfitness",
+    "cells_in": 42188,
+    "cells_used": 42188,
+    "zero_depth_excluded": 0,
+    "contexts": 40,
+    "rows": 5263,
+    "samples128": 9946,
+    "seconds": 352,
+    "sources": [
+     {
+      "file": "hipsci_gw_nonfitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00016.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00017.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00018.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00019.h5ad",
+      "cells": 16458
+     }
+    ],
+    "source_verification": "7707c03885ff2fb4935c0e81cdeac555089beae9b789e74c3ef4e88d8cbda348",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 1,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "2b1ce3507e417dc9b335795938fed1dfc2c071f4ac8523c97e26090074d85f50",
+     "global_rows": 63149,
+     "global_cells": 396458,
+     "selected_cells": 42188
+    },
+    "files": {
+     "mean_proportion.npz": {
+      "bytes": 67615058,
+      "sha256": "62d52334004d208e1f0f92fde61a73406e5ccedba8952c9ae20f5e388c84defa"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 416362,
+      "sha256": "c4f10ba004cd556ac8ca969f7d7f131bcbae1fdcb9527ff1c0f6e23ff49fb057"
+     },
+     "mask.npz": {
+      "bytes": 379958,
+      "sha256": "3f5ef88b8eb4502ab26de44bb3e95c7cd041722d06678c7b8202e2ab4d26f9c9"
+     },
+     "count_sum.npz": {
+      "bytes": 55722113,
+      "sha256": "b6c576be4fd2f71544daa92e4af397d047971c2a5795fa478988bb818576f315"
+     },
+     "rows.csv": {
+      "bytes": 375370,
+      "sha256": "920f478fd60ebe05cd266017b723dd705cf2dee82c6014885e611a31f8c97ee0"
+     },
+     "variance_proportion.npz": {
+      "bytes": 42362870,
+      "sha256": "dfc35aeab9d4ef6c7dc66dce1173306054d7e28630f61cb2dec9e1a2ce4a5878"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28838293,
+      "sha256": "533300136b3bbde1d8e8b41f046c25e7697bfaa4c6dc0a60aa24cacd0c5b5832"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p1of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/receipts/davideferrante11/vcc-derivatives-hipsci-gwnonfit-p1of12-r2/samples/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "71c2aa80de20844f6a0efaeadb9f414efda5e25a097850304a3f5b8bb1da64aa",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137182955,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p1of12-r2/versions/1",
+     "saved_source_sha256": "1b958d1346fe8dfc23a1e1e11563ef95888d8c298e4a79480c3f855a4f3ea4ce",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 9660,
+     "64": 9754,
+     "128": 9946
+    },
+    "bytes": 117664229,
+    "bank_receipt_sha256": "8398732660eb42d4ba614c3bc2d2a5dd4d4786831a405216d6523ab920480490",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_nonfitness"
+   },
+   "unit": "hipsci_gw_nonfitness"
+  },
+  "davideferrante11/vcc-derivatives-hipsci-gwfit-p2of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwfit-p2of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/bank_receipts/davideferrante11/vcc-derivatives-hipsci-gwfit-p2of12-r2/bank/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "05131964c2453a2bee16c43ec3a7954e6690d5aa485f1873d487359bf0760b39",
+    "saved_version": {
+     "kernel_id": 137182974,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwfit-p2of12-r2/versions/1",
+     "saved_source_sha256": "d090df9f73d5fededda5190dc6705dd3f56ca33b7e1698861081613e093997a3",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_fitness",
+    "files": {
+     "mean_proportion.npz": {
+      "bytes": 57525160,
+      "sha256": "1f22407c7e552e984d1ae77b76b38672f988b1cce5bb5699a83cb9264faec700"
+     },
+     "sampled_controls.npz": {
+      "bytes": 85340,
+      "sha256": "8238e1d61a56481344350ec458bccf494c69007cabd1caca39891b7cd98482e4"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24662001,
+      "sha256": "b337c5ba7d29a3fc5fdea25ed82603e16b511a69f99042773688982709680c11"
+     },
+     "variance_proportion.npz": {
+      "bytes": 38835528,
+      "sha256": "ae70f8579e51d5960bf63f170081725c8ff9b9b4b23ffda38652d9fc66c575bc"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 370644,
+      "sha256": "b2b4a0f34225d94d39184f65644618741b4f87209bce1c63dc0206f1bec9d8a1"
+     },
+     "count_sum.npz": {
+      "bytes": 45626908,
+      "sha256": "8ef45ff73ead83aa8dee0ce6b9049cbc58dcd3542dc7fc829087da99584a4dd5"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "rows.csv": {
+      "bytes": 293296,
+      "sha256": "d4330e7bd3e87bcacb99748b09af1b7acfb008b52888b428f1ee67322ac733cd"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_fitness",
+    "cells_in": 26675,
+    "cells_used": 26675,
+    "zero_depth_excluded": 0,
+    "contexts": 60,
+    "rows": 4294,
+    "samples128": 9205,
+    "seconds": 509,
+    "sources": [
+     {
+      "file": "hipsci_gw_fitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00016.h5ad",
+      "cells": 2746
+     }
+    ],
+    "source_verification": "311bf5f671db67258d47d783aa62f7028bb590c817529f09cb16ee5f06d73a68",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 2,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "7f9e4c8efcfec28f769b9676b82c758f0d4178657983f1de29f61d9c3e5e4443",
+     "global_rows": 51525,
+     "global_cells": 322746,
+     "selected_cells": 26675
+    },
+    "files": {
+     "mean_proportion.npz": {
+      "bytes": 57525160,
+      "sha256": "1f22407c7e552e984d1ae77b76b38672f988b1cce5bb5699a83cb9264faec700"
+     },
+     "sampled_controls.npz": {
+      "bytes": 85340,
+      "sha256": "8238e1d61a56481344350ec458bccf494c69007cabd1caca39891b7cd98482e4"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24662001,
+      "sha256": "b337c5ba7d29a3fc5fdea25ed82603e16b511a69f99042773688982709680c11"
+     },
+     "variance_proportion.npz": {
+      "bytes": 38835528,
+      "sha256": "ae70f8579e51d5960bf63f170081725c8ff9b9b4b23ffda38652d9fc66c575bc"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 370644,
+      "sha256": "b2b4a0f34225d94d39184f65644618741b4f87209bce1c63dc0206f1bec9d8a1"
+     },
+     "count_sum.npz": {
+      "bytes": 45626908,
+      "sha256": "8ef45ff73ead83aa8dee0ce6b9049cbc58dcd3542dc7fc829087da99584a4dd5"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "rows.csv": {
+      "bytes": 293296,
+      "sha256": "d4330e7bd3e87bcacb99748b09af1b7acfb008b52888b428f1ee67322ac733cd"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwfit-p2of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/receipts/davideferrante11/vcc-derivatives-hipsci-gwfit-p2of12-r2/samples/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "06bf89713ca9c88b6fb56180ded4eb3b80707d98eb84f79331e4656b6fa94fc3",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137182974,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwfit-p2of12-r2/versions/1",
+     "saved_source_sha256": "d090df9f73d5fededda5190dc6705dd3f56ca33b7e1698861081613e093997a3",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 8725,
+     "64": 8885,
+     "128": 9205
+    },
+    "bytes": 107653016,
+    "bank_receipt_sha256": "05131964c2453a2bee16c43ec3a7954e6690d5aa485f1873d487359bf0760b39",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_fitness"
+   },
+   "unit": "hipsci_gw_fitness"
+  },
+  "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p2of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p2of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/bank_receipts/davideferrante11/vcc-derivatives-hipsci-gwnonfit-p2of12-r2/bank/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "90f40396e1a99397a3d68eedb4f83101908a97383b1e84acbe2a97978018a055",
+    "saved_version": {
+     "kernel_id": 137182991,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p2of12-r2/versions/1",
+     "saved_source_sha256": "ab34f3db543827404eaaea850a053b131627ef9a46b553f43a999e09260a5a23",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_nonfitness",
+    "files": {
+     "mask.npz": {
+      "bytes": 379958,
+      "sha256": "3f5ef88b8eb4502ab26de44bb3e95c7cd041722d06678c7b8202e2ab4d26f9c9"
+     },
+     "rows.csv": {
+      "bytes": 375338,
+      "sha256": "5710a6eb5c94354d54b1b026410b3539ee2a9c92e5da0af83237249a12545c3b"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67342315,
+      "sha256": "b77c5f71bba24ab2d38fbd1abc87de2665ec8f32cd5f150ef2d9fef577d5bef2"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 409795,
+      "sha256": "f0082e98d85ef1d9ed549654162a187a3afe65f47eac2a6ac7f34a659784c329"
+     },
+     "count_sum.npz": {
+      "bytes": 55593645,
+      "sha256": "730fc337321b49f0e134f3acf37be0cb8aab9fc09f18a53ba34fcff6cb2f134c"
+     },
+     "variance_proportion.npz": {
+      "bytes": 42153198,
+      "sha256": "55ee43200c90542d5ad54e5eda1fd1c2f8174bd2f6e08187463ab2cf01dbf6cd"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28753085,
+      "sha256": "d82e66b81aa2abf97359e906899386f9f278b63ba83168166388cdbc6a6d4b72"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_nonfitness",
+    "cells_in": 22082,
+    "cells_used": 22082,
+    "zero_depth_excluded": 0,
+    "contexts": 40,
+    "rows": 5263,
+    "samples128": 9771,
+    "seconds": 665,
+    "sources": [
+     {
+      "file": "hipsci_gw_nonfitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00016.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00017.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00018.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00019.h5ad",
+      "cells": 16458
+     }
+    ],
+    "source_verification": "7707c03885ff2fb4935c0e81cdeac555089beae9b789e74c3ef4e88d8cbda348",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 2,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "2b1ce3507e417dc9b335795938fed1dfc2c071f4ac8523c97e26090074d85f50",
+     "global_rows": 63149,
+     "global_cells": 396458,
+     "selected_cells": 22082
+    },
+    "files": {
+     "mask.npz": {
+      "bytes": 379958,
+      "sha256": "3f5ef88b8eb4502ab26de44bb3e95c7cd041722d06678c7b8202e2ab4d26f9c9"
+     },
+     "rows.csv": {
+      "bytes": 375338,
+      "sha256": "5710a6eb5c94354d54b1b026410b3539ee2a9c92e5da0af83237249a12545c3b"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67342315,
+      "sha256": "b77c5f71bba24ab2d38fbd1abc87de2665ec8f32cd5f150ef2d9fef577d5bef2"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 409795,
+      "sha256": "f0082e98d85ef1d9ed549654162a187a3afe65f47eac2a6ac7f34a659784c329"
+     },
+     "count_sum.npz": {
+      "bytes": 55593645,
+      "sha256": "730fc337321b49f0e134f3acf37be0cb8aab9fc09f18a53ba34fcff6cb2f134c"
+     },
+     "variance_proportion.npz": {
+      "bytes": 42153198,
+      "sha256": "55ee43200c90542d5ad54e5eda1fd1c2f8174bd2f6e08187463ab2cf01dbf6cd"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28753085,
+      "sha256": "d82e66b81aa2abf97359e906899386f9f278b63ba83168166388cdbc6a6d4b72"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p2of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/receipts/davideferrante11/vcc-derivatives-hipsci-gwnonfit-p2of12-r2/samples/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "f2709569972fc317426648a7a5a5584b681b7786090aae85c162388e7afc88e9",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137182991,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p2of12-r2/versions/1",
+     "saved_source_sha256": "ab34f3db543827404eaaea850a053b131627ef9a46b553f43a999e09260a5a23",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 9579,
+     "64": 9643,
+     "128": 9771
+    },
+    "bytes": 115862116,
+    "bank_receipt_sha256": "90f40396e1a99397a3d68eedb4f83101908a97383b1e84acbe2a97978018a055",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_nonfitness"
+   },
+   "unit": "hipsci_gw_nonfitness"
+  },
+  "davideferrante11/vcc-derivatives-hipsci-gwfit-p3of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwfit-p3of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/bank_receipts/davideferrante11/vcc-derivatives-hipsci-gwfit-p3of12-r2/bank/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "264ce36099bf4218695df8deabe8c18fe81c9ae60a39d4dff2c1bf7514803bc2",
+    "saved_version": {
+     "kernel_id": 137183005,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwfit-p3of12-r2/versions/1",
+     "saved_source_sha256": "e9ab03b181a739b181cefa9604233a15a453eb55dcf30e8a41f6472510c31886",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_fitness",
+    "files": {
+     "zero_fraction.npz": {
+      "bytes": 24853103,
+      "sha256": "31f7b7fd68007bb774a4e51717538b1f839e4d45f519c65c7299ce8672ddb573"
+     },
+     "sampled_controls.npz": {
+      "bytes": 39730,
+      "sha256": "a270caef93c857765c58ac5327a0995a95695d2a2cf911baf152ef4c663e4f9c"
+     },
+     "variance_proportion.npz": {
+      "bytes": 39492371,
+      "sha256": "686ac4ad0f6252364e626c715d48f90ca703d727166e9e64b1007b477a4cd822"
+     },
+     "count_sum.npz": {
+      "bytes": 45821898,
+      "sha256": "9665f3116f65b177f390cd18359ee42f6aa3b77fe5d0b340ac23c6dfa0542135"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 378396,
+      "sha256": "05c42ba0cbb50123b5c383da39c2603f7dbce08f2819924c80bf4ba260d29a4a"
+     },
+     "rows.csv": {
+      "bytes": 293191,
+      "sha256": "afee8290aefee9d9ef3ccd4876ece8f059a0f047bbc434771bb9e20b59ebe913"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "mean_proportion.npz": {
+      "bytes": 57958259,
+      "sha256": "b97f0f4bfff979bdc218517b6d5dbaf888e812c3fc017c71a78a5e2aadd9d975"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_fitness",
+    "cells_in": 36192,
+    "cells_used": 36192,
+    "zero_depth_excluded": 0,
+    "contexts": 60,
+    "rows": 4294,
+    "samples128": 9496,
+    "seconds": 509,
+    "sources": [
+     {
+      "file": "hipsci_gw_fitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00016.h5ad",
+      "cells": 2746
+     }
+    ],
+    "source_verification": "311bf5f671db67258d47d783aa62f7028bb590c817529f09cb16ee5f06d73a68",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 3,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "7f9e4c8efcfec28f769b9676b82c758f0d4178657983f1de29f61d9c3e5e4443",
+     "global_rows": 51525,
+     "global_cells": 322746,
+     "selected_cells": 36192
+    },
+    "files": {
+     "zero_fraction.npz": {
+      "bytes": 24853103,
+      "sha256": "31f7b7fd68007bb774a4e51717538b1f839e4d45f519c65c7299ce8672ddb573"
+     },
+     "sampled_controls.npz": {
+      "bytes": 39730,
+      "sha256": "a270caef93c857765c58ac5327a0995a95695d2a2cf911baf152ef4c663e4f9c"
+     },
+     "variance_proportion.npz": {
+      "bytes": 39492371,
+      "sha256": "686ac4ad0f6252364e626c715d48f90ca703d727166e9e64b1007b477a4cd822"
+     },
+     "count_sum.npz": {
+      "bytes": 45821898,
+      "sha256": "9665f3116f65b177f390cd18359ee42f6aa3b77fe5d0b340ac23c6dfa0542135"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 378396,
+      "sha256": "05c42ba0cbb50123b5c383da39c2603f7dbce08f2819924c80bf4ba260d29a4a"
+     },
+     "rows.csv": {
+      "bytes": 293191,
+      "sha256": "afee8290aefee9d9ef3ccd4876ece8f059a0f047bbc434771bb9e20b59ebe913"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "mean_proportion.npz": {
+      "bytes": 57958259,
+      "sha256": "b97f0f4bfff979bdc218517b6d5dbaf888e812c3fc017c71a78a5e2aadd9d975"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwfit-p3of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/receipts/davideferrante11/vcc-derivatives-hipsci-gwfit-p3of12-r2/samples/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "0f10961eb569db300e4b6c40e590d7722e777003849caedb34141954cb7a1a9d",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137183005,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwfit-p3of12-r2/versions/1",
+     "saved_source_sha256": "e9ab03b181a739b181cefa9604233a15a453eb55dcf30e8a41f6472510c31886",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 8824,
+     "64": 9048,
+     "128": 9496
+    },
+    "bytes": 111067830,
+    "bank_receipt_sha256": "264ce36099bf4218695df8deabe8c18fe81c9ae60a39d4dff2c1bf7514803bc2",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_fitness"
+   },
+   "unit": "hipsci_gw_fitness"
+  },
+  "davideferante/vcc-derivatives-hipsci-gwnonfit-p3of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p3of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/bank_receipts/davideferante/vcc-derivatives-hipsci-gwnonfit-p3of12-r2/bank/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "fcd34f620e84ef15cd0f963b82fbd62be05958529d1568266d5f32e15236da58",
+    "saved_version": {
+     "kernel_id": 137183028,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwnonfit-p3of12-r2/versions/1",
+     "saved_source_sha256": "de5d18557c97eaaa9bb2d4fa21c33f5bc706cf51c197524cf0ee796a7667267c",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_nonfitness",
+    "files": {
+     "variance_proportion.npz": {
+      "bytes": 42933708,
+      "sha256": "29d46fc21ac1edd8d91aa23f97943f9dc19323bbbe1b30354d951e2d87525934"
+     },
+     "mask.npz": {
+      "bytes": 379958,
+      "sha256": "3f5ef88b8eb4502ab26de44bb3e95c7cd041722d06678c7b8202e2ab4d26f9c9"
+     },
+     "count_sum.npz": {
+      "bytes": 55916322,
+      "sha256": "168b85f0682adb39495b94b9de950e71216a7b2970a27d0341ec6fe1a28a8788"
+     },
+     "mean_proportion.npz": {
+      "bytes": 68040659,
+      "sha256": "d4461b3e8e246cda137875a82c6ccdb7b60b4f8401009ffd0a24f15cbb2e4ce1"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 421755,
+      "sha256": "6cbb496e47398e9b81602bb2ee1d11bba8a2acfc032fc4c2a2daf7cb2a042d4a"
+     },
+     "rows.csv": {
+      "bytes": 375409,
+      "sha256": "d3809d5efdae076820426c3de1a5b9db8102e7fdfe4ab88f30db6dec159375a3"
+     },
+     "sampled_controls.npz": {
+      "bytes": 7437,
+      "sha256": "c2fc8384d825d91290f4d2751fabc295aa11370a90a733232b8e2f6a15874146"
+     },
+     "zero_fraction.npz": {
+      "bytes": 29017360,
+      "sha256": "238d85cdf1cb4e5dffc4b4a612806dfecaa254e7844346f19d215ba9bb81a46b"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_nonfitness",
+    "cells_in": 37444,
+    "cells_used": 37444,
+    "zero_depth_excluded": 0,
+    "contexts": 40,
+    "rows": 5263,
+    "samples128": 10183,
+    "seconds": 585,
+    "sources": [
+     {
+      "file": "hipsci_gw_nonfitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00016.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00017.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00018.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00019.h5ad",
+      "cells": 16458
+     }
+    ],
+    "source_verification": "7707c03885ff2fb4935c0e81cdeac555089beae9b789e74c3ef4e88d8cbda348",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 3,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "2b1ce3507e417dc9b335795938fed1dfc2c071f4ac8523c97e26090074d85f50",
+     "global_rows": 63149,
+     "global_cells": 396458,
+     "selected_cells": 37444
+    },
+    "files": {
+     "variance_proportion.npz": {
+      "bytes": 42933708,
+      "sha256": "29d46fc21ac1edd8d91aa23f97943f9dc19323bbbe1b30354d951e2d87525934"
+     },
+     "mask.npz": {
+      "bytes": 379958,
+      "sha256": "3f5ef88b8eb4502ab26de44bb3e95c7cd041722d06678c7b8202e2ab4d26f9c9"
+     },
+     "count_sum.npz": {
+      "bytes": 55916322,
+      "sha256": "168b85f0682adb39495b94b9de950e71216a7b2970a27d0341ec6fe1a28a8788"
+     },
+     "mean_proportion.npz": {
+      "bytes": 68040659,
+      "sha256": "d4461b3e8e246cda137875a82c6ccdb7b60b4f8401009ffd0a24f15cbb2e4ce1"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 421755,
+      "sha256": "6cbb496e47398e9b81602bb2ee1d11bba8a2acfc032fc4c2a2daf7cb2a042d4a"
+     },
+     "rows.csv": {
+      "bytes": 375409,
+      "sha256": "d3809d5efdae076820426c3de1a5b9db8102e7fdfe4ab88f30db6dec159375a3"
+     },
+     "sampled_controls.npz": {
+      "bytes": 7437,
+      "sha256": "c2fc8384d825d91290f4d2751fabc295aa11370a90a733232b8e2f6a15874146"
+     },
+     "zero_fraction.npz": {
+      "bytes": 29017360,
+      "sha256": "238d85cdf1cb4e5dffc4b4a612806dfecaa254e7844346f19d215ba9bb81a46b"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p3of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/receipts/davideferante/vcc-derivatives-hipsci-gwnonfit-p3of12-r2/samples/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "21503fe6d362f4c379a41a7522776e3a1d913cc6abad2b8452d20a31bb16de81",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137183028,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwnonfit-p3of12-r2/versions/1",
+     "saved_source_sha256": "de5d18557c97eaaa9bb2d4fa21c33f5bc706cf51c197524cf0ee796a7667267c",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 9799,
+     "64": 9927,
+     "128": 10183
+    },
+    "bytes": 118954886,
+    "bank_receipt_sha256": "fcd34f620e84ef15cd0f963b82fbd62be05958529d1568266d5f32e15236da58",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_nonfitness"
+   },
+   "unit": "hipsci_gw_nonfitness"
+  },
+  "davideferante/vcc-derivatives-hipsci-gwfit-p4of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwfit-p4of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/bank_receipts/davideferante/vcc-derivatives-hipsci-gwfit-p4of12-r2/bank/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "2fdd64d63eeb7898c0174eff72f2c9f4a8fc1d03a7003d1cf991f60a44de74dd",
+    "saved_version": {
+     "kernel_id": 137183045,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwfit-p4of12-r2/versions/1",
+     "saved_source_sha256": "d0585ef6e7762ce281c135b80e9614f839979b80c108e2e16be0d9966d8942b7",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_fitness",
+    "files": {
+     "zero_fraction.npz": {
+      "bytes": 24693641,
+      "sha256": "10131fcf88e09014ca4ac3f75a6d2c76608b17f737b28f2f055f84ce6c7dff7a"
+     },
+     "sampled_controls.npz": {
+      "bytes": 7693,
+      "sha256": "59c8b3f13531e94dd8ce13260c50c197e38fc73aeb506d7cf0489356d5242a53"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "mean_proportion.npz": {
+      "bytes": 57590252,
+      "sha256": "0d4d94d373451819d52c2f0efe08ee0a43bd0b384cc765568401628f934d7c9e"
+     },
+     "rows.csv": {
+      "bytes": 293256,
+      "sha256": "af1e451976d8846be6448b554841778a731619b08cc41f94d79ef2070cebea1c"
+     },
+     "count_sum.npz": {
+      "bytes": 45700048,
+      "sha256": "798cf0ff6e733ec451a57df15bd6a41fee7c2ce77e9c1de5fbf6fa79563de4c4"
+     },
+     "variance_proportion.npz": {
+      "bytes": 38793786,
+      "sha256": "5d3baec0f68737c405c126e047a5fd5b8219a3eadfdeb00bdf03f957760e74f8"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 369604,
+      "sha256": "37ce71f04da3fad91e3700d774e973ac9f38823e07cf606d2c345999c84cb629"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_fitness",
+    "cells_in": 27213,
+    "cells_used": 27213,
+    "zero_depth_excluded": 0,
+    "contexts": 60,
+    "rows": 4294,
+    "samples128": 9158,
+    "seconds": 711,
+    "sources": [
+     {
+      "file": "hipsci_gw_fitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00016.h5ad",
+      "cells": 2746
+     }
+    ],
+    "source_verification": "311bf5f671db67258d47d783aa62f7028bb590c817529f09cb16ee5f06d73a68",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 4,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "7f9e4c8efcfec28f769b9676b82c758f0d4178657983f1de29f61d9c3e5e4443",
+     "global_rows": 51525,
+     "global_cells": 322746,
+     "selected_cells": 27213
+    },
+    "files": {
+     "zero_fraction.npz": {
+      "bytes": 24693641,
+      "sha256": "10131fcf88e09014ca4ac3f75a6d2c76608b17f737b28f2f055f84ce6c7dff7a"
+     },
+     "sampled_controls.npz": {
+      "bytes": 7693,
+      "sha256": "59c8b3f13531e94dd8ce13260c50c197e38fc73aeb506d7cf0489356d5242a53"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "mean_proportion.npz": {
+      "bytes": 57590252,
+      "sha256": "0d4d94d373451819d52c2f0efe08ee0a43bd0b384cc765568401628f934d7c9e"
+     },
+     "rows.csv": {
+      "bytes": 293256,
+      "sha256": "af1e451976d8846be6448b554841778a731619b08cc41f94d79ef2070cebea1c"
+     },
+     "count_sum.npz": {
+      "bytes": 45700048,
+      "sha256": "798cf0ff6e733ec451a57df15bd6a41fee7c2ce77e9c1de5fbf6fa79563de4c4"
+     },
+     "variance_proportion.npz": {
+      "bytes": 38793786,
+      "sha256": "5d3baec0f68737c405c126e047a5fd5b8219a3eadfdeb00bdf03f957760e74f8"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 369604,
+      "sha256": "37ce71f04da3fad91e3700d774e973ac9f38823e07cf606d2c345999c84cb629"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwfit-p4of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/receipts/davideferante/vcc-derivatives-hipsci-gwfit-p4of12-r2/samples/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "561ecadbe40993cbe40c1850daa74843196a3995dc33cb72361d2160d9252989",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137183045,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwfit-p4of12-r2/versions/1",
+     "saved_source_sha256": "d0585ef6e7762ce281c135b80e9614f839979b80c108e2e16be0d9966d8942b7",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 8678,
+     "64": 8838,
+     "128": 9158
+    },
+    "bytes": 106787090,
+    "bank_receipt_sha256": "2fdd64d63eeb7898c0174eff72f2c9f4a8fc1d03a7003d1cf991f60a44de74dd",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_fitness"
+   },
+   "unit": "hipsci_gw_fitness"
+  },
+  "davideferante/vcc-derivatives-hipsci-gwnonfit-p4of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p4of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/bank_receipts/davideferante/vcc-derivatives-hipsci-gwnonfit-p4of12-r2/bank/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "563082d37f1016bc5c89f6865b859d7d7b89bb92ec6fef5d9550be7f487446f0",
+    "saved_version": {
+     "kernel_id": 137183058,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwnonfit-p4of12-r2/versions/1",
+     "saved_source_sha256": "6bfec3c1e62f8d2a3984ecfb8f58d32c2c1b5197c1bfe03352b6d63bca787fce",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_nonfitness",
+    "files": {
+     "variance_proportion.npz": {
+      "bytes": 42782288,
+      "sha256": "a4173054d94e7aa2adb8bad0947f52bd6bb507070688f1afd5aef0044b0aee44"
+     },
+     "mask.npz": {
+      "bytes": 379958,
+      "sha256": "3f5ef88b8eb4502ab26de44bb3e95c7cd041722d06678c7b8202e2ab4d26f9c9"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22656,
+      "sha256": "589b10de712e5e4ed47c67c24e7d6e9810540a91426bb07064b93abcf9c88899"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 414626,
+      "sha256": "fa8d2f97e18bdb58d15a0dbc30fba4819894839e8b4a10189a3b4a66738365d7"
+     },
+     "count_sum.npz": {
+      "bytes": 55764997,
+      "sha256": "018eb9bf9cd29f8a935bbef97ca7514ece83324679c7d2c7ac086d24facfae6e"
+     },
+     "rows.csv": {
+      "bytes": 375439,
+      "sha256": "b05a3de5740e299eae34217be537651c11b691f5418d5bd7e192078bfcd13c7d"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67910512,
+      "sha256": "cef57be008295265c2a0f955a2fc32a74c91ea0fad47832bdea7a65110b257bf"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28904605,
+      "sha256": "70394260a1138ee1bae13c06e831b35c7b0c84a186d38fbd321a40d3a3c95877"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_nonfitness",
+    "cells_in": 35383,
+    "cells_used": 35383,
+    "zero_depth_excluded": 0,
+    "contexts": 40,
+    "rows": 5263,
+    "samples128": 9886,
+    "seconds": 599,
+    "sources": [
+     {
+      "file": "hipsci_gw_nonfitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00016.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00017.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00018.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00019.h5ad",
+      "cells": 16458
+     }
+    ],
+    "source_verification": "7707c03885ff2fb4935c0e81cdeac555089beae9b789e74c3ef4e88d8cbda348",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 4,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "2b1ce3507e417dc9b335795938fed1dfc2c071f4ac8523c97e26090074d85f50",
+     "global_rows": 63149,
+     "global_cells": 396458,
+     "selected_cells": 35383
+    },
+    "files": {
+     "variance_proportion.npz": {
+      "bytes": 42782288,
+      "sha256": "a4173054d94e7aa2adb8bad0947f52bd6bb507070688f1afd5aef0044b0aee44"
+     },
+     "mask.npz": {
+      "bytes": 379958,
+      "sha256": "3f5ef88b8eb4502ab26de44bb3e95c7cd041722d06678c7b8202e2ab4d26f9c9"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22656,
+      "sha256": "589b10de712e5e4ed47c67c24e7d6e9810540a91426bb07064b93abcf9c88899"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 414626,
+      "sha256": "fa8d2f97e18bdb58d15a0dbc30fba4819894839e8b4a10189a3b4a66738365d7"
+     },
+     "count_sum.npz": {
+      "bytes": 55764997,
+      "sha256": "018eb9bf9cd29f8a935bbef97ca7514ece83324679c7d2c7ac086d24facfae6e"
+     },
+     "rows.csv": {
+      "bytes": 375439,
+      "sha256": "b05a3de5740e299eae34217be537651c11b691f5418d5bd7e192078bfcd13c7d"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67910512,
+      "sha256": "cef57be008295265c2a0f955a2fc32a74c91ea0fad47832bdea7a65110b257bf"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28904605,
+      "sha256": "70394260a1138ee1bae13c06e831b35c7b0c84a186d38fbd321a40d3a3c95877"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p4of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/receipts/davideferante/vcc-derivatives-hipsci-gwnonfit-p4of12-r2/samples/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "56c5fb58f159e54a704123b907935106bd99a1944c3ab204c73bd063f15f0c0b",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137183058,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwnonfit-p4of12-r2/versions/1",
+     "saved_source_sha256": "6bfec3c1e62f8d2a3984ecfb8f58d32c2c1b5197c1bfe03352b6d63bca787fce",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 9699,
+     "64": 9758,
+     "128": 9886
+    },
+    "bytes": 116488768,
+    "bank_receipt_sha256": "563082d37f1016bc5c89f6865b859d7d7b89bb92ec6fef5d9550be7f487446f0",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_nonfitness"
+   },
+   "unit": "hipsci_gw_nonfitness"
+  },
+  "davidmaisterx/vcc-derivatives-hipsci-gwfit-p5of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p5of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/bank_receipts/davidmaisterx/vcc-derivatives-hipsci-gwfit-p5of12-r2/bank/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "f339786a1fb233b2811b30983ec5ac01dd337b2de45ddecdb5a0a7f1e99041b5",
+    "saved_version": {
+     "kernel_id": 137183081,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p5of12-r2/versions/1",
+     "saved_source_sha256": "7da0b8a75a52b1b1841295a3c4856fbd116d55d5e7f8c6e845c7bb09b979d75e",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_fitness",
+    "files": {
+     "variance_proportion.npz": {
+      "bytes": 39555884,
+      "sha256": "8673a76dc570e93638ef359975c7b2e475950135f1fb6501f33e34478d2f220d"
+     },
+     "count_sum.npz": {
+      "bytes": 45975903,
+      "sha256": "a38748597051fe7118aad97782341fe4fb5bce1f8b93ddb85ac1643c173c8be8"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 386416,
+      "sha256": "65bf0f0a69102701623c3c705c070ab9aebae74ccb383b564d9e53cdc59042bc"
+     },
+     "rows.csv": {
+      "bytes": 293367,
+      "sha256": "cc4b8683d905b35663a8740d5431a87b59087b3194fba2ca27495f61d4cdf221"
+     },
+     "sampled_controls.npz": {
+      "bytes": 8474,
+      "sha256": "f73d549c8389f05bb094929767b565e4e6f15929e57f86a3dd0ace6dcdb2cb77"
+     },
+     "mean_proportion.npz": {
+      "bytes": 58136595,
+      "sha256": "e3b84c187c6440205410e43b38eaea325a3fd54da2ff8435d4de31d9259debdc"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24939296,
+      "sha256": "07c20c6173cd31cfd165ca8d8140a5293b078ee5843652edb944fa28960469a4"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_fitness",
+    "cells_in": 43663,
+    "cells_used": 43663,
+    "zero_depth_excluded": 0,
+    "contexts": 60,
+    "rows": 4294,
+    "samples128": 9768,
+    "seconds": 588,
+    "sources": [
+     {
+      "file": "hipsci_gw_fitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00016.h5ad",
+      "cells": 2746
+     }
+    ],
+    "source_verification": "311bf5f671db67258d47d783aa62f7028bb590c817529f09cb16ee5f06d73a68",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 5,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "7f9e4c8efcfec28f769b9676b82c758f0d4178657983f1de29f61d9c3e5e4443",
+     "global_rows": 51525,
+     "global_cells": 322746,
+     "selected_cells": 43663
+    },
+    "files": {
+     "variance_proportion.npz": {
+      "bytes": 39555884,
+      "sha256": "8673a76dc570e93638ef359975c7b2e475950135f1fb6501f33e34478d2f220d"
+     },
+     "count_sum.npz": {
+      "bytes": 45975903,
+      "sha256": "a38748597051fe7118aad97782341fe4fb5bce1f8b93ddb85ac1643c173c8be8"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 386416,
+      "sha256": "65bf0f0a69102701623c3c705c070ab9aebae74ccb383b564d9e53cdc59042bc"
+     },
+     "rows.csv": {
+      "bytes": 293367,
+      "sha256": "cc4b8683d905b35663a8740d5431a87b59087b3194fba2ca27495f61d4cdf221"
+     },
+     "sampled_controls.npz": {
+      "bytes": 8474,
+      "sha256": "f73d549c8389f05bb094929767b565e4e6f15929e57f86a3dd0ace6dcdb2cb77"
+     },
+     "mean_proportion.npz": {
+      "bytes": 58136595,
+      "sha256": "e3b84c187c6440205410e43b38eaea325a3fd54da2ff8435d4de31d9259debdc"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24939296,
+      "sha256": "07c20c6173cd31cfd165ca8d8140a5293b078ee5843652edb944fa28960469a4"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p5of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/receipts/davidmaisterx/vcc-derivatives-hipsci-gwfit-p5of12-r2/samples/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "94225c512c4559be18d30212b2bc76f4beb2616c0e88232dbd39c8cc1af26593",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137183081,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p5of12-r2/versions/1",
+     "saved_source_sha256": "7da0b8a75a52b1b1841295a3c4856fbd116d55d5e7f8c6e845c7bb09b979d75e",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 8904,
+     "64": 9192,
+     "128": 9768
+    },
+    "bytes": 114272451,
+    "bank_receipt_sha256": "f339786a1fb233b2811b30983ec5ac01dd337b2de45ddecdb5a0a7f1e99041b5",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_fitness"
+   },
+   "unit": "hipsci_gw_fitness"
+  },
+  "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p5of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p5of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/bank_receipts/davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p5of12-r2/bank/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "fe4819a7b87dca6aeb6a0cd31cca4b4ae89e76e8b9ac47fbaa046f17c25c4b9d",
+    "saved_version": {
+     "kernel_id": 137183106,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p5of12-r2/versions/1",
+     "saved_source_sha256": "c06082f647c6e114da93bc4e1b97060b137efec53926632713ef64157320c6ed",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_nonfitness",
+    "files": {
+     "variance_proportion.npz": {
+      "bytes": 42880426,
+      "sha256": "5cdb76a2b4cd4bd637b2548946f4d02569652c2cd7273519df6c2f4c46282ce7"
+     },
+     "rows.csv": {
+      "bytes": 375399,
+      "sha256": "0e2578bea76c260d28e7c76892fdb96f40c6daece6ea13d75b2c4dd6b06e7964"
+     },
+     "count_sum.npz": {
+      "bytes": 55855345,
+      "sha256": "b2d856c054499fde5b74cb7fdff1fa4b7c110bd40059417cd1d70cf0ad77e7a9"
+     },
+     "mask.npz": {
+      "bytes": 379881,
+      "sha256": "2ef99553f3c989ebdac78e617dcdf04e8c35254ebd273629eee86e969d0c5921"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 412668,
+      "sha256": "1a43727cf56028d288ad2b0a8296d6ae58393e8485dd0047c29331e84ce9290d"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28951942,
+      "sha256": "20e9c57ada64a1d5a0622f2086d97519f5fb56c623aca4c25ce27416faa00c35"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67827086,
+      "sha256": "c68c6aa37cee9aa6c1ed4a829f6fa9008f28645e3566e8a58bfd9a2adc5e66a9"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_nonfitness",
+    "cells_in": 16144,
+    "cells_used": 16144,
+    "zero_depth_excluded": 0,
+    "contexts": 40,
+    "rows": 5262,
+    "samples128": 9855,
+    "seconds": 487,
+    "sources": [
+     {
+      "file": "hipsci_gw_nonfitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00016.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00017.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00018.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00019.h5ad",
+      "cells": 16458
+     }
+    ],
+    "source_verification": "7707c03885ff2fb4935c0e81cdeac555089beae9b789e74c3ef4e88d8cbda348",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 5,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "2b1ce3507e417dc9b335795938fed1dfc2c071f4ac8523c97e26090074d85f50",
+     "global_rows": 63149,
+     "global_cells": 396458,
+     "selected_cells": 16144
+    },
+    "files": {
+     "variance_proportion.npz": {
+      "bytes": 42880426,
+      "sha256": "5cdb76a2b4cd4bd637b2548946f4d02569652c2cd7273519df6c2f4c46282ce7"
+     },
+     "rows.csv": {
+      "bytes": 375399,
+      "sha256": "0e2578bea76c260d28e7c76892fdb96f40c6daece6ea13d75b2c4dd6b06e7964"
+     },
+     "count_sum.npz": {
+      "bytes": 55855345,
+      "sha256": "b2d856c054499fde5b74cb7fdff1fa4b7c110bd40059417cd1d70cf0ad77e7a9"
+     },
+     "mask.npz": {
+      "bytes": 379881,
+      "sha256": "2ef99553f3c989ebdac78e617dcdf04e8c35254ebd273629eee86e969d0c5921"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 412668,
+      "sha256": "1a43727cf56028d288ad2b0a8296d6ae58393e8485dd0047c29331e84ce9290d"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28951942,
+      "sha256": "20e9c57ada64a1d5a0622f2086d97519f5fb56c623aca4c25ce27416faa00c35"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67827086,
+      "sha256": "c68c6aa37cee9aa6c1ed4a829f6fa9008f28645e3566e8a58bfd9a2adc5e66a9"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p5of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/receipts/davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p5of12-r2/samples/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "476ed7b1ccda5dcd2d52d6c32a0596152ed5a67252b32a3030b268a12c7b9641",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137183106,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p5of12-r2/versions/1",
+     "saved_source_sha256": "c06082f647c6e114da93bc4e1b97060b137efec53926632713ef64157320c6ed",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 9663,
+     "64": 9727,
+     "128": 9855
+    },
+    "bytes": 116889013,
+    "bank_receipt_sha256": "fe4819a7b87dca6aeb6a0cd31cca4b4ae89e76e8b9ac47fbaa046f17c25c4b9d",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_nonfitness"
+   },
+   "unit": "hipsci_gw_nonfitness"
+  },
+  "davidmaisterx/vcc-derivatives-hipsci-gwfit-p6of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p6of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/bank_receipts/davidmaisterx/vcc-derivatives-hipsci-gwfit-p6of12-r2/bank/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "81e652b79f3b80eb40d157859c8fa842a0aa00d61e34bf044fa3ce6933535a88",
+    "saved_version": {
+     "kernel_id": 137183117,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p6of12-r2/versions/1",
+     "saved_source_sha256": "a7794a3bef67c972892aa7166d07a474384703b8daa85b8c53936bb23404893b",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_fitness",
+    "files": {
+     "samples.jsonl.gz": {
+      "bytes": 365938,
+      "sha256": "0a78d8cfb18bda0cb216074af00ea4650371c902879d68a435574f9f7fd1f144"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     },
+     "count_sum.npz": {
+      "bytes": 45671454,
+      "sha256": "2a3ea46907c783b71e64086c63dc94b3c25c052eb9c20259c8b1f1479004b504"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24719657,
+      "sha256": "f82c755dbdd397fcda8aaec8d3e49e847922c910b26cb8e3f34f8c34ae24a66d"
+     },
+     "mean_proportion.npz": {
+      "bytes": 57994467,
+      "sha256": "c90ca3ee9dd818f09ca11a0428c79b31bd2ccf9c6c61115a8a42cee91c32ff25"
+     },
+     "variance_proportion.npz": {
+      "bytes": 39448484,
+      "sha256": "79d86c7521663d9948c105c34b4496816c40f2ab9b02f40d0a80bbfce34c5b82"
+     },
+     "rows.csv": {
+      "bytes": 293346,
+      "sha256": "12f069a067448ad06c4d7073b37470c3bf056b0d61c7770823081ad020dc9eb4"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_fitness",
+    "cells_in": 11296,
+    "cells_used": 11296,
+    "zero_depth_excluded": 0,
+    "contexts": 60,
+    "rows": 4294,
+    "samples128": 8994,
+    "seconds": 725,
+    "sources": [
+     {
+      "file": "hipsci_gw_fitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00016.h5ad",
+      "cells": 2746
+     }
+    ],
+    "source_verification": "311bf5f671db67258d47d783aa62f7028bb590c817529f09cb16ee5f06d73a68",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 6,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "7f9e4c8efcfec28f769b9676b82c758f0d4178657983f1de29f61d9c3e5e4443",
+     "global_rows": 51525,
+     "global_cells": 322746,
+     "selected_cells": 11296
+    },
+    "files": {
+     "samples.jsonl.gz": {
+      "bytes": 365938,
+      "sha256": "0a78d8cfb18bda0cb216074af00ea4650371c902879d68a435574f9f7fd1f144"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     },
+     "count_sum.npz": {
+      "bytes": 45671454,
+      "sha256": "2a3ea46907c783b71e64086c63dc94b3c25c052eb9c20259c8b1f1479004b504"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24719657,
+      "sha256": "f82c755dbdd397fcda8aaec8d3e49e847922c910b26cb8e3f34f8c34ae24a66d"
+     },
+     "mean_proportion.npz": {
+      "bytes": 57994467,
+      "sha256": "c90ca3ee9dd818f09ca11a0428c79b31bd2ccf9c6c61115a8a42cee91c32ff25"
+     },
+     "variance_proportion.npz": {
+      "bytes": 39448484,
+      "sha256": "79d86c7521663d9948c105c34b4496816c40f2ab9b02f40d0a80bbfce34c5b82"
+     },
+     "rows.csv": {
+      "bytes": 293346,
+      "sha256": "12f069a067448ad06c4d7073b37470c3bf056b0d61c7770823081ad020dc9eb4"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p6of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/receipts/davidmaisterx/vcc-derivatives-hipsci-gwfit-p6of12-r2/samples/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "4bddcd3e15de3d8f06d4c7ac0187c353dff9c3dcd0dca87dd30f46b51e1bdbe4",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137183117,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p6of12-r2/versions/1",
+     "saved_source_sha256": "a7794a3bef67c972892aa7166d07a474384703b8daa85b8c53936bb23404893b",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 8802,
+     "64": 8866,
+     "128": 8994
+    },
+    "bytes": 104097997,
+    "bank_receipt_sha256": "81e652b79f3b80eb40d157859c8fa842a0aa00d61e34bf044fa3ce6933535a88",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_fitness"
+   },
+   "unit": "hipsci_gw_fitness"
+  },
+  "davideferante/vcc-derivatives-hipsci-gwnonfit-p6of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p6of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/bank_receipts/davideferante/vcc-derivatives-hipsci-gwnonfit-p6of12-r2/bank/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "2d2b10ffb8702fcb6944fcc8eca42335f93306a0b84a63dd331cc70b3eced81f",
+    "saved_version": {
+     "kernel_id": 137183848,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwnonfit-p6of12-r2/versions/1",
+     "saved_source_sha256": "bc7ac351dc6dbaa1b644c4526cc4bcf44e0f02197f9cae4732bd7b30bf45a780",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_nonfitness",
+    "files": {
+     "rows.csv": {
+      "bytes": 375460,
+      "sha256": "c47d634cdb8fb635baa31ad86c7be882336fa80d1d3062e706d81299b2dede73"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 428805,
+      "sha256": "fee2020db571992cf1f266894ce770427341f76d1b070d34dfbfac66fd8ea356"
+     },
+     "zero_fraction.npz": {
+      "bytes": 29104082,
+      "sha256": "86767b27b5beb67bb45f11b35c444ec0aa365027c9398b9f515bc72cd1c94fa8"
+     },
+     "mask.npz": {
+      "bytes": 379881,
+      "sha256": "2ef99553f3c989ebdac78e617dcdf04e8c35254ebd273629eee86e969d0c5921"
+     },
+     "mean_proportion.npz": {
+      "bytes": 68388888,
+      "sha256": "4a2047071f60b8494c65f2406f188611ca2cd1c1cbfa76fe4a634fbe6a0a2c89"
+     },
+     "variance_proportion.npz": {
+      "bytes": 43436077,
+      "sha256": "9ded70e2301b83a40c06d8bf27cbf89283fd896b63f1d09db877d95db2c0e7bf"
+     },
+     "sampled_controls.npz": {
+      "bytes": 11286,
+      "sha256": "8ab634b8ad099e8452ce9e16b1efd24ec738dc09aad5f817a955eabc94a1b6e7"
+     },
+     "count_sum.npz": {
+      "bytes": 56017013,
+      "sha256": "978649e2194d7504f224b059a0f858c8e08139162585343e706cf0b48f53b82f"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_nonfitness",
+    "cells_in": 48010,
+    "cells_used": 48010,
+    "zero_depth_excluded": 0,
+    "contexts": 40,
+    "rows": 5262,
+    "samples128": 10421,
+    "seconds": 556,
+    "sources": [
+     {
+      "file": "hipsci_gw_nonfitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00016.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00017.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00018.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00019.h5ad",
+      "cells": 16458
+     }
+    ],
+    "source_verification": "7707c03885ff2fb4935c0e81cdeac555089beae9b789e74c3ef4e88d8cbda348",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 6,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "2b1ce3507e417dc9b335795938fed1dfc2c071f4ac8523c97e26090074d85f50",
+     "global_rows": 63149,
+     "global_cells": 396458,
+     "selected_cells": 48010
+    },
+    "files": {
+     "rows.csv": {
+      "bytes": 375460,
+      "sha256": "c47d634cdb8fb635baa31ad86c7be882336fa80d1d3062e706d81299b2dede73"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 428805,
+      "sha256": "fee2020db571992cf1f266894ce770427341f76d1b070d34dfbfac66fd8ea356"
+     },
+     "zero_fraction.npz": {
+      "bytes": 29104082,
+      "sha256": "86767b27b5beb67bb45f11b35c444ec0aa365027c9398b9f515bc72cd1c94fa8"
+     },
+     "mask.npz": {
+      "bytes": 379881,
+      "sha256": "2ef99553f3c989ebdac78e617dcdf04e8c35254ebd273629eee86e969d0c5921"
+     },
+     "mean_proportion.npz": {
+      "bytes": 68388888,
+      "sha256": "4a2047071f60b8494c65f2406f188611ca2cd1c1cbfa76fe4a634fbe6a0a2c89"
+     },
+     "variance_proportion.npz": {
+      "bytes": 43436077,
+      "sha256": "9ded70e2301b83a40c06d8bf27cbf89283fd896b63f1d09db877d95db2c0e7bf"
+     },
+     "sampled_controls.npz": {
+      "bytes": 11286,
+      "sha256": "8ab634b8ad099e8452ce9e16b1efd24ec738dc09aad5f817a955eabc94a1b6e7"
+     },
+     "count_sum.npz": {
+      "bytes": 56017013,
+      "sha256": "978649e2194d7504f224b059a0f858c8e08139162585343e706cf0b48f53b82f"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p6of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r2/receipts/davideferante/vcc-derivatives-hipsci-gwnonfit-p6of12-r2/samples/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "8922134db378252b46a7d7455ff6fe81be686fa01982a2bfb2fa887f734312e9",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137183848,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwnonfit-p6of12-r2/versions/1",
+     "saved_source_sha256": "bc7ac351dc6dbaa1b644c4526cc4bcf44e0f02197f9cae4732bd7b30bf45a780",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 9845,
+     "64": 10037,
+     "128": 10421
+    },
+    "bytes": 122522484,
+    "bank_receipt_sha256": "2d2b10ffb8702fcb6944fcc8eca42335f93306a0b84a63dd331cc70b3eced81f",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_nonfitness"
+   },
+   "unit": "hipsci_gw_nonfitness"
+  },
+  "davideferrante11/vcc-derivatives-hipsci-gwfit-p7of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwfit-p7of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/bank_receipts/davideferrante11/vcc-derivatives-hipsci-gwfit-p7of12-r2/bank/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "9ffcca28f9bae1118ea377bd7446ce36fabb9e5b9c601d9b1e3272c6633c8652",
+    "saved_version": {
+     "kernel_id": 137188522,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwfit-p7of12-r2/versions/1",
+     "saved_source_sha256": "bfaf71b384a922ccd25c793452d83894c9cfbb8ca9ff09b369d5a6084fbb0f6f",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_fitness",
+    "files": {
+     "rows.csv": {
+      "bytes": 293306,
+      "sha256": "b3a5b1df3b3bfd967db4c0ed6440ba78cb7f9db1e7e36ae95eefe38aa4583647"
+     },
+     "variance_proportion.npz": {
+      "bytes": 38968793,
+      "sha256": "558e0fb4d542fc1da43bacbe6ba5d895396db88c32a69a34e8eafcf4b2ed74f0"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 369726,
+      "sha256": "ddf342365fb103ed1bc49a83f464299dc898b995431f548fd61dc426dddb9394"
+     },
+     "sampled_controls.npz": {
+      "bytes": 28289,
+      "sha256": "a24230972983c5240341162f480c50159883cb48d3dc354594428037d43c5d6c"
+     },
+     "count_sum.npz": {
+      "bytes": 45681453,
+      "sha256": "fb2b80fe25e97074abf86cd143ebfe0278240e746c4b9f83955d9fad5acf0e30"
+     },
+     "mean_proportion.npz": {
+      "bytes": 57761217,
+      "sha256": "274348b657b1137d6401684eabc5c47c7a5e271867c53ad9379fb2dbe324b9e9"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24732447,
+      "sha256": "11b534ff8ad561ddd7f98bd4a815fca4f246029db95d62a1c7802abf9144def5"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_fitness",
+    "cells_in": 21953,
+    "cells_used": 21953,
+    "zero_depth_excluded": 0,
+    "contexts": 60,
+    "rows": 4294,
+    "samples128": 9147,
+    "seconds": 420,
+    "sources": [
+     {
+      "file": "hipsci_gw_fitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00016.h5ad",
+      "cells": 2746
+     }
+    ],
+    "source_verification": "311bf5f671db67258d47d783aa62f7028bb590c817529f09cb16ee5f06d73a68",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 7,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "7f9e4c8efcfec28f769b9676b82c758f0d4178657983f1de29f61d9c3e5e4443",
+     "global_rows": 51525,
+     "global_cells": 322746,
+     "selected_cells": 21953
+    },
+    "files": {
+     "rows.csv": {
+      "bytes": 293306,
+      "sha256": "b3a5b1df3b3bfd967db4c0ed6440ba78cb7f9db1e7e36ae95eefe38aa4583647"
+     },
+     "variance_proportion.npz": {
+      "bytes": 38968793,
+      "sha256": "558e0fb4d542fc1da43bacbe6ba5d895396db88c32a69a34e8eafcf4b2ed74f0"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 369726,
+      "sha256": "ddf342365fb103ed1bc49a83f464299dc898b995431f548fd61dc426dddb9394"
+     },
+     "sampled_controls.npz": {
+      "bytes": 28289,
+      "sha256": "a24230972983c5240341162f480c50159883cb48d3dc354594428037d43c5d6c"
+     },
+     "count_sum.npz": {
+      "bytes": 45681453,
+      "sha256": "fb2b80fe25e97074abf86cd143ebfe0278240e746c4b9f83955d9fad5acf0e30"
+     },
+     "mean_proportion.npz": {
+      "bytes": 57761217,
+      "sha256": "274348b657b1137d6401684eabc5c47c7a5e271867c53ad9379fb2dbe324b9e9"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24732447,
+      "sha256": "11b534ff8ad561ddd7f98bd4a815fca4f246029db95d62a1c7802abf9144def5"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwfit-p7of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/receipts/davideferrante11/vcc-derivatives-hipsci-gwfit-p7of12-r2/samples/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "090ba0664ac78fca00e1a1473a08f7bd22f0580b1cb0a8fbc3d92f7ab3a1b5b9",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137188522,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwfit-p7of12-r2/versions/1",
+     "saved_source_sha256": "bfaf71b384a922ccd25c793452d83894c9cfbb8ca9ff09b369d5a6084fbb0f6f",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 8763,
+     "64": 8891,
+     "128": 9147
+    },
+    "bytes": 106448542,
+    "bank_receipt_sha256": "9ffcca28f9bae1118ea377bd7446ce36fabb9e5b9c601d9b1e3272c6633c8652",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_fitness"
+   },
+   "unit": "hipsci_gw_fitness"
+  },
+  "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p7of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p7of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/bank_receipts/davideferrante11/vcc-derivatives-hipsci-gwnonfit-p7of12-r2/bank/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "1514864f753fc405a8e847ff078e096b8cda7aa0b6897447fa59c98cd916fb8f",
+    "saved_version": {
+     "kernel_id": 137188547,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p7of12-r2/versions/1",
+     "saved_source_sha256": "2ecab13b9d033588a819c028df4529bc55119fd54b81e13c1ad7126d22cd020d",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_nonfitness",
+    "files": {
+     "count_sum.npz": {
+      "bytes": 55615400,
+      "sha256": "96a12938bd922104a2858bc43b94ff6d580edd167e69a53002e7e21cc69286d5"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 410269,
+      "sha256": "f4094d34e1ccfdbe87660332484ca1710c0c2b10435ad39f4f34041b8c43d4e9"
+     },
+     "rows.csv": {
+      "bytes": 375326,
+      "sha256": "3c60b2703f7b81f462b909050668fe0229fb9f381882e728f8dc94e9b346be2c"
+     },
+     "variance_proportion.npz": {
+      "bytes": 42411318,
+      "sha256": "487f5ae38015ded2d9660b4080a90c8fe4c9251fe46614104eee42895ed58f9f"
+     },
+     "sampled_controls.npz": {
+      "bytes": 42385,
+      "sha256": "c7c22d6528e7ea7803a6195e547f43bf2c0faebc7fdb736ede1a70234d662af4"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67480237,
+      "sha256": "4c1f35d12bb1494213defc377ec8e2a4e5a68aba35c64ece9ac8cc10c154c497"
+     },
+     "mask.npz": {
+      "bytes": 379881,
+      "sha256": "2ef99553f3c989ebdac78e617dcdf04e8c35254ebd273629eee86e969d0c5921"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28804953,
+      "sha256": "76e5d5a3da2647d5cf494ca2ee812109e304de478bd4b85e800ee95cd1331c3b"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_nonfitness",
+    "cells_in": 17966,
+    "cells_used": 17966,
+    "zero_depth_excluded": 0,
+    "contexts": 40,
+    "rows": 5262,
+    "samples128": 9818,
+    "seconds": 376,
+    "sources": [
+     {
+      "file": "hipsci_gw_nonfitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00016.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00017.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00018.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00019.h5ad",
+      "cells": 16458
+     }
+    ],
+    "source_verification": "7707c03885ff2fb4935c0e81cdeac555089beae9b789e74c3ef4e88d8cbda348",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 7,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "2b1ce3507e417dc9b335795938fed1dfc2c071f4ac8523c97e26090074d85f50",
+     "global_rows": 63149,
+     "global_cells": 396458,
+     "selected_cells": 17966
+    },
+    "files": {
+     "count_sum.npz": {
+      "bytes": 55615400,
+      "sha256": "96a12938bd922104a2858bc43b94ff6d580edd167e69a53002e7e21cc69286d5"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 410269,
+      "sha256": "f4094d34e1ccfdbe87660332484ca1710c0c2b10435ad39f4f34041b8c43d4e9"
+     },
+     "rows.csv": {
+      "bytes": 375326,
+      "sha256": "3c60b2703f7b81f462b909050668fe0229fb9f381882e728f8dc94e9b346be2c"
+     },
+     "variance_proportion.npz": {
+      "bytes": 42411318,
+      "sha256": "487f5ae38015ded2d9660b4080a90c8fe4c9251fe46614104eee42895ed58f9f"
+     },
+     "sampled_controls.npz": {
+      "bytes": 42385,
+      "sha256": "c7c22d6528e7ea7803a6195e547f43bf2c0faebc7fdb736ede1a70234d662af4"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67480237,
+      "sha256": "4c1f35d12bb1494213defc377ec8e2a4e5a68aba35c64ece9ac8cc10c154c497"
+     },
+     "mask.npz": {
+      "bytes": 379881,
+      "sha256": "2ef99553f3c989ebdac78e617dcdf04e8c35254ebd273629eee86e969d0c5921"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28804953,
+      "sha256": "76e5d5a3da2647d5cf494ca2ee812109e304de478bd4b85e800ee95cd1331c3b"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p7of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/receipts/davideferrante11/vcc-derivatives-hipsci-gwnonfit-p7of12-r2/samples/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "c6cdeed611d3b71d3a598146886a041517274df4473fa2c6ae76ee1d5deaa767",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137188547,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p7of12-r2/versions/1",
+     "saved_source_sha256": "2ecab13b9d033588a819c028df4529bc55119fd54b81e13c1ad7126d22cd020d",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 9626,
+     "64": 9690,
+     "128": 9818
+    },
+    "bytes": 116053523,
+    "bank_receipt_sha256": "1514864f753fc405a8e847ff078e096b8cda7aa0b6897447fa59c98cd916fb8f",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_nonfitness"
+   },
+   "unit": "hipsci_gw_nonfitness"
+  },
+  "davideferrante11/vcc-derivatives-hipsci-gwfit-p8of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwfit-p8of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/bank_receipts/davideferrante11/vcc-derivatives-hipsci-gwfit-p8of12-r2/bank/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "06d8242127c599a6ea24cbd05f0fc5fb9e5f3e5cb5753f173baedc4643896a49",
+    "saved_version": {
+     "kernel_id": 137188556,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwfit-p8of12-r2/versions/1",
+     "saved_source_sha256": "ed84451464d5b4a910aa83c5ad05cd999eb9320ac86f9ed90f53495cbca43149",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_fitness",
+    "files": {
+     "rows.csv": {
+      "bytes": 293313,
+      "sha256": "2663343e9e255d442e9694b117be7754473878ac3690b415c56140f27a9442c1"
+     },
+     "count_sum.npz": {
+      "bytes": 45905933,
+      "sha256": "60f3d077e6f04fafebe5c8694f48efd2b22cd44eec0864cab74f8ec1ce04da83"
+     },
+     "variance_proportion.npz": {
+      "bytes": 39618158,
+      "sha256": "e760467339e3ee4937573bec472039f749a735f26e115e9b90deb731dad97bb9"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 378611,
+      "sha256": "42a03e777c2e6831f57395d0dcb9cd40cff6146f3cfc14ca8cfea5981fadfb44"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24898607,
+      "sha256": "73dce65d6fc6b7fc392b26a805e36c549e29836f29915d52116309e068d5271d"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "mean_proportion.npz": {
+      "bytes": 58331770,
+      "sha256": "6a138f3ea4eb83e862d48a47b2ed4952b88fe1a1101b835a1016fa42da7e5e5c"
+     },
+     "sampled_controls.npz": {
+      "bytes": 8506,
+      "sha256": "593d40f70d8f608a4f5d8b4f4f611bdad152fbd1de49401608ef9eb9e065acb0"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_fitness",
+    "cells_in": 24026,
+    "cells_used": 24026,
+    "zero_depth_excluded": 0,
+    "contexts": 60,
+    "rows": 4294,
+    "samples128": 9514,
+    "seconds": 536,
+    "sources": [
+     {
+      "file": "hipsci_gw_fitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00016.h5ad",
+      "cells": 2746
+     }
+    ],
+    "source_verification": "311bf5f671db67258d47d783aa62f7028bb590c817529f09cb16ee5f06d73a68",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 8,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "7f9e4c8efcfec28f769b9676b82c758f0d4178657983f1de29f61d9c3e5e4443",
+     "global_rows": 51525,
+     "global_cells": 322746,
+     "selected_cells": 24026
+    },
+    "files": {
+     "rows.csv": {
+      "bytes": 293313,
+      "sha256": "2663343e9e255d442e9694b117be7754473878ac3690b415c56140f27a9442c1"
+     },
+     "count_sum.npz": {
+      "bytes": 45905933,
+      "sha256": "60f3d077e6f04fafebe5c8694f48efd2b22cd44eec0864cab74f8ec1ce04da83"
+     },
+     "variance_proportion.npz": {
+      "bytes": 39618158,
+      "sha256": "e760467339e3ee4937573bec472039f749a735f26e115e9b90deb731dad97bb9"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 378611,
+      "sha256": "42a03e777c2e6831f57395d0dcb9cd40cff6146f3cfc14ca8cfea5981fadfb44"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24898607,
+      "sha256": "73dce65d6fc6b7fc392b26a805e36c549e29836f29915d52116309e068d5271d"
+     },
+     "mask.npz": {
+      "bytes": 310062,
+      "sha256": "d320bd4fdce09e2eafeab4dca4457fac5987e7753a13966e2a3703054ff40b4b"
+     },
+     "mean_proportion.npz": {
+      "bytes": 58331770,
+      "sha256": "6a138f3ea4eb83e862d48a47b2ed4952b88fe1a1101b835a1016fa42da7e5e5c"
+     },
+     "sampled_controls.npz": {
+      "bytes": 8506,
+      "sha256": "593d40f70d8f608a4f5d8b4f4f611bdad152fbd1de49401608ef9eb9e065acb0"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-derivatives-hipsci-gwfit-p8of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/receipts/davideferrante11/vcc-derivatives-hipsci-gwfit-p8of12-r2/samples/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "450a9d1cf8a61b5430a1a192c163af54c1eec6010e78f4f26d3f65c2cb3bd1b4",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137188556,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-hipsci-gwfit-p8of12-r2/versions/1",
+     "saved_source_sha256": "ed84451464d5b4a910aa83c5ad05cd999eb9320ac86f9ed90f53495cbca43149",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 8938,
+     "64": 9130,
+     "128": 9514
+    },
+    "bytes": 111201227,
+    "bank_receipt_sha256": "06d8242127c599a6ea24cbd05f0fc5fb9e5f3e5cb5753f173baedc4643896a49",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_fitness"
+   },
+   "unit": "hipsci_gw_fitness"
+  },
+  "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p8of12-r2": {
+   "state": "not_complete",
+   "status": {
+    "returncode": 0,
+    "text": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p8of12-r2 has status \"KernelWorkerStatus.RUNNING\""
+   }
+  },
+  "davideferante/vcc-derivatives-hipsci-gwfit-p9of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwfit-p9of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/bank_receipts/davideferante/vcc-derivatives-hipsci-gwfit-p9of12-r2/bank/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "51378ba71de56e7155fcd0bceafe5a9eb595b7b4a501d68a3d337e47dfde763b",
+    "saved_version": {
+     "kernel_id": 137188586,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwfit-p9of12-r2/versions/1",
+     "saved_source_sha256": "cce1ece529d17804285d5bd4a28c8cfbf31debba31bcfa919f151b5aec5ab879",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_fitness",
+    "files": {
+     "sampled_controls.npz": {
+      "bytes": 47893,
+      "sha256": "196bdcc7bddc7c04af058d87bba52dbc8b00b64725e37887eea33e993a8da13c"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24910642,
+      "sha256": "e1a318b9ed30dff6c46ba1e3e70bd5291127e2fdcdfe44f0c73e95a0db70a0e0"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 376153,
+      "sha256": "7e2d86961f21f20f4073a6ca8ec7245947d231fd04384d89b0073a747b18ced9"
+     },
+     "mask.npz": {
+      "bytes": 309990,
+      "sha256": "356c55b5452e195602c73da5bde3a6231052ac23550ed0b44ca3fc3f09e78166"
+     },
+     "variance_proportion.npz": {
+      "bytes": 39988376,
+      "sha256": "da38e61ca581ccea08f55e7ffc14757cab3015bdde96107042f01c2b354bc029"
+     },
+     "rows.csv": {
+      "bytes": 293253,
+      "sha256": "2fd0bf95ddc24e374ed46ffef84a11bd35e6c96ebd04da7eefde43c87aaaef6e"
+     },
+     "mean_proportion.npz": {
+      "bytes": 58435667,
+      "sha256": "13c1aa9dda7aa5224a25286bed2e4f35f0318185d924b51634b0e0f8a0e194f8"
+     },
+     "count_sum.npz": {
+      "bytes": 45906294,
+      "sha256": "c33106e4dcf741f83bcd0e3fa3a75ded42840cf6e8fb7eada11c55ea6a4d1035"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_fitness",
+    "cells_in": 23358,
+    "cells_used": 23358,
+    "zero_depth_excluded": 0,
+    "contexts": 60,
+    "rows": 4293,
+    "samples128": 9419,
+    "seconds": 409,
+    "sources": [
+     {
+      "file": "hipsci_gw_fitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00016.h5ad",
+      "cells": 2746
+     }
+    ],
+    "source_verification": "311bf5f671db67258d47d783aa62f7028bb590c817529f09cb16ee5f06d73a68",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 9,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "7f9e4c8efcfec28f769b9676b82c758f0d4178657983f1de29f61d9c3e5e4443",
+     "global_rows": 51525,
+     "global_cells": 322746,
+     "selected_cells": 23358
+    },
+    "files": {
+     "sampled_controls.npz": {
+      "bytes": 47893,
+      "sha256": "196bdcc7bddc7c04af058d87bba52dbc8b00b64725e37887eea33e993a8da13c"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24910642,
+      "sha256": "e1a318b9ed30dff6c46ba1e3e70bd5291127e2fdcdfe44f0c73e95a0db70a0e0"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 376153,
+      "sha256": "7e2d86961f21f20f4073a6ca8ec7245947d231fd04384d89b0073a747b18ced9"
+     },
+     "mask.npz": {
+      "bytes": 309990,
+      "sha256": "356c55b5452e195602c73da5bde3a6231052ac23550ed0b44ca3fc3f09e78166"
+     },
+     "variance_proportion.npz": {
+      "bytes": 39988376,
+      "sha256": "da38e61ca581ccea08f55e7ffc14757cab3015bdde96107042f01c2b354bc029"
+     },
+     "rows.csv": {
+      "bytes": 293253,
+      "sha256": "2fd0bf95ddc24e374ed46ffef84a11bd35e6c96ebd04da7eefde43c87aaaef6e"
+     },
+     "mean_proportion.npz": {
+      "bytes": 58435667,
+      "sha256": "13c1aa9dda7aa5224a25286bed2e4f35f0318185d924b51634b0e0f8a0e194f8"
+     },
+     "count_sum.npz": {
+      "bytes": 45906294,
+      "sha256": "c33106e4dcf741f83bcd0e3fa3a75ded42840cf6e8fb7eada11c55ea6a4d1035"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwfit-p9of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/receipts/davideferante/vcc-derivatives-hipsci-gwfit-p9of12-r2/samples/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "808b2d9eaf50de3d603d8d4393974eff5c652c1f3cfbd7099373c29ec01a65e4",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137188586,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwfit-p9of12-r2/versions/1",
+     "saved_source_sha256": "cce1ece529d17804285d5bd4a28c8cfbf31debba31bcfa919f151b5aec5ab879",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 8939,
+     "64": 9099,
+     "128": 9419
+    },
+    "bytes": 110494891,
+    "bank_receipt_sha256": "51378ba71de56e7155fcd0bceafe5a9eb595b7b4a501d68a3d337e47dfde763b",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_fitness"
+   },
+   "unit": "hipsci_gw_fitness"
+  },
+  "davideferante/vcc-derivatives-hipsci-gwnonfit-p9of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p9of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/bank_receipts/davideferante/vcc-derivatives-hipsci-gwnonfit-p9of12-r2/bank/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "f432b9481eed0504443b0b57b8dfd1b623c3718856b16c6a8e8acb11f7887881",
+    "saved_version": {
+     "kernel_id": 137188613,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwnonfit-p9of12-r2/versions/1",
+     "saved_source_sha256": "dc014427b8811ebad729d350cd6a7e471e25b7cfc14567e7aa2a5607f17a5348",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_nonfitness",
+    "files": {
+     "mask.npz": {
+      "bytes": 379881,
+      "sha256": "2ef99553f3c989ebdac78e617dcdf04e8c35254ebd273629eee86e969d0c5921"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28851626,
+      "sha256": "89fbc440bcbbb61e0aa086ad951594958012043fa6824530aa53267f5c23cefd"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67758547,
+      "sha256": "f333c3d1c63e3ada1551776bcd33dd7891f891c7082047f5d300013167baf9b8"
+     },
+     "rows.csv": {
+      "bytes": 375340,
+      "sha256": "2ee425affe08736bad96b34dd654d7b1cac3b28443157915b5da757fc6689c50"
+     },
+     "variance_proportion.npz": {
+      "bytes": 42425556,
+      "sha256": "80285820810f74afddc2f5f7dc9108af093d357e7cf6be37ec214ff104a4d068"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     },
+     "count_sum.npz": {
+      "bytes": 55902543,
+      "sha256": "28c777ba39d3f2af87f6aabcd296089a2c6c50c00bce3143603d8478994e395a"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 408659,
+      "sha256": "2ea5f056929e92467ce31a4b67b26ca6f6c495881e685d84e3a8e9d1b3f1d9b6"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_nonfitness",
+    "cells_in": 11778,
+    "cells_used": 11778,
+    "zero_depth_excluded": 0,
+    "contexts": 40,
+    "rows": 5262,
+    "samples128": 9711,
+    "seconds": 596,
+    "sources": [
+     {
+      "file": "hipsci_gw_nonfitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00016.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00017.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00018.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00019.h5ad",
+      "cells": 16458
+     }
+    ],
+    "source_verification": "7707c03885ff2fb4935c0e81cdeac555089beae9b789e74c3ef4e88d8cbda348",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 9,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "2b1ce3507e417dc9b335795938fed1dfc2c071f4ac8523c97e26090074d85f50",
+     "global_rows": 63149,
+     "global_cells": 396458,
+     "selected_cells": 11778
+    },
+    "files": {
+     "mask.npz": {
+      "bytes": 379881,
+      "sha256": "2ef99553f3c989ebdac78e617dcdf04e8c35254ebd273629eee86e969d0c5921"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28851626,
+      "sha256": "89fbc440bcbbb61e0aa086ad951594958012043fa6824530aa53267f5c23cefd"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67758547,
+      "sha256": "f333c3d1c63e3ada1551776bcd33dd7891f891c7082047f5d300013167baf9b8"
+     },
+     "rows.csv": {
+      "bytes": 375340,
+      "sha256": "2ee425affe08736bad96b34dd654d7b1cac3b28443157915b5da757fc6689c50"
+     },
+     "variance_proportion.npz": {
+      "bytes": 42425556,
+      "sha256": "80285820810f74afddc2f5f7dc9108af093d357e7cf6be37ec214ff104a4d068"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     },
+     "count_sum.npz": {
+      "bytes": 55902543,
+      "sha256": "28c777ba39d3f2af87f6aabcd296089a2c6c50c00bce3143603d8478994e395a"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 408659,
+      "sha256": "2ea5f056929e92467ce31a4b67b26ca6f6c495881e685d84e3a8e9d1b3f1d9b6"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p9of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/receipts/davideferante/vcc-derivatives-hipsci-gwnonfit-p9of12-r2/samples/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "f9eba5a19802f90f921adb8de364afaec146c2111469648f17c5f6b27f8b7226",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137188613,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwnonfit-p9of12-r2/versions/1",
+     "saved_source_sha256": "dc014427b8811ebad729d350cd6a7e471e25b7cfc14567e7aa2a5607f17a5348",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 9615,
+     "64": 9647,
+     "128": 9711
+    },
+    "bytes": 115090583,
+    "bank_receipt_sha256": "f432b9481eed0504443b0b57b8dfd1b623c3718856b16c6a8e8acb11f7887881",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_nonfitness"
+   },
+   "unit": "hipsci_gw_nonfitness"
+  },
+  "davideferante/vcc-derivatives-hipsci-gwfit-p10of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwfit-p10of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/bank_receipts/davideferante/vcc-derivatives-hipsci-gwfit-p10of12-r2/bank/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "f4a1ec88912c6438008f248dfa5d5e3067c7ea1c866e1b67d790a0a8f2819628",
+    "saved_version": {
+     "kernel_id": 137188619,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwfit-p10of12-r2/versions/1",
+     "saved_source_sha256": "867c8412ffd381632e522810c81368004d45811ce753984c6576a134680c8e40",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_fitness",
+    "files": {
+     "samples.jsonl.gz": {
+      "bytes": 363476,
+      "sha256": "c549ac7d827020680068e100f01deddd3a901c689d35865213c31ec944f6e824"
+     },
+     "mean_proportion.npz": {
+      "bytes": 57656691,
+      "sha256": "0ff540274bc475103d6715390a5eb360243edfb096c8fc910675339360be480f"
+     },
+     "mask.npz": {
+      "bytes": 309990,
+      "sha256": "356c55b5452e195602c73da5bde3a6231052ac23550ed0b44ca3fc3f09e78166"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22873,
+      "sha256": "d6ffb9906c5f6d35c974da3418c46ffac62cf7ab22813a9c341088ab4b3d6440"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24641052,
+      "sha256": "739dc1d3b85bac3a724646fe407ab98c5362efc39c37453a46ebff68fddf207b"
+     },
+     "variance_proportion.npz": {
+      "bytes": 39132024,
+      "sha256": "745af9db2982e787645829e82cede49793f7f03db9dc31724d364bf23f035a87"
+     },
+     "rows.csv": {
+      "bytes": 293165,
+      "sha256": "197c463e33228244a06c036a25073c2bfe4c6cd9ed256e2440bd7139011c67ad"
+     },
+     "count_sum.npz": {
+      "bytes": 45533266,
+      "sha256": "6bfbf1e32a046b9a04158d9db82c5f6dff3f384e17405d111b0b22f27bad5199"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_fitness",
+    "cells_in": 15063,
+    "cells_used": 15063,
+    "zero_depth_excluded": 0,
+    "contexts": 60,
+    "rows": 4293,
+    "samples128": 8891,
+    "seconds": 433,
+    "sources": [
+     {
+      "file": "hipsci_gw_fitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00016.h5ad",
+      "cells": 2746
+     }
+    ],
+    "source_verification": "311bf5f671db67258d47d783aa62f7028bb590c817529f09cb16ee5f06d73a68",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 10,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "7f9e4c8efcfec28f769b9676b82c758f0d4178657983f1de29f61d9c3e5e4443",
+     "global_rows": 51525,
+     "global_cells": 322746,
+     "selected_cells": 15063
+    },
+    "files": {
+     "samples.jsonl.gz": {
+      "bytes": 363476,
+      "sha256": "c549ac7d827020680068e100f01deddd3a901c689d35865213c31ec944f6e824"
+     },
+     "mean_proportion.npz": {
+      "bytes": 57656691,
+      "sha256": "0ff540274bc475103d6715390a5eb360243edfb096c8fc910675339360be480f"
+     },
+     "mask.npz": {
+      "bytes": 309990,
+      "sha256": "356c55b5452e195602c73da5bde3a6231052ac23550ed0b44ca3fc3f09e78166"
+     },
+     "sampled_controls.npz": {
+      "bytes": 22873,
+      "sha256": "d6ffb9906c5f6d35c974da3418c46ffac62cf7ab22813a9c341088ab4b3d6440"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24641052,
+      "sha256": "739dc1d3b85bac3a724646fe407ab98c5362efc39c37453a46ebff68fddf207b"
+     },
+     "variance_proportion.npz": {
+      "bytes": 39132024,
+      "sha256": "745af9db2982e787645829e82cede49793f7f03db9dc31724d364bf23f035a87"
+     },
+     "rows.csv": {
+      "bytes": 293165,
+      "sha256": "197c463e33228244a06c036a25073c2bfe4c6cd9ed256e2440bd7139011c67ad"
+     },
+     "count_sum.npz": {
+      "bytes": 45533266,
+      "sha256": "6bfbf1e32a046b9a04158d9db82c5f6dff3f384e17405d111b0b22f27bad5199"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwfit-p10of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/receipts/davideferante/vcc-derivatives-hipsci-gwfit-p10of12-r2/samples/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "23350c27f36e9dc549044703ec03c3aee8bb098ac8bc7789049143c703d70b84",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137188619,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwfit-p10of12-r2/versions/1",
+     "saved_source_sha256": "867c8412ffd381632e522810c81368004d45811ce753984c6576a134680c8e40",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 8699,
+     "64": 8763,
+     "128": 8891
+    },
+    "bytes": 103284647,
+    "bank_receipt_sha256": "f4a1ec88912c6438008f248dfa5d5e3067c7ea1c866e1b67d790a0a8f2819628",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_fitness"
+   },
+   "unit": "hipsci_gw_fitness"
+  },
+  "davideferante/vcc-derivatives-hipsci-gwnonfit-p10of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p10of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/bank_receipts/davideferante/vcc-derivatives-hipsci-gwnonfit-p10of12-r2/bank/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "0d6a0cab5a473d199691290addcd1d6de709a3c4d8b9b48f0622301ce745298b",
+    "saved_version": {
+     "kernel_id": 137188641,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwnonfit-p10of12-r2/versions/1",
+     "saved_source_sha256": "a0d9b51f5d7e5a659bfcf696d6a2a2abaaecc2e1ec13cb794477d268827fbc61",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_nonfitness",
+    "files": {
+     "rows.csv": {
+      "bytes": 375339,
+      "sha256": "8cba5ccb87672b61ea05f6fcb1191bbcb822e83beca4d7308d2b741a683bf12e"
+     },
+     "variance_proportion.npz": {
+      "bytes": 43077503,
+      "sha256": "bc6679626730e8ac8b49e4b4c71f24ea95119f07bf96b402cdb3cb875103b3ec"
+     },
+     "zero_fraction.npz": {
+      "bytes": 29118661,
+      "sha256": "410490c0d4a511180d90fbe9b9260e431fa42792f5e64063103b60c86882d708"
+     },
+     "mask.npz": {
+      "bytes": 379881,
+      "sha256": "2ef99553f3c989ebdac78e617dcdf04e8c35254ebd273629eee86e969d0c5921"
+     },
+     "count_sum.npz": {
+      "bytes": 55982336,
+      "sha256": "3b96864579c1affd02cf5463f61a467217660fcc78a87186db332b065db6ebb3"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 432650,
+      "sha256": "f9381a7bf96b6ad72d924efe13ed5383b01840cb9e7edbdc55cb4186d897596c"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67926319,
+      "sha256": "8f973c0772a8c637e56bc4c1fbdf6ad915d779e8d871c6383b0e504f1a92efe9"
+     },
+     "sampled_controls.npz": {
+      "bytes": 9536,
+      "sha256": "6a6f09a4da27cdf32928b0b7aef006504084e45848ae3222d9939d017133235a"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_nonfitness",
+    "cells_in": 53003,
+    "cells_used": 53003,
+    "zero_depth_excluded": 0,
+    "contexts": 40,
+    "rows": 5262,
+    "samples128": 10588,
+    "seconds": 571,
+    "sources": [
+     {
+      "file": "hipsci_gw_nonfitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00016.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00017.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00018.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00019.h5ad",
+      "cells": 16458
+     }
+    ],
+    "source_verification": "7707c03885ff2fb4935c0e81cdeac555089beae9b789e74c3ef4e88d8cbda348",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 10,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "2b1ce3507e417dc9b335795938fed1dfc2c071f4ac8523c97e26090074d85f50",
+     "global_rows": 63149,
+     "global_cells": 396458,
+     "selected_cells": 53003
+    },
+    "files": {
+     "rows.csv": {
+      "bytes": 375339,
+      "sha256": "8cba5ccb87672b61ea05f6fcb1191bbcb822e83beca4d7308d2b741a683bf12e"
+     },
+     "variance_proportion.npz": {
+      "bytes": 43077503,
+      "sha256": "bc6679626730e8ac8b49e4b4c71f24ea95119f07bf96b402cdb3cb875103b3ec"
+     },
+     "zero_fraction.npz": {
+      "bytes": 29118661,
+      "sha256": "410490c0d4a511180d90fbe9b9260e431fa42792f5e64063103b60c86882d708"
+     },
+     "mask.npz": {
+      "bytes": 379881,
+      "sha256": "2ef99553f3c989ebdac78e617dcdf04e8c35254ebd273629eee86e969d0c5921"
+     },
+     "count_sum.npz": {
+      "bytes": 55982336,
+      "sha256": "3b96864579c1affd02cf5463f61a467217660fcc78a87186db332b065db6ebb3"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 432650,
+      "sha256": "f9381a7bf96b6ad72d924efe13ed5383b01840cb9e7edbdc55cb4186d897596c"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67926319,
+      "sha256": "8f973c0772a8c637e56bc4c1fbdf6ad915d779e8d871c6383b0e504f1a92efe9"
+     },
+     "sampled_controls.npz": {
+      "bytes": 9536,
+      "sha256": "6a6f09a4da27cdf32928b0b7aef006504084e45848ae3222d9939d017133235a"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p10of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/receipts/davideferante/vcc-derivatives-hipsci-gwnonfit-p10of12-r2/samples/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "4278e5978f665ca77e5aa45536639f14d6890604b1931194f5182908dead6d9b",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137188641,
+     "private": true,
+     "version_ref": "davideferante/vcc-derivatives-hipsci-gwnonfit-p10of12-r2/versions/1",
+     "saved_source_sha256": "a0d9b51f5d7e5a659bfcf696d6a2a2abaaecc2e1ec13cb794477d268827fbc61",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 9820,
+     "64": 10076,
+     "128": 10588
+    },
+    "bytes": 124103796,
+    "bank_receipt_sha256": "0d6a0cab5a473d199691290addcd1d6de709a3c4d8b9b48f0622301ce745298b",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_nonfitness"
+   },
+   "unit": "hipsci_gw_nonfitness"
+  },
+  "davidmaisterx/vcc-derivatives-hipsci-gwfit-p11of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p11of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/bank_receipts/davidmaisterx/vcc-derivatives-hipsci-gwfit-p11of12-r2/bank/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "1dde396de428cacda0780c4ca37480a405b9d57b3a9e7596b08f52eefa88a5d3",
+    "saved_version": {
+     "kernel_id": 137188659,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p11of12-r2/versions/1",
+     "saved_source_sha256": "f1bed765b11102571096abedd496e82bf8f2816aefab2c1ca26f901d94ce4010",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_fitness",
+    "files": {
+     "mean_proportion.npz": {
+      "bytes": 58563259,
+      "sha256": "be41d3b793b0c9d5450ecd5de1e8a51ab401dd8934e9cf092577d39188681938"
+     },
+     "count_sum.npz": {
+      "bytes": 45941307,
+      "sha256": "05349ffeb4577f41022be5696c65e8f93ace95b45ee594c2c8ac1a105e6a85a4"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24939202,
+      "sha256": "9892e51bac38467ff309139e7c32b7edeb530b39cc22749a795498fbb1f303c3"
+     },
+     "variance_proportion.npz": {
+      "bytes": 40474026,
+      "sha256": "6c9ae709c7139ca6a986ef49450efe9bca02c6a7b8c0ec4512a337f00ebd8a60"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 371687,
+      "sha256": "7e2036b593711f0970825f57a10cc068b5b323c15cd014e6ba79abc833894a46"
+     },
+     "sampled_controls.npz": {
+      "bytes": 36502,
+      "sha256": "6bffc229d02a7bc5f95f06833babbaa0c0e465228fdee2d565f618102e51ff56"
+     },
+     "mask.npz": {
+      "bytes": 309990,
+      "sha256": "356c55b5452e195602c73da5bde3a6231052ac23550ed0b44ca3fc3f09e78166"
+     },
+     "rows.csv": {
+      "bytes": 293215,
+      "sha256": "6769c51e74ee7b52b6f9eace59aee6c16795ae9131a2bea7bca8b325616e5b8f"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_fitness",
+    "cells_in": 30850,
+    "cells_used": 30850,
+    "zero_depth_excluded": 0,
+    "contexts": 60,
+    "rows": 4293,
+    "samples128": 9163,
+    "seconds": 519,
+    "sources": [
+     {
+      "file": "hipsci_gw_fitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_fitness__shard_00016.h5ad",
+      "cells": 2746
+     }
+    ],
+    "source_verification": "311bf5f671db67258d47d783aa62f7028bb590c817529f09cb16ee5f06d73a68",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 11,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "7f9e4c8efcfec28f769b9676b82c758f0d4178657983f1de29f61d9c3e5e4443",
+     "global_rows": 51525,
+     "global_cells": 322746,
+     "selected_cells": 30850
+    },
+    "files": {
+     "mean_proportion.npz": {
+      "bytes": 58563259,
+      "sha256": "be41d3b793b0c9d5450ecd5de1e8a51ab401dd8934e9cf092577d39188681938"
+     },
+     "count_sum.npz": {
+      "bytes": 45941307,
+      "sha256": "05349ffeb4577f41022be5696c65e8f93ace95b45ee594c2c8ac1a105e6a85a4"
+     },
+     "zero_fraction.npz": {
+      "bytes": 24939202,
+      "sha256": "9892e51bac38467ff309139e7c32b7edeb530b39cc22749a795498fbb1f303c3"
+     },
+     "variance_proportion.npz": {
+      "bytes": 40474026,
+      "sha256": "6c9ae709c7139ca6a986ef49450efe9bca02c6a7b8c0ec4512a337f00ebd8a60"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 371687,
+      "sha256": "7e2036b593711f0970825f57a10cc068b5b323c15cd014e6ba79abc833894a46"
+     },
+     "sampled_controls.npz": {
+      "bytes": 36502,
+      "sha256": "6bffc229d02a7bc5f95f06833babbaa0c0e465228fdee2d565f618102e51ff56"
+     },
+     "mask.npz": {
+      "bytes": 309990,
+      "sha256": "356c55b5452e195602c73da5bde3a6231052ac23550ed0b44ca3fc3f09e78166"
+     },
+     "rows.csv": {
+      "bytes": 293215,
+      "sha256": "6769c51e74ee7b52b6f9eace59aee6c16795ae9131a2bea7bca8b325616e5b8f"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p11of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/receipts/davidmaisterx/vcc-derivatives-hipsci-gwfit-p11of12-r2/samples/hipsci_gw_fitness/complete.json",
+    "receipt_sha256": "bce8985d19fc2f62fce973db67dace54e65a37f77a67e6e28b78dea917cf74de",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137188659,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p11of12-r2/versions/1",
+     "saved_source_sha256": "f1bed765b11102571096abedd496e82bf8f2816aefab2c1ca26f901d94ce4010",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 8881,
+     "64": 8971,
+     "128": 9163
+    },
+    "bytes": 106698003,
+    "bank_receipt_sha256": "1dde396de428cacda0780c4ca37480a405b9d57b3a9e7596b08f52eefa88a5d3",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_fitness"
+   },
+   "unit": "hipsci_gw_fitness"
+  },
+  "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p11of12-r2": {
+   "state": "remote_complete_manifest_checked",
+   "bank": {
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p11of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/bank_receipts/davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p11of12-r2/bank/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "0d7247b0e461e3d424ecfffdc2748f289079f7f210146dafdb7d3ba34e6fb018",
+    "saved_version": {
+     "kernel_id": 137188670,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p11of12-r2/versions/1",
+     "saved_source_sha256": "dea933f90df435a862ffa837db967117d9340328d8c041cb781269cebcb28cad",
+     "version_stable_during_output_read": true
+    },
+    "relative_path": "bank/hipsci_gw_nonfitness",
+    "files": {
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     },
+     "rows.csv": {
+      "bytes": 375312,
+      "sha256": "00489c385e39daece6e24ad389662dff0941f84757f09e67f0dbb8469c187a4e"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 421886,
+      "sha256": "42636b24c470550268bee56594cb9ac3522ca98c9e3342db467417fad7bbbaee"
+     },
+     "count_sum.npz": {
+      "bytes": 55891173,
+      "sha256": "1acef06bb209f68da8f35eba6e6f761319a5f290110857ff40b2ff7e94320bf9"
+     },
+     "variance_proportion.npz": {
+      "bytes": 42402004,
+      "sha256": "f464f9660c4b6f305d94a87c0407c3c451d320a6493a4ea27c98ec3ceab54ad8"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28946569,
+      "sha256": "372f5d686e690eb73bbec79de902ab6c8b16a92628b4b08abdecd1fd8fd2ba2b"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67755114,
+      "sha256": "8e57b5e1146c85157cb1758ab2005b1e4359c46ac2425aeac26220bb125330fa"
+     },
+     "mask.npz": {
+      "bytes": 379881,
+      "sha256": "2ef99553f3c989ebdac78e617dcdf04e8c35254ebd273629eee86e969d0c5921"
+     }
+    }
+   },
+   "bank_value": {
+    "complete": true,
+    "unit": "hipsci_gw_nonfitness",
+    "cells_in": 51623,
+    "cells_used": 51623,
+    "zero_depth_excluded": 0,
+    "contexts": 40,
+    "rows": 5262,
+    "samples128": 10178,
+    "seconds": 807,
+    "sources": [
+     {
+      "file": "hipsci_gw_nonfitness__shard_00000.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00001.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00002.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00003.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00004.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00005.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00006.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00007.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00008.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00009.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00010.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00011.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00012.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00013.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00014.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00015.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00016.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00017.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00018.h5ad",
+      "cells": 20000
+     },
+     {
+      "file": "hipsci_gw_nonfitness__shard_00019.h5ad",
+      "cells": 16458
+     }
+    ],
+    "source_verification": "7707c03885ff2fb4935c0e81cdeac555089beae9b789e74c3ef4e88d8cbda348",
+    "sample_levels": [
+     32,
+     64,
+     128
+    ],
+    "partition": {
+     "part": 11,
+     "parts": 12,
+     "method": "sorted_complete_BIO_target_round_robin_v1",
+     "all_keys_sha256": "2b1ce3507e417dc9b335795938fed1dfc2c071f4ac8523c97e26090074d85f50",
+     "global_rows": 63149,
+     "global_cells": 396458,
+     "selected_cells": 51623
+    },
+    "files": {
+     "sampled_controls.npz": {
+      "bytes": 22,
+      "sha256": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+     },
+     "rows.csv": {
+      "bytes": 375312,
+      "sha256": "00489c385e39daece6e24ad389662dff0941f84757f09e67f0dbb8469c187a4e"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 421886,
+      "sha256": "42636b24c470550268bee56594cb9ac3522ca98c9e3342db467417fad7bbbaee"
+     },
+     "count_sum.npz": {
+      "bytes": 55891173,
+      "sha256": "1acef06bb209f68da8f35eba6e6f761319a5f290110857ff40b2ff7e94320bf9"
+     },
+     "variance_proportion.npz": {
+      "bytes": 42402004,
+      "sha256": "f464f9660c4b6f305d94a87c0407c3c451d320a6493a4ea27c98ec3ceab54ad8"
+     },
+     "zero_fraction.npz": {
+      "bytes": 28946569,
+      "sha256": "372f5d686e690eb73bbec79de902ab6c8b16a92628b4b08abdecd1fd8fd2ba2b"
+     },
+     "mean_proportion.npz": {
+      "bytes": 67755114,
+      "sha256": "8e57b5e1146c85157cb1758ab2005b1e4359c46ac2425aeac26220bb125330fa"
+     },
+     "mask.npz": {
+      "bytes": 379881,
+      "sha256": "2ef99553f3c989ebdac78e617dcdf04e8c35254ebd273629eee86e969d0c5921"
+     }
+    }
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p11of12-r2",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_verified_r3/receipts/davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p11of12-r2/samples/hipsci_gw_nonfitness/complete.json",
+    "receipt_sha256": "3e6e3165d886978e3c12112435a4d3a6378f44f629e655a817f851ab07c6ef6b",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137188670,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p11of12-r2/versions/1",
+     "saved_source_sha256": "dea933f90df435a862ffa837db967117d9340328d8c041cb781269cebcb28cad",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 9698,
+     "64": 9858,
+     "128": 10178
+    },
+    "bytes": 119476336,
+    "bank_receipt_sha256": "0d7247b0e461e3d424ecfffdc2748f289079f7f210146dafdb7d3ba34e6fb018",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hipsci_gw_nonfitness"
+   },
+   "unit": "hipsci_gw_nonfitness"
+  }
+ },
+ "units": {
+  "hipsci_gw_fitness": {
+   "expected_parts": 12,
+   "verified_parts": 12,
+   "state": "remote_complete_union_checked",
+   "rows": 51525,
+   "cells_in": 322746,
+   "all_keys_sha256": "7f9e4c8efcfec28f769b9676b82c758f0d4178657983f1de29f61d9c3e5e4443",
+   "training_used": false,
+   "consumer_hashes_verified": false,
+   "cross_part_control_lookup_required": true
+  },
+  "hipsci_gw_nonfitness": {
+   "expected_parts": 12,
+   "verified_parts": 11,
+   "state": "incomplete"
+  }
+ },
+ "training_ready": false
+}

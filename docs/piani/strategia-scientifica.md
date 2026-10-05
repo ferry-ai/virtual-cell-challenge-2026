@@ -1,5 +1,12 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Chiusure nuove, 5/10:** [indice r8](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r8/README.md).
+  SCP KO tre unità/cinque contesti banca-campioni verificati; HIPSCI fitness 12/12
+  e unione completa, nonfitness 11/12 (p8 df11 attiva). K562 GWPS e HIPSCI mirato19
+  ancora attivi. Nessun rilancio. Grok esegue letture del codice/prove, confermate
+  dal transcript esportato; nessun fit ancora. Prossimo validator con --previous
+  hipsci_verified_r4/state.json. Preparazione del trainer e dati in parallelo.
+
 - **Nuovo stato, 5/10:** [indice r7](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r7/README.md).
   HIPSCI 24/24 parti avviate sui tre account, 14/24 verificate; unioni aperte.
   A549 banca/campioni verificati. iPSC statistiche originali rese montabili nella
