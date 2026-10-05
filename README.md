@@ -1,5 +1,9 @@
 # Virtual Cell Challenge 2026
 
+**DATA ARCHIVE — REUSE, DO NOT REINGEST:** [current dataset index, versions and hashes](reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r4/README.md)
+and [available data, contexts and GB](reports/modelli/percorso_riusabile_2026-10-05/DATI_DISPONIBILI_r2.md).
+The main path is verified archive → reusable banks and cell samples → extended training.
+
 **Start here:** agents read [CLAUDE.md](CLAUDE.md), then
 [current state](docs/PROGETTO.md) §0 and the [plan index](docs/PIANI.md) §2–3.
 There is one implementation plan: [R-LEAD](docs/piani/strategia-scientifica.md),

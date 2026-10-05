@@ -1,9 +1,20 @@
 # Archivio, banca e trainer riutilizzabili
 
-**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r1/README.md),
+**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r4/README.md),
 con manifest immutabile, account, versioni, hash e distinzione dai dataset storici.
 Include 15 banche verificate e 12 matrici campionate CD4 complete; le nuove parti
-restano aperte. `build_cloud_catalog.py` crea nuove revisioni senza ingestion.
+HEK293T restano aperte; KOLF e HCT116 sono chiusi anche nei campioni.
+Include anche la prima chiusura banca/campioni HepG2 verificata; il trainer resta aperto.
+
+**Non perdere né reingerire:** [17 archivi precedenti e nuova ingestione, 395,75 GB grezzi](DATI_DISPONIBILI_r2.md).
+Account, versioni e hash sono nel manifest; nessun fallback al cubo ridotto del pilot.
+[Lanci e ostacolo HIPSCI](PARALLELISMO_r2.md): 16 job CPU distinti accettati;
+i quattro Colab preparati sono sostituiti dai job Kaggle, non avviarli.
+Cinque archivi pubblici autorizzati e verificati; i nuovi output restano privati.
+[Stima del lotto e dimensioni](PROIEZIONE_r1.md), condizionata anche al recupero HIPSCI.
+La tabella dati r2 corregge le unità effettivamente presenti nei singoli dataset:
+le ricevute di ingestion possono nominare anche unità sorelle del medesimo job.
+`DATI_DISPONIBILI_r1.md` resta storico; usare r2.
 
 Mandato del proprietario, 5 ottobre 2026: supervisionare la catena completa,
 conservare gli output su Kaggle e includere tutte le linee e i contesti idonei.

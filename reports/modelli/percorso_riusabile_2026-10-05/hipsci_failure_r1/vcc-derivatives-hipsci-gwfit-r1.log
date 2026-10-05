@@ -1,0 +1,25 @@
+[{"stream_name":"stdout","time":4.855311832,"data":"{\"cpus\": 4, \"ram_available\": 32650301440, \"disk_free\": 20940029952, \"provider\": \"kaggle\"}\n"}
+,{"stream_name":"stderr","time":46.716106399,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":46.716208004,"data":"  File \"/kaggle/src/script.py\", line 7, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":46.716226466,"data":"    runpy.run_path(\"archive_runtime.py\",run_name=\"__main__\")\n"}
+,{"stream_name":"stderr","time":46.716230442,"data":"    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":46.716234043,"data":"  File \"\u003cfrozen runpy\u003e\", line 294, in run_path\n"}
+,{"stream_name":"stderr","time":46.716237455,"data":"  File \"\u003cfrozen runpy\u003e\", line 98, in _run_module_code\n"}
+,{"stream_name":"stderr","time":46.716240688,"data":"  File \"\u003cfrozen runpy\u003e\", line 88, in _run_code\n"}
+,{"stream_name":"stderr","time":46.716243868,"data":"  File \"archive_runtime.py\", line 40, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":46.716247167,"data":"    if __name__=='__main__':main()\n"}
+,{"stream_name":"stderr","time":46.716250197,"data":"                            ~~~~^^\n"}
+,{"stream_name":"stderr","time":46.716253219,"data":"  File \"archive_runtime.py\", line 29, in main\n"}
+,{"stream_name":"stderr","time":46.716256245,"data":"    run_unit(spec,root,bank);gc.collect()\n"}
+,{"stream_name":"stderr","time":46.716259474,"data":"    ~~~~~~~~^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":46.716262504,"data":"  File \"/kaggle/working/bank.py\", line 90, in run_unit\n"}
+,{"stream_name":"stderr","time":46.716265813,"data":"    if shutil.disk_usage(out).free \u003c N*G*21 + (2 \u003c\u003c 30): raise OSError('insufficient output capacity')\n"}
+,{"stream_name":"stderr","time":46.716269349,"data":"                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":46.716272514,"data":"OSError: insufficient output capacity\n"}
+,{"stream_name":"stderr","time":50.000095078,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":50.000128222,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":50.546923631,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":50.546958206,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":52.957473597,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":54.516563601,"data":"[NbConvertApp] Writing 391636 bytes to __results__.html\n"}
+]

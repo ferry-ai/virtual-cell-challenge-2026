@@ -1,0 +1,4981 @@
+{
+ "schema": 1,
+ "created_utc": "2026-10-05T12:34:20.891944+00:00",
+ "scope": "Current branch plus 17 pinned raw archives; first archive reuse verified; full catalogue/trainer open",
+ "training_ready": false,
+ "fallback_to_legacy": false,
+ "units": {
+  "D1_Rest": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d1_rest_r1/source_complete.json",
+    "sha256": "edd6373984337d34d4c4c6e9708aa10bc3e9354255c3c9f849dab4f067f963b3",
+    "cells": 1750820,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d1-rest-p0of2-r1",
+     "davideferrante11/vcc-cd4-d1-rest-p1of2-r1"
+    ]
+   },
+   "derivation_key": "03c4c58ff53aa5a9a975b57320fcb00053e217f15f3f90494038f2f983d702c1",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+    "relative_path": "bank/D1_Rest",
+    "files": {
+     "mean_proportion.npz": {
+      "bytes": 508625656,
+      "sha256": "8d6e9125ab50888b3da43a5f21034a684e9f1b0cb2f5465e467025320c2232f5"
+     },
+     "mask.npz": {
+      "bytes": 7849443,
+      "sha256": "687514acb694ffa4fca9186a429a7d6e8f0d5b2bb527556760833e7ea9aa82b7"
+     },
+     "count_sum.npz": {
+      "bytes": 270780162,
+      "sha256": "1b90886b3f9a744a48b42f48718233325540b657f94eae00504b9be9c9a8fe1b"
+     },
+     "variance_proportion.npz": {
+      "bytes": 509122980,
+      "sha256": "abe1c32b2dd7c1206ecfc8505867bc128f73a52079f9a5077af958081e5f8ea3"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 28683741,
+      "sha256": "dd2d5f5e1e1cea49067b1bbf2703eb49a3bcff60dab22faa350e94330e64dd7d"
+     },
+     "zero_fraction.npz": {
+      "bytes": 224405967,
+      "sha256": "9899c2cfebe0623ba43c813af8dfcc747cf6601a17f632c36b5366555ef91409"
+     },
+     "sampled_controls.npz": {
+      "bytes": 113125,
+      "sha256": "2f580d18ddf3d0eb2b8f7e6a95de51b140ebbcca72a7e8a46ca3e9e3d630cdd5"
+     },
+     "rows.csv": {
+      "bytes": 849329,
+      "sha256": "8d07d38d37999376a60b1f3fa0eeaa0405e370bc3d10171cdac9e71a132bf16b"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084937,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-cd4-1-3-rest-r2/versions/1",
+     "saved_source_sha256": "612a8cb5f1ca1035591e8131c970d8ba8cce3152152423223e5c9e37bcce6ecc",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r11/receipts/davideferrante11/vcc-bank-cd4-1-3-rest-r2/bank/D1_Rest/complete.json",
+    "receipt_sha256": "bc5d1b3a464e659922b4161f28f463f91cbc478618de2250bd08856402b553e4",
+    "cells_used": 1750820,
+    "rows": 12092,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required"
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-samples-cd4-d1-rest-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-samples-cd4-d1-rest-r1",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d1-rest-r1/samples/D1_Rest/complete.json",
+    "receipt_sha256": "37a882ac2fa895358ba93c19d309872ecc0e70d5c28a2cb814f9d35a5aecff86",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137099078,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-samples-cd4-d1-rest-r1/versions/1",
+     "saved_source_sha256": "79affc76afa69234abfb9973994bad60cf79cec1d83f887f848d9cc52fafa92f",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 414048,
+     "64": 660906,
+     "128": 1093082
+    },
+    "bytes": 8100133840,
+    "bank_receipt_sha256": "bc5d1b3a464e659922b4161f28f463f91cbc478618de2250bd08856402b553e4",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-samples-cd4-d1-rest-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "samples/D1_Rest"
+   }
+  },
+  "D2_Rest": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d2_rest_r1/source_complete.json",
+    "sha256": "c770822dcac65c1939ca8314423551bbc5a17cc68c7aee4ed443a9f55afadbc7",
+    "cells": 1981060,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d2-rest-p0of2-r1",
+     "davideferrante11/vcc-cd4-d2-rest-p1of2-r1"
+    ]
+   },
+   "derivation_key": "13d1b013f983eeffbf41e3065c4884dd52c0b167500b9e83fb96978c21a1657e",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+    "relative_path": "bank/D2_Rest",
+    "files": {
+     "mean_proportion.npz": {
+      "bytes": 498927930,
+      "sha256": "45ffea49d0565137c2d7000fb0afeff678613d1dea6ea00e345589c7c87db603"
+     },
+     "mask.npz": {
+      "bytes": 7830637,
+      "sha256": "05359bc200f5b70181637fde4b2af9a3d3f004bfabb71b254f3186234e56ed66"
+     },
+     "count_sum.npz": {
+      "bytes": 263980099,
+      "sha256": "fdeaa4e203aa22a820ccbe1dee9e4970a5beed05dd541c9b6c4318005fc65b81"
+     },
+     "variance_proportion.npz": {
+      "bytes": 499191276,
+      "sha256": "2caa2651fda441582ecc461aeb5f37e9c8f761cee9c105a71585103d3319e3f5"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 25904106,
+      "sha256": "ed393bd57a46eb34c11bf1dc0893b23d08f64fa32ad574e8bcd10a39d5017a15"
+     },
+     "zero_fraction.npz": {
+      "bytes": 219094672,
+      "sha256": "920b04846212a6161c0344d57794207d576ea192afe162e82b8c4342870c1dfe"
+     },
+     "sampled_controls.npz": {
+      "bytes": 112780,
+      "sha256": "576ca4f2f78d8b8ddf5849922e63c2661602ec76a571dacf68151fc308fc6868"
+     },
+     "rows.csv": {
+      "bytes": 846125,
+      "sha256": "a61500eb12a58c61c69eea7c1b7776b8684da3c776125d4de82356db602fc45f"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084937,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-cd4-1-3-rest-r2/versions/1",
+     "saved_source_sha256": "612a8cb5f1ca1035591e8131c970d8ba8cce3152152423223e5c9e37bcce6ecc",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r11/receipts/davideferrante11/vcc-bank-cd4-1-3-rest-r2/bank/D2_Rest/complete.json",
+    "receipt_sha256": "d9f7b52253a90a4eac65af4278d71efa5cce60d4dbae5b080fa1a71997bd3cd6",
+    "cells_used": 1981060,
+    "rows": 12063,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required"
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-samples-cd4-d2-rest-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-samples-cd4-d2-rest-r1",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d2-rest-r1/samples/D2_Rest/complete.json",
+    "receipt_sha256": "1b2731530a4131d7aa316c8e6127c3c8fe91e33ab23c2a425321ed43221bfc88",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137099081,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-samples-cd4-d2-rest-r1/versions/1",
+     "saved_source_sha256": "69219fca6455e362f98c81c0c98c2bf5c9db01a57aab936e08c07f5976f6de4a",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 377896,
+     "64": 608483,
+     "128": 981522
+    },
+    "bytes": 7360828858,
+    "bank_receipt_sha256": "d9f7b52253a90a4eac65af4278d71efa5cce60d4dbae5b080fa1a71997bd3cd6",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-samples-cd4-d2-rest-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "samples/D2_Rest"
+   }
+  },
+  "D3_Rest": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d3_rest_r1/source_complete.json",
+    "sha256": "7c30b8bc62f20a151e7844882fe8c7d7576036e9e66f32b92d0696f00d24df2f",
+    "cells": 1901024,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d3-rest-p0of2-r1",
+     "davideferrante11/vcc-cd4-d3-rest-p1of2-r2"
+    ]
+   },
+   "derivation_key": "418a625c8589371933923f940775948e2f611255cb70d0f3c82df6706ce26abb",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+    "relative_path": "bank/D3_Rest",
+    "files": {
+     "mean_proportion.npz": {
+      "bytes": 500465102,
+      "sha256": "57028adbff460270ee59d998ed9c35e19ab6a82b2b664fd8cd27ca3f803d1d47"
+     },
+     "mask.npz": {
+      "bytes": 7752070,
+      "sha256": "d83b80fa3fc60495e6fbaecad724a87ae5bcc3aed61ad4f2d2aa0bcba664936f"
+     },
+     "count_sum.npz": {
+      "bytes": 269436605,
+      "sha256": "c899444cf80eedbb820477e8b299533a00b174ab714b7cbcaed9222fb4a52dbd"
+     },
+     "variance_proportion.npz": {
+      "bytes": 501196731,
+      "sha256": "06e51f046db00f02ba7f60cecda8c9273e50304575599bf7ff2a8635728138ed"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 25902308,
+      "sha256": "2b66b0524d6bc4848852dda73aff899762ff351b5aa0a1a168e2e36b6fecd4b3"
+     },
+     "zero_fraction.npz": {
+      "bytes": 219005807,
+      "sha256": "3c99f90c3479c13dac70494c95163b65a7572924f1fdf1440de6c9c6a282510f"
+     },
+     "sampled_controls.npz": {
+      "bytes": 117120,
+      "sha256": "a07fc75d648a4fa2cd9b71557c1271df023168db00f5bae4b42f5a7863588b43"
+     },
+     "rows.csv": {
+      "bytes": 837780,
+      "sha256": "3892d7e83c7ece492bbfe07825d1e5750bce6ee93c45e30bb738a8f2514aed93"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084937,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-cd4-1-3-rest-r2/versions/1",
+     "saved_source_sha256": "612a8cb5f1ca1035591e8131c970d8ba8cce3152152423223e5c9e37bcce6ecc",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r11/receipts/davideferrante11/vcc-bank-cd4-1-3-rest-r2/bank/D3_Rest/complete.json",
+    "receipt_sha256": "c4f605c128b6305e2fa5ebec43dda3ab42c2506ad839da104f7e32e6868a0724",
+    "cells_used": 1901024,
+    "rows": 11942,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required"
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-samples-cd4-d3-rest-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-samples-cd4-d3-rest-r1",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d3-rest-r1/samples/D3_Rest/complete.json",
+    "receipt_sha256": "531f282d3848e1927029861f6e82ea9e1c7e580772593ffa7b1edb10adf72ddc",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137100665,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-samples-cd4-d3-rest-r1/versions/1",
+     "saved_source_sha256": "b920119dc9af91bc92286d5ea24bd5c9b96728cf2d0b99ee3db755bccee17fbc",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 382839,
+     "64": 599491,
+     "128": 981919
+    },
+    "bytes": 7743663851,
+    "bank_receipt_sha256": "c4f605c128b6305e2fa5ebec43dda3ab42c2506ad839da104f7e32e6868a0724",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-samples-cd4-d3-rest-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "samples/D3_Rest"
+   }
+  },
+  "D1_Stim8hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d1_stim8hr_r1/source_complete.json",
+    "sha256": "5f4ee0cb5b667be8581c3e62374a951b534e1e818c8280780c5f58947f6ddee2",
+    "cells": 1605685,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d1-stim8hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d1-stim8hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "eb4db928dc75b1e3cd101ef6c12e75e9f3608d27c561c04c2a3ef63c328407fc",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+    "relative_path": "bank/D1_Stim8hr",
+    "files": {
+     "count_sum.npz": {
+      "bytes": 283692791,
+      "sha256": "d106ea9683f93120912aec686e3118ad230916b10ced2f766422dda92c3b0fd0"
+     },
+     "mean_proportion.npz": {
+      "bytes": 519809373,
+      "sha256": "3e470a9641e17e5df794763b6ba9d347e3798647c4b759a2d4e9d3dc2a92795b"
+     },
+     "mask.npz": {
+      "bytes": 7904630,
+      "sha256": "1d745f2121201682b16b369e71ba8a86d0249953f4aec45a2ad3b887131023f4"
+     },
+     "sampled_controls.npz": {
+      "bytes": 114853,
+      "sha256": "8bfb2c1501e69341a4c4610ac8713111d5cda36f6035279d3b9cbf795d5e189b"
+     },
+     "rows.csv": {
+      "bytes": 928178,
+      "sha256": "f48a6c375f861ef57231e151e173906d4634ff679f234d92242e8aa4ddfd6abd"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 28990445,
+      "sha256": "277ccd1fdee99a2b3348c471053386b1690f0e974c3810ae4755c973daaddf2e"
+     },
+     "variance_proportion.npz": {
+      "bytes": 521059087,
+      "sha256": "c80d312aa47b5854bbf10bfd1e15b96d526c6e71d4ce5e074ed12aec58e8e7fe"
+     },
+     "zero_fraction.npz": {
+      "bytes": 228991431,
+      "sha256": "078c8ad02f952120e551f294c6d49f607b6a8266406ec3795ee93b731f3deadc"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084942,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2/versions/1",
+     "saved_source_sha256": "87bf8041c822169a1011fb29b95f5b79bd577f6fdb202a81ccca4831e7860c8d",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r11/receipts/davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2/bank/D1_Stim8hr/complete.json",
+    "receipt_sha256": "d5828eb7bfbbf08c3038987893ec3e41b5428b6e58559c46fd677d804c5eba8d",
+    "cells_used": 1605685,
+    "rows": 12177,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required"
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-samples-cd4-d1-stim8hr-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-samples-cd4-d1-stim8hr-r1",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d1-stim8hr-r1/samples/D1_Stim8hr/complete.json",
+    "receipt_sha256": "be8a81c44adc1145b4d7c4620028fc6915f9348030e068195b57e26afc894fd6",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137108924,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-samples-cd4-d1-stim8hr-r1/versions/1",
+     "saved_source_sha256": "efca42b03ca5fb1dd8ed31741d466638d3eb61474eaf1e91cc4878bafc5722d5",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 428939,
+     "64": 673138,
+     "128": 1093909
+    },
+    "bytes": 9465776839,
+    "bank_receipt_sha256": "d5828eb7bfbbf08c3038987893ec3e41b5428b6e58559c46fd677d804c5eba8d",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-samples-cd4-d1-stim8hr-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "samples/D1_Stim8hr"
+   }
+  },
+  "D2_Stim8hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d2_stim8hr_r1/source_complete.json",
+    "sha256": "8ab26035d52a71024f5fa7dd19db004b402726d4e992befd1bda1e9303ed692f",
+    "cells": 2086574,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d2-stim8hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d2-stim8hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "ea066099c3b656e8b4cc86be73577ff08a6ee6ba3030dc4122371ffbe4c7d036",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+    "relative_path": "bank/D2_Stim8hr",
+    "files": {
+     "count_sum.npz": {
+      "bytes": 286971730,
+      "sha256": "1d3775091bec38cd1140ca0e6b55c157b726e684196979b18614be72a06763fb"
+     },
+     "mean_proportion.npz": {
+      "bytes": 524176786,
+      "sha256": "52ff3f842394572b5bee665c3d15aac7129ff246ae16485b12709368ad5a7b61"
+     },
+     "mask.npz": {
+      "bytes": 7938385,
+      "sha256": "79bc15a2389ccf1815194f3c8aa8a62f3c51412ef204165f8f2047c77a07c153"
+     },
+     "sampled_controls.npz": {
+      "bytes": 114699,
+      "sha256": "66d4e5564f128be2887d5907e92aa0c8ee888fa01075fa032084d772abc7f919"
+     },
+     "rows.csv": {
+      "bytes": 931781,
+      "sha256": "31b5742655f4cb8529f4ce2856227af20cafb6faecf40f378578114730176e59"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 27888177,
+      "sha256": "fcf38d686df35a23b27aee2fd131727b902281b0d7a7e75d7f0bcdd634388f69"
+     },
+     "variance_proportion.npz": {
+      "bytes": 525186763,
+      "sha256": "8de803bf74395dd76ed254cfa42a75a12955d2a8060e1ea465e8b9b7064f85df"
+     },
+     "zero_fraction.npz": {
+      "bytes": 232463572,
+      "sha256": "307ba110f4bfcdd327d761dc9c680d626d87f2e70715add3eadef412373baf0e"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084942,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2/versions/1",
+     "saved_source_sha256": "87bf8041c822169a1011fb29b95f5b79bd577f6fdb202a81ccca4831e7860c8d",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r11/receipts/davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2/bank/D2_Stim8hr/complete.json",
+    "receipt_sha256": "b7105f408f1ee91db58f869cac5eed634e182be930dd5ed02dd1779c00d27458",
+    "cells_used": 2086574,
+    "rows": 12229,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required"
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-samples-cd4-d2-stim8hr-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-samples-cd4-d2-stim8hr-r1",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d2-stim8hr-r1/samples/D2_Stim8hr/complete.json",
+    "receipt_sha256": "c3d5c11647843fcdeeffd2b9cc159769838a7de6e4f39d1dd1d02a86a3e46cc5",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137108940,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-samples-cd4-d2-stim8hr-r1/versions/1",
+     "saved_source_sha256": "b7ddfc43a180cfae6ab7ee4a74064f72746ee98edcbe028d1ee1a799ab89374e",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 405730,
+     "64": 643636,
+     "128": 1046493
+    },
+    "bytes": 9324285258,
+    "bank_receipt_sha256": "b7105f408f1ee91db58f869cac5eed634e182be930dd5ed02dd1779c00d27458",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-samples-cd4-d2-stim8hr-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "samples/D2_Stim8hr"
+   }
+  },
+  "D3_Stim8hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d3_stim8hr_r1/source_complete.json",
+    "sha256": "9cb160b0d1dc22ad1e96ef1fdb10522e920d9717f1fda17aba9715c2d41ec6dd",
+    "cells": 1691290,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d3-stim8hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d3-stim8hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "380dc35b33d5a0c44937d9d14487443d0735ce6324a336fbb7cd14ff99d366b4",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+    "relative_path": "bank/D3_Stim8hr",
+    "files": {
+     "count_sum.npz": {
+      "bytes": 279227158,
+      "sha256": "4f62467826b69713ac4ab657986c71afd11241c66c096d483ec603f7eaf64742"
+     },
+     "mean_proportion.npz": {
+      "bytes": 510848790,
+      "sha256": "235c6e351873541ca836aee47bdabea06410621c5a9633940a8555cfd8bb2789"
+     },
+     "mask.npz": {
+      "bytes": 7811149,
+      "sha256": "822868ce6fccbc4452c2a6ebdd129ae3ff08d07ef9423c1e13b566cdf2df219b"
+     },
+     "sampled_controls.npz": {
+      "bytes": 118635,
+      "sha256": "6d0cbb49bfb36509e42e46f5e9b86d92bfb8fe8d2660a5969904d6971b73834d"
+     },
+     "rows.csv": {
+      "bytes": 915921,
+      "sha256": "0cedda457776b6711da89465bd47de3e376c3c254f9ef0aa8077db03ea11214f"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 25549698,
+      "sha256": "1128f756bf0ff8d603022d4a8899b96065e6de631ddcd1298c3c3d0902401a53"
+     },
+     "variance_proportion.npz": {
+      "bytes": 511918405,
+      "sha256": "6cc156cc446b9c52d1e669f2e01a3ce84256585e140ef0f99323d5909a846ccb"
+     },
+     "zero_fraction.npz": {
+      "bytes": 221695708,
+      "sha256": "49b95efa02d32bc99f97820377582395cef06836f75cd386a40f6053782c5c17"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084942,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2/versions/1",
+     "saved_source_sha256": "87bf8041c822169a1011fb29b95f5b79bd577f6fdb202a81ccca4831e7860c8d",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r11/receipts/davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2/bank/D3_Stim8hr/complete.json",
+    "receipt_sha256": "982e6b0a6d346a7efa47300d6ae8c7ed51a3c5251251d72e8bf4c78b5eaa2676",
+    "cells_used": 1691290,
+    "rows": 12033,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required"
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-samples-cd4-d3-stim8hr-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-samples-cd4-d3-stim8hr-r1",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d3-stim8hr-r1/samples/D3_Stim8hr/complete.json",
+    "receipt_sha256": "eaad59e5dc0482495e19edf13d477af6fd70c37be8c992ae2b9fbcc8686ec76e",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137127119,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-samples-cd4-d3-stim8hr-r1/versions/1",
+     "saved_source_sha256": "282655501503b8460f8813062b9238ff9b78d5d0e197c5bc401901ea6382e46a",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 384675,
+     "64": 598266,
+     "128": 960582
+    },
+    "bytes": 8769519562,
+    "bank_receipt_sha256": "982e6b0a6d346a7efa47300d6ae8c7ed51a3c5251251d72e8bf4c78b5eaa2676",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-samples-cd4-d3-stim8hr-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "samples/D3_Stim8hr"
+   }
+  },
+  "D1_Stim48hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d1_stim48hr_r1/source_complete.json",
+    "sha256": "06bc16af5be94cc62fd68baf306b9f4902ad46cc0b0dc6120554fc7b25cb59e4",
+    "cells": 1646772,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d1-stim48hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d1-stim48hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "0d387997f86cc4a339becbceb8fde7aa241f6f616162c89f272677e8bbcfb973",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+    "relative_path": "bank/D1_Stim48hr",
+    "files": {
+     "samples.jsonl.gz": {
+      "bytes": 29415653,
+      "sha256": "289003f5d4984f4ad1428f39ac74021b26398a67cd753721caac7b3e9c17f7cc"
+     },
+     "rows.csv": {
+      "bytes": 951459,
+      "sha256": "53f7a46985744bce50bd84d7cd864422d78d7cf248f7ad6cedfae73c075d78ed"
+     },
+     "variance_proportion.npz": {
+      "bytes": 544988951,
+      "sha256": "428999c1617d4042ba5792d14f89c838b810f8763e257d485b9bc5dd1aa4bfe9"
+     },
+     "count_sum.npz": {
+      "bytes": 296065411,
+      "sha256": "19c58c43e3a385c9e5216deb3960fdb60a0a2e26c299394dbb444dc530cfa1ba"
+     },
+     "mask.npz": {
+      "bytes": 7894870,
+      "sha256": "3b3cb641f07e93befba8b97c7afb6200ec535a919ae94f43796dd68820ef1671"
+     },
+     "mean_proportion.npz": {
+      "bytes": 542889567,
+      "sha256": "372c3fb87c481cf4ae1196b89077bd4c7c7eee06fa48f6b7f92c719a0aad5dea"
+     },
+     "zero_fraction.npz": {
+      "bytes": 236701583,
+      "sha256": "f1fc96914376d8318df81f6c9fd89f915479dd0872cde50ce503acf68d269723"
+     },
+     "sampled_controls.npz": {
+      "bytes": 124096,
+      "sha256": "cd7581afc0bbcc79b18e1875110176950ebc9805a83465908e1fbb946eab9422"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084947,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2/versions/1",
+     "saved_source_sha256": "7af8db2d5cb3134798a5f7521659780b5b68677b647b397f412bbdedaf480f9e",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r11/receipts/davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2/bank/D1_Stim48hr/complete.json",
+    "receipt_sha256": "b2787198ebe1796c7d5c1ddd743fd15620bd7b5d34eccca0f8bfb1c9dbadd248",
+    "cells_used": 1646772,
+    "rows": 12162,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required"
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-samples-cd4-d1-stim48hr-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-samples-cd4-d1-stim48hr-r1",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d1-stim48hr-r1/samples/D1_Stim48hr/complete.json",
+    "receipt_sha256": "a6be980c72093f7a825ca7193e7c6f4628957425f00570eacf49cb084ffd3167",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137106482,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-samples-cd4-d1-stim48hr-r1/versions/1",
+     "saved_source_sha256": "7a9f0ed3c86938ad4505f3b1087bd6b2054a853c2cee3c4f552abeeadd7fe449",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 445642,
+     "64": 675175,
+     "128": 1104172
+    },
+    "bytes": 10185135761,
+    "bank_receipt_sha256": "b2787198ebe1796c7d5c1ddd743fd15620bd7b5d34eccca0f8bfb1c9dbadd248",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-samples-cd4-d1-stim48hr-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "samples/D1_Stim48hr"
+   }
+  },
+  "D2_Stim48hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d2_stim48hr_r1/source_complete.json",
+    "sha256": "ac27d3044a37e0767d6325ab8b84221d7e8fd130e38eb67663cd1d84f9e55025",
+    "cells": 2050788,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d2-stim48hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d2-stim48hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "9d0dbc5903c10c400a4535eb6dfb1b7802a827c9071621e759200d4070de1845",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+    "relative_path": "bank/D2_Stim48hr",
+    "files": {
+     "samples.jsonl.gz": {
+      "bytes": 27127967,
+      "sha256": "fba195008ae8738f841a92957ea46b1b5750f815fad57b86868e214ac6bc23ae"
+     },
+     "rows.csv": {
+      "bytes": 943579,
+      "sha256": "b7dbe360bb825fda28da831c809c31b0a2c5dd24cb4b5201a8b0d1418dcfac07"
+     },
+     "variance_proportion.npz": {
+      "bytes": 521359907,
+      "sha256": "f429d8a7099989eba39ca161c7d5bc1a27231b4d57b92bb6ea0322c6072ce9b6"
+     },
+     "count_sum.npz": {
+      "bytes": 275200088,
+      "sha256": "af26d4291dc02d5bd8523a6fd68d35816821b5a6fe5ad37311777518fd9e7592"
+     },
+     "mask.npz": {
+      "bytes": 7835824,
+      "sha256": "d591ef345dc545c42747cd1b732900b74843a6d53c522f6b3a2851f86192ad6a"
+     },
+     "mean_proportion.npz": {
+      "bytes": 519925526,
+      "sha256": "42aa732725fc2cb912221e599e7fe7c8c6ccb604663948d6a3cf48270ec66580"
+     },
+     "zero_fraction.npz": {
+      "bytes": 226481960,
+      "sha256": "661109d7ac2dd86896c76e7a0bf31deef16458d01eb1903a8cb7b6b414832fc7"
+     },
+     "sampled_controls.npz": {
+      "bytes": 119240,
+      "sha256": "e2a62410296df39bd542d53b0e7b323fe3c9701a4a70b1e4dce772f732fa6e33"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084947,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2/versions/1",
+     "saved_source_sha256": "7af8db2d5cb3134798a5f7521659780b5b68677b647b397f412bbdedaf480f9e",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r11/receipts/davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2/bank/D2_Stim48hr/complete.json",
+    "receipt_sha256": "a6b2680121792992f821d35bda95bcca47a6ccc8aed01d40c16b9384851f73ce",
+    "cells_used": 2050788,
+    "rows": 12071,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required"
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-samples-cd4-d2-stim48hr-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-samples-cd4-d2-stim48hr-r1",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d2-stim48hr-r1/samples/D2_Stim48hr/complete.json",
+    "receipt_sha256": "aeae18d7091878ea769dd365835b915a371d02399f88f9a552f831a69f80fe42",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137106500,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-samples-cd4-d2-stim48hr-r1/versions/1",
+     "saved_source_sha256": "ea1cd7de5b25e8afc879d26cedb4f48aa8119f04d7e3607acba7b90cd9757292",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 402756,
+     "64": 626213,
+     "128": 1010758
+    },
+    "bytes": 7834218466,
+    "bank_receipt_sha256": "a6b2680121792992f821d35bda95bcca47a6ccc8aed01d40c16b9384851f73ce",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-samples-cd4-d2-stim48hr-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "samples/D2_Stim48hr"
+   }
+  },
+  "D3_Stim48hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/verifica_d3_stim48hr_r1/source_complete.json",
+    "sha256": "a8e3b3414a6e12e9c3aaed778883e96f1f66e7d1560eb471ab2a356100043d3a",
+    "cells": 1885549,
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d3-stim48hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d3-stim48hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "db411efdbfe3a19e8dc3f8a77eb41be2c8ff722cd093b1f64fa9a9448de52448",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+    "relative_path": "bank/D3_Stim48hr",
+    "files": {
+     "samples.jsonl.gz": {
+      "bytes": 25669380,
+      "sha256": "1d6e868bc468fe0a86d3862d2dd6a82a8d511bc3a7d1ccc738138b895da9600b"
+     },
+     "rows.csv": {
+      "bytes": 924494,
+      "sha256": "6d292dfc1038f24a635239428c5b6622409cde988a8ab33b8c2850a6425c9038"
+     },
+     "variance_proportion.npz": {
+      "bytes": 507942857,
+      "sha256": "0cf8c5d00f3258d49040b9503c25e7a312ac18c7a9bde10108f1ee7a9ff7e171"
+     },
+     "count_sum.npz": {
+      "bytes": 273509586,
+      "sha256": "81a1313267aee512374c2b5d27f8b48ca02df33a0826d0163c87203c04c8fc35"
+     },
+     "mask.npz": {
+      "bytes": 7680022,
+      "sha256": "443d771539dde632b32e7f5932af6c48904f185e1509e3db5f7f51f702a56ced"
+     },
+     "mean_proportion.npz": {
+      "bytes": 506779455,
+      "sha256": "73002f4237909a41258268ab5efc879dd87436f11f8f8cd9360ec6f64aaa119f"
+     },
+     "zero_fraction.npz": {
+      "bytes": 221135774,
+      "sha256": "2cdf932b974cbfe51943bb607f86b2bf16846375d87e98459559c8eecbc29e94"
+     },
+     "sampled_controls.npz": {
+      "bytes": 120722,
+      "sha256": "6a559b6a355aaa2cdffb74afae7165914656f3dc2a65b35c9918b795501f6df5"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084947,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2/versions/1",
+     "saved_source_sha256": "7af8db2d5cb3134798a5f7521659780b5b68677b647b397f412bbdedaf480f9e",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r11/receipts/davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2/bank/D3_Stim48hr/complete.json",
+    "receipt_sha256": "8e27b966b407b0c20ba0cfd1119ab443d54e27a66f09dc3785573c37b92ec167",
+    "cells_used": 1885549,
+    "rows": 11831,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required"
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-samples-cd4-d3-stim48hr-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-samples-cd4-d3-stim48hr-r1",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d3-stim48hr-r1/samples/D3_Stim48hr/complete.json",
+    "receipt_sha256": "a8a38ad2013d6377744637ec591acddd9718544e49b027a748d0479787805bd7",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137106506,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-samples-cd4-d3-stim48hr-r1/versions/1",
+     "saved_source_sha256": "461f682e248a85f0cc4b6717b4e304f2facf128cc28521b2ebc1322c16edce03",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 377395,
+     "64": 589787,
+     "128": 961662
+    },
+    "bytes": 8286512377,
+    "bank_receipt_sha256": "8e27b966b407b0c20ba0cfd1119ab443d54e27a66f09dc3785573c37b92ec167",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-samples-cd4-d3-stim48hr-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "samples/D3_Stim48hr"
+   }
+  },
+  "D4_Rest": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/verifica_d4_rest_r1/source_complete.json",
+    "sha256": "b8ce75fa698c0338ce1052428d89b87bf844b0a05f9dea191d2d23249f91d904",
+    "cells": 1747709,
+    "kernel_sources": [
+     "davidmaisterx/vcc-cd4-d4-rest-p0of2-r1",
+     "davidmaisterx/vcc-cd4-d4-rest-p1of2-r1"
+    ]
+   },
+   "derivation_key": "4eedf32bdfac611d3e6804c6d8c59b460d857fc8c5be48f8a671d752163e02fe",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-bank-cd4-4-4-rest-r2",
+    "relative_path": "bank/D4_Rest",
+    "files": {
+     "samples.jsonl.gz": {
+      "bytes": 32007300,
+      "sha256": "2aae4240983e3284fa0924991d173cf4e6842b65ca40fe2896d95d2943ea45e5"
+     },
+     "mean_proportion.npz": {
+      "bytes": 534697039,
+      "sha256": "2d796f95c2473f6ac0c681baf0963d1e893db0e6e1cb0711f4293f1209864a94"
+     },
+     "count_sum.npz": {
+      "bytes": 282316698,
+      "sha256": "554d00892b95ed9d14447aaeca427fc0481071f11f377e4491224434139981cc"
+     },
+     "zero_fraction.npz": {
+      "bytes": 234529439,
+      "sha256": "4866b518e01afa2a0cd0dc5bfda341571299c9e827b98ec2c21a1df55581c4ec"
+     },
+     "sampled_controls.npz": {
+      "bytes": 117175,
+      "sha256": "e7c30d1fb4a3724f8b11eac8abc0ae0249496f670cdcc155e32415fcea93cea0"
+     },
+     "rows.csv": {
+      "bytes": 872720,
+      "sha256": "9cd9ad16299bd2229235a464024647f4cc8ca07f8e197acc350bcd1abe1e4d66"
+     },
+     "mask.npz": {
+      "bytes": 8054564,
+      "sha256": "152fbaa5866c1281ffbc70f1b49f81710e7fdf5ed3245cac57d88a0b94e78ce7"
+     },
+     "variance_proportion.npz": {
+      "bytes": 535910325,
+      "sha256": "0579dc2f33a8676678470717df5a13644f4edd2c9aeb46c4eb8f8d25b7acced8"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084956,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-bank-cd4-4-4-rest-r2/versions/1",
+     "saved_source_sha256": "d5b14034c1a5d3f057c81e31135c2d467029d48c4c60df0b273632ff22a75494",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r11/receipts/davidmaisterx/vcc-bank-cd4-4-4-rest-r2/bank/D4_Rest/complete.json",
+    "receipt_sha256": "3c8b212406188a68f344eba4bf88896d35d6ba4ea93081df0451b39eb130ed98",
+    "cells_used": 1747709,
+    "rows": 12408,
+    "account": "davidmaisterx",
+    "url": "https://www.kaggle.com/code/davidmaisterx/vcc-bank-cd4-4-4-rest-r2",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required"
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davidmaisterx/vcc-samples-cd4-d4-rest-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-samples-cd4-d4-rest-r1",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davidmaisterx/vcc-samples-cd4-d4-rest-r1/samples/D4_Rest/complete.json",
+    "receipt_sha256": "e1599cafdffde43318968c154aa17a09788d9c6933f197795ed1f298a3b15348",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137099085,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-samples-cd4-d4-rest-r1/versions/1",
+     "saved_source_sha256": "1148d27bddbc7e2fc282a40493c820fea8d756735ba5ffb918e5731ee6ec8ff6",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 469985,
+     "64": 718096,
+     "128": 1218057
+    },
+    "bytes": 8590030800,
+    "bank_receipt_sha256": "3c8b212406188a68f344eba4bf88896d35d6ba4ea93081df0451b39eb130ed98",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "account": "davidmaisterx",
+    "url": "https://www.kaggle.com/code/davidmaisterx/vcc-samples-cd4-d4-rest-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "samples/D4_Rest"
+   }
+  },
+  "D4_Stim8hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/verifica_d4_stim8hr_r1/source_complete.json",
+    "sha256": "136fc11fa25614a1b4e55d5606b7299f4e326bc5a90cd303f3b514c0bd87a7c8",
+    "cells": 1755121,
+    "kernel_sources": [
+     "davidmaisterx/vcc-cd4-d4-stim8hr-p0of2-r1",
+     "davidmaisterx/vcc-cd4-d4-stim8hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "e90b48979f7f18782ec371a11eba992d1fe2ef9e8fd8cadae564ac5bb4adb141",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-bank-cd4-4-4-stim8hr-r2",
+    "relative_path": "bank/D4_Stim8hr",
+    "files": {
+     "samples.jsonl.gz": {
+      "bytes": 32593473,
+      "sha256": "29bf5611493365be70dd87a82b2638a75176f45dbd0d21c404159628a9235177"
+     },
+     "mask.npz": {
+      "bytes": 8086372,
+      "sha256": "96337fb43b2ed7e598c16217c1748adecf5e771d35ab1f43ba0dcf253b0c4b4b"
+     },
+     "sampled_controls.npz": {
+      "bytes": 119657,
+      "sha256": "396e10e3c739467e9c8e61ce008c8ab8be2785e6a7943cae580deb86088a7e23"
+     },
+     "zero_fraction.npz": {
+      "bytes": 240463317,
+      "sha256": "134c8cc125257bae0e56662711ebceb4d2de86d23fe5228e5c10117cf69c5f96"
+     },
+     "variance_proportion.npz": {
+      "bytes": 546299344,
+      "sha256": "f2fa31628800693f8b3efbea352d460bbd8f530b610004328b6bdab97b871824"
+     },
+     "mean_proportion.npz": {
+      "bytes": 543821782,
+      "sha256": "1a7a8143b09ffc9f0efd1aa177b049ba3f5707fbe1e0d8c3a439e359b54fa182"
+     },
+     "count_sum.npz": {
+      "bytes": 293614183,
+      "sha256": "e7dcb2d4ab3489471d8d00736d4f5c8470860ea4993133f54510f3f4132fe609"
+     },
+     "rows.csv": {
+      "bytes": 950979,
+      "sha256": "69694959750b0be40b2c94def5890af9023893abcc3058b4e0097d8b714c2206"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084968,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-bank-cd4-4-4-stim8hr-r2/versions/1",
+     "saved_source_sha256": "731fc0645c962e1eea9acf06a24080595aeb3e2b8fc7b0c01e45d0a0b69cfb28",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r11/receipts/davidmaisterx/vcc-bank-cd4-4-4-stim8hr-r2/bank/D4_Stim8hr/complete.json",
+    "receipt_sha256": "bcf456e3e2200c5675c3d41014b1a1c32e2ca5935d929fdf63163f0e693942d6",
+    "cells_used": 1755121,
+    "rows": 12457,
+    "account": "davidmaisterx",
+    "url": "https://www.kaggle.com/code/davidmaisterx/vcc-bank-cd4-4-4-stim8hr-r2",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required"
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davidmaisterx/vcc-samples-cd4-d4-stim8hr-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-samples-cd4-d4-stim8hr-r1",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davidmaisterx/vcc-samples-cd4-d4-stim8hr-r1/samples/D4_Stim8hr/complete.json",
+    "receipt_sha256": "390d5960684c790ba68b20f412264e90e2d51839a2c4c7795ad1b9102aa207ce",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137099097,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-samples-cd4-d4-stim8hr-r1/versions/1",
+     "saved_source_sha256": "d236072d5f145ddf581224760a8ba359ca970fb202b89113982f19f12ed2daca",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 483164,
+     "64": 724820,
+     "128": 1231882
+    },
+    "bytes": 9804366642,
+    "bank_receipt_sha256": "bcf456e3e2200c5675c3d41014b1a1c32e2ca5935d929fdf63163f0e693942d6",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "account": "davidmaisterx",
+    "url": "https://www.kaggle.com/code/davidmaisterx/vcc-samples-cd4-d4-stim8hr-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "samples/D4_Stim8hr"
+   }
+  },
+  "D4_Stim48hr": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/verifica_d4_stim48hr_r1/source_complete.json",
+    "sha256": "d87789248c1517c2cc330030c4a42a54d4758dc851bbe6273c363819090c179d",
+    "cells": 1878125,
+    "kernel_sources": [
+     "davidmaisterx/vcc-cd4-d4-stim48hr-p0of2-r1",
+     "davidmaisterx/vcc-cd4-d4-stim48hr-p1of2-r1"
+    ]
+   },
+   "derivation_key": "32f4df94c512f7fc256dc450bc80188ef96105dc9b66743603ce907e3d1f652c",
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-bank-cd4-4-4-stim48hr-r2",
+    "relative_path": "bank/D4_Stim48hr",
+    "files": {
+     "rows.csv": {
+      "bytes": 972815,
+      "sha256": "db26a86482c43e1131b017e8077f943cc4fca7fe5adbcbb5a9d7985014cd2de3"
+     },
+     "zero_fraction.npz": {
+      "bytes": 251575128,
+      "sha256": "b57067e7fd42296d3372342f95241164e2d4aae22139c0c56c51330e78e588eb"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 32932582,
+      "sha256": "b1096c5558757ec8cb30fa1d4e019fa4162018990144c632e0e4d0c1efe702e5"
+     },
+     "variance_proportion.npz": {
+      "bytes": 568513409,
+      "sha256": "6411352ea5807f478914d30456097ee1f611afabeb78765cda0985a1cc4c2b15"
+     },
+     "count_sum.npz": {
+      "bytes": 309482065,
+      "sha256": "415d4c3449c251068562d362119d55a308e7084fba52ee0f6614679e223f0ac8"
+     },
+     "mean_proportion.npz": {
+      "bytes": 566588637,
+      "sha256": "1886f2fec2e2cd0ad68a622a48cd4ab82fafb0c779669ba073d6d40d6ad6b9e7"
+     },
+     "mask.npz": {
+      "bytes": 8059102,
+      "sha256": "6ce7ae6774c863ab0c68727b507b86da00b85ec672c71f1477a87fdcf1ca0937"
+     },
+     "sampled_controls.npz": {
+      "bytes": 123290,
+      "sha256": "54ea8be63c99b517194deb8ba8dd6cf7af3eb3ecc209c5f5f1835511e6b36d01"
+     }
+    },
+    "consumer_access": "not_verified",
+    "saved_version": {
+     "kernel_id": 137084972,
+     "version": 1,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-bank-cd4-4-4-stim48hr-r2/versions/1",
+     "saved_source_sha256": "4cf1f75b53615e290833e34b6ab1806aa44bd4ea5334c383b13ba5702e9ccf1e",
+     "version_stable_during_output_read": true
+    },
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r11/receipts/davidmaisterx/vcc-bank-cd4-4-4-stim48hr-r2/bank/D4_Stim48hr/complete.json",
+    "receipt_sha256": "414526a33fd732325d3746a295247c1529bc02c1294fb8f2213327068aaa68c3",
+    "cells_used": 1878125,
+    "rows": 12415,
+    "account": "davidmaisterx",
+    "url": "https://www.kaggle.com/code/davidmaisterx/vcc-bank-cd4-4-4-stim48hr-r2",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required"
+   },
+   "samples": {
+    "status": {
+     "returncode": 0,
+     "text": "davidmaisterx/vcc-samples-cd4-d4-stim48hr-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davidmaisterx/vcc-samples-cd4-d4-stim48hr-r1",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davidmaisterx/vcc-samples-cd4-d4-stim48hr-r1/samples/D4_Stim48hr/complete.json",
+    "receipt_sha256": "f1e38a0f9066c353d05712362259353e29d7ca24b6114ea9014929835fc429c9",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137099104,
+     "private": true,
+     "version_ref": "davidmaisterx/vcc-samples-cd4-d4-stim48hr-r1/versions/1",
+     "saved_source_sha256": "fa55c8745af610f69ab2d0bc4e0bc41c04572ac8987cd7925aa2e165a7e6fb92",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 487904,
+     "64": 721882,
+     "128": 1243353
+    },
+    "bytes": 11365338991,
+    "bank_receipt_sha256": "414526a33fd732325d3746a295247c1529bc02c1294fb8f2213327068aaa68c3",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "account": "davidmaisterx",
+    "url": "https://www.kaggle.com/code/davidmaisterx/vcc-samples-cd4-d4-stim48hr-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "samples/D4_Stim48hr"
+   }
+  },
+  "kolf_pan_genome": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports\\sorgenti\\ingestione_completa_2026-10-03\\kolf\\esito_verifica_r1\\source_complete.json",
+    "sha256": "a7ba725c4a41052d3657ba7c35a374e49735e96917347de0fe7c84d4bcdc675a",
+    "spec": {
+     "name": "kolf_pan_genome",
+     "line_group": "iPSC",
+     "expected_contexts": [
+      "KOLF2.1J iPSC"
+     ],
+     "cells": 2659209,
+     "receipt_sha256": "a7ba725c4a41052d3657ba7c35a374e49735e96917347de0fe7c84d4bcdc675a",
+     "parts": [
+      {
+       "job": "vcc_kolf_pan_p0of2_r2",
+       "unit": "kolf_pan_genome",
+       "range": [
+        0,
+        1320000
+       ],
+       "rows": 1320000,
+       "cells": 1320000,
+       "excluded": 0,
+       "by_reason": null,
+       "shards": 66,
+       "bytes": 9200054049,
+       "nnz": 3946529896,
+       "counts": 7966149908,
+       "smoke": null,
+       "complete": true,
+       "unit_manifest_sha256": "e129fbe6c2bb58d97f406689517cd2774b905580d7f3ec38b438ff8afd566bb2",
+       "ok": true
+      },
+      {
+       "job": "vcc_kolf_pan_p1of2_r1",
+       "unit": "kolf_pan_genome",
+       "range": [
+        1320000,
+        2659209
+       ],
+       "rows": 1339209,
+       "cells": 1339209,
+       "excluded": 0,
+       "by_reason": null,
+       "shards": 67,
+       "bytes": 9186373942,
+       "nnz": 3925653565,
+       "counts": 7794331337,
+       "smoke": null,
+       "complete": true,
+       "unit_manifest_sha256": "62c6d3a326be093d4df9a1db1cfbb1227dde15c142f9e2bfaabc61005d7ff7aa",
+       "ok": true
+      }
+     ]
+    },
+    "kernel_sources": [
+     "davideferrante11/vcc-kolf-pan-p0of2-r2",
+     "davideferrante11/vcc-kolf-pan-p1of2-r1"
+    ],
+    "raw_version_policy": "manifest and shard SHA bind identity; never infer revision from slug alone"
+   },
+   "bank": {
+    "kernel": "davideferrante11/vcc-bank-kolf-pan-r1",
+    "state": "remote_complete_manifest_checked",
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-bank-kolf-pan-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "line_group": "iPSC",
+    "expected_cells": 2659209,
+    "spec": {
+     "name": "kolf_pan_genome",
+     "line_group": "iPSC",
+     "expected_contexts": [
+      "KOLF2.1J iPSC"
+     ],
+     "cells": 2659209,
+     "receipt_sha256": "a7ba725c4a41052d3657ba7c35a374e49735e96917347de0fe7c84d4bcdc675a",
+     "parts": [
+      {
+       "job": "vcc_kolf_pan_p0of2_r2",
+       "unit": "kolf_pan_genome",
+       "range": [
+        0,
+        1320000
+       ],
+       "rows": 1320000,
+       "cells": 1320000,
+       "excluded": 0,
+       "by_reason": null,
+       "shards": 66,
+       "bytes": 9200054049,
+       "nnz": 3946529896,
+       "counts": 7966149908,
+       "smoke": null,
+       "complete": true,
+       "unit_manifest_sha256": "e129fbe6c2bb58d97f406689517cd2774b905580d7f3ec38b438ff8afd566bb2",
+       "ok": true
+      },
+      {
+       "job": "vcc_kolf_pan_p1of2_r1",
+       "unit": "kolf_pan_genome",
+       "range": [
+        1320000,
+        2659209
+       ],
+       "rows": 1339209,
+       "cells": 1339209,
+       "excluded": 0,
+       "by_reason": null,
+       "shards": 67,
+       "bytes": 9186373942,
+       "nnz": 3925653565,
+       "counts": 7794331337,
+       "smoke": null,
+       "complete": true,
+       "unit_manifest_sha256": "62c6d3a326be093d4df9a1db1cfbb1227dde15c142f9e2bfaabc61005d7ff7aa",
+       "ok": true
+      }
+     ]
+    },
+    "consumer_hashes_verified": false,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_other_r2/receipts/davideferrante11/vcc-bank-kolf-pan-r1/bank/kolf_pan_genome/complete.json",
+    "receipt_sha256": "c0025f94a7562f24ee20e51287e99f311f922e3d19e9c6dc7d950cbb69e111a9",
+    "saved_version": {
+     "kernel_id": 137127560,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-kolf-pan-r1/versions/1",
+     "saved_source_sha256": "77075982582bf15fb17f7085d92d7c13126fac7e7e86a9725958aab672ce8e49",
+     "version_stable_during_output_read": true
+    },
+    "files": {
+     "rows.csv": {
+      "bytes": 925890,
+      "sha256": "a2d4626888f09ef3f40b3e07529507ad1bade7bb2b849e318727c724423ce6c5"
+     },
+     "mean_proportion.npz": {
+      "bytes": 623757359,
+      "sha256": "c47c3e82758a4241eaeb244fcf08bb9ae4501ada110c36114fe89ae1bf7294e2"
+     },
+     "sampled_controls.npz": {
+      "bytes": 134628,
+      "sha256": "f7d1c9b7f9835bd7d85c9118ace588575f56a78da7171a189f350ca07c8e24ea"
+     },
+     "variance_proportion.npz": {
+      "bytes": 625055519,
+      "sha256": "9228a44823ebdbd1db0e26675338cae63f0699af68675f0e0e5cb1b44484d7ab"
+     },
+     "zero_fraction.npz": {
+      "bytes": 257144241,
+      "sha256": "a39b4f22f647ef460f91d40c60e53d8431d6c9c8064e055eb14cd17ba18acce6"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 37923803,
+      "sha256": "896285f8ed171211ac0847b929730807e5c1e802f8113372ca46d8497845e035"
+     },
+     "count_sum.npz": {
+      "bytes": 296543624,
+      "sha256": "2f8ee51dfe9ca5c7e39cec74d9a447056444ce1cb25f468626b1f9c3c470c634"
+     },
+     "mask.npz": {
+      "bytes": 6206674,
+      "sha256": "e451e1642742198cf26a2e2d03a4dc074d4bcd06c1a3f7fc9409fb441edaadb4"
+     }
+    },
+    "cells_used": 2659209,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-bank-kolf-pan-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "bank/kolf_pan_genome"
+   },
+   "samples": {
+    "expected_parts": 3,
+    "launched_parts": 3,
+    "verified_parts": 3,
+    "state": "remote_complete_union_checked",
+    "levels": {
+     "32": 889815,
+     "64": 910438,
+     "128": 1425550
+    },
+    "bytes": 7341554007,
+    "parts": [
+     {
+      "kernel": "davideferrante11/vcc-samples-kolf-p0of3-r1",
+      "state": "remote_complete_manifest_checked",
+      "status": {
+       "returncode": 0,
+       "text": "davideferrante11/vcc-samples-kolf-p0of3-r1 has status \"KernelWorkerStatus.COMPLETE\""
+      },
+      "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r1/receipts/davideferrante11/vcc-samples-kolf-p0of3-r1/samples/kolf_pan_genome/complete.json",
+      "receipt_sha256": "d6c41d72c35f501960111224794028371b1ef9863cd0cb5bbd775276e95554a4",
+      "saved_version": {
+       "version": 1,
+       "kernel_id": 137163999,
+       "private": true,
+       "version_ref": "davideferrante11/vcc-samples-kolf-p0of3-r1/versions/1",
+       "saved_source_sha256": "214eed309adac4156b1c0675bac2ceb33142392bcc2a95ad8507790744b29f03",
+       "version_stable_during_output_read": true
+      },
+      "part": 0,
+      "parts": 3,
+      "levels": {
+       "32": 305424,
+       "64": 312504,
+       "128": 486909
+      },
+      "bytes": 2505272719,
+      "consumer_hashes_verified": false,
+      "training_used": false,
+      "reused_verification": true
+     },
+     {
+      "kernel": "davidmaisterx/vcc-samples-kolf-p1of3-r1",
+      "state": "remote_complete_manifest_checked",
+      "status": {
+       "returncode": 0,
+       "text": "davidmaisterx/vcc-samples-kolf-p1of3-r1 has status \"KernelWorkerStatus.COMPLETE\""
+      },
+      "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r2/receipts/davidmaisterx/vcc-samples-kolf-p1of3-r1/samples/kolf_pan_genome/complete.json",
+      "receipt_sha256": "40813c0f188c8cd360fc5e5cab386fc38640b2312f9dc927ef39e793bd1fef17",
+      "saved_version": {
+       "version": 1,
+       "kernel_id": 137166486,
+       "private": true,
+       "version_ref": "davidmaisterx/vcc-samples-kolf-p1of3-r1/versions/1",
+       "saved_source_sha256": "25d362a46fac888f621e3fee740b59f1d361a30872bd1f9dbf4c2fc275af6298",
+       "version_stable_during_output_read": true
+      },
+      "part": 1,
+      "parts": 3,
+      "levels": {
+       "32": 296814,
+       "64": 303499,
+       "128": 473336
+      },
+      "bytes": 2446977903,
+      "consumer_hashes_verified": false,
+      "training_used": false,
+      "reused_verification": true
+     },
+     {
+      "kernel": "davideferante/vcc-samples-kolf-p2of3-r1",
+      "state": "remote_complete_manifest_checked",
+      "status": {
+       "returncode": 0,
+       "text": "davideferante/vcc-samples-kolf-p2of3-r1 has status \"KernelWorkerStatus.COMPLETE\""
+      },
+      "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r3/receipts/davideferante/vcc-samples-kolf-p2of3-r1/samples/kolf_pan_genome/complete.json",
+      "receipt_sha256": "b8f266283fdcd56b0dadf9764bcfea214de8f009fafe8b463cabb1acf6f05352",
+      "saved_version": {
+       "version": 1,
+       "kernel_id": 137166490,
+       "private": true,
+       "version_ref": "davideferante/vcc-samples-kolf-p2of3-r1/versions/1",
+       "saved_source_sha256": "4e147effd59e63d30b2f045e0291883a697dbbdc1a02fd8fb3597a472d160593",
+       "version_stable_during_output_read": true
+      },
+      "part": 2,
+      "parts": 3,
+      "levels": {
+       "32": 287577,
+       "64": 294435,
+       "128": 465305
+      },
+      "bytes": 2389303385,
+      "consumer_hashes_verified": false,
+      "training_used": false,
+      "reused_verification": true
+     }
+    ],
+    "mount_selection": "explicit saved kernel version for each part; global source indices retained; union receipt required"
+   },
+   "trainer": {
+    "state": "not_integrated",
+    "training_used": false
+   }
+  },
+  "orion_hct116": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports\\sorgenti\\ingestione_completa_2026-10-03\\orion\\esito_verifica_hct116_r1\\line_complete.json",
+    "sha256": "3d99053d9e3ad5bc13cf06482e370a357cda316fe09c3931282a2b82b331d580",
+    "spec": {
+     "name": "orion_hct116",
+     "line_group": "HCT116",
+     "expected_contexts": [
+      "HCT116"
+     ],
+     "cells": 3409169,
+     "receipt_sha256": "3d99053d9e3ad5bc13cf06482e370a357cda316fe09c3931282a2b82b331d580",
+     "parts": [
+      {
+       "job": "vcc_orion_hct116_p0of4_r3",
+       "part": "0/4",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 838819,
+       "cells_selected_in_part": 838819,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 9470238821,
+       "nnz": 4257044738,
+       "counts": 16192022274,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "c0c5ecb78df352de6ced1b713b8d6d445d8da22121e98ba3d5ba048f11cb6990",
+       "ok": true,
+       "unit": "orion_hct116"
+      },
+      {
+       "job": "vcc_orion_hct116_p1of4_r3",
+       "part": "1/4",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 859494,
+       "cells_selected_in_part": 859494,
+       "shards": 27,
+       "files_with_cells_in_part": 27,
+       "bytes": 9973710744,
+       "nnz": 4508828297,
+       "counts": 17578292970,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "ca9c3915be37a98c9ef476adaaa5ebbf64a4fd88e0c5c3050a6f2595c9ef7dfe",
+       "ok": true,
+       "unit": "orion_hct116"
+      },
+      {
+       "job": "vcc_orion_hct116_p2of4_r3",
+       "part": "2/4",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 873159,
+       "cells_selected_in_part": 873159,
+       "shards": 27,
+       "files_with_cells_in_part": 27,
+       "bytes": 9817893088,
+       "nnz": 4420896216,
+       "counts": 16548733930,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "0b285a6115d1722c796f21423b4658133831f3ba35342896cd342fdd84273057",
+       "ok": true,
+       "unit": "orion_hct116"
+      },
+      {
+       "job": "vcc_orion_hct116_p3of4_r3",
+       "part": "3/4",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 837697,
+       "cells_selected_in_part": 837697,
+       "shards": 27,
+       "files_with_cells_in_part": 27,
+       "bytes": 9394561666,
+       "nnz": 4227644906,
+       "counts": 15750984999,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "e6a4aaabff6b1238d44c3c988e32f0b6afbaac8fa5bdeea22797f5813ab2f856",
+       "ok": true,
+       "unit": "orion_hct116"
+      }
+     ]
+    },
+    "kernel_sources": [
+     "davideferrante11/vcc-orion-hct116-p0of4-r3",
+     "davideferrante11/vcc-orion-hct116-p1of4-r3",
+     "davideferrante11/vcc-orion-hct116-p2of4-r3",
+     "davideferrante11/vcc-orion-hct116-p3of4-r3"
+    ],
+    "raw_version_policy": "manifest and shard SHA bind identity; never infer revision from slug alone"
+   },
+   "bank": {
+    "kernel": "davideferrante11/vcc-bank-orion-hct116-r1",
+    "state": "remote_complete_manifest_checked",
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-bank-orion-hct116-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "line_group": "HCT116",
+    "expected_cells": 3409169,
+    "spec": {
+     "name": "orion_hct116",
+     "line_group": "HCT116",
+     "expected_contexts": [
+      "HCT116"
+     ],
+     "cells": 3409169,
+     "receipt_sha256": "3d99053d9e3ad5bc13cf06482e370a357cda316fe09c3931282a2b82b331d580",
+     "parts": [
+      {
+       "job": "vcc_orion_hct116_p0of4_r3",
+       "part": "0/4",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 838819,
+       "cells_selected_in_part": 838819,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 9470238821,
+       "nnz": 4257044738,
+       "counts": 16192022274,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "c0c5ecb78df352de6ced1b713b8d6d445d8da22121e98ba3d5ba048f11cb6990",
+       "ok": true,
+       "unit": "orion_hct116"
+      },
+      {
+       "job": "vcc_orion_hct116_p1of4_r3",
+       "part": "1/4",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 859494,
+       "cells_selected_in_part": 859494,
+       "shards": 27,
+       "files_with_cells_in_part": 27,
+       "bytes": 9973710744,
+       "nnz": 4508828297,
+       "counts": 17578292970,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "ca9c3915be37a98c9ef476adaaa5ebbf64a4fd88e0c5c3050a6f2595c9ef7dfe",
+       "ok": true,
+       "unit": "orion_hct116"
+      },
+      {
+       "job": "vcc_orion_hct116_p2of4_r3",
+       "part": "2/4",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 873159,
+       "cells_selected_in_part": 873159,
+       "shards": 27,
+       "files_with_cells_in_part": 27,
+       "bytes": 9817893088,
+       "nnz": 4420896216,
+       "counts": 16548733930,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "0b285a6115d1722c796f21423b4658133831f3ba35342896cd342fdd84273057",
+       "ok": true,
+       "unit": "orion_hct116"
+      },
+      {
+       "job": "vcc_orion_hct116_p3of4_r3",
+       "part": "3/4",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 837697,
+       "cells_selected_in_part": 837697,
+       "shards": 27,
+       "files_with_cells_in_part": 27,
+       "bytes": 9394561666,
+       "nnz": 4227644906,
+       "counts": 15750984999,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "e6a4aaabff6b1238d44c3c988e32f0b6afbaac8fa5bdeea22797f5813ab2f856",
+       "ok": true,
+       "unit": "orion_hct116"
+      }
+     ]
+    },
+    "consumer_hashes_verified": false,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_other_r2/receipts/davideferrante11/vcc-bank-orion-hct116-r1/bank/orion_hct116/complete.json",
+    "receipt_sha256": "007cd4090a8c8356007baa2f3bf0f1b9b00c2a3576e0abe88838141a1bb4c872",
+    "saved_version": {
+     "kernel_id": 137128064,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-orion-hct116-r1/versions/1",
+     "saved_source_sha256": "6d8f213accac9e06720b330a56d294c4646db6f7d8e8e54e81c19d4a7801b5fa",
+     "version_stable_during_output_read": true
+    },
+    "files": {
+     "sampled_controls.npz": {
+      "bytes": 99831,
+      "sha256": "aae75749aa164766d82de8153840cfd0d3b580705b7ba390826c1f4b46ebee0f"
+     },
+     "zero_fraction.npz": {
+      "bytes": 413583208,
+      "sha256": "ec1070f77b38738c0831579e28d4215298ae7773c41fe039e46800743ffee4a3"
+     },
+     "variance_proportion.npz": {
+      "bytes": 944601111,
+      "sha256": "06caba4d3d8596bf2b68e1c580ee6a2527ca269cd11abaa54b66cb6cb0f5114c"
+     },
+     "rows.csv": {
+      "bytes": 1300275,
+      "sha256": "54c57adbab26a482e69e5ba8f9efa1d95d882e1f6dedb7b0b3a4a6f71305f23b"
+     },
+     "mean_proportion.npz": {
+      "bytes": 941349967,
+      "sha256": "d853b44996dd81aecb95bf25370b6d9e409e29f19d3340cb132e7832b258605a"
+     },
+     "mask.npz": {
+      "bytes": 9840195,
+      "sha256": "da47ef5d37d226f6a390b7b0e56e73efcc1a1608f1caeece855eb6d149575f48"
+     },
+     "count_sum.npz": {
+      "bytes": 503499375,
+      "sha256": "8b91e0f041d8535347d1fc5d1f7847a8b862a513a2028c96ecd9635130322f8d"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 35725951,
+      "sha256": "aa361ed5af439a93e2a021efc18abdd86f4fc7925700baf28d67a935ed3acd49"
+     }
+    },
+    "cells_used": 3409169,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-bank-orion-hct116-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "bank/orion_hct116"
+   },
+   "samples": {
+    "expected_parts": 4,
+    "launched_parts": 4,
+    "verified_parts": 4,
+    "state": "remote_complete_union_checked",
+    "levels": {
+     "32": 1372692,
+     "64": 1411659,
+     "128": 1928264
+    },
+    "bytes": 18323282186,
+    "parts": [
+     {
+      "kernel": "davideferrante11/vcc-samples-hct116-p0of4-r1",
+      "state": "remote_complete_manifest_checked",
+      "status": {
+       "returncode": 0,
+       "text": "davideferrante11/vcc-samples-hct116-p0of4-r1 has status \"KernelWorkerStatus.COMPLETE\""
+      },
+      "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r2/receipts/davideferrante11/vcc-samples-hct116-p0of4-r1/samples/orion_hct116/complete.json",
+      "receipt_sha256": "998ced60b3dd5e9dfc417ff34fc4a0d989d709be2199abe9a6ff6ad54f20a482",
+      "saved_version": {
+       "version": 1,
+       "kernel_id": 137163977,
+       "private": true,
+       "version_ref": "davideferrante11/vcc-samples-hct116-p0of4-r1/versions/1",
+       "saved_source_sha256": "ae1bd2f27da4895c009cf581c155a851ae02817aa3ddaebfc6f05546cd1ddbf5",
+       "version_stable_during_output_read": true
+      },
+      "part": 0,
+      "parts": 4,
+      "levels": {
+       "32": 347630,
+       "64": 356073,
+       "128": 461371
+      },
+      "bytes": 4566969312,
+      "consumer_hashes_verified": false,
+      "training_used": false,
+      "reused_verification": true
+     },
+     {
+      "kernel": "davideferrante11/vcc-samples-hct116-p1of4-r1",
+      "state": "remote_complete_manifest_checked",
+      "status": {
+       "returncode": 0,
+       "text": "davideferrante11/vcc-samples-hct116-p1of4-r1 has status \"KernelWorkerStatus.COMPLETE\""
+      },
+      "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r3/receipts/davideferrante11/vcc-samples-hct116-p1of4-r1/samples/orion_hct116/complete.json",
+      "receipt_sha256": "ff4c7c6192217a43c150c0d72d24f446a3835fd58c666ee625f5799ddf151fe5",
+      "saved_version": {
+       "version": 1,
+       "kernel_id": 137164011,
+       "private": true,
+       "version_ref": "davideferrante11/vcc-samples-hct116-p1of4-r1/versions/1",
+       "saved_source_sha256": "e859b77cc77fd15052a29a0e9514bcb6199935b3583b3d3e2737c546ccd48b21",
+       "version_stable_during_output_read": true
+      },
+      "part": 1,
+      "parts": 4,
+      "levels": {
+       "32": 343662,
+       "64": 354293,
+       "128": 497665
+      },
+      "bytes": 4660184141,
+      "consumer_hashes_verified": false,
+      "training_used": false,
+      "reused_verification": true
+     },
+     {
+      "kernel": "davidmaisterx/vcc-samples-hct116-p2of4-r1",
+      "state": "remote_complete_manifest_checked",
+      "status": {
+       "returncode": 0,
+       "text": "davidmaisterx/vcc-samples-hct116-p2of4-r1 has status \"KernelWorkerStatus.COMPLETE\""
+      },
+      "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r4/receipts/davidmaisterx/vcc-samples-hct116-p2of4-r1/samples/orion_hct116/complete.json",
+      "receipt_sha256": "7f107b42dbc87307e3f42ddc8d053359d6f372adc59ac4977dca0045da3c913c",
+      "saved_version": {
+       "version": 1,
+       "kernel_id": 137166479,
+       "private": true,
+       "version_ref": "davidmaisterx/vcc-samples-hct116-p2of4-r1/versions/1",
+       "saved_source_sha256": "ec73a78b07586f38fb96d59000d6966d9983767d33944cdc664494a5d11bfd63",
+       "version_stable_during_output_read": true
+      },
+      "part": 2,
+      "parts": 4,
+      "levels": {
+       "32": 340335,
+       "64": 350601,
+       "128": 492722
+      },
+      "bytes": 4546973029,
+      "consumer_hashes_verified": false,
+      "training_used": false
+     },
+     {
+      "kernel": "davideferante/vcc-samples-hct116-p3of4-r1",
+      "state": "remote_complete_manifest_checked",
+      "status": {
+       "returncode": 0,
+       "text": "davideferante/vcc-samples-hct116-p3of4-r1 has status \"KernelWorkerStatus.COMPLETE\""
+      },
+      "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r4/receipts/davideferante/vcc-samples-hct116-p3of4-r1/samples/orion_hct116/complete.json",
+      "receipt_sha256": "f37e5e51869890b8c112beec2fe4a6020f14724c42f9a33fc34bb4269b39f726",
+      "saved_version": {
+       "version": 1,
+       "kernel_id": 137166482,
+       "private": true,
+       "version_ref": "davideferante/vcc-samples-hct116-p3of4-r1/versions/1",
+       "saved_source_sha256": "49d63f59688d4f1a3efef5483046fd65c87f7ea7da8a928a199fefa3dd085c97",
+       "version_stable_during_output_read": true
+      },
+      "part": 3,
+      "parts": 4,
+      "levels": {
+       "32": 341065,
+       "64": 350692,
+       "128": 476506
+      },
+      "bytes": 4549155704,
+      "consumer_hashes_verified": false,
+      "training_used": false
+     }
+    ],
+    "mount_selection": "explicit saved kernel version for each part; global source indices retained; union receipt required"
+   },
+   "trainer": {
+    "state": "not_integrated",
+    "training_used": false
+   }
+  },
+  "orion_hek293t": {
+   "raw": {
+    "state": "verified",
+    "receipt": "reports\\sorgenti\\ingestione_completa_2026-10-03\\orion\\esito_verifica_hek293t_r1\\line_complete.json",
+    "sha256": "3d43e9631f220346461136b8584cf1d232f4e342ccb46bc86e6657d39746a4c6",
+    "spec": {
+     "name": "orion_hek293t",
+     "line_group": "HEK293T",
+     "expected_contexts": [
+      "HEK293T"
+     ],
+     "cells": 4534299,
+     "receipt_sha256": "3d43e9631f220346461136b8584cf1d232f4e342ccb46bc86e6657d39746a4c6",
+     "parts": [
+      {
+       "job": "vcc_orion_hek293t_p0of8_r3",
+       "part": "0/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 576729,
+       "cells_selected_in_part": 576729,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 8012851674,
+       "nnz": 3704277974,
+       "counts": 13393422123,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "025808a739a8dab36d2e83cba5562bfe13a04ada7f35fdfc4fea8bed1c7c4fc7",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p1of8_r3",
+       "part": "1/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 536006,
+       "cells_selected_in_part": 536006,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 7548291894,
+       "nnz": 3480893551,
+       "counts": 12959231117,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "586f2d534a99bc5b4eed581d3858482bb9d3a8d887f65fabea6fb6073eccd0c1",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p2of8_r3",
+       "part": "2/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 568033,
+       "cells_selected_in_part": 568033,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 7902267263,
+       "nnz": 3633863797,
+       "counts": 13506407414,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "e4362c276e014918b4afd89d61824b6af97293201acc7f13590592cd9bf3e828",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p3of8_r3",
+       "part": "3/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 563632,
+       "cells_selected_in_part": 563632,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 7807488788,
+       "nnz": 3596394676,
+       "counts": 13235925290,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "f2945d76e3fe620b519b1324cf62ccf0cfde9a6754382b06a9af6f10fa873ba4",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p4of8_r3",
+       "part": "4/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 575108,
+       "cells_selected_in_part": 575108,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 8122559046,
+       "nnz": 3750848625,
+       "counts": 14159645736,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "b96d92271b5a5de4a4474588bce9d42d48243ad34e099a369ec7ee24eb2bf9f8",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p5of8_r3",
+       "part": "5/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 581230,
+       "cells_selected_in_part": 581230,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 8021159369,
+       "nnz": 3702080387,
+       "counts": 13517310042,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "b27f9e75b21d941e249c8b4df2864c0768181c49e0891cb0086d6c05be177eba",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p6of8_r3",
+       "part": "6/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 599222,
+       "cells_selected_in_part": 599222,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 8220978245,
+       "nnz": 3809538226,
+       "counts": 13444838710,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "3045fdeedb4cb25ab27eacd1f594b2fa206e3aca5146c3ba36c34b5cc9855d0a",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p7of8_r3",
+       "part": "7/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 534339,
+       "cells_selected_in_part": 534339,
+       "shards": 27,
+       "files_with_cells_in_part": 27,
+       "bytes": 7484967523,
+       "nnz": 3458494152,
+       "counts": 12722915188,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "9351b6050c686acd89cff7bf60a04c67e812772585840af976df0ba2d998f04b",
+       "ok": true,
+       "unit": "orion_hek293t"
+      }
+     ]
+    },
+    "kernel_sources": [
+     "davideferrante11/vcc-orion-hek293t-p0of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p1of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p2of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p3of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p4of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p5of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p6of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p7of8-r3"
+    ],
+    "raw_version_policy": "manifest and shard SHA bind identity; never infer revision from slug alone"
+   },
+   "bank": {
+    "kernel": "davideferrante11/vcc-bank-orion-hek293t-r1",
+    "state": "remote_complete_manifest_checked",
+    "status": {
+     "returncode": 0,
+     "text": "davideferrante11/vcc-bank-orion-hek293t-r1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "line_group": "HEK293T",
+    "expected_cells": 4534299,
+    "spec": {
+     "name": "orion_hek293t",
+     "line_group": "HEK293T",
+     "expected_contexts": [
+      "HEK293T"
+     ],
+     "cells": 4534299,
+     "receipt_sha256": "3d43e9631f220346461136b8584cf1d232f4e342ccb46bc86e6657d39746a4c6",
+     "parts": [
+      {
+       "job": "vcc_orion_hek293t_p0of8_r3",
+       "part": "0/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 576729,
+       "cells_selected_in_part": 576729,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 8012851674,
+       "nnz": 3704277974,
+       "counts": 13393422123,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "025808a739a8dab36d2e83cba5562bfe13a04ada7f35fdfc4fea8bed1c7c4fc7",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p1of8_r3",
+       "part": "1/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 536006,
+       "cells_selected_in_part": 536006,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 7548291894,
+       "nnz": 3480893551,
+       "counts": 12959231117,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "586f2d534a99bc5b4eed581d3858482bb9d3a8d887f65fabea6fb6073eccd0c1",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p2of8_r3",
+       "part": "2/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 568033,
+       "cells_selected_in_part": 568033,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 7902267263,
+       "nnz": 3633863797,
+       "counts": 13506407414,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "e4362c276e014918b4afd89d61824b6af97293201acc7f13590592cd9bf3e828",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p3of8_r3",
+       "part": "3/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 563632,
+       "cells_selected_in_part": 563632,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 7807488788,
+       "nnz": 3596394676,
+       "counts": 13235925290,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "f2945d76e3fe620b519b1324cf62ccf0cfde9a6754382b06a9af6f10fa873ba4",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p4of8_r3",
+       "part": "4/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 575108,
+       "cells_selected_in_part": 575108,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 8122559046,
+       "nnz": 3750848625,
+       "counts": 14159645736,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "b96d92271b5a5de4a4474588bce9d42d48243ad34e099a369ec7ee24eb2bf9f8",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p5of8_r3",
+       "part": "5/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 581230,
+       "cells_selected_in_part": 581230,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 8021159369,
+       "nnz": 3702080387,
+       "counts": 13517310042,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "b27f9e75b21d941e249c8b4df2864c0768181c49e0891cb0086d6c05be177eba",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p6of8_r3",
+       "part": "6/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 599222,
+       "cells_selected_in_part": 599222,
+       "shards": 28,
+       "files_with_cells_in_part": 28,
+       "bytes": 8220978245,
+       "nnz": 3809538226,
+       "counts": 13444838710,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "3045fdeedb4cb25ab27eacd1f594b2fa206e3aca5146c3ba36c34b5cc9855d0a",
+       "ok": true,
+       "unit": "orion_hek293t"
+      },
+      {
+       "job": "vcc_orion_hek293t_p7of8_r3",
+       "part": "7/8",
+       "checks": {
+        "per_shard_reread": true,
+        "has_shards": true,
+        "every_gem_file_done": true,
+        "cells_equal_sample": true
+       },
+       "whole_line": false,
+       "cells": 534339,
+       "cells_selected_in_part": 534339,
+       "shards": 27,
+       "files_with_cells_in_part": 27,
+       "bytes": 7484967523,
+       "nnz": 3458494152,
+       "counts": 12722915188,
+       "same_sample_as_first_part": true,
+       "complete_json": false,
+       "part_complete_json": true,
+       "unit_manifest_sha256": "9351b6050c686acd89cff7bf60a04c67e812772585840af976df0ba2d998f04b",
+       "ok": true,
+       "unit": "orion_hek293t"
+      }
+     ]
+    },
+    "consumer_hashes_verified": false,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_other_r2/receipts/davideferrante11/vcc-bank-orion-hek293t-r1/bank/orion_hek293t/complete.json",
+    "receipt_sha256": "97c64d7e2d0fddac64bcadab95e9fb62519eef936e6d4bb292341f453e19c3b9",
+    "saved_version": {
+     "kernel_id": 137128236,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-bank-orion-hek293t-r1/versions/1",
+     "saved_source_sha256": "fe191fad00b5b61be1c0e31d1477233fb13521aede01985c4b1256a59ff04098",
+     "version_stable_during_output_read": true
+    },
+    "files": {
+     "mask.npz": {
+      "bytes": 9849868,
+      "sha256": "3165d5d5ba8dbd18f470f0134272595e4385df615eb625b037eabb9bde89f03f"
+     },
+     "zero_fraction.npz": {
+      "bytes": 461598280,
+      "sha256": "905ab30f5e6325425542e0edccb8868f98ebab8e3280f199bd4b43531a52359f"
+     },
+     "rows.csv": {
+      "bytes": 1358619,
+      "sha256": "e3693edab085d33120ae656abee3a2488e846acd812cc81720e2016199430653"
+     },
+     "mean_proportion.npz": {
+      "bytes": 1022861146,
+      "sha256": "f342d99a88cd4bfcbdc4dc6091878627c171fc36647ea9a48f5e870741bdc82e"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 50632614,
+      "sha256": "a2d89ae2277a12b93e7256313a266a3285358edece72e1b05b7deb233b612483"
+     },
+     "sampled_controls.npz": {
+      "bytes": 112732,
+      "sha256": "d0bf43ee514796756cb299813ad41482c965a80d47ea93ccde4614fba4bc652e"
+     },
+     "variance_proportion.npz": {
+      "bytes": 1026285062,
+      "sha256": "75d1f193adee691d8f6a3be8d759b0072a59a9c3d17719411561b9d12db6029f"
+     },
+     "count_sum.npz": {
+      "bytes": 566264761,
+      "sha256": "41fc0a80d966b28fbc8c1e37741c72a4a28bb5b5b4d1a3e3a4e863a4f9129649"
+     }
+    },
+    "cells_used": 4534299,
+    "account": "davideferrante11",
+    "url": "https://www.kaggle.com/code/davideferrante11/vcc-bank-orion-hek293t-r1",
+    "mount_selection": "explicit kernel and relative_path; receipt SHA required",
+    "relative_path": "bank/orion_hek293t"
+   },
+   "samples": {
+    "expected_parts": 6,
+    "launched_parts": 6,
+    "verified_parts": 3,
+    "state": "incomplete",
+    "parts": [
+     {
+      "kernel": "davideferrante11/vcc-samples-hek293t-p0of6-r1",
+      "state": "remote_complete_manifest_checked",
+      "status": {
+       "returncode": 0,
+       "text": "davideferrante11/vcc-samples-hek293t-p0of6-r1 has status \"KernelWorkerStatus.COMPLETE\""
+      },
+      "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r3/receipts/davideferrante11/vcc-samples-hek293t-p0of6-r1/samples/orion_hek293t/complete.json",
+      "receipt_sha256": "08680dfd9c13a4a0a1e88893cf1b96656e41ba83c95a8d0839378ae20043a4ab",
+      "saved_version": {
+       "version": 1,
+       "kernel_id": 137163990,
+       "private": true,
+       "version_ref": "davideferrante11/vcc-samples-hek293t-p0of6-r1/versions/1",
+       "saved_source_sha256": "c2d1ba8cbae8329553eb76d32fb51f7f9868b3a4b9736d77a26d1e9db6c702b6",
+       "version_stable_during_output_read": true
+      },
+      "part": 0,
+      "parts": 6,
+      "levels": {
+       "32": 350318,
+       "64": 353575,
+       "128": 386850
+      },
+      "bytes": 4525673611,
+      "consumer_hashes_verified": false,
+      "training_used": false,
+      "reused_verification": true
+     },
+     {
+      "kernel": "davideferrante11/vcc-samples-hek293t-p1of6-r1",
+      "state": "remote_complete_manifest_checked",
+      "status": {
+       "returncode": 0,
+       "text": "davideferrante11/vcc-samples-hek293t-p1of6-r1 has status \"KernelWorkerStatus.COMPLETE\""
+      },
+      "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r3/receipts/davideferrante11/vcc-samples-hek293t-p1of6-r1/samples/orion_hek293t/complete.json",
+      "receipt_sha256": "100a8fce698c691c3b33b5a9c6adbc7a33f361645ec7d076fcb278d52a162441",
+      "saved_version": {
+       "version": 1,
+       "kernel_id": 137164018,
+       "private": true,
+       "version_ref": "davideferrante11/vcc-samples-hek293t-p1of6-r1/versions/1",
+       "saved_source_sha256": "c4556e047cc937a6be426b480054268979890aa868128f2df31a2a4e797af305",
+       "version_stable_during_output_read": true
+      },
+      "part": 1,
+      "parts": 6,
+      "levels": {
+       "32": 357573,
+       "64": 360609,
+       "128": 391914
+      },
+      "bytes": 4600996896,
+      "consumer_hashes_verified": false,
+      "training_used": false,
+      "reused_verification": true
+     },
+     {
+      "kernel": "davidmaisterx/vcc-samples-hek293t-p2of6-r1",
+      "state": "not_complete",
+      "status": {
+       "returncode": 0,
+       "text": "davidmaisterx/vcc-samples-hek293t-p2of6-r1 has status \"KernelWorkerStatus.RUNNING\""
+      }
+     },
+     {
+      "kernel": "davideferante/vcc-samples-hek293t-p3of6-r1",
+      "state": "not_complete",
+      "status": {
+       "returncode": 0,
+       "text": "davideferante/vcc-samples-hek293t-p3of6-r1 has status \"KernelWorkerStatus.RUNNING\""
+      }
+     },
+     {
+      "kernel": "davidmaisterx/vcc-samples-hek293t-p4of6-r1",
+      "state": "remote_complete_manifest_checked",
+      "status": {
+       "returncode": 0,
+       "text": "davidmaisterx/vcc-samples-hek293t-p4of6-r1 has status \"KernelWorkerStatus.COMPLETE\""
+      },
+      "receipt": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r4/receipts/davidmaisterx/vcc-samples-hek293t-p4of6-r1/samples/orion_hek293t/complete.json",
+      "receipt_sha256": "aa2a63a881bd1ecc7019fa692e4d3c15b0d15968a869cb8d8148037d275ae7b5",
+      "saved_version": {
+       "version": 1,
+       "kernel_id": 137168566,
+       "private": true,
+       "version_ref": "davidmaisterx/vcc-samples-hek293t-p4of6-r1/versions/1",
+       "saved_source_sha256": "e8256e3e4a7099ce1bec4b84125d5db32ad43250803b62b7fa4cd88d1a93a32c",
+       "version_stable_during_output_read": true
+      },
+      "part": 4,
+      "parts": 6,
+      "levels": {
+       "32": 342160,
+       "64": 345162,
+       "128": 378774
+      },
+      "bytes": 4401924305,
+      "consumer_hashes_verified": false,
+      "training_used": false
+     },
+     {
+      "kernel": "davideferante/vcc-samples-hek293t-p5of6-r1",
+      "state": "not_complete",
+      "status": {
+       "returncode": 0,
+       "text": "davideferante/vcc-samples-hek293t-p5of6-r1 has status \"KernelWorkerStatus.RUNNING\""
+      }
+     }
+    ],
+    "mount_selection": "explicit saved kernel version for each part; global source indices retained; union receipt required"
+   },
+   "trainer": {
+    "state": "not_integrated",
+    "training_used": false
+   }
+  },
+  "hepg2_nadig": {
+   "bank": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-derivatives-rlab-hepg2-nadig",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_completion_hepg2_r1/bank_receipts/davideferrante11/vcc-derivatives-rlab-hepg2-nadig/bank/hepg2_nadig/complete.json",
+    "receipt_sha256": "e338caa7fcdcc01c34da6219afd685433e1401f88561df3eb3fa7cffb4f8db51",
+    "saved_version": {
+     "kernel_id": 137172557,
+     "version": 1,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-rlab-hepg2-nadig/versions/1",
+     "saved_source_sha256": "6a980b3827a686b715e5a5a0d57792920f451f0eecb1ad31403350eb6ae19dda",
+     "version_stable_during_output_read": true
+    },
+    "files": {
+     "mask.npz": {
+      "bytes": 7036581,
+      "sha256": "eaab35d0ac807e885652fae64ba714560224c107193c1fb80193b390205adb5c"
+     },
+     "zero_fraction.npz": {
+      "bytes": 36617761,
+      "sha256": "381cfdeb738dac17b40fc8f8717c7cbd663e9008172eeb28002bfa36fb575ca5"
+     },
+     "count_sum.npz": {
+      "bytes": 46702799,
+      "sha256": "f61200c0ba58b705f7a5006974e3fe36ae8ba5b91761596fed036b91a3af6e1b"
+     },
+     "mean_proportion.npz": {
+      "bytes": 91844637,
+      "sha256": "320170ee9a7bad15cf3f087bd6d30e481722efe6c20b50df77837bcbaacb98b1"
+     },
+     "rows.csv": {
+      "bytes": 158742,
+      "sha256": "b27f8d6c80d6820e8c4c588a401de839997aa1b4ec21a92ae34a263966b40aac"
+     },
+     "variance_proportion.npz": {
+      "bytes": 92376243,
+      "sha256": "c096c67eb417f1085c15aaa470afd17742ef7aa08a5779ead1cc58dd14fb9780"
+     },
+     "samples.jsonl.gz": {
+      "bytes": 3377149,
+      "sha256": "fb0becb5fc52dce7ac1dc4d7bb0097592fdbef939e9b77877f34d21b267f7382"
+     },
+     "sampled_controls.npz": {
+      "bytes": 75563,
+      "sha256": "e87f5f2a807e96f5141f0f02f9599565f2674bef8f0d632f8792ec609d138463"
+     }
+    },
+    "cells_used": 145473,
+    "contexts": 1,
+    "relative_path": "bank/hepg2_nadig"
+   },
+   "samples": {
+    "state": "remote_complete_manifest_checked",
+    "kernel": "davideferrante11/vcc-derivatives-rlab-hepg2-nadig",
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_completion_hepg2_r1/receipts/davideferrante11/vcc-derivatives-rlab-hepg2-nadig/samples/hepg2_nadig/complete.json",
+    "receipt_sha256": "951a3839ede472873ea410a2d5815ca608a193af2d46fdb24d76247b8840c255",
+    "saved_version": {
+     "version": 1,
+     "kernel_id": 137172557,
+     "private": true,
+     "version_ref": "davideferrante11/vcc-derivatives-rlab-hepg2-nadig/versions/1",
+     "saved_source_sha256": "6a980b3827a686b715e5a5a0d57792920f451f0eecb1ad31403350eb6ae19dda",
+     "version_stable_during_output_read": true
+    },
+    "levels": {
+     "32": 85401,
+     "64": 110862,
+     "128": 130519
+    },
+    "bytes": 1044074889,
+    "bank_receipt_sha256": "e338caa7fcdcc01c34da6219afd685433e1401f88561df3eb3fa7cffb4f8db51",
+    "consumer_hashes_verified": false,
+    "training_used": false,
+    "relative_path": "samples/hepg2_nadig"
+   },
+   "trainer": {
+    "state": "not_integrated",
+    "training_used": false
+   },
+   "raw": {
+    "dataset": "davidmaisterx/rlab-hepg2-nadig",
+    "version": 1,
+    "status": "ready",
+    "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-hepg2-nadig/files.json",
+    "files_sha256": "a6b4f22836bd972e0af2ae0488b8fa2cc728af38887bff5f85eb8734a274479c",
+    "complete_sha256": "fc64c42c4625494cfc6323fd62562e11b8eca0d8a6d048076fc79557d2a8327e",
+    "job_id": "j01_hepg2_r1",
+    "units": {
+     "hepg2_nadig": {
+      "cells": 145473,
+      "shards": 8,
+      "bytes": 1332075491,
+      "parity_ok": true,
+      "manifest_sha256": "f0a6e73549fe28b9a72ad0fe006532be6f1a1d438919fbacf54963a49256837e"
+     }
+    },
+    "bytes": 1332075491,
+    "cells": 145473,
+    "version_ref": "davidmaisterx/rlab-hepg2-nadig/1",
+    "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-hepg2-nadig/versions/1",
+    "derivatives": {
+     "state": "accepted_cloud_output_not_yet_verified",
+     "kernel": "davideferrante11/vcc-derivatives-rlab-hepg2-nadig",
+     "code_sha256": "6a980b3827a686b715e5a5a0d57792920f451f0eecb1ad31403350eb6ae19dda"
+    },
+    "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+    "fallback_allowed": false,
+    "public": false
+   }
+  }
+ },
+ "catalogue_records": {
+  "path": "reports/sorgenti/corpus_cellulare_2026-09-30/catalogo_r4/catalogo.json",
+  "sha256": "7cb0ff9515b6105a58f762693548300dafc0e4d9735421b2baecc26111311c98",
+  "records": [
+   {
+    "record_id": "remote/a549_GSE345058_SC_raw_normalized_counts",
+    "source_id": "a549_GSE345058_SC_raw_normalized_counts",
+    "catalogue_section": "remote",
+    "source_record_sha256": "9d62f076dd0be72fcb3a59a09af892ccedc9ec69692d8988336bdae83a313164",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/cd4_D1_Rest",
+    "source_id": "cd4_D1_Rest",
+    "catalogue_section": "remote",
+    "source_record_sha256": "90d86e71f42ca56e6d9fb1b030281c999f0e09e686f43106af65064e20be2f1a",
+    "role": "unresolved",
+    "integration": "donor_bank_pending_trainer",
+    "exclusion": null,
+    "unit_ref": "D1_Rest"
+   },
+   {
+    "record_id": "remote/cd4_D1_Stim48hr",
+    "source_id": "cd4_D1_Stim48hr",
+    "catalogue_section": "remote",
+    "source_record_sha256": "e355b8297c6a44e9f8e1573bc78a9f993ed01df90a25e81ee5611791b1ad2de5",
+    "role": "unresolved",
+    "integration": "donor_bank_pending_trainer",
+    "exclusion": null,
+    "unit_ref": "D1_Stim48hr"
+   },
+   {
+    "record_id": "remote/cd4_D1_Stim8hr",
+    "source_id": "cd4_D1_Stim8hr",
+    "catalogue_section": "remote",
+    "source_record_sha256": "0723832fea6226c00a1cf4a98aaa169394929a78fb0334b68168132d7517467d",
+    "role": "unresolved",
+    "integration": "donor_bank_pending_trainer",
+    "exclusion": null,
+    "unit_ref": "D1_Stim8hr"
+   },
+   {
+    "record_id": "remote/cd4_D2_Rest",
+    "source_id": "cd4_D2_Rest",
+    "catalogue_section": "remote",
+    "source_record_sha256": "1589726851a75ccba142f324e585aa213ae0b843ab12c4014c7935ef04160423",
+    "role": "unresolved",
+    "integration": "donor_bank_pending_trainer",
+    "exclusion": null,
+    "unit_ref": "D2_Rest"
+   },
+   {
+    "record_id": "remote/cd4_D2_Stim48hr",
+    "source_id": "cd4_D2_Stim48hr",
+    "catalogue_section": "remote",
+    "source_record_sha256": "2f2e301bd7a3e9b7f21830f33a1d1a62365ebe8ff4b2afdc1ca665146159e257",
+    "role": "unresolved",
+    "integration": "donor_bank_pending_trainer",
+    "exclusion": null,
+    "unit_ref": "D2_Stim48hr"
+   },
+   {
+    "record_id": "remote/cd4_D2_Stim8hr",
+    "source_id": "cd4_D2_Stim8hr",
+    "catalogue_section": "remote",
+    "source_record_sha256": "a88ba5f62bdfd484173843dbbb56f60246aba026226ac3f9fa91d6b5360becf9",
+    "role": "unresolved",
+    "integration": "donor_bank_pending_trainer",
+    "exclusion": null,
+    "unit_ref": "D2_Stim8hr"
+   },
+   {
+    "record_id": "remote/cd4_D3_Rest",
+    "source_id": "cd4_D3_Rest",
+    "catalogue_section": "remote",
+    "source_record_sha256": "b0a14609b5544bb109458b10b8b3c3fbe6ede4fb45fc046563a6b98440a0d327",
+    "role": "unresolved",
+    "integration": "donor_bank_pending_trainer",
+    "exclusion": null,
+    "unit_ref": "D3_Rest"
+   },
+   {
+    "record_id": "remote/cd4_D3_Stim48hr",
+    "source_id": "cd4_D3_Stim48hr",
+    "catalogue_section": "remote",
+    "source_record_sha256": "af4f652e83efd9d67fe25e28c7ee01991919fa8ad4e2ea61bc66efbf15b17fd2",
+    "role": "unresolved",
+    "integration": "donor_bank_pending_trainer",
+    "exclusion": null,
+    "unit_ref": "D3_Stim48hr"
+   },
+   {
+    "record_id": "remote/cd4_D3_Stim8hr",
+    "source_id": "cd4_D3_Stim8hr",
+    "catalogue_section": "remote",
+    "source_record_sha256": "cff1bd10bf8136af98897b3f35ed130f18595e6a36f0067a28ac8157d786f669",
+    "role": "unresolved",
+    "integration": "donor_bank_pending_trainer",
+    "exclusion": null,
+    "unit_ref": "D3_Stim8hr"
+   },
+   {
+    "record_id": "remote/cd4_D4_Rest",
+    "source_id": "cd4_D4_Rest",
+    "catalogue_section": "remote",
+    "source_record_sha256": "44d1e8ffbac722d3c9a733ef4275a86b8fda68fa829415dd8e7d67692bda13a4",
+    "role": "unresolved",
+    "integration": "donor_bank_pending_trainer",
+    "exclusion": null,
+    "unit_ref": "D4_Rest"
+   },
+   {
+    "record_id": "remote/cd4_D4_Stim48hr",
+    "source_id": "cd4_D4_Stim48hr",
+    "catalogue_section": "remote",
+    "source_record_sha256": "fac80bbeaadacf55a44e868641774fdde436856293db107bdf249551e607bd2e",
+    "role": "unresolved",
+    "integration": "donor_bank_pending_trainer",
+    "exclusion": null,
+    "unit_ref": "D4_Stim48hr"
+   },
+   {
+    "record_id": "remote/cd4_D4_Stim8hr",
+    "source_id": "cd4_D4_Stim8hr",
+    "catalogue_section": "remote",
+    "source_record_sha256": "adc14bc9a50baed93d30a9bd25f2be1485bfad238e3f4af7c6568e9560be2bd3",
+    "role": "unresolved",
+    "integration": "donor_bank_pending_trainer",
+    "exclusion": null,
+    "unit_ref": "D4_Stim8hr"
+   },
+   {
+    "record_id": "remote/h1_train",
+    "source_id": "h1_train",
+    "catalogue_section": "remote",
+    "source_record_sha256": "7c188cd20c2db2dfeeb5d199c418f84b53708fb82af3e207fb1bb2ac84073199",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/h1_val",
+    "source_id": "h1_val",
+    "catalogue_section": "remote",
+    "source_record_sha256": "ff751853a79d871bdc5541804cf8416b74d12f895dfdf5f11c2e299d4b60a52c",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/kolf_KOLF_Chromatin_Modifiers_QC_Filtered",
+    "source_id": "kolf_KOLF_Chromatin_Modifiers_QC_Filtered",
+    "catalogue_section": "remote",
+    "source_record_sha256": "59d803f7dc4372d1b3addbfbfa1d94575c354535b199f1a4a431386048b5b638",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/kolf_KOLF_Metabolic_Enzymes_QC_Filtered",
+    "source_id": "kolf_KOLF_Metabolic_Enzymes_QC_Filtered",
+    "catalogue_section": "remote",
+    "source_record_sha256": "ed59e5e9cb6c431fb515faa4950ae74a46f32dc289e50f01aa8bf18dc298aa14",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/kolf_KOLF_Pan_Genome_QC_Filtered",
+    "source_id": "kolf_KOLF_Pan_Genome_QC_Filtered",
+    "catalogue_section": "remote",
+    "source_record_sha256": "d44fb0a7511c315f7c69f50e9667b829cc43eeca5597280413da3c46529e5665",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/kolf_KOLF_Strong_Perturbations",
+    "source_id": "kolf_KOLF_Strong_Perturbations",
+    "catalogue_section": "remote",
+    "source_record_sha256": "491bfb998d41b61fd9eff2b5ba9b603e5cb111c50a6c4a598ab0cade0da83047",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_AdamsonWeissman2016_GSM2406675_10X001",
+    "source_id": "scp_AdamsonWeissman2016_GSM2406675_10X001",
+    "catalogue_section": "remote",
+    "source_record_sha256": "ae6d6f46a070a6328a941bce5b72057bd83a8fc26c2cef6a45b9c0de12a14c1c",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_AdamsonWeissman2016_GSM2406677_10X005",
+    "source_id": "scp_AdamsonWeissman2016_GSM2406677_10X005",
+    "catalogue_section": "remote",
+    "source_record_sha256": "7cf4b8edd944fde4ab33d36f025ba6cfac1fbe9bc482d99557c8ac1f9057d3c9",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_AdamsonWeissman2016_GSM2406681_10X010",
+    "source_id": "scp_AdamsonWeissman2016_GSM2406681_10X010",
+    "catalogue_section": "remote",
+    "source_record_sha256": "c74172468e41be89a8a983ed2bd0e2c5594d3ea14c49c86d366b1100b8f42ed6",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_AissaBenevolenskaya2021",
+    "source_id": "scp_AissaBenevolenskaya2021",
+    "catalogue_section": "remote",
+    "source_record_sha256": "23ffa9e0c8f8c1bd39619bca96c0d673e07ff8e5c02b35d6c0f71d6f4b803167",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_ChangYe2021",
+    "source_id": "scp_ChangYe2021",
+    "catalogue_section": "remote",
+    "source_record_sha256": "8eea9088658d27dfdb7ec41f9d445cd24f0cef3293d97b7bd9c99ccbda0aee62",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_CuiHacohen2023",
+    "source_id": "scp_CuiHacohen2023",
+    "catalogue_section": "remote",
+    "source_record_sha256": "d814108d8743de9d97f453328606aef085d8bf9fb7f34564658ace099360e9f2",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_DatlingerBock2017",
+    "source_id": "scp_DatlingerBock2017",
+    "catalogue_section": "remote",
+    "source_record_sha256": "ff0434f610cdfe8ac014b98a2afe5a6faa1a487837b463450c53617648458f46",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_DatlingerBock2021",
+    "source_id": "scp_DatlingerBock2021",
+    "catalogue_section": "remote",
+    "source_record_sha256": "44dfc9687e02b45ba4b48a9036729a9967f4a160e62d8d117c04cb0c35d0c676",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_DixitRegev2016_K562_TFs_13_days",
+    "source_id": "scp_DixitRegev2016_K562_TFs_13_days",
+    "catalogue_section": "remote",
+    "source_record_sha256": "82db614d009fb515f09fa08b6b7962f619018daaadd823913de21489ccf31b35",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_DixitRegev2016_K562_TFs_7_days",
+    "source_id": "scp_DixitRegev2016_K562_TFs_7_days",
+    "catalogue_section": "remote",
+    "source_record_sha256": "e1540581d8241725e0670c1b3affc15782fbd39256a521ea37b17ebfcdbf696d",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_DixitRegev2016_K562_TFs_High_MOI",
+    "source_id": "scp_DixitRegev2016_K562_TFs_High_MOI",
+    "catalogue_section": "remote",
+    "source_record_sha256": "313ba4c8baf1f553305dca8cf2ebce07378da183dbb29da38291d27d881525f6",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_FrangiehIzar2021_protein",
+    "source_id": "scp_FrangiehIzar2021_protein",
+    "catalogue_section": "remote",
+    "source_record_sha256": "b056509d6312aac240f4374c20f7907417e6a34e07e63ae1efd6d9e2fac6c40e",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_FrangiehIzar2021_RNA",
+    "source_id": "scp_FrangiehIzar2021_RNA",
+    "catalogue_section": "remote",
+    "source_record_sha256": "9c8a9c185927ad33c7e19d9c2b5e3e8bff7ae57422d4176f67d6bdcbca9a892d",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_GasperiniShendure2019_atscale",
+    "source_id": "scp_GasperiniShendure2019_atscale",
+    "catalogue_section": "remote",
+    "source_record_sha256": "7aaeb5e7df3b833ea9d79b693b85e67a5c33ad692a663aa99be2c4d84f39e5c0",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_GasperiniShendure2019_highMOI",
+    "source_id": "scp_GasperiniShendure2019_highMOI",
+    "catalogue_section": "remote",
+    "source_record_sha256": "b776c4a44c1025820aeee25d35e703cc023eefd89ec9ce1749757eb254660556",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_GasperiniShendure2019_lowMOI",
+    "source_id": "scp_GasperiniShendure2019_lowMOI",
+    "catalogue_section": "remote",
+    "source_record_sha256": "3a6cb5f02a84b421dfda9f1ba65220f365392117fd055fa3c095cc672f965cd6",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_GehringPachter2019",
+    "source_id": "scp_GehringPachter2019",
+    "catalogue_section": "remote",
+    "source_record_sha256": "7a0b7f05f95e3d3d423bc55772afbfc11b8be38796e4dfcbdba1c132d102dda5",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_JoungZhang2023_atlas",
+    "source_id": "scp_JoungZhang2023_atlas",
+    "catalogue_section": "remote",
+    "source_record_sha256": "d0f473e1960eede64a158c7e5757a7d58881037b98aea4a0e5be2596db07608b",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_JoungZhang2023_combinatorial",
+    "source_id": "scp_JoungZhang2023_combinatorial",
+    "catalogue_section": "remote",
+    "source_record_sha256": "09ad93e9fb718ff17092578ef343e2f9f1fadff032d16e762de734c4755fcc31",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_LaraAstiasoHuntly2023_exvivo",
+    "source_id": "scp_LaraAstiasoHuntly2023_exvivo",
+    "catalogue_section": "remote",
+    "source_record_sha256": "e1e4b7b6aedd8497dc8f3dfd12fb1d4148f895941f7999bf9cd92b40f3345c6e",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_LaraAstiasoHuntly2023_invivo",
+    "source_id": "scp_LaraAstiasoHuntly2023_invivo",
+    "catalogue_section": "remote",
+    "source_record_sha256": "c69776a384cee363e937feeedf2310b94d0492ddd9e68008cb38ecf5fadf8b71",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_LaraAstiasoHuntly2023_leukemia",
+    "source_id": "scp_LaraAstiasoHuntly2023_leukemia",
+    "catalogue_section": "remote",
+    "source_record_sha256": "895068afafdcc8de8d13a9e2571b2704bbbd6f2f1befc8b8b4c392749a14a349",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_LiangWang2023",
+    "source_id": "scp_LiangWang2023",
+    "catalogue_section": "remote",
+    "source_record_sha256": "3aa6b78360ffb862f997ac966897c3a84a9565658d17cf5ca4ddc8506d5cae45",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_LotfollahiTheis2023",
+    "source_id": "scp_LotfollahiTheis2023",
+    "catalogue_section": "remote",
+    "source_record_sha256": "9ce38590e9e865cf637b5fbe8102457ff11dc811971c6b44757707597242c926",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_McFarlandTsherniak2020",
+    "source_id": "scp_McFarlandTsherniak2020",
+    "catalogue_section": "remote",
+    "source_record_sha256": "6c5f6458ac68234988df9331306c7db479a0234b522bfd9f1c04d75107194059",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_NadigOConner2024_hepg2",
+    "source_id": "scp_NadigOConner2024_hepg2",
+    "catalogue_section": "remote",
+    "source_record_sha256": "7e1edd14898f69b18786e43e9c53efc1e57125824a2cb7d5ad9465ca069aa6c8",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_NadigOConner2024_jurkat",
+    "source_id": "scp_NadigOConner2024_jurkat",
+    "catalogue_section": "remote",
+    "source_record_sha256": "39e28980433a33a7a7ac1e5082c68f3f31f6edbddc188d6d0e1f61105a072e72",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_NormanWeissman2019_filtered",
+    "source_id": "scp_NormanWeissman2019_filtered",
+    "catalogue_section": "remote",
+    "source_record_sha256": "3ff72a3c7f519935e18e6ecf368ab87bada37ad40f30fb075e07cea706aece11",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_PapalexiSatija2021_eccite_arrayed_protein",
+    "source_id": "scp_PapalexiSatija2021_eccite_arrayed_protein",
+    "catalogue_section": "remote",
+    "source_record_sha256": "79325de25a3c7c90ccb8d220c483d69b62f1e53e49665925055557bf21dec53c",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_PapalexiSatija2021_eccite_arrayed_RNA",
+    "source_id": "scp_PapalexiSatija2021_eccite_arrayed_RNA",
+    "catalogue_section": "remote",
+    "source_record_sha256": "153ed75d034fe4e8dbfe83833cac6864541dc69812b0bae4be2d78e2c6e258e2",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_PapalexiSatija2021_eccite_protein",
+    "source_id": "scp_PapalexiSatija2021_eccite_protein",
+    "catalogue_section": "remote",
+    "source_record_sha256": "5cc0381a9cd434fef6ec5c6f237051be583095b5fc743581751462e9dd4a3d12",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_PapalexiSatija2021_eccite_RNA",
+    "source_id": "scp_PapalexiSatija2021_eccite_RNA",
+    "catalogue_section": "remote",
+    "source_record_sha256": "00d1d79a82540dd71ad80a375e7f9acc73f399c583f44f8f900f2c824a5aac7f",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_ReplogleWeissman2022_K562_essential",
+    "source_id": "scp_ReplogleWeissman2022_K562_essential",
+    "catalogue_section": "remote",
+    "source_record_sha256": "12938353397123babdc2e327f08ee063dceec8e0a5e36126493808edf798aa9e",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_ReplogleWeissman2022_K562_gwps",
+    "source_id": "scp_ReplogleWeissman2022_K562_gwps",
+    "catalogue_section": "remote",
+    "source_record_sha256": "aaf2a9c016dac1c2cfda009b71c568d8dca2193f22342222d5f5f2aa39fc9d42",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_ReplogleWeissman2022_rpe1",
+    "source_id": "scp_ReplogleWeissman2022_rpe1",
+    "catalogue_section": "remote",
+    "source_record_sha256": "efaee8de957f3687c3b8a641fd3a903c06684c62f986b0b1d81117f4311b579b",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_SantinhaPlatt2023",
+    "source_id": "scp_SantinhaPlatt2023",
+    "catalogue_section": "remote",
+    "source_record_sha256": "0ffc958df7f7c5e81cd08ff2f3b46ae03610184d7940b19ec1f30ce5cb848176",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_SchiebingerLander2019_GSE106340",
+    "source_id": "scp_SchiebingerLander2019_GSE106340",
+    "catalogue_section": "remote",
+    "source_record_sha256": "1cc122581463002f8518dc029cbee9df1c2eef8c833925198c4801d4451d212b",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_SchiebingerLander2019_GSE115943",
+    "source_id": "scp_SchiebingerLander2019_GSE115943",
+    "catalogue_section": "remote",
+    "source_record_sha256": "8e794d43ca5d44fd273d50d72369af7135573951518b8e7c6d948f0342b8926b",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_11_screen",
+    "source_id": "scp_SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_11_screen",
+    "catalogue_section": "remote",
+    "source_record_sha256": "d4afc5af41076fd0326fb322afd7f3ec1d634b24af226feb13f9427b53ff78d5",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_8_screen",
+    "source_id": "scp_SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_8_screen",
+    "catalogue_section": "remote",
+    "source_record_sha256": "70c20f280a7a4d63a4fe742937c92b9d4ec64ba20aa1a1544a1cb5e180e22c3a",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_ShifrutMarson2018",
+    "source_id": "scp_ShifrutMarson2018",
+    "catalogue_section": "remote",
+    "source_record_sha256": "4256efc040e25e815d05d1a0acbb4402aace9c797c3c28a94cf0acbb859560c0",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_SrivatsanTrapnell2020_sciplex2",
+    "source_id": "scp_SrivatsanTrapnell2020_sciplex2",
+    "catalogue_section": "remote",
+    "source_record_sha256": "923a5b674018b966d9c1559c13c32ab2196eb2399f05be5849b6f2f63c7a3dd0",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_SrivatsanTrapnell2020_sciplex3",
+    "source_id": "scp_SrivatsanTrapnell2020_sciplex3",
+    "catalogue_section": "remote",
+    "source_record_sha256": "a822f7cf2a9a01ccfc4b3c10fda279bc2350b290efca52148cc527804035eedb",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_SrivatsanTrapnell2020_sciplex4",
+    "source_id": "scp_SrivatsanTrapnell2020_sciplex4",
+    "catalogue_section": "remote",
+    "source_record_sha256": "d36c6b787a9c53a6da39a6389fd86335c301931630e9e12abbb19f5dcc053fed",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_SunshineHein2023",
+    "source_id": "scp_SunshineHein2023",
+    "catalogue_section": "remote",
+    "source_record_sha256": "5105566f69531f99447f44f579aa7af680163bdba70616f76c6503fec693c183",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_TianKampmann2019_day7neuron",
+    "source_id": "scp_TianKampmann2019_day7neuron",
+    "catalogue_section": "remote",
+    "source_record_sha256": "677ae0582c7f06e0ee43cc75756b9fefcd835b139180a8d76d392bf6f6e962c3",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_TianKampmann2019_iPSC",
+    "source_id": "scp_TianKampmann2019_iPSC",
+    "catalogue_section": "remote",
+    "source_record_sha256": "9d10318c80f9139c4e644bccedfbb8c8493a6dca0163b9ad6d901b03b3ae620b",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_TianKampmann2021_CRISPRa",
+    "source_id": "scp_TianKampmann2021_CRISPRa",
+    "catalogue_section": "remote",
+    "source_record_sha256": "1f9b7b1004fa12155eab25101a257b7827a0db14982c6986e6af12bfa3ededb3",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_TianKampmann2021_CRISPRi",
+    "source_id": "scp_TianKampmann2021_CRISPRi",
+    "catalogue_section": "remote",
+    "source_record_sha256": "1509ab8811fb44baac3fd916d33aa03abcb10e653a8111eba6085949adfbf543",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_WeinrebKlein2020",
+    "source_id": "scp_WeinrebKlein2020",
+    "catalogue_section": "remote",
+    "source_record_sha256": "bb0d6cd496a89fe80732cd8412996e2ac11def916f1a647230bc1449f95af989",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_WesselsSatija2023",
+    "source_id": "scp_WesselsSatija2023",
+    "catalogue_section": "remote",
+    "source_record_sha256": "fbdffa8f79794bbd8d3bc26a6a7f4219e327ba660bc5d9842f3d6b18d0e836f0",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_XieHon2017",
+    "source_id": "scp_XieHon2017",
+    "catalogue_section": "remote",
+    "source_record_sha256": "91b01714c859c2932bbd04da4cc788ac51298dbcc309b8371b3109e17dd09a01",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_XuCao2023",
+    "source_id": "scp_XuCao2023",
+    "catalogue_section": "remote",
+    "source_record_sha256": "fbad3cd1cbe63849955042417a1cbbd41d7b0354ab797e00430750204486e21c",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/scp_ZhaoSims2021",
+    "source_id": "scp_ZhaoSims2021",
+    "catalogue_section": "remote",
+    "source_record_sha256": "8521fcfcfaa3eec920eeff3c177e6587fe7c68f64ceef1deb9ca65dc0180c88f",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/southard_fibroblast_CRISPRa_final_pop",
+    "source_id": "southard_fibroblast_CRISPRa_final_pop",
+    "catalogue_section": "remote",
+    "source_record_sha256": "fb023e9cb3137a038d808d93457955b527d49e5f1b00ea40dc32c721426559b2",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/southard_fibroblast_CRISPRa_mean_pop",
+    "source_id": "southard_fibroblast_CRISPRa_mean_pop",
+    "catalogue_section": "remote",
+    "source_record_sha256": "fa082cd8b7f8daed06f41a1243fbbadbef0e018e86316a62ebe6aad0d6f38962",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/southard_RPE1_CRISPRa_final_population",
+    "source_id": "southard_RPE1_CRISPRa_final_population",
+    "catalogue_section": "remote",
+    "source_record_sha256": "8943fdfc89566362bc5eb0fec9b987e23bda261735cfc994c2617b7e4d223f5d",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "remote/southard_RPE1_CRISPRa_mean_pop",
+    "source_id": "southard_RPE1_CRISPRa_mean_pop",
+    "catalogue_section": "remote",
+    "source_record_sha256": "d290c25da9974d5401ecde1b7ea9fab2bd7ea0d8f9aa630641299e2e63fd4a84",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/hepg2_nadig",
+    "source_id": "hepg2_nadig",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "91561f5c3b9e51ccb80cf1b320681d0ed3be4b143fc4b4a2b0318e6bcf9c31d2",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/jurkat_nadig",
+    "source_id": "jurkat_nadig",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "6e7ac5e2bdce9852f34db775e686b03f6f6c9e7b80c7e5abec065a738e4987de",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/h1_vcc2025_trainval",
+    "source_id": "h1_vcc2025_trainval",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "0b1355c12df4610066bbb7282d56142b4a51050f2d2149dcb2feced49ea89766",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/hipsci_targeted_19",
+    "source_id": "hipsci_targeted_19",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "497c7ddbfd5cefeffac3a37843258cabd4bdbcfd8a21fcb7de7b2576eb533e4a",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/hipsci_gw_fitness",
+    "source_id": "hipsci_gw_fitness",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "4912c926345e3ce8442cf68a8604da4a56a3a57fb16faeaa074a9251a5cb3ae6",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/hipsci_gw_nonfitness",
+    "source_id": "hipsci_gw_nonfitness",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "b53d88a6f7fb05c2c02452f7aae98bddcbf737c5ebe8784397103f9d6b749feb",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/replogle_k562_gwps",
+    "source_id": "replogle_k562_gwps",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "a365c10d097540047dd2d7165c7c10e9c71b6dcafea7603748f1062b894b1a91",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/replogle_k562_essential",
+    "source_id": "replogle_k562_essential",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "6c4797e17f1f3b0683ec1d194e0f9c6b332054232afcaeb66b2e1cce3e4a2c3e",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/replogle_rpe1",
+    "source_id": "replogle_rpe1",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "19829d27b474b34cc526115ab1a9f29391c92ce2bf66fcb69cc2a3ed00f1ec6f",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/a549_ko",
+    "source_id": "a549_ko",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "0418c9706a90b52066d768bf3b1efb950d92eb17c2e2b514561855b536b077ad",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/tian_norman",
+    "source_id": "tian_norman",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "9e4286b7d499800cd32a15dd9b4172b7b5c931d416511992548074004f7aa52b",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/kolf_small",
+    "source_id": "kolf_small",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "c1a34f557c3fb61fb1b021c0a7aeea59e839cc398a9f2a520adce4242d241eed",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/kolf_strong",
+    "source_id": "kolf_strong",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "8b6a54b2e7c5ed5cfb5eaecce6bdffd8ea3eef39f00583dfda9d22f494c07524",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/southard",
+    "source_id": "southard",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "b36824e8f22301bf70daa10bdb7e53319d54ede444bc1db69f3fcc7c425a744d",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/scp_ko_frangieh_sunshine_papalexi",
+    "source_id": "scp_ko_frangieh_sunshine_papalexi",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "c667c52bab923fc1515325da1bfb38d85786b0d3aa624a55b4325cf7b63bb600",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/scp_tcells_shifrut_datlinger",
+    "source_id": "scp_tcells_shifrut_datlinger",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "be95538b12030dd40809c16d4fa2f8b745c632e5319443533cefa67113af6f83",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/scp_k562_hek_dixit_xu",
+    "source_id": "scp_k562_hek_dixit_xu",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "2447ca062552d209f08912315d7d5765980d29b23a939b02d4b6af1a882a2546",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "ingested/jurkat_gse249595",
+    "source_id": "jurkat_gse249595",
+    "catalogue_section": "ingested",
+    "source_record_sha256": "345bfe31546d447cbf062f4a1d63ff69111adab0d6e307b1d9a61f667e7f06fb",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "aggregate_only/dld1_gse337988",
+    "source_id": "dld1_gse337988",
+    "catalogue_section": "aggregate_only",
+    "source_record_sha256": "f858bec3380c8dfbf0bae31638ee7881233f9cfdd0ca8a23a1cb1d8879289cbe",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "aggregate_only/mixscale (parte DE)",
+    "source_id": "mixscale (parte DE)",
+    "catalogue_section": "aggregate_only",
+    "source_record_sha256": "4d60e6a979491a4547e4ec262ca6d8e58620996b82127a031dd4ea6d581ae692",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "aggregate_only/southard_*_mean_pop",
+    "source_id": "southard_*_mean_pop",
+    "catalogue_section": "aggregate_only",
+    "source_record_sha256": "a5256dd75e47f02f060e0d6bc25ec5b52d6345936dd7615fe317fe514c2433b1",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "aggregate_only/depmap_24q4",
+    "source_id": "depmap_24q4",
+    "catalogue_section": "aggregate_only",
+    "source_record_sha256": "7df831f404fa84b8412a9aea5b897bb25cc27bb6a7c31a4308296ed652177a6e",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   },
+   {
+    "record_id": "aggregate_only/catalogo_accessioni",
+    "source_id": "catalogo_accessioni",
+    "catalogue_section": "aggregate_only",
+    "source_record_sha256": "58fe4ddba338b91d2734711eae5e78f43126e2d35567f437640b19e28cc4fc54",
+    "role": "unresolved",
+    "integration": "not_reconciled",
+    "exclusion": null
+   }
+  ],
+  "note": "Records are not distinct datasets; roles/aliases need reconciliation."
+ },
+ "legacy_classification": {
+  "davideferrante11/rlead-bench-cube-r2": "reduced aggregate pilot; never substitute for donor banks or sampled cell matrices"
+ },
+ "historical_sources": "Preserved in catalogue_records; explicit role/version/provenance required before training. Age alone never excludes.",
+ "storage_policy": "Saved Kaggle versions and verified Drive archives are persistent. Local matrices optional. Repo contains index and receipts, not the raw matrices.",
+ "reuse_policy": "Reuse when raw hashes, nominal axis, QC, code and parameters match. New sources add only their own derivatives; new release preserves old versions.",
+ "consumer_policy": "Pin this manifest SHA. Verify raw/derivative receipt then consumed file hashes. Reject unresolved parts and fit eligibility; retain same identity after resume.",
+ "sources": [
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/release_cd4_r5.json",
+   "sha256": "37237bc4e67edf2bcaf4df86c97c6023f6e4f8a70c38766e11bb96f9c6f56fd8"
+  },
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_other_r2/state.json",
+   "sha256": "17530295aabba03ecac9a2b4b13ea837de3596141b68ee8b3defbdcb7101c1da"
+  },
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/other_sample_launches.jsonl",
+   "sha256": "d6dcaf74ff95335530b6102436120dc7aa36eee9d078dcf72c7f4bd7d6d2fa7f"
+  },
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/axis_binding_r1.json",
+   "sha256": "74d2fba489c4d8cae4bfd8a12780a9d1b7d0f6bff5a8c6cedd70e726efe85414"
+  },
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/kolf_axis_r1.json",
+   "sha256": "8d278cd5b6e8e3d5675cf358ae13ee25f76a5cd17787254252c7729b67b5ee0a"
+  },
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_r11/state.json",
+   "sha256": "7ce3a1f49ef98983a12e4cfd4297d4d7f6b647070fb0c340e9463048d859be43"
+  },
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r4/state.json",
+   "sha256": "ed5ff41858ae6b32a68019a05261a7f1844c62a56a1e5ab3ac3c5852d88549cb"
+  },
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/archive_followup_r2/state.json",
+   "sha256": "efdd3cef94f33500254cf11cd3a5b84bb9708242d4c9fba982a62e6c06e6f255"
+  },
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/parallel_archives_r1/assignments.json",
+   "sha256": "3c8a31a053a8fd720b6882db1872565c250d60bc032e72441af430ce6dfe8d19"
+  },
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/public_archives_r2/publication.jsonl",
+   "sha256": "17ab587346a2808cf335f82e8939b7e244c0e84777b2d8f323add6241700ec6f"
+  },
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/archive_launches_r2.jsonl",
+   "sha256": "f2bcd2cf6ef1e6375c16c2c323c7d4c4011a174b0f1910568195ba2153e040d7"
+  },
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/archive_completion_hepg2_r1/state.json",
+   "sha256": "e0279458a622a9fcaac7d29f4963bb8318723dcf9ef135f2dae7547da182e849"
+  },
+  {
+   "path": "reports/modelli/percorso_riusabile_2026-10-05/archive_followup_r3/state.json",
+   "sha256": "e686321f30172f9b65663b867132836eeea24494f30ca124c1ca6d4639756678"
+  }
+ ],
+ "raw_archives": {
+  "davidmaisterx/rlab-a549": {
+   "dataset": "davidmaisterx/rlab-a549",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-a549/files.json",
+   "files_sha256": "d839a952be987fcd0e478b4819cea2074438e63fdf78e0ffbb6eda0711bc029e",
+   "complete_sha256": "598ae2c3988b65010c795435ca0a0ac790a9a77232866a3d21fb4604072d01a7",
+   "job_id": "j10_a549_r1",
+   "units": {
+    "a549_ko": {
+     "cells": 606075,
+     "shards": 31,
+     "bytes": 7652347277,
+     "parity_ok": true,
+     "manifest_sha256": "cc3891b3ded0212295d0ddcc9610e7f07db1020e08e044ab944e6223a67fd1af"
+    }
+   },
+   "bytes": 7652347277,
+   "cells": 606075,
+   "version_ref": "davidmaisterx/rlab-a549/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-a549/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davidmaisterx/vcc-derivatives-rlab-a549",
+    "code_sha256": "b73614d99dedbc4fe5f7801c02fdfb0581da0a2e4dee3d123a8bd479762f1475"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": false,
+   "parent_job_units": {
+    "a549_ko": {
+     "cells": 606075,
+     "shards": 31,
+     "bytes": 7652347277,
+     "parity_ok": true,
+     "manifest_sha256": "cc3891b3ded0212295d0ddcc9610e7f07db1020e08e044ab944e6223a67fd1af"
+    }
+   }
+  },
+  "davidmaisterx/rlab-h1-vcc2025-trainval": {
+   "dataset": "davidmaisterx/rlab-h1-vcc2025-trainval",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-h1-vcc2025-trainval/files.json",
+   "files_sha256": "18c46992296713a442725e1fa310f0a08ad72a9b5025ad4e3680d1550e91aafb",
+   "complete_sha256": "3aa97607f214f88f9548be6d4e8352b97c6b060d0aec6e64e4bdcd77d7639d76",
+   "job_id": "j04_h1_trainval_r4",
+   "units": {
+    "h1_train": {
+     "cells": 221273,
+     "shards": 45,
+     "bytes": 4409720618,
+     "parity_ok": true,
+     "manifest_sha256": "b265af59582794a7d56f4c37b03a55c56611c9684e0f7ed911060614d391f7da"
+    },
+    "h1_val": {
+     "cells": 98927,
+     "shards": 20,
+     "bytes": 1973954226,
+     "parity_ok": true,
+     "manifest_sha256": "a451954de517b73a7e1a54c604abdf1be7b640a8bd2b985db889fda7696f49d2"
+    }
+   },
+   "bytes": 6383674844,
+   "cells": 320200,
+   "version_ref": "davidmaisterx/rlab-h1-vcc2025-trainval/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-h1-vcc2025-trainval/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davideferrante11/vcc-derivatives-rlab-h1-vcc2025-trainval",
+    "code_sha256": "ade16e9cb031558a8b9d5379d0acb0c3ac86f2fbd92ab43e247a08af3d82dfec"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": false,
+   "parent_job_units": {
+    "h1_train": {
+     "cells": 221273,
+     "shards": 45,
+     "bytes": 4409720618,
+     "parity_ok": true,
+     "manifest_sha256": "b265af59582794a7d56f4c37b03a55c56611c9684e0f7ed911060614d391f7da"
+    },
+    "h1_val": {
+     "cells": 98927,
+     "shards": 20,
+     "bytes": 1973954226,
+     "parity_ok": true,
+     "manifest_sha256": "a451954de517b73a7e1a54c604abdf1be7b640a8bd2b985db889fda7696f49d2"
+    }
+   }
+  },
+  "davidmaisterx/rlab-hepg2-nadig": {
+   "dataset": "davidmaisterx/rlab-hepg2-nadig",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-hepg2-nadig/files.json",
+   "files_sha256": "a6b4f22836bd972e0af2ae0488b8fa2cc728af38887bff5f85eb8734a274479c",
+   "complete_sha256": "fc64c42c4625494cfc6323fd62562e11b8eca0d8a6d048076fc79557d2a8327e",
+   "job_id": "j01_hepg2_r1",
+   "units": {
+    "hepg2_nadig": {
+     "cells": 145473,
+     "shards": 8,
+     "bytes": 1332075491,
+     "parity_ok": true,
+     "manifest_sha256": "f0a6e73549fe28b9a72ad0fe006532be6f1a1d438919fbacf54963a49256837e"
+    }
+   },
+   "bytes": 1332075491,
+   "cells": 145473,
+   "version_ref": "davidmaisterx/rlab-hepg2-nadig/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-hepg2-nadig/versions/1",
+   "derivatives": {
+    "state": "bank_and_samples_verified",
+    "kernel": "davideferrante11/vcc-derivatives-rlab-hepg2-nadig",
+    "units": [
+     "hepg2_nadig"
+    ]
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": false,
+   "parent_job_units": {
+    "hepg2_nadig": {
+     "cells": 145473,
+     "shards": 8,
+     "bytes": 1332075491,
+     "parity_ok": true,
+     "manifest_sha256": "f0a6e73549fe28b9a72ad0fe006532be6f1a1d438919fbacf54963a49256837e"
+    }
+   }
+  },
+  "davidmaisterx/rlab-hipsci-targeted19": {
+   "dataset": "davidmaisterx/rlab-hipsci-targeted19",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-hipsci-targeted19/files.json",
+   "files_sha256": "ef835719433c2609f8b36e367dc4668e6bfb0c88060c4a9c59ffa5cfbe005419",
+   "complete_sha256": "2d2646c131e6a6960f00110bcc34489f556cb46d204d4a37dc01e8bb4d448b27",
+   "job_id": "j02_hipsci_r1",
+   "units": {
+    "hipsci_targeted_19": {
+     "cells": 1161865,
+     "shards": 59,
+     "bytes": 13030135370,
+     "parity_ok": true,
+     "manifest_sha256": "212223c33a33f433a90cd634765fee26fee6876650a2aef0aed0d931e82a1759"
+    }
+   },
+   "bytes": 13030135370,
+   "cells": 1161865,
+   "version_ref": "davidmaisterx/rlab-hipsci-targeted19/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-hipsci-targeted19/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davideferante/vcc-derivatives-hipsci-targeted19-r1",
+    "code_sha256": "69168e9fc5fd4f8f4c90842ce6c8065812da794f1f65b44ccab0e0e7201c8934"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": true,
+   "parent_job_units": {
+    "hipsci_gw_fitness": {
+     "cells": 322746,
+     "shards": 17,
+     "bytes": 4163416551,
+     "parity_ok": true,
+     "manifest_sha256": "b659330bbe5a87882716dbbce3e0568f5dc2596e260976e7b49402f8b764c95e"
+    },
+    "hipsci_gw_nonfitness": {
+     "cells": 396458,
+     "shards": 20,
+     "bytes": 4986913999,
+     "parity_ok": true,
+     "manifest_sha256": "5e136b34dda05b27f44234579d63c3bf8b1f7e776af0013212b822d67fbad6a9"
+    },
+    "hipsci_targeted_19": {
+     "cells": 1161865,
+     "shards": 59,
+     "bytes": 13030135370,
+     "parity_ok": true,
+     "manifest_sha256": "212223c33a33f433a90cd634765fee26fee6876650a2aef0aed0d931e82a1759"
+    }
+   }
+  },
+  "davidmaisterx/rlab-jurkat-nadig": {
+   "dataset": "davidmaisterx/rlab-jurkat-nadig",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-jurkat-nadig/files.json",
+   "files_sha256": "cf8079cbdbc483c5f3191288228ad6a09fbe346221d527bb7e907bbf126b27c9",
+   "complete_sha256": "571bb7fdb93044e3d4b9dd5506232dc6c0dc45986ce05e9ba9e295e42e4e8654",
+   "job_id": "j05_jurkat_nadig_r3",
+   "units": {
+    "jurkat_nadig": {
+     "cells": 262956,
+     "shards": 14,
+     "bytes": 2040433751,
+     "parity_ok": true,
+     "manifest_sha256": "0620a3bcbffc76e2f17718bbbea4c4ee5f468ed26ddf6955b69f541966e8d989"
+    }
+   },
+   "bytes": 2040433751,
+   "cells": 262956,
+   "version_ref": "davidmaisterx/rlab-jurkat-nadig/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-jurkat-nadig/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davideferrante11/vcc-derivatives-rlab-jurkat-nadig",
+    "code_sha256": "8c722ff26a670a90d17824df198836d5e80e53fecc5f0d8faa0f14148cb3657f"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": false,
+   "parent_job_units": {
+    "jurkat_nadig": {
+     "cells": 262956,
+     "shards": 14,
+     "bytes": 2040433751,
+     "parity_ok": true,
+     "manifest_sha256": "0620a3bcbffc76e2f17718bbbea4c4ee5f468ed26ddf6955b69f541966e8d989"
+    }
+   }
+  },
+  "davidmaisterx/rlab-k562-essential-r2": {
+   "dataset": "davidmaisterx/rlab-k562-essential-r2",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-k562-essential-r2/files.json",
+   "files_sha256": "37eb380841db40f9b4fdc4fc20703609e42ab6b2438d93d8721d2accabd3bc64",
+   "complete_sha256": "31aefe46e3e5d8c32295a733f874fefc29777dcdcd7be6f896e7ad5bd84ff355",
+   "job_id": "j07_replogle_ess_rpe1_r8",
+   "units": {
+    "k562_essential": {
+     "cells": 310385,
+     "shards": 32,
+     "bytes": 2471546599,
+     "parity_ok": true,
+     "manifest_sha256": "5c921ef7adee5da6dc24876fa6b6fd36b0c9312926b42c00345843827f0ee838"
+    }
+   },
+   "bytes": 2471546599,
+   "cells": 310385,
+   "version_ref": "davidmaisterx/rlab-k562-essential-r2/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-k562-essential-r2/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davidmaisterx/vcc-derivatives-rlab-k562-essential-r2",
+    "code_sha256": "7691cb47637b5da3780161d8410c420381a1478ee7fc171c01188b143d7cbf59"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": false,
+   "parent_job_units": {
+    "k562_essential": {
+     "cells": 310385,
+     "shards": 32,
+     "bytes": 2471546599,
+     "parity_ok": true,
+     "manifest_sha256": "5c921ef7adee5da6dc24876fa6b6fd36b0c9312926b42c00345843827f0ee838"
+    },
+    "rpe1": {
+     "cells": 247914,
+     "shards": 25,
+     "bytes": 1947262556,
+     "parity_ok": true,
+     "manifest_sha256": "3ab47818971288ab3465dd911c53011c667277a69d487257f0c14ea4c3938a69"
+    }
+   }
+  },
+  "davidmaisterx/rlab-k562-gwps-r3": {
+   "dataset": "davidmaisterx/rlab-k562-gwps-r3",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-k562-gwps-r3/files.json",
+   "files_sha256": "57142e6dacf3cf08d613da1613a45d6e0846b5a2d0f2985884e8663542d49aef",
+   "complete_sha256": "aa940e7d53fc3b1e721f35612f9890984f8c21b621a2152f9b53a37274258003",
+   "job_id": "j06_k562_gwps_r3",
+   "units": {
+    "k562_gwps_a": {
+     "cells": 1000000,
+     "shards": 50,
+     "bytes": 7067941224,
+     "parity_ok": true,
+     "manifest_sha256": "4ea098d87f0f5064f08334d56fe3440ebfbf23e1695fa213c83c7cdbb0eee429"
+    },
+    "k562_gwps_b": {
+     "cells": 989578,
+     "shards": 50,
+     "bytes": 6904612003,
+     "parity_ok": true,
+     "manifest_sha256": "5e678bfac84b2fbb7ab8054f7ae111122170c350b6a88f5d5f5740c60f9eedab"
+    }
+   },
+   "bytes": 13972553227,
+   "cells": 1989578,
+   "version_ref": "davidmaisterx/rlab-k562-gwps-r3/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-k562-gwps-r3/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davideferrante11/vcc-derivatives-rlab-k562-gwps-r3",
+    "code_sha256": "d5794a8794afdeb721fa115e563198438e41c4641ba331ec77b873cfe3cc9f74"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": false,
+   "parent_job_units": {
+    "k562_gwps_a": {
+     "cells": 1000000,
+     "shards": 50,
+     "bytes": 7067941224,
+     "parity_ok": true,
+     "manifest_sha256": "4ea098d87f0f5064f08334d56fe3440ebfbf23e1695fa213c83c7cdbb0eee429"
+    },
+    "k562_gwps_b": {
+     "cells": 989578,
+     "shards": 50,
+     "bytes": 6904612003,
+     "parity_ok": true,
+     "manifest_sha256": "5e678bfac84b2fbb7ab8054f7ae111122170c350b6a88f5d5f5740c60f9eedab"
+    }
+   }
+  },
+  "davidmaisterx/rlab-rpe1-r2": {
+   "dataset": "davidmaisterx/rlab-rpe1-r2",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-rpe1-r2/files.json",
+   "files_sha256": "ec27daf029c47bfca9f70e644f2d5d577998169dc53a57664c684c1cb37bb0dc",
+   "complete_sha256": "31aefe46e3e5d8c32295a733f874fefc29777dcdcd7be6f896e7ad5bd84ff355",
+   "job_id": "j07_replogle_ess_rpe1_r8",
+   "units": {
+    "rpe1": {
+     "cells": 247914,
+     "shards": 25,
+     "bytes": 1947262556,
+     "parity_ok": true,
+     "manifest_sha256": "3ab47818971288ab3465dd911c53011c667277a69d487257f0c14ea4c3938a69"
+    }
+   },
+   "bytes": 1947262556,
+   "cells": 247914,
+   "version_ref": "davidmaisterx/rlab-rpe1-r2/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-rpe1-r2/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davideferrante11/vcc-derivatives-rlab-rpe1-r2",
+    "code_sha256": "aa71bf05059298fc7fe32997d84e913226589b15aaa0e5d6f0e74afd8ddaed84"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": false,
+   "parent_job_units": {
+    "k562_essential": {
+     "cells": 310385,
+     "shards": 32,
+     "bytes": 2471546599,
+     "parity_ok": true,
+     "manifest_sha256": "5c921ef7adee5da6dc24876fa6b6fd36b0c9312926b42c00345843827f0ee838"
+    },
+    "rpe1": {
+     "cells": 247914,
+     "shards": 25,
+     "bytes": 1947262556,
+     "parity_ok": true,
+     "manifest_sha256": "3ab47818971288ab3465dd911c53011c667277a69d487257f0c14ea4c3938a69"
+    }
+   }
+  },
+  "davidmaisterx/rlab-scp-k562-hek": {
+   "dataset": "davidmaisterx/rlab-scp-k562-hek",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-scp-k562-hek/files.json",
+   "files_sha256": "e04f2946ae7e1fb9e7dac85b51ad65682f07e46b4027bbdb3867c9eaea04b2a4",
+   "complete_sha256": "b31db820186822a44abf95a699b3c9e5993480b4e08589bb1d285eacc188c3e7",
+   "job_id": "j15_scp_k562_hek_r1",
+   "units": {
+    "dixit2016_d13": {
+     "cells": 19268,
+     "shards": 1,
+     "bytes": 127745182,
+     "parity_ok": true,
+     "manifest_sha256": "889e9cdfc6930d29e6fe06888d27beee73bbcbea24650e7ec5b0b01c21c01d82"
+    },
+    "dixit2016_d7": {
+     "cells": 33013,
+     "shards": 2,
+     "bytes": 275774122,
+     "parity_ok": true,
+     "manifest_sha256": "ce4a3e9f1afd9c4058457ae2c5cca2ef3e0f888dc6d6f81c8e5d1c12e04f00dd"
+    },
+    "dixit2016_high_moi": {
+     "cells": 51898,
+     "shards": 3,
+     "bytes": 359095551,
+     "parity_ok": true,
+     "manifest_sha256": "dd9743a6f69b4891d0e5c1a4cdebdff71653abdf9fd16e1c4c1b1de8be8374da"
+    },
+    "xu2023": {
+     "cells": 98315,
+     "shards": 5,
+     "bytes": 342622920,
+     "parity_ok": true,
+     "manifest_sha256": "095b6a66b9e5a2554d3c36e7348cdc740c3295a212c06c68317c84b482abd0e6"
+    }
+   },
+   "bytes": 1105237775,
+   "cells": 202494,
+   "version_ref": "davidmaisterx/rlab-scp-k562-hek/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-scp-k562-hek/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davideferante/vcc-derivatives-scp-k562-hek-r1",
+    "code_sha256": "cb722986c228ad028b62080760b36040e32a5e5d33e27cf2e1cfc9cec93dc921"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": true,
+   "parent_job_units": {
+    "dixit2016_d7": {
+     "cells": 33013,
+     "shards": 2,
+     "bytes": 275774122,
+     "parity_ok": true,
+     "manifest_sha256": "ce4a3e9f1afd9c4058457ae2c5cca2ef3e0f888dc6d6f81c8e5d1c12e04f00dd"
+    },
+    "dixit2016_d13": {
+     "cells": 19268,
+     "shards": 1,
+     "bytes": 127745182,
+     "parity_ok": true,
+     "manifest_sha256": "889e9cdfc6930d29e6fe06888d27beee73bbcbea24650e7ec5b0b01c21c01d82"
+    },
+    "dixit2016_high_moi": {
+     "cells": 51898,
+     "shards": 3,
+     "bytes": 359095551,
+     "parity_ok": true,
+     "manifest_sha256": "dd9743a6f69b4891d0e5c1a4cdebdff71653abdf9fd16e1c4c1b1de8be8374da"
+    },
+    "xu2023": {
+     "cells": 98315,
+     "shards": 5,
+     "bytes": 342622920,
+     "parity_ok": true,
+     "manifest_sha256": "095b6a66b9e5a2554d3c36e7348cdc740c3295a212c06c68317c84b482abd0e6"
+    }
+   }
+  },
+  "davidmaisterx/rlab-scp-ko": {
+   "dataset": "davidmaisterx/rlab-scp-ko",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-scp-ko/files.json",
+   "files_sha256": "adf8c63bed95dd93eb175cec4c0dbd473550bf02e1032f2cc62e37f00fd63807",
+   "complete_sha256": "f6510977905be26d71cc32387972b4515b7dad8f318094b79a7f716219b4716b",
+   "job_id": "j13_scp_ko_r1",
+   "units": {
+    "frangieh2021": {
+     "cells": 218331,
+     "shards": 11,
+     "bytes": 1643593412,
+     "parity_ok": true,
+     "manifest_sha256": "25d236cd2d58d203b44d7dbb646753d631d29c78ddb3ad9b3906a494c8793ed4"
+    },
+    "papalexi2021_arrayed": {
+     "cells": 8984,
+     "shards": 1,
+     "bytes": 53875418,
+     "parity_ok": true,
+     "manifest_sha256": "20864e954af0f27120dc5ab683b5fd7e72956944b18faadc0c7a94e2a3f218ed"
+    },
+    "sunshine2023": {
+     "cells": 90380,
+     "shards": 5,
+     "bytes": 790544527,
+     "parity_ok": true,
+     "manifest_sha256": "94bed71a1ded101632ebbf85a1878854065b3914c36f21c3b81933f19801b41c"
+    }
+   },
+   "bytes": 2488013357,
+   "cells": 317695,
+   "version_ref": "davidmaisterx/rlab-scp-ko/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-scp-ko/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davidmaisterx/vcc-derivatives-scp-ko-r1",
+    "code_sha256": "d9ee02bc16383dc5c87739337e6c3e0cb7af7d623e582bd84c6c8cd6ff282e93"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": true,
+   "parent_job_units": {
+    "frangieh2021": {
+     "cells": 218331,
+     "shards": 11,
+     "bytes": 1643593412,
+     "parity_ok": true,
+     "manifest_sha256": "25d236cd2d58d203b44d7dbb646753d631d29c78ddb3ad9b3906a494c8793ed4"
+    },
+    "sunshine2023": {
+     "cells": 90380,
+     "shards": 5,
+     "bytes": 790544527,
+     "parity_ok": true,
+     "manifest_sha256": "94bed71a1ded101632ebbf85a1878854065b3914c36f21c3b81933f19801b41c"
+    },
+    "papalexi2021_arrayed": {
+     "cells": 8984,
+     "shards": 1,
+     "bytes": 53875418,
+     "parity_ok": true,
+     "manifest_sha256": "20864e954af0f27120dc5ab683b5fd7e72956944b18faadc0c7a94e2a3f218ed"
+    }
+   }
+  },
+  "davidmaisterx/rlab-scp-tcells": {
+   "dataset": "davidmaisterx/rlab-scp-tcells",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-scp-tcells/files.json",
+   "files_sha256": "f59e166796d9ea679a7c86951759f14c823a7efc4e5df39c6c48e15872e6385a",
+   "complete_sha256": "3aa0ff18267eb0b77fe22d60f381d2d9d87b3a75440bbf437ba92dfff71bcd52",
+   "job_id": "j14_scp_tcells_r1",
+   "units": {
+    "datlinger2017": {
+     "cells": 5905,
+     "shards": 1,
+     "bytes": 40888389,
+     "parity_ok": true,
+     "manifest_sha256": "fcfa3fc228fe68edd35733167303bd5076673ebb7a7303df09686e34c8111d63"
+    },
+    "datlinger2021": {
+     "cells": 39194,
+     "shards": 2,
+     "bytes": 39436235,
+     "parity_ok": true,
+     "manifest_sha256": "ec44c4e6305d98bee4d0d1ddec1e1e2b040cacc5239a576df0bc5d9033e68d8f"
+    },
+    "shifrut2018": {
+     "cells": 52236,
+     "shards": 3,
+     "bytes": 262990318,
+     "parity_ok": true,
+     "manifest_sha256": "d4f7af94670e494f9a707018f22e654a0ec4ddb3663702c23e2ccc984eff20b0"
+    }
+   },
+   "bytes": 343314942,
+   "cells": 97335,
+   "version_ref": "davidmaisterx/rlab-scp-tcells/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-scp-tcells/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davideferante/vcc-derivatives-scp-tcells-r1",
+    "code_sha256": "79174de1974f82dfaeae6dab9538bd9999b96eda74c0ded95c3e33aa1b4553f3"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": true,
+   "parent_job_units": {
+    "shifrut2018": {
+     "cells": 52236,
+     "shards": 3,
+     "bytes": 262990318,
+     "parity_ok": true,
+     "manifest_sha256": "d4f7af94670e494f9a707018f22e654a0ec4ddb3663702c23e2ccc984eff20b0"
+    },
+    "datlinger2017": {
+     "cells": 5905,
+     "shards": 1,
+     "bytes": 40888389,
+     "parity_ok": true,
+     "manifest_sha256": "fcfa3fc228fe68edd35733167303bd5076673ebb7a7303df09686e34c8111d63"
+    },
+    "datlinger2021": {
+     "cells": 39194,
+     "shards": 2,
+     "bytes": 39436235,
+     "parity_ok": true,
+     "manifest_sha256": "ec44c4e6305d98bee4d0d1ddec1e1e2b040cacc5239a576df0bc5d9033e68d8f"
+    }
+   }
+  },
+  "davidmaisterx/rlab-tian-norman": {
+   "dataset": "davidmaisterx/rlab-tian-norman",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-tian-norman/files.json",
+   "files_sha256": "f14371f0c7a0adea907719370c115321aea545a799acd42be0bb2624dd89ce8c",
+   "complete_sha256": "3e8d5e60972c772b1c0a3f74ae60a14c685d44f65690e4cc91d6d5a4de28c5ad",
+   "job_id": "j11_tian_norman_r1",
+   "units": {
+    "norman2019": {
+     "cells": 111445,
+     "shards": 6,
+     "bytes": 836714478,
+     "parity_ok": true,
+     "manifest_sha256": "e316deb9556b2aa20033eec8c2ef0b10cc6216ec981aa8f91cbeed2634b60eb4"
+    },
+    "tian2019_ipsc": {
+     "cells": 275708,
+     "shards": 14,
+     "bytes": 440672678,
+     "parity_ok": true,
+     "manifest_sha256": "a04f98f0cc27248134d6616d69deb127d57dbfc533c75558a04309aaed961858"
+    },
+    "tian2019_neuron": {
+     "cells": 182790,
+     "shards": 10,
+     "bytes": 326659915,
+     "parity_ok": true,
+     "manifest_sha256": "1b981c7677a25febcbfc222ae15ac0cb111986ba5ce8d1eee9cc73e3013a8861"
+    },
+    "tian2021_crispra": {
+     "cells": 21193,
+     "shards": 2,
+     "bytes": 170952730,
+     "parity_ok": true,
+     "manifest_sha256": "6294cf45eb776af2ffd4e75117b175a9712a038ee61e810361e842d89b60b2f9"
+    },
+    "tian2021_crispri": {
+     "cells": 32300,
+     "shards": 2,
+     "bytes": 315999662,
+     "parity_ok": true,
+     "manifest_sha256": "e42363bfb3cb715932d9c63d2a278d1dab095e0dd873059707fa2fdca1898bbc"
+    }
+   },
+   "bytes": 2090999463,
+   "cells": 623436,
+   "version_ref": "davidmaisterx/rlab-tian-norman/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-tian-norman/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davideferante/vcc-derivatives-tian-norman-r1",
+    "code_sha256": "25af4ceaa93e4684c3afdb1df914c1e559bdb300be1e86daf1a548157de5cb80"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": true,
+   "parent_job_units": {
+    "tian2021_crispri": {
+     "cells": 32300,
+     "shards": 2,
+     "bytes": 315999662,
+     "parity_ok": true,
+     "manifest_sha256": "e42363bfb3cb715932d9c63d2a278d1dab095e0dd873059707fa2fdca1898bbc"
+    },
+    "tian2021_crispra": {
+     "cells": 21193,
+     "shards": 2,
+     "bytes": 170952730,
+     "parity_ok": true,
+     "manifest_sha256": "6294cf45eb776af2ffd4e75117b175a9712a038ee61e810361e842d89b60b2f9"
+    },
+    "tian2019_ipsc": {
+     "cells": 275708,
+     "shards": 14,
+     "bytes": 440672678,
+     "parity_ok": true,
+     "manifest_sha256": "a04f98f0cc27248134d6616d69deb127d57dbfc533c75558a04309aaed961858"
+    },
+    "tian2019_neuron": {
+     "cells": 182790,
+     "shards": 10,
+     "bytes": 326659915,
+     "parity_ok": true,
+     "manifest_sha256": "1b981c7677a25febcbfc222ae15ac0cb111986ba5ce8d1eee9cc73e3013a8861"
+    },
+    "norman2019": {
+     "cells": 111445,
+     "shards": 6,
+     "bytes": 836714478,
+     "parity_ok": true,
+     "manifest_sha256": "e316deb9556b2aa20033eec8c2ef0b10cc6216ec981aa8f91cbeed2634b60eb4"
+    }
+   }
+  },
+  "davidmaisterx/rlab-hipsci-gwfit": {
+   "dataset": "davidmaisterx/rlab-hipsci-gwfit",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_followup_r1/rlab-hipsci-gwfit/files.json",
+   "files_sha256": "311bf5f671db67258d47d783aa62f7028bb590c817529f09cb16ee5f06d73a68",
+   "complete_sha256": "2d2646c131e6a6960f00110bcc34489f556cb46d204d4a37dc01e8bb4d448b27",
+   "job_id": "j02_hipsci_r1",
+   "units": {
+    "hipsci_gw_fitness": {
+     "cells": 322746,
+     "shards": 17,
+     "bytes": 4163416551,
+     "parity_ok": true,
+     "manifest_sha256": "b659330bbe5a87882716dbbce3e0568f5dc2596e260976e7b49402f8b764c95e"
+    }
+   },
+   "bytes": 4163416551,
+   "cells": 322746,
+   "version_ref": "davidmaisterx/rlab-hipsci-gwfit/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-hipsci-gwfit/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-r1",
+    "code_sha256": "a5f2e2cca61bf795ca836f96ae89218d46cf66e8d9595ecaec6f5bb6fd97b3e7"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": false,
+   "parent_job_units": {
+    "hipsci_gw_fitness": {
+     "cells": 322746,
+     "shards": 17,
+     "bytes": 4163416551,
+     "parity_ok": true,
+     "manifest_sha256": "b659330bbe5a87882716dbbce3e0568f5dc2596e260976e7b49402f8b764c95e"
+    },
+    "hipsci_gw_nonfitness": {
+     "cells": 396458,
+     "shards": 20,
+     "bytes": 4986913999,
+     "parity_ok": true,
+     "manifest_sha256": "5e136b34dda05b27f44234579d63c3bf8b1f7e776af0013212b822d67fbad6a9"
+    },
+    "hipsci_targeted_19": {
+     "cells": 1161865,
+     "shards": 59,
+     "bytes": 13030135370,
+     "parity_ok": true,
+     "manifest_sha256": "212223c33a33f433a90cd634765fee26fee6876650a2aef0aed0d931e82a1759"
+    }
+   }
+  },
+  "davidmaisterx/rlab-hipsci-gwnonfit": {
+   "dataset": "davidmaisterx/rlab-hipsci-gwnonfit",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_followup_r1/rlab-hipsci-gwnonfit/files.json",
+   "files_sha256": "7707c03885ff2fb4935c0e81cdeac555089beae9b789e74c3ef4e88d8cbda348",
+   "complete_sha256": "2d2646c131e6a6960f00110bcc34489f556cb46d204d4a37dc01e8bb4d448b27",
+   "job_id": "j02_hipsci_r1",
+   "units": {
+    "hipsci_gw_nonfitness": {
+     "cells": 396458,
+     "shards": 20,
+     "bytes": 4986913999,
+     "parity_ok": true,
+     "manifest_sha256": "5e136b34dda05b27f44234579d63c3bf8b1f7e776af0013212b822d67fbad6a9"
+    }
+   },
+   "bytes": 4986913999,
+   "cells": 396458,
+   "version_ref": "davidmaisterx/rlab-hipsci-gwnonfit/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-hipsci-gwnonfit/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-r1",
+    "code_sha256": "0ec69587631f7c10d8180425c03f90b970b38b6445bd2c671c825fb1c028ab1f"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": false,
+   "parent_job_units": {
+    "hipsci_gw_fitness": {
+     "cells": 322746,
+     "shards": 17,
+     "bytes": 4163416551,
+     "parity_ok": true,
+     "manifest_sha256": "b659330bbe5a87882716dbbce3e0568f5dc2596e260976e7b49402f8b764c95e"
+    },
+    "hipsci_gw_nonfitness": {
+     "cells": 396458,
+     "shards": 20,
+     "bytes": 4986913999,
+     "parity_ok": true,
+     "manifest_sha256": "5e136b34dda05b27f44234579d63c3bf8b1f7e776af0013212b822d67fbad6a9"
+    },
+    "hipsci_targeted_19": {
+     "cells": 1161865,
+     "shards": 59,
+     "bytes": 13030135370,
+     "parity_ok": true,
+     "manifest_sha256": "212223c33a33f433a90cd634765fee26fee6876650a2aef0aed0d931e82a1759"
+    }
+   }
+  },
+  "davidmaisterx/rlab-jurkat-gse249595": {
+   "dataset": "davidmaisterx/rlab-jurkat-gse249595",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_followup_r1/rlab-jurkat-gse249595/files.json",
+   "files_sha256": "b26a1c0b651bf901464d21407f64ef0abe84c8e99fcb5b4e6dee5d9bdd159655",
+   "complete_sha256": "631f5d9166e28c7add7aa5e277c5a9fd73a52b25ac47ce80483fad1330650e6a",
+   "job_id": "j03_jurkat_r1",
+   "units": {
+    "GSM7951413_channel1": {
+     "cells": 146368,
+     "shards": 8,
+     "bytes": 169829090,
+     "parity_ok": true,
+     "manifest_sha256": "9d4538c168776229baef30db86d8c83de9bd84904a894957abda3b3f826deaa0"
+    },
+    "GSM7951414_channel2": {
+     "cells": 121447,
+     "shards": 7,
+     "bytes": 147997437,
+     "parity_ok": true,
+     "manifest_sha256": "b7e5a528f469f9e04f4c5f24bfee634dcd206fedb67327ae601c45a4c4f2cfb4"
+    },
+    "GSM7951415_channel3": {
+     "cells": 128613,
+     "shards": 7,
+     "bytes": 154311008,
+     "parity_ok": true,
+     "manifest_sha256": "252313b958f96df7086b3693ea0359f283b60c086e44d8f16545c04f91742830"
+    },
+    "GSM7951416_channel4": {
+     "cells": 92125,
+     "shards": 5,
+     "bytes": 121407233,
+     "parity_ok": true,
+     "manifest_sha256": "9b0af1cd14d42a5068a01671837742165a6775e95f56db7d6fd388b9e7b82324"
+    },
+    "GSM7951417_channel5": {
+     "cells": 66755,
+     "shards": 4,
+     "bytes": 94742239,
+     "parity_ok": true,
+     "manifest_sha256": "d44c37479f7f05aa3636d843cc8360c6e3bcf6b45829daaf857d2677d658a223"
+    },
+    "GSM7951418_channel6": {
+     "cells": 112382,
+     "shards": 6,
+     "bytes": 135374996,
+     "parity_ok": true,
+     "manifest_sha256": "cd3c416eb26004f87fe8dbdc77aab5779c44a0a4aaab76656229747326a8a409"
+    },
+    "GSM7951419_channel7": {
+     "cells": 154955,
+     "shards": 8,
+     "bytes": 183584278,
+     "parity_ok": true,
+     "manifest_sha256": "db1645a5c3690e711222eae51471b8e62f16bd71c37196230e3e5b9658fc3b51"
+    },
+    "GSM7951420_channel8": {
+     "cells": 103511,
+     "shards": 6,
+     "bytes": 145836655,
+     "parity_ok": true,
+     "manifest_sha256": "1043a23b0b64b7969a52e76bf0e24657ba470b809b03f2dc96fcfe192e7f61af"
+    },
+    "GSM7951421_channel9": {
+     "cells": 94290,
+     "shards": 5,
+     "bytes": 136523189,
+     "parity_ok": true,
+     "manifest_sha256": "b1fa9e080df35437f4c75cfc395c99121901d655689abc8e4dd4f5ed7c5bc9d0"
+    },
+    "GSM7951422_channel10": {
+     "cells": 116563,
+     "shards": 6,
+     "bytes": 154790484,
+     "parity_ok": true,
+     "manifest_sha256": "c9eba8f9550dd13df277f2963bd62ba0625b36ccb7a455fb6aa7cc2dfb8eaa96"
+    },
+    "GSM7951423_channel11": {
+     "cells": 86874,
+     "shards": 5,
+     "bytes": 137376852,
+     "parity_ok": true,
+     "manifest_sha256": "2814afaae61b014e1c4c5d35c5e81573bb37a79304a1b63e0b3ea6eec99cc87a"
+    },
+    "GSM7951424_channel12": {
+     "cells": 95267,
+     "shards": 5,
+     "bytes": 141128170,
+     "parity_ok": true,
+     "manifest_sha256": "b0b2c24dabb23e825ec1ace624b71f410c5c61667563f67e4dc0b1b185578321"
+    },
+    "GSM7951425_channel13": {
+     "cells": 114999,
+     "shards": 6,
+     "bytes": 173968177,
+     "parity_ok": true,
+     "manifest_sha256": "2a128ef8a474ed97b70c8d805d7a7e7012fc6f391390cd6c29fbabff61fe0c03"
+    },
+    "GSM7951426_channel14": {
+     "cells": 109833,
+     "shards": 6,
+     "bytes": 162551699,
+     "parity_ok": true,
+     "manifest_sha256": "805c1cf1b9f0cc69e063cda5df572918f0af280b19f7a3c8a98864de66800333"
+    },
+    "GSM7951427_channel15": {
+     "cells": 96831,
+     "shards": 5,
+     "bytes": 153253921,
+     "parity_ok": true,
+     "manifest_sha256": "d68a15e4bab8131da579e8ea8d5179c2e1b0c333887573698bc47d2607207ec5"
+    },
+    "GSM7951428_channel16": {
+     "cells": 142345,
+     "shards": 8,
+     "bytes": 197828817,
+     "parity_ok": true,
+     "manifest_sha256": "319050443f8780a59820574701a64e5482d03249b11b26e744ccd2992b881f56"
+    }
+   },
+   "bytes": 2410504245,
+   "cells": 1783158,
+   "version_ref": "davidmaisterx/rlab-jurkat-gse249595/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-jurkat-gse249595/versions/1",
+   "derivatives": {
+    "state": "not_integrated",
+    "kernel": null,
+    "assignment": null
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": false,
+   "parent_job_units": {
+    "GSM7951413_channel1": {
+     "cells": 146368,
+     "shards": 8,
+     "bytes": 169829090,
+     "parity_ok": true,
+     "manifest_sha256": "9d4538c168776229baef30db86d8c83de9bd84904a894957abda3b3f826deaa0"
+    },
+    "GSM7951414_channel2": {
+     "cells": 121447,
+     "shards": 7,
+     "bytes": 147997437,
+     "parity_ok": true,
+     "manifest_sha256": "b7e5a528f469f9e04f4c5f24bfee634dcd206fedb67327ae601c45a4c4f2cfb4"
+    },
+    "GSM7951415_channel3": {
+     "cells": 128613,
+     "shards": 7,
+     "bytes": 154311008,
+     "parity_ok": true,
+     "manifest_sha256": "252313b958f96df7086b3693ea0359f283b60c086e44d8f16545c04f91742830"
+    },
+    "GSM7951416_channel4": {
+     "cells": 92125,
+     "shards": 5,
+     "bytes": 121407233,
+     "parity_ok": true,
+     "manifest_sha256": "9b0af1cd14d42a5068a01671837742165a6775e95f56db7d6fd388b9e7b82324"
+    },
+    "GSM7951417_channel5": {
+     "cells": 66755,
+     "shards": 4,
+     "bytes": 94742239,
+     "parity_ok": true,
+     "manifest_sha256": "d44c37479f7f05aa3636d843cc8360c6e3bcf6b45829daaf857d2677d658a223"
+    },
+    "GSM7951418_channel6": {
+     "cells": 112382,
+     "shards": 6,
+     "bytes": 135374996,
+     "parity_ok": true,
+     "manifest_sha256": "cd3c416eb26004f87fe8dbdc77aab5779c44a0a4aaab76656229747326a8a409"
+    },
+    "GSM7951419_channel7": {
+     "cells": 154955,
+     "shards": 8,
+     "bytes": 183584278,
+     "parity_ok": true,
+     "manifest_sha256": "db1645a5c3690e711222eae51471b8e62f16bd71c37196230e3e5b9658fc3b51"
+    },
+    "GSM7951420_channel8": {
+     "cells": 103511,
+     "shards": 6,
+     "bytes": 145836655,
+     "parity_ok": true,
+     "manifest_sha256": "1043a23b0b64b7969a52e76bf0e24657ba470b809b03f2dc96fcfe192e7f61af"
+    },
+    "GSM7951421_channel9": {
+     "cells": 94290,
+     "shards": 5,
+     "bytes": 136523189,
+     "parity_ok": true,
+     "manifest_sha256": "b1fa9e080df35437f4c75cfc395c99121901d655689abc8e4dd4f5ed7c5bc9d0"
+    },
+    "GSM7951422_channel10": {
+     "cells": 116563,
+     "shards": 6,
+     "bytes": 154790484,
+     "parity_ok": true,
+     "manifest_sha256": "c9eba8f9550dd13df277f2963bd62ba0625b36ccb7a455fb6aa7cc2dfb8eaa96"
+    },
+    "GSM7951423_channel11": {
+     "cells": 86874,
+     "shards": 5,
+     "bytes": 137376852,
+     "parity_ok": true,
+     "manifest_sha256": "2814afaae61b014e1c4c5d35c5e81573bb37a79304a1b63e0b3ea6eec99cc87a"
+    },
+    "GSM7951424_channel12": {
+     "cells": 95267,
+     "shards": 5,
+     "bytes": 141128170,
+     "parity_ok": true,
+     "manifest_sha256": "b0b2c24dabb23e825ec1ace624b71f410c5c61667563f67e4dc0b1b185578321"
+    },
+    "GSM7951425_channel13": {
+     "cells": 114999,
+     "shards": 6,
+     "bytes": 173968177,
+     "parity_ok": true,
+     "manifest_sha256": "2a128ef8a474ed97b70c8d805d7a7e7012fc6f391390cd6c29fbabff61fe0c03"
+    },
+    "GSM7951426_channel14": {
+     "cells": 109833,
+     "shards": 6,
+     "bytes": 162551699,
+     "parity_ok": true,
+     "manifest_sha256": "805c1cf1b9f0cc69e063cda5df572918f0af280b19f7a3c8a98864de66800333"
+    },
+    "GSM7951427_channel15": {
+     "cells": 96831,
+     "shards": 5,
+     "bytes": 153253921,
+     "parity_ok": true,
+     "manifest_sha256": "d68a15e4bab8131da579e8ea8d5179c2e1b0c333887573698bc47d2607207ec5"
+    },
+    "GSM7951428_channel16": {
+     "cells": 142345,
+     "shards": 8,
+     "bytes": 197828817,
+     "parity_ok": true,
+     "manifest_sha256": "319050443f8780a59820574701a64e5482d03249b11b26e744ccd2992b881f56"
+    }
+   }
+  },
+  "davidmaisterx/rlab-kolf-small": {
+   "dataset": "davidmaisterx/rlab-kolf-small",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_followup_r1/rlab-kolf-small/files.json",
+   "files_sha256": "424f11435af8036d9bab1a68e7960313d15d57861e4b48f5242a42cc8af4a37e",
+   "complete_sha256": "37c9872ff9d1bd9efc9f1da995779e5ece0cabaf269269cc11ab7d733faf2bb9",
+   "job_id": "j08_kolf_small_r2",
+   "units": {
+    "kolf_chromatin": {
+     "cells": 44039,
+     "shards": 3,
+     "bytes": 614271864,
+     "parity_ok": true,
+     "manifest_sha256": "a8e7b05fb41cadaec1b20edf7a12a5c4fe2110a80764874ecf9ea6745bd2afba"
+    },
+    "kolf_metabolic": {
+     "cells": 117768,
+     "shards": 6,
+     "bytes": 978042376,
+     "parity_ok": true,
+     "manifest_sha256": "50d1506b2f08f4c2f9becc5d66a482135465c0cc88e04dac57b6a54a4171e95e"
+    }
+   },
+   "bytes": 1592314240,
+   "cells": 161807,
+   "version_ref": "davidmaisterx/rlab-kolf-small/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-kolf-small/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davideferrante11/vcc-derivatives-kolf-small-r1",
+    "code_sha256": "0580039479569e4f283587d40ab46cac7c0bcb48c41940fee2732a0c426b8be2"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": false,
+   "parent_job_units": {
+    "kolf_chromatin": {
+     "cells": 44039,
+     "shards": 3,
+     "bytes": 614271864,
+     "parity_ok": true,
+     "manifest_sha256": "a8e7b05fb41cadaec1b20edf7a12a5c4fe2110a80764874ecf9ea6745bd2afba"
+    },
+    "kolf_metabolic": {
+     "cells": 117768,
+     "shards": 6,
+     "bytes": 978042376,
+     "parity_ok": true,
+     "manifest_sha256": "50d1506b2f08f4c2f9becc5d66a482135465c0cc88e04dac57b6a54a4171e95e"
+    }
+   }
+  },
+  "davidmaisterx/rlab-kolf-strong": {
+   "dataset": "davidmaisterx/rlab-kolf-strong",
+   "version": 1,
+   "status": "ready",
+   "files_receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_followup_r1/rlab-kolf-strong/files.json",
+   "files_sha256": "e4454ad64db8869ce2a0531bd54b1b20608d85f6b84472cf6ded5260c7114650",
+   "complete_sha256": "9db1e3f20d483d7cc7eafc332058e9a3bc44bac6ba860e28b9e0032835a8289a",
+   "job_id": "j12_kolf_strong_r3",
+   "units": {
+    "kolf_strong": {
+     "cells": 232438,
+     "shards": 12,
+     "bytes": 1572742316,
+     "parity_ok": true,
+     "manifest_sha256": "d72c38cc6dd1e990674293fbbbfaf560431f834427e045180cdeec07f464d71f"
+    }
+   },
+   "bytes": 1572742316,
+   "cells": 232438,
+   "version_ref": "davidmaisterx/rlab-kolf-strong/1",
+   "url": "https://www.kaggle.com/datasets/davidmaisterx/rlab-kolf-strong/versions/1",
+   "derivatives": {
+    "state": "accepted_cloud_output_not_yet_verified",
+    "kernel": "davideferrante11/vcc-derivatives-kolf-strong-r1",
+    "code_sha256": "bfe0eda0e6510a8fd696838c80aee4131d0761790048a2fbd89dfa3e64d929fe"
+   },
+   "fit_eligibility": "not yet reconciled; raw storage does not certify QC, controls or split admission",
+   "fallback_allowed": false,
+   "public": false,
+   "parent_job_units": {
+    "kolf_strong": {
+     "cells": 232438,
+     "shards": 12,
+     "bytes": 1572742316,
+     "parity_ok": true,
+     "manifest_sha256": "d72c38cc6dd1e990674293fbbbfaf560431f834427e045180cdeec07f464d71f"
+    }
+   }
+  }
+ },
+ "previous_manifest": {
+  "path": "reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r3/manifest.json",
+  "sha256": "111c0ab81dd9802b7da8d8dc7d7b76d2df9b580d05d58c4b5455eb38743fb193"
+ },
+ "execution": {
+  "jobs": [
+   {
+    "utc": "2026-10-05T11:54:52.210815+00:00",
+    "slug": "davideferrante11/vcc-derivatives-rlab-hepg2-nadig",
+    "accepted": true,
+    "answer": "Your kernel title does not resolve to the specified id. This may result in surprising behavior. We suggest making your title something that resolves to the specified id. See https://en.wikipedia.org/wiki/Clean_URL#Slug for more information on how slugs are determined.\nKernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davideferrante11/vcc-derivatives-rlab-hepg2-nadig",
+    "stage": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\parallel_archives_r1\\kaggle_rlab-hepg2-nadig",
+    "code_sha256": "6a980b3827a686b715e5a5a0d57792920f451f0eecb1ad31403350eb6ae19dda",
+    "source": "rlab-hepg2-nadig",
+    "requested_slug": "davideferrante11/vcc-derivatives-hepg2-nadig-r1",
+    "status": "davideferrante11/vcc-derivatives-rlab-hepg2-nadig has status \"KernelWorkerStatus.RUNNING\"",
+    "status_returncode": 0
+   },
+   {
+    "utc": "2026-10-05T11:54:57.949008+00:00",
+    "slug": "davideferrante11/vcc-derivatives-rlab-jurkat-nadig",
+    "accepted": true,
+    "answer": "Your kernel title does not resolve to the specified id. This may result in surprising behavior. We suggest making your title something that resolves to the specified id. See https://en.wikipedia.org/wiki/Clean_URL#Slug for more information on how slugs are determined.\nKernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davideferrante11/vcc-derivatives-rlab-jurkat-nadig",
+    "stage": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\parallel_archives_r1\\kaggle_rlab-jurkat-nadig",
+    "code_sha256": "8c722ff26a670a90d17824df198836d5e80e53fecc5f0d8faa0f14148cb3657f",
+    "source": "rlab-jurkat-nadig",
+    "requested_slug": "davideferrante11/vcc-derivatives-jurkat-nadig-r1",
+    "status": "davideferrante11/vcc-derivatives-rlab-jurkat-nadig has status \"KernelWorkerStatus.RUNNING\"",
+    "status_returncode": 0
+   },
+   {
+    "utc": "2026-10-05T11:55:02.875098+00:00",
+    "slug": "davideferrante11/vcc-derivatives-rlab-h1-vcc2025-trainval",
+    "accepted": true,
+    "answer": "Your kernel title does not resolve to the specified id. This may result in surprising behavior. We suggest making your title something that resolves to the specified id. See https://en.wikipedia.org/wiki/Clean_URL#Slug for more information on how slugs are determined.\nKernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davideferrante11/vcc-derivatives-rlab-h1-vcc2025-trainval",
+    "stage": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\parallel_archives_r1\\kaggle_rlab-h1-vcc2025-trainval",
+    "code_sha256": "ade16e9cb031558a8b9d5379d0acb0c3ac86f2fbd92ab43e247a08af3d82dfec",
+    "source": "rlab-h1-vcc2025-trainval",
+    "requested_slug": "davideferrante11/vcc-derivatives-h1-vcc2025-trainval-r1",
+    "status": "davideferrante11/vcc-derivatives-rlab-h1-vcc2025-trainval has status \"KernelWorkerStatus.RUNNING\"",
+    "status_returncode": 0
+   },
+   {
+    "utc": "2026-10-05T11:55:07.926714+00:00",
+    "slug": "davideferrante11/vcc-derivatives-rlab-rpe1-r2",
+    "accepted": true,
+    "answer": "Your kernel title does not resolve to the specified id. This may result in surprising behavior. We suggest making your title something that resolves to the specified id. See https://en.wikipedia.org/wiki/Clean_URL#Slug for more information on how slugs are determined.\nKernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davideferrante11/vcc-derivatives-rlab-rpe1-r2",
+    "stage": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\parallel_archives_r1\\kaggle_rlab-rpe1-r2",
+    "code_sha256": "aa71bf05059298fc7fe32997d84e913226589b15aaa0e5d6f0e74afd8ddaed84",
+    "source": "rlab-rpe1-r2",
+    "requested_slug": "davideferrante11/vcc-derivatives-rpe1-r2-r1",
+    "status": "davideferrante11/vcc-derivatives-rlab-rpe1-r2 has status \"KernelWorkerStatus.RUNNING\"",
+    "status_returncode": 0
+   },
+   {
+    "utc": "2026-10-05T11:55:13.602345+00:00",
+    "slug": "davideferrante11/vcc-derivatives-rlab-k562-gwps-r3",
+    "accepted": true,
+    "answer": "Your kernel title does not resolve to the specified id. This may result in surprising behavior. We suggest making your title something that resolves to the specified id. See https://en.wikipedia.org/wiki/Clean_URL#Slug for more information on how slugs are determined.\nKernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davideferrante11/vcc-derivatives-rlab-k562-gwps-r3",
+    "stage": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\parallel_archives_r1\\kaggle_rlab-k562-gwps-r3",
+    "code_sha256": "d5794a8794afdeb721fa115e563198438e41c4641ba331ec77b873cfe3cc9f74",
+    "source": "rlab-k562-gwps-r3",
+    "requested_slug": "davideferrante11/vcc-derivatives-k562-gwps-r3-r1",
+    "status": "davideferrante11/vcc-derivatives-rlab-k562-gwps-r3 has status \"KernelWorkerStatus.RUNNING\"",
+    "status_returncode": 0
+   },
+   {
+    "utc": "2026-10-05T11:55:19.517304+00:00",
+    "slug": "davidmaisterx/vcc-derivatives-rlab-k562-essential-r2",
+    "accepted": true,
+    "answer": "Your kernel title does not resolve to the specified id. This may result in surprising behavior. We suggest making your title something that resolves to the specified id. See https://en.wikipedia.org/wiki/Clean_URL#Slug for more information on how slugs are determined.\nKernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davidmaisterx/vcc-derivatives-rlab-k562-essential-r2",
+    "stage": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\parallel_archives_r1\\kaggle_rlab-k562-essential-r2",
+    "code_sha256": "7691cb47637b5da3780161d8410c420381a1478ee7fc171c01188b143d7cbf59",
+    "source": "rlab-k562-essential-r2",
+    "requested_slug": "davidmaisterx/vcc-derivatives-k562-essential-r2-r1",
+    "status": "davidmaisterx/vcc-derivatives-rlab-k562-essential-r2 has status \"KernelWorkerStatus.RUNNING\"",
+    "status_returncode": 0
+   },
+   {
+    "utc": "2026-10-05T11:55:28.080241+00:00",
+    "slug": "davidmaisterx/vcc-derivatives-rlab-a549",
+    "accepted": true,
+    "answer": "Your kernel title does not resolve to the specified id. This may result in surprising behavior. We suggest making your title something that resolves to the specified id. See https://en.wikipedia.org/wiki/Clean_URL#Slug for more information on how slugs are determined.\nKernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davidmaisterx/vcc-derivatives-rlab-a549",
+    "stage": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\parallel_archives_r1\\kaggle_rlab-a549",
+    "code_sha256": "b73614d99dedbc4fe5f7801c02fdfb0581da0a2e4dee3d123a8bd479762f1475",
+    "source": "rlab-a549",
+    "requested_slug": "davidmaisterx/vcc-derivatives-a549-r1",
+    "status": "davidmaisterx/vcc-derivatives-rlab-a549 has status \"KernelWorkerStatus.RUNNING\"",
+    "status_returncode": 0
+   },
+   {
+    "utc": "2026-10-05T12:15:48.839674+00:00",
+    "source": "rlab-scp-tcells",
+    "slug": "davideferante/vcc-derivatives-scp-tcells-r1",
+    "accepted": true,
+    "answer": "Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davideferante/vcc-derivatives-scp-tcells-r1",
+    "code_sha256": "79174de1974f82dfaeae6dab9538bd9999b96eda74c0ded95c3e33aa1b4553f3",
+    "stage": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\public_fallback_r1\\rlab-scp-tcells",
+    "replaces_unstarted_colab": true
+   },
+   {
+    "utc": "2026-10-05T12:15:57.090483+00:00",
+    "source": "rlab-scp-k562-hek",
+    "slug": "davideferante/vcc-derivatives-scp-k562-hek-r1",
+    "accepted": true,
+    "answer": "Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davideferante/vcc-derivatives-scp-k562-hek-r1",
+    "code_sha256": "cb722986c228ad028b62080760b36040e32a5e5d33e27cf2e1cfc9cec93dc921",
+    "stage": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\public_fallback_r1\\rlab-scp-k562-hek",
+    "replaces_unstarted_colab": true
+   },
+   {
+    "utc": "2026-10-05T12:10:29.167106+00:00",
+    "slug": "davidmaisterx/vcc-derivatives-scp-ko-r1",
+    "accepted": true,
+    "answer": "Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davidmaisterx/vcc-derivatives-scp-ko-r1",
+    "stage": "reports\\modelli\\percorso_riusabile_2026-10-05\\fallback_scp_ko_r1",
+    "code_sha256": "d9ee02bc16383dc5c87739337e6c3e0cb7af7d623e582bd84c6c8cd6ff282e93",
+    "spec": {
+     "dataset": "davidmaisterx/rlab-scp-ko",
+     "slug": "rlab-scp-ko",
+     "job_id": "j13_scp_ko_r1",
+     "slot": null,
+     "source_files_sha256": "adf8c63bed95dd93eb175cec4c0dbd473550bf02e1032f2cc62e37f00fd63807",
+     "raw_complete_sha256": "f6510977905be26d71cc32387972b4515b7dad8f318094b79a7f716219b4716b",
+     "training_used": false
+    },
+    "metadata": {
+     "id": "davidmaisterx/vcc-derivatives-scp-ko-r1",
+     "title": "vcc-derivatives-scp-ko-r1",
+     "code_file": "run.py",
+     "language": "python",
+     "kernel_type": "script",
+     "is_private": true,
+     "enable_gpu": false,
+     "enable_tpu": false,
+     "enable_internet": false,
+     "dataset_sources": [
+      "davidmaisterx/rlab-scp-ko"
+     ],
+     "kernel_sources": [],
+     "competition_sources": []
+    }
+   },
+   {
+    "utc": "2026-10-05T12:20:15.463869+00:00",
+    "slug": "davideferante/vcc-derivatives-tian-norman-r1",
+    "accepted": true,
+    "answer": "Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davideferante/vcc-derivatives-tian-norman-r1",
+    "stage": "reports\\modelli\\percorso_riusabile_2026-10-05\\fallback_tian_r2",
+    "code_sha256": "25af4ceaa93e4684c3afdb1df914c1e559bdb300be1e86daf1a548157de5cb80",
+    "spec": {
+     "dataset": "davidmaisterx/rlab-tian-norman",
+     "slug": "rlab-tian-norman",
+     "job_id": "j11_tian_norman_r1",
+     "slot": null,
+     "source_files_sha256": "f14371f0c7a0adea907719370c115321aea545a799acd42be0bb2624dd89ce8c",
+     "raw_complete_sha256": "3e8d5e60972c772b1c0a3f74ae60a14c685d44f65690e4cc91d6d5a4de28c5ad",
+     "training_used": false
+    },
+    "metadata": {
+     "id": "davideferante/vcc-derivatives-tian-norman-r1",
+     "title": "vcc-derivatives-tian-norman-r1",
+     "code_file": "run.py",
+     "language": "python",
+     "kernel_type": "script",
+     "is_private": true,
+     "enable_gpu": false,
+     "enable_tpu": false,
+     "enable_internet": false,
+     "dataset_sources": [
+      "davidmaisterx/rlab-tian-norman"
+     ],
+     "kernel_sources": [],
+     "competition_sources": []
+    }
+   },
+   {
+    "utc": "2026-10-05T12:22:06.334996+00:00",
+    "slug": "davideferante/vcc-derivatives-hipsci-targeted19-r1",
+    "accepted": true,
+    "answer": "Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davideferante/vcc-derivatives-hipsci-targeted19-r1",
+    "stage": "reports\\modelli\\percorso_riusabile_2026-10-05\\fallback_hipsci_r1",
+    "code_sha256": "69168e9fc5fd4f8f4c90842ce6c8065812da794f1f65b44ccab0e0e7201c8934",
+    "spec": {
+     "dataset": "davidmaisterx/rlab-hipsci-targeted19",
+     "slug": "rlab-hipsci-targeted19",
+     "job_id": "j02_hipsci_r1",
+     "slot": null,
+     "source_files_sha256": "ef835719433c2609f8b36e367dc4668e6bfb0c88060c4a9c59ffa5cfbe005419",
+     "raw_complete_sha256": "2d2646c131e6a6960f00110bcc34489f556cb46d204d4a37dc01e8bb4d448b27",
+     "training_used": false
+    },
+    "metadata": {
+     "id": "davideferante/vcc-derivatives-hipsci-targeted19-r1",
+     "title": "vcc-derivatives-hipsci-targeted19-r1",
+     "code_file": "run.py",
+     "language": "python",
+     "kernel_type": "script",
+     "is_private": true,
+     "enable_gpu": false,
+     "enable_tpu": false,
+     "enable_internet": false,
+     "dataset_sources": [
+      "davidmaisterx/rlab-hipsci-targeted19"
+     ],
+     "kernel_sources": [],
+     "competition_sources": []
+    }
+   },
+   {
+    "utc": "2026-10-05T12:31:44.261078+00:00",
+    "source": "rlab-kolf-small",
+    "slug": "davideferrante11/vcc-derivatives-kolf-small-r1",
+    "accepted": true,
+    "answer": "Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davideferrante11/vcc-derivatives-kolf-small-r1",
+    "code_sha256": "0580039479569e4f283587d40ab46cac7c0bcb48c41940fee2732a0c426b8be2",
+    "stage": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\remaining_archives_r1\\rlab-kolf-small"
+   },
+   {
+    "utc": "2026-10-05T12:31:55.683777+00:00",
+    "source": "rlab-kolf-strong",
+    "slug": "davideferrante11/vcc-derivatives-kolf-strong-r1",
+    "accepted": true,
+    "answer": "Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davideferrante11/vcc-derivatives-kolf-strong-r1",
+    "code_sha256": "bfe0eda0e6510a8fd696838c80aee4131d0761790048a2fbd89dfa3e64d929fe",
+    "stage": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\remaining_archives_r1\\rlab-kolf-strong"
+   },
+   {
+    "utc": "2026-10-05T12:32:09.934267+00:00",
+    "source": "rlab-hipsci-gwfit",
+    "slug": "davidmaisterx/vcc-derivatives-hipsci-gwfit-r1",
+    "accepted": true,
+    "answer": "Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davidmaisterx/vcc-derivatives-hipsci-gwfit-r1",
+    "code_sha256": "a5f2e2cca61bf795ca836f96ae89218d46cf66e8d9595ecaec6f5bb6fd97b3e7",
+    "stage": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\remaining_archives_r1\\rlab-hipsci-gwfit"
+   },
+   {
+    "utc": "2026-10-05T12:32:24.507261+00:00",
+    "source": "rlab-hipsci-gwnonfit",
+    "slug": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-r1",
+    "accepted": true,
+    "answer": "Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/davidmaisterx/vcc-derivatives-hipsci-gwnonfit-r1",
+    "code_sha256": "0ec69587631f7c10d8180425c03f90b970b38b6445bd2c671c825fb1c028ab1f",
+    "stage": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\remaining_archives_r1\\rlab-hipsci-gwnonfit"
+   }
+  ],
+  "colab_assignments": "not started; superseded by Kaggle fallback",
+  "public_raw_inputs": [
+   "davidmaisterx/rlab-hipsci-targeted19",
+   "davidmaisterx/rlab-scp-k562-hek",
+   "davidmaisterx/rlab-scp-ko",
+   "davidmaisterx/rlab-scp-tcells",
+   "davidmaisterx/rlab-tian-norman"
+  ],
+  "new_job_outputs": "private; verify or arrange GPU-account access before trainer consumption"
+ }
+}

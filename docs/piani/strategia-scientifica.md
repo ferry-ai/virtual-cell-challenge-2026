@@ -1,5 +1,18 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Archivio e parallelismo, 5/10:** [indice corrente r4](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r4/README.md)
+  in evidenza nella repo; 395,75 GB grezzi conservati, senza reingestione.
+  Sedici derivati CPU accettati sui tre account: `archive_launches_r2.jsonl`
+  e `remaining_archives_r1/launches.jsonl`; prima chiusura HepG2 verificata.
+  [Stato e ostacoli](../../reports/modelli/percorso_riusabile_2026-10-05/PARALLELISMO_r2.md):
+  HIPSCI gwfit fallito per capienza output; correggere con partizione scientificamente
+  equivalente, senza rilancio identico o indebolimento del controllo.
+  Cinque input pubblici verificati (`public_archives_r2`), nuovi output privati;
+  i quattro Colab non avviati sono sostituiti da Kaggle. Supervisione riattivata
+  ogni 30 minuti con notifiche solo actionable. KOLF/HCT116 campioni chiusi,
+  HEK293T 3/6 verificati all'ultimo snapshot. Integrare/avviare il trainer
+  esteso con D-053 e ricevute di consumo; nessun fit esteso ancora avviato.
+
 - **KOLF intero verificato, 5/10:** tutte le tre parti e unione dei conteggi
   verificate in `snapshot_parts_r3/state.json`, 7,34 GB. HCT116 2/4 e HEK293T
   2/6 verificati; tutti i job necessari già lanciati. [Dimensioni e limiti](../../reports/modelli/percorso_riusabile_2026-10-05/DIMENSIONI_r1.md).
