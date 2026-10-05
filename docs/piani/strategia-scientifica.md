@@ -1,5 +1,13 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **HEK293T condivisa e ultime parti avviate, 5/10:** verificati tutti i nove
+  input sui due account consumatori; quattro nuovi push accettati. Tutte le
+  13 parti KOLF/HCT116/HEK293T lanciate, nessuna ancora da distribuire.
+  [Ricevute e prosecuzione](../../reports/modelli/percorso_riusabile_2026-10-05/CONDIVISIONE_HEK293T.md).
+  Non rilanciare. Usare `partition_state.py` con nuovo output e
+  `--previous snapshot_parts_r2/state.json`: due parti KOLF e una HCT116 già
+  verificate. Chiudere le unioni, aggiornare l'indice e integrare i lettori nel trainer.
+
 - **Chiusura prima parte campionata nuova, 5/10:** KOLF p0/3 persistente e
   ricevuta verificata; otto altre parti RUNNING con avanzamento effettivo.
   [Verifica e riuso delle chiusure](../../reports/modelli/percorso_riusabile_2026-10-05/CHIUSURA_PARTI_r1.md).
