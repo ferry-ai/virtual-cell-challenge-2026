@@ -1,0 +1,96 @@
+{
+  "all_compatible_admitted": false,
+  "claims_complete_training": false,
+  "comparison_started": false,
+  "fit_admitted": false,
+  "fit_ready": false,
+  "identity": {
+    "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+    "cis_sha256": "d874c305f12e932d2d43eff629ea7d44c8536b7a198868c8fac10007d01dcf8f",
+    "controls": {
+      "context_A.h5ad": {
+        "bytes": 224973316,
+        "sha256": "f22e71968487d3da9402769dcd0c73a47851fad4cd7dd25510283c923031fe3e"
+      },
+      "context_B.h5ad": {
+        "bytes": 210966111,
+        "sha256": "41557555b3febf6db19fd930b4dd7db88941840077bf985d14dfff959c782380"
+      },
+      "context_C.h5ad": {
+        "bytes": 226056691,
+        "sha256": "e090e7c7cfdd0006f689214ba38ba0cd2669578e89c9bc325b65f0bd940c02e0"
+      }
+    },
+    "coords_sha256": "065906f739094c6ae572d21c0b14e7b8f2d4daa0284cdb68864ed27b9caba34c",
+    "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca"
+  },
+  "inventory_gaps": 10,
+  "inventory_status_rows": 15,
+  "inventory_units": 11,
+  "inventory_units_note": "11 verified derived rows in sourcefits_status_r9: h1_train and h1_val share transfer id h1, plus hepg2_nadig, jurkat_nadig, k562_essential, kolf_chromatin, kolf_metabolic, kolf_pan_genome access1, kolf_strong, orion_hct116 and rpe1. orion_hek293t is partial_output_budget and verified false. The failed metabolic and strong kernels have no status row. The original pan kernel is blocked.",
+  "inventory_verified_derived_rows": 11,
+  "kaggle_called": false,
+  "kind": "ready_dispatch",
+  "ledger_snapshot": [
+    {
+      "bytes": 3734,
+      "copied": true,
+      "sha256": "4c3b3516ad5f71dd2091556cd58daf4722232cc80a8fdd3c48c518bde75aae46",
+      "snapshot": "extended_mix_launch_r2__vcc-effects-mix-t25-bank-r1-retry1.json"
+    },
+    {
+      "bytes": 3451,
+      "copied": true,
+      "sha256": "926395a2c9277a1f150294e957f11e6a7384ee3a248d4cd271b816d0bd769c37",
+      "snapshot": "extended_mix_launch_r1__vcc-effects-mix-t25-bank-r1.json"
+    },
+    {
+      "bytes": 19188,
+      "copied": true,
+      "sha256": "256cfbaa99a45dd899289c3dfc159c1792048deb40893ff2ffe6cfebf0022bd4",
+      "snapshot": "sourcefits_status_r9__verification.json"
+    },
+    {
+      "bytes": 4249,
+      "copied": true,
+      "sha256": "cdfcd3ad3687dfe758fa4dd378f63ed109547a61b971ad31281e6c0da71c0e33",
+      "snapshot": "cd4_joint_status_r3__verification.json"
+    },
+    {
+      "bytes": 229,
+      "copied": true,
+      "sha256": "4e732824a7231951e79d3cc6f32737811457e228388f6b6b5ac46da28f736b77",
+      "snapshot": "h1_joint_completion_r1__status.json"
+    }
+  ],
+  "local_score": null,
+  "loss": null,
+  "optimizer": null,
+  "packages": [
+    {
+      "dataset_sources": [
+        "davideferrante11/vcc-ingest-code-cd4-r1"
+      ],
+      "dir": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\agenti\\grok_transfer_esteso_r8\\packages\\vcc-generate-t28-extbank-r1",
+      "kernel_sources": [
+        "davideferrante11/vcc-effects-mix-t25-bank-r1-retry1"
+      ],
+      "owner": "davideferrante11",
+      "parent_push_command": "Remove-Item Env:KAGGLE_USERNAME,Env:KAGGLE_KEY,Env:KAGGLE_API_TOKEN,Env:KAGGLE_CONFIG_DIR -ErrorAction SilentlyContinue; $env:KAGGLE_CONFIG_DIR = Join-Path $HOME '.kaggle-davideferrante11'; $py = & .\\scripts\\py.cmd -c \"import sys; print(sys.executable)\"; $kaggle = Join-Path (Split-Path $py) 'kaggle.exe'; & $kaggle kernels push -p 'C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\agenti\\grok_transfer_esteso_r8\\packages\\vcc-generate-t28-extbank-r1'",
+      "push_now": false,
+      "push_when": "Push only after the retry mix is COMPLETE and its cache is the mount, and after the official context h5ad files are attached and match controls.sha256. Do not mount the ERROR producer. Do not push from this worker.",
+      "slug": "davideferrante11/vcc-generate-t28-extbank-r1"
+    }
+  ],
+  "product": "prediction.vcc",
+  "product_is_not": [
+    "effects.npz",
+    "model",
+    "cache"
+  ],
+  "push_now": false,
+  "training_ready": false,
+  "utc": "2026-10-05T19:29:18Z",
+  "wave": "r8",
+  "worker_pushed": false
+}

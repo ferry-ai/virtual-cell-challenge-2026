@@ -1,0 +1,326 @@
+{
+  "controls_identity": {
+    "context_A.h5ad": {
+      "bytes": 224973316,
+      "sha256": "f22e71968487d3da9402769dcd0c73a47851fad4cd7dd25510283c923031fe3e"
+    },
+    "context_B.h5ad": {
+      "bytes": 210966111,
+      "sha256": "41557555b3febf6db19fd930b4dd7db88941840077bf985d14dfff959c782380"
+    },
+    "context_C.h5ad": {
+      "bytes": 226056691,
+      "sha256": "e090e7c7cfdd0006f689214ba38ba0cd2669578e89c9bc325b65f0bd940c02e0"
+    }
+  },
+  "fit_ready": false,
+  "gaps": [
+    {
+      "adapter": "missing",
+      "scientific_exclusion": false,
+      "source": "HIPSCI",
+      "technical_gap": "anchors and partitions are registered; not relaunched and not a voted cache in this package"
+    },
+    {
+      "adapter": "missing",
+      "scientific_exclusion": false,
+      "source": "Tian 2021",
+      "technical_gap": "the control token is not non-targeting without a verified map"
+    },
+    {
+      "adapter": "missing",
+      "scientific_exclusion": false,
+      "source": "Tian 2019",
+      "technical_gap": "QC is not verified; no QC was invented"
+    },
+    {
+      "adapter": "missing",
+      "scientific_exclusion": false,
+      "source": "SCP",
+      "technical_gap": "no statistic in this package"
+    },
+    {
+      "adapter": "missing",
+      "scientific_exclusion": false,
+      "source": "KO",
+      "technical_gap": "no statistic in this package"
+    },
+    {
+      "adapter": "missing",
+      "scientific_exclusion": false,
+      "source": "A549",
+      "technical_gap": "no statistic in this package"
+    },
+    {
+      "adapter": "missing",
+      "scientific_exclusion": false,
+      "source": "Norman 2019",
+      "technical_gap": "compound tokens stay blocked; no map was invented"
+    },
+    {
+      "adapter": "missing",
+      "scientific_exclusion": false,
+      "source": "GSE249595",
+      "technical_gap": "guides are absent; none were invented"
+    },
+    {
+      "adapter": "not in this generation",
+      "scientific_exclusion": false,
+      "source": "k562 GWPS",
+      "technical_gap": "parent is still closing it; this recipe does not rename k562_essential"
+    },
+    {
+      "adapter": "missing",
+      "scientific_exclusion": false,
+      "source": "davideferante axis",
+      "technical_gap": "that account has no axis dataset"
+    }
+  ],
+  "kind": "technical_inventory",
+  "note": "rows are saved derivations. gaps have no adapter here and are not excluded for size or target overlap",
+  "reconciliation": {
+    "not_a_derived_vote": [
+      {
+        "job": "davideferrante11/vcc-effects-kolf-metabolic-r4",
+        "status": "no_status",
+        "unit": null,
+        "verified": false
+      },
+      {
+        "job": "davidmaisterx/vcc-effects-kolf-pan-genome-r4",
+        "status": "blocked",
+        "unit": "kolf_pan_genome",
+        "verified": false
+      },
+      {
+        "job": "davideferrante11/vcc-effects-kolf-strong-r4",
+        "status": "no_status",
+        "unit": null,
+        "verified": false
+      },
+      {
+        "job": "davideferrante11/vcc-effects-orion-hek293t-r4",
+        "status": "partial_output_budget",
+        "unit": "orion_hek293t",
+        "verified": false
+      }
+    ],
+    "note": "11 verified derived rows: h1_train and h1_val share transfer id h1, plus nine other derived units. orion_hek293t is partial_output_budget and is not one of those 11. Failed metabolic and strong kernels have no status row. The original pan kernel is blocked; access1 is the derived pan row.",
+    "status_rows": 15,
+    "verified_derived_rows": 11,
+    "verified_derived_transfer_ids": [
+      "h1",
+      "hepg2_nadig",
+      "jurkat_nadig",
+      "k562_essential",
+      "kolf_chromatin",
+      "kolf_metabolic",
+      "kolf_pan_genome",
+      "kolf_strong",
+      "orion_hct116",
+      "rpe1"
+    ]
+  },
+  "redesign": false,
+  "rows": [
+    {
+      "cpu_count": 4,
+      "disk_available": 20940414976,
+      "in_this_generation": false,
+      "job": "davideferrante11/vcc-effects-h1-train-r4",
+      "output_bytes": 125569152,
+      "ram_available": 32658841600,
+      "saved_source_sha256": "a2be000c08ed25426f35efc4d11409d4ad3f32deaae6a8456dcb63f77087364d",
+      "status": "derived",
+      "technical_gap": "derived statistic exists; this generation does not mount the producer, only the mix cache",
+      "transfer_source_id": "h1",
+      "unit": "h1_train",
+      "verified": true,
+      "version": 1
+    },
+    {
+      "cpu_count": 4,
+      "disk_available": 20940414976,
+      "in_this_generation": false,
+      "job": "davideferrante11/vcc-effects-h1-val-r4",
+      "output_bytes": 41939880,
+      "ram_available": 32661704704,
+      "saved_source_sha256": "4a424f7e9aabc279dc6f4578b8c377822b9ae5c1901b6ce2a935401dcfc0a01d",
+      "status": "derived",
+      "technical_gap": "derived statistic exists; this generation does not mount the producer, only the mix cache",
+      "transfer_source_id": "h1",
+      "unit": "h1_val",
+      "verified": true,
+      "version": 1
+    },
+    {
+      "cpu_count": 4,
+      "disk_available": 20940414976,
+      "in_this_generation": false,
+      "job": "davideferrante11/vcc-effects-hepg2-nadig-r4",
+      "output_bytes": 1248689384,
+      "ram_available": 32741867520,
+      "saved_source_sha256": "d7c56154e5bf6242264b6099eb7f553f31edd96bfd1a2ef53e85d1092508f579",
+      "status": "derived",
+      "technical_gap": "derived statistic exists; this generation does not mount the producer, only the mix cache",
+      "transfer_source_id": "hepg2_nadig",
+      "unit": "hepg2_nadig",
+      "verified": true,
+      "version": 1
+    },
+    {
+      "cpu_count": 4,
+      "disk_available": 20940414976,
+      "in_this_generation": false,
+      "job": "davideferrante11/vcc-effects-jurkat-nadig-r4",
+      "output_bytes": 1173749303,
+      "ram_available": 32692023296,
+      "saved_source_sha256": "4f17c66d51e6fb388628c30fcd84264e983b67d5269b4529886e118e51ca5bc0",
+      "status": "derived",
+      "technical_gap": "derived statistic exists; this generation does not mount the producer, only the mix cache",
+      "transfer_source_id": "jurkat_nadig",
+      "unit": "jurkat_nadig",
+      "verified": true,
+      "version": 1
+    },
+    {
+      "cpu_count": 4,
+      "disk_available": 20940414976,
+      "in_this_generation": false,
+      "job": "davidmaisterx/vcc-effects-k562-essential-r4",
+      "output_bytes": 981560345,
+      "ram_available": 32643624960,
+      "saved_source_sha256": "a2dba69ab6eed2cfc9dc5ba13d7b8c25d5e47e630b3332b0291561c149246ab2",
+      "status": "derived",
+      "technical_gap": "derived statistic exists; this generation does not mount the producer, only the mix cache",
+      "transfer_source_id": "k562_essential",
+      "unit": "k562_essential",
+      "verified": true,
+      "version": 1
+    },
+    {
+      "cpu_count": 4,
+      "disk_available": 20940414976,
+      "in_this_generation": false,
+      "job": "davideferrante11/vcc-effects-kolf-chromatin-r4",
+      "output_bytes": 81763667,
+      "ram_available": 32723017728,
+      "saved_source_sha256": "c29c97dfe1477e0c433ede1e56cb6ec608e79871d5bb06ac51e7fea4593ac1c9",
+      "status": "derived",
+      "technical_gap": "derived statistic exists; this generation does not mount the producer, only the mix cache",
+      "transfer_source_id": "kolf_chromatin",
+      "unit": "kolf_chromatin",
+      "verified": true,
+      "version": 1
+    },
+    {
+      "cpu_count": 4,
+      "disk_available": 20940414976,
+      "in_this_generation": false,
+      "job": "davideferrante11/vcc-effects-kolf-metabolic-r4-retry1",
+      "output_bytes": 80458248,
+      "ram_available": 32708505600,
+      "saved_source_sha256": "18456e7df539f06e9dd887d4fa550502e52f3591e08f4ac491af3068043f1f81",
+      "status": "derived",
+      "technical_gap": "derived statistic exists; this generation does not mount the producer, only the mix cache",
+      "transfer_source_id": "kolf_metabolic",
+      "unit": "kolf_metabolic",
+      "verified": true,
+      "version": 1
+    },
+    {
+      "cpu_count": 4,
+      "disk_available": 20940414976,
+      "in_this_generation": false,
+      "job": "davidmaisterx/vcc-effects-kolf-pan-genome-r4-access1",
+      "output_bytes": 8745798063,
+      "ram_available": 32673366016,
+      "saved_source_sha256": "59a73c1c608f28cfe76ab3dfd593db010b2c336411a3146a7937b8e5b06d5f6a",
+      "status": "derived",
+      "technical_gap": "derived statistic exists; this generation does not mount the producer, only the mix cache",
+      "transfer_source_id": "kolf_pan_genome",
+      "unit": "kolf_pan_genome",
+      "verified": true,
+      "version": 1
+    },
+    {
+      "cpu_count": 4,
+      "disk_available": 20940427264,
+      "in_this_generation": false,
+      "job": "davidmaisterx/vcc-effects-kolf-pan-genome-r4",
+      "output_bytes": null,
+      "ram_available": 32688164864,
+      "saved_source_sha256": "5afb85d69a15b511728dd770242159b20c29c00e1061097d948e8065f47a5d40",
+      "status": "blocked",
+      "technical_gap": "derived statistic exists; this generation does not mount the producer, only the mix cache",
+      "transfer_source_id": "kolf_pan_genome",
+      "unit": "kolf_pan_genome",
+      "verified": false,
+      "version": 1
+    },
+    {
+      "cpu_count": 4,
+      "disk_available": 20940414976,
+      "in_this_generation": false,
+      "job": "davideferrante11/vcc-effects-kolf-strong-r4-retry1",
+      "output_bytes": 1173002837,
+      "ram_available": 32695574528,
+      "saved_source_sha256": "5211d94075a339a332dfec30efdd051b28f6467db8da4963a08da5efc01ccc30",
+      "status": "derived",
+      "technical_gap": "derived statistic exists; this generation does not mount the producer, only the mix cache",
+      "transfer_source_id": "kolf_strong",
+      "unit": "kolf_strong",
+      "verified": true,
+      "version": 1
+    },
+    {
+      "cpu_count": 4,
+      "disk_available": 20940414976,
+      "in_this_generation": false,
+      "job": "davideferrante11/vcc-effects-orion-hct116-r4",
+      "output_bytes": 10136079957,
+      "ram_available": 32671625216,
+      "saved_source_sha256": "822e913f7326c2312bbce567c34b383885d67b65f3f8db555655f58ea5164899",
+      "status": "derived",
+      "technical_gap": "derived statistic exists; this generation does not mount the producer, only the mix cache",
+      "transfer_source_id": "orion_hct116",
+      "unit": "orion_hct116",
+      "verified": true,
+      "version": 1
+    },
+    {
+      "cpu_count": 4,
+      "disk_available": 20940414976,
+      "in_this_generation": false,
+      "job": "davideferrante11/vcc-effects-orion-hek293t-r4",
+      "output_bytes": 10125002535,
+      "ram_available": 32644141056,
+      "saved_source_sha256": "f904b7ebb6b3fb7e413282e9c578a4a311888b621c67fb6ed9eba485499fb3dc",
+      "status": "partial_output_budget",
+      "technical_gap": "derived statistic exists; this generation does not mount the producer, only the mix cache",
+      "transfer_source_id": "orion_hek293t",
+      "unit": "orion_hek293t",
+      "verified": false,
+      "version": 1
+    },
+    {
+      "cpu_count": 4,
+      "disk_available": 20940414976,
+      "in_this_generation": false,
+      "job": "davideferrante11/vcc-effects-rpe1-r4",
+      "output_bytes": 1168411640,
+      "ram_available": 32709173248,
+      "saved_source_sha256": "6284c5193c46046450cf66cdf001ea3f9fdf01240cce4d77ccfb38104295c24e",
+      "status": "derived",
+      "technical_gap": "derived statistic exists; this generation does not mount the producer, only the mix cache",
+      "transfer_source_id": "rpe1",
+      "unit": "rpe1",
+      "verified": true,
+      "version": 1
+    }
+  ],
+  "same_linear_model": true,
+  "sourcefits_status": "r9",
+  "sourcefits_units": 13,
+  "training_ready": false
+}

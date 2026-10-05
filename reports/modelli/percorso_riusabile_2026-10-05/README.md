@@ -2,7 +2,7 @@
 
 **Ingresso unico per riuso:** [procedura del prossimo training](RIUSO_r1.md).
 **Stato e assegnazioni correnti:** [R-LEAD](../../../docs/piani/strategia-scientifica.md).
-**Rifit/invio in corso:** [retry del mix](ESECUZIONE_r11.md) e
+**Rifit/invio in corso:** [mix concluso e generazione](ESECUZIONE_r12.md) e
 [invio diretto autorizzato](INVIO_DIRETTO_r1.md).
 
 ## Quali dati usare
@@ -14,7 +14,7 @@
 | Copertura da riconciliare | [expected congelato](training_coverage_r1/expected.json) | Tutte le unità attese e fonti storiche; lacune da motivare |
 | Release del rifit corrente | [params congelati](extended_mix_launch_r2/vcc-effects-mix-t25-bank-r1-retry1/params.json) | Input specifici del primo mix esteso parziale; non tutto il catalogo |
 | Esecuzione del rifit | [ricevuta di lancio](extended_mix_launch_r2/vcc-effects-mix-t25-bank-r1-retry1.json) | Codice e parametri, account, alias del retry; non risultato scientifico |
-| Uso effettivo | `fit_receipt.json`, `source_manifest.json`, `checkpoint.json` del consumer concluso | Fonti realmente votanti, contributi, file e hash; ancora da recuperare per il rifit corrente |
+| Rifit e disponibilità sul pannello | [ricevute del mix concluso](extended_mix_completion_r1/model/fit_receipt.json), [inventario](extended_mix_completion_r1/model/panel_inventory.json) | 12 fonti registrate; 8 con target sul pannello. Hash delle matrici nel consumer e copertura completa ancora aperti |
 
 Non scegliere dataset per titolo, data o nome più recente. Il manifest individua
 la versione e i byte. `rlead-bench-cube-r2` resta input del pilot, mai fallback.
