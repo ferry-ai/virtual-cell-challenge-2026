@@ -1,11 +1,11 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
-- **Heartbeat Codex 5/10, campioni:** ora sei banche CD4 persistenti verificate
-  (D1–D3 Rest e tutti gli stati D4); due job banca originali ancora in corso.
-  Cinque consumatori CPU lanciati per materializzare i campioni annidati senza
-  ricampionare; D3 Rest in coda. [Prosecuzione e comandi](../../reports/modelli/percorso_riusabile_2026-10-05/PROSECUZIONE_CAMPIONI.md).
-  Usare `pipeline_state_r2.py` per isolare le credenziali degli account. Nessuna
-  nuova ingestione o copia locale di matrici; trainer esteso ancora da integrare.
+- **Heartbeat Codex 5/10, lettori:** sei banche CD4 persistenti; due banche
+  stimolate stanno elaborando D3. Sei materializzazioni CPU in avanzamento,
+  compreso D3 Rest, ora accettato da Kaggle. [Lettori e prossimo passo](../../reports/modelli/percorso_riusabile_2026-10-05/LETTORI_TRAINER.md).
+  Lettori di popolazioni e campioni implementati e testati su fixture; da provare
+  insieme sul cloud e collegare al trainer. Usare `pipeline_state_r2.py` e
+  `launch_samples_r2.py`. Nessuna nuova ingestione, corpus completo ancora aperto.
 
 - **Mandato Codex, 5/10, stessa chat di subentro:** rendere riutilizzabile il percorso
   archivio → banca → trainer e includere tutti i contesti idonei. [Strumenti e prove](../../reports/modelli/percorso_riusabile_2026-10-05/README.md):
