@@ -2,9 +2,9 @@
 
 **Priorità umana aggiornata:** [rifit e invio VCC diretto autorizzati](INVIO_DIRETTO_r1.md), senza attendere il banco comparativo.
 
-**Stato operativo corrente:** [primo mix esteso avviato](ESECUZIONE_r10.md) e
+**Stato operativo corrente:** [retry del mix dopo errore di avvio](ESECUZIONE_r11.md) e
 [copertura attesa congelata](ESECUZIONE_r1.md).
-Grok stessa sessione r8 prepara la predizione .vcc; parent ha lanciato il mix esteso con H1 joint e KOLF pan.
+Grok stessa sessione r8 prepara la predizione .vcc; parent segue l'unico retry del mix con H1 joint e KOLF pan.
 Il modello completo e la copertura D-053 restano aperti. Le note r2/r3/r4 sotto
 documentano passaggi precedenti, non l'assegnazione o lo stato attuale.
 

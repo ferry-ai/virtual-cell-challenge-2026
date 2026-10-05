@@ -2,10 +2,10 @@
 
 - **Priorità umana, 5/10:** [rifit e invio diretto autorizzati](../../reports/modelli/percorso_riusabile_2026-10-05/INVIO_DIRETTO_r1.md). Avviare appena eseguibile; generare e inviare senza attendere il banco comparativo. Supera il precedente divieto di invio della supervisione.
 
-- **Esecuzione corrente, 5/10:** [primo mix esteso avviato](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r10.md) e [copertura attesa](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).
-  Parent ha lanciato il mix esteso con H1 joint derivato e KOLF pan verificato/pubblico.
+- **Esecuzione corrente, 5/10:** [retry del mix dopo errore di avvio](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r11.md) e [copertura attesa](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).
+  Parent segue il solo retry SAMECODE del mix; originale ERROR prima del wrapper, senza output scientifico.
   R7 terminato; stessa sessione Grok r8 prepara generazione .vcc per invio diretto.
-  HEK J repair procede in parallelo e non blocca la produzione. GWPS ancora aperto.
+  HEK J repair derivato, H1 joint derivato; GWPS ancora aperto.
   Questo aggiornamento supera le assegnazioni r2/r3/r4 sotto. Copertura effettiva
   di tutte le linee/contesti aperta; parent continua lanci e persistenza.
 
