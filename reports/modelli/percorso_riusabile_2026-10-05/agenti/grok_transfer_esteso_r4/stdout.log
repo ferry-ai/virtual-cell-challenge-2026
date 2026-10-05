@@ -1,0 +1,15 @@
+La priorità è il primo pacchetto lanciabile: copio i moduli r3 già scritti in `grok_transfer_esteso_r4` e preparo `ready_dispatch.json`. Non eseguo push.La priorità è il lancio: copio i moduli r3 già scritti in r4, estendo la prima ondata alle banche chiuse compatibili e preparo pacchetti e `ready_dispatch.json` senza push. Prima verifico lo stato della cartella e le guide obbligatorie.Il reader Norman/iPSC è chiuso e non va rilanciato. Le banche compatibili già chiuse entrano nella prima ondata; preparo i pacchetti in r4, senza push.Il rifit deve restare il transfer t25/t28: il pool dei controlli nel codice attuale non coincide con `effects_from_pseudobulk`. Allineo quel punto, poi preparo i pacchetti lanciabili.Due errori del fixture: Tian2019 condivide il kernel Norman e viene etichettato male, e uno split rimasto solo con i controlli fa fallire l’intera unità. Correggo entrambi.24 pacchetti CPU sono pronti. Il parent può fare il preflight e il push. Questo worker non ha lanciato kernel: `worker_pushed` è false e non ci sono identificativi di job. Orario del dispatch: 2026-10-05T16:57:17Z.
+
+Il primo comando è il preflight, poi i push nell'ordine di `ready_dispatch.json`, con tetto di 5 kernel attivi per account:
+
+```text
+.\scripts\py.cmd reports/modelli/percorso_riusabile_2026-10-05/agenti/grok_transfer_esteso_r4/preflight_slots.py reports/modelli/percorso_riusabile_2026-10-05/agenti/grok_transfer_esteso_r4/preflight.json 20
+```
+
+Primi della coda, se il preflight lascia i posti: su `davideferrante11` Orion HCT116, Orion HEK293T, D1_Rest, RPE1, Jurkat; su `davidmaisterx` K562 essential e i tre D4. Se il GWPS occupa ancora uno slot, il quinto pacchetto dell'account resta in coda. Non rilanciare il GWPS, il reader Norman/iPSC già COMPLETE, né HIPSCI targeted19.
+
+Ogni kernel è privato, senza GPU, e salva gli effetti shrunk della ricetta t25 (peso 1, ampiezza 1.576, gamma 1, emissione t28). L'asse locale è stato ricalcolato: sha256 `25bfa667…e47201`, 18533 geni. Gli hash di `count_sum` e `mask` sono quelli dell'indice r10 e il kernel li verifica sul file montato. Il pool dei controlli ora include anche i donatori che hanno solo i controlli: sulla fixture densa coincide con `effects_from_pseudobulk` originale. Sette test di fixture passati; non sono l'esecuzione sulla banca.
+
+La fase 2 (`release_fit.py`) mescola quei frammenti e scrive effetti, manifest ed esposizione. Parte quando gli output dei kernel esistono. Il confronto 400×5 è preregistrato con `observed_result` null e non blocca il fit.
+
+Questa è la prima release estesa, non il catalogo D-053. Dentro: CD4 (12), Orion, K562 essential, Jurkat, RPE1, H1 train/val, HepG2 solo fuori dallo split che lo tiene, quattro KOLF con ancora non verificata. Fuori, con motivo: Norman senza mappa dei composti, Tian2019 con QC aperto, Tian2021 con etichetta `control` non mappata, controlli HIPSCI non risolti, A549 KO, SCP non partizionato, GWPS aperto, GSE249595 senza guide. L'inventario dei 100 record di catalogo è in `inventory.json`.

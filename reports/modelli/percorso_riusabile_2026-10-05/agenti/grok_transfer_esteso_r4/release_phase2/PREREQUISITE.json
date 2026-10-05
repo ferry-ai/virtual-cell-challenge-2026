@@ -1,0 +1,8 @@
+{
+ "phase": 2,
+ "push_now": false,
+ "prerequisite_file": "phase-1 outputs: source_model.json and statistics/*.npz from each package in ready_dispatch.json",
+ "action": "Parent pushes the phase-1 packages after a fresh preflight. When those kernels finish, run this script with the output directory as the first argument and a new directory as the second.",
+ "does_not_block_phase_1": true,
+ "claims_complete_training": false
+}

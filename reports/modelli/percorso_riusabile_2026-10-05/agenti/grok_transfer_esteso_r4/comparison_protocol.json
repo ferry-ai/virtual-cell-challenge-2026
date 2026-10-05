@@ -1,0 +1,32 @@
+{
+ "kind": "preregistration",
+ "registered_before_results": true,
+ "observed_result": null,
+ "observed_score": null,
+ "not_started": true,
+ "does_not_block_phase_1": true,
+ "model": "t25 effects and t28 emission. The only intended variable is the admitted bank.",
+ "reference_official_t28": 0.14484520500645978,
+ "reference_is_not_the_local_baseline": true,
+ "emission": {
+  "effects_scale": 1.5,
+  "gene_dispersion": true,
+  "gene_dispersion_scale": 1.0,
+  "cells_per_target": 400,
+  "generator_seed": 20260912,
+  "seed_indices": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "trial": "trial-ext-profile"
+ },
+ "decision_rule": {
+  "resolved": "abs(mean of paired deltas) > 2 * sd / sqrt(5)",
+  "favorable": "six-member delta resolved positive, the same without Jaccard resolved positive, PDS not resolved negative, and expanded-arm local score >= 0.100",
+  "loss_is_not_a_decision_metric": true,
+  "early_stop_stops_comparison_only": true
+ }
+}
