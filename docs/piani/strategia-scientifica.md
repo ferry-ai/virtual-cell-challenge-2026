@@ -1,5 +1,7 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Priorità umana, 5/10:** [rifit e invio diretto autorizzati](../../reports/modelli/percorso_riusabile_2026-10-05/INVIO_DIRETTO_r1.md). Avviare appena eseguibile; generare e inviare senza attendere il banco comparativo. Supera il precedente divieto di invio della supervisione.
+
 - **Esecuzione corrente, 5/10:** [tre retry conclusi e pooling esatto](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r8.md) e [copertura attesa](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).
   Parent ha verificato CD4 Stim8 e KOLF metabolic/strong; restano pan e GWPS attivi.
   R6 mixer non adottato come identico: pooling dopo shrink differisce dall'originale.

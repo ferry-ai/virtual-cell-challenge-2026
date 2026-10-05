@@ -1,5 +1,7 @@
 # Archivio, banca e trainer riutilizzabili
 
+**Priorità umana aggiornata:** [rifit e invio VCC diretto autorizzati](INVIO_DIRETTO_r1.md), senza attendere il banco comparativo.
+
 **Stato operativo corrente:** [tre retry conclusi e pooling esatto](ESECUZIONE_r8.md) e
 [copertura attesa congelata](ESECUZIONE_r1.md).
 Grok stessa sessione r7 corregge il pooling prima dello shrink; i tre retry CD4/KOLF sono verificati.
