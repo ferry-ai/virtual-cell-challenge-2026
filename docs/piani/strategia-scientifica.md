@@ -2,8 +2,8 @@
 
 - **Priorità umana, 5/10:** [rifit e invio diretto autorizzati](../../reports/modelli/percorso_riusabile_2026-10-05/INVIO_DIRETTO_r1.md). Avviare appena eseguibile; generare e inviare senza attendere il banco comparativo. Supera il precedente divieto di invio della supervisione.
 
-- **Esecuzione corrente, 5/10:** [tre retry conclusi e pooling esatto](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r8.md) e [copertura attesa](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).
-  Parent ha verificato CD4 Stim8 e KOLF metabolic/strong; restano pan e GWPS attivi.
+- **Esecuzione corrente, 5/10:** [KOLF pan pronto e accessibile](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r9.md) e [copertura attesa](../../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r1.md).
+  Parent ha verificato undici sourcefit e tre condizioni CD4; solo GWPS producer ancora attivo.
   R6 mixer non adottato come identico: pooling dopo shrink differisce dall'originale.
   Grok stessa sessione r7 prepara joint count_sum e poi mix/export esatti.
   Questo aggiornamento supera le assegnazioni r2/r3/r4 sotto. Copertura effettiva

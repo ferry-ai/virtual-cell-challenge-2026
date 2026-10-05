@@ -2,9 +2,9 @@
 
 **Priorità umana aggiornata:** [rifit e invio VCC diretto autorizzati](INVIO_DIRETTO_r1.md), senza attendere il banco comparativo.
 
-**Stato operativo corrente:** [tre retry conclusi e pooling esatto](ESECUZIONE_r8.md) e
+**Stato operativo corrente:** [KOLF pan pronto e accessibile](ESECUZIONE_r9.md) e
 [copertura attesa congelata](ESECUZIONE_r1.md).
-Grok stessa sessione r7 corregge il pooling prima dello shrink; i tre retry CD4/KOLF sono verificati.
+Grok stessa sessione r7 corregge il pooling prima dello shrink; undici sourcefit e tutte le condizioni CD4 sono verificati.
 Il modello completo e la copertura D-053 restano aperti. Le note r2/r3/r4 sotto
 documentano passaggi precedenti, non l'assegnazione o lo stato attuale.
 
