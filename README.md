@@ -1,6 +1,6 @@
 # Virtual Cell Challenge 2026
 
-**DATA ARCHIVE — REUSE, DO NOT REINGEST:** [current dataset index, versions and hashes](reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r9/README.md)
+**DATA ARCHIVE — REUSE, DO NOT REINGEST:** [current dataset index, versions and hashes](reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r10/README.md)
 and [available data, contexts and GB](reports/modelli/percorso_riusabile_2026-10-05/DATI_DISPONIBILI_r2.md).
 The main path is verified archive → reusable banks and cell samples → extended training.
 

@@ -1,7 +1,9 @@
 # Archivio, banca e trainer riutilizzabili
 
-**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r9/README.md),
+**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r10/README.md),
 con manifest immutabile, account, versioni, hash e distinzione dai dataset storici.
+R10 chiude HIPSCI mirato19: banca e campioni verificati su 20 contesti BIO;
+622.353 cellule campionate al livello 128. Resta aperto K562 GWPS, snapshot r7.
 R9: HIPSCI genome-wide 24/24 e due unioni chiuse; Norman banca/campioni v1 e
 iPSC input v3 pubblici senza ricalcolo. K562 GWPS e HIPSCI mirato19 ancora aperti.
 Il percorso completo fino al consumo effettivo nel trainer non è ancora certificato.

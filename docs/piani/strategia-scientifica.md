@@ -1,5 +1,11 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Chiusura HIPSCI mirato19, 5/10:** [indice r10](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r10/README.md).
+  Banca/campioni verificati: 20 contesti BIO, 622.353 cellule al livello 128.
+  Rimane K562 GWPS attivo, snapshot remaining_open_progress_r7. Tutte le HIPSCI
+  attualmente lanciate sono chiuse; nessun rilancio. Grok r2 continua sul trainer,
+  release ammessa, copertura catalogo e consumo effettivo ancora aperti.
+
 - **Stato corrente, 5/10:** [indice r9](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r9/README.md).
   HIPSCI genome-wide 24/24 e due unioni verificate. Norman banca/campioni v1 e
   iPSC statistiche v3 pubblici, byte originali conservati. Restano K562 GWPS e
