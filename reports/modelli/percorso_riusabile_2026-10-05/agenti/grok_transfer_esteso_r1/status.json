@@ -1,0 +1,62 @@
+{
+  "phase": "blocked_before_fit",
+  "later_index_observed": {
+    "path": "reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r8/manifest.json",
+    "sha256": "272fced871671d7ab6295c0e67b29bec94a5275c20fdd67fc2ab3754897b6fb4",
+    "training_ready": false,
+    "hipsci_state": "hipsci_verified_r4/state.json",
+    "fitness": "12/12 remote_complete_union_checked",
+    "nonfitness": "11/12 incomplete",
+    "jobs": "23 remote_complete_manifest_checked, 1 not_complete"
+  },
+  "utc": "2026-10-05T16:05:00Z",
+  "owned_files": [
+    "status.json",
+    "result.md",
+    "pins.py",
+    "linear_effects.py",
+    "linear_transfer.py",
+    "reconcile.py",
+    "test_linear_refit.py",
+    "preflight_slots.py",
+    "protocol.json",
+    "admission.json",
+    "admission_r2.json",
+    "admission_r3.json",
+    "refusal.json",
+    "refusal_r3.json",
+    "preflight.json",
+    "_census.py",
+    "_hipsci_count.py",
+    "_summarize.py",
+    "_write_r2.py",
+    "_write_r3.py",
+    "_r8_read.py"
+  ],
+  "probes": "The underscore scripts were one-shot readers. _census.py now exits immediately. They are not the fit.",
+  "read_this": "admission_r3.json and refusal_r3.json. admission.json and admission_r2.json are superseded parser passes.",
+  "commands": [
+    ".\\scripts\\py.cmd -m unittest discover -s reports\\modelli\\percorso_riusabile_2026-10-05\\agenti\\grok_transfer_esteso_r1 -p test_*.py",
+    ".\\scripts\\py.cmd reports\\modelli\\percorso_riusabile_2026-10-05\\agenti\\grok_transfer_esteso_r1\\reconcile.py",
+    ".\\scripts\\py.cmd reports\\modelli\\percorso_riusabile_2026-10-05\\agenti\\grok_transfer_esteso_r1\\preflight_slots.py ...\\preflight.json"
+  ],
+  "cloud_jobs": [],
+  "proofs": [
+    "14 fixture tests OK",
+    "r7 sha 0c786da9155360e2cbe01604dba37ab5141e71022880be1ab20a4e4fb2f03678",
+    "100 of 100 catalogue roles unresolved",
+    "HIPSCI 14/24 verified, both units incomplete",
+    "Norman kernel status ERROR; bank receipt still in r7",
+    "fit_launched false"
+  ],
+  "blockers": [
+    "r7 training_ready false",
+    "100 unresolved roles",
+    "15 explicit open adapters",
+    "12 CD4 unit_ref values without transfer_source_id",
+    "pinned r7 HIPSCI unions were 7/12 and 7/12; later r4 file shows fitness 12/12 union checked and nonfitness 11/12",
+    "iPSC dataset private, cross-account mount absent from r7",
+    "Norman producer kernel status ERROR, not mounted"
+  ],
+  "next_action": "Do not fit on r7 or by switching to r8. r8 is a storage index with training_ready false, nonfitness still 11/12, and catalogue/QC still open. One HIPSCI part was still RUNNING; it was not relaunched."
+}

@@ -1,7 +1,12 @@
 # Archivio, banca e trainer riutilizzabili
 
-**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r8/README.md),
+**Indice operativo attuale:** [dove sono grezzi, banche e campioni](cloud_catalog_r9/README.md),
 con manifest immutabile, account, versioni, hash e distinzione dai dataset storici.
+R9: HIPSCI genome-wide 24/24 e due unioni chiuse; Norman banca/campioni v1 e
+iPSC input v3 pubblici senza ricalcolo. K562 GWPS e HIPSCI mirato19 ancora aperti.
+Il percorso completo fino al consumo effettivo nel trainer non è ancora certificato.
+Grok continua nella stessa sessione in `agenti/grok_transfer_esteso_r2/`;
+la prima consegna r1 non è adottata: [difetto BIO riprodotto](GROK_REVIEW_r1.md).
 Include 15 banche verificate e 12 matrici campionate CD4 complete; le nuove parti
 HEK293T sono ora chiuse (6/6 e unione, snapshot_parts_r5); KOLF e HCT116 sono chiusi anche nei campioni.
 Include anche HepG2 e otto nuove chiusure banca/campioni verificate; il trainer resta aperto.

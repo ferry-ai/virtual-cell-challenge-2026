@@ -1,5 +1,14 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Stato corrente, 5/10:** [indice r9](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r9/README.md).
+  HIPSCI genome-wide 24/24 e due unioni verificate. Norman banca/campioni v1 e
+  iPSC statistiche v3 pubblici, byte originali conservati. Restano K562 GWPS e
+  HIPSCI mirato19 nell'ultimo snapshot. Copertura catalogo e consumo nel trainer
+  ancora aperti. Grok prosegue nella stessa sessione in r2 dopo la consegna r1:
+  [verifica e difetto BIO riprodotto](../../reports/modelli/percorso_riusabile_2026-10-05/GROK_REVIEW_r1.md).
+  R1 non adottata; nessun fit esteso avviato. Il parent chiude dati/accessi/indice,
+  Grok corregge adapter e prepara release ammessa e runtime di rifit.
+
 - **Chiusure nuove, 5/10:** [indice r8](../../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r8/README.md).
   SCP KO tre unità/cinque contesti banca-campioni verificati; HIPSCI fitness 12/12
   e unione completa, nonfitness 11/12 (p8 df11 attiva). K562 GWPS e HIPSCI mirato19

@@ -1,0 +1,2037 @@
+{
+ "utc": "2026-10-05T15:02:06.715779+00:00",
+ "manifest_sha256": "0c786da9155360e2cbe01604dba37ab5141e71022880be1ab20a4e4fb2f03678",
+ "catalogue_sha256": "7cb0ff9515b6105a58f762693548300dafc0e4d9735421b2baecc26111311c98",
+ "fit_admitted": false,
+ "blockers": [
+  "r7 training_ready is false",
+  "unresolved roles: 100 of 100",
+  "open adapters: 33",
+  "unit_ref without explicit transfer_source_id: 12",
+  "no catalogue record has an explicit transfer_source_id",
+  "HIPSCI bank+samples verified 14/24 (hipsci_gw_fitness 7/12 incomplete, hipsci_gw_nonfitness 7/12 incomplete); unions incomplete; no new HIPSCI launch from this session",
+  "HIPSCI consumer_hashes_verified is false on verified parts",
+  "iPSC sample input davideferante/vcc-tian-ipsc-sample-input-r1 is private; cross-account mount is not in r7",
+  "Norman bank receipt is on producer davideferante/vcc-derivatives-tian-norman-r1; ERROR kernel_source is not treated as data loss and is not mounted from here",
+  "source roles and QC are not certified by a closed bank or sample receipt",
+  "Tahoe is not a catalogo_r4 record and is not authorized by this reconciliation"
+ ],
+ "n_records": 100,
+ "unresolved_roles": 100,
+ "open_adapter_ids": [
+  "remote/kolf_KOLF_Pan_Genome_QC_Filtered",
+  "remote/scp_FrangiehIzar2021_protein",
+  "remote/scp_GehringPachter2019",
+  "remote/scp_JoungZhang2023_atlas",
+  "remote/scp_JoungZhang2023_combinatorial",
+  "remote/scp_NadigOConner2024_hepg2",
+  "remote/scp_NadigOConner2024_jurkat",
+  "remote/scp_PapalexiSatija2021_eccite_arrayed_protein",
+  "remote/scp_PapalexiSatija2021_eccite_protein",
+  "remote/scp_ReplogleWeissman2022_K562_essential",
+  "remote/scp_ReplogleWeissman2022_K562_gwps",
+  "remote/scp_ReplogleWeissman2022_rpe1",
+  "remote/scp_WeinrebKlein2020",
+  "remote/southard_fibroblast_CRISPRa_mean_pop",
+  "remote/southard_RPE1_CRISPRa_mean_pop",
+  "ingested/hepg2_nadig",
+  "ingested/jurkat_nadig",
+  "ingested/h1_vcc2025_trainval",
+  "ingested/hipsci_targeted_19",
+  "ingested/hipsci_gw_fitness",
+  "ingested/hipsci_gw_nonfitness",
+  "ingested/replogle_k562_gwps",
+  "ingested/replogle_k562_essential",
+  "ingested/replogle_rpe1",
+  "ingested/a549_ko",
+  "ingested/tian_norman",
+  "ingested/kolf_small",
+  "ingested/kolf_strong",
+  "ingested/southard",
+  "ingested/scp_ko_frangieh_sunshine_papalexi",
+  "ingested/scp_tcells_shifrut_datlinger",
+  "ingested/scp_k562_hek_dixit_xu",
+  "ingested/jurkat_gse249595"
+ ],
+ "unit_ref_without_transfer_source_id": [
+  "remote/cd4_D1_Rest",
+  "remote/cd4_D1_Stim48hr",
+  "remote/cd4_D1_Stim8hr",
+  "remote/cd4_D2_Rest",
+  "remote/cd4_D2_Stim48hr",
+  "remote/cd4_D2_Stim8hr",
+  "remote/cd4_D3_Rest",
+  "remote/cd4_D3_Stim48hr",
+  "remote/cd4_D3_Stim8hr",
+  "remote/cd4_D4_Rest",
+  "remote/cd4_D4_Stim48hr",
+  "remote/cd4_D4_Stim8hr"
+ ],
+ "modality_counts": {
+  "KO (Cas9)": 1,
+  "CRISPRi": 19,
+  "CRISPR": 28,
+  "drug": 10,
+  "cytokines": 1,
+  "proteine (ADT)": 3,
+  "ORF overexpression": 2,
+  "CRISPR-cas9": 6,
+  "CRISPR, drug": 1,
+  "cytokine": 1,
+  "CRISPR-cas13": 1,
+  "CRISPRa": 4,
+  "unspecified": 23
+ },
+ "tag_counts": {
+  "open_adapter": 33,
+  "pilot_mention": 17,
+  "scarce_controls_stated": 2,
+  "missing_guides": 1,
+  "non_dict_record": 5
+ },
+ "records": [
+  {
+   "record_id": "remote/a549_GSE345058_SC_raw_normalized_counts",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "KO (Cas9)",
+   "adapter": "h5rows",
+   "catalogue_state": "ingerito (J10, job 118, layer raw_counts): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/cd4_D1_Rest",
+   "role": "unresolved",
+   "integration": "donor_bank_pending_trainer",
+   "unit_ref": "D1_Rest",
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "tags": []
+  },
+  {
+   "record_id": "remote/cd4_D1_Stim48hr",
+   "role": "unresolved",
+   "integration": "donor_bank_pending_trainer",
+   "unit_ref": "D1_Stim48hr",
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "tags": []
+  },
+  {
+   "record_id": "remote/cd4_D1_Stim8hr",
+   "role": "unresolved",
+   "integration": "donor_bank_pending_trainer",
+   "unit_ref": "D1_Stim8hr",
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "tags": []
+  },
+  {
+   "record_id": "remote/cd4_D2_Rest",
+   "role": "unresolved",
+   "integration": "donor_bank_pending_trainer",
+   "unit_ref": "D2_Rest",
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "tags": []
+  },
+  {
+   "record_id": "remote/cd4_D2_Stim48hr",
+   "role": "unresolved",
+   "integration": "donor_bank_pending_trainer",
+   "unit_ref": "D2_Stim48hr",
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "tags": []
+  },
+  {
+   "record_id": "remote/cd4_D2_Stim8hr",
+   "role": "unresolved",
+   "integration": "donor_bank_pending_trainer",
+   "unit_ref": "D2_Stim8hr",
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "tags": []
+  },
+  {
+   "record_id": "remote/cd4_D3_Rest",
+   "role": "unresolved",
+   "integration": "donor_bank_pending_trainer",
+   "unit_ref": "D3_Rest",
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "tags": []
+  },
+  {
+   "record_id": "remote/cd4_D3_Stim48hr",
+   "role": "unresolved",
+   "integration": "donor_bank_pending_trainer",
+   "unit_ref": "D3_Stim48hr",
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "tags": []
+  },
+  {
+   "record_id": "remote/cd4_D3_Stim8hr",
+   "role": "unresolved",
+   "integration": "donor_bank_pending_trainer",
+   "unit_ref": "D3_Stim8hr",
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "tags": []
+  },
+  {
+   "record_id": "remote/cd4_D4_Rest",
+   "role": "unresolved",
+   "integration": "donor_bank_pending_trainer",
+   "unit_ref": "D4_Rest",
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "tags": []
+  },
+  {
+   "record_id": "remote/cd4_D4_Stim48hr",
+   "role": "unresolved",
+   "integration": "donor_bank_pending_trainer",
+   "unit_ref": "D4_Stim48hr",
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "tags": []
+  },
+  {
+   "record_id": "remote/cd4_D4_Stim8hr",
+   "role": "unresolved",
+   "integration": "donor_bank_pending_trainer",
+   "unit_ref": "D4_Stim8hr",
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "tags": []
+  },
+  {
+   "record_id": "remote/h1_train",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "ingerito (J04)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/h1_val",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "ingerito (J04)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/kolf_KOLF_Chromatin_Modifiers_QC_Filtered",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J08, jobs 116 e 124): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/kolf_KOLF_Metabolic_Enzymes_QC_Filtered",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J08, job 124): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/kolf_KOLF_Pan_Genome_QC_Filtered",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "da ingerire: 2.659.209 cellule in CSC; adattatore pronto (h5csc_shards), non ancora in coda",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/kolf_KOLF_Strong_Perturbations",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5rows",
+   "catalogue_state": "ingerito (J12, job 126, layer counts): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_AdamsonWeissman2016_GSM2406675_10X001",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "da ingerire: i controlli sono nomi di plasmidi (62(mod)_pBA581, 63(mod)_pBA580): serve una mappa delle etichette dichiarata",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_AdamsonWeissman2016_GSM2406677_10X005",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "da ingerire: come l'altro file di Adamson, serve una mappa delle etichette",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_AdamsonWeissman2016_GSM2406681_10X010",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "da ingerire: come l'altro file di Adamson, serve una mappa delle etichette",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_AissaBenevolenskaya2021",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "drug",
+   "adapter": "h5rows",
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_ChangYe2021",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "drug",
+   "adapter": "h5rows",
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_CuiHacohen2023",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "cytokines",
+   "adapter": "h5rows",
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_DatlingerBock2017",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5rows",
+   "catalogue_state": "ingerito (J14, job 128): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_DatlingerBock2021",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5rows",
+   "catalogue_state": "ingerito (J14, job 128): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_DixitRegev2016_K562_TFs_13_days",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J15, job 129): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_DixitRegev2016_K562_TFs_7_days",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J15, job 129): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_DixitRegev2016_K562_TFs_High_MOI",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J15, job 129): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_FrangiehIzar2021_protein",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "proteine (ADT)",
+   "adapter": "\u2014",
+   "catalogue_state": "fuori dalla supervisione RNA: matrice di proteine di superficie (24 feature), altro saggio; vista ausiliaria possibile",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/scp_FrangiehIzar2021_RNA",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J13, job 127): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_GasperiniShendure2019_atscale",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "fuori per ora: schermo di enhancer, i bersagli non sono geni",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_GasperiniShendure2019_highMOI",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "fuori per ora: schermo di enhancer, i bersagli non sono geni",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_GasperiniShendure2019_lowMOI",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "fuori per ora: schermo di enhancer, i bersagli non sono geni",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_GehringPachter2019",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "drug",
+   "adapter": "\u2014",
+   "catalogue_state": "fuori dalla supervisione dei conteggi: X non intero e nessun layer di conteggi grezzi",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/scp_JoungZhang2023_atlas",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "ORF overexpression",
+   "adapter": "\u2014",
+   "catalogue_state": "fuori dalla supervisione dei conteggi: X non intero e nessun layer di conteggi grezzi",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/scp_JoungZhang2023_combinatorial",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "ORF overexpression",
+   "adapter": "\u2014",
+   "catalogue_state": "fuori dalla supervisione dei conteggi: X non intero e nessun layer di conteggi grezzi",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/scp_LaraAstiasoHuntly2023_exvivo",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR-cas9",
+   "adapter": "h5rows",
+   "catalogue_state": "fuori: topo (l'asse \u00e8 umano)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_LaraAstiasoHuntly2023_invivo",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR-cas9",
+   "adapter": "h5rows",
+   "catalogue_state": "fuori: topo (l'asse \u00e8 umano)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_LaraAstiasoHuntly2023_leukemia",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR-cas9",
+   "adapter": "h5rows",
+   "catalogue_state": "fuori: topo (l'asse \u00e8 umano)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_LiangWang2023",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR-cas9",
+   "adapter": "h5rows",
+   "catalogue_state": "fuori: topo (l'asse \u00e8 umano)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_LotfollahiTheis2023",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "drug",
+   "adapter": "CSC da scrivere",
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_McFarlandTsherniak2020",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR, drug",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "da ingerire con testa separata: farmaci e CRISPR nello stesso file; i farmaci non prevalgono (proprietario)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_NadigOConner2024_hepg2",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "\u2014",
+   "catalogue_state": "fuori: ripubblicazione scPerturb di hepg2_nadig, ingerito dal rilascio originale",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/scp_NadigOConner2024_jurkat",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "\u2014",
+   "catalogue_state": "fuori: ripubblicazione scPerturb di jurkat_nadig, ingerito dal rilascio originale",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/scp_NormanWeissman2019_filtered",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J11, job 119): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_PapalexiSatija2021_eccite_arrayed_protein",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "proteine (ADT)",
+   "adapter": "\u2014",
+   "catalogue_state": "fuori dalla supervisione RNA: matrice di proteine di superficie (4 feature), altro saggio; vista ausiliaria possibile",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/scp_PapalexiSatija2021_eccite_arrayed_RNA",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J13, job 127): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_PapalexiSatija2021_eccite_protein",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "proteine (ADT)",
+   "adapter": "\u2014",
+   "catalogue_state": "fuori dalla supervisione RNA: matrice di proteine di superficie (4 feature), altro saggio; vista ausiliaria possibile",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/scp_PapalexiSatija2021_eccite_RNA",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "da ingerire: etichette GENEg1 senza separatore, serve una mappa dichiarata; la parte arrayed \u00e8 in coda",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_ReplogleWeissman2022_K562_essential",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "\u2014",
+   "catalogue_state": "fuori: ripubblicazione scPerturb di replogle_k562_essential, ingerito dal rilascio originale",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/scp_ReplogleWeissman2022_K562_gwps",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "\u2014",
+   "catalogue_state": "fuori: ripubblicazione scPerturb di replogle_k562_gwps, ingerito dal rilascio originale",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/scp_ReplogleWeissman2022_rpe1",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "\u2014",
+   "catalogue_state": "fuori: ripubblicazione scPerturb di replogle_rpe1, ingerito dal rilascio originale",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/scp_SantinhaPlatt2023",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR-cas9",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "fuori: topo (l'asse \u00e8 umano)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_SchiebingerLander2019_GSE106340",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "drug",
+   "adapter": "h5rows",
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_SchiebingerLander2019_GSE115943",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "drug",
+   "adapter": "h5rows",
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_11_screen",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5rows",
+   "catalogue_state": "fuori per ora: enhancer, e TAP-seq misura un pannello di geni",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_8_screen",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5rows",
+   "catalogue_state": "fuori per ora: enhancer, e TAP-seq misura un pannello di geni",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_ShifrutMarson2018",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5rows",
+   "catalogue_state": "ingerito (J14, job 128): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_SrivatsanTrapnell2020_sciplex2",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "drug",
+   "adapter": "h5rows",
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_SrivatsanTrapnell2020_sciplex3",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "drug",
+   "adapter": "h5rows",
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_SrivatsanTrapnell2020_sciplex4",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "drug",
+   "adapter": "h5rows",
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_SunshineHein2023",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR-cas9",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J13, job 127): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_TianKampmann2019_day7neuron",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J11, job 119): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_TianKampmann2019_iPSC",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J11, job 119): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_TianKampmann2021_CRISPRa",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J11, job 119): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_TianKampmann2021_CRISPRi",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J11, job 119): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_WeinrebKlein2020",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "cytokine",
+   "adapter": "\u2014",
+   "catalogue_state": "fuori dalla supervisione dei conteggi: X non intero e nessun layer di conteggi grezzi",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/scp_WesselsSatija2023",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR-cas13",
+   "adapter": "h5rows",
+   "catalogue_state": "fuori per ora: coppie di guide Cas13 per cellula (combinate), nessun gene singolo",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_XieHon2017",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPR",
+   "adapter": "h5rows",
+   "catalogue_state": "fuori per ora: schermo di enhancer, i bersagli non sono geni",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_XuCao2023",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRi",
+   "adapter": "h5csc_shards",
+   "catalogue_state": "ingerito (J15, job 129): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/scp_ZhaoSims2021",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "drug",
+   "adapter": "h5rows",
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "tags": []
+  },
+  {
+   "record_id": "remote/southard_fibroblast_CRISPRa_final_pop",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRa",
+   "adapter": "h5rows",
+   "catalogue_state": "in ingestione (J09, job 125): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/southard_fibroblast_CRISPRa_mean_pop",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRa",
+   "adapter": "\u2014",
+   "catalogue_state": "solo aggregati: medie per popolazione (vedi sorgenti solo aggregate)",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "remote/southard_RPE1_CRISPRa_final_population",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRa",
+   "adapter": "h5rows",
+   "catalogue_state": "in ingestione (J09, job 125): vedi \u00a71",
+   "tags": []
+  },
+  {
+   "record_id": "remote/southard_RPE1_CRISPRa_mean_pop",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": "CRISPRa",
+   "adapter": "\u2014",
+   "catalogue_state": "solo aggregati: medie per popolazione (vedi sorgenti solo aggregate)",
+   "tags": [
+    "open_adapter"
+   ]
+  },
+  {
+   "record_id": "ingested/hepg2_nadig",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "nei tre training, come contesto tenuto fuori (classi C e J)",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/jurkat_nadig",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "nei tre training",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/h1_vcc2025_trainval",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "nei tre training, train e validation letti come un esperimento: 38.176 controlli sono gli stessi nei due file e contano una volta (il test \u00e8 la riserva)",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/hipsci_targeted_19",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "nei tre training (526.843 cellule senza guida assegnata restano fuori dalla supervisione)",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/hipsci_gw_fitness",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "fuori dal training: 36 NTC in tutto, da 1 a 5 per linea, sotto il minimo di 30 per chiave; rientra solo con controlli dichiarati (le cellule non assegnate come controlli chiedono prima un'analisi)",
+   "tags": [
+    "open_adapter",
+    "scarce_controls_stated",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/hipsci_gw_nonfitness",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "fuori dal training: 12 NTC in tutto, come per il fitness",
+   "tags": [
+    "open_adapter",
+    "scarce_controls_stated",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/replogle_k562_gwps",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "nel secondo e nel terzo training (75.328 controlli nel pre-passo r5); i dataset rlab-k562-gwps (codici al posto dei bersagli, E-20260930-003) e rlab-k562-gwps-r2 (ID Ensembl come simboli, E-20260930-004) non entrano in nessun training",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/replogle_k562_essential",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "nel secondo e nel terzo training (10.691 controlli nel pre-passo r5); rlab-k562-essential (E-20260930-004) in nessuno",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/replogle_rpe1",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "nel secondo e nel terzo training (11.485 controlli nel pre-passo r5); rlab-rpe1 (E-20260930-004) in nessuno",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/a549_ko",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "nel terzo training (KO)",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/tian_norman",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "nel terzo training: Tian 2019 iPSC 275.708 e neuroni 182.790, Tian 2021 CRISPRi 32.300 e CRISPRa 21.193, Norman 2019 (K562 CRISPRa, combinate con una classe loro) 111.445",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/kolf_small",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "nel terzo training: cromatina 44.039 (shard del 116 riusati), metabolico 117.768",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/kolf_strong",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "nel terzo training",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/southard",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "in ingestione: RPE1 850.225 e Hs27 447.301 cellule (CRISPRa), lette da Zenodo a circa uno shard ogni 9 minuti; fuori dal terzo training perch\u00e9 non pubblicato al lancio del suo pre-passo",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/scp_ko_frangieh_sunshine_papalexi",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "pubblicato, in nessun training ancora: Frangieh 2021 218.331 (tre contesti: Control, IFN\u03b3, co-coltura), Sunshine 2023 90.380, Papalexi 2021 arrayed 8.984",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/scp_tcells_shifrut_datlinger",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "pubblicato, in nessun training ancora: Shifrut 2018 52.236 (quattro contesti, donatore per stimolo), Datlinger 2017 5.905 e 2021 39.194 (stimolate e non)",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/scp_k562_hek_dixit_xu",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "pubblicato, in nessun training ancora: Dixit 2016 giorno 7 33.013, giorno 13 19.268, alta MOI 51.898 (controlli i tagli intergenici), Xu 2023 HEK293 CRISPRi 98.315",
+   "tags": [
+    "open_adapter",
+    "pilot_mention"
+   ]
+  },
+  {
+   "record_id": "ingested/jurkat_gse249595",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "fuori: nessuna chiamata delle guide nel rilascio; si supervisiona dopo un'assegnazione provata",
+   "tags": [
+    "open_adapter",
+    "missing_guides"
+   ]
+  },
+  {
+   "record_id": "aggregate_only/dld1_gse337988",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "file per cellula da verificare",
+   "tags": [
+    "non_dict_record"
+   ]
+  },
+  {
+   "record_id": "aggregate_only/mixscale (parte DE)",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "le cellule esistono come oggetti Seurat (IFNG, IFNB, INS, TGFB, TNFA): servono R e un adattatore",
+   "tags": [
+    "non_dict_record"
+   ]
+  },
+  {
+   "record_id": "aggregate_only/southard_*_mean_pop",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "le cellule sono nei file final_pop dello stesso studio",
+   "tags": [
+    "non_dict_record"
+   ]
+  },
+  {
+   "record_id": "aggregate_only/depmap_24q4",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "covariate ausiliarie, mai supervisione",
+   "tags": [
+    "non_dict_record"
+   ]
+  },
+  {
+   "record_id": "aggregate_only/catalogo_accessioni",
+   "role": "unresolved",
+   "integration": "not_reconciled",
+   "unit_ref": null,
+   "transfer_source_id": null,
+   "exclusion": null,
+   "modality": null,
+   "adapter": null,
+   "catalogue_state": "da riconciliare una per una",
+   "tags": [
+    "non_dict_record"
+   ]
+  }
+ ],
+ "units": {
+  "n": 39,
+  "counts": {
+   "bank:remote_complete_manifest_checked": 37,
+   "samples:remote_complete_manifest_checked": 34,
+   "samples:remote_complete_union_checked": 3
+  },
+  "consumer_access": {
+   "not_verified": 12,
+   "absent": 25
+  },
+  "units": [
+   {
+    "unit": "D1_Rest",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": "not_verified",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+    "version_ref": "davideferrante11/vcc-bank-cd4-1-3-rest-r2/versions/1",
+    "receipt_sha256": "bc5d1b3a464e659922b4161f28f463f91cbc478618de2250bd08856402b553e4"
+   },
+   {
+    "unit": "D2_Rest",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": "not_verified",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+    "version_ref": "davideferrante11/vcc-bank-cd4-1-3-rest-r2/versions/1",
+    "receipt_sha256": "d9f7b52253a90a4eac65af4278d71efa5cce60d4dbae5b080fa1a71997bd3cd6"
+   },
+   {
+    "unit": "D3_Rest",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": "not_verified",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+    "version_ref": "davideferrante11/vcc-bank-cd4-1-3-rest-r2/versions/1",
+    "receipt_sha256": "c4f605c128b6305e2fa5ebec43dda3ab42c2506ad839da104f7e32e6868a0724"
+   },
+   {
+    "unit": "D1_Stim8hr",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": "not_verified",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+    "version_ref": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2/versions/1",
+    "receipt_sha256": "d5828eb7bfbbf08c3038987893ec3e41b5428b6e58559c46fd677d804c5eba8d"
+   },
+   {
+    "unit": "D2_Stim8hr",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": "not_verified",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+    "version_ref": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2/versions/1",
+    "receipt_sha256": "b7105f408f1ee91db58f869cac5eed634e182be930dd5ed02dd1779c00d27458"
+   },
+   {
+    "unit": "D3_Stim8hr",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": "not_verified",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+    "version_ref": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2/versions/1",
+    "receipt_sha256": "982e6b0a6d346a7efa47300d6ae8c7ed51a3c5251251d72e8bf4c78b5eaa2676"
+   },
+   {
+    "unit": "D1_Stim48hr",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": "not_verified",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+    "version_ref": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2/versions/1",
+    "receipt_sha256": "b2787198ebe1796c7d5c1ddd743fd15620bd7b5d34eccca0f8bfb1c9dbadd248"
+   },
+   {
+    "unit": "D2_Stim48hr",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": "not_verified",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+    "version_ref": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2/versions/1",
+    "receipt_sha256": "a6b2680121792992f821d35bda95bcca47a6ccc8aed01d40c16b9384851f73ce"
+   },
+   {
+    "unit": "D3_Stim48hr",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": "not_verified",
+    "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+    "version_ref": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2/versions/1",
+    "receipt_sha256": "8e27b966b407b0c20ba0cfd1119ab443d54e27a66f09dc3785573c37b92ec167"
+   },
+   {
+    "unit": "D4_Rest",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": "not_verified",
+    "kernel": "davidmaisterx/vcc-bank-cd4-4-4-rest-r2",
+    "version_ref": "davidmaisterx/vcc-bank-cd4-4-4-rest-r2/versions/1",
+    "receipt_sha256": "3c8b212406188a68f344eba4bf88896d35d6ba4ea93081df0451b39eb130ed98"
+   },
+   {
+    "unit": "D4_Stim8hr",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": "not_verified",
+    "kernel": "davidmaisterx/vcc-bank-cd4-4-4-stim8hr-r2",
+    "version_ref": "davidmaisterx/vcc-bank-cd4-4-4-stim8hr-r2/versions/1",
+    "receipt_sha256": "bcf456e3e2200c5675c3d41014b1a1c32e2ca5935d929fdf63163f0e693942d6"
+   },
+   {
+    "unit": "D4_Stim48hr",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": "not_verified",
+    "kernel": "davidmaisterx/vcc-bank-cd4-4-4-stim48hr-r2",
+    "version_ref": "davidmaisterx/vcc-bank-cd4-4-4-stim48hr-r2/versions/1",
+    "receipt_sha256": "414526a33fd732325d3746a295247c1529bc02c1294fb8f2213327068aaa68c3"
+   },
+   {
+    "unit": "kolf_pan_genome",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_union_checked",
+    "consumer_access": null,
+    "kernel": "davideferrante11/vcc-bank-kolf-pan-r1",
+    "version_ref": "davideferrante11/vcc-bank-kolf-pan-r1/versions/1",
+    "receipt_sha256": "c0025f94a7562f24ee20e51287e99f311f922e3d19e9c6dc7d950cbb69e111a9"
+   },
+   {
+    "unit": "orion_hct116",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_union_checked",
+    "consumer_access": null,
+    "kernel": "davideferrante11/vcc-bank-orion-hct116-r1",
+    "version_ref": "davideferrante11/vcc-bank-orion-hct116-r1/versions/1",
+    "receipt_sha256": "007cd4090a8c8356007baa2f3bf0f1b9b00c2a3576e0abe88838141a1bb4c872"
+   },
+   {
+    "unit": "orion_hek293t",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_union_checked",
+    "consumer_access": null,
+    "kernel": "davideferrante11/vcc-bank-orion-hek293t-r1",
+    "version_ref": "davideferrante11/vcc-bank-orion-hek293t-r1/versions/1",
+    "receipt_sha256": "97c64d7e2d0fddac64bcadab95e9fb62519eef936e6d4bb292341f453e19c3b9"
+   },
+   {
+    "unit": "hepg2_nadig",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferrante11/vcc-derivatives-rlab-hepg2-nadig",
+    "version_ref": "davideferrante11/vcc-derivatives-rlab-hepg2-nadig/versions/1",
+    "receipt_sha256": "e338caa7fcdcc01c34da6219afd685433e1401f88561df3eb3fa7cffb4f8db51"
+   },
+   {
+    "unit": "jurkat_nadig",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferrante11/vcc-derivatives-rlab-jurkat-nadig",
+    "version_ref": "davideferrante11/vcc-derivatives-rlab-jurkat-nadig/versions/1",
+    "receipt_sha256": "bd25b2a929673354bb1236923e284053db631af1b606d9eaee425d494c5850d1"
+   },
+   {
+    "unit": "h1_train",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferrante11/vcc-derivatives-rlab-h1-vcc2025-trainval",
+    "version_ref": "davideferrante11/vcc-derivatives-rlab-h1-vcc2025-trainval/versions/1",
+    "receipt_sha256": "fec15999272f0cad6eb46d3ea02dcf84d7e00fe3c0561a4f6247dde52d3180ca"
+   },
+   {
+    "unit": "h1_val",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferrante11/vcc-derivatives-rlab-h1-vcc2025-trainval",
+    "version_ref": "davideferrante11/vcc-derivatives-rlab-h1-vcc2025-trainval/versions/1",
+    "receipt_sha256": "16090eb80254c558f9f260ef7d5cc8bbd0dc5e1cee8eacb66e7a24caa1b70990"
+   },
+   {
+    "unit": "rpe1",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferrante11/vcc-derivatives-rlab-rpe1-r2",
+    "version_ref": "davideferrante11/vcc-derivatives-rlab-rpe1-r2/versions/1",
+    "receipt_sha256": "32665ea747cd279d6f665141373c85eff396037b5312234693d4cc1ab918b184"
+   },
+   {
+    "unit": "k562_essential",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davidmaisterx/vcc-derivatives-rlab-k562-essential-r2",
+    "version_ref": "davidmaisterx/vcc-derivatives-rlab-k562-essential-r2/versions/1",
+    "receipt_sha256": "baf8700416c4f8160e96a2116bec626af121caddf054e5a745055ed77f3c5c44"
+   },
+   {
+    "unit": "datlinger2017",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferante/vcc-derivatives-scp-tcells-r1",
+    "version_ref": "davideferante/vcc-derivatives-scp-tcells-r1/versions/1",
+    "receipt_sha256": "27850db7f56b044a84263a0230b923d1d61209445585aef01dcb8744ecf0c30e"
+   },
+   {
+    "unit": "datlinger2021",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferante/vcc-derivatives-scp-tcells-r1",
+    "version_ref": "davideferante/vcc-derivatives-scp-tcells-r1/versions/1",
+    "receipt_sha256": "8459e5429f8eb8fdaae425261e8dc734434930207e75d3dc058e0f8ffa0842ef"
+   },
+   {
+    "unit": "shifrut2018",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferante/vcc-derivatives-scp-tcells-r1",
+    "version_ref": "davideferante/vcc-derivatives-scp-tcells-r1/versions/1",
+    "receipt_sha256": "cfceb473aa85034a3a08a2b9eb7b18bf30da775c12ab52a173094444cea05b09"
+   },
+   {
+    "unit": "dixit2016_d13",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferante/vcc-derivatives-scp-k562-hek-r1",
+    "version_ref": "davideferante/vcc-derivatives-scp-k562-hek-r1/versions/1",
+    "receipt_sha256": "8cb7db7fb9baa8eb38e588f306bb40435fccba143bc697fb86c04d4fdc1258c1"
+   },
+   {
+    "unit": "dixit2016_d7",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferante/vcc-derivatives-scp-k562-hek-r1",
+    "version_ref": "davideferante/vcc-derivatives-scp-k562-hek-r1/versions/1",
+    "receipt_sha256": "dfd98b8297ec9134c4ad746103c426645d72d65d9e13e44321b5affd1d3d665a"
+   },
+   {
+    "unit": "dixit2016_high_moi",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferante/vcc-derivatives-scp-k562-hek-r1",
+    "version_ref": "davideferante/vcc-derivatives-scp-k562-hek-r1/versions/1",
+    "receipt_sha256": "ac59bb349745bf53663529766d2880d2a5403d208bf9ba1ec68c6682c64cece2"
+   },
+   {
+    "unit": "xu2023",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferante/vcc-derivatives-scp-k562-hek-r1",
+    "version_ref": "davideferante/vcc-derivatives-scp-k562-hek-r1/versions/1",
+    "receipt_sha256": "5f6c6b2058c1a1495bc734c2443bb448d9229a026653b3dc52af75243c960650"
+   },
+   {
+    "unit": "kolf_chromatin",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferrante11/vcc-derivatives-kolf-small-r1",
+    "version_ref": "davideferrante11/vcc-derivatives-kolf-small-r1/versions/1",
+    "receipt_sha256": "7e281a1e220c202e4e6afda53dff70c723be809101879096920029242cf772f5"
+   },
+   {
+    "unit": "kolf_metabolic",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferrante11/vcc-derivatives-kolf-small-r1",
+    "version_ref": "davideferrante11/vcc-derivatives-kolf-small-r1/versions/1",
+    "receipt_sha256": "6cb3a690cbabf2a1ed41506cf609273baeae90fee99889724999c6ce7e1a7a6f"
+   },
+   {
+    "unit": "kolf_strong",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferrante11/vcc-derivatives-kolf-strong-r1",
+    "version_ref": "davideferrante11/vcc-derivatives-kolf-strong-r1/versions/1",
+    "receipt_sha256": "89b36dfa118e46d493443655a7655e575918792f838582bd76c0a282e27ce626"
+   },
+   {
+    "unit": "norman2019",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferante/vcc-derivatives-tian-norman-r1",
+    "version_ref": "davideferante/vcc-derivatives-tian-norman-r1/versions/1",
+    "receipt_sha256": "f8fe8f34edc0ac850dd4bc9525e5e180803bc60e78e11eb9796f10cda12b4519"
+   },
+   {
+    "unit": "tian2019_ipsc",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferante/vcc-derivatives-tian-norman-r1",
+    "version_ref": "davideferante/vcc-derivatives-tian-norman-r1/versions/1",
+    "receipt_sha256": "1282d5ee30f1dbc216e37e4a038fc5e88153a632c127e6d9d686ecaeda76e5dd"
+   },
+   {
+    "unit": "tian2019_neuron",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferante/vcc-derivatives-tian2019-neuron-resume-r3",
+    "version_ref": "davideferante/vcc-derivatives-tian2019-neuron-resume-r3/versions/1",
+    "receipt_sha256": "102c8fccd55f3153b5e1038b73baa508d5d3b7d78fd13689208904888190bd0b"
+   },
+   {
+    "unit": "tian2021_crispra",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferante/vcc-derivatives-tian2021-crispra-resume-r3",
+    "version_ref": "davideferante/vcc-derivatives-tian2021-crispra-resume-r3/versions/1",
+    "receipt_sha256": "1ccf76d7d2e7dc4548bbbfc7458aa8e6a6c931360b76e1442b16120d8adf3f78"
+   },
+   {
+    "unit": "tian2021_crispri",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davideferante/vcc-derivatives-tian2021-crispri-resume-r3",
+    "version_ref": "davideferante/vcc-derivatives-tian2021-crispri-resume-r3/versions/1",
+    "receipt_sha256": "34e34b80847b60c8def3b9a3c9172f8778d1fe795373f97563e80a221c938efc"
+   },
+   {
+    "unit": "a549_ko",
+    "bank_state": "remote_complete_manifest_checked",
+    "samples_state": "remote_complete_manifest_checked",
+    "consumer_access": null,
+    "kernel": "davidmaisterx/vcc-derivatives-rlab-a549",
+    "version_ref": "davidmaisterx/vcc-derivatives-rlab-a549/versions/1",
+    "receipt_sha256": "1bf9b15f02d044b9c3ce01e84cc91b73f97b3a23cd8238895b2efe120e20bb05"
+   },
+   {
+    "unit": "hipsci_gw_fitness",
+    "parsed": false
+   },
+   {
+    "unit": "hipsci_gw_nonfitness",
+    "parsed": false
+   }
+  ]
+ },
+ "hipsci": {
+  "state_path": "reports\\modelli\\percorso_riusabile_2026-10-05\\hipsci_verified_r2\\state.json",
+  "training_ready": false,
+  "jobs": 24,
+  "bank_and_samples_verified": 14,
+  "verified_slugs": [
+   "davidmaisterx/vcc-derivatives-hipsci-gwfit-p0of12-r2",
+   "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p0of12-r2",
+   "davidmaisterx/vcc-derivatives-hipsci-gwfit-p1of12-r2",
+   "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p1of12-r2",
+   "davideferrante11/vcc-derivatives-hipsci-gwfit-p2of12-r2",
+   "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p2of12-r2",
+   "davideferrante11/vcc-derivatives-hipsci-gwfit-p3of12-r2",
+   "davideferante/vcc-derivatives-hipsci-gwnonfit-p3of12-r2",
+   "davideferante/vcc-derivatives-hipsci-gwfit-p4of12-r2",
+   "davideferante/vcc-derivatives-hipsci-gwnonfit-p4of12-r2",
+   "davidmaisterx/vcc-derivatives-hipsci-gwfit-p5of12-r2",
+   "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p5of12-r2",
+   "davidmaisterx/vcc-derivatives-hipsci-gwfit-p6of12-r2",
+   "davideferante/vcc-derivatives-hipsci-gwnonfit-p6of12-r2"
+  ],
+  "units": [
+   {
+    "unit": "hipsci_gw_fitness",
+    "expected_parts": 12,
+    "verified_parts": 7,
+    "state": "incomplete"
+   },
+   {
+    "unit": "hipsci_gw_nonfitness",
+    "expected_parts": 12,
+    "verified_parts": 7,
+    "state": "incomplete"
+   }
+  ],
+  "consumer_hashes_verified_false": 14,
+  "union_complete": false,
+  "ledgers": [
+   {
+    "path": "reports\\modelli\\percorso_riusabile_2026-10-05\\hipsci_partition_r1\\launches.jsonl",
+    "n": 3,
+    "accepted": 3,
+    "owners": {
+     "davidmaisterx": 3
+    },
+    "planned_slug_differs": [],
+    "actual_slugs": [
+     "davidmaisterx/vcc-derivatives-hipsci-gwfit-p0of12-r2",
+     "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p0of12-r2",
+     "davidmaisterx/vcc-derivatives-hipsci-gwfit-p1of12-r2"
+    ]
+   },
+   {
+    "path": "reports\\modelli\\percorso_riusabile_2026-10-05\\hipsci_shared_r1\\launches.jsonl",
+    "n": 21,
+    "accepted": 21,
+    "owners": {
+     "davideferrante11": 8,
+     "davideferante": 8,
+     "davidmaisterx": 5
+    },
+    "planned_slug_differs": [
+     {
+      "actual": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p1of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p1of12-r2"
+     },
+     {
+      "actual": "davideferrante11/vcc-derivatives-hipsci-gwfit-p2of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p2of12-r2"
+     },
+     {
+      "actual": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p2of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p2of12-r2"
+     },
+     {
+      "actual": "davideferrante11/vcc-derivatives-hipsci-gwfit-p3of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p3of12-r2"
+     },
+     {
+      "actual": "davideferante/vcc-derivatives-hipsci-gwnonfit-p3of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p3of12-r2"
+     },
+     {
+      "actual": "davideferante/vcc-derivatives-hipsci-gwfit-p4of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p4of12-r2"
+     },
+     {
+      "actual": "davideferante/vcc-derivatives-hipsci-gwnonfit-p4of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p4of12-r2"
+     },
+     {
+      "actual": "davideferante/vcc-derivatives-hipsci-gwnonfit-p6of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p6of12-r2"
+     },
+     {
+      "actual": "davideferrante11/vcc-derivatives-hipsci-gwfit-p7of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p7of12-r2"
+     },
+     {
+      "actual": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p7of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p7of12-r2"
+     },
+     {
+      "actual": "davideferrante11/vcc-derivatives-hipsci-gwfit-p8of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p8of12-r2"
+     },
+     {
+      "actual": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p8of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p8of12-r2"
+     },
+     {
+      "actual": "davideferante/vcc-derivatives-hipsci-gwfit-p9of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p9of12-r2"
+     },
+     {
+      "actual": "davideferante/vcc-derivatives-hipsci-gwnonfit-p9of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p9of12-r2"
+     },
+     {
+      "actual": "davideferante/vcc-derivatives-hipsci-gwfit-p10of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p10of12-r2"
+     },
+     {
+      "actual": "davideferante/vcc-derivatives-hipsci-gwnonfit-p10of12-r2",
+      "planned": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p10of12-r2"
+     }
+    ],
+    "actual_slugs": [
+     "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p1of12-r2",
+     "davideferrante11/vcc-derivatives-hipsci-gwfit-p2of12-r2",
+     "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p2of12-r2",
+     "davideferrante11/vcc-derivatives-hipsci-gwfit-p3of12-r2",
+     "davideferante/vcc-derivatives-hipsci-gwnonfit-p3of12-r2",
+     "davideferante/vcc-derivatives-hipsci-gwfit-p4of12-r2",
+     "davideferante/vcc-derivatives-hipsci-gwnonfit-p4of12-r2",
+     "davidmaisterx/vcc-derivatives-hipsci-gwfit-p5of12-r2",
+     "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p5of12-r2",
+     "davidmaisterx/vcc-derivatives-hipsci-gwfit-p6of12-r2",
+     "davideferante/vcc-derivatives-hipsci-gwnonfit-p6of12-r2",
+     "davideferrante11/vcc-derivatives-hipsci-gwfit-p7of12-r2",
+     "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p7of12-r2",
+     "davideferrante11/vcc-derivatives-hipsci-gwfit-p8of12-r2",
+     "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p8of12-r2",
+     "davideferante/vcc-derivatives-hipsci-gwfit-p9of12-r2",
+     "davideferante/vcc-derivatives-hipsci-gwnonfit-p9of12-r2",
+     "davideferante/vcc-derivatives-hipsci-gwfit-p10of12-r2",
+     "davideferante/vcc-derivatives-hipsci-gwnonfit-p10of12-r2",
+     "davidmaisterx/vcc-derivatives-hipsci-gwfit-p11of12-r2",
+     "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p11of12-r2"
+    ]
+   }
+  ]
+ },
+ "ipsc_private_sample_input": {
+  "dataset": "davideferante/vcc-tian-ipsc-sample-input-r1",
+  "private": true,
+  "producer_kernel": "davideferante/vcc-derivatives-tian-norman-r1",
+  "receipt_sha256": "1282d5ee30f1dbc216e37e4a038fc5e88153a632c127e6d9d686ecaeda76e5dd"
+ },
+ "forbidden_dataset": "rlead-bench-cube-r2",
+ "fit_inputs": [],
+ "required_context_ids": [
+  "remote/a549_GSE345058_SC_raw_normalized_counts",
+  "remote/cd4_D1_Rest",
+  "remote/cd4_D1_Stim48hr",
+  "remote/cd4_D1_Stim8hr",
+  "remote/cd4_D2_Rest",
+  "remote/cd4_D2_Stim48hr",
+  "remote/cd4_D2_Stim8hr",
+  "remote/cd4_D3_Rest",
+  "remote/cd4_D3_Stim48hr",
+  "remote/cd4_D3_Stim8hr",
+  "remote/cd4_D4_Rest",
+  "remote/cd4_D4_Stim48hr",
+  "remote/cd4_D4_Stim8hr",
+  "remote/h1_train",
+  "remote/h1_val",
+  "remote/kolf_KOLF_Chromatin_Modifiers_QC_Filtered",
+  "remote/kolf_KOLF_Metabolic_Enzymes_QC_Filtered",
+  "remote/kolf_KOLF_Pan_Genome_QC_Filtered",
+  "remote/kolf_KOLF_Strong_Perturbations",
+  "remote/scp_AdamsonWeissman2016_GSM2406675_10X001",
+  "remote/scp_AdamsonWeissman2016_GSM2406677_10X005",
+  "remote/scp_AdamsonWeissman2016_GSM2406681_10X010",
+  "remote/scp_AissaBenevolenskaya2021",
+  "remote/scp_ChangYe2021",
+  "remote/scp_CuiHacohen2023",
+  "remote/scp_DatlingerBock2017",
+  "remote/scp_DatlingerBock2021",
+  "remote/scp_DixitRegev2016_K562_TFs_13_days",
+  "remote/scp_DixitRegev2016_K562_TFs_7_days",
+  "remote/scp_DixitRegev2016_K562_TFs_High_MOI",
+  "remote/scp_FrangiehIzar2021_protein",
+  "remote/scp_FrangiehIzar2021_RNA",
+  "remote/scp_GasperiniShendure2019_atscale",
+  "remote/scp_GasperiniShendure2019_highMOI",
+  "remote/scp_GasperiniShendure2019_lowMOI",
+  "remote/scp_GehringPachter2019",
+  "remote/scp_JoungZhang2023_atlas",
+  "remote/scp_JoungZhang2023_combinatorial",
+  "remote/scp_LaraAstiasoHuntly2023_exvivo",
+  "remote/scp_LaraAstiasoHuntly2023_invivo",
+  "remote/scp_LaraAstiasoHuntly2023_leukemia",
+  "remote/scp_LiangWang2023",
+  "remote/scp_LotfollahiTheis2023",
+  "remote/scp_McFarlandTsherniak2020",
+  "remote/scp_NadigOConner2024_hepg2",
+  "remote/scp_NadigOConner2024_jurkat",
+  "remote/scp_NormanWeissman2019_filtered",
+  "remote/scp_PapalexiSatija2021_eccite_arrayed_protein",
+  "remote/scp_PapalexiSatija2021_eccite_arrayed_RNA",
+  "remote/scp_PapalexiSatija2021_eccite_protein",
+  "remote/scp_PapalexiSatija2021_eccite_RNA",
+  "remote/scp_ReplogleWeissman2022_K562_essential",
+  "remote/scp_ReplogleWeissman2022_K562_gwps",
+  "remote/scp_ReplogleWeissman2022_rpe1",
+  "remote/scp_SantinhaPlatt2023",
+  "remote/scp_SchiebingerLander2019_GSE106340",
+  "remote/scp_SchiebingerLander2019_GSE115943",
+  "remote/scp_SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_11_screen",
+  "remote/scp_SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_8_screen",
+  "remote/scp_ShifrutMarson2018",
+  "remote/scp_SrivatsanTrapnell2020_sciplex2",
+  "remote/scp_SrivatsanTrapnell2020_sciplex3",
+  "remote/scp_SrivatsanTrapnell2020_sciplex4",
+  "remote/scp_SunshineHein2023",
+  "remote/scp_TianKampmann2019_day7neuron",
+  "remote/scp_TianKampmann2019_iPSC",
+  "remote/scp_TianKampmann2021_CRISPRa",
+  "remote/scp_TianKampmann2021_CRISPRi",
+  "remote/scp_WeinrebKlein2020",
+  "remote/scp_WesselsSatija2023",
+  "remote/scp_XieHon2017",
+  "remote/scp_XuCao2023",
+  "remote/scp_ZhaoSims2021",
+  "remote/southard_fibroblast_CRISPRa_final_pop",
+  "remote/southard_fibroblast_CRISPRa_mean_pop",
+  "remote/southard_RPE1_CRISPRa_final_population",
+  "remote/southard_RPE1_CRISPRa_mean_pop",
+  "ingested/hepg2_nadig",
+  "ingested/jurkat_nadig",
+  "ingested/h1_vcc2025_trainval",
+  "ingested/hipsci_targeted_19",
+  "ingested/hipsci_gw_fitness",
+  "ingested/hipsci_gw_nonfitness",
+  "ingested/replogle_k562_gwps",
+  "ingested/replogle_k562_essential",
+  "ingested/replogle_rpe1",
+  "ingested/a549_ko",
+  "ingested/tian_norman",
+  "ingested/kolf_small",
+  "ingested/kolf_strong",
+  "ingested/southard",
+  "ingested/scp_ko_frangieh_sunshine_papalexi",
+  "ingested/scp_tcells_shifrut_datlinger",
+  "ingested/scp_k562_hek_dixit_xu",
+  "ingested/jurkat_gse249595",
+  "aggregate_only/dld1_gse337988",
+  "aggregate_only/mixscale (parte DE)",
+  "aggregate_only/southard_*_mean_pop",
+  "aggregate_only/depmap_24q4",
+  "aggregate_only/catalogo_accessioni"
+ ],
+ "loaded_context_ids": [],
+ "expanded_source_names": [],
+ "emission": {
+  "effects_scale": 1.5,
+  "gene_dispersion": true,
+  "gene_dispersion_scale": 1.0,
+  "cells_per_target": 400,
+  "generator_seed": 20260912,
+  "seed_indices": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "trial": "trial-ext-profile"
+ },
+ "split": {
+  "module": "reports/modelli/risposta_contesto_2026-10-02/splits.py",
+  "salt": "r-lead-2026-10-02",
+  "n_folds": 5,
+  "regimes": [
+   "C",
+   "J"
+  ]
+ },
+ "hidden_targets": [],
+ "claim": "observed storage reconciliation; not a QC adjudication and not a fit",
+ "corrects": "admission.json counted HIPSCI verified parts as 0 because it required bank.state; the state file stores job.state and samples.state"
+}

@@ -1,0 +1,238 @@
+{
+ "utc": "2026-10-05T15:28:38.268425+00:00",
+ "dataset": "davideferante/vcc-norman-bank-samples-r1",
+ "expected_version": 1,
+ "public_requested": false,
+ "layout_sha256": "db447170133e27d6a5226ddd593affa7a36417798cdf4a1db029b03bcefd20b3",
+ "source": {
+  "bank": {
+   "state": "remote_complete_manifest_checked",
+   "kernel": "davideferante/vcc-derivatives-tian-norman-r1",
+   "receipt": "reports/modelli/percorso_riusabile_2026-10-05/tian_partial_r1/bank_receipts/davideferante/vcc-derivatives-tian-norman-r1/bank/norman2019/complete.json",
+   "receipt_sha256": "f8fe8f34edc0ac850dd4bc9525e5e180803bc60e78e11eb9796f10cda12b4519",
+   "saved_version": {
+    "kernel_id": 137174819,
+    "version": 1,
+    "private": true,
+    "version_ref": "davideferante/vcc-derivatives-tian-norman-r1/versions/1",
+    "saved_source_sha256": "25af4ceaa93e4684c3afdb1df914c1e559bdb300be1e86daf1a548157de5cb80",
+    "version_stable_during_output_read": true
+   },
+   "files": {
+    "rows.csv": {
+     "bytes": 17985,
+     "sha256": "bf8048f773920707175d5c5b8e68e8b1b4567979d872c637984e72e392ab9e72"
+    },
+    "mean_proportion.npz": {
+     "bytes": 11362718,
+     "sha256": "2cd36408a8986c0baf05bde08f1c359513f8fc6c036d0296316c0e55c75dd929"
+    },
+    "zero_fraction.npz": {
+     "bytes": 5480624,
+     "sha256": "1b8fa607e4684d1f98eb781caf4674d4a26ae1498f4e947c3a7725079728d9c1"
+    },
+    "samples.jsonl.gz": {
+     "bytes": 604168,
+     "sha256": "186b291d2c0b34abbc0b9dfffb9778b370c0dd001eece006cb27e62c524e27e1"
+    },
+    "count_sum.npz": {
+     "bytes": 6241082,
+     "sha256": "b2703d05c4fc3c75bd8402878e1e8cb306bc26c2d9d2b831ca19b3b3aeaf8808"
+    },
+    "variance_proportion.npz": {
+     "bytes": 11385637,
+     "sha256": "450d344754c904fb54982d5cb9404b768dc973dbe72f96c70da6b8fe22964fd0"
+    },
+    "sampled_controls.npz": {
+     "bytes": 81288,
+     "sha256": "3dbe0f50e660b7199aee8605751b257c9560be60cab01f444549d9a3caddad06"
+    },
+    "mask.npz": {
+     "bytes": 159689,
+     "sha256": "13a31584013e609ab2b1d7071b278504bfb8c1af30cdd3c1dc9234b27914f52d"
+    }
+   },
+   "cells_used": 111445,
+   "contexts": 1,
+   "relative_path": "bank/norman2019"
+  },
+  "samples": {
+   "state": "remote_complete_manifest_checked",
+   "kernel": "davideferante/vcc-derivatives-tian-norman-r1",
+   "receipt": "reports/modelli/percorso_riusabile_2026-10-05/tian_partial_r1/receipts/davideferante/vcc-derivatives-tian-norman-r1/samples/norman2019/complete.json",
+   "receipt_sha256": "de95e3019d8314e2c4ca7d4eba303a1e08560ac187a5ddcfd2bf29c06ebb2e5b",
+   "saved_version": {
+    "version": 1,
+    "kernel_id": 137174819,
+    "private": true,
+    "version_ref": "davideferante/vcc-derivatives-tian-norman-r1/versions/1",
+    "saved_source_sha256": "25af4ceaa93e4684c3afdb1df914c1e559bdb300be1e86daf1a548157de5cb80",
+    "version_stable_during_output_read": true
+   },
+   "levels": {
+    "32": 7584,
+    "64": 15148,
+    "128": 29587
+   },
+   "bytes": 160239807,
+   "bank_receipt_sha256": "f8fe8f34edc0ac850dd4bc9525e5e180803bc60e78e11eb9796f10cda12b4519",
+   "consumer_hashes_verified": false,
+   "training_used": false,
+   "relative_path": "samples/norman2019"
+  },
+  "trainer": {
+   "state": "not_integrated",
+   "training_used": false
+  }
+ },
+ "files": [
+  {
+   "original_path": "bank/norman2019/rows.csv",
+   "alias": "bank__norman2019__rows.csv",
+   "bytes": 17985,
+   "sha256": "bf8048f773920707175d5c5b8e68e8b1b4567979d872c637984e72e392ab9e72"
+  },
+  {
+   "original_path": "bank/norman2019/mean_proportion.npz",
+   "alias": "bank__norman2019__mean_proportion.npz",
+   "bytes": 11362718,
+   "sha256": "2cd36408a8986c0baf05bde08f1c359513f8fc6c036d0296316c0e55c75dd929"
+  },
+  {
+   "original_path": "bank/norman2019/zero_fraction.npz",
+   "alias": "bank__norman2019__zero_fraction.npz",
+   "bytes": 5480624,
+   "sha256": "1b8fa607e4684d1f98eb781caf4674d4a26ae1498f4e947c3a7725079728d9c1"
+  },
+  {
+   "original_path": "bank/norman2019/samples.jsonl.gz",
+   "alias": "bank__norman2019__samples.jsonl.gz.bin",
+   "bytes": 604168,
+   "sha256": "186b291d2c0b34abbc0b9dfffb9778b370c0dd001eece006cb27e62c524e27e1"
+  },
+  {
+   "original_path": "bank/norman2019/count_sum.npz",
+   "alias": "bank__norman2019__count_sum.npz",
+   "bytes": 6241082,
+   "sha256": "b2703d05c4fc3c75bd8402878e1e8cb306bc26c2d9d2b831ca19b3b3aeaf8808"
+  },
+  {
+   "original_path": "bank/norman2019/variance_proportion.npz",
+   "alias": "bank__norman2019__variance_proportion.npz",
+   "bytes": 11385637,
+   "sha256": "450d344754c904fb54982d5cb9404b768dc973dbe72f96c70da6b8fe22964fd0"
+  },
+  {
+   "original_path": "bank/norman2019/sampled_controls.npz",
+   "alias": "bank__norman2019__sampled_controls.npz",
+   "bytes": 81288,
+   "sha256": "3dbe0f50e660b7199aee8605751b257c9560be60cab01f444549d9a3caddad06"
+  },
+  {
+   "original_path": "bank/norman2019/mask.npz",
+   "alias": "bank__norman2019__mask.npz",
+   "bytes": 159689,
+   "sha256": "13a31584013e609ab2b1d7071b278504bfb8c1af30cdd3c1dc9234b27914f52d"
+  },
+  {
+   "original_path": "bank/norman2019/complete.json",
+   "alias": "bank__norman2019__complete.json",
+   "bytes": 1802,
+   "sha256": "f8fe8f34edc0ac850dd4bc9525e5e180803bc60e78e11eb9796f10cda12b4519"
+  },
+  {
+   "original_path": "samples/norman2019/shard_00000.npz",
+   "alias": "samples__norman2019__shard_00000.npz",
+   "bytes": 31077504,
+   "sha256": "4629be979c782411456bfb54f8c1ac557602978d0b962f513174ce31f4cbb146"
+  },
+  {
+   "original_path": "samples/norman2019/shard_00000.jsonl.gz",
+   "alias": "samples__norman2019__shard_00000.jsonl.gz.bin",
+   "bytes": 134934,
+   "sha256": "38ca10f9bcdd64d8c7a61ffac5024602a78593b7fa87a21516aa4a9a2bbd9eae"
+  },
+  {
+   "original_path": "samples/norman2019/shard_00001.npz",
+   "alias": "samples__norman2019__shard_00001.npz",
+   "bytes": 28647304,
+   "sha256": "8a77717cc45950d1d080a0e65fe1772a84df6b845d379503287369cccf191da4"
+  },
+  {
+   "original_path": "samples/norman2019/shard_00001.jsonl.gz",
+   "alias": "samples__norman2019__shard_00001.jsonl.gz.bin",
+   "bytes": 133309,
+   "sha256": "03e6bc2d2cf43b5e3895e6f8a54c3f5855787c0d3167f66d2ef8bf0a91e04841"
+  },
+  {
+   "original_path": "samples/norman2019/shard_00002.npz",
+   "alias": "samples__norman2019__shard_00002.npz",
+   "bytes": 28667757,
+   "sha256": "595a703bdeddd3f438f494ea2de3b36f4c4e4b979c70742c5d59e2a77ce2ae25"
+  },
+  {
+   "original_path": "samples/norman2019/shard_00002.jsonl.gz",
+   "alias": "samples__norman2019__shard_00002.jsonl.gz.bin",
+   "bytes": 139229,
+   "sha256": "b37d80f884156990564f5820f556d288193f1730f7c969230e396993d203a5de"
+  },
+  {
+   "original_path": "samples/norman2019/shard_00003.npz",
+   "alias": "samples__norman2019__shard_00003.npz",
+   "bytes": 28072371,
+   "sha256": "d72e38c1b3e750a5a059073683f84c897186a66bad365dc5d1c0f685686dd0f0"
+  },
+  {
+   "original_path": "samples/norman2019/shard_00003.jsonl.gz",
+   "alias": "samples__norman2019__shard_00003.jsonl.gz.bin",
+   "bytes": 146374,
+   "sha256": "afb0fcd7a02ee1d85bf4673109ab2fe01e5f258ff34b8a52bd2263df08f8e7e4"
+  },
+  {
+   "original_path": "samples/norman2019/shard_00004.npz",
+   "alias": "samples__norman2019__shard_00004.npz",
+   "bytes": 26902309,
+   "sha256": "2ae28ea8de3d4a239f8e3fb18b1eea2b8c2f3e66e2d8cbccae15804a780a6716"
+  },
+  {
+   "original_path": "samples/norman2019/shard_00004.jsonl.gz",
+   "alias": "samples__norman2019__shard_00004.jsonl.gz.bin",
+   "bytes": 153874,
+   "sha256": "cc9324cf3149b794207274a92050e0b5993aeba3c6c8596e96525315f145a6df"
+  },
+  {
+   "original_path": "samples/norman2019/shard_00005.npz",
+   "alias": "samples__norman2019__shard_00005.npz",
+   "bytes": 15902445,
+   "sha256": "c9b17f3d69d95d96fa0754cd23928f9310ad81d8bf8d55980ea004ad109e7129"
+  },
+  {
+   "original_path": "samples/norman2019/shard_00005.jsonl.gz",
+   "alias": "samples__norman2019__shard_00005.jsonl.gz.bin",
+   "bytes": 84723,
+   "sha256": "3193b889058165d81e6238e51829454839ba1f916a08f1ec84d3bb3d87f2c83f"
+  },
+  {
+   "original_path": "samples/norman2019/bank_rows.csv",
+   "alias": "samples__norman2019__bank_rows.csv",
+   "bytes": 17985,
+   "sha256": "bf8048f773920707175d5c5b8e68e8b1b4567979d872c637984e72e392ab9e72"
+  },
+  {
+   "original_path": "samples/norman2019/mask.npz",
+   "alias": "samples__norman2019__mask.npz",
+   "bytes": 159689,
+   "sha256": "13a31584013e609ab2b1d7071b278504bfb8c1af30cdd3c1dc9234b27914f52d"
+  },
+  {
+   "original_path": "samples/norman2019/complete.json",
+   "alias": "samples__norman2019__complete.json",
+   "bytes": 4169,
+   "sha256": "de95e3019d8314e2c4ca7d4eba303a1e08560ac187a5ddcfd2bf29c06ebb2e5b"
+  }
+ ],
+ "downloaded_bytes": 195572998,
+ "reason": "ERROR notebook refused as mount; preserve original successful bank and samples",
+ "state": "upload_requested",
+ "consumer_runtime_hashes_verified": false
+}

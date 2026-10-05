@@ -1,0 +1,64 @@
+{
+ "registered_before_results": true,
+ "claim": "decision rule registered before any expanded-bank score",
+ "question": "Does adding eligible sources to the frozen t25 linear transfer change the paired local score under identical t28 emission?",
+ "factor": "source membership only",
+ "unchanged": {
+  "original_sources": [
+   "k562",
+   "cd4_mix",
+   "orion_hct116",
+   "orion_hek293t"
+  ],
+  "weight_per_source": 1.0,
+  "amplitude": 1.576,
+  "gamma": 1.0,
+  "reliability_scale": 100.0,
+  "effect": "shrunk",
+  "estimator_for_new_sources": "effects_from_pseudobulk min_expected 1, constant pseudocount 0.5, matched donor controls, count_sum",
+  "emission": {
+   "effects_scale": 1.5,
+   "gene_dispersion": true,
+   "gene_dispersion_scale": 1.0,
+   "cells_per_target": 400,
+   "generator_seed": 20260912,
+   "seed_indices": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "trial": "trial-ext-profile"
+  },
+  "split": {
+   "module": "reports/modelli/risposta_contesto_2026-10-02/splits.py",
+   "salt": "r-lead-2026-10-02",
+   "n_folds": 5,
+   "regimes": [
+    "C",
+    "J"
+   ]
+  }
+ },
+ "design": {
+  "cells_per_target": 400,
+  "paired_seeds": "generator seed 20260912, indices 0-4",
+  "regimes": [
+   "C",
+   "J"
+  ],
+  "held_group_controls": "excluded from the fit",
+  "hidden_targets_and_compound_components": "excluded from every fitting source and derivative"
+ },
+ "reading": {
+  "resolved": "abs(mean of paired deltas) > 2 * sd / sqrt(5)",
+  "members": "six local scaled members, and the same without Jaccard",
+  "favorable_line": "six-member delta resolved positive, without-Jaccard delta resolved positive, PDS not resolved negative, and the expanded arm local score >= 0.100",
+  "early_stop": "on the first completed held line, a resolved negative expanded_J - original_J stops the remaining lines",
+  "loss_is_not_a_decision_metric": true,
+  "s010": "more sources are not assumed to be better; a failed rule does not drop the source from the corpus",
+  "not_a_vcc_score": true,
+  "does_not_promote_a_model": true
+ }
+}
