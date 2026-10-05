@@ -1,0 +1,64 @@
+{
+  "utc": "2026-10-05T17:32:46Z",
+  "dispatch_utc": "2026-10-05T17:29:01Z",
+  "joint_source_refreshed_utc": "2026-10-05T17:32:46Z",
+  "worker_pushed": false,
+  "kaggle_called": false,
+  "fit_admitted": false,
+  "claims_complete_training": false,
+  "claims_complete_corpus": false,
+  "training_ready": false,
+  "is_final_d053_catalogue": false,
+  "loss": null,
+  "optimizer": null,
+  "score": null,
+  "comparison_started": false,
+  "observed_result": null,
+  "tests": {
+    "command": ".\\scripts\\py.cmd -m unittest discover -s reports/modelli/percorso_riusabile_2026-10-05/agenti/grok_transfer_esteso_r5 -p test_r5_refit.py",
+    "result": "10 tests OK in 0.289s",
+    "meaning": "Fixtures against vcc2026.multisource.effects_from_pseudobulk and mix. Not a run on the CD4 banks."
+  },
+  "packages": [
+    "vcc-effects-cd4-rest-joint-r5",
+    "vcc-effects-cd4-stim8hr-joint-r5",
+    "vcc-effects-cd4-stim48hr-joint-r5",
+    "vcc-effects-mix-t25-r5"
+  ],
+  "push_now": false,
+  "job_refs": [
+    {
+      "slug": "davideferrante11/vcc-effects-orion-hct116-r4",
+      "role": "consumed_fragment",
+      "remote_status_at_receipt": "RUNNING",
+      "kernel_id_from_this_worker": null
+    },
+    {
+      "slug": "davideferrante11/vcc-effects-orion-hek293t-r4",
+      "role": "consumed_fragment",
+      "remote_status_at_receipt": "RUNNING",
+      "kernel_id_from_this_worker": null
+    },
+    {
+      "slug": "davideferrante11/vcc-effects-rpe1-r4",
+      "role": "consumed_fragment",
+      "remote_status_at_receipt": "RUNNING",
+      "kernel_id_from_this_worker": null
+    },
+    {
+      "slug": "davideferrante11/vcc-effects-jurkat-nadig-r4",
+      "role": "consumed_fragment",
+      "remote_status_at_receipt": "RUNNING",
+      "kernel_id_from_this_worker": null
+    },
+    {
+      "slug": "davidmaisterx/vcc-effects-k562-essential-r4",
+      "role": "consumed_fragment",
+      "remote_status_at_receipt": "RUNNING",
+      "kernel_id_from_this_worker": null
+    }
+  ],
+  "joints_kernel_id": null,
+  "mixer_kernel_id": null,
+  "ready_dispatch": "reports/modelli/percorso_riusabile_2026-10-05/agenti/grok_transfer_esteso_r5/ready_dispatch.json"
+}

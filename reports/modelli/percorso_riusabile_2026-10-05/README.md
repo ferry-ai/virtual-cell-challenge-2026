@@ -1,8 +1,8 @@
 # Archivio, banca e trainer riutilizzabili
 
-**Stato operativo corrente:** [nove stime avviate, cinque verificate](ESECUZIONE_r3.md) e
+**Stato operativo corrente:** [due joint CD4 verificate, dodici sourcefit e retry mirati](ESECUZIONE_r6.md) e
 [copertura attesa congelata](ESECUZIONE_r1.md).
-Grok stessa sessione r5 prepara CD4 congiunto e mix esatto; parent esegue i lanci.
+Grok stessa sessione r6 amplia il mixer esatto; parent ha lanciato i tre joint CD4.
 Il modello completo e la copertura D-053 restano aperti. Le note r2/r3/r4 sotto
 documentano passaggi precedenti, non l'assegnazione o lo stato attuale.
 

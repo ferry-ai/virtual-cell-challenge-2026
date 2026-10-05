@@ -1,0 +1,306 @@
+{
+ "kind": "ready_dispatch",
+ "wave": "r5",
+ "worker_pushed": false,
+ "fit_admitted": false,
+ "claims_complete_training": false,
+ "claims_complete_corpus": false,
+ "is_final_d053_catalogue": false,
+ "training_ready": false,
+ "loss": null,
+ "optimizer": null,
+ "loss_note": "Il modello lineare non ha optimizer n\u00e9 loss. Nessun beneficio si legge da una loss.",
+ "storage": {
+  "manifest": "reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r10/manifest.json",
+  "sha256": "7134c13c741e04b1bb90b15f42afd2a50e653454aca17e49005edcad6f2e7fdf",
+  "training_ready": false,
+  "meaning": "r10 \u00e8 un indice di storage, non un manifest di fit"
+ },
+ "axis": {
+  "dataset": "davideferrante11/vcc-ingest-code-cd4-r1",
+  "relative_path": "vcc-ingest-code-cd4-r1",
+  "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+  "genes": 18533,
+  "bytes": 119295,
+  "ordering": "gene_name CSV row order, zero based official_index"
+ },
+ "cis": {
+  "recipe_path": "reports/cis_2026-09-17/k562_neighbour_pairs.csv",
+  "recipe_path_present": false,
+  "located_path": "C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\trasferimento\\cis_2026-09-17\\k562_neighbour_pairs.csv",
+  "located_present": true,
+  "max_distance_bp": 5000,
+  "scale": 2.0,
+  "applied_in_effect_kernel": false,
+  "sha256": "d874c305f12e932d2d43eff629ea7d44c8536b7a198868c8fac10007d01dcf8f",
+  "bytes": 248599
+ },
+ "coverage_contract": {
+  "path": "reports/modelli/percorso_riusabile_2026-10-05/training_coverage_r1/expected.json",
+  "sha256": "f7edac31784e56fab3a192e74dc0b6b8ea56bc1496dbba5d5c06c753d2e66015",
+  "launches_frozen": "reports/modelli/percorso_riusabile_2026-10-05/training_coverage_r1/launches_frozen.json",
+  "launches_frozen_sha256": "f570efeb0d0efe3fdc39413339185265e9dc7c3135e9cf5086ff13e024ec9368",
+  "launches_frozen_sha_recorded_in_expected": "f570efeb0d0efe3fdc39413339185265e9dc7c3135e9cf5086ff13e024ec9368",
+  "launches_frozen_sha_matches": true,
+  "claims_complete_training": false,
+  "claims_complete_corpus": false,
+  "meaning": "The coverage contract keeps every storage unit. This dispatch does not certify admission."
+ },
+ "model": {
+  "gamma": 1.0,
+  "reliability_scale": 100.0,
+  "weight": 1.0,
+  "amplitude": 1.576,
+  "amplitude_applied": false,
+  "effect": "shrunk",
+  "cd4_condition_gamma": 0.0,
+  "cd4_condition_how": "reliability-weighted mean; raw and shrunk mixed separately",
+  "reference_t28_score_transcribed": 0.14484520500645978,
+  "score_measured_here": false
+ },
+ "emission": {
+  "effects_scale": 1.5,
+  "gene_dispersion": true,
+  "gene_dispersion_scale": 1.0,
+  "cells_per_target": 400,
+  "generator_seed": 20260912,
+  "seed_indices": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "trial": "trial-ext-profile"
+ },
+ "consumed_fragments": [
+  {
+   "slug": "davideferrante11/vcc-effects-orion-hct116-r4",
+   "owner": "davideferrante11",
+   "unit": "orion_hct116",
+   "transfer_source_id": "orion_hct116",
+   "role": "fragment",
+   "remote_status": "davideferrante11/vcc-effects-orion-hct116-r4 has status \"KernelWorkerStatus.RUNNING\"",
+   "receipt_utc": "2026-10-05T17:03:34.788544+00:00",
+   "full_training": false,
+   "producer": "davideferrante11/vcc-bank-orion-hct116-r1",
+   "producer_version_pin": "davideferrante11/vcc-bank-orion-hct116-r1/versions/1"
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-orion-hek293t-r4",
+   "owner": "davideferrante11",
+   "unit": "orion_hek293t",
+   "transfer_source_id": "orion_hek293t",
+   "role": "fragment",
+   "remote_status": "davideferrante11/vcc-effects-orion-hek293t-r4 has status \"KernelWorkerStatus.RUNNING\"",
+   "receipt_utc": "2026-10-05T17:03:47.635335+00:00",
+   "full_training": false,
+   "producer": "davideferrante11/vcc-bank-orion-hek293t-r1",
+   "producer_version_pin": "davideferrante11/vcc-bank-orion-hek293t-r1/versions/1"
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-rpe1-r4",
+   "owner": "davideferrante11",
+   "unit": "rpe1",
+   "transfer_source_id": "rpe1",
+   "role": "fragment",
+   "remote_status": "davideferrante11/vcc-effects-rpe1-r4 has status \"KernelWorkerStatus.RUNNING\"",
+   "receipt_utc": "2026-10-05T17:03:59.732893+00:00",
+   "full_training": false,
+   "producer": "davideferrante11/vcc-derivatives-rlab-rpe1-r2",
+   "producer_version_pin": "davideferrante11/vcc-derivatives-rlab-rpe1-r2/versions/1"
+  },
+  {
+   "slug": "davideferrante11/vcc-effects-jurkat-nadig-r4",
+   "owner": "davideferrante11",
+   "unit": "jurkat_nadig",
+   "transfer_source_id": "jurkat_nadig",
+   "role": "fragment",
+   "remote_status": "davideferrante11/vcc-effects-jurkat-nadig-r4 has status \"KernelWorkerStatus.RUNNING\"",
+   "receipt_utc": "2026-10-05T17:04:12.175738+00:00",
+   "full_training": false,
+   "producer": "davideferrante11/vcc-derivatives-rlab-jurkat-nadig",
+   "producer_version_pin": "davideferrante11/vcc-derivatives-rlab-jurkat-nadig/versions/1"
+  },
+  {
+   "slug": "davidmaisterx/vcc-effects-k562-essential-r4",
+   "owner": "davidmaisterx",
+   "unit": "k562_essential",
+   "transfer_source_id": "k562_essential",
+   "role": "fragment",
+   "remote_status": "davidmaisterx/vcc-effects-k562-essential-r4 has status \"KernelWorkerStatus.RUNNING\"",
+   "receipt_utc": "2026-10-05T17:04:24.712002+00:00",
+   "full_training": false,
+   "producer": "davidmaisterx/vcc-derivatives-rlab-k562-essential-r2",
+   "producer_version_pin": "davidmaisterx/vcc-derivatives-rlab-k562-essential-r2/versions/1"
+  }
+ ],
+ "do_not_relaunch": [
+  "davideferrante11/vcc-derivatives-rlab-k562-gwps-r3",
+  "davidmaisterx/vcc-reuse-runtime-norman-ipsc-r1",
+  "davideferante/vcc-derivatives-hipsci-targeted19-r1",
+  "davideferrante11/vcc-effects-orion-hct116-r4",
+  "davideferrante11/vcc-effects-orion-hek293t-r4",
+  "davideferrante11/vcc-effects-rpe1-r4",
+  "davideferrante11/vcc-effects-jurkat-nadig-r4",
+  "davidmaisterx/vcc-effects-k562-essential-r4"
+ ],
+ "push_rule": "Solo il parent pusha. Questo worker non ha chiamato kaggle. I cinque frammenti sourcefits_launch_r1 sono gi\u00e0 accettati: non duplicarli. L'ultima evidenza \u00e8 il preflight del parent con un job df11 (K562 GWPS) e quattro ricevute df11 RUNNING pi\u00f9 K562 essential su davidmaisterx. Non \u00e8 un censimento nuovo. I tre joint aspettano uno slot libero su davideferrante11 (tetto 5). Il mixer si pusha quando i tre joint e i cinque frammenti hanno un output; il mount \u00e8 cloud, senza trasferimento locale obbligatorio. Non rilanciare Norman/iPSC n\u00e9 HIPSCI targeted19. Non pushare i dodici fit CD4 per donatore di r4.",
+ "packages": [
+  {
+   "slug": "vcc-effects-cd4-rest-joint-r5",
+   "owner": "davideferrante11",
+   "phase": "cd4_joint",
+   "push_now": false,
+   "push_when": "uno slot davideferrante11 \u00e8 libero; non pushare sopra GWPS e i quattro sourcefit df11",
+   "worker_pushed": false,
+   "kernel_sources": [
+    "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+    "davidmaisterx/vcc-bank-cd4-4-4-rest-r2"
+   ],
+   "dataset_sources": [
+    "davideferrante11/vcc-ingest-code-cd4-r1"
+   ],
+   "enable_gpu": false,
+   "enable_internet": false,
+   "is_private": true,
+   "ram_budget_bytes": 6442450944,
+   "output_budget_bytes": 10737418240,
+   "parent_push_command": "Remove-Item Env:KAGGLE_USERNAME,Env:KAGGLE_KEY,Env:KAGGLE_API_TOKEN,Env:KAGGLE_CONFIG_DIR -ErrorAction SilentlyContinue; $env:KAGGLE_CONFIG_DIR = Join-Path $HOME '.kaggle-davideferrante11'; $py = & .\\scripts\\py.cmd -c \"import sys; print(sys.executable)\"; $kaggle = Join-Path (Split-Path $py) 'kaggle.exe'; & $kaggle kernels push -p 'C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\agenti\\grok_transfer_esteso_r5\\packages\\vcc-effects-cd4-rest-joint-r5'",
+   "cross_account": "Se Kaggle rifiuta un kernel_source di davidmaisterx, il parent condivide quel kernel con davideferrante11 oppure copia la banca sul suo account. Non si scarta D4 e non si rif\u00e0 l'ingestion."
+  },
+  {
+   "slug": "vcc-effects-cd4-stim8hr-joint-r5",
+   "owner": "davideferrante11",
+   "phase": "cd4_joint",
+   "push_now": false,
+   "push_when": "uno slot davideferrante11 \u00e8 libero; non pushare sopra GWPS e i quattro sourcefit df11",
+   "worker_pushed": false,
+   "kernel_sources": [
+    "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+    "davidmaisterx/vcc-bank-cd4-4-4-stim8hr-r2"
+   ],
+   "dataset_sources": [
+    "davideferrante11/vcc-ingest-code-cd4-r1"
+   ],
+   "enable_gpu": false,
+   "enable_internet": false,
+   "is_private": true,
+   "ram_budget_bytes": 6442450944,
+   "output_budget_bytes": 10737418240,
+   "parent_push_command": "Remove-Item Env:KAGGLE_USERNAME,Env:KAGGLE_KEY,Env:KAGGLE_API_TOKEN,Env:KAGGLE_CONFIG_DIR -ErrorAction SilentlyContinue; $env:KAGGLE_CONFIG_DIR = Join-Path $HOME '.kaggle-davideferrante11'; $py = & .\\scripts\\py.cmd -c \"import sys; print(sys.executable)\"; $kaggle = Join-Path (Split-Path $py) 'kaggle.exe'; & $kaggle kernels push -p 'C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\agenti\\grok_transfer_esteso_r5\\packages\\vcc-effects-cd4-stim8hr-joint-r5'",
+   "cross_account": "Se Kaggle rifiuta un kernel_source di davidmaisterx, il parent condivide quel kernel con davideferrante11 oppure copia la banca sul suo account. Non si scarta D4 e non si rif\u00e0 l'ingestion."
+  },
+  {
+   "slug": "vcc-effects-cd4-stim48hr-joint-r5",
+   "owner": "davideferrante11",
+   "phase": "cd4_joint",
+   "push_now": false,
+   "push_when": "uno slot davideferrante11 \u00e8 libero; non pushare sopra GWPS e i quattro sourcefit df11",
+   "worker_pushed": false,
+   "kernel_sources": [
+    "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+    "davidmaisterx/vcc-bank-cd4-4-4-stim48hr-r2"
+   ],
+   "dataset_sources": [
+    "davideferrante11/vcc-ingest-code-cd4-r1"
+   ],
+   "enable_gpu": false,
+   "enable_internet": false,
+   "is_private": true,
+   "ram_budget_bytes": 6442450944,
+   "output_budget_bytes": 10737418240,
+   "parent_push_command": "Remove-Item Env:KAGGLE_USERNAME,Env:KAGGLE_KEY,Env:KAGGLE_API_TOKEN,Env:KAGGLE_CONFIG_DIR -ErrorAction SilentlyContinue; $env:KAGGLE_CONFIG_DIR = Join-Path $HOME '.kaggle-davideferrante11'; $py = & .\\scripts\\py.cmd -c \"import sys; print(sys.executable)\"; $kaggle = Join-Path (Split-Path $py) 'kaggle.exe'; & $kaggle kernels push -p 'C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\agenti\\grok_transfer_esteso_r5\\packages\\vcc-effects-cd4-stim48hr-joint-r5'",
+   "cross_account": "Se Kaggle rifiuta un kernel_source di davidmaisterx, il parent condivide quel kernel con davideferrante11 oppure copia la banca sul suo account. Non si scarta D4 e non si rif\u00e0 l'ingestion."
+  },
+  {
+   "slug": "vcc-effects-mix-t25-r5",
+   "owner": "davideferrante11",
+   "phase": "mix",
+   "push_now": false,
+   "push_when": "i tre joint e i cinque frammenti hanno un output montabile",
+   "worker_pushed": false,
+   "kernel_sources": [
+    "davideferrante11/vcc-effects-cd4-rest-joint-r5",
+    "davideferrante11/vcc-effects-cd4-stim8hr-joint-r5",
+    "davideferrante11/vcc-effects-cd4-stim48hr-joint-r5",
+    "davideferrante11/vcc-effects-orion-hct116-r4",
+    "davideferrante11/vcc-effects-orion-hek293t-r4",
+    "davideferrante11/vcc-effects-rpe1-r4",
+    "davideferrante11/vcc-effects-jurkat-nadig-r4",
+    "davidmaisterx/vcc-effects-k562-essential-r4"
+   ],
+   "dataset_sources": [
+    "davideferrante11/vcc-ingest-code-cd4-r1"
+   ],
+   "enable_gpu": false,
+   "enable_internet": false,
+   "is_private": true,
+   "ram_budget_bytes": 6442450944,
+   "output_budget_bytes": 10737418240,
+   "parent_push_command": "Remove-Item Env:KAGGLE_USERNAME,Env:KAGGLE_KEY,Env:KAGGLE_API_TOKEN,Env:KAGGLE_CONFIG_DIR -ErrorAction SilentlyContinue; $env:KAGGLE_CONFIG_DIR = Join-Path $HOME '.kaggle-davideferrante11'; $py = & .\\scripts\\py.cmd -c \"import sys; print(sys.executable)\"; $kaggle = Join-Path (Split-Path $py) 'kaggle.exe'; & $kaggle kernels push -p 'C:\\Users\\ferra\\OneDrive\\Desktop\\vcc2026\\reports\\modelli\\percorso_riusabile_2026-10-05\\agenti\\grok_transfer_esteso_r5\\packages\\vcc-effects-mix-t25-r5'",
+   "cross_account": "Se Kaggle rifiuta un kernel_source di davidmaisterx, il parent condivide quel kernel con davideferrante11 oppure copia la banca sul suo account. Non si scarta D4 e non si rif\u00e0 l'ingestion."
+  }
+ ],
+ "not_in_this_mix": [
+  {
+   "name": "k562_gwps",
+   "reason": "open_parent_job",
+   "evidence": "Il kernel GWPS del parent resta aperto. k562_essential non lo sostituisce. Non \u00e8 in questo mix."
+  },
+  {
+   "name": "norman2019",
+   "reason": "adapter_limit_component_map",
+   "evidence": "Molte perturbazioni sono singole. Alcune doppie non autorizzano a escludere la fonte. Serve la mappa source verificata; i composti non si inventano. Non \u00e8 in questo primo mix."
+  },
+  {
+   "name": "tian2021_control",
+   "reason": "adapter_limit_control_token",
+   "evidence": "Il token control va verificato nel producer o nei metadata. Non \u00e8 un'esclusione scientifica definitiva."
+  },
+  {
+   "name": "tian2019_ipsc",
+   "reason": "adapter_limit_qc",
+   "evidence": "QC non verificato in questo turno. Non \u00e8 un'esclusione scientifica definitiva."
+  },
+  {
+   "name": "hipsci_gw_and_targeted19",
+   "reason": "adapter_limit_controls",
+   "evidence": "Controlli e ancore gi\u00e0 registrati. Non rilanciare. Cercare solo prove pertinenti."
+  },
+  {
+   "name": "davideferante_axis",
+   "reason": "technical_access",
+   "evidence": "L'asse manca sul terzo account. Si risolve pubblicando l'input della pipeline, non escludendo la fonte."
+  },
+  {
+   "name": "scp_ko",
+   "reason": "same_estimator_when_valid",
+   "evidence": "I KO idonei possono usare lo stesso stimatore dove \u00e8 valido, senza inventare chimica o guide. Non entrano in questo primo mix."
+  },
+  {
+   "name": "GSE249595",
+   "reason": "guides_absent",
+   "evidence": "Le guide non ci sono e non si inventano."
+  },
+  {
+   "name": "hepg2_h1_kolf_and_other_r4_packages",
+   "reason": "not_in_this_first_mix",
+   "evidence": "Restano fonti nominata, non omissioni. I pacchetti r4 per donatore CD4 non vanno pushati: la stima CD4 \u00e8 il joint r5."
+  }
+ ],
+ "comparison": {
+  "started": false,
+  "observed_result": null,
+  "blocks_phase_1": false,
+  "rule": "six-member delta resolved positive, the same without Jaccard resolved positive, PDS not resolved negative, and expanded-arm local score >= 0.100"
+ },
+ "n_packages": 4,
+ "utc": "2026-10-05T17:29:01Z",
+ "joint_code_sha256": {
+  "estimator_core.py": "52c4014ed7f0d21cd14c72d87063505dfd7bb2e386e32897e792193851425d62",
+  "cd4_joint.py": "047a221715c1dee107505ac057d37b5362403cb03383311da47c8b8f013e9d41"
+ },
+ "packages_match_joint_source": true,
+ "joint_source_refreshed_utc": "2026-10-05T17:32:46Z"
+}
