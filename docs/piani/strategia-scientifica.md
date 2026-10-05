@@ -1,5 +1,12 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Distribuzione su tre account, 5/10:** il proprietario autorizza la condivisione
+  degli input, anche pubblica se necessaria. [Stato e accessi necessari](../../reports/modelli/percorso_riusabile_2026-10-05/CONDIVISIONE_ACCOUNT.md).
+  Otto parti preparate, quattro per account libero; accessi ancora da concedere
+  dal proprietario. Usare `dispatch_shared_samples.py`, che evita duplicati fra
+  account per identità della parte. Dopo la distribuzione non usare il precedente
+  `launch_other_samples.py`. I primi cinque job avanzano: `other_sample_progress_r2.json`.
+
 - **Prosecuzione Codex 5/10, 12:33:** avviata la materializzazione dei campioni
   KOLF/HCT116/HEK293T in parti disgiunte: cinque push accettati, otto ancora da
   lanciare negli slot liberi. [Codice, ricevute e prosecuzione](../../reports/modelli/percorso_riusabile_2026-10-05/CAMPIONI_PARTIZIONATI.md).
