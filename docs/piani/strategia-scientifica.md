@@ -1,5 +1,13 @@
 # R-LEAD — imparare risposte trasferibili a contesti nuovi
 
+- **Condivisione KOLF/HCT116 verificata, 5/10:** il proprietario pubblica i primi
+  due blocchi. Accessi verificati sui due account consumatori; quattro nuovi job
+  accettati, due su davidmaisterx e due su davideferante.
+  [Ricevute e parti rimaste](../../reports/modelli/percorso_riusabile_2026-10-05/CONDIVISIONE_KOLF_HCT116.md).
+  Per le quattro parti HEK293T ancora mancanti usare `dispatch_shared_samples_r2.py`
+  con `--units orion_hek293t`, dopo la condivisione del terzo blocco. Verificare
+  i nove job in `other_sample_launches.jsonl` e la ricomposizione alla chiusura.
+
 - **Distribuzione su tre account, 5/10:** il proprietario autorizza la condivisione
   degli input, anche pubblica se necessaria. [Stato e accessi necessari](../../reports/modelli/percorso_riusabile_2026-10-05/CONDIVISIONE_ACCOUNT.md).
   Otto parti preparate, quattro per account libero; accessi ancora da concedere
