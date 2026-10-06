@@ -17,6 +17,8 @@
 
 [Adapter preparato](../../reports/modelli/percorso_riusabile_2026-10-05/hipsci_adapter_r1/README.md): quattro fixture passate contro lo stimatore originale, senza fondere chimiche o perdere controlli. Prossimo passo concreto: consumer con hash/asse e crosswalk/QC reali, poi integrazione dei pesi fra blocchi; nessuna banca reale consumata dalla fixture.
 
+[Metadata HIPSCI reali](../../reports/modelli/percorso_riusabile_2026-10-05/hipsci_adapter_r1/real_rows_r1/README.md): 19 cloni con NTC; il ventesimo BIO è una cellula senza identità/ancora. Chimica ignota anche nei cloni noti: risolvere provenienza o ruolo esplicito, senza escludere interi cloni. Verificare pooling dei donatori prima dello shrink, non voti indipendenti dopo shrink.
+
 [Procedura del prossimo training](../../reports/modelli/percorso_riusabile_2026-10-05/RIUSO_r3.md): riusare derivati compatibili; nuova fonte richiede solo i propri derivati e una nuova release globale. [Riconciliazione e limiti](../../reports/analisi/riconciliazione_banca_2026-10-05/README.md), [R-DATI](dati-affidabilita.md), [R-LAB](piano-giorno-2026-09-30.md).
 
 La [cronologia precedente completa](../storico/consolidamento_banca_2026-10-05/INDICE.md) conserva esiti, P0–P6 e ipotesi del filone neurale: non è la coda corrente. Design neurale e banco appaiato successivo non devono bloccare l'invio autorizzato. Regole scientifiche in [GENERALIZZAZIONE](../GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile), procedure di lancio/invio in [PROCEDURE](../PROCEDURE.md).

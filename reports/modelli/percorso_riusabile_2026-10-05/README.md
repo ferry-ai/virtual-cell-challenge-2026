@@ -8,6 +8,7 @@
 [Identità riconciliate e lacune](../../analisi/riconciliazione_banca_2026-10-05/README.md).
 [HIPSCI: conteggi persistenti riusabili senza nuova ingestion](HIPSCI_RIUSO_COUNT_SUM_r1.md); adapter e ammissione ancora aperti.
 [Adapter count_sum preparato e verificato su quattro fixture](hipsci_adapter_r1/README.md); consumer reale e pesi fra contesti ancora aperti.
+[Righe HIPSCI reali verificate](hipsci_adapter_r1/real_rows_r1/README.md): 19 cloni con controlli e una cellula senza metadata; chimica ignota da trattare esplicitamente prima del fit.
 K562 storico disponibile con SHA verificato: [riuso preparato](k562_reuse_r1/ready_r3.json), caricato privato; sei cache corrette pronte per il fit finale.
 
 ## Quali dati usare
