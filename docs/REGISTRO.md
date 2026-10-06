@@ -90,6 +90,9 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/invii/prediction_t36_2026-10-06/leggi_t36.py` | attuale | — | Lettore del punteggio del t36 (e del t37) secondo la regola registrata, scritto prima del punteggio | — |
 | `reports/invii/prediction_t36_2026-10-06/prediction.json` | attuale | — | Previsione e regola del t36 (e del braccio t37), registrate prima della generazione del candidato | — |
 | `reports/invii/trial_rlead_2026-10-06/` | attuale | — | t36/t37: generazione, pacchetti, ricevute e stato finale del t36 (0,141392) | — |
+| `reports/invii/prediction_t38_2026-10-07/` | attuale | — | Previsione e regola del t38 (t36 con ampiezza 1,0), registrate prima della generazione | — |
+| `reports/invii/trial_rlead_2026-10-07/` | attuale | — | t38: generazione, pacchetto, testi e ricevute | — |
+| `reports/analisi/prove_per_davide_2026-10-07/` | attuale | — | Raccolta per Davide delle prove del branch `codex/teammate-rlead` (t36, t37, t38, tetti, pooling, L1) da riusare come test già fatti | — |
 | `reports/invii/prediction_t36_2026-10-06/comparison.json` | attuale | — | Lettura del t36 con la regola registrata: ramo b, −0,0035 sul t28 | — |
 | `reports/sorgenti/pooling_esatto_2026-10-06/` | attuale | — | Pooling esatto dello stadio 98 per la banca estesa (prima dello shrinkage, come `effects_from_pseudobulk`): modulo che chiama la funzione originale, scorciatoia esatta per donatori disgiunti, confronto di tabelle e cinque fixture sintetiche | — |
 | `reports/modelli/guadagno_appreso_2026-10-05/` | attuale | — | Stadio 1 del guadagno appreso sul transfer `all` (protocollo registrato prima, codice, esito: non passa) e tre diagnostiche a posteriori sul cubo r2 (tetto nella stessa linea, pesi oracolo dei gruppi, curva del coseno contro il numero di linee sorgente) con le proposte per la mole di dati Kaggle | — |

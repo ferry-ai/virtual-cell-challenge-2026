@@ -50,6 +50,8 @@ pronto dal proprietario), t09 e t13 (fermati dalle loro regole), t21 (la sua pre
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 07/10 | [prediction_t38_2026-10-07/](prediction_t38_2026-10-07/) | t38 = t36 con il solo `--effects-scale` 1,5 → 1,0 (dispersione per gene accesa): verifica se fedeltà e reach del t28 vengono dalla dispersione e la perdita di nMAE dall'ampiezza; banda t38 − t36 −0,012…+0,015, centro +0,002, regola a ±0,005, registrata prima della generazione | registrata, invio in corso | ★ |
+| 07/10 | [trial_rlead_2026-10-07/](trial_rlead_2026-10-07/) | t38: generazione, pacchetto, testi, script di caricamento e keep-awake | in corso | — |
 | 06/10 | [prediction_t36_2026-10-06/](prediction_t36_2026-10-06/) | t36 = `all` + w·R con emissione t28 (e t37 = `all` senza R, braccio di confronto se il secondo slot è libero): banda e regola registrate prima della generazione. Ufficiale 0,141392, rango 446; [confronto](prediction_t36_2026-10-06/comparison.json) | pubblicato; ramo b (−0,0035 sul t28) | ★★ |
 | 06/10 | [trial_rlead_2026-10-06/](trial_rlead_2026-10-06/) | Base `all` con emissione t28 (t37, impacchettato, non inviato) e t36 = `all` + w·R: generazione, pacchetti, testi, ricevuta di caricamento e stato finale dell'entry `LgakrSXj3X2nAtN5P4Yk` (published, 0,141392) | sì; t36 pubblicato | ★ |
 | 04/10 | [prediction_t35_2026-10-04/](prediction_t35_2026-10-04/) | Rete L1 (mediana condizionata del log2FC per l'nMAE) imposta alla media per cellula dei CPM spostando conteggi, sopra il t34 con il bulk identico; registrata prima dell'esportazione; banda t35 − t34 +0,005…+0,030. **Non inviato**: il banco non passa per H1 ([ESITO](../modelli/rete_l1_2026-10-04/ESITO.md)) | registrazione; non inviato | ★ |
