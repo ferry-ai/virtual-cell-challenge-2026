@@ -87,6 +87,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/modelli/rete_sorgenti_2026-10-03/esporta_abc.py` | attuale | — | Esportatore degli effetti della rete per i contesti della gara nel formato dello stadio 45, con `test_esporta.py` (prove sintetiche, lettura come lo stadio 45) | — |
 | `reports/generatore_e_banchi/banco_t35_2026-10-04/` | attuale | — | Banco del t35 con lo scorer vero sulle linee tenute fuori: protocollo, codice del kernel Kaggle, magnitudini per linea (manifest), test sintetico | — |
 | `reports/modelli/all_piu_R_2026-10-06/` | attuale | — | t36: transfer `all` più la correzione appresa R di Davide (combinatore con parità, README del perché) | — |
+| `reports/invii/prediction_t36_2026-10-06/leggi_t36.py` | attuale | — | Lettore del punteggio del t36 (e del t37) secondo la regola registrata, scritto prima del punteggio | — |
 | `reports/invii/prediction_t36_2026-10-06/prediction.json` | attuale | — | Previsione e regola del t36 (e del braccio t37), registrate prima della generazione del candidato | — |
 | `reports/invii/trial_rlead_2026-10-06/` | attuale | — | t36/t37: log della generazione della base `all` con emissione t28 | — |
 | `reports/sorgenti/pooling_esatto_2026-10-06/` | attuale | — | Pooling esatto dello stadio 98 per la banca estesa (prima dello shrinkage, come `effects_from_pseudobulk`): modulo che chiama la funzione originale, scorciatoia esatta per donatori disgiunti, confronto di tabelle e cinque fixture sintetiche | — |
