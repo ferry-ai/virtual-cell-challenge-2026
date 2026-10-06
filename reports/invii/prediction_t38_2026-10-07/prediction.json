@@ -1,0 +1,25 @@
+{
+  "written_utc": "registered by the commit that adds this file, before the generation of t38 and before any score",
+  "number_note": "t38 is provisional (t37 = the 'all' arm without R, packaged and not sent); confirm the numbering with Davide before merging",
+  "label": "t38: t36 with a single change, --effects-scale 1.5 -> 1.0; same effects (effects_t36_2026-10-06: 'all' + w * R), gene dispersion on, scale 1.0, seed 20260912, stage 48 as t36",
+  "claim_type": "subjective forecast registered before the generation; owner's request in chat 7/10 ~01:20 CEST ('prova qualcosa in poco tempo ... come viene viene, è un parametro')",
+  "evidence_before": {
+    "t25_to_t28": "t28 = t25 effects x1.5 + gene dispersion: scaled nMAE -0.069, fid +0.051, reach +0.055, PDS -0.001, MSE 0 in both (main, prediction_t28_2026-09-29/comparison.json). Two factors changed at once: which one moved fid/reach is unknown",
+    "margins": "reports/analisi/margini_orizzonte_2026-10-04: the generator alone may be worth about +0.01 if t28's Wilcoxon gains are kept with t25's nMAE; MSE stays 0 (cosine needed >= 0.22)",
+    "t36": "0.1413918 (nMAE scaled 0.074, raw 0.954; fid -0.006; reach 0.185; PDS 0.591)"
+  },
+  "hypothesis": "fid/reach gains of t28 came from the gene dispersion, the nMAE loss from the x1.5 amplitude: lowering the amplitude recovers nMAE and keeps the rank members",
+  "expected": {
+    "t38_minus_t36_band": [-0.012, 0.015],
+    "centre": 0.002,
+    "if_hypothesis_true": "+0.008..+0.012 (nMAE up, fid/reach unchanged)",
+    "if_false": "about -0.006 (nMAE +0.011, fid and reach -0.017 on the mean)",
+    "members": "MSE stays 0; PDS within +-0.01"
+  },
+  "rule": {
+    "a": "t38 - t36 >= +0.005: amplitude 1.0 with gene dispersion becomes the emission of the next candidates (e.g. Davide's extended bank)",
+    "b": "|t38 - t36| < 0.005: not conclusive; the emission stays as t28",
+    "c": "t38 - t36 <= -0.005: the x1.5 amplitude carries the rank members; keep 1.5",
+    "also_reported": "the six scaled members against t36 and t28; one seed; nothing direct about D, E, F"
+  }
+}
