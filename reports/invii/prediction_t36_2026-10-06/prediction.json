@@ -1,0 +1,37 @@
+{
+  "written_utc": "registered by the commit that adds this file, before the correction files arrive, before generating the candidate and before any score",
+  "number_note": "t36 and t37 are provisional numbers (main is canonical, t31-t35 already reserved on this branch): confirm with Davide before merging",
+  "label": "t36: transfer 'all' of the shared cube r2 (every table, ten groups, t25 amplitude 1.576) + w * R, the D-056 CellNet correction of the HepG2-fold network computed by Davide's export_abc.py on the official A/B/C controls with the frozen selector weights (the same R and w of t30); emission t28 (effects-scale 1.5, gene dispersion on, scale 1.0, seed 20260912)",
+  "claim_type": "subjective forecast registered before the generation of the candidate; no official result",
+  "status": "owner's request in chat on 6/10 evening ('procediamo... abbiamo due slot oggi... andiamo senza paura'); the upload itself is confirmed in chat when the package exists",
+  "evidence_before": {
+    "bench_v2_local_scaled_six_member_mean": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04 (main): all - prod = +0.037 H1, +0.098 HepG2, +0.043 RPE1, +0.039 Jurkat, +0.111 K562 (5/5 positive, PDS never lower); all_wR - all = +0.003, +0.011, +0.018, +0.019, +0.015 (5/5 positive; HepG2 PDS -0.12). Local anchors on a half-depth truth, not VCC scores.",
+    "site_caution": "t30 (prod + w R) scored -0.004989 against t25 on the site, while the bench gave prod_wR - prod +0.003..+0.057: the bench over-reads R. The expected gain of t36 comes mostly from the 'all' base.",
+    "cube": "all vs prod cosine +0.04..+0.09 on 5/5 held lines (reports/modelli/guadagno_appreso_2026-10-05/ESITO.md)"
+  },
+  "references": {"t28_best_observed": 0.14484520500645978, "t25": 0.140238, "t30": 0.135249},
+  "candidate": {
+    "base_effects": "vcc2026-data/processed/effects_all_2026-10-05 (export.json: 10 groups, amplitude 1.576, 300/300 targets covered), the same arrays in A, B, C",
+    "correction": "correction_<ctx>.npz and targets_<ctx>.csv from Davide's export_abc_r2 (R on the official axis, w per target); combined by reports/modelli/all_piu_R_2026-10-06/combina_R.py: lfc_all + w R on the pairs observed in the base, elsewhere unchanged; parity with w = 0 must return the base exactly",
+    "stage_45": "trial-ext-profile, --effects-scale 1.5 --gene-dispersion --gene-dispersion-scale 1.0, default seed 20260912 (t28's emission)",
+    "stage_48": "as t28/t35"
+  },
+  "comparison_arm_t37": "t37 = the same base without R (effects_all_2026-10-05, same emission and seed), used only if the second slot of the day is free; it isolates R (t36 - t37) and the base (t37 - t28)",
+  "expected": {
+    "t36_minus_t28_band": [0.0, 0.06],
+    "t36_working_centre": 0.025,
+    "t36_minus_t37_band": [-0.005, 0.015],
+    "t36_minus_t37_centre": 0.004,
+    "members": "PDS and the DE members up (more source lines); scaled MSE stays 0 (site calibration: alignment needed > 0.12)",
+    "calibration": "Subjective. The bench to site ratio is unknown; t30 shows R over-read by the bench; A/B/C may sit closer to some cube groups than the bench lines do, or farther."
+  },
+  "rule": {
+    "a_gain_at_least_0.01": "t36 - t28 >= +0.01: the 'all' base with R becomes the reference recipe of this branch, and the extended-bank refit gets a measured lower bound",
+    "b_within_0.01": "|t36 - t28| < 0.01: not conclusive",
+    "c_loss_at_least_0.01": "t36 - t28 <= -0.01: the bench gain of 'all' does not transfer to A/B/C; not repeated in this form",
+    "r_if_t37": "t36 - t37 >= +0.005 R stays; |.| < 0.005 not conclusive; <= -0.005 R removed",
+    "also_reported": "the six scaled members against t28 (and t37)",
+    "not": "one seed; says nothing direct about D, E, F"
+  },
+  "reserve": "no reserve is consumed: A, B, C are the public validation contexts"
+}
