@@ -6,6 +6,7 @@
 [invio diretto autorizzato](INVIO_DIRETTO_r1.md).
 
 [Identità riconciliate e lacune](../../analisi/riconciliazione_banca_2026-10-05/README.md).
+[HIPSCI: conteggi persistenti riusabili senza nuova ingestion](HIPSCI_RIUSO_COUNT_SUM_r1.md); adapter e ammissione ancora aperti.
 K562 storico disponibile con SHA verificato: [riuso preparato](k562_reuse_r1/ready_r3.json), caricato privato; sei cache corrette pronte per il fit finale.
 
 ## Quali dati usare
@@ -15,9 +16,9 @@ K562 storico disponibile con SHA verificato: [riuso preparato](k562_reuse_r1/rea
 | Archivio grezzi, banche, campioni | [manifest storage r11](cloud_catalog_r11/manifest.json) | Account, versioni, file, hash e provenienza; non ammissione al fit |
 | Dimensioni e contesti disponibili | [dati r2, fotografia datata](DATI_DISPONIBILI_r2.md) | 395,75 GB grezzi; non stato corrente né uso nel fit |
 | Copertura da riconciliare | [expected r3 congelato](../../analisi/riconciliazione_banca_2026-10-05/frozen/expected_r3.json) | Tutte le unità attese e fonti storiche; lacune da motivare |
-| Release del rifit corrente | [params congelati](extended_mix_launch_r2/vcc-effects-mix-t25-bank-r1-retry1/params.json) | Input specifici del primo mix esteso parziale; non tutto il catalogo |
-| Esecuzione del rifit | [ricevuta di lancio](extended_mix_launch_r2/vcc-effects-mix-t25-bank-r1-retry1.json) | Codice e parametri, account, alias del retry; non risultato scientifico |
-| Rifit e disponibilità sul pannello | [ricevute del mix concluso](extended_mix_completion_r1/model/fit_receipt.json), [inventario](extended_mix_completion_r1/model/panel_inventory.json) | 12 fonti registrate; 8 con target sul pannello. Hash delle matrici nel consumer e copertura completa ancora aperti |
+| Release t36 eseguita | [impronta congelata](release_t36_reuse_r1.json) | Codice, parametri, input e prove del consumer finale; release parziale |
+| Input finali t36 | [parametri](generation_successors_r1/package/params.json) | Sei cache corrette, K562 storico e checkpoint del primo mix; non tutto il catalogo |
+| Risultato t36 | [confronto ufficiale](../../invii/prediction_t36_2026-10-06/comparison.json), [stato](ESECUZIONE_r19.md) | 13 nomi registrati, 9 con target sul pannello; fonti, non 9 linee. Invio concluso, consumo completo del catalogo ancora aperto |
 
 Non scegliere dataset per titolo, data o nome più recente. Il manifest individua
 la versione e i byte. `rlead-bench-cube-r2` resta input del pilot, mai fallback.
@@ -45,8 +46,9 @@ pseudobulk; le matrici cellulari campionate persistenti servono ad altri trainer
 non entrano automaticamente in questo rifit. Un archivio di 395,75 GB non prova
 che un singolo fit li abbia usati tutti.
 
-GWPS, adapter/QC e copertura del catalogo restano aperti. Il percorso completo
-non è certificato finché mancano consumo effettivo, generazione e risultati.
+GWPS banca/campioni chiusi; il loro collegamento al transfer, gli altri adapter/QC
+e la copertura del catalogo restano aperti. Generazione e risultato della release
+t36 parziale sono conclusi; manca il consumo effettivo del catalogo completo.
 Manifest o script esistenti, da soli, non sono prova end-to-end.
 
 ## Evidenze precedenti
