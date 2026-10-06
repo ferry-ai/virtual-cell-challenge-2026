@@ -1,0 +1,124 @@
+{
+  "run_id": "t38gen",
+  "stage": "45_generate_prediction",
+  "started_utc": "2026-10-06T23:26:28.634104+00:00",
+  "finished_utc": "2026-10-06T23:26:28.740545+00:00",
+  "seed": 20260912,
+  "config": {
+    "run_id": "t38gen",
+    "trial": "trial-ext-profile",
+    "out": null,
+    "n_perts": null,
+    "contexts": null,
+    "controls_dir": null,
+    "cells_per_pert": null,
+    "seed": null,
+    "overdispersion": null,
+    "reserve_gib": 10.0,
+    "skip_resource_check": false,
+    "allow_overwrite": false,
+    "gene_dispersion": true,
+    "gene_dispersion_scale": 1.0,
+    "depth_bins": false,
+    "effects_scale": 1.0,
+    "effects": [
+      "A=C:\\Users\\39346\\vcc2026-data\\processed\\effects_t36_2026-10-06\\effects_A.npz",
+      "B=C:\\Users\\39346\\vcc2026-data\\processed\\effects_t36_2026-10-06\\effects_B.npz",
+      "C=C:\\Users\\39346\\vcc2026-data\\processed\\effects_t36_2026-10-06\\effects_C.npz"
+    ]
+  },
+  "inputs": {
+    "controls:A": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\raw\\controls\\context_A.h5ad",
+      "exists": true,
+      "bytes": 224973316,
+      "mtime_utc": "2026-08-19T07:33:22+00:00",
+      "sha256": "daf888bd6894da5488c8dac3098a3618ff766d03fdf1250ec7f607124bb97834",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "controls:B": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\raw\\controls\\context_B.h5ad",
+      "exists": true,
+      "bytes": 210966111,
+      "mtime_utc": "2026-08-19T07:33:48+00:00",
+      "sha256": "8764c13cb61dd48e51c817335dd4ecc85a740406c5af144c4884d79d3cd3293d",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "controls:C": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\raw\\controls\\context_C.h5ad",
+      "exists": true,
+      "bytes": 226056691,
+      "mtime_utc": "2026-08-19T07:34:18+00:00",
+      "sha256": "486a299ad022ec5fd6a3c5f56ec77efeb7b8b85e5de0e41250d064c6f9b236f6",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "outputs": {
+    "prediction": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\t38gen\\prediction.h5ad",
+      "exists": true,
+      "bytes": 4211986484,
+      "mtime_utc": "2026-10-06T23:26:28.613931+00:00",
+      "sha256": "da3a8dbc6ec1824b0cda614f138e99d872b95cc193c283d3cecf59455fd9b5a5",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "diagnostics": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\t38gen\\generation_diagnostics.json",
+      "exists": true,
+      "bytes": 240891,
+      "mtime_utc": "2026-10-06T23:26:28.633103+00:00",
+      "sha256": "2cc8ca223dc334db425cb242f132267e10aa8593175630fdf625893b6886274f",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "storage": {
+      "stored_entries": 2084357766,
+      "stored_entries_per_cell": 5789.882683333333,
+      "per_cell_budget": 13194,
+      "global_cap": 4750000000,
+      "fraction_of_global_cap_at_this_size": 0.4388121612631579,
+      "projected_entries_at_full_shape": 2084357766.0,
+      "projected_fraction_of_cap": 0.4388121612631579,
+      "file_bytes": 4211986484,
+      "bytes_per_cell": 11699.962455555555,
+      "projected_file_bytes_at_full_shape": 4211986484.0
+    },
+    "runtime": {
+      "basal_profiles_seconds": 8.373790800000279,
+      "generation_seconds": 661.4675406000006,
+      "total_seconds": 713.6148363000011,
+      "seconds_per_block": 0.7349639340000006,
+      "projected_generation_seconds_at_full_shape": 661.4675406000006
+    },
+    "memory": {
+      "peak_rss_bytes": 556404736
+    },
+    "context_provenance_ok": true
+  },
+  "notes": [
+    "No VCC score here. Generation only; nothing uploaded."
+  ],
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "MSI",
+    "cpu_count": 32,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\39346\\vcc2026-data"
+    }
+  }
+}
