@@ -1,6 +1,6 @@
 # Archivio → banca pronta → training
 
-**Ingresso unico per riuso:** [procedura del prossimo training](RIUSO_r2.md).
+**Ingresso unico per riuso:** [procedura del prossimo training](RIUSO_r3.md).
 **Stato e assegnazioni correnti:** [R-LEAD](../../../docs/piani/strategia-scientifica.md).
 **Rifit, invio e valutazione della release parziale conclusi:** [candidato completo e invio t36](ESECUZIONE_r19.md) e
 [invio diretto autorizzato](INVIO_DIRETTO_r1.md).
@@ -29,7 +29,7 @@ Montare direttamente gli output salvati dei producer; non è obbligatorio il
 passaggio cloud → locale → cloud. Riutilizzare la banca a parità di input,
 asse, QC, codice e parametri. Un nuovo dataset aggiunge il proprio adattatore,
 banca/campioni e una nuova release globale; modifica dei soli derivati dipendenti
-se cambiano normalizzazione, ancore o split. [Procedura precisa](RIUSO_r2.md).
+se cambiano normalizzazione, ancore o split. [Procedura precisa](RIUSO_r3.md).
 
 Non rilanciare i dispatcher delle campagne chiuse. Prima di rilanciare un
 fallimento, seguire il ledger e l'alias `supersedes_failed`; niente doppie voci.

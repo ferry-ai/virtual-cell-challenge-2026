@@ -77,7 +77,7 @@ nessun calcolo pesante locale. La nuova ingestion attiva non viene duplicata o f
 - `TRANSFER_IDENTICO_r1.md`: identità del modello resta il mandato; il vecchio no-VCC
   è superato dall'autorizzazione umana in `INVIO_DIRETTO_r1.md`.
 - `RIUSO_r1.md` e `training_coverage_r1/expected.json`: conservati; per i riferimenti
-  immutabili usare [RIUSO r2](../../modelli/percorso_riusabile_2026-10-05/RIUSO_r2.md)
+  immutabili usare [RIUSO r2](../../modelli/percorso_riusabile_2026-10-05/RIUSO_r3.md)
   e expected r2. Non riavviare ingestion dai dispatcher storici.
 
 ## Tempi e ripetizione

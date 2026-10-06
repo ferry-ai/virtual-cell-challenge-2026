@@ -60,6 +60,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/modelli/percorso_riusabile_2026-10-05/DATI_DISPONIBILI_r2.md` | da-verificare | — | Dimensioni datate utili; note su training non avviato superate, GB storage non uso del fit | [R-024](#r-024--identità-della-banca-ledger-congelati-e-stato-del-rifit) |
 | `reports/modelli/percorso_riusabile_2026-10-05/TRAINER_r1.md` | storico | `reports/modelli/percorso_riusabile_2026-10-05/RIUSO_r2.md` | Reader neurali e fixture, non launcher lineare corrente; divieti e stato datati non operativi | — |
 | `reports/modelli/percorso_riusabile_2026-10-05/TRANSFER_IDENTICO_r1.md` | da-verificare | — | Identità t25/t28 valida; no-VCC superato dal mandato umano INVIO_DIRETTO, senza cambiare ricetta | [R-024](#r-024--identità-della-banca-ledger-congelati-e-stato-del-rifit) |
+| `reports/modelli/percorso_riusabile_2026-10-05/RIUSO_r2.md` | superato | `reports/modelli/percorso_riusabile_2026-10-05/RIUSO_r3.md` | Guida preservata; selezione r10/r2 antecedente ai due blocchi GWPS. r3 include storage45unità ed expected r3, distingue pacchetto t36 parziale dalla copertura completa | [R-025](#r-025--ingresso-di-riuso-successivo-alla-chiusura-gwps) |
 | `reports/modelli/percorso_riusabile_2026-10-05/RIUSO_r1.md` | superato | `reports/modelli/percorso_riusabile_2026-10-05/RIUSO_r2.md` | Procedura utile, vecchio inventario vincola un ledger operativo mutato; r2 usa la copia storica byte-identica | [R-024](#r-024--identità-della-banca-ledger-congelati-e-stato-del-rifit) |
 | `reports/modelli/percorso_riusabile_2026-10-05/training_coverage_r1/expected.json` | superato | `reports/analisi/riconciliazione_banca_2026-10-05/frozen/expected_r2.json` | Inventario originale preservato; r2 conserva copertura e corregge soltanto il riferimento al ledger congelato | [R-024](#r-024--identità-della-banca-ledger-congelati-e-stato-del-rifit) |
 | `reports/analisi/pezzi_adottabili_2026-10-05/` | attuale | — | Catalogo del 5/10 dei pezzi copiabili nel residuo ancorato: equazioni riaperte in stesura, correzioni ai rapporti Antigravity (l'arXiv 2007.02747 non è PLE), testi integrali in agenti/. Nessun innesto, training o score | [R-LEAD](piani/strategia-scientifica.md) |
@@ -1261,6 +1262,16 @@ correzione `5eb130c` del 15 settembre, portata il 24.
 - **È ancora usato o citato:** sì, come base della v4, che ne copia il codice invariato dove non cambia.
 - **Disposizione proposta:** `superato` dalla cartella v4, che ha protocollo, test e lanci propri.
 - **Cosa chiuderebbe la revisione:** niente da chiudere: la cartella resta evidenza datata.
+
+### R-025 — Ingresso di riuso successivo alla chiusura GWPS
+
+- **Perché è segnalato:** RIUSO r2 seleziona r10/expected r2, anteriori alle due unità K562 GWPS chiuse.
+- **Affermazioni contestate:** quei riferimenti come ingresso operativo corrente del prossimo corpus.
+- **Evidenza contraria:** [storage r11](../reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r11/manifest.json) e [expected r3](../reports/analisi/riconciliazione_banca_2026-10-05/frozen/expected_r3.json), hash verificati da `freeze_t36_reuse_r1.py`.
+- **Cosa resta valido:** la procedura di riuso e gli inventari storici, preservati senza ricalcolo.
+- **È ancora usato o citato:** r2 rimane nella cronologia; gli ingressi attivi puntano a r3.
+- **Disposizione proposta:** superato da [RIUSO r3](../reports/modelli/percorso_riusabile_2026-10-05/RIUSO_r3.md), con pacchetto t36 parziale distinto dalla copertura completa.
+- **Cosa chiuderebbe la revisione:** ingresso corretto; ammissione e consumo completo del catalogo restano aperti in R-LEAD.
 
 ## Revisione periodica e pulizia
 
