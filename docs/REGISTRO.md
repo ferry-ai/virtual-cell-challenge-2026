@@ -90,7 +90,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/invii/prediction_t36_2026-10-06/leggi_t36.py` | attuale | — | Lettore del punteggio del t36 (e del t37) secondo la regola registrata, scritto prima del punteggio | — |
 | `reports/invii/prediction_t36_2026-10-06/prediction.json` | attuale | — | Previsione e regola del t36 (e del braccio t37), registrate prima della generazione del candidato | — |
 | `reports/invii/trial_rlead_2026-10-06/` | attuale | — | t36/t37: generazione, pacchetti, ricevute e stato finale del t36 (0,141392) | — |
-| `reports/invii/prediction_t38_2026-10-07/` | attuale | — | Previsione e regola del t38 (t36 con ampiezza 1,0), registrate prima della generazione; addendum di revisione prima del punteggio (la griglia del generatore del 29/09 contraddice l'ipotesi) | — |
+| `reports/invii/prediction_t38_2026-10-07/` | attuale | — | Previsione e regola del t38 (t36 con ampiezza 1,0), registrate prima della generazione; addendum di revisione e lettore `leggi_t38.py` prima del punteggio (la griglia del generatore del 29/09 contraddice l'ipotesi) | — |
 | `reports/invii/trial_rlead_2026-10-07/` | attuale | — | t38: generazione, pacchetto, testi e ricevute | — |
 | `reports/analisi/prove_per_davide_2026-10-07/` | attuale | — | Raccolta per Davide delle prove del branch `codex/teammate-rlead` (t36, t37, t38, tetti, pooling, L1) da riusare come test già fatti | — |
 | `reports/invii/prediction_t36_2026-10-06/comparison.json` | attuale | — | Lettura del t36 con la regola registrata: ramo b, −0,0035 sul t28 | — |
