@@ -15,7 +15,7 @@
 
 **Prima dipendenza da risolvere:** adapter HIPSCI mirato sulla banca `count_sum` già persistente, senza riusare il cache pseudo2 né rifare ingestion. [Evidenza e controlli necessari](../../reports/modelli/percorso_riusabile_2026-10-05/HIPSCI_RIUSO_COUNT_SUM_r1.md). Il file presente non dimostra ancora ammissione o consumo; identità BIO, ancore, asse e equivalenza restano da verificare nel consumer.
 
-[Adapter preparato](../../reports/modelli/percorso_riusabile_2026-10-05/hipsci_adapter_r1/README.md): quattro fixture passate contro lo stimatore originale, senza fondere chimiche o perdere controlli. Prossimo passo concreto: consumer con hash/asse e crosswalk/QC reali, poi integrazione dei pesi fra blocchi; nessuna banca reale consumata dalla fixture.
+[Adapter con pooling congiunto](../../reports/modelli/percorso_riusabile_2026-10-05/hipsci_adapter_r2/README.md): due fixture aggiuntive passate contro lo stimatore originale; conservati i cloni con soli controlli, shrink dopo il pooling. 626.781 cellule con label di target e 8.241 NTC; 526.843 non assegnate o senza metadata conservate per ruoli da definire. Prossimo passo: consumer con hash/asse, chimica e crosswalk/QC reali, poi mixer; nessuna banca reale consumata dalle fixture.
 
 [Metadata HIPSCI reali](../../reports/modelli/percorso_riusabile_2026-10-05/hipsci_adapter_r1/real_rows_r1/README.md): 19 cloni con NTC; il ventesimo BIO è una cellula senza identità/ancora. Chimica ignota anche nei cloni noti: risolvere provenienza o ruolo esplicito, senza escludere interi cloni. Verificare pooling dei donatori prima dello shrink, non voti indipendenti dopo shrink.
 
