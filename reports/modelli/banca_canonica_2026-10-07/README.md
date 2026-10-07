@@ -110,7 +110,7 @@ Le 67 tabelle `rows.csv` (57 MB) e le tabelle di effetti stanno nella radice dat
 | Tian 2019 iPSC | 1 | derivata, non ammessa (verso +0,049) | regola di QC per le gocce non filtrate e le etichette a più guide |
 | HIPSCI genome-wide, fitness e non | 2 | in banca, non derivabili con lo stimatore originale | 36 e 12 cellule di controllo in tutto: serve un riferimento dichiarato diverso dai controlli abbinati |
 | Papalexi 2021 arrayed | 1 | in banca | l'unico bersaglio del pannello ha 4 cellule, sotto il minimo di 10 |
-| Datlinger 2017 e 2021 | 2 | in banca | le etichette sono nomi di guida: serve una mappa guida → gene dichiarata |
+| Datlinger 2017 e 2021 | 2 | in banca | le etichette sono nomi di guida: serve una mappa guida → gene dichiarata. Controllo fatto dopo il commit: anche togliendo prefisso di libreria e numero di guida (32 e 20 nomi di gene), **nessuno è nel pannello**; la mappa serve alla banca generale, non a questo transfer |
 | 44 record del catalogo r4 senza banca | — | motivo del catalogo riportato nel registro, **non riverificato qui** | topo, enhancer, farmaci (testa separata), ORF, proteine, Southard (ingestione mai chiusa), Adamson, DLD-1, Mixscale |
 
 Altre lacune note: Orion HCT116 e HEK293T sono in banca ma **assenti dal catalogo r4**; per le unità
