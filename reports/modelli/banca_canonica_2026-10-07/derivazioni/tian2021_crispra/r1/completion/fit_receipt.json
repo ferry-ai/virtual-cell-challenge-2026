@@ -1,0 +1,178 @@
+{
+ "state": "derived_production_fragment",
+ "name": "tian2021_crispra",
+ "study": "tian2021_crispra",
+ "modality": "CRISPRa",
+ "arm": "crispra",
+ "full_training": false,
+ "not_heldout_validation": true,
+ "hidden_targets": [],
+ "held_groups": [],
+ "input_files": {
+  "tian2021_crispra": {
+   "count_sum.npz": "/kaggle/input/notebooks/davideferante/vcc-derivatives-tian2021-crispra-resume-r3/bank/tian2021_crispra/count_sum.npz",
+   "mask.npz": "/kaggle/input/notebooks/davideferante/vcc-derivatives-tian2021-crispra-resume-r3/bank/tian2021_crispra/mask.npz",
+   "rows.csv": "/kaggle/input/notebooks/davideferante/vcc-derivatives-tian2021-crispra-resume-r3/bank/tian2021_crispra/rows.csv",
+   "complete.json": "/kaggle/input/notebooks/davideferante/vcc-derivatives-tian2021-crispra-resume-r3/bank/tian2021_crispra/complete.json"
+  }
+ },
+ "input_hashes": {
+  "tian2021_crispra": {
+   "count_sum.npz": {
+    "bytes": 2703071,
+    "sha256": "89c9e1d4111cfed934e1ff7d28d65db7ddec00df1084a89770c936e668c1ce63"
+   },
+   "mask.npz": {
+    "bytes": 34130,
+    "sha256": "54e99860695ecf20a88cfc36aaf2ad231ce1dd7b0f51dd2c826833f305d42407"
+   },
+   "rows.csv": {
+    "bytes": 8883,
+    "sha256": "65fefe26dae7f807dd6bef1b5482846ec9b363aed292d44df5d2c2738abe79a2"
+   },
+   "complete.json": {
+    "bytes": 1532,
+    "sha256": "1ccf76d7d2e7dc4548bbbfc7458aa8e6a6c931360b76e1442b16120d8adf3f78"
+   }
+  }
+ },
+ "producers": {
+  "tian2021_crispra": {
+   "kernel_id": 137181364,
+   "version": 1,
+   "private": true,
+   "version_ref": "davideferante/vcc-derivatives-tian2021-crispra-resume-r3/versions/1",
+   "saved_source_sha256": "60f7a76c2c329efbf012dae6810c7fe0271473135f5ab7d0ea56706180d4aaff",
+   "version_stable_during_output_read": true
+  }
+ },
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+ "params_sha256": "c15e13d4aa02897c21ba041ba385b33ee940fb25ee91cc01717acaf317780ab0",
+ "recipe": {
+  "phi": 0.2,
+  "min_control_frac": 1e-06,
+  "min_cells": 10.0,
+  "pseudo": 0.5,
+  "pseudo_scale": "constant",
+  "min_expected": 1.0
+ },
+ "inventory": [
+  {
+   "unit": "tian2021_crispra",
+   "bank_rows": 101,
+   "cells_by_role": {
+    "outside_frozen_panel": 19524,
+    "panel_target": 1235,
+    "control": 434
+   },
+   "rows_by_role": {
+    "outside_frozen_panel": 96,
+    "panel_target": 4,
+    "control": 1
+   },
+   "selected_rows": 5
+  }
+ ],
+ "validation_excluded": 0,
+ "merge_blocks": false,
+ "aggregation": "one context; donors pooled before shrink",
+ "identity_policy": "unreported donor/condition/chemistry namespaced to the study; no imputation",
+ "crosswalk": "exact native label equal to a frozen panel symbol; every other label is inventoried, not resolved",
+ "contexts": [
+  {
+   "context": [
+    "tian2021_crispra",
+    "iPSC-induced neuron",
+    "UNREPORTED@tian2021_crispra",
+    "CRISPRa",
+    "10x 3'"
+   ],
+   "targets": [
+    "EPC2",
+    "GIGYF2",
+    "PRNP",
+    "TTBK2"
+   ],
+   "n_cells": [
+    224.0,
+    143.0,
+    276.0,
+    592.0
+   ],
+   "control_cells": 434.0,
+   "donors": [
+    "UNREPORTED@tian2021_crispra"
+   ],
+   "bank_rows": [
+    "tian2021_crispra:29",
+    "tian2021_crispra:38",
+    "tian2021_crispra:64",
+    "tian2021_crispra:75",
+    "tian2021_crispra:96"
+   ],
+   "own_gene": [
+    {
+     "target": "EPC2",
+     "cells": 224,
+     "state": "measured",
+     "raw": 0.4614148736000061,
+     "shrunk": 0.3787802457809448,
+     "se": 0.10775786638259888
+    },
+    {
+     "target": "GIGYF2",
+     "cells": 143,
+     "state": "measured",
+     "raw": 0.7067571878433228,
+     "shrunk": 0.6626335978507996,
+     "se": 0.09118825197219849
+    },
+    {
+     "target": "PRNP",
+     "cells": 276,
+     "state": "measured",
+     "raw": 1.036434292793274,
+     "shrunk": 1.0095129013061523,
+     "se": 0.08462598919868469
+    },
+    {
+     "target": "TTBK2",
+     "cells": 592,
+     "state": "measured",
+     "raw": 0.804252564907074,
+     "shrunk": 0.778672993183136,
+     "se": 0.07288393378257751
+    }
+   ],
+   "own_gene_summary": {
+    "derived_targets": 4,
+    "measured_own_gene": 4,
+    "median_own_raw": 0.7555048763751984,
+    "fraction_negative": 0.0
+   }
+  }
+ ],
+ "targets": [
+  "EPC2",
+  "GIGYF2",
+  "PRNP",
+  "TTBK2"
+ ],
+ "n_cells": [
+  224.0,
+  143.0,
+  276.0,
+  592.0
+ ],
+ "outputs": {
+  "tian2021_crispra.npz": {
+   "bytes": 639394,
+   "sha256": "3aa3d95ceef5deb990a00d68bc66b746acc7b1d130cc15892b604d7b0a66e446"
+  }
+ },
+ "comparison": null,
+ "matrix_hash_verified_in_consumer": true,
+ "mixer_consumed": false,
+ "automatic_admission": false
+}

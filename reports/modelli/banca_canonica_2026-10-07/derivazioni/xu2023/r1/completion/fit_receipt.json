@@ -1,0 +1,191 @@
+{
+ "state": "derived_production_fragment",
+ "name": "xu2023",
+ "study": "xu2023_hek293_crispri",
+ "modality": "CRISPRi",
+ "arm": "crispri",
+ "full_training": false,
+ "not_heldout_validation": true,
+ "hidden_targets": [],
+ "held_groups": [],
+ "input_files": {
+  "xu2023": {
+   "count_sum.npz": "/kaggle/input/notebooks/davideferante/vcc-derivatives-scp-k562-hek-r1/bank/xu2023/count_sum.npz",
+   "mask.npz": "/kaggle/input/notebooks/davideferante/vcc-derivatives-scp-k562-hek-r1/bank/xu2023/mask.npz",
+   "rows.csv": "/kaggle/input/notebooks/davideferante/vcc-derivatives-scp-k562-hek-r1/bank/xu2023/rows.csv",
+   "complete.json": "/kaggle/input/notebooks/davideferante/vcc-derivatives-scp-k562-hek-r1/bank/xu2023/complete.json"
+  }
+ },
+ "input_hashes": {
+  "xu2023": {
+   "count_sum.npz": {
+    "bytes": 4680434,
+    "sha256": "77b97d962c5c7b709efa22ebc5f206352876deda73d7a91534f49beda1679bbc"
+   },
+   "mask.npz": {
+    "bytes": 76408,
+    "sha256": "58161ec213c95ce7fe6fee5c5a2ce1aefb801a801cca6b9c447eb8c0682f94b4"
+   },
+   "rows.csv": {
+    "bytes": 16211,
+    "sha256": "42a282da45669d217e9478ecfad2f32646a4a979d86b8793ed8bbcdba7d0902d"
+   },
+   "complete.json": {
+    "bytes": 1704,
+    "sha256": "5f6c6b2058c1a1495bc734c2443bb448d9229a026653b3dc52af75243c960650"
+   }
+  }
+ },
+ "producers": {
+  "xu2023": {
+   "kernel_id": 137174807,
+   "version": 1,
+   "private": true,
+   "version_ref": "davideferante/vcc-derivatives-scp-k562-hek-r1/versions/1",
+   "saved_source_sha256": "cb722986c228ad028b62080760b36040e32a5e5d33e27cf2e1cfc9cec93dc921",
+   "version_stable_during_output_read": true
+  }
+ },
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+ "params_sha256": "0fe47b74e9df0cf328830012e7a04bdfc1af52d5258ad468fce44145604cb636",
+ "recipe": {
+  "phi": 0.2,
+  "min_control_frac": 1e-06,
+  "min_cells": 10.0,
+  "pseudo": 0.5,
+  "pseudo_scale": "constant",
+  "min_expected": 1.0
+ },
+ "inventory": [
+  {
+   "unit": "xu2023",
+   "bank_rows": 204,
+   "cells_by_role": {
+    "panel_target": 4293,
+    "outside_frozen_panel": 91264,
+    "control": 2758
+   },
+   "rows_by_role": {
+    "panel_target": 5,
+    "outside_frozen_panel": 198,
+    "control": 1
+   },
+   "selected_rows": 6
+  }
+ ],
+ "validation_excluded": 0,
+ "merge_blocks": false,
+ "aggregation": "one context; donors pooled before shrink",
+ "identity_policy": "unreported donor/condition/chemistry namespaced to the study; no imputation",
+ "crosswalk": "exact native label equal to a frozen panel symbol; every other label is inventoried, not resolved",
+ "contexts": [
+  {
+   "context": [
+    "xu2023_hek293_crispri",
+    "HEK293",
+    "UNREPORTED@xu2023_hek293_crispri",
+    "CRISPRi",
+    "10x 3'"
+   ],
+   "targets": [
+    "ACLY",
+    "DLAT",
+    "HDAC1",
+    "KMT2A",
+    "PAPOLA"
+   ],
+   "n_cells": [
+    595.0,
+    1256.0,
+    837.0,
+    1047.0,
+    558.0
+   ],
+   "control_cells": 2758.0,
+   "donors": [
+    "UNREPORTED@xu2023_hek293_crispri"
+   ],
+   "bank_rows": [
+    "xu2023:0",
+    "xu2023:39",
+    "xu2023:69",
+    "xu2023:81",
+    "xu2023:107",
+    "xu2023:110"
+   ],
+   "own_gene": [
+    {
+     "target": "ACLY",
+     "cells": 595,
+     "state": "measured",
+     "raw": -0.9562816023826599,
+     "shrunk": -0.9066495299339294,
+     "se": 0.11187093704938889
+    },
+    {
+     "target": "DLAT",
+     "cells": 1256,
+     "state": "measured",
+     "raw": -1.7317180633544922,
+     "shrunk": -1.6596511602401733,
+     "se": 0.18042917549610138
+    },
+    {
+     "target": "HDAC1",
+     "cells": 837,
+     "state": "measured",
+     "raw": -1.9905366897583008,
+     "shrunk": -1.888116478919983,
+     "se": 0.231802836060524
+    },
+    {
+     "target": "KMT2A",
+     "cells": 1047,
+     "state": "measured",
+     "raw": -1.3150429725646973,
+     "shrunk": -1.2933839559555054,
+     "se": 0.0850876048207283
+    },
+    {
+     "target": "PAPOLA",
+     "cells": 558,
+     "state": "measured",
+     "raw": -1.433668613433838,
+     "shrunk": -1.4090496301651,
+     "se": 0.09475234895944595
+    }
+   ],
+   "own_gene_summary": {
+    "derived_targets": 5,
+    "measured_own_gene": 5,
+    "median_own_raw": -1.433668613433838,
+    "fraction_negative": 1.0
+   }
+  }
+ ],
+ "targets": [
+  "ACLY",
+  "DLAT",
+  "HDAC1",
+  "KMT2A",
+  "PAPOLA"
+ ],
+ "n_cells": [
+  595.0,
+  1256.0,
+  837.0,
+  1047.0,
+  558.0
+ ],
+ "outputs": {
+  "xu2023.npz": {
+   "bytes": 804453,
+   "sha256": "8599c88644b0ddfc6a897f822bad22a35af360fff47ec55104f492dab49b8118"
+  }
+ },
+ "comparison": null,
+ "matrix_hash_verified_in_consumer": true,
+ "mixer_consumed": false,
+ "automatic_admission": false
+}

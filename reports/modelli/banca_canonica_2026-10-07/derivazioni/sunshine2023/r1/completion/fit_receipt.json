@@ -1,0 +1,206 @@
+{
+ "state": "derived_production_fragment",
+ "name": "sunshine2023",
+ "study": "sunshine2023_calu3_ko",
+ "modality": "KO",
+ "arm": "ko",
+ "full_training": false,
+ "not_heldout_validation": true,
+ "hidden_targets": [],
+ "held_groups": [],
+ "input_files": {
+  "sunshine2023": {
+   "count_sum.npz": "/kaggle/input/notebooks/davidmaisterx/vcc-derivatives-scp-ko-r1/bank/sunshine2023/count_sum.npz",
+   "mask.npz": "/kaggle/input/notebooks/davidmaisterx/vcc-derivatives-scp-ko-r1/bank/sunshine2023/mask.npz",
+   "rows.csv": "/kaggle/input/notebooks/davidmaisterx/vcc-derivatives-scp-ko-r1/bank/sunshine2023/rows.csv",
+   "complete.json": "/kaggle/input/notebooks/davidmaisterx/vcc-derivatives-scp-ko-r1/bank/sunshine2023/complete.json"
+  }
+ },
+ "input_hashes": {
+  "sunshine2023": {
+   "count_sum.npz": {
+    "bytes": 206841928,
+    "sha256": "5765b4bd74e102c0bdb62bb0ef4a91c30ed960db1d5bec4976db3e05c2a0eb91"
+   },
+   "mask.npz": {
+    "bytes": 8086371,
+    "sha256": "6d21d84113bfc2f1061965d4a68ce53d8476d709beae065387b009c4abc8d8fe"
+   },
+   "rows.csv": {
+    "bytes": 2080064,
+    "sha256": "04250dfd78687875b9029f015dfaaebd112d63f2fcbca6acfb934dc9befdcf7c"
+   },
+   "complete.json": {
+    "bytes": 1754,
+    "sha256": "8ba7d496e3ea955677071c2f7c8e118f7c1c6283bd307e2f8d474a3b2be75bb1"
+   }
+  }
+ },
+ "producers": {
+  "sunshine2023": {
+   "kernel_id": 137174200,
+   "version": 1,
+   "private": true,
+   "version_ref": "davidmaisterx/vcc-derivatives-scp-ko-r1/versions/1",
+   "saved_source_sha256": "d9ee02bc16383dc5c87739337e6c3e0cb7af7d623e582bd84c6c8cd6ff282e93",
+   "version_stable_during_output_read": true
+  }
+ },
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+ "params_sha256": "dbea58742767dee55bb3e60d6597a6ef0929302b3c7d78fcb82061cc542230c9",
+ "recipe": {
+  "phi": 0.2,
+  "min_control_frac": 1e-06,
+  "min_cells": 10.0,
+  "pseudo": 0.5,
+  "pseudo_scale": "constant",
+  "min_expected": 1.0
+ },
+ "inventory": [
+  {
+   "unit": "sunshine2023",
+   "bank_rows": 24196,
+   "cells_by_role": {
+    "outside_frozen_panel": 68749,
+    "panel_target": 1704,
+    "control": 3536,
+    "aux_unassigned": 16391
+   },
+   "rows_by_role": {
+    "outside_frozen_panel": 24188,
+    "panel_target": 6,
+    "control": 1,
+    "aux_unassigned": 1
+   },
+   "selected_rows": 7
+  }
+ ],
+ "validation_excluded": 0,
+ "merge_blocks": false,
+ "aggregation": "one context; donors pooled before shrink",
+ "identity_policy": "unreported donor/condition/chemistry namespaced to the study; no imputation",
+ "crosswalk": "exact native label equal to a frozen panel symbol; every other label is inventoried, not resolved",
+ "contexts": [
+  {
+   "context": [
+    "sunshine2023_calu3_ko",
+    "Calu-3",
+    "UNREPORTED@sunshine2023_calu3_ko",
+    "KO",
+    "10x 3'"
+   ],
+   "targets": [
+    "BCKDK",
+    "IFNAR2",
+    "LDLR",
+    "MYD88",
+    "TMEM41B",
+    "TRMT1"
+   ],
+   "n_cells": [
+    195.0,
+    272.0,
+    700.0,
+    147.0,
+    135.0,
+    255.0
+   ],
+   "control_cells": 3536.0,
+   "donors": [
+    "UNREPORTED@sunshine2023_calu3_ko"
+   ],
+   "bank_rows": [
+    "sunshine2023:6369",
+    "sunshine2023:20442",
+    "sunshine2023:21253",
+    "sunshine2023:22156",
+    "sunshine2023:22543",
+    "sunshine2023:23987",
+    "sunshine2023:24092"
+   ],
+   "own_gene": [
+    {
+     "target": "BCKDK",
+     "cells": 195,
+     "state": "measured",
+     "raw": -1.7142530679702759,
+     "shrunk": -1.6593284606933594,
+     "se": 0.15594157576560974
+    },
+    {
+     "target": "IFNAR2",
+     "cells": 272,
+     "state": "measured",
+     "raw": -2.006493091583252,
+     "shrunk": -1.639108419418335,
+     "se": 0.4749681353569031
+    },
+    {
+     "target": "LDLR",
+     "cells": 700,
+     "state": "measured",
+     "raw": -1.4856085777282715,
+     "shrunk": -1.4760042428970337,
+     "se": 0.05991904065012932
+    },
+    {
+     "target": "MYD88",
+     "cells": 147,
+     "state": "measured",
+     "raw": -1.4440141916275024,
+     "shrunk": -1.3814244270324707,
+     "se": 0.15368430316448212
+    },
+    {
+     "target": "TMEM41B",
+     "cells": 135,
+     "state": "measured",
+     "raw": -1.4302643537521362,
+     "shrunk": -1.2819522619247437,
+     "se": 0.2432420402765274
+    },
+    {
+     "target": "TRMT1",
+     "cells": 255,
+     "state": "measured",
+     "raw": -1.5164623260498047,
+     "shrunk": -1.3885819911956787,
+     "se": 0.23010064661502838
+    }
+   ],
+   "own_gene_summary": {
+    "derived_targets": 6,
+    "measured_own_gene": 6,
+    "median_own_raw": -1.501035451889038,
+    "fraction_negative": 1.0
+   }
+  }
+ ],
+ "targets": [
+  "BCKDK",
+  "IFNAR2",
+  "LDLR",
+  "MYD88",
+  "TMEM41B",
+  "TRMT1"
+ ],
+ "n_cells": [
+  195.0,
+  272.0,
+  700.0,
+  147.0,
+  135.0,
+  255.0
+ ],
+ "outputs": {
+  "sunshine2023.npz": {
+   "bytes": 956588,
+   "sha256": "d91d811a2d53ddabf704724212d74c04f0ba04950b3388bd70854f9a0a7ff252"
+  }
+ },
+ "comparison": null,
+ "matrix_hash_verified_in_consumer": true,
+ "mixer_consumed": false,
+ "automatic_admission": false
+}

@@ -1,0 +1,369 @@
+{
+ "state": "derived_production_fragment",
+ "name": "frangieh2021",
+ "study": "frangieh2021_melanoma_ko",
+ "modality": "KO",
+ "arm": "ko",
+ "full_training": false,
+ "not_heldout_validation": true,
+ "hidden_targets": [],
+ "held_groups": [],
+ "input_files": {
+  "frangieh2021": {
+   "count_sum.npz": "/kaggle/input/notebooks/davidmaisterx/vcc-derivatives-scp-ko-r1/bank/frangieh2021/count_sum.npz",
+   "mask.npz": "/kaggle/input/notebooks/davidmaisterx/vcc-derivatives-scp-ko-r1/bank/frangieh2021/mask.npz",
+   "rows.csv": "/kaggle/input/notebooks/davidmaisterx/vcc-derivatives-scp-ko-r1/bank/frangieh2021/rows.csv",
+   "complete.json": "/kaggle/input/notebooks/davidmaisterx/vcc-derivatives-scp-ko-r1/bank/frangieh2021/complete.json"
+  }
+ },
+ "input_hashes": {
+  "frangieh2021": {
+   "count_sum.npz": {
+    "bytes": 19123914,
+    "sha256": "00359c5d082cf2c1cccf80600374d3b801c6740b237e0459d5f075cb40535676"
+   },
+   "mask.npz": {
+    "bytes": 1489501,
+    "sha256": "66b39af1509b2302c408ed50d3f37ca6849f3627e9b8544c295022b939b9493f"
+   },
+   "rows.csv": {
+    "bytes": 62294,
+    "sha256": "1b1349943f425376de559bbf6882671fc51380190631ac60f32b28831981020b"
+   },
+   "complete.json": {
+    "bytes": 2183,
+    "sha256": "5dbf20d3a32e7f749fdc86a0eaff256d5eaf709b62f14d9080793af6fd17d204"
+   }
+  }
+ },
+ "producers": {
+  "frangieh2021": {
+   "kernel_id": 137174200,
+   "version": 1,
+   "private": true,
+   "version_ref": "davidmaisterx/vcc-derivatives-scp-ko-r1/versions/1",
+   "saved_source_sha256": "d9ee02bc16383dc5c87739337e6c3e0cb7af7d623e582bd84c6c8cd6ff282e93",
+   "version_stable_during_output_read": true
+  }
+ },
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+ "params_sha256": "0fcdaf409027808652cd037c607f7222f98e42035d3961ad971a69668f1f5eae",
+ "recipe": {
+  "phi": 0.2,
+  "min_control_frac": 1e-06,
+  "min_cells": 10.0,
+  "pseudo": 0.5,
+  "pseudo_scale": "constant",
+  "min_expected": 1.0
+ },
+ "inventory": [
+  {
+   "unit": "frangieh2021",
+   "bank_rows": 747,
+   "cells_by_role": {
+    "outside_frozen_panel": 157470,
+    "panel_target": 3256,
+    "control": 57605
+   },
+   "rows_by_role": {
+    "outside_frozen_panel": 729,
+    "panel_target": 15,
+    "control": 3
+   },
+   "selected_rows": 18
+  }
+ ],
+ "validation_excluded": 0,
+ "merge_blocks": false,
+ "aggregation": "donors pooled before shrink inside each context; contexts equal-weighted",
+ "identity_policy": "unreported donor/condition/chemistry namespaced to the study; no imputation",
+ "crosswalk": "exact native label equal to a frozen panel symbol; every other label is inventoried, not resolved",
+ "contexts": [
+  {
+   "context": [
+    "frangieh2021_melanoma_ko",
+    "Co-culture",
+    "UNREPORTED@frangieh2021_melanoma_ko",
+    "KO",
+    "10x 3' v3"
+   ],
+   "targets": [
+    "E2F1",
+    "IFNGR2",
+    "SLC25A13",
+    "SLIRP",
+    "TIMM50"
+   ],
+   "n_cells": [
+    178.0,
+    603.0,
+    257.0,
+    148.0,
+    108.0
+   ],
+   "control_cells": 18334.0,
+   "donors": [
+    "UNREPORTED@frangieh2021_melanoma_ko"
+   ],
+   "bank_rows": [
+    "frangieh2021:63",
+    "frangieh2021:105",
+    "frangieh2021:147",
+    "frangieh2021:195",
+    "frangieh2021:199",
+    "frangieh2021:221"
+   ],
+   "own_gene": [
+    {
+     "target": "E2F1",
+     "cells": 178,
+     "state": "measured",
+     "raw": -0.8513294458389282,
+     "shrunk": -0.7509393692016602,
+     "se": 0.15563616156578064
+    },
+    {
+     "target": "IFNGR2",
+     "cells": 603,
+     "state": "measured",
+     "raw": -0.30966687202453613,
+     "shrunk": -0.28402215242385864,
+     "se": 0.04652512073516846
+    },
+    {
+     "target": "SLC25A13",
+     "cells": 257,
+     "state": "measured",
+     "raw": -0.5401062965393066,
+     "shrunk": -0.45755064487457275,
+     "se": 0.11471044272184372
+    },
+    {
+     "target": "SLIRP",
+     "cells": 148,
+     "state": "measured",
+     "raw": -0.24340146780014038,
+     "shrunk": -0.20769159495830536,
+     "se": 0.050463560968637466
+    },
+    {
+     "target": "TIMM50",
+     "cells": 108,
+     "state": "measured",
+     "raw": -0.13874444365501404,
+     "shrunk": -0.050019845366477966,
+     "se": 0.0923924446105957
+    }
+   ],
+   "own_gene_summary": {
+    "derived_targets": 5,
+    "measured_own_gene": 5,
+    "median_own_raw": -0.30966687202453613,
+    "fraction_negative": 1.0
+   }
+  },
+  {
+   "context": [
+    "frangieh2021_melanoma_ko",
+    "Control",
+    "UNREPORTED@frangieh2021_melanoma_ko",
+    "KO",
+    "10x 3' v3"
+   ],
+   "targets": [
+    "E2F1",
+    "IFNGR2",
+    "SLC25A13",
+    "SLIRP",
+    "TIMM50"
+   ],
+   "n_cells": [
+    167.0,
+    215.0,
+    136.0,
+    131.0,
+    106.0
+   ],
+   "control_cells": 15361.0,
+   "donors": [
+    "UNREPORTED@frangieh2021_melanoma_ko"
+   ],
+   "bank_rows": [
+    "frangieh2021:312",
+    "frangieh2021:354",
+    "frangieh2021:396",
+    "frangieh2021:444",
+    "frangieh2021:448",
+    "frangieh2021:470"
+   ],
+   "own_gene": [
+    {
+     "target": "E2F1",
+     "cells": 167,
+     "state": "measured",
+     "raw": -0.4314814805984497,
+     "shrunk": -0.3131531774997711,
+     "se": 0.13261666893959045
+    },
+    {
+     "target": "IFNGR2",
+     "cells": 215,
+     "state": "measured",
+     "raw": -0.46724483370780945,
+     "shrunk": -0.42045652866363525,
+     "se": 0.07793322950601578
+    },
+    {
+     "target": "SLC25A13",
+     "cells": 136,
+     "state": "measured",
+     "raw": -0.2501560151576996,
+     "shrunk": -0.11870138347148895,
+     "se": 0.13162578642368317
+    },
+    {
+     "target": "SLIRP",
+     "cells": 131,
+     "state": "measured",
+     "raw": -0.2809479832649231,
+     "shrunk": -0.24293683469295502,
+     "se": 0.055565450340509415
+    },
+    {
+     "target": "TIMM50",
+     "cells": 106,
+     "state": "measured",
+     "raw": -0.3006034195423126,
+     "shrunk": -0.18447570502758026,
+     "se": 0.1192510649561882
+    }
+   ],
+   "own_gene_summary": {
+    "derived_targets": 5,
+    "measured_own_gene": 5,
+    "median_own_raw": -0.3006034195423126,
+    "fraction_negative": 1.0
+   }
+  },
+  {
+   "context": [
+    "frangieh2021_melanoma_ko",
+    "IFN\u03b3",
+    "UNREPORTED@frangieh2021_melanoma_ko",
+    "KO",
+    "10x 3' v3"
+   ],
+   "targets": [
+    "E2F1",
+    "IFNGR2",
+    "SLC25A13",
+    "SLIRP",
+    "TIMM50"
+   ],
+   "n_cells": [
+    257.0,
+    385.0,
+    269.0,
+    169.0,
+    127.0
+   ],
+   "control_cells": 23910.0,
+   "donors": [
+    "UNREPORTED@frangieh2021_melanoma_ko"
+   ],
+   "bank_rows": [
+    "frangieh2021:561",
+    "frangieh2021:603",
+    "frangieh2021:645",
+    "frangieh2021:693",
+    "frangieh2021:697",
+    "frangieh2021:719"
+   ],
+   "own_gene": [
+    {
+     "target": "E2F1",
+     "cells": 257,
+     "state": "measured",
+     "raw": -0.4210902452468872,
+     "shrunk": -0.3072700500488281,
+     "se": 0.12814295291900635
+    },
+    {
+     "target": "IFNGR2",
+     "cells": 385,
+     "state": "measured",
+     "raw": -0.24763153493404388,
+     "shrunk": -0.18745285272598267,
+     "se": 0.07015381008386612
+    },
+    {
+     "target": "SLC25A13",
+     "cells": 269,
+     "state": "measured",
+     "raw": -0.3178522288799286,
+     "shrunk": -0.2146516591310501,
+     "se": 0.11019685119390488
+    },
+    {
+     "target": "SLIRP",
+     "cells": 169,
+     "state": "measured",
+     "raw": -0.22499187290668488,
+     "shrunk": -0.1883499026298523,
+     "se": 0.04961848258972168
+    },
+    {
+     "target": "TIMM50",
+     "cells": 127,
+     "state": "measured",
+     "raw": -0.6021444797515869,
+     "shrunk": -0.48344624042510986,
+     "se": 0.14918279647827148
+    }
+   ],
+   "own_gene_summary": {
+    "derived_targets": 5,
+    "measured_own_gene": 5,
+    "median_own_raw": -0.3178522288799286,
+    "fraction_negative": 1.0
+   }
+  }
+ ],
+ "targets": [
+  "E2F1",
+  "IFNGR2",
+  "SLC25A13",
+  "SLIRP",
+  "TIMM50"
+ ],
+ "n_cells": [
+  602.0,
+  1203.0,
+  662.0,
+  448.0,
+  341.0
+ ],
+ "outputs": {
+  "frangieh2021.npz": {
+   "bytes": 838786,
+   "sha256": "32b29f859537b85619b4cbdfce58f43fe12270ccf5467c140309863bf41c18c8"
+  },
+  "frangieh2021__context0.npz": {
+   "bytes": 810316,
+   "sha256": "b5fbbba37b556a8a1c56328be2cfbe78ec6eaead6e1213731775685469290449"
+  },
+  "frangieh2021__context1.npz": {
+   "bytes": 820654,
+   "sha256": "8815346d95c47300bd9d2786c17e2844471285b9c0b1cac64f93be679777ae24"
+  },
+  "frangieh2021__context2.npz": {
+   "bytes": 819195,
+   "sha256": "07dca4707733ce0a14a9f5ffc6f7a97812930883c55041acf041d5bb3f74ccd2"
+  }
+ },
+ "comparison": null,
+ "matrix_hash_verified_in_consumer": true,
+ "mixer_consumed": false,
+ "automatic_admission": false
+}

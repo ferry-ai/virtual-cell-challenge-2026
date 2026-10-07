@@ -1,0 +1,72 @@
+{
+ "utc": "2026-10-06T23:36:02.901624+00:00",
+ "slug": "davideferrante11/vcc-fonte-k562-gwps-sc-r1",
+ "stage": "reports/modelli/banca_canonica_2026-10-07/derivazioni/k562_gwps_sc/r1/package",
+ "code": {
+  "bytes": 104300,
+  "sha256": "6eee891222a2555d45aa03ed0db7a1d76e8bae0fa4c0fbf58f595cd148ea182c"
+ },
+ "params": {
+  "bytes": 7642,
+  "sha256": "d72ceeb22e6031dfe37f72bcd0b7efe6ffdd46dec40a093c2f5ad4dfbad622d7"
+ },
+ "metadata": {
+  "bytes": 455,
+  "sha256": "25a84dc7ea0d619eac5cf67ec11d54aef29d1b6f8fbd4b49020439280bb759b5"
+ },
+ "modules": {
+  "adapter.py": {
+   "bytes": 6219,
+   "sha256": "f10b1e4d4d51e8e29e4930de4f5b358d8b9c5ff8a2dab3c407f257712ca63865"
+  },
+  "estimator.py": {
+   "bytes": 11897,
+   "sha256": "63e29813b955e42319e0a11e79311429d566a68f35132dd5b850e2e63185334d"
+  },
+  "runtime.py": {
+   "bytes": 17731,
+   "sha256": "415c030c55942d221a4452277bd2a1457799fa58820d5c2490ff2af084993493"
+  },
+  "gene_names.csv": {
+   "bytes": 119295,
+   "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  "pert_counts.csv": {
+   "bytes": 1906,
+   "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276"
+  },
+  "params.json": {
+   "bytes": 7642,
+   "sha256": "d72ceeb22e6031dfe37f72bcd0b7efe6ffdd46dec40a093c2f5ad4dfbad622d7"
+  }
+ },
+ "plan": {
+  "name": "k562_gwps_sc",
+  "arm": "crispri_same_study_as_k562_bulk",
+  "units": [
+   "k562_gwps_a",
+   "k562_gwps_b"
+  ],
+  "cells_by_role": {
+   "outside_frozen_panel": 1864122,
+   "panel_target": 50128,
+   "control": 75328
+  },
+  "contexts": [
+   {
+    "context": "K562",
+    "condition": "MISSING",
+    "control_cells": 75328,
+    "donors_with_controls": 1,
+    "donors_with_targets": 1,
+    "donors_without_controls": [],
+    "panel_targets": 272,
+    "panel_targets_min_cells": 272,
+    "target_cells": 50128
+   }
+  ],
+  "runnable": true
+ },
+ "full_training": false,
+ "compute_started": false
+}

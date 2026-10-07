@@ -100,3 +100,4 @@ aggiunge da sé la riga qui sotto.
 | [0065](0065-d056-confronti-e-rumore-del-banco.md) | 2026-10-04 | D-056 dopo il t30: il banco a un seme era rumoroso quanto i guadagni; la perdita di PDS del fold esportato è reale | esperimento | — |
 | [0066](0066-banco-v2-t28-cinque-linee.md) | 2026-10-04 | Banco v2 t28: Jurkat supera la regola su entrambe le baseline | esperimento | — |
 | [0067](0067-t36-banca-estesa-punteggio-ufficiale.md) | 2026-10-06 | t36: massimo osservato sulla banca estesa parziale | esperimento | — |
+| [0068](0068-banca-canonica-release-r1.md) | 2026-10-07 | Banca canonica: registro, release r1 a 17 fonti e fit con ricevuta di consumo | esperimento | — |

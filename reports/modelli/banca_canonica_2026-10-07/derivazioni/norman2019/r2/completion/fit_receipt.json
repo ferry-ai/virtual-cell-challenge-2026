@@ -1,0 +1,165 @@
+{
+ "state": "derived_production_fragment",
+ "name": "norman2019",
+ "study": "norman2019_crispra",
+ "modality": "CRISPRa",
+ "arm": "crispra",
+ "full_training": false,
+ "not_heldout_validation": true,
+ "hidden_targets": [],
+ "held_groups": [],
+ "input_files": {
+  "norman2019": {
+   "count_sum.npz": "/kaggle/input/datasets/davideferante/vcc-norman-bank-samples-r1/bank__norman2019__count_sum.npz",
+   "mask.npz": "/kaggle/input/datasets/davideferante/vcc-norman-bank-samples-r1/bank__norman2019__mask.npz",
+   "rows.csv": "/kaggle/input/datasets/davideferante/vcc-norman-bank-samples-r1/samples__norman2019__bank_rows.csv",
+   "complete.json": "/kaggle/input/datasets/davideferante/vcc-norman-bank-samples-r1/bank__norman2019__complete.json"
+  }
+ },
+ "input_hashes": {
+  "norman2019": {
+   "count_sum.npz": {
+    "bytes": 6241082,
+    "sha256": "b2703d05c4fc3c75bd8402878e1e8cb306bc26c2d9d2b831ca19b3b3aeaf8808"
+   },
+   "mask.npz": {
+    "bytes": 159689,
+    "sha256": "13a31584013e609ab2b1d7071b278504bfb8c1af30cdd3c1dc9234b27914f52d"
+   },
+   "rows.csv": {
+    "bytes": 17985,
+    "sha256": "bf8048f773920707175d5c5b8e68e8b1b4567979d872c637984e72e392ab9e72"
+   },
+   "complete.json": {
+    "bytes": 1802,
+    "sha256": "f8fe8f34edc0ac850dd4bc9525e5e180803bc60e78e11eb9796f10cda12b4519"
+   }
+  }
+ },
+ "producers": {
+  "norman2019": {
+   "kernel_id": 137174819,
+   "version": 1,
+   "private": true,
+   "version_ref": "davideferante/vcc-derivatives-tian-norman-r1/versions/1",
+   "saved_source_sha256": "25af4ceaa93e4684c3afdb1df914c1e559bdb300be1e86daf1a548157de5cb80",
+   "version_stable_during_output_read": true
+  }
+ },
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+ "params_sha256": "7af67aef48c4d119202a2f1ed03f8296a987d9e181bc7aa88385ee6463e00981",
+ "recipe": {
+  "phi": 0.2,
+  "min_control_frac": 1e-06,
+  "min_cells": 10.0,
+  "pseudo": 0.5,
+  "pseudo_scale": "constant",
+  "min_expected": 1.0
+ },
+ "inventory": [
+  {
+   "unit": "norman2019",
+   "bank_rows": 237,
+   "cells_by_role": {
+    "outside_frozen_panel": 98618,
+    "panel_target": 972,
+    "control": 11855
+   },
+   "rows_by_role": {
+    "outside_frozen_panel": 233,
+    "panel_target": 3,
+    "control": 1
+   },
+   "selected_rows": 4
+  }
+ ],
+ "validation_excluded": 0,
+ "merge_blocks": false,
+ "aggregation": "one context; donors pooled before shrink",
+ "identity_policy": "unreported donor/condition/chemistry namespaced to the study; no imputation",
+ "crosswalk": "exact native label equal to a frozen panel symbol; every other label is inventoried, not resolved",
+ "contexts": [
+  {
+   "context": [
+    "norman2019_crispra",
+    "K562",
+    "UNREPORTED@norman2019_crispra",
+    "CRISPRa",
+    "10x 3'"
+   ],
+   "targets": [
+    "FOXO4",
+    "KMT2A",
+    "ZC3HAV1"
+   ],
+   "n_cells": [
+    215.0,
+    241.0,
+    516.0
+   ],
+   "control_cells": 11855.0,
+   "donors": [
+    "UNREPORTED@norman2019_crispra"
+   ],
+   "bank_rows": [
+    "norman2019:100",
+    "norman2019:132",
+    "norman2019:159",
+    "norman2019:231"
+   ],
+   "own_gene": [
+    {
+     "target": "FOXO4",
+     "cells": 215,
+     "state": "measured",
+     "raw": 2.541684150695801,
+     "shrunk": 2.5313353538513184,
+     "se": 0.08125725388526917
+    },
+    {
+     "target": "KMT2A",
+     "cells": 241,
+     "state": "measured",
+     "raw": 0.920623779296875,
+     "shrunk": 0.909633457660675,
+     "se": 0.050596896559000015
+    },
+    {
+     "target": "ZC3HAV1",
+     "cells": 516,
+     "state": "measured",
+     "raw": 1.139425277709961,
+     "shrunk": 1.1361126899719238,
+     "se": 0.03076326660811901
+    }
+   ],
+   "own_gene_summary": {
+    "derived_targets": 3,
+    "measured_own_gene": 3,
+    "median_own_raw": 1.139425277709961,
+    "fraction_negative": 0.0
+   }
+  }
+ ],
+ "targets": [
+  "FOXO4",
+  "KMT2A",
+  "ZC3HAV1"
+ ],
+ "n_cells": [
+  215.0,
+  241.0,
+  516.0
+ ],
+ "outputs": {
+  "norman2019.npz": {
+   "bytes": 509277,
+   "sha256": "f42db7cbef905f85b00e1730702ed3ed3aa76e03b1e8d22c918f9d60fd8a82ba"
+  }
+ },
+ "comparison": null,
+ "matrix_hash_verified_in_consumer": true,
+ "mixer_consumed": false,
+ "automatic_admission": false
+}

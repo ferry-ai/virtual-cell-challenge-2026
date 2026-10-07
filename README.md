@@ -3,7 +3,7 @@
 **DATA ARCHIVE — REUSE, DO NOT REINGEST:** [current dataset index, versions and hashes](reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r11/manifest.json)
 and [verified selection, data and remaining gaps](reports/analisi/riconciliazione_banca_2026-10-05/README.md).
 The main path is verified archive → reusable banks and cell samples → extended training.
-**Next training — reuse the existing bank:** [single entry point and reuse procedure](reports/modelli/percorso_riusabile_2026-10-05/README.md).
+**Next training — reuse the existing bank:** [single entry point, canonical source registry and frozen release](reports/modelli/banca_canonica_2026-10-07/README.md) (7 October; the [5 October page](reports/modelli/percorso_riusabile_2026-10-05/README.md) remains the evidence of the t36 release).
 **Training coverage is tracked separately:** [all expected inputs, frozen](reports/analisi/riconciliazione_banca_2026-10-05/frozen/expected_r3.json).
 Archived GB and launched jobs do not certify that every context contributed to a fitted model.
 

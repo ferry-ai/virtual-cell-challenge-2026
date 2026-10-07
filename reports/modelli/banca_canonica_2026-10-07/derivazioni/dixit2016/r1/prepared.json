@@ -1,0 +1,96 @@
+{
+ "utc": "2026-10-06T23:36:08.221396+00:00",
+ "slug": "davideferante/vcc-fonte-dixit2016-r1",
+ "stage": "reports/modelli/banca_canonica_2026-10-07/derivazioni/dixit2016/r1/package",
+ "code": {
+  "bytes": 104292,
+  "sha256": "df959aae24a933c4e0964721fd1f1c26a5cf55bf4cf2debfb72d58fb028fa039"
+ },
+ "params": {
+  "bytes": 8266,
+  "sha256": "8687003469d330a83ce3e49f0c1e2e8d383fca619f3c03daf8ba3906c965b53b"
+ },
+ "metadata": {
+  "bytes": 394,
+  "sha256": "1b661fc72b93f0ebe60d6875e23239de67eaf2957a5521b4200ab718a51ef66b"
+ },
+ "modules": {
+  "adapter.py": {
+   "bytes": 6219,
+   "sha256": "f10b1e4d4d51e8e29e4930de4f5b358d8b9c5ff8a2dab3c407f257712ca63865"
+  },
+  "estimator.py": {
+   "bytes": 11897,
+   "sha256": "63e29813b955e42319e0a11e79311429d566a68f35132dd5b850e2e63185334d"
+  },
+  "runtime.py": {
+   "bytes": 17731,
+   "sha256": "415c030c55942d221a4452277bd2a1457799fa58820d5c2490ff2af084993493"
+  },
+  "gene_names.csv": {
+   "bytes": 119295,
+   "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  "pert_counts.csv": {
+   "bytes": 1906,
+   "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276"
+  },
+  "params.json": {
+   "bytes": 8266,
+   "sha256": "8687003469d330a83ce3e49f0c1e2e8d383fca619f3c03daf8ba3906c965b53b"
+  }
+ },
+ "plan": {
+  "name": "dixit2016",
+  "arm": "ko",
+  "units": [
+   "dixit2016_d7",
+   "dixit2016_d13",
+   "dixit2016_high_moi"
+  ],
+  "cells_by_role": {
+   "outside_frozen_panel": 61089,
+   "panel_target": 13883,
+   "control": 19364,
+   "aux_unassigned": 9843
+  },
+  "contexts": [
+   {
+    "context": "K562 day 13",
+    "condition": "MISSING",
+    "control_cells": 3491,
+    "donors_with_controls": 1,
+    "donors_with_targets": 1,
+    "donors_without_controls": [],
+    "panel_targets": 2,
+    "panel_targets_min_cells": 2,
+    "target_cells": 2347
+   },
+   {
+    "context": "K562 day 7",
+    "condition": "MISSING",
+    "control_cells": 5381,
+    "donors_with_controls": 1,
+    "donors_with_targets": 1,
+    "donors_without_controls": [],
+    "panel_targets": 2,
+    "panel_targets_min_cells": 2,
+    "target_cells": 4429
+   },
+   {
+    "context": "K562 high MOI",
+    "condition": "MISSING",
+    "control_cells": 10492,
+    "donors_with_controls": 1,
+    "donors_with_targets": 1,
+    "donors_without_controls": [],
+    "panel_targets": 2,
+    "panel_targets_min_cells": 2,
+    "target_cells": 7107
+   }
+  ],
+  "runnable": true
+ },
+ "full_training": false,
+ "compute_started": false
+}

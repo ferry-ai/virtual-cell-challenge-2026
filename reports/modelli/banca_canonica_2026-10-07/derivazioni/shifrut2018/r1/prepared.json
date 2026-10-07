@@ -1,0 +1,83 @@
+{
+ "utc": "2026-10-06T23:36:09.563792+00:00",
+ "slug": "davideferante/vcc-fonte-shifrut2018-r1",
+ "stage": "reports/modelli/banca_canonica_2026-10-07/derivazioni/shifrut2018/r1/package",
+ "code": {
+  "bytes": 103824,
+  "sha256": "923527034609fbadc6c32af07262acee68c0f97ffaa1a591b32d52f0f3a61d10"
+ },
+ "params": {
+  "bytes": 6451,
+  "sha256": "9e8a1a739168a81d7aae7efb7d96ea4277a2da6b69bc1aec221e0c1d6033ba50"
+ },
+ "metadata": {
+  "bytes": 396,
+  "sha256": "1b656ecef4811597e356b85dcecf50fba74082750253df469b9c2eebc111575f"
+ },
+ "modules": {
+  "adapter.py": {
+   "bytes": 6219,
+   "sha256": "f10b1e4d4d51e8e29e4930de4f5b358d8b9c5ff8a2dab3c407f257712ca63865"
+  },
+  "estimator.py": {
+   "bytes": 11897,
+   "sha256": "63e29813b955e42319e0a11e79311429d566a68f35132dd5b850e2e63185334d"
+  },
+  "runtime.py": {
+   "bytes": 17731,
+   "sha256": "415c030c55942d221a4452277bd2a1457799fa58820d5c2490ff2af084993493"
+  },
+  "gene_names.csv": {
+   "bytes": 119295,
+   "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  "pert_counts.csv": {
+   "bytes": 1906,
+   "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276"
+  },
+  "params.json": {
+   "bytes": 6451,
+   "sha256": "9e8a1a739168a81d7aae7efb7d96ea4277a2da6b69bc1aec221e0c1d6033ba50"
+  }
+ },
+ "plan": {
+  "name": "shifrut2018",
+  "arm": "ko",
+  "units": [
+   "shifrut2018"
+  ],
+  "cells_by_role": {
+   "outside_frozen_panel": 20981,
+   "control": 3541,
+   "panel_target": 572,
+   "aux_unassigned": 27142
+  },
+  "contexts": [
+   {
+    "context": "nostim",
+    "condition": "MISSING",
+    "control_cells": 1550,
+    "donors_with_controls": 2,
+    "donors_with_targets": 2,
+    "donors_without_controls": [],
+    "panel_targets": 1,
+    "panel_targets_min_cells": 1,
+    "target_cells": 240
+   },
+   {
+    "context": "stim",
+    "condition": "MISSING",
+    "control_cells": 1991,
+    "donors_with_controls": 2,
+    "donors_with_targets": 2,
+    "donors_without_controls": [],
+    "panel_targets": 1,
+    "panel_targets_min_cells": 1,
+    "target_cells": 332
+   }
+  ],
+  "runnable": true
+ },
+ "full_training": false,
+ "compute_started": false
+}

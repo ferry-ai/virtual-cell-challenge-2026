@@ -10,13 +10,15 @@ cambia una conclusione. Il testo tolto resta in `docs/storico/`: le
 [§0, §6 e §7 del 30/09 mattina](storico/PROGETTO_sezioni_0_6_7_2026-09-30.md), il
 §0 del 3/10 sera nel [consolidamento](storico/consolidamento_2026-10-03/INDICE.md).
 
-## 0. Oggi — 6 ottobre 2026, banca persistente e rifit sul riferimento originale
+## 0. Oggi — 7 ottobre 2026, banca canonica con ingresso unico e release r1 fittata
 
 **Massimo ufficiale osservato:** t36 **0,147249**, +0,002404 contro t28; confronto descrittivo su singolo invio, stabilità non dimostrata ([CP-0067](checkpoints/0067-t36-banca-estesa-punteggio-ufficiale.md)). Algoritmo di confronto: transfer t25 con emitter t28; unica variabile banca. Nessuna promozione automatica a riferimento robusto. Stato e assegnazioni in [R-LEAD](piani/strategia-scientifica.md).
 
-**Dati:** circa 395,75 GB grezzi conservati, 45 unità storage censite. [Ingresso unico riconciliato](../reports/analisi/riconciliazione_banca_2026-10-05/README.md) distingue archivio, banca, campioni, ammissione e consumo. Campioni persistenti non significano training cellulare: il transfer usa pseudobulk. Il vincolo [D-053](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile) resta aperto per catalogo completo, adapter/QC e uso effettivo.
+**Dati:** circa 395,75 GB grezzi conservati, 45 unità di banca in 31 studi, 39,97 milioni di cellule. [Ingresso unico e registro canonico](../reports/modelli/banca_canonica_2026-10-07/README.md) ([CP-0068](checkpoints/0068-banca-canonica-release-r1.md)): identità, provenienza e destinazione di ogni fonte, release congelata, fit con ricevuta di consumo, riuso senza reingestione dimostrato. La [riconciliazione del 5/10](../reports/analisi/riconciliazione_banca_2026-10-05/README.md) resta la prova degli ingressi del t36. Campioni persistenti non significano training cellulare: il transfer usa pseudobulk. Il vincolo [D-053](GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile) resta aperto per catalogo completo, adapter/QC e uso effettivo.
 
-**Rifit:** concluso il transfer originale t25 con emitter t28 sulla release estesa parziale. Sei cache corrette, K562 storico BULK e controlli montati; 13 nomi registrati, 9 con target sul pannello. Sono fonti, non 9 linee distinte. HIPSCI e altre fonti archiviate non sono ancora tutte collegate. Nessun miglioramento dimostrato. [Prove e limiti](../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r19.md).
+**Release r1 (7/10), non inviata e non valutata:** stesso transfer, 17 fonti: le 13 del t36 più HIPSCI mirato, Xu 2023, Tian 2021 CRISPRi e Tian 2019 neuroni (caso limite, da decidere). Il fit legge 28 unità di banca su 45; KO, CRISPRa e le fonti senza controlli restano fuori, con il motivo nel registro.
+
+**Rifit del t36:** concluso il transfer originale t25 con emitter t28 sulla release estesa parziale. Sei cache corrette, K562 storico BULK e controlli montati; 13 nomi registrati, 9 con target sul pannello. Sono fonti, non 9 linee distinte. HIPSCI e altre fonti archiviate non sono ancora tutte collegate. Nessun miglioramento dimostrato. [Prove e limiti](../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r19.md).
 
 **Consegna:** t36 ricevuto alle00:56 del6ottobre e pubblicato al controllo01:38. Checksum e sei membri ufficiali verificati; [risultato e limiti](../reports/modelli/percorso_riusabile_2026-10-05/ESECUZIONE_r19.md). Rifit/generazione/invio della release parziale conclusi, percorso completo D-053 ancora aperto.
 

@@ -1,0 +1,71 @@
+{
+ "utc": "2026-10-06T23:46:20.550170+00:00",
+ "slug": "davideferante/vcc-fonte-tian2019-ipsc-r3",
+ "stage": "reports/modelli/banca_canonica_2026-10-07/derivazioni/tian2019_ipsc/r3/package",
+ "code": {
+  "bytes": 104028,
+  "sha256": "b29bf3d24571f35e52a005c2ec8afd946d7685f1d6b1d3553a73f20e9261e285"
+ },
+ "params": {
+  "bytes": 6504,
+  "sha256": "2ebc697077356c4945d6fff22d85a43bee87e6b99641881efcbd94379a1c1a76"
+ },
+ "metadata": {
+  "bytes": 400,
+  "sha256": "3c9d36a637a621822fb5ca0041d660d36e0971c7ebf2b452bf0864f2f995d854"
+ },
+ "modules": {
+  "adapter.py": {
+   "bytes": 6219,
+   "sha256": "f10b1e4d4d51e8e29e4930de4f5b358d8b9c5ff8a2dab3c407f257712ca63865"
+  },
+  "estimator.py": {
+   "bytes": 11897,
+   "sha256": "63e29813b955e42319e0a11e79311429d566a68f35132dd5b850e2e63185334d"
+  },
+  "runtime.py": {
+   "bytes": 17949,
+   "sha256": "34bc62d0b4ae61f4e6d25fda86ad3f604161c1c4f19c6f43a17055dac7b833e3"
+  },
+  "gene_names.csv": {
+   "bytes": 119295,
+   "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  "pert_counts.csv": {
+   "bytes": 1906,
+   "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276"
+  },
+  "params.json": {
+   "bytes": 6504,
+   "sha256": "2ebc697077356c4945d6fff22d85a43bee87e6b99641881efcbd94379a1c1a76"
+  }
+ },
+ "plan": {
+  "name": "tian2019_ipsc",
+  "arm": "crispri",
+  "units": [
+   "tian2019_ipsc"
+  ],
+  "cells_by_role": {
+   "outside_frozen_panel": 258794,
+   "control": 10401,
+   "panel_target": 2028
+  },
+  "contexts": [
+   {
+    "context": "iPSC",
+    "condition": "MISSING",
+    "control_cells": 10401,
+    "donors_with_controls": 1,
+    "donors_with_targets": 1,
+    "donors_without_controls": [],
+    "panel_targets": 1,
+    "panel_targets_min_cells": 1,
+    "target_cells": 2028
+   }
+  ],
+  "runnable": true
+ },
+ "full_training": false,
+ "compute_started": false
+}

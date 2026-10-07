@@ -1,0 +1,204 @@
+{
+ "state": "derived_production_fragment",
+ "name": "tian2021_crispri",
+ "study": "tian2021_crispri",
+ "modality": "CRISPRi",
+ "arm": "crispri",
+ "full_training": false,
+ "not_heldout_validation": true,
+ "hidden_targets": [],
+ "held_groups": [],
+ "input_files": {
+  "tian2021_crispri": {
+   "count_sum.npz": "/kaggle/input/notebooks/davideferante/vcc-derivatives-tian2021-crispri-resume-r3/bank/tian2021_crispri/count_sum.npz",
+   "mask.npz": "/kaggle/input/notebooks/davideferante/vcc-derivatives-tian2021-crispri-resume-r3/bank/tian2021_crispri/mask.npz",
+   "rows.csv": "/kaggle/input/notebooks/davideferante/vcc-derivatives-tian2021-crispri-resume-r3/bank/tian2021_crispri/rows.csv",
+   "complete.json": "/kaggle/input/notebooks/davideferante/vcc-derivatives-tian2021-crispri-resume-r3/bank/tian2021_crispri/complete.json"
+  }
+ },
+ "input_hashes": {
+  "tian2021_crispri": {
+   "count_sum.npz": {
+    "bytes": 5155918,
+    "sha256": "43cdc2bbecc3a63703af0de7443d9e53e1ea2a26371f1ec20760b96917580aab"
+   },
+   "mask.npz": {
+    "bytes": 62176,
+    "sha256": "8422c4c11aa85b5849a6e70a160a61e30e29b55ae015f230384ef7fb312afb32"
+   },
+   "rows.csv": {
+    "bytes": 16202,
+    "sha256": "a3ee3d84fe4adfb6b6bdd8aefc4709ccbe98de9f6849c2c201e26ddfd1806c99"
+   },
+   "complete.json": {
+    "bytes": 1534,
+    "sha256": "34e34b80847b60c8def3b9a3c9172f8778d1fe795373f97563e80a221c938efc"
+   }
+  }
+ },
+ "producers": {
+  "tian2021_crispri": {
+   "kernel_id": 137181372,
+   "version": 1,
+   "private": true,
+   "version_ref": "davideferante/vcc-derivatives-tian2021-crispri-resume-r3/versions/1",
+   "saved_source_sha256": "0b766c7420f95265ee74734cbeaed79a7923b1e740af38ac3843437dd473248a",
+   "version_stable_during_output_read": true
+  }
+ },
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+ "params_sha256": "be458f2351bbf386d220dbf0df18d261d4e56fa196f6bd60151810d63e6bb891",
+ "recipe": {
+  "phi": 0.2,
+  "min_control_frac": 1e-06,
+  "min_cells": 10.0,
+  "pseudo": 0.5,
+  "pseudo_scale": "constant",
+  "min_expected": 1.0
+ },
+ "inventory": [
+  {
+   "unit": "tian2021_crispri",
+   "bank_rows": 185,
+   "cells_by_role": {
+    "outside_frozen_panel": 30879,
+    "panel_target": 984,
+    "control": 437
+   },
+   "rows_by_role": {
+    "outside_frozen_panel": 178,
+    "panel_target": 6,
+    "control": 1
+   },
+   "selected_rows": 7
+  }
+ ],
+ "validation_excluded": 0,
+ "merge_blocks": false,
+ "aggregation": "one context; donors pooled before shrink",
+ "identity_policy": "unreported donor/condition/chemistry namespaced to the study; no imputation",
+ "crosswalk": "exact native label equal to a frozen panel symbol; every other label is inventoried, not resolved",
+ "contexts": [
+  {
+   "context": [
+    "tian2021_crispri",
+    "iPSC-induced neuron",
+    "UNREPORTED@tian2021_crispri",
+    "CRISPRi",
+    "10x 3'"
+   ],
+   "targets": [
+    "AP2A2",
+    "EPC2",
+    "MTA1",
+    "PRNP",
+    "TRIP4",
+    "VAPB"
+   ],
+   "n_cells": [
+    239.0,
+    155.0,
+    149.0,
+    137.0,
+    147.0,
+    157.0
+   ],
+   "control_cells": 437.0,
+   "donors": [
+    "UNREPORTED@tian2021_crispri"
+   ],
+   "bank_rows": [
+    "tian2021_crispri:7",
+    "tian2021_crispri:56",
+    "tian2021_crispri:89",
+    "tian2021_crispri:99",
+    "tian2021_crispri:120",
+    "tian2021_crispri:165",
+    "tian2021_crispri:170"
+   ],
+   "own_gene": [
+    {
+     "target": "AP2A2",
+     "cells": 239,
+     "state": "measured",
+     "raw": -0.612407386302948,
+     "shrunk": -0.5817709565162659,
+     "se": 0.07026729732751846
+    },
+    {
+     "target": "EPC2",
+     "cells": 155,
+     "state": "measured",
+     "raw": -0.17813782393932343,
+     "shrunk": -0.05800237879157066,
+     "se": 0.1281854808330536
+    },
+    {
+     "target": "MTA1",
+     "cells": 149,
+     "state": "measured",
+     "raw": -0.42020392417907715,
+     "shrunk": -0.27904173731803894,
+     "se": 0.14943581819534302
+    },
+    {
+     "target": "PRNP",
+     "cells": 137,
+     "state": "measured",
+     "raw": -0.5352957248687744,
+     "shrunk": -0.4429403841495514,
+     "se": 0.12221434712409973
+    },
+    {
+     "target": "TRIP4",
+     "cells": 147,
+     "state": "measured",
+     "raw": -0.6061427593231201,
+     "shrunk": -0.41220614314079285,
+     "se": 0.207882359623909
+    },
+    {
+     "target": "VAPB",
+     "cells": 157,
+     "state": "measured",
+     "raw": -0.2160748541355133,
+     "shrunk": -0.11670757830142975,
+     "se": 0.0996888056397438
+    }
+   ],
+   "own_gene_summary": {
+    "derived_targets": 6,
+    "measured_own_gene": 6,
+    "median_own_raw": -0.4777498245239258,
+    "fraction_negative": 1.0
+   }
+  }
+ ],
+ "targets": [
+  "AP2A2",
+  "EPC2",
+  "MTA1",
+  "PRNP",
+  "TRIP4",
+  "VAPB"
+ ],
+ "n_cells": [
+  239.0,
+  155.0,
+  149.0,
+  137.0,
+  147.0,
+  157.0
+ ],
+ "outputs": {
+  "tian2021_crispri.npz": {
+   "bytes": 917948,
+   "sha256": "aed4a1193382ef6931d5ffb07b180351608ec8ffd999f73922029999ab3285f0"
+  }
+ },
+ "comparison": null,
+ "matrix_hash_verified_in_consumer": true,
+ "mixer_consumed": false,
+ "automatic_admission": false
+}

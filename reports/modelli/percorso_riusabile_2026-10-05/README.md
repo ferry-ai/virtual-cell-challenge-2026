@@ -1,5 +1,7 @@
 # Archivio → banca pronta → training
 
+**Dal 7 ottobre l'ingresso unico è [banca_canonica_2026-10-07](../banca_canonica_2026-10-07/README.md):** registro canonico, release r1 e fit con ricevuta di consumo. Questa pagina e RIUSO r3 restano la prova della release t36 e dei producer della banca; le righe su HIPSCI «ancora aperto» qui sotto sono superate da quella cartella.
+
 **Ingresso unico per riuso:** [procedura del prossimo training](RIUSO_r3.md).
 **Stato e assegnazioni correnti:** [R-LEAD](../../../docs/piani/strategia-scientifica.md).
 **Rifit, invio e valutazione della release parziale conclusi:** [candidato completo e invio t36](ESECUZIONE_r19.md) e
@@ -10,6 +12,7 @@
 [Adapter count_sum preparato e verificato su quattro fixture](hipsci_adapter_r1/README.md); consumer reale e pesi fra contesti ancora aperti.
 [Adapter con pooling congiunto fra cloni](hipsci_adapter_r2/README.md): due fixture aggiuntive passate; conservati anche i cloni con soli controlli, nessuna media post-shrink. Consumer e QC reali ancora aperti.
 [Consumer HIPSCI CPU concluso e consumo reale verificato](hipsci_adapter_r3/completion_r1/README.md): cinque effetti dal pooling dei 19 cloni, senza nuova ingestion; candidatura congelata, QC/ammissione e consumo nel mixer ancora aperti.
+[QC HIPSCI e correzione p2/pseudo](hipsci_qc_r1/README.md): i manifest storici hanno pseudo0,5 e due pool tecnici; diagnostica sul nuovo pooling preparata, senza riusare cache non equivalenti.
 [Righe HIPSCI reali verificate](hipsci_adapter_r1/real_rows_r1/README.md): 19 cloni con controlli e una cellula senza metadata; chimica ignota da trattare esplicitamente prima del fit.
 K562 storico disponibile con SHA verificato: [riuso preparato](k562_reuse_r1/ready_r3.json), caricato privato; sei cache corrette pronte per il fit finale.
 

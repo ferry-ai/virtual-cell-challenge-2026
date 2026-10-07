@@ -1,0 +1,432 @@
+{
+ "state": "diagnostic_complete_not_automatic_admission",
+ "input_files": {
+  "count_sum.npz": "/kaggle/input/notebooks/davideferante/vcc-derivatives-hipsci-targeted19-r1/bank/hipsci_targeted_19/count_sum.npz",
+  "rows.csv": "/kaggle/input/notebooks/davideferante/vcc-derivatives-hipsci-targeted19-r1/bank/hipsci_targeted_19/rows.csv",
+  "mask.npz": "/kaggle/input/notebooks/davideferante/vcc-derivatives-hipsci-targeted19-r1/bank/hipsci_targeted_19/mask.npz",
+  "complete.json": "/kaggle/input/notebooks/davideferante/vcc-derivatives-hipsci-targeted19-r1/bank/hipsci_targeted_19/complete.json"
+ },
+ "input_hashes": {
+  "count_sum.npz": {
+   "bytes": 213024236,
+   "sha256": "d5110b8133191e7a8f96377e06a22543dd131537c11b6c8195b684e2202c2285"
+  },
+  "rows.csv": {
+   "bytes": 596795,
+   "sha256": "6ba1ca45325b2c245d576b8f99b080d5dfbab004e174a61325801ab6980461ac"
+  },
+  "mask.npz": {
+   "bytes": 611558,
+   "sha256": "4f6707e453ac8aef756cd197b0da4f10d842088f52dee3bd5f72f82052e79ec6"
+  },
+  "complete.json": {
+   "bytes": 6008,
+   "sha256": "39bd33eed39449fbcb8e5bc97d4f9dd5fce9d625321ce82772faf7f434c8a3fa"
+  }
+ },
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+ "params_sha256": "257c4db22c9aa7b75a83f3248d3248fa817f0f9dd35f5425c42f77cf7906fd75",
+ "source": {
+  "kernel_id": 137175446,
+  "version": 1,
+  "private": true,
+  "version_ref": "davideferante/vcc-derivatives-hipsci-targeted19-r1/versions/1",
+  "saved_source_sha256": "69168e9fc5fd4f8f4c90842ce6c8065812da794f1f65b44ccab0e0e7201c8934",
+  "version_stable_during_output_read": true
+ },
+ "recipe": {
+  "phi": 0.2,
+  "min_control_frac": 1e-06,
+  "min_cells": 10.0,
+  "pseudo": 0.5,
+  "pseudo_scale": "constant",
+  "min_expected": 1.0
+ },
+ "contexts": [
+  {
+   "clone": "eipl_1",
+   "ntc_cells": 496,
+   "assigned_cells": 38699,
+   "states": {
+    "measured": 387,
+    "own_transcript_not_measured": 47,
+    "own_transcript_control_fraction_below_original_mask": 10
+   },
+   "measured_own_gene": 387,
+   "median_own_raw": -1.570434331893921,
+   "q25": -1.9908254742622375,
+   "q75": -1.1650963425636292,
+   "fraction_negative": 0.9922480620155039,
+   "panel_measured": 5,
+   "panel_median_raw": -1.7002217769622803,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "eipl_3",
+   "ntc_cells": 501,
+   "assigned_cells": 37180,
+   "states": {
+    "measured": 387,
+    "own_transcript_not_measured": 47,
+    "own_transcript_control_fraction_below_original_mask": 10
+   },
+   "measured_own_gene": 387,
+   "median_own_raw": -1.4338817596435547,
+   "q25": -1.9549091458320618,
+   "q75": -1.017143964767456,
+   "fraction_negative": 0.9896640826873385,
+   "panel_measured": 5,
+   "panel_median_raw": -1.4680577516555786,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "fiaj_1",
+   "ntc_cells": 549,
+   "assigned_cells": 41798,
+   "states": {
+    "measured": 385,
+    "own_transcript_control_fraction_below_original_mask": 10,
+    "own_transcript_not_measured": 47,
+    "below_min_cells": 1,
+    "own_transcript_expected_count_below_original_guard": 1
+   },
+   "measured_own_gene": 385,
+   "median_own_raw": -1.639801025390625,
+   "q25": -2.0500564575195312,
+   "q75": -1.2637122869491577,
+   "fraction_negative": 0.9974025974025974,
+   "panel_measured": 5,
+   "panel_median_raw": -1.5485392808914185,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "fiaj_3",
+   "ntc_cells": 86,
+   "assigned_cells": 8254,
+   "states": {
+    "measured": 253,
+    "below_min_cells": 151,
+    "own_transcript_expected_count_below_original_guard": 1,
+    "own_transcript_control_fraction_below_original_mask": 8,
+    "own_transcript_not_measured": 30
+   },
+   "measured_own_gene": 253,
+   "median_own_raw": -0.18990273773670197,
+   "q25": -0.38485056161880493,
+   "q75": -0.024617742747068405,
+   "fraction_negative": 0.782608695652174,
+   "panel_measured": 5,
+   "panel_median_raw": -0.27126261591911316,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "iudw_1",
+   "ntc_cells": 575,
+   "assigned_cells": 44469,
+   "states": {
+    "measured": 384,
+    "own_transcript_control_fraction_below_original_mask": 13,
+    "own_transcript_not_measured": 47
+   },
+   "measured_own_gene": 384,
+   "median_own_raw": -1.5136969685554504,
+   "q25": -1.8485266268253326,
+   "q75": -1.1710842549800873,
+   "fraction_negative": 0.9947916666666666,
+   "panel_measured": 5,
+   "panel_median_raw": -1.8009202480316162,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "iudw_4",
+   "ntc_cells": 433,
+   "assigned_cells": 34702,
+   "states": {
+    "measured": 388,
+    "own_transcript_control_fraction_below_original_mask": 9,
+    "own_transcript_not_measured": 47
+   },
+   "measured_own_gene": 388,
+   "median_own_raw": -1.050125539302826,
+   "q25": -1.4713673889636993,
+   "q75": -0.7411089390516281,
+   "fraction_negative": 0.9896907216494846,
+   "panel_measured": 5,
+   "panel_median_raw": -1.1943864822387695,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "jejf_2",
+   "ntc_cells": 605,
+   "assigned_cells": 47558,
+   "states": {
+    "measured": 385,
+    "own_transcript_control_fraction_below_original_mask": 11,
+    "own_transcript_not_measured": 47,
+    "own_transcript_expected_count_below_original_guard": 1
+   },
+   "measured_own_gene": 385,
+   "median_own_raw": -1.3739969730377197,
+   "q25": -1.7868515253067017,
+   "q75": -0.9901360869407654,
+   "fraction_negative": 0.9896103896103896,
+   "panel_measured": 5,
+   "panel_median_raw": -1.5977399349212646,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "jejf_3",
+   "ntc_cells": 484,
+   "assigned_cells": 34851,
+   "states": {
+    "measured": 386,
+    "own_transcript_expected_count_below_original_guard": 1,
+    "own_transcript_not_measured": 47,
+    "below_min_cells": 1,
+    "own_transcript_control_fraction_below_original_mask": 9
+   },
+   "measured_own_gene": 386,
+   "median_own_raw": -1.7996810674667358,
+   "q25": -2.2124573588371277,
+   "q75": -1.4203024804592133,
+   "fraction_negative": 0.9974093264248705,
+   "panel_measured": 5,
+   "panel_median_raw": -1.697782278060913,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "kolf_2",
+   "ntc_cells": 520,
+   "assigned_cells": 40563,
+   "states": {
+    "measured": 385,
+    "own_transcript_not_measured": 47,
+    "below_min_cells": 1,
+    "own_transcript_control_fraction_below_original_mask": 11
+   },
+   "measured_own_gene": 385,
+   "median_own_raw": -1.6449995040893555,
+   "q25": -1.9838149547576904,
+   "q75": -1.2437639236450195,
+   "fraction_negative": 0.9948051948051948,
+   "panel_measured": 5,
+   "panel_median_raw": -1.782667875289917,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "kolf_3",
+   "ntc_cells": 455,
+   "assigned_cells": 36787,
+   "states": {
+    "measured": 384,
+    "own_transcript_control_fraction_below_original_mask": 13,
+    "own_transcript_not_measured": 47
+   },
+   "measured_own_gene": 384,
+   "median_own_raw": -1.304154872894287,
+   "q25": -1.6825791597366333,
+   "q75": -0.9913531094789505,
+   "fraction_negative": 0.9973958333333334,
+   "panel_measured": 5,
+   "panel_median_raw": -1.1367164850234985,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "oikd_2",
+   "ntc_cells": 177,
+   "assigned_cells": 14127,
+   "states": {
+    "measured": 378,
+    "own_transcript_control_fraction_below_original_mask": 10,
+    "own_transcript_not_measured": 46,
+    "own_transcript_expected_count_below_original_guard": 2,
+    "below_min_cells": 8
+   },
+   "measured_own_gene": 378,
+   "median_own_raw": -0.6137049198150635,
+   "q25": -0.9579872339963913,
+   "q75": -0.3632531315088272,
+   "fraction_negative": 0.9603174603174603,
+   "panel_measured": 5,
+   "panel_median_raw": -0.715246319770813,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "oikd_5",
+   "ntc_cells": 668,
+   "assigned_cells": 45507,
+   "states": {
+    "measured": 385,
+    "own_transcript_not_measured": 47,
+    "own_transcript_control_fraction_below_original_mask": 12
+   },
+   "measured_own_gene": 385,
+   "median_own_raw": -1.6968544721603394,
+   "q25": -2.1134464740753174,
+   "q75": -1.338549256324768,
+   "fraction_negative": 0.9974025974025974,
+   "panel_measured": 5,
+   "panel_median_raw": -2.2276298999786377,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "paab_3",
+   "ntc_cells": 397,
+   "assigned_cells": 28918,
+   "states": {
+    "measured": 386,
+    "own_transcript_not_measured": 47,
+    "own_transcript_control_fraction_below_original_mask": 9,
+    "own_transcript_expected_count_below_original_guard": 2
+   },
+   "measured_own_gene": 386,
+   "median_own_raw": -1.1740669012069702,
+   "q25": -1.5364926159381866,
+   "q75": -0.860664576292038,
+   "fraction_negative": 0.9922279792746114,
+   "panel_measured": 5,
+   "panel_median_raw": -1.710838794708252,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "paab_4",
+   "ntc_cells": 543,
+   "assigned_cells": 42507,
+   "states": {
+    "measured": 386,
+    "own_transcript_not_measured": 47,
+    "own_transcript_control_fraction_below_original_mask": 11
+   },
+   "measured_own_gene": 386,
+   "median_own_raw": -1.2108826041221619,
+   "q25": -1.653859794139862,
+   "q75": -0.8604841083288193,
+   "fraction_negative": 0.9948186528497409,
+   "panel_measured": 5,
+   "panel_median_raw": -1.36384916305542,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "pipw_4",
+   "ntc_cells": 488,
+   "assigned_cells": 37178,
+   "states": {
+    "measured": 387,
+    "own_transcript_not_measured": 47,
+    "own_transcript_control_fraction_below_original_mask": 10
+   },
+   "measured_own_gene": 387,
+   "median_own_raw": -0.8840777277946472,
+   "q25": -1.2007232904434204,
+   "q75": -0.6285412609577179,
+   "fraction_negative": 0.9896640826873385,
+   "panel_measured": 5,
+   "panel_median_raw": -1.3741196393966675,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "pipw_5",
+   "ntc_cells": 92,
+   "assigned_cells": 9325,
+   "states": {
+    "measured": 332,
+    "own_transcript_control_fraction_below_original_mask": 12,
+    "below_min_cells": 57,
+    "own_transcript_not_measured": 40,
+    "own_transcript_expected_count_below_original_guard": 3
+   },
+   "measured_own_gene": 332,
+   "median_own_raw": -0.6325507462024689,
+   "q25": -1.0406797230243683,
+   "q75": -0.2896600067615509,
+   "fraction_negative": 0.9246987951807228,
+   "panel_measured": 5,
+   "panel_median_raw": -0.5210529565811157,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "tolg_4",
+   "ntc_cells": 182,
+   "assigned_cells": 16732,
+   "states": {
+    "measured": 382,
+    "own_transcript_control_fraction_below_original_mask": 7,
+    "own_transcript_not_measured": 46,
+    "below_min_cells": 9
+   },
+   "measured_own_gene": 382,
+   "median_own_raw": -0.34331853687763214,
+   "q25": -0.5770627111196518,
+   "q75": -0.1599985659122467,
+   "fraction_negative": 0.9083769633507853,
+   "panel_measured": 5,
+   "panel_median_raw": -0.5765528678894043,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "tolg_6",
+   "ntc_cells": 368,
+   "assigned_cells": 29491,
+   "states": {
+    "measured": 388,
+    "own_transcript_control_fraction_below_original_mask": 9,
+    "own_transcript_not_measured": 47
+   },
+   "measured_own_gene": 388,
+   "median_own_raw": -1.3100632429122925,
+   "q25": -1.6569278240203857,
+   "q75": -0.9751260578632355,
+   "fraction_negative": 0.9922680412371134,
+   "panel_measured": 5,
+   "panel_median_raw": -1.1699163913726807,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  },
+  {
+   "clone": "zapk_3",
+   "ntc_cells": 622,
+   "assigned_cells": 46376,
+   "states": {
+    "measured": 384,
+    "own_transcript_not_measured": 47,
+    "own_transcript_control_fraction_below_original_mask": 13
+   },
+   "measured_own_gene": 384,
+   "median_own_raw": -1.6751589179039001,
+   "q25": -2.093930184841156,
+   "q75": -1.3158073425292969,
+   "fraction_negative": 0.9973958333333334,
+   "panel_measured": 5,
+   "panel_median_raw": -2.0821402072906494,
+   "automatic_admission": false,
+   "automatic_context_exclusion": false
+  }
+ ],
+ "no_reingestion": true,
+ "no_context_exclusion": true,
+ "no_weights_changed": true,
+ "not_heldout_validation": true,
+ "output": {
+  "path": "own_gene_records.jsonl",
+  "bytes": 1474633,
+  "sha256": "60499d70ecc0d98b60e6d9b60ae70db2f51fa1c68ed1098a9e36278ddc588511"
+ }
+}

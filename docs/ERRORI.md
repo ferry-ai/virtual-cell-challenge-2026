@@ -250,6 +250,8 @@ nella memoria privata di un agente: qui valgono per tutti.
   per unità, non in `<job>/shards/`. Il 4/10 un kernel degli shard campionati cercava `shards/*.h5ad` e si è fermato
   dopo 10 s con «no shard found» (`vcc-sampled-hct116-l64-r1`); il pattern giusto è `shards/*/*.h5ad`, come legge
   `build_fast_units.py`. Un costruttore che non trova input deve fermarsi così, mai produrre un manifest vuoto.
+- **Banca in una copia montabile.** Un kernel finito in ERROR non si monta: la sua banca vive allora in un dataset copia, a volte con nomi di file diversi (`bank__norman2019__count_sum.npz`). Cercare i file per dimensione e sha256 della ricevuta, non per nome o percorso (7/10, `reports/modelli/banca_canonica_2026-10-07/consumer/runtime.py`).
+- **`kaggle datasets create` su Windows.** Con un percorso a barre dritte fallisce sul file di ripresa; la barra di avanzamento non si decodifica in cp1252 e l'esito non si legge dall'uscita: confermare con `datasets status` e `datasets files`.
 - **Kernel di un account, dati di un altro.** Un kernel monta i dataset condivisi con il suo account, non gli output dei
   kernel privati di un altro account. Gli shard delle sorgenti nuove sono output di `davideferrante11`: ciò che li legge
   gira su `davideferrante11` (`reports/sorgenti/prepasso_ampliato_2026-10-04/STATO.md`). I dataset piccoli di codice si

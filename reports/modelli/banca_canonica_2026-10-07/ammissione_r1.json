@@ -1,0 +1,1244 @@
+{
+ "utc": "2026-10-06T23:51:04.018234+00:00",
+ "rule": "reports/modelli/banca_canonica_2026-10-07/PROTOCOLLO.md",
+ "rule_sha256": "daab9357077b2aa9fa40dc9fc73cc1629231e181b1768c4f9e037a8b13d81fa7",
+ "tables_root": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1",
+ "sources": {
+  "xu2023": {
+   "arm": "crispri",
+   "study": "xu2023_hek293_crispri",
+   "modality": "CRISPRi",
+   "units": [
+    "xu2023"
+   ],
+   "job": "davideferante/vcc-fonte-xu2023-r1",
+   "version": 1,
+   "receipt": {
+    "bytes": 4647,
+    "sha256": "4bfc353fb2cddfbeb322f5c60d162323819197440e28d6dcfc94fabcf0242d04",
+    "path": "reports/modelli/banca_canonica_2026-10-07/derivazioni/xu2023/r1/completion/fit_receipt.json"
+   },
+   "table": {
+    "bytes": 804453,
+    "sha256": "8599c88644b0ddfc6a897f822bad22a35af360fff47ec55104f492dab49b8118",
+    "path": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1/xu2023/xu2023.npz",
+    "name": "xu2023.npz"
+   },
+   "context_tables": [],
+   "targets": [
+    "ACLY",
+    "DLAT",
+    "HDAC1",
+    "KMT2A",
+    "PAPOLA"
+   ],
+   "target_cells": 4293,
+   "control_cells": 2758,
+   "contexts": [
+    [
+     "xu2023_hek293_crispri",
+     "HEK293",
+     "UNREPORTED@xu2023_hek293_crispri",
+     "CRISPRi",
+     "10x 3'"
+    ]
+   ],
+   "aggregation": "one context; donors pooled before shrink",
+   "knockdown": {
+    "measured": 5,
+    "median_own_raw": -1.433668613433838,
+    "fraction_negative": 1.0
+   },
+   "cells_by_role": {
+    "xu2023": {
+     "panel_target": 4293,
+     "outside_frozen_panel": 91264,
+     "control": 2758
+    }
+   },
+   "comparison": null,
+   "caveat": null,
+   "vote": true,
+   "decision": "admitted to the same-target vote"
+  },
+  "tian2021_crispri": {
+   "arm": "crispri",
+   "study": "tian2021_crispri",
+   "modality": "CRISPRi",
+   "units": [
+    "tian2021_crispri"
+   ],
+   "job": "davideferante/vcc-fonte-tian2021-crispri-r1",
+   "version": 1,
+   "receipt": {
+    "bytes": 5101,
+    "sha256": "fcb1e3bbb86085db00d94b5097aa42c01d49fbe5fa4b1e1f07808da7223cdb39",
+    "path": "reports/modelli/banca_canonica_2026-10-07/derivazioni/tian2021_crispri/r1/completion/fit_receipt.json"
+   },
+   "table": {
+    "bytes": 917948,
+    "sha256": "aed4a1193382ef6931d5ffb07b180351608ec8ffd999f73922029999ab3285f0",
+    "path": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1/tian2021_crispri/tian2021_crispri.npz",
+    "name": "tian2021_crispri.npz"
+   },
+   "context_tables": [],
+   "targets": [
+    "AP2A2",
+    "EPC2",
+    "MTA1",
+    "PRNP",
+    "TRIP4",
+    "VAPB"
+   ],
+   "target_cells": 984,
+   "control_cells": 437,
+   "contexts": [
+    [
+     "tian2021_crispri",
+     "iPSC-induced neuron",
+     "UNREPORTED@tian2021_crispri",
+     "CRISPRi",
+     "10x 3'"
+    ]
+   ],
+   "aggregation": "one context; donors pooled before shrink",
+   "knockdown": {
+    "measured": 6,
+    "median_own_raw": -0.4777498245239258,
+    "fraction_negative": 1.0
+   },
+   "cells_by_role": {
+    "tian2021_crispri": {
+     "outside_frozen_panel": 30879,
+     "panel_target": 984,
+     "control": 437
+    }
+   },
+   "comparison": null,
+   "caveat": null,
+   "vote": true,
+   "decision": "admitted to the same-target vote"
+  },
+  "tian2019_ipsc": {
+   "arm": "crispri",
+   "study": "tian2019_ipsc",
+   "modality": "CRISPRi",
+   "units": [
+    "tian2019_ipsc"
+   ],
+   "job": "davideferante/vcc-fonte-tian2019-ipsc-r3",
+   "version": 1,
+   "receipt": {
+    "bytes": 3663,
+    "sha256": "7cc6c581d6cb23e176efd0de436b8ddc64f8f034366ed005313e7fd42c70a1a6",
+    "path": "reports/modelli/banca_canonica_2026-10-07/derivazioni/tian2019_ipsc/r3/completion/fit_receipt.json"
+   },
+   "table": {
+    "bytes": 197047,
+    "sha256": "d06809e44157e1d81ec23d800580007ebb064a612fdb350319bec2e133b3977f",
+    "path": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1/tian2019_ipsc/tian2019_ipsc.npz",
+    "name": "tian2019_ipsc.npz"
+   },
+   "context_tables": [],
+   "targets": [
+    "RFK"
+   ],
+   "target_cells": 2028,
+   "control_cells": 10401,
+   "contexts": [
+    [
+     "tian2019_ipsc",
+     "iPSC",
+     "UNREPORTED@tian2019_ipsc",
+     "CRISPRi",
+     "10x 3'"
+    ]
+   ],
+   "aggregation": "one context; donors pooled before shrink",
+   "knockdown": {
+    "measured": 1,
+    "median_own_raw": 0.048737578094005585,
+    "fraction_negative": 0.0
+   },
+   "cells_by_role": {
+    "tian2019_ipsc": {
+     "outside_frozen_panel": 258794,
+     "control": 10401,
+     "panel_target": 2028
+    }
+   },
+   "comparison": null,
+   "caveat": "unfiltered droplets and multi-guide labels: only cells whose native label is exactly one panel symbol enter; every multi-guide label stays inventoried",
+   "vote": false,
+   "decision": "derived, not admitted: knockdown direction rule not met"
+  },
+  "tian2019_neuron": {
+   "arm": "crispri",
+   "study": "tian2019_neuron_day7",
+   "modality": "CRISPRi",
+   "units": [
+    "tian2019_neuron"
+   ],
+   "job": "davideferante/vcc-fonte-tian2019-neuron-r1",
+   "version": 1,
+   "receipt": {
+    "bytes": 3876,
+    "sha256": "386e78f855b818e4d081decbd8f740d1cdd2f0e83022992dbc05d8bf0dd586c8",
+    "path": "reports/modelli/banca_canonica_2026-10-07/derivazioni/tian2019_neuron/r1/completion/fit_receipt.json"
+   },
+   "table": {
+    "bytes": 242564,
+    "sha256": "6a550857b838f5e59f05ea5ed65245c398ec5630c5485c279d5d18107cedac38",
+    "path": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1/tian2019_neuron/tian2019_neuron.npz",
+    "name": "tian2019_neuron.npz"
+   },
+   "context_tables": [],
+   "targets": [
+    "RFK"
+   ],
+   "target_cells": 3190,
+   "control_cells": 15083,
+   "contexts": [
+    [
+     "tian2019_neuron_day7",
+     "iPSC-induced neuron day 7",
+     "UNREPORTED@tian2019_neuron_day7",
+     "CRISPRi",
+     "10x 3'"
+    ]
+   ],
+   "aggregation": "one context; donors pooled before shrink",
+   "knockdown": {
+    "measured": 1,
+    "median_own_raw": -0.001381823793053627,
+    "fraction_negative": 1.0
+   },
+   "cells_by_role": {
+    "tian2019_neuron": {
+     "outside_frozen_panel": 160901,
+     "control": 15083,
+     "panel_target": 3190
+    }
+   },
+   "comparison": null,
+   "caveat": "unfiltered droplets and multi-guide labels: only cells whose native label is exactly one panel symbol enter; every multi-guide label stays inventoried",
+   "vote": true,
+   "decision": "admitted to the same-target vote"
+  },
+  "k562_gwps_sc": {
+   "arm": "crispri_same_study_as_k562_bulk",
+   "study": "replogle_k562_gwps",
+   "modality": "CRISPRi",
+   "units": [
+    "k562_gwps_a",
+    "k562_gwps_b"
+   ],
+   "job": "davideferrante11/vcc-fonte-k562-gwps-sc-r1",
+   "version": 1,
+   "receipt": {
+    "bytes": 152150,
+    "sha256": "7e2cd10bf9a10c50a76084c69eb5d72757ba36e6db5ff9002c2740e521a26672",
+    "path": "reports/modelli/banca_canonica_2026-10-07/derivazioni/k562_gwps_sc/r1/completion/fit_receipt.json"
+   },
+   "table": {
+    "bytes": 28200612,
+    "sha256": "8c0e2f980feab563f5a6533970b5eb0a58b05440514d170746161c980a342d3f",
+    "path": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1/k562_gwps_sc/k562_gwps_sc.npz",
+    "name": "k562_gwps_sc.npz"
+   },
+   "context_tables": [],
+   "targets": [
+    "ACLY",
+    "ADNP",
+    "AGO1",
+    "AKAP1",
+    "AKIRIN1",
+    "AKT2",
+    "ALG12",
+    "ANKRD52",
+    "ANKZF1",
+    "ANP32B",
+    "AP2A2",
+    "API5",
+    "ARL14EP",
+    "ASCC2",
+    "BCKDK",
+    "BCL6",
+    "BCL7C",
+    "BRD1",
+    "BRPF1",
+    "C5orf22",
+    "CAND1",
+    "CARM1",
+    "CAT",
+    "CCDC112",
+    "CDK8",
+    "CHD3",
+    "CHD6",
+    "CHKB",
+    "CLCN6",
+    "COIL",
+    "COMMD8",
+    "COQ10B",
+    "CSNK2A1",
+    "CYTH2",
+    "DBF4B",
+    "DBN1",
+    "DCAF16",
+    "DCP2",
+    "DDHD1",
+    "DEAF1",
+    "DEK",
+    "DHRS1",
+    "DHX35",
+    "DLAT",
+    "DMTF1",
+    "DNTTIP1",
+    "DRG2",
+    "DTNBP1",
+    "DVL3",
+    "E2F1",
+    "E2F4",
+    "EAPP",
+    "EEF1A2",
+    "ELK1",
+    "EPC2",
+    "EPM2AIP1",
+    "EZH2",
+    "FAM120A",
+    "FCGRT",
+    "FHL3",
+    "FOXN2",
+    "FOXO4",
+    "FUBP3",
+    "FXYD5",
+    "FZD2",
+    "GIGYF2",
+    "GLI3",
+    "GLYR1",
+    "GMEB2",
+    "GPATCH8",
+    "GRAMD1A",
+    "GTF2IRD1",
+    "HDAC1",
+    "HDAC8",
+    "HMGN3",
+    "HMGN4",
+    "HMGXB3",
+    "HOMEZ",
+    "HSBP1",
+    "HSP90AB1",
+    "IFI27L2",
+    "IFNAR2",
+    "IFNGR2",
+    "IL10RB",
+    "IREB2",
+    "KDM5A",
+    "KHDRBS1",
+    "KHSRP",
+    "KIF2A",
+    "KMT2A",
+    "LDLR",
+    "LENG1",
+    "LMAN1",
+    "LMBRD2",
+    "LPCAT3",
+    "MAN2A1",
+    "MAP2K2",
+    "MAPK12",
+    "MARCKSL1",
+    "MBD4",
+    "MED13",
+    "MED15",
+    "MED25",
+    "MLLT10",
+    "MSANTD4",
+    "MSI2",
+    "MTA1",
+    "MTF1",
+    "MTHFSD",
+    "MTM1",
+    "MYD88",
+    "MYPOP",
+    "MYRF",
+    "NABP2",
+    "NAIF1",
+    "NCLN",
+    "NFE2L1",
+    "NGLY1",
+    "NIPAL3",
+    "NIPSNAP3A",
+    "NT5DC1",
+    "NUP37",
+    "PAN2",
+    "PAPOLA",
+    "PATL1",
+    "PCGF1",
+    "PCGF6",
+    "PDCD4",
+    "PDE6D",
+    "PDK1",
+    "PGLS",
+    "PHF19",
+    "PHF23",
+    "PHF8",
+    "PI4KB",
+    "PIM2",
+    "PIN1",
+    "PINK1",
+    "PKN3",
+    "PLAGL2",
+    "PLCG1",
+    "PNP",
+    "POLD4",
+    "POR",
+    "PPIF",
+    "PPIP5K2",
+    "PQBP1",
+    "PRDX3",
+    "PRKAB2",
+    "PRKACA",
+    "PRMT2",
+    "PRMT6",
+    "PRMT7",
+    "PRNP",
+    "PSKH1",
+    "PTMS",
+    "PTOV1",
+    "PYCR1",
+    "R3HCC1L",
+    "RAB5A",
+    "RABEP2",
+    "RBM18",
+    "RBM26",
+    "RBM4B",
+    "RBM5",
+    "RC3H2",
+    "REV1",
+    "RFK",
+    "RNF10",
+    "RNF141",
+    "RNF2",
+    "RSRC1",
+    "S100A11",
+    "SAP30L",
+    "SCAF8",
+    "SFXN4",
+    "SH2D3A",
+    "SHPRH",
+    "SIN3B",
+    "SLC25A13",
+    "SLC39A1",
+    "SLIRP",
+    "SMARCA5",
+    "SMARCC2",
+    "SMYD2",
+    "SND1",
+    "SNRK",
+    "SNX4",
+    "SRSF5",
+    "SSR4",
+    "STAT6",
+    "STK3",
+    "STT3A",
+    "SUPT7L",
+    "SYVN1",
+    "TAF15",
+    "TARBP2",
+    "TBC1D13",
+    "TBCK",
+    "TEAD4",
+    "TEX2",
+    "TFCP2",
+    "THAP3",
+    "THAP7",
+    "TIMM17B",
+    "TIMM50",
+    "TMCO6",
+    "TMED3",
+    "TMEM147",
+    "TMEM186",
+    "TMEM209",
+    "TMEM41B",
+    "TMF1",
+    "TRAPPC6A",
+    "TRIB3",
+    "TRIM35",
+    "TRIP4",
+    "TRMT1",
+    "TRPC4AP",
+    "TWF2",
+    "UNK",
+    "UPF3B",
+    "UROS",
+    "USP28",
+    "VAPB",
+    "VIM",
+    "WBP4",
+    "YIPF6",
+    "ZBTB34",
+    "ZBTB41",
+    "ZBTB48",
+    "ZC3HAV1",
+    "ZDHHC12",
+    "ZDHHC4",
+    "ZFP62",
+    "ZHX3",
+    "ZKSCAN1",
+    "ZKSCAN2",
+    "ZKSCAN3",
+    "ZNF16",
+    "ZNF174",
+    "ZNF219",
+    "ZNF22",
+    "ZNF25",
+    "ZNF251",
+    "ZNF280C",
+    "ZNF282",
+    "ZNF32",
+    "ZNF324",
+    "ZNF397",
+    "ZNF410",
+    "ZNF444",
+    "ZNF462",
+    "ZNF496",
+    "ZNF507",
+    "ZNF514",
+    "ZNF526",
+    "ZNF530",
+    "ZNF543",
+    "ZNF627",
+    "ZNF628",
+    "ZNF641",
+    "ZNF670",
+    "ZNF714",
+    "ZNF740",
+    "ZNF768",
+    "ZNF777",
+    "ZNF783",
+    "ZNF784",
+    "ZNF786",
+    "ZNF821",
+    "ZRANB3"
+   ],
+   "target_cells": 50128,
+   "control_cells": 75328,
+   "contexts": [
+    [
+     "replogle_k562_gwps",
+     "K562",
+     "UNREPORTED@replogle_k562_gwps",
+     "CRISPRi",
+     "10x 3' v3"
+    ]
+   ],
+   "aggregation": "one context; donors pooled before shrink",
+   "knockdown": {
+    "measured": 229,
+    "median_own_raw": -1.934260368347168,
+    "fraction_negative": 0.9956331877729258
+   },
+   "cells_by_role": {
+    "k562_gwps_a": {
+     "outside_frozen_panel": 937014,
+     "panel_target": 25201,
+     "control": 37785
+    },
+    "k562_gwps_b": {
+     "outside_frozen_panel": 927108,
+     "panel_target": 24927,
+     "control": 37543
+    }
+   },
+   "comparison": {
+    "reference_targets": 272,
+    "new_targets": 272,
+    "shared": 272,
+    "only_reference": [],
+    "only_new": [],
+    "shrunk_cosine_median": 0.9941174708867129,
+    "shrunk_cosine_q10": 0.9842443456664938,
+    "raw_cosine_median": 0.9952457601476943,
+    "raw_cosine_q10": 0.986608546896143,
+    "reading": "descriptive equivalence check; it changes no weight and admits nothing",
+    "reference": {
+     "file": "k562.npz.bin",
+     "bytes": 28104995,
+     "sha256": "a37c78ce1f7c13a3fc145e75e64f2ccead555ec8e38a656d671903ed4fd7218f",
+     "dataset": "davideferrante11/vcc-k562-t25-cache-r1"
+    }
+   },
+   "caveat": "same experiment as the historical K562 BULK table that already votes: derived for an equivalence reading, never a second vote and never a silent substitute",
+   "vote": false,
+   "decision": "derived for the equivalence reading only; the historical K562 table keeps the one vote of this experiment"
+  },
+  "a549_ko": {
+   "arm": "ko",
+   "study": "a549_liu_hillsley2026",
+   "modality": "KO",
+   "units": [
+    "a549_ko"
+   ],
+   "job": "davidmaisterx/vcc-fonte-a549-ko-r1",
+   "version": 1,
+   "receipt": {
+    "bytes": 8638,
+    "sha256": "4316a439512e87e0147a2644b29751bd2e97444796dfe3bee390f10f4e715278",
+    "path": "reports/modelli/banca_canonica_2026-10-07/derivazioni/a549_ko/r1/completion/fit_receipt.json"
+   },
+   "table": {
+    "bytes": 3189590,
+    "sha256": "b023a39757201042a435612501b81295991dfd9a05dae71c2bd15bdd432439d9",
+    "path": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1/a549_ko/a549_ko.npz",
+    "name": "a549_ko.npz"
+   },
+   "context_tables": [],
+   "targets": [
+    "ALG12",
+    "ANP32B",
+    "C5orf22",
+    "COQ10B",
+    "LDLR",
+    "MSANTD4",
+    "NUP37",
+    "PAN2",
+    "PATL1",
+    "PHF23",
+    "PIM2",
+    "PRKACA",
+    "RBM26",
+    "RBM5",
+    "SCAF8",
+    "STT3A",
+    "SYVN1",
+    "TIMM17B",
+    "WBP4",
+    "ZNF219",
+    "ZNF496"
+   ],
+   "target_cells": 13945,
+   "control_cells": 45320,
+   "contexts": [
+    [
+     "a549_liu_hillsley2026",
+     "A549",
+     "UNREPORTED@a549_liu_hillsley2026",
+     "KO",
+     "UNREPORTED@a549_liu_hillsley2026"
+    ]
+   ],
+   "aggregation": "one context; donors pooled before shrink",
+   "knockdown": {
+    "measured": 21,
+    "median_own_raw": -0.3957677483558655,
+    "fraction_negative": 0.9523809523809523
+   },
+   "cells_by_role": {
+    "a549_ko": {
+     "outside_frozen_panel": 546810,
+     "panel_target": 13945,
+     "control": 45320
+    }
+   },
+   "comparison": null,
+   "caveat": null,
+   "vote": false,
+   "decision": "derived and kept as a separate KO arm; not in the CRISPRi vote of this release"
+  },
+  "frangieh2021": {
+   "arm": "ko",
+   "study": "frangieh2021_melanoma_ko",
+   "modality": "KO",
+   "units": [
+    "frangieh2021"
+   ],
+   "job": "davidmaisterx/vcc-fonte-frangieh2021-r1",
+   "version": 1,
+   "receipt": {
+    "bytes": 8545,
+    "sha256": "5e2f8b7d69acd6847506e8d0b8faf22090f247c5bfd503f6160d80f528da2e6e",
+    "path": "reports/modelli/banca_canonica_2026-10-07/derivazioni/frangieh2021/r1/completion/fit_receipt.json"
+   },
+   "table": {
+    "bytes": 838786,
+    "sha256": "32b29f859537b85619b4cbdfce58f43fe12270ccf5467c140309863bf41c18c8",
+    "path": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1/frangieh2021/frangieh2021.npz",
+    "name": "frangieh2021.npz"
+   },
+   "context_tables": [
+    "frangieh2021__context0.npz",
+    "frangieh2021__context1.npz",
+    "frangieh2021__context2.npz"
+   ],
+   "targets": [
+    "E2F1",
+    "IFNGR2",
+    "SLC25A13",
+    "SLIRP",
+    "TIMM50"
+   ],
+   "target_cells": 3256,
+   "control_cells": 57605,
+   "contexts": [
+    [
+     "frangieh2021_melanoma_ko",
+     "Co-culture",
+     "UNREPORTED@frangieh2021_melanoma_ko",
+     "KO",
+     "10x 3' v3"
+    ],
+    [
+     "frangieh2021_melanoma_ko",
+     "Control",
+     "UNREPORTED@frangieh2021_melanoma_ko",
+     "KO",
+     "10x 3' v3"
+    ],
+    [
+     "frangieh2021_melanoma_ko",
+     "IFN\u03b3",
+     "UNREPORTED@frangieh2021_melanoma_ko",
+     "KO",
+     "10x 3' v3"
+    ]
+   ],
+   "aggregation": "donors pooled before shrink inside each context; contexts equal-weighted",
+   "knockdown": {
+    "measured": 15,
+    "median_own_raw": -0.30966687202453613,
+    "fraction_negative": 1.0
+   },
+   "cells_by_role": {
+    "frangieh2021": {
+     "outside_frozen_panel": 157470,
+     "panel_target": 3256,
+     "control": 57605
+    }
+   },
+   "comparison": null,
+   "caveat": null,
+   "vote": false,
+   "decision": "derived and kept as a separate KO arm; not in the CRISPRi vote of this release"
+  },
+  "sunshine2023": {
+   "arm": "ko",
+   "study": "sunshine2023_calu3_ko",
+   "modality": "KO",
+   "units": [
+    "sunshine2023"
+   ],
+   "job": "davidmaisterx/vcc-fonte-sunshine2023-r1",
+   "version": 1,
+   "receipt": {
+    "bytes": 5037,
+    "sha256": "223aeeb78e1edd9d96df727e22a7e8b2e61c8efe28504ceecfc50d48fbb37a49",
+    "path": "reports/modelli/banca_canonica_2026-10-07/derivazioni/sunshine2023/r1/completion/fit_receipt.json"
+   },
+   "table": {
+    "bytes": 956588,
+    "sha256": "d91d811a2d53ddabf704724212d74c04f0ba04950b3388bd70854f9a0a7ff252",
+    "path": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1/sunshine2023/sunshine2023.npz",
+    "name": "sunshine2023.npz"
+   },
+   "context_tables": [],
+   "targets": [
+    "BCKDK",
+    "IFNAR2",
+    "LDLR",
+    "MYD88",
+    "TMEM41B",
+    "TRMT1"
+   ],
+   "target_cells": 1704,
+   "control_cells": 3536,
+   "contexts": [
+    [
+     "sunshine2023_calu3_ko",
+     "Calu-3",
+     "UNREPORTED@sunshine2023_calu3_ko",
+     "KO",
+     "10x 3'"
+    ]
+   ],
+   "aggregation": "one context; donors pooled before shrink",
+   "knockdown": {
+    "measured": 6,
+    "median_own_raw": -1.501035451889038,
+    "fraction_negative": 1.0
+   },
+   "cells_by_role": {
+    "sunshine2023": {
+     "outside_frozen_panel": 68749,
+     "panel_target": 1704,
+     "control": 3536,
+     "aux_unassigned": 16391
+    }
+   },
+   "comparison": null,
+   "caveat": null,
+   "vote": false,
+   "decision": "derived and kept as a separate KO arm; not in the CRISPRi vote of this release"
+  },
+  "dixit2016": {
+   "arm": "ko",
+   "study": "dixit2016_k562_ko",
+   "modality": "KO",
+   "units": [
+    "dixit2016_d7",
+    "dixit2016_d13",
+    "dixit2016_high_moi"
+   ],
+   "job": "davideferante/vcc-fonte-dixit2016-r1",
+   "version": 1,
+   "receipt": {
+    "bytes": 9812,
+    "sha256": "3384d57678896b2cc33196f3bf9cff53106d0db95df9407a966cb8b190e808f5",
+    "path": "reports/modelli/banca_canonica_2026-10-07/derivazioni/dixit2016/r1/completion/fit_receipt.json"
+   },
+   "table": {
+    "bytes": 372726,
+    "sha256": "bc651e8296df06d5674c1f3d3f6f1673ec9d453177cbcc62f163743b0915d828",
+    "path": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1/dixit2016/dixit2016.npz",
+    "name": "dixit2016.npz"
+   },
+   "context_tables": [
+    "dixit2016__context0.npz",
+    "dixit2016__context1.npz",
+    "dixit2016__context2.npz"
+   ],
+   "targets": [
+    "E2F4",
+    "ELK1"
+   ],
+   "target_cells": 13883,
+   "control_cells": 19364,
+   "contexts": [
+    [
+     "dixit2016_k562_ko",
+     "K562 day 13",
+     "UNREPORTED@dixit2016_k562_ko",
+     "KO",
+     "10x (Perturb-seq)"
+    ],
+    [
+     "dixit2016_k562_ko",
+     "K562 day 7",
+     "UNREPORTED@dixit2016_k562_ko",
+     "KO",
+     "10x (Perturb-seq)"
+    ],
+    [
+     "dixit2016_k562_ko",
+     "K562 high MOI",
+     "UNREPORTED@dixit2016_k562_ko",
+     "KO",
+     "10x (Perturb-seq)"
+    ]
+   ],
+   "aggregation": "donors pooled before shrink inside each context; contexts equal-weighted",
+   "knockdown": {
+    "measured": 6,
+    "median_own_raw": -0.07784186210483313,
+    "fraction_negative": 0.6666666666666666
+   },
+   "cells_by_role": {
+    "dixit2016_d7": {
+     "outside_frozen_panel": 18224,
+     "panel_target": 4429,
+     "control": 5381,
+     "aux_unassigned": 4979
+    },
+    "dixit2016_d13": {
+     "outside_frozen_panel": 10011,
+     "panel_target": 2347,
+     "control": 3491,
+     "aux_unassigned": 3419
+    },
+    "dixit2016_high_moi": {
+     "outside_frozen_panel": 32854,
+     "panel_target": 7107,
+     "control": 10492,
+     "aux_unassigned": 1445
+    }
+   },
+   "comparison": null,
+   "caveat": null,
+   "vote": false,
+   "decision": "derived and kept as a separate KO arm; not in the CRISPRi vote of this release"
+  },
+  "shifrut2018": {
+   "arm": "ko",
+   "study": "shifrut2018_tcells_ko",
+   "modality": "KO",
+   "units": [
+    "shifrut2018"
+   ],
+   "job": "davideferante/vcc-fonte-shifrut2018-r1",
+   "version": 1,
+   "receipt": {
+    "bytes": 4833,
+    "sha256": "a043bcaab0964f1ff8eed9521df7c56cbb7d5313bdcce9aac961c5ca6ced346a",
+    "path": "reports/modelli/banca_canonica_2026-10-07/derivazioni/shifrut2018/r1/completion/fit_receipt.json"
+   },
+   "table": {
+    "bytes": 246237,
+    "sha256": "54adc9d4a3532681c84951bae72e334557d833fffcaa6a3cad8ec4269eae2b28",
+    "path": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1/shifrut2018/shifrut2018.npz",
+    "name": "shifrut2018.npz"
+   },
+   "context_tables": [
+    "shifrut2018__context0.npz",
+    "shifrut2018__context1.npz"
+   ],
+   "targets": [
+    "STAT6"
+   ],
+   "target_cells": 572,
+   "control_cells": 3541,
+   "contexts": [
+    [
+     "shifrut2018_tcells_ko",
+     "nostim",
+     "UNREPORTED@shifrut2018_tcells_ko",
+     "KO",
+     "10x"
+    ],
+    [
+     "shifrut2018_tcells_ko",
+     "stim",
+     "UNREPORTED@shifrut2018_tcells_ko",
+     "KO",
+     "10x"
+    ]
+   ],
+   "aggregation": "donors pooled before shrink inside each context; contexts equal-weighted",
+   "knockdown": {
+    "measured": 2,
+    "median_own_raw": -0.061795830726623535,
+    "fraction_negative": 0.5
+   },
+   "cells_by_role": {
+    "shifrut2018": {
+     "outside_frozen_panel": 20981,
+     "control": 3541,
+     "panel_target": 572,
+     "aux_unassigned": 27142
+    }
+   },
+   "comparison": null,
+   "caveat": "the bank context joins donor and stimulation; the rename restores stimulation as context so that the two donors are pooled before the shrink",
+   "vote": false,
+   "decision": "derived and kept as a separate KO arm; not in the CRISPRi vote of this release"
+  },
+  "norman2019": {
+   "arm": "crispra",
+   "study": "norman2019_crispra",
+   "modality": "CRISPRa",
+   "units": [
+    "norman2019"
+   ],
+   "job": "davideferante/vcc-fonte-norman2019-r2",
+   "version": 1,
+   "receipt": {
+    "bytes": 4200,
+    "sha256": "09509ba9382e2a72676c1a7536fc3753157df6135b785dadae04582bfefafe7b",
+    "path": "reports/modelli/banca_canonica_2026-10-07/derivazioni/norman2019/r2/completion/fit_receipt.json"
+   },
+   "table": {
+    "bytes": 509277,
+    "sha256": "f42db7cbef905f85b00e1730702ed3ed3aa76e03b1e8d22c918f9d60fd8a82ba",
+    "path": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1/norman2019/norman2019.npz",
+    "name": "norman2019.npz"
+   },
+   "context_tables": [],
+   "targets": [
+    "FOXO4",
+    "KMT2A",
+    "ZC3HAV1"
+   ],
+   "target_cells": 972,
+   "control_cells": 11855,
+   "contexts": [
+    [
+     "norman2019_crispra",
+     "K562",
+     "UNREPORTED@norman2019_crispra",
+     "CRISPRa",
+     "10x 3'"
+    ]
+   ],
+   "aggregation": "one context; donors pooled before shrink",
+   "knockdown": {
+    "measured": 3,
+    "median_own_raw": 1.139425277709961,
+    "fraction_negative": 0.0
+   },
+   "cells_by_role": {
+    "norman2019": {
+     "outside_frozen_panel": 98618,
+     "panel_target": 972,
+     "control": 11855
+    }
+   },
+   "comparison": null,
+   "caveat": "single-gene activation labels only; combinatorial labels stay inventoried",
+   "vote": false,
+   "decision": "derived and kept as a separate activation arm; never in a knockdown vote"
+  },
+  "tian2021_crispra": {
+   "arm": "crispra",
+   "study": "tian2021_crispra",
+   "modality": "CRISPRa",
+   "units": [
+    "tian2021_crispra"
+   ],
+   "job": "davideferante/vcc-fonte-tian2021-crispra-r1",
+   "version": 1,
+   "receipt": {
+    "bytes": 4588,
+    "sha256": "ca789a7a082e4a926aa1d61f48ed54c0368a71ff75f401276c1bcba1c67d9c09",
+    "path": "reports/modelli/banca_canonica_2026-10-07/derivazioni/tian2021_crispra/r1/completion/fit_receipt.json"
+   },
+   "table": {
+    "bytes": 639394,
+    "sha256": "3aa3d95ceef5deb990a00d68bc66b746acc7b1d130cc15892b604d7b0a66e446",
+    "path": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1/tian2021_crispra/tian2021_crispra.npz",
+    "name": "tian2021_crispra.npz"
+   },
+   "context_tables": [],
+   "targets": [
+    "EPC2",
+    "GIGYF2",
+    "PRNP",
+    "TTBK2"
+   ],
+   "target_cells": 1235,
+   "control_cells": 434,
+   "contexts": [
+    [
+     "tian2021_crispra",
+     "iPSC-induced neuron",
+     "UNREPORTED@tian2021_crispra",
+     "CRISPRa",
+     "10x 3'"
+    ]
+   ],
+   "aggregation": "one context; donors pooled before shrink",
+   "knockdown": {
+    "measured": 4,
+    "median_own_raw": 0.7555048763751984,
+    "fraction_negative": 0.0
+   },
+   "cells_by_role": {
+    "tian2021_crispra": {
+     "outside_frozen_panel": 19524,
+     "panel_target": 1235,
+     "control": 434
+    }
+   },
+   "comparison": null,
+   "caveat": null,
+   "vote": false,
+   "decision": "derived and kept as a separate activation arm; never in a knockdown vote"
+  },
+  "hipsci_targeted_19": {
+   "arm": "crispri",
+   "study": "hipsci_targeted_19",
+   "modality": "CRISPRi",
+   "units": [
+    "hipsci_targeted_19"
+   ],
+   "job": "davideferante/vcc-effects-hipsci-targeted19-countsum-r1",
+   "version": 1,
+   "receipt": {
+    "path": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_adapter_r3/completion_r1/fit_receipt.json",
+    "bytes": 923330,
+    "sha256": "ca51b8e46e7386d2c7740fe24b96293d6cb4708a2b26ef8ae87afa947b0e11fc"
+   },
+   "table": {
+    "path": "C:/Users/ferra/vcc2026-data/processed/banca_canonica_2026-10-07/derivati_r1/hipsci_targeted_19/hipsci_targeted_19.npz",
+    "bytes": 919640,
+    "sha256": "150cf45f1b3673c27e5547e2fdaf2984e0cd37758d3921aa9c1f98337d9115bf",
+    "name": "hipsci_targeted_19.npz"
+   },
+   "context_tables": [],
+   "targets": [
+    "EZH2",
+    "GIGYF2",
+    "NT5DC1",
+    "STT3A",
+    "ZNF526"
+   ],
+   "target_cells": 7583,
+   "control_cells": 8241,
+   "contexts": [
+    [
+     "hipsci_targeted_19",
+     "eipl_1",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "eipl_3",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "fiaj_1",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "fiaj_3",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "iudw_1",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "iudw_4",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "jejf_2",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "jejf_3",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "kolf_2",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "kolf_3",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "oikd_2",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "oikd_5",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "paab_3",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "paab_4",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "pipw_4",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "pipw_5",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "tolg_4",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "tolg_6",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ],
+    [
+     "hipsci_targeted_19",
+     "zapk_3",
+     "day3",
+     "CRISPRi",
+     "UNREPORTED@hipsci_targeted_19"
+    ]
+   ],
+   "aggregation": "19 clones pooled as donors before shrink",
+   "knockdown": {
+    "reading": "per-clone median own-transcript raw log ratio of the five panel targets",
+    "clones": 19,
+    "median_of_clone_medians": -1.4680577516555786,
+    "weakest_clone": -0.27126261591911316,
+    "clones_with_negative_median": 19,
+    "qc_receipt": {
+     "bytes": 12979,
+     "sha256": "d44c30ff9588039711773f6aec0968b91dc03bf6292b70aa4deadf384ad6f3ed"
+    }
+   },
+   "cells_by_role": {
+    "hipsci_targeted_19": {
+     "metadata_unresolved": 1,
+     "outside_frozen_panel": 619198,
+     "panel_target": 7583,
+     "control": 8241,
+     "aux_unassigned": 526842
+    }
+   },
+   "comparison": null,
+   "caveat": "chemistry unreported, namespaced to the study; weak clones stay in the pool with their cell weight",
+   "vote": true,
+   "decision": "admitted to the same-target vote"
+  }
+ },
+ "not_launched": {
+  "hipsci_gw_fitness": "controls: see piano; non-targeting cells are too few to give every clone matched controls with the original estimator",
+  "hipsci_gw_nonfitness": "controls: see piano; non-targeting cells are too few to give every clone matched controls with the original estimator",
+  "papalexi2021_arrayed": "one panel symbol with 4 cells, below min_cells 10 of the original recipe",
+  "datlinger2017": "native labels are guide names with library prefix and guide number; no exact panel symbol, a declared guide-to-gene map is required",
+  "datlinger2021": "native labels are guide names with guide number; no exact panel symbol, a declared guide-to-gene map is required"
+ },
+ "scope": "production derivations; no held-out validation and no score"
+}

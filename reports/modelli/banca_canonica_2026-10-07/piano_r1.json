@@ -1,0 +1,1766 @@
+{
+ "utc": "2026-10-06T23:34:20.153276+00:00",
+ "expected_sha256": "304e8a660d7f69952c62c2e6ccf3a990da48647a186e179db4584941b4b21a30",
+ "rows": "73a47b3a6c3cac28cabba207e5536502b74fa734912737bf8a698cebbe384b56",
+ "recipe": {
+  "phi": 0.2,
+  "min_control_frac": 1e-06,
+  "min_cells": 10.0,
+  "pseudo": 0.5,
+  "pseudo_scale": "constant",
+  "min_expected": 1.0
+ },
+ "sources": {
+  "xu2023": {
+   "name": "xu2023",
+   "arm": "crispri",
+   "units": [
+    "xu2023"
+   ],
+   "cells_by_role": {
+    "panel_target": 4293,
+    "outside_frozen_panel": 91264,
+    "control": 2758
+   },
+   "contexts": [
+    {
+     "context": "HEK293",
+     "condition": "MISSING",
+     "control_cells": 2758,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 5,
+     "panel_targets_min_cells": 5,
+     "target_cells": 4293
+    }
+   ],
+   "runnable": true
+  },
+  "tian2021_crispri": {
+   "name": "tian2021_crispri",
+   "arm": "crispri",
+   "units": [
+    "tian2021_crispri"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 30879,
+    "panel_target": 984,
+    "control": 437
+   },
+   "contexts": [
+    {
+     "context": "iPSC-induced neuron",
+     "condition": "MISSING",
+     "control_cells": 437,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 6,
+     "panel_targets_min_cells": 6,
+     "target_cells": 984
+    }
+   ],
+   "runnable": true
+  },
+  "tian2019_ipsc": {
+   "name": "tian2019_ipsc",
+   "arm": "crispri",
+   "units": [
+    "tian2019_ipsc"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 258794,
+    "control": 10401,
+    "panel_target": 2028
+   },
+   "contexts": [
+    {
+     "context": "iPSC",
+     "condition": "MISSING",
+     "control_cells": 10401,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 1,
+     "panel_targets_min_cells": 1,
+     "target_cells": 2028
+    }
+   ],
+   "runnable": true
+  },
+  "tian2019_neuron": {
+   "name": "tian2019_neuron",
+   "arm": "crispri",
+   "units": [
+    "tian2019_neuron"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 160901,
+    "control": 15083,
+    "panel_target": 3190
+   },
+   "contexts": [
+    {
+     "context": "iPSC-induced neuron day 7",
+     "condition": "MISSING",
+     "control_cells": 15083,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 1,
+     "panel_targets_min_cells": 1,
+     "target_cells": 3190
+    }
+   ],
+   "runnable": true
+  },
+  "k562_gwps_sc": {
+   "name": "k562_gwps_sc",
+   "arm": "crispri_same_study_as_k562_bulk",
+   "units": [
+    "k562_gwps_a",
+    "k562_gwps_b"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 1864122,
+    "panel_target": 50128,
+    "control": 75328
+   },
+   "contexts": [
+    {
+     "context": "K562",
+     "condition": "MISSING",
+     "control_cells": 75328,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 272,
+     "panel_targets_min_cells": 272,
+     "target_cells": 50128
+    }
+   ],
+   "runnable": true
+  },
+  "a549_ko": {
+   "name": "a549_ko",
+   "arm": "ko",
+   "units": [
+    "a549_ko"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 546810,
+    "panel_target": 13945,
+    "control": 45320
+   },
+   "contexts": [
+    {
+     "context": "A549",
+     "condition": "MISSING",
+     "control_cells": 45320,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 21,
+     "panel_targets_min_cells": 21,
+     "target_cells": 13945
+    }
+   ],
+   "runnable": true
+  },
+  "frangieh2021": {
+   "name": "frangieh2021",
+   "arm": "ko",
+   "units": [
+    "frangieh2021"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 157470,
+    "panel_target": 3256,
+    "control": 57605
+   },
+   "contexts": [
+    {
+     "context": "Co-culture",
+     "condition": "MISSING",
+     "control_cells": 18334,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 5,
+     "panel_targets_min_cells": 5,
+     "target_cells": 1294
+    },
+    {
+     "context": "Control",
+     "condition": "MISSING",
+     "control_cells": 15361,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 5,
+     "panel_targets_min_cells": 5,
+     "target_cells": 755
+    },
+    {
+     "context": "IFN\u03b3",
+     "condition": "MISSING",
+     "control_cells": 23910,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 5,
+     "panel_targets_min_cells": 5,
+     "target_cells": 1207
+    }
+   ],
+   "runnable": true
+  },
+  "sunshine2023": {
+   "name": "sunshine2023",
+   "arm": "ko",
+   "units": [
+    "sunshine2023"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 68749,
+    "panel_target": 1704,
+    "control": 3536,
+    "aux_unassigned": 16391
+   },
+   "contexts": [
+    {
+     "context": "Calu-3",
+     "condition": "MISSING",
+     "control_cells": 3536,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 6,
+     "panel_targets_min_cells": 6,
+     "target_cells": 1704
+    }
+   ],
+   "runnable": true
+  },
+  "dixit2016": {
+   "name": "dixit2016",
+   "arm": "ko",
+   "units": [
+    "dixit2016_d7",
+    "dixit2016_d13",
+    "dixit2016_high_moi"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 61089,
+    "panel_target": 13883,
+    "control": 19364,
+    "aux_unassigned": 9843
+   },
+   "contexts": [
+    {
+     "context": "K562 day 13",
+     "condition": "MISSING",
+     "control_cells": 3491,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 2,
+     "panel_targets_min_cells": 2,
+     "target_cells": 2347
+    },
+    {
+     "context": "K562 day 7",
+     "condition": "MISSING",
+     "control_cells": 5381,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 2,
+     "panel_targets_min_cells": 2,
+     "target_cells": 4429
+    },
+    {
+     "context": "K562 high MOI",
+     "condition": "MISSING",
+     "control_cells": 10492,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 2,
+     "panel_targets_min_cells": 2,
+     "target_cells": 7107
+    }
+   ],
+   "runnable": true
+  },
+  "shifrut2018": {
+   "name": "shifrut2018",
+   "arm": "ko",
+   "units": [
+    "shifrut2018"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 20981,
+    "control": 3541,
+    "panel_target": 572,
+    "aux_unassigned": 27142
+   },
+   "contexts": [
+    {
+     "context": "nostim",
+     "condition": "MISSING",
+     "control_cells": 1550,
+     "donors_with_controls": 2,
+     "donors_with_targets": 2,
+     "donors_without_controls": [],
+     "panel_targets": 1,
+     "panel_targets_min_cells": 1,
+     "target_cells": 240
+    },
+    {
+     "context": "stim",
+     "condition": "MISSING",
+     "control_cells": 1991,
+     "donors_with_controls": 2,
+     "donors_with_targets": 2,
+     "donors_without_controls": [],
+     "panel_targets": 1,
+     "panel_targets_min_cells": 1,
+     "target_cells": 332
+    }
+   ],
+   "runnable": true
+  },
+  "norman2019": {
+   "name": "norman2019",
+   "arm": "crispra",
+   "units": [
+    "norman2019"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 98618,
+    "panel_target": 972,
+    "control": 11855
+   },
+   "contexts": [
+    {
+     "context": "K562",
+     "condition": "MISSING",
+     "control_cells": 11855,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 3,
+     "panel_targets_min_cells": 3,
+     "target_cells": 972
+    }
+   ],
+   "runnable": true
+  },
+  "tian2021_crispra": {
+   "name": "tian2021_crispra",
+   "arm": "crispra",
+   "units": [
+    "tian2021_crispra"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 19524,
+    "panel_target": 1235,
+    "control": 434
+   },
+   "contexts": [
+    {
+     "context": "iPSC-induced neuron",
+     "condition": "MISSING",
+     "control_cells": 434,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 4,
+     "panel_targets_min_cells": 4,
+     "target_cells": 1235
+    }
+   ],
+   "runnable": true
+  }
+ },
+ "not_launched": {
+  "hipsci_gw_fitness": {
+   "name": "hipsci_gw_fitness",
+   "arm": "not_launched",
+   "units": [
+    "hipsci_gw_fitness"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 102273,
+    "panel_target": 1539,
+    "aux_unassigned": 218898,
+    "control": 36
+   },
+   "contexts": [
+    {
+     "context": "eipl_1",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "eipl_1"
+     ],
+     "panel_targets": 22,
+     "panel_targets_min_cells": 0,
+     "target_cells": 49
+    },
+    {
+     "context": "eipl_1",
+     "condition": "day5",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 26,
+     "panel_targets_min_cells": 0,
+     "target_cells": 59
+    },
+    {
+     "context": "fiaj_1",
+     "condition": "day3",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 24,
+     "panel_targets_min_cells": 0,
+     "target_cells": 58
+    },
+    {
+     "context": "fiaj_1",
+     "condition": "day5",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 23,
+     "panel_targets_min_cells": 1,
+     "target_cells": 83
+    },
+    {
+     "context": "hecn_3",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "hecn_3"
+     ],
+     "panel_targets": 4,
+     "panel_targets_min_cells": 0,
+     "target_cells": 4
+    },
+    {
+     "context": "hecn_3",
+     "condition": "day4",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "hecn_3"
+     ],
+     "panel_targets": 11,
+     "panel_targets_min_cells": 0,
+     "target_cells": 11
+    },
+    {
+     "context": "hecn_3",
+     "condition": "day5",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "hecn_3"
+     ],
+     "panel_targets": 5,
+     "panel_targets_min_cells": 0,
+     "target_cells": 5
+    },
+    {
+     "context": "iiyk_2",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "iiyk_2"
+     ],
+     "panel_targets": 1,
+     "panel_targets_min_cells": 0,
+     "target_cells": 1
+    },
+    {
+     "context": "iiyk_2",
+     "condition": "day4",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "iiyk_2"
+     ],
+     "panel_targets": 7,
+     "panel_targets_min_cells": 0,
+     "target_cells": 9
+    },
+    {
+     "context": "iiyk_2",
+     "condition": "day5",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "iiyk_2"
+     ],
+     "panel_targets": 8,
+     "panel_targets_min_cells": 0,
+     "target_cells": 13
+    },
+    {
+     "context": "keui_1",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "keui_1"
+     ],
+     "panel_targets": 5,
+     "panel_targets_min_cells": 0,
+     "target_cells": 5
+    },
+    {
+     "context": "keui_1",
+     "condition": "day5",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "keui_1"
+     ],
+     "panel_targets": 9,
+     "panel_targets_min_cells": 0,
+     "target_cells": 11
+    },
+    {
+     "context": "kolf_2",
+     "condition": "day3",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 25,
+     "panel_targets_min_cells": 0,
+     "target_cells": 59
+    },
+    {
+     "context": "kolf_2",
+     "condition": "day5",
+     "control_cells": 2,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 22,
+     "panel_targets_min_cells": 0,
+     "target_cells": 46
+    },
+    {
+     "context": "kolf_3",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "kolf_3"
+     ],
+     "panel_targets": 8,
+     "panel_targets_min_cells": 0,
+     "target_cells": 9
+    },
+    {
+     "context": "kolf_3",
+     "condition": "day4",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "kolf_3"
+     ],
+     "panel_targets": 9,
+     "panel_targets_min_cells": 0,
+     "target_cells": 12
+    },
+    {
+     "context": "kolf_3",
+     "condition": "day5",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 15,
+     "panel_targets_min_cells": 0,
+     "target_cells": 19
+    },
+    {
+     "context": "kute_4",
+     "condition": "day3",
+     "control_cells": 2,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 19,
+     "panel_targets_min_cells": 0,
+     "target_cells": 44
+    },
+    {
+     "context": "kute_4",
+     "condition": "day5",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "kute_4"
+     ],
+     "panel_targets": 27,
+     "panel_targets_min_cells": 0,
+     "target_cells": 68
+    },
+    {
+     "context": "lirf_5",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "lirf_5"
+     ],
+     "panel_targets": 22,
+     "panel_targets_min_cells": 0,
+     "target_cells": 43
+    },
+    {
+     "context": "lirf_5",
+     "condition": "day5",
+     "control_cells": 3,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 23,
+     "panel_targets_min_cells": 0,
+     "target_cells": 41
+    },
+    {
+     "context": "melw_2",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "melw_2"
+     ],
+     "panel_targets": 1,
+     "panel_targets_min_cells": 0,
+     "target_cells": 1
+    },
+    {
+     "context": "melw_2",
+     "condition": "day4",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "melw_2"
+     ],
+     "panel_targets": 8,
+     "panel_targets_min_cells": 0,
+     "target_cells": 9
+    },
+    {
+     "context": "melw_2",
+     "condition": "day5",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "melw_2"
+     ],
+     "panel_targets": 8,
+     "panel_targets_min_cells": 0,
+     "target_cells": 10
+    },
+    {
+     "context": "nufh_4",
+     "condition": "day3",
+     "control_cells": 2,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 9,
+     "panel_targets_min_cells": 0,
+     "target_cells": 10
+    },
+    {
+     "context": "nufh_4",
+     "condition": "day4",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "nufh_4"
+     ],
+     "panel_targets": 10,
+     "panel_targets_min_cells": 0,
+     "target_cells": 11
+    },
+    {
+     "context": "nufh_4",
+     "condition": "day5",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "nufh_4"
+     ],
+     "panel_targets": 10,
+     "panel_targets_min_cells": 0,
+     "target_cells": 14
+    },
+    {
+     "context": "oupf_6",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "oupf_6"
+     ],
+     "panel_targets": 17,
+     "panel_targets_min_cells": 0,
+     "target_cells": 36
+    },
+    {
+     "context": "oupf_6",
+     "condition": "day5",
+     "control_cells": 3,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 21,
+     "panel_targets_min_cells": 0,
+     "target_cells": 26
+    },
+    {
+     "context": "pipw_4",
+     "condition": "day3",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 25,
+     "panel_targets_min_cells": 0,
+     "target_cells": 53
+    },
+    {
+     "context": "pipw_4",
+     "condition": "day5",
+     "control_cells": 2,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 24,
+     "panel_targets_min_cells": 0,
+     "target_cells": 44
+    },
+    {
+     "context": "rejf_2",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "rejf_2"
+     ],
+     "panel_targets": 19,
+     "panel_targets_min_cells": 0,
+     "target_cells": 47
+    },
+    {
+     "context": "rejf_2",
+     "condition": "day5",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 26,
+     "panel_targets_min_cells": 0,
+     "target_cells": 50
+    },
+    {
+     "context": "siqu_4",
+     "condition": "day3",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 27,
+     "panel_targets_min_cells": 0,
+     "target_cells": 67
+    },
+    {
+     "context": "siqu_4",
+     "condition": "day5",
+     "control_cells": 4,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 28,
+     "panel_targets_min_cells": 0,
+     "target_cells": 81
+    },
+    {
+     "context": "suop_2",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "suop_2"
+     ],
+     "panel_targets": 1,
+     "panel_targets_min_cells": 0,
+     "target_cells": 1
+    },
+    {
+     "context": "suop_2",
+     "condition": "day4",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "suop_2"
+     ],
+     "panel_targets": 8,
+     "panel_targets_min_cells": 0,
+     "target_cells": 11
+    },
+    {
+     "context": "suop_2",
+     "condition": "day5",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "suop_2"
+     ],
+     "panel_targets": 4,
+     "panel_targets_min_cells": 0,
+     "target_cells": 4
+    },
+    {
+     "context": "suop_5",
+     "condition": "day3",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 5,
+     "panel_targets_min_cells": 0,
+     "target_cells": 5
+    },
+    {
+     "context": "suop_5",
+     "condition": "day4",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "suop_5"
+     ],
+     "panel_targets": 11,
+     "panel_targets_min_cells": 0,
+     "target_cells": 13
+    },
+    {
+     "context": "suop_5",
+     "condition": "day5",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "suop_5"
+     ],
+     "panel_targets": 8,
+     "panel_targets_min_cells": 0,
+     "target_cells": 12
+    },
+    {
+     "context": "wahn_1",
+     "condition": "day3",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 28,
+     "panel_targets_min_cells": 1,
+     "target_cells": 114
+    },
+    {
+     "context": "wahn_1",
+     "condition": "day5",
+     "control_cells": 2,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 29,
+     "panel_targets_min_cells": 0,
+     "target_cells": 79
+    },
+    {
+     "context": "wihj_1",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "wihj_1"
+     ],
+     "panel_targets": 3,
+     "panel_targets_min_cells": 0,
+     "target_cells": 3
+    },
+    {
+     "context": "wihj_1",
+     "condition": "day4",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "wihj_1"
+     ],
+     "panel_targets": 12,
+     "panel_targets_min_cells": 0,
+     "target_cells": 13
+    },
+    {
+     "context": "wihj_1",
+     "condition": "day5",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 9,
+     "panel_targets_min_cells": 0,
+     "target_cells": 13
+    },
+    {
+     "context": "wihj_4",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "wihj_4"
+     ],
+     "panel_targets": 7,
+     "panel_targets_min_cells": 0,
+     "target_cells": 9
+    },
+    {
+     "context": "wihj_4",
+     "condition": "day4",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "wihj_4"
+     ],
+     "panel_targets": 3,
+     "panel_targets_min_cells": 0,
+     "target_cells": 3
+    },
+    {
+     "context": "wihj_4",
+     "condition": "day5",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 11,
+     "panel_targets_min_cells": 0,
+     "target_cells": 18
+    },
+    {
+     "context": "zapk_3",
+     "condition": "day3",
+     "control_cells": 2,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 9,
+     "panel_targets_min_cells": 0,
+     "target_cells": 9
+    },
+    {
+     "context": "zapk_3",
+     "condition": "day4",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "zapk_3"
+     ],
+     "panel_targets": 6,
+     "panel_targets_min_cells": 0,
+     "target_cells": 8
+    },
+    {
+     "context": "zapk_3",
+     "condition": "day5",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 17,
+     "panel_targets_min_cells": 0,
+     "target_cells": 29
+    },
+    {
+     "context": "zerv_7",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "zerv_7"
+     ],
+     "panel_targets": 5,
+     "panel_targets_min_cells": 0,
+     "target_cells": 5
+    },
+    {
+     "context": "zerv_7",
+     "condition": "day4",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "zerv_7"
+     ],
+     "panel_targets": 14,
+     "panel_targets_min_cells": 0,
+     "target_cells": 17
+    },
+    {
+     "context": "zerv_7",
+     "condition": "day5",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 10,
+     "panel_targets_min_cells": 0,
+     "target_cells": 11
+    },
+    {
+     "context": "zerv_8",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "zerv_8"
+     ],
+     "panel_targets": 1,
+     "panel_targets_min_cells": 0,
+     "target_cells": 1
+    },
+    {
+     "context": "zerv_8",
+     "condition": "day4",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "zerv_8"
+     ],
+     "panel_targets": 6,
+     "panel_targets_min_cells": 0,
+     "target_cells": 6
+    },
+    {
+     "context": "zerv_8",
+     "condition": "day5",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "zerv_8"
+     ],
+     "panel_targets": 5,
+     "panel_targets_min_cells": 0,
+     "target_cells": 6
+    },
+    {
+     "context": "zihe_1",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "zihe_1"
+     ],
+     "panel_targets": 13,
+     "panel_targets_min_cells": 0,
+     "target_cells": 16
+    },
+    {
+     "context": "zihe_1",
+     "condition": "day5",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "zihe_1"
+     ],
+     "panel_targets": 13,
+     "panel_targets_min_cells": 0,
+     "target_cells": 25
+    }
+   ],
+   "runnable": false,
+   "declared_reason": "controls: see piano; non-targeting cells are too few to give every clone matched controls with the original estimator"
+  },
+  "hipsci_gw_nonfitness": {
+   "name": "hipsci_gw_nonfitness",
+   "arm": "not_launched",
+   "units": [
+    "hipsci_gw_nonfitness"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 111054,
+    "panel_target": 3930,
+    "aux_unassigned": 281462,
+    "control": 12
+   },
+   "contexts": [
+    {
+     "context": "bokz_6",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "bokz_6"
+     ],
+     "panel_targets": 90,
+     "panel_targets_min_cells": 0,
+     "target_cells": 186
+    },
+    {
+     "context": "eipl_1",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "eipl_1"
+     ],
+     "panel_targets": 69,
+     "panel_targets_min_cells": 0,
+     "target_cells": 167
+    },
+    {
+     "context": "eipl_3",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "eipl_3"
+     ],
+     "panel_targets": 39,
+     "panel_targets_min_cells": 0,
+     "target_cells": 42
+    },
+    {
+     "context": "fiaj_1",
+     "condition": "day3",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 46,
+     "panel_targets_min_cells": 0,
+     "target_cells": 59
+    },
+    {
+     "context": "fiaj_1",
+     "condition": "day6",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 125,
+     "panel_targets_min_cells": 0,
+     "target_cells": 262
+    },
+    {
+     "context": "fiaj_3",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "fiaj_3"
+     ],
+     "panel_targets": 33,
+     "panel_targets_min_cells": 0,
+     "target_cells": 39
+    },
+    {
+     "context": "fiaj_3",
+     "condition": "day6",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 120,
+     "panel_targets_min_cells": 1,
+     "target_cells": 284
+    },
+    {
+     "context": "hecn_3",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "hecn_3"
+     ],
+     "panel_targets": 28,
+     "panel_targets_min_cells": 0,
+     "target_cells": 44
+    },
+    {
+     "context": "iiyk_2",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "iiyk_2"
+     ],
+     "panel_targets": 26,
+     "panel_targets_min_cells": 0,
+     "target_cells": 44
+    },
+    {
+     "context": "iiyk_4",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "iiyk_4"
+     ],
+     "panel_targets": 23,
+     "panel_targets_min_cells": 0,
+     "target_cells": 30
+    },
+    {
+     "context": "keui_1",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "keui_1"
+     ],
+     "panel_targets": 3,
+     "panel_targets_min_cells": 0,
+     "target_cells": 3
+    },
+    {
+     "context": "kolf_2",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "kolf_2"
+     ],
+     "panel_targets": 49,
+     "panel_targets_min_cells": 0,
+     "target_cells": 73
+    },
+    {
+     "context": "kolf_2",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "kolf_2"
+     ],
+     "panel_targets": 142,
+     "panel_targets_min_cells": 3,
+     "target_cells": 437
+    },
+    {
+     "context": "kolf_3",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "kolf_3"
+     ],
+     "panel_targets": 65,
+     "panel_targets_min_cells": 0,
+     "target_cells": 81
+    },
+    {
+     "context": "kolf_3",
+     "condition": "day6",
+     "control_cells": 2,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 126,
+     "panel_targets_min_cells": 0,
+     "target_cells": 266
+    },
+    {
+     "context": "kute_4",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "kute_4"
+     ],
+     "panel_targets": 26,
+     "panel_targets_min_cells": 0,
+     "target_cells": 28
+    },
+    {
+     "context": "letw_1",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "letw_1"
+     ],
+     "panel_targets": 17,
+     "panel_targets_min_cells": 0,
+     "target_cells": 19
+    },
+    {
+     "context": "lirf_5",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "lirf_5"
+     ],
+     "panel_targets": 59,
+     "panel_targets_min_cells": 0,
+     "target_cells": 80
+    },
+    {
+     "context": "melw_2",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "melw_2"
+     ],
+     "panel_targets": 25,
+     "panel_targets_min_cells": 0,
+     "target_cells": 35
+    },
+    {
+     "context": "miaj_4",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "miaj_4"
+     ],
+     "panel_targets": 47,
+     "panel_targets_min_cells": 0,
+     "target_cells": 67
+    },
+    {
+     "context": "miaj_4",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "miaj_4"
+     ],
+     "panel_targets": 135,
+     "panel_targets_min_cells": 1,
+     "target_cells": 372
+    },
+    {
+     "context": "miaj_6",
+     "condition": "day3",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "miaj_6"
+     ],
+     "panel_targets": 70,
+     "panel_targets_min_cells": 0,
+     "target_cells": 98
+    },
+    {
+     "context": "miaj_6",
+     "condition": "day6",
+     "control_cells": 3,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 113,
+     "panel_targets_min_cells": 0,
+     "target_cells": 251
+    },
+    {
+     "context": "nufh_4",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "nufh_4"
+     ],
+     "panel_targets": 22,
+     "panel_targets_min_cells": 0,
+     "target_cells": 26
+    },
+    {
+     "context": "oupf_6",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "oupf_6"
+     ],
+     "panel_targets": 41,
+     "panel_targets_min_cells": 0,
+     "target_cells": 48
+    },
+    {
+     "context": "pahc_5",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "pahc_5"
+     ],
+     "panel_targets": 8,
+     "panel_targets_min_cells": 0,
+     "target_cells": 8
+    },
+    {
+     "context": "pipw_4",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "pipw_4"
+     ],
+     "panel_targets": 37,
+     "panel_targets_min_cells": 0,
+     "target_cells": 44
+    },
+    {
+     "context": "puhk_2",
+     "condition": "day6",
+     "control_cells": 1,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 92,
+     "panel_targets_min_cells": 1,
+     "target_cells": 182
+    },
+    {
+     "context": "rakq_3",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "rakq_3"
+     ],
+     "panel_targets": 47,
+     "panel_targets_min_cells": 0,
+     "target_cells": 74
+    },
+    {
+     "context": "rejf_2",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "rejf_2"
+     ],
+     "panel_targets": 39,
+     "panel_targets_min_cells": 0,
+     "target_cells": 45
+    },
+    {
+     "context": "siqu_4",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "siqu_4"
+     ],
+     "panel_targets": 53,
+     "panel_targets_min_cells": 0,
+     "target_cells": 73
+    },
+    {
+     "context": "suop_2",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "suop_2"
+     ],
+     "panel_targets": 40,
+     "panel_targets_min_cells": 0,
+     "target_cells": 49
+    },
+    {
+     "context": "suop_5",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "suop_5"
+     ],
+     "panel_targets": 25,
+     "panel_targets_min_cells": 0,
+     "target_cells": 34
+    },
+    {
+     "context": "wahn_1",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "wahn_1"
+     ],
+     "panel_targets": 62,
+     "panel_targets_min_cells": 0,
+     "target_cells": 81
+    },
+    {
+     "context": "wihj_1",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "wihj_1"
+     ],
+     "panel_targets": 21,
+     "panel_targets_min_cells": 0,
+     "target_cells": 26
+    },
+    {
+     "context": "wihj_4",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "wihj_4"
+     ],
+     "panel_targets": 8,
+     "panel_targets_min_cells": 0,
+     "target_cells": 11
+    },
+    {
+     "context": "zapk_3",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "zapk_3"
+     ],
+     "panel_targets": 45,
+     "panel_targets_min_cells": 0,
+     "target_cells": 57
+    },
+    {
+     "context": "zerv_7",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "zerv_7"
+     ],
+     "panel_targets": 33,
+     "panel_targets_min_cells": 0,
+     "target_cells": 36
+    },
+    {
+     "context": "zerv_8",
+     "condition": "day6",
+     "control_cells": 0,
+     "donors_with_controls": 0,
+     "donors_with_targets": 1,
+     "donors_without_controls": [
+      "zerv_8"
+     ],
+     "panel_targets": 44,
+     "panel_targets_min_cells": 0,
+     "target_cells": 68
+    },
+    {
+     "context": "zihe_1",
+     "condition": "day6",
+     "control_cells": 3,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 62,
+     "panel_targets_min_cells": 0,
+     "target_cells": 101
+    }
+   ],
+   "runnable": false,
+   "declared_reason": "controls: see piano; non-targeting cells are too few to give every clone matched controls with the original estimator"
+  },
+  "papalexi2021_arrayed": {
+   "name": "papalexi2021_arrayed",
+   "arm": "not_launched",
+   "units": [
+    "papalexi2021_arrayed"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 6971,
+    "panel_target": 4,
+    "control": 2009
+   },
+   "contexts": [
+    {
+     "context": "THP-1",
+     "condition": "MISSING",
+     "control_cells": 2009,
+     "donors_with_controls": 1,
+     "donors_with_targets": 1,
+     "donors_without_controls": [],
+     "panel_targets": 1,
+     "panel_targets_min_cells": 0,
+     "target_cells": 4
+    }
+   ],
+   "runnable": false,
+   "declared_reason": "one panel symbol with 4 cells, below min_cells 10 of the original recipe"
+  },
+  "datlinger2017": {
+   "name": "datlinger2017",
+   "arm": "not_launched",
+   "units": [
+    "datlinger2017"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 4585,
+    "control": 1320
+   },
+   "contexts": [
+    {
+     "context": "stimulated",
+     "condition": "MISSING",
+     "control_cells": 705,
+     "donors_with_controls": 1,
+     "donors_with_targets": 0,
+     "donors_without_controls": [],
+     "panel_targets": 0,
+     "panel_targets_min_cells": 0,
+     "target_cells": 0
+    },
+    {
+     "context": "unstimulated",
+     "condition": "MISSING",
+     "control_cells": 615,
+     "donors_with_controls": 1,
+     "donors_with_targets": 0,
+     "donors_without_controls": [],
+     "panel_targets": 0,
+     "panel_targets_min_cells": 0,
+     "target_cells": 0
+    }
+   ],
+   "runnable": false,
+   "declared_reason": "native labels are guide names with library prefix and guide number; no exact panel symbol, a declared guide-to-gene map is required"
+  },
+  "datlinger2021": {
+   "name": "datlinger2021",
+   "arm": "not_launched",
+   "units": [
+    "datlinger2021"
+   ],
+   "cells_by_role": {
+    "outside_frozen_panel": 34697,
+    "control": 4497
+   },
+   "contexts": [
+    {
+     "context": "stimulated",
+     "condition": "MISSING",
+     "control_cells": 2990,
+     "donors_with_controls": 1,
+     "donors_with_targets": 0,
+     "donors_without_controls": [],
+     "panel_targets": 0,
+     "panel_targets_min_cells": 0,
+     "target_cells": 0
+    },
+    {
+     "context": "unstimulated",
+     "condition": "MISSING",
+     "control_cells": 1507,
+     "donors_with_controls": 1,
+     "donors_with_targets": 0,
+     "donors_without_controls": [],
+     "panel_targets": 0,
+     "panel_targets_min_cells": 0,
+     "target_cells": 0
+    }
+   ],
+   "runnable": false,
+   "declared_reason": "native labels are guide names with guide number; no exact panel symbol, a declared guide-to-gene map is required"
+  }
+ },
+ "scope": "metadata plan only; no count was read"
+}

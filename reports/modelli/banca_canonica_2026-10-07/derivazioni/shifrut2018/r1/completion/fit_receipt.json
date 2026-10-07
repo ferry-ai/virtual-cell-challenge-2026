@@ -1,0 +1,194 @@
+{
+ "state": "derived_production_fragment",
+ "name": "shifrut2018",
+ "study": "shifrut2018_tcells_ko",
+ "modality": "KO",
+ "arm": "ko",
+ "full_training": false,
+ "not_heldout_validation": true,
+ "hidden_targets": [],
+ "held_groups": [],
+ "input_files": {
+  "shifrut2018": {
+   "count_sum.npz": "/kaggle/input/notebooks/davideferante/vcc-derivatives-scp-tcells-r1/bank/shifrut2018/count_sum.npz",
+   "mask.npz": "/kaggle/input/notebooks/davideferante/vcc-derivatives-scp-tcells-r1/bank/shifrut2018/mask.npz",
+   "rows.csv": "/kaggle/input/notebooks/davideferante/vcc-derivatives-scp-tcells-r1/bank/shifrut2018/rows.csv",
+   "complete.json": "/kaggle/input/notebooks/davideferante/vcc-derivatives-scp-tcells-r1/bank/shifrut2018/complete.json"
+  }
+ },
+ "input_hashes": {
+  "shifrut2018": {
+   "count_sum.npz": {
+    "bytes": 2052092,
+    "sha256": "b60e829569af3f96c288ac19573eb616207994bed2513f40197c5bcf24d7f1bc"
+   },
+   "mask.npz": {
+    "bytes": 59670,
+    "sha256": "bbe5596ba6d076b72ead85220faeb952626367db64ea2eba3ec4859612bd018f"
+   },
+   "rows.csv": {
+    "bytes": 5927,
+    "sha256": "1b6a7d31645624580747df626f44769c5a337c401be4471e4cc57a578b2e7c25"
+   },
+   "complete.json": {
+    "bytes": 1589,
+    "sha256": "cfceb473aa85034a3a08a2b9eb7b18bf30da775c12ab52a173094444cea05b09"
+   }
+  }
+ },
+ "producers": {
+  "shifrut2018": {
+   "kernel_id": 137174788,
+   "version": 1,
+   "private": true,
+   "version_ref": "davideferante/vcc-derivatives-scp-tcells-r1/versions/1",
+   "saved_source_sha256": "79174de1974f82dfaeae6dab9538bd9999b96eda74c0ded95c3e33aa1b4553f3",
+   "version_stable_during_output_read": true
+  }
+ },
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+ "params_sha256": "9e8a1a739168a81d7aae7efb7d96ea4277a2da6b69bc1aec221e0c1d6033ba50",
+ "recipe": {
+  "phi": 0.2,
+  "min_control_frac": 1e-06,
+  "min_cells": 10.0,
+  "pseudo": 0.5,
+  "pseudo_scale": "constant",
+  "min_expected": 1.0
+ },
+ "inventory": [
+  {
+   "unit": "shifrut2018",
+   "bank_rows": 88,
+   "cells_by_role": {
+    "outside_frozen_panel": 20981,
+    "control": 3541,
+    "panel_target": 572,
+    "aux_unassigned": 27142
+   },
+   "rows_by_role": {
+    "outside_frozen_panel": 76,
+    "control": 4,
+    "panel_target": 4,
+    "aux_unassigned": 4
+   },
+   "selected_rows": 8
+  }
+ ],
+ "validation_excluded": 0,
+ "merge_blocks": false,
+ "aggregation": "donors pooled before shrink inside each context; contexts equal-weighted",
+ "identity_policy": "unreported donor/condition/chemistry namespaced to the study; no imputation",
+ "crosswalk": "exact native label equal to a frozen panel symbol; every other label is inventoried, not resolved",
+ "contexts": [
+  {
+   "context": [
+    "shifrut2018_tcells_ko",
+    "nostim",
+    "UNREPORTED@shifrut2018_tcells_ko",
+    "KO",
+    "10x"
+   ],
+   "targets": [
+    "STAT6"
+   ],
+   "n_cells": [
+    240.0
+   ],
+   "control_cells": 1550.0,
+   "donors": [
+    "D1",
+    "D2"
+   ],
+   "bank_rows": [
+    "shifrut2018:13",
+    "shifrut2018:17",
+    "shifrut2018:57",
+    "shifrut2018:61"
+   ],
+   "own_gene": [
+    {
+     "target": "STAT6",
+     "cells": 240,
+     "state": "measured",
+     "raw": -0.2572852075099945,
+     "shrunk": -0.10330253839492798,
+     "se": 0.15705986320972443
+    }
+   ],
+   "own_gene_summary": {
+    "derived_targets": 1,
+    "measured_own_gene": 1,
+    "median_own_raw": -0.2572852075099945,
+    "fraction_negative": 1.0
+   }
+  },
+  {
+   "context": [
+    "shifrut2018_tcells_ko",
+    "stim",
+    "UNREPORTED@shifrut2018_tcells_ko",
+    "KO",
+    "10x"
+   ],
+   "targets": [
+    "STAT6"
+   ],
+   "n_cells": [
+    332.0
+   ],
+   "control_cells": 1991.0,
+   "donors": [
+    "D1",
+    "D2"
+   ],
+   "bank_rows": [
+    "shifrut2018:35",
+    "shifrut2018:39",
+    "shifrut2018:79",
+    "shifrut2018:83"
+   ],
+   "own_gene": [
+    {
+     "target": "STAT6",
+     "cells": 332,
+     "state": "measured",
+     "raw": 0.13369354605674744,
+     "shrunk": 0.024032102897763252,
+     "se": 0.14279453456401825
+    }
+   ],
+   "own_gene_summary": {
+    "derived_targets": 1,
+    "measured_own_gene": 1,
+    "median_own_raw": 0.13369354605674744,
+    "fraction_negative": 0.0
+   }
+  }
+ ],
+ "targets": [
+  "STAT6"
+ ],
+ "n_cells": [
+  572.0
+ ],
+ "outputs": {
+  "shifrut2018.npz": {
+   "bytes": 246237,
+   "sha256": "54adc9d4a3532681c84951bae72e334557d833fffcaa6a3cad8ec4269eae2b28"
+  },
+  "shifrut2018__context0.npz": {
+   "bytes": 238485,
+   "sha256": "fea4d5f93575f4b2ee45b502e394feed188ab211348f581e69c91072ad3044e2"
+  },
+  "shifrut2018__context1.npz": {
+   "bytes": 243907,
+   "sha256": "732f2643cb5a77e609a0550f0f1f1f50b9a84c254c9824bac44db0e6ef3998bf"
+  }
+ },
+ "comparison": null,
+ "matrix_hash_verified_in_consumer": true,
+ "mixer_consumed": false,
+ "automatic_admission": false
+}

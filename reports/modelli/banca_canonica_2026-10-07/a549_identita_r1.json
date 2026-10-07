@@ -1,0 +1,243 @@
+{
+ "utc": "2026-10-07T00:03:12.387550+00:00",
+ "question": "are the eight A549 pools biological donors?",
+ "answer": "no: the old sums assign each cell to pool = category code of a batch-like column modulo 8",
+ "evidence": {
+  "code": "reports/sorgenti/universo_nuovi_2026-09-27/h5ad_sums.py (docstring and --pool-col help)",
+  "manifest_donors": "archive pool IDs, each against its selected context's NTC cells",
+  "old_manifest": {
+   "bytes": 2850,
+   "sha256": "5a11beca6ea7ef401b27eda5be1e039fa2941cad4899648fdebb8297cd03adf5"
+  },
+  "new_table": {
+   "bytes": 3189590,
+   "sha256": "b023a39757201042a435612501b81295991dfd9a05dae71c2bd15bdd432439d9"
+  },
+  "same_cells": {
+   "old": 606075,
+   "new_bank": 606075,
+   "old_controls": 45320,
+   "new_bank_controls": 45320
+  }
+ },
+ "difference": "old: one contrast per pool against that pool's controls, pooled by cells; new: one contrast on the summed counts. Same cells, different batch matching. The bank does not keep the pool column.",
+ "targets": 21,
+ "cells_equal": true,
+ "raw_cosine_median": 0.9395947167095546,
+ "raw_cosine_min": 0.9124836263950132,
+ "shrunk_cosine_median": 0.9301540843613864,
+ "shrunk_cosine_min": 0.885948712835661,
+ "per_target": [
+  {
+   "target": "ALG12",
+   "old_cells": 946,
+   "new_cells": 946,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9502231210631524,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9538111758629639,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "ANP32B",
+   "old_cells": 524,
+   "new_cells": 524,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9515137328813134,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9520512061413949,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "C5orf22",
+   "old_cells": 532,
+   "new_cells": 532,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9154966494938306,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9287240171731126,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "COQ10B",
+   "old_cells": 764,
+   "new_cells": 764,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9132127002944991,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9212059475969183,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "LDLR",
+   "old_cells": 661,
+   "new_cells": 661,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9654840345393849,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9647756909183014,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "MSANTD4",
+   "old_cells": 631,
+   "new_cells": 631,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.914024555595698,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9253679662444348,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "NUP37",
+   "old_cells": 443,
+   "new_cells": 443,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9012046203283953,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9230961900493718,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "PAN2",
+   "old_cells": 513,
+   "new_cells": 513,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.962534732682612,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9559213144634352,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "PATL1",
+   "old_cells": 617,
+   "new_cells": 617,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9250565860754424,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9309773490044227,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "PHF23",
+   "old_cells": 572,
+   "new_cells": 572,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9765488089798148,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9756810536004152,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "PIM2",
+   "old_cells": 815,
+   "new_cells": 815,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9264019129663028,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9371258193362076,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "PRKACA",
+   "old_cells": 795,
+   "new_cells": 795,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.965830862750115,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9603648521662191,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "RBM26",
+   "old_cells": 471,
+   "new_cells": 471,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9301540843613864,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9395947167095546,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "RBM5",
+   "old_cells": 556,
+   "new_cells": 556,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.885948712835661,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9124836263950132,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "SCAF8",
+   "old_cells": 800,
+   "new_cells": 800,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9618335505567279,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.962811877814276,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "STT3A",
+   "old_cells": 629,
+   "new_cells": 629,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9064286731719334,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9232314673989344,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "SYVN1",
+   "old_cells": 640,
+   "new_cells": 640,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9599547826803755,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9575370185366674,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "TIMM17B",
+   "old_cells": 858,
+   "new_cells": 858,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9238246053007104,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9242690512636309,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "WBP4",
+   "old_cells": 466,
+   "new_cells": 466,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.922693586463356,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9330412499710607,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "ZNF219",
+   "old_cells": 779,
+   "new_cells": 779,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9521293377242634,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9507954919499817,
+   "raw_genes_both": 11317
+  },
+  {
+   "target": "ZNF496",
+   "old_cells": 933,
+   "new_cells": 933,
+   "old_pools_with_cells": 8,
+   "shrunk_cosine": 0.9511957740605703,
+   "shrunk_genes_both": 11317,
+   "raw_cosine": 0.9484818132900381,
+   "raw_genes_both": 11317
+  }
+ ],
+ "reading": "descriptive; A549 is a KO arm and is not in the vote of this release"
+}

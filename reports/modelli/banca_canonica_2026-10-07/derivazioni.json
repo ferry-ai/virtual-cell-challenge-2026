@@ -1,0 +1,35 @@
+{
+ "note": "One entry per source derivation from the persistent count_sum bank. 'arm' is the declared role of the derived table: only arm crispri can be proposed for the same-target vote of the t25 transfer; ko and crispra are derived and kept as separate arms. Blocked entries name the evidence; they are open work, not scientific exclusions.",
+ "sources": {
+  "xu2023": {"owner": "davideferante", "units": ["xu2023"], "study": "xu2023_hek293_crispri", "modality": "CRISPRi", "arm": "crispri"},
+  "tian2021_crispri": {"owner": "davideferante", "units": ["tian2021_crispri"], "study": "tian2021_crispri", "modality": "CRISPRi", "arm": "crispri"},
+  "tian2019_ipsc": {"owner": "davideferante", "units": ["tian2019_ipsc"], "study": "tian2019_ipsc", "modality": "CRISPRi", "arm": "crispri",
+   "caveat": "unfiltered droplets and multi-guide labels: only cells whose native label is exactly one panel symbol enter; every multi-guide label stays inventoried"},
+  "tian2019_neuron": {"owner": "davideferante", "units": ["tian2019_neuron"], "study": "tian2019_neuron_day7", "modality": "CRISPRi", "arm": "crispri",
+   "caveat": "unfiltered droplets and multi-guide labels: only cells whose native label is exactly one panel symbol enter; every multi-guide label stays inventoried"},
+  "k562_gwps_sc": {"owner": "davideferrante11", "units": ["k562_gwps_a", "k562_gwps_b"], "study": "replogle_k562_gwps", "modality": "CRISPRi", "arm": "crispri_same_study_as_k562_bulk",
+   "merge_blocks": true, "min_ram_gib": 16,
+   "compare_to": {"file": "k562.npz.bin", "bytes": 28104995, "sha256": "a37c78ce1f7c13a3fc145e75e64f2ccead555ec8e38a656d671903ed4fd7218f", "dataset": "davideferrante11/vcc-k562-t25-cache-r1"},
+   "caveat": "same experiment as the historical K562 BULK table that already votes: derived for an equivalence reading, never a second vote and never a silent substitute"},
+  "a549_ko": {"owner": "davidmaisterx", "units": ["a549_ko"], "study": "a549_liu_hillsley2026", "modality": "KO", "arm": "ko"},
+  "frangieh2021": {"owner": "davidmaisterx", "units": ["frangieh2021"], "study": "frangieh2021_melanoma_ko", "modality": "KO", "arm": "ko"},
+  "sunshine2023": {"owner": "davidmaisterx", "units": ["sunshine2023"], "study": "sunshine2023_calu3_ko", "modality": "KO", "arm": "ko"},
+  "dixit2016": {"owner": "davideferante", "units": ["dixit2016_d7", "dixit2016_d13", "dixit2016_high_moi"], "study": "dixit2016_k562_ko", "modality": "KO", "arm": "ko"},
+  "shifrut2018": {"owner": "davideferante", "units": ["shifrut2018"], "study": "shifrut2018_tcells_ko", "modality": "KO", "arm": "ko",
+   "context_rename": {"D1_nostim": "nostim", "D2_nostim": "nostim", "D1_stim": "stim", "D2_stim": "stim"},
+   "caveat": "the bank context joins donor and stimulation; the rename restores stimulation as context so that the two donors are pooled before the shrink"},
+  "norman2019": {"owner": "davideferante", "units": ["norman2019"], "study": "norman2019_crispra", "modality": "CRISPRa", "arm": "crispra",
+   "caveat": "single-gene activation labels only; combinatorial labels stay inventoried"},
+  "tian2021_crispra": {"owner": "davideferante", "units": ["tian2021_crispra"], "study": "tian2021_crispra", "modality": "CRISPRa", "arm": "crispra"}
+ },
+ "already_derived": {
+  "hipsci_targeted_19": "reports/modelli/percorso_riusabile_2026-10-05/hipsci_adapter_r3/completion_r1/source_candidate.json"
+ },
+ "not_launched": {
+  "hipsci_gw_fitness": "controls: see piano; non-targeting cells are too few to give every clone matched controls with the original estimator",
+  "hipsci_gw_nonfitness": "controls: see piano; non-targeting cells are too few to give every clone matched controls with the original estimator",
+  "papalexi2021_arrayed": "one panel symbol with 4 cells, below min_cells 10 of the original recipe",
+  "datlinger2017": "native labels are guide names with library prefix and guide number; no exact panel symbol, a declared guide-to-gene map is required",
+  "datlinger2021": "native labels are guide names with guide number; no exact panel symbol, a declared guide-to-gene map is required"
+ }
+}

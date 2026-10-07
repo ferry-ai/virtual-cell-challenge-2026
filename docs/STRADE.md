@@ -41,7 +41,7 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 | S-007 | Correzioni del transfer dai controlli medi (guadagni per gene, bilineare, rete sul pseudobulk) | nessun beneficio | ignoto | 2026-10-04 |
 | S-008 | Modelli appresi precedenti (encoder, cancelli, rete dei contesti, relazionale, rete sulle sorgenti, Stack A e B) | nessuno ha passato la sua regola | ignoto | 2026-10-04 |
 | S-009 | Ibrido selettivo D-056 v1: transfer congelato + correzione neurale regolarizzata + selettore fuori fold | regola di banco passata su 5 linee (CP-0062); sul sito t30 −0,005 contro il t25, non conclusivo e nessuna promozione (CP-0064); su 5 semi e 400 cellule il guadagno di banco è +0,013 di media e il fold esportato perde PDS (CP-0065) | ipotizzato | 2026-10-04 |
-| S-010 | Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25 | Banco storico positivo ma non ammesso; t36 ufficiale +0,002404 da t28, nuovo massimo descrittivo (CP-0067), stabilità non dimostrata | ipotizzato | 2026-10-06 |
+| S-010 | Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25 | Banco storico positivo ma non ammesso; t36 ufficiale +0,002404 da t28, nuovo massimo descrittivo (CP-0067), stabilità non dimostrata; release r1 a 17 fonti fittata e non valutata (CP-0068) | ipotizzato | 2026-10-07 |
 
 ## Voci
 
@@ -273,6 +273,8 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
   `reports/modelli/diagnosi_t30_2026-10-04/export_vs_rows.py`.
 
 ### S-010 — Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25
+
+- **Aggiornamento 7/10:** [CP-0068](checkpoints/0068-banca-canonica-release-r1.md), [banca canonica](../reports/modelli/banca_canonica_2026-10-07/README.md). Regola di ammissione scritta prima dei lanci (verso del knockdown sul proprio gene): passano HIPSCI mirato, Xu 2023 e Tian 2021 CRISPRi; Tian 2019 neuroni passa alla lettera con −0,0014, che non è evidenza di knockdown; Tian 2019 iPSC non passa. La release r1 (17 fonti) è fittata con lo stesso transfer e cambia gli effetti solo sui 17 bersagli con voti nuovi. **Esito incompleto:** nessun banco e nessun invio, quindi nessuna lettura di qualità. Meccanismo ancora **ipotizzato**. Lezione di metodo: una regola di solo segno non distingue un effetto nullo quando la fonte ha un solo bersaglio; la prossima regola dichiari prima un minimo di bersagli o un intervallo. Guardia eseguibile aggiunta: il fit si ferma se una fonte attesa non risulta fra le tabelle lette dallo stage 100 (`fit/driver.py`).
 
 - **Aggiornamento 6/10:** [CP-0067](checkpoints/0067-t36-banca-estesa-punteggio-ufficiale.md), [comparison t36](../reports/invii/prediction_t36_2026-10-06/comparison.json): transfer t25/emitter t28 su banca estesa parziale,0,147249 e +0,002404 da t28. Invio diretto autorizzato dal proprietario, senza banco comparativo o soglia numerica preregistrata. Nuovo massimo osservato, non prova stabile o attribuibile a una fonte. Meccanismo ancora **ipotizzato**. Il banco storico e il suo criterio qui sotto mantengono il loro perimetro; «nessun invio finora» si riferisce al4ottobre, non allo stato attuale. La lettura eseguibile read_t36_score.py vincola entry/pannello/ancore/media e vieta soglie inventate, non misura robustezza.
 

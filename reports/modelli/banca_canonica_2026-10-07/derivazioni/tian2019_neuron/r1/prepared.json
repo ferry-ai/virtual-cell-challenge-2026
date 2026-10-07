@@ -1,0 +1,71 @@
+{
+ "utc": "2026-10-06T23:36:01.467983+00:00",
+ "slug": "davideferante/vcc-fonte-tian2019-neuron-r1",
+ "stage": "reports/modelli/banca_canonica_2026-10-07/derivazioni/tian2019_neuron/r1/package",
+ "code": {
+  "bytes": 103840,
+  "sha256": "9cedcb8855469ebc5bdf555d58e3dd050103cfa059e666b752967a2faee19d05"
+ },
+ "params": {
+  "bytes": 6416,
+  "sha256": "83b3717fc2a59f5ded5443692f4cfca2c09d0004b9eccf8122ab25a139afaeaa"
+ },
+ "metadata": {
+  "bytes": 416,
+  "sha256": "e67a8fbe348d0510d2ff40cddb8f96fd4a5c664c388cc6ddc5d371299a0c0082"
+ },
+ "modules": {
+  "adapter.py": {
+   "bytes": 6219,
+   "sha256": "f10b1e4d4d51e8e29e4930de4f5b358d8b9c5ff8a2dab3c407f257712ca63865"
+  },
+  "estimator.py": {
+   "bytes": 11897,
+   "sha256": "63e29813b955e42319e0a11e79311429d566a68f35132dd5b850e2e63185334d"
+  },
+  "runtime.py": {
+   "bytes": 17731,
+   "sha256": "415c030c55942d221a4452277bd2a1457799fa58820d5c2490ff2af084993493"
+  },
+  "gene_names.csv": {
+   "bytes": 119295,
+   "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  "pert_counts.csv": {
+   "bytes": 1906,
+   "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276"
+  },
+  "params.json": {
+   "bytes": 6416,
+   "sha256": "83b3717fc2a59f5ded5443692f4cfca2c09d0004b9eccf8122ab25a139afaeaa"
+  }
+ },
+ "plan": {
+  "name": "tian2019_neuron",
+  "arm": "crispri",
+  "units": [
+   "tian2019_neuron"
+  ],
+  "cells_by_role": {
+   "outside_frozen_panel": 160901,
+   "control": 15083,
+   "panel_target": 3190
+  },
+  "contexts": [
+   {
+    "context": "iPSC-induced neuron day 7",
+    "condition": "MISSING",
+    "control_cells": 15083,
+    "donors_with_controls": 1,
+    "donors_with_targets": 1,
+    "donors_without_controls": [],
+    "panel_targets": 1,
+    "panel_targets_min_cells": 1,
+    "target_cells": 3190
+   }
+  ],
+  "runnable": true
+ },
+ "full_training": false,
+ "compute_started": false
+}

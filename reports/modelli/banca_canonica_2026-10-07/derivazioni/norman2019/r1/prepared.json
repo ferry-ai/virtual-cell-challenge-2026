@@ -1,0 +1,71 @@
+{
+ "utc": "2026-10-06T23:36:10.785452+00:00",
+ "slug": "davideferante/vcc-fonte-norman2019-r1",
+ "stage": "reports/modelli/banca_canonica_2026-10-07/derivazioni/norman2019/r1/package",
+ "code": {
+  "bytes": 103748,
+  "sha256": "b25b41c14bb7033cfd6149161a95016e4b996431b4da5302f3c61c8325bf91c0"
+ },
+ "params": {
+  "bytes": 6294,
+  "sha256": "a608338863798decc3a8ae81d4f3ef153b7e98f27a32d2819c497212c0163f05"
+ },
+ "metadata": {
+  "bytes": 395,
+  "sha256": "a711cafb3169adff438c4e58898933293d5f06bf760e868b84ffdc5d099f6c64"
+ },
+ "modules": {
+  "adapter.py": {
+   "bytes": 6219,
+   "sha256": "f10b1e4d4d51e8e29e4930de4f5b358d8b9c5ff8a2dab3c407f257712ca63865"
+  },
+  "estimator.py": {
+   "bytes": 11897,
+   "sha256": "63e29813b955e42319e0a11e79311429d566a68f35132dd5b850e2e63185334d"
+  },
+  "runtime.py": {
+   "bytes": 17731,
+   "sha256": "415c030c55942d221a4452277bd2a1457799fa58820d5c2490ff2af084993493"
+  },
+  "gene_names.csv": {
+   "bytes": 119295,
+   "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  "pert_counts.csv": {
+   "bytes": 1906,
+   "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276"
+  },
+  "params.json": {
+   "bytes": 6294,
+   "sha256": "a608338863798decc3a8ae81d4f3ef153b7e98f27a32d2819c497212c0163f05"
+  }
+ },
+ "plan": {
+  "name": "norman2019",
+  "arm": "crispra",
+  "units": [
+   "norman2019"
+  ],
+  "cells_by_role": {
+   "outside_frozen_panel": 98618,
+   "panel_target": 972,
+   "control": 11855
+  },
+  "contexts": [
+   {
+    "context": "K562",
+    "condition": "MISSING",
+    "control_cells": 11855,
+    "donors_with_controls": 1,
+    "donors_with_targets": 1,
+    "donors_without_controls": [],
+    "panel_targets": 3,
+    "panel_targets_min_cells": 3,
+    "target_cells": 972
+   }
+  ],
+  "runnable": true
+ },
+ "full_training": false,
+ "compute_started": false
+}

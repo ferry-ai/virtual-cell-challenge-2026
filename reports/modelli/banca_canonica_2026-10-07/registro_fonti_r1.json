@@ -1,0 +1,5369 @@
+{
+ "schema": 1,
+ "utc": "2026-10-07T00:04:47.147959+00:00",
+ "claims_complete_corpus": false,
+ "inputs": {
+  "expected": "304e8a660d7f69952c62c2e6ccf3a990da48647a186e179db4584941b4b21a30",
+  "catalogue": "7cb0ff9515b6105a58f762693548300dafc0e4d9735421b2baecc26111311c98",
+  "rows": "73a47b3a6c3cac28cabba207e5536502b74fa734912737bf8a698cebbe384b56",
+  "admission": "f68ed32ac2b436fd09d4a9c58e8e4d05e49303516f0cb481648b761b70245e59",
+  "release": "0650d1d610e05b5cb5fea3c3695dff67bec14443c9df2708121f84e8f8771c8c",
+  "plan": "f0699cfbf9d61e45180b1ea90da48cac90a9bfba7ce43900d9ae4a894ca62e33",
+  "fit_consumo": "1ee4026235a8f049ac4aabb6a77d130c916c275f1e812079d442acf476bc48a1"
+ },
+ "summary": {
+  "raw_unique_gb": 395.75,
+  "raw_cell_rows": 41765207,
+  "raw_note": "17 archivi precedenti (69.583 GB, incluso Jurkat GSE249595 senza banca) piu CD4, KOLF pan, HCT116, HEK293T (326.166 GB)",
+  "derived_bank_gb": 38.118,
+  "derived_samples_gb": 189.195,
+  "derived_tables_gb": 0.242,
+  "bank_units": 45,
+  "studies": 31,
+  "bank_cells": 39973948,
+  "bank_cells_note": "h1_train e h1_val ripetono gli stessi 38176 controlli: il totale li conta due volte",
+  "line_groups": [
+   "A549",
+   "CD4T",
+   "Calu3",
+   "H1",
+   "HCT116",
+   "HEK293",
+   "HEK293T",
+   "HepG2",
+   "Jurkat",
+   "K562",
+   "RPE1",
+   "THP1",
+   "iPSC",
+   "melanoma",
+   "neuron"
+  ],
+  "line_groups_n": 15,
+  "bank_rows_contexts": 168,
+  "contexts_distinct": 54,
+  "donors_or_clones_distinct": 51,
+  "contexts_note": "contesto = (studio, contesto, condizione) distinto; nelle tre unita HIPSCI il contesto di banca e il clone, contato qui come donatore e non come contesto. Un gruppo di linea non e una linea: iPSC riunisce KOLF2.1J, i cloni HIPSCI e le iPSC di Tian",
+  "donors_note": "donatori CD4 e Shifrut e cloni HIPSCI distinti; i cloni HIPSCI comuni alle tre unita sono contati una volta",
+  "catalogue_records": 100,
+  "catalogue_in_bank": 42,
+  "catalogue_alias": 13,
+  "catalogue_not_in_bank": 44,
+  "units_outside_catalogue": [
+   "orion_hct116",
+   "orion_hek293t"
+  ],
+  "sources_voted": 17,
+  "sources_voted_with_panel_targets": 13,
+  "sources_voted_names": [
+   "cd4_mix",
+   "h1",
+   "hepg2_nadig",
+   "hipsci_targeted_19",
+   "jurkat_nadig",
+   "k562",
+   "k562_essential",
+   "kolf_chromatin",
+   "kolf_metabolic",
+   "kolf_pan_genome",
+   "kolf_strong",
+   "orion_hct116",
+   "orion_hek293t",
+   "rpe1",
+   "tian2019_neuron",
+   "tian2021_crispri",
+   "xu2023"
+  ],
+  "units_behind_voted_sources": 28,
+  "line_groups_voted": [
+   "CD4T",
+   "H1",
+   "HCT116",
+   "HEK293",
+   "HEK293T",
+   "HepG2",
+   "Jurkat",
+   "K562",
+   "RPE1",
+   "iPSC",
+   "neuron"
+  ],
+  "cells_in_bank_rows_read_by_voted_sources": 2367170,
+  "cells_read_note": "controlli piu bersagli del pannello nelle righe di banca dietro le fonti votate; la tabella k562 BULK storica non viene dalla banca e non e contata; i controlli H1 condivisi sono contati una volta",
+  "sources_other_arms": [
+   "a549_ko",
+   "dixit2016",
+   "frangieh2021",
+   "k562_gwps_sc",
+   "norman2019",
+   "shifrut2018",
+   "sunshine2023",
+   "tian2019_ipsc",
+   "tian2021_crispra"
+  ],
+  "units_not_derived": [
+   "datlinger2017",
+   "datlinger2021",
+   "hipsci_gw_fitness",
+   "hipsci_gw_nonfitness",
+   "papalexi2021_arrayed"
+  ],
+  "fit": {
+   "revision": "r2",
+   "release_sha256": "0650d1d610e05b5cb5fea3c3695dff67bec14443c9df2708121f84e8f8771c8c",
+   "sources_read": 17,
+   "vote_count_histogram": {
+    "2": 1,
+    "3": 12,
+    "4": 28,
+    "5": 183,
+    "6": 60,
+    "7": 14,
+    "8": 1,
+    "9": 1
+   },
+   "targets_with_added_votes": [
+    "ACLY",
+    "AP2A2",
+    "DLAT",
+    "EPC2",
+    "EZH2",
+    "GIGYF2",
+    "HDAC1",
+    "KMT2A",
+    "MTA1",
+    "NT5DC1",
+    "PAPOLA",
+    "PRNP",
+    "RFK",
+    "STT3A",
+    "TRIP4",
+    "VAPB",
+    "ZNF526"
+   ],
+   "targets_changed_outside_added_votes": []
+  }
+ },
+ "sources": {
+  "cd4_mix": {
+   "role": "voto",
+   "kind": "mix_cache",
+   "table_sha256": "ccde53b7546e5138447fee8b27ff6a98d3abb7b48f0d330fa3962f1c8c3b5ec6",
+   "table_bytes": 28086110,
+   "in_t36": true,
+   "units": [
+    "D1_Rest",
+    "D1_Stim8hr",
+    "D1_Stim48hr",
+    "D2_Rest",
+    "D2_Stim8hr",
+    "D2_Stim48hr",
+    "D3_Rest",
+    "D3_Stim8hr",
+    "D3_Stim48hr",
+    "D4_Rest",
+    "D4_Stim8hr",
+    "D4_Stim48hr"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 293
+  },
+  "h1": {
+   "role": "voto",
+   "kind": "mix_cache",
+   "table_sha256": "672e36e33006668752cd45a1f2ddc46950b4fe8e0e98e06ad583323f0df563f0",
+   "table_bytes": 2674274,
+   "in_t36": true,
+   "units": [
+    "h1_train",
+    "h1_val"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 17
+  },
+  "hepg2_nadig": {
+   "role": "voto",
+   "kind": "mix_cache",
+   "table_sha256": "f0deff3c55e9df28b02888263f2e4699250b5871adc5cd0a337c0402c423881b",
+   "table_bytes": 12477,
+   "in_t36": true,
+   "units": [
+    "hepg2_nadig"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 0
+  },
+  "jurkat_nadig": {
+   "role": "voto",
+   "kind": "mix_cache",
+   "table_sha256": "6d458e589897f650e16cf1a2a6ed0dee9a86df4f3ebb0117b9783e176396ca1a",
+   "table_bytes": 12495,
+   "in_t36": true,
+   "units": [
+    "jurkat_nadig"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 0
+  },
+  "k562": {
+   "role": "voto",
+   "kind": "historic",
+   "table_sha256": "a37c78ce1f7c13a3fc145e75e64f2ccead555ec8e38a656d671903ed4fd7218f",
+   "table_bytes": 28104995,
+   "in_t36": true,
+   "units": [],
+   "note": "tabella storica BULK della ricetta t25 (pseudobulk Replogle GWPS), non derivata dalla banca cellulare; la banca k562_gwps_a/b e lo stesso esperimento a singola cellula",
+   "consumed_by_fit": true,
+   "panel_targets_voted": 272
+  },
+  "k562_essential": {
+   "role": "voto",
+   "kind": "mix_cache",
+   "table_sha256": "510dec23350f3ce66de73eef348a400d0be3af595a1e53f61a0c42fdf548b08f",
+   "table_bytes": 11290,
+   "in_t36": true,
+   "units": [
+    "k562_essential"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 0
+  },
+  "kolf_chromatin": {
+   "role": "voto",
+   "kind": "successor",
+   "table_sha256": "f93a45edbb9b8763472bcb50a3096bd8a55436e1da37f2d33fc9f0ae9e484601",
+   "table_bytes": 1340205,
+   "in_t36": true,
+   "units": [
+    "kolf_chromatin"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 8
+  },
+  "kolf_metabolic": {
+   "role": "voto",
+   "kind": "successor",
+   "table_sha256": "5dcd8a6e726cff0906cbd6c543b36260809e396f8825a94b66a9391f243a4bea",
+   "table_bytes": 665524,
+   "in_t36": true,
+   "units": [
+    "kolf_metabolic"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 4
+  },
+  "kolf_pan_genome": {
+   "role": "voto",
+   "kind": "successor",
+   "table_sha256": "cdc53d288a4ba78db7717d3cfa0357b80389a5387d5758f00fdf4cf3910fa87d",
+   "table_bytes": 45318115,
+   "in_t36": true,
+   "units": [
+    "kolf_pan_genome"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 282
+  },
+  "kolf_strong": {
+   "role": "voto",
+   "kind": "successor",
+   "table_sha256": "66b45affac139a72bdaef7297f1386acd74559b6c026d6422bc5108d5d111c8e",
+   "table_bytes": 8361839,
+   "in_t36": true,
+   "units": [
+    "kolf_strong"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 55
+  },
+  "orion_hct116": {
+   "role": "voto",
+   "kind": "successor",
+   "table_sha256": "e3376fa8532d1a6b46da90109dcc9dfbf409354606d3569051813d63a7fe7c8a",
+   "table_bytes": 42898547,
+   "in_t36": true,
+   "units": [
+    "orion_hct116"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 293
+  },
+  "orion_hek293t": {
+   "role": "voto",
+   "kind": "successor",
+   "table_sha256": "efcf76ac67e069596ad8d15cc416e1559e21417fb699f540098670af64271a44",
+   "table_bytes": 46411037,
+   "in_t36": true,
+   "units": [
+    "orion_hek293t"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 299
+  },
+  "rpe1": {
+   "role": "voto",
+   "kind": "mix_cache",
+   "table_sha256": "89c0d24054382833c43c0620ed9302b02f944ad51b4886ff5861641c5013b5da",
+   "table_bytes": 12490,
+   "in_t36": true,
+   "units": [
+    "rpe1"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 0
+  },
+  "xu2023": {
+   "role": "voto",
+   "kind": "fragment",
+   "table_sha256": "8599c88644b0ddfc6a897f822bad22a35af360fff47ec55104f492dab49b8118",
+   "table_bytes": 804453,
+   "in_t36": false,
+   "units": [
+    "xu2023"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 5
+  },
+  "tian2021_crispri": {
+   "role": "voto",
+   "kind": "fragment",
+   "table_sha256": "aed4a1193382ef6931d5ffb07b180351608ec8ffd999f73922029999ab3285f0",
+   "table_bytes": 917948,
+   "in_t36": false,
+   "units": [
+    "tian2021_crispri"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 6
+  },
+  "tian2019_neuron": {
+   "role": "voto",
+   "kind": "fragment",
+   "table_sha256": "6a550857b838f5e59f05ea5ed65245c398ec5630c5485c279d5d18107cedac38",
+   "table_bytes": 242564,
+   "in_t36": false,
+   "units": [
+    "tian2019_neuron"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 1
+  },
+  "hipsci_targeted_19": {
+   "role": "voto",
+   "kind": "fragment",
+   "table_sha256": "150cf45f1b3673c27e5547e2fdaf2984e0cd37758d3921aa9c1f98337d9115bf",
+   "table_bytes": 919640,
+   "in_t36": false,
+   "units": [
+    "hipsci_targeted_19"
+   ],
+   "consumed_by_fit": true,
+   "panel_targets_voted": 5
+  },
+  "k562_gwps_sc": {
+   "role": "stesso esperimento di k562 BULK: equivalenza, mai secondo voto",
+   "kind": "fragment",
+   "table_sha256": "8c0e2f980feab563f5a6533970b5eb0a58b05440514d170746161c980a342d3f",
+   "table_bytes": 28200612,
+   "in_t36": false,
+   "units": [
+    "k562_gwps_a",
+    "k562_gwps_b"
+   ],
+   "consumed_by_fit": false
+  },
+  "a549_ko": {
+   "role": "braccio KO, non votato",
+   "kind": "fragment",
+   "table_sha256": "b023a39757201042a435612501b81295991dfd9a05dae71c2bd15bdd432439d9",
+   "table_bytes": 3189590,
+   "in_t36": false,
+   "units": [
+    "a549_ko"
+   ],
+   "consumed_by_fit": false
+  },
+  "frangieh2021": {
+   "role": "braccio KO, non votato",
+   "kind": "fragment",
+   "table_sha256": "32b29f859537b85619b4cbdfce58f43fe12270ccf5467c140309863bf41c18c8",
+   "table_bytes": 838786,
+   "in_t36": false,
+   "units": [
+    "frangieh2021"
+   ],
+   "consumed_by_fit": false
+  },
+  "sunshine2023": {
+   "role": "braccio KO, non votato",
+   "kind": "fragment",
+   "table_sha256": "d91d811a2d53ddabf704724212d74c04f0ba04950b3388bd70854f9a0a7ff252",
+   "table_bytes": 956588,
+   "in_t36": false,
+   "units": [
+    "sunshine2023"
+   ],
+   "consumed_by_fit": false
+  },
+  "dixit2016": {
+   "role": "braccio KO, non votato",
+   "kind": "fragment",
+   "table_sha256": "bc651e8296df06d5674c1f3d3f6f1673ec9d453177cbcc62f163743b0915d828",
+   "table_bytes": 372726,
+   "in_t36": false,
+   "units": [
+    "dixit2016_d7",
+    "dixit2016_d13",
+    "dixit2016_high_moi"
+   ],
+   "consumed_by_fit": false
+  },
+  "shifrut2018": {
+   "role": "braccio KO, non votato",
+   "kind": "fragment",
+   "table_sha256": "54adc9d4a3532681c84951bae72e334557d833fffcaa6a3cad8ec4269eae2b28",
+   "table_bytes": 246237,
+   "in_t36": false,
+   "units": [
+    "shifrut2018"
+   ],
+   "consumed_by_fit": false
+  },
+  "norman2019": {
+   "role": "braccio CRISPRa, non votato",
+   "kind": "fragment",
+   "table_sha256": "f42db7cbef905f85b00e1730702ed3ed3aa76e03b1e8d22c918f9d60fd8a82ba",
+   "table_bytes": 509277,
+   "in_t36": false,
+   "units": [
+    "norman2019"
+   ],
+   "consumed_by_fit": false
+  },
+  "tian2021_crispra": {
+   "role": "braccio CRISPRa, non votato",
+   "kind": "fragment",
+   "table_sha256": "3aa3d95ceef5deb990a00d68bc66b746acc7b1d130cc15892b604d7b0a66e446",
+   "table_bytes": 639394,
+   "in_t36": false,
+   "units": [
+    "tian2021_crispra"
+   ],
+   "consumed_by_fit": false
+  },
+  "tian2019_ipsc": {
+   "role": "derivata, non ammessa al voto (regola del verso)",
+   "kind": "fragment",
+   "table_sha256": "d06809e44157e1d81ec23d800580007ebb064a612fdb350319bec2e133b3977f",
+   "table_bytes": 197047,
+   "in_t36": false,
+   "units": [
+    "tian2019_ipsc"
+   ],
+   "consumed_by_fit": false
+  }
+ },
+ "studies": {
+  "a549_liu_hillsley2026": [
+   "a549_ko"
+  ],
+  "cd4_marson2025": [
+   "D1_Rest",
+   "D1_Stim48hr",
+   "D1_Stim8hr",
+   "D2_Rest",
+   "D2_Stim48hr",
+   "D2_Stim8hr",
+   "D3_Rest",
+   "D3_Stim48hr",
+   "D3_Stim8hr",
+   "D4_Rest",
+   "D4_Stim48hr",
+   "D4_Stim8hr"
+  ],
+  "datlinger2017_jurkat_ko": [
+   "datlinger2017"
+  ],
+  "datlinger2021_jurkat_ko": [
+   "datlinger2021"
+  ],
+  "dixit2016_k562_ko": [
+   "dixit2016_d13",
+   "dixit2016_d7",
+   "dixit2016_high_moi"
+  ],
+  "frangieh2021_melanoma_ko": [
+   "frangieh2021"
+  ],
+  "h1_vcc2025_train": [
+   "h1_train"
+  ],
+  "h1_vcc2025_val": [
+   "h1_val"
+  ],
+  "hepg2_nadig": [
+   "hepg2_nadig"
+  ],
+  "hipsci_gw_fitness": [
+   "hipsci_gw_fitness"
+  ],
+  "hipsci_gw_nonfitness": [
+   "hipsci_gw_nonfitness"
+  ],
+  "hipsci_targeted_19": [
+   "hipsci_targeted_19"
+  ],
+  "jurkat_nadig": [
+   "jurkat_nadig"
+  ],
+  "kolf_chromatin_modifiers": [
+   "kolf_chromatin"
+  ],
+  "kolf_metabolic_enzymes": [
+   "kolf_metabolic"
+  ],
+  "kolf_pan_genome": [
+   "kolf_pan_genome"
+  ],
+  "kolf_strong_perturbations": [
+   "kolf_strong"
+  ],
+  "norman2019_crispra": [
+   "norman2019"
+  ],
+  "orion_hct116": [
+   "orion_hct116"
+  ],
+  "orion_hek293t": [
+   "orion_hek293t"
+  ],
+  "papalexi2021_thp1_arrayed_ko": [
+   "papalexi2021_arrayed"
+  ],
+  "replogle_k562_essential": [
+   "k562_essential"
+  ],
+  "replogle_k562_gwps": [
+   "k562_gwps_a",
+   "k562_gwps_b"
+  ],
+  "replogle_rpe1": [
+   "rpe1"
+  ],
+  "shifrut2018_tcells_ko": [
+   "shifrut2018"
+  ],
+  "sunshine2023_calu3_ko": [
+   "sunshine2023"
+  ],
+  "tian2019_ipsc": [
+   "tian2019_ipsc"
+  ],
+  "tian2019_neuron_day7": [
+   "tian2019_neuron"
+  ],
+  "tian2021_crispra": [
+   "tian2021_crispra"
+  ],
+  "tian2021_crispri": [
+   "tian2021_crispri"
+  ],
+  "xu2023_hek293_crispri": [
+   "xu2023"
+  ]
+ },
+ "units": {
+  "D1_Rest": {
+   "study": "cd4_marson2025",
+   "line_group": [
+    "CD4T"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "CD4T D1 Rest",
+     "Rest"
+    ]
+   ],
+   "donors_or_clones": [
+    "D1"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 12092,
+   "cells": {
+    "all": 1750820,
+    "other_target": 1639097,
+    "panel_target": 35180,
+    "control": 76543
+   },
+   "native_targets": 12091,
+   "panel_targets": 293,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d1_rest_r1/source_complete.json",
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d1-rest-p0of2-r1",
+     "davideferrante11/vcc-cd4-d1-rest-p1of2-r1"
+    ],
+    "bytes": null,
+    "cells": 1750820
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+     "version": 1,
+     "receipt_sha256": "bc5d1b3a464e659922b4161f28f463f91cbc478618de2250bd08856402b553e4",
+     "count_sum_sha256": "1b90886b3f9a744a48b42f48718233325540b657f94eae00504b9be9c9a8fe1b",
+     "rows_sha256": "8d07d38d37999376a60b1f3fa0eeaa0405e370bc3d10171cdac9e71a132bf16b",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1550430403,
+   "samples_bytes": 8100133840,
+   "samples_levels": {
+    "32": 414048,
+    "64": 660906,
+    "128": 1093082
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/cd4_D1_Rest"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "cd4_mix",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "D2_Rest": {
+   "study": "cd4_marson2025",
+   "line_group": [
+    "CD4T"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "CD4T D2 Rest",
+     "Rest"
+    ]
+   ],
+   "donors_or_clones": [
+    "D2"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 12063,
+   "cells": {
+    "all": 1981060,
+    "other_target": 1851416,
+    "panel_target": 45657,
+    "control": 83987
+   },
+   "native_targets": 12062,
+   "panel_targets": 293,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d2_rest_r1/source_complete.json",
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d2-rest-p0of2-r1",
+     "davideferrante11/vcc-cd4-d2-rest-p1of2-r1"
+    ],
+    "bytes": null,
+    "cells": 1981060
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+     "version": 1,
+     "receipt_sha256": "d9f7b52253a90a4eac65af4278d71efa5cce60d4dbae5b080fa1a71997bd3cd6",
+     "count_sum_sha256": "fdeaa4e203aa22a820ccbe1dee9e4970a5beed05dd541c9b6c4318005fc65b81",
+     "rows_sha256": "a61500eb12a58c61c69eea7c1b7776b8684da3c776125d4de82356db602fc45f",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1515887625,
+   "samples_bytes": 7360828858,
+   "samples_levels": {
+    "32": 377896,
+    "64": 608483,
+    "128": 981522
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/cd4_D2_Rest"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "cd4_mix",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "D3_Rest": {
+   "study": "cd4_marson2025",
+   "line_group": [
+    "CD4T"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "CD4T D3 Rest",
+     "Rest"
+    ]
+   ],
+   "donors_or_clones": [
+    "D3"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 11942,
+   "cells": {
+    "all": 1901024,
+    "other_target": 1778962,
+    "panel_target": 45239,
+    "control": 76823
+   },
+   "native_targets": 11941,
+   "panel_targets": 289,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d3_rest_r1/source_complete.json",
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d3-rest-p0of2-r1",
+     "davideferrante11/vcc-cd4-d3-rest-p1of2-r2"
+    ],
+    "bytes": null,
+    "cells": 1901024
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-bank-cd4-1-3-rest-r2",
+     "version": 1,
+     "receipt_sha256": "c4f605c128b6305e2fa5ebec43dda3ab42c2506ad839da104f7e32e6868a0724",
+     "count_sum_sha256": "c899444cf80eedbb820477e8b299533a00b174ab714b7cbcaed9222fb4a52dbd",
+     "rows_sha256": "3892d7e83c7ece492bbfe07825d1e5750bce6ee93c45e30bb738a8f2514aed93",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1524713523,
+   "samples_bytes": 7743663851,
+   "samples_levels": {
+    "32": 382839,
+    "64": 599491,
+    "128": 981919
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/cd4_D3_Rest"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "cd4_mix",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "D1_Stim8hr": {
+   "study": "cd4_marson2025",
+   "line_group": [
+    "CD4T"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "CD4T D1 Stim8hr",
+     "Stim8hr"
+    ]
+   ],
+   "donors_or_clones": [
+    "D1"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 12177,
+   "cells": {
+    "all": 1605685,
+    "other_target": 1503183,
+    "panel_target": 32870,
+    "control": 69632
+   },
+   "native_targets": 12176,
+   "panel_targets": 293,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d1_stim8hr_r1/source_complete.json",
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d1-stim8hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d1-stim8hr-p1of2-r1"
+    ],
+    "bytes": null,
+    "cells": 1605685
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+     "version": 1,
+     "receipt_sha256": "d5828eb7bfbbf08c3038987893ec3e41b5428b6e58559c46fd677d804c5eba8d",
+     "count_sum_sha256": "d106ea9683f93120912aec686e3118ad230916b10ced2f766422dda92c3b0fd0",
+     "rows_sha256": "f48a6c375f861ef57231e151e173906d4634ff679f234d92242e8aa4ddfd6abd",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1591490788,
+   "samples_bytes": 9465776839,
+   "samples_levels": {
+    "32": 428939,
+    "64": 673138,
+    "128": 1093909
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/cd4_D1_Stim8hr"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "cd4_mix",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "D2_Stim8hr": {
+   "study": "cd4_marson2025",
+   "line_group": [
+    "CD4T"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "CD4T D2 Stim8hr",
+     "Stim8hr"
+    ]
+   ],
+   "donors_or_clones": [
+    "D2"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 12229,
+   "cells": {
+    "all": 2086574,
+    "other_target": 1948443,
+    "panel_target": 49777,
+    "control": 88354
+   },
+   "native_targets": 12228,
+   "panel_targets": 293,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d2_stim8hr_r1/source_complete.json",
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d2-stim8hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d2-stim8hr-p1of2-r1"
+    ],
+    "bytes": null,
+    "cells": 2086574
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+     "version": 1,
+     "receipt_sha256": "b7105f408f1ee91db58f869cac5eed634e182be930dd5ed02dd1779c00d27458",
+     "count_sum_sha256": "1d3775091bec38cd1140ca0e6b55c157b726e684196979b18614be72a06763fb",
+     "rows_sha256": "31b5742655f4cb8529f4ce2856227af20cafb6faecf40f378578114730176e59",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1605671893,
+   "samples_bytes": 9324285258,
+   "samples_levels": {
+    "32": 405730,
+    "64": 643636,
+    "128": 1046493
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/cd4_D2_Stim8hr"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "cd4_mix",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "D3_Stim8hr": {
+   "study": "cd4_marson2025",
+   "line_group": [
+    "CD4T"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "CD4T D3 Stim8hr",
+     "Stim8hr"
+    ]
+   ],
+   "donors_or_clones": [
+    "D3"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 12033,
+   "cells": {
+    "all": 1691290,
+    "other_target": 1582749,
+    "panel_target": 40100,
+    "control": 68441
+   },
+   "native_targets": 12032,
+   "panel_targets": 292,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d3_stim8hr_r1/source_complete.json",
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d3-stim8hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d3-stim8hr-p1of2-r1"
+    ],
+    "bytes": null,
+    "cells": 1691290
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim8hr-r2",
+     "version": 1,
+     "receipt_sha256": "982e6b0a6d346a7efa47300d6ae8c7ed51a3c5251251d72e8bf4c78b5eaa2676",
+     "count_sum_sha256": "4f62467826b69713ac4ab657986c71afd11241c66c096d483ec603f7eaf64742",
+     "rows_sha256": "0cedda457776b6711da89465bd47de3e376c3c254f9ef0aa8077db03ea11214f",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1558085464,
+   "samples_bytes": 8769519562,
+   "samples_levels": {
+    "32": 384675,
+    "64": 598266,
+    "128": 960582
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/cd4_D3_Stim8hr"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "cd4_mix",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "D1_Stim48hr": {
+   "study": "cd4_marson2025",
+   "line_group": [
+    "CD4T"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "CD4T D1 Stim48hr",
+     "Stim48hr"
+    ]
+   ],
+   "donors_or_clones": [
+    "D1"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 12162,
+   "cells": {
+    "all": 1646772,
+    "other_target": 1538749,
+    "panel_target": 34489,
+    "control": 73534
+   },
+   "native_targets": 12161,
+   "panel_targets": 293,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d1_stim48hr_r1/source_complete.json",
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d1-stim48hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d1-stim48hr-p1of2-r1"
+    ],
+    "bytes": null,
+    "cells": 1646772
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+     "version": 1,
+     "receipt_sha256": "b2787198ebe1796c7d5c1ddd743fd15620bd7b5d34eccca0f8bfb1c9dbadd248",
+     "count_sum_sha256": "19c58c43e3a385c9e5216deb3960fdb60a0a2e26c299394dbb444dc530cfa1ba",
+     "rows_sha256": "53f7a46985744bce50bd84d7cd864422d78d7cf248f7ad6cedfae73c075d78ed",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1659031590,
+   "samples_bytes": 10185135761,
+   "samples_levels": {
+    "32": 445642,
+    "64": 675175,
+    "128": 1104172
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/cd4_D1_Stim48hr"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "cd4_mix",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "D2_Stim48hr": {
+   "study": "cd4_marson2025",
+   "line_group": [
+    "CD4T"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "CD4T D2 Stim48hr",
+     "Stim48hr"
+    ]
+   ],
+   "donors_or_clones": [
+    "D2"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 12071,
+   "cells": {
+    "all": 2050788,
+    "other_target": 1915199,
+    "panel_target": 47842,
+    "control": 87747
+   },
+   "native_targets": 12070,
+   "panel_targets": 290,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/cd4/esito_verifica_d2_stim48hr_r1/source_complete.json",
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d2-stim48hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d2-stim48hr-p1of2-r1"
+    ],
+    "bytes": null,
+    "cells": 2050788
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+     "version": 1,
+     "receipt_sha256": "a6b2680121792992f821d35bda95bcca47a6ccc8aed01d40c16b9384851f73ce",
+     "count_sum_sha256": "af26d4291dc02d5bd8523a6fd68d35816821b5a6fe5ad37311777518fd9e7592",
+     "rows_sha256": "b7dbe360bb825fda28da831c809c31b0a2c5dd24cb4b5201a8b0d1418dcfac07",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1578994091,
+   "samples_bytes": 7834218466,
+   "samples_levels": {
+    "32": 402756,
+    "64": 626213,
+    "128": 1010758
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/cd4_D2_Stim48hr"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "cd4_mix",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "D3_Stim48hr": {
+   "study": "cd4_marson2025",
+   "line_group": [
+    "CD4T"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "CD4T D3 Stim48hr",
+     "Stim48hr"
+    ]
+   ],
+   "donors_or_clones": [
+    "D3"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 11831,
+   "cells": {
+    "all": 1885549,
+    "other_target": 1764322,
+    "panel_target": 43893,
+    "control": 77334
+   },
+   "native_targets": 11830,
+   "panel_targets": 287,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/verifica_d3_stim48hr_r1/source_complete.json",
+    "kernel_sources": [
+     "davideferrante11/vcc-cd4-d3-stim48hr-p0of2-r1",
+     "davideferrante11/vcc-cd4-d3-stim48hr-p1of2-r1"
+    ],
+    "bytes": null,
+    "cells": 1885549
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-bank-cd4-1-3-stim48hr-r2",
+     "version": 1,
+     "receipt_sha256": "8e27b966b407b0c20ba0cfd1119ab443d54e27a66f09dc3785573c37b92ec167",
+     "count_sum_sha256": "81a1313267aee512374c2b5d27f8b48ca02df33a0826d0163c87203c04c8fc35",
+     "rows_sha256": "6d292dfc1038f24a635239428c5b6622409cde988a8ab33b8c2850a6425c9038",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1543762290,
+   "samples_bytes": 8286512377,
+   "samples_levels": {
+    "32": 377395,
+    "64": 589787,
+    "128": 961662
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/cd4_D3_Stim48hr"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "cd4_mix",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "D4_Rest": {
+   "study": "cd4_marson2025",
+   "line_group": [
+    "CD4T"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "CD4T D4 Rest",
+     "Rest"
+    ]
+   ],
+   "donors_or_clones": [
+    "D4"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 12408,
+   "cells": {
+    "all": 1747709,
+    "other_target": 1630938,
+    "panel_target": 40135,
+    "control": 76636
+   },
+   "native_targets": 12407,
+   "panel_targets": 294,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/verifica_d4_rest_r1/source_complete.json",
+    "kernel_sources": [
+     "davidmaisterx/vcc-cd4-d4-rest-p0of2-r1",
+     "davidmaisterx/vcc-cd4-d4-rest-p1of2-r1"
+    ],
+    "bytes": null,
+    "cells": 1747709
+   },
+   "bank": [
+    {
+     "kernel": "davidmaisterx/vcc-bank-cd4-4-4-rest-r2",
+     "version": 1,
+     "receipt_sha256": "3c8b212406188a68f344eba4bf88896d35d6ba4ea93081df0451b39eb130ed98",
+     "count_sum_sha256": "554d00892b95ed9d14447aaeca427fc0481071f11f377e4491224434139981cc",
+     "rows_sha256": "9cd9ad16299bd2229235a464024647f4cc8ca07f8e197acc350bcd1abe1e4d66",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1628505260,
+   "samples_bytes": 8590030800,
+   "samples_levels": {
+    "32": 469985,
+    "64": 718096,
+    "128": 1218057
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/cd4_D4_Rest"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "cd4_mix",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "D4_Stim8hr": {
+   "study": "cd4_marson2025",
+   "line_group": [
+    "CD4T"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "CD4T D4 Stim8hr",
+     "Stim8hr"
+    ]
+   ],
+   "donors_or_clones": [
+    "D4"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 12457,
+   "cells": {
+    "all": 1755121,
+    "other_target": 1638290,
+    "panel_target": 39801,
+    "control": 77030
+   },
+   "native_targets": 12456,
+   "panel_targets": 297,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/verifica_d4_stim8hr_r1/source_complete.json",
+    "kernel_sources": [
+     "davidmaisterx/vcc-cd4-d4-stim8hr-p0of2-r1",
+     "davidmaisterx/vcc-cd4-d4-stim8hr-p1of2-r1"
+    ],
+    "bytes": null,
+    "cells": 1755121
+   },
+   "bank": [
+    {
+     "kernel": "davidmaisterx/vcc-bank-cd4-4-4-stim8hr-r2",
+     "version": 1,
+     "receipt_sha256": "bcf456e3e2200c5675c3d41014b1a1c32e2ca5935d929fdf63163f0e693942d6",
+     "count_sum_sha256": "e7dcb2d4ab3489471d8d00736d4f5c8470860ea4993133f54510f3f4132fe609",
+     "rows_sha256": "69694959750b0be40b2c94def5890af9023893abcc3058b4e0097d8b714c2206",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1665949107,
+   "samples_bytes": 9804366642,
+   "samples_levels": {
+    "32": 483164,
+    "64": 724820,
+    "128": 1231882
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/cd4_D4_Stim8hr"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "cd4_mix",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "D4_Stim48hr": {
+   "study": "cd4_marson2025",
+   "line_group": [
+    "CD4T"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "CD4T D4 Stim48hr",
+     "Stim48hr"
+    ]
+   ],
+   "donors_or_clones": [
+    "D4"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 12415,
+   "cells": {
+    "all": 1878125,
+    "other_target": 1752602,
+    "panel_target": 42049,
+    "control": 83474
+   },
+   "native_targets": 12414,
+   "panel_targets": 294,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/generatore_e_banchi/ripresa_banco_v2_2026-10-04/verifica_d4_stim48hr_r1/source_complete.json",
+    "kernel_sources": [
+     "davidmaisterx/vcc-cd4-d4-stim48hr-p0of2-r1",
+     "davidmaisterx/vcc-cd4-d4-stim48hr-p1of2-r1"
+    ],
+    "bytes": null,
+    "cells": 1878125
+   },
+   "bank": [
+    {
+     "kernel": "davidmaisterx/vcc-bank-cd4-4-4-stim48hr-r2",
+     "version": 1,
+     "receipt_sha256": "414526a33fd732325d3746a295247c1529bc02c1294fb8f2213327068aaa68c3",
+     "count_sum_sha256": "415d4c3449c251068562d362119d55a308e7084fba52ee0f6614679e223f0ac8",
+     "rows_sha256": "db26a86482c43e1131b017e8077f943cc4fca7fe5adbcbb5a9d7985014cd2de3",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1738247028,
+   "samples_bytes": 11365338991,
+   "samples_levels": {
+    "32": 487904,
+    "64": 721882,
+    "128": 1243353
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/cd4_D4_Stim48hr"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "cd4_mix",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "kolf_pan_genome": {
+   "study": "kolf_pan_genome",
+   "line_group": [
+    "iPSC"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "MISSING"
+   ],
+   "contexts": [
+    [
+     "KOLF2.1J iPSC",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 11688,
+   "cells": {
+    "all": 2659209,
+    "other_target": 2444855,
+    "panel_target": 67607,
+    "control": 146747
+   },
+   "native_targets": 11687,
+   "panel_targets": 282,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/kolf/esito_verifica_r1/source_complete.json",
+    "kernel_sources": [
+     "davideferrante11/vcc-kolf-pan-p0of2-r2",
+     "davideferrante11/vcc-kolf-pan-p1of2-r1"
+    ],
+    "bytes": null,
+    "cells": 2659209
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-bank-kolf-pan-r1",
+     "version": 1,
+     "receipt_sha256": "c0025f94a7562f24ee20e51287e99f311f922e3d19e9c6dc7d950cbb69e111a9",
+     "count_sum_sha256": "2f8ee51dfe9ca5c7e39cec74d9a447056444ce1cb25f468626b1f9c3c470c634",
+     "rows_sha256": "a2d4626888f09ef3f40b3e07529507ad1bade7bb2b849e318727c724423ce6c5",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1847691738,
+   "samples_bytes": 7341554007,
+   "samples_levels": {
+    "32": 889815,
+    "64": 910438,
+    "128": 1425550
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/kolf_KOLF_Pan_Genome_QC_Filtered"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "kolf_pan_genome",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "orion_hct116": {
+   "study": "orion_hct116",
+   "line_group": [
+    "HCT116"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "MISSING"
+   ],
+   "contexts": [
+    [
+     "HCT116",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 18294,
+   "cells": {
+    "all": 3409169,
+    "other_target": 3193850,
+    "panel_target": 49542,
+    "control": 165777
+   },
+   "native_targets": 18293,
+   "panel_targets": 300,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/orion/esito_verifica_hct116_r1/line_complete.json",
+    "kernel_sources": [
+     "davideferrante11/vcc-orion-hct116-p0of4-r3",
+     "davideferrante11/vcc-orion-hct116-p1of4-r3",
+     "davideferrante11/vcc-orion-hct116-p2of4-r3",
+     "davideferrante11/vcc-orion-hct116-p3of4-r3"
+    ],
+    "bytes": null,
+    "cells": 3409169
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-bank-orion-hct116-r1",
+     "version": 1,
+     "receipt_sha256": "007cd4090a8c8356007baa2f3bf0f1b9b00c2a3576e0abe88838141a1bb4c872",
+     "count_sum_sha256": "8b91e0f041d8535347d1fc5d1f7847a8b862a513a2028c96ecd9635130322f8d",
+     "rows_sha256": "54c57adbab26a482e69e5ba8f9efa1d95d882e1f6dedb7b0b3a4a6f71305f23b",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 2849999913,
+   "samples_bytes": 18323282186,
+   "samples_levels": {
+    "32": 1372692,
+    "64": 1411659,
+    "128": 1928264
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [],
+   "historical_aliases": [],
+   "destination": {
+    "source": "orion_hct116",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "orion_hek293t": {
+   "study": "orion_hek293t",
+   "line_group": [
+    "HEK293T"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "MISSING"
+   ],
+   "contexts": [
+    [
+     "HEK293T",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 18312,
+   "cells": {
+    "all": 4534299,
+    "other_target": 4249172,
+    "panel_target": 66289,
+    "control": 218838
+   },
+   "native_targets": 18311,
+   "panel_targets": 300,
+   "raw": {
+    "dataset": null,
+    "version": null,
+    "receipt": "reports/sorgenti/ingestione_completa_2026-10-03/orion/esito_verifica_hek293t_r1/line_complete.json",
+    "kernel_sources": [
+     "davideferrante11/vcc-orion-hek293t-p0of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p1of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p2of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p3of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p4of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p5of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p6of8-r3",
+     "davideferrante11/vcc-orion-hek293t-p7of8-r3"
+    ],
+    "bytes": null,
+    "cells": 4534299
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-bank-orion-hek293t-r1",
+     "version": 1,
+     "receipt_sha256": "97c64d7e2d0fddac64bcadab95e9fb62519eef936e6d4bb292341f453e19c3b9",
+     "count_sum_sha256": "41fc0a80d966b28fbc8c1e37741c72a4a28bb5b5b4d1a3e3a4e863a4f9129649",
+     "rows_sha256": "e3693edab085d33120ae656abee3a2488e846acd812cc81720e2016199430653",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 3138963082,
+   "samples_bytes": 27256435767,
+   "samples_levels": {
+    "32": 2111936,
+    "64": 2130900,
+    "128": 2329024
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [],
+   "historical_aliases": [],
+   "destination": {
+    "source": "orion_hek293t",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "hepg2_nadig": {
+   "study": "hepg2_nadig",
+   "line_group": [
+    "HepG2"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x 3'"
+   ],
+   "contexts": [
+    [
+     "HepG2",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 2394,
+   "cells": {
+    "all": 145473,
+    "other_target": 140497,
+    "control": 4976
+   },
+   "native_targets": 2393,
+   "panel_targets": 0,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-hepg2-nadig",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-hepg2-nadig/files.json",
+    "kernel_sources": null,
+    "bytes": 1332075491,
+    "cells": 145473
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-derivatives-rlab-hepg2-nadig",
+     "version": 1,
+     "receipt_sha256": "e338caa7fcdcc01c34da6219afd685433e1401f88561df3eb3fa7cffb4f8db51",
+     "count_sum_sha256": "f61200c0ba58b705f7a5006974e3fe36ae8ba5b91761596fed036b91a3af6e1b",
+     "rows_sha256": "b27f8d6c80d6820e8c4c588a401de839997aa1b4ec21a92ae34a263966b40aac",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 278189475,
+   "samples_bytes": 1044074889,
+   "samples_levels": {
+    "32": 85401,
+    "64": 110862,
+    "128": 130519
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "ingested/hepg2_nadig"
+   ],
+   "historical_aliases": [
+    "remote/scp_NadigOConner2024_hepg2"
+   ],
+   "destination": {
+    "source": "hepg2_nadig",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "jurkat_nadig": {
+   "study": "jurkat_nadig",
+   "line_group": [
+    "Jurkat"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x 3'"
+   ],
+   "contexts": [
+    [
+     "Jurkat",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 2394,
+   "cells": {
+    "all": 262956,
+    "other_target": 250943,
+    "control": 12013
+   },
+   "native_targets": 2393,
+   "panel_targets": 0,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-jurkat-nadig",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-jurkat-nadig/files.json",
+    "kernel_sources": null,
+    "bytes": 2040433751,
+    "cells": 262956
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-derivatives-rlab-jurkat-nadig",
+     "version": 1,
+     "receipt_sha256": "bd25b2a929673354bb1236923e284053db631af1b606d9eaee425d494c5850d1",
+     "count_sum_sha256": "0a6b943fdb4ed4355bd185d12e111e8effe71955f3996b7178e9664aea38d2c2",
+     "rows_sha256": "a9fc63d642bb48e30d679e0beb2a945fa66c6ca203ab908d82a0f99579566cb9",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 267516923,
+   "samples_bytes": 1297674038,
+   "samples_levels": {
+    "32": 107147,
+    "64": 140608,
+    "128": 201023
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "ingested/jurkat_nadig"
+   ],
+   "historical_aliases": [
+    "remote/scp_NadigOConner2024_jurkat"
+   ],
+   "destination": {
+    "source": "jurkat_nadig",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "h1_train": {
+   "study": "h1_vcc2025_train",
+   "line_group": [
+    "H1"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "H1",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 151,
+   "cells": {
+    "all": 221273,
+    "other_target": 167967,
+    "panel_target": 15130,
+    "control": 38176
+   },
+   "native_targets": 150,
+   "panel_targets": 13,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-h1-vcc2025-trainval",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-h1-vcc2025-trainval/files.json",
+    "kernel_sources": null,
+    "bytes": 4409720618,
+    "cells": 221273
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-derivatives-rlab-h1-vcc2025-trainval",
+     "version": 1,
+     "receipt_sha256": "fec15999272f0cad6eb46d3ea02dcf84d7e00fe3c0561a4f6247dde52d3180ca",
+     "count_sum_sha256": "910e8b85444df903c17c8bd743ed300788eda74ed3ca52c7831d2a46aa9eb982",
+     "rows_sha256": "9df94c65f77b19a65a515d1ad7b42ab37225b8fb2eb71c113441be128c5abc5c",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 31263745,
+   "samples_bytes": 382064153,
+   "samples_levels": {
+    "32": 8993,
+    "64": 11295,
+    "128": 20323
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/h1_train"
+   ],
+   "historical_aliases": [
+    "ingested/h1_vcc2025_trainval"
+   ],
+   "destination": {
+    "source": "h1",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "h1_val": {
+   "study": "h1_vcc2025_val",
+   "line_group": [
+    "H1"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x Flex"
+   ],
+   "contexts": [
+    [
+     "H1",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 51,
+   "cells": {
+    "all": 98927,
+    "panel_target": 5156,
+    "other_target": 55595,
+    "control": 38176
+   },
+   "native_targets": 50,
+   "panel_targets": 4,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-h1-vcc2025-trainval",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-h1-vcc2025-trainval/files.json",
+    "kernel_sources": null,
+    "bytes": 1973954226,
+    "cells": 98927
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-derivatives-rlab-h1-vcc2025-trainval",
+     "version": 1,
+     "receipt_sha256": "16090eb80254c558f9f260ef7d5cc8bbd0dc5e1cee8eacb66e7a24caa1b70990",
+     "count_sum_sha256": "e8e4ebc951b0fd1415752ded610ad098f341fae7703497112798f2c2b785644c",
+     "rows_sha256": "a39c7472f74ee4400e4553f0c8df8bc2f99fa09089f3a7c7e076d3704a055e9b",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 10830293,
+   "samples_bytes": 149231350,
+   "samples_levels": {
+    "32": 4079,
+    "64": 4816,
+    "128": 7888
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/h1_val"
+   ],
+   "historical_aliases": [
+    "ingested/h1_vcc2025_trainval"
+   ],
+   "destination": {
+    "source": "h1",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "rpe1": {
+   "study": "replogle_rpe1",
+   "line_group": [
+    "RPE1"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x 3' v3"
+   ],
+   "contexts": [
+    [
+     "RPE1",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 2394,
+   "cells": {
+    "all": 247914,
+    "other_target": 236429,
+    "control": 11485
+   },
+   "native_targets": 2393,
+   "panel_targets": 0,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-rpe1-r2",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-rpe1-r2/files.json",
+    "kernel_sources": null,
+    "bytes": 1947262556,
+    "cells": 247914
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-derivatives-rlab-rpe1-r2",
+     "version": 1,
+     "receipt_sha256": "32665ea747cd279d6f665141373c85eff396037b5312234693d4cc1ab918b184",
+     "count_sum_sha256": "ec1eb509d0081f3a51672bc42ca75de201c460c7f9ae6f04925968a9f1c12aca",
+     "rows_sha256": "8dbe19b7b1fac9886dfde98ca6a30e54a685a381dc80d079548b859b9a49cff4",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 264611997,
+   "samples_bytes": 1198432758,
+   "samples_levels": {
+    "32": 103346,
+    "64": 132956,
+    "128": 184480
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "ingested/replogle_rpe1"
+   ],
+   "historical_aliases": [
+    "remote/scp_ReplogleWeissman2022_rpe1"
+   ],
+   "destination": {
+    "source": "rpe1",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "k562_essential": {
+   "study": "replogle_k562_essential",
+   "line_group": [
+    "K562"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x 3' v3"
+   ],
+   "contexts": [
+    [
+     "K562",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 2058,
+   "cells": {
+    "all": 310385,
+    "other_target": 299694,
+    "control": 10691
+   },
+   "native_targets": 2057,
+   "panel_targets": 0,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-k562-essential-r2",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-k562-essential-r2/files.json",
+    "kernel_sources": null,
+    "bytes": 2471546599,
+    "cells": 310385
+   },
+   "bank": [
+    {
+     "kernel": "davidmaisterx/vcc-derivatives-rlab-k562-essential-r2",
+     "version": 1,
+     "receipt_sha256": "baf8700416c4f8160e96a2116bec626af121caddf054e5a745055ed77f3c5c44",
+     "count_sum_sha256": "9cc49a7c2851216ba9fb413452c8703a98d7f0888de09313c395f08ce7ea30e1",
+     "rows_sha256": "57b27463f7575bc56ebaf65920f9350764ba5a1cf474e79a2c625a6a5775e17e",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 229451754,
+   "samples_bytes": 1371235282,
+   "samples_levels": {
+    "32": 93399,
+    "64": 129479,
+    "128": 212593
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "ingested/replogle_k562_essential"
+   ],
+   "historical_aliases": [
+    "remote/scp_ReplogleWeissman2022_K562_essential"
+   ],
+   "destination": {
+    "source": "k562_essential",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "datlinger2017": {
+   "study": "datlinger2017_jurkat_ko",
+   "line_group": [
+    "Jurkat"
+   ],
+   "modality": [
+    "KO"
+   ],
+   "chemistry": [
+    "CROP-seq"
+   ],
+   "contexts": [
+    [
+     "stimulated",
+     "MISSING"
+    ],
+    [
+     "unstimulated",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 191,
+   "cells": {
+    "all": 5905,
+    "other_target": 4585,
+    "control": 1320
+   },
+   "native_targets": 96,
+   "panel_targets": 0,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-scp-tcells",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-scp-tcells/files.json",
+    "kernel_sources": null,
+    "bytes": 40888389,
+    "cells": 5905
+   },
+   "bank": [
+    {
+     "kernel": "davideferante/vcc-derivatives-scp-tcells-r1",
+     "version": 1,
+     "receipt_sha256": "27850db7f56b044a84263a0230b923d1d61209445585aef01dcb8744ecf0c30e",
+     "count_sum_sha256": "73c50d77091058d04f6f4f47ae06071635d4c764b5daea480bc53579ada0125a",
+     "rows_sha256": "e1db8499089657bee5c9c0b5d3f128fccf6a02814aecfaf5d8a39e10da32b300",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 17720586,
+   "samples_bytes": 22704234,
+   "samples_levels": {
+    "32": 4146,
+    "64": 4712,
+    "128": 4841
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_DatlingerBock2017"
+   ],
+   "historical_aliases": [
+    "ingested/scp_tcells_shifrut_datlinger"
+   ],
+   "destination": {
+    "source": null,
+    "role": "in banca, non derivata: native labels are guide names with library prefix and guide number; no exact panel symbol, a declared guide-to-gene map is required",
+    "consumed_by_fit": false,
+    "evidence": [
+     {
+      "context": "stimulated",
+      "control_cells": 705,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 0
+     },
+     {
+      "context": "unstimulated",
+      "control_cells": 615,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 0
+     }
+    ]
+   }
+  },
+  "datlinger2021": {
+   "study": "datlinger2021_jurkat_ko",
+   "line_group": [
+    "Jurkat"
+   ],
+   "modality": [
+    "KO"
+   ],
+   "chemistry": [
+    "scifi-RNA-seq"
+   ],
+   "contexts": [
+    [
+     "stimulated",
+     "MISSING"
+    ],
+    [
+     "unstimulated",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 82,
+   "cells": {
+    "all": 39194,
+    "other_target": 34697,
+    "control": 4497
+   },
+   "native_targets": 40,
+   "panel_targets": 0,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-scp-tcells",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-scp-tcells/files.json",
+    "kernel_sources": null,
+    "bytes": 39436235,
+    "cells": 39194
+   },
+   "bank": [
+    {
+     "kernel": "davideferante/vcc-derivatives-scp-tcells-r1",
+     "version": 1,
+     "receipt_sha256": "8459e5429f8eb8fdaae425261e8dc734434930207e75d3dc058e0f8ffa0842ef",
+     "count_sum_sha256": "80a7ad81818d13ee0a6fb367cd171defd7498defcb192bcda2dbf590bbd234c0",
+     "rows_sha256": "004bd2376f1e811b47b6f25eb99aa27a334ba0601767eacdf4048de7d74ea3b2",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 9967290,
+   "samples_bytes": 6429716,
+   "samples_levels": {
+    "32": 2624,
+    "64": 5248,
+    "128": 10422
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_DatlingerBock2021"
+   ],
+   "historical_aliases": [
+    "ingested/scp_tcells_shifrut_datlinger"
+   ],
+   "destination": {
+    "source": null,
+    "role": "in banca, non derivata: native labels are guide names with guide number; no exact panel symbol, a declared guide-to-gene map is required",
+    "consumed_by_fit": false,
+    "evidence": [
+     {
+      "context": "stimulated",
+      "control_cells": 2990,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 0
+     },
+     {
+      "context": "unstimulated",
+      "control_cells": 1507,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 0
+     }
+    ]
+   }
+  },
+  "shifrut2018": {
+   "study": "shifrut2018_tcells_ko",
+   "line_group": [
+    "CD4T"
+   ],
+   "modality": [
+    "KO"
+   ],
+   "chemistry": [
+    "10x"
+   ],
+   "contexts": [
+    [
+     "D1_nostim",
+     "MISSING"
+    ],
+    [
+     "D1_stim",
+     "MISSING"
+    ],
+    [
+     "D2_nostim",
+     "MISSING"
+    ],
+    [
+     "D2_stim",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [
+    "D1",
+    "D2"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 88,
+   "cells": {
+    "all": 52236,
+    "other_target": 20981,
+    "control": 3541,
+    "panel_target": 572,
+    "unassigned": 27142
+   },
+   "native_targets": 20,
+   "panel_targets": 1,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-scp-tcells",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-scp-tcells/files.json",
+    "kernel_sources": null,
+    "bytes": 262990318,
+    "cells": 52236
+   },
+   "bank": [
+    {
+     "kernel": "davideferante/vcc-derivatives-scp-tcells-r1",
+     "version": 1,
+     "receipt_sha256": "cfceb473aa85034a3a08a2b9eb7b18bf30da775c12ab52a173094444cea05b09",
+     "count_sum_sha256": "b60e829569af3f96c288ac19573eb616207994bed2513f40197c5bcf24d7f1bc",
+     "rows_sha256": "1b6a7d31645624580747df626f44769c5a337c401be4471e4cc57a578b2e7c25",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 12419581,
+   "samples_bytes": 39839340,
+   "samples_levels": {
+    "32": 2816,
+    "64": 5632,
+    "128": 11229
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_ShifrutMarson2018"
+   ],
+   "historical_aliases": [
+    "ingested/scp_tcells_shifrut_datlinger"
+   ],
+   "destination": {
+    "source": "shifrut2018",
+    "role": "braccio KO, non votato",
+    "consumed_by_fit": false
+   }
+  },
+  "dixit2016_d13": {
+   "study": "dixit2016_k562_ko",
+   "line_group": [
+    "K562"
+   ],
+   "modality": [
+    "KO"
+   ],
+   "chemistry": [
+    "10x (Perturb-seq)"
+   ],
+   "contexts": [
+    [
+     "K562 day 13",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 12,
+   "cells": {
+    "all": 19268,
+    "other_target": 10011,
+    "panel_target": 2347,
+    "control": 3491,
+    "unassigned": 3419
+   },
+   "native_targets": 10,
+   "panel_targets": 2,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-scp-k562-hek",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-scp-k562-hek/files.json",
+    "kernel_sources": null,
+    "bytes": 127745182,
+    "cells": 19268
+   },
+   "bank": [
+    {
+     "kernel": "davideferante/vcc-derivatives-scp-k562-hek-r1",
+     "version": 1,
+     "receipt_sha256": "8cb7db7fb9baa8eb38e588f306bb40435fccba143bc697fb86c04d4fdc1258c1",
+     "count_sum_sha256": "d43e8b3892e6911c4e6295a5b1e311c95017ca205b5df7adf98e6b7b747bed4f",
+     "rows_sha256": "12e73d5fa76843795ee519b47239d5c17f52d297bf5f930e211463ccada171c0",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 2054704,
+   "samples_bytes": 7412377,
+   "samples_levels": {
+    "32": 384,
+    "64": 768,
+    "128": 1536
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_DixitRegev2016_K562_TFs_13_days"
+   ],
+   "historical_aliases": [
+    "ingested/scp_k562_hek_dixit_xu"
+   ],
+   "destination": {
+    "source": "dixit2016",
+    "role": "braccio KO, non votato",
+    "consumed_by_fit": false
+   }
+  },
+  "dixit2016_d7": {
+   "study": "dixit2016_k562_ko",
+   "line_group": [
+    "K562"
+   ],
+   "modality": [
+    "KO"
+   ],
+   "chemistry": [
+    "10x (Perturb-seq)"
+   ],
+   "contexts": [
+    [
+     "K562 day 7",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 12,
+   "cells": {
+    "all": 33013,
+    "other_target": 18224,
+    "panel_target": 4429,
+    "control": 5381,
+    "unassigned": 4979
+   },
+   "native_targets": 10,
+   "panel_targets": 2,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-scp-k562-hek",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-scp-k562-hek/files.json",
+    "kernel_sources": null,
+    "bytes": 275774122,
+    "cells": 33013
+   },
+   "bank": [
+    {
+     "kernel": "davideferante/vcc-derivatives-scp-k562-hek-r1",
+     "version": 1,
+     "receipt_sha256": "dfd98b8297ec9134c4ad746103c426645d72d65d9e13e44321b5affd1d3d665a",
+     "count_sum_sha256": "6e764bdc390e2553de02c47f0c655bb4ffc4da1e35a5be54fdb3f06e0c8ee915",
+     "rows_sha256": "523b70cfb5004c8c3e9ed5e54bbf5e05b0945bb11c6c8dfd65c147f6758dc73f",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 2199656,
+   "samples_bytes": 9611078,
+   "samples_levels": {
+    "32": 384,
+    "64": 768,
+    "128": 1536
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_DixitRegev2016_K562_TFs_7_days"
+   ],
+   "historical_aliases": [
+    "ingested/scp_k562_hek_dixit_xu"
+   ],
+   "destination": {
+    "source": "dixit2016",
+    "role": "braccio KO, non votato",
+    "consumed_by_fit": false
+   }
+  },
+  "dixit2016_high_moi": {
+   "study": "dixit2016_k562_ko",
+   "line_group": [
+    "K562"
+   ],
+   "modality": [
+    "KO"
+   ],
+   "chemistry": [
+    "10x (Perturb-seq)"
+   ],
+   "contexts": [
+    [
+     "K562 high MOI",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 12,
+   "cells": {
+    "all": 51898,
+    "other_target": 32854,
+    "panel_target": 7107,
+    "control": 10492,
+    "unassigned": 1445
+   },
+   "native_targets": 10,
+   "panel_targets": 2,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-scp-k562-hek",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-scp-k562-hek/files.json",
+    "kernel_sources": null,
+    "bytes": 359095551,
+    "cells": 51898
+   },
+   "bank": [
+    {
+     "kernel": "davideferante/vcc-derivatives-scp-k562-hek-r1",
+     "version": 1,
+     "receipt_sha256": "ac59bb349745bf53663529766d2880d2a5403d208bf9ba1ec68c6682c64cece2",
+     "count_sum_sha256": "69cee621e7bd0d8fb81a1bf7b4a760ef872945f13401cb404793df6b1c7270c4",
+     "rows_sha256": "591145b9bd1c8aac7f6d0926bfa4c5315b1418beab0ff2aaeb5bf45864d2232b",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 2297772,
+   "samples_bytes": 11401492,
+   "samples_levels": {
+    "32": 1792,
+    "64": 1900,
+    "128": 2236
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_DixitRegev2016_K562_TFs_High_MOI"
+   ],
+   "historical_aliases": [
+    "ingested/scp_k562_hek_dixit_xu"
+   ],
+   "destination": {
+    "source": "dixit2016",
+    "role": "braccio KO, non votato",
+    "consumed_by_fit": false
+   }
+  },
+  "xu2023": {
+   "study": "xu2023_hek293_crispri",
+   "line_group": [
+    "HEK293"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x 3'"
+   ],
+   "contexts": [
+    [
+     "HEK293",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 204,
+   "cells": {
+    "all": 98315,
+    "panel_target": 4293,
+    "other_target": 91264,
+    "control": 2758
+   },
+   "native_targets": 203,
+   "panel_targets": 5,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-scp-k562-hek",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-scp-k562-hek/files.json",
+    "kernel_sources": null,
+    "bytes": 342622920,
+    "cells": 98315
+   },
+   "bank": [
+    {
+     "kernel": "davideferante/vcc-derivatives-scp-k562-hek-r1",
+     "version": 1,
+     "receipt_sha256": "5f6c6b2058c1a1495bc734c2443bb448d9229a026653b3dc52af75243c960650",
+     "count_sum_sha256": "77b97d962c5c7b709efa22ebc5f206352876deda73d7a91534f49beda1679bbc",
+     "rows_sha256": "42a282da45669d217e9478ecfad2f32646a4a979d86b8793ed8bbcdba7d0902d",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 29825638,
+   "samples_bytes": 54651437,
+   "samples_levels": {
+    "32": 6355,
+    "64": 12195,
+    "128": 23138
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_XuCao2023"
+   ],
+   "historical_aliases": [
+    "ingested/scp_k562_hek_dixit_xu"
+   ],
+   "destination": {
+    "source": "xu2023",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "kolf_chromatin": {
+   "study": "kolf_chromatin_modifiers",
+   "line_group": [
+    "iPSC"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "MISSING"
+   ],
+   "contexts": [
+    [
+     "KOLF2.1J iPSC",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 108,
+   "cells": {
+    "all": 44039,
+    "other_target": 34301,
+    "panel_target": 2577,
+    "control": 7161
+   },
+   "native_targets": 107,
+   "panel_targets": 8,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-kolf-small",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_followup_r1/rlab-kolf-small/files.json",
+    "kernel_sources": null,
+    "bytes": 614271864,
+    "cells": 44039
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-derivatives-kolf-small-r1",
+     "version": 1,
+     "receipt_sha256": "7e281a1e220c202e4e6afda53dff70c723be809101879096920029242cf772f5",
+     "count_sum_sha256": "32db974b46d12aa7dc897ef0c36ce1f4ce3988d4d813988fb1d6b95a9c2c6065",
+     "rows_sha256": "c8aa4c4a328a667fc251703d61be400e0c9d2b57fba43c3186da7d703bd2d2a8",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 20673773,
+   "samples_bytes": 166410983,
+   "samples_levels": {
+    "32": 3860,
+    "64": 7251,
+    "128": 13704
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/kolf_KOLF_Chromatin_Modifiers_QC_Filtered"
+   ],
+   "historical_aliases": [
+    "ingested/kolf_small"
+   ],
+   "destination": {
+    "source": "kolf_chromatin",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "kolf_metabolic": {
+   "study": "kolf_metabolic_enzymes",
+   "line_group": [
+    "iPSC"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "MISSING"
+   ],
+   "contexts": [
+    [
+     "KOLF2.1J iPSC",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 98,
+   "cells": {
+    "all": 117768,
+    "other_target": 94756,
+    "panel_target": 4361,
+    "control": 18651
+   },
+   "native_targets": 97,
+   "panel_targets": 4,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-kolf-small",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_followup_r1/rlab-kolf-small/files.json",
+    "kernel_sources": null,
+    "bytes": 978042376,
+    "cells": 117768
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-derivatives-kolf-small-r1",
+     "version": 1,
+     "receipt_sha256": "6cb3a690cbabf2a1ed41506cf609273baeae90fee99889724999c6ce7e1a7a6f",
+     "count_sum_sha256": "25643e969710768c364e6cfe57900d14b028906f3035816c61019bd88dca60ab",
+     "rows_sha256": "b5fc0816cee40e7677bd841a820a9799fbb1fcb4da582dca3c500f497d33e048",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 19313730,
+   "samples_bytes": 85280066,
+   "samples_levels": {
+    "32": 3540,
+    "64": 6644,
+    "128": 12850
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/kolf_KOLF_Metabolic_Enzymes_QC_Filtered"
+   ],
+   "historical_aliases": [
+    "ingested/kolf_small"
+   ],
+   "destination": {
+    "source": "kolf_metabolic",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "kolf_strong": {
+   "study": "kolf_strong_perturbations",
+   "line_group": [
+    "iPSC"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "MISSING"
+   ],
+   "contexts": [
+    [
+     "KOLF2.1J iPSC",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 1656,
+   "cells": {
+    "all": 232438,
+    "other_target": 189581,
+    "panel_target": 7433,
+    "control": 35424
+   },
+   "native_targets": 1655,
+   "panel_targets": 55,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-kolf-strong",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_followup_r1/rlab-kolf-strong/files.json",
+    "kernel_sources": null,
+    "bytes": 1572742316,
+    "cells": 232438
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-derivatives-kolf-strong-r1",
+     "version": 1,
+     "receipt_sha256": "89b36dfa118e46d493443655a7655e575918792f838582bd76c0a282e27ce626",
+     "count_sum_sha256": "7a767e843042a200aaa4e298b920d8482f926b12a56230b826ffee901549e702",
+     "rows_sha256": "929b428a0340b85df592a098e958a523caa83192b1e27a11bc00e4a7cdf4091a",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 243998715,
+   "samples_bytes": 876694062,
+   "samples_levels": {
+    "32": 82750,
+    "64": 117677,
+    "128": 173366
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/kolf_KOLF_Strong_Perturbations"
+   ],
+   "historical_aliases": [
+    "ingested/kolf_strong"
+   ],
+   "destination": {
+    "source": "kolf_strong",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "norman2019": {
+   "study": "norman2019_crispra",
+   "line_group": [
+    "K562"
+   ],
+   "modality": [
+    "CRISPRa"
+   ],
+   "chemistry": [
+    "10x 3'"
+   ],
+   "contexts": [
+    [
+     "K562",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 237,
+   "cells": {
+    "all": 111445,
+    "other_target": 98618,
+    "panel_target": 972,
+    "control": 11855
+   },
+   "native_targets": 236,
+   "panel_targets": 3,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-tian-norman",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-tian-norman/files.json",
+    "kernel_sources": null,
+    "bytes": 836714478,
+    "cells": 111445
+   },
+   "bank": [
+    {
+     "kernel": "davideferante/vcc-derivatives-tian-norman-r1",
+     "version": 1,
+     "receipt_sha256": "f8fe8f34edc0ac850dd4bc9525e5e180803bc60e78e11eb9796f10cda12b4519",
+     "count_sum_sha256": "b2703d05c4fc3c75bd8402878e1e8cb306bc26c2d9d2b831ca19b3b3aeaf8808",
+     "rows_sha256": "bf8048f773920707175d5c5b8e68e8b1b4567979d872c637984e72e392ab9e72",
+     "mountable_copy": "davideferante/vcc-norman-bank-samples-r1"
+    }
+   ],
+   "bank_bytes": 35333191,
+   "samples_bytes": 160239807,
+   "samples_levels": {
+    "32": 7584,
+    "64": 15148,
+    "128": 29587
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_NormanWeissman2019_filtered"
+   ],
+   "historical_aliases": [
+    "ingested/tian_norman"
+   ],
+   "destination": {
+    "source": "norman2019",
+    "role": "braccio CRISPRa, non votato",
+    "consumed_by_fit": false
+   }
+  },
+  "tian2019_ipsc": {
+   "study": "tian2019_ipsc",
+   "line_group": [
+    "iPSC"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x 3'"
+   ],
+   "contexts": [
+    [
+     "iPSC",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 39162,
+   "cells": {
+    "all": 271223,
+    "other_target": 258794,
+    "control": 10401,
+    "panel_target": 2028
+   },
+   "native_targets": 39161,
+   "panel_targets": 1,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-tian-norman",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-tian-norman/files.json",
+    "kernel_sources": null,
+    "bytes": 440672678,
+    "cells": 275708
+   },
+   "bank": [
+    {
+     "kernel": "davideferante/vcc-derivatives-tian-norman-r1",
+     "version": 1,
+     "receipt_sha256": "1282d5ee30f1dbc216e37e4a038fc5e88153a632c127e6d9d686ecaeda76e5dd",
+     "count_sum_sha256": "d39f9b5910da7d93558a5bfbe5552a3d670a18c875e02d9a59c22e231f784046",
+     "rows_sha256": "e953cfaed7f601cfe0f05e55ebd86f0b9b9b410bf179f05909a3287b9ab62cb7",
+     "mountable_copy": "davideferante/vcc-tian-ipsc-sample-input-r1"
+    }
+   ],
+   "bank_bytes": 520459013,
+   "samples_bytes": 258068362,
+   "samples_levels": {
+    "32": 88607,
+    "64": 93198,
+    "128": 100942
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_TianKampmann2019_iPSC"
+   ],
+   "historical_aliases": [
+    "ingested/tian_norman"
+   ],
+   "destination": {
+    "source": "tian2019_ipsc",
+    "role": "derivata, non ammessa al voto (regola del verso)",
+    "consumed_by_fit": false
+   }
+  },
+  "tian2019_neuron": {
+   "study": "tian2019_neuron_day7",
+   "line_group": [
+    "neuron"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x 3'"
+   ],
+   "contexts": [
+    [
+     "iPSC-induced neuron day 7",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 41358,
+   "cells": {
+    "all": 179174,
+    "other_target": 160901,
+    "control": 15083,
+    "panel_target": 3190
+   },
+   "native_targets": 41357,
+   "panel_targets": 1,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-tian-norman",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-tian-norman/files.json",
+    "kernel_sources": null,
+    "bytes": 326659915,
+    "cells": 182790
+   },
+   "bank": [
+    {
+     "kernel": "davideferante/vcc-derivatives-tian2019-neuron-resume-r3",
+     "version": 1,
+     "receipt_sha256": "102c8fccd55f3153b5e1038b73baa508d5d3b7d78fd13689208904888190bd0b",
+     "count_sum_sha256": "c3858c7f8b574940f9ab43b67ebb00736b85e6b1ee9afbc790342490c1ad9ecb",
+     "rows_sha256": "16d4e91e087f818a9fc316d5df8442924d17c14b9cba1ce5b89dbf642b748659",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 361747826,
+   "samples_bytes": 187930964,
+   "samples_levels": {
+    "32": 76659,
+    "64": 79686,
+    "128": 84720
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_TianKampmann2019_day7neuron"
+   ],
+   "historical_aliases": [
+    "ingested/tian_norman"
+   ],
+   "destination": {
+    "source": "tian2019_neuron",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "tian2021_crispra": {
+   "study": "tian2021_crispra",
+   "line_group": [
+    "neuron"
+   ],
+   "modality": [
+    "CRISPRa"
+   ],
+   "chemistry": [
+    "10x 3'"
+   ],
+   "contexts": [
+    [
+     "iPSC-induced neuron",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 101,
+   "cells": {
+    "all": 21193,
+    "other_target": 19524,
+    "panel_target": 1235,
+    "control": 434
+   },
+   "native_targets": 100,
+   "panel_targets": 4,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-tian-norman",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-tian-norman/files.json",
+    "kernel_sources": null,
+    "bytes": 170952730,
+    "cells": 21193
+   },
+   "bank": [
+    {
+     "kernel": "davideferante/vcc-derivatives-tian2021-crispra-resume-r3",
+     "version": 1,
+     "receipt_sha256": "1ccf76d7d2e7dc4548bbbfc7458aa8e6a6c931360b76e1442b16120d8adf3f78",
+     "count_sum_sha256": "89c9e1d4111cfed934e1ff7d28d65db7ddec00df1084a89770c936e668c1ce63",
+     "rows_sha256": "65fefe26dae7f807dd6bef1b5482846ec9b363aed292d44df5d2c2738abe79a2",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 15860973,
+   "samples_bytes": 82338331,
+   "samples_levels": {
+    "32": 3232,
+    "64": 6394,
+    "128": 12374
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_TianKampmann2021_CRISPRa"
+   ],
+   "historical_aliases": [
+    "ingested/tian_norman"
+   ],
+   "destination": {
+    "source": "tian2021_crispra",
+    "role": "braccio CRISPRa, non votato",
+    "consumed_by_fit": false
+   }
+  },
+  "tian2021_crispri": {
+   "study": "tian2021_crispri",
+   "line_group": [
+    "neuron"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x 3'"
+   ],
+   "contexts": [
+    [
+     "iPSC-induced neuron",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 185,
+   "cells": {
+    "all": 32300,
+    "other_target": 30879,
+    "panel_target": 984,
+    "control": 437
+   },
+   "native_targets": 184,
+   "panel_targets": 6,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-tian-norman",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-tian-norman/files.json",
+    "kernel_sources": null,
+    "bytes": 315999662,
+    "cells": 32300
+   },
+   "bank": [
+    {
+     "kernel": "davideferante/vcc-derivatives-tian2021-crispri-resume-r3",
+     "version": 1,
+     "receipt_sha256": "34e34b80847b60c8def3b9a3c9172f8778d1fe795373f97563e80a221c938efc",
+     "count_sum_sha256": "43cdc2bbecc3a63703af0de7443d9e53e1ea2a26371f1ec20760b96917580aab",
+     "rows_sha256": "a3ee3d84fe4adfb6b6bdd8aefc4709ccbe98de9f6849c2c201e26ddfd1806c99",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 29627152,
+   "samples_bytes": 196844322,
+   "samples_levels": {
+    "32": 5920,
+    "64": 11821,
+    "128": 23156
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_TianKampmann2021_CRISPRi"
+   ],
+   "historical_aliases": [
+    "ingested/tian_norman"
+   ],
+   "destination": {
+    "source": "tian2021_crispri",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "a549_ko": {
+   "study": "a549_liu_hillsley2026",
+   "line_group": [
+    "A549"
+   ],
+   "modality": [
+    "KO"
+   ],
+   "chemistry": [
+    "MISSING"
+   ],
+   "contexts": [
+    [
+     "A549",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 1001,
+   "cells": {
+    "all": 606075,
+    "other_target": 546810,
+    "panel_target": 13945,
+    "control": 45320
+   },
+   "native_targets": 1000,
+   "panel_targets": 21,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-a549",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-a549/files.json",
+    "kernel_sources": null,
+    "bytes": 7652347277,
+    "cells": 606075
+   },
+   "bank": [
+    {
+     "kernel": "davidmaisterx/vcc-derivatives-rlab-a549",
+     "version": 1,
+     "receipt_sha256": "1bf9b15f02d044b9c3ce01e84cc91b73f97b3a23cd8238895b2efe120e20bb05",
+     "count_sum_sha256": "7291451ef26cd84bcdda92b7d51d9dcde2dd24e8386f9ae8fc744bb7c4ccce92",
+     "rows_sha256": "8ed2f004e75e887374def3c7eb1635054e9797be3dd3906ce0515c6e54ee9e85",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 183616839,
+   "samples_bytes": 1455038359,
+   "samples_levels": {
+    "32": 128849,
+    "64": 128864,
+    "128": 134568
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/a549_GSE345058_SC_raw_normalized_counts"
+   ],
+   "historical_aliases": [
+    "ingested/a549_ko"
+   ],
+   "destination": {
+    "source": "a549_ko",
+    "role": "braccio KO, non votato",
+    "consumed_by_fit": false
+   }
+  },
+  "hipsci_gw_fitness": {
+   "study": "hipsci_gw_fitness",
+   "line_group": [
+    "iPSC"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "MISSING"
+   ],
+   "contexts": [
+    [
+     "eipl_1",
+     "day3"
+    ],
+    [
+     "eipl_1",
+     "day5"
+    ],
+    [
+     "fiaj_1",
+     "day3"
+    ],
+    [
+     "fiaj_1",
+     "day5"
+    ],
+    [
+     "hecn_3",
+     "day3"
+    ],
+    [
+     "hecn_3",
+     "day4"
+    ],
+    [
+     "hecn_3",
+     "day5"
+    ],
+    [
+     "iiyk_2",
+     "day3"
+    ],
+    [
+     "iiyk_2",
+     "day4"
+    ],
+    [
+     "iiyk_2",
+     "day5"
+    ],
+    [
+     "keui_1",
+     "day3"
+    ],
+    [
+     "keui_1",
+     "day5"
+    ],
+    [
+     "kolf_2",
+     "day3"
+    ],
+    [
+     "kolf_2",
+     "day5"
+    ],
+    [
+     "kolf_3",
+     "day3"
+    ],
+    [
+     "kolf_3",
+     "day4"
+    ],
+    [
+     "kolf_3",
+     "day5"
+    ],
+    [
+     "kute_4",
+     "day3"
+    ],
+    [
+     "kute_4",
+     "day5"
+    ],
+    [
+     "lirf_5",
+     "day3"
+    ],
+    [
+     "lirf_5",
+     "day5"
+    ],
+    [
+     "melw_2",
+     "day3"
+    ],
+    [
+     "melw_2",
+     "day4"
+    ],
+    [
+     "melw_2",
+     "day5"
+    ],
+    [
+     "nufh_4",
+     "day3"
+    ],
+    [
+     "nufh_4",
+     "day4"
+    ],
+    [
+     "nufh_4",
+     "day5"
+    ],
+    [
+     "oupf_6",
+     "day3"
+    ],
+    [
+     "oupf_6",
+     "day5"
+    ],
+    [
+     "pipw_4",
+     "day3"
+    ],
+    [
+     "pipw_4",
+     "day5"
+    ],
+    [
+     "rejf_2",
+     "day3"
+    ],
+    [
+     "rejf_2",
+     "day5"
+    ],
+    [
+     "siqu_4",
+     "day3"
+    ],
+    [
+     "siqu_4",
+     "day5"
+    ],
+    [
+     "suop_2",
+     "day3"
+    ],
+    [
+     "suop_2",
+     "day4"
+    ],
+    [
+     "suop_2",
+     "day5"
+    ],
+    [
+     "suop_5",
+     "day3"
+    ],
+    [
+     "suop_5",
+     "day4"
+    ],
+    [
+     "suop_5",
+     "day5"
+    ],
+    [
+     "wahn_1",
+     "day3"
+    ],
+    [
+     "wahn_1",
+     "day5"
+    ],
+    [
+     "wihj_1",
+     "day3"
+    ],
+    [
+     "wihj_1",
+     "day4"
+    ],
+    [
+     "wihj_1",
+     "day5"
+    ],
+    [
+     "wihj_4",
+     "day3"
+    ],
+    [
+     "wihj_4",
+     "day4"
+    ],
+    [
+     "wihj_4",
+     "day5"
+    ],
+    [
+     "zapk_3",
+     "day3"
+    ],
+    [
+     "zapk_3",
+     "day4"
+    ],
+    [
+     "zapk_3",
+     "day5"
+    ],
+    [
+     "zerv_7",
+     "day3"
+    ],
+    [
+     "zerv_7",
+     "day4"
+    ],
+    [
+     "zerv_7",
+     "day5"
+    ],
+    [
+     "zerv_8",
+     "day3"
+    ],
+    [
+     "zerv_8",
+     "day4"
+    ],
+    [
+     "zerv_8",
+     "day5"
+    ],
+    [
+     "zihe_1",
+     "day3"
+    ],
+    [
+     "zihe_1",
+     "day5"
+    ]
+   ],
+   "donors_or_clones": [
+    "eipl_1",
+    "fiaj_1",
+    "hecn_3",
+    "iiyk_2",
+    "keui_1",
+    "kolf_2",
+    "kolf_3",
+    "kute_4",
+    "lirf_5",
+    "melw_2",
+    "nufh_4",
+    "oupf_6",
+    "pipw_4",
+    "rejf_2",
+    "siqu_4",
+    "suop_2",
+    "suop_5",
+    "wahn_1",
+    "wihj_1",
+    "wihj_4",
+    "zapk_3",
+    "zerv_7",
+    "zerv_8",
+    "zihe_1"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 51525,
+   "cells": {
+    "all": 322746,
+    "other_target": 102273,
+    "panel_target": 1539,
+    "unassigned": 218898,
+    "control": 36
+   },
+   "native_targets": 2252,
+   "panel_targets": 31,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-hipsci-gwfit",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_followup_r1/rlab-hipsci-gwfit/files.json",
+    "kernel_sources": null,
+    "bytes": 4163416551,
+    "cells": 322746
+   },
+   "bank": [
+    {
+     "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p0of12-r2",
+     "version": 1,
+     "receipt_sha256": "21611ae309d95dcd28e9cffa9985abb721e67b79eb902abf441c4d7eaeb2bbfa",
+     "count_sum_sha256": "fb6956f69b2d5bb5e59ae7df2e7ef4a51559b665be797fd7f5367952bf7baf26",
+     "rows_sha256": "5e493b43a6d2dd1e44466c7a3482e3b9017c469b9546f7e3fe86688773f3c3b7",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p1of12-r2",
+     "version": 1,
+     "receipt_sha256": "61ec9d33cc5e080cc407c7ec53b6f66fdd66db039327457e70c3a57dcfdb26fa",
+     "count_sum_sha256": "71e22cc59be7eea2ca5e18b8f1ab59b51afd16e9ab9713b1a4a30220d7e13eda",
+     "rows_sha256": "0d5b3854f81502f2e23566736a705c2b27d281157b61ecd65d504d2312148e6c",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferrante11/vcc-derivatives-hipsci-gwfit-p2of12-r2",
+     "version": 1,
+     "receipt_sha256": "05131964c2453a2bee16c43ec3a7954e6690d5aa485f1873d487359bf0760b39",
+     "count_sum_sha256": "8ef45ff73ead83aa8dee0ce6b9049cbc58dcd3542dc7fc829087da99584a4dd5",
+     "rows_sha256": "d4330e7bd3e87bcacb99748b09af1b7acfb008b52888b428f1ee67322ac733cd",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferrante11/vcc-derivatives-hipsci-gwfit-p3of12-r2",
+     "version": 1,
+     "receipt_sha256": "264ce36099bf4218695df8deabe8c18fe81c9ae60a39d4dff2c1bf7514803bc2",
+     "count_sum_sha256": "9665f3116f65b177f390cd18359ee42f6aa3b77fe5d0b340ac23c6dfa0542135",
+     "rows_sha256": "afee8290aefee9d9ef3ccd4876ece8f059a0f047bbc434771bb9e20b59ebe913",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferante/vcc-derivatives-hipsci-gwfit-p4of12-r2",
+     "version": 1,
+     "receipt_sha256": "2fdd64d63eeb7898c0174eff72f2c9f4a8fc1d03a7003d1cf991f60a44de74dd",
+     "count_sum_sha256": "798cf0ff6e733ec451a57df15bd6a41fee7c2ce77e9c1de5fbf6fa79563de4c4",
+     "rows_sha256": "af1e451976d8846be6448b554841778a731619b08cc41f94d79ef2070cebea1c",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p5of12-r2",
+     "version": 1,
+     "receipt_sha256": "f339786a1fb233b2811b30983ec5ac01dd337b2de45ddecdb5a0a7f1e99041b5",
+     "count_sum_sha256": "a38748597051fe7118aad97782341fe4fb5bce1f8b93ddb85ac1643c173c8be8",
+     "rows_sha256": "cc4b8683d905b35663a8740d5431a87b59087b3194fba2ca27495f61d4cdf221",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p6of12-r2",
+     "version": 1,
+     "receipt_sha256": "81e652b79f3b80eb40d157859c8fa842a0aa00d61e34bf044fa3ce6933535a88",
+     "count_sum_sha256": "2a3ea46907c783b71e64086c63dc94b3c25c052eb9c20259c8b1f1479004b504",
+     "rows_sha256": "12f069a067448ad06c4d7073b37470c3bf056b0d61c7770823081ad020dc9eb4",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferrante11/vcc-derivatives-hipsci-gwfit-p7of12-r2",
+     "version": 1,
+     "receipt_sha256": "9ffcca28f9bae1118ea377bd7446ce36fabb9e5b9c601d9b1e3272c6633c8652",
+     "count_sum_sha256": "fb2b80fe25e97074abf86cd143ebfe0278240e746c4b9f83955d9fad5acf0e30",
+     "rows_sha256": "b3a5b1df3b3bfd967db4c0ed6440ba78cb7f9db1e7e36ae95eefe38aa4583647",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferrante11/vcc-derivatives-hipsci-gwfit-p8of12-r2",
+     "version": 1,
+     "receipt_sha256": "06d8242127c599a6ea24cbd05f0fc5fb9e5f3e5cb5753f173baedc4643896a49",
+     "count_sum_sha256": "60f3d077e6f04fafebe5c8694f48efd2b22cd44eec0864cab74f8ec1ce04da83",
+     "rows_sha256": "2663343e9e255d442e9694b117be7754473878ac3690b415c56140f27a9442c1",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferante/vcc-derivatives-hipsci-gwfit-p9of12-r2",
+     "version": 1,
+     "receipt_sha256": "51378ba71de56e7155fcd0bceafe5a9eb595b7b4a501d68a3d337e47dfde763b",
+     "count_sum_sha256": "c33106e4dcf741f83bcd0e3fa3a75ded42840cf6e8fb7eada11c55ea6a4d1035",
+     "rows_sha256": "2fd0bf95ddc24e374ed46ffef84a11bd35e6c96ebd04da7eefde43c87aaaef6e",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferante/vcc-derivatives-hipsci-gwfit-p10of12-r2",
+     "version": 1,
+     "receipt_sha256": "f4a1ec88912c6438008f248dfa5d5e3067c7ea1c866e1b67d790a0a8f2819628",
+     "count_sum_sha256": "6bfbf1e32a046b9a04158d9db82c5f6dff3f384e17405d111b0b22f27bad5199",
+     "rows_sha256": "197c463e33228244a06c036a25073c2bfe4c6cd9ed256e2440bd7139011c67ad",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwfit-p11of12-r2",
+     "version": 1,
+     "receipt_sha256": "1dde396de428cacda0780c4ca37480a405b9d57b3a9e7596b08f52eefa88a5d3",
+     "count_sum_sha256": "05349ffeb4577f41022be5696c65e8f93ace95b45ee594c2c8ac1a105e6a85a4",
+     "rows_sha256": "6769c51e74ee7b52b6f9eace59aee6c16795ae9131a2bea7bca8b325616e5b8f",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 2027552057,
+   "samples_bytes": 1300112558,
+   "samples_levels": "partitioned: see expected r3",
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "ingested/hipsci_gw_fitness"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": null,
+    "role": "in banca, non derivata: controls: see piano; non-targeting cells are too few to give every clone matched controls with the original estimator",
+    "consumed_by_fit": false,
+    "evidence": [
+     {
+      "context": "eipl_1",
+      "control_cells": 0,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 1
+     },
+     {
+      "context": "eipl_1",
+      "control_cells": 1,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 0
+     },
+     {
+      "context": "fiaj_1",
+      "control_cells": 1,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 0
+     },
+     {
+      "context": "fiaj_1",
+      "control_cells": 1,
+      "panel_targets_min_cells": 1,
+      "donors_without_controls": 0
+     },
+     {
+      "context": "hecn_3",
+      "control_cells": 0,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 1
+     },
+     {
+      "context": "hecn_3",
+      "control_cells": 0,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 1
+     }
+    ]
+   }
+  },
+  "hipsci_gw_nonfitness": {
+   "study": "hipsci_gw_nonfitness",
+   "line_group": [
+    "iPSC"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "MISSING"
+   ],
+   "contexts": [
+    [
+     "bokz_6",
+     "day6"
+    ],
+    [
+     "eipl_1",
+     "day6"
+    ],
+    [
+     "eipl_3",
+     "day6"
+    ],
+    [
+     "fiaj_1",
+     "day3"
+    ],
+    [
+     "fiaj_1",
+     "day6"
+    ],
+    [
+     "fiaj_3",
+     "day3"
+    ],
+    [
+     "fiaj_3",
+     "day6"
+    ],
+    [
+     "hecn_3",
+     "day6"
+    ],
+    [
+     "iiyk_2",
+     "day6"
+    ],
+    [
+     "iiyk_4",
+     "day6"
+    ],
+    [
+     "keui_1",
+     "day6"
+    ],
+    [
+     "kolf_2",
+     "day3"
+    ],
+    [
+     "kolf_2",
+     "day6"
+    ],
+    [
+     "kolf_3",
+     "day3"
+    ],
+    [
+     "kolf_3",
+     "day6"
+    ],
+    [
+     "kute_4",
+     "day6"
+    ],
+    [
+     "letw_1",
+     "day6"
+    ],
+    [
+     "lirf_5",
+     "day6"
+    ],
+    [
+     "melw_2",
+     "day6"
+    ],
+    [
+     "miaj_4",
+     "day3"
+    ],
+    [
+     "miaj_4",
+     "day6"
+    ],
+    [
+     "miaj_6",
+     "day3"
+    ],
+    [
+     "miaj_6",
+     "day6"
+    ],
+    [
+     "nufh_4",
+     "day6"
+    ],
+    [
+     "oupf_6",
+     "day6"
+    ],
+    [
+     "pahc_5",
+     "day6"
+    ],
+    [
+     "pipw_4",
+     "day6"
+    ],
+    [
+     "puhk_2",
+     "day6"
+    ],
+    [
+     "rakq_3",
+     "day6"
+    ],
+    [
+     "rejf_2",
+     "day6"
+    ],
+    [
+     "siqu_4",
+     "day6"
+    ],
+    [
+     "suop_2",
+     "day6"
+    ],
+    [
+     "suop_5",
+     "day6"
+    ],
+    [
+     "wahn_1",
+     "day6"
+    ],
+    [
+     "wihj_1",
+     "day6"
+    ],
+    [
+     "wihj_4",
+     "day6"
+    ],
+    [
+     "zapk_3",
+     "day6"
+    ],
+    [
+     "zerv_7",
+     "day6"
+    ],
+    [
+     "zerv_8",
+     "day6"
+    ],
+    [
+     "zihe_1",
+     "day6"
+    ]
+   ],
+   "donors_or_clones": [
+    "bokz_6",
+    "eipl_1",
+    "eipl_3",
+    "fiaj_1",
+    "fiaj_3",
+    "hecn_3",
+    "iiyk_2",
+    "iiyk_4",
+    "keui_1",
+    "kolf_2",
+    "kolf_3",
+    "kute_4",
+    "letw_1",
+    "lirf_5",
+    "melw_2",
+    "miaj_4",
+    "miaj_6",
+    "nufh_4",
+    "oupf_6",
+    "pahc_5",
+    "pipw_4",
+    "puhk_2",
+    "rakq_3",
+    "rejf_2",
+    "siqu_4",
+    "suop_2",
+    "suop_5",
+    "wahn_1",
+    "wihj_1",
+    "wihj_4",
+    "zapk_3",
+    "zerv_7",
+    "zerv_8",
+    "zihe_1"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 63149,
+   "cells": {
+    "all": 396458,
+    "other_target": 111054,
+    "panel_target": 3930,
+    "unassigned": 281462,
+    "control": 12
+   },
+   "native_targets": 4954,
+   "panel_targets": 166,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-hipsci-gwnonfit",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_followup_r1/rlab-hipsci-gwnonfit/files.json",
+    "kernel_sources": null,
+    "bytes": 4986913999,
+    "cells": 396458
+   },
+   "bank": [
+    {
+     "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p0of12-r2",
+     "version": 1,
+     "receipt_sha256": "4d10bd186c7c664c3a141b6ed9313c41c654acfedaddf65c863a28f17e11c232",
+     "count_sum_sha256": "df3a3f99634634a6ad0a0f1a933e1efe0e1979efd7c38e9fe0080e38f14baeae",
+     "rows_sha256": "68ab9c4ba6fc321ca17963e1107b8096c97fd68b48a14b9cecd154d16eb5001e",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p1of12-r2",
+     "version": 1,
+     "receipt_sha256": "8398732660eb42d4ba614c3bc2d2a5dd4d4786831a405216d6523ab920480490",
+     "count_sum_sha256": "b6c576be4fd2f71544daa92e4af397d047971c2a5795fa478988bb818576f315",
+     "rows_sha256": "920f478fd60ebe05cd266017b723dd705cf2dee82c6014885e611a31f8c97ee0",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p2of12-r2",
+     "version": 1,
+     "receipt_sha256": "90f40396e1a99397a3d68eedb4f83101908a97383b1e84acbe2a97978018a055",
+     "count_sum_sha256": "730fc337321b49f0e134f3acf37be0cb8aab9fc09f18a53ba34fcff6cb2f134c",
+     "rows_sha256": "5710a6eb5c94354d54b1b026410b3539ee2a9c92e5da0af83237249a12545c3b",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p3of12-r2",
+     "version": 1,
+     "receipt_sha256": "fcd34f620e84ef15cd0f963b82fbd62be05958529d1568266d5f32e15236da58",
+     "count_sum_sha256": "168b85f0682adb39495b94b9de950e71216a7b2970a27d0341ec6fe1a28a8788",
+     "rows_sha256": "d3809d5efdae076820426c3de1a5b9db8102e7fdfe4ab88f30db6dec159375a3",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p4of12-r2",
+     "version": 1,
+     "receipt_sha256": "563082d37f1016bc5c89f6865b859d7d7b89bb92ec6fef5d9550be7f487446f0",
+     "count_sum_sha256": "018eb9bf9cd29f8a935bbef97ca7514ece83324679c7d2c7ac086d24facfae6e",
+     "rows_sha256": "b05a3de5740e299eae34217be537651c11b691f5418d5bd7e192078bfcd13c7d",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p5of12-r2",
+     "version": 1,
+     "receipt_sha256": "fe4819a7b87dca6aeb6a0cd31cca4b4ae89e76e8b9ac47fbaa046f17c25c4b9d",
+     "count_sum_sha256": "b2d856c054499fde5b74cb7fdff1fa4b7c110bd40059417cd1d70cf0ad77e7a9",
+     "rows_sha256": "0e2578bea76c260d28e7c76892fdb96f40c6daece6ea13d75b2c4dd6b06e7964",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p6of12-r2",
+     "version": 1,
+     "receipt_sha256": "2d2b10ffb8702fcb6944fcc8eca42335f93306a0b84a63dd331cc70b3eced81f",
+     "count_sum_sha256": "978649e2194d7504f224b059a0f858c8e08139162585343e706cf0b48f53b82f",
+     "rows_sha256": "c47d634cdb8fb635baa31ad86c7be882336fa80d1d3062e706d81299b2dede73",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p7of12-r2",
+     "version": 1,
+     "receipt_sha256": "1514864f753fc405a8e847ff078e096b8cda7aa0b6897447fa59c98cd916fb8f",
+     "count_sum_sha256": "96a12938bd922104a2858bc43b94ff6d580edd167e69a53002e7e21cc69286d5",
+     "rows_sha256": "3c60b2703f7b81f462b909050668fe0229fb9f381882e728f8dc94e9b346be2c",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferrante11/vcc-derivatives-hipsci-gwnonfit-p8of12-r2",
+     "version": 1,
+     "receipt_sha256": "f8486e0ddddfc2ff8bc140714fd78d33d72012f62b79258a2ee9a95364677fec",
+     "count_sum_sha256": "92e4205030dc11b1747640f533f29cac70abe20350c6e956076665683fc5e14b",
+     "rows_sha256": "e98631a111f309e15c35ed9af61927555cf600e125bd4eba1fd39db00d835deb",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p9of12-r2",
+     "version": 1,
+     "receipt_sha256": "f432b9481eed0504443b0b57b8dfd1b623c3718856b16c6a8e8acb11f7887881",
+     "count_sum_sha256": "28c777ba39d3f2af87f6aabcd296089a2c6c50c00bce3143603d8478994e395a",
+     "rows_sha256": "2ee425affe08736bad96b34dd654d7b1cac3b28443157915b5da757fc6689c50",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davideferante/vcc-derivatives-hipsci-gwnonfit-p10of12-r2",
+     "version": 1,
+     "receipt_sha256": "0d6a0cab5a473d199691290addcd1d6de709a3c4d8b9b48f0622301ce745298b",
+     "count_sum_sha256": "3b96864579c1affd02cf5463f61a467217660fcc78a87186db332b065db6ebb3",
+     "rows_sha256": "8cba5ccb87672b61ea05f6fcb1191bbcb822e83beca4d7308d2b741a683bf12e",
+     "mountable_copy": null
+    },
+    {
+     "kernel": "davidmaisterx/vcc-derivatives-hipsci-gwnonfit-p11of12-r2",
+     "version": 1,
+     "receipt_sha256": "0d7247b0e461e3d424ecfffdc2748f289079f7f210146dafdb7d3ba34e6fb018",
+     "count_sum_sha256": "1acef06bb209f68da8f35eba6e6f761319a5f290110857ff40b2ff7e94320bf9",
+     "rows_sha256": "00489c385e39daece6e24ad389662dff0941f84757f09e67f0dbb8469c187a4e",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 2355626487,
+   "samples_bytes": 1416917795,
+   "samples_levels": "partitioned: see expected r3",
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "ingested/hipsci_gw_nonfitness"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": null,
+    "role": "in banca, non derivata: controls: see piano; non-targeting cells are too few to give every clone matched controls with the original estimator",
+    "consumed_by_fit": false,
+    "evidence": [
+     {
+      "context": "bokz_6",
+      "control_cells": 0,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 1
+     },
+     {
+      "context": "eipl_1",
+      "control_cells": 0,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 1
+     },
+     {
+      "context": "eipl_3",
+      "control_cells": 0,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 1
+     },
+     {
+      "context": "fiaj_1",
+      "control_cells": 1,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 0
+     },
+     {
+      "context": "fiaj_1",
+      "control_cells": 1,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 0
+     },
+     {
+      "context": "fiaj_3",
+      "control_cells": 0,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 1
+     }
+    ]
+   }
+  },
+  "frangieh2021": {
+   "study": "frangieh2021_melanoma_ko",
+   "line_group": [
+    "melanoma"
+   ],
+   "modality": [
+    "KO"
+   ],
+   "chemistry": [
+    "10x 3' v3"
+   ],
+   "contexts": [
+    [
+     "Co-culture",
+     "MISSING"
+    ],
+    [
+     "Control",
+     "MISSING"
+    ],
+    [
+     "IFN\u03b3",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 747,
+   "cells": {
+    "all": 218331,
+    "other_target": 157470,
+    "panel_target": 3256,
+    "control": 57605
+   },
+   "native_targets": 248,
+   "panel_targets": 5,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-scp-ko",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-scp-ko/files.json",
+    "kernel_sources": null,
+    "bytes": 1643593412,
+    "cells": 218331
+   },
+   "bank": [
+    {
+     "kernel": "davidmaisterx/vcc-derivatives-scp-ko-r1",
+     "version": 1,
+     "receipt_sha256": "5dbf20d3a32e7f749fdc86a0eaff256d5eaf709b62f14d9080793af6fd17d204",
+     "count_sum_sha256": "00359c5d082cf2c1cccf80600374d3b801c6740b237e0459d5f075cb40535676",
+     "rows_sha256": "1b1349943f425376de559bbf6882671fc51380190631ac60f32b28831981020b",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 112953497,
+   "samples_bytes": 718160450,
+   "samples_levels": {
+    "32": 69597,
+    "64": 79228,
+    "128": 106112
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_FrangiehIzar2021_RNA"
+   ],
+   "historical_aliases": [
+    "ingested/scp_ko_frangieh_sunshine_papalexi"
+   ],
+   "destination": {
+    "source": "frangieh2021",
+    "role": "braccio KO, non votato",
+    "consumed_by_fit": false
+   }
+  },
+  "papalexi2021_arrayed": {
+   "study": "papalexi2021_thp1_arrayed_ko",
+   "line_group": [
+    "THP1"
+   ],
+   "modality": [
+    "KO"
+   ],
+   "chemistry": [
+    "10x 3' (ECCITE)"
+   ],
+   "contexts": [
+    [
+     "THP-1",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 11,
+   "cells": {
+    "all": 8984,
+    "other_target": 6971,
+    "panel_target": 4,
+    "control": 2009
+   },
+   "native_targets": 10,
+   "panel_targets": 1,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-scp-ko",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-scp-ko/files.json",
+    "kernel_sources": null,
+    "bytes": 53875418,
+    "cells": 8984
+   },
+   "bank": [
+    {
+     "kernel": "davidmaisterx/vcc-derivatives-scp-ko-r1",
+     "version": 1,
+     "receipt_sha256": "44d43fc152f51ba4bd897311b64b420818cc9f1d9e40b893607f703eac085815",
+     "count_sum_sha256": "9f104e816943e34e2368b90c41a8f85cd66fca079b579b1f39497f7dbbf799f1",
+     "rows_sha256": "52b9583c0cf486395660753eb9415dddd57bc5f737547ebb670f32f2546e27fc",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1714628,
+   "samples_bytes": 5896175,
+   "samples_levels": {
+    "32": 324,
+    "64": 644,
+    "128": 1284
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_PapalexiSatija2021_eccite_arrayed_RNA"
+   ],
+   "historical_aliases": [
+    "ingested/scp_ko_frangieh_sunshine_papalexi"
+   ],
+   "destination": {
+    "source": null,
+    "role": "in banca, non derivata: one panel symbol with 4 cells, below min_cells 10 of the original recipe",
+    "consumed_by_fit": false,
+    "evidence": [
+     {
+      "context": "THP-1",
+      "control_cells": 2009,
+      "panel_targets_min_cells": 0,
+      "donors_without_controls": 0
+     }
+    ]
+   }
+  },
+  "sunshine2023": {
+   "study": "sunshine2023_calu3_ko",
+   "line_group": [
+    "Calu3"
+   ],
+   "modality": [
+    "KO"
+   ],
+   "chemistry": [
+    "10x 3'"
+   ],
+   "contexts": [
+    [
+     "Calu-3",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 24196,
+   "cells": {
+    "all": 90380,
+    "other_target": 68749,
+    "panel_target": 1704,
+    "control": 3536,
+    "unassigned": 16391
+   },
+   "native_targets": 24194,
+   "panel_targets": 6,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-scp-ko",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-scp-ko/files.json",
+    "kernel_sources": null,
+    "bytes": 790544527,
+    "cells": 90380
+   },
+   "bank": [
+    {
+     "kernel": "davidmaisterx/vcc-derivatives-scp-ko-r1",
+     "version": 1,
+     "receipt_sha256": "8ba7d496e3ea955677071c2f7c8e118f7c1c6283bd307e2f8d474a3b2be75bb1",
+     "count_sum_sha256": "5765b4bd74e102c0bdb62bb0ef4a91c30ed960db1d5bec4976db3e05c2a0eb91",
+     "rows_sha256": "04250dfd78687875b9029f015dfaaebd112d63f2fcbca6acfb934dc9befdcf7c",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 653002978,
+   "samples_bytes": 493328899,
+   "samples_levels": {
+    "32": 44306,
+    "64": 48310,
+    "128": 58208
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "remote/scp_SunshineHein2023"
+   ],
+   "historical_aliases": [
+    "ingested/scp_ko_frangieh_sunshine_papalexi"
+   ],
+   "destination": {
+    "source": "sunshine2023",
+    "role": "braccio KO, non votato",
+    "consumed_by_fit": false
+   }
+  },
+  "hipsci_targeted_19": {
+   "study": "hipsci_targeted_19",
+   "line_group": [
+    "iPSC"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "MISSING"
+   ],
+   "contexts": [
+    [
+     "eipl_1",
+     "day3"
+    ],
+    [
+     "eipl_3",
+     "day3"
+    ],
+    [
+     "fiaj_1",
+     "day3"
+    ],
+    [
+     "fiaj_3",
+     "day3"
+    ],
+    [
+     "iudw_1",
+     "day3"
+    ],
+    [
+     "iudw_4",
+     "day3"
+    ],
+    [
+     "jejf_2",
+     "day3"
+    ],
+    [
+     "jejf_3",
+     "day3"
+    ],
+    [
+     "kolf_2",
+     "day3"
+    ],
+    [
+     "kolf_3",
+     "day3"
+    ],
+    [
+     "oikd_2",
+     "day3"
+    ],
+    [
+     "oikd_5",
+     "day3"
+    ],
+    [
+     "paab_3",
+     "day3"
+    ],
+    [
+     "paab_4",
+     "day3"
+    ],
+    [
+     "pipw_4",
+     "day3"
+    ],
+    [
+     "pipw_5",
+     "day3"
+    ],
+    [
+     "tolg_4",
+     "day3"
+    ],
+    [
+     "tolg_6",
+     "day3"
+    ],
+    [
+     "zapk_3",
+     "day3"
+    ]
+   ],
+   "donors_or_clones": [
+    "eipl_1",
+    "eipl_3",
+    "fiaj_1",
+    "fiaj_3",
+    "iudw_1",
+    "iudw_4",
+    "jejf_2",
+    "jejf_3",
+    "kolf_2",
+    "kolf_3",
+    "oikd_2",
+    "oikd_5",
+    "paab_3",
+    "paab_4",
+    "pipw_4",
+    "pipw_5",
+    "tolg_4",
+    "tolg_6",
+    "zapk_3"
+   ],
+   "donor_identity": "reported",
+   "bank_rows": 8474,
+   "cells": {
+    "all": 1161865,
+    "no_metadata": 1,
+    "other_target": 619198,
+    "panel_target": 7583,
+    "control": 8241,
+    "unassigned": 526842
+   },
+   "native_targets": 444,
+   "panel_targets": 5,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-hipsci-targeted19",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-hipsci-targeted19/files.json",
+    "kernel_sources": null,
+    "bytes": 13030135370,
+    "cells": 1161865
+   },
+   "bank": [
+    {
+     "kernel": "davideferante/vcc-derivatives-hipsci-targeted19-r1",
+     "version": 1,
+     "receipt_sha256": "39bd33eed39449fbcb8e5bc97d4f9dd5fce9d625321ce82772faf7f434c8a3fa",
+     "count_sum_sha256": "d5110b8133191e7a8f96377e06a22543dd131537c11b6c8195b684e2202c2285",
+     "rows_sha256": "6ba1ca45325b2c245d576b8f99b080d5dfbab004e174a61325801ab6980461ac",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1279504314,
+   "samples_bytes": 6169065140,
+   "samples_levels": {
+    "32": 497355,
+    "64": 520464,
+    "128": 622353
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "ingested/hipsci_targeted_19"
+   ],
+   "historical_aliases": [],
+   "destination": {
+    "source": "hipsci_targeted_19",
+    "role": "voto",
+    "consumed_by_fit": true
+   }
+  },
+  "k562_gwps_a": {
+   "study": "replogle_k562_gwps",
+   "line_group": [
+    "K562"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x 3' v3"
+   ],
+   "contexts": [
+    [
+     "K562",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 9865,
+   "cells": {
+    "all": 1000000,
+    "other_target": 937014,
+    "panel_target": 25201,
+    "control": 37785
+   },
+   "native_targets": 9864,
+   "panel_targets": 272,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-k562-gwps-r3",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-k562-gwps-r3/files.json",
+    "kernel_sources": null,
+    "bytes": 7067941224,
+    "cells": 1000000
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-derivatives-rlab-k562-gwps-r3",
+     "version": 1,
+     "receipt_sha256": "3ebb3f724224d72341b50fda235b9df35c47421cae6be2e4ac897ec37eba0602",
+     "count_sum_sha256": "4b7319788b4962fe9b6e8b451d789fba8e34db16be709206b4ac480f46c4faec",
+     "rows_sha256": "29eedeb799cf243f2a5e67d71ee8c334cded26c2f5b73ce6b17fd818ada06fdb",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1051588835,
+   "samples_bytes": 5199390738,
+   "samples_levels": {
+    "32": 807963,
+    "64": 820701,
+    "128": 911820
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "ingested/replogle_k562_gwps"
+   ],
+   "historical_aliases": [
+    "remote/scp_ReplogleWeissman2022_K562_gwps"
+   ],
+   "destination": {
+    "source": "k562_gwps_sc",
+    "role": "stesso esperimento di k562 BULK: equivalenza, mai secondo voto",
+    "consumed_by_fit": false
+   }
+  },
+  "k562_gwps_b": {
+   "study": "replogle_k562_gwps",
+   "line_group": [
+    "K562"
+   ],
+   "modality": [
+    "CRISPRi"
+   ],
+   "chemistry": [
+    "10x 3' v3"
+   ],
+   "contexts": [
+    [
+     "K562",
+     "MISSING"
+    ]
+   ],
+   "donors_or_clones": [],
+   "donor_identity": "not reported in the bank rows",
+   "bank_rows": 9867,
+   "cells": {
+    "all": 989578,
+    "other_target": 927108,
+    "panel_target": 24927,
+    "control": 37543
+   },
+   "native_targets": 9866,
+   "panel_targets": 272,
+   "raw": {
+    "dataset": "davidmaisterx/rlab-k562-gwps-r3",
+    "version": 1,
+    "receipt": "reports/modelli/percorso_riusabile_2026-10-05/archive_metadata_r1/rlab-k562-gwps-r3/files.json",
+    "kernel_sources": null,
+    "bytes": 6904612003,
+    "cells": 989578
+   },
+   "bank": [
+    {
+     "kernel": "davideferrante11/vcc-derivatives-rlab-k562-gwps-r3",
+     "version": 1,
+     "receipt_sha256": "a751094c80bce83824ebf3464cf1756f8b1484ad3732c7d282e93e2d2ce47a36",
+     "count_sum_sha256": "d883ca9e71e2a21cd2e585c52a851660e8b1190ab8285c6b124754ee9210015f",
+     "rows_sha256": "7f5531a363da0faa595bd5bfa9a125f160e48e17b8b96c7cd6d662e5a3f96255",
+     "mountable_copy": null
+    }
+   ],
+   "bank_bytes": 1049431543,
+   "samples_bytes": 5077322509,
+   "samples_levels": {
+    "32": 801345,
+    "64": 813972,
+    "128": 904289
+   },
+   "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+   "catalogue_records": [
+    "ingested/replogle_k562_gwps"
+   ],
+   "historical_aliases": [
+    "remote/scp_ReplogleWeissman2022_K562_gwps"
+   ],
+   "destination": {
+    "source": "k562_gwps_sc",
+    "role": "stesso esperimento di k562 BULK: equivalenza, mai secondo voto",
+    "consumed_by_fit": false
+   }
+  }
+ },
+ "catalogue": [
+  {
+   "record_id": "remote/a549_GSE345058_SC_raw_normalized_counts",
+   "destination": "in banca",
+   "units": [
+    "a549_ko"
+   ],
+   "catalogue_state": "ingerito (J10, job 118, layer raw_counts): vedi \u00a71",
+   "modality": "KO (Cas9)",
+   "cells": 606075
+  },
+  {
+   "record_id": "remote/cd4_D1_Rest",
+   "destination": "in banca",
+   "units": [
+    "D1_Rest"
+   ],
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "modality": "CRISPRi",
+   "cells": 3074496
+  },
+  {
+   "record_id": "remote/cd4_D1_Stim48hr",
+   "destination": "in banca",
+   "units": [
+    "D1_Stim48hr"
+   ],
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "modality": "CRISPRi",
+   "cells": 2805354
+  },
+  {
+   "record_id": "remote/cd4_D1_Stim8hr",
+   "destination": "in banca",
+   "units": [
+    "D1_Stim8hr"
+   ],
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "modality": "CRISPRi",
+   "cells": 2789727
+  },
+  {
+   "record_id": "remote/cd4_D2_Rest",
+   "destination": "in banca",
+   "units": [
+    "D2_Rest"
+   ],
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "modality": "CRISPRi",
+   "cells": 2940194
+  },
+  {
+   "record_id": "remote/cd4_D2_Stim48hr",
+   "destination": "in banca",
+   "units": [
+    "D2_Stim48hr"
+   ],
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "modality": "CRISPRi",
+   "cells": 2863571
+  },
+  {
+   "record_id": "remote/cd4_D2_Stim8hr",
+   "destination": "in banca",
+   "units": [
+    "D2_Stim8hr"
+   ],
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "modality": "CRISPRi",
+   "cells": 3032848
+  },
+  {
+   "record_id": "remote/cd4_D3_Rest",
+   "destination": "in banca",
+   "units": [
+    "D3_Rest"
+   ],
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "modality": "CRISPRi",
+   "cells": 2778524
+  },
+  {
+   "record_id": "remote/cd4_D3_Stim48hr",
+   "destination": "in banca",
+   "units": [
+    "D3_Stim48hr"
+   ],
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "modality": "CRISPRi",
+   "cells": 2607532
+  },
+  {
+   "record_id": "remote/cd4_D3_Stim8hr",
+   "destination": "in banca",
+   "units": [
+    "D3_Stim8hr"
+   ],
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "modality": "CRISPRi",
+   "cells": 2481284
+  },
+  {
+   "record_id": "remote/cd4_D4_Rest",
+   "destination": "in banca",
+   "units": [
+    "D4_Rest"
+   ],
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "modality": "CRISPRi",
+   "cells": 2693903
+  },
+  {
+   "record_id": "remote/cd4_D4_Stim48hr",
+   "destination": "in banca",
+   "units": [
+    "D4_Stim48hr"
+   ],
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "modality": "CRISPRi",
+   "cells": 2815784
+  },
+  {
+   "record_id": "remote/cd4_D4_Stim8hr",
+   "destination": "in banca",
+   "units": [
+    "D4_Stim8hr"
+   ],
+   "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) \u00e8 da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+   "modality": "CRISPRi",
+   "cells": 2727254
+  },
+  {
+   "record_id": "remote/h1_train",
+   "destination": "in banca",
+   "units": [
+    "h1_train"
+   ],
+   "catalogue_state": "ingerito (J04)",
+   "modality": "CRISPRi",
+   "cells": 221273
+  },
+  {
+   "record_id": "remote/h1_val",
+   "destination": "in banca",
+   "units": [
+    "h1_val"
+   ],
+   "catalogue_state": "ingerito (J04)",
+   "modality": "CRISPRi",
+   "cells": 98927
+  },
+  {
+   "record_id": "remote/kolf_KOLF_Chromatin_Modifiers_QC_Filtered",
+   "destination": "in banca",
+   "units": [
+    "kolf_chromatin"
+   ],
+   "catalogue_state": "ingerito (J08, jobs 116 e 124): vedi \u00a71",
+   "modality": "CRISPRi",
+   "cells": 44039
+  },
+  {
+   "record_id": "remote/kolf_KOLF_Metabolic_Enzymes_QC_Filtered",
+   "destination": "in banca",
+   "units": [
+    "kolf_metabolic"
+   ],
+   "catalogue_state": "ingerito (J08, job 124): vedi \u00a71",
+   "modality": "CRISPRi",
+   "cells": 117768
+  },
+  {
+   "record_id": "remote/kolf_KOLF_Pan_Genome_QC_Filtered",
+   "destination": "in banca",
+   "units": [
+    "kolf_pan_genome"
+   ],
+   "catalogue_state": "da ingerire: 2.659.209 cellule in CSC; adattatore pronto (h5csc_shards), non ancora in coda",
+   "modality": "CRISPRi",
+   "cells": 2659209
+  },
+  {
+   "record_id": "remote/kolf_KOLF_Strong_Perturbations",
+   "destination": "in banca",
+   "units": [
+    "kolf_strong"
+   ],
+   "catalogue_state": "ingerito (J12, job 126, layer counts): vedi \u00a71",
+   "modality": "CRISPRi",
+   "cells": 232438
+  },
+  {
+   "record_id": "remote/scp_AdamsonWeissman2016_GSM2406675_10X001",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire: i controlli sono nomi di plasmidi (62(mod)_pBA581, 63(mod)_pBA580): serve una mappa delle etichette dichiarata",
+   "modality": "CRISPR",
+   "cells": 5768
+  },
+  {
+   "record_id": "remote/scp_AdamsonWeissman2016_GSM2406677_10X005",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire: come l'altro file di Adamson, serve una mappa delle etichette",
+   "modality": "CRISPR",
+   "cells": 15006
+  },
+  {
+   "record_id": "remote/scp_AdamsonWeissman2016_GSM2406681_10X010",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire: come l'altro file di Adamson, serve una mappa delle etichette",
+   "modality": "CRISPR",
+   "cells": 65337
+  },
+  {
+   "record_id": "remote/scp_AissaBenevolenskaya2021",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "modality": "drug",
+   "cells": 119071
+  },
+  {
+   "record_id": "remote/scp_ChangYe2021",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "modality": "drug",
+   "cells": 42277
+  },
+  {
+   "record_id": "remote/scp_CuiHacohen2023",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "modality": "cytokines",
+   "cells": 96034
+  },
+  {
+   "record_id": "remote/scp_DatlingerBock2017",
+   "destination": "in banca",
+   "units": [
+    "datlinger2017"
+   ],
+   "catalogue_state": "ingerito (J14, job 128): vedi \u00a71",
+   "modality": "CRISPR",
+   "cells": 5905
+  },
+  {
+   "record_id": "remote/scp_DatlingerBock2021",
+   "destination": "in banca",
+   "units": [
+    "datlinger2021"
+   ],
+   "catalogue_state": "ingerito (J14, job 128): vedi \u00a71",
+   "modality": "CRISPR",
+   "cells": 39194
+  },
+  {
+   "record_id": "remote/scp_DixitRegev2016_K562_TFs_13_days",
+   "destination": "in banca",
+   "units": [
+    "dixit2016_d13"
+   ],
+   "catalogue_state": "ingerito (J15, job 129): vedi \u00a71",
+   "modality": "CRISPR",
+   "cells": 19268
+  },
+  {
+   "record_id": "remote/scp_DixitRegev2016_K562_TFs_7_days",
+   "destination": "in banca",
+   "units": [
+    "dixit2016_d7"
+   ],
+   "catalogue_state": "ingerito (J15, job 129): vedi \u00a71",
+   "modality": "CRISPR",
+   "cells": 33013
+  },
+  {
+   "record_id": "remote/scp_DixitRegev2016_K562_TFs_High_MOI",
+   "destination": "in banca",
+   "units": [
+    "dixit2016_high_moi"
+   ],
+   "catalogue_state": "ingerito (J15, job 129): vedi \u00a71",
+   "modality": "CRISPR",
+   "cells": 51898
+  },
+  {
+   "record_id": "remote/scp_FrangiehIzar2021_protein",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori dalla supervisione RNA: matrice di proteine di superficie (24 feature), altro saggio; vista ausiliaria possibile",
+   "modality": "proteine (ADT)",
+   "cells": 218331
+  },
+  {
+   "record_id": "remote/scp_FrangiehIzar2021_RNA",
+   "destination": "in banca",
+   "units": [
+    "frangieh2021"
+   ],
+   "catalogue_state": "ingerito (J13, job 127): vedi \u00a71",
+   "modality": "CRISPR",
+   "cells": 218331
+  },
+  {
+   "record_id": "remote/scp_GasperiniShendure2019_atscale",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori per ora: schermo di enhancer, i bersagli non sono geni",
+   "modality": "CRISPR",
+   "cells": 207324
+  },
+  {
+   "record_id": "remote/scp_GasperiniShendure2019_highMOI",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori per ora: schermo di enhancer, i bersagli non sono geni",
+   "modality": "CRISPR",
+   "cells": 47650
+  },
+  {
+   "record_id": "remote/scp_GasperiniShendure2019_lowMOI",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori per ora: schermo di enhancer, i bersagli non sono geni",
+   "modality": "CRISPR",
+   "cells": 41284
+  },
+  {
+   "record_id": "remote/scp_GehringPachter2019",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori dalla supervisione dei conteggi: X non intero e nessun layer di conteggi grezzi",
+   "modality": "drug",
+   "cells": 20382
+  },
+  {
+   "record_id": "remote/scp_JoungZhang2023_atlas",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori dalla supervisione dei conteggi: X non intero e nessun layer di conteggi grezzi",
+   "modality": "ORF overexpression",
+   "cells": 1145823
+  },
+  {
+   "record_id": "remote/scp_JoungZhang2023_combinatorial",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori dalla supervisione dei conteggi: X non intero e nessun layer di conteggi grezzi",
+   "modality": "ORF overexpression",
+   "cells": 167947
+  },
+  {
+   "record_id": "remote/scp_LaraAstiasoHuntly2023_exvivo",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori: topo (l'asse \u00e8 umano)",
+   "modality": "CRISPR-cas9",
+   "cells": 146793
+  },
+  {
+   "record_id": "remote/scp_LaraAstiasoHuntly2023_invivo",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori: topo (l'asse \u00e8 umano)",
+   "modality": "CRISPR-cas9",
+   "cells": 135836
+  },
+  {
+   "record_id": "remote/scp_LaraAstiasoHuntly2023_leukemia",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori: topo (l'asse \u00e8 umano)",
+   "modality": "CRISPR-cas9",
+   "cells": 182949
+  },
+  {
+   "record_id": "remote/scp_LiangWang2023",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori: topo (l'asse \u00e8 umano)",
+   "modality": "CRISPR-cas9",
+   "cells": 41383
+  },
+  {
+   "record_id": "remote/scp_LotfollahiTheis2023",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "modality": "drug",
+   "cells": 63430
+  },
+  {
+   "record_id": "remote/scp_McFarlandTsherniak2020",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire con testa separata: farmaci e CRISPR nello stesso file; i farmaci non prevalgono (proprietario)",
+   "modality": "CRISPR, drug",
+   "cells": 182875
+  },
+  {
+   "record_id": "remote/scp_NadigOConner2024_hepg2",
+   "destination": "alias dello stesso esperimento: nessun secondo peso",
+   "units": [
+    "hepg2_nadig"
+   ],
+   "catalogue_state": "fuori: ripubblicazione scPerturb di hepg2_nadig, ingerito dal rilascio originale",
+   "modality": "CRISPR",
+   "cells": 145473
+  },
+  {
+   "record_id": "remote/scp_NadigOConner2024_jurkat",
+   "destination": "alias dello stesso esperimento: nessun secondo peso",
+   "units": [
+    "jurkat_nadig"
+   ],
+   "catalogue_state": "fuori: ripubblicazione scPerturb di jurkat_nadig, ingerito dal rilascio originale",
+   "modality": "CRISPR",
+   "cells": 262956
+  },
+  {
+   "record_id": "remote/scp_NormanWeissman2019_filtered",
+   "destination": "in banca",
+   "units": [
+    "norman2019"
+   ],
+   "catalogue_state": "ingerito (J11, job 119): vedi \u00a71",
+   "modality": "CRISPR",
+   "cells": 111445
+  },
+  {
+   "record_id": "remote/scp_PapalexiSatija2021_eccite_arrayed_protein",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori dalla supervisione RNA: matrice di proteine di superficie (4 feature), altro saggio; vista ausiliaria possibile",
+   "modality": "proteine (ADT)",
+   "cells": 8984
+  },
+  {
+   "record_id": "remote/scp_PapalexiSatija2021_eccite_arrayed_RNA",
+   "destination": "in banca",
+   "units": [
+    "papalexi2021_arrayed"
+   ],
+   "catalogue_state": "ingerito (J13, job 127): vedi \u00a71",
+   "modality": "CRISPR",
+   "cells": 8984
+  },
+  {
+   "record_id": "remote/scp_PapalexiSatija2021_eccite_protein",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori dalla supervisione RNA: matrice di proteine di superficie (4 feature), altro saggio; vista ausiliaria possibile",
+   "modality": "proteine (ADT)",
+   "cells": 20729
+  },
+  {
+   "record_id": "remote/scp_PapalexiSatija2021_eccite_RNA",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire: etichette GENEg1 senza separatore, serve una mappa dichiarata; la parte arrayed \u00e8 in coda",
+   "modality": "CRISPR",
+   "cells": 20729
+  },
+  {
+   "record_id": "remote/scp_ReplogleWeissman2022_K562_essential",
+   "destination": "alias dello stesso esperimento: nessun secondo peso",
+   "units": [
+    "k562_essential"
+   ],
+   "catalogue_state": "fuori: ripubblicazione scPerturb di replogle_k562_essential, ingerito dal rilascio originale",
+   "modality": "CRISPR",
+   "cells": 310385
+  },
+  {
+   "record_id": "remote/scp_ReplogleWeissman2022_K562_gwps",
+   "destination": "alias dello stesso esperimento: nessun secondo peso",
+   "units": [
+    "k562_gwps_a",
+    "k562_gwps_b"
+   ],
+   "catalogue_state": "fuori: ripubblicazione scPerturb di replogle_k562_gwps, ingerito dal rilascio originale",
+   "modality": "CRISPR",
+   "cells": 1989578
+  },
+  {
+   "record_id": "remote/scp_ReplogleWeissman2022_rpe1",
+   "destination": "alias dello stesso esperimento: nessun secondo peso",
+   "units": [
+    "rpe1"
+   ],
+   "catalogue_state": "fuori: ripubblicazione scPerturb di replogle_rpe1, ingerito dal rilascio originale",
+   "modality": "CRISPR",
+   "cells": 247914
+  },
+  {
+   "record_id": "remote/scp_SantinhaPlatt2023",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori: topo (l'asse \u00e8 umano)",
+   "modality": "CRISPR-cas9",
+   "cells": 100134
+  },
+  {
+   "record_id": "remote/scp_SchiebingerLander2019_GSE106340",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "modality": "drug",
+   "cells": 68339
+  },
+  {
+   "record_id": "remote/scp_SchiebingerLander2019_GSE115943",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "modality": "drug",
+   "cells": 259155
+  },
+  {
+   "record_id": "remote/scp_SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_11_screen",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori per ora: enhancer, e TAP-seq misura un pannello di geni",
+   "modality": "CRISPR",
+   "cells": 120310
+  },
+  {
+   "record_id": "remote/scp_SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_8_screen",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori per ora: enhancer, e TAP-seq misura un pannello di geni",
+   "modality": "CRISPR",
+   "cells": 112260
+  },
+  {
+   "record_id": "remote/scp_ShifrutMarson2018",
+   "destination": "in banca",
+   "units": [
+    "shifrut2018"
+   ],
+   "catalogue_state": "ingerito (J14, job 128): vedi \u00a71",
+   "modality": "CRISPR",
+   "cells": 52236
+  },
+  {
+   "record_id": "remote/scp_SrivatsanTrapnell2020_sciplex2",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "modality": "drug",
+   "cells": 24262
+  },
+  {
+   "record_id": "remote/scp_SrivatsanTrapnell2020_sciplex3",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "modality": "drug",
+   "cells": 799317
+  },
+  {
+   "record_id": "remote/scp_SrivatsanTrapnell2020_sciplex4",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "modality": "drug",
+   "cells": 98437
+  },
+  {
+   "record_id": "remote/scp_SunshineHein2023",
+   "destination": "in banca",
+   "units": [
+    "sunshine2023"
+   ],
+   "catalogue_state": "ingerito (J13, job 127): vedi \u00a71",
+   "modality": "CRISPR-cas9",
+   "cells": 90380
+  },
+  {
+   "record_id": "remote/scp_TianKampmann2019_day7neuron",
+   "destination": "in banca",
+   "units": [
+    "tian2019_neuron"
+   ],
+   "catalogue_state": "ingerito (J11, job 119): vedi \u00a71",
+   "modality": "CRISPR",
+   "cells": 182790
+  },
+  {
+   "record_id": "remote/scp_TianKampmann2019_iPSC",
+   "destination": "in banca",
+   "units": [
+    "tian2019_ipsc"
+   ],
+   "catalogue_state": "ingerito (J11, job 119): vedi \u00a71",
+   "modality": "CRISPR",
+   "cells": 275708
+  },
+  {
+   "record_id": "remote/scp_TianKampmann2021_CRISPRa",
+   "destination": "in banca",
+   "units": [
+    "tian2021_crispra"
+   ],
+   "catalogue_state": "ingerito (J11, job 119): vedi \u00a71",
+   "modality": "CRISPR",
+   "cells": 21193
+  },
+  {
+   "record_id": "remote/scp_TianKampmann2021_CRISPRi",
+   "destination": "in banca",
+   "units": [
+    "tian2021_crispri"
+   ],
+   "catalogue_state": "ingerito (J11, job 119): vedi \u00a71",
+   "modality": "CRISPR",
+   "cells": 32300
+  },
+  {
+   "record_id": "remote/scp_WeinrebKlein2020",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori dalla supervisione dei conteggi: X non intero e nessun layer di conteggi grezzi",
+   "modality": "cytokine",
+   "cells": 65075
+  },
+  {
+   "record_id": "remote/scp_WesselsSatija2023",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori per ora: coppie di guide Cas13 per cellula (combinate), nessun gene singolo",
+   "modality": "CRISPR-cas13",
+   "cells": 30707
+  },
+  {
+   "record_id": "remote/scp_XieHon2017",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "fuori per ora: schermo di enhancer, i bersagli non sono geni",
+   "modality": "CRISPR",
+   "cells": 13283
+  },
+  {
+   "record_id": "remote/scp_XuCao2023",
+   "destination": "in banca",
+   "units": [
+    "xu2023"
+   ],
+   "catalogue_state": "ingerito (J15, job 129): vedi \u00a71",
+   "modality": "CRISPRi",
+   "cells": 98315
+  },
+  {
+   "record_id": "remote/scp_ZhaoSims2021",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+   "modality": "drug",
+   "cells": 165748
+  },
+  {
+   "record_id": "remote/southard_fibroblast_CRISPRa_final_pop",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "in ingestione (J09, job 125): vedi \u00a71",
+   "modality": "CRISPRa",
+   "cells": 447301
+  },
+  {
+   "record_id": "remote/southard_fibroblast_CRISPRa_mean_pop",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "solo aggregati: medie per popolazione (vedi sorgenti solo aggregate)",
+   "modality": "CRISPRa",
+   "cells": 10916
+  },
+  {
+   "record_id": "remote/southard_RPE1_CRISPRa_final_population",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "in ingestione (J09, job 125): vedi \u00a71",
+   "modality": "CRISPRa",
+   "cells": 850225
+  },
+  {
+   "record_id": "remote/southard_RPE1_CRISPRa_mean_pop",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "solo aggregati: medie per popolazione (vedi sorgenti solo aggregate)",
+   "modality": "CRISPRa",
+   "cells": 10912
+  },
+  {
+   "record_id": "ingested/hepg2_nadig",
+   "destination": "in banca",
+   "units": [
+    "hepg2_nadig"
+   ],
+   "catalogue_state": "nei tre training, come contesto tenuto fuori (classi C e J)",
+   "modality": null,
+   "cells": 145473
+  },
+  {
+   "record_id": "ingested/jurkat_nadig",
+   "destination": "in banca",
+   "units": [
+    "jurkat_nadig"
+   ],
+   "catalogue_state": "nei tre training",
+   "modality": null,
+   "cells": 262956
+  },
+  {
+   "record_id": "ingested/h1_vcc2025_trainval",
+   "destination": "alias dello stesso esperimento: nessun secondo peso",
+   "units": [
+    "h1_train",
+    "h1_val"
+   ],
+   "catalogue_state": "nei tre training, train e validation letti come un esperimento: 38.176 controlli sono gli stessi nei due file e contano una volta (il test \u00e8 la riserva)",
+   "modality": null,
+   "cells": 320200
+  },
+  {
+   "record_id": "ingested/hipsci_targeted_19",
+   "destination": "in banca",
+   "units": [
+    "hipsci_targeted_19"
+   ],
+   "catalogue_state": "nei tre training (526.843 cellule senza guida assegnata restano fuori dalla supervisione)",
+   "modality": null,
+   "cells": 1161865
+  },
+  {
+   "record_id": "ingested/hipsci_gw_fitness",
+   "destination": "in banca",
+   "units": [
+    "hipsci_gw_fitness"
+   ],
+   "catalogue_state": "fuori dal training: 36 NTC in tutto, da 1 a 5 per linea, sotto il minimo di 30 per chiave; rientra solo con controlli dichiarati (le cellule non assegnate come controlli chiedono prima un'analisi)",
+   "modality": null,
+   "cells": 322746
+  },
+  {
+   "record_id": "ingested/hipsci_gw_nonfitness",
+   "destination": "in banca",
+   "units": [
+    "hipsci_gw_nonfitness"
+   ],
+   "catalogue_state": "fuori dal training: 12 NTC in tutto, come per il fitness",
+   "modality": null,
+   "cells": 396458
+  },
+  {
+   "record_id": "ingested/replogle_k562_gwps",
+   "destination": "in banca",
+   "units": [
+    "k562_gwps_a",
+    "k562_gwps_b"
+   ],
+   "catalogue_state": "nel secondo e nel terzo training (75.328 controlli nel pre-passo r5); i dataset rlab-k562-gwps (codici al posto dei bersagli, E-20260930-003) e rlab-k562-gwps-r2 (ID Ensembl come simboli, E-20260930-004) non entrano in nessun training",
+   "modality": null,
+   "cells": 1989578
+  },
+  {
+   "record_id": "ingested/replogle_k562_essential",
+   "destination": "in banca",
+   "units": [
+    "k562_essential"
+   ],
+   "catalogue_state": "nel secondo e nel terzo training (10.691 controlli nel pre-passo r5); rlab-k562-essential (E-20260930-004) in nessuno",
+   "modality": null,
+   "cells": 310385
+  },
+  {
+   "record_id": "ingested/replogle_rpe1",
+   "destination": "in banca",
+   "units": [
+    "rpe1"
+   ],
+   "catalogue_state": "nel secondo e nel terzo training (11.485 controlli nel pre-passo r5); rlab-rpe1 (E-20260930-004) in nessuno",
+   "modality": null,
+   "cells": 247914
+  },
+  {
+   "record_id": "ingested/a549_ko",
+   "destination": "alias dello stesso esperimento: nessun secondo peso",
+   "units": [
+    "a549_ko"
+   ],
+   "catalogue_state": "nel terzo training (KO)",
+   "modality": null,
+   "cells": 606075
+  },
+  {
+   "record_id": "ingested/tian_norman",
+   "destination": "alias dello stesso esperimento: nessun secondo peso",
+   "units": [
+    "norman2019",
+    "tian2019_ipsc",
+    "tian2019_neuron",
+    "tian2021_crispra",
+    "tian2021_crispri"
+   ],
+   "catalogue_state": "nel terzo training: Tian 2019 iPSC 275.708 e neuroni 182.790, Tian 2021 CRISPRi 32.300 e CRISPRa 21.193, Norman 2019 (K562 CRISPRa, combinate con una classe loro) 111.445",
+   "modality": null,
+   "cells": 623436
+  },
+  {
+   "record_id": "ingested/kolf_small",
+   "destination": "alias dello stesso esperimento: nessun secondo peso",
+   "units": [
+    "kolf_chromatin",
+    "kolf_metabolic"
+   ],
+   "catalogue_state": "nel terzo training: cromatina 44.039 (shard del 116 riusati), metabolico 117.768",
+   "modality": null,
+   "cells": 161807
+  },
+  {
+   "record_id": "ingested/kolf_strong",
+   "destination": "alias dello stesso esperimento: nessun secondo peso",
+   "units": [
+    "kolf_strong"
+   ],
+   "catalogue_state": "nel terzo training",
+   "modality": null,
+   "cells": 232438
+  },
+  {
+   "record_id": "ingested/southard",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "in ingestione: RPE1 850.225 e Hs27 447.301 cellule (CRISPRa), lette da Zenodo a circa uno shard ogni 9 minuti; fuori dal terzo training perch\u00e9 non pubblicato al lancio del suo pre-passo",
+   "modality": null,
+   "cells": null
+  },
+  {
+   "record_id": "ingested/scp_ko_frangieh_sunshine_papalexi",
+   "destination": "alias dello stesso esperimento: nessun secondo peso",
+   "units": [
+    "frangieh2021",
+    "sunshine2023",
+    "papalexi2021_arrayed"
+   ],
+   "catalogue_state": "pubblicato, in nessun training ancora: Frangieh 2021 218.331 (tre contesti: Control, IFN\u03b3, co-coltura), Sunshine 2023 90.380, Papalexi 2021 arrayed 8.984",
+   "modality": null,
+   "cells": 317695
+  },
+  {
+   "record_id": "ingested/scp_tcells_shifrut_datlinger",
+   "destination": "alias dello stesso esperimento: nessun secondo peso",
+   "units": [
+    "shifrut2018",
+    "datlinger2017",
+    "datlinger2021"
+   ],
+   "catalogue_state": "pubblicato, in nessun training ancora: Shifrut 2018 52.236 (quattro contesti, donatore per stimolo), Datlinger 2017 5.905 e 2021 39.194 (stimolate e non)",
+   "modality": null,
+   "cells": 97335
+  },
+  {
+   "record_id": "ingested/scp_k562_hek_dixit_xu",
+   "destination": "alias dello stesso esperimento: nessun secondo peso",
+   "units": [
+    "dixit2016_d7",
+    "dixit2016_d13",
+    "dixit2016_high_moi",
+    "xu2023"
+   ],
+   "catalogue_state": "pubblicato, in nessun training ancora: Dixit 2016 giorno 7 33.013, giorno 13 19.268, alta MOI 51.898 (controlli i tagli intergenici), Xu 2023 HEK293 CRISPRi 98.315",
+   "modality": null,
+   "cells": 202494
+  },
+  {
+   "record_id": "ingested/jurkat_gse249595",
+   "destination": "solo archivio grezzo (davidmaisterx/rlab-jurkat-gse249595): nessuna banca",
+   "units": [],
+   "catalogue_state": "fuori: nessuna chiamata delle guide nel rilascio; si supervisiona dopo un'assegnazione provata",
+   "modality": null,
+   "cells": null
+  },
+  {
+   "record_id": "aggregate_only/dld1_gse337988",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "DLD-1, GSE337988 ; effetti (LFC e SE su un pannello di risposte) ; file per cellula da verificare",
+   "modality": null,
+   "cells": null
+  },
+  {
+   "record_id": "aggregate_only/mixscale (parte DE)",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "Mixscale, Zenodo 14518762 ; espressione differenziale per linea e stimolo ; le cellule esistono come oggetti Seurat (IFNG, IFNB, INS, TGFB, TNFA): servono R e un adattatore",
+   "modality": null,
+   "cells": null
+  },
+  {
+   "record_id": "aggregate_only/southard_*_mean_pop",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "Southard 2025, medie per popolazione ; medie con p e p aggiustati (matrici dense non intere) ; le cellule sono nei file final_pop dello stesso studio",
+   "modality": null,
+   "cells": null
+  },
+  {
+   "record_id": "aggregate_only/depmap_24q4",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "DepMap 24Q4 ; bulk basale (espressione e dipendenza) ; covariate ausiliarie, mai supervisione",
+   "modality": null,
+   "cells": null
+  },
+  {
+   "record_id": "aggregate_only/catalogo_accessioni",
+   "destination": "non in banca",
+   "units": [],
+   "catalogue_state": "77 accessioni del catalogo del 26/09 ; solo menzioni ; da riconciliare una per una",
+   "modality": null,
+   "cells": null
+  }
+ ]
+}

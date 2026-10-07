@@ -1,0 +1,71 @@
+{
+ "utc": "2026-10-06T23:36:04.225372+00:00",
+ "slug": "davidmaisterx/vcc-fonte-a549-ko-r1",
+ "stage": "reports/modelli/banca_canonica_2026-10-07/derivazioni/a549_ko/r1/package",
+ "code": {
+  "bytes": 103680,
+  "sha256": "df4cb8b5bbfc5fefdda9d742cccf9f763d2b84bfcffd1488d6f71583d78d5c13"
+ },
+ "params": {
+  "bytes": 6199,
+  "sha256": "eca88a123a83de7882f51de9782a707f3f54d9384301f83a81536d5d5f77e315"
+ },
+ "metadata": {
+  "bytes": 384,
+  "sha256": "e448c587a1d5e481d08ff65794f86416a392990d25660b255972175c8be284dd"
+ },
+ "modules": {
+  "adapter.py": {
+   "bytes": 6219,
+   "sha256": "f10b1e4d4d51e8e29e4930de4f5b358d8b9c5ff8a2dab3c407f257712ca63865"
+  },
+  "estimator.py": {
+   "bytes": 11897,
+   "sha256": "63e29813b955e42319e0a11e79311429d566a68f35132dd5b850e2e63185334d"
+  },
+  "runtime.py": {
+   "bytes": 17731,
+   "sha256": "415c030c55942d221a4452277bd2a1457799fa58820d5c2490ff2af084993493"
+  },
+  "gene_names.csv": {
+   "bytes": 119295,
+   "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  "pert_counts.csv": {
+   "bytes": 1906,
+   "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276"
+  },
+  "params.json": {
+   "bytes": 6199,
+   "sha256": "eca88a123a83de7882f51de9782a707f3f54d9384301f83a81536d5d5f77e315"
+  }
+ },
+ "plan": {
+  "name": "a549_ko",
+  "arm": "ko",
+  "units": [
+   "a549_ko"
+  ],
+  "cells_by_role": {
+   "outside_frozen_panel": 546810,
+   "panel_target": 13945,
+   "control": 45320
+  },
+  "contexts": [
+   {
+    "context": "A549",
+    "condition": "MISSING",
+    "control_cells": 45320,
+    "donors_with_controls": 1,
+    "donors_with_targets": 1,
+    "donors_without_controls": [],
+    "panel_targets": 21,
+    "panel_targets_min_cells": 21,
+    "target_cells": 13945
+   }
+  ],
+  "runnable": true
+ },
+ "full_training": false,
+ "compute_started": false
+}

@@ -1,0 +1,6866 @@
+{
+ "state": "derived_production_fragment",
+ "name": "k562_gwps_sc",
+ "study": "replogle_k562_gwps",
+ "modality": "CRISPRi",
+ "arm": "crispri_same_study_as_k562_bulk",
+ "full_training": false,
+ "not_heldout_validation": true,
+ "hidden_targets": [],
+ "held_groups": [],
+ "input_files": {
+  "k562_gwps_a": {
+   "count_sum.npz": "/kaggle/input/notebooks/davideferrante11/vcc-derivatives-rlab-k562-gwps-r3/bank/k562_gwps_a/count_sum.npz",
+   "mask.npz": "/kaggle/input/notebooks/davideferrante11/vcc-derivatives-rlab-k562-gwps-r3/bank/k562_gwps_a/mask.npz",
+   "rows.csv": "/kaggle/input/notebooks/davideferrante11/vcc-derivatives-rlab-k562-gwps-r3/bank/k562_gwps_a/rows.csv",
+   "complete.json": "/kaggle/input/notebooks/davideferrante11/vcc-derivatives-rlab-k562-gwps-r3/bank/k562_gwps_a/complete.json"
+  },
+  "k562_gwps_b": {
+   "count_sum.npz": "/kaggle/input/notebooks/davideferrante11/vcc-derivatives-rlab-k562-gwps-r3/bank/k562_gwps_b/count_sum.npz",
+   "mask.npz": "/kaggle/input/notebooks/davideferrante11/vcc-derivatives-rlab-k562-gwps-r3/bank/k562_gwps_b/mask.npz",
+   "rows.csv": "/kaggle/input/notebooks/davideferrante11/vcc-derivatives-rlab-k562-gwps-r3/bank/k562_gwps_b/rows.csv",
+   "complete.json": "/kaggle/input/notebooks/davideferrante11/vcc-derivatives-rlab-k562-gwps-r3/bank/k562_gwps_b/complete.json"
+  }
+ },
+ "input_hashes": {
+  "k562_gwps_a": {
+   "count_sum.npz": {
+    "bytes": 177053982,
+    "sha256": "4b7319788b4962fe9b6e8b451d789fba8e34db16be709206b4ac480f46c4faec"
+   },
+   "mask.npz": {
+    "bytes": 28850198,
+    "sha256": "b5aa5b9c063264aabe4060c242cfcc459c7a57bd1cdcd57a3d78629d793494d1"
+   },
+   "rows.csv": {
+    "bytes": 737476,
+    "sha256": "29eedeb799cf243f2a5e67d71ee8c334cded26c2f5b73ce6b17fd818ada06fdb"
+   },
+   "complete.json": {
+    "bytes": 4950,
+    "sha256": "3ebb3f724224d72341b50fda235b9df35c47421cae6be2e4ac897ec37eba0602"
+   }
+  },
+  "k562_gwps_b": {
+   "count_sum.npz": {
+    "bytes": 176220488,
+    "sha256": "d883ca9e71e2a21cd2e585c52a851660e8b1190ab8285c6b124754ee9210015f"
+   },
+   "mask.npz": {
+    "bytes": 28856040,
+    "sha256": "dc273ef4cccbddc424800012d1fda735f5aa370295017043cc475bcb4f481efe"
+   },
+   "rows.csv": {
+    "bytes": 737575,
+    "sha256": "7f5531a363da0faa595bd5bfa9a125f160e48e17b8b96c7cd6d662e5a3f96255"
+   },
+   "complete.json": {
+    "bytes": 4946,
+    "sha256": "a751094c80bce83824ebf3464cf1756f8b1484ad3732c7d282e93e2d2ce47a36"
+   }
+  }
+ },
+ "producers": {
+  "k562_gwps_a": {
+   "kernel_id": 137172586,
+   "version": 1,
+   "private": true,
+   "version_ref": "davideferrante11/vcc-derivatives-rlab-k562-gwps-r3/versions/1",
+   "saved_source_sha256": "d5794a8794afdeb721fa115e563198438e41c4641ba331ec77b873cfe3cc9f74",
+   "version_stable_during_output_read": true
+  },
+  "k562_gwps_b": {
+   "kernel_id": 137172586,
+   "version": 1,
+   "private": true,
+   "version_ref": "davideferrante11/vcc-derivatives-rlab-k562-gwps-r3/versions/1",
+   "saved_source_sha256": "d5794a8794afdeb721fa115e563198438e41c4641ba331ec77b873cfe3cc9f74",
+   "version_stable_during_output_read": true
+  }
+ },
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+ "params_sha256": "d72ceeb22e6031dfe37f72bcd0b7efe6ffdd46dec40a093c2f5ad4dfbad622d7",
+ "recipe": {
+  "phi": 0.2,
+  "min_control_frac": 1e-06,
+  "min_cells": 10.0,
+  "pseudo": 0.5,
+  "pseudo_scale": "constant",
+  "min_expected": 1.0
+ },
+ "inventory": [
+  {
+   "unit": "k562_gwps_a",
+   "bank_rows": 9865,
+   "cells_by_role": {
+    "outside_frozen_panel": 937014,
+    "panel_target": 25201,
+    "control": 37785
+   },
+   "rows_by_role": {
+    "outside_frozen_panel": 9592,
+    "panel_target": 272,
+    "control": 1
+   },
+   "selected_rows": 273
+  },
+  {
+   "unit": "k562_gwps_b",
+   "bank_rows": 9867,
+   "cells_by_role": {
+    "outside_frozen_panel": 927108,
+    "panel_target": 24927,
+    "control": 37543
+   },
+   "rows_by_role": {
+    "outside_frozen_panel": 9594,
+    "panel_target": 272,
+    "control": 1
+   },
+   "selected_rows": 273
+  }
+ ],
+ "validation_excluded": 0,
+ "merge_blocks": true,
+ "aggregation": "one context; donors pooled before shrink",
+ "identity_policy": "unreported donor/condition/chemistry namespaced to the study; no imputation",
+ "crosswalk": "exact native label equal to a frozen panel symbol; every other label is inventoried, not resolved",
+ "contexts": [
+  {
+   "context": [
+    "replogle_k562_gwps",
+    "K562",
+    "UNREPORTED@replogle_k562_gwps",
+    "CRISPRi",
+    "10x 3' v3"
+   ],
+   "targets": [
+    "ACLY",
+    "ADNP",
+    "AGO1",
+    "AKAP1",
+    "AKIRIN1",
+    "AKT2",
+    "ALG12",
+    "ANKRD52",
+    "ANKZF1",
+    "ANP32B",
+    "AP2A2",
+    "API5",
+    "ARL14EP",
+    "ASCC2",
+    "BCKDK",
+    "BCL6",
+    "BCL7C",
+    "BRD1",
+    "BRPF1",
+    "C5orf22",
+    "CAND1",
+    "CARM1",
+    "CAT",
+    "CCDC112",
+    "CDK8",
+    "CHD3",
+    "CHD6",
+    "CHKB",
+    "CLCN6",
+    "COIL",
+    "COMMD8",
+    "COQ10B",
+    "CSNK2A1",
+    "CYTH2",
+    "DBF4B",
+    "DBN1",
+    "DCAF16",
+    "DCP2",
+    "DDHD1",
+    "DEAF1",
+    "DEK",
+    "DHRS1",
+    "DHX35",
+    "DLAT",
+    "DMTF1",
+    "DNTTIP1",
+    "DRG2",
+    "DTNBP1",
+    "DVL3",
+    "E2F1",
+    "E2F4",
+    "EAPP",
+    "EEF1A2",
+    "ELK1",
+    "EPC2",
+    "EPM2AIP1",
+    "EZH2",
+    "FAM120A",
+    "FCGRT",
+    "FHL3",
+    "FOXN2",
+    "FOXO4",
+    "FUBP3",
+    "FXYD5",
+    "FZD2",
+    "GIGYF2",
+    "GLI3",
+    "GLYR1",
+    "GMEB2",
+    "GPATCH8",
+    "GRAMD1A",
+    "GTF2IRD1",
+    "HDAC1",
+    "HDAC8",
+    "HMGN3",
+    "HMGN4",
+    "HMGXB3",
+    "HOMEZ",
+    "HSBP1",
+    "HSP90AB1",
+    "IFI27L2",
+    "IFNAR2",
+    "IFNGR2",
+    "IL10RB",
+    "IREB2",
+    "KDM5A",
+    "KHDRBS1",
+    "KHSRP",
+    "KIF2A",
+    "KMT2A",
+    "LDLR",
+    "LENG1",
+    "LMAN1",
+    "LMBRD2",
+    "LPCAT3",
+    "MAN2A1",
+    "MAP2K2",
+    "MAPK12",
+    "MARCKSL1",
+    "MBD4",
+    "MED13",
+    "MED15",
+    "MED25",
+    "MLLT10",
+    "MSANTD4",
+    "MSI2",
+    "MTA1",
+    "MTF1",
+    "MTHFSD",
+    "MTM1",
+    "MYD88",
+    "MYPOP",
+    "MYRF",
+    "NABP2",
+    "NAIF1",
+    "NCLN",
+    "NFE2L1",
+    "NGLY1",
+    "NIPAL3",
+    "NIPSNAP3A",
+    "NT5DC1",
+    "NUP37",
+    "PAN2",
+    "PAPOLA",
+    "PATL1",
+    "PCGF1",
+    "PCGF6",
+    "PDCD4",
+    "PDE6D",
+    "PDK1",
+    "PGLS",
+    "PHF19",
+    "PHF23",
+    "PHF8",
+    "PI4KB",
+    "PIM2",
+    "PIN1",
+    "PINK1",
+    "PKN3",
+    "PLAGL2",
+    "PLCG1",
+    "PNP",
+    "POLD4",
+    "POR",
+    "PPIF",
+    "PPIP5K2",
+    "PQBP1",
+    "PRDX3",
+    "PRKAB2",
+    "PRKACA",
+    "PRMT2",
+    "PRMT6",
+    "PRMT7",
+    "PRNP",
+    "PSKH1",
+    "PTMS",
+    "PTOV1",
+    "PYCR1",
+    "R3HCC1L",
+    "RAB5A",
+    "RABEP2",
+    "RBM18",
+    "RBM26",
+    "RBM4B",
+    "RBM5",
+    "RC3H2",
+    "REV1",
+    "RFK",
+    "RNF10",
+    "RNF141",
+    "RNF2",
+    "RSRC1",
+    "S100A11",
+    "SAP30L",
+    "SCAF8",
+    "SFXN4",
+    "SH2D3A",
+    "SHPRH",
+    "SIN3B",
+    "SLC25A13",
+    "SLC39A1",
+    "SLIRP",
+    "SMARCA5",
+    "SMARCC2",
+    "SMYD2",
+    "SND1",
+    "SNRK",
+    "SNX4",
+    "SRSF5",
+    "SSR4",
+    "STAT6",
+    "STK3",
+    "STT3A",
+    "SUPT7L",
+    "SYVN1",
+    "TAF15",
+    "TARBP2",
+    "TBC1D13",
+    "TBCK",
+    "TEAD4",
+    "TEX2",
+    "TFCP2",
+    "THAP3",
+    "THAP7",
+    "TIMM17B",
+    "TIMM50",
+    "TMCO6",
+    "TMED3",
+    "TMEM147",
+    "TMEM186",
+    "TMEM209",
+    "TMEM41B",
+    "TMF1",
+    "TRAPPC6A",
+    "TRIB3",
+    "TRIM35",
+    "TRIP4",
+    "TRMT1",
+    "TRPC4AP",
+    "TWF2",
+    "UNK",
+    "UPF3B",
+    "UROS",
+    "USP28",
+    "VAPB",
+    "VIM",
+    "WBP4",
+    "YIPF6",
+    "ZBTB34",
+    "ZBTB41",
+    "ZBTB48",
+    "ZC3HAV1",
+    "ZDHHC12",
+    "ZDHHC4",
+    "ZFP62",
+    "ZHX3",
+    "ZKSCAN1",
+    "ZKSCAN2",
+    "ZKSCAN3",
+    "ZNF16",
+    "ZNF174",
+    "ZNF219",
+    "ZNF22",
+    "ZNF25",
+    "ZNF251",
+    "ZNF280C",
+    "ZNF282",
+    "ZNF32",
+    "ZNF324",
+    "ZNF397",
+    "ZNF410",
+    "ZNF444",
+    "ZNF462",
+    "ZNF496",
+    "ZNF507",
+    "ZNF514",
+    "ZNF526",
+    "ZNF530",
+    "ZNF543",
+    "ZNF627",
+    "ZNF628",
+    "ZNF641",
+    "ZNF670",
+    "ZNF714",
+    "ZNF740",
+    "ZNF768",
+    "ZNF777",
+    "ZNF783",
+    "ZNF784",
+    "ZNF786",
+    "ZNF821",
+    "ZRANB3"
+   ],
+   "n_cells": [
+    90.0,
+    156.0,
+    165.0,
+    126.0,
+    126.0,
+    105.0,
+    168.0,
+    13.0,
+    252.0,
+    260.0,
+    193.0,
+    206.0,
+    233.0,
+    182.0,
+    293.0,
+    155.0,
+    119.0,
+    246.0,
+    230.0,
+    208.0,
+    59.0,
+    156.0,
+    220.0,
+    91.0,
+    181.0,
+    174.0,
+    185.0,
+    197.0,
+    236.0,
+    148.0,
+    157.0,
+    160.0,
+    153.0,
+    203.0,
+    158.0,
+    187.0,
+    84.0,
+    241.0,
+    126.0,
+    100.0,
+    140.0,
+    126.0,
+    71.0,
+    18.0,
+    40.0,
+    267.0,
+    188.0,
+    327.0,
+    338.0,
+    226.0,
+    158.0,
+    216.0,
+    273.0,
+    143.0,
+    259.0,
+    87.0,
+    198.0,
+    228.0,
+    224.0,
+    320.0,
+    232.0,
+    293.0,
+    118.0,
+    318.0,
+    187.0,
+    251.0,
+    324.0,
+    237.0,
+    140.0,
+    284.0,
+    255.0,
+    93.0,
+    165.0,
+    133.0,
+    130.0,
+    177.0,
+    342.0,
+    198.0,
+    168.0,
+    74.0,
+    89.0,
+    183.0,
+    295.0,
+    241.0,
+    157.0,
+    185.0,
+    129.0,
+    101.0,
+    301.0,
+    205.0,
+    175.0,
+    66.0,
+    244.0,
+    169.0,
+    129.0,
+    196.0,
+    185.0,
+    46.0,
+    150.0,
+    200.0,
+    268.0,
+    306.0,
+    186.0,
+    198.0,
+    140.0,
+    136.0,
+    144.0,
+    168.0,
+    188.0,
+    188.0,
+    355.0,
+    144.0,
+    450.0,
+    664.0,
+    264.0,
+    74.0,
+    93.0,
+    212.0,
+    133.0,
+    123.0,
+    207.0,
+    135.0,
+    215.0,
+    48.0,
+    112.0,
+    260.0,
+    179.0,
+    190.0,
+    311.0,
+    69.0,
+    231.0,
+    18.0,
+    261.0,
+    188.0,
+    63.0,
+    216.0,
+    37.0,
+    1745.0,
+    197.0,
+    278.0,
+    213.0,
+    270.0,
+    352.0,
+    260.0,
+    256.0,
+    121.0,
+    135.0,
+    217.0,
+    272.0,
+    64.0,
+    217.0,
+    113.0,
+    157.0,
+    193.0,
+    110.0,
+    186.0,
+    79.0,
+    355.0,
+    134.0,
+    163.0,
+    254.0,
+    168.0,
+    168.0,
+    199.0,
+    99.0,
+    166.0,
+    147.0,
+    46.0,
+    281.0,
+    314.0,
+    114.0,
+    69.0,
+    199.0,
+    149.0,
+    181.0,
+    149.0,
+    175.0,
+    224.0,
+    92.0,
+    152.0,
+    203.0,
+    49.0,
+    140.0,
+    272.0,
+    205.0,
+    207.0,
+    224.0,
+    74.0,
+    201.0,
+    128.0,
+    23.0,
+    185.0,
+    66.0,
+    127.0,
+    169.0,
+    282.0,
+    92.0,
+    200.0,
+    188.0,
+    144.0,
+    290.0,
+    330.0,
+    146.0,
+    299.0,
+    138.0,
+    53.0,
+    113.0,
+    258.0,
+    93.0,
+    79.0,
+    197.0,
+    41.0,
+    143.0,
+    163.0,
+    167.0,
+    382.0,
+    137.0,
+    177.0,
+    99.0,
+    284.0,
+    225.0,
+    193.0,
+    217.0,
+    180.0,
+    148.0,
+    100.0,
+    234.0,
+    81.0,
+    154.0,
+    154.0,
+    83.0,
+    183.0,
+    282.0,
+    125.0,
+    131.0,
+    261.0,
+    323.0,
+    136.0,
+    92.0,
+    88.0,
+    23.0,
+    74.0,
+    149.0,
+    184.0,
+    219.0,
+    64.0,
+    362.0,
+    108.0,
+    47.0,
+    63.0,
+    125.0,
+    198.0,
+    300.0,
+    148.0,
+    279.0,
+    300.0,
+    212.0,
+    264.0,
+    211.0,
+    150.0,
+    147.0,
+    144.0,
+    101.0,
+    67.0,
+    151.0,
+    168.0,
+    70.0,
+    166.0,
+    182.0,
+    152.0,
+    336.0,
+    45.0
+   ],
+   "control_cells": 75328.0,
+   "donors": [
+    "UNREPORTED@replogle_k562_gwps"
+   ],
+   "bank_rows": [
+    [
+     "k562_gwps_a:80",
+     "k562_gwps_b:80"
+    ],
+    [
+     "k562_gwps_a:144",
+     "k562_gwps_b:144"
+    ],
+    [
+     "k562_gwps_a:171",
+     "k562_gwps_b:171"
+    ],
+    [
+     "k562_gwps_a:206",
+     "k562_gwps_b:206"
+    ],
+    [
+     "k562_gwps_a:214",
+     "k562_gwps_b:214"
+    ],
+    [
+     "k562_gwps_a:224",
+     "k562_gwps_b:224"
+    ],
+    [
+     "k562_gwps_a:241",
+     "k562_gwps_b:241"
+    ],
+    [
+     "k562_gwps_a:318",
+     "k562_gwps_b:318"
+    ],
+    [
+     "k562_gwps_a:324",
+     "k562_gwps_b:324"
+    ],
+    [
+     "k562_gwps_a:329",
+     "k562_gwps_b:329"
+    ],
+    [
+     "k562_gwps_a:351",
+     "k562_gwps_b:351"
+    ],
+    [
+     "k562_gwps_a:378",
+     "k562_gwps_b:378"
+    ],
+    [
+     "k562_gwps_a:467",
+     "k562_gwps_b:467"
+    ],
+    [
+     "k562_gwps_a:527",
+     "k562_gwps_b:527"
+    ],
+    [
+     "k562_gwps_a:739",
+     "k562_gwps_b:739"
+    ],
+    [
+     "k562_gwps_a:748",
+     "k562_gwps_b:748"
+    ],
+    [
+     "k562_gwps_a:752",
+     "k562_gwps_b:752"
+    ],
+    [
+     "k562_gwps_a:823",
+     "k562_gwps_b:823"
+    ],
+    [
+     "k562_gwps_a:840",
+     "k562_gwps_b:840"
+    ],
+    [
+     "k562_gwps_a:972",
+     "k562_gwps_b:972"
+    ],
+    [
+     "k562_gwps_a:1025",
+     "k562_gwps_b:1025"
+    ],
+    [
+     "k562_gwps_a:1045",
+     "k562_gwps_b:1045"
+    ],
+    [
+     "k562_gwps_a:1062",
+     "k562_gwps_b:1062"
+    ],
+    [
+     "k562_gwps_a:1090",
+     "k562_gwps_b:1090"
+    ],
+    [
+     "k562_gwps_a:1273",
+     "k562_gwps_b:1273"
+    ],
+    [
+     "k562_gwps_a:1385",
+     "k562_gwps_b:1385"
+    ],
+    [
+     "k562_gwps_a:1387",
+     "k562_gwps_b:1387"
+    ],
+    [
+     "k562_gwps_a:1400",
+     "k562_gwps_b:1400"
+    ],
+    [
+     "k562_gwps_a:1464",
+     "k562_gwps_b:1464"
+    ],
+    [
+     "k562_gwps_a:1565",
+     "k562_gwps_b:1565"
+    ],
+    [
+     "k562_gwps_a:1579",
+     "k562_gwps_b:1579"
+    ],
+    [
+     "k562_gwps_a:1602",
+     "k562_gwps_b:1602"
+    ],
+    [
+     "k562_gwps_a:1715",
+     "k562_gwps_b:1715"
+    ],
+    [
+     "k562_gwps_a:1821",
+     "k562_gwps_b:1821"
+    ],
+    [
+     "k562_gwps_a:1843",
+     "k562_gwps_b:1843"
+    ],
+    [
+     "k562_gwps_a:1845",
+     "k562_gwps_b:1845"
+    ],
+    [
+     "k562_gwps_a:1859",
+     "k562_gwps_b:1859"
+    ],
+    [
+     "k562_gwps_a:1874",
+     "k562_gwps_b:1874"
+    ],
+    [
+     "k562_gwps_a:1893",
+     "k562_gwps_b:1893"
+    ],
+    [
+     "k562_gwps_a:1934",
+     "k562_gwps_b:1934"
+    ],
+    [
+     "k562_gwps_a:1942",
+     "k562_gwps_b:1942"
+    ],
+    [
+     "k562_gwps_a:1984",
+     "k562_gwps_b:1984"
+    ],
+    [
+     "k562_gwps_a:2003",
+     "k562_gwps_b:2003"
+    ],
+    [
+     "k562_gwps_a:2028",
+     "k562_gwps_b:2028"
+    ],
+    [
+     "k562_gwps_a:2058",
+     "k562_gwps_b:2058"
+    ],
+    [
+     "k562_gwps_a:2110",
+     "k562_gwps_b:2110"
+    ],
+    [
+     "k562_gwps_a:2158",
+     "k562_gwps_b:2158"
+    ],
+    [
+     "k562_gwps_a:2172",
+     "k562_gwps_b:2172"
+    ],
+    [
+     "k562_gwps_a:2197",
+     "k562_gwps_b:2197"
+    ],
+    [
+     "k562_gwps_a:2215",
+     "k562_gwps_b:2215"
+    ],
+    [
+     "k562_gwps_a:2218",
+     "k562_gwps_b:2218"
+    ],
+    [
+     "k562_gwps_a:2226",
+     "k562_gwps_b:2226"
+    ],
+    [
+     "k562_gwps_a:2259",
+     "k562_gwps_b:2259"
+    ],
+    [
+     "k562_gwps_a:2359",
+     "k562_gwps_b:2359"
+    ],
+    [
+     "k562_gwps_a:2431",
+     "k562_gwps_b:2431"
+    ],
+    [
+     "k562_gwps_a:2437",
+     "k562_gwps_b:2437"
+    ],
+    [
+     "k562_gwps_a:2550",
+     "k562_gwps_b:2550"
+    ],
+    [
+     "k562_gwps_a:2579",
+     "k562_gwps_b:2579"
+    ],
+    [
+     "k562_gwps_a:2730",
+     "k562_gwps_b:2730"
+    ],
+    [
+     "k562_gwps_a:2764",
+     "k562_gwps_b:2764"
+    ],
+    [
+     "k562_gwps_a:2851",
+     "k562_gwps_b:2851"
+    ],
+    [
+     "k562_gwps_a:2856",
+     "k562_gwps_b:2856"
+    ],
+    [
+     "k562_gwps_a:2885",
+     "k562_gwps_b:2885"
+    ],
+    [
+     "k562_gwps_a:2900",
+     "k562_gwps_b:2900"
+    ],
+    [
+     "k562_gwps_a:2903",
+     "k562_gwps_b:2903"
+    ],
+    [
+     "k562_gwps_a:3026",
+     "k562_gwps_b:3026"
+    ],
+    [
+     "k562_gwps_a:3051",
+     "k562_gwps_b:3051"
+    ],
+    [
+     "k562_gwps_a:3070",
+     "k562_gwps_b:3070"
+    ],
+    [
+     "k562_gwps_a:3075",
+     "k562_gwps_b:3075"
+    ],
+    [
+     "k562_gwps_a:3147",
+     "k562_gwps_b:3147"
+    ],
+    [
+     "k562_gwps_a:3177",
+     "k562_gwps_b:3177"
+    ],
+    [
+     "k562_gwps_a:3231",
+     "k562_gwps_b:3231"
+    ],
+    [
+     "k562_gwps_a:3307",
+     "k562_gwps_b:3307"
+    ],
+    [
+     "k562_gwps_a:3314",
+     "k562_gwps_b:3314"
+    ],
+    [
+     "k562_gwps_a:3463",
+     "k562_gwps_b:3463"
+    ],
+    [
+     "k562_gwps_a:3464",
+     "k562_gwps_b:3464"
+    ],
+    [
+     "k562_gwps_a:3466",
+     "k562_gwps_b:3466"
+    ],
+    [
+     "k562_gwps_a:3500",
+     "k562_gwps_b:3500"
+    ],
+    [
+     "k562_gwps_a:3558",
+     "k562_gwps_b:3558"
+    ],
+    [
+     "k562_gwps_a:3578",
+     "k562_gwps_b:3578"
+    ],
+    [
+     "k562_gwps_a:3639",
+     "k562_gwps_b:3639"
+    ],
+    [
+     "k562_gwps_a:3646",
+     "k562_gwps_b:3646"
+    ],
+    [
+     "k562_gwps_a:3648",
+     "k562_gwps_b:3648"
+    ],
+    [
+     "k562_gwps_a:3684",
+     "k562_gwps_b:3684"
+    ],
+    [
+     "k562_gwps_a:3774",
+     "k562_gwps_b:3774"
+    ],
+    [
+     "k562_gwps_a:3909",
+     "k562_gwps_b:3909"
+    ],
+    [
+     "k562_gwps_a:3919",
+     "k562_gwps_b:3919"
+    ],
+    [
+     "k562_gwps_a:3922",
+     "k562_gwps_b:3922"
+    ],
+    [
+     "k562_gwps_a:3955",
+     "k562_gwps_b:3955"
+    ],
+    [
+     "k562_gwps_a:4008",
+     "k562_gwps_b:4008"
+    ],
+    [
+     "k562_gwps_a:4097",
+     "k562_gwps_b:4097"
+    ],
+    [
+     "k562_gwps_a:4102",
+     "k562_gwps_b:4102"
+    ],
+    [
+     "k562_gwps_a:4150",
+     "k562_gwps_b:4150"
+    ],
+    [
+     "k562_gwps_a:4156",
+     "k562_gwps_b:4156"
+    ],
+    [
+     "k562_gwps_a:4173",
+     "k562_gwps_b:4173"
+    ],
+    [
+     "k562_gwps_a:4315",
+     "k562_gwps_b:4315"
+    ],
+    [
+     "k562_gwps_a:4329",
+     "k562_gwps_b:4329"
+    ],
+    [
+     "k562_gwps_a:4353",
+     "k562_gwps_b:4353"
+    ],
+    [
+     "k562_gwps_a:4375",
+     "k562_gwps_b:4375"
+    ],
+    [
+     "k562_gwps_a:4396",
+     "k562_gwps_b:4396"
+    ],
+    [
+     "k562_gwps_a:4455",
+     "k562_gwps_b:4456"
+    ],
+    [
+     "k562_gwps_a:4458",
+     "k562_gwps_b:4459"
+    ],
+    [
+     "k562_gwps_a:4468",
+     "k562_gwps_b:4469"
+    ],
+    [
+     "k562_gwps_a:4611",
+     "k562_gwps_b:4612"
+    ],
+    [
+     "k562_gwps_a:4779",
+     "k562_gwps_b:4780"
+    ],
+    [
+     "k562_gwps_a:4786",
+     "k562_gwps_b:4787"
+    ],
+    [
+     "k562_gwps_a:4801",
+     "k562_gwps_b:4802"
+    ],
+    [
+     "k562_gwps_a:4809",
+     "k562_gwps_b:4810"
+    ],
+    [
+     "k562_gwps_a:4824",
+     "k562_gwps_b:4825"
+    ],
+    [
+     "k562_gwps_a:4827",
+     "k562_gwps_b:4828"
+    ],
+    [
+     "k562_gwps_a:4870",
+     "k562_gwps_b:4871"
+    ],
+    [
+     "k562_gwps_a:4895",
+     "k562_gwps_b:4896"
+    ],
+    [
+     "k562_gwps_a:4896",
+     "k562_gwps_b:4897"
+    ],
+    [
+     "k562_gwps_a:4926",
+     "k562_gwps_b:4927"
+    ],
+    [
+     "k562_gwps_a:4940",
+     "k562_gwps_b:4941"
+    ],
+    [
+     "k562_gwps_a:4988",
+     "k562_gwps_b:4989"
+    ],
+    [
+     "k562_gwps_a:5107",
+     "k562_gwps_b:5108"
+    ],
+    [
+     "k562_gwps_a:5132",
+     "k562_gwps_b:5133"
+    ],
+    [
+     "k562_gwps_a:5148",
+     "k562_gwps_b:5149"
+    ],
+    [
+     "k562_gwps_a:5152",
+     "k562_gwps_b:5153"
+    ],
+    [
+     "k562_gwps_a:5309",
+     "k562_gwps_b:5310"
+    ],
+    [
+     "k562_gwps_a:5314",
+     "k562_gwps_b:5315"
+    ],
+    [
+     "k562_gwps_a:5362",
+     "k562_gwps_b:5363"
+    ],
+    [
+     "k562_gwps_a:5518",
+     "k562_gwps_b:5519"
+    ],
+    [
+     "k562_gwps_a:5524",
+     "k562_gwps_b:5525"
+    ],
+    [
+     "k562_gwps_a:5547",
+     "k562_gwps_b:5548"
+    ],
+    [
+     "k562_gwps_a:5579",
+     "k562_gwps_b:5580"
+    ],
+    [
+     "k562_gwps_a:5583",
+     "k562_gwps_b:5584"
+    ],
+    [
+     "k562_gwps_a:5611",
+     "k562_gwps_b:5612"
+    ],
+    [
+     "k562_gwps_a:5622",
+     "k562_gwps_b:5623"
+    ],
+    [
+     "k562_gwps_a:5635",
+     "k562_gwps_b:5636"
+    ],
+    [
+     "k562_gwps_a:5704",
+     "k562_gwps_b:5705"
+    ],
+    [
+     "k562_gwps_a:5727",
+     "k562_gwps_b:5728"
+    ],
+    [
+     "k562_gwps_a:5732",
+     "k562_gwps_b:5733"
+    ],
+    [
+     "k562_gwps_a:5737",
+     "k562_gwps_b:5738"
+    ],
+    [
+     "k562_gwps_a:5760",
+     "k562_gwps_b:5761"
+    ],
+    [
+     "k562_gwps_a:5802",
+     "k562_gwps_b:5803"
+    ],
+    [
+     "k562_gwps_a:5804",
+     "k562_gwps_b:5805"
+    ],
+    [
+     "k562_gwps_a:5806",
+     "k562_gwps_b:5807"
+    ],
+    [
+     "k562_gwps_a:5835",
+     "k562_gwps_b:5836"
+    ],
+    [
+     "k562_gwps_a:5847",
+     "k562_gwps_b:5848"
+    ],
+    [
+     "k562_gwps_a:5856",
+     "k562_gwps_b:5857"
+    ],
+    [
+     "k562_gwps_a:5917",
+     "k562_gwps_b:5918"
+    ],
+    [
+     "k562_gwps_a:5943",
+     "k562_gwps_b:5944"
+    ],
+    [
+     "k562_gwps_a:5999",
+     "k562_gwps_b:6000"
+    ],
+    [
+     "k562_gwps_a:6039",
+     "k562_gwps_b:6040"
+    ],
+    [
+     "k562_gwps_a:6047",
+     "k562_gwps_b:6048"
+    ],
+    [
+     "k562_gwps_a:6113",
+     "k562_gwps_b:6114"
+    ],
+    [
+     "k562_gwps_a:6134",
+     "k562_gwps_b:6135"
+    ],
+    [
+     "k562_gwps_a:6151",
+     "k562_gwps_b:6152"
+    ],
+    [
+     "k562_gwps_a:6152",
+     "k562_gwps_b:6153"
+    ],
+    [
+     "k562_gwps_a:6170",
+     "k562_gwps_b:6171"
+    ],
+    [
+     "k562_gwps_a:6173",
+     "k562_gwps_b:6174"
+    ],
+    [
+     "k562_gwps_a:6174",
+     "k562_gwps_b:6175"
+    ],
+    [
+     "k562_gwps_a:6175",
+     "k562_gwps_b:6176"
+    ],
+    [
+     "k562_gwps_a:6231",
+     "k562_gwps_b:6232"
+    ],
+    [
+     "k562_gwps_a:6303",
+     "k562_gwps_b:6304"
+    ],
+    [
+     "k562_gwps_a:6304",
+     "k562_gwps_b:6305"
+    ],
+    [
+     "k562_gwps_a:6355",
+     "k562_gwps_b:6356"
+    ],
+    [
+     "k562_gwps_a:6377",
+     "k562_gwps_b:6378"
+    ],
+    [
+     "k562_gwps_a:6413",
+     "k562_gwps_b:6414"
+    ],
+    [
+     "k562_gwps_a:6424",
+     "k562_gwps_b:6425"
+    ],
+    [
+     "k562_gwps_a:6528",
+     "k562_gwps_b:6529"
+    ],
+    [
+     "k562_gwps_a:6533",
+     "k562_gwps_b:6534"
+    ],
+    [
+     "k562_gwps_a:6546",
+     "k562_gwps_b:6547"
+    ],
+    [
+     "k562_gwps_a:6547",
+     "k562_gwps_b:6548"
+    ],
+    [
+     "k562_gwps_a:6560",
+     "k562_gwps_b:6561"
+    ],
+    [
+     "k562_gwps_a:6604",
+     "k562_gwps_b:6605"
+    ],
+    [
+     "k562_gwps_a:6617",
+     "k562_gwps_b:6618"
+    ],
+    [
+     "k562_gwps_a:6700",
+     "k562_gwps_b:6701"
+    ],
+    [
+     "k562_gwps_a:6716",
+     "k562_gwps_b:6717"
+    ],
+    [
+     "k562_gwps_a:6733",
+     "k562_gwps_b:6734"
+    ],
+    [
+     "k562_gwps_a:6928",
+     "k562_gwps_b:6929"
+    ],
+    [
+     "k562_gwps_a:6968",
+     "k562_gwps_b:6969"
+    ],
+    [
+     "k562_gwps_a:6995",
+     "k562_gwps_b:6996"
+    ],
+    [
+     "k562_gwps_a:7019",
+     "k562_gwps_b:7020"
+    ],
+    [
+     "k562_gwps_a:7182",
+     "k562_gwps_b:7183"
+    ],
+    [
+     "k562_gwps_a:7199",
+     "k562_gwps_b:7200"
+    ],
+    [
+     "k562_gwps_a:7228",
+     "k562_gwps_b:7229"
+    ],
+    [
+     "k562_gwps_a:7243",
+     "k562_gwps_b:7244"
+    ],
+    [
+     "k562_gwps_a:7299",
+     "k562_gwps_b:7300"
+    ],
+    [
+     "k562_gwps_a:7379",
+     "k562_gwps_b:7380"
+    ],
+    [
+     "k562_gwps_a:7426",
+     "k562_gwps_b:7427"
+    ],
+    [
+     "k562_gwps_a:7446",
+     "k562_gwps_b:7447"
+    ],
+    [
+     "k562_gwps_a:7451",
+     "k562_gwps_b:7452"
+    ],
+    [
+     "k562_gwps_a:7494",
+     "k562_gwps_b:7495"
+    ],
+    [
+     "k562_gwps_a:7511",
+     "k562_gwps_b:7512"
+    ],
+    [
+     "k562_gwps_a:7515",
+     "k562_gwps_b:7516"
+    ],
+    [
+     "k562_gwps_a:7554",
+     "k562_gwps_b:7555"
+    ],
+    [
+     "k562_gwps_a:7717",
+     "k562_gwps_b:7718"
+    ],
+    [
+     "k562_gwps_a:7737",
+     "k562_gwps_b:7738"
+    ],
+    [
+     "k562_gwps_a:7775",
+     "k562_gwps_b:7776"
+    ],
+    [
+     "k562_gwps_a:7793",
+     "k562_gwps_b:7794"
+    ],
+    [
+     "k562_gwps_a:7818",
+     "k562_gwps_b:7819"
+    ],
+    [
+     "k562_gwps_a:7866",
+     "k562_gwps_b:7867"
+    ],
+    [
+     "k562_gwps_a:7901",
+     "k562_gwps_b:7902"
+    ],
+    [
+     "k562_gwps_a:7920",
+     "k562_gwps_b:7921"
+    ],
+    [
+     "k562_gwps_a:7952",
+     "k562_gwps_b:7953"
+    ],
+    [
+     "k562_gwps_a:7970",
+     "k562_gwps_b:7971"
+    ],
+    [
+     "k562_gwps_a:7991",
+     "k562_gwps_b:7992"
+    ],
+    [
+     "k562_gwps_a:8060",
+     "k562_gwps_b:8061"
+    ],
+    [
+     "k562_gwps_a:8087",
+     "k562_gwps_b:8088"
+    ],
+    [
+     "k562_gwps_a:8100",
+     "k562_gwps_b:8101"
+    ],
+    [
+     "k562_gwps_a:8132",
+     "k562_gwps_b:8133"
+    ],
+    [
+     "k562_gwps_a:8136",
+     "k562_gwps_b:8137"
+    ],
+    [
+     "k562_gwps_a:8174",
+     "k562_gwps_b:8175"
+    ],
+    [
+     "k562_gwps_a:8180",
+     "k562_gwps_b:8181"
+    ],
+    [
+     "k562_gwps_a:8226",
+     "k562_gwps_b:8227"
+    ],
+    [
+     "k562_gwps_a:8230",
+     "k562_gwps_b:8231"
+    ],
+    [
+     "k562_gwps_a:8258",
+     "k562_gwps_b:8259"
+    ],
+    [
+     "k562_gwps_a:8284",
+     "k562_gwps_b:8285"
+    ],
+    [
+     "k562_gwps_a:8294",
+     "k562_gwps_b:8295"
+    ],
+    [
+     "k562_gwps_a:8324",
+     "k562_gwps_b:8325"
+    ],
+    [
+     "k562_gwps_a:8351",
+     "k562_gwps_b:8352"
+    ],
+    [
+     "k562_gwps_a:8483",
+     "k562_gwps_b:8484"
+    ],
+    [
+     "k562_gwps_a:8491",
+     "k562_gwps_b:8492"
+    ],
+    [
+     "k562_gwps_a:8504",
+     "k562_gwps_b:8505"
+    ],
+    [
+     "k562_gwps_a:8526",
+     "k562_gwps_b:8527"
+    ],
+    [
+     "k562_gwps_a:8530",
+     "k562_gwps_b:8531"
+    ],
+    [
+     "k562_gwps_a:8551",
+     "k562_gwps_b:8552"
+    ],
+    [
+     "k562_gwps_a:8663",
+     "k562_gwps_b:8664"
+    ],
+    [
+     "k562_gwps_a:8813",
+     "k562_gwps_b:8814"
+    ],
+    [
+     "k562_gwps_a:8818",
+     "k562_gwps_b:8819"
+    ],
+    [
+     "k562_gwps_a:8837",
+     "k562_gwps_b:8838"
+    ],
+    [
+     "k562_gwps_a:8858",
+     "k562_gwps_b:8859"
+    ],
+    [
+     "k562_gwps_a:8907",
+     "k562_gwps_b:8908"
+    ],
+    [
+     "k562_gwps_a:8933",
+     "k562_gwps_b:8934"
+    ],
+    [
+     "k562_gwps_a:9001",
+     "k562_gwps_b:9002"
+    ],
+    [
+     "k562_gwps_a:9129",
+     "k562_gwps_b:9130"
+    ],
+    [
+     "k562_gwps_a:9180",
+     "k562_gwps_b:9181"
+    ],
+    [
+     "k562_gwps_a:9186",
+     "k562_gwps_b:9187"
+    ],
+    [
+     "k562_gwps_a:9193",
+     "k562_gwps_b:9194"
+    ],
+    [
+     "k562_gwps_a:9216",
+     "k562_gwps_b:9217"
+    ],
+    [
+     "k562_gwps_a:9226",
+     "k562_gwps_b:9227"
+    ],
+    [
+     "k562_gwps_a:9235",
+     "k562_gwps_b:9236"
+    ],
+    [
+     "k562_gwps_a:9267",
+     "k562_gwps_b:9268"
+    ],
+    [
+     "k562_gwps_a:9291",
+     "k562_gwps_b:9292"
+    ],
+    [
+     "k562_gwps_a:9300",
+     "k562_gwps_b:9301"
+    ],
+    [
+     "k562_gwps_a:9301",
+     "k562_gwps_b:9302"
+    ],
+    [
+     "k562_gwps_a:9302",
+     "k562_gwps_b:9303"
+    ],
+    [
+     "k562_gwps_a:9351",
+     "k562_gwps_b:9352"
+    ],
+    [
+     "k562_gwps_a:9356",
+     "k562_gwps_b:9357"
+    ],
+    [
+     "k562_gwps_a:9381",
+     "k562_gwps_b:9382"
+    ],
+    [
+     "k562_gwps_a:9382",
+     "k562_gwps_b:9383"
+    ],
+    [
+     "k562_gwps_a:9401",
+     "k562_gwps_b:9402"
+    ],
+    [
+     "k562_gwps_a:9403",
+     "k562_gwps_b:9404"
+    ],
+    [
+     "k562_gwps_a:9423",
+     "k562_gwps_b:9424"
+    ],
+    [
+     "k562_gwps_a:9426",
+     "k562_gwps_b:9427"
+    ],
+    [
+     "k562_gwps_a:9444",
+     "k562_gwps_b:9445"
+    ],
+    [
+     "k562_gwps_a:9447",
+     "k562_gwps_b:9448"
+    ],
+    [
+     "k562_gwps_a:9487",
+     "k562_gwps_b:9488"
+    ],
+    [
+     "k562_gwps_a:9493",
+     "k562_gwps_b:9494"
+    ],
+    [
+     "k562_gwps_a:9519",
+     "k562_gwps_b:9520"
+    ],
+    [
+     "k562_gwps_a:9528",
+     "k562_gwps_b:9529"
+    ],
+    [
+     "k562_gwps_a:9548",
+     "k562_gwps_b:9549"
+    ],
+    [
+     "k562_gwps_a:9555",
+     "k562_gwps_b:9556"
+    ],
+    [
+     "k562_gwps_a:9561",
+     "k562_gwps_b:9562"
+    ],
+    [
+     "k562_gwps_a:9569",
+     "k562_gwps_b:9570"
+    ],
+    [
+     "k562_gwps_a:9573",
+     "k562_gwps_b:9574"
+    ],
+    [
+     "k562_gwps_a:9579",
+     "k562_gwps_b:9580"
+    ],
+    [
+     "k562_gwps_a:9654",
+     "k562_gwps_b:9655"
+    ],
+    [
+     "k562_gwps_a:9655",
+     "k562_gwps_b:9656"
+    ],
+    [
+     "k562_gwps_a:9660",
+     "k562_gwps_b:9661"
+    ],
+    [
+     "k562_gwps_a:9677",
+     "k562_gwps_b:9678"
+    ],
+    [
+     "k562_gwps_a:9719",
+     "k562_gwps_b:9720"
+    ],
+    [
+     "k562_gwps_a:9735",
+     "k562_gwps_b:9736"
+    ],
+    [
+     "k562_gwps_a:9748",
+     "k562_gwps_b:9749"
+    ],
+    [
+     "k562_gwps_a:9756",
+     "k562_gwps_b:9758"
+    ],
+    [
+     "k562_gwps_a:9762",
+     "k562_gwps_b:9764"
+    ],
+    [
+     "k562_gwps_a:9763",
+     "k562_gwps_b:9765"
+    ],
+    [
+     "k562_gwps_a:9765",
+     "k562_gwps_b:9767"
+    ],
+    [
+     "k562_gwps_a:9785",
+     "k562_gwps_b:9787"
+    ],
+    [
+     "k562_gwps_a:9830",
+     "k562_gwps_b:9832"
+    ]
+   ],
+   "own_gene": [
+    {
+     "target": "ACLY",
+     "cells": 90,
+     "state": "measured",
+     "raw": -2.8640048503875732,
+     "shrunk": -2.628117322921753,
+     "se": 0.42901647090911865
+    },
+    {
+     "target": "ADNP",
+     "cells": 156,
+     "state": "measured",
+     "raw": -1.6171300411224365,
+     "shrunk": -1.5154744386672974,
+     "se": 0.2094142585992813
+    },
+    {
+     "target": "AGO1",
+     "cells": 165,
+     "state": "measured",
+     "raw": -0.3479684591293335,
+     "shrunk": -0.2547187805175781,
+     "se": 0.1052696481347084
+    },
+    {
+     "target": "AKAP1",
+     "cells": 126,
+     "state": "measured",
+     "raw": -1.27738618850708,
+     "shrunk": -1.1425937414169312,
+     "se": 0.21937096118927002
+    },
+    {
+     "target": "AKIRIN1",
+     "cells": 126,
+     "state": "measured",
+     "raw": -2.2696778774261475,
+     "shrunk": -2.1944479942321777,
+     "se": 0.21012002229690552
+    },
+    {
+     "target": "AKT2",
+     "cells": 105,
+     "state": "measured",
+     "raw": -1.7250068187713623,
+     "shrunk": -1.426308512687683,
+     "se": 0.39470306038856506
+    },
+    {
+     "target": "ALG12",
+     "cells": 168,
+     "state": "measured",
+     "raw": -0.9805396795272827,
+     "shrunk": -0.595878541469574,
+     "se": 0.3939085900783539
+    },
+    {
+     "target": "ANKRD52",
+     "cells": 13,
+     "state": "measured",
+     "raw": -0.9720336198806763,
+     "shrunk": -0.10196927189826965,
+     "se": 1.4196860790252686
+    },
+    {
+     "target": "ANKZF1",
+     "cells": 252,
+     "state": "measured",
+     "raw": -2.2146966457366943,
+     "shrunk": -1.996258020401001,
+     "se": 0.3663029968738556
+    },
+    {
+     "target": "ANP32B",
+     "cells": 260,
+     "state": "measured",
+     "raw": -2.223243474960327,
+     "shrunk": -2.216824769973755,
+     "se": 0.05981617048382759
+    },
+    {
+     "target": "AP2A2",
+     "cells": 193,
+     "state": "measured",
+     "raw": -1.8518083095550537,
+     "shrunk": -1.5261527299880981,
+     "se": 0.4277069568634033
+    },
+    {
+     "target": "API5",
+     "cells": 206,
+     "state": "measured",
+     "raw": -2.413374900817871,
+     "shrunk": -2.286207914352417,
+     "se": 0.2845931053161621
+    },
+    {
+     "target": "ARL14EP",
+     "cells": 233,
+     "state": "measured",
+     "raw": -2.8584370613098145,
+     "shrunk": -2.5769526958465576,
+     "se": 0.47235938906669617
+    },
+    {
+     "target": "ASCC2",
+     "cells": 182,
+     "state": "measured",
+     "raw": -2.8659827709198,
+     "shrunk": -2.514698028564453,
+     "se": 0.5355873107910156
+    },
+    {
+     "target": "BCKDK",
+     "cells": 293,
+     "state": "measured",
+     "raw": -1.8486733436584473,
+     "shrunk": -1.689069390296936,
+     "se": 0.2841373085975647
+    },
+    {
+     "target": "BCL6",
+     "cells": 155,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "BCL7C",
+     "cells": 119,
+     "state": "measured",
+     "raw": -1.7900233268737793,
+     "shrunk": -1.6789798736572266,
+     "se": 0.2301720380783081
+    },
+    {
+     "target": "BRD1",
+     "cells": 246,
+     "state": "measured",
+     "raw": -2.2819011211395264,
+     "shrunk": -2.0686538219451904,
+     "se": 0.3663232922554016
+    },
+    {
+     "target": "BRPF1",
+     "cells": 230,
+     "state": "measured",
+     "raw": -1.7281608581542969,
+     "shrunk": -1.4913067817687988,
+     "se": 0.3443587124347687
+    },
+    {
+     "target": "C5orf22",
+     "cells": 208,
+     "state": "measured",
+     "raw": -3.1660571098327637,
+     "shrunk": -2.499953508377075,
+     "se": 0.8171346187591553
+    },
+    {
+     "target": "CAND1",
+     "cells": 59,
+     "state": "measured",
+     "raw": -3.747748374938965,
+     "shrunk": -3.1471803188323975,
+     "se": 0.8185791373252869
+    },
+    {
+     "target": "CARM1",
+     "cells": 156,
+     "state": "measured",
+     "raw": -1.923013687133789,
+     "shrunk": -1.7242419719696045,
+     "se": 0.32646051049232483
+    },
+    {
+     "target": "CAT",
+     "cells": 220,
+     "state": "measured",
+     "raw": -2.2243874073028564,
+     "shrunk": -1.8843660354614258,
+     "se": 0.4724445044994354
+    },
+    {
+     "target": "CCDC112",
+     "cells": 91,
+     "state": "measured",
+     "raw": -3.4975578784942627,
+     "shrunk": -2.113692283630371,
+     "se": 1.4150148630142212
+    },
+    {
+     "target": "CDK8",
+     "cells": 181,
+     "state": "measured",
+     "raw": -1.5280580520629883,
+     "shrunk": -1.2696236371994019,
+     "se": 0.34470492601394653
+    },
+    {
+     "target": "CHD3",
+     "cells": 174,
+     "state": "measured",
+     "raw": -1.9141162633895874,
+     "shrunk": -1.7582813501358032,
+     "se": 0.28492242097854614
+    },
+    {
+     "target": "CHD6",
+     "cells": 185,
+     "state": "measured",
+     "raw": -1.565667748451233,
+     "shrunk": -1.4224090576171875,
+     "se": 0.24843786656856537
+    },
+    {
+     "target": "CHKB",
+     "cells": 197,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "CLCN6",
+     "cells": 236,
+     "state": "measured",
+     "raw": -1.9313132762908936,
+     "shrunk": -1.477163314819336,
+     "se": 0.5354366898536682
+    },
+    {
+     "target": "COIL",
+     "cells": 148,
+     "state": "measured",
+     "raw": -3.0546209812164307,
+     "shrunk": -2.7198729515075684,
+     "se": 0.535811722278595
+    },
+    {
+     "target": "COMMD8",
+     "cells": 157,
+     "state": "measured",
+     "raw": -1.8888094425201416,
+     "shrunk": -1.6410506963729858,
+     "se": 0.3669539988040924
+    },
+    {
+     "target": "COQ10B",
+     "cells": 160,
+     "state": "measured",
+     "raw": -1.276923418045044,
+     "shrunk": -1.0122624635696411,
+     "se": 0.32646238803863525
+    },
+    {
+     "target": "CSNK2A1",
+     "cells": 153,
+     "state": "measured",
+     "raw": -2.7960407733917236,
+     "shrunk": -2.704929828643799,
+     "se": 0.25657913088798523
+    },
+    {
+     "target": "CYTH2",
+     "cells": 203,
+     "state": "measured",
+     "raw": -1.8447703123092651,
+     "shrunk": -1.6398903131484985,
+     "se": 0.32602789998054504
+    },
+    {
+     "target": "DBF4B",
+     "cells": 158,
+     "state": "measured",
+     "raw": -3.380662202835083,
+     "shrunk": -2.740065097808838,
+     "se": 0.817304253578186
+    },
+    {
+     "target": "DBN1",
+     "cells": 187,
+     "state": "measured",
+     "raw": -1.493106484413147,
+     "shrunk": -1.388672947883606,
+     "se": 0.20472966134548187
+    },
+    {
+     "target": "DCAF16",
+     "cells": 84,
+     "state": "measured",
+     "raw": -2.2754294872283936,
+     "shrunk": -1.9389396905899048,
+     "se": 0.47395503520965576
+    },
+    {
+     "target": "DCP2",
+     "cells": 241,
+     "state": "measured",
+     "raw": -2.1732349395751953,
+     "shrunk": -2.1302409172058105,
+     "se": 0.15437151491641998
+    },
+    {
+     "target": "DDHD1",
+     "cells": 126,
+     "state": "measured",
+     "raw": -2.91587233543396,
+     "shrunk": -2.218386173248291,
+     "se": 0.8174999952316284
+    },
+    {
+     "target": "DEAF1",
+     "cells": 100,
+     "state": "measured",
+     "raw": -1.4416826963424683,
+     "shrunk": -1.1717742681503296,
+     "se": 0.3459600806236267
+    },
+    {
+     "target": "DEK",
+     "cells": 140,
+     "state": "measured",
+     "raw": -1.3698978424072266,
+     "shrunk": -1.347074270248413,
+     "se": 0.0891568586230278
+    },
+    {
+     "target": "DHRS1",
+     "cells": 126,
+     "state": "measured",
+     "raw": -2.47347354888916,
+     "shrunk": -1.721317172050476,
+     "se": 0.8175247311592102
+    },
+    {
+     "target": "DHX35",
+     "cells": 71,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "DLAT",
+     "cells": 18,
+     "state": "measured",
+     "raw": -2.489565134048462,
+     "shrunk": -1.731953740119934,
+     "se": 0.8232820630073547
+    },
+    {
+     "target": "DMTF1",
+     "cells": 40,
+     "state": "measured",
+     "raw": -0.9869387149810791,
+     "shrunk": -0.44981884956359863,
+     "se": 0.5392336249351501
+    },
+    {
+     "target": "DNTTIP1",
+     "cells": 267,
+     "state": "measured",
+     "raw": -2.5893256664276123,
+     "shrunk": -2.418447732925415,
+     "se": 0.34413689374923706
+    },
+    {
+     "target": "DRG2",
+     "cells": 188,
+     "state": "measured",
+     "raw": -1.6236110925674438,
+     "shrunk": -1.3979558944702148,
+     "se": 0.32615789771080017
+    },
+    {
+     "target": "DTNBP1",
+     "cells": 327,
+     "state": "measured",
+     "raw": -1.5358238220214844,
+     "shrunk": -1.471074104309082,
+     "se": 0.16110660135746002
+    },
+    {
+     "target": "DVL3",
+     "cells": 338,
+     "state": "measured",
+     "raw": -1.849037528038025,
+     "shrunk": -1.7479918003082275,
+     "se": 0.22228243947029114
+    },
+    {
+     "target": "E2F1",
+     "cells": 226,
+     "state": "measured",
+     "raw": -1.9908190965652466,
+     "shrunk": -1.7780241966247559,
+     "se": 0.34436070919036865
+    },
+    {
+     "target": "E2F4",
+     "cells": 158,
+     "state": "measured",
+     "raw": -0.7184028625488281,
+     "shrunk": -0.564414381980896,
+     "se": 0.18762168288230896
+    },
+    {
+     "target": "EAPP",
+     "cells": 216,
+     "state": "measured",
+     "raw": -1.446868658065796,
+     "shrunk": -1.372532606124878,
+     "se": 0.1683594286441803
+    },
+    {
+     "target": "EEF1A2",
+     "cells": 273,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ELK1",
+     "cells": 143,
+     "state": "measured",
+     "raw": -3.6646299362182617,
+     "shrunk": -2.295919179916382,
+     "se": 1.4147433042526245
+    },
+    {
+     "target": "EPC2",
+     "cells": 259,
+     "state": "measured",
+     "raw": -1.826856017112732,
+     "shrunk": -1.6382288932800293,
+     "se": 0.309948205947876
+    },
+    {
+     "target": "EPM2AIP1",
+     "cells": 87,
+     "state": "measured",
+     "raw": -3.107194662094116,
+     "shrunk": -2.66326642036438,
+     "se": 0.634289562702179
+    },
+    {
+     "target": "EZH2",
+     "cells": 198,
+     "state": "measured",
+     "raw": -1.8000260591506958,
+     "shrunk": -1.755725622177124,
+     "se": 0.142963245511055
+    },
+    {
+     "target": "FAM120A",
+     "cells": 228,
+     "state": "measured",
+     "raw": -1.3682997226715088,
+     "shrunk": -1.2735966444015503,
+     "se": 0.1865595579147339
+    },
+    {
+     "target": "FCGRT",
+     "cells": 224,
+     "state": "measured",
+     "raw": -2.7812302112579346,
+     "shrunk": -2.5410947799682617,
+     "se": 0.4274888038635254
+    },
+    {
+     "target": "FHL3",
+     "cells": 320,
+     "state": "measured",
+     "raw": -2.1492350101470947,
+     "shrunk": -2.0982882976531982,
+     "se": 0.16744762659072876
+    },
+    {
+     "target": "FOXN2",
+     "cells": 232,
+     "state": "measured",
+     "raw": -1.5098237991333008,
+     "shrunk": -1.32210373878479,
+     "se": 0.2844584882259369
+    },
+    {
+     "target": "FOXO4",
+     "cells": 293,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "FUBP3",
+     "cells": 118,
+     "state": "measured",
+     "raw": -1.425379991531372,
+     "shrunk": -1.2512370347976685,
+     "se": 0.26587891578674316
+    },
+    {
+     "target": "FXYD5",
+     "cells": 318,
+     "state": "measured",
+     "raw": -3.1743786334991455,
+     "shrunk": -3.0759100914001465,
+     "se": 0.2839820981025696
+    },
+    {
+     "target": "FZD2",
+     "cells": 187,
+     "state": "measured",
+     "raw": -2.103926420211792,
+     "shrunk": -1.5441206693649292,
+     "se": 0.6334008574485779
+    },
+    {
+     "target": "GIGYF2",
+     "cells": 251,
+     "state": "measured",
+     "raw": -1.788739800453186,
+     "shrunk": -1.726191759109497,
+     "se": 0.17024700343608856
+    },
+    {
+     "target": "GLI3",
+     "cells": 324,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "GLYR1",
+     "cells": 237,
+     "state": "measured",
+     "raw": -1.577257513999939,
+     "shrunk": -1.5104002952575684,
+     "se": 0.1659207046031952
+    },
+    {
+     "target": "GMEB2",
+     "cells": 140,
+     "state": "measured",
+     "raw": -1.6497268676757812,
+     "shrunk": -1.1600010395050049,
+     "se": 0.5359562635421753
+    },
+    {
+     "target": "GPATCH8",
+     "cells": 284,
+     "state": "measured",
+     "raw": -1.507290005683899,
+     "shrunk": -1.4441704750061035,
+     "se": 0.1575576364994049
+    },
+    {
+     "target": "GRAMD1A",
+     "cells": 255,
+     "state": "measured",
+     "raw": -1.9048678874969482,
+     "shrunk": -1.7840653657913208,
+     "se": 0.24783770740032196
+    },
+    {
+     "target": "GTF2IRD1",
+     "cells": 93,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "HDAC1",
+     "cells": 165,
+     "state": "measured",
+     "raw": -2.455522298812866,
+     "shrunk": -2.404494524002075,
+     "se": 0.1788567751646042
+    },
+    {
+     "target": "HDAC8",
+     "cells": 133,
+     "state": "measured",
+     "raw": -2.1288816928863525,
+     "shrunk": -1.8323473930358887,
+     "se": 0.4282084107398987
+    },
+    {
+     "target": "HMGN3",
+     "cells": 130,
+     "state": "measured",
+     "raw": -3.275064706802368,
+     "shrunk": -3.16097354888916,
+     "se": 0.3111041188240051
+    },
+    {
+     "target": "HMGN4",
+     "cells": 177,
+     "state": "measured",
+     "raw": -1.9585614204406738,
+     "shrunk": -1.7796651124954224,
+     "se": 0.3104836046695709
+    },
+    {
+     "target": "HMGXB3",
+     "cells": 342,
+     "state": "measured",
+     "raw": -2.5342628955841064,
+     "shrunk": -2.413102865219116,
+     "se": 0.28393125534057617
+    },
+    {
+     "target": "HOMEZ",
+     "cells": 198,
+     "state": "measured",
+     "raw": -2.9496912956237793,
+     "shrunk": -2.490483522415161,
+     "se": 0.6332997679710388
+    },
+    {
+     "target": "HSBP1",
+     "cells": 168,
+     "state": "measured",
+     "raw": -1.499990463256836,
+     "shrunk": -1.465660810470581,
+     "se": 0.11478278785943985
+    },
+    {
+     "target": "HSP90AB1",
+     "cells": 74,
+     "state": "measured",
+     "raw": -1.5831423997879028,
+     "shrunk": -1.5718549489974976,
+     "se": 0.06707841902971268
+    },
+    {
+     "target": "IFI27L2",
+     "cells": 89,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "IFNAR2",
+     "cells": 183,
+     "state": "measured",
+     "raw": -1.3288320302963257,
+     "shrunk": -1.1467304229736328,
+     "se": 0.26476842164993286
+    },
+    {
+     "target": "IFNGR2",
+     "cells": 295,
+     "state": "measured",
+     "raw": -2.135472536087036,
+     "shrunk": -2.0376012325286865,
+     "se": 0.23400866985321045
+    },
+    {
+     "target": "IL10RB",
+     "cells": 241,
+     "state": "measured",
+     "raw": -1.1542917490005493,
+     "shrunk": -0.9286864399909973,
+     "se": 0.28446295857429504
+    },
+    {
+     "target": "IREB2",
+     "cells": 157,
+     "state": "measured",
+     "raw": -1.6681090593338013,
+     "shrunk": -1.5560925006866455,
+     "se": 0.22377830743789673
+    },
+    {
+     "target": "KDM5A",
+     "cells": 185,
+     "state": "measured",
+     "raw": -1.6964184045791626,
+     "shrunk": -1.5911107063293457,
+     "se": 0.21821412444114685
+    },
+    {
+     "target": "KHDRBS1",
+     "cells": 129,
+     "state": "measured",
+     "raw": -1.0825246572494507,
+     "shrunk": -1.0571374893188477,
+     "se": 0.08387823402881622
+    },
+    {
+     "target": "KHSRP",
+     "cells": 101,
+     "state": "measured",
+     "raw": -1.9140127897262573,
+     "shrunk": -1.813477873802185,
+     "se": 0.22532901167869568
+    },
+    {
+     "target": "KIF2A",
+     "cells": 301,
+     "state": "measured",
+     "raw": -1.6499354839324951,
+     "shrunk": -1.6319552659988403,
+     "se": 0.08659278601408005
+    },
+    {
+     "target": "KMT2A",
+     "cells": 205,
+     "state": "measured",
+     "raw": -1.2901356220245361,
+     "shrunk": -1.2565014362335205,
+     "se": 0.10553931444883347
+    },
+    {
+     "target": "LDLR",
+     "cells": 175,
+     "state": "measured",
+     "raw": -2.462277889251709,
+     "shrunk": -2.2338123321533203,
+     "se": 0.3937259912490845
+    },
+    {
+     "target": "LENG1",
+     "cells": 66,
+     "state": "measured",
+     "raw": 0.04279571771621704,
+     "shrunk": 0.00016161982784979045,
+     "se": 0.34753739833831787
+    },
+    {
+     "target": "LMAN1",
+     "cells": 244,
+     "state": "measured",
+     "raw": -2.8273732662200928,
+     "shrunk": -2.7083916664123535,
+     "se": 0.2963038682937622
+    },
+    {
+     "target": "LMBRD2",
+     "cells": 169,
+     "state": "measured",
+     "raw": -2.9465949535369873,
+     "shrunk": -2.2532331943511963,
+     "se": 0.8172733783721924
+    },
+    {
+     "target": "LPCAT3",
+     "cells": 129,
+     "state": "measured",
+     "raw": -1.8717641830444336,
+     "shrunk": -1.283276081085205,
+     "se": 0.6337674260139465
+    },
+    {
+     "target": "MAN2A1",
+     "cells": 196,
+     "state": "measured",
+     "raw": -2.0254623889923096,
+     "shrunk": -1.58279550075531,
+     "se": 0.5355750322341919
+    },
+    {
+     "target": "MAP2K2",
+     "cells": 185,
+     "state": "measured",
+     "raw": -2.5895729064941406,
+     "shrunk": -2.5451550483703613,
+     "se": 0.17104880511760712
+    },
+    {
+     "target": "MAPK12",
+     "cells": 46,
+     "state": "measured",
+     "raw": -1.9015570878982544,
+     "shrunk": -1.3138290643692017,
+     "se": 0.635913610458374
+    },
+    {
+     "target": "MARCKSL1",
+     "cells": 150,
+     "state": "measured",
+     "raw": -2.581160306930542,
+     "shrunk": -2.552457571029663,
+     "se": 0.13685736060142517
+    },
+    {
+     "target": "MBD4",
+     "cells": 200,
+     "state": "measured",
+     "raw": -2.0544614791870117,
+     "shrunk": -1.9729938507080078,
+     "se": 0.20873622596263885
+    },
+    {
+     "target": "MED13",
+     "cells": 268,
+     "state": "measured",
+     "raw": -2.733145236968994,
+     "shrunk": -2.5701680183410645,
+     "se": 0.34412434697151184
+    },
+    {
+     "target": "MED15",
+     "cells": 306,
+     "state": "measured",
+     "raw": -0.20553947985172272,
+     "shrunk": -0.13856659829616547,
+     "se": 0.07144723832607269
+    },
+    {
+     "target": "MED25",
+     "cells": 186,
+     "state": "measured",
+     "raw": -2.1013028621673584,
+     "shrunk": -1.897192358970642,
+     "se": 0.3446161448955536
+    },
+    {
+     "target": "MLLT10",
+     "cells": 198,
+     "state": "measured",
+     "raw": -1.1278553009033203,
+     "shrunk": -1.0352919101715088,
+     "se": 0.1686209738254547
+    },
+    {
+     "target": "MSANTD4",
+     "cells": 140,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "MSI2",
+     "cells": 136,
+     "state": "measured",
+     "raw": -2.0533008575439453,
+     "shrunk": -1.9059406518936157,
+     "se": 0.2854683995246887
+    },
+    {
+     "target": "MTA1",
+     "cells": 144,
+     "state": "measured",
+     "raw": -2.0741829872131348,
+     "shrunk": -1.8432425260543823,
+     "se": 0.36709269881248474
+    },
+    {
+     "target": "MTF1",
+     "cells": 168,
+     "state": "measured",
+     "raw": -2.1612088680267334,
+     "shrunk": -1.7348424196243286,
+     "se": 0.5357081294059753
+    },
+    {
+     "target": "MTHFSD",
+     "cells": 188,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "MTM1",
+     "cells": 188,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "MYD88",
+     "cells": 355,
+     "state": "measured",
+     "raw": -1.623414397239685,
+     "shrunk": -1.432887315750122,
+     "se": 0.2959863841533661
+    },
+    {
+     "target": "MYPOP",
+     "cells": 144,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "MYRF",
+     "cells": 450,
+     "state": "measured",
+     "raw": -1.6215324401855469,
+     "shrunk": -1.396657109260559,
+     "se": 0.3253282308578491
+    },
+    {
+     "target": "NABP2",
+     "cells": 664,
+     "state": "measured",
+     "raw": -2.1867449283599854,
+     "shrunk": -2.1343984603881836,
+     "se": 0.17122752964496613
+    },
+    {
+     "target": "NAIF1",
+     "cells": 264,
+     "state": "measured",
+     "raw": -1.4337587356567383,
+     "shrunk": -1.1368745565414429,
+     "se": 0.36633914709091187
+    },
+    {
+     "target": "NCLN",
+     "cells": 74,
+     "state": "measured",
+     "raw": -0.9763892292976379,
+     "shrunk": -0.7615267038345337,
+     "se": 0.2593168616294861
+    },
+    {
+     "target": "NFE2L1",
+     "cells": 93,
+     "state": "measured",
+     "raw": -1.4925836324691772,
+     "shrunk": -1.1219017505645752,
+     "se": 0.428974986076355
+    },
+    {
+     "target": "NGLY1",
+     "cells": 212,
+     "state": "measured",
+     "raw": -3.109423875808716,
+     "shrunk": -2.890817165374756,
+     "se": 0.42753466963768005
+    },
+    {
+     "target": "NIPAL3",
+     "cells": 133,
+     "state": "measured",
+     "raw": -1.9427745342254639,
+     "shrunk": -1.3627623319625854,
+     "se": 0.633725106716156
+    },
+    {
+     "target": "NIPSNAP3A",
+     "cells": 123,
+     "state": "measured",
+     "raw": -2.0809102058410645,
+     "shrunk": -1.850198745727539,
+     "se": 0.3674081265926361
+    },
+    {
+     "target": "NT5DC1",
+     "cells": 207,
+     "state": "measured",
+     "raw": -2.8670670986175537,
+     "shrunk": -2.516019821166992,
+     "se": 0.5354681015014648
+    },
+    {
+     "target": "NUP37",
+     "cells": 135,
+     "state": "measured",
+     "raw": -3.662224054336548,
+     "shrunk": -3.27058744430542,
+     "se": 0.6336415410041809
+    },
+    {
+     "target": "PAN2",
+     "cells": 215,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "PAPOLA",
+     "cells": 48,
+     "state": "measured",
+     "raw": -0.4747260808944702,
+     "shrunk": -0.30422893166542053,
+     "se": 0.1776934415102005
+    },
+    {
+     "target": "PATL1",
+     "cells": 112,
+     "state": "measured",
+     "raw": -2.8495020866394043,
+     "shrunk": -2.1435608863830566,
+     "se": 0.8176271915435791
+    },
+    {
+     "target": "PCGF1",
+     "cells": 260,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "PCGF6",
+     "cells": 179,
+     "state": "measured",
+     "raw": -2.6432411670684814,
+     "shrunk": -2.27034854888916,
+     "se": 0.5356146097183228
+    },
+    {
+     "target": "PDCD4",
+     "cells": 190,
+     "state": "measured",
+     "raw": -1.1545580625534058,
+     "shrunk": -1.048046588897705,
+     "se": 0.18403206765651703
+    },
+    {
+     "target": "PDE6D",
+     "cells": 311,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "PDK1",
+     "cells": 69,
+     "state": "measured",
+     "raw": -1.2514697313308716,
+     "shrunk": -0.6167063117027283,
+     "se": 0.6348295211791992
+    },
+    {
+     "target": "PGLS",
+     "cells": 231,
+     "state": "measured",
+     "raw": -1.9705677032470703,
+     "shrunk": -1.9199954271316528,
+     "se": 0.15990707278251648
+    },
+    {
+     "target": "PHF19",
+     "cells": 18,
+     "state": "measured",
+     "raw": -1.075915813446045,
+     "shrunk": -0.8622226119041443,
+     "se": 0.2678144574165344
+    },
+    {
+     "target": "PHF23",
+     "cells": 261,
+     "state": "measured",
+     "raw": -2.0505685806274414,
+     "shrunk": -1.9306142330169678,
+     "se": 0.2555668354034424
+    },
+    {
+     "target": "PHF8",
+     "cells": 188,
+     "state": "measured",
+     "raw": -2.827922821044922,
+     "shrunk": -2.1198227405548096,
+     "se": 0.817212700843811
+    },
+    {
+     "target": "PI4KB",
+     "cells": 63,
+     "state": "measured",
+     "raw": -1.7408711910247803,
+     "shrunk": -1.1361805200576782,
+     "se": 0.6350085139274597
+    },
+    {
+     "target": "PIM2",
+     "cells": 216,
+     "state": "measured",
+     "raw": -2.209345817565918,
+     "shrunk": -2.032428026199341,
+     "se": 0.32592064142227173
+    },
+    {
+     "target": "PIN1",
+     "cells": 37,
+     "state": "measured",
+     "raw": -1.9607445001602173,
+     "shrunk": -1.7381863594055176,
+     "se": 0.35080409049987793
+    },
+    {
+     "target": "PINK1",
+     "cells": 1745,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "PKN3",
+     "cells": 197,
+     "state": "measured",
+     "raw": -1.661447525024414,
+     "shrunk": -1.390588641166687,
+     "se": 0.3666307032108307
+    },
+    {
+     "target": "PLAGL2",
+     "cells": 278,
+     "state": "measured",
+     "raw": -1.9414891004562378,
+     "shrunk": -1.761973261833191,
+     "se": 0.3098536729812622
+    },
+    {
+     "target": "PLCG1",
+     "cells": 213,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "PNP",
+     "cells": 270,
+     "state": "measured",
+     "raw": -2.2816696166992188,
+     "shrunk": -2.2320683002471924,
+     "se": 0.17006540298461914
+    },
+    {
+     "target": "POLD4",
+     "cells": 352,
+     "state": "measured",
+     "raw": -3.1176364421844482,
+     "shrunk": -2.855746030807495,
+     "se": 0.47205832600593567
+    },
+    {
+     "target": "POR",
+     "cells": 260,
+     "state": "measured",
+     "raw": -1.902779459953308,
+     "shrunk": -1.7818865776062012,
+     "se": 0.2478099763393402
+    },
+    {
+     "target": "PPIF",
+     "cells": 256,
+     "state": "measured",
+     "raw": -2.020948886871338,
+     "shrunk": -1.9794397354125977,
+     "se": 0.14632725715637207
+    },
+    {
+     "target": "PPIP5K2",
+     "cells": 121,
+     "state": "measured",
+     "raw": -3.526618242263794,
+     "shrunk": -3.228238344192505,
+     "se": 0.5360811948776245
+    },
+    {
+     "target": "PQBP1",
+     "cells": 135,
+     "state": "measured",
+     "raw": -2.4939937591552734,
+     "shrunk": -2.2949905395507812,
+     "se": 0.36720210313796997
+    },
+    {
+     "target": "PRDX3",
+     "cells": 217,
+     "state": "measured",
+     "raw": -2.5940234661102295,
+     "shrunk": -2.5445950031280518,
+     "se": 0.18076884746551514
+    },
+    {
+     "target": "PRKAB2",
+     "cells": 272,
+     "state": "measured",
+     "raw": -0.9432510733604431,
+     "shrunk": -0.7391276359558105,
+     "se": 0.24784716963768005
+    },
+    {
+     "target": "PRKACA",
+     "cells": 64,
+     "state": "measured",
+     "raw": -1.7202564477920532,
+     "shrunk": -1.1134445667266846,
+     "se": 0.63497394323349
+    },
+    {
+     "target": "PRMT2",
+     "cells": 217,
+     "state": "measured",
+     "raw": -1.957977533340454,
+     "shrunk": -1.8656045198440552,
+     "se": 0.2178414762020111
+    },
+    {
+     "target": "PRMT6",
+     "cells": 113,
+     "state": "measured",
+     "raw": -3.4691312313079834,
+     "shrunk": -2.083120822906494,
+     "se": 1.4148707389831543
+    },
+    {
+     "target": "PRMT7",
+     "cells": 157,
+     "state": "measured",
+     "raw": -2.8752377033233643,
+     "shrunk": -2.4077048301696777,
+     "se": 0.6335022449493408
+    },
+    {
+     "target": "PRNP",
+     "cells": 193,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "PSKH1",
+     "cells": 110,
+     "state": "measured",
+     "raw": -1.7283908128738403,
+     "shrunk": -1.1236687898635864,
+     "se": 0.6339728832244873
+    },
+    {
+     "target": "PTMS",
+     "cells": 186,
+     "state": "measured",
+     "raw": -1.6916486024856567,
+     "shrunk": -1.6521927118301392,
+     "se": 0.13070911169052124
+    },
+    {
+     "target": "PTOV1",
+     "cells": 79,
+     "state": "measured",
+     "raw": -1.0253416299819946,
+     "shrunk": -0.8698161244392395,
+     "se": 0.2167832851409912
+    },
+    {
+     "target": "PYCR1",
+     "cells": 355,
+     "state": "measured",
+     "raw": -2.3477368354797363,
+     "shrunk": -2.3135249614715576,
+     "se": 0.1427481472492218
+    },
+    {
+     "target": "R3HCC1L",
+     "cells": 134,
+     "state": "measured",
+     "raw": -2.3628482818603516,
+     "shrunk": -1.5978314876556396,
+     "se": 0.8174774646759033
+    },
+    {
+     "target": "RAB5A",
+     "cells": 163,
+     "state": "measured",
+     "raw": -0.15224237740039825,
+     "shrunk": -0.0561959370970726,
+     "se": 0.09951619058847427
+    },
+    {
+     "target": "RABEP2",
+     "cells": 254,
+     "state": "measured",
+     "raw": -0.403266966342926,
+     "shrunk": -0.1906588226556778,
+     "se": 0.21292375028133392
+    },
+    {
+     "target": "RBM18",
+     "cells": 168,
+     "state": "measured",
+     "raw": -3.014028310775757,
+     "shrunk": -2.6759395599365234,
+     "se": 0.5356664657592773
+    },
+    {
+     "target": "RBM26",
+     "cells": 168,
+     "state": "measured",
+     "raw": -1.6261683702468872,
+     "shrunk": -1.5699462890625,
+     "se": 0.1538674384355545
+    },
+    {
+     "target": "RBM4B",
+     "cells": 199,
+     "state": "measured",
+     "raw": -1.1246628761291504,
+     "shrunk": -0.8416004180908203,
+     "se": 0.3261222839355469
+    },
+    {
+     "target": "RBM5",
+     "cells": 99,
+     "state": "measured",
+     "raw": -2.4724206924438477,
+     "shrunk": -2.2069051265716553,
+     "se": 0.4287908375263214
+    },
+    {
+     "target": "RC3H2",
+     "cells": 166,
+     "state": "measured",
+     "raw": -2.6012165546417236,
+     "shrunk": -2.2239365577697754,
+     "se": 0.5356944799423218
+    },
+    {
+     "target": "REV1",
+     "cells": 147,
+     "state": "measured",
+     "raw": -1.8156404495239258,
+     "shrunk": -1.6250914335250854,
+     "se": 0.3108595907688141
+    },
+    {
+     "target": "RFK",
+     "cells": 46,
+     "state": "measured",
+     "raw": -2.102187395095825,
+     "shrunk": -1.3078107833862305,
+     "se": 0.8191854357719421
+    },
+    {
+     "target": "RNF10",
+     "cells": 281,
+     "state": "measured",
+     "raw": -1.934260368347168,
+     "shrunk": -1.860469102859497,
+     "se": 0.1926088184118271
+    },
+    {
+     "target": "RNF141",
+     "cells": 314,
+     "state": "measured",
+     "raw": -1.7710847854614258,
+     "shrunk": -1.6169252395629883,
+     "se": 0.2734321057796478
+    },
+    {
+     "target": "RNF2",
+     "cells": 114,
+     "state": "measured",
+     "raw": -1.9505428075790405,
+     "shrunk": -1.6349291801452637,
+     "se": 0.42850303649902344
+    },
+    {
+     "target": "RSRC1",
+     "cells": 69,
+     "state": "measured",
+     "raw": -1.778822898864746,
+     "shrunk": -1.5648258924484253,
+     "se": 0.32890740036964417
+    },
+    {
+     "target": "S100A11",
+     "cells": 199,
+     "state": "measured",
+     "raw": -2.807210922241211,
+     "shrunk": -2.7651078701019287,
+     "se": 0.17319896817207336
+    },
+    {
+     "target": "SAP30L",
+     "cells": 149,
+     "state": "measured",
+     "raw": -1.039805293083191,
+     "shrunk": -0.7218257784843445,
+     "se": 0.3450685441493988
+    },
+    {
+     "target": "SCAF8",
+     "cells": 181,
+     "state": "measured",
+     "raw": -2.499037027359009,
+     "shrunk": -2.1862542629241943,
+     "se": 0.4726218283176422
+    },
+    {
+     "target": "SFXN4",
+     "cells": 149,
+     "state": "measured",
+     "raw": -2.0131630897521973,
+     "shrunk": -1.8635121583938599,
+     "se": 0.2852479815483093
+    },
+    {
+     "target": "SH2D3A",
+     "cells": 175,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "SHPRH",
+     "cells": 224,
+     "state": "measured",
+     "raw": -2.49423885345459,
+     "shrunk": -2.349012613296509,
+     "se": 0.310090035200119
+    },
+    {
+     "target": "SIN3B",
+     "cells": 92,
+     "state": "measured",
+     "raw": -3.5797042846679688,
+     "shrunk": -2.202890157699585,
+     "se": 1.415006399154663
+    },
+    {
+     "target": "SLC25A13",
+     "cells": 152,
+     "state": "measured",
+     "raw": -1.8175467252731323,
+     "shrunk": -1.6272332668304443,
+     "se": 0.3107887804508209
+    },
+    {
+     "target": "SLC39A1",
+     "cells": 203,
+     "state": "measured",
+     "raw": -1.4823046922683716,
+     "shrunk": -1.3774164915084839,
+     "se": 0.20452119410037994
+    },
+    {
+     "target": "SLIRP",
+     "cells": 49,
+     "state": "measured",
+     "raw": -1.139798879623413,
+     "shrunk": -1.0344547033309937,
+     "se": 0.18186438083648682
+    },
+    {
+     "target": "SMARCA5",
+     "cells": 140,
+     "state": "measured",
+     "raw": -1.7441155910491943,
+     "shrunk": -1.7066303491592407,
+     "se": 0.12924252450466156
+    },
+    {
+     "target": "SMARCC2",
+     "cells": 272,
+     "state": "measured",
+     "raw": -0.6902793049812317,
+     "shrunk": -0.6323699355125427,
+     "se": 0.10444405674934387
+    },
+    {
+     "target": "SMYD2",
+     "cells": 205,
+     "state": "measured",
+     "raw": -2.5599961280822754,
+     "shrunk": -2.3029963970184326,
+     "se": 0.42759135365486145
+    },
+    {
+     "target": "SND1",
+     "cells": 207,
+     "state": "measured",
+     "raw": -2.1382367610931396,
+     "shrunk": -2.0655951499938965,
+     "se": 0.2004912793636322
+    },
+    {
+     "target": "SNRK",
+     "cells": 224,
+     "state": "measured",
+     "raw": -1.7640187740325928,
+     "shrunk": -1.4283678531646729,
+     "se": 0.4275600016117096
+    },
+    {
+     "target": "SNX4",
+     "cells": 74,
+     "state": "measured",
+     "raw": -1.7700337171554565,
+     "shrunk": -1.5342471599578857,
+     "se": 0.34694716334342957
+    },
+    {
+     "target": "SRSF5",
+     "cells": 201,
+     "state": "measured",
+     "raw": -2.271345853805542,
+     "shrunk": -2.2298648357391357,
+     "se": 0.1548953801393509
+    },
+    {
+     "target": "SSR4",
+     "cells": 128,
+     "state": "measured",
+     "raw": -2.360849380493164,
+     "shrunk": -2.2937090396881104,
+     "se": 0.2019578218460083
+    },
+    {
+     "target": "STAT6",
+     "cells": 23,
+     "state": "measured",
+     "raw": -2.0730981826782227,
+     "shrunk": -0.7224317193031311,
+     "se": 1.4173122644424438
+    },
+    {
+     "target": "STK3",
+     "cells": 185,
+     "state": "measured",
+     "raw": -1.9079147577285767,
+     "shrunk": -1.6302663087844849,
+     "se": 0.39368364214897156
+    },
+    {
+     "target": "STT3A",
+     "cells": 66,
+     "state": "measured",
+     "raw": -1.8528915643692017,
+     "shrunk": -1.3864203691482544,
+     "se": 0.5373842716217041
+    },
+    {
+     "target": "SUPT7L",
+     "cells": 127,
+     "state": "measured",
+     "raw": -1.8267083168029785,
+     "shrunk": -1.5397547483444214,
+     "se": 0.3942931294441223
+    },
+    {
+     "target": "SYVN1",
+     "cells": 169,
+     "state": "measured",
+     "raw": -0.6261237859725952,
+     "shrunk": -0.38382816314697266,
+     "se": 0.24873368442058563
+    },
+    {
+     "target": "TAF15",
+     "cells": 282,
+     "state": "measured",
+     "raw": -1.7554551362991333,
+     "shrunk": -1.7212287187576294,
+     "se": 0.12377168238162994
+    },
+    {
+     "target": "TARBP2",
+     "cells": 92,
+     "state": "measured",
+     "raw": -4.154709339141846,
+     "shrunk": -2.83797550201416,
+     "se": 1.4149965047836304
+    },
+    {
+     "target": "TBC1D13",
+     "cells": 200,
+     "state": "measured",
+     "raw": -2.291774034500122,
+     "shrunk": -1.8809455633163452,
+     "se": 0.535530149936676
+    },
+    {
+     "target": "TBCK",
+     "cells": 188,
+     "state": "measured",
+     "raw": -2.6971027851104736,
+     "shrunk": -1.9726738929748535,
+     "se": 0.8172177076339722
+    },
+    {
+     "target": "TEAD4",
+     "cells": 144,
+     "state": "measured",
+     "raw": -1.2313534021377563,
+     "shrunk": -0.8299950957298279,
+     "se": 0.42813530564308167
+    },
+    {
+     "target": "TEX2",
+     "cells": 290,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "TFCP2",
+     "cells": 330,
+     "state": "measured",
+     "raw": -2.0758280754089355,
+     "shrunk": -1.9411795139312744,
+     "se": 0.2733563482761383
+    },
+    {
+     "target": "THAP3",
+     "cells": 146,
+     "state": "measured",
+     "raw": -1.3876562118530273,
+     "shrunk": -1.0050157308578491,
+     "se": 0.42811551690101624
+    },
+    {
+     "target": "THAP7",
+     "cells": 299,
+     "state": "measured",
+     "raw": -2.156623363494873,
+     "shrunk": -2.129035472869873,
+     "se": 0.12274728715419769
+    },
+    {
+     "target": "TIMM17B",
+     "cells": 138,
+     "state": "measured",
+     "raw": -2.009401321411133,
+     "shrunk": -1.8475481271743774,
+     "se": 0.2973715364933014
+    },
+    {
+     "target": "TIMM50",
+     "cells": 53,
+     "state": "measured",
+     "raw": -1.5962355136871338,
+     "shrunk": -1.4223766326904297,
+     "se": 0.27903464436531067
+    },
+    {
+     "target": "TMCO6",
+     "cells": 113,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "TMED3",
+     "cells": 258,
+     "state": "measured",
+     "raw": -2.501791000366211,
+     "shrunk": -2.395010471343994,
+     "se": 0.26412728428840637
+    },
+    {
+     "target": "TMEM147",
+     "cells": 93,
+     "state": "measured",
+     "raw": -3.380561590194702,
+     "shrunk": -3.134394884109497,
+     "se": 0.47369271516799927
+    },
+    {
+     "target": "TMEM186",
+     "cells": 79,
+     "state": "measured",
+     "raw": -2.4211137294769287,
+     "shrunk": -1.6620521545410156,
+     "se": 0.818090558052063
+    },
+    {
+     "target": "TMEM209",
+     "cells": 197,
+     "state": "measured",
+     "raw": -2.492183208465576,
+     "shrunk": -2.1788582801818848,
+     "se": 0.4725340008735657
+    },
+    {
+     "target": "TMEM41B",
+     "cells": 41,
+     "state": "measured",
+     "raw": -1.4610038995742798,
+     "shrunk": -0.9458655118942261,
+     "se": 0.5390991568565369
+    },
+    {
+     "target": "TMF1",
+     "cells": 143,
+     "state": "measured",
+     "raw": -1.8115178346633911,
+     "shrunk": -1.6353338956832886,
+     "se": 0.2972983121871948
+    },
+    {
+     "target": "TRAPPC6A",
+     "cells": 163,
+     "state": "measured",
+     "raw": -2.512072801589966,
+     "shrunk": -2.389042615890503,
+     "se": 0.28503355383872986
+    },
+    {
+     "target": "TRIB3",
+     "cells": 167,
+     "state": "measured",
+     "raw": -1.1033637523651123,
+     "shrunk": -1.008535385131836,
+     "se": 0.16916565597057343
+    },
+    {
+     "target": "TRIM35",
+     "cells": 382,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "TRIP4",
+     "cells": 137,
+     "state": "measured",
+     "raw": -2.669935703277588,
+     "shrunk": -1.9418400526046753,
+     "se": 0.8174446225166321
+    },
+    {
+     "target": "TRMT1",
+     "cells": 177,
+     "state": "measured",
+     "raw": -1.3572547435760498,
+     "shrunk": -1.2438853979110718,
+     "se": 0.20487499237060547
+    },
+    {
+     "target": "TRPC4AP",
+     "cells": 99,
+     "state": "measured",
+     "raw": -1.79145348072052,
+     "shrunk": -1.499984860420227,
+     "se": 0.39484623074531555
+    },
+    {
+     "target": "TWF2",
+     "cells": 284,
+     "state": "measured",
+     "raw": -3.3464889526367188,
+     "shrunk": -3.099647283554077,
+     "se": 0.47218528389930725
+    },
+    {
+     "target": "UNK",
+     "cells": 225,
+     "state": "measured",
+     "raw": -1.2386170625686646,
+     "shrunk": -1.0476446151733398,
+     "se": 0.26441460847854614
+    },
+    {
+     "target": "UPF3B",
+     "cells": 193,
+     "state": "measured",
+     "raw": -2.134075164794922,
+     "shrunk": -2.024434804916382,
+     "se": 0.24832099676132202
+    },
+    {
+     "target": "UROS",
+     "cells": 217,
+     "state": "measured",
+     "raw": -2.445380926132202,
+     "shrunk": -2.283168077468872,
+     "se": 0.3259044289588928
+    },
+    {
+     "target": "USP28",
+     "cells": 180,
+     "state": "measured",
+     "raw": -3.0773587226867676,
+     "shrunk": -2.4002678394317627,
+     "se": 0.8172252178192139
+    },
+    {
+     "target": "VAPB",
+     "cells": 148,
+     "state": "measured",
+     "raw": -0.7206386923789978,
+     "shrunk": -0.5977355241775513,
+     "se": 0.16338589787483215
+    },
+    {
+     "target": "VIM",
+     "cells": 100,
+     "state": "measured",
+     "raw": -1.604474425315857,
+     "shrunk": -1.588234782218933,
+     "se": 0.08112095296382904
+    },
+    {
+     "target": "WBP4",
+     "cells": 234,
+     "state": "measured",
+     "raw": -2.241158962249756,
+     "shrunk": -2.0817930698394775,
+     "se": 0.31004267930984497
+    },
+    {
+     "target": "YIPF6",
+     "cells": 81,
+     "state": "measured",
+     "raw": -1.7607147693634033,
+     "shrunk": -1.4224263429641724,
+     "se": 0.42932650446891785
+    },
+    {
+     "target": "ZBTB34",
+     "cells": 154,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZBTB41",
+     "cells": 154,
+     "state": "measured",
+     "raw": -1.072397232055664,
+     "shrunk": -0.696363091468811,
+     "se": 0.3940228819847107
+    },
+    {
+     "target": "ZBTB48",
+     "cells": 83,
+     "state": "measured",
+     "raw": -1.5884082317352295,
+     "shrunk": -0.9696462750434875,
+     "se": 0.6344351768493652
+    },
+    {
+     "target": "ZC3HAV1",
+     "cells": 183,
+     "state": "measured",
+     "raw": -1.3236265182495117,
+     "shrunk": -1.265397071838379,
+     "se": 0.14196904003620148
+    },
+    {
+     "target": "ZDHHC12",
+     "cells": 282,
+     "state": "measured",
+     "raw": -2.179612398147583,
+     "shrunk": -2.0660929679870605,
+     "se": 0.25545185804367065
+    },
+    {
+     "target": "ZDHHC4",
+     "cells": 125,
+     "state": "measured",
+     "raw": -1.2327525615692139,
+     "shrunk": -1.0820591449737549,
+     "se": 0.23002101480960846
+    },
+    {
+     "target": "ZFP62",
+     "cells": 131,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZHX3",
+     "cells": 261,
+     "state": "measured",
+     "raw": -1.3791919946670532,
+     "shrunk": -1.1275625228881836,
+     "se": 0.32576555013656616
+    },
+    {
+     "target": "ZKSCAN1",
+     "cells": 323,
+     "state": "measured",
+     "raw": -2.27956485748291,
+     "shrunk": -2.224125623703003,
+     "se": 0.1799498051404953
+    },
+    {
+     "target": "ZKSCAN2",
+     "cells": 136,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZKSCAN3",
+     "cells": 92,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF16",
+     "cells": 88,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF174",
+     "cells": 23,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF219",
+     "cells": 74,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF22",
+     "cells": 149,
+     "state": "measured",
+     "raw": -3.6514015197753906,
+     "shrunk": -3.4611947536468506,
+     "se": 0.4279860854148865
+    },
+    {
+     "target": "ZNF25",
+     "cells": 184,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF251",
+     "cells": 219,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF280C",
+     "cells": 64,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF282",
+     "cells": 362,
+     "state": "measured",
+     "raw": -2.1296133995056152,
+     "shrunk": -1.9045802354812622,
+     "se": 0.36601120233535767
+    },
+    {
+     "target": "ZNF32",
+     "cells": 108,
+     "state": "measured",
+     "raw": -3.8143441677093506,
+     "shrunk": -2.460254669189453,
+     "se": 1.4148926734924316
+    },
+    {
+     "target": "ZNF324",
+     "cells": 47,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF397",
+     "cells": 63,
+     "state": "measured",
+     "raw": -2.1478428840637207,
+     "shrunk": -1.3586598634719849,
+     "se": 0.818476140499115
+    },
+    {
+     "target": "ZNF410",
+     "cells": 125,
+     "state": "measured",
+     "raw": -0.8614531755447388,
+     "shrunk": -0.46857964992523193,
+     "se": 0.3943994641304016
+    },
+    {
+     "target": "ZNF444",
+     "cells": 198,
+     "state": "measured",
+     "raw": -1.5532246828079224,
+     "shrunk": -1.320422649383545,
+     "se": 0.32609277963638306
+    },
+    {
+     "target": "ZNF462",
+     "cells": 300,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF496",
+     "cells": 148,
+     "state": "measured",
+     "raw": -1.980875849723816,
+     "shrunk": -1.6131339073181152,
+     "se": 0.4728938639163971
+    },
+    {
+     "target": "ZNF507",
+     "cells": 279,
+     "state": "measured",
+     "raw": -2.2838428020477295,
+     "shrunk": -2.0708703994750977,
+     "se": 0.36620262265205383
+    },
+    {
+     "target": "ZNF514",
+     "cells": 300,
+     "state": "measured",
+     "raw": -1.389260172843933,
+     "shrunk": -1.1389641761779785,
+     "se": 0.3256308138370514
+    },
+    {
+     "target": "ZNF526",
+     "cells": 212,
+     "state": "measured",
+     "raw": -1.5087529420852661,
+     "shrunk": -1.1418225765228271,
+     "se": 0.427642285823822
+    },
+    {
+     "target": "ZNF530",
+     "cells": 264,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF543",
+     "cells": 211,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF627",
+     "cells": 150,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF628",
+     "cells": 147,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF641",
+     "cells": 144,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF670",
+     "cells": 101,
+     "state": "measured",
+     "raw": -2.4727611541748047,
+     "shrunk": -1.9578498601913452,
+     "se": 0.6340575814247131
+    },
+    {
+     "target": "ZNF714",
+     "cells": 67,
+     "state": "measured",
+     "raw": -2.688866376876831,
+     "shrunk": -2.318518877029419,
+     "se": 0.537326991558075
+    },
+    {
+     "target": "ZNF740",
+     "cells": 151,
+     "state": "measured",
+     "raw": -0.9795791506767273,
+     "shrunk": -0.6272308230400085,
+     "se": 0.36709797382354736
+    },
+    {
+     "target": "ZNF768",
+     "cells": 168,
+     "state": "measured",
+     "raw": -0.43533632159233093,
+     "shrunk": -0.20082950592041016,
+     "se": 0.23521168529987335
+    },
+    {
+     "target": "ZNF777",
+     "cells": 70,
+     "state": "measured",
+     "raw": -1.3130836486816406,
+     "shrunk": -0.8625589609146118,
+     "se": 0.474490225315094
+    },
+    {
+     "target": "ZNF783",
+     "cells": 166,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF784",
+     "cells": 182,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF786",
+     "cells": 152,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZNF821",
+     "cells": 336,
+     "state": "own_transcript_not_measured"
+    },
+    {
+     "target": "ZRANB3",
+     "cells": 45,
+     "state": "measured",
+     "raw": -1.5867822170257568,
+     "shrunk": -0.767937421798706,
+     "se": 0.8192664980888367
+    }
+   ],
+   "own_gene_summary": {
+    "derived_targets": 272,
+    "measured_own_gene": 229,
+    "median_own_raw": -1.934260368347168,
+    "fraction_negative": 0.9956331877729258
+   }
+  }
+ ],
+ "targets": [
+  "ACLY",
+  "ADNP",
+  "AGO1",
+  "AKAP1",
+  "AKIRIN1",
+  "AKT2",
+  "ALG12",
+  "ANKRD52",
+  "ANKZF1",
+  "ANP32B",
+  "AP2A2",
+  "API5",
+  "ARL14EP",
+  "ASCC2",
+  "BCKDK",
+  "BCL6",
+  "BCL7C",
+  "BRD1",
+  "BRPF1",
+  "C5orf22",
+  "CAND1",
+  "CARM1",
+  "CAT",
+  "CCDC112",
+  "CDK8",
+  "CHD3",
+  "CHD6",
+  "CHKB",
+  "CLCN6",
+  "COIL",
+  "COMMD8",
+  "COQ10B",
+  "CSNK2A1",
+  "CYTH2",
+  "DBF4B",
+  "DBN1",
+  "DCAF16",
+  "DCP2",
+  "DDHD1",
+  "DEAF1",
+  "DEK",
+  "DHRS1",
+  "DHX35",
+  "DLAT",
+  "DMTF1",
+  "DNTTIP1",
+  "DRG2",
+  "DTNBP1",
+  "DVL3",
+  "E2F1",
+  "E2F4",
+  "EAPP",
+  "EEF1A2",
+  "ELK1",
+  "EPC2",
+  "EPM2AIP1",
+  "EZH2",
+  "FAM120A",
+  "FCGRT",
+  "FHL3",
+  "FOXN2",
+  "FOXO4",
+  "FUBP3",
+  "FXYD5",
+  "FZD2",
+  "GIGYF2",
+  "GLI3",
+  "GLYR1",
+  "GMEB2",
+  "GPATCH8",
+  "GRAMD1A",
+  "GTF2IRD1",
+  "HDAC1",
+  "HDAC8",
+  "HMGN3",
+  "HMGN4",
+  "HMGXB3",
+  "HOMEZ",
+  "HSBP1",
+  "HSP90AB1",
+  "IFI27L2",
+  "IFNAR2",
+  "IFNGR2",
+  "IL10RB",
+  "IREB2",
+  "KDM5A",
+  "KHDRBS1",
+  "KHSRP",
+  "KIF2A",
+  "KMT2A",
+  "LDLR",
+  "LENG1",
+  "LMAN1",
+  "LMBRD2",
+  "LPCAT3",
+  "MAN2A1",
+  "MAP2K2",
+  "MAPK12",
+  "MARCKSL1",
+  "MBD4",
+  "MED13",
+  "MED15",
+  "MED25",
+  "MLLT10",
+  "MSANTD4",
+  "MSI2",
+  "MTA1",
+  "MTF1",
+  "MTHFSD",
+  "MTM1",
+  "MYD88",
+  "MYPOP",
+  "MYRF",
+  "NABP2",
+  "NAIF1",
+  "NCLN",
+  "NFE2L1",
+  "NGLY1",
+  "NIPAL3",
+  "NIPSNAP3A",
+  "NT5DC1",
+  "NUP37",
+  "PAN2",
+  "PAPOLA",
+  "PATL1",
+  "PCGF1",
+  "PCGF6",
+  "PDCD4",
+  "PDE6D",
+  "PDK1",
+  "PGLS",
+  "PHF19",
+  "PHF23",
+  "PHF8",
+  "PI4KB",
+  "PIM2",
+  "PIN1",
+  "PINK1",
+  "PKN3",
+  "PLAGL2",
+  "PLCG1",
+  "PNP",
+  "POLD4",
+  "POR",
+  "PPIF",
+  "PPIP5K2",
+  "PQBP1",
+  "PRDX3",
+  "PRKAB2",
+  "PRKACA",
+  "PRMT2",
+  "PRMT6",
+  "PRMT7",
+  "PRNP",
+  "PSKH1",
+  "PTMS",
+  "PTOV1",
+  "PYCR1",
+  "R3HCC1L",
+  "RAB5A",
+  "RABEP2",
+  "RBM18",
+  "RBM26",
+  "RBM4B",
+  "RBM5",
+  "RC3H2",
+  "REV1",
+  "RFK",
+  "RNF10",
+  "RNF141",
+  "RNF2",
+  "RSRC1",
+  "S100A11",
+  "SAP30L",
+  "SCAF8",
+  "SFXN4",
+  "SH2D3A",
+  "SHPRH",
+  "SIN3B",
+  "SLC25A13",
+  "SLC39A1",
+  "SLIRP",
+  "SMARCA5",
+  "SMARCC2",
+  "SMYD2",
+  "SND1",
+  "SNRK",
+  "SNX4",
+  "SRSF5",
+  "SSR4",
+  "STAT6",
+  "STK3",
+  "STT3A",
+  "SUPT7L",
+  "SYVN1",
+  "TAF15",
+  "TARBP2",
+  "TBC1D13",
+  "TBCK",
+  "TEAD4",
+  "TEX2",
+  "TFCP2",
+  "THAP3",
+  "THAP7",
+  "TIMM17B",
+  "TIMM50",
+  "TMCO6",
+  "TMED3",
+  "TMEM147",
+  "TMEM186",
+  "TMEM209",
+  "TMEM41B",
+  "TMF1",
+  "TRAPPC6A",
+  "TRIB3",
+  "TRIM35",
+  "TRIP4",
+  "TRMT1",
+  "TRPC4AP",
+  "TWF2",
+  "UNK",
+  "UPF3B",
+  "UROS",
+  "USP28",
+  "VAPB",
+  "VIM",
+  "WBP4",
+  "YIPF6",
+  "ZBTB34",
+  "ZBTB41",
+  "ZBTB48",
+  "ZC3HAV1",
+  "ZDHHC12",
+  "ZDHHC4",
+  "ZFP62",
+  "ZHX3",
+  "ZKSCAN1",
+  "ZKSCAN2",
+  "ZKSCAN3",
+  "ZNF16",
+  "ZNF174",
+  "ZNF219",
+  "ZNF22",
+  "ZNF25",
+  "ZNF251",
+  "ZNF280C",
+  "ZNF282",
+  "ZNF32",
+  "ZNF324",
+  "ZNF397",
+  "ZNF410",
+  "ZNF444",
+  "ZNF462",
+  "ZNF496",
+  "ZNF507",
+  "ZNF514",
+  "ZNF526",
+  "ZNF530",
+  "ZNF543",
+  "ZNF627",
+  "ZNF628",
+  "ZNF641",
+  "ZNF670",
+  "ZNF714",
+  "ZNF740",
+  "ZNF768",
+  "ZNF777",
+  "ZNF783",
+  "ZNF784",
+  "ZNF786",
+  "ZNF821",
+  "ZRANB3"
+ ],
+ "n_cells": [
+  90.0,
+  156.0,
+  165.0,
+  126.0,
+  126.0,
+  105.0,
+  168.0,
+  13.0,
+  252.0,
+  260.0,
+  193.0,
+  206.0,
+  233.0,
+  182.0,
+  293.0,
+  155.0,
+  119.0,
+  246.0,
+  230.0,
+  208.0,
+  59.0,
+  156.0,
+  220.0,
+  91.0,
+  181.0,
+  174.0,
+  185.0,
+  197.0,
+  236.0,
+  148.0,
+  157.0,
+  160.0,
+  153.0,
+  203.0,
+  158.0,
+  187.0,
+  84.0,
+  241.0,
+  126.0,
+  100.0,
+  140.0,
+  126.0,
+  71.0,
+  18.0,
+  40.0,
+  267.0,
+  188.0,
+  327.0,
+  338.0,
+  226.0,
+  158.0,
+  216.0,
+  273.0,
+  143.0,
+  259.0,
+  87.0,
+  198.0,
+  228.0,
+  224.0,
+  320.0,
+  232.0,
+  293.0,
+  118.0,
+  318.0,
+  187.0,
+  251.0,
+  324.0,
+  237.0,
+  140.0,
+  284.0,
+  255.0,
+  93.0,
+  165.0,
+  133.0,
+  130.0,
+  177.0,
+  342.0,
+  198.0,
+  168.0,
+  74.0,
+  89.0,
+  183.0,
+  295.0,
+  241.0,
+  157.0,
+  185.0,
+  129.0,
+  101.0,
+  301.0,
+  205.0,
+  175.0,
+  66.0,
+  244.0,
+  169.0,
+  129.0,
+  196.0,
+  185.0,
+  46.0,
+  150.0,
+  200.0,
+  268.0,
+  306.0,
+  186.0,
+  198.0,
+  140.0,
+  136.0,
+  144.0,
+  168.0,
+  188.0,
+  188.0,
+  355.0,
+  144.0,
+  450.0,
+  664.0,
+  264.0,
+  74.0,
+  93.0,
+  212.0,
+  133.0,
+  123.0,
+  207.0,
+  135.0,
+  215.0,
+  48.0,
+  112.0,
+  260.0,
+  179.0,
+  190.0,
+  311.0,
+  69.0,
+  231.0,
+  18.0,
+  261.0,
+  188.0,
+  63.0,
+  216.0,
+  37.0,
+  1745.0,
+  197.0,
+  278.0,
+  213.0,
+  270.0,
+  352.0,
+  260.0,
+  256.0,
+  121.0,
+  135.0,
+  217.0,
+  272.0,
+  64.0,
+  217.0,
+  113.0,
+  157.0,
+  193.0,
+  110.0,
+  186.0,
+  79.0,
+  355.0,
+  134.0,
+  163.0,
+  254.0,
+  168.0,
+  168.0,
+  199.0,
+  99.0,
+  166.0,
+  147.0,
+  46.0,
+  281.0,
+  314.0,
+  114.0,
+  69.0,
+  199.0,
+  149.0,
+  181.0,
+  149.0,
+  175.0,
+  224.0,
+  92.0,
+  152.0,
+  203.0,
+  49.0,
+  140.0,
+  272.0,
+  205.0,
+  207.0,
+  224.0,
+  74.0,
+  201.0,
+  128.0,
+  23.0,
+  185.0,
+  66.0,
+  127.0,
+  169.0,
+  282.0,
+  92.0,
+  200.0,
+  188.0,
+  144.0,
+  290.0,
+  330.0,
+  146.0,
+  299.0,
+  138.0,
+  53.0,
+  113.0,
+  258.0,
+  93.0,
+  79.0,
+  197.0,
+  41.0,
+  143.0,
+  163.0,
+  167.0,
+  382.0,
+  137.0,
+  177.0,
+  99.0,
+  284.0,
+  225.0,
+  193.0,
+  217.0,
+  180.0,
+  148.0,
+  100.0,
+  234.0,
+  81.0,
+  154.0,
+  154.0,
+  83.0,
+  183.0,
+  282.0,
+  125.0,
+  131.0,
+  261.0,
+  323.0,
+  136.0,
+  92.0,
+  88.0,
+  23.0,
+  74.0,
+  149.0,
+  184.0,
+  219.0,
+  64.0,
+  362.0,
+  108.0,
+  47.0,
+  63.0,
+  125.0,
+  198.0,
+  300.0,
+  148.0,
+  279.0,
+  300.0,
+  212.0,
+  264.0,
+  211.0,
+  150.0,
+  147.0,
+  144.0,
+  101.0,
+  67.0,
+  151.0,
+  168.0,
+  70.0,
+  166.0,
+  182.0,
+  152.0,
+  336.0,
+  45.0
+ ],
+ "outputs": {
+  "k562_gwps_sc.npz": {
+   "bytes": 28200612,
+   "sha256": "8c0e2f980feab563f5a6533970b5eb0a58b05440514d170746161c980a342d3f"
+  }
+ },
+ "comparison": {
+  "reference_targets": 272,
+  "new_targets": 272,
+  "shared": 272,
+  "only_reference": [],
+  "only_new": [],
+  "shrunk_cosine_median": 0.9941174708867129,
+  "shrunk_cosine_q10": 0.9842443456664938,
+  "raw_cosine_median": 0.9952457601476943,
+  "raw_cosine_q10": 0.986608546896143,
+  "per_target": [
+   {
+    "target": "ACLY",
+    "shrunk_cosine": 0.994425681815907,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.15142154693603516,
+    "raw_cosine": 0.9955120608250979,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.2234741449356079
+   },
+   {
+    "target": "ADNP",
+    "shrunk_cosine": 0.9822276251122292,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.19408869743347168,
+    "raw_cosine": 0.9854810074153281,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.2586686611175537
+   },
+   {
+    "target": "AGO1",
+    "shrunk_cosine": 0.9978382292194895,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07337987422943115,
+    "raw_cosine": 0.9981332578829664,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.08977913856506348
+   },
+   {
+    "target": "AKAP1",
+    "shrunk_cosine": 0.9949530580727424,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0878790020942688,
+    "raw_cosine": 0.9965634668577168,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.11131000518798828
+   },
+   {
+    "target": "AKIRIN1",
+    "shrunk_cosine": 0.9926299968570724,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.12912797927856445,
+    "raw_cosine": 0.9943694621530255,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.1648561954498291
+   },
+   {
+    "target": "AKT2",
+    "shrunk_cosine": 0.9970522642622603,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.12602591514587402,
+    "raw_cosine": 0.997623783963043,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.1965932846069336
+   },
+   {
+    "target": "ALG12",
+    "shrunk_cosine": 0.9963304614363683,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.060472577810287476,
+    "raw_cosine": 0.997567244612098,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07264113426208496
+   },
+   {
+    "target": "ANKRD52",
+    "shrunk_cosine": 0.9452693066065992,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.48686403036117554,
+    "raw_cosine": 0.8286400496409017,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 3.590909957885742
+   },
+   {
+    "target": "ANKZF1",
+    "shrunk_cosine": 0.9949712508165117,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05303621292114258,
+    "raw_cosine": 0.995754129202854,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.0620037317276001
+   },
+   {
+    "target": "ANP32B",
+    "shrunk_cosine": 0.9969815250410325,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08949446678161621,
+    "raw_cosine": 0.9967311572273913,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.11247062683105469
+   },
+   {
+    "target": "AP2A2",
+    "shrunk_cosine": 0.994859616219194,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07426738739013672,
+    "raw_cosine": 0.9962636213124324,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09004533290863037
+   },
+   {
+    "target": "API5",
+    "shrunk_cosine": 0.9966898353076191,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05862140655517578,
+    "raw_cosine": 0.9972355920075145,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06701850891113281
+   },
+   {
+    "target": "ARL14EP",
+    "shrunk_cosine": 0.9973047755406075,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.09482288360595703,
+    "raw_cosine": 0.997603950125548,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.11634516716003418
+   },
+   {
+    "target": "ASCC2",
+    "shrunk_cosine": 0.996988916106003,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10863137245178223,
+    "raw_cosine": 0.997447077070377,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.14458394050598145
+   },
+   {
+    "target": "BCKDK",
+    "shrunk_cosine": 0.9978624000113943,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0344901978969574,
+    "raw_cosine": 0.9983032738562677,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.03641638159751892
+   },
+   {
+    "target": "BCL6",
+    "shrunk_cosine": 0.9938997346885581,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05389806628227234,
+    "raw_cosine": 0.9958808314992561,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06618598103523254
+   },
+   {
+    "target": "BCL7C",
+    "shrunk_cosine": 0.9928510789119167,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0869297981262207,
+    "raw_cosine": 0.9946785147850217,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.10460817813873291
+   },
+   {
+    "target": "BRD1",
+    "shrunk_cosine": 0.9971787832851089,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.062030792236328125,
+    "raw_cosine": 0.9976503237557574,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07358765602111816
+   },
+   {
+    "target": "BRPF1",
+    "shrunk_cosine": 0.997252843583182,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0554044246673584,
+    "raw_cosine": 0.9978780971861217,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06174635887145996
+   },
+   {
+    "target": "C5orf22",
+    "shrunk_cosine": 0.9983483185318643,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.2176201343536377,
+    "raw_cosine": 0.9984166689248714,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.4048733711242676
+   },
+   {
+    "target": "CAND1",
+    "shrunk_cosine": 0.9892929165362878,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.23223131895065308,
+    "raw_cosine": 0.9875520697577447,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.9530467987060547
+   },
+   {
+    "target": "CARM1",
+    "shrunk_cosine": 0.9970792713033153,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0912122130393982,
+    "raw_cosine": 0.9977018500120061,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.1304783821105957
+   },
+   {
+    "target": "CAT",
+    "shrunk_cosine": 0.9963971089352661,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.09034872055053711,
+    "raw_cosine": 0.9972290699151971,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.11314678192138672
+   },
+   {
+    "target": "CCDC112",
+    "shrunk_cosine": 0.994744738756243,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.20590829849243164,
+    "raw_cosine": 0.9920287222416518,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.6456074714660645
+   },
+   {
+    "target": "CDK8",
+    "shrunk_cosine": 0.9964790622589036,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06439173221588135,
+    "raw_cosine": 0.9974189452677797,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.0700731873512268
+   },
+   {
+    "target": "CHD3",
+    "shrunk_cosine": 0.9934162670929455,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05813950300216675,
+    "raw_cosine": 0.9951072056486692,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06480389833450317
+   },
+   {
+    "target": "CHD6",
+    "shrunk_cosine": 0.9950226033800733,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05021888017654419,
+    "raw_cosine": 0.9960105363913195,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.05600535869598389
+   },
+   {
+    "target": "CHKB",
+    "shrunk_cosine": 0.9813470715646099,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.09755814075469971,
+    "raw_cosine": 0.9844447843380245,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.10240751504898071
+   },
+   {
+    "target": "CLCN6",
+    "shrunk_cosine": 0.9961248909260658,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10842084884643555,
+    "raw_cosine": 0.9967294457698064,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.14574790000915527
+   },
+   {
+    "target": "COIL",
+    "shrunk_cosine": 0.9932972169050006,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.1182699203491211,
+    "raw_cosine": 0.9945533466661246,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.15287017822265625
+   },
+   {
+    "target": "COMMD8",
+    "shrunk_cosine": 0.9929166087976457,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08144557476043701,
+    "raw_cosine": 0.9943096488094686,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09181666374206543
+   },
+   {
+    "target": "COQ10B",
+    "shrunk_cosine": 0.9973521965908358,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06422114372253418,
+    "raw_cosine": 0.9976607129082287,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07153689861297607
+   },
+   {
+    "target": "CSNK2A1",
+    "shrunk_cosine": 0.9964251447128047,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08835923671722412,
+    "raw_cosine": 0.99711276877806,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.11224424839019775
+   },
+   {
+    "target": "CYTH2",
+    "shrunk_cosine": 0.992088404750396,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05541220307350159,
+    "raw_cosine": 0.9941089613302857,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06011068820953369
+   },
+   {
+    "target": "DBF4B",
+    "shrunk_cosine": 0.9935456445346169,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.2236638069152832,
+    "raw_cosine": 0.9943473526108985,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.40943074226379395
+   },
+   {
+    "target": "DBN1",
+    "shrunk_cosine": 0.9935478858210799,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06940916180610657,
+    "raw_cosine": 0.9946990060609991,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07340502738952637
+   },
+   {
+    "target": "DCAF16",
+    "shrunk_cosine": 0.9956376212837865,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.1442481279373169,
+    "raw_cosine": 0.9967015416141706,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.21637725830078125
+   },
+   {
+    "target": "DCP2",
+    "shrunk_cosine": 0.9990801421329703,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05852198600769043,
+    "raw_cosine": 0.9990204357245211,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06422030925750732
+   },
+   {
+    "target": "DDHD1",
+    "shrunk_cosine": 0.9894311883854687,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.21660399436950684,
+    "raw_cosine": 0.9916083380501673,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.4041867256164551
+   },
+   {
+    "target": "DEAF1",
+    "shrunk_cosine": 0.9920687883818862,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.23380982875823975,
+    "raw_cosine": 0.9944354293705635,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.4159022569656372
+   },
+   {
+    "target": "DEK",
+    "shrunk_cosine": 0.9947649010829311,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08849632740020752,
+    "raw_cosine": 0.9958158766629608,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.10349917411804199
+   },
+   {
+    "target": "DHRS1",
+    "shrunk_cosine": 0.9958458512479227,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.1967780590057373,
+    "raw_cosine": 0.9969703095213068,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.3851151466369629
+   },
+   {
+    "target": "DHX35",
+    "shrunk_cosine": 0.9812767313940824,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.23166048526763916,
+    "raw_cosine": 0.9873174485944183,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.41589057445526123
+   },
+   {
+    "target": "DLAT",
+    "shrunk_cosine": 0.9499302639848418,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.3614320158958435,
+    "raw_cosine": 0.8735653408578576,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 3.2056801319122314
+   },
+   {
+    "target": "DMTF1",
+    "shrunk_cosine": 0.9698938578174006,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.31733226776123047,
+    "raw_cosine": 0.9606590570106888,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 2.388444423675537
+   },
+   {
+    "target": "DNTTIP1",
+    "shrunk_cosine": 0.9900749828057736,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.12250912189483643,
+    "raw_cosine": 0.9894767843644582,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.15827155113220215
+   },
+   {
+    "target": "DRG2",
+    "shrunk_cosine": 0.9913283478310153,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07043647766113281,
+    "raw_cosine": 0.9935771875725526,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07680583000183105
+   },
+   {
+    "target": "DTNBP1",
+    "shrunk_cosine": 0.9930799932854827,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04144906997680664,
+    "raw_cosine": 0.9945885585650618,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.043565988540649414
+   },
+   {
+    "target": "DVL3",
+    "shrunk_cosine": 0.995865115683236,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.030593469738960266,
+    "raw_cosine": 0.9964635252983041,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.038316935300827026
+   },
+   {
+    "target": "E2F1",
+    "shrunk_cosine": 0.9979018137909731,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.052626609802246094,
+    "raw_cosine": 0.9982148770951146,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.059253811836242676
+   },
+   {
+    "target": "E2F4",
+    "shrunk_cosine": 0.9966640984715179,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.047521770000457764,
+    "raw_cosine": 0.9977292243561631,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.0607454776763916
+   },
+   {
+    "target": "EAPP",
+    "shrunk_cosine": 0.9872069748195283,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07092958688735962,
+    "raw_cosine": 0.9901575606589235,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07364434003829956
+   },
+   {
+    "target": "EEF1A2",
+    "shrunk_cosine": 0.9940530027109937,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04056230187416077,
+    "raw_cosine": 0.9957667931423267,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04507514834403992
+   },
+   {
+    "target": "ELK1",
+    "shrunk_cosine": 0.9867230416821716,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.23480963706970215,
+    "raw_cosine": 0.9882732058588569,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.0827140808105469
+   },
+   {
+    "target": "EPC2",
+    "shrunk_cosine": 0.9974031462142576,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.045068979263305664,
+    "raw_cosine": 0.9977892583141521,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04931235313415527
+   },
+   {
+    "target": "EPM2AIP1",
+    "shrunk_cosine": 0.9866955663210127,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.24354004859924316,
+    "raw_cosine": 0.9881395292088527,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.4247997999191284
+   },
+   {
+    "target": "EZH2",
+    "shrunk_cosine": 0.9966273391021078,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.049520909786224365,
+    "raw_cosine": 0.996821544905886,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.05513101816177368
+   },
+   {
+    "target": "FAM120A",
+    "shrunk_cosine": 0.9970039597467776,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04516604542732239,
+    "raw_cosine": 0.9972438479975213,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.046537697315216064
+   },
+   {
+    "target": "FCGRT",
+    "shrunk_cosine": 0.9933913144074018,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08816790580749512,
+    "raw_cosine": 0.9939471178758483,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.10219836235046387
+   },
+   {
+    "target": "FHL3",
+    "shrunk_cosine": 0.9971652117107187,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.03162074089050293,
+    "raw_cosine": 0.9972567053713112,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.040756985545158386
+   },
+   {
+    "target": "FOXN2",
+    "shrunk_cosine": 0.9979985060025931,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04740467667579651,
+    "raw_cosine": 0.9979955990315124,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.053885579109191895
+   },
+   {
+    "target": "FOXO4",
+    "shrunk_cosine": 0.9896923342112882,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05479532480239868,
+    "raw_cosine": 0.9913207824146505,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.05407005548477173
+   },
+   {
+    "target": "FUBP3",
+    "shrunk_cosine": 0.9956954363510445,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.09984385967254639,
+    "raw_cosine": 0.9964387660257104,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.12307906150817871
+   },
+   {
+    "target": "FXYD5",
+    "shrunk_cosine": 0.9951112024679898,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0426173210144043,
+    "raw_cosine": 0.9949813942052266,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04547342658042908
+   },
+   {
+    "target": "FZD2",
+    "shrunk_cosine": 0.9923637415701847,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.16762292385101318,
+    "raw_cosine": 0.9945185229691921,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.23507380485534668
+   },
+   {
+    "target": "GIGYF2",
+    "shrunk_cosine": 0.9976162570586092,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0420527458190918,
+    "raw_cosine": 0.9979568062384061,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.044768333435058594
+   },
+   {
+    "target": "GLI3",
+    "shrunk_cosine": 0.998057895298502,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.037937164306640625,
+    "raw_cosine": 0.9983706618726497,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.038017600774765015
+   },
+   {
+    "target": "GLYR1",
+    "shrunk_cosine": 0.9976445964100087,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.02995675802230835,
+    "raw_cosine": 0.998076583000324,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.03560982644557953
+   },
+   {
+    "target": "GMEB2",
+    "shrunk_cosine": 0.9907914556612661,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.12529349327087402,
+    "raw_cosine": 0.9926697384341657,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.16078078746795654
+   },
+   {
+    "target": "GPATCH8",
+    "shrunk_cosine": 0.9966219393334624,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04332299530506134,
+    "raw_cosine": 0.997471541011257,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04340425133705139
+   },
+   {
+    "target": "GRAMD1A",
+    "shrunk_cosine": 0.9966527483811789,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.047161757946014404,
+    "raw_cosine": 0.9969410327307158,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04745674133300781
+   },
+   {
+    "target": "GTF2IRD1",
+    "shrunk_cosine": 0.9928861465427944,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.22248411178588867,
+    "raw_cosine": 0.9953472084519909,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.4049217700958252
+   },
+   {
+    "target": "HDAC1",
+    "shrunk_cosine": 0.9971653872327331,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.085601806640625,
+    "raw_cosine": 0.9978381278922116,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.10003972053527832
+   },
+   {
+    "target": "HDAC8",
+    "shrunk_cosine": 0.9970611384154552,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06719213724136353,
+    "raw_cosine": 0.9977328864224676,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.08456110954284668
+   },
+   {
+    "target": "HMGN3",
+    "shrunk_cosine": 0.9905475607870239,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10764932632446289,
+    "raw_cosine": 0.9918557898375803,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.13013970851898193
+   },
+   {
+    "target": "HMGN4",
+    "shrunk_cosine": 0.9974789888185961,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06329900026321411,
+    "raw_cosine": 0.998029245955019,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07068812847137451
+   },
+   {
+    "target": "HMGXB3",
+    "shrunk_cosine": 0.9988991038811423,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.03570270538330078,
+    "raw_cosine": 0.9988721785485966,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.03875136375427246
+   },
+   {
+    "target": "HOMEZ",
+    "shrunk_cosine": 0.9940781470474992,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.15837597846984863,
+    "raw_cosine": 0.9950869523927628,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.22569727897644043
+   },
+   {
+    "target": "HSBP1",
+    "shrunk_cosine": 0.9843783846698569,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08270794153213501,
+    "raw_cosine": 0.9867727071094641,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09411722421646118
+   },
+   {
+    "target": "HSP90AB1",
+    "shrunk_cosine": 0.9892537203005044,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.23410093784332275,
+    "raw_cosine": 0.9922870002584367,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.4158458709716797
+   },
+   {
+    "target": "IFI27L2",
+    "shrunk_cosine": 0.9926442486941084,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.14392250776290894,
+    "raw_cosine": 0.9952501406196856,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.21417236328125
+   },
+   {
+    "target": "IFNAR2",
+    "shrunk_cosine": 0.9968517559358062,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06311982870101929,
+    "raw_cosine": 0.9976639289474508,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07517623901367188
+   },
+   {
+    "target": "IFNGR2",
+    "shrunk_cosine": 0.9963119599715176,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.03846907615661621,
+    "raw_cosine": 0.9965870190909223,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04319190979003906
+   },
+   {
+    "target": "IL10RB",
+    "shrunk_cosine": 0.9951799758079644,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.046919286251068115,
+    "raw_cosine": 0.9963660463773788,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.048478543758392334
+   },
+   {
+    "target": "IREB2",
+    "shrunk_cosine": 0.9946152726862388,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08145660161972046,
+    "raw_cosine": 0.9958980723445071,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09084832668304443
+   },
+   {
+    "target": "KDM5A",
+    "shrunk_cosine": 0.9921310176271633,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.059731900691986084,
+    "raw_cosine": 0.993962652570613,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06492352485656738
+   },
+   {
+    "target": "KHDRBS1",
+    "shrunk_cosine": 0.980973507516581,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.16148293018341064,
+    "raw_cosine": 0.9870684757160243,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.22977709770202637
+   },
+   {
+    "target": "KHSRP",
+    "shrunk_cosine": 0.9910109162861015,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.16047734022140503,
+    "raw_cosine": 0.9931942734158148,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.22919678688049316
+   },
+   {
+    "target": "KIF2A",
+    "shrunk_cosine": 0.9984924600511133,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.028911173343658447,
+    "raw_cosine": 0.9984917717069943,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.03548938035964966
+   },
+   {
+    "target": "KMT2A",
+    "shrunk_cosine": 0.9944508675733515,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.049155354499816895,
+    "raw_cosine": 0.9953756090639705,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.048686087131500244
+   },
+   {
+    "target": "LDLR",
+    "shrunk_cosine": 0.9975585430109671,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.19480502605438232,
+    "raw_cosine": 0.9978306832607169,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.3834724426269531
+   },
+   {
+    "target": "LENG1",
+    "shrunk_cosine": 0.9833578888650165,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.23392713069915771,
+    "raw_cosine": 0.9859810931994858,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.9097673892974854
+   },
+   {
+    "target": "LMAN1",
+    "shrunk_cosine": 0.994117490191004,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.12311887741088867,
+    "raw_cosine": 0.993634682277328,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.15791821479797363
+   },
+   {
+    "target": "LMBRD2",
+    "shrunk_cosine": 0.9963746292788773,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.23223161697387695,
+    "raw_cosine": 0.996073631431707,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.41813182830810547
+   },
+   {
+    "target": "LPCAT3",
+    "shrunk_cosine": 0.9912001008887982,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.17050576210021973,
+    "raw_cosine": 0.9940373833862105,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.23763537406921387
+   },
+   {
+    "target": "MAN2A1",
+    "shrunk_cosine": 0.9957172789010177,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.11193394660949707,
+    "raw_cosine": 0.9969531292761585,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.1488475799560547
+   },
+   {
+    "target": "MAP2K2",
+    "shrunk_cosine": 0.9908763471013851,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06287038326263428,
+    "raw_cosine": 0.9924840279299233,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.0702594518661499
+   },
+   {
+    "target": "MAPK12",
+    "shrunk_cosine": 0.972932664115906,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.24027490615844727,
+    "raw_cosine": 0.9779324621448494,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 2.2587568759918213
+   },
+   {
+    "target": "MARCKSL1",
+    "shrunk_cosine": 0.9888371088019261,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10609018802642822,
+    "raw_cosine": 0.9899633815319051,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.14301657676696777
+   },
+   {
+    "target": "MBD4",
+    "shrunk_cosine": 0.9956267466232332,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05183643102645874,
+    "raw_cosine": 0.9966206514644118,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.0584753155708313
+   },
+   {
+    "target": "MED13",
+    "shrunk_cosine": 0.9973747340839542,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04005312919616699,
+    "raw_cosine": 0.9976817291789067,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04697918891906738
+   },
+   {
+    "target": "MED15",
+    "shrunk_cosine": 0.9959369880326874,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.035313308238983154,
+    "raw_cosine": 0.9972404167612181,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.041562020778656006
+   },
+   {
+    "target": "MED25",
+    "shrunk_cosine": 0.9979177492364717,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07474696636199951,
+    "raw_cosine": 0.998218926116802,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09938585758209229
+   },
+   {
+    "target": "MLLT10",
+    "shrunk_cosine": 0.9978062925218091,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.055390000343322754,
+    "raw_cosine": 0.9982338727606621,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.059451937675476074
+   },
+   {
+    "target": "MSANTD4",
+    "shrunk_cosine": 0.9954431102044955,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.11422264575958252,
+    "raw_cosine": 0.9958805518631297,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.15094304084777832
+   },
+   {
+    "target": "MSI2",
+    "shrunk_cosine": 0.9943474850065877,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.09714293479919434,
+    "raw_cosine": 0.9957256594213124,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.11953127384185791
+   },
+   {
+    "target": "MTA1",
+    "shrunk_cosine": 0.997262550939394,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07644206285476685,
+    "raw_cosine": 0.997422384354135,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.10097479820251465
+   },
+   {
+    "target": "MTF1",
+    "shrunk_cosine": 0.9978313551663403,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.20214033126831055,
+    "raw_cosine": 0.9980049398592039,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.3911457061767578
+   },
+   {
+    "target": "MTHFSD",
+    "shrunk_cosine": 0.9950493060088185,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05409187078475952,
+    "raw_cosine": 0.9964115257411958,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06356257200241089
+   },
+   {
+    "target": "MTM1",
+    "shrunk_cosine": 0.9849432299957493,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07166898250579834,
+    "raw_cosine": 0.9887306988879632,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07596743106842041
+   },
+   {
+    "target": "MYD88",
+    "shrunk_cosine": 0.9887911655260379,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04551339149475098,
+    "raw_cosine": 0.9906524028011795,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.0486525297164917
+   },
+   {
+    "target": "MYPOP",
+    "shrunk_cosine": 0.9950952350853648,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.12343382835388184,
+    "raw_cosine": 0.995972604807766,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.15927231311798096
+   },
+   {
+    "target": "MYRF",
+    "shrunk_cosine": 0.9977072264911581,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0396503210067749,
+    "raw_cosine": 0.9980782665029148,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04563581943511963
+   },
+   {
+    "target": "NABP2",
+    "shrunk_cosine": 0.9979160005245967,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.018853753805160522,
+    "raw_cosine": 0.9978705153363605,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.026664867997169495
+   },
+   {
+    "target": "NAIF1",
+    "shrunk_cosine": 0.996015214163346,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05948305130004883,
+    "raw_cosine": 0.9960912183070814,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06769657135009766
+   },
+   {
+    "target": "NCLN",
+    "shrunk_cosine": 0.9879315513288266,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.2294367551803589,
+    "raw_cosine": 0.9913388330567913,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.41142189502716064
+   },
+   {
+    "target": "NFE2L1",
+    "shrunk_cosine": 0.9909872057685518,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.15167534351348877,
+    "raw_cosine": 0.9938720016571897,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.2228468656539917
+   },
+   {
+    "target": "NGLY1",
+    "shrunk_cosine": 0.9926438595016056,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0951378345489502,
+    "raw_cosine": 0.9931518920259975,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.10835433006286621
+   },
+   {
+    "target": "NIPAL3",
+    "shrunk_cosine": 0.9963161199256615,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.13376128673553467,
+    "raw_cosine": 0.9974246808511467,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.20479702949523926
+   },
+   {
+    "target": "NIPSNAP3A",
+    "shrunk_cosine": 0.9970195477552486,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.15367841720581055,
+    "raw_cosine": 0.9975476190209699,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.22274911403656006
+   },
+   {
+    "target": "NT5DC1",
+    "shrunk_cosine": 0.9977707986379982,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10938668251037598,
+    "raw_cosine": 0.9981268207151534,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.1452779769897461
+   },
+   {
+    "target": "NUP37",
+    "shrunk_cosine": 0.9950897201425988,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.15396618843078613,
+    "raw_cosine": 0.9957029308074464,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.21848607063293457
+   },
+   {
+    "target": "PAN2",
+    "shrunk_cosine": 0.9983497826906488,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.1016855239868164,
+    "raw_cosine": 0.9985653070210789,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.13975191116333008
+   },
+   {
+    "target": "PAPOLA",
+    "shrunk_cosine": 0.9875619100834961,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.20940083265304565,
+    "raw_cosine": 0.9601035774939022,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 2.4549307823181152
+   },
+   {
+    "target": "PATL1",
+    "shrunk_cosine": 0.9623211812040859,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.24032950401306152,
+    "raw_cosine": 0.9706236142381197,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.42522478103637695
+   },
+   {
+    "target": "PCGF1",
+    "shrunk_cosine": 0.9986233937972115,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.03716331720352173,
+    "raw_cosine": 0.9987031653834493,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.040673255920410156
+   },
+   {
+    "target": "PCGF6",
+    "shrunk_cosine": 0.997175629176923,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10670089721679688,
+    "raw_cosine": 0.9977288849938987,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.1433882713317871
+   },
+   {
+    "target": "PDCD4",
+    "shrunk_cosine": 0.9888428208375251,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06506475806236267,
+    "raw_cosine": 0.9913784204577959,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.0699918270111084
+   },
+   {
+    "target": "PDE6D",
+    "shrunk_cosine": 0.993197668031068,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.03273022174835205,
+    "raw_cosine": 0.9950679734003983,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04258293658494949
+   },
+   {
+    "target": "PDK1",
+    "shrunk_cosine": 0.9872714813980425,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.22202199697494507,
+    "raw_cosine": 0.9914436172193664,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.40472161769866943
+   },
+   {
+    "target": "PGLS",
+    "shrunk_cosine": 0.993486490858313,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04849725961685181,
+    "raw_cosine": 0.9946064893194801,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.05233883857727051
+   },
+   {
+    "target": "PHF19",
+    "shrunk_cosine": 0.9587133157568508,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.5751529932022095,
+    "raw_cosine": 0.872433701746055,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 3.2273956537246704
+   },
+   {
+    "target": "PHF23",
+    "shrunk_cosine": 0.9954149729017073,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06153485178947449,
+    "raw_cosine": 0.9958990870129627,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.059592604637145996
+   },
+   {
+    "target": "PHF8",
+    "shrunk_cosine": 0.9943460221392243,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.21370172500610352,
+    "raw_cosine": 0.9952413796757029,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.4015953540802002
+   },
+   {
+    "target": "PI4KB",
+    "shrunk_cosine": 0.981092365436315,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.2394566535949707,
+    "raw_cosine": 0.9827404532965681,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.9212679862976074
+   },
+   {
+    "target": "PIM2",
+    "shrunk_cosine": 0.9893724914299792,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0594480037689209,
+    "raw_cosine": 0.9916725917959025,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06398487091064453
+   },
+   {
+    "target": "PIN1",
+    "shrunk_cosine": 0.9771366848118405,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.29309117794036865,
+    "raw_cosine": 0.955386802264884,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 2.4295408725738525
+   },
+   {
+    "target": "PINK1",
+    "shrunk_cosine": 0.9952504019140218,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.02798508107662201,
+    "raw_cosine": 0.9941409101193931,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.028972431551665068
+   },
+   {
+    "target": "PKN3",
+    "shrunk_cosine": 0.9943207580119199,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.1149282455444336,
+    "raw_cosine": 0.9945464982792815,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.15149927139282227
+   },
+   {
+    "target": "PLAGL2",
+    "shrunk_cosine": 0.9946216815276605,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.050247907638549805,
+    "raw_cosine": 0.9954879962957425,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.05415034294128418
+   },
+   {
+    "target": "PLCG1",
+    "shrunk_cosine": 0.995278783759094,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.059437692165374756,
+    "raw_cosine": 0.9967055533702318,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06763136386871338
+   },
+   {
+    "target": "PNP",
+    "shrunk_cosine": 0.9885493425148075,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05352547764778137,
+    "raw_cosine": 0.9894666955186134,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.053462326526641846
+   },
+   {
+    "target": "POLD4",
+    "shrunk_cosine": 0.9928671018361682,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10671567916870117,
+    "raw_cosine": 0.992712422101385,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.12692952156066895
+   },
+   {
+    "target": "POR",
+    "shrunk_cosine": 0.9967708689622526,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.03642281889915466,
+    "raw_cosine": 0.9973612067772298,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04016663134098053
+   },
+   {
+    "target": "PPIF",
+    "shrunk_cosine": 0.9978757608096069,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.03272263705730438,
+    "raw_cosine": 0.9982032349022762,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.03918588161468506
+   },
+   {
+    "target": "PPIP5K2",
+    "shrunk_cosine": 0.9936966594144633,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.12088966369628906,
+    "raw_cosine": 0.9946246675575606,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.15805327892303467
+   },
+   {
+    "target": "PQBP1",
+    "shrunk_cosine": 0.9964491061312295,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06776726245880127,
+    "raw_cosine": 0.9964851366299379,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07637655735015869
+   },
+   {
+    "target": "PRDX3",
+    "shrunk_cosine": 0.9947891172638015,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07855558395385742,
+    "raw_cosine": 0.9954522934575637,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.08466136455535889
+   },
+   {
+    "target": "PRKAB2",
+    "shrunk_cosine": 0.9953344108989736,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04077327251434326,
+    "raw_cosine": 0.9964945897410815,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04407036304473877
+   },
+   {
+    "target": "PRKACA",
+    "shrunk_cosine": 0.9722486762089257,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.2515404224395752,
+    "raw_cosine": 0.9789135565684429,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.8271009922027588
+   },
+   {
+    "target": "PRMT2",
+    "shrunk_cosine": 0.9888537912391594,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05700051784515381,
+    "raw_cosine": 0.9904452131798157,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.05736297369003296
+   },
+   {
+    "target": "PRMT6",
+    "shrunk_cosine": 0.9970269581476787,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.12912917137145996,
+    "raw_cosine": 0.9953152081527908,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.4013235569000244
+   },
+   {
+    "target": "PRMT7",
+    "shrunk_cosine": 0.9900758096988075,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.15499639511108398,
+    "raw_cosine": 0.9916621471215551,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.2228710651397705
+   },
+   {
+    "target": "PRNP",
+    "shrunk_cosine": 0.9961884004819284,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06601637601852417,
+    "raw_cosine": 0.9972262487491831,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07721257209777832
+   },
+   {
+    "target": "PSKH1",
+    "shrunk_cosine": 0.9919644750353687,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.14643168449401855,
+    "raw_cosine": 0.9943997291068036,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.21611034870147705
+   },
+   {
+    "target": "PTMS",
+    "shrunk_cosine": 0.9951604421033067,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06118124723434448,
+    "raw_cosine": 0.9963150672781993,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06719392538070679
+   },
+   {
+    "target": "PTOV1",
+    "shrunk_cosine": 0.9898544227052919,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.2258177399635315,
+    "raw_cosine": 0.9928874063742951,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.4085214138031006
+   },
+   {
+    "target": "PYCR1",
+    "shrunk_cosine": 0.9930038223951346,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06492376327514648,
+    "raw_cosine": 0.9925860821306097,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.0705946683883667
+   },
+   {
+    "target": "R3HCC1L",
+    "shrunk_cosine": 0.99185374346813,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.22032558917999268,
+    "raw_cosine": 0.9937147184779953,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.40567445755004883
+   },
+   {
+    "target": "RAB5A",
+    "shrunk_cosine": 0.9959326502388163,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10496604442596436,
+    "raw_cosine": 0.9972990823013299,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.1266878843307495
+   },
+   {
+    "target": "RABEP2",
+    "shrunk_cosine": 0.9963802653141177,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08408224582672119,
+    "raw_cosine": 0.9970493781041345,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09356462955474854
+   },
+   {
+    "target": "RBM18",
+    "shrunk_cosine": 0.9781062672221353,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.1469261646270752,
+    "raw_cosine": 0.9791391476383255,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.1792926788330078
+   },
+   {
+    "target": "RBM26",
+    "shrunk_cosine": 0.9919115880735118,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08708065748214722,
+    "raw_cosine": 0.9930246551150164,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09667479991912842
+   },
+   {
+    "target": "RBM4B",
+    "shrunk_cosine": 0.9920385835569225,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06615805625915527,
+    "raw_cosine": 0.9947026491724426,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07201111316680908
+   },
+   {
+    "target": "RBM5",
+    "shrunk_cosine": 0.989105903103374,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.1329060196876526,
+    "raw_cosine": 0.9920695398125837,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.17102015018463135
+   },
+   {
+    "target": "RC3H2",
+    "shrunk_cosine": 0.996472972378422,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10782146453857422,
+    "raw_cosine": 0.9971234632508503,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.14448928833007812
+   },
+   {
+    "target": "REV1",
+    "shrunk_cosine": 0.9951922724201238,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06225675344467163,
+    "raw_cosine": 0.9961293233301873,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07129955291748047
+   },
+   {
+    "target": "RFK",
+    "shrunk_cosine": 0.9856651505239896,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.2230878472328186,
+    "raw_cosine": 0.9722705497707914,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 2.283721685409546
+   },
+   {
+    "target": "RNF10",
+    "shrunk_cosine": 0.9957297195951654,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.051713764667510986,
+    "raw_cosine": 0.9961327417048612,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.05619990825653076
+   },
+   {
+    "target": "RNF141",
+    "shrunk_cosine": 0.9959273372520898,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.048427462577819824,
+    "raw_cosine": 0.9968424930551422,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.05014240741729736
+   },
+   {
+    "target": "RNF2",
+    "shrunk_cosine": 0.9953420097422808,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0719248354434967,
+    "raw_cosine": 0.9968824526617449,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09286129474639893
+   },
+   {
+    "target": "RSRC1",
+    "shrunk_cosine": 0.9886613032111601,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.23107808828353882,
+    "raw_cosine": 0.9918718598445403,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.41645264625549316
+   },
+   {
+    "target": "S100A11",
+    "shrunk_cosine": 0.9936134429584081,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08220529556274414,
+    "raw_cosine": 0.9935317037881075,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.08802735805511475
+   },
+   {
+    "target": "SAP30L",
+    "shrunk_cosine": 0.9800649024714606,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08452636003494263,
+    "raw_cosine": 0.9865903068724406,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09144210815429688
+   },
+   {
+    "target": "SCAF8",
+    "shrunk_cosine": 0.989079364525405,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.11305451393127441,
+    "raw_cosine": 0.9897045021315622,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.1335599422454834
+   },
+   {
+    "target": "SFXN4",
+    "shrunk_cosine": 0.9950148952379617,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0878562331199646,
+    "raw_cosine": 0.995715203219622,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.11143553256988525
+   },
+   {
+    "target": "SH2D3A",
+    "shrunk_cosine": 0.992302370911394,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08206641674041748,
+    "raw_cosine": 0.9942524126506453,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.08767974376678467
+   },
+   {
+    "target": "SHPRH",
+    "shrunk_cosine": 0.9961174309347914,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05618506669998169,
+    "raw_cosine": 0.9965899265549647,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06135064363479614
+   },
+   {
+    "target": "SIN3B",
+    "shrunk_cosine": 0.9802790300647644,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.27258896827697754,
+    "raw_cosine": 0.9842413865558725,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.5458498001098633
+   },
+   {
+    "target": "SLC25A13",
+    "shrunk_cosine": 0.9955869229490764,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07582765817642212,
+    "raw_cosine": 0.9967096810166729,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09246540069580078
+   },
+   {
+    "target": "SLC39A1",
+    "shrunk_cosine": 0.9963825804459444,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04453074932098389,
+    "raw_cosine": 0.9974672006997256,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.052331387996673584
+   },
+   {
+    "target": "SLIRP",
+    "shrunk_cosine": 0.9402998322034745,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.2679131031036377,
+    "raw_cosine": 0.9411846525830686,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 2.385114908218384
+   },
+   {
+    "target": "SMARCA5",
+    "shrunk_cosine": 0.9898379025338618,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.09091371297836304,
+    "raw_cosine": 0.991336599243456,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.10636138916015625
+   },
+   {
+    "target": "SMARCC2",
+    "shrunk_cosine": 0.9974508794619706,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.03393596410751343,
+    "raw_cosine": 0.998202618590382,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.03590893745422363
+   },
+   {
+    "target": "SMYD2",
+    "shrunk_cosine": 0.9957173945379314,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08019018173217773,
+    "raw_cosine": 0.9960819354570604,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09502935409545898
+   },
+   {
+    "target": "SND1",
+    "shrunk_cosine": 0.9958555134732058,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.051836490631103516,
+    "raw_cosine": 0.9967345631126587,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.05625462532043457
+   },
+   {
+    "target": "SNRK",
+    "shrunk_cosine": 0.9980485544330595,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07663464546203613,
+    "raw_cosine": 0.998411632850129,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09216248989105225
+   },
+   {
+    "target": "SNX4",
+    "shrunk_cosine": 0.9880778433326358,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.1582157015800476,
+    "raw_cosine": 0.9921913728372277,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.23190629482269287
+   },
+   {
+    "target": "SRSF5",
+    "shrunk_cosine": 0.9842161398062643,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06336668133735657,
+    "raw_cosine": 0.9869388088307653,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06956952810287476
+   },
+   {
+    "target": "SSR4",
+    "shrunk_cosine": 0.9899512781169706,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10262084007263184,
+    "raw_cosine": 0.9924458239454513,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.12666761875152588
+   },
+   {
+    "target": "STAT6",
+    "shrunk_cosine": 0.9622103019947051,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.3104526996612549,
+    "raw_cosine": 0.8977208615151477,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 2.9508721828460693
+   },
+   {
+    "target": "STK3",
+    "shrunk_cosine": 0.9870080994899428,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07327461242675781,
+    "raw_cosine": 0.9892807886037607,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.08385944366455078
+   },
+   {
+    "target": "STT3A",
+    "shrunk_cosine": 0.9821760520166753,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.23190683126449585,
+    "raw_cosine": 0.9832572713218027,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.9990134239196777
+   },
+   {
+    "target": "SUPT7L",
+    "shrunk_cosine": 0.9974562878674944,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07038158178329468,
+    "raw_cosine": 0.9978934590000559,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.08146929740905762
+   },
+   {
+    "target": "SYVN1",
+    "shrunk_cosine": 0.9912965629040349,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06111407279968262,
+    "raw_cosine": 0.9933028367488338,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06786781549453735
+   },
+   {
+    "target": "TAF15",
+    "shrunk_cosine": 0.992294900443515,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.048291027545928955,
+    "raw_cosine": 0.994041878768953,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.053156256675720215
+   },
+   {
+    "target": "TARBP2",
+    "shrunk_cosine": 0.9868857674797743,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.4199814796447754,
+    "raw_cosine": 0.989338873050074,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.5240130424499512
+   },
+   {
+    "target": "TBC1D13",
+    "shrunk_cosine": 0.9969509376034903,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.11860895156860352,
+    "raw_cosine": 0.9977276432626022,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.15467238426208496
+   },
+   {
+    "target": "TBCK",
+    "shrunk_cosine": 0.9921198085767113,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.24148106575012207,
+    "raw_cosine": 0.9935341566840976,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.4260885715484619
+   },
+   {
+    "target": "TEAD4",
+    "shrunk_cosine": 0.9932949219969079,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.12533068656921387,
+    "raw_cosine": 0.9948467377601229,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.16131269931793213
+   },
+   {
+    "target": "TEX2",
+    "shrunk_cosine": 0.9942875802935387,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.045047104358673096,
+    "raw_cosine": 0.9954177824714143,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.043437302112579346
+   },
+   {
+    "target": "TFCP2",
+    "shrunk_cosine": 0.9975245696659227,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04014122486114502,
+    "raw_cosine": 0.9978054691246994,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04249763488769531
+   },
+   {
+    "target": "THAP3",
+    "shrunk_cosine": 0.9950767059996204,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08324182033538818,
+    "raw_cosine": 0.9965534323595414,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09928178787231445
+   },
+   {
+    "target": "THAP7",
+    "shrunk_cosine": 0.9962133431604141,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.035667210817337036,
+    "raw_cosine": 0.9967790830701801,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04033462703227997
+   },
+   {
+    "target": "TIMM17B",
+    "shrunk_cosine": 0.9914415290135044,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.16975581645965576,
+    "raw_cosine": 0.9924657284401454,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.2372676134109497
+   },
+   {
+    "target": "TIMM50",
+    "shrunk_cosine": 0.9512359321170977,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.2752862572669983,
+    "raw_cosine": 0.9527514054488885,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 2.147365093231201
+   },
+   {
+    "target": "TMCO6",
+    "shrunk_cosine": 0.9940489871479629,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10650372505187988,
+    "raw_cosine": 0.9961010588152397,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.14661931991577148
+   },
+   {
+    "target": "TMED3",
+    "shrunk_cosine": 0.9971024008250854,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.03858095407485962,
+    "raw_cosine": 0.9974704071304235,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04395076632499695
+   },
+   {
+    "target": "TMEM147",
+    "shrunk_cosine": 0.9891237214529396,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.15071088075637817,
+    "raw_cosine": 0.9914284327541178,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.22159671783447266
+   },
+   {
+    "target": "TMEM186",
+    "shrunk_cosine": 0.989970975338208,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.21851742267608643,
+    "raw_cosine": 0.9931167246645005,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.40424156188964844
+   },
+   {
+    "target": "TMEM209",
+    "shrunk_cosine": 0.9926257321358319,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.09654021263122559,
+    "raw_cosine": 0.9942196840742062,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.11848998069763184
+   },
+   {
+    "target": "TMEM41B",
+    "shrunk_cosine": 0.9884742593968388,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.19444382190704346,
+    "raw_cosine": 0.9699495078046042,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 2.4419100284576416
+   },
+   {
+    "target": "TMF1",
+    "shrunk_cosine": 0.9953260608688157,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08488321304321289,
+    "raw_cosine": 0.9965042739454117,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.10063278675079346
+   },
+   {
+    "target": "TRAPPC6A",
+    "shrunk_cosine": 0.9910428664389898,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10458564758300781,
+    "raw_cosine": 0.9914689525290765,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.12589287757873535
+   },
+   {
+    "target": "TRIB3",
+    "shrunk_cosine": 0.9956856286653611,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10410547256469727,
+    "raw_cosine": 0.9964827009176666,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.1254664659500122
+   },
+   {
+    "target": "TRIM35",
+    "shrunk_cosine": 0.9978592425697643,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.02543005347251892,
+    "raw_cosine": 0.9982189950410427,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.031437620520591736
+   },
+   {
+    "target": "TRIP4",
+    "shrunk_cosine": 0.9837600828503722,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.24017727375030518,
+    "raw_cosine": 0.9856259138770933,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.4248082637786865
+   },
+   {
+    "target": "TRMT1",
+    "shrunk_cosine": 0.9908595733668888,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05653280019760132,
+    "raw_cosine": 0.9932388845312784,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06227201223373413
+   },
+   {
+    "target": "TRPC4AP",
+    "shrunk_cosine": 0.986112188231298,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.14032286405563354,
+    "raw_cosine": 0.9899744221003421,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.17803239822387695
+   },
+   {
+    "target": "TWF2",
+    "shrunk_cosine": 0.9927775280777729,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10686874389648438,
+    "raw_cosine": 0.992773007059634,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.1266336441040039
+   },
+   {
+    "target": "UNK",
+    "shrunk_cosine": 0.9956533744498022,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05283227562904358,
+    "raw_cosine": 0.996820638181451,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.05607473850250244
+   },
+   {
+    "target": "UPF3B",
+    "shrunk_cosine": 0.9941174515824218,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0716850757598877,
+    "raw_cosine": 0.9951631072327832,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.08769333362579346
+   },
+   {
+    "target": "UROS",
+    "shrunk_cosine": 0.9968352651835777,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.046445369720458984,
+    "raw_cosine": 0.9973816672130386,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.05170178413391113
+   },
+   {
+    "target": "USP28",
+    "shrunk_cosine": 0.9946750574314882,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.2332291603088379,
+    "raw_cosine": 0.9956940382741112,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.418914794921875
+   },
+   {
+    "target": "VAPB",
+    "shrunk_cosine": 0.9914423832400958,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07504358887672424,
+    "raw_cosine": 0.9936259355337671,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.08560025691986084
+   },
+   {
+    "target": "VIM",
+    "shrunk_cosine": 0.9949029882321321,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.10547095537185669,
+    "raw_cosine": 0.995591024993444,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.1459038257598877
+   },
+   {
+    "target": "WBP4",
+    "shrunk_cosine": 0.9866275889643065,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06605979800224304,
+    "raw_cosine": 0.9880559871631044,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06689453125
+   },
+   {
+    "target": "YIPF6",
+    "shrunk_cosine": 0.9842294524438978,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.14700359106063843,
+    "raw_cosine": 0.9891388032270574,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.22318816184997559
+   },
+   {
+    "target": "ZBTB34",
+    "shrunk_cosine": 0.9913721281983996,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08875370025634766,
+    "raw_cosine": 0.9939379857887174,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.10326337814331055
+   },
+   {
+    "target": "ZBTB41",
+    "shrunk_cosine": 0.9908464697812269,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08187848329544067,
+    "raw_cosine": 0.9938659057871764,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09796702861785889
+   },
+   {
+    "target": "ZBTB48",
+    "shrunk_cosine": 0.9900277840004286,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.22015023231506348,
+    "raw_cosine": 0.9901176408384268,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.5674407482147217
+   },
+   {
+    "target": "ZC3HAV1",
+    "shrunk_cosine": 0.9953764785545939,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.058351874351501465,
+    "raw_cosine": 0.9967015771309075,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06370270252227783
+   },
+   {
+    "target": "ZDHHC12",
+    "shrunk_cosine": 0.995477509547698,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04552331566810608,
+    "raw_cosine": 0.9954033198148168,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04805636405944824
+   },
+   {
+    "target": "ZDHHC4",
+    "shrunk_cosine": 0.9964756576256175,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.11225908994674683,
+    "raw_cosine": 0.9974441081337876,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.14987874031066895
+   },
+   {
+    "target": "ZFP62",
+    "shrunk_cosine": 0.9891292829781133,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0844765305519104,
+    "raw_cosine": 0.9919584793572127,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.10048085451126099
+   },
+   {
+    "target": "ZHX3",
+    "shrunk_cosine": 0.9963817936814748,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07015657424926758,
+    "raw_cosine": 0.9964371589110869,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.0732731819152832
+   },
+   {
+    "target": "ZKSCAN1",
+    "shrunk_cosine": 0.993797274796915,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04694537818431854,
+    "raw_cosine": 0.9932757771976156,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.0491335391998291
+   },
+   {
+    "target": "ZKSCAN2",
+    "shrunk_cosine": 0.9940615952300865,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.09689486026763916,
+    "raw_cosine": 0.9959036260407047,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.13580560684204102
+   },
+   {
+    "target": "ZKSCAN3",
+    "shrunk_cosine": 0.9881991656812981,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.16084188222885132,
+    "raw_cosine": 0.9923625521939735,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.23162150382995605
+   },
+   {
+    "target": "ZNF16",
+    "shrunk_cosine": 0.9925186375222782,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.11675313115119934,
+    "raw_cosine": 0.9943390793278005,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.16059935092926025
+   },
+   {
+    "target": "ZNF174",
+    "shrunk_cosine": 0.9734906621581804,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.5227357745170593,
+    "raw_cosine": 0.9017789595182111,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 2.9879077672958374
+   },
+   {
+    "target": "ZNF219",
+    "shrunk_cosine": 0.9875645576401418,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.24191761016845703,
+    "raw_cosine": 0.9862687188167545,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.8507592678070068
+   },
+   {
+    "target": "ZNF22",
+    "shrunk_cosine": 0.9937638117633946,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.08540511131286621,
+    "raw_cosine": 0.9944160954106229,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09573930501937866
+   },
+   {
+    "target": "ZNF25",
+    "shrunk_cosine": 0.9904485891491602,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06752395629882812,
+    "raw_cosine": 0.9929674574854743,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07483267784118652
+   },
+   {
+    "target": "ZNF251",
+    "shrunk_cosine": 0.9957409141063619,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.04256221652030945,
+    "raw_cosine": 0.9971569154383623,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04920750856399536
+   },
+   {
+    "target": "ZNF280C",
+    "shrunk_cosine": 0.9803995590633856,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.23893970251083374,
+    "raw_cosine": 0.9830791633019549,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.8855774402618408
+   },
+   {
+    "target": "ZNF282",
+    "shrunk_cosine": 0.9955663986589772,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05982840061187744,
+    "raw_cosine": 0.9960369008059071,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.0682072639465332
+   },
+   {
+    "target": "ZNF32",
+    "shrunk_cosine": 0.9955874477385426,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.32627391815185547,
+    "raw_cosine": 0.9950716098781724,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.319277048110962
+   },
+   {
+    "target": "ZNF324",
+    "shrunk_cosine": 0.9404164547320066,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.27844399213790894,
+    "raw_cosine": 0.9525095515408689,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 2.26611590385437
+   },
+   {
+    "target": "ZNF397",
+    "shrunk_cosine": 0.9872016391018248,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.24010175466537476,
+    "raw_cosine": 0.9875981034044813,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 2.021052122116089
+   },
+   {
+    "target": "ZNF410",
+    "shrunk_cosine": 0.9969833575457527,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.09628117084503174,
+    "raw_cosine": 0.9977438399940408,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.13550806045532227
+   },
+   {
+    "target": "ZNF444",
+    "shrunk_cosine": 0.9916014093058174,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06497323513031006,
+    "raw_cosine": 0.993535087053369,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.0665520429611206
+   },
+   {
+    "target": "ZNF462",
+    "shrunk_cosine": 0.995847691130953,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05081990361213684,
+    "raw_cosine": 0.9961524874825465,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.05037480592727661
+   },
+   {
+    "target": "ZNF496",
+    "shrunk_cosine": 0.99729595983304,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.0986412763595581,
+    "raw_cosine": 0.998070211828131,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.13703632354736328
+   },
+   {
+    "target": "ZNF507",
+    "shrunk_cosine": 0.997043898058259,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06612586975097656,
+    "raw_cosine": 0.9968006942921102,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.07399249076843262
+   },
+   {
+    "target": "ZNF514",
+    "shrunk_cosine": 0.9949944998418688,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.05198812484741211,
+    "raw_cosine": 0.9963300346680976,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.05663609504699707
+   },
+   {
+    "target": "ZNF526",
+    "shrunk_cosine": 0.9881926654924221,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.09647560119628906,
+    "raw_cosine": 0.9907252775432684,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.10972857475280762
+   },
+   {
+    "target": "ZNF530",
+    "shrunk_cosine": 0.9938389846347018,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.047144949436187744,
+    "raw_cosine": 0.9955833299825714,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.04754585027694702
+   },
+   {
+    "target": "ZNF543",
+    "shrunk_cosine": 0.9919660162730431,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.057602256536483765,
+    "raw_cosine": 0.9944636542237049,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.06190007925033569
+   },
+   {
+    "target": "ZNF627",
+    "shrunk_cosine": 0.9900340380354127,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07745498418807983,
+    "raw_cosine": 0.9931636718892964,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.09342324733734131
+   },
+   {
+    "target": "ZNF628",
+    "shrunk_cosine": 0.9958777220930637,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.12570011615753174,
+    "raw_cosine": 0.9968688320410162,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.16116201877593994
+   },
+   {
+    "target": "ZNF641",
+    "shrunk_cosine": 0.9958421225493669,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07370135188102722,
+    "raw_cosine": 0.9970708197913494,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.08685106039047241
+   },
+   {
+    "target": "ZNF670",
+    "shrunk_cosine": 0.9960428108599892,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.13383972644805908,
+    "raw_cosine": 0.997118615424324,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.2048046588897705
+   },
+   {
+    "target": "ZNF714",
+    "shrunk_cosine": 0.9856591861423774,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.23454487323760986,
+    "raw_cosine": 0.9897407220338769,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.41653895378112793
+   },
+   {
+    "target": "ZNF740",
+    "shrunk_cosine": 0.9936021364061383,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.11060547828674316,
+    "raw_cosine": 0.9952111705935123,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.1312493085861206
+   },
+   {
+    "target": "ZNF768",
+    "shrunk_cosine": 0.990670009689898,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.07477366924285889,
+    "raw_cosine": 0.9937398911896339,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.08249765634536743
+   },
+   {
+    "target": "ZNF777",
+    "shrunk_cosine": 0.9877401008640023,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.18113207817077637,
+    "raw_cosine": 0.989475687339,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 1.7420742511749268
+   },
+   {
+    "target": "ZNF783",
+    "shrunk_cosine": 0.9902547794125958,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.06853389739990234,
+    "raw_cosine": 0.9935420276363631,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.08010232448577881
+   },
+   {
+    "target": "ZNF784",
+    "shrunk_cosine": 0.992560198824277,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.09425026178359985,
+    "raw_cosine": 0.9937813569308482,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.11683392524719238
+   },
+   {
+    "target": "ZNF786",
+    "shrunk_cosine": 0.993971861548601,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.13061535358428955,
+    "raw_cosine": 0.994821886065065,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.16555464267730713
+   },
+   {
+    "target": "ZNF821",
+    "shrunk_cosine": 0.9972409495334735,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.03540605306625366,
+    "raw_cosine": 0.9979441503127536,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 0.037964820861816406
+   },
+   {
+    "target": "ZRANB3",
+    "shrunk_cosine": 0.981431177247676,
+    "shrunk_genes_both": 7679,
+    "shrunk_max_abs_diff": 0.21912068128585815,
+    "raw_cosine": 0.9817866769646825,
+    "raw_genes_both": 7679,
+    "raw_max_abs_diff": 2.2204103469848633
+   }
+  ],
+  "reading": "descriptive equivalence check; it changes no weight and admits nothing",
+  "reference": {
+   "file": "k562.npz.bin",
+   "bytes": 28104995,
+   "sha256": "a37c78ce1f7c13a3fc145e75e64f2ccead555ec8e38a656d671903ed4fd7218f",
+   "dataset": "davideferrante11/vcc-k562-t25-cache-r1"
+  }
+ },
+ "matrix_hash_verified_in_consumer": true,
+ "mixer_consumed": false,
+ "automatic_admission": false
+}

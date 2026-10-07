@@ -1,0 +1,399 @@
+{
+ "state": "derived_production_fragment",
+ "name": "a549_ko",
+ "study": "a549_liu_hillsley2026",
+ "modality": "KO",
+ "arm": "ko",
+ "full_training": false,
+ "not_heldout_validation": true,
+ "hidden_targets": [],
+ "held_groups": [],
+ "input_files": {
+  "a549_ko": {
+   "count_sum.npz": "/kaggle/input/notebooks/davidmaisterx/vcc-derivatives-rlab-a549/bank/a549_ko/count_sum.npz",
+   "mask.npz": "/kaggle/input/notebooks/davidmaisterx/vcc-derivatives-rlab-a549/bank/a549_ko/mask.npz",
+   "rows.csv": "/kaggle/input/notebooks/davidmaisterx/vcc-derivatives-rlab-a549/bank/a549_ko/rows.csv",
+   "complete.json": "/kaggle/input/notebooks/davidmaisterx/vcc-derivatives-rlab-a549/bank/a549_ko/complete.json"
+  }
+ },
+ "input_hashes": {
+  "a549_ko": {
+   "count_sum.npz": {
+    "bytes": 34516952,
+    "sha256": "7291451ef26cd84bcdda92b7d51d9dcde2dd24e8386f9ae8fc744bb7c4ccce92"
+   },
+   "mask.npz": {
+    "bytes": 1080603,
+    "sha256": "4eb9a273bc9e72696e00f575f297e1a5a5b45a75c7e9ff429437d82f617be181"
+   },
+   "rows.csv": {
+    "bytes": 71375,
+    "sha256": "8ed2f004e75e887374def3c7eb1635054e9797be3dd3906ce0515c6e54ee9e85"
+   },
+   "complete.json": {
+    "bytes": 3463,
+    "sha256": "1bf9b15f02d044b9c3ce01e84cc91b73f97b3a23cd8238895b2efe120e20bb05"
+   }
+  }
+ },
+ "producers": {
+  "a549_ko": {
+   "kernel_id": 137172620,
+   "version": 1,
+   "private": true,
+   "version_ref": "davidmaisterx/vcc-derivatives-rlab-a549/versions/1",
+   "saved_source_sha256": "b73614d99dedbc4fe5f7801c02fdfb0581da0a2e4dee3d123a8bd479762f1475",
+   "version_stable_during_output_read": true
+  }
+ },
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+ "params_sha256": "eca88a123a83de7882f51de9782a707f3f54d9384301f83a81536d5d5f77e315",
+ "recipe": {
+  "phi": 0.2,
+  "min_control_frac": 1e-06,
+  "min_cells": 10.0,
+  "pseudo": 0.5,
+  "pseudo_scale": "constant",
+  "min_expected": 1.0
+ },
+ "inventory": [
+  {
+   "unit": "a549_ko",
+   "bank_rows": 1001,
+   "cells_by_role": {
+    "outside_frozen_panel": 546810,
+    "panel_target": 13945,
+    "control": 45320
+   },
+   "rows_by_role": {
+    "outside_frozen_panel": 979,
+    "panel_target": 21,
+    "control": 1
+   },
+   "selected_rows": 22
+  }
+ ],
+ "validation_excluded": 0,
+ "merge_blocks": false,
+ "aggregation": "one context; donors pooled before shrink",
+ "identity_policy": "unreported donor/condition/chemistry namespaced to the study; no imputation",
+ "crosswalk": "exact native label equal to a frozen panel symbol; every other label is inventoried, not resolved",
+ "contexts": [
+  {
+   "context": [
+    "a549_liu_hillsley2026",
+    "A549",
+    "UNREPORTED@a549_liu_hillsley2026",
+    "KO",
+    "UNREPORTED@a549_liu_hillsley2026"
+   ],
+   "targets": [
+    "ALG12",
+    "ANP32B",
+    "C5orf22",
+    "COQ10B",
+    "LDLR",
+    "MSANTD4",
+    "NUP37",
+    "PAN2",
+    "PATL1",
+    "PHF23",
+    "PIM2",
+    "PRKACA",
+    "RBM26",
+    "RBM5",
+    "SCAF8",
+    "STT3A",
+    "SYVN1",
+    "TIMM17B",
+    "WBP4",
+    "ZNF219",
+    "ZNF496"
+   ],
+   "n_cells": [
+    946.0,
+    524.0,
+    532.0,
+    764.0,
+    661.0,
+    631.0,
+    443.0,
+    513.0,
+    617.0,
+    572.0,
+    815.0,
+    795.0,
+    471.0,
+    556.0,
+    800.0,
+    629.0,
+    640.0,
+    858.0,
+    466.0,
+    779.0,
+    933.0
+   ],
+   "control_cells": 45320.0,
+   "donors": [
+    "UNREPORTED@a549_liu_hillsley2026"
+   ],
+   "bank_rows": [
+    "a549_ko:21",
+    "a549_ko:26",
+    "a549_ko:90",
+    "a549_ko:190",
+    "a549_ko:458",
+    "a549_ko:520",
+    "a549_ko:568",
+    "a549_ko:573",
+    "a549_ko:585",
+    "a549_ko:588",
+    "a549_ko:604",
+    "a549_ko:607",
+    "a549_ko:653",
+    "a549_ko:706",
+    "a549_ko:709",
+    "a549_ko:776",
+    "a549_ko:857",
+    "a549_ko:865",
+    "a549_ko:892",
+    "a549_ko:972",
+    "a549_ko:992",
+    "a549_ko:993"
+   ],
+   "own_gene": [
+    {
+     "target": "ALG12",
+     "cells": 946,
+     "state": "measured",
+     "raw": -0.45176222920417786,
+     "shrunk": -0.3873022496700287,
+     "se": 0.09215097874403
+    },
+    {
+     "target": "ANP32B",
+     "cells": 524,
+     "state": "measured",
+     "raw": -1.2186833620071411,
+     "shrunk": -1.216221809387207,
+     "se": 0.027412645518779755
+    },
+    {
+     "target": "C5orf22",
+     "cells": 532,
+     "state": "measured",
+     "raw": -0.08110015094280243,
+     "shrunk": -0.02428177185356617,
+     "se": 0.0620291568338871
+    },
+    {
+     "target": "COQ10B",
+     "cells": 764,
+     "state": "measured",
+     "raw": -0.39829021692276,
+     "shrunk": -0.37430134415626526,
+     "se": 0.05041545629501343
+    },
+    {
+     "target": "LDLR",
+     "cells": 661,
+     "state": "measured",
+     "raw": -0.7060613036155701,
+     "shrunk": -0.6942320466041565,
+     "se": 0.04608284309506416
+    },
+    {
+     "target": "MSANTD4",
+     "cells": 631,
+     "state": "measured",
+     "raw": -0.21939311921596527,
+     "shrunk": -0.15659655630588531,
+     "se": 0.06946560740470886
+    },
+    {
+     "target": "NUP37",
+     "cells": 443,
+     "state": "measured",
+     "raw": -0.47923392057418823,
+     "shrunk": -0.4615403115749359,
+     "se": 0.046915989369153976
+    },
+    {
+     "target": "PAN2",
+     "cells": 513,
+     "state": "measured",
+     "raw": -0.3063637912273407,
+     "shrunk": -0.1527739316225052,
+     "se": 0.15359041094779968
+    },
+    {
+     "target": "PATL1",
+     "cells": 617,
+     "state": "measured",
+     "raw": -0.5776728987693787,
+     "shrunk": -0.5546509027481079,
+     "se": 0.05884554609656334
+    },
+    {
+     "target": "PHF23",
+     "cells": 572,
+     "state": "measured",
+     "raw": 0.015022686682641506,
+     "shrunk": 0.0005344531964510679,
+     "se": 0.03910844027996063
+    },
+    {
+     "target": "PIM2",
+     "cells": 815,
+     "state": "measured",
+     "raw": -0.5293959379196167,
+     "shrunk": -0.39875543117523193,
+     "se": 0.15150822699069977
+    },
+    {
+     "target": "PRKACA",
+     "cells": 795,
+     "state": "measured",
+     "raw": -0.3957677483558655,
+     "shrunk": -0.34648820757865906,
+     "se": 0.07462762296199799
+    },
+    {
+     "target": "RBM26",
+     "cells": 471,
+     "state": "measured",
+     "raw": -0.35880666971206665,
+     "shrunk": -0.34110313653945923,
+     "se": 0.040871214121580124
+    },
+    {
+     "target": "RBM5",
+     "cells": 556,
+     "state": "measured",
+     "raw": -0.20544809103012085,
+     "shrunk": -0.16379596292972565,
+     "se": 0.05180111527442932
+    },
+    {
+     "target": "SCAF8",
+     "cells": 800,
+     "state": "measured",
+     "raw": -0.22885672748088837,
+     "shrunk": -0.20323902368545532,
+     "se": 0.04062564671039581
+    },
+    {
+     "target": "STT3A",
+     "cells": 629,
+     "state": "measured",
+     "raw": -0.8254607915878296,
+     "shrunk": -0.8080505132675171,
+     "se": 0.06058288738131523
+    },
+    {
+     "target": "SYVN1",
+     "cells": 640,
+     "state": "measured",
+     "raw": -0.06442252546548843,
+     "shrunk": -0.015184269286692142,
+     "se": 0.058004558086395264
+    },
+    {
+     "target": "TIMM17B",
+     "cells": 858,
+     "state": "measured",
+     "raw": -0.4242967963218689,
+     "shrunk": -0.4168820083141327,
+     "se": 0.028293179348111153
+    },
+    {
+     "target": "WBP4",
+     "cells": 466,
+     "state": "measured",
+     "raw": -0.9228368997573853,
+     "shrunk": -0.9009091854095459,
+     "se": 0.07198657095432281
+    },
+    {
+     "target": "ZNF219",
+     "cells": 779,
+     "state": "measured",
+     "raw": -0.16744495928287506,
+     "shrunk": -0.07770165801048279,
+     "se": 0.08997626602649689
+    },
+    {
+     "target": "ZNF496",
+     "cells": 933,
+     "state": "measured",
+     "raw": -0.31484106183052063,
+     "shrunk": -0.26732707023620605,
+     "se": 0.0663667842745781
+    }
+   ],
+   "own_gene_summary": {
+    "derived_targets": 21,
+    "measured_own_gene": 21,
+    "median_own_raw": -0.3957677483558655,
+    "fraction_negative": 0.9523809523809523
+   }
+  }
+ ],
+ "targets": [
+  "ALG12",
+  "ANP32B",
+  "C5orf22",
+  "COQ10B",
+  "LDLR",
+  "MSANTD4",
+  "NUP37",
+  "PAN2",
+  "PATL1",
+  "PHF23",
+  "PIM2",
+  "PRKACA",
+  "RBM26",
+  "RBM5",
+  "SCAF8",
+  "STT3A",
+  "SYVN1",
+  "TIMM17B",
+  "WBP4",
+  "ZNF219",
+  "ZNF496"
+ ],
+ "n_cells": [
+  946.0,
+  524.0,
+  532.0,
+  764.0,
+  661.0,
+  631.0,
+  443.0,
+  513.0,
+  617.0,
+  572.0,
+  815.0,
+  795.0,
+  471.0,
+  556.0,
+  800.0,
+  629.0,
+  640.0,
+  858.0,
+  466.0,
+  779.0,
+  933.0
+ ],
+ "outputs": {
+  "a549_ko.npz": {
+   "bytes": 3189590,
+   "sha256": "b023a39757201042a435612501b81295991dfd9a05dae71c2bd15bdd432439d9"
+  }
+ },
+ "comparison": null,
+ "matrix_hash_verified_in_consumer": true,
+ "mixer_consumed": false,
+ "automatic_admission": false
+}

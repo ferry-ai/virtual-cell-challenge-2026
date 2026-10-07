@@ -1,0 +1,93 @@
+{
+ "utc": "2026-10-06T23:36:05.258220+00:00",
+ "slug": "davidmaisterx/vcc-fonte-frangieh2021-r1",
+ "stage": "reports/modelli/banca_canonica_2026-10-07/derivazioni/frangieh2021/r1/package",
+ "code": {
+  "bytes": 103684,
+  "sha256": "18aa541ed57621f9c404e65ec1d08ae2a37932f3285216f8b21f4552122f71a3"
+ },
+ "params": {
+  "bytes": 6217,
+  "sha256": "0fcdaf409027808652cd037c607f7222f98e42035d3961ad971a69668f1f5eae"
+ },
+ "metadata": {
+  "bytes": 394,
+  "sha256": "cd4db59d1d82fc8461776a55d33693e3997204f9931d5d27e0de6589d54bea32"
+ },
+ "modules": {
+  "adapter.py": {
+   "bytes": 6219,
+   "sha256": "f10b1e4d4d51e8e29e4930de4f5b358d8b9c5ff8a2dab3c407f257712ca63865"
+  },
+  "estimator.py": {
+   "bytes": 11897,
+   "sha256": "63e29813b955e42319e0a11e79311429d566a68f35132dd5b850e2e63185334d"
+  },
+  "runtime.py": {
+   "bytes": 17731,
+   "sha256": "415c030c55942d221a4452277bd2a1457799fa58820d5c2490ff2af084993493"
+  },
+  "gene_names.csv": {
+   "bytes": 119295,
+   "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  "pert_counts.csv": {
+   "bytes": 1906,
+   "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276"
+  },
+  "params.json": {
+   "bytes": 6217,
+   "sha256": "0fcdaf409027808652cd037c607f7222f98e42035d3961ad971a69668f1f5eae"
+  }
+ },
+ "plan": {
+  "name": "frangieh2021",
+  "arm": "ko",
+  "units": [
+   "frangieh2021"
+  ],
+  "cells_by_role": {
+   "outside_frozen_panel": 157470,
+   "panel_target": 3256,
+   "control": 57605
+  },
+  "contexts": [
+   {
+    "context": "Co-culture",
+    "condition": "MISSING",
+    "control_cells": 18334,
+    "donors_with_controls": 1,
+    "donors_with_targets": 1,
+    "donors_without_controls": [],
+    "panel_targets": 5,
+    "panel_targets_min_cells": 5,
+    "target_cells": 1294
+   },
+   {
+    "context": "Control",
+    "condition": "MISSING",
+    "control_cells": 15361,
+    "donors_with_controls": 1,
+    "donors_with_targets": 1,
+    "donors_without_controls": [],
+    "panel_targets": 5,
+    "panel_targets_min_cells": 5,
+    "target_cells": 755
+   },
+   {
+    "context": "IFN\u03b3",
+    "condition": "MISSING",
+    "control_cells": 23910,
+    "donors_with_controls": 1,
+    "donors_with_targets": 1,
+    "donors_without_controls": [],
+    "panel_targets": 5,
+    "panel_targets_min_cells": 5,
+    "target_cells": 1207
+   }
+  ],
+  "runnable": true
+ },
+ "full_training": false,
+ "compute_started": false
+}

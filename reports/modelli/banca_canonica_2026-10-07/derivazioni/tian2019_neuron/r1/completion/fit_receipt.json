@@ -1,0 +1,139 @@
+{
+ "state": "derived_production_fragment",
+ "name": "tian2019_neuron",
+ "study": "tian2019_neuron_day7",
+ "modality": "CRISPRi",
+ "arm": "crispri",
+ "full_training": false,
+ "not_heldout_validation": true,
+ "hidden_targets": [],
+ "held_groups": [],
+ "input_files": {
+  "tian2019_neuron": {
+   "count_sum.npz": "/kaggle/input/notebooks/davideferante/vcc-derivatives-tian2019-neuron-resume-r3/bank/tian2019_neuron/count_sum.npz",
+   "mask.npz": "/kaggle/input/notebooks/davideferante/vcc-derivatives-tian2019-neuron-resume-r3/bank/tian2019_neuron/mask.npz",
+   "rows.csv": "/kaggle/input/notebooks/davideferante/vcc-derivatives-tian2019-neuron-resume-r3/bank/tian2019_neuron/rows.csv",
+   "complete.json": "/kaggle/input/notebooks/davideferante/vcc-derivatives-tian2019-neuron-resume-r3/bank/tian2019_neuron/complete.json"
+  }
+ },
+ "input_hashes": {
+  "tian2019_neuron": {
+   "count_sum.npz": {
+    "bytes": 109815797,
+    "sha256": "c3858c7f8b574940f9ab43b67ebb00736b85e6b1ee9afbc790342490c1ad9ecb"
+   },
+   "mask.npz": {
+    "bytes": 27759868,
+    "sha256": "4cb509ce035e5751a184f1f64ef98c06748fccaf258135a0623e219e16240f72"
+   },
+   "rows.csv": {
+    "bytes": 5965584,
+    "sha256": "16d4e91e087f818a9fc316d5df8442924d17c14b9cba1ce5b89dbf642b748659"
+   },
+   "complete.json": {
+    "bytes": 2150,
+    "sha256": "102c8fccd55f3153b5e1038b73baa508d5d3b7d78fd13689208904888190bd0b"
+   }
+  }
+ },
+ "producers": {
+  "tian2019_neuron": {
+   "kernel_id": 137181354,
+   "version": 1,
+   "private": true,
+   "version_ref": "davideferante/vcc-derivatives-tian2019-neuron-resume-r3/versions/1",
+   "saved_source_sha256": "ae41980565ca12e5d34b7222077f486eb17ead32c3ef1ca51aaa5adb9361385c",
+   "version_stable_during_output_read": true
+  }
+ },
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+ "params_sha256": "83b3717fc2a59f5ded5443692f4cfca2c09d0004b9eccf8122ab25a139afaeaa",
+ "recipe": {
+  "phi": 0.2,
+  "min_control_frac": 1e-06,
+  "min_cells": 10.0,
+  "pseudo": 0.5,
+  "pseudo_scale": "constant",
+  "min_expected": 1.0
+ },
+ "inventory": [
+  {
+   "unit": "tian2019_neuron",
+   "bank_rows": 41358,
+   "cells_by_role": {
+    "outside_frozen_panel": 160901,
+    "control": 15083,
+    "panel_target": 3190
+   },
+   "rows_by_role": {
+    "outside_frozen_panel": 41356,
+    "control": 1,
+    "panel_target": 1
+   },
+   "selected_rows": 2
+  }
+ ],
+ "validation_excluded": 0,
+ "merge_blocks": false,
+ "aggregation": "one context; donors pooled before shrink",
+ "identity_policy": "unreported donor/condition/chemistry namespaced to the study; no imputation",
+ "crosswalk": "exact native label equal to a frozen panel symbol; every other label is inventoried, not resolved",
+ "contexts": [
+  {
+   "context": [
+    "tian2019_neuron_day7",
+    "iPSC-induced neuron day 7",
+    "UNREPORTED@tian2019_neuron_day7",
+    "CRISPRi",
+    "10x 3'"
+   ],
+   "targets": [
+    "RFK"
+   ],
+   "n_cells": [
+    3190.0
+   ],
+   "control_cells": 15083.0,
+   "donors": [
+    "UNREPORTED@tian2019_neuron_day7"
+   ],
+   "bank_rows": [
+    "tian2019_neuron:11122",
+    "tian2019_neuron:20640"
+   ],
+   "own_gene": [
+    {
+     "target": "RFK",
+     "cells": 3190,
+     "state": "measured",
+     "raw": -0.001381823793053627,
+     "shrunk": -8.481603686050221e-08,
+     "se": 0.0881853997707367
+    }
+   ],
+   "own_gene_summary": {
+    "derived_targets": 1,
+    "measured_own_gene": 1,
+    "median_own_raw": -0.001381823793053627,
+    "fraction_negative": 1.0
+   }
+  }
+ ],
+ "targets": [
+  "RFK"
+ ],
+ "n_cells": [
+  3190.0
+ ],
+ "outputs": {
+  "tian2019_neuron.npz": {
+   "bytes": 242564,
+   "sha256": "6a550857b838f5e59f05ea5ed65245c398ec5630c5485c279d5d18107cedac38"
+  }
+ },
+ "comparison": null,
+ "matrix_hash_verified_in_consumer": true,
+ "mixer_consumed": false,
+ "automatic_admission": false
+}

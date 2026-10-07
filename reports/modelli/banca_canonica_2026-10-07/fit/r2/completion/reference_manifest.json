@@ -1,0 +1,269 @@
+{
+  "stage": "100_build_context_effects",
+  "written_utc": "2026-10-07T00:03:08.777995+00:00",
+  "recipe": {
+    "name": "extbank-r1",
+    "effect": "shrunk",
+    "gamma": 1.0,
+    "reliability_scale": 100.0,
+    "allow_missing_targets": true,
+    "allow_foreign_cache": false,
+    "common": "panel",
+    "contexts": {
+      "A": {
+        "amplitude": 1.576,
+        "weights": {
+          "cd4_mix": 1.0,
+          "h1": 1.0,
+          "hepg2_nadig": 1.0,
+          "jurkat_nadig": 1.0,
+          "k562_essential": 1.0,
+          "kolf_chromatin": 1.0,
+          "kolf_metabolic": 1.0,
+          "kolf_pan_genome": 1.0,
+          "kolf_strong": 1.0,
+          "orion_hct116": 1.0,
+          "orion_hek293t": 1.0,
+          "rpe1": 1.0,
+          "k562": 1.0
+        }
+      },
+      "B": {
+        "amplitude": 1.576,
+        "weights": {
+          "cd4_mix": 1.0,
+          "h1": 1.0,
+          "hepg2_nadig": 1.0,
+          "jurkat_nadig": 1.0,
+          "k562_essential": 1.0,
+          "kolf_chromatin": 1.0,
+          "kolf_metabolic": 1.0,
+          "kolf_pan_genome": 1.0,
+          "kolf_strong": 1.0,
+          "orion_hct116": 1.0,
+          "orion_hek293t": 1.0,
+          "rpe1": 1.0,
+          "k562": 1.0
+        }
+      },
+      "C": {
+        "amplitude": 1.576,
+        "weights": {
+          "cd4_mix": 1.0,
+          "h1": 1.0,
+          "hepg2_nadig": 1.0,
+          "jurkat_nadig": 1.0,
+          "k562_essential": 1.0,
+          "kolf_chromatin": 1.0,
+          "kolf_metabolic": 1.0,
+          "kolf_pan_genome": 1.0,
+          "kolf_strong": 1.0,
+          "orion_hct116": 1.0,
+          "orion_hek293t": 1.0,
+          "rpe1": 1.0,
+          "k562": 1.0
+        }
+      }
+    },
+    "cis": {
+      "pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv",
+      "max_distance_bp": 5000,
+      "scale": 2.0
+    },
+    "why": "t25 weight-1 policy on every source this extended mix votes. k562_essential stays under its own name. Amplitude and the original cis pairs are applied once downstream, not in the mixer."
+  },
+  "recipe_sha256": "3109a6d9c6a0305ae73694d7e897dbe2ab35b344034ec9d2b492308898753226",
+  "recipe_sha256_lf": "3109a6d9c6a0305ae73694d7e897dbe2ab35b344034ec9d2b492308898753226",
+  "cache": "/kaggle/working/cache_reference",
+  "gamma": 1.0,
+  "reliability_scale": 100.0,
+  "contexts": {
+    "A": {
+      "weights": {
+        "cd4_mix": 1.0,
+        "h1": 1.0,
+        "hepg2_nadig": 1.0,
+        "jurkat_nadig": 1.0,
+        "k562_essential": 1.0,
+        "kolf_chromatin": 1.0,
+        "kolf_metabolic": 1.0,
+        "kolf_pan_genome": 1.0,
+        "kolf_strong": 1.0,
+        "orion_hct116": 1.0,
+        "orion_hek293t": 1.0,
+        "rpe1": 1.0,
+        "k562": 1.0
+      },
+      "amplitude": 1.576,
+      "targets_covered": 300,
+      "targets_missing": [],
+      "genes_nonzero_median": 14964.0,
+      "abs_lfc_q99_median": 0.565314358560313,
+      "sha256": "08fdfd2803fe97753b71324665aad61ccf658f4f014785a5cae8563c3c354c57",
+      "cis": {
+        "pairs": 78,
+        "targets_with_a_neighbour": 77
+      }
+    },
+    "B": {
+      "weights": {
+        "cd4_mix": 1.0,
+        "h1": 1.0,
+        "hepg2_nadig": 1.0,
+        "jurkat_nadig": 1.0,
+        "k562_essential": 1.0,
+        "kolf_chromatin": 1.0,
+        "kolf_metabolic": 1.0,
+        "kolf_pan_genome": 1.0,
+        "kolf_strong": 1.0,
+        "orion_hct116": 1.0,
+        "orion_hek293t": 1.0,
+        "rpe1": 1.0,
+        "k562": 1.0
+      },
+      "amplitude": 1.576,
+      "targets_covered": 300,
+      "targets_missing": [],
+      "genes_nonzero_median": 14964.0,
+      "abs_lfc_q99_median": 0.565314358560313,
+      "sha256": "08fdfd2803fe97753b71324665aad61ccf658f4f014785a5cae8563c3c354c57",
+      "cis": {
+        "pairs": 78,
+        "targets_with_a_neighbour": 77
+      }
+    },
+    "C": {
+      "weights": {
+        "cd4_mix": 1.0,
+        "h1": 1.0,
+        "hepg2_nadig": 1.0,
+        "jurkat_nadig": 1.0,
+        "k562_essential": 1.0,
+        "kolf_chromatin": 1.0,
+        "kolf_metabolic": 1.0,
+        "kolf_pan_genome": 1.0,
+        "kolf_strong": 1.0,
+        "orion_hct116": 1.0,
+        "orion_hek293t": 1.0,
+        "rpe1": 1.0,
+        "k562": 1.0
+      },
+      "amplitude": 1.576,
+      "targets_covered": 300,
+      "targets_missing": [],
+      "genes_nonzero_median": 14964.0,
+      "abs_lfc_q99_median": 0.565314358560313,
+      "sha256": "08fdfd2803fe97753b71324665aad61ccf658f4f014785a5cae8563c3c354c57",
+      "cis": {
+        "pairs": 78,
+        "targets_with_a_neighbour": 77
+      }
+    }
+  },
+  "units": "ln fold change on the official axis; unmeasured pairs are exactly 0",
+  "argv": [
+    "/kaggle/working/repo/scripts/100_build_context_effects.py",
+    "--recipe",
+    "/kaggle/working/recipe_reference_t36.json",
+    "--cache",
+    "/kaggle/working/cache_reference",
+    "--targets-csv",
+    "/kaggle/working/data/raw/controls/pert_counts.csv",
+    "--coords",
+    "/kaggle/working/data/external/annotation/gene_coordinates_gencode_v50.tsv",
+    "--contexts",
+    "A,B,C",
+    "--out",
+    "/kaggle/temp/reference"
+  ],
+  "started_utc": "2026-10-07T00:02:46.952631+00:00",
+  "targets": {
+    "path": "/kaggle/working/data/raw/controls/pert_counts.csv",
+    "file_sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+    "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+    "n": 300
+  },
+  "contexts_checked": [
+    "A",
+    "B",
+    "C"
+  ],
+  "cache_check": {
+    "cache_manifest": false,
+    "targets_sha256_in_cache": null,
+    "targets_verified": false,
+    "allow_foreign_cache": false,
+    "targets": 300,
+    "targets_covered": 300,
+    "coverage": 1.0,
+    "targets_covered_by_table": {
+      "cd4_mix": 293,
+      "h1": 17,
+      "hepg2_nadig": 0,
+      "jurkat_nadig": 0,
+      "k562": 272,
+      "k562_essential": 0,
+      "kolf_chromatin": 8,
+      "kolf_metabolic": 4,
+      "kolf_pan_genome": 282,
+      "kolf_strong": 55,
+      "orion_hct116": 293,
+      "orion_hek293t": 299,
+      "rpe1": 0
+    },
+    "why_not_verified": "the cache has no manifest.json",
+    "refusals_lifted": []
+  },
+  "common": {
+    "mode": "panel"
+  },
+  "cache_npz_sha256": {
+    "cd4_mix.npz": "ccde53b7546e5138447fee8b27ff6a98d3abb7b48f0d330fa3962f1c8c3b5ec6",
+    "h1.npz": "672e36e33006668752cd45a1f2ddc46950b4fe8e0e98e06ad583323f0df563f0",
+    "hepg2_nadig.npz": "f0deff3c55e9df28b02888263f2e4699250b5871adc5cd0a337c0402c423881b",
+    "jurkat_nadig.npz": "6d458e589897f650e16cf1a2a6ed0dee9a86df4f3ebb0117b9783e176396ca1a",
+    "k562.npz": "a37c78ce1f7c13a3fc145e75e64f2ccead555ec8e38a656d671903ed4fd7218f",
+    "k562_essential.npz": "510dec23350f3ce66de73eef348a400d0be3af595a1e53f61a0c42fdf548b08f",
+    "kolf_chromatin.npz": "f93a45edbb9b8763472bcb50a3096bd8a55436e1da37f2d33fc9f0ae9e484601",
+    "kolf_metabolic.npz": "5dcd8a6e726cff0906cbd6c543b36260809e396f8825a94b66a9391f243a4bea",
+    "kolf_pan_genome.npz": "cdc53d288a4ba78db7717d3cfa0357b80389a5387d5758f00fdf4cf3910fa87d",
+    "kolf_strong.npz": "66b45affac139a72bdaef7297f1386acd74559b6c026d6422bc5108d5d111c8e",
+    "orion_hct116.npz": "e3376fa8532d1a6b46da90109dcc9dfbf409354606d3569051813d63a7fe7c8a",
+    "orion_hek293t.npz": "efcf76ac67e069596ad8d15cc416e1559e21417fb699f540098670af64271a44",
+    "rpe1.npz": "89c0d24054382833c43c0620ed9302b02f944ad51b4886ff5861641c5013b5da"
+  },
+  "cis": {
+    "spec": {
+      "pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv",
+      "max_distance_bp": 5000,
+      "scale": 2.0
+    },
+    "pairs_sha256": "d874c305f12e932d2d43eff629ea7d44c8536b7a198868c8fac10007d01dcf8f",
+    "coords": "/kaggle/working/data/external/annotation/gene_coordinates_gencode_v50.tsv",
+    "coords_sha256": "065906f739094c6ae572d21c0b14e7b8f2d4daa0284cdb68864ed27b9caba34c",
+    "edges_bp": [
+      0,
+      1000,
+      2000,
+      5000,
+      10000,
+      20000
+    ],
+    "prior_ln_by_bin": [
+      -0.3323155970492182,
+      -0.2312014418620707,
+      -0.10858278570905305,
+      -0.08656477168665586,
+      -0.03597850765225018
+    ],
+    "pairs_by_bin": [
+      890,
+      179,
+      196,
+      410,
+      1004
+    ]
+  },
+  "finished_utc": "2026-10-07T00:03:09.570255+00:00",
+  "peak_rss_bytes": 729300992
+}
