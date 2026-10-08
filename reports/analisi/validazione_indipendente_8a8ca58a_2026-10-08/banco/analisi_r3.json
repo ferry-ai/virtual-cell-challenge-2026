@@ -1,0 +1,10 @@
+{
+ "what": "exploratory analysis (ESPLORATIVO_SENZA_KOLF.md): t36 without the KOLF2.1J tables, and with KOLF voting once",
+ "analysis_arms": {
+  "P4k": {"sources": ["cd4_mix", "k562", "kolf_pan_genome", "orion_hct116", "orion_hek293t"]},
+  "P4kh": {"sources": ["cd4_mix", "h1", "k562", "kolf_pan_genome", "orion_hct116", "orion_hek293t"]},
+  "P4h": {"sources": ["cd4_mix", "h1", "k562", "orion_hct116", "orion_hek293t"]}
+ },
+ "contrasts": [["Q1", "P4k", "P4"], ["Q2", "P4kh", "P4k"], ["Q3", "T0", "P4kh"],
+               ["X1", "P4h", "T0"], ["X2", "P4kh", "T0"], ["X3", "P4h", "P4kh"], ["X4", "P4h", "P4"]]
+}
