@@ -1,0 +1,207 @@
+{
+  "argv": [
+    "/kaggle/working/repo/scripts/100_build_context_effects.py",
+    "--recipe",
+    "/kaggle/temp/runs/T2__C-H1/recipe.json",
+    "--cache",
+    "/kaggle/temp/runs/T2__C-H1/cache",
+    "--targets-csv",
+    "/kaggle/working/data/raw/controls/pert_counts.csv",
+    "--coords",
+    "/kaggle/working/data/external/annotation/gene_coordinates_gencode_v50.tsv",
+    "--contexts",
+    "C-H1",
+    "--out",
+    "/kaggle/temp/runs/T2__C-H1/out"
+  ],
+  "cache": "/kaggle/temp/runs/T2__C-H1/cache",
+  "cache_check": {
+    "allow_foreign_cache": false,
+    "cache_manifest": false,
+    "coverage": 1.0,
+    "refusals_lifted": [],
+    "targets": 300,
+    "targets_covered": 300,
+    "targets_covered_by_table": {
+      "cd4_mix": 293,
+      "hepg2_nadig": 0,
+      "hipsci_targeted_19": 5,
+      "jurkat_nadig": 0,
+      "k562": 272,
+      "k562_essential": 0,
+      "kolf_chromatin": 8,
+      "kolf_metabolic": 4,
+      "kolf_pan_genome": 282,
+      "kolf_strong": 55,
+      "orion_hct116": 293,
+      "orion_hek293t": 299,
+      "rpe1": 0,
+      "tian2021_crispri": 6,
+      "xu2023": 5
+    },
+    "targets_sha256_in_cache": null,
+    "targets_verified": false,
+    "why_not_verified": "the cache has no manifest.json"
+  },
+  "cache_npz_sha256": {
+    "cd4_mix.npz": "ccde53b7546e5138447fee8b27ff6a98d3abb7b48f0d330fa3962f1c8c3b5ec6",
+    "hepg2_nadig.npz": "f0deff3c55e9df28b02888263f2e4699250b5871adc5cd0a337c0402c423881b",
+    "hipsci_targeted_19.npz": "150cf45f1b3673c27e5547e2fdaf2984e0cd37758d3921aa9c1f98337d9115bf",
+    "jurkat_nadig.npz": "6d458e589897f650e16cf1a2a6ed0dee9a86df4f3ebb0117b9783e176396ca1a",
+    "k562.npz": "a37c78ce1f7c13a3fc145e75e64f2ccead555ec8e38a656d671903ed4fd7218f",
+    "k562_essential.npz": "510dec23350f3ce66de73eef348a400d0be3af595a1e53f61a0c42fdf548b08f",
+    "kolf_chromatin.npz": "f93a45edbb9b8763472bcb50a3096bd8a55436e1da37f2d33fc9f0ae9e484601",
+    "kolf_metabolic.npz": "5dcd8a6e726cff0906cbd6c543b36260809e396f8825a94b66a9391f243a4bea",
+    "kolf_pan_genome.npz": "cdc53d288a4ba78db7717d3cfa0357b80389a5387d5758f00fdf4cf3910fa87d",
+    "kolf_strong.npz": "66b45affac139a72bdaef7297f1386acd74559b6c026d6422bc5108d5d111c8e",
+    "orion_hct116.npz": "e3376fa8532d1a6b46da90109dcc9dfbf409354606d3569051813d63a7fe7c8a",
+    "orion_hek293t.npz": "efcf76ac67e069596ad8d15cc416e1559e21417fb699f540098670af64271a44",
+    "rpe1.npz": "89c0d24054382833c43c0620ed9302b02f944ad51b4886ff5861641c5013b5da",
+    "tian2021_crispri.npz": "aed4a1193382ef6931d5ffb07b180351608ec8ffd999f73922029999ab3285f0",
+    "xu2023.npz": "8599c88644b0ddfc6a897f822bad22a35af360fff47ec55104f492dab49b8118"
+  },
+  "cis": {
+    "coords": "/kaggle/working/data/external/annotation/gene_coordinates_gencode_v50.tsv",
+    "coords_sha256": "065906f739094c6ae572d21c0b14e7b8f2d4daa0284cdb68864ed27b9caba34c",
+    "edges_bp": [
+      0,
+      1000,
+      2000,
+      5000,
+      10000,
+      20000
+    ],
+    "pairs_by_bin": [
+      890,
+      179,
+      196,
+      410,
+      1004
+    ],
+    "pairs_sha256": "d874c305f12e932d2d43eff629ea7d44c8536b7a198868c8fac10007d01dcf8f",
+    "prior_ln_by_bin": [
+      -0.3323155970492182,
+      -0.2312014418620707,
+      -0.10858278570905305,
+      -0.08656477168665586,
+      -0.03597850765225018
+    ],
+    "spec": {
+      "max_distance_bp": 5000,
+      "pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv",
+      "scale": 2.0
+    }
+  },
+  "common": {
+    "mode": "frozen",
+    "norm": {
+      "cd4_mix": 4.921845631366317,
+      "hepg2_nadig": 5.82359035546328,
+      "hipsci_targeted_19": 1.5331009427653788,
+      "jurkat_nadig": 2.8668084686043818,
+      "k562": 0.6557327566857621,
+      "k562_essential": 2.666744548831244,
+      "kolf_chromatin": 1.860258304017128,
+      "kolf_metabolic": 1.601740320891382,
+      "kolf_pan_genome": 3.611126286072266,
+      "kolf_strong": 5.621134631959961,
+      "orion_hct116": 1.3158706710605947,
+      "orion_hek293t": 0.9135038414174578,
+      "rpe1": 10.036273976748612,
+      "tian2021_crispri": 5.7226186958129315,
+      "xu2023": 5.981702414869907
+    },
+    "path": "processed/validazione_indipendente_8a8ca58a_2026-10-08/t2_vettori_r1/common.npz",
+    "sha256": "80103235addf13685397bb29bb06fd5851ef7e4a7920cc04570029bf2eac8b02",
+    "unused_keys": [
+      "h1"
+    ]
+  },
+  "contexts": {
+    "C-H1": {
+      "abs_lfc_q99_median": 0.5683078686429975,
+      "amplitude": 1.576,
+      "cis": {
+        "pairs": 78,
+        "targets_with_a_neighbour": 77
+      },
+      "genes_nonzero_median": 14967.0,
+      "sha256": "1897935fd92a571ddd5e72a8ceeec54c0024e6d879ac079263d5d689fa3b04bd",
+      "targets_covered": 300,
+      "targets_missing": [],
+      "weights": {
+        "cd4_mix": 1.0,
+        "hepg2_nadig": 1.0,
+        "hipsci_targeted_19": 1.0,
+        "jurkat_nadig": 1.0,
+        "k562": 1.0,
+        "k562_essential": 1.0,
+        "kolf_chromatin": 1.0,
+        "kolf_metabolic": 1.0,
+        "kolf_pan_genome": 1.0,
+        "kolf_strong": 1.0,
+        "orion_hct116": 1.0,
+        "orion_hek293t": 1.0,
+        "rpe1": 1.0,
+        "tian2021_crispri": 1.0,
+        "xu2023": 1.0
+      }
+    }
+  },
+  "contexts_checked": [
+    "C-H1"
+  ],
+  "finished_utc": "2026-10-08T19:44:14.871897+00:00",
+  "gamma": 1.0,
+  "peak_rss_bytes": 669716480,
+  "recipe": {
+    "allow_foreign_cache": false,
+    "allow_missing_targets": true,
+    "cis": {
+      "max_distance_bp": 5000,
+      "pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv",
+      "scale": 2.0
+    },
+    "common": "processed/validazione_indipendente_8a8ca58a_2026-10-08/t2_vettori_r1/common.npz",
+    "contexts": {
+      "C-H1": {
+        "amplitude": 1.576,
+        "weights": {
+          "cd4_mix": 1.0,
+          "hepg2_nadig": 1.0,
+          "hipsci_targeted_19": 1.0,
+          "jurkat_nadig": 1.0,
+          "k562": 1.0,
+          "k562_essential": 1.0,
+          "kolf_chromatin": 1.0,
+          "kolf_metabolic": 1.0,
+          "kolf_pan_genome": 1.0,
+          "kolf_strong": 1.0,
+          "orion_hct116": 1.0,
+          "orion_hek293t": 1.0,
+          "rpe1": 1.0,
+          "tian2021_crispri": 1.0,
+          "xu2023": 1.0
+        }
+      }
+    },
+    "effect": "shrunk",
+    "gamma": 1.0,
+    "name": "validazione-T2-C-H1",
+    "reliability_scale": 100.0,
+    "why": "independent validation, contract v1: fold view of the unchanged t25 transfer"
+  },
+  "recipe_sha256": "107e286456b610797833646112f3026329e0dabb28a79f3f7073ab1b87d0e05f",
+  "recipe_sha256_lf": "107e286456b610797833646112f3026329e0dabb28a79f3f7073ab1b87d0e05f",
+  "reliability_scale": 100.0,
+  "stage": "100_build_context_effects",
+  "started_utc": "2026-10-08T19:44:01.545357+00:00",
+  "targets": {
+    "file_sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+    "n": 300,
+    "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+    "path": "/kaggle/working/data/raw/controls/pert_counts.csv"
+  },
+  "units": "ln fold change on the official axis; unmeasured pairs are exactly 0",
+  "written_utc": "2026-10-08T19:44:13.657517+00:00"
+}

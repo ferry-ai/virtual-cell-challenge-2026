@@ -62,7 +62,9 @@ def main() -> None:
             lines.append('| %s | %s | %.3f | %.3f | %s | %.3f | %.3f | %.3f | %.3f | %s / %.3f | %.2f |' % (
                 f, a, s['disc'], s['disc95'], '—' if s['r_spec'] != s['r_spec'] else '%+.3f' % s['r_spec'], s['sign50'],
                 s['reach'], s['nmae_conf'], s['mse_ratio'], share, s['common_share_truth'], s['amplitude_star']))
-    for cid in ('K1', 'K1r1', 'K0', 'c_gamma0', 'c_nocis'):
+    extra = dict(item.split('=', 1) for item in sys.argv[5:])     # more contrasts of the run, as id=title
+    NAMES.update(extra)
+    for cid in ('K1', 'K1r1', 'K0', 'c_gamma0', 'c_nocis', *extra):
         lines += ['', '## ' + NAMES[cid], '',
                   '| Fold | Cambiati / bersagli | `%s`, tutti | `%s`, solo cambiati | `r_spec`, tutti | `r_spec`, solo cambiati |' % (D, D),
                   '|---|---:|---|---|---|---|']

@@ -43,16 +43,26 @@ def find(root: Path, name: str) -> Path:
     return hits[0]
 
 
-def read_fold(root: Path) -> dict:
+def read_fold(root: Path, control_root: Path | None = None) -> dict:
+    """``control_root``: a kernel that ran only the full step takes the exchanged-rows control from another
+    run of the same fold (same real cells, same T0 effects); the table says so."""
     done = json.loads(find(root, 'bench_done.json').read_text(encoding='utf-8'))
-    steps = done.get('steps') or {}
+    steps = dict(done.get('steps') or {})
+    borrowed = None
+    if control_root is not None and 'control' not in steps:
+        other = json.loads(find(control_root, 'bench_done.json').read_text(encoding='utf-8'))
+        borrowed = (other.get('steps') or {}).get('control')
+        if borrowed:
+            steps['control'] = borrowed
     # the verdict needs the control and the full run; the changed-targets run is a secondary reading, and its
     # failure is reported without making the fold unusable
     needed = all((steps.get(s) or {}).get('returncode') == 0 for s in ('control', 'full'))
     out = {'ok': needed, 'all_steps_ok': bool(done.get('ok')), 'steps': steps, 'targets': done.get('targets'),
-           'runs': {}}
+           'runs': {}, 'control_borrowed_from': control_root.as_posix() if borrowed else None}
     for step in ('control', 'changed', 'full'):
         hits = [p for p in root.rglob('paired.json') if p.parent.name == 'bench_' + step]
+        if not hits and step == 'control' and borrowed:
+            hits = [p for p in control_root.rglob('paired.json') if p.parent.name == 'bench_control']
         if not hits:
             continue
         paired = json.loads(hits[0].read_text(encoding='utf-8'))
@@ -65,12 +75,24 @@ def read_fold(root: Path) -> dict:
 
 
 def main() -> None:
-    level_a = json.loads(Path(sys.argv[1]).read_text(encoding='utf-8'))
-    out_md, out_json = Path(sys.argv[2]), Path(sys.argv[3])
+    args = sys.argv[1:]
+    contrasts, level_a_id, control_from = dict(CONTRASTS), dict(LEVEL_A_ID), {}
+    if '--contrasts' in args:          # the pairs of another full run, id=FIRST:SECOND,...; same id in level A
+        i = args.index('--contrasts')
+        contrasts = {c.split('=')[0]: ('full', c.split('=')[1]) for c in args[i + 1].split(',')}
+        level_a_id = {c: c for c in contrasts}
+        del args[i:i + 2]
+    while '--control' in args:         # <fold>=<completion dir of the run that holds the control of that fold>
+        i = args.index('--control')
+        name, root = args[i + 1].split('=', 1)
+        control_from[name] = Path(root)
+        del args[i:i + 2]
+    level_a = json.loads(Path(args[0]).read_text(encoding='utf-8'))
+    out_md, out_json = Path(args[1]), Path(args[2])
     folds = {}
-    for item in sys.argv[4:]:
+    for item in args[3:]:
         name, root = item.split('=', 1)
-        folds[name] = read_fold(Path(root))
+        folds[name] = read_fold(Path(root), control_from.get(name))
     failed = {n: [s for s, v in f['steps'].items() if v.get('returncode') not in (0, None)] for n, f in folds.items()}
     lines = ['## Controlli tecnici del livello B', '',
              '| Fold | Banco concluso | Bersagli | Controllo: PDS di T0 − T0 a righe scambiate (1 seme) | Banco utilizzabile |',
@@ -83,12 +105,16 @@ def main() -> None:
         lines.append('| %s | %s | %s | %s | %s |' % (
             name, 'sì' if f['ok'] else '**no**', f['targets']['all'] if f.get('targets') else '—',
             '—' if gap is None else '%+.4f' % gap, 'sì' if usable[name] else '**no**'))
+    for n, f in folds.items():
+        if f['control_borrowed_from']:
+            lines += ['', 'Nel fold %s il controllo a righe scambiate è quello della corsa `%s`, sugli stessi dati: '
+                      'questo kernel ha eseguito la sola corsa principale.' % (n, f['control_borrowed_from'])]
     for n, steps in failed.items():
         if steps:
             lines += ['', "Nel fold %s la corsa secondaria %s è fallita: non entra nell'esito del §8 e la tabella dei "
                       "soli bersagli cambiati non la riporta." % (n, ', '.join('«%s»' % s for s in steps))]
     verdicts = {}
-    for cid, (step, pair) in CONTRASTS.items():
+    for cid, (step, pair) in contrasts.items():
         first, second = pair.split(':')
         lines += ['', '## %s — %s − %s, sei membri (scala locale), 400 cellule per bersaglio, 5 semi' % (cid, first, second), '',
                   '| Fold | Sei membri | Senza JAC | ' + ' | '.join(MEMBERS) + ' |', '|---|---|---|' + '---|' * len(MEMBERS)]
@@ -112,7 +138,7 @@ def main() -> None:
                      'PDS': stats(np.mean(pds_by_seed, axis=0)), 'folds': len(per_fold)}
             lines.append('| **macro, %d fold** | %s | %s | %s | | | | | |' % (
                 len(per_fold), cell(macro['six']), cell(macro['without_JAC']), cell(macro['PDS'])))
-        a = level_a['reading'][LEVEL_A_ID[cid]]
+        a = level_a['reading'][level_a_id[cid]]
         loss_folds = [n for n, v in per_fold.items()
                       if (v['six']['resolved'] and v['six']['mean'] < 0)
                       or (v['members']['PDS']['resolved'] and v['members']['PDS']['mean'] < 0)]
@@ -161,7 +187,8 @@ def main() -> None:
     with out_json.open('x', encoding='utf-8') as fh:
         json.dump({'usable': usable, 'verdicts': verdicts, 'changed_only': changed,
                    'folds': {n: {'ok': f['ok'], 'all_steps_ok': f['all_steps_ok'], 'steps': f['steps'],
-                                 'targets': f['targets']} for n, f in folds.items()},
+                                 'targets': f['targets'], 'control_borrowed_from': f['control_borrowed_from']}
+                             for n, f in folds.items()},
                    'rule': 'contract v2, section 8', 'not_vcc_scores': True}, fh, indent=1)
         fh.write('\n')
     print(json.dumps({c: (v['verdict'], v['why']) for c, v in verdicts.items()}, ensure_ascii=False))
