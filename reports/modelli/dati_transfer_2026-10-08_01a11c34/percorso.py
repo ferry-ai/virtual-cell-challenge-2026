@@ -1,6 +1,8 @@
-"""Versioned canonical-bank entry: audit, freeze T1, package its unchanged fit.
+"""Versioned canonical-bank entry: audit, freeze, package and release consumers.
 
-No command launches compute, downloads data or changes the previous release.
+No command launches remote compute or changes a previous release.
+collect-common retrieves outputs of already-authorised jobs; its caller must
+have that retrieval authorisation. Other commands operate on local inputs.
 Run with scripts/py.cmd. Heavy array work belongs to a verified cloud runtime.
 """
 from __future__ import annotations
@@ -162,14 +164,30 @@ def package(release, revision):
 def main():
     parser = argparse.ArgumentParser(__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
-    for name in ('audit', 'freeze'):
+    for name in ('audit', 'freeze', 'coverage'):
         sub.add_parser(name).add_argument('out', type=Path)
     p = sub.add_parser('package')
     p.add_argument('release', type=Path)
     p.add_argument('revision')
+    for name, help_text in (
+        ('training-release', 'Freeze a training contract from verified campaign receipts; no fit'),
+        ('collect-common', 'Retrieve authorised small outputs and freeze a complete common-vector set'),
+    ):
+        p = sub.add_parser(name, help=help_text)
+        p.add_argument('regime', choices=['production', 'T'])
+        p.add_argument('revision', help='New immutable output name; existing releases are not overwritten')
     args = parser.parse_args()
     if args.command == 'package':
         package(args.release, args.revision)
+    elif args.command == 'training-release':
+        from build_training_release import main as build_release
+        build_release(args.regime, args.revision)
+    elif args.command == 'collect-common':
+        from collect_common_set import main as collect_release
+        collect_release(args.regime, args.revision)
+    elif args.command == 'coverage':
+        from coverage_ledger import main as build_coverage
+        build_coverage(args.out)
     else:
         globals()[args.command](args.out)
 

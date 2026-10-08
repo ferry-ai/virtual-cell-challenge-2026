@@ -1,0 +1,120 @@
+{
+ "input_files": {
+  "count_sum.npz": "/kaggle/input/notebooks/davideferrante11/vcc-derivatives-kolf-small-r1/bank/kolf_metabolic/count_sum.npz",
+  "mask.npz": "/kaggle/input/notebooks/davideferrante11/vcc-derivatives-kolf-small-r1/samples/kolf_metabolic/mask.npz",
+  "rows.csv": "/kaggle/input/notebooks/davideferrante11/vcc-derivatives-kolf-small-r1/samples/kolf_metabolic/bank_rows.csv",
+  "complete.json": "/kaggle/input/notebooks/davideferrante11/vcc-derivatives-kolf-small-r1/bank/kolf_metabolic/complete.json"
+ },
+ "input_pins": {
+  "count_sum.npz": {
+   "bytes": 3441978,
+   "sha256": "25643e969710768c364e6cfe57900d14b028906f3035816c61019bd88dca60ab"
+  },
+  "mask.npz": {
+   "bytes": 32343,
+   "sha256": "a8c7d72e086486d571c45993c7c7a8ae0e3c961b6fcef64590fd40e44e47e9a9"
+  },
+  "rows.csv": {
+   "bytes": 8563,
+   "sha256": "b5fc0816cee40e7677bd841a820a9799fbb1fcb4da582dca3c500f497d33e048"
+  },
+  "complete.json": {
+   "bytes": 1826,
+   "sha256": "6cb3a690cbabf2a1ed41506cf609273baeae90fee99889724999c6ce7e1a7a6f"
+  }
+ },
+ "params_sha256": "339339df99781c3030364a55005fd202089eea9f587d7ab4dc2955b034d5b1dc",
+ "resources": {
+  "utc": "2026-10-08T18:58:42.427848+00:00",
+  "ram_available_bytes": 32641683456,
+  "disk_free_bytes": 20940148736,
+  "cpu": 4
+ },
+ "admitted_rows": 77,
+ "split": {
+  "id": "T-all",
+  "regime": "T",
+  "held_groups": [],
+  "hidden_targets": [
+   "ABCD1",
+   "ACLY",
+   "AKT2",
+   "BRPF1",
+   "COQ10B",
+   "DCP2",
+   "DEK",
+   "DHX35",
+   "DNTTIP1",
+   "EAPP",
+   "EPC2",
+   "FAM120A",
+   "FCGRT",
+   "GIGYF2",
+   "GMEB2",
+   "HSP90AB1",
+   "IFI27L2",
+   "KDM5A",
+   "LENG1",
+   "LMAN1",
+   "MARCKSL1",
+   "MED25",
+   "MLKL",
+   "MLLT10",
+   "MSANTD4",
+   "MTA1",
+   "NABP2",
+   "PBLD",
+   "PDK1",
+   "PINK1",
+   "PKN3",
+   "PLCG1",
+   "PPIP5K2",
+   "PQBP1",
+   "PRDX3",
+   "PRMT6",
+   "PRNP",
+   "PSMB9",
+   "RNF141",
+   "RNF2",
+   "RSRC1",
+   "SHPRH",
+   "SLC25A13",
+   "SNRK",
+   "SRSF5",
+   "STK3",
+   "TBCK",
+   "THAP3",
+   "TIMM50",
+   "TMED3",
+   "TRIB3",
+   "TRMT1",
+   "USP28",
+   "WBP4",
+   "YIPF6",
+   "ZBTB48",
+   "ZC3HAV1",
+   "ZFP62",
+   "ZNF280C",
+   "ZNF282",
+   "ZNF324",
+   "ZNF526",
+   "ZNF543",
+   "ZNF627",
+   "ZNF714",
+   "ZNF740"
+  ],
+  "exclude_tables": [],
+  "exclude_units": [],
+  "truth": "per lineage, its own table on the hidden targets",
+  "manifest_sha256": "add3519816b50b81207152cf7e2ffea7150e66b28587fb04cfdc42283e371cf7",
+  "manifest_version": "v1",
+  "protected_units": [
+   "h1_test"
+  ],
+  "group_aliases": {
+   "HEK293T": "HEK293"
+  },
+  "hidden_rule": "int(sha256(symbol utf-8).hexdigest(), 16) % 5 == 0, on every component of every label"
+ },
+ "learned_statistics_started": false
+}
