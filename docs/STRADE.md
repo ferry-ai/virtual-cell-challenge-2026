@@ -41,7 +41,8 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 | S-007 | Correzioni del transfer dai controlli medi (guadagni per gene, bilineare, rete sul pseudobulk) | nessun beneficio | ignoto | 2026-10-04 |
 | S-008 | Modelli appresi precedenti (encoder, cancelli, rete dei contesti, relazionale, rete sulle sorgenti, Stack A e B) | nessuno ha passato la sua regola | ignoto | 2026-10-04 |
 | S-009 | Ibrido selettivo D-056 v1: transfer congelato + correzione neurale regolarizzata + selettore fuori fold | regola di banco passata su 5 linee (CP-0062); sul sito t30 −0,005 contro il t25, non conclusivo e nessuna promozione (CP-0064); su 5 semi e 400 cellule il guadagno di banco è +0,013 di media e il fold esportato perde PDS (CP-0065) | ipotizzato | 2026-10-04 |
-| S-010 | Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25 | Banco storico positivo ma non ammesso; t36 ufficiale +0,002404 da t28, nuovo massimo descrittivo (CP-0067), stabilità non dimostrata; release r1 a 17 fonti fittata e non valutata (CP-0068) | ipotizzato | 2026-10-07 |
+| S-010 | Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25 | t36 ufficiale +0,002404 da t28, descrittivo (CP-0067); a lignaggio escluso, sulle stesse tabelle, l'ampliamento perde PDS sul fold K562 e ne guadagna sul fold iPSC: H1 aiuta, KOLF2.1J costa ai lignaggi non staminali (CP-0069) | ipotizzato | 2026-10-08 |
+| S-011 | Voti di fonti con pochi bersagli del pannello sotto la centratura sul pannello (release r1, T1) | T1 non si distingue da t36 su sei fold e su due banchi a sei membri: inconcludente, nessuna promozione (CP-0069) | ipotizzato | 2026-10-08 |
 
 ## Voci
 
@@ -274,6 +275,8 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 
 ### S-010 — Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25
 
+- **Aggiornamento 8/10:** [CP-0069](checkpoints/0069-validazione-indipendente-t1-e-ampliamento.md), [validazione indipendente](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/README.md). Primo confronto a lignaggio escluso sul pannello, con il codice di produzione e una regola scritta prima ([contratto v2](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/PROTOCOLLO_v2.md)). t36 contro le quattro linee del t28 **sulle stesse tabelle**: a sei membri il fold K562 perde media (−0,026) e PDS (−0,101), risolti; il fold iPSC li guadagna (+0,027 e +0,067). La [scomposizione](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/TABELLE_SCOMPOSIZIONE_K0_r2.md), con il piano committato prima, dice quale pezzo fa che cosa: H1 alza la discriminazione dove agisce; l'ingresso di KOLF2.1J la abbassa sui quattro lignaggi non staminali e riduce l'errore d'ampiezza; i voti ripetuti di KOLF aggiungono una piccola perdita. L'analisi esplorativa senza le quattro tabelle KOLF, a sei membri sul fold K562: media +0,030 e PDS +0,117, risolti, con il costo sul PDS dovuto all'ingresso di KOLF e non ai suoi voti ripetuti ([tabelle](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/TABELLE_LIVELLO_B_k562_x1.md)); è lo stesso fold da cui l'ipotesi nasce. **Meccanismo ancora ipotizzato:** con pesi uguali una fonte aiuta i lignaggi che le somigliano e diluisce lo specifico degli altri; l'analisi che lo suggerisce è esplorativa, sugli stessi lignaggi. Non contraddice il +0,0024 ufficiale, che cambia anche le tabelle Orion e riguarda contesti ignoti. **Segnale precoce nuovo:** `disc95` e `r_spec` del livello A per fold, con il controllo a bersagli permutati; a sei membri il PDS per fold. **Guardia eseguibile nuova:** `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/logo_driver.py` rifiuta la corsa se gli effetti di produzione non riproducono gli sha256 registrati o se lo stadio 100 legge una tabella del lignaggio escluso; test in `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/test_bench_core.py` e `test_metrics.py`. **Che cosa la riaprirebbe ora:** un contrasto di produzione sulla composizione delle fonti (un voto per lignaggio; H1 con le quattro linee), valutato con il contratto su almeno due fold a sei membri, poi un invio con previsione registrata.
+
 - **Aggiornamento 7/10:** [CP-0068](checkpoints/0068-banca-canonica-release-r1.md), [banca canonica](../reports/modelli/banca_canonica_2026-10-07/README.md). Regola di ammissione scritta prima dei lanci (verso del knockdown sul proprio gene): passano HIPSCI mirato, Xu 2023 e Tian 2021 CRISPRi; Tian 2019 neuroni passa alla lettera con −0,0014, che non è evidenza di knockdown; Tian 2019 iPSC non passa. La release r1 (17 fonti) è fittata con lo stesso transfer e cambia gli effetti solo sui 17 bersagli con voti nuovi. **Esito incompleto:** nessun banco e nessun invio, quindi nessuna lettura di qualità. Meccanismo ancora **ipotizzato**. Lezione di metodo: una regola di solo segno non distingue un effetto nullo quando la fonte ha un solo bersaglio; la prossima regola dichiari prima un minimo di bersagli o un intervallo. Guardia eseguibile aggiunta: il fit si ferma se una fonte attesa non risulta fra le tabelle lette dallo stage 100 (`fit/driver.py`).
 
 - **Aggiornamento 6/10:** [CP-0067](checkpoints/0067-t36-banca-estesa-punteggio-ufficiale.md), [comparison t36](../reports/invii/prediction_t36_2026-10-06/comparison.json): transfer t25/emitter t28 su banca estesa parziale,0,147249 e +0,002404 da t28. Invio diretto autorizzato dal proprietario, senza banco comparativo o soglia numerica preregistrata. Nuovo massimo osservato, non prova stabile o attribuibile a una fonte. Meccanismo ancora **ipotizzato**. Il banco storico e il suo criterio qui sotto mantengono il loro perimetro; «nessun invio finora» si riferisce al4ottobre, non allo stato attuale. La lettura eseguibile read_t36_score.py vincola entry/pannello/ancore/media e vieta soglie inventate, non misura robustezza.
@@ -302,3 +305,30 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 - **Segnale precoce:** la differenza contro `transfer_prod_J` sulla prima linea completata (arresto del §5 del
   protocollo).
 - **Guardia eseguibile:** nessuna nel codice; la regola è nel protocollo.
+
+### S-011 — Voti di fonti con pochi bersagli del pannello sotto la centratura sul pannello (release r1, T1)
+
+- **Che cosa si è provato:** aggiungere al voto del transfer t36, a stimatore invariato (peso 1, gamma 1, risposta
+  comune calcolata sui bersagli del pannello di ogni tabella), le fonti CRISPRi ammesse dalla banca canonica che hanno
+  pochi bersagli del pannello: HIPSCI mirato (5), Xu 2023 (5), Tian 2021 neuroni (6), Tian 2019 neuroni (1). R1 è la
+  release intera; T1 la stessa senza Tian 2019.
+- **Prova:** [CP-0069](checkpoints/0069-validazione-indipendente-t1-e-ampliamento.md); [contratto v2](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/PROTOCOLLO_v2.md); [livello A](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/RISULTATI_LIVELLO_A.md),
+  [livello B](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/RISULTATI_LIVELLO_B.md); [audit](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/AUDIT_DATI_E_LEAKAGE.md), §2;
+  `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/voto_singolo_rfk_r1.json`.
+- **Sintomo:** T1 − t36 non è risolto: livello A, macro `disc95` +0,0004 [−0,0005; +0,0013] su sei fold a lignaggio
+  escluso; sei membri, macro su due fold −0,0003 ± 0,0014, con l'NMAE del fold K562 risolto in peggio (−0,007). Esito
+  della regola: inconcludente, nessuna promozione.
+- **Meccanismo:** ipotizzato. È **accertata** la distorsione: la centratura toglie a ogni tabella la media delle sue
+  righe, quindi con n bersagli ogni voto perde 1/n dell'effetto proprio e riceve −1/n di quello degli altri; con un
+  bersaglio il voto è identicamente zero (su RFK tutti gli 11.530 geni mossi sono tirati verso zero, rapporto 0,63–0,75,
+  qualunque cosa contenga la tabella). Che sia questa a togliere il beneficio **non è isolato**: dieci dei sedici voti
+  nuovi raddoppiano inoltre un lignaggio che votava già.
+- **Che cosa esclude e che cosa no:** esclude la promozione di T1 come miglioramento. Non esclude che le stesse fonti
+  aiutino con una risposta comune stimata su tutti i loro bersagli, né il loro valore per la copertura D-053.
+- **Che cosa la riaprirebbe:** T2, con il numero di bersagli dietro ogni vettore comune scritto nella ricevuta e un
+  minimo fissato prima dei numeri, valutato sui fold del contratto ai due livelli.
+- **Segnale precoce:** nella ricevuta di consumo, i bersagli del pannello di ogni tabella al voto: sotto venti la quota
+  tolta supera il 5 %, con uno il voto è nullo. Si legge prima del fit.
+- **Guardia eseguibile:** `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/verifica_voto_singolo.py` misura la contrazione su due file di effetti; il banco
+  verifica parità ed esclusioni. **Manca** un rifiuto, nel fit di produzione, delle tabelle sotto un minimo di
+  bersagli: spetta a chi possiede il trainer (segnalazione DT-1 dell'audit).

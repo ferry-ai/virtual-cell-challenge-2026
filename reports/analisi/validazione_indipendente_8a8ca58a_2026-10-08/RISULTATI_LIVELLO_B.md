@@ -82,3 +82,37 @@ Due fold su sei lignaggi, entrambi già fonti di ogni ricetta e uno (K562) letto
 metà delle cellule vere fa da verità; le costanti d'ampiezza e di emissione vengono dal sito e da banchi di K562 e
 HepG2; la testa cis è stimata su K562. La macro è la media di due contesti, non una stima di generalizzazione.
 CD4T, HCT116 e HEK293 non hanno cellule vere estratte per il banco.
+
+## 6. Esplorativo a sei membri: t36 senza KOLF2.1J, fold K562
+
+[Piano scritto prima](ESPLORATIVO_SENZA_KOLF.md) (commit `5bfb5a7`, 19:17:38); kernel
+`davidmaisterx/vcc-validazione-banco-k562-8a8ca58a-x1`, lanciato alle 19:34, concluso e letto alle 21:23; corsa
+principale di 107 minuti. [Tabelle](TABELLE_LIVELLO_B_k562_x1.md). **Non è un candidato e non entra in nessun
+esito del §8:** un fold solo, lo stesso da cui l'ipotesi è nata.
+
+| Coppia | Sei membri | Senza JAC | PDS | NMAE | FID | REACH | JAC |
+|---|---|---|---|---|---|---|---|
+| P4h − T0: senza le quattro tabelle KOLF | **+0,0299 ± 0,0081** | **+0,0318 ± 0,0099** | **+0,1171 ± 0,0197** | −0,0030 ± 0,0276 | **+0,0137 ± 0,0030** | **+0,0312 ± 0,0210** | **+0,0203 ± 0,0015** |
+| P4kh − T0: KOLF vota una volta sola | **+0,0110 ± 0,0058** | **+0,0126 ± 0,0071** | −0,0033 ± 0,0072 | **+0,0473 ± 0,0171** | +0,0013 ± 0,0015 | +0,0175 ± 0,0302 | **+0,0033 ± 0,0007** |
+| P4h − P4kh: via anche l'unico voto di KOLF | **+0,0189 ± 0,0043** | **+0,0192 ± 0,0053** | **+0,1204 ± 0,0233** | **−0,0503 ± 0,0246** | **+0,0124 ± 0,0043** | +0,0137 ± 0,0266 | **+0,0169 ± 0,0012** |
+
+**Misurato.**
+- Il braccio T0 ridà in questa corsa gli stessi numeri della corsa r1 (media −0,4455, PDS 0,5359, NMAE 0,3603,
+  248,9 geni chiamati per bersaglio): il banco è riproducibile fra due kernel.
+- Senza KOLF il fold K562 guadagna 0,117 di PDS e 0,030 di media. È quasi lo specchio di K0 (§3: −0,101 e
+  −0,026), con H1 tenuta: contro il braccio P4 della corsa r1, P4h ha media +0,004 e PDS +0,016 (differenza fra le
+  medie dei bracci di due corse con gli stessi semi; nessuna deviazione calcolata).
+- Il costo sul PDS viene dall'**ingresso** di KOLF (`kolf_pan_genome`, un voto su quasi tutti i bersagli), non
+  dai voti ripetuti: toglierlo vale +0,120 di PDS e costa 0,050 di NMAE; togliere i soli voti ripetuti lascia il
+  PDS dov'è e migliora l'NMAE di 0,047.
+
+**Lettura con la regola del piano.** L'ipotesi cadeva se X1 non era positivo su `disc95` nei fold non staminali o
+se perdeva PDS sul fold K562: non cade. **Non è una conferma:** il fold è quello della scomposizione, e K562 è il
+lignaggio letto più volte da questi banchi. Dice che vale la pena costruire il contrasto di produzione proposto
+nella [raccomandazione](RACCOMANDAZIONE.md), §5, e che lì il PDS e l'NMAE vanno letti separati: su questo fold
+tirano in versi opposti.
+
+**Osservazione non indagata.** Il membro MSE scalato vale 0 per ogni braccio (peggio dell'ancora di base), quindi
+non pesa su nessuna differenza; il suo valore grezzo però è più basso per i bracci con meno fonti (P4h − T0
+−0,60), mentre nel livello A l'errore quadratico nello spazio degli effetti va nel verso opposto in macro. Sono
+grandezze diverse (cellule generate contro effetti medi) e non ho cercato la causa.

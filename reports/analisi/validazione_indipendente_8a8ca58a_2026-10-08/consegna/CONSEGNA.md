@@ -21,7 +21,8 @@ Tutti privati, con il prefisso `vcc-validazione-` e la sigla della sessione; ogn
 
 | Che cosa | Kernel o dataset | Cartella |
 |---|---|---|
-| Livello A, corse r1, r2, r3 | `davideferrante11/vcc-validazione-logo-8a8ca58a-r{1,2,3}` | `banco/r1`, `banco/r2`, `banco/r3` |
+| Livello A, corse r1–r5 | `davideferrante11/vcc-validazione-logo-8a8ca58a-r{1,2,3,4,5}` | `banco/r1` … `banco/r5` |
+| Vettori comuni di T2, copia per il kernel | dataset `davideferrante11/vcc-validazione-t2-vettori-8a8ca58a-r1` (i vettori sono di DATI-TRANSFER, copiati senza modifiche) | `banco/t2_vettori_r1` |
 | Cellule vere dei fold | `davidmaisterx/vcc-validazione-celle-{k562,ipsc}-8a8ca58a-r1` | `banco/celle_k562_r1`, `banco/celle_ipsc_r1` |
 | Effetti dei fold per il livello B | dataset `davidmaisterx/vcc-validazione-effetti-{k562,ipsc}-8a8ca58a-r1` e `…-k562-8a8ca58a-x1` | `banco/livello_b_*/effetti.json` |
 | Livello B | `davidmaisterx/vcc-validazione-banco-{ipsc,k562}-8a8ca58a-r1`, esplorativo `…-banco-k562-8a8ca58a-x1` | `banco/livello_b_ipsc_r1`, `banco/livello_b_k562_r1`, `banco/livello_b_k562_x1` |
@@ -49,7 +50,7 @@ una ripetizione vuole un nome di revisione nuovo.
 
 ```powershell
 $b = "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco"
-.\scripts\py.cmd -m unittest $b/test_metrics.py $b/test_bench_core.py      # 15 prove su effetti sintetici
+.\scripts\py.cmd -m unittest $b/test_metrics.py $b/test_bench_core.py      # 16 prove su effetti sintetici
 .\scripts\py.cmd $b/prepara_banco.py package rN          # livello A: pacchetto (analisi_rN.json facoltativo)
 .\scripts\py.cmd $b/prepara_banco.py lancia rN <preflight.json>
 .\scripts\py.cmd $b/prepara_banco.py raccogli rN         # parità, consumo, codice salvato
@@ -72,5 +73,5 @@ fold nel formato dello stadio 100) si dichiara in `external_arms` con dimensione
   [verifiche/](../verifiche/).
 - `.\scripts\py.cmd -m unittest discover -s tests`: 290 test, 289 superati; l'unico fallimento è il controllo
   dei documenti qui sopra ([tests_r1.txt](../verifiche/tests_r1.txt)). I tre test dello scorer passano.
-- Test delle misure e del banco: 15 su 15. Test di `fold_bank.py` di DATI-TRANSFER rieseguiti da questa sessione:
+- Test delle misure e del banco: 16 su 16. Test di `fold_bank.py` di DATI-TRANSFER rieseguiti da questa sessione:
   7 su 7, su fixture ([esito](../verifiche/dt_test_fold_bank_r2.txt); il file r1 è un'invocazione sbagliata mia).

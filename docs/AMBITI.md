@@ -30,6 +30,7 @@ Leggi prima: [PROCEDURE §2](PROCEDURE.md#2-le-regole-dellinvio), punto 7, per l
 ### 2. Invii e ricetta di produzione
 
 - **Misurato, 6/10.** Massimo osservato t36 **0,147249**, +0,002404 da t28 sulla banca estesa parziale. Sei membri ufficiali verificati; PDS/NMAE salgono, reach/fedeltà/Jaccard scendono, MSE scalata0. Confronto descrittivo senza soglia numerica preregistrata; nessuna stabilità dimostrata o promozione automatica ([CP-0067](checkpoints/0067-t36-banca-estesa-punteggio-ufficiale.md)). Tutti i punteggi: [invii](../reports/invii/README.md).
+- **Misurato, 8/10, a lignaggio escluso ([CP-0069](checkpoints/0069-validazione-indipendente-t1-e-ampliamento.md)).** T1, cioè r1 senza il voto RFK di Tian 2019, non si distingue da t36: livello A `disc95` +0,0004 [−0,0005; +0,0013] su sei fold, sei membri −0,0003 ± 0,0014 su due; nessuna promozione. Sulle stesse tabelle t36 perde PDS contro le quattro linee sul fold K562 (−0,10) e ne guadagna sul fold iPSC (+0,07): H1 aiuta, KOLF2.1J costa ai lignaggi non staminali. Punteggi locali di sviluppo, non VCC ([raccomandazione](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/RACCOMANDAZIONE.md)).
 - **Misurato.** Il t28 alza fedeltà (+0,051 scalato) e reach (+0,055), perde NMAE (−0,069) e
   Jaccard (−0,008): l'intervento sull'emissione sposta i membri DE, con costi.
 - **Ultimo esito, 4/10.** T30, ibrido selettivo D-056 (effetti t25 + w · R): 0,135249, −0,004989 contro il t25, ramo b
@@ -53,6 +54,7 @@ Piani: [R-COMP](piani/modello-competitivo.md), [S-INVII](piani/invii-finale.md).
   ([CP-0047](checkpoints/0047-conferma-generatore-t28.md), [CP-0050](checkpoints/0050-credibilita-score-e-riserva.md)).
 - **Interpretazione.** Il banco HepG2 ha preso il verso dei cambi ufficiali e ne ha sovrastimato
   l'entità ([errori di metodo](ERRORI.md#errori-di-metodo-già-commessi)).
+- **Strumento, 8/10.** Banco a lignaggio escluso sul pannello: lo stadio 100 di produzione su una cache senza le tabelle del lignaggio, misure per bersaglio (livello A) e `bench_v2` con cellule vere estratte per K562 e KOLF2.1J (livello B); contratto, manifest dei fold e regola di adozione in [contratto v2](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/PROTOCOLLO_v2.md). Il controllo a bersagli scambiati mostra che sulla scala locale del fold iPSC NMAE, fedeltà e Jaccard quasi non dipendono dal bersaglio: un delta della media si legge con il PDS accanto ([livello B](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/RISULTATI_LIVELLO_B.md), §1).
 - **Protocollo e bracci disponibili.** Il banco K562 non ha un esito del job registrato
   ([protocollo](../reports/generatore_e_banchi/banco_k562_pannello_2026-09-29/RISULTATI.md),
   azione 4 di [R-REV](piani/revisione-critica.md)). La ripresa richiede preflight e scelta

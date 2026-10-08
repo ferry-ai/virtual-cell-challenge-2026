@@ -45,6 +45,10 @@ PLANS = {
     'x1': {'level_a': 'r3', 'arms': ('T0', 'P4h', 'P4kh'),
            'steps': [{'name': 'full', 'targets': 'all', 'arms': ['T0', 'P4h', 'P4kh'],
                       'pairs': ['P4h:T0', 'P4kh:T0', 'P4h:P4kh'], 'gen_seeds': 5}]},
+    # T2 (VALUTAZIONE_T2.md): the T1 release with the frozen all-target common vectors; T1:T0 repeats run r1
+    't2': {'level_a': 'r5', 'arms': ('T0', 'T1', 'T2'),
+           'steps': [{'name': 'full', 'targets': 'all', 'arms': ['T0', 'T1', 'T2'],
+                      'pairs': ['T2:T0', 'T2:T1', 'T1:T0'], 'gen_seeds': 5}]},
 }
 
 

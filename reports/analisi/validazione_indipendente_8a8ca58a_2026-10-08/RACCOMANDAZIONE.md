@@ -90,3 +90,21 @@ Banco di sviluppo: sei lignaggi che sono fonti di ogni ricetta, due dei quali co
 un proxy nello spazio degli effetti; il livello B usa scale locali. Gli intervalli dicono la variabilità fra
 bersagli e fra semi dentro i contesti osservati, non l'incertezza su D, E e F. La copertura D-053 resta aperta e
 nessun artefatto valutato qui usa i campioni cellulari.
+
+## 8. Aggiunte dopo l'emissione (orologio letto con `date`)
+
+Il testo sopra è quello emesso alle 21:01 e non è stato ritoccato. **La raccomandazione non cambia.**
+
+- **21:23, esplorativo a sei membri sul fold K562** ([livello B](RISULTATI_LIVELLO_B.md), §6): t36 senza le
+  quattro tabelle KOLF dà media +0,0299 ± 0,0081 e PDS +0,1171 ± 0,0197, risolti; con KOLF che vota una volta sola
+  il PDS non si muove e l'NMAE migliora. L'ipotesi del piano non cade; non è una conferma, perché il fold è quello
+  da cui è nata. Rafforza il punto 1 del §5: il contrasto sulla composizione delle fonti è il primo da costruire.
+- **21:27, correzione alla riga K2 del §2.** I vettori comuni congelati di T2 erano sul disco dalle 21:00:34
+  (`HANDOFF_T2_MEDIE_r1.md` di DATI-TRANSFER), entro il termine delle 21:15 che avevo indicato alle 19:06; li ho
+  letti dopo l'emissione. Restava vero che nessun **effetto** di T2 esiste: il fit finale attende il consenso del
+  proprietario. Lo stimatore è in valutazione sui sei fold dalle 21:40, con il [piano](VALUTAZIONE_T2.md)
+  committato prima (21:36:52).
+- **Che cosa può cambiare entro le 23:00: nulla sulla consegna.** Per il §8 un candidato si promuove solo con il
+  livello B su due fold, e il banco sul fold K562 dura 107–109 minuti: alla scadenza T2 è inconcludente per regola,
+  qualunque cosa dica il livello A. Non esiste un suo effetto di produzione e nessun invio è autorizzato. L'esito
+  completo di T2 serve alla decisione successiva: se autorizzare il suo fit finale e con che cosa confrontarlo.
