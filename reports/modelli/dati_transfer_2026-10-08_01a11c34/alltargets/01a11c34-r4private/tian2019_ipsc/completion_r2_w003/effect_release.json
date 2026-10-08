@@ -1,0 +1,197 @@
+{
+ "contexts": [
+  {
+   "identity": {
+    "study": "tian2019_ipsc",
+    "line_group": "iPSC",
+    "context": "iPSC",
+    "condition": "UNREPORTED@tian2019_ipsc",
+    "modality": "CRISPRi",
+    "chemistry": "10x 3'"
+   },
+   "targets_expected": [
+    "FECH",
+    "GSR",
+    "HACD2",
+    "HMGCS1",
+    "KIF1A",
+    "LSS",
+    "MAP3K12",
+    "MAT2A",
+    "MMAB",
+    "MVK",
+    "NDUFA1",
+    "PGGT1B",
+    "PMVK",
+    "PPCDC",
+    "PPP1R8",
+    "PPP2R1A",
+    "RAB7A",
+    "RFK",
+    "SEPSECS",
+    "SQLE",
+    "TARS2",
+    "UBA1",
+    "UQCRQ",
+    "UROD"
+   ],
+   "controls_cells": 10401,
+   "donors": [
+    "UNREPORTED@tian2019_ipsc"
+   ],
+   "chunks": [
+    {
+     "file": "context000_chunk00000.npz",
+     "targets": 24
+    }
+   ],
+   "targets_derived": [
+    "FECH",
+    "GSR",
+    "HACD2",
+    "HMGCS1",
+    "KIF1A",
+    "LSS",
+    "MAP3K12",
+    "MAT2A",
+    "MMAB",
+    "MVK",
+    "NDUFA1",
+    "PGGT1B",
+    "PMVK",
+    "PPCDC",
+    "PPP1R8",
+    "PPP2R1A",
+    "RAB7A",
+    "RFK",
+    "SEPSECS",
+    "SQLE",
+    "TARS2",
+    "UBA1",
+    "UQCRQ",
+    "UROD"
+   ],
+   "target_cells_contributing": 125491,
+   "estimator_rows_accessed": 25,
+   "status": "derived",
+   "physical_cells_read": 0,
+   "common_file": "context000_common.npz",
+   "common_support_genes": 12335,
+   "targets_below_estimator_eligibility": [],
+   "bank_rows_in_fold": [
+    47,
+    2548,
+    2564,
+    2709,
+    22748,
+    22790,
+    22799,
+    23046,
+    23116,
+    23658,
+    24039,
+    24050,
+    24051,
+    24067,
+    24197,
+    24509,
+    24516,
+    32846,
+    32995,
+    33055,
+    33183,
+    33204,
+    33219,
+    38579,
+    38733
+   ],
+   "units": "natural-log fold change; fractions on context measured axis; original pseudocount and shrink"
+  }
+ ],
+ "target_cells_contributing": 125491,
+ "physical_cells_read": 0,
+ "scope": "aggregated effects; no cellular training",
+ "unit": "tian2019_ipsc",
+ "split": {
+  "id": "production-01a11c34-r1",
+  "regime": "production",
+  "held_groups": [],
+  "hidden_targets": [],
+  "protected_units": [
+   "h1_test"
+  ],
+  "group_aliases": {},
+  "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+ },
+ "params_sha256": "d67f16289e122fbd3687fd3361259244ee9aa96d56cb7291b916261ce33f8fd7",
+ "mapping_evidence": {
+  "path": "C:/Users/ferra/vcc2026-data/external/annotation/gencode.v50.basic.annotation.gtf.gz",
+  "bytes": 79970394,
+  "sha256": "5b9ad9aa71f6ab5d55123c51f74723644a895bc0cbaa9cee8fbc11bb9dec0bf7",
+  "policy": "exact Gencode v50 gene_name, no guide or alias inference"
+ },
+ "bank": {
+  "unit": "tian2019_ipsc",
+  "kernel": "davideferante/vcc-derivatives-tian-norman-r1",
+  "relative_path": "bank/tian2019_ipsc",
+  "files": {
+   "count_sum.npz": {
+    "bytes": 165423082,
+    "sha256": "d39f9b5910da7d93558a5bfbe5552a3d670a18c875e02d9a59c22e231f784046"
+   },
+   "mask.npz": {
+    "bytes": 26285919,
+    "sha256": "fe0f96ab6c2b81c4d14d6ba9c64dcbb0533b742ad4cd146abdb2e7c3097dbe7b"
+   },
+   "rows.csv": {
+    "bytes": 4690056,
+    "sha256": "e953cfaed7f601cfe0f05e55ebd86f0b9b9b410bf179f05909a3287b9ab62cb7"
+   },
+   "complete.json": {
+    "bytes": 2422,
+    "sha256": "1282d5ee30f1dbc216e37e4a038fc5e88153a632c127e6d9d686ecaeda76e5dd"
+   }
+  },
+  "producer": {
+   "kernel_id": 137174819,
+   "version": 1,
+   "private": true,
+   "version_ref": "davideferante/vcc-derivatives-tian-norman-r1/versions/1",
+   "saved_source_sha256": "25af4ceaa93e4684c3afdb1df914c1e559bdb300be1e86daf1a548157de5cb80",
+   "version_stable_during_output_read": true
+  },
+  "mount": {
+   "kind": "dataset",
+   "ref": "davideferante/vcc-tian-ipsc-sample-input-r1",
+   "version": 3
+  }
+ },
+ "selection_sha256": "ee0edb63404b56f80286dede72b041ddefec62f2d5f4c92edf7aadcd5d6e8564",
+ "selection_counts": {
+  "unresolved_target_mapping": 135331,
+  "effect_target": 125491,
+  "empty_bank_row": 0,
+  "control": 10401
+ },
+ "bank_cells": 271223,
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "sampled_cells_read": 0,
+ "claims_complete_corpus": false,
+ "model_fit": false,
+ "not_a_score": true,
+ "seconds": 34.072166632999966,
+ "outputs": {
+  "effects/context000_common.npz": {
+   "bytes": 220641,
+   "sha256": "fb0d87ebb1b38007bb63e6ab3df2b974dd7c160ef11d263855b3d5cf39eee61a"
+  },
+  "effects/context000_chunk00000.npz": {
+   "bytes": 2137255,
+   "sha256": "d50b5a0e718f652864d573a11d12f61030b4913dd670e4c1fa6dd789651418de"
+  },
+  "effects/context000_receipt.json": {
+   "bytes": 1691,
+   "sha256": "8ba285d717756d13dfafa9d3ba036ba75f671d88bbb4883dc8c89841333e7d79"
+  }
+ }
+}

@@ -12,20 +12,23 @@ import fold_bank
 from joint_rows import joint
 
 
-def main():
+def main(*, input_root=Path('/kaggle/input'), scratch_root=Path('/kaggle/temp'), ram_available=None):
     start=time.monotonic();p=json.loads(Path('params.json').read_text())
     for name,pin in p['embedded'].items():
         if Path(name).stat().st_size!=pin['bytes'] or sha(name)!=pin['sha256']:raise ValueError('embedded mismatch')
     fold_bank.validate_split(p['split'])
-    resources=dict(cpu=os.cpu_count(),disk_free_bytes=shutil.disk_usage('/kaggle/working').free,
-        ram_available_bytes=next(int(s.split()[1])*1024 for s in Path('/proc/meminfo').read_text().splitlines() if s.startswith('MemAvailable:')))
+    if p['recipe'] != estimator.CALL:raise ValueError('estimator recipe changed')
+    if ram_available is None:
+        ram_available=next(int(s.split()[1])*1024 for s in Path('/proc/meminfo').read_text().splitlines() if s.startswith('MemAvailable:'))
+    resources=dict(cpu=os.cpu_count(),disk_free_bytes=shutil.disk_usage(Path.cwd()).free,
+        ram_available_bytes=ram_available)
     write('resources.json',resources)
     if resources['ram_available_bytes']<2<<30:raise ValueError('RAM below budget')
     genes=pd.read_csv('gene_names.csv').iloc[:,0].astype(str).tolist()
-    scratch=Path('/kaggle/temp')/p['job_id'];scratch.mkdir(exist_ok=False)
+    scratch=Path(scratch_root)/p['job_id'];scratch.mkdir(parents=True,exist_ok=False)
     banks={};selection={}
     for unit,spec in p['units'].items():
-        files={k:locate(Path('/kaggle/input'),v) for k,v in spec['bank']['files'].items()}
+        files={k:locate(Path(input_root),v) for k,v in spec['bank']['files'].items()}
         rows=pd.read_csv(files['rows.csv'],keep_default_na=False)
         complete=json.loads(files['complete.json'].read_text())
         if len(rows)!=complete['rows'] or int(rows.n.sum())!=complete['cells_used']:raise ValueError('population mismatch')

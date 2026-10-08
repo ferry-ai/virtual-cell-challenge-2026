@@ -16,6 +16,11 @@ la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
 ## Indice
 
+- [STATO_r3.md](STATO_r3.md): 41 unità di produzione verificate, ricomposizioni, T2 e limiti correnti.
+- [training_release_production_r1.json](training_release_production_r1.json): contratto di training CRISPRi a 47 contesti, con manifest numerico fuori dal repository.
+- [campaign_snapshot_r2.json](campaign_snapshot_r2.json): ricevute per unità, senza sommare produzione e fold come cellule nuove.
+- `common_cd4/`, `k562_bulk_common_r1.json`, `common_stream.py`: medie fuori pannello e prove del loro ordine di calcolo.
+- `final_t2/`, `prepare_final_t2.py`, `final_t2_driver.py`: preparazione del fit privato, con parità T1 obbligatoria.
 - [STATO_r2.md](STATO_r2.md): aggiornamento della campagna, release, runtime e limiti.
 - [CONSEGNA_T1_r1.md](CONSEGNA_T1_r1.md): T1 verificata e consegna al banco.
 - [candidate_t1_r1.json](candidate_t1_r1.json): identità degli effetti T1.

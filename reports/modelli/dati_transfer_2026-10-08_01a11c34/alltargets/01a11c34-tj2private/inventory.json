@@ -1,0 +1,813 @@
+{
+  "utc": "2026-10-08T18:05:48.000671+00:00",
+  "split": {
+    "id": "T-all",
+    "regime": "T",
+    "held_groups": [],
+    "hidden_targets": [
+      "ABCD1",
+      "ACLY",
+      "AKT2",
+      "BRPF1",
+      "COQ10B",
+      "DCP2",
+      "DEK",
+      "DHX35",
+      "DNTTIP1",
+      "EAPP",
+      "EPC2",
+      "FAM120A",
+      "FCGRT",
+      "GIGYF2",
+      "GMEB2",
+      "HSP90AB1",
+      "IFI27L2",
+      "KDM5A",
+      "LENG1",
+      "LMAN1",
+      "MARCKSL1",
+      "MED25",
+      "MLKL",
+      "MLLT10",
+      "MSANTD4",
+      "MTA1",
+      "NABP2",
+      "PBLD",
+      "PDK1",
+      "PINK1",
+      "PKN3",
+      "PLCG1",
+      "PPIP5K2",
+      "PQBP1",
+      "PRDX3",
+      "PRMT6",
+      "PRNP",
+      "PSMB9",
+      "RNF141",
+      "RNF2",
+      "RSRC1",
+      "SHPRH",
+      "SLC25A13",
+      "SNRK",
+      "SRSF5",
+      "STK3",
+      "TBCK",
+      "THAP3",
+      "TIMM50",
+      "TMED3",
+      "TRIB3",
+      "TRMT1",
+      "USP28",
+      "WBP4",
+      "YIPF6",
+      "ZBTB48",
+      "ZC3HAV1",
+      "ZFP62",
+      "ZNF280C",
+      "ZNF282",
+      "ZNF324",
+      "ZNF526",
+      "ZNF543",
+      "ZNF627",
+      "ZNF714",
+      "ZNF740"
+    ],
+    "exclude_tables": [],
+    "exclude_units": [],
+    "truth": "per lineage, its own table on the hidden targets",
+    "manifest_sha256": "add3519816b50b81207152cf7e2ffea7150e66b28587fb04cfdc42283e371cf7",
+    "manifest_version": "v1",
+    "protected_units": [
+      "h1_test"
+    ],
+    "group_aliases": {
+      "HEK293T": "HEK293"
+    },
+    "hidden_rule": "int(sha256(symbol utf-8).hexdigest(), 16) % 5 == 0, on every component of every label"
+  },
+  "split_pin": {
+    "path": "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/splits_v1/T-all.json",
+    "bytes": 1319,
+    "sha256": "4b6a6b8bb5d0f86d2ac967b63968db8eb60d95dc93c107d29b115a3f498f92fe"
+  },
+  "mapping_evidence": {
+    "path": "C:/Users/ferra/vcc2026-data/external/annotation/gencode.v50.basic.annotation.gtf.gz",
+    "bytes": 79970394,
+    "sha256": "5b9ad9aa71f6ab5d55123c51f74723644a895bc0cbaa9cee8fbc11bb9dec0bf7",
+    "policy": "exact Gencode v50 gene_name, no guide or alias inference"
+  },
+  "vocabulary_genes": 77118,
+  "units": {
+    "D1_Rest": {
+      "state": "package_ready",
+      "native_labels": 12092,
+      "exact_single_genes": 11458,
+      "admission": {
+        "effect_target": 1274742,
+        "hidden_component": 320696,
+        "unresolved_target_mapping": 78839,
+        "control": 76543
+      },
+      "bank_cells": 1750820,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-d1-rest-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/D1_Rest/package"
+    },
+    "D1_Stim48hr": {
+      "state": "package_ready",
+      "native_labels": 12162,
+      "exact_single_genes": 11533,
+      "admission": {
+        "effect_target": 1198592,
+        "hidden_component": 300247,
+        "unresolved_target_mapping": 74399,
+        "control": 73534
+      },
+      "bank_cells": 1646772,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-d1-stim48hr-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/D1_Stim48hr/package"
+    },
+    "D1_Stim8hr": {
+      "state": "package_ready",
+      "native_labels": 12177,
+      "exact_single_genes": 11542,
+      "admission": {
+        "effect_target": 1170814,
+        "hidden_component": 292130,
+        "unresolved_target_mapping": 73109,
+        "control": 69632
+      },
+      "bank_cells": 1605685,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-d1-stim8hr-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/D1_Stim8hr/package"
+    },
+    "D2_Rest": {
+      "state": "package_ready",
+      "native_labels": 12063,
+      "exact_single_genes": 11443,
+      "admission": {
+        "effect_target": 1445393,
+        "hidden_component": 367649,
+        "unresolved_target_mapping": 84031,
+        "control": 83987
+      },
+      "bank_cells": 1981060,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-d2-rest-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/D2_Rest/package"
+    },
+    "D2_Stim48hr": {
+      "state": "package_ready",
+      "native_labels": 12071,
+      "exact_single_genes": 11447,
+      "admission": {
+        "effect_target": 1496912,
+        "hidden_component": 380761,
+        "unresolved_target_mapping": 85368,
+        "control": 87747
+      },
+      "bank_cells": 2050788,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-d2-stim48hr-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/D2_Stim48hr/package"
+    },
+    "D2_Stim8hr": {
+      "state": "package_ready",
+      "native_labels": 12229,
+      "exact_single_genes": 11590,
+      "admission": {
+        "effect_target": 1523410,
+        "hidden_component": 385328,
+        "unresolved_target_mapping": 89482,
+        "control": 88354
+      },
+      "bank_cells": 2086574,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-d2-stim8hr-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/D2_Stim8hr/package"
+    },
+    "D3_Rest": {
+      "state": "package_ready",
+      "native_labels": 11942,
+      "exact_single_genes": 11321,
+      "admission": {
+        "effect_target": 1386666,
+        "hidden_component": 343632,
+        "unresolved_target_mapping": 93903,
+        "control": 76823
+      },
+      "bank_cells": 1901024,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-d3-rest-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/D3_Rest/package"
+    },
+    "D3_Stim48hr": {
+      "state": "package_ready",
+      "native_labels": 11831,
+      "exact_single_genes": 11220,
+      "admission": {
+        "effect_target": 1373842,
+        "hidden_component": 344173,
+        "unresolved_target_mapping": 90200,
+        "control": 77334
+      },
+      "bank_cells": 1885549,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-d3-stim48hr-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/D3_Stim48hr/package"
+    },
+    "D3_Stim8hr": {
+      "state": "package_ready",
+      "native_labels": 12033,
+      "exact_single_genes": 11406,
+      "admission": {
+        "effect_target": 1233616,
+        "hidden_component": 305974,
+        "unresolved_target_mapping": 83259,
+        "control": 68441
+      },
+      "bank_cells": 1691290,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-d3-stim8hr-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/D3_Stim8hr/package"
+    },
+    "D4_Rest": {
+      "state": "not_in_this_revision",
+      "native_labels": 12408,
+      "exact_single_genes": 11746,
+      "admission": {
+        "effect_target": 1274005,
+        "hidden_component": 316481,
+        "unresolved_target_mapping": 80587,
+        "control": 76636
+      },
+      "bank_cells": 1747709,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davidmaisterx/dt-all-d4-rest-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/D4_Rest/package"
+    },
+    "D4_Stim48hr": {
+      "state": "not_in_this_revision",
+      "native_labels": 12415,
+      "exact_single_genes": 11756,
+      "admission": {
+        "effect_target": 1367172,
+        "hidden_component": 342401,
+        "unresolved_target_mapping": 85078,
+        "control": 83474
+      },
+      "bank_cells": 1878125,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davidmaisterx/dt-all-d4-stim48hr-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/D4_Stim48hr/package"
+    },
+    "D4_Stim8hr": {
+      "state": "not_in_this_revision",
+      "native_labels": 12457,
+      "exact_single_genes": 11792,
+      "admission": {
+        "effect_target": 1278368,
+        "hidden_component": 318281,
+        "unresolved_target_mapping": 81442,
+        "control": 77030
+      },
+      "bank_cells": 1755121,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davidmaisterx/dt-all-d4-stim8hr-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/D4_Stim8hr/package"
+    },
+    "a549_ko": {
+      "state": "not_in_this_revision",
+      "native_labels": 1001,
+      "exact_single_genes": 969,
+      "admission": {
+        "hidden_component": 116254,
+        "unresolved_target_mapping": 16853,
+        "effect_target": 427648,
+        "control": 45320
+      },
+      "bank_cells": 606075,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davidmaisterx/dt-all-a549-ko-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/a549_ko/package"
+    },
+    "datlinger2017": {
+      "state": "not_in_this_revision",
+      "native_labels": 97,
+      "exact_single_genes": 0,
+      "admission": {
+        "unresolved_target_mapping": 4585,
+        "control": 1320
+      },
+      "bank_cells": 5905,
+      "biological_strata": 2,
+      "mapping_unresolved_is_open_gap": true
+    },
+    "datlinger2021": {
+      "state": "not_in_this_revision",
+      "native_labels": 41,
+      "exact_single_genes": 0,
+      "admission": {
+        "unresolved_target_mapping": 34697,
+        "control": 4497
+      },
+      "bank_cells": 39194,
+      "biological_strata": 2,
+      "mapping_unresolved_is_open_gap": true
+    },
+    "dixit2016_d13": {
+      "state": "not_in_this_revision",
+      "native_labels": 12,
+      "exact_single_genes": 10,
+      "admission": {
+        "effect_target": 11545,
+        "hidden_component": 813,
+        "control": 3491,
+        "unassigned_or_missing_metadata": 3419
+      },
+      "bank_cells": 19268,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferante/dt-all-dixit2016-d13-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/dixit2016_d13/package"
+    },
+    "dixit2016_d7": {
+      "state": "not_in_this_revision",
+      "native_labels": 12,
+      "exact_single_genes": 10,
+      "admission": {
+        "effect_target": 21251,
+        "hidden_component": 1402,
+        "control": 5381,
+        "unassigned_or_missing_metadata": 4979
+      },
+      "bank_cells": 33013,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferante/dt-all-dixit2016-d7-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/dixit2016_d7/package"
+    },
+    "dixit2016_high_moi": {
+      "state": "not_in_this_revision",
+      "native_labels": 12,
+      "exact_single_genes": 10,
+      "admission": {
+        "effect_target": 37375,
+        "hidden_component": 2586,
+        "control": 10492,
+        "unassigned_or_missing_metadata": 1445
+      },
+      "bank_cells": 51898,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferante/dt-all-dixit2016-high-moi-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/dixit2016_high_moi/package"
+    },
+    "frangieh2021": {
+      "state": "not_in_this_revision",
+      "native_labels": 249,
+      "exact_single_genes": 241,
+      "admission": {
+        "effect_target": 130581,
+        "unresolved_target_mapping": 5392,
+        "hidden_component": 24753,
+        "control": 57605
+      },
+      "bank_cells": 218331,
+      "biological_strata": 3,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davidmaisterx/dt-all-frangieh2021-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/frangieh2021/package"
+    },
+    "h1_train": {
+      "state": "package_ready",
+      "native_labels": 151,
+      "exact_single_genes": 149,
+      "admission": {
+        "effect_target": 158345,
+        "hidden_component": 24003,
+        "control": 38176,
+        "unresolved_target_mapping": 749
+      },
+      "bank_cells": 221273,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-h1-train-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/h1_train/package"
+    },
+    "h1_val": {
+      "state": "package_ready",
+      "native_labels": 51,
+      "exact_single_genes": 50,
+      "admission": {
+        "hidden_component": 11797,
+        "effect_target": 48954,
+        "control": 38176
+      },
+      "bank_cells": 98927,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-h1-val-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/h1_val/package"
+    },
+    "hepg2_nadig": {
+      "state": "package_ready",
+      "native_labels": 2394,
+      "exact_single_genes": 2320,
+      "admission": {
+        "effect_target": 109466,
+        "unresolved_target_mapping": 3538,
+        "hidden_component": 27493,
+        "control": 4976
+      },
+      "bank_cells": 145473,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-hepg2-nadig-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/hepg2_nadig/package"
+    },
+    "hipsci_gw_fitness": {
+      "state": "not_in_this_revision",
+      "work_remains": true
+    },
+    "hipsci_gw_nonfitness": {
+      "state": "not_in_this_revision",
+      "work_remains": true
+    },
+    "hipsci_targeted_19": {
+      "state": "not_in_this_revision",
+      "native_labels": 447,
+      "exact_single_genes": 435,
+      "admission": {
+        "unassigned_or_missing_metadata": 526843,
+        "effect_target": 489588,
+        "unresolved_target_mapping": 15197,
+        "hidden_component": 121996,
+        "control": 8241
+      },
+      "bank_cells": 1161865,
+      "biological_strata": 19,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferante/dt-all-hipsci-targeted-19-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/hipsci_targeted_19/package"
+    },
+    "jurkat_nadig": {
+      "state": "package_ready",
+      "native_labels": 2394,
+      "exact_single_genes": 2320,
+      "admission": {
+        "effect_target": 195787,
+        "unresolved_target_mapping": 6913,
+        "hidden_component": 48243,
+        "control": 12013
+      },
+      "bank_cells": 262956,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-jurkat-nadig-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/jurkat_nadig/package"
+    },
+    "k562_essential": {
+      "state": "not_in_this_revision",
+      "native_labels": 2058,
+      "exact_single_genes": 1991,
+      "admission": {
+        "effect_target": 235211,
+        "unresolved_target_mapping": 8540,
+        "hidden_component": 55943,
+        "control": 10691
+      },
+      "bank_cells": 310385,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davidmaisterx/dt-all-k562-essential-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/k562_essential/package"
+    },
+    "k562_gwps_a": {
+      "state": "package_ready",
+      "native_labels": 9865,
+      "exact_single_genes": 9622,
+      "admission": {
+        "effect_target": 748212,
+        "hidden_component": 191661,
+        "unresolved_target_mapping": 22342,
+        "control": 37785
+      },
+      "bank_cells": 1000000,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-k562-gwps-a-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/k562_gwps_a/package"
+    },
+    "k562_gwps_b": {
+      "state": "package_ready",
+      "native_labels": 9867,
+      "exact_single_genes": 9624,
+      "admission": {
+        "effect_target": 741170,
+        "hidden_component": 188888,
+        "unresolved_target_mapping": 21977,
+        "control": 37543
+      },
+      "bank_cells": 989578,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-k562-gwps-b-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/k562_gwps_b/package"
+    },
+    "kolf_chromatin": {
+      "state": "package_ready",
+      "native_labels": 108,
+      "exact_single_genes": 95,
+      "admission": {
+        "unresolved_target_mapping": 4455,
+        "effect_target": 27050,
+        "hidden_component": 5373,
+        "control": 7161
+      },
+      "bank_cells": 44039,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-kolf-chromatin-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/kolf_chromatin/package"
+    },
+    "kolf_metabolic": {
+      "state": "package_ready",
+      "native_labels": 98,
+      "exact_single_genes": 97,
+      "admission": {
+        "effect_target": 76541,
+        "hidden_component": 22576,
+        "control": 18651
+      },
+      "bank_cells": 117768,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-kolf-metabolic-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/kolf_metabolic/package"
+    },
+    "kolf_pan_genome": {
+      "state": "package_ready",
+      "native_labels": 11688,
+      "exact_single_genes": 11617,
+      "admission": {
+        "effect_target": 2000771,
+        "hidden_component": 496801,
+        "unresolved_target_mapping": 14890,
+        "control": 146747
+      },
+      "bank_cells": 2659209,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-kolf-pan-genome-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/kolf_pan_genome/package"
+    },
+    "kolf_strong": {
+      "state": "package_ready",
+      "native_labels": 1656,
+      "exact_single_genes": 1641,
+      "admission": {
+        "effect_target": 157839,
+        "hidden_component": 37785,
+        "unresolved_target_mapping": 1390,
+        "control": 35424
+      },
+      "bank_cells": 232438,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-kolf-strong-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/kolf_strong/package"
+    },
+    "norman2019": {
+      "state": "not_in_this_revision",
+      "native_labels": 237,
+      "exact_single_genes": 101,
+      "admission": {
+        "effect_target": 43416,
+        "unresolved_target_mapping": 44110,
+        "hidden_component": 12064,
+        "control": 11855
+      },
+      "bank_cells": 111445,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferante/dt-all-norman2019-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/norman2019/package"
+    },
+    "orion_hct116": {
+      "state": "package_ready",
+      "native_labels": 18294,
+      "exact_single_genes": 18199,
+      "admission": {
+        "effect_target": 2580155,
+        "hidden_component": 648326,
+        "unresolved_target_mapping": 14911,
+        "control": 165777
+      },
+      "bank_cells": 3409169,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-orion-hct116-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/orion_hct116/package"
+    },
+    "orion_hek293t": {
+      "state": "package_ready",
+      "native_labels": 18312,
+      "exact_single_genes": 18217,
+      "admission": {
+        "effect_target": 3429079,
+        "hidden_component": 866761,
+        "unresolved_target_mapping": 19621,
+        "control": 218838
+      },
+      "bank_cells": 4534299,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-orion-hek293t-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/orion_hek293t/package"
+    },
+    "papalexi2021_arrayed": {
+      "state": "not_in_this_revision",
+      "native_labels": 11,
+      "exact_single_genes": 8,
+      "admission": {
+        "effect_target": 2484,
+        "hidden_component": 3533,
+        "unresolved_target_mapping": 958,
+        "control": 2009
+      },
+      "bank_cells": 8984,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davidmaisterx/dt-all-papalexi2021-arrayed-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/papalexi2021_arrayed/package"
+    },
+    "rpe1": {
+      "state": "package_ready",
+      "native_labels": 2394,
+      "exact_single_genes": 2320,
+      "admission": {
+        "effect_target": 184951,
+        "unresolved_target_mapping": 5960,
+        "hidden_component": 45518,
+        "control": 11485
+      },
+      "bank_cells": 247914,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferrante11/dt-all-rpe1-01a11c34-tj2private",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj2private/rpe1/package"
+    },
+    "shifrut2018": {
+      "state": "not_in_this_revision",
+      "native_labels": 22,
+      "exact_single_genes": 18,
+      "admission": {
+        "effect_target": 12234,
+        "unresolved_target_mapping": 1987,
+        "hidden_component": 7332,
+        "control": 3541,
+        "unassigned_or_missing_metadata": 27142
+      },
+      "bank_cells": 52236,
+      "biological_strata": 4,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferante/dt-all-shifrut2018-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/shifrut2018/package"
+    },
+    "sunshine2023": {
+      "state": "not_in_this_revision",
+      "native_labels": 24196,
+      "exact_single_genes": 172,
+      "admission": {
+        "hidden_component": 5580,
+        "unresolved_target_mapping": 40225,
+        "effect_target": 24648,
+        "control": 3536,
+        "unassigned_or_missing_metadata": 16391
+      },
+      "bank_cells": 90380,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davidmaisterx/dt-all-sunshine2023-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/sunshine2023/package"
+    },
+    "tian2019_ipsc": {
+      "state": "not_in_this_revision",
+      "native_labels": 39162,
+      "exact_single_genes": 24,
+      "admission": {
+        "unresolved_target_mapping": 135331,
+        "effect_target": 117948,
+        "empty_bank_row": 0,
+        "hidden_component": 7543,
+        "control": 10401
+      },
+      "bank_cells": 271223,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferante/dt-all-tian2019-ipsc-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/tian2019_ipsc/package"
+    },
+    "tian2019_neuron": {
+      "state": "not_in_this_revision",
+      "native_labels": 41358,
+      "exact_single_genes": 24,
+      "admission": {
+        "unresolved_target_mapping": 97120,
+        "effect_target": 59004,
+        "empty_bank_row": 0,
+        "hidden_component": 7967,
+        "control": 15083
+      },
+      "bank_cells": 179174,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferante/dt-all-tian2019-neuron-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/tian2019_neuron/package"
+    },
+    "tian2021_crispra": {
+      "state": "not_in_this_revision",
+      "native_labels": 101,
+      "exact_single_genes": 97,
+      "admission": {
+        "effect_target": 13489,
+        "unresolved_target_mapping": 544,
+        "hidden_component": 6726,
+        "control": 434
+      },
+      "bank_cells": 21193,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferante/dt-all-tian2021-crispra-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/tian2021_crispra/package"
+    },
+    "tian2021_crispri": {
+      "state": "not_in_this_revision",
+      "native_labels": 185,
+      "exact_single_genes": 176,
+      "admission": {
+        "hidden_component": 5944,
+        "effect_target": 24674,
+        "unresolved_target_mapping": 1245,
+        "control": 437
+      },
+      "bank_cells": 32300,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferante/dt-all-tian2021-crispri-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/tian2021_crispri/package"
+    },
+    "xu2023": {
+      "state": "not_in_this_revision",
+      "native_labels": 204,
+      "exact_single_genes": 203,
+      "admission": {
+        "hidden_component": 19267,
+        "effect_target": 76290,
+        "control": 2758
+      },
+      "bank_cells": 98315,
+      "biological_strata": 1,
+      "mapping_unresolved_is_open_gap": true,
+      "slug": "davideferante/dt-all-xu2023-01a11c34-tj1",
+      "package": "reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/xu2023/package"
+    }
+  },
+  "claims_complete_corpus": false,
+  "started_jobs": 0,
+  "parent_inventory": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/alltargets/01a11c34-tj1/inventory.json",
+    "bytes": 28215,
+    "sha256": "7a6d21cef6c464aaca7aba09626608c6fe43812e3ede4d9e02505b8bf7ab5a29"
+  },
+  "consumer": {
+    "fold_bank.py": {
+      "bytes": 11021,
+      "sha256": "6bd79bd9169635383ceff394d7156310e39b4f97bdc7ed97bdd3861c6c30945e"
+    },
+    "alltarget_runtime.py": {
+      "bytes": 4873,
+      "sha256": "625429adaca9cb6c4530a39c3623bfe6e53ddde0992ba6bb303e0e7e0842f9f6"
+    },
+    "estimator.py": {
+      "bytes": 11897,
+      "sha256": "63e29813b955e42319e0a11e79311429d566a68f35132dd5b850e2e63185334d"
+    }
+  }
+}
