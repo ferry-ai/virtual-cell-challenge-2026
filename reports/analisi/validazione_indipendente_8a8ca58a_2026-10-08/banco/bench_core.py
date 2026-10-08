@@ -20,12 +20,12 @@ REPORTED = (*M.MEASURES, 'disc95')
 CSV_HEADER = ['fold', 'truth', 'arm', 'target', 'truth_cells', *REPORTED, 'n_valid', 'n_conf']
 
 
-def derived_controls(labels: dict, n: int) -> dict:
+def derived_controls(labels: dict, n: int, shuffled=('T0', 'T1')) -> dict:
     """The controls that need no stage-100 run: other targets' predictions, the arm's mean for every target,
     and no prediction at all."""
     perm = M.shuffled_rows(n)
     out = dict(labels)
-    for base in ('T0', 'T1'):
+    for base in dict.fromkeys(shuffled):
         lfc, obs = labels[base]
         out[base + '~shuffle'] = (lfc[perm], obs[perm])
     lfc, obs = labels['T0']
@@ -58,8 +58,10 @@ def measure(folds: dict, arms: list, effects: dict, load_truth, panel: list, axi
     for fid, fold in folds.items():
         results[fid] = {'lineage': fold['lineage'], 'truth': {}}
         present = [a for a in extra_arms if (a, fid) in effects]
+        # an extra contrast may ask the shuffle control of its own arm ("ARM~shuffle"): same permutation
+        asked = [second[:-len('~shuffle')] for _, _, second in plan if second.endswith('~shuffle')]
         labels = derived_controls({a: effects[(a, fid)] for a in [*arms, *present, 'T0~gamma0', 'T0~nocis']},
-                                  len(panel))
+                                  len(panel), [b for b in dict.fromkeys(asked) if b in arms or b in present])
         for truth_spec in fold['truth']:
             tname = truth_spec['table']
             table = load_truth(tname)

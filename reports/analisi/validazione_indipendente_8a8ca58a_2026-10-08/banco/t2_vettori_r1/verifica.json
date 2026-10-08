@@ -1,0 +1,188 @@
+{
+ "utc": "2026-10-08T19:34:46.145992+00:00",
+ "delivery": {
+  "bytes": 17052,
+  "sha256": "5cb886a2f705e58e1b9a4fb1e979009dc36e1b8a4a9e5b6301764bc2594c4b11",
+  "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/common_release_production_r1.json"
+ },
+ "owner_of_the_vectors": "DATI-TRANSFER, session 01a11c34",
+ "regime": "production",
+ "policy": "one equal-target masked mean per T1 source; CD4 first mixes conditions per target; no panel fallback",
+ "files": {
+  "common": {
+   "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/common_sets/production_r1/common.npz",
+   "declared": {
+    "bytes": 1607332,
+    "sha256": "80103235addf13685397bb29bb06fd5851ef7e4a7920cc04570029bf2eac8b02"
+   },
+   "read": {
+    "bytes": 1607332,
+    "sha256": "80103235addf13685397bb29bb06fd5851ef7e4a7920cc04570029bf2eac8b02"
+   },
+   "equal": true
+  },
+  "support": {
+   "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/common_sets/production_r1/support.npz",
+   "declared": {
+    "bytes": 268729,
+    "sha256": "7481c9e0abebe707284a797f51c43fef4f3ec5ceb53351f63e828ca250b3ec89"
+   },
+   "read": {
+    "bytes": 268729,
+    "sha256": "7481c9e0abebe707284a797f51c43fef4f3ec5ceb53351f63e828ca250b3ec89"
+   },
+   "equal": true
+  }
+ },
+ "sources": {
+  "cd4_mix": {
+   "targets_behind_max": 11593,
+   "targets_behind_median_on_supported": 11593.0,
+   "targets_behind_min_on_supported": 8791,
+   "genes_supported": 11145,
+   "genes_without_support": 7388,
+   "norm": 4.921845631366316,
+   "own_effect_removed_at_most": 8.625894936599672e-05
+  },
+  "h1": {
+   "targets_behind_max": 199,
+   "targets_behind_median_on_supported": 199.0,
+   "targets_behind_min_on_supported": 199,
+   "genes_supported": 12708,
+   "genes_without_support": 5825,
+   "norm": 2.9947347753657003,
+   "own_effect_removed_at_most": 0.005025125628140704
+  },
+  "hepg2_nadig": {
+   "targets_behind_max": 2274,
+   "targets_behind_median_on_supported": 2274.0,
+   "targets_behind_min_on_supported": 1536,
+   "genes_supported": 9023,
+   "genes_without_support": 9510,
+   "norm": 5.82359035546328,
+   "own_effect_removed_at_most": 0.00043975373790677223
+  },
+  "hipsci_targeted_19": {
+   "targets_behind_max": 435,
+   "targets_behind_median_on_supported": 435.0,
+   "targets_behind_min_on_supported": 423,
+   "genes_supported": 13073,
+   "genes_without_support": 5460,
+   "norm": 1.5331009427653788,
+   "own_effect_removed_at_most": 0.0022988505747126436
+  },
+  "jurkat_nadig": {
+   "targets_behind_max": 2280,
+   "targets_behind_median_on_supported": 2280.0,
+   "targets_behind_min_on_supported": 2250,
+   "genes_supported": 8283,
+   "genes_without_support": 10250,
+   "norm": 2.866808468604382,
+   "own_effect_removed_at_most": 0.0004385964912280702
+  },
+  "k562": {
+   "targets_behind_max": 9866,
+   "targets_behind_median_on_supported": 9866.0,
+   "targets_behind_min_on_supported": 9866,
+   "genes_supported": 7681,
+   "genes_without_support": 10852,
+   "norm": 0.655732756685762,
+   "own_effect_removed_at_most": 0.00010135819987837016
+  },
+  "k562_essential": {
+   "targets_behind_max": 1983,
+   "targets_behind_median_on_supported": 1983.0,
+   "targets_behind_min_on_supported": 1956,
+   "genes_supported": 7938,
+   "genes_without_support": 10595,
+   "norm": 2.666744548831244,
+   "own_effect_removed_at_most": 0.0005042864346949068
+  },
+  "kolf_chromatin": {
+   "targets_behind_max": 95,
+   "targets_behind_median_on_supported": 95.0,
+   "targets_behind_min_on_supported": 93,
+   "genes_supported": 13916,
+   "genes_without_support": 4617,
+   "norm": 1.8602583040171283,
+   "own_effect_removed_at_most": 0.010526315789473684
+  },
+  "kolf_metabolic": {
+   "targets_behind_max": 97,
+   "targets_behind_median_on_supported": 97.0,
+   "targets_behind_min_on_supported": 96,
+   "genes_supported": 13727,
+   "genes_without_support": 4806,
+   "norm": 1.601740320891382,
+   "own_effect_removed_at_most": 0.010309278350515464
+  },
+  "kolf_pan_genome": {
+   "targets_behind_max": 11498,
+   "targets_behind_median_on_supported": 11496.0,
+   "targets_behind_min_on_supported": 5249,
+   "genes_supported": 13497,
+   "genes_without_support": 5036,
+   "norm": 3.6111262860722655,
+   "own_effect_removed_at_most": 8.697164724299878e-05
+  },
+  "kolf_strong": {
+   "targets_behind_max": 1641,
+   "targets_behind_median_on_supported": 1641.0,
+   "targets_behind_min_on_supported": 133,
+   "genes_supported": 13489,
+   "genes_without_support": 5044,
+   "norm": 5.621134631959961,
+   "own_effect_removed_at_most": 0.0006093845216331506
+  },
+  "orion_hct116": {
+   "targets_behind_max": 17963,
+   "targets_behind_median_on_supported": 17963.0,
+   "targets_behind_min_on_supported": 14813,
+   "genes_supported": 11890,
+   "genes_without_support": 6643,
+   "norm": 1.3158706710605947,
+   "own_effect_removed_at_most": 5.566998830930246e-05
+  },
+  "orion_hek293t": {
+   "targets_behind_max": 18080,
+   "targets_behind_median_on_supported": 18080.0,
+   "targets_behind_min_on_supported": 16766,
+   "genes_supported": 12733,
+   "genes_without_support": 5800,
+   "norm": 0.9135038414174578,
+   "own_effect_removed_at_most": 5.5309734513274336e-05
+  },
+  "rpe1": {
+   "targets_behind_max": 2282,
+   "targets_behind_median_on_supported": 2282.0,
+   "targets_behind_min_on_supported": 2186,
+   "genes_supported": 8259,
+   "genes_without_support": 10274,
+   "norm": 10.036273976748612,
+   "own_effect_removed_at_most": 0.00043821209465381246
+  },
+  "tian2021_crispri": {
+   "targets_behind_max": 176,
+   "targets_behind_median_on_supported": 176.0,
+   "targets_behind_min_on_supported": 173,
+   "genes_supported": 11979,
+   "genes_without_support": 6554,
+   "norm": 5.7226186958129315,
+   "own_effect_removed_at_most": 0.005681818181818182
+  },
+  "xu2023": {
+   "targets_behind_max": 200,
+   "targets_behind_median_on_supported": 198.0,
+   "targets_behind_min_on_supported": 74,
+   "genes_supported": 13084,
+   "genes_without_support": 5449,
+   "norm": 5.981702414869906,
+   "own_effect_removed_at_most": 0.005
+  }
+ },
+ "minimum_targets": 20,
+ "below_minimum": [],
+ "problems": [],
+ "usable": true,
+ "note": "support is per gene; the per-source check against the genes each table votes runs in the kernel, where the tables are"
+}

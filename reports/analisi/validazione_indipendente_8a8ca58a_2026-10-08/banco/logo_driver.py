@@ -420,6 +420,25 @@ def main():
 
     tables = {name: _load_table(path) for name, (path, _) in resolved.items()}
     tables.update({name: _load_table(path) for name, path in parts.items()})
+    # a frozen common vector must be estimated wherever its source votes: a missing mean is not a measured zero
+    support_check = {}
+    for arm, spec in analysis.items():
+        pin = spec.get('common_support')
+        if not pin:
+            continue
+        with np.load(_by_content(pin, arm + ':common_support'), allow_pickle=False) as z:
+            if [str(g) for g in z['genes']] != axis:
+                _fail('blocked_common_support_axis', arm=arm)
+            for source in spec['sources']:
+                voted = np.isfinite(tables[source]['shrunk']).any(axis=0)
+                behind = np.asarray(z[source])
+                support_check['%s/%s' % (arm, source)] = {
+                    'genes_voted': int(voted.sum()), 'genes_voted_without_support': int((voted & (behind == 0)).sum()),
+                    'targets_behind_min_on_voted': int(behind[voted].min()) if voted.any() else None,
+                    'targets_behind_max': int(behind.max())}
+    _write(WORKING / 'common_support.json', support_check)
+    if any(v['genes_voted_without_support'] for v in support_check.values()):
+        _fail('blocked_common_support', check=support_check)
     # external arms: effects another assignment delivered per fold, found by pinned size and sha256
     external = params.get('external_arms') or {}
     external_read = {}

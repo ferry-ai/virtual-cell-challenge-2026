@@ -1,0 +1,116 @@
+{
+ "what": "K2 (VALUTAZIONE_T2.md): T2 is the T1 release with the frozen all-target common vector of each source (DATI-TRANSFER, common_release_production_r1.json), on the six C folds; gamma-0 parity arms; shuffle control of T2",
+ "analysis_arms": {
+  "T2": {
+   "sources": [
+    "cd4_mix",
+    "h1",
+    "hepg2_nadig",
+    "hipsci_targeted_19",
+    "jurkat_nadig",
+    "k562",
+    "k562_essential",
+    "kolf_chromatin",
+    "kolf_metabolic",
+    "kolf_pan_genome",
+    "kolf_strong",
+    "orion_hct116",
+    "orion_hek293t",
+    "rpe1",
+    "tian2021_crispri",
+    "xu2023"
+   ],
+   "recipe": {
+    "common": "processed/validazione_indipendente_8a8ca58a_2026-10-08/t2_vettori_r1/common.npz"
+   },
+   "data_files": {
+    "processed/validazione_indipendente_8a8ca58a_2026-10-08/t2_vettori_r1/common.npz": {
+     "bytes": 1607332,
+     "sha256": "80103235addf13685397bb29bb06fd5851ef7e4a7920cc04570029bf2eac8b02"
+    }
+   },
+   "common_support": {
+    "bytes": 268729,
+    "sha256": "7481c9e0abebe707284a797f51c43fef4f3ec5ceb53351f63e828ca250b3ec89"
+   }
+  },
+  "T1g0": {
+   "sources": [
+    "cd4_mix",
+    "h1",
+    "hepg2_nadig",
+    "hipsci_targeted_19",
+    "jurkat_nadig",
+    "k562",
+    "k562_essential",
+    "kolf_chromatin",
+    "kolf_metabolic",
+    "kolf_pan_genome",
+    "kolf_strong",
+    "orion_hct116",
+    "orion_hek293t",
+    "rpe1",
+    "tian2021_crispri",
+    "xu2023"
+   ],
+   "recipe": {
+    "gamma": 0.0
+   }
+  },
+  "T2g0": {
+   "sources": [
+    "cd4_mix",
+    "h1",
+    "hepg2_nadig",
+    "hipsci_targeted_19",
+    "jurkat_nadig",
+    "k562",
+    "k562_essential",
+    "kolf_chromatin",
+    "kolf_metabolic",
+    "kolf_pan_genome",
+    "kolf_strong",
+    "orion_hct116",
+    "orion_hek293t",
+    "rpe1",
+    "tian2021_crispri",
+    "xu2023"
+   ],
+   "recipe": {
+    "common": "processed/validazione_indipendente_8a8ca58a_2026-10-08/t2_vettori_r1/common.npz",
+    "gamma": 0.0
+   },
+   "data_files": {
+    "processed/validazione_indipendente_8a8ca58a_2026-10-08/t2_vettori_r1/common.npz": {
+     "bytes": 1607332,
+     "sha256": "80103235addf13685397bb29bb06fd5851ef7e4a7920cc04570029bf2eac8b02"
+    }
+   }
+  }
+ },
+ "contrasts": [
+  [
+   "K2",
+   "T2",
+   "T1"
+  ],
+  [
+   "K2t0",
+   "T2",
+   "T0"
+  ],
+  [
+   "c_parity_g0",
+   "T2g0",
+   "T1g0"
+  ],
+  [
+   "c_shuffle_T2",
+   "T2",
+   "T2~shuffle"
+  ]
+ ],
+ "extra_dataset_sources": [
+  "davideferrante11/vcc-validazione-t2-vettori-8a8ca58a-r1"
+ ]
+}
