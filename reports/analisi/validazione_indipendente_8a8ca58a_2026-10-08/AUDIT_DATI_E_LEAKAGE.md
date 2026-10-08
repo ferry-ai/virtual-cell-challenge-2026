@@ -147,3 +147,7 @@ media di un'altra popolazione di perturbazioni, e lascia negli effetti una riga 
 due secondarie peggiorano di poco. Criterio di accettazione per un fit finale di T2: effetti di produzione con
 sha256 `d496a38d…0ab2`, e una dichiarazione, prima dei numeri, di quale popolazione di bersagli definisce la
 risposta comune.
+
+**Aggiunta delle 23:37.** Il criterio di accettazione di DT-4 sull'identità è soddisfatto: gli effetti di produzione
+di T2 consegnati alle 22:10 hanno sha256 `d496a38d…0ab2` su tutti e tre i file, riletti da questa sessione. Resta aperta la
+parte di disegno: quale popolazione di bersagli definisce la risposta comune.

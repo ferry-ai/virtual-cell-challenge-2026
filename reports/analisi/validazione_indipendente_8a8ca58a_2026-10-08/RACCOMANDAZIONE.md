@@ -115,3 +115,12 @@ Il testo sopra è quello emesso alle 21:01 e non è stato ritoccato. **La raccom
   Sei membri sul fold iPSC: +0,0023 ± 0,0125, non risolto. Il fold K562 è in corsa. **Per la regola T2 non è
   promosso; il candidato del freeze resta t36.** Finora nessuna misura è a favore di T2: per la decisione ancora
   aperta sul suo fit finale, che spetta al proprietario, conviene attendere il fold K562.
+- **23:37, correzione di ciò che ho scritto su T2 dopo le 22:12.** Il via del proprietario al fit finale è delle
+  21:51 (chat lead, trascritto in `final_t2/authorization_r1.json` di DATI-TRANSFER) e gli **effetti di produzione
+  di T2 sono stati consegnati alle 22:10** (`candidate_t2_r1.json`, `CONSEGNA_T2_r1.md`). Le righe qui sopra delle
+  21:27 e delle 22:34, dove dico che non esistono e che il consenso è in attesa, erano superate quando le ho
+  scritte: avevo letto quella cartella alle 21:27 e non l'ho riletta fino alle 23:28. **Che cosa cambia:** T2 è un
+  candidato di effetti consegnato, e i suoi tre file hanno lo sha256 `d496a38d…0ab2` che il banco ottiene eseguendo la stessa
+  ricetta in produzione (riletto da me alle 23:30): ciò che ho valutato sui fold è lo stimatore esportato.
+  **Che cosa non cambia:** alla scadenza l'esito era inconcludente per regola (un solo fold a sei membri), nessuna
+  misura è a favore, e la raccomandazione per il freeze resta t36.

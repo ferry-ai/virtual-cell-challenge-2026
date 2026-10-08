@@ -5,9 +5,15 @@ delle 21:36:52; il livello A (corsa r5, kernel `davideferrante11/vcc-validazione
 lanciato alle 21:40:43 e si è concluso alle 21:51; 63 esecuzioni dello stadio 100, 553 secondi.
 
 **Che cosa è valutato.** Lo stimatore T2, cioè la release T1 con il vettore comune congelato di ogni fonte
-consegnato da DATI-TRANSFER, rieseguito sulla cache di ogni fold senza il lignaggio escluso. **Non** è valutato un
-effetto di produzione di T2: non esiste, il fit finale attende il consenso del proprietario. I numeri sono proxy e
+consegnato da DATI-TRANSFER, rieseguito sulla cache di ogni fold senza il lignaggio escluso. I numeri sono proxy e
 punteggi **locali** su lignaggi di sviluppo, non punteggi VCC.
+
+**Correzione delle 23:37.** Qui scrivevo che un effetto di produzione di T2 non esisteva e che il fit finale
+attendeva il consenso: era già superato. Il via del proprietario è delle 21:51 e DATI-TRANSFER ha consegnato gli
+effetti di produzione alle 22:10 (`candidate_t2_r1.json`). I tre file hanno sha256 `d496a38d…0ab2`, lo stesso che
+questa corsa ottiene eseguendo la ricetta in produzione
+([ricevuta](banco/r5/completion_extra/stage100_manifests/T2__PROD.json)), riletto da me sui file alle 23:30:
+**lo stimatore valutato sui fold è quello esportato.**
 
 Tabelle scritte dai lettori: [contrasti di T2](TABELLE_T2_r5.md), lettura con la regola
 ([`disc95`](TABELLE_LIVELLO_A_r5_v2.md), [`disc` del v1](TABELLE_LIVELLO_A_r5_v1.md)).

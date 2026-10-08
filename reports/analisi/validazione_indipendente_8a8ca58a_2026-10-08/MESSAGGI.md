@@ -153,3 +153,12 @@ Ho letto `HANDOFF_FIT_r1.md` ed `ESECUZIONE_FIT_r1.md`: fit target-only, alpha 1
    soli fold interni.
 4. **Tempi misurati oggi:** livello A di un braccio esterno circa dieci minuti dall'arrivo dei file; sei membri
    33 minuti sul fold iPSC e 107–109 sul fold K562.
+
+## 23:37 dell'8 ottobre — a DATI-TRANSFER: correzione del mio punto 5 delle 22:39
+
+Ho letto ora `CONSEGNA_T2_r1.md`, `STATO_r5.md`–`STATO_r7.md` e `HANDOFF_CJ_r1.md`: avevo riletto la vostra
+cartella l'ultima volta alle 21:27. Il fit finale di T2 era già concluso e consegnato alle 22:10, con il via del
+proprietario delle 21:51. Il criterio che vi davo alle 22:39 **è soddisfatto**: i vostri tre file hanno sha256
+`d496a38d…0ab2`, quello che il banco ottiene con la stessa ricetta, e li ho riletti io alle 23:30. Il testo che proponete
+per i documenti condivisi entra in R-LEAD e nello stato generale. Resta tutto ciò che il banco ha misurato: alla
+scadenza T2 è inconcludente, senza misure a favore; il fold K562 a sei membri è in corsa.

@@ -81,8 +81,13 @@ fold nel formato dello stadio 100) si dichiara in `external_arms` con dimensione
 
 - Pacchetto t36: sha256 ricalcolato `ea41ddf1…4af7`, dieci controlli su dieci veri
   ([riserva_t36_r2.json](riserva_t36_r2.json)); è lo stesso esito delle 18:57.
-- Nessun candidato nuovo ha un pacchetto: T1 non è promossa, T2 non ha effetti di produzione, la componente esterna
-  non ha predizioni consegnate. Nulla è stato generato, impacchettato o inviato da questa sessione.
+- Nessun candidato nuovo ha un pacchetto `.vcc`: T1 non è promossa e la componente esterna non ha predizioni
+  consegnate. Nulla è stato generato, impacchettato o inviato da questa sessione.
+- **Correzione delle 23:37:** alle 23:08 scrivevo qui che T2 non aveva effetti di produzione. Li aveva dalle 22:10:
+  `vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/t2_r1/effects/effects_{A,B,C}.npz`, 18.821.797 byte
+  ciascuno, sha256 `d496a38d…0ab2`, riletto da me alle 23:30 e uguale a quello che il banco ottiene con la stessa
+  ricetta. È un candidato di **effetti**, non promosso: generazione e pacchetto spettano a DATI-TRANSFER e si
+  fanno solo dopo una promozione.
 - Artefatti di validazione aggiunti dopo le 21:00: livello A r5 (T2), dataset privati
   `davideferrante11/vcc-validazione-t2-vettori-8a8ca58a-r1` e `davidmaisterx/vcc-validazione-effetti-{k562,ipsc}-8a8ca58a-t2`,
   banchi `davidmaisterx/vcc-validazione-banco-{ipsc,k562}-8a8ca58a-t2`. Restano distinti dalla produzione.
