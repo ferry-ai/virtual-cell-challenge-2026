@@ -55,6 +55,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 
 | Percorso | Stato | Sostituito da | Cosa resta utile / nota | Scheda |
 |---|---|---|---|---|
+| `reports/analisi/lead_piano_2026-10-08/` | attuale | — | Decisioni lead per dati, scadenza 9/10 ore 02:00 e modelli esterni; riconto dei metadati della banca e audit della chat Claude, catalogo PIE e fonti primarie. Pianificazione, nessun nuovo training/score o verifica cloud attuale | [R-LEAD](piani/strategia-scientifica.md) |
 | `reports/analisi/riconciliazione_banca_2026-10-05/` | attuale | — | Verifica metadata, versioni/hash/mount, ledger storico recuperato, byte Git e limiti del consumo; nessuna certificazione di corpus completo | [R-LEAD](piani/strategia-scientifica.md) |
 | `docs/storico/consolidamento_banca_2026-10-05/` | storico | `docs/piani/strategia-scientifica.md` | Quattro guide complete e byte-identiche prima del consolidamento; manifest dei file originali | — |
 | `reports/modelli/percorso_riusabile_2026-10-05/DATI_DISPONIBILI_r2.md` | da-verificare | — | Dimensioni datate utili; note su training non avviato superate, GB storage non uso del fit | [R-024](#r-024--identità-della-banca-ledger-congelati-e-stato-del-rifit) |

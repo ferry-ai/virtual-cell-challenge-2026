@@ -8,6 +8,7 @@ Invecchiano in fretta: prima di seguirne un «prossimo passo», controllare
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 08/10 | [lead_piano_2026-10-08/](lead_piano_2026-10-08/) | Piano lead fino alle 02:00 del 9/10, audit della chat Claude e riconto della banca; copertura D-053, contrasto della centratura e PIE congelato come primo confronto esterno | riconto metadata e scelte di pianificazione; nessun nuovo training o score | ★★★ |
 | 05/10 | [riconciliazione_banca_2026-10-05/](riconciliazione_banca_2026-10-05/) | Identità e copertura storage/fit, ledger storico congelato e byte Git corretti; K562 originale verificato e riuso preparato | verifiche tecniche; corpus e upload ancora aperti | ★★★ |
 | 05/10 | [pezzi_adottabili_2026-10-05/](pezzi_adottabili_2026-10-05/) | Catalogo dei pezzi copiabili letti il 5/10: AMMI senza effetto principale di contesto, STAR, PLE con l'arXiv corretto, HorNet, una GRN dai controlli, prodotto di Hadamard e FiLM senza termine additivo; rapporti Antigravity integrali | proposta; nessun innesto, training o score | ★★★ |
 | 04/10 | [gears_nella_rete_2026-10-04/](gears_nella_rete_2026-10-04/) | GEARS letto a commit fisso, limite cross-contesto e gradiente direzionale verificati; innesto originale a grafo condizionato dal contesto nella CellNet D-056, sette fixture | studio e prototipo tecnico; nessun grafo reale o nuovo training, utilità da misurare | ★★★ |

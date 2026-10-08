@@ -1,0 +1,117 @@
+......EE..............................................................F...........................................................................................C:\Program Files\Python312\Lib\functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+.C:\Program Files\Python312\Lib\functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+.C:\Program Files\Python312\Lib\functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+.C:\Program Files\Python312\Lib\functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+..........................C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\multisource.py:443: RuntimeWarning: Mean of empty slice
+  Pc = P - np.nanmean(np.where(valid, P, np.nan), axis=0)
+C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\multisource.py:444: RuntimeWarning: Mean of empty slice
+  Oc = O - np.nanmean(np.where(valid, O, np.nan), axis=0)
+C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\multisource.py:443: RuntimeWarning: Mean of empty slice
+  Pc = P - np.nanmean(np.where(valid, P, np.nan), axis=0)
+C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\multisource.py:444: RuntimeWarning: Mean of empty slice
+  Oc = O - np.nanmean(np.where(valid, O, np.nan), axis=0)
+...........C:\Program Files\Python312\Lib\importlib\metadata\__init__.py:467: DeprecationWarning: Implicit None on return values is deprecated and will raise KeyErrors.
+  return self.metadata['Version']
+............................E...........................................................
+======================================================================
+ERROR: test_g0_arms_are_scored_once_per_generator_seed (test_bench_generator.TestStage73Smoke.test_g0_arms_are_scored_once_per_generator_seed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\tests\test_bench_generator.py", line 329, in test_g0_arms_are_scored_once_per_generator_seed
+    run_stage73(self.stage, ["--k562", str(k562), "--out", str(out), "--control-cells", "30",
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\tests\test_bench_generator.py", line 305, in run_stage73
+    module.main()
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\scripts\73_bench_k562_panel.py", line 172, in main
+    bench = Bench(x, {t: np.flatnonzero(sym == t) for t in targets}, ctrl_rows, genes, args.out, seed=args.seed)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\bench.py", line 170, in __init__
+    cfg = scorer_config()
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\de_tools.py", line 56, in scorer_config
+    return load_eval_config("vcc2026")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\de_tools.py", line 39, in load_eval_config
+    from cell_eval2.config import EvalConfig
+ModuleNotFoundError: No module named 'cell_eval2.config'
+
+======================================================================
+ERROR: test_without_the_new_flags_the_old_stage_is_reproduced (test_bench_generator.TestStage73Smoke.test_without_the_new_flags_the_old_stage_is_reproduced)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\tests\test_bench_generator.py", line 355, in test_without_the_new_flags_the_old_stage_is_reproduced
+    run_stage73(before, ["--k562", str(k562), "--out", str(Path(d) / "old"), *argv])
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\tests\test_bench_generator.py", line 305, in run_stage73
+    module.main()
+  File "C:\Users\ferra\AppData\Local\Temp\tmp9g22y5ky\old73.py", line 111, in main
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\bench.py", line 170, in __init__
+    cfg = scorer_config()
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\de_tools.py", line 56, in scorer_config
+    return load_eval_config("vcc2026")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\de_tools.py", line 39, in load_eval_config
+    from cell_eval2.config import EvalConfig
+ModuleNotFoundError: No module named 'cell_eval2.config'
+
+======================================================================
+ERROR: test_components_reproduce_the_scored_fidelity (test_sc_pipeline.BenchComponentTests.test_components_reproduce_the_scored_fidelity)
+k / max(n_pred, n_conf) from `direction_components` IS the fidelity the scorer reports.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\tests\test_sc_pipeline.py", line 281, in test_components_reproduce_the_scored_fidelity
+    bench = Bench(x, target_rows, ctrl_rows, genes, Path(tmp), seed=3)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\bench.py", line 170, in __init__
+    cfg = scorer_config()
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\de_tools.py", line 56, in scorer_config
+    return load_eval_config("vcc2026")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\de_tools.py", line 39, in load_eval_config
+    from cell_eval2.config import EvalConfig
+ModuleNotFoundError: No module named 'cell_eval2.config'
+
+======================================================================
+FAIL: test_reports_are_filed_by_category_and_each_folder_is_indexed_once (test_live_tree.TestFolderMaps.test_reports_are_filed_by_category_and_each_folder_is_indexed_once) (category='analisi/')
+D-046: reports/<categoria>/<tema>_<data>/, and a README per category that lists it.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\tests\test_live_tree.py", line 290, in test_reports_are_filed_by_category_and_each_folder_is_indexed_once
+    self.assertEqual(sorted(set(listed) - entries), [], f"{readme} names what is not there")
+AssertionError: Lists differ: ['lead_piano_2026-10-08/'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'lead_piano_2026-10-08/'
+
+- ['lead_piano_2026-10-08/']
++ [] : reports/analisi/README.md names what is not there
+
+----------------------------------------------------------------------
+Ran 290 tests in 331.825s
+
+FAILED (failures=1, errors=3)
+Wrote 1200 target/control records across 3 frozen splits
+Wrote 1200 target/control records across 6 frozen splits
+Wrote 1200 target/control records across 6 frozen splits
+Wrote 1200 target/control records across 6 frozen splits
+Wrote 1200 target/control records across 3 frozen splits
+  dispersion A: 2 genes overdispersed, median phi 1.200
+  dispersion A: 2 genes overdispersed, median phi 0.600
+  dispersion A: 0 genes overdispersed, median phi 0.000
+-> C:\Users\ferra\AppData\Local\Temp\tmp1f4_n1sx\0002-ok-slug.md
+Fill the eight sections. Every observed number needs an evidence path.
+Corrections to earlier checkpoints go in section 7, never by editing them.
+-> C:\Users\ferra\AppData\Local\Temp\tmpbyb6v6cq\0002-benchmark-cd4.md
+Fill the eight sections. Every observed number needs an evidence path.
+Corrections to earlier checkpoints go in section 7, never by editing them.
+-> C:\Users\ferra\AppData\Local\Temp\tmpl_lz668t\docs\checkpoints\0003-nuovo.md
+Fill the eight sections. Every observed number needs an evidence path.
+Corrections to earlier checkpoints go in section 7, never by editing them.
+-> C:\Users\ferra\AppData\Local\Temp\tmpbt6wv336\0003-benchmark-cd4.md
+Fill the eight sections. Every observed number needs an evidence path.
+Corrections to earlier checkpoints go in section 7, never by editing them.

@@ -1,0 +1,483 @@
+{
+  "utc": "2026-10-08T15:17:08.050794+00:00",
+  "inputs": {
+    "registry": {
+      "path": "reports/modelli/banca_canonica_2026-10-07/registro_fonti_r1.json",
+      "bytes": 143233,
+      "sha256": "107ab6088479eda7179f795f90106a66061999000eee4b4cf8347e1700496195"
+    },
+    "consumption": {
+      "path": "reports/modelli/banca_canonica_2026-10-07/fit/r1/completion/consumo.json",
+      "bytes": 77392,
+      "sha256": "385347bb4ed086212ac809281f5ab5df095762940557f3ab60d20fb08437ab88"
+    },
+    "release": {
+      "path": "reports/modelli/banca_canonica_2026-10-07/fit/release_r1.json",
+      "bytes": 25278,
+      "sha256": "0650d1d610e05b5cb5fea3c3695dff67bec14443c9df2708121f84e8f8771c8c"
+    },
+    "t36": {
+      "path": "reports/invii/prediction_t36_2026-10-06/comparison.json",
+      "bytes": 3341,
+      "sha256": "60d5129bf365952f315afa67ebf2738cf65fa50db9b1879fc913e4449605f701"
+    },
+    "stage100": {
+      "path": "scripts/100_build_context_effects.py",
+      "bytes": 35311,
+      "sha256": "d1dbefca867327864b58335c40342e3ce8779a389e8cd721bfc121dc2b5a446c"
+    },
+    "registry_code": {
+      "path": "reports/modelli/banca_canonica_2026-10-07/registro.py",
+      "bytes": 19768,
+      "sha256": "dd0bdb63be43a096ec059030166548199ad82cc16e6378a7e2db4243d4f4216d"
+    }
+  },
+  "claim_type": "Recount of stored metadata; no raw-data, live-cloud, training or predictive verification",
+  "checks": {
+    "bank_total_reconciled": true,
+    "represented_reconciled": true,
+    "expected_verified_read_equal": true,
+    "release_hash_matches": true,
+    "no_unexplained_target_changes": true,
+    "not_claimed_complete": true
+  },
+  "bank": {
+    "units": 45,
+    "rows_in_cell_counts": 39973948,
+    "known_shared_h1_controls": 38176,
+    "after_known_h1_dedup_only": 39935772,
+    "voted_units": 28,
+    "not_voted_units": 17,
+    "cells_in_not_voted_units": 4237927,
+    "not_voted_pct_including_duplicate_k562": 10.601722401800293,
+    "represented_controls_plus_panel": 2367170,
+    "represented_pct_of_recorded_bank": 5.921781856523154,
+    "off_panel_cells_in_voted_units": 32803832,
+    "representation_note": "Estimated from bank row metadata, not individual cells read by stage 100; excludes historical K562 BULK and includes controls of zero-panel tables.",
+    "sample_gb_recorded": 189.195,
+    "sample_levels_recorded_subset": {
+      "32": 12478173,
+      "64": 15604131,
+      "128": 22611326
+    },
+    "sample_levels_missing_units": [
+      "hipsci_gw_fitness",
+      "hipsci_gw_nonfitness"
+    ],
+    "sample_note": "Recorded subset only. Nested levels overlap; totals are not unique cells, and are not evidence of training exposure."
+  },
+  "sources": {
+    "loaded": 17,
+    "with_panel_votes": 13,
+    "without_panel_votes": [
+      "hepg2_nadig",
+      "jurkat_nadig",
+      "k562_essential",
+      "rpe1"
+    ],
+    "changed_targets": [
+      "ACLY",
+      "AP2A2",
+      "DLAT",
+      "EPC2",
+      "EZH2",
+      "GIGYF2",
+      "HDAC1",
+      "KMT2A",
+      "MTA1",
+      "NT5DC1",
+      "PAPOLA",
+      "PRNP",
+      "RFK",
+      "STT3A",
+      "TRIP4",
+      "VAPB",
+      "ZNF526"
+    ]
+  },
+  "excluded_units": {
+    "a549_ko": {
+      "cells": {
+        "all": 606075,
+        "other_target": 546810,
+        "panel_target": 13945,
+        "control": 45320
+      },
+      "destination": {
+        "source": "a549_ko",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      }
+    },
+    "datlinger2017": {
+      "cells": {
+        "all": 5905,
+        "other_target": 4585,
+        "control": 1320
+      },
+      "destination": {
+        "source": null,
+        "role": "in banca, non derivata: native labels are guide names with library prefix and guide number; no exact panel symbol, a declared guide-to-gene map is required",
+        "consumed_by_fit": false,
+        "evidence": [
+          {
+            "context": "stimulated",
+            "control_cells": 705,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "unstimulated",
+            "control_cells": 615,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          }
+        ]
+      }
+    },
+    "datlinger2021": {
+      "cells": {
+        "all": 39194,
+        "other_target": 34697,
+        "control": 4497
+      },
+      "destination": {
+        "source": null,
+        "role": "in banca, non derivata: native labels are guide names with guide number; no exact panel symbol, a declared guide-to-gene map is required",
+        "consumed_by_fit": false,
+        "evidence": [
+          {
+            "context": "stimulated",
+            "control_cells": 2990,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "unstimulated",
+            "control_cells": 1507,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          }
+        ]
+      }
+    },
+    "dixit2016_d13": {
+      "cells": {
+        "all": 19268,
+        "other_target": 10011,
+        "panel_target": 2347,
+        "control": 3491,
+        "unassigned": 3419
+      },
+      "destination": {
+        "source": "dixit2016",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      }
+    },
+    "dixit2016_d7": {
+      "cells": {
+        "all": 33013,
+        "other_target": 18224,
+        "panel_target": 4429,
+        "control": 5381,
+        "unassigned": 4979
+      },
+      "destination": {
+        "source": "dixit2016",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      }
+    },
+    "dixit2016_high_moi": {
+      "cells": {
+        "all": 51898,
+        "other_target": 32854,
+        "panel_target": 7107,
+        "control": 10492,
+        "unassigned": 1445
+      },
+      "destination": {
+        "source": "dixit2016",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      }
+    },
+    "frangieh2021": {
+      "cells": {
+        "all": 218331,
+        "other_target": 157470,
+        "panel_target": 3256,
+        "control": 57605
+      },
+      "destination": {
+        "source": "frangieh2021",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      }
+    },
+    "hipsci_gw_fitness": {
+      "cells": {
+        "all": 322746,
+        "other_target": 102273,
+        "panel_target": 1539,
+        "unassigned": 218898,
+        "control": 36
+      },
+      "destination": {
+        "source": null,
+        "role": "in banca, non derivata: controls: see piano; non-targeting cells are too few to give every clone matched controls with the original estimator",
+        "consumed_by_fit": false,
+        "evidence": [
+          {
+            "context": "eipl_1",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          },
+          {
+            "context": "eipl_1",
+            "control_cells": 1,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "fiaj_1",
+            "control_cells": 1,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "fiaj_1",
+            "control_cells": 1,
+            "panel_targets_min_cells": 1,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "hecn_3",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          },
+          {
+            "context": "hecn_3",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          }
+        ]
+      }
+    },
+    "hipsci_gw_nonfitness": {
+      "cells": {
+        "all": 396458,
+        "other_target": 111054,
+        "panel_target": 3930,
+        "unassigned": 281462,
+        "control": 12
+      },
+      "destination": {
+        "source": null,
+        "role": "in banca, non derivata: controls: see piano; non-targeting cells are too few to give every clone matched controls with the original estimator",
+        "consumed_by_fit": false,
+        "evidence": [
+          {
+            "context": "bokz_6",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          },
+          {
+            "context": "eipl_1",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          },
+          {
+            "context": "eipl_3",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          },
+          {
+            "context": "fiaj_1",
+            "control_cells": 1,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "fiaj_1",
+            "control_cells": 1,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "fiaj_3",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          }
+        ]
+      }
+    },
+    "k562_gwps_a": {
+      "cells": {
+        "all": 1000000,
+        "other_target": 937014,
+        "panel_target": 25201,
+        "control": 37785
+      },
+      "destination": {
+        "source": "k562_gwps_sc",
+        "role": "stesso esperimento di k562 BULK: equivalenza, mai secondo voto",
+        "consumed_by_fit": false
+      }
+    },
+    "k562_gwps_b": {
+      "cells": {
+        "all": 989578,
+        "other_target": 927108,
+        "panel_target": 24927,
+        "control": 37543
+      },
+      "destination": {
+        "source": "k562_gwps_sc",
+        "role": "stesso esperimento di k562 BULK: equivalenza, mai secondo voto",
+        "consumed_by_fit": false
+      }
+    },
+    "norman2019": {
+      "cells": {
+        "all": 111445,
+        "other_target": 98618,
+        "panel_target": 972,
+        "control": 11855
+      },
+      "destination": {
+        "source": "norman2019",
+        "role": "braccio CRISPRa, non votato",
+        "consumed_by_fit": false
+      }
+    },
+    "papalexi2021_arrayed": {
+      "cells": {
+        "all": 8984,
+        "other_target": 6971,
+        "panel_target": 4,
+        "control": 2009
+      },
+      "destination": {
+        "source": null,
+        "role": "in banca, non derivata: one panel symbol with 4 cells, below min_cells 10 of the original recipe",
+        "consumed_by_fit": false,
+        "evidence": [
+          {
+            "context": "THP-1",
+            "control_cells": 2009,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          }
+        ]
+      }
+    },
+    "shifrut2018": {
+      "cells": {
+        "all": 52236,
+        "other_target": 20981,
+        "control": 3541,
+        "panel_target": 572,
+        "unassigned": 27142
+      },
+      "destination": {
+        "source": "shifrut2018",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      }
+    },
+    "sunshine2023": {
+      "cells": {
+        "all": 90380,
+        "other_target": 68749,
+        "panel_target": 1704,
+        "control": 3536,
+        "unassigned": 16391
+      },
+      "destination": {
+        "source": "sunshine2023",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      }
+    },
+    "tian2019_ipsc": {
+      "cells": {
+        "all": 271223,
+        "other_target": 258794,
+        "control": 10401,
+        "panel_target": 2028
+      },
+      "destination": {
+        "source": "tian2019_ipsc",
+        "role": "derivata, non ammessa al voto (regola del verso)",
+        "consumed_by_fit": false
+      }
+    },
+    "tian2021_crispra": {
+      "cells": {
+        "all": 21193,
+        "other_target": 19524,
+        "panel_target": 1235,
+        "control": 434
+      },
+      "destination": {
+        "source": "tian2021_crispra",
+        "role": "braccio CRISPRa, non votato",
+        "consumed_by_fit": false
+      }
+    }
+  },
+  "catalogue": {
+    "records": 100,
+    "destinations": {
+      "in banca": 42,
+      "non in banca": 44,
+      "alias dello stesso esperimento: nessun secondo peso": 13,
+      "solo archivio grezzo (davidmaisterx/rlab-jurkat-gse249595): nessuna banca": 1
+    },
+    "outside_catalogue": [
+      "orion_hct116",
+      "orion_hek293t"
+    ]
+  },
+  "official": {
+    "score_avg": 0.14724935991548274,
+    "reference_t28": 0.14484520500645978,
+    "t36_minus_t28": 0.0024041549090229597,
+    "scaled_published": {
+      "t36": {
+        "score_pds": 0.6310665604161688,
+        "score_mse": 0,
+        "score_nmae": 0.07163852828264632,
+        "score_fid": -0.009521475148901774,
+        "score_reach": 0.18656283267158072,
+        "score_jac": 0.0037497132714024357
+      },
+      "t28": {
+        "score_pds": 0.6223070792267033,
+        "score_mse": 0,
+        "score_nmae": 0.04920195622768383,
+        "score_fid": -0.007408907363258718,
+        "score_reach": 0.19871265014354142,
+        "score_jac": 0.006258451804088974
+      },
+      "t36_minus_t28": {
+        "score_pds": 0.008759481189465568,
+        "score_mse": 0,
+        "score_nmae": 0.022436572054962488,
+        "score_fid": -0.002112567785643056,
+        "score_reach": -0.0121498174719607,
+        "score_jac": -0.0025087385326865385
+      }
+    },
+    "rule_branch": "descriptive_only_no_numeric_threshold_registered"
+  }
+}

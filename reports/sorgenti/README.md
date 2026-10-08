@@ -29,6 +29,10 @@ indici e misure. Indice generale: [../README.md](../README.md).
 Risorse dei vincitori 2025: [catalogo PRiMeFlow ed ESM2 del 3/10](../analisi/lezioni_vcc2025_2026-10-03/SORGENTI.md).
 Rilascio derivato, consultato ma non acquisito; sovrapposizioni, condizioni dei componenti e uso nel 2026 da verificare.
 
+Risorse PIE consultate l'8/10: [catalogo di dati, descrittori e split](../analisi/lead_piano_2026-10-08/FONTI_ESTERNE.md).
+Nessuna acquisizione: riconciliare alias Replogle/Orion/VCC25/Tahoe e la fonte Jiang, verificare revisioni,
+dimensioni e condizioni; i record delle tabelle pubblicate non sono conteggi di nuove cellule.
+
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
 | 04/10 | [prepasso_ampliato_2026-10-04/](prepasso_ampliato_2026-10-04/) | Decisione sul pre-passo del corpus ampliato: campioni annidati dai soli metadati (livello 64, tutti i controlli), materializzati in shard campionati con manifest, poi il pre-passo invariato; inventari misurati delle sorgenti verificate (15,6 milioni di cellule, 4,9 milioni entro 64) | decisione con misure; codice da scrivere | ★★ |

@@ -22,7 +22,7 @@ un protocollo o una riga «in corso» non prova che un job sia attivo o concluso
 
 | Ruolo | Scheda | Quando usarla |
 |---|---|---|
-| **Piano operativo unico** | [R-LEAD](piani/strategia-scientifica.md) | Banca riusabile, rifit lineare t28 e invio autorizzato; copertura D-053 aperta. Stato, prossimo passo e job attivi soltanto nella scheda |
+| **Piano operativo unico** | [R-LEAD](piani/strategia-scientifica.md) | Banca riusabile e copertura D-053; consegna pianificata per il 9/10 ore 02:00, t36 come riserva e confronti separati su centratura/PIE. Stato, autorizzazioni, prossimo passo e job attivi soltanto nella scheda |
 | Esecuzione del binario dati | [R-LAB](piani/piano-giorno-2026-09-30.md) | Ingestione completa, archivio, verifiche indipendenti, gemelli compatti; i job li sceglie R-LEAD |
 | Riconciliazione e lacune dei dati | [R-DATI](piani/dati-affidabilita.md) | Inventario riconciliato col catalogo (D-053), aggregati per le voci che non ne hanno, campioni annidati con perdita d'informazione misurata |
 | Verifiche | [R-REV](piani/revisione-critica.md) | Forma piena, scorer, leakage, generazione; non si chiude perché parte un training |
