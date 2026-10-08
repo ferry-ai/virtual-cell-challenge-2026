@@ -1,0 +1,21 @@
+F..........
+======================================================================
+FAIL: test_reports_are_filed_by_category_and_each_folder_is_indexed_once (test_live_tree.TestFolderMaps.test_reports_are_filed_by_category_and_each_folder_is_indexed_once) (category='modelli/')
+D-046: reports/<categoria>/<tema>_<data>/, and a README per category that lists it.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\tests\test_live_tree.py", line 290, in test_reports_are_filed_by_category_and_each_folder_is_indexed_once
+    self.assertEqual(sorted(set(listed) - entries), [], f"{readme} names what is not there")
+AssertionError: Lists differ: ['dati_transfer_2026-10-08_01a11c34/'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'dati_transfer_2026-10-08_01a11c34/'
+
+- ['dati_transfer_2026-10-08_01a11c34/']
++ [] : reports/modelli/README.md names what is not there
+
+----------------------------------------------------------------------
+Ran 11 tests in 8.526s
+
+FAILED (failures=1)
