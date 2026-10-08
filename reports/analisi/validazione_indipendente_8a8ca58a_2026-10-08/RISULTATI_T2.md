@@ -165,3 +165,20 @@ cellule vere c'è solo il livello A, che va nello stesso verso su `sign50` e `nm
 
 **Conseguenza.** T2, così com'è, non è un candidato della consegna e non è un rimedio alla distorsione delle
 tabelle piccole (S-011): cambia la centratura di tutte le tabelle, e il costo passa da quelle grandi.
+
+## 7. Dopo l'esito: i bersagli votati dalle tabelle piccole (esplorativo, a posteriori)
+
+Scritto alle 00:03 del 9 ottobre, **dopo** aver letto l'esito: può suggerire un contrasto, non decide nulla.
+I bersagli dove T1 differisce da t36 sono quelli che ricevono un voto da una tabella piccola (5–6 bersagli del
+pannello): lì T2 cambia la centratura più che altrove. [Calcolo](banco/t2_tabelle_piccole.py),
+[esito](banco/r5/t2_tabelle_piccole_r5.json): K2 = T2 − T1 nel livello A, sui sei fold messi insieme.
+
+| Gruppo | Casi bersaglio-fold | `disc95` | `sign50` | `nmae_conf` (basso è meglio) | errore quadratico (basso è meglio) |
+|---|---:|---|---|---|---|
+| Votati da una tabella piccola | 70 | +0,0078 [−0,0112; +0,0272] | **−0,0091** [−0,0176; −0,0005] | **+0,0021** [+0,0003; +0,0040] | **+0,0071** [+0,0044; +0,0108] |
+| Tutti gli altri | 1.386 | −0,0015 [−0,0044; +0,0013] | **−0,0051** [−0,0068; −0,0035] | **+0,0022** [+0,0019; +0,0025] | **+0,0020** [+0,0012; +0,0027] |
+
+**Misurato:** neppure sui bersagli votati dalle tabelle piccole T2 mostra un guadagno risolto; le misure secondarie
+peggiorano lì quanto altrove, l'errore quadratico di più. **Interpretazione:** l'idea di centrare su tutti i
+bersagli le sole tabelle piccole, che avevo indicato come possibile riapertura, oggi non ha evidenza a favore; con
+70 casi l'intervallo della discriminazione resta largo e non la esclude.

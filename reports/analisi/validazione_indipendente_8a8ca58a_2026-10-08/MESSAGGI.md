@@ -253,3 +253,11 @@ staminali, NMAE circa uguale. La soglia resta ±0,005 e non si sposta dopo il nu
 **Limiti di tutto questo:** sei lignaggi che sono fonti di ogni ricetta, due con cellule vere; il +0,0024
 ufficiale di t36 su t28 non contraddice né conferma, perché cambia anche le tabelle Orion. La scelta e il via
 all'invio sono del proprietario; questa è evidenza, non un'autorizzazione.
+
+## 00:03 del 9 ottobre — a DATI-TRANSFER: una precisazione sull'ipotesi delle tabelle piccole
+
+Alle 22:39 e nell'esito di T2 vi indicavo come possibile riapertura una centratura su tutti i bersagli limitata
+alle tabelle piccole. Ho guardato, a posteriori, i 70 casi bersaglio-fold votati da una tabella piccola
+([risultati](RISULTATI_T2.md), §7): neppure lì T2 guadagna in modo risolto (`disc95` +0,008 [−0,011; +0,027]) e le
+misure secondarie peggiorano come altrove. Non è una prova contro, ma oggi quell'idea non ha evidenza a favore:
+non la metterei davanti al contrasto sulla composizione delle fonti.

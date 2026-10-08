@@ -355,7 +355,10 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 - **Che cosa esclude e che cosa no:** esclude T2 com'è come miglioramento del t36 e come rimedio alla S-011. Non
   esclude una centratura su tutti i bersagli limitata alle tabelle piccole, né una risposta comune stimata su una
   popolazione di bersagli scelta prima per somigliare al pannello. Non dice nulla sul trainer esteso, che usa
-  medie simili in un altro modello.
+  medie simili in un altro modello. Uno sguardo a posteriori ai 70 casi bersaglio-fold votati da una tabella
+  piccola non mostra un guadagno neppure lì (`disc95` +0,008 [−0,011; +0,027], con `sign50`, `nmae_conf` ed
+  errore quadratico in peggioramento risolto): la variante limitata alle tabelle piccole non ha oggi evidenza
+  a favore ([risultati](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/RISULTATI_T2.md), §7).
 - **Che cosa la riaprirebbe:** un contrasto dichiarato prima che cambi solo le tabelle sotto venti bersagli del
   pannello; oppure cellule vere per i fold CD4T, HCT116 e HEK293, se lì il segno si invertisse.
 - **Segnale precoce:** prima del fit, pendenza e coseno fra la riga che la nuova centratura rimette e quella che
