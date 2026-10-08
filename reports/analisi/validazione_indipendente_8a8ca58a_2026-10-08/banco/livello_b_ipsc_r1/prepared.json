@@ -1,0 +1,89 @@
+{
+ "utc": "2026-10-08T16:45:20.969996+00:00",
+ "slug": "davidmaisterx/vcc-validazione-banco-ipsc-8a8ca58a-r1",
+ "owner": "davidmaisterx",
+ "stage": "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/livello_b_ipsc_r1/package",
+ "code": {
+  "bytes": 60184,
+  "sha256": "c5fe91c63cd5edf673ec7f3e98b389a6b3105de83b246f9c46e8e71b495a0f41"
+ },
+ "params": {
+  "scorer_version": "0.16.0",
+  "snapshot_sha256": "125d119e8731360d2fa48734ab4d101d55131b5e317f865d5130f02235da1111",
+  "real_kernel": "vcc-validazione-celle-ipsc-8a8ca58a-r1",
+  "effects_dataset": "vcc-validazione-effetti-ipsc-8a8ca58a-r1",
+  "real_sha256": "81a37495e6f3bb100e65188eac3c0c00817ea0475e7aa14a34ee1ec7d2139381",
+  "real_targets_sha256": "8c4656b4613ee9de4c800c28167f219590ec3315ee95ccada9a8574636ed40f3",
+  "arms_sha256": {
+   "T0": "e22a4f5350135f727064b932b016c0fa0023acfc5ca28ed74267d6bfe1917b6d",
+   "T1": "386d9474c5700e03ca537ef4f25a3c99081c41206404d2d16784095f34f675e4",
+   "R1": "15b52fc9ed150dfde5ec583e23bbb18a06cc60f708dfe90d0ffb382d2d73fb8f",
+   "P4": "29b3311937069d3e187119e2e0d06e1878399c19059672974ddef70158657705"
+  },
+  "bench_sha256": "06966c0bca52e6982a0ed840ce54532d86d0131908f7248f33cf82ec744d0c08",
+  "changed_targets": [
+   "ACLY",
+   "AP2A2",
+   "DLAT",
+   "EPC2",
+   "EZH2",
+   "GIGYF2",
+   "HDAC1",
+   "KMT2A",
+   "MTA1",
+   "NT5DC1",
+   "PAPOLA",
+   "PRNP",
+   "RFK",
+   "STT3A",
+   "TRIP4",
+   "VAPB",
+   "ZNF526"
+  ],
+  "shuffle_seed": 20261008,
+  "n_pred": 400,
+  "gen_seeds": 5,
+  "bench_seed": 2026,
+  "fold": "C-iPSC"
+ },
+ "snapshot_members": [
+  "bench_v2.py",
+  "configs/config.yaml",
+  "configs/trials.yaml",
+  "src/vcc2026/__init__.py",
+  "src/vcc2026/bench.py",
+  "src/vcc2026/config.py",
+  "src/vcc2026/de_tools.py",
+  "src/vcc2026/generator.py",
+  "src/vcc2026/genes.py",
+  "src/vcc2026/inference.py",
+  "src/vcc2026/manifest.py",
+  "src/vcc2026/resources.py",
+  "src/vcc2026/sampling.py",
+  "src/vcc2026/trials.py"
+ ],
+ "bench": {
+  "bytes": 11038,
+  "sha256": "06966c0bca52e6982a0ed840ce54532d86d0131908f7248f33cf82ec744d0c08",
+  "path": "reports/generatore_e_banchi/banco_v2_2026-10-04/bench_v2.py"
+ },
+ "metadata": {
+  "id": "davidmaisterx/vcc-validazione-banco-ipsc-8a8ca58a-r1",
+  "title": "vcc-validazione-banco-ipsc-8a8ca58a-r1",
+  "code_file": "run.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+   "davidmaisterx/vcc-validazione-effetti-ipsc-8a8ca58a-r1"
+  ],
+  "kernel_sources": [
+   "davidmaisterx/vcc-validazione-celle-ipsc-8a8ca58a-r1"
+  ],
+  "competition_sources": []
+ },
+ "compute_started": false
+}

@@ -1,0 +1,326 @@
+{
+ "inputs": {
+  "reports/modelli/banca_canonica_2026-10-07/registro_fonti_r1.json": "107ab6088479eda7179f795f90106a66061999000eee4b4cf8347e1700496195",
+  "reports/modelli/banca_canonica_2026-10-07/fit/release_r1.json": "0650d1d610e05b5cb5fea3c3695dff67bec14443c9df2708121f84e8f8771c8c",
+  "reports/modelli/dati_transfer_2026-10-08_01a11c34/release_t1_r1.json": "277ae3441b78c9a1ebf79149cff914fb494d8fff09529b367e9f42cb6a76ffd8",
+  "reports/modelli/dati_transfer_2026-10-08_01a11c34/fit/dt1-01a11c34-r1/consumo.json": "71fd27fe8e3480e8e242ac0c54b5611a70f50ebbc8ab7c28b54aae5c97ffea74",
+  "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/r1/completion/consumption.json": "a206a75a9f388df7ef8409f8315281569af226f3760791a91a7699c7b1433b4d",
+  "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/manifest_fold_v1.json": "add3519816b50b81207152cf7e2ffea7150e66b28587fb04cfdc42283e371cf7"
+ },
+ "summary": {
+  "sources_added_by_r1": [
+   "hipsci_targeted_19",
+   "tian2019_neuron",
+   "tian2021_crispri",
+   "xu2023"
+  ],
+  "all_hash_checks_pass": true,
+  "checks_not_evaluable": {
+   "tian2019_neuron": [
+    "t1_pin_equals_r1_pin",
+    "read_by_the_T1_production_fit"
+   ]
+  },
+  "tables_with_at_most_20_panel_targets": {
+   "h1": {
+    "targets_in_table": 17,
+    "share_of_own_effect_removed_by_panel_centring": 0.0588,
+    "in_T0": true
+   },
+   "kolf_chromatin": {
+    "targets_in_table": 8,
+    "share_of_own_effect_removed_by_panel_centring": 0.125,
+    "in_T0": true
+   },
+   "kolf_metabolic": {
+    "targets_in_table": 4,
+    "share_of_own_effect_removed_by_panel_centring": 0.25,
+    "in_T0": true
+   },
+   "xu2023": {
+    "targets_in_table": 5,
+    "share_of_own_effect_removed_by_panel_centring": 0.2,
+    "in_T0": false
+   },
+   "tian2021_crispri": {
+    "targets_in_table": 6,
+    "share_of_own_effect_removed_by_panel_centring": 0.1667,
+    "in_T0": false
+   },
+   "tian2019_neuron": {
+    "targets_in_table": 1,
+    "share_of_own_effect_removed_by_panel_centring": 1.0,
+    "in_T0": false
+   },
+   "hipsci_targeted_19": {
+    "targets_in_table": 5,
+    "share_of_own_effect_removed_by_panel_centring": 0.2,
+    "in_T0": false
+   }
+  },
+  "tables_read_with_no_panel_target": [
+   "hepg2_nadig",
+   "jurkat_nadig",
+   "k562_essential",
+   "rpe1"
+  ],
+  "T1_sources_read": 16,
+  "T1_sources_with_at_least_one_vote": 12
+ },
+ "sources": {
+  "hipsci_targeted_19": {
+   "lineage": "iPSC",
+   "modality": "CRISPRi",
+   "in_T1": true,
+   "checks": {
+    "receipt_file_sha256": true,
+    "bank_files_equal_derivation_inputs": true,
+    "derivation_output_equals_release_pin": true,
+    "t1_pin_equals_r1_pin": true,
+    "read_by_the_T1_production_fit": true,
+    "every_validation_read_has_the_release_sha256": true,
+    "absent_from_the_folds_that_hold_its_lineage": true
+   },
+   "bank_cells": 1161865,
+   "bank_cells_by_role": {
+    "panel_target": 7583,
+    "other_target": 619198,
+    "control": 8241,
+    "unassigned": 526842
+   },
+   "derivation_inventory": [],
+   "target_cells_voting": 7583,
+   "control_cells": 8241,
+   "targets_voted": [
+    "EZH2",
+    "GIGYF2",
+    "NT5DC1",
+    "STT3A",
+    "ZNF526"
+   ],
+   "share_of_bank_cells_behind_the_vote": 0.013619482469994363,
+   "panel_centring": {
+    "targets_in_table": 5,
+    "share_of_own_effect_removed": 0.2,
+    "vote_is_identically_zero": false
+   },
+   "folds_holding_its_lineage": [
+    "C-iPSC"
+   ],
+   "validation_runs_that_read_it": [
+    "R1/C-CD4T",
+    "R1/C-H1",
+    "R1/C-HCT116",
+    "R1/C-HEK293",
+    "R1/C-K562",
+    "R1/PROD",
+    "T1/C-CD4T",
+    "T1/C-H1",
+    "T1/C-HCT116",
+    "T1/C-HEK293",
+    "T1/C-K562",
+    "T1/PROD"
+   ]
+  },
+  "tian2019_neuron": {
+   "lineage": "neuron",
+   "modality": "CRISPRi",
+   "in_T1": false,
+   "checks": {
+    "receipt_file_sha256": true,
+    "bank_files_equal_derivation_inputs": true,
+    "derivation_output_equals_release_pin": true,
+    "t1_pin_equals_r1_pin": null,
+    "read_by_the_T1_production_fit": null,
+    "every_validation_read_has_the_release_sha256": true,
+    "absent_from_the_folds_that_hold_its_lineage": true
+   },
+   "bank_cells": 179174,
+   "bank_cells_by_role": {
+    "panel_target": 3190,
+    "other_target": 160901,
+    "control": 15083,
+    "unassigned": 0
+   },
+   "derivation_inventory": [
+    {
+     "unit": "tian2019_neuron",
+     "bank_rows": 41358,
+     "cells_by_role": {
+      "outside_frozen_panel": 160901,
+      "control": 15083,
+      "panel_target": 3190
+     },
+     "rows_by_role": {
+      "outside_frozen_panel": 41356,
+      "control": 1,
+      "panel_target": 1
+     },
+     "selected_rows": 2
+    }
+   ],
+   "target_cells_voting": 3190,
+   "control_cells": 15083,
+   "targets_voted": [
+    "RFK"
+   ],
+   "share_of_bank_cells_behind_the_vote": 0.10198466295333028,
+   "panel_centring": {
+    "targets_in_table": 1,
+    "share_of_own_effect_removed": 1.0,
+    "vote_is_identically_zero": true
+   },
+   "folds_holding_its_lineage": [],
+   "validation_runs_that_read_it": [
+    "R1/C-CD4T",
+    "R1/C-H1",
+    "R1/C-HCT116",
+    "R1/C-HEK293",
+    "R1/C-K562",
+    "R1/C-iPSC",
+    "R1/PROD"
+   ]
+  },
+  "tian2021_crispri": {
+   "lineage": "neuron",
+   "modality": "CRISPRi",
+   "in_T1": true,
+   "checks": {
+    "receipt_file_sha256": true,
+    "bank_files_equal_derivation_inputs": true,
+    "derivation_output_equals_release_pin": true,
+    "t1_pin_equals_r1_pin": true,
+    "read_by_the_T1_production_fit": true,
+    "every_validation_read_has_the_release_sha256": true,
+    "absent_from_the_folds_that_hold_its_lineage": true
+   },
+   "bank_cells": 32300,
+   "bank_cells_by_role": {
+    "panel_target": 984,
+    "other_target": 30879,
+    "control": 437,
+    "unassigned": 0
+   },
+   "derivation_inventory": [
+    {
+     "unit": "tian2021_crispri",
+     "bank_rows": 185,
+     "cells_by_role": {
+      "outside_frozen_panel": 30879,
+      "panel_target": 984,
+      "control": 437
+     },
+     "rows_by_role": {
+      "outside_frozen_panel": 178,
+      "panel_target": 6,
+      "control": 1
+     },
+     "selected_rows": 7
+    }
+   ],
+   "target_cells_voting": 984,
+   "control_cells": 437,
+   "targets_voted": [
+    "AP2A2",
+    "EPC2",
+    "MTA1",
+    "PRNP",
+    "TRIP4",
+    "VAPB"
+   ],
+   "share_of_bank_cells_behind_the_vote": 0.04399380804953561,
+   "panel_centring": {
+    "targets_in_table": 6,
+    "share_of_own_effect_removed": 0.16666666666666666,
+    "vote_is_identically_zero": false
+   },
+   "folds_holding_its_lineage": [],
+   "validation_runs_that_read_it": [
+    "R1/C-CD4T",
+    "R1/C-H1",
+    "R1/C-HCT116",
+    "R1/C-HEK293",
+    "R1/C-K562",
+    "R1/C-iPSC",
+    "R1/PROD",
+    "T1/C-CD4T",
+    "T1/C-H1",
+    "T1/C-HCT116",
+    "T1/C-HEK293",
+    "T1/C-K562",
+    "T1/C-iPSC",
+    "T1/PROD"
+   ]
+  },
+  "xu2023": {
+   "lineage": "HEK293",
+   "modality": "CRISPRi",
+   "in_T1": true,
+   "checks": {
+    "receipt_file_sha256": true,
+    "bank_files_equal_derivation_inputs": true,
+    "derivation_output_equals_release_pin": true,
+    "t1_pin_equals_r1_pin": true,
+    "read_by_the_T1_production_fit": true,
+    "every_validation_read_has_the_release_sha256": true,
+    "absent_from_the_folds_that_hold_its_lineage": true
+   },
+   "bank_cells": 98315,
+   "bank_cells_by_role": {
+    "panel_target": 4293,
+    "other_target": 91264,
+    "control": 2758,
+    "unassigned": 0
+   },
+   "derivation_inventory": [
+    {
+     "unit": "xu2023",
+     "bank_rows": 204,
+     "cells_by_role": {
+      "panel_target": 4293,
+      "outside_frozen_panel": 91264,
+      "control": 2758
+     },
+     "rows_by_role": {
+      "panel_target": 5,
+      "outside_frozen_panel": 198,
+      "control": 1
+     },
+     "selected_rows": 6
+    }
+   ],
+   "target_cells_voting": 4293,
+   "control_cells": 2758,
+   "targets_voted": [
+    "ACLY",
+    "DLAT",
+    "HDAC1",
+    "KMT2A",
+    "PAPOLA"
+   ],
+   "share_of_bank_cells_behind_the_vote": 0.07171845598331893,
+   "panel_centring": {
+    "targets_in_table": 5,
+    "share_of_own_effect_removed": 0.2,
+    "vote_is_identically_zero": false
+   },
+   "folds_holding_its_lineage": [
+    "C-HEK293"
+   ],
+   "validation_runs_that_read_it": [
+    "R1/C-CD4T",
+    "R1/C-H1",
+    "R1/C-HCT116",
+    "R1/C-K562",
+    "R1/C-iPSC",
+    "R1/PROD",
+    "T1/C-CD4T",
+    "T1/C-H1",
+    "T1/C-HCT116",
+    "T1/C-K562",
+    "T1/C-iPSC",
+    "T1/PROD"
+   ]
+  }
+ }
+}
