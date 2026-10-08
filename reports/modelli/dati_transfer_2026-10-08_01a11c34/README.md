@@ -4,9 +4,10 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
-**Stato corrente:** [STATO_r9.md](STATO_r9.md), 00:54 del 9 ottobre:
-fit T3 verificato, generazione privata r2 realmente in corso dopo una correzione
-dell'argomento CLI; nessun nuovo fit e nessun upload t38 ancora eseguito.
+**Stato corrente:** [STATO_r10.md](STATO_r10.md), 01:34 del 9 ottobre:
+fit T3 verificato, recupero di generazione r5 in corso dopo gli errori operativi
+descritti nella fotografia; consegna diretta cloud → VCC preparata per il limite
+delle 02:00. Nessun nuovo fit e nessun upload t38 ancora eseguito alla fotografia.
 Il [protocollo T3](CONSEGNA_T3_PROTOCOLLO_r1.md) e la previsione registrata
 prima del fit restano invariati. Il consenso Dixit/Shifrut è ricevuto e registrato.
 La fotografia precedente è [STATO_r8.md](STATO_r8.md), alle 23:55 dell'8 ottobre.
@@ -30,6 +31,7 @@ qui sotto sono fotografie dei rispettivi momenti, non nuovi blocchi operativi.
 
 ## Indice
 
+- [STATO_r10.md](STATO_r10.md), [cloud_delivery/r1/plan.json](cloud_delivery/r1/plan.json): recupero LZF e corsia di upload diretto privato, senza trasferire la chiave VCC.
 - [STATO_r9.md](STATO_r9.md), [candidate_t3_r1.json](candidate_t3_r1.json), [coverage_t3_r1.json](coverage_t3_r1.json): fit T3 verificato e ruoli delle 45 unità della banca.
 - `generation_recovery/r1/`: recupero della sola generazione con effetti congelati; `generation_recovery/r2/` è una copia difensiva mai lanciata.
 - `collect_t38_generation.py`, `t38_submission.py`, [t38_delivery_tests_r1.txt](t38_delivery_tests_r1.txt): guardie per ricevute, hash, forma completa e invio unico.

@@ -62,7 +62,9 @@ def verify_receipts(dest, proof):
     return manifest
 
 
-def main(label):
+def main(label, folder=FOLDER):
+    global FOLDER
+    FOLDER=folder
     proof = read(FOLDER / 'prepared.json')
     api = api_for_owner(proof['owner'])
     status = str(api.kernels_status(proof['slug']).status)

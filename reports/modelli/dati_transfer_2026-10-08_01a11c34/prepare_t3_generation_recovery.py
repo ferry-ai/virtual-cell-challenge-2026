@@ -19,7 +19,18 @@ def main(revision=1):
     members,old=unpack(original/'run.py')
     if sha(original/'run.py')!='4a49bc7880dc9b877d71a9dd3b3bfc01ea4e584214ea0355fc98fd3c1293b021':raise ValueError('original runtime changed')
     members['emission_support.py']=members.pop('driver.py')
-    members['driver.py']=(HERE/('generate_t3_existing.py' if revision==1 else 'generate_t3_existing_v2.py')).read_bytes()
+    drivers={1:'generate_t3_existing.py',2:'generate_t3_existing_v2.py',3:'generate_t3_existing_v3.py',4:'generate_t3_existing_v4.py'}
+    members['driver.py']=(HERE/drivers[revision]).read_bytes()
+    if revision in (3,4):
+        name='repo/src/vcc2026/submission.py'
+        before=members[name].decode()
+        old_default='compression: str | None = "gzip",'
+        if before.count(old_default)!=1:raise ValueError('unexpected frozen storage constructor')
+        after=before.replace(old_default,('compression: str | None = None,' if revision==3 else 'compression: str | None = "lzf",'))
+        if revision==4:
+            if after.count('compression_opts: int | None = 4,')!=1:raise ValueError('unexpected filter options')
+            after=after.replace('compression_opts: int | None = 4,','compression_opts: int | None = None,')
+        members[name]=after.encode()
     members['quick_generation_driver.py']=(HERE/'quick_generation_driver.py').read_bytes()
     helper=ROOT/'reports/analisi/modelli_esterni_01a11c35_2026-10-08/private_download_v2.py'
     if sha(helper)!='ea9345e7f5913b39c80d7917dc766342ab880d8ad184746a5a5c4f95113a78c0':raise ValueError('transport helper changed')
@@ -75,7 +86,7 @@ def main(revision=1):
     proof=dict(utc=now(),slug=meta['id'],owner='davideferrante11',stage=str(stage),private=True,
         code=pin(stage/'run.py'),params=pin(stage/'extended_params.json'),metadata=pin(stage/'kernel-metadata.json'),
         protocol=pin(protocol),prediction=pin(prediction),fit_receipt=pin(fit_path),
-        new_fit=False,changes='repeat --effects per context; explicit Linux data/artifact roots; reuse exact frozen T3 effects; no scientific change',
+        new_fit=False,changes=('correct stage45 manifest filename; lossless '+('LZF' if revision==4 else 'uncompressed')+' intermediate CSR with final zstd; salvage intermediates on failure; no scientific change' if revision in (3,4) else 'repeat --effects per context; explicit Linux data/artifact roots; reuse exact frozen T3 effects; no scientific change'),
         code_bytes=len(code),source_job=source,new_compute_started=False)
     write_new(folder/'prepared.json',proof);write_new(folder/'params.json',params)
     print(json.dumps({k:proof[k] for k in ('slug','code_bytes','new_fit','changes')}))
@@ -83,7 +94,7 @@ def main(revision=1):
 
 if __name__=='__main__':
     import argparse
-    parser=argparse.ArgumentParser();parser.add_argument('--revision',type=int,default=1,choices=(1,2));args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--revision',type=int,default=1,choices=(1,2,3,4));args=parser.parse_args()
     try:main(args.revision)
     except Exception as exc:
         print('T3 generation recovery preparation failed: '+type(exc).__name__);raise SystemExit(1)

@@ -1,0 +1,16 @@
+{
+  "scope": "Complete the one authorized t38 VCC upload by 02:00 Europe/Rome without routing the multi-GB product through the laptop",
+  "source_job": "davideferrante11/dt-t3-generate-01a11c34-r5",
+  "destination_runtime": "davideferrante11/dt-t3-package-upload-01a11c34-r1",
+  "destination_runtime_private": true,
+  "data": "Only this T3 generated prediction, generation receipts, and the derived VCC archive",
+  "VCC_account_token": "Stays in the local official CLI credential store; never transferred to Kaggle",
+  "runtime_capability": "One official GCS resumable upload session URL for the single t38 entry. Kept outside Git and logs. It permits upload to that object only.",
+  "VCC_entry_creation": "Only after source output is available and its producer, shape, effects, protocol and diagnostics have been verified",
+  "upload_gate": "Full stage48 validation, container validation and bit-identical payload comparison before upload; GCS MD5 must match",
+  "scoring_gate": "Local official CLI API launches scoring only after a verified cloud upload receipt",
+  "fallback_packaging": "If source r5 saves completed cells after a packaging failure, package those exact cells on the large scratch disk, without refitting or regenerating",
+  "single_entry": true,
+  "publication_of_notebooks_or_source_data": false,
+  "new_entry_or_upload_started_at_plan_creation": false
+}

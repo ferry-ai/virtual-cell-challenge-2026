@@ -25,7 +25,8 @@ MODEL='t38 - transfer CRISPRi plus KO'
 DESCRIPTION=('Exploratory T1 CRISPRi core plus seven usable KO bank units, twelve contexts and five study-lineage votes. '
  'KO effects versus matched controls, no panel centering, fixed 0.25 study weight and within-study reliability pooling. '
  'CRISPRi estimator, amplitude, cis and t36 generator unchanged. All 34 KO-supported panel targets used. '
- 'CRISPRa and unresolved-source gaps remain explicit; no prior improvement or complete D-053 claim.')
+ 'CRISPRa and unresolved-source gaps remain explicit; no prior improvement or complete D-053 claim. '
+ '6722 KO-only target-gene pairs retain the full normalized KO estimate.')
 
 
 def cli():
@@ -91,9 +92,9 @@ def download_product(api,job,filename,path,expected_bytes,report):
         if path.stat().st_size!=end+1:raise ValueError('short range retained; inspect before resuming')
 
 
-def submit(evidence,attempt):
+def submit(evidence,attempt,proof_path=None):
     if os.name!='nt':raise ValueError('persistent Windows process required')
-    proof=read(HERE/'generation_recovery/r1/prepared.json')
+    proof=read(proof_path or HERE/'generation_recovery/r1/prepared.json')
     from collect_t38_generation import verify_receipts
     verify_receipts(evidence,proof)
     if sha(PREDICTION)!=proof['prediction']['sha256']:raise ValueError('preregistered prediction changed')
