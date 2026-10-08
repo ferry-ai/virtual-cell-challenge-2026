@@ -108,3 +108,10 @@ Il testo sopra è quello emesso alle 21:01 e non è stato ritoccato. **La raccom
   livello B su due fold, e il banco sul fold K562 dura 107–109 minuti: alla scadenza T2 è inconcludente per regola,
   qualunque cosa dica il livello A. Non esiste un suo effetto di produzione e nessun invio è autorizzato. L'esito
   completo di T2 serve alla decisione successiva: se autorizzare il suo fit finale e con che cosa confrontarlo.
+- **22:34, T2 alla scadenza: inconcludente, la raccomandazione è confermata.** [Risultati](RISULTATI_T2.md). La
+  corsa è valida (parità di produzione, parità a gamma 0 per sha256, sostegno, bersagli scambiati). Livello A, sei
+  fold: `disc95` di T2 contro t36 −0,0005 [−0,0030; +0,0020], contro T1 −0,0009 [−0,0032; +0,0015]; profondità di
+  segno ed errore sui geni confidenti peggiorano di poco, in modo risolto, sui quattro lignaggi non staminali.
+  Sei membri sul fold iPSC: +0,0023 ± 0,0125, non risolto. Il fold K562 è in corsa. **Per la regola T2 non è
+  promosso; il candidato del freeze resta t36.** Finora nessuna misura è a favore di T2: per la decisione ancora
+  aperta sul suo fit finale, che spetta al proprietario, conviene attendere il fold K562.

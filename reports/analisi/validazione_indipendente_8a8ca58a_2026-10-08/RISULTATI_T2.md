@@ -92,3 +92,33 @@ colonna, letta al contrario), con T2 scende.
 
 **Che cosa non dice.** Il livello A è un proxy nello spazio degli effetti; i sei membri possono muoversi in altro
 modo (l'NMAE e la fedeltà del sito premiano anche la parte comune, S-006). Per questo il §8 chiede il livello B.
+
+## 4. Livello B, fold C-iPSC (letto alle 22:33)
+
+Kernel `davidmaisterx/vcc-validazione-banco-ipsc-8a8ca58a-t2`, lanciato alle 21:58 e concluso alle 22:32; corsa
+principale di 33 minuti, 55 bersagli, cinque semi, emissione t28. [Tabelle](TABELLE_LIVELLO_B_ipsc_t2.md),
+[lettura con la regola](TABELLE_LIVELLO_B_t2_r1.md). «±» è la deviazione standard sui semi; in grassetto i delta
+risolti (\|media\| > 2·sd/√5).
+
+| Coppia | Sei membri | Senza JAC | PDS | NMAE | FID | REACH | JAC |
+|---|---|---|---|---|---|---|---|
+| T2 − T0 | +0,0023 ± 0,0125 | +0,0022 ± 0,0148 | +0,0184 ± 0,0798 | −0,0014 ± 0,0065 | −0,0014 ± 0,0058 | −0,0048 ± 0,0392 | **+0,0030 ± 0,0013** |
+| T2 − T1 | +0,0022 ± 0,0129 | +0,0022 ± 0,0151 | +0,0222 ± 0,0792 | −0,0026 ± 0,0067 | −0,0015 ± 0,0068 | −0,0071 ± 0,0410 | **+0,0020 ± 0,0021** |
+| T1 − T0 | +0,0001 ± 0,0031 | −0,0000 ± 0,0036 | −0,0038 ± 0,0173 | +0,0012 ± 0,0014 | +0,0001 ± 0,0021 | +0,0023 ± 0,0073 | +0,0010 ± 0,0015 |
+
+**Misurato.**
+- T1 − T0 coincide seme per seme con la corsa r1 dello stesso fold (scarto massimo 0,
+  [confronto](banco/livello_b_ipsc_t2/riproduce_r1_T1_T0.json)): il banco è riproducibile fra due kernel, e il
+  controllo a righe scambiate della corsa r1 vale per questi stessi dati (questo kernel ha eseguito la sola corsa
+  principale).
+- T2 non si distingue da t36 né da T1 sui sei membri né sul PDS. L'unico membro risolto è il Jaccard locale
+  (+0,003), che su questo fold quasi non dipende dal bersaglio ([livello B](RISULTATI_LIVELLO_B.md), §1).
+- La deviazione fra semi delle coppie di T2 è quattro volte quella di T1 − T0 (0,0125 contro 0,0031): T2 cambia
+  ogni bersaglio, quindi il rumore del generatore è meno condiviso fra i bracci. Con cinque semi questo fold
+  risolve solo differenze sopra 0,011 circa.
+
+## 5. Alla scadenza delle 23:00
+
+**Esito del §8 per T2 − T0 e per K2: INCONCLUDENTE** (un solo fold di livello B, macro non risolta; il livello A
+non ferma e non promuove). Il fold K562 è in corsa dalle 21:58 e non entra nella scelta del freeze. T2 non è
+promosso; la consegna resta t36. L'esito con due fold si aggiunge sotto quando il fold K562 è letto.
