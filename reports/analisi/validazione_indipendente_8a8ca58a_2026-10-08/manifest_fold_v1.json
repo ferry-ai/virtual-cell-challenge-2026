@@ -1,0 +1,1304 @@
+{
+ "schema": "vcc2026.validazione.folds/1",
+ "version": "v1",
+ "frozen_utc": "2026-10-08T16:09:15+00:00",
+ "author": "VALIDAZIONE, Claude Code session 8a8ca58a",
+ "inputs": {
+  "reports/modelli/banca_canonica_2026-10-07/registro_fonti_r1.json": {
+   "bytes": 143233,
+   "sha256": "107ab6088479eda7179f795f90106a66061999000eee4b4cf8347e1700496195"
+  },
+  "reports/modelli/banca_canonica_2026-10-07/fit/release_r1.json": {
+   "bytes": 25278,
+   "sha256": "0650d1d610e05b5cb5fea3c3695dff67bec14443c9df2708121f84e8f8771c8c"
+  },
+  "reports/modelli/dati_transfer_2026-10-08_01a11c34/release_t1_r1.json": {
+   "bytes": 29170,
+   "sha256": "277ae3441b78c9a1ebf79149cff914fb494d8fff09529b367e9f42cb6a76ffd8"
+  },
+  "reports/invii/trial_2026-10-06/t36_recipe_extbank.json": {
+   "bytes": 1797,
+   "sha256": "3109a6d9c6a0305ae73694d7e897dbe2ab35b344034ec9d2b492308898753226"
+  },
+  "reports/modelli/banca_canonica_2026-10-07/fit/r1/completion/consumo.json": {
+   "bytes": 77392,
+   "sha256": "385347bb4ed086212ac809281f5ab5df095762940557f3ab60d20fb08437ab88"
+  }
+ },
+ "axis": {
+  "genes": 18533,
+  "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+  "file": "raw/controls/gene_names.csv",
+  "order": "official axis order, no duplicates"
+ },
+ "panel": {
+  "targets": 300,
+  "panel_sha256": "c9c4c9a69f76afd4507e9a7619fe9925c19ff34e5878c7854493683b23bea5ca",
+  "file_sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+  "file": "raw/controls/pert_counts.csv"
+ },
+ "interface": {
+  "format": "stage-100 npz: targets, genes, lfc, observed",
+  "lfc": "float32 natural-log fold change, amplitude and cis head applied, emission scale NOT applied",
+  "observed": "bool, same shape; an unmeasured or unpredicted pair is False and exactly 0",
+  "log2_inputs": "multiply by ln 2 and declare it; p_de and delta_p are diagnostics, never effects"
+ },
+ "emission": {
+  "name": "t28",
+  "trial": "trial-ext-profile",
+  "effects_scale": 1.5,
+  "gene_dispersion": true,
+  "gene_dispersion_scale": 1.0,
+  "cells_per_target": 400,
+  "generator_seed": 20260912,
+  "generator_seed_indices": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "bench_seed": 2026,
+  "streams": "one random stream per (seed, target), shared by every arm"
+ },
+ "scorer": {
+  "package": "cell-eval2",
+  "version": "0.16.0",
+  "config": "vcc2026",
+  "wheel_sha256": "c78428ba705a94536e4a55464a34d1905aa5730d4f7e52ea8dbef4e7171d4fbe"
+ },
+ "protected": {
+  "h1_test": "never read by any fold, arm, statistic, calibration or checkpoint under evaluation",
+  "final_set": "D, E, F are not available and are never a validation",
+  "development_lines": [
+   "H1",
+   "HepG2",
+   "RPE1",
+   "Jurkat",
+   "K562"
+  ],
+  "development_note": "read repeatedly by six-member benches: never an independent confirmation"
+ },
+ "lineages": {
+  "K562": {
+   "registry_groups": [
+    "K562"
+   ],
+   "tables": [
+    "k562",
+    "k562_essential",
+    "k562_gwps_sc",
+    "dixit2016",
+    "norman2019"
+   ],
+   "units": [
+    "k562_essential",
+    "k562_gwps_a",
+    "k562_gwps_b",
+    "dixit2016_d7",
+    "dixit2016_d13",
+    "dixit2016_high_moi",
+    "norman2019"
+   ],
+   "name_patterns": [
+    "k562",
+    "dixit",
+    "norman",
+    "adamson",
+    "replogle_k562",
+    "gwps"
+   ]
+  },
+  "CD4T": {
+   "registry_groups": [
+    "CD4T"
+   ],
+   "tables": [
+    "cd4_mix",
+    "cd4_Rest",
+    "cd4_Stim8hr",
+    "cd4_Stim48hr",
+    "shifrut2018"
+   ],
+   "units": [
+    "D1_Rest",
+    "D1_Stim8hr",
+    "D1_Stim48hr",
+    "D2_Rest",
+    "D2_Stim8hr",
+    "D2_Stim48hr",
+    "D3_Rest",
+    "D3_Stim8hr",
+    "D3_Stim48hr",
+    "D4_Rest",
+    "D4_Stim8hr",
+    "D4_Stim48hr",
+    "shifrut2018"
+   ],
+   "name_patterns": [
+    "cd4",
+    "shifrut",
+    "marson"
+   ]
+  },
+  "HCT116": {
+   "registry_groups": [
+    "HCT116"
+   ],
+   "tables": [
+    "orion_hct116"
+   ],
+   "units": [
+    "orion_hct116"
+   ],
+   "name_patterns": [
+    "hct116",
+    "dld"
+   ]
+  },
+  "HEK293": {
+   "registry_groups": [
+    "HEK293",
+    "HEK293T"
+   ],
+   "tables": [
+    "orion_hek293t",
+    "xu2023"
+   ],
+   "units": [
+    "orion_hek293t",
+    "xu2023"
+   ],
+   "name_patterns": [
+    "hek293",
+    "xu2023"
+   ]
+  },
+  "iPSC": {
+   "registry_groups": [
+    "iPSC"
+   ],
+   "tables": [
+    "kolf_pan_genome",
+    "kolf_strong",
+    "kolf_chromatin",
+    "kolf_metabolic",
+    "hipsci_targeted_19",
+    "tian2019_ipsc"
+   ],
+   "units": [
+    "kolf_pan_genome",
+    "kolf_strong",
+    "kolf_chromatin",
+    "kolf_metabolic",
+    "hipsci_targeted_19",
+    "hipsci_gw_fitness",
+    "hipsci_gw_nonfitness",
+    "tian2019_ipsc"
+   ],
+   "name_patterns": [
+    "kolf",
+    "hipsci",
+    "ipsc"
+   ]
+  },
+  "H1": {
+   "registry_groups": [
+    "H1"
+   ],
+   "tables": [
+    "h1"
+   ],
+   "units": [
+    "h1_train",
+    "h1_val"
+   ],
+   "name_patterns": [
+    "h1"
+   ]
+  },
+  "neuron": {
+   "registry_groups": [
+    "neuron"
+   ],
+   "tables": [
+    "tian2019_neuron",
+    "tian2021_crispri",
+    "tian2021_crispra"
+   ],
+   "units": [
+    "tian2019_neuron",
+    "tian2021_crispri",
+    "tian2021_crispra"
+   ],
+   "name_patterns": [
+    "neuron",
+    "tian2021"
+   ]
+  },
+  "HepG2": {
+   "registry_groups": [
+    "HepG2"
+   ],
+   "tables": [
+    "hepg2_nadig"
+   ],
+   "units": [
+    "hepg2_nadig"
+   ],
+   "name_patterns": [
+    "hepg2"
+   ]
+  },
+  "Jurkat": {
+   "registry_groups": [
+    "Jurkat"
+   ],
+   "tables": [
+    "jurkat_nadig"
+   ],
+   "units": [
+    "jurkat_nadig",
+    "datlinger2017",
+    "datlinger2021"
+   ],
+   "name_patterns": [
+    "jurkat",
+    "datlinger"
+   ]
+  },
+  "RPE1": {
+   "registry_groups": [
+    "RPE1"
+   ],
+   "tables": [
+    "rpe1"
+   ],
+   "units": [
+    "rpe1"
+   ],
+   "name_patterns": [
+    "rpe1"
+   ]
+  },
+  "A549": {
+   "registry_groups": [
+    "A549"
+   ],
+   "tables": [
+    "a549_ko"
+   ],
+   "units": [
+    "a549_ko"
+   ],
+   "name_patterns": [
+    "a549"
+   ]
+  },
+  "Calu3": {
+   "registry_groups": [
+    "Calu3"
+   ],
+   "tables": [
+    "sunshine2023"
+   ],
+   "units": [
+    "sunshine2023"
+   ],
+   "name_patterns": [
+    "calu3",
+    "sunshine"
+   ]
+  },
+  "melanoma": {
+   "registry_groups": [
+    "melanoma"
+   ],
+   "tables": [
+    "frangieh2021"
+   ],
+   "units": [
+    "frangieh2021"
+   ],
+   "name_patterns": [
+    "melanoma",
+    "frangieh"
+   ]
+  },
+  "THP1": {
+   "registry_groups": [
+    "THP1"
+   ],
+   "tables": [],
+   "units": [
+    "papalexi2021_arrayed"
+   ],
+   "name_patterns": [
+    "thp1",
+    "papalexi"
+   ]
+  }
+ },
+ "arms": {
+  "T0": {
+   "what": "t36 reference: the 13 sources of the scored submission",
+   "sources": [
+    "cd4_mix",
+    "h1",
+    "hepg2_nadig",
+    "jurkat_nadig",
+    "k562",
+    "k562_essential",
+    "kolf_chromatin",
+    "kolf_metabolic",
+    "kolf_pan_genome",
+    "kolf_strong",
+    "orion_hct116",
+    "orion_hek293t",
+    "rpe1"
+   ],
+   "recipe_sha256_production": "3109a6d9c6a0305ae73694d7e897dbe2ab35b344034ec9d2b492308898753226"
+  },
+  "R1": {
+   "what": "canonical release r1 of 7 October, 17 sources, as frozen",
+   "sources": [
+    "cd4_mix",
+    "h1",
+    "hepg2_nadig",
+    "hipsci_targeted_19",
+    "jurkat_nadig",
+    "k562",
+    "k562_essential",
+    "kolf_chromatin",
+    "kolf_metabolic",
+    "kolf_pan_genome",
+    "kolf_strong",
+    "orion_hct116",
+    "orion_hek293t",
+    "rpe1",
+    "tian2019_neuron",
+    "tian2021_crispri",
+    "xu2023"
+   ],
+   "release_sha256": "0650d1d610e05b5cb5fea3c3695dff67bec14443c9df2708121f84e8f8771c8c"
+  },
+  "T1": {
+   "what": "DATI-TRANSFER T1: release r1 without the Tian 2019 neuron vote on RFK, 16 sources",
+   "sources": [
+    "cd4_mix",
+    "h1",
+    "hepg2_nadig",
+    "hipsci_targeted_19",
+    "jurkat_nadig",
+    "k562",
+    "k562_essential",
+    "kolf_chromatin",
+    "kolf_metabolic",
+    "kolf_pan_genome",
+    "kolf_strong",
+    "orion_hct116",
+    "orion_hek293t",
+    "rpe1",
+    "tian2021_crispri",
+    "xu2023"
+   ],
+   "release_sha256": "277ae3441b78c9a1ebf79149cff914fb494d8fff09529b367e9f42cb6a76ffd8"
+  },
+  "P4": {
+   "what": "the four lineages of the t22/t25/t28 recipe, on the t36 tables: K562, CD4T, HCT116, HEK293T",
+   "sources": [
+    "cd4_mix",
+    "k562",
+    "orion_hct116",
+    "orion_hek293t"
+   ]
+  }
+ },
+ "folds_C": [
+  {
+   "id": "C-K562",
+   "lineage": "K562",
+   "truth": [
+    {
+     "table": "k562",
+     "role": "primary"
+    }
+   ],
+   "regime": "C",
+   "exclude_tables": [
+    "dixit2016",
+    "k562",
+    "k562_essential",
+    "k562_gwps_sc",
+    "norman2019"
+   ],
+   "exclude_units": [
+    "dixit2016_d13",
+    "dixit2016_d7",
+    "dixit2016_high_moi",
+    "k562_essential",
+    "k562_gwps_a",
+    "k562_gwps_b",
+    "norman2019"
+   ],
+   "exclude_name_patterns": [
+    "k562",
+    "dixit",
+    "norman",
+    "adamson",
+    "replogle_k562",
+    "gwps"
+   ],
+   "arm_sources": {
+    "T0": [
+     "cd4_mix",
+     "h1",
+     "hepg2_nadig",
+     "jurkat_nadig",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hct116",
+     "orion_hek293t",
+     "rpe1"
+    ],
+    "R1": [
+     "cd4_mix",
+     "h1",
+     "hepg2_nadig",
+     "hipsci_targeted_19",
+     "jurkat_nadig",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hct116",
+     "orion_hek293t",
+     "rpe1",
+     "tian2019_neuron",
+     "tian2021_crispri",
+     "xu2023"
+    ],
+    "T1": [
+     "cd4_mix",
+     "h1",
+     "hepg2_nadig",
+     "hipsci_targeted_19",
+     "jurkat_nadig",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hct116",
+     "orion_hek293t",
+     "rpe1",
+     "tian2021_crispri",
+     "xu2023"
+    ],
+    "P4": [
+     "cd4_mix",
+     "orion_hct116",
+     "orion_hek293t"
+    ]
+   },
+   "panel_targets_still_voted": {
+    "T0": 300,
+    "R1": 300,
+    "T1": 300,
+    "P4": 299
+   },
+   "targets": "panel targets with a finite prediction and a finite primary truth",
+   "inference_inputs": "unperturbed controls of the held lineage only"
+  },
+  {
+   "id": "C-CD4T",
+   "lineage": "CD4T",
+   "truth": [
+    {
+     "table": "cd4_Rest",
+     "role": "primary"
+    },
+    {
+     "table": "cd4_Stim8hr",
+     "role": "stimulus"
+    },
+    {
+     "table": "cd4_Stim48hr",
+     "role": "stimulus"
+    }
+   ],
+   "regime": "C",
+   "exclude_tables": [
+    "cd4_Rest",
+    "cd4_Stim48hr",
+    "cd4_Stim8hr",
+    "cd4_mix",
+    "shifrut2018"
+   ],
+   "exclude_units": [
+    "D1_Rest",
+    "D1_Stim48hr",
+    "D1_Stim8hr",
+    "D2_Rest",
+    "D2_Stim48hr",
+    "D2_Stim8hr",
+    "D3_Rest",
+    "D3_Stim48hr",
+    "D3_Stim8hr",
+    "D4_Rest",
+    "D4_Stim48hr",
+    "D4_Stim8hr",
+    "shifrut2018"
+   ],
+   "exclude_name_patterns": [
+    "cd4",
+    "shifrut",
+    "marson"
+   ],
+   "arm_sources": {
+    "T0": [
+     "h1",
+     "hepg2_nadig",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hct116",
+     "orion_hek293t",
+     "rpe1"
+    ],
+    "R1": [
+     "h1",
+     "hepg2_nadig",
+     "hipsci_targeted_19",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hct116",
+     "orion_hek293t",
+     "rpe1",
+     "tian2019_neuron",
+     "tian2021_crispri",
+     "xu2023"
+    ],
+    "T1": [
+     "h1",
+     "hepg2_nadig",
+     "hipsci_targeted_19",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hct116",
+     "orion_hek293t",
+     "rpe1",
+     "tian2021_crispri",
+     "xu2023"
+    ],
+    "P4": [
+     "k562",
+     "orion_hct116",
+     "orion_hek293t"
+    ]
+   },
+   "panel_targets_still_voted": {
+    "T0": 300,
+    "R1": 300,
+    "T1": 300,
+    "P4": 300
+   },
+   "targets": "panel targets with a finite prediction and a finite primary truth",
+   "inference_inputs": "unperturbed controls of the held lineage only"
+  },
+  {
+   "id": "C-HCT116",
+   "lineage": "HCT116",
+   "truth": [
+    {
+     "table": "orion_hct116",
+     "role": "primary"
+    }
+   ],
+   "regime": "C",
+   "exclude_tables": [
+    "orion_hct116"
+   ],
+   "exclude_units": [
+    "orion_hct116"
+   ],
+   "exclude_name_patterns": [
+    "hct116",
+    "dld"
+   ],
+   "arm_sources": {
+    "T0": [
+     "cd4_mix",
+     "h1",
+     "hepg2_nadig",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hek293t",
+     "rpe1"
+    ],
+    "R1": [
+     "cd4_mix",
+     "h1",
+     "hepg2_nadig",
+     "hipsci_targeted_19",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hek293t",
+     "rpe1",
+     "tian2019_neuron",
+     "tian2021_crispri",
+     "xu2023"
+    ],
+    "T1": [
+     "cd4_mix",
+     "h1",
+     "hepg2_nadig",
+     "hipsci_targeted_19",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hek293t",
+     "rpe1",
+     "tian2021_crispri",
+     "xu2023"
+    ],
+    "P4": [
+     "cd4_mix",
+     "k562",
+     "orion_hek293t"
+    ]
+   },
+   "panel_targets_still_voted": {
+    "T0": 300,
+    "R1": 300,
+    "T1": 300,
+    "P4": 300
+   },
+   "targets": "panel targets with a finite prediction and a finite primary truth",
+   "inference_inputs": "unperturbed controls of the held lineage only"
+  },
+  {
+   "id": "C-HEK293",
+   "lineage": "HEK293",
+   "truth": [
+    {
+     "table": "orion_hek293t",
+     "role": "primary"
+    }
+   ],
+   "regime": "C",
+   "exclude_tables": [
+    "orion_hek293t",
+    "xu2023"
+   ],
+   "exclude_units": [
+    "orion_hek293t",
+    "xu2023"
+   ],
+   "exclude_name_patterns": [
+    "hek293",
+    "xu2023"
+   ],
+   "arm_sources": {
+    "T0": [
+     "cd4_mix",
+     "h1",
+     "hepg2_nadig",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hct116",
+     "rpe1"
+    ],
+    "R1": [
+     "cd4_mix",
+     "h1",
+     "hepg2_nadig",
+     "hipsci_targeted_19",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hct116",
+     "rpe1",
+     "tian2019_neuron",
+     "tian2021_crispri"
+    ],
+    "T1": [
+     "cd4_mix",
+     "h1",
+     "hepg2_nadig",
+     "hipsci_targeted_19",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hct116",
+     "rpe1",
+     "tian2021_crispri"
+    ],
+    "P4": [
+     "cd4_mix",
+     "k562",
+     "orion_hct116"
+    ]
+   },
+   "panel_targets_still_voted": {
+    "T0": 300,
+    "R1": 300,
+    "T1": 300,
+    "P4": 300
+   },
+   "targets": "panel targets with a finite prediction and a finite primary truth",
+   "inference_inputs": "unperturbed controls of the held lineage only"
+  },
+  {
+   "id": "C-iPSC",
+   "lineage": "iPSC",
+   "truth": [
+    {
+     "table": "kolf_pan_genome",
+     "role": "primary"
+    },
+    {
+     "table": "kolf_strong",
+     "role": "second_library"
+    }
+   ],
+   "regime": "C",
+   "exclude_tables": [
+    "hipsci_targeted_19",
+    "kolf_chromatin",
+    "kolf_metabolic",
+    "kolf_pan_genome",
+    "kolf_strong",
+    "tian2019_ipsc"
+   ],
+   "exclude_units": [
+    "hipsci_gw_fitness",
+    "hipsci_gw_nonfitness",
+    "hipsci_targeted_19",
+    "kolf_chromatin",
+    "kolf_metabolic",
+    "kolf_pan_genome",
+    "kolf_strong",
+    "tian2019_ipsc"
+   ],
+   "exclude_name_patterns": [
+    "kolf",
+    "hipsci",
+    "ipsc"
+   ],
+   "arm_sources": {
+    "T0": [
+     "cd4_mix",
+     "h1",
+     "hepg2_nadig",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "orion_hct116",
+     "orion_hek293t",
+     "rpe1"
+    ],
+    "R1": [
+     "cd4_mix",
+     "h1",
+     "hepg2_nadig",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "orion_hct116",
+     "orion_hek293t",
+     "rpe1",
+     "tian2019_neuron",
+     "tian2021_crispri",
+     "xu2023"
+    ],
+    "T1": [
+     "cd4_mix",
+     "h1",
+     "hepg2_nadig",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "orion_hct116",
+     "orion_hek293t",
+     "rpe1",
+     "tian2021_crispri",
+     "xu2023"
+    ],
+    "P4": [
+     "cd4_mix",
+     "k562",
+     "orion_hct116",
+     "orion_hek293t"
+    ]
+   },
+   "panel_targets_still_voted": {
+    "T0": 300,
+    "R1": 300,
+    "T1": 300,
+    "P4": 300
+   },
+   "targets": "panel targets with a finite prediction and a finite primary truth",
+   "inference_inputs": "unperturbed controls of the held lineage only"
+  },
+  {
+   "id": "C-H1",
+   "lineage": "H1",
+   "truth": [
+    {
+     "table": "h1",
+     "role": "primary"
+    }
+   ],
+   "regime": "C",
+   "exclude_tables": [
+    "h1"
+   ],
+   "exclude_units": [
+    "h1_train",
+    "h1_val"
+   ],
+   "exclude_name_patterns": [
+    "h1"
+   ],
+   "arm_sources": {
+    "T0": [
+     "cd4_mix",
+     "hepg2_nadig",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hct116",
+     "orion_hek293t",
+     "rpe1"
+    ],
+    "R1": [
+     "cd4_mix",
+     "hepg2_nadig",
+     "hipsci_targeted_19",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hct116",
+     "orion_hek293t",
+     "rpe1",
+     "tian2019_neuron",
+     "tian2021_crispri",
+     "xu2023"
+    ],
+    "T1": [
+     "cd4_mix",
+     "hepg2_nadig",
+     "hipsci_targeted_19",
+     "jurkat_nadig",
+     "k562",
+     "k562_essential",
+     "kolf_chromatin",
+     "kolf_metabolic",
+     "kolf_pan_genome",
+     "kolf_strong",
+     "orion_hct116",
+     "orion_hek293t",
+     "rpe1",
+     "tian2021_crispri",
+     "xu2023"
+    ],
+    "P4": [
+     "cd4_mix",
+     "k562",
+     "orion_hct116",
+     "orion_hek293t"
+    ]
+   },
+   "panel_targets_still_voted": {
+    "T0": 300,
+    "R1": 300,
+    "T1": 300,
+    "P4": 300
+   },
+   "targets": "panel targets with a finite prediction and a finite primary truth",
+   "inference_inputs": "unperturbed controls of the held lineage only"
+  }
+ ],
+ "hidden_target_rule": {
+  "function": "int(sha256(symbol utf-8).hexdigest(), 16) % 5",
+  "groups": 5,
+  "test_group": 0,
+  "inner_groups": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "components": "a perturbation label is hidden if ANY of its component genes, after alias reconciliation to the official symbol, is in the hidden group; guides, replicates and combinations follow their genes",
+  "scope": "every source, table, derived statistic, embedding fitted on responses, common vector, pooling and calibration, before it is computed"
+ },
+ "regimes": {
+  "C": "target seen elsewhere, lineage held out: folds_C",
+  "T": "target hidden (test_group) in every source, lineage seen: per lineage, no table removed",
+  "J": "folds_C x hidden test_group: lineage held out AND target hidden in every source"
+ },
+ "panel_hidden_groups": {
+  "0": [
+   "ABCD1",
+   "ACLY",
+   "AKT2",
+   "BRPF1",
+   "COQ10B",
+   "DCP2",
+   "DEK",
+   "DHX35",
+   "DNTTIP1",
+   "EAPP",
+   "EPC2",
+   "FAM120A",
+   "FCGRT",
+   "GIGYF2",
+   "GMEB2",
+   "HSP90AB1",
+   "IFI27L2",
+   "KDM5A",
+   "LENG1",
+   "LMAN1",
+   "MARCKSL1",
+   "MED25",
+   "MLKL",
+   "MLLT10",
+   "MSANTD4",
+   "MTA1",
+   "NABP2",
+   "PBLD",
+   "PDK1",
+   "PINK1",
+   "PKN3",
+   "PLCG1",
+   "PPIP5K2",
+   "PQBP1",
+   "PRDX3",
+   "PRMT6",
+   "PRNP",
+   "PSMB9",
+   "RNF141",
+   "RNF2",
+   "RSRC1",
+   "SHPRH",
+   "SLC25A13",
+   "SNRK",
+   "SRSF5",
+   "STK3",
+   "TBCK",
+   "THAP3",
+   "TIMM50",
+   "TMED3",
+   "TRIB3",
+   "TRMT1",
+   "USP28",
+   "WBP4",
+   "YIPF6",
+   "ZBTB48",
+   "ZC3HAV1",
+   "ZFP62",
+   "ZNF280C",
+   "ZNF282",
+   "ZNF324",
+   "ZNF526",
+   "ZNF543",
+   "ZNF627",
+   "ZNF714",
+   "ZNF740"
+  ],
+  "1": [
+   "AGO1",
+   "AKAP1",
+   "ANKZF1",
+   "AP2A2",
+   "CAT",
+   "CLCN6",
+   "DBF4B",
+   "DBN1",
+   "DCAF16",
+   "DRG2",
+   "FOXO4",
+   "FUBP3",
+   "FXYD5",
+   "HDAC8",
+   "HEATR6",
+   "HMGXB3",
+   "IREB2",
+   "KHDRBS1",
+   "KHSRP",
+   "LMBRD2",
+   "LPCAT3",
+   "MAN2A1",
+   "MAPK12",
+   "MED15",
+   "MYD88",
+   "MYRF",
+   "NAIF1",
+   "NFE2L1",
+   "NUP37",
+   "PAPOLA",
+   "PGLS",
+   "POR",
+   "PRKACA",
+   "RBM4B",
+   "RBM5",
+   "SAP30L",
+   "SCAF8",
+   "SEMA4F",
+   "SFXN4",
+   "SLC44A1",
+   "SMYD2",
+   "SUPT7L",
+   "TARBP2",
+   "TDRD7",
+   "TEX2",
+   "TMEM104",
+   "TMEM41B",
+   "TRAPPC6A",
+   "VIM",
+   "ZBTB41",
+   "ZC2HC1A",
+   "ZKSCAN3",
+   "ZNF22",
+   "ZNF410",
+   "ZNF462",
+   "ZNF514",
+   "ZNF786",
+   "ZRANB3"
+  ],
+  "2": [
+   "ASCC2",
+   "BCKDK",
+   "BCL7C",
+   "CAPRIN2",
+   "CARM1",
+   "CHD3",
+   "CHD6",
+   "COIL",
+   "DEAF1",
+   "DHRS1",
+   "DTNBP1",
+   "E2F4",
+   "EPHB2",
+   "FOXN2",
+   "FZD2",
+   "HMGN4",
+   "HSBP1",
+   "IFNGR2",
+   "MAPK7",
+   "MED13",
+   "NGLY1",
+   "NIPAL3",
+   "PARP3",
+   "PCGF6",
+   "PDE6D",
+   "PDK3",
+   "PHF23",
+   "PIM2",
+   "PIN1",
+   "PLAGL2",
+   "PRMT7",
+   "PTOV1",
+   "PYCR1",
+   "RBM26",
+   "RC3H2",
+   "RFK",
+   "RNF10",
+   "SSR4",
+   "STAT6",
+   "TAF15",
+   "TAF4",
+   "TBC1D19",
+   "TEAD4",
+   "TFCP2",
+   "TMCO6",
+   "TMEM186",
+   "TTBK2",
+   "TWF2",
+   "UPF3B",
+   "VAPB",
+   "ZDHHC4",
+   "ZKSCAN2",
+   "ZNF219",
+   "ZNF25",
+   "ZNF32",
+   "ZNF444",
+   "ZNF496",
+   "ZNF507",
+   "ZNF641",
+   "ZNF777",
+   "ZNF783"
+  ],
+  "3": [
+   "ADNP",
+   "AKIRIN1",
+   "ANP32B",
+   "API5",
+   "ARL14EP",
+   "BCL6",
+   "C5orf22",
+   "CAND1",
+   "CDK8",
+   "CHKB",
+   "COMMD8",
+   "CSNK2A1",
+   "CYTH2",
+   "DLAT",
+   "EEF1A2",
+   "ELK1",
+   "FHL3",
+   "GLYR1",
+   "GPATCH8",
+   "GRAMD1A",
+   "HDAC1",
+   "IFNAR2",
+   "IL10RB",
+   "KIF21B",
+   "KIF2A",
+   "KMT2A",
+   "LDLR",
+   "MBD4",
+   "MSI2",
+   "MTF1",
+   "MTM1",
+   "MYPOP",
+   "NCLN",
+   "NICN1",
+   "NIPSNAP3A",
+   "PATL1",
+   "PI4KB",
+   "PNP",
+   "PPIF",
+   "PRKAB2",
+   "PRMT2",
+   "PSKH1",
+   "R3HCC1L",
+   "RAB11FIP5",
+   "RABEP2",
+   "RBM18",
+   "REV1",
+   "SH2D3A",
+   "SIN3B",
+   "SLIRP",
+   "SMARCA5",
+   "SND1",
+   "SNN",
+   "SOCS5",
+   "SPATA20",
+   "STT3A",
+   "SYVN1",
+   "TESK2",
+   "TIMM17B",
+   "TMEM209",
+   "TMF1",
+   "TXNDC16",
+   "UROS",
+   "ZBTB34",
+   "ZDHHC12",
+   "ZKSCAN1",
+   "ZNF16",
+   "ZNF397",
+   "ZNF530",
+   "ZNF670"
+  ],
+  "4": [
+   "ALG12",
+   "ANKRD52",
+   "BRD1",
+   "CCDC112",
+   "DDHD1",
+   "DMTF1",
+   "DVL3",
+   "E2F1",
+   "EPM2AIP1",
+   "EZH2",
+   "GLI3",
+   "GTF2IRD1",
+   "HMGN3",
+   "HOMEZ",
+   "MAP2K2",
+   "MTHFSD",
+   "NT5DC1",
+   "PAN2",
+   "PCGF1",
+   "PDCD4",
+   "PHF11",
+   "PHF19",
+   "PHF8",
+   "POLD4",
+   "PTMS",
+   "RAB5A",
+   "S100A11",
+   "SLC39A1",
+   "SMARCC2",
+   "SNX4",
+   "TBC1D13",
+   "THAP7",
+   "TMEM147",
+   "TMEM79",
+   "TRIM35",
+   "TRIP4",
+   "TRPC4AP",
+   "UNK",
+   "ZHX3",
+   "ZNF174",
+   "ZNF251",
+   "ZNF628",
+   "ZNF768",
+   "ZNF784",
+   "ZNF821"
+  ]
+ },
+ "note": "panel_hidden_groups lists the 300 panel symbols; the rule applies to any symbol of any source. A same-target transfer has no T/J prediction beyond its cis head: that is declared, not a leak."
+}

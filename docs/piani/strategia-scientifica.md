@@ -1,6 +1,6 @@
 # R-LEAD — archivio, banca riusabile e transfer esteso
 
-- **Aggiornato:** 8 ottobre 2026, 17:23 Europe/Rome, pianificazione lead; stato **in corso**. Ultimo stato di esecuzione documentato: release r1 fittata il 7/10, nessuna nuova corsa verificata da questa analisi.
+- **Aggiornato:** 8 ottobre 2026, 18:12 Europe/Rome, VALIDAZIONE (coordinamento e contratto v1, sezione sotto); prima, 17:23, pianificazione lead; stato **in corso**. Ultimo stato di esecuzione documentato: release r1 fittata il 7/10, nessuna nuova corsa verificata da questa analisi.
 - **Sottoattività lead dell'8/10:** Codex, chat di pianificazione del proprietario in `vcc2026`, analisi e riconto in [lead_piano_2026-10-08](../../reports/analisi/lead_piano_2026-10-08/README.md). Lavoro disgiunto dai runner e dalle assegnazioni precedenti; nessun job, worker, download di dati/pesi, invio o push avviato.
 - **Prossima sequenza scelta:** mantenere t36 come riserva; candidate r2 senza il voto RFK dubbio e centratura su tutti i target del training come contrasti separati; completare ruoli/adapter e consumo D-053 su un'unica banca. KO/CRISPRa in rami distinti. PIE congelato è il primo confronto esterno, subordinato a split, assi, asset e prova di fattibilità; GEARS e nuovi correttori dopo. [Decisioni, banco e precedenti](../../reports/analisi/lead_piano_2026-10-08/README.md).
 - **Consegna pianificata:** 02:00 del **9 ottobre**, Europe/Rome; freeze del candidato entro 23:00 dell'8/10, da anticipare se i tempi misurati lo richiedono. Nuovo candidato solo con confronto completato, altrimenti t36. Copertura D-053 completa e nuovo massimo ufficiale non promessi entro stanotte; l'autorizzazione di questa sessione riguarda l'analisi/pianificazione.
@@ -15,6 +15,22 @@
 - **Orario concordato:** 5 ottobre, freeze fonti entro **23:30 Europe/Rome**, poi rifit finale/generazione senza attendere altre ingestion; obiettivo upload entro **02:00 del 6 ottobre**, non promessa. Pacchetti pronti partono subito; ultima release ammette solo fonti verificate, altre restano blocchi nominati. Nessuna aggiunta silenziosa durante generazione.
 - **Percorso completo ancora aperto:** HIPSCI, Tian/Norman, SCP/KO/A549 e altre voci del catalogo richiedono ruoli/adapter/QC documentati. Non sono esclusioni definitive. Campioni cellulari persistenti non sono automaticamente consumati dal lineare. H1 test protetta; produzione non è validazione C/J.
 - **Chiusura:** banca, campioni, release e consumo verificati per tutto il catalogo pertinente, training esteso, generazione e valutazione. Un export o invio riuscito non chiude da solo D-053.
+
+## Coordinamento dell'8 ottobre: tre incarichi, una sede
+
+Scritto da VALIDAZIONE (Claude Code, sessione `8a8ca58a`), che per incarico del proprietario è l'unico autore di questa scheda, dei registri, dello stato generale, dei checkpoint e di STRADE finché dura l'incarico. Gli stati sotto sono **osservati** sui file e su Kaggle agli orari indicati (letti con `date`), non riferiti a voce; gli altri due incarichi consegnano i loro aggiornamenti nelle proprie cartelle.
+
+| Incarico | Sessione | Cartella | Possiede | Stato osservato |
+|---|---|---|---|---|
+| VALIDAZIONE | Claude Code `8a8ca58a` | [validazione_indipendente](../../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/README.md) | protocollo, banco, controlli, confronto, raccomandazione | 18:09: [contratto v1](../../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/PROTOCOLLO_v1.md) e manifest dei fold congelati, prima di ogni numero |
+| DATI-TRANSFER | Codex `01a11c34` | `reports/modelli/dati_transfer_2026-10-08_01a11c34/` | banca, release, trainer, pipeline di produzione | 18:05: lanciato il fit di produzione di T1 (`davideferrante11/vcc-fit-banca-canonica-dt1-01a11c34-r1`, `RUNNING` alle 18:06); release T1 = r1 senza il voto RFK di Tian 2019; T2 non ancora consegnato |
+| MODELLI-ESTERNI | Codex `01a11c35` | `reports/analisi/modelli_esterni_01a11c35_2026-10-08/` | ricerca e adattatore esterno | 17:58: proposta PIE r1 in attesa di ratifica; adattatore e test locali; nessun peso scaricato e nessun job nel suo verbale |
+
+- **Contratto unico:** fold a lignaggio escluso, bracci T0/R1/T1/P4, interfaccia dei candidati, metriche e regola di adozione stanno nel contratto v1 e nel suo [manifest](../../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/manifest_fold_v1.json). Risponde alle richieste scritte dai due incarichi; una modifica è una versione nuova con l'elenco dei confronti da rieseguire.
+- **Regola di consegna:** solo un esito «valido e favorevole» del §8 del contratto promuove un candidato rispetto a t36; con esito inconcludente, sfavorevole o invalido la consegna resta t36. Punti decisionali invariati: freeze alle 23:00 dell'8/10, verifica della consegna entro le 02:00 del 9/10.
+- **Risorse osservate alle 18:06** ([snapshot](../../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/preflight_kaggle_r1.json)): una sessione CPU attiva su `davideferrante11` (il fit T1), nessuna sugli altri due account fra gli ultimi 20 kernel; quota e Colab non letti. Il banco di VALIDAZIONE usa una sessione CPU alla volta su `davideferrante11`, con le stesse fonti montate dal fit r1; nessuna GPU.
+- **Richieste a DATI-TRANSFER:** per T2 consegnare, oltre alla produzione, gli effetti di ogni fold del manifest con l'elenco con hash delle righe usate per ogni vettore comune (nessuna riga del lignaggio escluso), la prova di parità a ramo nullo e il test che altera le risposte escluse; `candidate.json` come al §3 del contratto.
+- **Richieste a MODELLI-ESTERNI:** scheda di esposizione del checkpoint per ogni lignaggio dei fold e per H1; effetti per fold nel formato dello stadio 100, sul supporto comune e sul pannello intero con ripiego; nessuna scala scelta sulla verità del fold valutato.
 
 ## Riuso e verifiche
 

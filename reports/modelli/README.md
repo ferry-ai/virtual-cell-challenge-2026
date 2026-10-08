@@ -17,6 +17,7 @@ CP-0049 e CP-0051. [Indice generale](../README.md).
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 08/10 | [dati_transfer_2026-10-08_01a11c34/](dati_transfer_2026-10-08_01a11c34/) | DATI-TRANSFER (Codex `01a11c34`): release T1 = r1 senza il voto RFK di Tian 2019, fit di produzione di T1, banca per fold e contrasto di centratura T2 | in corso; sviluppo del proprietario dell'incarico, da verificare con il [contratto v1](../analisi/validazione_indipendente_8a8ca58a_2026-10-08/PROTOCOLLO_v1.md); nessun punteggio | ★★★ |
 | 07/10 | [banca_canonica_2026-10-07/](banca_canonica_2026-10-07/) | **Ingresso unico** archivio → banca → release → fit: registro canonico delle fonti, derivazioni dalla banca senza reingestione, release r1 a 17 fonti, fit del transfer t25 con ricevuta di consumo e secondo avvio identico | misurato, in produzione; nessun punteggio né validazione; D-053 aperto (17 unità su 45 fuori da ogni trainer) | ★★★ |
 | 05/10 | [percorso_riusabile_2026-10-05/](percorso_riusabile_2026-10-05/) | Provenienza e persistenza cloud della banca, inventario senza omissioni e contratto di uso nel trainer | D4 verificato nelle versioni salvate; integrazione estesa ancora aperta | ★★★ |
 | 04/10 | [ibrido_esecuzione_2026-10-04/](ibrido_esecuzione_2026-10-04/) | Banca CD4 completa per donatore in esecuzione; preparazione CPU di tre fold e lanciatore GPU del primo ibrido aggregato | Campagna avviata; primo cohort ridotto, catalogo e integrazione ancora incompleti | ★★★ |
