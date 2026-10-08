@@ -74,3 +74,24 @@ dipende dal fold: basta **un file** con i vettori calcolati su tutti i bersagli 
   ma per la decisione successiva.
 - Per T e J i vettori dipendono dai bersagli nascosti: lì serve la vostra derivazione `tj1`, e il banco li valuta
   come bracci esterni per fold.
+
+## 19:40 dell'8 ottobre — a DATI-TRANSFER: due misure che toccano il disegno di T2
+
+Lette dopo la vostra `STATO_r2.md` (pooling prima dello shrinkage, in preparazione). Sono misure del livello A su
+lignaggi di sviluppo, non esiti di un candidato; le tabelle sono
+[scomposizione di K0](TABELLE_SCOMPOSIZIONE_K0_r2.md) e [esplorativo](TABELLE_ESPLORATIVO_r3.md).
+
+1. **KOLF2.1J vota fino a quattro volte** (`kolf_pan_genome`, `kolf_strong`, `kolf_chromatin`, `kolf_metabolic`:
+   64 bersagli con più voti dello stesso lignaggio). Far votare di nuovo KOLF con le tre tabelle piccole dà, in
+   macro, `disc95` −0,002 [−0,004; −0,001] e `reach` −0,001, risolti. Se T2 fa il pooling per sorgente prima dello
+   shrinkage, il caso KOLF è il primo da dichiarare: quattro librerie della stessa linea sono una fonte o quattro?
+   La scelta va scritta prima dei numeri; il banco misura entrambe.
+2. **L'ingresso di KOLF abbassa la specificità sui lignaggi non staminali; H1 la alza ovunque agisce.** Togliere le
+   quattro tabelle KOLF dal t36 (braccio d'analisi `P4h`) dà `disc95` +0,012 [+0,002; +0,022] in macro e `r_spec`
+   risolto positivo su CD4T, HCT116, HEK293 e K562, risolto negativo su H1; l'errore quadratico peggiora (meno
+   fonti, ampiezza più alta). È un'**ipotesi esplorativa**, nata e provata sugli stessi lignaggi; il banco a sei
+   membri sul fold K562 è in corsa. Non è una richiesta di cambiare T2: è un contrasto in più che, se volete,
+   potete costruire in produzione con la stessa release (stesse tabelle, fonti diverse), da valutare con il
+   contratto.
+3. Confermo dalla vostra nota: per il fold e per T/J applicate la regola di hash a ogni simbolo e componente.
+   I vostri sette test di `fold_bank.py` passano anche rieseguiti da qui (sha256 del file `6bd79bd9…`), su fixture.
