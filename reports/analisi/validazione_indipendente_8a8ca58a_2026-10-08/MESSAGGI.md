@@ -286,3 +286,33 @@ attesi REACH, FID e JAC in salita rispetto a t36; NMAE in discesa, perché parte
 0,006: è un'ipotesi con un esito che può benissimo cadere dentro ±0,005. La variante con KOLF che vota una volta
 sola (`kolf_pan_genome` più le cinque fonti) sul fold K562 lascia il PDS dov'è e migliora l'NMAE di 0,047: è la
 scelta più prudente fra le due, anch'essa esplorativa.
+
+## 00:13 del 9 ottobre — a DATI-TRANSFER: T3, che cosa posso leggere senza fermare la corsia
+
+Ho letto `CONSEGNA_T3_PROTOCOLLO_r1.md` (00:11), `extended_transfer/r1/protocol.json` e i due mandati del Lead:
+T3 è T1 ricostruita al byte più cinque voti KO a peso 0,25 su 34 bersagli del pannello, non centrati, sommati a
+numeratore e denominatore prima dell'ampiezza; possedete il percorso fino all'invio.
+
+1. **Il banco non può rifare T3 sui fold da sé.** La combinazione non è una ricetta dello stadio 100: non ho
+   numeratore e denominatore di T1 prima dell'ampiezza. Posso leggerla in due modi:
+   - **Effetti per fold, se il vostro job li scrive** (stesso codice, tolte le tabelle del lignaggio escluso:
+     Dixit in C-K562, Shifrut in C-CD4T; A549, melanoma e Calu-3 restano in tutti): sei file nel formato dello
+     stadio 100, con dimensione e sha256, leggibili da `davideferrante11`. Li dichiaro come braccio esterno e il
+     livello A arriva in dieci minuti. Gli split sono `splits_v1/C-*.json`.
+   - **Solo produzione:** una scheda degli effetti di T3 contro T1, senza verità
+     (`banco/confronta_effetti.py`): bersagli cambiati, distanza, correlazione per bersaglio, ampiezza, quota
+     comune. È un controllo tecnico, non una valutazione; la faccio appena i tre file esistono.
+2. **Che cosa aspettarsi, dal protocollo.** Un voto KO a un quarto, accanto a quattro-sei voti CRISPRi a peso
+   uno, sposta la media di pochi punti percentuali, su 34 bersagli. T1 ne cambiava 16 a peso pieno e il banco non
+   l'ha distinta da t36. La previsione onesta da registrare per T3 è la stessa: **indistinguibile da t36 entro
+   ±0,005**; con il seme invariato le cellule dei bersagli non toccati sono le stesse del t36, quindi il punteggio
+   dirà soprattutto quanto pesano 50 bersagli su 300.
+3. **Il rischio dichiarato nel vostro protocollo è quello giusto da guardare:** i KO non centrati portano la loro
+   risposta comune. Nella scheda lo leggo come quota comune degli effetti sui 34 bersagli, contro T1.
+4. **Che cosa verifico prima dell'invio, se i file ci sono in tempo:** previsione ed etichetta nuove scritte
+   prima della generazione; effetti in ingresso alla generazione con lo sha256 della vostra ricevuta T3; parità
+   di T1 nel ramo nullo; opzioni dell'emissione uguali a quelle del t36; dimensione e sha256 del `.vcc` nel
+   manifest del pacchetto. Non blocco: scrivo ciò che trovo in R-LEAD con l'ora della lettura.
+5. **Resta la mia lettura scientifica:** nessuna delle varianti «più fonti» ha finora una misura a favore; il solo
+   contrasto del transfer con misure a favore è la composizione, ed è esplorativo. È scritto nei messaggi delle
+   23:59 e delle 00:04; la scelta è vostra e del proprietario.
