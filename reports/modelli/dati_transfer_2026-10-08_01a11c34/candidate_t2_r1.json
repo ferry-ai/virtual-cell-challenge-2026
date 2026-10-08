@@ -1,0 +1,94 @@
+{
+  "utc": "2026-10-08T20:09:58.713821+00:00",
+  "name": "dati-transfer-t2-01a11c34-r1",
+  "status": "frozen effect candidate; independent comparative validation pending",
+  "effects": {
+    "A": {
+      "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/t2_r1/effects/effects_A.npz",
+      "bytes": 18821797,
+      "sha256": "d496a38dad7f597cf586199d3ffe40c430e957ba82c78a8fe8da4bcedd6e0ab2"
+    },
+    "B": {
+      "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/t2_r1/effects/effects_B.npz",
+      "bytes": 18821797,
+      "sha256": "d496a38dad7f597cf586199d3ffe40c430e957ba82c78a8fe8da4bcedd6e0ab2"
+    },
+    "C": {
+      "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/t2_r1/effects/effects_C.npz",
+      "bytes": 18821797,
+      "sha256": "d496a38dad7f597cf586199d3ffe40c430e957ba82c78a8fe8da4bcedd6e0ab2"
+    }
+  },
+  "diagnostics": {
+    "A": {
+      "shape": [
+        300,
+        18533
+      ],
+      "observed": 4461086,
+      "missing": 1098814,
+      "l2_vs_T1": 32.15907229881454,
+      "max_abs_vs_T1": 0.7733911871910095,
+      "rms": 0.13638266779321737
+    },
+    "B": {
+      "shape": [
+        300,
+        18533
+      ],
+      "observed": 4461086,
+      "missing": 1098814,
+      "l2_vs_T1": 32.15907229881454,
+      "max_abs_vs_T1": 0.7733911871910095,
+      "rms": 0.13638266779321737
+    },
+    "C": {
+      "shape": [
+        300,
+        18533
+      ],
+      "observed": 4461086,
+      "missing": 1098814,
+      "l2_vs_T1": 32.15907229881454,
+      "max_abs_vs_T1": 0.7733911871910095,
+      "rms": 0.13638266779321737
+    }
+  },
+  "receipt": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/final_t2/r1/fit/completion_r1/t2_consumption.json",
+    "bytes": 12133,
+    "sha256": "987ef721a1824a389e07763167e31474eef1a7024666de40ca81692d97ffcc79"
+  },
+  "cloud_verification": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/final_t2/r1/fit/completion_r1/verification.json",
+    "bytes": 862,
+    "sha256": "882ea0bc8aed3b6b705aaa682052d9eb9ee46b776644d9de4ced451ad1b8b30d"
+  },
+  "parent_release": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/release_t1_r1.json",
+    "bytes": 29170,
+    "sha256": "277ae3441b78c9a1ebf79149cff914fb494d8fff09529b367e9f42cb6a76ffd8"
+  },
+  "common_release": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/common_release_production_r1.json",
+    "bytes": 17052,
+    "sha256": "5cb886a2f705e58e1b9a4fb1e979009dc36e1b8a4a9e5b6301764bc2594c4b11"
+  },
+  "fold_common_release": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/common_release_T_r1.json",
+    "bytes": 40566,
+    "sha256": "cd06fac0ce9962031df150919c9d3f177d98dd13f0aa35daebdcc9abbf98d33b"
+  },
+  "units": "natural-log fold change",
+  "amplitude_applied": 1.576,
+  "cis_applied": true,
+  "emitter_applied": false,
+  "context_dependence": "A/B/C effects are identical; this transfer does not learn a context-specific response",
+  "actual_output_arrays_independently_rehashed": true,
+  "t1_null_parity": true,
+  "claims_predictive_improvement": false,
+  "claims_complete_corpus": false,
+  "cellular_training": false,
+  "cell_generation": false,
+  "VCC_submission": false
+}

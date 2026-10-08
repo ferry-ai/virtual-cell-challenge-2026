@@ -21,6 +21,9 @@ KINDS=('alltargets','joint','common_cd4','final_t2')
 def call(owner,args):
     env={k:v for k,v in os.environ.items() if k not in ('KAGGLE_CONFIG_DIR','KAGGLE_USERNAME','KAGGLE_KEY','KAGGLE_API_TOKEN')}
     env['KAGGLE_CONFIG_DIR']=str(Path.home()/CONFIG[owner]);env['PYTHONIOENCODING']='utf-8'
+    # The SDK writes its downloaded notebook log with the process default encoding.
+    # Console encoding alone does not prevent Windows cp1252 log-write failures.
+    env['PYTHONUTF8']='1'
     command=([sys.executable,str(HERE/'push_diagnostic.py'),args[3]] if args[:3]==['kernels','push','-p']
              else [str(Path(sys.executable).with_name('kaggle.exe')),*args])
     run=subprocess.run(command,env=env,
