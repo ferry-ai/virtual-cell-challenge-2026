@@ -1,0 +1,46 @@
+{
+ "input_files": {
+  "count_sum.npz": "/kaggle/input/datasets/davideferante/vcc-norman-bank-samples-r1/bank__norman2019__count_sum.npz",
+  "mask.npz": "/kaggle/input/datasets/davideferante/vcc-norman-bank-samples-r1/bank__norman2019__mask.npz",
+  "rows.csv": "/kaggle/input/datasets/davideferante/vcc-norman-bank-samples-r1/samples__norman2019__bank_rows.csv",
+  "complete.json": "/kaggle/input/datasets/davideferante/vcc-norman-bank-samples-r1/bank__norman2019__complete.json"
+ },
+ "input_pins": {
+  "count_sum.npz": {
+   "bytes": 6241082,
+   "sha256": "b2703d05c4fc3c75bd8402878e1e8cb306bc26c2d9d2b831ca19b3b3aeaf8808"
+  },
+  "mask.npz": {
+   "bytes": 159689,
+   "sha256": "13a31584013e609ab2b1d7071b278504bfb8c1af30cdd3c1dc9234b27914f52d"
+  },
+  "rows.csv": {
+   "bytes": 17985,
+   "sha256": "bf8048f773920707175d5c5b8e68e8b1b4567979d872c637984e72e392ab9e72"
+  },
+  "complete.json": {
+   "bytes": 1802,
+   "sha256": "f8fe8f34edc0ac850dd4bc9525e5e180803bc60e78e11eb9796f10cda12b4519"
+  }
+ },
+ "params_sha256": "0d2cf6ae4410619a575d1815a5d3fbc222fb428c15c3c90168bbcd919535b122",
+ "resources": {
+  "utc": "2026-10-08T16:55:24.154630+00:00",
+  "ram_available_bytes": 32648998912,
+  "disk_free_bytes": 20940152832,
+  "cpu": 4
+ },
+ "admitted_rows": 102,
+ "split": {
+  "id": "production-01a11c34-r1",
+  "regime": "production",
+  "held_groups": [],
+  "hidden_targets": [],
+  "protected_units": [
+   "h1_test"
+  ],
+  "group_aliases": {},
+  "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+ },
+ "learned_statistics_started": false
+}

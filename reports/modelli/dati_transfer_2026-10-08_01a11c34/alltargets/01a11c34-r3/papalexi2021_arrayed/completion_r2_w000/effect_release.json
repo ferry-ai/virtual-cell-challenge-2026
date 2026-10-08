@@ -1,0 +1,148 @@
+{
+ "contexts": [
+  {
+   "identity": {
+    "study": "papalexi2021_thp1_arrayed_ko",
+    "line_group": "THP1",
+    "context": "THP-1",
+    "condition": "UNREPORTED@papalexi2021_thp1_arrayed_ko",
+    "modality": "KO",
+    "chemistry": "10x 3' (ECCITE)"
+   },
+   "targets_expected": [
+    "ATF2",
+    "CAV1",
+    "ETV7",
+    "IFNGR1",
+    "IFNGR2",
+    "IRF1",
+    "IRF7",
+    "STAT2"
+   ],
+   "controls_cells": 2009,
+   "donors": [
+    "UNREPORTED@papalexi2021_thp1_arrayed_ko"
+   ],
+   "chunks": [
+    {
+     "file": "context000_chunk00000.npz",
+     "targets": 7
+    }
+   ],
+   "targets_derived": [
+    "ATF2",
+    "CAV1",
+    "ETV7",
+    "IFNGR1",
+    "IRF1",
+    "IRF7",
+    "STAT2"
+   ],
+   "target_cells_contributing": 6013,
+   "estimator_rows_accessed": 9,
+   "status": "derived",
+   "physical_cells_read": 0,
+   "common_file": "context000_common.npz",
+   "common_support_genes": 10736,
+   "targets_below_estimator_eligibility": [
+    "IFNGR2"
+   ],
+   "bank_rows_in_fold": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    10
+   ],
+   "units": "natural-log fold change; fractions on context measured axis; original pseudocount and shrink"
+  }
+ ],
+ "target_cells_contributing": 6013,
+ "physical_cells_read": 0,
+ "scope": "aggregated effects; no cellular training",
+ "unit": "papalexi2021_arrayed",
+ "split": {
+  "id": "production-01a11c34-r1",
+  "regime": "production",
+  "held_groups": [],
+  "hidden_targets": [],
+  "protected_units": [
+   "h1_test"
+  ],
+  "group_aliases": {},
+  "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+ },
+ "params_sha256": "30ebb8c8fd9e71f6fe6fd0405fedeed8e90970aec1fc79c1f52aa4c4c88f75b1",
+ "mapping_evidence": {
+  "path": "C:/Users/ferra/vcc2026-data/external/annotation/gencode.v50.basic.annotation.gtf.gz",
+  "bytes": 79970394,
+  "sha256": "5b9ad9aa71f6ab5d55123c51f74723644a895bc0cbaa9cee8fbc11bb9dec0bf7",
+  "policy": "exact Gencode v50 gene_name, no guide or alias inference"
+ },
+ "bank": {
+  "unit": "papalexi2021_arrayed",
+  "kernel": "davidmaisterx/vcc-derivatives-scp-ko-r1",
+  "relative_path": "bank/papalexi2021_arrayed",
+  "files": {
+   "count_sum.npz": {
+    "bytes": 294182,
+    "sha256": "9f104e816943e34e2368b90c41a8f85cd66fca079b579b1f39497f7dbbf799f1"
+   },
+   "mask.npz": {
+    "bytes": 31119,
+    "sha256": "95f30902e3b0c41315b77591fb8c06b3a8017a4f91b548039544721e0c697ffa"
+   },
+   "rows.csv": {
+    "bytes": 1050,
+    "sha256": "52b9583c0cf486395660753eb9415dddd57bc5f737547ebb670f32f2546e27fc"
+   },
+   "complete.json": {
+    "bytes": 1455,
+    "sha256": "44d43fc152f51ba4bd897311b64b420818cc9f1d9e40b893607f703eac085815"
+   }
+  },
+  "producer": {
+   "kernel_id": 137174200,
+   "version": 1,
+   "private": true,
+   "version_ref": "davidmaisterx/vcc-derivatives-scp-ko-r1/versions/1",
+   "saved_source_sha256": "d9ee02bc16383dc5c87739337e6c3e0cb7af7d623e582bd84c6c8cd6ff282e93",
+   "version_stable_during_output_read": true
+  },
+  "mount": {
+   "kind": "kernel",
+   "ref": "davidmaisterx/vcc-derivatives-scp-ko-r1"
+  }
+ },
+ "selection_sha256": "ff05c32397a05149ccc79b65b4836fd28db0be230761525bc75ecc4045236f88",
+ "selection_counts": {
+  "effect_target": 6017,
+  "unresolved_target_mapping": 958,
+  "control": 2009
+ },
+ "bank_cells": 8984,
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "sampled_cells_read": 0,
+ "claims_complete_corpus": false,
+ "model_fit": false,
+ "not_a_score": true,
+ "seconds": 0.5639468969999939,
+ "outputs": {
+  "effects/context000_chunk00000.npz": {
+   "bytes": 1043585,
+   "sha256": "880975e26ce9fc5023f2f23bdd2cfadcf618def535ef17dd327e4c7c4c986a95"
+  },
+  "effects/context000_common.npz": {
+   "bytes": 194485,
+   "sha256": "5eadf01d6f4c8f27e132df42c71b2c157caa2d89b0a0e2097ed47228ad086796"
+  },
+  "effects/context000_receipt.json": {
+   "bytes": 1119,
+   "sha256": "4578006fed10208cc284ce5e815740a342a6883994f82526b4780450b2428f18"
+  }
+ }
+}

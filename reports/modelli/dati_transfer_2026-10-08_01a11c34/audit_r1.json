@@ -1,0 +1,4665 @@
+{
+  "schema": 1,
+  "utc": "2026-10-08T16:00:57.168749+00:00",
+  "scope": "verified rows metadata only; raw matrices and current cloud state not checked",
+  "inputs": {
+    "registro_fonti_r1.json": {
+      "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/banca_canonica_2026-10-07/registro_fonti_r1.json",
+      "bytes": 143233,
+      "sha256": "107ab6088479eda7179f795f90106a66061999000eee4b4cf8347e1700496195"
+    },
+    "state.json": {
+      "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/banca_canonica_2026-10-07/rows_r1/state.json",
+      "bytes": 74888,
+      "sha256": "73a47b3a6c3cac28cabba207e5536502b74fa734912737bf8a698cebbe384b56"
+    },
+    "release_r1.json": {
+      "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/banca_canonica_2026-10-07/fit/release_r1.json",
+      "bytes": 25278,
+      "sha256": "0650d1d610e05b5cb5fea3c3695dff67bec14443c9df2708121f84e8f8771c8c"
+    }
+  },
+  "units": {
+    "D1_Rest": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-bank-cd4-1-3-rest-r2/bank/D1_Rest/rows.csv",
+          "sha256": "8d07d38d37999376a60b1f3fa0eeaa0405e370bc3d10171cdac9e71a132bf16b",
+          "rows": 12092
+        }
+      ],
+      "bank_cells": 1750820,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "Rest",
+            "context": "CD4T D1 Rest",
+            "donor_or_clone": "D1",
+            "line_group": "CD4T",
+            "modality": "CRISPRi",
+            "study": "cd4_marson2025"
+          },
+          "bank_cells": 1750820
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 1674277,
+        "control": 76543
+      },
+      "native_label_count": 12092,
+      "historical_destination": {
+        "source": "cd4_mix",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "cd4_mix"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "cd4_mix": {
+          "table_read": true,
+          "panel_targets_voted": 293
+        }
+      }
+    },
+    "D2_Rest": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-bank-cd4-1-3-rest-r2/bank/D2_Rest/rows.csv",
+          "sha256": "a61500eb12a58c61c69eea7c1b7776b8684da3c776125d4de82356db602fc45f",
+          "rows": 12063
+        }
+      ],
+      "bank_cells": 1981060,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "Rest",
+            "context": "CD4T D2 Rest",
+            "donor_or_clone": "D2",
+            "line_group": "CD4T",
+            "modality": "CRISPRi",
+            "study": "cd4_marson2025"
+          },
+          "bank_cells": 1981060
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 1897073,
+        "control": 83987
+      },
+      "native_label_count": 12063,
+      "historical_destination": {
+        "source": "cd4_mix",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "cd4_mix"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "cd4_mix": {
+          "table_read": true,
+          "panel_targets_voted": 293
+        }
+      }
+    },
+    "D3_Rest": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-bank-cd4-1-3-rest-r2/bank/D3_Rest/rows.csv",
+          "sha256": "3892d7e83c7ece492bbfe07825d1e5750bce6ee93c45e30bb738a8f2514aed93",
+          "rows": 11942
+        }
+      ],
+      "bank_cells": 1901024,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "Rest",
+            "context": "CD4T D3 Rest",
+            "donor_or_clone": "D3",
+            "line_group": "CD4T",
+            "modality": "CRISPRi",
+            "study": "cd4_marson2025"
+          },
+          "bank_cells": 1901024
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 1824201,
+        "control": 76823
+      },
+      "native_label_count": 11942,
+      "historical_destination": {
+        "source": "cd4_mix",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "cd4_mix"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "cd4_mix": {
+          "table_read": true,
+          "panel_targets_voted": 293
+        }
+      }
+    },
+    "D1_Stim8hr": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-bank-cd4-1-3-stim8hr-r2/bank/D1_Stim8hr/rows.csv",
+          "sha256": "f48a6c375f861ef57231e151e173906d4634ff679f234d92242e8aa4ddfd6abd",
+          "rows": 12177
+        }
+      ],
+      "bank_cells": 1605685,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "Stim8hr",
+            "context": "CD4T D1 Stim8hr",
+            "donor_or_clone": "D1",
+            "line_group": "CD4T",
+            "modality": "CRISPRi",
+            "study": "cd4_marson2025"
+          },
+          "bank_cells": 1605685
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 1536053,
+        "control": 69632
+      },
+      "native_label_count": 12177,
+      "historical_destination": {
+        "source": "cd4_mix",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "cd4_mix"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "cd4_mix": {
+          "table_read": true,
+          "panel_targets_voted": 293
+        }
+      }
+    },
+    "D2_Stim8hr": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-bank-cd4-1-3-stim8hr-r2/bank/D2_Stim8hr/rows.csv",
+          "sha256": "31b5742655f4cb8529f4ce2856227af20cafb6faecf40f378578114730176e59",
+          "rows": 12229
+        }
+      ],
+      "bank_cells": 2086574,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "Stim8hr",
+            "context": "CD4T D2 Stim8hr",
+            "donor_or_clone": "D2",
+            "line_group": "CD4T",
+            "modality": "CRISPRi",
+            "study": "cd4_marson2025"
+          },
+          "bank_cells": 2086574
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 1998220,
+        "control": 88354
+      },
+      "native_label_count": 12229,
+      "historical_destination": {
+        "source": "cd4_mix",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "cd4_mix"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "cd4_mix": {
+          "table_read": true,
+          "panel_targets_voted": 293
+        }
+      }
+    },
+    "D3_Stim8hr": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-bank-cd4-1-3-stim8hr-r2/bank/D3_Stim8hr/rows.csv",
+          "sha256": "0cedda457776b6711da89465bd47de3e376c3c254f9ef0aa8077db03ea11214f",
+          "rows": 12033
+        }
+      ],
+      "bank_cells": 1691290,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "Stim8hr",
+            "context": "CD4T D3 Stim8hr",
+            "donor_or_clone": "D3",
+            "line_group": "CD4T",
+            "modality": "CRISPRi",
+            "study": "cd4_marson2025"
+          },
+          "bank_cells": 1691290
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 1622849,
+        "control": 68441
+      },
+      "native_label_count": 12033,
+      "historical_destination": {
+        "source": "cd4_mix",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "cd4_mix"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "cd4_mix": {
+          "table_read": true,
+          "panel_targets_voted": 293
+        }
+      }
+    },
+    "D1_Stim48hr": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-bank-cd4-1-3-stim48hr-r2/bank/D1_Stim48hr/rows.csv",
+          "sha256": "53f7a46985744bce50bd84d7cd864422d78d7cf248f7ad6cedfae73c075d78ed",
+          "rows": 12162
+        }
+      ],
+      "bank_cells": 1646772,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "Stim48hr",
+            "context": "CD4T D1 Stim48hr",
+            "donor_or_clone": "D1",
+            "line_group": "CD4T",
+            "modality": "CRISPRi",
+            "study": "cd4_marson2025"
+          },
+          "bank_cells": 1646772
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 1573238,
+        "control": 73534
+      },
+      "native_label_count": 12162,
+      "historical_destination": {
+        "source": "cd4_mix",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "cd4_mix"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "cd4_mix": {
+          "table_read": true,
+          "panel_targets_voted": 293
+        }
+      }
+    },
+    "D2_Stim48hr": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-bank-cd4-1-3-stim48hr-r2/bank/D2_Stim48hr/rows.csv",
+          "sha256": "b7dbe360bb825fda28da831c809c31b0a2c5dd24cb4b5201a8b0d1418dcfac07",
+          "rows": 12071
+        }
+      ],
+      "bank_cells": 2050788,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "Stim48hr",
+            "context": "CD4T D2 Stim48hr",
+            "donor_or_clone": "D2",
+            "line_group": "CD4T",
+            "modality": "CRISPRi",
+            "study": "cd4_marson2025"
+          },
+          "bank_cells": 2050788
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 1963041,
+        "control": 87747
+      },
+      "native_label_count": 12071,
+      "historical_destination": {
+        "source": "cd4_mix",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "cd4_mix"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "cd4_mix": {
+          "table_read": true,
+          "panel_targets_voted": 293
+        }
+      }
+    },
+    "D3_Stim48hr": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-bank-cd4-1-3-stim48hr-r2/bank/D3_Stim48hr/rows.csv",
+          "sha256": "6d292dfc1038f24a635239428c5b6622409cde988a8ab33b8c2850a6425c9038",
+          "rows": 11831
+        }
+      ],
+      "bank_cells": 1885549,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "Stim48hr",
+            "context": "CD4T D3 Stim48hr",
+            "donor_or_clone": "D3",
+            "line_group": "CD4T",
+            "modality": "CRISPRi",
+            "study": "cd4_marson2025"
+          },
+          "bank_cells": 1885549
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 1808215,
+        "control": 77334
+      },
+      "native_label_count": 11831,
+      "historical_destination": {
+        "source": "cd4_mix",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "cd4_mix"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "cd4_mix": {
+          "table_read": true,
+          "panel_targets_voted": 293
+        }
+      }
+    },
+    "D4_Rest": {
+      "parts": [
+        {
+          "path": "rows_r1/davidmaisterx__vcc-bank-cd4-4-4-rest-r2/bank/D4_Rest/rows.csv",
+          "sha256": "9cd9ad16299bd2229235a464024647f4cc8ca07f8e197acc350bcd1abe1e4d66",
+          "rows": 12408
+        }
+      ],
+      "bank_cells": 1747709,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "Rest",
+            "context": "CD4T D4 Rest",
+            "donor_or_clone": "D4",
+            "line_group": "CD4T",
+            "modality": "CRISPRi",
+            "study": "cd4_marson2025"
+          },
+          "bank_cells": 1747709
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 1671073,
+        "control": 76636
+      },
+      "native_label_count": 12408,
+      "historical_destination": {
+        "source": "cd4_mix",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "cd4_mix"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "cd4_mix": {
+          "table_read": true,
+          "panel_targets_voted": 293
+        }
+      }
+    },
+    "D4_Stim8hr": {
+      "parts": [
+        {
+          "path": "rows_r1/davidmaisterx__vcc-bank-cd4-4-4-stim8hr-r2/bank/D4_Stim8hr/rows.csv",
+          "sha256": "69694959750b0be40b2c94def5890af9023893abcc3058b4e0097d8b714c2206",
+          "rows": 12457
+        }
+      ],
+      "bank_cells": 1755121,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "Stim8hr",
+            "context": "CD4T D4 Stim8hr",
+            "donor_or_clone": "D4",
+            "line_group": "CD4T",
+            "modality": "CRISPRi",
+            "study": "cd4_marson2025"
+          },
+          "bank_cells": 1755121
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 1678091,
+        "control": 77030
+      },
+      "native_label_count": 12457,
+      "historical_destination": {
+        "source": "cd4_mix",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "cd4_mix"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "cd4_mix": {
+          "table_read": true,
+          "panel_targets_voted": 293
+        }
+      }
+    },
+    "D4_Stim48hr": {
+      "parts": [
+        {
+          "path": "rows_r1/davidmaisterx__vcc-bank-cd4-4-4-stim48hr-r2/bank/D4_Stim48hr/rows.csv",
+          "sha256": "db26a86482c43e1131b017e8077f943cc4fca7fe5adbcbb5a9d7985014cd2de3",
+          "rows": 12415
+        }
+      ],
+      "bank_cells": 1878125,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "Stim48hr",
+            "context": "CD4T D4 Stim48hr",
+            "donor_or_clone": "D4",
+            "line_group": "CD4T",
+            "modality": "CRISPRi",
+            "study": "cd4_marson2025"
+          },
+          "bank_cells": 1878125
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 1794651,
+        "control": 83474
+      },
+      "native_label_count": 12415,
+      "historical_destination": {
+        "source": "cd4_mix",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "cd4_mix"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "cd4_mix": {
+          "table_read": true,
+          "panel_targets_voted": 293
+        }
+      }
+    },
+    "kolf_pan_genome": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-bank-kolf-pan-r1/bank/kolf_pan_genome/rows.csv",
+          "sha256": "a2d4626888f09ef3f40b3e07529507ad1bade7bb2b849e318727c724423ce6c5",
+          "rows": 11688
+        }
+      ],
+      "bank_cells": 2659209,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "MISSING",
+            "context": "KOLF2.1J iPSC",
+            "donor_or_clone": "MISSING",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "kolf_pan_genome"
+          },
+          "bank_cells": 2659209
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 2512462,
+        "control": 146747
+      },
+      "native_label_count": 11688,
+      "historical_destination": {
+        "source": "kolf_pan_genome",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "kolf_pan_genome"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "kolf_pan_genome": {
+          "table_read": true,
+          "panel_targets_voted": 282
+        }
+      }
+    },
+    "orion_hct116": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-bank-orion-hct116-r1/bank/orion_hct116/rows.csv",
+          "sha256": "54c57adbab26a482e69e5ba8f9efa1d95d882e1f6dedb7b0b3a4a6f71305f23b",
+          "rows": 18294
+        }
+      ],
+      "bank_cells": 3409169,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "MISSING",
+            "context": "HCT116",
+            "donor_or_clone": "MISSING",
+            "line_group": "HCT116",
+            "modality": "CRISPRi",
+            "study": "orion_hct116"
+          },
+          "bank_cells": 3409169
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 3243392,
+        "control": 165777
+      },
+      "native_label_count": 18294,
+      "historical_destination": {
+        "source": "orion_hct116",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "orion_hct116"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "orion_hct116": {
+          "table_read": true,
+          "panel_targets_voted": 293
+        }
+      }
+    },
+    "orion_hek293t": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-bank-orion-hek293t-r1/bank/orion_hek293t/rows.csv",
+          "sha256": "e3693edab085d33120ae656abee3a2488e846acd812cc81720e2016199430653",
+          "rows": 18312
+        }
+      ],
+      "bank_cells": 4534299,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "MISSING",
+            "context": "HEK293T",
+            "donor_or_clone": "MISSING",
+            "line_group": "HEK293T",
+            "modality": "CRISPRi",
+            "study": "orion_hek293t"
+          },
+          "bank_cells": 4534299
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 4315461,
+        "control": 218838
+      },
+      "native_label_count": 18312,
+      "historical_destination": {
+        "source": "orion_hek293t",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "orion_hek293t"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "orion_hek293t": {
+          "table_read": true,
+          "panel_targets_voted": 299
+        }
+      }
+    },
+    "hepg2_nadig": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-rlab-hepg2-nadig/bank/hepg2_nadig/rows.csv",
+          "sha256": "b27f8d6c80d6820e8c4c588a401de839997aa1b4ec21a92ae34a263966b40aac",
+          "rows": 2394
+        }
+      ],
+      "bank_cells": 145473,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3'",
+            "condition": "MISSING",
+            "context": "HepG2",
+            "donor_or_clone": "MISSING",
+            "line_group": "HepG2",
+            "modality": "CRISPRi",
+            "study": "hepg2_nadig"
+          },
+          "bank_cells": 145473
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 140497,
+        "control": 4976
+      },
+      "native_label_count": 2394,
+      "historical_destination": {
+        "source": "hepg2_nadig",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "hepg2_nadig"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "hepg2_nadig": {
+          "table_read": true,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "jurkat_nadig": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-rlab-jurkat-nadig/bank/jurkat_nadig/rows.csv",
+          "sha256": "a9fc63d642bb48e30d679e0beb2a945fa66c6ca203ab908d82a0f99579566cb9",
+          "rows": 2394
+        }
+      ],
+      "bank_cells": 262956,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3'",
+            "condition": "MISSING",
+            "context": "Jurkat",
+            "donor_or_clone": "MISSING",
+            "line_group": "Jurkat",
+            "modality": "CRISPRi",
+            "study": "jurkat_nadig"
+          },
+          "bank_cells": 262956
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 250943,
+        "control": 12013
+      },
+      "native_label_count": 2394,
+      "historical_destination": {
+        "source": "jurkat_nadig",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "jurkat_nadig"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "jurkat_nadig": {
+          "table_read": true,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "h1_train": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-rlab-h1-vcc2025-trainval/bank/h1_train/rows.csv",
+          "sha256": "9df94c65f77b19a65a515d1ad7b42ab37225b8fb2eb71c113441be128c5abc5c",
+          "rows": 151
+        }
+      ],
+      "bank_cells": 221273,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "MISSING",
+            "context": "H1",
+            "donor_or_clone": "MISSING",
+            "line_group": "H1",
+            "modality": "CRISPRi",
+            "study": "h1_vcc2025_train"
+          },
+          "bank_cells": 221273
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 183097,
+        "control": 38176
+      },
+      "native_label_count": 151,
+      "historical_destination": {
+        "source": "h1",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "h1"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "h1": {
+          "table_read": true,
+          "panel_targets_voted": 17
+        }
+      }
+    },
+    "h1_val": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-rlab-h1-vcc2025-trainval/bank/h1_val/rows.csv",
+          "sha256": "a39c7472f74ee4400e4553f0c8df8bc2f99fa09089f3a7c7e076d3704a055e9b",
+          "rows": 51
+        }
+      ],
+      "bank_cells": 98927,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x Flex",
+            "condition": "MISSING",
+            "context": "H1",
+            "donor_or_clone": "MISSING",
+            "line_group": "H1",
+            "modality": "CRISPRi",
+            "study": "h1_vcc2025_val"
+          },
+          "bank_cells": 98927
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 60751,
+        "control": 38176
+      },
+      "native_label_count": 51,
+      "historical_destination": {
+        "source": "h1",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "h1"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "h1": {
+          "table_read": true,
+          "panel_targets_voted": 17
+        }
+      }
+    },
+    "rpe1": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-rlab-rpe1-r2/bank/rpe1/rows.csv",
+          "sha256": "8dbe19b7b1fac9886dfde98ca6a30e54a685a381dc80d079548b859b9a49cff4",
+          "rows": 2394
+        }
+      ],
+      "bank_cells": 247914,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3' v3",
+            "condition": "MISSING",
+            "context": "RPE1",
+            "donor_or_clone": "MISSING",
+            "line_group": "RPE1",
+            "modality": "CRISPRi",
+            "study": "replogle_rpe1"
+          },
+          "bank_cells": 247914
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 236429,
+        "control": 11485
+      },
+      "native_label_count": 2394,
+      "historical_destination": {
+        "source": "rpe1",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "rpe1"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "rpe1": {
+          "table_read": true,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "k562_essential": {
+      "parts": [
+        {
+          "path": "rows_r1/davidmaisterx__vcc-derivatives-rlab-k562-essential-r2/bank/k562_essential/rows.csv",
+          "sha256": "57b27463f7575bc56ebaf65920f9350764ba5a1cf474e79a2c625a6a5775e17e",
+          "rows": 2058
+        }
+      ],
+      "bank_cells": 310385,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3' v3",
+            "condition": "MISSING",
+            "context": "K562",
+            "donor_or_clone": "MISSING",
+            "line_group": "K562",
+            "modality": "CRISPRi",
+            "study": "replogle_k562_essential"
+          },
+          "bank_cells": 310385
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 299694,
+        "control": 10691
+      },
+      "native_label_count": 2058,
+      "historical_destination": {
+        "source": "k562_essential",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "k562_essential"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "k562_essential": {
+          "table_read": true,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "datlinger2017": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-scp-tcells-r1/bank/datlinger2017/rows.csv",
+          "sha256": "e1db8499089657bee5c9c0b5d3f128fccf6a02814aecfaf5d8a39e10da32b300",
+          "rows": 191
+        }
+      ],
+      "bank_cells": 5905,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "CROP-seq",
+            "condition": "MISSING",
+            "context": "stimulated",
+            "donor_or_clone": "MISSING",
+            "line_group": "Jurkat",
+            "modality": "KO",
+            "study": "datlinger2017_jurkat_ko"
+          },
+          "bank_cells": 3259
+        },
+        {
+          "identity": {
+            "chemistry": "CROP-seq",
+            "condition": "MISSING",
+            "context": "unstimulated",
+            "donor_or_clone": "MISSING",
+            "line_group": "Jurkat",
+            "modality": "KO",
+            "study": "datlinger2017_jurkat_ko"
+          },
+          "bank_cells": 2646
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 4585,
+        "control": 1320
+      },
+      "native_label_count": 97,
+      "historical_destination": {
+        "source": null,
+        "role": "in banca, non derivata: native labels are guide names with library prefix and guide number; no exact panel symbol, a declared guide-to-gene map is required",
+        "consumed_by_fit": false,
+        "evidence": [
+          {
+            "context": "stimulated",
+            "control_cells": 705,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "unstimulated",
+            "control_cells": 615,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          }
+        ]
+      },
+      "historical_sources": [],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {}
+    },
+    "datlinger2021": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-scp-tcells-r1/bank/datlinger2021/rows.csv",
+          "sha256": "004bd2376f1e811b47b6f25eb99aa27a334ba0601767eacdf4048de7d74ea3b2",
+          "rows": 82
+        }
+      ],
+      "bank_cells": 39194,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "scifi-RNA-seq",
+            "condition": "MISSING",
+            "context": "stimulated",
+            "donor_or_clone": "MISSING",
+            "line_group": "Jurkat",
+            "modality": "KO",
+            "study": "datlinger2021_jurkat_ko"
+          },
+          "bank_cells": 21471
+        },
+        {
+          "identity": {
+            "chemistry": "scifi-RNA-seq",
+            "condition": "MISSING",
+            "context": "unstimulated",
+            "donor_or_clone": "MISSING",
+            "line_group": "Jurkat",
+            "modality": "KO",
+            "study": "datlinger2021_jurkat_ko"
+          },
+          "bank_cells": 17723
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 34697,
+        "control": 4497
+      },
+      "native_label_count": 41,
+      "historical_destination": {
+        "source": null,
+        "role": "in banca, non derivata: native labels are guide names with guide number; no exact panel symbol, a declared guide-to-gene map is required",
+        "consumed_by_fit": false,
+        "evidence": [
+          {
+            "context": "stimulated",
+            "control_cells": 2990,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "unstimulated",
+            "control_cells": 1507,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          }
+        ]
+      },
+      "historical_sources": [],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {}
+    },
+    "shifrut2018": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-scp-tcells-r1/bank/shifrut2018/rows.csv",
+          "sha256": "1b6a7d31645624580747df626f44769c5a337c401be4471e4cc57a578b2e7c25",
+          "rows": 88
+        }
+      ],
+      "bank_cells": 52236,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x",
+            "condition": "MISSING",
+            "context": "D1_nostim",
+            "donor_or_clone": "D1",
+            "line_group": "CD4T",
+            "modality": "KO",
+            "study": "shifrut2018_tcells_ko"
+          },
+          "bank_cells": 11105
+        },
+        {
+          "identity": {
+            "chemistry": "10x",
+            "condition": "MISSING",
+            "context": "D1_stim",
+            "donor_or_clone": "D1",
+            "line_group": "CD4T",
+            "modality": "KO",
+            "study": "shifrut2018_tcells_ko"
+          },
+          "bank_cells": 15829
+        },
+        {
+          "identity": {
+            "chemistry": "10x",
+            "condition": "MISSING",
+            "context": "D2_nostim",
+            "donor_or_clone": "D2",
+            "line_group": "CD4T",
+            "modality": "KO",
+            "study": "shifrut2018_tcells_ko"
+          },
+          "bank_cells": 11486
+        },
+        {
+          "identity": {
+            "chemistry": "10x",
+            "condition": "MISSING",
+            "context": "D2_stim",
+            "donor_or_clone": "D2",
+            "line_group": "CD4T",
+            "modality": "KO",
+            "study": "shifrut2018_tcells_ko"
+          },
+          "bank_cells": 13816
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 21553,
+        "control": 3541,
+        "unresolved": 27142
+      },
+      "native_label_count": 22,
+      "historical_destination": {
+        "source": "shifrut2018",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      },
+      "historical_sources": [
+        "shifrut2018"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "shifrut2018": {
+          "table_read": false,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "dixit2016_d13": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-scp-k562-hek-r1/bank/dixit2016_d13/rows.csv",
+          "sha256": "12e73d5fa76843795ee519b47239d5c17f52d297bf5f930e211463ccada171c0",
+          "rows": 12
+        }
+      ],
+      "bank_cells": 19268,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x (Perturb-seq)",
+            "condition": "MISSING",
+            "context": "K562 day 13",
+            "donor_or_clone": "MISSING",
+            "line_group": "K562",
+            "modality": "KO",
+            "study": "dixit2016_k562_ko"
+          },
+          "bank_cells": 19268
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 12358,
+        "control": 3491,
+        "unresolved": 3419
+      },
+      "native_label_count": 12,
+      "historical_destination": {
+        "source": "dixit2016",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      },
+      "historical_sources": [
+        "dixit2016"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "dixit2016": {
+          "table_read": false,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "dixit2016_d7": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-scp-k562-hek-r1/bank/dixit2016_d7/rows.csv",
+          "sha256": "523b70cfb5004c8c3e9ed5e54bbf5e05b0945bb11c6c8dfd65c147f6758dc73f",
+          "rows": 12
+        }
+      ],
+      "bank_cells": 33013,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x (Perturb-seq)",
+            "condition": "MISSING",
+            "context": "K562 day 7",
+            "donor_or_clone": "MISSING",
+            "line_group": "K562",
+            "modality": "KO",
+            "study": "dixit2016_k562_ko"
+          },
+          "bank_cells": 33013
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 22653,
+        "control": 5381,
+        "unresolved": 4979
+      },
+      "native_label_count": 12,
+      "historical_destination": {
+        "source": "dixit2016",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      },
+      "historical_sources": [
+        "dixit2016"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "dixit2016": {
+          "table_read": false,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "dixit2016_high_moi": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-scp-k562-hek-r1/bank/dixit2016_high_moi/rows.csv",
+          "sha256": "591145b9bd1c8aac7f6d0926bfa4c5315b1418beab0ff2aaeb5bf45864d2232b",
+          "rows": 12
+        }
+      ],
+      "bank_cells": 51898,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x (Perturb-seq)",
+            "condition": "MISSING",
+            "context": "K562 high MOI",
+            "donor_or_clone": "MISSING",
+            "line_group": "K562",
+            "modality": "KO",
+            "study": "dixit2016_k562_ko"
+          },
+          "bank_cells": 51898
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 39961,
+        "control": 10492,
+        "unresolved": 1445
+      },
+      "native_label_count": 12,
+      "historical_destination": {
+        "source": "dixit2016",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      },
+      "historical_sources": [
+        "dixit2016"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "dixit2016": {
+          "table_read": false,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "xu2023": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-scp-k562-hek-r1/bank/xu2023/rows.csv",
+          "sha256": "42a282da45669d217e9478ecfad2f32646a4a979d86b8793ed8bbcdba7d0902d",
+          "rows": 204
+        }
+      ],
+      "bank_cells": 98315,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3'",
+            "condition": "MISSING",
+            "context": "HEK293",
+            "donor_or_clone": "MISSING",
+            "line_group": "HEK293",
+            "modality": "CRISPRi",
+            "study": "xu2023_hek293_crispri"
+          },
+          "bank_cells": 98315
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 95557,
+        "control": 2758
+      },
+      "native_label_count": 204,
+      "historical_destination": {
+        "source": "xu2023",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "xu2023"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "xu2023": {
+          "table_read": true,
+          "panel_targets_voted": 5
+        }
+      }
+    },
+    "kolf_chromatin": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-kolf-small-r1/bank/kolf_chromatin/rows.csv",
+          "sha256": "c8aa4c4a328a667fc251703d61be400e0c9d2b57fba43c3186da7d703bd2d2a8",
+          "rows": 108
+        }
+      ],
+      "bank_cells": 44039,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "MISSING",
+            "context": "KOLF2.1J iPSC",
+            "donor_or_clone": "MISSING",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "kolf_chromatin_modifiers"
+          },
+          "bank_cells": 44039
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 36878,
+        "control": 7161
+      },
+      "native_label_count": 108,
+      "historical_destination": {
+        "source": "kolf_chromatin",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "kolf_chromatin"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "kolf_chromatin": {
+          "table_read": true,
+          "panel_targets_voted": 8
+        }
+      }
+    },
+    "kolf_metabolic": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-kolf-small-r1/bank/kolf_metabolic/rows.csv",
+          "sha256": "b5fc0816cee40e7677bd841a820a9799fbb1fcb4da582dca3c500f497d33e048",
+          "rows": 98
+        }
+      ],
+      "bank_cells": 117768,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "MISSING",
+            "context": "KOLF2.1J iPSC",
+            "donor_or_clone": "MISSING",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "kolf_metabolic_enzymes"
+          },
+          "bank_cells": 117768
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 99117,
+        "control": 18651
+      },
+      "native_label_count": 98,
+      "historical_destination": {
+        "source": "kolf_metabolic",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "kolf_metabolic"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "kolf_metabolic": {
+          "table_read": true,
+          "panel_targets_voted": 4
+        }
+      }
+    },
+    "kolf_strong": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-kolf-strong-r1/bank/kolf_strong/rows.csv",
+          "sha256": "929b428a0340b85df592a098e958a523caa83192b1e27a11bc00e4a7cdf4091a",
+          "rows": 1656
+        }
+      ],
+      "bank_cells": 232438,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "MISSING",
+            "context": "KOLF2.1J iPSC",
+            "donor_or_clone": "MISSING",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "kolf_strong_perturbations"
+          },
+          "bank_cells": 232438
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 197014,
+        "control": 35424
+      },
+      "native_label_count": 1656,
+      "historical_destination": {
+        "source": "kolf_strong",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "kolf_strong"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "kolf_strong": {
+          "table_read": true,
+          "panel_targets_voted": 55
+        }
+      }
+    },
+    "norman2019": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-tian-norman-r1/bank/norman2019/rows.csv",
+          "sha256": "bf8048f773920707175d5c5b8e68e8b1b4567979d872c637984e72e392ab9e72",
+          "rows": 237
+        }
+      ],
+      "bank_cells": 111445,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3'",
+            "condition": "MISSING",
+            "context": "K562",
+            "donor_or_clone": "MISSING",
+            "line_group": "K562",
+            "modality": "CRISPRa",
+            "study": "norman2019_crispra"
+          },
+          "bank_cells": 111445
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 99590,
+        "control": 11855
+      },
+      "native_label_count": 237,
+      "historical_destination": {
+        "source": "norman2019",
+        "role": "braccio CRISPRa, non votato",
+        "consumed_by_fit": false
+      },
+      "historical_sources": [
+        "norman2019"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "norman2019": {
+          "table_read": false,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "tian2019_ipsc": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-tian-norman-r1/bank/tian2019_ipsc/rows.csv",
+          "sha256": "e953cfaed7f601cfe0f05e55ebd86f0b9b9b410bf179f05909a3287b9ab62cb7",
+          "rows": 39162
+        }
+      ],
+      "bank_cells": 271223,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3'",
+            "condition": "MISSING",
+            "context": "iPSC",
+            "donor_or_clone": "MISSING",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "tian2019_ipsc"
+          },
+          "bank_cells": 271223
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 260822,
+        "control": 10401
+      },
+      "native_label_count": 39162,
+      "historical_destination": {
+        "source": "tian2019_ipsc",
+        "role": "derivata, non ammessa al voto (regola del verso)",
+        "consumed_by_fit": false
+      },
+      "historical_sources": [
+        "tian2019_ipsc"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "tian2019_ipsc": {
+          "table_read": false,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "tian2019_neuron": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-tian2019-neuron-resume-r3/bank/tian2019_neuron/rows.csv",
+          "sha256": "16d4e91e087f818a9fc316d5df8442924d17c14b9cba1ce5b89dbf642b748659",
+          "rows": 41358
+        }
+      ],
+      "bank_cells": 179174,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3'",
+            "condition": "MISSING",
+            "context": "iPSC-induced neuron day 7",
+            "donor_or_clone": "MISSING",
+            "line_group": "neuron",
+            "modality": "CRISPRi",
+            "study": "tian2019_neuron_day7"
+          },
+          "bank_cells": 179174
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 164091,
+        "control": 15083
+      },
+      "native_label_count": 41358,
+      "historical_destination": {
+        "source": "tian2019_neuron",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "tian2019_neuron"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "tian2019_neuron": {
+          "table_read": true,
+          "panel_targets_voted": 1
+        }
+      }
+    },
+    "tian2021_crispra": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-tian2021-crispra-resume-r3/bank/tian2021_crispra/rows.csv",
+          "sha256": "65fefe26dae7f807dd6bef1b5482846ec9b363aed292d44df5d2c2738abe79a2",
+          "rows": 101
+        }
+      ],
+      "bank_cells": 21193,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3'",
+            "condition": "MISSING",
+            "context": "iPSC-induced neuron",
+            "donor_or_clone": "MISSING",
+            "line_group": "neuron",
+            "modality": "CRISPRa",
+            "study": "tian2021_crispra"
+          },
+          "bank_cells": 21193
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 20759,
+        "control": 434
+      },
+      "native_label_count": 101,
+      "historical_destination": {
+        "source": "tian2021_crispra",
+        "role": "braccio CRISPRa, non votato",
+        "consumed_by_fit": false
+      },
+      "historical_sources": [
+        "tian2021_crispra"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "tian2021_crispra": {
+          "table_read": false,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "tian2021_crispri": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-tian2021-crispri-resume-r3/bank/tian2021_crispri/rows.csv",
+          "sha256": "a3ee3d84fe4adfb6b6bdd8aefc4709ccbe98de9f6849c2c201e26ddfd1806c99",
+          "rows": 185
+        }
+      ],
+      "bank_cells": 32300,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3'",
+            "condition": "MISSING",
+            "context": "iPSC-induced neuron",
+            "donor_or_clone": "MISSING",
+            "line_group": "neuron",
+            "modality": "CRISPRi",
+            "study": "tian2021_crispri"
+          },
+          "bank_cells": 32300
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 31863,
+        "control": 437
+      },
+      "native_label_count": 185,
+      "historical_destination": {
+        "source": "tian2021_crispri",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "tian2021_crispri"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "tian2021_crispri": {
+          "table_read": true,
+          "panel_targets_voted": 6
+        }
+      }
+    },
+    "a549_ko": {
+      "parts": [
+        {
+          "path": "rows_r1/davidmaisterx__vcc-derivatives-rlab-a549/bank/a549_ko/rows.csv",
+          "sha256": "8ed2f004e75e887374def3c7eb1635054e9797be3dd3906ce0515c6e54ee9e85",
+          "rows": 1001
+        }
+      ],
+      "bank_cells": 606075,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "MISSING",
+            "context": "A549",
+            "donor_or_clone": "MISSING",
+            "line_group": "A549",
+            "modality": "KO",
+            "study": "a549_liu_hillsley2026"
+          },
+          "bank_cells": 606075
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 560755,
+        "control": 45320
+      },
+      "native_label_count": 1001,
+      "historical_destination": {
+        "source": "a549_ko",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      },
+      "historical_sources": [
+        "a549_ko"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "a549_ko": {
+          "table_read": false,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "hipsci_gw_fitness": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-hipsci-gwfit-p10of12-r2/bank/hipsci_gw_fitness/rows.csv",
+          "sha256": "197c463e33228244a06c036a25073c2bfe4c6cd9ed256e2440bd7139011c67ad",
+          "rows": 4293
+        },
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-hipsci-gwfit-p4of12-r2/bank/hipsci_gw_fitness/rows.csv",
+          "sha256": "af1e451976d8846be6448b554841778a731619b08cc41f94d79ef2070cebea1c",
+          "rows": 4294
+        },
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-hipsci-gwfit-p9of12-r2/bank/hipsci_gw_fitness/rows.csv",
+          "sha256": "2fd0bf95ddc24e374ed46ffef84a11bd35e6c96ebd04da7eefde43c87aaaef6e",
+          "rows": 4293
+        },
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-hipsci-gwfit-p2of12-r2/bank/hipsci_gw_fitness/rows.csv",
+          "sha256": "d4330e7bd3e87bcacb99748b09af1b7acfb008b52888b428f1ee67322ac733cd",
+          "rows": 4294
+        },
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-hipsci-gwfit-p3of12-r2/bank/hipsci_gw_fitness/rows.csv",
+          "sha256": "afee8290aefee9d9ef3ccd4876ece8f059a0f047bbc434771bb9e20b59ebe913",
+          "rows": 4294
+        },
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-hipsci-gwfit-p7of12-r2/bank/hipsci_gw_fitness/rows.csv",
+          "sha256": "b3a5b1df3b3bfd967db4c0ed6440ba78cb7f9db1e7e36ae95eefe38aa4583647",
+          "rows": 4294
+        },
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-hipsci-gwfit-p8of12-r2/bank/hipsci_gw_fitness/rows.csv",
+          "sha256": "2663343e9e255d442e9694b117be7754473878ac3690b415c56140f27a9442c1",
+          "rows": 4294
+        },
+        {
+          "path": "rows_r1/davidmaisterx__vcc-derivatives-hipsci-gwfit-p0of12-r2/bank/hipsci_gw_fitness/rows.csv",
+          "sha256": "5e493b43a6d2dd1e44466c7a3482e3b9017c469b9546f7e3fe86688773f3c3b7",
+          "rows": 4294
+        },
+        {
+          "path": "rows_r1/davidmaisterx__vcc-derivatives-hipsci-gwfit-p11of12-r2/bank/hipsci_gw_fitness/rows.csv",
+          "sha256": "6769c51e74ee7b52b6f9eace59aee6c16795ae9131a2bea7bca8b325616e5b8f",
+          "rows": 4293
+        },
+        {
+          "path": "rows_r1/davidmaisterx__vcc-derivatives-hipsci-gwfit-p1of12-r2/bank/hipsci_gw_fitness/rows.csv",
+          "sha256": "0d5b3854f81502f2e23566736a705c2b27d281157b61ecd65d504d2312148e6c",
+          "rows": 4294
+        },
+        {
+          "path": "rows_r1/davidmaisterx__vcc-derivatives-hipsci-gwfit-p5of12-r2/bank/hipsci_gw_fitness/rows.csv",
+          "sha256": "cc4b8683d905b35663a8740d5431a87b59087b3194fba2ca27495f61d4cdf221",
+          "rows": 4294
+        },
+        {
+          "path": "rows_r1/davidmaisterx__vcc-derivatives-hipsci-gwfit-p6of12-r2/bank/hipsci_gw_fitness/rows.csv",
+          "sha256": "12f069a067448ad06c4d7073b37470c3bf056b0d61c7770823081ad020dc9eb4",
+          "rows": 4294
+        }
+      ],
+      "bank_cells": 322746,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "eipl_1",
+            "donor_or_clone": "eipl_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 10349
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "fiaj_1",
+            "donor_or_clone": "fiaj_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 10425
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "hecn_3",
+            "donor_or_clone": "hecn_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 1667
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "iiyk_2",
+            "donor_or_clone": "iiyk_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 1937
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "keui_1",
+            "donor_or_clone": "keui_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 1007
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "kolf_2",
+            "donor_or_clone": "kolf_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 11834
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "kolf_3",
+            "donor_or_clone": "kolf_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 4042
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "kute_4",
+            "donor_or_clone": "kute_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 10551
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "lirf_5",
+            "donor_or_clone": "lirf_5",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 12122
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "melw_2",
+            "donor_or_clone": "melw_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 1485
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "nufh_4",
+            "donor_or_clone": "nufh_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2808
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "oupf_6",
+            "donor_or_clone": "oupf_6",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 10858
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "pipw_4",
+            "donor_or_clone": "pipw_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 11510
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "rejf_2",
+            "donor_or_clone": "rejf_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 10342
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "siqu_4",
+            "donor_or_clone": "siqu_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 12241
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "suop_2",
+            "donor_or_clone": "suop_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 1935
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "suop_5",
+            "donor_or_clone": "suop_5",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2952
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "wahn_1",
+            "donor_or_clone": "wahn_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 19773
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "wihj_1",
+            "donor_or_clone": "wihj_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 1606
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "wihj_4",
+            "donor_or_clone": "wihj_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2730
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "zapk_3",
+            "donor_or_clone": "zapk_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2915
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "zerv_7",
+            "donor_or_clone": "zerv_7",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 1592
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "zerv_8",
+            "donor_or_clone": "zerv_8",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 969
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "zihe_1",
+            "donor_or_clone": "zihe_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 4122
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day4",
+            "context": "hecn_3",
+            "donor_or_clone": "hecn_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 3599
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day4",
+            "context": "iiyk_2",
+            "donor_or_clone": "iiyk_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 3942
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day4",
+            "context": "kolf_3",
+            "donor_or_clone": "kolf_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 4566
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day4",
+            "context": "melw_2",
+            "donor_or_clone": "melw_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 3487
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day4",
+            "context": "nufh_4",
+            "donor_or_clone": "nufh_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2279
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day4",
+            "context": "suop_2",
+            "donor_or_clone": "suop_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2887
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day4",
+            "context": "suop_5",
+            "donor_or_clone": "suop_5",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2952
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day4",
+            "context": "wihj_1",
+            "donor_or_clone": "wihj_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 3335
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day4",
+            "context": "wihj_4",
+            "donor_or_clone": "wihj_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2593
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day4",
+            "context": "zapk_3",
+            "donor_or_clone": "zapk_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2679
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day4",
+            "context": "zerv_7",
+            "donor_or_clone": "zerv_7",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2969
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day4",
+            "context": "zerv_8",
+            "donor_or_clone": "zerv_8",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 1640
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "eipl_1",
+            "donor_or_clone": "eipl_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 7614
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "fiaj_1",
+            "donor_or_clone": "fiaj_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 8569
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "hecn_3",
+            "donor_or_clone": "hecn_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 3247
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "iiyk_2",
+            "donor_or_clone": "iiyk_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2949
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "keui_1",
+            "donor_or_clone": "keui_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 1012
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "kolf_2",
+            "donor_or_clone": "kolf_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 9231
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "kolf_3",
+            "donor_or_clone": "kolf_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 5810
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "kute_4",
+            "donor_or_clone": "kute_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 7768
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "lirf_5",
+            "donor_or_clone": "lirf_5",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 8971
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "melw_2",
+            "donor_or_clone": "melw_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 3420
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "nufh_4",
+            "donor_or_clone": "nufh_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2496
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "oupf_6",
+            "donor_or_clone": "oupf_6",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 8723
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "pipw_4",
+            "donor_or_clone": "pipw_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 8759
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "rejf_2",
+            "donor_or_clone": "rejf_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 7338
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "siqu_4",
+            "donor_or_clone": "siqu_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 9840
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "suop_2",
+            "donor_or_clone": "suop_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2077
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "suop_5",
+            "donor_or_clone": "suop_5",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 3014
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "wahn_1",
+            "donor_or_clone": "wahn_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 15172
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "wihj_1",
+            "donor_or_clone": "wihj_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2870
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "wihj_4",
+            "donor_or_clone": "wihj_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 3580
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "zapk_3",
+            "donor_or_clone": "zapk_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 4008
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "zerv_7",
+            "donor_or_clone": "zerv_7",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 2676
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "zerv_8",
+            "donor_or_clone": "zerv_8",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 1428
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day5",
+            "context": "zihe_1",
+            "donor_or_clone": "zihe_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_fitness"
+          },
+          "bank_cells": 3474
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 103812,
+        "unresolved": 218898,
+        "control": 36
+      },
+      "native_label_count": 2254,
+      "historical_destination": {
+        "source": null,
+        "role": "in banca, non derivata: controls: see piano; non-targeting cells are too few to give every clone matched controls with the original estimator",
+        "consumed_by_fit": false,
+        "evidence": [
+          {
+            "context": "eipl_1",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          },
+          {
+            "context": "eipl_1",
+            "control_cells": 1,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "fiaj_1",
+            "control_cells": 1,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "fiaj_1",
+            "control_cells": 1,
+            "panel_targets_min_cells": 1,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "hecn_3",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          },
+          {
+            "context": "hecn_3",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          }
+        ]
+      },
+      "historical_sources": [],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {}
+    },
+    "hipsci_gw_nonfitness": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-hipsci-gwnonfit-p10of12-r2/bank/hipsci_gw_nonfitness/rows.csv",
+          "sha256": "8cba5ccb87672b61ea05f6fcb1191bbcb822e83beca4d7308d2b741a683bf12e",
+          "rows": 5262
+        },
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-hipsci-gwnonfit-p3of12-r2/bank/hipsci_gw_nonfitness/rows.csv",
+          "sha256": "d3809d5efdae076820426c3de1a5b9db8102e7fdfe4ab88f30db6dec159375a3",
+          "rows": 5263
+        },
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-hipsci-gwnonfit-p4of12-r2/bank/hipsci_gw_nonfitness/rows.csv",
+          "sha256": "b05a3de5740e299eae34217be537651c11b691f5418d5bd7e192078bfcd13c7d",
+          "rows": 5263
+        },
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-hipsci-gwnonfit-p6of12-r2/bank/hipsci_gw_nonfitness/rows.csv",
+          "sha256": "c47d634cdb8fb635baa31ad86c7be882336fa80d1d3062e706d81299b2dede73",
+          "rows": 5262
+        },
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-hipsci-gwnonfit-p9of12-r2/bank/hipsci_gw_nonfitness/rows.csv",
+          "sha256": "2ee425affe08736bad96b34dd654d7b1cac3b28443157915b5da757fc6689c50",
+          "rows": 5262
+        },
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-hipsci-gwnonfit-p1of12-r2/bank/hipsci_gw_nonfitness/rows.csv",
+          "sha256": "920f478fd60ebe05cd266017b723dd705cf2dee82c6014885e611a31f8c97ee0",
+          "rows": 5263
+        },
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-hipsci-gwnonfit-p2of12-r2/bank/hipsci_gw_nonfitness/rows.csv",
+          "sha256": "5710a6eb5c94354d54b1b026410b3539ee2a9c92e5da0af83237249a12545c3b",
+          "rows": 5263
+        },
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-hipsci-gwnonfit-p7of12-r2/bank/hipsci_gw_nonfitness/rows.csv",
+          "sha256": "3c60b2703f7b81f462b909050668fe0229fb9f381882e728f8dc94e9b346be2c",
+          "rows": 5262
+        },
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-hipsci-gwnonfit-p8of12-r2/bank/hipsci_gw_nonfitness/rows.csv",
+          "sha256": "e98631a111f309e15c35ed9af61927555cf600e125bd4eba1fd39db00d835deb",
+          "rows": 5262
+        },
+        {
+          "path": "rows_r1/davidmaisterx__vcc-derivatives-hipsci-gwnonfit-p0of12-r2/bank/hipsci_gw_nonfitness/rows.csv",
+          "sha256": "68ab9c4ba6fc321ca17963e1107b8096c97fd68b48a14b9cecd154d16eb5001e",
+          "rows": 5263
+        },
+        {
+          "path": "rows_r1/davidmaisterx__vcc-derivatives-hipsci-gwnonfit-p11of12-r2/bank/hipsci_gw_nonfitness/rows.csv",
+          "sha256": "00489c385e39daece6e24ad389662dff0941f84757f09e67f0dbb8469c187a4e",
+          "rows": 5262
+        },
+        {
+          "path": "rows_r1/davidmaisterx__vcc-derivatives-hipsci-gwnonfit-p5of12-r2/bank/hipsci_gw_nonfitness/rows.csv",
+          "sha256": "0e2578bea76c260d28e7c76892fdb96f40c6daece6ea13d75b2c4dd6b06e7964",
+          "rows": 5262
+        }
+      ],
+      "bank_cells": 396458,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "fiaj_1",
+            "donor_or_clone": "fiaj_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 3265
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "fiaj_3",
+            "donor_or_clone": "fiaj_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 5409
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "kolf_2",
+            "donor_or_clone": "kolf_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 6329
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "kolf_3",
+            "donor_or_clone": "kolf_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 6522
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "miaj_4",
+            "donor_or_clone": "miaj_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 3831
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "miaj_6",
+            "donor_or_clone": "miaj_6",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 5913
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "bokz_6",
+            "donor_or_clone": "bokz_6",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 14892
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "eipl_1",
+            "donor_or_clone": "eipl_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 14532
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "eipl_3",
+            "donor_or_clone": "eipl_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 7874
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "fiaj_1",
+            "donor_or_clone": "fiaj_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 12836
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "fiaj_3",
+            "donor_or_clone": "fiaj_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 32413
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "hecn_3",
+            "donor_or_clone": "hecn_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 9939
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "iiyk_2",
+            "donor_or_clone": "iiyk_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 11243
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "iiyk_4",
+            "donor_or_clone": "iiyk_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 10072
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "keui_1",
+            "donor_or_clone": "keui_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 791
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "kolf_2",
+            "donor_or_clone": "kolf_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 29296
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "kolf_3",
+            "donor_or_clone": "kolf_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 27576
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "kute_4",
+            "donor_or_clone": "kute_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 2413
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "letw_1",
+            "donor_or_clone": "letw_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 14409
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "lirf_5",
+            "donor_or_clone": "lirf_5",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 11011
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "melw_2",
+            "donor_or_clone": "melw_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 8623
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "miaj_4",
+            "donor_or_clone": "miaj_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 15316
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "miaj_6",
+            "donor_or_clone": "miaj_6",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 10236
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "nufh_4",
+            "donor_or_clone": "nufh_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 3651
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "oupf_6",
+            "donor_or_clone": "oupf_6",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 4179
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "pahc_5",
+            "donor_or_clone": "pahc_5",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 8885
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "pipw_4",
+            "donor_or_clone": "pipw_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 3400
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "puhk_2",
+            "donor_or_clone": "puhk_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 14469
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "rakq_3",
+            "donor_or_clone": "rakq_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 9684
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "rejf_2",
+            "donor_or_clone": "rejf_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 3991
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "siqu_4",
+            "donor_or_clone": "siqu_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 3880
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "suop_2",
+            "donor_or_clone": "suop_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 11849
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "suop_5",
+            "donor_or_clone": "suop_5",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 9458
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "wahn_1",
+            "donor_or_clone": "wahn_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 6317
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "wihj_1",
+            "donor_or_clone": "wihj_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 7620
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "wihj_4",
+            "donor_or_clone": "wihj_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 5860
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "zapk_3",
+            "donor_or_clone": "zapk_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 12314
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "zerv_7",
+            "donor_or_clone": "zerv_7",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 6437
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "zerv_8",
+            "donor_or_clone": "zerv_8",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 9382
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day6",
+            "context": "zihe_1",
+            "donor_or_clone": "zihe_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_gw_nonfitness"
+          },
+          "bank_cells": 10341
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 114984,
+        "unresolved": 281462,
+        "control": 12
+      },
+      "native_label_count": 4956,
+      "historical_destination": {
+        "source": null,
+        "role": "in banca, non derivata: controls: see piano; non-targeting cells are too few to give every clone matched controls with the original estimator",
+        "consumed_by_fit": false,
+        "evidence": [
+          {
+            "context": "bokz_6",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          },
+          {
+            "context": "eipl_1",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          },
+          {
+            "context": "eipl_3",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          },
+          {
+            "context": "fiaj_1",
+            "control_cells": 1,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "fiaj_1",
+            "control_cells": 1,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          },
+          {
+            "context": "fiaj_3",
+            "control_cells": 0,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 1
+          }
+        ]
+      },
+      "historical_sources": [],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {}
+    },
+    "frangieh2021": {
+      "parts": [
+        {
+          "path": "rows_r1/davidmaisterx__vcc-derivatives-scp-ko-r1/bank/frangieh2021/rows.csv",
+          "sha256": "1b1349943f425376de559bbf6882671fc51380190631ac60f32b28831981020b",
+          "rows": 747
+        }
+      ],
+      "bank_cells": 218331,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3' v3",
+            "condition": "MISSING",
+            "context": "Co-culture",
+            "donor_or_clone": "MISSING",
+            "line_group": "melanoma",
+            "modality": "KO",
+            "study": "frangieh2021_melanoma_ko"
+          },
+          "bank_cells": 73114
+        },
+        {
+          "identity": {
+            "chemistry": "10x 3' v3",
+            "condition": "MISSING",
+            "context": "Control",
+            "donor_or_clone": "MISSING",
+            "line_group": "melanoma",
+            "modality": "KO",
+            "study": "frangieh2021_melanoma_ko"
+          },
+          "bank_cells": 57627
+        },
+        {
+          "identity": {
+            "chemistry": "10x 3' v3",
+            "condition": "MISSING",
+            "context": "IFNγ",
+            "donor_or_clone": "MISSING",
+            "line_group": "melanoma",
+            "modality": "KO",
+            "study": "frangieh2021_melanoma_ko"
+          },
+          "bank_cells": 87590
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 160726,
+        "control": 57605
+      },
+      "native_label_count": 249,
+      "historical_destination": {
+        "source": "frangieh2021",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      },
+      "historical_sources": [
+        "frangieh2021"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "frangieh2021": {
+          "table_read": false,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "papalexi2021_arrayed": {
+      "parts": [
+        {
+          "path": "rows_r1/davidmaisterx__vcc-derivatives-scp-ko-r1/bank/papalexi2021_arrayed/rows.csv",
+          "sha256": "52b9583c0cf486395660753eb9415dddd57bc5f737547ebb670f32f2546e27fc",
+          "rows": 11
+        }
+      ],
+      "bank_cells": 8984,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3' (ECCITE)",
+            "condition": "MISSING",
+            "context": "THP-1",
+            "donor_or_clone": "MISSING",
+            "line_group": "THP1",
+            "modality": "KO",
+            "study": "papalexi2021_thp1_arrayed_ko"
+          },
+          "bank_cells": 8984
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 6975,
+        "control": 2009
+      },
+      "native_label_count": 11,
+      "historical_destination": {
+        "source": null,
+        "role": "in banca, non derivata: one panel symbol with 4 cells, below min_cells 10 of the original recipe",
+        "consumed_by_fit": false,
+        "evidence": [
+          {
+            "context": "THP-1",
+            "control_cells": 2009,
+            "panel_targets_min_cells": 0,
+            "donors_without_controls": 0
+          }
+        ]
+      },
+      "historical_sources": [],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {}
+    },
+    "sunshine2023": {
+      "parts": [
+        {
+          "path": "rows_r1/davidmaisterx__vcc-derivatives-scp-ko-r1/bank/sunshine2023/rows.csv",
+          "sha256": "04250dfd78687875b9029f015dfaaebd112d63f2fcbca6acfb934dc9befdcf7c",
+          "rows": 24196
+        }
+      ],
+      "bank_cells": 90380,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3'",
+            "condition": "MISSING",
+            "context": "Calu-3",
+            "donor_or_clone": "MISSING",
+            "line_group": "Calu3",
+            "modality": "KO",
+            "study": "sunshine2023_calu3_ko"
+          },
+          "bank_cells": 90380
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 70453,
+        "control": 3536,
+        "unresolved": 16391
+      },
+      "native_label_count": 24196,
+      "historical_destination": {
+        "source": "sunshine2023",
+        "role": "braccio KO, non votato",
+        "consumed_by_fit": false
+      },
+      "historical_sources": [
+        "sunshine2023"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "sunshine2023": {
+          "table_read": false,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "hipsci_targeted_19": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferante__vcc-derivatives-hipsci-targeted19-r1/bank/hipsci_targeted_19/rows.csv",
+          "sha256": "6ba1ca45325b2c245d576b8f99b080d5dfbab004e174a61325801ab6980461ac",
+          "rows": 8474
+        }
+      ],
+      "bank_cells": 1161865,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "MISSING",
+            "context": "MISSING",
+            "donor_or_clone": "MISSING",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 1
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "eipl_1",
+            "donor_or_clone": "eipl_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 57302
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "eipl_3",
+            "donor_or_clone": "eipl_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 54531
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "fiaj_1",
+            "donor_or_clone": "fiaj_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 60011
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "fiaj_3",
+            "donor_or_clone": "fiaj_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 62415
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "iudw_1",
+            "donor_or_clone": "iudw_1",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 63550
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "iudw_4",
+            "donor_or_clone": "iudw_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 57247
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "jejf_2",
+            "donor_or_clone": "jejf_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 76059
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "jejf_3",
+            "donor_or_clone": "jejf_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 49660
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "kolf_2",
+            "donor_or_clone": "kolf_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 64009
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "kolf_3",
+            "donor_or_clone": "kolf_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 69622
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "oikd_2",
+            "donor_or_clone": "oikd_2",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 47999
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "oikd_5",
+            "donor_or_clone": "oikd_5",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 61986
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "paab_3",
+            "donor_or_clone": "paab_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 49912
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "paab_4",
+            "donor_or_clone": "paab_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 64450
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "pipw_4",
+            "donor_or_clone": "pipw_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 68024
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "pipw_5",
+            "donor_or_clone": "pipw_5",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 68387
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "tolg_4",
+            "donor_or_clone": "tolg_4",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 64244
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "tolg_6",
+            "donor_or_clone": "tolg_6",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 56242
+        },
+        {
+          "identity": {
+            "chemistry": "MISSING",
+            "condition": "day3",
+            "context": "zapk_3",
+            "donor_or_clone": "zapk_3",
+            "line_group": "iPSC",
+            "modality": "CRISPRi",
+            "study": "hipsci_targeted_19"
+          },
+          "bank_cells": 66214
+        }
+      ],
+      "cells_by_role": {
+        "unresolved": 526843,
+        "labelled": 626781,
+        "control": 8241
+      },
+      "native_label_count": 447,
+      "historical_destination": {
+        "source": "hipsci_targeted_19",
+        "role": "voto",
+        "consumed_by_fit": true
+      },
+      "historical_sources": [
+        "hipsci_targeted_19"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "hipsci_targeted_19": {
+          "table_read": true,
+          "panel_targets_voted": 5
+        }
+      }
+    },
+    "k562_gwps_a": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-rlab-k562-gwps-r3/bank/k562_gwps_a/rows.csv",
+          "sha256": "29eedeb799cf243f2a5e67d71ee8c334cded26c2f5b73ce6b17fd818ada06fdb",
+          "rows": 9865
+        }
+      ],
+      "bank_cells": 1000000,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3' v3",
+            "condition": "MISSING",
+            "context": "K562",
+            "donor_or_clone": "MISSING",
+            "line_group": "K562",
+            "modality": "CRISPRi",
+            "study": "replogle_k562_gwps"
+          },
+          "bank_cells": 1000000
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 962215,
+        "control": 37785
+      },
+      "native_label_count": 9865,
+      "historical_destination": {
+        "source": "k562_gwps_sc",
+        "role": "stesso esperimento di k562 BULK: equivalenza, mai secondo voto",
+        "consumed_by_fit": false
+      },
+      "historical_sources": [
+        "k562_gwps_sc"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "k562_gwps_sc": {
+          "table_read": false,
+          "panel_targets_voted": 0
+        }
+      }
+    },
+    "k562_gwps_b": {
+      "parts": [
+        {
+          "path": "rows_r1/davideferrante11__vcc-derivatives-rlab-k562-gwps-r3/bank/k562_gwps_b/rows.csv",
+          "sha256": "7f5531a363da0faa595bd5bfa9a125f160e48e17b8b96c7cd6d662e5a3f96255",
+          "rows": 9867
+        }
+      ],
+      "bank_cells": 989578,
+      "strata": [
+        {
+          "identity": {
+            "chemistry": "10x 3' v3",
+            "condition": "MISSING",
+            "context": "K562",
+            "donor_or_clone": "MISSING",
+            "line_group": "K562",
+            "modality": "CRISPRi",
+            "study": "replogle_k562_gwps"
+          },
+          "bank_cells": 989578
+        }
+      ],
+      "cells_by_role": {
+        "labelled": 952035,
+        "control": 37543
+      },
+      "native_label_count": 9867,
+      "historical_destination": {
+        "source": "k562_gwps_sc",
+        "role": "stesso esperimento di k562 BULK: equivalenza, mai secondo voto",
+        "consumed_by_fit": false
+      },
+      "historical_sources": [
+        "k562_gwps_sc"
+      ],
+      "samples_read_by_this_audit": 0,
+      "cells_read_for_training_by_this_audit": 0,
+      "historical_consumption": {
+        "k562_gwps_sc": {
+          "table_read": false,
+          "panel_targets_voted": 0
+        }
+      }
+    }
+  },
+  "catalogue": [
+    {
+      "record_id": "remote/a549_GSE345058_SC_raw_normalized_counts",
+      "destination": "in banca",
+      "units": [
+        "a549_ko"
+      ],
+      "catalogue_state": "ingerito (J10, job 118, layer raw_counts): vedi §1",
+      "modality": "KO (Cas9)",
+      "cells": 606075
+    },
+    {
+      "record_id": "remote/cd4_D1_Rest",
+      "destination": "in banca",
+      "units": [
+        "D1_Rest"
+      ],
+      "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) è da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+      "modality": "CRISPRi",
+      "cells": 3074496
+    },
+    {
+      "record_id": "remote/cd4_D1_Stim48hr",
+      "destination": "in banca",
+      "units": [
+        "D1_Stim48hr"
+      ],
+      "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) è da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+      "modality": "CRISPRi",
+      "cells": 2805354
+    },
+    {
+      "record_id": "remote/cd4_D1_Stim8hr",
+      "destination": "in banca",
+      "units": [
+        "D1_Stim8hr"
+      ],
+      "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) è da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+      "modality": "CRISPRi",
+      "cells": 2789727
+    },
+    {
+      "record_id": "remote/cd4_D2_Rest",
+      "destination": "in banca",
+      "units": [
+        "D2_Rest"
+      ],
+      "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) è da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+      "modality": "CRISPRi",
+      "cells": 2940194
+    },
+    {
+      "record_id": "remote/cd4_D2_Stim48hr",
+      "destination": "in banca",
+      "units": [
+        "D2_Stim48hr"
+      ],
+      "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) è da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+      "modality": "CRISPRi",
+      "cells": 2863571
+    },
+    {
+      "record_id": "remote/cd4_D2_Stim8hr",
+      "destination": "in banca",
+      "units": [
+        "D2_Stim8hr"
+      ],
+      "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) è da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+      "modality": "CRISPRi",
+      "cells": 3032848
+    },
+    {
+      "record_id": "remote/cd4_D3_Rest",
+      "destination": "in banca",
+      "units": [
+        "D3_Rest"
+      ],
+      "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) è da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+      "modality": "CRISPRi",
+      "cells": 2778524
+    },
+    {
+      "record_id": "remote/cd4_D3_Stim48hr",
+      "destination": "in banca",
+      "units": [
+        "D3_Stim48hr"
+      ],
+      "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) è da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+      "modality": "CRISPRi",
+      "cells": 2607532
+    },
+    {
+      "record_id": "remote/cd4_D3_Stim8hr",
+      "destination": "in banca",
+      "units": [
+        "D3_Stim8hr"
+      ],
+      "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) è da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+      "modality": "CRISPRi",
+      "cells": 2481284
+    },
+    {
+      "record_id": "remote/cd4_D4_Rest",
+      "destination": "in banca",
+      "units": [
+        "D4_Rest"
+      ],
+      "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) è da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+      "modality": "CRISPRi",
+      "cells": 2693903
+    },
+    {
+      "record_id": "remote/cd4_D4_Stim48hr",
+      "destination": "in banca",
+      "units": [
+        "D4_Stim48hr"
+      ],
+      "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) è da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+      "modality": "CRISPRi",
+      "cells": 2815784
+    },
+    {
+      "record_id": "remote/cd4_D4_Stim8hr",
+      "destination": "in banca",
+      "units": [
+        "D4_Stim8hr"
+      ],
+      "catalogue_state": "da campionare: 12 file, 33,6 milioni di cellule e circa 1,7 TB in tutto; per intero non si ingerisce. Il disegno del campione (per donatore e stimolo, controlli interi, un tetto per guida) è da decidere col proprietario; var ha ID Ensembl nell'indice e simboli in gene_name",
+      "modality": "CRISPRi",
+      "cells": 2727254
+    },
+    {
+      "record_id": "remote/h1_train",
+      "destination": "in banca",
+      "units": [
+        "h1_train"
+      ],
+      "catalogue_state": "ingerito (J04)",
+      "modality": "CRISPRi",
+      "cells": 221273
+    },
+    {
+      "record_id": "remote/h1_val",
+      "destination": "in banca",
+      "units": [
+        "h1_val"
+      ],
+      "catalogue_state": "ingerito (J04)",
+      "modality": "CRISPRi",
+      "cells": 98927
+    },
+    {
+      "record_id": "remote/kolf_KOLF_Chromatin_Modifiers_QC_Filtered",
+      "destination": "in banca",
+      "units": [
+        "kolf_chromatin"
+      ],
+      "catalogue_state": "ingerito (J08, jobs 116 e 124): vedi §1",
+      "modality": "CRISPRi",
+      "cells": 44039
+    },
+    {
+      "record_id": "remote/kolf_KOLF_Metabolic_Enzymes_QC_Filtered",
+      "destination": "in banca",
+      "units": [
+        "kolf_metabolic"
+      ],
+      "catalogue_state": "ingerito (J08, job 124): vedi §1",
+      "modality": "CRISPRi",
+      "cells": 117768
+    },
+    {
+      "record_id": "remote/kolf_KOLF_Pan_Genome_QC_Filtered",
+      "destination": "in banca",
+      "units": [
+        "kolf_pan_genome"
+      ],
+      "catalogue_state": "da ingerire: 2.659.209 cellule in CSC; adattatore pronto (h5csc_shards), non ancora in coda",
+      "modality": "CRISPRi",
+      "cells": 2659209
+    },
+    {
+      "record_id": "remote/kolf_KOLF_Strong_Perturbations",
+      "destination": "in banca",
+      "units": [
+        "kolf_strong"
+      ],
+      "catalogue_state": "ingerito (J12, job 126, layer counts): vedi §1",
+      "modality": "CRISPRi",
+      "cells": 232438
+    },
+    {
+      "record_id": "remote/scp_AdamsonWeissman2016_GSM2406675_10X001",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire: i controlli sono nomi di plasmidi (62(mod)_pBA581, 63(mod)_pBA580): serve una mappa delle etichette dichiarata",
+      "modality": "CRISPR",
+      "cells": 5768
+    },
+    {
+      "record_id": "remote/scp_AdamsonWeissman2016_GSM2406677_10X005",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire: come l'altro file di Adamson, serve una mappa delle etichette",
+      "modality": "CRISPR",
+      "cells": 15006
+    },
+    {
+      "record_id": "remote/scp_AdamsonWeissman2016_GSM2406681_10X010",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire: come l'altro file di Adamson, serve una mappa delle etichette",
+      "modality": "CRISPR",
+      "cells": 65337
+    },
+    {
+      "record_id": "remote/scp_AissaBenevolenskaya2021",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+      "modality": "drug",
+      "cells": 119071
+    },
+    {
+      "record_id": "remote/scp_ChangYe2021",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+      "modality": "drug",
+      "cells": 42277
+    },
+    {
+      "record_id": "remote/scp_CuiHacohen2023",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+      "modality": "cytokines",
+      "cells": 96034
+    },
+    {
+      "record_id": "remote/scp_DatlingerBock2017",
+      "destination": "in banca",
+      "units": [
+        "datlinger2017"
+      ],
+      "catalogue_state": "ingerito (J14, job 128): vedi §1",
+      "modality": "CRISPR",
+      "cells": 5905
+    },
+    {
+      "record_id": "remote/scp_DatlingerBock2021",
+      "destination": "in banca",
+      "units": [
+        "datlinger2021"
+      ],
+      "catalogue_state": "ingerito (J14, job 128): vedi §1",
+      "modality": "CRISPR",
+      "cells": 39194
+    },
+    {
+      "record_id": "remote/scp_DixitRegev2016_K562_TFs_13_days",
+      "destination": "in banca",
+      "units": [
+        "dixit2016_d13"
+      ],
+      "catalogue_state": "ingerito (J15, job 129): vedi §1",
+      "modality": "CRISPR",
+      "cells": 19268
+    },
+    {
+      "record_id": "remote/scp_DixitRegev2016_K562_TFs_7_days",
+      "destination": "in banca",
+      "units": [
+        "dixit2016_d7"
+      ],
+      "catalogue_state": "ingerito (J15, job 129): vedi §1",
+      "modality": "CRISPR",
+      "cells": 33013
+    },
+    {
+      "record_id": "remote/scp_DixitRegev2016_K562_TFs_High_MOI",
+      "destination": "in banca",
+      "units": [
+        "dixit2016_high_moi"
+      ],
+      "catalogue_state": "ingerito (J15, job 129): vedi §1",
+      "modality": "CRISPR",
+      "cells": 51898
+    },
+    {
+      "record_id": "remote/scp_FrangiehIzar2021_protein",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori dalla supervisione RNA: matrice di proteine di superficie (24 feature), altro saggio; vista ausiliaria possibile",
+      "modality": "proteine (ADT)",
+      "cells": 218331
+    },
+    {
+      "record_id": "remote/scp_FrangiehIzar2021_RNA",
+      "destination": "in banca",
+      "units": [
+        "frangieh2021"
+      ],
+      "catalogue_state": "ingerito (J13, job 127): vedi §1",
+      "modality": "CRISPR",
+      "cells": 218331
+    },
+    {
+      "record_id": "remote/scp_GasperiniShendure2019_atscale",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori per ora: schermo di enhancer, i bersagli non sono geni",
+      "modality": "CRISPR",
+      "cells": 207324
+    },
+    {
+      "record_id": "remote/scp_GasperiniShendure2019_highMOI",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori per ora: schermo di enhancer, i bersagli non sono geni",
+      "modality": "CRISPR",
+      "cells": 47650
+    },
+    {
+      "record_id": "remote/scp_GasperiniShendure2019_lowMOI",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori per ora: schermo di enhancer, i bersagli non sono geni",
+      "modality": "CRISPR",
+      "cells": 41284
+    },
+    {
+      "record_id": "remote/scp_GehringPachter2019",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori dalla supervisione dei conteggi: X non intero e nessun layer di conteggi grezzi",
+      "modality": "drug",
+      "cells": 20382
+    },
+    {
+      "record_id": "remote/scp_JoungZhang2023_atlas",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori dalla supervisione dei conteggi: X non intero e nessun layer di conteggi grezzi",
+      "modality": "ORF overexpression",
+      "cells": 1145823
+    },
+    {
+      "record_id": "remote/scp_JoungZhang2023_combinatorial",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori dalla supervisione dei conteggi: X non intero e nessun layer di conteggi grezzi",
+      "modality": "ORF overexpression",
+      "cells": 167947
+    },
+    {
+      "record_id": "remote/scp_LaraAstiasoHuntly2023_exvivo",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori: topo (l'asse è umano)",
+      "modality": "CRISPR-cas9",
+      "cells": 146793
+    },
+    {
+      "record_id": "remote/scp_LaraAstiasoHuntly2023_invivo",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori: topo (l'asse è umano)",
+      "modality": "CRISPR-cas9",
+      "cells": 135836
+    },
+    {
+      "record_id": "remote/scp_LaraAstiasoHuntly2023_leukemia",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori: topo (l'asse è umano)",
+      "modality": "CRISPR-cas9",
+      "cells": 182949
+    },
+    {
+      "record_id": "remote/scp_LiangWang2023",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori: topo (l'asse è umano)",
+      "modality": "CRISPR-cas9",
+      "cells": 41383
+    },
+    {
+      "record_id": "remote/scp_LotfollahiTheis2023",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+      "modality": "drug",
+      "cells": 63430
+    },
+    {
+      "record_id": "remote/scp_McFarlandTsherniak2020",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire con testa separata: farmaci e CRISPR nello stesso file; i farmaci non prevalgono (proprietario)",
+      "modality": "CRISPR, drug",
+      "cells": 182875
+    },
+    {
+      "record_id": "remote/scp_NadigOConner2024_hepg2",
+      "destination": "alias dello stesso esperimento: nessun secondo peso",
+      "units": [
+        "hepg2_nadig"
+      ],
+      "catalogue_state": "fuori: ripubblicazione scPerturb di hepg2_nadig, ingerito dal rilascio originale",
+      "modality": "CRISPR",
+      "cells": 145473
+    },
+    {
+      "record_id": "remote/scp_NadigOConner2024_jurkat",
+      "destination": "alias dello stesso esperimento: nessun secondo peso",
+      "units": [
+        "jurkat_nadig"
+      ],
+      "catalogue_state": "fuori: ripubblicazione scPerturb di jurkat_nadig, ingerito dal rilascio originale",
+      "modality": "CRISPR",
+      "cells": 262956
+    },
+    {
+      "record_id": "remote/scp_NormanWeissman2019_filtered",
+      "destination": "in banca",
+      "units": [
+        "norman2019"
+      ],
+      "catalogue_state": "ingerito (J11, job 119): vedi §1",
+      "modality": "CRISPR",
+      "cells": 111445
+    },
+    {
+      "record_id": "remote/scp_PapalexiSatija2021_eccite_arrayed_protein",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori dalla supervisione RNA: matrice di proteine di superficie (4 feature), altro saggio; vista ausiliaria possibile",
+      "modality": "proteine (ADT)",
+      "cells": 8984
+    },
+    {
+      "record_id": "remote/scp_PapalexiSatija2021_eccite_arrayed_RNA",
+      "destination": "in banca",
+      "units": [
+        "papalexi2021_arrayed"
+      ],
+      "catalogue_state": "ingerito (J13, job 127): vedi §1",
+      "modality": "CRISPR",
+      "cells": 8984
+    },
+    {
+      "record_id": "remote/scp_PapalexiSatija2021_eccite_protein",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori dalla supervisione RNA: matrice di proteine di superficie (4 feature), altro saggio; vista ausiliaria possibile",
+      "modality": "proteine (ADT)",
+      "cells": 20729
+    },
+    {
+      "record_id": "remote/scp_PapalexiSatija2021_eccite_RNA",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire: etichette GENEg1 senza separatore, serve una mappa dichiarata; la parte arrayed è in coda",
+      "modality": "CRISPR",
+      "cells": 20729
+    },
+    {
+      "record_id": "remote/scp_ReplogleWeissman2022_K562_essential",
+      "destination": "alias dello stesso esperimento: nessun secondo peso",
+      "units": [
+        "k562_essential"
+      ],
+      "catalogue_state": "fuori: ripubblicazione scPerturb di replogle_k562_essential, ingerito dal rilascio originale",
+      "modality": "CRISPR",
+      "cells": 310385
+    },
+    {
+      "record_id": "remote/scp_ReplogleWeissman2022_K562_gwps",
+      "destination": "alias dello stesso esperimento: nessun secondo peso",
+      "units": [
+        "k562_gwps_a",
+        "k562_gwps_b"
+      ],
+      "catalogue_state": "fuori: ripubblicazione scPerturb di replogle_k562_gwps, ingerito dal rilascio originale",
+      "modality": "CRISPR",
+      "cells": 1989578
+    },
+    {
+      "record_id": "remote/scp_ReplogleWeissman2022_rpe1",
+      "destination": "alias dello stesso esperimento: nessun secondo peso",
+      "units": [
+        "rpe1"
+      ],
+      "catalogue_state": "fuori: ripubblicazione scPerturb di replogle_rpe1, ingerito dal rilascio originale",
+      "modality": "CRISPR",
+      "cells": 247914
+    },
+    {
+      "record_id": "remote/scp_SantinhaPlatt2023",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori: topo (l'asse è umano)",
+      "modality": "CRISPR-cas9",
+      "cells": 100134
+    },
+    {
+      "record_id": "remote/scp_SchiebingerLander2019_GSE106340",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+      "modality": "drug",
+      "cells": 68339
+    },
+    {
+      "record_id": "remote/scp_SchiebingerLander2019_GSE115943",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+      "modality": "drug",
+      "cells": 259155
+    },
+    {
+      "record_id": "remote/scp_SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_11_screen",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori per ora: enhancer, e TAP-seq misura un pannello di geni",
+      "modality": "CRISPR",
+      "cells": 120310
+    },
+    {
+      "record_id": "remote/scp_SchraivogelSteinmetz2020_TAP_SCREEN__chromosome_8_screen",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori per ora: enhancer, e TAP-seq misura un pannello di geni",
+      "modality": "CRISPR",
+      "cells": 112260
+    },
+    {
+      "record_id": "remote/scp_ShifrutMarson2018",
+      "destination": "in banca",
+      "units": [
+        "shifrut2018"
+      ],
+      "catalogue_state": "ingerito (J14, job 128): vedi §1",
+      "modality": "CRISPR",
+      "cells": 52236
+    },
+    {
+      "record_id": "remote/scp_SrivatsanTrapnell2020_sciplex2",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+      "modality": "drug",
+      "cells": 24262
+    },
+    {
+      "record_id": "remote/scp_SrivatsanTrapnell2020_sciplex3",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+      "modality": "drug",
+      "cells": 799317
+    },
+    {
+      "record_id": "remote/scp_SrivatsanTrapnell2020_sciplex4",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+      "modality": "drug",
+      "cells": 98437
+    },
+    {
+      "record_id": "remote/scp_SunshineHein2023",
+      "destination": "in banca",
+      "units": [
+        "sunshine2023"
+      ],
+      "catalogue_state": "ingerito (J13, job 127): vedi §1",
+      "modality": "CRISPR-cas9",
+      "cells": 90380
+    },
+    {
+      "record_id": "remote/scp_TianKampmann2019_day7neuron",
+      "destination": "in banca",
+      "units": [
+        "tian2019_neuron"
+      ],
+      "catalogue_state": "ingerito (J11, job 119): vedi §1",
+      "modality": "CRISPR",
+      "cells": 182790
+    },
+    {
+      "record_id": "remote/scp_TianKampmann2019_iPSC",
+      "destination": "in banca",
+      "units": [
+        "tian2019_ipsc"
+      ],
+      "catalogue_state": "ingerito (J11, job 119): vedi §1",
+      "modality": "CRISPR",
+      "cells": 275708
+    },
+    {
+      "record_id": "remote/scp_TianKampmann2021_CRISPRa",
+      "destination": "in banca",
+      "units": [
+        "tian2021_crispra"
+      ],
+      "catalogue_state": "ingerito (J11, job 119): vedi §1",
+      "modality": "CRISPR",
+      "cells": 21193
+    },
+    {
+      "record_id": "remote/scp_TianKampmann2021_CRISPRi",
+      "destination": "in banca",
+      "units": [
+        "tian2021_crispri"
+      ],
+      "catalogue_state": "ingerito (J11, job 119): vedi §1",
+      "modality": "CRISPR",
+      "cells": 32300
+    },
+    {
+      "record_id": "remote/scp_WeinrebKlein2020",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori dalla supervisione dei conteggi: X non intero e nessun layer di conteggi grezzi",
+      "modality": "cytokine",
+      "cells": 65075
+    },
+    {
+      "record_id": "remote/scp_WesselsSatija2023",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori per ora: coppie di guide Cas13 per cellula (combinate), nessun gene singolo",
+      "modality": "CRISPR-cas13",
+      "cells": 30707
+    },
+    {
+      "record_id": "remote/scp_XieHon2017",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "fuori per ora: schermo di enhancer, i bersagli non sono geni",
+      "modality": "CRISPR",
+      "cells": 13283
+    },
+    {
+      "record_id": "remote/scp_XuCao2023",
+      "destination": "in banca",
+      "units": [
+        "xu2023"
+      ],
+      "catalogue_state": "ingerito (J15, job 129): vedi §1",
+      "modality": "CRISPRi",
+      "cells": 98315
+    },
+    {
+      "record_id": "remote/scp_ZhaoSims2021",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "da ingerire con testa separata; i farmaci non prevalgono sulle perturbazioni genetiche (proprietario)",
+      "modality": "drug",
+      "cells": 165748
+    },
+    {
+      "record_id": "remote/southard_fibroblast_CRISPRa_final_pop",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "in ingestione (J09, job 125): vedi §1",
+      "modality": "CRISPRa",
+      "cells": 447301
+    },
+    {
+      "record_id": "remote/southard_fibroblast_CRISPRa_mean_pop",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "solo aggregati: medie per popolazione (vedi sorgenti solo aggregate)",
+      "modality": "CRISPRa",
+      "cells": 10916
+    },
+    {
+      "record_id": "remote/southard_RPE1_CRISPRa_final_population",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "in ingestione (J09, job 125): vedi §1",
+      "modality": "CRISPRa",
+      "cells": 850225
+    },
+    {
+      "record_id": "remote/southard_RPE1_CRISPRa_mean_pop",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "solo aggregati: medie per popolazione (vedi sorgenti solo aggregate)",
+      "modality": "CRISPRa",
+      "cells": 10912
+    },
+    {
+      "record_id": "ingested/hepg2_nadig",
+      "destination": "in banca",
+      "units": [
+        "hepg2_nadig"
+      ],
+      "catalogue_state": "nei tre training, come contesto tenuto fuori (classi C e J)",
+      "modality": null,
+      "cells": 145473
+    },
+    {
+      "record_id": "ingested/jurkat_nadig",
+      "destination": "in banca",
+      "units": [
+        "jurkat_nadig"
+      ],
+      "catalogue_state": "nei tre training",
+      "modality": null,
+      "cells": 262956
+    },
+    {
+      "record_id": "ingested/h1_vcc2025_trainval",
+      "destination": "alias dello stesso esperimento: nessun secondo peso",
+      "units": [
+        "h1_train",
+        "h1_val"
+      ],
+      "catalogue_state": "nei tre training, train e validation letti come un esperimento: 38.176 controlli sono gli stessi nei due file e contano una volta (il test è la riserva)",
+      "modality": null,
+      "cells": 320200
+    },
+    {
+      "record_id": "ingested/hipsci_targeted_19",
+      "destination": "in banca",
+      "units": [
+        "hipsci_targeted_19"
+      ],
+      "catalogue_state": "nei tre training (526.843 cellule senza guida assegnata restano fuori dalla supervisione)",
+      "modality": null,
+      "cells": 1161865
+    },
+    {
+      "record_id": "ingested/hipsci_gw_fitness",
+      "destination": "in banca",
+      "units": [
+        "hipsci_gw_fitness"
+      ],
+      "catalogue_state": "fuori dal training: 36 NTC in tutto, da 1 a 5 per linea, sotto il minimo di 30 per chiave; rientra solo con controlli dichiarati (le cellule non assegnate come controlli chiedono prima un'analisi)",
+      "modality": null,
+      "cells": 322746
+    },
+    {
+      "record_id": "ingested/hipsci_gw_nonfitness",
+      "destination": "in banca",
+      "units": [
+        "hipsci_gw_nonfitness"
+      ],
+      "catalogue_state": "fuori dal training: 12 NTC in tutto, come per il fitness",
+      "modality": null,
+      "cells": 396458
+    },
+    {
+      "record_id": "ingested/replogle_k562_gwps",
+      "destination": "in banca",
+      "units": [
+        "k562_gwps_a",
+        "k562_gwps_b"
+      ],
+      "catalogue_state": "nel secondo e nel terzo training (75.328 controlli nel pre-passo r5); i dataset rlab-k562-gwps (codici al posto dei bersagli, E-20260930-003) e rlab-k562-gwps-r2 (ID Ensembl come simboli, E-20260930-004) non entrano in nessun training",
+      "modality": null,
+      "cells": 1989578
+    },
+    {
+      "record_id": "ingested/replogle_k562_essential",
+      "destination": "in banca",
+      "units": [
+        "k562_essential"
+      ],
+      "catalogue_state": "nel secondo e nel terzo training (10.691 controlli nel pre-passo r5); rlab-k562-essential (E-20260930-004) in nessuno",
+      "modality": null,
+      "cells": 310385
+    },
+    {
+      "record_id": "ingested/replogle_rpe1",
+      "destination": "in banca",
+      "units": [
+        "rpe1"
+      ],
+      "catalogue_state": "nel secondo e nel terzo training (11.485 controlli nel pre-passo r5); rlab-rpe1 (E-20260930-004) in nessuno",
+      "modality": null,
+      "cells": 247914
+    },
+    {
+      "record_id": "ingested/a549_ko",
+      "destination": "alias dello stesso esperimento: nessun secondo peso",
+      "units": [
+        "a549_ko"
+      ],
+      "catalogue_state": "nel terzo training (KO)",
+      "modality": null,
+      "cells": 606075
+    },
+    {
+      "record_id": "ingested/tian_norman",
+      "destination": "alias dello stesso esperimento: nessun secondo peso",
+      "units": [
+        "norman2019",
+        "tian2019_ipsc",
+        "tian2019_neuron",
+        "tian2021_crispra",
+        "tian2021_crispri"
+      ],
+      "catalogue_state": "nel terzo training: Tian 2019 iPSC 275.708 e neuroni 182.790, Tian 2021 CRISPRi 32.300 e CRISPRa 21.193, Norman 2019 (K562 CRISPRa, combinate con una classe loro) 111.445",
+      "modality": null,
+      "cells": 623436
+    },
+    {
+      "record_id": "ingested/kolf_small",
+      "destination": "alias dello stesso esperimento: nessun secondo peso",
+      "units": [
+        "kolf_chromatin",
+        "kolf_metabolic"
+      ],
+      "catalogue_state": "nel terzo training: cromatina 44.039 (shard del 116 riusati), metabolico 117.768",
+      "modality": null,
+      "cells": 161807
+    },
+    {
+      "record_id": "ingested/kolf_strong",
+      "destination": "alias dello stesso esperimento: nessun secondo peso",
+      "units": [
+        "kolf_strong"
+      ],
+      "catalogue_state": "nel terzo training",
+      "modality": null,
+      "cells": 232438
+    },
+    {
+      "record_id": "ingested/southard",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "in ingestione: RPE1 850.225 e Hs27 447.301 cellule (CRISPRa), lette da Zenodo a circa uno shard ogni 9 minuti; fuori dal terzo training perché non pubblicato al lancio del suo pre-passo",
+      "modality": null,
+      "cells": null
+    },
+    {
+      "record_id": "ingested/scp_ko_frangieh_sunshine_papalexi",
+      "destination": "alias dello stesso esperimento: nessun secondo peso",
+      "units": [
+        "frangieh2021",
+        "sunshine2023",
+        "papalexi2021_arrayed"
+      ],
+      "catalogue_state": "pubblicato, in nessun training ancora: Frangieh 2021 218.331 (tre contesti: Control, IFNγ, co-coltura), Sunshine 2023 90.380, Papalexi 2021 arrayed 8.984",
+      "modality": null,
+      "cells": 317695
+    },
+    {
+      "record_id": "ingested/scp_tcells_shifrut_datlinger",
+      "destination": "alias dello stesso esperimento: nessun secondo peso",
+      "units": [
+        "shifrut2018",
+        "datlinger2017",
+        "datlinger2021"
+      ],
+      "catalogue_state": "pubblicato, in nessun training ancora: Shifrut 2018 52.236 (quattro contesti, donatore per stimolo), Datlinger 2017 5.905 e 2021 39.194 (stimolate e non)",
+      "modality": null,
+      "cells": 97335
+    },
+    {
+      "record_id": "ingested/scp_k562_hek_dixit_xu",
+      "destination": "alias dello stesso esperimento: nessun secondo peso",
+      "units": [
+        "dixit2016_d7",
+        "dixit2016_d13",
+        "dixit2016_high_moi",
+        "xu2023"
+      ],
+      "catalogue_state": "pubblicato, in nessun training ancora: Dixit 2016 giorno 7 33.013, giorno 13 19.268, alta MOI 51.898 (controlli i tagli intergenici), Xu 2023 HEK293 CRISPRi 98.315",
+      "modality": null,
+      "cells": 202494
+    },
+    {
+      "record_id": "ingested/jurkat_gse249595",
+      "destination": "solo archivio grezzo (davidmaisterx/rlab-jurkat-gse249595): nessuna banca",
+      "units": [],
+      "catalogue_state": "fuori: nessuna chiamata delle guide nel rilascio; si supervisiona dopo un'assegnazione provata",
+      "modality": null,
+      "cells": null
+    },
+    {
+      "record_id": "aggregate_only/dld1_gse337988",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "DLD-1, GSE337988 ; effetti (LFC e SE su un pannello di risposte) ; file per cellula da verificare",
+      "modality": null,
+      "cells": null
+    },
+    {
+      "record_id": "aggregate_only/mixscale (parte DE)",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "Mixscale, Zenodo 14518762 ; espressione differenziale per linea e stimolo ; le cellule esistono come oggetti Seurat (IFNG, IFNB, INS, TGFB, TNFA): servono R e un adattatore",
+      "modality": null,
+      "cells": null
+    },
+    {
+      "record_id": "aggregate_only/southard_*_mean_pop",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "Southard 2025, medie per popolazione ; medie con p e p aggiustati (matrici dense non intere) ; le cellule sono nei file final_pop dello stesso studio",
+      "modality": null,
+      "cells": null
+    },
+    {
+      "record_id": "aggregate_only/depmap_24q4",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "DepMap 24Q4 ; bulk basale (espressione e dipendenza) ; covariate ausiliarie, mai supervisione",
+      "modality": null,
+      "cells": null
+    },
+    {
+      "record_id": "aggregate_only/catalogo_accessioni",
+      "destination": "non in banca",
+      "units": [],
+      "catalogue_state": "77 accessioni del catalogo del 26/09 ; solo menzioni ; da riconciliare una per una",
+      "modality": null,
+      "cells": null
+    }
+  ],
+  "catalogue_reverification": "historical decisions carried forward, not independently reverified",
+  "claims_complete_corpus": false,
+  "bank_cells": 39973948,
+  "known_duplicate_h1_controls": 38176,
+  "physical_samples_read": 0,
+  "learning_contributions": 0
+}

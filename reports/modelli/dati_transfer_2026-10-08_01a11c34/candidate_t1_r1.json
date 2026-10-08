@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "name": "T1",
+  "owner_session": "01a11c34",
+  "utc": "2026-10-08T16:28:06.299881+00:00",
+  "state": "production_effects_verified_comparative_validation_pending",
+  "base": "T0/t36",
+  "contrast": "canonical r1 source admission minus doubtful RFK vote; estimator unchanged",
+  "release": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/release_t1_r1.json",
+    "bytes": 29170,
+    "sha256": "277ae3441b78c9a1ebf79149cff914fb494d8fff09529b367e9f42cb6a76ffd8"
+  },
+  "verification": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/fit/dt1-01a11c34-r1/verification.json",
+    "bytes": 1714,
+    "sha256": "d0f3a0c8da2448568a41663b11627a081a981fdd7ae2576cdf213dc402981c2a"
+  },
+  "consumption": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/fit/dt1-01a11c34-r1/consumo.json",
+    "bytes": 76753,
+    "sha256": "71fd27fe8e3480e8e242ac0c54b5611a70f50ebbc8ab7c28b54aae5c97ffea74"
+  },
+  "production_effects": {
+    "A": {
+      "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/t1_r1/effects/effects_A.npz",
+      "bytes": 18826719,
+      "sha256": "28f15de7418fdab741bd0bc61049d6f4c8e843cafd016027101697e11c28a6f5"
+    },
+    "B": {
+      "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/t1_r1/effects/effects_B.npz",
+      "bytes": 18826719,
+      "sha256": "28f15de7418fdab741bd0bc61049d6f4c8e843cafd016027101697e11c28a6f5"
+    },
+    "C": {
+      "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/t1_r1/effects/effects_C.npz",
+      "bytes": 18826719,
+      "sha256": "28f15de7418fdab741bd0bc61049d6f4c8e843cafd016027101697e11c28a6f5"
+    }
+  },
+  "array_checks": {
+    "28f15de7418fdab741bd0bc61049d6f4c8e843cafd016027101697e11c28a6f5": {
+      "shape": [
+        300,
+        18533
+      ],
+      "dtype": "float32",
+      "observed_pairs": 4461086,
+      "missing_pairs": 1098814,
+      "targets_observed": 300,
+      "effect_rms": 0.1357175440087888,
+      "all_missing_exactly_zero": true
+    }
+  },
+  "code": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/fit/driver.py",
+    "bytes": 14977,
+    "sha256": "525a980c8455e0244e8b7361c44e77056bec71bdef99be3724128df81a0fb76e"
+  },
+  "source_code": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/scripts/100_build_context_effects.py",
+    "bytes": 35311,
+    "sha256": "d1dbefca867327864b58335c40342e3ce8779a389e8cd721bfc121dc2b5a446c"
+  },
+  "folds": {
+    "state": "pending independent VALIDAZIONE reconstruction from frozen source release",
+    "manifest": {
+      "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/manifest_fold_v1.json",
+      "bytes": 24372,
+      "sha256": "add3519816b50b81207152cf7e2ffea7150e66b28587fb04cfdc42283e371cf7"
+    }
+  },
+  "quantity": "natural log fold-change",
+  "scale": {
+    "transfer_amplitude": 1.576,
+    "cis_already_applied": true,
+    "emitter_multiplier_not_applied": 1.5,
+    "second_centering_forbidden": true
+  },
+  "emitter": "t28/stage45 trial-ext-profile; 400 cells; gene dispersion; generator seed 20260912",
+  "context_dependence": "effects identical across A/B/C; controls enter emitter",
+  "fields": {
+    "targets": "ordered unique target symbol",
+    "genes": "official ordered response axis",
+    "lfc": "finite float32, targets x genes",
+    "observed": "bool; missing lfc exactly zero"
+  },
+  "source_counts": {
+    "expected": 16,
+    "read": 16
+  },
+  "complete_d053": false,
+  "physical_training_cells_read": 0,
+  "predictive_improvement_demonstrated": false,
+  "vcc_package_generated": false,
+  "reserve": "t36"
+}

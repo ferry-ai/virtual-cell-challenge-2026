@@ -1,0 +1,153 @@
+{
+ "contexts": [
+  {
+   "identity": {
+    "study": "dixit2016_k562_ko",
+    "line_group": "K562",
+    "context": "K562 high MOI",
+    "condition": "UNREPORTED@dixit2016_k562_ko",
+    "modality": "KO",
+    "chemistry": "10x (Perturb-seq)"
+   },
+   "targets_expected": [
+    "CREB1",
+    "E2F4",
+    "EGR1",
+    "ELF1",
+    "ELK1",
+    "ETS1",
+    "GABPA",
+    "IRF1",
+    "NR2C2",
+    "YY1"
+   ],
+   "controls_cells": 10492,
+   "donors": [
+    "UNREPORTED@dixit2016_k562_ko"
+   ],
+   "chunks": [
+    {
+     "file": "context000_chunk00000.npz",
+     "targets": 10
+    }
+   ],
+   "targets_derived": [
+    "CREB1",
+    "E2F4",
+    "EGR1",
+    "ELF1",
+    "ELK1",
+    "ETS1",
+    "GABPA",
+    "IRF1",
+    "NR2C2",
+    "YY1"
+   ],
+   "target_cells_contributing": 39961,
+   "estimator_rows_accessed": 11,
+   "status": "derived",
+   "physical_cells_read": 0,
+   "common_file": "context000_common.npz",
+   "common_support_genes": 9788,
+   "targets_below_estimator_eligibility": [],
+   "bank_rows_in_fold": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11
+   ],
+   "units": "natural-log fold change; fractions on context measured axis; original pseudocount and shrink"
+  }
+ ],
+ "target_cells_contributing": 39961,
+ "physical_cells_read": 0,
+ "scope": "aggregated effects; no cellular training",
+ "unit": "dixit2016_high_moi",
+ "split": {
+  "id": "production-01a11c34-r1",
+  "regime": "production",
+  "held_groups": [],
+  "hidden_targets": [],
+  "protected_units": [
+   "h1_test"
+  ],
+  "group_aliases": {},
+  "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+ },
+ "params_sha256": "1953d7d5984516bcc7e448dc89b10ad0e012e775b9db33b9bd5dfe28b49bc491",
+ "mapping_evidence": {
+  "path": "C:/Users/ferra/vcc2026-data/external/annotation/gencode.v50.basic.annotation.gtf.gz",
+  "bytes": 79970394,
+  "sha256": "5b9ad9aa71f6ab5d55123c51f74723644a895bc0cbaa9cee8fbc11bb9dec0bf7",
+  "policy": "exact Gencode v50 gene_name, no guide or alias inference"
+ },
+ "bank": {
+  "unit": "dixit2016_high_moi",
+  "kernel": "davideferante/vcc-derivatives-scp-k562-hek-r1",
+  "relative_path": "bank/dixit2016_high_moi",
+  "files": {
+   "count_sum.npz": {
+    "bytes": 413069,
+    "sha256": "69cee621e7bd0d8fb81a1bf7b4a760ef872945f13401cb404793df6b1c7270c4"
+   },
+   "mask.npz": {
+    "bytes": 28959,
+    "sha256": "f95b5204faa4e4cd3a80ec21ee7e8d49800cfd8a8ea6919e9cf6812247eda69b"
+   },
+   "rows.csv": {
+    "bytes": 1138,
+    "sha256": "591145b9bd1c8aac7f6d0926bfa4c5315b1418beab0ff2aaeb5bf45864d2232b"
+   },
+   "complete.json": {
+    "bytes": 1610,
+    "sha256": "ac59bb349745bf53663529766d2880d2a5403d208bf9ba1ec68c6682c64cece2"
+   }
+  },
+  "producer": {
+   "kernel_id": 137174807,
+   "version": 1,
+   "private": true,
+   "version_ref": "davideferante/vcc-derivatives-scp-k562-hek-r1/versions/1",
+   "saved_source_sha256": "cb722986c228ad028b62080760b36040e32a5e5d33e27cf2e1cfc9cec93dc921",
+   "version_stable_during_output_read": true
+  },
+  "mount": {
+   "kind": "kernel",
+   "ref": "davideferante/vcc-derivatives-scp-k562-hek-r1"
+  }
+ },
+ "selection_sha256": "561825a4ba44ed77c0ae6637c51959d7bcbfa8d71a8fad8ce2aa60da3cadfc9b",
+ "selection_counts": {
+  "effect_target": 39961,
+  "control": 10492,
+  "unassigned_or_missing_metadata": 1445
+ },
+ "bank_cells": 51898,
+ "axis_sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+ "sampled_cells_read": 0,
+ "claims_complete_corpus": false,
+ "model_fit": false,
+ "not_a_score": true,
+ "seconds": 0.5601942419999659,
+ "outputs": {
+  "effects/context000_chunk00000.npz": {
+   "bytes": 1418309,
+   "sha256": "5c50b0ba8bafb646744290a94994a465f460d8221d17e5abf0b4b00378333bd9"
+  },
+  "effects/context000_receipt.json": {
+   "bytes": 1153,
+   "sha256": "8e59cc1dd60c35c50766ae7bf07bda76eeeebc73721b673f5a7d36e3f0b2c464"
+  },
+  "effects/context000_common.npz": {
+   "bytes": 191858,
+   "sha256": "c73db9a3ea0049ce53c965665afb6be888917cbdca30166c53c48defef50ce74"
+  }
+ }
+}
