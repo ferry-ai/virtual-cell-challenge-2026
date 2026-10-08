@@ -128,3 +128,40 @@ risolti (\|media\| > 2·sd/√5).
 **Esito del §8 per T2 − T0 e per K2: INCONCLUDENTE** (un solo fold di livello B, macro non risolta; il livello A
 non ferma e non promuove). Il fold K562 è in corsa dalle 21:58 e non entra nella scelta del freeze. T2 non è
 promosso; la consegna resta t36. L'esito con due fold si aggiunge sotto quando il fold K562 è letto.
+
+## 6. Livello B, fold C-K562, ed esito con due fold (letto alle 23:53)
+
+Kernel `davidmaisterx/vcc-validazione-banco-k562-8a8ca58a-t2`, lanciato alle 21:58 e concluso alle 23:52; corsa
+principale di 112 minuti, 272 bersagli, cinque semi. [Tabelle](TABELLE_LIVELLO_B_k562_t2.md),
+[lettura con la regola](TABELLE_LIVELLO_B_t2_r2.md).
+
+| Coppia | Sei membri | Senza JAC | PDS | NMAE | FID | REACH | JAC |
+|---|---|---|---|---|---|---|---|
+| T2 − T0, C-K562 | **−0,0087 ± 0,0045** | **−0,0101 ± 0,0053** | −0,0202 ± 0,0243 | **−0,0292 ± 0,0259** | +0,0022 ± 0,0056 | −0,0031 ± 0,0328 | **−0,0016 ± 0,0013** |
+| T2 − T1, C-K562 | **−0,0079 ± 0,0041** | **−0,0090 ± 0,0048** | −0,0202 ± 0,0272 | −0,0220 ± 0,0249 | +0,0020 ± 0,0049 | −0,0050 ± 0,0337 | **−0,0022 ± 0,0012** |
+| T2 − T0, macro su due fold | −0,0032 ± 0,0074 | −0,0040 ± 0,0087 | −0,0009 ± 0,0298 | | | | |
+| T2 − T1, macro su due fold | −0,0029 ± 0,0078 | −0,0034 ± 0,0091 | +0,0010 ± 0,0295 | | | | |
+
+**Misurato.**
+- Sul fold K562 T2 perde 0,009 sulla media dei sei membri contro t36, in tutti e cinque i semi (da −0,003 a
+  −0,013), con e senza Jaccard. Il membro che si muove è l'NMAE (−0,029, negativo in tutti i semi); il PDS scende
+  di 0,020 senza essere risolto.
+- T1 − T0 coincide seme per seme con la corsa r1 del fold
+  ([confronto](banco/livello_b_k562_t2/riproduce_r1_T1_T0.json)): il banco è lo stesso.
+- La macro su due fold non è risolta: il fold iPSC (+0,002 ± 0,013) non compensa né conferma.
+
+**Esito del §8, per T2 − T0 e per K2: VALIDO E SFAVOREVOLE**, per la regressione risolta della media sul fold
+C-K562. La regola è quella scritta nel contratto prima di ogni candidato e applicata dal lettore senza modifiche;
+il livello A non aveva fermato T2 e non lo aveva promosso.
+
+**Interpretazione.** I due livelli raccontano la stessa cosa: la discriminazione fra bersagli non cambia in modo
+misurabile, mentre ciò che dipende dalla parte comune e dal segno peggiora di poco sui lignaggi non staminali, e
+sul fold K562 abbastanza da risolversi. È coerente con il §2: la riga comune rimessa da T2 non è la risposta del
+lignaggio escluso.
+
+**Limiti.** Due fold a sei membri, entrambi lignaggi di sviluppo e uno, K562, letto molte volte; scale locali;
+la perdita è piccola (0,009 locale) e non dice quanto varrebbe sul sito. Sui tre lignaggi non staminali senza
+cellule vere c'è solo il livello A, che va nello stesso verso su `sign50` e `nmae_conf`.
+
+**Conseguenza.** T2, così com'è, non è un candidato della consegna e non è un rimedio alla distorsione delle
+tabelle piccole (S-011): cambia la centratura di tutte le tabelle, e il costo passa da quelle grandi.

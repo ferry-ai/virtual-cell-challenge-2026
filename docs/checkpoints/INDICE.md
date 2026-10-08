@@ -102,3 +102,4 @@ aggiunge da sé la riga qui sotto.
 | [0067](0067-t36-banca-estesa-punteggio-ufficiale.md) | 2026-10-06 | t36: massimo osservato sulla banca estesa parziale | esperimento | — |
 | [0068](0068-banca-canonica-release-r1.md) | 2026-10-07 | Banca canonica: registro, release r1 a 17 fonti e fit con ricevuta di consumo | esperimento | — |
 | [0069](0069-validazione-indipendente-t1-e-ampliamento.md) | 2026-10-08 | Validazione indipendente: T1 non si distingue da t36; l'ampliamento delle fonti aiuta i lignaggi vicini e costa agli altri | esperimento | — |
+| [0070](0070-t2-centratura-su-tutti-i-bersagli.md) | 2026-10-08 | T2, centratura su tutti i bersagli: valido e sfavorevole a lignaggio escluso | esperimento | — |

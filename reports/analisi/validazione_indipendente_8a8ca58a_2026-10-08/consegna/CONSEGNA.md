@@ -91,3 +91,5 @@ fold nel formato dello stadio 100) si dichiara in `external_arms` con dimensione
 - Artefatti di validazione aggiunti dopo le 21:00: livello A r5 (T2), dataset privati
   `davideferrante11/vcc-validazione-t2-vettori-8a8ca58a-r1` e `davidmaisterx/vcc-validazione-effetti-{k562,ipsc}-8a8ca58a-t2`,
   banchi `davidmaisterx/vcc-validazione-banco-{ipsc,k562}-8a8ca58a-t2`. Restano distinti dalla produzione.
+- **23:56:** T2 ha ora l'esito con due fold a sei membri: valido e **sfavorevole**
+  ([risultati](../RISULTATI_T2.md), §6). Non è un candidato della consegna. La consegna verificata resta t36.

@@ -124,3 +124,9 @@ Il testo sopra è quello emesso alle 21:01 e non è stato ritoccato. **La raccom
   ricetta in produzione (riletto da me alle 23:30): ciò che ho valutato sui fold è lo stimatore esportato.
   **Che cosa non cambia:** alla scadenza l'esito era inconcludente per regola (un solo fold a sei membri), nessuna
   misura è a favore, e la raccomandazione per il freeze resta t36.
+- **23:56, esito di T2 con due fold: valido e sfavorevole.** Il banco a sei membri sul fold K562 è arrivato alle
+  23:52: T2 − t36 vale −0,0087 ± 0,0045, risolto, negativo in tutti e cinque i semi (NMAE −0,029); sul fold iPSC
+  +0,0023 ± 0,0125. Per il §8 basta la regressione risolta su un fold ([risultati](RISULTATI_T2.md), §6;
+  [CP-0070](../../../docs/checkpoints/0070-t2-centratura-su-tutti-i-bersagli.md)). **La raccomandazione non cambia: t36.** In più, ora: T2 non è
+  da generare né da inviare come miglioramento; T1 resta non promossa e indistinguibile da t36; l'unica direzione
+  del transfer con misure a favore su questo banco è la composizione delle fonti, che resta esplorativa.

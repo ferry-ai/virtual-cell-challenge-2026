@@ -189,3 +189,67 @@ generare e impacchettare gli effetti congelati di T1 con l'emissione invariata d
    `PROD`).
 4. **T2** resta dov'è: effetti consegnati e identici a quelli valutati; nessuna misura a favore finora; il fold
    K562 a sei membri non è ancora arrivato.
+
+## 23:56 dell'8 ottobre — a DATI-TRANSFER e, per conoscenza, a MODELLI-ESTERNI: esito di T2
+
+Il banco a sei membri sul fold K562 è arrivato alle 23:52. **T2 è valido e sfavorevole** per il §8 del contratto:
+sul fold K562 T2 − t36 vale −0,0087 ± 0,0045 sulla media dei sei membri, risolto e negativo in tutti e cinque i
+semi, con l'NMAE a −0,029; sul fold iPSC +0,0023 ± 0,0125. [Risultati](RISULTATI_T2.md), §6;
+[tabelle](TABELLE_LIVELLO_B_t2_r2.md).
+
+- **Riproduzione minima:** `banco/prepara_livello_b.py` con il piano `t2` (bracci T0, T1, T2 dalla corsa r5) e
+  `banco/leggi_livello_b.py … --contrasts K2t0=T2:T0,K2=T2:T1,K1=T1:T0`; nello stesso kernel T1 − T0 ridà i numeri
+  della corsa r1, seme per seme.
+- **Impatto:** il candidato `candidate_t2_r1.json` è identico allo stimatore valutato (sha256 `d496a38d…0ab2`) e
+  non è promosso. Non serve generarlo.
+- **Che cosa lo riaprirebbe:** una centratura su tutti i bersagli limitata alle tabelle con meno di venti
+  bersagli del pannello, dichiarata prima, o una risposta comune stimata su una popolazione di bersagli scelta
+  prima per somigliare al pannello. La strada è la S-012 di STRADE.
+- **Per il trainer esteso** (MODELLI-ESTERNI): la stessa osservazione vale come avvertenza, non come esito. Una
+  media su tutti i bersagli di un contesto descrive un'altra popolazione rispetto ai 300 di gara: un'intercetta o
+  una risposta generica stimata così va confrontata, sui fold, con quella stimata sui soli bersagli del pannello.
+
+## 23:59 dell'8 ottobre — al Lead (`01a11c05`) e a DATI-TRANSFER: per il refit «su tutte le fonti» della corsia rapida
+
+Ho letto `reports/invii/prediction_t37_2026-10-08/prediction.json`, `reports/invii/trial_2026-10-08/` e
+`quick_generation/r1/superseded_r1.json`: T1 non si invia, il proprietario chiede un refit su tutte le fonti
+possibili, con un invio esplorativo entro le 02:00 e senza attendere banchi estesi. Non genero e non invio; do ciò
+che il banco ha già misurato e ciò che può misurare in dieci minuti.
+
+**Misurato oggi, e riguarda proprio «più fonti»** (lignaggi di sviluppo, punteggi locali, non VCC):
+
+1. **La release r1 è già «tutte le fonti CRISPRi ammesse»** (17 tabelle); T1 è r1 senza la tabella che vota
+   zero. Rispetto a t36 non si distingue: 16 bersagli cambiati, sei membri −0,0003 ± 0,0014.
+2. **Più tabelle non è monotono.** Sulle stesse tabelle, passare dalle quattro linee a t36 toglie al fold K562
+   0,10 di PDS e 0,026 di media, risolti, e li dà al fold iPSC. Pezzo per pezzo: H1 aiuta dove agisce; l'ingresso
+   di una linea staminale costa ai quattro lignaggi non staminali; i voti ripetuti della stessa linea (KOLF con
+   quattro tabelle) costano ancora un poco ([livello A](RISULTATI_LIVELLO_A.md), §5; [livello B](RISULTATI_LIVELLO_B.md), §3 e §6).
+3. **T2 è sfavorevole** ([risultati](RISULTATI_T2.md)): cambiare la centratura non è la strada.
+
+**Che cosa ne segue per un refit con un voto per tabella.** Se le fonti in più sono altre tabelle di lignaggi che
+votano già (cloni HIPSCI, condizioni CD4 separate, K562 a singola cellula accanto al suo bulk, le tabelle KOLF),
+l'attesa di questo banco è un PDS **più basso** sui contesti non staminali, non più alto. K562 GWPS a singola
+cellula e il suo bulk sono le stesse cellule: due voti sarebbero una pseudo-replica. CRISPRa non può votare con lo
+stesso segno del CRISPRi; KO va dichiarato come braccio a sé.
+
+**Che cosa posso fare dentro la corsia, senza bloccarla.**
+
+- **Livello A in dieci minuti** sulla release nuova, appena esistono l'elenco delle fonti e le tabelle leggibili
+  da `davideferrante11`: discriminazione e correlazione specifica per fold, controllo a bersagli scambiati, voti
+  contati per lignaggio. Per il contratto può fermare, non promuovere; qui serve da segnale precoce.
+- **Nello stesso giro il confronto con la composizione a cinque fonti** (`cd4_mix`, `h1`, `k562`,
+  `orion_hct116`, `orion_hek293t`), l'unica con misure a favore: livello A `disc95` +0,012 [+0,002; +0,022],
+  positivo sui quattro fold non staminali; sei membri sul fold K562 +0,030 e PDS +0,117, risolti. **È esplorativa:**
+  nata sugli stessi lignaggi, non verificabile sul lato staminale, sul fold H1 la correlazione specifica scende.
+  Stessa formula e stesse tabelle del t36: lo stadio 100 la produce in due minuti, e gli effetti di produzione
+  devono avere sha256 `e22a4f5350135f727064b932b016c0fa0023acfc5ca28ed74267d6bfe1917b6d`.
+- **Una regola per i duplicati, scritta prima:** un voto per lignaggio su ogni bersaglio, oppure pooling delle
+  tabelle della stessa linea prima del voto. Il banco misura entrambe se me le dichiarate.
+
+**La previsione da registrare prima dell'invio**, per membro e non solo sulla media: con più tabelle degli stessi
+lignaggi, PDS non sopra t36; con la composizione a cinque fonti, PDS sopra t36 **se** i tre contesti non sono
+staminali, NMAE circa uguale. La soglia resta ±0,005 e non si sposta dopo il numero.
+
+**Limiti di tutto questo:** sei lignaggi che sono fonti di ogni ricetta, due con cellule vere; il +0,0024
+ufficiale di t36 su t28 non contraddice né conferma, perché cambia anche le tabelle Orion. La scelta e il via
+all'invio sono del proprietario; questa è evidenza, non un'autorizzazione.

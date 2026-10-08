@@ -43,6 +43,7 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 | S-009 | Ibrido selettivo D-056 v1: transfer congelato + correzione neurale regolarizzata + selettore fuori fold | regola di banco passata su 5 linee (CP-0062); sul sito t30 −0,005 contro il t25, non conclusivo e nessuna promozione (CP-0064); su 5 semi e 400 cellule il guadagno di banco è +0,013 di media e il fold esportato perde PDS (CP-0065) | ipotizzato | 2026-10-04 |
 | S-010 | Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25 | t36 ufficiale +0,002404 da t28, descrittivo (CP-0067); a lignaggio escluso, sulle stesse tabelle, l'ampliamento perde PDS sul fold K562 e ne guadagna sul fold iPSC: H1 aiuta, KOLF2.1J costa ai lignaggi non staminali (CP-0069) | ipotizzato | 2026-10-08 |
 | S-011 | Voti di fonti con pochi bersagli del pannello sotto la centratura sul pannello (release r1, T1) | T1 non si distingue da t36 su sei fold e su due banchi a sei membri: inconcludente, nessuna promozione (CP-0069) | ipotizzato | 2026-10-08 |
+| S-012 | Centratura su tutti i bersagli di ogni fonte al posto del pannello (T2) | valido e sfavorevole: nessuna misura migliora, il fold K562 a sei membri perde 0,009, risolto (CP-0070) | ipotizzato | 2026-10-08 |
 
 ## Voci
 
@@ -308,6 +309,8 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 
 ### S-011 — Voti di fonti con pochi bersagli del pannello sotto la centratura sul pannello (release r1, T1)
 
+- **Aggiornamento 8/10, notte:** T2, indicato qui sotto come riapertura, è stato valutato: [CP-0070](checkpoints/0070-t2-centratura-su-tutti-i-bersagli.md), strada S-012, esito valido e sfavorevole. La domanda di questa strada resta **non isolata**: T2 cambia la centratura di tutte le tabelle, non solo di quelle piccole, e il suo costo passa da quelle grandi. Ciò che ora la riaprirebbe è un contrasto che cambi solo le tabelle sotto venti bersagli del pannello.
+
 - **Che cosa si è provato:** aggiungere al voto del transfer t36, a stimatore invariato (peso 1, gamma 1, risposta
   comune calcolata sui bersagli del pannello di ogni tabella), le fonti CRISPRi ammesse dalla banca canonica che hanno
   pochi bersagli del pannello: HIPSCI mirato (5), Xu 2023 (5), Tian 2021 neuroni (6), Tian 2019 neuroni (1). R1 è la
@@ -332,3 +335,32 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 - **Guardia eseguibile:** `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/verifica_voto_singolo.py` misura la contrazione su due file di effetti; il banco
   verifica parità ed esclusioni. **Manca** un rifiuto, nel fit di produzione, delle tabelle sotto un minimo di
   bersagli: spetta a chi possiede il trainer (segnalazione DT-1 dell'audit).
+
+### S-012 — Centratura su tutti i bersagli di ogni fonte al posto del pannello (T2)
+
+- **Che cosa si è provato:** nella ricetta T1, sostituire la risposta comune sottratta a ogni fonte (la media delle
+  sue righe sul pannello) con la media su **tutti** i suoi bersagli, da 95 a 18.080 secondo la fonte, a tabelle,
+  pesi, gamma, ampiezza e testa cis invariati. Vettori e candidato di DATI-TRANSFER.
+- **Prova:** [CP-0070](checkpoints/0070-t2-centratura-su-tutti-i-bersagli.md); [piano](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/VALUTAZIONE_T2.md), [risultati](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/RISULTATI_T2.md);
+  [audit](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/AUDIT_DATI_E_LEAKAGE.md), §8; `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/r5/comune_t2_r5.json`.
+- **Sintomo:** nessuna misura migliora. Livello A, sei fold a lignaggio escluso: `disc95` −0,0005 [−0,0030; +0,0020]
+  contro t36; `sign50` −0,004 e `nmae_conf` +0,003, risolti, sui quattro lignaggi non staminali. Sei membri: fold
+  K562 −0,0087 ± 0,0045, risolto, con l'NMAE a −0,029; fold iPSC +0,0023 ± 0,0125. Esito della regola: valido e
+  sfavorevole.
+- **Meccanismo:** ipotizzato, con una parte **accertata**: T2 aggiunge a ogni bersaglio la stessa riga, la
+  differenza fra la media sul pannello e la media su tutti i bersagli; quella riga contiene l'11–19 % della
+  risposta comune del pannello e per il resto è un'altra direzione (coseno 0,29–0,44). **Ipotizzato:** che sia
+  quella riga a peggiorare NMAE e profondità di segno, perché la risposta comune di tutte le perturbazioni di una
+  fonte non è quella dei 300 bersagli di gara. Nessun contrasto la isola.
+- **Che cosa esclude e che cosa no:** esclude T2 com'è come miglioramento del t36 e come rimedio alla S-011. Non
+  esclude una centratura su tutti i bersagli limitata alle tabelle piccole, né una risposta comune stimata su una
+  popolazione di bersagli scelta prima per somigliare al pannello. Non dice nulla sul trainer esteso, che usa
+  medie simili in un altro modello.
+- **Che cosa la riaprirebbe:** un contrasto dichiarato prima che cambi solo le tabelle sotto venti bersagli del
+  pannello; oppure cellule vere per i fold CD4T, HCT116 e HEK293, se lì il segno si invertisse.
+- **Segnale precoce:** prima del fit, pendenza e coseno fra la riga che la nuova centratura rimette e quella che
+  il pannello toglie: sotto 0,5 la nuova media è di un'altra popolazione. Nel livello A, `sign50` e `nmae_conf`
+  per fold; costa dieci minuti.
+- **Guardia eseguibile:** `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/logo_driver.py` ferma la corsa se un gene votato non ha sostegno nel vettore, e
+  i bracci a gamma 0 devono dare effetti con lo stesso sha256; `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/comune_t2.py` misura la riga comune rimessa.
+  **Manca** una guardia nel fit di produzione: spetta a chi possiede il trainer (segnalazione DT-4 dell'audit).
