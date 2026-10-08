@@ -71,7 +71,18 @@ fold nel formato dello stadio 100) si dichiara in `external_arms` con dimensione
 - `python scripts/31_check_docs.py`: passa quando nessun'altra sessione scrive; conta come «non coperti» i file
   creati mentre gira (li elenca in cartelle già registrate). Stato all'ultima esecuzione: vedi
   [verifiche/](../verifiche/).
-- `.\scripts\py.cmd -m unittest discover -s tests`: 290 test, 289 superati; l'unico fallimento è il controllo
-  dei documenti qui sopra ([tests_r1.txt](../verifiche/tests_r1.txt)). I tre test dello scorer passano.
+- `.\scripts\py.cmd -m unittest discover -s tests`: alle 22:47 290 test su 290 superati
+  ([tests_r2.txt](../verifiche/tests_r2.txt)); nella corsa del pomeriggio 289, con il solo controllo dei documenti
+  fallito per la corsa con un'altra sessione ([tests_r1.txt](../verifiche/tests_r1.txt)).
 - Test delle misure e del banco: 16 su 16. Test di `fold_bank.py` di DATI-TRANSFER rieseguiti da questa sessione:
   7 su 7, su fixture ([esito](../verifiche/dt_test_fold_bank_r2.txt); il file r1 è un'invocazione sbagliata mia).
+
+## 6. Verifica al freeze (22:58 dell'8 ottobre, orologio letto con `date`)
+
+- Pacchetto t36: sha256 ricalcolato `ea41ddf1…4af7`, dieci controlli su dieci veri
+  ([riserva_t36_r2.json](riserva_t36_r2.json)); è lo stesso esito delle 18:57.
+- Nessun candidato nuovo ha un pacchetto: T1 non è promossa, T2 non ha effetti di produzione, la componente esterna
+  non ha predizioni consegnate. Nulla è stato generato, impacchettato o inviato da questa sessione.
+- Artefatti di validazione aggiunti dopo le 21:00: livello A r5 (T2), dataset privati
+  `davideferrante11/vcc-validazione-t2-vettori-8a8ca58a-r1` e `davidmaisterx/vcc-validazione-effetti-{k562,ipsc}-8a8ca58a-t2`,
+  banchi `davidmaisterx/vcc-validazione-banco-{ipsc,k562}-8a8ca58a-t2`. Restano distinti dalla produzione.
