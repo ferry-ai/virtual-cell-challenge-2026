@@ -84,3 +84,37 @@ otterrebbe anche abbassando l'ampiezza. **Ipotesi, non misurata qui:** pesare le
 o far votare ogni lignaggio una volta, conserverebbe H1 senza il costo di KOLF sui contesti lontani. Sul sito t36
 ha dato +0,0024 su t28, con PDS in salita: quel confronto contiene anche il cambio delle tabelle Orion e tre
 contesti di cui non conosciamo la vicinanza alle staminali, quindi non contraddice né conferma questa lettura.
+
+## 6. Esplorativo: t36 senza KOLF2.1J (livello A; il banco a sei membri è a parte)
+
+[Piano scritto prima](ESPLORATIVO_SENZA_KOLF.md), [tabelle](TABELLE_ESPLORATIVO_r3.md), corsa r3 (19:19–19:30,
+kernel `davideferrante11/vcc-validazione-logo-8a8ca58a-r3`; parità sì; il contrasto «KOLF vota una volta» coincide
+con −Q3 della corsa r2).
+
+| Contrasto | `disc95`, macro | Fold non staminali | C-H1 | errore quadratico, macro |
+|---|---|---|---|---|
+| P4h − T0: t36 senza le quattro tabelle KOLF | **+0,012** [+0,002; +0,022] | positivo in tutti e quattro, risolto in C-HEK293 (+0,034) e C-K562 (+0,020); `r_spec` risolto positivo in tutti e quattro | `disc95` −0,007 non risolto; `r_spec` −0,027 risolto | **+0,073** (peggiora: meno fonti, ampiezza più alta) |
+| P4kh − T0: KOLF vota una volta | **+0,002** [+0,001; +0,004] | `r_spec` risolto positivo in tutti e quattro, di poco | `r_spec` −0,006 risolto | +0,015 [−0,001; +0,040] |
+| P4h − P4: H1 aggiunta alle quattro linee | **+0,004** [+0,002; +0,006] | positivo in tutti i fold in cui agisce | — (H1 esclusa) | **−0,004** |
+
+**Misurato:** sui quattro lignaggi non staminali togliere KOLF alza discriminazione, correlazione specifica e
+profondità di segno; sul fold H1, che è staminale, la abbassa; l'errore d'ampiezza peggiora ovunque.
+**Limiti:** l'ipotesi è nata dalla scomposizione di K0 sugli stessi lignaggi (non è una conferma); nei fold
+C-HCT116 e C-HEK293 una fonte è dello stesso studio della verità (Orion), quindi parte dell'accordo può essere
+tecnica, ma l'effetto compare anche in C-K562 e C-CD4T, che non hanno fonti dello stesso studio; l'ampiezza non è
+ricalibrata fra i bracci.
+
+## 7. Regime J: quanto vale il ripiego del transfer sui bersagli nascosti
+
+[Piano scritto prima](REGIME_J.md), [tabelle](TABELLE_REGIME_J_r4.md), corsa r4 (19:45–19:56): per ogni fold i 66
+bersagli del pannello del gruppo 0 tolti da ogni tabella prima dello stadio 100 (24 esecuzioni su copie filtrate,
+279–339 righe nascoste tolte per esecuzione, nessuna tabella del lignaggio escluso letta).
+
+- Come atteso, T0, R1, T1 e P4 **sono identici** sui bersagli nascosti: resta la sola testa cis.
+- Dei 59–66 bersagli nascosti con verità per fold (6 in H1), 15–20 hanno un vicino cis e ricevono una previsione.
+- `disc95` vale 0,54–0,58 contro 0,50 della previsione nulla: differenza risolta in cinque fold su sei, macro
+  **+0,065 [+0,036; +0,099]**. Le altre misure non sono definite: troppo pochi geni previsti per bersaglio.
+
+**Lettura:** in J il transfer non prevede quasi nulla, e quel poco viene dalla testa cis. È la base, misurata, contro
+cui si leggerà una componente che generalizza sui bersagli: in C la stessa misura vale 0,56–0,97. Nessun candidato
+di questo tipo è arrivato alla valutazione stanotte.
