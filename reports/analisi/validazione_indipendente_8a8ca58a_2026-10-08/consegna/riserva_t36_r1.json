@@ -1,0 +1,73 @@
+{
+ "utc": "2026-10-08T16:57:49+00:00",
+ "what": "reserve of the delivery: t36",
+ "package": {
+  "path": "C:\\Users\\ferra\\vcc2026-data\\submissions\\t31_frozen_bank_2026-10-06\\prediction.vcc",
+  "bytes": 4163225600,
+  "sha256": "ea41ddf1ba352911e81442f0e07af999450088a8d5e1738fc66656e1595d4af7"
+ },
+ "entry_id": "JLcMRGExhXKk77XVds7x",
+ "official_score": 0.14724935991548274,
+ "official_members_scaled": {
+  "score_pds": 0.6310665604161688,
+  "score_mse": 0,
+  "score_nmae": 0.07163852828264632,
+  "score_fid": -0.009521475148901774,
+  "score_reach": 0.18656283267158072,
+  "score_jac": 0.0037497132714024357
+ },
+ "recipe_sha256": "3109a6d9c6a0305ae73694d7e897dbe2ab35b344034ec9d2b492308898753226",
+ "emission": {
+  "cells_per_target": 400,
+  "contexts": [
+   "A",
+   "B",
+   "C"
+  ],
+  "controls_included": false,
+  "depth_bins": false,
+  "effects_scale": 1.5,
+  "five_seed_bench": false,
+  "gene_dispersion": true,
+  "gene_dispersion_scale": 1.0,
+  "generator_seed": 20260912,
+  "n_genes": 18533,
+  "n_perturbations": 300,
+  "trial": "trial-ext-profile"
+ },
+ "voted_sources": [
+  "cd4_mix",
+  "h1",
+  "hepg2_nadig",
+  "jurkat_nadig",
+  "k562",
+  "k562_essential",
+  "kolf_chromatin",
+  "kolf_metabolic",
+  "kolf_pan_genome",
+  "kolf_strong",
+  "orion_hct116",
+  "orion_hek293t",
+  "rpe1"
+ ],
+ "checks": {
+  "file_exists": true,
+  "bytes_equal_recorded": true,
+  "sha256_equals_registered_candidate": true,
+  "sha256_equals_local_product_record": true,
+  "sha256_equals_generation_manifest": true,
+  "recipe_sha256_of_prediction_equals_generation": true,
+  "recipe_file_sha256_lf_equals_registered": true,
+  "entry_of_receipt_equals_scored_entry": true,
+  "official_status_published": true,
+  "six_published_members_average_to_the_score": true
+ },
+ "all_true": true,
+ "limits": [
+  "Single exploratory result, no paired multiseed confirmation.",
+  "Expanded release is partial, not all archived sources or 395.75GB.",
+  "Four KOLF experiments share one cell line; source count is not cell-line count.",
+  "No retrospective band or numeric improvement rule.",
+  "Current validation panel does not establish generalization to D/E/F."
+ ]
+}

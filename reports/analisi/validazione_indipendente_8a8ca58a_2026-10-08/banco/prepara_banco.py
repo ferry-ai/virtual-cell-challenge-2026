@@ -122,6 +122,11 @@ def package(revision):
                   coords=params_old['coords'], axis=params_old['axis'], embedded_sha256=embedded,
                   recorded_production_effects_sha256=recorded,
                   reference_package_run_sha256=sha(source), not_vcc_scores=True, loss=None, optimizer=None)
+    plan_path = HERE / ('analisi_%s.json' % revision)      # optional: analysis arms, external arms, contrasts
+    plan = read(plan_path) if plan_path.is_file() else {}
+    for key in ('analysis_arms', 'external_arms', 'contrasts'):
+        if plan.get(key):
+            params[key] = plan[key]
     members.update({'driver.py': driver, 'metrics.py': measures, 'bench_core.py': core,
                     'manifest_fold.json': manifest,
                     'params.json': (json.dumps(params, indent=1) + '\n').encode()})
@@ -136,6 +141,8 @@ def package(revision):
     (stage / 'params.json').write_bytes(members['params.json'])
     meta = read(FIT_R1 / 'package/kernel-metadata.json')
     meta.update(id=slug, title=slug.split('/')[1], is_private=True, enable_gpu=False)
+    meta['dataset_sources'] = sorted(set(meta['dataset_sources']) | set(plan.get('extra_dataset_sources', [])))
+    meta['kernel_sources'] = sorted(set(meta['kernel_sources']) | set(plan.get('extra_kernel_sources', [])))
     (stage / 'kernel-metadata.json').write_text(json.dumps(meta, indent=1) + '\n', encoding='utf-8')
     write_new(HERE / revision / 'prepared.json', dict(
         utc=now(), slug=slug, stage=stage.relative_to(REPO).as_posix(), code=pin(stage / 'run.py'),
@@ -145,6 +152,7 @@ def package(revision):
         manifest=dict(pin(MANIFEST), path=MANIFEST.relative_to(REPO).as_posix()),
         release=dict(pin(RELEASE), path=RELEASE.relative_to(REPO).as_posix()),
         t1_verification=dict(pin(T1_VERIFICATION), path=T1_VERIFICATION.relative_to(REPO).as_posix()),
+        analysis_plan=dict(pin(plan_path), path=plan_path.relative_to(REPO).as_posix()) if plan else None,
         recorded_production_effects_sha256=recorded, reused_fit_package=dict(pin(source), unchanged_members=len(
             params_old['embedded_sha256']) - 1), metadata=meta, compute_started=False))
     for name, body in (('driver.py', driver), ('metrics.py', measures), ('bench_core.py', core)):

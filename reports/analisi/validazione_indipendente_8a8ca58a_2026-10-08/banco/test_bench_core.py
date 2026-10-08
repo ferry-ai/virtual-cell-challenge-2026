@@ -106,6 +106,31 @@ class Measure(unittest.TestCase):
         self.assertEqual(arms["T0"]["own_gene"]["pairs"], 28)
 
 
+class ExtraArms(unittest.TestCase):
+    def test_an_extra_arm_is_measured_without_moving_the_manifest_arms(self):
+        tables, effects = world()
+        base = core.measure(FOLDS, ARMS, effects, tables.__getitem__, PANEL, AXIS, log=lambda m: None)
+        lfc, obs = effects[("P4", "C-ONE")]
+        effects[("P4k", "C-ONE")] = (lfc * 0.5, obs)          # present on one fold only
+        more = core.measure(FOLDS, ARMS, effects, tables.__getitem__, PANEL, AXIS, log=lambda m: None,
+                            extra_arms=["P4k"], extra_contrasts=[["Q1", "P4k", "P4"]])
+        for fid in FOLDS:
+            for tname in base[0][fid]["truth"]:
+                a = base[0][fid]["truth"][tname]["contrasts"]["K1"]
+                b = more[0][fid]["truth"][tname]["contrasts"]["K1"]
+                self.assertEqual(a, b)
+        self.assertEqual(base[1]["K0"], {k: v for k, v in more[1]["K0"].items() if k != "folds_with_the_contrast"}
+                         | {"folds_with_the_contrast": base[1]["K0"]["folds_with_the_contrast"]})
+        self.assertIn("Q1", more[0]["C-ONE"]["truth"]["one"]["contrasts"])
+        self.assertNotIn("Q1", more[0]["C-TWO"]["truth"]["two"]["contrasts"])
+        self.assertEqual(more[1]["Q1"]["folds_with_the_contrast"], ["C-ONE"])
+        self.assertEqual(more[1]["Q1"]["measures"]["disc95"]["folds"], 1)
+        # halving an arm changes no rank and no correlation, only the amplitude measures
+        q1 = more[0]["C-ONE"]["truth"]["one"]["contrasts"]["Q1"]["measures"]
+        self.assertAlmostEqual(q1["r_spec"]["all"]["mean"], 0.0, places=6)
+        self.assertLess(q1["mse_ratio"]["all"]["mean"], 0.0)
+
+
 class Audits(unittest.TestCase):
     def test_a_copy_of_a_table_is_found_and_unrelated_tables_are_not(self):
         tables, _ = world()

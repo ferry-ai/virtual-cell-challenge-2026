@@ -289,7 +289,10 @@ def main():
             _fail('blocked_cd4_part', source=part)
         parts[part] = path
     arms = manifest['arms']
-    for arm, spec in arms.items():
+    analysis = params.get('analysis_arms') or {}          # arms of a declared analysis, not of the manifest
+    if set(analysis) & set(arms) or any('~' in a or '__' in a for a in analysis):
+        _fail('blocked_analysis_arm_names', names=sorted(analysis))
+    for arm, spec in {**arms, **analysis}.items():
         missing = sorted(set(spec['sources']) - set(resolved))
         if missing:
             _fail('blocked_arm_sources', arm=arm, missing=missing)
@@ -308,14 +311,19 @@ def main():
     folds = {f['id']: f for f in manifest['folds_C']}
 
     jobs = []
-    for arm, spec in arms.items():
+    for arm, spec in {**arms, **analysis}.items():
         variants = ['', 'gamma0', 'nocis'] if arm == 'T0' else ['']
         for variant in variants:
             label = arm if not variant else arm + '~' + variant
             for ctx in ['PROD', *folds]:
-                sources = spec['sources'] if ctx == 'PROD' else folds[ctx]['arm_sources'][arm]
-                if ctx != 'PROD' and sorted(set(spec['sources']) - set(folds[ctx]['exclude_tables'])) != sorted(sources):
-                    _fail('blocked_fold_sources', arm=arm, context=ctx)
+                if ctx == 'PROD':
+                    sources = spec['sources']
+                else:
+                    sources = sorted(set(spec['sources']) - set(folds[ctx]['exclude_tables']))
+                    if arm in arms and sources != sorted(folds[ctx]['arm_sources'][arm]):
+                        _fail('blocked_fold_sources', arm=arm, context=ctx)
+                if not sources:
+                    continue
                 jobs.append({'label': label, 'arm': arm, 'variant': variant, 'ctx': ctx, 'sources': list(sources),
                              'recipe': _recipe(document, sources, ctx, 'validazione-%s-%s' % (label, ctx), variant),
                              'resolved': resolved})
@@ -352,7 +360,22 @@ def main():
 
     tables = {name: _load_table(path) for name, (path, _) in resolved.items()}
     tables.update({name: _load_table(path) for name, path in parts.items()})
-    results, macro, shuffle, rows_csv = core.measure(folds, list(arms), effects, tables.__getitem__, panel, axis, _log)
+    # external arms: effects another assignment delivered per fold, found by pinned size and sha256
+    external = params.get('external_arms') or {}
+    external_read = {}
+    for label, by_fold in external.items():
+        if label in arms or label in analysis or '~' in label:
+            _fail('blocked_external_arm_name', label=label)
+        for fid, pin in by_fold.items():
+            if fid not in folds:
+                _fail('blocked_external_fold', label=label, fold=fid)
+            path = _by_content(pin, '%s/%s' % (label, fid))
+            effects[(label, fid)] = _load_effects(path, panel, axis)
+            external_read['%s/%s' % (label, fid)] = {'path': str(path), **pin}
+    _write(WORKING / 'external_arms.json', external_read)
+    results, macro, shuffle, rows_csv = core.measure(
+        folds, list(arms), effects, tables.__getitem__, panel, axis, _log,
+        extra_arms=[*analysis, *external], extra_contrasts=params.get('contrasts') or [])
 
     with (WORKING / 'per_target.csv').open('w', newline='', encoding='utf-8') as fh:
         writer = csv.writer(fh)

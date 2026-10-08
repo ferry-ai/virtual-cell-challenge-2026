@@ -1,0 +1,82 @@
+{
+ "utc": "2026-10-08T17:01:07.374781+00:00",
+ "slug": "davideferrante11/vcc-validazione-logo-8a8ca58a-r2",
+ "stage": "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/r2/package",
+ "code": {
+  "bytes": 609932,
+  "sha256": "0393e62e9992e04fc7e79f621e586cbbee1d7f4572d291e5da66250f8dc028d9"
+ },
+ "params": {
+  "bytes": 7683,
+  "sha256": "b25a44eab4cbfbd787618a6afe024fdf9a093b2c0a255cf873b25e2d62b79cf1"
+ },
+ "driver": {
+  "path": "banco/logo_driver.py",
+  "sha256_lf": "6d8b11a8da5969f632c85a8a0c7efd9e28ce06eeec74fd8443f430a4536fb1f2"
+ },
+ "measures": {
+  "path": "banco/metrics.py",
+  "sha256_lf": "e4bbc08859b3fd2ff0628cf255cd53f8db21507effb78e39fc38d618900567ec"
+ },
+ "core": {
+  "path": "banco/bench_core.py",
+  "sha256_lf": "9252cdfaca2187eef308a7ff58547953423a14fcaaa4f75f558da2a80d63c51b"
+ },
+ "manifest": {
+  "bytes": 24372,
+  "sha256": "add3519816b50b81207152cf7e2ffea7150e66b28587fb04cfdc42283e371cf7",
+  "path": "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/manifest_fold_v1.json"
+ },
+ "release": {
+  "bytes": 25278,
+  "sha256": "0650d1d610e05b5cb5fea3c3695dff67bec14443c9df2708121f84e8f8771c8c",
+  "path": "reports/modelli/banca_canonica_2026-10-07/fit/release_r1.json"
+ },
+ "t1_verification": {
+  "bytes": 1714,
+  "sha256": "d0f3a0c8da2448568a41663b11627a081a981fdd7ae2576cdf213dc402981c2a",
+  "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/fit/dt1-01a11c34-r1/verification.json"
+ },
+ "analysis_plan": {
+  "bytes": 421,
+  "sha256": "734b81133b2c9abfb5c69a9c736b968e6893fbb3e7f8f83ed449d4b37f114151",
+  "path": "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/analisi_r2.json"
+ },
+ "recorded_production_effects_sha256": {
+  "T0": "08fdfd2803fe97753b71324665aad61ccf658f4f014785a5cae8563c3c354c57",
+  "R1": "d7a8cb143f0a77cb25ee6e7c4f70eecfaeafb463d0f9e5ddaa76db02996930ea",
+  "T1": "28f15de7418fdab741bd0bc61049d6f4c8e843cafd016027101697e11c28a6f5"
+ },
+ "reused_fit_package": {
+  "bytes": 590096,
+  "sha256": "a9989ad913a27f672c67dedd5ed8bb9ae4c8519641ab61080a1f684f39c5f637",
+  "unchanged_members": 59
+ },
+ "metadata": {
+  "id": "davideferrante11/vcc-validazione-logo-8a8ca58a-r2",
+  "title": "vcc-validazione-logo-8a8ca58a-r2",
+  "code_file": "run.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+   "davideferrante11/vcc-banca-canonica-derivati-r1",
+   "davideferrante11/vcc-ingest-code-cd4-r1",
+   "davideferrante11/vcc-k562-t25-cache-r1"
+  ],
+  "kernel_sources": [
+   "davideferrante11/vcc-effects-mix-t25-bank-r1-retry1",
+   "davideferrante11/vcc-prod-kolf-chromatin-mask-r1",
+   "davideferrante11/vcc-prod-kolf-metabolic-mask-r1",
+   "davideferrante11/vcc-prod-kolf-strong-mask-r1",
+   "davideferrante11/vcc-prod-orion-hct116-mask-r1",
+   "davideferrante11/vcc-prod-orion-hek293t-mask-r1",
+   "davidmaisterx/vcc-prod-kolf-pan-genome-mask-r1"
+  ],
+  "competition_sources": []
+ },
+ "compute_started": false
+}

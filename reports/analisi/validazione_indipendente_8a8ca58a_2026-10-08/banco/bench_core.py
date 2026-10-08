@@ -36,16 +36,25 @@ def derived_controls(labels: dict, n: int) -> dict:
     return out
 
 
-def measure(folds: dict, arms: list, effects: dict, load_truth, panel: list, axis: list, log=print):
+def measure(folds: dict, arms: list, effects: dict, load_truth, panel: list, axis: list, log=print,
+            extra_arms=(), extra_contrasts=()):
     """``effects[(label, fold id)]`` is (lfc [panel, axis], observed); ``load_truth(table name)`` returns a dict
-    with targets, shrunk, raw, se, n_cells. Returns (results, macro, shuffle, csv rows)."""
+    with targets, shrunk, raw, se, n_cells. Returns (results, macro, shuffle, csv rows).
+
+    ``arms`` are the arms of the manifest: they alone define the targets compared and the genes of the rank, so
+    that adding an arm never moves a number of the others. ``extra_arms`` (analysis or external arms) are
+    measured on the same targets and genes where their effects exist for the fold; ``extra_contrasts`` are
+    (id, first, second) triples added to CONTRASTS, skipped on a fold that lacks one of the two labels."""
+    plan = [*CONTRASTS, *[tuple(c) for c in extra_contrasts]]
     axis_pos = {g: i for i, g in enumerate(axis)}
     exclude_cols = sorted(axis_pos[t] for t in panel if t in axis_pos)
     own_all = np.array([axis_pos.get(t, -1) for t in panel])
     rows_csv, results, boots = [], {}, {}
     for fid, fold in folds.items():
         results[fid] = {'lineage': fold['lineage'], 'truth': {}}
-        labels = derived_controls({a: effects[(a, fid)] for a in [*arms, 'T0~gamma0', 'T0~nocis']}, len(panel))
+        present = [a for a in extra_arms if (a, fid) in effects]
+        labels = derived_controls({a: effects[(a, fid)] for a in [*arms, *present, 'T0~gamma0', 'T0~nocis']},
+                                  len(panel))
         for truth_spec in fold['truth']:
             tname = truth_spec['table']
             table = load_truth(tname)
@@ -74,7 +83,9 @@ def measure(folds: dict, arms: list, effects: dict, load_truth, panel: list, axi
                     rows_csv.append([fid, tname, a, panel[i], int(table['n_cells'][trow[k]])]
                                     + [float(per[a][m][k]) for m in (*REPORTED, 'n_valid', 'n_conf')])
             contrasts = {}
-            for cid, first, second in CONTRASTS:
+            for cid, first, second in plan:
+                if first not in labels or second not in labels:
+                    continue
                 changed = np.abs(labels[first][0][keep] - labels[second][0][keep]).max(axis=1) > 0
                 entry = {'first': first, 'second': second, 'targets': len(keep), 'targets_changed': int(changed.sum()),
                          'changed': [panel[keep[k]] for k in np.flatnonzero(changed)] if changed.sum() <= 40 else None,
@@ -94,8 +105,9 @@ def measure(folds: dict, arms: list, effects: dict, load_truth, panel: list, axi
                                             'contrasts': contrasts}
             log('%s %s: %d targets, %d genes shared by all' % (fid, tname, len(keep), int(cols.sum())))
     macro = {}
-    for cid, first, second in CONTRASTS:
+    for cid, first, second in plan:
         macro[cid] = {'first': first, 'second': second,
+                      'folds_with_the_contrast': [fid for fid in folds if (cid, REPORTED[0], fid) in boots],
                       'measures': {m: M.macro([boots[(cid, m, fid)] for fid in folds if (cid, m, fid) in boots])
                                    for m in REPORTED}}
     shuffle = {}
