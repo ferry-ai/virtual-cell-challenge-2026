@@ -11,6 +11,7 @@ from chunk_store_v2 import build_store, load_store
 from embedding_ridge import MaskedRidge
 from pie_adapter import sha256
 from run_sufficient_probe_v2 import run
+from predict_saved_ridge import predict as predict_saved
 
 
 class FeaturePolicyTests(unittest.TestCase):
@@ -107,6 +108,10 @@ class FeaturePolicyTests(unittest.TestCase):
                 self.assertFalse(prediction['generic_observed'][:,2].any())
             with np.load(root/'out'/'ridge.npz') as model:
                 np.testing.assert_array_equal(model['imputation_mean'], mean)
+            reloaded = predict_saved(root/'out', esm, config['queries'])
+            with np.load(root/'out'/'native_predictions.npz') as original:
+                for key in ('effects', 'observed', 'generic', 'esm2_observed'):
+                    np.testing.assert_array_equal(reloaded[key], original[key])
             config['train'] = dict(path=str(implicit), sha256=sha256(implicit/'manifest.json'))
             manifest.write_text(json.dumps(config)); run(manifest, root/'implicit-out')
             with np.load(root/'out'/'ridge.npz') as a, np.load(root/'implicit-out'/'ridge.npz') as b:
