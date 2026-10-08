@@ -1,0 +1,19 @@
+[16:46:14] bench: 55 targets, median half 55 cells, control pool 2048, genes 18106
+[16:46:38] replicate: PDS=0.9199 MSE=-0.5388 NMAE=1.9256 FID=0.5129 REACH=0.5704 JAC=0.0473 sig/t=41.5 (15s)
+[16:46:52] baseline: PDS=0.5253 MSE=3.2472 NMAE=3.1597 FID=0.0444 REACH=0.1401 JAC=0.0000
+[16:48:13] T0@s0: PDS=0.6498 MSE=3.8138 NMAE=1.0048 FID=0.5084 REACH=0.1180 JAC=0.0066 sig/t=338.5 (53s)
+[16:49:27] T0shuffle@s0: PDS=0.4768 MSE=4.1493 NMAE=1.0285 FID=0.4909 REACH=0.0851 JAC=0.0073 sig/t=339.0 (53s)
+[16:49:27] 
+                PDS  MSE   NMAE    FID  REACH    JAC    avg    sig/t
+replicate     1.000  1.0  1.000  1.000  1.000  1.000  1.000   41.455
+baseline      0.000 -0.0 -0.000  0.000  0.000  0.000  0.000    1.855
+T0@s0         0.316  0.0  1.746  0.990 -0.051  0.139  0.523  338.509
+T0shuffle@s0 -0.123  0.0  1.727  0.953 -0.128  0.154  0.431  339.000
+{"T0:T0shuffle": {"six": [0.0927, NaN, false], "PDS": [0.4386, NaN]}}
+
+--- stderr ---
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. ARL14EP). The gate is real-side only, so this set is the same for every submission.
+allow_fractional_counts=True was LOAD-BEARING here: the pred side has fractional values under declared input_type='counts', so it passed the input-type check ONLY because of the flag -- without it validation would have refused the run ("declared input_type='counts' but values are fractional"). If this is a BASELINE arm that is expected: a mean profile is fractional in any space. If this is a SUBMISSION and processing continues (later gates, including the scale limit, may still refuse it), these values will be INTERPRETED as counts. Note that config_digest cannot see this flag (baseline.DIGEST_EXEMPT_FIELDS), so `score --baseline-agg` pairing will NOT report a baseline/submission mismatch on it; the --real-bundle path IS protected (anchor._SEMANTIC_FIELDS compares it, via score.expect_from_run_meta).
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. ARL14EP). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. CAPRIN2). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. KHDRBS1). The gate is real-side only, so this set is the same for every submission.

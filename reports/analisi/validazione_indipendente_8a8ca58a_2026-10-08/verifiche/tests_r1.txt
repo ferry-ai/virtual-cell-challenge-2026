@@ -16,4 +16,57 @@ allow_fractional_counts=True was LOAD-BEARING here: the pred side has fractional
 expr_mse_unbiased_capped: this prediction's across-perturbation spread is 0.02181 against a claimed sampling correction of 0.03608 (ratio 0.6044 < 0.7). Its per-cell scatter largely CANCELS in the pseudobulk, which is not what an i.i.d. sample of a predicted cell population looks like -- honest arms measure ~1.0 and the two arms that pin their aggregates measured 0.006 and 0.000. The correction is bounded (issue #348), so the score is not inflated by it, but the submission is worth a look.
 expr_mse_unbiased_capped: this prediction's across-perturbation spread is 0.02377 against a claimed sampling correction of 0.03736 (ratio 0.6361 < 0.7). Its per-cell scatter largely CANCELS in the pseudobulk, which is not what an i.i.d. sample of a predicted cell population looks like -- honest arms measure ~1.0 and the two arms that pin their aggregates measured 0.006 and 0.000. The correction is bounded (issue #348), so the score is not inflated by it, but the submission is worth a look.
 expr_mse_unbiased_capped: this prediction's across-perturbation spread is 0.01864 against a claimed sampling correction of 0.0389 (ratio 0.479 < 0.7). Its per-cell scatter largely CANCELS in the pseudobulk, which is not what an i.i.d. sample of a predicted cell population looks like -- honest arms measure ~1.0 and the two arms that pin their aggregates measured 0.006 and 0.000. The correction is bounded (issue #348), so the score is not inflated by it, but the submission is worth a look.
-..........................................F.....................................................................................................
+..........................................F................................................................................................................C:\Program Files\Python312\Lib\functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+.C:\Program Files\Python312\Lib\functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+.C:\Program Files\Python312\Lib\functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+.C:\Program Files\Python312\Lib\functools.py:909: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+..........................C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\multisource.py:443: RuntimeWarning: Mean of empty slice
+  Pc = P - np.nanmean(np.where(valid, P, np.nan), axis=0)
+C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\multisource.py:444: RuntimeWarning: Mean of empty slice
+  Oc = O - np.nanmean(np.where(valid, O, np.nan), axis=0)
+C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\multisource.py:443: RuntimeWarning: Mean of empty slice
+  Pc = P - np.nanmean(np.where(valid, P, np.nan), axis=0)
+C:\Users\ferra\OneDrive\Desktop\vcc2026\src\vcc2026\multisource.py:444: RuntimeWarning: Mean of empty slice
+  Oc = O - np.nanmean(np.where(valid, O, np.nan), axis=0)
+.......................................Wrote 1200 target/control records across 3 frozen splits
+Wrote 1200 target/control records across 6 frozen splits
+Wrote 1200 target/control records across 6 frozen splits
+Wrote 1200 target/control records across 6 frozen splits
+Wrote 1200 target/control records across 3 frozen splits
+  dispersion A: 2 genes overdispersed, median phi 1.200
+  dispersion A: 2 genes overdispersed, median phi 0.600
+  dispersion A: 0 genes overdispersed, median phi 0.000
+-> C:\Users\ferra\AppData\Local\Temp\tmphho7o0dx\0002-ok-slug.md
+Fill the eight sections. Every observed number needs an evidence path.
+Corrections to earlier checkpoints go in section 7, never by editing them.
+-> C:\Users\ferra\AppData\Local\Temp\tmp5nlhk5tv\0002-benchmark-cd4.md
+Fill the eight sections. Every observed number needs an evidence path.
+Corrections to earlier checkpoints go in section 7, never by editing them.
+-> C:\Users\ferra\AppData\Local\Temp\tmpmofjpb2v\docs\checkpoints\0003-nuovo.md
+Fill the eight sections. Every observed number needs an evidence path.
+Corrections to earlier checkpoints go in section 7, never by editing them.
+-> C:\Users\ferra\AppData\Local\Temp\tmp_h4h5afm\0003-benchmark-cd4.md
+Fill the eight sections. Every observed number needs an evidence path.
+Corrections to earlier checkpoints go in section 7, never by editing them.
+[19:13:18] bench: 3 targets, median half 45 cells, control pool 400, genes 80
+[19:13:18] arm_x: PDS=1.0000 MSE=1.1566 NMAE=0.6684 FID=0.6592 REACH=0.0492 JAC=0.4846 sig/t=38.3 (0s)
+............................................................
+======================================================================
+FAIL: test_this_repository_is_consistent (test_doc_workflow.CheckerTests.test_this_repository_is_consistent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\tests\test_doc_workflow.py", line 528, in test_this_repository_is_consistent
+    self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
+AssertionError: 1 != 0 : 1 problem(s):
+  - REGISTRO.md: reports/analisi/modelli_esterni_01a11c35_2026-10-08/streaming_tests_r2.txt exists but no registry entry covers it
+
+
+----------------------------------------------------------------------
+Ran 290 tests in 523.104s
+
+FAILED (failures=1)
+exit 1
