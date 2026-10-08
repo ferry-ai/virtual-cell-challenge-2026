@@ -50,6 +50,8 @@ pronto dal proprietario), t09 e t13 (fermati dalle loro regole), t21 (la sua pre
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 2026-10-08 | [prediction_t37](prediction_t37_2026-10-08/) | Previsione del t37 = T1 con l'emissione del t36, registrata dal Lead alle 23:47 prima di ogni generazione; regola ±0,005 contro t36 | attuale | **Mai generato né inviato:** superato alle 23:55 dalla richiesta del proprietario di un refit su tutte le fonti |
+| 2026-10-08 | [trial](trial_2026-10-08/) | Testi e launcher del t37, più il blocco `NO_SUBMIT_T1_r1.json` | attuale | Nessun invio: la corsia rapida è passata al t38 |
 | 2026-10-06 | [prediction_t36](prediction_t36_2026-10-06/) | Record runtime originale e correzione nome richiesta dall'utente; nessuna banda numerica inventata | attuale | Invio esplorativo della release estesa parziale |
 | 2026-10-06 | [trial](trial_2026-10-06/) | Manifest packaging, testi e trasferimento del candidato; output CLI quando disponibile | attuale | Nessun score ancora dichiarato |
 | 2026-10-06 | [prediction_t31](prediction_t31_2026-10-06/) | Bozza locale con record runtime, mai inviata | storico | Sostituita solo l'etichetta da t36; stessi byte |
