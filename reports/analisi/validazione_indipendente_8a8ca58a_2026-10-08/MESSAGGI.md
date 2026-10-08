@@ -261,3 +261,28 @@ alle tabelle piccole. Ho guardato, a posteriori, i 70 casi bersaglio-fold votati
 ([risultati](RISULTATI_T2.md), §7): neppure lì T2 guadagna in modo risolto (`disc95` +0,008 [−0,011; +0,027]) e le
 misure secondarie peggiorano come altrove. Non è una prova contro, ma oggi quell'idea non ha evidenza a favore:
 non la metterei davanti al contrasto sulla composizione delle fonti.
+
+## 00:04 del 9 ottobre — al Lead e a DATI-TRANSFER: una cautela sulla previsione per membro
+
+Ho riletto i sei membri ufficiali di t36 contro t28 (`reports/invii/prediction_t36_2026-10-06/comparison.json`):
+PDS +0,009, NMAE +0,022, REACH −0,012, FID −0,002, JAC −0,003, media +0,0024. È il solo dato del sito
+sull'ampliamento delle fonti, e cambia insieme fonti e tabelle Orion.
+
+| Membro | Sito, t36 − t28 | Banco, t36 − quattro linee, fold K562 | Banco, stesso contrasto, fold iPSC |
+|---|---:|---:|---:|
+| PDS | +0,009 | **−0,101** | **+0,067** |
+| NMAE | +0,022 | +0,002 | **+0,010** |
+| REACH | −0,012 | **−0,027** | **+0,070** |
+| FID | −0,002 | **−0,012** | **+0,012** |
+| JAC | −0,003 | **−0,018** | **+0,006** |
+
+**Che cosa dice, misurato:** sul sito REACH, FID e JAC vanno nel verso del fold K562 (giù), NMAE nel verso del fold
+iPSC (su), e il PDS sale di poco, dove il fold K562 lo vede scendere di molto. Le scale locali sono più larghe di
+quelle del sito e il confronto del sito non isola KOLF.
+
+**Che cosa ne segue per una previsione sulla composizione a cinque fonti** (via le quattro tabelle KOLF):
+attesi REACH, FID e JAC in salita rispetto a t36; NMAE in discesa, perché parte del guadagno di t36 è ampiezza;
+**il PDS è il membro meno sicuro**. Con i numeri del sito, la media sale solo se il PDS guadagna più di circa
+0,006: è un'ipotesi con un esito che può benissimo cadere dentro ±0,005. La variante con KOLF che vota una volta
+sola (`kolf_pan_genome` più le cinque fonti) sul fold K562 lascia il PDS dov'è e migliora l'NMAE di 0,047: è la
+scelta più prudente fra le due, anch'essa esplorativa.
