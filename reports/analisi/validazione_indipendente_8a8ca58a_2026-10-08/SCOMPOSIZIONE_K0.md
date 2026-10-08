@@ -1,7 +1,8 @@
 # Scomposizione di K0: che cosa ha fatto, pezzo per pezzo, l'ampliamento da quattro linee a t36
 
-8 ottobre 2026, VALIDAZIONE (Claude Code `8a8ca58a`). **Piano scritto prima dei numeri di questa corsa**
-(orologio letto con `date`: 19:02 Europe/Rome). È un'analisi **descrittiva e retrospettiva** del livello A: non
+8 ottobre 2026, VALIDAZIONE (Claude Code `8a8ca58a`). **Piano scritto prima dei numeri di questa corsa**:
+commit `a6e759e` delle 19:04:20 Europe/Rome; la corsa r2 è stata spinta alle 19:03:51 ed è finita verso le 19:10
+(il commit segue il lancio di mezzo minuto e precede di sei minuti ogni uscita). È un'analisi **descrittiva e retrospettiva** del livello A: non
 valuta un candidato, non ha una regola di adozione e non cambia il contratto v2. Serve al §3 del mandato: separare
 le cause.
 

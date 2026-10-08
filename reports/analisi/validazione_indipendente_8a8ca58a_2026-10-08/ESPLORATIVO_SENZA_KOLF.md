@@ -1,7 +1,7 @@
 # Analisi esplorativa: t36 senza KOLF2.1J, e KOLF con un voto solo
 
-8 ottobre 2026, VALIDAZIONE (Claude Code `8a8ca58a`). **Piano scritto prima dei numeri di queste corse** (orologio
-letto con `date`: 19:19 Europe/Rome). È **esplorativa**: l'ipotesi nasce dalla
+8 ottobre 2026, VALIDAZIONE (Claude Code `8a8ca58a`). **Piano scritto prima dei numeri di queste corse**: commit
+`5bfb5a7` delle 19:17:38 Europe/Rome; la corsa r3 del livello A è stata spinta alle 19:19:15. È **esplorativa**: l'ipotesi nasce dalla
 [scomposizione di K0](TABELLE_SCOMPOSIZIONE_K0_r2.md), cioè dagli stessi lignaggi su cui la si prova. Non è un
 candidato del contratto, non può essere promossa da questo banco e non entra nella scelta del freeze; serve a
 decidere se vale un contrasto vero, costruito dal proprietario della pipeline.

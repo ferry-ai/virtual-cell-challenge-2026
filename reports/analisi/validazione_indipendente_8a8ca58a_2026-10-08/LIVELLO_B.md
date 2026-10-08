@@ -1,7 +1,8 @@
 # Livello B del contratto v1: come si esegue sul fold C-K562
 
-8 ottobre 2026, VALIDAZIONE (Claude Code `8a8ca58a`). **Scritto prima che esista un numero del livello B** (orologio
-letto con `date`: 18:33 Europe/Rome; il kernel di estrazione era in corsa, nessun banco a sei membri lanciato).
+8 ottobre 2026, VALIDAZIONE (Claude Code `8a8ca58a`). **Scritto prima che esista un numero del livello B**: commit
+`e0a7ec8` delle 18:42:10 Europe/Rome; i due banchi a sei membri sono stati lanciati alle 18:45:36 e alle 18:49:20
+(`launch.json`), la prima uscita è stata raccolta alle 19:12.
 Non cambia il [contratto v1](PROTOCOLLO_v1.md): ne fissa i dettagli di esecuzione che il §5 lasciava al banco, e
 dichiara che cosa manca.
 
@@ -38,7 +39,8 @@ STRADE S-009 non riguarda questi file). Per questo si estraggono cellule nuove.
 
 ## Secondo fold: C-iPSC sulla libreria «strong» di KOLF2.1J
 
-Aggiunto alle 18:40, **prima di ogni numero del livello B** (nessun banco a sei membri era stato lanciato; del
+Aggiunto nello stesso commit delle 18:42:10, **prima di ogni numero del livello B** (nessun banco a sei membri era
+stato lanciato; del
 livello A erano già letti i risultati, che non scelgono né il fold né i suoi bersagli). Il corpus cellulare del
 pilot contiene le cellule della libreria `kolf_strong`: 55 bersagli del pannello. Stessa estrazione (kernel
 `davidmaisterx/vcc-validazione-celle-ipsc-8a8ca58a-r1`, chiave risolta sul runtime come l'unica che contiene
