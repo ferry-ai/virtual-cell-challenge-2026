@@ -45,7 +45,12 @@ def find(root: Path, name: str) -> Path:
 
 def read_fold(root: Path) -> dict:
     done = json.loads(find(root, 'bench_done.json').read_text(encoding='utf-8'))
-    out = {'ok': bool(done.get('ok')), 'steps': done.get('steps'), 'targets': done.get('targets'), 'runs': {}}
+    steps = done.get('steps') or {}
+    # the verdict needs the control and the full run; the changed-targets run is a secondary reading, and its
+    # failure is reported without making the fold unusable
+    needed = all((steps.get(s) or {}).get('returncode') == 0 for s in ('control', 'full'))
+    out = {'ok': needed, 'all_steps_ok': bool(done.get('ok')), 'steps': steps, 'targets': done.get('targets'),
+           'runs': {}}
     for step in ('control', 'changed', 'full'):
         hits = [p for p in root.rglob('paired.json') if p.parent.name == 'bench_' + step]
         if not hits:
@@ -66,6 +71,7 @@ def main() -> None:
     for item in sys.argv[4:]:
         name, root = item.split('=', 1)
         folds[name] = read_fold(Path(root))
+    failed = {n: [s for s, v in f['steps'].items() if v.get('returncode') not in (0, None)] for n, f in folds.items()}
     lines = ['## Controlli tecnici del livello B', '',
              '| Fold | Banco concluso | Bersagli | Controllo: PDS di T0 − T0 a righe scambiate (1 seme) | Banco utilizzabile |',
              '|---|---|---:|---:|---|']
@@ -77,6 +83,10 @@ def main() -> None:
         lines.append('| %s | %s | %s | %s | %s |' % (
             name, 'sì' if f['ok'] else '**no**', f['targets']['all'] if f.get('targets') else '—',
             '—' if gap is None else '%+.4f' % gap, 'sì' if usable[name] else '**no**'))
+    for n, steps in failed.items():
+        if steps:
+            lines += ['', "Nel fold %s la corsa secondaria %s è fallita: non entra nell'esito del §8 e la tabella dei "
+                      "soli bersagli cambiati non la riporta." % (n, ', '.join('«%s»' % s for s in steps))]
     verdicts = {}
     for cid, (step, pair) in CONTRASTS.items():
         first, second = pair.split(':')
@@ -150,7 +160,8 @@ def main() -> None:
     out_md.write_text('\n'.join(lines) + '\n', encoding='utf-8')
     with out_json.open('x', encoding='utf-8') as fh:
         json.dump({'usable': usable, 'verdicts': verdicts, 'changed_only': changed,
-                   'folds': {n: {'ok': f['ok'], 'steps': f['steps'], 'targets': f['targets']} for n, f in folds.items()},
+                   'folds': {n: {'ok': f['ok'], 'all_steps_ok': f['all_steps_ok'], 'steps': f['steps'],
+                                 'targets': f['targets']} for n, f in folds.items()},
                    'rule': 'contract v2, section 8', 'not_vcc_scores': True}, fh, indent=1)
         fh.write('\n')
     print(json.dumps({c: (v['verdict'], v['why']) for c, v in verdicts.items()}, ensure_ascii=False))
