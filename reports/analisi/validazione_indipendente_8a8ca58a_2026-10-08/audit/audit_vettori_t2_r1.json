@@ -1,0 +1,801 @@
+{
+ "production": {
+  "manifest": {
+   "bytes": 17052,
+   "sha256": "5cb886a2f705e58e1b9a4fb1e979009dc36e1b8a4a9e5b6301764bc2594c4b11",
+   "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/common_release_production_r1.json"
+  },
+  "regime": "production",
+  "policy": "one equal-target masked mean per T1 source; CD4 first mixes conditions per target; no panel fallback",
+  "sources": {
+   "cd4_mix": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-common-cd4-production-01a11c34-r1",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 11593
+   },
+   "h1": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-joint-h1-01a11c34-j2p",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 199
+   },
+   "hepg2_nadig": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-hepg2-nadig-01a11c34-r3",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 2274
+   },
+   "hipsci_targeted_19": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferante/dt-joint-hipsci-targeted-19-01a11c34-j2p",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 435
+   },
+   "jurkat_nadig": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-jurkat-nadig-01a11c34-r3",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 2280
+   },
+   "k562": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "see evidence",
+    "split": {
+     "note": "target-local bulk effects; hidden rule applied before reduction"
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 9866
+   },
+   "k562_essential": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davidmaisterx/dt-all-k562-essential-01a11c34-r3",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 1983
+   },
+   "kolf_chromatin": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-kolf-chromatin-01a11c34-r3",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 95
+   },
+   "kolf_metabolic": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-kolf-metabolic-01a11c34-r3",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 97
+   },
+   "kolf_pan_genome": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-kolf-pan-genome-01a11c34-r3",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 11498
+   },
+   "kolf_strong": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-kolf-strong-01a11c34-r3",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 1641
+   },
+   "orion_hct116": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-orion-hct116-01a11c34-r3",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 17963
+   },
+   "orion_hek293t": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-orion-hek293t-01a11c34-r3",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 18080
+   },
+   "rpe1": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-rpe1-01a11c34-r3",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 2282
+   },
+   "tian2021_crispri": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferante/dt-all-tian2021-crispri-01a11c34-r3",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 176
+   },
+   "xu2023": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferante/dt-all-xu2023-01a11c34-r4private",
+    "split": {
+     "id": "production-01a11c34-r1",
+     "regime": "production",
+     "protected_units": [
+      "h1_test"
+     ],
+     "note": "Production only, not validation C/T/J. No H1 test unit. A validation run requires a separate explicit manifest from VALIDAZIONE."
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 200
+   }
+  },
+  "problems": [],
+  "assembled": {
+   "common": {
+    "declared": {
+     "bytes": 1607332,
+     "sha256": "80103235addf13685397bb29bb06fd5851ef7e4a7920cc04570029bf2eac8b02"
+    },
+    "read": {
+     "bytes": 1607332,
+     "sha256": "80103235addf13685397bb29bb06fd5851ef7e4a7920cc04570029bf2eac8b02"
+    }
+   },
+   "support": {
+    "declared": {
+     "bytes": 268729,
+     "sha256": "7481c9e0abebe707284a797f51c43fef4f3ec5ceb53351f63e828ca250b3ec89"
+    },
+    "read": {
+     "bytes": 268729,
+     "sha256": "7481c9e0abebe707284a797f51c43fef4f3ec5ceb53351f63e828ca250b3ec89"
+    }
+   }
+  }
+ },
+ "T": {
+  "manifest": {
+   "bytes": 40566,
+   "sha256": "cd06fac0ce9962031df150919c9d3f177d98dd13f0aa35daebdcc9abbf98d33b",
+   "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/common_release_T_r1.json"
+  },
+  "regime": "T",
+  "policy": "one equal-target masked mean per T1 source; CD4 first mixes conditions per target; no panel fallback",
+  "sources": {
+   "cd4_mix": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-common-cd4-t-01a11c34-r1",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 9273
+   },
+   "h1": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-joint-h1-01a11c34-j2t",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 167
+   },
+   "hepg2_nadig": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-hepg2-nadig-01a11c34-tj2private",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 1823
+   },
+   "hipsci_targeted_19": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferante/dt-joint-hipsci-targeted-19-01a11c34-j2t",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 347
+   },
+   "jurkat_nadig": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-jurkat-nadig-01a11c34-tj2private",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 1834
+   },
+   "k562": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "see evidence",
+    "split": {
+     "note": "target-local bulk effects; hidden rule applied before reduction"
+    },
+    "hidden_targets_in_split": 0,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 7838
+   },
+   "k562_essential": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davidmaisterx/dt-all-k562-essential-01a11c34-tj1",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 1591
+   },
+   "kolf_chromatin": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-kolf-chromatin-01a11c34-tj2private",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 79
+   },
+   "kolf_metabolic": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-kolf-metabolic-01a11c34-tj2private",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 76
+   },
+   "kolf_pan_genome": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-kolf-pan-genome-01a11c34-tj2private",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 9192
+   },
+   "kolf_strong": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-kolf-strong-01a11c34-tj2private",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 1321
+   },
+   "orion_hct116": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-orion-hct116-01a11c34-tj2private",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 14295
+   },
+   "orion_hek293t": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-orion-hek293t-01a11c34-tj2private",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 14391
+   },
+   "rpe1": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferrante11/dt-all-rpe1-01a11c34-tj2private",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 1837
+   },
+   "tian2021_crispri": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferante/dt-all-tian2021-crispri-01a11c34-tj1",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 143
+   },
+   "xu2023": {
+    "object_equal_to_manifest": true,
+    "evidence_equal_to_manifest": true,
+    "producer": "davideferante/dt-all-xu2023-01a11c34-tj1",
+    "split": {
+     "id": "T-all",
+     "regime": "T",
+     "protected_units": [
+      "h1_test"
+     ]
+    },
+    "hidden_targets_in_split": 66,
+    "object_keys": [
+     "common",
+     "contributing_targets",
+     "genes",
+     "mask"
+    ],
+    "vector_equal_to_assembled": true,
+    "support_equal_to_assembled": true,
+    "targets_behind_max": 163
+   }
+  },
+  "problems": [],
+  "assembled": {
+   "common": {
+    "declared": {
+     "bytes": 1606256,
+     "sha256": "09e63dfe6d48489bf25a740938eec2d09a93529ae05bc64d0d0b52bea8b9c53f"
+    },
+    "read": {
+     "bytes": 1606256,
+     "sha256": "09e63dfe6d48489bf25a740938eec2d09a93529ae05bc64d0d0b52bea8b9c53f"
+    }
+   },
+   "support": {
+    "declared": {
+     "bytes": 266560,
+     "sha256": "a7c04d511aae8a9bcf68a4f839a3370acd8895964cf7fd198eaa6d67216df1f5"
+    },
+    "read": {
+     "bytes": 266560,
+     "sha256": "a7c04d511aae8a9bcf68a4f839a3370acd8895964cf7fd198eaa6d67216df1f5"
+    }
+   }
+  }
+ },
+ "targets_behind_T_over_production": {
+  "cd4_mix": 0.7998792374708876,
+  "h1": 0.8391959798994975,
+  "hepg2_nadig": 0.8016710642040458,
+  "hipsci_targeted_19": 0.7977011494252874,
+  "jurkat_nadig": 0.8043859649122806,
+  "k562": 0.7944455706466653,
+  "k562_essential": 0.8023197175995965,
+  "kolf_chromatin": 0.8315789473684211,
+  "kolf_metabolic": 0.7835051546391752,
+  "kolf_pan_genome": 0.7994433814576448,
+  "kolf_strong": 0.8049969530773918,
+  "orion_hct116": 0.7958024828814786,
+  "orion_hek293t": 0.795962389380531,
+  "rpe1": 0.8049956178790535,
+  "tian2021_crispri": 0.8125,
+  "xu2023": 0.815
+ },
+ "expected_share_under_the_rule": 0.8,
+ "not_a_recomputation_from_cells": true
+}

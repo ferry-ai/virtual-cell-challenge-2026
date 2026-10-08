@@ -123,3 +123,27 @@ campioni cellulari non sono consumati. **La copertura non è completa** e nessun
 | DT-3 | proprietario | `fit/dt1-01a11c34-r1/public_package/kernel-metadata.json`: kernel **pubblico** che incorpora `pert_counts.csv` e `gene_names.csv` del bundle di gara | da valutare dal proprietario: riguarda le condizioni d'uso dei file di gara, non la validità scientifica | conferma del proprietario, o kernel reso privato |
 | VAL-1 | VALIDAZIONE | fold C-K562: un solo gene comune a tutti i bersagli, controllo a bersagli permutati fallito | media: la misura primaria `disc` del contratto v1 non è utilizzabile in quel fold | [emendamento v2](PROTOCOLLO_v2.md), scritto prima di ogni nuovo candidato |
 | VAL-2 | VALIDAZIONE | `manifest_fold_v1.json`, `name_patterns` di HCT116 contiene `dld` | nulla sui risultati v1 (nessuna tabella DLD-1 esiste): DLD-1 è un'altra linea | tolto nel manifest v2 |
+
+## 8. Aggiunta delle 22:42: i vettori comuni di T2
+
+Percorso letto: fonte → kernel `dt-all-*` di DATI-TRANSFER → oggetto per fonte (`common`, `mask`,
+`contributing_targets`) → `common.npz` assemblato → chiave `common` dello stadio 100 → effetti del fold.
+[Verifica](audit/audit_vettori_t2.py), [esito](audit/audit_vettori_t2_r1.json); sola lettura.
+
+| Che cosa | Esito | Tipo |
+|---|---|---|
+| Oggetti per fonte e loro prove, release di produzione e release `T` | 16 su 16 in entrambe: dimensione e sha256 uguali al manifest | misurato |
+| File assemblati | ogni vettore e ogni denominatore uguale all'oggetto della sua fonte, in entrambe le release | misurato |
+| Che cosa legge lo stadio 100 | il file trovato per contenuto; modalità `frozen` con quello sha256; i vettori del lignaggio escluso restano inutilizzati in ogni fold | misurato ([risultati di T2](RISULTATI_T2.md), §1) |
+| Caricato contro influente | quattro vettori su sedici (`hepg2_nadig`, `jurkat_nadig`, `rpe1`, `k562_essential`) non entrano in nessuna previsione: le loro tabelle non hanno bersagli del pannello | misurato |
+| Bersagli nascosti nella release `T` | i bersagli dietro ogni vettore sono fra il 78 e l'84 % di quelli di produzione, contro l'80 % atteso dalla regola a cinque gruppi; quindici split elencano i 66 bersagli nascosti del pannello, K562 dichiara la regola applicata prima della riduzione | misurato sui denominatori; **non** è una prova simbolo per simbolo |
+| H1 | 199 bersagli dietro il vettore, con `h1_test` dichiarata unità protetta nello split; questa sessione non ha letto dati di H1 test | dichiarato dal produttore, coerente con i denominatori |
+| Medie ricalcolate dalle cellule o da una tabella su tutti i bersagli | **non fatto**: servono gli input dei produttori | limite |
+
+**Segnalazioni.** DT-1 è **chiusa per costruzione**: nessun vettore ha meno di 74 bersagli dietro un gene votato.
+Nuova, **DT-4**, informativa: la media su tutti i bersagli non stima meglio la risposta comune del pannello, è la
+media di un'altra popolazione di perturbazioni, e lascia negli effetti una riga comune (quota comune da 0,02 % a
+0,35–0,63 %). Riproduzione: `banco/comune_t2.py` sugli effetti dei fold. Gravità bassa: nessuna misura migliora,
+due secondarie peggiorano di poco. Criterio di accettazione per un fit finale di T2: effetti di produzione con
+sha256 `d496a38d…0ab2`, e una dichiarazione, prima dei numeri, di quale popolazione di bersagli definisce la
+risposta comune.
