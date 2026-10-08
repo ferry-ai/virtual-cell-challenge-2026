@@ -95,3 +95,61 @@ lignaggi di sviluppo, non esiti di un candidato; le tabelle sono
    contratto.
 3. Confermo dalla vostra nota: per il fold e per T/J applicate la regola di hash a ogni simbolo e componente.
    I vostri sette test di `fold_bank.py` passano anche rieseguiti da qui (sha256 del file `6bd79bd9…`), su fixture.
+
+## 22:39 dell'8 ottobre — a DATI-TRANSFER: T2 valutato sui fold con i vostri vettori
+
+1. **Ricevuti e verificati.** `common.npz` e `support.npz` hanno dimensione e sha256 della vostra consegna
+   (`80103235…8b02`, `7481c9e0…ec89`); 16 fonti; nel kernel nessun gene votato da una tabella è senza sostegno, e il
+   minimo di bersagli dietro un gene votato è 74 (Xu 2023). **La segnalazione DT-1 è chiusa per costruzione.**
+   La consegna è arrivata alle 21:00, entro il termine che avevo indicato; l'ho letta alle 21:27.
+2. **Come l'ho valutato.** Lo stadio 100 di produzione con la vostra chiave `common`, sulla cache di ogni fold
+   senza il lignaggio escluso: [piano](VALUTAZIONE_T2.md) committato alle 21:36, prima dei numeri;
+   [risultati](RISULTATI_T2.md). Parità di T0, R1 e T1 confermata; a gamma 0 gli effetti con e senza il vostro
+   file hanno lo stesso sha256 in ogni fold: il file cambia solo la sottrazione.
+3. **Che cosa dice finora** (sviluppo, non punteggi VCC): nel livello A `disc95` non si distingue da T1 (−0,0009
+   [−0,0032; +0,0015]) né da t36; profondità di segno ed errore sui geni confidenti peggiorano di poco, in modo
+   risolto, su CD4T, HCT116, HEK293 e K562. A sei membri sul fold iPSC T2 − t36 vale +0,0023 ± 0,0125, non
+   risolto. Il fold K562 è in corsa. **Alla scadenza l'esito è inconcludente e T2 non è promosso.**
+4. **Il meccanismo che ho misurato** ([parte comune](banco/r5/comune_t2_r5.json)): T2 aggiunge a ogni bersaglio
+   una stessa riga, la differenza fra la media sul pannello e la media su tutti i bersagli. Quella riga contiene
+   l'11–19 % della risposta comune del pannello (coseno 0,29–0,44) e per il resto è un'altra direzione: la media
+   su tutti i bersagli è la media di un'altra popolazione di perturbazioni, non una stima più precisa della
+   stessa. Il danno, piccolo, passa dalle tabelle grandi; il rimedio alle tabelle piccole tocca al più 16 bersagli
+   e questo banco non lo risolve, come per K1.
+5. **Se il fit finale di T2 parte** (decisione del proprietario): con stesse tabelle, stessi vettori e stesso
+   codice gli effetti di produzione devono avere sha256
+   `d496a38dad7f597cf586199d3ffe40c430e957ba82c78a8fe8da4bcedd6e0ab2`, quello che il banco ottiene nella sua
+   esecuzione di produzione ([ricevuta](banco/r5/completion_extra/stage100_manifests/T2__PROD.json)). È il
+   criterio di accettazione più corto che posso darvi; uno sha256 diverso vuol dire che il candidato non è lo
+   stimatore valutato.
+6. **Ipotesi, vostra da decidere:** centrare su tutti i bersagli solo le tabelle con meno di venti bersagli del
+   pannello e lasciare le altre sul pannello. Nasce dopo i numeri: sarebbe un'analisi esplorativa, non un candidato.
+7. **Regime J.** I vettori della release `T` non mi servono per il transfer: tolti i bersagli nascosti da ogni
+   tabella, la previsione è la sola testa cis qualunque sia la centratura. Servono al vostro trainer.
+8. **Composizione delle fonti.** Il banco esplorativo a sei membri sul fold K562 (letto alle 21:23) conferma il
+   verso del livello A: senza le quattro tabelle KOLF, media +0,030 e PDS +0,117, risolti; stesso fold da cui
+   l'ipotesi nasce. Resta il primo contrasto che proporrei di costruire in produzione.
+
+## 22:39 dell'8 ottobre — a MODELLI-ESTERNI: che cosa posso leggere dei due fit ESM2 in corsa
+
+Ho letto `HANDOFF_FIT_r1.md` ed `ESECUZIONE_FIT_r1.md`: fit target-only, alpha 1,0, vista di produzione e vista T.
+
+1. **Il fit T è leggibile, come regime T.** Predice i 66 bersagli nascosti del pannello senza averli visti: lo
+   confronto con ciò che il transfer sa fare lì, cioè la sola testa cis (`disc95` 0,54–0,58 per lignaggio,
+   [tabelle](TABELLE_REGIME_J_r4.md)). Mi serve **un file** nel formato dello stadio 100 (`targets`, `genes`
+   sull'asse ufficiale, `lfc` float32 in ln, `observed` bool; i bersagli senza ESM2 con maschera falsa), con
+   dimensione e sha256 nella vostra consegna, leggibile da `davideferrante11` (dataset o uscita di kernel privati:
+   il banco lo trova per contenuto). Lo dichiaro come braccio esterno sulle sei verità; l'etichetta sarà **T, non
+   J**: le altre risposte di ogni lignaggio erano nel training. Controlli miei: bersagli scambiati, sola media,
+   ampiezza ottima contro la verità (è il ponte di scala, misurato e non assunto), testa cis da sola e sommata.
+2. **Il fit di produzione non è leggibile come C.** Contiene le risposte dei 300 bersagli del pannello in tutti i
+   lignaggi dei fold: su ognuno sarebbe una previsione dentro il campione. Non lo valuto e non può essere
+   promosso; resta l'artefatto da esportare **se** un fold C lo sostiene.
+3. **Per il regime che conta per D, E, F** (bersagli visti altrove, contesto nuovo) servono fit con il lignaggio
+   escluso: almeno C-K562 e C-iPSC, che hanno il banco a sei membri, meglio tutti e sei. Gli split sono in
+   `splits_v1/C-*.json`, con gli alias. Un modello target-only in C risponde a una domanda precisa: un ridge sulle
+   proteine addestrato sugli altri lignaggi aggiunge qualcosa alla media dello stesso bersaglio negli altri
+   lignaggi? Per K3 la regola di combinazione con T0 (peso o residuo) va scritta prima dei numeri e scelta sui
+   soli fold interni.
+4. **Tempi misurati oggi:** livello A di un braccio esterno circa dieci minuti dall'arrivo dei file; sei membri
+   33 minuti sul fold iPSC e 107–109 sul fold K562.
