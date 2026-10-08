@@ -16,11 +16,13 @@ la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
 ## Indice
 
+- [STATO_r6.md](STATO_r6.md): job ESM2 privati corretti in esecuzione, verifica indipendente delle ricevute pronta; consumo ancora da attestare.
 - [STATO_r5.md](STATO_r5.md): T2 verificato, accessi privati autorizzati preparati, consumo del primo fit ancora da attestare.
 - [CONSEGNA_T2_r1.md](CONSEGNA_T2_r1.md): T2 eseguito, parità T1 e array finali verificati.
 - [candidate_t2_r1.json](candidate_t2_r1.json): identità e contratto degli effetti di produzione T2.
 - [MANDATO_RIPRESA_r1.md](MANDATO_RIPRESA_r1.md): nuovo via umano verificato e consenso specifico al trasferimento privato.
 - `runtime_view_resolver.py`, `runtime_access_*`: risoluzione per hash dei mount e cache autenticata autorizzata; riferimenti sensibili fuori Git.
+- `verify_external_consumption.py`: confronto indipendente delle ricevute del fit esterno con tutta la vista congelata; prove sintetiche in `external_consumption_tests_r1.txt`, senza attestare un consumo reale prima delle ricevute.
 - [STATO_r4.md](STATO_r4.md): campagna conclusa, entrambe le release di medie e di training, fit T2 ancora da autorizzare.
 - [HANDOFF_T2_MEDIE_r2.md](HANDOFF_T2_MEDIE_r2.md): consegna completa delle 16 medie di produzione e T/J.
 - [coverage_ledger_r2.json](coverage_ledger_r2.json): collegamento fra catalogo, banca, derivazioni e ruoli effettivi, con lacune esplicite.
