@@ -30,8 +30,28 @@ import prepara_estrazione as E  # noqa: E402
 
 DATA = Path('C:/Users/ferra/vcc2026-data/processed/validazione_indipendente_8a8ca58a_2026-10-08')
 BENCH = B.REPO / 'reports/generatore_e_banchi/banco_v2_2026-10-04/bench_v2.py'
-LEVEL_A = 'r1'
-ARMS = ('T0', 'T1', 'R1', 'P4')
+# A plan is chosen by the revision name: which level-A run wrote the arms, which arms, which bench runs.
+# Revisions not named here use the contract's plan (LIVELLO_B.md).
+CONTRACT_PLAN = {
+    'level_a': 'r1', 'arms': ('T0', 'T1', 'R1', 'P4'),
+    'steps': [{'name': 'control', 'targets': 'all', 'arms': ['T0', 'T0shuffle'], 'pairs': ['T0:T0shuffle'],
+               'gen_seeds': 1},
+              {'name': 'changed', 'targets': 'changed', 'arms': ['T0', 'T1', 'R1'],
+               'pairs': ['T1:T0', 'R1:T0', 'R1:T1'], 'gen_seeds': 5},
+              {'name': 'full', 'targets': 'all', 'arms': ['T0', 'T1', 'P4'], 'pairs': ['T1:T0', 'T0:P4'],
+               'gen_seeds': 5}]}
+PLANS = {
+    # exploratory (ESPLORATIVO_SENZA_KOLF.md): t36 without the KOLF tables, and with KOLF voting once
+    'x1': {'level_a': 'r3', 'arms': ('T0', 'P4h', 'P4kh'),
+           'steps': [{'name': 'full', 'targets': 'all', 'arms': ['T0', 'P4h', 'P4kh'],
+                      'pairs': ['P4h:T0', 'P4kh:T0', 'P4h:P4kh'], 'gen_seeds': 5}]},
+}
+
+
+def plan_of(revision):
+    return PLANS.get(revision, CONTRACT_PLAN)
+
+
 SCORER = '0.16.0'
 SNAPSHOT_MODULES = ('__init__.py', 'bench.py', 'config.py', 'de_tools.py', 'inference.py', 'sampling.py',
                     'generator.py', 'genes.py', 'manifest.py', 'resources.py', 'trials.py')
@@ -126,17 +146,16 @@ def arm(*names):
     return out
 
 
-steps = {
-    "control": [*common, "--targets", OUT / "targets_all.json", *arm("T0", "T0shuffle"), "--pair", "T0:T0shuffle",
-                "--gen-seeds", 1, "--out", OUT / "bench_control"],
-    "changed": [*common, "--targets", OUT / "targets_changed.json", *arm("T0", "T1", "R1"), "--pair", "T1:T0",
-                "--pair", "R1:T0", "--pair", "R1:T1", "--gen-seeds", P["gen_seeds"], "--out", OUT / "bench_changed"],
-    "full": [*common, "--targets", OUT / "targets_all.json", *arm("T0", "T1", "P4"), "--pair", "T1:T0",
-             "--pair", "T0:P4", "--gen-seeds", P["gen_seeds"], "--out", OUT / "bench_full"],
-}
+steps, subset = {}, {}
+for s in P["steps"]:
+    args = [*common, "--targets", OUT / ("targets_%s.json" % s["targets"]), *arm(*s["arms"])]
+    for pair in s["pairs"]:
+        args += ["--pair", pair]
+    steps[s["name"]] = [*args, "--gen-seeds", s["gen_seeds"], "--out", OUT / ("bench_" + s["name"])]
+    subset[s["name"]] = s["targets"]
 ok = True
 for name, args in steps.items():
-    if name == "changed" and len(changed) < 4:
+    if subset[name] == "changed" and len(changed) < 4:
         log["steps"][name] = {"skipped": "fewer than 4 changed targets with real cells"}
         continue
     started = time.time()
@@ -166,14 +185,16 @@ def effetti(line, revision):
     spec = E.LINES[line]
     here = folder(line, revision)
     here.mkdir(exist_ok=False)
-    launch = B.read(HERE / LEVEL_A / 'launch.json')
-    consumption = {(c['label'], c['context']): c for c in B.read(HERE / LEVEL_A / 'completion/consumption.json')}
+    plan = plan_of(revision)
+    launch = B.read(HERE / plan['level_a'] / 'launch.json')
+    consumption = {(c['label'], c['context']): c
+                   for c in B.read(HERE / plan['level_a'] / 'completion/consumption.json')}
     stage = DATA / ('effetti_%s_%s' % (line, revision))
     stage.mkdir(parents=True, exist_ok=False)
-    pattern = '|'.join('effects/%s__%s.npz' % (a, spec['fold']) for a in ARMS)
+    pattern = '|'.join('effects/%s__%s.npz' % (a, spec['fold']) for a in plan['arms'])
     rc, answer = B.call(B.OWNER, ['kernels', 'output', launch['slug'], '-p', str(stage), '--file-pattern', pattern])
     files = {}
-    for a in ARMS:
+    for a in plan['arms']:
         got = next(stage.rglob('%s__%s.npz' % (a, spec['fold'])))
         dest = stage / (a + '.npz')
         got.rename(dest)
@@ -183,6 +204,8 @@ def effetti(line, revision):
     for leftover in sorted(stage.rglob('*'), reverse=True):
         if leftover.is_dir() and not any(leftover.iterdir()):
             leftover.rmdir()
+        elif leftover.is_file() and leftover.suffix == '.log' and leftover.stat().st_size == 0:
+            leftover.unlink()            # the empty log the CLI writes next to a kernel output
     dataset = '%s/vcc-validazione-effetti-%s-%s-%s' % (spec['owner'], line, B.SESSION, revision)
     (stage / 'dataset-metadata.json').write_text(json.dumps(dict(
         title=dataset.split('/')[1], id=dataset, licenses=[dict(name='other')]), indent=1) + '\n')
@@ -190,7 +213,8 @@ def effetti(line, revision):
         what='fold effects of the independent validation, contract v1: stage 100 on a cache without the held lineage',
         fold=spec['fold'], level_a_kernel=launch['slug'], files=files, not_production=True), indent=1) + '\n')
     B.write_new(here / 'effetti.json', dict(utc=B.now(), dataset=dataset, private=True, stage=stage.as_posix(),
-                                            fold=spec['fold'], level_a_kernel=launch['slug'], files=files,
+                                            fold=spec['fold'], level_a_kernel=launch['slug'],
+                                            level_a_run=plan['level_a'], files=files,
                                             retrieval=dict(returncode=rc, answer=answer[-600:])))
     print(json.dumps(dict(dataset=dataset, files={a: f['bytes'] for a, f in files.items()})))
 
@@ -251,7 +275,7 @@ def package(line, revision):
                   arms_sha256={a: f['sha256'] for a, f in record['files'].items()},
                   bench_sha256=hashlib.sha256(members['bench_v2.py']).hexdigest(),
                   changed_targets=sorted(consumo['targets_with_added_votes']), shuffle_seed=20261008,
-                  n_pred=400, gen_seeds=5, bench_seed=2026, fold=spec['fold'])
+                  n_pred=400, gen_seeds=5, bench_seed=2026, fold=spec['fold'], steps=plan_of(revision)['steps'])
     code = KERNEL.replace('__PARAMS__', repr(json.dumps(params))).replace('__SNAPSHOT__',
                                                                           base64.b64encode(snapshot).decode())
     compile(code, 'run.py', 'exec')
