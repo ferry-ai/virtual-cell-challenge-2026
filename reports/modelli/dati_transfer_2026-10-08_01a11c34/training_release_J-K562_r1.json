@@ -1,0 +1,82 @@
+{
+  "utc": "2026-10-08T20:45:49.454257+00:00",
+  "regime": "J",
+  "lineage": "K562",
+  "view": {
+    "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/training_views/J-K562_r1/view.json",
+    "bytes": 9215331,
+    "sha256": "44057026817cd2aa7d88a6e5da04c13679d96d2fcc28490c652ddd21b29f2e8a"
+  },
+  "inputs": {
+    "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/training_views/J-K562_r1/view_inputs.json",
+    "bytes": 114661,
+    "sha256": "534f9a6963253a676983cea3dd5fbfba7db75f95af7ddd390ba1bb956062d5d7"
+  },
+  "split": {
+    "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/training_views/J-K562_r1/view_split.json",
+    "bytes": 1758,
+    "sha256": "d1152d182097b6b9e4499d74e31d8c0332c88693acb1cc9d6d433525cf218f47"
+  },
+  "parent_release": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/training_release_T_r1.json",
+    "bytes": 6359,
+    "sha256": "f304e079f87ec080519fe5f2306c4cd75782645bccc85744ed1e3f7daa0ccdd8"
+  },
+  "response_shape": [
+    153913,
+    18533
+  ],
+  "contexts": 45,
+  "chunks": 1293,
+  "selection": {
+    "retained_contexts": 45,
+    "removed_contexts": {
+      "k562_essential:9b61ba5087c4b7af": {
+        "identity": {
+          "study": "replogle_k562_essential",
+          "line_group": "K562",
+          "context": "K562",
+          "condition": "UNREPORTED@replogle_k562_essential",
+          "modality": "CRISPRi",
+          "chemistry": "10x 3' v3"
+        },
+        "rows": 1591,
+        "reason": "held_lineage_before_any_cross_context_learning"
+      },
+      "k562_gwps:48d8d89e89785608": {
+        "identity": {
+          "study": "replogle_k562_gwps",
+          "line_group": "K562",
+          "context": "K562",
+          "condition": "UNREPORTED@replogle_k562_gwps",
+          "modality": "CRISPRi",
+          "chemistry": "10x 3' v3"
+        },
+        "rows": 7639,
+        "reason": "held_lineage_before_any_cross_context_learning"
+      }
+    },
+    "retained_rows": 153913,
+    "removed_rows": 9230,
+    "experiments": 16,
+    "unique_targets": 14772,
+    "chunks": 1293,
+    "total_row_mass": 1.0,
+    "response_arrays_read": false,
+    "recomputed_effects": false,
+    "changes_to_retained_chunks": [
+      "weights"
+    ],
+    "target_exclusions_before_derivation": true,
+    "model_fit": false,
+    "complete_D053": false
+  },
+  "code": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/build_fold_training_release.py",
+    "bytes": 9703,
+    "sha256": "7f25c317ecebf3b352f490c6e65ff734f0033fc488faa772969162cfdf562f91"
+  },
+  "arrays_independently_rehashed": false,
+  "model_fit": false,
+  "claims_complete_corpus": false
+}

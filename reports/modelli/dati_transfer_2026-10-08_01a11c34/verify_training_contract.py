@@ -24,10 +24,29 @@ def verify(release_path, out):
         raise ValueError('unexpected regime or mechanism')
     contexts = {}; counts = Counter(); mass = defaultdict(list); pairs = set(); targets = set()
     hidden = set(view['effective_split']['hidden_targets'])
+    aliases = view['effective_split'].get('group_aliases', {})
+    held = {aliases.get(g, g) for g in view['effective_split']['held_groups']}
+    if view['regime'] in {'C', 'J'}:
+        parent_pin = view['parent_view']
+        if sha(parent_pin['path']) != parent_pin['sha256']:
+            raise ValueError('parent view hash differs')
+        parent = read(parent_pin['path'])
+        if parent['regime'] != ('production' if view['regime'] == 'C' else 'T'):
+            raise ValueError('wrong upstream regime for context fold')
+        expected_chunks = [c for c in parent['chunks'] if aliases.get(c['context_group'], c['context_group']) not in held]
+        if len(expected_chunks) != len(view['chunks']):
+            raise ValueError('context fold dropped or added chunks beyond lineage exclusion')
+        for frozen, child in zip(expected_chunks, view['chunks']):
+            if {k:v for k,v in frozen.items() if k != 'weights'} != {k:v for k,v in child.items() if k != 'weights'}:
+                raise ValueError('context fold changed a retained chunk')
+        if parent['genes'] != genes or view['upstream_split'] != parent['upstream_split']:
+            raise ValueError('context fold changed axis or upstream exclusions')
     for chunk in view['chunks']:
         identity = chunk['identity']; context = chunk['context_id']; study = identity['study']
         if identity['modality'] != 'CRISPRi' or context.startswith('h1_test:'):
             raise ValueError('protected or wrong-mechanism context')
+        if aliases.get(chunk['context_group'], chunk['context_group']) in held:
+            raise ValueError('held lineage reached training contract')
         if context in contexts and contexts[context] != study:
             raise ValueError('context experiment changed')
         contexts[context] = study
@@ -40,7 +59,7 @@ def verify(release_path, out):
             if not math.isfinite(weight) or weight <= 0:
                 raise ValueError('invalid training weight')
             mass[context].append(weight)
-            if view['regime'] == 'T' and (target in hidden or int(hashlib.sha256(target.encode('utf-8')).hexdigest(), 16) % 5 == 0):
+            if view['regime'] in {'T', 'J'} and (target in hidden or int(hashlib.sha256(target.encode('utf-8')).hexdigest(), 16) % 5 == 0):
                 raise ValueError('hidden target leaked into training contract: ' + target)
     if dict(counts) != view['expected_rows_by_context'] or len(pairs) != view['response_shape'][0]:
         raise ValueError('row coverage differs from declared coverage')
@@ -55,7 +74,8 @@ def verify(release_path, out):
     write_new(out, dict(utc=now(), release=pin(release_path), regime=view['regime'],
         response_shape=view['response_shape'], contexts=len(contexts), experiments=len(study_mass),
         unique_targets=len(targets), chunks=len(view['chunks']), total_row_mass=math.fsum(study_mass.values()),
-        hidden_targets_absent=view['regime'] == 'T', duplicate_context_targets=0,
+        hidden_targets_absent=view['regime'] in {'T', 'J'}, held_lineages_absent=sorted(held),
+        retained_chunk_identity_vs_parent_verified=view['regime'] in {'C', 'J'}, duplicate_context_targets=0,
         scope='actual local metadata hashes, axes, row identities, target exclusions and training weights',
         response_arrays_read=False, model_fit=False, claims_complete_corpus=False))
     print(view['regime'], len(pairs), len(contexts), len(targets), 'metadata verified')
