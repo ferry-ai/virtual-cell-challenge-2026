@@ -1,0 +1,30 @@
+[17:07:55] bench: 17 targets, median half 64 cells, control pool 2048, genes 7679
+
+--- stderr ---
+de_lfc_nmae: omitted 7 perturbation(s) for an empty gate (e.g. ACLY). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 10 perturbation(s) for fewer than 10 gated genes (e.g. EZH2). The gate is real-side only, so this set is the same for every submission.
+target-gene exclusion: 16/17 labels resolved to a measured gene. The other 1 are scored WITHOUT exclusion -- each keeps its own transcript in the ranked vector, a coordinate predictable from the label alone, which CAN inflate its score (measured on #289's panel: unresolved targets read pds_cosine 1.0000 against a model that reproduces the knockdown, where resolved ones read 0.7885). That is harmless ONLY if those genes are genuinely absent from the panel; if any is present under a different string it is the #248 leak on that subset (issue #289), and this function cannot tell the two apart. Check them against the gene panel passed in (an AnnData caller's var_names), and supply EvalConfig.target_gene_map={perturbation: gene} for any that are present. Unresolved sample: ['PRNP']
+target-gene exclusion: 16/17 labels resolved to a measured gene. The other 1 are scored WITHOUT exclusion -- each keeps its own transcript in the ranked vector, a coordinate predictable from the label alone, which CAN inflate its score (measured on #289's panel: unresolved targets read pds_cosine 1.0000 against a model that reproduces the knockdown, where resolved ones read 0.7885). That is harmless ONLY if those genes are genuinely absent from the panel; if any is present under a different string it is the #248 leak on that subset (issue #289), and this function cannot tell the two apart. Check them against the gene panel passed in (an AnnData caller's var_names), and supply EvalConfig.target_gene_map={perturbation: gene} for any that are present. Unresolved sample: ['PRNP']
+target-gene exclusion: 16/17 labels resolved to a measured gene. The other 1 are scored WITHOUT exclusion -- each keeps its own transcript in the ranked vector, a coordinate predictable from the label alone, which CAN inflate its score (measured on #289's panel: unresolved targets read pds_cosine 1.0000 against a model that reproduces the knockdown, where resolved ones read 0.7885). That is harmless ONLY if those genes are genuinely absent from the panel; if any is present under a different string it is the #248 leak on that subset (issue #289), and this function cannot tell the two apart. Check them against the gene panel passed in (an AnnData caller's var_names), and supply EvalConfig.target_gene_map={perturbation: gene} for any that are present. Unresolved sample: ['PRNP']
+target-gene exclusion: 16/17 labels resolved to a measured gene. The other 1 are scored WITHOUT exclusion -- each keeps its own transcript in the ranked vector, a coordinate predictable from the label alone, which CAN inflate its score (measured on #289's panel: unresolved targets read pds_cosine 1.0000 against a model that reproduces the knockdown, where resolved ones read 0.7885). That is harmless ONLY if those genes are genuinely absent from the panel; if any is present under a different string it is the #248 leak on that subset (issue #289), and this function cannot tell the two apart. Check them against the gene panel passed in (an AnnData caller's var_names), and supply EvalConfig.target_gene_map={perturbation: gene} for any that are present. Unresolved sample: ['PRNP']
+Traceback (most recent call last):
+  File "/kaggle/working/repo/bench_v2.py", line 200, in <module>
+    main()
+    ~~~~^^
+  File "/kaggle/working/repo/bench_v2.py", line 156, in main
+    bench.anchors()
+    ~~~~~~~~~~~~~^^
+  File "/kaggle/working/repo/src/vcc2026/bench.py", line 220, in anchors
+    self.score("replicate", self.x[b_rows], b_labels)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/kaggle/working/repo/src/vcc2026/bench.py", line 202, in score
+    raw = aggregate(per)
+  File "/kaggle/working/repo/src/vcc2026/bench.py", line 102, in aggregate
+    agg = cell_eval2.aggregate_metrics(per_pert)
+  File "/usr/local/lib/python3.13/dist-packages/cell_eval2/run.py", line 2000, in aggregate_metrics
+    value = _derived_value(df, spec, require_components=selected is not None)
+  File "/usr/local/lib/python3.13/dist-packages/cell_eval2/run.py", line 1887, in _derived_value
+    raise ValueError(
+    ...<7 lines>...
+    )
+ValueError: expr_mse_unbiased_capped_norm: the sum of expr_distance_unbiased over 17 perturbation(s) is -0.0017008218230583738, which is not positive, so the ratio of sums is undefined or sign-flipped. That means this reference panel carries no measurable aggregate effect at this cell depth -- a property of the REFERENCE, not of the submission. Individual negative values are normal and expected; only the SUM going non-positive is a failure. Fix or replace the reference panel.
