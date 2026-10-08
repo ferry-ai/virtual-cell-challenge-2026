@@ -161,7 +161,10 @@ def _reference_recipe(document, sources):
 
 # --- the bench ---------------------------------------------------------------------------------------------
 
-def _recipe(document, sources, ctx, name, variant):
+ALLOWED_OVERRIDES = ('common', 'gamma')      # what an analysis arm may change in the recipe, and nothing else
+
+
+def _recipe(document, sources, ctx, name, variant, overrides=None):
     base = contract.accept_source_model(document)          # the t36 constants, checked against the mix receipt
     one = next(iter(base['contexts'].values()))
     recipe = {k: v for k, v in base.items() if k != 'contexts'}
@@ -174,6 +177,10 @@ def _recipe(document, sources, ctx, name, variant):
             recipe.pop(key)
         else:
             recipe[key] = value
+    for key, value in (overrides or {}).items():
+        if key not in ALLOWED_OVERRIDES:
+            _fail('blocked_recipe_override', key=key)
+        recipe[key] = value
     return recipe
 
 
@@ -310,6 +317,19 @@ def main():
         _fail('blocked_axes', panel=len(panel), axis=len(axis))
     folds = {f['id']: f for f in manifest['folds_C']}
 
+    # data files an analysis arm names (a frozen common vector): found by pinned content, placed in the data root
+    placed = {}
+    for arm, spec in analysis.items():
+        for rel, pin in (spec.get('data_files') or {}).items():
+            rel_path = Path(rel)
+            if rel_path.is_absolute() or '..' in rel_path.parts:
+                _fail('blocked_data_file_path', arm=arm, path=rel)
+            dest = WORKING / 'data' / rel_path
+            if not dest.exists():
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(_by_content(pin, '%s:%s' % (arm, rel)), dest)
+            placed['%s:%s' % (arm, rel)] = pin
+    _write(WORKING / 'analysis_data_files.json', placed)
     jobs = []
     for arm, spec in {**arms, **analysis}.items():
         variants = ['', 'gamma0', 'nocis'] if arm == 'T0' else ['']
@@ -325,7 +345,8 @@ def main():
                 if not sources:
                     continue
                 jobs.append({'label': label, 'arm': arm, 'variant': variant, 'ctx': ctx, 'sources': list(sources),
-                             'recipe': _recipe(document, sources, ctx, 'validazione-%s-%s' % (label, ctx), variant),
+                             'recipe': _recipe(document, sources, ctx, 'validazione-%s-%s' % (label, ctx), variant,
+                                               spec.get('recipe')),
                              'resolved': resolved})
     _log('running %d stage-100 jobs' % len(jobs))
     with ThreadPoolExecutor(4) as pool:

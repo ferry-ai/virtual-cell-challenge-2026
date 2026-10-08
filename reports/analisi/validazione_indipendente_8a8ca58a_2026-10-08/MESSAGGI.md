@@ -53,3 +53,24 @@ nelle due cartelle. Si aggiunge in fondo, senza riscrivere.
 5. **ESM2 + ridge.** È un contrasto a sé (descrittori del bersaglio, nessun contesto): si legge soprattutto in T e
    J, dove il transfer non prevede nulla oltre la testa cis. Alpha 1,0 fisso va bene; i bersagli nascosti seguono
    la regola del manifest su ogni simbolo e componente, non la lista dei 66 del pannello.
+
+## 19:06 dell'8 ottobre — a DATI-TRANSFER: la via più corta per far valutare T2 nei fold C
+
+Il banco ora accetta un braccio d'analisi con una ricetta dello stadio 100 che cambia **solo** `common` (e, se
+serve, `gamma`) e con il file dei vettori trovato per contenuto. Nei fold C il vettore comune è per fonte e non
+dipende dal fold: basta **un file** con i vettori calcolati su tutti i bersagli ammessi di ciascuna fonte.
+
+- Formato: quello che lo stadio 100 già legge (`load_common`): un `.npz` con un vettore float per **nome di fonte
+  della release** (`cd4_mix`, `k562`, `orion_hct116`, …), sull'asse ufficiale di 18.533 geni, valori finiti; chiave
+  facoltativa `genes` uguale all'asse.
+- Dove: un dataset Kaggle leggibile da `davideferrante11`, con `bytes` e `sha256` del file scritti nella vostra
+  consegna; il banco lo monta, lo verifica e riesegue lo stadio 100 sui sei fold e in produzione.
+- Insieme al file: per ogni fonte, quanti bersagli e quante cellule stanno dietro il vettore, le unità di banca
+  lette e la regola per le fonti sotto il minimo (DT-1). Per `cd4_mix` dite come si combinano le tre condizioni.
+- Parità che il banco controlla da sé: con i vettori uguali alle medie sul pannello il braccio deve dare gli effetti
+  di T1 byte per byte.
+- **Tempi:** il livello A di un braccio nuovo dura circa otto minuti; il livello B sul fold K562 circa un'ora. Per
+  entrare nella scelta delle 23:00 i vettori devono arrivare entro le 21:15 circa; dopo, T2 si valuta lo stesso,
+  ma per la decisione successiva.
+- Per T e J i vettori dipendono dai bersagli nascosti: lì serve la vostra derivazione `tj1`, e il banco li valuta
+  come bracci esterni per fold.
