@@ -8,9 +8,9 @@ from verify_external_consumption import sha, verify
 
 
 class ConsumptionTests(unittest.TestCase):
-    def fixture(self, root):
+    def fixture(self, root, regime='T', fold='T-all', owner='davideferrante11'):
         view = dict(genes=['G1', 'G2'], quantity='natural-log fold change', normalization='frozen',
-            modality='CRISPRi', regime='T', release_sha256='release', split_manifest_sha256='split',
+            modality='CRISPRi', regime=regime, effective_split={'id':fold}, release_sha256='release', split_manifest_sha256='split',
             excluded_targets=['HIDDEN'], excluded_contexts=[], expected_rows_by_context={'c1': 1, 'c2': 1},
             chunks=[dict(path='UNRESOLVED_MOUNT/' + c, producer='p/job', producer_file=c + '.npz',
                 bytes=100, sha256=c, context_id=c, context_group='lineage', targets=[t], weights=[0.5],
@@ -44,15 +44,15 @@ class ConsumptionTests(unittest.TestCase):
             bytes_verified=200, downloaded_bytes=0, inputs=[dict(producer=c['producer'], file=c['producer_file'],
                 bytes=c['bytes'], sha256=c['sha256'], route='native_mount') for c in view['chunks']]))
         self.save(root/'prepared.json', dict(view_sha256=digest, private=True,
-            slug='davideferrante11/esm2-fixture', modules=code, private_bytes=0))
+            slug=owner+'/esm2-fixture', modules=code, private_bytes=0))
         return view, fit, done
 
     def save(self, path, value):
         path.write_text(json.dumps(value), encoding='utf-8')
 
-    def check(self, root):
+    def check(self, root, owner='davideferrante11'):
         return verify(root/'view.json', sha(root/'view.json'), root/'fit.json',
-            root/'complete.json', root/'resolution.json', root/'prepared.json')
+            root/'complete.json', root/'resolution.json', root/'prepared.json', expected_owner=owner)
 
     def test_complete_receipts_preserve_all_contexts_without_claiming_arrays_or_benefit(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -80,6 +80,32 @@ class ConsumptionTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'completion receipt hash'): self.check(root)
             done['receipt_sha256'] = sha(root/'fit.json'); self.save(root/'complete.json', done)
             with self.assertRaisesRegex(ValueError, 'fit code identity'): self.check(root)
+
+    def test_additional_owner_must_be_explicit_and_match_the_authorized_fold(self):
+        for owner, regime in [('davidmaisterx', 'C'), ('davideferante', 'J')]:
+            with self.subTest(owner=owner), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp); self.fixture(root, regime=regime, fold=regime+'-iPSC', owner=owner)
+                with self.assertRaisesRegex(ValueError, 'destination differs'): self.check(root)
+                self.assertEqual(self.check(root, owner)['runtime_owner'], owner)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); self.fixture(root, owner='davidmaisterx')
+            with self.assertRaisesRegex(ValueError, 'specifically authorized iPSC fold'):
+                self.check(root, 'davidmaisterx')
+
+    def test_extended_byte_scope_cannot_inherit_the_smaller_consent(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); self.fixture(root, regime='C', fold='C-iPSC', owner='davidmaisterx')
+            prepared = json.loads((root/'prepared.json').read_text())
+            prepared['private_bytes'] = 53537511
+            self.save(root/'prepared.json', prepared)
+            with self.assertRaisesRegex(ValueError, 'specific authorization'):
+                self.check(root, 'davidmaisterx')
+            with self.assertRaisesRegex(ValueError, 'unknown runtime owner'):
+                self.check(root, 'unrelated-account')
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); self.fixture(root, regime='J', fold='J-iPSC', owner='davidmaisterx')
+            with self.assertRaisesRegex(ValueError, 'specifically authorized iPSC fold'):
+                self.check(root, 'davidmaisterx')
 
 
 if __name__ == '__main__':

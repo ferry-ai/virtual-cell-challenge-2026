@@ -1,0 +1,41 @@
+{
+  "candidate": "T3-CRISPRi-KO",
+  "registered_before_fit_and_generation": true,
+  "protocol": "reports/modelli/dati_transfer_2026-10-08_01a11c34/extended_transfer/r1/protocol.json",
+  "protocol_sha256": "ab0bf8946a3ed98d74bf9752af71073cf6c97eca87a9066bfe46ca9a0b780958",
+  "scope": "Exploratory authorized full-compatible-source extension: T1 CRISPRi core plus all 7 usable KO units, 12 contexts, 5 study/lineage votes, 34 panel targets. Does not close D-053.",
+  "reference": {"name": "t36", "official_score": 0.14724935991548274},
+  "expected_score_band": [0.132, 0.162],
+  "band_interpretation": "Hypothesis, not a confidence interval; no independent KO validation yet.",
+  "expected_delta": 0,
+  "decision_threshold_absolute": 0.005,
+  "readout_rule": {
+    "delta_above_0.005": "Promising package-level single-run observation; no source-level attribution or stable promotion without independent replication.",
+    "delta_within_plus_minus_0.005": "Inconclusive against t36; added coverage does not establish improvement.",
+    "delta_below_minus_0.005": "Unfavorable extended package; retain t36 reference and examine per-member and KO diagnostics without retuning this frozen run."
+  },
+  "member_predictions": {
+    "PDS": "Uncertain; expect small change because only 34 target rows change; uncentered common KO response may dilute specificity.",
+    "NMAE": "Uncertain sign; KO magnitude may differ from CRISPRi despite fixed weak source weight.",
+    "REACH": "Uncertain sign; additional observed responses could help coverage or add context-specific responses.",
+    "FID": "Uncertain sign; generator unchanged, but response means change on KO-supported rows.",
+    "JAC": "Uncertain sign; weak new votes can alter significance near thresholds.",
+    "MSE": "Expect the scaled member to remain near the t36 value zero; this is a hypothesis, not permission to impute a missing official result."
+  },
+  "scientific_changes": [
+    "KO matched-control shrunk effects enter without panel centering, avoiding singleton cancellation.",
+    "Within-study/lineage contexts use reliability-weighted averages; study reliability is maximum context reliability, preventing vote multiplication.",
+    "Each of five KO study votes has fixed weight 0.25; no selection against observed new effects or validation results.",
+    "CRISPRi core recipe, amplitude 1.576 and cis unchanged; no CRISPRa sign reversal."
+  ],
+  "generator": {
+    "stage": 45, "trial": "trial-ext-profile", "generator_seed": 20260912,
+    "effects_scale": 1.5, "gene_dispersion": true, "gene_dispersion_scale": 1.0,
+    "depth_bins": false, "contexts": ["A", "B", "C"], "targets_per_context": 300,
+    "cells_per_target": 400, "response_genes": 18533, "controls_included_in_submission": false
+  },
+  "technical_gate": ["T1 byte parity", "all required KO chunks/contexts consumed", "hashes/axes/masks/SE", "no target changes outside KO support", "stage45 full dimensions", "stage48 payload verification"],
+  "human_authorization": {"thread": "01a11c05-970e-7af2-a07e-3860bd74acbd", "all_sources_message": "01a11d81-e023-7063-839d-b29d4a65e570", "fast_submission_message": "01a11d78-c711-7cb1-9f28-fdcf26fbffa2"},
+  "submitter": "DATI-TRANSFER only; Lead delegated new candidate and retains T1/t37 block",
+  "no_training_interruption": true
+}

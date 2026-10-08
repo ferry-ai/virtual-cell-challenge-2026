@@ -1,0 +1,107 @@
+{
+  "core_recipe": {
+    "allow_foreign_cache": false,
+    "allow_missing_targets": true,
+    "cis": {
+      "max_distance_bp": 5000,
+      "pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv",
+      "scale": 2.0
+    },
+    "common": "panel",
+    "contexts": {
+      "A": {
+        "amplitude": 1.576,
+        "weights": {
+          "cd4_mix": 1.0,
+          "h1": 1.0,
+          "hepg2_nadig": 1.0,
+          "hipsci_targeted_19": 1.0,
+          "jurkat_nadig": 1.0,
+          "k562": 1.0,
+          "k562_essential": 1.0,
+          "kolf_chromatin": 1.0,
+          "kolf_metabolic": 1.0,
+          "kolf_pan_genome": 1.0,
+          "kolf_strong": 1.0,
+          "orion_hct116": 1.0,
+          "orion_hek293t": 1.0,
+          "rpe1": 1.0,
+          "tian2021_crispri": 1.0,
+          "xu2023": 1.0
+        }
+      },
+      "B": {
+        "amplitude": 1.576,
+        "weights": {
+          "cd4_mix": 1.0,
+          "h1": 1.0,
+          "hepg2_nadig": 1.0,
+          "hipsci_targeted_19": 1.0,
+          "jurkat_nadig": 1.0,
+          "k562": 1.0,
+          "k562_essential": 1.0,
+          "kolf_chromatin": 1.0,
+          "kolf_metabolic": 1.0,
+          "kolf_pan_genome": 1.0,
+          "kolf_strong": 1.0,
+          "orion_hct116": 1.0,
+          "orion_hek293t": 1.0,
+          "rpe1": 1.0,
+          "tian2021_crispri": 1.0,
+          "xu2023": 1.0
+        }
+      },
+      "C": {
+        "amplitude": 1.576,
+        "weights": {
+          "cd4_mix": 1.0,
+          "h1": 1.0,
+          "hepg2_nadig": 1.0,
+          "hipsci_targeted_19": 1.0,
+          "jurkat_nadig": 1.0,
+          "k562": 1.0,
+          "k562_essential": 1.0,
+          "kolf_chromatin": 1.0,
+          "kolf_metabolic": 1.0,
+          "kolf_pan_genome": 1.0,
+          "kolf_strong": 1.0,
+          "orion_hct116": 1.0,
+          "orion_hek293t": 1.0,
+          "rpe1": 1.0,
+          "tian2021_crispri": 1.0,
+          "xu2023": 1.0
+        }
+      }
+    },
+    "effect": "shrunk",
+    "gamma": 1.0,
+    "name": "dati-transfer-t1-01a11c34-r1",
+    "reliability_scale": 100.0,
+    "why": "Separate admission contrast: canonical r1 minus the doubtful RFK vote; t25 transfer unchanged."
+  },
+  "policy": {
+    "amplitude": 1.576,
+    "cis": "unchanged t36 max_distance=5000 scale=2",
+    "claims_complete_D053": false,
+    "combination": "add KO numerator and denominator to pre-amplitude CRISPRi mixture; then original amplitude and cis once",
+    "core": "exact T1 source tables, centering, weights and reliability; reproduce byte hashes first",
+    "crispr_a": "excluded from this loss-of-function estimator; no automatic sign reversal",
+    "emitter_scale": 1.5,
+    "ko_centering": "none: matched-control contrasts; no panel mean that would erase singleton STAT6",
+    "ko_estimates": "use existing per-context shrunk effects and measured masks; no new shrinkage after pooling",
+    "ko_qc": "exact singleton labels, matched controls, existing min_cells=10, finite nonnegative SE; no own-RNA-sign gate",
+    "ko_study_reliability": "maximum contributing context reliability per target and gene; never summed over replicates",
+    "ko_study_vote_weight": 0.25,
+    "off_panel": "retained in derived bank and ESM2 views; no false same-target prediction contribution",
+    "pooling": "within each study and lineage, reliability-weighted average over contexts using n/(n+100); keep identities and consumption receipts",
+    "protected_units": [
+      "h1_test"
+    ],
+    "rationale": "fixed quarter-weight prior for an unvalidated distinct loss-of-function mechanism; not optimized against scores or new effects"
+  },
+  "protocol": {
+    "bytes": 77341,
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/extended_transfer/r1/protocol.json",
+    "sha256": "ab0bf8946a3ed98d74bf9752af71073cf6c97eca87a9066bfe46ca9a0b780958"
+  }
+}

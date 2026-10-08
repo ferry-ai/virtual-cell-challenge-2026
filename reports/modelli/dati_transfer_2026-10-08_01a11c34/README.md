@@ -4,7 +4,15 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
-**Stato corrente:** [STATO_r7.md](STATO_r7.md), verificato alle 23:13 dell'8 ottobre.
+**Stato corrente:** [STATO_r9.md](STATO_r9.md), 00:54 del 9 ottobre:
+fit T3 verificato, generazione privata r2 realmente in corso dopo una correzione
+dell'argomento CLI; nessun nuovo fit e nessun upload t38 ancora eseguito.
+Il [protocollo T3](CONSEGNA_T3_PROTOCOLLO_r1.md) e la previsione registrata
+prima del fit restano invariati. Il consenso Dixit/Shifrut è ricevuto e registrato.
+La fotografia precedente è [STATO_r8.md](STATO_r8.md), alle 23:55 dell'8 ottobre.
+Nuovo mandato: refit su tutte le fonti utilizzabili. Generazione T1 preparata ma
+mai lanciata, ora superata e bloccata dal launcher. Accessi C/J-iPSC corretti
+e consegnati al proprietario ESM2; locator privati fuori Git.
 T2 è COMPLETE e gli effetti sono consegnati: nessun consenso al fit ancora pendente.
 Produzione/T ESM2 sono RUNNING; ricevute finali del consumo ancora da verificare.
 Le sei viste congelate sono invariate. I paragrafi iniziali e gli stati r1–r6
@@ -22,6 +30,15 @@ qui sotto sono fotografie dei rispettivi momenti, non nuovi blocchi operativi.
 
 ## Indice
 
+- [STATO_r9.md](STATO_r9.md), [candidate_t3_r1.json](candidate_t3_r1.json), [coverage_t3_r1.json](coverage_t3_r1.json): fit T3 verificato e ruoli delle 45 unità della banca.
+- `generation_recovery/r1/`: recupero della sola generazione con effetti congelati; `generation_recovery/r2/` è una copia difensiva mai lanciata.
+- `collect_t38_generation.py`, `t38_submission.py`, [t38_delivery_tests_r1.txt](t38_delivery_tests_r1.txt): guardie per ricevute, hash, forma completa e invio unico.
+- [generation_incident_r1.json](generation_incident_r1.json): errore CLI misurato, correzione e guardia con parser reale.
+- [CONSEGNA_T3_PROTOCOLLO_r1.md](CONSEGNA_T3_PROTOCOLLO_r1.md), [protocol.json](extended_transfer/r1/protocol.json): ramo T3 CRISPRi+KO congelato, 7 unità/12 contesti/5 voti KO, tutti i 34 bersagli disponibili.
+- [private_locator_metadata_J_r1.json](private_locator_metadata_J_r1.json): audit metadata dei 987 locator J, senza richieste di rete o prova di accessibilità.
+- [STATO_r8.md](STATO_r8.md): mandato corretto su tutte le fonti, nessun lancio T1, accessi privati iPSC consegnati.
+- [cross_account_access_plan_r1.json](cross_account_access_plan_r1.json), [multi_account_authorization_r3.json](multi_account_authorization_r3.json): trasferimenti aggiuntivi autorizzati, guardie per destinatario e vista.
+- [TRANSFER_RAPIDO_PROTOCOLLO_r1.md](TRANSFER_RAPIDO_PROTOCOLLO_r1.md): verifica di riuso; la corsia di generazione T1 è superata dal nuovo mandato r8.
 - [STATO_r7.md](STATO_r7.md): verifica live, T2 completato e aggiornamento pronto per VALIDAZIONE; ricevute finali ESM2 pendenti.
 - [HANDOFF_CJ_r1.md](HANDOFF_CJ_r1.md): quattro viste C/J K562/iPSC congelate e verificate, accessi runtime filtrati, supporto query esplicito; nessun fit C/J avviato.
 - [STATO_r6.md](STATO_r6.md): job ESM2 privati corretti in esecuzione, verifica indipendente delle ricevute pronta; consumo ancora da attestare.

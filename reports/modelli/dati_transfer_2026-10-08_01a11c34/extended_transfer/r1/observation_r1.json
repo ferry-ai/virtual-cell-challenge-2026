@@ -1,0 +1,42 @@
+{
+  "utc": "2026-10-08T22:30:37.192610+00:00",
+  "job": "davideferrante11/dt-t3-fit-generate-01a11c34-r1",
+  "status": "KernelWorkerStatus.ERROR",
+  "version": 1,
+  "private": true,
+  "enable_internet": true,
+  "source_sha256": "2df0c87bcf0f6f94c187d3ca811b5d25d8901c6baf55a2dce4c8c2f66e5ceae0",
+  "saved_code_matches": true,
+  "raw_log": {
+    "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/extended_transfer/r1/observations/r1/provider.log",
+    "bytes": 15734,
+    "sha256": "418dd59673acdba824b7da9924a099327d666ba0a1adde73e5d931ae6fda734f"
+  },
+  "sanitized_tail": [
+    "{\"utc\": \"2026-10-08T22:29:25.380918+00:00\", \"stage\": \"T3_effects_ready\", \"changed_targets\": 34, \"groups\": 5, \"seconds\": 113.447561893}",
+    "{\"utc\": \"2026-10-08T22:29:26.006579+00:00\", \"stage\": \"generate_cells\", \"shape\": [360000, 18533]}",
+    "usage: 45_generate_prediction.py [-h] --run-id RUN_ID --trial TRIAL",
+    "                                 [--out OUT] [--n-perts N_PERTS]",
+    "                                 [--contexts CONTEXTS]",
+    "                                 [--controls-dir CONTROLS_DIR]",
+    "                                 [--cells-per-pert CELLS_PER_PERT]",
+    "                                 [--seed SEED]",
+    "                                 [--overdispersion OVERDISPERSION]",
+    "                                 [--reserve-gib RESERVE_GIB]",
+    "                                 [--skip-resource-check] [--allow-overwrite]",
+    "                                 [--gene-dispersion]",
+    "                                 [--gene-dispersion-scale GENE_DISPERSION_SCALE]",
+    "                                 [--depth-bins]",
+    "                                 [--effects-scale EFFECTS_SCALE]",
+    "                                 [--effects CTX=PATH]",
+    "45_generate_prediction.py: error: unrecognized arguments: B=/kaggle/working/effects/effects_B.npz C=/kaggle/working/effects/effects_C.npz",
+    "{\"status\": \"FAILED\", \"stage\": \"generate_cells\", \"error_type\": \"SystemExit\"}",
+    "/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'",
+    "  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)",
+    "/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'",
+    "  text = re.sub(r'_', '\\_', text) # Escape underscores in display text",
+    "[NbConvertApp] Converting notebook __script__.ipynb to html",
+    "[NbConvertApp] Writing 921621 bytes to __results__.html"
+  ],
+  "arrays_downloaded": false
+}

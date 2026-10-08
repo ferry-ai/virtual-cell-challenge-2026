@@ -29,7 +29,8 @@ def require(condition, reason):
         raise ValueError(reason)
 
 
-def verify(view_path, view_sha256, fit_path, complete_path, resolution_path, prepared_path):
+def verify(view_path, view_sha256, fit_path, complete_path, resolution_path, prepared_path,
+           *, expected_owner='davideferrante11', access_authorization=None):
     require(sha(view_path) == view_sha256, 'frozen view hash differs')
     view, fit, done = read(view_path), read(fit_path), read(complete_path)
     resolution, prepared = read(resolution_path), read(prepared_path)
@@ -40,7 +41,31 @@ def verify(view_path, view_sha256, fit_path, complete_path, resolution_path, pre
         require(done[key] == fit[fit_key], 'completion artifact identity differs')
     require(prepared['view_sha256'] == view_sha256 and prepared['private'] is True,
             'prepared private view identity differs')
-    require(prepared['slug'].startswith('davideferrante11/esm2-'), 'destination differs')
+    require(expected_owner in {'davideferrante11', 'davidmaisterx', 'davideferante'}, 'unknown runtime owner')
+    require(prepared['slug'].startswith(expected_owner + '/esm2-'), 'destination differs')
+    owner_authorization = 'runtime_access_authorization_r1.json'
+    if expected_owner != 'davideferrante11':
+        allowed_fold = {'davidmaisterx': 'C-iPSC', 'davideferante': 'J-iPSC'}[expected_owner]
+        require(view['regime'] == allowed_fold.split('-')[0]
+                and view.get('effective_split', {}).get('id') == allowed_fold,
+                'additional runtime owner does not match the specifically authorized iPSC fold')
+        owner_authorization = 'multi_account_authorization_r2.json'
+        original_budget = {'C-iPSC': 53537510, 'J-iPSC': 43760376}[allowed_fold]
+        if prepared['private_bytes'] > original_budget:
+            require(access_authorization is not None, 'extended private access needs its specific authorization')
+            auth = read(access_authorization)
+            plan_path = Path(__file__).with_name('cross_account_access_plan_r1.json')
+            require(auth['plan_sha256'] == sha(plan_path), 'authorized access plan changed')
+            plan = read(plan_path)['folds'][allowed_fold]
+            require(plan['destination'] == expected_owner and plan['view']['sha256'] == view_sha256,
+                    'extended private access destination or view differs')
+            require(auth['authorized_folds'][allowed_fold] == {k:plan[k] for k in (
+                    'destination', 'additional_chunks', 'additional_bytes')}, 'extended authorization scope differs')
+            require(prepared['private_bytes'] == original_budget + plan['additional_bytes'],
+                    'extended private byte scope differs')
+            require(bool(auth.get('human_message_id')) and bool(auth.get('human_answer')),
+                    'extended human authorization missing')
+            owner_authorization = dict(path=str(access_authorization), sha256=sha(access_authorization))
     store = fit['store_receipt']
     consumed = copy.deepcopy(store['source_manifest'])
     runtime = consumed.pop('runtime_resolution')
@@ -108,7 +133,9 @@ def verify(view_path, view_sha256, fit_path, complete_path, resolution_path, pre
     require(all(c['route'] in ('native_mount', 'authenticated_output_download') for c in resolution['inputs']),
             'unknown source access route')
     return dict(status='PASS', evidence='completed fit receipts checked against frozen metadata',
-        regime=view['regime'], source_view_sha256=view_sha256, fit_receipt_sha256=sha(fit_path),
+        regime=view['regime'], runtime_owner=expected_owner,
+        owner_authorization=owner_authorization,
+        source_view_sha256=view_sha256, fit_receipt_sha256=sha(fit_path),
         prepared_sha256=sha(prepared_path), rows=n_rows, contexts=len(rows_by_context),
         targets=len(targets), chunks=len(chunks), genes=n_genes,
         total_row_weight=exposure['total_row_weight'], resolved_bytes=resolution['bytes_verified'],
@@ -121,8 +148,11 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser(__doc__)
     for name in ('view', 'view-sha256', 'fit', 'complete', 'resolution', 'prepared', 'out'):
         p.add_argument('--' + name, required=True)
+    p.add_argument('--owner', default='davideferrante11', choices=['davideferrante11', 'davidmaisterx', 'davideferante'])
+    p.add_argument('--access-authorization', type=Path)
     a = p.parse_args()
-    result = verify(a.view, a.view_sha256, a.fit, a.complete, a.resolution, a.prepared)
+    result = verify(a.view, a.view_sha256, a.fit, a.complete, a.resolution, a.prepared,
+                    expected_owner=a.owner, access_authorization=a.access_authorization)
     with Path(a.out).open('x', encoding='utf-8') as f:
         json.dump(result, f, indent=2, allow_nan=False)
     print(json.dumps(result))

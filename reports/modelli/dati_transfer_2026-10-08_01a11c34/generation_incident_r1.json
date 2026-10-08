@@ -1,0 +1,15 @@
+{
+  "recorded_utc": "2026-10-08T22:54:36Z",
+  "claim_type": "measured",
+  "failed_job": "davideferrante11/dt-t3-fit-generate-01a11c34-r1",
+  "phase": "generation CLI after successful scientific fit",
+  "mechanism": "Stage 45 requires a repeated --effects option for each context; the first wrapper supplied one flag followed by three values.",
+  "fit_lost": false,
+  "scientific_refit_repeated": false,
+  "recovery": "generation_recovery/r1/prepared.json",
+  "guard": "test_emission_arguments.py runs the actual stage-45 argument parser with the corrected argument list before cloud dispatch.",
+  "execution_evidence": "Live generation log from recovery r2 shows context A completed and B 151/300; no final package yet.",
+  "unconfirmed_hypothesis": "The recovery might lack a Linux data-root override. Live generation disproved the predicted failure; the defensive r3 package was never launched.",
+  "unused_package_guard": "extended_cloud.launch rejects folders carrying NOT_LAUNCHED_r1.json.",
+  "follow_up_owner": "VALIDAZIONE owns the shared incident ledger/checkpoint; this is the immutable technical evidence in DATI-TRANSFER's folder."
+}

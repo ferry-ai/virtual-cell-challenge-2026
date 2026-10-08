@@ -1,0 +1,146 @@
+{
+  "utc": "2026-10-08T22:39:25.177728+00:00",
+  "name": "T3-CRISPRi-KO",
+  "status": "effects_verified_generation_pending",
+  "source_job": "davideferrante11/dt-t3-fit-generate-01a11c34-r1",
+  "protocol": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/extended_transfer/r1/protocol.json",
+    "bytes": 77341,
+    "sha256": "ab0bf8946a3ed98d74bf9752af71073cf6c97eca87a9066bfe46ca9a0b780958"
+  },
+  "receipt": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/extended_transfer/r1/fit_completion_r1/t3_consumption.json",
+    "bytes": 17733,
+    "sha256": "e3c8c7ee10acd30d74942000603316cab63bc2e0f1b3dcccff75e78db66c0f98"
+  },
+  "verification": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/extended_transfer/r1/fit_completion_r1/verification.json",
+    "bytes": 3500,
+    "sha256": "c67220ee33ebe6590ecdd6bbe29a1fb5472a84b6b2088d31f8fd83279618fcfd"
+  },
+  "coverage": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/coverage_t3_r1.json",
+    "bytes": 41717,
+    "sha256": "74a85c9dd370cf34185e8caef2216d5900253da30504a617f4347a4681fac60a"
+  },
+  "effects": {
+    "A": {
+      "bytes": 18846035,
+      "path": "/kaggle/working/effects/effects_A.npz",
+      "sha256": "b8c61f6da684f6c28107199469ac42ef030a4644176371b9723ae6e3f863f6a6"
+    },
+    "B": {
+      "bytes": 18846035,
+      "path": "/kaggle/working/effects/effects_B.npz",
+      "sha256": "b8c61f6da684f6c28107199469ac42ef030a4644176371b9723ae6e3f863f6a6"
+    },
+    "C": {
+      "bytes": 18846035,
+      "path": "/kaggle/working/effects/effects_C.npz",
+      "sha256": "b8c61f6da684f6c28107199469ac42ef030a4644176371b9723ae6e3f863f6a6"
+    }
+  },
+  "expected_shape": [
+    300,
+    18533
+  ],
+  "dtype": "float32",
+  "mask": "observed bool; unobserved zero",
+  "units": "natural log fold change; amplitude1.576 and original cis applied once; emitter not applied",
+  "ko_study_tables": [
+    {
+      "bytes": 1452055,
+      "contexts": 1,
+      "file": "ko_tables/study00.npz",
+      "fixed_weight": 0.25,
+      "line_group": "A549",
+      "sha256": "6ee044caedd7614b48f49d4310112e408838b5558e7fdbfa8f42de292023b7ba",
+      "study": "a549_liu_hillsley2026",
+      "targets": [
+        "ALG12",
+        "ANP32B",
+        "C5orf22",
+        "COQ10B",
+        "LDLR",
+        "MSANTD4",
+        "NUP37",
+        "PAN2",
+        "PATL1",
+        "PHF23",
+        "PIM2",
+        "PRKACA",
+        "RBM26",
+        "RBM5",
+        "SCAF8",
+        "STT3A",
+        "SYVN1",
+        "TIMM17B",
+        "WBP4",
+        "ZNF219",
+        "ZNF496"
+      ]
+    },
+    {
+      "bytes": 294473,
+      "contexts": 3,
+      "file": "ko_tables/study01.npz",
+      "fixed_weight": 0.25,
+      "line_group": "K562",
+      "sha256": "63cf8408e46984bf22e3886bf97dd50b101304b09ae5db4b4582e53e9522e468",
+      "study": "dixit2016_k562_ko",
+      "targets": [
+        "E2F4",
+        "ELK1"
+      ]
+    },
+    {
+      "bytes": 486586,
+      "contexts": 3,
+      "file": "ko_tables/study02.npz",
+      "fixed_weight": 0.25,
+      "line_group": "melanoma",
+      "sha256": "130a50a487f5cc0047ad028440f55bcad9388b37be44ddbd3e1a2ebb14f42cf2",
+      "study": "frangieh2021_melanoma_ko",
+      "targets": [
+        "E2F1",
+        "IFNGR2",
+        "SLC25A13",
+        "SLIRP",
+        "TIMM50"
+      ]
+    },
+    {
+      "bytes": 240362,
+      "contexts": 4,
+      "file": "ko_tables/study03.npz",
+      "fixed_weight": 0.25,
+      "line_group": "CD4T",
+      "sha256": "9bc158e0f58868715854734733b1a1b9a0cceff470b80218550074a6c162d2ba",
+      "study": "shifrut2018_tcells_ko",
+      "targets": [
+        "STAT6"
+      ]
+    },
+    {
+      "bytes": 540921,
+      "contexts": 1,
+      "file": "ko_tables/study04.npz",
+      "fixed_weight": 0.25,
+      "line_group": "Calu3",
+      "sha256": "d3933192d01bade3dfb09e2b898f8eefe9e5d67ad03e26b6f3d8db14fef54860",
+      "study": "sunshine2023_calu3_ko",
+      "targets": [
+        "BCKDK",
+        "IFNAR2",
+        "LDLR",
+        "MYD88",
+        "TMEM41B",
+        "TRMT1"
+      ]
+    }
+  ],
+  "T1_null_parity": true,
+  "claims_improvement": false,
+  "claims_complete_D053": false,
+  "submitted": false
+}
