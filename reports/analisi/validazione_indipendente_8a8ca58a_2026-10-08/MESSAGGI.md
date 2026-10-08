@@ -316,3 +316,37 @@ numeratore e denominatore prima dell'ampiezza; possedete il percorso fino all'in
 5. **Resta la mia lettura scientifica:** nessuna delle varianti «più fonti» ha finora una misura a favore; il solo
    contrasto del transfer con misure a favore è la composizione, ed è esplorativo. È scritto nei messaggi delle
    23:59 e delle 00:04; la scelta è vostra e del proprietario.
+
+## 00:45 del 9 ottobre — a DATI-TRANSFER: scheda tecnica di T3 e una segnalazione prima della generazione
+
+Ho letto `candidate_t3_r1.json` e le ricevute del fit; ho recuperato in sola lettura **un** file
+(`effects/effects_A.npz` del kernel `dt-t3-fit-generate-01a11c34-r1`) nella radice dati: 18.846.035 byte, sha256
+`b8c61f6d…f6a6`, uguale alla vostra ricevuta ([recupero](consegna/schede/t3_effetti_recupero_r1.json)). Il log che
+il client scrive accanto l'ho rimosso senza leggerlo. Scheda, senza verità:
+[t3_contro_t1_r1.json](consegna/schede/t3_contro_t1_r1.json), prodotta da `banco/scheda_t3.py`.
+
+**Confermato (misurato):** cambiano 34 bersagli, gli stessi della ricevuta; la copertura di T1 è conservata; dove
+votano sia il CRISPRi sia il KO la previsione resta vicinissima a T1 (correlazione mediana 0,994, minima 0,984;
+distanza mediana 11 %, massima 18 %; norma 0,97 di quella di T1). La quota del cambiamento comune ai 34 bersagli
+è il 10 %: il rischio di una risposta comune del KO, che il protocollo nomina, qui non domina.
+
+**Segnalazione DT-5 (misurata): dove vota solo il KO, il peso 0,25 non agisce.** T3 predice 6.722 coppie
+bersaglio-gene che T1 non prediceva, su tutti e 34 i bersagli (868 per C5orf22, 352 per IFNGR2, 342 per LDLR).
+Lì numeratore e denominatore contengono solo il KO: il peso si semplifica e la previsione è l'effetto KO intero per
+l'ampiezza 1,576. Quelle coppie hanno valori assoluti più grandi del resto (mediana 0,056, 95° percentile 0,67,
+massimo 4,50 in ln, contro 0,035, 0,29 e 6,55 di T1 sugli stessi bersagli) e **fanno quasi tutta la distanza di T3
+da T1**: 9,4 % della norma di T1 su tutti i 300 bersagli, più di quanto i voti a un quarto spostino dove c'è il
+CRISPRi. La ricevuta lo dice con `max_ko_fraction: 1.0`; il protocollo lo descrive come «prior debole a un
+quarto», e su queste coppie non lo è.
+
+- **Riproduzione:** `banco/scheda_t3.py <effects_A di T3> <effects_A di T1> <t3_consumption.json> <uscita>`.
+- **Gravità:** media per la coerenza con il protocollo, incerta per il punteggio: 6.722 coppie su 4,47 milioni,
+  ma sono risposte nuove di un solo studio KO a peso pieno, e possono aggiungere chiamate di espressione
+  differenziale sui 34 bersagli. Non so dire il verso sul sito.
+- **Criterio di accettazione, a vostra scelta e prima della generazione:** (a) tenere la maschera di T1, così il
+  KO pesa davvero un quarto e solo dove un CRISPRi vota; oppure (b) lasciare T3 com'è e scriverlo nella previsione
+  del t38 prima dell'upload: «6.722 coppie previste dal solo KO a peso pieno». La (a) cambia lo stimatore, quindi
+  vuole revisione del protocollo e della previsione; la (b) no. Non tocca a me scegliere e non blocco.
+
+**Sui fold T3 non è valutato:** vale ciò che ho scritto alle 00:13. La lettura scientifica resta «nessuna misura a
+favore o contro»; l'attesa registrata da voi, delta zero entro ±0,005, è coerente con la scheda.
