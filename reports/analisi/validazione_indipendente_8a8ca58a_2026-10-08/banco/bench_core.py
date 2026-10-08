@@ -44,7 +44,12 @@ def measure(folds: dict, arms: list, effects: dict, load_truth, panel: list, axi
     ``arms`` are the arms of the manifest: they alone define the targets compared and the genes of the rank, so
     that adding an arm never moves a number of the others. ``extra_arms`` (analysis or external arms) are
     measured on the same targets and genes where their effects exist for the fold; ``extra_contrasts`` are
-    (id, first, second) triples added to CONTRASTS, skipped on a fold that lacks one of the two labels."""
+    (id, first, second) triples added to CONTRASTS, skipped on a fold that lacks one of the two labels.
+
+    A fold may carry three options, used by the J regime: ``only_targets`` (evaluate these symbols only),
+    ``require_prediction`` False (a target no arm predicts stays in, read as a null prediction) and
+    ``rank_genes_from`` 'truth' (the genes of the discrimination rank come from the truth alone, one truth for
+    every arm, a pair an arm does not predict counting zero)."""
     plan = [*CONTRASTS, *[tuple(c) for c in extra_contrasts]]
     axis_pos = {g: i for i, g in enumerate(axis)}
     exclude_cols = sorted(axis_pos[t] for t in panel if t in axis_pos)
@@ -59,25 +64,41 @@ def measure(folds: dict, arms: list, effects: dict, load_truth, panel: list, axi
             tname = truth_spec['table']
             table = load_truth(tname)
             pos = {t: j for j, t in enumerate(table['targets'])}
-            keep = [i for i, t in enumerate(panel) if t in pos and all(labels[a][1][i].any() for a in arms)]
+            only = set(fold['only_targets']) if fold.get('only_targets') is not None else None
+            need = fold.get('require_prediction', True)
+            keep = [i for i, t in enumerate(panel) if t in pos and (only is None or t in only)
+                    and (not need or all(labels[a][1][i].any() for a in arms))]
             if len(keep) < 3:
                 results[fid]['truth'][tname] = {'role': truth_spec['role'], 'targets': len(keep), 'skipped': True}
                 continue
             trow = np.array([pos[panel[i]] for i in keep])
             shrunk, raw, se = table['shrunk'][trow], table['raw'][trow], table['se'][trow]
             valid = {a: M.valid_pairs(labels[a][1][keep], shrunk, raw, se, exclude_cols) for a in labels}
-            cols = np.logical_and.reduce([valid[a].all(axis=0) for a in arms])
-            cols95 = np.mean([valid[a] for a in arms], axis=0).mean(axis=0) >= 0.95
+            from_truth = fold.get('rank_genes_from') == 'truth'
+            if from_truth:
+                truth_ok = M.valid_pairs(np.ones(shrunk.shape, bool), shrunk, raw, se, exclude_cols)
+                one_truth = np.where(truth_ok, np.nan_to_num(shrunk.astype(np.float64)), 0.0)
+                cols, cols95 = truth_ok.all(axis=0), truth_ok.mean(axis=0) >= 0.95
+            else:
+                cols = np.logical_and.reduce([valid[a].all(axis=0) for a in arms])
+                cols95 = np.mean([valid[a] for a in arms], axis=0).mean(axis=0) >= 0.95
             per, summary = {}, {}
             for a, (lfc, obs) in labels.items():
                 per[a] = M.per_target(lfc[keep], valid[a], shrunk, raw, se, cols)
-                loose = M.per_target(np.where(valid[a], lfc[keep], 0.0), valid[a], np.where(valid[a], shrunk, 0.0),
-                                     raw, se, cols95)
-                per[a]['disc95'] = loose['disc']
+                if from_truth:
+                    masked = np.where(valid[a], lfc[keep], 0.0)
+                    per[a]['disc'] = M.per_target(masked, valid[a], one_truth, raw, se, cols)['disc']
+                    per[a]['disc95'] = M.per_target(masked, valid[a], one_truth, raw, se, cols95)['disc']
+                else:
+                    loose = M.per_target(np.where(valid[a], lfc[keep], 0.0), valid[a],
+                                         np.where(valid[a], shrunk, 0.0), raw, se, cols95)
+                    per[a]['disc95'] = loose['disc']
+                summary_predicted = int(labels[a][1][keep].any(axis=1).sum())
                 summary[a] = M.arm_summary(lfc[keep], valid[a], raw, cols, own_all[keep], obs[keep])
                 with np.errstate(all='ignore'):
                     summary[a].update({m: float(np.nanmean(per[a][m])) for m in REPORTED})
-                summary[a].update(targets=len(keep), median_n_conf=float(np.median(per[a]['n_conf'])),
+                summary[a].update(targets=len(keep), targets_with_a_prediction=summary_predicted,
+                                  median_n_conf=float(np.median(per[a]['n_conf'])),
                                   median_n_valid=float(np.median(per[a]['n_valid'])))
                 for k, i in enumerate(keep):
                     rows_csv.append([fid, tname, a, panel[i], int(table['n_cells'][trow[k]])]

@@ -131,6 +131,33 @@ class ExtraArms(unittest.TestCase):
         self.assertLess(q1["mse_ratio"]["all"]["mean"], 0.0)
 
 
+class JRegime(unittest.TestCase):
+    def test_hidden_targets_without_a_prediction_stay_in_and_read_as_null(self):
+        tables, effects = world()
+        hidden = PANEL[4:14]
+        jfold = {"J-ONE": {"lineage": "ONE", "truth": [{"table": "one", "role": "primary"}], "only_targets": hidden,
+                           "require_prediction": False, "rank_genes_from": "truth"}}
+        for arm in ARMS + ["T0~gamma0", "T0~nocis"]:
+            lfc, obs = effects[(arm, "C-ONE")]
+            lfc, obs = lfc.copy(), obs.copy()
+            rows = [PANEL.index(t) for t in hidden]
+            lfc[rows], obs[rows] = 0.0, False          # a same-target transfer has nothing for a hidden target
+            effects[(arm, "J-ONE")] = (lfc, obs)
+        effects[("E", "J-ONE")] = effects[("T0", "C-ONE")]   # an arm that does predict them
+        res, macro, shuffle, rows = core.measure(jfold, ARMS, effects, tables.__getitem__, PANEL, AXIS,
+                                                 log=lambda m: None, extra_arms=["E"],
+                                                 extra_contrasts=[["KJ", "E", "T0"]])
+        block = res["J-ONE"]["truth"]["one"]
+        self.assertEqual(block["targets"], len(hidden))
+        self.assertEqual(block["arms"]["T0"]["targets_with_a_prediction"], 0)
+        self.assertAlmostEqual(block["arms"]["T0"]["disc95"], 0.5, places=9)
+        self.assertEqual(block["arms"]["E"]["targets_with_a_prediction"], len(hidden))
+        self.assertGreater(block["arms"]["E"]["disc95"], 0.9)
+        gain = block["contrasts"]["KJ"]["measures"]["disc95"]["all"]
+        self.assertTrue(gain["resolved"] and gain["lo"] > 0)
+        self.assertEqual(len({r[3] for r in rows}), len(hidden))
+
+
 class Audits(unittest.TestCase):
     def test_a_copy_of_a_table_is_found_and_unrelated_tables_are_not(self):
         tables, _ = world()

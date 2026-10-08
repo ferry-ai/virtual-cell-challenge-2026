@@ -191,8 +191,20 @@ def _run_stage100(job):
     root = TEMP / 'runs' / (label + '__' + ctx)
     cache = root / 'cache'
     cache.mkdir(parents=True)
+    hidden = set(job.get('hidden') or [])
+    job['filtered'] = {}
     for source in sources:
-        os.symlink(resolved[source][0], cache / (source + '.npz'))
+        if not hidden:
+            os.symlink(resolved[source][0], cache / (source + '.npz'))
+            continue
+        import numpy as np
+        with np.load(resolved[source][0], allow_pickle=False) as z:
+            targets = np.array([str(t) for t in z['targets']])
+            keep = np.array([t not in hidden for t in targets], bool)
+            np.savez_compressed(cache / (source + '.npz'), targets=z['targets'][keep], shrunk=z['shrunk'][keep],
+                                raw=z['raw'][keep], se=z['se'][keep], n_cells=z['n_cells'][keep], meta=z['meta'])
+        job['filtered'][source] = {'rows_before': int(keep.size), 'rows_hidden_removed': int((~keep).sum()),
+                                   'sha256': _sha256(cache / (source + '.npz'))}
     recipe_path = root / 'recipe.json'
     recipe_path.write_text(json.dumps(recipe, indent=2) + '\n', encoding='utf-8')
     data = WORKING / 'data'
@@ -218,7 +230,10 @@ def _check_consumption(job, fold):
     """What stage 100 hashed must be exactly the allowed sources, with the pinned bytes, and nothing of the
     held lineage. Returns the receipt of the run."""
     read = job['manifest']['cache_npz_sha256']
-    allowed = {s + '.npz': job['resolved'][s][1]['sha256'] for s in job['sources']}
+    if job.get('hidden'):       # J: stage 100 read the filtered copies, whose hashes this run computed
+        allowed = {s + '.npz': job['filtered'][s]['sha256'] for s in job['sources']}
+    else:
+        allowed = {s + '.npz': job['resolved'][s][1]['sha256'] for s in job['sources']}
     receipt = {'label': job['label'], 'context': job['ctx'], 'sources_linked': sorted(job['sources']),
                'files_read_by_stage100': read, 'recipe_sha256': job['recipe_sha256'],
                'effects_sha256': job['manifest']['contexts'][job['ctx']]['sha256'],
@@ -228,6 +243,9 @@ def _check_consumption(job, fold):
     if read != allowed:
         _fail('blocked_consumption_mismatch', label=job['label'], context=job['ctx'],
               not_read=sorted(set(allowed) - set(read)), unexpected=sorted(set(read) - set(allowed)))
+    if job.get('hidden'):
+        receipt.update(hidden_targets=len(job['hidden']), filtered_tables=job['filtered'],
+                       hidden_rows_removed=sum(v['rows_hidden_removed'] for v in job['filtered'].values()))
     if fold is not None:
         held = set(fold['exclude_tables'])
         leaked = sorted(s for s in job['sources'] if s in held)
@@ -348,11 +366,32 @@ def main():
                              'recipe': _recipe(document, sources, ctx, 'validazione-%s-%s' % (label, ctx), variant,
                                                spec.get('recipe')),
                              'resolved': resolved})
+    # J regime, on request: the C folds again, with the hidden test group removed from every table first
+    jfolds = {}
+    if params.get('j_folds'):
+        rule = manifest['hidden_target_rule']
+        hidden = sorted(manifest['panel_hidden_groups'][str(rule['test_group'])])
+        check = [t for t in hidden if int(hashlib.sha256(t.encode('utf-8')).hexdigest(), 16) % rule['groups']
+                 != rule['test_group']]
+        if check or not set(hidden) <= set(panel):
+            _fail('blocked_hidden_rule', wrong=check[:5])
+        for fid, fold in folds.items():
+            jid = 'J-' + fid.split('-', 1)[1]
+            jfolds[jid] = {**fold, 'id': jid, 'regime': 'J', 'only_targets': hidden, 'require_prediction': False,
+                           'rank_genes_from': 'truth',
+                           'truth': [t for t in fold['truth'] if t['role'] == 'primary']}
+            for arm, spec in {**arms, **analysis}.items():
+                sources = sorted(set(spec['sources']) - set(fold['exclude_tables']))
+                if sources:
+                    jobs.append({'label': arm, 'arm': arm, 'variant': '', 'ctx': jid, 'sources': sources,
+                                 'hidden': hidden, 'resolved': resolved,
+                                 'recipe': _recipe(document, sources, jid, 'validazione-%s-%s' % (arm, jid), '',
+                                                   spec.get('recipe'))})
     _log('running %d stage-100 jobs' % len(jobs))
     with ThreadPoolExecutor(4) as pool:
         done = list(pool.map(_run_stage100, jobs))
     _log('stage 100 finished')
-    consumption = [_check_consumption(job, folds.get(job['ctx'])) for job in done]
+    consumption = [_check_consumption(job, folds.get(job['ctx']) or jfolds.get(job['ctx'])) for job in done]
     by = {(job['label'], job['ctx']): job for job in done}
 
     # PARITY before any comparison: production effects must reproduce the recorded sha256
@@ -388,7 +427,7 @@ def main():
         if label in arms or label in analysis or '~' in label:
             _fail('blocked_external_arm_name', label=label)
         for fid, pin in by_fold.items():
-            if fid not in folds:
+            if fid not in folds and fid not in jfolds:
                 _fail('blocked_external_fold', label=label, fold=fid)
             path = _by_content(pin, '%s/%s' % (label, fid))
             effects[(label, fid)] = _load_effects(path, panel, axis)
@@ -398,6 +437,19 @@ def main():
         folds, list(arms), effects, tables.__getitem__, panel, axis, _log,
         extra_arms=[*analysis, *external], extra_contrasts=params.get('contrasts') or [])
 
+    results_j = None
+    if jfolds:
+        # in J the variants of T0 are not run: the derived controls need them, so they stand in as T0 itself
+        for jid in jfolds:
+            for variant in ('T0~gamma0', 'T0~nocis'):
+                effects[(variant, jid)] = effects[('T0', jid)]
+        res_j, macro_j, shuffle_j, rows_j = core.measure(
+            jfolds, list(arms), effects, tables.__getitem__, panel, axis, _log,
+            extra_arms=[*analysis, *external], extra_contrasts=params.get('contrasts') or [])
+        rows_csv += rows_j
+        results_j = {'folds': res_j, 'macro': macro_j, 'shuffle_control': shuffle_j,
+                     'hidden_targets': jfolds[next(iter(jfolds))]['only_targets'],
+                     'note': 'T0~gamma0 and T0~nocis are copies of T0 here: no variant is run in J'}
     with (WORKING / 'per_target.csv').open('w', newline='', encoding='utf-8') as fh:
         writer = csv.writer(fh)
         writer.writerow(core.CSV_HEADER)
@@ -410,6 +462,7 @@ def main():
         'state': 'level_A_complete', 'not_vcc_scores': True, 'development_lineages_not_confirmation': True,
         'contract': 'PROTOCOLLO_v1', 'manifest_sha256': params['manifest_sha256'],
         'release_sha256': params['release_sha256'], 'parity': parity, 'folds': results, 'macro': macro,
+        'regime_J': results_j,
         'shuffle_control': shuffle, 'bootstrap': {'resamples': M.BOOT, 'seed': M.BOOT_SEED, 'unit': 'target'},
         'resources': resources, 'seconds': time.monotonic() - T0})
     _write(WORKING / 'status.json', {'status': 'level_A_complete', 'usable': True, 'jobs': len(done),

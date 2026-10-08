@@ -124,7 +124,7 @@ def package(revision):
                   reference_package_run_sha256=sha(source), not_vcc_scores=True, loss=None, optimizer=None)
     plan_path = HERE / ('analisi_%s.json' % revision)      # optional: analysis arms, external arms, contrasts
     plan = read(plan_path) if plan_path.is_file() else {}
-    for key in ('analysis_arms', 'external_arms', 'contrasts'):
+    for key in ('analysis_arms', 'external_arms', 'contrasts', 'j_folds'):
         if plan.get(key):
             params[key] = plan[key]
     members.update({'driver.py': driver, 'metrics.py': measures, 'bench_core.py': core,

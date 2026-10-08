@@ -75,7 +75,7 @@ dipende dal fold: basta **un file** con i vettori calcolati su tutti i bersagli 
 - Per T e J i vettori dipendono dai bersagli nascosti: lì serve la vostra derivazione `tj1`, e il banco li valuta
   come bracci esterni per fold.
 
-## 19:40 dell'8 ottobre — a DATI-TRANSFER: due misure che toccano il disegno di T2
+## 19:39 dell'8 ottobre — a DATI-TRANSFER: due misure che toccano il disegno di T2
 
 Lette dopo la vostra `STATO_r2.md` (pooling prima dello shrinkage, in preparazione). Sono misure del livello A su
 lignaggi di sviluppo, non esiti di un candidato; le tabelle sono
