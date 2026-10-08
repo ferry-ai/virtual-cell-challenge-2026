@@ -93,3 +93,22 @@ fold nel formato dello stadio 100) si dichiara in `external_arms` con dimensione
   banchi `davidmaisterx/vcc-validazione-banco-{ipsc,k562}-8a8ca58a-t2`. Restano distinti dalla produzione.
 - **23:56:** T2 ha ora l'esito con due fold a sei membri: valido e **sfavorevole**
   ([risultati](../RISULTATI_T2.md), §6). Non è un candidato della consegna. La consegna verificata resta t36.
+
+## 7. Dopo il freeze: la corsia rapida (letta da questa sessione, che non genera e non invia)
+
+Scritto alle 00:45 del 9 ottobre. Il proprietario ha chiesto nella chat lead un invio esplorativo di un refit su tutte
+le fonti entro le 02:00; il percorso fino all'invio è di DATI-TRANSFER.
+
+| Oggetto | Stato alla lettura | Che cosa ho verificato io |
+|---|---|---|
+| t37 = T1 | previsione del Lead delle 23:47, **superata prima di ogni generazione** alle 23:55; nessun invio | cartelle a registro e nell'indice degli invii |
+| t38 = T3 (T1 più cinque voti KO a peso 0,25 su 34 bersagli) | previsione di DATI-TRANSFER delle 00:19, prima del fit; fit concluso alle 00:29; generazione in recupero | un file di effetti riletto, sha256 `b8c61f6d…f6a6` uguale alla ricevuta; [scheda tecnica](schede/t3_contro_t1_r1.json) contro T1; segnalazione DT-5 nei [messaggi](../MESSAGGI.md) |
+| T2 | effetti consegnati, esito valido e sfavorevole | identità con lo stimatore valutato; non è un candidato |
+| t36 | resta la consegna verificata | [riserva_t36_r2.json](riserva_t36_r2.json) |
+
+T3 **non** è valutato sui fold: la sua combinazione non è una ricetta dello stadio 100 e il banco non può rifarla
+senza gli effetti per fold. Per la validazione è un invio esplorativo con attesa «indistinguibile da t36».
+
+**Controlli della repo alle 00:41:** 290 test, uno fallito ([tests_r3.txt](../verifiche/tests_r3.txt)): l'indice
+degli invii non elencava le due cartelle del t37, appena tracciate da un'altra sessione. Corretto alle 00:42; il
+test dell'albero vivo e il controllo dei documenti passano. I 16 test del banco passano.
