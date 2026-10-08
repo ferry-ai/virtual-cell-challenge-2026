@@ -1,0 +1,39 @@
+{
+ "id": "C-K562",
+ "regime": "C",
+ "held_groups": [
+  "K562"
+ ],
+ "hidden_targets": [],
+ "exclude_tables": [
+  "dixit2016",
+  "k562",
+  "k562_essential",
+  "k562_gwps_sc",
+  "norman2019"
+ ],
+ "exclude_units": [
+  "dixit2016_d13",
+  "dixit2016_d7",
+  "dixit2016_high_moi",
+  "k562_essential",
+  "k562_gwps_a",
+  "k562_gwps_b",
+  "norman2019"
+ ],
+ "truth": [
+  {
+   "table": "k562",
+   "role": "primary"
+  }
+ ],
+ "manifest_sha256": "add3519816b50b81207152cf7e2ffea7150e66b28587fb04cfdc42283e371cf7",
+ "manifest_version": "v1",
+ "protected_units": [
+  "h1_test"
+ ],
+ "group_aliases": {
+  "HEK293T": "HEK293"
+ },
+ "hidden_rule": "int(sha256(symbol utf-8).hexdigest(), 16) % 5 == 0, on every component of every label"
+}

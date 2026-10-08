@@ -1,0 +1,26 @@
+{
+ "splits": {
+  "C-K562": "0ff9e97cefbc8f49719078e93f3877e3bf2b79a382585f94cbedf87d0379379e",
+  "J-K562": "0e722432e52f69a88befa5901a018ec5613a0db76e0e5a4a9d8d2d93175f6b4d",
+  "C-CD4T": "4188ca2fd5cc23a8b51bd02b0aea622a205513c91ff0acae295a83181fad7880",
+  "J-CD4T": "af9fbb824859e7bc493f056d61a1318e1e678030a1b65e7f2736be60322a0778",
+  "C-HCT116": "83b3fd70f5fd313574be60190e0f358a38d86b45d53b37fadc96b803ad9e351d",
+  "J-HCT116": "2bae0b1e542a93d99ea34c6cfe1820046fc3e559099866ca26303f0845c5ecca",
+  "C-HEK293": "5788e315b0f900f334ee046028f1a789bf3114e2cb0f11f3fdcfcd70b40efec8",
+  "J-HEK293": "e0ec2484cb02b279611abe5f489bbb9f72bc48a8b8d5e67cc0081b0fd70bbf1c",
+  "C-iPSC": "14f30e6d109dc82c1d65766c74d4672387f85846dbdc8ecff992e1fbb8c182c7",
+  "J-iPSC": "d48c1a6da2b83188107f9aaa232141254fa4371991ea66a2b2f840ffe5b5ac2b",
+  "C-H1": "cc66f4c89790bb5f5b38e26df78e6916026cb1ba576fc5418e7f0e42123e8f95",
+  "J-H1": "6e1ab2b1e477aa36859cb23d0de8aa5b6d327a8f16c3972bf7f64ba28515f3da",
+  "T-all": "4b6a6b8bb5d0f86d2ac967b63968db8eb60d95dc93c107d29b115a3f498f92fe"
+ },
+ "manifest_sha256": "add3519816b50b81207152cf7e2ffea7150e66b28587fb04cfdc42283e371cf7",
+ "manifest_version": "v1",
+ "protected_units": [
+  "h1_test"
+ ],
+ "group_aliases": {
+  "HEK293T": "HEK293"
+ },
+ "hidden_rule": "int(sha256(symbol utf-8).hexdigest(), 16) % 5 == 0, on every component of every label"
+}

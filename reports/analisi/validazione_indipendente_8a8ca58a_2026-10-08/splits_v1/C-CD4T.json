@@ -1,0 +1,53 @@
+{
+ "id": "C-CD4T",
+ "regime": "C",
+ "held_groups": [
+  "CD4T"
+ ],
+ "hidden_targets": [],
+ "exclude_tables": [
+  "cd4_Rest",
+  "cd4_Stim48hr",
+  "cd4_Stim8hr",
+  "cd4_mix",
+  "shifrut2018"
+ ],
+ "exclude_units": [
+  "D1_Rest",
+  "D1_Stim48hr",
+  "D1_Stim8hr",
+  "D2_Rest",
+  "D2_Stim48hr",
+  "D2_Stim8hr",
+  "D3_Rest",
+  "D3_Stim48hr",
+  "D3_Stim8hr",
+  "D4_Rest",
+  "D4_Stim48hr",
+  "D4_Stim8hr",
+  "shifrut2018"
+ ],
+ "truth": [
+  {
+   "table": "cd4_Rest",
+   "role": "primary"
+  },
+  {
+   "table": "cd4_Stim8hr",
+   "role": "stimulus"
+  },
+  {
+   "table": "cd4_Stim48hr",
+   "role": "stimulus"
+  }
+ ],
+ "manifest_sha256": "add3519816b50b81207152cf7e2ffea7150e66b28587fb04cfdc42283e371cf7",
+ "manifest_version": "v1",
+ "protected_units": [
+  "h1_test"
+ ],
+ "group_aliases": {
+  "HEK293T": "HEK293"
+ },
+ "hidden_rule": "int(sha256(symbol utf-8).hexdigest(), 16) % 5 == 0, on every component of every label"
+}

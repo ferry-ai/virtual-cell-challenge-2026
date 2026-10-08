@@ -1,0 +1,48 @@
+{
+ "utc": "2026-10-08T16:39:52.533506+00:00",
+ "slug": "davidmaisterx/vcc-validazione-celle-ipsc-8a8ca58a-r1",
+ "owner": "davidmaisterx",
+ "stage": "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/celle_ipsc_r1/package",
+ "code": {
+  "bytes": 2848,
+  "sha256": "e0cec8d5c2b224d5e129f59293b17ccdc4fa7d619faa8e954d297c6d08fe7a8f"
+ },
+ "fold": "C-iPSC",
+ "symbols": 55,
+ "params": {
+  "key": null,
+  "key_contains": "kolf_strong",
+  "prepass_kernel": "rcell-prepass-k562-r1",
+  "cap": 128,
+  "max_controls": 2048,
+  "seed": 2026
+ },
+ "symbols_from": {
+  "bytes": 77392,
+  "sha256": "385347bb4ed086212ac809281f5ab5df095762940557f3ab60d20fb08437ab88",
+  "path": "reports/modelli/banca_canonica_2026-10-07/fit/r1/completion/consumo.json",
+  "rule": "panel targets on which the source kolf_strong votes"
+ },
+ "extractor": "extract_cells.py of dataset rcell-gen-r1, unchanged (reports/modelli/rete_cellulare_2026-10-03/)",
+ "metadata": {
+  "id": "davidmaisterx/vcc-validazione-celle-ipsc-8a8ca58a-r1",
+  "title": "vcc-validazione-celle-ipsc-8a8ca58a-r1",
+  "code_file": "run.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+   "davidmaisterx/rcell-gen-r1",
+   "davidmaisterx/rlab-kolf-strong"
+  ],
+  "kernel_sources": [
+   "davidmaisterx/rcell-prepass-k562-r1"
+  ],
+  "competition_sources": []
+ },
+ "reads_no_effect": true,
+ "compute_started": false
+}

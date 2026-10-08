@@ -1,0 +1,45 @@
+{
+ "id": "C-iPSC",
+ "regime": "C",
+ "held_groups": [
+  "iPSC"
+ ],
+ "hidden_targets": [],
+ "exclude_tables": [
+  "hipsci_targeted_19",
+  "kolf_chromatin",
+  "kolf_metabolic",
+  "kolf_pan_genome",
+  "kolf_strong",
+  "tian2019_ipsc"
+ ],
+ "exclude_units": [
+  "hipsci_gw_fitness",
+  "hipsci_gw_nonfitness",
+  "hipsci_targeted_19",
+  "kolf_chromatin",
+  "kolf_metabolic",
+  "kolf_pan_genome",
+  "kolf_strong",
+  "tian2019_ipsc"
+ ],
+ "truth": [
+  {
+   "table": "kolf_pan_genome",
+   "role": "primary"
+  },
+  {
+   "table": "kolf_strong",
+   "role": "second_library"
+  }
+ ],
+ "manifest_sha256": "add3519816b50b81207152cf7e2ffea7150e66b28587fb04cfdc42283e371cf7",
+ "manifest_version": "v1",
+ "protected_units": [
+  "h1_test"
+ ],
+ "group_aliases": {
+  "HEK293T": "HEK293"
+ },
+ "hidden_rule": "int(sha256(symbol utf-8).hexdigest(), 16) % 5 == 0, on every component of every label"
+}

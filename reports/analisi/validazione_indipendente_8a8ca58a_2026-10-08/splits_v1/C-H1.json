@@ -1,0 +1,30 @@
+{
+ "id": "C-H1",
+ "regime": "C",
+ "held_groups": [
+  "H1"
+ ],
+ "hidden_targets": [],
+ "exclude_tables": [
+  "h1"
+ ],
+ "exclude_units": [
+  "h1_train",
+  "h1_val"
+ ],
+ "truth": [
+  {
+   "table": "h1",
+   "role": "primary"
+  }
+ ],
+ "manifest_sha256": "add3519816b50b81207152cf7e2ffea7150e66b28587fb04cfdc42283e371cf7",
+ "manifest_version": "v1",
+ "protected_units": [
+  "h1_test"
+ ],
+ "group_aliases": {
+  "HEK293T": "HEK293"
+ },
+ "hidden_rule": "int(sha256(symbol utf-8).hexdigest(), 16) % 5 == 0, on every component of every label"
+}

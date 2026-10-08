@@ -1,0 +1,31 @@
+{
+ "id": "C-HEK293",
+ "regime": "C",
+ "held_groups": [
+  "HEK293"
+ ],
+ "hidden_targets": [],
+ "exclude_tables": [
+  "orion_hek293t",
+  "xu2023"
+ ],
+ "exclude_units": [
+  "orion_hek293t",
+  "xu2023"
+ ],
+ "truth": [
+  {
+   "table": "orion_hek293t",
+   "role": "primary"
+  }
+ ],
+ "manifest_sha256": "add3519816b50b81207152cf7e2ffea7150e66b28587fb04cfdc42283e371cf7",
+ "manifest_version": "v1",
+ "protected_units": [
+  "h1_test"
+ ],
+ "group_aliases": {
+  "HEK293T": "HEK293"
+ },
+ "hidden_rule": "int(sha256(symbol utf-8).hexdigest(), 16) % 5 == 0, on every component of every label"
+}
