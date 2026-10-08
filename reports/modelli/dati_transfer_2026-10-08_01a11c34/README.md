@@ -4,6 +4,12 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
+**Stato corrente:** [STATO_r7.md](STATO_r7.md), verificato alle 23:13 dell'8 ottobre.
+T2 è COMPLETE e gli effetti sono consegnati: nessun consenso al fit ancora pendente.
+Produzione/T ESM2 sono RUNNING; ricevute finali del consumo ancora da verificare.
+Le sei viste congelate sono invariate. I paragrafi iniziali e gli stati r1–r6
+qui sotto sono fotografie dei rispettivi momenti, non nuovi blocchi operativi.
+
 ## Perimetro e stato iniziale
 
 - File posseduti: soltanto questa cartella e i suoi nuovi output.
@@ -16,6 +22,7 @@ la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
 ## Indice
 
+- [STATO_r7.md](STATO_r7.md): verifica live, T2 completato e aggiornamento pronto per VALIDAZIONE; ricevute finali ESM2 pendenti.
 - [HANDOFF_CJ_r1.md](HANDOFF_CJ_r1.md): quattro viste C/J K562/iPSC congelate e verificate, accessi runtime filtrati, supporto query esplicito; nessun fit C/J avviato.
 - [STATO_r6.md](STATO_r6.md): job ESM2 privati corretti in esecuzione, verifica indipendente delle ricevute pronta; consumo ancora da attestare.
 - [STATO_r5.md](STATO_r5.md): T2 verificato, accessi privati autorizzati preparati, consumo del primo fit ancora da attestare.
@@ -24,7 +31,7 @@ la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 - [MANDATO_RIPRESA_r1.md](MANDATO_RIPRESA_r1.md): nuovo via umano verificato e consenso specifico al trasferimento privato.
 - `runtime_view_resolver.py`, `runtime_access_*`: risoluzione per hash dei mount e cache autenticata autorizzata; riferimenti sensibili fuori Git.
 - `verify_external_consumption.py`: confronto indipendente delle ricevute del fit esterno con tutta la vista congelata; prove sintetiche in `external_consumption_tests_r1.txt`, senza attestare un consumo reale prima delle ricevute.
-- [STATO_r4.md](STATO_r4.md): campagna conclusa, entrambe le release di medie e di training, fit T2 ancora da autorizzare.
+- [STATO_r4.md](STATO_r4.md): fotografia storica precedente al consenso e al completamento T2; stato corrente in r7.
 - [HANDOFF_T2_MEDIE_r2.md](HANDOFF_T2_MEDIE_r2.md): consegna completa delle 16 medie di produzione e T/J.
 - [coverage_ledger_r2.json](coverage_ledger_r2.json): collegamento fra catalogo, banca, derivazioni e ruoli effettivi, con lacune esplicite.
 - [training_release_T_r1.json](training_release_T_r1.json): contratto del trainer con esclusioni target.
