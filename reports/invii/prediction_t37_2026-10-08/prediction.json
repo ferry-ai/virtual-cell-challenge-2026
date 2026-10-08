@@ -1,0 +1,79 @@
+{
+  "written_utc": "2026-10-08T21:47:25+00:00",
+  "label": "t37 - transfer T1 banca estesa",
+  "claim_type": "previsione soggettiva registrata prima della generazione; invio esplorativo, nessun miglioramento dimostrato",
+  "authorization": {
+    "thread_id": "01a11c05-970e-7af2-a07e-3860bd74acbd",
+    "owner_request": "ok in caso cerchiamo un percorso rapido per buttare sul sito il refit prima delle 2, non servono troppi check post triaing",
+    "scope": "generazione e singolo invio esplorativo del refit con controlli tecnici essenziali; nessuna attesa obbligatoria del banco biologico esteso",
+    "deadline": "2026-10-09T02:00:00+02:00",
+    "preserve_running_training": true,
+    "submit_owner": "Lead 01a11c05; DATI-TRANSFER genera e impacchetta ma non invia"
+  },
+  "reference": {
+    "label": "t36",
+    "official_score_avg": 0.14724935991548274,
+    "entry_id": "JLcMRGExhXKk77XVds7x",
+    "source": "reports/invii/prediction_t36_2026-10-06/comparison.json"
+  },
+  "candidate": {
+    "name": "T1",
+    "manifest": "reports/modelli/dati_transfer_2026-10-08_01a11c34/candidate_t1_r1.json",
+    "release_sha256": "277ae3441b78c9a1ebf79149cff914fb494d8fff09529b367e9f42cb6a76ffd8",
+    "effect_sha256_each_context": "28f15de7418fdab741bd0bc61049d6f4c8e843cafd016027101697e11c28a6f5",
+    "source_count": 16,
+    "targets_with_new_votes_vs_t36": 16,
+    "estimator": "formula, centratura sul pannello e logica dei pesi t36 invariati; ammissione fonti T1",
+    "transfer_amplitude_already_applied": 1.576,
+    "cis_already_applied": true,
+    "second_centering_forbidden": true,
+    "t2_all_target_centering": false,
+    "esm2_or_pie_component": false,
+    "complete_d053": false,
+    "refit_required": false,
+    "development_result": "T1 inconcludente rispetto a t36; nessun beneficio locale risolto"
+  },
+  "generator": {
+    "stage": 45,
+    "trial": "trial-ext-profile",
+    "generator_seed": 20260912,
+    "effects_scale": 1.5,
+    "gene_dispersion": true,
+    "gene_dispersion_scale": 1,
+    "depth_bins": false,
+    "contexts": [
+      "A",
+      "B",
+      "C"
+    ],
+    "targets_per_context": 300,
+    "cells_per_target": 400,
+    "response_genes": 18533,
+    "controls_included_in_submission": false,
+    "reference": "emissione t36/t28 invariata; cambia soltanto la sorgente degli effetti"
+  },
+  "expected": {
+    "score_avg_band": [
+      0.137,
+      0.157
+    ],
+    "working_centre": 0.14724935991548274,
+    "calibration": "Banda soggettiva di pianificazione, non intervallo calibrato. Solo 16 target cambiano e il confronto di sviluppo è inconcludente; miglioramento o peggioramento restano possibili."
+  },
+  "rule": {
+    "threshold": 0.005,
+    "gain": "t37 - t36 >= 0.005: guadagno ufficiale osservato sul pannello corrente; singolo invio, stabilità e trasferibilità a D/E/F non dimostrate",
+    "inconclusive": "abs(t37 - t36) < 0.005: esito non conclusivo secondo questa regola; eventuale nuovo massimo descritto senza promozione scientifica automatica",
+    "loss": "t37 - t36 <= -0.005: peggioramento ufficiale osservato; t36 resta riferimento",
+    "report_all_six_published_members": true,
+    "no_posthoc_threshold_change": true,
+    "no_automatic_second_submission": true
+  },
+  "technical_checks": [
+    "identità e hash degli effetti T1, assi e parametri di emissione",
+    "300 target e 400 cellule per target in ciascuno dei tre contesti; nessun controllo inviato",
+    "valori e formato validi, package e checksum conformi a stage48/CLI",
+    "nessun upload concorrente o duplicato; quota verificata senza bypass"
+  ],
+  "extended_predictive_bench_on_critical_path": false
+}
