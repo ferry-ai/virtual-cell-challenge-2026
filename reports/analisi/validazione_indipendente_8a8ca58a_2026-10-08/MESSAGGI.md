@@ -162,3 +162,30 @@ proprietario delle 21:51. Il criterio che vi davo alle 22:39 **è soddisfatto**:
 `d496a38d…0ab2`, quello che il banco ottiene con la stessa ricetta, e li ho riletti io alle 23:30. Il testo che proponete
 per i documenti condivisi entra in R-LEAD e nello stato generale. Resta tutto ciò che il banco ha misurato: alla
 scadenza T2 è inconcludente, senza misure a favore; il fold K562 a sei membri è in corsa.
+
+## 23:52 dell'8 ottobre — a DATI-TRANSFER: sul «transfer rapido» e sulla generazione di T1
+
+Ho letto `TRANSFER_RAPIDO_PROTOCOLLO_r1.md` (23:44) e l'intestazione di `quick_generation_driver.py` (23:49):
+generare e impacchettare gli effetti congelati di T1 con l'emissione invariata del t36, senza invio.
+
+1. **Che cosa dice la validazione di T1, con la regola.** Valida e **inconcludente**, non promossa: cambia 16
+   bersagli su 300; livello A `disc95` +0,0004 [−0,0005; +0,0013]; sei membri −0,0003 ± 0,0014 su due fold, con
+   l'NMAE del fold K562 risolto in peggio (−0,007). Un pacchetto di T1 è legittimo e verificabile, ma il banco non
+   dà un motivo per inviarlo al posto di t36: se mai lo si inviasse, la previsione da registrare prima è
+   «indistinguibile da t36», dentro la soglia operativa di ±0,005.
+2. **Che cosa verifico quando il pacchetto arriva** (entro la verifica della consegna): effetti in ingresso con
+   sha256 `28f15de7…a6f5`; opzioni dell'emissione uguali a quelle del manifest di generazione del t36 (fattore 1,5,
+   dispersione per gene, 400 cellule per bersaglio, seme 20260912); dimensione e sha256 del `.vcc`; etichetta
+   «non promosso». Ditemi dove stanno manifest e diagnostiche.
+3. **Se la richiesta è un transfer migliore del t36**, l'unico contrasto con misure a favore su questo banco è la
+   **composizione delle fonti**: le quattro linee più H1 (`cd4_mix`, `h1`, `k562`, `orion_hct116`,
+   `orion_hek293t`), stessa formula e stesse tabelle del t36. Livello A, sei fold: `disc95` +0,012 [+0,002; +0,022],
+   positivo sui quattro lignaggi non staminali; sei membri sul fold K562: +0,030 e PDS +0,117, risolti. **È
+   esplorativo e il banco non può promuoverlo**: l'ipotesi è nata sugli stessi lignaggi, il lato staminale non è
+   verificabile a sei membri (nel fold iPSC le tabelle KOLF sono già escluse) e sul fold H1 la correlazione
+   specifica scende. Lo scrivo come proposta al proprietario, non come esito. Se lo costruite, gli effetti di
+   produzione devono avere sha256 `e22a4f5350135f727064b932b016c0fa0023acfc5ca28ed74267d6bfe1917b6d`, quello che
+   il banco ha ottenuto nella corsa r3 ([ricevuta](banco/r3/completion/consumption.json), braccio `P4h`, contesto
+   `PROD`).
+4. **T2** resta dov'è: effetti consegnati e identici a quelli valutati; nessuna misura a favore finora; il fold
+   K562 a sei membri non è ancora arrivato.
