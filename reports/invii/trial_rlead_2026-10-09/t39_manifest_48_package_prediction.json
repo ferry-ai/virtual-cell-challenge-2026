@@ -1,0 +1,100 @@
+{
+  "run_id": "t39pack",
+  "stage": "48_package_prediction",
+  "started_utc": "2026-10-09T16:38:11.501250+00:00",
+  "finished_utc": "2026-10-09T16:38:11.593907+00:00",
+  "seed": null,
+  "config": {
+    "run_id": "t39pack",
+    "prediction": "C:\\Users\\39346\\vcc2026-data\\artifacts\\t39gen\\prediction.h5ad",
+    "out": "None",
+    "vcc_name": "prediction.vcc",
+    "workdir": "None",
+    "expect_sha256": "None",
+    "genes": "None",
+    "perts": "None",
+    "values_per_block": "16777216",
+    "zstd_level": "3",
+    "zstd_threads": "None",
+    "reserve_gib": "6.0",
+    "validate_only": "False",
+    "skip_verify": "False",
+    "allow_overwrite": "False"
+  },
+  "inputs": {
+    "prediction": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\t39gen\\prediction.h5ad",
+      "exists": true,
+      "bytes": 4210309837,
+      "mtime_utc": "2026-10-09T16:26:58.543226+00:00",
+      "sha256": "5a6bbdba31694622732d0db7c4299d82ddf444b6844c81880668a6c750b0519a",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "genes": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\raw\\controls\\gene_names.csv",
+      "exists": true,
+      "bytes": 119295,
+      "mtime_utc": "2026-08-19T07:34:18+00:00",
+      "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "sha256_mode": "full"
+    },
+    "perturbations": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+      "exists": true,
+      "bytes": 1906,
+      "mtime_utc": "2026-08-19T07:34:18+00:00",
+      "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+      "sha256_mode": "full"
+    }
+  },
+  "outputs": {
+    "report": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\t39pack\\packaging.json",
+      "exists": true,
+      "bytes": 7549,
+      "mtime_utc": "2026-10-09T16:38:11.501251+00:00",
+      "sha256": "1b5234a1f138ca3c2b0eaddd44d1fa1081f9ac6104c61f72651c151e134494cd",
+      "sha256_mode": "full"
+    },
+    "vcc": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\t39pack\\prediction.vcc",
+      "exists": true,
+      "bytes": 4158238720,
+      "mtime_utc": "2026-10-09T16:35:44.245691+00:00",
+      "sha256": "45234510fd0117ce96485031e1bee57dcdf34a692b2dd9cade1c9dad18980542",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "metrics": {
+    "exit_code": 0,
+    "nnz": 2083648590,
+    "peak_rss_bytes": 564695040,
+    "total_seconds": 671.5684297999833
+  },
+  "notes": [
+    "Streaming packager: the official validators on metadata, streamed equivalents on the matrix. Not an official CLI release.",
+    "Nothing uploaded. A passing archive is not server acceptance."
+  ],
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "MSI",
+    "cpu_count": 32,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\39346\\vcc2026-data"
+    }
+  }
+}
