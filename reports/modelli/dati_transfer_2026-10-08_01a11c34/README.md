@@ -8,8 +8,11 @@ la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 [consegna esatta per consenso del Lead](t39_t3_ready_for_specific_consent_r1.json).
 T3 preservato al bit su 4.467.808 coppie, ESM2 aggiunto solo su 380.820 vuoti;
 19.812.145 byte, hash `577a5a56a57df6a2ba07beead6217a7274ad639e85e8be780d942c1c7152094b`.
-Pacchetto CPU privato distinto già costruito con upload fittizio; mancano nuova
-preregistrazione e consenso esatto. Nessun trasferimento, lancio o entry VCC.
+Pacchetto CPU privato distinto con upload fittizio. La
+[revisione r2 verificata](t39_t3_runtime_verified_r2.json) incorpora la nuova
+preregistrazione, il pin compagno e i testi T3 esatti, con 66 hash controllati.
+Resta il consenso esatto richiesto dal Lead, poi il preflight remoto aggiornato.
+Nessun trasferimento, lancio o entry VCC.
 La versione T0 sotto rimane sospesa e non è stata inviata.
 
 **T39 T0+ESM2 sospeso prima di qualsiasi upload/lancio:**
