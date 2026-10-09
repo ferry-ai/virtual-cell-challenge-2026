@@ -371,6 +371,8 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 
 ### S-013 — Ridge sugli embedding ESM2 del bersaglio, senza contesto (regime T)
 
+- **Aggiornamento 9/10, 02:55:** [CP-0073](checkpoints/0073-esm2-ridge-senza-k562-regime-j.md). Il fit senza K562, letto nel regime J contro la verità di K562: `disc95` 0,516, sotto lo stesso ridge a previsioni scambiate (0,531) e sotto la testa cis; togliere K562 dal training non sposta le previsioni (correlazione 0,996 con il fit T, `E2jk − E2` non risolto in nessun lignaggio). Conferma il sintomo sui lignaggi non staminali; **non isola** il meccanismo, per il quale serve il fit senza iPSC.
+
 - **Che cosa si è provato:** una regressione ridge, alpha 1,0, dagli embedding ESM2 della proteina del bersaglio
   agli effetti aggregati della banca (163.143 righe di 47 contesti), senza alcun ingresso di contesto; letta sui 66
   bersagli nascosti del pannello, mai visti, contro la verità di sei lignaggi. Modello di MODELLI-ESTERNI.

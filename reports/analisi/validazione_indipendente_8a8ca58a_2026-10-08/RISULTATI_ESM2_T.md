@@ -78,3 +78,39 @@ verifica è un fit con massa uguale per lignaggio, o la lettura di J-iPSC, dove 
 contesto: senza, la specificità che si impara è quella di un lignaggio. (2) Ogni prossima lettura di una rete va
 fatta **per lignaggio**, non solo in macro: qui la macro di `E2 − E2g` è risolta e la sostiene un lignaggio solo.
 (3) Nessuna promozione e nessuna decisione sulla consegna seguono da un regime T.
+
+## 5. Il fit senza K562: regime J su K562 (corsa r7, letta alle 02:55)
+
+[Aggiunta al piano](LETTURA_ESM2_T.md) committata alle 02:39:20 (`f8990eeb`), prima della corsa; kernel
+`davideferrante11/vcc-validazione-logo-8a8ca58a-r7`, lanciato alle 02:43 e concluso alle 02:54, 639 secondi; parità
+e codice salvato verificati. [Livelli](TABELLE_ESM2_JK562_livelli_r7.md),
+[contrasti](TABELLE_ESM2_JK562_contrasti_r7.md).
+
+| Verità K562, 62 bersagli nascosti | `disc95` |
+|---|---:|
+| Transfer: sola testa cis | 0,543 |
+| Parte generica del fit senza K562 | 0,500 |
+| Ridge del fit senza K562 (`E2jk`) | 0,516 |
+| Lo stesso a previsioni scambiate | 0,531 |
+| Ridge del fit T (`E2`), per confronto | 0,521 |
+
+| Contrasto sul fold K562, `disc95` | Valore |
+|---|---|
+| `E2jk − E2jkg` | +0,016 [−0,046; +0,080] |
+| `E2jk` contro `E2jk` a previsioni scambiate | −0,015 [−0,087; +0,062] |
+| `E2jk − T0` | −0,027 [−0,118; +0,060] |
+| `E2jk − E2`: togliere K562 dal training | −0,005 [−0,029; +0,020] |
+
+**Misurato.** Nel regime J, sul solo lignaggio che questo fit tiene fuori, il ridge non riconosce i bersagli:
+nessun contrasto è risolto e il braccio a previsioni scambiate vale più di quello vero. Sulle altre cinque verità i
+numeri sono quelli del fit T (iPSC 0,628; CD4T 0,530; HCT116 0,514; HEK293 0,505), e `E2jk − E2` non è risolto
+in nessun lignaggio.
+
+**Lettura con la regola scritta prima.** Le due condizioni non sono soddisfatte sul fold K562: nessun segnale
+specifico. È l'esito che l'aggiunta al piano prevedeva dopo aver visto, senza verità, che le previsioni dei due
+fit sono quasi le stesse (correlazione 0,996).
+
+**Interpretazione.** Togliere K562 non cambia nulla perché K562 pesa poco in questo modello, non perché il modello
+generalizzi: il test che manca è il simmetrico, cioè il fit senza iPSC letto contro la verità iPSC. Se il 0,63 di
+iPSC scendesse verso 0,5, la specificità vista nel regime T sarebbe memoria del lignaggio; se restasse, sarebbe
+una proprietà dei bersagli. Quel fit (J-iPSC) non è ancora riuscito a partire.

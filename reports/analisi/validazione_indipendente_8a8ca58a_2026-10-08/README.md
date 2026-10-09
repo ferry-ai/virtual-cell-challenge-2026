@@ -8,7 +8,8 @@ e pipeline di produzione (DATI-TRANSFER, sessione `01a11c34`) né l'adattatore e
 `01a11c35`). Checkpoint: [CP-0069](../../../docs/checkpoints/0069-validazione-indipendente-t1-e-ampliamento.md)
 per T2, [CP-0070](../../../docs/checkpoints/0070-t2-centratura-su-tutti-i-bersagli.md); per la corsia rapida
 della notte, chiusa senza invio, [CP-0071](../../../docs/checkpoints/0071-corsia-rapida-senza-invio-priorita-alle-reti.md);
-per la prima lettura del ridge ESM2, [CP-0072](../../../docs/checkpoints/0072-esm2-ridge-regime-t.md).
+per le prime letture del ridge ESM2, [CP-0072](../../../docs/checkpoints/0072-esm2-ridge-regime-t.md) e
+[CP-0073](../../../docs/checkpoints/0073-esm2-ridge-senza-k562-regime-j.md).
 
 **Esito in una riga:** la consegna resta t36; T1 è valida e inconcludente; T2 è valido e **sfavorevole**
 ([risultati](RISULTATI_T2.md)); la componente esterna non è arrivata alla valutazione. I numeri dei banchi sono
@@ -51,7 +52,7 @@ per la prima lettura del ridge ESM2, [CP-0072](../../../docs/checkpoints/0072-es
 | [ricalcolo_locale.py](banco/ricalcolo_locale.py), [sensibilita_disc95.py](banco/sensibilita_disc95.py), [verifica_voto_singolo.py](banco/verifica_voto_singolo.py) | controlli indipendenti sul portatile: misure ricalcolate, convenzione delle maschere, voto nullo della tabella a un bersaglio |
 | [descrivi_t2.py](banco/descrivi_t2.py), [comune_t2.py](banco/comune_t2.py), [sensibilita_disc_t2.py](banco/sensibilita_disc_t2.py), [confronta_coppia.py](banco/confronta_coppia.py), [t2_tabelle_piccole.py](banco/t2_tabelle_piccole.py) | per T2: parità a gamma 0 e bersagli scambiati, parte comune rimessa negli effetti, misura stretta con e senza il fold dove non è utilizzabile, riproducibilità di una coppia fra due kernel, sguardo a posteriori ai bersagli votati dalle tabelle piccole |
 | [confronta_effetti.py](banco/confronta_effetti.py), [scheda_t3.py](banco/scheda_t3.py) | schede tecniche di un candidato sugli effetti di produzione, senza verità: stessa copertura, bersagli cambiati, distanza, parte comune; per T3, le coppie previste dal solo KO. Esiti in `consegna/schede/` |
-| `r1/` … `r6/` | corse del livello A: pacchetto, lancio, ricevute, risultati, letture. r1 contratto; r2 scomposizione; r3 esplorativo; r4 regime J; r5 T2; r6 ridge ESM2 nel regime T |
+| `r1/` … `r6/` | corse del livello A: pacchetto, lancio, ricevute, risultati, letture. r1 contratto; r2 scomposizione; r3 esplorativo; r4 regime J; r5 T2; r6 ridge ESM2 nel regime T; r7 lo stesso senza K562 (regime J su K562) |
 | [prepara_esm2_t.py](banco/prepara_esm2_t.py), [leggi_esm2_t.py](banco/leggi_esm2_t.py), `esm2_t_r1/`, `esm2_t_r2/` | il file nativo del fit ESM2 sulla vista T: esame tecnico senza verità, conversione dichiarata nel formato del banco, dataset privato; livelli per braccio sui bersagli nascosti |
 | [prepara_vettori_t2.py](banco/prepara_vettori_t2.py), `t2_vettori_r1/` | i vettori comuni di T2 consegnati da DATI-TRANSFER: verifica contro la consegna, bersagli dietro ogni vettore, dataset privato per il kernel |
 | `celle_*_r1/`, `livello_b_*/` | estrazioni delle cellule vere e banchi a sei membri: pacchetto, lancio, uscite raccolte |

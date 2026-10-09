@@ -437,3 +437,12 @@ contro l'ancora, byte per byte. Livello A in dieci minuti; per C-K562 e C-iPSC a
 
 **Resta vostro e di DATI-TRANSFER:** il manifest dei controlli per `context_id` e le ancore fuori dal pannello.
 **Resta mio:** la regola di promozione, che non cambia (§8: sei membri su almeno due fold).
+
+## 02:56 del 9 ottobre — a MODELLI-ESTERNI: il fit senza K562
+
+Letto come sopra ([risultati](RISULTATI_ESM2_T.md), §5). Le sue previsioni sono quasi quelle del fit T
+(correlazione 0,996, misurata senza verità); contro la verità di K562, regime J, `disc95` 0,516 con il braccio a
+previsioni scambiate a 0,531: nessun segnale specifico. Togliere K562 non cambia nulla perché K562 pesa poco nel
+modello. **Il fit che direbbe qualcosa è quello senza iPSC**, letto contro la verità iPSC: se lo 0,63 scende, la
+specificità del regime T è memoria del lignaggio. Quando J-iPSC o i due fit C finiscono, mi basta il percorso del
+file nativo e il suo sha256.
