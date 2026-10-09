@@ -1,0 +1,52 @@
+{
+  "schema": "native-NTC-extraction-completion/1",
+  "status": "COMPLETE",
+  "utc": "2026-10-09T15:38:10.483380+00:00",
+  "part_id": "tian2021_crispri_a3ee3d84fe4a",
+  "plan_sha256": "88afa5d7a524295e3cf717731f89f2b7ad7267e77aaf2c7ace06f6f544586c4b",
+  "files": {
+    "cells.json": {
+      "bytes": 280229,
+      "sha256": "3561c1a10bd42714d37300b93b1153cc185e65dece475054d2fba7517fe22273"
+    },
+    "counts.npz": {
+      "bytes": 3850662,
+      "sha256": "9d0ae7bc93445429f1c61b7611af5b163b48d13a41d515050d86cbd32d79eab5"
+    },
+    "axes_depth_mask.npz": {
+      "bytes": 113425,
+      "sha256": "0a0030567206bd11cabeabbc74a7794ed8401c06b699bd6ff7baa0dfbbb60357"
+    }
+  },
+  "contexts": {
+    "tian2021_crispri:474860c165b46e26": 437
+  },
+  "native_depth": "ingestion obs/depth_native; no denominator computed on aligned genes",
+  "arrays_shape": [
+    437,
+    18533
+  ],
+  "source_files_verified": 2,
+  "raw_sizes_measured": {
+    "49213bcbf7b196064410447cad46ced2aaed92953f0a448ea3a8baf8f3009b37": 197598037,
+    "cd095973f5afae6a0017f41379b73c0f95cd060cf0ebb80f18c170d002c57da3": 118401625
+  },
+  "resources": {
+    "cpu_count": 4,
+    "available_RAM": 32159035392,
+    "disk_free": 18646519808,
+    "raw_bytes": 315999662
+  },
+  "seconds": 12.998232658000006,
+  "NTC_cells_read": 437,
+  "perturbed_RNA_rows_read": 0,
+  "mean_ablation": "mean of the SAME per-cell log1p(CP10k_native) vectors passed to cells encoder",
+  "normalized_scale": "log1p(counts * 10000 / native_depth)",
+  "storage_parts_need_global_reservoir_merge": true,
+  "cells_consumed_by_trainer": 0,
+  "complete_D053": false,
+  "code": {
+    "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+    "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+  }
+}

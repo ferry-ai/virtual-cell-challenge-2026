@@ -1,0 +1,151 @@
+{
+  "utc": "2026-10-09T14:56:59.114269+00:00",
+  "fold": "C-K562",
+  "inner_lineage": "CD4T",
+  "outer_lineage": "K562",
+  "status": "PROPOSED_ROUTING_REQUIRES_VALIDAZIONE",
+  "review_status": "pending",
+  "canonical_release": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/banca_canonica_2026-10-07/fit/release_r1.json",
+    "bytes": 25278,
+    "sha256": "0650d1d610e05b5cb5fea3c3695dff67bec14443c9df2708121f84e8f8771c8c"
+  },
+  "validation_manifest": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/manifest_fold_v1.json",
+    "bytes": 24372,
+    "sha256": "add3519816b50b81207152cf7e2ffea7150e66b28587fb04cfdc42283e371cf7"
+  },
+  "axis": {
+    "path": "C:/Users/ferra/vcc2026-data/raw/controls/gene_names.csv",
+    "bytes": 119295,
+    "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  "axis_is_external_to_legacy_npz": true,
+  "tables": {
+    "cd4_Rest": {
+      "kind": "kernel",
+      "ref": "davideferrante11/vcc-effects-mix-t25-bank-r1-retry1",
+      "suffix": "cache/cd4_Rest.npz",
+      "bytes": 39553095,
+      "sha256": "5e350d5ac4aa94a0b5d77a7ccb57309f3b3f6ae33248f0bc228ee19680bcf127"
+    },
+    "cd4_Stim48hr": {
+      "kind": "kernel",
+      "ref": "davideferrante11/vcc-effects-mix-t25-bank-r1-retry1",
+      "suffix": "cache/cd4_Stim48hr.npz",
+      "bytes": 40252933,
+      "sha256": "797c4ab280a216829a3888e836b1e41c4d3ba8a2333306613b548e168f5a29e4"
+    },
+    "cd4_Stim8hr": {
+      "kind": "kernel",
+      "ref": "davideferrante11/vcc-effects-mix-t25-bank-r1-retry1",
+      "suffix": "cache/cd4_Stim8hr.npz",
+      "bytes": 39267438,
+      "sha256": "55cb086aee50e445b5e25972c84a28cb9a8b44168b28f5ac6d2078fdbbbd8d41"
+    }
+  },
+  "routes": [
+    {
+      "context_id": "D1_Rest:3403483bb399ef16",
+      "lineage": "CD4T",
+      "table": "cd4_Rest",
+      "role": "primary",
+      "alignment": "same condition; truth pools donors, NTC donor stays distinct; not independent repeated truths",
+      "panel_targets_in_training_view": 275
+    },
+    {
+      "context_id": "D1_Stim48hr:64553b7856c88192",
+      "lineage": "CD4T",
+      "table": "cd4_Stim48hr",
+      "role": "secondary_condition",
+      "alignment": "same condition; truth pools donors, NTC donor stays distinct; not independent repeated truths",
+      "panel_targets_in_training_view": 274
+    },
+    {
+      "context_id": "D1_Stim8hr:51be9522a1ca0efd",
+      "lineage": "CD4T",
+      "table": "cd4_Stim8hr",
+      "role": "secondary_condition",
+      "alignment": "same condition; truth pools donors, NTC donor stays distinct; not independent repeated truths",
+      "panel_targets_in_training_view": 275
+    },
+    {
+      "context_id": "D2_Rest:dc81e9589ccce8da",
+      "lineage": "CD4T",
+      "table": "cd4_Rest",
+      "role": "primary",
+      "alignment": "same condition; truth pools donors, NTC donor stays distinct; not independent repeated truths",
+      "panel_targets_in_training_view": 261
+    },
+    {
+      "context_id": "D2_Stim48hr:45ba70ed02913760",
+      "lineage": "CD4T",
+      "table": "cd4_Stim48hr",
+      "role": "secondary_condition",
+      "alignment": "same condition; truth pools donors, NTC donor stays distinct; not independent repeated truths",
+      "panel_targets_in_training_view": 268
+    },
+    {
+      "context_id": "D2_Stim8hr:3f409a0de6a1b905",
+      "lineage": "CD4T",
+      "table": "cd4_Stim8hr",
+      "role": "secondary_condition",
+      "alignment": "same condition; truth pools donors, NTC donor stays distinct; not independent repeated truths",
+      "panel_targets_in_training_view": 272
+    },
+    {
+      "context_id": "D3_Rest:b9d883a415207ee4",
+      "lineage": "CD4T",
+      "table": "cd4_Rest",
+      "role": "primary",
+      "alignment": "same condition; truth pools donors, NTC donor stays distinct; not independent repeated truths",
+      "panel_targets_in_training_view": 266
+    },
+    {
+      "context_id": "D3_Stim48hr:9ec5be5c0f864244",
+      "lineage": "CD4T",
+      "table": "cd4_Stim48hr",
+      "role": "secondary_condition",
+      "alignment": "same condition; truth pools donors, NTC donor stays distinct; not independent repeated truths",
+      "panel_targets_in_training_view": 265
+    },
+    {
+      "context_id": "D3_Stim8hr:dfdec262f5c03381",
+      "lineage": "CD4T",
+      "table": "cd4_Stim8hr",
+      "role": "secondary_condition",
+      "alignment": "same condition; truth pools donors, NTC donor stays distinct; not independent repeated truths",
+      "panel_targets_in_training_view": 271
+    },
+    {
+      "context_id": "D4_Rest:956bf0ac6320035d",
+      "lineage": "CD4T",
+      "table": "cd4_Rest",
+      "role": "primary",
+      "alignment": "same condition; truth pools donors, NTC donor stays distinct; not independent repeated truths",
+      "panel_targets_in_training_view": 287
+    },
+    {
+      "context_id": "D4_Stim48hr:7a7ef471c2300ed8",
+      "lineage": "CD4T",
+      "table": "cd4_Stim48hr",
+      "role": "secondary_condition",
+      "alignment": "same condition; truth pools donors, NTC donor stays distinct; not independent repeated truths",
+      "panel_targets_in_training_view": 284
+    },
+    {
+      "context_id": "D4_Stim8hr:7d6195c4fbd5051f",
+      "lineage": "CD4T",
+      "table": "cd4_Stim8hr",
+      "role": "secondary_condition",
+      "alignment": "same condition; truth pools donors, NTC donor stays distinct; not independent repeated truths",
+      "panel_targets_in_training_view": 288
+    }
+  ],
+  "pooling": "none in DATI outputs; preserve/export each context; no post-result choice",
+  "primary_statistic": "must be frozen by MODEL/VALID before fit; do not count pooled truth reuse as replication",
+  "outer_truth_included": false,
+  "h1_test_included": false,
+  "arrays_read": false,
+  "private_access_from_davidmaisterx_verified": false
+}

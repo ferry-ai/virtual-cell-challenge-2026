@@ -1,0 +1,23 @@
+test_bad_hash_fails_before_metadata_read (test_ntc_cells.NTCCellsTests.test_bad_hash_fails_before_metadata_read) ... ok
+test_duplicate_control_and_axis_corruption_rejected (test_ntc_cells.NTCCellsTests.test_duplicate_control_and_axis_corruption_rejected) ... ok
+test_merge_disjoint_parts_equals_global_bottom_hash (test_ntc_cells.NTCCellsTests.test_merge_disjoint_parts_equals_global_bottom_hash) ... ok
+test_missing_context_cells_are_not_silently_omitted (test_ntc_cells.NTCCellsTests.test_missing_context_cells_are_not_silently_omitted) ... ok
+test_native_depth_measured_zero_and_unmeasured_are_distinct (test_ntc_cells.NTCCellsTests.test_native_depth_measured_zero_and_unmeasured_are_distinct) ... ok
+test_no_aligned_depth_fallback (test_ntc_cells.NTCCellsTests.test_no_aligned_depth_fallback) ... ok
+test_perturbed_values_do_not_change_selection_or_features (test_ntc_cells.NTCCellsTests.test_perturbed_values_do_not_change_selection_or_features) ... ok
+test_runner_writes_reloadable_arrays_and_refuses_overwrite (test_ntc_cells.NTCCellsTests.test_runner_writes_reloadable_arrays_and_refuses_overwrite) ... ERROR
+
+======================================================================
+ERROR: test_runner_writes_reloadable_arrays_and_refuses_overwrite (test_ntc_cells.NTCCellsTests.test_runner_writes_reloadable_arrays_and_refuses_overwrite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\modelli\dati_transfer_2026-10-08_01a11c34\test_ntc_cells.py", line 119, in test_runner_writes_reloadable_arrays_and_refuses_overwrite
+    from run_ntc_extraction import run
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\modelli\dati_transfer_2026-10-08_01a11c34\run_ntc_extraction.py", line 11, in <module>
+    import psutil
+ModuleNotFoundError: No module named 'psutil'
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.152s
+
+FAILED (errors=1)

@@ -1,0 +1,26 @@
+{
+  "recorded_utc": "2026-10-08T23:49:53Z",
+  "claim_type": "measured actions and explicit user corrections; responsibility assessment",
+  "owner": "DATI-TRANSFER 01a11c34",
+  "deadline": "2026-10-09T02:00:00+02:00",
+  "required_outcome": "Upload finished by the deadline, with a partial new refit as fallback if needed",
+  "failure": "Continued extended T3 recovery without preparing an upload-ready partial-refit fallback in time. Confused the historical t36 reserve with the requested new partial-refit fallback after the user objected.",
+  "responsibility": "Agent planning and implementation failure; not attributed to the user's instructions",
+  "user_correction": "t36 was already evaluated; do not treat resubmission of identical t36 bytes as the requested new result",
+  "t36_resubmitted": false,
+  "new_vcc_entry_created": false,
+  "t38_uploaded": false,
+  "partial_refit_vcc_available": false,
+  "t3_state": "360000 cells generated, 2086912955 stored values, packaging resource guard refused output-disk estimate; recovery cells being exported by Kaggle; source_status RUNNING at 23:49 UTC",
+  "t3_input_full_sha256": "67fc0d5762e99de1529ed28442819af6b4763c1218abec9db6f136826581e9ed",
+  "operational_causes": [
+    "Initial generation wrapper used the wrong repeated-argument syntax",
+    "Recovery searched for the wrong generation manifest filename and lost an unexported temporary output",
+    "A subsequent recovery applied an excessive disk guard to the output filesystem",
+    "The LZF recovery generated all cells but stage48 applied its transient-space guard to the small output filesystem"
+  ],
+  "t36_upload_draft": "upload_t36_fallback_driver.py exists but was not packaged, launched or given any VCC capability; excluded by user correction",
+  "pending_recovery_choice": "Asked whether to complete existing T3 cells or start a partial-refit generation; no dependent launch until the user's answer",
+  "follow_up_owner": "VALIDAZIONE owns the shared incident ledger and checkpoint; this immutable file is the evidence handoff",
+  "proposed_guard_not_implemented": "Maintain a validated upload-ready fallback before the cutoff; measure generation, packaging, export and upload as one chain, and test the entire wrapper on a small fixture before full runtime use"
+}

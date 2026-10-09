@@ -1,0 +1,99 @@
+{
+  "utc": "2026-10-09T15:43:19.210727+00:00",
+  "contract": {
+    "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/official_ntc_r1/official_ntc_contract_r1.json",
+    "bytes": 1029628,
+    "sha256": "0fc84acc62162b8d862002766318b8fe22d99f06f22fda7f10a0801c67ed8278"
+  },
+  "original_location": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/official_ntc_contract_r1.json",
+  "relocated_without_content_change": true,
+  "ntc_expected_parts": {
+    "official_A": "94ae534f82f89da2982cebb0793d191b2cf67b162ab1d1baff14aca3a72d5bef",
+    "official_B": "0f76c375ac350fd32b590b43aab2df56abf64537b480aef41e2c028e0b39ceae",
+    "official_C": "a45f479a8b5cfcf4bf009857cd0ed20db9ac7d4df63f6a4943aa44027b4cbc7d"
+  },
+  "axis": {
+    "path": "C:/Users/ferra/vcc2026-data/raw/controls/gene_names.csv",
+    "bytes": 119295,
+    "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  "plans": [
+    {
+      "part_id": "official_A",
+      "context_id": "A",
+      "source": {
+        "file": "context_A.h5ad",
+        "bytes": 224973316,
+        "sha256": "f22e71968487d3da9402769dcd0c73a47851fad4cd7dd25510283c923031fe3e",
+        "cells": 18400
+      },
+      "seed": "esm2-ammi-ntc-r1",
+      "cells_per_stratum": 64,
+      "identity": {
+        "study": "VCC2026_official",
+        "context": "A",
+        "donor_or_clone": "MISSING",
+        "condition": "MISSING",
+        "modality": "MISSING",
+        "chemistry": "MISSING"
+      },
+      "part_role": "destination",
+      "denominator_policy": "full_provided_official_X_before_alignment",
+      "normalized_scale": "log1p(counts * 10000 / native_depth)",
+      "unobserved_native_genes_limitation": "No depth outside provided official feature axis is available; this does not replace training ingestion depth.",
+      "plan_sha256": "94ae534f82f89da2982cebb0793d191b2cf67b162ab1d1baff14aca3a72d5bef"
+    },
+    {
+      "part_id": "official_B",
+      "context_id": "B",
+      "source": {
+        "file": "context_B.h5ad",
+        "bytes": 210966111,
+        "sha256": "41557555b3febf6db19fd930b4dd7db88941840077bf985d14dfff959c782380",
+        "cells": 18400
+      },
+      "seed": "esm2-ammi-ntc-r1",
+      "cells_per_stratum": 64,
+      "identity": {
+        "study": "VCC2026_official",
+        "context": "B",
+        "donor_or_clone": "MISSING",
+        "condition": "MISSING",
+        "modality": "MISSING",
+        "chemistry": "MISSING"
+      },
+      "part_role": "destination",
+      "denominator_policy": "full_provided_official_X_before_alignment",
+      "normalized_scale": "log1p(counts * 10000 / native_depth)",
+      "unobserved_native_genes_limitation": "No depth outside provided official feature axis is available; this does not replace training ingestion depth.",
+      "plan_sha256": "0f76c375ac350fd32b590b43aab2df56abf64537b480aef41e2c028e0b39ceae"
+    },
+    {
+      "part_id": "official_C",
+      "context_id": "C",
+      "source": {
+        "file": "context_C.h5ad",
+        "bytes": 226056691,
+        "sha256": "e090e7c7cfdd0006f689214ba38ba0cd2669578e89c9bc325b65f0bd940c02e0",
+        "cells": 18400
+      },
+      "seed": "esm2-ammi-ntc-r1",
+      "cells_per_stratum": 64,
+      "identity": {
+        "study": "VCC2026_official",
+        "context": "C",
+        "donor_or_clone": "MISSING",
+        "condition": "MISSING",
+        "modality": "MISSING",
+        "chemistry": "MISSING"
+      },
+      "part_role": "destination",
+      "denominator_policy": "full_provided_official_X_before_alignment",
+      "normalized_scale": "log1p(counts * 10000 / native_depth)",
+      "unobserved_native_genes_limitation": "No depth outside provided official feature axis is available; this does not replace training ingestion depth.",
+      "plan_sha256": "a45f479a8b5cfcf4bf009857cd0ed20db9ac7d4df63f6a4943aa44027b4cbc7d"
+    }
+  ],
+  "historical_prepared_contract_pin": "old path in official_ntc_prepared_r1.json; identical bytes at contract.path",
+  "immutable_cloud_payload": "unchanged; official_contract.json remains embedded in the already executed package"
+}

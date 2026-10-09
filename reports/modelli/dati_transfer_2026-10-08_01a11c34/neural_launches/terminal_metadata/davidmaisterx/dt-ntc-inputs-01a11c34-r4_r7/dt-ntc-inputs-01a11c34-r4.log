@@ -1,0 +1,30 @@
+[{"stream_name":"stderr","time":4191.415648526,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":4191.417844734,"data":"  File \"/kaggle/src/script.py\", line 8, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":4191.417885043,"data":"    runpy.run_path('ntc_campaign_worker.py',run_name=\"__main__\")\n"}
+,{"stream_name":"stderr","time":4191.417890808,"data":"    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":4191.417895366,"data":"  File \"\u003cfrozen runpy\u003e\", line 294, in run_path\n"}
+,{"stream_name":"stderr","time":4191.417900508,"data":"  File \"\u003cfrozen runpy\u003e\", line 98, in _run_module_code\n"}
+,{"stream_name":"stderr","time":4191.417917109,"data":"  File \"\u003cfrozen runpy\u003e\", line 88, in _run_code\n"}
+,{"stream_name":"stderr","time":4191.417921388,"data":"  File \"ntc_campaign_worker.py\", line 36, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":4191.417926278,"data":"    try:main()\n"}
+,{"stream_name":"stderr","time":4191.417930746,"data":"        ~~~~^^\n"}
+,{"stream_name":"stderr","time":4191.41793514,"data":"  File \"ntc_campaign_worker.py\", line 27, in main\n"}
+,{"stream_name":"stderr","time":4191.417940102,"data":"    result=run(plan_path,item['plan_sha256'],path,work/item['rows'],work/'ntc'/plan['part_id'])\n"}
+,{"stream_name":"stderr","time":4191.417944598,"data":"  File \"/kaggle/working/run_ntc_extraction.py\", line 61, in run\n"}
+,{"stream_name":"stderr","time":4191.417949279,"data":"    bundle=reader.extract(plan, locations, selected)\n"}
+,{"stream_name":"stderr","time":4191.417953814,"data":"  File \"/kaggle/working/ntc_cells.py\", line 154, in extract\n"}
+,{"stream_name":"stderr","time":4191.417958817,"data":"    mapping, mask = gene_mapping(h5, genes)\n"}
+,{"stream_name":"stderr","time":4191.417963701,"data":"                    ~~~~~~~~~~~~^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":4191.417968348,"data":"  File \"/kaggle/working/ntc_cells.py\", line 65, in gene_mapping\n"}
+,{"stream_name":"stderr","time":4191.417972633,"data":"    symbols = column(var, 'symbol').astype(str)\n"}
+,{"stream_name":"stderr","time":4191.417976786,"data":"              ~~~~~~^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":4191.417981099,"data":"  File \"/kaggle/working/ntc_cells.py\", line 45, in column\n"}
+,{"stream_name":"stderr","time":4191.417985853,"data":"    raise ValueError('unsupported categorical column: ' + name)\n"}
+,{"stream_name":"stderr","time":4191.417990498,"data":"ValueError: unsupported categorical column: symbol\n"}
+,{"stream_name":"stderr","time":4195.641198308,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":4195.641242794,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":4196.177664659,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":4196.177702475,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":4198.535329053,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":4200.127384559,"data":"[NbConvertApp] Writing 483885 bytes to __results__.html\n"}
+]

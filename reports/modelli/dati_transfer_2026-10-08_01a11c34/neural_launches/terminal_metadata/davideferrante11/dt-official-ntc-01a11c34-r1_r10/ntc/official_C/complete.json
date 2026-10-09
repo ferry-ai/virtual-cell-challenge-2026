@@ -1,0 +1,49 @@
+{
+  "status": "COMPLETE",
+  "part_id": "official_C",
+  "plan_sha256": "a45f479a8b5cfcf4bf009857cd0ed20db9ac7d4df63f6a4943aa44027b4cbc7d",
+  "contexts": {
+    "C": 2944
+  },
+  "files": {
+    "counts.npz": {
+      "bytes": 36182458,
+      "sha256": "78160a3745debb28965049035ef98c537f577cde6ec49701a52a8813e523ed81"
+    },
+    "cells.json": {
+      "bytes": 1646669,
+      "sha256": "c3003a12aa555516ff9dc8ee9d3c8df80be744276e91f6b0fa35cf949235332a"
+    },
+    "axes_depth_mask.npz": {
+      "bytes": 120059,
+      "sha256": "b0699fe7c84f816c53fd8b08e3eaee02a8dc4950993c41a0c3737429b1550d0c"
+    }
+  },
+  "arrays_shape": [
+    2944,
+    18533
+  ],
+  "NTC_cells_read": 2944,
+  "perturbed_RNA_rows_read": 0,
+  "cells_consumed_by_trainer": 0,
+  "complete_D053": false,
+  "resources": {
+    "cpu_count": 4,
+    "available_RAM": 32655339520,
+    "disk_free": 20939362304
+  },
+  "code": {
+    "official_ntc_worker.py": "ee1e09aa285b4f437b2f3005824a9bcc253f687a8c4e8389774f0a9f71b99633",
+    "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+  },
+  "source_files_verified": 1,
+  "raw_sizes_measured": {
+    "e090e7c7cfdd0006f689214ba38ba0cd2669578e89c9bc325b65f0bd940c02e0": 226056691
+  },
+  "native_depth": "sum of complete official source X row before alignment; source provides no depth_native field",
+  "part_role": "destination",
+  "denominator_policy": "full_provided_official_X_before_alignment",
+  "feature_mask": "all features on the complete provided official native axis",
+  "normalized_scale": "log1p(counts * 10000 / native_depth)",
+  "storage_parts_need_global_reservoir_merge": true
+}

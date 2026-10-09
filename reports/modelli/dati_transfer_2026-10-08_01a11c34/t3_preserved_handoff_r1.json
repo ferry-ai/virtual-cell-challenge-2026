@@ -1,0 +1,88 @@
+{
+  "utc": "2026-10-09T14:59:56.099006+00:00",
+  "candidate": "T3-CRISPRi-KO / t38",
+  "effects": {
+    "path": "C:/Users/ferra/vcc2026-data/processed/validazione_indipendente_8a8ca58a_2026-10-08/t3_effetti_r1/effects/effects_A.npz",
+    "bytes": 18846035,
+    "sha256": "b8c61f6da684f6c28107199469ac42ef030a4644176371b9723ae6e3f863f6a6"
+  },
+  "mask": {
+    "npz_key": "observed",
+    "shape": [
+      300,
+      18533
+    ],
+    "dtype": "bool",
+    "observed_pairs": 4467808,
+    "array_sha256": "98bcb46f15ec34005d20de49f26d594508c52a70579d976f175931e8a77dd88d",
+    "array_digest_definition": "C-order bool bytes, no header"
+  },
+  "source_fit_job": "davideferrante11/dt-t3-fit-generate-01a11c34-r1",
+  "candidate_record": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/candidate_t3_r1.json",
+    "bytes": 4458,
+    "sha256": "53e996c2bd0d7ab9ebafbde6b72ff82779030848912bf3f3fa5e8a46ee62393c"
+  },
+  "fit_complete": true,
+  "fit_rerun": false,
+  "generation_job": "davideferrante11/dt-t3-generate-01a11c34-r5",
+  "generation_job_status": "ERROR",
+  "preserved_cell_file": "recovery_prediction.h5ad",
+  "generation_shape": {
+    "cells_per_pert": 400,
+    "contexts": [
+      "A",
+      "B",
+      "C"
+    ],
+    "n_cells": 360000,
+    "n_genes": 18533,
+    "n_perturbations": 300,
+    "official_full_shape": {
+      "cells_per_pert": 400,
+      "n_cells": 360000,
+      "n_contexts": 3,
+      "n_genes": 18533,
+      "n_perturbations": 300
+    }
+  },
+  "stored_entries": 2086912955,
+  "stage45_original_file_record": {
+    "path": "/kaggle/temp/t3_stage45/prediction.h5ad",
+    "exists": true,
+    "bytes": 11685203598,
+    "mtime_utc": "2026-10-08T23:37:42.982074+00:00",
+    "sha256": "0fb7a79701f57defedc1e2ce49ef91a67a67dbb016e0a5d8ad2dba27e58e09c6",
+    "sha256_mode": "head+tail sample (64 MiB blocks)"
+  },
+  "warning": "Stage45 digest is head+tail sampled, not full SHA256 of preserved cloud file. Recovery cell file listed, not downloaded/rehashed.",
+  "remaining": [
+    "full hash and shape/CSR/provenance verification of preserved cell file in cloud",
+    "stage48 packaging on a filesystem with measured sufficient space",
+    "official container validation and bit-identical payload comparison",
+    "new human/coordination authorization to resume actual delivery; current request is inspection only"
+  ],
+  "new_generation": false,
+  "new_packaging": false,
+  "new_submission": false,
+  "scientific_status": "candidate only; no C/J validation or official score; T36 already scored and distinct",
+  "known_KO_only_pairs": 6722,
+  "claims_complete_D053": false,
+  "evidence": [
+    {
+      "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/t3_preserved_inventory_r1.json",
+      "bytes": 5460,
+      "sha256": "0edc903a7f849e53d0f45c9e9e059c51e6da13a96d8248a6811cd3f55edbc06f"
+    },
+    {
+      "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/t3_preserved_metadata_r1/compact_diagnostics.json",
+      "bytes": 2629,
+      "sha256": "128f3666ef1cb298ce20cf92b0da0d3a1fa4c432c7d572c3ce066ae862b873b1"
+    },
+    {
+      "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/t3_preserved_metadata_r1/failure.json",
+      "bytes": 111,
+      "sha256": "f304508e52b35df5bb54c9f12941f01e27570f2c5a4811716604057d726e7213"
+    }
+  ]
+}

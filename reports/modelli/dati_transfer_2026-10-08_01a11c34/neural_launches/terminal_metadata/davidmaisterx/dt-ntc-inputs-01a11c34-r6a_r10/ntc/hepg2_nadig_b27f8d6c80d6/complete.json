@@ -1,0 +1,58 @@
+{
+  "schema": "native-NTC-extraction-completion/1",
+  "status": "COMPLETE",
+  "utc": "2026-10-09T15:37:57.461474+00:00",
+  "part_id": "hepg2_nadig_b27f8d6c80d6",
+  "plan_sha256": "f37a0d874e79c9ad77ef14d46d3454a8642c69c455361f62a19a45e021312834",
+  "files": {
+    "cells.json": {
+      "bytes": 3123463,
+      "sha256": "91d3182c202cc52b3591b378d178ff59909f75682bbb53e141cbf0ab65772d67"
+    },
+    "counts.npz": {
+      "bytes": 40853739,
+      "sha256": "36174cc6f93af02024a722674d1b205f220a3b331d673501d8c0eae0373e4202"
+    },
+    "axes_depth_mask.npz": {
+      "bytes": 152906,
+      "sha256": "9b1c0bef995009dde8d86aff9f7193b88dd1dd87e81563e3a16d04e24a68be48"
+    }
+  },
+  "contexts": {
+    "hepg2_nadig:2581732c74329fed": 4976
+  },
+  "native_depth": "ingestion obs/depth_native; no denominator computed on aligned genes",
+  "arrays_shape": [
+    4976,
+    18533
+  ],
+  "source_files_verified": 8,
+  "raw_sizes_measured": {
+    "fa5c800a1e251ba0a61e9338ad73c98794c8ec52af5d2b6ea15e56245af4ad90": 185272166,
+    "160d621ad12ba40b00d1df6fc0ea4be3a54fbc7df9f1e9736360d8fd4ad68308": 183904475,
+    "5bdb044afc755054e688636343a0a84401112458d301d645d7814fb98ee23e61": 182671570,
+    "2004bce1b1860fd06a9a4296d8a41d92cfbfcfe8438273564a7bc388fd9067a4": 183409532,
+    "8ddf9d536ff732608e689443cc78f4eb88010bb28a5a9cf3af227b6ba3fedabe": 180907733,
+    "df4683fe243b1f4082692073abca318b044ae6af631833fac5aaacb914447fb1": 183495694,
+    "098fc905c8b47530008839037707739fbe084ff5a77bbea3b9c858ac5b716407": 181882696,
+    "7cd6dd579afcbbf2f65ac38f797aec68cb5c233aaf4495e9da26a577d1027781": 50531625
+  },
+  "resources": {
+    "cpu_count": 4,
+    "available_RAM": 32149741568,
+    "disk_free": 18690666496,
+    "raw_bytes": 1332075491
+  },
+  "seconds": 88.05215340099994,
+  "NTC_cells_read": 4976,
+  "perturbed_RNA_rows_read": 0,
+  "mean_ablation": "mean of the SAME per-cell log1p(CP10k_native) vectors passed to cells encoder",
+  "normalized_scale": "log1p(counts * 10000 / native_depth)",
+  "storage_parts_need_global_reservoir_merge": true,
+  "cells_consumed_by_trainer": 0,
+  "complete_D053": false,
+  "code": {
+    "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+    "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+  }
+}

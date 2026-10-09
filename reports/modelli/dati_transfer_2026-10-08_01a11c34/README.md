@@ -4,10 +4,23 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
-**Stato corrente:** [STATO_r10.md](STATO_r10.md), 01:34 del 9 ottobre:
-fit T3 verificato, recupero di generazione r5 in corso dopo gli errori operativi
-descritti nella fotografia; consegna diretta cloud → VCC preparata per il limite
-delle 02:00. Nessun nuovo fit e nessun upload t38 ancora eseguito alla fotografia.
+**Stato corrente:** [HANDOFF_RETI_r2.md](HANDOFF_RETI_r2.md), recupero NTC del 9 ottobre.
+Sei parti disponibili in r6a (tre D4 riusate e tre nuove), controlli ufficiali
+A/B/C completi; r6b/r6c e df11/r5 ancora in corso. Ancore produzione separate
+in r2; 17 ancore dei fold e due parità T0 già verificate.
+[Diagnosi del recupero](STATO_r13.md), [consegna precedente](HANDOFF_RETI_r1.md),
+[pin ancore](ammi_anchors_verified_r1.json),
+[30 parti e 47 contesti attesi](ammi_ntc_runtime_contract_r1.json),
+[T3 recuperabile senza nuovo invio](t3_preserved_handoff_r1.json).
+I sei fit ESM2 hanno ricevute di consumo indipendente PASS. Routing della guardia
+AMMI e accesso privato ai nuovi output restano da completare. Fast resta fermo.
+
+**Fotografia precedente:** [STATO_r11.md](STATO_r11.md), 01:49 del 9 ottobre:
+nessun nuovo upload completato. Il ripiego sul refit parziale non è stato
+preparato per tempo: [incidente e responsabilità](deadline_incident_r1.json).
+T36 era già valutato e non è stato reinviato. T3 ha tutte le cellule generate,
+ma il confezionamento è fallito; Kaggle sta ancora esportando il recupero.
+La scelta di recupero è stata rimessa al proprietario dopo le sue correzioni.
 Il [protocollo T3](CONSEGNA_T3_PROTOCOLLO_r1.md) e la previsione registrata
 prima del fit restano invariati. Il consenso Dixit/Shifrut è ricevuto e registrato.
 La fotografia precedente è [STATO_r8.md](STATO_r8.md), alle 23:55 dell'8 ottobre.
@@ -31,6 +44,12 @@ qui sotto sono fotografie dei rispettivi momenti, non nuovi blocchi operativi.
 
 ## Indice
 
+- [HANDOFF_RETI_r1.md](HANDOFF_RETI_r1.md), [STATO_r12.md](STATO_r12.md): input neurali, verifiche e ostacoli correnti.
+- [ammi_anchors_verified_r1.json](ammi_anchors_verified_r1.json): 17 ancore numeriche, due parità T0 e pin recuperati.
+- [ammi_ntc_runtime_contract_r1.json](ammi_ntc_runtime_contract_r1.json): parti obbligatorie e contesti previsti; non è un completamento.
+- [ammi_inner_truth_C-K562_r1.json](ammi_inner_truth_C-K562_r1.json), [ammi_inner_truth_C-iPSC_r1.json](ammi_inner_truth_C-iPSC_r1.json): sorgenti e routing da revisionare.
+- [t3_preserved_handoff_r1.json](t3_preserved_handoff_r1.json): effetti, maschera e inventario delle cellule T3 conservate.
+- [STATO_r11.md](STATO_r11.md), [deadline_incident_r1.json](deadline_incident_r1.json): mancata predisposizione del ripiego e correzione esplicita su t36.
 - [STATO_r10.md](STATO_r10.md), [cloud_delivery/r1/plan.json](cloud_delivery/r1/plan.json): recupero LZF e corsia di upload diretto privato, senza trasferire la chiave VCC.
 - [STATO_r9.md](STATO_r9.md), [candidate_t3_r1.json](candidate_t3_r1.json), [coverage_t3_r1.json](coverage_t3_r1.json): fit T3 verificato e ruoli delle 45 unità della banca.
 - `generation_recovery/r1/`: recupero della sola generazione con effetti congelati; `generation_recovery/r2/` è una copia difensiva mai lanciata.

@@ -1,0 +1,57 @@
+{
+  "utc": "2026-10-09T14:56:59.123803+00:00",
+  "fold": "C-iPSC",
+  "inner_lineage": "K562",
+  "outer_lineage": "iPSC",
+  "status": "PROPOSED_ROUTING_REQUIRES_VALIDAZIONE",
+  "review_status": "pending",
+  "canonical_release": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/banca_canonica_2026-10-07/fit/release_r1.json",
+    "bytes": 25278,
+    "sha256": "0650d1d610e05b5cb5fea3c3695dff67bec14443c9df2708121f84e8f8771c8c"
+  },
+  "validation_manifest": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/manifest_fold_v1.json",
+    "bytes": 24372,
+    "sha256": "add3519816b50b81207152cf7e2ffea7150e66b28587fb04cfdc42283e371cf7"
+  },
+  "axis": {
+    "path": "C:/Users/ferra/vcc2026-data/raw/controls/gene_names.csv",
+    "bytes": 119295,
+    "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201"
+  },
+  "axis_is_external_to_legacy_npz": true,
+  "tables": {
+    "k562": {
+      "kind": "dataset",
+      "ref": "davideferrante11/vcc-k562-t25-cache-r1",
+      "file": "k562.npz.bin",
+      "bytes": 28104995,
+      "sha256": "a37c78ce1f7c13a3fc145e75e64f2ccead555ec8e38a656d671903ed4fd7218f"
+    }
+  },
+  "routes": [
+    {
+      "context_id": "k562_essential:9b61ba5087c4b7af",
+      "lineage": "K562",
+      "table": "k562",
+      "role": "cross_assay_pending_independent_review",
+      "alignment": "historical bulk truth versus k562_essential single-cell NTC; NOT matched samples",
+      "panel_targets_in_training_view": 0
+    },
+    {
+      "context_id": "k562_gwps:48d8d89e89785608",
+      "lineage": "K562",
+      "table": "k562",
+      "role": "cross_assay_pending_independent_review",
+      "alignment": "historical bulk truth versus k562_gwps single-cell NTC; NOT matched samples",
+      "panel_targets_in_training_view": 272
+    }
+  ],
+  "pooling": "none in DATI outputs; preserve/export each context; no post-result choice",
+  "primary_statistic": "must be frozen by MODEL/VALID before fit; do not count pooled truth reuse as replication",
+  "outer_truth_included": false,
+  "h1_test_included": false,
+  "arrays_read": false,
+  "private_access_from_davidmaisterx_verified": false
+}

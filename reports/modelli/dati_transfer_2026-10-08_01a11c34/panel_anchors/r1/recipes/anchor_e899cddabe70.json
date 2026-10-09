@@ -1,0 +1,31 @@
+{
+  "name": "anchor_e899cddabe70",
+  "effect": "shrunk",
+  "gamma": 1.0,
+  "reliability_scale": 100.0,
+  "allow_missing_targets": true,
+  "allow_foreign_cache": false,
+  "common": "panel",
+  "contexts": {
+    "anchor_e899cddabe70": {
+      "amplitude": 1.576,
+      "weights": {
+        "h1": 1.0,
+        "hepg2_nadig": 1.0,
+        "jurkat_nadig": 1.0,
+        "kolf_chromatin": 1.0,
+        "kolf_metabolic": 1.0,
+        "kolf_pan_genome": 1.0,
+        "kolf_strong": 1.0,
+        "orion_hct116": 1.0,
+        "rpe1": 1.0
+      }
+    }
+  },
+  "cis": {
+    "pairs": "reports/cis_2026-09-17/k562_neighbour_pairs.csv",
+    "max_distance_bp": 5000,
+    "scale": 2.0
+  },
+  "why": "AMMI panel pilot: frozen T0 with explicit outer/inner/row lineage exclusions"
+}
