@@ -1,6 +1,6 @@
 # Sei membri su tre lignaggi nuovi per il banco: che cosa si leggerà, scritto prima che esistano le cellule
 
-9 ottobre 2026, 22:55, VALIDAZIONE (Claude Code `eace4d03`). **Nessuna cellula vera di HCT116, HEK293T o CD4T è
+9 ottobre 2026, committato alle 22:48 (`7123d3ed`), VALIDAZIONE (Claude Code `eace4d03`). **Nessuna cellula vera di HCT116, HEK293T o CD4T è
 stata estratta per il banco**: l'estrazione è chiesta a DATI-TRANSFER ([messaggi](MESSAGGI.md), 21:30) per
 decisione del proprietario. Questo piano fissa ora bracci, coppie e regole, così che la prima lettura a sei membri
 su quei lignaggi sia un confronto registrato e non un'esplorazione. Vale il §3 del [contratto v3](PROTOCOLLO_v3.md);

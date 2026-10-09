@@ -1,7 +1,8 @@
 # Vecchio e nuovo banco messi alla prova: che cosa prevedono per i sei membri del riempimento
 
-9 ottobre 2026, 22:45, VALIDAZIONE (Claude Code `eace4d03`). **Scritto mentre i due kernel a sei membri girano e
-prima di raccoglierne un'uscita** (nessun file dei kernel `…-eace4d03-e1` è stato letto). Serve a confrontare la
+9 ottobre 2026, committato alle 22:44:16 (`f373fd5f`), VALIDAZIONE (Claude Code `eace4d03`). **Scritto mentre i due
+kernel a sei membri giravano e prima di raccoglierne un'uscita** (nessun file dei kernel `…-eace4d03-e1` era stato
+letto; la prima raccolta, del fold C-iPSC, è delle 22:44:30 circa, dopo il commit). Serve a confrontare la
 convenzione vecchia del livello A (ogni braccio sul proprio supporto, banco B4) con quella nuova (supporto definito
 dalla verità, coppia non prevista a zero, banco B5) **su un dato che non è servito a scegliere la correzione**: i sei
 membri con lo scorer vero per `E2f` − `T0`.
