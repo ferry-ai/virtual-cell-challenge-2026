@@ -1,0 +1,73 @@
+[19:58:01] bench: 55 targets, median half 55 cells, control pool 2048, genes 18106
+[19:58:37] replicate: PDS=0.9199 MSE=-0.5388 NMAE=1.9256 FID=0.5129 REACH=0.5704 JAC=0.0473 sig/t=41.5 (23s)
+[19:58:59] baseline: PDS=0.5253 MSE=3.2472 NMAE=3.1597 FID=0.0444 REACH=0.1401 JAC=0.0000
+[20:01:22] T0@s0: PDS=0.6498 MSE=3.8138 NMAE=1.0048 FID=0.5084 REACH=0.1180 JAC=0.0066 sig/t=338.5 (95s)
+[20:03:36] E2f@s0: PDS=0.6822 MSE=3.8861 NMAE=1.0040 FID=0.5154 REACH=0.1288 JAC=0.0068 sig/t=358.2 (96s)
+[20:05:50] E2gen@s0: PDS=0.6673 MSE=3.8160 NMAE=0.9960 FID=0.5160 REACH=0.1186 JAC=0.0066 sig/t=342.4 (96s)
+[20:08:04] E2swap@s0: PDS=0.6529 MSE=3.8901 NMAE=0.9993 FID=0.5122 REACH=0.1539 JAC=0.0069 sig/t=359.1 (97s)
+[20:10:18] T0@s1: PDS=0.6461 MSE=3.7831 NMAE=1.0068 FID=0.5132 REACH=0.1009 JAC=0.0065 sig/t=339.4 (97s)
+[20:12:33] E2f@s1: PDS=0.6562 MSE=3.8963 NMAE=1.0086 FID=0.5146 REACH=0.1275 JAC=0.0077 sig/t=355.5 (96s)
+[20:14:45] E2gen@s1: PDS=0.6370 MSE=3.8139 NMAE=1.0006 FID=0.5175 REACH=0.1461 JAC=0.0068 sig/t=342.5 (94s)
+[20:17:01] E2swap@s1: PDS=0.6249 MSE=3.9163 NMAE=1.0083 FID=0.5144 REACH=0.1008 JAC=0.0067 sig/t=358.3 (97s)
+[20:19:13] T0@s2: PDS=0.6636 MSE=3.7692 NMAE=1.0119 FID=0.5145 REACH=0.1337 JAC=0.0067 sig/t=342.4 (95s)
+[20:21:28] E2f@s2: PDS=0.6455 MSE=3.8989 NMAE=1.0072 FID=0.5110 REACH=0.1320 JAC=0.0070 sig/t=359.5 (98s)
+[20:23:46] E2gen@s2: PDS=0.6505 MSE=3.8015 NMAE=1.0038 FID=0.5142 REACH=0.1162 JAC=0.0069 sig/t=344.4 (100s)
+[20:26:17] E2swap@s2: PDS=0.6387 MSE=3.8950 NMAE=1.0058 FID=0.5146 REACH=0.1034 JAC=0.0064 sig/t=360.8 (113s)
+[20:28:47] T0@s3: PDS=0.7007 MSE=3.7695 NMAE=1.0067 FID=0.5147 REACH=0.1277 JAC=0.0064 sig/t=337.1 (106s)
+[20:31:01] E2f@s3: PDS=0.6532 MSE=3.8877 NMAE=1.0057 FID=0.5124 REACH=0.1390 JAC=0.0071 sig/t=356.3 (96s)
+[20:33:15] E2gen@s3: PDS=0.6724 MSE=3.8023 NMAE=0.9960 FID=0.5163 REACH=0.1281 JAC=0.0064 sig/t=340.1 (96s)
+[20:35:26] E2swap@s3: PDS=0.6478 MSE=3.8931 NMAE=1.0178 FID=0.5167 REACH=0.1310 JAC=0.0071 sig/t=355.2 (94s)
+[20:37:37] T0@s4: PDS=0.6549 MSE=3.7912 NMAE=1.0144 FID=0.5143 REACH=0.0930 JAC=0.0068 sig/t=330.9 (94s)
+[20:39:46] E2f@s4: PDS=0.6542 MSE=3.9048 NMAE=0.9943 FID=0.5148 REACH=0.1259 JAC=0.0076 sig/t=353.5 (92s)
+[20:41:57] E2gen@s4: PDS=0.6374 MSE=3.8254 NMAE=1.0009 FID=0.5175 REACH=0.0878 JAC=0.0068 sig/t=343.0 (94s)
+[20:44:06] E2swap@s4: PDS=0.6350 MSE=3.9044 NMAE=1.0096 FID=0.5153 REACH=0.0914 JAC=0.0073 sig/t=353.4 (92s)
+[20:44:06] 
+             PDS  MSE   NMAE    FID  REACH    JAC    avg    sig/t
+replicate  1.000  1.0  1.000  1.000  1.000  1.000  1.000   41.455
+baseline   0.000 -0.0 -0.000  0.000  0.000  0.000  0.000    1.855
+T0@s0      0.316  0.0  1.746  0.990 -0.051  0.139  0.523  338.509
+E2f@s0     0.398  0.0  1.747  1.005 -0.026  0.144  0.545  358.164
+E2gen@s0   0.360  0.0  1.753  1.007 -0.050  0.139  0.535  342.400
+E2swap@s0  0.323  0.0  1.751  0.999  0.032  0.147  0.542  359.073
+T0@s1      0.306  0.0  1.744  1.001 -0.091  0.137  0.516  339.382
+E2f@s1     0.332  0.0  1.743  1.004 -0.029  0.163  0.535  355.455
+E2gen@s1   0.283  0.0  1.750  1.010  0.014  0.144  0.533  342.455
+E2swap@s1  0.253  0.0  1.743  1.003 -0.091  0.141  0.508  358.327
+T0@s2      0.351  0.0  1.740  1.004 -0.015  0.141  0.537  342.382
+E2f@s2     0.305  0.0  1.744  0.996 -0.019  0.148  0.529  359.545
+E2gen@s2   0.317  0.0  1.747  1.003 -0.055  0.145  0.526  344.400
+E2swap@s2  0.288  0.0  1.745  1.004 -0.085  0.136  0.515  360.800
+T0@s3      0.445  0.0  1.745  1.004 -0.029  0.136  0.550  337.127
+E2f@s3     0.324  0.0  1.745  0.999 -0.002  0.150  0.536  356.291
+E2gen@s3   0.373  0.0  1.753  1.007 -0.028  0.135  0.540  340.109
+E2swap@s3  0.311  0.0  1.736  1.008 -0.021  0.151  0.531  355.200
+T0@s4      0.328  0.0  1.738  1.003 -0.109  0.144  0.517  330.855
+E2f@s4     0.327  0.0  1.755  1.004 -0.033  0.161  0.536  353.527
+E2gen@s4   0.284  0.0  1.749  1.010 -0.121  0.144  0.511  343.036
+E2swap@s4  0.278  0.0  1.742  1.005 -0.113  0.155  0.511  353.364
+{"E2f:T0": {"six": [0.0074, 0.0168, false], "PDS": [-0.0121, 0.0762]}, "E2gen:T0": {"six": [0.0004, 0.0131, false], "PDS": [-0.0256, 0.0431]}, "E2swap:T0": {"six": [-0.0074, 0.0161, false], "PDS": [-0.0587, 0.0505]}, "E2f:E2swap": {"six": [0.0148, 0.0109, true], "PDS": [0.0466, 0.0308]}, "E2f:E2gen": {"six": [0.007, 0.0109, false], "PDS": [0.0135, 0.0425]}}
+
+--- stderr ---
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. TFCP2). The gate is real-side only, so this set is the same for every submission.
+allow_fractional_counts=True was LOAD-BEARING here: the pred side has fractional values under declared input_type='counts', so it passed the input-type check ONLY because of the flag -- without it validation would have refused the run ("declared input_type='counts' but values are fractional"). If this is a BASELINE arm that is expected: a mean profile is fractional in any space. If this is a SUBMISSION and processing continues (later gates, including the scale limit, may still refuse it), these values will be INTERPRETED as counts. Note that config_digest cannot see this flag (baseline.DIGEST_EXEMPT_FIELDS), so `score --baseline-agg` pairing will NOT report a baseline/submission mismatch on it; the --real-bundle path IS protected (anchor._SEMANTIC_FIELDS compares it, via score.expect_from_run_meta).
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. GTF2IRD1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. GTF2IRD1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. ARL14EP). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. KHDRBS1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. KHDRBS1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. ARL14EP). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. TFCP2). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. CAPRIN2). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. ARL14EP). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. ARL14EP). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. CAPRIN2). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. CAPRIN2). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. CAPRIN2). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. CAPRIN2). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. ARL14EP). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. ARL14EP). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. GTF2IRD1). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. CAPRIN2). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. ARL14EP). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. TFCP2). The gate is real-side only, so this set is the same for every submission.
+de_lfc_nmae: omitted 5 perturbation(s) for fewer than 10 gated genes (e.g. ARL14EP). The gate is real-side only, so this set is the same for every submission.
