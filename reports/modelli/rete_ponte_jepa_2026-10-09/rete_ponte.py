@@ -311,6 +311,7 @@ def main() -> None:
     ap.add_argument("--held", default=",".join(gd.HELD))
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--seeds", default="", help="EMENDAMENTO_R3: comma-separated seeds; predictions are averaged")
     ap.add_argument("--rule-arm", default="rete", help="r1: rete; r2 (EMENDAMENTO_R2.md): rete_centrata")
     a = ap.parse_args()
     if a.selftest:
@@ -350,9 +351,14 @@ def main() -> None:
             raise SystemExit(f"{held}: T_all parity with guadagno.transfer failed")
         log(f"  {len(keys)} targets; T_all parity with guadagno.transfer ok")
         fold = Fold(C, a.cache, meta, held, dev, log)
-        model, hist = fold.fit(seed=a.seed)
-        P = fold.predict(model, keys)
-        Pw = fold.predict(model, keys, residual=False)
+        seeds = [int(s) for s in a.seeds.split(",")] if a.seeds else [a.seed]
+        P = Pw = 0.0
+        hist = []
+        for s in seeds:
+            model, h = fold.fit(seed=s)
+            P = P + fold.predict(model, keys) / len(seeds)
+            Pw = Pw + fold.predict(model, keys, residual=False) / len(seeds)
+            hist.append({"seed": s, "history": h})
         res_part = P - Pw                                    # the residual U r, per target
         Pc = Pw + res_part - res_part.mean(0, keepdims=True)  # EMENDAMENTO_R2: centred over the panel's targets
         y, ysd, ycells = gd.truth(C, held, keys)
@@ -379,7 +385,7 @@ def main() -> None:
         (a.out / "result.json").write_text(json.dumps(record, indent=1), encoding="utf-8")
         del fold, model
         torch.cuda.empty_cache()
-    record["seed"] = a.seed
+    record["seed"] = a.seeds or a.seed
     record["rule"] = rule(record, a.rule_arm)
     (a.out / "result.json").write_text(json.dumps(record, indent=1), encoding="utf-8")
     log("rule: " + json.dumps(record["rule"]))
