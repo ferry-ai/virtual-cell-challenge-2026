@@ -1,0 +1,64 @@
+{
+  "schema": "native-NTC-extraction-completion/1",
+  "status": "COMPLETE",
+  "utc": "2026-10-09T15:52:34.010596+00:00",
+  "part_id": "jurkat_nadig_a9fc63d642bb",
+  "plan_sha256": "830f2e7f60612637d689c68a45b6c79046df03c090ee64463bae8a8fac6487ff",
+  "files": {
+    "axes_depth_mask.npz": {
+      "bytes": 196133,
+      "sha256": "094ad9741e3af21e922270b3385115979f82fd63c77994027c7e4949d6e088c5"
+    },
+    "counts.npz": {
+      "bytes": 80738573,
+      "sha256": "2713a48593e3fecaeec2dff24e460ac54dc6b7ee7a79f38587c079caf2b96529"
+    },
+    "cells.json": {
+      "bytes": 7601828,
+      "sha256": "57e2fa2ad8cea221af2c568a25acd1bcddf7a2120f7e306edd33569b2cb14586"
+    }
+  },
+  "contexts": {
+    "jurkat_nadig:1b8c352daf0cafb8": 12013
+  },
+  "native_depth": "ingestion obs/depth_native; no denominator computed on aligned genes",
+  "arrays_shape": [
+    12013,
+    18533
+  ],
+  "source_files_verified": 14,
+  "raw_sizes_measured": {
+    "80df50169227d2dff386b9a67cbe5cf5ad6c02392827bc803d1a5ba215e7d68e": 157166126,
+    "ddd409b58c6c41a9ad26b2766e2edc4984bea2c6ab506a145216e98be693aadd": 155143320,
+    "e77e18c2f0d07f7eb7dd739b1d184a2d4f8e410b93ca6f9e9b8f248f658d87fd": 155308095,
+    "da68f17b603780f4479b113ad0a692dced4a5b126622651a2224192bfef48678": 156732084,
+    "b7434b9292c4ddc26008c6432c619b5d7b1622d38716887c4c69577174069142": 155512015,
+    "4c6fa7ef55e471ec42646ef1bd7d4e93348bc008840c83b7cf30a153f79a114a": 154063777,
+    "a08cd9650a045a57ae24f225a588e74cdb3b0819fcd083f8780921a71b1087b9": 155486426,
+    "f7fc9f0ea78fb183bca6536a638f51170a472d93acdb927967859a9df7d97237": 154658017,
+    "054e86b12020b9571601c49966580e79998782e0ca5a60dd4d256a4adad4e729": 152281686,
+    "8e8f52a50ee7de891fe7dd2977fc38cece5ebc370d4aec1ac8c1413fb6b1831f": 155295824,
+    "f43f78204d8b6c22d7fa250048cf188cd281a3b48938d0b8eeacea631add0d42": 155784840,
+    "42d68983e42a65e5365e45d5467ae1db9eef8caacc85b8dc5af1ee0c2038aa4c": 154578478,
+    "36d2ce9c6fa0b6f7635204c3cf5fac9480b42b342c16e77aaabe6c125db11cef": 154411570,
+    "ced58622637a7411c855e24695b912243811bbf713976efc5b475377ddd7df47": 24011493
+  },
+  "resources": {
+    "cpu_count": 4,
+    "available_RAM": 31291539456,
+    "disk_free": 20620247040,
+    "raw_bytes": 2040433751
+  },
+  "seconds": 320.39262975300016,
+  "NTC_cells_read": 12013,
+  "perturbed_RNA_rows_read": 0,
+  "mean_ablation": "mean of the SAME per-cell log1p(CP10k_native) vectors passed to cells encoder",
+  "normalized_scale": "log1p(counts * 10000 / native_depth)",
+  "storage_parts_need_global_reservoir_merge": true,
+  "cells_consumed_by_trainer": 0,
+  "complete_D053": false,
+  "code": {
+    "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+    "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+  }
+}

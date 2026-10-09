@@ -1,0 +1,56 @@
+{
+  "schema": "native-NTC-extraction-completion/1",
+  "status": "COMPLETE",
+  "utc": "2026-10-09T16:03:06.321910+00:00",
+  "part_id": "kolf_metabolic_b5fc0816cee4",
+  "plan_sha256": "e3a757424370e63d8e4702183ba505a9b7b5c5c8958cffb0a8936ca4ec5002a0",
+  "files": {
+    "axes_depth_mask.npz": {
+      "bytes": 168460,
+      "sha256": "b25b356f5ff1e414c6a37c13bb059c22055bc05598c132927147270f0c7f530a"
+    },
+    "counts.npz": {
+      "bytes": 124919848,
+      "sha256": "3220224002ababa80f438b20d6bd93bc326723031fb4e086a320f337b29c610c"
+    },
+    "cells.json": {
+      "bytes": 12089592,
+      "sha256": "cf6d4bd370d7ef9c14b7d4e580aa6daa0f08dea571adb4d9f13262ffb8c10cfe"
+    }
+  },
+  "contexts": {
+    "kolf_metabolic:3d7cbdf4b4bde138": 18435
+  },
+  "native_depth": "ingestion obs/depth_native; no denominator computed on aligned genes",
+  "arrays_shape": [
+    18435,
+    18533
+  ],
+  "source_files_verified": 6,
+  "raw_sizes_measured": {
+    "567d0fe1bad79638352633c9f460da6fc14d9e1cb4194b6c36fc3e147ab869cb": 164905658,
+    "dbe1a150c1ad24b54a5e22ec5beeed2951e41b616b0ca46b10cd6a1421cf802b": 165383855,
+    "d2056baeedb46a886d5b0bec7968a5c685f6cf778bba2f88c787fb72edf03430": 167991761,
+    "526a71e16c33447365b646cf53bad7b275bc393f9d2f5b718185b3b94dad56f7": 165197455,
+    "53f7dea6609df74148922d6b842dacb458de614c9fe5af7553b4bd21a9eee2f3": 164731211,
+    "b106bd6d7438be5549fe4f068728f3d8dd06e39de6cf29bf506e8652ce3ebeae": 149832436
+  },
+  "resources": {
+    "cpu_count": 4,
+    "available_RAM": 31277101056,
+    "disk_free": 20344741888,
+    "raw_bytes": 978042376
+  },
+  "seconds": 260.3666931560001,
+  "NTC_cells_read": 18435,
+  "perturbed_RNA_rows_read": 0,
+  "mean_ablation": "mean of the SAME per-cell log1p(CP10k_native) vectors passed to cells encoder",
+  "normalized_scale": "log1p(counts * 10000 / native_depth)",
+  "storage_parts_need_global_reservoir_merge": true,
+  "cells_consumed_by_trainer": 0,
+  "complete_D053": false,
+  "code": {
+    "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+    "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "native-NTC-extraction-completion/1",
+  "status": "COMPLETE",
+  "utc": "2026-10-09T15:58:45.882173+00:00",
+  "part_id": "kolf_strong_929b428a0340",
+  "plan_sha256": "cd77e4214e7445bef4bf8e5555db6c97e42f9852589c3f712dafc9460ef3b1e7",
+  "files": {
+    "axes_depth_mask.npz": {
+      "bytes": 207703,
+      "sha256": "cce95151419aa7c359eb712aa4a2e0b8f07b760ea683540abb03aca7a49f87ac"
+    },
+    "counts.npz": {
+      "bytes": 161815719,
+      "sha256": "d256b8a0f56471ff300c803453542eb14aa148343e1ea3e62874dfcd7140195e"
+    },
+    "cells.json": {
+      "bytes": 24922183,
+      "sha256": "8ac6e48b0f52f6c8e5507798b11b06bf6f938d2412edca9d3879671802fb4cc6"
+    }
+  },
+  "contexts": {
+    "kolf_strong:464274901d98ed60": 35424
+  },
+  "native_depth": "ingestion obs/depth_native; no denominator computed on aligned genes",
+  "arrays_shape": [
+    35424,
+    18533
+  ],
+  "source_files_verified": 12,
+  "raw_sizes_measured": {
+    "bed296233d247be8e4321d06f110d60927ab4d495ce43cea6e4d49ed27c1e3fd": 135807928,
+    "2dd47aa3322cdb1c324e834edc6b58927991de290a9f2dbff45d360aec5043ea": 134806806,
+    "34267ba5f21aa35cbeced6f7716a7a584c852fb39d34e3d841d37687fb050bcf": 134066267,
+    "985cf2f25a125c75be7d7a1bbbf4c6d980a55fdde3eb242368318a3f18d0fc6c": 136971400,
+    "83df6fcb753a04f692ae7b0a8493cf21944de5a2e5b127cec4be8f6a1fdac199": 135648958,
+    "a8af0af6cfd432b9944b45b1a67d1411c19adfdf0776619b70ebd94a1bed2027": 133624689,
+    "a7bfb04c9502996531dff52e0e94fe152d606558f49af78debdb419baa68e51b": 136058151,
+    "758e3bf1c4fce9be9edb696298d36fb2b924ca66d4ddc8e914df125155b35747": 134904342,
+    "12603c2e52fa3c1f6f2d1dec9fae4d80ab5d33efeb1ba37030b9f00842533085": 138723368,
+    "3aa57ee8760dd8a229cbc254e5239884f888b6d44566dd71e13ac302c2e0ebb8": 135718737,
+    "1e1bdcccf839b8a33bbf130b3f33332a2a6a6e0e7036ade674735945549cd755": 132898731,
+    "15c7813e46390bb9e6ed2dbab3fca0e9975e6c1f6f7ecef16f7d5a7bbaa228c9": 83512939
+  },
+  "resources": {
+    "cpu_count": 4,
+    "available_RAM": 31281537024,
+    "disk_free": 20531699712,
+    "raw_bytes": 1572742316
+  },
+  "seconds": 371.818086452,
+  "NTC_cells_read": 35424,
+  "perturbed_RNA_rows_read": 0,
+  "mean_ablation": "mean of the SAME per-cell log1p(CP10k_native) vectors passed to cells encoder",
+  "normalized_scale": "log1p(counts * 10000 / native_depth)",
+  "storage_parts_need_global_reservoir_merge": true,
+  "cells_consumed_by_trainer": 0,
+  "complete_D053": false,
+  "code": {
+    "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+    "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+  }
+}

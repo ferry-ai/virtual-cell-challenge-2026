@@ -1,0 +1,67 @@
+{
+  "schema": "native-NTC-extraction-completion/1",
+  "status": "COMPLETE",
+  "utc": "2026-10-09T16:02:59.017173+00:00",
+  "part_id": "tian2019_neuron_16d4e91e087f",
+  "plan_sha256": "fd8d622146ea8e0cbfe7614c0071d5576fe5b1104f063eac51d64ec1949bdd18",
+  "files": {
+    "cells.json": {
+      "bytes": 171799,
+      "sha256": "6398da09f3fea2be919393617588970168ad765e6250c4c554fd25f584f8af4c"
+    },
+    "counts.npz": {
+      "bytes": 154731,
+      "sha256": "92af431739cdf836f31c048c972199631a330231ed9fd333bfaa5ce1724fb157"
+    },
+    "axes_depth_mask.npz": {
+      "bytes": 119103,
+      "sha256": "5093c2d793f79ef5ea1c99d8122aa59cdae0d6818a8738cd3da7498041932ab7"
+    }
+  },
+  "contexts": {
+    "tian2019_neuron:4808b32705192309": 260
+  },
+  "native_depth": "ingestion obs/depth_native; no denominator computed on aligned genes",
+  "arrays_shape": [
+    260,
+    18533
+  ],
+  "source_files_verified": 10,
+  "raw_sizes_measured": {
+    "cdcd3bb573062d535713be844e548a2790382db5bf96afc6a0888ae7f71cf1d6": 34480520,
+    "0307baf4ce5bd4f97d541723b2b0969bff85c68a5738ab6420989b56e25ef323": 34592716,
+    "accfc49c626a34e2d47bce17c9b5972b3e83e42d131d1f833f535ccc01f9e49c": 34971595,
+    "9a4a829acc0b32efb35c342deb100d5bc2819c1a329c49f6ca5ee35c3aff6b97": 34815495,
+    "223741c239c17b8fb90bd48e6a96b5807306bb6f3b4afd612198f708d7f95674": 34647889,
+    "bafbf9838e0bc5b9bec84e3dcb5b3462b119f1915ae01e302480d62babf166c0": 36276249,
+    "0d8476f0af539817d17aff9c38a2d791ca8ea6e043c9869caf753b9cc6b0e67e": 36812823,
+    "9586d5745633067a5b5016148bc12b71a14f5278ee79ddcf76edd679d147b0fd": 36025598,
+    "bb9709496213d3a928e4cb3fb06f198926a011ef3e0129bccea7aa73cb846874": 36144190,
+    "a6661f592770637bb5289845eb86873d985d1fdb919b0280e4e9a31b2d7affc1": 7892840
+  },
+  "resources": {
+    "cpu_count": 4,
+    "available_RAM": 32543334400,
+    "disk_free": 19740540928,
+    "raw_bytes": 326659915
+  },
+  "seconds": 49.85645285300001,
+  "NTC_cells_read": 260,
+  "perturbed_RNA_rows_read": 0,
+  "mean_ablation": "mean of the SAME per-cell log1p(CP10k_native) vectors passed to cells encoder",
+  "normalized_scale": "log1p(counts * 10000 / native_depth)",
+  "storage_parts_need_global_reservoir_merge": true,
+  "cells_consumed_by_trainer": 0,
+  "complete_D053": false,
+  "population_audit": {
+    "policy": "same frozen bank positive common-axis count admission; native denominator unchanged",
+    "raw_NTC": 15580,
+    "admitted_NTC": 15083,
+    "bank_zero_depth_excluded": 497,
+    "perturbed_RNA_rows_read": 0
+  },
+  "code": {
+    "run_ntc_extraction.py": "dcaa54a3bc28d48fba7072c6eae1d06a8126913148889523896d21b3fd0c8e2e",
+    "ntc_cells.py": "4f1fac7b2ff77f6267f4bd886bcc92d3abbd415076c4c6ea90c45d612a6c45b8"
+  }
+}

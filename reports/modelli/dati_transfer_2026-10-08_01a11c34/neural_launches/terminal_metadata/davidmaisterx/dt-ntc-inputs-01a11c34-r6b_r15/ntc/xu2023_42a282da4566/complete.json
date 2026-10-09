@@ -1,0 +1,55 @@
+{
+  "schema": "native-NTC-extraction-completion/1",
+  "status": "COMPLETE",
+  "utc": "2026-10-09T16:03:40.509530+00:00",
+  "part_id": "xu2023_42a282da4566",
+  "plan_sha256": "0126b25746385de29ee2ea278c5d07cef6d86bfe21485a30e2b419c8e3c30d04",
+  "files": {
+    "axes_depth_mask.npz": {
+      "bytes": 116422,
+      "sha256": "c64254e916974744ba7119d7fcafb6d6f2953e3c3354cac74d2f922eea592d8d"
+    },
+    "counts.npz": {
+      "bytes": 2235421,
+      "sha256": "d06cf7ce084e845bfe7184047a1a7d1106fc805bab951db53e1f0029149f6f5b"
+    },
+    "cells.json": {
+      "bytes": 640745,
+      "sha256": "78b7fba61cdf95d4421febc2e100e58b5a2e009af7e61bdae57ef3cd41108823"
+    }
+  },
+  "contexts": {
+    "xu2023:8bcbf8b25f553d29": 960
+  },
+  "native_depth": "ingestion obs/depth_native; no denominator computed on aligned genes",
+  "arrays_shape": [
+    960,
+    18533
+  ],
+  "source_files_verified": 5,
+  "raw_sizes_measured": {
+    "6345e5e461fd7ca810f17daaa9791a515ecd0bc70e2330c8aec2ddc650cca42b": 67796834,
+    "8c86b6a70ea369526fa0312660437296eda22d04499a3809b632176746393bf4": 59493600,
+    "66e9e29eff49b6b057ca93948b13764d2174378f9f7246b5cca3ceed7910eb74": 67893300,
+    "b8c399261da4aa91bf901a15f140433b672ad0e0bbe34770421c1335625ec5be": 74506029,
+    "5a9f6bb4a1c749fdb8efc0e173311ed0fd90b24945f45bb75c35c70c4c39f84a": 72933157
+  },
+  "resources": {
+    "cpu_count": 4,
+    "available_RAM": 24510410752,
+    "disk_free": 20207546368,
+    "raw_bytes": 342622920
+  },
+  "seconds": 34.10658350799986,
+  "NTC_cells_read": 960,
+  "perturbed_RNA_rows_read": 0,
+  "mean_ablation": "mean of the SAME per-cell log1p(CP10k_native) vectors passed to cells encoder",
+  "normalized_scale": "log1p(counts * 10000 / native_depth)",
+  "storage_parts_need_global_reservoir_merge": true,
+  "cells_consumed_by_trainer": 0,
+  "complete_D053": false,
+  "code": {
+    "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+    "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+  }
+}

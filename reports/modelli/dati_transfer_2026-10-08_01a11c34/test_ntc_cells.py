@@ -13,6 +13,27 @@ from ntc_cells import BIO, selection, extract, normalized_batch, merge_candidate
 
 
 class NTCCellsTests(unittest.TestCase):
+    def test_frozen_bank_zero_axis_admission_keeps_native_denominator(self):
+        with tempfile.TemporaryDirectory() as d:
+            p,loc,rows,raw=self.fixture(Path(d))
+            with rows.open(newline='') as f:records=list(csv.DictReader(f))
+            records[0].update(n='5',zero_depth_excluded='1')
+            with rows.open('w',newline='') as f:
+                writer=csv.DictWriter(f,fieldnames=list(records[0]));writer.writeheader();writer.writerows(records)
+            p['rows']=dict(bytes=rows.stat().st_size,sha256=sha(rows));p['controls'][0]['expected_cells']=5
+            with h5py.File(raw,'r+') as h:
+                # Native depth stays 100, but no counts on admitted common axis.
+                h['X/data'][0]=0
+            loc=self.repin(p,raw);audit={};chosen=selection(p,loc,rows,audit=audit)
+            self.assertNotIn('cell0',[r['cell_key'] for r in chosen])
+            self.assertEqual(audit['raw_NTC'],6);self.assertEqual(audit['admitted_NTC'],5)
+            self.assertEqual(audit['bank_zero_depth_excluded'],1)
+            self.assertEqual(audit['NTC_RNA_rows_examined_for_admission'],6)
+            bundle=extract(p,loc,chosen)
+            np.testing.assert_array_equal(bundle['native_depth'],[100]*4)
+            p['controls'][0]['expected_cells']=4
+            with self.assertRaisesRegex(ValueError,'population differs'):selection(p,loc,rows)
+
     def test_anndata_nullable_string_roundtrip_and_mapping(self):
         import anndata as ad
         import pandas as pd

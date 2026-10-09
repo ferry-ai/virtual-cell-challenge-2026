@@ -55,7 +55,8 @@ def run(plan_path, plan_sha256, locations_path, rows_path, out):
     if resources['available_RAM'] < 1<<30 or resources['disk_free'] < 1<<30:
         raise RuntimeError('NTC extraction needs 1 GiB free RAM and disk at minimum')
     started=time.monotonic()
-    selected=reader.selection(plan, locations, rows_path)
+    population_audit={}
+    selected=reader.selection(plan, locations, rows_path,audit=population_audit)
     for record in selected:record['part_id']=plan['part_id']
     # Counts remain sparse; only model batches will be densified.
     bundle=reader.extract(plan, locations, selected)
@@ -76,10 +77,13 @@ def run(plan_path, plan_sha256, locations_path, rows_path, out):
         arrays_shape=list(bundle['counts'].shape),source_files_verified=len(locations),
         raw_sizes_measured=actual_sizes,resources=resources,seconds=time.monotonic()-started,
         NTC_cells_read=len(selected),perturbed_RNA_rows_read=0,
+        NTC_cells_read_legacy_field='exported selected cells; admission RNA reads are separate in population_audit',
+        NTC_cells_exported=len(selected),
         mean_ablation='mean of the SAME per-cell log1p(CP10k_native) vectors passed to cells encoder',
         normalized_scale='log1p(counts * 10000 / native_depth)',
         storage_parts_need_global_reservoir_merge=True,
         cells_consumed_by_trainer=0,complete_D053=False,
+        population_audit=population_audit,
         code={Path(__file__).name:reader.sha(__file__), 'ntc_cells.py':reader.sha(reader.__file__)})
     (out/'complete.json').write_text(json.dumps(receipt,indent=2),encoding='utf-8')
     return receipt

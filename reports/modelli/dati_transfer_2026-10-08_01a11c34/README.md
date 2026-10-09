@@ -4,10 +4,15 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
-**Stato corrente:** [HANDOFF_RETI_r2.md](HANDOFF_RETI_r2.md), recupero NTC del 9 ottobre.
-Sei parti disponibili in r6a (tre D4 riusate e tre nuove), controlli ufficiali
-A/B/C completi; r6b/r6c e df11/r5 ancora in corso. Ancore produzione separate
-in r2; 17 ancore dei fold e due parità T0 già verificate.
+**Stato corrente:** [STATO_r14.md](STATO_r14.md), 9 ottobre, 18:10 Europe/Rome.
+18 parti MX complete (35 contesti, 460.940 candidati), controlli ufficiali A/B/C
+e ancore produzione verificati. Restano 12 parti df11/r5 in esecuzione e
+l'accesso privato fra account. Nessun fold AMMI è ancora pronto al training.
+[Consegna precedente](HANDOFF_RETI_r2.md).
+Un [osservatore locale una tantum](df11_ntc_watch_started_r1.json) raccoglie
+le ricevute df11 alla conclusione: `df11_ntc_watch_result_r1.json` e
+`ntc_ready_manifest_r2.json`, quando presenti, sono le prove successive.
+Non rilancia job, non trasferisce dati e non dichiara pronto il training.
 [Diagnosi del recupero](STATO_r13.md), [consegna precedente](HANDOFF_RETI_r1.md),
 [pin ancore](ammi_anchors_verified_r1.json),
 [30 parti e 47 contesti attesi](ammi_ntc_runtime_contract_r1.json),

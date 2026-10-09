@@ -86,7 +86,7 @@ def gene_mapping(h5, genes):
     return mapped, mask
 
 
-def selection(plan, locations, rows_path, audit=None):
+def selection(plan, locations, rows_path):
     """Metadata pass only. 64 per biological stratum, not old level-64 total."""
     checked(rows_path, plan['rows'])
     with Path(rows_path).open(encoding='utf-8', newline='') as src:
@@ -99,23 +99,11 @@ def selection(plan, locations, rows_path, audit=None):
         key = tuple(row[name] for name in BIO)
         if key in allowed and allowed[key]['context_id'] != record['context_id']:
             raise ValueError('ambiguous context assignment')
-        allowed[key] = {**record, 'identity': dict(zip(BIO, key)),
-                        'bank_zero_depth_excluded':int(row.get('zero_depth_excluded') or 0)}
-    bank_masks={}
-    if any(r['bank_zero_depth_excluded'] for r in allowed.values()):
-        # Reproduce the frozen bank's admission mask using axes/metadata only.
-        # This mask is for eligibility, never the normalization denominator.
-        for source in plan['sources']:
-            with h5py.File(checked(locations[source['sha256']],source),'r') as h5:
-                _,mask=gene_mapping(h5,plan['genes'])
-                cols=[column(h5['obs'],name,source['cells']).astype(str) for name in BIO]
-                for identity in set(zip(*cols)) & set(allowed):
-                    bank_masks[identity]=bank_masks.get(identity,np.ones(len(mask),bool)) & mask
+        allowed[key] = {**record, 'identity': dict(zip(BIO, key))}
     cap = plan['cells_per_stratum']
     if not isinstance(cap, int) or cap < 1:
         raise ValueError('invalid stratum cap')
     heaps, population, seen = defaultdict(list), Counter(), set()
-    raw_population,bank_excluded=Counter(),Counter()
     for source in plan['sources']:
         path = checked(locations[source['sha256']], source)
         with h5py.File(path, 'r') as h5:
@@ -126,24 +114,11 @@ def selection(plan, locations, rows_path, audit=None):
                        for name in (*BIO, *STRATA, 'cell_key', 'control_kind')}
             if any(len(v) != n for v in columns.values()):
                 raise ValueError('metadata length differs')
-            mapping=gene_mapping(h5,plan['genes'])[0] if bank_masks else None
             for i in np.flatnonzero(columns['control_kind'] == 'NTC'):
                 identity = tuple(columns[name][i] for name in BIO)
                 record = allowed.get(identity)
                 if record is None:
                     continue
-                raw_population[identity]+=1
-                if record['bank_zero_depth_excluded']:
-                    lo,hi=map(int,h5['X/indptr'][i:i+2])
-                    values=h5['X/data'][lo:hi].astype(float)
-                    cols=h5['X/indices'][lo:hi].astype(int)
-                    if not np.isfinite(values).all() or (values<0).any() or (cols<0).any() or (cols>=len(mapping)).any():
-                        raise ValueError('invalid NTC counts during bank admission')
-                    mapped=mapping[cols]
-                    valid=(mapped>=0) & bank_masks[identity][np.maximum(mapped,0)]
-                    if values[valid].sum()==0:
-                        bank_excluded[identity]+=1
-                        continue
                 stratum = tuple(columns[name][i] for name in STRATA)
                 group = (record['context_id'], identity, stratum)
                 cell_key = columns['cell_key'][i]
@@ -165,15 +140,8 @@ def selection(plan, locations, rows_path, audit=None):
     for group, count in population.items():
         actual[group[1]] += count
     for identity, record in allowed.items():
-        expected=record['expected_cells'];zero=record['bank_zero_depth_excluded']
-        if actual[identity]!=expected or bank_excluded[identity]!=zero or raw_population[identity]!=expected+zero:
-            raise ValueError('NTC population differs from pinned bank: '+record['context_id']+
-                f' raw={raw_population[identity]} admitted={actual[identity]} excluded={bank_excluded[identity]} expected={expected}+{zero}')
-    if audit is not None:
-        audit.update(policy='same frozen bank positive common-axis count admission; native denominator unchanged',
-            raw_NTC=sum(raw_population.values()),admitted_NTC=sum(actual.values()),
-            bank_zero_depth_excluded=sum(bank_excluded.values()),perturbed_RNA_rows_read=0,
-            NTC_RNA_rows_examined_for_admission=sum(raw_population[k] for k,r in allowed.items() if r['bank_zero_depth_excluded']))
+        if actual[identity] != record['expected_cells']:
+            raise ValueError('NTC population differs from pinned bank: ' + record['context_id'])
     output = []
     for group in sorted(heaps):
         for neg_priority, cell_key, digest, row in sorted(heaps[group], reverse=True):
