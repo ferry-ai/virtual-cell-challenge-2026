@@ -4,6 +4,18 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
+**T38 pubblicato:** 0,14892212354470022, differenza +0,0016727636292174775
+contro t36: entro la soglia preregistrata ±0,005, **non conclusivo**.
+[Verifica indipendente](t38_published_verified_r1.json) della nuova ricevuta
+del 9 ottobre alle 21:28 circa: sei scalati pubblicati, media esatta, stessi
+pannello/partizione/ancore del t36; coincide con il
+[confronto già registrato da VALIDAZIONE](../../invii/prediction_t38_2026-10-09/comparison.json)
+e [CP-0074](../../../docs/checkpoints/0074-t38-crispri-piu-ko-punteggio-ufficiale.md).
+Nuovo massimo osservato, nessuna promozione stabile o attribuzione al KO.
+NTC df11/r5 resta RUNNING, senza progresso applicativo osservabile:
+[snapshot](df11_progress_snapshot_r4.json). Raccolta terminale al watcher DATI;
+issuance successiva a MODELLI-ESTERNI, che ha confermato la presa in carico.
+
 **T38 consegnato il 9 ottobre:** [verifica delle ricevute](t38_delivery_verified_r1.json).
 Upload completato alle 20:04:41 Europe/Rome, 3.993.702.400 byte e MD5 remoto
 uguale al locale. Alle 20:06 il server conferma l'avvio della valutazione,
