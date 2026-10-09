@@ -41,10 +41,12 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 | S-007 | Correzioni del transfer dai controlli medi (guadagni per gene, bilineare, rete sul pseudobulk) | nessun beneficio | ignoto | 2026-10-04 |
 | S-008 | Modelli appresi precedenti (encoder, cancelli, rete dei contesti, relazionale, rete sulle sorgenti, Stack A e B) | nessuno ha passato la sua regola | ignoto | 2026-10-04 |
 | S-009 | Ibrido selettivo D-056 v1: transfer congelato + correzione neurale regolarizzata + selettore fuori fold | regola di banco passata su 5 linee (CP-0062); sul sito t30 −0,005 contro il t25, non conclusivo e nessuna promozione (CP-0064); su 5 semi e 400 cellule il guadagno di banco è +0,013 di media e il fold esportato perde PDS (CP-0065) | ipotizzato | 2026-10-04 |
-| S-010 | Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25 | t36 ufficiale +0,002404 da t28, descrittivo (CP-0067); a lignaggio escluso, sulle stesse tabelle, l'ampliamento perde PDS sul fold K562 e ne guadagna sul fold iPSC: H1 aiuta, KOLF2.1J costa ai lignaggi non staminali (CP-0069) | ipotizzato | 2026-10-08 |
+| S-010 | Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25 | t36 ufficiale +0,002404 da t28, descrittivo (CP-0067); a lignaggio escluso, sulle stesse tabelle, l'ampliamento perde PDS sul fold K562 e ne guadagna sul fold iPSC: H1 aiuta, KOLF2.1J costa ai lignaggi non staminali (CP-0069); t38 = T3 ufficiale +0,0017 da t36, sotto soglia e non attribuibile (CP-0074) | ipotizzato | 2026-10-09 |
 | S-011 | Voti di fonti con pochi bersagli del pannello sotto la centratura sul pannello (release r1, T1) | T1 non si distingue da t36 su sei fold e su due banchi a sei membri: inconcludente, nessuna promozione (CP-0069) | ipotizzato | 2026-10-08 |
 | S-012 | Centratura su tutti i bersagli di ogni fonte al posto del pannello (T2) | valido e sfavorevole: nessuna misura migliora, il fold K562 a sei membri perde 0,009, risolto (CP-0070) | ipotizzato | 2026-10-08 |
-| S-013 | Ridge sugli embedding ESM2 del bersaglio, senza contesto (regime T) | segnale specifico del bersaglio riconoscibile solo contro la verità iPSC; sui quattro lignaggi non staminali niente di risolto e sotto la testa cis (CP-0072) | ipotizzato | 2026-10-09 |
+| S-013 | Ridge sugli embedding ESM2 del bersaglio, senza contesto (regime T) | segnale specifico del bersaglio riconoscibile solo contro la verità iPSC; sui quattro lignaggi non staminali niente di risolto e sotto la testa cis (CP-0072); nel regime C perde contro il transfer su K562 e, tolto iPSC dal training, il segnale su iPSC scende di 0,10 (CP-0075) | ipotizzato | 2026-10-09 |
+| S-014 | Voti KO a peso ridotto dentro il transfer CRISPRi (T3, inviato come t38) | ufficiale +0,0017 da t36: non conclusivo per la regola registrata; mai valutato su un fold (CP-0074) | ignoto | 2026-10-09 |
+| S-015 | Riempire con il ridge ESM2 le coppie che il transfer non prevede (fallback) | la misura primaria non copriva il riempimento; nella vista del generatore più copertura, errore quadratico peggiore, nessuna specificità del bersaglio; sei membri non eseguiti: inconcludente (CP-0075) | ipotizzato | 2026-10-09 |
 
 ## Voci
 
@@ -277,6 +279,8 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 
 ### S-010 — Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25
 
+- **Aggiornamento 9/10, 21:30:** [CP-0074](checkpoints/0074-t38-crispri-piu-ko-punteggio-ufficiale.md), [confronto del t38](../reports/invii/prediction_t38_2026-10-09/comparison.json). T3 (i 16 voti nuovi di T1 più cinque voti KO, voce S-014) inviato come t38: 0,148922, +0,0017 da t36, ramo «entro ±0,005» della regola registrata prima del fit. Nuovo massimo osservato su un solo invio, dello stesso ordine dell'unica differenza misurata fra due semi (0,0016): non stabilisce un miglioramento e non si attribuisce a una fonte. Il meccanismo resta **ipotizzato**; il contrasto sulla composizione delle fonti a lignaggio escluso resta da fare.
+
 - **Aggiornamento 8/10:** [CP-0069](checkpoints/0069-validazione-indipendente-t1-e-ampliamento.md), [validazione indipendente](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/README.md). Primo confronto a lignaggio escluso sul pannello, con il codice di produzione e una regola scritta prima ([contratto v2](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/PROTOCOLLO_v2.md)). t36 contro le quattro linee del t28 **sulle stesse tabelle**: a sei membri il fold K562 perde media (−0,026) e PDS (−0,101), risolti; il fold iPSC li guadagna (+0,027 e +0,067). La [scomposizione](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/TABELLE_SCOMPOSIZIONE_K0_r2.md), con il piano committato prima, dice quale pezzo fa che cosa: H1 alza la discriminazione dove agisce; l'ingresso di KOLF2.1J la abbassa sui quattro lignaggi non staminali e riduce l'errore d'ampiezza; i voti ripetuti di KOLF aggiungono una piccola perdita. L'analisi esplorativa senza le quattro tabelle KOLF, a sei membri sul fold K562: media +0,030 e PDS +0,117, risolti, con il costo sul PDS dovuto all'ingresso di KOLF e non ai suoi voti ripetuti ([tabelle](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/TABELLE_LIVELLO_B_k562_x1.md)); è lo stesso fold da cui l'ipotesi nasce. **Meccanismo ancora ipotizzato:** con pesi uguali una fonte aiuta i lignaggi che le somigliano e diluisce lo specifico degli altri; l'analisi che lo suggerisce è esplorativa, sugli stessi lignaggi. Non contraddice il +0,0024 ufficiale, che cambia anche le tabelle Orion e riguarda contesti ignoti. **Segnale precoce nuovo:** `disc95` e `r_spec` del livello A per fold, con il controllo a bersagli permutati; a sei membri il PDS per fold. **Guardia eseguibile nuova:** `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/logo_driver.py` rifiuta la corsa se gli effetti di produzione non riproducono gli sha256 registrati o se lo stadio 100 legge una tabella del lignaggio escluso; test in `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/test_bench_core.py` e `test_metrics.py`. **Che cosa la riaprirebbe ora:** un contrasto di produzione sulla composizione delle fonti (un voto per lignaggio; H1 con le quattro linee), valutato con il contratto su almeno due fold a sei membri, poi un invio con previsione registrata.
 
 - **Aggiornamento 7/10:** [CP-0068](checkpoints/0068-banca-canonica-release-r1.md), [banca canonica](../reports/modelli/banca_canonica_2026-10-07/README.md). Regola di ammissione scritta prima dei lanci (verso del knockdown sul proprio gene): passano HIPSCI mirato, Xu 2023 e Tian 2021 CRISPRi; Tian 2019 neuroni passa alla lettera con −0,0014, che non è evidenza di knockdown; Tian 2019 iPSC non passa. La release r1 (17 fonti) è fittata con lo stesso transfer e cambia gli effetti solo sui 17 bersagli con voti nuovi. **Esito incompleto:** nessun banco e nessun invio, quindi nessuna lettura di qualità. Meccanismo ancora **ipotizzato**. Lezione di metodo: una regola di solo segno non distingue un effetto nullo quando la fonte ha un solo bersaglio; la prossima regola dichiari prima un minimo di bersagli o un intervallo. Guardia eseguibile aggiunta: il fit si ferma se una fonte attesa non risulta fra le tabelle lette dallo stage 100 (`fit/driver.py`).
@@ -371,6 +375,8 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 
 ### S-013 — Ridge sugli embedding ESM2 del bersaglio, senza contesto (regime T)
 
+- **Aggiornamento 9/10, 21:30:** [CP-0075](checkpoints/0075-fallback-esm2-supporto-e-vista-del-generatore.md). Letti i fit a lignaggio escluso, eseguiti da MODELLI-ESTERNI con il banco congelato: nel regime C il ridge perde contro il transfer su K562 (`disc95` −0,239 [−0,284; −0,193]); nel regime J su iPSC, tolto il lignaggio dal training, vale 0,524 contro 0,627 del fit che lo conteneva (−0,103 [−0,173; −0,036]) e non si distingue dal braccio scambiato. È la condizione di riapertura scritta sotto, letta e **non soddisfatta**: il sintomo è compatibile con memoria del lignaggio più rappresentato; il meccanismo resta ipotizzato. L'uso del ridge come riempimento del transfer è la voce S-015.
+
 - **Aggiornamento 9/10, 02:55:** [CP-0073](checkpoints/0073-esm2-ridge-senza-k562-regime-j.md). Il fit senza K562, letto nel regime J contro la verità di K562: `disc95` 0,516, sotto lo stesso ridge a previsioni scambiate (0,531) e sotto la testa cis; togliere K562 dal training non sposta le previsioni (correlazione 0,996 con il fit T, `E2jk − E2` non risolto in nessun lignaggio). Conferma il sintomo sui lignaggi non staminali; **non isola** il meccanismo, per il quale serve il fit senza iPSC.
 
 - **Che cosa si è provato:** una regressione ridge, alpha 1,0, dagli embedding ESM2 della proteina del bersaglio
@@ -396,3 +402,56 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 - **Guardia eseguibile:** `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/prepara_esm2_t.py esamina` rifiuta un file con asse, bersagli o previsioni per
   contesto diversi dal dichiarato; `bench_core.derived_controls` scambia le previsioni fra le sole righe previste;
   il lettore dei contrasti riporta ogni lignaggio accanto alla macro.
+
+### S-014 — Voti KO a peso ridotto dentro il transfer CRISPRi (T3, inviato come t38)
+
+- **Che cosa si è provato:** alla release T1 del transfer CRISPRi si aggiungono cinque voti KO (sette unità di
+  banca, dodici contesti, riuniti per studio e lignaggio) a peso 0,25 su 34 bersagli del pannello, non centrati sul
+  pannello; dove vota solo il KO la stima entra intera (6.722 coppie). Generatore del t36. Candidato di
+  DATI-TRANSFER.
+- **Prova:** [CP-0074](checkpoints/0074-t38-crispri-piu-ko-punteggio-ufficiale.md);
+  [previsione](../reports/invii/prediction_t38_2026-10-09/prediction.json) e
+  [confronto](../reports/invii/prediction_t38_2026-10-09/comparison.json);
+  [scheda tecnica](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/consegna/schede/t3_contro_t1_r1.json).
+- **Sintomo:** nessun fallimento: ufficiale 0,148922, +0,0017 da t36, dentro la soglia ±0,005 registrata prima.
+  Esito non conclusivo; è il massimo osservato, su un invio.
+- **Meccanismo:** ignoto. Il pacchetto cambia insieme i voti nuovi di T1, i voti KO e le coppie previste dal solo
+  KO; nessun contrasto li separa e T3 non è mai stato valutato su un fold a lignaggio escluso.
+- **Che cosa esclude e che cosa no:** non esclude né sostiene che una risposta KO informi la risposta CRISPRi dello
+  stesso bersaglio in un altro lignaggio. Esclude di leggere il +0,0017 come prova che più modalità aiutino.
+- **Che cosa la riaprirebbe:** l'accordo specifico KO–CRISPRi misurato in un lignaggio che ha entrambe le modalità
+  sugli stessi bersagli (K562: Dixit contro Replogle; CD4T: Shifrut contro Marson), accanto all'accordo
+  CRISPRi–CRISPRi fra due studi; poi un braccio con i soli voti KO su fold a lignaggio escluso
+  ([contratto v3](../reports/analisi/validazione_banco_eace4d03_2026-10-09/PROTOCOLLO_v3.md), §3).
+- **Segnale precoce:** la scheda senza verità di `confronta_effetti.py` e `scheda_t3.py` (bersagli cambiati, quota
+  comune, coppie previste da una sola modalità), in pochi minuti dagli effetti di produzione.
+- **Guardia eseguibile:** `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/scheda_t3.py` conta le
+  coppie previste da una sola modalità; nessuna guardia nel fit le limita.
+
+### S-015 — Riempire con il ridge ESM2 le coppie che il transfer non prevede (fallback)
+
+- **Che cosa si è provato:** T0 dove T0 prevede, 1,576 × ridge ESM2 senza contesto sulle altre coppie
+  bersaglio-gene (428.137 e 484.195 coppie sui fold C-K562 e C-iPSC), senza nuovo training. Componente di
+  MODELLI-ESTERNI, letta da VALIDAZIONE.
+- **Prova:** [CP-0075](checkpoints/0075-fallback-esm2-supporto-e-vista-del-generatore.md);
+  [contratto v3](../reports/analisi/validazione_banco_eace4d03_2026-10-09/PROTOCOLLO_v3.md) §1–2 e
+  [aggiunta](../reports/analisi/validazione_banco_eace4d03_2026-10-09/ADDENDUM_v3_1.md);
+  [risultati](../reports/analisi/validazione_banco_eace4d03_2026-10-09/RISULTATI_ESM2_FALLBACK.md).
+- **Sintomo:** `disc95` non si muove (+0,0002 in macro), ma il suo rango contiene lo 0,9 % e il 3,5 % delle coppie
+  riempite giudicabili: non poteva muoversi. Nella vista del generatore l'errore quadratico peggiora, risolto, su
+  entrambi i fold; `sign50` e l'errore assoluto migliorano quanto con i bersagli scambiati. Sulle sole coppie
+  riempite il coseno con la verità è +0,008 su iPSC (risolto) e non si distingue dal riempimento a bersagli
+  scambiati; il moltiplicatore che adatterebbe il riempimento è 0,02–0,05.
+- **Meccanismo:** ipotizzato. Il ridge senza contesto porta una risposta comune debole; riempire alza la copertura
+  dei geni confidenti (dal 91–92 % al 96–99 %) senza informazione sul bersaglio, e l'ampiezza del transfer applicata
+  al ridge è troppo grande. Non è isolato quanto venga dal modello e quanto dalla verità dei due lignaggi.
+- **Che cosa esclude e che cosa no:** esclude di citare il delta di `disc95` come prova a favore o contro. Non
+  esclude che la copertura in più aiuti i sei membri: il livello B non è stato eseguito, l'esito del §8 è
+  inconcludente. Non riguarda un modello con il contesto in ingresso.
+- **Che cosa la riaprirebbe:** il banco a sei membri sui due fold con quattro bracci (zero, ESM2, generico,
+  scambiato); un riempimento con ampiezza scelta su fold interni; una verità che misuri i geni riempiti.
+- **Segnale precoce:** i conteggi di supporto e il coseno del riempimento contro il braccio scambiato, un minuto
+  dai file del livello A.
+- **Guardia eseguibile:** `reports/analisi/validazione_banco_eace4d03_2026-10-09/esm2/supporto_fallback.py` si
+  ferma se la parità o il controllo dell'adattatore falliscono, conta la copertura a parte e scrive «la misura non
+  copre il cambiamento» quando meno di metà delle coppie cambiate giudicabili entra nel rango.

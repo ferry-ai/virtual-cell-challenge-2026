@@ -9,7 +9,7 @@ Due tipi di cartella, più due riepiloghi:
 
 Procedura e regole: [PROCEDURE §1–2](../../docs/PROCEDURE.md). Indice generale: [../README.md](../README.md).
 
-**Ultimo esito:** [t36](prediction_t36_2026-10-06/comparison.json), nuovo massimo osservato **0,147249**, +0,002404 contro t28; confronto descrittivo, stabilità non dimostrata ([CP-0067](../../docs/checkpoints/0067-t36-banca-estesa-punteggio-ufficiale.md)). Bozza locale t31 mai inviata.
+**Ultimo esito:** [t38](prediction_t38_2026-10-09/comparison.json), nuovo massimo osservato **0,148922**, +0,001673 contro t36: dentro la soglia ±0,005 registrata prima, quindi **non conclusivo**; un solo invio, stabilità non dimostrata ([CP-0074](../../docs/checkpoints/0074-t38-crispri-piu-ko-punteggio-ufficiale.md)). Il confronto fra previsioni registrate e punteggi di tutti gli invii si rigenera con un comando: [rapporto](../analisi/validazione_banco_eace4d03_2026-10-09/invii/RAPPORTO_INVII_r1.md). Bozza locale t31 mai inviata.
 
 ## I punteggi ufficiali in una tabella
 
@@ -20,6 +20,7 @@ membri di ogni invio sono nel suo `comparison.json`.
 
 | Invio | Punteggio | Rango | Esito della regola registrata |
 |---|---|---|---|
+| **t38** | **+0,148922** | 477 | T3 = transfer CRISPRi di T1 più cinque voti KO a peso 0,25 su 34 bersagli, emissione del t36: +0,001673 contro t36, ramo «entro ±0,005» della regola registrata prima del fit: non conclusivo, nuovo massimo osservato; PDS scalato +0,008, fedeltà −0,004; nessuna attribuzione a una fonte ([CP-0074](../../docs/checkpoints/0074-t38-crispri-piu-ko-punteggio-ufficiale.md)) |
 | **t36** | **+0,147249** | 432 | Transfer t25/emitter t28, banca estesa parziale; +0,002404 contro t28, nuovo massimo osservato. Nessuna soglia numerica preregistrata; confronto descrittivo, nessuna promozione robusta ([CP-0067](../../docs/checkpoints/0067-t36-banca-estesa-punteggio-ufficiale.md)) |
 | trial-01 | +0,045929 | 446 | primo invio; conferma il percorso d'impacchettamento |
 | t02 | −0,092774 | 764 | ControlModel ×1 + cis: troppe chiamate; serve a risolvere le ancore |
@@ -44,7 +45,7 @@ membri di ogni invio sono nel suo `comparison.json`.
 
 Non inviati: t04, t06, t12, t18, t19, t27 (generato e impacchettato il 29/09, tenuto
 pronto dal proprietario), t09 e t13 (fermati dalle loro regole), t21 (la sua previsione è citata ma non è nel repository: vedi la
-[revisione critica](../analisi/revisione_criticita_2026-09-28/REVISIONE.md), §4). Anche t37 e t38, preparati nella notte fra l'8 e il 9 ottobre e non inviati ([CP-0071](../../docs/checkpoints/0071-corsia-rapida-senza-invio-priorita-alle-reti.md)).
+[revisione critica](../analisi/revisione_criticita_2026-09-28/REVISIONE.md), §4). Anche t37, preparato nella notte fra l'8 e il 9 ottobre e non inviato; il t38, fermato quella notte, è stato ripreso e inviato il 9 ottobre sera ([CP-0071](../../docs/checkpoints/0071-corsia-rapida-senza-invio-priorita-alle-reti.md)).
 
 ## Le cartelle, dalla più recente
 
@@ -52,8 +53,8 @@ pronto dal proprietario), t09 e t13 (fermati dalle loro regole), t21 (la sua pre
 |---|---|---|---|---|
 | 2026-10-08 | [prediction_t37](prediction_t37_2026-10-08/) | Previsione del t37 = T1 con l'emissione del t36, registrata dal Lead alle 23:47 prima di ogni generazione; regola ±0,005 contro t36 | attuale | **Mai generato né inviato:** superato alle 23:55 dalla richiesta del proprietario di un refit su tutte le fonti |
 | 2026-10-08 | [trial](trial_2026-10-08/) | Testi e launcher del t37, più il blocco `NO_SUBMIT_T1_r1.json` | attuale | Nessun invio: la corsia rapida è passata al t38 |
-| 2026-10-09 | [prediction_t38](prediction_t38_2026-10-09/) | Previsione del t38 = T3 (nucleo CRISPRi di T1 più cinque voti KO a peso 0,25 su 34 bersagli), registrata da DATI-TRANSFER alle 00:19 prima del fit e della generazione; delta atteso zero, regola ±0,005 contro t36 | attuale | **Mai inviato:** cellule generate, pacchetto non completato; corsia rapida messa in secondo piano alle 01:55 ([CP-0071](../../docs/checkpoints/0071-corsia-rapida-senza-invio-priorita-alle-reti.md)) |
-| 2026-10-09 | [trial](trial_2026-10-09/) | Testi del t38 scritti prima del fit e della generazione, precisazione sulla segnalazione DT-5, preflight del client | attuale | Nessuna entry e nessun upload |
+| 2026-10-09 | [prediction_t38](prediction_t38_2026-10-09/) | Previsione del t38 = T3 (nucleo CRISPRi di T1 più cinque voti KO a peso 0,25 su 34 bersagli), registrata da DATI-TRANSFER alle 00:19 prima del fit e della generazione; delta atteso zero, regola ±0,005 contro t36. **Ufficiale 0,148922, +0,001673: ramo «entro ±0,005», non conclusivo**; [confronto](prediction_t38_2026-10-09/comparison.json) scritto da VALIDAZIONE dallo stato letto alle 21:09 del 9/10 | attuale | Inviato il 9/10 sera dopo la ripresa disposta dal proprietario; nuovo massimo osservato su un invio ([CP-0074](../../docs/checkpoints/0074-t38-crispri-piu-ko-punteggio-ufficiale.md)) |
+| 2026-10-09 | [trial](trial_2026-10-09/) | Testi del t38 scritti prima del fit e della generazione, precisazione sulla segnalazione DT-5, preflight del client; dal 9/10 sera manifesti degli stadi 45 e 48, ricevute dell'upload (entry `LJmnhqqh1WTrx1JcoRlr`, concluso alle 20:04) e stati salvati da DATI-TRANSFER fino a `scoring`; lo stato `published` è in `reports/analisi/validazione_banco_eace4d03_2026-10-09/invii/stati/` | attuale | Invio fatto e valutato |
 | 2026-10-06 | [prediction_t36](prediction_t36_2026-10-06/) | Record runtime originale e correzione nome richiesta dall'utente; nessuna banda numerica inventata | attuale | Invio esplorativo della release estesa parziale |
 | 2026-10-06 | [trial](trial_2026-10-06/) | Manifest packaging, testi e trasferimento del candidato; output CLI quando disponibile | attuale | Nessun score ancora dichiarato |
 | 2026-10-06 | [prediction_t31](prediction_t31_2026-10-06/) | Bozza locale con record runtime, mai inviata | storico | Sostituita solo l'etichetta da t36; stessi byte |

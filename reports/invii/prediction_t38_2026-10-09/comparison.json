@@ -1,0 +1,113 @@
+{
+  "written_utc": "2026-10-09T19:15:23.737515+00:00",
+  "label": "t38",
+  "entry_id": "LJmnhqqh1WTrx1JcoRlr",
+  "official_status": "published",
+  "model_name": "t38 - transfer CRISPRi plus KO",
+  "submission_date": "2026-10-09T17:35:57.274210Z",
+  "score_avg": 0.14892212354470022,
+  "rank_at_scoring": 477,
+  "panel_id": "vcc2026-val-1",
+  "anchor_version": "vcc2026-valA-r4+vcc2026-valB-r4+vcc2026-valC-r4",
+  "reference": {
+    "label": "t36",
+    "entry_id": "JLcMRGExhXKk77XVds7x",
+    "score_avg": 0.14724935991548274,
+    "same_panel_and_anchors": true
+  },
+  "t38_minus_t36": 0.0016727636292174775,
+  "scaled_published": {
+    "t38": {
+      "score_pds": 0.6390601548062039,
+      "score_mse": 0,
+      "score_nmae": 0.07550275918286986,
+      "score_fid": -0.01312320217316381,
+      "score_reach": 0.18869273354628313,
+      "score_jac": 0.0034002959060082053
+    },
+    "t36": {
+      "score_pds": 0.6310665604161688,
+      "score_mse": 0,
+      "score_nmae": 0.07163852828264632,
+      "score_fid": -0.009521475148901774,
+      "score_reach": 0.18656283267158072,
+      "score_jac": 0.0037497132714024357
+    }
+  },
+  "scaled_delta": {
+    "score_pds": 0.007993594390035108,
+    "score_mse": 0,
+    "score_nmae": 0.0038642309002235448,
+    "score_fid": -0.003601727024262036,
+    "score_reach": 0.0021299008747024117,
+    "score_jac": -0.00034941736539423037
+  },
+  "raw_published": {
+    "t38": {
+      "pds_cosine": 0.7887105165366035,
+      "expr_mse_unbiased_capped_norm": 5.016217322753261,
+      "de_wilcoxon_lfc_nmae": 0.9525270960438121,
+      "de_wilcoxon_direction_fidelity_yield_raw": 0.5085996281730158,
+      "de_wilcoxon_direction_reach_raw": 0.24644211841692348,
+      "de_wilcoxon_sig_jaccard": 0.03172233336483134
+    },
+    "t36": {
+      "pds_cosine": 0.7851765143069491,
+      "expr_mse_unbiased_capped_norm": 5.13868288727513,
+      "de_wilcoxon_lfc_nmae": 0.9551208318435991,
+      "de_wilcoxon_direction_fidelity_yield_raw": 0.5097109733055971,
+      "de_wilcoxon_direction_reach_raw": 0.2444628358078856,
+      "de_wilcoxon_sig_jaccard": 0.03184599592393781
+    }
+  },
+  "integrity": {
+    "mean_of_six_scaled": 0.14892212354470022,
+    "mean_matches_score_avg": true,
+    "no_member_imputed": true
+  },
+  "registered": {
+    "file": "reports/invii/prediction_t38_2026-10-09/prediction.json",
+    "sha256": "c680e024c165e9f783db96faccae8081e6f4c241da47e065f6b2e0d28eedb3dd",
+    "registration": "verificata dal commit",
+    "first_commit_utc": "2026-10-08T22:57:47+00:00",
+    "score_band": [
+      0.132,
+      0.162
+    ],
+    "expected_delta": 0.0,
+    "decision_threshold_absolute": 0.005
+  },
+  "inside_score_band": true,
+  "rule_branch": "delta_within_plus_minus_0.005",
+  "rule_text": "Inconclusive against t36; added coverage does not establish improvement.",
+  "new_best_among_recorded_official_scores": true,
+  "previous_best": [
+    "t36",
+    0.14724935991548274
+  ],
+  "bench_forecasts": [
+    {
+      "bench": "B4",
+      "kind": "indistinct",
+      "statement": "indistinguibile da t36 entro ±0,005; il verso sul sito non si sa dire",
+      "path": "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/MESSAGGI.md",
+      "direction": "attesa nulla confermata",
+      "uncertainty": {
+        "inside_registered_band": true
+      },
+      "candidate_is_a_bench_arm": false
+    }
+  ],
+  "claim_type": "measured: one published status of the validation leaderboard, read once; the rule is the one registered before the fit and the generation",
+  "limits": [
+    "one submission and one generator seed: no interval for the score",
+    "a delta inside the threshold does not attribute anything to a source",
+    "says nothing about contexts D, E, F"
+  ],
+  "inputs": {
+    "status_file": "reports/analisi/validazione_banco_eace4d03_2026-10-09/invii/stati/status_LJmnhqqh1WTrx1JcoRlr_20261009T190948Z.json",
+    "status_sha256": "8a63162366fe101ff9d1fcd958d27255329c3d0e4d06fd4dd99bece716b9cfc1"
+  },
+  "reader": "reports/analisi/validazione_banco_eace4d03_2026-10-09/invii/registro.py confronto",
+  "reader_sha256": "545904103758b53b44e5393b71bf815391d30c20a30c4ca090363d447e44f1fb"
+}

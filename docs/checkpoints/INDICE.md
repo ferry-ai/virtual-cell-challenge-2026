@@ -106,3 +106,5 @@ aggiunge da sé la riga qui sotto.
 | [0071](0071-corsia-rapida-senza-invio-priorita-alle-reti.md) | 2026-10-09 | Corsia rapida senza invio: T3 pronto negli effetti, t38 non inviato; priorità alle reti | cambio-di-strategia | — |
 | [0072](0072-esm2-ridge-regime-t.md) | 2026-10-09 | ESM2 + ridge nel regime T: un segnale specifico del bersaglio solo sul lignaggio iPSC | esperimento | — |
 | [0073](0073-esm2-ridge-senza-k562-regime-j.md) | 2026-10-09 | ESM2 + ridge senza K562: nel regime J nessun segnale specifico, e togliere K562 non cambia le previsioni | esperimento | — |
+| [0074](0074-t38-crispri-piu-ko-punteggio-ufficiale.md) | 2026-10-09 | t38 (T3: CRISPRi più voti KO): nuovo massimo osservato, non conclusivo contro t36 | esperimento | — |
+| [0075](0075-fallback-esm2-supporto-e-vista-del-generatore.md) | 2026-10-09 | Fallback ESM2: la misura primaria non vedeva il riempimento; dove il banco lo vede, più copertura e nessuna accuratezza specifica | esperimento | — |

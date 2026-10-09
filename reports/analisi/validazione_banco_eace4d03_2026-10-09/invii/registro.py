@@ -5,6 +5,7 @@ Contract v3, section 4. One command rebuilds the whole ledger from committed fil
     registro.py costruisci <ledger out.json>      every submission: registered forecasts, official members, errors
     registro.py rapporto <ledger.json> <out.md>   the tables, in Italian
     registro.py dopo-invio <ledger.json> <tNN>    the diagnosis of one submission, printed
+    registro.py confronto <ledger.json> <tNN> <out>   the comparison.json that goes next to the prediction
     registro.py leggi-stato <entry id> <out dir>  one read-only status request to the site, saved as a new file
 
 Sources: `reports/invii/prediction_t*/prediction.json` (forecasts and their reading rules), the status files the
@@ -610,6 +611,65 @@ def after_submission(ledger: dict, label: str) -> str:
     return '\n'.join(out)
 
 
+def comparison(ledger: dict, label: str, repo: Path = REPO) -> dict:
+    """The record that goes next to a prediction after its score (PROCEDURE section 2, point 7): the published
+    members, the registered rule applied as written, nothing reconstructed."""
+    import hashlib
+    s = ledger['submissions'][label]
+    off, pred = s['official'], s['prediction']
+    if not off or not pred:
+        raise SystemExit('a comparison needs a published status and a registered prediction')
+    doc = read(repo / pred['file'])
+    ref_label = pred['reference']
+    ref = ledger['submissions'][ref_label]['official'] if ref_label else None
+    delta = None if ref is None else off['score_avg'] - ref['score_avg']
+    rule, threshold = doc.get('readout_rule') or doc.get('rule'), pred.get('decision_threshold')
+    branch = text = None
+    if isinstance(rule, dict) and delta is not None and threshold is not None:
+        word = 'above' if delta > threshold else ('below' if delta < -threshold else 'within')
+        for key, value in rule.items():
+            if word in key:
+                branch, text = key, value
+    scored = {k: v['official']['score_avg'] for k, v in ledger['submissions'].items() if v['official']}
+
+    def digest(rel):
+        return hashlib.sha256((repo / rel).read_bytes()).hexdigest()
+
+    return {
+        'written_utc': datetime.now(timezone.utc).isoformat(), 'label': label, 'entry_id': off['entry_id'],
+        'official_status': off['status'], 'model_name': off['model_name'], 'submission_date': off['submission_date'],
+        'score_avg': off['score_avg'], 'rank_at_scoring': off['rank'], 'panel_id': off['panel_id'],
+        'anchor_version': off['anchor_version'],
+        'reference': None if ref is None else {'label': ref_label, 'entry_id': ref['entry_id'], 'score_avg': ref['score_avg'],
+                                               'same_panel_and_anchors': (ref['panel_id'], ref['anchor_version']) ==
+                                               (off['panel_id'], off['anchor_version'])},
+        '%s_minus_%s' % (label, ref_label): delta,
+        'scaled_published': {label: {SCALED_KEY[m]: off['scaled'][m] for m in MEMBERS},
+                             **({ref_label: {SCALED_KEY[m]: ref['scaled'][m] for m in MEMBERS}} if ref else {})},
+        'scaled_delta': None if ref is None else {SCALED_KEY[m]: off['scaled'][m] - ref['scaled'][m] for m in MEMBERS},
+        'raw_published': {label: {RAW_KEY[m]: off['raw'][m] for m in MEMBERS},
+                          **({ref_label: {RAW_KEY[m]: ref['raw'][m] for m in MEMBERS}} if ref else {})},
+        'integrity': {'mean_of_six_scaled': off['mean_of_six_scaled'], 'mean_matches_score_avg': off['mean_matches_score_avg'],
+                      'no_member_imputed': all(off['scaled'][m] is not None for m in MEMBERS)},
+        'registered': {'file': pred['file'], 'sha256': digest(pred['file']), 'registration': pred['registration'],
+                       'first_commit_utc': pred['first_commit_utc'], 'score_band': pred['score_band'],
+                       'expected_delta': pred['expected_delta'], 'decision_threshold_absolute': threshold},
+        'inside_score_band': (s['errors'] or {}).get('score_band', {}).get('inside'),
+        'rule_branch': branch, 'rule_text': text,
+        'new_best_among_recorded_official_scores': off['score_avg'] >= max(scored.values()),
+        'previous_best': max(((v, k) for k, v in scored.items() if k != label), default=(None, None))[::-1],
+        'bench_forecasts': [{k: f.get(k) for k in ('bench', 'kind', 'statement', 'path', 'direction', 'uncertainty',
+                                                   'candidate_is_a_bench_arm')} for f in s['bench_forecasts']],
+        'claim_type': 'measured: one published status of the validation leaderboard, read once; the rule is the one '
+                      'registered before the fit and the generation',
+        'limits': ['one submission and one generator seed: no interval for the score',
+                   'a delta inside the threshold does not attribute anything to a source',
+                   'says nothing about contexts D, E, F'],
+        'inputs': {'status_file': off['status_file'], 'status_sha256': digest(off['status_file'])},
+        'reader': 'reports/analisi/validazione_banco_eace4d03_2026-10-09/invii/registro.py confronto',
+        'reader_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+
+
 def fetch_status(entry: str, out_dir: Path) -> Path:
     """One read-only status request with the project's vcc wrapper; the answer is saved as it is, in a new file."""
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -638,6 +698,10 @@ def main() -> None:
     p = sub.add_parser('dopo-invio')
     p.add_argument('ledger')
     p.add_argument('label')
+    p = sub.add_parser('confronto')
+    p.add_argument('ledger')
+    p.add_argument('label')
+    p.add_argument('out')
     p = sub.add_parser('leggi-stato')
     p.add_argument('entry')
     p.add_argument('out_dir')
@@ -653,6 +717,12 @@ def main() -> None:
         with Path(args.out).open('x', encoding='utf-8', newline='\n') as fh:
             fh.write(text)
         print('scritto', args.out)
+    elif args.command == 'confronto':
+        doc = comparison(read(args.ledger), args.label)
+        with Path(args.out).open('x', encoding='utf-8') as fh:
+            json.dump(doc, fh, indent=2, ensure_ascii=False)
+            fh.write('\n')
+        print(json.dumps({k: doc[k] for k in ('label', 'score_avg', 'rule_branch', 'new_best_among_recorded_official_scores')}))
     elif args.command == 'dopo-invio':
         sys.stdout.reconfigure(encoding='utf-8')
         print(after_submission(read(args.ledger), args.label))
