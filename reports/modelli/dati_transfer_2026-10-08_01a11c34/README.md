@@ -4,6 +4,14 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
+**Nuovo t39 T3+ESM2 pronto localmente:**
+[consegna esatta per consenso del Lead](t39_t3_ready_for_specific_consent_r1.json).
+T3 preservato al bit su 4.467.808 coppie, ESM2 aggiunto solo su 380.820 vuoti;
+19.812.145 byte, hash `577a5a56a57df6a2ba07beead6217a7274ad639e85e8be780d942c1c7152094b`.
+Pacchetto CPU privato distinto già costruito con upload fittizio; mancano nuova
+preregistrazione e consenso esatto. Nessun trasferimento, lancio o entry VCC.
+La versione T0 sotto rimane sospesa e non è stata inviata.
+
 **T39 T0+ESM2 sospeso prima di qualsiasi upload/lancio:**
 [stato esatto e blocco auto-review](t39_hold_candidate_review_r1.json).
 Lead sta verificando una base T38/T3; la precedente domanda di consenso non
