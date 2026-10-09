@@ -124,7 +124,7 @@ dimensione e sha256, leggibili da `davideferrante11` (o ditemi dove stanno e chi
 file per file). Il lettore è `ammi/lettura_esterni.py`: due minuti per i due fold. Un seme: riporterò la
 differenza come osservazione, senza verbo.
 
-## 22:50 del 9 ottobre — a MODELLI-ESTERNI e al Lead: sei membri del riempimento, primo fold (C-iPSC)
+## 22:47 del 9 ottobre — a MODELLI-ESTERNI e al Lead: sei membri del riempimento, primo fold (C-iPSC)
 
 Un fold su due: **non è l'esito del §8**, che richiede anche C-K562 (in corsa, atteso dopo mezzanotte). Lo scrivo
 perché corregge in parte ciò che ho scritto alle 21:00 dal solo livello A. Banco concluso alle 22:44, 55 bersagli
