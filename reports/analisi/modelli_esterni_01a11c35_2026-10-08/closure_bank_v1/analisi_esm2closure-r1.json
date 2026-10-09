@@ -1,0 +1,100 @@
+{
+  "what": "MODELLI execution of unchanged independent bank; frozen C pairwise T0-priority fallback and J-iPSC readout",
+  "j_folds": true,
+  "external_arms": {
+    "E2": {
+      "C-K562": {
+        "bytes": 19616850,
+        "sha256": "533c2e555557806c45c6bd8f8a77694481caee57f48b8c90741f6e96950a4289"
+      },
+      "C-iPSC": {
+        "bytes": 19328815,
+        "sha256": "47e01582e16a1a619dd350cd37730ace948220ee33b96d2ba65194c75f8d0464"
+      }
+    },
+    "E2g": {
+      "C-K562": {
+        "bytes": 19549923,
+        "sha256": "5053da0f33cdef71fdfc8f7d2044a0bba36cafc962cea3e748401ea57f855d16"
+      },
+      "C-iPSC": {
+        "bytes": 19252398,
+        "sha256": "8756d680396b22d3c7198e28170f1ba694bd6b6f58dea5a376e6420f52c102c0"
+      }
+    },
+    "E2f": {
+      "C-K562": {
+        "bytes": 19793870,
+        "sha256": "398694e74441c045e4ffbc713d49032d87ba82f25a7da8608ef8cc9d5b940b70"
+      },
+      "C-iPSC": {
+        "bytes": 19498599,
+        "sha256": "f18866710f5c6f0b28bbfcb5b426d43a9853fd54e3d4ef47af39f3d8749be7b9"
+      }
+    },
+    "E2jip": {
+      "J-iPSC": {
+        "bytes": 4422295,
+        "sha256": "4224b613b25a54374b3a49d1388b711e71fad101857b84292b3b01d2d62264c7"
+      }
+    },
+    "E2jipg": {
+      "J-iPSC": {
+        "bytes": 4408996,
+        "sha256": "3043c936578d387d4ff0be0f19cb10a15fe56c668bfdcdea516a015cf909c941"
+      }
+    },
+    "E2T": {
+      "J-iPSC": {
+        "bytes": 4487930,
+        "sha256": "4f46ee112394c5c9c72b586fcec4b472cac1d547cff08d5d55f04cbbc3f148e8"
+      }
+    }
+  },
+  "contrasts": [
+    [
+      "C_integration",
+      "E2f",
+      "T0"
+    ],
+    [
+      "C_native",
+      "E2",
+      "T0"
+    ],
+    [
+      "C_specific",
+      "E2",
+      "E2g"
+    ],
+    [
+      "c_shufflein_E2",
+      "E2",
+      "E2~shufflein"
+    ],
+    [
+      "J_specific",
+      "E2jip",
+      "E2jipg"
+    ],
+    [
+      "c_shufflein_E2jip",
+      "E2jip",
+      "E2jip~shufflein"
+    ],
+    [
+      "J_minus_T",
+      "E2jip",
+      "E2T"
+    ],
+    [
+      "J_native",
+      "E2jip",
+      "T0"
+    ]
+  ],
+  "extra_dataset_sources": [
+    "davideferrante11/vcc-esm2-closure-01a11c35-r1",
+    "davideferrante11/vcc-validazione-esm2-t-8a8ca58a-r2"
+  ]
+}

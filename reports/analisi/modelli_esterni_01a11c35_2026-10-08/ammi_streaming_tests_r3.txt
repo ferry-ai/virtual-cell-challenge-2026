@@ -1,0 +1,31 @@
+test_destination_depth_policy_cannot_be_silently_relabelled (test_ammi_streaming_v4.StreamingTests.test_destination_depth_policy_cannot_be_silently_relabelled) ... ok
+test_missing_part_fails_even_when_context_is_present (test_ammi_streaming_v4.StreamingTests.test_missing_part_fails_even_when_context_is_present) ... ERROR
+test_sparse_merge_matches_original_and_accepts_pinned_old_producer (test_ammi_streaming_v4.StreamingTests.test_sparse_merge_matches_original_and_accepts_pinned_old_producer) ... ERROR
+test_streamed_encoder_outputs_and_gradients_match_eager (test_ammi_streaming_v4.StreamingTests.test_streamed_encoder_outputs_and_gradients_match_eager) ... ok
+test_streamed_training_and_checkpoint_before_guard_failure (test_ammi_streaming_v4.StreamingTests.test_streamed_training_and_checkpoint_before_guard_failure) ... ok
+
+======================================================================
+ERROR: test_missing_part_fails_even_when_context_is_present (test_ammi_streaming_v4.StreamingTests.test_missing_part_fails_even_when_context_is_present)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\modelli_esterni_01a11c35_2026-10-08\test_ammi_streaming_v4.py", line 53, in test_missing_part_fails_even_when_context_is_present
+    stage_controls([a],genes,['c'],reader,{'a':'b'*64,'missing':'c'*64},self.root/'stage')
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\modelli_esterni_01a11c35_2026-10-08\ammi_controls_v4.py", line 115, in stage_controls
+    raise RuntimeError('insufficient measured RAM/disk for sparse NTC staging')
+RuntimeError: insufficient measured RAM/disk for sparse NTC staging
+
+======================================================================
+ERROR: test_sparse_merge_matches_original_and_accepts_pinned_old_producer (test_ammi_streaming_v4.StreamingTests.test_sparse_merge_matches_original_and_accepts_pinned_old_producer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\modelli_esterni_01a11c35_2026-10-08\test_ammi_streaming_v4.py", line 38, in test_sparse_merge_matches_original_and_accepts_pinned_old_producer
+    controls,audit=stage_controls([b,a],genes,['c'],reader,{'a':'b'*64,'b':'b'*64},self.root/'stage')
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\modelli_esterni_01a11c35_2026-10-08\ammi_controls_v4.py", line 115, in stage_controls
+    raise RuntimeError('insufficient measured RAM/disk for sparse NTC staging')
+RuntimeError: insufficient measured RAM/disk for sparse NTC staging
+
+----------------------------------------------------------------------
+Ran 5 tests in 9.748s
+
+FAILED (errors=2)

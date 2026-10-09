@@ -1,0 +1,331 @@
+{
+  "status": "TECHNICAL_PASS_NO_PROMOTION",
+  "slug": "davideferrante11/vcc-validazione-logo-01a11c35-esm2closure-r1",
+  "remote_code_sha256": "42a3a117de7eeb3bff1c4f6373a1e7e155a1c7bcf05fb2a7f110038ab4e4a6ad",
+  "remote_code_LF_sha256": "aa1c2eaefa57379aebc354fb461c0bbb0365e83e02ee3e699b27f99e27cec100",
+  "local_code_sha256": "aa1c2eaefa57379aebc354fb461c0bbb0365e83e02ee3e699b27f99e27cec100",
+  "remote_source_difference": "SDK Windows CRLF only; exact LF content equality verified",
+  "remote_private": true,
+  "evidence": {
+    "analysis_data_files.json": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external_models\\01a11c35\\esm2_closure_readout_r1\\analysis_data_files.json",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    "common_support.json": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external_models\\01a11c35\\esm2_closure_readout_r1\\common_support.json",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    "consumption.json": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external_models\\01a11c35\\esm2_closure_readout_r1\\consumption.json",
+      "bytes": 193018,
+      "sha256": "19eb24215a7151cbef4b4eadd60382f109646750715ad135e355ddfbc752520c"
+    },
+    "external_arms.json": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external_models\\01a11c35\\esm2_closure_readout_r1\\external_arms.json",
+      "bytes": 2032,
+      "sha256": "f039d21435ea6728571eb67892f5351800c576214c09c41c44d841a40ef44330"
+    },
+    "parity.json": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external_models\\01a11c35\\esm2_closure_readout_r1\\parity.json",
+      "bytes": 737,
+      "sha256": "cbf44ac4c291a2ded7a9ae9b5eedafba6945cee254a4ac0bc8fc5d496611ea9f"
+    },
+    "per_target.csv": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external_models\\01a11c35\\esm2_closure_readout_r1\\per_target.csv",
+      "bytes": 3979710,
+      "sha256": "ad235b808fa1f35f2ce32238c96a42a9a129136783b8090ec8c2d56ba3d20955"
+    },
+    "results.json": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external_models\\01a11c35\\esm2_closure_readout_r1\\results.json",
+      "bytes": 1033621,
+      "sha256": "5ef9d48cdbe69f576116c9d47d7a19025f6f5d8e3be3d20566f5c046b6d9c8d4"
+    },
+    "runtime_versions.json": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external_models\\01a11c35\\esm2_closure_readout_r1\\runtime_versions.json",
+      "bytes": 138,
+      "sha256": "2ecf213c990fccbc428326db4da3de5e15e5b7aec454bffba8d02c3d4124c1a1"
+    },
+    "status.json": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external_models\\01a11c35\\esm2_closure_readout_r1\\status.json",
+      "bytes": 133,
+      "sha256": "a2ee3c9f7a2b3662c6f456ff49fae2dda5cc04c515bba0c189c2ab7dcc26d294"
+    },
+    "table_audit.json": {
+      "path": "C:\\Users\\ferra\\vcc2026-data\\external_models\\01a11c35\\esm2_closure_readout_r1\\table_audit.json",
+      "bytes": 28176,
+      "sha256": "07a3cc0a1f4a88a0eed29e2ec41d6d8d13da84b79a625c6273d636c20ade3e1f"
+    }
+  },
+  "executor": "MODELLI-ESTERNI",
+  "independent_code_unchanged": true,
+  "independent_final_judgment_owner": "VALIDAZIONE",
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 20261008,
+    "unit": "target"
+  },
+  "development_lineages_not_confirmation": true,
+  "not_vcc_scores": true,
+  "summary": {
+    "C-K562": {
+      "k562": {
+        "role": "primary",
+        "targets": 272,
+        "genes_disc95": 7260,
+        "arms": {
+          "E2": {
+            "disc95": 0.5328304753635772,
+            "predicted": 272
+          },
+          "E2f": {
+            "disc95": 0.7724251139570218,
+            "predicted": 272
+          },
+          "E2g": {
+            "disc95": 0.5,
+            "predicted": 272
+          },
+          "T0": {
+            "disc95": 0.7721130887779466,
+            "predicted": 272
+          }
+        },
+        "contrasts": {
+          "C_integration": {
+            "hi": 0.000936075537225965,
+            "lo": -0.0002441936184067739,
+            "mean": 0.00031202517907532044,
+            "n": 272,
+            "resolved": false,
+            "share_negative": 0.16911764705882354,
+            "share_positive": 0.1323529411764706
+          },
+          "C_native": {
+            "hi": -0.19253140601258956,
+            "lo": -0.28441909051443454,
+            "mean": -0.23928261341436946,
+            "n": 272,
+            "resolved": true,
+            "share_negative": 0.7867647058823529,
+            "share_positive": 0.20955882352941177
+          },
+          "C_specific": {
+            "hi": 0.05817302474495332,
+            "lo": 0.0083704145864988,
+            "mean": 0.03283047536357716,
+            "n": 272,
+            "resolved": true,
+            "share_negative": 0.41911764705882354,
+            "share_positive": 0.5625
+          },
+          "c_shufflein_E2": {
+            "hi": 0.06963588018233123,
+            "lo": 0.00640058606468418,
+            "mean": 0.03803993922292164,
+            "n": 272,
+            "resolved": true,
+            "share_negative": 0.41544117647058826,
+            "share_positive": 0.5661764705882353
+          }
+        }
+      }
+    },
+    "C-iPSC": {
+      "kolf_pan_genome": {
+        "role": "primary",
+        "targets": 282,
+        "genes_disc95": 11598,
+        "arms": {
+          "E2": {
+            "disc95": 0.5213207642411852,
+            "predicted": 281
+          },
+          "E2f": {
+            "disc95": 0.5638424068044723,
+            "predicted": 282
+          },
+          "E2g": {
+            "disc95": 0.5024040281668812,
+            "predicted": 281
+          },
+          "T0": {
+            "disc95": 0.5636657328184549,
+            "predicted": 282
+          }
+        },
+        "contrasts": {
+          "C_integration": {
+            "hi": 0.0010979026273945608,
+            "lo": -0.0007193155144998857,
+            "mean": 0.00017667398601751657,
+            "n": 282,
+            "resolved": false,
+            "share_negative": 0.25886524822695034,
+            "share_positive": 0.26595744680851063
+          },
+          "C_native": {
+            "hi": 0.008543449180989883,
+            "lo": -0.09212459932863885,
+            "mean": -0.04234496857726963,
+            "n": 282,
+            "resolved": false,
+            "share_negative": 0.5390070921985816,
+            "share_positive": 0.44680851063829785
+          },
+          "C_specific": {
+            "hi": 0.035032558491708936,
+            "lo": 0.002435577092955762,
+            "mean": 0.018916736074304028,
+            "n": 282,
+            "resolved": true,
+            "share_negative": 0.42907801418439717,
+            "share_positive": 0.549645390070922
+          },
+          "c_shufflein_E2": {
+            "hi": 0.029341447717119693,
+            "lo": -0.01609058327654526,
+            "mean": 0.006600035334797203,
+            "n": 282,
+            "resolved": false,
+            "share_negative": 0.4326241134751773,
+            "share_positive": 0.5425531914893617
+          }
+        }
+      },
+      "kolf_strong": {
+        "role": "second_library",
+        "targets": 55,
+        "genes_disc95": 10576,
+        "arms": {
+          "E2": {
+            "disc95": 0.538047138047138,
+            "predicted": 55
+          },
+          "E2f": {
+            "disc95": 0.6505050505050504,
+            "predicted": 55
+          },
+          "E2g": {
+            "disc95": 0.5016835016835017,
+            "predicted": 55
+          },
+          "T0": {
+            "disc95": 0.6484848484848483,
+            "predicted": 55
+          }
+        },
+        "contrasts": {
+          "C_integration": {
+            "hi": 0.004713804713804705,
+            "lo": -0.0006734006734006804,
+            "mean": 0.002020202020202011,
+            "n": 55,
+            "resolved": false,
+            "share_negative": 0.09090909090909091,
+            "share_positive": 0.18181818181818182
+          },
+          "C_native": {
+            "hi": -0.0013383838383839572,
+            "lo": -0.2195370370370371,
+            "mean": -0.11043771043771046,
+            "n": 55,
+            "resolved": true,
+            "share_negative": 0.5454545454545454,
+            "share_positive": 0.41818181818181815
+          },
+          "C_specific": {
+            "hi": 0.08787878787878789,
+            "lo": -0.00841750841750841,
+            "mean": 0.03636363636363637,
+            "n": 55,
+            "resolved": false,
+            "share_negative": 0.4,
+            "share_positive": 0.43636363636363634
+          },
+          "c_shufflein_E2": {
+            "hi": 0.050850168350168236,
+            "lo": -0.06329966329966329,
+            "mean": -0.009090909090909089,
+            "n": 55,
+            "resolved": false,
+            "share_negative": 0.5818181818181818,
+            "share_positive": 0.36363636363636365
+          }
+        }
+      }
+    },
+    "J-iPSC": {
+      "kolf_pan_genome": {
+        "role": "primary",
+        "targets": 59,
+        "genes_disc95": 12297,
+        "arms": {
+          "E2T": {
+            "disc95": 0.6274108708357687,
+            "predicted": 59
+          },
+          "E2jip": {
+            "disc95": 0.5242548217416715,
+            "predicted": 59
+          },
+          "E2jipg": {
+            "disc95": 0.5005844535359438,
+            "predicted": 59
+          },
+          "T0": {
+            "disc95": 0.5482174167153712,
+            "predicted": 15
+          }
+        },
+        "contrasts": {
+          "J_minus_T": {
+            "hi": -0.03594389246054938,
+            "lo": -0.17300555230859146,
+            "mean": -0.10315604909409701,
+            "n": 59,
+            "resolved": true,
+            "share_negative": 0.6101694915254238,
+            "share_positive": 0.3050847457627119
+          },
+          "J_native": {
+            "hi": 0.05552308591466978,
+            "lo": -0.1043322618351841,
+            "mean": -0.02396259497369959,
+            "n": 59,
+            "resolved": false,
+            "share_negative": 0.559322033898305,
+            "share_positive": 0.4406779661016949
+          },
+          "J_specific": {
+            "hi": 0.06107539450613676,
+            "lo": -0.015195791934541196,
+            "mean": 0.023670368205727647,
+            "n": 59,
+            "resolved": false,
+            "share_negative": 0.4067796610169492,
+            "share_positive": 0.4915254237288136
+          },
+          "c_shufflein_E2jip": {
+            "hi": 0.08211572180011689,
+            "lo": -0.04032729398012857,
+            "mean": 0.020748100526008187,
+            "n": 59,
+            "resolved": false,
+            "share_negative": 0.4406779661016949,
+            "share_positive": 0.5254237288135594
+          }
+        }
+      }
+    }
+  },
+  "C_integration_macro": {
+    "folds": 2,
+    "hi": 0.0007961530925874856,
+    "lo": -0.0002784409594986157,
+    "mean": 0.0002443495825464185,
+    "resolved": false
+  },
+  "verdict": "Do not adopt target-only ESM2 as a replacement or demonstrated improvement; preserve component and embeddings for the already declared AMMI test."
+}

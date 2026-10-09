@@ -1,0 +1,26 @@
+EE..
+======================================================================
+ERROR: test_missing_part_fails_even_when_context_is_present (test_ammi_streaming_v4.StreamingTests.test_missing_part_fails_even_when_context_is_present)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\modelli_esterni_01a11c35_2026-10-08\test_ammi_streaming_v4.py", line 50, in test_missing_part_fails_even_when_context_is_present
+    stage_controls([a],genes,['c'],reader,{'a':'b'*64,'missing':'c'*64},self.root/'stage')
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\modelli_esterni_01a11c35_2026-10-08\ammi_controls_v4.py", line 73, in stage_controls
+    import psutil
+ModuleNotFoundError: No module named 'psutil'
+
+======================================================================
+ERROR: test_sparse_merge_matches_original_and_accepts_pinned_old_producer (test_ammi_streaming_v4.StreamingTests.test_sparse_merge_matches_original_and_accepts_pinned_old_producer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\modelli_esterni_01a11c35_2026-10-08\test_ammi_streaming_v4.py", line 36, in test_sparse_merge_matches_original_and_accepts_pinned_old_producer
+    controls,audit=stage_controls([b,a],genes,['c'],reader,{'a':'b'*64,'b':'b'*64},self.root/'stage')
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\modelli_esterni_01a11c35_2026-10-08\ammi_controls_v4.py", line 73, in stage_controls
+    import psutil
+ModuleNotFoundError: No module named 'psutil'
+
+----------------------------------------------------------------------
+Ran 4 tests in 7.186s
+
+FAILED (errors=2)
