@@ -1,0 +1,42 @@
+{
+ "B0": {
+  "name": "stadio 84: banco K562→HepG2 riportato alla scala ufficiale con una taratura a un punto per membro",
+  "period": "17–19 settembre 2026",
+  "sees": "sei membri; un solo invio di taratura, nessuna barra d'errore",
+  "source": "reports/invii/prediction_t03_2026-09-17/prediction.json",
+  "known_limits": "taratura su un invio di un'altra famiglia di modelli; ancore aggregate non esatte (CP-0050)",
+  "scorer": "cell-eval2 0.16.0"
+ },
+ "B2": {
+  "name": "banco HepG2 v2 con lo scorer vero, conferma del generatore r3 (96 bersagli, tre semi)",
+  "period": "26–29 settembre 2026",
+  "sees": "sei membri locali su un contesto pubblico tenuto fuori",
+  "source": "reports/analisi/lead_scientist_2026-09-29/generator_confirmation_r3/confirmation/selection.json",
+  "known_limits": "95 dei 96 bersagli della conferma erano già in un banco precedente (CP-0050); indice locale non tarato sulla gara (CP-0052)",
+  "scorer": "cell-eval2 0.16.0"
+ },
+ "B3": {
+  "name": "cubo r2, corsia B a sei membri su cinque linee escluse (protocollo D-056)",
+  "period": "4 ottobre 2026",
+  "sees": "sei membri locali, macro a peso uguale su H1, HepG2, RPE1, Jurkat, K562; un seme, 32 cellule per bersaglio",
+  "source": "reports/modelli/ibrido_selettivo_2026-10-04/PROTOCOLLO.md",
+  "known_limits": "rumore del banco non tarato al momento della previsione; JAC locale con denominatore piccolo; il candidato inviato non era un braccio del banco (CP-0064, CP-0065)",
+  "scorer": "cell-eval2 0.16.0"
+ },
+ "B4": {
+  "name": "validazione indipendente v1/v2: lignaggio escluso sul pannello, livello A su sei fold e sei membri su K562 e iPSC",
+  "period": "8–9 ottobre 2026",
+  "sees": "spazio degli effetti su sei lignaggi; sei membri su due; cinque semi, 400 cellule",
+  "source": "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/PROTOCOLLO_v2.md",
+  "known_limits": "bracci con copertura diversa misurati su supporti diversi (contratto v3, §1); sei membri solo su due lignaggi",
+  "scorer": "cell-eval2 0.16.0"
+ },
+ "B5": {
+  "name": "validazione v3: vista del generatore, copertura separata dall'accuratezza, estensione dei fold di livello B",
+  "period": "dal 9 ottobre 2026",
+  "sees": "come B4, più la vista del generatore; nuovi lignaggi di livello B quando esistono le cellule",
+  "source": "reports/analisi/validazione_banco_eace4d03_2026-10-09/PROTOCOLLO_v3.md",
+  "known_limits": "nessuna previsione ancora valutata da un punteggio ufficiale",
+  "scorer": "cell-eval2 0.16.0"
+ }
+}
