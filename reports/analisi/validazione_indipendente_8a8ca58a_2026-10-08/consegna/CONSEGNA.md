@@ -126,3 +126,41 @@ Orologio letto con `date`; scritto alle 02:02.
 
 Dopo le 01:55 la direzione è cambiata per decisione del proprietario: priorità alle reti
 ([CP-0071](../../../../docs/checkpoints/0071-corsia-rapida-senza-invio-priorita-alle-reti.md)). Questa verifica chiude la parte dell'incarico legata al freeze.
+
+## 9. Dopo le 02:00: le prime letture delle reti, e che cosa resta aperto
+
+Scritto alle 02:57 del 9 ottobre. Dopo il cambio di priorità del proprietario questa sessione ha letto il ridge ESM2
+di MODELLI-ESTERNI nei regimi T e J ([risultati](../RISULTATI_ESM2_T.md)). Nessun artefatto di produzione nuovo.
+
+| Artefatto di validazione aggiunto | Dove | Cartella |
+|---|---|---|
+| Livello A, corse r6 e r7 (ridge ESM2, regimi T e J) | `davideferrante11/vcc-validazione-logo-8a8ca58a-r{6,7}`, privati | `banco/r6`, `banco/r7` |
+| Predizioni ESM2 convertite nel formato del banco | dataset privati `davideferrante11/vcc-validazione-esm2-t-8a8ca58a-r2` e `…-esm2-jk562-8a8ca58a-r1` (privacy verificata via API) | `banco/esm2_t_r2`, `banco/esm2_jk562_r1` |
+| Copie locali delle conversioni e tabelle per bersaglio | — | `vcc2026-data/processed/validazione_indipendente_8a8ca58a_2026-10-08/` |
+
+I file nativi dei fit restano di MODELLI-ESTERNI, nella radice dati, letti senza modifiche e con lo sha256 delle
+loro ricevute. Un file di effetti di T3 è stato recuperato in sola lettura dal kernel di DATI-TRANSFER.
+
+**Letture ancora da fare, quando i fit finiscono** (in corsa a questa scrittura: produzione, C-K562, C-iPSC;
+J-iPSC non partito):
+
+```powershell
+$b = "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco"
+# 1. aggiungere il fit a FITS in prepara_esm2_t.py (job, tag, prefisso dei bracci), poi:
+.\scripts\py.cmd $b/prepara_esm2_t.py esamina r1 <fit>        # nessuna verità letta; deve dare usable: true
+.\scripts\py.cmd $b/prepara_esm2_t.py converti r1 <fit>
+.\scripts\py.cmd $b/prepara_esm2_t.py dataset-create r1 <fit>
+# 2. scrivere analisi_rN.json (external_arms con dimensione e sha256, contrasti) e un piano prima dei numeri
+.\scripts\py.cmd $b/prepara_banco.py package rN ; preflight ; lancia rN <preflight.json> ; raccogli rN
+.\scripts\py.cmd $b/leggi_esm2_t.py $b/rN/completion <livelli.md> <livelli.json> <bracci…>
+.\scripts\py.cmd $b/leggi_contrasti.py [--regime-j] $b/rN/completion <contrasti.md> <contrasti.json> <id=titolo…>
+```
+
+Per i fit C la query è il pannello del fold (non i 66 bersagli nascosti): `converti` va adattato a leggere tutte le
+righe del pannello, i bracci si dichiarano sui fold `C-*` e la regola è il §8, con il banco a sei membri su K562 e
+iPSC. La regola di combinazione con il transfer va scritta prima dei numeri.
+
+**Controlli finali** (letti alle 11:25): suite della repo 290 test su 290 ([tests_r4.txt](../verifiche/tests_r4.txt);
+partita alle 02:58, interrotta dalla sospensione del portatile e conclusa alle 11:09); 16 test del banco su 16;
+controllo dei documenti: 71 checkpoint, 13 strade, registro e link coerenti
+([docs_check_r7.txt](../verifiche/docs_check_r7.txt)); test dell'albero vivo superato.

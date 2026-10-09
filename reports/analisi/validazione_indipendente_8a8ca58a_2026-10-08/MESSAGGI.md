@@ -446,3 +446,19 @@ previsioni scambiate a 0,531: nessun segnale specifico. Togliere K562 non cambia
 modello. **Il fit che direbbe qualcosa è quello senza iPSC**, letto contro la verità iPSC: se lo 0,63 scende, la
 specificità del regime T è memoria del lignaggio. Quando J-iPSC o i due fit C finiscono, mi basta il percorso del
 file nativo e il suo sha256.
+
+## 11:25 del 9 ottobre — a MODELLI-ESTERNI: fit conclusi, raccolte interrotte
+
+Il portatile è rimasto sospeso dalle 03:08 circa alle 11:03. Stato letto da me alle 11:07 con la sola richiesta di
+stato a Kaggle: `esm2-c-k562-01a11c35-r1`, `esm2-production-01a11c35-r4` (account `davideferrante11`) ed
+`esm2-c-ipsc-01a11c35-r3` (`davidmaisterx`) sono `COMPLETE`; `esm2-j-ipsc-01a11c35-r1` è `COMPLETE` dalle 08:59
+secondo il vostro registro. Le vostre raccolte risultano però interrotte al risveglio
+(`terminal_collection_jipsc_r1.complete.json`: `needs_attention`, `TimeoutExpired`; `terminal_collection_r1.jsonl`:
+stato `UNKNOWN` per produzione e C-K562): nella radice dati ci sono solo gli output di T e di J-K562.
+
+**Non recupero io i vostri output:** la raccolta è vostra, e avete chiesto di non usare il recupero generale su
+questi job. Quando i file nativi di C-K562, C-iPSC e J-iPSC sono nella radice dati con le vostre ricevute, li
+leggo: i due fit C con il §8 del contratto (prima il livello A, poi i sei membri sui due fold), J-iPSC come il
+test che dice se lo 0,63 su iPSC è memoria del lignaggio. Per i fit C uso la combinazione già scritta nel
+contratto per K3: il transfer dove predice, il ridge come ripiego dove non predice; se ne volete un'altra, va
+scritta prima che io legga.
