@@ -18,7 +18,7 @@ import torch
 from ammi_inputs_v3 import checked, read_json
 from ammi_inputs_v4 import load_anchors, training_data
 from ammi_controls_v4 import stage_controls, resources_required, available_memory
-from ammi_encoder_v4 import control_shape
+from ammi_encoder_v4 import control_shape, ControlsNotConsumed
 from ammi_guard_v4 import inner_guard, predict
 from ammi_train_v4 import fit
 from ammi_contract_v2 import export_residual, swapped_contexts
@@ -97,15 +97,25 @@ def run(manifest_path,digest,mode,seed,out,*,runtime_resolver=None):
     if not str(staging).startswith('/kaggle/temp/') or staging.exists():
         raise ValueError('fresh temporary sparse staging path outside output required')
     started=time.monotonic();out.mkdir(parents=True)
-    resource=resources_required(spec['ntc_parts'])
+    control_free=spec.get('controls_not_consumed') is True
+    if control_free:
+        if mode!='none' or production or spec['ntc_parts']:raise ValueError('invalid control-free pilot')
+        checked(spec['control_free_amendment']);checked(spec['control_free_equivalence'])
+    resource=dict(controls_not_consumed=True) if control_free else resources_required(spec['ntc_parts'])
     write(out/'preflight.json',dict(utc=datetime.now(timezone.utc).isoformat(),
         manifest_sha256=digest,mode=mode,seed=seed,cuda_free=torch.cuda.mem_get_info()[0],
         available_RAM=available_memory(),free_disk=shutil.disk_usage(out).free,cpu_count=os.cpu_count(),
         cuda_device=torch.cuda.get_device_name(0),resources_required=resource,
         versions=dict(torch=torch.__version__,numpy=np.__version__,cuda=torch.version.cuda)))
     anchors=measured(out,'anchors',load_anchors,contract,spec['anchor_completion'],spec['anchors'],fold,genes,panel)
-    controls,ntc_audit=measured(out,'controls',stage_controls,spec['ntc_parts'],genes,spec['ntc_contexts'],
-        spec['ntc_reader'],spec['ntc_expected_parts'],staging)
+    if control_free:
+        controls=ControlsNotConsumed(spec['ntc_contexts'],len(genes))
+        ntc_audit=dict(status='NOT_CONSUMED_BY_DESIGN',controls_not_consumed=True,
+            declared_contexts=sorted(controls.contexts),control_genes=len(genes),
+            no_synthetic_controls=True,NTC_completeness_not_asserted=True)
+    else:
+        controls,ntc_audit=measured(out,'controls',stage_controls,spec['ntc_parts'],genes,spec['ntc_contexts'],
+            spec['ntc_reader'],spec['ntc_expected_parts'],staging)
     x,available=measured(out,'features',features,spec['features'],panel)
     locations=spec.get('chunk_locations',{})
     if runtime_resolver is not None:
@@ -145,7 +155,8 @@ def run(manifest_path,digest,mode,seed,out,*,runtime_resolver=None):
     try:
         excluded=[] if production else [fold['outer'],fold['inner']]
         model,receipt=measured(out,'fit',fit,data,controls,excluded,mode,seed,guard,checkpoint_callback=checkpoint_epoch)
-        receipt['controls_used_by_training']={c:control_shape(controls[c])[0] for c in sorted(set(data['contexts']))}
+        receipt['controls_not_consumed']=control_free
+        receipt['controls_used_by_training']={} if control_free else {c:control_shape(controls[c])[0] for c in sorted(set(data['contexts']))}
         write(out/'training_receipt.json',receipt)
         checkpoint=save_checkpoint(model,out/'checkpoint.pt',dict(manifest_sha256=digest,mode=mode,seed=seed))
         restored,identity=reload_checkpoint(checkpoint,torch.device('cuda'))

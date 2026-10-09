@@ -7,6 +7,7 @@ response chunks are rejected before resolving paths or reading numeric arrays.
 from collections import Counter
 import hashlib
 import importlib.util
+from importlib.machinery import SourceFileLoader
 import json
 from pathlib import Path
 
@@ -31,7 +32,8 @@ def read_json(spec):
 
 def module(spec, name):
     path = checked(spec)
-    definition = importlib.util.spec_from_file_location(name, path)
+    definition = importlib.util.spec_from_file_location(name, path,
+        loader=SourceFileLoader(name, str(path)))
     loaded = importlib.util.module_from_spec(definition)
     definition.loader.exec_module(loaded)
     return loaded

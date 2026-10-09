@@ -1,0 +1,103 @@
+test_biological_runner_has_no_cpu_fallback (test_ammi_biological_v3.BiologicalBoundaryTests.test_biological_runner_has_no_cpu_fallback) ... ok
+test_checkpoint_roundtrip_missing_feature_and_unchanged_mask (test_ammi_biological_v3.BiologicalBoundaryTests.test_checkpoint_roundtrip_missing_feature_and_unchanged_mask) ... ok
+test_corrupt_pin_and_duplicate_cells_fail (test_ammi_biological_v3.BiologicalBoundaryTests.test_corrupt_pin_and_duplicate_cells_fail) ... ok
+test_disc95_matches_independent_bench_with_missing_support (test_ammi_biological_v3.BiologicalBoundaryTests.test_disc95_matches_independent_bench_with_missing_support) ... C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\validazione_indipendente_8a8ca58a_2026-10-08\banco\metrics.py:66: RuntimeWarning: Mean of empty slice
+  Pc = P - np.nanmean(np.where(valid, P, np.nan), axis=0)
+C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\validazione_indipendente_8a8ca58a_2026-10-08\banco\metrics.py:67: RuntimeWarning: Mean of empty slice
+  Oc = O - np.nanmean(np.where(valid, O, np.nan), axis=0)
+C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\validazione_indipendente_8a8ca58a_2026-10-08\banco\bench_core.py:111: RuntimeWarning: Mean of empty slice
+  summary[a].update({m: float(np.nanmean(per[a][m])) for m in REPORTED})
+ok
+test_guard_original_cache_external_axis_and_review_boundary (test_ammi_biological_v3.BiologicalBoundaryTests.test_guard_original_cache_external_axis_and_review_boundary) ... ok
+test_inner_response_not_resolved_and_gaps_are_named (test_ammi_biological_v3.BiologicalBoundaryTests.test_inner_response_not_resolved_and_gaps_are_named) ... ok
+test_nested_anchor_consumption_and_row_exclusion (test_ammi_biological_v3.BiologicalBoundaryTests.test_nested_anchor_consumption_and_row_exclusion) ... ok
+test_ntc_global_reservoir_and_native_normalization (test_ammi_biological_v3.BiologicalBoundaryTests.test_ntc_global_reservoir_and_native_normalization) ... ok
+test_cells_differ_with_same_mean_and_are_permutation_invariant (test_ammi_context.ContextCorrectionTests.test_cells_differ_with_same_mean_and_are_permutation_invariant) ... ok
+test_checkpoint_and_export_guard (test_ammi_context.ContextCorrectionTests.test_checkpoint_and_export_guard) ... ok
+test_missing_target_falls_back_and_masked_nan_does_not_learn (test_ammi_context.ContextCorrectionTests.test_missing_target_falls_back_and_masked_nan_does_not_learn) ... C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\modelli_esterni_01a11c35_2026-10-08\test_ammi_context.py:62: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:821.)
+  self.assertTrue(torch.equal(prediction[0],self.anchor[0]));self.assertEqual(float(residual[0].abs().sum()),0)
+ok
+test_no_observed_controls_fails_closed (test_ammi_context.ContextCorrectionTests.test_no_observed_controls_fails_closed) ... ok
+test_reference_center_is_weighted_and_batch_independent (test_ammi_context.ContextCorrectionTests.test_reference_center_is_weighted_and_batch_independent) ... ok
+test_zero_parity_and_gradients_after_first_step (test_ammi_context.ContextCorrectionTests.test_zero_parity_and_gradients_after_first_step) ... ok
+test_export_zero_is_byte_identical_and_nonzero_has_unchanged_axes (test_ammi_contract_v2.ContractTests.test_export_zero_is_byte_identical_and_nonzero_has_unchanged_axes) ... ok
+test_many_contexts_cannot_increase_lineage_mass (test_ammi_contract_v2.ContractTests.test_many_contexts_cannot_increase_lineage_mass) ... ok
+test_swap_never_uses_same_lineage_and_is_query_order_independent (test_ammi_contract_v2.ContractTests.test_swap_never_uses_same_lineage_and_is_query_order_independent) ... ok
+test_unequal_masks_and_batches_do_not_change_global_objective (test_ammi_contract_v2.ContractTests.test_unequal_masks_and_batches_do_not_change_global_objective) ... ok
+test_whole_prediction_common_share_reported_without_new_threshold (test_ammi_contract_v2.ContractTests.test_whole_prediction_common_share_reported_without_new_threshold) ... ok
+test_allowlist_excludes_source_data_logs_and_paths (test_ammi_evidence_v1.EvidenceTests.test_allowlist_excludes_source_data_logs_and_paths) ... ok
+test_changed_training_receipt_rejected (test_ammi_evidence_v1.EvidenceTests.test_changed_training_receipt_rejected) ... ok
+test_missing_native_or_swap_receipt_rejected (test_ammi_evidence_v1.EvidenceTests.test_missing_native_or_swap_receipt_rejected) ... ok
+test_swap_failure_preserves_native_without_promotion (test_ammi_evidence_v1.EvidenceTests.test_swap_failure_preserves_native_without_promotion) ... ok
+test_different_anchor_is_rejected (test_ammi_readout_v1.ReadoutTests.test_different_anchor_is_rejected) ... ok
+test_missing_or_duplicate_fit_is_rejected (test_ammi_readout_v1.ReadoutTests.test_missing_or_duplicate_fit_is_rejected) ... ok
+test_nested_anchor_is_distinct_and_swapped_can_be_missing (test_ammi_readout_v1.ReadoutTests.test_nested_anchor_is_distinct_and_swapped_can_be_missing) ... ok
+test_download_consumes_only_one_chunk_then_releases_owned_cache (test_ammi_resolve_v4.ResolverTests.test_download_consumes_only_one_chunk_then_releases_owned_cache) ... ok
+test_native_mount_is_verified_and_never_deleted_on_release (test_ammi_resolve_v4.ResolverTests.test_native_mount_is_verified_and_never_deleted_on_release) ... ok
+test_transport_failure_does_not_expose_private_locator (test_ammi_resolve_v4.ResolverTests.test_transport_failure_does_not_expose_private_locator) ... ok
+test_cpu_cannot_run_biological_pilot (test_ammi_runtime_v4.RuntimeTests.test_cpu_cannot_run_biological_pilot) ... ok
+test_production_parity_uses_its_own_verified_pairs (test_ammi_runtime_v4.RuntimeTests.test_production_parity_uses_its_own_verified_pairs) ... ok
+test_production_rejects_held_training_view (test_ammi_runtime_v4.RuntimeTests.test_production_rejects_held_training_view) ... ok
+test_swapped_failure_preserves_native_and_checkpoint (test_ammi_runtime_v4.RuntimeTests.test_swapped_failure_preserves_native_and_checkpoint) ... ok
+test_destination_depth_policy_cannot_be_silently_relabelled (test_ammi_streaming_v4.StreamingTests.test_destination_depth_policy_cannot_be_silently_relabelled) ... ok
+test_missing_part_fails_even_when_context_is_present (test_ammi_streaming_v4.StreamingTests.test_missing_part_fails_even_when_context_is_present) ... ok
+test_sparse_merge_matches_original_and_accepts_pinned_old_producer (test_ammi_streaming_v4.StreamingTests.test_sparse_merge_matches_original_and_accepts_pinned_old_producer) ... ok
+test_streamed_encoder_outputs_and_gradients_match_eager (test_ammi_streaming_v4.StreamingTests.test_streamed_encoder_outputs_and_gradients_match_eager) ... ok
+test_streamed_training_and_checkpoint_before_guard_failure (test_ammi_streaming_v4.StreamingTests.test_streamed_training_and_checkpoint_before_guard_failure) ... ok
+{"event": "ammi_phase_timing", "phase": "ok", "started_utc": "2026-10-09T17:36:21.208857+00:00", "status": "COMPLETE", "seconds": 3.819999983534217e-05, "finished_utc": "2026-10-09T17:36:21.208857+00:00"}
+{"event": "ammi_phase_timing", "phase": "failure", "started_utc": "2026-10-09T17:36:21.210875+00:00", "status": "ERROR", "error_type": "ValueError", "seconds": 3.6299985367804766e-05, "finished_utc": "2026-10-09T17:36:21.210875+00:00"}
+test_return_and_failure_are_preserved (test_ammi_timing_v1.TimingTests.test_return_and_failure_are_preserved) ... ok
+test_excluded_responses_and_failed_guard_are_rejected (test_ammi_train_v2.TrainerTests.test_excluded_responses_and_failed_guard_are_rejected) ... ok
+test_none_model_does_not_change_with_control_values (test_ammi_train_v2.TrainerTests.test_none_model_does_not_change_with_control_values) ... ok
+test_two_complete_epochs_and_paired_reproducibility (test_ammi_train_v2.TrainerTests.test_two_complete_epochs_and_paired_reproducibility) ... ok
+test_dataset_package_and_corrupt_archive (test_dataset_bundle.DatasetBundleTests.test_dataset_package_and_corrupt_archive) ... ok
+test_oversized_source_is_rejected_before_dispatch (test_dataset_bundle.DatasetBundleTests.test_oversized_source_is_rejected_before_dispatch) ... ok
+test_extraction_and_input_contract_must_agree (test_package_paths.PackageTests.test_extraction_and_input_contract_must_agree) ... ok
+test_payload_tampering_is_rejected (test_package_paths.PackageTests.test_payload_tampering_is_rejected) ... ok
+test_windows_serialization_is_rejected_before_dispatch (test_package_paths.PackageTests.test_windows_serialization_is_rejected_before_dispatch) ... ok
+test_full_support_copies_t0_byte_for_byte (test_esm2_closure_v1.ClosureTests.test_full_support_copies_t0_byte_for_byte) ... ok
+test_pair_fallback_keeps_cis_and_applies_gain_once (test_esm2_closure_v1.ClosureTests.test_pair_fallback_keeps_cis_and_applies_gain_once) ... ok
+test_real_runner_T_retains_missing_rows_matches_dense_and_masks_queries (test_feature_policy.FeaturePolicyTests.test_real_runner_T_retains_missing_rows_matches_dense_and_masks_queries) ... ok
+test_regimes_reject_wrong_target_or_context (test_feature_policy.FeaturePolicyTests.test_regimes_reject_wrong_target_or_context) ... ok
+test_weighted_training_only_mean_and_missing_flag (test_feature_policy.FeaturePolicyTests.test_weighted_training_only_mean_and_missing_flag) ... ok
+test_checksum_corruption (test_fit_outputs.OutputTests.test_checksum_corruption) ... ok
+test_mask_corruption_even_when_checksums_are_consistent (test_fit_outputs.OutputTests.test_mask_corruption_even_when_checksums_are_consistent) ... ok
+test_reload_detects_inconsistent_numeric_predictions (test_fit_outputs.OutputTests.test_reload_detects_inconsistent_numeric_predictions) ... ok
+test_stream_all_blocks_and_reload_missing_query (test_fit_outputs.OutputTests.test_stream_all_blocks_and_reload_missing_query) ... ok
+test_extraction_and_input_contract_must_agree (test_package_paths.PackageTests.test_extraction_and_input_contract_must_agree) ... ok
+test_payload_tampering_is_rejected (test_package_paths.PackageTests.test_payload_tampering_is_rejected) ... ok
+test_windows_serialization_is_rejected_before_dispatch (test_package_paths.PackageTests.test_windows_serialization_is_rejected_before_dispatch) ... ok
+test_duplicate_axes_rows_nonfinite_probabilities (test_pie_adapter.AdapterTests.test_duplicate_axes_rows_nonfinite_probabilities) ... ok
+test_empty_branch_identity (test_pie_adapter.AdapterTests.test_empty_branch_identity) ... ok
+test_exposure_and_protected_rows (test_pie_adapter.AdapterTests.test_exposure_and_protected_rows) ... ok
+test_missing_baseline_remains_masked (test_pie_adapter.AdapterTests.test_missing_baseline_remains_masked) ... ok
+test_normalization_and_double_correction_rejected (test_pie_adapter.AdapterTests.test_normalization_and_double_correction_rejected) ... ok
+test_parquet_cli_export_and_hash_tampering (test_pie_adapter.AdapterTests.test_parquet_cli_export_and_hash_tampering) ... ok
+test_parquet_missing_metadata (test_pie_adapter.AdapterTests.test_parquet_missing_metadata) ... ok
+test_reorder_zero_and_fallback (test_pie_adapter.AdapterTests.test_reorder_zero_and_fallback) ... ok
+test_forbidden_rows_rejected (test_pie_adapter.RidgeTests.test_forbidden_rows_rejected) ... ok
+test_frozen_runner_roundtrip_and_coverage_guard (test_pie_adapter.RidgeTests.test_frozen_runner_roundtrip_and_coverage_guard) ... ok
+test_hidden_values_do_not_affect_fit (test_pie_adapter.RidgeTests.test_hidden_values_do_not_affect_fit) ... ok
+test_missing_features_and_generic (test_pie_adapter.RidgeTests.test_missing_features_and_generic) ... ok
+test_ridge_matches_independent_augmented_least_squares (test_pie_adapter.RidgeTests.test_ridge_matches_independent_augmented_least_squares) ... ok
+test_existing_partial_is_preserved (test_private_download.PrivateDownloadTests.test_existing_partial_is_preserved) ... ok
+test_hash_failure_no_promotion (test_private_download.PrivateDownloadTests.test_hash_failure_no_promotion) ... ok
+test_http_auth_not_retried (test_private_download.PrivateDownloadTests.test_http_auth_not_retried) ... ok
+test_partial_read_retry (test_private_download.PrivateDownloadTests.test_partial_read_retry) ... ok
+test_transient_open_retry (test_private_download.PrivateDownloadTests.test_transient_open_retry) ... ok
+test_private_source_of_other_owner_is_not_native (test_source_access.AccessTests.test_private_source_of_other_owner_is_not_native) ... ok
+test_chunk_hash_axis_identity_and_coverage_guards (test_streaming_ridge.StreamingTests.test_chunk_hash_axis_identity_and_coverage_guards) ... ok
+test_dense_equivalence_primal_dual_weighted_masks_and_bounded_reads (test_streaming_ridge.StreamingTests.test_dense_equivalence_primal_dual_weighted_masks_and_bounded_reads) ... ok
+test_masked_values_exclusions_and_invalid_observed_values (test_streaming_ridge.StreamingTests.test_masked_values_exclusions_and_invalid_observed_values) ... ok
+test_mmap_store_and_runner_match_dense_end_to_end (test_streaming_ridge.StreamingTests.test_mmap_store_and_runner_match_dense_end_to_end) ... ok
+test_chunk_store_to_frozen_predictions_matches_dense (test_target_sufficient.SufficientTests.test_chunk_store_to_frozen_predictions_matches_dense) ... ok
+test_dense_and_independent_least_squares_parity_with_repeated_targets (test_target_sufficient.SufficientTests.test_dense_and_independent_least_squares_parity_with_repeated_targets) ... ok
+test_masked_values_row_order_and_block_sizes_do_not_change_fit (test_target_sufficient.SufficientTests.test_masked_values_row_order_and_block_sizes_do_not_change_fit) ... ok
+test_wrong_target_mapping_exclusions_and_unused_features_rejected (test_target_sufficient.SufficientTests.test_wrong_target_mapping_exclusions_and_unused_features_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 86 tests in 17.096s
+
+OK
+{"fixture_prediction_max_abs_error": 9.992007221626409e-16, "biological_arrays_read": false, "scientific_benefit": "not_evaluated"}

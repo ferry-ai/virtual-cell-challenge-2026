@@ -34,7 +34,11 @@ def execute(template,expected,mode,out,private_locator_path=None):
         spec[key]=resolver.pin(spec[key])
     spec['anchors']={k:resolver.pin(v) for k,v in spec['anchors'].items()}
     spec['features']={k:resolver.pin(v) for k,v in spec['features'].items()}
-    spec['ntc_parts']=resolver.stage_ntc(spec['ntc_parts'],root/'ntc_sources')
+    if spec.get('controls_not_consumed'):
+        if mode!='none' or spec['ntc_parts']:raise ValueError('invalid control-free runtime')
+        for key in ('control_free_amendment','control_free_equivalence'):spec[key]=resolver.pin(spec[key])
+    else:
+        spec['ntc_parts']=resolver.stage_ntc(spec['ntc_parts'],root/'ntc_sources')
     if spec['mode']=='production':spec['production_readout']=resolver.pin(spec['production_readout'])
     else:
         guard=spec['guard']

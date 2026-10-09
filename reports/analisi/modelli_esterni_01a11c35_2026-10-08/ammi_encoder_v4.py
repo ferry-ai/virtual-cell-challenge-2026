@@ -4,6 +4,20 @@ import torch
 from torch.utils.checkpoint import checkpoint
 
 
+class ControlsNotConsumed:
+    """Context/axis registry only: no cells, masks, counts or invented population."""
+    def __init__(self, contexts, gene_count):
+        self.contexts = frozenset(contexts)
+        self.gene_count = int(gene_count)
+        if not self.contexts or self.gene_count < 1:
+            raise ValueError('declared contexts and gene axis required')
+
+    def __contains__(self, context): return context in self.contexts
+    def __iter__(self): return iter(self.contexts)
+    def __getitem__(self, context):
+        raise RuntimeError('controls_not_consumed: no NTC values exist in this registry')
+
+
 def control_shape(control):
     return control.shape if hasattr(control,'batch') else control[0].shape
 
@@ -19,10 +33,10 @@ def encode(model,control,device,block_size=256):
     cell participates once in the population mean. No changing a trained model
     or context after scoring; no dropout or RNG in this encoder.
     """
-    n,g=control_shape(control)
-    if n<1 or g!=model.control_genes: raise ValueError('control shape differs')
     if model.context_mode=='none':
         return torch.ones((1,model.decoder.in_features),device=device)
+    n,g=control_shape(control)
+    if n<1 or g!=model.control_genes: raise ValueError('control shape differs')
     def input_block(start,stop):
         values,mask=batch(control,start,stop)
         if (values.shape!=(stop-start,g) or mask.shape!=values.shape or mask.dtype!=bool
@@ -53,8 +67,9 @@ def encode(model,control,device,block_size=256):
 def forward_grouped(model,features,contexts,controls,anchor,device):
     residual=torch.zeros_like(anchor)
     for context in sorted(set(contexts)):
+        if context not in controls: raise ValueError('undeclared context')
         indices=torch.tensor([i for i,c in enumerate(contexts) if c==context],device=device)
-        state=encode(model,controls[context],device)
+        state=encode(model,None if model.context_mode=='none' else controls[context],device)
         projected=model.target_projection(features[indices]-model.reference_mean)
         residual=residual.index_copy(0,indices,model.decoder(projected*state))
     return anchor.detach()+residual,residual

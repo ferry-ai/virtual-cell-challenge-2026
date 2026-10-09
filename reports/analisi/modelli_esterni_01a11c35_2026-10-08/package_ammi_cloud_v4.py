@@ -24,7 +24,7 @@ def package(runtime,access,mounts,out,receipt):
     mount=json.loads(Path(mounts).read_text())
     if mount['owner']!='davidmaisterx' or not mount.get('all_sources_verified_admissible'):
         raise ValueError('verified destination mount plan required')
-    slug='ammi-'+prepared['fold'].lower()+'-'+prepared['mode']+'-17-01a11c35-r4'
+    slug='ammi-'+prepared['fold'].lower()+'-'+prepared['mode']+'-17-01a11c35-r5'
     for name,digest in spec['code'].items():
         if sha256(runtime/name)!=digest:raise ValueError('runtime code changed after template')
     archive=io.BytesIO()

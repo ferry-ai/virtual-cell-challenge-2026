@@ -32,7 +32,9 @@ def build(fold_name,mode,out,ntc_contract,verifications,authorization,production
     anchor=read(DATI/('production_anchors_verified_r1.json' if production else 'ammi_anchors_verified_r1.json'))
     if anchor['status']!='PASS':raise ValueError('verified numeric anchors required')
     ntc=read(ntc_contract)
+    control_free = mode == 'none' and not production
     known={};origins={};relocations={}
+    if control_free: verifications=[]
     for path in verifications:
         report=read(path)
         if not report.get('status','').startswith('PASS'):raise ValueError('NTC verification not PASS')
@@ -53,9 +55,9 @@ def build(fold_name,mode,out,ntc_contract,verifications,authorization,production
     if production:
         expected=dict(expected,**{k:v['plan_sha256'] for k,v in known.items() if v.get('part_role')=='destination'})
     missing=sorted(set(expected)-set(known))
-    if missing:raise ValueError('verified NTC completions missing: '+','.join(missing))
+    if missing and not control_free:raise ValueError('verified NTC completions missing: '+','.join(missing))
     parts=[]
-    for key in sorted(expected):
+    for key in ([] if control_free else sorted(expected)):
         verified=known[key];req=ntc['parts'].get(key,verified)
         completion=read(checked(verified['completion']))
         if completion['plan_sha256']!=expected[key] or completion['code']!=req['producer_code']:
@@ -94,6 +96,14 @@ def build(fold_name,mode,out,ntc_contract,verifications,authorization,production
         chunk_pins=chunks,chunk_locations={},metrics=pin(VALID/'banco/metrics.py'),
         code={n:sha256(HERE/n) for n in CODE},
         staging_root='/kaggle/temp/ammi-'+fold_name.lower()+'-'+mode+'-17-r4/controls')
+    if control_free:
+        proof=read(HERE/'none_equivalence_r2.json')
+        if proof['status']!='PASS':raise ValueError('none equivalence proof required')
+        for name,digest in proof['code'].items():
+            if sha256(HERE/name)!=digest:raise ValueError('none code differs from equivalence proof')
+        spec.update(controls_not_consumed=True,
+            control_free_amendment=pin(HERE/'AMMI_NONE_SENZA_NTC_r1.md'),
+            control_free_equivalence=pin(HERE/'none_equivalence_r2.json'))
     if production:
         if production_readout is None:raise ValueError('frozen pilot readout decision required')
         spec['production_readout']=pin(production_readout);spec['destination_contexts']=['A','B','C']

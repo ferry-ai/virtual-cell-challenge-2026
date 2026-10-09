@@ -10,11 +10,11 @@ import numpy as np
 import torch
 
 from ammi_context import ContextCorrection
-from ammi_encoder_v4 import forward_grouped, control_shape, batch
+from ammi_encoder_v4 import forward_grouped, control_shape, batch, ControlsNotConsumed
 from ammi_contract_v2 import lineage_weights, row_objective, consumption
 
 
-def validate(data, controls, excluded_lineages):
+def validate(data, controls, excluded_lineages, context_mode=None):
     n = len(data['contexts'])
     if not n or len(data['lineages']) != n or len(data['row_ids']) != n or len(set(data['row_ids'])) != n:
         raise ValueError('unique training row identities required')
@@ -29,6 +29,10 @@ def validate(data, controls, excluded_lineages):
         raise ValueError('finite available ESM2 and supported response rows required')
     if not data.get('input_receipt_sha256') or not data.get('anchor_receipt_sha256'):
         raise ValueError('verified input/anchor receipts must be identified')
+    if isinstance(controls, ControlsNotConsumed):
+        if context_mode != 'none' or not set(data['contexts']) <= controls.contexts:
+            raise ValueError('controls_not_consumed is restricted to declared none contexts')
+        return n, controls.gene_count
     dimensions = set()
     for context in set(data['contexts']):
         shape = control_shape(controls[context])
@@ -49,7 +53,7 @@ def fit(data, controls, excluded_lineages, context_mode, seed, guard, *, fixture
     passed receipt. The biological wrapper must verify input hashes and anchor
     provenance before calling this engine. `fixture=True` is only for tiny CPU tests.
     """
-    n, control_genes = validate(data, controls, excluded_lineages)
+    n, control_genes = validate(data, controls, excluded_lineages, context_mode)
     if guard is None: raise ValueError('fixed inner-fold guard callback required')
     if fixture and (n > 32 or data['response'].shape[1] > 32 or control_genes > 32):
         raise ValueError('CPU fixture limit exceeded')

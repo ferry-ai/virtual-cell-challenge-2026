@@ -7,6 +7,7 @@ from pathlib import Path
 from ammi_inputs_v3 import checked
 from ammi_io_v4 import write
 from pie_adapter import sha256
+from check_ammi_remote_v1 import safe_error
 
 def read(p):return json.loads(Path(p).read_text())
 def launch(prepared_path,access_preflight,quota_preflight,out):
@@ -45,7 +46,7 @@ def launch(prepared_path,access_preflight,quota_preflight,out):
         if not error:response['state']=str(service.kernels_status(prepared['slug']).status).split('.')[-1]
     except Exception as error:
         response=dict(utc=datetime.now(timezone.utc).isoformat(),slug=prepared['slug'],accepted='unknown',
-            error_type=type(error).__name__,http_status=getattr(getattr(error,'response',None),'status_code',None),
+            **safe_error(error),
             next_action='inspect exact remote state before any retry')
     write(out,response);print(json.dumps(response))
 
