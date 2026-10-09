@@ -4,7 +4,18 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
-**Invio T38 riaperto il 9 ottobre:** [consenso umano originale](t38_resume_authorization_r1.json),
+**T38 consegnato il 9 ottobre:** [verifica delle ricevute](t38_delivery_verified_r1.json).
+Upload completato alle 20:04:41 Europe/Rome, 3.993.702.400 byte e MD5 remoto
+uguale al locale. Alle 20:06 il server conferma l'avvio della valutazione,
+entry `LJmnhqqh1WTrx1JcoRlr`, stato `launching`, nessun punteggio ancora disponibile:
+[ricevuta server](../../invii/trial_2026-10-09/status_LJmnhqqh1WTrx1JcoRlr_after_launch.json).
+Archivio SHA256 `5198c78f1a5c804253377bfecd4f72f5e54c049a18aa6672768034c326284bc1`,
+360.000 cellule e 18.533 geni; validatore ufficiale e confronto del payload
+superati. Recuperate le cellule esistenti, senza nuovo fit o generazione.
+Nessuna promozione scientifica o chiusura D-053. I 12 input NTC df11/r5
+restano in elaborazione; il loro watcher è distinto e continua.
+
+**Fotografia della ripresa T38:** [consenso umano originale](t38_resume_authorization_r1.json),
 [presa in carico e piano](t38_resume_taken_r1.json). Unica entry VCC
 `LJmnhqqh1WTrx1JcoRlr`, upload non ancora confermato. Il tentativo CPU privato
 [r3](cloud_delivery/r3/prepared.json) riprende la stessa entry dopo un errore

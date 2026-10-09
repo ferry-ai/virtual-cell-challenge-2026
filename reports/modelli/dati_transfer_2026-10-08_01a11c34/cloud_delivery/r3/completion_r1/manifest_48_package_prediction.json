@@ -1,0 +1,102 @@
+{
+  "run_id": "dt-t3-package-upload-01a11c34-r3",
+  "stage": "48_package_prediction",
+  "started_utc": "2026-10-09T18:02:40.186008+00:00",
+  "finished_utc": "2026-10-09T18:02:40.349879+00:00",
+  "seed": null,
+  "config": {
+    "run_id": "dt-t3-package-upload-01a11c34-r3",
+    "prediction": "/kaggle/temp/source_inputs/recovery_prediction.h5ad",
+    "out": "/kaggle/temp/t38_packaged",
+    "vcc_name": "prediction_t38_T3.vcc",
+    "workdir": "/kaggle/temp/t38_payload",
+    "expect_sha256": "67fc0d5762e99de1529ed28442819af6b4763c1218abec9db6f136826581e9ed",
+    "genes": "/kaggle/working/data/raw/controls/gene_names.csv",
+    "perts": "/kaggle/working/data/raw/controls/pert_counts.csv",
+    "values_per_block": "16777216",
+    "zstd_level": "3",
+    "zstd_threads": "None",
+    "reserve_gib": "6.0",
+    "contexts": "['A,B,C']",
+    "validate_only": "False",
+    "skip_verify": "False",
+    "allow_overwrite": "False"
+  },
+  "inputs": {
+    "prediction": {
+      "path": "/kaggle/temp/source_inputs/recovery_prediction.h5ad",
+      "exists": true,
+      "bytes": 11685203598,
+      "mtime_utc": "2026-10-09T17:49:09.026809+00:00",
+      "sha256": "0fb7a79701f57defedc1e2ce49ef91a67a67dbb016e0a5d8ad2dba27e58e09c6",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "genes": {
+      "path": "/kaggle/working/data/raw/controls/gene_names.csv",
+      "exists": true,
+      "bytes": 119295,
+      "mtime_utc": "2026-10-09T17:46:05.228410+00:00",
+      "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "sha256_mode": "full"
+    },
+    "perturbations": {
+      "path": "/kaggle/working/data/raw/controls/pert_counts.csv",
+      "exists": true,
+      "bytes": 1906,
+      "mtime_utc": "2026-10-09T17:46:05.228826+00:00",
+      "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+      "sha256_mode": "full"
+    }
+  },
+  "outputs": {
+    "report": {
+      "path": "/kaggle/temp/t38_packaged/packaging.json",
+      "exists": true,
+      "bytes": 7322,
+      "mtime_utc": "2026-10-09T18:02:40.182539+00:00",
+      "sha256": "15da52156e0b9e6688151aa7be39c6a801942f9d64150dfbdfb67561b9012a3d",
+      "sha256_mode": "full"
+    },
+    "vcc": {
+      "path": "/kaggle/temp/t38_packaged/prediction_t38_T3.vcc",
+      "exists": true,
+      "bytes": 3993702400,
+      "mtime_utc": "2026-10-09T17:57:43.880628+00:00",
+      "sha256": "d22550e4a0edd8118b9cc912ceac62b5034cf31218a70f8bd8a11701ee3a0d17",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "metrics": {
+    "exit_code": 0,
+    "nnz": 2086912955,
+    "peak_rss_bytes": 746315776,
+    "total_seconds": 808.7505402649999
+  },
+  "notes": [
+    "Streaming packager: the official validators on metadata, streamed equivalents on the matrix. Not an official CLI release.",
+    "Nothing uploaded. A passing archive is not server acceptance."
+  ],
+  "environment": {
+    "python": "3.13.15",
+    "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "hostname": "a1c149181dad",
+    "cpu_count": 4,
+    "packages": {
+      "cell-eval2": null,
+      "vcc-cli": null,
+      "anndata": "0.13.3.post0",
+      "numpy": "2.1.3",
+      "scipy": "1.16.3",
+      "pandas": "2.3.3",
+      "h5py": "3.16.0",
+      "scanpy": null,
+      "scikit-learn": "1.6.1",
+      "pyarrow": "23.0.1"
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "/kaggle/working/data",
+      "VCC2026_ARTIFACT_ROOT": "/kaggle/temp/artifacts"
+    }
+  }
+}
