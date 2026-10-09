@@ -134,6 +134,24 @@ class Ledger(unittest.TestCase):
         self.assertIn('t45', text.split('## 6. In attesa')[1])
         self.assertIn('membri con verso sbagliato: PDS', R.after_submission(self.ledger, 't41'))
 
+    def test_the_comparison_applies_the_registered_rule_as_written(self):
+        rule = {'delta_above_0.005': 'promising', 'delta_within_plus_minus_0.005': 'inconclusive',
+                'delta_below_minus_0.005': 'unfavourable'}
+        path = self.root / 'reports/invii/prediction_t43_2026-10-04/prediction.json'
+        doc = json.loads(path.read_text(encoding='utf-8'))
+        doc['readout_rule'] = rule
+        path.write_text(json.dumps(doc), encoding='utf-8')
+        ledger = R.build(self.root, curated_dir=self.curated)
+        out = R.comparison(ledger, 't43', repo=self.root)
+        self.assertEqual(out['rule_branch'], 'delta_below_minus_0.005')          # the site moved by -0.02
+        self.assertEqual(out['rule_text'], 'unfavourable')
+        self.assertAlmostEqual(out['t43_minus_t40'], -0.02)
+        self.assertFalse(out['new_best_among_recorded_official_scores'])
+        self.assertTrue(out['integrity']['mean_matches_score_avg'])
+        self.assertEqual(out['reference']['label'], 't40')
+        with self.assertRaises(SystemExit):                                      # no prediction, no comparison
+            R.comparison(ledger, 't40', repo=self.root)
+
     def test_an_explanation_must_carry_an_evidence_label_and_a_real_source(self):
         (self.curated / 'spiegazioni.json').write_text(json.dumps({'t41': [{'testo': 'x', 'stato': 'certa'}]}), encoding='utf-8')
         with self.assertRaises(SystemExit):
