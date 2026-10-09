@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\modelli_esterni_01a11c35_2026-10-08\collect_when_terminal.py", line 71, in <module>
+    a=p.parse_args();run(a.prepared,a.destination,a.esm2,a.label)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\analisi\modelli_esterni_01a11c35_2026-10-08\collect_when_terminal.py", line 34, in run
+    rc,body=call(slug.split('/')[0],['kernels','status',slug])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\OneDrive\Desktop\vcc2026\reports\modelli\dati_transfer_2026-10-08_01a11c34\cloud_campaign.py", line 29, in call
+    run=subprocess.run(command,env=env,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\subprocess.py", line 1634, in _communicate
+    raise TimeoutExpired(self.args, orig_timeout)
+subprocess.TimeoutExpired: Command '['C:\\Users\\ferra\\vcc2026-data\\.venv\\Scripts\\kaggle.exe', 'kernels', 'status', 'davidmaisterx/esm2-c-ipsc-01a11c35-r3']' timed out after 300 seconds
