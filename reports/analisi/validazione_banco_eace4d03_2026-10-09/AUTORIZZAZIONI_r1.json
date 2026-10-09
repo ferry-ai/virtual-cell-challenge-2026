@@ -1,0 +1,25 @@
+{
+ "what": "Decisions of the owner given in this session's chat, transcribed as the answers were returned; they cover only the actions named here.",
+ "session": "Claude Code eace4d03 (VALIDAZIONE)",
+ "clock_read_after_the_answers": "2026-10-09 21:42:36 Europe/Rome (date)",
+ "from_the_assignment_message": "Usa CPU cloud per i banchi e il portatile per sviluppo e fixture. Mantieni le GPU di davidmaisterx disponibili per i training. [...] eventuali trasferimenti ancora non autorizzati devono essere specificati per file e destinazione.",
+ "answers": [
+  {
+   "question": "Banco a sei membri del fallback ESM2 sui due fold esistenti (K562, iPSC): chi lo esegue, e consenti di portare i file dei bracci su davidmaisterx (dove stanno le cellule vere)?",
+   "answer": "VALIDAZIONE, 4 bracci",
+   "covers": "upload from the laptop into ONE new private dataset on davidmaisterx of 6 prediction files, 117,859,641 bytes (for C-K562 and C-iPSC: E2f, E2gen, E2swap; sha256 in esm2/bracci_*_r1.json); two private CPU kernels on davidmaisterx; no GPU",
+   "does_not_cover": "any other file, any public dataset, any GPU session, any submission"
+  },
+  {
+   "question": "Per portare il banco a sei membri da 2 a 5 lignaggi (HCT116, HEK293T, CD4T, più la libreria pan-genome di iPSC) servono le estrazioni delle cellule vere dalla banca. Chi le fa?",
+   "answer": "DATI-TRANSFER",
+   "covers": "the owner forwards the written request of MESSAGGI.md (21:30) to the DATI chat; VALIDAZIONE prepares the bench launcher and launches no extraction on those sources"
+  },
+  {
+   "question": "I due export AMMI `none` sono già pronti su davidmaisterx. Consenti ora il loro trasferimento privato verso un kernel CPU di davideferrante11 (36.281.758 byte, 2 file `query_000_native.npz`, come in PIANO_ACCESSO_BANCO_AMMI_r1.md), così leggo subito none contro l'ancora annidata A0 e contro T0?",
+   "answer": "Sì, ora",
+   "covers": "download to the laptop of the two files query_000_native.npz from the private outputs of davidmaisterx/ammi-c-k562-none-17-01a11c35-r5 (18,286,218 bytes) and davidmaisterx/ammi-c-ipsc-none-17-01a11c35-r5 (17,995,540 bytes), upload into one private dataset of davideferrante11, one private CPU kernel there; executed by VALIDAZIONE",
+   "does_not_cover": "checkpoints, NTC cells, RNA, the cells exports that do not exist yet"
+  }
+ ]
+}
