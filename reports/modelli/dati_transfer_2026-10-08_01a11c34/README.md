@@ -4,7 +4,15 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
-**Audit riuso NTC:** [diagnosi e correzione minima](AUDIT_RIUSO_NTC_r1.md),
+**NTC completate il 9 ottobre alle 21:48:** [raccolta e verifica](df11_ntc_watch_result_r1.json),
+[manifest finale](ntc_ready_manifest_r2.json),
+[catalogo riusabile 30/30](ntc_reuse_catalog_r2.json): 47 contesti,
+1.329.117 candidati prima del merge globale. Nessuna parte mancante.
+Metadata e codice verificati; gli hash numerici restano da verificare nel
+consumer. MODELLI-ESTERNI ha acquisito gli accessi autorizzati e mantiene
+l'esclusiva del packaging e lancio dei due fit cells. Nessuna nuova estrazione.
+
+**Audit riuso NTC precedente al completamento:** [diagnosi e correzione minima](AUDIT_RIUSO_NTC_r1.md),
 [catalogo verificato 18 bundle / 12 parti attive](ntc_reuse_catalog_r1.json).
 I 1.739 shard delle 12 parti erano già collegati ai campioni persistenti:
 il divario è selezione/normalizzazione/adattatore, non assenza dei dati.
