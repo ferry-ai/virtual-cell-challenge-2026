@@ -20,7 +20,7 @@ REPORTED = (*M.MEASURES, 'disc95')
 CSV_HEADER = ['fold', 'truth', 'arm', 'target', 'truth_cells', *REPORTED, 'n_valid', 'n_conf']
 
 
-def derived_controls(labels: dict, n: int, shuffled=('T0', 'T1')) -> dict:
+def derived_controls(labels: dict, n: int, shuffled=('T0', 'T1'), shuffled_within=()) -> dict:
     """The controls that need no stage-100 run: other targets' predictions, the arm's mean for every target,
     and no prediction at all."""
     perm = M.shuffled_rows(n)
@@ -28,6 +28,14 @@ def derived_controls(labels: dict, n: int, shuffled=('T0', 'T1')) -> dict:
     for base in dict.fromkeys(shuffled):
         lfc, obs = labels[base]
         out[base + '~shuffle'] = (lfc[perm], obs[perm])
+    for base in dict.fromkeys(shuffled_within):       # an arm that predicts only some rows: exchange those rows
+        lfc, obs = labels[base]
+        rows = np.flatnonzero(obs.any(axis=1))
+        new_lfc, new_obs = lfc.copy(), obs.copy()
+        if rows.size > 1:
+            order = rows[M.shuffled_rows(rows.size)]
+            new_lfc[rows], new_obs[rows] = lfc[order], obs[order]
+        out[base + '~shufflein'] = (new_lfc, new_obs)
     lfc, obs = labels['T0']
     seen = obs.any(axis=0)
     mean = np.where(seen, np.where(obs, lfc, 0.0).sum(axis=0) / np.maximum(obs.sum(axis=0), 1), 0.0)
@@ -60,8 +68,10 @@ def measure(folds: dict, arms: list, effects: dict, load_truth, panel: list, axi
         present = [a for a in extra_arms if (a, fid) in effects]
         # an extra contrast may ask the shuffle control of its own arm ("ARM~shuffle"): same permutation
         asked = [second[:-len('~shuffle')] for _, _, second in plan if second.endswith('~shuffle')]
+        asked_in = [second[:-len('~shufflein')] for _, _, second in plan if second.endswith('~shufflein')]
         labels = derived_controls({a: effects[(a, fid)] for a in [*arms, *present, 'T0~gamma0', 'T0~nocis']},
-                                  len(panel), [b for b in dict.fromkeys(asked) if b in arms or b in present])
+                                  len(panel), [b for b in dict.fromkeys(asked) if b in arms or b in present],
+                                  [b for b in dict.fromkeys(asked_in) if b in arms or b in present])
         for truth_spec in fold['truth']:
             tname = truth_spec['table']
             table = load_truth(tname)

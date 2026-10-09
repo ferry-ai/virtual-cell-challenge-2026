@@ -1,0 +1,119 @@
+{
+ "what": "T-regime reading of the ESM2 + ridge predictions (LETTURA_ESM2_T.md): the 66 hidden panel targets against each lineage's truth, on the hidden-target structure of the bench; the lineage's other rows were in the training, so this is regime T, not J",
+ "j_folds": true,
+ "external_arms": {
+  "E2": {
+   "J-K562": {
+    "bytes": 4487930,
+    "sha256": "4f46ee112394c5c9c72b586fcec4b472cac1d547cff08d5d55f04cbbc3f148e8"
+   },
+   "J-CD4T": {
+    "bytes": 4487930,
+    "sha256": "4f46ee112394c5c9c72b586fcec4b472cac1d547cff08d5d55f04cbbc3f148e8"
+   },
+   "J-HCT116": {
+    "bytes": 4487930,
+    "sha256": "4f46ee112394c5c9c72b586fcec4b472cac1d547cff08d5d55f04cbbc3f148e8"
+   },
+   "J-HEK293": {
+    "bytes": 4487930,
+    "sha256": "4f46ee112394c5c9c72b586fcec4b472cac1d547cff08d5d55f04cbbc3f148e8"
+   },
+   "J-iPSC": {
+    "bytes": 4487930,
+    "sha256": "4f46ee112394c5c9c72b586fcec4b472cac1d547cff08d5d55f04cbbc3f148e8"
+   },
+   "J-H1": {
+    "bytes": 4487930,
+    "sha256": "4f46ee112394c5c9c72b586fcec4b472cac1d547cff08d5d55f04cbbc3f148e8"
+   }
+  },
+  "E2g": {
+   "J-K562": {
+    "bytes": 4472592,
+    "sha256": "97c30c15bf6b389262eeba81068f13acce84420c7878f2a67ef2fddbb34e9427"
+   },
+   "J-CD4T": {
+    "bytes": 4472592,
+    "sha256": "97c30c15bf6b389262eeba81068f13acce84420c7878f2a67ef2fddbb34e9427"
+   },
+   "J-HCT116": {
+    "bytes": 4472592,
+    "sha256": "97c30c15bf6b389262eeba81068f13acce84420c7878f2a67ef2fddbb34e9427"
+   },
+   "J-HEK293": {
+    "bytes": 4472592,
+    "sha256": "97c30c15bf6b389262eeba81068f13acce84420c7878f2a67ef2fddbb34e9427"
+   },
+   "J-iPSC": {
+    "bytes": 4472592,
+    "sha256": "97c30c15bf6b389262eeba81068f13acce84420c7878f2a67ef2fddbb34e9427"
+   },
+   "J-H1": {
+    "bytes": 4472592,
+    "sha256": "97c30c15bf6b389262eeba81068f13acce84420c7878f2a67ef2fddbb34e9427"
+   }
+  },
+  "E2c": {
+   "J-K562": {
+    "bytes": 4487101,
+    "sha256": "763da0e9281c1d6cb16790172590a85454c190220e9b3d250305c19b7aca7c00"
+   },
+   "J-CD4T": {
+    "bytes": 4487101,
+    "sha256": "763da0e9281c1d6cb16790172590a85454c190220e9b3d250305c19b7aca7c00"
+   },
+   "J-HCT116": {
+    "bytes": 4487101,
+    "sha256": "763da0e9281c1d6cb16790172590a85454c190220e9b3d250305c19b7aca7c00"
+   },
+   "J-HEK293": {
+    "bytes": 4487101,
+    "sha256": "763da0e9281c1d6cb16790172590a85454c190220e9b3d250305c19b7aca7c00"
+   },
+   "J-iPSC": {
+    "bytes": 4487101,
+    "sha256": "763da0e9281c1d6cb16790172590a85454c190220e9b3d250305c19b7aca7c00"
+   },
+   "J-H1": {
+    "bytes": 4487101,
+    "sha256": "763da0e9281c1d6cb16790172590a85454c190220e9b3d250305c19b7aca7c00"
+   }
+  }
+ },
+ "contrasts": [
+  [
+   "T_E2",
+   "E2",
+   "T0"
+  ],
+  [
+   "T_E2c",
+   "E2c",
+   "T0"
+  ],
+  [
+   "T_spec",
+   "E2",
+   "E2g"
+  ],
+  [
+   "T_E2c_E2",
+   "E2c",
+   "E2"
+  ],
+  [
+   "c_shufflein_E2",
+   "E2",
+   "E2~shufflein"
+  ],
+  [
+   "c_shufflein_E2c",
+   "E2c",
+   "E2c~shufflein"
+  ]
+ ],
+ "extra_dataset_sources": [
+  "davideferrante11/vcc-validazione-esm2-t-8a8ca58a-r2"
+ ]
+}

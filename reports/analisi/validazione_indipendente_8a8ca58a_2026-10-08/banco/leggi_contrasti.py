@@ -1,6 +1,7 @@
 """Tables of any contrasts of a level-A run, per fold and in the macro, without retyping a number.
 
     leggi_contrasti.py <completion dir> <out.md> <out.json> <contrast id>=<title> [...] [--equal A=-B ...]
+    leggi_contrasti.py --regime-j <completion dir> ...      the same on the hidden-target structure of the run
 
 For every named contrast and every reported measure: the paired difference with its interval over targets,
 the number of targets it changes, and the macro over the folds where it exists. `--equal X2=-Q3` checks that
@@ -26,6 +27,8 @@ def cell(x):
 
 def main() -> None:
     args = sys.argv[1:]
+    regime_j = '--regime-j' in args
+    args = [a for a in args if a != '--regime-j']
     equal = []
     if '--equal' in args:
         i = args.index('--equal')
@@ -33,6 +36,8 @@ def main() -> None:
     src, out_md, out_json = Path(args[0]), Path(args[1]), Path(args[2])
     wanted = [a.split('=', 1) for a in args[3:]]
     r = json.loads((src / 'results.json').read_text(encoding='utf-8'))
+    if regime_j:
+        r = dict(r, folds=r['regime_J']['folds'], macro=r['regime_J']['macro'])
     primary = {f: next(tn for tn, t in blk['truth'].items() if t['role'] == 'primary') for f, blk in r['folds'].items()}
     checks = {'parity': all(p['equal'] for p in r['parity'].values())}
     for item in equal:
