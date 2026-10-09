@@ -393,3 +393,47 @@ Dal mandato del Lead delle 01:55. Ho letto, senza modificarlo, `fit/native_predi
   `leggi_contrasti.py --regime-j`; dieci minuti dal file nativo.
 - **Per i prossimi modelli:** leggete e chiedetemi di leggere **per lignaggio**. Qui la macro passa per merito di
   un lignaggio solo.
+
+## 02:44 del 9 ottobre — a MODELLI-ESTERNI: revisione di `PROTOCOLLO_AMMI_r1.md` (la chiedete prima del fit)
+
+Letto per intero. **La specifica è accettabile per un pilot, alle sette condizioni qui sotto.** Non le ho
+ricavate dai vostri numeri, che non esistono ancora: vengono dal contratto e da ciò che il banco ha misurato
+stanotte. Nessuna è una richiesta di cambiare il modello.
+
+1. **L'ancora deve essere la stessa cosa nel fit e all'esportazione, anche nella centratura (S-009).** Fuori dal
+   pannello la «media sul pannello» non esiste, e un'ancora centrata su tutti i bersagli non è quella di
+   produzione: stanotte ho misurato che le due differiscono per una riga comune e che quella centrata su tutti i
+   bersagli è valida e sfavorevole sul pannello ([risultati di T2](RISULTATI_T2.md)). Scegliete e scrivete prima
+   una delle due: (a) si addestra solo dove l'ancora di produzione è definita; (b) si addestra con un'ancora
+   definita allo stesso modo dentro e fuori dal pannello, e **quella stessa** va poi nel banco e nell'export.
+2. **Ancore dei fold, per i bersagli del pannello: ci sono già.** Gli effetti del transfer senza K562 e senza iPSC
+   (bracci T0, T1, R1, P4) stanno nei dataset privati `davidmaisterx/vcc-validazione-effetti-k562-8a8ca58a-r1` e
+   `…-ipsc-8a8ca58a-r1`, con dimensione e sha256 in `banco/livello_b_k562_r1/effetti.json` e
+   `banco/livello_b_ipsc_r1/effetti.json`. Usate **T0**, cioè la consegna. Mancano le ancore a doppia esclusione
+   (senza il lignaggio del fold **e** senza quello dell'esempio di training): quelle che riguardano il pannello le
+   può produrre il banco in dieci minuti per corsa, se me le chiedete; le altre sono di DATI-TRANSFER.
+3. **Split interno, fissato qui e ora:** la validazione interna tiene fuori un lignaggio intero, non righe a caso:
+   per C-K562 è CD4T, per C-iPSC è K562 (il fold successivo nell'ordine del manifest). Serve solo alle guardie;
+   iperparametri ed epoche restano quelli scritti nella proposta. Nulla si sceglie sulla verità del fold.
+4. **Un controllo in più, a modello addestrato: contesto scambiato.** Si dà al braccio `cells` lo stato dei
+   controlli di un altro lignaggio. Se la previsione non cambia, il contesto non è usato, qualunque cosa dica il
+   confronto con `none`. Lo leggo io come braccio esterno, se me lo esportate.
+5. **Più semi di training per dire «il contesto aiuta».** Il bootstrap del banco copre la variabilità fra
+   bersagli, non quella del training. Con un solo seme una differenza fra `cells` e `none` non si distingue dal
+   rumore dell'ottimizzazione: almeno tre semi per quei due bracci, oppure la differenza si riporta come
+   osservazione a un seme, senza verbo.
+6. **Lettura per lignaggio e massa della loss dichiarata.** Nella vista 24 contesti su 47 sono iPSC. Stanotte il
+   vostro ridge senza contesto riconosce i bersagli solo contro la verità iPSC ([risultati](RISULTATI_ESM2_T.md)).
+   La ricevuta del fit deve dire quanta loss viene da ogni lignaggio, e il banco legge ogni lignaggio accanto alla
+   macro. Una macro sostenuta da un lignaggio solo non conta come segnale generale.
+7. **Quota comune della previsione finale, non solo del residuo.** La vostra guardia è sul residuo (≤ 0,5). Il
+   banco riporta anche la quota comune della previsione intera accanto a quella dell'ancora: nell'ancora è circa
+   0,0002, e già 0,006 è bastato a peggiorare segno ed errore. Non è una soglia nuova, è un numero da riportare.
+
+**Che cosa mi serve per leggere il pilot:** per ogni braccio (`cells`, `mean`, `none`, contesto scambiato) un file
+nel formato dello stadio 100 sul pannello del fold, con dimensione e sha256, leggibile da `davideferrante11` o
+da `davidmaisterx`; la ricevuta con righe, bersagli e contesti previsti e usati; la prova di parità a residuo zero
+contro l'ancora, byte per byte. Livello A in dieci minuti; per C-K562 e C-iPSC anche il banco a sei membri.
+
+**Resta vostro e di DATI-TRANSFER:** il manifest dei controlli per `context_id` e le ancore fuori dal pannello.
+**Resta mio:** la regola di promozione, che non cambia (§8: sei membri su almeno due fold).
