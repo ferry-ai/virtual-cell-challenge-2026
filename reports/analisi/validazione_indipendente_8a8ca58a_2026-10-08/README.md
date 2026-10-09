@@ -6,7 +6,8 @@ ottobre. Binario [R-LEAD](../../../docs/piani/strategia-scientifica.md), che res
 Questa cartella possiede protocollo, banco, risultati comparativi e raccomandazione; **non** possiede banca, trainer
 e pipeline di produzione (DATI-TRANSFER, sessione `01a11c34`) né l'adattatore esterno (MODELLI-ESTERNI, sessione
 `01a11c35`). Checkpoint: [CP-0069](../../../docs/checkpoints/0069-validazione-indipendente-t1-e-ampliamento.md)
-e, per T2, [CP-0070](../../../docs/checkpoints/0070-t2-centratura-su-tutti-i-bersagli.md).
+per T2, [CP-0070](../../../docs/checkpoints/0070-t2-centratura-su-tutti-i-bersagli.md); per la corsia rapida
+della notte, chiusa senza invio, [CP-0071](../../../docs/checkpoints/0071-corsia-rapida-senza-invio-priorita-alle-reti.md).
 
 **Esito in una riga:** la consegna resta t36; T1 è valida e inconcludente; T2 è valido e **sfavorevole**
 ([risultati](RISULTATI_T2.md)); la componente esterna non è arrivata alla valutazione. I numeri dei banchi sono

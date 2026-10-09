@@ -103,3 +103,4 @@ aggiunge da sé la riga qui sotto.
 | [0068](0068-banca-canonica-release-r1.md) | 2026-10-07 | Banca canonica: registro, release r1 a 17 fonti e fit con ricevuta di consumo | esperimento | — |
 | [0069](0069-validazione-indipendente-t1-e-ampliamento.md) | 2026-10-08 | Validazione indipendente: T1 non si distingue da t36; l'ampliamento delle fonti aiuta i lignaggi vicini e costa agli altri | esperimento | — |
 | [0070](0070-t2-centratura-su-tutti-i-bersagli.md) | 2026-10-08 | T2, centratura su tutti i bersagli: valido e sfavorevole a lignaggio escluso | esperimento | — |
+| [0071](0071-corsia-rapida-senza-invio-priorita-alle-reti.md) | 2026-10-09 | Corsia rapida senza invio: T3 pronto negli effetti, t38 non inviato; priorità alle reti | cambio-di-strategia | — |

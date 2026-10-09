@@ -112,3 +112,17 @@ senza gli effetti per fold. Per la validazione è un invio esplorativo con attes
 **Controlli della repo alle 00:41:** 290 test, uno fallito ([tests_r3.txt](../verifiche/tests_r3.txt)): l'indice
 degli invii non elencava le due cartelle del t37, appena tracciate da un'altra sessione. Corretto alle 00:42; il
 test dell'albero vivo e il controllo dei documenti passano. I 16 test del banco passano.
+
+## 8. Verifica della consegna alle 02:00 del 9 ottobre
+
+Orologio letto con `date`; scritto alle 02:02.
+
+| Che cosa | Stato | Prova |
+|---|---|---|
+| **Consegna valutata: t36** | pacchetto con lo sha256 registrato prima dell'upload, dieci controlli su dieci, alle 01:52 | [riserva_t36_r3.json](riserva_t36_r3.json) |
+| Nuove entry sul sito | **nessuna**: t37 mai generato; t38 non impacchettato e non caricato; nessun upload pendente nello stato locale del client alle 01:52 | `reports/invii/trial_2026-10-08/NO_SUBMIT_T1_r1.json`, `deadline_incident_r1.json` di DATI-TRANSFER |
+| Candidati di effetti esistenti e non promossi | T1 (inconcludente), T2 (valido e sfavorevole), T3 (non valutato sui fold) | [raccomandazione](../RACCOMANDAZIONE.md), §8; [schede](schede/t3_contro_t1_r1.json) |
+| Artefatti di validazione | separati dalla produzione, tutti privati, nessuno usato per un invio | §2 e §6 |
+
+Dopo le 01:55 la direzione è cambiata per decisione del proprietario: priorità alle reti
+([CP-0071](../../../../docs/checkpoints/0071-corsia-rapida-senza-invio-priorita-alle-reti.md)). Questa verifica chiude la parte dell'incarico legata al freeze.

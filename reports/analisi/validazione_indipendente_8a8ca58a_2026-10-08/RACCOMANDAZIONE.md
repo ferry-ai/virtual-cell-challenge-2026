@@ -130,3 +130,8 @@ Il testo sopra è quello emesso alle 21:01 e non è stato ritoccato. **La raccom
   [CP-0070](../../../docs/checkpoints/0070-t2-centratura-su-tutti-i-bersagli.md)). **La raccomandazione non cambia: t36.** In più, ora: T2 non è
   da generare né da inviare come miglioramento; T1 resta non promossa e indistinguibile da t36; l'unica direzione
   del transfer con misure a favore su questo banco è la composizione delle fonti, che resta esplorativa.
+- **02:02 del 9 ottobre, verifica della consegna.** Nessun invio nella notte: il t37 (T1) è stato superato prima di
+  ogni generazione e il t38 (T3) non è arrivato al pacchetto; alle 01:55 il proprietario ha messo in secondo piano
+  la corsia rapida ([CP-0071](../../../docs/checkpoints/0071-corsia-rapida-senza-invio-priorita-alle-reti.md)). **La consegna valutata resta t36**, riverificato
+  alle 01:52. T3 non è valutato sui fold: di esso ho solo una scheda tecnica contro T1, che lo trova vicino dove
+  votano anche i CRISPRi e nuovo, a peso pieno, su 6.722 coppie previste dal solo KO.
