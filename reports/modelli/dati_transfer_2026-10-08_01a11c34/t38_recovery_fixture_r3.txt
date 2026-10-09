@@ -1,0 +1,50 @@
+input      : C:\Users\ferra\AppData\Local\Temp\tmpimx2_iqh\scratch\recovery_prediction.h5ad
+contexts   : A, B, C (from --contexts; the CLI's own are A, B, C)
+hashing input (streamed) ...
+  sha256   : 47cc8ad4931d5e6df3626c1727eb60bf9259fc1e65c4ba35ddfe1023311d5c40  (0s)
+layout     : 6 x 18,533, 6 stored entries
+             data float32/lzf, indices int32, indptr int32
+resources  : RAM 7.81 GiB total, 0.75 GiB available; disk 105.52 GiB free
+             official vcc prep would peak at ~2.0 GiB; this stage streams instead
+             estimated transient disk 0.00 GiB
+
+validating and packaging (streamed) ...
+  PASS  var_names_unique
+  PASS  gene_order_matches_list
+  PASS  gene_dim_matches_expected
+  PASS  has_cells
+  PASS  cell_dim_within_cap
+  PASS  pert_column_present
+  PASS  no_control_rows
+  PASS  contexts_complete
+  PASS  targets_match_official_list
+  PASS  density_within_cap
+  PASS  column_indices_in_range
+  PASS  counts_finite
+  PASS  counts_non_negative
+  PASS  counts_are_whole_numbers
+  PASS  max_counts_per_cell_within_cap
+  PASS  no_all_zero_perturbation
+  PASS  csr:indptr_length_is_n_obs_plus_1
+  PASS  csr:indptr_starts_at_zero
+  PASS  csr:indptr_non_negative
+  PASS  csr:indptr_monotonic
+  PASS  csr:indptr_end_matches_data_length
+  PASS  csr:data_and_indices_same_length
+  PASS  csr:nnz_representable_in_indptr_dtype
+  PASS  csr:n_vars_representable_in_indices_dtype
+
+wrote prediction.vcc: 0.00 GiB (2s total)
+  meta       : {"schema": 1, "nnz": 6, "n_obs": 6, "n_vars": 18533, "cli_version": "0.2.0"}
+  peak RSS   : 0.13 GiB
+  peak disk  : 0.00 GiB
+
+verifying the archive ...
+  PASS  official container validator (vccfile.validate_vcc)
+  meta read back: {"cli_version": "0.2.0", "n_obs": 6, "n_vars": 18533, "nnz": 6, "schema": 1}
+  PASS  payload X arrays are bit-identical to the input; gene axis and labels match (1s)
+        obs index rewritten by prep's rule: True
+  archive sha256: beb11f9d484932021334cf3aad8bec2734b5a085d6b05f98d2a1725620e22d8d
+
+total 9s, peak RSS 0.13 GiB
+-> C:\Users\ferra\AppData\Local\Temp\tmpimx2_iqh\scratch\pack\packaging.json

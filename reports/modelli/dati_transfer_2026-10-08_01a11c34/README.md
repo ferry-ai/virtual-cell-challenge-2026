@@ -4,7 +4,22 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
-**Stato corrente:** [STATO_r15.md](STATO_r15.md), 9 ottobre, 18:44 Europe/Rome.
+**Invio T38 riaperto il 9 ottobre:** [consenso umano originale](t38_resume_authorization_r1.json),
+[presa in carico e piano](t38_resume_taken_r1.json). Unica entry VCC
+`LJmnhqqh1WTrx1JcoRlr`, upload non ancora confermato. Il tentativo CPU privato
+[r3](cloud_delivery/r3/prepared.json) riprende la stessa entry dopo un errore
+di verifica del download in r2. [Misure del runtime e log r2](cloud_delivery/r2/failure_snapshot_r1.json):
+30,4 GiB RAM, 1.070 GiB temporanei e 19,5 GiB output liberi; guasto distinto
+dalla precedente riserva disco. Il nuovo downloader usa intervalli esatti,
+verificati anche con quattro test offline; l'hash atteso resta invariato.
+Nessun nuovo fit o generazione, NTC/AMMI non interrotti. La ricevuta del watcher
+in `cloud_delivery/r3/watcher_result_r1.json`, quando presente, riporta il seguito.
+
+**Stato corrente:** [STATO_r16.md](STATO_r16.md), 9 ottobre, 19:23 Europe/Rome.
+df11/r5 RUNNING con codice remoto verificato; progresso e parti finite non
+osservabili tramite API/log live. Nessuna ETA complessiva verificabile.
+
+**Accessi già pronti:** [STATO_r15.md](STATO_r15.md), 9 ottobre, 18:44 Europe/Rome.
 Accessi AMMI autorizzati: 105 file, 97 contenuti distinti con header HTTP verificati,
 21 mount ammissibili; locator privati fuori Git. Restano 12 parti NTC df11/r5.
 [Ricevuta](ammi_private_access_issued_r1.json), [verifica HTTP](ammi_locator_headers_r1.json).

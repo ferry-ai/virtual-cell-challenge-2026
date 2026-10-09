@@ -1,0 +1,32 @@
+input      : C:\Users\ferra\AppData\Local\Temp\tmp_85d7o0n\scratch\recovery_prediction.h5ad
+contexts   : A, B, C (from --contexts; the CLI's own are A, B, C)
+hashing input (streamed) ...
+  sha256   : f4643e8ad3bd4406f2e1a069094a24516668c6f2782968e030ac0eac753b97e3  (0s)
+layout     : 6 x 18,533, 6 stored entries
+             data float32/gzip, indices int32, indptr int32
+resources  : RAM 7.81 GiB total, 0.86 GiB available; disk 105.52 GiB free
+             official vcc prep would peak at ~2.0 GiB; this stage streams instead
+             estimated transient disk 0.00 GiB
+
+validating and packaging (streamed) ...
+Traceback (most recent call last):
+  File "C:\Users\ferra\AppData\Local\Temp\tmp_85d7o0n\work\repo\scripts\48_package_prediction.py", line 333, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\ferra\AppData\Local\Temp\tmp_85d7o0n\work\repo\scripts\48_package_prediction.py", line 218, in main
+    result = package_prediction(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\AppData\Local\Temp\tmp_85d7o0n\work\repo\src\vcc2026\packaging.py", line 1029, in package_prediction
+    written = write_payload(
+              ^^^^^^^^^^^^^^
+  File "C:\Users\ferra\AppData\Local\Temp\tmp_85d7o0n\work\repo\src\vcc2026\packaging.py", line 867, in write_payload
+    _copy_dataset(src_x["data"], x, "data", values_per_block)
+  File "C:\Users\ferra\AppData\Local\Temp\tmp_85d7o0n\work\repo\src\vcc2026\packaging.py", line 766, in _copy_dataset
+    out = dst_group.create_dataset(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\vcc2026-data\.venv\Lib\site-packages\h5py\_hl\group.py", line 240, in create_dataset
+    dsid = dataset.make_new_dset(group, shape, dtype, data, name, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ferra\vcc2026-data\.venv\Lib\site-packages\h5py\_hl\dataset.py", line 79, in make_new_dset
+    raise ValueError(errmsg)
+ValueError: Chunk shape must not be greater than data shape in any dimension. (1048576,) is not compatible with (6,)
