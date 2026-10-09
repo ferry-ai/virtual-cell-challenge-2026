@@ -4,7 +4,12 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
-**Stato corrente:** [STATO_r14.md](STATO_r14.md), 9 ottobre, 18:10 Europe/Rome.
+**Stato corrente:** [STATO_r15.md](STATO_r15.md), 9 ottobre, 18:44 Europe/Rome.
+Accessi AMMI autorizzati: 105 file, 97 contenuti distinti con header HTTP verificati,
+21 mount ammissibili; locator privati fuori Git. Restano 12 parti NTC df11/r5.
+[Ricevuta](ammi_private_access_issued_r1.json), [verifica HTTP](ammi_locator_headers_r1.json).
+
+**Fotografia precedente:** [STATO_r14.md](STATO_r14.md), 9 ottobre, 18:10 Europe/Rome.
 18 parti MX complete (35 contesti, 460.940 candidati), controlli ufficiali A/B/C
 e ancore produzione verificati. Restano 12 parti df11/r5 in esecuzione e
 l'accesso privato fra account. Nessun fold AMMI è ancora pronto al training.
