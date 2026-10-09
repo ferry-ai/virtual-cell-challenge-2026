@@ -9,6 +9,8 @@ la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 Su df11 il trasferimento privato richiesto è 5,387 GB; su MX 10,101 GB.
 30 parti NTC, controlli A/B/C e ancore pronti; consenso pilot non esteso
 alla produzione. Nessuna nuova estrazione o duplicazione dei lanci MODELLI.
+[Emettitore pronto con blocco sul consenso](EMETTITORE_ACCESSI_PRODUZIONE_r1.md):
+135 payload, sei verifiche locali superate, nessun locator emesso.
 
 **NTC completate il 9 ottobre alle 21:48:** [raccolta e verifica](df11_ntc_watch_result_r1.json),
 [manifest finale](ntc_ready_manifest_r2.json),
