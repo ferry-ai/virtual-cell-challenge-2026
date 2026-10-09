@@ -307,7 +307,11 @@ def build(repo: Path, extra_status_dirs=(), curated_dir: Path = HERE) -> dict:
     for folder in sorted((repo / 'reports/invii').glob('prediction_t*')):
         match = re.match(r'prediction_(t\d+)_', folder.name)
         if match and (folder / 'prediction.json').is_file():
-            predictions[match.group(1)] = read_prediction(repo, folder)
+            label = match.group(1)                    # two folders for one label: the later name is the executed one
+            others = (predictions.get(label) or {}).get('other_registrations', []) + (
+                [predictions[label]['file']] if label in predictions else [])
+            predictions[label] = read_prediction(repo, folder)
+            predictions[label]['other_registrations'] = others
     for folder in sorted((repo / 'reports/invii').glob('prediction_t*')):
         match = re.match(r'prediction_(t\d+)_', folder.name)
         comparison = folder / 'comparison.json'

@@ -1,48 +1,103 @@
 [
  {
-  "label": "t03", "bench": "B0", "kind": "score",
-  "path": "reports/invii/prediction_t03_2026-09-17/prediction.json", "pointer": "predicted_score_avg",
-  "registered_before_submission": true, "candidate_is_a_bench_arm": true,
+  "label": "t03",
+  "bench": "B0",
+  "kind": "score",
+  "path": "reports/invii/prediction_t03_2026-09-17/prediction.json",
+  "pointer": "predicted_score_avg",
+  "registered_before_submission": true,
+  "candidate_is_a_bench_arm": true,
   "candidate_note": "braccio transfer_a2.0+cismeas_a1.0+cis_a1.0 del banco, stessa famiglia dell'invio di taratura",
-  "members": {"pointer": "members", "field": "predicted_scaled", "unit": "scaled_level"}
+  "members": {
+   "pointer": "members",
+   "field": "predicted_scaled",
+   "unit": "scaled_level"
+  }
  },
  {
-  "label": "t07", "bench": "B0", "kind": "score",
-  "path": "reports/invii/prediction_t07_2026-09-19/prediction.json", "pointer": "predicted_score_avg",
-  "registered_before_submission": true, "candidate_is_a_bench_arm": true,
+  "label": "t07",
+  "bench": "B0",
+  "kind": "score",
+  "path": "reports/invii/prediction_t07_2026-09-19/prediction.json",
+  "pointer": "predicted_score_avg",
+  "registered_before_submission": true,
+  "candidate_is_a_bench_arm": true,
   "candidate_note": "braccio Cridge_a2.0: famiglia di modelli diversa da quella dell'invio di taratura",
-  "members": {"pointer": "members", "field": "predicted_scaled", "unit": "scaled_level"}
+  "members": {
+   "pointer": "members",
+   "field": "predicted_scaled",
+   "unit": "scaled_level"
+  }
  },
  {
-  "label": "t28", "bench": "B2", "kind": "delta", "reference": "t25",
+  "label": "t28",
+  "bench": "B2",
+  "kind": "delta",
+  "reference": "t25",
   "path": "reports/invii/prediction_t28_2026-09-29/prediction.json",
   "pointer": "confirmation.winner.delta_projection",
-  "seeds_pointer": "confirmation.winner.per_seed_delta", "sd_pointer": "confirmation.winner.seed_sd",
+  "seeds_pointer": "confirmation.winner.per_seed_delta",
+  "sd_pointer": "confirmation.winner.seed_sd",
   "interval_pointer": "confirmation.winner.paired_target_bootstrap_interval",
-  "registered_before_submission": true, "candidate_is_a_bench_arm": true,
+  "registered_before_submission": true,
+  "candidate_is_a_bench_arm": true,
   "candidate_note": "stesso braccio (effetti ×1,5, dispersione per gene ×1) provato su HepG2 e inviato su A, B, C",
-  "members": {"pointer": "confirmation.winner.member_contributions", "unit": "contribution_to_mean"}
+  "members": {
+   "pointer": "confirmation.winner.member_contributions",
+   "unit": "contribution_to_mean"
+  }
  },
  {
-  "label": "t30", "bench": "B3", "kind": "delta_of_two", "reference": "t25",
+  "label": "t30",
+  "bench": "B3",
+  "kind": "delta_of_two",
+  "reference": "t25",
   "path": "reports/invii/prediction_t30_2026-10-04/prediction.json",
   "pointer_a": "protocol.bench_score_section_9.ibrido_selettivo",
   "pointer_b": "protocol.bench_score_section_9.transfer",
-  "registered_before_submission": true, "candidate_is_a_bench_arm": false,
+  "registered_before_submission": true,
+  "candidate_is_a_bench_arm": false,
   "candidate_note": "l'invio somma al t25 una correzione provata contro un'altra baseline, con un altro stimatore e un altro regime degli ingressi (CP-0064)",
   "members": {
    "path": "reports/modelli/diagnosi_t30_2026-10-04/esito/bench_members_r1.json",
-   "pointer": "summary.mean_hybrid_minus_transfer_by_member", "unit": "scaled_delta",
+   "pointer": "summary.mean_hybrid_minus_transfer_by_member",
+   "unit": "scaled_delta",
    "registered_before_submission": false,
    "note": "rilettura delle 11:28 UTC del 4/10 di uscite del banco precedenti all'invio delle 09:13 UTC"
   }
  },
  {
-  "label": "t38", "bench": "B4", "kind": "indistinct", "reference": "t36", "band_half_width": 0.005,
+  "label": "t38",
+  "bench": "B4",
+  "kind": "indistinct",
+  "reference": "t36",
+  "band_half_width": 0.005,
   "path": "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/MESSAGGI.md",
   "statement": "indistinguibile da t36 entro ±0,005; il verso sul sito non si sa dire",
   "what_it_saw": "scheda tecnica degli effetti di produzione senza verità; T3 non è stato valutato sui fold",
-  "registered_before_submission": true, "candidate_is_a_bench_arm": false,
+  "registered_before_submission": true,
+  "candidate_is_a_bench_arm": false,
   "candidate_note": "T3 non è una ricetta dello stadio 100: il banco non ha potuto rifarlo sui fold"
+ },
+ {
+  "label": "t39",
+  "bench": "B5",
+  "kind": "indistinct",
+  "reference": "t38",
+  "band_half_width": 0.005,
+  "path": "reports/analisi/validazione_banco_eace4d03_2026-10-09/banco/LIVELLO_B_ESM2_e1.md",
+  "statement": "indistinguibile da t38 entro ±0,005; a sei membri su due fold il riempimento meno T0 vale +0,0041 ± 0,0087, non risolto, senza regressioni risolte",
+  "what_it_saw": "T0 più fallback a lignaggio escluso su K562 e iPSC, cinque semi, 400 cellule; non il candidato inviato",
+  "registered_before_submission": true,
+  "candidate_is_a_bench_arm": false,
+  "candidate_note": "il banco ha valutato T0 più fallback sui fold; il t39 è T3 più fallback di produzione, con un'altra maschera e il ridge addestrato su tutti i lignaggi",
+  "members": {
+   "path": "reports/analisi/validazione_banco_eace4d03_2026-10-09/banco/livello_b_esm2_e1.json",
+   "pointer": "macro.E2f:T0.members",
+   "field": "mean",
+   "unit": "scaled_delta",
+   "registered_before_submission": true,
+   "note": "macro dei due fold, scala locale: dà il verso, non l'entità; solo JAC è risolto, con una scala locale instabile"
+  }
  }
 ]
