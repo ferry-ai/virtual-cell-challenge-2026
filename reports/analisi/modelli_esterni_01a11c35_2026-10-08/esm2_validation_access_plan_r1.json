@@ -1,0 +1,337 @@
+{
+  "utc": "2026-10-09T18:32:27.371264+00:00",
+  "status": "READ_ONLY_PLAN_NO_TRANSFER_OR_LAUNCH",
+  "ammi_plan": "ammi_bank_access_plan_r1.json",
+  "priority": "AMMI cells starts when NTC verified; these CPU checks do not delay or consume its GPU quota",
+  "fallback_classification": "INCONCLUDENTE: level B missing; no resolved disc95 regression in measured C pair",
+  "native_E2": "resolved regression on C-K562; distinct candidate, diagnostic stop before B",
+  "protocol_unchanged": true,
+  "no_training": true,
+  "support_audit": {
+    "destination_account": "davideferrante11",
+    "runtime": "private Kaggle CPU",
+    "files": [
+      {
+        "source": "davideferrante11/vcc-validazione-logo-01a11c35-esm2closure-r1",
+        "file": "effects/T0__C-K562.npz",
+        "sha256": "d668d3581be2c1301c6922ea9152870610774d55e295c98fff73c0106270b349",
+        "transfer": false
+      },
+      {
+        "source": "davideferrante11/vcc-validazione-logo-01a11c35-esm2closure-r1",
+        "file": "effects/R1__C-K562.npz",
+        "sha256": "5320fb60629fed45fa362d05496ea1b20c944b066b7ed28747e7da755caa358c",
+        "transfer": false
+      },
+      {
+        "source": "davideferrante11/vcc-validazione-logo-01a11c35-esm2closure-r1",
+        "file": "effects/T1__C-K562.npz",
+        "sha256": "69b25c7cb210babe4748ba9e6d8d8f16d03adc99663ac389129b74991491e783",
+        "transfer": false
+      },
+      {
+        "source": "davideferrante11/vcc-validazione-logo-01a11c35-esm2closure-r1",
+        "file": "effects/P4__C-K562.npz",
+        "sha256": "9adf40a5d33e5da67c1e9fd197db29ac5ccd94e0359d6528cfc06f0b52a487f6",
+        "transfer": false
+      },
+      {
+        "source": "davideferrante11/vcc-validazione-logo-01a11c35-esm2closure-r1",
+        "file": "effects/T0__C-iPSC.npz",
+        "sha256": "e22a4f5350135f727064b932b016c0fa0023acfc5ca28ed74267d6bfe1917b6d",
+        "transfer": false
+      },
+      {
+        "source": "davideferrante11/vcc-validazione-logo-01a11c35-esm2closure-r1",
+        "file": "effects/R1__C-iPSC.npz",
+        "sha256": "15b52fc9ed150dfde5ec583e23bbb18a06cc60f708dfe90d0ffb382d2d73fb8f",
+        "transfer": false
+      },
+      {
+        "source": "davideferrante11/vcc-validazione-logo-01a11c35-esm2closure-r1",
+        "file": "effects/T1__C-iPSC.npz",
+        "sha256": "386d9474c5700e03ca537ef4f25a3c99081c41206404d2d16784095f34f675e4",
+        "transfer": false
+      },
+      {
+        "source": "davideferrante11/vcc-validazione-logo-01a11c35-esm2closure-r1",
+        "file": "effects/P4__C-iPSC.npz",
+        "sha256": "29b3311937069d3e187119e2e0d06e1878399c19059672974ddef70158657705",
+        "transfer": false
+      }
+    ],
+    "fallback_dataset": "davideferrante11/vcc-esm2-closure-01a11c35-r1",
+    "fallback_files": [
+      "C-K562_E2f.npz",
+      "C-iPSC_E2f.npz"
+    ],
+    "native_inputs": {
+      "id": "davideferrante11/esm2-fallback-support-01a11c35-r1",
+      "title": "vcc-validazione-logo-01a11c35-esm2closure-r1",
+      "code_file": "run.py",
+      "language": "python",
+      "kernel_type": "script",
+      "is_private": true,
+      "enable_gpu": false,
+      "enable_tpu": false,
+      "enable_internet": true,
+      "dataset_sources": [
+        "davideferrante11/vcc-banca-canonica-derivati-r1",
+        "davideferrante11/vcc-esm2-closure-01a11c35-r1",
+        "davideferrante11/vcc-ingest-code-cd4-r1",
+        "davideferrante11/vcc-k562-t25-cache-r1",
+        "davideferrante11/vcc-validazione-esm2-t-8a8ca58a-r2"
+      ],
+      "kernel_sources": [
+        "davideferrante11/vcc-effects-mix-t25-bank-r1-retry1",
+        "davideferrante11/vcc-prod-kolf-chromatin-mask-r1",
+        "davideferrante11/vcc-prod-kolf-metabolic-mask-r1",
+        "davideferrante11/vcc-prod-kolf-strong-mask-r1",
+        "davideferrante11/vcc-prod-orion-hct116-mask-r1",
+        "davideferrante11/vcc-prod-orion-hek293t-mask-r1",
+        "davidmaisterx/vcc-prod-kolf-pan-genome-mask-r1",
+        "davideferrante11/vcc-validazione-logo-01a11c35-esm2closure-r1"
+      ],
+      "competition_sources": [],
+      "access_probe_only": true
+    },
+    "private_cross_account_transfer_required": false,
+    "truth": [
+      "k562",
+      "kolf_pan_genome",
+      "kolf_strong"
+    ],
+    "original_manifest_arms": [
+      "T0",
+      "R1",
+      "T1",
+      "P4"
+    ],
+    "recipe": "Reconstruct keep, valid_pairs and cols95 exactly from unchanged bench_core; do not rerank or alter scores",
+    "outputs": [
+      "counts and hashes of full panel, retained targets, frozen cols95 and truth-valid support",
+      "fallback filled-mask pairs and numerically changed pairs, separately",
+      "pairs admitted to disc95 versus excluded by target, gene or truth validity; mutually exclusive exclusion counts",
+      "per-target changed pair counts on evaluated support and subset summary",
+      "reproduce stored original T0 and E2f disc95 before interpreting diagnostic counts"
+    ],
+    "common_support_empty_reason": "original driver fills it only for analysis_arms/common_support, not external ESM2 arms"
+  },
+  "level_B": {
+    "C-K562": {
+      "proposed_job": "davidmaisterx/esm2-fallback-b-k562-01a11c35-r1",
+      "runtime": "private Kaggle CPU",
+      "real_kernel": "davidmaisterx/vcc-validazione-celle-k562-8a8ca58a-r1",
+      "real_files": {
+        "real_cells.npz": "2c5e7c885c49b3ac396be7be53ef155b78ca79ce528cfe2d9cec89f4478f34fd",
+        "targets.json": "b7623e416201b605e15d4c1145598b2bdb0bc010f0db26955739ddc8bacbd0fc"
+      },
+      "reference_dataset": "davidmaisterx/vcc-validazione-effetti-k562-8a8ca58a-r1",
+      "reference_file": "T0.npz",
+      "reference": {
+        "bytes": 18694863,
+        "sha256": "d668d3581be2c1301c6922ea9152870610774d55e295c98fff73c0106270b349",
+        "level_a_sources": [
+          "cd4_mix",
+          "h1",
+          "hepg2_nadig",
+          "jurkat_nadig",
+          "kolf_chromatin",
+          "kolf_metabolic",
+          "kolf_pan_genome",
+          "kolf_strong",
+          "orion_hct116",
+          "orion_hek293t",
+          "rpe1"
+        ]
+      },
+      "fallback": {
+        "source": "davideferrante11/vcc-esm2-closure-01a11c35-r1",
+        "source_kind": "dataset",
+        "file": "C-K562_E2f.npz",
+        "destination_account": "davidmaisterx",
+        "bytes": 19793870,
+        "sha256": "398694e74441c045e4ffbc713d49032d87ba82f25a7da8608ef8cc9d5b940b70",
+        "explicit_transfer_approval_required": true
+      },
+      "scorer_version": "0.16.0",
+      "bench_sha256": "06966c0bca52e6982a0ed840ce54532d86d0131908f7248f33cf82ec744d0c08",
+      "snapshot_sha256": "125d119e8731360d2fa48734ab4d101d55131b5e317f865d5130f02235da1111",
+      "n_pred": 400,
+      "bench_seed": 2026,
+      "shuffle_seed": 20261008,
+      "emission": "t28",
+      "generator_seed_base": 20260912,
+      "generator_seed_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "steps": [
+        {
+          "name": "control",
+          "arms": [
+            "T0",
+            "T0shuffle"
+          ],
+          "gen_seeds": 1,
+          "rule": "PDS must decrease after frozen row permutation"
+        },
+        {
+          "name": "full",
+          "arms": [
+            "T0",
+            "E2f"
+          ],
+          "gen_seeds": 5,
+          "pair": "E2f:T0"
+        },
+        {
+          "name": "changed",
+          "arms": [
+            "T0",
+            "E2f"
+          ],
+          "gen_seeds": 5,
+          "pair": "E2f:T0",
+          "selection": "targets whose predictions or observed masks differ before truth scoring, intersect frozen real targets; skip below four"
+        }
+      ],
+      "native_RNA_stays_on_owner": true,
+      "no_new_training": true
+    },
+    "C-iPSC": {
+      "proposed_job": "davidmaisterx/esm2-fallback-b-ipsc-01a11c35-r1",
+      "runtime": "private Kaggle CPU",
+      "real_kernel": "davidmaisterx/vcc-validazione-celle-ipsc-8a8ca58a-r1",
+      "real_files": {
+        "real_cells.npz": "81a37495e6f3bb100e65188eac3c0c00817ea0475e7aa14a34ee1ec7d2139381",
+        "targets.json": "8c4656b4613ee9de4c800c28167f219590ec3315ee95ccada9a8574636ed40f3"
+      },
+      "reference_dataset": "davidmaisterx/vcc-validazione-effetti-ipsc-8a8ca58a-r1",
+      "reference_file": "T0.npz",
+      "reference": {
+        "bytes": 18179219,
+        "sha256": "e22a4f5350135f727064b932b016c0fa0023acfc5ca28ed74267d6bfe1917b6d",
+        "level_a_sources": [
+          "cd4_mix",
+          "h1",
+          "hepg2_nadig",
+          "jurkat_nadig",
+          "k562",
+          "k562_essential",
+          "orion_hct116",
+          "orion_hek293t",
+          "rpe1"
+        ]
+      },
+      "fallback": {
+        "source": "davideferrante11/vcc-esm2-closure-01a11c35-r1",
+        "source_kind": "dataset",
+        "file": "C-iPSC_E2f.npz",
+        "destination_account": "davidmaisterx",
+        "bytes": 19498599,
+        "sha256": "f18866710f5c6f0b28bbfcb5b426d43a9853fd54e3d4ef47af39f3d8749be7b9",
+        "explicit_transfer_approval_required": true
+      },
+      "scorer_version": "0.16.0",
+      "bench_sha256": "06966c0bca52e6982a0ed840ce54532d86d0131908f7248f33cf82ec744d0c08",
+      "snapshot_sha256": "125d119e8731360d2fa48734ab4d101d55131b5e317f865d5130f02235da1111",
+      "n_pred": 400,
+      "bench_seed": 2026,
+      "shuffle_seed": 20261008,
+      "emission": "t28",
+      "generator_seed_base": 20260912,
+      "generator_seed_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "steps": [
+        {
+          "name": "control",
+          "arms": [
+            "T0",
+            "T0shuffle"
+          ],
+          "gen_seeds": 1,
+          "rule": "PDS must decrease after frozen row permutation"
+        },
+        {
+          "name": "full",
+          "arms": [
+            "T0",
+            "E2f"
+          ],
+          "gen_seeds": 5,
+          "pair": "E2f:T0"
+        },
+        {
+          "name": "changed",
+          "arms": [
+            "T0",
+            "E2f"
+          ],
+          "gen_seeds": 5,
+          "pair": "E2f:T0",
+          "selection": "targets whose predictions or observed masks differ before truth scoring, intersect frozen real targets; skip below four"
+        }
+      ],
+      "native_RNA_stays_on_owner": true,
+      "no_new_training": true
+    }
+  },
+  "proposed_private_transfer_files": [
+    {
+      "source": "davideferrante11/vcc-esm2-closure-01a11c35-r1",
+      "source_kind": "dataset",
+      "file": "C-K562_E2f.npz",
+      "destination_account": "davidmaisterx",
+      "bytes": 19793870,
+      "sha256": "398694e74441c045e4ffbc713d49032d87ba82f25a7da8608ef8cc9d5b940b70",
+      "explicit_transfer_approval_required": true
+    },
+    {
+      "source": "davideferrante11/vcc-esm2-closure-01a11c35-r1",
+      "source_kind": "dataset",
+      "file": "C-iPSC_E2f.npz",
+      "destination_account": "davidmaisterx",
+      "bytes": 19498599,
+      "sha256": "f18866710f5c6f0b28bbfcb5b426d43a9853fd54e3d4ef47af39f3d8749be7b9",
+      "explicit_transfer_approval_required": true
+    }
+  ],
+  "proposed_private_transfer_bytes": 39292469,
+  "transport": "temporary signed locators in private MX CPU job packages; cloud-only download of two prediction NPZ after approval; no RNA movement or ACL change",
+  "metrics": [
+    "PDS",
+    "MSE",
+    "NMAE",
+    "FID",
+    "REACH",
+    "JAC"
+  ],
+  "reporting": "raw and scaled local values, denominators, six-member and five-without-JAC deltas, paired-seed uncertainty, per-fold and equal-fold macro; not VCC scores",
+  "decision_rule": "PROTOCOLLO_v1 section8 with v2 disc95 amendment; no new positive-disc95 threshold",
+  "remaining": [
+    "native-access preflight",
+    "explicit approval for two fallback prediction files to MX",
+    "prepare and verify CPU packages using original bench snapshot",
+    "fresh CPU resource/slot checks before launch"
+  ],
+  "cloud_jobs_launched": 0,
+  "URLs_issued": 0,
+  "transferred_bytes": 0,
+  "evidence": {
+    "reports\\analisi\\validazione_indipendente_8a8ca58a_2026-10-08\\PROTOCOLLO_v1.md": "bb7ace0327457d0b38ee596166e937f3b1b36e95ec39fbe3c6d52f5d0b763034",
+    "reports\\analisi\\validazione_indipendente_8a8ca58a_2026-10-08\\PROTOCOLLO_v2.md": "df22d17a4af61da7b931fbae0ae714f54bd3dfdd96a0247603871a467c03b3be",
+    "reports\\analisi\\validazione_indipendente_8a8ca58a_2026-10-08\\LIVELLO_B.md": "b558602d90b486b4386227631a80abb2b42f2c1b6193d9fd91f2a38f75d11f91",
+    "reports\\analisi\\validazione_indipendente_8a8ca58a_2026-10-08\\banco\\bench_core.py": "ffbc0dbabb5a4301e03a455ccbf6c5495e95f03c149ff25e0100551c190c95ee",
+    "reports\\analisi\\validazione_indipendente_8a8ca58a_2026-10-08\\banco\\logo_driver.py": "a11aafd8a3850f6c93f028436b6b7acef777c12d31e4444a79028e4f0eafd8d1",
+    "reports\\analisi\\modelli_esterni_01a11c35_2026-10-08\\esm2_closure_conversion_r1.json": "c9df04458c463b2b345769e059dc17886f2d4ea42dcbbec214791215f2796802"
+  }
+}
