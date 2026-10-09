@@ -5,6 +5,7 @@ not resolve remote data, infer lineages, choose epochs, or launch cloud resource
 The caller supplies already normalized individual NTCs and fold-safe anchors.
 """
 import hashlib
+import time
 import numpy as np
 import torch
 
@@ -65,6 +66,7 @@ def fit(data, controls, excluded_lineages, context_mode, seed, guard, *, fixture
     rng = np.random.default_rng(seed)
     receipts = []
     for epoch in range(2):
+        epoch_started = time.perf_counter()
         order = rng.permutation(n).tolist()
         observed_rows, loss_pieces, penalty_pieces = [], [], []
         model.train()
@@ -95,6 +97,7 @@ def fit(data, controls, excluded_lineages, context_mode, seed, guard, *, fixture
             loss_pieces.extend(pieces.detach().cpu().double().tolist())
             penalty_pieces.extend(pp.detach().cpu().double().tolist())
         audit = consumption(observed_rows,data['contexts'],data['lineages'],weights,loss_pieces)
+        optimization_seconds = time.perf_counter() - epoch_started
         model.eval()
         if checkpoint_callback is not None:
             checkpoint_callback(model, epoch+1, audit)
@@ -102,7 +105,9 @@ def fit(data, controls, excluded_lineages, context_mode, seed, guard, *, fixture
         if not isinstance(checked,dict) or checked.get('pass') is not True:
             raise ValueError('fixed inner-fold guard failed; no checkpoint selection')
         receipts.append(dict(epoch=epoch+1,coverage=audit,loss=float(sum(loss_pieces)),
-                             residual_penalty=float(sum(penalty_pieces)),guard=checked))
+                             residual_penalty=float(sum(penalty_pieces)),guard=checked,
+                             optimization_seconds=optimization_seconds,
+                             epoch_seconds=time.perf_counter()-epoch_started))
     receipt = dict(seed=seed,context_mode=context_mode,device=str(device),fixture=fixture,
         input_receipt_sha256=data['input_receipt_sha256'],anchor_receipt_sha256=data['anchor_receipt_sha256'],
         excluded_lineages=sorted(excluded_lineages),epochs=receipts,

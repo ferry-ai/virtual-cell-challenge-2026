@@ -1,6 +1,8 @@
 """Resolve a frozen AMMI package on cloud and enter the CUDA-only runner."""
 import argparse
 import json
+import time
+from datetime import datetime, timezone
 from pathlib import Path
 from ammi_inputs_v3 import checked
 from ammi_io_v4 import write
@@ -8,6 +10,8 @@ from ammi_resolve_v4 import Resolver
 from pie_adapter import sha256
 
 def execute(template,expected,mode,out,private_locator_path=None):
+    bootstrap_started=time.perf_counter()
+    bootstrap_utc=datetime.now(timezone.utc).isoformat()
     template=Path(template)
     if sha256(template)!=expected:raise ValueError('runtime template differs')
     spec=json.loads(template.read_text())
@@ -37,6 +41,11 @@ def execute(template,expected,mode,out,private_locator_path=None):
         for k in ('axis','review_pin','routing_basis'):guard[k]=resolver.pin(guard[k])
         for route in guard['routes']:route['truth']=resolver.pin(route['truth'])
     resolved=root/'runtime.json';write(resolved,spec)
+    write(Path(out).parent/'ammi_bootstrap_timing.json',dict(
+        phase='bootstrap_resolution_and_input_hashing',status='COMPLETE',
+        started_utc=bootstrap_utc,finished_utc=datetime.now(timezone.utc).isoformat(),
+        seconds=time.perf_counter()-bootstrap_started,template_sha256=expected,
+        runtime_manifest_sha256=sha256(resolved)))
     from run_ammi_v4 import run
     run(resolved,sha256(resolved),mode,17,out,runtime_resolver=resolver)
 

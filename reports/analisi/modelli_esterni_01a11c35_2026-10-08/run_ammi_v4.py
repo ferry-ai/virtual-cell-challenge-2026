@@ -24,6 +24,7 @@ from ammi_train_v4 import fit
 from ammi_contract_v2 import export_residual, swapped_contexts
 from ammi_io_v4 import features, write, save_checkpoint, reload_checkpoint
 from pie_adapter import sha256
+from ammi_timing_v1 import measured
 
 PILOT_FITS=[(f,m,17) for f in ('C-K562','C-iPSC') for m in ('cells','none')]
 
@@ -68,7 +69,7 @@ def run(manifest_path,digest,mode,seed,out,*,runtime_resolver=None):
     if not torch.cuda.is_available():raise RuntimeError('biological training requires actual CUDA')
     required=('run_ammi_v4.py','ammi_inputs_v4.py','ammi_inputs_v3.py','ammi_controls_v4.py',
         'ammi_encoder_v4.py','ammi_guard_v4.py','ammi_train_v4.py','ammi_context.py',
-        'ammi_contract_v2.py','ammi_io_v4.py','ammi_resolve_v4.py','ammi_bootstrap_v4.py','pie_adapter.py')
+        'ammi_contract_v2.py','ammi_io_v4.py','ammi_resolve_v4.py','ammi_bootstrap_v4.py','pie_adapter.py','ammi_timing_v1.py')
     for name in required:
         if sha256(Path(__file__).with_name(name))!=spec['code'][name]:raise ValueError('runtime code differs: '+name)
     checked(spec['protocol']);checked(spec['authorization']);checked(spec['phase_mandate'])
@@ -102,15 +103,15 @@ def run(manifest_path,digest,mode,seed,out,*,runtime_resolver=None):
         available_RAM=available_memory(),free_disk=shutil.disk_usage(out).free,cpu_count=os.cpu_count(),
         cuda_device=torch.cuda.get_device_name(0),resources_required=resource,
         versions=dict(torch=torch.__version__,numpy=np.__version__,cuda=torch.version.cuda)))
-    anchors=load_anchors(contract,spec['anchor_completion'],spec['anchors'],fold,genes,panel)
-    controls,ntc_audit=stage_controls(spec['ntc_parts'],genes,spec['ntc_contexts'],
+    anchors=measured(out,'anchors',load_anchors,contract,spec['anchor_completion'],spec['anchors'],fold,genes,panel)
+    controls,ntc_audit=measured(out,'controls',stage_controls,spec['ntc_parts'],genes,spec['ntc_contexts'],
         spec['ntc_reader'],spec['ntc_expected_parts'],staging)
-    x,available=features(spec['features'],panel)
+    x,available=measured(out,'features',features,spec['features'],panel)
     locations=spec.get('chunk_locations',{})
     if runtime_resolver is not None:
         from ammi_resolve_v4 import ResponseLocations
         locations=ResponseLocations(runtime_resolver,spec['chunk_pins'])
-    data,row_audit=training_data(view,fold,anchors,panel,x,available,locations,
+    data,row_audit=measured(out,'responses',training_data,view,fold,anchors,panel,x,available,locations,
                                digest,spec['anchor_completion']['sha256'])
     query=spec['queries']
     if not query or not set(query)<=set(controls):raise ValueError('query controls missing')
@@ -130,7 +131,7 @@ def run(manifest_path,digest,mode,seed,out,*,runtime_resolver=None):
             return dict(epoch=epoch,query_structural=reports,truth_read=False,independent_validation=False,**{'pass':True})
     else:
         if spec['guard']['axis']['sha256']!=contract['axis']['sha256']:raise ValueError('guard gene axis differs')
-        guard,baseline=inner_guard(spec['guard'],fold,spec['metrics'],controls,anchors,x,available,panel,genes)
+        guard,baseline=measured(out,'inner_baseline',inner_guard,spec['guard'],fold,spec['metrics'],controls,anchors,x,available,panel,genes)
     write(out/'input_audit.json',dict(ntc=ntc_audit,training=row_audit,inner_baseline=baseline,
         mode=spec['mode'],missing_features=[t for t,a in zip(panel,available) if not a]))
     export_residual(anchor_pin['path'],anchor_pin['sha256'],np.zeros_like(anchor['lfc']),
@@ -143,7 +144,7 @@ def run(manifest_path,digest,mode,seed,out,*,runtime_resolver=None):
         write(out/('epoch%d_before_guard.json'%epoch),dict(checkpoint=saved,coverage=audit))
     try:
         excluded=[] if production else [fold['outer'],fold['inner']]
-        model,receipt=fit(data,controls,excluded,mode,seed,guard,checkpoint_callback=checkpoint_epoch)
+        model,receipt=measured(out,'fit',fit,data,controls,excluded,mode,seed,guard,checkpoint_callback=checkpoint_epoch)
         receipt['controls_used_by_training']={c:control_shape(controls[c])[0] for c in sorted(set(data['contexts']))}
         write(out/'training_receipt.json',receipt)
         checkpoint=save_checkpoint(model,out/'checkpoint.pt',dict(manifest_sha256=digest,mode=mode,seed=seed))
@@ -156,7 +157,7 @@ def run(manifest_path,digest,mode,seed,out,*,runtime_resolver=None):
         b,_,_=predict(restored,x,available,context,controls,anchor['lfc'],anchor['observed'])
         if not np.array_equal(a,b):raise ValueError('checkpoint prediction parity failed')
         training_contexts={c:fold['contexts'][c]['lineage'] for c in set(data['contexts'])}
-        exports,diagnostics=query_export(restored,x,available,query,controls,anchor,anchor_pin,
+        exports,diagnostics=measured(out,'exports',query_export,restored,x,available,query,controls,anchor,anchor_pin,
             panel,genes,out,training_contexts,mode if not production else 'production')
         write(out/'complete.json',dict(status='COMPLETE',manifest_sha256=digest,fold=spec['fold'],
             mode=mode,seed=seed,checkpoint=checkpoint,exports=exports,diagnostic_failures=diagnostics,

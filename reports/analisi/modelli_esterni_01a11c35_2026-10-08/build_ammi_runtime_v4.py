@@ -15,7 +15,7 @@ VALID=HERE.parent/'validazione_indipendente_8a8ca58a_2026-10-08'
 DATA=Path('C:/Users/ferra/vcc2026-data')
 CODE=['run_ammi_v4.py','ammi_inputs_v4.py','ammi_inputs_v3.py','ammi_controls_v4.py',
       'ammi_encoder_v4.py','ammi_guard_v4.py','ammi_train_v4.py','ammi_context.py',
-      'ammi_contract_v2.py','ammi_io_v4.py','ammi_resolve_v4.py','ammi_bootstrap_v4.py','pie_adapter.py']
+      'ammi_contract_v2.py','ammi_io_v4.py','ammi_resolve_v4.py','ammi_bootstrap_v4.py','pie_adapter.py','ammi_timing_v1.py']
 
 def pin(path):
     path=Path(path);return dict(path=str(path),bytes=path.stat().st_size,sha256=sha256(path))

@@ -25,7 +25,7 @@ def write(path, value):
 
 def metadata_name(name, slug):
     """No logs, code bundles, RNA, NTC arrays, predictions or model binaries."""
-    if name == 'ammi_failure.json':
+    if name in ('ammi_failure.json', 'ammi_bootstrap_timing.json'):
         return name
     path = PurePosixPath(name)
     if len(path.parts) != 2 or path.parts[0] != slug:
@@ -33,7 +33,8 @@ def metadata_name(name, slug):
     fixed = {'complete.json', 'failure.json', 'preflight.json', 'input_audit.json',
              'training_receipt.json', 'epoch1_before_guard.json', 'epoch2_before_guard.json',
              'zero_residual_parity.receipt.json'}
-    if path.name in fixed or re.fullmatch(r'query_\d{3}_(native|swapped)(\.receipt|_failed)?\.json', path.name):
+    if (path.name in fixed or re.fullmatch(r'query_\d{3}_(native|swapped)(\.receipt|_failed)?\.json', path.name)
+            or re.fullmatch(r'timing_(anchors|controls|features|responses|inner_baseline|fit|exports)\.json',path.name)):
         return path.name
     return None
 
