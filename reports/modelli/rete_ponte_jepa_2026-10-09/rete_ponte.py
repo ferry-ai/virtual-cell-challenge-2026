@@ -138,7 +138,8 @@ def losses(model, out, zhat, zsrc, y, ym, wgt, gen):
     l_sig = sigreg(zsrc, generator=gen) if len(zsrc) > 8 else zsrc.new_zeros(())
     l_jepa = (1 - LAMBDA_SIG) * l_lat + LAMBDA_SIG * l_sig
     total = l_cos + W_NCE * l_nce + W_JEPA * l_jepa
-    return total, {"cos": float(l_cos), "nce": float(l_nce), "lat": float(l_lat), "sig": float(l_sig)}
+    return total, {"cos": float(l_cos.detach()), "nce": float(l_nce.detach()), "lat": float(l_lat.detach()),
+                   "sig": float(l_sig.detach())}
 
 
 # ---------------------------------------------------------------- one fold
@@ -270,18 +271,18 @@ def tall_from_cache(cache: Path, groups: list, kpos: dict, held: str, keys) -> n
 
 
 # ---------------------------------------------------------------- rule and main
-def rule(record: dict) -> dict:
+def rule(record: dict, arm: str = "rete") -> dict:
     lines = record["lines"]
     diffs, above, pds, pds_low = [], 0, [], False
     for L, d in lines.items():
-        c, p = d["diff"]["rete-all"]["cos"], d["diff"]["rete-all"]["pds"]
+        c, p = d["diff"][f"{arm}-all"]["cos"], d["diff"][f"{arm}-all"]["pds"]
         diffs.append(c["mean"])
         above += int(c["lo90"] is not None and c["lo90"] > 0)
         pds.append(p["mean"])
         pds_low |= p["mean"] < -0.02
     ok = (len(lines) == 5 and float(np.mean(diffs)) >= 0.015 and above >= 3 and float(np.mean(pds)) >= 0
           and not pds_low)
-    return {"mean_cos_diff": float(np.mean(diffs)), "lines_lo90_above_0": above, "mean_pds_diff": float(np.mean(pds)),
+    return {"arm": arm, "mean_cos_diff": float(np.mean(diffs)), "lines_lo90_above_0": above, "mean_pds_diff": float(np.mean(pds)),
             "any_line_pds_below_-0.02": bool(pds_low), "n_lines": len(lines), "passed": bool(ok)}
 
 
@@ -309,6 +310,8 @@ def main() -> None:
     ap.add_argument("--out", type=Path)
     ap.add_argument("--held", default=",".join(gd.HELD))
     ap.add_argument("--selftest", action="store_true")
+    ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--rule-arm", default="rete", help="r1: rete; r2 (EMENDAMENTO_R2.md): rete_centrata")
     a = ap.parse_args()
     if a.selftest:
         selftest()
@@ -347,9 +350,11 @@ def main() -> None:
             raise SystemExit(f"{held}: T_all parity with guadagno.transfer failed")
         log(f"  {len(keys)} targets; T_all parity with guadagno.transfer ok")
         fold = Fold(C, a.cache, meta, held, dev, log)
-        model, hist = fold.fit(seed=0)
+        model, hist = fold.fit(seed=a.seed)
         P = fold.predict(model, keys)
         Pw = fold.predict(model, keys, residual=False)
+        res_part = P - Pw                                    # the residual U r, per target
+        Pc = Pw + res_part - res_part.mean(0, keepdims=True)  # EMENDAMENTO_R2: centred over the panel's targets
         y, ysd, ycells = gd.truth(C, held, keys)
         bl = gd.basal_of(cube, cube.tables_of(held))
         x = 0.05 * np.expm1(np.nan_to_num(bl))
@@ -360,21 +365,22 @@ def main() -> None:
                 mask[i, o] = False
         Tall = np.nan_to_num(st["T"])
         ref = np.sqrt((np.where(mask, Tall, 0) ** 2).sum(1))
-        arms_pred = {"all": Tall, "rete": P, "rete_pesi": Pw}
+        arms_pred = {"all": Tall, "rete": P, "rete_pesi": Pw, "rete_centrata": Pc}
         res = {n: gd.measures(p, y, ysd ** 2, x, mask, ref) for n, p in arms_pred.items()}
         line = {"targets": len(keys), "epochs": len(hist), "history": hist,
                 "arms": {n: {m: float(np.nanmean(v)) for m, v in r.items()} for n, r in res.items()}, "diff": {}}
-        for p in ("rete", "rete_pesi"):
+        for p in ("rete", "rete_pesi", "rete_centrata"):
             line["diff"][f"{p}-all"] = {m: gd.boot_diff(res[p][m], res["all"][m], rng_boot) for m in ("cos", "pds", "mse")}
         record["lines"][held] = line
         log("  arms: " + json.dumps({n: {m: round(v, 4) for m, v in d.items()} for n, d in line["arms"].items()}))
-        log("  rete-all: " + json.dumps(line["diff"]["rete-all"]))
+        log(f"  {a.rule_arm}-all: " + json.dumps(line["diff"][f"{a.rule_arm}-all"]))
         log(f"  {time.time() - t0:.0f} s")
         torch.save({k: v.cpu() for k, v in model.state_dict().items()}, a.out / f"model_{held}.pt")
         (a.out / "result.json").write_text(json.dumps(record, indent=1), encoding="utf-8")
         del fold, model
         torch.cuda.empty_cache()
-    record["rule"] = rule(record)
+    record["seed"] = a.seed
+    record["rule"] = rule(record, a.rule_arm)
     (a.out / "result.json").write_text(json.dumps(record, indent=1), encoding="utf-8")
     log("rule: " + json.dumps(record["rule"]))
 
