@@ -1,0 +1,272 @@
+{
+  "schema": "AMMI-code-package/3",
+  "utc": "2026-10-09T14:54:15.334213+00:00",
+  "status": "CODE_READY_NUMERIC_INPUTS_AND_ROUTING_PENDING",
+  "payload": {
+    "path": "reports\\analisi\\modelli_esterni_01a11c35_2026-10-08\\ammi_code_package_r4\\ammi_code.zip",
+    "bytes": 37729,
+    "sha256": "7438df781a800b2605badd9c539deab6153ef29ae14be4446e7dfeaf3b562d57"
+  },
+  "files": {
+    "run_ammi_pilot_v3.py": {
+      "bytes": 10188,
+      "sha256": "8a4a88b22fe691b24518de49cb7787029350cbca9d99bcdc69f09c153271b573"
+    },
+    "ammi_inputs_v3.py": {
+      "bytes": 11977,
+      "sha256": "264148863667fa05c9866121488a0f5ae507c3be266ca984056fbd3679a39206"
+    },
+    "ammi_guard_v3.py": {
+      "bytes": 7236,
+      "sha256": "d7367f87a143ff38fa66ac49b052a8b97d85c2e2207774f2387a6344b7e841f0"
+    },
+    "ammi_context.py": {
+      "bytes": 6418,
+      "sha256": "03230745bb4a8d4dd8e7ff23931e17438be130de98663e557d10909969539d32"
+    },
+    "ammi_train_v2.py": {
+      "bytes": 7563,
+      "sha256": "ace71283479f05c3b2bdeed57725f628d195fc99cfdd4c083b55a51b7489b324"
+    },
+    "ammi_contract_v2.py": {
+      "bytes": 8204,
+      "sha256": "6469e8f9d368923490dbc4f3ca01edb1a7e671466882fc5664dfea0251aaa640"
+    },
+    "pie_adapter.py": {
+      "bytes": 11429,
+      "sha256": "a1ead9ee55d11c3507fd39e96288fab4732ce4ec17fe6c375c51855cdc5cb2f6"
+    },
+    "PROTOCOLLO_AMMI_r2.md": {
+      "bytes": 7878,
+      "sha256": "9700c0b7a48b0eb8eee12e713bc91e69cc9fa62c70bf9c7e25142e59f6235608"
+    },
+    "ADDENDUM_AMMI_r2_coverage.md": {
+      "bytes": 1542,
+      "sha256": "ce09807469ae0ea1e868c33373816d6022cfb948e08e3e131ad094835fe327a6"
+    },
+    "RICHIESTA_GUARDIA_AMMI_r3.md": {
+      "bytes": 3352,
+      "sha256": "82cfd405376839dc16710678304958b5af7757d8320d60506b161591925a5e39"
+    },
+    "NOTA_ROUTING_AMMI_r4.md": {
+      "bytes": 1541,
+      "sha256": "fd84568e5ee278c443069eb870a2f5191b5b750e801df8fb3431d5fbb3326a8a"
+    },
+    "ntc_cells.py": {
+      "bytes": 10823,
+      "sha256": "5b1ddb22fc27d7fd76597c2a5b726584c9849ace790a0aad478fd11ae16a8826"
+    },
+    "independent_metrics.py": {
+      "bytes": 8645,
+      "sha256": "e4bbc08859b3fd2ff0628cf255cd53f8db21507effb78e39fc38d618900567ec"
+    }
+  },
+  "jobs": [
+    {
+      "fold": "C-K562",
+      "mode": "cells",
+      "seed": 17,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native",
+        "swapped"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-K562.runtime.json --sha256 <verified-runtime-sha256> --mode cells --seed 17 --out /kaggle/working/C-K562-cells-17"
+    },
+    {
+      "fold": "C-K562",
+      "mode": "cells",
+      "seed": 29,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native",
+        "swapped"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-K562.runtime.json --sha256 <verified-runtime-sha256> --mode cells --seed 29 --out /kaggle/working/C-K562-cells-29"
+    },
+    {
+      "fold": "C-K562",
+      "mode": "cells",
+      "seed": 43,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native",
+        "swapped"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-K562.runtime.json --sha256 <verified-runtime-sha256> --mode cells --seed 43 --out /kaggle/working/C-K562-cells-43"
+    },
+    {
+      "fold": "C-K562",
+      "mode": "none",
+      "seed": 17,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-K562.runtime.json --sha256 <verified-runtime-sha256> --mode none --seed 17 --out /kaggle/working/C-K562-none-17"
+    },
+    {
+      "fold": "C-K562",
+      "mode": "none",
+      "seed": 29,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-K562.runtime.json --sha256 <verified-runtime-sha256> --mode none --seed 29 --out /kaggle/working/C-K562-none-29"
+    },
+    {
+      "fold": "C-K562",
+      "mode": "none",
+      "seed": 43,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-K562.runtime.json --sha256 <verified-runtime-sha256> --mode none --seed 43 --out /kaggle/working/C-K562-none-43"
+    },
+    {
+      "fold": "C-K562",
+      "mode": "mean",
+      "seed": 17,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-K562.runtime.json --sha256 <verified-runtime-sha256> --mode mean --seed 17 --out /kaggle/working/C-K562-mean-17"
+    },
+    {
+      "fold": "C-iPSC",
+      "mode": "cells",
+      "seed": 17,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native",
+        "swapped"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-iPSC.runtime.json --sha256 <verified-runtime-sha256> --mode cells --seed 17 --out /kaggle/working/C-iPSC-cells-17"
+    },
+    {
+      "fold": "C-iPSC",
+      "mode": "cells",
+      "seed": 29,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native",
+        "swapped"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-iPSC.runtime.json --sha256 <verified-runtime-sha256> --mode cells --seed 29 --out /kaggle/working/C-iPSC-cells-29"
+    },
+    {
+      "fold": "C-iPSC",
+      "mode": "cells",
+      "seed": 43,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native",
+        "swapped"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-iPSC.runtime.json --sha256 <verified-runtime-sha256> --mode cells --seed 43 --out /kaggle/working/C-iPSC-cells-43"
+    },
+    {
+      "fold": "C-iPSC",
+      "mode": "none",
+      "seed": 17,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-iPSC.runtime.json --sha256 <verified-runtime-sha256> --mode none --seed 17 --out /kaggle/working/C-iPSC-none-17"
+    },
+    {
+      "fold": "C-iPSC",
+      "mode": "none",
+      "seed": 29,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-iPSC.runtime.json --sha256 <verified-runtime-sha256> --mode none --seed 29 --out /kaggle/working/C-iPSC-none-29"
+    },
+    {
+      "fold": "C-iPSC",
+      "mode": "none",
+      "seed": 43,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-iPSC.runtime.json --sha256 <verified-runtime-sha256> --mode none --seed 43 --out /kaggle/working/C-iPSC-none-43"
+    },
+    {
+      "fold": "C-iPSC",
+      "mode": "mean",
+      "seed": 17,
+      "account": "davidmaisterx",
+      "device": "cuda",
+      "private": true,
+      "inference_interventions": [
+        "native"
+      ],
+      "command": "python run_ammi_pilot_v3.py --manifest C-iPSC.runtime.json --sha256 <verified-runtime-sha256> --mode mean --seed 17 --out /kaggle/working/C-iPSC-mean-17"
+    }
+  ],
+  "runtime_manifest_schema": "AMMI-biological-runtime/3",
+  "required_runtime_fields": [
+    "protocol",
+    "authorization",
+    "anchor_contract",
+    "view",
+    "panel",
+    "panel_file",
+    "anchor_completion",
+    "anchors",
+    "ntc_parts",
+    "ntc_expected_parts",
+    "ntc_contexts",
+    "ntc_context_lineages",
+    "ntc_reader",
+    "outer_queries",
+    "features",
+    "chunk_locations",
+    "guard",
+    "metrics",
+    "code"
+  ],
+  "unresolved": [
+    "verified numeric NTC parts and anchor completions",
+    "DATI/VALIDAZIONE fixed context-to-truth routing and guard review",
+    "private input access on GPU runtime",
+    "fresh quota/session/resource preflight and applicable authorization check"
+  ],
+  "new_cloud_jobs_launched": false,
+  "new_data_transfers": false,
+  "complete_D053": false,
+  "note": "14 declared arm/seed fits; scheduling only after preflight, no implied quota or publication"
+}
