@@ -83,7 +83,7 @@ def filled_only(M, pred, judged, shrunk, raw, se):
     """Per target, on the filled pairs the truth can judge: squared and absolute error relative to predicting
     zero (1.0 is the zero prediction), and sign agreement on the truth's confident genes."""
     n = pred.shape[0]
-    out = {k: np.full(n, np.nan) for k in ('mse_vs_zero', 'nmae_conf_vs_zero', 'sign_conf')}
+    out = {k: np.full(n, np.nan) for k in ('mse_vs_zero', 'nmae_conf_vs_zero', 'sign_conf', 'cos', 'amp_star')}
     out['n_filled'] = judged.sum(axis=1).astype(float)
     out['n_conf'] = np.zeros(n)
     with np.errstate(all='ignore'):
@@ -96,6 +96,10 @@ def filled_only(M, pred, judged, shrunk, raw, se):
         den = float((r * r).sum())
         if den > 0:
             out['mse_vs_zero'][i] = float(((p - r) ** 2).sum() / den)
+        pp = float((p * p).sum())
+        if pp > 0 and den > 0:                 # amplitude-free agreement, and the multiplier that would fit the truth
+            out['cos'][i] = float((p * r).sum() / np.sqrt(pp * den))
+            out['amp_star'][i] = float((p * r).sum() / pp)
         conf = np.abs(z) >= M.Z_CONF
         out['n_conf'][i] = float(conf.sum())
         if conf.sum() < MIN_CONF:
@@ -104,6 +108,27 @@ def filled_only(M, pred, judged, shrunk, raw, se):
         if den > 0:
             out['nmae_conf_vs_zero'][i] = float(np.abs(p[conf] - r[conf]).sum() / den)
         out['sign_conf'][i] = float(np.mean(np.sign(p[conf]) == np.sign(o[conf])))
+    return out
+
+
+def sign_and_coverage(M, pred, predicted, truth_ok, shrunk, raw, se):
+    """Per target, on the truth's confident genes: the share the arm predicts at all (coverage), the sign
+    agreement among the predicted ones (accuracy), and the agreement over all of them with an unpredicted gene
+    counted as a miss (what a sign measure reads when it treats zero as a wrong sign)."""
+    n = pred.shape[0]
+    out = {k: np.full(n, np.nan) for k in ('coverage_conf', 'sign_predicted', 'sign_all')}
+    with np.errstate(all='ignore'):
+        Z = raw.astype(np.float64) / se.astype(np.float64)
+    for i in range(n):
+        conf = truth_ok[i] & (np.abs(Z[i]) >= M.Z_CONF)
+        if conf.sum() < MIN_CONF:
+            continue
+        got = conf & predicted[i]
+        agree = np.sign(pred[i]) == np.sign(shrunk[i])
+        out['coverage_conf'][i] = float(got.sum() / conf.sum())
+        out['sign_all'][i] = float((agree & got).sum() / conf.sum())
+        if got.sum() >= MIN_CONF:
+            out['sign_predicted'][i] = float(agree[got].mean())
     return out
 
 
@@ -157,7 +182,7 @@ def audit(spec: dict, M) -> dict:
         block['genes_for_rank_strict'], block['genes_for_rank_95'])
     parity['passed'] = bool(parity['targets_equal'] and parity['genes_for_rank_equal']
                             and all(parity[k]['abs_difference'] < PARITY_TOL for k in as_run))
-    doc = {'schema': 'supporto-fallback/1', 'fold': fold, 'truth': tname, 'contract': 'PROTOCOLLO_v3 sections 1-2',
+    doc = {'schema': 'supporto-fallback/2', 'fold': fold, 'truth': tname, 'contract': 'PROTOCOLLO_v3 sections 1-2',
            'not_vcc_scores': True, 'development_lineage': True, 'numpy': np.__version__, 'parity': parity}
     if not parity['passed']:
         doc['stopped'] = 'parity failed: no diagnostic is read'
@@ -264,6 +289,15 @@ def audit(spec: dict, M) -> dict:
     control = doc['generator_view']['contrasts']['zero-zero~shuffle']['disc95g']
     doc['generator_view']['disc95g_control_passed'] = bool(control['resolved'] and control['mean'] > 0)
 
+    masks = {'zero': obs_t0[keep], 'esm2': obs_f[keep], 'generic': obs_f[keep], 'swapped': obs_f[keep]}
+    sac = {name: sign_and_coverage(M, arms[name][keep], masks[name], truth_ok, shrunk, raw, se) for name in arms}
+    with np.errstate(all='ignore'):
+        doc['sign_apart_from_coverage'] = {
+            'note': 'added after the C-K562 numbers of r1 were read and before any C-iPSC number (ADDENDUM_v3_1.md)',
+            'levels': {name: {k: float(np.nanmean(v)) for k, v in sac[name].items()} for name in sac},
+            'contrasts': {'%s-%s' % (a, b): {k: M.strip(M.paired_bootstrap(sac[a][k], sac[b][k])) for k in sac[a]}
+                          for a, b in (('esm2', 'zero'), ('esm2', 'swapped'), ('esm2', 'generic'))}}
+
     # the own-support convention of the frozen bench, for the same pair of arms (what was published)
     own = {}
     for name in ('T0', 'fallback'):
@@ -285,13 +319,16 @@ def audit(spec: dict, M) -> dict:
         'min_confident_pairs': MIN_CONF,
         'filled_pairs_per_readable_target': quantiles(only['esm2']['n_filled'][readable]),
         'confident_filled_pairs_per_readable_target': quantiles(only['esm2']['n_conf'][readable]),
-        'levels': {name: {k: float(np.nanmean(only[name][k])) for k in ('mse_vs_zero', 'nmae_conf_vs_zero', 'sign_conf')}
+        'levels': {name: {k: float(np.nanmean(only[name][k]))
+                          for k in ('mse_vs_zero', 'nmae_conf_vs_zero', 'sign_conf', 'cos', 'amp_star')}
                    for name in only},
-        'against_zero': {name: {k: against(M, only[name][k], 1.0) for k in ('mse_vs_zero', 'nmae_conf_vs_zero')}
-                         for name in only},
+        'against_zero': {name: {**{k: against(M, only[name][k], 1.0) for k in ('mse_vs_zero', 'nmae_conf_vs_zero')},
+                                'cos': against(M, only[name]['cos'], 0.0)} for name in only},
         'contrasts': {'%s-%s' % (a, b): {k: M.strip(M.paired_bootstrap(only[a][k], only[b][k]))
-                                         for k in ('mse_vs_zero', 'nmae_conf_vs_zero', 'sign_conf')}
-                      for a, b in (('esm2', 'swapped'), ('esm2', 'generic'))}}
+                                         for k in ('mse_vs_zero', 'nmae_conf_vs_zero', 'sign_conf', 'cos')}
+                      for a, b in (('esm2', 'swapped'), ('esm2', 'generic'))},
+        'cos_and_amp_star_note': 'added after the C-K562 numbers of r1 were read and before any C-iPSC number '
+                                 '(ADDENDUM_v3_1.md)'}
 
     # the words of section 2, decided by the rule written before the numbers
     gv = doc['generator_view']['contrasts']
