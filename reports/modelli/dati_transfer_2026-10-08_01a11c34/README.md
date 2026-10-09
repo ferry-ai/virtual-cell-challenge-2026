@@ -4,6 +4,13 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
+**T39 T0+ESM2 sospeso prima di qualsiasi upload/lancio:**
+[stato esatto e blocco auto-review](t39_hold_candidate_review_r1.json).
+Lead sta verificando una base T38/T3; la precedente domanda di consenso non
+riattiva il candidato T0. [Verifica numerica PASS](t39_effect_verified_r1.json)
+e [pacchetto locale con upload fittizio](t39/r1/draft_prepared.json) restano
+riusabili come preparazione. Nessuna entry VCC creata e nessun calcolo cloud.
+
 **Destinazione produzione aggiornata il 10 ottobre: MX**, su richiesta MODELLI.
 [Variante emettitore MX](EMETTITORE_ACCESSI_PRODUZIONE_MX_r1.md): 209 payload,
 10.100.920.946 byte, job esatto e consenso specifico obbligatori; otto test locali
