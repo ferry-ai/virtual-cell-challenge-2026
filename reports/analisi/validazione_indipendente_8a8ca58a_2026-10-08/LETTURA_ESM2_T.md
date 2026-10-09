@@ -93,3 +93,24 @@ il banco misura invece di assumere.
 Sessantasei bersagli; sei verità, tutte di lignaggi che il modello ha visto con altri bersagli; proxy nello spazio
 degli effetti, nessun membro ufficiale; la scala nativa non è quella dello stadio 100. La correttezza numerica del
 fit (parità con una regressione densa) è una prova di MODELLI-ESTERNI su 128 righe, non rifatta qui.
+
+## Aggiunta delle 02:39, prima della corsa r7: il fit J senza K562
+
+Scritta dopo aver letto il regime T ([risultati](RISULTATI_ESM2_T.md)) e **prima** dei numeri della corsa r7.
+MODELLI-ESTERNI ha concluso anche il fit senza il lignaggio K562 e senza i bersagli nascosti
+(`davideferrante11/esm2-j-k562-01a11c35-r1`, verificato da loro alle 02:11); file nativo con sha256
+`cedca755…405a`, uguale alla loro ricevuta, esame tecnico superato
+([esame](banco/esm2_jk562_r1/esame.json)).
+
+- **Che cosa si legge.** Contro la verità di K562 è **regime J** (né il lignaggio né i bersagli erano nel
+  training): è la prima lettura J di una componente esterna. Contro le altre cinque verità è regime T con K562
+  tolto, descrittiva.
+- **Già misurato senza verità** ([confronto](banco/esm2_jk562_r1/confronto_con_T.json)): le previsioni di questo
+  fit e del fit T sono quasi le stesse (correlazione per bersaglio mediana 0,996, minima 0,990; norma 1,009).
+  **Attesa scritta prima:** la lettura contro K562 ripete quella del regime T (`disc95` intorno a 0,52, non
+  distinguibile dal braccio a previsioni scambiate); se è così, vuol dire che le righe di K562 pesano poco nel
+  modello, non che il modello generalizzi.
+- **Bracci e contrasti:** `E2jk`, `E2jkg`, `E2jkc` come sopra; `E2jk − E2jkg`, `E2jk` contro il suo braccio a
+  previsioni scambiate, `E2jk − T0`, `E2jkc − T0`, e `E2jk − E2` (che cosa cambia togliendo K562).
+- **Regola:** la stessa, letta sul solo fold K562: servono insieme `E2jk − E2jkg` positivo e risolto e il controllo
+  a previsioni scambiate risolto. Nessuna promozione: è un lignaggio, e un regime J non sostituisce il regime C.

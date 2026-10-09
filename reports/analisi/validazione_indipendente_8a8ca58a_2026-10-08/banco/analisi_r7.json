@@ -1,0 +1,141 @@
+{
+ "what": "the ESM2 + ridge fit without the K562 lineage and without the hidden targets (LETTURA_ESM2_T.md, addendum): against the K562 truth it is regime J, against the other five it is regime T with K562 removed",
+ "j_folds": true,
+ "external_arms": {
+  "E2jk": {
+   "J-K562": {
+    "bytes": 4484713,
+    "sha256": "8b7cff3123c229c5914d5827bd1abd4fc30fcd64b184a9b3c2c4b0eb8ed53899"
+   },
+   "J-CD4T": {
+    "bytes": 4484713,
+    "sha256": "8b7cff3123c229c5914d5827bd1abd4fc30fcd64b184a9b3c2c4b0eb8ed53899"
+   },
+   "J-HCT116": {
+    "bytes": 4484713,
+    "sha256": "8b7cff3123c229c5914d5827bd1abd4fc30fcd64b184a9b3c2c4b0eb8ed53899"
+   },
+   "J-HEK293": {
+    "bytes": 4484713,
+    "sha256": "8b7cff3123c229c5914d5827bd1abd4fc30fcd64b184a9b3c2c4b0eb8ed53899"
+   },
+   "J-iPSC": {
+    "bytes": 4484713,
+    "sha256": "8b7cff3123c229c5914d5827bd1abd4fc30fcd64b184a9b3c2c4b0eb8ed53899"
+   },
+   "J-H1": {
+    "bytes": 4484713,
+    "sha256": "8b7cff3123c229c5914d5827bd1abd4fc30fcd64b184a9b3c2c4b0eb8ed53899"
+   }
+  },
+  "E2jkg": {
+   "J-K562": {
+    "bytes": 4471416,
+    "sha256": "c5ec69719eecc433a5edbfea51c0c80ff6b8624072a256eddeba273088969794"
+   },
+   "J-CD4T": {
+    "bytes": 4471416,
+    "sha256": "c5ec69719eecc433a5edbfea51c0c80ff6b8624072a256eddeba273088969794"
+   },
+   "J-HCT116": {
+    "bytes": 4471416,
+    "sha256": "c5ec69719eecc433a5edbfea51c0c80ff6b8624072a256eddeba273088969794"
+   },
+   "J-HEK293": {
+    "bytes": 4471416,
+    "sha256": "c5ec69719eecc433a5edbfea51c0c80ff6b8624072a256eddeba273088969794"
+   },
+   "J-iPSC": {
+    "bytes": 4471416,
+    "sha256": "c5ec69719eecc433a5edbfea51c0c80ff6b8624072a256eddeba273088969794"
+   },
+   "J-H1": {
+    "bytes": 4471416,
+    "sha256": "c5ec69719eecc433a5edbfea51c0c80ff6b8624072a256eddeba273088969794"
+   }
+  },
+  "E2jkc": {
+   "J-K562": {
+    "bytes": 4484254,
+    "sha256": "00ce5719009733734670dcd78d5c12184441a78e12ea88863ff00df597517665"
+   },
+   "J-CD4T": {
+    "bytes": 4484254,
+    "sha256": "00ce5719009733734670dcd78d5c12184441a78e12ea88863ff00df597517665"
+   },
+   "J-HCT116": {
+    "bytes": 4484254,
+    "sha256": "00ce5719009733734670dcd78d5c12184441a78e12ea88863ff00df597517665"
+   },
+   "J-HEK293": {
+    "bytes": 4484254,
+    "sha256": "00ce5719009733734670dcd78d5c12184441a78e12ea88863ff00df597517665"
+   },
+   "J-iPSC": {
+    "bytes": 4484254,
+    "sha256": "00ce5719009733734670dcd78d5c12184441a78e12ea88863ff00df597517665"
+   },
+   "J-H1": {
+    "bytes": 4484254,
+    "sha256": "00ce5719009733734670dcd78d5c12184441a78e12ea88863ff00df597517665"
+   }
+  },
+  "E2": {
+   "J-K562": {
+    "bytes": 4487930,
+    "sha256": "4f46ee112394c5c9c72b586fcec4b472cac1d547cff08d5d55f04cbbc3f148e8"
+   },
+   "J-CD4T": {
+    "bytes": 4487930,
+    "sha256": "4f46ee112394c5c9c72b586fcec4b472cac1d547cff08d5d55f04cbbc3f148e8"
+   },
+   "J-HCT116": {
+    "bytes": 4487930,
+    "sha256": "4f46ee112394c5c9c72b586fcec4b472cac1d547cff08d5d55f04cbbc3f148e8"
+   },
+   "J-HEK293": {
+    "bytes": 4487930,
+    "sha256": "4f46ee112394c5c9c72b586fcec4b472cac1d547cff08d5d55f04cbbc3f148e8"
+   },
+   "J-iPSC": {
+    "bytes": 4487930,
+    "sha256": "4f46ee112394c5c9c72b586fcec4b472cac1d547cff08d5d55f04cbbc3f148e8"
+   },
+   "J-H1": {
+    "bytes": 4487930,
+    "sha256": "4f46ee112394c5c9c72b586fcec4b472cac1d547cff08d5d55f04cbbc3f148e8"
+   }
+  }
+ },
+ "contrasts": [
+  [
+   "J_spec",
+   "E2jk",
+   "E2jkg"
+  ],
+  [
+   "c_shufflein_E2jk",
+   "E2jk",
+   "E2jk~shufflein"
+  ],
+  [
+   "J_E2jk",
+   "E2jk",
+   "T0"
+  ],
+  [
+   "J_E2jkc",
+   "E2jkc",
+   "T0"
+  ],
+  [
+   "J_minus_T",
+   "E2jk",
+   "E2"
+  ]
+ ],
+ "extra_dataset_sources": [
+  "davideferrante11/vcc-validazione-esm2-jk562-8a8ca58a-r1",
+  "davideferrante11/vcc-validazione-esm2-t-8a8ca58a-r2"
+ ]
+}

@@ -1,10 +1,13 @@
 """The ESM2 + ridge predictions of the T view (MODELLI-ESTERNI), read-only: technical examination, conversion to
 the stage-100 interface of the bench, one private dataset.
 
-    prepara_esm2_t.py esamina <revision>                 structure, identity and scale of the native predictions
-    prepara_esm2_t.py converti <revision>                the arms E2, E2g, E2c as stage-100 files in the data root
-    prepara_esm2_t.py dataset-create <revision>
-    prepara_esm2_t.py dataset-status <revision> <out.json>
+    prepara_esm2_t.py esamina <revision> [fit]           structure, identity and scale of the native predictions
+    prepara_esm2_t.py converti <revision> [fit]          the arms E2, E2g, E2c as stage-100 files in the data root
+    prepara_esm2_t.py dataset-create <revision> [fit]
+    prepara_esm2_t.py dataset-status <revision> <out.json> [fit]
+
+`fit` is `t` (the default: the fit on the T view) or `j-k562` (the fit without the K562 lineage and without the
+hidden targets); the arms of the second are named E2jk, E2jkg, E2jkc.
 
 The native file belongs to MODELLI-ESTERNI (session 01a11c35) and is never changed. It holds one row per query
 (66 hidden panel targets x the training contexts) of a target-only model: the same target must get the same
@@ -31,10 +34,20 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import prepara_banco as B  # noqa: E402
 
-NATIVE = Path('C:/Users/ferra/vcc2026-data/external_models/01a11c35/verified_cloud_outputs/'
-              'esm2-t-01a11c35-r3/esm2-t-01a11c35-r3/fit/native_predictions.npz')
-RECEIPT = B.REPO / ('reports/analisi/modelli_esterni_01a11c35_2026-10-08/'
-                    'esm2-t-01a11c35-r3.verified_terminal_collection_r1.json')
+OUTPUTS = Path('C:/Users/ferra/vcc2026-data/external_models/01a11c35/verified_cloud_outputs')
+RECEIPTS = B.REPO / 'reports/analisi/modelli_esterni_01a11c35_2026-10-08'
+FITS = {'t': dict(job='esm2-t-01a11c35-r3', tag='t', prefix='E2'),
+        'j-k562': dict(job='esm2-j-k562-01a11c35-r1', tag='jk562', prefix='E2jk')}
+FIT = FITS['t']
+NATIVE = OUTPUTS / FIT['job'] / FIT['job'] / 'fit/native_predictions.npz'
+RECEIPT = RECEIPTS / (FIT['job'] + '.verified_terminal_collection_r1.json')
+
+
+def select(fit):
+    global FIT, NATIVE, RECEIPT
+    FIT = FITS[fit]
+    NATIVE = OUTPUTS / FIT['job'] / FIT['job'] / 'fit/native_predictions.npz'
+    RECEIPT = RECEIPTS / (FIT['job'] + '.verified_terminal_collection_r1.json')
 MANIFEST = HERE.parent / 'manifest_fold_v2.json'
 CONTROLS = Path('C:/Users/ferra/vcc2026-data/raw/controls')
 DATA = Path('C:/Users/ferra/vcc2026-data/processed/validazione_indipendente_8a8ca58a_2026-10-08')
@@ -45,7 +58,7 @@ TOLERANCE = 1e-12        # revision r1 asked exact equality across contexts and 
 
 
 def folder(revision):
-    return HERE / ('esm2_t_%s' % revision)
+    return HERE / ('esm2_%s_%s' % (FIT['tag'], revision))
 
 
 def first_column(path):
@@ -158,7 +171,7 @@ def converti(revision):
     exam = B.read(here / 'esame.json')
     if not exam['usable']:
         raise ValueError('the native predictions did not pass the examination')
-    stage = DATA / ('esm2_t_%s' % revision)
+    stage = DATA / ('esm2_%s_%s' % (FIT['tag'], revision))
     stage.mkdir(parents=True, exist_ok=False)
     panel = first_column(CONTROLS / 'pert_counts.csv')
     axis = first_column(CONTROLS / 'gene_names.csv')
@@ -184,15 +197,16 @@ def converti(revision):
     same_cis = bool(np.array_equal(cis[CIS_FOLDS[0]][0][rows], cis[CIS_FOLDS[1]][0][rows])
                     and np.array_equal(cis[CIS_FOLDS[0]][1][rows], cis[CIS_FOLDS[1]][1][rows]))
     cis_lfc, cis_obs = cis[CIS_FOLDS[0]]
+    E, G, C = FIT['prefix'], FIT['prefix'] + 'g', FIT['prefix'] + 'c'
     arms = {name: (np.zeros((len(panel), len(axis)), np.float32), np.zeros((len(panel), len(axis)), bool))
-            for name in ('E2', 'E2g', 'E2c')}
+            for name in (E, G, C)}
     for t, row in effects.items():
         i, seen = position[t], observed[t]
-        arms['E2'][0][i], arms['E2'][1][i] = np.where(seen, row, 0.0), seen
-        arms['E2g'][0][i], arms['E2g'][1][i] = np.where(support[t], generic[t], 0.0), support[t]
+        arms[E][0][i], arms[E][1][i] = np.where(seen, row, 0.0), seen
+        arms[G][0][i], arms[G][1][i] = np.where(support[t], generic[t], 0.0), support[t]
         combined = np.where(seen, amplitude * row, 0.0).astype(np.float32)
         combined[cis_obs[i]] = cis_lfc[i][cis_obs[i]]
-        arms['E2c'][0][i], arms['E2c'][1][i] = combined, seen | cis_obs[i]
+        arms[C][0][i], arms[C][1][i] = combined, seen | cis_obs[i]
     files = {}
     for name, (lfc, obs) in arms.items():
         dest = stage / (name + '.npz')
@@ -205,9 +219,10 @@ def converti(revision):
                            identical_on_the_hidden_rows_in_both_folds=same_cis,
                            pairs_per_hidden_target_median=float(np.median(cis_obs[rows].sum(axis=1)))),
         rows_predicted=len(rows), not_production=True,
-        arms=dict(E2='native prediction, ln fold change, no amplitude, no cis head',
-                  E2g='generic part alone, the same row for every target',
-                  E2c='amplitude x E2, with the cis head of the transfer where the transfer predicts')))
+        fit=FIT['job'],
+        arms={E: 'native prediction, ln fold change, no amplitude, no cis head',
+              G: 'generic part alone, the same row for every target',
+              C: 'amplitude x the native prediction, with the cis head of the transfer where the transfer predicts'}))
     print(json.dumps(dict(files={k: v['bytes'] for k, v in files.items()}, same_cis=same_cis, amplitude=amplitude,
                           cis_pairs_median=float(np.median(cis_obs[rows].sum(axis=1))))))
 
@@ -217,12 +232,13 @@ def dataset_create(revision):
     here = folder(revision)
     record = B.read(here / 'conversione.json')
     stage = Path(record['stage'])
-    dataset = '%s/vcc-validazione-esm2-t-%s-%s' % (B.OWNER, B.SESSION, revision)
+    dataset = '%s/vcc-validazione-esm2-%s-%s-%s' % (B.OWNER, FIT['tag'], B.SESSION, revision)
     (stage / 'dataset-metadata.json').write_text(json.dumps(dict(
         title=dataset.split('/')[1], id=dataset, licenses=[dict(name='other')]), indent=1) + '\n')
     (stage / 'README.json').write_text(json.dumps(dict(
-        what='ESM2 + ridge predictions of the T view (MODELLI-ESTERNI, session 01a11c35) for the 66 hidden panel '
-             'targets, converted to the stage-100 interface for the independent bench; not a production artefact',
+        what='ESM2 + ridge predictions of fit %s (MODELLI-ESTERNI, session 01a11c35) for the 66 hidden panel '
+             'targets, converted to the stage-100 interface for the independent bench; not a production artefact'
+             % FIT['job'],
         files=record['files'], arms=record['arms']), indent=1) + '\n')
     env = {k: v for k, v in os.environ.items()
            if k not in ('KAGGLE_CONFIG_DIR', 'KAGGLE_USERNAME', 'KAGGLE_KEY', 'KAGGLE_API_TOKEN')}
@@ -248,5 +264,8 @@ def dataset_status(revision, out):
 
 
 if __name__ == '__main__':
+    arguments = sys.argv[2:]
+    if arguments and arguments[-1] in FITS:
+        select(arguments.pop())
     {'esamina': esamina, 'converti': converti, 'dataset-create': dataset_create,
-     'dataset-status': dataset_status}[sys.argv[1]](*sys.argv[2:])
+     'dataset-status': dataset_status}[sys.argv[1]](*arguments)

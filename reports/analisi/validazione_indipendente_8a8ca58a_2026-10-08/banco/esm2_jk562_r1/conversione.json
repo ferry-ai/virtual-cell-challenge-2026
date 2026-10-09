@@ -1,0 +1,42 @@
+{
+ "utc": "2026-10-09T00:37:39.126145+00:00",
+ "stage": "C:/Users/ferra/vcc2026-data/processed/validazione_indipendente_8a8ca58a_2026-10-08/esm2_jk562_r1",
+ "native": {
+  "bytes": 17095354,
+  "sha256": "cedca7553cf12bb2f311a1d6ba3df0e108417e12c2978d9a872bd53b3ddb405a",
+  "path": "C:/Users/ferra/vcc2026-data/external_models/01a11c35/verified_cloud_outputs/esm2-j-k562-01a11c35-r1/esm2-j-k562-01a11c35-r1/fit/native_predictions.npz"
+ },
+ "files": {
+  "E2jk": {
+   "bytes": 4484713,
+   "sha256": "8b7cff3123c229c5914d5827bd1abd4fc30fcd64b184a9b3c2c4b0eb8ed53899"
+  },
+  "E2jkg": {
+   "bytes": 4471416,
+   "sha256": "c5ec69719eecc433a5edbfea51c0c80ff6b8624072a256eddeba273088969794"
+  },
+  "E2jkc": {
+   "bytes": 4484254,
+   "sha256": "00ce5719009733734670dcd78d5c12184441a78e12ea88863ff00df597517665"
+  }
+ },
+ "amplitude": 1.576,
+ "cis_head_from": {
+  "kernel": "davideferrante11/vcc-validazione-logo-8a8ca58a-r4",
+  "folds": [
+   "J-K562",
+   "J-CD4T"
+  ],
+  "retrieval_returncode": 1,
+  "identical_on_the_hidden_rows_in_both_folds": true,
+  "pairs_per_hidden_target_median": 0.0
+ },
+ "rows_predicted": 66,
+ "not_production": true,
+ "fit": "esm2-j-k562-01a11c35-r1",
+ "arms": {
+  "E2jk": "native prediction, ln fold change, no amplitude, no cis head",
+  "E2jkg": "generic part alone, the same row for every target",
+  "E2jkc": "amplitude x the native prediction, with the cis head of the transfer where the transfer predicts"
+ }
+}
