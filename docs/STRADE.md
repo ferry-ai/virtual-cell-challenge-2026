@@ -47,6 +47,7 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 | S-013 | Ridge sugli embedding ESM2 del bersaglio, senza contesto (regime T) | segnale specifico del bersaglio riconoscibile solo contro la verità iPSC; sui quattro lignaggi non staminali niente di risolto e sotto la testa cis (CP-0072); nel regime C perde contro il transfer su K562 e, tolto iPSC dal training, il segnale su iPSC scende di 0,10 (CP-0075) | ipotizzato | 2026-10-09 |
 | S-014 | Voti KO a peso ridotto dentro il transfer CRISPRi (T3, inviato come t38) | ufficiale +0,0017 da t36: non conclusivo per la regola registrata; mai valutato su un fold (CP-0074) | ignoto | 2026-10-09 |
 | S-015 | Riempire con il ridge ESM2 le coppie che il transfer non prevede (fallback) | la misura primaria non copriva il riempimento; nella vista del generatore più copertura, errore quadratico peggiore, nessuna specificità del bersaglio; sei membri non eseguiti: inconcludente (CP-0075) | ipotizzato | 2026-10-09 |
+| S-016 | AMMI, ramo senza contesto (`none`): ancora annidata del transfer più un residuo appreso dal solo bersaglio | non si distingue dalla propria ancora su K562 e iPSC nello spazio degli effetti; sei membri e ramo `cells` non ancora letti (CP-0076) | ipotizzato | 2026-10-09 |
 
 ## Voci
 
@@ -455,3 +456,29 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 - **Guardia eseguibile:** `reports/analisi/validazione_banco_eace4d03_2026-10-09/esm2/supporto_fallback.py` si
   ferma se la parità o il controllo dell'adattatore falliscono, conta la copertura a parte e scrive «la misura non
   copre il cambiamento» quando meno di metà delle coppie cambiate giudicabili entra nel rango.
+
+### S-016 — AMMI, ramo senza contesto (`none`): ancora annidata del transfer più un residuo appreso dal solo bersaglio
+
+- **Che cosa si è provato:** due fit pilota di MODELLI-ESTERNI (C-K562 e C-iPSC, seme 17, due epoche, 384 e 925
+  righe con massa uguale per lignaggio), braccio `none`: la previsione è l'ancora annidata `A0` (il transfer senza
+  i lignaggi che il fit esclude) più un residuo che dipende solo dal bersaglio. Letto da VALIDAZIONE sul lignaggio
+  escluso, contro `A0` e contro il transfer del fold `T0`.
+- **Prova:** [CP-0076](checkpoints/0076-ammi-none-contro-ancora-annidata.md);
+  [piano scritto prima](../reports/analisi/validazione_banco_eace4d03_2026-10-09/LETTURA_AMMI_NONE.md);
+  [risultati](../reports/analisi/validazione_banco_eace4d03_2026-10-09/RISULTATI_AMMI_NONE.md).
+- **Sintomo:** nessun fallimento e nessun beneficio: `AN` − `A0` su `disc95` +0,0011 [−0,0015; +0,0038] (C-K562)
+  e +0,0005 [−0,0012; +0,0023] (C-iPSC); le sole differenze risolte sono un `mse_ratio` di +0,0006 e un
+  `nmae_conf` di −0,0003, di segno opposto fra i fold. L'ampiezza della previsione non cambia.
+- **Meccanismo:** ipotizzato. Il residuo appreso vale circa il 3 % dell'ampiezza dell'ancora e la loss si muove
+  dello 0,7 % in due epoche: con così poco training e senza contesto il modello resta la sua ancora. Non è isolato
+  se più epoche o più righe cambierebbero il quadro.
+- **Che cosa esclude e che cosa no:** esclude di leggere le guardie tecniche superate come beneficio, e di
+  confrontare un braccio AMMI con `T0` invece che con `A0` (su C-K562 l'ancora annidata è più debole in misure
+  secondarie, perché le manca CD4T). Non esclude nulla sul braccio `cells`, che non era ancora addestrato.
+- **Che cosa la riaprirebbe:** i fit `cells` letti con gli stessi contrasti (`cells` − `A0`, `cells` − `none`,
+  contesto scambiato), almeno tre semi per dire che il contesto aiuta, e i sei membri sui due fold.
+- **Segnale precoce:** `AN` − `A0` (o `cells` − `A0`) su `disc95` per lignaggio, due minuti dall'export; un valore
+  risolto negativo è il sintomo di S-006 e va detto prima di ogni altra lettura.
+- **Guardia eseguibile:** `reports/analisi/validazione_banco_eace4d03_2026-10-09/ammi/lettura_esterni.py` verifica
+  ogni file per sha256, richiede la parità con la corsa pubblicata, conta le coppie previste da un braccio solo e
+  misura ogni braccio contro il proprio scambio di bersagli.

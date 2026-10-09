@@ -108,3 +108,4 @@ aggiunge da sé la riga qui sotto.
 | [0073](0073-esm2-ridge-senza-k562-regime-j.md) | 2026-10-09 | ESM2 + ridge senza K562: nel regime J nessun segnale specifico, e togliere K562 non cambia le previsioni | esperimento | — |
 | [0074](0074-t38-crispri-piu-ko-punteggio-ufficiale.md) | 2026-10-09 | t38 (T3: CRISPRi più voti KO): nuovo massimo osservato, non conclusivo contro t36 | esperimento | — |
 | [0075](0075-fallback-esm2-supporto-e-vista-del-generatore.md) | 2026-10-09 | Fallback ESM2: la misura primaria non vedeva il riempimento; dove il banco lo vede, più copertura e nessuna accuratezza specifica | esperimento | — |
+| [0076](0076-ammi-none-contro-ancora-annidata.md) | 2026-10-09 | AMMI none (seme 17): il ramo senza contesto non si distingue dalla propria ancora annidata su K562 e iPSC | esperimento | — |

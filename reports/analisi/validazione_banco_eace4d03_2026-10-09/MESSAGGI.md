@@ -92,6 +92,38 @@ solo quando potete, o se preferite che la scriva io leggendo i vostri pin.
 `MISSING` nel registro; per Shifrut, Datlinger e Frangieh la condizione dei contesti non è riportata. Servono per
 non contare come indipendenti contesti che differiscono per stimolo o saggio.
 
+## 22:20 del 9 ottobre — a MODELLI-ESTERNI e al Lead: decisioni del proprietario, e AMMI `none` letto
+
+**Decisioni del proprietario, 21:42** ([trascrizione](AUTORIZZAZIONI_r1.json)): il banco a sei membri del fallback
+ESM2 lo esegue VALIDAZIONE, con quattro bracci; le estrazioni delle cellule vere le fa DATI-TRANSFER; i due export
+AMMI `none` potevano passare subito a `davideferrante11`. **I vostri due job del livello B (`esm2-fallback-b-*`)
+non servono più: non lanciateli.**
+
+**In corsa, lanciati alle 21:50 su `davidmaisterx`, solo CPU:** `vcc-validazione-banco-ipsc-eace4d03-e1` e
+`vcc-validazione-banco-k562-eace4d03-e1`, piano in [LIVELLO_B_ESM2.md](LIVELLO_B_ESM2.md). Bracci: T0, il vostro
+fallback byte per byte (`E2f`), lo stesso riempimento con la parte generica (`E2gen`) e a bersagli scambiati
+(`E2swap`), caricati nel dataset privato `davidmaisterx/vcc-validazione-bracci-esm2-eace4d03-r1` (6 file,
+117.859.641 byte). Non toccano le vostre sessioni GPU.
+
+**AMMI `none`, letto** ([risultati](RISULTATI_AMMI_NONE.md),
+[CP-0076](../../../docs/checkpoints/0076-ammi-none-contro-ancora-annidata.md); piano scritto prima di aprire i
+file): scaricati i due `query_000_native.npz`, sha256 uguali alle vostre ricevute; ora stanno anche nel dataset
+privato `davideferrante11/vcc-validazione-ammi-none-eace4d03-r1`, **quindi il passaggio che avevate pianificato con
+i locator per questi due file non serve più**.
+
+- Su entrambi i fold `AN` − `A0` non è risolto su `disc95` (+0,0011 e +0,0005): il ramo senza contesto non si
+  distingue dalla propria ancora. Nessun sintomo di S-006. Le due sole differenze risolte valgono meno di un
+  millesimo e hanno segno opposto.
+- `A0` non è `T0`: su C-K562 l'ancora annidata perde in `r_spec`, `sign50` ed errore quadratico rispetto al
+  transfer del fold, perché le manca CD4T. **I contrasti da leggere per `cells` sono `cells` − `A0` e `cells` −
+  `none`**; un `cells` − `T0` si porterebbe dietro quella differenza.
+- Parità a residuo zero e maschere: confermate dal banco (`AN` e `A0` hanno la stessa maschera).
+
+**Per i fit `cells`, quando finiscono:** mi bastano, per fold, il file `native` e quello a contesto scambiato con
+dimensione e sha256, leggibili da `davideferrante11` (o ditemi dove stanno e chiedo io il consenso al passaggio,
+file per file). Il lettore è `ammi/lettura_esterni.py`: due minuti per i due fold. Un seme: riporterò la
+differenza come osservazione, senza verbo.
+
 **Per collegare le verità KO alla valutazione CRISPRi** (contratto v3, §3): mi serve l'accordo fra effetti KO e
 CRISPRi sugli stessi bersagli nello stesso lignaggio. Avete già le tabelle KO di T3: bastano, per K562 (Dixit) e
 CD4T (Shifrut), gli effetti KO su tutti i bersagli nativi nel formato delle tabelle dello stadio 100. Finché non
