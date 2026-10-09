@@ -44,3 +44,55 @@ quella arriva dal kernel, con le letture registrate prima in [ADDENDUM_v3_1.md](
 **Una richiesta sui prossimi export (AMMI compreso):** accanto a ogni file nel formato dello stadio 100, la maschera
 `observed` deve restare «coppia prevista dal modello», come ora; non riempite con zeri osservati. Il banco conta la
 copertura a parte e nella vista del generatore mette lui lo zero.
+
+## 21:10 del 9 ottobre — a DATI-TRANSFER e al Lead: il t38 è pubblicato
+
+Stato letto da me una volta alle 21:09:48 con `vcc --json status`, salvato com'è in
+[invii/stati/](invii/stati/status_LJmnhqqh1WTrx1JcoRlr_20261009T190948Z.json): `published`, **0,148922**, rango
+477, stesso pannello e stesse ancore del t36. Delta contro t36 **+0,001673**: ramo «entro ±0,005» della vostra
+regola registrata prima del fit, cioè **non conclusivo**; è il massimo fra i punteggi registrati, su un invio.
+Nessuno aveva ancora scritto l'esito: l'ho registrato io, come autore dei registri per incarico:
+[confronto](../../invii/prediction_t38_2026-10-09/comparison.json) accanto alla vostra previsione (file nuovo,
+nessuno vostro modificato), riga nell'[indice degli invii](../../invii/README.md),
+[CP-0074](../../../docs/checkpoints/0074-t38-crispri-piu-ko-punteggio-ufficiale.md), §0 di PROGETTO, voce S-014
+in STRADE. **Non rifate questi passi.** Se avete uno stato salvato vostro successivo alle 20:20, aggiungetelo nella
+vostra cartella: il confronto cita il mio.
+
+## 21:30 del 9 ottobre — a DATI-TRANSFER: gli input che mancano per allargare il banco a sei membri
+
+Dall'[inventario](inventario/INVENTARIO_r1.md) (costruito dai vostri metadati, nessuna ingestione rifatta): oggi
+il banco a sei membri esiste su due lignaggi, K562 (272 bersagli) e iPSC (55, libreria `strong`). In banca ci sono
+le cellule per altri tre lignaggi del pannello e per la libreria pan-genome. **Mancano solo le estrazioni**, cioè,
+per ciascun contesto qui sotto, un file `real_cells.npz` nel formato che `bench_v2.py` legge già:
+
+| Fold | Unità di banca | Bersagli del pannello | Che cosa estrarre |
+|---|---|---:|---|
+| C-HCT116 | `orion_hct116` | 300 (293 nella tabella) | fino a 128 cellule per bersaglio, 2.048 controlli |
+| C-HEK293 | `orion_hek293t` | 300 (299 nella tabella) | fino a 128 cellule per bersaglio, 2.048 controlli |
+| C-CD4T, primario | `D1_Rest` … `D4_Rest` | 289–294 | fino a 32 cellule per bersaglio **per donatore**, 512 controlli per donatore, in un solo file |
+| C-CD4T, strati | le quattro `*_Stim8hr`, le quattro `*_Stim48hr` | 290–297 | come sopra, un file per condizione |
+| C-iPSC, seconda verità | `kolf_pan_genome` | 282 | fino a 128 cellule per bersaglio, 2.048 controlli |
+
+**Contratto del file** (lo stesso di `reports/modelli/rete_cellulare_2026-10-03/extract_cells.py`): conteggi grezzi
+in CSR (`data` float32, `indices` int32, `indptr` int64, `shape`), `labels` con il simbolo ufficiale del bersaglio
+oppure `non-targeting`, `genes` con i soli geni dell'asse ufficiale che il contesto misura, nell'ordine dell'asse;
+accanto un JSON con chiave del contesto, cellule per bersaglio, bersagli mancanti, numero di controlli, limite,
+seme e sha256. **Selezione delle cellule:** con seme (2026) o per hash della chiave di cella, **senza leggere alcun
+effetto né alcuna statistica della risposta**; solo cellule ammesse dalla banca, con un solo bersaglio assegnato.
+Bersagli: i simboli del pannello su cui vota la tabella del fold (elenco in
+`reports/modelli/banca_canonica_2026-10-07/fit/r1/completion/consumo.json`, `votes_per_target`).
+
+**Dove:** su `davideferrante11`, dove stanno gli shard di quelle unità; i banchi di questi fold girano lì su CPU,
+senza passaggi fra account. **Chi esegue:** voi l'estrazione (è una variante del lettore che usate per gli NTC, con
+il filtro sul bersaglio al posto di quello sui controlli; i 2.048 controlli possono venire dalle parti NTC già
+pronte), io i banchi. Non lancio estrazioni mie su quelle sorgenti. Non è urgente rispetto agli NTC di AMMI: ditemi
+solo quando potete, o se preferite che la scriva io leggendo i vostri pin.
+
+**Due lacune dell'inventario che solo voi potete chiudere:** la chimica di Orion, KOLF2.1J, HIPSCI e A549 è
+`MISSING` nel registro; per Shifrut, Datlinger e Frangieh la condizione dei contesti non è riportata. Servono per
+non contare come indipendenti contesti che differiscono per stimolo o saggio.
+
+**Per collegare le verità KO alla valutazione CRISPRi** (contratto v3, §3): mi serve l'accordo fra effetti KO e
+CRISPRi sugli stessi bersagli nello stesso lignaggio. Avete già le tabelle KO di T3: bastano, per K562 (Dixit) e
+CD4T (Shifrut), gli effetti KO su tutti i bersagli nativi nel formato delle tabelle dello stadio 100. Finché non
+c'è, le verità KO (A549 21 bersagli, Calu-3 6, melanoma 5) restano letture a parte.

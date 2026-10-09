@@ -1,0 +1,98 @@
+{
+ "note": "Che cosa ogni lignaggio ha già visto del progetto: da quando le sue risposte perturbate sono fonte di una ricetta, in quali costanti, banchi, selezioni e decisioni sono entrate. Curato a mano dai documenti citati; il generatore dell'inventario verifica che ogni fonte esista. Tutti i lignaggi sono sviluppo: nessuno è conferma indipendente.",
+ "lineages": {
+  "K562": {
+   "source_since": "dal primo transfer inviato (t02, 17/09)",
+   "used_in": [
+    "testa cis stimata su coppie di K562 genome-wide",
+    "ampiezza 1,576 ed emissione ×1,5 nate anche su banchi di K562",
+    "linea di conferma del cubo r2 (D-056)",
+    "fold C-K562 di livello A e B dall'8/10; l'ipotesi «senza KOLF» nasce su questo fold",
+    "validazione interna del fit AMMI C-iPSC"
+   ],
+   "sources": ["reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/PROTOCOLLO_v1.md", "docs/checkpoints/0065-d056-confronti-e-rumore-del-banco.md", "reports/analisi/modelli_esterni_01a11c35_2026-10-08/STATO_CHIUSURA_r3.md"]
+  },
+  "CD4T": {
+   "source_since": "t08, 22/09",
+   "used_in": ["fold C-CD4T di livello A dall'8/10", "validazione interna del fit AMMI C-K562"],
+   "sources": ["reports/invii/README.md", "reports/analisi/modelli_esterni_01a11c35_2026-10-08/STATO_CHIUSURA_r3.md"]
+  },
+  "HCT116": {
+   "source_since": "t11, 23/09",
+   "used_in": ["fold C-HCT116 di livello A dall'8/10"],
+   "sources": ["reports/invii/README.md"]
+  },
+  "HEK293": {
+   "source_since": "t17 (24/09) e, nella ricetta di riferimento, t22 (26/09); Xu 2023 dal fit T1 (8/10)",
+   "used_in": ["fold C-HEK293 di livello A dall'8/10"],
+   "sources": ["reports/invii/README.md", "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/AUDIT_DATI_E_LEAKAGE.md"]
+  },
+  "iPSC": {
+   "source_since": "t36, 5/10 (quattro tabelle KOLF2.1J); HIPSCI mirato dal fit T1 (8/10)",
+   "used_in": [
+    "fold C-iPSC di livello A e B dall'8/10",
+    "il ridge ESM2 senza contesto mostra segnale nel regime T solo contro questa verità"
+   ],
+   "sources": ["docs/checkpoints/0067-t36-banca-estesa-punteggio-ufficiale.md", "docs/checkpoints/0072-esm2-ridge-regime-t.md"]
+  },
+  "H1": {
+   "source_since": "t36, 5/10 (train e val insieme)",
+   "used_in": ["linea di sviluppo del cubo r2 (D-056)", "fold C-H1 di livello A, 17 bersagli", "H1 test: protetta, mai letta"],
+   "sources": ["docs/checkpoints/0067-t36-banca-estesa-punteggio-ufficiale.md", "docs/checkpoints/0064-t30-ibrido-selettivo-punteggio-ufficiale.md"]
+  },
+  "HepG2": {
+   "source_since": "mai fonte del pannello (zero bersagli del pannello)",
+   "used_in": [
+    "banco HepG2 v2: su questo banco è stato scelto il generatore del t28",
+    "linea di sviluppo del cubo r2; la rete esportata nel t30 è quella del fold HepG2",
+    "ampiezza nata anche su banchi K562 → HepG2"
+   ],
+   "sources": ["docs/checkpoints/0052-t28-punteggio-ufficiale.md", "docs/checkpoints/0064-t30-ibrido-selettivo-punteggio-ufficiale.md"]
+  },
+  "Jurkat": {
+   "source_since": "mai fonte del pannello (zero bersagli del pannello)",
+   "used_in": ["linea di conferma del cubo r2 (D-056)"],
+   "sources": ["docs/checkpoints/0065-d056-confronti-e-rumore-del-banco.md"]
+  },
+  "RPE1": {
+   "source_since": "mai fonte del pannello (zero bersagli del pannello)",
+   "used_in": ["linea di sviluppo del cubo r2 (D-056)"],
+   "sources": ["docs/checkpoints/0065-d056-confronti-e-rumore-del-banco.md"]
+  },
+  "neuron": {
+   "source_since": "fit T1, 8/10 (Tian 2021 CRISPRi, sei bersagli); nel t38 dal 9/10",
+   "used_in": ["nessun fold lo tiene fuori"],
+   "sources": ["reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/AUDIT_DATI_E_LEAKAGE.md"]
+  },
+  "A549": {
+   "source_since": "t38, 9/10: voto KO a peso 0,25",
+   "used_in": ["nessun banco lo ha valutato"],
+   "sources": ["reports/modelli/dati_transfer_2026-10-08_01a11c34/coverage_t3_r1.json"]
+  },
+  "melanoma": {
+   "source_since": "t38, 9/10: voto KO a peso 0,25",
+   "used_in": ["nessun banco lo ha valutato"],
+   "sources": ["reports/modelli/dati_transfer_2026-10-08_01a11c34/coverage_t3_r1.json"]
+  },
+  "Calu3": {
+   "source_since": "t38, 9/10: voto KO a peso 0,25",
+   "used_in": ["nessun banco lo ha valutato"],
+   "sources": ["reports/modelli/dati_transfer_2026-10-08_01a11c34/coverage_t3_r1.json"]
+  },
+  "THP1": {
+   "source_since": "mai: in banca, non derivata",
+   "used_in": ["nessun uso"],
+   "sources": ["reports/modelli/dati_transfer_2026-10-08_01a11c34/coverage_t3_r1.json"]
+  }
+ },
+ "checkpoints": [
+  {"name": "transfer rifatto dal banco (stadio 100) senza le tabelle del lignaggio", "regime_C_on": "ogni lignaggio con una tabella di verità", "note": "è l'unico modello che il banco ricalcola con l'esclusione; vale per T0, T1, R1, P4 e i bracci d'analisi"},
+  {"name": "T3 (t38), effetti di produzione", "regime_C_on": "nessuno", "note": "contiene le risposte di tutti i lignaggi dei fold e i voti KO; non è una ricetta dello stadio 100 e non esistono suoi effetti a lignaggio escluso"},
+  {"name": "ridge ESM2, fit C-K562 e J-K562", "regime_C_on": "K562", "note": "gli altri lignaggi sono nel training: su di loro la lettura è «visto», o T per i bersagli nascosti del fit J"},
+  {"name": "ridge ESM2, fit C-iPSC e J-iPSC", "regime_C_on": "iPSC", "note": "come sopra"},
+  {"name": "ridge ESM2, fit T e di produzione", "regime_C_on": "nessuno", "note": "tutti i lignaggi nel training; il fit T nasconde i 66 bersagli del gruppo di test"},
+  {"name": "AMMI none, fit C-K562 (seme 17)", "regime_C_on": "K562", "note": "CD4T è escluso dal training ma serve alle guardie interne: una lettura su CD4T non è un test pulito"},
+  {"name": "AMMI none, fit C-iPSC (seme 17)", "regime_C_on": "iPSC", "note": "K562 è escluso dal training ma serve alle guardie interne"}
+ ],
+ "checkpoint_sources": ["reports/analisi/modelli_esterni_01a11c35_2026-10-08/CONSEGNA_SEI_FIT_r1.md", "reports/analisi/modelli_esterni_01a11c35_2026-10-08/STATO_CHIUSURA_r3.md", "reports/modelli/dati_transfer_2026-10-08_01a11c34/candidate_t3_r1.json"]
+}
