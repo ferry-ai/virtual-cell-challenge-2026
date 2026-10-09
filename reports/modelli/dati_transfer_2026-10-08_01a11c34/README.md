@@ -4,6 +4,11 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
+**Destinazione produzione aggiornata il 10 ottobre: MX**, su richiesta MODELLI.
+[Variante emettitore MX](EMETTITORE_ACCESSI_PRODUZIONE_MX_r1.md): 209 payload,
+10.100.920.946 byte, job esatto e consenso specifico obbligatori; otto test locali
+superati, nessun accesso emesso. Supera la proposta operativa df11 qui sotto.
+
 **Produzione AMMI:** [consegna input e accessi](CONSEGNA_PRODUZIONE_AMMI_r1.md),
 [inventario per hash e account](production_input_handoff_r1.json).
 Su df11 il trasferimento privato richiesto è 5,387 GB; su MX 10,101 GB.
