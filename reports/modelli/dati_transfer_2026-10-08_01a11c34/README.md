@@ -4,7 +4,14 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
-**Nuovo t39 T3+ESM2 pronto localmente:**
+**T39 T3+ESM2 inviato il 10 ottobre alle 01:29 (Roma):**
+[ricevuta di consegna](CONSEGNA_T39_RICEVUTA_r1.md),
+[conferma server](t39_t3/r2/server_receipt_obtained.json) e
+[manifest raccolti e verificati](t39_t3/r2/completion_r1/verification.json).
+Upload verificato alle 01:29:11; finalizzazione accettata alle 01:29:35,
+stato server `scoring` riletto alle 01:33:20, punteggio non ancora letto.
+
+Preparazione e provenienza:
 [consegna esatta per consenso del Lead](t39_t3_ready_for_specific_consent_r1.json).
 T3 preservato al bit su 4.467.808 coppie, ESM2 aggiunto solo su 380.820 vuoti;
 19.812.145 byte, hash `577a5a56a57df6a2ba07beead6217a7274ad639e85e8be780d942c1c7152094b`.
@@ -15,7 +22,7 @@ Consenso specifico letto direttamente e [registrato](t39_t3_private_egress_autho
 Dataset privato caricato; [job CPU avviato](t39_t3/r2/launch_result.json),
 [codice remoto verificato](t39_t3/r2/remote_identity_verified.json), generazione
 effettiva nei log. Entry unica `C49E3QzIDZk0LGmXPCPP`, inizialmente in attesa
-dell'upload; la ricevuta server conclusiva sarà `t39_t3/r2/server_receipt_obtained.json`.
+dell'upload; la ricevuta server conclusiva è `t39_t3/r2/server_receipt_obtained.json`.
 La versione T0 sotto rimane sospesa e non è stata inviata.
 
 **T39 T0+ESM2 sospeso prima di qualsiasi upload/lancio:**

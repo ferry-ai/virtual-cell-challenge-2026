@@ -1,0 +1,218 @@
+{
+  "run_id": "dt-t39-t3-e2-upload-01a11c34-r1",
+  "stage": "48_package_prediction",
+  "input": {
+    "path": "/kaggle/temp/t39_t3_stage45/prediction.h5ad",
+    "sha256": "4c794e613c3ca152f94cb1a232fa6d4c3e4343c5df703790b119929305d0bfa6",
+    "bytes": 11689852408,
+    "hash_seconds": 47.09489502500014
+  },
+  "layout": {
+    "path": "/kaggle/temp/t39_t3_stage45/prediction.h5ad",
+    "n_obs": 360000,
+    "n_vars": 18533,
+    "nnz": 2087688656,
+    "data_dtype": "float32",
+    "indices_dtype": "int32",
+    "indptr_dtype": "int32",
+    "data_chunks": [
+      1048576
+    ],
+    "data_compression": "lzf",
+    "data_compression_opts": null,
+    "indices_chunks": [
+      1048576
+    ],
+    "indices_compression": "lzf",
+    "indices_compression_opts": null,
+    "obs_columns": [
+      "context",
+      "target_gene"
+    ],
+    "var_index_name": "_index",
+    "droppable_present": [],
+    "file_bytes": 11689852408
+  },
+  "official_cli_version": "0.2.0",
+  "official_prep_peak_gib_model": 22.22084037065506,
+  "transformations": [
+    "obs index replaced with '0'..'n-1' (official prep rebuilds obs with a positional index; the original cell names are not carried into a .vcc)",
+    "obs reduced to the perturbation column and the context column, in that order, written through anndata's own DataFrame writer",
+    "var reduced to the gene index, with no columns",
+    "layers, obsm, varm, obsp, varp, uns and raw dropped (official prep drops them too, and reports them)",
+    "X datasets copied verbatim, preserving dtype and HDF5 filters. Official prep rewrites them contiguous and unfiltered; the decoded arrays are identical either way"
+  ],
+  "resources_before": {
+    "ram_total_bytes": 33658318848,
+    "ram_available_bytes": 32325353472,
+    "disk_path": "/kaggle/temp/t39_t3_packaged",
+    "disk_total_bytes": 8758385086464,
+    "disk_free_bytes": 1137115758592,
+    "cpu_count": 4,
+    "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+    "source": "/proc/meminfo + shutil.disk_usage",
+    "ram_total_gib": 31.346752166748047,
+    "ram_available_gib": 30.105331420898438,
+    "disk_free_gib": 1059.0215759277344
+  },
+  "required_contexts": [
+    "A",
+    "B",
+    "C"
+  ],
+  "uploaded": false,
+  "note": "Local validation, packaging and verification only. Nothing was uploaded, no submission quota was consumed, and no server has accepted this artifact.",
+  "package": {
+    "input_path": "/kaggle/temp/t39_t3_stage45/prediction.h5ad",
+    "output_path": "/kaggle/temp/t39_t3_packaged/prediction_t39_T3_E2.vcc",
+    "payload_bytes": 11686903264,
+    "archive_bytes": 3995084800,
+    "nnz": 2087688656,
+    "n_obs": 360000,
+    "n_vars": 18533,
+    "meta": {
+      "schema": 1,
+      "nnz": 2087688656,
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "cli_version": "0.2.0"
+    },
+    "transformations": [
+      "obs index replaced with '0'..'n-1' (official prep rebuilds obs with a positional index; the original cell names are not carried into a .vcc)",
+      "obs reduced to the perturbation column and the context column, in that order, written through anndata's own DataFrame writer",
+      "var reduced to the gene index, with no columns",
+      "layers, obsm, varm, obsp, varp, uns and raw dropped (official prep drops them too, and reports them)",
+      "X datasets copied verbatim, preserving dtype and HDF5 filters. Official prep rewrites them contiguous and unfiltered; the decoded arrays are identical either way"
+    ],
+    "seconds": 529.7760295659998,
+    "peak_rss_bytes": 848560128,
+    "peak_disk_bytes": 15681982650,
+    "validation": {
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "nnz": 2087688656,
+      "min_value": 0.0,
+      "max_value": 6046.0,
+      "all_integer": true,
+      "n_nonfinite": 0,
+      "max_counts_per_cell_observed": 55369.0,
+      "cells_per_context": {
+        "A": 120000,
+        "B": 120000,
+        "C": 120000
+      },
+      "n_targets_per_context": {
+        "A": 300,
+        "B": 300,
+        "C": 300
+      },
+      "empty_perturbations": [],
+      "csr_checks": {
+        "indptr_length_is_n_obs_plus_1": true,
+        "indptr_starts_at_zero": true,
+        "indptr_non_negative": true,
+        "indptr_monotonic": true,
+        "indptr_end_matches_data_length": true,
+        "data_and_indices_same_length": true,
+        "nnz_representable_in_indptr_dtype": true,
+        "n_vars_representable_in_indices_dtype": true
+      },
+      "checks": {
+        "var_names_unique": true,
+        "gene_order_matches_list": true,
+        "gene_dim_matches_expected": true,
+        "has_cells": true,
+        "cell_dim_within_cap": true,
+        "pert_column_present": true,
+        "no_control_rows": true,
+        "contexts_complete": true,
+        "targets_match_official_list": true,
+        "density_within_cap": true,
+        "column_indices_in_range": true,
+        "counts_finite": true,
+        "counts_non_negative": true,
+        "counts_are_whole_numbers": true,
+        "max_counts_per_cell_within_cap": true,
+        "no_all_zero_perturbation": true
+      },
+      "failures": [],
+      "notes": [],
+      "seconds": 111.4526811799999,
+      "peak_rss_bytes": 848560128,
+      "layout": {
+        "path": "/kaggle/temp/t39_t3_stage45/prediction.h5ad",
+        "n_obs": 360000,
+        "n_vars": 18533,
+        "nnz": 2087688656,
+        "data_dtype": "float32",
+        "indices_dtype": "int32",
+        "indptr_dtype": "int32",
+        "data_chunks": [
+          1048576
+        ],
+        "data_compression": "lzf",
+        "data_compression_opts": null,
+        "indices_chunks": [
+          1048576
+        ],
+        "indices_compression": "lzf",
+        "indices_compression_opts": null,
+        "obs_columns": [
+          "context",
+          "target_gene"
+        ],
+        "var_index_name": "_index",
+        "droppable_present": [],
+        "file_bytes": 11689852408
+      },
+      "ok": true
+    }
+  },
+  "verification": {
+    "official_container_validator": "passed",
+    "meta_from_archive": {
+      "cli_version": "0.2.0",
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "nnz": 2087688656,
+      "schema": 1
+    },
+    "nnz_from_archive": 2087688656,
+    "payload_vs_input": {
+      "matches_input": true,
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "nnz": 2087688656,
+      "x_arrays_bit_identical": true,
+      "obs_index_rewritten": true,
+      "compared": [
+        "X.data (bitwise)",
+        "X.indices (bitwise)",
+        "X.indptr (bitwise)",
+        "X dtypes",
+        "var index",
+        "obs['target_gene']",
+        "obs['context']",
+        "obs index is positional"
+      ]
+    },
+    "archive_sha256": "46e9a150a4d3f89dd2a7db688061ba2ad5aa5d50a890117c09302f3f72322cb6",
+    "archive_bytes": 3995084800
+  },
+  "resources_after": {
+    "ram_total_bytes": 33658318848,
+    "ram_available_bytes": 32366829568,
+    "disk_path": "/kaggle/temp/t39_t3_packaged",
+    "disk_total_bytes": 8758385086464,
+    "disk_free_bytes": 1133120565248,
+    "cpu_count": 4,
+    "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+    "source": "/proc/meminfo + shutil.disk_usage",
+    "ram_total_gib": 31.346752166748047,
+    "ram_available_gib": 30.143959045410156,
+    "disk_free_gib": 1055.3007621765137
+  },
+  "peak_rss_bytes": 848560128,
+  "total_seconds": 864.3465331269999,
+  "exit_code": 0
+}
