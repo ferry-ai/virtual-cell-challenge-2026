@@ -1,0 +1,53 @@
+{
+  "candidate": "t39-T3-ESM2-fallback",
+  "clock_read_utc": "2026-10-09T22:31:37Z",
+  "status": "FINAL_ARTIFACT_PINNED_FROM_DATI_VERIFIED_RECEIPT",
+  "claim_type": "Identita finale verificata da DATI-TRANSFER e letta dall'autore; nessun nuovo calcolo sugli array in questa registrazione",
+  "supplements_immutable_prediction": "reports/invii/prediction_t39_t3_2026-10-10/prediction.json",
+  "supplements_immutable_audit": "reports/invii/prediction_t39_t3_2026-10-10/technical_audit_r1.json",
+  "frozen_formula_or_scientific_rule_changed": false,
+  "received_final_artifact": {
+    "path": "C:/Users/ferra/vcc2026-data/processed/dati_transfer_2026-10-08_01a11c34/t39_t3/r1/delivery/T3_E2_fallback.npz",
+    "bytes": 19812145,
+    "sha256": "577a5a56a57df6a2ba07beead6217a7274ad639e85e8be780d942c1c7152094b",
+    "receipt": "reports/modelli/dati_transfer_2026-10-08_01a11c34/t39_t3_effect_verified_r1.json",
+    "receipt_utc": "2026-10-09T22:29:37.577243+00:00",
+    "receipt_status": "PASS_EXACT_T3_PRESERVED_ESM2_ONLY_MISSING",
+    "receipt_owner": "DATI-TRANSFER"
+  },
+  "input_sha256": {
+    "T3": "b8c61f6da684f6c28107199469ac42ef030a4644176371b9723ae6e3f863f6a6",
+    "E2_native_stage100": "d20fb209469a37cfe525f9a332f4cebc1dfdad9b657b4b571f0ccac8ac4cab3d"
+  },
+  "checks_read_from_receipt": {
+    "shape": [300, 18533],
+    "axes_official": true,
+    "lfc_dtype": "float32",
+    "observed_dtype": "bool",
+    "finite": true,
+    "zero_outside_mask": true,
+    "T3_support_pairs": 4467808,
+    "T3_values_bit_identical_on_support": true,
+    "fallback_pairs": 380820,
+    "fallback_targets": 299,
+    "fallback_genes": 4231,
+    "union_pairs": 4848628,
+    "full_row_fallback_targets": 0,
+    "amplitude_applied_once_to_fallback": 1.576,
+    "cis_reapplied": false,
+    "emission_scale_applied": false,
+    "emitter_scale_to_apply_once": 1.5,
+    "other_T3_NPZ_fields_preserved": true,
+    "reload_all_arrays_exact": true
+  },
+  "artifact_gate_satisfied_by_receipt": true,
+  "before_generation": "Verificare il file effettivamente consumato contro byte e SHA256 qui fissati e completare i restanti gate di runtime, accessi e autorizzazione. Questo pin non autorizza nuovi trasferimenti privati.",
+  "state_at_receipt": {
+    "egress_authorized": false,
+    "cloud_jobs_launched": 0,
+    "VCC_entry_created": false
+  },
+  "no_new_training": true,
+  "scientific_promotion": false,
+  "complete_D053": false
+}

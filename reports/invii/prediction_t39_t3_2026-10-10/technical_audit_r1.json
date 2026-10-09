@@ -1,0 +1,63 @@
+{
+  "status": "INPUT_AUDIT_REPORTED_FINAL_CANDIDATE_PENDING",
+  "clock_read_utc": "2026-10-09T22:29:08Z",
+  "date_europe_rome": "2026-10-10",
+  "claim_type": "Conteggi degli input da audit indipendente trasmesso dal Lead; formula e controlli finali preregistrati, nessuna verifica del nuovo NPZ ancora pendente",
+  "document_author": "/root/model_map_check",
+  "input_audit_provenance": "Consegna del Lead del 10 ottobre prima di questa scrittura: audit read-only di un altro agente su T3 ed E2 nativo; l'autore di questo documento non ripete qui le riduzioni degli array",
+  "candidate_path": null,
+  "candidate_sha256": null,
+  "candidate_bytes": null,
+  "final_candidate_verified": false,
+  "generation_ready": false,
+  "required_final_receipt_owner": "DATI-TRANSFER",
+  "required_final_receipt_timing": "Dopo la creazione del nuovo T3_E2_fallback.npz e prima dello stadio45, in un file nuovo con percorso, byte, hash e controlli integrali",
+  "inputs": {
+    "T3": {
+      "path": "C:/Users/ferra/vcc2026-data/processed/validazione_indipendente_8a8ca58a_2026-10-08/t3_effetti_r1/effects/effects_A.npz",
+      "sha256": "b8c61f6da684f6c28107199469ac42ef030a4644176371b9723ae6e3f863f6a6"
+    },
+    "E2_native_stage100": {
+      "path": "C:/Users/ferra/vcc2026-data/external_models/01a11c35/closure_stage100_r1/production/E2.npz",
+      "sha256": "d20fb209469a37cfe525f9a332f4cebc1dfdad9b657b4b571f0ccac8ac4cab3d"
+    }
+  },
+  "reported_input_checks": {
+    "shape": [300, 18533],
+    "axes_equal": true,
+    "all_values_finite": true,
+    "exact_zero_outside_support": true,
+    "T3_observed_pairs": 4467808,
+    "T0_observed_pairs_retained_in_T3_support": 4456205,
+    "T3_additional_supported_pairs_vs_T0": 11603,
+    "old_T0_fallback_pairs_now_covered_by_T3": 9999
+  },
+  "expected_candidate_from_input_audit": {
+    "added_pairs": 380820,
+    "added_targets": 299,
+    "added_response_genes": 4231,
+    "final_observed_pairs": 4848628,
+    "formula": "fill = (~T3.observed) & E2.observed; lfc = T3.lfc.copy(); lfc[fill] = float32(1.576 * E2.lfc[fill]); observed = T3.observed | fill",
+    "T3_values_byte_equal_on_support_required": true,
+    "no_other_pairs_changed_required": true,
+    "old_T0_mask_reuse_forbidden": true
+  },
+  "generation_interface": {
+    "input": "Nuovo NPZ diretto allo stadio45 per ciascuno dei tre contesti, dopo pin e audit DATI",
+    "no_new_fit": true,
+    "no_stage100_rerun": true,
+    "no_cis_or_baseline_amplitude_reapplication": true,
+    "fallback_amplitude_in_new_export_once": 1.576,
+    "effects_scale": 1.5,
+    "scale_applied_by_generator_once": true,
+    "generator_seed": 20260912,
+    "cells_per_target": 400,
+    "gene_dispersion": true,
+    "gene_dispersion_scale": 1.0,
+    "depth_bins": false,
+    "reference_manifest": "reports/invii/trial_2026-10-09/t38_manifest_45_generate_prediction.json"
+  },
+  "does_not_assert_generated_cells_or_package_exist": true,
+  "does_not_assert_scientific_promotion": true,
+  "T0_bench_does_not_validate_T3_hybrid": true
+}

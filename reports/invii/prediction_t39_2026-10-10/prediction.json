@@ -1,0 +1,83 @@
+{
+  "candidate": "t39-T0-ESM2-fallback",
+  "clock_read_utc": "2026-10-09T22:16:32Z",
+  "date_europe_rome": "2026-10-10",
+  "registered_before_generation": true,
+  "claim_type": "Ipotesi esplorativa; nessuna promozione scientifica anticipata",
+  "scope": "Invio del candidato gia addestrato e gia esportato, senza nuovo fit, senza T3/KO e senza calibrazione post hoc dell'ampiezza.",
+  "artifact": {
+    "path": "C:/Users/ferra/vcc2026-data/external_models/01a11c35/esm2_production_delivery_r1/T0_E2_fallback.npz",
+    "bytes": 19807680,
+    "sha256": "d6e348804a461f1e2f7b020153e6f12f8f718d933036bb2c004eea679ba8d037",
+    "t0_sha256": "08fdfd2803fe97753b71324665aad61ccf658f4f014785a5cae8563c3c354c57",
+    "receipt": "reports/analisi/modelli_esterni_01a11c35_2026-10-08/esm2_production_delivery_r1.json",
+    "policy": "T0 invariato sulle coppie osservate; ESM2 soltanto sulle coppie mancanti e previste dal ridge",
+    "fallback_pairs": 390819,
+    "fallback_targets": 299,
+    "fallback_amplitude_already_applied_once": 1.576,
+    "reapply_cis_or_fallback_amplitude": false,
+    "production_T0_historical_t36_numerical_parity": "Da documentare con audit prima della generazione; non inferita dal nome della ricetta"
+  },
+  "reference": {"name": "t36", "official_score": 0.14724935991548274},
+  "secondary_reference": {"name": "t38", "official_score": 0.14892212354470022, "role": "Confronto descrittivo con il massimo osservato; T3 non e la base del candidato"},
+  "expected_score_band": [0.125, 0.170],
+  "expected_delta": 0.0,
+  "band_interpretation": "Banda di aspettativa soggettiva prudente, non intervallo di confidenza ne conversione della scala del banco. Il primo fold a sei membri e inconcludente contro T0; il secondo e ancora in esecuzione alla decisione.",
+  "decision_threshold_absolute": 0.005,
+  "readout_rule": {
+    "delta_above_0.005": "Osservazione favorevole al pacchetto rispetto a t36 su un invio. Non prova robustezza, generalizzazione D/E/F o attribuzione esclusiva a ESM2 se la baseline numerica differisce.",
+    "delta_within_plus_minus_0.005": "Non conclusivo contro t36, anche se costituisce un nuovo massimo osservato. Nessuna soglia spostata dopo il risultato.",
+    "delta_below_minus_0.005": "Osservazione sfavorevole al pacchetto. Conservare il risultato e i riferimenti precedenti, senza ritoccare questo candidato per trasformarlo in successo."
+  },
+  "member_predictions": {
+    "PDS": "Segno incerto: su iPSC ESM2 distingue il bersaglio rispetto al controllo scambiato ma non migliora T0 in modo risolto. Nessun trasferimento numerico diretto alla scala ufficiale.",
+    "MSE": "Ipotesi: membro scalato ancora vicino a zero, come t36/t38. L'errore nello spazio degli effetti del fallback peggiora; non imputare zero se il membro ufficiale manca.",
+    "NMAE": "Segno incerto; l'ampiezza del riempimento non e stata calibrata separatamente dal transfer.",
+    "FID": "Segno incerto; generatore invariato ma cambiano le medie sulle coppie riempite.",
+    "REACH": "Ipotesi debolmente favorevole dalla maggiore copertura e dal fold iPSC; puo peggiorare su contesti diversi.",
+    "JAC": "Ipotesi debolmente favorevole su iPSC, non garantita sul sito; leggere il membro insieme al PDS senza attribuire causalita dalla sola media."
+  },
+  "generator": {
+    "stage": 45,
+    "trial": "trial-ext-profile",
+    "generator_seed": 20260912,
+    "effects_scale": 1.5,
+    "gene_dispersion": true,
+    "gene_dispersion_scale": 1.0,
+    "depth_bins": false,
+    "contexts": ["A", "B", "C"],
+    "targets_per_context": 300,
+    "cells_per_target": 400,
+    "response_genes": 18533,
+    "controls_included_in_submission": false,
+    "effects_file_same_for_all_contexts": true,
+    "scale_note": "1.576 e gia nell'export; 1.5 e la scala distinta del generatore t36/t38, applicata una volta. Nessuna ulteriore testa cis.",
+    "randomness_note": "Stesso seed e algoritmo; cambiando gli effetti puo cambiare il consumo del flusso casuale. Non si presume parita cellulare sui gruppi non modificati."
+  },
+  "technical_gate": [
+    "Hash del candidato esatto e provenienza T0",
+    "Assi, shape, maschere e valori finiti; T0 invariato sul suo supporto",
+    "Ampiezza e cis non riapplicate; scala di emissione distinta registrata",
+    "Preflight del runtime e input congelati",
+    "360000 cellule per 18533 geni, con tutte le coppie contesto-bersaglio richieste",
+    "Stage48 e verifica del payload contro la matrice generata",
+    "Unico uploader, slot server e limite giornaliero verificati prima dell'invio"
+  ],
+  "scientific_evidence_at_decision": {
+    "ipsc_six_member_delta_vs_T0": 0.0074,
+    "ipsc_delta_resolved": false,
+    "ipsc_vs_shuffled_resolved": true,
+    "K562_six_members": "RUNNING alla verifica precedente; lettura aggiunta separatamente quando disponibile, senza modificare candidato o previsione",
+    "scientific_promotion": false,
+    "complete_D053": false,
+    "no_new_training": true
+  },
+  "human_authorization": {
+    "thread": "01a11c05-970e-7af2-a07e-3860bd74acbd",
+    "message_text": "ok decidi tu, vai e inviamo",
+    "message_id": null,
+    "source": "Messaggio umano diretto in questa chat dopo la proposta del candidato ESM2 gia pronto; ID del messaggio non disponibile al Lead"
+  },
+  "submitter": "DATI-TRANSFER, unico owner di generazione, packaging e invio",
+  "no_AMMI_training_interruption": true
+}
