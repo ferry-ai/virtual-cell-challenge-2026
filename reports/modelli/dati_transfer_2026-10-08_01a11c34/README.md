@@ -4,6 +4,14 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
+**Audit riuso NTC:** [diagnosi e correzione minima](AUDIT_RIUSO_NTC_r1.md),
+[catalogo verificato 18 bundle / 12 parti attive](ntc_reuse_catalog_r1.json).
+I 1.739 shard delle 12 parti erano già collegati ai campioni persistenti:
+il divario è selezione/normalizzazione/adattatore, non assenza dei dati.
+Recupero depth da soli metadata verificato su fixture; nessuna sostituzione
+del protocollo corrente e nessun rilancio. MODELLI gestisce la transizione
+automatica dopo le sentinelle DATI.
+
 **T38 pubblicato:** 0,14892212354470022, differenza +0,0016727636292174775
 contro t36: entro la soglia preregistrata ±0,005, **non conclusivo**.
 [Verifica indipendente](t38_published_verified_r1.json) della nuova ricevuta

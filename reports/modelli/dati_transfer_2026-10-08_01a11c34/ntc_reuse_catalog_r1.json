@@ -1,0 +1,1968 @@
+{
+  "utc": "2026-10-09T19:40:39.896787+00:00",
+  "schema": "reusable-NTC-catalog/1",
+  "scope": "metadata and receipt audit; arrays not downloaded or freshly rehashed",
+  "ready_manifest": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/ntc_ready_manifest_r1.json",
+    "bytes": 50916,
+    "sha256": "432e378346ff3bee748cf7f6ceeb11baa0d9e752acc4c8baa4e1fb9a1ef6b101"
+  },
+  "extraction_plans": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/ntc_extraction_plans_r2.json",
+    "bytes": 24188,
+    "sha256": "6c9004062caf9b495734138d1b22c0435e1318a3226d7a8c7a0f8785729ef1f2"
+  },
+  "keys_exclude": [
+    "runtime_location",
+    "job_slug",
+    "fit_id",
+    "training_seed"
+  ],
+  "keys_include": [
+    "source_hashes",
+    "bank_rows",
+    "control_identity",
+    "gene_axis",
+    "selection_seed_cap_strata",
+    "native_depth_policy",
+    "reader_and_extractor_code"
+  ],
+  "cache": {
+    "bce5f6b4f7297801d9e11b4e0874a3663cd74894f26e53f5e85a6fa0523415fb": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "D4_Rest_9cd9ad16299b",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r4_r7/ntc/D4_Rest_9cd9ad16299b/complete.json",
+        "bytes": 12824,
+        "sha256": "69dd4329868578a812b70e601c64221fb9d0220c6c7745771fe67ec8c7ff8087"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r4",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r6a",
+      "files": {
+        "counts.npz": {
+          "bytes": 556893591,
+          "sha256": "eda9e9a0f4a7808b1e7140596e37693ddac7bfdd8e3ffa293580b6be47e9f04e",
+          "remote_path": "ntc/D4_Rest_9cd9ad16299b/counts.npz"
+        },
+        "cells.json": {
+          "bytes": 53370174,
+          "sha256": "67a2416782193cc0ae9634e3ac856b3938c066ce65d62345864ec783d4a857f1",
+          "remote_path": "ntc/D4_Rest_9cd9ad16299b/cells.json"
+        },
+        "axes_depth_mask.npz": {
+          "bytes": 458730,
+          "sha256": "c5c837ab2a1715821388bde48f99329666ad56a37834a0c6c1dcdf09a19adfa0",
+          "remote_path": "ntc/D4_Rest_9cd9ad16299b/axes_depth_mask.npz"
+        }
+      },
+      "expected_contexts": [
+        "D4_Rest:956bf0ac6320035d"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "5b1ddb22fc27d7fd76597c2a5b726584c9849ace790a0aad478fd11ae16a8826"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "d706957d367bf50ae22b3ca7567ee17f4d039ca487c52a469b64ad38e1ff0df6": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "D4_Stim48hr_db26a86482c4",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r4_r7/ntc/D4_Stim48hr_db26a86482c4/complete.json",
+        "bytes": 13344,
+        "sha256": "724e24732aa457b3e4c5bbabbdc509d91308b0907b6bcea6c2fb6f73552dcd2d"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r4",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r6a",
+      "files": {
+        "counts.npz": {
+          "bytes": 796134838,
+          "sha256": "b394812450ac40a95b2a89d68a4b7ee5a06891dc2b2a4e7b03a366bf87e11287",
+          "remote_path": "ntc/D4_Stim48hr_db26a86482c4/counts.npz"
+        },
+        "cells.json": {
+          "bytes": 60139158,
+          "sha256": "4795c89051b18a719c77dea4b71788a71e30267617126a850c7f4fbc0cf87b50",
+          "remote_path": "ntc/D4_Stim48hr_db26a86482c4/cells.json"
+        },
+        "axes_depth_mask.npz": {
+          "bytes": 493696,
+          "sha256": "6ed462ada9cdc29cd4550d0d63feb0dd6f16e80b2dc964ec786a9fea6014f665",
+          "remote_path": "ntc/D4_Stim48hr_db26a86482c4/axes_depth_mask.npz"
+        }
+      },
+      "expected_contexts": [
+        "D4_Stim48hr:7a7ef471c2300ed8"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "5b1ddb22fc27d7fd76597c2a5b726584c9849ace790a0aad478fd11ae16a8826"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "39384caa94698a49f92ea9f254eface2565ced2c20456302741cc071dd3f8a24": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "D4_Stim8hr_69694959750b",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r4_r7/ntc/D4_Stim8hr_69694959750b/complete.json",
+        "bytes": 13009,
+        "sha256": "f61caaee4434d18b5e66e5c25c08c7bbf8d287c48398f3dd2fa51215c5ec111f"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r4",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r6a",
+      "files": {
+        "counts.npz": {
+          "bytes": 634834505,
+          "sha256": "486c6db20a98b9e4db05cb172a6fa452790f460e2200071de4c8c6015efa6be9",
+          "remote_path": "ntc/D4_Stim8hr_69694959750b/counts.npz"
+        },
+        "cells.json": {
+          "bytes": 55028649,
+          "sha256": "20e055356ac8c24543c3e55697e67d983f04b5c12b1ac2e3a02b3b1a8246dca0",
+          "remote_path": "ntc/D4_Stim8hr_69694959750b/cells.json"
+        },
+        "axes_depth_mask.npz": {
+          "bytes": 467515,
+          "sha256": "95b18cfe957ed139bff45a6c02e38608d38aec98881eb14b0871230a8df022d3",
+          "remote_path": "ntc/D4_Stim8hr_69694959750b/axes_depth_mask.npz"
+        }
+      },
+      "expected_contexts": [
+        "D4_Stim8hr:7d6195c4fbd5051f"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "5b1ddb22fc27d7fd76597c2a5b726584c9849ace790a0aad478fd11ae16a8826"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "bd8d93dac65926a1d1d6023890e72372c21bf762598acb0f1d025d0f11830eec": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "h1_train_9df94c65f77b",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r6c_r13/ntc/h1_train_9df94c65f77b/complete.json",
+        "bytes": 5338,
+        "sha256": "2fbe6c25f98a02300a11c8b5b20110e492220dc44e616fa81e4692e13d0600ca"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r6c",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r7a",
+      "files": {
+        "counts.npz": {
+          "bytes": 759126951,
+          "sha256": "d5089882a21b2f95224c3e51a8962aa0fcd1906fda07f596ac8af373d5784079",
+          "remote_path": "ntc/h1_train_9df94c65f77b/counts.npz"
+        },
+        "axes_depth_mask.npz": {
+          "bytes": 254589,
+          "sha256": "66a859cf952ceb0ed55b4b09fb015326fcac5c76890dfae022ab1ff41ef13800",
+          "remote_path": "ntc/h1_train_9df94c65f77b/axes_depth_mask.npz"
+        },
+        "cells.json": {
+          "bytes": 25280487,
+          "sha256": "5db8042909d2fcba89b96d3b95631f1e1f82ea5f73df0b3adb9348f081633b16",
+          "remote_path": "ntc/h1_train_9df94c65f77b/cells.json"
+        }
+      },
+      "expected_contexts": [
+        "h1:dbc218346b02d7fe"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "d09c94360ab83124dbecaa4cb2609e990415f84e6910326ad03ee705526d869b": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "hepg2_nadig_b27f8d6c80d6",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r6a_r10/ntc/hepg2_nadig_b27f8d6c80d6/complete.json",
+        "bytes": 2295,
+        "sha256": "2cc63c2f6b417433ee861aeab34891008a785121681c32f32b9ff1ede27373c7"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r6a",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r6a",
+      "files": {
+        "cells.json": {
+          "bytes": 3123463,
+          "sha256": "91d3182c202cc52b3591b378d178ff59909f75682bbb53e141cbf0ab65772d67",
+          "remote_path": "ntc/hepg2_nadig_b27f8d6c80d6/cells.json"
+        },
+        "counts.npz": {
+          "bytes": 40853739,
+          "sha256": "36174cc6f93af02024a722674d1b205f220a3b331d673501d8c0eae0373e4202",
+          "remote_path": "ntc/hepg2_nadig_b27f8d6c80d6/counts.npz"
+        },
+        "axes_depth_mask.npz": {
+          "bytes": 152906,
+          "sha256": "9b1c0bef995009dde8d86aff9f7193b88dd1dd87e81563e3a16d04e24a68be48",
+          "remote_path": "ntc/hepg2_nadig_b27f8d6c80d6/axes_depth_mask.npz"
+        }
+      },
+      "expected_contexts": [
+        "hepg2_nadig:2581732c74329fed"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "e50add1e978a815145fe300577b5df58b2b80fbb649bf32652c344c7a77f5737": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "hipsci_targeted_19_6ba1ca45325b",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r6a_r10/ntc/hipsci_targeted_19_6ba1ca45325b/complete.json",
+        "bytes": 7406,
+        "sha256": "33a28b0e647138ec4cdea62b77dc96c1576103f2dc0df99fb34735a78aad0e88"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r6a",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r6a",
+      "files": {
+        "cells.json": {
+          "bytes": 6141921,
+          "sha256": "7838fcf7190f903ac1bd2c6c27f77c4b78e4e799c20d36be473926e11135e503",
+          "remote_path": "ntc/hipsci_targeted_19_6ba1ca45325b/cells.json"
+        },
+        "counts.npz": {
+          "bytes": 85068259,
+          "sha256": "3565ac82660c1e9885e0d2cd2a490d6b824c4a1d23d9ae37dc3d27c0facc172d",
+          "remote_path": "ntc/hipsci_targeted_19_6ba1ca45325b/counts.npz"
+        },
+        "axes_depth_mask.npz": {
+          "bytes": 141422,
+          "sha256": "5f837b1c2f6ad683d735ae234405b2c381acc8198fc2778d400933a04aa03b67",
+          "remote_path": "ntc/hipsci_targeted_19_6ba1ca45325b/axes_depth_mask.npz"
+        }
+      },
+      "expected_contexts": [
+        "hipsci_targeted_19:02b02c875342c9f6",
+        "hipsci_targeted_19:1a4d364868618db4",
+        "hipsci_targeted_19:28747cdde22e0bcf",
+        "hipsci_targeted_19:292486f64fb5819b",
+        "hipsci_targeted_19:2947fc5665700fc1",
+        "hipsci_targeted_19:336af7f2c91993dc",
+        "hipsci_targeted_19:5a87c1d271d7132b",
+        "hipsci_targeted_19:823cf2bf472c7960",
+        "hipsci_targeted_19:8b55514fc2270379",
+        "hipsci_targeted_19:97ca80e7b0c5a255",
+        "hipsci_targeted_19:9f41776236dc4da3",
+        "hipsci_targeted_19:a600f11df9374a7d",
+        "hipsci_targeted_19:b23c2aba8f1765bd",
+        "hipsci_targeted_19:e30cb6b468633446",
+        "hipsci_targeted_19:e63b97c074fe3859",
+        "hipsci_targeted_19:e9eab3e508fed274",
+        "hipsci_targeted_19:f284baddaaad78fc",
+        "hipsci_targeted_19:f466b38fa1d63755",
+        "hipsci_targeted_19:fca8d35039d9feab"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "5a06b3a76e90928ec5157f80464244f6c538c47f272346def6363745479403a0": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "jurkat_nadig_a9fc63d642bb",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r6b_r15/ntc/jurkat_nadig_a9fc63d642bb/complete.json",
+        "bytes": 2800,
+        "sha256": "e047f367195026b8f8deb0f9c64138f27962c36efda287f67270db7d7a29ce02"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r6b",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r6b",
+      "files": {
+        "axes_depth_mask.npz": {
+          "bytes": 196133,
+          "sha256": "094ad9741e3af21e922270b3385115979f82fd63c77994027c7e4949d6e088c5",
+          "remote_path": "ntc/jurkat_nadig_a9fc63d642bb/axes_depth_mask.npz"
+        },
+        "counts.npz": {
+          "bytes": 80738573,
+          "sha256": "2713a48593e3fecaeec2dff24e460ac54dc6b7ee7a79f38587c079caf2b96529",
+          "remote_path": "ntc/jurkat_nadig_a9fc63d642bb/counts.npz"
+        },
+        "cells.json": {
+          "bytes": 7601828,
+          "sha256": "57e2fa2ad8cea221af2c568a25acd1bcddf7a2120f7e306edd33569b2cb14586",
+          "remote_path": "ntc/jurkat_nadig_a9fc63d642bb/cells.json"
+        }
+      },
+      "expected_contexts": [
+        "jurkat_nadig:1b8c352daf0cafb8"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "102dfaa20a3f954400e4a873079bb665dd91214e6e8662863a51b16d3e9fdabf": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "k562_essential_57b27463f757",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r6b_r15/ntc/k562_essential_57b27463f757/complete.json",
+        "bytes": 4266,
+        "sha256": "4a4fba9c0190171ac8f7ef411d522602425220737de87b92a222ad0cafcd6315"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r6b",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r6b",
+      "files": {
+        "axes_depth_mask.npz": {
+          "bytes": 245709,
+          "sha256": "6dd0a171b6dd420721f230898dfe32a848c77e8d00910e9b2842dd0c81fd7c1d",
+          "remote_path": "ntc/k562_essential_57b27463f757/axes_depth_mask.npz"
+        },
+        "counts.npz": {
+          "bytes": 70873688,
+          "sha256": "949baff80b8418d68accf84ab37fa06e771e34a064ab637f5ec173c5b6183383",
+          "remote_path": "ntc/k562_essential_57b27463f757/counts.npz"
+        },
+        "cells.json": {
+          "bytes": 7047269,
+          "sha256": "e18b0198ec21e769b46fad17cfde5bd8c0d075f40c28efa74a09fce3e02fc245",
+          "remote_path": "ntc/k562_essential_57b27463f757/cells.json"
+        }
+      },
+      "expected_contexts": [
+        "k562_essential:9b61ba5087c4b7af"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "22b82adac0a32d5f565ec28e7709624ced84f63f43454aa0f7e030f579a6a81c": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "k562_gwps_a_29eedeb799cf",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r6b_r15/ntc/k562_gwps_a_29eedeb799cf/complete.json",
+        "bytes": 5782,
+        "sha256": "ba0ea6cc44a6f19d369c7697b8774978c6d607d098814acd8ddb32aba37ceb11"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r6b",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r6b",
+      "files": {
+        "axes_depth_mask.npz": {
+          "bytes": 404024,
+          "sha256": "17ae47ccd2fc99e2b40e0c4f8ccd75b779b1da9508ac65c15be6e762f7b30230",
+          "remote_path": "ntc/k562_gwps_a_29eedeb799cf/axes_depth_mask.npz"
+        },
+        "counts.npz": {
+          "bytes": 216697469,
+          "sha256": "78f8f16104508bddace26d466a272d37cb7f7a44a0a0a82d4cf5e8a8fae59eeb",
+          "remote_path": "ntc/k562_gwps_a_29eedeb799cf/counts.npz"
+        },
+        "cells.json": {
+          "bytes": 24365205,
+          "sha256": "51fdf6625d5008b52e97d47fd4fc4620ab28ed9d89c6401402a03a0219d535a3",
+          "remote_path": "ntc/k562_gwps_a_29eedeb799cf/cells.json"
+        }
+      },
+      "expected_contexts": [
+        "k562_gwps:48d8d89e89785608"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "2454b2ee6bfd951709d3fc0e4535a9ba1d678508eb7fae6def0ab2f4b4fdb503": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "k562_gwps_b_7f5531a363da",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r6c_r13/ntc/k562_gwps_b_7f5531a363da/complete.json",
+        "bytes": 5781,
+        "sha256": "509b5fde41e7e0e558ba267c5ad3ac4c97539d0eb6e4a034a75c6ede45e18c57"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r6c",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r7a",
+      "files": {
+        "counts.npz": {
+          "bytes": 212444865,
+          "sha256": "5cc6c4a2ca670c2796dcc7faa35a82790e83ea86f3b16b81aa78d53e505b5633",
+          "remote_path": "ntc/k562_gwps_b_7f5531a363da/counts.npz"
+        },
+        "axes_depth_mask.npz": {
+          "bytes": 402902,
+          "sha256": "72d61b963e6e894311a4fb7de88087f13a4b89c4654d2659994e6db0d2c61a40",
+          "remote_path": "ntc/k562_gwps_b_7f5531a363da/axes_depth_mask.npz"
+        },
+        "cells.json": {
+          "bytes": 24208427,
+          "sha256": "280ff13552383e5d81b821b62dbca9f9fb1c235bf0708e8854be8e4ce48e5bfe",
+          "remote_path": "ntc/k562_gwps_b_7f5531a363da/cells.json"
+        }
+      },
+      "expected_contexts": [
+        "k562_gwps:48d8d89e89785608"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "6284e2e3f927958f8b00b0555a368cc308d427c9cfd936fb7c5ed0bf82e4350e": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "kolf_chromatin_c8aa4c4a328a",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r6c_r13/ntc/kolf_chromatin_c8aa4c4a328a/complete.json",
+        "bytes": 1885,
+        "sha256": "854f942a2a0246b59f2eb8b7bb1ac3a2280a90989c2602a39101215820833ef9"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r6c",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r7a",
+      "files": {
+        "counts.npz": {
+          "bytes": 90049981,
+          "sha256": "fb18ab1ec0c58067a610dd1369665705d1c794dfb8010db89103b96cc94aff3d",
+          "remote_path": "ntc/kolf_chromatin_c8aa4c4a328a/counts.npz"
+        },
+        "axes_depth_mask.npz": {
+          "bytes": 134251,
+          "sha256": "21b8f41c905395d5d4084d549a1875308695dea80c7e85f2ac15f9d69360e553",
+          "remote_path": "ntc/kolf_chromatin_c8aa4c4a328a/axes_depth_mask.npz"
+        },
+        "cells.json": {
+          "bytes": 4713772,
+          "sha256": "7db7d1045e2977190cd6ecfb6208aa9c1318a59af2c15883f226a70beaefa513",
+          "remote_path": "ntc/kolf_chromatin_c8aa4c4a328a/cells.json"
+        }
+      },
+      "expected_contexts": [
+        "kolf_chromatin:627dc260948ab843"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "459c7cc79cd8692e2fc1222de7c05a1c58cceb5a272a8839689fdaa7522817a8": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "kolf_metabolic_b5fc0816cee4",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r6b_r15/ntc/kolf_metabolic_b5fc0816cee4/complete.json",
+        "bytes": 2140,
+        "sha256": "a152a96ed1d8e3a6193e1e6f24870e0692405408c5296788d9ccc275da4cc479"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r6b",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r6b",
+      "files": {
+        "axes_depth_mask.npz": {
+          "bytes": 168460,
+          "sha256": "b25b356f5ff1e414c6a37c13bb059c22055bc05598c132927147270f0c7f530a",
+          "remote_path": "ntc/kolf_metabolic_b5fc0816cee4/axes_depth_mask.npz"
+        },
+        "counts.npz": {
+          "bytes": 124919848,
+          "sha256": "3220224002ababa80f438b20d6bd93bc326723031fb4e086a320f337b29c610c",
+          "remote_path": "ntc/kolf_metabolic_b5fc0816cee4/counts.npz"
+        },
+        "cells.json": {
+          "bytes": 12089592,
+          "sha256": "cf6d4bd370d7ef9c14b7d4e580aa6daa0f08dea571adb4d9f13262ffb8c10cfe",
+          "remote_path": "ntc/kolf_metabolic_b5fc0816cee4/cells.json"
+        }
+      },
+      "expected_contexts": [
+        "kolf_metabolic:3d7cbdf4b4bde138"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "8c0d06b75036490129908c3d7f9377ce873d35b12bfad7664ed8805aaf506958": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "kolf_strong_929b428a0340",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r6b_r15/ntc/kolf_strong_929b428a0340/complete.json",
+        "bytes": 2629,
+        "sha256": "07917cd637e0487396e05a4760f5d7f6e41536a3fbecac4b11d62ac14d9cdcd8"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r6b",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r6b",
+      "files": {
+        "axes_depth_mask.npz": {
+          "bytes": 207703,
+          "sha256": "cce95151419aa7c359eb712aa4a2e0b8f07b760ea683540abb03aca7a49f87ac",
+          "remote_path": "ntc/kolf_strong_929b428a0340/axes_depth_mask.npz"
+        },
+        "counts.npz": {
+          "bytes": 161815719,
+          "sha256": "d256b8a0f56471ff300c803453542eb14aa148343e1ea3e62874dfcd7140195e",
+          "remote_path": "ntc/kolf_strong_929b428a0340/counts.npz"
+        },
+        "cells.json": {
+          "bytes": 24922183,
+          "sha256": "8ac6e48b0f52f6c8e5507798b11b06bf6f938d2412edca9d3879671802fb4cc6",
+          "remote_path": "ntc/kolf_strong_929b428a0340/cells.json"
+        }
+      },
+      "expected_contexts": [
+        "kolf_strong:464274901d98ed60"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "053eedbb92d06ccd07f13309808f4c932e3d0b45edfb25b88c3c6e0bc7c25994": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "rpe1_8dbe19b7b1fa",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r6c_r13/ntc/rpe1_8dbe19b7b1fa/complete.json",
+        "bytes": 3673,
+        "sha256": "fed15f2492b029ca50dafe076f9102b1337a114a76b7f6681ab55257f6a587f6"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r6c",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r7a",
+      "files": {
+        "counts.npz": {
+          "bytes": 75076082,
+          "sha256": "2333bde53fdadae01dde6e9392cdded65a5e9ccc4c50f231ba01d438414ee041",
+          "remote_path": "ntc/rpe1_8dbe19b7b1fa/counts.npz"
+        },
+        "axes_depth_mask.npz": {
+          "bytes": 227207,
+          "sha256": "06058704b12971c9aba2b5a3ff63848ca84358317c0ccc40073bd7397a7d0b95",
+          "remote_path": "ntc/rpe1_8dbe19b7b1fa/axes_depth_mask.npz"
+        },
+        "cells.json": {
+          "bytes": 7112167,
+          "sha256": "c29b5a8255522039af0ae7aaae42aae4446fd89dec5830d641f221d295b055ec",
+          "remote_path": "ntc/rpe1_8dbe19b7b1fa/cells.json"
+        }
+      },
+      "expected_contexts": [
+        "rpe1:c05a202d09b9f4e6"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "31bc0731b16a56fc41a1c3f09fc1a21e5378c176c88025a22ba26d99530c2753": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "tian2019_ipsc_e953cfaed7f6",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r7a_r15/ntc/tian2019_ipsc_e953cfaed7f6/complete.json",
+        "bytes": 3027,
+        "sha256": "677218630d36ce990f91e8ea9032beda372bfdf6d73d83a484a123927206003f"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r7a",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r7a",
+      "files": {
+        "cells.json": {
+          "bytes": 159345,
+          "sha256": "382a844244c672959eb692aaff891cd9c5451e709b8ed454304703d6b48aad8c",
+          "remote_path": "ntc/tian2019_ipsc_e953cfaed7f6/cells.json"
+        },
+        "counts.npz": {
+          "bytes": 45493,
+          "sha256": "87d6150cb7b9aa50e15bb78197ce28e658049f6d83f34bebc43ac0f1f06657b8",
+          "remote_path": "ntc/tian2019_ipsc_e953cfaed7f6/counts.npz"
+        },
+        "axes_depth_mask.npz": {
+          "bytes": 121832,
+          "sha256": "ba164bcb1285d2a8171e94918ba7bf9e6e737e955257ee850078b428e418147a",
+          "remote_path": "ntc/tian2019_ipsc_e953cfaed7f6/axes_depth_mask.npz"
+        }
+      },
+      "expected_contexts": [
+        "tian2019_ipsc:a084c82b06acba6d"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "dcaa54a3bc28d48fba7072c6eae1d06a8126913148889523896d21b3fd0c8e2e",
+        "ntc_cells.py": "4f1fac7b2ff77f6267f4bd886bcc92d3abbd415076c4c6ea90c45d612a6c45b8"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "9acaea25691af99565f4e09e25fc86f4e6c68d36473d00d342276f18dfd858de": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "tian2019_neuron_16d4e91e087f",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r7a_r15/ntc/tian2019_neuron_16d4e91e087f/complete.json",
+        "bytes": 2702,
+        "sha256": "b734e2fa8ee43fdafebf5be721640b36ad516a6c5a7e696c32784e561955b873"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r7a",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r7a",
+      "files": {
+        "cells.json": {
+          "bytes": 171799,
+          "sha256": "6398da09f3fea2be919393617588970168ad765e6250c4c554fd25f584f8af4c",
+          "remote_path": "ntc/tian2019_neuron_16d4e91e087f/cells.json"
+        },
+        "counts.npz": {
+          "bytes": 154731,
+          "sha256": "92af431739cdf836f31c048c972199631a330231ed9fd333bfaa5ce1724fb157",
+          "remote_path": "ntc/tian2019_neuron_16d4e91e087f/counts.npz"
+        },
+        "axes_depth_mask.npz": {
+          "bytes": 119103,
+          "sha256": "5093c2d793f79ef5ea1c99d8122aa59cdae0d6818a8738cd3da7498041932ab7",
+          "remote_path": "ntc/tian2019_neuron_16d4e91e087f/axes_depth_mask.npz"
+        }
+      },
+      "expected_contexts": [
+        "tian2019_neuron:4808b32705192309"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "dcaa54a3bc28d48fba7072c6eae1d06a8126913148889523896d21b3fd0c8e2e",
+        "ntc_cells.py": "4f1fac7b2ff77f6267f4bd886bcc92d3abbd415076c4c6ea90c45d612a6c45b8"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "9433a798edbf97122c93710f2412b68b46525673eccdedb5823b819e8d939015": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "tian2021_crispri_a3ee3d84fe4a",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r6a_r10/ntc/tian2021_crispri_a3ee3d84fe4a/complete.json",
+        "bytes": 1803,
+        "sha256": "8177f683ad2fedba2ad420e49236cd7f4e439bc056089648c54d53c80ef8c88c"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r6a",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r6a",
+      "files": {
+        "cells.json": {
+          "bytes": 280229,
+          "sha256": "3561c1a10bd42714d37300b93b1153cc185e65dece475054d2fba7517fe22273",
+          "remote_path": "ntc/tian2021_crispri_a3ee3d84fe4a/cells.json"
+        },
+        "counts.npz": {
+          "bytes": 3850662,
+          "sha256": "9d0ae7bc93445429f1c61b7611af5b163b48d13a41d515050d86cbd32d79eab5",
+          "remote_path": "ntc/tian2021_crispri_a3ee3d84fe4a/counts.npz"
+        },
+        "axes_depth_mask.npz": {
+          "bytes": 113425,
+          "sha256": "0a0030567206bd11cabeabbc74a7794ed8401c06b699bd6ff7baa0dfbbb60357",
+          "remote_path": "ntc/tian2021_crispri_a3ee3d84fe4a/axes_depth_mask.npz"
+        }
+      },
+      "expected_contexts": [
+        "tian2021_crispri:474860c165b46e26"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    },
+    "7dd644524618da573592990200d39163f28980c29a668817f6988647cceed03e": {
+      "status": "COMPLETE_METADATA_VERIFIED",
+      "part_id": "xu2023_42a282da4566",
+      "completion": {
+        "path": "reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_launches/terminal_metadata/davidmaisterx/dt-ntc-inputs-01a11c34-r6b_r15/ntc/xu2023_42a282da4566/complete.json",
+        "bytes": 2026,
+        "sha256": "9a2d1aad94863316ef8cb528bb5d1943468191e70f4799f29e81d7c0b4882cdf"
+      },
+      "producer": "davidmaisterx/dt-ntc-inputs-01a11c34-r6b",
+      "storage": "davidmaisterx/dt-ntc-inputs-01a11c34-r6b",
+      "files": {
+        "axes_depth_mask.npz": {
+          "bytes": 116422,
+          "sha256": "c64254e916974744ba7119d7fcafb6d6f2953e3c3354cac74d2f922eea592d8d",
+          "remote_path": "ntc/xu2023_42a282da4566/axes_depth_mask.npz"
+        },
+        "counts.npz": {
+          "bytes": 2235421,
+          "sha256": "d06cf7ce084e845bfe7184047a1a7d1106fc805bab951db53e1f0029149f6f5b",
+          "remote_path": "ntc/xu2023_42a282da4566/counts.npz"
+        },
+        "cells.json": {
+          "bytes": 640745,
+          "sha256": "78b7fba61cdf95d4421febc2e100e58b5a2e009af7e61bdae57ef3cd41108823",
+          "remote_path": "ntc/xu2023_42a282da4566/cells.json"
+        }
+      },
+      "expected_contexts": [
+        "xu2023:8bcbf8b25f553d29"
+      ],
+      "producer_code": {
+        "run_ntc_extraction.py": "48059f90dfd44ed5646ac1983cd9a2c5923b4f263e99bf14b87ef2a8b3d1b4d0",
+        "ntc_cells.py": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+      },
+      "full_numeric_hash_verification_required_on_consumer": true
+    }
+  },
+  "parts": [
+    {
+      "part_id": "D1_Rest_8d07d38d3799",
+      "unit": "D1_Rest",
+      "cache_key": "21a3d958e209974193d5d2d624235af03cd4d7d18c4e691e47493f8dcec81252",
+      "action": "AWAIT_ACTIVE_PRODUCER",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/D1_Rest_8d07d38d3799.json",
+        "bytes": 315879,
+        "sha256": "3fd3de4f630e03ade33b1dc9a57da9a3d61eda40bdc5fe6ffb00e75b1454a7f7"
+      },
+      "raw_shards": 154,
+      "raw_bytes_known": 15082075405,
+      "raw_sizes_unknown": 0,
+      "control_population": 76543,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d1-rest-r1/samples/D1_Rest/complete.json",
+            "bytes": 120076,
+            "sha256": "37a882ac2fa895358ba93c19d309872ecc0e70d5c28a2cb814f9d35a5aecff86"
+          },
+          "kernel": "davideferrante11/vcc-samples-cd4-d1-rest-r1",
+          "levels_all_targets": {
+            "32": 414048,
+            "64": 660906,
+            "128": 1093082
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 8068504537,
+      "raw_shards_already_linked_by_existing_samples": 154,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": "davideferrante11/dt-ntc-inputs-01a11c34-r5"
+    },
+    {
+      "part_id": "D1_Stim48hr_53f7a4698574",
+      "unit": "D1_Stim48hr",
+      "cache_key": "83c3f5b93484b03706991d6e87fa20c1b97bb0ed7aadad117949a3e4943f69fe",
+      "action": "AWAIT_ACTIVE_PRODUCER",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/D1_Stim48hr_53f7a4698574.json",
+        "bytes": 314457,
+        "sha256": "d67e7f85539b25856948605a94e52b7d878eef013003cb6104529070c55457c5"
+      },
+      "raw_shards": 141,
+      "raw_bytes_known": 16943811337,
+      "raw_sizes_unknown": 0,
+      "control_population": 73534,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d1-stim48hr-r1/samples/D1_Stim48hr/complete.json",
+            "bytes": 114516,
+            "sha256": "a6be980c72093f7a825ca7193e7c6f4628957425f00570eacf49cb084ffd3167"
+          },
+          "kernel": "davideferrante11/vcc-samples-cd4-d1-stim48hr-r1",
+          "levels_all_targets": {
+            "32": 445642,
+            "64": 675175,
+            "128": 1104172
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 10153417920,
+      "raw_shards_already_linked_by_existing_samples": 141,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": "davideferrante11/dt-ntc-inputs-01a11c34-r5"
+    },
+    {
+      "part_id": "D1_Stim8hr_f48a6c375f86",
+      "unit": "D1_Stim8hr",
+      "cache_key": "9b096f2023d4af03c1ea9ecebe647f5fda0bb984813dd6ea7c0291950384e18f",
+      "action": "AWAIT_ACTIVE_PRODUCER",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/D1_Stim8hr_f48a6c375f86.json",
+        "bytes": 313570,
+        "sha256": "bbacd1d43a78db2339d46b80b08fa3a15b839a69ef36665c3c53d4273eced45d"
+      },
+      "raw_shards": 140,
+      "raw_bytes_known": 15690650794,
+      "raw_sizes_unknown": 0,
+      "control_population": 69632,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d1-stim8hr-r1/samples/D1_Stim8hr/complete.json",
+            "bytes": 112588,
+            "sha256": "be8a81c44adc1145b4d7c4620028fc6915f9348030e068195b57e26afc894fd6"
+          },
+          "kernel": "davideferrante11/vcc-samples-cd4-d1-stim8hr-r1",
+          "levels_all_targets": {
+            "32": 428939,
+            "64": 673138,
+            "128": 1093909
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 9434240593,
+      "raw_shards_already_linked_by_existing_samples": 140,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": "davideferrante11/dt-ntc-inputs-01a11c34-r5"
+    },
+    {
+      "part_id": "D2_Rest_a61500eb12a5",
+      "unit": "D2_Rest",
+      "cache_key": "f040d86fa9acc8eb03a33eaaf2df17adc5c4e3cbb60acc57d5b6d54393e2f8a0",
+      "action": "AWAIT_ACTIVE_PRODUCER",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/D2_Rest_a61500eb12a5.json",
+        "bytes": 314211,
+        "sha256": "6e096bd59f3b0aac6449bc870b0452a70d4e2e2caf5e098a704fa2209561f811"
+      },
+      "raw_shards": 148,
+      "raw_bytes_known": 17248660754,
+      "raw_sizes_unknown": 0,
+      "control_population": 83987,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d2-rest-r1/samples/D2_Rest/complete.json",
+            "bytes": 115417,
+            "sha256": "1b2731530a4131d7aa316c8e6127c3c8fe91e33ab23c2a425321ed43221bfc88"
+          },
+          "kernel": "davideferrante11/vcc-samples-cd4-d2-rest-r1",
+          "levels_all_targets": {
+            "32": 377896,
+            "64": 608483,
+            "128": 981522
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 7330808917,
+      "raw_shards_already_linked_by_existing_samples": 148,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": "davideferrante11/dt-ntc-inputs-01a11c34-r5"
+    },
+    {
+      "part_id": "D2_Stim48hr_b7dbe360bb82",
+      "unit": "D2_Stim48hr",
+      "cache_key": "5e7ff0afe92ca6a94132f82cee98306f1adfd08ecbe63035d8abeb15daa4c33e",
+      "action": "AWAIT_ACTIVE_PRODUCER",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/D2_Stim48hr_b7dbe360bb82.json",
+        "bytes": 315393,
+        "sha256": "7ae5cc9e1223627f500b84efd9a00e0df7d8353f8c099c79b280fc4896b4f961"
+      },
+      "raw_shards": 144,
+      "raw_bytes_known": 18199653476,
+      "raw_sizes_unknown": 0,
+      "control_population": 87747,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d2-stim48hr-r1/samples/D2_Stim48hr/complete.json",
+            "bytes": 116936,
+            "sha256": "aeae18d7091878ea769dd365835b915a371d02399f88f9a552f831a69f80fe42"
+          },
+          "kernel": "davideferrante11/vcc-samples-cd4-d2-stim48hr-r1",
+          "levels_all_targets": {
+            "32": 402756,
+            "64": 626213,
+            "128": 1010758
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 7803524049,
+      "raw_shards_already_linked_by_existing_samples": 144,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": "davideferrante11/dt-ntc-inputs-01a11c34-r5"
+    },
+    {
+      "part_id": "D2_Stim8hr_31b5742655f4",
+      "unit": "D2_Stim8hr",
+      "cache_key": "127186f319fb46ce7102be0188b8b6558b74e3fff5909144305a2f5c12565d47",
+      "action": "AWAIT_ACTIVE_PRODUCER",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/D2_Stim8hr_31b5742655f4.json",
+        "bytes": 317266,
+        "sha256": "991ad902148fbdda214c82ef583902f641f815cf48b0434c3c306dbad5fdbb7a"
+      },
+      "raw_shards": 152,
+      "raw_bytes_known": 20738329262,
+      "raw_sizes_unknown": 0,
+      "control_population": 88354,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d2-stim8hr-r1/samples/D2_Stim8hr/complete.json",
+            "bytes": 122176,
+            "sha256": "c3d5c11647843fcdeeffd2b9cc159769838a7de6e4f39d1dd1d02a86a3e46cc5"
+          },
+          "kernel": "davideferrante11/vcc-samples-cd4-d2-stim8hr-r1",
+          "levels_all_targets": {
+            "32": 405730,
+            "64": 643636,
+            "128": 1046493
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 9292750116,
+      "raw_shards_already_linked_by_existing_samples": 152,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": "davideferrante11/dt-ntc-inputs-01a11c34-r5"
+    },
+    {
+      "part_id": "D3_Rest_3892d7e83c7e",
+      "unit": "D3_Rest",
+      "cache_key": "ed669d87d89adf6b03cd03e93f12d122181f461391ce692cc63c160b4f340106",
+      "action": "AWAIT_ACTIVE_PRODUCER",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/D3_Rest_3892d7e83c7e.json",
+        "bytes": 311551,
+        "sha256": "c3dc09d664ee6f1fc24008f989cd3c57827c034644c9f24f13a9599eb7741779"
+      },
+      "raw_shards": 139,
+      "raw_bytes_known": 17175697858,
+      "raw_sizes_unknown": 0,
+      "control_population": 76823,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d3-rest-r1/samples/D3_Rest/complete.json",
+            "bytes": 108450,
+            "sha256": "531f282d3848e1927029861f6e82ea9e1c7e580772593ffa7b1edb10adf72ddc"
+          },
+          "kernel": "davideferrante11/vcc-samples-cd4-d3-rest-r1",
+          "levels_all_targets": {
+            "32": 382839,
+            "64": 599491,
+            "128": 981919
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 7713825072,
+      "raw_shards_already_linked_by_existing_samples": 139,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": "davideferrante11/dt-ntc-inputs-01a11c34-r5"
+    },
+    {
+      "part_id": "D3_Stim48hr_6d292dfc1038",
+      "unit": "D3_Stim48hr",
+      "cache_key": "a09b74d29104fe03293d528f2dca16a9feb5b817e8d875d0023b9813397165a3",
+      "action": "AWAIT_ACTIVE_PRODUCER",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/D3_Stim48hr_6d292dfc1038.json",
+        "bytes": 310408,
+        "sha256": "ec6c80303a7b362f1fe1465c5e8b6e9968936e64a269feb6e84f1249e2d01cf6"
+      },
+      "raw_shards": 131,
+      "raw_bytes_known": 0,
+      "raw_sizes_unknown": 131,
+      "control_population": 77334,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d3-stim48hr-r1/samples/D3_Stim48hr/complete.json",
+            "bytes": 106445,
+            "sha256": "a8a38ad2013d6377744637ec591acddd9718544e49b027a748d0479787805bd7"
+          },
+          "kernel": "davideferrante11/vcc-samples-cd4-d3-stim48hr-r1",
+          "levels_all_targets": {
+            "32": 377395,
+            "64": 589787,
+            "128": 961662
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 8256953496,
+      "raw_shards_already_linked_by_existing_samples": 131,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": "davideferrante11/dt-ntc-inputs-01a11c34-r5"
+    },
+    {
+      "part_id": "D3_Stim8hr_0cedda457776",
+      "unit": "D3_Stim8hr",
+      "cache_key": "86cc5f35d699ff9a7c56e0bf4add6a7d56c2c73735db45d9f6a2ab7cef672563",
+      "action": "AWAIT_ACTIVE_PRODUCER",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/D3_Stim8hr_0cedda457776.json",
+        "bytes": 308949,
+        "sha256": "6b4cc87c041aebfb08f75799d5659081e39840b8ac3df663718f448c1983174b"
+      },
+      "raw_shards": 125,
+      "raw_bytes_known": 17205364609,
+      "raw_sizes_unknown": 0,
+      "control_population": 68441,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davideferrante11/vcc-samples-cd4-d3-stim8hr-r1/samples/D3_Stim8hr/complete.json",
+            "bytes": 100599,
+            "sha256": "eaad59e5dc0482495e19edf13d477af6fd70c37be8c992ae2b9fbcc8686ec76e"
+          },
+          "kernel": "davideferrante11/vcc-samples-cd4-d3-stim8hr-r1",
+          "levels_all_targets": {
+            "32": 384675,
+            "64": 598266,
+            "128": 960582
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 8740159885,
+      "raw_shards_already_linked_by_existing_samples": 125,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": "davideferrante11/dt-ntc-inputs-01a11c34-r5"
+    },
+    {
+      "part_id": "D4_Rest_9cd9ad16299b",
+      "unit": "D4_Rest",
+      "cache_key": "bce5f6b4f7297801d9e11b4e0874a3663cd74894f26e53f5e85a6fa0523415fb",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/D4_Rest_9cd9ad16299b.json",
+        "bytes": 309000,
+        "sha256": "a92e941013c15d9e9a14769c209b0d92c2dba4926aa12b777fbf7e9a0194852a"
+      },
+      "raw_shards": 135,
+      "raw_bytes_known": 0,
+      "raw_sizes_unknown": 135,
+      "control_population": 76636,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davidmaisterx/vcc-samples-cd4-d4-rest-r1/samples/D4_Rest/complete.json",
+            "bytes": 104541,
+            "sha256": "e1599cafdffde43318968c154aa17a09788d9c6933f197795ed1f298a3b15348"
+          },
+          "kernel": "davidmaisterx/vcc-samples-cd4-d4-rest-r1",
+          "levels_all_targets": {
+            "32": 469985,
+            "64": 718096,
+            "128": 1218057
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 8556299215,
+      "raw_shards_already_linked_by_existing_samples": 135,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "D4_Stim48hr_db26a86482c4",
+      "unit": "D4_Stim48hr",
+      "cache_key": "d706957d367bf50ae22b3ca7567ee17f4d039ca487c52a469b64ad38e1ff0df6",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/D4_Stim48hr_db26a86482c4.json",
+        "bytes": 313041,
+        "sha256": "03ed4f3bca4304b2db56ebb19f75763e3b54dcad462a68c6d8ab8108afd1ea8e"
+      },
+      "raw_shards": 141,
+      "raw_bytes_known": 0,
+      "raw_sizes_unknown": 141,
+      "control_population": 83474,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davidmaisterx/vcc-samples-cd4-d4-stim48hr-r1/samples/D4_Stim48hr/complete.json",
+            "bytes": 113671,
+            "sha256": "f1e38a0f9066c353d05712362259353e29d7ca24b6114ea9014929835fc429c9"
+          },
+          "kernel": "davidmaisterx/vcc-samples-cd4-d4-stim48hr-r1",
+          "levels_all_targets": {
+            "32": 487904,
+            "64": 721882,
+            "128": 1243353
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 11330784291,
+      "raw_shards_already_linked_by_existing_samples": 141,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "D4_Stim8hr_69694959750b",
+      "unit": "D4_Stim8hr",
+      "cache_key": "39384caa94698a49f92ea9f254eface2565ced2c20456302741cc071dd3f8a24",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/D4_Stim8hr_69694959750b.json",
+        "bytes": 311262,
+        "sha256": "916473d3e94795dfc6d836d44fa248b8b20f21eb22e2c3ed06828476fc998234"
+      },
+      "raw_shards": 137,
+      "raw_bytes_known": 0,
+      "raw_sizes_unknown": 137,
+      "control_population": 77030,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_samples_r5/receipts/davidmaisterx/vcc-samples-cd4-d4-stim8hr-r1/samples/D4_Stim8hr/complete.json",
+            "bytes": 109369,
+            "sha256": "390d5960684c790ba68b20f412264e90e2d51839a2c4c7795ad1b9102aa207ce"
+          },
+          "kernel": "davidmaisterx/vcc-samples-cd4-d4-stim8hr-r1",
+          "levels_all_targets": {
+            "32": 483164,
+            "64": 724820,
+            "128": 1231882
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 9770234788,
+      "raw_shards_already_linked_by_existing_samples": 137,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "h1_train_9df94c65f77b",
+      "unit": "h1_train",
+      "cache_key": "bd8d93dac65926a1d1d6023890e72372c21bf762598acb0f1d025d0f11830eec",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/h1_train_9df94c65f77b.json",
+        "bytes": 280093,
+        "sha256": "dd7a7c9d591a165c861232bde48ad9fe1590ce87d5be19bfb3a1f2e42287c850"
+      },
+      "raw_shards": 45,
+      "raw_bytes_known": 4409720618,
+      "raw_sizes_unknown": 0,
+      "control_population": 38176,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/archive_completion_batch_r1/vcc-derivatives-rlab-h1-vcc2025-trainval/receipts/davideferrante11/vcc-derivatives-rlab-h1-vcc2025-trainval/samples/h1_train/complete.json",
+            "bytes": 26233,
+            "sha256": "251dd26df814f66120ba045e2e329b5633ad1e475d20deba8df9acfddbc2da09"
+          },
+          "kernel": "davideferrante11/vcc-derivatives-rlab-h1-vcc2025-trainval",
+          "levels_all_targets": {
+            "32": 8993,
+            "64": 11295,
+            "128": 20323
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 381445626,
+      "raw_shards_already_linked_by_existing_samples": 45,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "hepg2_nadig_b27f8d6c80d6",
+      "unit": "hepg2_nadig",
+      "cache_key": "d09c94360ab83124dbecaa4cb2609e990415f84e6910326ad03ee705526d869b",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/hepg2_nadig_b27f8d6c80d6.json",
+        "bytes": 271927,
+        "sha256": "82eecfe99b827696d214e29dbf450f440de2770b723b7f00b6fd86b717585ea7"
+      },
+      "raw_shards": 8,
+      "raw_bytes_known": 1332075491,
+      "raw_sizes_unknown": 0,
+      "control_population": 4976,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/archive_completion_hepg2_r1/receipts/davideferrante11/vcc-derivatives-rlab-hepg2-nadig/samples/hepg2_nadig/complete.json",
+            "bytes": 5364,
+            "sha256": "951a3839ede472873ea410a2d5815ca608a193af2d46fdb24d76247b8840c255"
+          },
+          "kernel": "davideferrante11/vcc-derivatives-rlab-hepg2-nadig",
+          "levels_all_targets": {
+            "32": 85401,
+            "64": 110862,
+            "128": 130519
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 1032569067,
+      "raw_shards_already_linked_by_existing_samples": 8,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "hipsci_targeted_19_6ba1ca45325b",
+      "unit": "hipsci_targeted_19",
+      "cache_key": "e50add1e978a815145fe300577b5df58b2b80fbb649bf32652c344c7a77f5737",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/hipsci_targeted_19_6ba1ca45325b.json",
+        "bytes": 291468,
+        "sha256": "04d23e7a8264f5e90fba9a2169c82d7a095dda06f087cbd9aaaad6e407cd464b"
+      },
+      "raw_shards": 59,
+      "raw_bytes_known": 13030135370,
+      "raw_sizes_unknown": 0,
+      "control_population": 8241,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/archive_completion_hipsci_targeted19_r1/receipts/davideferante/vcc-derivatives-hipsci-targeted19-r1/samples/hipsci_targeted_19/complete.json",
+            "bytes": 35722,
+            "sha256": "6d5840e40b8ca978367b80803f1ac4b9b59abd028b204acbafd9a0199c721af1"
+          },
+          "kernel": "davideferante/vcc-derivatives-hipsci-targeted19-r1",
+          "levels_all_targets": {
+            "32": 497355,
+            "64": 520464,
+            "128": 622353
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 6151806122,
+      "raw_shards_already_linked_by_existing_samples": 59,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "jurkat_nadig_a9fc63d642bb",
+      "unit": "jurkat_nadig",
+      "cache_key": "5a06b3a76e90928ec5157f80464244f6c538c47f272346def6363745479403a0",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/jurkat_nadig_a9fc63d642bb.json",
+        "bytes": 273400,
+        "sha256": "4c4f40fa748be798f933e9533b4a72f4ad8edc711903c1dd39779c329c0cdbd2"
+      },
+      "raw_shards": 14,
+      "raw_bytes_known": 2040433751,
+      "raw_sizes_unknown": 0,
+      "control_population": 12013,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/archive_completion_batch_r1/vcc-derivatives-rlab-jurkat-nadig/receipts/davideferrante11/vcc-derivatives-rlab-jurkat-nadig/samples/jurkat_nadig/complete.json",
+            "bytes": 8860,
+            "sha256": "26d7349952b0adffa6e2870fbd8f32795b167514f5e9e171c552acc4f100977d"
+          },
+          "kernel": "davideferrante11/vcc-derivatives-rlab-jurkat-nadig",
+          "levels_all_targets": {
+            "32": 107147,
+            "64": 140608,
+            "128": 201023
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 1283723540,
+      "raw_shards_already_linked_by_existing_samples": 14,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "k562_essential_57b27463f757",
+      "unit": "k562_essential",
+      "cache_key": "102dfaa20a3f954400e4a873079bb665dd91214e6e8662863a51b16d3e9fdabf",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/k562_essential_57b27463f757.json",
+        "bytes": 277666,
+        "sha256": "5dac00d8d3328b4e412877578bdd22a728053d409dbca07ac20e26811729f509"
+      },
+      "raw_shards": 32,
+      "raw_bytes_known": 2471546599,
+      "raw_sizes_unknown": 0,
+      "control_population": 10691,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/archive_completion_batch_r1/vcc-derivatives-rlab-k562-essential-r2/receipts/davidmaisterx/vcc-derivatives-rlab-k562-essential-r2/samples/k562_essential/complete.json",
+            "bytes": 19381,
+            "sha256": "60a6cca3a6718c7eaedebd1e6d067697e06a71f4c36fff281c48fd391bd56c02"
+          },
+          "kernel": "davidmaisterx/vcc-derivatives-rlab-k562-essential-r2",
+          "levels_all_targets": {
+            "32": 93399,
+            "64": 129479,
+            "128": 212593
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 1357864767,
+      "raw_shards_already_linked_by_existing_samples": 32,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "k562_gwps_a_29eedeb799cf",
+      "unit": "k562_gwps_a",
+      "cache_key": "22b82adac0a32d5f565ec28e7709624ced84f63f43454aa0f7e030f579a6a81c",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/k562_gwps_a_29eedeb799cf.json",
+        "bytes": 281485,
+        "sha256": "57d60195744099db77f1a7a21aff76dd26084b615ec7e8d00d2b0f5f8cbe9a5f"
+      },
+      "raw_shards": 50,
+      "raw_bytes_known": 7067941224,
+      "raw_sizes_unknown": 0,
+      "control_population": 37785,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/archive_completion_k562_gwps_r1/receipts/davideferrante11/vcc-derivatives-rlab-k562-gwps-r3/samples/k562_gwps_a/complete.json",
+            "bytes": 29727,
+            "sha256": "746799d785aa2c9358ea3e94379bd25f36906ecaeb0d978c8cf9ead115c9f1f3"
+          },
+          "kernel": "davideferrante11/vcc-derivatives-rlab-k562-gwps-r3",
+          "levels_all_targets": {
+            "32": 807963,
+            "64": 820701,
+            "128": 911820
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 5137352911,
+      "raw_shards_already_linked_by_existing_samples": 50,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "k562_gwps_b_7f5531a363da",
+      "unit": "k562_gwps_b",
+      "cache_key": "2454b2ee6bfd951709d3fc0e4535a9ba1d678508eb7fae6def0ab2f4b4fdb503",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/k562_gwps_b_7f5531a363da.json",
+        "bytes": 281483,
+        "sha256": "91d4e79fde211b5f9d3ffde37fcd2c06680b4e73abce6cb086a585c7c895d989"
+      },
+      "raw_shards": 50,
+      "raw_bytes_known": 6904612003,
+      "raw_sizes_unknown": 0,
+      "control_population": 37543,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/archive_completion_k562_gwps_r1/receipts/davideferrante11/vcc-derivatives-rlab-k562-gwps-r3/samples/k562_gwps_b/complete.json",
+            "bytes": 29717,
+            "sha256": "da45b9177d129dac33e6f65f62368e26f11dd6025a3ef5a38fced935b3d44790"
+          },
+          "kernel": "davideferrante11/vcc-derivatives-rlab-k562-gwps-r3",
+          "levels_all_targets": {
+            "32": 801345,
+            "64": 813972,
+            "128": 904289
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 5015557654,
+      "raw_shards_already_linked_by_existing_samples": 50,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "kolf_chromatin_c8aa4c4a328a",
+      "unit": "kolf_chromatin",
+      "cache_key": "6284e2e3f927958f8b00b0555a368cc308d427c9cfd936fb7c5ed0bf82e4350e",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/kolf_chromatin_c8aa4c4a328a.json",
+        "bytes": 270894,
+        "sha256": "213713ea0485ad7af40caed0c1ac641cde6476467092aed4127e04ca97128c17"
+      },
+      "raw_shards": 3,
+      "raw_bytes_known": 614271864,
+      "raw_sizes_unknown": 0,
+      "control_population": 7161,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/archive_completion_batch_r1/vcc-derivatives-kolf-small-r1/receipts/davideferrante11/vcc-derivatives-kolf-small-r1/samples/kolf_chromatin/complete.json",
+            "bytes": 2469,
+            "sha256": "3a4cee0feac9705604280864f01fcdc14a343bde97cd5009f01bb8806cebbd17"
+          },
+          "kernel": "davideferrante11/vcc-derivatives-kolf-small-r1",
+          "levels_all_targets": {
+            "32": 3860,
+            "64": 7251,
+            "128": 13704
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 166091499,
+      "raw_shards_already_linked_by_existing_samples": 3,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "kolf_metabolic_b5fc0816cee4",
+      "unit": "kolf_metabolic",
+      "cache_key": "459c7cc79cd8692e2fc1222de7c05a1c58cceb5a272a8839689fdaa7522817a8",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/kolf_metabolic_b5fc0816cee4.json",
+        "bytes": 271594,
+        "sha256": "9385eb3795fe352d249c5dd2e79903e2da5b6efac7e04e6f52053d6868c98509"
+      },
+      "raw_shards": 6,
+      "raw_bytes_known": 978042376,
+      "raw_sizes_unknown": 0,
+      "control_population": 18651,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/archive_completion_batch_r1/vcc-derivatives-kolf-small-r1/receipts/davideferrante11/vcc-derivatives-kolf-small-r1/samples/kolf_metabolic/complete.json",
+            "bytes": 4213,
+            "sha256": "fcd825548bb7946fafcd266546484811a24aab62a67346be19f01861c4d54d75"
+          },
+          "kernel": "davideferrante11/vcc-derivatives-kolf-small-r1",
+          "levels_all_targets": {
+            "32": 3540,
+            "64": 6644,
+            "128": 12850
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 84950253,
+      "raw_shards_already_linked_by_existing_samples": 6,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "kolf_pan_genome_a2d4626888f0",
+      "unit": "kolf_pan_genome",
+      "cache_key": "751c117efbb86bc823cd5fb317903e4bc7884278d2c4fe5f7ac05328754d793f",
+      "action": "AWAIT_ACTIVE_PRODUCER",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/kolf_pan_genome_a2d4626888f0.json",
+        "bytes": 309936,
+        "sha256": "cf5da5573a52e870c340555cf0360844c5512ec80f14df4694342a882ab1cca6"
+      },
+      "raw_shards": 133,
+      "raw_bytes_known": 18386427991,
+      "raw_sizes_unknown": 0,
+      "control_population": 146747,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r1/receipts/davideferrante11/vcc-samples-kolf-p0of3-r1/samples/kolf_pan_genome/complete.json",
+            "bytes": 35782,
+            "sha256": "d6c41d72c35f501960111224794028371b1ef9863cd0cb5bbd775276e95554a4"
+          },
+          "kernel": "davideferrante11/vcc-samples-kolf-p0of3-r1",
+          "levels_all_targets": {
+            "32": 305424,
+            "64": 312504,
+            "128": 486909
+          }
+        },
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r2/receipts/davidmaisterx/vcc-samples-kolf-p1of3-r1/samples/kolf_pan_genome/complete.json",
+            "bytes": 35009,
+            "sha256": "40813c0f188c8cd360fc5e5cab386fc38640b2312f9dc927ef39e793bd1fef17"
+          },
+          "kernel": "davidmaisterx/vcc-samples-kolf-p1of3-r1",
+          "levels_all_targets": {
+            "32": 296814,
+            "64": 303499,
+            "128": 473336
+          }
+        },
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r3/receipts/davideferante/vcc-samples-kolf-p2of3-r1/samples/kolf_pan_genome/complete.json",
+            "bytes": 35004,
+            "sha256": "b8f266283fdcd56b0dadf9764bcfea214de8f009fafe8b463cabb1acf6f05352"
+          },
+          "kernel": "davideferante/vcc-samples-kolf-p2of3-r1",
+          "levels_all_targets": {
+            "32": 287577,
+            "64": 294435,
+            "128": 465305
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 7292365805,
+      "raw_shards_already_linked_by_existing_samples": 133,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": "davideferrante11/dt-ntc-inputs-01a11c34-r5"
+    },
+    {
+      "part_id": "kolf_strong_929b428a0340",
+      "unit": "kolf_strong",
+      "cache_key": "8c0d06b75036490129908c3d7f9377ce873d35b12bfad7664ed8805aaf506958",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/kolf_strong_929b428a0340.json",
+        "bytes": 272914,
+        "sha256": "9a37ff59ae7ec499c9760105e5b7713b358c5df2f7e282461409838dd4e0fc36"
+      },
+      "raw_shards": 12,
+      "raw_bytes_known": 1572742316,
+      "raw_sizes_unknown": 0,
+      "control_population": 35424,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/archive_completion_batch_r1/vcc-derivatives-kolf-strong-r1/receipts/davideferrante11/vcc-derivatives-kolf-strong-r1/samples/kolf_strong/complete.json",
+            "bytes": 7672,
+            "sha256": "7e3d19929219dcf780e21e26d97076b9e085f944dbf5b65fba69315e13cb1018"
+          },
+          "kernel": "davideferrante11/vcc-derivatives-kolf-strong-r1",
+          "levels_all_targets": {
+            "32": 82750,
+            "64": 117677,
+            "128": 173366
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 872232480,
+      "raw_shards_already_linked_by_existing_samples": 12,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "orion_hct116_54c57adbab26",
+      "unit": "orion_hct116",
+      "cache_key": "92a917a3aa6685b67c995fa50def060f07696b3602e45105f95353b2e8573f63",
+      "action": "AWAIT_ACTIVE_PRODUCER",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/orion_hct116_54c57adbab26.json",
+        "bytes": 302812,
+        "sha256": "c4752b8ff422f90f2972c53f1cc1c43c9584f924002d80005bebdcd0d589080c"
+      },
+      "raw_shards": 109,
+      "raw_bytes_known": 38656404319,
+      "raw_sizes_unknown": 0,
+      "control_population": 165777,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r2/receipts/davideferrante11/vcc-samples-hct116-p0of4-r1/samples/orion_hct116/complete.json",
+            "bytes": 22332,
+            "sha256": "998ced60b3dd5e9dfc417ff34fc4a0d989d709be2199abe9a6ff6ad54f20a482"
+          },
+          "kernel": "davideferrante11/vcc-samples-hct116-p0of4-r1",
+          "levels_all_targets": {
+            "32": 347630,
+            "64": 356073,
+            "128": 461371
+          }
+        },
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r3/receipts/davideferrante11/vcc-samples-hct116-p1of4-r1/samples/orion_hct116/complete.json",
+            "bytes": 21577,
+            "sha256": "ff4c7c6192217a43c150c0d72d24f446a3835fd58c666ee625f5799ddf151fe5"
+          },
+          "kernel": "davideferrante11/vcc-samples-hct116-p1of4-r1",
+          "levels_all_targets": {
+            "32": 343662,
+            "64": 354293,
+            "128": 497665
+          }
+        },
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r4/receipts/davidmaisterx/vcc-samples-hct116-p2of4-r1/samples/orion_hct116/complete.json",
+            "bytes": 21579,
+            "sha256": "7f107b42dbc87307e3f42ddc8d053359d6f372adc59ac4977dca0045da3c913c"
+          },
+          "kernel": "davidmaisterx/vcc-samples-hct116-p2of4-r1",
+          "levels_all_targets": {
+            "32": 340335,
+            "64": 350601,
+            "128": 492722
+          }
+        },
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r4/receipts/davideferante/vcc-samples-hct116-p3of4-r1/samples/orion_hct116/complete.json",
+            "bytes": 21572,
+            "sha256": "f37e5e51869890b8c112beec2fe4a6020f14724c42f9a33fc34bb4269b39f726"
+          },
+          "kernel": "davideferante/vcc-samples-hct116-p3of4-r1",
+          "levels_all_targets": {
+            "32": 341065,
+            "64": 350692,
+            "128": 476506
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 18258575151,
+      "raw_shards_already_linked_by_existing_samples": 109,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": "davideferrante11/dt-ntc-inputs-01a11c34-r5"
+    },
+    {
+      "part_id": "orion_hek293t_e3693edab085",
+      "unit": "orion_hek293t",
+      "cache_key": "837670e5d3a2379734e20b1147ff77b0e450c5e6a4537a1d5624282119519088",
+      "action": "AWAIT_ACTIVE_PRODUCER",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/orion_hek293t_e3693edab085.json",
+        "bytes": 337493,
+        "sha256": "82b517b83d60186bac8d286ba4dc1657f1218ffb1c5a5be9df6cf9ef084c7895"
+      },
+      "raw_shards": 223,
+      "raw_bytes_known": 63120563802,
+      "raw_sizes_unknown": 0,
+      "control_population": 218838,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r3/receipts/davideferrante11/vcc-samples-hek293t-p0of6-r1/samples/orion_hek293t/complete.json",
+            "bytes": 30286,
+            "sha256": "08680dfd9c13a4a0a1e88893cf1b96656e41ba83c95a8d0839378ae20043a4ab"
+          },
+          "kernel": "davideferrante11/vcc-samples-hek293t-p0of6-r1",
+          "levels_all_targets": {
+            "32": 350318,
+            "64": 353575,
+            "128": 386850
+          }
+        },
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r3/receipts/davideferrante11/vcc-samples-hek293t-p1of6-r1/samples/orion_hek293t/complete.json",
+            "bytes": 29531,
+            "sha256": "100a8fce698c691c3b33b5a9c6adbc7a33f361645ec7d076fcb278d52a162441"
+          },
+          "kernel": "davideferrante11/vcc-samples-hek293t-p1of6-r1",
+          "levels_all_targets": {
+            "32": 357573,
+            "64": 360609,
+            "128": 391914
+          }
+        },
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r5/receipts/davidmaisterx/vcc-samples-hek293t-p2of6-r1/samples/orion_hek293t/complete.json",
+            "bytes": 29521,
+            "sha256": "b91d36dba03a42340cbbad3a0a18ed6d17e37a90d786635bd0fa8b897fae3b88"
+          },
+          "kernel": "davidmaisterx/vcc-samples-hek293t-p2of6-r1",
+          "levels_all_targets": {
+            "32": 340715,
+            "64": 343768,
+            "128": 374695
+          }
+        },
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r5/receipts/davideferante/vcc-samples-hek293t-p3of6-r1/samples/orion_hek293t/complete.json",
+            "bytes": 29512,
+            "sha256": "043754c6442b67c6c13b16fc907d1232367db12f31a6b665908a6d961ca5abc6"
+          },
+          "kernel": "davideferante/vcc-samples-hek293t-p3of6-r1",
+          "levels_all_targets": {
+            "32": 353549,
+            "64": 356650,
+            "128": 389221
+          }
+        },
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r4/receipts/davidmaisterx/vcc-samples-hek293t-p4of6-r1/samples/orion_hek293t/complete.json",
+            "bytes": 29514,
+            "sha256": "aa2a63a881bd1ecc7019fa692e4d3c15b0d15968a869cb8d8148037d275ae7b5"
+          },
+          "kernel": "davidmaisterx/vcc-samples-hek293t-p4of6-r1",
+          "levels_all_targets": {
+            "32": 342160,
+            "64": 345162,
+            "128": 378774
+          }
+        },
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/snapshot_parts_r5/receipts/davideferante/vcc-samples-hek293t-p5of6-r1/samples/orion_hek293t/complete.json",
+            "bytes": 29525,
+            "sha256": "46735573703823832d2b2bc32cd645eb6b32008d058d4aff972227d74c6d699d"
+          },
+          "kernel": "davideferante/vcc-samples-hek293t-p5of6-r1",
+          "levels_all_targets": {
+            "32": 367621,
+            "64": 371136,
+            "128": 407570
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 27164949870,
+      "raw_shards_already_linked_by_existing_samples": 223,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": "davideferrante11/dt-ntc-inputs-01a11c34-r5"
+    },
+    {
+      "part_id": "rpe1_8dbe19b7b1fa",
+      "unit": "rpe1",
+      "cache_key": "053eedbb92d06ccd07f13309808f4c932e3d0b45edfb25b88c3c6e0bc7c25994",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/rpe1_8dbe19b7b1fa.json",
+        "bytes": 275413,
+        "sha256": "ca1896250606c13cb3608eba46cf3a9e75611de93f192475b6912eb5b55ec905"
+      },
+      "raw_shards": 25,
+      "raw_bytes_known": 1947262556,
+      "raw_sizes_unknown": 0,
+      "control_population": 11485,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/archive_completion_batch_r1/vcc-derivatives-rlab-rpe1-r2/receipts/davideferrante11/vcc-derivatives-rlab-rpe1-r2/samples/rpe1/complete.json",
+            "bytes": 14796,
+            "sha256": "0aac69508be32f1d5572953a8234a3737587c421493a8eaebc985980a1b1c89f"
+          },
+          "kernel": "davideferrante11/vcc-derivatives-rlab-rpe1-r2",
+          "levels_all_targets": {
+            "32": 103346,
+            "64": 132956,
+            "128": 184480
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 1185090066,
+      "raw_shards_already_linked_by_existing_samples": 25,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "tian2019_ipsc_e953cfaed7f6",
+      "unit": "tian2019_ipsc",
+      "cache_key": "31bc0731b16a56fc41a1c3f09fc1a21e5378c176c88025a22ba26d99530c2753",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/tian2019_ipsc_e953cfaed7f6.json",
+        "bytes": 273340,
+        "sha256": "0b18f5c3c31db75844d32b079171bd4bd4a6bc65b3e4c4a3bf709cadaada05d1"
+      },
+      "raw_shards": 14,
+      "raw_bytes_known": 440672678,
+      "raw_sizes_unknown": 0,
+      "control_population": 10401,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/tian_resume_verified_r1/tian2019_ipsc/receipts/davideferante/vcc-derivatives-tian2019-ipsc-resume-r4/samples/tian2019_ipsc/complete.json",
+            "bytes": 8864,
+            "sha256": "67ab08bd5ff7bb8ae9b7a4bf2ab2052ce4ee9d809b0fe36620a041f7cc1fc577"
+          },
+          "kernel": "davideferante/vcc-derivatives-tian2019-ipsc-resume-r4",
+          "levels_all_targets": {
+            "32": 88607,
+            "64": 93198,
+            "128": 100942
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 224348027,
+      "raw_shards_already_linked_by_existing_samples": 14,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "tian2019_neuron_16d4e91e087f",
+      "unit": "tian2019_neuron",
+      "cache_key": "9acaea25691af99565f4e09e25fc86f4e6c68d36473d00d342276f18dfd858de",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/tian2019_neuron_16d4e91e087f.json",
+        "bytes": 272550,
+        "sha256": "79a98f0fa6eeb993e3d194f029a69b260e59d795b4275df58074cb36fb711b68"
+      },
+      "raw_shards": 10,
+      "raw_bytes_known": 326659915,
+      "raw_sizes_unknown": 0,
+      "control_population": 15083,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/tian_resume_verified_r1/tian2019_neuron/receipts/davideferante/vcc-derivatives-tian2019-neuron-resume-r3/samples/tian2019_neuron/complete.json",
+            "bytes": 6578,
+            "sha256": "1918170a9b490d6a55bb56941e2a8ab68c396c7f6c4e75f02c3abe8027633bba"
+          },
+          "kernel": "davideferante/vcc-derivatives-tian2019-neuron-resume-r3",
+          "levels_all_targets": {
+            "32": 76659,
+            "64": 79686,
+            "128": 84720
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 151900749,
+      "raw_shards_already_linked_by_existing_samples": 10,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "tian2021_crispri_a3ee3d84fe4a",
+      "unit": "tian2021_crispri",
+      "cache_key": "9433a798edbf97122c93710f2412b68b46525673eccdedb5823b819e8d939015",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/tian2021_crispri_a3ee3d84fe4a.json",
+        "bytes": 270680,
+        "sha256": "2cc7343421a62314f2b812483b62d1aac56b398f4f5fa0b4e6a0a802de77c4b7"
+      },
+      "raw_shards": 2,
+      "raw_bytes_known": 315999662,
+      "raw_sizes_unknown": 0,
+      "control_population": 437,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/tian_resume_verified_r1/tian2021_crispri/receipts/davideferante/vcc-derivatives-tian2021-crispri-resume-r3/samples/tian2021_crispri/complete.json",
+            "bytes": 1902,
+            "sha256": "ede50bd5570e86a1511bf955449f146158597b272c0489ae06618b26ea7f7fac"
+          },
+          "kernel": "davideferante/vcc-derivatives-tian2021-crispri-resume-r3",
+          "levels_all_targets": {
+            "32": 5920,
+            "64": 11821,
+            "128": 23156
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 196334635,
+      "raw_shards_already_linked_by_existing_samples": 2,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    },
+    {
+      "part_id": "xu2023_42a282da4566",
+      "unit": "xu2023",
+      "cache_key": "7dd644524618da573592990200d39163f28980c29a668817f6988647cceed03e",
+      "action": "REUSE_AFTER_CONSUMER_HASH_CHECK",
+      "plan": {
+        "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/neural_inputs/r2/plans/xu2023_42a282da4566.json",
+        "bytes": 271227,
+        "sha256": "442f676241d84e14fc950f89ce45b78495ed9f85816b563c2686a4427061fc7f"
+      },
+      "raw_shards": 5,
+      "raw_bytes_known": 342622920,
+      "raw_sizes_unknown": 0,
+      "control_population": 2758,
+      "existing_sample_receipts": [
+        {
+          "receipt": {
+            "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/percorso_riusabile_2026-10-05/archive_completion_batch_r1/vcc-derivatives-scp-k562-hek-r1/receipts/davideferante/vcc-derivatives-scp-k562-hek-r1/samples/xu2023/complete.json",
+            "bytes": 3549,
+            "sha256": "87170a525f256902b0067f7d908e02efab8a6bef178e925d845fb24f72ff567e"
+          },
+          "kernel": "davideferante/vcc-derivatives-scp-k562-hek-r1",
+          "levels_all_targets": {
+            "32": 6355,
+            "64": 12195,
+            "128": 23138
+          }
+        }
+      ],
+      "existing_sample_matrix_bytes_all_targets": 53907148,
+      "raw_shards_already_linked_by_existing_samples": 5,
+      "raw_shards_without_old_sample_link": 0,
+      "old_sample_native_depth": false,
+      "old_sample_selection_identical": false,
+      "old_NTC_count_by_level_not_available_in_completion": true,
+      "active_producer": null
+    }
+  ],
+  "summary": {
+    "ready_entries": 18,
+    "pending_parts": 12,
+    "pending_raw_shards": 1739,
+    "pending_unique_raw_shards": 1739,
+    "duplicated_raw_shards_within_pending": 0,
+    "pending_raw_shards_also_in_completed": 0,
+    "pending_existing_sample_matrix_bytes_all_targets": 129510075411
+  },
+  "pending_producer_heartbeat": {
+    "utc": "2026-10-09T19:39:58.307978+00:00",
+    "pid": 912,
+    "state": "RUNNING",
+    "returncode": 0
+  },
+  "scientific_selection_change_forbidden_without_explicit_amendment": true,
+  "transition": {
+    "collection": "DATI watcher PID912",
+    "verified_sentinels": [
+      "ntc_df11_terminal_verified_r1.json",
+      "ntc_ready_manifest_r2.json"
+    ],
+    "private_locator_issuance_and_cells_training": "MODELLI-ESTERNI",
+    "command_after_completion": "ntc_reuse_catalog.py --ready ntc_ready_manifest_r2.json --out ntc_reuse_catalog_r2.json"
+  },
+  "source_data_downloaded": false,
+  "remote_jobs_launched": 0,
+  "active_job_changed": false
+}
