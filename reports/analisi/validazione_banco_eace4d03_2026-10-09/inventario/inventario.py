@@ -28,6 +28,7 @@ COVERAGE = REPO / 'reports/modelli/dati_transfer_2026-10-08_01a11c34/coverage_t3
 MANIFEST = REPO / 'reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/manifest_fold_v2.json'
 RELEASE = REPO / 'reports/modelli/banca_canonica_2026-10-07/fit/release_r1.json'
 BENCH = REPO / 'reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco'
+LEVEL_A_RESULTS = BENCH / 'r1/completion/results.json'       # frozen level-A run: what each fold truth can judge
 LEVEL_B = {'C-K562': BENCH / 'celle_k562_r1/completion/real_cells.json', 'C-iPSC': BENCH / 'celle_ipsc_r1/completion/real_cells.json'}
 MIN_PANEL_TARGETS_FOLD = 30         # a six-member fold on the panel needs enough targets for a rank and a bootstrap
 MIN_PANEL_TARGETS_DESCRIPTIVE = 3   # below this the bench skips a truth table (bench_core.measure)
@@ -65,6 +66,17 @@ def build() -> dict:
         if path.is_file():
             side = read(path)
             level_b[fold] = {'key': side['key'], 'targets': len(side['targets']), 'controls': side['controls'], 'genes': side['genes']}
+    level_a = read(LEVEL_A_RESULTS)['folds']
+    truth_stats = {}
+    for fid, fold in level_a.items():
+        for tname, block in fold['truth'].items():
+            if block.get('skipped'):
+                continue
+            truth_stats.setdefault(fid, []).append({
+                'table': tname, 'role': block['role'], 'targets': block['targets'],
+                'genes_in_rank_95': block['genes_for_rank_95'],
+                'judgeable_response_genes_per_target_median': block['arms']['T0']['median_n_valid'],
+                'confident_response_genes_per_target_median': block['arms']['T0']['median_n_conf']})
     units = {}
     for name, u in registry['units'].items():
         cells = u.get('cells') or {}
@@ -127,18 +139,31 @@ def build() -> dict:
             'modalities': sorted({v['modality'] for v in mine.values()}),
             'donors_or_clones_max': max((v['donors_or_clones'] for v in mine.values()), default=0),
             'cells_all': sum(v['cells_all'] or 0 for v in mine.values()),
-            'fold_level_A': None if fold is None else {'id': fold['id'], 'truth_tables': [t['table'] for t in fold['truth']]},
+            'fold_level_A': None if fold is None else {'id': fold['id'], 'truth_tables': [t['table'] for t in fold['truth']],
+                                                       'truth_stats': truth_stats.get(fold['id'], [])},
             'fold_level_B_today': level_b.get(fold['id']) if fold else None,
             'units_ready_for_level_B': b_ready,
             'descriptive_units': [k for k, v in mine.items() if v['possible_role'].startswith('lettura')],
             'off_panel_units': [k for k, v in mine.items() if v['possible_role'].startswith('ricerca')],
             'exposure': exposure['lineages'].get(name), 'status': 'sviluppo'}
-    return {'schema': 'inventario-valutazione/1', 'contract': 'PROTOCOLLO_v3 section 3',
+    groups = {}
+    for name, u in units.items():
+        groups.setdefault((u['lineage'], u['study']), []).append(name)
+    dependent = [{'lineage': lin, 'study': study, 'units': sorted(names),
+                  'why': 'stesso studio e stessa linea: donatori, condizioni, lotti o parti dello stesso esperimento'}
+                 for (lin, study), names in sorted(groups.items()) if len(names) > 1]
+    for lin, block in lineages.items():
+        if len(block['studies']) > 1:
+            dependent.append({'lineage': lin, 'study': None, 'units': block['units'],
+                              'why': 'stesso lignaggio in %d studi o librerie: per il banco un contesto solo, anche con linee, cloni o donatori diversi' % len(block['studies'])})
+    registry_notes = {k: registry['summary'].get(k) for k in ('bank_cells_note', 'contexts_note', 'donors_note')}
+    return {'schema': 'inventario-valutazione/2', 'contract': 'PROTOCOLLO_v3 section 3',
             'inputs': {p.relative_to(REPO).as_posix(): __import__('hashlib').sha256(p.read_bytes()).hexdigest()
                        for p in (REGISTRY, COVERAGE, MANIFEST, RELEASE, HERE / 'esposizione.json')},
             'rules': {'min_panel_targets_for_a_fold': MIN_PANEL_TARGETS_FOLD, 'min_panel_targets_descriptive': MIN_PANEL_TARGETS_DESCRIPTIVE,
                       'min_cells_per_panel_target': MIN_CELLS_PER_TARGET, 'min_controls': MIN_CONTROLS},
             'units': units, 'lineages': lineages, 'checkpoints': exposure['checkpoints'],
+            'dependent_units': dependent, 'registry_notes': registry_notes,
             'totals': {'units': len(units), 'lineages': len(lineages),
                        'lineages_with_level_A_fold': sum(1 for v in lineages.values() if v['fold_level_A']),
                        'lineages_with_level_B_today': sum(1 for v in lineages.values() if v['fold_level_B_today']),
@@ -175,6 +200,19 @@ def render(doc: dict) -> str:
             'Con cellule in banca sufficienti per un fold a sei membri: %s.'
             % (t['units'], t['lineages'], t['lineages_with_level_A_fold'], t['lineages_with_level_B_today'],
                ', '.join(t['lineages_ready_for_level_B'])), '',
+            '**Geni di risposta che ogni verità del banco può giudicare** (dalla corsa congelata del livello A; '
+            'mediana per bersaglio delle coppie previste da T0 con verità valida, e di quelle con |z| ≥ 3):', '',
+            '| Fold | Tabella di verità | Ruolo | Bersagli | Geni nel rango di `disc95` | Geni giudicabili per bersaglio | Geni confidenti per bersaglio |',
+            '|---|---|---|---:|---:|---:|---:|']
+    for name, v in L.items():
+        for st in (v['fold_level_A'] or {}).get('truth_stats', []):
+            out.append('| %s | `%s` | %s | %d | %s | %s | %s |' % (
+                v['fold_level_A']['id'], st['table'], {'primary': 'primaria', 'stimulus': 'strato', 'second_library': 'seconda libreria'}.get(st['role'], st['role']),
+                st['targets'], n(st['genes_in_rank_95']), n(st['judgeable_response_genes_per_target_median']),
+                n(st['confident_response_genes_per_target_median'])))
+    out += ['', 'Un gene che una verità non misura non è uno zero biologico: su K562 la tabella giudica circa 7.300 '
+            'geni per bersaglio su 18.533, con una trentina di geni confidenti; i geni di risposta delle unità senza fold '
+            'non sono nel registro canonico e restano una lacuna da chiedere a DATI-TRANSFER.', '',
             '## 2. Per unità di banca', '',
             '| Unità | Lignaggio | Studio | Modalità | Chimica | Contesti; donatori o cloni; condizioni | Cellule: tutte / controlli / bersagli del pannello | Bersagli: nativi / pannello | Cellule per bersaglio del pannello | Tabella di effetti | Uso nel t38 | Ruolo possibile nella valutazione | Lacune |',
             '|---|---|---|---|---|---|---|---|---:|---|---|---|---|']
@@ -193,6 +231,13 @@ def render(doc: dict) -> str:
             '| Checkpoint o candidato | Si legge come regime C su | Nota |', '|---|---|---|']
     for c in doc['checkpoints']:
         out.append('| %s | %s | %s |' % (c['name'], c['regime_C_on'], c['note']))
+    out += ['', '## 4. Unità che non sono indipendenti fra loro', '',
+            '| Lignaggio | Studio | Unità | Perché non contano come contesti indipendenti |', '|---|---|---|---|']
+    for d in doc['dependent_units']:
+        out.append('| %s | %s | %s | %s |' % (d['lineage'], d['study'] or 'più di uno',
+                                              ', '.join('`%s`' % u for u in d['units']), d['why']))
+    out += ['', 'Note del registro canonico, riportate come sono scritte: ' +
+            ' '.join('«%s».' % v for v in doc['registry_notes'].values() if v)]
     return '\n'.join(out) + '\n'
 
 

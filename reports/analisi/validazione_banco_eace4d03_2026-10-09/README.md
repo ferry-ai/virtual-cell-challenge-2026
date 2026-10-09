@@ -20,7 +20,7 @@ nell'[indice degli invii](../../invii/README.md).
    cosa fa davvero il riempimento ([CP-0075](../../../docs/checkpoints/0075-fallback-esm2-supporto-e-vista-del-generatore.md)).
 3. [invii/RAPPORTO_INVII_r1.md](invii/RAPPORTO_INVII_r1.md): ogni previsione registrata contro i sei membri
    ufficiali, t38 compreso ([CP-0074](../../../docs/checkpoints/0074-t38-crispri-piu-ko-punteggio-ufficiale.md)).
-4. [inventario/INVENTARIO_r1.md](inventario/INVENTARIO_r1.md): che cosa la banca offre alla valutazione, per
+4. [inventario/INVENTARIO_r2.md](inventario/INVENTARIO_r2.md): che cosa la banca offre alla valutazione, per
    lignaggio e per unità, e quali checkpoint si possono leggere come contesto nuovo.
 
 ## Indice
@@ -44,7 +44,7 @@ nell'[indice degli invii](../../invii/README.md).
 | | [ammi/ammi_none_C-K562_r1.json](ammi/ammi_none_C-K562_r1.json), `ammi/cloud_r2/` | C-K562 sul portatile; i due fold nel kernel (`cloud_r1/` conserva un push rifiutato dal provider) |
 | **Autorizzazioni** | [AUTORIZZAZIONI_r1.json](AUTORIZZAZIONI_r1.json) | le tre decisioni del proprietario delle 21:42 del 9/10, con che cosa coprono e che cosa no |
 | **Inventario** | [inventario/inventario.py](inventario/inventario.py), [inventario/esposizione.json](inventario/esposizione.json) | la regola del ruolo applicata ai numeri di ogni unità; che cosa ogni lignaggio ha già visto del progetto |
-| | [inventario/INVENTARIO_r1.md](inventario/INVENTARIO_r1.md), [inventario/inventario_r1.json](inventario/inventario_r1.json) | tabelle per lignaggio, per unità, e dei checkpoint leggibili come regime C |
+| | [inventario/INVENTARIO_r2.md](inventario/INVENTARIO_r2.md), [inventario/inventario_r2.json](inventario/inventario_r2.json) | tabelle per lignaggio, per unità, dei checkpoint leggibili come regime C, dei geni di risposta giudicabili per ogni verità e delle unità non indipendenti; [r1](inventario/INVENTARIO_r1.md) è la prima stesura, senza le ultime due |
 | **Coordinamento** | [MESSAGGI.md](MESSAGGI.md) | chi esegue che cosa, esito del t38, richieste precise a DATI-TRANSFER |
 
 ## Dopo ogni invio
