@@ -104,3 +104,4 @@ aggiunge da sé la riga qui sotto.
 | [0069](0069-validazione-indipendente-t1-e-ampliamento.md) | 2026-10-08 | Validazione indipendente: T1 non si distingue da t36; l'ampliamento delle fonti aiuta i lignaggi vicini e costa agli altri | esperimento | — |
 | [0070](0070-t2-centratura-su-tutti-i-bersagli.md) | 2026-10-08 | T2, centratura su tutti i bersagli: valido e sfavorevole a lignaggio escluso | esperimento | — |
 | [0071](0071-corsia-rapida-senza-invio-priorita-alle-reti.md) | 2026-10-09 | Corsia rapida senza invio: T3 pronto negli effetti, t38 non inviato; priorità alle reti | cambio-di-strategia | — |
+| [0072](0072-esm2-ridge-regime-t.md) | 2026-10-09 | ESM2 + ridge nel regime T: un segnale specifico del bersaglio solo sul lignaggio iPSC | esperimento | — |

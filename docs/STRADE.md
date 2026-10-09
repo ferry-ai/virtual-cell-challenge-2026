@@ -44,6 +44,7 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 | S-010 | Fonti del transfer: tabelle aggregate in più contro le fonti della ricetta t22/t25 | t36 ufficiale +0,002404 da t28, descrittivo (CP-0067); a lignaggio escluso, sulle stesse tabelle, l'ampliamento perde PDS sul fold K562 e ne guadagna sul fold iPSC: H1 aiuta, KOLF2.1J costa ai lignaggi non staminali (CP-0069) | ipotizzato | 2026-10-08 |
 | S-011 | Voti di fonti con pochi bersagli del pannello sotto la centratura sul pannello (release r1, T1) | T1 non si distingue da t36 su sei fold e su due banchi a sei membri: inconcludente, nessuna promozione (CP-0069) | ipotizzato | 2026-10-08 |
 | S-012 | Centratura su tutti i bersagli di ogni fonte al posto del pannello (T2) | valido e sfavorevole: nessuna misura migliora, il fold K562 a sei membri perde 0,009, risolto (CP-0070) | ipotizzato | 2026-10-08 |
+| S-013 | Ridge sugli embedding ESM2 del bersaglio, senza contesto (regime T) | segnale specifico del bersaglio riconoscibile solo contro la verità iPSC; sui quattro lignaggi non staminali niente di risolto e sotto la testa cis (CP-0072) | ipotizzato | 2026-10-09 |
 
 ## Voci
 
@@ -367,3 +368,29 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 - **Guardia eseguibile:** `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/logo_driver.py` ferma la corsa se un gene votato non ha sostegno nel vettore, e
   i bracci a gamma 0 devono dare effetti con lo stesso sha256; `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/comune_t2.py` misura la riga comune rimessa.
   **Manca** una guardia nel fit di produzione: spetta a chi possiede il trainer (segnalazione DT-4 dell'audit).
+
+### S-013 — Ridge sugli embedding ESM2 del bersaglio, senza contesto (regime T)
+
+- **Che cosa si è provato:** una regressione ridge, alpha 1,0, dagli embedding ESM2 della proteina del bersaglio
+  agli effetti aggregati della banca (163.143 righe di 47 contesti), senza alcun ingresso di contesto; letta sui 66
+  bersagli nascosti del pannello, mai visti, contro la verità di sei lignaggi. Modello di MODELLI-ESTERNI.
+- **Prova:** [CP-0072](checkpoints/0072-esm2-ridge-regime-t.md); [piano](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/LETTURA_ESM2_T.md), [risultati](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/RISULTATI_ESM2_T.md);
+  `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/esm2_t_r2/esame.json`.
+- **Sintomo:** contro la verità iPSC `disc95` 0,627, con tutti i contrasti risolti; contro CD4T, HCT116, HEK293 e
+  K562 0,51–0,53, indistinguibile dallo stesso ridge a previsioni scambiate (0,49–0,51) e sotto la testa cis del
+  transfer (0,54–0,58). In macro il guadagno sulla parte generica è risolto (+0,031) ma il controllo a previsioni
+  scambiate no: per la regola scritta prima, non si afferma che il ridge abbia imparato il bersaglio in generale.
+- **Meccanismo:** ipotizzato. Un modello senza contesto dà una sola risposta per bersaglio, e la risposta appresa
+  somiglia al lignaggio più rappresentato fra i contesti (24 iPSC su 47); la parte generica somiglia a CD4T, che
+  ha il 63 % delle righe. Nessun contrasto lo isola; conta anche la qualità della verità di ciascun lignaggio.
+- **Che cosa esclude e che cosa no:** esclude di leggere questo ridge, com'è, come una componente che generalizza
+  sui bersagli per contesti non staminali. Non esclude nulla sul regime C, né un modello con il contesto in
+  ingresso, né lo stesso ridge con massa uguale per lignaggio.
+- **Che cosa la riaprirebbe:** i fit a lignaggio escluso (C-K562, C-iPSC) letti con il contratto; un fit con massa
+  uguale per lignaggio; la lettura di J-iPSC, dove iPSC esce dal training.
+- **Segnale precoce:** `disc95` per lignaggio del modello contro il suo braccio a previsioni scambiate fra i
+  bersagli previsti e contro la sola parte generica; dieci minuti dal file nativo. Una macro risolta sostenuta da un
+  lignaggio solo non è un segnale generale.
+- **Guardia eseguibile:** `reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/prepara_esm2_t.py esamina` rifiuta un file con asse, bersagli o previsioni per
+  contesto diversi dal dichiarato; `bench_core.derived_controls` scambia le previsioni fra le sole righe previste;
+  il lettore dei contrasti riporta ogni lignaggio accanto alla macro.

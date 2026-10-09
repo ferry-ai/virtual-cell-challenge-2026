@@ -114,6 +114,7 @@ campioni annidati in [R-DATI](piani/dati-affidabilita.md).
 
 ### 5. Modelli appresi e generalizzazione
 
+- **Misurato, 9/10 ([CP-0072](checkpoints/0072-esm2-ridge-regime-t.md)): ridge ESM2 senza contesto, regime T.** Sui 66 bersagli nascosti del pannello un segnale specifico del bersaglio è riconoscibile solo contro la verità iPSC (`disc95` 0,627, contrasti risolti); su CD4T, HCT116, HEK293 e K562 il ridge sta a 0,51–0,53, come con le previsioni scambiate, e sotto la testa cis del transfer. Lettura descrittiva di sviluppo, non VCC; nulla sui contesti nuovi ([risultati](../reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/RISULTATI_ESM2_T.md), [S-013](STRADE.md#s-013--ridge-sugli-embedding-esm2-del-bersaglio-senza-contesto-regime-t)).
 - **Direzione confermata, 4/10: [D-056](DECISIONI.md#d-056--transfer-con-correzione-neurale-selettiva).**
   Transfer congelato con correzione neurale selettiva, pesata sul beneficio validato fuori fold. Il selettore
   può tornare al transfer; familiarità con bersagli o contesti non equivale a affidabilità dimostrata.

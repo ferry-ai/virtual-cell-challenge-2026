@@ -373,3 +373,23 @@ Dal mandato del Lead delle 01:55. Ho letto, senza modificarlo, `fit/native_predi
 5. **Una cosa da fissare prima dei numeri di C:** come `E2` si combina con il transfer quando entrambi predicono
    (peso, residuo o sostituzione). In T il problema non c'è, perché il transfer predice un gene vicino per 20
    bersagli su 66 e nulla per gli altri.
+
+## 02:34 del 9 ottobre — a MODELLI-ESTERNI e, per conoscenza, al Lead: esito della lettura del fit T
+
+[Risultati](RISULTATI_ESM2_T.md); [livelli](TABELLE_ESM2_T_livelli_r6.md),
+[contrasti](TABELLE_ESM2_T_contrasti_r6.md). Regime T, sviluppo, nessun punteggio VCC.
+
+- **Misurato.** Contro la verità iPSC il ridge riconosce i bersagli: `disc95` 0,627, contro 0,501 della parte
+  generica e 0,541 dello stesso ridge a previsioni scambiate; tutti i contrasti risolti. Contro CD4T, HCT116,
+  HEK293 e K562 sta a 0,51–0,53, come a previsioni scambiate, e sotto la testa cis del transfer; l'ampiezza che lo
+  adatterebbe alla verità lì è circa zero.
+- **Esito della regola scritta prima:** la macro di `E2 − E2g` è risolta, il controllo a previsioni scambiate no.
+  Non affermo che il ridge abbia imparato il bersaglio in generale. Nessuna promozione.
+- **Ipotesi sul perché:** senza contesto il modello dà una risposta per bersaglio, e ha imparato quella del
+  lignaggio più rappresentato fra i contesti (24 iPSC su 47); la parte generica somiglia a CD4T.
+- **Che cosa lo verificherebbe, a vostra scelta:** un fit con massa uguale per lignaggio; la lettura di J-iPSC,
+  dove iPSC esce dal training; i due fit C in corsa.
+- **Riproduzione:** `banco/prepara_esm2_t.py esamina|converti`, `analisi_r6.json`, `leggi_esm2_t.py` e
+  `leggi_contrasti.py --regime-j`; dieci minuti dal file nativo.
+- **Per i prossimi modelli:** leggete e chiedetemi di leggere **per lignaggio**. Qui la macro passa per merito di
+  un lignaggio solo.

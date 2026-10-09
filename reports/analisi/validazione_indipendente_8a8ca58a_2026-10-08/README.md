@@ -7,7 +7,8 @@ Questa cartella possiede protocollo, banco, risultati comparativi e raccomandazi
 e pipeline di produzione (DATI-TRANSFER, sessione `01a11c34`) né l'adattatore esterno (MODELLI-ESTERNI, sessione
 `01a11c35`). Checkpoint: [CP-0069](../../../docs/checkpoints/0069-validazione-indipendente-t1-e-ampliamento.md)
 per T2, [CP-0070](../../../docs/checkpoints/0070-t2-centratura-su-tutti-i-bersagli.md); per la corsia rapida
-della notte, chiusa senza invio, [CP-0071](../../../docs/checkpoints/0071-corsia-rapida-senza-invio-priorita-alle-reti.md).
+della notte, chiusa senza invio, [CP-0071](../../../docs/checkpoints/0071-corsia-rapida-senza-invio-priorita-alle-reti.md);
+per la prima lettura del ridge ESM2, [CP-0072](../../../docs/checkpoints/0072-esm2-ridge-regime-t.md).
 
 **Esito in una riga:** la consegna resta t36; T1 è valida e inconcludente; T2 è valido e **sfavorevole**
 ([risultati](RISULTATI_T2.md)); la componente esterna non è arrivata alla valutazione. I numeri dei banchi sono
@@ -30,7 +31,8 @@ della notte, chiusa senza invio, [CP-0071](../../../docs/checkpoints/0071-corsia
 | | [LIVELLO_B.md](LIVELLO_B.md) | come si esegue il banco a sei membri, scritto prima dei suoi numeri |
 | **Piani scritti prima delle corse** | [SCOMPOSIZIONE_K0.md](SCOMPOSIZIONE_K0.md), [ESPLORATIVO_SENZA_KOLF.md](ESPLORATIVO_SENZA_KOLF.md), [REGIME_J.md](REGIME_J.md) | piani descrittivi o esplorativi, nessuna regola di adozione |
 | | [VALUTAZIONE_T2.md](VALUTAZIONE_T2.md) | T2 sui fold con i vettori comuni consegnati da DATI-TRANSFER: bracci, controlli e lettura con il §8 invariato |
-| **Risultati** | [RISULTATI_LIVELLO_A.md](RISULTATI_LIVELLO_A.md), [RISULTATI_LIVELLO_B.md](RISULTATI_LIVELLO_B.md), [RISULTATI_T2.md](RISULTATI_T2.md) | misure e loro lettura; T2 ha la sua pagina, con validità della corsa, meccanismo e i due livelli |
+| | [LETTURA_ESM2_T.md](LETTURA_ESM2_T.md) | il ridge ESM2 di MODELLI-ESTERNI nel regime T: correttezza tecnica, bracci, controlli e lettura descrittiva |
+| **Risultati** | [RISULTATI_LIVELLO_A.md](RISULTATI_LIVELLO_A.md), [RISULTATI_LIVELLO_B.md](RISULTATI_LIVELLO_B.md), [RISULTATI_T2.md](RISULTATI_T2.md), [RISULTATI_ESM2_T.md](RISULTATI_ESM2_T.md) | misure e loro lettura; T2 ha la sua pagina, con validità della corsa, meccanismo e i due livelli; il ridge ESM2 ha la sua, per il solo regime T |
 | | `TABELLE_*.md` | tabelle scritte dai lettori, nessun numero ricopiato a mano: livello A ([v1](TABELLE_LIVELLO_A_r1.md), [v2](TABELLE_LIVELLO_A_r1_v2.md)), [scomposizione](TABELLE_SCOMPOSIZIONE_K0_r2.md), [esplorativo](TABELLE_ESPLORATIVO_r3.md), [regime J](TABELLE_REGIME_J_r4.md), livello B ([esito](TABELLE_LIVELLO_B_r1.md), [K562](TABELLE_LIVELLO_B_k562_r1.md), [iPSC](TABELLE_LIVELLO_B_ipsc_r1.md), [esplorativo su K562](TABELLE_LIVELLO_B_k562_x1.md)); T2 ([contrasti](TABELLE_T2_r5.md), livello A con [`disc95`](TABELLE_LIVELLO_A_r5_v2.md) e con [`disc`](TABELLE_LIVELLO_A_r5_v1.md), sei membri su [iPSC](TABELLE_LIVELLO_B_ipsc_t2.md) e [K562](TABELLE_LIVELLO_B_k562_t2.md), esito [alla scadenza](TABELLE_LIVELLO_B_t2_r1.md) e [con due fold](TABELLE_LIVELLO_B_t2_r2.md)) |
 | **Audit** | [AUDIT_DATI_E_LEAKAGE.md](AUDIT_DATI_E_LEAKAGE.md), [audit/](audit/audit_catena_r2.json) | catene di provenienza, uso effettivo dei dati, leakage, segnalazioni; al §8 i vettori di T2 ([verifica](audit/audit_vettori_t2_r1.json)) |
 | **Decisione e consegna** | [RACCOMANDAZIONE.md](RACCOMANDAZIONE.md) (le aggiunte datate sono al §8), [consegna/CONSEGNA.md](consegna/CONSEGNA.md), [consegna/riserva_t36_r2.json](consegna/riserva_t36_r2.json), [consegna/schede/](consegna/schede/t3_contro_t1_r1.json) | raccomandazione; manifest, versioni, hash e riproduzione; verifica del pacchetto t36 al freeze; schede tecniche dei candidati T2 e T3 |
@@ -49,7 +51,8 @@ della notte, chiusa senza invio, [CP-0071](../../../docs/checkpoints/0071-corsia
 | [ricalcolo_locale.py](banco/ricalcolo_locale.py), [sensibilita_disc95.py](banco/sensibilita_disc95.py), [verifica_voto_singolo.py](banco/verifica_voto_singolo.py) | controlli indipendenti sul portatile: misure ricalcolate, convenzione delle maschere, voto nullo della tabella a un bersaglio |
 | [descrivi_t2.py](banco/descrivi_t2.py), [comune_t2.py](banco/comune_t2.py), [sensibilita_disc_t2.py](banco/sensibilita_disc_t2.py), [confronta_coppia.py](banco/confronta_coppia.py), [t2_tabelle_piccole.py](banco/t2_tabelle_piccole.py) | per T2: parità a gamma 0 e bersagli scambiati, parte comune rimessa negli effetti, misura stretta con e senza il fold dove non è utilizzabile, riproducibilità di una coppia fra due kernel, sguardo a posteriori ai bersagli votati dalle tabelle piccole |
 | [confronta_effetti.py](banco/confronta_effetti.py), [scheda_t3.py](banco/scheda_t3.py) | schede tecniche di un candidato sugli effetti di produzione, senza verità: stessa copertura, bersagli cambiati, distanza, parte comune; per T3, le coppie previste dal solo KO. Esiti in `consegna/schede/` |
-| `r1/` … `r5/` | corse del livello A: pacchetto, lancio, ricevute, risultati, letture. r1 contratto; r2 scomposizione; r3 esplorativo; r4 regime J; r5 T2 |
+| `r1/` … `r6/` | corse del livello A: pacchetto, lancio, ricevute, risultati, letture. r1 contratto; r2 scomposizione; r3 esplorativo; r4 regime J; r5 T2; r6 ridge ESM2 nel regime T |
+| [prepara_esm2_t.py](banco/prepara_esm2_t.py), [leggi_esm2_t.py](banco/leggi_esm2_t.py), `esm2_t_r1/`, `esm2_t_r2/` | il file nativo del fit ESM2 sulla vista T: esame tecnico senza verità, conversione dichiarata nel formato del banco, dataset privato; livelli per braccio sui bersagli nascosti |
 | [prepara_vettori_t2.py](banco/prepara_vettori_t2.py), `t2_vettori_r1/` | i vettori comuni di T2 consegnati da DATI-TRANSFER: verifica contro la consegna, bersagli dietro ogni vettore, dataset privato per il kernel |
 | `celle_*_r1/`, `livello_b_*/` | estrazioni delle cellule vere e banchi a sei membri: pacchetto, lancio, uscite raccolte |
 
