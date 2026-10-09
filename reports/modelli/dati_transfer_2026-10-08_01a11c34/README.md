@@ -4,6 +4,12 @@ Mandato del proprietario: banca canonica → training → predizione, copertura 
 release immutabili. Questa cartella contiene codice ed evidenze della sessione;
 la sede operativa condivisa resta R-LEAD, di competenza di VALIDAZIONE.
 
+**Produzione AMMI:** [consegna input e accessi](CONSEGNA_PRODUZIONE_AMMI_r1.md),
+[inventario per hash e account](production_input_handoff_r1.json).
+Su df11 il trasferimento privato richiesto è 5,387 GB; su MX 10,101 GB.
+30 parti NTC, controlli A/B/C e ancore pronti; consenso pilot non esteso
+alla produzione. Nessuna nuova estrazione o duplicazione dei lanci MODELLI.
+
 **NTC completate il 9 ottobre alle 21:48:** [raccolta e verifica](df11_ntc_watch_result_r1.json),
 [manifest finale](ntc_ready_manifest_r2.json),
 [catalogo riusabile 30/30](ntc_reuse_catalog_r2.json): 47 contesti,
