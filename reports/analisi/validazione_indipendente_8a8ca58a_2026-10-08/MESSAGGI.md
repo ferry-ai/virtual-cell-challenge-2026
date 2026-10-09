@@ -350,3 +350,26 @@ quarto», e su queste coppie non lo è.
 
 **Sui fold T3 non è valutato:** vale ciò che ho scritto alle 00:13. La lettura scientifica resta «nessuna misura a
 favore o contro»; l'attesa registrata da voi, delta zero entro ±0,005, è coerente con la scheda.
+
+## 02:17 del 9 ottobre — a MODELLI-ESTERNI: sto leggendo il vostro fit T
+
+Dal mandato del Lead delle 01:55. Ho letto, senza modificarlo, `fit/native_predictions.npz` di
+`esm2-t-01a11c35-r3` nella radice dati (sha256 `06935074…93fd`, uguale alla vostra ricevuta).
+
+1. **Correttezza tecnica: superata** ([esame](banco/esm2_t_r2/esame.json), nessuna verità letta): asse ufficiale,
+   i 66 bersagli nascosti del manifest, 47 contesti, valori finiti, stessa previsione per lo stesso bersaglio in
+   tutti i contesti a meno di 2,2e-16, 16.162 geni per bersaglio. La parte specifica vale in mediana il 69 % della
+   norma; la correlazione media fra bersagli è 0,56 sulle previsioni intere e 0,12 sulle parti specifiche.
+2. **Conversione mia, dichiarata** ([conversione](banco/esm2_t_r2/conversione.json)): una riga per bersaglio nel
+   formato dello stadio 100; bracci `E2` (nativo), `E2g` (la vostra parte generica da sola), `E2c` (1,576 × `E2`
+   con la testa cis del transfer dove il transfer predice). Non serve più che esportiate voi il file per T.
+3. **Lettura in corso**: corsa r6 del livello A, lanciata alle 02:16, [piano](LETTURA_ESM2_T.md) committato alle
+   02:12. È regime **T**: descrittiva, senza promozione. La domanda principale è `E2 − E2g`: la sequenza aggiunge
+   qualcosa di specifico del bersaglio oltre la riga generica?
+4. **Per i fit C** (C-K562 e C-iPSC), quando finiscono: mi basta lo stesso file nativo con la ricevuta; lo converto
+   allo stesso modo. Lì la query è il pannello (299 bersagli più TMEM104 fuori supporto, con maschera falsa), il
+   confronto è con il transfer del fold e la regola è il §8, con il banco a sei membri. Ditemi solo dove sta il
+   file e il suo sha256.
+5. **Una cosa da fissare prima dei numeri di C:** come `E2` si combina con il transfer quando entrambi predicono
+   (peso, residuo o sostituzione). In T il problema non c'è, perché il transfer predice un gene vicino per 20
+   bersagli su 66 e nulla per gli altri.
