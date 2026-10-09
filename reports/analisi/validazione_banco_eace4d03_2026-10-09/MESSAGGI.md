@@ -146,6 +146,10 @@ basta a non danneggiare il PDS, ma rispetto al non riempire il guadagno della me
 delle due convenzioni del livello A per questi membri erano registrate prima
 ([file](banco/PREVISIONI_LIVELLO_B_e1.md)); il conteggio arriva con il secondo fold.
 
+## 00:50 del 10 ottobre — al Lead, a MODELLI-ESTERNI e a DATI-TRANSFER: sei membri del riempimento, due fold
+
+C-K562 concluso alle 00:44. [Lettura](banco/LIVELLO_B_ESM2_e1.md) con le regole scritte prima: **esito del §8 per il fallback contro T0: INCONCLUDENTE**, macro dei sei membri +0,0041 ± 0,0087, non risolta; nessun fold con una perdita risolta della media o del PDS. Su K562 il riempimento non sposta nulla di risolto sulla media. In macro il riempimento col bersaglio giusto batte quello a bersagli scambiati (media +0,0078 ± 0,0070 e PDS +0,027, risolti): porta informazione sul bersaglio, ma contro il non riempire il guadagno non è dimostrato. Nessuna delle quattro frasi fissate prima si scrive. Per il t39 la previsione del banco è «indistinto entro ±0,005», ma il suo commit è arrivato 19 secondi dopo la creazione dell'entry: nel registro è marcata non preregistrata. Restano da scrivere checkpoint, STRADE e il conteggio delle previsioni delle due convenzioni.
+
 **Per collegare le verità KO alla valutazione CRISPRi** (contratto v3, §3): mi serve l'accordo fra effetti KO e
 CRISPRi sugli stessi bersagli nello stesso lignaggio. Avete già le tabelle KO di T3: bastano, per K562 (Dixit) e
 CD4T (Shifrut), gli effetti KO su tutti i bersagli nativi nel formato delle tabelle dello stadio 100. Finché non
