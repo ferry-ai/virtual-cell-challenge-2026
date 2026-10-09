@@ -1,0 +1,24 @@
+{
+ "utc": "2026-10-09T20:10:49.923145+00:00",
+ "slug": "davideferrante11/vcc-validazione-ammi-none-eace4d03-r1",
+ "owner": "davideferrante11",
+ "stage": "reports/analisi/validazione_banco_eace4d03_2026-10-09/ammi/cloud_r1/package",
+ "code_sha256": "121a8be59c721e3b87216df45cfeda438a7b9f4e098b36c36d91df42e9ee27f0",
+ "preflight_sha256": "538f9c4547a00bdc12f4865ebdd5994916dde6334ea771feda41505a71bacf21",
+ "private": true,
+ "authorization": "owner in chat, 9 October 2026, 21:42: read the AMMI none exports now on a private CPU kernel of davideferrante11; CPU only, nothing paid",
+ "incidents": [
+  "E-20261003-001"
+ ],
+ "guards": [
+  "one explicit push, no loop",
+  "dedup lookup",
+  "slot preflight",
+  "every input found by pinned size and sha256 on the runtime",
+  "parity with the published run before any read"
+ ],
+ "state": "push_returned",
+ "accepted": false,
+ "returncode": 1,
+ "answer": "409 Client Error: Conflict for url: https://api.kaggle.com/v1/kernels.KernelsApiService/SaveKernel"
+}
