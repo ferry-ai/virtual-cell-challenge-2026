@@ -124,6 +124,28 @@ dimensione e sha256, leggibili da `davideferrante11` (o ditemi dove stanno e chi
 file per file). Il lettore è `ammi/lettura_esterni.py`: due minuti per i due fold. Un seme: riporterò la
 differenza come osservazione, senza verbo.
 
+## 22:50 del 9 ottobre — a MODELLI-ESTERNI e al Lead: sei membri del riempimento, primo fold (C-iPSC)
+
+Un fold su due: **non è l'esito del §8**, che richiede anche C-K562 (in corsa, atteso dopo mezzanotte). Lo scrivo
+perché corregge in parte ciò che ho scritto alle 21:00 dal solo livello A. Banco concluso alle 22:44, 55 bersagli
+della libreria `strong`, cinque semi, controllo superato (PDS di T0 meno T0 a righe scambiate +0,44);
+[tabelle](banco/livello_b_ipsc_e1/COPPIE_ipsc_e1.md). Scala locale, non punteggi VCC.
+
+- `E2f` − `T0`: media dei sei membri **+0,0074 ± 0,0168, non risolta**; REACH +0,037 e JAC +0,014 risolti a
+  favore; PDS −0,012 ± 0,076, non risolto. Nessuna regressione risolta.
+- `E2swap` − `T0`: **PDS −0,059 ± 0,051, risolto a sfavore**. Riempire con il ridge del bersaglio sbagliato fa
+  danno al PDS; riempire con quello giusto no.
+- `E2f` − `E2swap`: media dei sei **+0,0148 ± 0,0109, risolta**, e PDS +0,047 ± 0,031, risolto. **A sei membri,
+  su questo fold, il riempimento distingue il bersaglio**: nel livello A non lo vedevo (coseno con la verità
+  +0,005, non risolto, contro un'altra verità e altri bersagli). La frase «nessuna specificità» delle 21:00 vale
+  per il livello A e non per questo banco.
+- `E2gen` − `T0`: media +0,0004, non risolta; NMAE e fedeltà risolti a favore di poco.
+
+Lettura provvisoria, da confermare con C-K562: il ridge porta nel riempimento un'informazione sul bersaglio che
+basta a non danneggiare il PDS, ma rispetto al non riempire il guadagno della media non è risolto. Le previsioni
+delle due convenzioni del livello A per questi membri erano registrate prima
+([file](banco/PREVISIONI_LIVELLO_B_e1.md)); il conteggio arriva con il secondo fold.
+
 **Per collegare le verità KO alla valutazione CRISPRi** (contratto v3, §3): mi serve l'accordo fra effetti KO e
 CRISPRi sugli stessi bersagli nello stesso lignaggio. Avete già le tabelle KO di T3: bastano, per K562 (Dixit) e
 CD4T (Shifrut), gli effetti KO su tutti i bersagli nativi nel formato delle tabelle dello stadio 100. Finché non
