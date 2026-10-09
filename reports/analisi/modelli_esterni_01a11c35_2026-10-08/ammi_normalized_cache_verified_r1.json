@@ -1,0 +1,279 @@
+{
+  "utc": "2026-10-09T22:14:59.832880+00:00",
+  "status": "PASS",
+  "tests": 3,
+  "parity": "bit-exact outputs, losses, gradients and parameters for three AdamW updates",
+  "reader": {
+    "path": "C:/Users/ferra/OneDrive/Desktop/vcc2026/reports/modelli/dati_transfer_2026-10-08_01a11c34/ntc_normalization_r1/ntc_cells.py",
+    "bytes": 11659,
+    "sha256": "9021f8a85963facb801aa45727fb5e979e658d4b17dd12c2da122158f86d111e"
+  },
+  "code": {
+    "test_ammi_normalized_cache_v1.py": "19b9ee59052b1beba143d8f132572fc2419266514d14fbc4b6657a901b963ba6",
+    "ammi_normalized_cache_v1.py": "45b5090f0ab9a7224955cb7d97ce1f353f4b47ad67b1e771dcd0cf6845b31b46",
+    "ammi_controls_v4.py": "0ddae7974940ad78de58926ce0e113d5ae667cf9008c4454d05a740f5310e830",
+    "ammi_encoder_v4.py": "eeb4417f7754cc7aada60d488ccc781e553838762049ee7390987fdd48fdcf07"
+  },
+  "benchmark": {
+    "synthetic": true,
+    "CPU_only": true,
+    "cells": 2048,
+    "genes": 128,
+    "blocks_per_pass": 8,
+    "passes": 12,
+    "repeats": 5,
+    "median_seconds": {
+      "uncached": 0.5694455999764614,
+      "fits": 0.07894550001947209,
+      "thrashing": 0.6022129000048153
+    },
+    "fitting_cache_speedup": 7.213148309099395,
+    "measurements": {
+      "uncached": [
+        {
+          "seconds": 0.5292609000462107,
+          "checksum": 8842832.049954414,
+          "cache": null
+        },
+        {
+          "seconds": 0.5755496000056155,
+          "checksum": 8842832.049954414,
+          "cache": null
+        },
+        {
+          "seconds": 0.5694455999764614,
+          "checksum": 8842832.049954414,
+          "cache": null
+        },
+        {
+          "seconds": 0.6647163000307046,
+          "checksum": 8842832.049954414,
+          "cache": null
+        },
+        {
+          "seconds": 0.5060853000031784,
+          "checksum": 8842832.049954414,
+          "cache": null
+        }
+      ],
+      "fits": [
+        {
+          "seconds": 0.08115759998327121,
+          "checksum": 8842832.049954414,
+          "cache": {
+            "kind": "CPU immutable normalized float32 values and boolean masks only",
+            "max_payload_bytes": 2097152,
+            "max_entries": 128,
+            "resident_payload_bytes": 1310720,
+            "peak_payload_bytes": 1310720,
+            "entries": 8,
+            "hits": 88,
+            "misses": 8,
+            "evictions": 0,
+            "bypasses": 0,
+            "loader_seconds": 0.04093989997636527,
+            "copy_seconds": 0.006599599786568433,
+            "learned_embeddings_cached": false,
+            "disk_cache": false,
+            "selection_changed": false
+          }
+        },
+        {
+          "seconds": 0.10481829999480397,
+          "checksum": 8842832.049954414,
+          "cache": {
+            "kind": "CPU immutable normalized float32 values and boolean masks only",
+            "max_payload_bytes": 2097152,
+            "max_entries": 128,
+            "resident_payload_bytes": 1310720,
+            "peak_payload_bytes": 1310720,
+            "entries": 8,
+            "hits": 88,
+            "misses": 8,
+            "evictions": 0,
+            "bypasses": 0,
+            "loader_seconds": 0.046745099942199886,
+            "copy_seconds": 0.01877609977964312,
+            "learned_embeddings_cached": false,
+            "disk_cache": false,
+            "selection_changed": false
+          }
+        },
+        {
+          "seconds": 0.07614139997167513,
+          "checksum": 8842832.049954414,
+          "cache": {
+            "kind": "CPU immutable normalized float32 values and boolean masks only",
+            "max_payload_bytes": 2097152,
+            "max_entries": 128,
+            "resident_payload_bytes": 1310720,
+            "peak_payload_bytes": 1310720,
+            "entries": 8,
+            "hits": 88,
+            "misses": 8,
+            "evictions": 0,
+            "bypasses": 0,
+            "loader_seconds": 0.028870899870526046,
+            "copy_seconds": 0.013285299763083458,
+            "learned_embeddings_cached": false,
+            "disk_cache": false,
+            "selection_changed": false
+          }
+        },
+        {
+          "seconds": 0.0710698000038974,
+          "checksum": 8842832.049954414,
+          "cache": {
+            "kind": "CPU immutable normalized float32 values and boolean masks only",
+            "max_payload_bytes": 2097152,
+            "max_entries": 128,
+            "resident_payload_bytes": 1310720,
+            "peak_payload_bytes": 1310720,
+            "entries": 8,
+            "hits": 88,
+            "misses": 8,
+            "evictions": 0,
+            "bypasses": 0,
+            "loader_seconds": 0.02919459989061579,
+            "copy_seconds": 0.006482100230641663,
+            "learned_embeddings_cached": false,
+            "disk_cache": false,
+            "selection_changed": false
+          }
+        },
+        {
+          "seconds": 0.07894550001947209,
+          "checksum": 8842832.049954414,
+          "cache": {
+            "kind": "CPU immutable normalized float32 values and boolean masks only",
+            "max_payload_bytes": 2097152,
+            "max_entries": 128,
+            "resident_payload_bytes": 1310720,
+            "peak_payload_bytes": 1310720,
+            "entries": 8,
+            "hits": 88,
+            "misses": 8,
+            "evictions": 0,
+            "bypasses": 0,
+            "loader_seconds": 0.03717089997371659,
+            "copy_seconds": 0.00804830004926771,
+            "learned_embeddings_cached": false,
+            "disk_cache": false,
+            "selection_changed": false
+          }
+        }
+      ],
+      "thrashing": [
+        {
+          "seconds": 0.60597420000704,
+          "checksum": 8842832.049954414,
+          "cache": {
+            "kind": "CPU immutable normalized float32 values and boolean masks only",
+            "max_payload_bytes": 163840,
+            "max_entries": 128,
+            "resident_payload_bytes": 163840,
+            "peak_payload_bytes": 163840,
+            "entries": 1,
+            "hits": 0,
+            "misses": 96,
+            "evictions": 95,
+            "bypasses": 0,
+            "loader_seconds": 0.5566638996824622,
+            "copy_seconds": 0.0074198003858327866,
+            "learned_embeddings_cached": false,
+            "disk_cache": false,
+            "selection_changed": false
+          }
+        },
+        {
+          "seconds": 0.6038308999850415,
+          "checksum": 8842832.049954414,
+          "cache": {
+            "kind": "CPU immutable normalized float32 values and boolean masks only",
+            "max_payload_bytes": 163840,
+            "max_entries": 128,
+            "resident_payload_bytes": 163840,
+            "peak_payload_bytes": 163840,
+            "entries": 1,
+            "hits": 0,
+            "misses": 96,
+            "evictions": 95,
+            "bypasses": 0,
+            "loader_seconds": 0.5564481000765227,
+            "copy_seconds": 0.00666290003573522,
+            "learned_embeddings_cached": false,
+            "disk_cache": false,
+            "selection_changed": false
+          }
+        },
+        {
+          "seconds": 0.5948754000128247,
+          "checksum": 8842832.049954414,
+          "cache": {
+            "kind": "CPU immutable normalized float32 values and boolean masks only",
+            "max_payload_bytes": 163840,
+            "max_entries": 128,
+            "resident_payload_bytes": 163840,
+            "peak_payload_bytes": 163840,
+            "entries": 1,
+            "hits": 0,
+            "misses": 96,
+            "evictions": 95,
+            "bypasses": 0,
+            "loader_seconds": 0.5474366000853479,
+            "copy_seconds": 0.008545300050172955,
+            "learned_embeddings_cached": false,
+            "disk_cache": false,
+            "selection_changed": false
+          }
+        },
+        {
+          "seconds": 0.6022129000048153,
+          "checksum": 8842832.049954414,
+          "cache": {
+            "kind": "CPU immutable normalized float32 values and boolean masks only",
+            "max_payload_bytes": 163840,
+            "max_entries": 128,
+            "resident_payload_bytes": 163840,
+            "peak_payload_bytes": 163840,
+            "entries": 1,
+            "hits": 0,
+            "misses": 96,
+            "evictions": 95,
+            "bypasses": 0,
+            "loader_seconds": 0.5444391997880302,
+            "copy_seconds": 0.009389700193423778,
+            "learned_embeddings_cached": false,
+            "disk_cache": false,
+            "selection_changed": false
+          }
+        },
+        {
+          "seconds": 0.5572146999766119,
+          "checksum": 8842832.049954414,
+          "cache": {
+            "kind": "CPU immutable normalized float32 values and boolean masks only",
+            "max_payload_bytes": 163840,
+            "max_entries": 128,
+            "resident_payload_bytes": 163840,
+            "peak_payload_bytes": 163840,
+            "entries": 1,
+            "hits": 0,
+            "misses": 96,
+            "evictions": 95,
+            "bypasses": 0,
+            "loader_seconds": 0.5067428997135721,
+            "copy_seconds": 0.007892099907621741,
+            "learned_embeddings_cached": false,
+            "disk_cache": false,
+            "selection_changed": false
+          }
+        }
+      ]
+    },
+    "cloud_speedup_measured": false,
+    "scope": "input normalization only; excludes learned encoder, backward and CUDA transfer",
+    "limitation": "LRU may thrash on real contexts larger than the cache; payload bound excludes Python object overhead"
+  },
+  "running_pilots_modified": false
+}
