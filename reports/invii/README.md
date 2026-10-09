@@ -51,6 +51,8 @@ pronto dal proprietario), t09 e t13 (fermati dalle loro regole), t21 (la sua pre
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 09/10 | [prediction_t39_2026-10-09/](prediction_t39_2026-10-09/) | t39 = la rete ponte (insieme di 10 semi, [ESITO](../modelli/rete_ponte_jepa_2026-10-09/ESITO.md)) con la norma di `all` per bersaglio e l'emissione del t28: banda t39 − t28 −0,010…+0,020, centro +0,003, regola a ±0,005; registrata prima di ogni caricamento | registrata, non inviata | ★ |
+| 09/10 | [trial_rlead_2026-10-09/](trial_rlead_2026-10-09/) | t39: generazione e pacchetto (nessun caricamento senza il via del proprietario) | in corso | — |
 | 07/10 | [prediction_t38_2026-10-07/](prediction_t38_2026-10-07/) | t38 = t36 con il solo `--effects-scale` 1,5 → 1,0 (dispersione per gene accesa): verifica se fedeltà e reach del t28 vengono dalla dispersione e la perdita di nMAE dall'ampiezza; banda t38 − t36 −0,012…+0,015, centro +0,002, regola a ±0,005, registrata prima della generazione | pubblicato; ramo c (−0,0103 sul t36) | ★★ |
 | 07/10 | [trial_rlead_2026-10-07/](trial_rlead_2026-10-07/) | t38: generazione, pacchetto, testi, ricevute di caricamento e stato finale dell'entry `5GhXxaCDRuPnHv4UwU8S` (published, 0,131078) | sì; t38 pubblicato | ★ |
 | 06/10 | [prediction_t36_2026-10-06/](prediction_t36_2026-10-06/) | t36 = `all` + w·R con emissione t28 (e t37 = `all` senza R, braccio di confronto se il secondo slot è libero): banda e regola registrate prima della generazione. Ufficiale 0,141392, rango 446; [confronto](prediction_t36_2026-10-06/comparison.json) | pubblicato; ramo b (−0,0035 sul t28) | ★★ |

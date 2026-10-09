@@ -1,0 +1,104 @@
+17:53:00 == H1
+17:53:07   96 targets; T_all parity with guadagno.transfer ok
+17:53:08   loading cache to cuda (fp16), fold H1: group 1 never read for fitting
+17:53:09   train group CD4T: 1280 train, 220 val keys
+17:53:09   train group HCT116: 1275 train, 225 val keys
+17:53:09   train group HEK293T: 1280 train, 220 val keys
+17:53:09   train group HepG2: 1293 train, 207 val keys
+17:53:09   train group Jurkat: 1293 train, 207 val keys
+17:53:09   train group K562: 1284 train, 216 val keys
+17:53:09   train group Neuron: 64 train, 12 val keys
+17:53:09   train group RPE1: 1295 train, 205 val keys
+17:53:09   train group iPSC: 1283 train, 217 val keys
+17:53:13     epoch 0: {"epoch": 0, "cos": 0.89485, "nce": 4.1192, "lat": 1.83646, "sig": 38.43555, "val": 3.20609}
+17:53:13     epoch 1: {"epoch": 1, "cos": 0.84826, "nce": 3.828, "lat": 1.54674, "sig": 27.35463, "val": 3.18805}
+17:53:14     epoch 2: {"epoch": 2, "cos": 0.80976, "nce": 3.54644, "lat": 1.46406, "sig": 27.6134, "val": 3.25484}
+17:53:15     epoch 3: {"epoch": 3, "cos": 0.77888, "nce": 3.33956, "lat": 1.4585, "sig": 29.62957, "val": 3.30075}
+17:53:16     epoch 4: {"epoch": 4, "cos": 0.74974, "nce": 3.16335, "lat": 1.44161, "sig": 27.85798, "val": 3.33493}
+17:53:17     epoch 5: {"epoch": 5, "cos": 0.73091, "nce": 3.03645, "lat": 1.43275, "sig": 27.794, "val": 3.33728}
+17:53:18   arms: {"all": {"cos": 0.1662, "pds": 0.9086, "mse": 10.9423}, "rete": {"cos": 0.186, "pds": 0.8127, "mse": 15.7083}, "rete_pesi": {"cos": 0.1571, "pds": 0.9151, "mse": 12.8853}, "rete_centrata": {"cos": 0.1825, "pds": 0.825, "mse": 15.9329}}
+17:53:18   rete_centrata-all: {"cos": {"mean": 0.01623726636171341, "lo90": 0.002215245272964239, "hi90": 0.03121502883732319, "n": 95}, "pds": {"mean": -0.08355263157894736, "lo90": -0.12894736842105262, "hi90": -0.042105263157894736, "n": 96}, "mse": {"mean": 4.990683555603027, "lo90": 1.1181423664093018, "hi90": 10.762803077697754, "n": 95}}
+17:53:18   18 s
+17:53:18 == HepG2
+17:53:45   400 targets; T_all parity with guadagno.transfer ok
+17:53:45   loading cache to cuda (fp16), fold HepG2: group 4 never read for fitting
+17:53:51   train group CD4T: 1280 train, 220 val keys
+17:53:51   train group H1: 76 train, 20 val keys
+17:53:51   train group HCT116: 1275 train, 225 val keys
+17:53:51   train group HEK293T: 1280 train, 220 val keys
+17:53:51   train group Jurkat: 1293 train, 207 val keys
+17:53:51   train group K562: 1284 train, 216 val keys
+17:53:51   train group Neuron: 64 train, 12 val keys
+17:53:51   train group RPE1: 1295 train, 205 val keys
+17:53:51   train group iPSC: 1283 train, 217 val keys
+17:53:53     epoch 0: {"epoch": 0, "cos": 0.90238, "nce": 4.21302, "lat": 1.84476, "sig": 42.05026, "val": 3.22804}
+17:53:54     epoch 1: {"epoch": 1, "cos": 0.85567, "nce": 3.93077, "lat": 1.59385, "sig": 31.87704, "val": 3.24921}
+17:53:54     epoch 2: {"epoch": 2, "cos": 0.81777, "nce": 3.6047, "lat": 1.49435, "sig": 31.49941, "val": 3.29594}
+17:53:55     epoch 3: {"epoch": 3, "cos": 0.78181, "nce": 3.37266, "lat": 1.47514, "sig": 30.70636, "val": 3.31962}
+17:53:56     epoch 4: {"epoch": 4, "cos": 0.75567, "nce": 3.19635, "lat": 1.4533, "sig": 30.34722, "val": 3.38872}
+17:53:58   arms: {"all": {"cos": 0.2547, "pds": 0.7824, "mse": 4.1348}, "rete": {"cos": 0.2501, "pds": 0.8228, "mse": 4.1702}, "rete_pesi": {"cos": 0.2545, "pds": 0.8138, "mse": 3.9783}, "rete_centrata": {"cos": 0.2466, "pds": 0.8273, "mse": 4.1863}}
+17:53:58   rete_centrata-all: {"cos": {"mean": -0.008114595897495747, "lo90": -0.02056588977575302, "hi90": 0.0039041314739733934, "n": 383}, "pds": {"mean": 0.04492481203007518, "lo90": 0.02531203007518797, "hi90": 0.06423809523809523, "n": 400}, "mse": {"mean": 0.05155300348997116, "lo90": -0.0870879516005516, "hi90": 0.22820241749286652, "n": 383}}
+17:53:58   40 s
+17:53:58 == RPE1
+17:54:26   400 targets; T_all parity with guadagno.transfer ok
+17:54:26   loading cache to cuda (fp16), fold RPE1: group 8 never read for fitting
+17:54:32   train group CD4T: 1280 train, 220 val keys
+17:54:32   train group H1: 76 train, 20 val keys
+17:54:32   train group HCT116: 1275 train, 225 val keys
+17:54:32   train group HEK293T: 1280 train, 220 val keys
+17:54:32   train group HepG2: 1293 train, 207 val keys
+17:54:32   train group Jurkat: 1293 train, 207 val keys
+17:54:32   train group K562: 1284 train, 216 val keys
+17:54:32   train group Neuron: 64 train, 12 val keys
+17:54:32   train group iPSC: 1283 train, 217 val keys
+17:54:33     epoch 0: {"epoch": 0, "cos": 0.90557, "nce": 4.19286, "lat": 1.81932, "sig": 38.90672, "val": 3.23941}
+17:54:34     epoch 1: {"epoch": 1, "cos": 0.85451, "nce": 3.86272, "lat": 1.54553, "sig": 26.75366, "val": 3.24761}
+17:54:35     epoch 2: {"epoch": 2, "cos": 0.81013, "nce": 3.53654, "lat": 1.47798, "sig": 25.83843, "val": 3.32269}
+17:54:36     epoch 3: {"epoch": 3, "cos": 0.77461, "nce": 3.29208, "lat": 1.48163, "sig": 29.05463, "val": 3.36998}
+17:54:36     epoch 4: {"epoch": 4, "cos": 0.74663, "nce": 3.10353, "lat": 1.47013, "sig": 27.19885, "val": 3.38697}
+17:54:38   arms: {"all": {"cos": 0.1815, "pds": 0.7736, "mse": 2.0353}, "rete": {"cos": 0.2032, "pds": 0.8233, "mse": 2.0963}, "rete_pesi": {"cos": 0.1815, "pds": 0.7778, "mse": 2.0056}, "rete_centrata": {"cos": 0.1811, "pds": 0.8026, "mse": 2.1383}}
+17:54:38   rete_centrata-all: {"cos": {"mean": -0.0003883844765368849, "lo90": -0.008352217264473438, "hi90": 0.007694786414504051, "n": 397}, "pds": {"mean": 0.029047619047619048, "lo90": 0.0074492481203007515, "hi90": 0.05100877192982456, "n": 400}, "mse": {"mean": 0.10297910124063492, "lo90": 0.04524056985974312, "hi90": 0.17600390315055847, "n": 397}}
+17:54:39   40 s
+17:54:39 == Jurkat
+17:55:09   400 targets; T_all parity with guadagno.transfer ok
+17:55:09   loading cache to cuda (fp16), fold Jurkat: group 5 never read for fitting
+17:55:15   train group CD4T: 1280 train, 220 val keys
+17:55:15   train group H1: 76 train, 20 val keys
+17:55:15   train group HCT116: 1275 train, 225 val keys
+17:55:15   train group HEK293T: 1280 train, 220 val keys
+17:55:15   train group HepG2: 1293 train, 207 val keys
+17:55:15   train group K562: 1284 train, 216 val keys
+17:55:15   train group Neuron: 64 train, 12 val keys
+17:55:15   train group RPE1: 1295 train, 205 val keys
+17:55:15   train group iPSC: 1283 train, 217 val keys
+17:55:17     epoch 0: {"epoch": 0, "cos": 0.89817, "nce": 4.21444, "lat": 1.83803, "sig": 40.0295, "val": 3.2318}
+17:55:17     epoch 1: {"epoch": 1, "cos": 0.8505, "nce": 3.90299, "lat": 1.58909, "sig": 29.7113, "val": 3.24826}
+17:55:18     epoch 2: {"epoch": 2, "cos": 0.8116, "nce": 3.5856, "lat": 1.48349, "sig": 28.65456, "val": 3.29935}
+17:55:19     epoch 3: {"epoch": 3, "cos": 0.77481, "nce": 3.35203, "lat": 1.47886, "sig": 29.78302, "val": 3.30363}
+17:55:20     epoch 4: {"epoch": 4, "cos": 0.75168, "nce": 3.16361, "lat": 1.45817, "sig": 31.72534, "val": 3.37625}
+17:55:22   arms: {"all": {"cos": 0.2306, "pds": 0.766, "mse": 3.8007}, "rete": {"cos": 0.2485, "pds": 0.8115, "mse": 3.6528}, "rete_pesi": {"cos": 0.2347, "pds": 0.7909, "mse": 3.6019}, "rete_centrata": {"cos": 0.2435, "pds": 0.8164, "mse": 3.7139}}
+17:55:22   rete_centrata-all: {"cos": {"mean": 0.012925858609378338, "lo90": 0.004411591216921806, "hi90": 0.0212660264223814, "n": 376}, "pds": {"mean": 0.05038847117794486, "lo90": 0.03006203007518797, "hi90": 0.06967669172932331, "n": 400}, "mse": {"mean": -0.08682200312614441, "lo90": -0.13147130608558655, "hi90": -0.044661812484264374, "n": 376}}
+17:55:22   43 s
+17:55:22 == K562
+17:56:06   400 targets; T_all parity with guadagno.transfer ok
+17:56:06   loading cache to cuda (fp16), fold K562: group 6 never read for fitting
+17:56:13   train group CD4T: 1280 train, 220 val keys
+17:56:13   train group H1: 76 train, 20 val keys
+17:56:13   train group HCT116: 1275 train, 225 val keys
+17:56:13   train group HEK293T: 1280 train, 220 val keys
+17:56:13   train group HepG2: 1293 train, 207 val keys
+17:56:13   train group Jurkat: 1293 train, 207 val keys
+17:56:13   train group Neuron: 64 train, 12 val keys
+17:56:13   train group RPE1: 1295 train, 205 val keys
+17:56:13   train group iPSC: 1283 train, 217 val keys
+17:56:14     epoch 0: {"epoch": 0, "cos": 0.89979, "nce": 4.19396, "lat": 1.87117, "sig": 45.71606, "val": 3.26878}
+17:56:15     epoch 1: {"epoch": 1, "cos": 0.85029, "nce": 3.88064, "lat": 1.61595, "sig": 32.86737, "val": 3.26235}
+17:56:16     epoch 2: {"epoch": 2, "cos": 0.80503, "nce": 3.55449, "lat": 1.5057, "sig": 34.71735, "val": 3.25745}
+17:56:17     epoch 3: {"epoch": 3, "cos": 0.77174, "nce": 3.327, "lat": 1.48653, "sig": 34.43049, "val": 3.37712}
+17:56:17     epoch 4: {"epoch": 4, "cos": 0.74342, "nce": 3.15813, "lat": 1.46564, "sig": 38.60442, "val": 3.32002}
+17:56:18     epoch 5: {"epoch": 5, "cos": 0.72225, "nce": 3.02664, "lat": 1.44155, "sig": 34.96595, "val": 3.37634}
+17:56:19     epoch 6: {"epoch": 6, "cos": 0.70409, "nce": 2.92199, "lat": 1.42676, "sig": 33.18145, "val": 3.3894}
+17:56:21   arms: {"all": {"cos": 0.1754, "pds": 0.6716, "mse": 8.2399}, "rete": {"cos": 0.2235, "pds": 0.598, "mse": 8.2931}, "rete_pesi": {"cos": 0.1859, "pds": 0.6899, "mse": 7.8502}, "rete_centrata": {"cos": 0.2066, "pds": 0.6424, "mse": 8.4721}}
+17:56:21   rete_centrata-all: {"cos": {"mean": 0.031188856810331345, "lo90": 0.019681157544255257, "hi90": 0.0435057058930397, "n": 372}, "pds": {"mean": -0.02917293233082707, "lo90": -0.06015100250626566, "hi90": 0.002018170426065167, "n": 400}, "mse": {"mean": 0.23217348754405975, "lo90": -0.008614711463451385, "hi90": 0.5092942714691162, "n": 372}}
+17:56:21   60 s
+17:56:21 rule: {"arm": "rete_centrata", "mean_cos_diff": 0.010369800281478093, "lines_lo90_above_0": 3, "mean_pds_diff": 0.002327067669172931, "any_line_pds_below_-0.02": true, "n_lines": 5, "passed": false}

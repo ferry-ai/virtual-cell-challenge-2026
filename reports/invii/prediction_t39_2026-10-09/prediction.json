@@ -1,0 +1,24 @@
+{
+  "written_utc": "registered by the commit that adds this file: after the bench of the network (r1-r4) and the A/B/C export, while stage 45 runs, before any upload and any site score",
+  "number_note": "t39 is provisional (t36-t38 on this branch; main is canonical): confirm the numbering with Davide",
+  "label": "t39: bridge network (JEPA latent prediction + LeJEPA SIGReg, attention over source groups, low-rank residual, InfoNCE) ensemble of 10 seeds (2-11) fitted on all ten cube groups, conditioned on each context's official controls; per-target norm equal to the all export (T x 1.576), so against t37 only the direction changes; t28 emission (effects-scale 1.5, gene dispersion 1.0, seed 20260912)",
+  "status": "owner's request in chat on 9/10 ('fai in modo che ci sia una rete trainata per la VCC e testala sul banco ... cosi poi capiamo se gradare la rete oppure no'); the upload needs the owner's explicit go",
+  "evidence_before": {
+    "bench": "reports/modelli/rete_ponte_jepa_2026-10-09: five-seed ensembles r3 and r4 give rete - all cosine +0.050 and +0.046 (CI above 0 on 5/5 lines each), PDS index +0.021 and +0.013, but H1 PDS -0.044 and -0.053: the registered rule fails on the H1 guard in every run; single seeds r1/r2 give +0.017/+0.021 cosine",
+    "site_caution": "the bench's all - prod cosine gain (+0.04..+0.09) did not show on the site in t36 (all + R, -0.0035 vs t28, confounded by R); the site's aggregate alignment is <= 0.10 (ESITO_TETTI M1)",
+    "emission": "t38 (amplitude 1.0) lost -0.0103 vs t36: the t28 emission stays"
+  },
+  "references": {"t28": 0.14484520500645978, "t36": 0.1413918045155937, "t38": 0.1310781467673208, "leaderboard_team_0.1472": "unverified: receipt not on main"},
+  "expected": {
+    "t39_minus_t28_band": [-0.010, 0.020],
+    "centre": 0.003,
+    "members": "PDS up if the bench direction transfers; scaled MSE stays 0 unless the aggregate cosine passes ~0.12-0.22; DE members within +-0.01"
+  },
+  "rule": {
+    "a": "t39 - t28 >= +0.005: the network becomes the reference base for the extended bank and the final",
+    "b": "|t39 - t28| < 0.005: not conclusive",
+    "c": "t39 - t28 <= -0.005: the bench gain of the network does not transfer to A/B/C",
+    "also_reported": "the six scaled members against t28 and t36; t39 against the team's 0.1472 as a non-registered comparison",
+    "not": "one seed of the generator; nothing direct about D, E, F"
+  }
+}

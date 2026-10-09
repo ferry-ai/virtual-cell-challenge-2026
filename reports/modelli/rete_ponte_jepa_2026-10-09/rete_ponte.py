@@ -154,7 +154,7 @@ class Fold:
         R = np.load(cache / "R.npy", mmap_mode="r")
         self.cells = np.load(cache / "cells.npy")
         self.basal = torch.tensor(np.load(cache / "basal.npy"), device=dev)
-        L = self.groups.index(held)
+        L = self.groups.index(held) if held is not None else -1     # None: production fit on every group
         self.L = L
         log(f"  loading cache to {dev} (fp16), fold {held}: group {L} never read for fitting")
         self.S = torch.empty(S.shape, dtype=torch.float16, device=dev)
