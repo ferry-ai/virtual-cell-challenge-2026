@@ -1,0 +1,1039 @@
+{
+ "schema": "validita-misure/1",
+ "source": "reports/analisi/validazione_indipendente_8a8ca58a_2026-10-08/banco/r1/completion/results.json",
+ "source_sha256": "167dffaa258224e2b7e17b2e8a17cd19bc4989ce59afa9917e2f26c2f5564b01",
+ "folds": {
+  "C-CD4T": {
+   "lineage": "CD4T",
+   "truth": "cd4_Rest",
+   "targets": 293,
+   "genes_for_rank_strict": 7442,
+   "genes_for_rank_95": 9045,
+   "median_confident_genes_T0": 364.0,
+   "measures": {
+    "disc95": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.16038617981205291,
+      "lo": 0.10879424002992194,
+      "hi": 0.21158130347374818,
+      "n": 293
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.1566108747487026,
+      "lo": 0.10469137173313385,
+      "hi": 0.20819141848613773,
+      "n": 293
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.15461218383281125,
+      "lo": 0.12011810977605313,
+      "hi": 0.18936252279208934,
+      "n": 293
+     },
+     "usable_as_specificity_guard": true
+    },
+    "disc": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.17919257562298377,
+      "lo": 0.1298666954976857,
+      "hi": 0.2296180279582963,
+      "n": 293
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.1758146710926177,
+      "lo": 0.12485243583150217,
+      "hi": 0.22683447098976112,
+      "n": 293
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.1758146710926177,
+      "lo": 0.14058628266866147,
+      "hi": 0.20983946187292535,
+      "n": 293
+     },
+     "usable_as_specificity_guard": true
+    },
+    "r_spec": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.015733308108199232,
+      "lo": 0.01126529359803813,
+      "hi": 0.020239951608792682,
+      "n": 293
+     },
+     "generico": {
+      "state": "non calcolabile",
+      "mean": null
+     },
+     "nullo": {
+      "state": "non calcolabile",
+      "mean": null
+     },
+     "usable_as_specificity_guard": true
+    },
+    "sign50": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.030102389078498295,
+      "lo": 0.014401023890784981,
+      "hi": 0.045460750853242325,
+      "n": 293
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.05064846416382252,
+      "lo": 0.03460750853242321,
+      "hi": 0.06662116040955632,
+      "n": 293
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.5313993174061433,
+      "lo": 0.52,
+      "hi": 0.5425255972696246,
+      "n": 293
+     },
+     "usable_as_specificity_guard": true
+    },
+    "reach": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.0020039687879465167,
+      "lo": 0.0008165654563587997,
+      "hi": 0.0033306047596505348,
+      "n": 293
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.0026770819970633308,
+      "lo": 0.001513459251971743,
+      "hi": 0.003984292330812214,
+      "n": 293
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.005227143314644105,
+      "lo": 0.004196209292789994,
+      "hi": 0.006425221358157053,
+      "n": 293
+     },
+     "usable_as_specificity_guard": true
+    },
+    "nmae_conf": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.013723727180296361,
+      "lo": -0.01857126434322706,
+      "hi": -0.00883968517825739,
+      "n": 293
+     },
+     "generico": {
+      "state": "distingue, CONTRO T0",
+      "mean": 0.012446328912056723,
+      "lo": 0.00847933943055668,
+      "hi": 0.01649748097665801,
+      "n": 293
+     },
+     "nullo": {
+      "state": "distingue, CONTRO T0",
+      "mean": 0.012461574457365308,
+      "lo": 0.00850427177803099,
+      "hi": 0.016509571542128128,
+      "n": 293
+     },
+     "usable_as_specificity_guard": true
+    },
+    "mse_ratio": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.02519089870143138,
+      "lo": -0.045185396395778586,
+      "hi": -0.005619029486196908,
+      "n": 293
+     },
+     "generico": {
+      "state": "distingue, CONTRO T0",
+      "mean": 0.19886221124186715,
+      "lo": 0.1850315634758061,
+      "hi": 0.21333781341017105,
+      "n": 293
+     },
+     "nullo": {
+      "state": "distingue, CONTRO T0",
+      "mean": 0.1986393539669139,
+      "lo": 0.1848207366066078,
+      "hi": 0.21309371804624933,
+      "n": 293
+     },
+     "usable_as_specificity_guard": true
+    }
+   }
+  },
+  "C-H1": {
+   "lineage": "H1",
+   "truth": "h1",
+   "targets": 17,
+   "genes_for_rank_strict": 11663,
+   "genes_for_rank_95": 11689,
+   "median_confident_genes_T0": 1284.0,
+   "measures": {
+    "disc95": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.4375,
+      "lo": 0.31985294117647056,
+      "hi": 0.5477941176470589,
+      "n": 17
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.4742647058823529,
+      "lo": 0.3235294117647059,
+      "hi": 0.6213235294117647,
+      "n": 17
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.4742647058823529,
+      "lo": 0.44485294117647056,
+      "hi": 0.4963235294117647,
+      "n": 17
+     },
+     "usable_as_specificity_guard": true
+    },
+    "disc": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.40808823529411764,
+      "lo": 0.29411764705882354,
+      "hi": 0.5220588235294118,
+      "n": 17
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.47794117647058826,
+      "lo": 0.3272058823529412,
+      "hi": 0.6213235294117647,
+      "n": 17
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.47794117647058826,
+      "lo": 0.45588235294117646,
+      "hi": 0.4963235294117647,
+      "n": 17
+     },
+     "usable_as_specificity_guard": true
+    },
+    "r_spec": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.120194194788117,
+      "lo": 0.08223784149869941,
+      "hi": 0.1608690573880345,
+      "n": 17
+     },
+     "generico": {
+      "state": "non calcolabile",
+      "mean": null
+     },
+     "nullo": {
+      "state": "non calcolabile",
+      "mean": null
+     },
+     "usable_as_specificity_guard": true
+    },
+    "sign50": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.15058823529411766,
+      "lo": 0.08588235294117647,
+      "hi": 0.2211764705882353,
+      "n": 17
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.19647058823529415,
+      "lo": 0.11058823529411765,
+      "hi": 0.27764705882352947,
+      "n": 17
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.656470588235294,
+      "lo": 0.6105882352941177,
+      "hi": 0.7047058823529412,
+      "n": 17
+     },
+     "usable_as_specificity_guard": true
+    },
+    "reach": {
+     "scambiato": {
+      "state": "non distingue",
+      "mean": 0.0003124661550254959,
+      "lo": -0.0010532090605158894,
+      "hi": 0.0019076390300800754,
+      "n": 17
+     },
+     "generico": {
+      "state": "non distingue",
+      "mean": 0.0007798245909205056,
+      "lo": -0.0005097133051107534,
+      "hi": 0.002217650022607501,
+      "n": 17
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.001506916251394123,
+      "lo": 0.0005600520870520155,
+      "hi": 0.0028240429664694437,
+      "n": 17
+     },
+     "usable_as_specificity_guard": false
+    },
+    "nmae_conf": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.09711341762460678,
+      "lo": -0.14428289068260536,
+      "hi": -0.03834250557087353,
+      "n": 17
+     },
+     "generico": {
+      "state": "non distingue",
+      "mean": 0.011974162802372831,
+      "lo": -0.03341962094257811,
+      "hi": 0.06228814922486976,
+      "n": 17
+     },
+     "nullo": {
+      "state": "non distingue",
+      "mean": 0.012271271755919988,
+      "lo": -0.03318587309480355,
+      "hi": 0.06226262290419326,
+      "n": 17
+     },
+     "usable_as_specificity_guard": true
+    },
+    "mse_ratio": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.5793724125500725,
+      "lo": -1.12170990333728,
+      "hi": -0.07903729653182927,
+      "n": 17
+     },
+     "generico": {
+      "state": "distingue, CONTRO T0",
+      "mean": 1.2916865424288826,
+      "lo": 0.7532071712125994,
+      "hi": 1.9154201741686265,
+      "n": 17
+     },
+     "nullo": {
+      "state": "distingue, CONTRO T0",
+      "mean": 1.2943555954227648,
+      "lo": 0.756960555866411,
+      "hi": 1.9178707493882958,
+      "n": 17
+     },
+     "usable_as_specificity_guard": true
+    }
+   }
+  },
+  "C-HCT116": {
+   "lineage": "HCT116",
+   "truth": "orion_hct116",
+   "targets": 293,
+   "genes_for_rank_strict": 9808,
+   "genes_for_rank_95": 10720,
+   "median_confident_genes_T0": 91.0,
+   "measures": {
+    "disc95": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.22996633783720602,
+      "lo": 0.18192674973117023,
+      "hi": 0.2774451821029501,
+      "n": 293
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.2248235074103511,
+      "lo": 0.1799286432278274,
+      "hi": 0.26984811117864316,
+      "n": 293
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.22211183318528213,
+      "lo": 0.18958313852915049,
+      "hi": 0.2544082238533826,
+      "n": 293
+     },
+     "usable_as_specificity_guard": true
+    },
+    "disc": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.24254289588106032,
+      "lo": 0.194571976249474,
+      "hi": 0.29071076254149336,
+      "n": 293
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.2296040020571322,
+      "lo": 0.18509338912525133,
+      "hi": 0.27444042498480525,
+      "n": 293
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.2296040020571322,
+      "lo": 0.19673634812286686,
+      "hi": 0.2619453924914676,
+      "n": 293
+     },
+     "usable_as_specificity_guard": true
+    },
+    "r_spec": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.01993485933478405,
+      "lo": 0.01582968160001754,
+      "hi": 0.02419753345158902,
+      "n": 293
+     },
+     "generico": {
+      "state": "non calcolabile",
+      "mean": null
+     },
+     "nullo": {
+      "state": "non calcolabile",
+      "mean": null
+     },
+     "usable_as_specificity_guard": true
+    },
+    "sign50": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.051567213166795065,
+      "lo": 0.032429837114234694,
+      "hi": 0.0708130419902915,
+      "n": 293
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.14406710498309797,
+      "lo": 0.12569230929281727,
+      "hi": 0.16284123321123398,
+      "n": 293
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.5394926337379959,
+      "lo": 0.5253162312627161,
+      "hi": 0.5541652257843575,
+      "n": 293
+     },
+     "usable_as_specificity_guard": true
+    },
+    "reach": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.0203492710203107,
+      "lo": 0.01300407158556461,
+      "hi": 0.028409222114082717,
+      "n": 293
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.030312541968250173,
+      "lo": 0.02376469788749442,
+      "hi": 0.03771808807343146,
+      "n": 293
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.03562285978661597,
+      "lo": 0.02916362935550021,
+      "hi": 0.04302204957250644,
+      "n": 293
+     },
+     "usable_as_specificity_guard": true
+    },
+    "nmae_conf": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.0267614323329809,
+      "lo": -0.03417375362127166,
+      "hi": -0.019504446269336954,
+      "n": 293
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.018569571135942285,
+      "lo": -0.02427024545979667,
+      "hi": -0.013069103020454945,
+      "n": 293
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.017869159837282385,
+      "lo": -0.023580443030889027,
+      "hi": -0.012360066269445705,
+      "n": 293
+     },
+     "usable_as_specificity_guard": true
+    },
+    "mse_ratio": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.04268151448812974,
+      "lo": -0.062343705966279,
+      "hi": -0.0248140524536385,
+      "n": 293
+     },
+     "generico": {
+      "state": "distingue, CONTRO T0",
+      "mean": 0.20363167217954428,
+      "lo": 0.19003181651895198,
+      "hi": 0.2175757096014594,
+      "n": 293
+     },
+     "nullo": {
+      "state": "distingue, CONTRO T0",
+      "mean": 0.2036715416380182,
+      "lo": 0.19006330218599143,
+      "hi": 0.21759846968890129,
+      "n": 293
+     },
+     "usable_as_specificity_guard": true
+    }
+   }
+  },
+  "C-HEK293": {
+   "lineage": "HEK293",
+   "truth": "orion_hek293t",
+   "targets": 299,
+   "genes_for_rank_strict": 9108,
+   "genes_for_rank_95": 11144,
+   "median_confident_genes_T0": 114.0,
+   "measures": {
+    "disc95": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.16247671208278153,
+      "lo": 0.11558550874278918,
+      "hi": 0.20803124508989695,
+      "n": 299
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.17356512760656326,
+      "lo": 0.12807793315526025,
+      "hi": 0.2193556261363382,
+      "n": 299
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.17200511773024177,
+      "lo": 0.1373700927027452,
+      "hi": 0.2052709254562187,
+      "n": 299
+     },
+     "usable_as_specificity_guard": true
+    },
+    "disc": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.17942358196224553,
+      "lo": 0.13403739534466116,
+      "hi": 0.22559734910551946,
+      "n": 299
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.1926443850867545,
+      "lo": 0.14520409193957487,
+      "hi": 0.23937762339790353,
+      "n": 299
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.1926443850867545,
+      "lo": 0.15788646719490024,
+      "hi": 0.22687678166595582,
+      "n": 299
+     },
+     "usable_as_specificity_guard": true
+    },
+    "r_spec": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.012916936545652518,
+      "lo": 0.008615578172626745,
+      "hi": 0.01720280783227043,
+      "n": 299
+     },
+     "generico": {
+      "state": "non calcolabile",
+      "mean": null
+     },
+     "nullo": {
+      "state": "non calcolabile",
+      "mean": null
+     },
+     "usable_as_specificity_guard": true
+    },
+    "sign50": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.04954161472200325,
+      "lo": 0.03139495612111547,
+      "hi": 0.06740360180114031,
+      "n": 299
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.12342409571283801,
+      "lo": 0.10656985586876894,
+      "hi": 0.14056704392752936,
+      "n": 299
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.5353614753236682,
+      "lo": 0.5214643875343308,
+      "hi": 0.5493579426244833,
+      "n": 299
+     },
+     "usable_as_specificity_guard": true
+    },
+    "reach": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.014105707225599614,
+      "lo": 0.007988384041545775,
+      "hi": 0.021649197930967475,
+      "n": 299
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.02022397173213081,
+      "lo": 0.014385768253194724,
+      "hi": 0.027608576813716753,
+      "n": 299
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.024745524264654314,
+      "lo": 0.019020987881949784,
+      "hi": 0.03204336326698123,
+      "n": 299
+     },
+     "usable_as_specificity_guard": true
+    },
+    "nmae_conf": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.02364228519177928,
+      "lo": -0.03288239727498284,
+      "hi": -0.014623132917828695,
+      "n": 299
+     },
+     "generico": {
+      "state": "non distingue",
+      "mean": 0.006905054861966294,
+      "lo": -0.0004700955055647146,
+      "hi": 0.014103987554051583,
+      "n": 299
+     },
+     "nullo": {
+      "state": "distingue, CONTRO T0",
+      "mean": 0.007722218380171656,
+      "lo": 0.0003622031718201148,
+      "hi": 0.01493842282983339,
+      "n": 299
+     },
+     "usable_as_specificity_guard": true
+    },
+    "mse_ratio": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.06863966012455126,
+      "lo": -0.10966616550283348,
+      "hi": -0.03040861214000701,
+      "n": 299
+     },
+     "generico": {
+      "state": "distingue, CONTRO T0",
+      "mean": 0.48312457027092615,
+      "lo": 0.4506127992997944,
+      "hi": 0.5167202144084952,
+      "n": 299
+     },
+     "nullo": {
+      "state": "distingue, CONTRO T0",
+      "mean": 0.4832233165544731,
+      "lo": 0.45074359490976484,
+      "hi": 0.5169037055704362,
+      "n": 299
+     },
+     "usable_as_specificity_guard": true
+    }
+   }
+  },
+  "C-K562": {
+   "lineage": "K562",
+   "truth": "k562",
+   "targets": 272,
+   "genes_for_rank_strict": 1,
+   "genes_for_rank_95": 7260,
+   "median_confident_genes_T0": 34.0,
+   "measures": {
+    "disc95": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.30242023008465374,
+      "lo": 0.25335087909702625,
+      "hi": 0.35041919904493163,
+      "n": 272
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.2721130887779466,
+      "lo": 0.22190348925548076,
+      "hi": 0.3211336010418927,
+      "n": 272
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.2721130887779466,
+      "lo": 0.2369614174082917,
+      "hi": 0.30563544606034293,
+      "n": 272
+     },
+     "usable_as_specificity_guard": true
+    },
+    "disc": {
+     "scambiato": {
+      "state": "non distingue",
+      "mean": -0.005487573258085524,
+      "lo": -0.04639000434121989,
+      "hi": 0.036948868569568034,
+      "n": 272
+     },
+     "generico": {
+      "state": "non distingue",
+      "mean": -0.007820978945083589,
+      "lo": -0.048703569296722406,
+      "hi": 0.03282403136531363,
+      "n": 272
+     },
+     "nullo": {
+      "state": "non distingue",
+      "mean": -0.007820978945083568,
+      "lo": -0.03747235863902757,
+      "hi": 0.02264251410896462,
+      "n": 272
+     },
+     "usable_as_specificity_guard": false
+    },
+    "r_spec": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.03983357886783062,
+      "lo": 0.033600564342985584,
+      "hi": 0.04663445431232651,
+      "n": 272
+     },
+     "generico": {
+      "state": "non calcolabile",
+      "mean": null
+     },
+     "nullo": {
+      "state": "non calcolabile",
+      "mean": null
+     },
+     "usable_as_specificity_guard": true
+    },
+    "sign50": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.0757045169506535,
+      "lo": 0.057949148919843645,
+      "hi": 0.09349659327563214,
+      "n": 272
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.11802856785836217,
+      "lo": 0.09711264761113285,
+      "hi": 0.13914244201523993,
+      "n": 272
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.5647015386103607,
+      "lo": 0.5501152279649487,
+      "hi": 0.5792728496412705,
+      "n": 272
+     },
+     "usable_as_specificity_guard": true
+    },
+    "reach": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.05784940727480413,
+      "lo": 0.04149463612004696,
+      "hi": 0.07544802780559423,
+      "n": 272
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.0723654210655197,
+      "lo": 0.0575190160883555,
+      "hi": 0.08853121980120143,
+      "n": 272
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.0912214814788852,
+      "lo": 0.07686978338949918,
+      "hi": 0.10671994505855886,
+      "n": 272
+     },
+     "usable_as_specificity_guard": true
+    },
+    "nmae_conf": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.0454875021907142,
+      "lo": -0.05573182290912436,
+      "hi": -0.035391648923496534,
+      "n": 272
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.0358508840643084,
+      "lo": -0.04473680644373386,
+      "hi": -0.02717755442782449,
+      "n": 272
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.03533816251404261,
+      "lo": -0.04423025614636734,
+      "hi": -0.026661128716252674,
+      "n": 272
+     },
+     "usable_as_specificity_guard": true
+    },
+    "mse_ratio": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.04435654730614365,
+      "lo": -0.07226896179649873,
+      "hi": -0.01838107907643438,
+      "n": 272
+     },
+     "generico": {
+      "state": "distingue, CONTRO T0",
+      "mean": 0.19488831012918878,
+      "lo": 0.17749248975465853,
+      "hi": 0.21451388886711406,
+      "n": 272
+     },
+     "nullo": {
+      "state": "distingue, CONTRO T0",
+      "mean": 0.19473789629517455,
+      "lo": 0.177348604949947,
+      "hi": 0.21434750643809486,
+      "n": 272
+     },
+     "usable_as_specificity_guard": true
+    }
+   }
+  },
+  "C-iPSC": {
+   "lineage": "iPSC",
+   "truth": "kolf_pan_genome",
+   "targets": 282,
+   "genes_for_rank_strict": 6824,
+   "genes_for_rank_95": 11598,
+   "median_confident_genes_T0": 174.0,
+   "measures": {
+    "disc95": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.059715807273920396,
+      "lo": 0.011281895964261383,
+      "hi": 0.10797367557608341,
+      "n": 282
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.06611392948184044,
+      "lo": 0.019079528532848746,
+      "hi": 0.11376605840337195,
+      "n": 282
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.06366573281845485,
+      "lo": 0.02777346609121425,
+      "hi": 0.0995942808106812,
+      "n": 282
+     },
+     "usable_as_specificity_guard": true
+    },
+    "disc": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.11697079831402538,
+      "lo": 0.06795291638272635,
+      "hi": 0.16417020014638697,
+      "n": 282
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.09412937583604655,
+      "lo": 0.04395270185002902,
+      "hi": 0.1422733525150804,
+      "n": 282
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.09412937583604654,
+      "lo": 0.05812479493198052,
+      "hi": 0.12931336917291333,
+      "n": 282
+     },
+     "usable_as_specificity_guard": true
+    },
+    "r_spec": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.006774383292696278,
+      "lo": 0.0030350303034441524,
+      "hi": 0.010648942281093336,
+      "n": 282
+     },
+     "generico": {
+      "state": "non calcolabile",
+      "mean": null
+     },
+     "nullo": {
+      "state": "non calcolabile",
+      "mean": null
+     },
+     "usable_as_specificity_guard": true
+    },
+    "sign50": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.024113475177304968,
+      "lo": 0.005531914893617021,
+      "hi": 0.042482269503546104,
+      "n": 282
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.09453900709219856,
+      "lo": 0.07312056737588651,
+      "hi": 0.11595744680851065,
+      "n": 282
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.5190780141843971,
+      "lo": 0.5040425531914893,
+      "hi": 0.5342553191489363,
+      "n": 282
+     },
+     "usable_as_specificity_guard": true
+    },
+    "reach": {
+     "scambiato": {
+      "state": "non distingue",
+      "mean": 0.0031865137919182174,
+      "lo": -0.0024985997094870917,
+      "hi": 0.010426416036750782,
+      "n": 282
+     },
+     "generico": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.0080564411351508,
+      "lo": 0.0027591031583510577,
+      "hi": 0.015096879514267298,
+      "n": 282
+     },
+     "nullo": {
+      "state": "distingue, a favore di T0",
+      "mean": 0.01348920794937221,
+      "lo": 0.008574164102911001,
+      "hi": 0.02036728137853853,
+      "n": 282
+     },
+     "usable_as_specificity_guard": false
+    },
+    "nmae_conf": {
+     "scambiato": {
+      "state": "distingue, a favore di T0",
+      "mean": -0.006347319472702995,
+      "lo": -0.012329718057697421,
+      "hi": -0.0004881414135739663,
+      "n": 282
+     },
+     "generico": {
+      "state": "non distingue",
+      "mean": 0.0035019052057711987,
+      "lo": -0.0013714064970189455,
+      "hi": 0.008174051559170161,
+      "n": 282
+     },
+     "nullo": {
+      "state": "non distingue",
+      "mean": 0.0037328387500048066,
+      "lo": -0.0011346386704650692,
+      "hi": 0.008400328278709724,
+      "n": 282
+     },
+     "usable_as_specificity_guard": true
+    },
+    "mse_ratio": {
+     "scambiato": {
+      "state": "non distingue",
+      "mean": -0.004377325949003075,
+      "lo": -0.018668081550702008,
+      "hi": 0.010105162822670986,
+      "n": 282
+     },
+     "generico": {
+      "state": "distingue, CONTRO T0",
+      "mean": 0.14378780485709358,
+      "lo": 0.13344457387449235,
+      "hi": 0.15551242581619137,
+      "n": 282
+     },
+     "nullo": {
+      "state": "distingue, CONTRO T0",
+      "mean": 0.1440907873729059,
+      "lo": 0.13374969927441557,
+      "hi": 0.1557991633200985,
+      "n": 282
+     },
+     "usable_as_specificity_guard": false
+    }
+   }
+  }
+ }
+}
