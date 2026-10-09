@@ -262,3 +262,11 @@ nella memoria privata di un agente: qui valgono per tutti.
   gira su `davideferrante11` (`reports/sorgenti/prepasso_ampliato_2026-10-04/STATO.md`). I dataset piccoli di codice si
   copiano byte per byte, quelli grandi si condividono in lettura
   (`reports/modelli/ibrido_selettivo_2026-10-04/replicate_datasets.py`, `share_to.py`).
+- **Kernel e dataset con lo stesso nome.** Il 9/10 un kernel spinto con lo stesso nome del dataset privato appena creato
+  sullo stesso account è stato rifiutato con `409 Conflict` su `SaveKernel`; con un nome diverso è partito subito
+  (`reports/analisi/validazione_banco_eace4d03_2026-10-09/ammi/cloud_r1/launch.json`). Dare a kernel e dataset nomi
+  distinti. Lo stesso giorno una richiesta `kernels output` è tornata con codice 1 senza scrivere nulla e la seconda,
+  identica, è riuscita: un file scaricato vale solo dopo aver verificato dimensione e sha256 contro la ricevuta.
+- **Heredoc in Git Bash con apostrofi.** Oltre a dimezzare le barre rovesciate, un heredoc che contiene un numero
+  dispari di apostrofi (testo italiano: `l'ancora`) fa fallire l'intero comando con «unexpected EOF». Uno script con
+  testo va salvato in un file e poi eseguito.
