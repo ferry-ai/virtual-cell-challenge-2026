@@ -11,8 +11,11 @@ T3 preservato al bit su 4.467.808 coppie, ESM2 aggiunto solo su 380.820 vuoti;
 Pacchetto CPU privato distinto con upload fittizio. La
 [revisione r2 verificata](t39_t3_runtime_verified_r2.json) incorpora la nuova
 preregistrazione, il pin compagno e i testi T3 esatti, con 66 hash controllati.
-Resta il consenso esatto richiesto dal Lead, poi il preflight remoto aggiornato.
-Nessun trasferimento, lancio o entry VCC.
+Consenso specifico letto direttamente e [registrato](t39_t3_private_egress_authorized_r1.json).
+Dataset privato caricato; [job CPU avviato](t39_t3/r2/launch_result.json),
+[codice remoto verificato](t39_t3/r2/remote_identity_verified.json), generazione
+effettiva nei log. Entry unica `C49E3QzIDZk0LGmXPCPP`, inizialmente in attesa
+dell'upload; la ricevuta server conclusiva sarà `t39_t3/r2/server_receipt_obtained.json`.
 La versione T0 sotto rimane sospesa e non è stata inviata.
 
 **T39 T0+ESM2 sospeso prima di qualsiasi upload/lancio:**
