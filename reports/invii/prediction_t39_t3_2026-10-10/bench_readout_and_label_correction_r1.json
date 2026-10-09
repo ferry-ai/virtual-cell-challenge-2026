@@ -1,0 +1,532 @@
+{
+  "schema": "t39-postfreeze-bench-readout-label-correction/1",
+  "candidate": "t39-T3-ESM2-fallback",
+  "clock_read_utc": "2026-10-09T22:47:51Z",
+  "date_europe_rome": "2026-10-10",
+  "claim_type": "Lettura dei JSON primari prodotti da VALIDAZIONE, successiva al congelamento: contesto interpretativo e correzione terminologica, nessun nuovo calcolo del banco",
+  "author": "/root/model_map_check",
+  "read_after_freeze": true,
+  "freeze_clock_read_utc": "2026-10-09T22:29:08Z",
+  "primary_sources": {
+    "k562_provider_status": {
+      "path": "reports/analisi/validazione_banco_eace4d03_2026-10-09/banco/livello_b_k562_e1/completion/provider_status.json",
+      "bytes": 180,
+      "sha256": "c4d4a9844fb97be72356083cdc1efadd080d8969f1822cdab4dbad74cd048555",
+      "document_timestamp_utc": "2026-10-09T22:44:50.671924+00:00"
+    },
+    "k562_bench_done": {
+      "path": "reports/analisi/validazione_banco_eace4d03_2026-10-09/banco/livello_b_k562_e1/completion/bench_done.json",
+      "bytes": 238,
+      "sha256": "92931ed23a50ffbeff0dc664efc3a65cf36ff7a2ea136a7407fdcf6bdb5b5889"
+    },
+    "k562_inputs_verified": {
+      "path": "reports/analisi/validazione_banco_eace4d03_2026-10-09/banco/livello_b_k562_e1/completion/inputs_verified.json",
+      "bytes": 519,
+      "sha256": "5b7a00f1c8b4edee495d716e182c9049d815206b67f6c2fa9a47fc2d24a2ecc0"
+    },
+    "k562_full_paired": {
+      "path": "reports/analisi/validazione_banco_eace4d03_2026-10-09/banco/livello_b_k562_e1/completion/bench_full/paired.json",
+      "bytes": 19413,
+      "sha256": "7f3ab8e27d5ae47d29097cf509acb571e98519e5add9d0a555896a45fd70b0e5",
+      "document_timestamp_utc": "2026-10-09T22:43:09+00:00"
+    },
+    "k562_full_run": {
+      "path": "reports/analisi/validazione_banco_eace4d03_2026-10-09/banco/livello_b_k562_e1/completion/bench_full/run.json",
+      "bytes": 916,
+      "sha256": "bcb3e9b9970323fa0049089ad9eb20374ba04ef5461a491ed30a46f97e827059"
+    },
+    "k562_control_paired": {
+      "path": "reports/analisi/validazione_banco_eace4d03_2026-10-09/banco/livello_b_k562_e1/completion/bench_control/paired.json",
+      "bytes": 2262,
+      "sha256": "203ed2d13c76b5fb2dd80f066567de0c24ee0f4343c9f89c5e9e573ffe9e5a4c",
+      "document_timestamp_utc": "2026-10-09T20:11:11+00:00"
+    },
+    "ipsc_full_paired": {
+      "path": "reports/analisi/validazione_banco_eace4d03_2026-10-09/banco/livello_b_ipsc_e1/completion/bench_full/paired.json",
+      "bytes": 19295,
+      "sha256": "fa74724fc7e5f14bfd14c75b819b69ed85a3b8d3e4cdf8791bd60ac8e1721b4a",
+      "document_timestamp_utc": "2026-10-09T20:44:06+00:00"
+    },
+    "frozen_prediction": {
+      "path": "reports/invii/prediction_t39_t3_2026-10-10/prediction.json",
+      "bytes": 8201,
+      "sha256": "09ee568a2ea30107db3de055c479249890699b7be9b3f6ad77c60e9082149af2",
+      "document_timestamp_utc": "2026-10-09T22:29:08Z"
+    }
+  },
+  "k562_completion": {
+    "provider_status": {
+      "utc": "2026-10-09T22:44:50.671924+00:00",
+      "returncode": 0,
+      "status": "davidmaisterx/vcc-validazione-banco-k562-eace4d03-e1 has status \"KernelWorkerStatus.COMPLETE\""
+    },
+    "bench_done": {
+      "steps": {
+        "control": {
+          "returncode": 0,
+          "seconds": 1112.6
+        },
+        "full": {
+          "returncode": 0,
+          "seconds": 9118.9
+        }
+      },
+      "targets": {
+        "all": 272,
+        "changed": [],
+        "requested": 272
+      },
+      "ok": true,
+      "seconds": 10248.5
+    },
+    "input_hashes_verified_by_runtime": {
+      "real_cells.npz": "2c5e7c885c49b3ac396be7be53ef155b78ca79ce528cfe2d9cec89f4478f34fd",
+      "targets.json": "b7623e416201b605e15d4c1145598b2bdb0bc010f0db26955739ddc8bacbd0fc",
+      "T0.npz": "d668d3581be2c1301c6922ea9152870610774d55e295c98fff73c0106270b349",
+      "C-K562_E2f.npz": "398694e74441c045e4ffbc713d49032d87ba82f25a7da8608ef8cc9d5b940b70",
+      "C-K562_E2gen.npz": "b0b665cc596644b10bd3d59003b228a340e98cf5715e2a15ae0e6785010a4e06",
+      "C-K562_E2swap.npz": "4816931ae0a48887ab9000c5cfb07e9fd4c098e01c86783758ab3fa73e3a1ea8"
+    },
+    "n_pred": 400,
+    "generator_seeds": 5,
+    "emission": "t28",
+    "control_T0_minus_shuffled_PDS_local": 0.573347066513489,
+    "control_note": "Il PDS del transfer supera quello a righe scambiate: controllo operativo superato; un solo seme, nessuna stima della sua SD.",
+    "paired_results": {
+      "E2f:T0": {
+        "six": {
+          "mean": 0.0007830554836723829,
+          "sd": 0.005530121111688625,
+          "resolved": false
+        },
+        "without_JAC": {
+          "mean": 0.0016539825601746203,
+          "sd": 0.006653984244300762,
+          "resolved": false
+        },
+        "members": {
+          "PDS": {
+            "mean": 0.0014974448361921634,
+            "sd": 0.019312140354187792,
+            "resolved": false
+          },
+          "MSE": {
+            "mean": 0.0,
+            "sd": 0.0,
+            "resolved": false
+          },
+          "NMAE": {
+            "mean": -0.004847128459924343,
+            "sd": 0.015573577171458231,
+            "resolved": false
+          },
+          "FID": {
+            "mean": -7.114157892087469e-05,
+            "sd": 0.0013134155599810384,
+            "resolved": false
+          },
+          "REACH": {
+            "mean": 0.011690738003526158,
+            "sd": 0.034978615141693474,
+            "resolved": false
+          },
+          "JAC": {
+            "mean": -0.003571579898838806,
+            "sd": 0.0004004397134784182,
+            "resolved": true
+          }
+        },
+        "raw_members": {
+          "PDS": {
+            "mean": 0.000512806598654203,
+            "sd": 0.006613527769708634,
+            "resolved": false
+          },
+          "MSE": {
+            "mean": 0.2389781449374393,
+            "sd": 0.04271574120906089,
+            "resolved": true
+          },
+          "NMAE": {
+            "mean": 0.002268032992370861,
+            "sd": 0.007287074631121341,
+            "resolved": false
+          },
+          "FID": {
+            "mean": -3.9639205628105856e-05,
+            "sd": 0.0007318188638339457,
+            "resolved": false
+          },
+          "REACH": {
+            "mean": 0.005619342668393479,
+            "sd": 0.01681303819209248,
+            "resolved": false
+          },
+          "JAC": {
+            "mean": -0.0002924930871196758,
+            "sd": 3.2793847909917046e-05,
+            "resolved": true
+          }
+        }
+      },
+      "E2gen:T0": {
+        "six": {
+          "mean": 0.0022990621758282497,
+          "sd": 0.009712349283848504,
+          "resolved": false
+        },
+        "without_JAC": {
+          "mean": 0.0032417906954591595,
+          "sd": 0.01163898987843275,
+          "resolved": false
+        },
+        "members": {
+          "PDS": {
+            "mean": -0.0057441666996792765,
+            "sd": 0.012223151909737422,
+            "resolved": false
+          },
+          "MSE": {
+            "mean": 0.0,
+            "sd": 0.0,
+            "resolved": false
+          },
+          "NMAE": {
+            "mean": 0.005641955023232348,
+            "sd": 0.01886680396816454,
+            "resolved": false
+          },
+          "FID": {
+            "mean": -0.001791987971302178,
+            "sd": 0.004593186105534118,
+            "resolved": false
+          },
+          "REACH": {
+            "mean": 0.018103153125044902,
+            "sd": 0.05325218277626287,
+            "resolved": false
+          },
+          "JAC": {
+            "mean": -0.002414580422326296,
+            "sd": 0.0007136696799713739,
+            "resolved": true
+          }
+        },
+        "raw_members": {
+          "PDS": {
+            "mean": -0.0019671152593879527,
+            "sd": 0.004185872363489009,
+            "resolved": false
+          },
+          "MSE": {
+            "mean": 0.13301824522533678,
+            "sd": 0.047404828795315386,
+            "resolved": true
+          },
+          "NMAE": {
+            "mean": -0.002639942440139742,
+            "sd": 0.00882801729192433,
+            "resolved": false
+          },
+          "FID": {
+            "mean": -0.0009984734771844694,
+            "sd": 0.002559266343074455,
+            "resolved": false
+          },
+          "REACH": {
+            "mean": 0.00870157390896471,
+            "sd": 0.025596524596606714,
+            "resolved": false
+          },
+          "JAC": {
+            "mean": -0.00019774108429006855,
+            "sd": 5.8445688964261625e-05,
+            "resolved": true
+          }
+        }
+      },
+      "E2swap:T0": {
+        "six": {
+          "mean": -5.943238782228355e-05,
+          "sd": 0.006974072840135337,
+          "resolved": false
+        },
+        "without_JAC": {
+          "mean": 0.0005463501949729267,
+          "sd": 0.008328065384601896,
+          "resolved": false
+        },
+        "members": {
+          "PDS": {
+            "mean": -0.0059897793447689415,
+            "sd": 0.014964027473189893,
+            "resolved": false
+          },
+          "MSE": {
+            "mean": 0.0,
+            "sd": 0.0,
+            "resolved": false
+          },
+          "NMAE": {
+            "mean": 0.011817013460944025,
+            "sd": 0.013885560811358383,
+            "resolved": false
+          },
+          "FID": {
+            "mean": -0.0013301447233056152,
+            "sd": 0.0037567532457605025,
+            "resolved": false
+          },
+          "REACH": {
+            "mean": -0.001765338418004836,
+            "sd": 0.04229491272514531,
+            "resolved": false
+          },
+          "JAC": {
+            "mean": -0.0030883453017983343,
+            "sd": 0.001425187418468903,
+            "resolved": true
+          }
+        },
+        "raw_members": {
+          "PDS": {
+            "mean": -0.002051226394616923,
+            "sd": 0.005124497307164806,
+            "resolved": false
+          },
+          "MSE": {
+            "mean": 0.24754855188469344,
+            "sd": 0.059093397630925484,
+            "resolved": true
+          },
+          "NMAE": {
+            "mean": -0.0055293307413457615,
+            "sd": 0.006497230328866562,
+            "resolved": false
+          },
+          "FID": {
+            "mean": -0.000741140146198882,
+            "sd": 0.0020932163252707116,
+            "resolved": false
+          },
+          "REACH": {
+            "mean": -0.0008485385177100735,
+            "sd": 0.020329735185298087,
+            "resolved": false
+          },
+          "JAC": {
+            "mean": -0.0002529187858035277,
+            "sd": 0.00011671514555437832,
+            "resolved": true
+          }
+        }
+      },
+      "E2f:E2swap": {
+        "six": {
+          "mean": 0.0008424878714946658,
+          "sd": 0.0107807860652631,
+          "resolved": false
+        },
+        "without_JAC": {
+          "mean": 0.0011076323652016936,
+          "sd": 0.013028907271212547,
+          "resolved": false
+        },
+        "members": {
+          "PDS": {
+            "mean": 0.007487224180961105,
+            "sd": 0.022952116323735103,
+            "resolved": false
+          },
+          "MSE": {
+            "mean": 0.0,
+            "sd": 0.0,
+            "resolved": false
+          },
+          "NMAE": {
+            "mean": -0.016664141920868368,
+            "sd": 0.007215508792640316,
+            "resolved": true
+          },
+          "FID": {
+            "mean": 0.0012590031443847406,
+            "sd": 0.00382235467883787,
+            "resolved": false
+          },
+          "REACH": {
+            "mean": 0.013456076421530993,
+            "sd": 0.053492641216250504,
+            "resolved": false
+          },
+          "JAC": {
+            "mean": -0.00048323459704047167,
+            "sd": 0.0011877910644674389,
+            "resolved": false
+          }
+        },
+        "raw_members": {
+          "PDS": {
+            "mean": 0.002564032993271126,
+            "sd": 0.007860053618950038,
+            "resolved": false
+          },
+          "MSE": {
+            "mean": -0.008570406947254128,
+            "sd": 0.026218987110042676,
+            "resolved": false
+          },
+          "NMAE": {
+            "mean": 0.007797363733716622,
+            "sd": 0.003376228241886889,
+            "resolved": true
+          },
+          "FID": {
+            "mean": 0.0007015009405707762,
+            "sd": 0.0021297686303319028,
+            "resolved": false
+          },
+          "REACH": {
+            "mean": 0.006467881186103553,
+            "sd": 0.025712104842386764,
+            "resolved": false
+          },
+          "JAC": {
+            "mean": -3.957430131614811e-05,
+            "sd": 9.727366743554108e-05,
+            "resolved": false
+          }
+        }
+      },
+      "E2f:E2gen": {
+        "six": {
+          "mean": -0.0015160066921558666,
+          "sd": 0.014139207468204682,
+          "resolved": false
+        },
+        "without_JAC": {
+          "mean": -0.0015878081352845384,
+          "sd": 0.017020430739654046,
+          "resolved": false
+        },
+        "members": {
+          "PDS": {
+            "mean": 0.0072416115358714395,
+            "sd": 0.01718730255926817,
+            "resolved": false
+          },
+          "MSE": {
+            "mean": 0.0,
+            "sd": 0.0,
+            "resolved": false
+          },
+          "NMAE": {
+            "mean": -0.010489083483156691,
+            "sd": 0.024059782593823652,
+            "resolved": false
+          },
+          "FID": {
+            "mean": 0.0017208463923813033,
+            "sd": 0.005353699588179233,
+            "resolved": false
+          },
+          "REACH": {
+            "mean": -0.006412415121518744,
+            "sd": 0.0718842115543898,
+            "resolved": false
+          },
+          "JAC": {
+            "mean": -0.0011569994765125101,
+            "sd": 0.00048222727061126013,
+            "resolved": true
+          }
+        },
+        "raw_members": {
+          "PDS": {
+            "mean": 0.0024799218580421555,
+            "sd": 0.005885867681023531,
+            "resolved": false
+          },
+          "MSE": {
+            "mean": 0.10595989971210251,
+            "sd": 0.0303563672547879,
+            "resolved": true
+          },
+          "NMAE": {
+            "mean": 0.004907975432510603,
+            "sd": 0.011257877971097539,
+            "resolved": false
+          },
+          "FID": {
+            "mean": 0.0009588342715563635,
+            "sd": 0.002983015025332931,
+            "resolved": false
+          },
+          "REACH": {
+            "mean": -0.0030822312405712317,
+            "sd": 0.03455231115859145,
+            "resolved": false
+          },
+          "JAC": {
+            "mean": -9.475200282960724e-05,
+            "sd": 3.949180672681381e-05,
+            "resolved": true
+          }
+        }
+      }
+    },
+    "statistic_note": "sd = deviazione standard fra cinque delta appaiati dei semi. La tabella media +/- sd non e un intervallo di confidenza. resolved e copiato dal JSON: regola congelata |media| > 2*sd/sqrt(5). Nessun nuovo test eseguito.",
+    "interpretation": [
+      "E2f-T0: media dei sei +0.0007830555, SD 0.0055301211, non risolta; senza JAC e PDS non risolti.",
+      "JAC scalato E2f-T0 -0.0035715799, risolto negativo; MSE grezza peggiore mentre quella scalata resta al pavimento zero.",
+      "E2f-E2swap: media dei sei e PDS non risolti; il segnale specifico osservato su iPSC non e confermato su K562.",
+      "Il banco usa T0 a lignaggio escluso. Non valida il nuovo T3+ESM2 e non anticipa il risultato VCC.",
+      "La macro dei fold non e ricalcolata qui: nessun nuovo verdetto complessivo del protocollo."
+    ]
+  },
+  "label_correction": {
+    "frozen_file": "reports/invii/prediction_t39_t3_2026-10-10/prediction.json",
+    "frozen_field": "scientific_evidence_at_decision.T0_E2_ipsc_delta_resolution_half_width",
+    "frozen_value": 0.0168,
+    "error": "Il nome resolution_half_width e improprio: 0.0168 e la SD tra cinque delta appaiati dei semi, non CI o semilarghezza di intervallo.",
+    "correct_label": "T0_E2_ipsc_delta_sd_across_five_generator_seeds",
+    "exact_mean_from_primary_json": 0.0073943649243237266,
+    "exact_sd_from_primary_json": 0.016830449038404548,
+    "generator_seeds": 5,
+    "resolved_from_primary_json": false,
+    "rounded_value_unchanged": true,
+    "previous_nonresolved_verdict_unchanged": true,
+    "original_frozen_file_edited": false
+  },
+  "decision_preserved": {
+    "candidate": "T3+ESM2 only where T3 has no prediction",
+    "candidate_artifact_sha256": "577a5a56a57df6a2ba07beead6217a7274ad639e85e8be780d942c1c7152094b",
+    "primary_reference": {
+      "name": "t38",
+      "official_score": 0.14892212354470022
+    },
+    "secondary_reference": {
+      "name": "t36",
+      "official_score": 0.14724935991548274,
+      "role": "Riferimento storico descrittivo: il confronto include anche le differenze T3 rispetto a T0, quindi non isola ESM2"
+    },
+    "expected_score_band": [
+      0.125,
+      0.17
+    ],
+    "expected_delta": 0.0,
+    "decision_threshold_absolute": 0.005,
+    "exploratory_submission_authorized": true,
+    "new_calibration": false,
+    "scientific_promotion": false,
+    "complete_D053": false,
+    "candidate_formula_changed": false,
+    "preregistration_changed": false,
+    "prior_audits_changed": false,
+    "authorization_note": "Il Lead riferisce il consenso umano al trasferimento privato e invio esatto t39. Questo documento non avvia trasferimenti, training o invii."
+  },
+  "actions_performed": [
+    "read existing primary JSONs",
+    "write this new companion JSON only"
+  ],
+  "commit_owner": "Lead"
+}
