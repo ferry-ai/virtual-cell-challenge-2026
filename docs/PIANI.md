@@ -1,10 +1,13 @@
 # Piani — un incarico operativo, supporti e alternative
 
 **Per lavorare adesso:** [R-LEAD](piani/strategia-scientifica.md), con il
-[prompt per Claude](PROMPT_CLAUDE.md). Il mandato corrente è il rifit del transfer lineare
-con banca ampliata; il design neurale resta separato. L'integrazione di tutte le linee
-e i contesti idonei (D-053) prosegue indipendentemente dal primo candidato parziale.
-Stato generale e riferimento in [PROGETTO §0](PROGETTO.md).
+[prompt per Claude](PROMPT_CLAUDE.md). Direzione e mandato correnti stanno nel §0 di
+[PROGETTO](PROGETTO.md), stato e prossimo passo nella scheda: il mandato scritto qui fino al
+10/10 («rifit del transfer lineare con banca ampliata; il design neurale resta separato») è
+stato cambiato dal proprietario il 9/10 ([CP-0071](checkpoints/0071-corsia-rapida-senza-invio-priorita-alle-reti.md)).
+L'integrazione di tutte le linee e i contesti idonei (D-053) prosegue indipendentemente da ogni
+candidato. I candidati si chiamano `td XX` (Davide) e `ta XX` (Alfredo):
+[D-058](PROCEDURE.md#2-le-regole-dellinvio).
 
 Questo indice mantiene priorità e dipendenze; stato e presa in carico stanno nelle schede.
 Le versioni precedenti sono conservate: [rinnovo dell'1–2 ottobre](storico/rinnovo_2026-10-01/INDICE.md),
@@ -22,7 +25,7 @@ un protocollo o una riga «in corso» non prova che un job sia attivo o concluso
 
 | Ruolo | Scheda | Quando usarla |
 |---|---|---|
-| **Piano operativo unico** | [R-LEAD](piani/strategia-scientifica.md) | Banca riusabile e copertura D-053; consegna pianificata per il 9/10 ore 02:00, t36 come riserva e confronti separati su centratura/PIE. Stato, autorizzazioni, prossimo passo e job attivi soltanto nella scheda |
+| **Piano operativo unico** | [R-LEAD](piani/strategia-scientifica.md) | Banca riusabile, transfer, reti e copertura D-053; direzione nel §0 di PROGETTO. Stato, consegna, autorizzazioni, prossimo passo e job attivi soltanto nella scheda |
 | Esecuzione del binario dati | [R-LAB](piani/piano-giorno-2026-09-30.md) | Ingestione completa, archivio, verifiche indipendenti, gemelli compatti; i job li sceglie R-LEAD |
 | Riconciliazione e lacune dei dati | [R-DATI](piani/dati-affidabilita.md) | Inventario riconciliato col catalogo (D-053), aggregati per le voci che non ne hanno, campioni annidati con perdita d'informazione misurata |
 | Verifiche | [R-REV](piani/revisione-critica.md) | Forma piena, scorer, leakage, generazione; non si chiude perché parte un training |
