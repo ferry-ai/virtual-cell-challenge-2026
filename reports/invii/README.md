@@ -1,5 +1,12 @@
 # invii — i nostri invii alla classifica di validazione
 
+**Nomi dal 10 ottobre 2026:** `td XX` = Davide, `ta XX` = Alfredo, obbligatori
+nei nuovi riferimenti ([D-058 e procedura](../../docs/PROCEDURE.md#2-le-regole-dellinvio)).
+Le etichette storiche `tXX` di questo indice si leggono `td XX`; i file collegati
+conservano il nome originale. Quindi il nostro `t36` è `td 36`, il nostro `t38`
+è `td 38` e il nostro `t39` è `td 39`. I candidati omonimi di Alfredo sono
+rispettivamente `ta 36`, `ta 38` e `ta 39`, e non sono gli stessi invii.
+
 Due tipi di cartella, più due riepiloghi:
 - **`prediction_t<NN>_<data>/`**: la previsione e la regola di lettura, **registrate prima**
   di generare (`prediction.json`). Dopo il punteggio c'è `comparison.json`, con l'esito letto

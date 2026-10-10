@@ -14,6 +14,7 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 
 | ID | Decisione | Stato | Dal | Sostenuta da |
 |---|---|---|---|---|
+| D-058 | Nomi obbligatori `td XX` per i modelli di Davide e `ta XX` per quelli di Alfredo; alias dei nomi storici senza alterare le evidenze | attiva | 2026-10-10 | Mandato del proprietario in chat; [PROCEDURE §2](PROCEDURE.md#2-le-regole-dellinvio) |
 | D-057 | Parallelismo obbligatorio dei job indipendenti autorizzati fra i runtime disponibili di Kaggle e Colab, con inventario delle risorse e verifica dell'esecuzione effettiva | attiva | 2026-10-04 | Mandato del proprietario in chat: «se non lo stiamo facendo rendilo regola imprescindibile»; [PROCEDURE §3](PROCEDURE.md#3-job-su-colab-e-kaggle) |
 | D-056 | Direzione confermata: transfer congelato con correzione neurale selettiva, pesata in base al beneficio validato; ritorno al transfer in assenza di evidenza. Candidato da verificare, non modello già promosso | attiva | 2026-10-04 | Conferma del proprietario in chat: «ok allora teniamo il modello ibrido che stavamo ipotizzando prima»; precedenti [STRADE](STRADE.md), S-001–S-007 |
 | D-055 | Ciclo per imparare dagli errori: registro delle strade provate con meccanismo e condizione di riapertura, sezione «Precedenti» obbligatoria nei protocolli nuovi, riga «Strade» nei checkpoint di esperimento, verificati dal controllo dei documenti | attiva | 2026-10-04 | Richiesta del proprietario in chat il 4/10; [STRADE](STRADE.md) |
@@ -73,6 +74,16 @@ ragionamento completo e le misure stanno nel materiale citato in "Sostenuta da".
 | D-043 | Lo stadio 45 genera solo da effetti esterni: trial-00 e trial-01 vanno nel tag `archivio/pre-pulizia-2026-09-24` con `models.py`, `signatures.py` e il codice che nessuno stadio raggiunge; lo stadio 100 registra un hash della ricetta che non dipende dai fine riga | attiva | 2026-09-24 | `docs/ARCHIVIO.md`, richiesta del proprietario in chat del 24 settembre |
 
 ---
+
+### D-058 — Nomi distinti per Davide e Alfredo
+
+- **Mandato:** il 10 ottobre 2026 il proprietario chiede: «imponi nuova regola t.c i nostri modelli sono \"td xx\" e i modelli di alfredo sono \"ta xx\"».
+- **Decisione:** adottare i due namespace in tutti i nuovi nomi e riferimenti, conservando
+  i numeri storici e identificando gli invii anche tramite entry ID. Regola operativa
+  in [PROCEDURE §2](PROCEDURE.md#2-le-regole-dellinvio).
+- **Motivo:** i due autori hanno usato gli stessi numeri per candidati diversi.
+  L'alias distingue i candidati senza modificare ricevute o protocolli congelati.
+- **Riaprire se:** il proprietario cambia la convenzione o entrano altri autori.
 
 ### D-057 — Parallelismo cloud obbligatorio e verificato
 

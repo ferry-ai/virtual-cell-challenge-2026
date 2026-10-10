@@ -73,6 +73,21 @@ generare, come la ricetta.
 
 ## 2. Le regole dell'invio
 
+**Nomi obbligatori dal 10 ottobre 2026 (D-058).** Nei nuovi nomi di modelli,
+testi di invio, confronti e comunicazioni usare `td XX` per Davide e `ta XX` per
+Alfredo, con almeno due cifre (`td 09`, `ta 39`). Il numero si assegna nel namespace
+dell'autore senza riutilizzare un numero già assegnato, anche se il candidato non
+è stato inviato. Lo stesso numero può esistere nei due namespace. I vecchi `tXX`
+mantengono il numero e ricevono il prefisso dell'autore, verificato dalla provenienza;
+non dedurlo dal solo numero. In caso dubbio lasciare esplicita l'attribuzione da verificare.
+
+Per gli identificatori tecnici nuovi usare `tdXX` o `taXX` senza spazio, ad esempio
+`prediction_td40_<data>/`. I pattern `t<NN>` riportati sotto descrivono anche gli
+artefatti storici: non rinominare file o directory già esistenti, né riscrivere
+ricevute ufficiali, checkpoint o previsioni congelate. Nei nuovi riferimenti riportare
+l'alias canonico insieme al percorso storico e all'entry ID quando disponibile.
+La distinzione riguarda l'autore del candidato, non l'agente o il runtime che lo esegue.
+
 Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
 
 1. **Prima di generare**, si registrano la previsione e la regola di lettura in

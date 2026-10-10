@@ -85,6 +85,14 @@ trust the stricter one and say so. A path `reports/<folder>/` written before 28 
 
 ## Global rules
 
+**Nomenclatura obbligatoria (D-058, mandato del 10 ottobre 2026).** I modelli e gli
+invii di Davide (i nostri) si chiamano `td XX`; quelli di Alfredo `ta XX`, con numero
+a due cifre almeno. Nei nuovi testi non usare `tXX` senza autore. I numeri storici
+restano invariati: `t36` di Davide diventa `td 36`, `t36` di Alfredo `ta 36`.
+Ricevute, checkpoint, protocolli congelati e percorsi esistenti conservano i nomi
+originali; citarli con l'alias nuovo e, per gli invii, l'entry ID. La regola completa
+è in [PROCEDURE §2](docs/PROCEDURE.md#2-le-regole-dellinvio).
+
 **Evidence.** This repository was built quickly by agents; its failure mode is confident prose
 outrunning what was measured.
 - A script existing is not proof it ran; a run completing is not proof its output is right;
