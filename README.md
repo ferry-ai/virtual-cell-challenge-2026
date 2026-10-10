@@ -3,7 +3,7 @@
 **DATA ARCHIVE — REUSE, DO NOT REINGEST:** [current dataset index, versions and hashes](reports/modelli/percorso_riusabile_2026-10-05/cloud_catalog_r11/manifest.json)
 and [verified selection, data and remaining gaps](reports/analisi/riconciliazione_banca_2026-10-05/README.md).
 The main path is verified archive → reusable banks and cell samples → extended training.
-**Next training — reuse the existing bank:** [single entry point, canonical source registry and frozen release](reports/modelli/banca_canonica_2026-10-07/README.md) (7 October; the [5 October page](reports/modelli/percorso_riusabile_2026-10-05/README.md) remains the evidence of the t36 release).
+**Next training — reuse the existing bank:** [single entry point, canonical source registry and frozen release](reports/modelli/banca_canonica_2026-10-07/README.md) (7 October; the [5 October page](reports/modelli/percorso_riusabile_2026-10-05/README.md) remains the evidence of the td 36 release).
 **Training coverage is tracked separately:** [all expected inputs, frozen](reports/analisi/riconciliazione_banca_2026-10-05/frozen/expected_r3.json).
 Archived GB and launched jobs do not certify that every context contributed to a fitted model.
 
@@ -13,8 +13,10 @@ There is one implementation plan: [R-LEAD](docs/piani/strategia-scientifica.md),
 with a [ready-to-use Claude prompt](docs/PROMPT_CLAUDE.md).
 On another machine, also read the [environment handoff](docs/CONSEGNA_TEAMMATE.md).
 
-After t29, no neural model is promoted. The current reference and observed scores
+After td 29, no neural model is promoted. The current reference and observed scores
 are maintained in PROGETTO and the [submission ledger](reports/invii/README.md).
+Since 10 October candidate names carry their author, `td NN` for Davide and `ta NN` for
+Alfredo (D-058); the ledger maps the historical `tNN` names of both, with entry IDs.
 The earlier training queues and instructions are [preserved as history](docs/storico/rinnovo_2026-10-01/INDICE.md).
 
 This README covers the challenge and setup. Use [PROCEDURE](docs/PROCEDURE.md) for
