@@ -311,12 +311,19 @@ def main() -> None:
     ap.add_argument("--held", default=",".join(gd.HELD))
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--w-jepa", type=float, default=None, help="ABLAZIONE_JEPA: override W_JEPA")
+    ap.add_argument("--lambda-sig", type=float, default=None, help="ABLAZIONE_JEPA: override LAMBDA_SIG")
     ap.add_argument("--seeds", default="", help="EMENDAMENTO_R3: comma-separated seeds; predictions are averaged")
     ap.add_argument("--rule-arm", default="rete", help="r1: rete; r2 (EMENDAMENTO_R2.md): rete_centrata")
     a = ap.parse_args()
     if a.selftest:
         selftest()
         return
+    global W_JEPA, LAMBDA_SIG
+    if a.w_jepa is not None:
+        W_JEPA = a.w_jepa
+    if a.lambda_sig is not None:
+        LAMBDA_SIG = a.lambda_sig
     if a.out.exists():
         raise FileExistsError(a.out)
     a.out.mkdir(parents=True)
@@ -374,6 +381,8 @@ def main() -> None:
         arms_pred = {"all": Tall, "rete": P, "rete_pesi": Pw, "rete_centrata": Pc}
         res = {n: gd.measures(p, y, ysd ** 2, x, mask, ref) for n, p in arms_pred.items()}
         line = {"targets": len(keys), "epochs": len(hist), "history": hist,
+                "per_target": {f"{n}_{m}": [None if not np.isfinite(v) else float(v) for v in r[m]]
+                               for n, r in res.items() for m in ("cos", "pds")},
                 "arms": {n: {m: float(np.nanmean(v)) for m, v in r.items()} for n, r in res.items()}, "diff": {}}
         for p in ("rete", "rete_pesi", "rete_centrata"):
             line["diff"][f"{p}-all"] = {m: gd.boot_diff(res[p][m], res["all"][m], rng_boot) for m in ("cos", "pds", "mse")}
