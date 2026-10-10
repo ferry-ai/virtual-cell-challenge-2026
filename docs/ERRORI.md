@@ -221,6 +221,15 @@ nella memoria privata di un agente: qui valgono per tutti.
   file, per nome. Chi chiude una sessione committa il proprio lavoro (D-048): il 30/09 alle 02:07
   circa 1.160 file di due sessioni chiuse erano ancora fuori dai commit. Come si committa un file
   che anche altri stanno modificando: [AGENTI §3](AGENTI.md#3-coordinamento-fra-sessioni-nella-stessa-cartella).
+- **Due autori, un solo spazio di numeri.** Dall'1 al 10/10 Davide su main e Alfredo sul branch
+  `codex/teammate-rlead` hanno numerato gli invii in parallelo: `t30`, `t31` e `t36`–`t39` indicano
+  candidati diversi, `reports/invii/prediction_t36_2026-10-06/` esiste sui due branch con file diversi e
+  CP-0056–CP-0058 hanno contenuti diversi. Le note di numerazione provvisoria nelle previsioni del branch
+  non lo hanno impedito: lo script dei checkpoint e la regola dei nomi delle cartelle vedono solo il
+  branch su cui girano. Rimedio: i nomi `td XX` e `ta XX` di D-058 ([PROCEDURE §2](PROCEDURE.md#2-le-regole-dellinvio))
+  e, su un branch separato, il controllo su `origin/main` di nomi e numeri prima di crearli. Mappa e
+  collisioni ancora aperte nell'[indice degli invii](../reports/invii/README.md#collisioni-e-contraddizioni-aperte).
+  Guardia eseguibile: nessuna per ora.
 - **Heredoc in Git Bash.** Un heredoc passato a `py` o `python` dimezza le barre rovesciate: il 24/09
   un `\r\n` scritto così è diventato un vero a capo, e il 30/09 un `\n` in una sostituzione è
   diventato un a capo, facendola fallire. I file si modificano con gli strumenti dell'editor o con

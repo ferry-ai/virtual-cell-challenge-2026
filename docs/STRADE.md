@@ -49,6 +49,12 @@ riassumendo. Il controllo verifica struttura, ID, percorsi ed etichette; non ver
 | S-015 | Riempire con il ridge ESM2 le coppie che il transfer non prevede (fallback) | la misura primaria non copriva il riempimento; nella vista del generatore più copertura, errore quadratico peggiore, nessuna specificità del bersaglio; sei membri non eseguiti: inconcludente (CP-0075) | ipotizzato | 2026-10-09 |
 | S-016 | AMMI, ramo senza contesto (`none`): ancora annidata del transfer più un residuo appreso dal solo bersaglio | non si distingue dalla propria ancora su K562 e iPSC nello spazio degli effetti; sei membri e ramo `cells` non ancora letti (CP-0076) | ipotizzato | 2026-10-09 |
 
+**Fuori da questo elenco, al 10/10:** le strade provate da Alfredo sul branch `codex/teammate-rlead`, fra cui
+la rete sulle sorgenti di ta 30, la rete contrastiva di ta 34, la rete L1 di ta 35, l'ampiezza 1,0 di ta 38 e la
+rete ponte di ta 39, con i loro banchi, non hanno ancora una voce qui. Esiti ufficiali ed evidenze, per commit,
+sono nella [mappa td/ta](../reports/invii/README.md#nomi-td-e-ta-mappa-dei-candidati): chi progetta su quelle
+famiglie li legge lì finché le voci non sono scritte.
+
 ## Voci
 
 ### S-001 — Rete sulle singole cellule al posto degli effetti del transfer, inviata (t29)

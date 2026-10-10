@@ -103,7 +103,7 @@ aggiunge da sé la riga qui sotto.
 | [0068](0068-banca-canonica-release-r1.md) | 2026-10-07 | Banca canonica: registro, release r1 a 17 fonti e fit con ricevuta di consumo | esperimento | — |
 | [0069](0069-validazione-indipendente-t1-e-ampliamento.md) | 2026-10-08 | Validazione indipendente: T1 non si distingue da t36; l'ampliamento delle fonti aiuta i lignaggi vicini e costa agli altri | esperimento | — |
 | [0070](0070-t2-centratura-su-tutti-i-bersagli.md) | 2026-10-08 | T2, centratura su tutti i bersagli: valido e sfavorevole a lignaggio escluso | esperimento | — |
-| [0071](0071-corsia-rapida-senza-invio-priorita-alle-reti.md) | 2026-10-09 | Corsia rapida senza invio: T3 pronto negli effetti, t38 non inviato; priorità alle reti | cambio-di-strategia | — |
+| [0071](0071-corsia-rapida-senza-invio-priorita-alle-reti.md) | 2026-10-09 | Corsia rapida senza invio: T3 pronto negli effetti, t38 non inviato; priorità alle reti | cambio-di-strategia | [0074](0074-t38-crispri-piu-ko-punteggio-ufficiale.md), §7: aggiorna lo stato, non le conclusioni; il t38 (td 38) è stato inviato il 9/10 sera |
 | [0072](0072-esm2-ridge-regime-t.md) | 2026-10-09 | ESM2 + ridge nel regime T: un segnale specifico del bersaglio solo sul lignaggio iPSC | esperimento | — |
 | [0073](0073-esm2-ridge-senza-k562-regime-j.md) | 2026-10-09 | ESM2 + ridge senza K562: nel regime J nessun segnale specifico, e togliere K562 non cambia le previsioni | esperimento | — |
 | [0074](0074-t38-crispri-piu-ko-punteggio-ufficiale.md) | 2026-10-09 | t38 (T3: CRISPRi più voti KO): nuovo massimo osservato, non conclusivo contro t36 | esperimento | — |
