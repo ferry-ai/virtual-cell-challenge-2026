@@ -68,7 +68,7 @@ to stop. State, scores and assignments are never written here: they change, and 
 | Change the generator or another stage or module | `scripts/CLAUDE.md` or `src/vcc2026/CLAUDE.md`; the stage's docstring and test; AMBITI §3 for the evidence | submission rules and Colab, unless you then generate a trial |
 | Study a data source, design a predictor | AMBITI §4–5; [`docs/GENERALIZZAZIONE.md`](docs/GENERALIZZAZIONE.md) (scope D-044, leakage); `reports/sorgenti/README.md`; the table of [`docs/STRADE.md`](docs/STRADE.md), then the entries your design relates to (what was tried, why it failed, what would reopen it) | submissions, Colab, agent infrastructure |
 | Read an official score | PROCEDURE §2, point 7; the latest scored checkpoint as a model; `reports/invii/README.md` | bench scores, which are not VCC scores |
-| Prepare, generate or submit a trial | PROCEDURE §1–2; `reports/CLAUDE.md`, "What a submission leaves"; `configs/CLAUDE.md`, and the recipe and stage-45 options of the submission you start from (PROCEDURE §1 names those of t28) | the analyses in `docs/storico/` |
+| Prepare, generate or submit a trial | PROCEDURE §1–2; `reports/CLAUDE.md`, "What a submission leaves"; `configs/CLAUDE.md`, and the recipe and stage-45 options of the submission you start from (PROCEDURE §1 names those of td 28) | the analyses in `docs/storico/` |
 | Prepare or follow a Colab or Kaggle job | PROCEDURE §3; [`docs/ERRORI.md`](docs/ERRORI.md) from "Prima del prossimo job" to "Registro immutabile", and its operational lessons | the job's own log: it syncs only when the job ends |
 | Prepare the final set (D, E, F) | PROCEDURE §7 | |
 | Draw a conclusion, write a report or a checkpoint | ERRORI, "Errori di metodo già commessi" (one table); `reports/CLAUDE.md` or `docs/CLAUDE.md`; when the outcome of a rule is read, the entry of [`docs/STRADE.md`](docs/STRADE.md) it opens or updates, in the same commit as the checkpoint | |
@@ -91,7 +91,9 @@ a due cifre almeno. Nei nuovi testi non usare `tXX` senza autore. I numeri stori
 restano invariati: `t36` di Davide diventa `td 36`, `t36` di Alfredo `ta 36`.
 Ricevute, checkpoint, protocolli congelati e percorsi esistenti conservano i nomi
 originali; citarli con l'alias nuovo e, per gli invii, l'entry ID. La regola completa
-è in [PROCEDURE §2](docs/PROCEDURE.md#2-le-regole-dellinvio).
+è in [PROCEDURE §2](docs/PROCEDURE.md#2-le-regole-dellinvio). Nei testi di main scritti
+prima del 10/10 un `tXX` senza autore è di Davide; la mappa dei candidati dei due autori,
+con entry ID, stato e provenienza, è in [`reports/invii/README.md`](reports/invii/README.md#nomi-td-e-ta-mappa-dei-candidati).
 
 **Evidence.** This repository was built quickly by agents; its failure mode is confident prose
 outrunning what was measured.

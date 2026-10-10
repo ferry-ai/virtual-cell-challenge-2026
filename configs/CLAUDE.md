@@ -4,7 +4,7 @@
 |---|---|---|
 | `configs/config.yaml` | the data root and the challenge's constants: contexts, cells, caps | `src/vcc2026/config.py`, so every stage |
 | `configs/trials.yaml` | the stage-45 trial, `trial-ext-profile`, and its defaults, seed 20260912 included | `src/vcc2026/trials.py`, for stage 45 |
-| `configs/recipes/t<NN>.json` | the recipe of submission tNN: sources, weights and amplitude, per context | stage 100 |
+| `configs/recipes/t<NN>.json` | the recipe of submission tNN: sources, weights and amplitude, per context. The files here are Davide's (`td NN`); a new recipe is named `td<NN>.json` or `ta<NN>.json` after its author (D-058, `docs/PROCEDURE.md` §2) | stage 100 |
 
 - **A recipe is written before its generation**, with the prediction it is judged by
   (`docs/PROCEDURE.md` §2). Once stage 100 has run on it, it is never edited: its content and

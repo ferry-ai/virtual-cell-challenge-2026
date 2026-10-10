@@ -20,8 +20,8 @@ esperimento; il codice ritirato si recupera tramite [ARCHIVIO](ARCHIVIO.md).
 ## 1. Il percorso di un invio
 
 Il percorso si ricostruisce dai manifest del riferimento scelto: ricetta, cache, effetti,
-generatore, scala e seed sono tutti parte del candidato. R-LEAD distingue replica t22,
-stimatore corretto t25 e variante di emissione t28; il numero più recente non è il default.
+generatore, scala e seed sono tutti parte del candidato. R-LEAD distingue replica td 22,
+stimatore corretto td 25 e variante di emissione td 28; il numero più recente non è il default.
 
 ```
 sorgenti: bulk K562 · 97 CD4 · 102 Orion ──▶ 98  cache degli effetti per sorgente
@@ -63,8 +63,11 @@ la scelta dei quantili, la convergenza e gli eventuali limiti applicati ai conte
 Implementazione e prove: `reports/analisi/lead_scientist_2026-09-29/`; l'esistenza di queste
 opzioni non ne dimostra un vantaggio sul punteggio.
 
-Il t28, massimo osservato, è la ricetta del t25 generata con `--effects-scale 1.5` e
-`--gene-dispersion` alla scala 1, su Colab. Le opzioni sono registrate nella sua previsione
+Il td 28 (storico t28), massimo osservato fino al td 36 (6/10), è la ricetta del td 25 generata con
+`--effects-scale 1.5` e `--gene-dispersion` alla scala 1, su Colab. La stessa emissione è registrata
+nelle previsioni di td 36, td 38 e td 39 (blocco `emission` o `generator` del loro `prediction.json`);
+il massimo osservato e il riferimento correnti sono in [PROGETTO §0](PROGETTO.md). Le opzioni del td 28
+sono registrate nella sua previsione
 (`reports/invii/prediction_t28_2026-09-29/prediction.json`) e nel manifest dello stadio 45
 (`reports/invii/trial_2026-09-29/t28_manifest_45_generate_prediction.json`); il job è
 `reports/analisi/lead_scientist_2026-09-29/candidate_generation_remote/recovery_r2/079_lead_t28_generate_r2.sh`.
@@ -87,6 +90,12 @@ artefatti storici: non rinominare file o directory già esistenti, né riscriver
 ricevute ufficiali, checkpoint o previsioni congelate. Nei nuovi riferimenti riportare
 l'alias canonico insieme al percorso storico e all'entry ID quando disponibile.
 La distinzione riguarda l'autore del candidato, non l'agente o il runtime che lo esegue.
+La corrispondenza fra nomi storici e nomi nuovi dei due autori, con entry ID, stato verificato
+e provenienza, sta nella [mappa td/ta](../reports/invii/README.md#nomi-td-e-ta-mappa-dei-candidati)
+dell'indice degli invii; lì anche le collisioni ancora aperte (stesso percorso, stessi numeri di
+checkpoint). Le regole sui nomi delle cartelle (`reports/CLAUDE.md`) e sui numeri dei checkpoint
+valgono anche fra branch: su un branch separato nome e numero si controllano su `origin/main` prima
+di crearli.
 
 Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
 
@@ -132,7 +141,8 @@ Ognuna è costata qualcosa. Le date sono quelle in cui è stata pagata.
    ([CP-0037](checkpoints/0037-t16-ampiezza-quadrupla.md)).
 7. **Dopo il punteggio**, questa è la lista completa:
    - `comparison.json` accanto alla previsione, con i sei scalati pubblicati e la regola applicata;
-   - una riga nella tabella dei punteggi di `reports/invii/README.md`, la loro sede unica;
+   - una riga nella tabella dei punteggi di `reports/invii/README.md`, la loro sede unica, e lo
+     stato aggiornato del candidato nella mappa td/ta dello stesso file;
    - un checkpoint (`python scripts/30_new_checkpoint.py`);
    - il §0 di [PROGETTO](PROGETTO.md) se cambiano il massimo osservato, il riferimento o la
      direzione, e la sezione 2 di [AMBITI](AMBITI.md).

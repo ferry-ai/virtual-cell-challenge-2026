@@ -16,7 +16,7 @@ After a run, link its evidence from the relevant plan card; keep the report immu
   | Category | Question |
   |---|---|
   | `gara/` | what the scorer, the anchors, the leaderboard or the A/B/C controls say |
-  | `invii/` | what we submitted and how it scored (`prediction_t<NN>_<data>/`, `trial_<data>/`) |
+  | `invii/` | what was submitted and how it scored (`prediction_t<NN>_<data>/`, `trial_<data>/`; new candidates carry the author, `td<NN>` or `ta<NN>`, D-058) |
   | `sorgenti/` | what a source contains and how its effects are estimated |
   | `trasferimento/` | whether a variant of the production recipe helps, on held-out sources |
   | `modelli/` | whether a model learned over many contexts generalises |
@@ -48,6 +48,12 @@ After a run, link its evidence from the relevant plan card; keep the report immu
 - **A path you cite** goes as `reports/<categoria>/<cartella>/…` from now on.
 
 ## What a submission leaves here
+
+Names follow D-058 (`docs/PROCEDURE.md` §2): a new candidate is `td<NN>` (Davide) or `ta<NN>`
+(Alfredo) in folder and file names, so `t<NN>` below reads `td<NN>` or `ta<NN>` for a new
+candidate. The `t<NN>` folders already on main keep their names and are Davide's; which
+historical name is which candidate, with entry IDs, is the map in `reports/invii/README.md`
+("Nomi td e ta").
 
 Registered before generating, because the threshold does not move after the score
 (CP-0030):

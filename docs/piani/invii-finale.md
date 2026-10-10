@@ -1,7 +1,11 @@
 # S-INVII — presidio della consegna finale
 
-- **Stato:** aperto; t29 valutato e letto, nessun invio avviato dal rinnovo.
-- **Aggiornato:** 1 ottobre 2026, dopo t29.
+- **Stato:** aperto. Dopo il rinnovo dell'1/10 sono stati fatti altri invii, di Davide (td) e di
+  Alfredo (ta): elenco, entry e stato verificato nella [mappa td/ta](../../reports/invii/README.md#nomi-td-e-ta-mappa-dei-candidati).
+  Questa scheda non ne tiene lo stato.
+- **Aggiornato:** 10 ottobre 2026, riordino documentale D-058: corretta la riga di stato dell'1/10
+  («t29 valutato e letto, nessun invio avviato dal rinnovo»), smentita dalle ricevute; prossimo
+  passo, dipendenze e chiusura invariati.
 - **Assegnazione:** invii precedenti seguiti da Claude e Codex nelle sessioni registrate
   nelle ricevute; nuova sessione da registrare prima di operare. Agenti confermati fermi.
 - **Prossimo passo:** prova generale a forma piena con il riferimento, azione 3 di
@@ -12,10 +16,10 @@
 ## Stato e decisioni
 
 Gli esiti e i pacchetti conservati sono nell'[indice degli invii](../../reports/invii/README.md).
-Una vecchia previsione o un t27 pronto non costituiscono una coda di invio.
+Una vecchia previsione o un td 27 pronto non costituiscono una coda di invio.
 Il riferimento e il massimo osservato sono in [PROGETTO §0](../PROGETTO.md).
 
-Il ramo c di t29 richiede un banco a sei membri almeno al livello del transfer prima
+Il ramo c di td 29 richiede un banco a sei membri almeno al livello del transfer prima
 di un nuovo invio neurale ([CP-0055](../checkpoints/0055-t29-rete-cellulare-punteggio.md)).
 La scadenza finale resta il 5 novembre, con rilascio D/E/F il 22 ottobre.
 

@@ -10,7 +10,8 @@ short extract that names its home. Read the row you need, not the whole folder.
 | Information | Home | Updated when |
 |---|---|---|
 | Current state and general direction | `docs/PROGETTO.md` §0 | after every scored submission, and when the direction changes |
-| Official scores, one row per submission, with the outcome of its registered rule | `reports/invii/README.md` | after every score, with `comparison.json` and a checkpoint; PROGETTO §0 keeps only the best observed and the reference recipe |
+| Official scores, one row per submission of either author, with the outcome of its registered rule | `reports/invii/README.md` | after every score, with `comparison.json` and a checkpoint; PROGETTO §0 keeps only the best observed and the reference recipe |
+| Names `td XX` and `ta XX` (D-058): historical name, entry ID, verified state and provenance of every candidate since 1 October | `reports/invii/README.md`, "Nomi td e ta" | when a candidate is registered, generated, submitted or scored, and when an author's branch is read again or integrated |
 | State, first reads and evidence of one area of the work | `docs/AMBITI.md`, that area's section | in the same commit as the evidence that changes it (D-048) |
 | What the project knows, does not know, and its known weaknesses | `docs/PROGETTO.md` §3–§5 | when a result changes a conclusion |
 | Priorities and dependencies between plans | `docs/PIANI.md` §2 | when a priority changes |

@@ -2,7 +2,7 @@
 
 Questa pagina integra il [prompt unico per Claude](PROMPT_CLAUDE.md) e il
 [piano R-LEAD](piani/strategia-scientifica.md) soltanto per il trasferimento di ambiente.
-Il t29 è concluso. Non esiste qui una seconda coda di training o invii.
+Il td 29 è concluso. Non esiste qui una seconda coda di training o invii.
 
 ## Git e presa in carico
 
@@ -15,6 +15,13 @@ con quello comunicato dal proprietario; nessun push futuro è implicito in quest
 Nel clone separato usare un branch di lavoro `codex/teammate-rlead`, registrando la presa
 in carico in R-LEAD. Claude e teammate erano fermi al rinnovo; coordinare eventuali riprese
 successive per non eseguire due versioni sugli stessi file o sulla stessa quota.
+
+I candidati di Alfredo si chiamano `ta XX`, anche nei nomi tecnici (`taXX`), e quelli già
+fatti su questo branch tengono il loro numero: ta 30, ta 31, ta 34–ta 39
+([D-058](PROCEDURE.md#2-le-regole-dellinvio), [mappa](../reports/invii/README.md#nomi-td-e-ta-mappa-dei-candidati)).
+Nomi di cartelle e numeri di checkpoint si controllano su `origin/main` prima di crearli: dal 3 al
+6 ottobre lo stesso `reports/invii/prediction_t36_2026-10-06/` e i CP-0056–CP-0058 sono nati con
+contenuti diversi sui due branch.
 
 ## Runtime e percorsi
 

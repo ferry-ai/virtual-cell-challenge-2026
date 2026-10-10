@@ -12,6 +12,7 @@ seguire i «prossimi passi» datati come ordini attuali.
 
 | Domanda | Fonte |
 |---|---|
+| Quali invii esistono, di chi sono e come sono andati? | [invii](invii/README.md): punteggi ufficiali di Davide (td) e di Alfredo (ta), e la [mappa dei nomi](invii/README.md#nomi-td-e-ta-mappa-dei-candidati) con entry ID, stato e provenienza (D-058) |
 | Che cosa ha bocciato t29? | [CP-0055](../docs/checkpoints/0055-t29-rete-cellulare-punteggio.md) e [invii](invii/README.md): candidato r2 `desc`, banco a sei membri richiesto prima del prossimo invio neurale |
 | Quali difetti riprodurre? | [Nota training](analisi/lead_audit_2026-10-01/NOTA_TRAINING.md) e [diagnosi r3](analisi/lead_audit_2026-10-01/AGGIORNAMENTO_R3.md): split, pesi, controlli, baseline e gate |
 | Quali risultati e input esistono? | [Modelli](modelli/README.md) e [sorgenti](sorgenti/README.md): esiti tecnici distinti da promozioni; disponibilità pesante da verificare |

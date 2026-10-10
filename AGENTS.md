@@ -12,5 +12,9 @@ in full: read it before anything else, then only what its task table names for y
 linee e i contesti idonei (D-053), con la verifica dell'uso effettivo e le esclusioni di
 validazione definite in [GENERALIZZAZIONE §2.1](docs/GENERALIZZAZIONE.md#21-copertura-integrale-vincolo-non-negoziabile).
 
+**Nomi dei candidati (D-058):** `td XX` per Davide, `ta XX` per Alfredo, anche nei nomi tecnici
+(`tdXX`, `taXX`); regola in `CLAUDE.md` e [PROCEDURE §2](docs/PROCEDURE.md#2-le-regole-dellinvio),
+nomi storici e collisioni nella [mappa](reports/invii/README.md#nomi-td-e-ta-mappa-dei-candidati).
+
 Codex does not load the folder guides by itself: before editing a file in `configs/`,
 `src/vcc2026/`, `scripts/`, `docs/`, `docs/piani/` or `reports/`, read that folder's `CLAUDE.md`.
