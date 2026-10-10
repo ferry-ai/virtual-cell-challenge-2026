@@ -97,6 +97,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/modelli/rete_ponte_jepa_2026-10-09/` | attuale | — | Rete ponte JEPA + SIGReg sul transfer `all`: protocollo e tre emendamenti registrati prima dei numeri, codice, esito sul banco del cubo (regola non passa per H1; insieme +0,05 di coseno), esportazione A/B/C; ablazione della parte JEPA registrata prima dei numeri | — |
 | `reports/invii/prediction_t39_2026-10-09/` | attuale | — | Previsione e regola del t39 (rete ponte), registrate prima di ogni caricamento | — |
 | `reports/invii/trial_rlead_2026-10-09/` | attuale | — | t39: generazione, pacchetto, ricevute e stato finale (0,140816, ramo b) | — |
+| `reports/invii/nomenclatura_2026-10-10/` | attuale | — | Tabella autore·nome·entry degli invii t36–t39 di Davide e di Alfredo, con l'aggiornamento delle letture | — |
 | `reports/invii/prediction_t39_2026-10-09/comparison.json` | attuale | — | Lettura del t39 con la regola registrata: ramo b, −0,0040 sul t28 | — |
 | `reports/invii/prediction_t36_2026-10-06/comparison.json` | attuale | — | Lettura del t36 con la regola registrata: ramo b, −0,0035 sul t28 | — |
 | `reports/sorgenti/pooling_esatto_2026-10-06/` | attuale | — | Pooling esatto dello stadio 98 per la banca estesa (prima dello shrinkage, come `effects_from_pseudobulk`): modulo che chiama la funzione originale, scorciatoia esatta per donatori disgiunti, confronto di tabelle e cinque fixture sintetiche | — |

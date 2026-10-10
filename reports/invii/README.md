@@ -52,6 +52,7 @@ pronto dal proprietario), t09 e t13 (fermati dalle loro regole), t21 (la sua pre
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 10/10 | [nomenclatura_2026-10-10/](nomenclatura_2026-10-10/) | Riconciliazione dei numeri t36–t39 usati due volte (main di Davide e branch di Alfredo): citazione autore·nome·entry, nomi storici preservati; il riferimento del team diventa `Davide·t38` 0,148922, lo 0,1472 è `Davide·t36` | riconciliazione, non una misura | ★★ |
 | 09/10 | [prediction_t39_2026-10-09/](prediction_t39_2026-10-09/) | t39 = la rete ponte (insieme di 10 semi, [ESITO](../modelli/rete_ponte_jepa_2026-10-09/ESITO.md)) con la norma di `all` per bersaglio e l'emissione del t28: banda t39 − t28 −0,010…+0,020, centro +0,003, regola a ±0,005; registrata prima di ogni caricamento | pubblicato; ramo b (−0,0040 sul t28) | ★★ |
 | 09/10 | [trial_rlead_2026-10-09/](trial_rlead_2026-10-09/) | t39: generazione e pacchetto pronti (validatore superato, sha256 `0f02d1d0…`), testi, ricevute di caricamento (via del proprietario il 10/10) e stato finale dell'entry `oeRXw89O1hefFsdCwifD` (published, 0,140816) | sì; t39 pubblicato | ★ |
 | 07/10 | [prediction_t38_2026-10-07/](prediction_t38_2026-10-07/) | t38 = t36 con il solo `--effects-scale` 1,5 → 1,0 (dispersione per gene accesa): verifica se fedeltà e reach del t28 vengono dalla dispersione e la perdita di nMAE dall'ampiezza; banda t38 − t36 −0,012…+0,015, centro +0,002, regola a ±0,005, registrata prima della generazione | pubblicato; ramo c (−0,0103 sul t36) | ★★ |
