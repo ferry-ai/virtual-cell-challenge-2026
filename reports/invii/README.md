@@ -52,6 +52,8 @@ pronto dal proprietario), t09 e t13 (fermati dalle loro regole), t21 (la sua pre
 
 | Data | Cartella | Nocciolo | Vale? | Peso oggi |
 |---|---|---|---|---|
+| 12/10 | [prediction_t40_2026-10-12/](prediction_t40_2026-10-12/) | `Alfredo·t40` = la rete ponte del t39 con il residuo centrato sul pannello (verifica dell'ipotesi della risposta comune lasciata aperta da ESITO_T39): banda t40 − t39 −0,006…+0,012, centro +0,003, regola a ±0,005 sul t39; registrata prima di generare | in corso | ★★ |
+| 12/10 | [trial_rlead_2026-10-12/](trial_rlead_2026-10-12/) | t40: testi e script di caricamento (via del proprietario in chat il 12/10); generazione, pacchetto e ricevute man mano | in corso | ★ |
 | 10/10 | [nomenclatura_2026-10-10/](nomenclatura_2026-10-10/) | Riconciliazione dei numeri t36–t39 usati due volte (main di Davide e branch di Alfredo): citazione autore·nome·entry, nomi storici preservati; il riferimento del team diventa `Davide·t38` 0,148922, lo 0,1472 è `Davide·t36` | riconciliazione, non una misura | ★★ |
 | 09/10 | [prediction_t39_2026-10-09/](prediction_t39_2026-10-09/) | t39 = la rete ponte (insieme di 10 semi, [ESITO](../modelli/rete_ponte_jepa_2026-10-09/ESITO.md)) con la norma di `all` per bersaglio e l'emissione del t28: banda t39 − t28 −0,010…+0,020, centro +0,003, regola a ±0,005; registrata prima di ogni caricamento | pubblicato; ramo b (−0,0040 sul t28) | ★★ |
 | 09/10 | [trial_rlead_2026-10-09/](trial_rlead_2026-10-09/) | t39: generazione e pacchetto pronti (validatore superato, sha256 `0f02d1d0…`), testi, ricevute di caricamento (via del proprietario il 10/10) e stato finale dell'entry `oeRXw89O1hefFsdCwifD` (published, 0,140816) | sì; t39 pubblicato | ★ |

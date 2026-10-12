@@ -1,0 +1,25 @@
+{
+  "written_utc": "registered by the commit that adds this file: 12/10 ~19:45 UTC, after the A/B/C export of the centred network started and before stage 45, any upload and any site score",
+  "citation": "Alfredo·t40·<entry> (naming of reports/invii/nomenclatura_2026-10-10)",
+  "label": "t40: centred bridge network. Same ensemble as Alfredo·t39 (10 seeds 2-11 fitted on all ten cube groups, conditioned on each context's official controls), but the low-rank residual U r is centred over the 300 panel targets of each context (arm rete_centrata of EMENDAMENTO_R2), then each target rescaled to the norm of the all export x 1.576; t28 emission (effects-scale 1.5, gene dispersion 1.0, seed 20260912). Against Alfredo·t39 only the centring changes.",
+  "status": "owner's request in chat on 12/10 ('sperimenta un po' ... mettiamo qualcosa a gradare sul sito (scadenza alle due nella nostra fascia oraria)'): the go for one upload today",
+  "why_this_one": "ESITO_T39 (reports/analisi/prove_per_davide_2026-10-07/ESITO_T39.md) left one open check: t39 lost the PDS member (-0.055 scaled vs t28, -0.023 vs t36) and the most likely cause is the common response the residual adds (about 1% of the site's energy, 2-31% on the cube lines). Centring removes it using predictions only. It is the clean site test of that hypothesis.",
+  "ceiling_note": "small by construction (impact criterion): the realistic best is about +0.01 over t39, i.e. ~0.151, just above Davide·t38 (0.148922). It is chosen because it is the only learned candidate that can be built, generated and uploaded inside today's window and that answers a registered question.",
+  "evidence_before": {
+    "bench": "rete_ponte_jepa_2026-10-09/ESITO.md: centring takes a quarter to a third of the cube cosine gain (r3 +0.050 -> +0.033, r4 +0.046 -> +0.034); centred, the K562 PDS improves, H1's does not; the bench overestimates the site PDS in five cases out of five",
+    "site": "t39 members vs t36: PDS -0.023 scaled, fidelity +0.019, nMAE +0.002; raw PDS cosine 0.781 (t28), 0.767 (t36), 0.757 (t39)"
+  },
+  "references": {"t39": 0.140816, "t36": 0.1413918045155937, "t28": 0.14484520500645978, "Davide·t38": 0.148922},
+  "expected": {
+    "t40_minus_t39_band": [-0.006, 0.012],
+    "centre": 0.003,
+    "members": "scaled PDS up vs t39 (probability 0.65), between 0 and +0.03; fidelity and nMAE within +-0.01 of t39; scaled MSE stays 0"
+  },
+  "rule": {
+    "a": "t40 - t39 >= +0.005: the common-response hypothesis is supported on the site; the centred network replaces t39 as our network, and the next step is the same centring on top of the extended bank (with Davide)",
+    "b": "|t40 - t39| < 0.005: not conclusive; centring does not explain the t39 loss at a measurable scale",
+    "c": "t40 - t39 <= -0.005: the hypothesis falls: the common part of the residual was not what cost t39 on the site",
+    "also_reported": "the six scaled members against t39, t36 and t28; t40 against Davide·t38 (0.148922) as a non-registered comparison",
+    "not": "one seed of the generator; nothing direct about D, E, F"
+  }
+}
