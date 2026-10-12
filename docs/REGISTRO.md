@@ -99,9 +99,9 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/invii/trial_rlead_2026-10-09/` | attuale | — | t39: generazione, pacchetto, ricevute e stato finale (0,140816, ramo b) | — |
 | `reports/invii/nomenclatura_2026-10-10/` | attuale | — | Tabella autore·nome·entry degli invii t36–t39 di Davide e di Alfredo, con l'aggiornamento delle letture | — |
 | `reports/invii/prediction_t39_2026-10-09/comparison.json` | attuale | — | Lettura del t39 con la regola registrata: ramo b, −0,0040 sul t28 | — |
-| `reports/modelli/rete_centrata_2026-10-12/` | attuale | — | Rete ponte centrata sul pannello (t40): piano a tappe, script di esportazione con `--centrata` | — |
-| `reports/invii/prediction_t40_2026-10-12/` | attuale | — | Previsione e regola del t40 (rete centrata) contro il t39, registrate prima di generare | — |
-| `reports/invii/trial_rlead_2026-10-12/` | attuale | — | t40: testi, script, generazione, pacchetto e ricevute | — |
+| `reports/modelli/rete_centrata_2026-10-12/` | attuale | — | Rete ponte centrata sul pannello (`ta 40`): piano a tappe, script di esportazione con `--centrata` | — |
+| `reports/invii/prediction_ta40_2026-10-12/` | attuale | — | Previsione e regola di `ta 40` (rete centrata, registrata come t40) contro `ta 39`, registrate prima di generare; nomi in NOMI.md | — |
+| `reports/invii/trial_rlead_2026-10-12/` | attuale | — | `ta 40`: testi, script, generazione, pacchetto e ricevute | — |
 | `reports/invii/prediction_t36_2026-10-06/comparison.json` | attuale | — | Lettura del t36 con la regola registrata: ramo b, −0,0035 sul t28 | — |
 | `reports/sorgenti/pooling_esatto_2026-10-06/` | attuale | — | Pooling esatto dello stadio 98 per la banca estesa (prima dello shrinkage, come `effects_from_pseudobulk`): modulo che chiama la funzione originale, scorciatoia esatta per donatori disgiunti, confronto di tabelle e cinque fixture sintetiche | — |
 | `reports/modelli/guadagno_appreso_2026-10-05/` | attuale | — | Stadio 1 del guadagno appreso sul transfer `all` (protocollo registrato prima, codice, esito: non passa) e tre diagnostiche a posteriori sul cubo r2 (tetto nella stessa linea, pesi oracolo dei gruppi, curva del coseno contro il numero di linee sorgente) con le proposte per la mole di dati Kaggle | — |

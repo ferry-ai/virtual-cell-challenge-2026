@@ -1,6 +1,6 @@
-"""Reader of the t40 official result by the rule registered in prediction.json, written before the score is known.
+"""Reader of the ta 40 official result (registered as t40 before D-058 reached this branch) by the rule registered in prediction.json, written before the score is known.
 
-    python leggi_t40.py <t40 vcc json>   -> writes comparison.json next to this file (never overwrites)
+    python leggi_ta40.py <ta 40 vcc json>   -> writes comparison.json next to this file (never overwrites)
 Registered rule against Alfredo·t39 (reports/invii/trial_rlead_2026-10-09/status_oeRXw89O1hefFsdCwifD.json); t36 is read
 from this branch, t28 from main, Davide·t38 as a number (its receipt is not on GitHub yet).
 """
@@ -42,7 +42,7 @@ def main() -> None:
         raise SystemExit("comparison.json exists: never overwrite")
     t40 = entry_text(Path(sys.argv[1]).read_text(encoding="utf-8-sig"))
     if t40.get("status") != "published" or t40.get("score_avg") is None:
-        raise SystemExit(f"t40 not scored yet: {t40.get('status')}")
+        raise SystemExit(f"ta 40 not scored yet: {t40.get('status')}")
     t39 = entry_text(T39.read_text(encoding="utf-8-sig"))
     t36 = entry_text(T36.read_text(encoding="utf-8-sig"))
     t28 = entry_text(subprocess.run(["git", "show", T28], capture_output=True, text=True, check=True,
@@ -51,14 +51,14 @@ def main() -> None:
     branch = "a" if d >= 0.005 else ("c" if d <= -0.005 else "b")
     rec = {"written_utc": datetime.now(timezone.utc).isoformat(), "entry_id": t40.get("entry_id"),
            "score_avg": t40["score_avg"], "rank": t40.get("rank"),
-           "t39": t39["score_avg"], "t40_minus_t39": d, "rule_branch": branch,
+           "ta39": t39["score_avg"], "ta40_minus_ta39": d, "rule_branch": branch,
            "inside_band": -0.006 <= d <= 0.012, "registered_centre": 0.003,
-           "pds_up_vs_t39": (t40.get("score_pds") or 0) > (t39.get("score_pds") or 0),
-           "t36": t36["score_avg"], "t28": t28["score_avg"], "t40_minus_t28": t40["score_avg"] - t28["score_avg"],
-           "Davide_t38": DAVIDE_T38, "t40_minus_Davide_t38": t40["score_avg"] - DAVIDE_T38,
-           "scaled_t40_vs_t39": members(t40, t39), "scaled_t40_vs_t36": members(t40, t36),
-           "scaled_t40_vs_t28": members(t40, t28),
-           "raw": {k: [t40.get(k), t39.get(k), t36.get(k), t28.get(k)] for k in RAW}}
+           "pds_up_vs_ta39": (t40.get("score_pds") or 0) > (t39.get("score_pds") or 0),
+           "ta36": t36["score_avg"], "td28": t28["score_avg"], "ta40_minus_td28": t40["score_avg"] - t28["score_avg"],
+           "td38": DAVIDE_T38, "ta40_minus_td38": t40["score_avg"] - DAVIDE_T38,
+           "scaled_ta40_vs_ta39": members(t40, t39), "scaled_ta40_vs_ta36": members(t40, t36),
+           "scaled_ta40_vs_td28": members(t40, t28),
+           "raw_ta40_ta39_ta36_td28": {k: [t40.get(k), t39.get(k), t36.get(k), t28.get(k)] for k in RAW}}
     out.write_text(json.dumps(rec, indent=1), encoding="utf-8")
     print(json.dumps(rec, indent=1))
 
