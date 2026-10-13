@@ -104,6 +104,9 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/invii/trial_rlead_2026-10-12/` | attuale | — | `ta 40`: testi, script, generazione, pacchetto, ricevute e stato finale (0,146722, ramo a) | — |
 | `reports/invii/prediction_ta40_2026-10-12/comparison.json` | attuale | — | Lettura di `ta 40` con la regola registrata: ramo a, +0,0059 su `ta 39` | — |
 | `reports/modelli/rete_centrata_2026-10-12/ESITO.md` | attuale | — | Esito di `ta 40` sul sito: la risposta comune spiegava la perdita di PDS del `ta 39`; proposte per Davide | — |
+| `reports/generatore_e_banchi/budget_chiamate_2026-10-13/` | attuale | — | Otto prove sul banco del cubo sul margine del punteggio (chiamate, denoising, deflazione, ampiezza, tetto, concordanza, sorgenti affini, inverso della varianza) e gli script di esportazione; origine di `ta 41` | — |
+| `reports/invii/prediction_ta41_2026-10-13/` | attuale | — | Previsione e regola di `ta 41` (tetto sulle magnitudini) contro `ta 40`, registrate prima di generare | — |
+| `reports/invii/trial_rlead_2026-10-13/` | attuale | — | `ta 41`: testi, script, generazione, pacchetto e ricevute | — |
 | `reports/invii/prediction_t36_2026-10-06/comparison.json` | attuale | — | Lettura del t36 con la regola registrata: ramo b, −0,0035 sul t28 | — |
 | `reports/sorgenti/pooling_esatto_2026-10-06/` | attuale | — | Pooling esatto dello stadio 98 per la banca estesa (prima dello shrinkage, come `effects_from_pseudobulk`): modulo che chiama la funzione originale, scorciatoia esatta per donatori disgiunti, confronto di tabelle e cinque fixture sintetiche | — |
 | `reports/modelli/guadagno_appreso_2026-10-05/` | attuale | — | Stadio 1 del guadagno appreso sul transfer `all` (protocollo registrato prima, codice, esito: non passa) e tre diagnostiche a posteriori sul cubo r2 (tetto nella stessa linea, pesi oracolo dei gruppi, curva del coseno contro il numero di linee sorgente) con le proposte per la mole di dati Kaggle | — |

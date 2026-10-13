@@ -1,0 +1,24 @@
+{
+  "written_utc": "registered by the commit that adds this file: 13/10 ~21:45 UTC, after the cube benches of reports/generatore_e_banchi/budget_chiamate_2026-10-13 and the A/B/C export, before stage 45, any upload and any site score",
+  "citation": "ta 41 (D-058), entry to be assigned at upload",
+  "label": "ta 41: ta 40 (centred bridge network, entry D4DVVnBo4I3xn2aU59eN) with every emitted effect magnitude capped at |lfc x 1.5| <= 1.0 (the target's own gene untouched); same targets, genes, signs, observed mask and t28 emission (effects-scale 1.5, gene dispersion 1.0, seed 20260912). Against ta 40 only the cap changes: a median of 26-28 genes per target are clipped, cosine with ta 40 0.988.",
+  "status": "owner's request in chat on 13/10 ('trovare qualcosa di perseguibile e che abbia senso per te. Elugubra e poi mandala direttamente a gradare se funziona o no poi lo valutiamo noi'): the go for one upload",
+  "why_this_one": "Eight bench experiments tonight (budget_chiamate_2026-10-13/README.md): sparsifying the calls, low-rank denoising, deflating shared programmes, per-target amplitude, confidence weighting, context-matched sources and inverse-variance pooling all lose on the cube; the global amplitude bench reproduces the site's 1.0 -> 1.5 signs (fidelity up, nMAE worse by +0.026 vs +0.027 on the site) and predicts 2.0 to lose. The cap is the only arm with a positive expected value: it removes the large wrong-sign values that cost nMAE while every called gene stays called (fidelity, Jaccard and the reach proxy unchanged on the bench).",
+  "ceiling_note": "small by construction: expected about +0.002, the size of the seed noise (t24 - t22 = +0.0016). Sent because the owner asked for a graded attempt tonight; its member-level reading (nMAE vs PDS) calibrates the bench for magnitudes.",
+  "evidence_before": {
+    "bench_cap_1.0_vs_dense": "nMAE proxy 0.970 -> 0.957, PDS index 0.780 -> 0.775, cosine 0.202 -> 0.203, fidelity/Jaccard identical, reach proxy 0.138 -> 0.137 (mean over the five held-out lines)",
+    "site_conversion": "nMAE span 0.608 and PDS span 0.447 (anchors.json): +0.013/0.608/6 - 0.005/0.447/6 = +0.0017"
+  },
+  "references": {"ta40": 0.14672213180227112, "ta39": 0.140816, "td28": 0.14484520500645978, "td38": 0.148922},
+  "expected": {
+    "ta41_minus_ta40_band": [-0.004, 0.006],
+    "centre": 0.002,
+    "members": "nMAE scaled up (+0.01..+0.03); PDS scaled down (0..-0.02); fidelity, Jaccard and reach within +-0.005; MSE 0"
+  },
+  "rule": {
+    "a": "ta41 - ta40 >= +0.005: the cap helps beyond the bench's estimate; keep it for the final",
+    "b": "|ta41 - ta40| < 0.005: not conclusive at the total; read the nMAE and PDS members against the bench's +0.021 / -0.012 scaled",
+    "c": "ta41 - ta40 <= -0.005: the site's PDS is more sensitive to magnitudes than the bench; no cap",
+    "not": "one seed of the generator; nothing direct about D, E, F"
+  }
+}
