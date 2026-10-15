@@ -1,0 +1,22 @@
+{
+  "written_utc": "registered by the commit that adds this file: 15/10 ~22:35 UTC (16/10 00:35 CEST), after the A/B/C export, before stage 45, any upload and any site score",
+  "citation": "ta 43 (D-058), entry to be assigned at upload",
+  "label": "ta 43: ta 42's recipe with weight 0.5 instead of 0.7: 0.5 x T3 / |T3| + 0.5 x ta40 / |ta40| on the genes both cover, rescaled to T3's norm; genes only T3 covers keep T3's value; T3 = td 38's effects (sha256 b8c61f6d...); same emission (effects-scale 1.5, gene dispersion 1.0, seed 20260912). Against ta 42 only the weight changes: cosine with T3 0.85, with ta 40 0.85.",
+  "status": "owner in chat on 16/10: 'scegli un candidato ... e gradalo (spostati coraggiosamente se lo ritieni necessario) e proviamo a capire perche abbiamo sottostimato'",
+  "two_registered_readings": {
+    "site_curve": "a parabola through the three site points on the weight line (w = 0: ta 40 0.146722; w = 0.7: ta 42 0.159396; w = 1: td 38 0.148922) peaks at w = 0.52 and gives ta43 - ta42 = +0.0017; the w = 0 point has 0.68 times T3's norm (DE members lower), so the true optimum is, if anything, at a lower w",
+    "fold_bench": "reports/modelli/miscela_pesi_esm2_2026-10-16: ens_0.5 - ens_0.7 = PDS index -0.0064, cosine +0.0031 (mean of four folds); the bench under-predicted ta 42's site gain (+0.012 index predicted, +0.064 PDS scaled observed)"
+  },
+  "references": {"ta42": 0.15939556227302187, "td38": 0.148922, "ta40": 0.14672213180227112},
+  "expected": {
+    "ta43_minus_ta42_band": [-0.006, 0.006],
+    "centre": 0.0015,
+    "members": "PDS within +-0.02 scaled of ta 42; DE members within +-0.01"
+  },
+  "rule": {
+    "a": "ta43 - ta42 >= +0.005: the site rewards our network more than the bench does; the weight for the final moves to 0.5 or below",
+    "b": "|ta43 - ta42| < 0.005: not conclusive at the total; the sign is read as a weak vote: > 0 for the site curve, < 0 for the bench",
+    "c": "ta43 - ta42 <= -0.005: the bench is right about the weight; 0.7 stays",
+    "not": "one seed of the generator (seed noise about 0.0016); nothing direct about D, E, F"
+  }
+}

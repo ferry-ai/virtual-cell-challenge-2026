@@ -117,6 +117,8 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/modelli/miscela_rs_2026-10-15/` | attuale | — | RSB di Davide come terzo ingrediente della miscela: protocollo e regola prima dei numeri, codice, esito (non passa) | — |
 | `reports/modelli/miscela_pesi_esm2_2026-10-16/` | attuale | — | Peso della miscela ed ESM2 come terzo ingrediente: protocollo e regole prima dei numeri, codice, esito (non passano) | — |
 | `reports/analisi/banca_estesa_copertura_2026-10-16/` | attuale | — | Copertura del pannello nella banca estesa di Davide e correlazioni sui fold: tetto del riaddestramento della rete sulla banca | — |
+| `reports/invii/prediction_ta43_2026-10-16/` | attuale | — | Previsione e regola di `ta 43` (miscela col peso 0,5) contro `ta 42`, registrate prima di generare | — |
+| `reports/invii/trial_rlead_2026-10-16/` | attuale | — | `ta 43`: testi, script, generazione, pacchetto e ricevute | — |
 | `reports/invii/prediction_t36_2026-10-06/comparison.json` | attuale | — | Lettura del t36 con la regola registrata: ramo b, −0,0035 sul t28 | — |
 | `reports/sorgenti/pooling_esatto_2026-10-06/` | attuale | — | Pooling esatto dello stadio 98 per la banca estesa (prima dello shrinkage, come `effects_from_pseudobulk`): modulo che chiama la funzione originale, scorciatoia esatta per donatori disgiunti, confronto di tabelle e cinque fixture sintetiche | — |
 | `reports/modelli/guadagno_appreso_2026-10-05/` | attuale | — | Stadio 1 del guadagno appreso sul transfer `all` (protocollo registrato prima, codice, esito: non passa) e tre diagnostiche a posteriori sul cubo r2 (tetto nella stessa linea, pesi oracolo dei gruppi, curva del coseno contro il numero di linee sorgente) con le proposte per la mole di dati Kaggle | — |
