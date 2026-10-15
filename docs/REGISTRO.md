@@ -114,6 +114,7 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/invii/trial_rlead_2026-10-15/` | attuale | — | `ta 42`: testi, script, generazione, pacchetto, ripresa del caricamento e stato finale (0,159396, ramo a) | — |
 | `reports/invii/prediction_ta42_2026-10-15/comparison.json` | attuale | — | Lettura di `ta 42` con la regola registrata: ramo a, +0,0105 su `td 38` | — |
 | `reports/modelli/rete_su_t3_2026-10-15/ESITO_TA42.md` | attuale | — | Esito di `ta 42` sul sito: la miscela dei predittori dei due autori è il nuovo massimo del team | — |
+| `reports/modelli/miscela_rs_2026-10-15/` | attuale | — | RSB di Davide come terzo ingrediente della miscela: protocollo e regola prima dei numeri, codice, esito (non passa) | — |
 | `reports/invii/prediction_t36_2026-10-06/comparison.json` | attuale | — | Lettura del t36 con la regola registrata: ramo b, −0,0035 sul t28 | — |
 | `reports/sorgenti/pooling_esatto_2026-10-06/` | attuale | — | Pooling esatto dello stadio 98 per la banca estesa (prima dello shrinkage, come `effects_from_pseudobulk`): modulo che chiama la funzione originale, scorciatoia esatta per donatori disgiunti, confronto di tabelle e cinque fixture sintetiche | — |
 | `reports/modelli/guadagno_appreso_2026-10-05/` | attuale | — | Stadio 1 del guadagno appreso sul transfer `all` (protocollo registrato prima, codice, esito: non passa) e tre diagnostiche a posteriori sul cubo r2 (tetto nella stessa linea, pesi oracolo dei gruppi, curva del coseno contro il numero di linee sorgente) con le proposte per la mole di dati Kaggle | — |

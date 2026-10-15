@@ -40,3 +40,35 @@ Ogni ingrediente è preso a norma unitaria; la miscela è poi riportata alla nor
 
 Fra quelli che passano si propone quello con l'indice PDS più alto. **Il banco non invia nulla:** la decisione di
 inviare è di Alfredo.
+
+## Esito (misurato, letto dopo il commit `d2b087e` della regola)
+
+Valori in [result_banco.json](result_banco.json), log in [run_banco.log](run_banco.log). I bracci `t3`, `rete_c` ed
+`ens_0.7` riproducono esattamente i numeri di
+[rete_su_t3_2026-10-15](../rete_su_t3_2026-10-15/README.md): stessi fold, stessi semi.
+
+**Media sui quattro fold:**
+
+| Braccio | Coseno | Indice PDS | Fedeltà | nMAE |
+|---|---|---|---|---|
+| `t3` | 0,085 | 0,355 | 0,512 | 1,012 |
+| `rete_c` | 0,092 | 0,334 | 0,518 | 1,004 |
+| `rsb` | 0,012 | **0,105** | 0,503 | **0,970** |
+| `ens_0.7` (`ta 42`) | **0,097** | **0,366** | 0,516 | 1,011 |
+| `mix3_0.1` | 0,093 | 0,366 | 0,516 | 1,007 |
+| `mix3_0.2` | 0,086 | 0,330 | 0,515 | 1,002 |
+| `mix3_0.3` | 0,077 | 0,286 | 0,514 | 0,995 |
+
+**Regola: nessun braccio passa.** Il migliore, `mix3_0.1`, pareggia l'indice PDS di `ens_0.7` (0,3658 contro 0,3662)
+e ha meno coseno.
+
+**Che cosa si capisce (interpretazione):**
+- **RSB da solo discrimina poco i bersagli** del pannello: indice PDS 0,105 contro 0,355 di T3. Il coseno è negativo
+  su K562, HCT116 e HEK293T, e alto (0,321) solo su iPSC.
+  - **Ipotesi da chiedere a Davide:** il fold iPSC di RSB potrebbe non escludere tutte le tabelle staminali.
+- **RSB è poco correlato** con T3 (0,19–0,26) e con la rete (0,07–0,10), ma non aggiunge segnale utile, quindi la
+  media lo diluisce. Per la miscela non basta essere poco correlati: serve anche qualità.
+- **RSB ha l'nMAE migliore di tutti** (0,970): sulle magnitudini dei geni DE è buono, sulla direzione no.
+
+**Proposta:** non inviare una miscela con RSB. Per `td 41` (RS di produzione) il banco non dice nulla, perché le sue
+proprietà sono diverse da RSB (vedi sopra). Serve sapere da Davide che cos'è RS e il punteggio di `td 41`.
