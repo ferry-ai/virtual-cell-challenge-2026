@@ -1,0 +1,213 @@
+{
+  "run_id": "ta42pack",
+  "stage": "48_package_prediction",
+  "input": {
+    "path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\ta42gen\\prediction.h5ad",
+    "sha256": "82fecb357cce6613eac47f79c8bd7fd3d6e465e6f4823815d97e99b87c95a8ae",
+    "bytes": 4212640545,
+    "hash_seconds": 5.166032899999891
+  },
+  "layout": {
+    "path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\ta42gen\\prediction.h5ad",
+    "n_obs": 360000,
+    "n_vars": 18533,
+    "nnz": 2085047151,
+    "data_dtype": "float32",
+    "indices_dtype": "int32",
+    "indptr_dtype": "int32",
+    "data_chunks": [
+      1048576
+    ],
+    "data_compression": "gzip",
+    "data_compression_opts": 4,
+    "indices_chunks": [
+      1048576
+    ],
+    "indices_compression": "gzip",
+    "indices_compression_opts": 4,
+    "obs_columns": [
+      "context",
+      "target_gene"
+    ],
+    "var_index_name": "_index",
+    "droppable_present": [],
+    "file_bytes": 4212640545
+  },
+  "official_cli_version": "0.2.0",
+  "official_prep_peak_gib_model": 22.19525540098548,
+  "transformations": [
+    "obs index replaced with '0'..'n-1' (official prep rebuilds obs with a positional index; the original cell names are not carried into a .vcc)",
+    "obs reduced to the perturbation column and the context column, in that order, written through anndata's own DataFrame writer",
+    "var reduced to the gene index, with no columns",
+    "layers, obsm, varm, obsp, varp, uns and raw dropped (official prep drops them too, and reports them)",
+    "X datasets copied verbatim, preserving dtype and HDF5 filters. Official prep rewrites them contiguous and unfiltered; the decoded arrays are identical either way"
+  ],
+  "resources_before": {
+    "ram_total_bytes": 16866308096,
+    "ram_available_bytes": 6415372288,
+    "disk_path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\ta42pack",
+    "disk_total_bytes": 998211842048,
+    "disk_free_bytes": 36886929408,
+    "cpu_count": 32,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 15.70797348022461,
+    "ram_available_gib": 5.974781036376953,
+    "disk_free_gib": 34.35363006591797
+  },
+  "uploaded": false,
+  "note": "Local validation, packaging and verification only. Nothing was uploaded, no submission quota was consumed, and no server has accepted this artifact.",
+  "package": {
+    "input_path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\ta42gen\\prediction.h5ad",
+    "output_path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\ta42pack\\prediction.vcc",
+    "payload_bytes": 4209691401,
+    "archive_bytes": 4160593920,
+    "nnz": 2085047151,
+    "n_obs": 360000,
+    "n_vars": 18533,
+    "meta": {
+      "schema": 1,
+      "nnz": 2085047151,
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "cli_version": "0.2.0"
+    },
+    "transformations": [
+      "obs index replaced with '0'..'n-1' (official prep rebuilds obs with a positional index; the original cell names are not carried into a .vcc)",
+      "obs reduced to the perturbation column and the context column, in that order, written through anndata's own DataFrame writer",
+      "var reduced to the gene index, with no columns",
+      "layers, obsm, varm, obsp, varp, uns and raw dropped (official prep drops them too, and reports them)",
+      "X datasets copied verbatim, preserving dtype and HDF5 filters. Official prep rewrites them contiguous and unfiltered; the decoded arrays are identical either way"
+    ],
+    "seconds": 641.1344723000002,
+    "peak_rss_bytes": 564191232,
+    "peak_disk_bytes": 8370273736,
+    "validation": {
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "nnz": 2085047151,
+      "min_value": 0.0,
+      "max_value": 9151.0,
+      "all_integer": true,
+      "n_nonfinite": 0,
+      "max_counts_per_cell_observed": 58439.0,
+      "cells_per_context": {
+        "A": 120000,
+        "B": 120000,
+        "C": 120000
+      },
+      "n_targets_per_context": {
+        "A": 300,
+        "B": 300,
+        "C": 300
+      },
+      "empty_perturbations": [],
+      "csr_checks": {
+        "indptr_length_is_n_obs_plus_1": true,
+        "indptr_starts_at_zero": true,
+        "indptr_non_negative": true,
+        "indptr_monotonic": true,
+        "indptr_end_matches_data_length": true,
+        "data_and_indices_same_length": true,
+        "nnz_representable_in_indptr_dtype": true,
+        "n_vars_representable_in_indices_dtype": true
+      },
+      "checks": {
+        "var_names_unique": true,
+        "gene_order_matches_list": true,
+        "gene_dim_matches_expected": true,
+        "has_cells": true,
+        "cell_dim_within_cap": true,
+        "pert_column_present": true,
+        "no_control_rows": true,
+        "contexts_complete": true,
+        "targets_match_official_list": true,
+        "density_within_cap": true,
+        "column_indices_in_range": true,
+        "counts_finite": true,
+        "counts_non_negative": true,
+        "counts_are_whole_numbers": true,
+        "max_counts_per_cell_within_cap": true,
+        "no_all_zero_perturbation": true
+      },
+      "failures": [],
+      "notes": [],
+      "seconds": 72.5855409999997,
+      "peak_rss_bytes": 564191232,
+      "layout": {
+        "path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\ta42gen\\prediction.h5ad",
+        "n_obs": 360000,
+        "n_vars": 18533,
+        "nnz": 2085047151,
+        "data_dtype": "float32",
+        "indices_dtype": "int32",
+        "indptr_dtype": "int32",
+        "data_chunks": [
+          1048576
+        ],
+        "data_compression": "gzip",
+        "data_compression_opts": 4,
+        "indices_chunks": [
+          1048576
+        ],
+        "indices_compression": "gzip",
+        "indices_compression_opts": 4,
+        "obs_columns": [
+          "context",
+          "target_gene"
+        ],
+        "var_index_name": "_index",
+        "droppable_present": [],
+        "file_bytes": 4212640545
+      },
+      "ok": true
+    }
+  },
+  "verification": {
+    "official_container_validator": "passed",
+    "meta_from_archive": {
+      "cli_version": "0.2.0",
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "nnz": 2085047151,
+      "schema": 1
+    },
+    "nnz_from_archive": 2085047151,
+    "payload_vs_input": {
+      "matches_input": true,
+      "n_obs": 360000,
+      "n_vars": 18533,
+      "nnz": 2085047151,
+      "x_arrays_bit_identical": true,
+      "obs_index_rewritten": true,
+      "compared": [
+        "X.data (bitwise)",
+        "X.indices (bitwise)",
+        "X.indptr (bitwise)",
+        "X dtypes",
+        "var index",
+        "obs['target_gene']",
+        "obs['context']",
+        "obs index is positional"
+      ]
+    },
+    "archive_sha256": "cf5aa84e3ffb3f745976d188af0a5aee1730d204da4cbcb8ed62c7089f687418",
+    "archive_bytes": 4160593920
+  },
+  "resources_after": {
+    "ram_total_bytes": 16866308096,
+    "ram_available_bytes": 6716563456,
+    "disk_path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\ta42pack",
+    "disk_total_bytes": 998211842048,
+    "disk_free_bytes": 29701828608,
+    "cpu_count": 32,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "source": "GlobalMemoryStatusEx + shutil.disk_usage",
+    "ram_total_gib": 15.70797348022461,
+    "ram_available_gib": 6.255287170410156,
+    "disk_free_gib": 27.661983489990234
+  },
+  "peak_rss_bytes": 564191232,
+  "total_seconds": 855.7362392,
+  "exit_code": 0
+}

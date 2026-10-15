@@ -1,0 +1,100 @@
+{
+  "run_id": "ta42pack",
+  "stage": "48_package_prediction",
+  "started_utc": "2026-10-15T16:54:16.662962+00:00",
+  "finished_utc": "2026-10-15T16:54:16.721137+00:00",
+  "seed": null,
+  "config": {
+    "run_id": "ta42pack",
+    "prediction": "C:\\Users\\39346\\vcc2026-data\\artifacts\\ta42gen\\prediction.h5ad",
+    "out": "None",
+    "vcc_name": "prediction.vcc",
+    "workdir": "None",
+    "expect_sha256": "None",
+    "genes": "None",
+    "perts": "None",
+    "values_per_block": "16777216",
+    "zstd_level": "3",
+    "zstd_threads": "None",
+    "reserve_gib": "6.0",
+    "validate_only": "False",
+    "skip_verify": "False",
+    "allow_overwrite": "False"
+  },
+  "inputs": {
+    "prediction": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\ta42gen\\prediction.h5ad",
+      "exists": true,
+      "bytes": 4212640545,
+      "mtime_utc": "2026-10-15T16:39:50.215492+00:00",
+      "sha256": "627ffc01589bc9bec6a45d78e972bc19b1f498fd34092360bb79a74136ea6488",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "genes": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\raw\\controls\\gene_names.csv",
+      "exists": true,
+      "bytes": 119295,
+      "mtime_utc": "2026-08-19T07:34:18+00:00",
+      "sha256": "25bfa66715e186bebabce7ac788bbcea47e2bf59ca70be1f8f3a06f2f0e47201",
+      "sha256_mode": "full"
+    },
+    "perturbations": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\raw\\controls\\pert_counts.csv",
+      "exists": true,
+      "bytes": 1906,
+      "mtime_utc": "2026-08-19T07:34:18+00:00",
+      "sha256": "f57edd7b912ebd718efc7ee9d0f334772513e7cc418d133ce525470e373b3276",
+      "sha256_mode": "full"
+    }
+  },
+  "outputs": {
+    "report": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\ta42pack\\packaging.json",
+      "exists": true,
+      "bytes": 7554,
+      "mtime_utc": "2026-10-15T16:54:16.662963+00:00",
+      "sha256": "5744312ea0486fa56c03fdbd6862bc0783b1bc316f54c8c27074ee4e83e92b81",
+      "sha256_mode": "full"
+    },
+    "vcc": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\ta42pack\\prediction.vcc",
+      "exists": true,
+      "bytes": 4160593920,
+      "mtime_utc": "2026-10-15T16:50:50.499013+00:00",
+      "sha256": "b2f188ae2c535ffd7a5a46b64409b93d845ec46ac1766cc6ac6944e3c0fc0089",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "metrics": {
+    "exit_code": 0,
+    "nnz": 2085047151,
+    "peak_rss_bytes": 564191232,
+    "total_seconds": 855.7362392
+  },
+  "notes": [
+    "Streaming packager: the official validators on metadata, streamed equivalents on the matrix. Not an official CLI release.",
+    "Nothing uploaded. A passing archive is not server acceptance."
+  ],
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "MSI",
+    "cpu_count": 32,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\39346\\vcc2026-data"
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "run_id": "ta42gen",
+  "stage": "45_generate_prediction",
+  "started_utc": "2026-10-15T16:39:50.241352+00:00",
+  "finished_utc": "2026-10-15T16:39:50.455898+00:00",
+  "seed": 20260912,
+  "config": {
+    "run_id": "ta42gen",
+    "trial": "trial-ext-profile",
+    "out": null,
+    "n_perts": null,
+    "contexts": null,
+    "controls_dir": null,
+    "cells_per_pert": null,
+    "seed": null,
+    "overdispersion": null,
+    "reserve_gib": 10.0,
+    "skip_resource_check": false,
+    "allow_overwrite": false,
+    "gene_dispersion": true,
+    "gene_dispersion_scale": 1.0,
+    "depth_bins": false,
+    "effects_scale": 1.5,
+    "effects": [
+      "A=C:\\Users\\39346\\vcc2026-data\\processed\\effects_ta42_ens07_2026-10-15\\effects_A.npz",
+      "B=C:\\Users\\39346\\vcc2026-data\\processed\\effects_ta42_ens07_2026-10-15\\effects_B.npz",
+      "C=C:\\Users\\39346\\vcc2026-data\\processed\\effects_ta42_ens07_2026-10-15\\effects_C.npz"
+    ]
+  },
+  "inputs": {
+    "controls:A": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\raw\\controls\\context_A.h5ad",
+      "exists": true,
+      "bytes": 224973316,
+      "mtime_utc": "2026-08-19T07:33:22+00:00",
+      "sha256": "daf888bd6894da5488c8dac3098a3618ff766d03fdf1250ec7f607124bb97834",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "controls:B": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\raw\\controls\\context_B.h5ad",
+      "exists": true,
+      "bytes": 210966111,
+      "mtime_utc": "2026-08-19T07:33:48+00:00",
+      "sha256": "8764c13cb61dd48e51c817335dd4ecc85a740406c5af144c4884d79d3cd3293d",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "controls:C": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\raw\\controls\\context_C.h5ad",
+      "exists": true,
+      "bytes": 226056691,
+      "mtime_utc": "2026-08-19T07:34:18+00:00",
+      "sha256": "486a299ad022ec5fd6a3c5f56ec77efeb7b8b85e5de0e41250d064c6f9b236f6",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    }
+  },
+  "outputs": {
+    "prediction": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\ta42gen\\prediction.h5ad",
+      "exists": true,
+      "bytes": 4212640545,
+      "mtime_utc": "2026-10-15T16:39:50.215492+00:00",
+      "sha256": "627ffc01589bc9bec6a45d78e972bc19b1f498fd34092360bb79a74136ea6488",
+      "sha256_mode": "head+tail sample (64 MiB blocks)"
+    },
+    "diagnostics": {
+      "path": "C:\\Users\\39346\\vcc2026-data\\artifacts\\ta42gen\\generation_diagnostics.json",
+      "exists": true,
+      "bytes": 240785,
+      "mtime_utc": "2026-10-15T16:39:50.241352+00:00",
+      "sha256": "d7889ce41fa922e40fd64098d96de12b5d5b1c8ee94398af4f07d3002f0ef06e",
+      "sha256_mode": "full"
+    }
+  },
+  "metrics": {
+    "storage": {
+      "stored_entries": 2085047151,
+      "stored_entries_per_cell": 5791.797641666667,
+      "per_cell_budget": 13194,
+      "global_cap": 4750000000,
+      "fraction_of_global_cap_at_this_size": 0.4389572949473684,
+      "projected_entries_at_full_shape": 2085047151.0,
+      "projected_fraction_of_cap": 0.4389572949473684,
+      "file_bytes": 4212640545,
+      "bytes_per_cell": 11701.779291666666,
+      "projected_file_bytes_at_full_shape": 4212640545.0
+    },
+    "runtime": {
+      "basal_profiles_seconds": 11.888410599999816,
+      "generation_seconds": 762.4671314,
+      "total_seconds": 828.6577213,
+      "seconds_per_block": 0.8471857015555555,
+      "projected_generation_seconds_at_full_shape": 762.4671314
+    },
+    "memory": {
+      "peak_rss_bytes": 553734144
+    },
+    "context_provenance_ok": true
+  },
+  "notes": [
+    "No VCC score here. Generation only; nothing uploaded."
+  ],
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "hostname": "MSI",
+    "cpu_count": 32,
+    "packages": {
+      "cell-eval2": "0.16.0",
+      "vcc-cli": "0.2.0",
+      "anndata": "0.13.3.post0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.5",
+      "h5py": "3.16.0",
+      "scanpy": "1.12.4",
+      "scikit-learn": "1.9.1",
+      "pyarrow": null
+    },
+    "env_overrides": {
+      "VCC2026_DATA_ROOT": "C:\\Users\\39346\\vcc2026-data"
+    }
+  }
+}
