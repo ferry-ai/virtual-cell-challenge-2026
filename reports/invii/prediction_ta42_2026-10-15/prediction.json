@@ -1,0 +1,23 @@
+{
+  "written_utc": "registered by the commit that adds this file: 15/10 ~16:30 UTC, after the fold bench of reports/modelli/rete_su_t3_2026-10-15 (rule passed, candidate ens_0.7) and the A/B/C export, before stage 45, any upload and any site score",
+  "citation": "ta 42 (D-058), entry to be assigned at upload",
+  "label": "ta 42: per target, 0.7 x T3 / |T3| + 0.3 x ta40 / |ta40| on the genes both cover, rescaled to T3's norm; genes only T3 covers keep T3's value; T3 = Davide's production effects of td 38 (sha256 b8c61f6d..., public dataset davideferrante11/vcc-rsb-inputs-70dc-r1), ta40 = our centred bridge network (entry D4DVVnBo4I3xn2aU59eN); t28/td 38 emission (effects-scale 1.5, gene dispersion 1.0, seed 20260912). Against td 38 only the direction changes: cosine with T3 0.94, norm equal.",
+  "status": "owner in chat on 15/10: 'davide mi ha comunicato che tutti i kaggle sono pubblici vedi che dati ti servono e procedi al lavoro'",
+  "evidence_before": {
+    "fold_bench": "rete_su_t3_2026-10-15/result_banco.json, rule registered in a88497a before the numbers: over the K562, iPSC, HCT116 and HEK293T folds, ens_0.7 - t3 = cosine +0.0129, PDS index +0.0117 (per fold PDS +0.028, +0.013, +0.007, -0.001); t3 + residual loses PDS (-0.049)",
+    "site": "ta 40 (0.146722) and td 38 (0.148922) score close with directions at cosine 0.48 on shared genes: they carry different parts of the truth",
+    "caution": "the cube bench overestimated the site's PDS for direction changes in 5 cases out of 5; it predicted magnitude changes well (ta 41)"
+  },
+  "references": {"td38": 0.148922, "ta41": 0.14737589105152984, "ta40": 0.14672213180227112},
+  "expected": {
+    "ta42_minus_td38_band": [-0.004, 0.012],
+    "centre": 0.004,
+    "members": "PDS scaled up vs td 38 (probability 0.6); fidelity, reach, nMAE, Jaccard within +-0.01; MSE 0"
+  },
+  "rule": {
+    "a": "ta42 - td38 >= +0.005: mixing the two teams' predictors helps on the site; the final combines Davide's base and our network",
+    "b": "|ta42 - td38| < 0.005: not conclusive; read the PDS member",
+    "c": "ta42 - td38 <= -0.005: the fold-bench gain of the mixture does not transfer; keep td 38's direction",
+    "not": "one seed of the generator; td 38's six scaled members are not on GitHub, so the member reading is against ta 40 and ta 41 plus td 38's total; nothing direct about D, E, F"
+  }
+}

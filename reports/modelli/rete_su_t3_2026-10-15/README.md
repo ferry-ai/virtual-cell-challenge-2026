@@ -61,3 +61,32 @@ questo banco non si manda nulla.**
 
 **Cautela nota:** il banco del cubo ha sopravvalutato il PDS del sito per i cambi di direzione (5 casi su 5), mentre
 ha previsto bene i cambi di magnitudine (`ta 41`).
+
+## Esito del banco (misurato, letto dopo il commit `a88497a` della regola)
+
+Valori in [result_banco.json](result_banco.json), log in [run_banco.log](run_banco.log). Media sui quattro fold, 241–278
+bersagli per fold:
+
+| Braccio | Coseno | Indice PDS | Fedeltà | nMAE |
+|---|---|---|---|---|
+| `all` | 0,084 | 0,325 | 0,514 | 1,011 |
+| `rete_c` | 0,092 | 0,334 | 0,518 | 1,004 |
+| `t3` | 0,085 | 0,355 | 0,512 | 1,012 |
+| `t3_res` | 0,084 | **0,305** | 0,516 | 1,004 |
+| `ens_0.5` | **0,101** | 0,360 | 0,518 | 1,010 |
+| `ens_0.7` | 0,097 | **0,366** | 0,516 | 1,011 |
+
+**Regola: passano `ens_0.5` e `ens_0.7`.** Il candidato è **`ens_0.7`**, che ha l'indice PDS più alto:
+- sul coseno, +0,013 rispetto a `t3`;
+- sul PDS, +0,012 (per fold: K562 +0,028, iPSC +0,013, HCT116 +0,007, HEK293T −0,001).
+
+**Che cosa si capisce (interpretazione):**
+- **Mescolare le due direzioni aiuta.** Aggiungere a T3 il residuo della rete, invece, toglie PDS: il residuo era
+  imparato rispetto alla base del cubo, non a T3.
+- **Sui bersagli del pannello l'indice PDS di questi lignaggi è basso** (da 0,13 a 0,54) per tutti i bracci: i fold
+  sono difficili.
+
+**Esportazione per A/B/C:** [esporta_ens.py](esporta_ens.py), valori in [export_ta42.json](export_ta42.json).
+- Coseno col T3 di produzione 0,94; coseno con `ta 40` 0,71.
+- Norma uguale a T3: rispetto a `td 38` cambia solo la direzione.
+- **Invio:** `ta 42`.

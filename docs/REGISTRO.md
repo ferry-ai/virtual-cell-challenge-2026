@@ -109,6 +109,9 @@ manifest. Materiale di natura diversa merita una voce propria.
 | `reports/invii/trial_rlead_2026-10-13/` | attuale | — | `ta 41`: testi, script, generazione, pacchetto, ricevute e stato finale (0,147376, ramo b) | — |
 | `reports/invii/prediction_ta41_2026-10-13/comparison.json` | attuale | — | Lettura di `ta 41` con la regola registrata: ramo b, +0,0007 su `ta 40` | — |
 | `reports/generatore_e_banchi/budget_chiamate_2026-10-13/ESITO_TA41.md` | attuale | — | Esito di `ta 41` sul sito: il banco del cubo prevede nMAE e PDS delle magnitudini per segno ed entità | — |
+| `reports/modelli/rete_su_t3_2026-10-15/` | attuale | — | Rete centrata insieme a T3 di Davide sui fold a lignaggio escluso: protocollo e regola prima dei numeri, codice, esito, esportazione per `ta 42` | — |
+| `reports/invii/prediction_ta42_2026-10-15/` | attuale | — | Previsione e regola di `ta 42` (miscela T3 e rete) contro `td 38`, registrate prima di generare | — |
+| `reports/invii/trial_rlead_2026-10-15/` | attuale | — | `ta 42`: testi, script, generazione, pacchetto e ricevute | — |
 | `reports/invii/prediction_t36_2026-10-06/comparison.json` | attuale | — | Lettura del t36 con la regola registrata: ramo b, −0,0035 sul t28 | — |
 | `reports/sorgenti/pooling_esatto_2026-10-06/` | attuale | — | Pooling esatto dello stadio 98 per la banca estesa (prima dello shrinkage, come `effects_from_pseudobulk`): modulo che chiama la funzione originale, scorciatoia esatta per donatori disgiunti, confronto di tabelle e cinque fixture sintetiche | — |
 | `reports/modelli/guadagno_appreso_2026-10-05/` | attuale | — | Stadio 1 del guadagno appreso sul transfer `all` (protocollo registrato prima, codice, esito: non passa) e tre diagnostiche a posteriori sul cubo r2 (tetto nella stessa linea, pesi oracolo dei gruppi, curva del coseno contro il numero di linee sorgente) con le proposte per la mole di dati Kaggle | — |
